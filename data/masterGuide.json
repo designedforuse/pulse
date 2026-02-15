@@ -95,7 +95,7 @@
       "league": "NHL",
       "awayTeam": "Boston Bruins",
       "homeTeam": "Anaheim Ducks",
-      "startTimeLocal": "2026-02-20T19:00:00",
+      "startTimeLocal": "2026-02-15T21:30:00",
       "providerId": "youtubetv",
       "isLive": false
     },
@@ -135,7 +135,7 @@
       "league": "NHL",
       "awayTeam": "Toronto Maple Leafs",
       "homeTeam": "Los Angeles Kings",
-      "startTimeLocal": "2026-02-20T19:30:00",
+      "startTimeLocal": "2026-02-15T22:00:00",
       "providerId": "disneyplus",
       "isLive": true
     },
@@ -165,7 +165,7 @@
       "league": "HSBC SVNS",
       "awayTeam": "USA",
       "homeTeam": "New Zealand",
-      "startTimeLocal": "2026-02-21T20:00:00",
+      "startTimeLocal": "2026-02-15T22:15:00",
       "providerId": "flosports",
       "isLive": true
     },
@@ -205,7 +205,7 @@
       "league": "MLS",
       "awayTeam": "LA Galaxy",
       "homeTeam": "LAFC",
-      "startTimeLocal": "2026-02-21T19:30:00",
+      "startTimeLocal": "2026-02-15T23:30:00",
       "providerId": "youtubetv",
       "isLive": false
     },
@@ -345,7 +345,7 @@
       "league": "MLS",
       "awayTeam": "Inter Miami",
       "homeTeam": "Atlanta United",
-      "startTimeLocal": "2026-02-21T19:00:00",
+      "startTimeLocal": "2026-02-16T00:30:00",
       "providerId": "youtubetv",
       "isLive": true
     },
@@ -355,7 +355,7 @@
       "league": "NHL",
       "awayTeam": "New York Rangers",
       "homeTeam": "Chicago Blackhawks",
-      "startTimeLocal": "2026-02-21T20:00:00",
+      "startTimeLocal": "2026-02-16T00:00:00",
       "providerId": "youtubetv",
       "isLive": false
     },
