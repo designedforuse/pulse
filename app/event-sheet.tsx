@@ -54,7 +54,9 @@ export default function EventSheet() {
     if (provider.id === "espn") {
       const storeUrl = `market://details?id=${provider.packageName}`;
       try {
-        await Linking.openURL("espn://");
+        const intentUri =
+          `intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=${provider.packageName};end`;
+        await Linking.openURL(intentUri);
       } catch {
         Alert.alert(
           "Unable to Open ESPN",
