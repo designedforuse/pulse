@@ -52,30 +52,20 @@ export default function EventSheet() {
     }
 
     if (provider.id === "espn") {
-      const espnScheme = "espn://";
       const storeUrl = `market://details?id=${provider.packageName}`;
       try {
-        const canOpen = await Linking.canOpenURL(espnScheme);
-        if (canOpen) {
-          await Linking.openURL(espnScheme);
-        } else {
-          Alert.alert(
-            "App Not Installed",
-            `${provider.name} doesn't appear to be installed. Would you like to install it?`,
-            [
-              { text: "Cancel", style: "cancel" },
-              {
-                text: "Open Play Store",
-                onPress: () => Linking.openURL(storeUrl).catch(() => {}),
-              },
-            ]
-          );
-        }
+        await Linking.openURL("espn://");
       } catch {
         Alert.alert(
-          "App Not Installed",
-          `${provider.name} is not installed on this device.`,
-          [{ text: "OK" }]
+          "Unable to Open ESPN",
+          "Would you like to install or update ESPN from the Play Store?",
+          [
+            { text: "Cancel", style: "cancel" },
+            {
+              text: "Open Play Store",
+              onPress: () => Linking.openURL(storeUrl).catch(() => {}),
+            },
+          ]
         );
       }
       return;
