@@ -391,9 +391,23 @@
     }
   ],
   "favorites": {
-    "hockey": ["Anaheim Ducks", "Boston Bruins", "Boston University", "San Diego Gulls", "Tulsa Oilers"],
-    "rugby": ["Stormers"],
-    "cricket": ["South Africa"],
-    "soccer": ["Tottenham Hotspur", "San Diego FC", "New England Revolution", "San Diego Wave", "Orange County SC"]
+    "hockey": {
+      "NHL": ["Anaheim Ducks", "Boston Bruins"],
+      "AHL": ["San Diego Gulls"],
+      "NCAA": ["Boston University"],
+      "ECHL": ["Tulsa Oilers"]
+    },
+    "rugby": {
+      "URC": ["Stormers"]
+    },
+    "cricket": {
+      "teams": ["South Africa"]
+    },
+    "soccer": {
+      "EPL": ["Tottenham Hotspur"],
+      "MLS": ["San Diego FC", "New England Revolution"],
+      "NWSL": ["San Diego Wave"],
+      "USL": ["Orange County SC"]
+    }
   }
 }

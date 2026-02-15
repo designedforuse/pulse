@@ -1,4 +1,5 @@
 import type { SportEvent, Favorites } from "@/lib/data";
+import { flattenSportFavorites } from "@/lib/data";
 import aliasData from "@/data/favoriteAliases.json";
 
 const aliasMap: Record<string, string[]> = aliasData;
@@ -10,8 +11,9 @@ function normalize(s: string): string {
 function buildSportExpandedSets(favorites: Favorites): Record<string, { expanded: Set<string>; canonicals: Set<string> }> {
   const result: Record<string, { expanded: Set<string>; canonicals: Set<string> }> = {};
   for (const sport of Object.keys(favorites)) {
-    const teams = favorites[sport];
-    if (!teams) continue;
+    const sportFavs = favorites[sport];
+    if (!sportFavs) continue;
+    const teams = flattenSportFavorites(sportFavs);
     const expanded = new Set<string>();
     const canonicals = new Set<string>();
     for (const canonical of teams) {
@@ -79,9 +81,9 @@ export function favoriteInvolved(event: SportEvent, favorites: Favorites): boole
 export function getAllFavoriteTeams(favorites: Favorites): string[] {
   const all: string[] = [];
   for (const sport of Object.keys(favorites)) {
-    const teams = favorites[sport];
-    if (teams) {
-      all.push(...teams);
+    const sportFavs = favorites[sport];
+    if (sportFavs) {
+      all.push(...flattenSportFavorites(sportFavs));
     }
   }
   return all;

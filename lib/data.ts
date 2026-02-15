@@ -34,12 +34,23 @@ export interface Mode {
   packs: Pack[];
 }
 
+export type SportFavorites = Record<string, string[]>;
+
 export interface Favorites {
-  hockey?: string[];
-  rugby?: string[];
-  cricket?: string[];
-  soccer?: string[];
-  [key: string]: string[] | undefined;
+  hockey?: SportFavorites;
+  rugby?: SportFavorites;
+  cricket?: SportFavorites;
+  soccer?: SportFavorites;
+  [key: string]: SportFavorites | undefined;
+}
+
+export function flattenSportFavorites(sportFavs: SportFavorites | undefined): string[] {
+  if (!sportFavs) return [];
+  const teams: string[] = [];
+  for (const league of Object.keys(sportFavs)) {
+    teams.push(...sportFavs[league]);
+  }
+  return teams;
 }
 
 export interface MasterGuide {

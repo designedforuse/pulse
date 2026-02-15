@@ -9,11 +9,79 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Colors from "@/constants/colors";
-import { getProviders } from "@/lib/data";
+import { getProviders, getFavorites, getSportColor, type Favorites } from "@/lib/data";
+
+function FavoritesSection({ favorites }: { favorites: Favorites }) {
+  const sportOrder = ["hockey", "rugby", "cricket", "soccer"];
+  const sportLabels: Record<string, string> = {
+    hockey: "Hockey",
+    rugby: "Rugby",
+    cricket: "Cricket",
+    soccer: "Soccer",
+  };
+  const sportIcons: Record<string, keyof typeof Ionicons.glyphMap> = {
+    hockey: "snow",
+    rugby: "american-football",
+    cricket: "baseball",
+    soccer: "football",
+  };
+
+  const hasFavorites = sportOrder.some((sport) => {
+    const sportFavs = favorites[sport];
+    return sportFavs && Object.keys(sportFavs).length > 0;
+  });
+
+  if (!hasFavorites) {
+    return (
+      <View style={styles.card}>
+        <View style={styles.emptyFavRow}>
+          <Ionicons name="star-outline" size={18} color={Colors.textMuted} />
+          <Text style={styles.emptyFavText}>No favorites configured.</Text>
+        </View>
+      </View>
+    );
+  }
+
+  return (
+    <View style={styles.card}>
+      {sportOrder.map((sport, sportIndex) => {
+        const sportFavs = favorites[sport];
+        if (!sportFavs || Object.keys(sportFavs).length === 0) return null;
+        const sportColor = getSportColor(sport);
+        const leagues = Object.keys(sportFavs);
+
+        return (
+          <React.Fragment key={sport}>
+            {sportIndex > 0 && <View style={styles.sportDivider} />}
+            <View style={styles.sportHeader}>
+              <View style={[styles.sportIconBg, { backgroundColor: sportColor + "22" }]}>
+                <Ionicons name={sportIcons[sport]} size={14} color={sportColor} />
+              </View>
+              <Text style={[styles.sportLabel, { color: sportColor }]}>
+                {sportLabels[sport]}
+              </Text>
+            </View>
+            {leagues.map((league) => {
+              const teams = sportFavs[league];
+              if (!teams || teams.length === 0) return null;
+              return (
+                <View key={league} style={styles.leagueRow}>
+                  <Text style={styles.leagueLabel}>{league}</Text>
+                  <Text style={styles.teamsText}>{teams.join(", ")}</Text>
+                </View>
+              );
+            })}
+          </React.Fragment>
+        );
+      })}
+    </View>
+  );
+}
 
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const providers = getProviders();
+  const favorites = getFavorites();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
 
   return (
@@ -31,6 +99,11 @@ export default function SettingsScreen() {
         <View style={styles.headerRow}>
           <Ionicons name="settings-outline" size={24} color={Colors.textSecondary} />
           <Text style={styles.headerTitle}>Settings</Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>My Favorite Teams</Text>
+          <FavoritesSection favorites={favorites} />
         </View>
 
         <View style={styles.section}>
@@ -175,6 +248,64 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     borderWidth: 1,
     borderColor: Colors.border,
+  },
+  sportDivider: {
+    height: 1,
+    backgroundColor: Colors.border,
+  },
+  sportHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    paddingHorizontal: 14,
+    paddingTop: 12,
+    paddingBottom: 4,
+  },
+  sportIconBg: {
+    width: 26,
+    height: 26,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  sportLabel: {
+    fontSize: 14,
+    fontWeight: "700" as const,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.3,
+  },
+  leagueRow: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+    paddingLeft: 48,
+    gap: 8,
+  },
+  leagueLabel: {
+    fontSize: 12,
+    color: Colors.textMuted,
+    fontFamily: "Inter_600SemiBold",
+    minWidth: 42,
+  },
+  teamsText: {
+    fontSize: 13,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_400Regular",
+    flex: 1,
+    lineHeight: 18,
+  },
+  emptyFavRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    paddingHorizontal: 14,
+    paddingVertical: 16,
+  },
+  emptyFavText: {
+    fontSize: 14,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
   },
   row: {
     flexDirection: "row",
