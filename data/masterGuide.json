@@ -1,0 +1,62 @@
+{
+  "modes": [
+    {
+      "id": "weekend_nights",
+      "title": "Weekend Nights",
+      "packs": [
+        { "id": "hockey_night", "title": "Hockey Night", "sport": "hockey", "leagues": ["NHL","AHL","ECHL","NCAA Hockey"] },
+        { "id": "rugby_night", "title": "Rugby Night", "sport": "rugby", "leagues": ["Japan League One","Super Rugby","HSBC SVNS"] },
+        { "id": "cricket_night", "title": "Cricket Night", "sport": "cricket", "hostRegions": ["India","Australia","New Zealand"] },
+        { "id": "soccer_night", "title": "Soccer Night", "sport": "soccer", "leagues": ["MLS","NWSL","USL"] }
+      ]
+    },
+    {
+      "id": "weekend_mornings",
+      "title": "Weekend Mornings",
+      "packs": [
+        { "id": "rugby_morning", "title": "Rugby Morning", "sport": "rugby", "leagues": ["URC","Top 14","English Premiership"] },
+        { "id": "cricket_morning", "title": "Cricket Morning", "sport": "cricket", "hostRegions": ["South Africa","England","Caribbean"] },
+        { "id": "soccer_morning", "title": "Soccer Morning", "sport": "soccer", "leagues": ["EPL","Serie A","La Liga","Bundesliga","Ligue 1"] }
+      ]
+    }
+  ],
+  "providers": [
+    { "id": "youtubetv", "name": "YouTube TV", "packageName": "com.google.android.apps.youtube.unplugged" },
+    { "id": "espn", "name": "ESPN", "packageName": "com.espn.score_center" },
+    { "id": "flosports", "name": "FloSports", "packageName": "tv.flosports.app" },
+    { "id": "victoryplus", "name": "Victory+", "packageName": "com.victoryplus.app" },
+    { "id": "primevideo", "name": "Prime Video", "packageName": "com.amazon.avod.thirdpartyclient" }
+  ],
+  "events": [
+    { "id": "e1", "sport": "hockey", "league": "NHL", "awayTeam": "Boston Bruins", "homeTeam": "Anaheim Ducks", "startTimeLocal": "2026-02-20T19:00:00", "providerId": "youtubetv", "isLive": false },
+    { "id": "e2", "sport": "hockey", "league": "AHL", "awayTeam": "San Diego Gulls", "homeTeam": "Ontario Reign", "startTimeLocal": "2026-02-20T19:00:00", "providerId": "flosports", "isLive": false },
+    { "id": "e3", "sport": "hockey", "league": "NCAA Hockey", "awayTeam": "Boston University", "homeTeam": "Maine", "startTimeLocal": "2026-02-20T19:30:00", "providerId": "espn", "isLive": false },
+    { "id": "e4", "sport": "hockey", "league": "ECHL", "awayTeam": "Tulsa Oilers", "homeTeam": "Idaho Steelheads", "startTimeLocal": "2026-02-20T20:00:00", "providerId": "flosports", "isLive": false },
+    { "id": "e5", "sport": "hockey", "league": "NHL", "awayTeam": "Toronto Maple Leafs", "homeTeam": "Los Angeles Kings", "startTimeLocal": "2026-02-20T19:30:00", "providerId": "espn", "isLive": true },
+    { "id": "e6", "sport": "rugby", "league": "Japan League One", "awayTeam": "Suntory Sungoliath", "homeTeam": "Kubota Spears", "startTimeLocal": "2026-02-21T18:00:00", "providerId": "flosports", "isLive": false },
+    { "id": "e7", "sport": "rugby", "league": "Super Rugby", "awayTeam": "Blues", "homeTeam": "Crusaders", "startTimeLocal": "2026-02-21T19:00:00", "providerId": "flosports", "isLive": false },
+    { "id": "e8", "sport": "rugby", "league": "HSBC SVNS", "awayTeam": "USA", "homeTeam": "New Zealand", "startTimeLocal": "2026-02-21T20:00:00", "providerId": "flosports", "isLive": true },
+    { "id": "e9", "sport": "cricket", "league": "IPL", "awayTeam": "Mumbai Indians", "homeTeam": "Chennai Super Kings", "startTimeLocal": "2026-02-21T19:30:00", "providerId": "espn", "isLive": false },
+    { "id": "e10", "sport": "cricket", "league": "BBL", "awayTeam": "Sydney Sixers", "homeTeam": "Melbourne Stars", "startTimeLocal": "2026-02-21T18:00:00", "providerId": "espn", "isLive": false },
+    { "id": "e11", "sport": "cricket", "league": "Super Smash", "awayTeam": "Auckland Aces", "homeTeam": "Wellington Firebirds", "startTimeLocal": "2026-02-21T19:00:00", "providerId": "espn", "isLive": false },
+    { "id": "e12", "sport": "soccer", "league": "MLS", "awayTeam": "LA Galaxy", "homeTeam": "LAFC", "startTimeLocal": "2026-02-21T19:30:00", "providerId": "youtubetv", "isLive": false },
+    { "id": "e13", "sport": "soccer", "league": "NWSL", "awayTeam": "Angel City FC", "homeTeam": "Portland Thorns", "startTimeLocal": "2026-02-21T20:00:00", "providerId": "espn", "isLive": false },
+    { "id": "e14", "sport": "soccer", "league": "USL", "awayTeam": "Sacramento Republic", "homeTeam": "Phoenix Rising", "startTimeLocal": "2026-02-21T19:00:00", "providerId": "espn", "isLive": false },
+    { "id": "e15", "sport": "rugby", "league": "URC", "awayTeam": "Leinster", "homeTeam": "Munster", "startTimeLocal": "2026-02-21T07:30:00", "providerId": "flosports", "isLive": false },
+    { "id": "e16", "sport": "rugby", "league": "Top 14", "awayTeam": "Toulouse", "homeTeam": "Racing 92", "startTimeLocal": "2026-02-21T08:00:00", "providerId": "flosports", "isLive": false },
+    { "id": "e17", "sport": "rugby", "league": "English Premiership", "awayTeam": "Saracens", "homeTeam": "Harlequins", "startTimeLocal": "2026-02-21T09:00:00", "providerId": "flosports", "isLive": true },
+    { "id": "e18", "sport": "cricket", "league": "SA20", "awayTeam": "Joburg Super Kings", "homeTeam": "Paarl Royals", "startTimeLocal": "2026-02-21T08:00:00", "providerId": "espn", "isLive": false },
+    { "id": "e19", "sport": "cricket", "league": "The Hundred", "awayTeam": "Oval Invincibles", "homeTeam": "Manchester Originals", "startTimeLocal": "2026-02-21T09:30:00", "providerId": "espn", "isLive": false },
+    { "id": "e20", "sport": "cricket", "league": "CPL", "awayTeam": "Trinbago Knight Riders", "homeTeam": "Jamaica Tallawahs", "startTimeLocal": "2026-02-21T10:00:00", "providerId": "espn", "isLive": false },
+    { "id": "e21", "sport": "soccer", "league": "EPL", "awayTeam": "Arsenal", "homeTeam": "Manchester City", "startTimeLocal": "2026-02-21T07:30:00", "providerId": "youtubetv", "isLive": true },
+    { "id": "e22", "sport": "soccer", "league": "Serie A", "awayTeam": "AC Milan", "homeTeam": "Inter Milan", "startTimeLocal": "2026-02-21T09:00:00", "providerId": "primevideo", "isLive": false },
+    { "id": "e23", "sport": "soccer", "league": "La Liga", "awayTeam": "Barcelona", "homeTeam": "Real Madrid", "startTimeLocal": "2026-02-21T10:00:00", "providerId": "espn", "isLive": false },
+    { "id": "e24", "sport": "soccer", "league": "Bundesliga", "awayTeam": "Bayern Munich", "homeTeam": "Borussia Dortmund", "startTimeLocal": "2026-02-21T09:30:00", "providerId": "espn", "isLive": false },
+    { "id": "e25", "sport": "soccer", "league": "Ligue 1", "awayTeam": "PSG", "homeTeam": "Marseille", "startTimeLocal": "2026-02-21T11:00:00", "providerId": "espn", "isLive": false },
+    { "id": "e26", "sport": "soccer", "league": "MLS", "awayTeam": "Inter Miami", "homeTeam": "Atlanta United", "startTimeLocal": "2026-02-21T19:00:00", "providerId": "youtubetv", "isLive": true },
+    { "id": "e27", "sport": "hockey", "league": "NHL", "awayTeam": "New York Rangers", "homeTeam": "Chicago Blackhawks", "startTimeLocal": "2026-02-21T20:00:00", "providerId": "youtubetv", "isLive": false },
+    { "id": "e28", "sport": "rugby", "league": "Super Rugby", "awayTeam": "Hurricanes", "homeTeam": "Chiefs", "startTimeLocal": "2026-02-21T18:30:00", "providerId": "flosports", "isLive": false },
+    { "id": "e29", "sport": "soccer", "league": "EPL", "awayTeam": "Liverpool", "homeTeam": "Chelsea", "startTimeLocal": "2026-02-21T10:00:00", "providerId": "youtubetv", "isLive": false },
+    { "id": "e30", "sport": "cricket", "league": "IPL", "awayTeam": "Royal Challengers Bangalore", "homeTeam": "Delhi Capitals", "startTimeLocal": "2026-02-21T20:00:00", "providerId": "victoryplus", "isLive": false }
+  ]
+}

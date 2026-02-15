@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "My App",
-    "slug": "my-app",
+    "name": "Master Sports Guide",
+    "slug": "master-sports-guide",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
