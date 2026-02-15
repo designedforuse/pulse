@@ -7,13 +7,17 @@ function normalize(s: string): string {
   return s.trim().toLowerCase();
 }
 
-function buildExpandedSet(favorites: Favorites): Set<string> {
-  const expanded = new Set<string>();
+function buildSportExpandedSets(favorites: Favorites): Record<string, { expanded: Set<string>; canonicals: Set<string> }> {
+  const result: Record<string, { expanded: Set<string>; canonicals: Set<string> }> = {};
   for (const sport of Object.keys(favorites)) {
     const teams = favorites[sport];
     if (!teams) continue;
+    const expanded = new Set<string>();
+    const canonicals = new Set<string>();
     for (const canonical of teams) {
-      expanded.add(normalize(canonical));
+      const norm = normalize(canonical);
+      expanded.add(norm);
+      canonicals.add(norm);
       const aliases = aliasMap[canonical];
       if (aliases) {
         for (const alias of aliases) {
@@ -21,51 +25,38 @@ function buildExpandedSet(favorites: Favorites): Set<string> {
         }
       }
     }
+    result[sport] = { expanded, canonicals };
   }
-  return expanded;
+  return result;
 }
 
-function buildCanonicalSet(favorites: Favorites): Set<string> {
-  const canonicals = new Set<string>();
-  for (const sport of Object.keys(favorites)) {
-    const teams = favorites[sport];
-    if (!teams) continue;
-    for (const canonical of teams) {
-      canonicals.add(normalize(canonical));
-    }
-  }
-  return canonicals;
-}
-
-let cachedExpanded: Set<string> | null = null;
-let cachedCanonicals: Set<string> | null = null;
+let cachedSets: Record<string, { expanded: Set<string>; canonicals: Set<string> }> | null = null;
 let cachedFavRef: Favorites | null = null;
 
-function getExpandedAndCanonical(favorites: Favorites): { expanded: Set<string>; canonicals: Set<string> } {
+function getSportSets(favorites: Favorites): Record<string, { expanded: Set<string>; canonicals: Set<string> }> {
   if (cachedFavRef !== favorites) {
-    cachedExpanded = buildExpandedSet(favorites);
-    cachedCanonicals = buildCanonicalSet(favorites);
+    cachedSets = buildSportExpandedSets(favorites);
     cachedFavRef = favorites;
   }
-  return { expanded: cachedExpanded!, canonicals: cachedCanonicals! };
+  return cachedSets!;
 }
 
 export type FavoriteMatchReason = "canonical" | "alias" | "";
 
 export function favoriteMatchReason(event: SportEvent, favorites: Favorites): FavoriteMatchReason {
-  const { expanded, canonicals } = getExpandedAndCanonical(favorites);
+  const sportSets = getSportSets(favorites);
+  const sets = sportSets[event.sport];
+  if (!sets) return "";
+
   const home = normalize(event.homeTeam);
   const away = normalize(event.awayTeam);
 
-  const homeInExpanded = expanded.has(home);
-  const awayInExpanded = expanded.has(away);
+  const homeInExpanded = sets.expanded.has(home);
+  const awayInExpanded = sets.expanded.has(away);
 
   if (!homeInExpanded && !awayInExpanded) return "";
 
-  const homeCanonical = canonicals.has(home);
-  const awayCanonical = canonicals.has(away);
-
-  if (homeCanonical || awayCanonical) return "canonical";
+  if (sets.canonicals.has(home) || sets.canonicals.has(away)) return "canonical";
   return "alias";
 }
 
@@ -73,11 +64,13 @@ export function favoriteInvolved(event: SportEvent, favorites: Favorites): boole
   const reason = favoriteMatchReason(event, favorites);
   if (reason) {
     if (__DEV__) {
-      const { expanded } = getExpandedAndCanonical(favorites);
-      const home = normalize(event.homeTeam);
-      const away = normalize(event.awayTeam);
-      const matched = expanded.has(home) ? event.homeTeam : event.awayTeam;
-      console.log(`[FAV] ${event.awayTeam} @ ${event.homeTeam} — matched "${matched}" (${reason})`);
+      const sportSets = getSportSets(favorites);
+      const sets = sportSets[event.sport];
+      if (sets) {
+        const home = normalize(event.homeTeam);
+        const matched = sets.expanded.has(home) ? event.homeTeam : event.awayTeam;
+        console.log(`[FAV] ${event.awayTeam} @ ${event.homeTeam} — matched "${matched}" (${reason})`);
+      }
     }
   }
   return reason !== "";
