@@ -6,6 +6,7 @@ import {
   Pressable,
   Alert,
   Platform,
+  Linking,
 } from "react-native";
 import { useLocalSearchParams, router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -50,13 +51,36 @@ export default function EventSheet() {
       return;
     }
 
+    if (provider.id === "espn") {
+      try {
+        const launchUri = `android-app://${provider.packageName}`;
+        const canOpen = await Linking.canOpenURL(launchUri);
+        if (canOpen) {
+          await Linking.openURL(launchUri);
+        } else {
+          Alert.alert(
+            "App Not Installed",
+            `${provider.name} is not installed on this device.`,
+            [{ text: "OK" }]
+          );
+        }
+      } catch {
+        Alert.alert(
+          "App Not Installed",
+          `${provider.name} is not installed on this device.`,
+          [{ text: "OK" }]
+        );
+      }
+      return;
+    }
+
     try {
       const params: IntentLauncher.IntentLauncherParams = {
         packageName: provider.packageName,
         category: "android.intent.category.LAUNCHER",
       };
 
-      if (provider.activity && provider.id !== "espn") {
+      if (provider.activity) {
         params.className = provider.activity;
       }
 
