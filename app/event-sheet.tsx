@@ -57,7 +57,7 @@ export default function EventSheet() {
       };
 
       if (provider.activity) {
-        params.className = `${provider.packageName}/${provider.activity}`;
+        params.className = provider.activity;
       }
 
       await IntentLauncher.startActivityAsync(
