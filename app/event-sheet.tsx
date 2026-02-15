@@ -19,6 +19,7 @@ import {
   formatStartTime,
   getSportColor,
 } from "@/lib/data";
+import { isEventLive } from "@/utils/time";
 
 export default function EventSheet() {
   const { eventId } = useLocalSearchParams<{ eventId: string }>();
@@ -125,7 +126,7 @@ export default function EventSheet() {
             <View style={styles.leagueBadge}>
               <Text style={styles.leagueText}>{event.league}</Text>
             </View>
-            {event.isLive && (
+            {isEventLive(event, new Date()) && (
               <View style={styles.liveBadge}>
                 <View style={styles.liveDot} />
                 <Text style={styles.liveText}>LIVE</Text>

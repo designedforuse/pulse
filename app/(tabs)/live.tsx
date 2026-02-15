@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   StyleSheet,
   Text,
   View,
-  FlatList,
+  SectionList,
   Pressable,
   Platform,
+  RefreshControl,
 } from "react-native";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -20,12 +21,18 @@ import Animated, {
 } from "react-native-reanimated";
 import Colors from "@/constants/colors";
 import {
-  getLiveEvents,
+  getAllEvents,
   getProviderById,
   formatStartTime,
   getSportColor,
   type SportEvent,
 } from "@/lib/data";
+import {
+  getLiveEventsNow,
+  getUpNextEvents,
+  formatLastUpdated,
+  formatTimeUntilStart,
+} from "@/utils/time";
 
 function LiveIndicator() {
   const opacity = useSharedValue(1);
@@ -45,12 +52,10 @@ function LiveIndicator() {
     opacity: opacity.value,
   }));
 
-  return (
-    <Animated.View style={[styles.liveDot, animStyle]} />
-  );
+  return <Animated.View style={[styles.liveDot, animStyle]} />;
 }
 
-function LiveEventCard({ event }: { event: SportEvent }) {
+function EventRow({ event, isLive, now }: { event: SportEvent; isLive: boolean; now: Date }) {
   const provider = getProviderById(event.providerId);
   const sportColor = getSportColor(event.sport);
 
@@ -72,43 +77,61 @@ function LiveEventCard({ event }: { event: SportEvent }) {
         { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] },
       ]}
     >
-      <View style={styles.eventCardHeader}>
-        <View style={styles.liveTagRow}>
-          <View style={styles.liveTag}>
-            <LiveIndicator />
-            <Text style={styles.liveText}>LIVE</Text>
+      <View style={styles.eventCardTop}>
+        <View style={styles.leftContent}>
+          <View style={styles.badgeRow}>
+            {isLive && (
+              <View style={styles.liveTag}>
+                <LiveIndicator />
+                <Text style={styles.liveText}>LIVE</Text>
+              </View>
+            )}
+            <View style={[styles.sportBadge, { backgroundColor: sportColor + "22" }]}>
+              <Ionicons
+                name={
+                  event.sport === "hockey"
+                    ? "snow"
+                    : event.sport === "rugby"
+                    ? "american-football"
+                    : event.sport === "cricket"
+                    ? "baseball"
+                    : "football"
+                }
+                size={12}
+                color={sportColor}
+              />
+              <Text style={[styles.sportBadgeText, { color: sportColor }]}>
+                {event.sport.toUpperCase()}
+              </Text>
+            </View>
+            <Text style={styles.leagueLabel}>{event.league}</Text>
           </View>
-          <View style={[styles.sportBadge, { backgroundColor: sportColor + "22" }]}>
-            <Text style={[styles.sportBadgeText, { color: sportColor }]}>
-              {event.sport.toUpperCase()}
+          <Text style={styles.matchupText}>
+            {event.awayTeam} @ {event.homeTeam}
+          </Text>
+        </View>
+        <View style={styles.rightContent}>
+          {isLive ? (
+            <View style={styles.liveTimeChip}>
+              <View style={styles.liveTimeDot} />
+              <Text style={styles.liveTimeText}>LIVE</Text>
+            </View>
+          ) : (
+            <Text style={styles.upNextTime}>
+              {formatTimeUntilStart(event.startTimeLocal, now)}
             </Text>
-          </View>
-        </View>
-        <Text style={styles.leagueText}>{event.league}</Text>
-      </View>
-
-      <View style={styles.teamsRow}>
-        <View style={styles.teamBlock}>
-          <Text style={styles.teamLabel}>AWAY</Text>
-          <Text style={styles.teamName}>{event.awayTeam}</Text>
-        </View>
-        <View style={styles.vsContainer}>
-          <Text style={styles.vsText}>VS</Text>
-        </View>
-        <View style={[styles.teamBlock, styles.teamBlockRight]}>
-          <Text style={styles.teamLabel}>HOME</Text>
-          <Text style={styles.teamName}>{event.homeTeam}</Text>
+          )}
         </View>
       </View>
 
-      <View style={styles.eventFooter}>
+      <View style={styles.eventCardBottom}>
         <View style={styles.timeRow}>
-          <Ionicons name="time-outline" size={14} color={Colors.textSecondary} />
+          <Ionicons name="time-outline" size={13} color={Colors.textMuted} />
           <Text style={styles.timeText}>{formatStartTime(event.startTimeLocal)}</Text>
         </View>
         {provider && (
           <View style={styles.providerChip}>
-            <Ionicons name="tv-outline" size={12} color={Colors.accent} />
+            <Ionicons name="tv-outline" size={11} color={Colors.accent} />
             <Text style={styles.providerText}>{provider.name}</Text>
           </View>
         )}
@@ -117,10 +140,52 @@ function LiveEventCard({ event }: { event: SportEvent }) {
   );
 }
 
+interface SectionData {
+  title: string;
+  data: SportEvent[];
+  isLive: boolean;
+}
+
 export default function LiveNowScreen() {
   const insets = useSafeAreaInsets();
-  const liveEvents = getLiveEvents();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
+  const allEvents = getAllEvents();
+
+  const [now, setNow] = useState<Date>(new Date());
+  const [refreshing, setRefreshing] = useState(false);
+
+  const refresh = useCallback(() => {
+    setNow(new Date());
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNow(new Date());
+    }, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleManualRefresh = useCallback(() => {
+    setRefreshing(true);
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+    refresh();
+    setTimeout(() => setRefreshing(false), 500);
+  }, [refresh]);
+
+  const liveEvents = getLiveEventsNow(allEvents, now);
+  const upNextEvents = getUpNextEvents(allEvents, now);
+
+  const sections: SectionData[] = [];
+  if (liveEvents.length > 0) {
+    sections.push({ title: "Live Now", data: liveEvents, isLive: true });
+  }
+  if (upNextEvents.length > 0) {
+    sections.push({ title: "Up Next", data: upNextEvents, isLive: false });
+  }
+
+  const isEmpty = sections.length === 0;
 
   return (
     <View style={styles.container}>
@@ -130,31 +195,84 @@ export default function LiveNowScreen() {
           { paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 12 },
         ]}
       >
-        <Ionicons name="radio" size={24} color={Colors.live} />
-        <Text style={styles.headerTitle}>Live Now</Text>
-        <View style={styles.countBadge}>
-          <Text style={styles.countText}>{liveEvents.length}</Text>
+        <View style={styles.headerTopRow}>
+          <Ionicons name="radio" size={24} color={Colors.live} />
+          <Text style={styles.headerTitle}>Live Now</Text>
+          {liveEvents.length > 0 && (
+            <View style={styles.countBadge}>
+              <Text style={styles.countText}>{liveEvents.length}</Text>
+            </View>
+          )}
+          <View style={{ flex: 1 }} />
+          <Pressable
+            onPress={handleManualRefresh}
+            hitSlop={12}
+            style={({ pressed }) => [
+              styles.refreshButton,
+              { opacity: pressed ? 0.6 : 1 },
+            ]}
+          >
+            <Ionicons name="refresh" size={20} color={Colors.textSecondary} />
+          </Pressable>
         </View>
+        <Text style={styles.lastUpdated}>
+          Last updated: {formatLastUpdated(now)}
+        </Text>
       </View>
 
-      {liveEvents.length === 0 ? (
+      {isEmpty ? (
         <View style={styles.emptyContainer}>
           <Ionicons name="radio-outline" size={48} color={Colors.textMuted} />
-          <Text style={styles.emptyTitle}>No Live Events</Text>
+          <Text style={styles.emptyTitle}>No Live or Upcoming Events</Text>
           <Text style={styles.emptySubtitle}>
-            Check back during game times to see live events
+            Check back during game times to see live events and what's coming up next
           </Text>
         </View>
       ) : (
-        <FlatList
-          data={liveEvents}
+        <SectionList
+          sections={sections}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <LiveEventCard event={item} />}
+          renderItem={({ item, section }) => (
+            <EventRow event={item} isLive={section.isLive} now={now} />
+          )}
+          renderSectionHeader={({ section }) => (
+            <View style={styles.sectionHeader}>
+              {section.isLive ? (
+                <View style={styles.sectionLiveIcon}>
+                  <LiveIndicator />
+                </View>
+              ) : (
+                <Ionicons name="time-outline" size={16} color={Colors.textSecondary} />
+              )}
+              <Text
+                style={[
+                  styles.sectionTitle,
+                  section.isLive && { color: Colors.live },
+                ]}
+              >
+                {section.title}
+              </Text>
+              <View style={[styles.sectionCount, section.isLive && { backgroundColor: Colors.liveDim }]}>
+                <Text style={[styles.sectionCountText, section.isLive && { color: Colors.live }]}>
+                  {section.data.length}
+                </Text>
+              </View>
+            </View>
+          )}
           contentContainerStyle={[
             styles.listContent,
             { paddingBottom: Platform.OS === "web" ? 34 : 100 },
           ]}
           showsVerticalScrollIndicator={false}
+          stickySectionHeadersEnabled={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={handleManualRefresh}
+              tintColor={Colors.accent}
+              colors={[Colors.accent]}
+            />
+          }
         />
       )}
     </View>
@@ -167,18 +285,19 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   headerContainer: {
+    paddingHorizontal: 20,
+    paddingBottom: 12,
+  },
+  headerTopRow: {
     flexDirection: "row",
     alignItems: "center",
     gap: 10,
-    paddingHorizontal: 20,
-    paddingBottom: 16,
   },
   headerTitle: {
     fontSize: 26,
     fontWeight: "700" as const,
     color: Colors.textPrimary,
     fontFamily: "Inter_700Bold",
-    flex: 1,
   },
   countBadge: {
     backgroundColor: Colors.liveDim,
@@ -192,32 +311,81 @@ const styles = StyleSheet.create({
     fontWeight: "600" as const,
     fontFamily: "Inter_600SemiBold",
   },
-  listContent: {
-    paddingHorizontal: 20,
-    gap: 12,
+  refreshButton: {
+    padding: 6,
   },
-  eventCard: {
-    backgroundColor: Colors.card,
-    borderRadius: 16,
-    padding: 16,
-    borderWidth: 1,
-    borderColor: Colors.border,
+  lastUpdated: {
+    fontSize: 12,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
+    marginTop: 6,
   },
-  eventCardHeader: {
-    marginBottom: 12,
-  },
-  liveTagRow: {
+  sectionHeader: {
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
+    paddingHorizontal: 20,
+    paddingTop: 16,
+    paddingBottom: 10,
+  },
+  sectionLiveIcon: {
+    width: 16,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: "700" as const,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.3,
+  },
+  sectionCount: {
+    backgroundColor: "rgba(123, 141, 160, 0.15)",
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 8,
+  },
+  sectionCountText: {
+    fontSize: 12,
+    fontWeight: "600" as const,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_600SemiBold",
+  },
+  listContent: {
+    gap: 8,
+  },
+  eventCard: {
+    backgroundColor: Colors.card,
+    borderRadius: 14,
+    padding: 14,
+    marginHorizontal: 20,
+    borderWidth: 1,
+    borderColor: Colors.border,
+  },
+  eventCardTop: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    marginBottom: 10,
+  },
+  leftContent: {
+    flex: 1,
+    marginRight: 12,
+  },
+  badgeRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
     marginBottom: 6,
+    flexWrap: "wrap",
   },
   liveTag: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 5,
+    gap: 4,
     backgroundColor: Colors.liveDim,
-    paddingHorizontal: 8,
+    paddingHorizontal: 7,
     paddingVertical: 3,
     borderRadius: 6,
   },
@@ -229,13 +397,16 @@ const styles = StyleSheet.create({
   },
   liveText: {
     color: Colors.live,
-    fontSize: 11,
+    fontSize: 10,
     fontWeight: "700" as const,
     fontFamily: "Inter_700Bold",
     letterSpacing: 0.5,
   },
   sportBadge: {
-    paddingHorizontal: 8,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    paddingHorizontal: 7,
     paddingVertical: 3,
     borderRadius: 6,
   },
@@ -245,43 +416,47 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_700Bold",
     letterSpacing: 0.5,
   },
-  leagueText: {
-    fontSize: 13,
-    color: Colors.textSecondary,
+  leagueLabel: {
+    fontSize: 12,
+    color: Colors.textMuted,
     fontFamily: "Inter_500Medium",
   },
-  teamsRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 12,
-  },
-  teamBlock: {
-    flex: 1,
-  },
-  teamBlockRight: {
-    alignItems: "flex-end",
-  },
-  teamLabel: {
-    fontSize: 10,
-    color: Colors.textMuted,
-    fontFamily: "Inter_600SemiBold",
-    letterSpacing: 1,
-    marginBottom: 2,
-  },
-  teamName: {
+  matchupText: {
     fontSize: 15,
     color: Colors.textPrimary,
     fontFamily: "Inter_600SemiBold",
   },
-  vsContainer: {
-    paddingHorizontal: 12,
+  rightContent: {
+    alignItems: "flex-end",
+    justifyContent: "center",
   },
-  vsText: {
-    fontSize: 12,
-    color: Colors.textMuted,
+  liveTimeChip: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+    backgroundColor: Colors.liveDim,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 8,
+  },
+  liveTimeDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: Colors.live,
+  },
+  liveTimeText: {
+    color: Colors.live,
+    fontSize: 13,
+    fontWeight: "700" as const,
     fontFamily: "Inter_700Bold",
   },
-  eventFooter: {
+  upNextTime: {
+    fontSize: 13,
+    color: Colors.accent,
+    fontFamily: "Inter_600SemiBold",
+  },
+  eventCardBottom: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -296,7 +471,7 @@ const styles = StyleSheet.create({
   },
   timeText: {
     fontSize: 12,
-    color: Colors.textSecondary,
+    color: Colors.textMuted,
     fontFamily: "Inter_400Regular",
   },
   providerChip: {

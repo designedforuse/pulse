@@ -84,6 +84,11 @@ export function getLiveEvents(): SportEvent[] {
   return (guideData.events as SportEvent[]).filter((e) => e.isLive);
 }
 
+export function getLiveEventsComputed(now: Date): SportEvent[] {
+  const { getLiveEventsNow } = require("@/utils/time");
+  return getLiveEventsNow(guideData.events as SportEvent[], now);
+}
+
 export function getAllEvents(): SportEvent[] {
   return guideData.events as SportEvent[];
 }

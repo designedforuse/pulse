@@ -20,6 +20,7 @@ import {
   type SportEvent,
   type Pack,
 } from "@/lib/data";
+import { isEventLive } from "@/utils/time";
 
 function EventCard({ event }: { event: SportEvent }) {
   const provider = getProviderById(event.providerId);
@@ -48,7 +49,7 @@ function EventCard({ event }: { event: SportEvent }) {
         <View style={[styles.leagueBadge, { backgroundColor: sportColor + "18" }]}>
           <Text style={[styles.leagueText, { color: sportColor }]}>{event.league}</Text>
         </View>
-        {event.isLive && (
+        {isEventLive(event, new Date()) && (
           <View style={styles.liveIndicator}>
             <View style={styles.liveDot} />
             <Text style={styles.liveLabel}>LIVE</Text>
