@@ -1,0 +1,44 @@
+Build an Expo (React Native) Android app MVP. Do NOT invent or include any sports outside the list below.
+
+Navigation:
+- Bottom tabs: Modes, Live Now, Settings
+- Modes screen has 2 buttons: Weekend Nights, Weekend Mornings
+
+Data:
+- Use ONLY a local JSON file at: data/masterGuide.json
+- The JSON schema must be exactly this (do not add/remove fields):
+
+{
+  "modes": [
+    {
+      "id": "weekend_nights",
+      "title": "Weekend Nights",
+      "packs": [
+        { "id": "hockey_night", "title": "Hockey Night", "sport": "hockey", "leagues": ["NHL","AHL","ECHL","NCAA Hockey"] },
+        { "id": "rugby_night", "title": "Rugby Night", "sport": "rugby", "leagues": ["Japan League One","Super Rugby","HSBC SVNS"] },
+        { "id": "cricket_night", "title": "Cricket Night", "sport": "cricket", "hostRegions": ["India","Australia","New Zealand"] },
+        { "id": "soccer_night", "title": "Soccer Night", "sport": "soccer", "leagues": ["MLS","NWSL","USL"] }
+      ]
+    },
+    {
+      "id": "weekend_mornings",
+      "title": "Weekend Mornings",
+      "packs": [
+        { "id": "rugby_morning", "title": "Rugby Morning", "sport": "rugby", "leagues": ["URC","Top 14","English Premiership"] },
+        { "id": "cricket_morning", "title": "Cricket Morning", "sport": "cricket", "hostRegions": ["South Africa","England","Caribbean"] },
+        { "id": "soccer_morning", "title": "Soccer Morning", "sport": "soccer", "leagues": ["EPL","Serie A","La Liga","Bundesliga","Ligue 1"] }
+      ]
+    }
+  ],
+  "providers": [
+    { "id": "youtubetv", "name": "YouTube TV", "packageName": "com.google.android.apps.youtube.unplugged" },
+    { "id": "espn", "name": "ESPN", "packageName": "com.espn.score_center" },
+    { "id": "flosports", "name": "FloSports", "packageName": "tv.flosports.app" },
+    { "id": "victoryplus", "name": "Victory+", "packageName": "com.victoryplus.app" },
+    { "id": "primevideo", "name": "Prime Video", "packageName": "com.amazon.avod.thirdpartyclient" }
+  ],
+  "events": [
+    { "id": "e1", "sport": "hockey", "league": "NHL", "awayTeam": "Boston Bruins", "homeTeam": "Anaheim Ducks", "startTimeLocal": "2026-02-20T19:00:00", "providerId": "youtubetv", "isLive": false },
+    { "id": "e2", "sport": "hockey", "league": "AHL", "awayTeam": "San Diego Gulls", "homeTeam": "Ontario Reign", "startTimeLocal": "2026-02-20T19:00:00", "providerId": "flosports", "isLive": false },
+    { "id": "e3", "sport": "hockey", "league": "NCAA Hockey", "awayTeam": "Boston University", "homeTeam": "Maine", "startTimeLocal": "2026-02-20T19:30:00", "providerId": "espn", "isLive": false },
+    { "id": "e4", "sport": "hockey", "league": "ECHL", "awayTeam": "Tulsa Oilers", "homeTeam": "Idaho Steelheads", "startTimeLocal": "2026-02-20T
