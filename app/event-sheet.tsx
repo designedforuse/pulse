@@ -51,43 +51,29 @@ export default function EventSheet() {
       return;
     }
 
-    if (provider.id === "espn") {
-      try {
-        const launchUri = `android-app://${provider.packageName}`;
-        const canOpen = await Linking.canOpenURL(launchUri);
-        if (canOpen) {
-          await Linking.openURL(launchUri);
-        } else {
-          Alert.alert(
-            "App Not Installed",
-            `${provider.name} is not installed on this device.`,
-            [{ text: "OK" }]
-          );
+    try {
+      if (provider.id === "espn") {
+        await IntentLauncher.startActivityAsync(
+          "android.intent.action.MAIN",
+          {
+            packageName: provider.packageName,
+          }
+        );
+      } else {
+        const params: IntentLauncher.IntentLauncherParams = {
+          packageName: provider.packageName,
+          category: "android.intent.category.LAUNCHER",
+        };
+
+        if (provider.activity) {
+          params.className = provider.activity;
         }
-      } catch {
-        Alert.alert(
-          "App Not Installed",
-          `${provider.name} is not installed on this device.`,
-          [{ text: "OK" }]
+
+        await IntentLauncher.startActivityAsync(
+          "android.intent.action.MAIN",
+          params
         );
       }
-      return;
-    }
-
-    try {
-      const params: IntentLauncher.IntentLauncherParams = {
-        packageName: provider.packageName,
-        category: "android.intent.category.LAUNCHER",
-      };
-
-      if (provider.activity) {
-        params.className = provider.activity;
-      }
-
-      await IntentLauncher.startActivityAsync(
-        "android.intent.action.MAIN",
-        params
-      );
     } catch {
       Alert.alert(
         "App Not Installed",
