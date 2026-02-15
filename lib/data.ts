@@ -34,10 +34,19 @@ export interface Mode {
   packs: Pack[];
 }
 
+export interface Favorites {
+  hockey?: string[];
+  rugby?: string[];
+  cricket?: string[];
+  soccer?: string[];
+  [key: string]: string[] | undefined;
+}
+
 export interface MasterGuide {
   modes: Mode[];
   providers: Provider[];
   events: SportEvent[];
+  favorites?: Favorites;
 }
 
 const cricketLeagueToRegion: Record<string, string> = {
@@ -95,6 +104,10 @@ export function getAllEvents(): SportEvent[] {
 
 export function getProviders(): Provider[] {
   return guideData.providers as Provider[];
+}
+
+export function getFavorites(): Favorites {
+  return (guideData as MasterGuide).favorites ?? {};
 }
 
 export function formatStartTime(isoString: string): string {

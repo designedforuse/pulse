@@ -389,5 +389,11 @@
       "providerId": "victoryplus",
       "isLive": false
     }
-  ]
+  ],
+  "favorites": {
+    "hockey": ["Boston Bruins", "Los Angeles Kings", "Boston University"],
+    "rugby": ["New Zealand", "Crusaders", "Saracens"],
+    "cricket": ["Chennai Super Kings", "South Africa"],
+    "soccer": ["LAFC", "Arsenal", "Inter Miami", "Barcelona"]
+  }
 }
