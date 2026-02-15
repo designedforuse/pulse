@@ -6,6 +6,7 @@ import {
   Pressable,
   Alert,
   Platform,
+  Linking,
 } from "react-native";
 import { useLocalSearchParams, router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -47,6 +48,29 @@ export default function EventSheet() {
         "Desktop Browser",
         `Open ${provider.name} on your Android device to watch this event.`
       );
+      return;
+    }
+
+    if (provider.launchUrl) {
+      try {
+        await IntentLauncher.startActivityAsync(
+          "android.intent.action.VIEW",
+          {
+            data: provider.launchUrl,
+            packageName: provider.packageName,
+          }
+        );
+      } catch {
+        try {
+          await Linking.openURL(provider.launchUrl);
+        } catch {
+          Alert.alert(
+            "App Not Installed",
+            `${provider.name} is not installed on this device.`,
+            [{ text: "OK" }]
+          );
+        }
+      }
       return;
     }
 

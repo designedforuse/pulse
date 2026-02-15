@@ -66,7 +66,8 @@
       "id": "disneyplus",
       "name": "Disney+",
       "packageName": "com.disney.disneyplus",
-      "activity": "com.disney.disneyplus.ui.splash.SplashActivity"
+      "activity": "com.disney.disneyplus.ui.splash.SplashActivity",
+      "launchUrl": "https://www.disneyplus.com"
     },
     {
       "id": "flosports",
