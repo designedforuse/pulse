@@ -79,8 +79,7 @@
       "id": "victoryplus",
       "name": "Victory+",
       "packageName": "tv.apmc.android.victorysports",
-      "activity": "tv.kidoodle.android.ui.MainActivity",
-      "launchUrl": "https://www.victoryplus.com"
+      "activity": "tv.kidoodle.android.ui.MainActivity"
     },
     {
       "id": "primevideo",

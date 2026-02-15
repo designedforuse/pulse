@@ -75,9 +75,11 @@ export default function EventSheet() {
     }
 
     try {
+      const FLAG_ACTIVITY_NEW_TASK = 268435456;
       const params: IntentLauncher.IntentLauncherParams = {
         packageName: provider.packageName,
         category: "android.intent.category.LAUNCHER",
+        flags: FLAG_ACTIVITY_NEW_TASK,
       };
 
       if (provider.activity) {
