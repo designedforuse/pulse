@@ -123,17 +123,17 @@ export default function ModeDetailScreen() {
       .map((pack: Pack) => {
         const events = getEventsForPack(pack);
         const now = new Date();
-        const sorted = favoritesFirst
-          ? [...events].sort((a, b) => {
-              const aLive = isEventLive(a, now) ? 1 : 0;
-              const bLive = isEventLive(b, now) ? 1 : 0;
-              if (bLive !== aLive) return bLive - aLive;
-              const aFav = favoriteInvolved(a, favorites) ? 1 : 0;
-              const bFav = favoriteInvolved(b, favorites) ? 1 : 0;
-              if (bFav !== aFav) return bFav - aFav;
-              return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
-            })
-          : events;
+        const sorted = [...events].sort((a, b) => {
+          const aLive = isEventLive(a, now) ? 1 : 0;
+          const bLive = isEventLive(b, now) ? 1 : 0;
+          if (bLive !== aLive) return bLive - aLive;
+          if (favoritesFirst) {
+            const aFav = favoriteInvolved(a, favorites) ? 1 : 0;
+            const bFav = favoriteInvolved(b, favorites) ? 1 : 0;
+            if (bFav !== aFav) return bFav - aFav;
+          }
+          return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
+        });
         return {
           title: pack.title,
           sport: pack.sport,
