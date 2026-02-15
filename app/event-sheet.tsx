@@ -56,7 +56,7 @@ export default function EventSheet() {
         category: "android.intent.category.LAUNCHER",
       };
 
-      if (provider.activity) {
+      if (provider.activity && provider.id !== "espn") {
         params.className = provider.activity;
       }
 
