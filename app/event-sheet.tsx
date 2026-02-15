@@ -51,29 +51,50 @@ export default function EventSheet() {
       return;
     }
 
-    try {
-      if (provider.id === "espn") {
-        await IntentLauncher.startActivityAsync(
-          "android.intent.action.MAIN",
-          {
-            packageName: provider.packageName,
-          }
-        );
-      } else {
-        const params: IntentLauncher.IntentLauncherParams = {
-          packageName: provider.packageName,
-          category: "android.intent.category.LAUNCHER",
-        };
-
-        if (provider.activity) {
-          params.className = provider.activity;
+    if (provider.id === "espn") {
+      const espnScheme = "espn://";
+      const storeUrl = `market://details?id=${provider.packageName}`;
+      try {
+        const canOpen = await Linking.canOpenURL(espnScheme);
+        if (canOpen) {
+          await Linking.openURL(espnScheme);
+        } else {
+          Alert.alert(
+            "App Not Installed",
+            `${provider.name} doesn't appear to be installed. Would you like to install it?`,
+            [
+              { text: "Cancel", style: "cancel" },
+              {
+                text: "Open Play Store",
+                onPress: () => Linking.openURL(storeUrl).catch(() => {}),
+              },
+            ]
+          );
         }
-
-        await IntentLauncher.startActivityAsync(
-          "android.intent.action.MAIN",
-          params
+      } catch {
+        Alert.alert(
+          "App Not Installed",
+          `${provider.name} is not installed on this device.`,
+          [{ text: "OK" }]
         );
       }
+      return;
+    }
+
+    try {
+      const params: IntentLauncher.IntentLauncherParams = {
+        packageName: provider.packageName,
+        category: "android.intent.category.LAUNCHER",
+      };
+
+      if (provider.activity) {
+        params.className = provider.activity;
+      }
+
+      await IntentLauncher.startActivityAsync(
+        "android.intent.action.MAIN",
+        params
+      );
     } catch {
       Alert.alert(
         "App Not Installed",
