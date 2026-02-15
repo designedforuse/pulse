@@ -6,11 +6,11 @@ import {
   Pressable,
   Alert,
   Platform,
-  Linking,
 } from "react-native";
 import { useLocalSearchParams, router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
+import * as IntentLauncher from "expo-intent-launcher";
 import Colors from "@/constants/colors";
 import {
   getAllEvents,
@@ -50,28 +50,25 @@ export default function EventSheet() {
       return;
     }
 
-    const url = `intent://#Intent;package=${provider.packageName};end`;
-
     try {
-      const canOpen = await Linking.canOpenURL(url);
-      if (canOpen) {
-        await Linking.openURL(url);
-      } else {
-        Alert.alert(
-          "App Not Installed",
-          `${provider.name} does not appear to be installed on this device. Please install it from the Play Store.`,
-          [
-            { text: "OK", style: "default" },
-          ]
-        );
+      const params: IntentLauncher.IntentLauncherParams = {
+        packageName: provider.packageName,
+        category: "android.intent.category.LAUNCHER",
+      };
+
+      if (provider.activity) {
+        params.className = `${provider.packageName}/${provider.activity}`;
       }
+
+      await IntentLauncher.startActivityAsync(
+        "android.intent.action.MAIN",
+        params
+      );
     } catch {
       Alert.alert(
         "App Not Installed",
-        `${provider.name} does not appear to be installed on this device. Please install it from the Play Store.`,
-        [
-          { text: "OK", style: "default" },
-        ]
+        `${provider.name} is not installed on this device.`,
+        [{ text: "OK" }]
       );
     }
   };

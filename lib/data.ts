@@ -4,6 +4,7 @@ export interface Provider {
   id: string;
   name: string;
   packageName: string;
+  activity?: string;
 }
 
 export interface SportEvent {
