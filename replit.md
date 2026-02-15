@@ -7,7 +7,7 @@ A mobile sports schedule app built with Expo (React Native). Users browse sports
 - **Frontend**: Expo Router with file-based routing, React Native
 - **Backend**: Express server (port 5000) serving landing page and API
 - **Data**: Local JSON file at `data/masterGuide.json` (no database)
-- **State**: Local data only, no async storage needed for MVP
+- **State**: AsyncStorage for user preferences (favorite toggles)
 
 ## Project Structure
 ```
@@ -62,4 +62,5 @@ constants/
 - 2026-02-15: Added FLAG_ACTIVITY_NEW_TASK for Victory+ to enable back navigation via app switcher
 - 2026-02-15: Built real-time Live Now tab with computed live detection (isEventLive), Up Next section, auto-refresh (60s), manual refresh, and last-updated timestamp
 - 2026-02-15: Created utils/time.ts with sport-specific default durations (hockey 2h45m, soccer/rugby 2h15m, cricket 8h)
+- 2026-02-15: Added favorite team prioritization: "Favorites first" toggle on mode detail screens (default ON), "Favorites only" toggle on Live Now tab (default OFF), gold star badge on favorite team events, AsyncStorage persistence
 - 2026-02-15: Initial MVP build with all core features
