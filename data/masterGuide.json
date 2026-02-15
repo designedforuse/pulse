@@ -391,9 +391,9 @@
     }
   ],
   "favorites": {
-    "hockey": ["Boston Bruins", "Los Angeles Kings", "Boston University"],
-    "rugby": ["New Zealand", "Crusaders", "Saracens"],
+    "hockey": ["Anaheim Ducks", "Boston Bruins", "Los Angeles Kings", "Boston University", "San Diego Gulls", "Tulsa Oilers"],
+    "rugby": ["New Zealand", "Crusaders", "Saracens", "Stormers"],
     "cricket": ["Chennai Super Kings", "South Africa"],
-    "soccer": ["LAFC", "Arsenal", "Inter Miami", "Barcelona"]
+    "soccer": ["LAFC", "Arsenal", "Inter Miami", "Barcelona", "Tottenham Hotspur", "San Diego FC", "New England Revolution", "San Diego Wave", "Orange County SC"]
   }
 }
