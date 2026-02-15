@@ -15,8 +15,9 @@ export interface SportEvent {
   awayTeam: string;
   homeTeam: string;
   startTimeLocal: string;
+  endTimeLocal?: string;
   providerId: string;
-  isLive: boolean;
+  isLive?: boolean;
 }
 
 export interface Pack {
