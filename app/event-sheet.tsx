@@ -6,7 +6,6 @@ import {
   Pressable,
   Alert,
   Platform,
-  Linking,
 } from "react-native";
 import { useLocalSearchParams, router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -48,28 +47,6 @@ export default function EventSheet() {
         "Desktop Browser",
         `Open ${provider.name} on your Android device to watch this event.`
       );
-      return;
-    }
-
-    if (provider.id === "espn") {
-      const storeUrl = `market://details?id=${provider.packageName}`;
-      try {
-        const intentUri =
-          `intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=${provider.packageName};end`;
-        await Linking.openURL(intentUri);
-      } catch {
-        Alert.alert(
-          "Unable to Open ESPN",
-          "Would you like to install or update ESPN from the Play Store?",
-          [
-            { text: "Cancel", style: "cancel" },
-            {
-              text: "Open Play Store",
-              onPress: () => Linking.openURL(storeUrl).catch(() => {}),
-            },
-          ]
-        );
-      }
       return;
     }
 

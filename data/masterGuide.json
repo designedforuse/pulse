@@ -63,10 +63,10 @@
       "activity": "com.google.android.apps.youtube.unplugged.startup.activity.SplashActivity"
     },
     {
-      "id": "espn",
-      "name": "ESPN",
-      "packageName": "com.espn.score_center",
-      "activity": "com.espn.sportscenter.ui.EspnLaunchActivity"
+      "id": "disneyplus",
+      "name": "Disney+",
+      "packageName": "com.disney.disneyplus",
+      "activity": "com.disney.disneyplus.ui.splash.SplashActivity"
     },
     {
       "id": "flosports",
@@ -115,7 +115,7 @@
       "awayTeam": "Boston University",
       "homeTeam": "Maine",
       "startTimeLocal": "2026-02-20T19:30:00",
-      "providerId": "espn",
+      "providerId": "disneyplus",
       "isLive": false
     },
     {
@@ -135,7 +135,7 @@
       "awayTeam": "Toronto Maple Leafs",
       "homeTeam": "Los Angeles Kings",
       "startTimeLocal": "2026-02-20T19:30:00",
-      "providerId": "espn",
+      "providerId": "disneyplus",
       "isLive": true
     },
     {
@@ -175,7 +175,7 @@
       "awayTeam": "Mumbai Indians",
       "homeTeam": "Chennai Super Kings",
       "startTimeLocal": "2026-02-21T19:30:00",
-      "providerId": "espn",
+      "providerId": "disneyplus",
       "isLive": false
     },
     {
@@ -185,7 +185,7 @@
       "awayTeam": "Sydney Sixers",
       "homeTeam": "Melbourne Stars",
       "startTimeLocal": "2026-02-21T18:00:00",
-      "providerId": "espn",
+      "providerId": "disneyplus",
       "isLive": false
     },
     {
@@ -195,7 +195,7 @@
       "awayTeam": "Auckland Aces",
       "homeTeam": "Wellington Firebirds",
       "startTimeLocal": "2026-02-21T19:00:00",
-      "providerId": "espn",
+      "providerId": "disneyplus",
       "isLive": false
     },
     {
@@ -215,7 +215,7 @@
       "awayTeam": "Angel City FC",
       "homeTeam": "Portland Thorns",
       "startTimeLocal": "2026-02-21T20:00:00",
-      "providerId": "espn",
+      "providerId": "disneyplus",
       "isLive": false
     },
     {
@@ -225,7 +225,7 @@
       "awayTeam": "Sacramento Republic",
       "homeTeam": "Phoenix Rising",
       "startTimeLocal": "2026-02-21T19:00:00",
-      "providerId": "espn",
+      "providerId": "disneyplus",
       "isLive": false
     },
     {
@@ -265,7 +265,7 @@
       "awayTeam": "Joburg Super Kings",
       "homeTeam": "Paarl Royals",
       "startTimeLocal": "2026-02-21T08:00:00",
-      "providerId": "espn",
+      "providerId": "disneyplus",
       "isLive": false
     },
     {
@@ -275,7 +275,7 @@
       "awayTeam": "Oval Invincibles",
       "homeTeam": "Manchester Originals",
       "startTimeLocal": "2026-02-21T09:30:00",
-      "providerId": "espn",
+      "providerId": "disneyplus",
       "isLive": false
     },
     {
@@ -285,7 +285,7 @@
       "awayTeam": "Trinbago Knight Riders",
       "homeTeam": "Jamaica Tallawahs",
       "startTimeLocal": "2026-02-21T10:00:00",
-      "providerId": "espn",
+      "providerId": "disneyplus",
       "isLive": false
     },
     {
@@ -315,7 +315,7 @@
       "awayTeam": "Barcelona",
       "homeTeam": "Real Madrid",
       "startTimeLocal": "2026-02-21T10:00:00",
-      "providerId": "espn",
+      "providerId": "disneyplus",
       "isLive": false
     },
     {
@@ -325,7 +325,7 @@
       "awayTeam": "Bayern Munich",
       "homeTeam": "Borussia Dortmund",
       "startTimeLocal": "2026-02-21T09:30:00",
-      "providerId": "espn",
+      "providerId": "disneyplus",
       "isLive": false
     },
     {
@@ -335,7 +335,7 @@
       "awayTeam": "PSG",
       "homeTeam": "Marseille",
       "startTimeLocal": "2026-02-21T11:00:00",
-      "providerId": "espn",
+      "providerId": "disneyplus",
       "isLive": false
     },
     {
