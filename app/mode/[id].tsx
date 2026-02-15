@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,23 +6,29 @@ import {
   SectionList,
   Pressable,
   Platform,
+  Switch,
 } from "react-native";
 import { useLocalSearchParams, router, Stack } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Colors from "@/constants/colors";
 import {
   getModeById,
   getEventsForPack,
   getProviderById,
+  getFavorites,
   formatStartTime,
   getSportColor,
   type SportEvent,
   type Pack,
 } from "@/lib/data";
 import { isEventLive } from "@/utils/time";
+import { favoriteInvolved } from "@/utils/favorites";
 
-function EventCard({ event }: { event: SportEvent }) {
+const PREF_KEY = "prefs.favoritesFirst";
+
+function EventCard({ event, isFav }: { event: SportEvent; isFav: boolean }) {
   const provider = getProviderById(event.providerId);
   const sportColor = getSportColor(event.sport);
 
@@ -46,8 +52,15 @@ function EventCard({ event }: { event: SportEvent }) {
       testID={`event-${event.id}`}
     >
       <View style={styles.eventTopRow}>
-        <View style={[styles.leagueBadge, { backgroundColor: sportColor + "18" }]}>
-          <Text style={[styles.leagueText, { color: sportColor }]}>{event.league}</Text>
+        <View style={styles.topRowLeft}>
+          <View style={[styles.leagueBadge, { backgroundColor: sportColor + "18" }]}>
+            <Text style={[styles.leagueText, { color: sportColor }]}>{event.league}</Text>
+          </View>
+          {isFav && (
+            <View style={styles.favBadge}>
+              <Text style={styles.favStar}>★</Text>
+            </View>
+          )}
         </View>
         {isEventLive(event, new Date()) && (
           <View style={styles.liveIndicator}>
@@ -88,6 +101,47 @@ interface SectionData {
 export default function ModeDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const mode = getModeById(id);
+  const favorites = getFavorites();
+  const [favoritesFirst, setFavoritesFirst] = useState(true);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    AsyncStorage.getItem(PREF_KEY).then((val) => {
+      if (val !== null) setFavoritesFirst(val === "true");
+      setLoaded(true);
+    });
+  }, []);
+
+  const handleToggle = (val: boolean) => {
+    setFavoritesFirst(val);
+    AsyncStorage.setItem(PREF_KEY, val.toString());
+  };
+
+  const sections: SectionData[] = useMemo(() => {
+    if (!mode) return [];
+    return mode.packs
+      .map((pack: Pack) => {
+        const events = getEventsForPack(pack);
+        const now = new Date();
+        const sorted = favoritesFirst
+          ? [...events].sort((a, b) => {
+              const aLive = isEventLive(a, now) ? 1 : 0;
+              const bLive = isEventLive(b, now) ? 1 : 0;
+              if (bLive !== aLive) return bLive - aLive;
+              const aFav = favoriteInvolved(a, favorites) ? 1 : 0;
+              const bFav = favoriteInvolved(b, favorites) ? 1 : 0;
+              if (bFav !== aFav) return bFav - aFav;
+              return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
+            })
+          : events;
+        return {
+          title: pack.title,
+          sport: pack.sport,
+          data: sorted,
+        };
+      })
+      .filter((s) => s.data.length > 0);
+  }, [mode, favoritesFirst, favorites]);
 
   if (!mode) {
     return (
@@ -96,14 +150,6 @@ export default function ModeDetailScreen() {
       </View>
     );
   }
-
-  const sections: SectionData[] = mode.packs
-    .map((pack: Pack) => ({
-      title: pack.title,
-      sport: pack.sport,
-      data: getEventsForPack(pack),
-    }))
-    .filter((s) => s.data.length > 0);
 
   return (
     <View style={styles.container}>
@@ -117,10 +163,23 @@ export default function ModeDetailScreen() {
           },
         }}
       />
+      <View style={styles.toggleRow}>
+        <Ionicons name="star" size={14} color={Colors.favStar} />
+        <Text style={styles.toggleLabel}>Favorites first</Text>
+        <Switch
+          value={favoritesFirst}
+          onValueChange={handleToggle}
+          trackColor={{ false: Colors.border, true: Colors.accent + "55" }}
+          thumbColor={favoritesFirst ? Colors.accent : Colors.textMuted}
+          style={styles.switch}
+        />
+      </View>
       <SectionList
         sections={sections}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <EventCard event={item} />}
+        renderItem={({ item }) => (
+          <EventCard event={item} isFav={favoriteInvolved(item, favorites)} />
+        )}
         renderSectionHeader={({ section }) => (
           <View style={styles.sectionHeader}>
             <View
@@ -174,6 +233,24 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
   },
+  toggleRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border,
+  },
+  toggleLabel: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_500Medium",
+    flex: 1,
+  },
+  switch: {
+    transform: [{ scaleX: 0.85 }, { scaleY: 0.85 }],
+  },
   listContent: {
     paddingHorizontal: 20,
     paddingTop: 8,
@@ -224,6 +301,11 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: 10,
   },
+  topRowLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+  },
   leagueBadge: {
     paddingHorizontal: 8,
     paddingVertical: 3,
@@ -234,6 +316,16 @@ const styles = StyleSheet.create({
     fontWeight: "700" as const,
     fontFamily: "Inter_700Bold",
     letterSpacing: 0.3,
+  },
+  favBadge: {
+    backgroundColor: "rgba(255, 215, 0, 0.15)",
+    paddingHorizontal: 5,
+    paddingVertical: 2,
+    borderRadius: 5,
+  },
+  favStar: {
+    fontSize: 10,
+    color: "#FFD700",
   },
   liveIndicator: {
     flexDirection: "row",

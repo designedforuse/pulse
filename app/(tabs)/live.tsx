@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,11 +7,13 @@ import {
   Pressable,
   Platform,
   RefreshControl,
+  Switch,
 } from "react-native";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -23,6 +25,7 @@ import Colors from "@/constants/colors";
 import {
   getAllEvents,
   getProviderById,
+  getFavorites,
   formatStartTime,
   getSportColor,
   type SportEvent,
@@ -33,6 +36,9 @@ import {
   formatLastUpdated,
   formatTimeUntilStart,
 } from "@/utils/time";
+import { favoriteInvolved } from "@/utils/favorites";
+
+const PREF_KEY = "prefs.favoritesOnly";
 
 function LiveIndicator() {
   const opacity = useSharedValue(1);
@@ -55,7 +61,7 @@ function LiveIndicator() {
   return <Animated.View style={[styles.liveDot, animStyle]} />;
 }
 
-function EventRow({ event, isLive, now }: { event: SportEvent; isLive: boolean; now: Date }) {
+function EventRow({ event, isLive, now, isFav }: { event: SportEvent; isLive: boolean; now: Date; isFav: boolean }) {
   const provider = getProviderById(event.providerId);
   const sportColor = getSportColor(event.sport);
 
@@ -105,6 +111,11 @@ function EventRow({ event, isLive, now }: { event: SportEvent; isLive: boolean; 
               </Text>
             </View>
             <Text style={styles.leagueLabel}>{event.league}</Text>
+            {isFav && (
+              <View style={styles.favBadge}>
+                <Text style={styles.favStar}>★</Text>
+              </View>
+            )}
           </View>
           <Text style={styles.matchupText}>
             {event.awayTeam} @ {event.homeTeam}
@@ -150,9 +161,22 @@ export default function LiveNowScreen() {
   const insets = useSafeAreaInsets();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
   const allEvents = getAllEvents();
+  const favorites = getFavorites();
 
   const [now, setNow] = useState<Date>(new Date());
   const [refreshing, setRefreshing] = useState(false);
+  const [favoritesOnly, setFavoritesOnly] = useState(false);
+
+  useEffect(() => {
+    AsyncStorage.getItem(PREF_KEY).then((val) => {
+      if (val !== null) setFavoritesOnly(val === "true");
+    });
+  }, []);
+
+  const handleToggle = (val: boolean) => {
+    setFavoritesOnly(val);
+    AsyncStorage.setItem(PREF_KEY, val.toString());
+  };
 
   const refresh = useCallback(() => {
     setNow(new Date());
@@ -174,8 +198,15 @@ export default function LiveNowScreen() {
     setTimeout(() => setRefreshing(false), 500);
   }, [refresh]);
 
-  const liveEvents = getLiveEventsNow(allEvents, now);
-  const upNextEvents = getUpNextEvents(allEvents, now);
+  const liveEvents = useMemo(() => {
+    const live = getLiveEventsNow(allEvents, now);
+    return favoritesOnly ? live.filter((e) => favoriteInvolved(e, favorites)) : live;
+  }, [allEvents, now, favoritesOnly, favorites]);
+
+  const upNextEvents = useMemo(() => {
+    const upcoming = getUpNextEvents(allEvents, now);
+    return favoritesOnly ? upcoming.filter((e) => favoriteInvolved(e, favorites)) : upcoming;
+  }, [allEvents, now, favoritesOnly, favorites]);
 
   const sections: SectionData[] = [];
   if (liveEvents.length > 0) {
@@ -218,14 +249,29 @@ export default function LiveNowScreen() {
         <Text style={styles.lastUpdated}>
           Last updated: {formatLastUpdated(now)}
         </Text>
+        <View style={styles.toggleRow}>
+          <Ionicons name="star" size={14} color={Colors.favStar} />
+          <Text style={styles.toggleLabel}>Favorites only</Text>
+          <Switch
+            value={favoritesOnly}
+            onValueChange={handleToggle}
+            trackColor={{ false: Colors.border, true: Colors.accent + "55" }}
+            thumbColor={favoritesOnly ? Colors.accent : Colors.textMuted}
+            style={styles.switch}
+          />
+        </View>
       </View>
 
       {isEmpty ? (
         <View style={styles.emptyContainer}>
           <Ionicons name="radio-outline" size={48} color={Colors.textMuted} />
-          <Text style={styles.emptyTitle}>No Live or Upcoming Events</Text>
+          <Text style={styles.emptyTitle}>
+            {favoritesOnly ? "No Favorite Events Live" : "No Live or Upcoming Events"}
+          </Text>
           <Text style={styles.emptySubtitle}>
-            Check back during game times to see live events and what's coming up next
+            {favoritesOnly
+              ? "None of your favorite teams are playing or coming up next"
+              : "Check back during game times to see live events and what's coming up next"}
           </Text>
         </View>
       ) : (
@@ -233,7 +279,12 @@ export default function LiveNowScreen() {
           sections={sections}
           keyExtractor={(item) => item.id}
           renderItem={({ item, section }) => (
-            <EventRow event={item} isLive={section.isLive} now={now} />
+            <EventRow
+              event={item}
+              isLive={section.isLive}
+              now={now}
+              isFav={favoriteInvolved(item, favorites)}
+            />
           )}
           renderSectionHeader={({ section }) => (
             <View style={styles.sectionHeader}>
@@ -286,7 +337,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     paddingHorizontal: 20,
-    paddingBottom: 12,
+    paddingBottom: 8,
   },
   headerTopRow: {
     flexDirection: "row",
@@ -319,6 +370,24 @@ const styles = StyleSheet.create({
     color: Colors.textMuted,
     fontFamily: "Inter_400Regular",
     marginTop: 6,
+  },
+  toggleRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    marginTop: 10,
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: Colors.border,
+  },
+  toggleLabel: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_500Medium",
+    flex: 1,
+  },
+  switch: {
+    transform: [{ scaleX: 0.85 }, { scaleY: 0.85 }],
   },
   sectionHeader: {
     flexDirection: "row",
@@ -420,6 +489,16 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: Colors.textMuted,
     fontFamily: "Inter_500Medium",
+  },
+  favBadge: {
+    backgroundColor: Colors.favStarDim,
+    paddingHorizontal: 5,
+    paddingVertical: 2,
+    borderRadius: 5,
+  },
+  favStar: {
+    fontSize: 10,
+    color: Colors.favStar,
   },
   matchupText: {
     fontSize: 15,

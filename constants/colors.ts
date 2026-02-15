@@ -18,6 +18,8 @@ const Colors = {
   soccer: "#81C784",
   white: "#FFFFFF",
   overlay: "rgba(0, 0, 0, 0.6)",
+  favStar: "#FFD700",
+  favStarDim: "rgba(255, 215, 0, 0.15)",
 };
 
 export default Colors;
