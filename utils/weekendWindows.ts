@@ -18,7 +18,9 @@ export function getWeekendWindows(now: Date): WeekendWindows {
   const dow = zoned.getDay();
 
   let fridayOffset: number;
-  if (dow >= 5) {
+  if (dow === 0) {
+    fridayOffset = -2;
+  } else if (dow >= 5) {
     fridayOffset = -(dow - 5);
   } else {
     fridayOffset = 5 - dow;

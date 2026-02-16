@@ -25,6 +25,7 @@ import {
 import { useEvents } from "@/lib/events-context";
 import { isEventLive } from "@/utils/time";
 import { favoriteInvolved } from "@/utils/favorites";
+import { getWeekendWindows, isInWeekendWindows, isInModeTimeWindow } from "@/utils/weekendWindows";
 
 const PREF_KEY = "prefs.favoritesFirst";
 
@@ -118,31 +119,46 @@ export default function ModeDetailScreen() {
     AsyncStorage.setItem(PREF_KEY, val.toString());
   };
 
-  const sections: SectionData[] = useMemo(() => {
+  const now = useMemo(() => new Date(), []);
+  const windows = useMemo(() => getWeekendWindows(now), [now]);
+
+  const allSections: (SectionData & { isEmpty: boolean })[] = useMemo(() => {
     if (!mode) return [];
-    return mode.packs
-      .map((pack: Pack) => {
-        const events = getEventsForPack(pack);
-        const now = new Date();
-        const sorted = [...events].sort((a, b) => {
-          const aLive = isEventLive(a, now) ? 1 : 0;
-          const bLive = isEventLive(b, now) ? 1 : 0;
-          if (bLive !== aLive) return bLive - aLive;
-          if (favoritesFirst) {
-            const aFav = favoriteInvolved(a, favorites) ? 1 : 0;
-            const bFav = favoriteInvolved(b, favorites) ? 1 : 0;
-            if (bFav !== aFav) return bFav - aFav;
-          }
-          return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
-        });
-        return {
-          title: pack.title,
-          sport: pack.sport,
-          data: sorted,
-        };
-      })
-      .filter((s) => s.data.length > 0);
-  }, [mode, favoritesFirst, favorites]);
+    return mode.packs.map((pack: Pack) => {
+      const events = getEventsForPack(pack);
+      const filtered = events.filter(
+        (e) =>
+          isInWeekendWindows(e.startTimeLocal, windows) &&
+          isInModeTimeWindow(e.startTimeLocal, id)
+      );
+      const sorted = [...filtered].sort((a, b) => {
+        const aLive = isEventLive(a, now) ? 1 : 0;
+        const bLive = isEventLive(b, now) ? 1 : 0;
+        if (bLive !== aLive) return bLive - aLive;
+        if (favoritesFirst) {
+          const aFav = favoriteInvolved(a, favorites) ? 1 : 0;
+          const bFav = favoriteInvolved(b, favorites) ? 1 : 0;
+          if (bFav !== aFav) return bFav - aFav;
+        }
+        return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
+      });
+      return {
+        title: pack.title,
+        sport: pack.sport,
+        data: sorted,
+        isEmpty: sorted.length === 0,
+      };
+    });
+  }, [mode, id, favoritesFirst, favorites, windows, now]);
+
+  const sections = useMemo(
+    () => allSections.filter((s) => s.data.length > 0),
+    [allSections]
+  );
+  const emptySections = useMemo(
+    () => allSections.filter((s) => s.isEmpty),
+    [allSections]
+  );
 
   if (!mode) {
     return (
@@ -164,6 +180,12 @@ export default function ModeDetailScreen() {
           },
         }}
       />
+      <View style={styles.subtitleRow}>
+        <Ionicons name="calendar-outline" size={13} color={Colors.textMuted} />
+        <Text style={styles.subtitleText}>
+          This weekend + next weekend (Fri–Sun)
+        </Text>
+      </View>
       <View style={styles.toggleRow}>
         <Ionicons name="star" size={14} color={Colors.favStar} />
         <Text style={styles.toggleLabel}>Favorites first</Text>
@@ -215,12 +237,44 @@ export default function ModeDetailScreen() {
         ]}
         showsVerticalScrollIndicator={false}
         stickySectionHeadersEnabled={false}
+        ListFooterComponent={
+          emptySections.length > 0 ? (
+            <View style={styles.emptyPacksContainer}>
+              {emptySections.map((s) => (
+                <View key={s.title} style={styles.emptyPackRow}>
+                  <View
+                    style={[
+                      styles.sectionIcon,
+                      { backgroundColor: getSportColor(s.sport) + "22" },
+                    ]}
+                  >
+                    <Ionicons
+                      name={
+                        s.sport === "hockey"
+                          ? "snow"
+                          : s.sport === "rugby"
+                          ? "american-football"
+                          : s.sport === "cricket"
+                          ? "baseball"
+                          : "football"
+                      }
+                      size={14}
+                      color={getSportColor(s.sport)}
+                    />
+                  </View>
+                  <Text style={styles.emptyPackTitle}>{s.title}</Text>
+                  <Text style={styles.emptyPackLabel}>No games in this window</Text>
+                </View>
+              ))}
+            </View>
+          ) : null
+        }
         ListEmptyComponent={
           <View style={styles.emptyContainer}>
             <Ionicons name="calendar-outline" size={48} color={Colors.textMuted} />
-            <Text style={styles.emptyTitle}>No Events</Text>
+            <Text style={styles.emptyTitle}>No Weekend Games</Text>
             <Text style={styles.emptySubtitle}>
-              No events scheduled for this mode yet
+              No events found for this or next weekend (Fri–Sun)
             </Text>
           </View>
         }
@@ -233,6 +287,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
+  },
+  subtitleRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    paddingHorizontal: 20,
+    paddingTop: 10,
+    paddingBottom: 4,
+  },
+  subtitleText: {
+    fontSize: 12,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
   },
   toggleRow: {
     flexDirection: "row",
@@ -423,5 +490,32 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 60,
     fontFamily: "Inter_400Regular",
+  },
+  emptyPacksContainer: {
+    marginTop: 8,
+    gap: 6,
+  },
+  emptyPackRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    backgroundColor: Colors.card,
+    borderRadius: 12,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    opacity: 0.6,
+  },
+  emptyPackTitle: {
+    fontSize: 14,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_600SemiBold",
+    flex: 1,
+  },
+  emptyPackLabel: {
+    fontSize: 11,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
+    fontStyle: "italic",
   },
 });
