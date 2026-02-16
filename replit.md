@@ -6,8 +6,9 @@ A mobile sports schedule app built with Expo (React Native). Users browse sports
 ## Architecture
 - **Frontend**: Expo Router with file-based routing, React Native
 - **Backend**: Express server (port 5000) serving landing page and API
-- **Data**: Local JSON file at `data/masterGuide.json` (no database)
+- **Data**: API-first (`GET /api/events`) with auto-generated NHL schedule; fallback to local `data/masterGuide.json`
 - **State**: AsyncStorage for user preferences (favorite toggles)
+- **Context**: EventsProvider (React context + React Query) fetches events from API, merges with local JSON
 
 ## Project Structure
 ```
@@ -22,10 +23,16 @@ app/
   mode/
     [id].tsx                # Mode detail - packs with event lists
 data/
-  masterGuide.json          # All event data, modes, packs, providers
+  masterGuide.json          # Static event data, modes, packs, providers
+  generatedEvents.json      # Auto-generated NHL schedule from API
+scripts/
+  updateSchedule.ts         # NHL schedule fetcher (npx tsx scripts/updateSchedule.ts --days=14)
+server/
+  routes.ts                 # Express API routes (GET /api/events)
 lib/
   data.ts                   # Data access utilities and types
-  query-client.ts           # API client (unused in MVP, available for future)
+  events-context.tsx        # EventsProvider - React context for API-fetched events
+  query-client.ts           # API client with React Query setup
 utils/
   time.ts                   # Live event detection, time formatting, duration defaults
 constants/
@@ -58,6 +65,10 @@ constants/
 - Native liquid glass tabs on iOS 26+, classic blur tabs otherwise
 
 ## Recent Changes
+- 2026-02-16: Built auto-generated NHL schedule feed: scripts/updateSchedule.ts fetches from NHL public API (api-web.nhle.com), generates 98 events for 14-day window, stores in data/generatedEvents.json
+- 2026-02-16: Created GET /api/events endpoint (server/routes.ts) serving generated events with fallback to masterGuide.json
+- 2026-02-16: Created EventsProvider (lib/events-context.tsx) using React Query to fetch events from API, merges API events with local JSON for non-API leagues
+- 2026-02-16: Updated all screens (live.tsx, event-sheet.tsx, mode/[id].tsx) to use EventsProvider instead of direct local data imports
 - 2026-02-15: Replaced ESPN with Disney+ provider; Disney+ uses VIEW intent with launchUrl
 - 2026-02-15: Added FLAG_ACTIVITY_NEW_TASK for Victory+ to enable back navigation via app switcher
 - 2026-02-15: Built real-time Live Now tab with computed live detection (isEventLive), Up Next section, auto-refresh (60s), manual refresh, and last-updated timestamp
