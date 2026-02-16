@@ -264,6 +264,17 @@ function loadExistingByPrefix(prefix: string): AppEvent[] {
   }
 }
 
+function loadExistingMeta(): any {
+  try {
+    if (!fs.existsSync(OUTPUT_PATH)) return null;
+    const raw = fs.readFileSync(OUTPUT_PATH, "utf-8");
+    const data = JSON.parse(raw);
+    return data.generatedMeta || null;
+  } catch {
+    return null;
+  }
+}
+
 async function main() {
   const daysArg = process.argv.find((a) => a.startsWith("--days="));
   const days = daysArg ? parseInt(daysArg.split("=")[1], 10) : 7;
@@ -292,8 +303,39 @@ async function main() {
       new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
   );
 
+  const prevMeta = loadExistingMeta();
+  const nowIso = now.toISOString();
+
+  const echlSourceName = echlFetchResult.sourceUsed === "web"
+    ? "HockeyTech"
+    : echlFetchResult.sourceUsed === "api-hockey"
+      ? "API-Hockey"
+      : "none";
+
+  const generatedMeta = {
+    lastRefreshAt: nowIso,
+    sources: {
+      nhl: {
+        count: nhlEvents.length,
+        lastFetchAt: nhlEvents.length > 0 ? nowIso : (prevMeta?.sources?.nhl?.lastFetchAt || nowIso),
+        sourceName: "NHL API",
+      },
+      ahl: {
+        count: ahlResult.merged.length,
+        lastFetchAt: freshAhlEvents.length > 0 ? nowIso : (prevMeta?.sources?.ahl?.lastFetchAt || nowIso),
+        sourceName: "Odds API",
+      },
+      echl: {
+        count: echlResult.merged.length,
+        lastFetchAt: echlFetchResult.events.length > 0 ? nowIso : (prevMeta?.sources?.echl?.lastFetchAt || nowIso),
+        sourceName: echlSourceName,
+        teamFilter: "Tulsa Oilers",
+      },
+    },
+  };
+
   const output = {
-    lastUpdated: now.toISOString(),
+    lastUpdated: nowIso,
     sources: ["NHL API (api-web.nhle.com)", "The Odds API (AHL)", "ECHL (API-Hockey / HockeyTech web)"],
     ahlKeyUsed: detectedAhlKey,
     echlSourceUsed: echlFetchResult.sourceUsed,
@@ -307,6 +349,7 @@ async function main() {
     echlUpdated: echlResult.updated,
     echlPruned: echlResult.pruned,
     echlWebCount: echlFetchResult.webCount,
+    generatedMeta,
     events: allEvents,
   };
 
