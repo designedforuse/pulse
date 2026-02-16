@@ -1,10 +1,9 @@
 import * as fs from "fs";
 import * as path from "path";
-import { mergeAhlEvents } from "./mergeAhlEvents";
+import { fetchAhlEvents, mergeAhlEvents } from "./updateAhlSchedule";
 import { fetchEchlEvents, mergeEchlEvents } from "./updateEchlSchedule";
 
 const NHL_API_BASE = "https://api-web.nhle.com/v1";
-const ODDS_API_BASE = "https://api.the-odds-api.com/v4";
 const OUTPUT_PATH = path.resolve(__dirname, "../data/generatedEvents.json");
 
 interface NHLGame {
@@ -37,15 +36,6 @@ interface NHLScheduleResponse {
     games: NHLGame[];
   }>;
   nextStartDate?: string;
-}
-
-interface OddsApiEvent {
-  id: string;
-  sport_key: string;
-  sport_title: string;
-  commence_time: string;
-  home_team: string;
-  away_team: string;
 }
 
 interface AppEvent {
@@ -153,98 +143,6 @@ async function fetchNHLEvents(days: number): Promise<AppEvent[]> {
   return allEvents;
 }
 
-interface OddsSport {
-  key: string;
-  group: string;
-  title: string;
-  description: string;
-  active: boolean;
-}
-
-let detectedAhlKey: string | null = null;
-
-async function detectAHLKey(apiKey: string): Promise<string | null> {
-  const url = `${ODDS_API_BASE}/sports?apiKey=${apiKey}`;
-  console.log(`  AHL: Fetching sports list to detect AHL key...`);
-  try {
-    const res = await fetch(url);
-    if (!res.ok) {
-      console.error(`  AHL: Sports list returned ${res.status}: ${res.statusText}`);
-      return null;
-    }
-    const sports: OddsSport[] = await res.json() as OddsSport[];
-    const match = sports.find((s) => {
-      const titleLower = s.title.toLowerCase();
-      const descLower = (s.description || "").toLowerCase();
-      const groupLower = (s.group || "").toLowerCase();
-      if (titleLower.includes("ahl")) return true;
-      if (descLower.includes("american hockey league")) return true;
-      if (groupLower.includes("ice hockey") && titleLower.includes("ahl")) return true;
-      return false;
-    });
-    if (match) {
-      console.log(`  AHL: Detected key="${match.key}" (title="${match.title}", group="${match.group}", active=${match.active})`);
-      return match.key;
-    }
-    const iceHockey = sports.filter((s) => s.group?.toLowerCase().includes("ice hockey"));
-    console.log(`  AHL: No exact AHL match found. Ice Hockey sports available: ${JSON.stringify(iceHockey.map(s => ({ key: s.key, title: s.title, active: s.active })))}`);
-    return null;
-  } catch (err) {
-    console.error("  AHL: Failed to fetch sports list:", err);
-    return null;
-  }
-}
-
-async function fetchAHLEvents(): Promise<AppEvent[]> {
-  const apiKey = process.env.ODDS_API_KEY;
-  if (!apiKey) {
-    console.warn("ODDS_API_KEY not set — skipping AHL schedule fetch.");
-    return [];
-  }
-
-  const ahlKey = await detectAHLKey(apiKey);
-  detectedAhlKey = ahlKey;
-
-  if (!ahlKey) {
-    console.warn("  AHL: Could not find AHL sport key in Odds API. Skipping.");
-    return [];
-  }
-
-  const url = `${ODDS_API_BASE}/sports/${ahlKey}/events?apiKey=${apiKey}`;
-  console.log(`  AHL: Fetching events using key="${ahlKey}"...`);
-
-  try {
-    const res = await fetch(url);
-    if (!res.ok) {
-      console.error(`  AHL: Odds API returned ${res.status}: ${res.statusText}`);
-      return [];
-    }
-
-    const events: OddsApiEvent[] = await res.json() as OddsApiEvent[];
-    console.log(`  AHL: Received ${events.length} events from API`);
-
-    const HOCKEY_DURATION_MIN = 165;
-
-    return events.map((e) => {
-      const startLocal = toUtcIso(e.commence_time);
-      return {
-        id: `ahl_${e.id}`,
-        sport: "hockey",
-        league: "AHL",
-        awayTeam: e.away_team,
-        homeTeam: e.home_team,
-        startTimeLocal: startLocal,
-        endTimeLocal: addDuration(e.commence_time, HOCKEY_DURATION_MIN),
-        providerId: "flosports",
-        isLive: false,
-        source: "ahl",
-      };
-    });
-  } catch (err) {
-    console.error("  AHL: Failed to fetch from Odds API:", err);
-    return [];
-  }
-}
 
 function loadExistingByPrefix(prefix: string): AppEvent[] {
   try {
@@ -273,21 +171,27 @@ async function main() {
   const daysArg = process.argv.find((a) => a.startsWith("--days="));
   const days = daysArg ? parseInt(daysArg.split("=")[1], 10) : 7;
 
-  const existingAhl = loadExistingByPrefix("ahl_");
+  const existingAhl = loadExistingByPrefix("ahl-");
   const existingEchl = loadExistingByPrefix("echl-");
   console.log(`Existing cached AHL events: ${existingAhl.length}`);
   console.log(`Existing cached ECHL events: ${existingEchl.length}`);
 
-  const [nhlEvents, freshAhlEvents, echlFetchResult] = await Promise.all([
+  const [nhlEvents, ahlFetchResult, echlFetchResult] = await Promise.all([
     fetchNHLEvents(days),
-    fetchAHLEvents(),
+    fetchAhlEvents(),
     fetchEchlEvents(),
   ]);
 
   const now = new Date();
-  const ahlResult = mergeAhlEvents(existingAhl, freshAhlEvents, now);
+  const ahlResult = mergeAhlEvents(existingAhl, ahlFetchResult.events, now);
   const echlResult = mergeEchlEvents(existingEchl, echlFetchResult.events, now);
 
+  const ahlSourceLabel = ahlFetchResult.sourceUsed === "hockeytech"
+    ? "HockeyTech"
+    : ahlFetchResult.sourceUsed === "odds"
+      ? "Odds API"
+      : "none";
+  console.log(`  AHL source: ${ahlSourceLabel} (${ahlFetchResult.hockeyTechCount} from HockeyTech, ${ahlFetchResult.oddsCount} from Odds)`);
   console.log(`  AHL merge: +${ahlResult.added} added, ~${ahlResult.updated} updated, -${ahlResult.pruned} pruned → ${ahlResult.merged.length} total`);
   console.log(`  ECHL merge: +${echlResult.added} added, ~${echlResult.updated} updated, -${echlResult.pruned} pruned → ${echlResult.merged.length} total`);
   console.log(`  ECHL source: ${echlFetchResult.sourceUsed}${echlFetchResult.webCount > 0 ? ` (${echlFetchResult.webCount} from web)` : ""}`);
@@ -316,8 +220,9 @@ async function main() {
       },
       ahl: {
         count: ahlResult.merged.length,
-        lastFetchAt: freshAhlEvents.length > 0 ? nowIso : (prevMeta?.sources?.ahl?.lastFetchAt || nowIso),
-        sourceName: "Odds API",
+        lastFetchAt: ahlFetchResult.events.length > 0 ? nowIso : (prevMeta?.sources?.ahl?.lastFetchAt || nowIso),
+        sourceName: ahlSourceLabel,
+        ahlSource: ahlFetchResult.sourceUsed,
       },
       echl: {
         count: echlResult.merged.length,
@@ -330,8 +235,9 @@ async function main() {
 
   const output = {
     lastUpdated: nowIso,
-    sources: ["NHL API (api-web.nhle.com)", "The Odds API (AHL)", "ECHL (API-Hockey / HockeyTech web)"],
-    ahlKeyUsed: detectedAhlKey,
+    sources: ["NHL API (api-web.nhle.com)", "AHL (HockeyTech / Odds API fallback)", "ECHL (API-Hockey / HockeyTech web)"],
+    ahlSourceUsed: ahlFetchResult.sourceUsed,
+    ahlOddsKeyUsed: ahlFetchResult.detectedOddsKey,
     echlSourceUsed: echlFetchResult.sourceUsed,
     nhlCount: nhlEvents.length,
     ahlCount: ahlResult.merged.length,
@@ -351,7 +257,7 @@ async function main() {
   console.log(
     `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlResult.merged.length} AHL + ${echlResult.merged.length} ECHL) to ${OUTPUT_PATH}`
   );
-  console.log(`AHL key used: ${detectedAhlKey || "none detected"}`);
+  console.log(`AHL source: ${ahlSourceLabel}`);
   if (allEvents.length > 0) {
     console.log(`Date range: ${allEvents[0].startTimeLocal} — ${allEvents[allEvents.length - 1].startTimeLocal}`);
   }

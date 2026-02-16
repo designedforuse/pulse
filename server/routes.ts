@@ -161,7 +161,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           eventCount: generated?.events?.length || 0,
           nhlCount: generated?.nhlCount ?? 0,
           ahlCount: generated?.ahlCount ?? 0,
-          ahlKeyUsed: generated?.ahlKeyUsed ?? null,
+          ahlSourceUsed: generated?.ahlSourceUsed ?? "unknown",
           ahlAdded: generated?.ahlAdded ?? 0,
           ahlUpdated: generated?.ahlUpdated ?? 0,
           ahlPruned: generated?.ahlPruned ?? 0,
@@ -304,12 +304,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
     const events: any[] = generated.events;
     const nhl = events.filter((e: any) => e.source === "nhl").length;
-    const ahl = events.filter((e: any) => e.source === "ahl").length;
-    const echl = events.filter((e: any) => e.source === "echl").length;
+    const ahlHt = events.filter((e: any) => e.source === "ahl-hockeytech").length;
+    const ahlOdds = events.filter((e: any) => e.source === "ahl-odds").length;
+    const ahl = ahlHt + ahlOdds;
+    const echl = events.filter((e: any) => (e.source || "").startsWith("echl")).length;
     const other = events.length - nhl - ahl - echl;
     return res.json({
-      nhl, ahl, echl, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, other, total: events.length,
       lastUpdated: generated.lastUpdated,
+      ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",
       echlWebCount: generated.echlWebCount ?? 0,
     });
