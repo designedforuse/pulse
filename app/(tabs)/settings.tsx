@@ -103,6 +103,10 @@ export default function SettingsScreen() {
     ahlAdded?: number;
     ahlUpdated?: number;
     ahlPruned?: number;
+    echlCount?: number;
+    echlAdded?: number;
+    echlUpdated?: number;
+    echlPruned?: number;
   } | null>(null);
 
   const handleRefresh = async () => {
@@ -125,6 +129,10 @@ export default function SettingsScreen() {
           ahlAdded: data.ahlAdded,
           ahlUpdated: data.ahlUpdated,
           ahlPruned: data.ahlPruned,
+          echlCount: data.echlCount,
+          echlAdded: data.echlAdded,
+          echlUpdated: data.echlUpdated,
+          echlPruned: data.echlPruned,
         });
         queryClient.invalidateQueries({ queryKey: ["/api/events?days=14"] });
       } else {
@@ -180,7 +188,7 @@ export default function SettingsScreen() {
                 <View>
                   <Text style={styles.refreshLabel}>Refresh Schedules</Text>
                   <Text style={styles.refreshDesc}>
-                    Pull latest NHL + AHL game data
+                    Pull latest NHL + AHL + ECHL game data
                   </Text>
                 </View>
               </View>
@@ -217,12 +225,26 @@ export default function SettingsScreen() {
                     ]}>
                       AHL: {refreshResult.ahlCount ?? 0}
                     </Text>
+                    <Text style={styles.refreshCountDot}>|</Text>
+                    <Text style={[
+                      styles.refreshCountText,
+                      refreshResult.echlCount === 0 && { color: Colors.live },
+                    ]}>
+                      ECHL: {refreshResult.echlCount ?? 0}
+                    </Text>
                   </View>
                 )}
                 {refreshResult.success && (refreshResult.ahlAdded !== undefined || refreshResult.ahlUpdated !== undefined) && (
                   <View style={styles.refreshCountsRow}>
                     <Text style={styles.refreshCountText}>
                       AHL cache: +{refreshResult.ahlAdded ?? 0} new, ~{refreshResult.ahlUpdated ?? 0} updated, -{refreshResult.ahlPruned ?? 0} pruned
+                    </Text>
+                  </View>
+                )}
+                {refreshResult.success && (refreshResult.echlAdded !== undefined || refreshResult.echlUpdated !== undefined) && (
+                  <View style={styles.refreshCountsRow}>
+                    <Text style={styles.refreshCountText}>
+                      ECHL cache: +{refreshResult.echlAdded ?? 0} new, ~{refreshResult.echlUpdated ?? 0} updated, -{refreshResult.echlPruned ?? 0} pruned
                     </Text>
                   </View>
                 )}
