@@ -1,0 +1,51 @@
+Add NCAA hockey automation for Boston University Men’s Hockey games.
+
+Goal:
+- BU games appear as hockey events in the app (Weekend Nights/Mornings + Live Now).
+- No manual JSON edits.
+- Maintain retention and weekend-window logic.
+
+1) Create a BU schedule fetcher
+- Add script: scripts/updateBuHockey.ts
+- Fetch BU Men’s Hockey schedule from BU Athletics official schedule source.
+  - Prefer a JSON endpoint (often exists behind the schedule page). If not available, parse HTML.
+- Pull games for window: now-14 days through now+21 days (same retention window).
+- Extract:
+  - start datetime (with timezone if available)
+  - opponent name
+  - home/away indicator
+  - status if provided (final / scheduled)
+
+2) Normalize into our event schema
+- id: "ncaa-bu-" + <stable hash of date+opponent+homeAway>
+- source: "ncaa-bu"
+- sport: "hockey"
+- league: "NCAA Hockey"
+- homeTeam / awayTeam:
+   - Always use "Boston University" as BU team name
+   - If BU is home: homeTeam="Boston University", awayTeam=opponent
+   - If BU is away: awayTeam="Boston University", homeTeam=opponent
+- startTimeLocal:
+   - store as ISO timestamp
+   - if feed provides timezone, preserve it
+   - otherwise assume America/New_York for BU
+- endTimeLocal: start + 2h45m
+- providerId:
+   - default to "disneyplus" (since you’re using Disney+ for ESPN+ content)
+- optional: include status field if available (Scheduled/Final)
+
+3) Merge + retention
+- Merge BU events into data/generatedEvents.json without overwriting other sources.
+- Apply retention for BU events: keep [now-14d, now+21d].
+
+4) Integrate into refresh pipeline
+- POST /api/refresh runs NHL + AHL + ECHL + BU
+- Include counts in refresh response + Settings UI:
+   - ncaaBuCount, ncaaBuAdded, ncaaBuUpdated, ncaaBuPruned
+
+5) Debug endpoint
+- /api/debug/sources includes { ncaaBu: count }
+
+6) Ensure existing UI works
+- BU events should be included in Hockey packs and weekend sections automatically.
+- Favorites logic: BU should match “Boston University” (and alias “BU” if present).
