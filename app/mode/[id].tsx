@@ -23,13 +23,26 @@ import {
   type Pack,
 } from "@/lib/data";
 import { useEvents } from "@/lib/events-context";
-import { isEventLive } from "@/utils/time";
+import { isEventLive, isEventCompleted } from "@/utils/time";
 import { favoriteInvolved } from "@/utils/favorites";
-import { getWeekendWindows, isInWeekendWindows, isInModeTimeWindow } from "@/utils/weekendWindows";
+import {
+  getWeekendWindows,
+  isInWindow,
+  isInModeTimeWindow,
+  type WeekendWindow,
+} from "@/utils/weekendWindows";
 
 const PREF_KEY = "prefs.favoritesFirst";
 
-function EventCard({ event, isFav }: { event: SportEvent; isFav: boolean }) {
+function EventCard({
+  event,
+  isFav,
+  completed,
+}: {
+  event: SportEvent;
+  isFav: boolean;
+  completed: boolean;
+}) {
   const provider = getProviderById(event.providerId);
   const sportColor = getSportColor(event.sport);
 
@@ -48,7 +61,11 @@ function EventCard({ event, isFav }: { event: SportEvent; isFav: boolean }) {
       onPress={handlePress}
       style={({ pressed }) => [
         styles.eventCard,
-        { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] },
+        completed && styles.eventCardCompleted,
+        {
+          opacity: pressed ? 0.85 : completed ? 0.65 : 1,
+          transform: [{ scale: pressed ? 0.98 : 1 }],
+        },
       ]}
       testID={`event-${event.id}`}
     >
@@ -63,18 +80,26 @@ function EventCard({ event, isFav }: { event: SportEvent; isFav: boolean }) {
             </View>
           )}
         </View>
-        {isEventLive(event, new Date()) && (
+        {isEventLive(event, new Date()) ? (
           <View style={styles.liveIndicator}>
             <View style={styles.liveDot} />
             <Text style={styles.liveLabel}>LIVE</Text>
           </View>
-        )}
+        ) : completed ? (
+          <View style={styles.completedIndicator}>
+            <Text style={styles.completedLabel}>FINAL</Text>
+          </View>
+        ) : null}
       </View>
 
       <View style={styles.matchupRow}>
-        <Text style={styles.teamName} numberOfLines={1}>{event.awayTeam}</Text>
+        <Text style={styles.teamName} numberOfLines={1}>
+          {event.awayTeam}
+        </Text>
         <Text style={styles.atText}>@</Text>
-        <Text style={styles.teamName} numberOfLines={1}>{event.homeTeam}</Text>
+        <Text style={styles.teamName} numberOfLines={1}>
+          {event.homeTeam}
+        </Text>
       </View>
 
       <View style={styles.eventBottomRow}>
@@ -93,10 +118,46 @@ function EventCard({ event, isFav }: { event: SportEvent; isFav: boolean }) {
   );
 }
 
+interface PackWeekendData {
+  pack: Pack;
+  thisWeekend: SportEvent[];
+  nextWeekend: SportEvent[];
+}
+
 interface SectionData {
   title: string;
   sport: string;
+  weekendLabel: string;
   data: SportEvent[];
+  isSubEmpty: boolean;
+}
+
+function sortEvents(
+  events: SportEvent[],
+  now: Date,
+  favoritesFirst: boolean,
+  favorites: ReturnType<typeof getFavorites>,
+  includeCompleted: boolean
+): SportEvent[] {
+  return [...events].sort((a, b) => {
+    const aLive = isEventLive(a, now) ? 1 : 0;
+    const bLive = isEventLive(b, now) ? 1 : 0;
+    if (bLive !== aLive) return bLive - aLive;
+
+    if (includeCompleted) {
+      const aCompleted = isEventCompleted(a, now) ? 1 : 0;
+      const bCompleted = isEventCompleted(b, now) ? 1 : 0;
+      if (aCompleted !== bCompleted) return aCompleted - bCompleted;
+    }
+
+    if (favoritesFirst) {
+      const aFav = favoriteInvolved(a, favorites) ? 1 : 0;
+      const bFav = favoriteInvolved(b, favorites) ? 1 : 0;
+      if (bFav !== aFav) return bFav - aFav;
+    }
+
+    return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
+  });
 }
 
 export default function ModeDetailScreen() {
@@ -122,45 +183,86 @@ export default function ModeDetailScreen() {
   const now = useMemo(() => new Date(), []);
   const windows = useMemo(() => getWeekendWindows(now), [now]);
 
-  const allSections: (SectionData & { isEmpty: boolean })[] = useMemo(() => {
+  const packData: PackWeekendData[] = useMemo(() => {
     if (!mode) return [];
     return mode.packs.map((pack: Pack) => {
       const events = getEventsForPack(pack);
-      const filtered = debugShowAll
-        ? events
-        : events.filter(
-            (e) =>
-              isInWeekendWindows(e.startTimeLocal, windows) &&
-              isInModeTimeWindow(e.startTimeLocal, id)
-          );
-      const sorted = [...filtered].sort((a, b) => {
-        const aLive = isEventLive(a, now) ? 1 : 0;
-        const bLive = isEventLive(b, now) ? 1 : 0;
-        if (bLive !== aLive) return bLive - aLive;
-        if (favoritesFirst) {
-          const aFav = favoriteInvolved(a, favorites) ? 1 : 0;
-          const bFav = favoriteInvolved(b, favorites) ? 1 : 0;
-          if (bFav !== aFav) return bFav - aFav;
-        }
-        return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
-      });
-      return {
-        title: pack.title,
-        sport: pack.sport,
-        data: sorted,
-        isEmpty: sorted.length === 0,
-      };
-    });
-  }, [mode, id, favoritesFirst, favorites, windows, now, debugShowAll]);
 
-  const sections = useMemo(
-    () => allSections.filter((s) => s.data.length > 0),
-    [allSections]
-  );
-  const emptySections = useMemo(
-    () => allSections.filter((s) => s.isEmpty),
-    [allSections]
-  );
+      if (debugShowAll) {
+        return { pack, thisWeekend: events, nextWeekend: [] };
+      }
+
+      const thisWeekend = events.filter(
+        (e) => isInWindow(e.startTimeLocal, windows.current) && isInModeTimeWindow(e.startTimeLocal, id)
+      );
+      const nextWeekend = events.filter(
+        (e) => isInWindow(e.startTimeLocal, windows.next) && isInModeTimeWindow(e.startTimeLocal, id)
+      );
+      return { pack, thisWeekend, nextWeekend };
+    });
+  }, [mode, id, windows, debugShowAll]);
+
+  const sections: SectionData[] = useMemo(() => {
+    const result: SectionData[] = [];
+    for (const pd of packData) {
+      const thisSorted = sortEvents(pd.thisWeekend, now, favoritesFirst, favorites, true);
+      const nextSorted = sortEvents(pd.nextWeekend, now, favoritesFirst, favorites, false);
+
+      const bothEmpty = thisSorted.length === 0 && nextSorted.length === 0;
+
+      if (bothEmpty) {
+        result.push({
+          title: pd.pack.title,
+          sport: pd.pack.sport,
+          weekendLabel: "",
+          data: [],
+          isSubEmpty: true,
+        });
+        continue;
+      }
+
+      if (debugShowAll) {
+        result.push({
+          title: pd.pack.title,
+          sport: pd.pack.sport,
+          weekendLabel: "All games (debug)",
+          data: thisSorted,
+          isSubEmpty: thisSorted.length === 0,
+        });
+        continue;
+      }
+
+      result.push({
+        title: pd.pack.title,
+        sport: pd.pack.sport,
+        weekendLabel: `This weekend (${windows.current.label})`,
+        data: thisSorted,
+        isSubEmpty: thisSorted.length === 0,
+      });
+      result.push({
+        title: pd.pack.title,
+        sport: pd.pack.sport,
+        weekendLabel: `Next weekend (${windows.next.label})`,
+        data: nextSorted,
+        isSubEmpty: nextSorted.length === 0,
+      });
+    }
+    return result;
+  }, [packData, favoritesFirst, favorites, now, debugShowAll, windows]);
+
+  const populatedSections = useMemo(() => sections.filter((s) => s.data.length > 0), [sections]);
+  const allEmpty = useMemo(() => sections.every((s) => s.data.length === 0), [sections]);
+  const emptyPacks = useMemo(() => {
+    const seen = new Set<string>();
+    return sections
+      .filter((s) => {
+        if (s.isSubEmpty && s.weekendLabel === "" && !seen.has(s.title)) {
+          seen.add(s.title);
+          return true;
+        }
+        return false;
+      });
+  }, [sections]);
 
   if (!mode) {
     return (
@@ -183,9 +285,15 @@ export default function ModeDetailScreen() {
         }}
       />
       <View style={styles.subtitleRow}>
-        <Ionicons name={debugShowAll ? "bug-outline" : "calendar-outline"} size={13} color={debugShowAll ? Colors.live : Colors.textMuted} />
+        <Ionicons
+          name={debugShowAll ? "bug-outline" : "calendar-outline"}
+          size={13}
+          color={debugShowAll ? Colors.live : Colors.textMuted}
+        />
         <Text style={[styles.subtitleText, debugShowAll && { color: Colors.live }]}>
-          {debugShowAll ? "Showing all games (debug)" : "This weekend + next weekend (Fri–Sun)"}
+          {debugShowAll
+            ? "Showing all games (debug)"
+            : `This weekend (${windows.current.label}) + Next weekend (${windows.next.label})`}
         </Text>
       </View>
       <View style={styles.toggleRow}>
@@ -200,39 +308,126 @@ export default function ModeDetailScreen() {
         />
       </View>
       <SectionList
-        sections={sections}
+        sections={populatedSections}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <EventCard event={item} isFav={favoriteInvolved(item, favorites)} />
+          <EventCard
+            event={item}
+            isFav={favoriteInvolved(item, favorites)}
+            completed={isEventCompleted(item, now)}
+          />
         )}
-        renderSectionHeader={({ section }) => (
-          <View style={styles.sectionHeader}>
-            <View
-              style={[
-                styles.sectionIcon,
-                { backgroundColor: getSportColor(section.sport) + "22" },
-              ]}
-            >
-              <Ionicons
-                name={
-                  section.sport === "hockey"
-                    ? "snow"
-                    : section.sport === "rugby"
-                    ? "american-football"
-                    : section.sport === "cricket"
-                    ? "baseball"
-                    : "football"
-                }
-                size={16}
-                color={getSportColor(section.sport)}
-              />
+        renderSectionHeader={({ section }) => {
+          const isFirst =
+            populatedSections.indexOf(section) === 0 ||
+            populatedSections[populatedSections.indexOf(section) - 1]?.title !== section.title;
+          return (
+            <View>
+              {isFirst && (
+                <View style={styles.sectionHeader}>
+                  <View
+                    style={[
+                      styles.sectionIcon,
+                      { backgroundColor: getSportColor(section.sport) + "22" },
+                    ]}
+                  >
+                    <Ionicons
+                      name={
+                        section.sport === "hockey"
+                          ? "snow"
+                          : section.sport === "rugby"
+                          ? "american-football"
+                          : section.sport === "cricket"
+                          ? "baseball"
+                          : "football"
+                      }
+                      size={16}
+                      color={getSportColor(section.sport)}
+                    />
+                  </View>
+                  <Text style={styles.sectionTitle}>{section.title}</Text>
+                </View>
+              )}
+              <View style={styles.weekendSubHeader}>
+                <Text style={styles.weekendSubLabel}>{section.weekendLabel}</Text>
+                <View style={styles.sectionCount}>
+                  <Text style={styles.sectionCountText}>{section.data.length}</Text>
+                </View>
+              </View>
             </View>
-            <Text style={styles.sectionTitle}>{section.title}</Text>
-            <View style={styles.sectionCount}>
-              <Text style={styles.sectionCountText}>{section.data.length}</Text>
-            </View>
-          </View>
-        )}
+          );
+        }}
+        renderSectionFooter={({ section }) => {
+          const idx = populatedSections.indexOf(section);
+          const next = populatedSections[idx + 1];
+          if (
+            !debugShowAll &&
+            next &&
+            next.title === section.title &&
+            section.weekendLabel.startsWith("This weekend")
+          ) {
+            const nextWeekendEmpty = sections.find(
+              (s) =>
+                s.title === section.title &&
+                s.weekendLabel.startsWith("Next weekend") &&
+                s.data.length === 0
+            );
+            if (nextWeekendEmpty) {
+              return (
+                <View style={styles.subEmptyRow}>
+                  <Text style={styles.subEmptyText}>
+                    Next weekend ({windows.next.label}): No games in this window
+                  </Text>
+                </View>
+              );
+            }
+          }
+          if (
+            !debugShowAll &&
+            section.weekendLabel.startsWith("This weekend")
+          ) {
+            const hasNextSection = populatedSections.find(
+              (s) => s.title === section.title && s.weekendLabel.startsWith("Next weekend")
+            );
+            if (!hasNextSection) {
+              const nextWeekendEmpty = sections.find(
+                (s) =>
+                  s.title === section.title &&
+                  s.weekendLabel.startsWith("Next weekend") &&
+                  s.data.length === 0
+              );
+              if (nextWeekendEmpty) {
+                return (
+                  <View style={styles.subEmptyRow}>
+                    <Text style={styles.subEmptyText}>
+                      Next weekend ({windows.next.label}): No games in this window
+                    </Text>
+                  </View>
+                );
+              }
+            }
+          }
+          if (
+            !debugShowAll &&
+            section.weekendLabel.startsWith("Next weekend")
+          ) {
+            const hasThisSection = populatedSections.find(
+              (s) => s.title === section.title && s.weekendLabel.startsWith("This weekend")
+            );
+            if (!hasThisSection) {
+              const thisWeekendEmpty = sections.find(
+                (s) =>
+                  s.title === section.title &&
+                  s.weekendLabel.startsWith("This weekend") &&
+                  s.data.length === 0
+              );
+              if (thisWeekendEmpty) {
+                return null;
+              }
+            }
+          }
+          return null;
+        }}
         contentContainerStyle={[
           styles.listContent,
           { paddingBottom: Platform.OS === "web" ? 34 : 24 },
@@ -240,9 +435,9 @@ export default function ModeDetailScreen() {
         showsVerticalScrollIndicator={false}
         stickySectionHeadersEnabled={false}
         ListFooterComponent={
-          emptySections.length > 0 ? (
+          emptyPacks.length > 0 ? (
             <View style={styles.emptyPacksContainer}>
-              {emptySections.map((s) => (
+              {emptyPacks.map((s) => (
                 <View key={s.title} style={styles.emptyPackRow}>
                   <View
                     style={[
@@ -272,13 +467,15 @@ export default function ModeDetailScreen() {
           ) : null
         }
         ListEmptyComponent={
-          <View style={styles.emptyContainer}>
-            <Ionicons name="calendar-outline" size={48} color={Colors.textMuted} />
-            <Text style={styles.emptyTitle}>No Weekend Games</Text>
-            <Text style={styles.emptySubtitle}>
-              No events found for this or next weekend (Fri–Sun)
-            </Text>
-          </View>
+          allEmpty ? (
+            <View style={styles.emptyContainer}>
+              <Ionicons name="calendar-outline" size={48} color={Colors.textMuted} />
+              <Text style={styles.emptyTitle}>No Weekend Games</Text>
+              <Text style={styles.emptySubtitle}>
+                No events found for this or next weekend (Fri–Sun)
+              </Text>
+            </View>
+          ) : null
         }
       />
     </View>
@@ -346,6 +543,19 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_700Bold",
     flex: 1,
   },
+  weekendSubHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingVertical: 6,
+    paddingHorizontal: 4,
+    marginBottom: 4,
+  },
+  weekendSubLabel: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_600SemiBold",
+  },
   sectionCount: {
     backgroundColor: Colors.cardHighlight,
     paddingHorizontal: 8,
@@ -357,12 +567,26 @@ const styles = StyleSheet.create({
     color: Colors.textSecondary,
     fontFamily: "Inter_600SemiBold",
   },
+  subEmptyRow: {
+    paddingVertical: 10,
+    paddingHorizontal: 4,
+    marginBottom: 4,
+  },
+  subEmptyText: {
+    fontSize: 12,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
+    fontStyle: "italic",
+  },
   eventCard: {
     backgroundColor: Colors.card,
     borderRadius: 14,
     padding: 14,
     marginBottom: 10,
     borderWidth: 1,
+    borderColor: Colors.border,
+  },
+  eventCardCompleted: {
     borderColor: Colors.border,
   },
   eventTopRow: {
@@ -417,6 +641,19 @@ const styles = StyleSheet.create({
     fontWeight: "700" as const,
     color: Colors.live,
     fontFamily: "Inter_700Bold",
+  },
+  completedIndicator: {
+    backgroundColor: Colors.cardHighlight,
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+    borderRadius: 6,
+  },
+  completedLabel: {
+    fontSize: 10,
+    fontWeight: "700" as const,
+    color: Colors.textMuted,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.3,
   },
   matchupRow: {
     flexDirection: "row",

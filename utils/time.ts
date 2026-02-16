@@ -26,6 +26,11 @@ export function isEventLive(event: SportEvent, now: Date): boolean {
   return now >= start && now <= end;
 }
 
+export function isEventCompleted(event: SportEvent, now: Date): boolean {
+  const end = getEventEnd(event);
+  return now > end;
+}
+
 export function isEventUpNext(event: SportEvent, now: Date): boolean {
   const start = new Date(event.startTimeLocal);
   const twoHoursFromNow = new Date(now.getTime() + 2 * 60 * 60 * 1000);
