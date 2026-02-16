@@ -414,8 +414,9 @@ function buildSvnsEvents(windowStart: Date, windowEnd: Date): AppEvent[] {
   for (const stop of SVNS_SCHEDULE) {
     const stopStart = new Date(stop.startDate);
     const stopEnd = new Date(stop.endDate);
-    const totalDays = Math.round((stopEnd.getTime() - stopStart.getTime()) / 86400000);
-    const dayCount = Math.max(totalDays, 1);
+    const startDay = new Date(Date.UTC(stopStart.getUTCFullYear(), stopStart.getUTCMonth(), stopStart.getUTCDate()));
+    const endDay = new Date(Date.UTC(stopEnd.getUTCFullYear(), stopEnd.getUTCMonth(), stopEnd.getUTCDate()));
+    const dayCount = Math.max(Math.round((endDay.getTime() - startDay.getTime()) / 86400000) + 1, 1);
 
     for (let d = 0; d < dayCount; d++) {
       const dayDate = new Date(stopStart.getTime() + d * 86400000);
@@ -428,34 +429,29 @@ function buildSvnsEvents(windowStart: Date, windowEnd: Date): AppEvent[] {
       let sessionStart: string;
       let sessionEnd: string;
 
-      if (dayCount <= 2 || d >= dayCount) {
-        sessionStart = dayDate.toISOString();
-        sessionEnd = addDuration(sessionStart, SVNS_SESSION_DURATION_MIN);
+      const dayMidnightUtc = new Date(Date.UTC(
+        dayDate.getUTCFullYear(),
+        dayDate.getUTCMonth(),
+        dayDate.getUTCDate(),
+      ));
+      if (d === 0) {
+        const startPt = wallClockToUtc(
+          dayMidnightUtc.getUTCFullYear(),
+          dayMidnightUtc.getUTCMonth(),
+          dayMidnightUtc.getUTCDate(),
+          19, 0, "America/Los_Angeles",
+        );
+        sessionStart = startPt.toISOString();
       } else {
-        const dayMidnightUtc = new Date(Date.UTC(
-          dayDate.getUTCFullYear(),
-          dayDate.getUTCMonth(),
-          dayDate.getUTCDate(),
-        ));
-        if (d === 0) {
-          const startPt = wallClockToUtc(
-            dayMidnightUtc.getUTCFullYear(),
-            dayMidnightUtc.getUTCMonth(),
-            dayMidnightUtc.getUTCDate(),
-            19, 0, "America/Los_Angeles",
-          );
-          sessionStart = startPt.toISOString();
-        } else {
-          const startPt = wallClockToUtc(
-            dayMidnightUtc.getUTCFullYear(),
-            dayMidnightUtc.getUTCMonth(),
-            dayMidnightUtc.getUTCDate(),
-            10, 0, "America/Los_Angeles",
-          );
-          sessionStart = startPt.toISOString();
-        }
-        sessionEnd = addDuration(sessionStart, SVNS_SESSION_DURATION_MIN);
+        const startPt = wallClockToUtc(
+          dayMidnightUtc.getUTCFullYear(),
+          dayMidnightUtc.getUTCMonth(),
+          dayMidnightUtc.getUTCDate(),
+          10, 0, "America/Los_Angeles",
+        );
+        sessionStart = startPt.toISOString();
       }
+      sessionEnd = addDuration(sessionStart, SVNS_SESSION_DURATION_MIN);
 
       events.push({
         id,
@@ -543,6 +539,7 @@ export function mergeRugbyEvents(
 ): { merged: AppEvent[]; added: number; updated: number; pruned: number } {
   const index = new Map<string, AppEvent>();
   for (const e of existing) {
+    if (e.leagueKey === "svns" && e.eventType !== "session") continue;
     index.set(e.id, e);
   }
 

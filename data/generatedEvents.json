@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-16T06:22:45.211Z",
+  "lastUpdated": "2026-02-16T06:29:49.331Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -26,9 +26,9 @@
   "buAdded": 0,
   "buUpdated": 8,
   "buPruned": 0,
-  "rugbyCount": 68,
-  "rugbyAdded": 0,
-  "rugbyUpdated": 68,
+  "rugbyCount": 70,
+  "rugbyAdded": 1,
+  "rugbyUpdated": 69,
   "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 8,
@@ -36,37 +36,37 @@
     "superrugby": 20,
     "premiership": 0,
     "leagueone": 24,
-    "svns": 2
+    "svns": 4
   },
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-16T06:22:45.211Z",
+    "lastRefreshAt": "2026-02-16T06:29:49.331Z",
     "sources": {
       "nhl": {
         "count": 98,
-        "lastFetchAt": "2026-02-16T06:22:45.211Z",
+        "lastFetchAt": "2026-02-16T06:29:49.331Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 215,
-        "lastFetchAt": "2026-02-16T06:22:45.211Z",
+        "lastFetchAt": "2026-02-16T06:29:49.331Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-16T06:22:45.211Z",
+        "lastFetchAt": "2026-02-16T06:29:49.331Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 8,
-        "lastFetchAt": "2026-02-16T06:22:45.211Z",
+        "lastFetchAt": "2026-02-16T06:29:49.331Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
-        "count": 68,
-        "lastFetchAt": "2026-02-16T06:22:45.211Z",
+        "count": 70,
+        "lastFetchAt": "2026-02-16T06:29:49.331Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 8,
@@ -74,7 +74,7 @@
           "superrugby": 20,
           "premiership": 0,
           "leagueone": 24,
-          "svns": 2
+          "svns": 4
         }
       }
     }
@@ -355,19 +355,6 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
-    },
-    {
-      "id": "rugby-svns-3l46hh",
-      "sport": "rugby",
-      "league": "HSBC SVNS",
-      "homeTeam": "SVNS Perth",
-      "awayTeam": "Men's & Women's Sevens",
-      "startTimeLocal": "2026-02-07T01:00:00.000Z",
-      "endTimeLocal": "2026-02-08T13:00:00.000Z",
-      "providerId": "primevideo",
-      "isLive": false,
-      "source": "rugby",
-      "leagueKey": "svns"
     },
     {
       "id": "echl-web-24964",
@@ -687,6 +674,21 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "rugby-svns-3l46hh-d1",
+      "sport": "rugby",
+      "league": "HSBC SVNS",
+      "homeTeam": "SVNS Perth",
+      "awayTeam": "",
+      "startTimeLocal": "2026-02-08T03:00:00.000Z",
+      "endTimeLocal": "2026-02-08T06:00:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "svns",
+      "eventType": "session",
+      "sessionTitle": "SVNS Perth – Day 1"
+    },
+    {
       "id": "rugby-leagueone-7fm150",
       "sport": "rugby",
       "league": "Japan League One",
@@ -698,6 +700,21 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-svns-3l46hh-d2",
+      "sport": "rugby",
+      "league": "HSBC SVNS",
+      "homeTeam": "SVNS Perth",
+      "awayTeam": "",
+      "startTimeLocal": "2026-02-08T18:00:00.000Z",
+      "endTimeLocal": "2026-02-08T21:00:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "svns",
+      "eventType": "session",
+      "sessionTitle": "SVNS Perth – Day 2"
     },
     {
       "id": "ncaa-bu-fkhyak",
@@ -5041,19 +5058,6 @@
       "leagueKey": "superrugby"
     },
     {
-      "id": "rugby-svns-rj2l89",
-      "sport": "rugby",
-      "league": "HSBC SVNS",
-      "homeTeam": "SVNS Vancouver",
-      "awayTeam": "Men's & Women's Sevens",
-      "startTimeLocal": "2026-03-07T17:00:00.000Z",
-      "endTimeLocal": "2026-03-08T23:00:00.000Z",
-      "providerId": "primevideo",
-      "isLive": false,
-      "source": "rugby",
-      "leagueKey": "svns"
-    },
-    {
       "id": "nhl_2025020990",
       "sport": "hockey",
       "league": "NHL",
@@ -5439,6 +5443,36 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "rugby-svns-rj2l89-d1",
+      "sport": "rugby",
+      "league": "HSBC SVNS",
+      "homeTeam": "SVNS Vancouver",
+      "awayTeam": "",
+      "startTimeLocal": "2026-03-08T03:00:00.000Z",
+      "endTimeLocal": "2026-03-08T06:00:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "svns",
+      "eventType": "session",
+      "sessionTitle": "SVNS Vancouver – Day 1"
+    },
+    {
+      "id": "rugby-svns-rj2l89-d2",
+      "sport": "rugby",
+      "league": "HSBC SVNS",
+      "homeTeam": "SVNS Vancouver",
+      "awayTeam": "",
+      "startTimeLocal": "2026-03-08T17:00:00.000Z",
+      "endTimeLocal": "2026-03-08T20:00:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "svns",
+      "eventType": "session",
+      "sessionTitle": "SVNS Vancouver – Day 2"
     },
     {
       "id": "nhl_2025021001",
