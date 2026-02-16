@@ -69,6 +69,10 @@ constants/
 - 2026-02-16: Created GET /api/events endpoint (server/routes.ts) serving generated events with fallback to masterGuide.json
 - 2026-02-16: Created EventsProvider (lib/events-context.tsx) using React Query to fetch events from API, merges API events with local JSON for non-API leagues
 - 2026-02-16: Updated all screens (live.tsx, event-sheet.tsx, mode/[id].tsx) to use EventsProvider instead of direct local data imports
+- 2026-02-16: Added diagnostic endpoints: GET /api/odds/sports (lists all Odds API sports), GET /api/odds/test?sportKey=<key> (tests a specific sport key with sample events)
+- 2026-02-16: Updated schedule script to auto-detect AHL sport key from /v4/sports instead of hardcoding; logs detected key and event counts
+- 2026-02-16: Enhanced /api/refresh response with nhlCount, ahlCount, ahlKeyUsed fields
+- 2026-02-16: Settings UI now shows per-league counts (NHL: X | AHL: Y) after refresh, with warning if AHL returns 0
 - 2026-02-15: Replaced ESPN with Disney+ provider; Disney+ uses VIEW intent with launchUrl
 - 2026-02-15: Added FLAG_ACTIVITY_NEW_TASK for Victory+ to enable back navigation via app switcher
 - 2026-02-15: Built real-time Live Now tab with computed live detection (isEventLive), Up Next section, auto-refresh (60s), manual refresh, and last-updated timestamp
