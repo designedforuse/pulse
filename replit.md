@@ -27,10 +27,11 @@ data/
   generatedEvents.json      # Auto-generated NHL/AHL/ECHL schedule from APIs
   leagueIds.json            # Cached ECHL league ID + season from API-Hockey
 scripts/
-  updateSchedule.ts         # Main schedule fetcher: NHL + AHL + ECHL + NCAA pipeline
+  updateSchedule.ts         # Main schedule fetcher: NHL + AHL + ECHL + NCAA + Rugby pipeline
   mergeAhlEvents.ts         # AHL event merge/retention logic
   updateEchlSchedule.ts     # ECHL fetcher via API-Hockey (api-sports.io) + merge logic
   updateBuHockey.ts         # NCAA BU Hockey fetcher from College Hockey News HTML scraping
+  updateRugby.ts            # Rugby fetcher from iCal feeds (URC, Top 14, Super Rugby Pacific)
 server/
   routes.ts                 # Express API routes (GET /api/events, POST /api/refresh, GET /api/debug/sources)
 lib/
@@ -69,6 +70,7 @@ constants/
 - Native liquid glass tabs on iOS 26+, classic blur tabs otherwise
 
 ## Recent Changes
+- 2026-02-16: Rugby automation: scripts/updateRugby.ts fetches URC, Top 14, Super Rugby Pacific from iCal feeds (rugbyfixture.io for URC/Top14, fixturedownload.com for Super Rugby); inline iCal parser extracts VEVENT blocks; stable IDs "rugby-{leagueKey}-hash", source "rugby", leagueKey for filtering; providers URC/Top14→flosports, Super Rugby→primevideo; mergeRugbyEvents() with retention [now-14d, now+21d]; runs in parallel with hockey/NCAA fetchers; /api/refresh returns rugbyCount/rugbyAdded/rugbyUpdated/rugbyPruned/rugbySourceUsed/rugbyCounts; /api/debug/sources includes rugby count; /api/meta shows Rugby source with leagueCounts breakdown; Settings displays Rugby row with per-league counts
 - 2026-02-16: NCAA BU Hockey automation: scripts/updateBuHockey.ts scrapes College Hockey News (collegehockeynews.com/schedules/team/Boston-University/10) HTML tables to extract BU Men's Hockey schedule; parses month sections, game rows with date/opponent/home-away/time; converts ET times to UTC ISO strings; event IDs prefixed "ncaa-bu-" with stable hash, source "ncaa-bu", provider "disneyplus"; mergeBuEvents() with retention [now-14d, now+21d]; wired into refresh pipeline with buCount/buAdded/buUpdated/buPruned; /api/debug/sources includes ncaa count; /api/meta shows NCAA source with teamFilter "Boston University"; Settings displays NCAA row in Schedule Data
 - 2026-02-16: AHL HockeyTech primary source: scripts/updateAhlSchedule.ts fetches AHL schedule from HockeyTech scorebar API (lscluster.hockeytech.com, key=ccb91f29d6744675, client_code=ahl) with Odds API as fallback; returns AhlFetchResult with sourceUsed ("hockeytech"|"odds"|"none") + counts; event IDs prefixed "ahl-" with source field "ahl-hockeytech" or "ahl-odds"; /api/debug/sources shows ahlHockeyTech/ahlOdds breakdown; /api/meta shows AHL sourceName; mergeAhlEvents() included in same module with retention [now-14d, now+21d]
 - 2026-02-16: Fixed timezone bug: all event timestamps now stored as proper UTC ISO strings (with Z suffix); display formatter uses Intl.DateTimeFormat with America/Los_Angeles timezone; added /api/debug/echl-time-sample endpoint for time verification; source transparency in Settings shows per-league staleness indicators via /api/meta endpoint
