@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-16T06:11:44.643Z",
+  "lastUpdated": "2026-02-16T06:22:45.211Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -27,8 +27,8 @@
   "buUpdated": 8,
   "buPruned": 0,
   "rugbyCount": 68,
-  "rugbyAdded": 26,
-  "rugbyUpdated": 42,
+  "rugbyAdded": 0,
+  "rugbyUpdated": 68,
   "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 8,
@@ -39,34 +39,34 @@
     "svns": 2
   },
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-16T06:11:44.643Z",
+    "lastRefreshAt": "2026-02-16T06:22:45.211Z",
     "sources": {
       "nhl": {
         "count": 98,
-        "lastFetchAt": "2026-02-16T06:11:44.643Z",
+        "lastFetchAt": "2026-02-16T06:22:45.211Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 215,
-        "lastFetchAt": "2026-02-16T06:11:44.643Z",
+        "lastFetchAt": "2026-02-16T06:22:45.211Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-16T06:11:44.643Z",
+        "lastFetchAt": "2026-02-16T06:22:45.211Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 8,
-        "lastFetchAt": "2026-02-16T06:11:44.643Z",
+        "lastFetchAt": "2026-02-16T06:22:45.211Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 68,
-        "lastFetchAt": "2026-02-16T06:11:44.643Z",
+        "lastFetchAt": "2026-02-16T06:22:45.211Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 8,
@@ -3679,8 +3679,8 @@
       "league": "Japan League One",
       "homeTeam": "Yokohama",
       "awayTeam": "Tokyo-Bay",
-      "startTimeLocal": "2026-03-01T03:00:00.000Z",
-      "endTimeLocal": "2026-03-01T05:15:00.000Z",
+      "startTimeLocal": "2026-03-01T04:00:00.000Z",
+      "endTimeLocal": "2026-03-01T06:15:00.000Z",
       "providerId": "flosports",
       "isLive": false,
       "source": "rugby",
@@ -3692,8 +3692,8 @@
       "league": "Japan League One",
       "homeTeam": "Sagamihara",
       "awayTeam": "Toyota",
-      "startTimeLocal": "2026-03-01T03:00:00.000Z",
-      "endTimeLocal": "2026-03-01T05:15:00.000Z",
+      "startTimeLocal": "2026-03-01T04:00:00.000Z",
+      "endTimeLocal": "2026-03-01T06:15:00.000Z",
       "providerId": "flosports",
       "isLive": false,
       "source": "rugby",
@@ -3705,8 +3705,8 @@
       "league": "Japan League One",
       "homeTeam": "Shizuoka",
       "awayTeam": "Tokyo SG",
-      "startTimeLocal": "2026-03-01T03:00:00.000Z",
-      "endTimeLocal": "2026-03-01T05:15:00.000Z",
+      "startTimeLocal": "2026-03-01T04:00:00.000Z",
+      "endTimeLocal": "2026-03-01T06:15:00.000Z",
       "providerId": "flosports",
       "isLive": false,
       "source": "rugby",

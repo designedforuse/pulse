@@ -290,7 +290,32 @@ function parseAllRugbyHtml(html: string): LeagueOneMatch[] {
   return matches;
 }
 
-function parseLeagueOneDate(dateStr: string, timeStr?: string): string | null {
+export function wallClockToUtc(
+  year: number,
+  month: number,
+  day: number,
+  hours: number,
+  minutes: number,
+  tz: string,
+): Date {
+  const rough = new Date(Date.UTC(year, month, day, hours, minutes, 0));
+  const utcStr = rough.toLocaleString("en-US", { timeZone: "UTC" });
+  const tzStr = rough.toLocaleString("en-US", { timeZone: tz });
+  const offset = new Date(tzStr).getTime() - new Date(utcStr).getTime();
+  return new Date(rough.getTime() - offset);
+}
+
+const LEAGUE_ONE_TZ = "Asia/Tokyo";
+const LEAGUE_ONE_DEFAULT_HOUR = 13;
+
+export interface LeagueOneParsedDebug {
+  rawDate: string;
+  rawTime: string | null;
+  timezone: string;
+  parsedUtcIso: string;
+}
+
+function parseLeagueOneDate(dateStr: string, timeStr?: string): { iso: string; debug: LeagueOneParsedDebug } | null {
   const monthNames: Record<string, number> = {
     January: 0, February: 1, March: 2, April: 3, May: 4, June: 5,
     July: 6, August: 7, September: 8, October: 9, November: 10, December: 11,
@@ -304,7 +329,7 @@ function parseLeagueOneDate(dateStr: string, timeStr?: string): string | null {
   const day = parseInt(parts[2], 10);
   const year = parseInt(parts[3], 10);
 
-  let hours = 5;
+  let hours = LEAGUE_ONE_DEFAULT_HOUR;
   let minutes = 0;
 
   if (timeStr) {
@@ -316,15 +341,17 @@ function parseLeagueOneDate(dateStr: string, timeStr?: string): string | null {
       if (ampm === "PM" && hours !== 12) hours += 12;
       if (ampm === "AM" && hours === 12) hours = 0;
     }
-  } else {
-    hours = 5;
   }
 
-  const frenchLocal = new Date(Date.UTC(year, month, day, hours, minutes, 0));
-  const isCest = month >= 2 && month <= 9;
-  const offsetHours = isCest ? 2 : 1;
-  const utc = new Date(frenchLocal.getTime() - offsetHours * 3600000);
-  return utc.toISOString();
+  const utc = wallClockToUtc(year, month, day, hours, minutes, LEAGUE_ONE_TZ);
+  const iso = utc.toISOString();
+  const debug: LeagueOneParsedDebug = {
+    rawDate: dateStr,
+    rawTime: timeStr ?? null,
+    timezone: LEAGUE_ONE_TZ,
+    parsedUtcIso: iso,
+  };
+  return { iso, debug };
 }
 
 async function fetchLeagueOneEvents(windowStart: Date, windowEnd: Date): Promise<AppEvent[]> {
@@ -345,15 +372,15 @@ async function fetchLeagueOneEvents(windowStart: Date, windowEnd: Date): Promise
 
     const events: AppEvent[] = [];
     for (const m of parsed) {
-      const startIso = parseLeagueOneDate(m.date, m.time);
-      if (!startIso) continue;
+      const result = parseLeagueOneDate(m.date, m.time);
+      if (!result) continue;
 
-      const start = new Date(startIso);
+      const start = new Date(result.iso);
       if (start < windowStart || start > windowEnd) continue;
 
       const hashInput = `leagueone-${m.date}-${m.homeTeam}-${m.awayTeam}`;
       const id = `rugby-leagueone-${stableHash(hashInput)}`;
-      const endIso = addDuration(startIso, RUGBY_15S_DURATION_MIN);
+      const endIso = addDuration(result.iso, RUGBY_15S_DURATION_MIN);
 
       events.push({
         id,
@@ -361,7 +388,7 @@ async function fetchLeagueOneEvents(windowStart: Date, windowEnd: Date): Promise
         league: LEAGUE_LABELS.leagueone,
         homeTeam: m.homeTeam,
         awayTeam: m.awayTeam,
-        startTimeLocal: startIso,
+        startTimeLocal: result.iso,
         endTimeLocal: endIso,
         providerId: LEAGUE_PROVIDERS.leagueone,
         isLive: false,

@@ -406,6 +406,53 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
+  app.get("/api/debug/rugby-time-sample", (_req, res) => {
+    const generated = loadGeneratedEvents();
+    if (!generated || !generated.events) {
+      return res.json({ error: "No events available" });
+    }
+    const leagueOneEvents = generated.events.filter(
+      (e: any) => e.leagueKey === "leagueone"
+    );
+    if (leagueOneEvents.length === 0) {
+      return res.json({ error: "No League One events found" });
+    }
+    const sample = leagueOneEvents[0];
+    const parsed = new Date(sample.startTimeLocal);
+
+    const jstFormatted = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Tokyo",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      weekday: "short",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    }).format(parsed);
+
+    const ptFormatted = new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/Los_Angeles",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      weekday: "short",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    }).format(parsed);
+
+    return res.json({
+      eventId: sample.id,
+      homeTeam: sample.homeTeam,
+      awayTeam: sample.awayTeam,
+      rawLocalTime: `${jstFormatted} (Asia/Tokyo)`,
+      parsedUtcIso: parsed.toISOString(),
+      formattedPT: `${ptFormatted} (America/Los_Angeles)`,
+      timezone: "Asia/Tokyo",
+    });
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
