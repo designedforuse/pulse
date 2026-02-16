@@ -273,7 +273,7 @@ async function main() {
   console.log(`Existing cached AHL events: ${existingAhl.length}`);
   console.log(`Existing cached ECHL events: ${existingEchl.length}`);
 
-  const [nhlEvents, freshAhlEvents, freshEchlEvents] = await Promise.all([
+  const [nhlEvents, freshAhlEvents, echlFetchResult] = await Promise.all([
     fetchNHLEvents(days),
     fetchAHLEvents(),
     fetchEchlEvents(),
@@ -281,10 +281,11 @@ async function main() {
 
   const now = new Date();
   const ahlResult = mergeAhlEvents(existingAhl, freshAhlEvents, now);
-  const echlResult = mergeEchlEvents(existingEchl, freshEchlEvents, now);
+  const echlResult = mergeEchlEvents(existingEchl, echlFetchResult.events, now);
 
   console.log(`  AHL merge: +${ahlResult.added} added, ~${ahlResult.updated} updated, -${ahlResult.pruned} pruned → ${ahlResult.merged.length} total`);
   console.log(`  ECHL merge: +${echlResult.added} added, ~${echlResult.updated} updated, -${echlResult.pruned} pruned → ${echlResult.merged.length} total`);
+  console.log(`  ECHL source: ${echlFetchResult.sourceUsed}${echlFetchResult.webCount > 0 ? ` (${echlFetchResult.webCount} from web)` : ""}`);
 
   const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged].sort(
     (a, b) =>
@@ -293,8 +294,9 @@ async function main() {
 
   const output = {
     lastUpdated: now.toISOString(),
-    sources: ["NHL API (api-web.nhle.com)", "The Odds API (AHL)", "API-Hockey (ECHL)"],
+    sources: ["NHL API (api-web.nhle.com)", "The Odds API (AHL)", "ECHL (API-Hockey / HockeyTech web)"],
     ahlKeyUsed: detectedAhlKey,
+    echlSourceUsed: echlFetchResult.sourceUsed,
     nhlCount: nhlEvents.length,
     ahlCount: ahlResult.merged.length,
     ahlAdded: ahlResult.added,
@@ -304,6 +306,7 @@ async function main() {
     echlAdded: echlResult.added,
     echlUpdated: echlResult.updated,
     echlPruned: echlResult.pruned,
+    echlWebCount: echlFetchResult.webCount,
     events: allEvents,
   };
 
