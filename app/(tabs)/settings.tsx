@@ -239,6 +239,12 @@ export default function SettingsScreen() {
                 <View style={styles.sourceDivider} />
                 <SourceRow league="ECHL" meta={meta.sources.echl} />
                 <View style={styles.sourceDivider} />
+                {meta.sources.ncaa && (
+                  <>
+                    <SourceRow league="NCAA" meta={meta.sources.ncaa} />
+                    <View style={styles.sourceDivider} />
+                  </>
+                )}
               </View>
             )}
             <Pressable
@@ -259,7 +265,7 @@ export default function SettingsScreen() {
                 <View>
                   <Text style={styles.refreshLabel}>Refresh Schedules</Text>
                   <Text style={styles.refreshDesc}>
-                    Pull latest NHL + AHL + ECHL game data
+                    Pull latest NHL + AHL + ECHL + NCAA game data
                   </Text>
                 </View>
               </View>
