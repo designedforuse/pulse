@@ -315,6 +315,46 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
+  app.get("/api/debug/echl-time-sample", (_req, res) => {
+    const generated = loadGeneratedEvents();
+    if (!generated || !generated.events) {
+      return res.json({ error: "No events available" });
+    }
+    const echlEvents = generated.events.filter((e: any) => e.source === "echl");
+    if (echlEvents.length === 0) {
+      return res.json({ error: "No ECHL events found" });
+    }
+    const sample = echlEvents[0];
+    const parsed = new Date(sample.startTimeLocal);
+    const laFormatted = new Intl.DateTimeFormat("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+      timeZone: "America/Los_Angeles",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      weekday: "short",
+    }).format(parsed);
+    const utcFormatted = new Intl.DateTimeFormat("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+      timeZone: "UTC",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      weekday: "short",
+    }).format(parsed);
+    return res.json({
+      eventId: sample.id,
+      homeTeam: sample.homeTeam,
+      awayTeam: sample.awayTeam,
+      storedStartTimeLocal: sample.startTimeLocal,
+      parsedIso: parsed.toISOString(),
+      formattedLA: laFormatted,
+      formattedUTC: utcFormatted,
+    });
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

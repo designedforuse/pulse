@@ -66,21 +66,15 @@ function saveLeagueCache(cache: LeagueCache): void {
   fs.writeFileSync(LEAGUE_CACHE_PATH, JSON.stringify(cache, null, 2));
 }
 
-function utcToLocal(utcString: string): string {
+function toUtcIso(utcString: string): string {
   const date = new Date(utcString);
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  const hours = String(date.getHours()).padStart(2, "0");
-  const minutes = String(date.getMinutes()).padStart(2, "0");
-  const seconds = String(date.getSeconds()).padStart(2, "0");
-  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+  return date.toISOString();
 }
 
 function addDuration(isoString: string, minutes: number): string {
   const date = new Date(isoString);
   date.setMinutes(date.getMinutes() + minutes);
-  return utcToLocal(date.toISOString());
+  return date.toISOString();
 }
 
 function formatDate(d: Date): string {
@@ -118,7 +112,6 @@ async function fetchEchlGamesForDate(apiKey: string, leagueId: number, season: n
 
 function apiHockeyGameToEvent(game: ApiHockeyGame): AppEvent {
   const startUtc = new Date(game.timestamp * 1000).toISOString();
-  const startLocal = utcToLocal(startUtc);
   const isLive = game.status.short === "LIVE" || game.status.short === "P1" ||
     game.status.short === "P2" || game.status.short === "P3" ||
     game.status.short === "OT" || game.status.short === "BT";
@@ -129,7 +122,7 @@ function apiHockeyGameToEvent(game: ApiHockeyGame): AppEvent {
     league: "ECHL",
     awayTeam: game.teams.away.name,
     homeTeam: game.teams.home.name,
-    startTimeLocal: startLocal,
+    startTimeLocal: startUtc,
     endTimeLocal: addDuration(startUtc, HOCKEY_DURATION_MIN),
     providerId: "flosports",
     isLive,
@@ -221,7 +214,7 @@ async function fetchViaHockeyTech(): Promise<AppEvent[]> {
         const iso = g.GameDateISO8601;
         if (!iso) continue;
 
-        const startTimeLocal = utcToLocal(iso);
+        const startTimeLocal = new Date(iso).toISOString();
         const endTimeLocal = addDuration(iso, HOCKEY_DURATION_MIN);
 
         const homeTeam = g.HomeLongName || `${g.HomeCity} ${g.HomeNickname}`;

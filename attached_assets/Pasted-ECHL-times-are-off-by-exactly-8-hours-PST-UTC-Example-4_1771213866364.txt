@@ -1,0 +1,46 @@
+ECHL times are off by exactly +8 hours (PST→UTC). Example: 4:05pm PST shows as 12:05am; 12:05pm PST shows as 8:05pm. This indicates we are displaying UTC as if it were local.
+
+Goal:
+- All displayed times should be local to America/Los_Angeles (or device local), not raw UTC.
+
+Step 1 — Add a debug endpoint for one sample ECHL game
+Add GET /api/debug/echl-time-sample that returns for the first Tulsa Oilers game in the retention window:
+- raw HockeyTech fields used (date/time fields exactly as received)
+- the computed event.startTimeLocal that we store
+- the parsed Date value (new Date(startTimeLocal))
+- formatted time in:
+   - America/Los_Angeles
+   - UTC
+So we can see exactly where the shift is introduced.
+
+Step 2 — Fix the display formatter (most likely culprit)
+Search for any code that formats time by slicing strings, e.g.:
+- startTimeLocal.slice(...)
+- split("T")[1]
+- substring(...)
+Replace with a single shared formatter function:
+
+formatEventTime(isoString):
+  const d = new Date(isoString)
+  return new Intl.DateTimeFormat("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    timeZone: "America/Los_Angeles"
+  }).format(d)
+
+Use this everywhere we show event start times (Mode lists, Live Now, bottom sheet).
+
+Step 3 — Ensure we are not generating “fake local” ISO strings in the fetcher
+In the ECHL fetcher:
+- Do NOT take a local time and then call toISOString() and later display it by slicing.
+- Prefer storing the start time as a true ISO timestamp from the source if it includes timezone/UTC.
+- If the HockeyTech feed provides an epoch or UTC field, store that directly as ISO (UTC) and ALWAYS format in UI.
+- If the feed provides date + time WITHOUT timezone, assume it is local to the venue’s timezone (Tulsa = America/Chicago) and convert to UTC correctly, then format in America/Los_Angeles at display time.
+  (If implementing venue timezone is too heavy for MVP, assume America/Chicago for Tulsa-only.)
+
+Add a unit-style assertion in the debug endpoint:
+- Show that the LA formatted time equals expected local start time.
+
+Acceptance:
+- A Tulsa game that should be 4:05pm PST must display as 4:05pm (not 12:05am).
+- A Tulsa game that should be 12:05pm PST must display as 12:05pm (not 8:05pm).
