@@ -1,0 +1,48 @@
+Update NHL provider mapping to match my real viewing behavior.
+
+Goal:
+- For NHL events, automatically set providerId based on national broadcast vs RSN vs ESPN+.
+- Keep AHL/ECHL/BU mappings unchanged.
+
+Rules:
+
+A) National broadcast detection → providerId = "youtubetv"
+- If the NHL API provides broadcast networks for the game, treat any of these as national:
+  ["TNT", "TBS", "ESPN", "ESPN2", "ESPNU", "ABC"]
+- If ANY of those appear in the game’s broadcast list (home or away feeds), set providerId="youtubetv" and stop.
+
+B) Ducks non-national → providerId = "victoryplus"
+- If NOT national and either team is "Anaheim Ducks", set providerId="victoryplus".
+
+C) Kings non-national → providerId = "primevideo"
+- If NOT national and either team is "Los Angeles Kings" (or "LA Kings"), set providerId="primevideo".
+- (This represents FanDuel Sports via Prime Video.)
+
+D) All other NHL games → providerId = "disneyplus"
+- If NOT national and not Ducks/Kings, set providerId="disneyplus" (ESPN+ via Disney+).
+
+Implementation details:
+
+1) Where to apply:
+- Apply this mapping in the NHL normalization step (scripts/updateSchedule.ts or wherever NHL events are created) so the providerId is baked into generatedEvents.json.
+
+2) Broadcast extraction:
+- Extract a list of network names from the NHL API game object.
+- Normalize strings: trim, uppercase, remove punctuation.
+- National check should match normalized tokens.
+
+3) Transparency / debugging:
+- Add fields on NHL events (optional but helpful):
+  - broadcastNetworks: string[] (the extracted networks)
+  - isNational: boolean
+  - providerReason: "national" | "ducks-rsn" | "kings-rsn" | "espnplus-default"
+- These fields can be hidden in UI but available in /api/debug/sources or /api/events if needed.
+
+4) Test hook:
+- Add GET /api/debug/nhl-provider-sample that returns 5 upcoming NHL games including:
+  home/away, networks extracted, isNational, providerId, providerReason
+
+Acceptance criteria:
+- Ducks games default to Victory+ unless broadcastNetworks include a national network → then YTTV.
+- Kings games default to Prime Video unless national → then YTTV.
+- All other teams default to Disney+ unless national → then YTTV.

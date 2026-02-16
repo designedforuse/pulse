@@ -50,6 +50,9 @@ interface AppEvent {
   providerId: string;
   isLive: boolean;
   source: string;
+  broadcastNetworks?: string[];
+  isNational?: boolean;
+  providerReason?: string;
 }
 
 function buildTeamName(team: { commonName?: { default: string }; placeName?: { default: string }; abbrev: string }): string {
@@ -82,19 +85,64 @@ async function fetchNHLSchedule(dateStr: string): Promise<NHLScheduleResponse> {
   return res.json() as Promise<NHLScheduleResponse>;
 }
 
+const NATIONAL_NETWORKS = new Set(["TNT", "TBS", "ESPN", "ESPN2", "ESPNU", "ABC"]);
+
+function normalizeNetwork(raw: string): string {
+  return raw.trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
+}
+
+function extractBroadcasts(game: NHLGame): string[] {
+  if (!game.tvBroadcasts || game.tvBroadcasts.length === 0) return [];
+  return game.tvBroadcasts.map((b) => b.network.trim());
+}
+
+function resolveNhlProvider(
+  homeTeam: string,
+  awayTeam: string,
+  broadcasts: string[]
+): { providerId: string; isNational: boolean; providerReason: string } {
+  const normalized = broadcasts.map(normalizeNetwork);
+  const isNational = normalized.some((n) => NATIONAL_NETWORKS.has(n));
+
+  if (isNational) {
+    return { providerId: "youtubetv", isNational: true, providerReason: "national" };
+  }
+
+  const teams = [homeTeam, awayTeam];
+  const isDucks = teams.some((t) => t.includes("Anaheim") || t.includes("Ducks"));
+  if (isDucks) {
+    return { providerId: "victoryplus", isNational: false, providerReason: "ducks-rsn" };
+  }
+
+  const isKings = teams.some((t) => t.includes("Los Angeles") || t.includes("LA Kings") || t.includes("Kings"));
+  if (isKings) {
+    return { providerId: "primevideo", isNational: false, providerReason: "kings-rsn" };
+  }
+
+  return { providerId: "disneyplus", isNational: false, providerReason: "espnplus-default" };
+}
+
 function nhlGameToEvent(game: NHLGame): AppEvent {
   const startLocal = toUtcIso(game.startTimeUTC);
+  const homeTeam = buildTeamName(game.homeTeam);
+  const awayTeam = buildTeamName(game.awayTeam);
+  const broadcasts = extractBroadcasts(game);
+  const { providerId, isNational, providerReason } = resolveNhlProvider(homeTeam, awayTeam, broadcasts);
+
   return {
     id: `nhl_${game.id}`,
     sport: "hockey",
     league: "NHL",
-    awayTeam: buildTeamName(game.awayTeam),
-    homeTeam: buildTeamName(game.homeTeam),
+    awayTeam,
+    homeTeam,
     startTimeLocal: startLocal,
     endTimeLocal: addDuration(game.startTimeUTC, 165),
-    providerId: "youtubetv",
+    providerId,
     isLive: game.gameState === "LIVE" || game.gameState === "CRIT",
     source: "nhl",
+    broadcastNetworks: broadcasts,
+    isNational,
+    providerReason,
   };
 }
 
