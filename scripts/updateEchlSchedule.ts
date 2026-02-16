@@ -221,7 +221,7 @@ async function fetchViaHockeyTech(): Promise<AppEvent[]> {
         const iso = g.GameDateISO8601;
         if (!iso) continue;
 
-        const startLocal = utcToLocal(iso);
+        const startTimeLocal = utcToLocal(iso);
         const endTimeLocal = addDuration(iso, HOCKEY_DURATION_MIN);
 
         const homeTeam = g.HomeLongName || `${g.HomeCity} ${g.HomeNickname}`;

@@ -1,21 +1,83 @@
 {
-  "lastUpdated": "2026-02-16T03:08:46.561Z",
+  "lastUpdated": "2026-02-16T03:38:11.457Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "The Odds API (AHL)",
-    "API-Hockey (ECHL)"
+    "ECHL (API-Hockey / HockeyTech web)"
   ],
   "ahlKeyUsed": "icehockey_ahl",
+  "echlSourceUsed": "web",
   "nhlCount": 98,
   "ahlCount": 5,
   "ahlAdded": 0,
   "ahlUpdated": 5,
   "ahlPruned": 0,
-  "echlCount": 0,
-  "echlAdded": 0,
+  "echlCount": 15,
+  "echlAdded": 19,
   "echlUpdated": 0,
-  "echlPruned": 0,
+  "echlPruned": 4,
+  "echlWebCount": 19,
   "events": [
+    {
+      "id": "echl-web-24983",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Tulsa Oilers",
+      "awayTeam": "Kansas City Mavericks",
+      "startTimeLocal": "2026-02-06T01:05:00",
+      "endTimeLocal": "2026-02-06T03:50:00",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
+    },
+    {
+      "id": "echl-web-24964",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Kansas City Mavericks",
+      "awayTeam": "Tulsa Oilers",
+      "startTimeLocal": "2026-02-07T01:05:00",
+      "endTimeLocal": "2026-02-07T03:50:00",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
+    },
+    {
+      "id": "echl-web-25003",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Tulsa Oilers",
+      "awayTeam": "Allen Americans",
+      "startTimeLocal": "2026-02-14T01:05:00",
+      "endTimeLocal": "2026-02-14T03:50:00",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
+    },
+    {
+      "id": "echl-web-25018",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Tulsa Oilers",
+      "awayTeam": "Allen Americans",
+      "startTimeLocal": "2026-02-15T01:05:00",
+      "endTimeLocal": "2026-02-15T03:50:00",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
+    },
+    {
+      "id": "echl-web-25028",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Tulsa Oilers",
+      "awayTeam": "Allen Americans",
+      "startTimeLocal": "2026-02-15T21:05:00",
+      "endTimeLocal": "2026-02-15T23:50:00",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
+    },
     {
       "id": "ahl_1dc1d76b7d655d1a7f8371295ce36955",
       "sport": "hockey",
@@ -75,6 +137,42 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl"
+    },
+    {
+      "id": "echl-web-25040",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Greenville Swamp Rabbits",
+      "awayTeam": "Tulsa Oilers",
+      "startTimeLocal": "2026-02-20T00:05:00",
+      "endTimeLocal": "2026-02-20T02:50:00",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
+    },
+    {
+      "id": "echl-web-25059",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Greenville Swamp Rabbits",
+      "awayTeam": "Tulsa Oilers",
+      "startTimeLocal": "2026-02-22T00:05:00",
+      "endTimeLocal": "2026-02-22T02:50:00",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
+    },
+    {
+      "id": "echl-web-25070",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Greenville Swamp Rabbits",
+      "awayTeam": "Tulsa Oilers",
+      "startTimeLocal": "2026-02-22T20:05:00",
+      "endTimeLocal": "2026-02-22T22:50:00",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
     },
     {
       "id": "nhl_2025020910",
@@ -341,6 +439,18 @@
       "source": "nhl"
     },
     {
+      "id": "echl-web-25092",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Tulsa Oilers",
+      "awayTeam": "Rapid City Rush",
+      "startTimeLocal": "2026-02-28T01:05:00",
+      "endTimeLocal": "2026-02-28T03:50:00",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
+    },
+    {
       "id": "nhl_2025020932",
       "sport": "hockey",
       "league": "NHL",
@@ -509,6 +619,18 @@
       "source": "nhl"
     },
     {
+      "id": "echl-web-25107",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Tulsa Oilers",
+      "awayTeam": "Rapid City Rush",
+      "startTimeLocal": "2026-03-01T01:05:00",
+      "endTimeLocal": "2026-03-01T03:50:00",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
+    },
+    {
       "id": "nhl_2025020946",
       "sport": "hockey",
       "league": "NHL",
@@ -555,6 +677,18 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "nhl"
+    },
+    {
+      "id": "echl-web-25116",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Tulsa Oilers",
+      "awayTeam": "Rapid City Rush",
+      "startTimeLocal": "2026-03-01T21:05:00",
+      "endTimeLocal": "2026-03-01T23:50:00",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
     },
     {
       "id": "nhl_2025020951",
@@ -821,6 +955,18 @@
       "source": "nhl"
     },
     {
+      "id": "echl-web-25121",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Kansas City Mavericks",
+      "awayTeam": "Tulsa Oilers",
+      "startTimeLocal": "2026-03-05T01:05:00",
+      "endTimeLocal": "2026-03-05T03:50:00",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
+    },
+    {
       "id": "nhl_2025020972",
       "sport": "hockey",
       "league": "NHL",
@@ -975,6 +1121,18 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "nhl"
+    },
+    {
+      "id": "echl-web-25125",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Allen Americans",
+      "awayTeam": "Tulsa Oilers",
+      "startTimeLocal": "2026-03-07T01:10:00",
+      "endTimeLocal": "2026-03-07T03:55:00",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
     },
     {
       "id": "nhl_2025020985",
@@ -1133,6 +1291,18 @@
       "source": "nhl"
     },
     {
+      "id": "echl-web-25137",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Allen Americans",
+      "awayTeam": "Tulsa Oilers",
+      "startTimeLocal": "2026-03-08T01:10:00",
+      "endTimeLocal": "2026-03-08T03:55:00",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
+    },
+    {
       "id": "nhl_2025020998",
       "sport": "hockey",
       "league": "NHL",
@@ -1179,6 +1349,18 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "nhl"
+    },
+    {
+      "id": "echl-web-25149",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Allen Americans",
+      "awayTeam": "Tulsa Oilers",
+      "startTimeLocal": "2026-03-08T19:10:00",
+      "endTimeLocal": "2026-03-08T21:55:00",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
     },
     {
       "id": "nhl_2025021002",
