@@ -35,6 +35,12 @@
       "title": "Weekend Mornings",
       "packs": [
         {
+          "id": "hockey_morning",
+          "title": "Hockey Morning",
+          "sport": "hockey",
+          "leagues": ["NHL", "AHL", "ECHL"]
+        },
+        {
           "id": "rugby_morning",
           "title": "Rugby Morning",
           "sport": "rugby",
