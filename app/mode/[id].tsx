@@ -21,6 +21,7 @@ import {
   getSportColor,
   type SportEvent,
   type Pack,
+  type Favorites,
 } from "@/lib/data";
 import { useEvents } from "@/lib/events-context";
 import { isEventLive, isEventCompleted } from "@/utils/time";
@@ -135,12 +136,17 @@ interface SectionData {
 function sortEvents(
   events: SportEvent[],
   now: Date,
-  includeCompleted: boolean
+  includeCompleted: boolean,
+  favorites: Favorites,
 ): SportEvent[] {
   return [...events].sort((a, b) => {
     const aLive = isEventLive(a, now) ? 1 : 0;
     const bLive = isEventLive(b, now) ? 1 : 0;
     if (bLive !== aLive) return bLive - aLive;
+
+    const aFav = favoriteInvolved(a, favorites) ? 1 : 0;
+    const bFav = favoriteInvolved(b, favorites) ? 1 : 0;
+    if (bFav !== aFav) return bFav - aFav;
 
     if (includeCompleted) {
       const aCompleted = isEventCompleted(a, now) ? 1 : 0;
@@ -203,8 +209,8 @@ export default function ModeDetailScreen() {
       const nextFiltered = favoritesOnly
         ? pd.nextWeekend.filter((e) => favoriteInvolved(e, favorites))
         : pd.nextWeekend;
-      const thisSorted = sortEvents(thisFiltered, now, true);
-      const nextSorted = sortEvents(nextFiltered, now, false);
+      const thisSorted = sortEvents(thisFiltered, now, true, favorites);
+      const nextSorted = sortEvents(nextFiltered, now, false, favorites);
 
       const bothEmpty = thisSorted.length === 0 && nextSorted.length === 0;
 
