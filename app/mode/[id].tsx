@@ -102,7 +102,7 @@ interface SectionData {
 export default function ModeDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const mode = getModeById(id);
-  const { getEventsForPack } = useEvents();
+  const { getEventsForPack, debugShowAll } = useEvents();
   const favorites = getFavorites();
   const [favoritesFirst, setFavoritesFirst] = useState(true);
   const [loaded, setLoaded] = useState(false);
@@ -126,11 +126,13 @@ export default function ModeDetailScreen() {
     if (!mode) return [];
     return mode.packs.map((pack: Pack) => {
       const events = getEventsForPack(pack);
-      const filtered = events.filter(
-        (e) =>
-          isInWeekendWindows(e.startTimeLocal, windows) &&
-          isInModeTimeWindow(e.startTimeLocal, id)
-      );
+      const filtered = debugShowAll
+        ? events
+        : events.filter(
+            (e) =>
+              isInWeekendWindows(e.startTimeLocal, windows) &&
+              isInModeTimeWindow(e.startTimeLocal, id)
+          );
       const sorted = [...filtered].sort((a, b) => {
         const aLive = isEventLive(a, now) ? 1 : 0;
         const bLive = isEventLive(b, now) ? 1 : 0;
@@ -149,7 +151,7 @@ export default function ModeDetailScreen() {
         isEmpty: sorted.length === 0,
       };
     });
-  }, [mode, id, favoritesFirst, favorites, windows, now]);
+  }, [mode, id, favoritesFirst, favorites, windows, now, debugShowAll]);
 
   const sections = useMemo(
     () => allSections.filter((s) => s.data.length > 0),
@@ -181,9 +183,9 @@ export default function ModeDetailScreen() {
         }}
       />
       <View style={styles.subtitleRow}>
-        <Ionicons name="calendar-outline" size={13} color={Colors.textMuted} />
-        <Text style={styles.subtitleText}>
-          This weekend + next weekend (Fri–Sun)
+        <Ionicons name={debugShowAll ? "bug-outline" : "calendar-outline"} size={13} color={debugShowAll ? Colors.live : Colors.textMuted} />
+        <Text style={[styles.subtitleText, debugShowAll && { color: Colors.live }]}>
+          {debugShowAll ? "Showing all games (debug)" : "This weekend + next weekend (Fri–Sun)"}
         </Text>
       </View>
       <View style={styles.toggleRow}>

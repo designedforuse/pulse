@@ -1,37 +1,13 @@
 {
-  "lastUpdated": "2026-02-16T00:57:40.246Z",
+  "lastUpdated": "2026-02-16T02:15:07.527Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "The Odds API (AHL)"
   ],
   "ahlKeyUsed": "icehockey_ahl",
   "nhlCount": 98,
-  "ahlCount": 7,
+  "ahlCount": 5,
   "events": [
-    {
-      "id": "ahl_d59d4942d14195884329b7361dce39be",
-      "sport": "hockey",
-      "league": "AHL",
-      "awayTeam": "Henderson Silver Knights",
-      "homeTeam": "San Jose Barracuda",
-      "startTimeLocal": "2026-02-15T23:06:00",
-      "endTimeLocal": "2026-02-16T01:51:00",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl"
-    },
-    {
-      "id": "ahl_038123a953d4fea00b6c4f16466d64d6",
-      "sport": "hockey",
-      "league": "AHL",
-      "awayTeam": "Tucson Roadrunners",
-      "homeTeam": "Coachella Valley Firebirds",
-      "startTimeLocal": "2026-02-15T23:08:00",
-      "endTimeLocal": "2026-02-16T01:53:00",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl"
-    },
     {
       "id": "ahl_1dc1d76b7d655d1a7f8371295ce36955",
       "sport": "hockey",

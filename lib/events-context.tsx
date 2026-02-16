@@ -1,8 +1,11 @@
-import React, { createContext, useContext, useMemo, ReactNode } from "react";
+import React, { createContext, useContext, useMemo, useState, useEffect, ReactNode } from "react";
 import { useQuery } from "@tanstack/react-query";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getQueryFn } from "@/lib/query-client";
 import guideData from "@/data/masterGuide.json";
 import type { SportEvent, Pack } from "@/lib/data";
+
+const DEBUG_KEY = "prefs.debugShowAll";
 
 const cricketLeagueToRegion: Record<string, string> = {
   IPL: "India",
@@ -24,11 +27,26 @@ interface EventsContextValue {
   isLoading: boolean;
   getEventsForPack: (pack: Pack) => SportEvent[];
   findEvent: (id: string) => SportEvent | undefined;
+  debugShowAll: boolean;
+  setDebugShowAll: (val: boolean) => void;
 }
 
 const EventsContext = createContext<EventsContextValue | null>(null);
 
 export function EventsProvider({ children }: { children: ReactNode }) {
+  const [debugShowAll, setDebugShowAllState] = useState(false);
+
+  useEffect(() => {
+    AsyncStorage.getItem(DEBUG_KEY).then((val) => {
+      if (val === "true") setDebugShowAllState(true);
+    });
+  }, []);
+
+  const setDebugShowAll = (val: boolean) => {
+    setDebugShowAllState(val);
+    AsyncStorage.setItem(DEBUG_KEY, val.toString());
+  };
+
   const { data, isLoading } = useQuery<ApiResponse>({
     queryKey: ["/api/events?days=14"],
     queryFn: getQueryFn({ on401: "throw" }),
@@ -74,8 +92,10 @@ export function EventsProvider({ children }: { children: ReactNode }) {
       isLoading,
       getEventsForPack,
       findEvent,
+      debugShowAll,
+      setDebugShowAll,
     };
-  }, [allEvents, isLoading]);
+  }, [allEvents, isLoading, debugShowAll]);
 
   return (
     <EventsContext.Provider value={value}>{children}</EventsContext.Provider>

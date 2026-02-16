@@ -7,6 +7,7 @@ import {
   Platform,
   Pressable,
   ActivityIndicator,
+  Switch,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -15,6 +16,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import Colors from "@/constants/colors";
 import { getProviders, getFavorites, getSportColor, type Favorites } from "@/lib/data";
 import { apiRequest } from "@/lib/query-client";
+import { useEvents } from "@/lib/events-context";
 
 function FavoritesSection({ favorites }: { favorites: Favorites }) {
   const sportOrder = ["hockey", "rugby", "cricket", "soccer"];
@@ -89,6 +91,7 @@ export default function SettingsScreen() {
   const favorites = getFavorites();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
   const queryClient = useQueryClient();
+  const { debugShowAll, setDebugShowAll } = useEvents();
 
   const [refreshing, setRefreshing] = useState(false);
   const [refreshResult, setRefreshResult] = useState<{
@@ -217,6 +220,31 @@ export default function SettingsScreen() {
                 )}
               </View>
             )}
+          </View>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Debug</Text>
+          <View style={styles.card}>
+            <View style={styles.debugRow}>
+              <View style={styles.debugLeft}>
+                <Ionicons name="bug-outline" size={18} color={Colors.live} />
+                <View>
+                  <Text style={styles.refreshLabel}>Show All Games</Text>
+                  <Text style={styles.refreshDesc}>
+                    Ignore weekend filter on Mode screens
+                  </Text>
+                </View>
+              </View>
+              <Switch
+                value={debugShowAll}
+                onValueChange={setDebugShowAll}
+                trackColor={{ false: Colors.border, true: Colors.live + "55" }}
+                thumbColor={debugShowAll ? Colors.live : Colors.textMuted}
+                style={styles.debugSwitch}
+                testID="debug-show-all-toggle"
+              />
+            </View>
           </View>
         </View>
 
@@ -542,5 +570,21 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
     marginLeft: 20,
     marginTop: 2,
+  },
+  debugRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+  },
+  debugLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    flex: 1,
+  },
+  debugSwitch: {
+    transform: [{ scaleX: 0.85 }, { scaleY: 0.85 }],
   },
 });
