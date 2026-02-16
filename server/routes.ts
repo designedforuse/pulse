@@ -169,6 +169,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
           echlAdded: generated?.echlAdded ?? 0,
           echlUpdated: generated?.echlUpdated ?? 0,
           echlPruned: generated?.echlPruned ?? 0,
+          echlSourceUsed: generated?.echlSourceUsed ?? "unknown",
+          echlWebCount: generated?.echlWebCount ?? 0,
         });
       }
     );
@@ -297,7 +299,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const ahl = events.filter((e: any) => e.source === "ahl").length;
     const echl = events.filter((e: any) => e.source === "echl").length;
     const other = events.length - nhl - ahl - echl;
-    return res.json({ nhl, ahl, echl, other, total: events.length, lastUpdated: generated.lastUpdated });
+    return res.json({
+      nhl, ahl, echl, other, total: events.length,
+      lastUpdated: generated.lastUpdated,
+      echlSourceUsed: generated.echlSourceUsed ?? "unknown",
+      echlWebCount: generated.echlWebCount ?? 0,
+    });
   });
 
   const httpServer = createServer(app);
