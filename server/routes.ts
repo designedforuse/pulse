@@ -325,6 +325,38 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
+  app.get("/api/debug/nhl-provider-sample", (_req, res) => {
+    const generated = loadGeneratedEvents();
+    if (!generated || !generated.events) {
+      return res.json({ error: "No events available" });
+    }
+    const now = new Date();
+    const nhlUpcoming = generated.events
+      .filter((e: any) => e.source === "nhl" && new Date(e.startTimeLocal) > now)
+      .sort((a: any, b: any) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime())
+      .slice(0, 5);
+
+    const sample = nhlUpcoming.map((e: any) => ({
+      id: e.id,
+      homeTeam: e.homeTeam,
+      awayTeam: e.awayTeam,
+      startTimeLocal: e.startTimeLocal,
+      broadcastNetworks: e.broadcastNetworks || [],
+      isNational: e.isNational ?? false,
+      providerId: e.providerId,
+      providerReason: e.providerReason || "unknown",
+    }));
+
+    const allNhl = generated.events.filter((e: any) => e.source === "nhl");
+    const byReason: Record<string, number> = {};
+    for (const e of allNhl) {
+      const r = (e as any).providerReason || "unknown";
+      byReason[r] = (byReason[r] || 0) + 1;
+    }
+
+    return res.json({ total: allNhl.length, byReason, sample });
+  });
+
   app.get("/api/debug/echl-time-sample", (_req, res) => {
     const generated = loadGeneratedEvents();
     if (!generated || !generated.events) {
