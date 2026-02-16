@@ -1,0 +1,63 @@
+Upgrade HSBC SVNS entries from “tournament events” into actionable day/session blocks.
+
+Current behavior:
+- SVNS creates 1–2 tournament-level events in the retention window.
+
+Goal:
+- For each SVNS stop in the retention window, generate 3 events:
+  - "SVNS <City> – Day 1"
+  - "SVNS <City> – Day 2"
+  - "SVNS <City> – Day 3"
+These should appear in Weekend Nights/Mornings and be tappable to open Prime Video.
+
+Implementation:
+
+1) Add eventType field to events schema (optional but recommended):
+- eventType: "match" | "session" | "tournament"
+- Existing rugby matches: "match"
+- New SVNS blocks: "session"
+- If you keep the original tournament record, mark it "tournament" and exclude it from UI lists.
+
+2) Transform logic in scripts/updateRugby.ts (SVNS branch):
+For each SVNS stop (city + date range):
+- Determine the 3 dates for Day 1/2/3 based on the stop start date:
+   day1 = startDate
+   day2 = startDate + 1 day
+   day3 = startDate + 2 days
+- Create three session events:
+   id: "rugby-svns-" + <stopId> + "-d1" (and d2/d3)
+   source: "rugby"
+   sport: "rugby"
+   league: "HSBC SVNS"
+   eventName/title: "SVNS <City> – Day X"
+   startTimeLocal:
+     - If the SVNS source provides session times, use them.
+     - Else use defaults (America/Los_Angeles):
+        Day 1 start: 19:00 PT (Friday night-friendly)
+        Day 2 start: 10:00 PT
+        Day 3 start: 10:00 PT
+   endTimeLocal:
+     - If source provides end, use it
+     - Else duration default = 3h (session block)
+   providerId: "primevideo"
+   eventType: "session"
+
+3) Retention + merge:
+- These session events should participate in the existing merge/retention window [now-14d, now+21d].
+- Ensure stable IDs so they don’t duplicate across refreshes.
+
+4) UI:
+- Event card display:
+   - Show league: "HSBC SVNS"
+   - Show title: "SVNS <City> – Day X"
+   - Teams can be blank for session blocks; handle gracefully.
+- Ensure tapping opens Prime Video like other rugby events.
+
+5) Debug:
+- Update Settings per-league counts to reflect session blocks instead of just tournament entries.
+- /api/debug/sources should show svnsCount and optionally svnsSessionCount.
+
+Acceptance:
+- Perth and Vancouver stops should show up as 3-day blocks each (if within the retention window).
+- Blocks land in the correct weekend section (“This weekend” vs “Next weekend”) based on their day.
+- No duplicate SVNS blocks after multiple refreshes.

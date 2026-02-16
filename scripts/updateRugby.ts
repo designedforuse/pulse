@@ -65,6 +65,8 @@ interface AppEvent {
   isLive: boolean;
   source: string;
   leagueKey?: string;
+  eventType?: "match" | "session" | "tournament";
+  sessionTitle?: string;
 }
 
 interface VEvent {
@@ -404,32 +406,76 @@ async function fetchLeagueOneEvents(windowStart: Date, windowEnd: Date): Promise
   }
 }
 
+const SVNS_SESSION_DURATION_MIN = 180;
+
 function buildSvnsEvents(windowStart: Date, windowEnd: Date): AppEvent[] {
   const events: AppEvent[] = [];
 
   for (const stop of SVNS_SCHEDULE) {
-    const start = new Date(stop.startDate);
-    if (start < windowStart || start > windowEnd) continue;
+    const stopStart = new Date(stop.startDate);
+    const stopEnd = new Date(stop.endDate);
+    const totalDays = Math.round((stopEnd.getTime() - stopStart.getTime()) / 86400000);
+    const dayCount = Math.max(totalDays, 1);
 
-    const hashInput = `svns-${stop.city}-${stop.startDate}`;
-    const id = `rugby-svns-${stableHash(hashInput)}`;
+    for (let d = 0; d < dayCount; d++) {
+      const dayDate = new Date(stopStart.getTime() + d * 86400000);
+      if (dayDate < windowStart || dayDate > windowEnd) continue;
 
-    events.push({
-      id,
-      sport: "rugby",
-      league: LEAGUE_LABELS.svns,
-      homeTeam: `SVNS ${stop.city}`,
-      awayTeam: "Men's & Women's Sevens",
-      startTimeLocal: stop.startDate,
-      endTimeLocal: stop.endDate,
-      providerId: LEAGUE_PROVIDERS.svns,
-      isLive: false,
-      source: "rugby",
-      leagueKey: "svns",
-    });
+      const dayLabel = `Day ${d + 1}`;
+      const sessionTitle = `SVNS ${stop.city} – ${dayLabel}`;
+      const id = `rugby-svns-${stableHash(`svns-${stop.city}-${stop.startDate}`)}-d${d + 1}`;
+
+      let sessionStart: string;
+      let sessionEnd: string;
+
+      if (dayCount <= 2 || d >= dayCount) {
+        sessionStart = dayDate.toISOString();
+        sessionEnd = addDuration(sessionStart, SVNS_SESSION_DURATION_MIN);
+      } else {
+        const dayMidnightUtc = new Date(Date.UTC(
+          dayDate.getUTCFullYear(),
+          dayDate.getUTCMonth(),
+          dayDate.getUTCDate(),
+        ));
+        if (d === 0) {
+          const startPt = wallClockToUtc(
+            dayMidnightUtc.getUTCFullYear(),
+            dayMidnightUtc.getUTCMonth(),
+            dayMidnightUtc.getUTCDate(),
+            19, 0, "America/Los_Angeles",
+          );
+          sessionStart = startPt.toISOString();
+        } else {
+          const startPt = wallClockToUtc(
+            dayMidnightUtc.getUTCFullYear(),
+            dayMidnightUtc.getUTCMonth(),
+            dayMidnightUtc.getUTCDate(),
+            10, 0, "America/Los_Angeles",
+          );
+          sessionStart = startPt.toISOString();
+        }
+        sessionEnd = addDuration(sessionStart, SVNS_SESSION_DURATION_MIN);
+      }
+
+      events.push({
+        id,
+        sport: "rugby",
+        league: LEAGUE_LABELS.svns,
+        homeTeam: `SVNS ${stop.city}`,
+        awayTeam: "",
+        startTimeLocal: sessionStart,
+        endTimeLocal: sessionEnd,
+        providerId: LEAGUE_PROVIDERS.svns,
+        isLive: false,
+        source: "rugby",
+        leagueKey: "svns",
+        eventType: "session",
+        sessionTitle,
+      });
+    }
   }
 
-  console.log(`  Rugby [svns]: ${events.length} tournament events in retention window`);
+  console.log(`  Rugby [svns]: ${events.length} session events in retention window`);
   return events;
 }
 

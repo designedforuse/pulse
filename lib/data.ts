@@ -19,6 +19,8 @@ export interface SportEvent {
   providerId: string;
   isLive?: boolean;
   source?: string;
+  eventType?: "match" | "session" | "tournament";
+  sessionTitle?: string;
 }
 
 export interface Pack {
