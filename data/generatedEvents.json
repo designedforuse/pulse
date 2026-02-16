@@ -1,0 +1,986 @@
+{
+  "lastUpdated": "2026-02-16T00:08:48.012Z",
+  "source": "NHL API (api-web.nhle.com)",
+  "events": [
+    {
+      "id": "nhl_2025020910",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Buffalo Sabres",
+      "homeTeam": "New Jersey Devils",
+      "startTimeLocal": "2026-02-26T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020911",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Philadelphia Flyers",
+      "homeTeam": "Washington Capitals",
+      "startTimeLocal": "2026-02-26T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020912",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Toronto Maple Leafs",
+      "homeTeam": "Tampa Bay Lightning",
+      "startTimeLocal": "2026-02-26T00:30:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020913",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Seattle Kraken",
+      "homeTeam": "Dallas Stars",
+      "startTimeLocal": "2026-02-26T01:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020914",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Colorado Avalanche",
+      "homeTeam": "Utah Mammoth",
+      "startTimeLocal": "2026-02-26T02:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020915",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Winnipeg Jets",
+      "homeTeam": "Vancouver Canucks",
+      "startTimeLocal": "2026-02-26T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020916",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Vegas Golden Knights",
+      "homeTeam": "Los Angeles Kings",
+      "startTimeLocal": "2026-02-26T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020917",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Edmonton Oilers",
+      "homeTeam": "Anaheim Ducks",
+      "startTimeLocal": "2026-02-26T03:30:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020918",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Columbus Blue Jackets",
+      "homeTeam": "Boston Bruins",
+      "startTimeLocal": "2026-02-27T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020919",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "New York Islanders",
+      "homeTeam": "Montréal Canadiens",
+      "startTimeLocal": "2026-02-27T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020920",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Detroit Red Wings",
+      "homeTeam": "Ottawa Senators",
+      "startTimeLocal": "2026-02-27T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020921",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Toronto Maple Leafs",
+      "homeTeam": "Florida Panthers",
+      "startTimeLocal": "2026-02-27T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020922",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "New Jersey Devils",
+      "homeTeam": "Pittsburgh Penguins",
+      "startTimeLocal": "2026-02-27T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020923",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Tampa Bay Lightning",
+      "homeTeam": "Carolina Hurricanes",
+      "startTimeLocal": "2026-02-27T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020924",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Philadelphia Flyers",
+      "homeTeam": "New York Rangers",
+      "startTimeLocal": "2026-02-27T01:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020925",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Seattle Kraken",
+      "homeTeam": "St. Louis Blues",
+      "startTimeLocal": "2026-02-27T01:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020926",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Chicago Blackhawks",
+      "homeTeam": "Nashville Predators",
+      "startTimeLocal": "2026-02-27T01:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020927",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Minnesota Wild",
+      "homeTeam": "Colorado Avalanche",
+      "startTimeLocal": "2026-02-27T02:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020928",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Calgary Flames",
+      "homeTeam": "San Jose Sharks",
+      "startTimeLocal": "2026-02-27T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020929",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Edmonton Oilers",
+      "homeTeam": "Los Angeles Kings",
+      "startTimeLocal": "2026-02-27T03:30:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020930",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Buffalo Sabres",
+      "homeTeam": "Florida Panthers",
+      "startTimeLocal": "2026-02-28T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020931",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Vegas Golden Knights",
+      "homeTeam": "Washington Capitals",
+      "startTimeLocal": "2026-02-28T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020932",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Minnesota Wild",
+      "homeTeam": "Utah Mammoth",
+      "startTimeLocal": "2026-02-28T02:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020933",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Winnipeg Jets",
+      "homeTeam": "Anaheim Ducks",
+      "startTimeLocal": "2026-02-28T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020934",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Pittsburgh Penguins",
+      "homeTeam": "New York Rangers",
+      "startTimeLocal": "2026-02-28T17:30:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020935",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Boston Bruins",
+      "homeTeam": "Philadelphia Flyers",
+      "startTimeLocal": "2026-02-28T20:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020936",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Edmonton Oilers",
+      "homeTeam": "San Jose Sharks",
+      "startTimeLocal": "2026-02-28T21:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020943",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "New Jersey Devils",
+      "homeTeam": "St. Louis Blues",
+      "startTimeLocal": "2026-02-28T22:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020937",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "New York Islanders",
+      "homeTeam": "Columbus Blue Jackets",
+      "startTimeLocal": "2026-02-28T23:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020938",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Chicago Blackhawks",
+      "homeTeam": "Colorado Avalanche",
+      "startTimeLocal": "2026-02-28T23:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020939",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Ottawa Senators",
+      "homeTeam": "Toronto Maple Leafs",
+      "startTimeLocal": "2026-03-01T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020940",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Washington Capitals",
+      "homeTeam": "Montréal Canadiens",
+      "startTimeLocal": "2026-03-01T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020941",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Buffalo Sabres",
+      "homeTeam": "Tampa Bay Lightning",
+      "startTimeLocal": "2026-03-01T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020942",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Detroit Red Wings",
+      "homeTeam": "Carolina Hurricanes",
+      "startTimeLocal": "2026-03-01T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020944",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Calgary Flames",
+      "homeTeam": "Los Angeles Kings",
+      "startTimeLocal": "2026-03-01T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020945",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Nashville Predators",
+      "homeTeam": "Dallas Stars",
+      "startTimeLocal": "2026-03-01T01:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020946",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Vancouver Canucks",
+      "homeTeam": "Seattle Kraken",
+      "startTimeLocal": "2026-03-01T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020947",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Vegas Golden Knights",
+      "homeTeam": "Pittsburgh Penguins",
+      "startTimeLocal": "2026-03-01T18:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020949",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Chicago Blackhawks",
+      "homeTeam": "Utah Mammoth",
+      "startTimeLocal": "2026-03-01T21:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020950",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Winnipeg Jets",
+      "homeTeam": "San Jose Sharks",
+      "startTimeLocal": "2026-03-01T21:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020951",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "St. Louis Blues",
+      "homeTeam": "Minnesota Wild",
+      "startTimeLocal": "2026-03-01T22:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020948",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Florida Panthers",
+      "homeTeam": "New York Islanders",
+      "startTimeLocal": "2026-03-01T23:30:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020952",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Calgary Flames",
+      "homeTeam": "Anaheim Ducks",
+      "startTimeLocal": "2026-03-02T01:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020955",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Detroit Red Wings",
+      "homeTeam": "Nashville Predators",
+      "startTimeLocal": "2026-03-02T19:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020953",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Columbus Blue Jackets",
+      "homeTeam": "New York Rangers",
+      "startTimeLocal": "2026-03-03T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020954",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Philadelphia Flyers",
+      "homeTeam": "Toronto Maple Leafs",
+      "startTimeLocal": "2026-03-03T00:30:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020956",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Dallas Stars",
+      "homeTeam": "Vancouver Canucks",
+      "startTimeLocal": "2026-03-03T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020957",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Carolina Hurricanes",
+      "homeTeam": "Seattle Kraken",
+      "startTimeLocal": "2026-03-03T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020958",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Colorado Avalanche",
+      "homeTeam": "Los Angeles Kings",
+      "startTimeLocal": "2026-03-03T03:30:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020959",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Pittsburgh Penguins",
+      "homeTeam": "Boston Bruins",
+      "startTimeLocal": "2026-03-04T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020960",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Vegas Golden Knights",
+      "homeTeam": "Buffalo Sabres",
+      "startTimeLocal": "2026-03-04T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020961",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Florida Panthers",
+      "homeTeam": "New Jersey Devils",
+      "startTimeLocal": "2026-03-04T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020962",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Utah Mammoth",
+      "homeTeam": "Washington Capitals",
+      "startTimeLocal": "2026-03-04T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020963",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Nashville Predators",
+      "homeTeam": "Columbus Blue Jackets",
+      "startTimeLocal": "2026-03-04T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020964",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Chicago Blackhawks",
+      "homeTeam": "Winnipeg Jets",
+      "startTimeLocal": "2026-03-04T01:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020965",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Dallas Stars",
+      "homeTeam": "Calgary Flames",
+      "startTimeLocal": "2026-03-04T02:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020966",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Ottawa Senators",
+      "homeTeam": "Edmonton Oilers",
+      "startTimeLocal": "2026-03-04T02:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020967",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Tampa Bay Lightning",
+      "homeTeam": "Minnesota Wild",
+      "startTimeLocal": "2026-03-04T02:30:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020968",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Colorado Avalanche",
+      "homeTeam": "Anaheim Ducks",
+      "startTimeLocal": "2026-03-04T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020969",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Montréal Canadiens",
+      "homeTeam": "San Jose Sharks",
+      "startTimeLocal": "2026-03-04T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020970",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Vegas Golden Knights",
+      "homeTeam": "Detroit Red Wings",
+      "startTimeLocal": "2026-03-05T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020971",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Toronto Maple Leafs",
+      "homeTeam": "New Jersey Devils",
+      "startTimeLocal": "2026-03-05T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020972",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Carolina Hurricanes",
+      "homeTeam": "Vancouver Canucks",
+      "startTimeLocal": "2026-03-05T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020973",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "New York Islanders",
+      "homeTeam": "Anaheim Ducks",
+      "startTimeLocal": "2026-03-05T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020974",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "St. Louis Blues",
+      "homeTeam": "Seattle Kraken",
+      "startTimeLocal": "2026-03-05T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020975",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Toronto Maple Leafs",
+      "homeTeam": "New York Rangers",
+      "startTimeLocal": "2026-03-06T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020976",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Utah Mammoth",
+      "homeTeam": "Philadelphia Flyers",
+      "startTimeLocal": "2026-03-06T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020977",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Buffalo Sabres",
+      "homeTeam": "Pittsburgh Penguins",
+      "startTimeLocal": "2026-03-06T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020978",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Florida Panthers",
+      "homeTeam": "Columbus Blue Jackets",
+      "startTimeLocal": "2026-03-06T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020979",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Boston Bruins",
+      "homeTeam": "Nashville Predators",
+      "startTimeLocal": "2026-03-06T01:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020980",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Tampa Bay Lightning",
+      "homeTeam": "Winnipeg Jets",
+      "startTimeLocal": "2026-03-06T01:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020981",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Ottawa Senators",
+      "homeTeam": "Calgary Flames",
+      "startTimeLocal": "2026-03-06T02:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020982",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "New York Islanders",
+      "homeTeam": "Los Angeles Kings",
+      "startTimeLocal": "2026-03-06T02:30:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020983",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Florida Panthers",
+      "homeTeam": "Detroit Red Wings",
+      "startTimeLocal": "2026-03-07T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020984",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Colorado Avalanche",
+      "homeTeam": "Dallas Stars",
+      "startTimeLocal": "2026-03-07T01:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020985",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Vancouver Canucks",
+      "homeTeam": "Chicago Blackhawks",
+      "startTimeLocal": "2026-03-07T01:30:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020986",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Carolina Hurricanes",
+      "homeTeam": "Edmonton Oilers",
+      "startTimeLocal": "2026-03-07T02:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020987",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Montréal Canadiens",
+      "homeTeam": "Anaheim Ducks",
+      "startTimeLocal": "2026-03-07T02:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020988",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Minnesota Wild",
+      "homeTeam": "Vegas Golden Knights",
+      "startTimeLocal": "2026-03-07T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020989",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "St. Louis Blues",
+      "homeTeam": "San Jose Sharks",
+      "startTimeLocal": "2026-03-07T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020990",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Washington Capitals",
+      "homeTeam": "Boston Bruins",
+      "startTimeLocal": "2026-03-07T17:30:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020991",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "New York Rangers",
+      "homeTeam": "New Jersey Devils",
+      "startTimeLocal": "2026-03-07T20:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020992",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Nashville Predators",
+      "homeTeam": "Buffalo Sabres",
+      "startTimeLocal": "2026-03-07T22:30:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020993",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Philadelphia Flyers",
+      "homeTeam": "Pittsburgh Penguins",
+      "startTimeLocal": "2026-03-07T22:30:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020994",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Tampa Bay Lightning",
+      "homeTeam": "Toronto Maple Leafs",
+      "startTimeLocal": "2026-03-08T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020995",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Utah Mammoth",
+      "homeTeam": "Columbus Blue Jackets",
+      "startTimeLocal": "2026-03-08T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020996",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Vancouver Canucks",
+      "homeTeam": "Winnipeg Jets",
+      "startTimeLocal": "2026-03-08T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020997",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Montréal Canadiens",
+      "homeTeam": "Los Angeles Kings",
+      "startTimeLocal": "2026-03-08T00:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020998",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Carolina Hurricanes",
+      "homeTeam": "Calgary Flames",
+      "startTimeLocal": "2026-03-08T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025020999",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "New York Islanders",
+      "homeTeam": "San Jose Sharks",
+      "startTimeLocal": "2026-03-08T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025021000",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Ottawa Senators",
+      "homeTeam": "Seattle Kraken",
+      "startTimeLocal": "2026-03-08T03:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025021001",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Minnesota Wild",
+      "homeTeam": "Colorado Avalanche",
+      "startTimeLocal": "2026-03-08T18:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025021002",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Boston Bruins",
+      "homeTeam": "Pittsburgh Penguins",
+      "startTimeLocal": "2026-03-08T20:30:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025021003",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Tampa Bay Lightning",
+      "homeTeam": "Buffalo Sabres",
+      "startTimeLocal": "2026-03-08T22:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025021004",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Chicago Blackhawks",
+      "homeTeam": "Dallas Stars",
+      "startTimeLocal": "2026-03-08T22:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025021005",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Detroit Red Wings",
+      "homeTeam": "New Jersey Devils",
+      "startTimeLocal": "2026-03-08T23:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025021006",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "St. Louis Blues",
+      "homeTeam": "Anaheim Ducks",
+      "startTimeLocal": "2026-03-09T01:00:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    },
+    {
+      "id": "nhl_2025021007",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Edmonton Oilers",
+      "homeTeam": "Vegas Golden Knights",
+      "startTimeLocal": "2026-03-09T01:30:00",
+      "providerId": "youtubetv",
+      "isLive": false
+    }
+  ]
+}
