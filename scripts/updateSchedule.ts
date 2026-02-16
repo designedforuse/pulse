@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import { mergeAhlEvents } from "./mergeAhlEvents";
 
 const NHL_API_BASE = "https://api-web.nhle.com/v1";
 const ODDS_API_BASE = "https://api.the-odds-api.com/v4";
@@ -250,32 +251,55 @@ async function fetchAHLEvents(): Promise<AppEvent[]> {
   }
 }
 
+function loadExistingAhl(): AppEvent[] {
+  try {
+    if (!fs.existsSync(OUTPUT_PATH)) return [];
+    const raw = fs.readFileSync(OUTPUT_PATH, "utf-8");
+    const data = JSON.parse(raw);
+    if (!data.events || !Array.isArray(data.events)) return [];
+    return data.events.filter((e: AppEvent) => e.id.startsWith("ahl_"));
+  } catch {
+    return [];
+  }
+}
+
 async function main() {
   const daysArg = process.argv.find((a) => a.startsWith("--days="));
   const days = daysArg ? parseInt(daysArg.split("=")[1], 10) : 7;
 
-  const [nhlEvents, ahlEvents] = await Promise.all([
+  const existingAhl = loadExistingAhl();
+  console.log(`Existing cached AHL events: ${existingAhl.length}`);
+
+  const [nhlEvents, freshAhlEvents] = await Promise.all([
     fetchNHLEvents(days),
     fetchAHLEvents(),
   ]);
 
-  const allEvents = [...nhlEvents, ...ahlEvents].sort(
+  const now = new Date();
+  const ahlResult = mergeAhlEvents(existingAhl, freshAhlEvents, now);
+
+  console.log(`  AHL merge: +${ahlResult.added} added, ~${ahlResult.updated} updated, -${ahlResult.pruned} pruned → ${ahlResult.merged.length} total`);
+
+  const allEvents = [...nhlEvents, ...ahlResult.merged].sort(
     (a, b) =>
       new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
   );
 
   const output = {
-    lastUpdated: new Date().toISOString(),
+    lastUpdated: now.toISOString(),
     sources: ["NHL API (api-web.nhle.com)", "The Odds API (AHL)"],
     ahlKeyUsed: detectedAhlKey,
     nhlCount: nhlEvents.length,
-    ahlCount: ahlEvents.length,
+    ahlCount: ahlResult.merged.length,
+    ahlAdded: ahlResult.added,
+    ahlUpdated: ahlResult.updated,
+    ahlPruned: ahlResult.pruned,
     events: allEvents,
   };
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
   console.log(
-    `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlEvents.length} AHL) to ${OUTPUT_PATH}`
+    `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlResult.merged.length} AHL) to ${OUTPUT_PATH}`
   );
   console.log(`AHL key used: ${detectedAhlKey || "none detected"}`);
   if (allEvents.length > 0) {

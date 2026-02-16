@@ -1,0 +1,55 @@
+Implement caching/retention for AHL events fetched from The Odds API.
+
+Problem:
+- Odds API AHL events only returns ~2 days ahead and no past events.
+- This breaks Mode views (completed games + next weekend visibility).
+
+Goal:
+- Preserve previously fetched AHL events so we can show completed games this weekend and retain future games we’ve already seen.
+- Keep a rolling window of AHL events.
+
+Requirements:
+
+1) Do NOT overwrite AHL events on refresh
+Current behavior likely regenerates generatedEvents.json and replaces AHL with only the latest fetch.
+Change this to MERGE:
+
+- Load existing data/generatedEvents.json (if it exists).
+- Keep all existing NHL events behavior as-is (can still regenerate NHL each time).
+- For AHL:
+  - Create an index of existing AHL events by id (id starts with "ahl-").
+  - Fetch new AHL events from Odds API.
+  - For each fetched event:
+      - If id exists, update fields (teams, times, providerId, source, etc.)
+      - If not exists, insert it.
+  - After merge, apply pruning policy below.
+
+2) Retention policy (AHL only)
+- Keep AHL events whose startTimeLocal is within:
+    [now - 14 days, now + 21 days]
+- Prune AHL events outside this window on every refresh.
+- Do not prune NHL events using this policy (leave current NHL windowing intact).
+
+3) Past/completed support
+- Because Odds API won’t return past events, we rely on cached AHL events for:
+  - completed games earlier this weekend
+- Ensure these cached events remain in generatedEvents.json so the Mode “This weekend” section can display them.
+
+4) /api/refresh response + Settings UI
+- Update POST /api/refresh response to include counts:
+    {
+      nhlCount,
+      ahlCount,
+      ahlAdded,
+      ahlUpdated,
+      ahlPruned
+    }
+- Update Settings “Refresh Schedules” success message to show both NHL and AHL counts and the added/updated/pruned numbers.
+
+5) Implementation details
+- Put AHL merge/prune logic in a helper (e.g., lib/mergeAhlEvents.ts) to keep scripts clean.
+- Ensure the script is idempotent and safe if generatedEvents.json doesn’t exist yet.
+
+Acceptance criteria
+- After multiple refreshes across several days, AHL events persist and accumulate (within window) instead of resetting to only 2 days.
+- “This weekend” Mode section can show AHL games that already happened earlier in the weekend (from cache).
