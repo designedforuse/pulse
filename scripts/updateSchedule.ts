@@ -85,10 +85,13 @@ async function fetchNHLSchedule(dateStr: string): Promise<NHLScheduleResponse> {
   return res.json() as Promise<NHLScheduleResponse>;
 }
 
-const NATIONAL_NETWORKS = new Set(["TNT", "TBS", "ESPN", "ESPN2", "ESPNU", "ABC"]);
+const NATIONAL_NETWORKS_EXACT = new Set(["TNT", "TBS", "ABC"]);
 
-function normalizeNetwork(raw: string): string {
-  return raw.trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
+function isNationalNetwork(raw: string): boolean {
+  const upper = raw.trim().toUpperCase();
+  if (NATIONAL_NETWORKS_EXACT.has(upper)) return true;
+  if (upper.includes("ESPN") && upper !== "ESPN+") return true;
+  return false;
 }
 
 function extractBroadcasts(game: NHLGame): string[] {
@@ -101,8 +104,7 @@ function resolveNhlProvider(
   awayTeam: string,
   broadcasts: string[]
 ): { providerId: string; isNational: boolean; providerReason: string } {
-  const normalized = broadcasts.map(normalizeNetwork);
-  const isNational = normalized.some((n) => NATIONAL_NETWORKS.has(n));
+  const isNational = broadcasts.some(isNationalNetwork);
 
   if (isNational) {
     return { providerId: "youtubetv", isNational: true, providerReason: "national" };

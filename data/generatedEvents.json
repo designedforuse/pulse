@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-16T05:33:47.765Z",
+  "lastUpdated": "2026-02-16T05:40:34.581Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -25,28 +25,28 @@
   "buUpdated": 8,
   "buPruned": 0,
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-16T05:33:47.765Z",
+    "lastRefreshAt": "2026-02-16T05:40:34.581Z",
     "sources": {
       "nhl": {
         "count": 98,
-        "lastFetchAt": "2026-02-16T05:33:47.765Z",
+        "lastFetchAt": "2026-02-16T05:40:34.581Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 215,
-        "lastFetchAt": "2026-02-16T05:33:47.765Z",
+        "lastFetchAt": "2026-02-16T05:40:34.581Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-16T05:33:47.765Z",
+        "lastFetchAt": "2026-02-16T05:40:34.581Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 8,
-        "lastFetchAt": "2026-02-16T05:33:47.765Z",
+        "lastFetchAt": "2026-02-16T05:40:34.581Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       }
@@ -3530,7 +3530,7 @@
       "homeTeam": "New Jersey Devils",
       "startTimeLocal": "2026-03-05T00:00:00.000Z",
       "endTimeLocal": "2026-03-05T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
@@ -3539,8 +3539,8 @@
         "SN",
         "TVAS"
       ],
-      "isNational": true,
-      "providerReason": "national"
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028619",
@@ -3649,15 +3649,15 @@
       "homeTeam": "Seattle Kraken",
       "startTimeLocal": "2026-03-05T03:00:00.000Z",
       "endTimeLocal": "2026-03-05T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
         "ESPN+",
         "HULU"
       ],
-      "isNational": true,
-      "providerReason": "national"
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028621",
