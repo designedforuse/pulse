@@ -1,46 +1,70 @@
 {
-  "lastUpdated": "2026-02-16T05:00:06.706Z",
+  "lastUpdated": "2026-02-16T05:19:49.096Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
-    "ECHL (API-Hockey / HockeyTech web)"
+    "ECHL (API-Hockey / HockeyTech web)",
+    "NCAA (College Hockey News)"
   ],
   "ahlSourceUsed": "hockeytech",
   "ahlOddsKeyUsed": null,
   "echlSourceUsed": "web",
+  "buSourceUsed": "chn",
   "nhlCount": 98,
   "ahlCount": 215,
-  "ahlAdded": 217,
-  "ahlUpdated": 0,
+  "ahlAdded": 2,
+  "ahlUpdated": 215,
   "ahlPruned": 2,
   "echlCount": 15,
   "echlAdded": 4,
   "echlUpdated": 15,
   "echlPruned": 4,
   "echlWebCount": 19,
+  "buCount": 8,
+  "buAdded": 8,
+  "buUpdated": 0,
+  "buPruned": 0,
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-16T05:00:06.706Z",
+    "lastRefreshAt": "2026-02-16T05:19:49.096Z",
     "sources": {
       "nhl": {
         "count": 98,
-        "lastFetchAt": "2026-02-16T05:00:06.706Z",
+        "lastFetchAt": "2026-02-16T05:19:49.096Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 215,
-        "lastFetchAt": "2026-02-16T05:00:06.706Z",
+        "lastFetchAt": "2026-02-16T05:19:49.096Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-16T05:00:06.706Z",
+        "lastFetchAt": "2026-02-16T05:19:49.096Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
+      },
+      "ncaa": {
+        "count": 8,
+        "lastFetchAt": "2026-02-16T05:19:49.096Z",
+        "sourceName": "College Hockey News",
+        "teamFilter": "Boston University"
       }
     }
   },
   "events": [
+    {
+      "id": "ncaa-bu-cbrbk2",
+      "sport": "hockey",
+      "league": "NCAA Hockey",
+      "homeTeam": "Boston University",
+      "awayTeam": "Northeastern",
+      "startTimeLocal": "2026-02-03T01:00:00.000Z",
+      "endTimeLocal": "2026-02-03T03:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "ncaa-bu"
+    },
     {
       "id": "ahl-1028457",
       "sport": "hockey",
@@ -232,6 +256,18 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "ncaa-bu-vlj9ev",
+      "sport": "hockey",
+      "league": "NCAA Hockey",
+      "homeTeam": "Boston University",
+      "awayTeam": "Maine",
+      "startTimeLocal": "2026-02-07T00:00:00.000Z",
+      "endTimeLocal": "2026-02-07T02:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "ncaa-bu"
     },
     {
       "id": "ahl-1028474",
@@ -546,6 +582,18 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "ncaa-bu-fkhyak",
+      "sport": "hockey",
+      "league": "NCAA Hockey",
+      "homeTeam": "Boston University",
+      "awayTeam": "Boston College",
+      "startTimeLocal": "2026-02-10T00:30:00.000Z",
+      "endTimeLocal": "2026-02-10T03:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "ncaa-bu"
+    },
+    {
       "id": "ahl-1028961",
       "sport": "hockey",
       "league": "AHL",
@@ -654,6 +702,18 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "ncaa-bu-5jwza3",
+      "sport": "hockey",
+      "league": "NCAA Hockey",
+      "homeTeam": "New Hampshire",
+      "awayTeam": "Boston University",
+      "startTimeLocal": "2026-02-14T00:00:00.000Z",
+      "endTimeLocal": "2026-02-14T02:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "ncaa-bu"
+    },
+    {
       "id": "ahl-1028499",
       "sport": "hockey",
       "league": "AHL",
@@ -760,6 +820,18 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "ncaa-bu-17d89h",
+      "sport": "hockey",
+      "league": "NCAA Hockey",
+      "homeTeam": "Boston University",
+      "awayTeam": "New Hampshire",
+      "startTimeLocal": "2026-02-14T23:00:00.000Z",
+      "endTimeLocal": "2026-02-15T01:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "ncaa-bu"
     },
     {
       "id": "ahl-1028514",
@@ -2106,6 +2178,18 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "ncaa-bu-ixv3q8",
+      "sport": "hockey",
+      "league": "NCAA Hockey",
+      "homeTeam": "Boston University",
+      "awayTeam": "Boston College",
+      "startTimeLocal": "2026-02-28T00:00:00.000Z",
+      "endTimeLocal": "2026-02-28T02:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "ncaa-bu"
+    },
+    {
       "id": "ahl-1028589",
       "sport": "hockey",
       "league": "AHL",
@@ -2404,6 +2488,18 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "ncaa-bu-fg5fkg",
+      "sport": "hockey",
+      "league": "NCAA Hockey",
+      "homeTeam": "Boston College",
+      "awayTeam": "Boston University",
+      "startTimeLocal": "2026-03-01T00:00:00.000Z",
+      "endTimeLocal": "2026-03-01T02:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "ncaa-bu"
     },
     {
       "id": "ahl-1028599",
@@ -3592,6 +3688,18 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "ncaa-bu-iwrpxs",
+      "sport": "hockey",
+      "league": "NCAA Hockey",
+      "homeTeam": "Mass.-Lowell",
+      "awayTeam": "Boston University",
+      "startTimeLocal": "2026-03-07T23:00:00.000Z",
+      "endTimeLocal": "2026-03-08T01:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "ncaa-bu"
     },
     {
       "id": "ahl-1028653",
