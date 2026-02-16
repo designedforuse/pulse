@@ -13,8 +13,6 @@ const ALLOWED_DOMESTIC_LEAGUES: Record<string, { league: string; country: string
   bbl: { league: "BBL", country: "Australia" },
   "super smash": { league: "Super Smash", country: "New Zealand" },
   sa20: { league: "SA20", country: "South Africa" },
-  "the hundred": { league: "The Hundred", country: "England" },
-  hundred: { league: "The Hundred", country: "England" },
   mlc: { league: "MLC", country: "United States" },
   "major league cricket": { league: "MLC", country: "United States" },
   cpl: { league: "CPL", country: "Caribbean" },

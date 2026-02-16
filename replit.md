@@ -58,7 +58,7 @@ constants/
 ## Sports Covered
 - Hockey: NHL, AHL, ECHL, NCAA Hockey
 - Rugby: Japan League One, Super Rugby, HSBC SVNS, URC, Top 14, English Premiership
-- Cricket: IPL, BBL, Super Smash, SA20, The Hundred, MLC, CPL
+- Cricket: IPL, BBL, Super Smash, SA20, MLC, CPL
 - Soccer: MLS, NWSL, USL, EPL, Serie A, La Liga, Bundesliga, Ligue 1
 
 ## Streaming Providers
