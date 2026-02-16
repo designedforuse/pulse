@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-16T05:19:49.096Z",
+  "lastUpdated": "2026-02-16T05:33:47.765Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -21,32 +21,32 @@
   "echlPruned": 4,
   "echlWebCount": 19,
   "buCount": 8,
-  "buAdded": 8,
-  "buUpdated": 0,
+  "buAdded": 0,
+  "buUpdated": 8,
   "buPruned": 0,
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-16T05:19:49.096Z",
+    "lastRefreshAt": "2026-02-16T05:33:47.765Z",
     "sources": {
       "nhl": {
         "count": 98,
-        "lastFetchAt": "2026-02-16T05:19:49.096Z",
+        "lastFetchAt": "2026-02-16T05:33:47.765Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 215,
-        "lastFetchAt": "2026-02-16T05:19:49.096Z",
+        "lastFetchAt": "2026-02-16T05:33:47.765Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-16T05:19:49.096Z",
+        "lastFetchAt": "2026-02-16T05:33:47.765Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 8,
-        "lastFetchAt": "2026-02-16T05:19:49.096Z",
+        "lastFetchAt": "2026-02-16T05:33:47.765Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       }
@@ -1753,9 +1753,15 @@
       "homeTeam": "New Jersey Devils",
       "startTimeLocal": "2026-02-26T00:00:00.000Z",
       "endTimeLocal": "2026-02-26T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "MSG-B",
+        "MSGSN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020911",
@@ -1765,9 +1771,15 @@
       "homeTeam": "Washington Capitals",
       "startTimeLocal": "2026-02-26T00:00:00.000Z",
       "endTimeLocal": "2026-02-26T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "NBCSP",
+        "MNMT"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028576",
@@ -1851,7 +1863,16 @@
       "endTimeLocal": "2026-02-26T03:15:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TNT",
+        "truTV",
+        "HBO MAX",
+        "SN",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "nhl_2025020913",
@@ -1861,9 +1882,18 @@
       "homeTeam": "Dallas Stars",
       "startTimeLocal": "2026-02-26T01:00:00.000Z",
       "endTimeLocal": "2026-02-26T03:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FOX4",
+        "KHN/Prime",
+        "KING 5",
+        "Victory+",
+        "KONG"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020914",
@@ -1873,9 +1903,15 @@
       "homeTeam": "Utah Mammoth",
       "startTimeLocal": "2026-02-26T02:00:00.000Z",
       "endTimeLocal": "2026-02-26T04:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "Utah16",
+        "ALT"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028577",
@@ -1909,9 +1945,15 @@
       "homeTeam": "Vancouver Canucks",
       "startTimeLocal": "2026-02-26T03:00:00.000Z",
       "endTimeLocal": "2026-02-26T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNP",
+        "TSN3"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020916",
@@ -1923,7 +1965,17 @@
       "endTimeLocal": "2026-02-26T05:45:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TNT",
+        "truTV",
+        "HBO MAX",
+        "SN",
+        "SN1",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "ahl-1028584",
@@ -1945,9 +1997,15 @@
       "homeTeam": "Anaheim Ducks",
       "startTimeLocal": "2026-02-26T03:30:00.000Z",
       "endTimeLocal": "2026-02-26T06:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "victoryplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNW",
+        "Victory+"
+      ],
+      "isNational": false,
+      "providerReason": "ducks-rsn"
     },
     {
       "id": "nhl_2025020918",
@@ -1957,9 +2015,16 @@
       "homeTeam": "Boston Bruins",
       "startTimeLocal": "2026-02-27T00:00:00.000Z",
       "endTimeLocal": "2026-02-27T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNO",
+        "FDSNOH",
+        "NESN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020919",
@@ -1969,9 +2034,16 @@
       "homeTeam": "Montréal Canadiens",
       "startTimeLocal": "2026-02-27T00:00:00.000Z",
       "endTimeLocal": "2026-02-27T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TSN2",
+        "RDS",
+        "MSGSN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020920",
@@ -1981,9 +2053,16 @@
       "homeTeam": "Ottawa Senators",
       "startTimeLocal": "2026-02-27T00:00:00.000Z",
       "endTimeLocal": "2026-02-27T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TSN5",
+        "RDS2",
+        "FDSNDET"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020921",
@@ -1993,9 +2072,16 @@
       "homeTeam": "Florida Panthers",
       "startTimeLocal": "2026-02-27T00:00:00.000Z",
       "endTimeLocal": "2026-02-27T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TVAS",
+        "TSN4",
+        "SCRIPPS"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020922",
@@ -2005,9 +2091,16 @@
       "homeTeam": "Pittsburgh Penguins",
       "startTimeLocal": "2026-02-27T00:00:00.000Z",
       "endTimeLocal": "2026-02-27T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN",
+        "SN-PIT",
+        "MSG"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020923",
@@ -2017,9 +2110,15 @@
       "homeTeam": "Carolina Hurricanes",
       "startTimeLocal": "2026-02-27T00:00:00.000Z",
       "endTimeLocal": "2026-02-27T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNSO",
+        "The Spot"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020924",
@@ -2031,7 +2130,12 @@
       "endTimeLocal": "2026-02-27T03:45:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ESPN"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "nhl_2025020925",
@@ -2041,9 +2145,16 @@
       "homeTeam": "St. Louis Blues",
       "startTimeLocal": "2026-02-27T01:00:00.000Z",
       "endTimeLocal": "2026-02-27T03:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNMW",
+        "KHN/Prime",
+        "KONG"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020926",
@@ -2053,9 +2164,15 @@
       "homeTeam": "Nashville Predators",
       "startTimeLocal": "2026-02-27T01:00:00.000Z",
       "endTimeLocal": "2026-02-27T03:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNSO",
+        "CHSN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020927",
@@ -2065,9 +2182,20 @@
       "homeTeam": "Colorado Avalanche",
       "startTimeLocal": "2026-02-27T02:00:00.000Z",
       "endTimeLocal": "2026-02-27T04:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNP",
+        "TVAS",
+        "FDSNNO",
+        "KUSA",
+        "ALT",
+        "FDSNWI",
+        "KTVD"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028585",
@@ -2089,9 +2217,15 @@
       "homeTeam": "San Jose Sharks",
       "startTimeLocal": "2026-02-27T03:00:00.000Z",
       "endTimeLocal": "2026-02-27T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN1",
+        "NBCSCA"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020929",
@@ -2103,7 +2237,13 @@
       "endTimeLocal": "2026-02-27T06:15:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ESPN",
+        "SNW"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "ahl-1028586",
@@ -2125,9 +2265,16 @@
       "homeTeam": "Florida Panthers",
       "startTimeLocal": "2026-02-28T00:00:00.000Z",
       "endTimeLocal": "2026-02-28T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN",
+        "MSG-B",
+        "SCRIPPS"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020931",
@@ -2137,9 +2284,18 @@
       "homeTeam": "Washington Capitals",
       "startTimeLocal": "2026-02-28T00:00:00.000Z",
       "endTimeLocal": "2026-02-28T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN",
+        "NHLN",
+        "TVAS",
+        "MNMT",
+        "SCRIPPS"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028587",
@@ -2257,9 +2413,17 @@
       "homeTeam": "Utah Mammoth",
       "startTimeLocal": "2026-02-28T02:00:00.000Z",
       "endTimeLocal": "2026-02-28T04:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN360",
+        "FDSNNO",
+        "Utah16",
+        "FDSNWIX"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020933",
@@ -2269,9 +2433,16 @@
       "homeTeam": "Anaheim Ducks",
       "startTimeLocal": "2026-02-28T03:00:00.000Z",
       "endTimeLocal": "2026-02-28T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "victoryplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TVAS",
+        "TSN3",
+        "Victory+"
+      ],
+      "isNational": false,
+      "providerReason": "ducks-rsn"
     },
     {
       "id": "nhl_2025020934",
@@ -2283,7 +2454,14 @@
       "endTimeLocal": "2026-02-28T20:15:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ABC",
+        "SNW",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "nhl_2025020935",
@@ -2295,7 +2473,13 @@
       "endTimeLocal": "2026-02-28T22:45:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ABC",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "nhl_2025020936",
@@ -2305,9 +2489,15 @@
       "homeTeam": "San Jose Sharks",
       "startTimeLocal": "2026-02-28T21:00:00.000Z",
       "endTimeLocal": "2026-02-28T23:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN",
+        "NBCSCA"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028595",
@@ -2341,9 +2531,15 @@
       "homeTeam": "St. Louis Blues",
       "startTimeLocal": "2026-02-28T22:00:00.000Z",
       "endTimeLocal": "2026-03-01T00:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNMW",
+        "MSG"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020937",
@@ -2353,9 +2549,15 @@
       "homeTeam": "Columbus Blue Jackets",
       "startTimeLocal": "2026-02-28T23:00:00.000Z",
       "endTimeLocal": "2026-03-01T01:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNOH",
+        "MSGSN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020938",
@@ -2365,9 +2567,15 @@
       "homeTeam": "Colorado Avalanche",
       "startTimeLocal": "2026-02-28T23:00:00.000Z",
       "endTimeLocal": "2026-03-01T01:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "CHSN",
+        "ALT"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028604",
@@ -2389,9 +2597,16 @@
       "homeTeam": "Toronto Maple Leafs",
       "startTimeLocal": "2026-03-01T00:00:00.000Z",
       "endTimeLocal": "2026-03-01T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN",
+        "CBC",
+        "TVAS2"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020940",
@@ -2401,9 +2616,17 @@
       "homeTeam": "Montréal Canadiens",
       "startTimeLocal": "2026-03-01T00:00:00.000Z",
       "endTimeLocal": "2026-03-01T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNE",
+        "TVAS",
+        "CITY",
+        "MNMT"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020941",
@@ -2413,9 +2636,15 @@
       "homeTeam": "Tampa Bay Lightning",
       "startTimeLocal": "2026-03-01T00:00:00.000Z",
       "endTimeLocal": "2026-03-01T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "The Spot",
+        "MSG-B"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020942",
@@ -2425,9 +2654,15 @@
       "homeTeam": "Carolina Hurricanes",
       "startTimeLocal": "2026-03-01T00:00:00.000Z",
       "endTimeLocal": "2026-03-01T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNSO",
+        "FDSNDET"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020944",
@@ -2437,9 +2672,16 @@
       "homeTeam": "Los Angeles Kings",
       "startTimeLocal": "2026-03-01T00:00:00.000Z",
       "endTimeLocal": "2026-03-01T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNW",
+        "NHLN",
+        "FDSNW"
+      ],
+      "isNational": false,
+      "providerReason": "kings-rsn"
     },
     {
       "id": "ahl-1028594",
@@ -2533,9 +2775,15 @@
       "homeTeam": "Dallas Stars",
       "startTimeLocal": "2026-03-01T01:00:00.000Z",
       "endTimeLocal": "2026-03-01T03:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNSO",
+        "Victory+"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028602",
@@ -2617,9 +2865,19 @@
       "homeTeam": "Seattle Kraken",
       "startTimeLocal": "2026-03-01T03:00:00.000Z",
       "endTimeLocal": "2026-03-01T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "CBC",
+        "SN",
+        "TVAS",
+        "CITY",
+        "KHN/Prime",
+        "KONG"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020947",
@@ -2631,7 +2889,16 @@
       "endTimeLocal": "2026-03-01T20:45:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TNT",
+        "truTV",
+        "HBO MAX",
+        "SN360",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "ahl-1028608",
@@ -2677,9 +2944,16 @@
       "homeTeam": "Utah Mammoth",
       "startTimeLocal": "2026-03-01T21:00:00.000Z",
       "endTimeLocal": "2026-03-01T23:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN",
+        "CHSN",
+        "Utah16"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020950",
@@ -2689,9 +2963,16 @@
       "homeTeam": "San Jose Sharks",
       "startTimeLocal": "2026-03-01T21:00:00.000Z",
       "endTimeLocal": "2026-03-01T23:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TVAS",
+        "TSN3",
+        "NBCSCA"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028611",
@@ -2749,9 +3030,16 @@
       "homeTeam": "Minnesota Wild",
       "startTimeLocal": "2026-03-01T22:00:00.000Z",
       "endTimeLocal": "2026-03-02T00:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNMW",
+        "FDSNNO",
+        "FDSNWIX"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028612",
@@ -2775,7 +3063,15 @@
       "endTimeLocal": "2026-03-02T02:15:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ESPN",
+        "SN",
+        "TVAS",
+        "SCRIPPS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "nhl_2025020952",
@@ -2785,9 +3081,15 @@
       "homeTeam": "Anaheim Ducks",
       "startTimeLocal": "2026-03-02T01:00:00.000Z",
       "endTimeLocal": "2026-03-02T03:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "victoryplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNW",
+        "Victory+"
+      ],
+      "isNational": false,
+      "providerReason": "ducks-rsn"
     },
     {
       "id": "ahl-1028609",
@@ -2821,9 +3123,15 @@
       "homeTeam": "Nashville Predators",
       "startTimeLocal": "2026-03-02T19:00:00.000Z",
       "endTimeLocal": "2026-03-02T21:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNSO",
+        "FDSNDET"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020953",
@@ -2833,9 +3141,15 @@
       "homeTeam": "New York Rangers",
       "startTimeLocal": "2026-03-03T00:00:00.000Z",
       "endTimeLocal": "2026-03-03T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNOH",
+        "MSG"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028411",
@@ -2857,9 +3171,16 @@
       "homeTeam": "Toronto Maple Leafs",
       "startTimeLocal": "2026-03-03T00:30:00.000Z",
       "endTimeLocal": "2026-03-03T03:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "Prime",
+        "TVAS",
+        "NBCSP"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020956",
@@ -2869,9 +3190,16 @@
       "homeTeam": "Vancouver Canucks",
       "startTimeLocal": "2026-03-03T03:00:00.000Z",
       "endTimeLocal": "2026-03-03T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNP",
+        "TVAS",
+        "Victory+"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020957",
@@ -2881,9 +3209,16 @@
       "homeTeam": "Seattle Kraken",
       "startTimeLocal": "2026-03-03T03:00:00.000Z",
       "endTimeLocal": "2026-03-03T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNSO",
+        "KHN/Prime",
+        "KONG"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020958",
@@ -2893,9 +3228,16 @@
       "homeTeam": "Los Angeles Kings",
       "startTimeLocal": "2026-03-03T03:30:00.000Z",
       "endTimeLocal": "2026-03-03T06:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNW",
+        "ALT2",
+        "KTVD"
+      ],
+      "isNational": false,
+      "providerReason": "kings-rsn"
     },
     {
       "id": "ahl-1028623",
@@ -2929,9 +3271,17 @@
       "homeTeam": "Boston Bruins",
       "startTimeLocal": "2026-03-04T00:00:00.000Z",
       "endTimeLocal": "2026-03-04T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNP",
+        "TVAS",
+        "SN-PIT",
+        "NESN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020960",
@@ -2941,9 +3291,15 @@
       "homeTeam": "Buffalo Sabres",
       "startTimeLocal": "2026-03-04T00:00:00.000Z",
       "endTimeLocal": "2026-03-04T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "MSG-B",
+        "SCRIPPS"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020961",
@@ -2955,7 +3311,14 @@
       "endTimeLocal": "2026-03-04T02:45:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TNT",
+        "HBO MAX",
+        "SCRIPPS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "nhl_2025020962",
@@ -2965,9 +3328,15 @@
       "homeTeam": "Washington Capitals",
       "startTimeLocal": "2026-03-04T00:00:00.000Z",
       "endTimeLocal": "2026-03-04T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "Utah16",
+        "MNMT2"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020963",
@@ -2977,9 +3346,15 @@
       "homeTeam": "Columbus Blue Jackets",
       "startTimeLocal": "2026-03-04T00:00:00.000Z",
       "endTimeLocal": "2026-03-04T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNSO",
+        "FDSNOH"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028618",
@@ -3013,9 +3388,15 @@
       "homeTeam": "Winnipeg Jets",
       "startTimeLocal": "2026-03-04T01:00:00.000Z",
       "endTimeLocal": "2026-03-04T03:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TSN3",
+        "CHSN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020965",
@@ -3025,9 +3406,15 @@
       "homeTeam": "Calgary Flames",
       "startTimeLocal": "2026-03-04T02:00:00.000Z",
       "endTimeLocal": "2026-03-04T04:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN1",
+        "Victory+"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020966",
@@ -3037,9 +3424,16 @@
       "homeTeam": "Edmonton Oilers",
       "startTimeLocal": "2026-03-04T02:00:00.000Z",
       "endTimeLocal": "2026-03-04T04:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNW",
+        "TSN5",
+        "RDS2"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020967",
@@ -3051,7 +3445,15 @@
       "endTimeLocal": "2026-03-04T05:15:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TNT",
+        "truTV",
+        "HBO MAX",
+        "The Spot"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "nhl_2025020968",
@@ -3061,9 +3463,15 @@
       "homeTeam": "Anaheim Ducks",
       "startTimeLocal": "2026-03-04T03:00:00.000Z",
       "endTimeLocal": "2026-03-04T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "victoryplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "Victory+",
+        "ALT"
+      ],
+      "isNational": false,
+      "providerReason": "ducks-rsn"
     },
     {
       "id": "nhl_2025020969",
@@ -3073,9 +3481,16 @@
       "homeTeam": "San Jose Sharks",
       "startTimeLocal": "2026-03-04T03:00:00.000Z",
       "endTimeLocal": "2026-03-04T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TSN2",
+        "RDS",
+        "NBCSCA"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028626",
@@ -3097,9 +3512,15 @@
       "homeTeam": "Detroit Red Wings",
       "startTimeLocal": "2026-03-05T00:00:00.000Z",
       "endTimeLocal": "2026-03-05T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNDET",
+        "SCRIPPS"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020971",
@@ -3111,7 +3532,15 @@
       "endTimeLocal": "2026-03-05T02:45:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ESPN+",
+        "HULU",
+        "SN",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "ahl-1028619",
@@ -3181,9 +3610,16 @@
       "homeTeam": "Vancouver Canucks",
       "startTimeLocal": "2026-03-05T03:00:00.000Z",
       "endTimeLocal": "2026-03-05T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNP",
+        "TVAS",
+        "FDSNSO"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020973",
@@ -3193,9 +3629,17 @@
       "homeTeam": "Anaheim Ducks",
       "startTimeLocal": "2026-03-05T03:00:00.000Z",
       "endTimeLocal": "2026-03-05T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "victoryplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN",
+        "Victory+",
+        "MSGSN",
+        "KCOP-13"
+      ],
+      "isNational": false,
+      "providerReason": "ducks-rsn"
     },
     {
       "id": "nhl_2025020974",
@@ -3207,7 +3651,13 @@
       "endTimeLocal": "2026-03-05T05:45:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ESPN+",
+        "HULU"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "ahl-1028621",
@@ -3253,9 +3703,15 @@
       "homeTeam": "New York Rangers",
       "startTimeLocal": "2026-03-06T00:00:00.000Z",
       "endTimeLocal": "2026-03-06T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TSN4",
+        "MSG"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020976",
@@ -3265,9 +3721,15 @@
       "homeTeam": "Philadelphia Flyers",
       "startTimeLocal": "2026-03-06T00:00:00.000Z",
       "endTimeLocal": "2026-03-06T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "Utah16",
+        "NBCSP"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020977",
@@ -3277,9 +3739,17 @@
       "homeTeam": "Pittsburgh Penguins",
       "startTimeLocal": "2026-03-06T00:00:00.000Z",
       "endTimeLocal": "2026-03-06T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN",
+        "TVAS",
+        "SN-PIT",
+        "MSG-B"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020978",
@@ -3291,7 +3761,12 @@
       "endTimeLocal": "2026-03-06T02:45:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ESPN"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "nhl_2025020979",
@@ -3301,9 +3776,15 @@
       "homeTeam": "Nashville Predators",
       "startTimeLocal": "2026-03-06T01:00:00.000Z",
       "endTimeLocal": "2026-03-06T03:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNSO",
+        "NESN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020980",
@@ -3313,9 +3794,15 @@
       "homeTeam": "Winnipeg Jets",
       "startTimeLocal": "2026-03-06T01:00:00.000Z",
       "endTimeLocal": "2026-03-06T03:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TSN3",
+        "The Spot"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020981",
@@ -3325,9 +3812,16 @@
       "homeTeam": "Calgary Flames",
       "startTimeLocal": "2026-03-06T02:00:00.000Z",
       "endTimeLocal": "2026-03-06T04:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNW",
+        "TSN5",
+        "RDS2"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020982",
@@ -3339,7 +3833,14 @@
       "endTimeLocal": "2026-03-06T05:15:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ESPN",
+        "SN",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "nhl_2025020983",
@@ -3349,9 +3850,17 @@
       "homeTeam": "Detroit Red Wings",
       "startTimeLocal": "2026-03-07T00:00:00.000Z",
       "endTimeLocal": "2026-03-07T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNE",
+        "TVAS",
+        "FDSNDET",
+        "SCRIPPS"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028630",
@@ -3445,9 +3954,15 @@
       "homeTeam": "Dallas Stars",
       "startTimeLocal": "2026-03-07T01:00:00.000Z",
       "endTimeLocal": "2026-03-07T03:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "Victory+",
+        "ALT"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028634",
@@ -3493,9 +4008,15 @@
       "homeTeam": "Chicago Blackhawks",
       "startTimeLocal": "2026-03-07T01:30:00.000Z",
       "endTimeLocal": "2026-03-07T04:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNP",
+        "CHSN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020986",
@@ -3505,9 +4026,15 @@
       "homeTeam": "Edmonton Oilers",
       "startTimeLocal": "2026-03-07T02:00:00.000Z",
       "endTimeLocal": "2026-03-07T04:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNW",
+        "FDSNSO"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020987",
@@ -3517,9 +4044,17 @@
       "homeTeam": "Anaheim Ducks",
       "startTimeLocal": "2026-03-07T02:00:00.000Z",
       "endTimeLocal": "2026-03-07T04:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "victoryplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TSN2",
+        "RDS",
+        "Victory+",
+        "KCOP-13"
+      ],
+      "isNational": false,
+      "providerReason": "ducks-rsn"
     },
     {
       "id": "nhl_2025020988",
@@ -3529,9 +4064,17 @@
       "homeTeam": "Vegas Golden Knights",
       "startTimeLocal": "2026-03-07T03:00:00.000Z",
       "endTimeLocal": "2026-03-07T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNE",
+        "FDSNNO",
+        "FDSNWI",
+        "SCRIPPS"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020989",
@@ -3541,9 +4084,15 @@
       "homeTeam": "San Jose Sharks",
       "startTimeLocal": "2026-03-07T03:00:00.000Z",
       "endTimeLocal": "2026-03-07T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNMW",
+        "NBCSCA"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028628",
@@ -3603,7 +4152,14 @@
       "endTimeLocal": "2026-03-07T20:15:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ABC",
+        "SN1",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "nhl_2025020991",
@@ -3615,7 +4171,14 @@
       "endTimeLocal": "2026-03-07T22:45:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ABC",
+        "SN",
+        "SN1"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "ahl-1028649",
@@ -3661,9 +4224,15 @@
       "homeTeam": "Buffalo Sabres",
       "startTimeLocal": "2026-03-07T22:30:00.000Z",
       "endTimeLocal": "2026-03-08T01:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNSO",
+        "MSG-B"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020993",
@@ -3673,9 +4242,15 @@
       "homeTeam": "Pittsburgh Penguins",
       "startTimeLocal": "2026-03-07T22:30:00.000Z",
       "endTimeLocal": "2026-03-08T01:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN-PIT",
+        "NBCSP"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028648",
@@ -3721,9 +4296,16 @@
       "homeTeam": "Toronto Maple Leafs",
       "startTimeLocal": "2026-03-08T00:00:00.000Z",
       "endTimeLocal": "2026-03-08T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNO",
+        "CBC",
+        "The Spot"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020995",
@@ -3733,9 +4315,15 @@
       "homeTeam": "Columbus Blue Jackets",
       "startTimeLocal": "2026-03-08T00:00:00.000Z",
       "endTimeLocal": "2026-03-08T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNOH",
+        "Utah16"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020996",
@@ -3745,9 +4333,14 @@
       "homeTeam": "Winnipeg Jets",
       "startTimeLocal": "2026-03-08T00:00:00.000Z",
       "endTimeLocal": "2026-03-08T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020997",
@@ -3757,9 +4350,18 @@
       "homeTeam": "Los Angeles Kings",
       "startTimeLocal": "2026-03-08T00:00:00.000Z",
       "endTimeLocal": "2026-03-08T02:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNE",
+        "TVAS",
+        "CITY",
+        "FDSNW",
+        "KCAL"
+      ],
+      "isNational": false,
+      "providerReason": "kings-rsn"
     },
     {
       "id": "ahl-1028643",
@@ -3853,9 +4455,16 @@
       "homeTeam": "Calgary Flames",
       "startTimeLocal": "2026-03-08T03:00:00.000Z",
       "endTimeLocal": "2026-03-08T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN",
+        "CBC",
+        "FDSNSO"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025020999",
@@ -3865,9 +4474,15 @@
       "homeTeam": "San Jose Sharks",
       "startTimeLocal": "2026-03-08T03:00:00.000Z",
       "endTimeLocal": "2026-03-08T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "NBCSCA",
+        "MSGSN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025021000",
@@ -3877,9 +4492,18 @@
       "homeTeam": "Seattle Kraken",
       "startTimeLocal": "2026-03-08T03:00:00.000Z",
       "endTimeLocal": "2026-03-08T05:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN",
+        "TVAS",
+        "CITY",
+        "KHN/Prime",
+        "KONG"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028641",
@@ -3915,7 +4539,15 @@
       "endTimeLocal": "2026-03-08T20:45:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TNT",
+        "truTV",
+        "HBO MAX",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "ahl-1028654",
@@ -3999,7 +4631,16 @@
       "endTimeLocal": "2026-03-08T23:15:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TNT",
+        "truTV",
+        "HBO MAX",
+        "SNW",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "nhl_2025021003",
@@ -4009,9 +4650,15 @@
       "homeTeam": "Buffalo Sabres",
       "startTimeLocal": "2026-03-08T22:00:00.000Z",
       "endTimeLocal": "2026-03-09T00:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "The Spot",
+        "MSG-B"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "nhl_2025021004",
@@ -4021,9 +4668,15 @@
       "homeTeam": "Dallas Stars",
       "startTimeLocal": "2026-03-08T22:00:00.000Z",
       "endTimeLocal": "2026-03-09T00:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "disneyplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "CHSN",
+        "Victory+"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028656",
@@ -4059,7 +4712,12 @@
       "endTimeLocal": "2026-03-09T01:45:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ESPN"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "nhl_2025021006",
@@ -4069,9 +4727,16 @@
       "homeTeam": "Anaheim Ducks",
       "startTimeLocal": "2026-03-09T01:00:00.000Z",
       "endTimeLocal": "2026-03-09T03:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "victoryplus",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNMW",
+        "Victory+",
+        "KCOP-13"
+      ],
+      "isNational": false,
+      "providerReason": "ducks-rsn"
     },
     {
       "id": "nhl_2025021007",
@@ -4083,7 +4748,13 @@
       "endTimeLocal": "2026-03-09T04:15:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
-      "source": "nhl"
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ESPN",
+        "SNW"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     }
   ]
 }
