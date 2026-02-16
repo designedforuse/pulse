@@ -23,13 +23,13 @@ import Animated, {
 } from "react-native-reanimated";
 import Colors from "@/constants/colors";
 import {
-  getAllEvents,
   getProviderById,
   getFavorites,
   formatStartTime,
   getSportColor,
   type SportEvent,
 } from "@/lib/data";
+import { useEvents } from "@/lib/events-context";
 import {
   getLiveEventsNow,
   getUpNextEvents,
@@ -160,7 +160,7 @@ interface SectionData {
 export default function LiveNowScreen() {
   const insets = useSafeAreaInsets();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
-  const allEvents = getAllEvents();
+  const { allEvents } = useEvents();
   const favorites = getFavorites();
 
   const [now, setNow] = useState<Date>(new Date());

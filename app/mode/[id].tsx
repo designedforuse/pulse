@@ -15,7 +15,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import Colors from "@/constants/colors";
 import {
   getModeById,
-  getEventsForPack,
   getProviderById,
   getFavorites,
   formatStartTime,
@@ -23,6 +22,7 @@ import {
   type SportEvent,
   type Pack,
 } from "@/lib/data";
+import { useEvents } from "@/lib/events-context";
 import { isEventLive } from "@/utils/time";
 import { favoriteInvolved } from "@/utils/favorites";
 
@@ -101,6 +101,7 @@ interface SectionData {
 export default function ModeDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const mode = getModeById(id);
+  const { getEventsForPack } = useEvents();
   const favorites = getFavorites();
   const [favoritesFirst, setFavoritesFirst] = useState(true);
   const [loaded, setLoaded] = useState(false);

@@ -14,17 +14,17 @@ import * as Haptics from "expo-haptics";
 import * as IntentLauncher from "expo-intent-launcher";
 import Colors from "@/constants/colors";
 import {
-  getAllEvents,
   getProviderById,
   formatStartTime,
   getSportColor,
 } from "@/lib/data";
+import { useEvents } from "@/lib/events-context";
 import { isEventLive } from "@/utils/time";
 
 export default function EventSheet() {
   const { eventId } = useLocalSearchParams<{ eventId: string }>();
-  const events = getAllEvents();
-  const event = events.find((e) => e.id === eventId);
+  const { findEvent } = useEvents();
+  const event = findEvent(eventId);
 
   if (!event) {
     return (
