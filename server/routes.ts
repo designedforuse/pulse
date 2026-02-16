@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "node:http";
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { execFile } from "node:child_process";
 
 const GENERATED_EVENTS_PATH = path.resolve(
   process.cwd(),
@@ -57,6 +58,42 @@ export async function registerRoutes(app: Express): Promise<Server> {
       lastUpdated: generated.lastUpdated,
       events: filtered,
     });
+  });
+
+  app.post("/api/refresh", (req, res) => {
+    const daysParam = parseInt(req.query.days as string, 10) || 14;
+    const scriptPath = path.resolve(process.cwd(), "scripts", "updateSchedule.ts");
+
+    console.log(`[refresh] Running updateSchedule.ts --days=${daysParam}...`);
+
+    execFile(
+      "npx",
+      ["tsx", scriptPath, `--days=${daysParam}`],
+      {
+        cwd: process.cwd(),
+        timeout: 60000,
+        env: { ...process.env },
+      },
+      (error, stdout, stderr) => {
+        if (stdout) console.log("[refresh] stdout:", stdout);
+        if (stderr) console.error("[refresh] stderr:", stderr);
+
+        if (error) {
+          console.error("[refresh] Script failed:", error.message);
+          return res.status(500).json({
+            success: false,
+            error: error.message,
+          });
+        }
+
+        const generated = loadGeneratedEvents();
+        return res.json({
+          success: true,
+          lastUpdated: generated?.lastUpdated || null,
+          eventCount: generated?.events?.length || 0,
+        });
+      }
+    );
   });
 
   const httpServer = createServer(app);

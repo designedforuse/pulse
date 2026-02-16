@@ -18,6 +18,7 @@ export interface SportEvent {
   endTimeLocal?: string;
   providerId: string;
   isLive?: boolean;
+  source?: string;
 }
 
 export interface Pack {

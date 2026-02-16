@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
   View,
   ScrollView,
   Platform,
+  Pressable,
+  ActivityIndicator,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import * as Haptics from "expo-haptics";
+import { useQueryClient } from "@tanstack/react-query";
 import Colors from "@/constants/colors";
 import { getProviders, getFavorites, getSportColor, type Favorites } from "@/lib/data";
+import { apiRequest } from "@/lib/query-client";
 
 function FavoritesSection({ favorites }: { favorites: Favorites }) {
   const sportOrder = ["hockey", "rugby", "cricket", "soccer"];
@@ -83,6 +88,33 @@ export default function SettingsScreen() {
   const providers = getProviders();
   const favorites = getFavorites();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
+  const queryClient = useQueryClient();
+
+  const [refreshing, setRefreshing] = useState(false);
+  const [refreshResult, setRefreshResult] = useState<string | null>(null);
+
+  const handleRefresh = async () => {
+    if (refreshing) return;
+    setRefreshing(true);
+    setRefreshResult(null);
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    }
+    try {
+      const res = await apiRequest("POST", "/api/refresh?days=14");
+      const data = await res.json();
+      if (data.success) {
+        setRefreshResult(`Updated: ${data.eventCount} events loaded`);
+        queryClient.invalidateQueries({ queryKey: ["/api/events?days=14"] });
+      } else {
+        setRefreshResult("Refresh failed. Try again.");
+      }
+    } catch {
+      setRefreshResult("Refresh failed. Check connection.");
+    } finally {
+      setRefreshing(false);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -104,6 +136,55 @@ export default function SettingsScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>My Favorite Teams</Text>
           <FavoritesSection favorites={favorites} />
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Schedule Data</Text>
+          <View style={styles.card}>
+            <Pressable
+              onPress={handleRefresh}
+              disabled={refreshing}
+              style={({ pressed }) => [
+                styles.refreshRow,
+                { opacity: pressed && !refreshing ? 0.7 : 1 },
+              ]}
+              testID="refresh-schedules-btn"
+            >
+              <View style={styles.refreshLeft}>
+                {refreshing ? (
+                  <ActivityIndicator size="small" color={Colors.accent} />
+                ) : (
+                  <Ionicons name="refresh" size={20} color={Colors.accent} />
+                )}
+                <View>
+                  <Text style={styles.refreshLabel}>Refresh Schedules</Text>
+                  <Text style={styles.refreshDesc}>
+                    Pull latest NHL + AHL game data
+                  </Text>
+                </View>
+              </View>
+              {!refreshing && (
+                <Ionicons name="chevron-forward" size={16} color={Colors.textMuted} />
+              )}
+            </Pressable>
+            {refreshResult && (
+              <View style={styles.refreshResultRow}>
+                <Ionicons
+                  name={refreshResult.startsWith("Updated") ? "checkmark-circle" : "alert-circle"}
+                  size={14}
+                  color={refreshResult.startsWith("Updated") ? Colors.accent : Colors.live}
+                />
+                <Text
+                  style={[
+                    styles.refreshResultText,
+                    { color: refreshResult.startsWith("Updated") ? Colors.accent : Colors.live },
+                  ]}
+                >
+                  {refreshResult}
+                </Text>
+              </View>
+            )}
+          </View>
         </View>
 
         <View style={styles.section}>
@@ -366,5 +447,41 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
     flex: 1,
     lineHeight: 20,
+  },
+  refreshRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+  },
+  refreshLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    flex: 1,
+  },
+  refreshLabel: {
+    fontSize: 15,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_500Medium",
+  },
+  refreshDesc: {
+    fontSize: 12,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
+    marginTop: 2,
+  },
+  refreshResultRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    paddingHorizontal: 14,
+    paddingBottom: 12,
+    paddingTop: 2,
+  },
+  refreshResultText: {
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
   },
 });
