@@ -118,7 +118,9 @@ function EventRow({ event, isLive, now, isFav }: { event: SportEvent; isLive: bo
             )}
           </View>
           <Text style={styles.matchupText}>
-            {event.awayTeam} @ {event.homeTeam}
+            {event.eventType === "session" && event.sessionTitle
+              ? event.sessionTitle
+              : `${event.awayTeam} @ ${event.homeTeam}`}
           </Text>
         </View>
         <View style={styles.rightContent}>

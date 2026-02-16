@@ -134,11 +134,17 @@ export default function EventSheet() {
             )}
           </View>
 
-          <View style={styles.matchupContainer}>
-            <Text style={styles.teamName}>{event.awayTeam}</Text>
-            <Text style={styles.vsText}>vs</Text>
-            <Text style={styles.teamName}>{event.homeTeam}</Text>
-          </View>
+          {event.eventType === "session" && event.sessionTitle ? (
+            <View style={styles.matchupContainer}>
+              <Text style={styles.teamName}>{event.sessionTitle}</Text>
+            </View>
+          ) : (
+            <View style={styles.matchupContainer}>
+              <Text style={styles.teamName}>{event.awayTeam}</Text>
+              <Text style={styles.vsText}>vs</Text>
+              <Text style={styles.teamName}>{event.homeTeam}</Text>
+            </View>
+          )}
 
           <View style={styles.timeRow}>
             <Ionicons name="time-outline" size={15} color={Colors.textSecondary} />

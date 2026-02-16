@@ -93,15 +93,23 @@ function EventCard({
         ) : null}
       </View>
 
-      <View style={styles.matchupRow}>
-        <Text style={styles.teamName} numberOfLines={1}>
-          {event.awayTeam}
-        </Text>
-        <Text style={styles.atText}>@</Text>
-        <Text style={styles.teamName} numberOfLines={1}>
-          {event.homeTeam}
-        </Text>
-      </View>
+      {event.eventType === "session" && event.sessionTitle ? (
+        <View style={styles.matchupRow}>
+          <Text style={styles.teamName} numberOfLines={1}>
+            {event.sessionTitle}
+          </Text>
+        </View>
+      ) : (
+        <View style={styles.matchupRow}>
+          <Text style={styles.teamName} numberOfLines={1}>
+            {event.awayTeam}
+          </Text>
+          <Text style={styles.atText}>@</Text>
+          <Text style={styles.teamName} numberOfLines={1}>
+            {event.homeTeam}
+          </Text>
+        </View>
+      )}
 
       <View style={styles.eventBottomRow}>
         <View style={styles.timeContainer}>
