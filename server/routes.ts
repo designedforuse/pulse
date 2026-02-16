@@ -321,9 +321,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const echl = events.filter((e: any) => (e.source || "").startsWith("echl")).length;
     const ncaa = events.filter((e: any) => (e.source || "").startsWith("ncaa")).length;
     const rugby = events.filter((e: any) => e.source === "rugby").length;
+    const svnsSessions = events.filter((e: any) => e.leagueKey === "svns" && e.eventType === "session").length;
     const other = events.length - nhl - ahl - echl - ncaa - rugby;
     return res.json({
-      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, other, total: events.length,
       lastUpdated: generated.lastUpdated,
       ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",
