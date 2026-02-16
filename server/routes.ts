@@ -174,6 +174,119 @@ export async function registerRoutes(app: Express): Promise<Server> {
     );
   });
 
+  app.get("/api/debug/echl-check", async (_req, res) => {
+    const apiKey = process.env.API_HOCKEY_KEY;
+    if (!apiKey) {
+      return res.json({ error: "API_HOCKEY_KEY not configured", conclusion: "Cannot test — no API key." });
+    }
+
+    const API_HOCKEY_BASE = "https://v1.hockey.api-sports.io";
+    const LEAGUE_CACHE_PATH = path.resolve(process.cwd(), "data", "leagueIds.json");
+    const today = new Date().toISOString().split("T")[0];
+
+    let cachedLeagueId: number | null = null;
+    try {
+      const raw = fs.readFileSync(LEAGUE_CACHE_PATH, "utf-8");
+      const cache = JSON.parse(raw);
+      cachedLeagueId = cache.echlLeagueId || null;
+    } catch {}
+
+    let leagueId = cachedLeagueId || 59;
+
+    const seasonsToTry = [2024, 2025, 2026];
+    const seasonResults: any[] = [];
+
+    for (const season of seasonsToTry) {
+      try {
+        const url = `${API_HOCKEY_BASE}/games?league=${leagueId}&season=${season}&date=${today}`;
+        const r = await fetch(url, { headers: { "x-apisports-key": apiKey } });
+        const data: any = await r.json();
+        const errors = data.errors && Object.keys(data.errors).length > 0 ? data.errors : null;
+        const games = data.response || [];
+        const entry: any = {
+          season,
+          date: today,
+          status: errors ? "error" : "ok",
+          errorDetail: errors || undefined,
+          gameCount: games.length,
+        };
+        if (games.length > 0) {
+          const g = games[0];
+          entry.sampleGame = {
+            id: g.id,
+            date: g.date,
+            time: g.time,
+            home: g.teams?.home?.name,
+            away: g.teams?.away?.name,
+            statusShort: g.status?.short,
+          };
+        }
+        seasonResults.push(entry);
+      } catch (err: any) {
+        seasonResults.push({ season, date: today, status: "fetch_error", errorDetail: err.message, gameCount: 0 });
+      }
+    }
+
+    let noSeasonResult: any = null;
+    try {
+      const url = `${API_HOCKEY_BASE}/games?league=${leagueId}&date=${today}`;
+      const r = await fetch(url, { headers: { "x-apisports-key": apiKey } });
+      const data: any = await r.json();
+      const errors = data.errors && Object.keys(data.errors).length > 0 ? data.errors : null;
+      const games = data.response || [];
+      noSeasonResult = {
+        date: today,
+        status: errors ? "error" : "ok",
+        errorDetail: errors || undefined,
+        gameCount: games.length,
+      };
+      if (games.length > 0) {
+        const g = games[0];
+        noSeasonResult.sampleGame = {
+          id: g.id, date: g.date, time: g.time,
+          home: g.teams?.home?.name, away: g.teams?.away?.name,
+          statusShort: g.status?.short,
+        };
+      }
+    } catch (err: any) {
+      noSeasonResult = { date: today, status: "fetch_error", errorDetail: err.message, gameCount: 0 };
+    }
+
+    const working = seasonResults.find(s => s.status === "ok" && s.gameCount > 0);
+    const okButEmpty = seasonResults.find(s => s.status === "ok" && s.gameCount === 0);
+    const allBlocked = seasonResults.every(s => s.status === "error");
+
+    let conclusion: string;
+    if (working) {
+      conclusion = `Season ${working.season} returns ${working.gameCount} games for ${today}. Use this season.`;
+    } else if (allBlocked) {
+      conclusion = "All tested seasons are blocked by the free plan. An API upgrade is needed.";
+    } else if (okButEmpty) {
+      conclusion = `Season ${okButEmpty.season} is accessible but has 0 games for ${today} (may be an off-day). Try again on a game day.`;
+    } else {
+      conclusion = "Mixed results. Review seasonsTried for details.";
+    }
+
+    if (working) {
+      try {
+        const cache = JSON.parse(fs.readFileSync(LEAGUE_CACHE_PATH, "utf-8"));
+        cache.echlCurrentSeason = working.season;
+        cache.lastResolved = new Date().toISOString();
+        fs.writeFileSync(LEAGUE_CACHE_PATH, JSON.stringify(cache, null, 2));
+        conclusion += ` (Updated cache to season ${working.season}.)`;
+      } catch {}
+    }
+
+    return res.json({
+      cachedLeagueId,
+      leagueIdUsed: leagueId,
+      dateChecked: today,
+      seasonsTried: seasonResults,
+      noSeasonCall: noSeasonResult,
+      conclusion,
+    });
+  });
+
   app.get("/api/debug/sources", (_req, res) => {
     const generated = loadGeneratedEvents();
     if (!generated || !generated.events) {

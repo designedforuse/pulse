@@ -200,6 +200,41 @@ function gameToEvent(game: ApiHockeyGame): AppEvent {
   };
 }
 
+async function probeBestSeason(apiKey: string, leagueId: number, cachedSeason: number): Promise<number | null> {
+  const today = formatDate(new Date());
+  const seasonsToTry = [cachedSeason, cachedSeason - 1, cachedSeason + 1].filter(
+    (s, i, arr) => arr.indexOf(s) === i
+  );
+
+  console.log(`  ECHL: Probing seasons ${seasonsToTry.join(", ")} for date ${today}...`);
+
+  for (const season of seasonsToTry) {
+    const result = await fetchEchlGamesForDate(apiKey, leagueId, season, today);
+    if (result.planError) {
+      console.log(`  ECHL: Season ${season} — blocked by plan`);
+      continue;
+    }
+    if (result.games.length > 0) {
+      console.log(`  ECHL: Season ${season} — ${result.games.length} games found!`);
+      return season;
+    }
+    console.log(`  ECHL: Season ${season} — accessible but 0 games on ${today}`);
+  }
+
+  const yesterdayDate = new Date(Date.now() - 86400000);
+  const yesterday = formatDate(yesterdayDate);
+  for (const season of seasonsToTry) {
+    const result = await fetchEchlGamesForDate(apiKey, leagueId, season, yesterday);
+    if (result.planError) continue;
+    if (result.games.length > 0) {
+      console.log(`  ECHL: Season ${season} — ${result.games.length} games found on ${yesterday}!`);
+      return season;
+    }
+  }
+
+  return null;
+}
+
 export async function fetchEchlEvents(): Promise<AppEvent[]> {
   const apiKey = process.env.API_HOCKEY_KEY;
   if (!apiKey) {
@@ -213,7 +248,20 @@ export async function fetchEchlEvents(): Promise<AppEvent[]> {
     return [];
   }
 
-  const { leagueId, currentSeason } = info;
+  let { leagueId, currentSeason } = info;
+
+  const probedSeason = await probeBestSeason(apiKey, leagueId, currentSeason);
+  if (probedSeason !== null && probedSeason !== currentSeason) {
+    console.log(`  ECHL: Switching from cached season ${currentSeason} to probed season ${probedSeason}`);
+    currentSeason = probedSeason;
+    const cache = loadLeagueCache();
+    cache.echlCurrentSeason = probedSeason;
+    cache.lastResolved = new Date().toISOString();
+    saveLeagueCache(cache);
+  } else if (probedSeason === null) {
+    console.warn(`  ECHL: No accessible season with games found. Will attempt fetch with season ${currentSeason} anyway.`);
+  }
+
   const now = new Date();
   const startDate = new Date(now.getTime() - 7 * 86400000);
   const endDate = new Date(now.getTime() + 21 * 86400000);
