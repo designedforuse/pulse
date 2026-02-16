@@ -135,8 +135,6 @@ interface SectionData {
 function sortEvents(
   events: SportEvent[],
   now: Date,
-  favoritesFirst: boolean,
-  favorites: ReturnType<typeof getFavorites>,
   includeCompleted: boolean
 ): SportEvent[] {
   return [...events].sort((a, b) => {
@@ -150,12 +148,6 @@ function sortEvents(
       if (aCompleted !== bCompleted) return aCompleted - bCompleted;
     }
 
-    if (favoritesFirst) {
-      const aFav = favoriteInvolved(a, favorites) ? 1 : 0;
-      const bFav = favoriteInvolved(b, favorites) ? 1 : 0;
-      if (bFav !== aFav) return bFav - aFav;
-    }
-
     return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
   });
 }
@@ -165,18 +157,18 @@ export default function ModeDetailScreen() {
   const mode = getModeById(id);
   const { getEventsForPack, debugShowAll } = useEvents();
   const favorites = getFavorites();
-  const [favoritesFirst, setFavoritesFirst] = useState(true);
+  const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     AsyncStorage.getItem(PREF_KEY).then((val) => {
-      if (val !== null) setFavoritesFirst(val === "true");
+      if (val !== null) setFavoritesOnly(val === "true");
       setLoaded(true);
     });
   }, []);
 
   const handleToggle = (val: boolean) => {
-    setFavoritesFirst(val);
+    setFavoritesOnly(val);
     AsyncStorage.setItem(PREF_KEY, val.toString());
   };
 
@@ -205,8 +197,14 @@ export default function ModeDetailScreen() {
   const sections: SectionData[] = useMemo(() => {
     const result: SectionData[] = [];
     for (const pd of packData) {
-      const thisSorted = sortEvents(pd.thisWeekend, now, favoritesFirst, favorites, true);
-      const nextSorted = sortEvents(pd.nextWeekend, now, favoritesFirst, favorites, false);
+      const thisFiltered = favoritesOnly
+        ? pd.thisWeekend.filter((e) => favoriteInvolved(e, favorites))
+        : pd.thisWeekend;
+      const nextFiltered = favoritesOnly
+        ? pd.nextWeekend.filter((e) => favoriteInvolved(e, favorites))
+        : pd.nextWeekend;
+      const thisSorted = sortEvents(thisFiltered, now, true);
+      const nextSorted = sortEvents(nextFiltered, now, false);
 
       const bothEmpty = thisSorted.length === 0 && nextSorted.length === 0;
 
@@ -248,7 +246,7 @@ export default function ModeDetailScreen() {
       });
     }
     return result;
-  }, [packData, favoritesFirst, favorites, now, debugShowAll, windows]);
+  }, [packData, favoritesOnly, favorites, now, debugShowAll, windows]);
 
   const populatedSections = useMemo(() => sections.filter((s) => s.data.length > 0), [sections]);
   const allEmpty = useMemo(() => sections.every((s) => s.data.length === 0), [sections]);
@@ -298,12 +296,12 @@ export default function ModeDetailScreen() {
       </View>
       <View style={styles.toggleRow}>
         <Ionicons name="star" size={14} color={Colors.favStar} />
-        <Text style={styles.toggleLabel}>Favorites first</Text>
+        <Text style={styles.toggleLabel}>Favorites only</Text>
         <Switch
-          value={favoritesFirst}
+          value={favoritesOnly}
           onValueChange={handleToggle}
           trackColor={{ false: Colors.border, true: Colors.accent + "55" }}
-          thumbColor={favoritesFirst ? Colors.accent : Colors.textMuted}
+          thumbColor={favoritesOnly ? Colors.accent : Colors.textMuted}
           style={styles.switch}
         />
       </View>
