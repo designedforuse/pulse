@@ -100,6 +100,9 @@ export default function SettingsScreen() {
     nhlCount?: number;
     ahlCount?: number;
     ahlKeyUsed?: string | null;
+    ahlAdded?: number;
+    ahlUpdated?: number;
+    ahlPruned?: number;
   } | null>(null);
 
   const handleRefresh = async () => {
@@ -119,6 +122,9 @@ export default function SettingsScreen() {
           nhlCount: data.nhlCount,
           ahlCount: data.ahlCount,
           ahlKeyUsed: data.ahlKeyUsed,
+          ahlAdded: data.ahlAdded,
+          ahlUpdated: data.ahlUpdated,
+          ahlPruned: data.ahlPruned,
         });
         queryClient.invalidateQueries({ queryKey: ["/api/events?days=14"] });
       } else {
@@ -210,6 +216,13 @@ export default function SettingsScreen() {
                       refreshResult.ahlCount === 0 && { color: Colors.live },
                     ]}>
                       AHL: {refreshResult.ahlCount ?? 0}
+                    </Text>
+                  </View>
+                )}
+                {refreshResult.success && (refreshResult.ahlAdded !== undefined || refreshResult.ahlUpdated !== undefined) && (
+                  <View style={styles.refreshCountsRow}>
+                    <Text style={styles.refreshCountText}>
+                      AHL cache: +{refreshResult.ahlAdded ?? 0} new, ~{refreshResult.ahlUpdated ?? 0} updated, -{refreshResult.ahlPruned ?? 0} pruned
                     </Text>
                   </View>
                 )}

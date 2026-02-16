@@ -162,6 +162,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
           nhlCount: generated?.nhlCount ?? 0,
           ahlCount: generated?.ahlCount ?? 0,
           ahlKeyUsed: generated?.ahlKeyUsed ?? null,
+          ahlAdded: generated?.ahlAdded ?? 0,
+          ahlUpdated: generated?.ahlUpdated ?? 0,
+          ahlPruned: generated?.ahlPruned ?? 0,
         });
       }
     );
