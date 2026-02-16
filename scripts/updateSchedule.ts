@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { fetchAhlEvents, mergeAhlEvents } from "./updateAhlSchedule";
 import { fetchEchlEvents, mergeEchlEvents } from "./updateEchlSchedule";
+import { fetchBuEvents, mergeBuEvents } from "./updateBuHockey";
 
 const NHL_API_BASE = "https://api-web.nhle.com/v1";
 const OUTPUT_PATH = path.resolve(__dirname, "../data/generatedEvents.json");
@@ -173,18 +174,22 @@ async function main() {
 
   const existingAhl = loadExistingByPrefix("ahl-");
   const existingEchl = loadExistingByPrefix("echl-");
+  const existingBu = loadExistingByPrefix("ncaa-bu-");
   console.log(`Existing cached AHL events: ${existingAhl.length}`);
   console.log(`Existing cached ECHL events: ${existingEchl.length}`);
+  console.log(`Existing cached BU events: ${existingBu.length}`);
 
-  const [nhlEvents, ahlFetchResult, echlFetchResult] = await Promise.all([
+  const [nhlEvents, ahlFetchResult, echlFetchResult, buFetchResult] = await Promise.all([
     fetchNHLEvents(days),
     fetchAhlEvents(),
     fetchEchlEvents(),
+    fetchBuEvents(),
   ]);
 
   const now = new Date();
   const ahlResult = mergeAhlEvents(existingAhl, ahlFetchResult.events, now);
   const echlResult = mergeEchlEvents(existingEchl, echlFetchResult.events, now);
+  const buResult = mergeBuEvents(existingBu, buFetchResult.events, now);
 
   const ahlSourceLabel = ahlFetchResult.sourceUsed === "hockeytech"
     ? "HockeyTech"
@@ -195,8 +200,10 @@ async function main() {
   console.log(`  AHL merge: +${ahlResult.added} added, ~${ahlResult.updated} updated, -${ahlResult.pruned} pruned → ${ahlResult.merged.length} total`);
   console.log(`  ECHL merge: +${echlResult.added} added, ~${echlResult.updated} updated, -${echlResult.pruned} pruned → ${echlResult.merged.length} total`);
   console.log(`  ECHL source: ${echlFetchResult.sourceUsed}${echlFetchResult.webCount > 0 ? ` (${echlFetchResult.webCount} from web)` : ""}`);
+  console.log(`  BU source: ${buFetchResult.sourceUsed} (${buFetchResult.totalParsed} parsed)`);
+  console.log(`  BU merge: +${buResult.added} added, ~${buResult.updated} updated, -${buResult.pruned} pruned → ${buResult.merged.length} total`);
 
-  const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged].sort(
+  const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged, ...buResult.merged].sort(
     (a, b) =>
       new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
   );
@@ -230,15 +237,22 @@ async function main() {
         sourceName: echlSourceName,
         teamFilter: "Tulsa Oilers",
       },
+      ncaa: {
+        count: buResult.merged.length,
+        lastFetchAt: buFetchResult.events.length > 0 ? nowIso : (prevMeta?.sources?.ncaa?.lastFetchAt || nowIso),
+        sourceName: "College Hockey News",
+        teamFilter: "Boston University",
+      },
     },
   };
 
   const output = {
     lastUpdated: nowIso,
-    sources: ["NHL API (api-web.nhle.com)", "AHL (HockeyTech / Odds API fallback)", "ECHL (API-Hockey / HockeyTech web)"],
+    sources: ["NHL API (api-web.nhle.com)", "AHL (HockeyTech / Odds API fallback)", "ECHL (API-Hockey / HockeyTech web)", "NCAA (College Hockey News)"],
     ahlSourceUsed: ahlFetchResult.sourceUsed,
     ahlOddsKeyUsed: ahlFetchResult.detectedOddsKey,
     echlSourceUsed: echlFetchResult.sourceUsed,
+    buSourceUsed: buFetchResult.sourceUsed,
     nhlCount: nhlEvents.length,
     ahlCount: ahlResult.merged.length,
     ahlAdded: ahlResult.added,
@@ -249,13 +263,17 @@ async function main() {
     echlUpdated: echlResult.updated,
     echlPruned: echlResult.pruned,
     echlWebCount: echlFetchResult.webCount,
+    buCount: buResult.merged.length,
+    buAdded: buResult.added,
+    buUpdated: buResult.updated,
+    buPruned: buResult.pruned,
     generatedMeta,
     events: allEvents,
   };
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
   console.log(
-    `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlResult.merged.length} AHL + ${echlResult.merged.length} ECHL) to ${OUTPUT_PATH}`
+    `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlResult.merged.length} AHL + ${echlResult.merged.length} ECHL + ${buResult.merged.length} NCAA) to ${OUTPUT_PATH}`
   );
   console.log(`AHL source: ${ahlSourceLabel}`);
   if (allEvents.length > 0) {

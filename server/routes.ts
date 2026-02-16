@@ -171,6 +171,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
           echlPruned: generated?.echlPruned ?? 0,
           echlSourceUsed: generated?.echlSourceUsed ?? "unknown",
           echlWebCount: generated?.echlWebCount ?? 0,
+          buCount: generated?.buCount ?? 0,
+          buAdded: generated?.buAdded ?? 0,
+          buUpdated: generated?.buUpdated ?? 0,
+          buPruned: generated?.buPruned ?? 0,
+          buSourceUsed: generated?.buSourceUsed ?? "unknown",
         });
       }
     );
@@ -308,13 +313,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const ahlOdds = events.filter((e: any) => e.source === "ahl-odds").length;
     const ahl = ahlHt + ahlOdds;
     const echl = events.filter((e: any) => (e.source || "").startsWith("echl")).length;
-    const other = events.length - nhl - ahl - echl;
+    const ncaa = events.filter((e: any) => (e.source || "").startsWith("ncaa")).length;
+    const other = events.length - nhl - ahl - echl - ncaa;
     return res.json({
-      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, other, total: events.length,
       lastUpdated: generated.lastUpdated,
       ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",
       echlWebCount: generated.echlWebCount ?? 0,
+      buSourceUsed: generated.buSourceUsed ?? "unknown",
     });
   });
 
