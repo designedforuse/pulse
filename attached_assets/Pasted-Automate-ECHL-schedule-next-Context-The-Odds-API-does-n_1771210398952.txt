@@ -1,0 +1,54 @@
+Automate ECHL schedule next.
+
+Context:
+- The Odds API does not appear to cover ECHL (no ECHL sport key in the sports list).
+- Keep Odds API for AHL.
+- Add a new ECHL schedule provider via API-Sports API-HOCKEY (api-sports.io), which supports many hockey leagues and date-range queries.
+
+Requirements:
+
+1) Add env var
+- Add API_HOCKEY_KEY in Replit Secrets (do not hardcode).
+- If missing, skip ECHL fetch without crashing.
+
+2) Create ECHL fetcher script
+- New script: scripts/updateEchlSchedule.ts
+- Steps:
+  A) Discover ECHL league id once (cache it):
+     - Call API-HOCKEY endpoint to search leagues by name "ECHL"
+     - Persist resolved leagueId in a small local cache file (e.g., data/leagueIds.json) so we don’t search every refresh.
+  B) Fetch games for a date window:
+     - Pull games from (now - 7 days) through (now + 21 days)
+     - Normalize into our event schema:
+        id: "echl-" + <sourceGameId>
+        source: "echl"
+        sport: "hockey"
+        league: "ECHL"
+        awayTeam/homeTeam: from API
+        startTimeLocal: ISO time from API
+        endTimeLocal: start + 2h45m (MVP default)
+        providerId: "flosports"
+
+3) Merge + retention (match our AHL caching approach)
+- Merge ECHL events into data/generatedEvents.json without overwriting existing ECHL events.
+- Apply retention for ECHL events only:
+   keep events in [now - 14 days, now + 21 days]
+- Keep NHL behavior unchanged.
+- Keep AHL caching behavior unchanged.
+
+4) Wire into refresh pipeline
+- Update POST /api/refresh to run:
+   - NHL updater
+   - AHL updater (Odds)
+   - ECHL updater (API-HOCKEY)
+- Return counts:
+   { nhlCount, ahlCount, echlCount, echlAdded, echlUpdated, echlPruned }
+
+5) Client behavior
+- No UI changes needed if schema matches.
+- ECHL should appear in Hockey packs and mode views automatically, like NHL/AHL.
+- Favorites detection should work; if team names differ, we’ll add aliases later.
+
+6) Debug endpoint (quick sanity)
+- Add GET /api/debug/sources that returns counts by source:
+   { nhl: X, ahl: Y, echl: Z }
