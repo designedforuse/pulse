@@ -1,0 +1,86 @@
+Implement Cricket automation with strict competition filtering + favorites.
+
+Scope
+A) Include ALL international matches (Tests, ODIs, T20Is, ICC events), regardless of series.
+B) Include ONLY these domestic leagues:
+   - IPL
+   - Big Bash League (BBL)
+   - SA20
+   - Caribbean Premier League (CPL)
+   - Major League Cricket (MLC)  // user said “MLS” but cricket league is “MLC”
+   - Super Smash
+
+Favorites
+- International: South Africa Men
+- Domestic teams:
+   - MI Cape Town (SA20)
+   - Paarl Royals (SA20)
+
+Provider mapping (MVP)
+- Default cricket providerId: "youtubetv" (represents Willow on YTTV)
+- Exceptions:
+   - If hostCountry is New Zealand OR hostRegion == "Caribbean" (West Indies) -> providerId = "disneyplus" (ESPN+ via Disney+)
+
+Implementation Steps
+
+1) Data model support
+In normalized cricket events, include:
+- competitionName (string)
+- competitionType (string: "international" | "domestic" | "unknown")
+- format (string: "T20" | "ODI" | "TEST" | etc.)
+- hostCountry (string)
+- seriesName (string) if available
+
+2) Competition classification + allowlist filter
+When ingesting cricket fixtures:
+- Determine if match is international:
+   - If format indicates T20I/ODI/Test or API has an "international" flag, set competitionType="international"
+- If domestic:
+   - Normalize competitionName (trim, lowercase, remove punctuation)
+   - Only keep if it matches one of the allowed leagues:
+       IPL, BBL, SA20, CPL, MLC, Super Smash
+- Drop everything else (other domestic comps).
+
+3) Favorites
+- Add cricket favorites to the app’s favorites model (same system used for other sports):
+   - "South Africa" (and alias "South Africa Men", "South Africa National", "RSA")
+   - "MI Cape Town" (alias "MICT")
+   - "Paarl Royals"
+- When rendering cricket lists, sort:
+   Live -> Favorites -> Start time
+
+4) Script + pipeline
+- Create scripts/updateCricket.ts
+- Fetch window: now-14d through now+21d
+- Normalize into existing event schema:
+   id: "cricket-" + stableId (source id preferred)
+   source: "cricket"
+   sport: "cricket"
+   league: "Cricket"
+   awayTeam/homeTeam (or team1/team2 mapped consistently)
+   startTimeLocal: ISO timestamp (UTC ok)
+   endTimeLocal:
+      - T20: +4h
+      - ODI: +8h
+      - TEST: +9h (MVP)
+      - if API provides end time, use it
+   providerId using mapping above
+   include competitionName, competitionType, hostCountry, seriesName, format
+
+5) Merge + retention
+- Merge into generatedEvents.json
+- Retain cricket events within [now-14d, now+21d]
+
+6) UI/Mode behavior
+- Cricket pack uses existing Weekend Nights/Mornings windows.
+- Additionally, for Cricket pack only:
+   - Weekend Nights prefers hostCountry in [India, Australia, New Zealand]
+   - Weekend Mornings prefers hostCountry in [South Africa, England, West Indies/Caribbean]
+(But still show all filtered cricket events in-window; just sort preferred hosts higher.)
+
+7) Diagnostics
+- /api/debug/sources should include:
+   cricketCount
+   cricketInternationalCount
+   cricketDomesticCount
+   cricketByCompetition (top 10)
