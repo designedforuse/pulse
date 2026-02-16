@@ -44,6 +44,19 @@
             "NWSL",
             "USL"
           ]
+        },
+        {
+          "sport": "Cricket",
+          "leagues": [
+            "IPL",
+            "BBL",
+            "Super Smash",
+            "SA20",
+            "The Hundred",
+            "MLC",
+            "CPL"
+          ],
+          "provider": "various"
         }
       ]
     },
@@ -92,6 +105,19 @@
             "Bundesliga",
             "Ligue 1"
           ]
+        },
+        {
+          "sport": "Cricket",
+          "leagues": [
+            "IPL",
+            "BBL",
+            "Super Smash",
+            "SA20",
+            "The Hundred",
+            "MLC",
+            "CPL"
+          ],
+          "provider": "various"
         }
       ]
     }
