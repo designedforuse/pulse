@@ -23,6 +23,7 @@ interface SourceMeta {
   lastFetchAt: string;
   sourceName: string;
   teamFilter?: string;
+  leagueCounts?: Record<string, number>;
 }
 
 interface GeneratedMeta {
@@ -31,6 +32,8 @@ interface GeneratedMeta {
     nhl: SourceMeta;
     ahl: SourceMeta;
     echl: SourceMeta;
+    ncaa?: SourceMeta;
+    rugby?: SourceMeta;
   };
 }
 
@@ -245,6 +248,12 @@ export default function SettingsScreen() {
                     <View style={styles.sourceDivider} />
                   </>
                 )}
+                {meta.sources.rugby && (
+                  <>
+                    <SourceRow league="Rugby" meta={meta.sources.rugby} />
+                    <View style={styles.sourceDivider} />
+                  </>
+                )}
               </View>
             )}
             <Pressable
@@ -265,7 +274,7 @@ export default function SettingsScreen() {
                 <View>
                   <Text style={styles.refreshLabel}>Refresh Schedules</Text>
                   <Text style={styles.refreshDesc}>
-                    Pull latest NHL + AHL + ECHL + NCAA game data
+                    Pull latest NHL + AHL + ECHL + NCAA + Rugby data
                   </Text>
                 </View>
               </View>

@@ -32,7 +32,7 @@ interface AppEvent {
   providerId: string;
   isLive: boolean;
   source: string;
-  leagueKey: string;
+  leagueKey?: string;
 }
 
 interface VEvent {

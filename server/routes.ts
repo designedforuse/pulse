@@ -176,6 +176,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
           buUpdated: generated?.buUpdated ?? 0,
           buPruned: generated?.buPruned ?? 0,
           buSourceUsed: generated?.buSourceUsed ?? "unknown",
+          rugbyCount: generated?.rugbyCount ?? 0,
+          rugbyAdded: generated?.rugbyAdded ?? 0,
+          rugbyUpdated: generated?.rugbyUpdated ?? 0,
+          rugbyPruned: generated?.rugbyPruned ?? 0,
+          rugbySourceUsed: generated?.rugbySourceUsed ?? "unknown",
+          rugbyCounts: generated?.rugbyCounts ?? {},
         });
       }
     );
@@ -314,14 +320,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const ahl = ahlHt + ahlOdds;
     const echl = events.filter((e: any) => (e.source || "").startsWith("echl")).length;
     const ncaa = events.filter((e: any) => (e.source || "").startsWith("ncaa")).length;
-    const other = events.length - nhl - ahl - echl - ncaa;
+    const rugby = events.filter((e: any) => e.source === "rugby").length;
+    const other = events.length - nhl - ahl - echl - ncaa - rugby;
     return res.json({
-      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, other, total: events.length,
       lastUpdated: generated.lastUpdated,
       ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",
       echlWebCount: generated.echlWebCount ?? 0,
       buSourceUsed: generated.buSourceUsed ?? "unknown",
+      rugbySourceUsed: generated.rugbySourceUsed ?? "unknown",
+      rugbyCounts: generated.rugbyCounts ?? {},
     });
   });
 
