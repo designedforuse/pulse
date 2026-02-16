@@ -27,11 +27,12 @@ data/
   generatedEvents.json      # Auto-generated NHL/AHL/ECHL schedule from APIs
   leagueIds.json            # Cached ECHL league ID + season from API-Hockey
 scripts/
-  updateSchedule.ts         # Main schedule fetcher: NHL + AHL + ECHL + NCAA + Rugby pipeline
+  updateSchedule.ts         # Main schedule fetcher: NHL + AHL + ECHL + NCAA + Rugby + Cricket pipeline
   mergeAhlEvents.ts         # AHL event merge/retention logic
   updateEchlSchedule.ts     # ECHL fetcher via API-Hockey (api-sports.io) + merge logic
   updateBuHockey.ts         # NCAA BU Hockey fetcher from College Hockey News HTML scraping
   updateRugby.ts            # Rugby fetcher from iCal feeds (URC, Top 14, Super Rugby Pacific)
+  updateCricket.ts          # Cricket fetcher from CricAPI (internationals + 7 domestic leagues)
 server/
   routes.ts                 # Express API routes (GET /api/events, POST /api/refresh, GET /api/debug/sources)
 lib/
@@ -57,7 +58,7 @@ constants/
 ## Sports Covered
 - Hockey: NHL, AHL, ECHL, NCAA Hockey
 - Rugby: Japan League One, Super Rugby, HSBC SVNS, URC, Top 14, English Premiership
-- Cricket: IPL, BBL, Super Smash, SA20, The Hundred, CPL
+- Cricket: IPL, BBL, Super Smash, SA20, The Hundred, MLC, CPL
 - Soccer: MLS, NWSL, USL, EPL, Serie A, La Liga, Bundesliga, Ligue 1
 
 ## Streaming Providers
@@ -70,6 +71,7 @@ constants/
 - Native liquid glass tabs on iOS 26+, classic blur tabs otherwise
 
 ## Recent Changes
+- 2026-02-16: Cricket automation fully integrated: scripts/updateCricket.ts fetches fixtures from CricAPI (/v1/matches with offset pagination, max 6 pages); filters to internationals (ICC, World Cup, Tours) + 7 domestic leagues (IPL, BBL, Super Smash, SA20, The Hundred, MLC, CPL); SportEvent type extended with competitionName, competitionType, format, hostCountry, seriesName; stable IDs "cricket-{hash}"; source "cricket-cricapi"; merge with retention [now-14d, now+21d]; wired into refresh pipeline with cricketCount/cricketAdded/cricketUpdated/cricketPruned/cricketCounts; /api/debug/sources includes cricket count; /api/meta shows Cricket source with leagueCounts; Settings displays Cricket row; favorites: South Africa (International), MI Cape Town + Paarl Royals (SA20); aliases in favoriteAliases.json; requires CRICAPI_KEY secret
 - 2026-02-16: SVNS upgraded from tournament-level events to day/session blocks: each SVNS stop generates per-day session events (Day 1 at 7:00 PM PT, Day 2+ at 10:00 AM PT, 3h duration); eventType="session" with sessionTitle="SVNS {City} – Day X"; UI event cards show sessionTitle for sessions instead of teams; merge prunes legacy tournament-level SVNS events; /api/debug/sources includes svnsSessions count; day count computed from start/end calendar dates
 - 2026-02-16: League One timezone hardened: wallClockToUtc() helper uses Intl.DateTimeFormat for DST-safe IANA timezone conversion; League One times treated as Asia/Tokyo (JST, UTC+9); default kickoff 1:00 PM JST; /api/debug/rugby-time-sample returns rawLocalTime (JST), parsedUtcIso, formattedPT for one League One event
 - 2026-02-16: Event sort order updated: Live first → Favorites next → then start time (mode detail + Live Now tab); Stormers alias "DHL Stormers" already configured
