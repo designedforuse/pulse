@@ -91,7 +91,13 @@ export default function SettingsScreen() {
   const queryClient = useQueryClient();
 
   const [refreshing, setRefreshing] = useState(false);
-  const [refreshResult, setRefreshResult] = useState<string | null>(null);
+  const [refreshResult, setRefreshResult] = useState<{
+    success: boolean;
+    message: string;
+    nhlCount?: number;
+    ahlCount?: number;
+    ahlKeyUsed?: string | null;
+  } | null>(null);
 
   const handleRefresh = async () => {
     if (refreshing) return;
@@ -104,13 +110,19 @@ export default function SettingsScreen() {
       const res = await apiRequest("POST", "/api/refresh?days=14");
       const data = await res.json();
       if (data.success) {
-        setRefreshResult(`Updated: ${data.eventCount} events loaded`);
+        setRefreshResult({
+          success: true,
+          message: `Updated: ${data.eventCount} events loaded`,
+          nhlCount: data.nhlCount,
+          ahlCount: data.ahlCount,
+          ahlKeyUsed: data.ahlKeyUsed,
+        });
         queryClient.invalidateQueries({ queryKey: ["/api/events?days=14"] });
       } else {
-        setRefreshResult("Refresh failed. Try again.");
+        setRefreshResult({ success: false, message: "Refresh failed. Try again." });
       }
     } catch {
-      setRefreshResult("Refresh failed. Check connection.");
+      setRefreshResult({ success: false, message: "Refresh failed. Check connection." });
     } finally {
       setRefreshing(false);
     }
@@ -168,20 +180,41 @@ export default function SettingsScreen() {
               )}
             </Pressable>
             {refreshResult && (
-              <View style={styles.refreshResultRow}>
-                <Ionicons
-                  name={refreshResult.startsWith("Updated") ? "checkmark-circle" : "alert-circle"}
-                  size={14}
-                  color={refreshResult.startsWith("Updated") ? Colors.accent : Colors.live}
-                />
-                <Text
-                  style={[
-                    styles.refreshResultText,
-                    { color: refreshResult.startsWith("Updated") ? Colors.accent : Colors.live },
-                  ]}
-                >
-                  {refreshResult}
-                </Text>
+              <View style={styles.refreshResultBlock}>
+                <View style={styles.refreshResultRow}>
+                  <Ionicons
+                    name={refreshResult.success ? "checkmark-circle" : "alert-circle"}
+                    size={14}
+                    color={refreshResult.success ? Colors.accent : Colors.live}
+                  />
+                  <Text
+                    style={[
+                      styles.refreshResultText,
+                      { color: refreshResult.success ? Colors.accent : Colors.live },
+                    ]}
+                  >
+                    {refreshResult.message}
+                  </Text>
+                </View>
+                {refreshResult.success && (
+                  <View style={styles.refreshCountsRow}>
+                    <Text style={styles.refreshCountText}>
+                      NHL: {refreshResult.nhlCount ?? 0}
+                    </Text>
+                    <Text style={styles.refreshCountDot}>|</Text>
+                    <Text style={[
+                      styles.refreshCountText,
+                      refreshResult.ahlCount === 0 && { color: Colors.live },
+                    ]}>
+                      AHL: {refreshResult.ahlCount ?? 0}
+                    </Text>
+                  </View>
+                )}
+                {refreshResult.success && refreshResult.ahlCount === 0 && (
+                  <Text style={styles.refreshWarning}>
+                    AHL returned 0 events; check /api/odds/sports
+                  </Text>
+                )}
               </View>
             )}
           </View>
@@ -472,16 +505,42 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
     marginTop: 2,
   },
+  refreshResultBlock: {
+    paddingHorizontal: 14,
+    paddingBottom: 12,
+    paddingTop: 2,
+    gap: 4,
+  },
   refreshResultRow: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
-    paddingHorizontal: 14,
-    paddingBottom: 12,
-    paddingTop: 2,
   },
   refreshResultText: {
     fontSize: 12,
     fontFamily: "Inter_500Medium",
+  },
+  refreshCountsRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    marginLeft: 20,
+    marginTop: 2,
+  },
+  refreshCountText: {
+    fontSize: 12,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_500Medium",
+  },
+  refreshCountDot: {
+    fontSize: 12,
+    color: Colors.textMuted,
+  },
+  refreshWarning: {
+    fontSize: 11,
+    color: Colors.live,
+    fontFamily: "Inter_400Regular",
+    marginLeft: 20,
+    marginTop: 2,
   },
 });

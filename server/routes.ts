@@ -60,6 +60,74 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
+  app.get("/api/odds/sports", async (_req, res) => {
+    const apiKey = process.env.ODDS_API_KEY;
+    if (!apiKey) {
+      return res.status(500).json({ error: "ODDS_API_KEY not configured" });
+    }
+    try {
+      const url = `https://api.the-odds-api.com/v4/sports?apiKey=${apiKey}`;
+      console.log("[odds/sports] Fetching sports list...");
+      const response = await fetch(url);
+      if (!response.ok) {
+        return res.status(response.status).json({
+          error: `Odds API returned ${response.status}: ${response.statusText}`,
+        });
+      }
+      const data: any[] = await response.json() as any[];
+      const trimmed = data.map((s: any) => ({
+        key: s.key,
+        group: s.group,
+        title: s.title,
+        description: s.description,
+        active: s.active,
+      }));
+      return res.json({ count: trimmed.length, sports: trimmed });
+    } catch (err: any) {
+      return res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get("/api/odds/test", async (req, res) => {
+    const apiKey = process.env.ODDS_API_KEY;
+    if (!apiKey) {
+      return res.status(500).json({ error: "ODDS_API_KEY not configured" });
+    }
+    const sportKey = req.query.sportKey as string;
+    if (!sportKey) {
+      return res.status(400).json({ error: "sportKey query param required" });
+    }
+    try {
+      const url = `https://api.the-odds-api.com/v4/sports/${sportKey}/events?apiKey=${apiKey}`;
+      console.log(`[odds/test] Fetching events for sportKey=${sportKey}...`);
+      const response = await fetch(url);
+      if (!response.ok) {
+        return res.json({
+          sportKey,
+          status: response.status,
+          statusText: response.statusText,
+          eventCount: 0,
+          sample: [],
+        });
+      }
+      const events: any[] = await response.json() as any[];
+      const sample = events.slice(0, 2).map((e: any) => ({
+        id: e.id,
+        commence_time: e.commence_time,
+        home_team: e.home_team,
+        away_team: e.away_team,
+      }));
+      return res.json({
+        sportKey,
+        status: 200,
+        eventCount: events.length,
+        sample,
+      });
+    } catch (err: any) {
+      return res.status(500).json({ sportKey, error: err.message });
+    }
+  });
+
   app.post("/api/refresh", (req, res) => {
     const daysParam = parseInt(req.query.days as string, 10) || 14;
     const scriptPath = path.resolve(process.cwd(), "scripts", "updateSchedule.ts");
@@ -91,6 +159,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
           success: true,
           lastUpdated: generated?.lastUpdated || null,
           eventCount: generated?.events?.length || 0,
+          nhlCount: generated?.nhlCount ?? 0,
+          ahlCount: generated?.ahlCount ?? 0,
+          ahlKeyUsed: generated?.ahlKeyUsed ?? null,
         });
       }
     );

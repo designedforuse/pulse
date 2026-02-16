@@ -157,6 +157,48 @@ async function fetchNHLEvents(days: number): Promise<AppEvent[]> {
   return allEvents;
 }
 
+interface OddsSport {
+  key: string;
+  group: string;
+  title: string;
+  description: string;
+  active: boolean;
+}
+
+let detectedAhlKey: string | null = null;
+
+async function detectAHLKey(apiKey: string): Promise<string | null> {
+  const url = `${ODDS_API_BASE}/sports?apiKey=${apiKey}`;
+  console.log(`  AHL: Fetching sports list to detect AHL key...`);
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.error(`  AHL: Sports list returned ${res.status}: ${res.statusText}`);
+      return null;
+    }
+    const sports: OddsSport[] = await res.json() as OddsSport[];
+    const match = sports.find((s) => {
+      const titleLower = s.title.toLowerCase();
+      const descLower = (s.description || "").toLowerCase();
+      const groupLower = (s.group || "").toLowerCase();
+      if (titleLower.includes("ahl")) return true;
+      if (descLower.includes("american hockey league")) return true;
+      if (groupLower.includes("ice hockey") && titleLower.includes("ahl")) return true;
+      return false;
+    });
+    if (match) {
+      console.log(`  AHL: Detected key="${match.key}" (title="${match.title}", group="${match.group}", active=${match.active})`);
+      return match.key;
+    }
+    const iceHockey = sports.filter((s) => s.group?.toLowerCase().includes("ice hockey"));
+    console.log(`  AHL: No exact AHL match found. Ice Hockey sports available: ${JSON.stringify(iceHockey.map(s => ({ key: s.key, title: s.title, active: s.active })))}`);
+    return null;
+  } catch (err) {
+    console.error("  AHL: Failed to fetch sports list:", err);
+    return null;
+  }
+}
+
 async function fetchAHLEvents(): Promise<AppEvent[]> {
   const apiKey = process.env.ODDS_API_KEY;
   if (!apiKey) {
@@ -164,8 +206,16 @@ async function fetchAHLEvents(): Promise<AppEvent[]> {
     return [];
   }
 
-  const url = `${ODDS_API_BASE}/sports/icehockey_ahl/events?apiKey=${apiKey}`;
-  console.log(`  AHL: Fetching from The Odds API...`);
+  const ahlKey = await detectAHLKey(apiKey);
+  detectedAhlKey = ahlKey;
+
+  if (!ahlKey) {
+    console.warn("  AHL: Could not find AHL sport key in Odds API. Skipping.");
+    return [];
+  }
+
+  const url = `${ODDS_API_BASE}/sports/${ahlKey}/events?apiKey=${apiKey}`;
+  console.log(`  AHL: Fetching events using key="${ahlKey}"...`);
 
   try {
     const res = await fetch(url);
@@ -217,6 +267,9 @@ async function main() {
   const output = {
     lastUpdated: new Date().toISOString(),
     sources: ["NHL API (api-web.nhle.com)", "The Odds API (AHL)"],
+    ahlKeyUsed: detectedAhlKey,
+    nhlCount: nhlEvents.length,
+    ahlCount: ahlEvents.length,
     events: allEvents,
   };
 
@@ -224,6 +277,7 @@ async function main() {
   console.log(
     `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlEvents.length} AHL) to ${OUTPUT_PATH}`
   );
+  console.log(`AHL key used: ${detectedAhlKey || "none detected"}`);
   if (allEvents.length > 0) {
     console.log(`Date range: ${allEvents[0].startTimeLocal} — ${allEvents[allEvents.length - 1].startTimeLocal}`);
   }
