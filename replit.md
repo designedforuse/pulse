@@ -24,11 +24,14 @@ app/
     [id].tsx                # Mode detail - packs with event lists
 data/
   masterGuide.json          # Static event data, modes, packs, providers
-  generatedEvents.json      # Auto-generated NHL schedule from API
+  generatedEvents.json      # Auto-generated NHL/AHL/ECHL schedule from APIs
+  leagueIds.json            # Cached ECHL league ID + season from API-Hockey
 scripts/
-  updateSchedule.ts         # NHL schedule fetcher (npx tsx scripts/updateSchedule.ts --days=14)
+  updateSchedule.ts         # Main schedule fetcher: NHL + AHL + ECHL pipeline
+  mergeAhlEvents.ts         # AHL event merge/retention logic
+  updateEchlSchedule.ts     # ECHL fetcher via API-Hockey (api-sports.io) + merge logic
 server/
-  routes.ts                 # Express API routes (GET /api/events)
+  routes.ts                 # Express API routes (GET /api/events, POST /api/refresh, GET /api/debug/sources)
 lib/
   data.ts                   # Data access utilities and types
   events-context.tsx        # EventsProvider - React context for API-fetched events
@@ -65,6 +68,7 @@ constants/
 - Native liquid glass tabs on iOS 26+, classic blur tabs otherwise
 
 ## Recent Changes
+- 2026-02-16: ECHL schedule automation via API-Hockey (api-sports.io): scripts/updateEchlSchedule.ts discovers ECHL league ID + current season, caches in data/leagueIds.json, fetches games per date with season param, merges with retention [now-14d, now+21d], early-exits on free plan limitation; wired into refresh pipeline with echlCount/echlAdded/echlUpdated/echlPruned; GET /api/debug/sources returns counts by source; Settings shows ECHL counts + cache stats
 - 2026-02-16: Mode detail screens split events into "This weekend" and "Next weekend" subsections per pack; completed games show "FINAL" badge with dimmed card (opacity 0.65); sort: live > upcoming > completed; Nights time window extended to 16:00–02:00
 - 2026-02-16: Added debug toggle in Settings ("Show All Games") to bypass weekend filter; stored in EventsContext, persisted via AsyncStorage
 - 2026-02-16: AHL event caching: mergeAhlEvents.ts merges fresh API events with cached events instead of overwriting; retention window [now-14d, now+21d]; Settings shows +added/~updated/-pruned stats

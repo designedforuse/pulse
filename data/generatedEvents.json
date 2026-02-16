@@ -1,8 +1,9 @@
 {
-  "lastUpdated": "2026-02-16T02:50:41.211Z",
+  "lastUpdated": "2026-02-16T03:08:46.561Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
-    "The Odds API (AHL)"
+    "The Odds API (AHL)",
+    "API-Hockey (ECHL)"
   ],
   "ahlKeyUsed": "icehockey_ahl",
   "nhlCount": 98,
@@ -10,6 +11,10 @@
   "ahlAdded": 0,
   "ahlUpdated": 5,
   "ahlPruned": 0,
+  "echlCount": 0,
+  "echlAdded": 0,
+  "echlUpdated": 0,
+  "echlPruned": 0,
   "events": [
     {
       "id": "ahl_1dc1d76b7d655d1a7f8371295ce36955",

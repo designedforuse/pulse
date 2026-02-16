@@ -20,6 +20,7 @@ interface AppEvent {
 
 interface LeagueCache {
   echlLeagueId?: number;
+  echlCurrentSeason?: number;
   lastResolved?: string;
 }
 
@@ -95,11 +96,16 @@ function formatDate(d: Date): string {
   return d.toISOString().split("T")[0];
 }
 
-async function resolveEchlLeagueId(apiKey: string): Promise<number | null> {
+interface EchlLeagueInfo {
+  leagueId: number;
+  currentSeason: number;
+}
+
+async function resolveEchlLeagueInfo(apiKey: string): Promise<EchlLeagueInfo | null> {
   const cache = loadLeagueCache();
-  if (cache.echlLeagueId) {
-    console.log(`  ECHL: Using cached league ID: ${cache.echlLeagueId}`);
-    return cache.echlLeagueId;
+  if (cache.echlLeagueId && cache.echlCurrentSeason) {
+    console.log(`  ECHL: Using cached league ID: ${cache.echlLeagueId}, season: ${cache.echlCurrentSeason}`);
+    return { leagueId: cache.echlLeagueId, currentSeason: cache.echlCurrentSeason };
   }
 
   console.log(`  ECHL: Searching for ECHL league ID...`);
@@ -121,11 +127,15 @@ async function resolveEchlLeagueId(apiKey: string): Promise<number | null> {
     });
 
     if (echl) {
-      console.log(`  ECHL: Found league: id=${echl.id}, name="${echl.name}", country="${echl.country?.name}"`);
+      const seasons = echl.seasons || [];
+      const currentSeason = seasons.find((s: any) => s.current === true);
+      const season = currentSeason?.season || seasons[seasons.length - 1]?.season;
+      console.log(`  ECHL: Found league: id=${echl.id}, name="${echl.name}", currentSeason=${season}`);
       cache.echlLeagueId = echl.id;
+      cache.echlCurrentSeason = season;
       cache.lastResolved = new Date().toISOString();
       saveLeagueCache(cache);
-      return echl.id;
+      return { leagueId: echl.id, currentSeason: season };
     }
 
     console.log(`  ECHL: No ECHL league found. Available leagues: ${JSON.stringify(leagues.slice(0, 5).map((l: any) => ({ id: l.id, name: l.name })))}`);
@@ -136,21 +146,36 @@ async function resolveEchlLeagueId(apiKey: string): Promise<number | null> {
   }
 }
 
-async function fetchEchlGamesForDate(apiKey: string, leagueId: number, date: string): Promise<ApiHockeyGame[]> {
-  const url = `${API_HOCKEY_BASE}/games?league=${leagueId}&date=${date}`;
+interface FetchResult {
+  games: ApiHockeyGame[];
+  planError: boolean;
+}
+
+async function fetchEchlGamesForDate(apiKey: string, leagueId: number, season: number, date: string): Promise<FetchResult> {
+  const url = `${API_HOCKEY_BASE}/games?league=${leagueId}&season=${season}&date=${date}`;
   try {
     const res = await fetch(url, {
       headers: { "x-apisports-key": apiKey },
     });
     if (!res.ok) {
       console.error(`  ECHL: Games API returned ${res.status} for date=${date}`);
-      return [];
+      return { games: [], planError: false };
     }
     const data: any = await res.json();
-    return (data.response || []) as ApiHockeyGame[];
+    if (data.errors && Object.keys(data.errors).length > 0) {
+      const errMsg = Object.values(data.errors).join("; ");
+      const isPlanError = errMsg.toLowerCase().includes("free plan") || errMsg.toLowerCase().includes("plan");
+      if (isPlanError) {
+        console.warn(`  ECHL: Plan limitation: ${errMsg}`);
+        return { games: [], planError: true };
+      }
+      console.warn(`  ECHL: API error for ${date}: ${errMsg}`);
+      return { games: [], planError: false };
+    }
+    return { games: (data.response || []) as ApiHockeyGame[], planError: false };
   } catch (err) {
     console.error(`  ECHL: Failed to fetch games for ${date}:`, err);
-    return [];
+    return { games: [], planError: false };
   }
 }
 
@@ -182,29 +207,40 @@ export async function fetchEchlEvents(): Promise<AppEvent[]> {
     return [];
   }
 
-  const leagueId = await resolveEchlLeagueId(apiKey);
-  if (!leagueId) {
-    console.warn("  ECHL: Could not resolve league ID. Skipping.");
+  const info = await resolveEchlLeagueInfo(apiKey);
+  if (!info) {
+    console.warn("  ECHL: Could not resolve league info. Skipping.");
     return [];
   }
 
+  const { leagueId, currentSeason } = info;
   const now = new Date();
   const startDate = new Date(now.getTime() - 7 * 86400000);
   const endDate = new Date(now.getTime() + 21 * 86400000);
 
-  console.log(`  ECHL: Fetching games from ${formatDate(startDate)} to ${formatDate(endDate)}...`);
+  console.log(`  ECHL: Fetching games (league=${leagueId}, season=${currentSeason}) from ${formatDate(startDate)} to ${formatDate(endDate)}...`);
 
   const allGames: ApiHockeyGame[] = [];
   const current = new Date(startDate);
 
   while (current <= endDate) {
     const dateStr = formatDate(current);
-    const games = await fetchEchlGamesForDate(apiKey, leagueId, dateStr);
-    allGames.push(...games);
+    const result = await fetchEchlGamesForDate(apiKey, leagueId, currentSeason, dateStr);
+    if (result.planError) {
+      console.warn(`  ECHL: Stopping date iteration due to plan limitation (season ${currentSeason} not available on free plan).`);
+      break;
+    }
+    if (result.games.length > 0) {
+      allGames.push(...result.games);
+    }
     current.setDate(current.getDate() + 1);
   }
 
-  console.log(`  ECHL: Fetched ${allGames.length} total games`);
+  if (allGames.length === 0) {
+    console.warn(`  ECHL: No games found. If using a free API plan, upgrade to access season ${currentSeason}.`);
+  } else {
+    console.log(`  ECHL: Fetched ${allGames.length} total games`);
+  }
 
   const events = allGames.map(gameToEvent);
   const unique = new Map<string, AppEvent>();
