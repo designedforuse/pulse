@@ -6,6 +6,7 @@ import guideData from "@/data/masterGuide.json";
 import type { SportEvent, Pack } from "@/lib/data";
 
 const DEBUG_KEY = "prefs.debugShowAll";
+const SVNS_KEY = "prefs.showSvnsSessions";
 
 const cricketLeagueToRegion: Record<string, string> = {
   IPL: "India",
@@ -29,22 +30,33 @@ interface EventsContextValue {
   findEvent: (id: string) => SportEvent | undefined;
   debugShowAll: boolean;
   setDebugShowAll: (val: boolean) => void;
+  showSvnsSessions: boolean;
+  setShowSvnsSessions: (val: boolean) => void;
 }
 
 const EventsContext = createContext<EventsContextValue | null>(null);
 
 export function EventsProvider({ children }: { children: ReactNode }) {
   const [debugShowAll, setDebugShowAllState] = useState(false);
+  const [showSvnsSessions, setShowSvnsState] = useState(true);
 
   useEffect(() => {
-    AsyncStorage.getItem(DEBUG_KEY).then((val) => {
-      if (val === "true") setDebugShowAllState(true);
+    AsyncStorage.multiGet([DEBUG_KEY, SVNS_KEY]).then((entries) => {
+      for (const [key, val] of entries) {
+        if (key === DEBUG_KEY && val === "true") setDebugShowAllState(true);
+        if (key === SVNS_KEY && val === "false") setShowSvnsState(false);
+      }
     });
   }, []);
 
   const setDebugShowAll = (val: boolean) => {
     setDebugShowAllState(val);
     AsyncStorage.setItem(DEBUG_KEY, val.toString());
+  };
+
+  const setShowSvnsSessions = (val: boolean) => {
+    setShowSvnsState(val);
+    AsyncStorage.setItem(SVNS_KEY, val.toString());
   };
 
   const { data, isLoading } = useQuery<ApiResponse>({
@@ -69,8 +81,11 @@ export function EventsProvider({ children }: { children: ReactNode }) {
   }, [data]);
 
   const value = useMemo(() => {
+    const isSvnsSession = (e: SportEvent) => e.eventType === "session" && e.leagueKey === "svns";
+
     const getEventsForPack = (pack: Pack): SportEvent[] => {
       return allEvents.filter((event) => {
+        if (!showSvnsSessions && isSvnsSession(event)) return false;
         if (event.sport !== pack.sport) return false;
         if (pack.leagues) {
           return pack.leagues.includes(event.league);
@@ -88,14 +103,16 @@ export function EventsProvider({ children }: { children: ReactNode }) {
     };
 
     return {
-      allEvents,
+      allEvents: showSvnsSessions ? allEvents : allEvents.filter((e) => !isSvnsSession(e)),
       isLoading,
       getEventsForPack,
       findEvent,
       debugShowAll,
       setDebugShowAll,
+      showSvnsSessions,
+      setShowSvnsSessions,
     };
-  }, [allEvents, isLoading, debugShowAll]);
+  }, [allEvents, isLoading, debugShowAll, showSvnsSessions]);
 
   return (
     <EventsContext.Provider value={value}>{children}</EventsContext.Provider>

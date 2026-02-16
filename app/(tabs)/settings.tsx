@@ -161,7 +161,7 @@ export default function SettingsScreen() {
   const favorites = getFavorites();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
   const queryClient = useQueryClient();
-  const { debugShowAll, setDebugShowAll } = useEvents();
+  const { debugShowAll, setDebugShowAll, showSvnsSessions, setShowSvnsSessions } = useEvents();
 
   const [refreshing, setRefreshing] = useState(false);
   const [refreshMessage, setRefreshMessage] = useState<{ text: string; ok: boolean } | null>(null);
@@ -308,6 +308,31 @@ export default function SettingsScreen() {
                 </View>
               </View>
             )}
+          </View>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Display</Text>
+          <View style={styles.card}>
+            <View style={styles.debugRow}>
+              <View style={styles.debugLeft}>
+                <Ionicons name="trophy-outline" size={18} color={Colors.accent} />
+                <View>
+                  <Text style={styles.refreshLabel}>Show SVNS Session Blocks</Text>
+                  <Text style={styles.refreshDesc}>
+                    Show HSBC SVNS tournament day sessions
+                  </Text>
+                </View>
+              </View>
+              <Switch
+                value={showSvnsSessions}
+                onValueChange={setShowSvnsSessions}
+                trackColor={{ false: Colors.border, true: Colors.accent + "55" }}
+                thumbColor={showSvnsSessions ? Colors.accent : Colors.textMuted}
+                style={styles.debugSwitch}
+                testID="svns-sessions-toggle"
+              />
+            </View>
           </View>
         </View>
 
