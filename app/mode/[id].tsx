@@ -146,6 +146,7 @@ function sortEvents(
   now: Date,
   includeCompleted: boolean,
   favorites: Favorites,
+  modeId?: string,
 ): SportEvent[] {
   return [...events].sort((a, b) => {
     const aLive = isEventLive(a, now) ? 1 : 0;
@@ -155,6 +156,12 @@ function sortEvents(
     const aFav = favoriteInvolved(a, favorites) ? 1 : 0;
     const bFav = favoriteInvolved(b, favorites) ? 1 : 0;
     if (bFav !== aFav) return bFav - aFav;
+
+    if (modeId === "weekend_mornings") {
+      const aSvns = a.eventType === "session" && a.leagueKey === "svns" ? 1 : 0;
+      const bSvns = b.eventType === "session" && b.leagueKey === "svns" ? 1 : 0;
+      if (bSvns !== aSvns) return bSvns - aSvns;
+    }
 
     if (includeCompleted) {
       const aCompleted = isEventCompleted(a, now) ? 1 : 0;
@@ -217,8 +224,8 @@ export default function ModeDetailScreen() {
       const nextFiltered = favoritesOnly
         ? pd.nextWeekend.filter((e) => favoriteInvolved(e, favorites))
         : pd.nextWeekend;
-      const thisSorted = sortEvents(thisFiltered, now, true, favorites);
-      const nextSorted = sortEvents(nextFiltered, now, false, favorites);
+      const thisSorted = sortEvents(thisFiltered, now, true, favorites, id);
+      const nextSorted = sortEvents(nextFiltered, now, false, favorites, id);
 
       const bothEmpty = thisSorted.length === 0 && nextSorted.length === 0;
 
