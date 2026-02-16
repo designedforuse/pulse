@@ -67,6 +67,7 @@ constants/
 ## Recent Changes
 - 2026-02-16: Mode detail screens split events into "This weekend" and "Next weekend" subsections per pack; completed games show "FINAL" badge with dimmed card (opacity 0.65); sort: live > upcoming > completed; Nights time window extended to 16:00–02:00
 - 2026-02-16: Added debug toggle in Settings ("Show All Games") to bypass weekend filter; stored in EventsContext, persisted via AsyncStorage
+- 2026-02-16: AHL event caching: mergeAhlEvents.ts merges fresh API events with cached events instead of overwriting; retention window [now-14d, now+21d]; Settings shows +added/~updated/-pruned stats
 - 2026-02-16: Added isEventCompleted() to utils/time.ts; exported isInWindow() from weekendWindows.ts for per-window filtering
 - 2026-02-16: Built auto-generated NHL schedule feed: scripts/updateSchedule.ts fetches from NHL public API (api-web.nhle.com), generates 98 events for 14-day window, stores in data/generatedEvents.json
 - 2026-02-16: Created GET /api/events endpoint (server/routes.ts) serving generated events with fallback to masterGuide.json
