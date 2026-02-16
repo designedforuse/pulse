@@ -1,0 +1,56 @@
+Update ModeDetail UI + filtering to split results into 2 sections: “This weekend” and “Next weekend”.
+
+Requirements:
+
+1) Weekend windows
+- Keep the existing weekend window logic:
+  - thisWeekendWindow = Fri 00:00 (local) → Sun 23:59:59 (local) for the current weekend cycle
+  - nextWeekendWindow = the next Fri 00:00 → next Sun 23:59:59
+- Use America/Los_Angeles timezone consistently.
+
+2) ModeDetail screen UI
+- For each pack (e.g., Hockey Night), display TWO distinct subsections:
+  A) “This weekend”
+  B) “Next weekend”
+- Each subsection renders its own list of events for that pack.
+
+3) Include completed games (This weekend only)
+- For “This weekend” subsection:
+  - Show games even if their start time is in the past (completed).
+  - Sort order:
+    - Live games first (using existing isEventLive logic)
+    - Then upcoming games (start time in the future)
+    - Then completed games (start time in the past)
+  - Completed games should be visually marked:
+    - Add a small label like “Final” or “Completed”
+    - Dim the card slightly (subtle) but keep it tappable to open provider (some apps offer replay)
+
+- For “Next weekend” subsection:
+  - Only show upcoming games (they will naturally be in the future).
+  - Sort by start time ascending.
+
+4) Time-of-day constraints
+- Apply the mode time window filter (Weekend Nights vs Weekend Mornings) within each weekend subsection, but do NOT exclude completed games solely because they are in the past.
+  - i.e., completed games still must have originally started within the mode’s time window.
+- Keep existing time windows unless already adjusted:
+  - Nights: 16:00 → 02:00 local (preferred to avoid overly strict midnight cutoff)
+  - Mornings: 06:00 → 13:00 local
+
+5) Empty states
+- If a subsection has 0 events, show:
+  - “No games in this window.”
+- If both subsections are empty for a pack, show one compact empty state instead of two large blanks (keep UI tidy).
+
+6) No change to Live Now tab
+- Live Now / Up Next should remain global, not weekend-scoped.
+
+7) Keep provider launching + favorites logic intact
+- Favorite badges, favorites-first sorting (where applicable), and event bottom sheet should continue to work.
+
+Implementation suggestion
+- In the mode/pack event selector logic, return:
+  {
+    thisWeekend: Event[],
+    nextWeekend: Event[]
+  }
+- Then render two titled sections per pack from that result.

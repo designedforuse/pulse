@@ -61,17 +61,19 @@ export function getWeekendWindows(now: Date): WeekendWindows {
   };
 }
 
+export function isInWindow(
+  eventStartLocal: string,
+  window: WeekendWindow
+): boolean {
+  const eventDate = toZonedTime(new Date(eventStartLocal), TZ);
+  return eventDate >= window.start && eventDate <= window.end;
+}
+
 export function isInWeekendWindows(
   eventStartLocal: string,
   windows: WeekendWindows
 ): boolean {
-  const eventDate = toZonedTime(new Date(eventStartLocal), TZ);
-
-  const inWindow = (w: WeekendWindow) => {
-    return eventDate >= w.start && eventDate <= w.end;
-  };
-
-  return inWindow(windows.current) || inWindow(windows.next);
+  return isInWindow(eventStartLocal, windows.current) || isInWindow(eventStartLocal, windows.next);
 }
 
 export function isInModeTimeWindow(
@@ -84,8 +86,8 @@ export function isInModeTimeWindow(
   const totalMinutes = hour * 60 + minute;
 
   if (modeId === "weekend_nights") {
-    if (totalMinutes >= 960 && totalMinutes <= 1439) return true;
-    if (totalMinutes >= 0 && totalMinutes <= 30) return true;
+    if (totalMinutes >= 960) return true;
+    if (totalMinutes <= 120) return true;
     return false;
   }
 
@@ -94,17 +96,4 @@ export function isInModeTimeWindow(
   }
 
   return true;
-}
-
-export function filterEventsForMode(
-  events: { startTimeLocal: string }[],
-  modeId: string,
-  now: Date
-): typeof events {
-  const windows = getWeekendWindows(now);
-  return events.filter(
-    (e) =>
-      isInWeekendWindows(e.startTimeLocal, windows) &&
-      isInModeTimeWindow(e.startTimeLocal, modeId)
-  );
 }
