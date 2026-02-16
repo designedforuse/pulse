@@ -1,25 +1,57 @@
 import * as fs from "fs";
 import * as path from "path";
 
-const RUGBY_DURATION_MIN = 135;
+const RUGBY_15S_DURATION_MIN = 135;
+const SVNS_DURATION_MIN = 90;
 
 const ICAL_FEEDS: Record<string, string> = {
   urc: "https://data.rugbyfixture.io/ical/v1/urc.ics",
   top14: "https://data.rugbyfixture.io/ical/v1/top14.ics",
   superrugby: "https://fixturedownload.com/download/super-rugby-pacific-2026-UTC.ics",
+  premiership: "https://data.rugbyfixture.io/ical/v1/premiership.ics",
 };
 
 const LEAGUE_LABELS: Record<string, string> = {
   urc: "URC",
   top14: "Top 14",
   superrugby: "Super Rugby",
+  premiership: "English Premiership",
+  leagueone: "Japan League One",
+  svns: "HSBC SVNS",
 };
 
 const LEAGUE_PROVIDERS: Record<string, string> = {
   urc: "flosports",
   top14: "flosports",
   superrugby: "primevideo",
+  premiership: "flosports",
+  leagueone: "flosports",
+  svns: "primevideo",
 };
+
+const LEAGUE_DURATION: Record<string, number> = {
+  svns: SVNS_DURATION_MIN,
+};
+
+function getDuration(leagueKey: string): number {
+  return LEAGUE_DURATION[leagueKey] ?? RUGBY_15S_DURATION_MIN;
+}
+
+const SVNS_SCHEDULE: Array<{
+  city: string;
+  startDate: string;
+  endDate: string;
+}> = [
+  { city: "Dubai", startDate: "2025-11-29T08:00:00.000Z", endDate: "2025-11-30T18:00:00.000Z" },
+  { city: "Cape Town", startDate: "2025-12-06T08:00:00.000Z", endDate: "2025-12-07T18:00:00.000Z" },
+  { city: "Singapore", startDate: "2026-01-31T02:00:00.000Z", endDate: "2026-02-01T14:00:00.000Z" },
+  { city: "Perth", startDate: "2026-02-07T01:00:00.000Z", endDate: "2026-02-08T13:00:00.000Z" },
+  { city: "Vancouver", startDate: "2026-03-07T17:00:00.000Z", endDate: "2026-03-08T23:00:00.000Z" },
+  { city: "New York", startDate: "2026-03-14T14:00:00.000Z", endDate: "2026-03-15T22:00:00.000Z" },
+  { city: "Hong Kong", startDate: "2026-04-17T02:00:00.000Z", endDate: "2026-04-19T14:00:00.000Z" },
+  { city: "Valladolid", startDate: "2026-05-29T08:00:00.000Z", endDate: "2026-05-31T18:00:00.000Z" },
+  { city: "Bordeaux", startDate: "2026-06-05T08:00:00.000Z", endDate: "2026-06-07T18:00:00.000Z" },
+];
 
 interface AppEvent {
   id: string;
@@ -186,12 +218,13 @@ function veventToAppEvent(ve: VEvent, leagueKey: string): AppEvent | null {
   const teams = parseTeams(ve.summary);
   if (!teams) return null;
 
+  const duration = getDuration(leagueKey);
   let endIso: string;
   if (ve.dtend) {
     const parsedEnd = parseIcalDate(ve.dtend);
-    endIso = parsedEnd || addDuration(startIso, RUGBY_DURATION_MIN);
+    endIso = parsedEnd || addDuration(startIso, duration);
   } else {
-    endIso = addDuration(startIso, RUGBY_DURATION_MIN);
+    endIso = addDuration(startIso, duration);
   }
 
   const league = LEAGUE_LABELS[leagueKey] || leagueKey;
@@ -214,6 +247,165 @@ function veventToAppEvent(ve: VEvent, leagueKey: string): AppEvent | null {
   };
 }
 
+const ALLRUGBY_URL = "https://all.rugby/tournament/league-one-d1/fixtures-results";
+
+interface LeagueOneMatch {
+  homeTeam: string;
+  awayTeam: string;
+  date: string;
+  time?: string;
+}
+
+function parseAllRugbyHtml(html: string): LeagueOneMatch[] {
+  const matches: LeagueOneMatch[] = [];
+  let currentDate = "";
+
+  const dateRegex = /(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday), ([A-Z][a-z]+ \d+, \d{4})/g;
+  const titleRegex = /title="Match Report ([^"]+)"/g;
+
+  const lines = html.split("\n");
+  for (const line of lines) {
+    const dateMatch = line.match(/(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday), ([A-Z][a-z]+ \d+, \d{4})/);
+    if (dateMatch) {
+      currentDate = dateMatch[2];
+      continue;
+    }
+
+    const titleMatch = line.match(/title="Match Report (.+?) vs (.+?)"/);
+    if (titleMatch && currentDate) {
+      const homeTeam = titleMatch[1].trim();
+      const awayTeam = titleMatch[2].trim();
+
+      const timeMatch = line.match(/<div class="fl res txtcenter">(\d{1,2}:\d{2}\s*(?:AM|PM))<\/div>/i);
+
+      matches.push({
+        homeTeam,
+        awayTeam,
+        date: currentDate,
+        time: timeMatch ? timeMatch[1].trim() : undefined,
+      });
+    }
+  }
+
+  return matches;
+}
+
+function parseLeagueOneDate(dateStr: string, timeStr?: string): string | null {
+  const monthNames: Record<string, number> = {
+    January: 0, February: 1, March: 2, April: 3, May: 4, June: 5,
+    July: 6, August: 7, September: 8, October: 9, November: 10, December: 11,
+  };
+
+  const parts = dateStr.match(/([A-Z][a-z]+) (\d+), (\d{4})/);
+  if (!parts) return null;
+
+  const month = monthNames[parts[1]];
+  if (month === undefined) return null;
+  const day = parseInt(parts[2], 10);
+  const year = parseInt(parts[3], 10);
+
+  let hours = 5;
+  let minutes = 0;
+
+  if (timeStr) {
+    const tm = timeStr.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+    if (tm) {
+      hours = parseInt(tm[1], 10);
+      minutes = parseInt(tm[2], 10);
+      const ampm = tm[3].toUpperCase();
+      if (ampm === "PM" && hours !== 12) hours += 12;
+      if (ampm === "AM" && hours === 12) hours = 0;
+    }
+  } else {
+    hours = 5;
+  }
+
+  const frenchLocal = new Date(Date.UTC(year, month, day, hours, minutes, 0));
+  const isCest = month >= 2 && month <= 9;
+  const offsetHours = isCest ? 2 : 1;
+  const utc = new Date(frenchLocal.getTime() - offsetHours * 3600000);
+  return utc.toISOString();
+}
+
+async function fetchLeagueOneEvents(windowStart: Date, windowEnd: Date): Promise<AppEvent[]> {
+  console.log(`  Rugby [leagueone]: Fetching from all.rugby...`);
+  try {
+    const res = await fetch(ALLRUGBY_URL, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      },
+    });
+    if (!res.ok) {
+      console.error(`  Rugby [leagueone]: HTTP ${res.status}`);
+      return [];
+    }
+    const html = await res.text();
+    const parsed = parseAllRugbyHtml(html);
+    console.log(`  Rugby [leagueone]: Parsed ${parsed.length} matches from HTML`);
+
+    const events: AppEvent[] = [];
+    for (const m of parsed) {
+      const startIso = parseLeagueOneDate(m.date, m.time);
+      if (!startIso) continue;
+
+      const start = new Date(startIso);
+      if (start < windowStart || start > windowEnd) continue;
+
+      const hashInput = `leagueone-${m.date}-${m.homeTeam}-${m.awayTeam}`;
+      const id = `rugby-leagueone-${stableHash(hashInput)}`;
+      const endIso = addDuration(startIso, RUGBY_15S_DURATION_MIN);
+
+      events.push({
+        id,
+        sport: "rugby",
+        league: LEAGUE_LABELS.leagueone,
+        homeTeam: m.homeTeam,
+        awayTeam: m.awayTeam,
+        startTimeLocal: startIso,
+        endTimeLocal: endIso,
+        providerId: LEAGUE_PROVIDERS.leagueone,
+        isLive: false,
+        source: "rugby",
+        leagueKey: "leagueone",
+      });
+    }
+
+    return events;
+  } catch (err) {
+    console.error(`  Rugby [leagueone]: Fetch error:`, err);
+    return [];
+  }
+}
+
+function buildSvnsEvents(windowStart: Date, windowEnd: Date): AppEvent[] {
+  const events: AppEvent[] = [];
+
+  for (const stop of SVNS_SCHEDULE) {
+    const start = new Date(stop.startDate);
+    if (start < windowStart || start > windowEnd) continue;
+
+    const hashInput = `svns-${stop.city}-${stop.startDate}`;
+    const id = `rugby-svns-${stableHash(hashInput)}`;
+
+    events.push({
+      id,
+      sport: "rugby",
+      league: LEAGUE_LABELS.svns,
+      homeTeam: `SVNS ${stop.city}`,
+      awayTeam: "Men's & Women's Sevens",
+      startTimeLocal: stop.startDate,
+      endTimeLocal: stop.endDate,
+      providerId: LEAGUE_PROVIDERS.svns,
+      isLive: false,
+      source: "rugby",
+      leagueKey: "svns",
+    });
+  }
+
+  console.log(`  Rugby [svns]: ${events.length} tournament events in retention window`);
+  return events;
+}
+
 export async function fetchRugbyEvents(): Promise<RugbyFetchResult> {
   const now = new Date();
   const windowStart = new Date(now.getTime() - 14 * 86400000);
@@ -223,15 +415,14 @@ export async function fetchRugbyEvents(): Promise<RugbyFetchResult> {
   const counts: Record<string, number> = {};
   const sourceParts: string[] = [];
 
-  const leagueKeys = Object.keys(ICAL_FEEDS);
-
-  const results = await Promise.all(
-    leagueKeys.map((key) => fetchIcalFeed(ICAL_FEEDS[key], key))
+  const icalKeys = Object.keys(ICAL_FEEDS);
+  const icalResults = await Promise.all(
+    icalKeys.map((key) => fetchIcalFeed(ICAL_FEEDS[key], key))
   );
 
-  for (let i = 0; i < leagueKeys.length; i++) {
-    const leagueKey = leagueKeys[i];
-    const vevents = results[i];
+  for (let i = 0; i < icalKeys.length; i++) {
+    const leagueKey = icalKeys[i];
+    const vevents = icalResults[i];
     let leagueCount = 0;
 
     for (const ve of vevents) {
@@ -249,6 +440,20 @@ export async function fetchRugbyEvents(): Promise<RugbyFetchResult> {
     sourceParts.push(`${LEAGUE_LABELS[leagueKey]}: ${leagueCount}`);
     console.log(`  Rugby [${leagueKey}]: ${leagueCount} events in retention window`);
   }
+
+  const [leagueOneEvents] = await Promise.all([
+    fetchLeagueOneEvents(windowStart, windowEnd),
+  ]);
+
+  counts.leagueone = leagueOneEvents.length;
+  allEvents.push(...leagueOneEvents);
+  sourceParts.push(`${LEAGUE_LABELS.leagueone}: ${leagueOneEvents.length}`);
+  console.log(`  Rugby [leagueone]: ${leagueOneEvents.length} events in retention window`);
+
+  const svnsEvents = buildSvnsEvents(windowStart, windowEnd);
+  counts.svns = svnsEvents.length;
+  allEvents.push(...svnsEvents);
+  sourceParts.push(`${LEAGUE_LABELS.svns}: ${svnsEvents.length}`);
 
   allEvents.sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
 

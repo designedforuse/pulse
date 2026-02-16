@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-16T05:57:20.313Z",
+  "lastUpdated": "2026-02-16T06:11:44.643Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -26,49 +26,55 @@
   "buAdded": 0,
   "buUpdated": 8,
   "buPruned": 0,
-  "rugbyCount": 42,
-  "rugbyAdded": 42,
-  "rugbyUpdated": 0,
+  "rugbyCount": 68,
+  "rugbyAdded": 26,
+  "rugbyUpdated": 42,
   "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 8,
     "top14": 14,
-    "superrugby": 20
+    "superrugby": 20,
+    "premiership": 0,
+    "leagueone": 24,
+    "svns": 2
   },
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-16T05:57:20.313Z",
+    "lastRefreshAt": "2026-02-16T06:11:44.643Z",
     "sources": {
       "nhl": {
         "count": 98,
-        "lastFetchAt": "2026-02-16T05:57:20.313Z",
+        "lastFetchAt": "2026-02-16T06:11:44.643Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 215,
-        "lastFetchAt": "2026-02-16T05:57:20.313Z",
+        "lastFetchAt": "2026-02-16T06:11:44.643Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-16T05:57:20.313Z",
+        "lastFetchAt": "2026-02-16T06:11:44.643Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 8,
-        "lastFetchAt": "2026-02-16T05:57:20.313Z",
+        "lastFetchAt": "2026-02-16T06:11:44.643Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
-        "count": 42,
-        "lastFetchAt": "2026-02-16T05:57:20.313Z",
+        "count": 68,
+        "lastFetchAt": "2026-02-16T06:11:44.643Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 8,
           "top14": 14,
-          "superrugby": 20
+          "superrugby": 20,
+          "premiership": 0,
+          "leagueone": 24,
+          "svns": 2
         }
       }
     }
@@ -351,6 +357,19 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "rugby-svns-3l46hh",
+      "sport": "rugby",
+      "league": "HSBC SVNS",
+      "homeTeam": "SVNS Perth",
+      "awayTeam": "Men's & Women's Sevens",
+      "startTimeLocal": "2026-02-07T01:00:00.000Z",
+      "endTimeLocal": "2026-02-08T13:00:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "svns"
+    },
+    {
       "id": "echl-web-24964",
       "sport": "hockey",
       "league": "ECHL",
@@ -421,6 +440,71 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "rugby-leagueone-gqf2wc",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Kobe",
+      "awayTeam": "Shizuoka",
+      "startTimeLocal": "2026-02-07T04:00:00.000Z",
+      "endTimeLocal": "2026-02-07T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-gnfwer",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "BR Tokyo",
+      "awayTeam": "Saitama",
+      "startTimeLocal": "2026-02-07T04:00:00.000Z",
+      "endTimeLocal": "2026-02-07T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-vy6jc4",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Mie",
+      "awayTeam": "BL Tokyo",
+      "startTimeLocal": "2026-02-07T04:00:00.000Z",
+      "endTimeLocal": "2026-02-07T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-a1y8xa",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Toyota",
+      "awayTeam": "Yokohama",
+      "startTimeLocal": "2026-02-07T04:00:00.000Z",
+      "endTimeLocal": "2026-02-07T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-7uik6s",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Tokyo-Bay",
+      "awayTeam": "Urayasu",
+      "startTimeLocal": "2026-02-07T04:00:00.000Z",
+      "endTimeLocal": "2026-02-07T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
     },
     {
       "id": "ahl-1028490",
@@ -601,6 +685,19 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "rugby-leagueone-7fm150",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Tokyo SG",
+      "awayTeam": "Sagamihara",
+      "startTimeLocal": "2026-02-08T04:00:00.000Z",
+      "endTimeLocal": "2026-02-08T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
     },
     {
       "id": "ncaa-bu-fkhyak",
@@ -820,6 +917,71 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-leagueone-gca2wg",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Yokohama",
+      "awayTeam": "BR Tokyo",
+      "startTimeLocal": "2026-02-14T04:00:00.000Z",
+      "endTimeLocal": "2026-02-14T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-gyso9n",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Saitama",
+      "awayTeam": "Toyota",
+      "startTimeLocal": "2026-02-14T04:00:00.000Z",
+      "endTimeLocal": "2026-02-14T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-wdcvw8",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Shizuoka",
+      "awayTeam": "Tokyo-Bay",
+      "startTimeLocal": "2026-02-14T04:00:00.000Z",
+      "endTimeLocal": "2026-02-14T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-35k35g",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Sagamihara",
+      "awayTeam": "Mie",
+      "startTimeLocal": "2026-02-14T04:00:00.000Z",
+      "endTimeLocal": "2026-02-14T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-pi0z95",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Urayasu",
+      "awayTeam": "Tokyo SG",
+      "startTimeLocal": "2026-02-14T04:00:00.000Z",
+      "endTimeLocal": "2026-02-14T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
     },
     {
       "id": "rugby-superrugby-kqzlnk",
@@ -1129,6 +1291,19 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "rugby-leagueone-s685dz",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "BL Tokyo",
+      "awayTeam": "Kobe",
+      "startTimeLocal": "2026-02-15T04:00:00.000Z",
+      "endTimeLocal": "2026-02-15T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
     },
     {
       "id": "ahl-1028519",
@@ -1637,6 +1812,58 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "rugby-leagueone-byfr6y",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Tokyo-Bay",
+      "awayTeam": "Sagamihara",
+      "startTimeLocal": "2026-02-21T04:00:00.000Z",
+      "endTimeLocal": "2026-02-21T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-fkgl89",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "BR Tokyo",
+      "awayTeam": "Urayasu",
+      "startTimeLocal": "2026-02-21T04:00:00.000Z",
+      "endTimeLocal": "2026-02-21T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-ehey5t",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Toyota",
+      "awayTeam": "BL Tokyo",
+      "startTimeLocal": "2026-02-21T04:00:00.000Z",
+      "endTimeLocal": "2026-02-21T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-w0cee2",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Kobe",
+      "awayTeam": "Saitama",
+      "startTimeLocal": "2026-02-21T04:00:00.000Z",
+      "endTimeLocal": "2026-02-21T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
       "id": "rugby-superrugby-fjps7w",
       "sport": "rugby",
       "league": "Super Rugby",
@@ -1866,6 +2093,32 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-leagueone-j634ax",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Mie",
+      "awayTeam": "Shizuoka",
+      "startTimeLocal": "2026-02-22T04:00:00.000Z",
+      "endTimeLocal": "2026-02-22T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-wlhj1z",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Tokyo SG",
+      "awayTeam": "Yokohama",
+      "startTimeLocal": "2026-02-22T04:00:00.000Z",
+      "endTimeLocal": "2026-02-22T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
     },
     {
       "id": "ahl-1028568",
@@ -2752,6 +3005,45 @@
       "leagueKey": "superrugby"
     },
     {
+      "id": "rugby-leagueone-gcfm9i",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "BL Tokyo",
+      "awayTeam": "BR Tokyo",
+      "startTimeLocal": "2026-02-28T04:00:00.000Z",
+      "endTimeLocal": "2026-02-28T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-rqzcr3",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Urayasu",
+      "awayTeam": "Kobe",
+      "startTimeLocal": "2026-02-28T04:00:00.000Z",
+      "endTimeLocal": "2026-02-28T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-vmzu9b",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Saitama",
+      "awayTeam": "Mie",
+      "startTimeLocal": "2026-02-28T04:00:00.000Z",
+      "endTimeLocal": "2026-02-28T06:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
       "id": "rugby-superrugby-69812m",
       "sport": "rugby",
       "league": "Super Rugby",
@@ -3380,6 +3672,45 @@
       ],
       "isNational": false,
       "providerReason": "espnplus-default"
+    },
+    {
+      "id": "rugby-leagueone-u2l0cm",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Yokohama",
+      "awayTeam": "Tokyo-Bay",
+      "startTimeLocal": "2026-03-01T03:00:00.000Z",
+      "endTimeLocal": "2026-03-01T05:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-18yb16",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Sagamihara",
+      "awayTeam": "Toyota",
+      "startTimeLocal": "2026-03-01T03:00:00.000Z",
+      "endTimeLocal": "2026-03-01T05:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
+    },
+    {
+      "id": "rugby-leagueone-b30xhw",
+      "sport": "rugby",
+      "league": "Japan League One",
+      "homeTeam": "Shizuoka",
+      "awayTeam": "Tokyo SG",
+      "startTimeLocal": "2026-03-01T03:00:00.000Z",
+      "endTimeLocal": "2026-03-01T05:15:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "leagueone"
     },
     {
       "id": "nhl_2025020947",
@@ -4708,6 +5039,19 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-svns-rj2l89",
+      "sport": "rugby",
+      "league": "HSBC SVNS",
+      "homeTeam": "SVNS Vancouver",
+      "awayTeam": "Men's & Women's Sevens",
+      "startTimeLocal": "2026-03-07T17:00:00.000Z",
+      "endTimeLocal": "2026-03-08T23:00:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "svns"
     },
     {
       "id": "nhl_2025020990",
