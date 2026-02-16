@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import { mergeAhlEvents } from "./mergeAhlEvents";
+import { fetchEchlEvents, mergeEchlEvents } from "./updateEchlSchedule";
 
 const NHL_API_BASE = "https://api-web.nhle.com/v1";
 const ODDS_API_BASE = "https://api.the-odds-api.com/v4";
@@ -251,13 +252,13 @@ async function fetchAHLEvents(): Promise<AppEvent[]> {
   }
 }
 
-function loadExistingAhl(): AppEvent[] {
+function loadExistingByPrefix(prefix: string): AppEvent[] {
   try {
     if (!fs.existsSync(OUTPUT_PATH)) return [];
     const raw = fs.readFileSync(OUTPUT_PATH, "utf-8");
     const data = JSON.parse(raw);
     if (!data.events || !Array.isArray(data.events)) return [];
-    return data.events.filter((e: AppEvent) => e.id.startsWith("ahl_"));
+    return data.events.filter((e: AppEvent) => e.id.startsWith(prefix));
   } catch {
     return [];
   }
@@ -267,39 +268,48 @@ async function main() {
   const daysArg = process.argv.find((a) => a.startsWith("--days="));
   const days = daysArg ? parseInt(daysArg.split("=")[1], 10) : 7;
 
-  const existingAhl = loadExistingAhl();
+  const existingAhl = loadExistingByPrefix("ahl_");
+  const existingEchl = loadExistingByPrefix("echl-");
   console.log(`Existing cached AHL events: ${existingAhl.length}`);
+  console.log(`Existing cached ECHL events: ${existingEchl.length}`);
 
-  const [nhlEvents, freshAhlEvents] = await Promise.all([
+  const [nhlEvents, freshAhlEvents, freshEchlEvents] = await Promise.all([
     fetchNHLEvents(days),
     fetchAHLEvents(),
+    fetchEchlEvents(),
   ]);
 
   const now = new Date();
   const ahlResult = mergeAhlEvents(existingAhl, freshAhlEvents, now);
+  const echlResult = mergeEchlEvents(existingEchl, freshEchlEvents, now);
 
   console.log(`  AHL merge: +${ahlResult.added} added, ~${ahlResult.updated} updated, -${ahlResult.pruned} pruned → ${ahlResult.merged.length} total`);
+  console.log(`  ECHL merge: +${echlResult.added} added, ~${echlResult.updated} updated, -${echlResult.pruned} pruned → ${echlResult.merged.length} total`);
 
-  const allEvents = [...nhlEvents, ...ahlResult.merged].sort(
+  const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged].sort(
     (a, b) =>
       new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
   );
 
   const output = {
     lastUpdated: now.toISOString(),
-    sources: ["NHL API (api-web.nhle.com)", "The Odds API (AHL)"],
+    sources: ["NHL API (api-web.nhle.com)", "The Odds API (AHL)", "API-Hockey (ECHL)"],
     ahlKeyUsed: detectedAhlKey,
     nhlCount: nhlEvents.length,
     ahlCount: ahlResult.merged.length,
     ahlAdded: ahlResult.added,
     ahlUpdated: ahlResult.updated,
     ahlPruned: ahlResult.pruned,
+    echlCount: echlResult.merged.length,
+    echlAdded: echlResult.added,
+    echlUpdated: echlResult.updated,
+    echlPruned: echlResult.pruned,
     events: allEvents,
   };
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
   console.log(
-    `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlResult.merged.length} AHL) to ${OUTPUT_PATH}`
+    `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlResult.merged.length} AHL + ${echlResult.merged.length} ECHL) to ${OUTPUT_PATH}`
   );
   console.log(`AHL key used: ${detectedAhlKey || "none detected"}`);
   if (allEvents.length > 0) {
