@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-16T03:38:11.457Z",
+  "lastUpdated": "2026-02-16T03:47:10.476Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "The Odds API (AHL)",
@@ -13,10 +13,31 @@
   "ahlUpdated": 5,
   "ahlPruned": 0,
   "echlCount": 15,
-  "echlAdded": 19,
-  "echlUpdated": 0,
+  "echlAdded": 4,
+  "echlUpdated": 15,
   "echlPruned": 4,
   "echlWebCount": 19,
+  "generatedMeta": {
+    "lastRefreshAt": "2026-02-16T03:47:10.476Z",
+    "sources": {
+      "nhl": {
+        "count": 98,
+        "lastFetchAt": "2026-02-16T03:47:10.476Z",
+        "sourceName": "NHL API"
+      },
+      "ahl": {
+        "count": 5,
+        "lastFetchAt": "2026-02-16T03:47:10.476Z",
+        "sourceName": "Odds API"
+      },
+      "echl": {
+        "count": 15,
+        "lastFetchAt": "2026-02-16T03:47:10.476Z",
+        "sourceName": "HockeyTech",
+        "teamFilter": "Tulsa Oilers"
+      }
+    }
+  },
   "events": [
     {
       "id": "echl-web-24983",

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   StyleSheet,
   Text,
@@ -15,8 +15,42 @@ import * as Haptics from "expo-haptics";
 import { useQueryClient } from "@tanstack/react-query";
 import Colors from "@/constants/colors";
 import { getProviders, getFavorites, getSportColor, type Favorites } from "@/lib/data";
-import { apiRequest } from "@/lib/query-client";
+import { apiRequest, getApiUrl } from "@/lib/query-client";
 import { useEvents } from "@/lib/events-context";
+
+interface SourceMeta {
+  count: number;
+  lastFetchAt: string;
+  sourceName: string;
+  teamFilter?: string;
+}
+
+interface GeneratedMeta {
+  lastRefreshAt: string;
+  sources: {
+    nhl: SourceMeta;
+    ahl: SourceMeta;
+    echl: SourceMeta;
+  };
+}
+
+const STALE_THRESHOLD_MS = 24 * 60 * 60 * 1000;
+
+function formatTimeAgo(isoDate: string): string {
+  const diff = Date.now() - new Date(isoDate).getTime();
+  if (diff < 0) return "just now";
+  const minutes = Math.floor(diff / 60000);
+  if (minutes < 1) return "just now";
+  if (minutes < 60) return `${minutes}m ago`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  return `${days}d ago`;
+}
+
+function isStale(isoDate: string): boolean {
+  return Date.now() - new Date(isoDate).getTime() > STALE_THRESHOLD_MS;
+}
 
 function FavoritesSection({ favorites }: { favorites: Favorites }) {
   const sportOrder = ["hockey", "rugby", "cricket", "soccer"];
@@ -85,6 +119,32 @@ function FavoritesSection({ favorites }: { favorites: Favorites }) {
   );
 }
 
+function SourceRow({ league, meta }: { league: string; meta: SourceMeta }) {
+  const stale = isStale(meta.lastFetchAt);
+  const timeAgo = formatTimeAgo(meta.lastFetchAt);
+  const label = meta.teamFilter ? `${league} (${meta.teamFilter})` : league;
+
+  return (
+    <View style={styles.sourceRow}>
+      <View style={styles.sourceLeft}>
+        <Text style={styles.sourceLeague}>{label}</Text>
+        <Text style={styles.sourceVia}>via {meta.sourceName}</Text>
+      </View>
+      <View style={styles.sourceRight}>
+        <Text style={styles.sourceCount}>{meta.count} events</Text>
+        <View style={styles.sourceTimeRow}>
+          {stale && (
+            <Ionicons name="warning" size={11} color="#F59E0B" style={{ marginRight: 3 }} />
+          )}
+          <Text style={[styles.sourceTime, stale && { color: "#F59E0B" }]}>
+            {timeAgo}
+          </Text>
+        </View>
+      </View>
+    </View>
+  );
+}
+
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const providers = getProviders();
@@ -94,27 +154,28 @@ export default function SettingsScreen() {
   const { debugShowAll, setDebugShowAll } = useEvents();
 
   const [refreshing, setRefreshing] = useState(false);
-  const [refreshResult, setRefreshResult] = useState<{
-    success: boolean;
-    message: string;
-    nhlCount?: number;
-    ahlCount?: number;
-    ahlKeyUsed?: string | null;
-    ahlAdded?: number;
-    ahlUpdated?: number;
-    ahlPruned?: number;
-    echlCount?: number;
-    echlAdded?: number;
-    echlUpdated?: number;
-    echlPruned?: number;
-    echlSourceUsed?: string;
-    echlWebCount?: number;
-  } | null>(null);
+  const [refreshMessage, setRefreshMessage] = useState<{ text: string; ok: boolean } | null>(null);
+  const [meta, setMeta] = useState<GeneratedMeta | null>(null);
+
+  const fetchMeta = useCallback(async () => {
+    try {
+      const url = new URL("/api/meta", getApiUrl());
+      const res = await fetch(url.toString());
+      const data = await res.json();
+      if (data && data.lastRefreshAt) {
+        setMeta(data as GeneratedMeta);
+      }
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    fetchMeta();
+  }, [fetchMeta]);
 
   const handleRefresh = async () => {
     if (refreshing) return;
     setRefreshing(true);
-    setRefreshResult(null);
+    setRefreshMessage(null);
     if (Platform.OS !== "web") {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     }
@@ -122,28 +183,14 @@ export default function SettingsScreen() {
       const res = await apiRequest("POST", "/api/refresh?days=14");
       const data = await res.json();
       if (data.success) {
-        setRefreshResult({
-          success: true,
-          message: `Updated: ${data.eventCount} events loaded`,
-          nhlCount: data.nhlCount,
-          ahlCount: data.ahlCount,
-          ahlKeyUsed: data.ahlKeyUsed,
-          ahlAdded: data.ahlAdded,
-          ahlUpdated: data.ahlUpdated,
-          ahlPruned: data.ahlPruned,
-          echlCount: data.echlCount,
-          echlAdded: data.echlAdded,
-          echlUpdated: data.echlUpdated,
-          echlPruned: data.echlPruned,
-          echlSourceUsed: data.echlSourceUsed,
-          echlWebCount: data.echlWebCount,
-        });
+        setRefreshMessage({ text: `Updated: ${data.eventCount} events loaded`, ok: true });
         queryClient.invalidateQueries({ queryKey: ["/api/events?days=14"] });
+        await fetchMeta();
       } else {
-        setRefreshResult({ success: false, message: "Refresh failed. Try again." });
+        setRefreshMessage({ text: "Refresh failed. Try again.", ok: false });
       }
     } catch {
-      setRefreshResult({ success: false, message: "Refresh failed. Check connection." });
+      setRefreshMessage({ text: "Refresh failed. Check connection.", ok: false });
     } finally {
       setRefreshing(false);
     }
@@ -174,6 +221,26 @@ export default function SettingsScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Schedule Data</Text>
           <View style={styles.card}>
+            {meta && (
+              <View style={styles.metaBlock}>
+                <View style={styles.metaHeaderRow}>
+                  <Ionicons name="time-outline" size={14} color={Colors.textSecondary} />
+                  <Text style={styles.metaRefreshText}>
+                    Last refreshed: {formatTimeAgo(meta.lastRefreshAt)}
+                  </Text>
+                  {isStale(meta.lastRefreshAt) && (
+                    <Ionicons name="warning" size={13} color="#F59E0B" style={{ marginLeft: 4 }} />
+                  )}
+                </View>
+                <View style={styles.sourceDivider} />
+                <SourceRow league="NHL" meta={meta.sources.nhl} />
+                <View style={styles.sourceDivider} />
+                <SourceRow league="AHL" meta={meta.sources.ahl} />
+                <View style={styles.sourceDivider} />
+                <SourceRow league="ECHL" meta={meta.sources.echl} />
+                <View style={styles.sourceDivider} />
+              </View>
+            )}
             <Pressable
               onPress={handleRefresh}
               disabled={refreshing}
@@ -200,71 +267,23 @@ export default function SettingsScreen() {
                 <Ionicons name="chevron-forward" size={16} color={Colors.textMuted} />
               )}
             </Pressable>
-            {refreshResult && (
+            {refreshMessage && (
               <View style={styles.refreshResultBlock}>
                 <View style={styles.refreshResultRow}>
                   <Ionicons
-                    name={refreshResult.success ? "checkmark-circle" : "alert-circle"}
+                    name={refreshMessage.ok ? "checkmark-circle" : "alert-circle"}
                     size={14}
-                    color={refreshResult.success ? Colors.accent : Colors.live}
+                    color={refreshMessage.ok ? Colors.accent : Colors.live}
                   />
                   <Text
                     style={[
                       styles.refreshResultText,
-                      { color: refreshResult.success ? Colors.accent : Colors.live },
+                      { color: refreshMessage.ok ? Colors.accent : Colors.live },
                     ]}
                   >
-                    {refreshResult.message}
+                    {refreshMessage.text}
                   </Text>
                 </View>
-                {refreshResult.success && (
-                  <View style={styles.refreshCountsRow}>
-                    <Text style={styles.refreshCountText}>
-                      NHL: {refreshResult.nhlCount ?? 0}
-                    </Text>
-                    <Text style={styles.refreshCountDot}>|</Text>
-                    <Text style={[
-                      styles.refreshCountText,
-                      refreshResult.ahlCount === 0 && { color: Colors.live },
-                    ]}>
-                      AHL: {refreshResult.ahlCount ?? 0}
-                    </Text>
-                    <Text style={styles.refreshCountDot}>|</Text>
-                    <Text style={[
-                      styles.refreshCountText,
-                      refreshResult.echlCount === 0 && { color: Colors.live },
-                    ]}>
-                      ECHL: {refreshResult.echlCount ?? 0}
-                    </Text>
-                  </View>
-                )}
-                {refreshResult.success && (refreshResult.ahlAdded !== undefined || refreshResult.ahlUpdated !== undefined) && (
-                  <View style={styles.refreshCountsRow}>
-                    <Text style={styles.refreshCountText}>
-                      AHL cache: +{refreshResult.ahlAdded ?? 0} new, ~{refreshResult.ahlUpdated ?? 0} updated, -{refreshResult.ahlPruned ?? 0} pruned
-                    </Text>
-                  </View>
-                )}
-                {refreshResult.success && (refreshResult.echlAdded !== undefined || refreshResult.echlUpdated !== undefined) && (
-                  <View style={styles.refreshCountsRow}>
-                    <Text style={styles.refreshCountText}>
-                      ECHL cache: +{refreshResult.echlAdded ?? 0} new, ~{refreshResult.echlUpdated ?? 0} updated, -{refreshResult.echlPruned ?? 0} pruned
-                    </Text>
-                  </View>
-                )}
-                {refreshResult.success && refreshResult.echlSourceUsed && (
-                  <View style={styles.refreshCountsRow}>
-                    <Text style={styles.refreshCountText}>
-                      ECHL source: {refreshResult.echlSourceUsed === "web" ? "HockeyTech web" : refreshResult.echlSourceUsed === "api-hockey" ? "API-Hockey" : "none"}
-                      {refreshResult.echlSourceUsed === "web" && refreshResult.echlWebCount ? ` (${refreshResult.echlWebCount} Tulsa games)` : ""}
-                    </Text>
-                  </View>
-                )}
-                {refreshResult.success && refreshResult.ahlCount === 0 && (
-                  <Text style={styles.refreshWarning}>
-                    AHL returned 0 events; check /api/odds/sports
-                  </Text>
-                )}
               </View>
             )}
           </View>
@@ -617,6 +636,63 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
     marginLeft: 20,
     marginTop: 2,
+  },
+  metaBlock: {
+    paddingBottom: 0,
+  },
+  metaHeaderRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+  },
+  metaRefreshText: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_500Medium",
+  },
+  sourceDivider: {
+    height: 1,
+    backgroundColor: Colors.border,
+  },
+  sourceRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+  },
+  sourceLeft: {
+    gap: 2,
+  },
+  sourceLeague: {
+    fontSize: 14,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_600SemiBold",
+  },
+  sourceVia: {
+    fontSize: 11,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
+  },
+  sourceRight: {
+    alignItems: "flex-end" as const,
+    gap: 2,
+  },
+  sourceCount: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_500Medium",
+  },
+  sourceTimeRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  sourceTime: {
+    fontSize: 11,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
   },
   debugRow: {
     flexDirection: "row",

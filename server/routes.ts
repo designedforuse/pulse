@@ -176,6 +176,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     );
   });
 
+  app.get("/api/meta", (_req, res) => {
+    const generated = loadGeneratedEvents();
+    if (!generated || !generated.generatedMeta) {
+      return res.json({ error: "No metadata available. Run a refresh first." });
+    }
+    return res.json(generated.generatedMeta);
+  });
+
   app.get("/api/debug/echl-check", async (_req, res) => {
     const apiKey = process.env.API_HOCKEY_KEY;
     if (!apiKey) {
