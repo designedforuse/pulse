@@ -127,11 +127,18 @@ function SourceRow({ league, meta }: { league: string; meta: SourceMeta }) {
   const timeAgo = formatTimeAgo(meta.lastFetchAt);
   const label = meta.teamFilter ? `${league} (${meta.teamFilter})` : league;
 
+  const leagueSummary = meta.leagueCounts
+    ? Object.entries(meta.leagueCounts).map(([k, v]) => `${k}: ${v}`).join(" | ")
+    : null;
+
   return (
     <View style={styles.sourceRow}>
       <View style={styles.sourceLeft}>
         <Text style={styles.sourceLeague}>{label}</Text>
         <Text style={styles.sourceVia}>via {meta.sourceName}</Text>
+        {leagueSummary && (
+          <Text style={styles.sourceVia}>{leagueSummary}</Text>
+        )}
       </View>
       <View style={styles.sourceRight}>
         <Text style={styles.sourceCount}>{meta.count} events</Text>

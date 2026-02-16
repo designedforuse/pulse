@@ -1,15 +1,17 @@
 {
-  "lastUpdated": "2026-02-16T05:40:34.581Z",
+  "lastUpdated": "2026-02-16T05:57:20.313Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
     "ECHL (API-Hockey / HockeyTech web)",
-    "NCAA (College Hockey News)"
+    "NCAA (College Hockey News)",
+    "Rugby (iCal feeds)"
   ],
   "ahlSourceUsed": "hockeytech",
   "ahlOddsKeyUsed": null,
   "echlSourceUsed": "web",
   "buSourceUsed": "chn",
+  "rugbySourceUsed": "ical",
   "nhlCount": 98,
   "ahlCount": 215,
   "ahlAdded": 2,
@@ -24,31 +26,50 @@
   "buAdded": 0,
   "buUpdated": 8,
   "buPruned": 0,
+  "rugbyCount": 42,
+  "rugbyAdded": 42,
+  "rugbyUpdated": 0,
+  "rugbyPruned": 0,
+  "rugbyCounts": {
+    "urc": 8,
+    "top14": 14,
+    "superrugby": 20
+  },
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-16T05:40:34.581Z",
+    "lastRefreshAt": "2026-02-16T05:57:20.313Z",
     "sources": {
       "nhl": {
         "count": 98,
-        "lastFetchAt": "2026-02-16T05:40:34.581Z",
+        "lastFetchAt": "2026-02-16T05:57:20.313Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 215,
-        "lastFetchAt": "2026-02-16T05:40:34.581Z",
+        "lastFetchAt": "2026-02-16T05:57:20.313Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-16T05:40:34.581Z",
+        "lastFetchAt": "2026-02-16T05:57:20.313Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 8,
-        "lastFetchAt": "2026-02-16T05:40:34.581Z",
+        "lastFetchAt": "2026-02-16T05:57:20.313Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
+      },
+      "rugby": {
+        "count": 42,
+        "lastFetchAt": "2026-02-16T05:57:20.313Z",
+        "sourceName": "iCal Feeds",
+        "leagueCounts": {
+          "urc": 8,
+          "top14": 14,
+          "superrugby": 20
+        }
       }
     }
   },
@@ -678,6 +699,32 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "rugby-superrugby-uczzlv",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "Highlanders",
+      "awayTeam": "Crusaders",
+      "startTimeLocal": "2026-02-13T06:05:00.000Z",
+      "endTimeLocal": "2026-02-13T08:05:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-superrugby-blh6gy",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "NSW Waratahs",
+      "awayTeam": "Queensland Reds",
+      "startTimeLocal": "2026-02-13T08:35:00.000Z",
+      "endTimeLocal": "2026-02-13T10:35:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
       "id": "ahl-1028498",
       "sport": "hockey",
       "league": "AHL",
@@ -760,6 +807,136 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "rugby-superrugby-rfj28o",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "Fijian Drua",
+      "awayTeam": "Moana Pasifika",
+      "startTimeLocal": "2026-02-14T03:35:00.000Z",
+      "endTimeLocal": "2026-02-14T05:35:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-superrugby-kqzlnk",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "Blues",
+      "awayTeam": "Chiefs",
+      "startTimeLocal": "2026-02-14T06:05:00.000Z",
+      "endTimeLocal": "2026-02-14T08:05:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-superrugby-woh59k",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "Western Force",
+      "awayTeam": "ACT Brumbies",
+      "startTimeLocal": "2026-02-14T08:35:00.000Z",
+      "endTimeLocal": "2026-02-14T10:35:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-top14-lsa4rl",
+      "sport": "rugby",
+      "league": "Top 14",
+      "homeTeam": "Bordeaux",
+      "awayTeam": "Castres",
+      "startTimeLocal": "2026-02-14T15:00:00.000Z",
+      "endTimeLocal": "2026-02-14T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "top14"
+    },
+    {
+      "id": "rugby-top14-39vvnv",
+      "sport": "rugby",
+      "league": "Top 14",
+      "homeTeam": "Toulon",
+      "awayTeam": "Clermont",
+      "startTimeLocal": "2026-02-14T15:00:00.000Z",
+      "endTimeLocal": "2026-02-14T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "top14"
+    },
+    {
+      "id": "rugby-top14-lpu90y",
+      "sport": "rugby",
+      "league": "Top 14",
+      "homeTeam": "Perpignan",
+      "awayTeam": "Pau",
+      "startTimeLocal": "2026-02-14T15:00:00.000Z",
+      "endTimeLocal": "2026-02-14T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "top14"
+    },
+    {
+      "id": "rugby-top14-xrzl0s",
+      "sport": "rugby",
+      "league": "Top 14",
+      "homeTeam": "Stade Français",
+      "awayTeam": "Toulouse",
+      "startTimeLocal": "2026-02-14T15:00:00.000Z",
+      "endTimeLocal": "2026-02-14T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "top14"
+    },
+    {
+      "id": "rugby-top14-6hujqp",
+      "sport": "rugby",
+      "league": "Top 14",
+      "homeTeam": "Bayonne",
+      "awayTeam": "Racing Métro",
+      "startTimeLocal": "2026-02-14T15:00:00.000Z",
+      "endTimeLocal": "2026-02-14T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "top14"
+    },
+    {
+      "id": "rugby-top14-bcq2wx",
+      "sport": "rugby",
+      "league": "Top 14",
+      "homeTeam": "Lyon",
+      "awayTeam": "Montauban",
+      "startTimeLocal": "2026-02-14T15:00:00.000Z",
+      "endTimeLocal": "2026-02-14T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "top14"
+    },
+    {
+      "id": "rugby-top14-h4rlw6",
+      "sport": "rugby",
+      "league": "Top 14",
+      "homeTeam": "La Rochelle",
+      "awayTeam": "Montpellier",
+      "startTimeLocal": "2026-02-14T15:00:00.000Z",
+      "endTimeLocal": "2026-02-14T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "top14"
     },
     {
       "id": "ahl-1028507",
@@ -1290,6 +1467,32 @@
       "source": "echl"
     },
     {
+      "id": "rugby-superrugby-7ukn1m",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "Hurricanes",
+      "awayTeam": "Moana Pasifika",
+      "startTimeLocal": "2026-02-20T06:05:00.000Z",
+      "endTimeLocal": "2026-02-20T08:05:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-superrugby-ehpqg1",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "NSW Waratahs",
+      "awayTeam": "Fijian Drua",
+      "startTimeLocal": "2026-02-20T08:35:00.000Z",
+      "endTimeLocal": "2026-02-20T10:35:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
       "id": "ahl-1028541",
       "sport": "hockey",
       "league": "AHL",
@@ -1432,6 +1635,32 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "rugby-superrugby-fjps7w",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "Highlanders",
+      "awayTeam": "Chiefs",
+      "startTimeLocal": "2026-02-21T06:05:00.000Z",
+      "endTimeLocal": "2026-02-21T08:05:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-superrugby-n4cvlk",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "Western Force",
+      "awayTeam": "Blues",
+      "startTimeLocal": "2026-02-21T08:35:00.000Z",
+      "endTimeLocal": "2026-02-21T10:35:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
     },
     {
       "id": "ahl-1028558",
@@ -1624,6 +1853,19 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "rugby-superrugby-ynlw78",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "Crusaders",
+      "awayTeam": "ACT Brumbies",
+      "startTimeLocal": "2026-02-22T02:35:00.000Z",
+      "endTimeLocal": "2026-02-22T04:35:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
     },
     {
       "id": "ahl-1028568",
@@ -2246,6 +2488,58 @@
       "providerReason": "national"
     },
     {
+      "id": "rugby-superrugby-f6wx5m",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "Moana Pasifika",
+      "awayTeam": "Western Force",
+      "startTimeLocal": "2026-02-27T06:05:00.000Z",
+      "endTimeLocal": "2026-02-27T08:05:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-superrugby-t36c73",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "Queensland Reds",
+      "awayTeam": "Highlanders",
+      "startTimeLocal": "2026-02-27T08:35:00.000Z",
+      "endTimeLocal": "2026-02-27T10:35:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-urc-e0tauu",
+      "sport": "rugby",
+      "league": "URC",
+      "homeTeam": "Edinburgh",
+      "awayTeam": "Scarlets",
+      "startTimeLocal": "2026-02-27T19:45:00.000Z",
+      "endTimeLocal": "2026-02-27T21:45:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "urc"
+    },
+    {
+      "id": "rugby-urc-wyg10g",
+      "sport": "rugby",
+      "league": "URC",
+      "homeTeam": "Cardiff",
+      "awayTeam": "Leinster",
+      "startTimeLocal": "2026-02-27T19:45:00.000Z",
+      "endTimeLocal": "2026-02-27T21:45:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "urc"
+    },
+    {
       "id": "ahl-1028586",
       "sport": "hockey",
       "league": "AHL",
@@ -2445,6 +2739,175 @@
       "providerReason": "ducks-rsn"
     },
     {
+      "id": "rugby-superrugby-h72s5j",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "Fijian Drua",
+      "awayTeam": "Hurricanes",
+      "startTimeLocal": "2026-02-28T03:35:00.000Z",
+      "endTimeLocal": "2026-02-28T05:35:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-superrugby-69812m",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "Chiefs",
+      "awayTeam": "Crusaders",
+      "startTimeLocal": "2026-02-28T06:05:00.000Z",
+      "endTimeLocal": "2026-02-28T08:05:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-superrugby-gaecfj",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "ACT Brumbies",
+      "awayTeam": "Blues",
+      "startTimeLocal": "2026-02-28T08:35:00.000Z",
+      "endTimeLocal": "2026-02-28T10:35:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-urc-eg5az8",
+      "sport": "rugby",
+      "league": "URC",
+      "homeTeam": "Lions Super",
+      "awayTeam": "Stormers",
+      "startTimeLocal": "2026-02-28T12:30:00.000Z",
+      "endTimeLocal": "2026-02-28T14:30:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "urc"
+    },
+    {
+      "id": "rugby-urc-3msz0h",
+      "sport": "rugby",
+      "league": "URC",
+      "homeTeam": "Connacht",
+      "awayTeam": "Glasgow",
+      "startTimeLocal": "2026-02-28T15:00:00.000Z",
+      "endTimeLocal": "2026-02-28T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "urc"
+    },
+    {
+      "id": "rugby-urc-1wzqq1",
+      "sport": "rugby",
+      "league": "URC",
+      "homeTeam": "Bulls Super",
+      "awayTeam": "The Sharks",
+      "startTimeLocal": "2026-02-28T15:00:00.000Z",
+      "endTimeLocal": "2026-02-28T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "urc"
+    },
+    {
+      "id": "rugby-top14-a4x3m5",
+      "sport": "rugby",
+      "league": "Top 14",
+      "homeTeam": "Clermont",
+      "awayTeam": "Bayonne",
+      "startTimeLocal": "2026-02-28T15:00:00.000Z",
+      "endTimeLocal": "2026-02-28T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "top14"
+    },
+    {
+      "id": "rugby-top14-96c0p1",
+      "sport": "rugby",
+      "league": "Top 14",
+      "homeTeam": "Stade Français",
+      "awayTeam": "Perpignan",
+      "startTimeLocal": "2026-02-28T15:00:00.000Z",
+      "endTimeLocal": "2026-02-28T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "top14"
+    },
+    {
+      "id": "rugby-top14-26941p",
+      "sport": "rugby",
+      "league": "Top 14",
+      "homeTeam": "Montpellier",
+      "awayTeam": "Racing Métro",
+      "startTimeLocal": "2026-02-28T15:00:00.000Z",
+      "endTimeLocal": "2026-02-28T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "top14"
+    },
+    {
+      "id": "rugby-top14-jogkx0",
+      "sport": "rugby",
+      "league": "Top 14",
+      "homeTeam": "Toulouse",
+      "awayTeam": "Montauban",
+      "startTimeLocal": "2026-02-28T15:00:00.000Z",
+      "endTimeLocal": "2026-02-28T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "top14"
+    },
+    {
+      "id": "rugby-top14-9zdonh",
+      "sport": "rugby",
+      "league": "Top 14",
+      "homeTeam": "Pau",
+      "awayTeam": "Bordeaux",
+      "startTimeLocal": "2026-02-28T15:00:00.000Z",
+      "endTimeLocal": "2026-02-28T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "top14"
+    },
+    {
+      "id": "rugby-top14-sn87k6",
+      "sport": "rugby",
+      "league": "Top 14",
+      "homeTeam": "Lyon",
+      "awayTeam": "Toulon",
+      "startTimeLocal": "2026-02-28T15:00:00.000Z",
+      "endTimeLocal": "2026-02-28T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "top14"
+    },
+    {
+      "id": "rugby-top14-op9xjf",
+      "sport": "rugby",
+      "league": "Top 14",
+      "homeTeam": "Castres",
+      "awayTeam": "La Rochelle",
+      "startTimeLocal": "2026-02-28T15:00:00.000Z",
+      "endTimeLocal": "2026-02-28T17:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "top14"
+    },
+    {
       "id": "nhl_2025020934",
       "sport": "hockey",
       "league": "NHL",
@@ -2462,6 +2925,45 @@
       ],
       "isNational": true,
       "providerReason": "national"
+    },
+    {
+      "id": "rugby-urc-1obuv5",
+      "sport": "rugby",
+      "league": "URC",
+      "homeTeam": "Dragons",
+      "awayTeam": "Benetton",
+      "startTimeLocal": "2026-02-28T17:30:00.000Z",
+      "endTimeLocal": "2026-02-28T19:30:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "urc"
+    },
+    {
+      "id": "rugby-urc-dn1j2g",
+      "sport": "rugby",
+      "league": "URC",
+      "homeTeam": "Munster",
+      "awayTeam": "Zebre",
+      "startTimeLocal": "2026-02-28T17:30:00.000Z",
+      "endTimeLocal": "2026-02-28T19:30:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "urc"
+    },
+    {
+      "id": "rugby-urc-6fvojc",
+      "sport": "rugby",
+      "league": "URC",
+      "homeTeam": "Ospreys",
+      "awayTeam": "Ulster",
+      "startTimeLocal": "2026-02-28T19:45:00.000Z",
+      "endTimeLocal": "2026-02-28T21:45:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "urc"
     },
     {
       "id": "nhl_2025020935",
@@ -3843,6 +4345,32 @@
       "providerReason": "national"
     },
     {
+      "id": "rugby-superrugby-2drvl9",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "Chiefs",
+      "awayTeam": "Moana Pasifika",
+      "startTimeLocal": "2026-03-06T06:05:00.000Z",
+      "endTimeLocal": "2026-03-06T08:05:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-superrugby-j6ncdz",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "NSW Waratahs",
+      "awayTeam": "Hurricanes",
+      "startTimeLocal": "2026-03-06T08:35:00.000Z",
+      "endTimeLocal": "2026-03-06T10:35:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
       "id": "nhl_2025020983",
       "sport": "hockey",
       "league": "NHL",
@@ -4141,6 +4669,45 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "rugby-superrugby-z2b20a",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "Highlanders",
+      "awayTeam": "Western Force",
+      "startTimeLocal": "2026-03-07T03:35:00.000Z",
+      "endTimeLocal": "2026-03-07T05:35:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-superrugby-6znrd",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "Blues",
+      "awayTeam": "Crusaders",
+      "startTimeLocal": "2026-03-07T06:05:00.000Z",
+      "endTimeLocal": "2026-03-07T08:05:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-superrugby-o07xs4",
+      "sport": "rugby",
+      "league": "Super Rugby",
+      "homeTeam": "ACT Brumbies",
+      "awayTeam": "Queensland Reds",
+      "startTimeLocal": "2026-03-07T08:35:00.000Z",
+      "endTimeLocal": "2026-03-07T10:35:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "superrugby"
     },
     {
       "id": "nhl_2025020990",
