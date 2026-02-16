@@ -4,6 +4,7 @@ import { fetchAhlEvents, mergeAhlEvents } from "./updateAhlSchedule";
 import { fetchEchlEvents, mergeEchlEvents } from "./updateEchlSchedule";
 import { fetchBuEvents, mergeBuEvents } from "./updateBuHockey";
 import { fetchRugbyEvents, mergeRugbyEvents } from "./updateRugby";
+import { fetchCricketEvents, mergeCricketEvents } from "./updateCricket";
 
 const NHL_API_BASE = "https://api-web.nhle.com/v1";
 const OUTPUT_PATH = path.resolve(__dirname, "../data/generatedEvents.json");
@@ -228,17 +229,20 @@ async function main() {
   const existingEchl = loadExistingByPrefix("echl-");
   const existingBu = loadExistingByPrefix("ncaa-bu-");
   const existingRugby = loadExistingByPrefix("rugby-");
+  const existingCricket = loadExistingByPrefix("cricket-");
   console.log(`Existing cached AHL events: ${existingAhl.length}`);
   console.log(`Existing cached ECHL events: ${existingEchl.length}`);
   console.log(`Existing cached BU events: ${existingBu.length}`);
   console.log(`Existing cached Rugby events: ${existingRugby.length}`);
+  console.log(`Existing cached Cricket events: ${existingCricket.length}`);
 
-  const [nhlEvents, ahlFetchResult, echlFetchResult, buFetchResult, rugbyFetchResult] = await Promise.all([
+  const [nhlEvents, ahlFetchResult, echlFetchResult, buFetchResult, rugbyFetchResult, cricketFetchResult] = await Promise.all([
     fetchNHLEvents(days),
     fetchAhlEvents(),
     fetchEchlEvents(),
     fetchBuEvents(),
     fetchRugbyEvents(),
+    fetchCricketEvents(),
   ]);
 
   const now = new Date();
@@ -246,6 +250,7 @@ async function main() {
   const echlResult = mergeEchlEvents(existingEchl, echlFetchResult.events, now);
   const buResult = mergeBuEvents(existingBu, buFetchResult.events, now);
   const rugbyResult = mergeRugbyEvents(existingRugby, rugbyFetchResult.events, now);
+  const cricketResult = mergeCricketEvents(existingCricket, cricketFetchResult.events, now);
 
   const ahlSourceLabel = ahlFetchResult.sourceUsed === "hockeytech"
     ? "HockeyTech"
@@ -260,8 +265,10 @@ async function main() {
   console.log(`  BU merge: +${buResult.added} added, ~${buResult.updated} updated, -${buResult.pruned} pruned → ${buResult.merged.length} total`);
   console.log(`  Rugby source: ${rugbyFetchResult.sourceUsed} (${JSON.stringify(rugbyFetchResult.counts)})`);
   console.log(`  Rugby merge: +${rugbyResult.added} added, ~${rugbyResult.updated} updated, -${rugbyResult.pruned} pruned → ${rugbyResult.merged.length} total`);
+  console.log(`  Cricket source: ${cricketFetchResult.sourceUsed} (${JSON.stringify(cricketFetchResult.counts)})`);
+  console.log(`  Cricket merge: +${cricketResult.added} added, ~${cricketResult.updated} updated, -${cricketResult.pruned} pruned → ${cricketResult.merged.length} total`);
 
-  const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged, ...buResult.merged, ...rugbyResult.merged].sort(
+  const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged, ...buResult.merged, ...rugbyResult.merged, ...cricketResult.merged].sort(
     (a, b) =>
       new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
   );
@@ -307,17 +314,24 @@ async function main() {
         sourceName: "iCal Feeds",
         leagueCounts: rugbyFetchResult.counts,
       },
+      cricket: {
+        count: cricketResult.merged.length,
+        lastFetchAt: cricketFetchResult.events.length > 0 ? nowIso : (prevMeta?.sources?.cricket?.lastFetchAt || nowIso),
+        sourceName: "CricAPI",
+        leagueCounts: cricketFetchResult.counts,
+      },
     },
   };
 
   const output = {
     lastUpdated: nowIso,
-    sources: ["NHL API (api-web.nhle.com)", "AHL (HockeyTech / Odds API fallback)", "ECHL (API-Hockey / HockeyTech web)", "NCAA (College Hockey News)", "Rugby (iCal feeds)"],
+    sources: ["NHL API (api-web.nhle.com)", "AHL (HockeyTech / Odds API fallback)", "ECHL (API-Hockey / HockeyTech web)", "NCAA (College Hockey News)", "Rugby (iCal feeds)", "Cricket (CricAPI)"],
     ahlSourceUsed: ahlFetchResult.sourceUsed,
     ahlOddsKeyUsed: ahlFetchResult.detectedOddsKey,
     echlSourceUsed: echlFetchResult.sourceUsed,
     buSourceUsed: buFetchResult.sourceUsed,
     rugbySourceUsed: rugbyFetchResult.sourceUsed,
+    cricketSourceUsed: cricketFetchResult.sourceUsed,
     nhlCount: nhlEvents.length,
     ahlCount: ahlResult.merged.length,
     ahlAdded: ahlResult.added,
@@ -337,13 +351,18 @@ async function main() {
     rugbyUpdated: rugbyResult.updated,
     rugbyPruned: rugbyResult.pruned,
     rugbyCounts: rugbyFetchResult.counts,
+    cricketCount: cricketResult.merged.length,
+    cricketAdded: cricketResult.added,
+    cricketUpdated: cricketResult.updated,
+    cricketPruned: cricketResult.pruned,
+    cricketCounts: cricketFetchResult.counts,
     generatedMeta,
     events: allEvents,
   };
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
   console.log(
-    `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlResult.merged.length} AHL + ${echlResult.merged.length} ECHL + ${buResult.merged.length} NCAA + ${rugbyResult.merged.length} Rugby) to ${OUTPUT_PATH}`
+    `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlResult.merged.length} AHL + ${echlResult.merged.length} ECHL + ${buResult.merged.length} NCAA + ${rugbyResult.merged.length} Rugby + ${cricketResult.merged.length} Cricket) to ${OUTPUT_PATH}`
   );
   console.log(`AHL source: ${ahlSourceLabel}`);
   if (allEvents.length > 0) {

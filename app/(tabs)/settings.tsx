@@ -34,6 +34,7 @@ interface GeneratedMeta {
     echl: SourceMeta;
     ncaa?: SourceMeta;
     rugby?: SourceMeta;
+    cricket?: SourceMeta;
   };
 }
 
@@ -261,6 +262,12 @@ export default function SettingsScreen() {
                     <View style={styles.sourceDivider} />
                   </>
                 )}
+                {meta.sources.cricket && (
+                  <>
+                    <SourceRow league="Cricket" meta={meta.sources.cricket} />
+                    <View style={styles.sourceDivider} />
+                  </>
+                )}
               </View>
             )}
             <Pressable
@@ -281,7 +288,7 @@ export default function SettingsScreen() {
                 <View>
                   <Text style={styles.refreshLabel}>Refresh Schedules</Text>
                   <Text style={styles.refreshDesc}>
-                    Pull latest NHL + AHL + ECHL + NCAA + Rugby data
+                    Pull latest NHL + AHL + ECHL + NCAA + Rugby + Cricket data
                   </Text>
                 </View>
               </View>

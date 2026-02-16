@@ -182,6 +182,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
           rugbyPruned: generated?.rugbyPruned ?? 0,
           rugbySourceUsed: generated?.rugbySourceUsed ?? "unknown",
           rugbyCounts: generated?.rugbyCounts ?? {},
+          cricketCount: generated?.cricketCount ?? 0,
+          cricketAdded: generated?.cricketAdded ?? 0,
+          cricketUpdated: generated?.cricketUpdated ?? 0,
+          cricketPruned: generated?.cricketPruned ?? 0,
+          cricketSourceUsed: generated?.cricketSourceUsed ?? "unknown",
+          cricketCounts: generated?.cricketCounts ?? {},
         });
       }
     );
@@ -322,9 +328,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const ncaa = events.filter((e: any) => (e.source || "").startsWith("ncaa")).length;
     const rugby = events.filter((e: any) => e.source === "rugby").length;
     const svnsSessions = events.filter((e: any) => e.leagueKey === "svns" && e.eventType === "session").length;
-    const other = events.length - nhl - ahl - echl - ncaa - rugby;
+    const cricket = events.filter((e: any) => (e.source || "").startsWith("cricket")).length;
+    const other = events.length - nhl - ahl - echl - ncaa - rugby - cricket;
     return res.json({
-      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, cricket, other, total: events.length,
       lastUpdated: generated.lastUpdated,
       ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",
@@ -332,6 +339,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       buSourceUsed: generated.buSourceUsed ?? "unknown",
       rugbySourceUsed: generated.rugbySourceUsed ?? "unknown",
       rugbyCounts: generated.rugbyCounts ?? {},
+      cricketSourceUsed: generated.cricketSourceUsed ?? "unknown",
+      cricketCounts: generated.cricketCounts ?? {},
     });
   });
 

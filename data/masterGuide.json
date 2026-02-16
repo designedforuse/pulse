@@ -8,25 +8,42 @@
           "id": "hockey_night",
           "title": "Hockey Night",
           "sport": "hockey",
-          "leagues": ["NHL", "AHL", "ECHL", "NCAA Hockey"]
+          "leagues": [
+            "NHL",
+            "AHL",
+            "ECHL",
+            "NCAA Hockey"
+          ]
         },
         {
           "id": "rugby_night",
           "title": "Rugby Night",
           "sport": "rugby",
-          "leagues": ["Japan League One", "Super Rugby", "HSBC SVNS"]
+          "leagues": [
+            "Japan League One",
+            "Super Rugby",
+            "HSBC SVNS"
+          ]
         },
         {
           "id": "cricket_night",
           "title": "Cricket Night",
           "sport": "cricket",
-          "hostRegions": ["India", "Australia", "New Zealand"]
+          "hostRegions": [
+            "India",
+            "Australia",
+            "New Zealand"
+          ]
         },
         {
           "id": "soccer_night",
           "title": "Soccer Night",
           "sport": "soccer",
-          "leagues": ["MLS", "NWSL", "USL"]
+          "leagues": [
+            "MLS",
+            "NWSL",
+            "USL"
+          ]
         }
       ]
     },
@@ -38,25 +55,43 @@
           "id": "hockey_morning",
           "title": "Hockey Morning",
           "sport": "hockey",
-          "leagues": ["NHL", "AHL", "ECHL"]
+          "leagues": [
+            "NHL",
+            "AHL",
+            "ECHL"
+          ]
         },
         {
           "id": "rugby_morning",
           "title": "Rugby Morning",
           "sport": "rugby",
-          "leagues": ["URC", "Top 14", "English Premiership"]
+          "leagues": [
+            "URC",
+            "Top 14",
+            "English Premiership"
+          ]
         },
         {
           "id": "cricket_morning",
           "title": "Cricket Morning",
           "sport": "cricket",
-          "hostRegions": ["South Africa", "England", "Caribbean"]
+          "hostRegions": [
+            "South Africa",
+            "England",
+            "Caribbean"
+          ]
         },
         {
           "id": "soccer_morning",
           "title": "Soccer Morning",
           "sport": "soccer",
-          "leagues": ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1"]
+          "leagues": [
+            "EPL",
+            "Serie A",
+            "La Liga",
+            "Bundesliga",
+            "Ligue 1"
+          ]
         }
       ]
     }
@@ -398,22 +433,48 @@
   ],
   "favorites": {
     "hockey": {
-      "NHL": ["Anaheim Ducks", "Boston Bruins"],
-      "AHL": ["San Diego Gulls"],
-      "NCAA": ["Boston University"],
-      "ECHL": ["Tulsa Oilers"]
+      "NHL": [
+        "Anaheim Ducks",
+        "Boston Bruins"
+      ],
+      "AHL": [
+        "San Diego Gulls"
+      ],
+      "NCAA": [
+        "Boston University"
+      ],
+      "ECHL": [
+        "Tulsa Oilers"
+      ]
     },
     "rugby": {
-      "URC": ["Stormers"]
+      "URC": [
+        "Stormers"
+      ]
     },
     "cricket": {
-      "teams": ["South Africa"]
+      "International": [
+        "South Africa"
+      ],
+      "SA20": [
+        "MI Cape Town",
+        "Paarl Royals"
+      ]
     },
     "soccer": {
-      "EPL": ["Tottenham Hotspur"],
-      "MLS": ["San Diego FC", "New England Revolution"],
-      "NWSL": ["San Diego Wave"],
-      "USL": ["Orange County SC"]
+      "EPL": [
+        "Tottenham Hotspur"
+      ],
+      "MLS": [
+        "San Diego FC",
+        "New England Revolution"
+      ],
+      "NWSL": [
+        "San Diego Wave"
+      ],
+      "USL": [
+        "Orange County SC"
+      ]
     }
   }
 }
