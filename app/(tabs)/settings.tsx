@@ -107,6 +107,8 @@ export default function SettingsScreen() {
     echlAdded?: number;
     echlUpdated?: number;
     echlPruned?: number;
+    echlSourceUsed?: string;
+    echlWebCount?: number;
   } | null>(null);
 
   const handleRefresh = async () => {
@@ -133,6 +135,8 @@ export default function SettingsScreen() {
           echlAdded: data.echlAdded,
           echlUpdated: data.echlUpdated,
           echlPruned: data.echlPruned,
+          echlSourceUsed: data.echlSourceUsed,
+          echlWebCount: data.echlWebCount,
         });
         queryClient.invalidateQueries({ queryKey: ["/api/events?days=14"] });
       } else {
@@ -245,6 +249,14 @@ export default function SettingsScreen() {
                   <View style={styles.refreshCountsRow}>
                     <Text style={styles.refreshCountText}>
                       ECHL cache: +{refreshResult.echlAdded ?? 0} new, ~{refreshResult.echlUpdated ?? 0} updated, -{refreshResult.echlPruned ?? 0} pruned
+                    </Text>
+                  </View>
+                )}
+                {refreshResult.success && refreshResult.echlSourceUsed && (
+                  <View style={styles.refreshCountsRow}>
+                    <Text style={styles.refreshCountText}>
+                      ECHL source: {refreshResult.echlSourceUsed === "web" ? "HockeyTech web" : refreshResult.echlSourceUsed === "api-hockey" ? "API-Hockey" : "none"}
+                      {refreshResult.echlSourceUsed === "web" && refreshResult.echlWebCount ? ` (${refreshResult.echlWebCount} Tulsa games)` : ""}
                     </Text>
                   </View>
                 )}
