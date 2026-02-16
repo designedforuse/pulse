@@ -1,0 +1,58 @@
+Fix Mode screen time filtering. Current behavior shows weekday games and far-future games.
+
+Goal:
+- Weekend Nights and Weekend Mornings modes should ONLY show events in:
+  A) the CURRENT weekend cycle (Fri–Sun) and
+  B) the NEXT weekend cycle (Fri–Sun after that)
+- Do not show Mon–Thu games in either mode.
+- Apply consistently to NHL and AHL (and local JSON events too).
+
+Definitions:
+- Use America/Los_Angeles timezone for all "weekend window" computations.
+- Weekend cycle = Friday 00:00 local through Sunday 23:59:59 local.
+
+Windows:
+1) currentWeekendWindow:
+   - Find the Friday of the current week relative to "now" (local).
+   - Window start = that Friday 00:00 local
+   - Window end = that Sunday 23:59:59 local
+   - If now is Mon–Thu, this window points to the upcoming Fri–Sun.
+   - If now is Fri–Sun, this is the current Fri–Sun.
+
+2) nextWeekendWindow:
+   - The next Friday after currentWeekendWindow’s Friday (i.e., +7 days)
+   - Start = next Friday 00:00 local
+   - End = next Sunday 23:59:59 local
+
+Mode-specific behavior:
+- Weekend Nights mode shows events from both weekend windows, but filtered to time-of-day:
+  - Only include events with local start time between 16:00 and 23:59 OR between 00:00 and 00:30 (spillover after midnight).
+  - These time windows are local (America/Los_Angeles).
+
+- Weekend Mornings mode shows events from both weekend windows, filtered to:
+  - local start time between 06:00 and 13:00.
+
+Where to apply:
+- Implement a shared filter utility (e.g., utils/weekendWindows.ts):
+  - getWeekendWindows(now, timezone)
+  - isInWeekendWindows(eventStart, windows)
+  - isInModeTimeWindow(eventStartLocalTime, mode)
+
+- Apply this filter in the Mode screens only (ModeDetail/pack lists), not in Live Now.
+  - Live Now should continue to show true live and “up next” regardless of day.
+
+Important:
+- Use event.startTimeLocal ISO string, which may be UTC.
+- Convert to local America/Los_Angeles before:
+  - day-of-week checks
+  - time-of-day checks
+- If you already have a time utility, use it. Prefer a robust library (date-fns-tz or Luxon). If adding a dependency, keep it minimal.
+
+UI:
+- On ModeDetail screen, show a small subtitle under the mode title:
+  - “Showing this weekend + next weekend (Fri–Sun)”
+- If a pack has 0 events after filtering, show “No games in this window.”
+
+Regression:
+- Ensure this weekend-only filter applies equally to NHL (API) + AHL (Odds API) + local JSON events that are still being merged.
+- Ensure no Mon–Thu games appear on Mode screens.
