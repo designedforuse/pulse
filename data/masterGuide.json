@@ -235,36 +235,6 @@
       "isLive": true
     },
     {
-      "id": "e9",
-      "sport": "cricket",
-      "league": "IPL",
-      "awayTeam": "Mumbai Indians",
-      "homeTeam": "Chennai Super Kings",
-      "startTimeLocal": "2026-02-21T19:30:00",
-      "providerId": "disneyplus",
-      "isLive": false
-    },
-    {
-      "id": "e10",
-      "sport": "cricket",
-      "league": "BBL",
-      "awayTeam": "Sydney Sixers",
-      "homeTeam": "Melbourne Stars",
-      "startTimeLocal": "2026-02-21T18:00:00",
-      "providerId": "disneyplus",
-      "isLive": false
-    },
-    {
-      "id": "e11",
-      "sport": "cricket",
-      "league": "Super Smash",
-      "awayTeam": "Auckland Aces",
-      "homeTeam": "Wellington Firebirds",
-      "startTimeLocal": "2026-02-21T19:00:00",
-      "providerId": "disneyplus",
-      "isLive": false
-    },
-    {
       "id": "e12",
       "sport": "soccer",
       "league": "MLS",
@@ -323,36 +293,6 @@
       "startTimeLocal": "2026-02-21T09:00:00",
       "providerId": "flosports",
       "isLive": true
-    },
-    {
-      "id": "e18",
-      "sport": "cricket",
-      "league": "SA20",
-      "awayTeam": "Joburg Super Kings",
-      "homeTeam": "Paarl Royals",
-      "startTimeLocal": "2026-02-21T08:00:00",
-      "providerId": "disneyplus",
-      "isLive": false
-    },
-    {
-      "id": "e19",
-      "sport": "cricket",
-      "league": "The Hundred",
-      "awayTeam": "Oval Invincibles",
-      "homeTeam": "Manchester Originals",
-      "startTimeLocal": "2026-02-21T09:30:00",
-      "providerId": "disneyplus",
-      "isLive": false
-    },
-    {
-      "id": "e20",
-      "sport": "cricket",
-      "league": "CPL",
-      "awayTeam": "Trinbago Knight Riders",
-      "homeTeam": "Jamaica Tallawahs",
-      "startTimeLocal": "2026-02-21T10:00:00",
-      "providerId": "disneyplus",
-      "isLive": false
     },
     {
       "id": "e21",
@@ -442,16 +382,6 @@
       "homeTeam": "Chelsea",
       "startTimeLocal": "2026-02-21T10:00:00",
       "providerId": "youtubetv",
-      "isLive": false
-    },
-    {
-      "id": "e30",
-      "sport": "cricket",
-      "league": "IPL",
-      "awayTeam": "Royal Challengers Bangalore",
-      "homeTeam": "Delhi Capitals",
-      "startTimeLocal": "2026-02-21T20:00:00",
-      "providerId": "victoryplus",
       "isLive": false
     }
   ],
