@@ -329,13 +329,34 @@ export default function ModeDetailScreen() {
       <SectionList
         sections={populatedSections}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <EventCard
-            event={item}
-            isFav={favoriteInvolved(item, favorites)}
-            completed={isEventCompleted(item, now)}
-          />
-        )}
+        renderItem={({ item, index, section }) => {
+          let stopHeader: string | null = null;
+          if (item.eventType === "session" && item.leagueKey === "svns" && item.sessionTitle) {
+            const stopName = item.sessionTitle.replace(/ – Day \d+$/, "");
+            const prev = index > 0 ? section.data[index - 1] : null;
+            const prevStop = prev?.eventType === "session" && prev?.leagueKey === "svns" && prev?.sessionTitle
+              ? prev.sessionTitle.replace(/ – Day \d+$/, "")
+              : null;
+            if (prevStop !== stopName) {
+              stopHeader = stopName;
+            }
+          }
+          return (
+            <View>
+              {stopHeader && (
+                <View style={styles.stopHeader}>
+                  <Ionicons name="trophy-outline" size={13} color={Colors.accent} />
+                  <Text style={styles.stopHeaderText}>{stopHeader}</Text>
+                </View>
+              )}
+              <EventCard
+                event={item}
+                isFav={favoriteInvolved(item, favorites)}
+                completed={isEventCompleted(item, now)}
+              />
+            </View>
+          );
+        }}
         renderSectionHeader={({ section }) => {
           const isFirst =
             populatedSections.indexOf(section) === 0 ||
@@ -574,6 +595,21 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: Colors.textSecondary,
     fontFamily: "Inter_600SemiBold",
+  },
+  stopHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    paddingVertical: 6,
+    paddingHorizontal: 2,
+    marginTop: 4,
+    marginBottom: 2,
+  },
+  stopHeaderText: {
+    fontSize: 12,
+    color: Colors.accent,
+    fontFamily: "Inter_600SemiBold",
+    letterSpacing: 0.3,
   },
   sectionCount: {
     backgroundColor: Colors.cardHighlight,
