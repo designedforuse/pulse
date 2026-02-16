@@ -346,20 +346,9 @@ function resolveHostCountry(venue: string, teams: string[]): string {
 }
 
 function getProvider(league: string, country: string): string {
-  const providerMap: Record<string, string> = {
-    IPL: "disneyplus",
-    BBL: "primevideo",
-    "Super Smash": "primevideo",
-    SA20: "youtubetv",
-    MLC: "youtubetv",
-    CPL: "primevideo",
-    ICC: "disneyplus",
-    "Test Cricket": "disneyplus",
-    "ODI Cricket": "disneyplus",
-    "T20I Cricket": "disneyplus",
-    "International Cricket": "disneyplus",
-  };
-  return providerMap[league] || "disneyplus";
+  const disneyCountries = ["New Zealand", "Caribbean"];
+  if (disneyCountries.includes(country)) return "disneyplus";
+  return "youtubetv";
 }
 
 function getLeagueKey(league: string): string {
