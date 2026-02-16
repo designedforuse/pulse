@@ -22,6 +22,11 @@ export interface SportEvent {
   leagueKey?: string;
   eventType?: "match" | "session" | "tournament";
   sessionTitle?: string;
+  competitionName?: string;
+  competitionType?: "international" | "domestic" | "unknown";
+  format?: string;
+  hostCountry?: string;
+  seriesName?: string;
 }
 
 export interface Pack {
@@ -71,6 +76,7 @@ const cricketLeagueToRegion: Record<string, string> = {
   "SA20": "South Africa",
   "The Hundred": "England",
   "CPL": "Caribbean",
+  "MLC": "United States",
 };
 
 export function getData(): MasterGuide {

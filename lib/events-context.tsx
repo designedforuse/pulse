@@ -15,7 +15,11 @@ const cricketLeagueToRegion: Record<string, string> = {
   SA20: "South Africa",
   "The Hundred": "England",
   CPL: "Caribbean",
+  MLC: "United States",
 };
+
+const NIGHTS_HOST_COUNTRIES = new Set(["India", "Australia", "New Zealand"]);
+const MORNINGS_HOST_COUNTRIES = new Set(["South Africa", "England", "West Indies", "Caribbean"]);
 
 interface ApiResponse {
   source: string;
@@ -91,6 +95,9 @@ export function EventsProvider({ children }: { children: ReactNode }) {
           return pack.leagues.includes(event.league);
         }
         if (pack.hostRegions) {
+          if (event.hostCountry) {
+            return pack.hostRegions.includes(event.hostCountry);
+          }
           const region = cricketLeagueToRegion[event.league];
           return region ? pack.hostRegions.includes(region) : false;
         }
