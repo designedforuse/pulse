@@ -124,7 +124,7 @@ export default function EventSheet() {
               </Text>
             </View>
             <View style={styles.leagueBadge}>
-              <Text style={styles.leagueText}>{event.isIccT20Wc ? "T20 World Cup" : event.league}</Text>
+              <Text style={styles.leagueText}>{event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league}</Text>
             </View>
             {isEventLive(event, new Date()) && (
               <View style={styles.liveBadge}>
@@ -145,6 +145,16 @@ export default function EventSheet() {
                 <View style={styles.venueRow}>
                   <Ionicons name="location-outline" size={13} color={Colors.textSecondary} />
                   <Text style={styles.venueText}>{event.t20WcVenue}</Text>
+                </View>
+              ) : null}
+            </View>
+          ) : event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound ? (
+            <View style={styles.matchupContainer}>
+              <Text style={styles.teamName}>{event.olympicRound}</Text>
+              {event.olympicVenue ? (
+                <View style={styles.venueRow}>
+                  <Ionicons name="location-outline" size={13} color={Colors.textSecondary} />
+                  <Text style={styles.venueText}>{event.olympicVenue}</Text>
                 </View>
               ) : null}
             </View>

@@ -106,7 +106,7 @@ function EventRow({ event, isLive, now, isFav }: { event: SportEvent; isLive: bo
                 {event.sport.toUpperCase()}
               </Text>
             </View>
-            <Text style={styles.leagueLabel}>{event.isIccT20Wc ? "T20 World Cup" : event.league}</Text>
+            <Text style={styles.leagueLabel}>{event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league}</Text>
             {isFav && (
               <View style={styles.favBadge}>
                 <Text style={styles.favStar}>★</Text>
@@ -118,7 +118,9 @@ function EventRow({ event, isLive, now, isFav }: { event: SportEvent; isLive: bo
               ? event.sessionTitle
               : (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel
                 ? event.t20WcMatchLabel
-                : `${event.awayTeam} @ ${event.homeTeam}`}
+                : event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound
+                  ? event.olympicRound
+                  : `${event.awayTeam} @ ${event.homeTeam}`}
           </Text>
         </View>
         <View style={styles.rightContent}>

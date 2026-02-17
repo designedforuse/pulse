@@ -195,6 +195,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
           iccT20WcPruned: generated?.iccT20WcPruned ?? 0,
           iccT20WcSourceUsed: generated?.iccT20WcSourceUsed ?? "unknown",
           t20wcDedupedCount: generated?.t20wcDedupedCount ?? 0,
+          olympicHockeyCount: generated?.olympicHockeyCount ?? 0,
+          olympicHockeyAdded: generated?.olympicHockeyAdded ?? 0,
+          olympicHockeyUpdated: generated?.olympicHockeyUpdated ?? 0,
+          olympicHockeyPruned: generated?.olympicHockeyPruned ?? 0,
+          olympicHockeySourceUsed: generated?.olympicHockeySourceUsed ?? "unknown",
         });
       }
     );
@@ -339,9 +344,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const cricket = events.filter((e: any) => (e.source || "").startsWith("cricket") && e.source !== "cricket-t20wc-schedule").length;
     const iccT20Wc = events.filter((e: any) => e.source === "cricket-t20wc-schedule").length;
     const cricketTotal = cricket + iccT20Wc;
-    const other = events.length - nhl - ahl - echl - ncaa - rugby - cricketTotal;
+    const olympicHockey = events.filter((e: any) => e.source === "olympic-hockey-2026").length;
+    const other = events.length - nhl - ahl - echl - ncaa - rugby - cricketTotal - olympicHockey;
     return res.json({
-      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, olympicHockey, other, total: events.length,
       lastUpdated: generated.lastUpdated,
       ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",

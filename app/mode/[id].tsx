@@ -56,12 +56,14 @@ const LEAGUE_PREFERRED_ORDER: Record<string, string[]> = {
 
 function getLeagueKey(e: SportEvent): string {
   if (e.isIccT20Wc) return "T20 World Cup";
+  if (e.isOlympic) return "Olympic Hockey";
   if (e.sport === "cricket" && e.competitionName) return e.competitionName;
   return e.league;
 }
 
 function getLeagueDisplayLabel(e: SportEvent): string {
   if (e.isIccT20Wc) return "T20 World Cup";
+  if (e.isOlympic) return "Olympics";
   return e.league;
 }
 
@@ -145,6 +147,12 @@ function EventCard({
             {event.t20WcMatchLabel}
           </Text>
         </View>
+      ) : event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound ? (
+        <View style={styles.matchupRow}>
+          <Text style={styles.teamName} numberOfLines={2}>
+            {event.olympicRound}
+          </Text>
+        </View>
       ) : (
         <View style={styles.matchupRow}>
           <Text style={styles.teamName} numberOfLines={1}>
@@ -161,6 +169,11 @@ function EventCard({
         <View style={styles.venueRow}>
           <Ionicons name="location-outline" size={12} color={Colors.textMuted} />
           <Text style={styles.venueText} numberOfLines={1}>{event.t20WcVenue}</Text>
+        </View>
+      ) : event.isOlympic && event.olympicVenue ? (
+        <View style={styles.venueRow}>
+          <Ionicons name="location-outline" size={12} color={Colors.textMuted} />
+          <Text style={styles.venueText} numberOfLines={1}>{event.olympicVenue}</Text>
         </View>
       ) : null}
 
