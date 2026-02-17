@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-17T05:59:44.514Z",
+  "lastUpdated": "2026-02-17T06:26:48.771Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -28,8 +28,8 @@
   "buAdded": 0,
   "buUpdated": 7,
   "buPruned": 0,
-  "rugbyCount": 77,
-  "rugbyAdded": 0,
+  "rugbyCount": 89,
+  "rugbyAdded": 12,
   "rugbyUpdated": 70,
   "rugbyPruned": 0,
   "rugbyCounts": {
@@ -37,6 +37,7 @@
     "top14": 14,
     "superrugby": 20,
     "premiership": 0,
+    "sixnations": 12,
     "leagueone": 24,
     "svns": 4
   },
@@ -52,40 +53,41 @@
   "iccT20WcSourceUsed": "hardcoded-schedule",
   "t20wcDedupedCount": 0,
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-17T05:59:44.514Z",
+    "lastRefreshAt": "2026-02-17T06:26:48.771Z",
     "sources": {
       "nhl": {
         "count": 103,
-        "lastFetchAt": "2026-02-17T05:59:44.514Z",
+        "lastFetchAt": "2026-02-17T06:26:48.771Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 215,
-        "lastFetchAt": "2026-02-17T05:59:44.514Z",
+        "lastFetchAt": "2026-02-17T06:26:48.771Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-17T05:59:44.514Z",
+        "lastFetchAt": "2026-02-17T06:26:48.771Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 7,
-        "lastFetchAt": "2026-02-17T05:59:44.514Z",
+        "lastFetchAt": "2026-02-17T06:26:48.771Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
-        "count": 77,
-        "lastFetchAt": "2026-02-17T05:59:44.514Z",
+        "count": 89,
+        "lastFetchAt": "2026-02-17T06:26:48.771Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 8,
           "top14": 14,
           "superrugby": 20,
           "premiership": 0,
+          "sixnations": 12,
           "leagueone": 24,
           "svns": 4
         }
@@ -98,7 +100,7 @@
       },
       "iccT20Wc": {
         "count": 55,
-        "lastFetchAt": "2026-02-17T05:59:44.514Z",
+        "lastFetchAt": "2026-02-17T06:26:48.771Z",
         "sourceName": "Hardcoded Schedule"
       }
     }
@@ -475,6 +477,19 @@
       "seriesName": "14th Match, ICC Men's T20 World Cup Warm up Matches 2026",
       "gender": "men",
       "isIccT20Wc": true
+    },
+    {
+      "id": "rugby-sixnations-3w1619",
+      "sport": "rugby",
+      "league": "Six Nations",
+      "homeTeam": "France",
+      "awayTeam": "Ireland",
+      "startTimeLocal": "2026-02-05T20:10:00.000Z",
+      "endTimeLocal": "2026-02-05T22:10:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "sixnations"
     },
     {
       "id": "echl-web-24983",
@@ -944,6 +959,32 @@
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
       "t20WcVenue": "Wankhede Stadium, Mumbai"
+    },
+    {
+      "id": "rugby-sixnations-qst89x",
+      "sport": "rugby",
+      "league": "Six Nations",
+      "homeTeam": "Italy",
+      "awayTeam": "Scotland",
+      "startTimeLocal": "2026-02-07T14:10:00.000Z",
+      "endTimeLocal": "2026-02-07T16:10:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "sixnations"
+    },
+    {
+      "id": "rugby-sixnations-ah1yc2",
+      "sport": "rugby",
+      "league": "Six Nations",
+      "homeTeam": "England",
+      "awayTeam": "Wales",
+      "startTimeLocal": "2026-02-07T16:40:00.000Z",
+      "endTimeLocal": "2026-02-07T18:40:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "sixnations"
     },
     {
       "id": "ahl-1028490",
@@ -1932,6 +1973,19 @@
       "leagueKey": "top14"
     },
     {
+      "id": "rugby-sixnations-jn3fwi",
+      "sport": "rugby",
+      "league": "Six Nations",
+      "homeTeam": "Ireland",
+      "awayTeam": "Italy",
+      "startTimeLocal": "2026-02-14T14:10:00.000Z",
+      "endTimeLocal": "2026-02-14T16:10:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "sixnations"
+    },
+    {
       "id": "rugby-top14-lsa4rl",
       "sport": "rugby",
       "league": "Top 14",
@@ -2073,6 +2127,19 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "top14"
+    },
+    {
+      "id": "rugby-sixnations-mhoohm",
+      "sport": "rugby",
+      "league": "Six Nations",
+      "homeTeam": "Scotland",
+      "awayTeam": "England",
+      "startTimeLocal": "2026-02-14T16:40:00.000Z",
+      "endTimeLocal": "2026-02-14T18:40:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "sixnations"
     },
     {
       "id": "ahl-1028507",
@@ -2411,6 +2478,19 @@
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
       "t20WcVenue": "R. Premadasa Stadium, Colombo"
+    },
+    {
+      "id": "rugby-sixnations-9iyefr",
+      "sport": "rugby",
+      "league": "Six Nations",
+      "homeTeam": "Wales",
+      "awayTeam": "France",
+      "startTimeLocal": "2026-02-15T15:10:00.000Z",
+      "endTimeLocal": "2026-02-15T17:10:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "sixnations"
     },
     {
       "id": "ahl-1028519",
@@ -3291,6 +3371,32 @@
       "t20WcVenue": "R. Premadasa Stadium, Colombo"
     },
     {
+      "id": "rugby-sixnations-pmx8lc",
+      "sport": "rugby",
+      "league": "Six Nations",
+      "homeTeam": "England",
+      "awayTeam": "Ireland",
+      "startTimeLocal": "2026-02-21T14:10:00.000Z",
+      "endTimeLocal": "2026-02-21T16:10:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "sixnations"
+    },
+    {
+      "id": "rugby-sixnations-zhpb5t",
+      "sport": "rugby",
+      "league": "Six Nations",
+      "homeTeam": "Wales",
+      "awayTeam": "Scotland",
+      "startTimeLocal": "2026-02-21T16:40:00.000Z",
+      "endTimeLocal": "2026-02-21T18:40:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "sixnations"
+    },
+    {
       "id": "ahl-1028558",
       "sport": "hockey",
       "league": "AHL",
@@ -3562,6 +3668,19 @@
       "isIccT20Wc": true,
       "t20WcMatchLabel": "T20 WC S8 Group 1 – Match 43",
       "t20WcVenue": "Narendra Modi Stadium, Ahmedabad"
+    },
+    {
+      "id": "rugby-sixnations-b3hhzg",
+      "sport": "rugby",
+      "league": "Six Nations",
+      "homeTeam": "France",
+      "awayTeam": "Italy",
+      "startTimeLocal": "2026-02-22T15:10:00.000Z",
+      "endTimeLocal": "2026-02-22T17:10:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "sixnations"
     },
     {
       "id": "ahl-1028568",
@@ -6376,6 +6495,19 @@
       "leagueKey": "superrugby"
     },
     {
+      "id": "rugby-sixnations-j13gt0",
+      "sport": "rugby",
+      "league": "Six Nations",
+      "homeTeam": "Ireland",
+      "awayTeam": "Wales",
+      "startTimeLocal": "2026-03-06T20:10:00.000Z",
+      "endTimeLocal": "2026-03-06T22:10:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "sixnations"
+    },
+    {
       "id": "nhl_2025020983",
       "sport": "hockey",
       "league": "NHL",
@@ -6713,6 +6845,32 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "superrugby"
+    },
+    {
+      "id": "rugby-sixnations-8v50sy",
+      "sport": "rugby",
+      "league": "Six Nations",
+      "homeTeam": "Scotland",
+      "awayTeam": "France",
+      "startTimeLocal": "2026-03-07T14:10:00.000Z",
+      "endTimeLocal": "2026-03-07T16:10:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "sixnations"
+    },
+    {
+      "id": "rugby-sixnations-pt9uu2",
+      "sport": "rugby",
+      "league": "Six Nations",
+      "homeTeam": "Italy",
+      "awayTeam": "England",
+      "startTimeLocal": "2026-03-07T16:40:00.000Z",
+      "endTimeLocal": "2026-03-07T18:40:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "rugby",
+      "leagueKey": "sixnations"
     },
     {
       "id": "nhl_2025020990",
