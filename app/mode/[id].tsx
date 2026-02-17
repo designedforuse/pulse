@@ -636,7 +636,8 @@ const styles = StyleSheet.create({
   chipScroll: {
     flexGrow: 0,
     flexShrink: 0,
-    paddingVertical: 8,
+    paddingTop: 8,
+    paddingBottom: 2,
   },
   chipRow: {
     paddingHorizontal: 16,
@@ -691,7 +692,7 @@ const styles = StyleSheet.create({
   },
   listContent: {
     paddingHorizontal: 20,
-    paddingTop: 8,
+    paddingTop: 4,
   },
   sectionHeader: {
     flexDirection: "row",
