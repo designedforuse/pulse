@@ -269,16 +269,6 @@
       "isLive": false
     },
     {
-      "id": "e17",
-      "sport": "rugby",
-      "league": "English Premiership",
-      "awayTeam": "Saracens",
-      "homeTeam": "Harlequins",
-      "startTimeLocal": "2026-02-21T09:00:00",
-      "providerId": "flosports",
-      "isLive": true
-    },
-    {
       "id": "e21",
       "sport": "soccer",
       "league": "EPL",
