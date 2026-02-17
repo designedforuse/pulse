@@ -29,6 +29,7 @@ import { favoriteInvolved } from "@/utils/favorites";
 import {
   getWeekendWindows,
   isInWindow,
+  isInWindowForMode,
   isInModeTimeWindow,
   type WeekendWindow,
 } from "@/utils/weekendWindows";
@@ -219,10 +220,10 @@ export default function ModeDetailScreen() {
       }
 
       const thisWeekend = events.filter(
-        (e) => isInWindow(e.startTimeLocal, windows.current) && isInModeTimeWindow(e.startTimeLocal, id)
+        (e) => isInWindowForMode(e.startTimeLocal, windows.current, id) && isInModeTimeWindow(e.startTimeLocal, id)
       );
       const nextWeekend = events.filter(
-        (e) => isInWindow(e.startTimeLocal, windows.next) && isInModeTimeWindow(e.startTimeLocal, id)
+        (e) => isInWindowForMode(e.startTimeLocal, windows.next, id) && isInModeTimeWindow(e.startTimeLocal, id)
       );
       return { pack, thisWeekend, nextWeekend };
     });

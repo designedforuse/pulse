@@ -136,6 +136,18 @@ export function isInWindow(eventStartLocal: string, window: WeekendWindow): bool
   return eventTime >= window.start.getTime() && eventTime <= window.end.getTime();
 }
 
+export function isInWindowForMode(
+  eventStartLocal: string,
+  window: WeekendWindow,
+  modeId: string
+): boolean {
+  if (modeId === "weekend_nights") {
+    const shifted = new Date(eventStartLocal).getTime() - 2 * 3600000;
+    return shifted >= window.start.getTime() && shifted <= window.end.getTime();
+  }
+  return isInWindow(eventStartLocal, window);
+}
+
 export function isInWeekendWindows(eventStartLocal: string, windows: WeekendWindows): boolean {
   return isInWindow(eventStartLocal, windows.current) || isInWindow(eventStartLocal, windows.next);
 }
