@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-17T00:20:35.440Z",
+  "lastUpdated": "2026-02-17T01:33:06.189Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -24,10 +24,10 @@
   "echlUpdated": 15,
   "echlPruned": 4,
   "echlWebCount": 19,
-  "buCount": 8,
+  "buCount": 7,
   "buAdded": 0,
-  "buUpdated": 8,
-  "buPruned": 0,
+  "buUpdated": 7,
+  "buPruned": 1,
   "rugbyCount": 77,
   "rugbyAdded": 0,
   "rugbyUpdated": 70,
@@ -50,34 +50,34 @@
     "ICC": 31
   },
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-17T00:20:35.440Z",
+    "lastRefreshAt": "2026-02-17T01:33:06.189Z",
     "sources": {
       "nhl": {
         "count": 103,
-        "lastFetchAt": "2026-02-17T00:20:35.440Z",
+        "lastFetchAt": "2026-02-17T01:33:06.189Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 215,
-        "lastFetchAt": "2026-02-17T00:20:35.440Z",
+        "lastFetchAt": "2026-02-17T01:33:06.189Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-17T00:20:35.440Z",
+        "lastFetchAt": "2026-02-17T01:33:06.189Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
-        "count": 8,
-        "lastFetchAt": "2026-02-17T00:20:35.440Z",
+        "count": 7,
+        "lastFetchAt": "2026-02-17T01:33:06.189Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 77,
-        "lastFetchAt": "2026-02-17T00:20:35.440Z",
+        "lastFetchAt": "2026-02-17T01:33:06.189Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 8,
@@ -90,7 +90,7 @@
       },
       "cricket": {
         "count": 23,
-        "lastFetchAt": "2026-02-17T00:20:35.440Z",
+        "lastFetchAt": "2026-02-17T01:33:06.189Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "T20I Cricket": 2,
@@ -101,18 +101,6 @@
     }
   },
   "events": [
-    {
-      "id": "ncaa-bu-cbrbk2",
-      "sport": "hockey",
-      "league": "NCAA Hockey",
-      "homeTeam": "Boston University",
-      "awayTeam": "Northeastern",
-      "startTimeLocal": "2026-02-03T01:00:00.000Z",
-      "endTimeLocal": "2026-02-03T03:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "ncaa-bu"
-    },
     {
       "id": "cricket-icc-lkivik",
       "sport": "cricket",

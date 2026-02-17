@@ -15,14 +15,16 @@ import { LinearGradient } from "expo-linear-gradient";
 import Colors from "@/constants/colors";
 import { getModes } from "@/lib/data";
 
-const modeIcons: Record<string, { icon: keyof typeof Ionicons.glyphMap; gradient: string[] }> = {
+const modeIcons: Record<string, { icon: keyof typeof Ionicons.glyphMap; gradient: string[]; timeWindow: string }> = {
   weekend_nights: {
     icon: "moon",
     gradient: ["#1A237E", "#283593", "#3949AB"],
+    timeWindow: "4:00 PM – 2:00 AM",
   },
   weekend_mornings: {
     icon: "sunny",
     gradient: ["#E65100", "#F57C00", "#FFB74D"],
+    timeWindow: "6:00 AM – 2:00 PM",
   },
 };
 
@@ -63,6 +65,7 @@ export default function ModesScreen() {
             const config = modeIcons[mode.id] || {
               icon: "list" as keyof typeof Ionicons.glyphMap,
               gradient: [Colors.card, Colors.cardHighlight],
+              timeWindow: "",
             };
             return (
               <Pressable
@@ -83,6 +86,9 @@ export default function ModesScreen() {
                   <View style={styles.modeIconContainer}>
                     <Ionicons name={config.icon} size={36} color={Colors.white} />
                   </View>
+                  {config.timeWindow ? (
+                    <Text style={styles.modeTimeWindow}>{config.timeWindow}</Text>
+                  ) : null}
                   <Text style={styles.modeTitle}>{mode.title}</Text>
                   <Text style={styles.modePackCount}>
                     {mode.packs.length} sport packs
@@ -157,7 +163,14 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,0.18)",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 16,
+    marginBottom: 12,
+  },
+  modeTimeWindow: {
+    fontSize: 13,
+    color: "rgba(255,255,255,0.75)",
+    fontFamily: "Inter_600SemiBold",
+    marginBottom: 4,
+    letterSpacing: 0.3,
   },
   modeTitle: {
     fontSize: 22,
