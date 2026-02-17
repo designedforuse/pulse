@@ -209,6 +209,51 @@ interface AppEvent {
   format?: string;
   hostCountry?: string;
   seriesName?: string;
+  gender?: "men" | "women" | "unknown";
+}
+
+const WOMEN_TOKENS = [
+  "women", "womens", "woman", "women's",
+  "wt20", "w-odi", "wodi", "w t20", "w t20i", "wt20i",
+  "wpl", "wbbl", "the hundred women", "women's hundred",
+  "icc women's", "icc womens", "w championship",
+];
+
+const MEN_TOKENS = [
+  "men", "mens", "men's", "icc men's", "icc mens",
+];
+
+function inferCricketGender(
+  match: CricApiMatch,
+  classification: { league: string; type: string; seriesName: string }
+): "men" | "women" | "unknown" {
+  const parts = [
+    match.name,
+    classification.seriesName,
+    classification.league,
+    ...(match.teams || []),
+    (match as any).category || "",
+    (match as any).gender || "",
+  ];
+  const searchStr = parts.join(" ").toLowerCase();
+
+  for (const token of WOMEN_TOKENS) {
+    if (searchStr.includes(token)) return "women";
+  }
+
+  if (match.teams?.some(t => / women$/i.test(t) || / women /i.test(t))) {
+    return "women";
+  }
+
+  for (const token of MEN_TOKENS) {
+    if (searchStr.includes(token)) return "men";
+  }
+
+  if (classification.type === "international") {
+    return "men";
+  }
+
+  return "men";
 }
 
 export interface CricketFetchResult {
@@ -412,6 +457,7 @@ function matchToEvent(match: CricApiMatch, classification: {
     format: match.matchType,
     hostCountry: classification.country,
     seriesName: classification.seriesName,
+    gender: inferCricketGender(match, classification),
   };
 }
 
@@ -470,11 +516,18 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
   const events: AppEvent[] = [];
   const counts: Record<string, number> = {};
   let skipped = 0;
+  let womenFiltered = 0;
 
   for (const match of allMatches) {
     const classification = classifyMatch(match);
     if (classification.type === "skip") {
       skipped++;
+      continue;
+    }
+
+    const gender = inferCricketGender(match, classification);
+    if (gender === "women") {
+      womenFiltered++;
       continue;
     }
 
@@ -490,7 +543,7 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
     counts[key] = (counts[key] || 0) + 1;
   }
 
-  console.log(`  Cricket: ${events.length} kept, ${skipped} skipped`);
+  console.log(`  Cricket: ${events.length} kept, ${skipped} skipped, ${womenFiltered} women's filtered out`);
   console.log(`  Cricket counts: ${JSON.stringify(counts)}`);
 
   return {

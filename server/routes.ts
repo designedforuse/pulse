@@ -344,6 +344,38 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
+  app.get("/api/debug/cricket-sample", (_req, res) => {
+    const generated = loadGeneratedEvents();
+    if (!generated || !generated.events) {
+      return res.json({ error: "No events available" });
+    }
+    const cricketEvents = generated.events
+      .filter((e: any) => (e.source || "").startsWith("cricket"))
+      .slice(0, 10);
+
+    const sample = cricketEvents.map((e: any) => ({
+      id: e.id,
+      league: e.league,
+      competitionName: e.competitionName,
+      seriesName: e.seriesName,
+      homeTeam: e.homeTeam,
+      awayTeam: e.awayTeam,
+      gender: e.gender || "unknown",
+      competitionType: e.competitionType,
+      hostCountry: e.hostCountry,
+      providerId: e.providerId,
+    }));
+
+    const allCricket = generated.events.filter((e: any) => (e.source || "").startsWith("cricket"));
+    const byGender: Record<string, number> = {};
+    for (const e of allCricket) {
+      const g = (e as any).gender || "unknown";
+      byGender[g] = (byGender[g] || 0) + 1;
+    }
+
+    return res.json({ total: allCricket.length, byGender, sample });
+  });
+
   app.get("/api/debug/nhl-provider-sample", (_req, res) => {
     const generated = loadGeneratedEvents();
     if (!generated || !generated.events) {

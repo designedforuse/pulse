@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-16T23:57:06.950Z",
+  "lastUpdated": "2026-02-17T00:10:45.831Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -14,7 +14,7 @@
   "buSourceUsed": "chn",
   "rugbySourceUsed": "ical",
   "cricketSourceUsed": "cricapi",
-  "nhlCount": 98,
+  "nhlCount": 103,
   "ahlCount": 215,
   "ahlAdded": 12,
   "ahlUpdated": 211,
@@ -42,43 +42,42 @@
   },
   "cricketCount": 30,
   "cricketAdded": 0,
-  "cricketUpdated": 30,
+  "cricketUpdated": 23,
   "cricketPruned": 0,
   "cricketCounts": {
-    "T20I Cricket": 10,
+    "T20I Cricket": 2,
     "Test Cricket": 15,
-    "ICC": 31,
-    "International Cricket": 3
+    "ICC": 31
   },
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-16T23:57:06.950Z",
+    "lastRefreshAt": "2026-02-17T00:10:45.831Z",
     "sources": {
       "nhl": {
-        "count": 98,
-        "lastFetchAt": "2026-02-16T23:57:06.950Z",
+        "count": 103,
+        "lastFetchAt": "2026-02-17T00:10:45.831Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 215,
-        "lastFetchAt": "2026-02-16T23:57:06.950Z",
+        "lastFetchAt": "2026-02-17T00:10:45.831Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-16T23:57:06.950Z",
+        "lastFetchAt": "2026-02-17T00:10:45.831Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 8,
-        "lastFetchAt": "2026-02-16T23:57:06.950Z",
+        "lastFetchAt": "2026-02-17T00:10:45.831Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 77,
-        "lastFetchAt": "2026-02-16T23:57:06.950Z",
+        "lastFetchAt": "2026-02-17T00:10:45.831Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 8,
@@ -91,13 +90,12 @@
       },
       "cricket": {
         "count": 30,
-        "lastFetchAt": "2026-02-16T23:57:06.950Z",
+        "lastFetchAt": "2026-02-17T00:10:45.831Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
-          "T20I Cricket": 10,
+          "T20I Cricket": 2,
           "Test Cricket": 15,
-          "ICC": 31,
-          "International Cricket": 3
+          "ICC": 31
         }
       }
     }
@@ -131,7 +129,8 @@
       "competitionType": "international",
       "format": "t20",
       "hostCountry": "Sri Lanka",
-      "seriesName": "4th Match, ICC Men's T20 World Cup Warm up Matches 2026"
+      "seriesName": "4th Match, ICC Men's T20 World Cup Warm up Matches 2026",
+      "gender": "men"
     },
     {
       "id": "cricket-icc-1zaasp",
@@ -149,7 +148,8 @@
       "competitionType": "international",
       "format": "t20",
       "hostCountry": "Sri Lanka",
-      "seriesName": "5th Match, ICC Men's T20 World Cup Warm up Matches 2026"
+      "seriesName": "5th Match, ICC Men's T20 World Cup Warm up Matches 2026",
+      "gender": "men"
     },
     {
       "id": "cricket-icc-50kjva",
@@ -167,7 +167,8 @@
       "competitionType": "international",
       "format": "t20",
       "hostCountry": "India",
-      "seriesName": "6th Match, ICC Men's T20 World Cup Warm up Matches 2026"
+      "seriesName": "6th Match, ICC Men's T20 World Cup Warm up Matches 2026",
+      "gender": "men"
     },
     {
       "id": "ahl-1028457",
@@ -221,7 +222,8 @@
       "competitionType": "international",
       "format": "odi",
       "hostCountry": "South Africa",
-      "seriesName": "2nd Semi-Final (B, C1 v A, D2), ICC Under 19 World Cup 2026"
+      "seriesName": "2nd Semi-Final (B, C1 v A, D2), ICC Under 19 World Cup 2026",
+      "gender": "men"
     },
     {
       "id": "cricket-icc-jclii5",
@@ -239,7 +241,8 @@
       "competitionType": "international",
       "format": "t20",
       "hostCountry": "India",
-      "seriesName": "7th Match, ICC Men's T20 World Cup Warm up Matches 2026"
+      "seriesName": "7th Match, ICC Men's T20 World Cup Warm up Matches 2026",
+      "gender": "men"
     },
     {
       "id": "cricket-icc-ws7r0m",
@@ -257,7 +260,8 @@
       "competitionType": "international",
       "format": "t20",
       "hostCountry": "India",
-      "seriesName": "8th Match, ICC Men's T20 World Cup Warm up Matches 2026"
+      "seriesName": "8th Match, ICC Men's T20 World Cup Warm up Matches 2026",
+      "gender": "men"
     },
     {
       "id": "cricket-icc-buqhbc",
@@ -275,7 +279,8 @@
       "competitionType": "international",
       "format": "t20",
       "hostCountry": "South Africa",
-      "seriesName": "9th Match, ICC Men's T20 World Cup Warm up Matches 2026"
+      "seriesName": "9th Match, ICC Men's T20 World Cup Warm up Matches 2026",
+      "gender": "men"
     },
     {
       "id": "cricket-icc-l4jckh",
@@ -293,7 +298,8 @@
       "competitionType": "international",
       "format": "t20",
       "hostCountry": "India",
-      "seriesName": "10th Match, ICC Men's T20 World Cup Warm up Matches 2026"
+      "seriesName": "10th Match, ICC Men's T20 World Cup Warm up Matches 2026",
+      "gender": "men"
     },
     {
       "id": "ahl-1028459",
@@ -407,7 +413,8 @@
       "competitionType": "international",
       "format": "t20",
       "hostCountry": "South Africa",
-      "seriesName": "11th Match, ICC Men's T20 World Cup Warm up Matches 2026"
+      "seriesName": "11th Match, ICC Men's T20 World Cup Warm up Matches 2026",
+      "gender": "men"
     },
     {
       "id": "cricket-icc-odo4jk",
@@ -425,7 +432,8 @@
       "competitionType": "international",
       "format": "t20",
       "hostCountry": "India",
-      "seriesName": "12th Match, ICC Men's T20 World Cup Warm up Matches 2026"
+      "seriesName": "12th Match, ICC Men's T20 World Cup Warm up Matches 2026",
+      "gender": "men"
     },
     {
       "id": "cricket-icc-d10ot9",
@@ -443,7 +451,8 @@
       "competitionType": "international",
       "format": "t20",
       "hostCountry": "Sri Lanka",
-      "seriesName": "13th Match, ICC Men's T20 World Cup Warm up Matches 2026"
+      "seriesName": "13th Match, ICC Men's T20 World Cup Warm up Matches 2026",
+      "gender": "men"
     },
     {
       "id": "cricket-icc-kp3is9",
@@ -461,7 +470,8 @@
       "competitionType": "international",
       "format": "t20",
       "hostCountry": "India",
-      "seriesName": "14th Match, ICC Men's T20 World Cup Warm up Matches 2026"
+      "seriesName": "14th Match, ICC Men's T20 World Cup Warm up Matches 2026",
+      "gender": "men"
     },
     {
       "id": "echl-web-24983",
@@ -491,7 +501,8 @@
       "competitionType": "international",
       "format": "test",
       "hostCountry": "India",
-      "seriesName": "2nd Quarter-Final (B1 v D2), Ranji Trophy Elite 2025-26"
+      "seriesName": "2nd Quarter-Final (B1 v D2), Ranji Trophy Elite 2025-26",
+      "gender": "men"
     },
     {
       "id": "cricket-test-fftqos",
@@ -509,7 +520,8 @@
       "competitionType": "international",
       "format": "test",
       "hostCountry": "India",
-      "seriesName": "4th Quarter-Final (D1 v B2), Ranji Trophy Elite 2025-26"
+      "seriesName": "4th Quarter-Final (D1 v B2), Ranji Trophy Elite 2025-26",
+      "gender": "men"
     },
     {
       "id": "cricket-test-3t4odg",
@@ -527,7 +539,8 @@
       "competitionType": "international",
       "format": "test",
       "hostCountry": "Unknown",
-      "seriesName": "3rd Quarter-Final (C1 v A2), Ranji Trophy Elite 2025-26"
+      "seriesName": "3rd Quarter-Final (C1 v A2), Ranji Trophy Elite 2025-26",
+      "gender": "men"
     },
     {
       "id": "cricket-test-dkm834",
@@ -545,7 +558,8 @@
       "competitionType": "international",
       "format": "test",
       "hostCountry": "Unknown",
-      "seriesName": "1st Quarter-Final (A1 v C2), Ranji Trophy Elite 2025-26"
+      "seriesName": "1st Quarter-Final (A1 v C2), Ranji Trophy Elite 2025-26",
+      "gender": "men"
     },
     {
       "id": "cricket-icc-4bysca",
@@ -563,7 +577,8 @@
       "competitionType": "international",
       "format": "odi",
       "hostCountry": "South Africa",
-      "seriesName": "Final, ICC Under 19 World Cup 2026"
+      "seriesName": "Final, ICC Under 19 World Cup 2026",
+      "gender": "men"
     },
     {
       "id": "cricket-icc-cwnrvk",
@@ -581,7 +596,8 @@
       "competitionType": "international",
       "format": "t20",
       "hostCountry": "India",
-      "seriesName": "15th Match, ICC Men's T20 World Cup Warm up Matches 2026"
+      "seriesName": "15th Match, ICC Men's T20 World Cup Warm up Matches 2026",
+      "gender": "men"
     },
     {
       "id": "cricket-icc-ysv5xs",
@@ -599,7 +615,8 @@
       "competitionType": "international",
       "format": "t20",
       "hostCountry": "India",
-      "seriesName": "16th Match, ICC Men's T20 World Cup Warm up Matches 2026"
+      "seriesName": "16th Match, ICC Men's T20 World Cup Warm up Matches 2026",
+      "gender": "men"
     },
     {
       "id": "ahl-1028470",
@@ -1379,24 +1396,6 @@
       "leagueKey": "superrugby"
     },
     {
-      "id": "cricket-t20i-5floow",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Qatar Women",
-      "homeTeam": "Oman Women",
-      "startTimeLocal": "2026-02-14T08:00:00.000Z",
-      "endTimeLocal": "2026-02-14T11:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Unknown",
-      "seriesName": "5th T20I, Oman Women tour of Qatar 2026"
-    },
-    {
       "id": "rugby-superrugby-woh59k",
       "sport": "rugby",
       "league": "Super Rugby",
@@ -1425,7 +1424,8 @@
       "competitionType": "international",
       "format": "t20",
       "hostCountry": "Unknown",
-      "seriesName": "4th T20I, Bahrain tour of Qatar 2026"
+      "seriesName": "4th T20I, Bahrain tour of Qatar 2026",
+      "gender": "men"
     },
     {
       "id": "rugby-top14-lk34zg",
@@ -1804,7 +1804,8 @@
       "competitionType": "international",
       "format": "test",
       "hostCountry": "Unknown",
-      "seriesName": "2nd Semi Final, Ranji Trophy Elite 2025-26"
+      "seriesName": "2nd Semi Final, Ranji Trophy Elite 2025-26",
+      "gender": "men"
     },
     {
       "id": "rugby-leagueone-s685dz",
@@ -1835,7 +1836,8 @@
       "competitionType": "international",
       "format": "test",
       "hostCountry": "India",
-      "seriesName": "1st Semi Final, Ranji Trophy Elite 2025-26"
+      "seriesName": "1st Semi Final, Ranji Trophy Elite 2025-26",
+      "gender": "men"
     },
     {
       "id": "cricket-t20i-wz202a",
@@ -1853,7 +1855,8 @@
       "competitionType": "international",
       "format": "t20",
       "hostCountry": "Unknown",
-      "seriesName": "5th T20I, Bahrain tour of Qatar 2026"
+      "seriesName": "5th T20I, Bahrain tour of Qatar 2026",
+      "gender": "men"
     },
     {
       "id": "ahl-1028519",
@@ -2229,23 +2232,6 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "superrugby"
-    },
-    {
-      "id": "cricket-intl-s3b08q",
-      "sport": "cricket",
-      "league": "International Cricket",
-      "awayTeam": "West Indies Women",
-      "homeTeam": "Sri Lanka Women",
-      "startTimeLocal": "2026-02-20T14:00:00.000Z",
-      "endTimeLocal": "2026-02-20T17:30:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "intl",
-      "competitionName": "International Cricket",
-      "competitionType": "international",
-      "hostCountry": "Caribbean",
-      "seriesName": "1st ODI, Sri Lanka Women tour of West Indies 2026"
     },
     {
       "id": "ahl-1028541",
@@ -2701,23 +2687,6 @@
       "leagueKey": "leagueone"
     },
     {
-      "id": "cricket-intl-bo0ov6",
-      "sport": "cricket",
-      "league": "International Cricket",
-      "awayTeam": "West Indies Women",
-      "homeTeam": "Sri Lanka Women",
-      "startTimeLocal": "2026-02-22T14:00:00.000Z",
-      "endTimeLocal": "2026-02-22T17:30:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "intl",
-      "competitionName": "International Cricket",
-      "competitionType": "international",
-      "hostCountry": "Caribbean",
-      "seriesName": "2nd ODI, Sri Lanka Women tour of West Indies 2026"
-    },
-    {
       "id": "ahl-1028568",
       "sport": "hockey",
       "league": "AHL",
@@ -2836,23 +2805,6 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
-    },
-    {
-      "id": "cricket-intl-45g8cy",
-      "sport": "cricket",
-      "league": "International Cricket",
-      "awayTeam": "West Indies Women",
-      "homeTeam": "Sri Lanka Women",
-      "startTimeLocal": "2026-02-25T14:00:00.000Z",
-      "endTimeLocal": "2026-02-25T17:30:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "intl",
-      "competitionName": "International Cricket",
-      "competitionType": "international",
-      "hostCountry": "Caribbean",
-      "seriesName": "3rd ODI, Sri Lanka Women tour of West Indies 2026"
     },
     {
       "id": "nhl_2025020910",
@@ -3859,24 +3811,6 @@
       "leagueKey": "urc"
     },
     {
-      "id": "cricket-t20i-1jkia5",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "West Indies Women",
-      "homeTeam": "Sri Lanka Women",
-      "startTimeLocal": "2026-02-28T18:00:00.000Z",
-      "endTimeLocal": "2026-02-28T21:30:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Caribbean",
-      "seriesName": "1st T20I, Sri Lanka Women tour of West Indies 2026"
-    },
-    {
       "id": "rugby-urc-6fvojc",
       "sport": "rugby",
       "league": "URC",
@@ -4366,24 +4300,6 @@
       "providerReason": "national"
     },
     {
-      "id": "cricket-t20i-hzhu76",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "West Indies Women",
-      "homeTeam": "Sri Lanka Women",
-      "startTimeLocal": "2026-03-01T18:00:00.000Z",
-      "endTimeLocal": "2026-03-01T21:30:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Caribbean",
-      "seriesName": "2nd T20I, Sri Lanka Women tour of West Indies 2026"
-    },
-    {
       "id": "ahl-1028608",
       "sport": "hockey",
       "league": "AHL",
@@ -4733,24 +4649,6 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
-    },
-    {
-      "id": "cricket-t20i-hll75",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "West Indies Women",
-      "homeTeam": "Sri Lanka Women",
-      "startTimeLocal": "2026-03-03T18:00:00.000Z",
-      "endTimeLocal": "2026-03-03T21:30:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Caribbean",
-      "seriesName": "3rd T20I, Sri Lanka Women tour of West Indies 2026"
     },
     {
       "id": "ahl-1028617",
@@ -6351,6 +6249,97 @@
       ],
       "isNational": true,
       "providerReason": "national"
+    },
+    {
+      "id": "nhl_2025020828",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Los Angeles Kings",
+      "homeTeam": "Columbus Blue Jackets",
+      "startTimeLocal": "2026-03-09T20:00:00.000Z",
+      "endTimeLocal": "2026-03-09T22:45:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNOH",
+        "FDSNW"
+      ],
+      "isNational": false,
+      "providerReason": "kings-rsn"
+    },
+    {
+      "id": "nhl_2025021008",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "New York Rangers",
+      "homeTeam": "Philadelphia Flyers",
+      "startTimeLocal": "2026-03-09T23:00:00.000Z",
+      "endTimeLocal": "2026-03-10T01:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TVAS",
+        "NBCSP+",
+        "MSGSN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2025021009",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Calgary Flames",
+      "homeTeam": "Washington Capitals",
+      "startTimeLocal": "2026-03-09T23:00:00.000Z",
+      "endTimeLocal": "2026-03-10T01:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNW",
+        "MNMT"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2025021010",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Utah Mammoth",
+      "homeTeam": "Chicago Blackhawks",
+      "startTimeLocal": "2026-03-10T00:30:00.000Z",
+      "endTimeLocal": "2026-03-10T03:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "CHSN",
+        "Utah16"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2025021011",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Ottawa Senators",
+      "homeTeam": "Vancouver Canucks",
+      "startTimeLocal": "2026-03-10T01:00:00.000Z",
+      "endTimeLocal": "2026-03-10T03:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "Prime",
+        "RDS"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     }
   ]
 }
