@@ -47,36 +47,21 @@ const SPORT_FILTERS: { key: SportFilter; label: string; icon: string }[] = [
   { key: "soccer", label: "Soccer", icon: "football" },
 ];
 
-const LEAGUE_FILTERS: Record<string, { key: string; label: string }[]> = {
-  hockey: [
-    { key: "all", label: "All" },
-    { key: "NHL", label: "NHL" },
-    { key: "AHL", label: "AHL" },
-    { key: "ECHL", label: "ECHL" },
-    { key: "NCAA Hockey", label: "NCAA" },
-  ],
-  rugby: [
-    { key: "all", label: "All" },
-    { key: "URC", label: "URC" },
-    { key: "Top 14", label: "Top 14" },
-    { key: "English Premiership", label: "Premiership" },
-    { key: "Japan League One", label: "League One" },
-    { key: "Super Rugby", label: "Super Rugby" },
-    { key: "HSBC SVNS", label: "SVNS" },
-  ],
-  cricket: [
-    { key: "all", label: "All" },
-    { key: "T20", label: "T20" },
-    { key: "Test", label: "Test" },
-    { key: "ICC", label: "ICC" },
-  ],
-  soccer: [
-    { key: "all", label: "All" },
-    { key: "EPL", label: "EPL" },
-    { key: "MLS", label: "MLS" },
-    { key: "NWSL", label: "NWSL" },
-    { key: "USL", label: "USL" },
-  ],
+const LEAGUE_PREFERRED_ORDER: Record<string, string[]> = {
+  hockey: ["NHL", "AHL", "ECHL", "NCAA Hockey"],
+  rugby: ["URC", "Top 14", "English Premiership", "Japan League One", "Super Rugby", "HSBC SVNS"],
+  cricket: ["IPL", "BBL", "Super Smash", "SA20", "The Hundred", "MLC", "CPL", "ICC", "Test Cricket", "T20I Cricket", "ODI Cricket"],
+  soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "MLS", "NWSL", "USL"],
+};
+
+const LEAGUE_SHORT_LABELS: Record<string, string> = {
+  "NCAA Hockey": "NCAA",
+  "English Premiership": "Premiership",
+  "Japan League One": "League One",
+  "HSBC SVNS": "SVNS",
+  "Test Cricket": "Test",
+  "T20I Cricket": "T20I",
+  "ODI Cricket": "ODI",
 };
 
 function EventCard({
@@ -242,7 +227,6 @@ export default function ModeDetailScreen() {
     }
   }, [id]);
 
-  const leagueFilters = activeSport !== "all" ? LEAGUE_FILTERS[activeSport] ?? [] : [];
 
   const now = useMemo(() => new Date(), []);
   const windows = useMemo(() => getWeekendWindows(now), [now]);
@@ -374,6 +358,34 @@ export default function ModeDetailScreen() {
     }
     return counts;
   }, [filteredPackData, activeSport, favoritesOnly, favorites, showNext]);
+
+  const leagueFilters = useMemo(() => {
+    if (activeSport === "all") return [];
+    const leaguesWithEvents = Object.keys(leagueEventCounts).filter(
+      (k) => leagueEventCounts[k] > 0
+    );
+    if (leaguesWithEvents.length <= 1) return [];
+    const order = LEAGUE_PREFERRED_ORDER[activeSport] ?? [];
+    leaguesWithEvents.sort((a, b) => {
+      const ai = order.indexOf(a);
+      const bi = order.indexOf(b);
+      return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+    });
+    return [
+      { key: "all", label: "All" },
+      ...leaguesWithEvents.map((k) => ({
+        key: k,
+        label: LEAGUE_SHORT_LABELS[k] ?? k,
+      })),
+    ];
+  }, [activeSport, leagueEventCounts]);
+
+  useEffect(() => {
+    if (activeLeague !== "all" && leagueFilters.length > 0) {
+      const stillExists = leagueFilters.some((lf) => lf.key === activeLeague);
+      if (!stillExists) setActiveLeague("all");
+    }
+  }, [leagueFilters, activeLeague]);
 
   if (!mode) {
     return (
