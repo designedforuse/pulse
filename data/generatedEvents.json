@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-17T00:10:45.831Z",
+  "lastUpdated": "2026-02-17T00:13:20.068Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -40,7 +40,7 @@
     "leagueone": 24,
     "svns": 4
   },
-  "cricketCount": 30,
+  "cricketCount": 23,
   "cricketAdded": 0,
   "cricketUpdated": 23,
   "cricketPruned": 0,
@@ -50,34 +50,34 @@
     "ICC": 31
   },
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-17T00:10:45.831Z",
+    "lastRefreshAt": "2026-02-17T00:13:20.068Z",
     "sources": {
       "nhl": {
         "count": 103,
-        "lastFetchAt": "2026-02-17T00:10:45.831Z",
+        "lastFetchAt": "2026-02-17T00:13:20.068Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 215,
-        "lastFetchAt": "2026-02-17T00:10:45.831Z",
+        "lastFetchAt": "2026-02-17T00:13:20.068Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-17T00:10:45.831Z",
+        "lastFetchAt": "2026-02-17T00:13:20.068Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 8,
-        "lastFetchAt": "2026-02-17T00:10:45.831Z",
+        "lastFetchAt": "2026-02-17T00:13:20.068Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 77,
-        "lastFetchAt": "2026-02-17T00:10:45.831Z",
+        "lastFetchAt": "2026-02-17T00:13:20.068Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 8,
@@ -89,8 +89,8 @@
         }
       },
       "cricket": {
-        "count": 30,
-        "lastFetchAt": "2026-02-17T00:10:45.831Z",
+        "count": 23,
+        "lastFetchAt": "2026-02-17T00:13:20.068Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "T20I Cricket": 2,
@@ -130,7 +130,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "4th Match, ICC Men's T20 World Cup Warm up Matches 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "cricket-icc-1zaasp",
@@ -149,7 +150,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "5th Match, ICC Men's T20 World Cup Warm up Matches 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "cricket-icc-50kjva",
@@ -168,7 +170,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "6th Match, ICC Men's T20 World Cup Warm up Matches 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "ahl-1028457",
@@ -223,7 +226,8 @@
       "format": "odi",
       "hostCountry": "South Africa",
       "seriesName": "2nd Semi-Final (B, C1 v A, D2), ICC Under 19 World Cup 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "cricket-icc-jclii5",
@@ -242,7 +246,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "7th Match, ICC Men's T20 World Cup Warm up Matches 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "cricket-icc-ws7r0m",
@@ -261,7 +266,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "8th Match, ICC Men's T20 World Cup Warm up Matches 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "cricket-icc-buqhbc",
@@ -280,7 +286,8 @@
       "format": "t20",
       "hostCountry": "South Africa",
       "seriesName": "9th Match, ICC Men's T20 World Cup Warm up Matches 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "cricket-icc-l4jckh",
@@ -299,7 +306,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "10th Match, ICC Men's T20 World Cup Warm up Matches 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "ahl-1028459",
@@ -414,7 +422,8 @@
       "format": "t20",
       "hostCountry": "South Africa",
       "seriesName": "11th Match, ICC Men's T20 World Cup Warm up Matches 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "cricket-icc-odo4jk",
@@ -433,7 +442,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "12th Match, ICC Men's T20 World Cup Warm up Matches 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "cricket-icc-d10ot9",
@@ -452,7 +462,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "13th Match, ICC Men's T20 World Cup Warm up Matches 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "cricket-icc-kp3is9",
@@ -471,7 +482,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "14th Match, ICC Men's T20 World Cup Warm up Matches 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "echl-web-24983",
@@ -502,7 +514,8 @@
       "format": "test",
       "hostCountry": "India",
       "seriesName": "2nd Quarter-Final (B1 v D2), Ranji Trophy Elite 2025-26",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "cricket-test-fftqos",
@@ -521,7 +534,8 @@
       "format": "test",
       "hostCountry": "India",
       "seriesName": "4th Quarter-Final (D1 v B2), Ranji Trophy Elite 2025-26",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "cricket-test-3t4odg",
@@ -540,7 +554,8 @@
       "format": "test",
       "hostCountry": "Unknown",
       "seriesName": "3rd Quarter-Final (C1 v A2), Ranji Trophy Elite 2025-26",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "cricket-test-dkm834",
@@ -559,7 +574,8 @@
       "format": "test",
       "hostCountry": "Unknown",
       "seriesName": "1st Quarter-Final (A1 v C2), Ranji Trophy Elite 2025-26",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "cricket-icc-4bysca",
@@ -578,7 +594,8 @@
       "format": "odi",
       "hostCountry": "South Africa",
       "seriesName": "Final, ICC Under 19 World Cup 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "cricket-icc-cwnrvk",
@@ -597,7 +614,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "15th Match, ICC Men's T20 World Cup Warm up Matches 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "cricket-icc-ysv5xs",
@@ -616,7 +634,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "16th Match, ICC Men's T20 World Cup Warm up Matches 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "ahl-1028470",
@@ -1425,7 +1444,8 @@
       "format": "t20",
       "hostCountry": "Unknown",
       "seriesName": "4th T20I, Bahrain tour of Qatar 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "rugby-top14-lk34zg",
@@ -1805,7 +1825,8 @@
       "format": "test",
       "hostCountry": "Unknown",
       "seriesName": "2nd Semi Final, Ranji Trophy Elite 2025-26",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "rugby-leagueone-s685dz",
@@ -1837,7 +1858,8 @@
       "format": "test",
       "hostCountry": "India",
       "seriesName": "1st Semi Final, Ranji Trophy Elite 2025-26",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "cricket-t20i-wz202a",
@@ -1856,7 +1878,8 @@
       "format": "t20",
       "hostCountry": "Unknown",
       "seriesName": "5th T20I, Bahrain tour of Qatar 2026",
-      "gender": "men"
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "ahl-1028519",

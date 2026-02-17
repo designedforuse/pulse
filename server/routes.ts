@@ -329,9 +329,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const rugby = events.filter((e: any) => e.source === "rugby").length;
     const svnsSessions = events.filter((e: any) => e.leagueKey === "svns" && e.eventType === "session").length;
     const cricket = events.filter((e: any) => (e.source || "").startsWith("cricket")).length;
+    const cricketIccT20WcCount = events.filter((e: any) => (e.source || "").startsWith("cricket") && e.isIccT20Wc).length;
     const other = events.length - nhl - ahl - echl - ncaa - rugby - cricket;
     return res.json({
-      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, cricket, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, cricket, cricketIccT20WcCount, other, total: events.length,
       lastUpdated: generated.lastUpdated,
       ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",
@@ -361,6 +362,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       homeTeam: e.homeTeam,
       awayTeam: e.awayTeam,
       gender: e.gender || "unknown",
+      isIccT20Wc: e.isIccT20Wc || false,
       competitionType: e.competitionType,
       hostCountry: e.hostCountry,
       providerId: e.providerId,

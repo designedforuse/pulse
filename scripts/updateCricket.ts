@@ -210,6 +210,7 @@ interface AppEvent {
   hostCountry?: string;
   seriesName?: string;
   gender?: "men" | "women" | "unknown";
+  isIccT20Wc?: boolean;
 }
 
 const WOMEN_TOKENS = [
@@ -288,15 +289,49 @@ function parseSeriesName(matchName: string): string {
   return matchName;
 }
 
+const ICC_T20_WC_KEYWORDS = [
+  "icc t20 world cup",
+  "t20 world cup",
+  "icc men's t20 world cup",
+  "icc mens t20 world cup",
+  "t20wc",
+];
+
+const ICC_T20_WC_SERIES_IDS = new Set<string>();
+
+function isIccT20WorldCup(match: CricApiMatch, seriesName: string): boolean {
+  const searchStr = [match.name, seriesName].join(" ").toLowerCase();
+  if (ICC_T20_WC_KEYWORDS.some(kw => searchStr.includes(kw))) return true;
+  if (match.series_id && ICC_T20_WC_SERIES_IDS.has(match.series_id)) return true;
+  return false;
+}
+
 function classifyMatch(match: CricApiMatch): {
   type: "international" | "domestic" | "skip";
   league: string;
   country: string;
   seriesName: string;
+  isIccT20Wc: boolean;
 } {
   const nameLower = match.name.toLowerCase();
   const seriesName = parseSeriesName(match.name);
   const seriesLower = seriesName.toLowerCase();
+
+  const t20Wc = isIccT20WorldCup(match, seriesName);
+  if (t20Wc) {
+    if (match.series_id && !ICC_T20_WC_SERIES_IDS.has(match.series_id)) {
+      ICC_T20_WC_SERIES_IDS.add(match.series_id);
+      console.log(`  Cricket: Discovered ICC T20 WC series_id: ${match.series_id}`);
+    }
+    const country = resolveHostCountry(match.venue, match.teams);
+    return {
+      type: "international",
+      league: "ICC",
+      country,
+      seriesName,
+      isIccT20Wc: true,
+    };
+  }
 
   for (const [key, info] of Object.entries(ALLOWED_DOMESTIC_LEAGUES)) {
     if (nameLower.includes(key) || seriesLower.includes(key)) {
@@ -305,6 +340,7 @@ function classifyMatch(match: CricApiMatch): {
         league: info.league,
         country: info.country,
         seriesName,
+        isIccT20Wc: false,
       };
     }
   }
@@ -318,6 +354,7 @@ function classifyMatch(match: CricApiMatch): {
       league: classifyInternationalLeague(match.matchType, seriesName),
       country,
       seriesName,
+      isIccT20Wc: false,
     };
   }
 
@@ -331,10 +368,11 @@ function classifyMatch(match: CricApiMatch): {
       league: classifyInternationalLeague(match.matchType, seriesName),
       country,
       seriesName,
+      isIccT20Wc: false,
     };
   }
 
-  return { type: "skip", league: "", country: "", seriesName };
+  return { type: "skip", league: "", country: "", seriesName, isIccT20Wc: false };
 }
 
 function classifyInternationalLeague(matchType: string, seriesName: string): string {
@@ -418,6 +456,7 @@ function matchToEvent(match: CricApiMatch, classification: {
   league: string;
   country: string;
   seriesName: string;
+  isIccT20Wc: boolean;
 }): AppEvent {
   const teams = match.teams || [];
   const awayTeam = teams[0] || "TBD";
@@ -458,6 +497,7 @@ function matchToEvent(match: CricApiMatch, classification: {
     hostCountry: classification.country,
     seriesName: classification.seriesName,
     gender: inferCricketGender(match, classification),
+    isIccT20Wc: classification.isIccT20Wc,
   };
 }
 
@@ -536,6 +576,7 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
       league: string;
       country: string;
       seriesName: string;
+      isIccT20Wc: boolean;
     });
     events.push(event);
 
