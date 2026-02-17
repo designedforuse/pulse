@@ -31,6 +31,7 @@ import {
   isInWindow,
   isInWindowForMode,
   isInModeTimeWindow,
+  shouldShowNextWeekend,
   type WeekendWindow,
 } from "@/utils/weekendWindows";
 
@@ -209,6 +210,7 @@ export default function ModeDetailScreen() {
 
   const now = useMemo(() => new Date(), []);
   const windows = useMemo(() => getWeekendWindows(now), [now]);
+  const showNext = useMemo(() => shouldShowNextWeekend(now), [now]);
 
   const packData: PackWeekendData[] = useMemo(() => {
     if (!mode) return [];
@@ -246,7 +248,8 @@ export default function ModeDetailScreen() {
       const thisSorted = sortEvents(thisFiltered, now, true, favorites, id);
       const nextSorted = sortEvents(nextFiltered, now, false, favorites, id);
 
-      const bothEmpty = thisSorted.length === 0 && nextSorted.length === 0;
+      const effectiveNextSorted = showNext ? nextSorted : [];
+      const bothEmpty = thisSorted.length === 0 && effectiveNextSorted.length === 0;
 
       if (bothEmpty) {
         result.push({
@@ -277,16 +280,18 @@ export default function ModeDetailScreen() {
         data: thisSorted,
         isSubEmpty: thisSorted.length === 0,
       });
-      result.push({
-        title: pd.pack.title,
-        sport: pd.pack.sport,
-        weekendLabel: `Next weekend (${windows.next.label})`,
-        data: nextSorted,
-        isSubEmpty: nextSorted.length === 0,
-      });
+      if (showNext) {
+        result.push({
+          title: pd.pack.title,
+          sport: pd.pack.sport,
+          weekendLabel: `Next weekend (${windows.next.label})`,
+          data: nextSorted,
+          isSubEmpty: nextSorted.length === 0,
+        });
+      }
     }
     return result;
-  }, [filteredPackData, favoritesOnly, favorites, now, debugShowAll, windows]);
+  }, [filteredPackData, favoritesOnly, favorites, now, debugShowAll, windows, showNext]);
 
   const populatedSections = useMemo(() => sections.filter((s) => s.data.length > 0), [sections]);
   const allEmpty = useMemo(() => sections.every((s) => s.data.length === 0), [sections]);
@@ -309,13 +314,15 @@ export default function ModeDetailScreen() {
       const thisEvents = favoritesOnly
         ? pd.thisWeekend.filter((e) => favoriteInvolved(e, favorites))
         : pd.thisWeekend;
-      const nextEvents = favoritesOnly
-        ? pd.nextWeekend.filter((e) => favoriteInvolved(e, favorites))
-        : pd.nextWeekend;
+      const nextEvents = showNext
+        ? (favoritesOnly
+            ? pd.nextWeekend.filter((e) => favoriteInvolved(e, favorites))
+            : pd.nextWeekend)
+        : [];
       counts[sport] = (counts[sport] || 0) + thisEvents.length + nextEvents.length;
     }
     return counts;
-  }, [packData, favoritesOnly, favorites]);
+  }, [packData, favoritesOnly, favorites, showNext]);
 
   if (!mode) {
     return (
@@ -350,7 +357,9 @@ export default function ModeDetailScreen() {
         <Text style={[styles.subtitleText, debugShowAll && { color: Colors.live }]}>
           {debugShowAll
             ? "Showing all games (debug)"
-            : `This weekend (${windows.current.label}) + Next weekend (${windows.next.label})`}
+            : showNext
+              ? `This weekend (${windows.current.label}) + Next weekend (${windows.next.label})`
+              : `This weekend (${windows.current.label})`}
         </Text>
       </View>
 

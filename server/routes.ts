@@ -567,9 +567,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const nextStart = new Date(thisStart.getTime() + 7 * 86400000);
     const nextEnd = new Date(nextStart.getTime() + 3 * 86400000 - 1);
 
+    const showNextWeekend = dow === 5 || dow === 6 || dow === 0;
+
     return res.json({
       now: fmtFull(now),
       dayOfWeek,
+      showNextWeekend,
       thisWeekendStart: fmtFull(thisStart),
       thisWeekendEnd: fmtFull(thisEnd),
       nextWeekendStart: fmtFull(nextStart),

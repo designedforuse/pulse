@@ -148,6 +148,15 @@ export function isInWindowForMode(
   return isInWindow(eventStartLocal, window);
 }
 
+export function shouldShowNextWeekend(now: Date): boolean {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: TZ,
+    weekday: "short",
+  }).formatToParts(now);
+  const dow = parts.find((p) => p.type === "weekday")?.value || "";
+  return dow === "Fri" || dow === "Sat" || dow === "Sun";
+}
+
 export function isInWeekendWindows(eventStartLocal: string, windows: WeekendWindows): boolean {
   return isInWindow(eventStartLocal, windows.current) || isInWindow(eventStartLocal, windows.next);
 }
