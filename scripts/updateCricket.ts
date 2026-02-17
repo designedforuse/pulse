@@ -297,6 +297,16 @@ const ICC_T20_WC_KEYWORDS = [
   "t20wc",
 ];
 
+const MAJOR_ICC_TOURNAMENT_KEYWORDS = [
+  "t20 world cup", "t20 wc", "t20wc",
+  "icc t20", "icc men's t20", "icc mens t20",
+  "icc men's t20 world cup", "icc mens t20 world cup",
+  "world cup t20",
+  "odi world cup", "cricket world cup",
+  "champions trophy", "icc champions trophy",
+  "world test championship",
+];
+
 const ICC_T20_WC_SERIES_IDS = new Set<string>();
 
 function isIccT20WorldCup(match: CricApiMatch, seriesName: string): boolean {
@@ -304,6 +314,11 @@ function isIccT20WorldCup(match: CricApiMatch, seriesName: string): boolean {
   if (ICC_T20_WC_KEYWORDS.some(kw => searchStr.includes(kw))) return true;
   if (match.series_id && ICC_T20_WC_SERIES_IDS.has(match.series_id)) return true;
   return false;
+}
+
+function isMajorIccTournament(match: CricApiMatch, seriesName: string): boolean {
+  const searchStr = [match.name, seriesName, (match as any).category || ""].join(" ").toLowerCase();
+  return MAJOR_ICC_TOURNAMENT_KEYWORDS.some(kw => searchStr.includes(kw));
 }
 
 function classifyMatch(match: CricApiMatch): {
@@ -330,6 +345,17 @@ function classifyMatch(match: CricApiMatch): {
       country,
       seriesName,
       isIccT20Wc: true,
+    };
+  }
+
+  if (isMajorIccTournament(match, seriesName)) {
+    const country = resolveHostCountry(match.venue, match.teams);
+    return {
+      type: "international",
+      league: "ICC",
+      country,
+      seriesName,
+      isIccT20Wc: false,
     };
   }
 
