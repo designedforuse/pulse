@@ -358,20 +358,14 @@ export default function ModeDetailScreen() {
             : undefined,
         }}
       />
-      <View style={styles.subtitleRow}>
-        <Ionicons
-          name={debugShowAll ? "bug-outline" : "calendar-outline"}
-          size={13}
-          color={debugShowAll ? Colors.live : Colors.textMuted}
-        />
-        <Text style={[styles.subtitleText, debugShowAll && { color: Colors.live }]}>
-          {debugShowAll
-            ? "Showing all games (debug)"
-            : showNext
-              ? `This weekend (${windows.current.label}) + Next weekend (${windows.next.label})`
-              : `This weekend (${windows.current.label})`}
-        </Text>
-      </View>
+      {debugShowAll && (
+        <View style={styles.subtitleRow}>
+          <Ionicons name="bug-outline" size={13} color={Colors.live} />
+          <Text style={[styles.subtitleText, { color: Colors.live }]}>
+            Showing all games (debug)
+          </Text>
+        </View>
+      )}
 
       <ScrollView
         horizontal
