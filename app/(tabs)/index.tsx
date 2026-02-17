@@ -106,12 +106,6 @@ export default function ModesScreen() {
           })}
         </View>
 
-        <View style={styles.infoCard}>
-          <Ionicons name="information-circle-outline" size={20} color={Colors.textSecondary} />
-          <Text style={styles.infoText}>
-            Select a mode to see available games organized by sport packs. Tap any event to open it in your streaming app.
-          </Text>
-        </View>
       </ScrollView>
     </View>
   );
@@ -188,23 +182,5 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 20,
     top: 24,
-  },
-  infoCard: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    gap: 10,
-    marginTop: 24,
-    padding: 16,
-    backgroundColor: Colors.card,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: Colors.border,
-  },
-  infoText: {
-    flex: 1,
-    fontSize: 13,
-    color: Colors.textSecondary,
-    fontFamily: "Inter_400Regular",
-    lineHeight: 19,
   },
 });
