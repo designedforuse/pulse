@@ -181,7 +181,7 @@ export function isInModeTimeWindow(eventStartLocal: string, modeId: string): boo
   }
 
   if (modeId === "weekend_mornings") {
-    return totalMinutes >= 360 && totalMinutes <= 780;
+    return totalMinutes >= 360 && totalMinutes <= 840;
   }
 
   return true;
