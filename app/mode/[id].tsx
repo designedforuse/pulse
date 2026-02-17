@@ -50,12 +50,18 @@ const SPORT_FILTERS: { key: SportFilter; label: string; icon: string }[] = [
 const LEAGUE_PREFERRED_ORDER: Record<string, string[]> = {
   hockey: ["NHL", "AHL", "ECHL", "NCAA Hockey"],
   rugby: ["URC", "Top 14", "English Premiership", "Japan League One", "Super Rugby", "HSBC SVNS"],
-  cricket: ["IPL", "BBL", "Super Smash", "SA20", "The Hundred", "MLC", "CPL", "ICC", "Test Cricket", "T20I Cricket", "ODI Cricket"],
+  cricket: ["IPL", "BBL", "Super Smash", "SA20", "The Hundred", "MLC", "CPL", "T20 World Cup", "Test Cricket", "T20I Cricket", "ODI Cricket"],
   soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "MLS", "NWSL", "USL"],
 };
 
 function getLeagueKey(e: SportEvent): string {
+  if (e.isIccT20Wc) return "T20 World Cup";
   if (e.sport === "cricket" && e.competitionName) return e.competitionName;
+  return e.league;
+}
+
+function getLeagueDisplayLabel(e: SportEvent): string {
+  if (e.isIccT20Wc) return "T20 World Cup";
   return e.league;
 }
 
@@ -107,7 +113,7 @@ function EventCard({
       <View style={styles.eventTopRow}>
         <View style={styles.topRowLeft}>
           <View style={[styles.leagueBadge, { backgroundColor: sportColor + "18" }]}>
-            <Text style={[styles.leagueText, { color: sportColor }]}>{event.league}</Text>
+            <Text style={[styles.leagueText, { color: sportColor }]}>{getLeagueDisplayLabel(event)}</Text>
           </View>
           {isFav && (
             <View style={styles.favBadge}>

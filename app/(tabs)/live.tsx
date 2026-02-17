@@ -106,7 +106,7 @@ function EventRow({ event, isLive, now, isFav }: { event: SportEvent; isLive: bo
                 {event.sport.toUpperCase()}
               </Text>
             </View>
-            <Text style={styles.leagueLabel}>{event.league}</Text>
+            <Text style={styles.leagueLabel}>{event.isIccT20Wc ? "T20 World Cup" : event.league}</Text>
             {isFav && (
               <View style={styles.favBadge}>
                 <Text style={styles.favStar}>★</Text>

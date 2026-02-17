@@ -124,7 +124,7 @@ export default function EventSheet() {
               </Text>
             </View>
             <View style={styles.leagueBadge}>
-              <Text style={styles.leagueText}>{event.league}</Text>
+              <Text style={styles.leagueText}>{event.isIccT20Wc ? "T20 World Cup" : event.league}</Text>
             </View>
             {isEventLive(event, new Date()) && (
               <View style={styles.liveBadge}>
