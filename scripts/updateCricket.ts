@@ -213,15 +213,14 @@ interface AppEvent {
   isIccT20Wc?: boolean;
 }
 
-const WOMEN_TOKENS = [
-  "women", "womens", "woman", "women's",
-  "wt20", "w-odi", "wodi", "w t20", "w t20i", "wt20i",
-  "wpl", "wbbl", "the hundred women", "women's hundred",
-  "icc women's", "icc womens", "w championship",
-];
-
-const MEN_TOKENS = [
-  "men", "mens", "men's", "icc men's", "icc mens",
+const STRONG_WOMEN_MARKERS = [
+  "women", "womens", "women's", "woman",
+  "wpl", "wbbl", "wt20", "wt20i",
+  "w-odi", "wodi", "w-t20", "w-t20i",
+  "w t20", "w t20i",
+  "the hundred women", "women's hundred",
+  "icc women's", "icc womens",
+  "w championship", "w-",
 ];
 
 function inferCricketGender(
@@ -232,26 +231,20 @@ function inferCricketGender(
     match.name,
     classification.seriesName,
     classification.league,
-    ...(match.teams || []),
     (match as any).category || "",
     (match as any).gender || "",
   ];
   const searchStr = parts.join(" ").toLowerCase();
 
-  for (const token of WOMEN_TOKENS) {
+  for (const token of STRONG_WOMEN_MARKERS) {
     if (searchStr.includes(token)) return "women";
   }
 
-  if (match.teams?.some(t => / women$/i.test(t) || / women /i.test(t))) {
+  if (match.teams?.some(t =>
+    / women$/i.test(t) || / women /i.test(t) || / women's$/i.test(t) ||
+    /\bwomen\b/i.test(t)
+  )) {
     return "women";
-  }
-
-  for (const token of MEN_TOKENS) {
-    if (searchStr.includes(token)) return "men";
-  }
-
-  if (classification.type === "international") {
-    return "men";
   }
 
   return "men";
