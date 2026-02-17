@@ -252,6 +252,9 @@ export default function ModeDetailScreen() {
       const bothEmpty = thisSorted.length === 0 && effectiveNextSorted.length === 0;
 
       if (bothEmpty) {
+        if (activeSport === "all") {
+          continue;
+        }
         result.push({
           title: pd.pack.title,
           sport: pd.pack.sport,
@@ -295,17 +298,6 @@ export default function ModeDetailScreen() {
 
   const populatedSections = useMemo(() => sections.filter((s) => s.data.length > 0), [sections]);
   const allEmpty = useMemo(() => sections.every((s) => s.data.length === 0), [sections]);
-  const emptyPacks = useMemo(() => {
-    const seen = new Set<string>();
-    return sections
-      .filter((s) => {
-        if (s.isSubEmpty && s.weekendLabel === "" && !seen.has(s.title)) {
-          seen.add(s.title);
-          return true;
-        }
-        return false;
-      });
-  }, [sections]);
 
   const sportEventCounts = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -484,115 +476,13 @@ export default function ModeDetailScreen() {
             </View>
           );
         }}
-        renderSectionFooter={({ section }) => {
-          const idx = populatedSections.indexOf(section);
-          const next = populatedSections[idx + 1];
-          if (
-            !debugShowAll &&
-            next &&
-            next.title === section.title &&
-            section.weekendLabel.startsWith("This weekend")
-          ) {
-            const nextWeekendEmpty = sections.find(
-              (s) =>
-                s.title === section.title &&
-                s.weekendLabel.startsWith("Next weekend") &&
-                s.data.length === 0
-            );
-            if (nextWeekendEmpty) {
-              return (
-                <View style={styles.subEmptyRow}>
-                  <Text style={styles.subEmptyText}>
-                    Next weekend ({windows.next.label}): No games in this window
-                  </Text>
-                </View>
-              );
-            }
-          }
-          if (
-            !debugShowAll &&
-            section.weekendLabel.startsWith("This weekend")
-          ) {
-            const hasNextSection = populatedSections.find(
-              (s) => s.title === section.title && s.weekendLabel.startsWith("Next weekend")
-            );
-            if (!hasNextSection) {
-              const nextWeekendEmpty = sections.find(
-                (s) =>
-                  s.title === section.title &&
-                  s.weekendLabel.startsWith("Next weekend") &&
-                  s.data.length === 0
-              );
-              if (nextWeekendEmpty) {
-                return (
-                  <View style={styles.subEmptyRow}>
-                    <Text style={styles.subEmptyText}>
-                      Next weekend ({windows.next.label}): No games in this window
-                    </Text>
-                  </View>
-                );
-              }
-            }
-          }
-          if (
-            !debugShowAll &&
-            section.weekendLabel.startsWith("Next weekend")
-          ) {
-            const hasThisSection = populatedSections.find(
-              (s) => s.title === section.title && s.weekendLabel.startsWith("This weekend")
-            );
-            if (!hasThisSection) {
-              const thisWeekendEmpty = sections.find(
-                (s) =>
-                  s.title === section.title &&
-                  s.weekendLabel.startsWith("This weekend") &&
-                  s.data.length === 0
-              );
-              if (thisWeekendEmpty) {
-                return null;
-              }
-            }
-          }
-          return null;
-        }}
+        renderSectionFooter={() => null}
         contentContainerStyle={[
           styles.listContent,
           { paddingBottom: Platform.OS === "web" ? 34 : 24 },
         ]}
         showsVerticalScrollIndicator={false}
         stickySectionHeadersEnabled={false}
-        ListFooterComponent={
-          emptyPacks.length > 0 ? (
-            <View style={styles.emptyPacksContainer}>
-              {emptyPacks.map((s, idx) => (
-                <View key={`${s.title}-${idx}`} style={styles.emptyPackRow}>
-                  <View
-                    style={[
-                      styles.sectionIcon,
-                      { backgroundColor: getSportColor(s.sport) + "22" },
-                    ]}
-                  >
-                    <Ionicons
-                      name={
-                        s.sport === "hockey"
-                          ? "snow"
-                          : s.sport === "rugby"
-                          ? "american-football"
-                          : s.sport === "cricket"
-                          ? "baseball"
-                          : "football"
-                      }
-                      size={14}
-                      color={getSportColor(s.sport)}
-                    />
-                  </View>
-                  <Text style={styles.emptyPackTitle}>{s.title.replace(/ (Night|Morning)$/i, "")}</Text>
-                  <Text style={styles.emptyPackLabel}>No games in this window</Text>
-                </View>
-              ))}
-            </View>
-          ) : null
-        }
         ListEmptyComponent={
           allEmpty ? (
             <View style={styles.emptyContainer}>
@@ -605,7 +495,7 @@ export default function ModeDetailScreen() {
               <Text style={styles.emptySubtitle}>
                 {emptyFilterLabel
                   ? `No ${emptyFilterLabel.toLowerCase()} events in this window`
-                  : "No events found for this or next weekend (Fri\u2013Sun)"}
+                  : "No games in this window"}
               </Text>
             </View>
           ) : null
@@ -697,9 +587,9 @@ const styles = StyleSheet.create({
   sectionHeader: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 10,
-    paddingVertical: 14,
-    marginTop: 8,
+    gap: 8,
+    paddingVertical: 10,
+    marginTop: 4,
   },
   sectionIcon: {
     width: 32,
@@ -719,12 +609,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 6,
+    paddingVertical: 4,
     paddingHorizontal: 4,
-    marginBottom: 4,
+    marginBottom: 2,
   },
   weekendSubLabel: {
-    fontSize: 13,
+    fontSize: 12,
     color: Colors.textSecondary,
     fontFamily: "Inter_600SemiBold",
   },
@@ -754,22 +644,11 @@ const styles = StyleSheet.create({
     color: Colors.textSecondary,
     fontFamily: "Inter_600SemiBold",
   },
-  subEmptyRow: {
-    paddingVertical: 10,
-    paddingHorizontal: 4,
-    marginBottom: 4,
-  },
-  subEmptyText: {
-    fontSize: 12,
-    color: Colors.textMuted,
-    fontFamily: "Inter_400Regular",
-    fontStyle: "italic",
-  },
   eventCard: {
     backgroundColor: Colors.card,
     borderRadius: 14,
     padding: 14,
-    marginBottom: 10,
+    marginBottom: 8,
     borderWidth: 1,
     borderColor: Colors.border,
   },
@@ -916,32 +795,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 60,
     fontFamily: "Inter_400Regular",
-  },
-  emptyPacksContainer: {
-    marginTop: 8,
-    gap: 6,
-  },
-  emptyPackRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 10,
-    backgroundColor: Colors.card,
-    borderRadius: 12,
-    padding: 12,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    opacity: 0.6,
-  },
-  emptyPackTitle: {
-    fontSize: 14,
-    color: Colors.textSecondary,
-    fontFamily: "Inter_600SemiBold",
-    flex: 1,
-  },
-  emptyPackLabel: {
-    fontSize: 11,
-    color: Colors.textMuted,
-    fontFamily: "Inter_400Regular",
-    fontStyle: "italic",
   },
 });
