@@ -2,7 +2,7 @@
   "modes": [
     {
       "id": "weekend_nights",
-      "title": "Weekend Nights",
+      "title": "Weekend Evening Unwind",
       "packs": [
         {
           "id": "hockey_night",
@@ -54,7 +54,7 @@
     },
     {
       "id": "weekend_mornings",
-      "title": "Weekend Mornings",
+      "title": "Weekend Morning Game Day",
       "packs": [
         {
           "id": "hockey_morning",
