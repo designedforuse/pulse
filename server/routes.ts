@@ -335,12 +335,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const ncaa = events.filter((e: any) => (e.source || "").startsWith("ncaa")).length;
     const rugby = events.filter((e: any) => e.source === "rugby").length;
     const svnsSessions = events.filter((e: any) => e.leagueKey === "svns" && e.eventType === "session").length;
+    const sixnationsCount = events.filter((e: any) => e.leagueKey === "sixnations").length;
     const cricket = events.filter((e: any) => (e.source || "").startsWith("cricket") && e.source !== "cricket-t20wc-schedule").length;
     const iccT20Wc = events.filter((e: any) => e.source === "cricket-t20wc-schedule").length;
     const cricketTotal = cricket + iccT20Wc;
     const other = events.length - nhl - ahl - echl - ncaa - rugby - cricketTotal;
     return res.json({
-      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, cricket, iccT20Wc, cricketTotal, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, other, total: events.length,
       lastUpdated: generated.lastUpdated,
       ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",
