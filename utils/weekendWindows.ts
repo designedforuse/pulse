@@ -187,7 +187,7 @@ export function isInModeTimeWindow(eventStartLocal: string, modeId: string): boo
     }).formatToParts(eventDate);
     const dow = dowParts.find((p) => p.type === "weekday")?.value || "";
     if (dow !== "Sat" && dow !== "Sun") return false;
-    return totalMinutes >= 360 && totalMinutes <= 840;
+    return totalMinutes >= 240 && totalMinutes <= 840;
   }
 
   return true;

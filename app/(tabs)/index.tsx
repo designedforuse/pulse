@@ -24,7 +24,7 @@ const modeIcons: Record<string, { icon: keyof typeof Ionicons.glyphMap; gradient
   weekend_mornings: {
     icon: "sunny",
     gradient: ["#E65100", "#F57C00", "#FFB74D"],
-    timeWindow: "Sat, Sun  6:00 AM – 2:00 PM",
+    timeWindow: "Sat, Sun  4:00 AM – 2:00 PM",
   },
 };
 
