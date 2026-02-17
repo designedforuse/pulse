@@ -3,6 +3,7 @@ import { createServer, type Server } from "node:http";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { execFile } from "node:child_process";
+import { fetchRawCricketMatches, searchRawCricketMatches } from "../scripts/updateCricket";
 
 const GENERATED_EVENTS_PATH = path.resolve(
   process.cwd(),
@@ -376,6 +377,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
 
     return res.json({ total: allCricket.length, byGender, sample });
+  });
+
+  app.get("/api/debug/cricket-raw", async (req, res) => {
+    try {
+      const limit = parseInt(req.query.limit as string, 10) || 50;
+      const results = await fetchRawCricketMatches(Math.min(limit, 500));
+      return res.json({ total: results.length, matches: results });
+    } catch (err: any) {
+      return res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get("/api/debug/cricket-find", async (req, res) => {
+    try {
+      const q = (req.query.q as string) || "";
+      if (!q) return res.json({ error: "provide ?q= parameter", matches: [] });
+      const results = await searchRawCricketMatches(q);
+      return res.json({ query: q, total: results.length, matches: results });
+    } catch (err: any) {
+      return res.status(500).json({ error: err.message });
+    }
   });
 
   app.get("/api/debug/nhl-provider-sample", (_req, res) => {

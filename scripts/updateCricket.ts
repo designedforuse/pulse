@@ -540,6 +540,97 @@ async function fetchMatchesPage(apiKey: string, offset: number): Promise<CricApi
   }
 }
 
+export interface CricketRawDiagnostic {
+  id: string;
+  competitionName: string;
+  seriesName: string;
+  matchName: string;
+  teams: string[];
+  startTime: string;
+  matchType: string;
+  venue: string;
+  isInternational: boolean;
+  inferredGender: string;
+  includeReason: string;
+  excludedReason: string;
+}
+
+export async function fetchRawCricketMatches(limit: number = 50): Promise<CricketRawDiagnostic[]> {
+  const apiKey = process.env.CRICAPI_KEY;
+  if (!apiKey) return [];
+
+  const allMatches: CricApiMatch[] = [];
+  let offset = 0;
+  let pagesRead = 0;
+  const MAX_PAGES = 6;
+
+  while (pagesRead < MAX_PAGES) {
+    const page = await fetchMatchesPage(apiKey, offset);
+    if (!page || !page.data || page.data.length === 0) break;
+    allMatches.push(...page.data);
+    pagesRead++;
+    if (allMatches.length >= page.info.totalRows) break;
+    offset += page.data.length;
+    await new Promise((r) => setTimeout(r, 200));
+  }
+
+  const results: CricketRawDiagnostic[] = [];
+  for (const match of allMatches.slice(0, limit)) {
+    const seriesName = parseSeriesName(match.name);
+    const classification = classifyMatch(match);
+    const gender = classification.type !== "skip"
+      ? inferCricketGender(match, classification)
+      : inferCricketGender(match, { league: "", type: "skip", seriesName });
+
+    let includeReason = "";
+    let excludedReason = "";
+
+    if (classification.type === "skip") {
+      excludedReason = "not international or allowed domestic league";
+    } else if (gender === "women") {
+      excludedReason = "inferred women's cricket";
+    } else {
+      if (classification.isIccT20Wc) {
+        includeReason = "ICC T20 World Cup match";
+      } else if (isMajorIccTournament(match, seriesName)) {
+        includeReason = "major ICC tournament";
+      } else if (classification.type === "international") {
+        includeReason = "international match";
+      } else {
+        includeReason = `domestic league: ${classification.league}`;
+      }
+    }
+
+    results.push({
+      id: match.id,
+      competitionName: classification.league || "(none)",
+      seriesName,
+      matchName: match.name,
+      teams: match.teams || [],
+      startTime: match.dateTimeGMT || match.date,
+      matchType: match.matchType,
+      venue: match.venue || "",
+      isInternational: classification.type === "international",
+      inferredGender: gender,
+      includeReason,
+      excludedReason,
+    });
+  }
+
+  return results;
+}
+
+export async function searchRawCricketMatches(query: string): Promise<CricketRawDiagnostic[]> {
+  const all = await fetchRawCricketMatches(500);
+  const q = query.toLowerCase();
+  return all.filter(m =>
+    m.competitionName.toLowerCase().includes(q) ||
+    m.seriesName.toLowerCase().includes(q) ||
+    m.matchName.toLowerCase().includes(q) ||
+    m.teams.some(t => t.toLowerCase().includes(q))
+  );
+}
+
 export async function fetchCricketEvents(): Promise<CricketFetchResult> {
   const apiKey = process.env.CRICAPI_KEY;
   if (!apiKey) {
