@@ -9,6 +9,7 @@ const ICAL_FEEDS: Record<string, string> = {
   top14: "https://data.rugbyfixture.io/ical/v1/top14.ics",
   superrugby: "https://fixturedownload.com/download/super-rugby-pacific-2026-UTC.ics",
   premiership: "https://data.rugbyfixture.io/ical/v1/premiership.ics",
+  sixnations: "https://data.rugbyfixture.io/ical/v1/six-nations.ics",
 };
 
 const LEAGUE_LABELS: Record<string, string> = {
@@ -18,6 +19,7 @@ const LEAGUE_LABELS: Record<string, string> = {
   premiership: "English Premiership",
   leagueone: "Japan League One",
   svns: "HSBC SVNS",
+  sixnations: "Six Nations",
 };
 
 const LEAGUE_PROVIDERS: Record<string, string> = {
@@ -27,6 +29,7 @@ const LEAGUE_PROVIDERS: Record<string, string> = {
   premiership: "flosports",
   leagueone: "flosports",
   svns: "primevideo",
+  sixnations: "youtubetv",
 };
 
 const LEAGUE_DURATION: Record<string, number> = {
