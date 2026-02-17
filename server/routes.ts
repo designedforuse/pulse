@@ -46,7 +46,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const daysParam = parseInt(req.query.days as string, 10) || 7;
     const now = new Date();
     const cutoff = new Date(now.getTime() + daysParam * 86400000);
-    const startCutoff = new Date(now.getTime() - 12 * 3600000);
+    const startCutoff = new Date(now.getTime() - 14 * 86400000);
 
     const filtered = generated.events.filter((e: any) => {
       const start = new Date(e.startTimeLocal);

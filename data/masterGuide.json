@@ -29,10 +29,15 @@
           "id": "cricket_night",
           "title": "Cricket Night",
           "sport": "cricket",
-          "hostRegions": [
-            "India",
-            "Australia",
-            "New Zealand"
+          "leagues": [
+            "ICC",
+            "Test Cricket",
+            "T20I Cricket",
+            "ODI Cricket",
+            "IPL",
+            "BBL",
+            "Super Smash",
+            "MLC"
           ]
         },
         {
@@ -44,18 +49,6 @@
             "NWSL",
             "USL"
           ]
-        },
-        {
-          "sport": "Cricket",
-          "leagues": [
-            "IPL",
-            "BBL",
-            "Super Smash",
-            "SA20",
-            "MLC",
-            "CPL"
-          ],
-          "provider": "various"
         }
       ]
     },
@@ -87,10 +80,13 @@
           "id": "cricket_morning",
           "title": "Cricket Morning",
           "sport": "cricket",
-          "hostRegions": [
-            "South Africa",
-            "England",
-            "Caribbean"
+          "leagues": [
+            "SA20",
+            "CPL",
+            "ICC",
+            "Test Cricket",
+            "T20I Cricket",
+            "ODI Cricket"
           ]
         },
         {
@@ -104,18 +100,6 @@
             "Bundesliga",
             "Ligue 1"
           ]
-        },
-        {
-          "sport": "Cricket",
-          "leagues": [
-            "IPL",
-            "BBL",
-            "Super Smash",
-            "SA20",
-            "MLC",
-            "CPL"
-          ],
-          "provider": "various"
         }
       ]
     }

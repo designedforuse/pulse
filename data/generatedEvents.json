@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-17T00:16:13.248Z",
+  "lastUpdated": "2026-02-17T00:20:35.440Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -50,34 +50,34 @@
     "ICC": 31
   },
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-17T00:16:13.248Z",
+    "lastRefreshAt": "2026-02-17T00:20:35.440Z",
     "sources": {
       "nhl": {
         "count": 103,
-        "lastFetchAt": "2026-02-17T00:16:13.248Z",
+        "lastFetchAt": "2026-02-17T00:20:35.440Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 215,
-        "lastFetchAt": "2026-02-17T00:16:13.248Z",
+        "lastFetchAt": "2026-02-17T00:20:35.440Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-17T00:16:13.248Z",
+        "lastFetchAt": "2026-02-17T00:20:35.440Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 8,
-        "lastFetchAt": "2026-02-17T00:16:13.248Z",
+        "lastFetchAt": "2026-02-17T00:20:35.440Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 77,
-        "lastFetchAt": "2026-02-17T00:16:13.248Z",
+        "lastFetchAt": "2026-02-17T00:20:35.440Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 8,
@@ -90,7 +90,7 @@
       },
       "cricket": {
         "count": 23,
-        "lastFetchAt": "2026-02-17T00:16:13.248Z",
+        "lastFetchAt": "2026-02-17T00:20:35.440Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "T20I Cricket": 2,
