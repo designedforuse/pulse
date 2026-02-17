@@ -54,6 +54,11 @@ const LEAGUE_PREFERRED_ORDER: Record<string, string[]> = {
   soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "MLS", "NWSL", "USL"],
 };
 
+function getLeagueKey(e: SportEvent): string {
+  if (e.sport === "cricket" && e.competitionName) return e.competitionName;
+  return e.league;
+}
+
 const LEAGUE_SHORT_LABELS: Record<string, string> = {
   "NCAA Hockey": "NCAA",
   "English Premiership": "Premiership",
@@ -259,7 +264,7 @@ export default function ModeDetailScreen() {
   const sections: SectionData[] = useMemo(() => {
     const result: SectionData[] = [];
     const leagueFilter = (e: SportEvent) =>
-      activeLeague === "all" || e.league === activeLeague;
+      activeLeague === "all" || getLeagueKey(e) === activeLeague;
     for (const pd of filteredPackData) {
       const thisFiltered = pd.thisWeekend
         .filter(leagueFilter)
@@ -353,7 +358,8 @@ export default function ModeDetailScreen() {
           : []),
       ];
       for (const e of allEvents) {
-        counts[e.league] = (counts[e.league] || 0) + 1;
+        const key = getLeagueKey(e);
+        counts[key] = (counts[key] || 0) + 1;
       }
     }
     return counts;
