@@ -60,6 +60,8 @@ const LEAGUE_FILTERS: Record<string, { key: string; label: string }[]> = {
     { key: "URC", label: "URC" },
     { key: "Top 14", label: "Top 14" },
     { key: "Super Rugby", label: "Super Rugby" },
+    { key: "English Premiership", label: "English Premiership" },
+    { key: "Japan League One", label: "Japan League One" },
     { key: "HSBC SVNS", label: "SVNS" },
   ],
   cricket: [
