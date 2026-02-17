@@ -400,6 +400,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  app.get("/api/debug/cricket-by-date", async (req, res) => {
+    try {
+      const days = parseInt(req.query.days as string, 10) || 7;
+      const all = await fetchRawCricketMatches(500);
+      const now = new Date();
+      const cutoff = new Date(now.getTime() + days * 86400000);
+
+      const inWindow = all.filter(m => {
+        const t = new Date(m.startTime);
+        return t >= now && t <= cutoff;
+      });
+
+      const results = inWindow.slice(0, 200).map(m => ({
+        competitionName: m.competitionName,
+        seriesName: m.seriesName,
+        matchName: m.matchName,
+        startTime: m.startTime,
+        matchType: m.matchType,
+        isInternational: m.isInternational,
+        includeReason: m.includeReason,
+        excludedReason: m.excludedReason,
+      }));
+
+      return res.json({
+        days,
+        totalRawFetched: all.length,
+        inWindow: results.length,
+        matches: results,
+      });
+    } catch (err: any) {
+      return res.status(500).json({ error: err.message });
+    }
+  });
+
   app.get("/api/debug/nhl-provider-sample", (_req, res) => {
     const generated = loadGeneratedEvents();
     if (!generated || !generated.events) {
