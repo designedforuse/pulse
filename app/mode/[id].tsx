@@ -305,11 +305,16 @@ export default function ModeDetailScreen() {
     const counts: Record<string, number> = {};
     for (const pd of packData) {
       const sport = pd.pack.sport;
-      const total = pd.thisWeekend.length + pd.nextWeekend.length;
-      counts[sport] = (counts[sport] || 0) + total;
+      const thisEvents = favoritesOnly
+        ? pd.thisWeekend.filter((e) => favoriteInvolved(e, favorites))
+        : pd.thisWeekend;
+      const nextEvents = favoritesOnly
+        ? pd.nextWeekend.filter((e) => favoriteInvolved(e, favorites))
+        : pd.nextWeekend;
+      counts[sport] = (counts[sport] || 0) + thisEvents.length + nextEvents.length;
     }
     return counts;
-  }, [packData]);
+  }, [packData, favoritesOnly, favorites]);
 
   if (!mode) {
     return (
