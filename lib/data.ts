@@ -30,6 +30,10 @@ export interface SportEvent {
   isIccT20Wc?: boolean;
   t20WcMatchLabel?: string;
   t20WcVenue?: string;
+  isOlympic?: boolean;
+  seasonTag?: string;
+  olympicRound?: string;
+  olympicVenue?: string;
 }
 
 export interface Pack {

@@ -12,7 +12,8 @@
             "NHL",
             "AHL",
             "ECHL",
-            "NCAA Hockey"
+            "NCAA Hockey",
+            "Olympic Hockey"
           ]
         },
         {
@@ -63,7 +64,8 @@
           "leagues": [
             "NHL",
             "AHL",
-            "ECHL"
+            "ECHL",
+            "Olympic Hockey"
           ]
         },
         {
@@ -374,6 +376,9 @@
       ],
       "ECHL": [
         "Tulsa Oilers"
+      ],
+      "Olympic Hockey": [
+        "USA"
       ]
     },
     "rugby": {

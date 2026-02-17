@@ -1,0 +1,54 @@
+Add 2026 Milan–Cortina MEN’S Olympic Ice Hockey as a new league under the existing Hockey pack.
+
+1) Data ingestion (MVP approach)
+- Create a new script: scripts/updateOlympicHockey2026.ts
+- Source can be:
+   A) a hardcoded schedule JSON committed to repo (preferred for MVP stability), OR
+   B) scrape a reliable official fixtures page if stable.
+- Include all MEN’S Olympic Hockey events (group stage + knockout) for Milan–Cortina 2026.
+- Use timezone-safe conversion. Store event start times as UTC ISO; display in PT.
+
+2) Normalization (match existing event schema)
+For each Olympic hockey game:
+- sport: "hockey"
+- league: "Olympic Hockey"
+- source: "olympic-hockey-2026" (or similar)
+- homeTeam, awayTeam (international teams)
+- startTimeLocal: ISO
+- endTimeLocal: start + 2h45m default (hockey)
+- providerId: "youtubetv" (default for MVP)
+- Add flags:
+   isOlympic: true
+   seasonTag: "Milan-Cortina-2026"
+
+3) Merge + retention
+- Merge into generatedEvents.json with existing merge system.
+- Retain within [now-14d, now+21d] like other sports.
+- Ensure stable IDs:
+   "olympic-hockey-2026-" + <date> + "-" + <away> + "-at-" + <home>
+
+4) Refresh pipeline
+- Add olympic hockey fetcher into POST /api/refresh in parallel with NHL/AHL/ECHL/NCAA etc.
+- Update Settings “Schedule Data” to show:
+   Olympic Hockey: <count>
+   Source: Olympic Hockey 2026 schedule
+
+5) UI integration
+- Hockey league filter chips should include "Olympic Hockey" when events exist in the visible window(s).
+- Olympic Hockey events should appear in Hockey lists alongside NHL/AHL/ECHL/NCAA and respect:
+   - weekend window logic
+   - time-of-day modes
+   - favorites sorting
+- No changes to sport chips needed.
+
+6) Favorites
+- Add "Team USA" as a Hockey favorite team for international hockey.
+- Add aliases for matching:
+   "USA", "United States", "United States of America", "Team USA"
+- Ensure favorites matching works against Olympic hockey team names.
+
+Acceptance
+- Olympic hockey games show under Hockey pack with league = "Olympic Hockey".
+- Selecting Hockey → Olympic Hockey chip filters correctly.
+- Team USA games are prioritized as favorites (Live → Favorites → Start time).
+- Provider deep link opens YouTube TV for Olympic hockey events.
