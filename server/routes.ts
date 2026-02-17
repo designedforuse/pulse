@@ -497,6 +497,86 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
+  app.get("/api/debug/weekend-windows", (_req, res) => {
+    const now = new Date();
+    const TZ = "America/Los_Angeles";
+
+    const fmtFull = (d: Date) =>
+      new Intl.DateTimeFormat("en-US", {
+        timeZone: TZ,
+        weekday: "short",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      }).format(d);
+
+    const dowParts = new Intl.DateTimeFormat("en-US", {
+      timeZone: TZ,
+      weekday: "long",
+    }).formatToParts(now);
+    const dayOfWeek = dowParts.find((p) => p.type === "weekday")?.value || "";
+
+    const getLocalParts = (d: Date) => {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: TZ,
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        weekday: "short",
+        hour: "numeric",
+        hour12: false,
+      }).formatToParts(d);
+      const get = (type: string) => parts.find((p) => p.type === type)?.value || "";
+      const dayMap: Record<string, number> = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+      return {
+        year: parseInt(get("year"), 10),
+        month: parseInt(get("month"), 10),
+        day: parseInt(get("day"), 10),
+        dow: dayMap[get("weekday")] ?? 0,
+      };
+    };
+
+    const { year, month, day, dow } = getLocalParts(now);
+    let fridayOffset: number;
+    if (dow >= 1 && dow <= 4) fridayOffset = 5 - dow;
+    else if (dow === 5) fridayOffset = 0;
+    else if (dow === 6) fridayOffset = -1;
+    else fridayOffset = -2;
+
+    const fridayDate = new Date(Date.UTC(year, month - 1, day + fridayOffset, 12));
+    const fp = getLocalParts(fridayDate);
+
+    const midnightInTZ = (y: number, m: number, d: number) => {
+      const guess = new Date(Date.UTC(y, m - 1, d, 12, 0, 0));
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: TZ, year: "numeric", month: "numeric", day: "numeric",
+        hour: "numeric", minute: "numeric", second: "numeric", hour12: false,
+      }).formatToParts(guess);
+      const gv = (type: string) => parseInt(parts.find((p) => p.type === type)?.value || "0", 10);
+      const localH = gv("hour") === 24 ? 0 : gv("hour");
+      const offsetMs = (localH * 3600 + gv("minute") * 60 + gv("second")) * 1000;
+      return new Date(guess.getTime() - offsetMs);
+    };
+
+    const thisStart = midnightInTZ(fp.year, fp.month, fp.day);
+    const thisEnd = new Date(thisStart.getTime() + 3 * 86400000 - 1);
+    const nextStart = new Date(thisStart.getTime() + 7 * 86400000);
+    const nextEnd = new Date(nextStart.getTime() + 3 * 86400000 - 1);
+
+    return res.json({
+      now: fmtFull(now),
+      dayOfWeek,
+      thisWeekendStart: fmtFull(thisStart),
+      thisWeekendEnd: fmtFull(thisEnd),
+      nextWeekendStart: fmtFull(nextStart),
+      nextWeekendEnd: fmtFull(nextEnd),
+    });
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

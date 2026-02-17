@@ -1,0 +1,57 @@
+Update weekend window logic for Mode screens.
+
+Goal:
+Define “This weekend” and “Next weekend” based on a Friday-anchored weekend cycle in America/Los_Angeles.
+
+Definitions:
+
+Let now = current datetime in America/Los_Angeles.
+
+A) Determine currentWeekendStart (Friday 00:00 local):
+- If now is Mon/Tue/Wed/Thu:
+    currentWeekendStart = upcoming Friday at 00:00
+- If now is Fri/Sat/Sun:
+    currentWeekendStart = most recent Friday at 00:00 (i.e., today’s Friday if Fri, otherwise the Friday earlier this week)
+
+B) currentWeekendEnd:
+- Sunday 23:59:59.999 local for that weekend
+  (i.e., currentWeekendStart + 3 days - 1ms)
+
+C) nextWeekendStart / nextWeekendEnd:
+- nextWeekendStart = currentWeekendStart + 7 days (Friday 00:00)
+- nextWeekendEnd = nextWeekendStart + 3 days - 1ms
+
+D) Rollover behavior:
+- At Monday 00:00 local, the currentWeekendStart should become the upcoming Friday, and the previous nextWeekend becomes thisWeekend.
+(This will naturally happen with the logic above.)
+
+Implementation details:
+
+1) Create a single helper:
+getWeekendWindows(now, tz="America/Los_Angeles") => {
+  thisWeekend: { start: Date, end: Date },
+  nextWeekend: { start: Date, end: Date }
+}
+
+2) Use IANA timezone (America/Los_Angeles) and DST-safe date math.
+Avoid fixed offsets.
+
+3) Apply these windows ONLY for ModeDetail sections:
+- “This weekend” shows events with startTime within [start, end]
+- “Next weekend” shows events with startTime within [start, end]
+
+4) Keep existing time-of-day filtering (Weekend Nights vs Mornings) layered on top of these date windows.
+
+5) Add debug endpoint:
+GET /api/debug/weekend-windows
+Returns:
+- now (formatted)
+- thisWeekendStart/end (formatted)
+- nextWeekendStart/end (formatted)
+- dayOfWeek
+
+Acceptance tests:
+- On Wednesday: thisWeekend is the upcoming Fri–Sun; nextWeekend is the following Fri–Sun.
+- On Saturday: thisWeekend is the Fri–Sun currently in progress; nextWeekend is the following Fri–Sun.
+- At Sunday 11:59pm: still same thisWeekend.
+- At Monday 12:01am: the previously “nextWeekend” becomes “thisWeekend”.
