@@ -189,6 +189,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
           cricketPruned: generated?.cricketPruned ?? 0,
           cricketSourceUsed: generated?.cricketSourceUsed ?? "unknown",
           cricketCounts: generated?.cricketCounts ?? {},
+          iccT20WcCount: generated?.iccT20WcCount ?? 0,
+          iccT20WcAdded: generated?.iccT20WcAdded ?? 0,
+          iccT20WcUpdated: generated?.iccT20WcUpdated ?? 0,
+          iccT20WcPruned: generated?.iccT20WcPruned ?? 0,
+          iccT20WcSourceUsed: generated?.iccT20WcSourceUsed ?? "unknown",
         });
       }
     );
@@ -329,11 +334,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const ncaa = events.filter((e: any) => (e.source || "").startsWith("ncaa")).length;
     const rugby = events.filter((e: any) => e.source === "rugby").length;
     const svnsSessions = events.filter((e: any) => e.leagueKey === "svns" && e.eventType === "session").length;
-    const cricket = events.filter((e: any) => (e.source || "").startsWith("cricket")).length;
-    const cricketIccT20WcCount = events.filter((e: any) => (e.source || "").startsWith("cricket") && e.isIccT20Wc).length;
-    const other = events.length - nhl - ahl - echl - ncaa - rugby - cricket;
+    const cricket = events.filter((e: any) => (e.source || "").startsWith("cricket") && e.source !== "cricket-t20wc-schedule").length;
+    const iccT20Wc = events.filter((e: any) => e.source === "cricket-t20wc-schedule").length;
+    const cricketTotal = cricket + iccT20Wc;
+    const other = events.length - nhl - ahl - echl - ncaa - rugby - cricketTotal;
     return res.json({
-      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, cricket, cricketIccT20WcCount, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, cricket, iccT20Wc, cricketTotal, other, total: events.length,
       lastUpdated: generated.lastUpdated,
       ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",
@@ -343,6 +349,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       rugbyCounts: generated.rugbyCounts ?? {},
       cricketSourceUsed: generated.cricketSourceUsed ?? "unknown",
       cricketCounts: generated.cricketCounts ?? {},
+      iccT20WcSourceUsed: generated.iccT20WcSourceUsed ?? "unknown",
+      iccT20WcCount: generated.iccT20WcCount ?? 0,
     });
   });
 

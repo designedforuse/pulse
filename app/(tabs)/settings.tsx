@@ -268,6 +268,12 @@ export default function SettingsScreen() {
                     <View style={styles.sourceDivider} />
                   </>
                 )}
+                {meta.sources.iccT20Wc && (
+                  <>
+                    <SourceRow league="T20 World Cup" meta={meta.sources.iccT20Wc} />
+                    <View style={styles.sourceDivider} />
+                  </>
+                )}
               </View>
             )}
             <Pressable
@@ -288,7 +294,7 @@ export default function SettingsScreen() {
                 <View>
                   <Text style={styles.refreshLabel}>Refresh Schedules</Text>
                   <Text style={styles.refreshDesc}>
-                    Pull latest NHL + AHL + ECHL + NCAA + Rugby + Cricket data
+                    Pull latest NHL + AHL + ECHL + NCAA + Rugby + Cricket + T20WC data
                   </Text>
                 </View>
               </View>
