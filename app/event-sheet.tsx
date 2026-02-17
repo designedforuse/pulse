@@ -138,6 +138,16 @@ export default function EventSheet() {
             <View style={styles.matchupContainer}>
               <Text style={styles.teamName}>{event.sessionTitle}</Text>
             </View>
+          ) : (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel ? (
+            <View style={styles.matchupContainer}>
+              <Text style={styles.teamName}>{event.t20WcMatchLabel}</Text>
+              {event.t20WcVenue ? (
+                <View style={styles.venueRow}>
+                  <Ionicons name="location-outline" size={13} color={Colors.textSecondary} />
+                  <Text style={styles.venueText}>{event.t20WcVenue}</Text>
+                </View>
+              ) : null}
+            </View>
           ) : (
             <View style={styles.matchupContainer}>
               <Text style={styles.teamName}>{event.awayTeam}</Text>
@@ -264,6 +274,17 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: Colors.textMuted,
     fontFamily: "Inter_500Medium",
+  },
+  venueRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 4,
+    marginTop: 4,
+  },
+  venueText: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_400Regular",
   },
   timeRow: {
     flexDirection: "row",

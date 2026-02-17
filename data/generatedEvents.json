@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-17T05:56:32.697Z",
+  "lastUpdated": "2026-02-17T05:59:44.514Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -52,34 +52,34 @@
   "iccT20WcSourceUsed": "hardcoded-schedule",
   "t20wcDedupedCount": 0,
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-17T05:56:32.697Z",
+    "lastRefreshAt": "2026-02-17T05:59:44.514Z",
     "sources": {
       "nhl": {
         "count": 103,
-        "lastFetchAt": "2026-02-17T05:56:32.697Z",
+        "lastFetchAt": "2026-02-17T05:59:44.514Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 215,
-        "lastFetchAt": "2026-02-17T05:56:32.697Z",
+        "lastFetchAt": "2026-02-17T05:59:44.514Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-17T05:56:32.697Z",
+        "lastFetchAt": "2026-02-17T05:59:44.514Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 7,
-        "lastFetchAt": "2026-02-17T05:56:32.697Z",
+        "lastFetchAt": "2026-02-17T05:59:44.514Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 77,
-        "lastFetchAt": "2026-02-17T05:56:32.697Z",
+        "lastFetchAt": "2026-02-17T05:59:44.514Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 8,
@@ -98,7 +98,7 @@
       },
       "iccT20Wc": {
         "count": 55,
-        "lastFetchAt": "2026-02-17T05:56:32.697Z",
+        "lastFetchAt": "2026-02-17T05:59:44.514Z",
         "sourceName": "Hardcoded Schedule"
       }
     }
@@ -902,7 +902,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Sinhalese Sports Club, Colombo"
     },
     {
       "id": "cricket-t20wc-9bf79bbd19",
@@ -921,7 +922,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Eden Gardens, Kolkata"
     },
     {
       "id": "cricket-t20wc-acfc045da2",
@@ -940,7 +942,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Wankhede Stadium, Mumbai"
     },
     {
       "id": "ahl-1028490",
@@ -1167,7 +1170,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "MA Chidambaram Stadium, Chennai"
     },
     {
       "id": "cricket-t20wc-8dd43a98c9",
@@ -1186,7 +1190,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Wankhede Stadium, Mumbai"
     },
     {
       "id": "cricket-t20wc-b44dd7a55c",
@@ -1205,7 +1210,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "R. Premadasa Stadium, Colombo"
     },
     {
       "id": "rugby-svns-3l46hh-d2",
@@ -1239,7 +1245,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Eden Gardens, Kolkata"
     },
     {
       "id": "cricket-t20wc-c9d59548d2",
@@ -1258,7 +1265,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Sinhalese Sports Club, Colombo"
     },
     {
       "id": "cricket-t20wc-3408ef27d6",
@@ -1277,7 +1285,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Narendra Modi Stadium, Ahmedabad"
     },
     {
       "id": "ncaa-bu-fkhyak",
@@ -1308,7 +1317,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Arun Jaitley Stadium, Delhi"
     },
     {
       "id": "cricket-t20wc-167d00d11f",
@@ -1327,7 +1337,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "MA Chidambaram Stadium, Chennai"
     },
     {
       "id": "cricket-t20wc-9dabf0822b",
@@ -1346,7 +1357,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Sinhalese Sports Club, Colombo"
     },
     {
       "id": "cricket-t20wc-c8d92d6ebd",
@@ -1365,7 +1377,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Narendra Modi Stadium, Ahmedabad"
     },
     {
       "id": "cricket-t20wc-f5b4de42d1",
@@ -1384,7 +1397,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "R. Premadasa Stadium, Colombo"
     },
     {
       "id": "cricket-t20wc-7af91bc925",
@@ -1403,7 +1417,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Wankhede Stadium, Mumbai"
     },
     {
       "id": "ahl-1028961",
@@ -1506,7 +1521,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Pallekele International Stadium"
     },
     {
       "id": "cricket-t20wc-ce80603588",
@@ -1525,7 +1541,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Wankhede Stadium, Mumbai"
     },
     {
       "id": "cricket-t20wc-22c663b776",
@@ -1544,7 +1561,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Arun Jaitley Stadium, Delhi"
     },
     {
       "id": "cricket-t20wc-b47107e8e1",
@@ -1563,7 +1581,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "R. Premadasa Stadium, Colombo"
     },
     {
       "id": "rugby-superrugby-uczzlv",
@@ -1608,7 +1627,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Arun Jaitley Stadium, Delhi"
     },
     {
       "id": "cricket-t20wc-1bf516c7a5",
@@ -1627,7 +1647,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "MA Chidambaram Stadium, Chennai"
     },
     {
       "id": "ahl-1028498",
@@ -1808,7 +1829,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Sinhalese Sports Club, Colombo"
     },
     {
       "id": "rugby-superrugby-kqzlnk",
@@ -1853,7 +1875,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Eden Gardens, Kolkata"
     },
     {
       "id": "cricket-t20i-cpf16",
@@ -1892,7 +1915,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Narendra Modi Stadium, Ahmedabad"
     },
     {
       "id": "rugby-top14-lk34zg",
@@ -2325,7 +2349,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Wankhede Stadium, Mumbai"
     },
     {
       "id": "cricket-t20wc-e21a0de972",
@@ -2344,7 +2369,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "MA Chidambaram Stadium, Chennai"
     },
     {
       "id": "cricket-t20i-wz202a",
@@ -2383,7 +2409,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "R. Premadasa Stadium, Colombo"
     },
     {
       "id": "ahl-1028519",
@@ -2547,7 +2574,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Arun Jaitley Stadium, Delhi"
     },
     {
       "id": "cricket-t20wc-c2768fec83",
@@ -2566,7 +2594,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Eden Gardens, Kolkata"
     },
     {
       "id": "cricket-t20wc-d7fc003bb3",
@@ -2585,7 +2614,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Pallekele International Stadium"
     },
     {
       "id": "ahl-1028515",
@@ -2664,7 +2694,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "MA Chidambaram Stadium, Chennai"
     },
     {
       "id": "cricket-t20wc-08db21adbc",
@@ -2683,7 +2714,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Pallekele International Stadium"
     },
     {
       "id": "cricket-t20wc-c33fcb4719",
@@ -2702,7 +2734,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Wankhede Stadium, Mumbai"
     },
     {
       "id": "ahl-1028529",
@@ -2733,7 +2766,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Arun Jaitley Stadium, Delhi"
     },
     {
       "id": "cricket-t20wc-7d994c5627",
@@ -2752,7 +2786,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Sinhalese Sports Club, Colombo"
     },
     {
       "id": "cricket-t20wc-35c03f025a",
@@ -2771,7 +2806,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Narendra Modi Stadium, Ahmedabad"
     },
     {
       "id": "ahl-1028538",
@@ -2898,7 +2934,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Eden Gardens, Kolkata"
     },
     {
       "id": "cricket-t20wc-f1df73cbc1",
@@ -2917,7 +2954,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "R. Premadasa Stadium, Colombo"
     },
     {
       "id": "cricket-t20wc-8b828703e8",
@@ -2936,7 +2974,8 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "MA Chidambaram Stadium, Chennai"
     },
     {
       "id": "ahl-1028539",
@@ -3005,7 +3044,8 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcVenue": "Pallekele International Stadium"
     },
     {
       "id": "ahl-1028541",
@@ -3246,7 +3286,9 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC S8 Group 2 – Match 41",
+      "t20WcVenue": "R. Premadasa Stadium, Colombo"
     },
     {
       "id": "ahl-1028558",
@@ -3496,7 +3538,9 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC S8 Group 2 – Match 42",
+      "t20WcVenue": "Pallekele International Stadium"
     },
     {
       "id": "cricket-t20wc-c2d05fb6a7",
@@ -3515,7 +3559,9 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC S8 Group 1 – Match 43",
+      "t20WcVenue": "Narendra Modi Stadium, Ahmedabad"
     },
     {
       "id": "ahl-1028568",
@@ -3618,7 +3664,9 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC S8 Group 1 – Match 44",
+      "t20WcVenue": "Wankhede Stadium, Mumbai"
     },
     {
       "id": "cricket-t20wc-23bf7f5627",
@@ -3637,7 +3685,9 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC S8 Group 2 – Match 45",
+      "t20WcVenue": "Pallekele International Stadium"
     },
     {
       "id": "ahl-1028575",
@@ -3692,7 +3742,9 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC S8 Group 2 – Match 46",
+      "t20WcVenue": "R. Premadasa Stadium, Colombo"
     },
     {
       "id": "nhl_2025020910",
@@ -3973,7 +4025,9 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC S8 Group 1 – Match 47",
+      "t20WcVenue": "Narendra Modi Stadium, Ahmedabad"
     },
     {
       "id": "cricket-t20wc-772f1b816d",
@@ -3992,7 +4046,9 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC S8 Group 1 – Match 48",
+      "t20WcVenue": "MA Chidambaram Stadium, Chennai"
     },
     {
       "id": "nhl_2025020918",
@@ -4275,7 +4331,9 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC S8 Group 2 – Match 49",
+      "t20WcVenue": "R. Premadasa Stadium, Colombo"
     },
     {
       "id": "rugby-urc-e0tauu",
@@ -4610,7 +4668,9 @@
       "format": "t20",
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC S8 Group 2 – Match 50",
+      "t20WcVenue": "Pallekele International Stadium"
     },
     {
       "id": "rugby-urc-3msz0h",
@@ -5259,7 +5319,9 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC S8 Group 1 – Match 51",
+      "t20WcVenue": "Arun Jaitley Stadium, Delhi"
     },
     {
       "id": "cricket-t20wc-1338ee2c7e",
@@ -5278,7 +5340,9 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC S8 Group 1 – Match 52",
+      "t20WcVenue": "Eden Gardens, Kolkata"
     },
     {
       "id": "nhl_2025020947",
@@ -5910,7 +5974,9 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC Semi-Final 1 – Match 53",
+      "t20WcVenue": "Eden Gardens, Kolkata"
     },
     {
       "id": "ahl-1028626",
@@ -6132,7 +6198,9 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC Semi-Final 2 – Match 54",
+      "t20WcVenue": "Wankhede Stadium, Mumbai"
     },
     {
       "id": "nhl_2025020975",
@@ -7065,7 +7133,9 @@
       "format": "t20",
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC Final – Match 55",
+      "t20WcVenue": "Narendra Modi Stadium, Ahmedabad"
     },
     {
       "id": "rugby-svns-rj2l89-d2",

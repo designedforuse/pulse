@@ -27,6 +27,9 @@ export interface SportEvent {
   format?: string;
   hostCountry?: string;
   seriesName?: string;
+  isIccT20Wc?: boolean;
+  t20WcMatchLabel?: string;
+  t20WcVenue?: string;
 }
 
 export interface Pack {

@@ -28,6 +28,8 @@ interface AppEvent {
   hostCountry?: string;
   seriesName?: string;
   isIccT20Wc?: boolean;
+  t20WcMatchLabel?: string;
+  t20WcVenue?: string;
 }
 
 export interface T20WcFetchResult {
@@ -139,10 +141,15 @@ function matchToEvent(match: T20WcMatch): AppEvent {
   const country = VENUE_COUNTRY[match.venue] || "India";
   const hashInput = `t20wc-2026-m${match.matchNum}-${match.team1}-${match.team2}-${match.date}`;
 
-  let sessionTitle: string | undefined;
-  if (match.team1 === "TBC" && match.team2 === "TBC") {
-    sessionTitle = `T20 WC – Match ${match.matchNum} (${match.group})`;
+  const hasTbc = match.team1 === "TBC" || match.team2 === "TBC";
+
+  let t20WcMatchLabel: string | undefined;
+  if (hasTbc) {
+    const groupLabel = match.group.replace("Super 8 – ", "S8 ");
+    t20WcMatchLabel = `T20 WC ${groupLabel} – Match ${match.matchNum}`;
   }
+
+  const venue = match.venue;
 
   return {
     id: `cricket-t20wc-${stableHash(hashInput)}`,
@@ -162,6 +169,8 @@ function matchToEvent(match: T20WcMatch): AppEvent {
     hostCountry: country,
     seriesName: "ICC Men's T20 World Cup 2026",
     isIccT20Wc: true,
+    t20WcMatchLabel,
+    t20WcVenue: venue,
   };
 }
 

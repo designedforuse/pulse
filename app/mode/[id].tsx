@@ -133,6 +133,12 @@ function EventCard({
             {event.sessionTitle}
           </Text>
         </View>
+      ) : (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel ? (
+        <View style={styles.matchupRow}>
+          <Text style={styles.teamName} numberOfLines={2}>
+            {event.t20WcMatchLabel}
+          </Text>
+        </View>
       ) : (
         <View style={styles.matchupRow}>
           <Text style={styles.teamName} numberOfLines={1}>
@@ -144,6 +150,13 @@ function EventCard({
           </Text>
         </View>
       )}
+
+      {event.t20WcVenue && (event.awayTeam === "TBC" || event.homeTeam === "TBC") ? (
+        <View style={styles.venueRow}>
+          <Ionicons name="location-outline" size={12} color={Colors.textMuted} />
+          <Text style={styles.venueText} numberOfLines={1}>{event.t20WcVenue}</Text>
+        </View>
+      ) : null}
 
       <View style={styles.eventBottomRow}>
         <View style={styles.timeContainer}>
@@ -905,6 +918,18 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: Colors.textMuted,
     fontFamily: "Inter_500Medium",
+  },
+  venueRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    marginBottom: 8,
+    marginTop: -4,
+  },
+  venueText: {
+    fontSize: 12,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
   },
   eventBottomRow: {
     flexDirection: "row",
