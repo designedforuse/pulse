@@ -302,6 +302,17 @@ const MAJOR_ICC_TOURNAMENT_KEYWORDS = [
 
 const ICC_T20_WC_SERIES_IDS = new Set<string>();
 
+const NON_TARGET_EXCLUSIONS = [
+  "u19", "under-19", "under 19",
+  "warm up", "warm-up",
+  "practice", "friendly",
+];
+
+function isNonTargetMatch(match: CricApiMatch, seriesName: string): boolean {
+  const searchStr = [match.name, seriesName, (match as any).category || ""].join(" ").toLowerCase();
+  return NON_TARGET_EXCLUSIONS.some(kw => searchStr.includes(kw));
+}
+
 function isIccT20WorldCup(match: CricApiMatch, seriesName: string): boolean {
   const searchStr = [match.name, seriesName].join(" ").toLowerCase();
   if (ICC_T20_WC_KEYWORDS.some(kw => searchStr.includes(kw))) return true;
@@ -324,6 +335,10 @@ function classifyMatch(match: CricApiMatch): {
   const nameLower = match.name.toLowerCase();
   const seriesName = parseSeriesName(match.name);
   const seriesLower = seriesName.toLowerCase();
+
+  if (isNonTargetMatch(match, seriesName)) {
+    return { type: "skip", league: "", country: "", seriesName, isIccT20Wc: false };
+  }
 
   const t20Wc = isIccT20WorldCup(match, seriesName);
   if (t20Wc) {
@@ -586,7 +601,10 @@ export async function fetchRawCricketMatches(limit: number = 50): Promise<Cricke
     let excludedReason = "";
 
     if (classification.type === "skip") {
-      excludedReason = "not international or allowed domestic league";
+      const sn = parseSeriesName(match.name);
+      excludedReason = isNonTargetMatch(match, sn)
+        ? "non-target (u19/warmup/practice/friendly)"
+        : "not international or allowed domestic league";
     } else if (gender === "women") {
       excludedReason = "inferred women's cricket";
     } else {
