@@ -638,15 +638,18 @@ const styles = StyleSheet.create({
   },
   chipScroll: {
     flexGrow: 0,
+    flexShrink: 0,
     paddingVertical: 8,
   },
   chipRow: {
     paddingHorizontal: 16,
     gap: 8,
+    alignItems: "center",
   },
   chip: {
     flexDirection: "row",
     alignItems: "center",
+    flexShrink: 0,
     gap: 5,
     paddingHorizontal: 12,
     paddingVertical: 7,
@@ -659,6 +662,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: Colors.textSecondary,
     fontFamily: "Inter_600SemiBold",
+    flexShrink: 0,
   },
   chipCount: {
     backgroundColor: Colors.cardHighlight,
@@ -667,6 +671,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     minWidth: 20,
     alignItems: "center",
+    flexShrink: 0,
   },
   chipCountText: {
     fontSize: 10,
