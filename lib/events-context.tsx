@@ -7,6 +7,7 @@ import type { SportEvent, Pack } from "@/lib/data";
 
 const DEBUG_KEY = "prefs.debugShowAll";
 const SVNS_KEY = "prefs.showSvnsSessions";
+const FAVS_ONLY_KEY = "prefs.favoritesOnly";
 
 const cricketLeagueToRegion: Record<string, string> = {
   IPL: "India",
@@ -36,6 +37,8 @@ interface EventsContextValue {
   setDebugShowAll: (val: boolean) => void;
   showSvnsSessions: boolean;
   setShowSvnsSessions: (val: boolean) => void;
+  favoritesOnly: boolean;
+  setFavoritesOnly: (val: boolean) => void;
 }
 
 const EventsContext = createContext<EventsContextValue | null>(null);
@@ -43,12 +46,14 @@ const EventsContext = createContext<EventsContextValue | null>(null);
 export function EventsProvider({ children }: { children: ReactNode }) {
   const [debugShowAll, setDebugShowAllState] = useState(false);
   const [showSvnsSessions, setShowSvnsState] = useState(true);
+  const [favoritesOnly, setFavoritesOnlyState] = useState(false);
 
   useEffect(() => {
-    AsyncStorage.multiGet([DEBUG_KEY, SVNS_KEY]).then((entries) => {
+    AsyncStorage.multiGet([DEBUG_KEY, SVNS_KEY, FAVS_ONLY_KEY]).then((entries) => {
       for (const [key, val] of entries) {
         if (key === DEBUG_KEY && val === "true") setDebugShowAllState(true);
         if (key === SVNS_KEY && val === "false") setShowSvnsState(false);
+        if (key === FAVS_ONLY_KEY && val === "true") setFavoritesOnlyState(true);
       }
     });
   }, []);
@@ -61,6 +66,11 @@ export function EventsProvider({ children }: { children: ReactNode }) {
   const setShowSvnsSessions = (val: boolean) => {
     setShowSvnsState(val);
     AsyncStorage.setItem(SVNS_KEY, val.toString());
+  };
+
+  const setFavoritesOnly = (val: boolean) => {
+    setFavoritesOnlyState(val);
+    AsyncStorage.setItem(FAVS_ONLY_KEY, val.toString());
   };
 
   const { data, isLoading } = useQuery<ApiResponse>({
@@ -118,8 +128,10 @@ export function EventsProvider({ children }: { children: ReactNode }) {
       setDebugShowAll,
       showSvnsSessions,
       setShowSvnsSessions,
+      favoritesOnly,
+      setFavoritesOnly,
     };
-  }, [allEvents, isLoading, debugShowAll, showSvnsSessions]);
+  }, [allEvents, isLoading, debugShowAll, showSvnsSessions, favoritesOnly]);
 
   return (
     <EventsContext.Provider value={value}>{children}</EventsContext.Provider>

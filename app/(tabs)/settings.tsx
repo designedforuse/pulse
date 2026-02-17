@@ -162,7 +162,7 @@ export default function SettingsScreen() {
   const favorites = getFavorites();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
   const queryClient = useQueryClient();
-  const { debugShowAll, setDebugShowAll, showSvnsSessions, setShowSvnsSessions } = useEvents();
+  const { debugShowAll, setDebugShowAll, showSvnsSessions, setShowSvnsSessions, favoritesOnly, setFavoritesOnly } = useEvents();
 
   const [refreshing, setRefreshing] = useState(false);
   const [refreshMessage, setRefreshMessage] = useState<{ text: string; ok: boolean } | null>(null);
@@ -321,6 +321,26 @@ export default function SettingsScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Display</Text>
           <View style={styles.card}>
+            <View style={styles.debugRow}>
+              <View style={styles.debugLeft}>
+                <Ionicons name="star" size={18} color={Colors.favStar} />
+                <View>
+                  <Text style={styles.refreshLabel}>Favorites Only</Text>
+                  <Text style={styles.refreshDesc}>
+                    Show only events involving your favorite teams
+                  </Text>
+                </View>
+              </View>
+              <Switch
+                value={favoritesOnly}
+                onValueChange={setFavoritesOnly}
+                trackColor={{ false: Colors.border, true: Colors.favStar + "55" }}
+                thumbColor={favoritesOnly ? Colors.favStar : Colors.textMuted}
+                style={styles.debugSwitch}
+                testID="favorites-only-toggle"
+              />
+            </View>
+            <View style={styles.sourceDivider} />
             <View style={styles.debugRow}>
               <View style={styles.debugLeft}>
                 <Ionicons name="trophy-outline" size={18} color={Colors.accent} />

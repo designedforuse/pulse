@@ -6,7 +6,6 @@ import {
   SectionList,
   Pressable,
   Platform,
-  Switch,
   ScrollView,
 } from "react-native";
 import { useLocalSearchParams, router, Stack } from "expo-router";
@@ -34,7 +33,6 @@ import {
   type WeekendWindow,
 } from "@/utils/weekendWindows";
 
-const PREF_KEY = "prefs.favoritesFirst";
 const FILTER_KEY_PREFIX = "ui.modeFilter.";
 
 type SportFilter = "all" | "hockey" | "rugby" | "cricket" | "soccer";
@@ -188,26 +186,17 @@ function sortEvents(
 export default function ModeDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const mode = getModeById(id);
-  const { getEventsForPack, debugShowAll } = useEvents();
+  const { getEventsForPack, debugShowAll, favoritesOnly } = useEvents();
   const favorites = getFavorites();
-  const [favoritesOnly, setFavoritesOnly] = useState(false);
   const [activeSport, setActiveSportState] = useState<SportFilter>("all");
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    AsyncStorage.multiGet([PREF_KEY, FILTER_KEY_PREFIX + id]).then((entries) => {
-      for (const [key, val] of entries) {
-        if (key === PREF_KEY && val !== null) setFavoritesOnly(val === "true");
-        if (key === FILTER_KEY_PREFIX + id && val !== null) setActiveSportState(val as SportFilter);
-      }
+    AsyncStorage.getItem(FILTER_KEY_PREFIX + id).then((val) => {
+      if (val !== null) setActiveSportState(val as SportFilter);
       setLoaded(true);
     });
   }, [id]);
-
-  const handleToggle = (val: boolean) => {
-    setFavoritesOnly(val);
-    AsyncStorage.setItem(PREF_KEY, val.toString());
-  };
 
   const setActiveSport = useCallback((sport: SportFilter) => {
     setActiveSportState(sport);
@@ -405,17 +394,12 @@ export default function ModeDetailScreen() {
         })}
       </ScrollView>
 
-      <View style={styles.toggleRow}>
-        <Ionicons name="star" size={14} color={Colors.favStar} />
-        <Text style={styles.toggleLabel}>Favorites only</Text>
-        <Switch
-          value={favoritesOnly}
-          onValueChange={handleToggle}
-          trackColor={{ false: Colors.border, true: Colors.accent + "55" }}
-          thumbColor={favoritesOnly ? Colors.accent : Colors.textMuted}
-          style={styles.switch}
-        />
-      </View>
+      {favoritesOnly && (
+        <View style={styles.favIndicator}>
+          <Ionicons name="star" size={12} color={Colors.favStar} />
+          <Text style={styles.favIndicatorText}>Favorites only</Text>
+        </View>
+      )}
       <SectionList
         sections={populatedSections}
         keyExtractor={(item) => item.id}
@@ -678,23 +662,19 @@ const styles = StyleSheet.create({
     color: Colors.textMuted,
     fontFamily: "Inter_600SemiBold",
   },
-  toggleRow: {
+  favIndicator: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 6,
+    gap: 5,
     paddingHorizontal: 20,
-    paddingVertical: 10,
+    paddingVertical: 6,
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },
-  toggleLabel: {
-    fontSize: 13,
-    color: Colors.textSecondary,
+  favIndicatorText: {
+    fontSize: 11,
+    color: Colors.favStar,
     fontFamily: "Inter_500Medium",
-    flex: 1,
-  },
-  switch: {
-    transform: [{ scaleX: 0.85 }, { scaleY: 0.85 }],
   },
   listContent: {
     paddingHorizontal: 20,

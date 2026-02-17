@@ -7,13 +7,11 @@ import {
   Pressable,
   Platform,
   RefreshControl,
-  Switch,
 } from "react-native";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -37,8 +35,6 @@ import {
   formatTimeUntilStart,
 } from "@/utils/time";
 import { favoriteInvolved } from "@/utils/favorites";
-
-const PREF_KEY = "prefs.favoritesOnly";
 
 function LiveIndicator() {
   const opacity = useSharedValue(1);
@@ -162,23 +158,11 @@ interface SectionData {
 export default function LiveNowScreen() {
   const insets = useSafeAreaInsets();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
-  const { allEvents } = useEvents();
+  const { allEvents, favoritesOnly } = useEvents();
   const favorites = getFavorites();
 
   const [now, setNow] = useState<Date>(new Date());
   const [refreshing, setRefreshing] = useState(false);
-  const [favoritesOnly, setFavoritesOnly] = useState(false);
-
-  useEffect(() => {
-    AsyncStorage.getItem(PREF_KEY).then((val) => {
-      if (val !== null) setFavoritesOnly(val === "true");
-    });
-  }, []);
-
-  const handleToggle = (val: boolean) => {
-    setFavoritesOnly(val);
-    AsyncStorage.setItem(PREF_KEY, val.toString());
-  };
 
   const refresh = useCallback(() => {
     setNow(new Date());
@@ -263,17 +247,12 @@ export default function LiveNowScreen() {
         <Text style={styles.lastUpdated}>
           Last updated: {formatLastUpdated(now)}
         </Text>
-        <View style={styles.toggleRow}>
-          <Ionicons name="star" size={14} color={Colors.favStar} />
-          <Text style={styles.toggleLabel}>Favorites only</Text>
-          <Switch
-            value={favoritesOnly}
-            onValueChange={handleToggle}
-            trackColor={{ false: Colors.border, true: Colors.accent + "55" }}
-            thumbColor={favoritesOnly ? Colors.accent : Colors.textMuted}
-            style={styles.switch}
-          />
-        </View>
+        {favoritesOnly && (
+          <View style={styles.favIndicator}>
+            <Ionicons name="star" size={12} color={Colors.favStar} />
+            <Text style={styles.favIndicatorText}>Favorites only</Text>
+          </View>
+        )}
       </View>
 
       {isEmpty ? (
@@ -385,23 +364,19 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
     marginTop: 6,
   },
-  toggleRow: {
+  favIndicator: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 6,
-    marginTop: 10,
-    paddingTop: 8,
+    gap: 5,
+    marginTop: 8,
+    paddingTop: 6,
     borderTopWidth: 1,
     borderTopColor: Colors.border,
   },
-  toggleLabel: {
-    fontSize: 13,
-    color: Colors.textSecondary,
+  favIndicatorText: {
+    fontSize: 11,
+    color: Colors.favStar,
     fontFamily: "Inter_500Medium",
-    flex: 1,
-  },
-  switch: {
-    transform: [{ scaleX: 0.85 }, { scaleY: 0.85 }],
   },
   sectionHeader: {
     flexDirection: "row",
