@@ -86,10 +86,10 @@ export default function ModesScreen() {
                   <View style={styles.modeIconContainer}>
                     <Ionicons name={config.icon} size={36} color={Colors.white} />
                   </View>
+                  <Text style={styles.modeTitle}>{mode.title}</Text>
                   {config.timeWindow ? (
                     <Text style={styles.modeTimeWindow}>{config.timeWindow}</Text>
                   ) : null}
-                  <Text style={styles.modeTitle}>{mode.title}</Text>
                   <Text style={styles.modePackCount}>
                     {mode.packs.length} sport packs
                   </Text>
@@ -163,21 +163,21 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,0.18)",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 12,
-  },
-  modeTimeWindow: {
-    fontSize: 13,
-    color: "rgba(255,255,255,0.75)",
-    fontFamily: "Inter_600SemiBold",
-    marginBottom: 4,
-    letterSpacing: 0.3,
+    marginBottom: 16,
   },
   modeTitle: {
     fontSize: 22,
     fontWeight: "700" as const,
     color: Colors.white,
     fontFamily: "Inter_700Bold",
+    marginBottom: 2,
+  },
+  modeTimeWindow: {
+    fontSize: 13,
+    color: "rgba(255,255,255,0.7)",
+    fontFamily: "Inter_500Medium",
     marginBottom: 4,
+    letterSpacing: 0.2,
   },
   modePackCount: {
     fontSize: 14,
