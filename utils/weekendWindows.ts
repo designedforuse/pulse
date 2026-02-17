@@ -181,6 +181,12 @@ export function isInModeTimeWindow(eventStartLocal: string, modeId: string): boo
   }
 
   if (modeId === "weekend_mornings") {
+    const dowParts = new Intl.DateTimeFormat("en-US", {
+      timeZone: TZ,
+      weekday: "short",
+    }).formatToParts(eventDate);
+    const dow = dowParts.find((p) => p.type === "weekday")?.value || "";
+    if (dow !== "Sat" && dow !== "Sun") return false;
     return totalMinutes >= 360 && totalMinutes <= 840;
   }
 
