@@ -19,12 +19,12 @@ const modeIcons: Record<string, { icon: keyof typeof Ionicons.glyphMap; gradient
   weekend_nights: {
     icon: "moon",
     gradient: ["#1A237E", "#283593", "#3949AB"],
-    timeWindow: "4:00 PM – 2:00 AM",
+    timeWindow: "Fri, Sat, Sun  4:00 PM – 2:00 AM",
   },
   weekend_mornings: {
     icon: "sunny",
     gradient: ["#E65100", "#F57C00", "#FFB74D"],
-    timeWindow: "6:00 AM – 2:00 PM",
+    timeWindow: "Fri, Sat, Sun  6:00 AM – 2:00 PM",
   },
 };
 
