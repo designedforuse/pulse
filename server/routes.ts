@@ -194,6 +194,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           iccT20WcUpdated: generated?.iccT20WcUpdated ?? 0,
           iccT20WcPruned: generated?.iccT20WcPruned ?? 0,
           iccT20WcSourceUsed: generated?.iccT20WcSourceUsed ?? "unknown",
+          t20wcDedupedCount: generated?.t20wcDedupedCount ?? 0,
         });
       }
     );
@@ -351,6 +352,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       cricketCounts: generated.cricketCounts ?? {},
       iccT20WcSourceUsed: generated.iccT20WcSourceUsed ?? "unknown",
       iccT20WcCount: generated.iccT20WcCount ?? 0,
+      t20wcDedupedCount: generated.t20wcDedupedCount ?? 0,
     });
   });
 

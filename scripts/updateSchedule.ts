@@ -255,8 +255,50 @@ async function main() {
   const echlResult = mergeEchlEvents(existingEchl, echlFetchResult.events, now);
   const buResult = mergeBuEvents(existingBu, buFetchResult.events, now);
   const rugbyResult = mergeRugbyEvents(existingRugby, rugbyFetchResult.events, now);
-  const cricketResult = mergeCricketEvents(existingCricket, cricketFetchResult.events, now);
+  const cricketResultRaw = mergeCricketEvents(existingCricket, cricketFetchResult.events, now);
   const t20WcResult = mergeIccT20WcEvents(existingT20Wc, t20WcFetchResult.events, now);
+
+  function toPtDate(iso: string): string {
+    return new Intl.DateTimeFormat("en-US", {
+      year: "numeric", month: "2-digit", day: "2-digit",
+      timeZone: "America/Los_Angeles",
+    }).format(new Date(iso));
+  }
+
+  function normalizeTeam(t: string): string {
+    return t.trim().toLowerCase();
+  }
+
+  function teamsMatch(a1: string, a2: string, b1: string, b2: string): boolean {
+    const setA = new Set([normalizeTeam(a1), normalizeTeam(a2)]);
+    const setB = new Set([normalizeTeam(b1), normalizeTeam(b2)]);
+    if (setA.size !== 2 || setB.size !== 2) return false;
+    let matches = 0;
+    for (const t of setA) {
+      if (setB.has(t)) matches++;
+    }
+    return matches === 2;
+  }
+
+  const TWO_HOURS_MS = 2 * 60 * 60 * 1000;
+  let t20wcDedupedCount = 0;
+  const dedupedCricket = cricketResultRaw.merged.filter((ce) => {
+    const isDup = t20WcResult.merged.some((wc) => {
+      if (toPtDate(ce.startTimeLocal) !== toPtDate(wc.startTimeLocal)) return false;
+      if (!teamsMatch(ce.awayTeam, ce.homeTeam, wc.awayTeam, wc.homeTeam)) return false;
+      const diff = Math.abs(new Date(ce.startTimeLocal).getTime() - new Date(wc.startTimeLocal).getTime());
+      return diff <= TWO_HOURS_MS;
+    });
+    if (isDup) {
+      console.log(`  T20WC dedup: dropped CricAPI "${ce.awayTeam} vs ${ce.homeTeam}" (${ce.startTimeLocal}) — covered by hardcoded schedule`);
+      t20wcDedupedCount++;
+    }
+    return !isDup;
+  });
+  const cricketResult = { ...cricketResultRaw, merged: dedupedCricket };
+  if (t20wcDedupedCount > 0) {
+    console.log(`  T20WC dedup: removed ${t20wcDedupedCount} duplicate CricAPI events`);
+  }
 
   const ahlSourceLabel = ahlFetchResult.sourceUsed === "hockeytech"
     ? "HockeyTech"
@@ -374,6 +416,7 @@ async function main() {
     iccT20WcUpdated: t20WcResult.updated,
     iccT20WcPruned: t20WcResult.pruned,
     iccT20WcSourceUsed: t20WcFetchResult.sourceUsed,
+    t20wcDedupedCount,
     generatedMeta,
     events: allEvents,
   };
