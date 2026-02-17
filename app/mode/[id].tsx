@@ -341,11 +341,21 @@ export default function ModeDetailScreen() {
       <Stack.Screen
         options={{
           title: mode.title,
+          headerBackTitleVisible: false,
           headerTitleStyle: {
             fontFamily: "Inter_600SemiBold",
             fontSize: 17,
             color: Colors.textPrimary,
+            marginLeft: -8,
           },
+          headerRight: favoritesOnly
+            ? () => (
+                <View style={styles.headerFavIndicator}>
+                  <Ionicons name="star" size={11} color={Colors.favStar} />
+                  <Text style={styles.headerFavText}>Favorites only</Text>
+                </View>
+              )
+            : undefined,
         }}
       />
       <View style={styles.subtitleRow}>
@@ -409,12 +419,6 @@ export default function ModeDetailScreen() {
         })}
       </ScrollView>
 
-      {favoritesOnly && (
-        <View style={styles.favIndicator}>
-          <Ionicons name="star" size={12} color={Colors.favStar} />
-          <Text style={styles.favIndicatorText}>Favorites only</Text>
-        </View>
-      )}
       <SectionList
         sections={populatedSections}
         keyExtractor={(item) => item.id}
@@ -677,16 +681,16 @@ const styles = StyleSheet.create({
     color: Colors.textMuted,
     fontFamily: "Inter_600SemiBold",
   },
-  favIndicator: {
+  headerFavIndicator: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 5,
-    paddingHorizontal: 20,
-    paddingVertical: 6,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.border,
+    gap: 4,
+    backgroundColor: Colors.favStar + "18",
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 10,
   },
-  favIndicatorText: {
+  headerFavText: {
     fontSize: 11,
     color: Colors.favStar,
     fontFamily: "Inter_500Medium",
