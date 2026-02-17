@@ -31,7 +31,7 @@ scripts/
   mergeAhlEvents.ts         # AHL event merge/retention logic
   updateEchlSchedule.ts     # ECHL fetcher via API-Hockey (api-sports.io) + merge logic
   updateBuHockey.ts         # NCAA BU Hockey fetcher from College Hockey News HTML scraping
-  updateRugby.ts            # Rugby fetcher from iCal feeds (URC, Top 14, Super Rugby Pacific)
+  updateRugby.ts            # Rugby fetcher from iCal feeds (URC, Top 14, Super Rugby Pacific, Six Nations, Premiership)
   updateCricket.ts          # Cricket fetcher from CricAPI (internationals + 7 domestic leagues)
   updateIccT20Wc.ts         # ICC Men's T20 World Cup 2026 hardcoded schedule (55 matches, IST→UTC)
 server/
@@ -58,7 +58,7 @@ constants/
 
 ## Sports Covered
 - Hockey: NHL, AHL, ECHL, NCAA Hockey
-- Rugby: Japan League One, Super Rugby, HSBC SVNS, URC, Top 14, English Premiership
+- Rugby: Japan League One, Super Rugby, HSBC SVNS, URC, Top 14, English Premiership, Six Nations
 - Cricket: IPL, BBL, Super Smash, SA20, MLC, CPL
 - Soccer: MLS, NWSL, USL, EPL, Serie A, La Liga, Bundesliga, Ligue 1
 
@@ -72,6 +72,7 @@ constants/
 - Native liquid glass tabs on iOS 26+, classic blur tabs otherwise
 
 ## Recent Changes
+- 2026-02-17: Six Nations added to rugby pipeline: iCal feed from rugbyfixture.io (data.rugbyfixture.io/ical/v1/six-nations.ics); leagueKey "sixnations"; league "Six Nations"; provider "youtubetv"; 2h15m default duration; added to Weekend Game Days → Rugby Morning pack; league filter chip "Six Nations" in LEAGUE_PREFERRED_ORDER; /api/debug/sources includes sixnationsCount; rugbyCounts includes sixnations; removed stale placeholder Saracens vs Harlequins event from masterGuide.json
 - 2026-02-17: ICC Men's T20 World Cup 2026 hardcoded fallback schedule: scripts/updateIccT20Wc.ts contains all 55 matches (40 group stage + 12 Super 8 + 3 knockouts) with IST→UTC time conversion; source "cricket-t20wc-schedule"; IDs prefixed "cricket-t20wc-"; league "ICC", leagueKey "icc", isIccT20Wc true; 30-day retention window; wired into refresh pipeline with iccT20WcCount/iccT20WcAdded/iccT20WcUpdated/iccT20WcPruned/iccT20WcSourceUsed; /api/debug/sources includes iccT20Wc count + cricketTotal; /api/meta shows iccT20Wc source; Settings displays T20 World Cup row; venues: 5 India (Wankhede/Eden Gardens/Chidambaram/Narendra Modi/Arun Jaitley) + 3 Sri Lanka (SSC/Premadasa/Pallekele); groups A-D with 20 teams; Feb 7 – Mar 8, 2026
 - 2026-02-16: Cricket automation fully integrated: scripts/updateCricket.ts fetches fixtures from CricAPI (/v1/matches with offset pagination, max 6 pages); filters to internationals (ICC, World Cup, Tours) + 7 domestic leagues (IPL, BBL, Super Smash, SA20, The Hundred, MLC, CPL); SportEvent type extended with competitionName, competitionType, format, hostCountry, seriesName; stable IDs "cricket-{hash}"; source "cricket-cricapi"; merge with retention [now-14d, now+21d]; wired into refresh pipeline with cricketCount/cricketAdded/cricketUpdated/cricketPruned/cricketCounts; /api/debug/sources includes cricket count; /api/meta shows Cricket source with leagueCounts; Settings displays Cricket row; favorites: South Africa (International), MI Cape Town + Paarl Royals (SA20); aliases in favoriteAliases.json; requires CRICAPI_KEY secret
 - 2026-02-16: SVNS upgraded from tournament-level events to day/session blocks: each SVNS stop generates per-day session events (Day 1 at 7:00 PM PT, Day 2+ at 10:00 AM PT, 3h duration); eventType="session" with sessionTitle="SVNS {City} – Day X"; UI event cards show sessionTitle for sessions instead of teams; merge prunes legacy tournament-level SVNS events; /api/debug/sources includes svnsSessions count; day count computed from start/end calendar dates
