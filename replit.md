@@ -1,104 +1,40 @@
 # Master Sports Guide
 
 ## Overview
-A mobile sports schedule app built with Expo (React Native). Users browse sports events organized by viewing modes (Weekend Nights / Weekend Mornings), view live events, and launch streaming provider apps to watch games.
+The Master Sports Guide is a mobile sports schedule application built with Expo (React Native). Its primary purpose is to provide users with an organized view of sports events, allowing them to browse by curated viewing modes (e.g., Weekend Nights), track live events, and easily launch corresponding streaming provider applications to watch games. The project aims to offer a comprehensive, user-friendly platform for sports enthusiasts to manage their viewing schedules across various sports and providers.
 
-## Architecture
-- **Frontend**: Expo Router with file-based routing, React Native
-- **Backend**: Express server (port 5000) serving landing page and API
-- **Data**: API-first (`GET /api/events`) with auto-generated NHL schedule; fallback to local `data/masterGuide.json`
-- **State**: AsyncStorage for user preferences (favorite toggles)
-- **Context**: EventsProvider (React context + React Query) fetches events from API, merges with local JSON
+## User Preferences
+I prefer clear and concise information. When making changes, please prioritize core functionality and maintain a consistent dark theme. I prefer an iterative development approach, where features are built and integrated step-by-step. Ask for my input before making significant architectural changes or adding new external dependencies.
 
-## Project Structure
-```
-app/
-  _layout.tsx              # Root layout with Stack + formSheet
-  event-sheet.tsx           # Event detail bottom sheet (formSheet presentation)
-  (tabs)/
-    _layout.tsx             # Tab layout (Modes, Live Now, Settings)
-    index.tsx               # Modes screen - mode selection
-    live.tsx                # Live Now screen - live/up-next events with auto-refresh
-    settings.tsx            # Settings screen - app info
-  mode/
-    [id].tsx                # Mode detail - packs with event lists
-data/
-  masterGuide.json          # Static event data, modes, packs, providers
-  generatedEvents.json      # Auto-generated NHL/AHL/ECHL schedule from APIs
-  leagueIds.json            # Cached ECHL league ID + season from API-Hockey
-scripts/
-  updateSchedule.ts         # Main schedule fetcher: NHL + AHL + ECHL + NCAA + Rugby + Cricket pipeline
-  mergeAhlEvents.ts         # AHL event merge/retention logic
-  updateEchlSchedule.ts     # ECHL fetcher via API-Hockey (api-sports.io) + merge logic
-  updateBuHockey.ts         # NCAA BU Hockey fetcher from College Hockey News HTML scraping
-  updateRugby.ts            # Rugby fetcher from iCal feeds (URC, Top 14, Super Rugby Pacific, Six Nations, Premiership)
-  updateCricket.ts          # Cricket fetcher from CricAPI (internationals + 7 domestic leagues)
-  updateIccT20Wc.ts         # ICC Men's T20 World Cup 2026 hardcoded schedule (55 matches, IST→UTC)
-server/
-  routes.ts                 # Express API routes (GET /api/events, POST /api/refresh, GET /api/debug/sources)
-lib/
-  data.ts                   # Data access utilities and types
-  events-context.tsx        # EventsProvider - React context for API-fetched events
-  query-client.ts           # API client with React Query setup
-utils/
-  time.ts                   # Live event detection, time formatting, duration defaults
-constants/
-  colors.ts                 # Theme colors (dark navy + green accent)
-```
+## System Architecture
+The application features a frontend built with Expo Router for file-based navigation in React Native. A lightweight Express.js backend serves both a landing page and the core API. Event data is primarily sourced via an API-first approach (`GET /api/events`), which auto-generates schedules from various sports leagues. A local JSON file (`data/masterGuide.json`) serves as a fallback and contains static data for modes, packs, and providers. User preferences, such as favorite toggles, are persisted using AsyncStorage. State management for events is handled by an `EventsProvider` utilizing React Context and React Query to fetch and merge API-sourced events with local data.
 
-## Key Features
-- 3-tab navigation: Modes, Live Now, Settings
-- Mode selection (Weekend Nights / Weekend Mornings)
-- Sport packs per mode with filtered event lists
-- Event cards showing sport, league, teams, time, provider
-- Bottom sheet on event tap with "Open Provider App" button
-- Provider app launching via Android intents (MAIN+LAUNCHER for most, VIEW+launchUrl for Disney+)
-- Real-time live event detection based on startTimeLocal + sport-specific default durations
-- Live Now tab with "Live Now" and "Up Next" sections, auto-refresh every 60s, manual refresh
+**Key Features:**
+- **Navigation:** A 3-tab interface (Modes, Live Now, Settings) facilitates core navigation.
+- **Event Presentation:** Users can select viewing modes (e.g., Weekend Nights), which display sport packs with filtered event lists. Event cards provide essential details like sport, league, teams, time, and streaming provider.
+- **Provider Integration:** Tapping an event opens a bottom sheet with an "Open Provider App" button, which launches the relevant streaming application via Android intents.
+- **Live Event Tracking:** The "Live Now" tab features real-time detection of live and upcoming events, with automatic refreshing every 60 seconds and manual refresh options. Event completion is indicated by a "FINAL" badge and dimmed cards.
+- **Favorites Management:** Users can toggle favorite teams, which prioritizes those events in display, and persist these preferences.
+- **UI/UX Design:** A dark theme predominates, featuring a navy background (`#0B1120`) and a green accent (`#00E676`). Sport-specific colors (Hockey: blue, Rugby: orange, Cricket: yellow, Soccer: green) are used for visual differentiation. The Inter font from Google Fonts is used throughout. iOS devices utilize native liquid glass tabs (iOS 26+) or classic blur tabs otherwise.
+- **Event Data Processing:** A robust set of Node.js scripts handle the fetching, merging, and updating of schedules from various sports APIs and sources, including NHL, AHL, ECHL, NCAA, Rugby (multiple leagues), and Cricket (multiple leagues). These scripts ensure data freshness and consistency.
+- **API Endpoints:** The Express server exposes `/api/events` for event data, `/api/refresh` to trigger schedule updates, and `/api/debug/sources` for source-specific event counts.
 
-## Sports Covered
-- Hockey: NHL, AHL, ECHL, NCAA Hockey
-- Rugby: Japan League One, Super Rugby, HSBC SVNS, URC, Top 14, English Premiership, Six Nations
-- Cricket: IPL, BBL, Super Smash, SA20, MLC, CPL
-- Soccer: MLS, NWSL, USL, EPL, Serie A, La Liga, Bundesliga, Ligue 1
-
-## Streaming Providers
-- YouTube TV, Disney+, FloSports, Victory+, Prime Video
-
-## Design
-- Dark theme: navy background (#0B1120) with green accent (#00E676)
-- Sport-specific colors: Hockey (blue), Rugby (orange), Cricket (yellow), Soccer (green)
-- Font: Inter (Google Fonts)
-- Native liquid glass tabs on iOS 26+, classic blur tabs otherwise
-
-## Recent Changes
-- 2026-02-17: Six Nations added to rugby pipeline: iCal feed from rugbyfixture.io (data.rugbyfixture.io/ical/v1/six-nations.ics); leagueKey "sixnations"; league "Six Nations"; provider "youtubetv"; 2h15m default duration; added to Weekend Game Days → Rugby Morning pack; league filter chip "Six Nations" in LEAGUE_PREFERRED_ORDER; /api/debug/sources includes sixnationsCount; rugbyCounts includes sixnations; removed stale placeholder Saracens vs Harlequins event from masterGuide.json
-- 2026-02-17: ICC Men's T20 World Cup 2026 hardcoded fallback schedule: scripts/updateIccT20Wc.ts contains all 55 matches (40 group stage + 12 Super 8 + 3 knockouts) with IST→UTC time conversion; source "cricket-t20wc-schedule"; IDs prefixed "cricket-t20wc-"; league "ICC", leagueKey "icc", isIccT20Wc true; 30-day retention window; wired into refresh pipeline with iccT20WcCount/iccT20WcAdded/iccT20WcUpdated/iccT20WcPruned/iccT20WcSourceUsed; /api/debug/sources includes iccT20Wc count + cricketTotal; /api/meta shows iccT20Wc source; Settings displays T20 World Cup row; venues: 5 India (Wankhede/Eden Gardens/Chidambaram/Narendra Modi/Arun Jaitley) + 3 Sri Lanka (SSC/Premadasa/Pallekele); groups A-D with 20 teams; Feb 7 – Mar 8, 2026
-- 2026-02-16: Cricket automation fully integrated: scripts/updateCricket.ts fetches fixtures from CricAPI (/v1/matches with offset pagination, max 6 pages); filters to internationals (ICC, World Cup, Tours) + 7 domestic leagues (IPL, BBL, Super Smash, SA20, The Hundred, MLC, CPL); SportEvent type extended with competitionName, competitionType, format, hostCountry, seriesName; stable IDs "cricket-{hash}"; source "cricket-cricapi"; merge with retention [now-14d, now+21d]; wired into refresh pipeline with cricketCount/cricketAdded/cricketUpdated/cricketPruned/cricketCounts; /api/debug/sources includes cricket count; /api/meta shows Cricket source with leagueCounts; Settings displays Cricket row; favorites: South Africa (International), MI Cape Town + Paarl Royals (SA20); aliases in favoriteAliases.json; requires CRICAPI_KEY secret
-- 2026-02-16: SVNS upgraded from tournament-level events to day/session blocks: each SVNS stop generates per-day session events (Day 1 at 7:00 PM PT, Day 2+ at 10:00 AM PT, 3h duration); eventType="session" with sessionTitle="SVNS {City} – Day X"; UI event cards show sessionTitle for sessions instead of teams; merge prunes legacy tournament-level SVNS events; /api/debug/sources includes svnsSessions count; day count computed from start/end calendar dates
-- 2026-02-16: League One timezone hardened: wallClockToUtc() helper uses Intl.DateTimeFormat for DST-safe IANA timezone conversion; League One times treated as Asia/Tokyo (JST, UTC+9); default kickoff 1:00 PM JST; /api/debug/rugby-time-sample returns rawLocalTime (JST), parsedUtcIso, formattedPT for one League One event
-- 2026-02-16: Event sort order updated: Live first → Favorites next → then start time (mode detail + Live Now tab); Stormers alias "DHL Stormers" already configured
-- 2026-02-16: Rugby automation expanded to 7 leagues: scripts/updateRugby.ts fetches URC, Top 14, Super Rugby Pacific, English Premiership via iCal feeds (rugbyfixture.io for URC/Top14/Premiership, fixturedownload.com for Super Rugby); Japan League One scraped from all.rugby HTML (Asia/Tokyo timezone via wallClockToUtc); HSBC SVNS uses hardcoded tournament schedule (9 stops Nov 2025–Jun 2026) with per-day session generation; per-league duration: 2h15m for 15s rugby, 3h for SVNS sessions; league keys: urc, top14, superrugby, premiership, leagueone, svns; providers: URC/Top14/Premiership/LeagueOne→flosports, SuperRugby/SVNS→primevideo; stable IDs "rugby-{leagueKey}-hash"; mergeRugbyEvents() with retention [now-14d, now+21d]; runs in parallel with hockey/NCAA fetchers; /api/refresh returns rugbyCount/rugbyAdded/rugbyUpdated/rugbyPruned/rugbySourceUsed/rugbyCounts; /api/debug/sources includes rugby count + svnsSessions; /api/meta shows Rugby source with leagueCounts breakdown; Settings displays Rugby row with per-league counts
-- 2026-02-16: NCAA BU Hockey automation: scripts/updateBuHockey.ts scrapes College Hockey News (collegehockeynews.com/schedules/team/Boston-University/10) HTML tables to extract BU Men's Hockey schedule; parses month sections, game rows with date/opponent/home-away/time; converts ET times to UTC ISO strings; event IDs prefixed "ncaa-bu-" with stable hash, source "ncaa-bu", provider "disneyplus"; mergeBuEvents() with retention [now-14d, now+21d]; wired into refresh pipeline with buCount/buAdded/buUpdated/buPruned; /api/debug/sources includes ncaa count; /api/meta shows NCAA source with teamFilter "Boston University"; Settings displays NCAA row in Schedule Data
-- 2026-02-16: AHL HockeyTech primary source: scripts/updateAhlSchedule.ts fetches AHL schedule from HockeyTech scorebar API (lscluster.hockeytech.com, key=ccb91f29d6744675, client_code=ahl) with Odds API as fallback; returns AhlFetchResult with sourceUsed ("hockeytech"|"odds"|"none") + counts; event IDs prefixed "ahl-" with source field "ahl-hockeytech" or "ahl-odds"; /api/debug/sources shows ahlHockeyTech/ahlOdds breakdown; /api/meta shows AHL sourceName; mergeAhlEvents() included in same module with retention [now-14d, now+21d]
-- 2026-02-16: Fixed timezone bug: all event timestamps now stored as proper UTC ISO strings (with Z suffix); display formatter uses Intl.DateTimeFormat with America/Los_Angeles timezone; added /api/debug/echl-time-sample endpoint for time verification; source transparency in Settings shows per-league staleness indicators via /api/meta endpoint
-- 2026-02-16: ECHL HockeyTech web fallback: fetchEchlEvents() tries API-Hockey first, falls back to HockeyTech scorebar JSON API (lscluster.hockeytech.com, key=2c2b89ea7345cae8) when free plan blocks current season; filters league-wide games to Tulsa Oilers only; returns EchlFetchResult with sourceUsed ("api-hockey"|"web"|"none") + webCount; event IDs prefixed "echl-web-" for web source; Settings shows ECHL source + Tulsa game count; /api/debug/sources includes echlSourceUsed + echlWebCount
-- 2026-02-16: ECHL schedule automation via API-Hockey (api-sports.io): scripts/updateEchlSchedule.ts discovers ECHL league ID + current season, caches in data/leagueIds.json, fetches games per date with season param, merges with retention [now-14d, now+21d], early-exits on free plan limitation; wired into refresh pipeline with echlCount/echlAdded/echlUpdated/echlPruned; GET /api/debug/sources returns counts by source; Settings shows ECHL counts + cache stats
-- 2026-02-16: Mode detail screens split events into "This weekend" and "Next weekend" subsections per pack; completed games show "FINAL" badge with dimmed card (opacity 0.65); sort: live > upcoming > completed; Nights time window extended to 16:00–02:00
-- 2026-02-16: Added debug toggle in Settings ("Show All Games") to bypass weekend filter; stored in EventsContext, persisted via AsyncStorage
-- 2026-02-16: AHL event caching: mergeAhlEvents.ts merges fresh API events with cached events instead of overwriting; retention window [now-14d, now+21d]; Settings shows +added/~updated/-pruned stats
-- 2026-02-16: Added isEventCompleted() to utils/time.ts; exported isInWindow() from weekendWindows.ts for per-window filtering
-- 2026-02-16: Built auto-generated NHL schedule feed: scripts/updateSchedule.ts fetches from NHL public API (api-web.nhle.com), generates 98 events for 14-day window, stores in data/generatedEvents.json
-- 2026-02-16: Created GET /api/events endpoint (server/routes.ts) serving generated events with fallback to masterGuide.json
-- 2026-02-16: Created EventsProvider (lib/events-context.tsx) using React Query to fetch events from API, merges API events with local JSON for non-API leagues
-- 2026-02-16: Updated all screens (live.tsx, event-sheet.tsx, mode/[id].tsx) to use EventsProvider instead of direct local data imports
-- 2026-02-16: Added diagnostic endpoints: GET /api/odds/sports (lists all Odds API sports), GET /api/odds/test?sportKey=<key> (tests a specific sport key with sample events)
-- 2026-02-16: Updated schedule script to auto-detect AHL sport key from /v4/sports instead of hardcoding; logs detected key and event counts
-- 2026-02-16: Enhanced /api/refresh response with nhlCount, ahlCount, ahlKeyUsed fields
-- 2026-02-16: Settings UI now shows per-league counts (NHL: X | AHL: Y) after refresh, with warning if AHL returns 0
-- 2026-02-15: Replaced ESPN with Disney+ provider; Disney+ uses VIEW intent with launchUrl
-- 2026-02-15: Added FLAG_ACTIVITY_NEW_TASK for Victory+ to enable back navigation via app switcher
-- 2026-02-15: Built real-time Live Now tab with computed live detection (isEventLive), Up Next section, auto-refresh (60s), manual refresh, and last-updated timestamp
-- 2026-02-15: Created utils/time.ts with sport-specific default durations (hockey 2h45m, soccer/rugby 2h15m, cricket 8h)
-- 2026-02-15: Added favorite team prioritization: "Favorites first" toggle on mode detail screens (default ON), "Favorites only" toggle on Live Now tab (default OFF), gold star badge on favorite team events, AsyncStorage persistence
-- 2026-02-15: Initial MVP build with all core features
+## External Dependencies
+- **Expo (React Native):** Frontend framework for mobile application development.
+- **Express.js:** Backend server framework.
+- **React Query:** Data fetching and caching library for React.
+- **AsyncStorage:** Persistent key-value storage for React Native.
+- **NHL Public API (api-web.nhle.com):** Source for NHL schedule data.
+- **HockeyTech API (lscluster.hockeytech.com):** Primary and fallback source for AHL and ECHL schedule data.
+- **API-Hockey (api-sports.io):** Source for ECHL schedule data.
+- **College Hockey News (collegehockeynews.com):** Scraped for NCAA BU Hockey schedule data.
+- **rugbyfixture.io (iCal feeds):** Source for URC, Top 14, and English Premiership Rugby schedules.
+- **fixturedownload.com (iCal feeds):** Source for Super Rugby Pacific schedules.
+- **all.rugby:** Scraped for Japan League One Rugby schedule data.
+- **CricAPI:** Source for international and domestic Cricket fixtures.
+- **YouTube TV:** Streaming provider integration.
+- **Disney+:** Streaming provider integration.
+- **FloSports:** Streaming provider integration.
+- **Victory+:** Streaming provider integration.
+- **Prime Video:** Streaming provider integration.
+- **Google Fonts (Inter):** Font library.

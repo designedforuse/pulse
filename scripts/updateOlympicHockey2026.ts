@@ -53,10 +53,11 @@ function addDuration(isoString: string, minutes: number): string {
   return date.toISOString();
 }
 
-function stableId(date: string, away: string, home: string): string {
+function stableId(date: string, timeET: string, away: string, home: string): string {
   const a = away.toLowerCase().replace(/\s+/g, "-");
   const h = home.toLowerCase().replace(/\s+/g, "-");
-  return `olympic-hockey-2026-${date}-${a}-at-${h}`;
+  const t = timeET.replace(":", "");
+  return `olympic-hockey-2026-${date}-${t}-${a}-at-${h}`;
 }
 
 const SCHEDULE: OlympicGame[] = [
@@ -109,7 +110,7 @@ export function fetchOlympicHockeyEvents(): OlympicHockeyFetchResult {
     if (startDate < windowStart || startDate > windowEnd) continue;
 
     const endUtc = addDuration(startUtc, HOCKEY_DURATION_MIN);
-    const id = stableId(game.date, game.awayTeam, game.homeTeam);
+    const id = stableId(game.date, game.timeET, game.awayTeam, game.homeTeam);
 
     events.push({
       id,
