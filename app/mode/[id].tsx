@@ -442,7 +442,7 @@ export default function ModeDetailScreen() {
             populatedSections[populatedSections.indexOf(section) - 1]?.title !== section.title;
           return (
             <View>
-              {isFirst && (
+              {isFirst && activeSport === "all" && (
                 <View style={styles.sectionHeader}>
                   <View
                     style={[
