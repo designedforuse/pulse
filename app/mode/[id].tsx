@@ -474,7 +474,7 @@ export default function ModeDetailScreen() {
                       color={getSportColor(section.sport)}
                     />
                   </View>
-                  <Text style={styles.sectionTitle}>{section.title}</Text>
+                  <Text style={styles.sectionTitle}>{section.title.replace(/ (Night|Morning)$/i, "")}</Text>
                 </View>
               )}
               <View style={styles.weekendSubHeader}>
@@ -588,7 +588,7 @@ export default function ModeDetailScreen() {
                       color={getSportColor(s.sport)}
                     />
                   </View>
-                  <Text style={styles.emptyPackTitle}>{s.title}</Text>
+                  <Text style={styles.emptyPackTitle}>{s.title.replace(/ (Night|Morning)$/i, "")}</Text>
                   <Text style={styles.emptyPackLabel}>No games in this window</Text>
                 </View>
               ))}
