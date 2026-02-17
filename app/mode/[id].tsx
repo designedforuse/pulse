@@ -47,6 +47,36 @@ const SPORT_FILTERS: { key: SportFilter; label: string; icon: string }[] = [
   { key: "soccer", label: "Soccer", icon: "football" },
 ];
 
+const LEAGUE_FILTERS: Record<string, { key: string; label: string }[]> = {
+  hockey: [
+    { key: "all", label: "All" },
+    { key: "NHL", label: "NHL" },
+    { key: "AHL", label: "AHL" },
+    { key: "ECHL", label: "ECHL" },
+    { key: "NCAA Hockey", label: "NCAA" },
+  ],
+  rugby: [
+    { key: "all", label: "All" },
+    { key: "URC", label: "URC" },
+    { key: "Top 14", label: "Top 14" },
+    { key: "Super Rugby", label: "Super Rugby" },
+    { key: "HSBC SVNS", label: "SVNS" },
+  ],
+  cricket: [
+    { key: "all", label: "All" },
+    { key: "T20", label: "T20" },
+    { key: "Test", label: "Test" },
+    { key: "ICC", label: "ICC" },
+  ],
+  soccer: [
+    { key: "all", label: "All" },
+    { key: "EPL", label: "EPL" },
+    { key: "MLS", label: "MLS" },
+    { key: "NWSL", label: "NWSL" },
+    { key: "USL", label: "USL" },
+  ],
+};
+
 function EventCard({
   event,
   isFav,
@@ -191,6 +221,7 @@ export default function ModeDetailScreen() {
   const { getEventsForPack, debugShowAll, favoritesOnly } = useEvents();
   const favorites = getFavorites();
   const [activeSport, setActiveSportState] = useState<SportFilter>("all");
+  const [activeLeague, setActiveLeague] = useState<string>("all");
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -202,11 +233,14 @@ export default function ModeDetailScreen() {
 
   const setActiveSport = useCallback((sport: SportFilter) => {
     setActiveSportState(sport);
+    setActiveLeague("all");
     AsyncStorage.setItem(FILTER_KEY_PREFIX + id, sport);
     if (Platform.OS !== "web") {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     }
   }, [id]);
+
+  const leagueFilters = activeSport !== "all" ? LEAGUE_FILTERS[activeSport] ?? [] : [];
 
   const now = useMemo(() => new Date(), []);
   const windows = useMemo(() => getWeekendWindows(now), [now]);
@@ -238,13 +272,15 @@ export default function ModeDetailScreen() {
 
   const sections: SectionData[] = useMemo(() => {
     const result: SectionData[] = [];
+    const leagueFilter = (e: SportEvent) =>
+      activeLeague === "all" || e.league === activeLeague;
     for (const pd of filteredPackData) {
-      const thisFiltered = favoritesOnly
-        ? pd.thisWeekend.filter((e) => favoriteInvolved(e, favorites))
-        : pd.thisWeekend;
-      const nextFiltered = favoritesOnly
-        ? pd.nextWeekend.filter((e) => favoriteInvolved(e, favorites))
-        : pd.nextWeekend;
+      const thisFiltered = pd.thisWeekend
+        .filter(leagueFilter)
+        .filter((e) => !favoritesOnly || favoriteInvolved(e, favorites));
+      const nextFiltered = pd.nextWeekend
+        .filter(leagueFilter)
+        .filter((e) => !favoritesOnly || favoriteInvolved(e, favorites));
       const thisSorted = sortEvents(thisFiltered, now, true, favorites, id);
       const nextSorted = sortEvents(nextFiltered, now, false, favorites, id);
 
@@ -294,7 +330,7 @@ export default function ModeDetailScreen() {
       }
     }
     return result;
-  }, [filteredPackData, favoritesOnly, favorites, now, debugShowAll, windows, showNext]);
+  }, [filteredPackData, favoritesOnly, favorites, now, debugShowAll, windows, showNext, activeLeague]);
 
   const populatedSections = useMemo(() => sections.filter((s) => s.data.length > 0), [sections]);
   const allEmpty = useMemo(() => sections.every((s) => s.data.length === 0), [sections]);
@@ -315,6 +351,27 @@ export default function ModeDetailScreen() {
     }
     return counts;
   }, [packData, favoritesOnly, favorites, showNext]);
+
+  const leagueEventCounts = useMemo(() => {
+    if (activeSport === "all") return {};
+    const counts: Record<string, number> = {};
+    for (const pd of filteredPackData) {
+      const allEvents = [
+        ...(favoritesOnly
+          ? pd.thisWeekend.filter((e) => favoriteInvolved(e, favorites))
+          : pd.thisWeekend),
+        ...(showNext
+          ? (favoritesOnly
+              ? pd.nextWeekend.filter((e) => favoriteInvolved(e, favorites))
+              : pd.nextWeekend)
+          : []),
+      ];
+      for (const e of allEvents) {
+        counts[e.league] = (counts[e.league] || 0) + 1;
+      }
+    }
+    return counts;
+  }, [filteredPackData, activeSport, favoritesOnly, favorites, showNext]);
 
   if (!mode) {
     return (
@@ -404,6 +461,53 @@ export default function ModeDetailScreen() {
           );
         })}
       </ScrollView>
+
+      {leagueFilters.length > 0 && (
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.leagueChipRow}
+          style={styles.leagueChipScroll}
+        >
+          {leagueFilters.map((lf) => {
+            const isActive = activeLeague === lf.key;
+            const sportColor = getSportColor(activeSport);
+            const count = lf.key === "all"
+              ? Object.values(leagueEventCounts).reduce((a, b) => a + b, 0)
+              : leagueEventCounts[lf.key] || 0;
+            return (
+              <Pressable
+                key={lf.key}
+                onPress={() => {
+                  setActiveLeague(lf.key);
+                  if (Platform.OS !== "web") {
+                    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                  }
+                }}
+                style={[
+                  styles.leagueChip,
+                  isActive && { backgroundColor: sportColor + "18", borderColor: sportColor + "44" },
+                ]}
+                testID={`league-chip-${lf.key}`}
+              >
+                <Text
+                  style={[
+                    styles.leagueChipLabel,
+                    isActive && { color: sportColor },
+                  ]}
+                >
+                  {lf.label}
+                </Text>
+                {count > 0 && (
+                  <View style={[styles.leagueChipCount, isActive && { backgroundColor: sportColor + "18" }]}>
+                    <Text style={[styles.leagueChipCountText, isActive && { color: sportColor }]}>{count}</Text>
+                  </View>
+                )}
+              </Pressable>
+            );
+          })}
+        </ScrollView>
+      )}
 
       <SectionList
         sections={populatedSections}
@@ -563,6 +667,49 @@ const styles = StyleSheet.create({
   },
   chipCountText: {
     fontSize: 10,
+    color: Colors.textMuted,
+    fontFamily: "Inter_600SemiBold",
+  },
+  leagueChipScroll: {
+    flexGrow: 0,
+    flexShrink: 0,
+    paddingTop: 4,
+    paddingBottom: 2,
+  },
+  leagueChipRow: {
+    paddingHorizontal: 16,
+    gap: 6,
+    alignItems: "center",
+  },
+  leagueChip: {
+    flexDirection: "row",
+    alignItems: "center",
+    flexShrink: 0,
+    gap: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    backgroundColor: Colors.card,
+  },
+  leagueChipLabel: {
+    fontSize: 11,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_600SemiBold",
+    flexShrink: 0,
+  },
+  leagueChipCount: {
+    backgroundColor: Colors.cardHighlight,
+    paddingHorizontal: 5,
+    paddingVertical: 1,
+    borderRadius: 7,
+    minWidth: 16,
+    alignItems: "center",
+    flexShrink: 0,
+  },
+  leagueChipCountText: {
+    fontSize: 9,
     color: Colors.textMuted,
     fontFamily: "Inter_600SemiBold",
   },
