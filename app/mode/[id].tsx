@@ -477,8 +477,8 @@ export default function ModeDetailScreen() {
         ListFooterComponent={
           emptyPacks.length > 0 ? (
             <View style={styles.emptyPacksContainer}>
-              {emptyPacks.map((s) => (
-                <View key={s.title} style={styles.emptyPackRow}>
+              {emptyPacks.map((s, idx) => (
+                <View key={`${s.title}-${idx}`} style={styles.emptyPackRow}>
                   <View
                     style={[
                       styles.sectionIcon,
