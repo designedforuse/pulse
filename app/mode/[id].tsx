@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,6 +7,7 @@ import {
   Pressable,
   Platform,
   Switch,
+  ScrollView,
 } from "react-native";
 import { useLocalSearchParams, router, Stack } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -34,6 +35,17 @@ import {
 } from "@/utils/weekendWindows";
 
 const PREF_KEY = "prefs.favoritesFirst";
+const FILTER_KEY_PREFIX = "ui.modeFilter.";
+
+type SportFilter = "all" | "hockey" | "rugby" | "cricket" | "soccer";
+
+const SPORT_FILTERS: { key: SportFilter; label: string; icon: string }[] = [
+  { key: "all", label: "All", icon: "grid-outline" },
+  { key: "hockey", label: "Hockey", icon: "snow" },
+  { key: "rugby", label: "Rugby", icon: "american-football" },
+  { key: "cricket", label: "Cricket", icon: "baseball" },
+  { key: "soccer", label: "Soccer", icon: "football" },
+];
 
 function EventCard({
   event,
@@ -179,19 +191,31 @@ export default function ModeDetailScreen() {
   const { getEventsForPack, debugShowAll } = useEvents();
   const favorites = getFavorites();
   const [favoritesOnly, setFavoritesOnly] = useState(false);
+  const [activeSport, setActiveSportState] = useState<SportFilter>("all");
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    AsyncStorage.getItem(PREF_KEY).then((val) => {
-      if (val !== null) setFavoritesOnly(val === "true");
+    AsyncStorage.multiGet([PREF_KEY, FILTER_KEY_PREFIX + id]).then((entries) => {
+      for (const [key, val] of entries) {
+        if (key === PREF_KEY && val !== null) setFavoritesOnly(val === "true");
+        if (key === FILTER_KEY_PREFIX + id && val !== null) setActiveSportState(val as SportFilter);
+      }
       setLoaded(true);
     });
-  }, []);
+  }, [id]);
 
   const handleToggle = (val: boolean) => {
     setFavoritesOnly(val);
     AsyncStorage.setItem(PREF_KEY, val.toString());
   };
+
+  const setActiveSport = useCallback((sport: SportFilter) => {
+    setActiveSportState(sport);
+    AsyncStorage.setItem(FILTER_KEY_PREFIX + id, sport);
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+  }, [id]);
 
   const now = useMemo(() => new Date(), []);
   const windows = useMemo(() => getWeekendWindows(now), [now]);
@@ -215,9 +239,14 @@ export default function ModeDetailScreen() {
     });
   }, [mode, id, windows, debugShowAll]);
 
+  const filteredPackData = useMemo(() => {
+    if (activeSport === "all") return packData;
+    return packData.filter((pd) => pd.pack.sport === activeSport);
+  }, [packData, activeSport]);
+
   const sections: SectionData[] = useMemo(() => {
     const result: SectionData[] = [];
-    for (const pd of packData) {
+    for (const pd of filteredPackData) {
       const thisFiltered = favoritesOnly
         ? pd.thisWeekend.filter((e) => favoriteInvolved(e, favorites))
         : pd.thisWeekend;
@@ -267,7 +296,7 @@ export default function ModeDetailScreen() {
       });
     }
     return result;
-  }, [packData, favoritesOnly, favorites, now, debugShowAll, windows]);
+  }, [filteredPackData, favoritesOnly, favorites, now, debugShowAll, windows]);
 
   const populatedSections = useMemo(() => sections.filter((s) => s.data.length > 0), [sections]);
   const allEmpty = useMemo(() => sections.every((s) => s.data.length === 0), [sections]);
@@ -283,6 +312,16 @@ export default function ModeDetailScreen() {
       });
   }, [sections]);
 
+  const sportEventCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const pd of packData) {
+      const sport = pd.pack.sport;
+      const total = pd.thisWeekend.length + pd.nextWeekend.length;
+      counts[sport] = (counts[sport] || 0) + total;
+    }
+    return counts;
+  }, [packData]);
+
   if (!mode) {
     return (
       <View style={styles.container}>
@@ -290,6 +329,10 @@ export default function ModeDetailScreen() {
       </View>
     );
   }
+
+  const emptyFilterLabel = activeSport !== "all"
+    ? SPORT_FILTERS.find((f) => f.key === activeSport)?.label ?? activeSport
+    : null;
 
   return (
     <View style={styles.container}>
@@ -315,6 +358,53 @@ export default function ModeDetailScreen() {
             : `This weekend (${windows.current.label}) + Next weekend (${windows.next.label})`}
         </Text>
       </View>
+
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.chipRow}
+        style={styles.chipScroll}
+      >
+        {SPORT_FILTERS.map((filter) => {
+          const isActive = activeSport === filter.key;
+          const sportColor = filter.key === "all" ? Colors.accent : getSportColor(filter.key);
+          const count = filter.key === "all"
+            ? Object.values(sportEventCounts).reduce((a, b) => a + b, 0)
+            : sportEventCounts[filter.key] || 0;
+
+          return (
+            <Pressable
+              key={filter.key}
+              onPress={() => setActiveSport(filter.key)}
+              style={[
+                styles.chip,
+                isActive && { backgroundColor: sportColor + "22", borderColor: sportColor + "55" },
+              ]}
+              testID={`chip-${filter.key}`}
+            >
+              <Ionicons
+                name={filter.icon as any}
+                size={14}
+                color={isActive ? sportColor : Colors.textMuted}
+              />
+              <Text
+                style={[
+                  styles.chipLabel,
+                  isActive && { color: sportColor },
+                ]}
+              >
+                {filter.label}
+              </Text>
+              {count > 0 && (
+                <View style={[styles.chipCount, isActive && { backgroundColor: sportColor + "22" }]}>
+                  <Text style={[styles.chipCountText, isActive && { color: sportColor }]}>{count}</Text>
+                </View>
+              )}
+            </Pressable>
+          );
+        })}
+      </ScrollView>
+
       <View style={styles.toggleRow}>
         <Ionicons name="star" size={14} color={Colors.favStar} />
         <Text style={styles.toggleLabel}>Favorites only</Text>
@@ -510,9 +600,15 @@ export default function ModeDetailScreen() {
           allEmpty ? (
             <View style={styles.emptyContainer}>
               <Ionicons name="calendar-outline" size={48} color={Colors.textMuted} />
-              <Text style={styles.emptyTitle}>No Weekend Games</Text>
+              <Text style={styles.emptyTitle}>
+                {emptyFilterLabel
+                  ? `No ${emptyFilterLabel} Events`
+                  : "No Weekend Games"}
+              </Text>
               <Text style={styles.emptySubtitle}>
-                No events found for this or next weekend (Fri–Sun)
+                {emptyFilterLabel
+                  ? `No ${emptyFilterLabel.toLowerCase()} events in this window`
+                  : "No events found for this or next weekend (Fri\u2013Sun)"}
               </Text>
             </View>
           ) : null
@@ -539,6 +635,43 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: Colors.textMuted,
     fontFamily: "Inter_400Regular",
+  },
+  chipScroll: {
+    flexGrow: 0,
+    paddingVertical: 8,
+  },
+  chipRow: {
+    paddingHorizontal: 16,
+    gap: 8,
+  },
+  chip: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    backgroundColor: Colors.card,
+  },
+  chipLabel: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_600SemiBold",
+  },
+  chipCount: {
+    backgroundColor: Colors.cardHighlight,
+    paddingHorizontal: 6,
+    paddingVertical: 1,
+    borderRadius: 8,
+    minWidth: 20,
+    alignItems: "center",
+  },
+  chipCountText: {
+    fontSize: 10,
+    color: Colors.textMuted,
+    fontFamily: "Inter_600SemiBold",
   },
   toggleRow: {
     flexDirection: "row",

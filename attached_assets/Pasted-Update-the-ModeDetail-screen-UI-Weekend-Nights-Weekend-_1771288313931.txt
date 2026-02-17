@@ -1,0 +1,58 @@
+Update the ModeDetail screen UI (Weekend Nights + Weekend Mornings) to use in-page sport filter chips.
+
+Current:
+- ModeDetail renders 4 sport packs (Hockey/Rugby/Cricket/Soccer) stacked vertically, making the page too long.
+
+Goal:
+- Add horizontal filter chips at the top:
+   ["All", "Hockey", "Rugby", "Cricket", "Soccer"]
+- Selecting a chip filters the page to show ONLY that sport’s pack(s).
+- "All" shows the existing combined view (but still consider simplifying; see below).
+
+Requirements:
+
+1) UI
+- Add a chip row pinned near the top of ModeDetail (below the header).
+- Chips are scrollable horizontally if needed.
+- Active chip is visually highlighted.
+- Default selection: "All"
+
+2) Filtering behavior
+- When chip = "All":
+   - show all sport packs (existing behavior)
+- When chip = "Hockey":
+   - show only hockey section(s) (NHL/AHL/ECHL/NCAA BU)
+- When chip = "Rugby":
+   - show only rugby pack
+- When chip = "Cricket":
+   - show only cricket pack
+- When chip = "Soccer":
+   - show only soccer pack
+
+3) Sections stay intact
+- Within the selected sport view, keep the current “This weekend” and “Next weekend” subsections.
+- Keep existing sorting rules (Live → Favorites → Start time).
+- Keep league subheaders where they exist (e.g., Hockey grouped by league).
+
+4) Persist selection per mode
+- Persist last selected chip per mode in AsyncStorage, e.g.:
+   key: "ui.modeFilter.<modeId>"
+- When user reopens a mode, restore their last selected chip.
+
+5) Accessibility / usability
+- Add a “Clear” option by making “All” the first chip.
+- If a selected sport has 0 events in both weekend sections, show a compact empty state:
+   “No <sport> events in this window.”
+
+Implementation suggestions (not required but recommended):
+- Introduce state:
+   const [activeSport, setActiveSport] = useState<"all"|"hockey"|"rugby"|"cricket"|"soccer">(...)
+- Build packs array as it exists today, then apply filter:
+   const visiblePacks = activeSport === "all" ? packs : packs.filter(p => p.sportKey === activeSport)
+
+- Ensure keys in any .map() are unique (avoid key={title}).
+
+Acceptance:
+- Mode pages are shorter and easy to navigate.
+- Tapping Rugby chip instantly shows only rugby events.
+- “All” restores the full list.
