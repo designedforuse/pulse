@@ -403,6 +403,111 @@ export async function registerRoutes(app: Express): Promise<Server> {
     return res.json({ total: allCricket.length, byGender, sample });
   });
 
+  app.get("/api/debug/soccer-favorites-sample", (_req, res) => {
+    const generated = loadGeneratedEvents();
+    if (!generated || !generated.events) {
+      return res.json({ error: "No events available" });
+    }
+
+    const masterPath = path.resolve(process.cwd(), "data", "masterGuide.json");
+    const aliasPath = path.resolve(process.cwd(), "data", "favoriteAliases.json");
+    let soccerFavorites: Record<string, string[]> = {};
+    let aliasMap: Record<string, string[]> = {};
+    try {
+      const mg = JSON.parse(fs.readFileSync(masterPath, "utf-8"));
+      soccerFavorites = mg.favorites?.soccer ?? {};
+      aliasMap = JSON.parse(fs.readFileSync(aliasPath, "utf-8"));
+    } catch {}
+
+    const eplVariants: Record<string, string[]> = {
+      "tottenham hotspur": ["tottenham", "spurs", "tottenham hotspur fc"],
+      "manchester united": ["man utd", "man united", "manchester utd", "manchester united fc"],
+      "manchester city": ["man city", "manchester city fc"],
+      "nottingham forest": ["nott'm forest", "nottingham forest fc", "notts forest"],
+      "newcastle united": ["newcastle", "newcastle utd", "newcastle united fc"],
+      "west ham united": ["west ham", "west ham utd", "west ham united fc"],
+      "wolverhampton wanderers": ["wolves", "wolverhampton", "wolverhampton wanderers fc"],
+      "brighton and hove albion": ["brighton", "brighton & hove albion", "brighton and hove albion fc"],
+      "crystal palace": ["crystal palace fc"],
+      "aston villa": ["aston villa fc"],
+      "bournemouth": ["afc bournemouth", "bournemouth fc"],
+      "brentford": ["brentford fc"],
+      "burnley": ["burnley fc"],
+      "chelsea": ["chelsea fc"],
+      "everton": ["everton fc"],
+      "fulham": ["fulham fc"],
+      "leeds": ["leeds united", "leeds utd", "leeds united fc"],
+      "liverpool": ["liverpool fc"],
+      "arsenal": ["arsenal fc"],
+      "sunderland": ["sunderland afc", "sunderland fc"],
+    };
+
+    const variantMap = new Map<string, string>();
+    for (const [canonical, variants] of Object.entries(eplVariants)) {
+      variantMap.set(canonical, canonical);
+      for (const v of variants) variantMap.set(v, canonical);
+    }
+
+    function norm(s: string): string {
+      let n = s.trim().toLowerCase().replace(/\s+fc$/i, "").replace(/\s+/g, " ");
+      return n;
+    }
+    function normEpl(s: string): string {
+      const n = norm(s);
+      return variantMap.get(n) ?? n;
+    }
+
+    const expandedSet = new Set<string>();
+    const canonicalSet = new Set<string>();
+    for (const league of Object.keys(soccerFavorites)) {
+      for (const team of soccerFavorites[league]) {
+        const n = norm(team);
+        expandedSet.add(n);
+        canonicalSet.add(n);
+        const aliases = aliasMap[team];
+        if (aliases) {
+          for (const a of aliases) expandedSet.add(norm(a));
+        }
+      }
+    }
+
+    const now = Date.now();
+    const eplEvents = generated.events
+      .filter((e: any) => e.source === "soccer-epl")
+      .filter((e: any) => new Date(e.startTimeLocal).getTime() >= now)
+      .sort((a: any, b: any) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime())
+      .slice(0, 5);
+
+    const sample = eplEvents.map((e: any) => {
+      const rawHome = norm(e.homeTeam);
+      const rawAway = norm(e.awayTeam);
+      const normHome = normEpl(e.homeTeam);
+      const normAway = normEpl(e.awayTeam);
+
+      const rawMatch = expandedSet.has(rawHome) ? e.homeTeam : expandedSet.has(rawAway) ? e.awayTeam : null;
+      const normMatch = expandedSet.has(normHome) ? normHome : expandedSet.has(normAway) ? normAway : null;
+      const isFavorite = !!(rawMatch || normMatch);
+      let reason = "";
+      if (rawMatch) reason = canonicalSet.has(norm(rawMatch)) ? "canonical" : "alias";
+      else if (normMatch) reason = canonicalSet.has(normMatch) ? "canonical-via-norm" : "alias-via-norm";
+
+      return {
+        homeTeam: e.homeTeam,
+        awayTeam: e.awayTeam,
+        normalizedHome: normHome,
+        normalizedAway: normAway,
+        isFavorite,
+        favoriteMatchReason: reason,
+      };
+    });
+
+    return res.json({
+      configuredFavorites: soccerFavorites,
+      expandedAliases: [...expandedSet],
+      sample,
+    });
+  });
+
   app.get("/api/debug/cricket-raw", async (req, res) => {
     try {
       const limit = parseInt(req.query.limit as string, 10) || 50;
