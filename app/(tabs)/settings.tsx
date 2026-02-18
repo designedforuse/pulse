@@ -286,6 +286,12 @@ export default function SettingsScreen() {
                     <View style={styles.sourceDivider} />
                   </>
                 )}
+                {meta.sources.mls && (
+                  <>
+                    <SourceRow league="MLS" meta={meta.sources.mls} />
+                    <View style={styles.sourceDivider} />
+                  </>
+                )}
               </View>
             )}
             <Pressable
@@ -306,7 +312,7 @@ export default function SettingsScreen() {
                 <View>
                   <Text style={styles.refreshLabel}>Refresh Schedules</Text>
                   <Text style={styles.refreshDesc}>
-                    Pull latest NHL + AHL + ECHL + NCAA + Rugby + Cricket + T20WC + Olympics + EPL data
+                    Pull latest NHL + AHL + ECHL + NCAA + Rugby + Cricket + T20WC + Olympics + EPL + MLS data
                   </Text>
                 </View>
               </View>

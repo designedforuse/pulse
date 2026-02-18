@@ -205,6 +205,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
           eplUpdated: generated?.eplUpdated ?? 0,
           eplPruned: generated?.eplPruned ?? 0,
           eplSourceUsed: generated?.eplSourceUsed ?? "unknown",
+          mlsCount: generated?.mlsCount ?? 0,
+          mlsAdded: generated?.mlsAdded ?? 0,
+          mlsUpdated: generated?.mlsUpdated ?? 0,
+          mlsPruned: generated?.mlsPruned ?? 0,
+          mlsSourceUsed: generated?.mlsSourceUsed ?? "unknown",
         });
       }
     );
@@ -351,10 +356,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const cricketTotal = cricket + iccT20Wc;
     const olympicHockey = events.filter((e: any) => e.source === "olympic-hockey-2026").length;
     const epl = events.filter((e: any) => e.source === "soccer-epl").length;
-    const soccerTotal = epl;
+    const mls = events.filter((e: any) => e.source === "soccer-mls").length;
+    const soccerTotal = epl + mls;
     const other = events.length - nhl - ahl - echl - ncaa - rugby - cricketTotal - olympicHockey - soccerTotal;
     return res.json({
-      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, olympicHockey, epl, soccerTotal, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, olympicHockey, epl, mls, soccerTotal, other, total: events.length,
       lastUpdated: generated.lastUpdated,
       ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",
