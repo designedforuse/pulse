@@ -7,6 +7,7 @@ import { fetchRugbyEvents, mergeRugbyEvents } from "./updateRugby";
 import { fetchCricketEvents, mergeCricketEvents } from "./updateCricket";
 import { fetchIccT20WcEvents, mergeIccT20WcEvents } from "./updateIccT20Wc";
 import { fetchOlympicHockeyEvents, mergeOlympicHockeyEvents } from "./updateOlympicHockey2026";
+import { fetchEplEvents, mergeEplEvents } from "./updateEpl";
 
 const NHL_API_BASE = "https://api-web.nhle.com/v1";
 const OUTPUT_PATH = path.resolve(__dirname, "../data/generatedEvents.json");
@@ -234,6 +235,7 @@ async function main() {
   const existingCricket = loadExistingByPrefix("cricket-").filter((e: AppEvent) => !e.id.startsWith("cricket-t20wc-"));
   const existingT20Wc = loadExistingByPrefix("cricket-t20wc-");
   const existingOlympicHockey = loadExistingByPrefix("olympic-hockey-2026-");
+  const existingEpl = loadExistingByPrefix("soccer-epl-");
   console.log(`Existing cached AHL events: ${existingAhl.length}`);
   console.log(`Existing cached ECHL events: ${existingEchl.length}`);
   console.log(`Existing cached BU events: ${existingBu.length}`);
@@ -241,17 +243,19 @@ async function main() {
   console.log(`Existing cached Cricket events: ${existingCricket.length}`);
   console.log(`Existing cached T20 WC events: ${existingT20Wc.length}`);
   console.log(`Existing cached Olympic Hockey events: ${existingOlympicHockey.length}`);
+  console.log(`Existing cached EPL events: ${existingEpl.length}`);
 
   const t20WcFetchResult = fetchIccT20WcEvents();
   const olympicHockeyFetchResult = fetchOlympicHockeyEvents();
 
-  const [nhlEvents, ahlFetchResult, echlFetchResult, buFetchResult, rugbyFetchResult, cricketFetchResult] = await Promise.all([
+  const [nhlEvents, ahlFetchResult, echlFetchResult, buFetchResult, rugbyFetchResult, cricketFetchResult, eplFetchResult] = await Promise.all([
     fetchNHLEvents(days),
     fetchAhlEvents(),
     fetchEchlEvents(),
     fetchBuEvents(),
     fetchRugbyEvents(),
     fetchCricketEvents(),
+    fetchEplEvents(),
   ]);
 
   const now = new Date();
@@ -262,6 +266,7 @@ async function main() {
   const cricketResultRaw = mergeCricketEvents(existingCricket, cricketFetchResult.events, now);
   const t20WcResult = mergeIccT20WcEvents(existingT20Wc, t20WcFetchResult.events, now);
   const olympicHockeyResult = mergeOlympicHockeyEvents(existingOlympicHockey, olympicHockeyFetchResult.events, now);
+  const eplResult = mergeEplEvents(existingEpl, eplFetchResult.events, now);
 
   function toPtDate(iso: string): string {
     return new Intl.DateTimeFormat("en-US", {
@@ -324,8 +329,10 @@ async function main() {
   console.log(`  ICC T20 WC merge: +${t20WcResult.added} added, ~${t20WcResult.updated} updated, -${t20WcResult.pruned} pruned → ${t20WcResult.merged.length} total`);
   console.log(`  Olympic Hockey source: ${olympicHockeyFetchResult.sourceUsed} (${olympicHockeyFetchResult.count} events)`);
   console.log(`  Olympic Hockey merge: +${olympicHockeyResult.added} added, ~${olympicHockeyResult.updated} updated, -${olympicHockeyResult.pruned} pruned → ${olympicHockeyResult.merged.length} total`);
+  console.log(`  EPL source: ${eplFetchResult.sourceUsed} (${eplFetchResult.count} events)`);
+  console.log(`  EPL merge: +${eplResult.added} added, ~${eplResult.updated} updated, -${eplResult.pruned} pruned → ${eplResult.merged.length} total`);
 
-  const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged, ...buResult.merged, ...rugbyResult.merged, ...cricketResult.merged, ...t20WcResult.merged, ...olympicHockeyResult.merged].sort(
+  const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged, ...buResult.merged, ...rugbyResult.merged, ...cricketResult.merged, ...t20WcResult.merged, ...olympicHockeyResult.merged, ...eplResult.merged].sort(
     (a, b) =>
       new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
   );
@@ -387,12 +394,17 @@ async function main() {
         lastFetchAt: nowIso,
         sourceName: "Hardcoded Schedule",
       },
+      epl: {
+        count: eplResult.merged.length,
+        lastFetchAt: eplFetchResult.events.length > 0 ? nowIso : (prevMeta?.sources?.epl?.lastFetchAt || nowIso),
+        sourceName: "iCal Feed",
+      },
     },
   };
 
   const output = {
     lastUpdated: nowIso,
-    sources: ["NHL API (api-web.nhle.com)", "AHL (HockeyTech / Odds API fallback)", "ECHL (API-Hockey / HockeyTech web)", "NCAA (College Hockey News)", "Rugby (iCal feeds)", "Cricket (CricAPI)", "Olympic Hockey (hardcoded)"],
+    sources: ["NHL API (api-web.nhle.com)", "AHL (HockeyTech / Odds API fallback)", "ECHL (API-Hockey / HockeyTech web)", "NCAA (College Hockey News)", "Rugby (iCal feeds)", "Cricket (CricAPI)", "Olympic Hockey (hardcoded)", "EPL (iCal feed)"],
     ahlSourceUsed: ahlFetchResult.sourceUsed,
     ahlOddsKeyUsed: ahlFetchResult.detectedOddsKey,
     echlSourceUsed: echlFetchResult.sourceUsed,
@@ -434,13 +446,18 @@ async function main() {
     olympicHockeyUpdated: olympicHockeyResult.updated,
     olympicHockeyPruned: olympicHockeyResult.pruned,
     olympicHockeySourceUsed: olympicHockeyFetchResult.sourceUsed,
+    eplCount: eplResult.merged.length,
+    eplAdded: eplResult.added,
+    eplUpdated: eplResult.updated,
+    eplPruned: eplResult.pruned,
+    eplSourceUsed: eplFetchResult.sourceUsed,
     generatedMeta,
     events: allEvents,
   };
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
   console.log(
-    `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlResult.merged.length} AHL + ${echlResult.merged.length} ECHL + ${buResult.merged.length} NCAA + ${rugbyResult.merged.length} Rugby + ${cricketResult.merged.length} Cricket + ${t20WcResult.merged.length} T20WC + ${olympicHockeyResult.merged.length} Olympic Hockey) to ${OUTPUT_PATH}`
+    `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlResult.merged.length} AHL + ${echlResult.merged.length} ECHL + ${buResult.merged.length} NCAA + ${rugbyResult.merged.length} Rugby + ${cricketResult.merged.length} Cricket + ${t20WcResult.merged.length} T20WC + ${olympicHockeyResult.merged.length} Olympic Hockey + ${eplResult.merged.length} EPL) to ${OUTPUT_PATH}`
   );
   console.log(`AHL source: ${ahlSourceLabel}`);
   if (allEvents.length > 0) {

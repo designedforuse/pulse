@@ -1,0 +1,60 @@
+Add Soccer (starting with EPL) using Option C (Hybrid).
+
+Definition of Hybrid for EPL:
+- Fetch the FULL EPL schedule (within the same retention window you use elsewhere: now-14d to now+21d).
+- Display all EPL matches by default, but:
+  1) Favorites (Tottenham) are prioritized in sorting (Live → Favorites → Start time).
+  2) Add an optional “Favorites only” toggle that applies within Soccer pack (reuse existing global favorites toggle behavior if possible).
+  3) Keep league chips mode-aware/data-driven.
+
+Provider mapping:
+- All EPL matches default providerId = "youtubetv".
+
+Data ingestion:
+1) Create a new script: scripts/updateEpl.ts
+2) Prefer an iCal feed (consistent with rugbyfixture.io approach). If no reliable iCal is available, scrape a stable fixtures page.
+3) Normalize events into existing schema:
+   - sport: "soccer"
+   - league: "EPL"
+   - source: "soccer-epl"
+   - homeTeam, awayTeam
+   - startTime (UTC ISO)
+   - endTime = start + 2h 15m default (soccer)
+   - providerId: "youtubetv"
+   - providerReason: "epl-yttv" (optional)
+
+IDs + dedupe:
+- Use stable IDs with date+time+teams:
+  soccer-epl-YYYYMMDD-HHMM-<away>-at-<home>
+- Ensure no collisions.
+
+Merge + retention:
+- Merge into generatedEvents.json using existing caching/merge pattern.
+- Retain only [now-14d, now+21d].
+
+Refresh pipeline + diagnostics:
+- Add EPL fetcher into POST /api/refresh in parallel with other scripts.
+- Settings should show Soccer section with EPL count + source label.
+- /api/debug/sources should include eplCount and soccerTotal.
+
+UI integration:
+1) Add Soccer as a pack in both Weekend Nights and Weekend Mornings (like Hockey/Rugby/Cricket):
+   - Pack title: "Soccer"
+   - Uses same mode weekend windows + time-of-day filters.
+2) League filter chips:
+   - When sport chip = Soccer, league chips should include “EPL” when events exist in the visible window(s).
+   - Chips remain mode-aware/data-driven (only show leagues that have events in the current window).
+3) Ensure EPL matches appear in:
+   - Live Now (all times)
+   - Mode screens (only when within weekend window/time-of-day window)
+
+Favorites:
+- Add Tottenham as a Soccer favorite team with aliases:
+  "Tottenham", "Tottenham Hotspur", "Spurs"
+- Ensure favorites matching works against EPL team names.
+
+Acceptance:
+- After refresh, EPL matches appear in Live Now and in Modes when applicable.
+- Sorting prioritizes live + Tottenham matches.
+- Provider deep link opens YouTube TV.
+- League chip “EPL” appears under Soccer when relevant.

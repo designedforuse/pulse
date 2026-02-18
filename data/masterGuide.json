@@ -46,6 +46,7 @@
           "title": "Soccer Night",
           "sport": "soccer",
           "leagues": [
+            "EPL",
             "MLS",
             "NWSL",
             "USL"
