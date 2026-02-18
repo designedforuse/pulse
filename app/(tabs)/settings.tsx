@@ -292,6 +292,30 @@ export default function SettingsScreen() {
                     <View style={styles.sourceDivider} />
                   </>
                 )}
+                {meta.sources.serieA && (
+                  <>
+                    <SourceRow league="Serie A" meta={meta.sources.serieA} />
+                    <View style={styles.sourceDivider} />
+                  </>
+                )}
+                {meta.sources.laLiga && (
+                  <>
+                    <SourceRow league="La Liga" meta={meta.sources.laLiga} />
+                    <View style={styles.sourceDivider} />
+                  </>
+                )}
+                {meta.sources.bundesliga && (
+                  <>
+                    <SourceRow league="Bundesliga" meta={meta.sources.bundesliga} />
+                    <View style={styles.sourceDivider} />
+                  </>
+                )}
+                {meta.sources.ligue1 && (
+                  <>
+                    <SourceRow league="Ligue 1" meta={meta.sources.ligue1} />
+                    <View style={styles.sourceDivider} />
+                  </>
+                )}
               </View>
             )}
             <Pressable
@@ -312,7 +336,7 @@ export default function SettingsScreen() {
                 <View>
                   <Text style={styles.refreshLabel}>Refresh Schedules</Text>
                   <Text style={styles.refreshDesc}>
-                    Pull latest NHL + AHL + ECHL + NCAA + Rugby + Cricket + T20WC + Olympics + EPL + MLS data
+                    Pull latest NHL + AHL + ECHL + NCAA + Rugby + Cricket + T20WC + Olympics + Soccer data
                   </Text>
                 </View>
               </View>
