@@ -242,7 +242,7 @@ function sortEvents(
 export default function ModeDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const mode = getModeById(id);
-  const { getEventsForPack, debugShowAll, favoritesOnly } = useEvents();
+  const { getEventsForPack, debugShowAll, favoritesOnly, leagueSeasonStarts } = useEvents();
   const favorites = getFavorites();
   const [activeSport, setActiveSportState] = useState<SportFilter>("all");
   const [activeLeague, setActiveLeague] = useState<string>("all");
@@ -643,16 +643,29 @@ export default function ModeDetailScreen() {
           allEmpty ? (
             <View style={styles.emptyContainer}>
               <Ionicons name="calendar-outline" size={48} color={Colors.textMuted} />
-              <Text style={styles.emptyTitle}>
-                {emptyFilterLabel
-                  ? `No ${emptyFilterLabel} Events`
-                  : "No Weekend Games"}
-              </Text>
-              <Text style={styles.emptySubtitle}>
-                {emptyFilterLabel
-                  ? `No ${emptyFilterLabel.toLowerCase()} events in this window`
-                  : "No games in this window"}
-              </Text>
+              {activeLeague !== "all" && leagueSeasonStarts[activeLeague] ? (
+                <>
+                  <Text style={styles.emptyTitle}>
+                    {`Season hasn't started yet`}
+                  </Text>
+                  <Text style={styles.emptySubtitle}>
+                    {`${activeLeague.toUpperCase()} season starts ${new Date(leagueSeasonStarts[activeLeague]).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "America/Los_Angeles" })}. Games will appear here once we're within the next 21 days.`}
+                  </Text>
+                </>
+              ) : (
+                <>
+                  <Text style={styles.emptyTitle}>
+                    {emptyFilterLabel
+                      ? `No ${emptyFilterLabel} Events`
+                      : "No Weekend Games"}
+                  </Text>
+                  <Text style={styles.emptySubtitle}>
+                    {emptyFilterLabel
+                      ? `No ${emptyFilterLabel.toLowerCase()} events in this window`
+                      : "No games in this window"}
+                  </Text>
+                </>
+              )}
             </View>
           ) : null
         }

@@ -470,6 +470,7 @@ async function main() {
         count: nwslResult.merged.length,
         lastFetchAt: nwslFetchResult.events.length > 0 ? nowIso : (prevMeta?.sources?.nwsl?.lastFetchAt || nowIso),
         sourceName: "iCal Feed",
+        firstMatchDate: (nwslFetchResult as any).firstMatchDate || prevMeta?.sources?.nwsl?.firstMatchDate || null,
       },
     },
   };

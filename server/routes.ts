@@ -54,10 +54,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return start >= startCutoff && start <= cutoff;
     });
 
+    const nwslFirstMatchDate = generated.generatedMeta?.sources?.nwsl?.firstMatchDate || null;
+
     return res.json({
       source: "generated",
       lastUpdated: generated.lastUpdated,
       events: filtered,
+      leagueSeasonStarts: {
+        ...(nwslFirstMatchDate ? { nwsl: nwslFirstMatchDate } : {}),
+      },
     });
   });
 

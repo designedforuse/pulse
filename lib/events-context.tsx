@@ -26,6 +26,7 @@ interface ApiResponse {
   source: string;
   lastUpdated: string | null;
   events: SportEvent[];
+  leagueSeasonStarts?: Record<string, string>;
 }
 
 interface EventsContextValue {
@@ -39,6 +40,7 @@ interface EventsContextValue {
   setShowSvnsSessions: (val: boolean) => void;
   favoritesOnly: boolean;
   setFavoritesOnly: (val: boolean) => void;
+  leagueSeasonStarts: Record<string, string>;
 }
 
 const EventsContext = createContext<EventsContextValue | null>(null);
@@ -80,6 +82,8 @@ export function EventsProvider({ children }: { children: ReactNode }) {
     refetchInterval: 5 * 60 * 1000,
     retry: 2,
   });
+
+  const leagueSeasonStarts = useMemo(() => data?.leagueSeasonStarts ?? {}, [data]);
 
   const allEvents = useMemo(() => {
     const localEvents = (guideData.events || []) as SportEvent[];
@@ -130,8 +134,9 @@ export function EventsProvider({ children }: { children: ReactNode }) {
       setShowSvnsSessions,
       favoritesOnly,
       setFavoritesOnly,
+      leagueSeasonStarts,
     };
-  }, [allEvents, isLoading, debugShowAll, showSvnsSessions, favoritesOnly]);
+  }, [allEvents, isLoading, debugShowAll, showSvnsSessions, favoritesOnly, leagueSeasonStarts]);
 
   return (
     <EventsContext.Provider value={value}>{children}</EventsContext.Provider>

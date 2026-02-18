@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-18T05:40:50.867Z",
+  "lastUpdated": "2026-02-18T05:49:48.469Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -104,34 +104,34 @@
   "nwslPruned": 0,
   "nwslSourceUsed": "ical",
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-18T05:40:50.867Z",
+    "lastRefreshAt": "2026-02-18T05:49:48.469Z",
     "sources": {
       "nhl": {
         "count": 116,
-        "lastFetchAt": "2026-02-18T05:40:50.867Z",
+        "lastFetchAt": "2026-02-18T05:49:48.469Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 214,
-        "lastFetchAt": "2026-02-18T05:40:50.867Z",
+        "lastFetchAt": "2026-02-18T05:49:48.469Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-18T05:40:50.867Z",
+        "lastFetchAt": "2026-02-18T05:49:48.469Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 7,
-        "lastFetchAt": "2026-02-18T05:40:50.867Z",
+        "lastFetchAt": "2026-02-18T05:49:48.469Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 90,
-        "lastFetchAt": "2026-02-18T05:40:50.867Z",
+        "lastFetchAt": "2026-02-18T05:49:48.469Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 8,
@@ -145,7 +145,7 @@
       },
       "cricket": {
         "count": 20,
-        "lastFetchAt": "2026-02-18T05:40:50.867Z",
+        "lastFetchAt": "2026-02-18T05:49:48.469Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "T20I Cricket": 2,
@@ -154,48 +154,49 @@
       },
       "iccT20Wc": {
         "count": 55,
-        "lastFetchAt": "2026-02-18T05:40:50.867Z",
+        "lastFetchAt": "2026-02-18T05:49:48.469Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 30,
-        "lastFetchAt": "2026-02-18T05:40:50.867Z",
+        "lastFetchAt": "2026-02-18T05:49:48.469Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 51,
-        "lastFetchAt": "2026-02-18T05:40:50.867Z",
+        "lastFetchAt": "2026-02-18T05:49:48.469Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 45,
-        "lastFetchAt": "2026-02-18T05:40:50.867Z",
+        "lastFetchAt": "2026-02-18T05:49:48.469Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 50,
-        "lastFetchAt": "2026-02-18T05:40:50.867Z",
+        "lastFetchAt": "2026-02-18T05:49:48.469Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 51,
-        "lastFetchAt": "2026-02-18T05:40:50.867Z",
+        "lastFetchAt": "2026-02-18T05:49:48.469Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 45,
-        "lastFetchAt": "2026-02-18T05:40:50.867Z",
+        "lastFetchAt": "2026-02-18T05:49:48.469Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 45,
-        "lastFetchAt": "2026-02-18T05:40:50.867Z",
+        "lastFetchAt": "2026-02-18T05:49:48.469Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 0,
         "lastFetchAt": "2026-02-18T05:40:50.867Z",
-        "sourceName": "iCal Feed"
+        "sourceName": "iCal Feed",
+        "firstMatchDate": "2026-03-14T00:00:00.000Z"
       }
     }
   },
@@ -3655,7 +3656,7 @@
       "startTimeLocal": "2026-02-15T03:30:00.000Z",
       "endTimeLocal": "2026-02-15T11:30:00.000Z",
       "providerId": "youtubetv",
-      "isLive": true,
+      "isLive": false,
       "source": "cricket-cricapi",
       "leagueKey": "test",
       "competitionName": "Test Cricket",

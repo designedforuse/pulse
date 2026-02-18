@@ -180,9 +180,14 @@ export async function fetchNwslEvents(): Promise<SoccerFetchResult> {
     let espnCount = 0;
     let defaultCount = 0;
 
+    let firstMatchUtc: string | null = null;
     for (const ve of vevents) {
       const startUtc = parseIcalDate(ve.dtstart);
       if (!startUtc) continue;
+
+      if (!firstMatchUtc || startUtc < firstMatchUtc) {
+        firstMatchUtc = startUtc;
+      }
 
       const startDate = new Date(startUtc);
       if (startDate < windowStart || startDate > windowEnd) continue;
@@ -231,7 +236,10 @@ export async function fetchNwslEvents(): Promise<SoccerFetchResult> {
 
     console.log(`  NWSL: ${events.length} events in retention window`);
     console.log(`  NWSL providers: ${primeCount} Prime, ${espnCount} ESPN/Disney+, ${defaultCount} default YTTV`);
-    return { events, sourceUsed: "ical", count: events.length };
+    if (firstMatchUtc) {
+      console.log(`  NWSL: First match in feed: ${firstMatchUtc}`);
+    }
+    return { events, sourceUsed: "ical", count: events.length, firstMatchDate: firstMatchUtc ?? undefined } as SoccerFetchResult & { firstMatchDate?: string };
   } catch (err: any) {
     console.error(`  NWSL: Error fetching iCal:`, err.message);
     return { events: [], sourceUsed: "none", count: 0 };
