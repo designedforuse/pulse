@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-18T05:49:48.469Z",
+  "lastUpdated": "2026-02-18T05:54:51.664Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -14,7 +14,8 @@
     "La Liga (iCal feed)",
     "Bundesliga (iCal feed)",
     "Ligue 1 (iCal feed)",
-    "NWSL (iCal feed)"
+    "NWSL (iCal feed)",
+    "USL (ESPN API)"
   ],
   "ahlSourceUsed": "hockeytech",
   "ahlOddsKeyUsed": null,
@@ -103,35 +104,40 @@
   "nwslUpdated": 0,
   "nwslPruned": 0,
   "nwslSourceUsed": "ical",
+  "uslCount": 11,
+  "uslAdded": 11,
+  "uslUpdated": 0,
+  "uslPruned": 0,
+  "uslSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-18T05:49:48.469Z",
+    "lastRefreshAt": "2026-02-18T05:54:51.664Z",
     "sources": {
       "nhl": {
         "count": 116,
-        "lastFetchAt": "2026-02-18T05:49:48.469Z",
+        "lastFetchAt": "2026-02-18T05:54:51.664Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 214,
-        "lastFetchAt": "2026-02-18T05:49:48.469Z",
+        "lastFetchAt": "2026-02-18T05:54:51.664Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-18T05:49:48.469Z",
+        "lastFetchAt": "2026-02-18T05:54:51.664Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 7,
-        "lastFetchAt": "2026-02-18T05:49:48.469Z",
+        "lastFetchAt": "2026-02-18T05:54:51.664Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 90,
-        "lastFetchAt": "2026-02-18T05:49:48.469Z",
+        "lastFetchAt": "2026-02-18T05:54:51.664Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 8,
@@ -145,7 +151,7 @@
       },
       "cricket": {
         "count": 20,
-        "lastFetchAt": "2026-02-18T05:49:48.469Z",
+        "lastFetchAt": "2026-02-18T05:54:51.664Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "T20I Cricket": 2,
@@ -154,42 +160,42 @@
       },
       "iccT20Wc": {
         "count": 55,
-        "lastFetchAt": "2026-02-18T05:49:48.469Z",
+        "lastFetchAt": "2026-02-18T05:54:51.664Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 30,
-        "lastFetchAt": "2026-02-18T05:49:48.469Z",
+        "lastFetchAt": "2026-02-18T05:54:51.664Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 51,
-        "lastFetchAt": "2026-02-18T05:49:48.469Z",
+        "lastFetchAt": "2026-02-18T05:54:51.664Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 45,
-        "lastFetchAt": "2026-02-18T05:49:48.469Z",
+        "lastFetchAt": "2026-02-18T05:54:51.664Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 50,
-        "lastFetchAt": "2026-02-18T05:49:48.469Z",
+        "lastFetchAt": "2026-02-18T05:54:51.664Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 51,
-        "lastFetchAt": "2026-02-18T05:49:48.469Z",
+        "lastFetchAt": "2026-02-18T05:54:51.664Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 45,
-        "lastFetchAt": "2026-02-18T05:49:48.469Z",
+        "lastFetchAt": "2026-02-18T05:54:51.664Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 45,
-        "lastFetchAt": "2026-02-18T05:49:48.469Z",
+        "lastFetchAt": "2026-02-18T05:54:51.664Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
@@ -197,6 +203,12 @@
         "lastFetchAt": "2026-02-18T05:40:50.867Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
+      },
+      "usl": {
+        "count": 11,
+        "lastFetchAt": "2026-02-18T05:54:51.664Z",
+        "sourceName": "ESPN API",
+        "firstMatchDate": "2026-03-07T00:30:00.000Z"
       }
     }
   },
@@ -10410,6 +10422,20 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "soccer-usl-20260307-0030-louisville-city-fc-at-lexington",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Louisville City FC",
+      "homeTeam": "Lexington",
+      "startTimeLocal": "2026-03-07T00:30:00.000Z",
+      "endTimeLocal": "2026-03-07T02:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-disneyplus"
+    },
+    {
       "id": "nhl_2025020984",
       "sport": "hockey",
       "league": "NHL",
@@ -10844,6 +10870,20 @@
       "providerReason": "mls-yttv"
     },
     {
+      "id": "soccer-usl-20260307-1930-loudoun-united-fc-at-rhode-island-fc",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Loudoun United FC",
+      "homeTeam": "Rhode Island FC",
+      "startTimeLocal": "2026-03-07T19:30:00.000Z",
+      "endTimeLocal": "2026-03-07T21:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-disneyplus"
+    },
+    {
       "id": "nhl_2025020991",
       "sport": "hockey",
       "league": "NHL",
@@ -10873,6 +10913,20 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "soccer-usl-20260307-2000-hartford-athletic-at-sporting-jax",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Hartford Athletic",
+      "homeTeam": "Sporting JAX",
+      "startTimeLocal": "2026-03-07T20:00:00.000Z",
+      "endTimeLocal": "2026-03-07T22:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-disneyplus"
     },
     {
       "id": "ahl-1028646",
@@ -11099,6 +11153,20 @@
       "providerReason": "ligue1-yttv"
     },
     {
+      "id": "soccer-usl-20260307-2300-pittsburgh-riverhounds-at-charleston-battery",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Pittsburgh Riverhounds",
+      "homeTeam": "Charleston Battery",
+      "startTimeLocal": "2026-03-07T23:00:00.000Z",
+      "endTimeLocal": "2026-03-08T01:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-disneyplus"
+    },
+    {
       "id": "ahl-1028653",
       "sport": "hockey",
       "league": "AHL",
@@ -11290,6 +11358,20 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "soccer-usl-20260308-0100-tampa-bay-rowdies-at-birmingham-legion-fc",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Tampa Bay Rowdies",
+      "homeTeam": "Birmingham Legion FC",
+      "startTimeLocal": "2026-03-08T01:00:00.000Z",
+      "endTimeLocal": "2026-03-08T03:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-disneyplus"
+    },
+    {
       "id": "echl-web-25137",
       "sport": "hockey",
       "league": "ECHL",
@@ -11344,6 +11426,20 @@
       "providerReason": "mls-yttv"
     },
     {
+      "id": "soccer-usl-20260308-0130-phoenix-rising-fc-at-san-antonio-fc",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Phoenix Rising FC",
+      "homeTeam": "San Antonio FC",
+      "startTimeLocal": "2026-03-08T01:30:00.000Z",
+      "endTimeLocal": "2026-03-08T03:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-disneyplus"
+    },
+    {
       "id": "ahl-1028647",
       "sport": "hockey",
       "league": "AHL",
@@ -11366,6 +11462,20 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "soccer-usl-20260308-0200-colorado-springs-switchbacks-fc-at-el-paso-locomotive-fc",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Colorado Springs Switchbacks FC",
+      "homeTeam": "El Paso Locomotive FC",
+      "startTimeLocal": "2026-03-08T02:00:00.000Z",
+      "endTimeLocal": "2026-03-08T04:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-disneyplus"
     },
     {
       "id": "soccer-mls-20260308-0230-la-galaxy-at-colorado-rapids",
@@ -11477,6 +11587,48 @@
       "leagueKey": "svns",
       "eventType": "session",
       "sessionTitle": "SVNS Vancouver – Day 1"
+    },
+    {
+      "id": "soccer-usl-20260308-0300-oakland-roots-at-monterey-bay",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Oakland Roots",
+      "homeTeam": "Monterey Bay",
+      "startTimeLocal": "2026-03-08T03:00:00.000Z",
+      "endTimeLocal": "2026-03-08T05:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-disneyplus"
+    },
+    {
+      "id": "soccer-usl-20260308-0300-las-vegas-lights-fc-at-orange-county-sc",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Las Vegas Lights FC",
+      "homeTeam": "Orange County SC",
+      "startTimeLocal": "2026-03-08T03:00:00.000Z",
+      "endTimeLocal": "2026-03-08T05:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-disneyplus"
+    },
+    {
+      "id": "soccer-usl-20260308-0300-fc-tulsa-at-sacramento-republic-fc",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "FC Tulsa",
+      "homeTeam": "Sacramento Republic FC",
+      "startTimeLocal": "2026-03-08T03:00:00.000Z",
+      "endTimeLocal": "2026-03-08T05:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-disneyplus"
     },
     {
       "id": "soccer-mls-20260308-0330-fc-dallas-at-los-angeles-football-club",
@@ -11737,6 +11889,20 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "soccer-usl-20260308-1900-indy-eleven-at-brooklyn-fc",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Indy Eleven",
+      "homeTeam": "Brooklyn FC",
+      "startTimeLocal": "2026-03-08T19:00:00.000Z",
+      "endTimeLocal": "2026-03-08T21:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-disneyplus"
     },
     {
       "id": "ahl-1028659",
