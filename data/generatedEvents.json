@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-18T02:23:10.732Z",
+  "lastUpdated": "2026-02-18T02:39:40.986Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -17,10 +17,10 @@
   "rugbySourceUsed": "ical",
   "cricketSourceUsed": "cricapi",
   "nhlCount": 116,
-  "ahlCount": 215,
+  "ahlCount": 214,
   "ahlAdded": 22,
   "ahlUpdated": 205,
-  "ahlPruned": 22,
+  "ahlPruned": 23,
   "echlCount": 15,
   "echlAdded": 4,
   "echlUpdated": 15,
@@ -68,34 +68,34 @@
   "eplPruned": 51,
   "eplSourceUsed": "ical",
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-18T02:23:10.732Z",
+    "lastRefreshAt": "2026-02-18T02:39:40.986Z",
     "sources": {
       "nhl": {
         "count": 116,
-        "lastFetchAt": "2026-02-18T02:23:10.732Z",
+        "lastFetchAt": "2026-02-18T02:39:40.986Z",
         "sourceName": "NHL API"
       },
       "ahl": {
-        "count": 215,
-        "lastFetchAt": "2026-02-18T02:23:10.732Z",
+        "count": 214,
+        "lastFetchAt": "2026-02-18T02:39:40.986Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-18T02:23:10.732Z",
+        "lastFetchAt": "2026-02-18T02:39:40.986Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 7,
-        "lastFetchAt": "2026-02-18T02:23:10.732Z",
+        "lastFetchAt": "2026-02-18T02:39:40.986Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 90,
-        "lastFetchAt": "2026-02-18T02:23:10.732Z",
+        "lastFetchAt": "2026-02-18T02:39:40.986Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 8,
@@ -109,7 +109,7 @@
       },
       "cricket": {
         "count": 20,
-        "lastFetchAt": "2026-02-18T02:23:10.732Z",
+        "lastFetchAt": "2026-02-18T02:39:40.986Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "T20I Cricket": 2,
@@ -118,34 +118,22 @@
       },
       "iccT20Wc": {
         "count": 55,
-        "lastFetchAt": "2026-02-18T02:23:10.732Z",
+        "lastFetchAt": "2026-02-18T02:39:40.986Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 30,
-        "lastFetchAt": "2026-02-18T02:23:10.732Z",
+        "lastFetchAt": "2026-02-18T02:39:40.986Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 51,
-        "lastFetchAt": "2026-02-18T02:23:10.732Z",
+        "lastFetchAt": "2026-02-18T02:39:40.986Z",
         "sourceName": "iCal Feed"
       }
     }
   },
   "events": [
-    {
-      "id": "ahl-1028456",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Bakersfield Condors",
-      "awayTeam": "Calgary Wranglers",
-      "startTimeLocal": "2026-02-04T02:30:00.000Z",
-      "endTimeLocal": "2026-02-04T05:15:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
     {
       "id": "cricket-icc-mjto26",
       "sport": "cricket",
@@ -598,7 +586,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "ahl-1028470",
@@ -908,7 +897,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "cricket-t20wc-acfc045da2",
@@ -954,7 +944,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260207-1500-aston-villa-at-bournemouth",
@@ -967,7 +958,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260207-1500-west-ham-at-burnley",
@@ -980,7 +972,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260207-1500-everton-at-fulham",
@@ -993,7 +986,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260207-1500-chelsea-at-wolves",
@@ -1006,7 +1000,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "rugby-sixnations-ah1yc2",
@@ -1032,7 +1027,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "ahl-1028490",
@@ -1313,7 +1309,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260208-1630-man-city-at-liverpool",
@@ -1326,7 +1323,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "rugby-svns-3l46hh-d2",
@@ -1486,7 +1484,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260210-1930-bournemouth-at-everton",
@@ -1499,7 +1498,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260210-1930-newcastle-at-spurs",
@@ -1512,7 +1512,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260210-2015-man-utd-at-west-ham",
@@ -1525,7 +1526,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "cricket-t20wc-c8d92d6ebd",
@@ -1615,7 +1617,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260211-1930-fulham-at-man-city",
@@ -1628,7 +1631,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260211-1930-wolves-at-nott-m-forest",
@@ -1641,7 +1645,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260211-1940-burnley-at-crystal-palace",
@@ -1654,7 +1659,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "olympic-hockey-2026-2026-02-11-1510-sweden-at-italy",
@@ -1684,7 +1690,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "ahl-1028961",
@@ -1875,7 +1882,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "olympic-hockey-2026-2026-02-12-1510-latvia-at-usa",
@@ -3404,7 +3412,7 @@
       "startTimeLocal": "2026-02-18T00:00:00.000Z",
       "endTimeLocal": "2026-02-18T02:45:00.000Z",
       "providerId": "flosports",
-      "isLive": true,
+      "isLive": false,
       "source": "ahl-hockeytech"
     },
     {
@@ -3541,7 +3549,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "olympic-hockey-2026-2026-02-18-1510-tbd-at-usa",
@@ -4087,7 +4096,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260221-1500-brighton-at-brentford",
@@ -4100,7 +4110,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260221-1500-burnley-at-chelsea",
@@ -4113,7 +4124,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "rugby-sixnations-zhpb5t",
@@ -4139,7 +4151,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "olympic-hockey-2026-2026-02-21-1440-tbd-at-tbd",
@@ -4181,7 +4194,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "ahl-1028563",
@@ -4472,7 +4486,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260222-1400-liverpool-at-nott-m-forest",
@@ -4485,7 +4500,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260222-1400-fulham-at-sunderland",
@@ -4498,7 +4514,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "rugby-sixnations-b3hhzg",
@@ -4524,7 +4541,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "rugby-top14-bk8be1",
@@ -4655,7 +4673,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "cricket-t20wc-23bf7f5627",
@@ -5373,7 +5392,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "nhl_2025020930",
@@ -5664,7 +5684,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "cricket-t20wc-9b82d71190",
@@ -5815,7 +5836,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260228-1500-west-ham-at-liverpool",
@@ -5828,7 +5850,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260228-1500-everton-at-newcastle",
@@ -5841,7 +5864,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "nhl_2025020934",
@@ -5899,7 +5923,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "rugby-urc-6fvojc",
@@ -6422,7 +6447,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260301-1400-spurs-at-fulham",
@@ -6435,7 +6461,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260301-1400-crystal-palace-at-man-utd",
@@ -6448,7 +6475,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260301-1630-chelsea-at-arsenal",
@@ -6461,7 +6489,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "nhl_2025020947",
@@ -6858,7 +6887,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260303-1930-burnley-at-everton",
@@ -6871,7 +6901,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260303-1930-sunderland-at-leeds",
@@ -6884,7 +6915,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260303-2015-liverpool-at-wolves",
@@ -6897,7 +6929,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "nhl_2025020959",
@@ -7172,7 +7205,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260304-1930-arsenal-at-brighton",
@@ -7185,7 +7219,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260304-1930-west-ham-at-fulham",
@@ -7198,7 +7233,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260304-1930-nott-m-forest-at-man-city",
@@ -7211,7 +7247,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "soccer-epl-20260304-2015-man-utd-at-newcastle",
@@ -7224,7 +7261,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "nhl_2025020970",
@@ -7449,7 +7487,8 @@
       "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-epl",
-      "leagueKey": "epl"
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
     },
     {
       "id": "nhl_2025020975",

@@ -16,6 +16,7 @@ interface AppEvent {
   isLive: boolean;
   source: string;
   leagueKey?: string;
+  providerReason?: string;
 }
 
 interface VEvent {
@@ -205,6 +206,7 @@ export async function fetchEplEvents(): Promise<EplFetchResult> {
         isLive: false,
         source: "soccer-epl",
         leagueKey: "epl",
+        providerReason: "epl-yttv",
       });
     }
 

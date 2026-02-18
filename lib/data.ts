@@ -34,6 +34,7 @@ export interface SportEvent {
   seasonTag?: string;
   olympicRound?: string;
   olympicVenue?: string;
+  providerReason?: string;
 }
 
 export interface Pack {

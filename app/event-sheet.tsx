@@ -172,6 +172,12 @@ export default function EventSheet() {
               {formatStartTime(event.startTimeLocal)}
             </Text>
           </View>
+
+          {event.providerReason ? (
+            <Text style={styles.providerReasonText}>
+              {event.providerReason}
+            </Text>
+          ) : null}
         </View>
 
         {provider && (
@@ -306,6 +312,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: Colors.textSecondary,
     fontFamily: "Inter_400Regular",
+  },
+  providerReasonText: {
+    fontSize: 11,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
+    textAlign: "center" as const,
+    letterSpacing: 0.3,
   },
   openButton: {
     flexDirection: "row",
