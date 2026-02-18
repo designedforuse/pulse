@@ -1,0 +1,53 @@
+Add MLS as the next Soccer league using Option C (Hybrid), consistent with EPL.
+
+Hybrid definition for MLS:
+- Fetch full MLS schedule within retention window: now-14d to now+21d.
+- Show all MLS matches by default.
+- Favorites (San Diego FC, New England Revolution) should be prioritized in sorting (Live → Favorites → Start time).
+- League chips remain mode-aware/data-driven.
+
+Provider mapping (MVP):
+- Default all MLS matches to providerId = "youtubetv" for now.
+(We can refine rights mapping later.)
+
+Data ingestion:
+1) Create scripts/updateMls.ts
+2) Prefer an iCal feed if available. If no reliable iCal exists, scrape a stable fixtures source.
+3) Normalize into existing schema:
+   - sport: "soccer"
+   - league: "MLS"
+   - source: "soccer-mls"
+   - homeTeam, awayTeam
+   - startTime (UTC ISO)
+   - endTime = start + 2h 15m default (soccer)
+   - providerId: "youtubetv"
+   - providerReason: "mls-yttv" (optional)
+
+IDs + dedupe:
+- Stable ID format:
+  soccer-mls-YYYYMMDD-HHMM-<away>-at-<home>
+
+Merge + retention:
+- Merge into generatedEvents.json with existing merge/retention logic.
+
+Refresh pipeline + diagnostics:
+- Add MLS fetcher into POST /api/refresh in parallel with EPL and other sports.
+- Settings shows Soccer breakdown with MLS count.
+- /api/debug/sources includes mlsCount and soccerTotal reflects EPL+MLS.
+
+UI integration:
+- Soccer pack league chips should now show EPL and MLS (when present in visible windows).
+- Events appear in Live Now and Mode screens (based on weekend/mode time windows).
+- Keep existing sport chips and league chips behavior.
+
+Favorites:
+- Add MLS favorites with aliases:
+   San Diego FC: ["San Diego FC", "San Diego", "SD FC", "SDFC"]
+   New England Revolution: ["New England Revolution", "New England", "Revolution", "NE Revolution", "NER"]
+- Ensure favorites matching runs against both raw and normalized team names.
+
+Acceptance:
+- After refresh, MLS matches appear (when in window).
+- MLS chip appears under Soccer when relevant.
+- Favorite teams are prioritized.
+- Provider opens YouTube TV.
