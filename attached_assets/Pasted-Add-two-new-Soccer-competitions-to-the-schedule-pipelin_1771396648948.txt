@@ -1,0 +1,56 @@
+Add two new Soccer competitions to the schedule pipeline:
+
+1) Champions League
+2) FA Cup
+
+Provider mapping (MVP):
+- Champions League -> providerId: "youtubetv"
+  providerReason: "ucl-yttv"
+- FA Cup -> providerId: "disneyplus"
+  providerReason: "facup-disneyplus"
+
+Data ingestion:
+- Create scripts:
+   - scripts/updateChampionsLeague.ts
+   - scripts/updateFaCup.ts
+- Prefer iCal feeds (fixturedownload.com style). If an iCal feed isn’t available or doesn’t contain enough data, use a stable fixtures source (ESPN public API or equivalent).
+
+Normalization (match existing schema):
+For each match create an event with:
+- sport: "soccer"
+- league: exact names:
+   "Champions League"
+   "FA Cup"
+- source:
+   "soccer-championsleague"
+   "soccer-facup"
+- homeTeam, awayTeam
+- startTime (UTC ISO, DST-safe)
+- endTime = start + 2h 15m
+- providerId + providerReason per mapping above
+
+Stable IDs:
+- soccer-championsleague-YYYYMMDD-HHMM-<away>-at-<home>
+- soccer-facup-YYYYMMDD-HHMM-<away>-at-<home>
+(Include HHMM to avoid collisions.)
+
+Merge + retention:
+- Merge into generatedEvents.json using existing merge logic.
+- Retain only events within [now-14d, now+21d].
+
+Pipeline + diagnostics:
+- Wire both scripts into POST /api/refresh in parallel with other soccer fetchers.
+- Update /api/debug/sources with:
+   championsLeagueCount
+   faCupCount
+- Ensure soccerTotal reflects all soccer sources combined.
+- Add Settings UI source rows for Champions League and FA Cup (even if 0 events, show a season/tournament resume date if available).
+
+UI integration:
+- Add both competitions to BOTH soccer packs (Morning + Night) so they appear in Modes based on kickoff time.
+- Soccer league chips should show "Champions League" and "FA Cup" dynamically when events exist in the visible window(s).
+- Tapping events deep links correctly (UCL -> YTTV, FA Cup -> Disney+).
+
+Acceptance:
+- After refresh, any in-window Champions League / FA Cup matches appear in Live Now and Modes as applicable.
+- Provider routing matches mapping above.
