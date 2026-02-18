@@ -10,8 +10,8 @@
   "MI Cape Town": ["MICT", "MI Cape Town"],
   "Paarl Royals": ["Paarl"],
   "Tottenham Hotspur": ["Tottenham", "Spurs"],
-  "San Diego FC": ["SDFC"],
-  "New England Revolution": ["Revolution", "Revs"],
+  "San Diego FC": ["San Diego", "SD FC", "SDFC"],
+  "New England Revolution": ["New England", "Revolution", "NE Revolution", "NER", "Revs"],
   "San Diego Wave": ["Wave"],
   "Orange County SC": ["OCSC", "Orange County"]
 }
