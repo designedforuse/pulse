@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-18T06:29:55.257Z",
+  "lastUpdated": "2026-02-18T06:43:20.866Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -17,7 +17,9 @@
     "Bundesliga (iCal feed)",
     "Ligue 1 (iCal feed)",
     "NWSL (iCal feed)",
-    "USL (ESPN API)"
+    "USL (ESPN API)",
+    "Champions League (iCal feed)",
+    "FA Cup (ESPN API)"
   ],
   "ahlSourceUsed": "hockeytech",
   "ahlOddsKeyUsed": null,
@@ -121,35 +123,45 @@
   "mlrUpdated": 0,
   "mlrPruned": 0,
   "mlrSourceUsed": "hardcoded",
+  "championsLeagueCount": 16,
+  "championsLeagueAdded": 0,
+  "championsLeagueUpdated": 16,
+  "championsLeaguePruned": 16,
+  "championsLeagueSourceUsed": "ical",
+  "faCupCount": 24,
+  "faCupAdded": 0,
+  "faCupUpdated": 24,
+  "faCupPruned": 24,
+  "faCupSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-18T06:29:55.257Z",
+    "lastRefreshAt": "2026-02-18T06:43:20.866Z",
     "sources": {
       "nhl": {
         "count": 116,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 214,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 7,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 90,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 8,
@@ -163,7 +175,7 @@
       },
       "cricket": {
         "count": 20,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "T20I Cricket": 2,
@@ -172,42 +184,42 @@
       },
       "iccT20Wc": {
         "count": 55,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 30,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 51,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 45,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 50,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 51,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 45,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 45,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
@@ -218,7 +230,7 @@
       },
       "usl": {
         "count": 11,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
@@ -230,9 +242,20 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-02-18T06:29:55.257Z",
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
+      },
+      "championsLeague": {
+        "count": 16,
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
+        "sourceName": "iCal Feed"
+      },
+      "faCup": {
+        "count": 24,
+        "lastFetchAt": "2026-02-18T06:43:20.866Z",
+        "sourceName": "ESPN API",
+        "firstMatchDate": "2026-02-13T19:45:00.000Z"
       }
     }
   },
@@ -2692,6 +2715,34 @@
       "olympicVenue": "Santagiulia Arena"
     },
     {
+      "id": "soccer-facup-20260213-1945-chelsea-at-hull-city",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Chelsea",
+      "homeTeam": "Hull City",
+      "startTimeLocal": "2026-02-13T19:45:00.000Z",
+      "endTimeLocal": "2026-02-13T22:00:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
+      "id": "soccer-facup-20260213-1945-ipswich-town-at-wrexham",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Ipswich Town",
+      "homeTeam": "Wrexham",
+      "startTimeLocal": "2026-02-13T19:45:00.000Z",
+      "endTimeLocal": "2026-02-13T22:00:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
       "id": "olympic-hockey-2026-2026-02-13-1510-canada-at-switzerland",
       "sport": "hockey",
       "league": "Olympic Hockey",
@@ -2969,6 +3020,20 @@
       "seasonTag": "Milan-Cortina-2026",
       "olympicRound": "Preliminary",
       "olympicVenue": "RHO Arena"
+    },
+    {
+      "id": "soccer-facup-20260214-1215-west-ham-united-at-burton-albion",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "West Ham United",
+      "homeTeam": "Burton Albion",
+      "startTimeLocal": "2026-02-14T12:15:00.000Z",
+      "endTimeLocal": "2026-02-14T14:30:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
     },
     {
       "id": "cricket-t20i-cpf16",
@@ -3254,6 +3319,62 @@
       "leagueKey": "top14"
     },
     {
+      "id": "soccer-facup-20260214-1500-mansfield-town-at-burnley",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Mansfield Town",
+      "homeTeam": "Burnley",
+      "startTimeLocal": "2026-02-14T15:00:00.000Z",
+      "endTimeLocal": "2026-02-14T17:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
+      "id": "soccer-facup-20260214-1500-salford-city-at-manchester-city",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Salford City",
+      "homeTeam": "Manchester City",
+      "startTimeLocal": "2026-02-14T15:00:00.000Z",
+      "endTimeLocal": "2026-02-14T17:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
+      "id": "soccer-facup-20260214-1500-west-bromwich-albion-at-norwich-city",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "West Bromwich Albion",
+      "homeTeam": "Norwich City",
+      "startTimeLocal": "2026-02-14T15:00:00.000Z",
+      "endTimeLocal": "2026-02-14T17:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
+      "id": "soccer-facup-20260214-1500-leicester-city-at-southampton",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Leicester City",
+      "homeTeam": "Southampton",
+      "startTimeLocal": "2026-02-14T15:00:00.000Z",
+      "endTimeLocal": "2026-02-14T17:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
       "id": "rugby-top14-vlj6r4",
       "sport": "rugby",
       "league": "Top 14",
@@ -3336,6 +3457,20 @@
       "leagueKey": "sixnations"
     },
     {
+      "id": "soccer-facup-20260214-1745-newcastle-united-at-aston-villa",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Newcastle United",
+      "homeTeam": "Aston Villa",
+      "startTimeLocal": "2026-02-14T17:45:00.000Z",
+      "endTimeLocal": "2026-02-14T20:00:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
       "id": "ahl-1028507",
       "sport": "hockey",
       "league": "AHL",
@@ -3371,6 +3506,20 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "top14"
+    },
+    {
+      "id": "soccer-facup-20260214-2000-brighton-hove-albion-at-liverpool",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Brighton & Hove Albion",
+      "homeTeam": "Liverpool",
+      "startTimeLocal": "2026-02-14T20:00:00.000Z",
+      "endTimeLocal": "2026-02-14T22:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
     },
     {
       "id": "olympic-hockey-2026-2026-02-14-1510-usa-at-denmark",
@@ -3794,6 +3943,20 @@
       "olympicVenue": "Santagiulia Arena"
     },
     {
+      "id": "soccer-facup-20260215-1200-leeds-united-at-birmingham-city",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Leeds United",
+      "homeTeam": "Birmingham City",
+      "startTimeLocal": "2026-02-15T12:00:00.000Z",
+      "endTimeLocal": "2026-02-15T14:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
       "id": "cricket-t20i-wz202a",
       "sport": "cricket",
       "league": "T20I Cricket",
@@ -3832,6 +3995,20 @@
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
       "t20WcVenue": "R. Premadasa Stadium, Colombo"
+    },
+    {
+      "id": "soccer-facup-20260215-1330-wolverhampton-wanderers-at-grimsby-town",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Wolverhampton Wanderers",
+      "homeTeam": "Grimsby Town",
+      "startTimeLocal": "2026-02-15T13:30:00.000Z",
+      "endTimeLocal": "2026-02-15T15:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
     },
     {
       "id": "soccer-seriea-20260215-1400-lecce-at-cagliari",
@@ -3974,6 +4151,34 @@
       "providerReason": "seriea-yttv"
     },
     {
+      "id": "soccer-facup-20260215-1400-sunderland-at-oxford-united",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Sunderland",
+      "homeTeam": "Oxford United",
+      "startTimeLocal": "2026-02-15T14:00:00.000Z",
+      "endTimeLocal": "2026-02-15T16:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
+      "id": "soccer-facup-20260215-1400-fulham-at-stoke-city",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Fulham",
+      "homeTeam": "Stoke City",
+      "startTimeLocal": "2026-02-15T14:00:00.000Z",
+      "endTimeLocal": "2026-02-15T16:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
       "id": "rugby-sixnations-9iyefr",
       "sport": "rugby",
       "league": "Six Nations",
@@ -4002,6 +4207,20 @@
       "seasonTag": "Milan-Cortina-2026",
       "olympicRound": "Preliminary",
       "olympicVenue": "Santagiulia Arena"
+    },
+    {
+      "id": "soccer-facup-20260215-1630-wigan-athletic-at-arsenal",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Wigan Athletic",
+      "homeTeam": "Arsenal",
+      "startTimeLocal": "2026-02-15T16:30:00.000Z",
+      "endTimeLocal": "2026-02-15T18:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
     },
     {
       "id": "olympic-hockey-2026-2026-02-15-1310-denmark-at-latvia",
@@ -4407,6 +4626,20 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "soccer-facup-20260216-1930-brentford-at-macclesfield-fc",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Brentford",
+      "homeTeam": "Macclesfield FC",
+      "startTimeLocal": "2026-02-16T19:30:00.000Z",
+      "endTimeLocal": "2026-02-16T21:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
       "id": "ahl-1028526",
       "sport": "hockey",
       "league": "AHL",
@@ -4552,6 +4785,62 @@
       "seasonTag": "Milan-Cortina-2026",
       "olympicRound": "Qualification Playoff",
       "olympicVenue": "Santagiulia Arena"
+    },
+    {
+      "id": "soccer-championsleague-20260217-1745-juventus-at-galatasaray",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Juventus",
+      "homeTeam": "Galatasaray",
+      "startTimeLocal": "2026-02-17T17:45:00.000Z",
+      "endTimeLocal": "2026-02-17T19:45:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
+    },
+    {
+      "id": "soccer-championsleague-20260217-2000-paris-at-monaco",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Paris",
+      "homeTeam": "Monaco",
+      "startTimeLocal": "2026-02-17T20:00:00.000Z",
+      "endTimeLocal": "2026-02-17T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
+    },
+    {
+      "id": "soccer-championsleague-20260217-2000-real-madrid-at-benfica",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Real Madrid",
+      "homeTeam": "Benfica",
+      "startTimeLocal": "2026-02-17T20:00:00.000Z",
+      "endTimeLocal": "2026-02-17T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
+    },
+    {
+      "id": "soccer-championsleague-20260217-2000-atalanta-at-b-dortmund",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Atalanta",
+      "homeTeam": "B. Dortmund",
+      "startTimeLocal": "2026-02-17T20:00:00.000Z",
+      "endTimeLocal": "2026-02-17T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
     },
     {
       "id": "olympic-hockey-2026-2026-02-17-1510-sweden-at-latvia",
@@ -4706,6 +4995,20 @@
       "olympicVenue": "RHO Arena"
     },
     {
+      "id": "soccer-championsleague-20260218-1745-newcastle-at-qarabag",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Newcastle",
+      "homeTeam": "Qarabag",
+      "startTimeLocal": "2026-02-18T17:45:00.000Z",
+      "endTimeLocal": "2026-02-18T19:45:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
+    },
+    {
       "id": "soccer-laliga-20260218-1900-villarreal-cf-at-levante-ud",
       "sport": "soccer",
       "league": "La Liga",
@@ -4732,6 +5035,48 @@
       "source": "soccer-epl",
       "leagueKey": "epl",
       "providerReason": "epl-yttv"
+    },
+    {
+      "id": "soccer-championsleague-20260218-2000-leverkusen-at-olympiacos",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Leverkusen",
+      "homeTeam": "Olympiacos",
+      "startTimeLocal": "2026-02-18T20:00:00.000Z",
+      "endTimeLocal": "2026-02-18T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
+    },
+    {
+      "id": "soccer-championsleague-20260218-2000-inter-at-bod-glimt",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Inter",
+      "homeTeam": "Bodø/Glimt",
+      "startTimeLocal": "2026-02-18T20:00:00.000Z",
+      "endTimeLocal": "2026-02-18T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
+    },
+    {
+      "id": "soccer-championsleague-20260218-2000-atleti-at-club-brugge",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Atleti",
+      "homeTeam": "Club Brugge",
+      "startTimeLocal": "2026-02-18T20:00:00.000Z",
+      "endTimeLocal": "2026-02-18T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
     },
     {
       "id": "olympic-hockey-2026-2026-02-18-1510-tbd-at-usa",
@@ -6621,6 +6966,62 @@
       "t20WcVenue": "Pallekele International Stadium"
     },
     {
+      "id": "soccer-championsleague-20260224-1745-club-brugge-at-atleti",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Club Brugge",
+      "homeTeam": "Atleti",
+      "startTimeLocal": "2026-02-24T17:45:00.000Z",
+      "endTimeLocal": "2026-02-24T19:45:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
+    },
+    {
+      "id": "soccer-championsleague-20260224-2000-olympiacos-at-leverkusen",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Olympiacos",
+      "homeTeam": "Leverkusen",
+      "startTimeLocal": "2026-02-24T20:00:00.000Z",
+      "endTimeLocal": "2026-02-24T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
+    },
+    {
+      "id": "soccer-championsleague-20260224-2000-bod-glimt-at-inter",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Bodø/Glimt",
+      "homeTeam": "Inter",
+      "startTimeLocal": "2026-02-24T20:00:00.000Z",
+      "endTimeLocal": "2026-02-24T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
+    },
+    {
+      "id": "soccer-championsleague-20260224-2000-qarabag-at-newcastle",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Qarabag",
+      "homeTeam": "Newcastle",
+      "startTimeLocal": "2026-02-24T20:00:00.000Z",
+      "endTimeLocal": "2026-02-24T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
+    },
+    {
       "id": "ahl-1028575",
       "sport": "hockey",
       "league": "AHL",
@@ -6676,6 +7077,62 @@
       "isIccT20Wc": true,
       "t20WcMatchLabel": "T20 WC S8 Group 2 – Match 46",
       "t20WcVenue": "R. Premadasa Stadium, Colombo"
+    },
+    {
+      "id": "soccer-championsleague-20260225-1745-b-dortmund-at-atalanta",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "B. Dortmund",
+      "homeTeam": "Atalanta",
+      "startTimeLocal": "2026-02-25T17:45:00.000Z",
+      "endTimeLocal": "2026-02-25T19:45:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
+    },
+    {
+      "id": "soccer-championsleague-20260225-2000-monaco-at-paris",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Monaco",
+      "homeTeam": "Paris",
+      "startTimeLocal": "2026-02-25T20:00:00.000Z",
+      "endTimeLocal": "2026-02-25T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
+    },
+    {
+      "id": "soccer-championsleague-20260225-2000-galatasaray-at-juventus",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Galatasaray",
+      "homeTeam": "Juventus",
+      "startTimeLocal": "2026-02-25T20:00:00.000Z",
+      "endTimeLocal": "2026-02-25T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
+    },
+    {
+      "id": "soccer-championsleague-20260225-2000-benfica-at-real-madrid",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Benfica",
+      "homeTeam": "Real Madrid",
+      "startTimeLocal": "2026-02-25T20:00:00.000Z",
+      "endTimeLocal": "2026-02-25T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
     },
     {
       "id": "nhl_2025020910",
@@ -9584,6 +10041,20 @@
       "providerReason": "epl-yttv"
     },
     {
+      "id": "soccer-facup-20260303-1945-bristol-city-at-port-vale",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Bristol City",
+      "homeTeam": "Port Vale",
+      "startTimeLocal": "2026-03-03T19:45:00.000Z",
+      "endTimeLocal": "2026-03-03T22:00:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
       "id": "soccer-epl-20260303-2015-liverpool-at-wolves",
       "sport": "soccer",
       "league": "EPL",
@@ -10832,6 +11303,118 @@
       "source": "soccer-bundesliga",
       "leagueKey": "bundesliga",
       "providerReason": "bundesliga-disneyplus"
+    },
+    {
+      "id": "soccer-facup-20260307-1500-southampton-at-fulham",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Southampton",
+      "homeTeam": "Fulham",
+      "startTimeLocal": "2026-03-07T15:00:00.000Z",
+      "endTimeLocal": "2026-03-07T17:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
+      "id": "soccer-facup-20260307-1500-norwich-city-at-leeds-united",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Norwich City",
+      "homeTeam": "Leeds United",
+      "startTimeLocal": "2026-03-07T15:00:00.000Z",
+      "endTimeLocal": "2026-03-07T17:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
+      "id": "soccer-facup-20260307-1500-arsenal-at-mansfield-town",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Arsenal",
+      "homeTeam": "Mansfield Town",
+      "startTimeLocal": "2026-03-07T15:00:00.000Z",
+      "endTimeLocal": "2026-03-07T17:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
+      "id": "soccer-facup-20260307-1500-manchester-city-at-newcastle-united",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Manchester City",
+      "homeTeam": "Newcastle United",
+      "startTimeLocal": "2026-03-07T15:00:00.000Z",
+      "endTimeLocal": "2026-03-07T17:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
+      "id": "soccer-facup-20260307-1500-sunderland-at-tbd",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Sunderland",
+      "homeTeam": "TBD",
+      "startTimeLocal": "2026-03-07T15:00:00.000Z",
+      "endTimeLocal": "2026-03-07T17:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
+      "id": "soccer-facup-20260307-1500-brentford-at-west-ham-united",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Brentford",
+      "homeTeam": "West Ham United",
+      "startTimeLocal": "2026-03-07T15:00:00.000Z",
+      "endTimeLocal": "2026-03-07T17:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
+      "id": "soccer-facup-20260307-1500-liverpool-at-wolverhampton-wanderers",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Liverpool",
+      "homeTeam": "Wolverhampton Wanderers",
+      "startTimeLocal": "2026-03-07T15:00:00.000Z",
+      "endTimeLocal": "2026-03-07T17:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
+    },
+    {
+      "id": "soccer-facup-20260307-1500-chelsea-at-wrexham",
+      "sport": "soccer",
+      "league": "FA Cup",
+      "awayTeam": "Chelsea",
+      "homeTeam": "Wrexham",
+      "startTimeLocal": "2026-03-07T15:00:00.000Z",
+      "endTimeLocal": "2026-03-07T17:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-facup",
+      "leagueKey": "facup",
+      "providerReason": "facup-disneyplus"
     },
     {
       "id": "rugby-sixnations-pt9uu2",
