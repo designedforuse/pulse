@@ -55,6 +55,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
 
     const nwslFirstMatchDate = generated.generatedMeta?.sources?.nwsl?.firstMatchDate || null;
+    const uslFirstMatchDate = generated.generatedMeta?.sources?.usl?.firstMatchDate || null;
 
     return res.json({
       source: "generated",
@@ -62,6 +63,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       events: filtered,
       leagueSeasonStarts: {
         ...(nwslFirstMatchDate ? { nwsl: nwslFirstMatchDate } : {}),
+        ...(uslFirstMatchDate ? { usl: uslFirstMatchDate } : {}),
       },
     });
   });
@@ -240,6 +242,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
           nwslUpdated: generated?.nwslUpdated ?? 0,
           nwslPruned: generated?.nwslPruned ?? 0,
           nwslSourceUsed: generated?.nwslSourceUsed ?? "unknown",
+          uslCount: generated?.uslCount ?? 0,
+          uslAdded: generated?.uslAdded ?? 0,
+          uslUpdated: generated?.uslUpdated ?? 0,
+          uslPruned: generated?.uslPruned ?? 0,
+          uslSourceUsed: generated?.uslSourceUsed ?? "unknown",
         });
       }
     );
@@ -392,10 +399,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const bundesliga = events.filter((e: any) => e.source === "soccer-bundesliga").length;
     const ligue1 = events.filter((e: any) => e.source === "soccer-ligue1").length;
     const nwsl = events.filter((e: any) => e.source === "soccer-nwsl").length;
-    const soccerTotal = epl + mls + serieA + laLiga + bundesliga + ligue1 + nwsl;
+    const usl = events.filter((e: any) => e.source === "soccer-usl").length;
+    const soccerTotal = epl + mls + serieA + laLiga + bundesliga + ligue1 + nwsl + usl;
     const other = events.length - nhl - ahl - echl - ncaa - rugby - cricketTotal - olympicHockey - soccerTotal;
     return res.json({
-      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, olympicHockey, epl, mls, serieA, laLiga, bundesliga, ligue1, nwsl, soccerTotal, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, olympicHockey, epl, mls, serieA, laLiga, bundesliga, ligue1, nwsl, usl, soccerTotal, other, total: events.length,
       lastUpdated: generated.lastUpdated,
       ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",

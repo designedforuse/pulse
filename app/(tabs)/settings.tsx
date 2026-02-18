@@ -322,6 +322,12 @@ export default function SettingsScreen() {
                     <View style={styles.sourceDivider} />
                   </>
                 )}
+                {meta.sources.usl && (
+                  <>
+                    <SourceRow league="USL" meta={meta.sources.usl} />
+                    <View style={styles.sourceDivider} />
+                  </>
+                )}
               </View>
             )}
             <Pressable

@@ -1,0 +1,55 @@
+Add USL as a Soccer league using the same Hybrid Option C model as the other soccer leagues.
+
+Hybrid rules:
+- Fetch full USL schedule within retention window (now-14d to now+21d).
+- Show all matches by default.
+- Sorting remains Live → Favorites → Start time.
+- League chips remain mode-aware/data-driven.
+
+Provider mapping (MVP):
+- Default ALL USL matches to providerId: "disneyplus"
+- providerReason: "usl-disneyplus"
+
+Data ingestion:
+1) Create scripts/updateUsl.ts
+2) Prefer an iCal feed from fixturedownload.com if available. If no reliable iCal exists, use another stable fixture source.
+3) Parse/normalize into existing schema:
+   - sport: "soccer"
+   - league: "USL"
+   - source: "soccer-usl"
+   - homeTeam, awayTeam
+   - startTime (UTC ISO)
+   - endTime = start + 2h 15m
+   - providerId: "disneyplus"
+   - providerReason: "usl-disneyplus"
+
+Stable IDs:
+soccer-usl-YYYYMMDD-HHMM-<away>-at-<home>
+
+Merge + retention:
+- Use existing merge/retention logic (14d back / 21d forward).
+- Ensure no ID collisions.
+
+Pipeline integration:
+- Add updateUsl.ts into POST /api/refresh alongside other soccer scripts.
+- /api/debug/sources includes uslCount and soccerTotal updates.
+- Settings UI shows a USL source row (even when 0 events, if possible).
+
+UI integration:
+- Add "USL" to both soccer packs (Morning + Night) so it can appear in Modes when applicable.
+- League chip "USL" appears under Soccer when events exist in visible window(s).
+
+Favorites:
+- Ensure Orange County SC is a Soccer favorite with aliases:
+  ["Orange County SC", "OCSC", "Orange County", "OC SC"]
+- Favorites prioritization should apply to USL events.
+
+Empty state polish:
+- If user selects Soccer → USL and there are 0 events in window, show:
+  "USL season starts soon. Games will appear here once within the next 21 days."
+  (If first match date can be derived from feed, display it.)
+
+Acceptance:
+- After refresh, USL matches appear when within retention window.
+- OCSC matches are detected as favorites.
+- Provider opens Disney+.
