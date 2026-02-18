@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 
 const SOCCER_DURATION_MIN = 135;
-const ICAL_URL = "https://fixturedownload.com/download/epl-2025-UTC.ics";
+const ICAL_URL = "https://fixturedownload.com/download/epl-2025-GMTStandardTime.ics";
 
 interface AppEvent {
   id: string;
@@ -126,6 +126,8 @@ function parseIcalText(ical: string): VEvent[] {
 
 function parseTeams(summary: string): { homeTeam: string; awayTeam: string } | null {
   let cleaned = summary.trim();
+
+  cleaned = cleaned.replace(/\s*-\s*English Premier League.*$/i, "");
 
   const vsMatch = cleaned.match(/^(.+?)\s+vs\.?\s+(.+)$/i);
   if (vsMatch) {
