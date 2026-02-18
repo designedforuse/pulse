@@ -1,0 +1,77 @@
+Provider mapping update for European soccer leagues:
+
+- Serie A  -> providerId: "youtubetv"
+- Ligue 1  -> providerId: "youtubetv"
+- La Liga  -> providerId: "disneyplus"
+- Bundesliga -> providerId: "disneyplus"
+
+Implement this provider mapping in the new league ingestion scripts (and/or a shared soccer provider mapper).
+
+Add the following European soccer leagues using the same Hybrid Option C model as EPL and MLS:
+
+Leagues to add:
+- Serie A
+- La Liga
+- Bundesliga
+- Ligue 1
+
+Hybrid rules:
+- Fetch full schedule within retention window (now-14d to now+21d).
+- Show all matches by default.
+- Sorting stays: Live → Favorites → Start time.
+- League chips remain mode-aware and data-driven.
+
+Data ingestion:
+For each league:
+1) Create scripts:
+   - scripts/updateSerieA.ts
+   - scripts/updateLaLiga.ts
+   - scripts/updateBundesliga.ts
+   - scripts/updateLigue1.ts
+
+2) Prefer iCal feeds (fixturedownload.com if consistent with MLS). If the iCal summary includes “Round X” suffix text, strip it before parsing team names.
+
+3) Normalize events into existing schema:
+   - sport: "soccer"
+   - league names exactly:
+       "Serie A"
+       "La Liga"
+       "Bundesliga"
+       "Ligue 1"
+   - source:
+       "soccer-seriea"
+       "soccer-laliga"
+       "soccer-bundesliga"
+       "soccer-ligue1"
+   - homeTeam, awayTeam
+   - startTime (UTC ISO)
+   - endTime = start + 2h 15m default
+   - providerId per mapping above
+   - providerReason values:
+       "seriea-yttv"
+       "ligue1-yttv"
+       "laliga-disneyplus"
+       "bundesliga-disneyplus"
+
+Stable IDs:
+soccer-<key>-YYYYMMDD-HHMM-<away>-at-<home>
+(where <key> is seriea | laliga | bundesliga | ligue1)
+
+Merge + retention:
+- Use existing merge/retention logic.
+- Keep 14-day past / 21-day future window.
+- Avoid duplicate IDs (include time in ID).
+
+Pipeline integration:
+- Add these scripts into POST /api/refresh in parallel with other sports.
+- Update /api/debug/sources to include:
+   serieaCount, laligaCount, bundesligaCount, ligue1Count
+- soccerTotal should reflect EPL + MLS + new leagues.
+
+UI:
+- Under Soccer pack, league filter chips should show these leagues when events exist in the visible window(s).
+- Tapping an event should open YouTube TV for Serie A/Ligue 1 and Disney+ for La Liga/Bundesliga.
+
+Acceptance:
+- After refresh, matches appear in Live Now and populate Weekend Mornings appropriately.
+- Provider deep links match the mapping above.
