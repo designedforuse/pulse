@@ -49,7 +49,7 @@ const SPORT_FILTERS: { key: SportFilter; label: string; icon: string }[] = [
 
 const LEAGUE_PREFERRED_ORDER: Record<string, string[]> = {
   hockey: ["NHL", "AHL", "ECHL", "NCAA Hockey", "Olympic Hockey"],
-  rugby: ["URC", "Top 14", "English Premiership", "Six Nations", "Japan League One", "Super Rugby", "HSBC SVNS"],
+  rugby: ["URC", "Top 14", "English Premiership", "Six Nations", "European Champions Cup", "MLR", "Japan League One", "Super Rugby", "HSBC SVNS"],
   cricket: ["IPL", "BBL", "Super Smash", "SA20", "The Hundred", "MLC", "CPL", "T20 World Cup", "Test Cricket", "T20I Cricket", "ODI Cricket"],
   soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "MLS", "NWSL", "USL"],
 };
@@ -67,11 +67,19 @@ function getLeagueDisplayLabel(e: SportEvent): string {
   return e.league;
 }
 
+const LEAGUE_SEASON_KEY_MAP: Record<string, string> = {
+  "NWSL": "nwsl",
+  "USL": "usl",
+  "European Champions Cup": "championscup",
+  "MLR": "mlr",
+};
+
 const LEAGUE_SHORT_LABELS: Record<string, string> = {
   "NCAA Hockey": "NCAA",
   "English Premiership": "Premiership",
   "Japan League One": "League One",
   "HSBC SVNS": "SVNS",
+  "European Champions Cup": "Champions Cup",
   "Test Cricket": "Test",
   "T20I Cricket": "T20I",
   "ODI Cricket": "ODI",
@@ -643,13 +651,13 @@ export default function ModeDetailScreen() {
           allEmpty ? (
             <View style={styles.emptyContainer}>
               <Ionicons name="calendar-outline" size={48} color={Colors.textMuted} />
-              {activeLeague !== "all" && leagueSeasonStarts[activeLeague] ? (
+              {activeLeague !== "all" && leagueSeasonStarts[LEAGUE_SEASON_KEY_MAP[activeLeague] ?? activeLeague] ? (
                 <>
                   <Text style={styles.emptyTitle}>
                     {`Season hasn't started yet`}
                   </Text>
                   <Text style={styles.emptySubtitle}>
-                    {`${activeLeague.toUpperCase()} season starts ${new Date(leagueSeasonStarts[activeLeague]).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "America/Los_Angeles" })}. Games will appear here once we're within the next 21 days.`}
+                    {`${LEAGUE_SHORT_LABELS[activeLeague] ?? activeLeague} season starts ${new Date(leagueSeasonStarts[LEAGUE_SEASON_KEY_MAP[activeLeague] ?? activeLeague]).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "America/Los_Angeles" })}. Games will appear here once we're within the next 21 days.`}
                   </Text>
                 </>
               ) : (

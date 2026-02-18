@@ -56,6 +56,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
     const nwslFirstMatchDate = generated.generatedMeta?.sources?.nwsl?.firstMatchDate || null;
     const uslFirstMatchDate = generated.generatedMeta?.sources?.usl?.firstMatchDate || null;
+    const championsCupFirstMatchDate = generated.generatedMeta?.sources?.championsCup?.firstMatchDate || null;
+    const mlrFirstMatchDate = generated.generatedMeta?.sources?.mlr?.firstMatchDate || null;
 
     return res.json({
       source: "generated",
@@ -64,6 +66,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       leagueSeasonStarts: {
         ...(nwslFirstMatchDate ? { nwsl: nwslFirstMatchDate } : {}),
         ...(uslFirstMatchDate ? { usl: uslFirstMatchDate } : {}),
+        ...(championsCupFirstMatchDate ? { championscup: championsCupFirstMatchDate } : {}),
+        ...(mlrFirstMatchDate ? { mlr: mlrFirstMatchDate } : {}),
       },
     });
   });
@@ -386,6 +390,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const echl = events.filter((e: any) => (e.source || "").startsWith("echl")).length;
     const ncaa = events.filter((e: any) => (e.source || "").startsWith("ncaa")).length;
     const rugby = events.filter((e: any) => e.source === "rugby").length;
+    const championsCup = events.filter((e: any) => e.source === "rugby-championscup").length;
+    const mlr = events.filter((e: any) => e.source === "rugby-mlr").length;
     const svnsSessions = events.filter((e: any) => e.leagueKey === "svns" && e.eventType === "session").length;
     const sixnationsCount = events.filter((e: any) => e.leagueKey === "sixnations").length;
     const cricket = events.filter((e: any) => (e.source || "").startsWith("cricket") && e.source !== "cricket-t20wc-schedule").length;
@@ -401,9 +407,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const nwsl = events.filter((e: any) => e.source === "soccer-nwsl").length;
     const usl = events.filter((e: any) => e.source === "soccer-usl").length;
     const soccerTotal = epl + mls + serieA + laLiga + bundesliga + ligue1 + nwsl + usl;
-    const other = events.length - nhl - ahl - echl - ncaa - rugby - cricketTotal - olympicHockey - soccerTotal;
+    const rugbyTotal = rugby + championsCup + mlr;
+    const other = events.length - nhl - ahl - echl - ncaa - rugbyTotal - cricketTotal - olympicHockey - soccerTotal;
     return res.json({
-      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, olympicHockey, epl, mls, serieA, laLiga, bundesliga, ligue1, nwsl, usl, soccerTotal, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, championsCup, mlr, rugbyTotal, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, olympicHockey, epl, mls, serieA, laLiga, bundesliga, ligue1, nwsl, usl, soccerTotal, other, total: events.length,
       lastUpdated: generated.lastUpdated,
       ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",

@@ -23,7 +23,8 @@
           "leagues": [
             "Japan League One",
             "Super Rugby",
-            "HSBC SVNS"
+            "HSBC SVNS",
+            "MLR"
           ]
         },
         {
@@ -81,7 +82,9 @@
             "URC",
             "Top 14",
             "English Premiership",
-            "Six Nations"
+            "Six Nations",
+            "European Champions Cup",
+            "MLR"
           ]
         },
         {
@@ -352,6 +355,10 @@
     "rugby": {
       "URC": [
         "Stormers"
+      ],
+      "MLR": [
+        "California Legion",
+        "New England Free Jacks"
       ]
     },
     "cricket": {

@@ -13,5 +13,11 @@
   "San Diego FC": ["San Diego", "SD FC", "SDFC"],
   "New England Revolution": ["New England", "Revolution", "NE Revolution", "NER", "Revs"],
   "San Diego Wave": ["Wave", "San Diego Wave FC", "SD Wave"],
-  "Orange County SC": ["OCSC", "Orange County", "Orange County SC", "OC SC"]
+  "Orange County SC": ["OCSC", "Orange County", "Orange County SC", "OC SC"],
+  "Anthem RC": ["Anthem", "Anthem Rugby Carolina", "ARC"],
+  "California Legion": ["Legion", "Cal Legion"],
+  "Chicago Hounds": ["Hounds"],
+  "New England Free Jacks": ["Free Jacks", "NEFJ", "NE Free Jacks"],
+  "Old Glory DC": ["Old Glory", "OGDC"],
+  "Seattle Seawolves": ["Seawolves", "Seattle"]
 }
