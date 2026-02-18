@@ -48,6 +48,10 @@
           "leagues": [
             "EPL",
             "MLS",
+            "Serie A",
+            "La Liga",
+            "Bundesliga",
+            "Ligue 1",
             "NWSL",
             "USL"
           ]
