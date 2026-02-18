@@ -1,0 +1,61 @@
+Add two new Rugby leagues to the schedule pipeline:
+
+1) MLR (Major League Rugby)
+2) European Champions Cup
+
+Data ingestion:
+- Create scripts:
+   - scripts/updateMlr.ts
+   - scripts/updateChampionsCup.ts
+- Prefer iCal feeds (like existing rugbyfixture.io pattern). If no reliable iCal exists, scrape a stable fixtures source.
+
+Normalization (match existing schema):
+For each match create:
+- sport: "rugby"
+- league: exact names:
+   "MLR"
+   "European Champions Cup"
+- source:
+   "rugby-mlr"
+   "rugby-championscup"
+- homeTeam, awayTeam
+- startTime (UTC ISO, DST-safe IANA conversion)
+- endTime:
+   - use DTEND if present
+   - else default duration = 2h 15m
+
+Provider mapping (MVP):
+- MLR -> providerId: "disneyplus"
+  providerReason: "mlr-disneyplus"
+- European Champions Cup -> providerId: "flosports"
+  providerReason: "championscup-flosports"
+
+Stable IDs:
+- rugby-mlr-YYYYMMDD-HHMM-<away>-at-<home>
+- rugby-championscup-YYYYMMDD-HHMM-<away>-at-<home>
+
+Merge + retention:
+- Merge into generatedEvents.json using existing merge/retention logic (now-14d to now+21d).
+- Avoid duplicate IDs (include time).
+
+Pipeline + diagnostics:
+- Add both scripts to POST /api/refresh in parallel with other fetchers.
+- /api/debug/sources includes:
+   mlrCount
+   championsCupCount
+- Settings UI shows source rows for MLR and European Champions Cup (even if 0 events, show a season starts date if available).
+
+UI integration:
+- Add both leagues to Rugby packs (Morning + Night) so they can appear in Modes based on start time.
+- League filter chips should include "MLR" and "European Champions Cup" when events exist in the visible window.
+
+Favorites:
+- Add MLR favorites (sport=rugby, league=MLR) with aliases:
+   New England Free Jacks: ["New England Free Jacks", "Free Jacks", "NE Free Jacks"]
+   San Diego Legion: ["San Diego Legion", "Legion", "SD Legion"]
+- Ensure favorites matching works for these team names and that favorites sorting applies.
+
+Acceptance:
+- MLR and Champions Cup matches appear when in retention window.
+- Free Jacks and Legion matches are prioritized.
+- Provider deep links: MLR -> Disney+, Champions Cup -> FloSports.
