@@ -240,26 +240,6 @@
       "isLive": false
     },
     {
-      "id": "e13",
-      "sport": "soccer",
-      "league": "NWSL",
-      "awayTeam": "Angel City FC",
-      "homeTeam": "Portland Thorns",
-      "startTimeLocal": "2026-02-21T20:00:00",
-      "providerId": "disneyplus",
-      "isLive": false
-    },
-    {
-      "id": "e14",
-      "sport": "soccer",
-      "league": "USL",
-      "awayTeam": "Sacramento Republic",
-      "homeTeam": "Phoenix Rising",
-      "startTimeLocal": "2026-02-21T19:00:00",
-      "providerId": "disneyplus",
-      "isLive": false
-    },
-    {
       "id": "e15",
       "sport": "rugby",
       "league": "URC",
