@@ -28,9 +28,10 @@ The application features a frontend built with Expo Router for file-based naviga
 - **HockeyTech API (lscluster.hockeytech.com):** Primary and fallback source for AHL and ECHL schedule data.
 - **API-Hockey (api-sports.io):** Source for ECHL schedule data.
 - **College Hockey News (collegehockeynews.com):** Scraped for NCAA BU Hockey schedule data.
-- **rugbyfixture.io (iCal feeds):** Source for URC, Top 14, and English Premiership Rugby schedules.
+- **rugbyfixture.io (iCal feeds):** Source for URC, Top 14, English Premiership, European Champions Cup Rugby schedules.
 - **fixturedownload.com (iCal feeds):** Source for Super Rugby Pacific, EPL, and MLS schedules.
 - **all.rugby:** Scraped for Japan League One Rugby schedule data.
+- **MLR (hardcoded):** 2026 Major League Rugby schedule (6 teams, 15 regular season matches). Disney+ provider.
 - **CricAPI:** Source for international and domestic Cricket fixtures.
 - **YouTube TV:** Streaming provider integration.
 - **Disney+:** Streaming provider integration.
