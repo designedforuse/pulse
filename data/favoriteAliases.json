@@ -19,5 +19,13 @@
   "Chicago Hounds": ["Hounds"],
   "New England Free Jacks": ["Free Jacks", "NEFJ", "NE Free Jacks"],
   "Old Glory DC": ["Old Glory", "OGDC"],
-  "Seattle Seawolves": ["Seawolves", "Seattle"]
+  "Seattle Seawolves": ["Seawolves", "Seattle"],
+  "Bayern Munich": ["FC Bayern", "FC Bayern Munich", "Bayern", "FC Bayern München", "Bayern München"],
+  "Atletico Madrid": ["Atlético Madrid", "Atlético de Madrid", "Atleti", "Atletico", "Atlético", "Club Atlético de Madrid"],
+  "Lazio": ["SS Lazio", "S.S. Lazio"],
+  "Marseille": ["Olympique Marseille", "Olympique de Marseille", "OM"],
+  "Hurricanes": ["Wellington Hurricanes"],
+  "Sungoliath": ["Tokyo Sungoliath", "Suntory Sungoliath"],
+  "La Rochelle": ["Stade Rochelais"],
+  "Bath": ["Bath Rugby"]
 }

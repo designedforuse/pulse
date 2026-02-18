@@ -4,8 +4,13 @@ import aliasData from "@/data/favoriteAliases.json";
 
 const aliasMap: Record<string, string[]> = aliasData;
 
+function stripDiacritics(s: string): string {
+  return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
 function normalize(s: string): string {
   let n = s.trim().toLowerCase();
+  n = stripDiacritics(n);
   n = n.replace(/\s+fc$/i, "");
   n = n.replace(/\s+/g, " ");
   return n;

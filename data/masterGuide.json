@@ -360,6 +360,18 @@
       "URC": [
         "Stormers"
       ],
+      "Super Rugby": [
+        "Hurricanes"
+      ],
+      "Japan League One": [
+        "Sungoliath"
+      ],
+      "Top 14": [
+        "La Rochelle"
+      ],
+      "English Premiership": [
+        "Bath"
+      ],
       "MLR": [
         "California Legion",
         "New England Free Jacks"
@@ -377,6 +389,18 @@
     "soccer": {
       "EPL": [
         "Tottenham Hotspur"
+      ],
+      "Bundesliga": [
+        "Bayern Munich"
+      ],
+      "La Liga": [
+        "Atletico Madrid"
+      ],
+      "Serie A": [
+        "Lazio"
+      ],
+      "Ligue 1": [
+        "Marseille"
       ],
       "MLS": [
         "San Diego FC",
