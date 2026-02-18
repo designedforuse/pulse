@@ -568,6 +568,86 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
+  app.get("/api/debug/favorites", (_req, res) => {
+    const generated = loadGeneratedEvents();
+    if (!generated || !generated.events) {
+      return res.json({ error: "No events available" });
+    }
+
+    const masterPath = path.resolve(process.cwd(), "data", "masterGuide.json");
+    const aliasPath = path.resolve(process.cwd(), "data", "favoriteAliases.json");
+    let allFavorites: Record<string, Record<string, string[]>> = {};
+    let aliasMap: Record<string, string[]> = {};
+    try {
+      const mg = JSON.parse(fs.readFileSync(masterPath, "utf-8"));
+      allFavorites = mg.favorites ?? {};
+      aliasMap = JSON.parse(fs.readFileSync(aliasPath, "utf-8"));
+    } catch {}
+
+    function stripDiacritics(s: string): string {
+      return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+    function norm(s: string): string {
+      let n = s.trim().toLowerCase();
+      n = stripDiacritics(n);
+      n = n.replace(/\s+fc$/i, "").replace(/\s+/g, " ");
+      return n;
+    }
+
+    const expandedSet = new Set<string>();
+    const canonicalSet = new Set<string>();
+    for (const sport of Object.keys(allFavorites)) {
+      const sportFavs = allFavorites[sport];
+      for (const league of Object.keys(sportFavs)) {
+        for (const team of sportFavs[league]) {
+          const n = norm(team);
+          expandedSet.add(n);
+          canonicalSet.add(n);
+          const aliases = aliasMap[team];
+          if (aliases) {
+            for (const a of aliases) expandedSet.add(norm(a));
+          }
+        }
+      }
+    }
+
+    const now = Date.now();
+    const upcoming = generated.events
+      .filter((e: any) => new Date(e.startTimeLocal).getTime() >= now)
+      .sort((a: any, b: any) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime())
+      .slice(0, 100);
+
+    const results = upcoming.map((e: any) => {
+      const nHome = norm(e.homeTeam);
+      const nAway = norm(e.awayTeam);
+      const homeMatch = expandedSet.has(nHome);
+      const awayMatch = expandedSet.has(nAway);
+      const isFavorite = homeMatch || awayMatch;
+      let reason = "";
+      if (homeMatch) reason = canonicalSet.has(nHome) ? `canonical:${e.homeTeam}` : `alias:${e.homeTeam}`;
+      else if (awayMatch) reason = canonicalSet.has(nAway) ? `canonical:${e.awayTeam}` : `alias:${e.awayTeam}`;
+
+      return {
+        homeTeam: e.homeTeam,
+        awayTeam: e.awayTeam,
+        league: e.league,
+        sport: e.sport,
+        startTimeLocal: e.startTimeLocal,
+        isFavorite,
+        favoriteMatchReason: reason || null,
+      };
+    });
+
+    const favOnly = results.filter((r: any) => r.isFavorite).slice(0, 10);
+
+    return res.json({
+      configuredFavorites: allFavorites,
+      expandedAliasCount: expandedSet.size,
+      nextFavoriteEvents: favOnly,
+      totalUpcomingScanned: upcoming.length,
+    });
+  });
+
   app.get("/api/debug/cricket-raw", async (req, res) => {
     try {
       const limit = parseInt(req.query.limit as string, 10) || 50;
