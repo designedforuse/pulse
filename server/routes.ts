@@ -230,6 +230,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
           ligue1Updated: generated?.ligue1Updated ?? 0,
           ligue1Pruned: generated?.ligue1Pruned ?? 0,
           ligue1SourceUsed: generated?.ligue1SourceUsed ?? "unknown",
+          nwslCount: generated?.nwslCount ?? 0,
+          nwslAdded: generated?.nwslAdded ?? 0,
+          nwslUpdated: generated?.nwslUpdated ?? 0,
+          nwslPruned: generated?.nwslPruned ?? 0,
+          nwslSourceUsed: generated?.nwslSourceUsed ?? "unknown",
         });
       }
     );
@@ -381,10 +386,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const laLiga = events.filter((e: any) => e.source === "soccer-laliga").length;
     const bundesliga = events.filter((e: any) => e.source === "soccer-bundesliga").length;
     const ligue1 = events.filter((e: any) => e.source === "soccer-ligue1").length;
-    const soccerTotal = epl + mls + serieA + laLiga + bundesliga + ligue1;
+    const nwsl = events.filter((e: any) => e.source === "soccer-nwsl").length;
+    const soccerTotal = epl + mls + serieA + laLiga + bundesliga + ligue1 + nwsl;
     const other = events.length - nhl - ahl - echl - ncaa - rugby - cricketTotal - olympicHockey - soccerTotal;
     return res.json({
-      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, olympicHockey, epl, mls, serieA, laLiga, bundesliga, ligue1, soccerTotal, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, olympicHockey, epl, mls, serieA, laLiga, bundesliga, ligue1, nwsl, soccerTotal, other, total: events.length,
       lastUpdated: generated.lastUpdated,
       ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",

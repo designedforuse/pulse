@@ -316,6 +316,12 @@ export default function SettingsScreen() {
                     <View style={styles.sourceDivider} />
                   </>
                 )}
+                {meta.sources.nwsl && (
+                  <>
+                    <SourceRow league="NWSL" meta={meta.sources.nwsl} />
+                    <View style={styles.sourceDivider} />
+                  </>
+                )}
               </View>
             )}
             <Pressable
