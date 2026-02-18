@@ -72,6 +72,7 @@ const LEAGUE_SEASON_KEY_MAP: Record<string, string> = {
   "USL": "usl",
   "European Champions Cup": "championscup",
   "MLR": "mlr",
+  "FA Cup": "facup",
 };
 
 const LEAGUE_SHORT_LABELS: Record<string, string> = {

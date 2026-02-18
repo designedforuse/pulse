@@ -328,6 +328,18 @@ export default function SettingsScreen() {
                     <View style={styles.sourceDivider} />
                   </>
                 )}
+                {meta.sources.championsLeague && (
+                  <>
+                    <SourceRow league="Champions League" meta={meta.sources.championsLeague} />
+                    <View style={styles.sourceDivider} />
+                  </>
+                )}
+                {meta.sources.faCup && (
+                  <>
+                    <SourceRow league="FA Cup" meta={meta.sources.faCup} />
+                    <View style={styles.sourceDivider} />
+                  </>
+                )}
               </View>
             )}
             <Pressable
