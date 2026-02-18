@@ -273,16 +273,6 @@
       "isLive": false
     },
     {
-      "id": "e21",
-      "sport": "soccer",
-      "league": "EPL",
-      "awayTeam": "Arsenal",
-      "homeTeam": "Manchester City",
-      "startTimeLocal": "2026-02-21T07:30:00",
-      "providerId": "youtubetv",
-      "isLive": true
-    },
-    {
       "id": "e22",
       "sport": "soccer",
       "league": "Serie A",
@@ -350,16 +340,6 @@
       "homeTeam": "Chiefs",
       "startTimeLocal": "2026-02-21T18:30:00",
       "providerId": "flosports",
-      "isLive": false
-    },
-    {
-      "id": "e29",
-      "sport": "soccer",
-      "league": "EPL",
-      "awayTeam": "Liverpool",
-      "homeTeam": "Chelsea",
-      "startTimeLocal": "2026-02-21T10:00:00",
-      "providerId": "youtubetv",
       "isLive": false
     }
   ],
