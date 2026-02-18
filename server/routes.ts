@@ -210,6 +210,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
           mlsUpdated: generated?.mlsUpdated ?? 0,
           mlsPruned: generated?.mlsPruned ?? 0,
           mlsSourceUsed: generated?.mlsSourceUsed ?? "unknown",
+          serieaCount: generated?.serieaCount ?? 0,
+          serieaAdded: generated?.serieaAdded ?? 0,
+          serieaUpdated: generated?.serieaUpdated ?? 0,
+          serieaPruned: generated?.serieaPruned ?? 0,
+          serieaSourceUsed: generated?.serieaSourceUsed ?? "unknown",
+          laligaCount: generated?.laligaCount ?? 0,
+          laligaAdded: generated?.laligaAdded ?? 0,
+          laligaUpdated: generated?.laligaUpdated ?? 0,
+          laligaPruned: generated?.laligaPruned ?? 0,
+          laligaSourceUsed: generated?.laligaSourceUsed ?? "unknown",
+          bundesligaCount: generated?.bundesligaCount ?? 0,
+          bundesligaAdded: generated?.bundesligaAdded ?? 0,
+          bundesligaUpdated: generated?.bundesligaUpdated ?? 0,
+          bundesligaPruned: generated?.bundesligaPruned ?? 0,
+          bundesligaSourceUsed: generated?.bundesligaSourceUsed ?? "unknown",
+          ligue1Count: generated?.ligue1Count ?? 0,
+          ligue1Added: generated?.ligue1Added ?? 0,
+          ligue1Updated: generated?.ligue1Updated ?? 0,
+          ligue1Pruned: generated?.ligue1Pruned ?? 0,
+          ligue1SourceUsed: generated?.ligue1SourceUsed ?? "unknown",
         });
       }
     );
@@ -357,10 +377,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const olympicHockey = events.filter((e: any) => e.source === "olympic-hockey-2026").length;
     const epl = events.filter((e: any) => e.source === "soccer-epl").length;
     const mls = events.filter((e: any) => e.source === "soccer-mls").length;
-    const soccerTotal = epl + mls;
+    const serieA = events.filter((e: any) => e.source === "soccer-seriea").length;
+    const laLiga = events.filter((e: any) => e.source === "soccer-laliga").length;
+    const bundesliga = events.filter((e: any) => e.source === "soccer-bundesliga").length;
+    const ligue1 = events.filter((e: any) => e.source === "soccer-ligue1").length;
+    const soccerTotal = epl + mls + serieA + laLiga + bundesliga + ligue1;
     const other = events.length - nhl - ahl - echl - ncaa - rugby - cricketTotal - olympicHockey - soccerTotal;
     return res.json({
-      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, olympicHockey, epl, mls, soccerTotal, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, olympicHockey, epl, mls, serieA, laLiga, bundesliga, ligue1, soccerTotal, other, total: events.length,
       lastUpdated: generated.lastUpdated,
       ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",
