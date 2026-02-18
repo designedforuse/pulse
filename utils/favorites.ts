@@ -5,7 +5,51 @@ import aliasData from "@/data/favoriteAliases.json";
 const aliasMap: Record<string, string[]> = aliasData;
 
 function normalize(s: string): string {
-  return s.trim().toLowerCase();
+  let n = s.trim().toLowerCase();
+  n = n.replace(/\s+fc$/i, "");
+  n = n.replace(/\s+/g, " ");
+  return n;
+}
+
+const EPL_VARIANTS: Record<string, string[]> = {
+  "tottenham hotspur": ["tottenham", "spurs", "tottenham hotspur fc"],
+  "manchester united": ["man utd", "man united", "manchester utd", "manchester united fc"],
+  "manchester city": ["man city", "manchester city fc"],
+  "nottingham forest": ["nott'm forest", "nottingham forest fc", "notts forest"],
+  "newcastle united": ["newcastle", "newcastle utd", "newcastle united fc"],
+  "west ham united": ["west ham", "west ham utd", "west ham united fc"],
+  "wolverhampton wanderers": ["wolves", "wolverhampton", "wolverhampton wanderers fc"],
+  "brighton and hove albion": ["brighton", "brighton & hove albion", "brighton and hove albion fc"],
+  "crystal palace": ["crystal palace fc"],
+  "aston villa": ["aston villa fc"],
+  "bournemouth": ["afc bournemouth", "bournemouth fc"],
+  "brentford": ["brentford fc"],
+  "burnley": ["burnley fc"],
+  "chelsea": ["chelsea fc"],
+  "everton": ["everton fc"],
+  "fulham": ["fulham fc"],
+  "leeds": ["leeds united", "leeds utd", "leeds united fc"],
+  "liverpool": ["liverpool fc"],
+  "arsenal": ["arsenal fc"],
+  "sunderland": ["sunderland afc", "sunderland fc"],
+};
+
+function buildEplVariantMap(): Map<string, string> {
+  const map = new Map<string, string>();
+  for (const [canonical, variants] of Object.entries(EPL_VARIANTS)) {
+    map.set(canonical, canonical);
+    for (const v of variants) {
+      map.set(v, canonical);
+    }
+  }
+  return map;
+}
+
+const eplVariantMap = buildEplVariantMap();
+
+export function normalizeEplTeam(raw: string): string {
+  const n = normalize(raw);
+  return eplVariantMap.get(n) ?? n;
 }
 
 function buildSportExpandedSets(favorites: Favorites): Record<string, { expanded: Set<string>; canonicals: Set<string> }> {
@@ -53,8 +97,20 @@ export function favoriteMatchReason(event: SportEvent, favorites: Favorites): Fa
   const home = normalize(event.homeTeam);
   const away = normalize(event.awayTeam);
 
-  const homeInExpanded = sets.expanded.has(home);
-  const awayInExpanded = sets.expanded.has(away);
+  let homeInExpanded = sets.expanded.has(home);
+  let awayInExpanded = sets.expanded.has(away);
+
+  if (!homeInExpanded && !awayInExpanded && event.sport === "soccer") {
+    const homeNorm = normalizeEplTeam(event.homeTeam);
+    const awayNorm = normalizeEplTeam(event.awayTeam);
+    homeInExpanded = sets.expanded.has(homeNorm);
+    awayInExpanded = sets.expanded.has(awayNorm);
+
+    if (!homeInExpanded && !awayInExpanded) return "";
+
+    if (sets.canonicals.has(homeNorm) || sets.canonicals.has(awayNorm)) return "canonical";
+    return "alias";
+  }
 
   if (!homeInExpanded && !awayInExpanded) return "";
 
