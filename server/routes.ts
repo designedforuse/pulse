@@ -4,6 +4,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { execFile } from "node:child_process";
 import { fetchRawCricketMatches, searchRawCricketMatches } from "../scripts/updateCricket";
+import { fetchPlayerJourney, fetchPlayerJourneyDebug } from "./playerJourney";
 
 const GENERATED_EVENTS_PATH = path.resolve(
   process.cwd(),
@@ -903,6 +904,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
       nextWeekendStart: fmtFull(nextStart),
       nextWeekendEnd: fmtFull(nextEnd),
     });
+  });
+
+  app.get("/api/players/:id/journey", async (req, res) => {
+    const playerId = parseInt(req.params.id, 10);
+    if (isNaN(playerId) || playerId <= 0) {
+      return res.status(400).json({ error: "Invalid player ID" });
+    }
+    try {
+      const { journey } = await fetchPlayerJourney(playerId);
+      return res.json(journey);
+    } catch (err: any) {
+      return res.status(502).json({ error: err.message ?? "Failed to fetch player journey" });
+    }
+  });
+
+  app.get("/api/debug/player-journey/:id", async (req, res) => {
+    const playerId = parseInt(req.params.id, 10);
+    if (isNaN(playerId) || playerId <= 0) {
+      return res.status(400).json({ error: "Invalid player ID" });
+    }
+    try {
+      const debugResponse = await fetchPlayerJourneyDebug(playerId);
+      return res.json(debugResponse);
+    } catch (err: any) {
+      return res.status(502).json({ error: err.message ?? "Failed to fetch player journey debug" });
+    }
   });
 
   const httpServer = createServer(app);
