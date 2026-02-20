@@ -114,18 +114,18 @@ const GROUP_STAGE: T20WcMatch[] = [
 ];
 
 const SUPER_8: T20WcMatch[] = [
-  { matchNum: 41, date: "2026-02-21", timeIST: "18:30", team1: "TBC", team2: "TBC", venue: "R. Premadasa Stadium, Colombo", group: "Super 8 – Group 2" },
-  { matchNum: 42, date: "2026-02-22", timeIST: "14:30", team1: "TBC", team2: "TBC", venue: "Pallekele International Stadium", group: "Super 8 – Group 2" },
-  { matchNum: 43, date: "2026-02-22", timeIST: "18:30", team1: "TBC", team2: "TBC", venue: "Narendra Modi Stadium, Ahmedabad", group: "Super 8 – Group 1" },
-  { matchNum: 44, date: "2026-02-23", timeIST: "18:30", team1: "TBC", team2: "TBC", venue: "Wankhede Stadium, Mumbai", group: "Super 8 – Group 1" },
-  { matchNum: 45, date: "2026-02-24", timeIST: "18:30", team1: "TBC", team2: "TBC", venue: "Pallekele International Stadium", group: "Super 8 – Group 2" },
-  { matchNum: 46, date: "2026-02-25", timeIST: "18:30", team1: "TBC", team2: "TBC", venue: "R. Premadasa Stadium, Colombo", group: "Super 8 – Group 2" },
-  { matchNum: 47, date: "2026-02-26", timeIST: "14:30", team1: "TBC", team2: "TBC", venue: "Narendra Modi Stadium, Ahmedabad", group: "Super 8 – Group 1" },
-  { matchNum: 48, date: "2026-02-26", timeIST: "18:30", team1: "TBC", team2: "TBC", venue: "MA Chidambaram Stadium, Chennai", group: "Super 8 – Group 1" },
-  { matchNum: 49, date: "2026-02-27", timeIST: "18:30", team1: "TBC", team2: "TBC", venue: "R. Premadasa Stadium, Colombo", group: "Super 8 – Group 2" },
-  { matchNum: 50, date: "2026-02-28", timeIST: "18:30", team1: "TBC", team2: "TBC", venue: "Pallekele International Stadium", group: "Super 8 – Group 2" },
-  { matchNum: 51, date: "2026-03-01", timeIST: "14:30", team1: "TBC", team2: "TBC", venue: "Arun Jaitley Stadium, Delhi", group: "Super 8 – Group 1" },
-  { matchNum: 52, date: "2026-03-01", timeIST: "18:30", team1: "TBC", team2: "TBC", venue: "Eden Gardens, Kolkata", group: "Super 8 – Group 1" },
+  { matchNum: 41, date: "2026-02-21", timeIST: "18:30", team1: "Pakistan", team2: "New Zealand", venue: "R. Premadasa Stadium, Colombo", group: "Super 8 – Group 2" },
+  { matchNum: 42, date: "2026-02-22", timeIST: "14:30", team1: "Sri Lanka", team2: "England", venue: "Pallekele International Stadium", group: "Super 8 – Group 2" },
+  { matchNum: 43, date: "2026-02-22", timeIST: "18:30", team1: "India", team2: "South Africa", venue: "Narendra Modi Stadium, Ahmedabad", group: "Super 8 – Group 1" },
+  { matchNum: 44, date: "2026-02-23", timeIST: "18:30", team1: "Zimbabwe", team2: "West Indies", venue: "Wankhede Stadium, Mumbai", group: "Super 8 – Group 1" },
+  { matchNum: 45, date: "2026-02-24", timeIST: "18:30", team1: "England", team2: "Pakistan", venue: "Pallekele International Stadium", group: "Super 8 – Group 2" },
+  { matchNum: 46, date: "2026-02-25", timeIST: "18:30", team1: "Sri Lanka", team2: "New Zealand", venue: "R. Premadasa Stadium, Colombo", group: "Super 8 – Group 2" },
+  { matchNum: 47, date: "2026-02-26", timeIST: "14:30", team1: "West Indies", team2: "South Africa", venue: "Narendra Modi Stadium, Ahmedabad", group: "Super 8 – Group 1" },
+  { matchNum: 48, date: "2026-02-26", timeIST: "18:30", team1: "India", team2: "Zimbabwe", venue: "MA Chidambaram Stadium, Chennai", group: "Super 8 – Group 1" },
+  { matchNum: 49, date: "2026-02-27", timeIST: "18:30", team1: "England", team2: "New Zealand", venue: "R. Premadasa Stadium, Colombo", group: "Super 8 – Group 2" },
+  { matchNum: 50, date: "2026-02-28", timeIST: "18:30", team1: "Pakistan", team2: "Sri Lanka", venue: "Pallekele International Stadium", group: "Super 8 – Group 2" },
+  { matchNum: 51, date: "2026-03-01", timeIST: "14:30", team1: "West Indies", team2: "India", venue: "Arun Jaitley Stadium, Delhi", group: "Super 8 – Group 1" },
+  { matchNum: 52, date: "2026-03-01", timeIST: "18:30", team1: "South Africa", team2: "Zimbabwe", venue: "Eden Gardens, Kolkata", group: "Super 8 – Group 1" },
 ];
 
 const KNOCKOUTS: T20WcMatch[] = [

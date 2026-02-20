@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-20T03:39:50.768Z",
+  "lastUpdated": "2026-02-20T03:45:13.242Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -29,21 +29,21 @@
   "cricketSourceUsed": "cricapi",
   "nhlCount": 73,
   "ahlCount": 186,
-  "ahlAdded": 219,
-  "ahlUpdated": 0,
+  "ahlAdded": 33,
+  "ahlUpdated": 186,
   "ahlPruned": 33,
   "echlCount": 15,
-  "echlAdded": 19,
-  "echlUpdated": 0,
+  "echlAdded": 4,
+  "echlUpdated": 15,
   "echlPruned": 4,
   "echlWebCount": 19,
   "buCount": 7,
-  "buAdded": 7,
-  "buUpdated": 0,
+  "buAdded": 0,
+  "buUpdated": 7,
   "buPruned": 0,
   "rugbyCount": 81,
-  "rugbyAdded": 81,
-  "rugbyUpdated": 0,
+  "rugbyAdded": 0,
+  "rugbyUpdated": 81,
   "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 8,
@@ -55,53 +55,53 @@
     "svns": 4
   },
   "cricketCount": 9,
-  "cricketAdded": 9,
-  "cricketUpdated": 0,
+  "cricketAdded": 0,
+  "cricketUpdated": 9,
   "cricketPruned": 0,
   "cricketCounts": {
     "Test Cricket": 16,
     "T20I Cricket": 2
   },
-  "iccT20WcCount": 55,
-  "iccT20WcAdded": 55,
-  "iccT20WcUpdated": 0,
+  "iccT20WcCount": 67,
+  "iccT20WcAdded": 12,
+  "iccT20WcUpdated": 43,
   "iccT20WcPruned": 0,
   "iccT20WcSourceUsed": "hardcoded-schedule",
   "t20wcDedupedCount": 0,
   "olympicHockeyCount": 30,
-  "olympicHockeyAdded": 30,
-  "olympicHockeyUpdated": 0,
+  "olympicHockeyAdded": 0,
+  "olympicHockeyUpdated": 30,
   "olympicHockeyPruned": 0,
   "olympicHockeySourceUsed": "hardcoded-schedule",
   "eplCount": 51,
-  "eplAdded": 51,
-  "eplUpdated": 0,
-  "eplPruned": 0,
+  "eplAdded": 0,
+  "eplUpdated": 51,
+  "eplPruned": 51,
   "eplSourceUsed": "ical",
   "mlsCount": 45,
-  "mlsAdded": 45,
-  "mlsUpdated": 0,
-  "mlsPruned": 0,
+  "mlsAdded": 0,
+  "mlsUpdated": 45,
+  "mlsPruned": 45,
   "mlsSourceUsed": "ical",
   "serieaCount": 50,
-  "serieaAdded": 50,
-  "serieaUpdated": 0,
-  "serieaPruned": 0,
+  "serieaAdded": 0,
+  "serieaUpdated": 50,
+  "serieaPruned": 50,
   "serieaSourceUsed": "ical",
   "laligaCount": 51,
-  "laligaAdded": 51,
-  "laligaUpdated": 0,
-  "laligaPruned": 0,
+  "laligaAdded": 0,
+  "laligaUpdated": 51,
+  "laligaPruned": 51,
   "laligaSourceUsed": "ical",
   "bundesligaCount": 45,
-  "bundesligaAdded": 45,
-  "bundesligaUpdated": 0,
-  "bundesligaPruned": 0,
+  "bundesligaAdded": 0,
+  "bundesligaUpdated": 45,
+  "bundesligaPruned": 45,
   "bundesligaSourceUsed": "ical",
   "ligue1Count": 45,
-  "ligue1Added": 45,
-  "ligue1Updated": 0,
-  "ligue1Pruned": 0,
+  "ligue1Added": 0,
+  "ligue1Updated": 45,
+  "ligue1Pruned": 45,
   "ligue1SourceUsed": "ical",
   "nwslCount": 0,
   "nwslAdded": 0,
@@ -109,9 +109,9 @@
   "nwslPruned": 0,
   "nwslSourceUsed": "ical",
   "uslCount": 12,
-  "uslAdded": 12,
-  "uslUpdated": 0,
-  "uslPruned": 0,
+  "uslAdded": 0,
+  "uslUpdated": 12,
+  "uslPruned": 12,
   "uslSourceUsed": "espn",
   "championsCupCount": 0,
   "championsCupAdded": 0,
@@ -124,44 +124,44 @@
   "mlrPruned": 0,
   "mlrSourceUsed": "hardcoded",
   "championsLeagueCount": 16,
-  "championsLeagueAdded": 16,
-  "championsLeagueUpdated": 0,
-  "championsLeaguePruned": 0,
+  "championsLeagueAdded": 0,
+  "championsLeagueUpdated": 16,
+  "championsLeaguePruned": 16,
   "championsLeagueSourceUsed": "ical",
   "faCupCount": 24,
-  "faCupAdded": 24,
-  "faCupUpdated": 0,
-  "faCupPruned": 0,
+  "faCupAdded": 0,
+  "faCupUpdated": 24,
+  "faCupPruned": 24,
   "faCupSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-20T03:39:50.768Z",
+    "lastRefreshAt": "2026-02-20T03:45:13.242Z",
     "sources": {
       "nhl": {
         "count": 73,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 186,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 7,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 81,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 8,
@@ -175,7 +175,7 @@
       },
       "cricket": {
         "count": 9,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "Test Cricket": 16,
@@ -183,43 +183,43 @@
         }
       },
       "iccT20Wc": {
-        "count": 55,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "count": 67,
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 30,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 51,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 45,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 50,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 51,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 45,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 45,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
@@ -230,7 +230,7 @@
       },
       "usl": {
         "count": 12,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
@@ -242,18 +242,18 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 16,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "iCal Feed"
       },
       "faCup": {
         "count": 24,
-        "lastFetchAt": "2026-02-20T03:39:50.768Z",
+        "lastFetchAt": "2026-02-20T03:45:13.242Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-02-13T19:45:00.000Z"
       }
@@ -4766,11 +4766,11 @@
       "leagueKey": "superrugby"
     },
     {
-      "id": "cricket-t20wc-bdd6c6ef32",
+      "id": "cricket-t20wc-a53ae46d47",
       "sport": "cricket",
       "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
+      "awayTeam": "Pakistan",
+      "homeTeam": "New Zealand",
       "startTimeLocal": "2026-02-21T13:00:00.000Z",
       "endTimeLocal": "2026-02-21T16:30:00.000Z",
       "providerId": "youtubetv",
@@ -4783,7 +4783,6 @@
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC S8 Group 2 – Match 41",
       "t20WcVenue": "R. Premadasa Stadium, Colombo"
     },
     {
@@ -5565,11 +5564,11 @@
       "leagueKey": "leagueone"
     },
     {
-      "id": "cricket-t20wc-ec315c4fe8",
+      "id": "cricket-t20wc-5c62291b8d",
       "sport": "cricket",
       "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
+      "awayTeam": "Sri Lanka",
+      "homeTeam": "England",
       "startTimeLocal": "2026-02-22T09:00:00.000Z",
       "endTimeLocal": "2026-02-22T12:30:00.000Z",
       "providerId": "youtubetv",
@@ -5582,15 +5581,14 @@
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC S8 Group 2 – Match 42",
       "t20WcVenue": "Pallekele International Stadium"
     },
     {
-      "id": "cricket-t20wc-c2d05fb6a7",
+      "id": "cricket-t20wc-72473a0a41",
       "sport": "cricket",
       "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
+      "awayTeam": "India",
+      "homeTeam": "South Africa",
       "startTimeLocal": "2026-02-22T13:00:00.000Z",
       "endTimeLocal": "2026-02-22T16:30:00.000Z",
       "providerId": "youtubetv",
@@ -5603,7 +5601,6 @@
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC S8 Group 1 – Match 43",
       "t20WcVenue": "Narendra Modi Stadium, Ahmedabad"
     },
     {
@@ -6085,11 +6082,11 @@
       "providerReason": "mls-yttv"
     },
     {
-      "id": "cricket-t20wc-f7439435a5",
+      "id": "cricket-t20wc-e901de0fee",
       "sport": "cricket",
       "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
+      "awayTeam": "Zimbabwe",
+      "homeTeam": "West Indies",
       "startTimeLocal": "2026-02-23T13:00:00.000Z",
       "endTimeLocal": "2026-02-23T16:30:00.000Z",
       "providerId": "youtubetv",
@@ -6102,7 +6099,6 @@
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC S8 Group 1 – Match 44",
       "t20WcVenue": "Wankhede Stadium, Mumbai"
     },
     {
@@ -6140,11 +6136,11 @@
       "isIccT20Wc": false
     },
     {
-      "id": "cricket-t20wc-23bf7f5627",
+      "id": "cricket-t20wc-0cfeff8939",
       "sport": "cricket",
       "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
+      "awayTeam": "England",
+      "homeTeam": "Pakistan",
       "startTimeLocal": "2026-02-24T13:00:00.000Z",
       "endTimeLocal": "2026-02-24T16:30:00.000Z",
       "providerId": "youtubetv",
@@ -6157,7 +6153,6 @@
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC S8 Group 2 – Match 45",
       "t20WcVenue": "Pallekele International Stadium"
     },
     {
@@ -6253,11 +6248,11 @@
       "source": "ahl-hockeytech"
     },
     {
-      "id": "cricket-t20wc-fbff0e7339",
+      "id": "cricket-t20wc-0f5b53d053",
       "sport": "cricket",
       "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
+      "awayTeam": "Sri Lanka",
+      "homeTeam": "New Zealand",
       "startTimeLocal": "2026-02-25T13:00:00.000Z",
       "endTimeLocal": "2026-02-25T16:30:00.000Z",
       "providerId": "youtubetv",
@@ -6270,7 +6265,6 @@
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC S8 Group 2 – Match 46",
       "t20WcVenue": "R. Premadasa Stadium, Colombo"
     },
     {
@@ -6592,11 +6586,11 @@
       "providerReason": "ducks-rsn"
     },
     {
-      "id": "cricket-t20wc-347cf58378",
+      "id": "cricket-t20wc-7abd0f86a8",
       "sport": "cricket",
       "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
+      "awayTeam": "West Indies",
+      "homeTeam": "South Africa",
       "startTimeLocal": "2026-02-26T09:00:00.000Z",
       "endTimeLocal": "2026-02-26T12:30:00.000Z",
       "providerId": "youtubetv",
@@ -6609,15 +6603,14 @@
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC S8 Group 1 – Match 47",
       "t20WcVenue": "Narendra Modi Stadium, Ahmedabad"
     },
     {
-      "id": "cricket-t20wc-772f1b816d",
+      "id": "cricket-t20wc-c6e9d91699",
       "sport": "cricket",
       "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
+      "awayTeam": "India",
+      "homeTeam": "Zimbabwe",
       "startTimeLocal": "2026-02-26T13:00:00.000Z",
       "endTimeLocal": "2026-02-26T16:30:00.000Z",
       "providerId": "youtubetv",
@@ -6630,7 +6623,6 @@
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC S8 Group 1 – Match 48",
       "t20WcVenue": "MA Chidambaram Stadium, Chennai"
     },
     {
@@ -6898,11 +6890,11 @@
       "leagueKey": "superrugby"
     },
     {
-      "id": "cricket-t20wc-8dd9ab9d41",
+      "id": "cricket-t20wc-bd3a1207af",
       "sport": "cricket",
       "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
+      "awayTeam": "England",
+      "homeTeam": "New Zealand",
       "startTimeLocal": "2026-02-27T13:00:00.000Z",
       "endTimeLocal": "2026-02-27T16:30:00.000Z",
       "providerId": "youtubetv",
@@ -6915,7 +6907,6 @@
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC S8 Group 2 – Match 49",
       "t20WcVenue": "R. Premadasa Stadium, Colombo"
     },
     {
@@ -7263,11 +7254,11 @@
       "providerReason": "epl-yttv"
     },
     {
-      "id": "cricket-t20wc-9b82d71190",
+      "id": "cricket-t20wc-1386ea9b92",
       "sport": "cricket",
       "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
+      "awayTeam": "Pakistan",
+      "homeTeam": "Sri Lanka",
       "startTimeLocal": "2026-02-28T13:00:00.000Z",
       "endTimeLocal": "2026-02-28T16:30:00.000Z",
       "providerId": "youtubetv",
@@ -7280,7 +7271,6 @@
       "hostCountry": "Sri Lanka",
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC S8 Group 2 – Match 50",
       "t20WcVenue": "Pallekele International Stadium"
     },
     {
@@ -8376,11 +8366,11 @@
       "leagueKey": "leagueone"
     },
     {
-      "id": "cricket-t20wc-f6862d5e36",
+      "id": "cricket-t20wc-8d96907d04",
       "sport": "cricket",
       "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
+      "awayTeam": "West Indies",
+      "homeTeam": "India",
       "startTimeLocal": "2026-03-01T09:00:00.000Z",
       "endTimeLocal": "2026-03-01T12:30:00.000Z",
       "providerId": "youtubetv",
@@ -8393,15 +8383,14 @@
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC S8 Group 1 – Match 51",
       "t20WcVenue": "Arun Jaitley Stadium, Delhi"
     },
     {
-      "id": "cricket-t20wc-1338ee2c7e",
+      "id": "cricket-t20wc-486d4f5b6e",
       "sport": "cricket",
       "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
+      "awayTeam": "South Africa",
+      "homeTeam": "Zimbabwe",
       "startTimeLocal": "2026-03-01T13:00:00.000Z",
       "endTimeLocal": "2026-03-01T16:30:00.000Z",
       "providerId": "youtubetv",
@@ -8414,7 +8403,6 @@
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC S8 Group 1 – Match 52",
       "t20WcVenue": "Eden Gardens, Kolkata"
     },
     {
@@ -9492,27 +9480,6 @@
       "providerReason": "espnplus-default"
     },
     {
-      "id": "cricket-t20wc-7259363de2",
-      "sport": "cricket",
-      "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
-      "startTimeLocal": "2026-03-04T13:00:00.000Z",
-      "endTimeLocal": "2026-03-04T16:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-t20wc-schedule",
-      "leagueKey": "icc",
-      "competitionName": "ICC Men's T20 World Cup 2026",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "India",
-      "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC Semi-Final 1 – Match 53",
-      "t20WcVenue": "Eden Gardens, Kolkata"
-    },
-    {
       "id": "ahl-1028626",
       "sport": "hockey",
       "league": "AHL",
@@ -9784,27 +9751,6 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
-    },
-    {
-      "id": "cricket-t20wc-b20ed3d724",
-      "sport": "cricket",
-      "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
-      "startTimeLocal": "2026-03-05T13:00:00.000Z",
-      "endTimeLocal": "2026-03-05T16:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-t20wc-schedule",
-      "leagueKey": "icc",
-      "competitionName": "ICC Men's T20 World Cup 2026",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "India",
-      "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC Semi-Final 2 – Match 54",
-      "t20WcVenue": "Wankhede Stadium, Mumbai"
     },
     {
       "id": "soccer-epl-20260305-2000-crystal-palace-at-spurs",
@@ -11077,27 +11023,6 @@
       "source": "soccer-facup",
       "leagueKey": "facup",
       "providerReason": "facup-disneyplus"
-    },
-    {
-      "id": "cricket-t20wc-5c7914345e",
-      "sport": "cricket",
-      "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
-      "startTimeLocal": "2026-03-08T13:00:00.000Z",
-      "endTimeLocal": "2026-03-08T16:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-t20wc-schedule",
-      "leagueKey": "icc",
-      "competitionName": "ICC Men's T20 World Cup 2026",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "India",
-      "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC Final – Match 55",
-      "t20WcVenue": "Narendra Modi Stadium, Ahmedabad"
     },
     {
       "id": "soccer-facup-20260308-1330-sunderland-at-tbd",
