@@ -85,13 +85,13 @@ const SCHEDULE: OlympicGame[] = [
   { date: "2026-02-17", timeET: "10:40", awayTeam: "Czechia", homeTeam: "Denmark", round: "Qualification Playoff", venue: "Santagiulia Arena" },
   { date: "2026-02-17", timeET: "15:10", awayTeam: "Sweden", homeTeam: "Latvia", round: "Qualification Playoff", venue: "Santagiulia Arena" },
 
-  { date: "2026-02-18", timeET: "06:10", awayTeam: "TBD", homeTeam: "Slovakia", round: "Quarterfinal", venue: "Santagiulia Arena" },
-  { date: "2026-02-18", timeET: "10:40", awayTeam: "TBD", homeTeam: "Canada", round: "Quarterfinal", venue: "Santagiulia Arena" },
-  { date: "2026-02-18", timeET: "12:10", awayTeam: "TBD", homeTeam: "Finland", round: "Quarterfinal", venue: "RHO Arena" },
-  { date: "2026-02-18", timeET: "15:10", awayTeam: "TBD", homeTeam: "USA", round: "Quarterfinal", venue: "Santagiulia Arena" },
+  { date: "2026-02-18", timeET: "06:10", awayTeam: "Germany", homeTeam: "Slovakia", round: "Quarterfinal", venue: "Santagiulia Arena" },
+  { date: "2026-02-18", timeET: "10:40", awayTeam: "Czechia", homeTeam: "Canada", round: "Quarterfinal", venue: "Santagiulia Arena" },
+  { date: "2026-02-18", timeET: "12:10", awayTeam: "Switzerland", homeTeam: "Finland", round: "Quarterfinal", venue: "RHO Arena" },
+  { date: "2026-02-18", timeET: "15:10", awayTeam: "Sweden", homeTeam: "USA", round: "Quarterfinal", venue: "Santagiulia Arena" },
 
-  { date: "2026-02-20", timeET: "10:40", awayTeam: "TBD", homeTeam: "TBD", round: "Semifinal", venue: "Santagiulia Arena" },
-  { date: "2026-02-20", timeET: "15:10", awayTeam: "TBD", homeTeam: "TBD", round: "Semifinal", venue: "Santagiulia Arena" },
+  { date: "2026-02-20", timeET: "10:40", awayTeam: "Finland", homeTeam: "Canada", round: "Semifinal", venue: "Santagiulia Arena" },
+  { date: "2026-02-20", timeET: "15:10", awayTeam: "Slovakia", homeTeam: "USA", round: "Semifinal", venue: "Santagiulia Arena" },
 
   { date: "2026-02-21", timeET: "14:40", awayTeam: "TBD", homeTeam: "TBD", round: "Bronze Medal Game", venue: "Santagiulia Arena" },
   { date: "2026-02-22", timeET: "08:10", awayTeam: "TBD", homeTeam: "TBD", round: "Gold Medal Game", venue: "Santagiulia Arena" },
