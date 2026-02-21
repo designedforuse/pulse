@@ -26,6 +26,17 @@
   "Marseille": ["Olympique Marseille", "Olympique de Marseille", "OM"],
   "Hurricanes": ["Wellington Hurricanes"],
   "Sungoliath": ["Tokyo Sungoliath", "Suntory Sungoliath", "Tokyo SG"],
+  "Tokyo Sungoliath": ["Sungoliath", "Suntory Sungoliath", "Tokyo SG"],
+  "Black Rams Tokyo": ["BL Tokyo", "Ricoh Black Rams"],
+  "Brave Lupus Tokyo": ["BR Tokyo", "Toshiba Brave Lupus"],
+  "Kobelco Kobe Steelers": ["Kobe", "Kobe Steelers"],
+  "Toyota Verblitz": ["Toyota"],
+  "Saitama Wild Knights": ["Saitama", "Panasonic Wild Knights", "Wild Knights"],
+  "Yokohama Canon Eagles": ["Yokohama", "Canon Eagles"],
+  "Shizuoka Blue Revs": ["Shizuoka", "Yamaha Jubilo", "Blue Revs"],
+  "Sagamihara Dynaboars": ["Sagamihara", "Dynaboars"],
+  "Mie Honda Heat": ["Mie", "Honda Heat"],
+  "Urayasu D-Rocks": ["Urayasu", "D-Rocks", "Tokyo-Bay", "Tokyo-Bay Urayasu D-Rocks"],
   "La Rochelle": ["Stade Rochelais"],
   "Bath": ["Bath Rugby"]
 }

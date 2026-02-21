@@ -359,6 +359,25 @@ function parseLeagueOneDate(dateStr: string, timeStr?: string): { iso: string; d
   return { iso, debug };
 }
 
+const LEAGUE_ONE_DISPLAY_NAMES: Record<string, string> = {
+  "Tokyo SG": "Tokyo Sungoliath",
+  "BL Tokyo": "Black Rams Tokyo",
+  "BR Tokyo": "Brave Lupus Tokyo",
+  "Kobe": "Kobelco Kobe Steelers",
+  "Toyota": "Toyota Verblitz",
+  "Saitama": "Saitama Wild Knights",
+  "Yokohama": "Yokohama Canon Eagles",
+  "Shizuoka": "Shizuoka Blue Revs",
+  "Sagamihara": "Sagamihara Dynaboars",
+  "Tokyo-Bay": "Tokyo-Bay Urayasu D-Rocks",
+  "Urayasu": "Urayasu D-Rocks",
+  "Mie": "Mie Honda Heat",
+};
+
+function leagueOneDisplayName(raw: string): string {
+  return LEAGUE_ONE_DISPLAY_NAMES[raw] || raw;
+}
+
 async function fetchLeagueOneEvents(windowStart: Date, windowEnd: Date): Promise<AppEvent[]> {
   console.log(`  Rugby [leagueone]: Fetching from all.rugby...`);
   try {
@@ -391,8 +410,8 @@ async function fetchLeagueOneEvents(windowStart: Date, windowEnd: Date): Promise
         id,
         sport: "rugby",
         league: LEAGUE_LABELS.leagueone,
-        homeTeam: m.homeTeam,
-        awayTeam: m.awayTeam,
+        homeTeam: leagueOneDisplayName(m.homeTeam),
+        awayTeam: leagueOneDisplayName(m.awayTeam),
         startTimeLocal: result.iso,
         endTimeLocal: endIso,
         providerId: LEAGUE_PROVIDERS.leagueone,
