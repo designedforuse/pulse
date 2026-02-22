@@ -93,8 +93,8 @@ const SCHEDULE: OlympicGame[] = [
   { date: "2026-02-20", timeET: "10:40", awayTeam: "Finland", homeTeam: "Canada", round: "Semifinal", venue: "Santagiulia Arena" },
   { date: "2026-02-20", timeET: "15:10", awayTeam: "Slovakia", homeTeam: "USA", round: "Semifinal", venue: "Santagiulia Arena" },
 
-  { date: "2026-02-21", timeET: "14:40", awayTeam: "TBD", homeTeam: "TBD", round: "Bronze Medal Game", venue: "Santagiulia Arena" },
-  { date: "2026-02-22", timeET: "08:10", awayTeam: "TBD", homeTeam: "TBD", round: "Gold Medal Game", venue: "Santagiulia Arena" },
+  { date: "2026-02-21", timeET: "14:40", awayTeam: "Slovakia", homeTeam: "Finland", round: "Bronze Medal Game", venue: "Santagiulia Arena" },
+  { date: "2026-02-22", timeET: "08:10", awayTeam: "USA", homeTeam: "Canada", round: "Gold Medal Game", venue: "Santagiulia Arena" },
 ];
 
 export function fetchOlympicHockeyEvents(): OlympicHockeyFetchResult {
