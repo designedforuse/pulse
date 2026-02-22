@@ -153,6 +153,12 @@
       "name": "Prime Video",
       "packageName": "com.amazon.avod.thirdpartyclient",
       "activity": "com.amazon.avod.thirdpartyclient.LauncherActivity"
+    },
+    {
+      "id": "appletv",
+      "name": "Apple TV",
+      "packageName": "com.apple.atve.androidtv.appletv",
+      "launchUrl": "https://tv.apple.com"
     }
   ],
   "events": [

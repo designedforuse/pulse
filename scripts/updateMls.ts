@@ -202,11 +202,11 @@ export async function fetchMlsEvents(): Promise<MlsFetchResult> {
         homeTeam: teams.homeTeam,
         startTimeLocal: startUtc,
         endTimeLocal: endUtc,
-        providerId: "youtubetv",
+        providerId: "appletv",
         isLive: false,
         source: "soccer-mls",
         leagueKey: "mls",
-        providerReason: "mls-yttv",
+        providerReason: "mls-appletv",
       });
     }
 
