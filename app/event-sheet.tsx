@@ -13,6 +13,7 @@ import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
 import * as IntentLauncher from "expo-intent-launcher";
 import Colors from "@/constants/colors";
+import ProviderLogo from "@/components/ProviderLogo";
 import {
   getProviderById,
   formatStartTime,
@@ -182,7 +183,7 @@ export default function EventSheet() {
             ]}
             testID="open-provider-btn"
           >
-            <Ionicons name="open-outline" size={20} color={Colors.background} />
+            <ProviderLogo providerId={event.providerId} size={28} />
             <Text style={styles.openButtonText}>Open {provider.name}</Text>
           </Pressable>
         )}

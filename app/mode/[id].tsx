@@ -13,6 +13,7 @@ import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Colors from "@/constants/colors";
+import ProviderLogo from "@/components/ProviderLogo";
 import {
   getModeById,
   getProviderById,
@@ -182,7 +183,9 @@ function EventCard({
           <Text style={styles.cardDate}>{date}</Text>
           <Text style={styles.cardTime}>{time}</Text>
           {provider && (
-            <Text style={styles.cardProvider}>{provider.name}</Text>
+            <View style={styles.providerRow}>
+              <ProviderLogo providerId={event.providerId} size={20} />
+            </View>
           )}
         </View>
       </View>
@@ -960,11 +963,9 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
     marginTop: 2,
   },
-  cardProvider: {
-    fontSize: 11,
-    color: Colors.textMuted,
-    fontFamily: "Inter_400Regular",
-    marginTop: 6,
+  providerRow: {
+    marginTop: 8,
+    alignItems: "center",
   },
   emptyContainer: {
     alignItems: "center",

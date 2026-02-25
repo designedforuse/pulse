@@ -20,6 +20,7 @@ import Animated, {
   withSequence,
 } from "react-native-reanimated";
 import Colors from "@/constants/colors";
+import ProviderLogo from "@/components/ProviderLogo";
 import {
   getProviderById,
   getFavorites,
@@ -141,7 +142,9 @@ function EventRow({ event, isLive, now, isFav }: { event: SportEvent; isLive: bo
             </>
           )}
           {provider && (
-            <Text style={styles.cardProvider}>{provider.name}</Text>
+            <View style={styles.providerRow}>
+              <ProviderLogo providerId={event.providerId} size={20} />
+            </View>
           )}
         </View>
       </View>
@@ -524,11 +527,9 @@ const styles = StyleSheet.create({
     fontWeight: "700" as const,
     fontFamily: "Inter_700Bold",
   },
-  cardProvider: {
-    fontSize: 11,
-    color: Colors.textMuted,
-    fontFamily: "Inter_400Regular",
-    marginTop: 6,
+  providerRow: {
+    marginTop: 8,
+    alignItems: "center",
   },
   emptyContainer: {
     flex: 1,
