@@ -86,6 +86,14 @@ const LEAGUE_SHORT_LABELS: Record<string, string> = {
   "ODI Cricket": "ODI",
 };
 
+function formatEventDate(startTimeLocal: string): { date: string; time: string } {
+  const d = new Date(startTimeLocal);
+  const month = d.toLocaleDateString("en-US", { month: "short" });
+  const day = d.getDate();
+  const time = d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", hour12: true });
+  return { date: `${month} ${day}`, time };
+}
+
 function EventCard({
   event,
   isFav,
@@ -97,6 +105,8 @@ function EventCard({
 }) {
   const provider = getProviderById(event.providerId);
   const sportColor = getSportColor(event.sport);
+  const { date, time } = formatEventDate(event.startTimeLocal);
+  const live = isEventLive(event, new Date());
 
   const handlePress = () => {
     if (Platform.OS !== "web") {
@@ -108,6 +118,11 @@ function EventCard({
     });
   };
 
+  const isSession = event.eventType === "session" && event.sessionTitle;
+  const isTbcMatch = (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel;
+  const isTbdOlympic = event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound;
+  const showTeamLayout = !isSession && !isTbcMatch && !isTbdOlympic;
+
   return (
     <Pressable
       onPress={handlePress}
@@ -115,88 +130,61 @@ function EventCard({
         styles.eventCard,
         completed && styles.eventCardCompleted,
         {
-          opacity: pressed ? 0.85 : completed ? 0.65 : 1,
+          opacity: pressed ? 0.85 : completed ? 0.55 : 1,
           transform: [{ scale: pressed ? 0.98 : 1 }],
         },
       ]}
       testID={`event-${event.id}`}
     >
-      <View style={styles.eventTopRow}>
-        <View style={styles.topRowLeft}>
-          <View style={[styles.leagueBadge, { backgroundColor: sportColor + "18" }]}>
-            <Text style={[styles.leagueText, { color: sportColor }]}>{getLeagueDisplayLabel(event)}</Text>
+      <View style={styles.cardInner}>
+        <View style={styles.cardTeamsSection}>
+          <View style={styles.cardHeaderRow}>
+            <Text style={[styles.cardLeague, { color: sportColor }]}>
+              {getLeagueDisplayLabel(event)}
+            </Text>
+            {isFav && <Text style={styles.favStar}>★</Text>}
+            {live && (
+              <View style={styles.liveChip}>
+                <View style={styles.liveDot} />
+                <Text style={styles.liveLabel}>LIVE</Text>
+              </View>
+            )}
+            {completed && (
+              <Text style={styles.completedLabel}>FINAL</Text>
+            )}
           </View>
-          {isFav && (
-            <View style={styles.favBadge}>
-              <Text style={styles.favStar}>★</Text>
+
+          {showTeamLayout ? (
+            <View style={styles.teamStack}>
+              <Text style={styles.teamName} numberOfLines={1}>{event.awayTeam}</Text>
+              <Text style={styles.teamName} numberOfLines={1}>{event.homeTeam}</Text>
             </View>
+          ) : (
+            <Text style={styles.teamName} numberOfLines={2}>
+              {isSession
+                ? event.sessionTitle
+                : isTbcMatch
+                  ? event.t20WcMatchLabel
+                  : event.olympicRound}
+            </Text>
+          )}
+
+          {event.t20WcVenue && isTbcMatch ? (
+            <Text style={styles.venueText} numberOfLines={1}>{event.t20WcVenue}</Text>
+          ) : event.isOlympic && event.olympicVenue ? (
+            <Text style={styles.venueText} numberOfLines={1}>{event.olympicVenue}</Text>
+          ) : null}
+        </View>
+
+        <View style={styles.cardDivider} />
+
+        <View style={styles.cardTimeSection}>
+          <Text style={styles.cardDate}>{date}</Text>
+          <Text style={styles.cardTime}>{time}</Text>
+          {provider && (
+            <Text style={styles.cardProvider}>{provider.name}</Text>
           )}
         </View>
-        {isEventLive(event, new Date()) ? (
-          <View style={styles.liveIndicator}>
-            <View style={styles.liveDot} />
-            <Text style={styles.liveLabel}>LIVE</Text>
-          </View>
-        ) : completed ? (
-          <View style={styles.completedIndicator}>
-            <Text style={styles.completedLabel}>FINAL</Text>
-          </View>
-        ) : null}
-      </View>
-
-      {event.eventType === "session" && event.sessionTitle ? (
-        <View style={styles.matchupRow}>
-          <Text style={styles.teamName} numberOfLines={1}>
-            {event.sessionTitle}
-          </Text>
-        </View>
-      ) : (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel ? (
-        <View style={styles.matchupRow}>
-          <Text style={styles.teamName} numberOfLines={2}>
-            {event.t20WcMatchLabel}
-          </Text>
-        </View>
-      ) : event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound ? (
-        <View style={styles.matchupRow}>
-          <Text style={styles.teamName} numberOfLines={2}>
-            {event.olympicRound}
-          </Text>
-        </View>
-      ) : (
-        <View style={styles.matchupRow}>
-          <Text style={styles.teamName} numberOfLines={1}>
-            {event.awayTeam}
-          </Text>
-          <Text style={styles.atText}>@</Text>
-          <Text style={styles.teamName} numberOfLines={1}>
-            {event.homeTeam}
-          </Text>
-        </View>
-      )}
-
-      {event.t20WcVenue && (event.awayTeam === "TBC" || event.homeTeam === "TBC") ? (
-        <View style={styles.venueRow}>
-          <Ionicons name="location-outline" size={12} color={Colors.textMuted} />
-          <Text style={styles.venueText} numberOfLines={1}>{event.t20WcVenue}</Text>
-        </View>
-      ) : event.isOlympic && event.olympicVenue ? (
-        <View style={styles.venueRow}>
-          <Ionicons name="location-outline" size={12} color={Colors.textMuted} />
-          <Text style={styles.venueText} numberOfLines={1}>{event.olympicVenue}</Text>
-        </View>
-      ) : null}
-
-      <View style={styles.eventBottomRow}>
-        <View style={styles.timeContainer}>
-          <Ionicons name="time-outline" size={13} color={Colors.textMuted} />
-          <Text style={styles.timeText}>{formatStartTime(event.startTimeLocal)}</Text>
-        </View>
-        {provider && (
-          <View style={styles.providerTag}>
-            <Ionicons name="tv-outline" size={11} color={Colors.accent} />
-            <Text style={styles.providerName}>{provider.name}</Text>
-          </View>
-        )}
       </View>
     </Pressable>
   );
@@ -452,6 +440,10 @@ export default function ModeDetailScreen() {
         options={{
           title: mode.title,
           headerBackTitleVisible: false,
+          headerStyle: {
+            backgroundColor: Colors.background,
+          },
+          headerTintColor: Colors.textPrimary,
           headerTitleStyle: {
             fontFamily: "Inter_600SemiBold",
             fontSize: 17,
@@ -496,7 +488,7 @@ export default function ModeDetailScreen() {
               onPress={() => setActiveSport(filter.key)}
               style={[
                 styles.chip,
-                isActive && { backgroundColor: sportColor + "22", borderColor: sportColor + "55" },
+                isActive && { backgroundColor: sportColor + "20", borderColor: sportColor + "55" },
               ]}
               testID={`chip-${filter.key}`}
             >
@@ -514,7 +506,7 @@ export default function ModeDetailScreen() {
                 {filter.label}
               </Text>
               {count > 0 && (
-                <View style={[styles.chipCount, isActive && { backgroundColor: sportColor + "22" }]}>
+                <View style={[styles.chipCount, isActive && { backgroundColor: sportColor + "20" }]}>
                   <Text style={[styles.chipCountText, isActive && { color: sportColor }]}>{count}</Text>
                 </View>
               )}
@@ -612,7 +604,7 @@ export default function ModeDetailScreen() {
                   <View
                     style={[
                       styles.sectionIcon,
-                      { backgroundColor: getSportColor(section.sport) + "22" },
+                      { backgroundColor: getSportColor(section.sport) + "20" },
                     ]}
                   >
                     <Ionicons
@@ -651,11 +643,13 @@ export default function ModeDetailScreen() {
         ListEmptyComponent={
           allEmpty ? (
             <View style={styles.emptyContainer}>
-              <Ionicons name="calendar-outline" size={48} color={Colors.textMuted} />
-              {activeLeague !== "all" && leagueSeasonStarts[LEAGUE_SEASON_KEY_MAP[activeLeague] ?? activeLeague] ? (
+              {activeLeague !== "all" &&
+                leagueSeasonStarts[LEAGUE_SEASON_KEY_MAP[activeLeague] ?? activeLeague] &&
+                new Date(leagueSeasonStarts[LEAGUE_SEASON_KEY_MAP[activeLeague] ?? activeLeague]) > now ? (
                 <>
+                  <Ionicons name="calendar-outline" size={36} color={Colors.textMuted} />
                   <Text style={styles.emptyTitle}>
-                    {`Season hasn't started yet`}
+                    {LEAGUE_SHORT_LABELS[activeLeague] ?? activeLeague} Season Upcoming
                   </Text>
                   <Text style={styles.emptySubtitle}>
                     {`${LEAGUE_SHORT_LABELS[activeLeague] ?? activeLeague} season starts ${new Date(leagueSeasonStarts[LEAGUE_SEASON_KEY_MAP[activeLeague] ?? activeLeague]).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "America/Los_Angeles" })}. Games will appear here once we're within the next 21 days.`}
@@ -663,6 +657,7 @@ export default function ModeDetailScreen() {
                 </>
               ) : (
                 <>
+                  <Ionicons name="calendar-outline" size={36} color={Colors.textMuted} />
                   <Text style={styles.emptyTitle}>
                     {emptyFilterLabel
                       ? `No ${emptyFilterLabel} Events`
@@ -802,7 +797,7 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_500Medium",
   },
   listContent: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
     paddingTop: 4,
   },
   sectionHeader: {
@@ -867,54 +862,46 @@ const styles = StyleSheet.create({
   },
   eventCard: {
     backgroundColor: Colors.card,
-    borderRadius: 14,
-    padding: 14,
-    marginBottom: 8,
+    borderRadius: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 18,
+    marginBottom: 10,
     borderWidth: 1,
     borderColor: Colors.border,
   },
   eventCardCompleted: {
     borderColor: Colors.border,
   },
-  eventTopRow: {
+  cardInner: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
-    marginBottom: 10,
   },
-  topRowLeft: {
+  cardTeamsSection: {
+    flex: 1,
+    marginRight: 16,
+  },
+  cardHeaderRow: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
+    marginBottom: 8,
   },
-  leagueBadge: {
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 6,
-  },
-  leagueText: {
-    fontSize: 11,
-    fontWeight: "700" as const,
-    fontFamily: "Inter_700Bold",
-    letterSpacing: 0.3,
-  },
-  favBadge: {
-    backgroundColor: "rgba(255, 215, 0, 0.15)",
-    paddingHorizontal: 5,
-    paddingVertical: 2,
-    borderRadius: 5,
+  cardLeague: {
+    fontSize: 12,
+    fontFamily: "Inter_600SemiBold",
+    letterSpacing: 0.2,
   },
   favStar: {
-    fontSize: 10,
-    color: "#FFD700",
+    fontSize: 12,
+    color: Colors.favStar,
   },
-  liveIndicator: {
+  liveChip: {
     flexDirection: "row",
     alignItems: "center",
     gap: 4,
     backgroundColor: Colors.liveDim,
-    paddingHorizontal: 7,
-    paddingVertical: 3,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
     borderRadius: 6,
   },
   liveDot: {
@@ -929,12 +916,6 @@ const styles = StyleSheet.create({
     color: Colors.live,
     fontFamily: "Inter_700Bold",
   },
-  completedIndicator: {
-    backgroundColor: Colors.cardHighlight,
-    paddingHorizontal: 7,
-    paddingVertical: 3,
-    borderRadius: 6,
-  },
   completedLabel: {
     fontSize: 10,
     fontWeight: "700" as const,
@@ -942,67 +923,48 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_700Bold",
     letterSpacing: 0.3,
   },
-  matchupRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-    marginBottom: 10,
+  teamStack: {
+    gap: 4,
   },
   teamName: {
-    fontSize: 15,
-    fontWeight: "600" as const,
+    fontSize: 16,
+    fontWeight: "500" as const,
     color: Colors.textPrimary,
-    fontFamily: "Inter_600SemiBold",
-    flex: 1,
-  },
-  atText: {
-    fontSize: 13,
-    color: Colors.textMuted,
     fontFamily: "Inter_500Medium",
-  },
-  venueRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
-    marginBottom: 8,
-    marginTop: -4,
   },
   venueText: {
     fontSize: 12,
     color: Colors.textMuted,
     fontFamily: "Inter_400Regular",
+    marginTop: 4,
   },
-  eventBottomRow: {
-    flexDirection: "row",
+  cardDivider: {
+    width: 1,
+    alignSelf: "stretch",
+    backgroundColor: Colors.border,
+    marginHorizontal: 0,
+  },
+  cardTimeSection: {
+    paddingLeft: 16,
     alignItems: "center",
-    justifyContent: "space-between",
-    borderTopWidth: 1,
-    borderTopColor: Colors.border,
-    paddingTop: 10,
+    minWidth: 80,
   },
-  timeContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
+  cardDate: {
+    fontSize: 15,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_500Medium",
   },
-  timeText: {
-    fontSize: 12,
+  cardTime: {
+    fontSize: 15,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_400Regular",
+    marginTop: 2,
+  },
+  cardProvider: {
+    fontSize: 11,
     color: Colors.textMuted,
     fontFamily: "Inter_400Regular",
-  },
-  providerTag: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
-    backgroundColor: Colors.accentDim,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 7,
-  },
-  providerName: {
-    fontSize: 11,
-    color: Colors.accent,
-    fontFamily: "Inter_600SemiBold",
+    marginTop: 6,
   },
   emptyContainer: {
     alignItems: "center",

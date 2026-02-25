@@ -21,6 +21,15 @@ import {
 import { useEvents } from "@/lib/events-context";
 import { isEventLive } from "@/utils/time";
 
+function formatDetailDate(startTimeLocal: string): string {
+  const d = new Date(startTimeLocal);
+  const day = d.toLocaleDateString("en-US", { weekday: "short" });
+  const month = d.toLocaleDateString("en-US", { month: "short" });
+  const date = d.getDate();
+  const time = d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", hour12: true });
+  return `${day}, ${month} ${date}, ${time}`;
+}
+
 export default function EventSheet() {
   const { eventId } = useLocalSearchParams<{ eventId: string }>();
   const { findEvent } = useEvents();
@@ -36,6 +45,9 @@ export default function EventSheet() {
 
   const provider = getProviderById(event.providerId);
   const sportColor = getSportColor(event.sport);
+  const leagueLabel = event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league;
+  const dateLabel = formatDetailDate(event.startTimeLocal);
+  const live = isEventLive(event, new Date());
 
   const handleOpenProvider = async () => {
     if (!provider) return;
@@ -100,33 +112,19 @@ export default function EventSheet() {
     }
   };
 
+  const isSession = event.eventType === "session" && event.sessionTitle;
+  const isTbcMatch = (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel;
+  const isTbdOlympic = event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound;
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <View style={styles.topSection}>
-          <View style={styles.badgeRow}>
-            <View style={[styles.sportBadge, { backgroundColor: sportColor + "22" }]}>
-              <Ionicons
-                name={
-                  event.sport === "hockey"
-                    ? "snow"
-                    : event.sport === "rugby"
-                    ? "american-football"
-                    : event.sport === "cricket"
-                    ? "baseball"
-                    : "football"
-                }
-                size={14}
-                color={sportColor}
-              />
-              <Text style={[styles.sportText, { color: sportColor }]}>
-                {event.sport.toUpperCase()}
-              </Text>
-            </View>
-            <View style={styles.leagueBadge}>
-              <Text style={styles.leagueText}>{event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league}</Text>
-            </View>
-            {isEventLive(event, new Date()) && (
+          <View style={styles.headerLine}>
+            <Text style={[styles.headerLeague, { color: sportColor }]}>{leagueLabel}</Text>
+            <Text style={styles.headerDot}> · </Text>
+            <Text style={styles.headerDate}>{dateLabel}</Text>
+            {live && (
               <View style={styles.liveBadge}>
                 <View style={styles.liveDot} />
                 <Text style={styles.liveText}>LIVE</Text>
@@ -134,44 +132,39 @@ export default function EventSheet() {
             )}
           </View>
 
-          {event.eventType === "session" && event.sessionTitle ? (
+          {isSession ? (
             <View style={styles.matchupContainer}>
-              <Text style={styles.teamName}>{event.sessionTitle}</Text>
+              <Text style={styles.singleTeamName}>{event.sessionTitle}</Text>
             </View>
-          ) : (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel ? (
+          ) : isTbcMatch ? (
             <View style={styles.matchupContainer}>
-              <Text style={styles.teamName}>{event.t20WcMatchLabel}</Text>
+              <Text style={styles.singleTeamName}>{event.t20WcMatchLabel}</Text>
               {event.t20WcVenue ? (
-                <View style={styles.venueRow}>
-                  <Ionicons name="location-outline" size={13} color={Colors.textSecondary} />
-                  <Text style={styles.venueText}>{event.t20WcVenue}</Text>
-                </View>
+                <Text style={styles.venueText}>{event.t20WcVenue}</Text>
               ) : null}
             </View>
-          ) : event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound ? (
+          ) : isTbdOlympic ? (
             <View style={styles.matchupContainer}>
-              <Text style={styles.teamName}>{event.olympicRound}</Text>
+              <Text style={styles.singleTeamName}>{event.olympicRound}</Text>
               {event.olympicVenue ? (
-                <View style={styles.venueRow}>
-                  <Ionicons name="location-outline" size={13} color={Colors.textSecondary} />
-                  <Text style={styles.venueText}>{event.olympicVenue}</Text>
-                </View>
+                <Text style={styles.venueText}>{event.olympicVenue}</Text>
               ) : null}
             </View>
           ) : (
-            <View style={styles.matchupContainer}>
-              <Text style={styles.teamName}>{event.awayTeam}</Text>
-              <Text style={styles.vsText}>vs</Text>
-              <Text style={styles.teamName}>{event.homeTeam}</Text>
+            <View style={styles.matchupRow}>
+              <View style={styles.teamSide}>
+                <Text style={styles.teamName}>{event.awayTeam}</Text>
+              </View>
+              <Text style={styles.atText}>at</Text>
+              <View style={styles.teamSide}>
+                <Text style={styles.teamName}>{event.homeTeam}</Text>
+              </View>
             </View>
           )}
 
-          <View style={styles.timeRow}>
-            <Ionicons name="time-outline" size={15} color={Colors.textSecondary} />
-            <Text style={styles.timeText}>
-              {formatStartTime(event.startTimeLocal)}
-            </Text>
-          </View>
+          {event.isOlympic && event.olympicVenue && !isTbdOlympic ? (
+            <Text style={styles.venueText}>{event.olympicVenue}</Text>
+          ) : null}
 
           {event.providerReason ? (
             <Text style={styles.providerReasonText}>
@@ -220,38 +213,27 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   topSection: {
-    gap: 14,
+    gap: 20,
   },
-  badgeRow: {
+  headerLine: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
     flexWrap: "wrap",
+    gap: 4,
   },
-  sportBadge: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 5,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 8,
+  headerLeague: {
+    fontSize: 14,
+    fontFamily: "Inter_500Medium",
   },
-  sportText: {
-    fontSize: 11,
-    fontWeight: "700" as const,
-    fontFamily: "Inter_700Bold",
-    letterSpacing: 0.5,
+  headerDot: {
+    fontSize: 14,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
   },
-  leagueBadge: {
-    backgroundColor: Colors.cardHighlight,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 8,
-  },
-  leagueText: {
-    fontSize: 12,
+  headerDate: {
+    fontSize: 14,
     color: Colors.textSecondary,
-    fontFamily: "Inter_600SemiBold",
+    fontFamily: "Inter_400Regular",
   },
   liveBadge: {
     flexDirection: "row",
@@ -259,8 +241,9 @@ const styles = StyleSheet.create({
     gap: 4,
     backgroundColor: Colors.liveDim,
     paddingHorizontal: 8,
-    paddingVertical: 5,
+    paddingVertical: 4,
     borderRadius: 8,
+    marginLeft: 6,
   },
   liveDot: {
     width: 6,
@@ -276,48 +259,50 @@ const styles = StyleSheet.create({
   },
   matchupContainer: {
     alignItems: "center",
-    gap: 4,
-    paddingVertical: 4,
+    gap: 8,
+    paddingVertical: 16,
+  },
+  matchupRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 24,
+    gap: 20,
+  },
+  teamSide: {
+    flex: 1,
+    alignItems: "center",
   },
   teamName: {
     fontSize: 20,
-    fontWeight: "700" as const,
+    fontWeight: "600" as const,
     color: Colors.textPrimary,
-    fontFamily: "Inter_700Bold",
+    fontFamily: "Inter_600SemiBold",
     textAlign: "center",
   },
-  vsText: {
-    fontSize: 14,
-    color: Colors.textMuted,
-    fontFamily: "Inter_500Medium",
+  singleTeamName: {
+    fontSize: 20,
+    fontWeight: "600" as const,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_600SemiBold",
+    textAlign: "center",
   },
-  venueRow: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    gap: 4,
-    marginTop: 4,
+  atText: {
+    fontSize: 16,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
   },
   venueText: {
     fontSize: 13,
     color: Colors.textSecondary,
     fontFamily: "Inter_400Regular",
-  },
-  timeRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 6,
-  },
-  timeText: {
-    fontSize: 14,
-    color: Colors.textSecondary,
-    fontFamily: "Inter_400Regular",
+    textAlign: "center",
   },
   providerReasonText: {
     fontSize: 11,
     color: Colors.textMuted,
     fontFamily: "Inter_400Regular",
-    textAlign: "center" as const,
+    textAlign: "center",
     letterSpacing: 0.3,
   },
   openButton: {

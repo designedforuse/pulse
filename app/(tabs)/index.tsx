@@ -18,12 +18,12 @@ import { getModes } from "@/lib/data";
 const modeIcons: Record<string, { icon: keyof typeof Ionicons.glyphMap; gradient: string[]; timeWindow: string }> = {
   weekend_nights: {
     icon: "moon",
-    gradient: ["#1A237E", "#283593", "#3949AB"],
+    gradient: ["#2C2C2E", "#3A3A3C", "#48484A"],
     timeWindow: "Fri, Sat, Sun  4:00 PM – 2:00 AM",
   },
   weekend_mornings: {
     icon: "sunny",
-    gradient: ["#E65100", "#F57C00", "#FFB74D"],
+    gradient: ["#2C2C2E", "#3A3A3C", "#48484A"],
     timeWindow: "Sat, Sun  4:00 AM – 2:00 PM",
   },
 };
@@ -67,6 +67,8 @@ export default function ModesScreen() {
               gradient: [Colors.card, Colors.cardHighlight],
               timeWindow: "",
             };
+            const isNight = mode.id === "weekend_nights";
+            const accentColor = isNight ? "#818CF8" : "#FB923C";
             return (
               <Pressable
                 key={mode.id}
@@ -83,8 +85,8 @@ export default function ModesScreen() {
                   end={{ x: 1, y: 1 }}
                   style={styles.modeGradient}
                 >
-                  <View style={styles.modeIconContainer}>
-                    <Ionicons name={config.icon} size={36} color={Colors.white} />
+                  <View style={[styles.modeIconContainer, { backgroundColor: accentColor + "20" }]}>
+                    <Ionicons name={config.icon} size={32} color={accentColor} />
                   </View>
                   <Text style={styles.modeTitle}>{mode.title}</Text>
                   {config.timeWindow ? (
@@ -97,7 +99,7 @@ export default function ModesScreen() {
                     <Ionicons
                       name="chevron-forward"
                       size={20}
-                      color="rgba(255,255,255,0.6)"
+                      color={Colors.textMuted}
                     />
                   </View>
                 </LinearGradient>
@@ -141,12 +143,14 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   modeCard: {
-    borderRadius: 20,
+    borderRadius: 18,
     overflow: "hidden",
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
   modeGradient: {
     padding: 24,
-    borderRadius: 20,
+    borderRadius: 18,
     minHeight: 150,
     justifyContent: "flex-end",
   },
@@ -154,7 +158,6 @@ const styles = StyleSheet.create({
     width: 56,
     height: 56,
     borderRadius: 16,
-    backgroundColor: "rgba(255,255,255,0.18)",
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 16,
@@ -162,20 +165,20 @@ const styles = StyleSheet.create({
   modeTitle: {
     fontSize: 22,
     fontWeight: "700" as const,
-    color: Colors.white,
+    color: Colors.textPrimary,
     fontFamily: "Inter_700Bold",
     marginBottom: 2,
   },
   modeTimeWindow: {
     fontSize: 13,
-    color: "rgba(255,255,255,0.7)",
+    color: Colors.textSecondary,
     fontFamily: "Inter_500Medium",
     marginBottom: 4,
     letterSpacing: 0.2,
   },
   modePackCount: {
     fontSize: 14,
-    color: "rgba(255,255,255,0.7)",
+    color: Colors.textMuted,
     fontFamily: "Inter_500Medium",
   },
   modeArrow: {

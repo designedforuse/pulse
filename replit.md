@@ -15,7 +15,7 @@ The application features a frontend built with Expo Router for file-based naviga
 - **Provider Integration:** Tapping an event opens a bottom sheet with an "Open Provider App" button, which launches the relevant streaming application via Android intents.
 - **Live Event Tracking:** The "Live Now" tab features real-time detection of live and upcoming events, with automatic refreshing every 60 seconds and manual refresh options. Event completion is indicated by a "FINAL" badge and dimmed cards.
 - **Favorites Management:** Users can toggle favorite teams, which prioritizes those events in display, and persist these preferences.
-- **UI/UX Design:** A dark theme predominates, featuring a navy background (`#0B1120`) and a green accent (`#00E676`). Sport-specific colors (Hockey: blue, Rugby: orange, Cricket: yellow, Soccer: green) are used for visual differentiation. The Inter font from Google Fonts is used throughout. iOS devices utilize native liquid glass tabs (iOS 26+) or classic blur tabs otherwise.
+- **UI/UX Design:** A Google-app-inspired dark theme with charcoal background (`#1C1C1E`), card surfaces (`#2C2C2E`), and green accent (`#00E676`). Event cards use a compact horizontal layout: teams stacked vertically on the left, a vertical divider, and date/time on the right. The event detail sheet displays "League · Date, Time" header with teams side-by-side and "at" separator. Sport-specific colors (Hockey: blue, Rugby: orange, Cricket: yellow, Soccer: green) provide visual differentiation. The Inter font from Google Fonts is used throughout. iOS devices utilize native liquid glass tabs (iOS 26+) or classic blur tabs otherwise.
 - **Event Data Processing:** A robust set of Node.js scripts handle the fetching, merging, and updating of schedules from various sports APIs and sources, including NHL, AHL, ECHL, NCAA, Rugby (multiple leagues), Cricket (multiple leagues), and Soccer (EPL, MLS, Serie A, La Liga, Bundesliga, Ligue 1, NWSL, USL, Champions League, FA Cup). These scripts ensure data freshness and consistency.
 - **API Endpoints:** The Express server exposes `/api/events` for event data, `/api/refresh` to trigger schedule updates, and `/api/debug/sources` for source-specific event counts.
 
@@ -34,6 +34,7 @@ The application features a frontend built with Expo Router for file-based naviga
 - **all.rugby:** Scraped for Japan League One Rugby schedule data.
 - **MLR (hardcoded):** 2026 Major League Rugby schedule (6 teams, 15 regular season matches). Disney+ provider.
 - **CricAPI:** Source for international and domestic Cricket fixtures.
+- **Apple TV:** Streaming provider integration (MLS games).
 - **YouTube TV:** Streaming provider integration.
 - **Disney+:** Streaming provider integration.
 - **FloSports:** Streaming provider integration.

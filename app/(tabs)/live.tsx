@@ -57,9 +57,18 @@ function LiveIndicator() {
   return <Animated.View style={[styles.liveDot, animStyle]} />;
 }
 
+function formatEventDate(startTimeLocal: string): { date: string; time: string } {
+  const d = new Date(startTimeLocal);
+  const month = d.toLocaleDateString("en-US", { month: "short" });
+  const day = d.getDate();
+  const time = d.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", hour12: true });
+  return { date: `${month} ${day}`, time };
+}
+
 function EventRow({ event, isLive, now, isFav }: { event: SportEvent; isLive: boolean; now: Date; isFav: boolean }) {
   const provider = getProviderById(event.providerId);
   const sportColor = getSportColor(event.sport);
+  const { date, time } = formatEventDate(event.startTimeLocal);
 
   const handlePress = () => {
     if (Platform.OS !== "web") {
@@ -71,6 +80,16 @@ function EventRow({ event, isLive, now, isFav }: { event: SportEvent; isLive: bo
     });
   };
 
+  const matchupText = event.eventType === "session" && event.sessionTitle
+    ? event.sessionTitle
+    : (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel
+      ? event.t20WcMatchLabel
+      : event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound
+        ? event.olympicRound
+        : null;
+
+  const showTeamStack = !matchupText;
+
   return (
     <Pressable
       onPress={handlePress}
@@ -79,75 +98,52 @@ function EventRow({ event, isLive, now, isFav }: { event: SportEvent; isLive: bo
         { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] },
       ]}
     >
-      <View style={styles.eventCardTop}>
-        <View style={styles.leftContent}>
-          <View style={styles.badgeRow}>
+      <View style={styles.cardInner}>
+        <View style={styles.cardTeamsSection}>
+          <View style={styles.cardHeaderRow}>
+            <Text style={[styles.cardLeague, { color: sportColor }]}>
+              {event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league}
+            </Text>
+            {isFav && <Text style={styles.favStar}>★</Text>}
             {isLive && (
-              <View style={styles.liveTag}>
+              <View style={styles.liveChip}>
                 <LiveIndicator />
                 <Text style={styles.liveText}>LIVE</Text>
               </View>
             )}
-            <View style={[styles.sportBadge, { backgroundColor: sportColor + "22" }]}>
-              <Ionicons
-                name={
-                  event.sport === "hockey"
-                    ? "snow"
-                    : event.sport === "rugby"
-                    ? "american-football"
-                    : event.sport === "cricket"
-                    ? "baseball"
-                    : "football"
-                }
-                size={12}
-                color={sportColor}
-              />
-              <Text style={[styles.sportBadgeText, { color: sportColor }]}>
-                {event.sport.toUpperCase()}
-              </Text>
-            </View>
-            <Text style={styles.leagueLabel}>{event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league}</Text>
-            {isFav && (
-              <View style={styles.favBadge}>
-                <Text style={styles.favStar}>★</Text>
-              </View>
-            )}
           </View>
-          <Text style={styles.matchupText}>
-            {event.eventType === "session" && event.sessionTitle
-              ? event.sessionTitle
-              : (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel
-                ? event.t20WcMatchLabel
-                : event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound
-                  ? event.olympicRound
-                  : `${event.awayTeam} @ ${event.homeTeam}`}
-          </Text>
+
+          {showTeamStack ? (
+            <View style={styles.teamStack}>
+              <Text style={styles.teamName} numberOfLines={1}>{event.awayTeam}</Text>
+              <Text style={styles.teamName} numberOfLines={1}>{event.homeTeam}</Text>
+            </View>
+          ) : (
+            <Text style={styles.teamName} numberOfLines={2}>{matchupText}</Text>
+          )}
         </View>
-        <View style={styles.rightContent}>
+
+        <View style={styles.cardDivider} />
+
+        <View style={styles.cardTimeSection}>
           {isLive ? (
             <View style={styles.liveTimeChip}>
               <View style={styles.liveTimeDot} />
               <Text style={styles.liveTimeText}>LIVE</Text>
             </View>
           ) : (
-            <Text style={styles.upNextTime}>
-              {formatTimeUntilStart(event.startTimeLocal, now)}
-            </Text>
+            <>
+              <Text style={styles.cardDate}>{date}</Text>
+              <Text style={styles.cardTime}>{time}</Text>
+              <Text style={styles.upNextTime}>
+                {formatTimeUntilStart(event.startTimeLocal, now)}
+              </Text>
+            </>
+          )}
+          {provider && (
+            <Text style={styles.cardProvider}>{provider.name}</Text>
           )}
         </View>
-      </View>
-
-      <View style={styles.eventCardBottom}>
-        <View style={styles.timeRow}>
-          <Ionicons name="time-outline" size={13} color={Colors.textMuted} />
-          <Text style={styles.timeText}>{formatStartTime(event.startTimeLocal)}</Text>
-        </View>
-        {provider && (
-          <View style={styles.providerChip}>
-            <Ionicons name="tv-outline" size={11} color={Colors.accent} />
-            <Text style={styles.providerText}>{provider.name}</Text>
-          </View>
-        )}
       </View>
     </Pressable>
   );
@@ -403,7 +399,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   sectionCount: {
-    backgroundColor: "rgba(123, 141, 160, 0.15)",
+    backgroundColor: "rgba(161, 161, 166, 0.15)",
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 8,
@@ -419,36 +415,43 @@ const styles = StyleSheet.create({
   },
   eventCard: {
     backgroundColor: Colors.card,
-    borderRadius: 14,
-    padding: 14,
-    marginHorizontal: 20,
+    borderRadius: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 18,
+    marginHorizontal: 16,
     borderWidth: 1,
     borderColor: Colors.border,
   },
-  eventCardTop: {
+  cardInner: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
-    marginBottom: 10,
+    alignItems: "center",
   },
-  leftContent: {
+  cardTeamsSection: {
     flex: 1,
-    marginRight: 12,
+    marginRight: 16,
   },
-  badgeRow: {
+  cardHeaderRow: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
-    marginBottom: 6,
-    flexWrap: "wrap",
+    marginBottom: 8,
   },
-  liveTag: {
+  cardLeague: {
+    fontSize: 12,
+    fontFamily: "Inter_600SemiBold",
+    letterSpacing: 0.2,
+  },
+  favStar: {
+    fontSize: 12,
+    color: Colors.favStar,
+  },
+  liveChip: {
     flexDirection: "row",
     alignItems: "center",
     gap: 4,
     backgroundColor: Colors.liveDim,
-    paddingHorizontal: 7,
-    paddingVertical: 3,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
     borderRadius: 6,
   },
   liveDot: {
@@ -464,43 +467,41 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_700Bold",
     letterSpacing: 0.5,
   },
-  sportBadge: {
-    flexDirection: "row",
-    alignItems: "center",
+  teamStack: {
     gap: 4,
-    paddingHorizontal: 7,
-    paddingVertical: 3,
-    borderRadius: 6,
   },
-  sportBadgeText: {
-    fontSize: 10,
-    fontWeight: "700" as const,
-    fontFamily: "Inter_700Bold",
-    letterSpacing: 0.5,
-  },
-  leagueLabel: {
-    fontSize: 12,
-    color: Colors.textMuted,
+  teamName: {
+    fontSize: 16,
+    fontWeight: "500" as const,
+    color: Colors.textPrimary,
     fontFamily: "Inter_500Medium",
   },
-  favBadge: {
-    backgroundColor: Colors.favStarDim,
-    paddingHorizontal: 5,
-    paddingVertical: 2,
-    borderRadius: 5,
+  cardDivider: {
+    width: 1,
+    alignSelf: "stretch",
+    backgroundColor: Colors.border,
   },
-  favStar: {
-    fontSize: 10,
-    color: Colors.favStar,
+  cardTimeSection: {
+    paddingLeft: 16,
+    alignItems: "center",
+    minWidth: 80,
   },
-  matchupText: {
+  cardDate: {
     fontSize: 15,
     color: Colors.textPrimary,
-    fontFamily: "Inter_600SemiBold",
+    fontFamily: "Inter_500Medium",
   },
-  rightContent: {
-    alignItems: "flex-end",
-    justifyContent: "center",
+  cardTime: {
+    fontSize: 15,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_400Regular",
+    marginTop: 2,
+  },
+  upNextTime: {
+    fontSize: 11,
+    color: Colors.accent,
+    fontFamily: "Inter_500Medium",
+    marginTop: 4,
   },
   liveTimeChip: {
     flexDirection: "row",
@@ -523,42 +524,11 @@ const styles = StyleSheet.create({
     fontWeight: "700" as const,
     fontFamily: "Inter_700Bold",
   },
-  upNextTime: {
-    fontSize: 13,
-    color: Colors.accent,
-    fontFamily: "Inter_600SemiBold",
-  },
-  eventCardBottom: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    borderTopWidth: 1,
-    borderTopColor: Colors.border,
-    paddingTop: 10,
-  },
-  timeRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
-  },
-  timeText: {
-    fontSize: 12,
+  cardProvider: {
+    fontSize: 11,
     color: Colors.textMuted,
     fontFamily: "Inter_400Regular",
-  },
-  providerChip: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
-    backgroundColor: Colors.accentDim,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 8,
-  },
-  providerText: {
-    fontSize: 11,
-    color: Colors.accent,
-    fontFamily: "Inter_600SemiBold",
+    marginTop: 6,
   },
   emptyContainer: {
     flex: 1,
