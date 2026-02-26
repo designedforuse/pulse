@@ -159,9 +159,15 @@ async function fetchAhlScores(eventIds: string[]): Promise<Record<string, ScoreD
       const periodNum = g.Period || "";
       const clock = g.GameClock || "";
 
-      if (gameStatus === 2 || gameStatus === 3) {
-        const period = periodNum ? `P${periodNum}` : "Live";
-        scores[eventId] = { awayScore, homeScore, period, clock, status: "live" };
+      const isLive = gameStatus === 2 || gameStatus === 3 || gameStatus === 10;
+      if (isLive) {
+        let period = periodNum ? `P${periodNum}` : "Live";
+        let displayClock = clock;
+        if (gameStatus === 10) {
+          period = `P${periodNum} INT`;
+          displayClock = "";
+        }
+        scores[eventId] = { awayScore, homeScore, period, clock: displayClock, status: "live" };
       } else if (gameStatus === 4) {
         let period = "Final";
         const lastPeriod = parseInt(periodNum || "3", 10);
