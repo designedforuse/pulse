@@ -122,7 +122,7 @@ export default function EventSheet() {
   const isTbcMatch = (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel;
   const isTbdOlympic = event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound;
 
-  const bottomPadding = Math.max(insets.bottom, Platform.OS === "web" ? 34 : 16);
+  const bottomPadding = Math.max(insets.bottom + 12, Platform.OS === "web" ? 34 : 24);
 
   return (
     <View style={styles.container}>
