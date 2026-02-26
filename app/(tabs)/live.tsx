@@ -206,7 +206,14 @@ export default function LiveNowScreen() {
   }, [refresh]);
 
   const liveEvents = useMemo(() => {
-    const live = getLiveEventsNow(allEvents, now);
+    const timeLive = getLiveEventsNow(allEvents, now);
+    const timeLiveIds = new Set(timeLive.map((e) => e.id));
+    const scoreLive = allEvents.filter((e) => {
+      if (timeLiveIds.has(e.id)) return false;
+      const s = getScore(e.id);
+      return s && s.status === "live";
+    });
+    const live = [...timeLive, ...scoreLive];
     const filtered = favoritesOnly ? live.filter((e) => favoriteInvolved(e, favorites)) : live;
     return [...filtered].sort((a, b) => {
       const aFav = favoriteInvolved(a, favorites) ? 1 : 0;
@@ -214,7 +221,7 @@ export default function LiveNowScreen() {
       if (bFav !== aFav) return bFav - aFav;
       return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
     });
-  }, [allEvents, now, favoritesOnly, favorites]);
+  }, [allEvents, now, favoritesOnly, favorites, getScore]);
 
   const upNextEvents = useMemo(() => {
     const upcoming = getUpNextEvents(allEvents, now);

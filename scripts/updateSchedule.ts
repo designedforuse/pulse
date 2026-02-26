@@ -170,7 +170,9 @@ async function fetchNHLEvents(days: number): Promise<AppEvent[]> {
   const allEvents: AppEvent[] = [];
   const seenIds = new Set<string>();
   const today = new Date();
-  let currentDate = new Date(today);
+  const startDate = new Date(today);
+  startDate.setDate(startDate.getDate() - 1);
+  let currentDate = new Date(startDate);
   const fetched = new Set<string>();
 
   while (currentDate.getTime() - today.getTime() < days * 86400000) {
