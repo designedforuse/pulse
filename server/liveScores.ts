@@ -133,17 +133,14 @@ async function fetchAhlScores(eventIds: string[]): Promise<Record<string, ScoreD
   const scores: Record<string, ScoreData> = {};
   if (eventIds.length === 0) return scores;
 
-  const apiKey = process.env.API_HOCKEY_KEY;
-  if (!apiKey) return scores;
-
   try {
-    const today = new Date().toISOString().split("T")[0];
-    const res = await fetch(
-      `https://v1.hockey.api-sports.io/games?league=57&season=2025&date=${today}`,
-      { headers: { "x-apisports-key": apiKey } }
-    );
+    const url = "https://lscluster.hockeytech.com/feed/index.php?feed=modulekit&view=scorebar&numberofdaysback=1&numberofdaysahead=1&key=ccb91f29d6744675&client_code=ahl&lang=en&fmt=json";
+    const res = await fetch(url);
     if (!res.ok) return scores;
-    const data = await res.json() as any;
+    let text = await res.text();
+    text = text.replace(/^[^(]*\(/, "").replace(/\);?\s*$/, "");
+    const data = JSON.parse(text);
+    const games: any[] = data.SiteKit?.Scorebar || [];
 
     const idMap = new Map<string, string>();
     for (const id of eventIds) {
@@ -151,31 +148,26 @@ async function fetchAhlScores(eventIds: string[]): Promise<Record<string, ScoreD
       idMap.set(numPart, id);
     }
 
-    for (const game of data.response || []) {
-      const gameId = String(game.id);
+    for (const g of games) {
+      const gameId = String(g.ID || "");
       const eventId = idMap.get(gameId);
       if (!eventId) continue;
 
-      const statusShort = game.status?.short || "";
-      const liveStatuses = ["LIVE", "P1", "P2", "P3", "OT", "BT"];
+      const gameStatus = parseInt(g.GameStatus || "0", 10);
+      const homeScore = parseInt(g.HomeGoals || "0", 10);
+      const awayScore = parseInt(g.VisitorGoals || "0", 10);
+      const periodNum = g.Period || "";
+      const clock = g.GameClock || "";
 
-      if (liveStatuses.includes(statusShort)) {
-        scores[eventId] = {
-          awayScore: game.scores?.away ?? 0,
-          homeScore: game.scores?.home ?? 0,
-          period: statusShort === "LIVE" ? "Live" : statusShort,
-          status: "live",
-        };
-      } else if (statusShort === "FT" || statusShort === "AOT" || statusShort === "AP") {
+      if (gameStatus === 2 || gameStatus === 3) {
+        const period = periodNum ? `P${periodNum}` : "Live";
+        scores[eventId] = { awayScore, homeScore, period, clock, status: "live" };
+      } else if (gameStatus === 4) {
         let period = "Final";
-        if (statusShort === "AOT") period = "F/OT";
-        if (statusShort === "AP") period = "F/SO";
-        scores[eventId] = {
-          awayScore: game.scores?.away ?? 0,
-          homeScore: game.scores?.home ?? 0,
-          period,
-          status: "final",
-        };
+        const lastPeriod = parseInt(periodNum || "3", 10);
+        if (lastPeriod > 3) period = "F/OT";
+        if (g.Shootout === "1") period = "F/SO";
+        scores[eventId] = { awayScore, homeScore, period, status: "final" };
       }
     }
   } catch (err) {
