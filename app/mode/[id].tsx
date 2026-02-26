@@ -25,6 +25,7 @@ import {
   type Favorites,
 } from "@/lib/data";
 import { useEvents } from "@/lib/events-context";
+import { useScores, type ScoreData } from "@/lib/scores-context";
 import { isEventLive, isEventCompleted } from "@/utils/time";
 import { favoriteInvolved } from "@/utils/favorites";
 import {
@@ -99,15 +100,18 @@ function EventCard({
   event,
   isFav,
   completed,
+  score,
 }: {
   event: SportEvent;
   isFav: boolean;
   completed: boolean;
+  score?: ScoreData;
 }) {
   const provider = getProviderById(event.providerId);
   const sportColor = getSportColor(event.sport);
   const { date, time } = formatEventDate(event.startTimeLocal);
   const live = isEventLive(event, new Date());
+  const hasScore = !!score;
 
   const handlePress = () => {
     if (Platform.OS !== "web") {
@@ -157,8 +161,14 @@ function EventCard({
 
           {showTeamLayout ? (
             <View style={styles.teamStack}>
-              <Text style={styles.teamName} numberOfLines={1}>{event.awayTeam}</Text>
-              <Text style={styles.teamName} numberOfLines={1}>{event.homeTeam}</Text>
+              <View style={styles.teamScoreRow}>
+                <Text style={styles.teamName} numberOfLines={1}>{event.awayTeam}</Text>
+                {hasScore && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.awayScore}</Text>}
+              </View>
+              <View style={styles.teamScoreRow}>
+                <Text style={styles.teamName} numberOfLines={1}>{event.homeTeam}</Text>
+                {hasScore && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.homeScore}</Text>}
+              </View>
             </View>
           ) : (
             <Text style={styles.teamName} numberOfLines={2}>
@@ -180,8 +190,19 @@ function EventCard({
         <View style={styles.cardDivider} />
 
         <View style={styles.cardTimeSection}>
-          <Text style={styles.cardDate}>{date}</Text>
-          <Text style={styles.cardTime}>{time}</Text>
+          {hasScore && score.status === "live" && score.period ? (
+            <Text style={styles.scorePeriod}>{score.period}</Text>
+          ) : hasScore && score.status === "live" && score.clock ? (
+            <Text style={styles.scorePeriod}>{score.clock}</Text>
+          ) : null}
+          {hasScore && score.status === "final" ? (
+            <Text style={styles.scoreFinal}>{score.period || "Final"}</Text>
+          ) : (
+            <>
+              <Text style={styles.cardDate}>{date}</Text>
+              <Text style={styles.cardTime}>{time}</Text>
+            </>
+          )}
           {provider && (
             <View style={styles.providerRow}>
               <ProviderLogo providerId={event.providerId} size={20} />
@@ -243,6 +264,7 @@ export default function ModeDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const mode = getModeById(id);
   const { getEventsForPack, debugShowAll, favoritesOnly, leagueSeasonStarts } = useEvents();
+  const { getScore } = useScores();
   const favorites = getFavorites();
   const [activeSport, setActiveSportState] = useState<SportFilter>("all");
   const [activeLeague, setActiveLeague] = useState<string>("all");
@@ -592,6 +614,7 @@ export default function ModeDetailScreen() {
                 event={item}
                 isFav={favoriteInvolved(item, favorites)}
                 completed={isEventCompleted(item, now)}
+                score={getScore(item.id)}
               />
             </View>
           );
@@ -962,6 +985,35 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
     fontFamily: "Inter_400Regular",
     marginTop: 2,
+  },
+  teamScoreRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 8,
+  },
+  scoreText: {
+    fontSize: 16,
+    fontWeight: "700" as const,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_700Bold",
+    minWidth: 20,
+    textAlign: "right",
+  },
+  scoreLive: {
+    color: Colors.accent,
+  },
+  scorePeriod: {
+    fontSize: 12,
+    color: Colors.accent,
+    fontFamily: "Inter_600SemiBold",
+    marginBottom: 2,
+  },
+  scoreFinal: {
+    fontSize: 12,
+    color: Colors.textMuted,
+    fontFamily: "Inter_500Medium",
+    marginBottom: 2,
   },
   providerRow: {
     marginTop: 8,

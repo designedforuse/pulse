@@ -5,6 +5,7 @@ import * as path from "node:path";
 import { execFile } from "node:child_process";
 import { fetchRawCricketMatches, searchRawCricketMatches } from "../scripts/updateCricket";
 import { fetchPlayerJourney, fetchPlayerJourneyDebug } from "./playerJourney";
+import { fetchAllLiveScores } from "./liveScores";
 
 const GENERATED_EVENTS_PATH = path.resolve(
   process.cwd(),
@@ -73,6 +74,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
         ...(faCupFirstMatchDate ? { facup: faCupFirstMatchDate } : {}),
       },
     });
+  });
+
+  app.get("/api/scores", async (_req, res) => {
+    try {
+      const result = await fetchAllLiveScores();
+      res.json(result);
+    } catch (err) {
+      console.error("[scores] Error fetching live scores:", err);
+      res.status(500).json({ error: "Failed to fetch live scores" });
+    }
   });
 
   app.get("/api/odds/sports", async (_req, res) => {

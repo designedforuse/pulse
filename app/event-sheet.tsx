@@ -20,6 +20,7 @@ import {
   getSportColor,
 } from "@/lib/data";
 import { useEvents } from "@/lib/events-context";
+import { useScores } from "@/lib/scores-context";
 import { isEventLive } from "@/utils/time";
 
 function formatDetailDate(startTimeLocal: string): string {
@@ -44,6 +45,8 @@ export default function EventSheet() {
     );
   }
 
+  const { getScore } = useScores();
+  const score = getScore(event.id);
   const provider = getProviderById(event.providerId);
   const sportColor = getSportColor(event.sport);
   const leagueLabel = event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league;
@@ -155,13 +158,21 @@ export default function EventSheet() {
             <View style={styles.matchupRow}>
               <View style={styles.teamSide}>
                 <Text style={styles.teamName}>{event.awayTeam}</Text>
+                {score && <Text style={[styles.sheetScore, score.status === "live" && styles.sheetScoreLive]}>{score.awayScore}</Text>}
               </View>
               <Text style={styles.atText}>at</Text>
               <View style={styles.teamSide}>
                 <Text style={styles.teamName}>{event.homeTeam}</Text>
+                {score && <Text style={[styles.sheetScore, score.status === "live" && styles.sheetScoreLive]}>{score.homeScore}</Text>}
               </View>
             </View>
           )}
+
+          {score && score.period ? (
+            <Text style={[styles.sheetPeriod, score.status === "live" ? styles.sheetPeriodLive : null]}>
+              {score.period}{score.clock ? ` · ${score.clock}` : ""}
+            </Text>
+          ) : null}
 
           {event.isOlympic && event.olympicVenue && !isTbdOlympic ? (
             <Text style={styles.venueText}>{event.olympicVenue}</Text>
@@ -292,6 +303,25 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: Colors.textMuted,
     fontFamily: "Inter_400Regular",
+  },
+  sheetScore: {
+    fontSize: 32,
+    fontWeight: "700" as const,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_700Bold",
+    marginTop: 8,
+  },
+  sheetScoreLive: {
+    color: Colors.accent,
+  },
+  sheetPeriod: {
+    fontSize: 14,
+    color: Colors.textMuted,
+    fontFamily: "Inter_500Medium",
+    textAlign: "center",
+  },
+  sheetPeriodLive: {
+    color: Colors.accent,
   },
   venueText: {
     fontSize: 13,

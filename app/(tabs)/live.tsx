@@ -29,6 +29,7 @@ import {
   type SportEvent,
 } from "@/lib/data";
 import { useEvents } from "@/lib/events-context";
+import { useScores } from "@/lib/scores-context";
 import {
   getLiveEventsNow,
   getUpNextEvents,
@@ -66,10 +67,11 @@ function formatEventDate(startTimeLocal: string): { date: string; time: string }
   return { date: `${month} ${day}`, time };
 }
 
-function EventRow({ event, isLive, now, isFav }: { event: SportEvent; isLive: boolean; now: Date; isFav: boolean }) {
+function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isLive: boolean; now: Date; isFav: boolean; score?: { awayScore: number; homeScore: number; period?: string; clock?: string; status?: string } }) {
   const provider = getProviderById(event.providerId);
   const sportColor = getSportColor(event.sport);
   const { date, time } = formatEventDate(event.startTimeLocal);
+  const hasScore = !!score;
 
   const handlePress = () => {
     if (Platform.OS !== "web") {
@@ -116,8 +118,14 @@ function EventRow({ event, isLive, now, isFav }: { event: SportEvent; isLive: bo
 
           {showTeamStack ? (
             <View style={styles.teamStack}>
-              <Text style={styles.teamName} numberOfLines={1}>{event.awayTeam}</Text>
-              <Text style={styles.teamName} numberOfLines={1}>{event.homeTeam}</Text>
+              <View style={styles.teamScoreRow}>
+                <Text style={styles.teamName} numberOfLines={1}>{event.awayTeam}</Text>
+                {hasScore && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.awayScore}</Text>}
+              </View>
+              <View style={styles.teamScoreRow}>
+                <Text style={styles.teamName} numberOfLines={1}>{event.homeTeam}</Text>
+                {hasScore && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.homeScore}</Text>}
+              </View>
             </View>
           ) : (
             <Text style={styles.teamName} numberOfLines={2}>{matchupText}</Text>
@@ -128,10 +136,19 @@ function EventRow({ event, isLive, now, isFav }: { event: SportEvent; isLive: bo
 
         <View style={styles.cardTimeSection}>
           {isLive ? (
-            <View style={styles.liveTimeChip}>
-              <View style={styles.liveTimeDot} />
-              <Text style={styles.liveTimeText}>LIVE</Text>
-            </View>
+            <>
+              {hasScore && score.period ? (
+                <Text style={styles.scorePeriod}>{score.period}</Text>
+              ) : (
+                <View style={styles.liveTimeChip}>
+                  <View style={styles.liveTimeDot} />
+                  <Text style={styles.liveTimeText}>LIVE</Text>
+                </View>
+              )}
+              {hasScore && score.clock ? (
+                <Text style={styles.scoreClock}>{score.clock}</Text>
+              ) : null}
+            </>
           ) : (
             <>
               <Text style={styles.cardDate}>{date}</Text>
@@ -162,6 +179,7 @@ export default function LiveNowScreen() {
   const insets = useSafeAreaInsets();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
   const { allEvents, favoritesOnly } = useEvents();
+  const { getScore } = useScores();
   const favorites = getFavorites();
 
   const [now, setNow] = useState<Date>(new Date());
@@ -279,6 +297,7 @@ export default function LiveNowScreen() {
               event={item}
               isLive={section.isLive}
               now={now}
+              score={getScore(item.id)}
               isFav={favoriteInvolved(item, favorites)}
             />
           )}
@@ -526,6 +545,35 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "700" as const,
     fontFamily: "Inter_700Bold",
+  },
+  teamScoreRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 8,
+  },
+  scoreText: {
+    fontSize: 16,
+    fontWeight: "700" as const,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_700Bold",
+    minWidth: 20,
+    textAlign: "right",
+  },
+  scoreLive: {
+    color: Colors.accent,
+  },
+  scorePeriod: {
+    fontSize: 12,
+    color: Colors.accent,
+    fontFamily: "Inter_600SemiBold",
+    marginBottom: 2,
+  },
+  scoreClock: {
+    fontSize: 12,
+    color: Colors.accent,
+    fontFamily: "Inter_400Regular",
+    marginTop: 2,
   },
   providerRow: {
     marginTop: 8,
