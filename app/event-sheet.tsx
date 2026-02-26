@@ -12,6 +12,7 @@ import { useLocalSearchParams, router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
 import * as IntentLauncher from "expo-intent-launcher";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import {
@@ -45,6 +46,7 @@ export default function EventSheet() {
     );
   }
 
+  const insets = useSafeAreaInsets();
   const { getScore } = useScores();
   const score = getScore(event.id);
   const provider = getProviderById(event.providerId);
@@ -120,9 +122,11 @@ export default function EventSheet() {
   const isTbcMatch = (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel;
   const isTbdOlympic = event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound;
 
+  const bottomPadding = Math.max(insets.bottom, Platform.OS === "web" ? 34 : 16);
+
   return (
     <View style={styles.container}>
-      <View style={styles.content}>
+      <View style={[styles.content, { paddingBottom: bottomPadding }]}>
         <View style={styles.topSection}>
           <View style={styles.headerLine}>
             <Text style={[styles.headerLeague, { color: sportColor }]}>{leagueLabel}</Text>
