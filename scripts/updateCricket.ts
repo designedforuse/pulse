@@ -681,10 +681,16 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
 
   console.log(`  Cricket: Fetched ${allMatches.length} total matches from ${pagesRead} pages`);
 
+  const FEATURED_NATIONS = new Set([
+    "south africa", "india", "west indies", "new zealand",
+    "australia", "england", "pakistan", "sri lanka",
+  ]);
+
   const events: AppEvent[] = [];
   const counts: Record<string, number> = {};
   let skipped = 0;
   let womenFiltered = 0;
+  let intlNationFiltered = 0;
 
   for (const match of allMatches) {
     const classification = classifyMatch(match);
@@ -697,6 +703,15 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
     if (gender === "women") {
       womenFiltered++;
       continue;
+    }
+
+    if (classification.type === "international") {
+      const teams = (match.teams || []).map((t) => t.toLowerCase());
+      const hasFeatured = teams.some((t) => FEATURED_NATIONS.has(t));
+      if (!hasFeatured) {
+        intlNationFiltered++;
+        continue;
+      }
     }
 
     const event = matchToEvent(match, classification as {
@@ -712,7 +727,7 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
     counts[key] = (counts[key] || 0) + 1;
   }
 
-  console.log(`  Cricket: ${events.length} kept, ${skipped} skipped, ${womenFiltered} women's filtered out`);
+  console.log(`  Cricket: ${events.length} kept, ${skipped} skipped, ${womenFiltered} women's filtered, ${intlNationFiltered} intl nation-filtered`);
   console.log(`  Cricket counts: ${JSON.stringify(counts)}`);
 
   return {

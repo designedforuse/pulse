@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-27T04:58:48.463Z",
+  "lastUpdated": "2026-02-27T05:06:57.784Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -29,8 +29,8 @@
   "cricketSourceUsed": "cricapi",
   "nhlCount": 110,
   "ahlCount": 228,
-  "ahlAdded": 34,
-  "ahlUpdated": 192,
+  "ahlAdded": 32,
+  "ahlUpdated": 194,
   "ahlPruned": 32,
   "echlCount": 17,
   "echlAdded": 2,
@@ -42,8 +42,8 @@
   "buUpdated": 5,
   "buPruned": 0,
   "rugbyCount": 99,
-  "rugbyAdded": 1,
-  "rugbyUpdated": 90,
+  "rugbyAdded": 0,
+  "rugbyUpdated": 91,
   "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 11,
@@ -56,27 +56,24 @@
   },
   "cricketCount": 17,
   "cricketAdded": 0,
-  "cricketUpdated": 17,
+  "cricketUpdated": 0,
   "cricketPruned": 0,
-  "cricketCounts": {
-    "T20I Cricket": 14,
-    "Test Cricket": 7
-  },
-  "iccT20WcCount": 37,
+  "cricketCounts": {},
+  "iccT20WcCount": 36,
   "iccT20WcAdded": 0,
-  "iccT20WcUpdated": 37,
-  "iccT20WcPruned": 2,
+  "iccT20WcUpdated": 36,
+  "iccT20WcPruned": 1,
   "iccT20WcSourceUsed": "hardcoded-schedule",
   "t20wcDedupedCount": 0,
   "olympicHockeyCount": 24,
   "olympicHockeyAdded": 0,
   "olympicHockeyUpdated": 24,
-  "olympicHockeyPruned": 4,
+  "olympicHockeyPruned": 0,
   "olympicHockeySourceUsed": "hardcoded-schedule",
   "eplCount": 41,
   "eplAdded": 0,
   "eplUpdated": 41,
-  "eplPruned": 42,
+  "eplPruned": 41,
   "eplSourceUsed": "ical",
   "mlsCount": 60,
   "mlsAdded": 0,
@@ -134,34 +131,34 @@
   "faCupPruned": 24,
   "faCupSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-27T04:58:48.463Z",
+    "lastRefreshAt": "2026-02-27T05:06:57.784Z",
     "sources": {
       "nhl": {
         "count": 110,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 228,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 17,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 5,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 99,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 11,
@@ -177,60 +174,57 @@
         "count": 17,
         "lastFetchAt": "2026-02-27T04:58:48.463Z",
         "sourceName": "CricAPI",
-        "leagueCounts": {
-          "T20I Cricket": 14,
-          "Test Cricket": 7
-        }
+        "leagueCounts": {}
       },
       "iccT20Wc": {
-        "count": 37,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "count": 36,
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 24,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 41,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 60,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 50,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 51,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 45,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 45,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 8,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 23,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
@@ -242,44 +236,24 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 16,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "iCal Feed"
       },
       "faCup": {
         "count": 24,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "lastFetchAt": "2026-02-27T05:06:57.784Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-02-13T19:45:00.000Z"
       }
     }
   },
   "events": [
-    {
-      "id": "cricket-t20wc-b47107e8e1",
-      "sport": "cricket",
-      "league": "ICC",
-      "awayTeam": "Zimbabwe",
-      "homeTeam": "Australia",
-      "startTimeLocal": "2026-02-13T05:00:00.000Z",
-      "endTimeLocal": "2026-02-13T08:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-t20wc-schedule",
-      "leagueKey": "icc",
-      "competitionName": "ICC Men's T20 World Cup 2026",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Sri Lanka",
-      "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true,
-      "t20WcVenue": "R. Premadasa Stadium, Colombo"
-    },
     {
       "id": "rugby-superrugby-uczzlv",
       "sport": "rugby",
