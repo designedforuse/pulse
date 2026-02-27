@@ -578,6 +578,18 @@ export function mergeRugbyEvents(
     }
   }
 
+  const freshIds = new Set(fresh.map((e) => e.id));
+  const matchKey = (e: AppEvent) => {
+    const d = new Date(e.startTimeLocal).toISOString().slice(0, 10);
+    return `${e.leagueKey || e.league}-${e.homeTeam}-${e.awayTeam}-${d}`;
+  };
+  const freshMatchKeys = new Set(fresh.map(matchKey));
+  for (const [id, e] of index) {
+    if (!freshIds.has(id) && freshMatchKeys.has(matchKey(e))) {
+      index.delete(id);
+    }
+  }
+
   const windowStart = new Date(now.getTime() - 14 * 86400000);
   const windowEnd = new Date(now.getTime() + 21 * 86400000);
 
