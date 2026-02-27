@@ -41,7 +41,7 @@ const FILTER_KEY_PREFIX = "ui.modeFilter.";
 
 type SportFilter = "all" | "hockey" | "rugby" | "cricket" | "soccer";
 
-const SPORT_FILTERS: { key: SportFilter; label: string; icon: string }[] = [
+const ALL_SPORT_FILTERS: { key: SportFilter; label: string; icon: string }[] = [
   { key: "all", label: "All", icon: "grid-outline" },
   { key: "hockey", label: "Hockey", icon: "snow" },
   { key: "rugby", label: "Rugby", icon: "american-football" },
@@ -287,6 +287,19 @@ export default function ModeDetailScreen() {
   }, [id]);
 
 
+  const modeSports = useMemo(() => {
+    if (!mode) return new Set<string>();
+    return new Set(mode.packs.map((p) => p.sport));
+  }, [mode]);
+
+  const sportFilters = useMemo(() => {
+    const available = ALL_SPORT_FILTERS.filter(
+      (f) => f.key === "all" || modeSports.has(f.key)
+    );
+    if (available.length <= 2) return [];
+    return available;
+  }, [modeSports]);
+
   const now = useMemo(() => new Date(), []);
   const windows = useMemo(() => getWeekendWindows(now), [now]);
   const showNext = useMemo(() => shouldShowNextWeekend(now), [now]);
@@ -456,7 +469,7 @@ export default function ModeDetailScreen() {
   }
 
   const emptyFilterLabel = activeSport !== "all"
-    ? SPORT_FILTERS.find((f) => f.key === activeSport)?.label ?? activeSport
+    ? ALL_SPORT_FILTERS.find((f) => f.key === activeSport)?.label ?? activeSport
     : null;
 
   return (
@@ -494,13 +507,13 @@ export default function ModeDetailScreen() {
         </View>
       )}
 
-      <ScrollView
+      {sportFilters.length > 0 && <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.chipRow}
         style={styles.chipScroll}
       >
-        {SPORT_FILTERS.map((filter) => {
+        {sportFilters.map((filter) => {
           const isActive = activeSport === filter.key;
           const sportColor = filter.key === "all" ? Colors.accent : getSportColor(filter.key);
           const count = filter.key === "all"
@@ -538,7 +551,7 @@ export default function ModeDetailScreen() {
             </Pressable>
           );
         })}
-      </ScrollView>
+      </ScrollView>}
 
       {leagueFilters.length > 0 && (
         <ScrollView
