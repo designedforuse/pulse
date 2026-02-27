@@ -16,11 +16,20 @@ export interface ScoresResponse {
 
 const GENERATED_EVENTS_PATH = path.resolve(process.cwd(), "data", "generatedEvents.json");
 
-function loadLiveEventIds(): { nhl: string[]; ahl: string[]; echl: string[]; soccer: Map<string, string[]> } {
+interface LiveEventIdBuckets {
+  nhl: string[];
+  ahl: string[];
+  echl: string[];
+  soccer: Map<string, string[]>;
+  rugby: Map<string, { id: string; homeTeam: string; awayTeam: string }[]>;
+}
+
+function loadLiveEventIds(): LiveEventIdBuckets {
   const nhl: string[] = [];
   const ahl: string[] = [];
   const echl: string[] = [];
   const soccer = new Map<string, string[]>();
+  const rugby = new Map<string, { id: string; homeTeam: string; awayTeam: string }[]>();
 
   try {
     const raw = fs.readFileSync(GENERATED_EVENTS_PATH, "utf-8");
@@ -50,12 +59,20 @@ function loadLiveEventIds(): { nhl: string[]; ahl: string[]; echl: string[]; soc
         const league = event.league as string;
         if (!soccer.has(league)) soccer.set(league, []);
         soccer.get(league)!.push(event.id);
+      } else if (event.id.startsWith("rugby-")) {
+        const league = event.league as string;
+        if (!rugby.has(league)) rugby.set(league, []);
+        rugby.get(league)!.push({
+          id: event.id,
+          homeTeam: event.homeTeam || "",
+          awayTeam: event.awayTeam || "",
+        });
       }
     }
   } catch {
   }
 
-  return { nhl, ahl, echl, soccer };
+  return { nhl, ahl, echl, soccer, rugby };
 }
 
 async function fetchNhlScores(eventIds: string[]): Promise<Record<string, ScoreData>> {
@@ -335,18 +352,114 @@ async function fetchSoccerScores(soccerMap: Map<string, string[]>): Promise<Reco
   return scores;
 }
 
-export async function fetchAllLiveScores(): Promise<ScoresResponse> {
-  const { nhl, ahl, echl, soccer } = loadLiveEventIds();
+const ESPN_RUGBY_LEAGUE_PATHS: Record<string, string> = {
+  "URC": "270557",
+};
 
-  const [nhlScores, ahlScores, echlScores, soccerScores] = await Promise.all([
+function normalizeTeamName(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/^the\s+/, "")
+    .replace(/\s+(rugby|super|fc|rfc)$/i, "")
+    .replace(/[^a-z0-9]/g, "");
+}
+
+function teamsMatch(espnName: string, ourName: string): boolean {
+  const a = normalizeTeamName(espnName);
+  const b = normalizeTeamName(ourName);
+  if (a === b) return true;
+  if (a.includes(b) || b.includes(a)) return true;
+  if (a.length >= 4 && b.length >= 4 && (a.startsWith(b.slice(0, 4)) || b.startsWith(a.slice(0, 4)))) return true;
+  return false;
+}
+
+async function fetchRugbyScores(
+  rugbyMap: Map<string, { id: string; homeTeam: string; awayTeam: string }[]>
+): Promise<Record<string, ScoreData>> {
+  const scores: Record<string, ScoreData> = {};
+  if (rugbyMap.size === 0) return scores;
+
+  const leaguesToFetch = new Set<string>();
+  for (const [league] of rugbyMap) {
+    if (ESPN_RUGBY_LEAGUE_PATHS[league]) {
+      leaguesToFetch.add(league);
+    }
+  }
+
+  const fetches = Array.from(leaguesToFetch).map(async (league) => {
+    const espnPath = ESPN_RUGBY_LEAGUE_PATHS[league];
+    const events = rugbyMap.get(league) || [];
+    if (events.length === 0) return;
+
+    try {
+      const today = new Date().toISOString().split("T")[0].replace(/-/g, "");
+      const url = `https://site.api.espn.com/apis/site/v2/sports/rugby/${espnPath}/scoreboard?dates=${today}&limit=100`;
+      const res = await fetch(url);
+      if (!res.ok) return;
+      const data = await res.json() as any;
+
+      for (const espnEvent of data.events || []) {
+        const comp = espnEvent.competitions?.[0];
+        if (!comp) continue;
+
+        const homeComp = comp.competitors?.find((c: any) => c.homeAway === "home");
+        const awayComp = comp.competitors?.find((c: any) => c.homeAway === "away");
+        if (!homeComp || !awayComp) continue;
+
+        const espnHome = homeComp.team?.displayName || homeComp.team?.shortDisplayName || "";
+        const espnAway = awayComp.team?.displayName || awayComp.team?.shortDisplayName || "";
+
+        for (const ourEvent of events) {
+          if (scores[ourEvent.id]) continue;
+
+          if (teamsMatch(espnHome, ourEvent.homeTeam) && teamsMatch(espnAway, ourEvent.awayTeam)) {
+            const statusState = comp.status?.type?.state;
+            const statusDetail = comp.status?.type?.shortDetail || "";
+            const displayClock = comp.status?.displayClock || "";
+
+            if (statusState === "in") {
+              const period = statusDetail || "Live";
+              scores[ourEvent.id] = {
+                awayScore: parseInt(awayComp.score || "0", 10),
+                homeScore: parseInt(homeComp.score || "0", 10),
+                period,
+                clock: displayClock,
+                status: "live",
+              };
+            } else if (statusState === "post") {
+              scores[ourEvent.id] = {
+                awayScore: parseInt(awayComp.score || "0", 10),
+                homeScore: parseInt(homeComp.score || "0", 10),
+                period: "Final",
+                status: "final",
+              };
+            }
+            break;
+          }
+        }
+      }
+    } catch (err) {
+      console.error(`[liveScores] Rugby ${league} fetch error:`, err);
+    }
+  });
+
+  await Promise.all(fetches);
+  return scores;
+}
+
+export async function fetchAllLiveScores(): Promise<ScoresResponse> {
+  const { nhl, ahl, echl, soccer, rugby } = loadLiveEventIds();
+
+  const [nhlScores, ahlScores, echlScores, soccerScores, rugbyScores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchAhlScores(ahl),
     fetchEchlScores(echl),
     fetchSoccerScores(soccer),
+    fetchRugbyScores(rugby),
   ]);
 
   return {
-    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...soccerScores },
+    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...soccerScores, ...rugbyScores },
     fetchedAt: new Date().toISOString(),
   };
 }
