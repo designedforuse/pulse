@@ -141,7 +141,7 @@ export function isInWindowForMode(
   window: WeekendWindow,
   modeId: string
 ): boolean {
-  if (modeId === "weekend_nights") {
+  if (modeId === "weekend_night_bonding" || modeId === "weekend_night_rituals") {
     const shifted = new Date(eventStartLocal).getTime() - 2 * 3600000;
     return shifted >= window.start.getTime() && shifted <= window.end.getTime();
   }
@@ -174,7 +174,7 @@ export function isInModeTimeWindow(eventStartLocal: string, modeId: string): boo
   const minute = parseInt(parts.find((p) => p.type === "minute")?.value || "0", 10);
   const totalMinutes = (hour === 24 ? 0 : hour) * 60 + minute;
 
-  if (modeId === "weekend_nights") {
+  if (modeId === "weekend_night_bonding" || modeId === "weekend_night_rituals") {
     if (totalMinutes >= 960) return true;
     if (totalMinutes <= 120) return true;
     return false;

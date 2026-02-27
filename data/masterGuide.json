@@ -1,8 +1,8 @@
 {
   "modes": [
     {
-      "id": "weekend_nights",
-      "title": "Weekend Night Owls",
+      "id": "weekend_night_bonding",
+      "title": "Weekend Night Bonding",
       "packs": [
         {
           "id": "hockey_night",
@@ -16,6 +16,29 @@
             "Olympic Hockey"
           ]
         },
+        {
+          "id": "soccer_night",
+          "title": "Soccer Night",
+          "sport": "soccer",
+          "leagues": [
+            "EPL",
+            "MLS",
+            "Serie A",
+            "La Liga",
+            "Bundesliga",
+            "Ligue 1",
+            "Champions League",
+            "FA Cup",
+            "NWSL",
+            "USL"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "weekend_night_rituals",
+      "title": "Weekend Night Rituals",
+      "packs": [
         {
           "id": "rugby_night",
           "title": "Rugby Night",
@@ -40,23 +63,6 @@
             "BBL",
             "Super Smash",
             "MLC"
-          ]
-        },
-        {
-          "id": "soccer_night",
-          "title": "Soccer Night",
-          "sport": "soccer",
-          "leagues": [
-            "EPL",
-            "MLS",
-            "Serie A",
-            "La Liga",
-            "Bundesliga",
-            "Ligue 1",
-            "Champions League",
-            "FA Cup",
-            "NWSL",
-            "USL"
           ]
         }
       ]

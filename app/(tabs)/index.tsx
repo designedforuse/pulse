@@ -16,7 +16,12 @@ import Colors from "@/constants/colors";
 import { getModes } from "@/lib/data";
 
 const modeIcons: Record<string, { icon: keyof typeof Ionicons.glyphMap; gradient: string[]; timeWindow: string }> = {
-  weekend_nights: {
+  weekend_night_bonding: {
+    icon: "moon",
+    gradient: ["#2C2C2E", "#3A3A3C", "#48484A"],
+    timeWindow: "Fri, Sat, Sun  4:00 PM – 2:00 AM",
+  },
+  weekend_night_rituals: {
     icon: "moon",
     gradient: ["#2C2C2E", "#3A3A3C", "#48484A"],
     timeWindow: "Fri, Sat, Sun  4:00 PM – 2:00 AM",
@@ -67,7 +72,7 @@ export default function ModesScreen() {
               gradient: [Colors.card, Colors.cardHighlight],
               timeWindow: "",
             };
-            const isNight = mode.id === "weekend_nights";
+            const isNight = mode.id === "weekend_night_bonding" || mode.id === "weekend_night_rituals";
             const accentColor = isNight ? "#818CF8" : "#FB923C";
             return (
               <Pressable
