@@ -17,7 +17,6 @@ import ProviderLogo from "@/components/ProviderLogo";
 import {
   getModeById,
   getProviderById,
-  getFavorites,
   formatStartTime,
   getSportColor,
   type SportEvent,
@@ -26,6 +25,7 @@ import {
 } from "@/lib/data";
 import { useEvents } from "@/lib/events-context";
 import { useScores, type ScoreData } from "@/lib/scores-context";
+import { useFavorites } from "@/lib/favorites-context";
 import { isEventLive, isEventCompleted } from "@/utils/time";
 import { favoriteInvolved } from "@/utils/favorites";
 import {
@@ -265,7 +265,7 @@ export default function ModeDetailScreen() {
   const mode = getModeById(id);
   const { getEventsForPack, debugShowAll, favoritesOnly, leagueSeasonStarts } = useEvents();
   const { getScore } = useScores();
-  const favorites = getFavorites();
+  const { favorites } = useFavorites();
   const [activeSport, setActiveSportState] = useState<SportFilter>("all");
   const [activeLeague, setActiveLeague] = useState<string>("all");
   const [loaded, setLoaded] = useState(false);

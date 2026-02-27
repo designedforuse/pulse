@@ -14,9 +14,10 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import { useQueryClient } from "@tanstack/react-query";
 import Colors from "@/constants/colors";
-import { getProviders, getFavorites, getSportColor, type Favorites } from "@/lib/data";
+import { getProviders, getSportColor } from "@/lib/data";
 import { apiRequest, getApiUrl } from "@/lib/query-client";
 import { useEvents } from "@/lib/events-context";
+import { useFavorites } from "@/lib/favorites-context";
 
 interface SourceMeta {
   count: number;
@@ -56,7 +57,8 @@ function isStale(isoDate: string): boolean {
   return Date.now() - new Date(isoDate).getTime() > STALE_THRESHOLD_MS;
 }
 
-function FavoritesSection({ favorites }: { favorites: Favorites }) {
+function FavoritesSection() {
+  const { allTeams, isTeamEnabled, toggleTeam, enabledCount, totalCount } = useFavorites();
   const sportOrder = ["hockey", "rugby", "cricket", "soccer"];
   const sportLabels: Record<string, string> = {
     hockey: "Hockey",
@@ -72,7 +74,7 @@ function FavoritesSection({ favorites }: { favorites: Favorites }) {
   };
 
   const hasFavorites = sportOrder.some((sport) => {
-    const sportFavs = favorites[sport];
+    const sportFavs = allTeams[sport];
     return sportFavs && Object.keys(sportFavs).length > 0;
   });
 
@@ -87,17 +89,34 @@ function FavoritesSection({ favorites }: { favorites: Favorites }) {
     );
   }
 
+  const handleToggle = (sport: string, league: string, team: string) => {
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+    toggleTeam(sport, league, team);
+  };
+
+  let isFirstSport = true;
+
   return (
     <View style={styles.card}>
-      {sportOrder.map((sport, sportIndex) => {
-        const sportFavs = favorites[sport];
+      <View style={styles.favCountRow}>
+        <Ionicons name="star" size={14} color={Colors.favStar} />
+        <Text style={styles.favCountText}>
+          {enabledCount} of {totalCount} teams active
+        </Text>
+      </View>
+      {sportOrder.map((sport) => {
+        const sportFavs = allTeams[sport];
         if (!sportFavs || Object.keys(sportFavs).length === 0) return null;
         const sportColor = getSportColor(sport);
         const leagues = Object.keys(sportFavs);
+        const showDivider = !isFirstSport;
+        isFirstSport = false;
 
         return (
           <React.Fragment key={sport}>
-            {sportIndex > 0 && <View style={styles.sportDivider} />}
+            {showDivider && <View style={styles.sportDivider} />}
             <View style={styles.sportHeader}>
               <View style={[styles.sportIconBg, { backgroundColor: sportColor + "22" }]}>
                 <Ionicons name={sportIcons[sport]} size={14} color={sportColor} />
@@ -110,10 +129,34 @@ function FavoritesSection({ favorites }: { favorites: Favorites }) {
               const teams = sportFavs[league];
               if (!teams || teams.length === 0) return null;
               return (
-                <View key={league} style={styles.leagueRow}>
-                  <Text style={styles.leagueLabel}>{league}</Text>
-                  <Text style={styles.teamsText}>{teams.join(", ")}</Text>
-                </View>
+                <React.Fragment key={league}>
+                  <View style={styles.leagueLabelRow}>
+                    <Text style={styles.leagueLabel}>{league}</Text>
+                  </View>
+                  {teams.map((team) => {
+                    const enabled = isTeamEnabled(sport, league, team);
+                    return (
+                      <View key={team} style={styles.teamToggleRow}>
+                        <Text
+                          style={[
+                            styles.teamName,
+                            !enabled && styles.teamNameDisabled,
+                          ]}
+                          numberOfLines={1}
+                        >
+                          {team}
+                        </Text>
+                        <Switch
+                          value={enabled}
+                          onValueChange={() => handleToggle(sport, league, team)}
+                          trackColor={{ false: Colors.border, true: Colors.favStar + "55" }}
+                          thumbColor={enabled ? Colors.favStar : Colors.textMuted}
+                          style={styles.teamSwitch}
+                        />
+                      </View>
+                    );
+                  })}
+                </React.Fragment>
               );
             })}
           </React.Fragment>
@@ -159,7 +202,6 @@ function SourceRow({ league, meta }: { league: string; meta: SourceMeta }) {
 export default function SettingsScreen() {
   const insets = useSafeAreaInsets();
   const providers = getProviders();
-  const favorites = getFavorites();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
   const queryClient = useQueryClient();
   const { debugShowAll, setDebugShowAll, showSvnsSessions, setShowSvnsSessions, favoritesOnly, setFavoritesOnly } = useEvents();
@@ -226,7 +268,7 @@ export default function SettingsScreen() {
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>My Favorite Teams</Text>
-          <FavoritesSection favorites={favorites} />
+          <FavoritesSection />
         </View>
 
         <View style={styles.section}>
@@ -628,26 +670,50 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_700Bold",
     letterSpacing: 0.3,
   },
-  leagueRow: {
-    flexDirection: "row",
-    alignItems: "flex-start",
+  leagueLabelRow: {
     paddingHorizontal: 14,
-    paddingVertical: 6,
+    paddingTop: 8,
+    paddingBottom: 2,
     paddingLeft: 48,
-    gap: 8,
   },
   leagueLabel: {
-    fontSize: 12,
+    fontSize: 11,
     color: Colors.textMuted,
     fontFamily: "Inter_600SemiBold",
-    minWidth: 42,
+    textTransform: "uppercase" as const,
+    letterSpacing: 0.5,
   },
-  teamsText: {
-    fontSize: 13,
+  teamToggleRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingLeft: 48,
+    paddingRight: 14,
+    paddingVertical: 6,
+  },
+  teamName: {
+    fontSize: 14,
     color: Colors.textPrimary,
-    fontFamily: "Inter_400Regular",
+    fontFamily: "Inter_500Medium",
     flex: 1,
-    lineHeight: 18,
+  },
+  teamNameDisabled: {
+    color: Colors.textMuted,
+  },
+  teamSwitch: {
+    transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }],
+  },
+  favCountRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+  },
+  favCountText: {
+    fontSize: 12,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_500Medium",
   },
   emptyFavRow: {
     flexDirection: "row",

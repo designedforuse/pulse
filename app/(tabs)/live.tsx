@@ -23,13 +23,13 @@ import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import {
   getProviderById,
-  getFavorites,
   formatStartTime,
   getSportColor,
   type SportEvent,
 } from "@/lib/data";
 import { useEvents } from "@/lib/events-context";
 import { useScores } from "@/lib/scores-context";
+import { useFavorites } from "@/lib/favorites-context";
 import {
   getLiveEventsNow,
   getUpNextEvents,
@@ -180,7 +180,7 @@ export default function LiveNowScreen() {
   const webTopInset = Platform.OS === "web" ? 67 : 0;
   const { allEvents, favoritesOnly } = useEvents();
   const { getScore } = useScores();
-  const favorites = getFavorites();
+  const { favorites } = useFavorites();
 
   const [now, setNow] = useState<Date>(new Date());
   const [refreshing, setRefreshing] = useState(false);
