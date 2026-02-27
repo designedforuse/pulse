@@ -1,6 +1,18 @@
 import * as fs from "fs";
 import * as path from "path";
 
+const FEATURED_CRICKET_NATIONS = new Set([
+  "south africa", "india", "west indies", "new zealand",
+  "australia", "england", "pakistan", "sri lanka",
+]);
+
+function passesNationFilter(event: { homeTeam: string; awayTeam: string; competitionType?: string; isIccT20Wc?: boolean }): boolean {
+  if (event.isIccT20Wc) return true;
+  if (event.competitionType !== "international") return true;
+  const teams = [event.homeTeam, event.awayTeam].map((t) => t.toLowerCase());
+  return teams.some((t) => FEATURED_CRICKET_NATIONS.has(t));
+}
+
 const CRICAPI_BASE = "https://api.cricapi.com/v1";
 const CRICKET_DURATION_MIN: Record<string, number> = {
   t20: 210,
@@ -681,11 +693,6 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
 
   console.log(`  Cricket: Fetched ${allMatches.length} total matches from ${pagesRead} pages`);
 
-  const FEATURED_NATIONS = new Set([
-    "south africa", "india", "west indies", "new zealand",
-    "australia", "england", "pakistan", "sri lanka",
-  ]);
-
   const events: AppEvent[] = [];
   const counts: Record<string, number> = {};
   let skipped = 0;
@@ -705,9 +712,9 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
       continue;
     }
 
-    if (classification.type === "international") {
+    if (classification.type === "international" && !classification.isIccT20Wc) {
       const teams = (match.teams || []).map((t) => t.toLowerCase());
-      const hasFeatured = teams.some((t) => FEATURED_NATIONS.has(t));
+      const hasFeatured = teams.some((t) => FEATURED_CRICKET_NATIONS.has(t));
       if (!hasFeatured) {
         intlNationFiltered++;
         continue;
@@ -762,6 +769,10 @@ export function mergeCricketEvents(
   for (const e of existing) {
     const start = new Date(e.startTimeLocal);
     if (start < windowStart || start > windowEnd) {
+      pruned++;
+      continue;
+    }
+    if (!passesNationFilter(e as any)) {
       pruned++;
       continue;
     }

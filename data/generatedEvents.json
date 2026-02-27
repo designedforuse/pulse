@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-27T05:06:57.784Z",
+  "lastUpdated": "2026-02-27T05:10:48.470Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -54,15 +54,15 @@
     "leagueone": 25,
     "svns": 4
   },
-  "cricketCount": 17,
+  "cricketCount": 0,
   "cricketAdded": 0,
   "cricketUpdated": 0,
-  "cricketPruned": 0,
+  "cricketPruned": 17,
   "cricketCounts": {},
   "iccT20WcCount": 36,
   "iccT20WcAdded": 0,
   "iccT20WcUpdated": 36,
-  "iccT20WcPruned": 1,
+  "iccT20WcPruned": 0,
   "iccT20WcSourceUsed": "hardcoded-schedule",
   "t20wcDedupedCount": 0,
   "olympicHockeyCount": 24,
@@ -131,34 +131,34 @@
   "faCupPruned": 24,
   "faCupSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-02-27T05:06:57.784Z",
+    "lastRefreshAt": "2026-02-27T05:10:48.470Z",
     "sources": {
       "nhl": {
         "count": 110,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 228,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 17,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 5,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 99,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 11,
@@ -171,60 +171,60 @@
         }
       },
       "cricket": {
-        "count": 17,
+        "count": 0,
         "lastFetchAt": "2026-02-27T04:58:48.463Z",
         "sourceName": "CricAPI",
         "leagueCounts": {}
       },
       "iccT20Wc": {
         "count": 36,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 24,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 41,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 60,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 50,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 51,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 45,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 45,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 8,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 23,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
@@ -236,18 +236,18 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 16,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "iCal Feed"
       },
       "faCup": {
         "count": 24,
-        "lastFetchAt": "2026-02-27T05:06:57.784Z",
+        "lastFetchAt": "2026-02-27T05:10:48.470Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-02-13T19:45:00.000Z"
       }
@@ -691,26 +691,6 @@
       "source": "soccer-facup",
       "leagueKey": "facup",
       "providerReason": "facup-disneyplus"
-    },
-    {
-      "id": "cricket-t20i-cpf16",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Qatar",
-      "homeTeam": "Bahrain",
-      "startTimeLocal": "2026-02-14T13:00:00.000Z",
-      "endTimeLocal": "2026-02-14T16:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Unknown",
-      "seriesName": "4th T20I, Bahrain tour of Qatar 2026",
-      "gender": "men",
-      "isIccT20Wc": false
     },
     {
       "id": "cricket-t20wc-cc985bd240",
@@ -1399,26 +1379,6 @@
       "source": "ahl-hockeytech"
     },
     {
-      "id": "cricket-test-nc6fyt",
-      "sport": "cricket",
-      "league": "Test Cricket",
-      "awayTeam": "Jammu and Kashmir",
-      "homeTeam": "Bengal",
-      "startTimeLocal": "2026-02-15T03:30:00.000Z",
-      "endTimeLocal": "2026-02-15T11:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "test",
-      "competitionName": "Test Cricket",
-      "competitionType": "international",
-      "format": "test",
-      "hostCountry": "Unknown",
-      "seriesName": "2nd Semi Final, Ranji Trophy Elite 2025-26",
-      "gender": "men",
-      "isIccT20Wc": false
-    },
-    {
       "id": "rugby-leagueone-s685dz",
       "sport": "rugby",
       "league": "Japan League One",
@@ -1482,26 +1442,6 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "leagueone"
-    },
-    {
-      "id": "cricket-test-9a18zt",
-      "sport": "cricket",
-      "league": "Test Cricket",
-      "awayTeam": "Uttarakhand",
-      "homeTeam": "Karnataka",
-      "startTimeLocal": "2026-02-15T04:00:00.000Z",
-      "endTimeLocal": "2026-02-15T12:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "test",
-      "competitionName": "Test Cricket",
-      "competitionType": "international",
-      "format": "test",
-      "hostCountry": "India",
-      "seriesName": "1st Semi Final, Ranji Trophy Elite 2025-26",
-      "gender": "men",
-      "isIccT20Wc": false
     },
     {
       "id": "cricket-t20wc-c9b1eb84e0",
@@ -1573,26 +1513,6 @@
       "source": "soccer-facup",
       "leagueKey": "facup",
       "providerReason": "facup-disneyplus"
-    },
-    {
-      "id": "cricket-t20i-wz202a",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Qatar",
-      "homeTeam": "Bahrain",
-      "startTimeLocal": "2026-02-15T13:00:00.000Z",
-      "endTimeLocal": "2026-02-15T16:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Unknown",
-      "seriesName": "5th T20I, Bahrain tour of Qatar 2026",
-      "gender": "men",
-      "isIccT20Wc": false
     },
     {
       "id": "cricket-t20wc-c037722ec8",
@@ -4586,26 +4506,6 @@
       "providerReason": "epl-yttv"
     },
     {
-      "id": "cricket-test-d9ssj6",
-      "sport": "cricket",
-      "league": "Test Cricket",
-      "awayTeam": "Karnataka",
-      "homeTeam": "Jammu and Kashmir",
-      "startTimeLocal": "2026-02-24T04:00:00.000Z",
-      "endTimeLocal": "2026-02-24T12:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": true,
-      "source": "cricket-cricapi",
-      "leagueKey": "test",
-      "competitionName": "Test Cricket",
-      "competitionType": "international",
-      "format": "test",
-      "hostCountry": "Unknown",
-      "seriesName": "Final, Ranji Trophy Elite 2025-26",
-      "gender": "men",
-      "isIccT20Wc": false
-    },
-    {
       "id": "cricket-t20wc-0cfeff8939",
       "sport": "cricket",
       "league": "ICC",
@@ -4706,26 +4606,6 @@
       "source": "ahl-hockeytech"
     },
     {
-      "id": "cricket-t20i-zhpi02",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Thailand",
-      "homeTeam": "Japan",
-      "startTimeLocal": "2026-02-25T02:00:00.000Z",
-      "endTimeLocal": "2026-02-25T05:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Unknown",
-      "seriesName": "1st Match, Quadrangular T20I Series in Thailand 2026",
-      "gender": "men",
-      "isIccT20Wc": false
-    },
-    {
       "id": "ahl-1028574",
       "sport": "hockey",
       "league": "AHL",
@@ -4736,46 +4616,6 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
-    },
-    {
-      "id": "cricket-t20i-almefb",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Hong Kong",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-02-25T04:00:00.000Z",
-      "endTimeLocal": "2026-02-25T07:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Unknown",
-      "seriesName": "China vs Kuwait, 1st T20I, Kuwait tour of Hong Kong, China, 2026",
-      "gender": "men",
-      "isIccT20Wc": false
-    },
-    {
-      "id": "cricket-t20i-sqr37s",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Bahrain",
-      "homeTeam": "Bhutan",
-      "startTimeLocal": "2026-02-25T06:30:00.000Z",
-      "endTimeLocal": "2026-02-25T10:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Unknown",
-      "seriesName": "2nd Match, Quadrangular T20I Series in Thailand 2026",
-      "gender": "men",
-      "isIccT20Wc": false
     },
     {
       "id": "cricket-t20wc-0f5b53d053",
@@ -4938,26 +4778,6 @@
       "source": "ahl-hockeytech"
     },
     {
-      "id": "cricket-t20i-3m00xw",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Thailand",
-      "homeTeam": "Bhutan",
-      "startTimeLocal": "2026-02-26T02:00:00.000Z",
-      "endTimeLocal": "2026-02-26T05:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Unknown",
-      "seriesName": "3rd Match, Quadrangular T20I Series in Thailand 2026",
-      "gender": "men",
-      "isIccT20Wc": false
-    },
-    {
       "id": "ahl-1028579",
       "sport": "hockey",
       "league": "AHL",
@@ -4980,46 +4800,6 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
-    },
-    {
-      "id": "cricket-t20i-1r1n83",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Hong Kong",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-02-26T05:30:00.000Z",
-      "endTimeLocal": "2026-02-26T09:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Unknown",
-      "seriesName": "China vs Kuwait, 2nd T20I, Kuwait tour of Hong Kong, China, 2026",
-      "gender": "men",
-      "isIccT20Wc": false
-    },
-    {
-      "id": "cricket-t20i-g32ea3",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Bahrain",
-      "homeTeam": "Japan",
-      "startTimeLocal": "2026-02-26T06:30:00.000Z",
-      "endTimeLocal": "2026-02-26T10:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Unknown",
-      "seriesName": "4th Match, Quadrangular T20I Series in Thailand 2026",
-      "gender": "men",
-      "isIccT20Wc": false
     },
     {
       "id": "cricket-t20wc-7abd0f86a8",
@@ -5252,26 +5032,6 @@
       "providerReason": "espnplus-default"
     },
     {
-      "id": "cricket-t20i-gaawsg",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Bhutan",
-      "homeTeam": "Japan",
-      "startTimeLocal": "2026-02-27T02:00:00.000Z",
-      "endTimeLocal": "2026-02-27T05:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": true,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Unknown",
-      "seriesName": "5th Match, Quadrangular T20I Series in Thailand 2026",
-      "gender": "men",
-      "isIccT20Wc": false
-    },
-    {
       "id": "ahl-1028585",
       "sport": "hockey",
       "league": "AHL",
@@ -5331,26 +5091,6 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "superrugby"
-    },
-    {
-      "id": "cricket-t20i-76luw3",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Thailand",
-      "homeTeam": "Bahrain",
-      "startTimeLocal": "2026-02-27T06:30:00.000Z",
-      "endTimeLocal": "2026-02-27T10:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Unknown",
-      "seriesName": "6th Match, Quadrangular T20I Series in Thailand 2026",
-      "gender": "men",
-      "isIccT20Wc": false
     },
     {
       "id": "rugby-superrugby-t36c73",
@@ -5607,26 +5347,6 @@
       "providerReason": "espnplus-default"
     },
     {
-      "id": "cricket-t20i-c8gxmc",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Tbc",
-      "homeTeam": "Tbc",
-      "startTimeLocal": "2026-02-28T02:00:00.000Z",
-      "endTimeLocal": "2026-02-28T05:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Unknown",
-      "seriesName": "3rd place play-off, Quadrangular T20I Series in Thailand 2026",
-      "gender": "men",
-      "isIccT20Wc": false
-    },
-    {
       "id": "nhl_2025020933",
       "sport": "hockey",
       "league": "NHL",
@@ -5698,26 +5418,6 @@
       "leagueKey": "leagueone"
     },
     {
-      "id": "cricket-t20i-4wjnmn",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Hong Kong",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-02-28T05:30:00.000Z",
-      "endTimeLocal": "2026-02-28T09:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Unknown",
-      "seriesName": "China vs Kuwait, 3rd T20I, Kuwait tour of Hong Kong, China, 2026",
-      "gender": "men",
-      "isIccT20Wc": false
-    },
-    {
       "id": "rugby-superrugby-69812m",
       "sport": "rugby",
       "league": "Super Rugby",
@@ -5729,26 +5429,6 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "superrugby"
-    },
-    {
-      "id": "cricket-t20i-60tad1",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Tbc",
-      "homeTeam": "Tbc",
-      "startTimeLocal": "2026-02-28T06:30:00.000Z",
-      "endTimeLocal": "2026-02-28T10:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Unknown",
-      "seriesName": "Final, Quadrangular T20I Series in Thailand 2026",
-      "gender": "men",
-      "isIccT20Wc": false
     },
     {
       "id": "rugby-superrugby-gaecfj",
@@ -6901,26 +6581,6 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "leagueone"
-    },
-    {
-      "id": "cricket-t20i-pswrb4",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Hong Kong",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-01T05:30:00.000Z",
-      "endTimeLocal": "2026-03-01T09:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "Unknown",
-      "seriesName": "China vs Kuwait, 4th T20I, Kuwait tour of Hong Kong, China, 2026",
-      "gender": "men",
-      "isIccT20Wc": false
     },
     {
       "id": "cricket-t20wc-8d96907d04",
