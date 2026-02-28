@@ -430,19 +430,34 @@ async function fetchRugbyScores(
             const displayClock = comp.status?.displayClock || "";
 
             if (statusState === "in") {
-              const period = statusDetail || "Live";
+              let period = "";
+              let clock = "";
+              const detail = statusDetail || "";
+              const minuteMatch = detail.match(/^(\d+)[\u2019']/);
+              if (/half\s*time/i.test(detail) || detail === "HT") {
+                period = "HT";
+              } else if (minuteMatch) {
+                clock = minuteMatch[0];
+                const halfMatch = detail.match(/(\d)\w*\s*half/i);
+                if (halfMatch) {
+                  period = `${halfMatch[1]}H`;
+                }
+              }
+              if (!period && !clock && displayClock && displayClock !== "0'") {
+                clock = displayClock;
+              }
               scores[ourEvent.id] = {
                 awayScore: parseInt(awayComp.score || "0", 10),
                 homeScore: parseInt(homeComp.score || "0", 10),
-                period,
-                clock: displayClock,
+                period: period || undefined,
+                clock: clock || undefined,
                 status: "live",
               };
             } else if (statusState === "post") {
               scores[ourEvent.id] = {
                 awayScore: parseInt(awayComp.score || "0", 10),
                 homeScore: parseInt(homeComp.score || "0", 10),
-                period: "Final",
+                period: "FT",
                 status: "final",
               };
             }
@@ -536,7 +551,7 @@ async function fetchJapanLeagueOneScores(
           scores[ourEvent.id] = {
             homeScore: swappedMatch ? awayScore : homeScore,
             awayScore: swappedMatch ? homeScore : awayScore,
-            period: isLive ? "Live" : "Final",
+            period: isLive ? undefined : "FT",
             status: isLive ? "live" : "final",
           };
           break;

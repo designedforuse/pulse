@@ -86,6 +86,39 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  app.get("/api/debug/live-event", async (req, res) => {
+    try {
+      const eventId = req.query.id as string;
+      if (!eventId) return res.status(400).json({ error: "id query param required" });
+      const result = await fetchAllLiveScores();
+      const raw = result.scores[eventId];
+      if (!raw) return res.json({ eventId, found: false, availableIds: Object.keys(result.scores).filter(k => k.includes("rugby") || k.includes("leagueone")).slice(0, 20) });
+
+      const normalized = { ...raw };
+      if (normalized.clock && /^live$/i.test(normalized.clock)) {
+        normalized.clock = undefined;
+      }
+      if (normalized.period && normalized.clock && normalized.period.trim() === normalized.clock.trim()) {
+        normalized.period = undefined;
+      }
+
+      let displayClockText = "";
+      const p = normalized.period || "";
+      const c = normalized.clock || "";
+      if (p === "HT" || p === "FT") {
+        displayClockText = p;
+      } else if (p && c) {
+        displayClockText = `${p} ${c}`;
+      } else if (c) {
+        displayClockText = c;
+      }
+
+      res.json({ eventId, rawLiveStatus: raw, normalizedLiveStatus: normalized, displayClockText });
+    } catch (err) {
+      res.status(500).json({ error: String(err) });
+    }
+  });
+
   app.get("/api/odds/sports", async (_req, res) => {
     const apiKey = process.env.ODDS_API_KEY;
     if (!apiKey) {

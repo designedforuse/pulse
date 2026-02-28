@@ -13,6 +13,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import { displayTeamName } from "@/utils/teams";
+import { getRugbyClockDisplay } from "@/utils/rugbyClock";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -137,19 +138,28 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
 
         <View style={styles.cardTimeSection}>
           {isLive ? (
-            <>
-              {hasScore && score.period ? (
-                <Text style={styles.scorePeriod}>{score.period}</Text>
-              ) : (
-                <View style={styles.liveTimeChip}>
-                  <View style={styles.liveTimeDot} />
-                  <Text style={styles.liveTimeText}>LIVE</Text>
-                </View>
-              )}
-              {hasScore && score.clock ? (
-                <Text style={styles.scoreClock}>{score.clock}</Text>
-              ) : null}
-            </>
+            (() => {
+              const isRugby = event.sport === "Rugby";
+              if (isRugby && hasScore) {
+                const clockText = getRugbyClockDisplay(score);
+                return clockText ? <Text style={styles.scorePeriod}>{clockText}</Text> : null;
+              }
+              return (
+                <>
+                  {hasScore && score.period ? (
+                    <Text style={styles.scorePeriod}>{score.period}</Text>
+                  ) : (
+                    <View style={styles.liveTimeChip}>
+                      <View style={styles.liveTimeDot} />
+                      <Text style={styles.liveTimeText}>LIVE</Text>
+                    </View>
+                  )}
+                  {hasScore && score.clock ? (
+                    <Text style={styles.scoreClock}>{score.clock}</Text>
+                  ) : null}
+                </>
+              );
+            })()
           ) : (
             <>
               <Text style={styles.cardDate}>{date}</Text>

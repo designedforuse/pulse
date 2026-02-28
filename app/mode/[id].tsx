@@ -14,6 +14,7 @@ import * as Haptics from "expo-haptics";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Colors from "@/constants/colors";
 import { displayTeamName } from "@/utils/teams";
+import { getRugbyClockDisplay } from "@/utils/rugbyClock";
 import ProviderLogo from "@/components/ProviderLogo";
 import {
   getModeById,
@@ -192,12 +193,21 @@ function EventCard({
 
         <View style={styles.cardTimeSection}>
           {hasScore && score.status === "live" ? (
-            <>
-              <Text style={styles.scorePeriod}>{score.period || "Live"}</Text>
-              {score.clock ? <Text style={styles.scoreClock}>{score.clock}</Text> : null}
-            </>
+            (() => {
+              const isRugby = event.sport === "Rugby";
+              if (isRugby) {
+                const clockText = getRugbyClockDisplay(score);
+                return clockText ? <Text style={styles.scorePeriod}>{clockText}</Text> : null;
+              }
+              return (
+                <>
+                  <Text style={styles.scorePeriod}>{score.period || "Live"}</Text>
+                  {score.clock ? <Text style={styles.scoreClock}>{score.clock}</Text> : null}
+                </>
+              );
+            })()
           ) : hasScore && score.status === "final" ? (
-            <Text style={styles.scoreFinal}>{score.period || "Final"}</Text>
+            <Text style={styles.scoreFinal}>{score.period || "FT"}</Text>
           ) : (
             <>
               <Text style={styles.cardDate}>{date}</Text>
