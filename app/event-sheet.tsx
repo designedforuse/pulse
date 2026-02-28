@@ -23,7 +23,7 @@ import {
 } from "@/lib/data";
 import { useEvents } from "@/lib/events-context";
 import { useScores } from "@/lib/scores-context";
-import { isEventLive } from "@/utils/time";
+import { isEventLive, formatTimeSinceStart } from "@/utils/time";
 import { displayTeamName } from "@/utils/teams";
 
 function formatDetailDate(startTimeLocal: string): string {
@@ -172,6 +172,10 @@ export default function EventSheet() {
             <Text style={[styles.sheetPeriod, score.status === "live" ? styles.sheetPeriodLive : null]}>
               {score.period}{score.clock ? ` · ${score.clock}` : ""}
             </Text>
+          ) : score && score.status === "live" && !score.period && !score.clock ? (
+            <Text style={styles.sheetElapsed}>
+              {formatTimeSinceStart(event.startTimeLocal, new Date())}
+            </Text>
           ) : null}
 
           {event.isOlympic && event.olympicVenue && !isTbdOlympic ? (
@@ -313,6 +317,12 @@ const styles = StyleSheet.create({
   },
   sheetPeriodLive: {
     color: Colors.accent,
+  },
+  sheetElapsed: {
+    fontSize: 14,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_400Regular",
+    textAlign: "center",
   },
   venueText: {
     fontSize: 13,

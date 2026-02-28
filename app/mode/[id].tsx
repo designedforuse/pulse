@@ -29,7 +29,7 @@ import {
 import { useEvents } from "@/lib/events-context";
 import { useScores, type ScoreData } from "@/lib/scores-context";
 import { useFavorites } from "@/lib/favorites-context";
-import { isEventLive, isEventCompleted } from "@/utils/time";
+import { isEventLive, isEventCompleted, formatTimeSinceStart } from "@/utils/time";
 import { favoriteInvolved } from "@/utils/favorites";
 import {
   getWeekendWindows,
@@ -204,14 +204,20 @@ function EventCard({
               const isRugby = event.sport === "Rugby";
               if (isRugby) {
                 const clockText = getRugbyClockDisplay(score);
-                return clockText ? <Text style={styles.scorePeriod}>{clockText}</Text> : null;
+                if (clockText) return <Text style={styles.scorePeriod}>{clockText}</Text>;
+                const elapsed = formatTimeSinceStart(event.startTimeLocal, new Date());
+                return elapsed ? <Text style={styles.elapsedText}>{elapsed}</Text> : null;
               }
-              return (
-                <>
-                  <Text style={styles.scorePeriod}>{score.period || "Live"}</Text>
-                  {score.clock ? <Text style={styles.scoreClock}>{score.clock}</Text> : null}
-                </>
-              );
+              if (score.period || score.clock) {
+                return (
+                  <>
+                    {score.period ? <Text style={styles.scorePeriod}>{score.period}</Text> : null}
+                    {score.clock ? <Text style={styles.scoreClock}>{score.clock}</Text> : null}
+                  </>
+                );
+              }
+              const elapsed = formatTimeSinceStart(event.startTimeLocal, new Date());
+              return elapsed ? <Text style={styles.elapsedText}>{elapsed}</Text> : null;
             })()
           ) : hasScore && score.status === "final" ? (
             <Text style={styles.scoreFinal}>{score.period || "FT"}</Text>
@@ -1046,6 +1052,12 @@ const styles = StyleSheet.create({
     color: Colors.accent,
     fontFamily: "Inter_500Medium",
     marginBottom: 2,
+  },
+  elapsedText: {
+    fontSize: 11,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_400Regular",
+    textAlign: "center",
   },
   scoreFinal: {
     fontSize: 12,

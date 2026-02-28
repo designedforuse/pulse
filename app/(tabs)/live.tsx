@@ -38,6 +38,7 @@ import {
   getUpNextEvents,
   formatLastUpdated,
   formatTimeUntilStart,
+  formatTimeSinceStart,
 } from "@/utils/time";
 import { favoriteInvolved } from "@/utils/favorites";
 
@@ -149,22 +150,24 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
               const isRugby = event.sport === "Rugby";
               if (isRugby && hasScore) {
                 const clockText = getRugbyClockDisplay(score);
-                return clockText ? <Text style={styles.scorePeriod}>{clockText}</Text> : null;
+                if (clockText) return <Text style={styles.scorePeriod}>{clockText}</Text>;
+                const elapsed = formatTimeSinceStart(event.startTimeLocal, now);
+                return elapsed ? <Text style={styles.elapsedText}>{elapsed}</Text> : null;
               }
-              return (
-                <>
-                  {hasScore && score.period ? (
-                    <Text style={styles.scorePeriod}>{score.period}</Text>
-                  ) : (
-                    <View style={styles.liveTimeChip}>
-                      <View style={styles.liveTimeDot} />
-                      <Text style={styles.liveTimeText}>LIVE</Text>
-                    </View>
-                  )}
-                  {hasScore && score.clock ? (
-                    <Text style={styles.scoreClock}>{score.clock}</Text>
-                  ) : null}
-                </>
+              if (hasScore && (score.period || score.clock)) {
+                return (
+                  <>
+                    {score.period ? <Text style={styles.scorePeriod}>{score.period}</Text> : null}
+                    {score.clock ? <Text style={styles.scoreClock}>{score.clock}</Text> : null}
+                  </>
+                );
+              }
+              const elapsed = formatTimeSinceStart(event.startTimeLocal, now);
+              return elapsed ? <Text style={styles.elapsedText}>{elapsed}</Text> : (
+                <View style={styles.liveTimeChip}>
+                  <View style={styles.liveTimeDot} />
+                  <Text style={styles.liveTimeText}>LIVE</Text>
+                </View>
               );
             })()
           ) : (
@@ -598,6 +601,12 @@ const styles = StyleSheet.create({
     color: Colors.accent,
     fontFamily: "Inter_400Regular",
     marginTop: 2,
+  },
+  elapsedText: {
+    fontSize: 11,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_400Regular",
+    textAlign: "center",
   },
   providerRow: {
     marginTop: 8,

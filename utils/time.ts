@@ -68,3 +68,15 @@ export function formatTimeUntilStart(startTimeLocal: string, now: Date): string 
   const mins = diffMin % 60;
   return mins > 0 ? `in ${hours}h ${mins}m` : `in ${hours}h`;
 }
+
+export function formatTimeSinceStart(startTimeLocal: string, now: Date): string {
+  const start = new Date(startTimeLocal);
+  const diffMs = now.getTime() - start.getTime();
+  if (diffMs < 0) return "";
+  const diffMin = Math.floor(diffMs / 60000);
+  if (diffMin < 1) return "just started";
+  if (diffMin < 60) return `started ${diffMin}m ago`;
+  const hours = Math.floor(diffMin / 60);
+  const mins = diffMin % 60;
+  return mins > 0 ? `started ${hours}h ${mins}m ago` : `started ${hours}h ago`;
+}
