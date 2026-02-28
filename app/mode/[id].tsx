@@ -190,12 +190,12 @@ function EventCard({
         <View style={styles.cardDivider} />
 
         <View style={styles.cardTimeSection}>
-          {hasScore && score.status === "live" && score.period ? (
-            <Text style={styles.scorePeriod}>{score.period}</Text>
-          ) : hasScore && score.status === "live" && score.clock ? (
-            <Text style={styles.scorePeriod}>{score.clock}</Text>
-          ) : null}
-          {hasScore && score.status === "final" ? (
+          {hasScore && score.status === "live" ? (
+            <>
+              <Text style={styles.scorePeriod}>{score.period || "Live"}</Text>
+              {score.clock ? <Text style={styles.scoreClock}>{score.clock}</Text> : null}
+            </>
+          ) : hasScore && score.status === "final" ? (
             <Text style={styles.scoreFinal}>{score.period || "Final"}</Text>
           ) : (
             <>
@@ -1017,9 +1017,15 @@ const styles = StyleSheet.create({
     color: Colors.accent,
   },
   scorePeriod: {
+    fontSize: 14,
+    color: Colors.accent,
+    fontFamily: "Inter_700Bold",
+    marginBottom: 2,
+  },
+  scoreClock: {
     fontSize: 12,
     color: Colors.accent,
-    fontFamily: "Inter_600SemiBold",
+    fontFamily: "Inter_500Medium",
     marginBottom: 2,
   },
   scoreFinal: {
