@@ -8,6 +8,8 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
+import Animated from "react-native-reanimated";
+import { useScoreFlash } from "@/hooks/useScoreFlash";
 import { useLocalSearchParams, router, Stack } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
@@ -130,6 +132,7 @@ function EventCard({
   const isTbcMatch = (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel;
   const isTbdOlympic = event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound;
   const showTeamLayout = !isSession && !isTbcMatch && !isTbdOlympic;
+  const flashStyle = useScoreFlash(score?.awayScore, score?.homeScore);
 
   return (
     <Pressable
@@ -144,7 +147,7 @@ function EventCard({
       ]}
       testID={`event-${event.id}`}
     >
-      <View style={styles.cardInner}>
+      <Animated.View style={[styles.cardInner, flashStyle]}>
         <View style={styles.cardTeamsSection}>
           <View style={styles.cardHeaderRow}>
             <Text style={[styles.cardLeague, { color: sportColor }]}>
@@ -233,7 +236,7 @@ function EventCard({
             </View>
           )}
         </View>
-      </View>
+      </Animated.View>
     </Pressable>
   );
 }
@@ -922,11 +925,10 @@ const styles = StyleSheet.create({
   eventCard: {
     backgroundColor: Colors.card,
     borderRadius: 16,
-    paddingVertical: 16,
-    paddingHorizontal: 18,
     marginBottom: 10,
     borderWidth: 1,
     borderColor: Colors.border,
+    overflow: "hidden",
   },
   eventCardCompleted: {
     borderColor: Colors.border,
@@ -934,6 +936,9 @@ const styles = StyleSheet.create({
   cardInner: {
     flexDirection: "row",
     alignItems: "center",
+    paddingVertical: 16,
+    paddingHorizontal: 18,
+    borderRadius: 15,
   },
   cardTeamsSection: {
     flex: 1,

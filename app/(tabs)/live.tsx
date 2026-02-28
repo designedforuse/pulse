@@ -21,6 +21,7 @@ import Animated, {
   withTiming,
   withSequence,
 } from "react-native-reanimated";
+import { useScoreFlash } from "@/hooks/useScoreFlash";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
@@ -96,6 +97,7 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
         : null;
 
   const showTeamStack = !matchupText;
+  const flashStyle = useScoreFlash(score?.awayScore, score?.homeScore);
 
   return (
     <Pressable
@@ -105,7 +107,7 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
         { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] },
       ]}
     >
-      <View style={styles.cardInner}>
+      <Animated.View style={[styles.cardInner, flashStyle]}>
         <View style={styles.cardTeamsSection}>
           <View style={styles.cardHeaderRow}>
             <Text style={[styles.cardLeague, { color: sportColor }]}>
@@ -180,7 +182,7 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
             </View>
           )}
         </View>
-      </View>
+      </Animated.View>
     </Pressable>
   );
 }
@@ -455,15 +457,17 @@ const styles = StyleSheet.create({
   eventCard: {
     backgroundColor: Colors.card,
     borderRadius: 16,
-    paddingVertical: 16,
-    paddingHorizontal: 18,
     marginHorizontal: 16,
     borderWidth: 1,
     borderColor: Colors.border,
+    overflow: "hidden",
   },
   cardInner: {
     flexDirection: "row",
     alignItems: "center",
+    paddingVertical: 16,
+    paddingHorizontal: 18,
+    borderRadius: 15,
   },
   cardTeamsSection: {
     flex: 1,
