@@ -12,6 +12,7 @@ import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
+import { displayTeamName } from "@/utils/teams";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -119,11 +120,11 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
           {showTeamStack ? (
             <View style={styles.teamStack}>
               <View style={styles.teamScoreRow}>
-                <Text style={styles.teamName} numberOfLines={1}>{event.awayTeam}</Text>
+                <Text style={styles.teamName} numberOfLines={1}>{displayTeamName(event.awayTeam, event.league)}</Text>
                 {hasScore && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.awayScore}</Text>}
               </View>
               <View style={styles.teamScoreRow}>
-                <Text style={styles.teamName} numberOfLines={1}>{event.homeTeam}</Text>
+                <Text style={styles.teamName} numberOfLines={1}>{displayTeamName(event.homeTeam, event.league)}</Text>
                 {hasScore && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.homeScore}</Text>}
               </View>
             </View>

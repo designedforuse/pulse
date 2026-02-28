@@ -23,6 +23,7 @@ import {
 import { useEvents } from "@/lib/events-context";
 import { useScores } from "@/lib/scores-context";
 import { isEventLive } from "@/utils/time";
+import { displayTeamName } from "@/utils/teams";
 
 function formatDetailDate(startTimeLocal: string): string {
   const d = new Date(startTimeLocal);
@@ -161,12 +162,12 @@ export default function EventSheet() {
           ) : (
             <View style={styles.matchupRow}>
               <View style={styles.teamSide}>
-                <Text style={styles.teamName}>{event.awayTeam}</Text>
+                <Text style={styles.teamName}>{displayTeamName(event.awayTeam, event.league)}</Text>
                 {score && <Text style={[styles.sheetScore, score.status === "live" && styles.sheetScoreLive]}>{score.awayScore}</Text>}
               </View>
               <Text style={styles.atText}>at</Text>
               <View style={styles.teamSide}>
-                <Text style={styles.teamName}>{event.homeTeam}</Text>
+                <Text style={styles.teamName}>{displayTeamName(event.homeTeam, event.league)}</Text>
                 {score && <Text style={[styles.sheetScore, score.status === "live" && styles.sheetScoreLive]}>{score.homeScore}</Text>}
               </View>
             </View>
