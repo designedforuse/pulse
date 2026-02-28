@@ -340,7 +340,7 @@ async function fetchSoccerScores(soccerMap: Map<string, string[]>): Promise<Reco
                 awayScore: parseInt(awayComp.score || "0", 10),
                 homeScore: parseInt(homeComp.score || "0", 10),
                 period,
-                clock,
+                clock: clock !== period ? clock : undefined,
                 status: "live",
               };
             } else if (statusState === "post") {
