@@ -128,7 +128,7 @@ export default function ModesScreen() {
         <View style={styles.myGuideSection}>
           <View style={styles.sectionHeaderRow}>
             <Ionicons name="compass" size={20} color={Colors.accent} />
-            <Text style={styles.sectionHeaderText}>My Guide</Text>
+            <Text style={styles.sectionHeaderText}>My Rituals</Text>
           </View>
           <View style={styles.ritualsContainer}>
             {RITUALS.map((ritual) => (
