@@ -431,26 +431,14 @@ async function fetchRugbyScores(
 
             if (statusState === "in") {
               let period = "";
-              let clock = "";
               const detail = statusDetail || "";
-              const minuteMatch = detail.match(/^(\d+)[\u2019']/);
               if (/half\s*time/i.test(detail) || detail === "HT") {
                 period = "HT";
-              } else if (minuteMatch) {
-                clock = minuteMatch[0];
-                const halfMatch = detail.match(/(\d)\w*\s*half/i);
-                if (halfMatch) {
-                  period = `${halfMatch[1]}H`;
-                }
-              }
-              if (!period && !clock && displayClock && displayClock !== "0'") {
-                clock = displayClock;
               }
               scores[ourEvent.id] = {
                 awayScore: parseInt(awayComp.score || "0", 10),
                 homeScore: parseInt(homeComp.score || "0", 10),
                 period: period || undefined,
-                clock: clock || undefined,
                 status: "live",
               };
             } else if (statusState === "post") {
