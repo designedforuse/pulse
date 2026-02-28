@@ -203,19 +203,8 @@ export default function EventSheet() {
             testID="open-provider-btn"
           >
             <ProviderLogo providerId={event.providerId} size={28} />
-            <Text style={styles.openButtonText}>Open {provider.name}</Text>
           </Pressable>
         )}
-
-        <Pressable
-          onPress={() => router.back()}
-          style={({ pressed }) => [
-            styles.closeButton,
-            { opacity: pressed ? 0.7 : 1 },
-          ]}
-        >
-          <Text style={styles.closeButtonText}>Close</Text>
-        </Pressable>
       </View>
     </View>
   );
@@ -349,7 +338,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 8,
-    backgroundColor: Colors.accent,
+    backgroundColor: "#D32F2F",
     paddingVertical: 16,
     borderRadius: 14,
   },
