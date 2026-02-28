@@ -343,6 +343,7 @@ async function fetchSoccerScores(soccerMap: Map<string, string[]>): Promise<Reco
 
 const ESPN_RUGBY_LEAGUE_PATHS: Record<string, string> = {
   "URC": "270557",
+  "Super Rugby": "242041",
 };
 
 function normalizeTeamName(name: string): string {
