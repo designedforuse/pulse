@@ -151,12 +151,6 @@ function EventCard({
               {getLeagueDisplayLabel(event)}
             </Text>
             {isFav && <Text style={styles.favStar}>★</Text>}
-            {live && (
-              <View style={styles.liveChip}>
-                <View style={styles.liveDot} />
-                <Text style={styles.liveLabel}>LIVE</Text>
-              </View>
-            )}
             {completed && (
               <Text style={styles.completedLabel}>FINAL</Text>
             )}
@@ -199,6 +193,12 @@ function EventCard({
         <View style={styles.cardDivider} />
 
         <View style={styles.cardTimeSection}>
+          {live && (
+            <View style={styles.liveChip}>
+              <View style={styles.liveDot} />
+              <Text style={styles.liveLabel}>LIVE</Text>
+            </View>
+          )}
           {hasScore && score.status === "live" ? (
             (() => {
               const isRugby = event.sport === "Rugby";

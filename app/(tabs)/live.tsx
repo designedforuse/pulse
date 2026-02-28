@@ -112,12 +112,6 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
               {event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league}
             </Text>
             {isFav && <Text style={styles.favStar}>★</Text>}
-            {isLive && (
-              <View style={styles.liveChip}>
-                <LiveIndicator />
-                <Text style={styles.liveText}>LIVE</Text>
-              </View>
-            )}
           </View>
 
           {showTeamStack ? (
@@ -145,6 +139,12 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
         <View style={styles.cardDivider} />
 
         <View style={styles.cardTimeSection}>
+          {isLive && (
+            <View style={styles.liveChip}>
+              <LiveIndicator />
+              <Text style={styles.liveText}>LIVE</Text>
+            </View>
+          )}
           {isLive ? (
             (() => {
               const isRugby = event.sport === "Rugby";
@@ -163,12 +163,7 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
                 );
               }
               const elapsed = formatTimeSinceStart(event.startTimeLocal, now);
-              return elapsed ? <Text style={styles.elapsedText}>{elapsed}</Text> : (
-                <View style={styles.liveTimeChip}>
-                  <View style={styles.liveTimeDot} />
-                  <Text style={styles.liveTimeText}>LIVE</Text>
-                </View>
-              );
+              return elapsed ? <Text style={styles.elapsedText}>{elapsed}</Text> : null;
             })()
           ) : (
             <>
