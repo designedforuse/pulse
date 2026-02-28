@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 
 const PROVIDER_IMAGES: Record<string, any> = {
   youtubetv: require("@/assets/providers/youtubetv.png"),
@@ -7,14 +7,7 @@ const PROVIDER_IMAGES: Record<string, any> = {
   flosports: require("@/assets/providers/flosports.png"),
   victoryplus: require("@/assets/providers/victoryplus.png"),
   primevideo: require("@/assets/providers/primevideo.png"),
-};
-
-const PROVIDER_SHORT_NAMES: Record<string, string> = {
-  appletv: "TV+",
-};
-
-const PROVIDER_COLORS: Record<string, { bg: string; text: string }> = {
-  appletv: { bg: "#555555", text: "#FFFFFF" },
+  appletv: require("@/assets/providers/appletv.png"),
 };
 
 let _warnedIds: Set<string> | null = null;
@@ -27,36 +20,7 @@ interface ProviderLogoProps {
 export default function ProviderLogo({ providerId, size = 24 }: ProviderLogoProps) {
   const image = PROVIDER_IMAGES[providerId];
 
-  if (image) {
-    const pillHeight = size;
-    const imgWidth = Math.round(size * 1.8);
-
-    return (
-      <View
-        style={[
-          styles.imagePill,
-          {
-            height: pillHeight,
-            minWidth: imgWidth,
-          },
-        ]}
-      >
-        <Image
-          source={image}
-          style={{
-            width: imgWidth,
-            height: pillHeight - 4,
-            tintColor: "#FFFFFF",
-          }}
-          resizeMode="contain"
-        />
-      </View>
-    );
-  }
-
-  const shortName = PROVIDER_SHORT_NAMES[providerId];
-
-  if (!shortName) {
+  if (!image) {
     if (__DEV__) {
       if (!_warnedIds) _warnedIds = new Set();
       if (!_warnedIds.has(providerId)) {
@@ -67,35 +31,28 @@ export default function ProviderLogo({ providerId, size = 24 }: ProviderLogoProp
     return null;
   }
 
-  const colors = PROVIDER_COLORS[providerId] || { bg: "#636366", text: "#FFFFFF" };
-  const fontSize = Math.max(8, Math.round(size * 0.42));
   const pillHeight = size;
-  const minWidth = size;
-  const paddingH = Math.round(size * 0.2);
-  const borderRadius = Math.round(size * 0.18);
+  const imgWidth = Math.round(size * 1.8);
 
   return (
     <View
       style={[
-        styles.pill,
+        styles.imagePill,
         {
-          backgroundColor: colors.bg,
           height: pillHeight,
-          minWidth: minWidth,
-          paddingHorizontal: paddingH,
-          borderRadius: borderRadius,
+          minWidth: imgWidth,
         },
       ]}
     >
-      <Text
-        style={[
-          styles.pillText,
-          { color: colors.text, fontSize: fontSize, lineHeight: pillHeight },
-        ]}
-        numberOfLines={1}
-      >
-        {shortName}
-      </Text>
+      <Image
+        source={image}
+        style={{
+          width: imgWidth,
+          height: pillHeight - 4,
+          tintColor: "#FFFFFF",
+        }}
+        resizeMode="contain"
+      />
     </View>
   );
 }
@@ -105,15 +62,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "flex-start",
-  },
-  pill: {
-    alignItems: "center",
-    justifyContent: "center",
-    alignSelf: "flex-start",
-  },
-  pillText: {
-    fontWeight: "700",
-    letterSpacing: 0.3,
-    textAlign: "center",
   },
 });
