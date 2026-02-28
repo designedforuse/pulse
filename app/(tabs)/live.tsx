@@ -23,6 +23,7 @@ import Animated, {
 } from "react-native-reanimated";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
+import { TeamLogo } from "@/components/TeamLogo";
 import {
   getProviderById,
   formatStartTime,
@@ -121,11 +122,17 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
           {showTeamStack ? (
             <View style={styles.teamStack}>
               <View style={styles.teamScoreRow}>
-                <Text style={styles.teamName} numberOfLines={1}>{displayTeamName(event.awayTeam, event.league)}</Text>
+                <View style={styles.teamNameRow}>
+                  <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={20} />
+                  <Text style={styles.teamName} numberOfLines={1}>{displayTeamName(event.awayTeam, event.league)}</Text>
+                </View>
                 {hasScore && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.awayScore}</Text>}
               </View>
               <View style={styles.teamScoreRow}>
-                <Text style={styles.teamName} numberOfLines={1}>{displayTeamName(event.homeTeam, event.league)}</Text>
+                <View style={styles.teamNameRow}>
+                  <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={20} />
+                  <Text style={styles.teamName} numberOfLines={1}>{displayTeamName(event.homeTeam, event.league)}</Text>
+                </View>
                 {hasScore && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.homeScore}</Text>}
               </View>
             </View>
@@ -563,6 +570,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     gap: 8,
+  },
+  teamNameRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
   },
   scoreText: {
     fontSize: 16,

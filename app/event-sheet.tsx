@@ -15,6 +15,7 @@ import * as IntentLauncher from "expo-intent-launcher";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
+import { TeamLogo } from "@/components/TeamLogo";
 import {
   getProviderById,
   formatStartTime,
@@ -162,11 +163,13 @@ export default function EventSheet() {
           ) : (
             <View style={styles.matchupRow}>
               <View style={styles.teamSide}>
+                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={28} />
                 <Text style={styles.teamName}>{displayTeamName(event.awayTeam, event.league)}</Text>
                 {score && <Text style={[styles.sheetScore, score.status === "live" && styles.sheetScoreLive]}>{score.awayScore}</Text>}
               </View>
               <Text style={styles.atText}>at</Text>
               <View style={styles.teamSide}>
+                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={28} />
                 <Text style={styles.teamName}>{displayTeamName(event.homeTeam, event.league)}</Text>
                 {score && <Text style={[styles.sheetScore, score.status === "live" && styles.sheetScoreLive]}>{score.homeScore}</Text>}
               </View>
