@@ -252,8 +252,11 @@ export function mergeSoccerLeagueEvents(
     merged.push(fe);
   }
 
+  const fetchedSources = new Set(fetched.map(fe => fe.source));
+
   for (const [id, e] of existingMap) {
     if (seenIds.has(id)) continue;
+    if (fetchedSources.has(e.source)) continue;
     const start = new Date(e.startTimeLocal);
     if (start >= windowStart && start <= windowEnd) {
       merged.push(e);
