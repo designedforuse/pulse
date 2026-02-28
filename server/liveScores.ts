@@ -22,7 +22,7 @@ interface LiveEventIdBuckets {
   nhl: string[];
   ahl: string[];
   echl: string[];
-  ncaa: { id: string; homeTeam: string; awayTeam: string }[];
+  ncaa: { id: string; homeTeam: string; awayTeam: string; startTime: string }[];
   soccer: Map<string, string[]>;
   rugby: Map<string, { id: string; homeTeam: string; awayTeam: string }[]>;
   cricket: { id: string; homeTeam: string; awayTeam: string }[];
@@ -32,7 +32,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
   const nhl: string[] = [];
   const ahl: string[] = [];
   const echl: string[] = [];
-  const ncaa: { id: string; homeTeam: string; awayTeam: string }[] = [];
+  const ncaa: { id: string; homeTeam: string; awayTeam: string; startTime: string }[] = [];
   const soccer = new Map<string, string[]>();
   const rugby = new Map<string, { id: string; homeTeam: string; awayTeam: string }[]>();
   const cricket: { id: string; homeTeam: string; awayTeam: string }[] = [];
@@ -67,6 +67,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
           id: event.id,
           homeTeam: event.homeTeam || "",
           awayTeam: event.awayTeam || "",
+          startTime: event.startTimeLocal || "",
         });
       } else if (event.id.startsWith("soccer-")) {
         const league = event.league as string;
@@ -573,7 +574,7 @@ async function fetchJapanLeagueOneScores(
 }
 
 async function fetchNcaaHockeyScores(
-  events: { id: string; homeTeam: string; awayTeam: string }[]
+  events: { id: string; homeTeam: string; awayTeam: string; startTime: string }[]
 ): Promise<Record<string, ScoreData>> {
   const scores: Record<string, ScoreData> = {};
   if (events.length === 0) return scores;
@@ -602,10 +603,19 @@ async function fetchNcaaHockeyScores(
       const espnHome = homeComp.team?.displayName || homeComp.team?.shortDisplayName || "";
       const espnAway = awayComp.team?.displayName || awayComp.team?.shortDisplayName || "";
 
+      const espnDateStr = espnEvent.date || comp.date || "";
+      const espnStartMs = espnDateStr ? new Date(espnDateStr).getTime() : 0;
+
       for (const ourEvent of events) {
         if (scores[ourEvent.id]) continue;
 
         if (teamsMatch(espnHome, ourEvent.homeTeam) && teamsMatch(espnAway, ourEvent.awayTeam)) {
+          if (ourEvent.startTime && espnStartMs) {
+            const ourStartMs = new Date(ourEvent.startTime).getTime();
+            const diffHours = Math.abs(espnStartMs - ourStartMs) / (1000 * 60 * 60);
+            if (diffHours > 6) continue;
+          }
+
           const statusState = comp.status?.type?.state;
           const statusDetail = comp.status?.type?.shortDetail || "";
 
