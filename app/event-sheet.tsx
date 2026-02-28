@@ -132,14 +132,6 @@ export default function EventSheet() {
         <View style={styles.topSection}>
           <View style={styles.headerLine}>
             <Text style={[styles.headerLeague, { color: sportColor }]}>{leagueLabel}</Text>
-            <Text style={styles.headerDot}> · </Text>
-            <Text style={styles.headerDate}>{dateLabel}</Text>
-            {live && (
-              <View style={styles.liveBadge}>
-                <View style={styles.liveDot} />
-                <Text style={styles.liveText}>LIVE</Text>
-              </View>
-            )}
           </View>
 
           {isSession ? (
@@ -202,7 +194,7 @@ export default function EventSheet() {
             ]}
             testID="open-provider-btn"
           >
-            <ProviderLogo providerId={event.providerId} size={28} />
+            <ProviderLogo providerId={event.providerId} size={40} />
           </Pressable>
         )}
       </View>
@@ -227,12 +219,14 @@ const styles = StyleSheet.create({
   headerLine: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     flexWrap: "wrap",
     gap: 4,
   },
   headerLeague: {
-    fontSize: 14,
-    fontFamily: "Inter_500Medium",
+    fontSize: 16,
+    fontFamily: "Inter_600SemiBold",
+    fontWeight: "600" as const,
   },
   headerDot: {
     fontSize: 14,
