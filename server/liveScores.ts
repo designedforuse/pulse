@@ -459,6 +459,31 @@ async function fetchRugbyScores(
   return scores;
 }
 
+const JL_TEAM_MAP: Record<string, string> = {
+  "東芝ブレイブルーパス東京": "Brave Lupus Tokyo",
+  "ブラックラムズ東京": "Black Rams Tokyo",
+  "コベルコ神戸スティーラーズ": "Kobelco Kobe Steelers",
+  "埼玉ワイルドナイツ": "Saitama Wild Knights",
+  "クボタスピアーズ船橋・東京ベイ": "Tokyo-Bay Urayasu D-Rocks",
+  "クボタスピアーズ船橋": "Tokyo-Bay Urayasu D-Rocks",
+  "浦安D-Rocks": "Urayasu D-Rocks",
+  "トヨタヴェルブリッツ": "Toyota Verblitz",
+  "三重ホンダヒート": "Mie Honda Heat",
+  "東京サンゴリアス": "Tokyo Sungoliath",
+  "横浜キヤノンイーグルス": "Yokohama Canon Eagles",
+  "三菱重工相模原ダイナボアーズ": "Sagamihara Dynaboars",
+  "静岡ブルーレヴズ": "Shizuoka Blue Revs",
+};
+
+function resolveJlTeam(jpName: string): string {
+  const trimmed = jpName.trim();
+  if (JL_TEAM_MAP[trimmed]) return JL_TEAM_MAP[trimmed];
+  for (const [jp, en] of Object.entries(JL_TEAM_MAP)) {
+    if (trimmed.includes(jp) || jp.includes(trimmed)) return en;
+  }
+  return trimmed;
+}
+
 async function fetchJapanLeagueOneScores(
   events: { id: string; homeTeam: string; awayTeam: string }[]
 ): Promise<Record<string, ScoreData>> {
@@ -466,65 +491,48 @@ async function fetchJapanLeagueOneScores(
   if (events.length === 0) return scores;
 
   try {
-    const fixturesRes = await fetch("https://all.rugby/tournament/league-one-d1/fixtures-results", {
+    const res = await fetch("https://league-one.jp/schedule/", {
       headers: { "User-Agent": "Mozilla/5.0" },
     });
-    if (!fixturesRes.ok) return scores;
-    const fixturesHtml = await fixturesRes.text();
+    if (!res.ok) return scores;
+    const html = await res.text();
 
-    const todayIdx = fixturesHtml.indexOf("Today</li>");
-    if (todayIdx === -1) return scores;
-    const nextDateIdx = fixturesHtml.indexOf("sep_dat", todayIdx + 20);
-    const section = fixturesHtml.slice(todayIdx, nextDateIdx > 0 ? nextDateIdx : todayIdx + 5000);
-
-    const matchRe = /href="(\/match\/[^"]+)"[^>]*title="Match Report ([^"]+)"[\s\S]*?<div class="fl res txtcenter">(.*?)<\/div>/g;
-    const todayMatches: { url: string; title: string; scoreText: string }[] = [];
+    const detailRe = /<a href="\/match\/(\d+)" class="btn-match-detail">([^<]+)<\/a>/g;
     let m;
-    while ((m = matchRe.exec(section)) !== null) {
-      const scoreText = m[3].trim();
-      if (scoreText === "live..." || /^\d+\s*-\s*\d+$/.test(scoreText)) {
-        todayMatches.push({ url: m[1], title: m[2], scoreText });
+    while ((m = detailRe.exec(html)) !== null) {
+      const statusText = m[2];
+      const isLive = statusText.includes("試合中");
+      const isFinal = statusText.includes("試合終了");
+      if (!isLive && !isFinal) continue;
+
+      const pos = m.index;
+      const block = html.slice(Math.max(0, pos - 3000), pos + 200);
+
+      const homeM = block.match(/<li class="home"[^>]*>[\s\S]*?<p class="name only-pc">([^<]+)<\/p>[\s\S]*?<p class="score">([^<]*)<\/p>/);
+      const awayM = block.match(/<li class="away"[^>]*>[\s\S]*?<p class="name only-pc">([^<]+)<\/p>[\s\S]*?<p class="score">([^<]*)<\/p>/);
+      if (!homeM || !awayM) continue;
+
+      const scrapedHome = resolveJlTeam(homeM[1]);
+      const scrapedAway = resolveJlTeam(awayM[1]);
+      const homeScore = parseInt((homeM[2] || "").replace(/&nbsp;/g, "").trim(), 10);
+      const awayScore = parseInt((awayM[2] || "").replace(/&nbsp;/g, "").trim(), 10);
+      if (isNaN(homeScore) || isNaN(awayScore)) continue;
+
+      for (const ourEvent of events) {
+        if (scores[ourEvent.id]) continue;
+        const normalMatch = teamsMatch(scrapedHome, ourEvent.homeTeam) && teamsMatch(scrapedAway, ourEvent.awayTeam);
+        const swappedMatch = teamsMatch(scrapedHome, ourEvent.awayTeam) && teamsMatch(scrapedAway, ourEvent.homeTeam);
+        if (normalMatch || swappedMatch) {
+          scores[ourEvent.id] = {
+            homeScore: swappedMatch ? awayScore : homeScore,
+            awayScore: swappedMatch ? homeScore : awayScore,
+            period: isLive ? "Live" : "Final",
+            status: isLive ? "live" : "final",
+          };
+          break;
+        }
       }
     }
-
-    const fetches = todayMatches.map(async (match) => {
-      try {
-        const matchRes = await fetch(`https://all.rugby${match.url}`, {
-          headers: { "User-Agent": "Mozilla/5.0" },
-        });
-        if (!matchRes.ok) return;
-        const matchHtml = await matchRes.text();
-
-        const titleMatch = matchHtml.match(/<title>Match report\s+(.+?)\s+-\s+(.+?),/i);
-        if (!titleMatch) return;
-        const scrapedHome = titleMatch[1].trim();
-        const scrapedAway = titleMatch[2].trim();
-
-        const scoreMatch = matchHtml.match(/Score\s*:\s*(\d+)\s*-\s*(\d+)/i);
-        if (!scoreMatch) return;
-        const homeScore = parseInt(scoreMatch[1], 10);
-        const awayScore = parseInt(scoreMatch[2], 10);
-        const isLive = match.scoreText === "live...";
-
-        for (const ourEvent of events) {
-          if (scores[ourEvent.id]) continue;
-          const normalMatch = teamsMatch(scrapedHome, ourEvent.homeTeam) && teamsMatch(scrapedAway, ourEvent.awayTeam);
-          const swappedMatch = teamsMatch(scrapedHome, ourEvent.awayTeam) && teamsMatch(scrapedAway, ourEvent.homeTeam);
-          if (normalMatch || swappedMatch) {
-            scores[ourEvent.id] = {
-              homeScore: swappedMatch ? awayScore : homeScore,
-              awayScore: swappedMatch ? homeScore : awayScore,
-              period: isLive ? "Live" : "Final",
-              status: isLive ? "live" : "final",
-            };
-            break;
-          }
-        }
-      } catch {
-      }
-    });
-
-    await Promise.all(fetches);
   } catch (err) {
     console.error("[liveScores] Japan League One fetch error:", err);
   }
