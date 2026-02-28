@@ -497,23 +497,33 @@ async function fetchJapanLeagueOneScores(
     if (!res.ok) return scores;
     const html = await res.text();
 
-    const detailRe = /<a href="\/match\/(\d+)" class="btn-match-detail">([^<]+)<\/a>/g;
-    let m;
-    while ((m = detailRe.exec(html)) !== null) {
-      const statusText = m[2];
+    const jstNow = new Date(Date.now() + 9 * 60 * 60 * 1000);
+    const todayStr = `${String(jstNow.getUTCMonth() + 1).padStart(2, "0")}.${String(jstNow.getUTCDate()).padStart(2, "0")}`;
+    const jstYesterday = new Date(Date.now() + 9 * 60 * 60 * 1000 - 86400000);
+    const yesterdayStr = `${String(jstYesterday.getUTCMonth() + 1).padStart(2, "0")}.${String(jstYesterday.getUTCDate()).padStart(2, "0")}`;
+
+    const scheduleBlocks = html.split(/<div class="c-schedule">/);
+    for (const block of scheduleBlocks) {
+      const detailM = block.match(/<a href="\/match\/(\d+)" class="btn-match-detail">([^<]+)<\/a>/);
+      if (!detailM) continue;
+      const statusText = detailM[2];
       const isLive = statusText.includes("試合中");
       const isFinal = statusText.includes("試合終了");
       if (!isLive && !isFinal) continue;
 
-      const pos = m.index;
-      const block = html.slice(Math.max(0, pos - 3000), pos + 200);
+      const dateM = block.match(/<p class="date">\s*([\d.]+)/);
+      const matchDate = dateM?.[1]?.trim() || "";
+      if (matchDate !== todayStr && matchDate !== yesterdayStr) continue;
 
       const homeM = block.match(/<li class="home"[^>]*>[\s\S]*?<p class="name only-pc">([^<]+)<\/p>[\s\S]*?<p class="score">([^<]*)<\/p>/);
       const awayM = block.match(/<li class="away"[^>]*>[\s\S]*?<p class="name only-pc">([^<]+)<\/p>[\s\S]*?<p class="score">([^<]*)<\/p>/);
       if (!homeM || !awayM) continue;
 
-      const scrapedHome = resolveJlTeam(homeM[1]);
-      const scrapedAway = resolveJlTeam(awayM[1]);
+      const rawHome = homeM[1].trim();
+      const rawAway = awayM[1].trim();
+      const scrapedHome = resolveJlTeam(rawHome);
+      const scrapedAway = resolveJlTeam(rawAway);
+      if (scrapedHome === rawHome || scrapedAway === rawAway) continue;
       const homeScore = parseInt((homeM[2] || "").replace(/&nbsp;/g, "").trim(), 10);
       const awayScore = parseInt((awayM[2] || "").replace(/&nbsp;/g, "").trim(), 10);
       if (isNaN(homeScore) || isNaN(awayScore)) continue;
