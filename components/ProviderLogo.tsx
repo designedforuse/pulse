@@ -30,8 +30,6 @@ export default function ProviderLogo({ providerId, size = 24 }: ProviderLogoProp
   if (image) {
     const pillHeight = size;
     const imgWidth = Math.round(size * 1.8);
-    const borderRadius = Math.round(size * 0.18);
-    const paddingH = Math.round(size * 0.15);
 
     return (
       <View
@@ -40,16 +38,15 @@ export default function ProviderLogo({ providerId, size = 24 }: ProviderLogoProp
           {
             height: pillHeight,
             minWidth: imgWidth,
-            paddingHorizontal: paddingH,
-            borderRadius: borderRadius,
           },
         ]}
       >
         <Image
           source={image}
           style={{
-            width: imgWidth - paddingH * 2,
-            height: pillHeight - 6,
+            width: imgWidth,
+            height: pillHeight - 4,
+            tintColor: "#FFFFFF",
           }}
           resizeMode="contain"
         />
@@ -108,8 +105,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "flex-start",
-    backgroundColor: "#FFFFFF",
-    overflow: "hidden",
   },
   pill: {
     alignItems: "center",
