@@ -977,7 +977,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       { id: "saturday_sunrise", targetDow: 6, startHour: 6, endHour: 12 },
       { id: "saturday_spotlight", targetDow: 6, startHour: 16, endHour: 20 },
       { id: "saturday_after_hours", targetDow: 6, startHour: 20, endHour: 24 },
-      { id: "sunday_session", targetDow: 0, startHour: 6, endHour: 9 },
+      { id: "sunday_session", targetDow: 0, startHour: 6, endHour: 12 },
     ];
 
     const getLocalParts = (d: Date) => {
@@ -1065,6 +1065,156 @@ export async function registerRoutes(app: Express): Promise<Server> {
       currentPTTime: nowPT,
       currentDow: dayNames[local.dow],
       windows,
+    });
+  });
+
+  app.get("/api/debug/ritual-filter", (req, res) => {
+    const ritualId = (req.query.id as string) || "";
+    const TZ = "America/Los_Angeles";
+    const now = new Date();
+
+    const ritualDefs = [
+      { id: "friday_lights", targetDow: 5, startHour: 18, endHour: 21, sports: ["hockey", "basketball", "soccer"] },
+      { id: "friday_after_hours", targetDow: 5, startHour: 21, endHour: 24, sports: ["rugby", "cricket"] },
+      { id: "saturday_sunrise", targetDow: 6, startHour: 6, endHour: 12, sports: ["rugby", "cricket", "soccer"] },
+      { id: "saturday_spotlight", targetDow: 6, startHour: 16, endHour: 20, sports: ["hockey", "basketball", "soccer"] },
+      { id: "saturday_after_hours", targetDow: 6, startHour: 20, endHour: 24, sports: ["hockey", "basketball", "soccer", "rugby", "cricket"] },
+      { id: "sunday_session", targetDow: 0, startHour: 6, endHour: 12, sports: ["rugby", "cricket", "soccer"] },
+    ];
+
+    const ritual = ritualDefs.find((r) => r.id === ritualId);
+    if (!ritual) {
+      return res.status(400).json({ error: `Unknown ritual id: ${ritualId}`, validIds: ritualDefs.map((r) => r.id) });
+    }
+
+    const generated = loadGeneratedEvents();
+    if (!generated || !generated.events) {
+      return res.json({ error: "No events available" });
+    }
+
+    const fmtPT = (d: Date) =>
+      new Intl.DateTimeFormat("en-US", {
+        timeZone: TZ, weekday: "short", year: "numeric", month: "short", day: "numeric",
+        hour: "numeric", minute: "2-digit", second: "2-digit", hour12: true,
+      }).format(d);
+
+    const getLocalParts = (d: Date) => {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: TZ, year: "numeric", month: "numeric", day: "numeric",
+        weekday: "short", hour: "numeric", minute: "numeric", hour12: false,
+      }).formatToParts(d);
+      const get = (type: string) => parts.find((p) => p.type === type)?.value ?? "0";
+      const dayMap: Record<string, number> = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+      const hourVal = parseInt(get("hour"), 10);
+      return {
+        year: parseInt(get("year"), 10), month: parseInt(get("month"), 10),
+        day: parseInt(get("day"), 10), dow: dayMap[get("weekday")] ?? 0,
+        hour: hourVal === 24 ? 0 : hourVal, minute: parseInt(get("minute"), 10),
+      };
+    };
+
+    const midnightInTZLocal = (y: number, m: number, d: number) => {
+      const guess = new Date(Date.UTC(y, m - 1, d, 12, 0, 0));
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: TZ, year: "numeric", month: "numeric", day: "numeric",
+        hour: "numeric", minute: "numeric", second: "numeric", hour12: false,
+      }).formatToParts(guess);
+      const gv = (type: string) => parseInt(parts.find((p) => p.type === type)?.value || "0", 10);
+      const localH = gv("hour") === 24 ? 0 : gv("hour");
+      const offsetMs = (localH * 3600 + gv("minute") * 60 + gv("second")) * 1000;
+      const candidate = new Date(guess.getTime() - offsetMs);
+      const verify = new Intl.DateTimeFormat("en-US", {
+        timeZone: TZ, day: "numeric", hour: "numeric", hour12: false,
+      }).formatToParts(candidate);
+      const verifyDay = parseInt(verify.find((p) => p.type === "day")?.value || "0", 10);
+      const verifyHour = parseInt(verify.find((p) => p.type === "hour")?.value || "0", 10);
+      if (verifyDay !== d) return new Date(candidate.getTime() + (verifyDay < d ? 86400000 : -86400000));
+      if (verifyHour !== 0 && verifyHour !== 24) return new Date(candidate.getTime() - verifyHour * 3600000);
+      return candidate;
+    };
+
+    const local = getLocalParts(now);
+    let daysAhead = ritual.targetDow - local.dow;
+    if (daysAhead < 0) daysAhead += 7;
+    if (daysAhead === 0) {
+      const effectiveEndHour = Math.min(ritual.endHour, 24);
+      if (local.hour >= effectiveEndHour) daysAhead = 7;
+    }
+
+    const targetDate = new Date(Date.UTC(local.year, local.month - 1, local.day + daysAhead, 12));
+    const targetParts = getLocalParts(targetDate);
+    const dayStart = midnightInTZLocal(targetParts.year, targetParts.month, targetParts.day);
+    const dayEnd = new Date(dayStart.getTime() + 86400000 - 1);
+    const windowStart = new Date(dayStart.getTime() + ritual.startHour * 3600000);
+    const effectiveEnd = Math.min(ritual.endHour, 24);
+    const windowEnd = new Date(dayStart.getTime() + effectiveEnd * 3600000);
+
+    const DEFAULT_DURATIONS: Record<string, number> = {
+      hockey: 165, soccer: 135, rugby: 135, cricket: 480, basketball: 150,
+    };
+    const getEndMs = (e: any) => {
+      if (e.endTimeLocal) return new Date(e.endTimeLocal).getTime();
+      const durMin = DEFAULT_DURATIONS[e.sport] ?? 120;
+      return new Date(e.startTimeLocal).getTime() + durMin * 60000;
+    };
+
+    const events: any[] = generated.events;
+    const included: any[] = [];
+    const excludedSamples: any[] = [];
+    const MAX_EXCLUDED = 10;
+
+    for (const e of events) {
+      const eventStartMs = new Date(e.startTimeLocal).getTime();
+      const eventEndMs = getEndMs(e);
+
+      if (!ritual.sports.includes(e.sport)) {
+        continue;
+      }
+
+      const onDay = eventStartMs >= dayStart.getTime() && eventStartMs <= dayEnd.getTime();
+      if (!onDay) {
+        if (excludedSamples.length < MAX_EXCLUDED) {
+          excludedSamples.push({
+            id: e.id, league: e.league, homeTeam: e.homeTeam, awayTeam: e.awayTeam,
+            start: e.startTimeLocal, startPT: fmtPT(new Date(eventStartMs)),
+            excludedReason: "wrong-day",
+          });
+        }
+        continue;
+      }
+
+      const overlaps = eventStartMs < windowEnd.getTime() && eventEndMs > windowStart.getTime();
+      if (!overlaps) {
+        if (excludedSamples.length < MAX_EXCLUDED) {
+          excludedSamples.push({
+            id: e.id, league: e.league, homeTeam: e.homeTeam, awayTeam: e.awayTeam,
+            start: e.startTimeLocal, startPT: fmtPT(new Date(eventStartMs)),
+            endUTC: new Date(eventEndMs).toISOString(), endPT: fmtPT(new Date(eventEndMs)),
+            excludedReason: "no-overlap",
+          });
+        }
+        continue;
+      }
+
+      included.push({
+        id: e.id, league: e.league, homeTeam: e.homeTeam, awayTeam: e.awayTeam,
+        start: e.startTimeLocal, startPT: fmtPT(new Date(eventStartMs)),
+        endUTC: new Date(eventEndMs).toISOString(), endPT: fmtPT(new Date(eventEndMs)),
+      });
+    }
+
+    return res.json({
+      ritualId: ritual.id,
+      currentPTTime: fmtPT(now),
+      windowStartPT: fmtPT(windowStart),
+      windowEndPT: fmtPT(windowEnd),
+      windowStartUTC: windowStart.toISOString(),
+      windowEndUTC: windowEnd.toISOString(),
+      dayStartPT: fmtPT(dayStart),
+      dayEndPT: fmtPT(dayEnd),
+      eventsIncludedCount: included.length,
+      sampleIncludedEvents: included.slice(0, 20),
+      sampleExcludedEvents: excludedSamples,
     });
   });
 

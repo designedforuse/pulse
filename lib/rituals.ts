@@ -1,5 +1,6 @@
 import type { SportEvent, Favorites } from "@/lib/data";
 import { isEventLive } from "@/utils/time";
+import { getEventEnd } from "@/utils/time";
 import { favoriteInvolved } from "@/utils/favorites";
 import type { Ionicons } from "@expo/vector-icons";
 
@@ -80,7 +81,7 @@ export const RITUALS: Ritual[] = [
     sports: ["rugby", "cricket", "soccer"],
     days: [0],
     startHour: 6,
-    endHour: 9,
+    endHour: 12,
     context: "alone",
     concurrency: "single",
   },
@@ -160,8 +161,8 @@ function midnightInTZ(year: number, month: number, day: number): Date {
 export interface GuideDayWindow {
   dayStartUtc: Date;
   dayEndUtc: Date;
-  timeWindowStartUtc: Date;
-  timeWindowEndUtc: Date;
+  windowStartUtc: Date;
+  windowEndUtc: Date;
   ptDate: string;
 }
 
@@ -189,34 +190,52 @@ export function getGuideDayWindow(
   const dayStart = midnightInTZ(targetParts.year, targetParts.month, targetParts.day);
   const dayEnd = new Date(dayStart.getTime() + 86400000 - 1);
 
-  const timeStart = new Date(dayStart.getTime() + startHour * 3600000);
+  const windowStart = new Date(dayStart.getTime() + startHour * 3600000);
   const effectiveEnd = Math.min(endHour, 24);
-  const timeEnd = new Date(dayStart.getTime() + effectiveEnd * 3600000 - 1);
+  const windowEnd = new Date(dayStart.getTime() + effectiveEnd * 3600000);
 
   const ptDate = `${targetParts.year}-${String(targetParts.month).padStart(2, "0")}-${String(targetParts.day).padStart(2, "0")}`;
 
   return {
     dayStartUtc: dayStart,
     dayEndUtc: dayEnd,
-    timeWindowStartUtc: timeStart,
-    timeWindowEndUtc: timeEnd,
+    windowStartUtc: windowStart,
+    windowEndUtc: windowEnd,
     ptDate,
   };
 }
 
-export function isEventInRitual(event: SportEvent, ritual: Ritual, now: Date): boolean {
-  if (!ritual.sports.includes(event.sport)) return false;
+export type ExcludeReason = "wrong-sport" | "wrong-day" | "no-overlap";
 
-  const targetDow = ritual.days[0];
-  const window = getGuideDayWindow(targetDow, ritual.startHour, ritual.endHour, now);
-
-  const eventMs = new Date(event.startTimeLocal).getTime();
-
-  if (eventMs < window.timeWindowStartUtc.getTime() || eventMs > window.timeWindowEndUtc.getTime()) {
-    return false;
+export function classifyEventForRitual(
+  event: SportEvent,
+  ritual: Ritual,
+  now: Date,
+): { included: boolean; reason?: ExcludeReason } {
+  if (!ritual.sports.includes(event.sport)) {
+    return { included: false, reason: "wrong-sport" };
   }
 
-  return true;
+  const targetDow = ritual.days[0];
+  const w = getGuideDayWindow(targetDow, ritual.startHour, ritual.endHour, now);
+
+  const eventStartMs = new Date(event.startTimeLocal).getTime();
+  const eventEndMs = getEventEnd(event).getTime();
+
+  const eventStartParts = getLocalParts(new Date(eventStartMs));
+  const onTargetDay = eventStartMs >= w.dayStartUtc.getTime() && eventStartMs <= w.dayEndUtc.getTime();
+
+  if (!onTargetDay) {
+    return { included: false, reason: "wrong-day" };
+  }
+
+  const overlaps = eventStartMs < w.windowEndUtc.getTime() && eventEndMs > w.windowStartUtc.getTime();
+
+  if (!overlaps) {
+    return { included: false, reason: "no-overlap" };
+  }
+
+  return { included: true };
 }
 
 const LEAGUE_PRIORITY: Record<string, number> = {
@@ -265,11 +284,11 @@ export interface RitualFilterDebug {
   totalEvents: number;
   afterSportFilter: number;
   afterDayFilter: number;
-  afterTimeFilter: number;
+  afterOverlapFilter: number;
   window: {
     ptDate: string;
-    timeWindowStartUtc: string;
-    timeWindowEndUtc: string;
+    windowStartUtc: string;
+    windowEndUtc: string;
   };
 }
 
@@ -280,18 +299,19 @@ export function getEventsForRitual(
   now: Date,
 ): { featured: SportEvent | null; rest: SportEvent[]; debug: RitualFilterDebug } {
   const targetDow = ritual.days[0];
-  const window = getGuideDayWindow(targetDow, ritual.startHour, ritual.endHour, now);
+  const w = getGuideDayWindow(targetDow, ritual.startHour, ritual.endHour, now);
 
   const sportMatched = allEvents.filter((e) => ritual.sports.includes(e.sport));
 
   const dayMatched = sportMatched.filter((e) => {
     const eventMs = new Date(e.startTimeLocal).getTime();
-    return eventMs >= window.dayStartUtc.getTime() && eventMs <= window.dayEndUtc.getTime();
+    return eventMs >= w.dayStartUtc.getTime() && eventMs <= w.dayEndUtc.getTime();
   });
 
-  const timeMatched = dayMatched.filter((e) => {
-    const eventMs = new Date(e.startTimeLocal).getTime();
-    return eventMs >= window.timeWindowStartUtc.getTime() && eventMs <= window.timeWindowEndUtc.getTime();
+  const overlapMatched = dayMatched.filter((e) => {
+    const eventStartMs = new Date(e.startTimeLocal).getTime();
+    const eventEndMs = getEventEnd(e).getTime();
+    return eventStartMs < w.windowEndUtc.getTime() && eventEndMs > w.windowStartUtc.getTime();
   });
 
   const debug: RitualFilterDebug = {
@@ -299,17 +319,17 @@ export function getEventsForRitual(
     totalEvents: allEvents.length,
     afterSportFilter: sportMatched.length,
     afterDayFilter: dayMatched.length,
-    afterTimeFilter: timeMatched.length,
+    afterOverlapFilter: overlapMatched.length,
     window: {
-      ptDate: window.ptDate,
-      timeWindowStartUtc: window.timeWindowStartUtc.toISOString(),
-      timeWindowEndUtc: window.timeWindowEndUtc.toISOString(),
+      ptDate: w.ptDate,
+      windowStartUtc: w.windowStartUtc.toISOString(),
+      windowEndUtc: w.windowEndUtc.toISOString(),
     },
   };
 
-  if (timeMatched.length === 0) return { featured: null, rest: [], debug };
+  if (overlapMatched.length === 0) return { featured: null, rest: [], debug };
 
-  const scored = timeMatched.map((e) => ({
+  const scored = overlapMatched.map((e) => ({
     event: e,
     score: scoreEvent(e, favorites, now),
   }));

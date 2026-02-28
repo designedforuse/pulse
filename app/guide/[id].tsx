@@ -195,7 +195,7 @@ export default function GuideDetailScreen() {
   const { featured, rest } = useMemo(() => {
     if (!ritual) return { featured: null, rest: [] as SportEvent[] };
     const result = getEventsForRitual(allEvents, ritual, favorites, now);
-    console.log(`[GUIDE] ${result.debug.ritualId}: total=${result.debug.totalEvents}, sport=${result.debug.afterSportFilter}, day=${result.debug.afterDayFilter}, time=${result.debug.afterTimeFilter}, window=${result.debug.window.ptDate} ${result.debug.window.timeWindowStartUtc}→${result.debug.window.timeWindowEndUtc}`);
+    console.log(`[GUIDE] ${result.debug.ritualId}: total=${result.debug.totalEvents}, sport=${result.debug.afterSportFilter}, day=${result.debug.afterDayFilter}, overlap=${result.debug.afterOverlapFilter}, window=${result.debug.window.ptDate} ${result.debug.window.windowStartUtc}→${result.debug.window.windowEndUtc}`);
     return result;
   }, [ritual, allEvents, favorites, now]);
 
