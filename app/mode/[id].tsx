@@ -251,10 +251,6 @@ function sortEvents(
     const bLive = isEventLive(b, now) ? 1 : 0;
     if (bLive !== aLive) return bLive - aLive;
 
-    const aFav = favoriteInvolved(a, favorites) ? 1 : 0;
-    const bFav = favoriteInvolved(b, favorites) ? 1 : 0;
-    if (bFav !== aFav) return bFav - aFav;
-
     if (modeId === "weekend_mornings") {
       const aSvns = a.eventType === "session" && a.leagueKey === "svns" ? 1 : 0;
       const bSvns = b.eventType === "session" && b.leagueKey === "svns" ? 1 : 0;

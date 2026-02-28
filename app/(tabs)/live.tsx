@@ -227,9 +227,6 @@ export default function LiveNowScreen() {
     const live = [...timeLive, ...scoreLive];
     const filtered = favoritesOnly ? live.filter((e) => favoriteInvolved(e, favorites)) : live;
     return [...filtered].sort((a, b) => {
-      const aFav = favoriteInvolved(a, favorites) ? 1 : 0;
-      const bFav = favoriteInvolved(b, favorites) ? 1 : 0;
-      if (bFav !== aFav) return bFav - aFav;
       return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
     });
   }, [allEvents, now, favoritesOnly, favorites, getScore]);
@@ -238,9 +235,6 @@ export default function LiveNowScreen() {
     const upcoming = getUpNextEvents(allEvents, now);
     const filtered = favoritesOnly ? upcoming.filter((e) => favoriteInvolved(e, favorites)) : upcoming;
     return [...filtered].sort((a, b) => {
-      const aFav = favoriteInvolved(a, favorites) ? 1 : 0;
-      const bFav = favoriteInvolved(b, favorites) ? 1 : 0;
-      if (bFav !== aFav) return bFav - aFav;
       return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
     });
   }, [allEvents, now, favoritesOnly, favorites]);
