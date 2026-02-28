@@ -1,21 +1,19 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
+
+const PROVIDER_IMAGES: Record<string, any> = {
+  youtubetv: require("@/assets/providers/youtubetv.png"),
+  disneyplus: require("@/assets/providers/disneyplus.png"),
+  flosports: require("@/assets/providers/flosports.png"),
+  victoryplus: require("@/assets/providers/victoryplus.png"),
+  primevideo: require("@/assets/providers/primevideo.png"),
+};
 
 const PROVIDER_SHORT_NAMES: Record<string, string> = {
-  youtubetv: "YTTV",
-  disneyplus: "D+",
-  flosports: "Flo",
-  victoryplus: "V+",
-  primevideo: "PV",
   appletv: "TV+",
 };
 
 const PROVIDER_COLORS: Record<string, { bg: string; text: string }> = {
-  youtubetv: { bg: "#FF0000", text: "#FFFFFF" },
-  disneyplus: { bg: "#113CCF", text: "#FFFFFF" },
-  flosports: { bg: "#00C853", text: "#FFFFFF" },
-  victoryplus: { bg: "#FFD600", text: "#000000" },
-  primevideo: { bg: "#00A8E1", text: "#FFFFFF" },
   appletv: { bg: "#555555", text: "#FFFFFF" },
 };
 
@@ -27,6 +25,38 @@ interface ProviderLogoProps {
 }
 
 export default function ProviderLogo({ providerId, size = 24 }: ProviderLogoProps) {
+  const image = PROVIDER_IMAGES[providerId];
+
+  if (image) {
+    const pillHeight = size;
+    const imgWidth = Math.round(size * 1.8);
+    const borderRadius = Math.round(size * 0.18);
+    const paddingH = Math.round(size * 0.15);
+
+    return (
+      <View
+        style={[
+          styles.imagePill,
+          {
+            height: pillHeight,
+            minWidth: imgWidth,
+            paddingHorizontal: paddingH,
+            borderRadius: borderRadius,
+          },
+        ]}
+      >
+        <Image
+          source={image}
+          style={{
+            width: imgWidth - paddingH * 2,
+            height: pillHeight - 6,
+          }}
+          resizeMode="contain"
+        />
+      </View>
+    );
+  }
+
   const shortName = PROVIDER_SHORT_NAMES[providerId];
 
   if (!shortName) {
@@ -74,6 +104,13 @@ export default function ProviderLogo({ providerId, size = 24 }: ProviderLogoProp
 }
 
 const styles = StyleSheet.create({
+  imagePill: {
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "flex-start",
+    backgroundColor: "#FFFFFF",
+    overflow: "hidden",
+  },
   pill: {
     alignItems: "center",
     justifyContent: "center",
