@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  FlatList,
+  ScrollView,
   Pressable,
   Platform,
 } from "react-native";
@@ -199,6 +199,39 @@ export default function GuideDetailScreen() {
     return result;
   }, [ritual, allEvents, favorites, now]);
 
+  const { favoritesEvents, moreGames } = useMemo(() => {
+    if (!rest.length) return { favoritesEvents: [] as SportEvent[], moreGames: [] as SportEvent[] };
+
+    const favs: SportEvent[] = [];
+    const others: SportEvent[] = [];
+
+    for (const e of rest) {
+      if (favoriteInvolved(e, favorites)) {
+        favs.push(e);
+      } else {
+        others.push(e);
+      }
+    }
+
+    favs.sort((a, b) => {
+      const aLive = isEventLive(a, now) ? 0 : 1;
+      const bLive = isEventLive(b, now) ? 0 : 1;
+      if (aLive !== bLive) return aLive - bLive;
+      const aStart = new Date(a.startTimeLocal).getTime();
+      const bStart = new Date(b.startTimeLocal).getTime();
+      return aStart - bStart;
+    });
+
+    others.sort((a, b) => {
+      const aLive = isEventLive(a, now) ? 0 : 1;
+      const bLive = isEventLive(b, now) ? 0 : 1;
+      if (aLive !== bLive) return aLive - bLive;
+      return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
+    });
+
+    return { favoritesEvents: favs, moreGames: others };
+  }, [rest, favorites, now]);
+
   if (!ritual) {
     return (
       <View style={styles.container}>
@@ -209,60 +242,7 @@ export default function GuideDetailScreen() {
 
   const subtitle = `${formatRitualSports(ritual)} · ${formatRitualTimeWindow(ritual)}`;
   const contextLabel = ritual.context;
-
-  const renderItem = ({ item }: { item: SportEvent }) => {
-    const isFav = favoriteInvolved(item, favorites);
-    const completed = isEventCompleted(item, now);
-    const score = getScore(item.id);
-    return (
-      <GuideEventCard
-        event={item}
-        isFav={isFav}
-        completed={completed}
-        score={score}
-      />
-    );
-  };
-
-  const headerComponent = (
-    <View style={styles.headerSection}>
-      <View style={styles.titleRow}>
-        <View style={[styles.ritualIconWrap, { backgroundColor: ritual.icon === "moon" ? "#818CF820" : "#FB923C20" }]}>
-          <Ionicons
-            name={ritual.icon}
-            size={24}
-            color={ritual.icon === "moon" ? "#818CF8" : "#FB923C"}
-          />
-        </View>
-        <View style={styles.titleTextWrap}>
-          <Text style={styles.ritualTitle}>{ritual.label}</Text>
-          <Text style={styles.ritualSubtitle}>{subtitle}</Text>
-          <Text style={styles.contextLabel}>{contextLabel}</Text>
-        </View>
-      </View>
-
-      {featured && (
-        <View style={styles.featuredSection}>
-          <GuideEventCard
-            event={featured}
-            isFav={favoriteInvolved(featured, favorites)}
-            completed={isEventCompleted(featured, now)}
-            score={getScore(featured.id)}
-            featured
-          />
-        </View>
-      )}
-
-      {rest.length > 0 && (
-        <View style={styles.moreGamesHeader}>
-          <Text style={styles.moreGamesLabel}>More Games</Text>
-          <View style={styles.moreGamesCount}>
-            <Text style={styles.moreGamesCountText}>{rest.length}</Text>
-          </View>
-        </View>
-      )}
-    </View>
-  );
+  const hasNoEvents = !featured && favoritesEvents.length === 0 && moreGames.length === 0;
 
   return (
     <View style={styles.container}>
@@ -280,28 +260,94 @@ export default function GuideDetailScreen() {
           },
         }}
       />
-      <FlatList
-        data={rest}
-        keyExtractor={(item) => item.id}
-        renderItem={renderItem}
-        ListHeaderComponent={headerComponent}
-        ListEmptyComponent={
-          !featured ? (
-            <View style={styles.emptyContainer}>
-              <Ionicons name="calendar-outline" size={36} color={Colors.textMuted} />
-              <Text style={styles.emptyTitle}>No Games Right Now</Text>
-              <Text style={styles.emptySubtitle}>
-                No {formatRitualSports(ritual).toLowerCase()} games in this time window
-              </Text>
-            </View>
-          ) : null
-        }
+      <ScrollView
         contentContainerStyle={[
           styles.listContent,
           { paddingBottom: Platform.OS === "web" ? 34 : 24 },
         ]}
         showsVerticalScrollIndicator={false}
-      />
+      >
+        <View style={styles.headerSection}>
+          <View style={styles.titleRow}>
+            <View style={[styles.ritualIconWrap, { backgroundColor: ritual.icon === "moon" ? "#818CF820" : "#FB923C20" }]}>
+              <Ionicons
+                name={ritual.icon}
+                size={24}
+                color={ritual.icon === "moon" ? "#818CF8" : "#FB923C"}
+              />
+            </View>
+            <View style={styles.titleTextWrap}>
+              <Text style={styles.ritualTitle}>{ritual.label}</Text>
+              <Text style={styles.ritualSubtitle}>{subtitle}</Text>
+              <Text style={styles.contextLabel}>{contextLabel}</Text>
+            </View>
+          </View>
+        </View>
+
+        {featured && (
+          <View style={styles.featuredSection}>
+            <GuideEventCard
+              event={featured}
+              isFav={favoriteInvolved(featured, favorites)}
+              completed={isEventCompleted(featured, now)}
+              score={getScore(featured.id)}
+              featured
+            />
+          </View>
+        )}
+
+        {favoritesEvents.length > 0 && (
+          <View style={styles.sectionBlock}>
+            <View style={styles.sectionHeaderRow}>
+              <Ionicons name="star" size={16} color={Colors.favStar} />
+              <Text style={styles.sectionLabel}>Favorites</Text>
+              <View style={styles.countChip}>
+                <Text style={styles.countChipText}>{favoritesEvents.length}</Text>
+              </View>
+            </View>
+            {favoritesEvents.map((event) => (
+              <GuideEventCard
+                key={event.id}
+                event={event}
+                isFav
+                completed={isEventCompleted(event, now)}
+                score={getScore(event.id)}
+              />
+            ))}
+          </View>
+        )}
+
+        {moreGames.length > 0 && (
+          <View style={styles.sectionBlock}>
+            <View style={styles.sectionHeaderRow}>
+              <Ionicons name="football-outline" size={16} color={Colors.textSecondary} />
+              <Text style={styles.sectionLabel}>More Games</Text>
+              <View style={styles.countChipMuted}>
+                <Text style={styles.countChipMutedText}>{moreGames.length}</Text>
+              </View>
+            </View>
+            {moreGames.map((event) => (
+              <GuideEventCard
+                key={event.id}
+                event={event}
+                isFav={false}
+                completed={isEventCompleted(event, now)}
+                score={getScore(event.id)}
+              />
+            ))}
+          </View>
+        )}
+
+        {hasNoEvents && (
+          <View style={styles.emptyContainer}>
+            <Ionicons name="calendar-outline" size={36} color={Colors.textMuted} />
+            <Text style={styles.emptyTitle}>No Games Right Now</Text>
+            <Text style={styles.emptySubtitle}>
+              No {formatRitualSports(ritual).toLowerCase()} games in this time window
+            </Text>
+          </View>
+        )}
+      </ScrollView>
     </View>
   );
 }
@@ -316,7 +362,7 @@ const styles = StyleSheet.create({
     paddingTop: 4,
   },
   headerSection: {
-    marginBottom: 8,
+    marginBottom: 4,
   },
   titleRow: {
     flexDirection: "row",
@@ -353,29 +399,42 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_500Medium",
   },
   featuredSection: {
-    marginTop: 8,
     marginBottom: 4,
   },
-  moreGamesHeader: {
+  sectionBlock: {
+    marginTop: 8,
+  },
+  sectionHeaderRow: {
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
     paddingVertical: 10,
-    marginTop: 4,
   },
-  moreGamesLabel: {
+  sectionLabel: {
     fontSize: 16,
     fontWeight: "600" as const,
     color: Colors.textPrimary,
     fontFamily: "Inter_600SemiBold",
   },
-  moreGamesCount: {
+  countChip: {
+    backgroundColor: Colors.favStar + "20",
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
+  },
+  countChipText: {
+    fontSize: 12,
+    fontWeight: "700" as const,
+    color: Colors.favStar,
+    fontFamily: "Inter_700Bold",
+  },
+  countChipMuted: {
     backgroundColor: Colors.cardHighlight,
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 8,
   },
-  moreGamesCountText: {
+  countChipMutedText: {
     fontSize: 12,
     color: Colors.textSecondary,
     fontFamily: "Inter_600SemiBold",
