@@ -459,6 +459,79 @@ async function fetchRugbyScores(
   return scores;
 }
 
+async function fetchJapanLeagueOneScores(
+  events: { id: string; homeTeam: string; awayTeam: string }[]
+): Promise<Record<string, ScoreData>> {
+  const scores: Record<string, ScoreData> = {};
+  if (events.length === 0) return scores;
+
+  try {
+    const fixturesRes = await fetch("https://all.rugby/tournament/league-one-d1/fixtures-results", {
+      headers: { "User-Agent": "Mozilla/5.0" },
+    });
+    if (!fixturesRes.ok) return scores;
+    const fixturesHtml = await fixturesRes.text();
+
+    const todayIdx = fixturesHtml.indexOf("Today</li>");
+    if (todayIdx === -1) return scores;
+    const nextDateIdx = fixturesHtml.indexOf("sep_dat", todayIdx + 20);
+    const section = fixturesHtml.slice(todayIdx, nextDateIdx > 0 ? nextDateIdx : todayIdx + 5000);
+
+    const matchRe = /href="(\/match\/[^"]+)"[^>]*title="Match Report ([^"]+)"[\s\S]*?<div class="fl res txtcenter">(.*?)<\/div>/g;
+    const todayMatches: { url: string; title: string; scoreText: string }[] = [];
+    let m;
+    while ((m = matchRe.exec(section)) !== null) {
+      const scoreText = m[3].trim();
+      if (scoreText === "live..." || /^\d+\s*-\s*\d+$/.test(scoreText)) {
+        todayMatches.push({ url: m[1], title: m[2], scoreText });
+      }
+    }
+
+    const fetches = todayMatches.map(async (match) => {
+      try {
+        const matchRes = await fetch(`https://all.rugby${match.url}`, {
+          headers: { "User-Agent": "Mozilla/5.0" },
+        });
+        if (!matchRes.ok) return;
+        const matchHtml = await matchRes.text();
+
+        const titleMatch = matchHtml.match(/<title>Match report\s+(.+?)\s+-\s+(.+?),/i);
+        if (!titleMatch) return;
+        const scrapedHome = titleMatch[1].trim();
+        const scrapedAway = titleMatch[2].trim();
+
+        const scoreMatch = matchHtml.match(/Score\s*:\s*(\d+)\s*-\s*(\d+)/i);
+        if (!scoreMatch) return;
+        const homeScore = parseInt(scoreMatch[1], 10);
+        const awayScore = parseInt(scoreMatch[2], 10);
+        const isLive = match.scoreText === "live...";
+
+        for (const ourEvent of events) {
+          if (scores[ourEvent.id]) continue;
+          const normalMatch = teamsMatch(scrapedHome, ourEvent.homeTeam) && teamsMatch(scrapedAway, ourEvent.awayTeam);
+          const swappedMatch = teamsMatch(scrapedHome, ourEvent.awayTeam) && teamsMatch(scrapedAway, ourEvent.homeTeam);
+          if (normalMatch || swappedMatch) {
+            scores[ourEvent.id] = {
+              homeScore: swappedMatch ? awayScore : homeScore,
+              awayScore: swappedMatch ? homeScore : awayScore,
+              period: isLive ? "Live" : "Final",
+              status: isLive ? "live" : "final",
+            };
+            break;
+          }
+        }
+      } catch {
+      }
+    });
+
+    await Promise.all(fetches);
+  } catch (err) {
+    console.error("[liveScores] Japan League One fetch error:", err);
+  }
+
+  return scores;
+}
+
 async function fetchNcaaHockeyScores(
   events: { id: string; homeTeam: string; awayTeam: string }[]
 ): Promise<Record<string, ScoreData>> {
@@ -528,17 +601,19 @@ async function fetchNcaaHockeyScores(
 export async function fetchAllLiveScores(): Promise<ScoresResponse> {
   const { nhl, ahl, echl, ncaa, soccer, rugby } = loadLiveEventIds();
 
-  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores] = await Promise.all([
+  const japanLeagueOne = rugby.get("Japan League One") || [];
+  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, jlOneScores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchAhlScores(ahl),
     fetchEchlScores(echl),
     fetchNcaaHockeyScores(ncaa),
     fetchSoccerScores(soccer),
     fetchRugbyScores(rugby),
+    fetchJapanLeagueOneScores(japanLeagueOne),
   ]);
 
   return {
-    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores },
+    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...jlOneScores },
     fetchedAt: new Date().toISOString(),
   };
 }
