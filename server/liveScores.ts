@@ -49,7 +49,8 @@ function loadLiveEventIds(): LiveEventIdBuckets {
       const duration = sportDurations[event.sport] ?? 120 * 60 * 1000;
       const end = start + duration;
 
-      if (now < start - 30 * 60 * 1000 || now > end + 60 * 60 * 1000) continue;
+      const lookbackMs = 18 * 60 * 60 * 1000;
+      if (now < start - 30 * 60 * 1000 || now > start + lookbackMs) continue;
 
       if (event.id.startsWith("nhl_")) {
         nhl.push(event.id);
@@ -293,12 +294,18 @@ async function fetchSoccerScores(soccerMap: Map<string, string[]>): Promise<Reco
 
     try {
       const today = new Date().toISOString().split("T")[0].replace(/-/g, "");
-      const url = `https://site.api.espn.com/apis/site/v2/sports/soccer/${espnPath}/scoreboard?dates=${today}&limit=100`;
-      const res = await fetch(url);
-      if (!res.ok) return;
-      const data = await res.json() as any;
+      const yesterday = new Date(Date.now() - 86400000).toISOString().split("T")[0].replace(/-/g, "");
+      const allEspnEvents: any[] = [];
 
-      for (const espnEvent of data.events || []) {
+      for (const dateStr of [today, yesterday]) {
+        const url = `https://site.api.espn.com/apis/site/v2/sports/soccer/${espnPath}/scoreboard?dates=${dateStr}&limit=100`;
+        const res = await fetch(url);
+        if (!res.ok) continue;
+        const data = await res.json() as any;
+        allEspnEvents.push(...(data.events || []));
+      }
+
+      for (const espnEvent of allEspnEvents) {
         const comp = espnEvent.competitions?.[0];
         if (!comp) continue;
 
