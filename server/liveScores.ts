@@ -427,14 +427,22 @@ async function fetchRugbyScores(
           if (teamsMatch(espnHome, ourEvent.homeTeam) && teamsMatch(espnAway, ourEvent.awayTeam)) {
             const statusState = comp.status?.type?.state;
             const statusDetail = comp.status?.type?.shortDetail || "";
-            const displayClock = comp.status?.displayClock || "";
 
             if (statusState === "in") {
-              let period = "";
               const detail = statusDetail || "";
-              if (/half\s*time/i.test(detail) || detail === "HT") {
+              const description = comp.status?.type?.description || "";
+              const periodNum = comp.status?.period || 0;
+
+              let period = "";
+
+              if (/half\s*time/i.test(detail) || detail === "HT" || /half\s*time/i.test(description)) {
                 period = "HT";
+              } else if (periodNum === 1 || /first\s*half/i.test(description)) {
+                period = "1st Half";
+              } else if (periodNum === 2 || /second\s*half/i.test(description)) {
+                period = "2nd Half";
               }
+
               scores[ourEvent.id] = {
                 awayScore: parseInt(awayComp.score || "0", 10),
                 homeScore: parseInt(homeComp.score || "0", 10),
