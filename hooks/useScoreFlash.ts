@@ -8,25 +8,31 @@ import {
   Easing,
 } from "react-native-reanimated";
 
-export function useScoreFlash(awayScore?: number, homeScore?: number) {
+export function useScoreFlash(awayScore?: number, homeScore?: number, cricketAway?: string, cricketHome?: string) {
   const prevAway = useRef<number | undefined>(undefined);
   const prevHome = useRef<number | undefined>(undefined);
+  const prevCricketAway = useRef<string | undefined>(undefined);
+  const prevCricketHome = useRef<string | undefined>(undefined);
   const flashOpacity = useSharedValue(0);
   const isInitialized = useRef(false);
 
   useEffect(() => {
-    if (awayScore === undefined && homeScore === undefined) return;
+    if (awayScore === undefined && homeScore === undefined && !cricketAway && !cricketHome) return;
 
     if (!isInitialized.current) {
       prevAway.current = awayScore;
       prevHome.current = homeScore;
+      prevCricketAway.current = cricketAway;
+      prevCricketHome.current = cricketHome;
       isInitialized.current = true;
       return;
     }
 
     const changed =
       (prevAway.current !== undefined && awayScore !== prevAway.current) ||
-      (prevHome.current !== undefined && homeScore !== prevHome.current);
+      (prevHome.current !== undefined && homeScore !== prevHome.current) ||
+      (prevCricketAway.current !== undefined && cricketAway !== prevCricketAway.current) ||
+      (prevCricketHome.current !== undefined && cricketHome !== prevCricketHome.current);
 
     if (changed) {
       flashOpacity.value = withSequence(
@@ -41,7 +47,9 @@ export function useScoreFlash(awayScore?: number, homeScore?: number) {
 
     prevAway.current = awayScore;
     prevHome.current = homeScore;
-  }, [awayScore, homeScore]);
+    prevCricketAway.current = cricketAway;
+    prevCricketHome.current = cricketHome;
+  }, [awayScore, homeScore, cricketAway, cricketHome]);
 
   const flashStyle = useAnimatedStyle(() => ({
     backgroundColor:

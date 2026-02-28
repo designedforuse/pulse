@@ -7,6 +7,8 @@ export interface ScoreData {
   period?: string;
   clock?: string;
   status?: string;
+  cricketAway?: string;
+  cricketHome?: string;
 }
 
 export interface ScoresResponse {
@@ -674,15 +676,15 @@ async function fetchCricketScores(
 
         if (!matchStarted && !matchEnded) continue;
 
-        let homeScore = "";
-        let awayScore = "";
+        let cricketHome = "";
+        let cricketAway = "";
 
         for (const s of scoreEntries) {
           const inning = (s.inning || "").toLowerCase();
           if (inning.includes(ourEvent.homeTeam.toLowerCase())) {
-            homeScore = `${s.r}/${s.w} (${s.o} ov)`;
+            cricketHome = `${s.r}/${s.w} (${s.o})`;
           } else if (inning.includes(ourEvent.awayTeam.toLowerCase())) {
-            awayScore = `${s.r}/${s.w} (${s.o} ov)`;
+            cricketAway = `${s.r}/${s.w} (${s.o})`;
           }
         }
 
@@ -692,7 +694,8 @@ async function fetchCricketScores(
             homeScore: 0,
             period: statusText || "Final",
             status: "final",
-            clock: `${awayScore} | ${homeScore}`.replace(/^ \| | \| $/g, ""),
+            cricketAway: cricketAway || undefined,
+            cricketHome: cricketHome || undefined,
           };
         } else if (matchStarted) {
           scores[ourEvent.id] = {
@@ -700,7 +703,8 @@ async function fetchCricketScores(
             homeScore: 0,
             period: statusText || "In Progress",
             status: "live",
-            clock: `${awayScore} | ${homeScore}`.replace(/^ \| | \| $/g, ""),
+            cricketAway: cricketAway || "Yet to bat",
+            cricketHome: cricketHome || "Yet to bat",
           };
         }
         break;

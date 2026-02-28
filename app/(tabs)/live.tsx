@@ -97,7 +97,7 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
         : null;
 
   const showTeamStack = !matchupText;
-  const flashStyle = useScoreFlash(score?.awayScore, score?.homeScore);
+  const flashStyle = useScoreFlash(score?.awayScore, score?.homeScore, score?.cricketAway, score?.cricketHome);
 
   return (
     <Pressable
@@ -123,14 +123,18 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
                   <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={20} />
                   <Text style={styles.teamName} numberOfLines={1}>{displayTeamName(event.awayTeam, event.league)}</Text>
                 </View>
-                {hasScore && event.sport !== "cricket" && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.awayScore}</Text>}
+                {hasScore && event.sport === "cricket"
+                  ? <Text style={[styles.cricketScore, score.status === "live" && styles.scoreLive]} numberOfLines={1}>{score.cricketAway || ""}</Text>
+                  : hasScore && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.awayScore}</Text>}
               </View>
               <View style={styles.teamScoreRow}>
                 <View style={styles.teamNameRow}>
                   <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={20} />
                   <Text style={styles.teamName} numberOfLines={1}>{displayTeamName(event.homeTeam, event.league)}</Text>
                 </View>
-                {hasScore && event.sport !== "cricket" && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.homeScore}</Text>}
+                {hasScore && event.sport === "cricket"
+                  ? <Text style={[styles.cricketScore, score.status === "live" && styles.scoreLive]} numberOfLines={1}>{score.cricketHome || ""}</Text>
+                  : hasScore && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.homeScore}</Text>}
               </View>
             </View>
           ) : (
@@ -584,6 +588,13 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
     fontFamily: "Inter_700Bold",
     minWidth: 20,
+    textAlign: "right",
+  },
+  cricketScore: {
+    fontSize: 13,
+    fontWeight: "600" as const,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_600SemiBold",
     textAlign: "right",
   },
   scoreLive: {

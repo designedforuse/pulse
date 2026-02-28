@@ -8,6 +8,8 @@ export interface ScoreData {
   period?: string;
   clock?: string;
   status?: string;
+  cricketAway?: string;
+  cricketHome?: string;
 }
 
 interface ScoresApiResponse {
