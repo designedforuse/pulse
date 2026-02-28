@@ -950,6 +950,123 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
+  app.get("/api/debug/guide-windows", (_req, res) => {
+    const TZ = "America/Los_Angeles";
+    const now = new Date();
+
+    const fmtPT = (d: Date) =>
+      new Intl.DateTimeFormat("en-US", {
+        timeZone: TZ,
+        weekday: "short",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      }).format(d);
+
+    const nowPT = fmtPT(now);
+
+    const dayNames: Record<number, string> = { 0: "Sun", 1: "Mon", 2: "Tue", 3: "Wed", 4: "Thu", 5: "Fri", 6: "Sat" };
+
+    const rituals = [
+      { id: "friday_bonding", targetDow: 5, startHour: 18, endHour: 21 },
+      { id: "friday_lean_in", targetDow: 5, startHour: 21, endHour: 24 },
+      { id: "saturday_lean_in", targetDow: 6, startHour: 6, endHour: 12 },
+      { id: "saturday_bonding", targetDow: 6, startHour: 14, endHour: 19 },
+      { id: "sunday_funday", targetDow: 0, startHour: 6, endHour: 9 },
+    ];
+
+    const getLocalParts = (d: Date) => {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: TZ,
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        weekday: "short",
+        hour: "numeric",
+        minute: "numeric",
+        hour12: false,
+      }).formatToParts(d);
+      const get = (type: string) => parts.find((p) => p.type === type)?.value ?? "0";
+      const dayMap: Record<string, number> = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+      const hourVal = parseInt(get("hour"), 10);
+      return {
+        year: parseInt(get("year"), 10),
+        month: parseInt(get("month"), 10),
+        day: parseInt(get("day"), 10),
+        dow: dayMap[get("weekday")] ?? 0,
+        hour: hourVal === 24 ? 0 : hourVal,
+        minute: parseInt(get("minute"), 10),
+      };
+    };
+
+    const midnightInTZLocal = (y: number, m: number, d: number) => {
+      const guess = new Date(Date.UTC(y, m - 1, d, 12, 0, 0));
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: TZ, year: "numeric", month: "numeric", day: "numeric",
+        hour: "numeric", minute: "numeric", second: "numeric", hour12: false,
+      }).formatToParts(guess);
+      const gv = (type: string) => parseInt(parts.find((p) => p.type === type)?.value || "0", 10);
+      const localH = gv("hour") === 24 ? 0 : gv("hour");
+      const offsetMs = (localH * 3600 + gv("minute") * 60 + gv("second")) * 1000;
+      const candidate = new Date(guess.getTime() - offsetMs);
+      const verify = new Intl.DateTimeFormat("en-US", {
+        timeZone: TZ, day: "numeric", hour: "numeric", hour12: false,
+      }).formatToParts(candidate);
+      const verifyDay = parseInt(verify.find((p) => p.type === "day")?.value || "0", 10);
+      const verifyHour = parseInt(verify.find((p) => p.type === "hour")?.value || "0", 10);
+      if (verifyDay !== d) return new Date(candidate.getTime() + (verifyDay < d ? 86400000 : -86400000));
+      if (verifyHour !== 0 && verifyHour !== 24) return new Date(candidate.getTime() - verifyHour * 3600000);
+      return candidate;
+    };
+
+    const local = getLocalParts(now);
+
+    const windows = rituals.map((r) => {
+      let daysAhead = r.targetDow - local.dow;
+      if (daysAhead < 0) daysAhead += 7;
+      if (daysAhead === 0) {
+        const effectiveEndHour = Math.min(r.endHour, 24);
+        if (local.hour >= effectiveEndHour) daysAhead = 7;
+      }
+
+      const targetDate = new Date(Date.UTC(local.year, local.month - 1, local.day + daysAhead, 12));
+      const targetParts = getLocalParts(targetDate);
+
+      const dayStart = midnightInTZLocal(targetParts.year, targetParts.month, targetParts.day);
+      const dayEnd = new Date(dayStart.getTime() + 86400000 - 1);
+      const timeStart = new Date(dayStart.getTime() + r.startHour * 3600000);
+      const effectiveEnd = Math.min(r.endHour, 24);
+      const timeEnd = new Date(dayStart.getTime() + effectiveEnd * 3600000 - 1);
+
+      const ptDate = `${targetParts.year}-${String(targetParts.month).padStart(2, "0")}-${String(targetParts.day).padStart(2, "0")}`;
+
+      return {
+        ritualId: r.id,
+        targetDay: dayNames[r.targetDow],
+        computedPTDate: ptDate,
+        daysAhead,
+        dayStartPT: fmtPT(dayStart),
+        dayEndPT: fmtPT(dayEnd),
+        dayStartUTC: dayStart.toISOString(),
+        dayEndUTC: dayEnd.toISOString(),
+        timeWindowStartPT: fmtPT(timeStart),
+        timeWindowEndPT: fmtPT(timeEnd),
+        timeWindowStartUTC: timeStart.toISOString(),
+        timeWindowEndUTC: timeEnd.toISOString(),
+      };
+    });
+
+    return res.json({
+      currentPTTime: nowPT,
+      currentDow: dayNames[local.dow],
+      windows,
+    });
+  });
+
   app.get("/api/players/:id/journey", async (req, res) => {
     const playerId = parseInt(req.params.id, 10);
     if (isNaN(playerId) || playerId <= 0) {

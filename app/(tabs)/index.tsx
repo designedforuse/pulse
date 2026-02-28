@@ -92,8 +92,8 @@ export default function ModesScreen() {
   const ritualCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     for (const ritual of RITUALS) {
-      const { featured, rest } = getEventsForRitual(allEvents, ritual, favorites, now);
-      counts[ritual.id] = (featured ? 1 : 0) + rest.length;
+      const result = getEventsForRitual(allEvents, ritual, favorites, now);
+      counts[ritual.id] = (result.featured ? 1 : 0) + result.rest.length;
     }
     return counts;
   }, [allEvents, favorites, now]);

@@ -79,9 +79,12 @@ export function getRitualById(id: string): Ritual | undefined {
   return RITUALS.find((r) => r.id === id);
 }
 
-function getLocalPT(d: Date): { dow: number; hour: number; minute: number } {
+function getLocalParts(d: Date): { year: number; month: number; day: number; dow: number; hour: number; minute: number } {
   const parts = new Intl.DateTimeFormat("en-US", {
     timeZone: TZ,
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
     weekday: "short",
     hour: "numeric",
     minute: "numeric",
@@ -93,25 +96,113 @@ function getLocalPT(d: Date): { dow: number; hour: number; minute: number } {
 
   const hourVal = parseInt(get("hour"), 10);
   return {
+    year: parseInt(get("year"), 10),
+    month: parseInt(get("month"), 10),
+    day: parseInt(get("day"), 10),
     dow: dayMap[get("weekday")] ?? 0,
     hour: hourVal === 24 ? 0 : hourVal,
     minute: parseInt(get("minute"), 10),
   };
 }
 
-export function isEventInRitual(event: SportEvent, ritual: Ritual): boolean {
+function midnightInTZ(year: number, month: number, day: number): Date {
+  const guess = new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: TZ,
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: false,
+  }).formatToParts(guess);
+
+  const get = (type: string) => parseInt(parts.find((p) => p.type === type)?.value || "0", 10);
+  const localH = get("hour") === 24 ? 0 : get("hour");
+  const localM = get("minute");
+  const localS = get("second");
+
+  const offsetMs = (localH * 3600 + localM * 60 + localS) * 1000;
+  const candidate = new Date(guess.getTime() - offsetMs);
+
+  const verify = new Intl.DateTimeFormat("en-US", {
+    timeZone: TZ,
+    day: "numeric",
+    hour: "numeric",
+    hour12: false,
+  }).formatToParts(candidate);
+
+  const verifyDay = parseInt(verify.find((p) => p.type === "day")?.value || "0", 10);
+  const verifyHour = parseInt(verify.find((p) => p.type === "hour")?.value || "0", 10);
+
+  if (verifyDay !== day) {
+    return new Date(candidate.getTime() + (verifyDay < day ? 86400000 : -86400000));
+  }
+  if (verifyHour !== 0 && verifyHour !== 24) {
+    return new Date(candidate.getTime() - verifyHour * 3600000);
+  }
+
+  return candidate;
+}
+
+export interface GuideDayWindow {
+  dayStartUtc: Date;
+  dayEndUtc: Date;
+  timeWindowStartUtc: Date;
+  timeWindowEndUtc: Date;
+  ptDate: string;
+}
+
+export function getGuideDayWindow(
+  targetDow: number,
+  startHour: number,
+  endHour: number,
+  now: Date,
+): GuideDayWindow {
+  const local = getLocalParts(now);
+  const currentDow = local.dow;
+
+  let daysAhead = targetDow - currentDow;
+  if (daysAhead < 0) daysAhead += 7;
+  if (daysAhead === 0) {
+    const effectiveEndHour = endHour <= 24 ? endHour : 24;
+    if (local.hour >= effectiveEndHour) {
+      daysAhead = 7;
+    }
+  }
+
+  const targetDate = new Date(Date.UTC(local.year, local.month - 1, local.day + daysAhead, 12));
+  const targetParts = getLocalParts(targetDate);
+
+  const dayStart = midnightInTZ(targetParts.year, targetParts.month, targetParts.day);
+  const dayEnd = new Date(dayStart.getTime() + 86400000 - 1);
+
+  const timeStart = new Date(dayStart.getTime() + startHour * 3600000);
+  const effectiveEnd = Math.min(endHour, 24);
+  const timeEnd = new Date(dayStart.getTime() + effectiveEnd * 3600000 - 1);
+
+  const ptDate = `${targetParts.year}-${String(targetParts.month).padStart(2, "0")}-${String(targetParts.day).padStart(2, "0")}`;
+
+  return {
+    dayStartUtc: dayStart,
+    dayEndUtc: dayEnd,
+    timeWindowStartUtc: timeStart,
+    timeWindowEndUtc: timeEnd,
+    ptDate,
+  };
+}
+
+export function isEventInRitual(event: SportEvent, ritual: Ritual, now: Date): boolean {
   if (!ritual.sports.includes(event.sport)) return false;
 
-  const startDate = new Date(event.startTimeLocal);
-  const local = getLocalPT(startDate);
+  const targetDow = ritual.days[0];
+  const window = getGuideDayWindow(targetDow, ritual.startHour, ritual.endHour, now);
 
-  if (!ritual.days.includes(local.dow)) return false;
+  const eventMs = new Date(event.startTimeLocal).getTime();
 
-  if (ritual.endHour <= 24) {
-    if (local.hour < ritual.startHour || local.hour >= ritual.endHour) return false;
-  } else {
-    const endNorm = ritual.endHour - 24;
-    if (local.hour < ritual.startHour && local.hour >= endNorm) return false;
+  if (eventMs < window.timeWindowStartUtc.getTime() || eventMs > window.timeWindowEndUtc.getTime()) {
+    return false;
   }
 
   return true;
@@ -158,17 +249,56 @@ export function scoreEvent(
   return score;
 }
 
+export interface RitualFilterDebug {
+  ritualId: string;
+  totalEvents: number;
+  afterSportFilter: number;
+  afterDayFilter: number;
+  afterTimeFilter: number;
+  window: {
+    ptDate: string;
+    timeWindowStartUtc: string;
+    timeWindowEndUtc: string;
+  };
+}
+
 export function getEventsForRitual(
   allEvents: SportEvent[],
   ritual: Ritual,
   favorites: Favorites,
   now: Date,
-): { featured: SportEvent | null; rest: SportEvent[] } {
-  const matching = allEvents.filter((e) => isEventInRitual(e, ritual));
+): { featured: SportEvent | null; rest: SportEvent[]; debug: RitualFilterDebug } {
+  const targetDow = ritual.days[0];
+  const window = getGuideDayWindow(targetDow, ritual.startHour, ritual.endHour, now);
 
-  if (matching.length === 0) return { featured: null, rest: [] };
+  const sportMatched = allEvents.filter((e) => ritual.sports.includes(e.sport));
 
-  const scored = matching.map((e) => ({
+  const dayMatched = sportMatched.filter((e) => {
+    const eventMs = new Date(e.startTimeLocal).getTime();
+    return eventMs >= window.dayStartUtc.getTime() && eventMs <= window.dayEndUtc.getTime();
+  });
+
+  const timeMatched = dayMatched.filter((e) => {
+    const eventMs = new Date(e.startTimeLocal).getTime();
+    return eventMs >= window.timeWindowStartUtc.getTime() && eventMs <= window.timeWindowEndUtc.getTime();
+  });
+
+  const debug: RitualFilterDebug = {
+    ritualId: ritual.id,
+    totalEvents: allEvents.length,
+    afterSportFilter: sportMatched.length,
+    afterDayFilter: dayMatched.length,
+    afterTimeFilter: timeMatched.length,
+    window: {
+      ptDate: window.ptDate,
+      timeWindowStartUtc: window.timeWindowStartUtc.toISOString(),
+      timeWindowEndUtc: window.timeWindowEndUtc.toISOString(),
+    },
+  };
+
+  if (timeMatched.length === 0) return { featured: null, rest: [], debug };
+
+  const scored = timeMatched.map((e) => ({
     event: e,
     score: scoreEvent(e, favorites, now),
   }));
@@ -181,7 +311,7 @@ export function getEventsForRitual(
   const featured = scored[0].event;
   const rest = scored.slice(1).map((s) => s.event);
 
-  return { featured, rest };
+  return { featured, rest, debug };
 }
 
 export function formatRitualTimeWindow(ritual: Ritual): string {
