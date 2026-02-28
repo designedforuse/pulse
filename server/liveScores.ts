@@ -20,6 +20,7 @@ interface LiveEventIdBuckets {
   nhl: string[];
   ahl: string[];
   echl: string[];
+  ncaa: { id: string; homeTeam: string; awayTeam: string }[];
   soccer: Map<string, string[]>;
   rugby: Map<string, { id: string; homeTeam: string; awayTeam: string }[]>;
 }
@@ -28,6 +29,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
   const nhl: string[] = [];
   const ahl: string[] = [];
   const echl: string[] = [];
+  const ncaa: { id: string; homeTeam: string; awayTeam: string }[] = [];
   const soccer = new Map<string, string[]>();
   const rugby = new Map<string, { id: string; homeTeam: string; awayTeam: string }[]>();
 
@@ -55,6 +57,12 @@ function loadLiveEventIds(): LiveEventIdBuckets {
         ahl.push(event.id);
       } else if (event.id.startsWith("echl-")) {
         echl.push(event.id);
+      } else if (event.id.startsWith("ncaa-")) {
+        ncaa.push({
+          id: event.id,
+          homeTeam: event.homeTeam || "",
+          awayTeam: event.awayTeam || "",
+        });
       } else if (event.id.startsWith("soccer-")) {
         const league = event.league as string;
         if (!soccer.has(league)) soccer.set(league, []);
@@ -72,7 +80,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
   } catch {
   }
 
-  return { nhl, ahl, echl, soccer, rugby };
+  return { nhl, ahl, echl, ncaa, soccer, rugby };
 }
 
 async function fetchNhlScores(eventIds: string[]): Promise<Record<string, ScoreData>> {
@@ -444,19 +452,86 @@ async function fetchRugbyScores(
   return scores;
 }
 
-export async function fetchAllLiveScores(): Promise<ScoresResponse> {
-  const { nhl, ahl, echl, soccer, rugby } = loadLiveEventIds();
+async function fetchNcaaHockeyScores(
+  events: { id: string; homeTeam: string; awayTeam: string }[]
+): Promise<Record<string, ScoreData>> {
+  const scores: Record<string, ScoreData> = {};
+  if (events.length === 0) return scores;
 
-  const [nhlScores, ahlScores, echlScores, soccerScores, rugbyScores] = await Promise.all([
+  try {
+    const today = new Date().toISOString().split("T")[0].replace(/-/g, "");
+    const yesterday = new Date(Date.now() - 86400000).toISOString().split("T")[0].replace(/-/g, "");
+    const allEspnEvents: any[] = [];
+
+    for (const dateStr of [today, yesterday]) {
+      const url = `https://site.api.espn.com/apis/site/v2/sports/hockey/mens-college-hockey/scoreboard?dates=${dateStr}&limit=100`;
+      const res = await fetch(url);
+      if (!res.ok) continue;
+      const data = await res.json() as any;
+      allEspnEvents.push(...(data.events || []));
+    }
+
+    for (const espnEvent of allEspnEvents) {
+      const comp = espnEvent.competitions?.[0];
+      if (!comp) continue;
+
+      const homeComp = comp.competitors?.find((c: any) => c.homeAway === "home");
+      const awayComp = comp.competitors?.find((c: any) => c.homeAway === "away");
+      if (!homeComp || !awayComp) continue;
+
+      const espnHome = homeComp.team?.displayName || homeComp.team?.shortDisplayName || "";
+      const espnAway = awayComp.team?.displayName || awayComp.team?.shortDisplayName || "";
+
+      for (const ourEvent of events) {
+        if (scores[ourEvent.id]) continue;
+
+        if (teamsMatch(espnHome, ourEvent.homeTeam) && teamsMatch(espnAway, ourEvent.awayTeam)) {
+          const statusState = comp.status?.type?.state;
+          const statusDetail = comp.status?.type?.shortDetail || "";
+
+          if (statusState === "in") {
+            const displayClock = comp.status?.displayClock || "";
+            const period = statusDetail || "Live";
+            scores[ourEvent.id] = {
+              awayScore: parseInt(awayComp.score || "0", 10),
+              homeScore: parseInt(homeComp.score || "0", 10),
+              period,
+              clock: displayClock,
+              status: "live",
+            };
+          } else if (statusState === "post") {
+            scores[ourEvent.id] = {
+              awayScore: parseInt(awayComp.score || "0", 10),
+              homeScore: parseInt(homeComp.score || "0", 10),
+              period: "Final",
+              status: "final",
+            };
+          }
+          break;
+        }
+      }
+    }
+  } catch (err) {
+    console.error("[liveScores] NCAA Hockey fetch error:", err);
+  }
+
+  return scores;
+}
+
+export async function fetchAllLiveScores(): Promise<ScoresResponse> {
+  const { nhl, ahl, echl, ncaa, soccer, rugby } = loadLiveEventIds();
+
+  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchAhlScores(ahl),
     fetchEchlScores(echl),
+    fetchNcaaHockeyScores(ncaa),
     fetchSoccerScores(soccer),
     fetchRugbyScores(rugby),
   ]);
 
   return {
-    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...soccerScores, ...rugbyScores },
+    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores },
     fetchedAt: new Date().toISOString(),
   };
 }
