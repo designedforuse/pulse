@@ -34,6 +34,14 @@ function RootLayoutNav() {
         }}
       />
       <Stack.Screen
+        name="guide/[id]"
+        options={{
+          headerShown: true,
+          title: "",
+          headerBackTitle: "Home",
+        }}
+      />
+      <Stack.Screen
         name="event-sheet"
         options={{
           presentation: "formSheet",
