@@ -215,6 +215,9 @@ function EventCard({
                 const elapsed = formatTimeSinceStart(event.startTimeLocal, new Date());
                 return elapsed ? <Text style={styles.elapsedText}>{elapsed}</Text> : null;
               }
+              if (event.sport === "cricket") {
+                return null;
+              }
               if (score.period || score.clock) {
                 return (
                   <>
@@ -1038,6 +1041,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     flex: 1,
+    flexShrink: 1,
   },
   scoreText: {
     fontSize: 16,
@@ -1053,6 +1057,7 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
     fontFamily: "Inter_600SemiBold",
     textAlign: "right",
+    flexShrink: 0,
   },
   scoreLive: {
     color: Colors.accent,

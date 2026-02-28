@@ -172,7 +172,7 @@ export default function EventSheet() {
             </View>
           )}
 
-          {score && score.period ? (
+          {score && score.period && event.sport !== "cricket" ? (
             <Text style={[styles.sheetPeriod, score.status === "live" ? styles.sheetPeriodLive : null]}>
               {score.period}{score.clock ? ` · ${score.clock}` : ""}
             </Text>
