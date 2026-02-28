@@ -23,6 +23,7 @@ interface LiveEventIdBuckets {
   ncaa: { id: string; homeTeam: string; awayTeam: string }[];
   soccer: Map<string, string[]>;
   rugby: Map<string, { id: string; homeTeam: string; awayTeam: string }[]>;
+  cricket: { id: string; homeTeam: string; awayTeam: string }[];
 }
 
 function loadLiveEventIds(): LiveEventIdBuckets {
@@ -32,6 +33,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
   const ncaa: { id: string; homeTeam: string; awayTeam: string }[] = [];
   const soccer = new Map<string, string[]>();
   const rugby = new Map<string, { id: string; homeTeam: string; awayTeam: string }[]>();
+  const cricket: { id: string; homeTeam: string; awayTeam: string }[] = [];
 
   try {
     const raw = fs.readFileSync(GENERATED_EVENTS_PATH, "utf-8");
@@ -76,12 +78,18 @@ function loadLiveEventIds(): LiveEventIdBuckets {
           homeTeam: event.homeTeam || "",
           awayTeam: event.awayTeam || "",
         });
+      } else if (event.id.startsWith("cricket-")) {
+        cricket.push({
+          id: event.id,
+          homeTeam: event.homeTeam || "",
+          awayTeam: event.awayTeam || "",
+        });
       }
     }
   } catch {
   }
 
-  return { nhl, ahl, echl, ncaa, soccer, rugby };
+  return { nhl, ahl, echl, ncaa, soccer, rugby, cricket };
 }
 
 async function fetchNhlScores(eventIds: string[]): Promise<Record<string, ScoreData>> {
@@ -359,6 +367,7 @@ async function fetchSoccerScores(soccerMap: Map<string, string[]>): Promise<Reco
 const ESPN_RUGBY_LEAGUE_PATHS: Record<string, string> = {
   "URC": "270557",
   "Super Rugby": "242041",
+  "Top 14": "270559",
 };
 
 function normalizeTeamName(name: string): string {
@@ -627,11 +636,88 @@ async function fetchNcaaHockeyScores(
   return scores;
 }
 
+async function fetchCricketScores(
+  events: { id: string; homeTeam: string; awayTeam: string }[]
+): Promise<Record<string, ScoreData>> {
+  const scores: Record<string, ScoreData> = {};
+  if (events.length === 0) return scores;
+
+  const apiKey = process.env.CRICAPI_KEY;
+  if (!apiKey) return scores;
+
+  try {
+    const res = await fetch(`https://api.cricapi.com/v1/currentMatches?apikey=${apiKey}&offset=0`);
+    if (!res.ok) return scores;
+    const data = await res.json() as any;
+    if (data.status !== "success") return scores;
+
+    const matches = data.data || [];
+
+    for (const ourEvent of events) {
+      if (scores[ourEvent.id]) continue;
+
+      for (const match of matches) {
+        const matchTeams = (match.teams || []) as string[];
+        const matchName = (match.name || "") as string;
+
+        const homeInMatch = matchTeams.some((t: string) => teamsMatch(t, ourEvent.homeTeam)) ||
+          matchName.toLowerCase().includes(ourEvent.homeTeam.toLowerCase());
+        const awayInMatch = matchTeams.some((t: string) => teamsMatch(t, ourEvent.awayTeam)) ||
+          matchName.toLowerCase().includes(ourEvent.awayTeam.toLowerCase());
+
+        if (!homeInMatch || !awayInMatch) continue;
+
+        const scoreEntries = (match.score || []) as any[];
+        const matchStarted = match.matchStarted === true;
+        const matchEnded = match.matchEnded === true;
+        const statusText = (match.status || "") as string;
+
+        if (!matchStarted && !matchEnded) continue;
+
+        let homeScore = "";
+        let awayScore = "";
+
+        for (const s of scoreEntries) {
+          const inning = (s.inning || "").toLowerCase();
+          if (inning.includes(ourEvent.homeTeam.toLowerCase())) {
+            homeScore = `${s.r}/${s.w} (${s.o} ov)`;
+          } else if (inning.includes(ourEvent.awayTeam.toLowerCase())) {
+            awayScore = `${s.r}/${s.w} (${s.o} ov)`;
+          }
+        }
+
+        if (matchEnded) {
+          scores[ourEvent.id] = {
+            awayScore: 0,
+            homeScore: 0,
+            period: statusText || "Final",
+            status: "final",
+            clock: `${awayScore} | ${homeScore}`.replace(/^ \| | \| $/g, ""),
+          };
+        } else if (matchStarted) {
+          scores[ourEvent.id] = {
+            awayScore: 0,
+            homeScore: 0,
+            period: statusText || "In Progress",
+            status: "live",
+            clock: `${awayScore} | ${homeScore}`.replace(/^ \| | \| $/g, ""),
+          };
+        }
+        break;
+      }
+    }
+  } catch (err) {
+    console.error("[liveScores] Cricket fetch error:", err);
+  }
+
+  return scores;
+}
+
 export async function fetchAllLiveScores(): Promise<ScoresResponse> {
-  const { nhl, ahl, echl, ncaa, soccer, rugby } = loadLiveEventIds();
+  const { nhl, ahl, echl, ncaa, soccer, rugby, cricket } = loadLiveEventIds();
 
   const japanLeagueOne = rugby.get("Japan League One") || [];
-  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, jlOneScores] = await Promise.all([
+  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, jlOneScores, cricketScores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchAhlScores(ahl),
     fetchEchlScores(echl),
@@ -639,10 +725,11 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
     fetchSoccerScores(soccer),
     fetchRugbyScores(rugby),
     fetchJapanLeagueOneScores(japanLeagueOne),
+    fetchCricketScores(cricket),
   ]);
 
   return {
-    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...jlOneScores },
+    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...jlOneScores, ...cricketScores },
     fetchedAt: new Date().toISOString(),
   };
 }

@@ -157,21 +157,28 @@ export default function EventSheet() {
               <View style={styles.teamSide}>
                 <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={28} />
                 <Text style={styles.teamName}>{displayTeamName(event.awayTeam, event.league)}</Text>
-                {score && <Text style={[styles.sheetScore, score.status === "live" && styles.sheetScoreLive]}>{score.awayScore}</Text>}
+                {score && event.sport !== "cricket" && <Text style={[styles.sheetScore, score.status === "live" && styles.sheetScoreLive]}>{score.awayScore}</Text>}
               </View>
               <Text style={styles.atText}>{["NHL", "AHL", "ECHL", "NCAA Hockey", "MLS", "USL"].includes(event.league) ? "at" : "vs"}</Text>
               <View style={styles.teamSide}>
                 <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={28} />
                 <Text style={styles.teamName}>{displayTeamName(event.homeTeam, event.league)}</Text>
-                {score && <Text style={[styles.sheetScore, score.status === "live" && styles.sheetScoreLive]}>{score.homeScore}</Text>}
+                {score && event.sport !== "cricket" && <Text style={[styles.sheetScore, score.status === "live" && styles.sheetScoreLive]}>{score.homeScore}</Text>}
               </View>
             </View>
           )}
 
           {score && score.period ? (
-            <Text style={[styles.sheetPeriod, score.status === "live" ? styles.sheetPeriodLive : null]}>
-              {score.period}{score.clock ? ` · ${score.clock}` : ""}
-            </Text>
+            <>
+              <Text style={[styles.sheetPeriod, score.status === "live" ? styles.sheetPeriodLive : null]}>
+                {score.period}{score.clock && event.sport !== "cricket" ? ` · ${score.clock}` : ""}
+              </Text>
+              {event.sport === "cricket" && score.clock ? (
+                <Text style={[styles.sheetPeriod, score.status === "live" ? styles.sheetPeriodLive : null]}>
+                  {score.clock}
+                </Text>
+              ) : null}
+            </>
           ) : score && score.status === "live" && !score.period && !score.clock ? (
             <Text style={styles.sheetElapsed}>
               {formatTimeSinceStart(event.startTimeLocal, new Date())}

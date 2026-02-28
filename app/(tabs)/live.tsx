@@ -123,14 +123,14 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
                   <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={20} />
                   <Text style={styles.teamName} numberOfLines={1}>{displayTeamName(event.awayTeam, event.league)}</Text>
                 </View>
-                {hasScore && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.awayScore}</Text>}
+                {hasScore && event.sport !== "cricket" && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.awayScore}</Text>}
               </View>
               <View style={styles.teamScoreRow}>
                 <View style={styles.teamNameRow}>
                   <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={20} />
                   <Text style={styles.teamName} numberOfLines={1}>{displayTeamName(event.homeTeam, event.league)}</Text>
                 </View>
-                {hasScore && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.homeScore}</Text>}
+                {hasScore && event.sport !== "cricket" && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.homeScore}</Text>}
               </View>
             </View>
           ) : (
