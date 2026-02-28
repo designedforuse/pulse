@@ -383,12 +383,19 @@ async function fetchRugbyScores(
 
     try {
       const today = new Date().toISOString().split("T")[0].replace(/-/g, "");
-      const url = `https://site.api.espn.com/apis/site/v2/sports/rugby/${espnPath}/scoreboard?dates=${today}&limit=100`;
-      const res = await fetch(url);
-      if (!res.ok) return;
-      const data = await res.json() as any;
+      const yesterday = new Date(Date.now() - 86400000).toISOString().split("T")[0].replace(/-/g, "");
+      const dates = [today, yesterday];
+      const allEspnEvents: any[] = [];
 
-      for (const espnEvent of data.events || []) {
+      for (const dateStr of dates) {
+        const url = `https://site.api.espn.com/apis/site/v2/sports/rugby/${espnPath}/scoreboard?dates=${dateStr}&limit=100`;
+        const res = await fetch(url);
+        if (!res.ok) continue;
+        const data = await res.json() as any;
+        allEspnEvents.push(...(data.events || []));
+      }
+
+      for (const espnEvent of allEspnEvents) {
         const comp = espnEvent.competitions?.[0];
         if (!comp) continue;
 
