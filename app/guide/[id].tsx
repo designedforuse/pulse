@@ -223,9 +223,6 @@ export default function GuideDetailScreen() {
     });
 
     others.sort((a, b) => {
-      const aLive = isEventLive(a, now) ? 0 : 1;
-      const bLive = isEventLive(b, now) ? 0 : 1;
-      if (aLive !== bLive) return aLive - bLive;
       return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
     });
 
@@ -296,24 +293,32 @@ export default function GuideDetailScreen() {
           </View>
         )}
 
-        {favoritesEvents.length > 0 && (
+        {(featured || moreGames.length > 0) && (
           <View style={styles.sectionBlock}>
             <View style={styles.sectionHeaderRow}>
               <Ionicons name="star" size={16} color={Colors.favStar} />
               <Text style={styles.sectionLabel}>Favorites</Text>
-              <View style={styles.countChip}>
-                <Text style={styles.countChipText}>{favoritesEvents.length}</Text>
-              </View>
+              {favoritesEvents.length > 0 && (
+                <View style={styles.countChip}>
+                  <Text style={styles.countChipText}>{favoritesEvents.length}</Text>
+                </View>
+              )}
             </View>
-            {favoritesEvents.map((event) => (
-              <GuideEventCard
-                key={event.id}
-                event={event}
-                isFav
-                completed={isEventCompleted(event, now)}
-                score={getScore(event.id)}
-              />
-            ))}
+            {favoritesEvents.length > 0 ? (
+              favoritesEvents.map((event) => (
+                <GuideEventCard
+                  key={event.id}
+                  event={event}
+                  isFav
+                  completed={isEventCompleted(event, now)}
+                  score={getScore(event.id)}
+                />
+              ))
+            ) : (
+              <View style={styles.favoritesEmpty}>
+                <Text style={styles.favoritesEmptyText}>No favorites in this window</Text>
+              </View>
+            )}
           </View>
         )}
 
@@ -427,6 +432,17 @@ const styles = StyleSheet.create({
     fontWeight: "700" as const,
     color: Colors.favStar,
     fontFamily: "Inter_700Bold",
+  },
+  favoritesEmpty: {
+    paddingVertical: 16,
+    paddingHorizontal: 14,
+    alignItems: "center",
+  },
+  favoritesEmptyText: {
+    fontSize: 13,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
+    fontStyle: "italic" as const,
   },
   countChipMuted: {
     backgroundColor: Colors.cardHighlight,
