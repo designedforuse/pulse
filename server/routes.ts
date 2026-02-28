@@ -972,11 +972,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const dayNames: Record<number, string> = { 0: "Sun", 1: "Mon", 2: "Tue", 3: "Wed", 4: "Thu", 5: "Fri", 6: "Sat" };
 
     const rituals = [
-      { id: "friday_bonding", targetDow: 5, startHour: 18, endHour: 21 },
-      { id: "friday_lean_in", targetDow: 5, startHour: 21, endHour: 24 },
-      { id: "saturday_lean_in", targetDow: 6, startHour: 6, endHour: 12 },
-      { id: "saturday_bonding", targetDow: 6, startHour: 14, endHour: 19 },
-      { id: "sunday_funday", targetDow: 0, startHour: 6, endHour: 9 },
+      { id: "friday_lights", targetDow: 5, startHour: 18, endHour: 21 },
+      { id: "friday_after_hours", targetDow: 5, startHour: 21, endHour: 24 },
+      { id: "saturday_sunrise", targetDow: 6, startHour: 6, endHour: 12 },
+      { id: "saturday_spotlight", targetDow: 6, startHour: 16, endHour: 20 },
+      { id: "saturday_after_hours", targetDow: 6, startHour: 20, endHour: 24 },
+      { id: "sunday_session", targetDow: 0, startHour: 6, endHour: 9 },
     ];
 
     const getLocalParts = (d: Date) => {
