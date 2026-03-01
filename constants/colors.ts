@@ -3,6 +3,7 @@ const Colors = {
   card: "#2C2C2E",
   cardHighlight: "#3A3A3C",
   accent: "#00E676",
+  accentSoft: "#00C968",
   accentDim: "rgba(0, 230, 118, 0.15)",
   textPrimary: "#F5F5F5",
   textSecondary: "#A1A1A6",

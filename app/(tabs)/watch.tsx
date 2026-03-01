@@ -548,6 +548,30 @@ export default function WatchScreen() {
     [liveEvents, chaosIds]
   );
 
+  const SPORT_PRIORITY: Record<string, number> = { rugby: 0, cricket: 1, hockey: 2, soccer: 3 };
+
+  const sortedLive = useMemo(() => {
+    return [...filteredLive].sort((a, b) => {
+      const aFav = favoriteInvolved(a, favorites) ? 0 : 1;
+      const bFav = favoriteInvolved(b, favorites) ? 0 : 1;
+      if (aFav !== bFav) return aFav - bFav;
+      const aSp = SPORT_PRIORITY[a.sport] ?? 9;
+      const bSp = SPORT_PRIORITY[b.sport] ?? 9;
+      if (aSp !== bSp) return aSp - bSp;
+      return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
+    });
+  }, [filteredLive, favorites]);
+
+  const [liveExpanded, setLiveExpanded] = useState(false);
+
+  const { visibleLive, hiddenCount } = useMemo(() => {
+    if (liveExpanded) return { visibleLive: sortedLive, hiddenCount: 0 };
+    const favs = sortedLive.filter((e) => favoriteInvolved(e, favorites));
+    const nonFavs = sortedLive.filter((e) => !favoriteInvolved(e, favorites));
+    const shown = [...favs, ...nonFavs.slice(0, 6)];
+    return { visibleLive: shown, hiddenCount: Math.max(0, sortedLive.length - shown.length) };
+  }, [sortedLive, liveExpanded, favorites]);
+
   const hasChaos = chaosSetup && chaosSetup.primary;
 
   return (
@@ -649,7 +673,7 @@ export default function WatchScreen() {
           </View>
         )}
 
-        {filteredLive.length > 0 && (
+        {sortedLive.length > 0 && (
           <View style={styles.liveSection}>
             <View style={styles.sectionHeaderRow}>
               <View style={styles.sectionLiveIcon}>
@@ -658,11 +682,11 @@ export default function WatchScreen() {
               <Text style={[styles.sectionTitle, { color: Colors.live }]}>Live Now</Text>
               <View style={[styles.sectionCount, { backgroundColor: Colors.liveDim }]}>
                 <Text style={[styles.sectionCountText, { color: Colors.live }]}>
-                  {filteredLive.length}
+                  {sortedLive.length}
                 </Text>
               </View>
             </View>
-            {filteredLive.map((event) => (
+            {visibleLive.map((event) => (
               <LiveEventRow
                 key={event.id}
                 event={event}
@@ -672,6 +696,24 @@ export default function WatchScreen() {
                 isFav={favoriteInvolved(event, favorites)}
               />
             ))}
+            {(hiddenCount > 0 || liveExpanded) && (
+              <Pressable
+                onPress={() => setLiveExpanded((prev) => !prev)}
+                style={({ pressed }) => [
+                  styles.expandButton,
+                  { opacity: pressed ? 0.7 : 1 },
+                ]}
+              >
+                <Text style={styles.expandButtonText}>
+                  {liveExpanded ? "Show fewer" : `View all live (${sortedLive.length})`}
+                </Text>
+                <Ionicons
+                  name={liveExpanded ? "chevron-up" : "chevron-down"}
+                  size={16}
+                  color={Colors.accentSoft}
+                />
+              </Pressable>
+            )}
           </View>
         )}
 
@@ -810,7 +852,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     borderWidth: 1,
     borderColor: "#818CF8" + "40",
-    marginBottom: 10,
+    marginBottom: 20,
   },
   primaryInner: {
     backgroundColor: Colors.card,
@@ -882,7 +924,7 @@ const styles = StyleSheet.create({
   },
   primaryClock: {
     fontSize: 14,
-    color: Colors.accent,
+    color: Colors.accentSoft,
     fontFamily: "Inter_600SemiBold",
   },
   primaryElapsed: {
@@ -895,7 +937,7 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     overflow: "hidden",
     borderWidth: 1,
-    borderColor: Colors.border,
+    borderColor: "rgba(72, 72, 74, 0.6)",
   },
   secondaryInner: {
     backgroundColor: Colors.card,
@@ -1132,7 +1174,7 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
   },
   scoreLive: {
-    color: Colors.accent,
+    color: Colors.accentSoft,
   },
   scoreFinal: {
     fontSize: 13,
@@ -1171,12 +1213,12 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
   },
   secondaryClock: {
-    fontSize: 11,
-    color: Colors.accent,
+    fontSize: 10,
+    color: Colors.accentSoft,
     fontFamily: "Inter_600SemiBold",
   },
   secondaryFinal: {
-    fontSize: 11,
+    fontSize: 10,
     color: Colors.textSecondary,
     fontFamily: "Inter_600SemiBold",
   },
@@ -1204,19 +1246,19 @@ const styles = StyleSheet.create({
   },
   upNextTime: {
     fontSize: 11,
-    color: Colors.accent,
+    color: Colors.accentSoft,
     fontFamily: "Inter_500Medium",
     marginTop: 4,
   },
   scorePeriod: {
-    fontSize: 12,
-    color: Colors.accent,
+    fontSize: 11,
+    color: Colors.accentSoft,
     fontFamily: "Inter_600SemiBold",
     marginBottom: 2,
   },
   scoreClock: {
-    fontSize: 12,
-    color: Colors.accent,
+    fontSize: 11,
+    color: Colors.accentSoft,
     fontFamily: "Inter_400Regular",
     marginTop: 2,
   },
@@ -1229,6 +1271,21 @@ const styles = StyleSheet.create({
   providerRow: {
     marginTop: 8,
     alignItems: "center",
+  },
+  expandButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 6,
+    paddingVertical: 12,
+    marginTop: 4,
+    borderRadius: 10,
+    backgroundColor: "rgba(44, 44, 46, 0.6)",
+  },
+  expandButtonText: {
+    fontSize: 13,
+    color: Colors.accentSoft,
+    fontFamily: "Inter_600SemiBold",
   },
   footerMeta: {
     paddingHorizontal: 4,
