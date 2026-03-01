@@ -1158,6 +1158,84 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return new Date(e.startTimeLocal).getTime() + durMin * 60000;
     };
 
+    const SPORT_RANK_MAP: Record<string, number> = { rugby: 1, cricket: 2, hockey: 3, soccer: 4 };
+    const getSportRankLocal = (sport: string) => SPORT_RANK_MAP[sport] ?? 9;
+
+    const teamContainsLocal = (e: any, needle: string) => {
+      const h = (e.homeTeam || "").toLowerCase();
+      const a = (e.awayTeam || "").toLowerCase();
+      return h.includes(needle) || a.includes(needle);
+    };
+    const leagueIsLocal = (e: any, name: string) => (e.league || "") === name;
+    const leagueContainsLocal = (e: any, needle: string) => (e.league || "").toLowerCase().includes(needle);
+    const isIntlLocal = (e: any, sport: string) => {
+      if (e.competitionType === "international") return true;
+      const l = (e.league || "").toLowerCase();
+      if (sport === "rugby") return l.includes("six nations") || l.includes("rugby championship") || l.includes("test") || l.includes("international");
+      if (sport === "cricket") return l.includes("international") || l.includes("test") || l.includes("odi") || l.includes("t20i");
+      return false;
+    };
+
+    const ladderDefs: Record<string, { rank: number; match: (e: any) => boolean }[]> = {
+      rugby: [
+        { rank: 1, match: (e: any) => teamContainsLocal(e, "springboks") || teamContainsLocal(e, "south africa") },
+        { rank: 2, match: (e: any) => isIntlLocal(e, "rugby") },
+        { rank: 3, match: (e: any) => teamContainsLocal(e, "stormers") },
+        { rank: 4, match: (e: any) => leagueIsLocal(e, "URC") },
+        { rank: 5, match: (e: any) => leagueIsLocal(e, "Top 14") },
+        { rank: 6, match: (e: any) => leagueIsLocal(e, "Japan League One") },
+        { rank: 7, match: (e: any) => leagueIsLocal(e, "Super Rugby") || leagueContainsLocal(e, "super rugby") },
+        { rank: 8, match: (e: any) => leagueIsLocal(e, "English Premiership") || leagueIsLocal(e, "Premiership") || leagueContainsLocal(e, "premiership") },
+      ],
+      cricket: [
+        { rank: 1, match: (e: any) => teamContainsLocal(e, "south africa") },
+        { rank: 2, match: (e: any) => isIntlLocal(e, "cricket") },
+        { rank: 3, match: (e: any) => teamContainsLocal(e, "paarl royals") },
+        { rank: 4, match: (e: any) => teamContainsLocal(e, "mi cape town") },
+        { rank: 5, match: (e: any) => leagueContainsLocal(e, "sa20") || leagueContainsLocal(e, "sa t20") || leagueContainsLocal(e, "t20") },
+        { rank: 6, match: (e: any) => leagueIsLocal(e, "MLC") || leagueContainsLocal(e, "major league cricket") },
+        { rank: 7, match: (e: any) => leagueContainsLocal(e, "caribbean") || leagueContainsLocal(e, "cpl") },
+        { rank: 8, match: (e: any) => leagueIsLocal(e, "IPL") || leagueContainsLocal(e, "indian premier") },
+      ],
+      hockey: [
+        { rank: 1, match: (e: any) => teamContainsLocal(e, "usa") || teamContainsLocal(e, "united states") },
+        { rank: 2, match: (e: any) => teamContainsLocal(e, "anaheim") || (teamContainsLocal(e, "ducks") && leagueIsLocal(e, "NHL")) },
+        { rank: 3, match: (e: any) => teamContainsLocal(e, "san diego gulls") || (teamContainsLocal(e, "gulls") && leagueIsLocal(e, "AHL")) },
+        { rank: 4, match: (e: any) => teamContainsLocal(e, "tulsa oilers") || (teamContainsLocal(e, "oilers") && leagueIsLocal(e, "ECHL")) },
+        { rank: 5, match: (e: any) => leagueIsLocal(e, "NHL") },
+        { rank: 6, match: (e: any) => leagueIsLocal(e, "AHL") },
+        { rank: 7, match: (e: any) => leagueIsLocal(e, "ECHL") },
+        { rank: 8, match: (e: any) => leagueIsLocal(e, "NCAA Hockey") || leagueIsLocal(e, "NCAA") || leagueContainsLocal(e, "ncaa") },
+      ],
+      soccer: [
+        { rank: 1, match: (e: any) => teamContainsLocal(e, "south africa") || teamContainsLocal(e, "bafana") },
+        { rank: 2, match: (e: any) => teamContainsLocal(e, "tottenham") || teamContainsLocal(e, "spurs") },
+        { rank: 3, match: (e: any) => leagueIsLocal(e, "EPL") || leagueContainsLocal(e, "premier league") },
+        { rank: 4, match: (e: any) => leagueIsLocal(e, "Serie A") || leagueContainsLocal(e, "serie a") },
+        { rank: 5, match: (e: any) => leagueIsLocal(e, "La Liga") || leagueContainsLocal(e, "la liga") },
+        { rank: 6, match: (e: any) => leagueIsLocal(e, "Bundesliga") || leagueContainsLocal(e, "bundesliga") },
+        { rank: 7, match: (e: any) => leagueIsLocal(e, "Ligue 1") || leagueContainsLocal(e, "ligue 1") },
+        { rank: 8, match: (e: any) => leagueIsLocal(e, "MLS") },
+        { rank: 9, match: (e: any) => leagueIsLocal(e, "USL") || leagueContainsLocal(e, "usl") },
+      ],
+    };
+
+    const getLadderRankLocal = (e: any) => {
+      const ladder = ladderDefs[e.sport];
+      if (!ladder) return 99;
+      for (const rung of ladder) {
+        if (rung.match(e)) return rung.rank;
+      }
+      return 99;
+    };
+
+    const isLiveLocal = (e: any) => {
+      const startMs = new Date(e.startTimeLocal).getTime();
+      const endMs = getEndMs(e);
+      const nowMs = now.getTime();
+      return nowMs >= startMs && nowMs <= endMs;
+    };
+
     const events: any[] = generated.events;
     const included: any[] = [];
     const excludedSamples: any[] = [];
@@ -1197,11 +1275,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       included.push({
-        id: e.id, league: e.league, homeTeam: e.homeTeam, awayTeam: e.awayTeam,
+        id: e.id, sport: e.sport, league: e.league, homeTeam: e.homeTeam, awayTeam: e.awayTeam,
         start: e.startTimeLocal, startPT: fmtPT(new Date(eventStartMs)),
         endUTC: new Date(eventEndMs).toISOString(), endPT: fmtPT(new Date(eventEndMs)),
+        featuredScore: {
+          sportRank: getSportRankLocal(e.sport),
+          ladderRank: getLadderRankLocal(e),
+          isLive: isLiveLocal(e),
+        },
       });
     }
+
+    included.sort((a: any, b: any) => {
+      const sa = a.featuredScore;
+      const sb = b.featuredScore;
+      if (sa.sportRank !== sb.sportRank) return sa.sportRank - sb.sportRank;
+      if (sa.ladderRank !== sb.ladderRank) return sa.ladderRank - sb.ladderRank;
+      const aLive = sa.isLive ? 0 : 1;
+      const bLive = sb.isLive ? 0 : 1;
+      if (aLive !== bLive) return aLive - bLive;
+      const aStart = new Date(a.start).getTime();
+      const bStart = new Date(b.start).getTime();
+      if (aStart !== bStart) return aStart - bStart;
+      return a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
+    });
 
     return res.json({
       ritualId: ritual.id,
@@ -1213,7 +1310,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       dayStartPT: fmtPT(dayStart),
       dayEndPT: fmtPT(dayEnd),
       eventsIncludedCount: included.length,
-      sampleIncludedEvents: included.slice(0, 20),
+      note: "Debug sort uses sportRank→ladderRank→isLive→startTime→id. Client adds isFavorite between ladderRank and isLive (favorites stored client-side in AsyncStorage).",
+      featuredCandidate: included[0] || null,
+      top5Candidates: included.slice(0, 5),
+      allIncludedEvents: included.slice(0, 30),
       sampleExcludedEvents: excludedSamples,
     });
   });

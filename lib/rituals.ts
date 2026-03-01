@@ -238,13 +238,122 @@ export function classifyEventForRitual(
   return { included: true };
 }
 
-const SPORT_WEIGHT: Record<string, number> = {
+const SPORT_RANK: Record<string, number> = {
   rugby: 1,
   cricket: 2,
+  hockey: 3,
+  soccer: 4,
 };
 
-function getSportWeight(sport: string): number {
-  return SPORT_WEIGHT[sport] ?? 3;
+function getSportRank(sport: string): number {
+  return SPORT_RANK[sport] ?? 9;
+}
+
+const RUGBY_LADDER: { rank: number; match: (e: SportEvent) => boolean }[] = [
+  { rank: 1, match: (e) => teamContains(e, "springboks") || teamContains(e, "south africa") },
+  { rank: 2, match: (e) => isInternational(e, "rugby") },
+  { rank: 3, match: (e) => teamContains(e, "stormers") },
+  { rank: 4, match: (e) => leagueIs(e, "URC") },
+  { rank: 5, match: (e) => leagueIs(e, "Top 14") },
+  { rank: 6, match: (e) => leagueIs(e, "Japan League One") },
+  { rank: 7, match: (e) => leagueIs(e, "Super Rugby") || leagueContains(e, "super rugby") },
+  { rank: 8, match: (e) => leagueIs(e, "English Premiership") || leagueIs(e, "Premiership") || leagueContains(e, "premiership") },
+];
+
+const CRICKET_LADDER: { rank: number; match: (e: SportEvent) => boolean }[] = [
+  { rank: 1, match: (e) => teamContains(e, "south africa") },
+  { rank: 2, match: (e) => isInternational(e, "cricket") },
+  { rank: 3, match: (e) => teamContains(e, "paarl royals") },
+  { rank: 4, match: (e) => teamContains(e, "mi cape town") },
+  { rank: 5, match: (e) => leagueContains(e, "sa20") || leagueContains(e, "sa t20") || leagueContains(e, "t20") },
+  { rank: 6, match: (e) => leagueIs(e, "MLC") || leagueContains(e, "major league cricket") },
+  { rank: 7, match: (e) => leagueContains(e, "caribbean") || leagueContains(e, "cpl") },
+  { rank: 8, match: (e) => leagueIs(e, "IPL") || leagueContains(e, "indian premier") },
+];
+
+const HOCKEY_LADDER: { rank: number; match: (e: SportEvent) => boolean }[] = [
+  { rank: 1, match: (e) => teamContains(e, "usa") || teamContains(e, "united states") },
+  { rank: 2, match: (e) => teamContains(e, "anaheim") || (teamContains(e, "ducks") && leagueIs(e, "NHL")) },
+  { rank: 3, match: (e) => teamContains(e, "san diego gulls") || (teamContains(e, "gulls") && leagueIs(e, "AHL")) },
+  { rank: 4, match: (e) => teamContains(e, "tulsa oilers") || (teamContains(e, "oilers") && leagueIs(e, "ECHL")) },
+  { rank: 5, match: (e) => leagueIs(e, "NHL") },
+  { rank: 6, match: (e) => leagueIs(e, "AHL") },
+  { rank: 7, match: (e) => leagueIs(e, "ECHL") },
+  { rank: 8, match: (e) => leagueIs(e, "NCAA Hockey") || leagueIs(e, "NCAA") || leagueContains(e, "ncaa") },
+];
+
+const SOCCER_LADDER: { rank: number; match: (e: SportEvent) => boolean }[] = [
+  { rank: 1, match: (e) => teamContains(e, "south africa") || teamContains(e, "bafana") },
+  { rank: 2, match: (e) => teamContains(e, "tottenham") || teamContains(e, "spurs") },
+  { rank: 3, match: (e) => leagueIs(e, "EPL") || leagueContains(e, "premier league") },
+  { rank: 4, match: (e) => leagueIs(e, "Serie A") || leagueContains(e, "serie a") },
+  { rank: 5, match: (e) => leagueIs(e, "La Liga") || leagueContains(e, "la liga") },
+  { rank: 6, match: (e) => leagueIs(e, "Bundesliga") || leagueContains(e, "bundesliga") },
+  { rank: 7, match: (e) => leagueIs(e, "Ligue 1") || leagueContains(e, "ligue 1") },
+  { rank: 8, match: (e) => leagueIs(e, "MLS") },
+  { rank: 9, match: (e) => leagueIs(e, "USL") || leagueContains(e, "usl") },
+];
+
+const SPORT_LADDERS: Record<string, { rank: number; match: (e: SportEvent) => boolean }[]> = {
+  rugby: RUGBY_LADDER,
+  cricket: CRICKET_LADDER,
+  hockey: HOCKEY_LADDER,
+  soccer: SOCCER_LADDER,
+};
+
+function teamContains(e: SportEvent, needle: string): boolean {
+  const h = (e.homeTeam || "").toLowerCase();
+  const a = (e.awayTeam || "").toLowerCase();
+  return h.includes(needle) || a.includes(needle);
+}
+
+function leagueIs(e: SportEvent, name: string): boolean {
+  return (e.league || "") === name;
+}
+
+function leagueContains(e: SportEvent, needle: string): boolean {
+  return (e.league || "").toLowerCase().includes(needle);
+}
+
+function isInternational(e: SportEvent, sport: string): boolean {
+  if (e.competitionType === "international") return true;
+  const l = (e.league || "").toLowerCase();
+  if (sport === "rugby") {
+    return l.includes("six nations") || l.includes("rugby championship") || l.includes("test") || l.includes("international");
+  }
+  if (sport === "cricket") {
+    return l.includes("international") || l.includes("test") || l.includes("odi") || l.includes("t20i");
+  }
+  return false;
+}
+
+function getLadderRank(e: SportEvent): number {
+  const ladder = SPORT_LADDERS[e.sport];
+  if (!ladder) return 99;
+  for (const rung of ladder) {
+    if (rung.match(e)) return rung.rank;
+  }
+  return 99;
+}
+
+export interface FeaturedScore {
+  sportRank: number;
+  ladderRank: number;
+  isFavorite: boolean;
+  isLive: boolean;
+  startTime: string;
+  id: string;
+}
+
+export function computeFeaturedScore(e: SportEvent, favorites: Favorites, now: Date): FeaturedScore {
+  return {
+    sportRank: getSportRank(e.sport),
+    ladderRank: getLadderRank(e),
+    isFavorite: favoriteInvolved(e, favorites),
+    isLive: isEventLive(e, now),
+    startTime: e.startTimeLocal,
+    id: e.id,
+  };
 }
 
 function featuredSort(
@@ -253,19 +362,25 @@ function featuredSort(
   favorites: Favorites,
   now: Date,
 ): number {
-  const aFav = favoriteInvolved(a, favorites) ? 0 : 1;
-  const bFav = favoriteInvolved(b, favorites) ? 0 : 1;
+  const sa = computeFeaturedScore(a, favorites, now);
+  const sb = computeFeaturedScore(b, favorites, now);
+
+  if (sa.sportRank !== sb.sportRank) return sa.sportRank - sb.sportRank;
+  if (sa.ladderRank !== sb.ladderRank) return sa.ladderRank - sb.ladderRank;
+
+  const aFav = sa.isFavorite ? 0 : 1;
+  const bFav = sb.isFavorite ? 0 : 1;
   if (aFav !== bFav) return aFav - bFav;
 
-  const aSport = getSportWeight(a.sport);
-  const bSport = getSportWeight(b.sport);
-  if (aSport !== bSport) return aSport - bSport;
-
-  const aLive = isEventLive(a, now) ? 0 : 1;
-  const bLive = isEventLive(b, now) ? 0 : 1;
+  const aLive = sa.isLive ? 0 : 1;
+  const bLive = sb.isLive ? 0 : 1;
   if (aLive !== bLive) return aLive - bLive;
 
-  return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
+  const aStart = new Date(sa.startTime).getTime();
+  const bStart = new Date(sb.startTime).getTime();
+  if (aStart !== bStart) return aStart - bStart;
+
+  return sa.id < sb.id ? -1 : sa.id > sb.id ? 1 : 0;
 }
 
 export interface RitualFilterDebug {
