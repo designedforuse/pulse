@@ -447,20 +447,25 @@ export default function WatchScreen() {
     [scores]
   );
 
+  const getScoreData = useCallback(
+    (id: string) => getScore(id),
+    [scores]
+  );
+
   const rebuildChaos = useCallback((forNow?: Date) => {
     const t = forNow ?? new Date();
-    const setup = buildChaosSetup(allEvents, favorites, t, getScoreStatus);
+    const setup = buildChaosSetup(allEvents, favorites, t, getScoreStatus, getScoreData);
     setChaosSetup(setup);
     chaosRef.current = setup;
     setAlertEvent(null);
-  }, [allEvents, favorites, getScoreStatus]);
+  }, [allEvents, favorites, getScoreStatus, getScoreData]);
 
   const initialised = useRef(false);
   useEffect(() => {
     if (!initialised.current && allEvents.length > 0) {
       initialised.current = true;
       const t = new Date();
-      const setup = buildChaosSetup(allEvents, favorites, t, getScoreStatus);
+      const setup = buildChaosSetup(allEvents, favorites, t, getScoreStatus, getScoreData);
       setChaosSetup(setup);
       chaosRef.current = setup;
     }
@@ -477,7 +482,7 @@ export default function WatchScreen() {
     if (!chaosRef.current) return;
     const current = chaosRef.current;
 
-    const healed = selfHealChaosSetup(current, allEvents, favorites, now, getScoreStatus);
+    const healed = selfHealChaosSetup(current, allEvents, favorites, now, getScoreStatus, getScoreData);
     if (healed) {
       setChaosSetup(healed);
       chaosRef.current = healed;

@@ -549,3 +549,13 @@ export function formatRitualSports(ritual: Ritual): string {
   const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
   return ritual.sports.map(capitalize).join(", ");
 }
+
+export function isNowInAnyRitualWindow(now: Date): { inRitual: boolean; ritualId: string | null } {
+  for (const ritual of RITUALS) {
+    const occ = computeOccurrence(ritual, now);
+    if (occ.isActive) {
+      return { inRitual: true, ritualId: ritual.id };
+    }
+  }
+  return { inRitual: false, ritualId: null };
+}

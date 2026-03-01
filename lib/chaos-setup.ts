@@ -1,10 +1,73 @@
 import type { SportEvent, Favorites } from "@/lib/data";
+import type { ScoreData } from "@/lib/scores-context";
 import { getEventEnd, isEventLive } from "@/utils/time";
 import { favoriteInvolved } from "@/utils/favorites";
-import { computeFeaturedScore, type FeaturedScore } from "@/lib/rituals";
+import { computeFeaturedScore, isNowInAnyRitualWindow, type FeaturedScore } from "@/lib/rituals";
 
 const CHAOS_WINDOW_MS = 90 * 60 * 1000;
 const CHAOS_DEBUG = __DEV__;
+
+const FOCUS_SPORTS = new Set(["rugby", "cricket", "hockey", "soccer"]);
+
+const SPORT_PRIORITY: Record<string, number> = { rugby: 4, cricket: 3, hockey: 2, soccer: 1 };
+
+function getSportPriority(sport: string): number {
+  return SPORT_PRIORITY[sport] ?? 0;
+}
+
+export function getEmotionRank(event: SportEvent, favorites: Favorites): number {
+  if (favoriteInvolved(event, favorites)) return 3;
+  const league = (event.league || "").toLowerCase();
+  const favLeagues = new Set<string>();
+  for (const sportFavs of Object.values(favorites)) {
+    if (sportFavs && typeof sportFavs === "object") {
+      for (const leagueName of Object.keys(sportFavs)) {
+        favLeagues.add(leagueName.toLowerCase());
+      }
+    }
+  }
+  if (favLeagues.has(league)) return 2;
+  if (FOCUS_SPORTS.has(event.sport)) return 1;
+  return 0;
+}
+
+export function getTensionRank(
+  event: SportEvent,
+  isLive: boolean,
+  getScoreData?: (id: string) => ScoreData | undefined,
+): number {
+  if (!isLive) return 0;
+
+  const score = getScoreData?.(event.id);
+  if (!score) return 1;
+
+  let rank = 1;
+  const diff = Math.abs(score.homeScore - score.awayScore);
+  const sport = event.sport.toLowerCase();
+
+  if (sport === "hockey" || sport === "soccer") {
+    if (diff <= 1) rank = 3;
+    else if (diff <= 2) rank = 2;
+  } else if (sport === "rugby") {
+    if (diff <= 7) rank = 3;
+    else if (diff <= 14) rank = 2;
+  } else if (sport === "cricket") {
+    rank = 1;
+  } else {
+    if (diff <= 1) rank = 3;
+    else if (diff <= 2) rank = 2;
+  }
+
+  const status = (score.status || "").toLowerCase();
+  const period = (score.period || "").toLowerCase();
+  const isOT = status.includes("ot") || status.includes("overtime") || status.includes("extra")
+    || status.includes("shootout") || status.includes("penalty")
+    || period.includes("ot") || period.includes("overtime") || period.includes("extra")
+    || period.includes("shootout") || period.includes("penalty");
+  if (isOT) rank = Math.min(rank + 2, 5);
+
+  return rank;
+}
 
 const TERMINAL_STATUSES = [
   "final", "ft", "ended", "full time", "completed",
@@ -62,6 +125,8 @@ export interface ChaosCandidate {
   isLive: boolean;
   isAnchor: boolean;
   isBackfill: boolean;
+  emotionRank: number;
+  tensionRank: number;
 }
 
 function getCandidatePool(
@@ -69,6 +134,7 @@ function getCandidatePool(
   favorites: Favorites,
   now: Date,
   getScoreStatus?: (id: string) => string | undefined,
+  getScoreData?: (id: string) => ScoreData | undefined,
 ): ChaosCandidate[] {
   const windowEnd = new Date(now.getTime() + CHAOS_WINDOW_MS);
 
@@ -88,8 +154,10 @@ function getCandidatePool(
     const isFav = favoriteInvolved(event, favorites);
     const score = computeFeaturedScore(event, favorites, now);
     const anchor = isAnchorTeam(event);
+    const emotion = getEmotionRank(event, favorites);
+    const tension = getTensionRank(event, live, getScoreData);
 
-    candidates.push({ event, score, isFavorite: isFav, isLive: live, isAnchor: anchor, isBackfill: false });
+    candidates.push({ event, score, isFavorite: isFav, isLive: live, isAnchor: anchor, isBackfill: false, emotionRank: emotion, tensionRank: tension });
   }
 
   return candidates;
@@ -123,6 +191,8 @@ function getBackfillCandidates(
       isLive: false,
       isAnchor: isAnchorTeam(event),
       isBackfill: true,
+      emotionRank: getEmotionRank(event, favorites),
+      tensionRank: 0,
     });
   }
 
@@ -142,13 +212,22 @@ function getBackfillCandidates(
   return candidates;
 }
 
-function chaosSort(a: ChaosCandidate, b: ChaosCandidate): number {
-  if (a.score.sportRank !== b.score.sportRank) return a.score.sportRank - b.score.sportRank;
-  if (a.score.ladderRank !== b.score.ladderRank) return a.score.ladderRank - b.score.ladderRank;
+function chaosSort(a: ChaosCandidate, b: ChaosCandidate, ritualMode: boolean): number {
+  if (b.emotionRank !== a.emotionRank) return b.emotionRank - a.emotionRank;
 
-  const aFav = a.isFavorite ? 0 : 1;
-  const bFav = b.isFavorite ? 0 : 1;
-  if (aFav !== bFav) return aFav - bFav;
+  if (ritualMode) {
+    const aSP = getSportPriority(a.event.sport);
+    const bSP = getSportPriority(b.event.sport);
+    if (bSP !== aSP) return bSP - aSP;
+
+    if (b.tensionRank !== a.tensionRank) return b.tensionRank - a.tensionRank;
+  } else {
+    if (b.tensionRank !== a.tensionRank) return b.tensionRank - a.tensionRank;
+
+    const aSP = getSportPriority(a.event.sport);
+    const bSP = getSportPriority(b.event.sport);
+    if (bSP !== aSP) return bSP - aSP;
+  }
 
   const aLive = a.isLive ? 0 : 1;
   const bLive = b.isLive ? 0 : 1;
@@ -186,6 +265,9 @@ export interface ChaosDebug {
   soonCount: number;
   backfillCount: number;
   selectedIds: string[];
+  ritualMode: boolean;
+  activeRitualId: string | null;
+  selectedRanks?: { id: string; emotion: number; tension: number; sportPri: number; isLive: boolean }[];
 }
 
 export function buildChaosSetup(
@@ -193,8 +275,10 @@ export function buildChaosSetup(
   favorites: Favorites,
   now: Date,
   getScoreStatus?: (id: string) => string | undefined,
+  getScoreData?: (id: string) => ScoreData | undefined,
 ): ChaosSetup {
-  const pool = getCandidatePool(allEvents, favorites, now, getScoreStatus);
+  const { inRitual, ritualId } = isNowInAnyRitualWindow(now);
+  const pool = getCandidatePool(allEvents, favorites, now, getScoreStatus, getScoreData);
 
   const selected: ChaosCandidate[] = [];
   const usedIds = new Set<string>();
@@ -207,7 +291,7 @@ export function buildChaosSetup(
   }
 
   const nonAnchors = pool.filter((c) => !usedIds.has(c.event.id));
-  nonAnchors.sort(chaosSort);
+  nonAnchors.sort((a, b) => chaosSort(a, b, inRitual));
 
   if (selected.length < 4) {
     const hasAnchorsOrFavs = selected.some((c) => c.isFavorite);
@@ -228,7 +312,7 @@ export function buildChaosSetup(
         const aSportNew = usedSports.has(a.event.sport) ? 1 : 0;
         const bSportNew = usedSports.has(b.event.sport) ? 1 : 0;
         if (aSportNew !== bSportNew) return aSportNew - bSportNew;
-        return chaosSort(a, b);
+        return chaosSort(a, b, inRitual);
       });
 
     for (const candidate of diverseRemaining) {
@@ -273,6 +357,8 @@ export function buildChaosSetup(
         isLive: false,
         isAnchor: isAnchorTeam(nextUp),
         isBackfill: true,
+        emotionRank: getEmotionRank(nextUp, favorites),
+        tensionRank: 0,
       });
       backfillCount++;
     }
@@ -285,13 +371,33 @@ export function buildChaosSetup(
     soonCount,
     backfillCount,
     selectedIds: selected.map((c) => c.event.id),
+    ritualMode: inRitual,
+    activeRitualId: ritualId,
+    selectedRanks: selected.map((c) => ({
+      id: c.event.id,
+      emotion: c.emotionRank,
+      tension: c.tensionRank,
+      sportPri: getSportPriority(c.event.sport),
+      isLive: c.isLive,
+    })),
   };
 
   if (CHAOS_DEBUG) {
+    const fmtPT = (d: Date) =>
+      new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/Los_Angeles",
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      }).format(d);
     console.log(
-      `[CHAOS] anchors=${anchors.length} live=${liveCount} soon=${soonCount} backfill=${backfillCount} selected=${selected.length}`,
-      debug.selectedIds,
+      `[CHAOS] mode=${inRitual ? "RITUAL" : "FREE"}${ritualId ? ` (${ritualId})` : ""} | nowPT=${fmtPT(now)} | anchors=${anchors.length} live=${liveCount} soon=${soonCount} backfill=${backfillCount} selected=${selected.length}`,
     );
+    if (debug.selectedRanks) {
+      for (const r of debug.selectedRanks) {
+        console.log(`  [CHAOS]  ${r.id}: emotion=${r.emotion} tension=${r.tension} sportPri=${r.sportPri} live=${r.isLive}`);
+      }
+    }
   }
 
   return {
@@ -324,6 +430,7 @@ export function selfHealChaosSetup(
   favorites: Favorites,
   now: Date,
   getScoreStatus?: (id: string) => string | undefined,
+  getScoreData?: (id: string) => ScoreData | undefined,
 ): ChaosSetup | null {
   if (!setup.primary) return null;
 
@@ -340,9 +447,10 @@ export function selfHealChaosSetup(
 
   if (terminalIds.size === allSelected.length) {
     if (CHAOS_DEBUG) console.log("[CHAOS] self-heal: all terminal → full rebuild");
-    return buildChaosSetup(allEvents, favorites, now, getScoreStatus);
+    return buildChaosSetup(allEvents, favorites, now, getScoreStatus, getScoreData);
   }
 
+  const { inRitual } = isNowInAnyRitualWindow(now);
   const kept = allSelected.filter((e) => !terminalIds.has(e.id));
   const usedIds = new Set(kept.map((e) => e.id));
   const slotsNeeded = 4 - kept.length;
@@ -354,11 +462,11 @@ export function selfHealChaosSetup(
     );
   }
 
-  const pool = getCandidatePool(allEvents, favorites, now, getScoreStatus)
+  const pool = getCandidatePool(allEvents, favorites, now, getScoreStatus, getScoreData)
     .filter((c) => !usedIds.has(c.event.id) && !isTerminalEvent(c.event, now, getScoreStatus));
 
   const anchors = pool.filter((c) => c.isAnchor).sort(anchorSort);
-  const nonAnchors = pool.filter((c) => !c.isAnchor).sort(chaosSort);
+  const nonAnchors = pool.filter((c) => !c.isAnchor).sort((a, b) => chaosSort(a, b, inRitual));
 
   const replacements: SportEvent[] = [];
   const replacementIds = new Set<string>();
@@ -376,7 +484,7 @@ export function selfHealChaosSetup(
       const aSportNew = usedSports.has(a.event.sport) ? 1 : 0;
       const bSportNew = usedSports.has(b.event.sport) ? 1 : 0;
       if (aSportNew !== bSportNew) return aSportNew - bSportNew;
-      return chaosSort(a, b);
+      return chaosSort(a, b, inRitual);
     });
 
   for (const c of diverseSorted) {
