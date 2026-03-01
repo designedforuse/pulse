@@ -550,7 +550,9 @@ export default function WatchScreen() {
           <View style={styles.chaosSection}>
             <View style={styles.chaosTitleRow}>
               <Ionicons name="flash" size={20} color="#818CF8" />
-              <Text style={styles.chaosTitle}>4-Game Chaos Setup</Text>
+              <Text style={styles.chaosTitle}>
+                {chaosSetup.candidateCount > 0 ? "4-Game Chaos Setup" : "Next Up"}
+              </Text>
               <View style={{ flex: 1 }} />
               <Pressable
                 onPress={handleRebuild}
@@ -603,10 +605,10 @@ export default function WatchScreen() {
           </View>
         ) : (
           <View style={styles.emptyState}>
-            <Ionicons name="tv-outline" size={40} color={Colors.textMuted} />
-            <Text style={styles.emptyTitle}>No games right now</Text>
+            <Ionicons name="time-outline" size={40} color={Colors.textMuted} />
+            <Text style={styles.emptyTitle}>No upcoming games</Text>
             <Text style={styles.emptySubtitle}>
-              Games will appear when they're live or starting soon
+              Check back later for live games and upcoming events
             </Text>
           </View>
         )}
