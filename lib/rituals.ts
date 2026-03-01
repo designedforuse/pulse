@@ -238,45 +238,34 @@ export function classifyEventForRitual(
   return { included: true };
 }
 
-const LEAGUE_PRIORITY: Record<string, number> = {
-  NHL: 15,
-  EPL: 15,
-  "Serie A": 12,
-  "La Liga": 12,
-  Bundesliga: 10,
-  "Ligue 1": 10,
-  URC: 12,
-  "Top 14": 10,
-  "Six Nations": 15,
-  "Super Rugby": 8,
-  MLS: 8,
-  AHL: 5,
-  ECHL: 3,
-  "NCAA Hockey": 5,
-  "T20 World Cup": 15,
+const SPORT_WEIGHT: Record<string, number> = {
+  rugby: 1,
+  cricket: 2,
 };
 
-export function scoreEvent(
-  event: SportEvent,
+function getSportWeight(sport: string): number {
+  return SPORT_WEIGHT[sport] ?? 3;
+}
+
+function featuredSort(
+  a: SportEvent,
+  b: SportEvent,
   favorites: Favorites,
   now: Date,
 ): number {
-  let score = 0;
+  const aFav = favoriteInvolved(a, favorites) ? 0 : 1;
+  const bFav = favoriteInvolved(b, favorites) ? 0 : 1;
+  if (aFav !== bFav) return aFav - bFav;
 
-  if (favoriteInvolved(event, favorites)) score += 100;
+  const aSport = getSportWeight(a.sport);
+  const bSport = getSportWeight(b.sport);
+  if (aSport !== bSport) return aSport - bSport;
 
-  if (isEventLive(event, now)) score += 50;
+  const aLive = isEventLive(a, now) ? 0 : 1;
+  const bLive = isEventLive(b, now) ? 0 : 1;
+  if (aLive !== bLive) return aLive - bLive;
 
-  const startMs = new Date(event.startTimeLocal).getTime();
-  const diffMs = startMs - now.getTime();
-  const diffHours = diffMs / (1000 * 60 * 60);
-
-  if (diffHours >= 0 && diffHours <= 2) score += 25;
-  else if (diffHours > 2 && diffHours <= 6) score += 10;
-
-  score += LEAGUE_PRIORITY[event.league] ?? 0;
-
-  return score;
+  return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
 }
 
 export interface RitualFilterDebug {
@@ -329,18 +318,10 @@ export function getEventsForRitual(
 
   if (overlapMatched.length === 0) return { featured: null, rest: [], debug };
 
-  const scored = overlapMatched.map((e) => ({
-    event: e,
-    score: scoreEvent(e, favorites, now),
-  }));
+  const sorted = [...overlapMatched].sort((a, b) => featuredSort(a, b, favorites, now));
 
-  scored.sort((a, b) => {
-    if (b.score !== a.score) return b.score - a.score;
-    return new Date(a.event.startTimeLocal).getTime() - new Date(b.event.startTimeLocal).getTime();
-  });
-
-  const featured = scored[0].event;
-  const rest = scored.slice(1).map((s) => s.event);
+  const featured = sorted[0];
+  const rest = sorted.slice(1);
 
   return { featured, rest, debug };
 }
