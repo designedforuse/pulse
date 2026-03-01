@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-01T16:11:41.713Z",
+  "lastUpdated": "2026-03-01T16:17:09.676Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -44,7 +44,7 @@
   "rugbyCount": 114,
   "rugbyAdded": 0,
   "rugbyUpdated": 102,
-  "rugbyPruned": 1,
+  "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 19,
     "top14": 15,
@@ -60,20 +60,20 @@
   "cricketPruned": 0,
   "cricketCounts": {},
   "iccT20WcCount": 28,
-  "iccT20WcAdded": 0,
-  "iccT20WcUpdated": 28,
-  "iccT20WcPruned": 2,
+  "iccT20WcAdded": 28,
+  "iccT20WcUpdated": 0,
+  "iccT20WcPruned": 0,
   "iccT20WcSourceUsed": "hardcoded-schedule",
   "t20wcDedupedCount": 0,
   "olympicHockeyCount": 14,
   "olympicHockeyAdded": 0,
   "olympicHockeyUpdated": 14,
-  "olympicHockeyPruned": 2,
+  "olympicHockeyPruned": 0,
   "olympicHockeySourceUsed": "hardcoded-schedule",
   "eplCount": 51,
-  "eplAdded": 3,
-  "eplUpdated": 47,
-  "eplPruned": 47,
+  "eplAdded": 0,
+  "eplUpdated": 50,
+  "eplPruned": 50,
   "eplSourceUsed": "ical",
   "mlsCount": 70,
   "mlsAdded": 0,
@@ -81,24 +81,24 @@
   "mlsPruned": 70,
   "mlsSourceUsed": "ical",
   "serieaCount": 52,
-  "serieaAdded": 3,
-  "serieaUpdated": 49,
+  "serieaAdded": 0,
+  "serieaUpdated": 52,
   "serieaPruned": 52,
   "serieaSourceUsed": "espn",
   "laligaCount": 53,
-  "laligaAdded": 2,
-  "laligaUpdated": 51,
+  "laligaAdded": 0,
+  "laligaUpdated": 53,
   "laligaPruned": 53,
   "laligaSourceUsed": "espn",
   "bundesligaCount": 45,
-  "bundesligaAdded": 1,
-  "bundesligaUpdated": 44,
+  "bundesligaAdded": 0,
+  "bundesligaUpdated": 45,
   "bundesligaPruned": 45,
   "bundesligaSourceUsed": "espn",
-  "ligue1Count": 39,
+  "ligue1Count": 37,
   "ligue1Added": 0,
-  "ligue1Updated": 39,
-  "ligue1Pruned": 40,
+  "ligue1Updated": 37,
+  "ligue1Pruned": 37,
   "ligue1SourceUsed": "espn",
   "nwslCount": 14,
   "nwslAdded": 0,
@@ -128,37 +128,37 @@
   "faCupCount": 11,
   "faCupAdded": 0,
   "faCupUpdated": 11,
-  "faCupPruned": 15,
+  "faCupPruned": 11,
   "faCupSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-01T16:11:41.713Z",
+    "lastRefreshAt": "2026-03-01T16:17:09.676Z",
     "sources": {
       "nhl": {
         "count": 166,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 230,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 17,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 3,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 114,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 19,
@@ -178,53 +178,53 @@
       },
       "iccT20Wc": {
         "count": 28,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 14,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 51,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 70,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 52,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 53,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 45,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
-        "count": 39,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "count": 37,
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 14,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 32,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
@@ -236,52 +236,24 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 16,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "iCal Feed"
       },
       "faCup": {
         "count": 11,
-        "lastFetchAt": "2026-03-01T16:11:41.713Z",
+        "lastFetchAt": "2026-03-01T16:17:09.676Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-02-15T12:00:00.000Z"
       }
     }
   },
   "events": [
-    {
-      "id": "soccer-ligue1-20260215-1615-angers-at-lorient",
-      "sport": "soccer",
-      "league": "Ligue 1",
-      "awayTeam": "Angers",
-      "homeTeam": "Lorient",
-      "startTimeLocal": "2026-02-15T16:15:00.000Z",
-      "endTimeLocal": "2026-02-15T18:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "soccer-ligue1",
-      "leagueKey": "ligue1",
-      "providerReason": "ligue1-yttv"
-    },
-    {
-      "id": "soccer-ligue1-20260215-1615-aj-auxerre-at-metz",
-      "sport": "soccer",
-      "league": "Ligue 1",
-      "awayTeam": "AJ Auxerre",
-      "homeTeam": "Metz",
-      "startTimeLocal": "2026-02-15T16:15:00.000Z",
-      "endTimeLocal": "2026-02-15T18:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "soccer-ligue1",
-      "leagueKey": "ligue1",
-      "providerReason": "ligue1-yttv"
-    },
     {
       "id": "soccer-bundesliga-20260215-1630-vfl-wolfsburg-at-rb-leipzig",
       "sport": "soccer",
@@ -4891,11 +4863,11 @@
       "leagueKey": "leagueone"
     },
     {
-      "id": "cricket-t20wc-8d96907d04",
+      "id": "cricket-t20wc-fe59f7701a",
       "sport": "cricket",
       "league": "ICC",
-      "awayTeam": "West Indies",
-      "homeTeam": "India",
+      "awayTeam": "Zimbabwe",
+      "homeTeam": "South Africa",
       "startTimeLocal": "2026-03-01T09:30:00.000Z",
       "endTimeLocal": "2026-03-01T13:00:00.000Z",
       "providerId": "youtubetv",
@@ -4939,11 +4911,11 @@
       "providerReason": "laliga-disneyplus"
     },
     {
-      "id": "cricket-t20wc-486d4f5b6e",
+      "id": "cricket-t20wc-f0d2345c37",
       "sport": "cricket",
       "league": "ICC",
-      "awayTeam": "South Africa",
-      "homeTeam": "Zimbabwe",
+      "awayTeam": "West Indies",
+      "homeTeam": "India",
       "startTimeLocal": "2026-03-01T13:30:00.000Z",
       "endTimeLocal": "2026-03-01T17:00:00.000Z",
       "providerId": "youtubetv",

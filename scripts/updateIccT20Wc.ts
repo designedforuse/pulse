@@ -124,8 +124,8 @@ const SUPER_8: T20WcMatch[] = [
   { matchNum: 48, date: "2026-02-26", timeIST: "19:00", team1: "India", team2: "Zimbabwe", venue: "MA Chidambaram Stadium, Chennai", group: "Super 8 – Group 1" },
   { matchNum: 49, date: "2026-02-27", timeIST: "19:00", team1: "England", team2: "New Zealand", venue: "R. Premadasa Stadium, Colombo", group: "Super 8 – Group 2" },
   { matchNum: 50, date: "2026-02-28", timeIST: "19:00", team1: "Pakistan", team2: "Sri Lanka", venue: "Pallekele International Stadium", group: "Super 8 – Group 2" },
-  { matchNum: 51, date: "2026-03-01", timeIST: "15:00", team1: "West Indies", team2: "India", venue: "Arun Jaitley Stadium, Delhi", group: "Super 8 – Group 1" },
-  { matchNum: 52, date: "2026-03-01", timeIST: "19:00", team1: "South Africa", team2: "Zimbabwe", venue: "Eden Gardens, Kolkata", group: "Super 8 – Group 1" },
+  { matchNum: 51, date: "2026-03-01", timeIST: "15:00", team1: "Zimbabwe", team2: "South Africa", venue: "Arun Jaitley Stadium, Delhi", group: "Super 8 – Group 1" },
+  { matchNum: 52, date: "2026-03-01", timeIST: "19:00", team1: "West Indies", team2: "India", venue: "Eden Gardens, Kolkata", group: "Super 8 – Group 1" },
 ];
 
 const KNOCKOUTS: T20WcMatch[] = [
