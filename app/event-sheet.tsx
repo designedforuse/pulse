@@ -24,6 +24,7 @@ import {
 import { useEvents } from "@/lib/events-context";
 import { useScores } from "@/lib/scores-context";
 import { isEventLive, formatTimeSinceStart } from "@/utils/time";
+import { normalizeGameState } from "@/utils/gameState";
 import { displayTeamName } from "@/utils/teams";
 
 function formatDetailDate(startTimeLocal: string): string {
@@ -56,6 +57,9 @@ export default function EventSheet() {
   const leagueLabel = event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league;
   const dateLabel = formatDetailDate(event.startTimeLocal);
   const live = isEventLive(event, new Date());
+  const { gameState, displayClockText, displayStatusText } = normalizeGameState(event, score, new Date());
+  const isLiveState = gameState === "LIVE";
+  const isFinalState = gameState === "FINAL";
 
   const handleOpenProvider = async () => {
     if (!provider) return;
@@ -158,27 +162,27 @@ export default function EventSheet() {
                 <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={28} />
                 <Text style={styles.teamName}>{displayTeamName(event.awayTeam, event.league)}</Text>
                 {score && event.sport === "cricket"
-                  ? score.cricketAway ? <Text style={[styles.sheetCricketScore, score.status === "live" && styles.sheetScoreLive]}>{score.cricketAway}</Text> : null
-                  : score && <Text style={[styles.sheetScore, score.status === "live" && styles.sheetScoreLive]}>{score.awayScore}</Text>}
+                  ? score.cricketAway ? <Text style={[styles.sheetCricketScore, isLiveState && styles.sheetScoreLive]}>{score.cricketAway}</Text> : null
+                  : score && <Text style={[styles.sheetScore, isLiveState && styles.sheetScoreLive]}>{score.awayScore}</Text>}
               </View>
               <Text style={styles.atText}>{["NHL", "AHL", "ECHL", "NCAA Hockey", "MLS", "USL"].includes(event.league) ? "at" : "vs"}</Text>
               <View style={styles.teamSide}>
                 <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={28} />
                 <Text style={styles.teamName}>{displayTeamName(event.homeTeam, event.league)}</Text>
                 {score && event.sport === "cricket"
-                  ? score.cricketHome ? <Text style={[styles.sheetCricketScore, score.status === "live" && styles.sheetScoreLive]}>{score.cricketHome}</Text> : null
-                  : score && <Text style={[styles.sheetScore, score.status === "live" && styles.sheetScoreLive]}>{score.homeScore}</Text>}
+                  ? score.cricketHome ? <Text style={[styles.sheetCricketScore, isLiveState && styles.sheetScoreLive]}>{score.cricketHome}</Text> : null
+                  : score && <Text style={[styles.sheetScore, isLiveState && styles.sheetScoreLive]}>{score.homeScore}</Text>}
               </View>
             </View>
           )}
 
-          {score && score.period && event.sport !== "cricket" ? (
-            <Text style={[styles.sheetPeriod, score.status === "live" ? styles.sheetPeriodLive : null]}>
-              {score.period}{score.clock ? ` · ${score.clock}` : ""}
+          {isLiveState && displayClockText ? (
+            <Text style={[styles.sheetPeriod, styles.sheetPeriodLive]}>
+              {displayClockText}
             </Text>
-          ) : score && score.status === "live" && !score.period && !score.clock ? (
-            <Text style={styles.sheetElapsed}>
-              {formatTimeSinceStart(event.startTimeLocal, new Date())}
+          ) : isFinalState && displayStatusText ? (
+            <Text style={styles.sheetPeriod}>
+              {displayStatusText}
             </Text>
           ) : null}
 

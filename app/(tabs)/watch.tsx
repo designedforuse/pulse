@@ -41,6 +41,7 @@ import {
   formatTimeSinceStart,
   isEventLive,
 } from "@/utils/time";
+import { normalizeGameState } from "@/utils/gameState";
 import { favoriteInvolved } from "@/utils/favorites";
 import {
   buildChaosSetup,
@@ -87,10 +88,13 @@ function ChaosCard({
   isFav: boolean;
 }) {
   const sportColor = getSportColor(event.sport);
-  const live = isEventLive(event, now) || score?.status === "live";
+  const { gameState, displayClockText, displayStatusText } = normalizeGameState(event, score, now);
   const { date, time } = formatEventDate(event.startTimeLocal);
   const hasScore = !!score;
   const flashStyle = useScoreFlash(score?.awayScore, score?.homeScore, score?.cricketAway, score?.cricketHome);
+  const isLiveState = gameState === "LIVE";
+  const isFinalState = gameState === "FINAL";
+  const scoreColorStyle = isLiveState ? styles.scoreLive : isFinalState ? null : null;
 
   const handlePress = () => {
     if (Platform.OS !== "web") {
@@ -113,7 +117,8 @@ function ChaosCard({
         onPress={handlePress}
         style={({ pressed }) => [
           styles.primaryCard,
-          { opacity: pressed ? 0.9 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] },
+          isFinalState && styles.cardCompletedOpacity,
+          { opacity: pressed ? 0.9 : isFinalState ? 0.55 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] },
         ]}
       >
         <Animated.View style={[styles.primaryInner, flashStyle]}>
@@ -123,11 +128,14 @@ function ChaosCard({
             </Text>
             {isFav && <Text style={styles.favStar}>★</Text>}
             <View style={{ flex: 1 }} />
-            {live && (
+            {isLiveState && (
               <View style={styles.liveChip}>
                 <LiveDot />
                 <Text style={styles.liveText}>LIVE</Text>
               </View>
+            )}
+            {isFinalState && (
+              <Text style={styles.finalLabel}>FINAL</Text>
             )}
           </View>
 
@@ -141,7 +149,7 @@ function ChaosCard({
                   {displayTeamName(event.awayTeam, event.league)}
                 </Text>
                 {hasScore && event.sport !== "cricket" && (
-                  <Text style={[styles.primaryScore, score.status === "live" && styles.scoreLive]}>
+                  <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
                     {score.awayScore}
                   </Text>
                 )}
@@ -153,15 +161,15 @@ function ChaosCard({
                   {displayTeamName(event.homeTeam, event.league)}
                 </Text>
                 {hasScore && event.sport !== "cricket" && (
-                  <Text style={[styles.primaryScore, score.status === "live" && styles.scoreLive]}>
+                  <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
                     {score.homeScore}
                   </Text>
                 )}
               </View>
               {hasScore && event.sport === "cricket" && (
                 <View style={styles.cricketScoreBlock}>
-                  {score.cricketAway ? <Text style={[styles.cricketScoreText, score.status === "live" && styles.scoreLive]} numberOfLines={1}>{score.cricketAway}</Text> : null}
-                  {score.cricketHome ? <Text style={[styles.cricketScoreText, score.status === "live" && styles.scoreLive]} numberOfLines={1}>{score.cricketHome}</Text> : null}
+                  {score.cricketAway ? <Text style={[styles.cricketScoreText, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketAway}</Text> : null}
+                  {score.cricketHome ? <Text style={[styles.cricketScoreText, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketHome}</Text> : null}
                 </View>
               )}
             </View>
@@ -169,25 +177,13 @@ function ChaosCard({
 
           <View style={styles.primaryFooter}>
             <View style={styles.primaryTimeRow}>
-              {live ? (
-                (() => {
-                  if (event.sport === "Rugby" && hasScore) {
-                    const clockText = getRugbyClockDisplay(score);
-                    if (clockText) return <Text style={styles.primaryClock}>{clockText}</Text>;
-                  }
-                  if (hasScore && (score.period || score.clock)) {
-                    return (
-                      <Text style={styles.primaryClock}>
-                        {[score.period, score.clock].filter(Boolean).join(" · ")}
-                      </Text>
-                    );
-                  }
-                  const elapsed = formatTimeSinceStart(event.startTimeLocal, now);
-                  return elapsed ? <Text style={styles.primaryElapsed}>{elapsed}</Text> : null;
-                })()
-              ) : (
+              {isLiveState && displayClockText ? (
+                <Text style={styles.primaryClock}>{displayClockText}</Text>
+              ) : isFinalState && displayStatusText ? (
+                <Text style={styles.primaryFinalStatus}>{displayStatusText}</Text>
+              ) : gameState === "UPCOMING" ? (
                 <Text style={styles.primaryTime}>{date} · {time}</Text>
-              )}
+              ) : null}
             </View>
             <ProviderLogo providerId={event.providerId} size={22} />
           </View>
@@ -201,7 +197,7 @@ function ChaosCard({
       onPress={handlePress}
       style={({ pressed }) => [
         styles.secondaryCard,
-        { opacity: pressed ? 0.9 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] },
+        { opacity: pressed ? 0.9 : isFinalState ? 0.55 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] },
       ]}
     >
       <Animated.View style={[styles.secondaryInner, flashStyle]}>
@@ -210,11 +206,14 @@ function ChaosCard({
             {event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.league}
           </Text>
           {isFav && <Text style={styles.favStarSmall}>★</Text>}
-          {live && (
+          {isLiveState && (
             <View style={styles.liveChipSmall}>
               <LiveDot />
               <Text style={styles.liveTextSmall}>LIVE</Text>
             </View>
+          )}
+          {isFinalState && (
+            <Text style={styles.finalLabelSmall}>FINAL</Text>
           )}
         </View>
 
@@ -228,7 +227,7 @@ function ChaosCard({
                 {displayTeamName(event.awayTeam, event.league)}
               </Text>
               {hasScore && event.sport !== "cricket" && (
-                <Text style={[styles.secondaryScore, score.status === "live" && styles.scoreLive]}>
+                <Text style={[styles.secondaryScore, isLiveState && styles.scoreLive]}>
                   {score.awayScore}
                 </Text>
               )}
@@ -239,7 +238,7 @@ function ChaosCard({
                 {displayTeamName(event.homeTeam, event.league)}
               </Text>
               {hasScore && event.sport !== "cricket" && (
-                <Text style={[styles.secondaryScore, score.status === "live" && styles.scoreLive]}>
+                <Text style={[styles.secondaryScore, isLiveState && styles.scoreLive]}>
                   {score.homeScore}
                 </Text>
               )}
@@ -248,9 +247,13 @@ function ChaosCard({
         )}
 
         <View style={styles.secondaryFooter}>
-          {!live && (
+          {isLiveState && displayClockText ? (
+            <Text style={styles.secondaryClock} numberOfLines={1}>{displayClockText}</Text>
+          ) : isFinalState && displayStatusText ? (
+            <Text style={styles.secondaryFinal} numberOfLines={1}>{displayStatusText}</Text>
+          ) : gameState === "UPCOMING" ? (
             <Text style={styles.secondaryTime} numberOfLines={1}>{time}</Text>
-          )}
+          ) : null}
           <ProviderLogo providerId={event.providerId} size={18} />
         </View>
       </Animated.View>
@@ -260,7 +263,7 @@ function ChaosCard({
 
 function LiveEventRow({
   event,
-  isLive,
+  isLive: isLiveProp,
   now,
   score,
   isFav,
@@ -276,6 +279,9 @@ function LiveEventRow({
   const { date, time } = formatEventDate(event.startTimeLocal);
   const hasScore = !!score;
   const flashStyle = useScoreFlash(score?.awayScore, score?.homeScore, score?.cricketAway, score?.cricketHome);
+  const { gameState, displayClockText, displayStatusText } = normalizeGameState(event, score, now);
+  const isLiveState = gameState === "LIVE";
+  const isFinalState = gameState === "FINAL";
 
   const handlePress = () => {
     if (Platform.OS !== "web") {
@@ -299,7 +305,7 @@ function LiveEventRow({
       onPress={handlePress}
       style={({ pressed }) => [
         styles.eventCard,
-        { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] },
+        { opacity: pressed ? 0.85 : isFinalState ? 0.55 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] },
       ]}
     >
       <Animated.View style={[styles.cardInner, flashStyle]}>
@@ -309,6 +315,7 @@ function LiveEventRow({
               {event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league}
             </Text>
             {isFav && <Text style={styles.favStar}>★</Text>}
+            {isFinalState && <Text style={styles.finalLabel}>FINAL</Text>}
           </View>
 
           {showTeamStack ? (
@@ -319,8 +326,8 @@ function LiveEventRow({
                   <Text style={styles.teamName} numberOfLines={1}>{displayTeamName(event.awayTeam, event.league)}</Text>
                 </View>
                 {hasScore && event.sport === "cricket"
-                  ? <Text style={[styles.cricketScore, score.status === "live" && styles.scoreLive]} numberOfLines={1}>{score.cricketAway || ""}</Text>
-                  : hasScore && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.awayScore}</Text>}
+                  ? <Text style={[styles.cricketScore, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketAway || ""}</Text>
+                  : hasScore && <Text style={[styles.scoreText, isLiveState && styles.scoreLive]}>{score.awayScore}</Text>}
               </View>
               <View style={styles.teamScoreRow}>
                 <View style={styles.teamNameRow}>
@@ -328,8 +335,8 @@ function LiveEventRow({
                   <Text style={styles.teamName} numberOfLines={1}>{displayTeamName(event.homeTeam, event.league)}</Text>
                 </View>
                 {hasScore && event.sport === "cricket"
-                  ? <Text style={[styles.cricketScore, score.status === "live" && styles.scoreLive]} numberOfLines={1}>{score.cricketHome || ""}</Text>
-                  : hasScore && <Text style={[styles.scoreText, score.status === "live" && styles.scoreLive]}>{score.homeScore}</Text>}
+                  ? <Text style={[styles.cricketScore, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketHome || ""}</Text>
+                  : hasScore && <Text style={[styles.scoreText, isLiveState && styles.scoreLive]}>{score.homeScore}</Text>}
               </View>
             </View>
           ) : (
@@ -340,33 +347,16 @@ function LiveEventRow({
         <View style={styles.cardDivider} />
 
         <View style={styles.cardTimeSection}>
-          {isLive && (
+          {isLiveState && (
             <View style={styles.liveChip}>
               <LiveDot />
               <Text style={styles.liveText}>LIVE</Text>
             </View>
           )}
-          {isLive ? (
-            (() => {
-              const isRugby = event.sport === "Rugby";
-              if (isRugby && hasScore) {
-                const clockText = getRugbyClockDisplay(score);
-                if (clockText) return <Text style={styles.scorePeriod}>{clockText}</Text>;
-                const elapsed = formatTimeSinceStart(event.startTimeLocal, now);
-                return elapsed ? <Text style={styles.elapsedText}>{elapsed}</Text> : null;
-              }
-              if (event.sport === "cricket") return null;
-              if (hasScore && (score.period || score.clock)) {
-                return (
-                  <>
-                    {score.period ? <Text style={styles.scorePeriod}>{score.period}</Text> : null}
-                    {score.clock ? <Text style={styles.scoreClock}>{score.clock}</Text> : null}
-                  </>
-                );
-              }
-              const elapsed = formatTimeSinceStart(event.startTimeLocal, now);
-              return elapsed ? <Text style={styles.elapsedText}>{elapsed}</Text> : null;
-            })()
+          {isLiveState ? (
+            displayClockText ? <Text style={styles.scorePeriod}>{displayClockText}</Text> : null
+          ) : isFinalState ? (
+            <Text style={styles.scoreFinal}>{displayStatusText || "FT"}</Text>
           ) : (
             <>
               <Text style={styles.cardDate}>{date}</Text>
@@ -1103,6 +1093,53 @@ const styles = StyleSheet.create({
   scoreLive: {
     color: Colors.accent,
   },
+  scoreFinal: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_600SemiBold",
+    marginBottom: 2,
+  },
+  finalLabel: {
+    fontSize: 11,
+    fontWeight: "700" as const,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.5,
+    backgroundColor: "rgba(161, 161, 166, 0.15)",
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 4,
+    overflow: "hidden",
+  },
+  finalLabelSmall: {
+    fontSize: 9,
+    fontWeight: "700" as const,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.4,
+    backgroundColor: "rgba(161, 161, 166, 0.15)",
+    paddingHorizontal: 5,
+    paddingVertical: 1,
+    borderRadius: 4,
+    overflow: "hidden",
+    marginLeft: "auto" as const,
+  },
+  primaryFinalStatus: {
+    fontSize: 14,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_600SemiBold",
+  },
+  secondaryClock: {
+    fontSize: 11,
+    color: Colors.accent,
+    fontFamily: "Inter_600SemiBold",
+  },
+  secondaryFinal: {
+    fontSize: 11,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_600SemiBold",
+  },
+  cardCompletedOpacity: {},
   cardDivider: {
     width: 1,
     alignSelf: "stretch",

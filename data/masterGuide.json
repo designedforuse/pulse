@@ -255,7 +255,7 @@
       "awayTeam": "LA Galaxy",
       "homeTeam": "LAFC",
       "startTimeLocal": "2026-02-15T15:30:00",
-      "providerId": "youtubetv",
+      "providerId": "appletv",
       "isLive": false
     },
     {
@@ -325,7 +325,7 @@
       "awayTeam": "Inter Miami",
       "homeTeam": "Atlanta United",
       "startTimeLocal": "2026-02-15T16:30:00",
-      "providerId": "youtubetv",
+      "providerId": "appletv",
       "isLive": true
     },
     {
