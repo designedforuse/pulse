@@ -58,8 +58,21 @@ export default function ExploreScreen() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.header}>
-          <Ionicons name="layers" size={28} color={Colors.accent} />
-          <Text style={styles.headerTitle}>Explore</Text>
+          <View style={styles.headerLeft}>
+            <Ionicons name="layers" size={28} color={Colors.accent} />
+            <Text style={styles.headerTitle}>Explore</Text>
+          </View>
+          <Pressable
+            onPress={() => router.push("/settings")}
+            hitSlop={12}
+            style={({ pressed }) => [
+              styles.settingsButton,
+              { opacity: pressed ? 0.6 : 1 },
+            ]}
+            testID="explore-settings-button"
+          >
+            <Ionicons name="settings-outline" size={24} color={Colors.textSecondary} />
+          </Pressable>
         </View>
         <Text style={styles.subtitle}>
           Browse weekend windows and sport packs
@@ -128,8 +141,21 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 10,
+    justifyContent: "space-between",
     marginBottom: 6,
+  },
+  headerLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+  },
+  settingsButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: Colors.card,
   },
   headerTitle: {
     fontSize: 26,
