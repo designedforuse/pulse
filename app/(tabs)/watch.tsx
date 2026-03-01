@@ -6,7 +6,10 @@ import {
   Pressable,
   Platform,
   ScrollView,
+  FlatList,
   RefreshControl,
+  Dimensions,
+  useWindowDimensions,
 } from "react-native";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -258,6 +261,55 @@ function ChaosCard({
         </View>
       </Animated.View>
     </Pressable>
+  );
+}
+
+const TILE_GAP = 14;
+const PAGE_PADDING = 16;
+
+function SecondaryCarousel({
+  events,
+  now,
+  getScore,
+  favorites,
+}: {
+  events: SportEvent[];
+  now: Date;
+  getScore: (id: string) => any;
+  favorites: any;
+}) {
+  const { width: screenWidth } = useWindowDimensions();
+  const contentWidth = screenWidth - PAGE_PADDING * 2;
+  const tileWidth = events.length === 1
+    ? contentWidth
+    : Math.round(contentWidth * 0.82);
+  const snapInterval = tileWidth + TILE_GAP;
+
+  const renderTile = useCallback(({ item }: { item: SportEvent }) => (
+    <View style={{ width: tileWidth, marginRight: TILE_GAP }}>
+      <ChaosCard
+        event={item}
+        isPrimary={false}
+        now={now}
+        score={getScore(item.id)}
+        isFav={favoriteInvolved(item, favorites)}
+      />
+    </View>
+  ), [tileWidth, now, getScore, favorites]);
+
+  return (
+    <FlatList
+      data={events}
+      keyExtractor={(item) => item.id}
+      renderItem={renderTile}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={{ paddingRight: PAGE_PADDING }}
+      style={{ marginHorizontal: -PAGE_PADDING, paddingLeft: PAGE_PADDING }}
+      snapToInterval={events.length > 1 ? snapInterval : undefined}
+      decelerationRate={events.length > 1 ? "fast" : undefined}
+      scrollEnabled={events.length > 1}
+    />
   );
 }
 
@@ -579,18 +631,12 @@ export default function WatchScreen() {
             />
 
             {chaosSetup.secondary.length > 0 && (
-              <View style={styles.secondaryRow}>
-                {chaosSetup.secondary.map((event) => (
-                  <ChaosCard
-                    key={event.id}
-                    event={event}
-                    isPrimary={false}
-                    now={now}
-                    score={getScore(event.id)}
-                    isFav={favoriteInvolved(event, favorites)}
-                  />
-                ))}
-              </View>
+              <SecondaryCarousel
+                events={chaosSetup.secondary}
+                now={now}
+                getScore={getScore}
+                favorites={favorites}
+              />
             )}
           </View>
         ) : (
@@ -845,12 +891,7 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
   },
 
-  secondaryRow: {
-    flexDirection: "row",
-    gap: 10,
-  },
   secondaryCard: {
-    flex: 1,
     borderRadius: 14,
     overflow: "hidden",
     borderWidth: 1,
