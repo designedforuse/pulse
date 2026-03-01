@@ -545,7 +545,7 @@ export default function SettingsScreen() {
                 <Text style={[styles.stepText, { color: Colors.accent }]}>1</Text>
               </View>
               <Text style={styles.howItWorksText}>
-                Pick a viewing mode based on your schedule
+                Browse weekend windows in Explore
               </Text>
             </View>
             <View style={styles.divider} />

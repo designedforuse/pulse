@@ -62,7 +62,7 @@ export default function ExploreScreen() {
           <Text style={styles.headerTitle}>Explore</Text>
         </View>
         <Text style={styles.subtitle}>
-          Browse viewing modes to find your games
+          Browse weekend windows and sport packs
         </Text>
 
         <View style={styles.modesContainer}>
