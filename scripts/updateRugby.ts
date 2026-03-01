@@ -378,8 +378,136 @@ function leagueOneDisplayName(raw: string): string {
   return LEAGUE_ONE_DISPLAY_NAMES[raw] || raw;
 }
 
+const LEAGUE_ONE_JP_URL = "https://league-one.jp/schedule/";
+
+const JP_TO_EN_TEAMS: Record<string, string> = {
+  "東芝ブレイブルーパス東京": "Brave Lupus Tokyo",
+  "ブラックラムズ東京": "Black Rams Tokyo",
+  "コベルコ神戸スティーラーズ": "Kobelco Kobe Steelers",
+  "埼玉ワイルドナイツ": "Saitama Wild Knights",
+  "クボタスピアーズ船橋・東京ベイ": "Tokyo-Bay Urayasu D-Rocks",
+  "クボタスピアーズ船橋": "Tokyo-Bay Urayasu D-Rocks",
+  "浦安D-Rocks": "Urayasu D-Rocks",
+  "トヨタヴェルブリッツ": "Toyota Verblitz",
+  "三重ホンダヒート": "Mie Honda Heat",
+  "東京サンゴリアス": "Tokyo Sungoliath",
+  "横浜キヤノンイーグルス": "Yokohama Canon Eagles",
+  "三菱重工相模原ダイナボアーズ": "Sagamihara Dynaboars",
+  "静岡ブルーレヴズ": "Shizuoka Blue Revs",
+};
+
+function jpTeamToEn(jp: string): string {
+  for (const [jpName, enName] of Object.entries(JP_TO_EN_TEAMS)) {
+    if (jp.includes(jpName)) return enName;
+  }
+  return jp;
+}
+
+interface LeagueOneJpMatch {
+  date: string;
+  time: string;
+  homeTeamJp: string;
+  awayTeamJp: string;
+}
+
+function parseLeagueOneJpHtml(html: string): LeagueOneJpMatch[] {
+  const matches: LeagueOneJpMatch[] = [];
+  const currentYear = new Date().getFullYear();
+
+  const matchRegex = /<div class="datetime"><p class="date">\s*(\d{2}\.\d{2})\s*<span class="youbi">[^<]*<\/span><\/p><p class="time">\s*(\d{1,2}:\d{2})?\s*<\/p><\/div>.*?<li class="home"[^>]*>.*?<p class="name only-pc">([^<]+)<\/p>.*?<li class="away"[^>]*>.*?<p class="name only-pc">([^<]+)<\/p>/g;
+  let m;
+  while ((m = matchRegex.exec(html))) {
+    if (!m[2]) continue;
+    matches.push({
+      date: m[1],
+      time: m[2],
+      homeTeamJp: m[3].trim(),
+      awayTeamJp: m[4].trim(),
+    });
+  }
+  return matches;
+}
+
 async function fetchLeagueOneEvents(windowStart: Date, windowEnd: Date): Promise<AppEvent[]> {
-  console.log(`  Rugby [leagueone]: Fetching from all.rugby...`);
+  console.log(`  Rugby [leagueone]: Fetching from league-one.jp...`);
+  try {
+    const res = await fetch(LEAGUE_ONE_JP_URL, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      },
+    });
+    if (!res.ok) {
+      console.error(`  Rugby [leagueone]: HTTP ${res.status}`);
+      return fetchLeagueOneEventsAllRugbyFallback(windowStart, windowEnd);
+    }
+    const html = await res.text();
+    const parsed = parseLeagueOneJpHtml(html);
+    console.log(`  Rugby [leagueone]: Parsed ${parsed.length} matches from league-one.jp`);
+
+    if (parsed.length === 0) {
+      console.log(`  Rugby [leagueone]: No matches parsed, falling back to all.rugby`);
+      return fetchLeagueOneEventsAllRugbyFallback(windowStart, windowEnd);
+    }
+
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const currentMonth = now.getMonth();
+    const events: AppEvent[] = [];
+    for (const m of parsed) {
+      const [monthStr, dayStr] = m.date.split(".");
+      const month = parseInt(monthStr, 10) - 1;
+      const day = parseInt(dayStr, 10);
+      const [hourStr, minStr] = m.time.split(":");
+      const hours = parseInt(hourStr, 10);
+      const minutes = parseInt(minStr, 10);
+
+      let year: number;
+      if (month >= 9) {
+        year = currentMonth >= 9 ? currentYear : currentYear - 1;
+      } else {
+        year = currentMonth >= 9 ? currentYear + 1 : currentYear;
+      }
+
+      const utc = wallClockToUtc(year, month, day, hours, minutes, LEAGUE_ONE_TZ);
+      const iso = utc.toISOString();
+
+      const start = new Date(iso);
+      if (start < windowStart || start > windowEnd) continue;
+
+      const homeTeam = jpTeamToEn(m.homeTeamJp);
+      const awayTeam = jpTeamToEn(m.awayTeamJp);
+
+      if (homeTeam === m.homeTeamJp || awayTeam === m.awayTeamJp) continue;
+
+      const hashInput = `leagueone-${m.date}-${homeTeam}-${awayTeam}`;
+      const id = `rugby-leagueone-${stableHash(hashInput)}`;
+      const endIso = addDuration(iso, RUGBY_15S_DURATION_MIN);
+
+      events.push({
+        id,
+        sport: "rugby",
+        league: LEAGUE_LABELS.leagueone,
+        homeTeam,
+        awayTeam,
+        startTimeLocal: iso,
+        endTimeLocal: endIso,
+        providerId: LEAGUE_PROVIDERS.leagueone,
+        isLive: false,
+        source: "rugby",
+        leagueKey: "leagueone",
+      });
+    }
+
+    console.log(`  Rugby [leagueone]: ${events.length} events in retention window`);
+    return events;
+  } catch (err) {
+    console.error(`  Rugby [leagueone]: Fetch error:`, err);
+    return fetchLeagueOneEventsAllRugbyFallback(windowStart, windowEnd);
+  }
+}
+
+async function fetchLeagueOneEventsAllRugbyFallback(windowStart: Date, windowEnd: Date): Promise<AppEvent[]> {
+  console.log(`  Rugby [leagueone]: Fallback to all.rugby...`);
   try {
     const res = await fetch(ALLRUGBY_URL, {
       headers: {
@@ -387,12 +515,12 @@ async function fetchLeagueOneEvents(windowStart: Date, windowEnd: Date): Promise
       },
     });
     if (!res.ok) {
-      console.error(`  Rugby [leagueone]: HTTP ${res.status}`);
+      console.error(`  Rugby [leagueone]: all.rugby HTTP ${res.status}`);
       return [];
     }
     const html = await res.text();
     const parsed = parseAllRugbyHtml(html);
-    console.log(`  Rugby [leagueone]: Parsed ${parsed.length} matches from HTML`);
+    console.log(`  Rugby [leagueone]: Parsed ${parsed.length} matches from all.rugby (fallback)`);
 
     const events: AppEvent[] = [];
     for (const m of parsed) {
@@ -423,7 +551,7 @@ async function fetchLeagueOneEvents(windowStart: Date, windowEnd: Date): Promise
 
     return events;
   } catch (err) {
-    console.error(`  Rugby [leagueone]: Fetch error:`, err);
+    console.error(`  Rugby [leagueone]: all.rugby fallback error:`, err);
     return [];
   }
 }
