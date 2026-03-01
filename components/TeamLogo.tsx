@@ -1,6 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { Image, View, StyleSheet } from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+import { Image, View, Text, StyleSheet } from "react-native";
 import { getTeamLogoUrl } from "@/utils/teamLogos";
+
+const loggedMissing = new Set<string>();
+
+function getInitials(teamName: string): string {
+  const words = teamName.replace(/[^a-zA-Z\s]/g, "").trim().split(/\s+/);
+  if (words.length === 1) return words[0].substring(0, 2).toUpperCase();
+  return (words[0][0] + words[words.length - 1][0]).toUpperCase();
+}
 
 interface TeamLogoProps {
   teamName: string;
@@ -17,8 +25,38 @@ export function TeamLogo({ teamName, league, sport, size = 20 }: TeamLogoProps) 
     setFailed(false);
   }, [url]);
 
-  if (!url || failed) {
-    return <View style={{ width: size, height: size, marginRight: 6 }} />;
+  const showFallback = !url || failed;
+
+  if (showFallback) {
+    if (__DEV__ && teamName && teamName !== "TBC" && teamName !== "TBD") {
+      const key = `${league}::${teamName}`;
+      if (!loggedMissing.has(key)) {
+        loggedMissing.add(key);
+        console.warn(`[logos] missing`, league, teamName);
+      }
+    }
+
+    if (!teamName || teamName === "TBC" || teamName === "TBD") {
+      return <View style={{ width: size, height: size, marginRight: 6 }} />;
+    }
+
+    const initials = getInitials(teamName);
+    const fontSize = Math.max(7, Math.round(size * 0.4));
+    return (
+      <View
+        style={[
+          styles.initialsBadge,
+          {
+            width: size,
+            height: size,
+            borderRadius: size * 0.3,
+            marginRight: 6,
+          },
+        ]}
+      >
+        <Text style={[styles.initialsText, { fontSize }]}>{initials}</Text>
+      </View>
+    );
   }
 
   return (
@@ -35,5 +73,15 @@ const styles = StyleSheet.create({
   logo: {
     marginRight: 6,
     borderRadius: 2,
+  },
+  initialsBadge: {
+    backgroundColor: "rgba(161, 161, 166, 0.2)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  initialsText: {
+    color: "#A1A1A6",
+    fontWeight: "700",
+    fontFamily: "Inter_700Bold",
   },
 });

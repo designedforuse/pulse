@@ -421,15 +421,56 @@ const SIX_NATIONS_FLAGS: Record<string, string> = {
   "Scotland": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png",
 };
 
+const AHL_HOCKEYTECH_IDS: Record<string, string> = {
+  "Abbotsford Canucks": "440",
+  "Bakersfield Condors": "402",
+  "Belleville Senators": "413",
+  "Bridgeport Islanders": "317",
+  "Calgary Wranglers": "444",
+  "Charlotte Checkers": "384",
+  "Chicago Wolves": "330",
+  "Cleveland Monsters": "373",
+  "Coachella Valley Firebirds": "445",
+  "Colorado Eagles": "419",
+  "Grand Rapids Griffins": "328",
+  "Hartford Wolf Pack": "307",
+  "Henderson Silver Knights": "437",
+  "Hershey Bears": "319",
+  "Iowa Wild": "389",
+  "Laval Rocket": "415",
+  "Lehigh Valley Phantoms": "313",
+  "Manitoba Moose": "321",
+  "Milwaukee Admirals": "327",
+  "Ontario Reign": "403",
+  "Providence Bruins": "309",
+  "Rochester Americans": "323",
+  "Rockford IceHogs": "372",
+  "San Diego Gulls": "404",
+  "San Jose Barracuda": "405",
+  "Springfield Thunderbirds": "411",
+  "Syracuse Crunch": "324",
+  "Texas Stars": "380",
+  "Toronto Marlies": "335",
+  "Tucson Roadrunners": "412",
+  "Utica Comets": "390",
+  "Wilkes-Barre/Scranton Penguins": "316",
+};
+
 export function getTeamLogoUrl(teamName: string, league: string, sport?: string): string | null {
-  if (!teamName || teamName === "TBC") return null;
+  if (!teamName || teamName === "TBC" || teamName === "TBD") return null;
 
   if (league === "NHL") {
     const abbrev = NHL_ABBREVS[teamName];
     if (abbrev) return `https://a.espncdn.com/i/teamlogos/nhl/500/${abbrev.toLowerCase()}.png`;
   }
 
-  if (league === "AHL" || league === "ECHL") {
+  if (league === "AHL") {
+    const id = AHL_HOCKEYTECH_IDS[teamName];
+    if (id) return `https://assets.leaguestat.com/ahl/logos/${id}.png`;
+    return null;
+  }
+
+  if (league === "ECHL") {
     return null;
   }
 
