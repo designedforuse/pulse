@@ -30,7 +30,7 @@ function RootLayoutNav() {
         options={{
           headerShown: true,
           title: "",
-          headerBackTitle: "Modes",
+          headerBackTitle: "Explore",
         }}
       />
       <Stack.Screen
@@ -39,6 +39,14 @@ function RootLayoutNav() {
           headerShown: true,
           title: "",
           headerBackTitle: "Home",
+        }}
+      />
+      <Stack.Screen
+        name="settings"
+        options={{
+          headerShown: true,
+          title: "Settings",
+          headerBackTitle: "Back",
         }}
       />
       <Stack.Screen

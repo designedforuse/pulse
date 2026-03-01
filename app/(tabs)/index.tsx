@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -14,15 +14,6 @@ import * as Haptics from "expo-haptics";
 import { LinearGradient } from "expo-linear-gradient";
 import Colors from "@/constants/colors";
 import { getModes } from "@/lib/data";
-import { useEvents } from "@/lib/events-context";
-import { useFavorites } from "@/lib/favorites-context";
-import {
-  RITUALS,
-  getEventsForRitual,
-  formatRitualTimeWindow,
-  getSortedRituals,
-  type Ritual,
-} from "@/lib/rituals";
 
 const modeIcons: Record<string, { icon: keyof typeof Ionicons.glyphMap; gradient: string[]; timeWindow: string }> = {
   weekend_night_bonding: {
@@ -42,64 +33,10 @@ const modeIcons: Record<string, { icon: keyof typeof Ionicons.glyphMap; gradient
   },
 };
 
-function RitualTile({ ritual, eventCount }: { ritual: Ritual; eventCount: number }) {
-  const isMoon = ritual.icon === "moon";
-  const accentColor = isMoon ? "#818CF8" : "#FB923C";
-
-  const handlePress = () => {
-    if (Platform.OS !== "web") {
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    }
-    router.push({ pathname: "/guide/[id]", params: { id: ritual.id } });
-  };
-
-  return (
-    <Pressable
-      onPress={handlePress}
-      style={({ pressed }) => [
-        styles.ritualTile,
-        { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] },
-      ]}
-      testID={`ritual-${ritual.id}`}
-    >
-      <View style={[styles.ritualIconWrap, { backgroundColor: accentColor + "20" }]}>
-        <Ionicons name={ritual.icon} size={22} color={accentColor} />
-      </View>
-      <View style={styles.ritualTextWrap}>
-        <Text style={styles.ritualLabel} numberOfLines={1}>{ritual.label}</Text>
-        <Text style={styles.ritualTime} numberOfLines={1}>
-          {formatRitualTimeWindow(ritual)}
-        </Text>
-      </View>
-      {eventCount > 0 ? (
-        <View style={styles.ritualCountBadge}>
-          <Text style={styles.ritualCountText}>{eventCount}</Text>
-        </View>
-      ) : null}
-      <Ionicons name="chevron-forward" size={16} color={Colors.textMuted} />
-    </Pressable>
-  );
-}
-
-export default function ModesScreen() {
+export default function ExploreScreen() {
   const insets = useSafeAreaInsets();
   const modes = getModes();
-  const { allEvents } = useEvents();
-  const { favorites } = useFavorites();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
-
-  const now = useMemo(() => new Date(), []);
-
-  const sortedRituals = useMemo(() => getSortedRituals(now), [now]);
-
-  const ritualCounts = useMemo(() => {
-    const counts: Record<string, number> = {};
-    for (const ritual of RITUALS) {
-      const result = getEventsForRitual(allEvents, ritual, favorites, now);
-      counts[ritual.id] = (result.featured ? 1 : 0) + result.rest.length;
-    }
-    return counts;
-  }, [allEvents, favorites, now]);
 
   const handleModePress = (modeId: string) => {
     if (Platform.OS !== "web") {
@@ -114,88 +51,66 @@ export default function ModesScreen() {
         contentContainerStyle={[
           styles.scrollContent,
           {
-            paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 20,
+            paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 12,
             paddingBottom: Platform.OS === "web" ? 34 : 100,
           },
         ]}
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.header}>
-          <Ionicons name="trophy" size={28} color={Colors.accent} />
-          <Text style={styles.headerTitle}>Master Sports Guide</Text>
+          <Ionicons name="layers" size={28} color={Colors.accent} />
+          <Text style={styles.headerTitle}>Explore</Text>
         </View>
         <Text style={styles.subtitle}>
-          Choose a viewing mode to find your games
+          Browse viewing modes to find your games
         </Text>
 
-        <View style={styles.myGuideSection}>
-          <View style={styles.sectionHeaderRow}>
-            <Ionicons name="compass" size={20} color={Colors.accent} />
-            <Text style={styles.sectionHeaderText}>My Rituals</Text>
-          </View>
-          <View style={styles.ritualsContainer}>
-            {sortedRituals.map((occ) => (
-              <RitualTile
-                key={occ.ritual.id}
-                ritual={occ.ritual}
-                eventCount={ritualCounts[occ.ritual.id] || 0}
-              />
-            ))}
-          </View>
-        </View>
-
-        <View style={styles.modesSection}>
-          <View style={styles.sectionHeaderRow}>
-            <Ionicons name="layers" size={20} color={Colors.accent} />
-            <Text style={styles.sectionHeaderText}>Viewing Modes</Text>
-          </View>
-          <View style={styles.modesContainer}>
-            {modes.map((mode) => {
-              const config = modeIcons[mode.id] || {
-                icon: "list" as keyof typeof Ionicons.glyphMap,
-                gradient: [Colors.card, Colors.cardHighlight],
-                timeWindow: "",
-              };
-              const isNight = mode.id === "weekend_night_bonding" || mode.id === "weekend_night_rituals";
-              const accentColor = isNight ? "#818CF8" : "#FB923C";
-              return (
-                <Pressable
-                  key={mode.id}
-                  onPress={() => handleModePress(mode.id)}
-                  style={({ pressed }) => [
-                    styles.modeCard,
-                    { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] },
-                  ]}
-                  testID={`mode-${mode.id}`}
+        <View style={styles.modesContainer}>
+          {modes.map((mode) => {
+            const config = modeIcons[mode.id] || {
+              icon: "list" as keyof typeof Ionicons.glyphMap,
+              gradient: [Colors.card, Colors.cardHighlight],
+              timeWindow: "",
+            };
+            const isNight = mode.id === "weekend_night_bonding" || mode.id === "weekend_night_rituals";
+            const accentColor = isNight ? "#818CF8" : "#FB923C";
+            return (
+              <Pressable
+                key={mode.id}
+                onPress={() => handleModePress(mode.id)}
+                style={({ pressed }) => [
+                  styles.modeCard,
+                  { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] },
+                ]}
+                testID={`mode-${mode.id}`}
+              >
+                <LinearGradient
+                  colors={config.gradient}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 1 }}
+                  style={styles.modeGradient}
                 >
-                  <LinearGradient
-                    colors={config.gradient}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 1 }}
-                    style={styles.modeGradient}
-                  >
-                    <View style={[styles.modeIconContainer, { backgroundColor: accentColor + "20" }]}>
-                      <Ionicons name={config.icon} size={32} color={accentColor} />
-                    </View>
-                    <Text style={styles.modeTitle}>{mode.title}</Text>
-                    {config.timeWindow ? (
-                      <Text style={styles.modeTimeWindow}>{config.timeWindow}</Text>
-                    ) : null}
-                    <Text style={styles.modePackCount}>
-                      {mode.packs.length} sport packs
-                    </Text>
-                    <View style={styles.modeArrow}>
-                      <Ionicons
-                        name="chevron-forward"
-                        size={20}
-                        color={Colors.textMuted}
-                      />
-                    </View>
-                  </LinearGradient>
-                </Pressable>
-              );
-            })}
-          </View>
+                  <View style={[styles.modeIconContainer, { backgroundColor: accentColor + "20" }]}>
+                    <Ionicons name={config.icon} size={32} color={accentColor} />
+                  </View>
+                  <Text style={styles.modeTitle}>{mode.title}</Text>
+                  {config.timeWindow ? (
+                    <Text style={styles.modeTimeWindow}>{config.timeWindow}</Text>
+                  ) : null}
+                  <Text style={styles.modePackCount}>
+                    {mode.packs.length} sport packs
+                  </Text>
+                  <View style={styles.modeArrow}>
+                    <Ionicons
+                      name="chevron-forward"
+                      size={20}
+                      color={Colors.textMuted}
+                    />
+                  </View>
+                </LinearGradient>
+              </Pressable>
+            );
+          })}
         </View>
       </ScrollView>
     </View>
@@ -227,72 +142,6 @@ const styles = StyleSheet.create({
     color: Colors.textSecondary,
     fontFamily: "Inter_400Regular",
     marginBottom: 24,
-  },
-  myGuideSection: {
-    marginBottom: 28,
-  },
-  modesSection: {},
-  sectionHeaderRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-    marginBottom: 14,
-  },
-  sectionHeaderText: {
-    fontSize: 18,
-    fontWeight: "700" as const,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_700Bold",
-  },
-  ritualsContainer: {
-    gap: 8,
-  },
-  ritualTile: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: Colors.card,
-    borderRadius: 14,
-    paddingVertical: 14,
-    paddingHorizontal: 14,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    gap: 12,
-  },
-  ritualIconWrap: {
-    width: 40,
-    height: 40,
-    borderRadius: 12,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  ritualTextWrap: {
-    flex: 1,
-  },
-  ritualLabel: {
-    fontSize: 15,
-    fontWeight: "600" as const,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_600SemiBold",
-    marginBottom: 2,
-  },
-  ritualTime: {
-    fontSize: 12,
-    color: Colors.textSecondary,
-    fontFamily: "Inter_400Regular",
-  },
-  ritualCountBadge: {
-    backgroundColor: Colors.accent + "20",
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 10,
-    minWidth: 24,
-    alignItems: "center",
-  },
-  ritualCountText: {
-    fontSize: 12,
-    fontWeight: "700" as const,
-    color: Colors.accent,
-    fontFamily: "Inter_700Bold",
   },
   modesContainer: {
     gap: 16,

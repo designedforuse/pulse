@@ -9,19 +9,21 @@ import Colors from "@/constants/colors";
 
 function NativeTabLayout() {
   return (
-    <NativeTabs>
+    <NativeTabs initialRouteName="watch">
+      <NativeTabs.Trigger name="watch">
+        <Icon sf={{ default: "play.rectangle", selected: "play.rectangle.fill" }} md="play-circle" />
+        <Label>Watch</Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="rituals">
+        <Icon sf={{ default: "compass", selected: "compass.fill" }} md="explore" />
+        <Label>Rituals</Label>
+      </NativeTabs.Trigger>
       <NativeTabs.Trigger name="index">
-        <Icon sf={{ default: "list.bullet.rectangle", selected: "list.bullet.rectangle.fill" }} md="view-list" />
-        <Label>Modes</Label>
+        <Icon sf={{ default: "square.grid.2x2", selected: "square.grid.2x2.fill" }} md="grid-view" />
+        <Label>Explore</Label>
       </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="live">
-        <Icon sf={{ default: "antenna.radiowaves.left.and.right", selected: "antenna.radiowaves.left.and.right" }} md="sensors" />
-        <Label>Live Now</Label>
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="settings">
-        <Icon sf={{ default: "gearshape", selected: "gearshape.fill" }} md="settings" />
-        <Label>Settings</Label>
-      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="live" hidden />
+      <NativeTabs.Trigger name="settings" hidden />
     </NativeTabs>
   );
 }
@@ -32,6 +34,7 @@ function ClassicTabLayout() {
 
   return (
     <Tabs
+      initialRouteName="watch"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: Colors.accent,
@@ -57,9 +60,27 @@ function ClassicTabLayout() {
       }}
     >
       <Tabs.Screen
+        name="watch"
+        options={{
+          title: "Watch",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="play-circle" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="rituals"
+        options={{
+          title: "Rituals",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="compass" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="index"
         options={{
-          title: "Modes",
+          title: "Explore",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="grid" size={size} color={color} />
           ),
@@ -68,19 +89,13 @@ function ClassicTabLayout() {
       <Tabs.Screen
         name="live"
         options={{
-          title: "Live Now",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="radio" size={size} color={color} />
-          ),
+          href: null,
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
-          title: "Settings",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings-outline" size={size} color={color} />
-          ),
+          href: null,
         }}
       />
     </Tabs>

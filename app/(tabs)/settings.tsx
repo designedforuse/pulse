@@ -255,17 +255,12 @@ export default function SettingsScreen() {
         contentContainerStyle={[
           styles.scrollContent,
           {
-            paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 12,
+            paddingTop: 12,
             paddingBottom: Platform.OS === "web" ? 34 : 100,
           },
         ]}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.headerRow}>
-          <Ionicons name="settings-outline" size={24} color={Colors.textSecondary} />
-          <Text style={styles.headerTitle}>Settings</Text>
-        </View>
-
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>My Favorite Teams</Text>
           <FavoritesSection />
