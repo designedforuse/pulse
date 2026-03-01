@@ -91,6 +91,99 @@ export function getRitualById(id: string): Ritual | undefined {
   return RITUALS.find((r) => r.id === id);
 }
 
+export interface RitualOccurrence {
+  ritual: Ritual;
+  isActive: boolean;
+  nextStartAt: Date;
+  nextEndAt: Date;
+}
+
+function computeOccurrence(ritual: Ritual, now: Date): RitualOccurrence {
+  const local = getLocalParts(now);
+  const targetDow = ritual.days[0];
+  const startH = ritual.startHour;
+  const endH = ritual.endHour;
+  const crossMidnight = endH <= startH;
+
+  const daysBack = (local.dow - targetDow + 7) % 7;
+  const currentOccDate = new Date(
+    Date.UTC(local.year, local.month - 1, local.day - daysBack, 12),
+  );
+  const currentOccParts = getLocalParts(currentOccDate);
+  const currentDayMidnight = midnightInTZ(
+    currentOccParts.year,
+    currentOccParts.month,
+    currentOccParts.day,
+  );
+  const occStart = new Date(currentDayMidnight.getTime() + startH * 3600000);
+  let occEnd: Date;
+  if (crossMidnight) {
+    occEnd = new Date(currentDayMidnight.getTime() + 86400000 + endH * 3600000);
+  } else {
+    const effectiveEnd = Math.min(endH, 24);
+    occEnd = new Date(currentDayMidnight.getTime() + effectiveEnd * 3600000);
+  }
+
+  const nowMs = now.getTime();
+  if (nowMs >= occStart.getTime() && nowMs < occEnd.getTime()) {
+    return { ritual, isActive: true, nextStartAt: occStart, nextEndAt: occEnd };
+  }
+
+  if (nowMs >= occEnd.getTime()) {
+    const nextDate = new Date(currentDayMidnight.getTime() + 7 * 86400000);
+    const nextParts = getLocalParts(nextDate);
+    const nextMidnight = midnightInTZ(nextParts.year, nextParts.month, nextParts.day);
+    const nextStart = new Date(nextMidnight.getTime() + startH * 3600000);
+    let nextEnd: Date;
+    if (crossMidnight) {
+      nextEnd = new Date(nextMidnight.getTime() + 86400000 + endH * 3600000);
+    } else {
+      nextEnd = new Date(nextMidnight.getTime() + Math.min(endH, 24) * 3600000);
+    }
+    return { ritual, isActive: false, nextStartAt: nextStart, nextEndAt: nextEnd };
+  }
+
+  return { ritual, isActive: false, nextStartAt: occStart, nextEndAt: occEnd };
+}
+
+export function getSortedRituals(now: Date): RitualOccurrence[] {
+  const occurrences = RITUALS.map((r) => computeOccurrence(r, now));
+
+  occurrences.sort((a, b) => {
+    const aActive = a.isActive ? 0 : 1;
+    const bActive = b.isActive ? 0 : 1;
+    if (aActive !== bActive) return aActive - bActive;
+
+    const aStart = a.nextStartAt.getTime();
+    const bStart = b.nextStartAt.getTime();
+    if (aStart !== bStart) return aStart - bStart;
+
+    return a.ritual.id < b.ritual.id ? -1 : a.ritual.id > b.ritual.id ? 1 : 0;
+  });
+
+  if (__DEV__) {
+    const fmtPT = (d: Date) =>
+      new Intl.DateTimeFormat("en-US", {
+        timeZone: TZ,
+        weekday: "short",
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      }).format(d);
+    console.log(
+      "[RITUALS] Sorted order:",
+      occurrences.map((o) => ({
+        name: o.ritual.label,
+        isActive: o.isActive,
+        startAtPT: fmtPT(o.nextStartAt),
+        endAtPT: fmtPT(o.nextEndAt),
+      })),
+    );
+  }
+
+  return occurrences;
+}
+
 function getLocalParts(d: Date): { year: number; month: number; day: number; dow: number; hour: number; minute: number } {
   const parts = new Intl.DateTimeFormat("en-US", {
     timeZone: TZ,

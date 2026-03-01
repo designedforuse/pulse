@@ -20,6 +20,7 @@ import {
   RITUALS,
   getEventsForRitual,
   formatRitualTimeWindow,
+  getSortedRituals,
   type Ritual,
 } from "@/lib/rituals";
 
@@ -89,6 +90,8 @@ export default function ModesScreen() {
 
   const now = useMemo(() => new Date(), []);
 
+  const sortedRituals = useMemo(() => getSortedRituals(now), [now]);
+
   const ritualCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     for (const ritual of RITUALS) {
@@ -131,11 +134,11 @@ export default function ModesScreen() {
             <Text style={styles.sectionHeaderText}>My Rituals</Text>
           </View>
           <View style={styles.ritualsContainer}>
-            {RITUALS.map((ritual) => (
+            {sortedRituals.map((occ) => (
               <RitualTile
-                key={ritual.id}
-                ritual={ritual}
-                eventCount={ritualCounts[ritual.id] || 0}
+                key={occ.ritual.id}
+                ritual={occ.ritual}
+                eventCount={ritualCounts[occ.ritual.id] || 0}
               />
             ))}
           </View>
