@@ -405,20 +405,24 @@ export default function WatchScreen() {
     [scores]
   );
 
-  const generateChaos = useCallback(() => {
-    const newNow = new Date();
-    setNow(newNow);
-    const setup = buildChaosSetup(allEvents, favorites, newNow, getScoreStatus);
+  const rebuildChaos = useCallback((forNow?: Date) => {
+    const t = forNow ?? new Date();
+    const setup = buildChaosSetup(allEvents, favorites, t, getScoreStatus);
     setChaosSetup(setup);
     chaosRef.current = setup;
     setAlertEvent(null);
   }, [allEvents, favorites, getScoreStatus]);
 
+  const initialised = useRef(false);
   useEffect(() => {
-    if (!chaosRef.current && allEvents.length > 0) {
-      generateChaos();
+    if (!initialised.current && allEvents.length > 0) {
+      initialised.current = true;
+      const t = new Date();
+      const setup = buildChaosSetup(allEvents, favorites, t, getScoreStatus);
+      setChaosSetup(setup);
+      chaosRef.current = setup;
     }
-  }, [allEvents.length > 0]);
+  }, [allEvents.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -432,7 +436,7 @@ export default function WatchScreen() {
     const current = chaosRef.current;
 
     if (shouldAutoRegenerate(current, allEvents, now, getScoreStatus)) {
-      generateChaos();
+      rebuildChaos(now);
       return;
     }
 
@@ -444,17 +448,21 @@ export default function WatchScreen() {
     if (Platform.OS !== "web") {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     }
-    generateChaos();
-  }, [generateChaos]);
+    const t = new Date();
+    setNow(t);
+    rebuildChaos(t);
+  }, [rebuildChaos]);
 
   const handleManualRefresh = useCallback(() => {
     setRefreshing(true);
     if (Platform.OS !== "web") {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     }
-    generateChaos();
+    const t = new Date();
+    setNow(t);
+    rebuildChaos(t);
     setTimeout(() => setRefreshing(false), 500);
-  }, [generateChaos]);
+  }, [rebuildChaos]);
 
   const liveEvents = useMemo(() => {
     const timeLive = getLiveEventsNow(allEvents, now);

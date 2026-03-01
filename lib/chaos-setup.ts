@@ -138,7 +138,7 @@ export function shouldAutoRegenerate(
   now: Date,
   getScoreStatus?: (id: string) => string | undefined,
 ): boolean {
-  if (!setup.primary) return true;
+  if (!setup.primary) return false;
 
   const allSelected = [setup.primary, ...setup.secondary];
 
