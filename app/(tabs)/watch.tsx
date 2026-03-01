@@ -48,7 +48,7 @@ import { normalizeGameState } from "@/utils/gameState";
 import { favoriteInvolved } from "@/utils/favorites";
 import {
   buildChaosSetup,
-  shouldAutoRegenerate,
+  selfHealChaosSetup,
   findHigherPriorityAlert,
   type ChaosSetup,
 } from "@/lib/chaos-setup";
@@ -477,8 +477,11 @@ export default function WatchScreen() {
     if (!chaosRef.current) return;
     const current = chaosRef.current;
 
-    if (shouldAutoRegenerate(current, allEvents, now, getScoreStatus)) {
-      rebuildChaos(now);
+    const healed = selfHealChaosSetup(current, allEvents, favorites, now, getScoreStatus);
+    if (healed) {
+      setChaosSetup(healed);
+      chaosRef.current = healed;
+      setAlertEvent(null);
       return;
     }
 
