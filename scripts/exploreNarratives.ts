@@ -874,11 +874,15 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
   console.log(`  League Moments: ${leagueMoments.length} card(s)`);
 
   let playerMovementCards: ExploreNarrativeCard[] = [];
+  let movementCacheStats = { lastSeenCount: 0, recentMovements: 0, trackedTeams: TRACKED_TEAMS, error: null as string | null };
   try {
     const { cache } = await detectPlayerMovements(now);
     playerMovementCards = generatePlayerMovement(cache, now);
-    console.log(`  Player Movement: ${playerMovementCards.length} card(s) (${cache.movements.length} recent movements in cache)`);
+    movementCacheStats.lastSeenCount = Object.keys(cache.lastSeen).length;
+    movementCacheStats.recentMovements = cache.movements.length;
+    console.log(`  Player Movement: ${playerMovementCards.length} card(s) (${cache.movements.length} recent movements, ${movementCacheStats.lastSeenCount} players tracked in cache)`);
   } catch (err) {
+    movementCacheStats.error = (err as Error).message;
     console.log(`  Player Movement: skipped (${(err as Error).message})`);
   }
 
@@ -923,6 +927,9 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     finalFeedByRegion[c.region].push(`${c.kind}: ${c.title}`);
   }
 
+  const movementDropped = dropped.filter(d => d.kind === "player_movement");
+  const movementInFeed = selected.filter(c => c.kind === "player_movement").length;
+
   const debug = {
     rawCandidatesByKindAndRegion,
     combinedPushByRegion: pushResult.debugInfo.combinedByRegion,
@@ -930,6 +937,14 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     droppedCandidatesReasons: dropped,
     totalBeforeCap: allCandidates.length,
     totalAfterCap: selected.length,
+    playerMovement: {
+      rawMovementCandidates: playerMovementCards.length,
+      movementAfterRegionFilter: playerMovementCards.length,
+      movementAfterCap: movementInFeed,
+      movementFinalCount: movementInFeed,
+      movementDroppedReasons: movementDropped.map(d => d.reason),
+      cacheStats: movementCacheStats,
+    },
   };
 
   console.log(`  Total: ${allCandidates.length} → selected ${selected.length}`);
