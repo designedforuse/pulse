@@ -129,8 +129,8 @@ const SUPER_8: T20WcMatch[] = [
 ];
 
 const KNOCKOUTS: T20WcMatch[] = [
-  { matchNum: 53, date: "2026-03-04", timeIST: "19:00", team1: "TBC", team2: "TBC", venue: "Eden Gardens, Kolkata", group: "Semi-Final 1" },
-  { matchNum: 54, date: "2026-03-05", timeIST: "19:00", team1: "TBC", team2: "TBC", venue: "Wankhede Stadium, Mumbai", group: "Semi-Final 2" },
+  { matchNum: 53, date: "2026-03-04", timeIST: "13:30", team1: "South Africa", team2: "New Zealand", venue: "Eden Gardens, Kolkata", group: "Semi-Final 1" },
+  { matchNum: 54, date: "2026-03-05", timeIST: "13:30", team1: "England", team2: "India", venue: "Wankhede Stadium, Mumbai", group: "Semi-Final 2" },
   { matchNum: 55, date: "2026-03-08", timeIST: "19:00", team1: "TBC", team2: "TBC", venue: "Narendra Modi Stadium, Ahmedabad", group: "Final" },
 ];
 
@@ -139,15 +139,16 @@ const ALL_MATCHES: T20WcMatch[] = [...GROUP_STAGE, ...SUPER_8, ...KNOCKOUTS];
 function matchToEvent(match: T20WcMatch): AppEvent {
   const startUtc = istToUtc(match.date, match.timeIST);
   const country = VENUE_COUNTRY[match.venue] || "India";
-  const hashInput = `t20wc-2026-m${match.matchNum}-${match.team1}-${match.team2}-${match.date}`;
+  const hashInput = `t20wc-2026-m${match.matchNum}-${match.date}`;
 
   const hasTbc = match.team1 === "TBC" || match.team2 === "TBC";
 
-  let t20WcMatchLabel: string | undefined;
-  if (hasTbc) {
-    const groupLabel = match.group.replace("Super 8 – ", "S8 ");
-    t20WcMatchLabel = `T20 WC ${groupLabel} – Match ${match.matchNum}`;
-  }
+  const groupLabel = match.group.replace("Super 8 – ", "S8 ");
+  const t20WcMatchLabel = hasTbc
+    ? `T20 WC ${groupLabel} – Match ${match.matchNum}`
+    : (match.group.includes("Semi") || match.group.includes("Final"))
+      ? `T20 WC ${match.group}`
+      : undefined;
 
   const venue = match.venue;
 
@@ -198,7 +199,7 @@ export function fetchIccT20WcEvents(): T20WcFetchResult {
 }
 
 export function mergeIccT20WcEvents(
-  existing: AppEvent[],
+  _existing: AppEvent[],
   fresh: AppEvent[],
   now: Date
 ): { merged: AppEvent[]; added: number; updated: number; pruned: number } {
@@ -207,37 +208,14 @@ export function mergeIccT20WcEvents(
   const windowStart = new Date(now.getTime() - RETAIN_PAST_MS);
   const windowEnd = new Date(now.getTime() + RETAIN_FUTURE_MS);
 
-  const freshMap = new Map<string, AppEvent>();
-  for (const e of fresh) freshMap.set(e.id, e);
+  const pruned = _existing.length;
 
-  const mergedMap = new Map<string, AppEvent>();
-  let added = 0;
-  let updated = 0;
-  let pruned = 0;
+  const merged = fresh
+    .filter(e => {
+      const start = new Date(e.startTimeLocal);
+      return start >= windowStart && start <= windowEnd;
+    })
+    .sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
 
-  for (const e of existing) {
-    const start = new Date(e.startTimeLocal);
-    if (start < windowStart || start > windowEnd) {
-      pruned++;
-      continue;
-    }
-    mergedMap.set(e.id, e);
-  }
-
-  for (const [id, e] of freshMap) {
-    const start = new Date(e.startTimeLocal);
-    if (start < windowStart || start > windowEnd) continue;
-    if (mergedMap.has(id)) {
-      updated++;
-    } else {
-      added++;
-    }
-    mergedMap.set(id, e);
-  }
-
-  const merged = Array.from(mergedMap.values()).sort(
-    (a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
-  );
-
-  return { merged, added, updated, pruned };
+  return { merged, added: merged.length, updated: 0, pruned };
 }
