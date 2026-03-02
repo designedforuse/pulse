@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useCallback, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,6 +6,8 @@ import {
   ScrollView,
   Pressable,
   Platform,
+  Modal,
+  FlatList,
 } from "react-native";
 import Animated from "react-native-reanimated";
 import { useScoreFlash } from "@/hooks/useScoreFlash";
@@ -28,6 +30,7 @@ import { useFavorites } from "@/lib/favorites-context";
 import { isEventLive, isEventCompleted, formatTimeSinceStart } from "@/utils/time";
 import { normalizeGameState } from "@/utils/gameState";
 import { favoriteInvolved } from "@/utils/favorites";
+import { useRitualOverrides } from "@/lib/ritual-overrides-context";
 import {
   getRitualById,
   getEventsForRitual,
@@ -167,21 +170,98 @@ function GuideEventCard({
   );
 }
 
+function PickerRow({
+  event,
+  isSelected,
+  onSelect,
+}: {
+  event: SportEvent;
+  isSelected: boolean;
+  onSelect: () => void;
+}) {
+  const provider = getProviderById(event.providerId);
+  const sportColor = getSportColor(event.sport);
+  const { date, time } = formatEventDate(event.startTimeLocal);
+  return (
+    <Pressable
+      onPress={onSelect}
+      style={({ pressed }) => [
+        pickerStyles.row,
+        isSelected && pickerStyles.rowSelected,
+        { opacity: pressed ? 0.8 : 1 },
+      ]}
+    >
+      <View style={pickerStyles.rowLeft}>
+        <Text style={[pickerStyles.leagueLabel, { color: sportColor }]}>
+          {event.league}
+        </Text>
+        <Text style={pickerStyles.matchup} numberOfLines={1}>
+          {displayTeamName(event.awayTeam)} @ {displayTeamName(event.homeTeam)}
+        </Text>
+        <Text style={pickerStyles.dateTime}>{date} · {time}</Text>
+      </View>
+      <View style={pickerStyles.rowRight}>
+        {provider && (
+          <ProviderLogo providerId={event.providerId} size={20} />
+        )}
+        {isSelected && (
+          <Ionicons name="checkmark-circle" size={20} color={Colors.accent} />
+        )}
+      </View>
+    </Pressable>
+  );
+}
+
 export default function GuideDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const ritual = getRitualById(id);
   const { allEvents } = useEvents();
   const { getScore } = useScores();
   const { favorites } = useFavorites();
+  const { getOverride, setOverride, clearOverride } = useRitualOverrides();
+  const [pickerVisible, setPickerVisible] = useState(false);
 
   const now = useMemo(() => new Date(), []);
 
-  const { featured, rest } = useMemo(() => {
+  const { featured: autoFeatured, rest: autoRest } = useMemo(() => {
     if (!ritual) return { featured: null, rest: [] as SportEvent[] };
     const result = getEventsForRitual(allEvents, ritual, favorites, now);
     console.log(`[GUIDE] ${result.debug.ritualId}: total=${result.debug.totalEvents}, sport=${result.debug.afterSportFilter}, day=${result.debug.afterDayFilter}, overlap=${result.debug.afterOverlapFilter}, window=${result.debug.window.ptDate} ${result.debug.window.windowStartUtc}→${result.debug.window.windowEndUtc}`);
     return result;
   }, [ritual, allEvents, favorites, now]);
+
+  const allRitualEvents = useMemo(() => {
+    if (!autoFeatured) return autoRest;
+    return [autoFeatured, ...autoRest];
+  }, [autoFeatured, autoRest]);
+
+  const overrideId = id ? getOverride(id) : null;
+
+  const overrideEvent = useMemo(() => {
+    if (!overrideId) return null;
+    const ev = allRitualEvents.find((e) => e.id === overrideId);
+    if (!ev) return null;
+    const sixHoursAgo = now.getTime() - 6 * 3600000;
+    if (new Date(ev.startTimeLocal).getTime() < sixHoursAgo) return null;
+    return ev;
+  }, [overrideId, allRitualEvents, now]);
+
+  useEffect(() => {
+    if (!overrideId || !id) return;
+    const freshNow = new Date();
+    const ev = allRitualEvents.find((e) => e.id === overrideId);
+    const sixHoursAgo = freshNow.getTime() - 6 * 3600000;
+    if (!ev || new Date(ev.startTimeLocal).getTime() < sixHoursAgo) {
+      clearOverride(id);
+    }
+  }, [overrideId, id, allRitualEvents]);
+
+  const featured = overrideEvent || autoFeatured;
+
+  const rest = useMemo(() => {
+    if (!featured) return allRitualEvents;
+    return allRitualEvents.filter((e) => e.id !== featured.id);
+  }, [featured, allRitualEvents]);
 
   const { favoritesEvents, moreGames } = useMemo(() => {
     if (!rest.length) return { favoritesEvents: [] as SportEvent[], moreGames: [] as SportEvent[] };
@@ -212,6 +292,29 @@ export default function GuideDetailScreen() {
 
     return { favoritesEvents: favs, moreGames: others };
   }, [rest, favorites, now]);
+
+  const isOverrideActive = !!overrideEvent;
+
+  const handleSelectOverride = useCallback(
+    (eventId: string) => {
+      if (!id) return;
+      if (Platform.OS !== "web") {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+      }
+      setOverride(id, eventId);
+      setPickerVisible(false);
+    },
+    [id, setOverride],
+  );
+
+  const handleResetAuto = useCallback(() => {
+    if (!id) return;
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+    clearOverride(id);
+    setPickerVisible(false);
+  }, [id, clearOverride]);
 
   if (!ritual) {
     return (
@@ -274,8 +377,77 @@ export default function GuideDetailScreen() {
               score={getScore(featured.id)}
               featured
             />
+            {allRitualEvents.length > 1 && (
+              <Pressable
+                onPress={() => setPickerVisible(true)}
+                style={({ pressed }) => [
+                  styles.changeFeaturedBtn,
+                  { opacity: pressed ? 0.7 : 1 },
+                ]}
+                testID="change-featured-btn"
+              >
+                <Ionicons name="swap-horizontal" size={14} color={Colors.accent} />
+                <Text style={styles.changeFeaturedText}>
+                  {isOverrideActive ? "Change Featured Game" : "Set Featured Game"}
+                </Text>
+                {isOverrideActive && (
+                  <View style={styles.overrideBadge}>
+                    <Text style={styles.overrideBadgeText}>MANUAL</Text>
+                  </View>
+                )}
+              </Pressable>
+            )}
           </View>
         )}
+
+        <Modal
+          visible={pickerVisible}
+          transparent
+          animationType="slide"
+          onRequestClose={() => setPickerVisible(false)}
+        >
+          <View style={pickerStyles.modalContainer}>
+            <Pressable
+              style={pickerStyles.overlay}
+              onPress={() => setPickerVisible(false)}
+            />
+            <View style={pickerStyles.sheet}>
+              <View style={pickerStyles.handle} />
+              <View style={pickerStyles.header}>
+                <Text style={pickerStyles.headerTitle}>Choose Featured Game</Text>
+                <Pressable onPress={() => setPickerVisible(false)} hitSlop={8}>
+                  <Ionicons name="close-circle" size={26} color={Colors.textMuted} />
+                </Pressable>
+              </View>
+              {isOverrideActive && (
+                <Pressable
+                  onPress={handleResetAuto}
+                  style={({ pressed }) => [
+                    pickerStyles.resetRow,
+                    { opacity: pressed ? 0.7 : 1 },
+                  ]}
+                  testID="reset-auto-btn"
+                >
+                  <Ionicons name="refresh" size={18} color={Colors.textSecondary} />
+                  <Text style={pickerStyles.resetText}>Reset to Auto</Text>
+                </Pressable>
+              )}
+              <FlatList
+                data={allRitualEvents}
+                keyExtractor={(e) => e.id}
+                renderItem={({ item }) => (
+                  <PickerRow
+                    event={item}
+                    isSelected={featured?.id === item.id}
+                    onSelect={() => handleSelectOverride(item.id)}
+                  />
+                )}
+                contentContainerStyle={pickerStyles.listContent}
+                showsVerticalScrollIndicator={false}
+              />
+            </View>
+          </View>
+        </Modal>
 
         {(featured || moreGames.length > 0) && (
           <View style={styles.sectionBlock}>
@@ -678,5 +850,136 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 60,
     fontFamily: "Inter_400Regular",
+  },
+  changeFeaturedBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    alignSelf: "center",
+    gap: 6,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    marginTop: 2,
+    borderRadius: 10,
+    backgroundColor: Colors.accent + "12",
+  },
+  changeFeaturedText: {
+    fontSize: 13,
+    fontWeight: "600" as const,
+    color: Colors.accent,
+    fontFamily: "Inter_600SemiBold",
+  },
+  overrideBadge: {
+    backgroundColor: Colors.accent + "20",
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 4,
+    marginLeft: 2,
+  },
+  overrideBadgeText: {
+    fontSize: 9,
+    fontWeight: "700" as const,
+    color: Colors.accent,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.3,
+  },
+});
+
+const pickerStyles = StyleSheet.create({
+  modalContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(0,0,0,0.55)",
+  },
+  sheet: {
+    maxHeight: "70%",
+    backgroundColor: Colors.card,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    paddingBottom: Platform.OS === "web" ? 34 : 20,
+  },
+  handle: {
+    width: 36,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: Colors.textMuted,
+    alignSelf: "center",
+    marginTop: 10,
+    marginBottom: 8,
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    paddingBottom: 12,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: Colors.border,
+  },
+  headerTitle: {
+    fontSize: 17,
+    fontWeight: "600" as const,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_600SemiBold",
+  },
+  resetRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    paddingHorizontal: 20,
+    paddingVertical: 14,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: Colors.border,
+  },
+  resetText: {
+    fontSize: 15,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_500Medium",
+  },
+  listContent: {
+    paddingHorizontal: 12,
+    paddingTop: 4,
+    paddingBottom: 12,
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 14,
+    paddingHorizontal: 12,
+    borderRadius: 12,
+    marginVertical: 2,
+  },
+  rowSelected: {
+    backgroundColor: Colors.accent + "12",
+  },
+  rowLeft: {
+    flex: 1,
+    gap: 2,
+  },
+  leagueLabel: {
+    fontSize: 11,
+    fontWeight: "700" as const,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.2,
+  },
+  matchup: {
+    fontSize: 15,
+    fontWeight: "500" as const,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_500Medium",
+  },
+  dateTime: {
+    fontSize: 12,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_400Regular",
+    marginTop: 1,
+  },
+  rowRight: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    marginLeft: 12,
   },
 });

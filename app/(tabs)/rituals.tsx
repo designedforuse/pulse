@@ -160,7 +160,7 @@ export default function RitualsScreen() {
       };
     }
     return data;
-  }, [allEvents, favorites, now]);
+  }, [allEvents, favorites, now, overrides]);
 
   return (
     <View style={styles.container}>

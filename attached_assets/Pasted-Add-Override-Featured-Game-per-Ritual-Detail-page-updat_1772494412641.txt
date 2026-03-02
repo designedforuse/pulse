@@ -1,0 +1,47 @@
+Add “Override Featured Game” per Ritual (Detail page → updates main Rituals page)
+
+CONTEXT
+On the Ritual Detail page we currently show a single Featured game (e.g., Ducks). I want the ability to manually choose a different game in that ritual (e.g., feature the Gulls instead). Once chosen, the Ritual’s Featured game should update:
+1) On this detail page
+2) On the main Rituals list card (the featured preview row we added earlier)
+
+GOAL
+Let me override the Featured game per ritual from the Ritual Detail page with a simple, low-friction UI.
+
+UX REQUIREMENTS
+1) On Ritual Detail page, in the Featured section add an action:
+   - Button/CTA: “Change Featured Game” (or “Set Featured Game”)
+   - Tapping opens a picker/select UI listing games in THIS ritual (Favorites + More Games for that ritual)
+   - Each option shows: sport/league label, matchup, date/time, and small provider icon (if available)
+   - Selecting one immediately sets it as the new Featured game and closes the picker
+
+2) Include a “Reset to Auto” option in the same UI:
+   - Clears the manual override and reverts to the default algorithmic featured selection
+
+DATA / STATE REQUIREMENTS
+3) Add a persisted field on Ritual (e.g., featuredOverrideEventId: string | null)
+   - If featuredOverrideEventId exists and the event is still valid/upcoming, use it as featured
+   - If it no longer exists (event removed / past / missing), fallback to auto and clear override
+
+4) Featured selection logic:
+   - featuredEvent = overrideEvent if valid else autoFeaturedEvent(routineEvents)
+   - Auto-feature logic remains unchanged, but is bypassed when override exists
+
+5) Ensure the featured update propagates everywhere:
+   - Ritual Detail header featured card updates immediately after selection
+   - Main Rituals page featured preview row updates for that ritual (same source of truth)
+   - Any cached / memoized list should re-render after update
+
+EDGE CASES
+6) If ritual has no events available, hide “Change Featured Game”
+7) If override points to a past event, auto-clear it on render/build and fallback to auto
+
+IMPLEMENTATION NOTES
+- This should be stored in the same persistence layer used for rituals (local storage/db/etc.)
+- Prefer minimal UI: a bottom sheet modal picker works well on mobile
+- Do not introduce new icons/badges beyond the existing style
+
+ACCEPTANCE TESTS
+- Set Gulls as featured → detail page shows Gulls as featured immediately
+- Go back to main Rituals list → that ritual card shows Gulls as the featured preview
+- Reset to Auto → both pages revert to the default featured game
