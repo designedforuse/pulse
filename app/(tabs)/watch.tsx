@@ -674,7 +674,7 @@ export default function WatchScreen() {
             <View style={styles.chaosTitleRow}>
               <Ionicons name="flash" size={20} color="#818CF8" />
               <Text style={styles.chaosTitle}>
-                {chaosSetup.candidateCount > 0 ? "Chaos View" : "Next Up"}
+                {chaosSetup.candidateCount > 0 ? "Chaos Mode" : "Next Up"}
               </Text>
               <View style={{ flex: 1 }} />
               <Pressable
