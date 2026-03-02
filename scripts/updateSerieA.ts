@@ -174,7 +174,12 @@ export async function fetchSerieAEvents(): Promise<SoccerFetchResult> {
       if (seenIds.has(id)) continue;
       seenIds.add(id);
 
-      const isGolazo = golazoMatches.some(g => teamsMatchGolazo(homeTeam, awayTeam, g));
+      const broadcastNames = (comp.broadcasts || [])
+        .flatMap(b => b.names || [])
+        .map(n => n.toLowerCase());
+      const espnSaysGolazo = broadcastNames.some(n => n.includes("golazo"));
+      const scraperSaysGolazo = golazoMatches.some(g => teamsMatchGolazo(homeTeam, awayTeam, g));
+      const isGolazo = espnSaysGolazo || scraperSaysGolazo;
       if (isGolazo) golazoCount++;
 
       events.push({

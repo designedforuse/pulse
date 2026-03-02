@@ -5493,11 +5493,11 @@
       "homeTeam": "Pisa",
       "startTimeLocal": "2026-03-02T17:30:00.000Z",
       "endTimeLocal": "2026-03-02T19:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
       "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "providerReason": "seriea-golazo-primevideo"
     },
     {
       "id": "nhl_2025020955",
