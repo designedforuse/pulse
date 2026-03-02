@@ -190,9 +190,8 @@ function ChaosCard({
                 <View style={styles.primaryTeamRow}>
                   <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={28} />
                   <Text style={styles.heroTeamName} numberOfLines={1}>
-                    {displayTeamName(event.awayTeam, event.league)}
+                    {displayTeamName(event.awayTeam, event.league)}{awayIsFav ? <Text style={styles.teamFavStarHero}>{" \u2605"}</Text> : null}
                   </Text>
-                  {awayIsFav && <Text style={styles.teamFavStarHero}>{"\u2605"}</Text>}
                   {hasScore && event.sport !== "cricket" && (
                     <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
                       {score.awayScore}
@@ -203,9 +202,8 @@ function ChaosCard({
                 <View style={styles.primaryTeamRow}>
                   <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={28} />
                   <Text style={styles.heroTeamName} numberOfLines={1}>
-                    {displayTeamName(event.homeTeam, event.league)}
+                    {displayTeamName(event.homeTeam, event.league)}{homeIsFav ? <Text style={styles.teamFavStarHero}>{" \u2605"}</Text> : null}
                   </Text>
-                  {homeIsFav && <Text style={styles.teamFavStarHero}>{"\u2605"}</Text>}
                   {hasScore && event.sport !== "cricket" && (
                     <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
                       {score.homeScore}
@@ -273,9 +271,8 @@ function ChaosCard({
             <View style={styles.secondaryTeamRow}>
               <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={18} />
               <Text style={styles.secondaryTeamName} numberOfLines={1}>
-                {displayTeamName(event.awayTeam, event.league)}
+                {displayTeamName(event.awayTeam, event.league)}{awayIsFav ? <Text style={styles.teamFavStar}>{" \u2605"}</Text> : null}
               </Text>
-              {awayIsFav && <Text style={styles.teamFavStar}>{"\u2605"}</Text>}
               {hasScore && event.sport !== "cricket" && (
                 <Text style={[styles.secondaryScore, isLiveState && styles.scoreLive]}>
                   {score.awayScore}
@@ -285,9 +282,8 @@ function ChaosCard({
             <View style={styles.secondaryTeamRow}>
               <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={18} />
               <Text style={styles.secondaryTeamName} numberOfLines={1}>
-                {displayTeamName(event.homeTeam, event.league)}
+                {displayTeamName(event.homeTeam, event.league)}{homeIsFav ? <Text style={styles.teamFavStar}>{" \u2605"}</Text> : null}
               </Text>
-              {homeIsFav && <Text style={styles.teamFavStar}>{"\u2605"}</Text>}
               {hasScore && event.sport !== "cricket" && (
                 <Text style={[styles.secondaryScore, isLiveState && styles.scoreLive]}>
                   {score.homeScore}
@@ -1183,12 +1179,10 @@ const styles = StyleSheet.create({
   teamFavStarHero: {
     fontSize: 19,
     color: Colors.favStar,
-    marginLeft: 6,
   },
   teamFavStar: {
     fontSize: 12,
     color: Colors.favStar,
-    marginLeft: 6,
   },
   favStar: {
     fontSize: 12,
