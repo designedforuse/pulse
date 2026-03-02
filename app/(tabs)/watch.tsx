@@ -582,15 +582,46 @@ export default function WatchScreen() {
   }, [allEvents, now, favoritesOnly, favorites, getScore]);
 
   const upNextEvents = useMemo(() => {
-    const upcoming = getUpNextEvents(allEvents, now).slice(0, 10);
+    const upcoming = getUpNextEvents(allEvents, now);
     const filtered = favoritesOnly ? upcoming.filter((e) => favoriteInvolved(e, favorites)) : upcoming;
-    return [...filtered].sort((a, b) => {
-      const aFav = favoriteInvolved(a, favorites) ? 0 : 1;
-      const bFav = favoriteInvolved(b, favorites) ? 0 : 1;
-      if (aFav !== bFav) return aFav - bFav;
-      return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
-    });
+    return [...filtered].sort(
+      (a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
+    );
   }, [allEvents, now, favoritesOnly, favorites]);
+
+  const upNextDayGroups = useMemo(() => {
+    const groups: { label: string; key: string; events: SportEvent[] }[] = [];
+    const dayMap = new Map<string, SportEvent[]>();
+    const dayLabels = new Map<string, string>();
+    for (const event of upNextEvents) {
+      const d = new Date(event.startTimeLocal);
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+      if (!dayMap.has(key)) {
+        dayMap.set(key, []);
+        const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        dayLabels.set(key, `${dayNames[d.getDay()]} · ${monthNames[d.getMonth()]} ${d.getDate()}`);
+      }
+      dayMap.get(key)!.push(event);
+    }
+    const sortedKeys = [...dayMap.keys()].sort();
+    for (const key of sortedKeys) {
+      groups.push({ label: dayLabels.get(key)!, key, events: dayMap.get(key)! });
+    }
+    return groups;
+  }, [upNextEvents]);
+
+  useEffect(() => {
+    if (!__DEV__) return;
+    const windowEnd = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+    const perDay: Record<string, number> = {};
+    for (const g of upNextDayGroups) {
+      perDay[g.label] = g.events.length;
+    }
+    console.log(
+      `[UP NEXT] now=${now.toISOString()} windowEnd=${windowEnd.toISOString()} count=${upNextEvents.length} days=${JSON.stringify(perDay)}`
+    );
+  }, [upNextEvents, upNextDayGroups, now]);
 
   const chaosIds = useMemo(() => {
     if (!chaosSetup) return new Set<string>();
@@ -776,27 +807,51 @@ export default function WatchScreen() {
           </View>
         )}
 
-        {upNextEvents.length > 0 && (
-          <View style={styles.upNextSection}>
-            <View style={styles.sectionHeaderRow}>
-              <Ionicons name="time-outline" size={16} color={Colors.textSecondary} />
-              <Text style={styles.sectionTitle}>Up Next</Text>
+        <View style={styles.upNextSection}>
+          <View style={styles.sectionHeaderRow}>
+            <Ionicons name="time-outline" size={16} color={Colors.textSecondary} />
+            <Text style={styles.sectionTitle}>Up Next</Text>
+            {upNextEvents.length > 0 && (
               <View style={styles.sectionCount}>
                 <Text style={styles.sectionCountText}>{upNextEvents.length}</Text>
               </View>
-            </View>
-            {upNextEvents.map((event) => (
-              <LiveEventRow
-                key={event.id}
-                event={event}
-                isLive={false}
-                now={now}
-                score={getScore(event.id)}
-                isFav={favoriteInvolved(event, favorites)}
-              />
-            ))}
+            )}
           </View>
-        )}
+          {upNextEvents.length === 0 ? (
+            <View style={styles.upNextEmpty}>
+              <Ionicons name="moon-outline" size={28} color={Colors.textSecondary} style={{ marginBottom: 8 }} />
+              <Text style={styles.upNextEmptyText}>Nothing coming up in the next 24 hours.</Text>
+              <Pressable
+                onPress={() => router.push("/(tabs)/explore")}
+                style={styles.upNextEmptyAction}
+              >
+                <Text style={styles.upNextEmptyActionText}>Explore narratives</Text>
+                <Ionicons name="arrow-forward" size={14} color={Colors.accent} />
+              </Pressable>
+            </View>
+          ) : (
+            upNextDayGroups.map((group, gi) => (
+              <View key={group.key}>
+                {upNextDayGroups.length > 1 && (
+                  <View style={[styles.dayDivider, gi === 0 && { marginTop: 0 }]}>
+                    {gi > 0 && <View style={styles.dayDividerLine} />}
+                    <Text style={styles.dayDividerText}>{group.label}</Text>
+                  </View>
+                )}
+                {group.events.map((event) => (
+                  <LiveEventRow
+                    key={event.id}
+                    event={event}
+                    isLive={false}
+                    now={now}
+                    score={getScore(event.id)}
+                    isFav={favoriteInvolved(event, favorites)}
+                  />
+                ))}
+              </View>
+            ))
+          )}
+        </View>
 
         <View style={styles.footerMeta}>
           <Text style={styles.lastUpdated}>
@@ -1112,6 +1167,49 @@ const styles = StyleSheet.create({
   },
   upNextSection: {
     marginBottom: 20,
+  },
+  dayDivider: {
+    paddingHorizontal: 4,
+    marginTop: 8,
+    marginBottom: 6,
+  },
+  dayDividerLine: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: "rgba(161, 161, 166, 0.2)",
+    marginBottom: 8,
+  },
+  dayDividerText: {
+    fontSize: 12,
+    fontWeight: "600" as const,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_600SemiBold",
+    letterSpacing: 0.5,
+    textTransform: "uppercase" as const,
+  },
+  upNextEmpty: {
+    alignItems: "center",
+    paddingVertical: 32,
+    gap: 4,
+  },
+  upNextEmptyText: {
+    fontSize: 14,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_400Regular",
+    textAlign: "center" as const,
+  },
+  upNextEmptyAction: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    marginTop: 12,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+  },
+  upNextEmptyActionText: {
+    fontSize: 14,
+    fontWeight: "600" as const,
+    color: Colors.accent,
+    fontFamily: "Inter_600SemiBold",
   },
   sectionHeaderRow: {
     flexDirection: "row",
