@@ -22,7 +22,7 @@ export const RITUALS: Ritual[] = [
   {
     id: "friday_lights",
     label: "Family Game Night",
-    icon: "moon",
+    icon: "game-controller",
     sports: ["hockey", "basketball", "soccer"],
     days: [5],
     startHour: 18,
@@ -77,7 +77,7 @@ export const RITUALS: Ritual[] = [
   {
     id: "sunday_session",
     label: "Sunday Coffee & Chill",
-    icon: "sunny",
+    icon: "cafe",
     sports: ["rugby", "cricket", "soccer"],
     days: [0],
     startHour: 6,
