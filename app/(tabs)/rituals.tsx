@@ -41,6 +41,13 @@ function formatFeaturedTime(iso: string): string {
   return `${monthNames[d.getMonth()]} ${d.getDate()} · ${hour}${min} ${ampm}`;
 }
 
+const SPORT_COLORS: Record<string, string> = {
+  hockey: "#4FC3F7",
+  rugby: "#FF8A65",
+  cricket: "#FFD54F",
+  soccer: "#81C784",
+};
+
 function FeaturedStrip({ event }: { event: SportEvent | null }) {
   if (!event) {
     return (
@@ -53,15 +60,16 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
 
   const away = displayTeamName(event.awayTeam, event.league);
   const home = displayTeamName(event.homeTeam, event.league);
+  const sportColor = SPORT_COLORS[event.sport] || "#90A4AE";
+  const league = event.league || event.sport.toUpperCase();
 
   return (
     <View style={styles.featuredStrip}>
       <View style={styles.featuredStripLine} />
+      <View style={[styles.leagueHeader, { backgroundColor: sportColor + "12" }]}>
+        <Text style={[styles.leagueHeaderText, { color: sportColor }]}>{league}</Text>
+      </View>
       <View style={styles.featuredContent}>
-        <View style={styles.featuredLabelWrap}>
-          <Ionicons name="star" size={10} color="#FFD54F" />
-          <Text style={styles.featuredLabel}>Featured</Text>
-        </View>
         <View style={styles.featuredMatchup}>
           <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={18} />
           <Text style={styles.featuredTeam} numberOfLines={1}>{away}</Text>
@@ -288,23 +296,24 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginHorizontal: -2,
   },
+  leagueHeader: {
+    borderRadius: 6,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    alignSelf: "flex-start" as const,
+    marginBottom: 6,
+  },
+  leagueHeaderText: {
+    fontSize: 10,
+    fontWeight: "700" as const,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.5,
+    textTransform: "uppercase" as const,
+  },
   featuredContent: {
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
-  },
-  featuredLabelWrap: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 3,
-  },
-  featuredLabel: {
-    fontSize: 10,
-    fontWeight: "700" as const,
-    color: "#FFD54F",
-    fontFamily: "Inter_700Bold",
-    letterSpacing: 0.3,
-    textTransform: "uppercase" as const,
   },
   featuredMatchup: {
     flex: 1,
