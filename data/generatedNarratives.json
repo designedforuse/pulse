@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-02T15:41:59.931Z",
+  "lastUpdated": "2026-03-02T17:28:18.604Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -79,7 +79,7 @@
         ],
         "playersIngested": 610,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-02T15:41:59.931Z"
+        "timestamp": "2026-03-02T17:28:18.604Z"
       },
       "cacheHistoryCount": 610,
       "error": null
@@ -96,8 +96,8 @@
         "tabHint": "Rituals"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-02T15:41:59.931Z",
-      "expiresAt": "2026-03-09T15:41:59.931Z",
+      "triggeredAt": "2026-03-02T17:28:18.604Z",
+      "expiresAt": "2026-03-09T17:28:18.604Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -140,8 +140,8 @@
           "ahl-1028637"
         ],
         "combinedTeamCount": 3,
-        "windowStart": "2026-03-02T15:41:59.931Z",
-        "windowEnd": "2026-03-09T15:41:59.931Z",
+        "windowStart": "2026-03-02T17:28:18.604Z",
+        "windowEnd": "2026-03-09T17:28:18.604Z",
         "reason": "Anaheim Ducks: back-to-back + 6 games in 7 days; San Diego Gulls: back-to-back + 5 games in 7 days; Tulsa Oilers: back-to-back + 6 games in 7 days"
       }
     },
@@ -155,8 +155,8 @@
         "tabHint": "Rituals"
       },
       "priority": 60,
-      "triggeredAt": "2026-03-02T15:41:59.931Z",
-      "expiresAt": "2026-03-05T15:41:59.931Z",
+      "triggeredAt": "2026-03-02T17:28:18.604Z",
+      "expiresAt": "2026-03-05T17:28:18.604Z",
       "kind": "momentum",
       "region": "SoCal",
       "regionPriority": 2,
@@ -209,8 +209,8 @@
         "tabHint": "Rituals"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-02T15:41:59.931Z",
-      "expiresAt": "2026-03-09T15:41:59.931Z",
+      "triggeredAt": "2026-03-02T17:28:18.604Z",
+      "expiresAt": "2026-03-09T17:28:18.604Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -235,8 +235,8 @@
           "nhl_2025021002"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-02T15:41:59.931Z",
-        "windowEnd": "2026-03-09T15:41:59.931Z",
+        "windowStart": "2026-03-02T17:28:18.604Z",
+        "windowEnd": "2026-03-09T17:28:18.604Z",
         "reason": "Boston Bruins: back-to-back + 6 games in 7 days"
       }
     },
@@ -249,8 +249,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-02T15:41:59.931Z",
-      "expiresAt": "2026-03-09T15:41:59.931Z",
+      "triggeredAt": "2026-03-02T17:28:18.604Z",
+      "expiresAt": "2026-03-09T17:28:18.604Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,

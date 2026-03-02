@@ -128,30 +128,20 @@ export async function fetchSerieAEvents(): Promise<SoccerFetchResult> {
     const windowStart = new Date(now.getTime() - 14 * 86400000);
     const windowEnd = new Date(now.getTime() + 21 * 86400000);
 
-    const [allEspnEvents, golazoMatches] = await Promise.all([
-      (async () => {
-        const chunks: string[] = [];
-        let cursor = new Date(windowStart);
-        while (cursor < windowEnd) {
-          const chunkEnd = new Date(Math.min(cursor.getTime() + 31 * 86400000, windowEnd.getTime()));
-          chunks.push(formatDateRange(cursor, chunkEnd));
-          cursor = new Date(chunkEnd.getTime() + 86400000);
-        }
-        const all: EspnEvent[] = [];
-        for (const range of chunks) {
-          const events = await fetchEspnPage(range);
-          all.push(...events);
-        }
-        return all;
-      })(),
-      fetchGolazoSerieAMatches(),
-    ]);
+    const allEspnEvents: EspnEvent[] = [];
+    let cursor = new Date(windowStart);
+    while (cursor < windowEnd) {
+      const chunkEnd = new Date(Math.min(cursor.getTime() + 31 * 86400000, windowEnd.getTime()));
+      const range = formatDateRange(cursor, chunkEnd);
+      const events = await fetchEspnPage(range);
+      allEspnEvents.push(...events);
+      cursor = new Date(chunkEnd.getTime() + 86400000);
+    }
 
     console.log(`  Serie A: Fetched ${allEspnEvents.length} ESPN events`);
 
     const events: AppEvent[] = [];
     const seenIds = new Set<string>();
-    let golazoCount = 0;
 
     for (const espnEvent of allEspnEvents) {
       const startUtc = new Date(espnEvent.date).toISOString();
@@ -174,14 +164,6 @@ export async function fetchSerieAEvents(): Promise<SoccerFetchResult> {
       if (seenIds.has(id)) continue;
       seenIds.add(id);
 
-      const broadcastNames = (comp.broadcasts || [])
-        .flatMap(b => b.names || [])
-        .map(n => n.toLowerCase());
-      const espnSaysGolazo = broadcastNames.some(n => n.includes("golazo"));
-      const scraperSaysGolazo = golazoMatches.some(g => teamsMatchGolazo(homeTeam, awayTeam, g));
-      const isGolazo = espnSaysGolazo || scraperSaysGolazo;
-      if (isGolazo) golazoCount++;
-
       events.push({
         id,
         sport: "soccer",
@@ -190,15 +172,14 @@ export async function fetchSerieAEvents(): Promise<SoccerFetchResult> {
         homeTeam,
         startTimeLocal: startUtc,
         endTimeLocal: endUtc,
-        providerId: isGolazo ? "primevideo" : "youtubetv",
+        providerId: "primevideo",
         isLive: false,
         source: "soccer-seriea",
         leagueKey: "seriea",
-        providerReason: isGolazo ? "seriea-golazo-primevideo" : "seriea-yttv",
       });
     }
 
-    console.log(`  Serie A: ${events.length} events in retention window (${golazoCount} on Golazo/Prime Video)`);
+    console.log(`  Serie A: ${events.length} events in retention window (all on Golazo/Prime Video)`);
     return { events, sourceUsed: "espn", count: events.length };
   } catch (err: any) {
     console.error(`  Serie A: Error fetching ESPN API:`, err.message);

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-02T15:41:59.839Z",
+  "lastUpdated": "2026-03-02T17:28:18.502Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -28,10 +28,10 @@
   "rugbySourceUsed": "ical",
   "cricketSourceUsed": "cricapi",
   "nhlCount": 111,
-  "ahlCount": 232,
+  "ahlCount": 231,
   "ahlAdded": 19,
   "ahlUpdated": 189,
-  "ahlPruned": 19,
+  "ahlPruned": 20,
   "echlCount": 16,
   "echlAdded": 4,
   "echlUpdated": 16,
@@ -62,7 +62,7 @@
   "iccT20WcCount": 25,
   "iccT20WcAdded": 25,
   "iccT20WcUpdated": 0,
-  "iccT20WcPruned": 52,
+  "iccT20WcPruned": 25,
   "iccT20WcSourceUsed": "hardcoded-schedule",
   "t20wcDedupedCount": 0,
   "olympicHockeyCount": 12,
@@ -131,34 +131,34 @@
   "faCupPruned": 10,
   "faCupSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-02T15:41:59.839Z",
+    "lastRefreshAt": "2026-03-02T17:28:18.502Z",
     "sources": {
       "nhl": {
         "count": 111,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "NHL API"
       },
       "ahl": {
-        "count": 232,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "count": 231,
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 16,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 3,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 114,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 19,
@@ -178,53 +178,53 @@
       },
       "iccT20Wc": {
         "count": 25,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 12,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 51,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 75,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 52,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 53,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 46,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 45,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 16,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 32,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
@@ -236,36 +236,24 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 16,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "iCal Feed"
       },
       "faCup": {
         "count": 10,
-        "lastFetchAt": "2026-03-02T15:41:59.839Z",
+        "lastFetchAt": "2026-03-02T17:28:18.502Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-02-16T19:30:00.000Z"
       }
     }
   },
   "events": [
-    {
-      "id": "ahl-1028515",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Charlotte Checkers",
-      "awayTeam": "Hartford Wolf Pack",
-      "startTimeLocal": "2026-02-16T17:00:00.000Z",
-      "endTimeLocal": "2026-02-16T19:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
     {
       "id": "ahl-1028528",
       "sport": "hockey",
@@ -300,11 +288,10 @@
       "homeTeam": "Cagliari",
       "startTimeLocal": "2026-02-16T19:45:00.000Z",
       "endTimeLocal": "2026-02-16T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "ahl-1028526",
@@ -711,11 +698,10 @@
       "homeTeam": "AC Milan",
       "startTimeLocal": "2026-02-18T19:45:00.000Z",
       "endTimeLocal": "2026-02-18T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-epl-20260218-2000-arsenal-at-wolves",
@@ -1055,11 +1041,10 @@
       "homeTeam": "Sassuolo",
       "startTimeLocal": "2026-02-20T19:45:00.000Z",
       "endTimeLocal": "2026-02-20T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-ligue1-20260220-1945-marseille-at-brest",
@@ -1435,11 +1420,10 @@
       "homeTeam": "Juventus",
       "startTimeLocal": "2026-02-21T14:00:00.000Z",
       "endTimeLocal": "2026-02-21T16:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "rugby-sixnations-pmx8lc",
@@ -1601,11 +1585,10 @@
       "homeTeam": "Lecce",
       "startTimeLocal": "2026-02-21T17:00:00.000Z",
       "endTimeLocal": "2026-02-21T19:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-epl-20260221-1730-bournemouth-at-west-ham",
@@ -1702,11 +1685,10 @@
       "homeTeam": "Cagliari",
       "startTimeLocal": "2026-02-21T19:45:00.000Z",
       "endTimeLocal": "2026-02-21T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "ahl-1028558",
@@ -2216,11 +2198,10 @@
       "homeTeam": "Genoa",
       "startTimeLocal": "2026-02-22T11:30:00.000Z",
       "endTimeLocal": "2026-02-22T13:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-laliga-20260222-1300-sevilla-at-getafe",
@@ -2323,11 +2304,10 @@
       "homeTeam": "Atalanta",
       "startTimeLocal": "2026-02-22T14:00:00.000Z",
       "endTimeLocal": "2026-02-22T16:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-ligue1-20260222-1400-stade-rennais-at-aj-auxerre",
@@ -2462,11 +2442,10 @@
       "homeTeam": "AC Milan",
       "startTimeLocal": "2026-02-22T17:00:00.000Z",
       "endTimeLocal": "2026-02-22T19:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "rugby-top14-bk8be1",
@@ -2517,11 +2496,10 @@
       "homeTeam": "AS Roma",
       "startTimeLocal": "2026-02-22T19:45:00.000Z",
       "endTimeLocal": "2026-02-22T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-ligue1-20260222-1945-lyon-at-strasbourg",
@@ -2691,11 +2669,10 @@
       "homeTeam": "Fiorentina",
       "startTimeLocal": "2026-02-23T17:30:00.000Z",
       "endTimeLocal": "2026-02-23T19:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-seriea-20260223-1945-udinese-at-bologna",
@@ -2705,11 +2682,10 @@
       "homeTeam": "Bologna",
       "startTimeLocal": "2026-02-23T19:45:00.000Z",
       "endTimeLocal": "2026-02-23T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-epl-20260223-2000-man-utd-at-everton",
@@ -3181,11 +3157,10 @@
       "homeTeam": "Parma",
       "startTimeLocal": "2026-02-27T19:45:00.000Z",
       "endTimeLocal": "2026-02-27T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-ligue1-20260227-1945-lens-at-strasbourg",
@@ -3522,11 +3497,10 @@
       "homeTeam": "Como",
       "startTimeLocal": "2026-02-28T14:00:00.000Z",
       "endTimeLocal": "2026-02-28T16:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-bundesliga-20260228-1430-mainz-at-bayer-leverkusen",
@@ -3753,11 +3727,10 @@
       "homeTeam": "Hellas Verona",
       "startTimeLocal": "2026-02-28T17:00:00.000Z",
       "endTimeLocal": "2026-02-28T19:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "rugby-urc-1obuv5",
@@ -3890,11 +3863,10 @@
       "homeTeam": "Internazionale",
       "startTimeLocal": "2026-02-28T19:45:00.000Z",
       "endTimeLocal": "2026-02-28T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "rugby-top14-bd3ilh",
@@ -4322,11 +4294,10 @@
       "homeTeam": "Cremonese",
       "startTimeLocal": "2026-03-01T11:30:00.000Z",
       "endTimeLocal": "2026-03-01T13:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-laliga-20260301-1300-espanyol-at-elche",
@@ -4412,11 +4383,10 @@
       "homeTeam": "Sassuolo",
       "startTimeLocal": "2026-03-01T14:00:00.000Z",
       "endTimeLocal": "2026-03-01T16:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-ligue1-20260301-1400-nice-at-paris-fc",
@@ -4538,11 +4508,10 @@
       "homeTeam": "Torino",
       "startTimeLocal": "2026-03-01T17:00:00.000Z",
       "endTimeLocal": "2026-03-01T19:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-laliga-20260301-1730-sevilla-at-real-betis",
@@ -4614,11 +4583,10 @@
       "homeTeam": "AS Roma",
       "startTimeLocal": "2026-03-01T19:45:00.000Z",
       "endTimeLocal": "2026-03-01T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-ligue1-20260301-1945-lyon-at-marseille",
@@ -4925,11 +4893,10 @@
       "homeTeam": "Pisa",
       "startTimeLocal": "2026-03-02T17:30:00.000Z",
       "endTimeLocal": "2026-03-02T19:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "nhl_2025020955",
@@ -4958,11 +4925,10 @@
       "homeTeam": "Udinese",
       "startTimeLocal": "2026-03-02T19:45:00.000Z",
       "endTimeLocal": "2026-03-02T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-laliga-20260302-2000-getafe-at-real-madrid",
@@ -5960,11 +5926,10 @@
       "homeTeam": "Napoli",
       "startTimeLocal": "2026-03-06T19:45:00.000Z",
       "endTimeLocal": "2026-03-06T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-ligue1-20260306-1945-as-monaco-at-paris-saint-germain",
@@ -6424,11 +6389,10 @@
       "homeTeam": "Cagliari",
       "startTimeLocal": "2026-03-07T14:00:00.000Z",
       "endTimeLocal": "2026-03-07T16:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "rugby-sixnations-8v50sy",
@@ -6562,11 +6526,10 @@
       "homeTeam": "Atalanta",
       "startTimeLocal": "2026-03-07T17:00:00.000Z",
       "endTimeLocal": "2026-03-07T19:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "nhl_2025020990",
@@ -6679,11 +6642,10 @@
       "homeTeam": "Juventus",
       "startTimeLocal": "2026-03-07T19:45:00.000Z",
       "endTimeLocal": "2026-03-07T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "nhl_2025020991",
@@ -7385,11 +7347,10 @@
       "homeTeam": "Lecce",
       "startTimeLocal": "2026-03-08T11:30:00.000Z",
       "endTimeLocal": "2026-03-08T13:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-facup-20260308-1200-southampton-at-fulham",
@@ -7462,11 +7423,10 @@
       "homeTeam": "Bologna",
       "startTimeLocal": "2026-03-08T14:00:00.000Z",
       "endTimeLocal": "2026-03-08T16:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-seriea-20260308-1400-parma-at-fiorentina",
@@ -7476,11 +7436,10 @@
       "homeTeam": "Fiorentina",
       "startTimeLocal": "2026-03-08T14:00:00.000Z",
       "endTimeLocal": "2026-03-08T16:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-ligue1-20260308-1400-metz-at-lens",
@@ -7617,11 +7576,10 @@
       "homeTeam": "Genoa",
       "startTimeLocal": "2026-03-08T17:00:00.000Z",
       "endTimeLocal": "2026-03-08T19:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-laliga-20260308-1730-rayo-vallecano-at-sevilla",
@@ -7739,11 +7697,10 @@
       "homeTeam": "AC Milan",
       "startTimeLocal": "2026-03-08T19:45:00.000Z",
       "endTimeLocal": "2026-03-08T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-ligue1-20260308-1945-paris-fc-at-lyon",
@@ -7970,11 +7927,10 @@
       "homeTeam": "Lazio",
       "startTimeLocal": "2026-03-09T19:45:00.000Z",
       "endTimeLocal": "2026-03-09T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "nhl_2025020828",
@@ -8854,11 +8810,10 @@
       "homeTeam": "Torino",
       "startTimeLocal": "2026-03-13T19:45:00.000Z",
       "endTimeLocal": "2026-03-13T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-ligue1-20260313-1945-aj-auxerre-at-marseille",
@@ -9224,11 +9179,10 @@
       "homeTeam": "Internazionale",
       "startTimeLocal": "2026-03-14T14:00:00.000Z",
       "endTimeLocal": "2026-03-14T16:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "rugby-sixnations-ifo64c",
@@ -9438,11 +9392,10 @@
       "homeTeam": "Napoli",
       "startTimeLocal": "2026-03-14T17:00:00.000Z",
       "endTimeLocal": "2026-03-14T19:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-epl-20260314-1730-newcastle-at-chelsea",
@@ -9569,11 +9522,10 @@
       "homeTeam": "Udinese",
       "startTimeLocal": "2026-03-14T19:45:00.000Z",
       "endTimeLocal": "2026-03-14T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "nhl_2025021045",
@@ -10432,11 +10384,10 @@
       "homeTeam": "Hellas Verona",
       "startTimeLocal": "2026-03-15T11:30:00.000Z",
       "endTimeLocal": "2026-03-15T13:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-laliga-20260315-1300-espanyol-at-mallorca",
@@ -10502,11 +10453,10 @@
       "homeTeam": "Pisa",
       "startTimeLocal": "2026-03-15T14:00:00.000Z",
       "endTimeLocal": "2026-03-15T16:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-seriea-20260315-1400-bologna-at-sassuolo",
@@ -10516,11 +10466,10 @@
       "homeTeam": "Sassuolo",
       "startTimeLocal": "2026-03-15T14:00:00.000Z",
       "endTimeLocal": "2026-03-15T16:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-ligue1-20260315-1400-paris-fc-at-strasbourg",
@@ -10643,11 +10592,10 @@
       "homeTeam": "Como",
       "startTimeLocal": "2026-03-15T17:00:00.000Z",
       "endTimeLocal": "2026-03-15T19:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-laliga-20260315-1730-celta-vigo-at-real-betis",
@@ -10749,11 +10697,10 @@
       "homeTeam": "Lazio",
       "startTimeLocal": "2026-03-15T19:45:00.000Z",
       "endTimeLocal": "2026-03-15T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-ligue1-20260315-1945-lille-at-stade-rennais",
@@ -10893,11 +10840,10 @@
       "homeTeam": "Cremonese",
       "startTimeLocal": "2026-03-16T19:45:00.000Z",
       "endTimeLocal": "2026-03-16T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-epl-20260316-2000-wolves-at-brentford",
@@ -11191,11 +11137,10 @@
       "homeTeam": "Cagliari",
       "startTimeLocal": "2026-03-20T17:30:00.000Z",
       "endTimeLocal": "2026-03-20T19:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-bundesliga-20260320-1930-tsg-hoffenheim-at-rb-leipzig",
@@ -11245,11 +11190,10 @@
       "homeTeam": "Genoa",
       "startTimeLocal": "2026-03-20T19:45:00.000Z",
       "endTimeLocal": "2026-03-20T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-epl-20260320-2000-man-utd-at-bournemouth",
@@ -11557,11 +11501,10 @@
       "homeTeam": "Parma",
       "startTimeLocal": "2026-03-21T14:00:00.000Z",
       "endTimeLocal": "2026-03-21T16:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-bundesliga-20260321-1430-bayer-leverkusen-at-1-fc-heidenheim-1846",
@@ -11838,11 +11781,10 @@
       "homeTeam": "AC Milan",
       "startTimeLocal": "2026-03-21T17:00:00.000Z",
       "endTimeLocal": "2026-03-21T19:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "rugby-urc-gffn28",
@@ -11986,11 +11928,10 @@
       "homeTeam": "Juventus",
       "startTimeLocal": "2026-03-21T19:45:00.000Z",
       "endTimeLocal": "2026-03-21T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "ahl-1028733",
@@ -12518,11 +12459,10 @@
       "homeTeam": "Como",
       "startTimeLocal": "2026-03-22T11:30:00.000Z",
       "endTimeLocal": "2026-03-22T13:45:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-epl-20260322-1200-sunderland-at-newcastle",
@@ -12560,11 +12500,10 @@
       "homeTeam": "Atalanta",
       "startTimeLocal": "2026-03-22T14:00:00.000Z",
       "endTimeLocal": "2026-03-22T16:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-seriea-20260322-1400-lazio-at-bologna",
@@ -12574,11 +12513,10 @@
       "homeTeam": "Bologna",
       "startTimeLocal": "2026-03-22T14:00:00.000Z",
       "endTimeLocal": "2026-03-22T16:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-epl-20260322-1415-west-ham-at-aston-villa",
@@ -12698,11 +12636,10 @@
       "homeTeam": "AS Roma",
       "startTimeLocal": "2026-03-22T17:00:00.000Z",
       "endTimeLocal": "2026-03-22T19:15:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "soccer-laliga-20260322-1730-real-betis-at-athletic-club",
@@ -12906,11 +12843,10 @@
       "homeTeam": "Fiorentina",
       "startTimeLocal": "2026-03-22T19:45:00.000Z",
       "endTimeLocal": "2026-03-22T22:00:00.000Z",
-      "providerId": "youtubetv",
+      "providerId": "primevideo",
       "isLive": false,
       "source": "soccer-seriea",
-      "leagueKey": "seriea",
-      "providerReason": "seriea-yttv"
+      "leagueKey": "seriea"
     },
     {
       "id": "ahl-1028753",
