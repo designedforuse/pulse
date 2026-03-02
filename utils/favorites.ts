@@ -149,3 +149,16 @@ export function getAllFavoriteTeams(favorites: Favorites): string[] {
   }
   return all;
 }
+
+export function isTeamFavorite(teamName: string, sport: string, favorites: Favorites): boolean {
+  const sportSets = getSportSets(favorites);
+  const sets = sportSets[sport];
+  if (!sets) return false;
+  const norm = normalize(teamName);
+  if (sets.expanded.has(norm)) return true;
+  if (sport === "soccer") {
+    const eplNorm = normalizeEplTeam(teamName);
+    if (sets.expanded.has(eplNorm)) return true;
+  }
+  return false;
+}

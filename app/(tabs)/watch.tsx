@@ -46,7 +46,8 @@ import {
   isEventLive,
 } from "@/utils/time";
 import { normalizeGameState } from "@/utils/gameState";
-import { favoriteInvolved } from "@/utils/favorites";
+import { favoriteInvolved, isTeamFavorite } from "@/utils/favorites";
+import type { Favorites } from "@/lib/data";
 import {
   buildChaosSetup,
   selfHealChaosSetup,
@@ -91,8 +92,7 @@ function getTensionLabel(tensionRank: number): string | null {
   return null;
 }
 
-function getHeroMicroLabel(isFav: boolean, tensionRank: number, event: SportEvent, now: Date): string | null {
-  if (isFav) return "\u2B50 Favorite";
+function getHeroMicroLabel(tensionRank: number, event: SportEvent, now: Date): string | null {
   if (tensionRank >= 3) return "\uD83D\uDD25 High Tension";
   const startMs = new Date(event.startTimeLocal).getTime();
   const minsUntil = (startMs - now.getTime()) / 60000;
@@ -105,14 +105,14 @@ function ChaosCard({
   isPrimary,
   now,
   score,
-  isFav,
+  favorites,
   tensionRank = 0,
 }: {
   event: SportEvent;
   isPrimary: boolean;
   now: Date;
   score?: { awayScore: number; homeScore: number; period?: string; clock?: string; status?: string; cricketAway?: string; cricketHome?: string };
-  isFav: boolean;
+  favorites: Favorites;
   tensionRank?: number;
 }) {
   const sportColor = getSportColor(event.sport);
@@ -124,6 +124,8 @@ function ChaosCard({
   const isFinalState = gameState === "FINAL";
   const tensionLabel = getTensionLabel(tensionRank);
   const tensionAccentColor = tensionLabel ? TENSION_ACCENT_COLORS[tensionLabel] : null;
+  const awayIsFav = isTeamFavorite(event.awayTeam, event.sport, favorites);
+  const homeIsFav = isTeamFavorite(event.homeTeam, event.sport, favorites);
 
   const handlePress = () => {
     if (Platform.OS !== "web") {
@@ -141,7 +143,7 @@ function ChaosCard({
         : null;
 
   if (isPrimary) {
-    const microLabel = getHeroMicroLabel(isFav, tensionRank, event, now);
+    const microLabel = getHeroMicroLabel(tensionRank, event, now);
     return (
       <Pressable
         onPress={handlePress}
@@ -165,7 +167,6 @@ function ChaosCard({
               <Text style={[styles.primaryLeague, { color: sportColor }]}>
                 {event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league}
               </Text>
-              {isFav && <Text style={styles.favStar}>{"\u2605"}</Text>}
               <View style={{ flex: 1 }} />
               {isLiveState && (
                 <View style={styles.liveChip}>
@@ -191,6 +192,7 @@ function ChaosCard({
                   <Text style={styles.heroTeamName} numberOfLines={1}>
                     {displayTeamName(event.awayTeam, event.league)}
                   </Text>
+                  {awayIsFav && <Text style={styles.teamFavStarHero}>{"\u2605"}</Text>}
                   {hasScore && event.sport !== "cricket" && (
                     <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
                       {score.awayScore}
@@ -203,6 +205,7 @@ function ChaosCard({
                   <Text style={styles.heroTeamName} numberOfLines={1}>
                     {displayTeamName(event.homeTeam, event.league)}
                   </Text>
+                  {homeIsFav && <Text style={styles.teamFavStarHero}>{"\u2605"}</Text>}
                   {hasScore && event.sport !== "cricket" && (
                     <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
                       {score.homeScore}
@@ -252,7 +255,6 @@ function ChaosCard({
           <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
             {event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.league}
           </Text>
-          {isFav && <Text style={styles.favStarSmall}>{"\u2605"}</Text>}
           {isLiveState && (
             <View style={styles.liveChipSmall}>
               <LiveDot />
@@ -273,6 +275,7 @@ function ChaosCard({
               <Text style={styles.secondaryTeamName} numberOfLines={1}>
                 {displayTeamName(event.awayTeam, event.league)}
               </Text>
+              {awayIsFav && <Text style={styles.teamFavStar}>{"\u2605"}</Text>}
               {hasScore && event.sport !== "cricket" && (
                 <Text style={[styles.secondaryScore, isLiveState && styles.scoreLive]}>
                   {score.awayScore}
@@ -284,6 +287,7 @@ function ChaosCard({
               <Text style={styles.secondaryTeamName} numberOfLines={1}>
                 {displayTeamName(event.homeTeam, event.league)}
               </Text>
+              {homeIsFav && <Text style={styles.teamFavStar}>{"\u2605"}</Text>}
               {hasScore && event.sport !== "cricket" && (
                 <Text style={[styles.secondaryScore, isLiveState && styles.scoreLive]}>
                   {score.homeScore}
@@ -340,7 +344,7 @@ function SecondaryCarousel({
         isPrimary={false}
         now={now}
         score={getScore(item.id)}
-        isFav={favoriteInvolved(item, favorites)}
+        favorites={favorites}
         tensionRank={chaosDebugRanks?.find(r => r.id === item.id)?.tension ?? 0}
       />
     </View>
@@ -708,7 +712,7 @@ export default function WatchScreen() {
               isPrimary
               now={now}
               score={getScore(chaosSetup.primary!.id)}
-              isFav={favoriteInvolved(chaosSetup.primary!, favorites)}
+              favorites={favorites}
               tensionRank={chaosSetup.debug?.selectedRanks?.find(r => r.id === chaosSetup.primary!.id)?.tension ?? 0}
             />
 
@@ -1175,6 +1179,16 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: "Inter_600SemiBold",
     letterSpacing: 0.2,
+  },
+  teamFavStarHero: {
+    fontSize: 19,
+    color: Colors.favStar,
+    marginLeft: 6,
+  },
+  teamFavStar: {
+    fontSize: 12,
+    color: Colors.favStar,
+    marginLeft: 6,
   },
   favStar: {
     fontSize: 12,
