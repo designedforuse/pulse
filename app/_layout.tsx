@@ -9,6 +9,7 @@ import { queryClient } from "@/lib/query-client";
 import { EventsProvider } from "@/lib/events-context";
 import { ScoresProvider } from "@/lib/scores-context";
 import { FavoritesProvider } from "@/lib/favorites-context";
+import { RitualOverridesProvider } from "@/lib/ritual-overrides-context";
 import { useFonts, Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold } from "@expo-google-fonts/inter";
 import Colors from "@/constants/colors";
 
@@ -92,13 +93,15 @@ export default function RootLayout() {
       <QueryClientProvider client={queryClient}>
         <EventsProvider>
           <FavoritesProvider>
-            <ScoresProvider>
-              <GestureHandlerRootView>
-                <KeyboardProvider>
-                  <RootLayoutNav />
-                </KeyboardProvider>
-              </GestureHandlerRootView>
-            </ScoresProvider>
+            <RitualOverridesProvider>
+              <ScoresProvider>
+                <GestureHandlerRootView>
+                  <KeyboardProvider>
+                    <RootLayoutNav />
+                  </KeyboardProvider>
+                </GestureHandlerRootView>
+              </ScoresProvider>
+            </RitualOverridesProvider>
           </FavoritesProvider>
         </EventsProvider>
       </QueryClientProvider>

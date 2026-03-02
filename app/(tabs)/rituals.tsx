@@ -24,6 +24,7 @@ import {
   type Ritual,
 } from "@/lib/rituals";
 import type { SportEvent } from "@/lib/data";
+import { useRitualOverrides } from "@/lib/ritual-overrides-context";
 
 interface RitualData {
   eventCount: number;
@@ -131,6 +132,7 @@ export default function RitualsScreen() {
   const insets = useSafeAreaInsets();
   const { allEvents } = useEvents();
   const { favorites } = useFavorites();
+  const { overrides } = useRitualOverrides();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
 
   const now = useMemo(() => new Date(), []);
@@ -141,9 +143,20 @@ export default function RitualsScreen() {
     const data: Record<string, RitualData> = {};
     for (const ritual of RITUALS) {
       const result = getEventsForRitual(allEvents, ritual, favorites, now);
+      const overrideId = overrides[ritual.id];
+      const allRitualEvents = result.featured
+        ? [result.featured, ...result.rest]
+        : result.rest;
+      let effectiveFeatured = result.featured;
+      if (overrideId) {
+        const overrideEvent = allRitualEvents.find(e => e.id === overrideId);
+        if (overrideEvent && new Date(overrideEvent.startTimeLocal) > new Date(now.getTime() - 6 * 3600000)) {
+          effectiveFeatured = overrideEvent;
+        }
+      }
       data[ritual.id] = {
         eventCount: (result.featured ? 1 : 0) + result.rest.length,
-        featured: result.featured,
+        featured: effectiveFeatured,
       };
     }
     return data;
