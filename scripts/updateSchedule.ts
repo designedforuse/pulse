@@ -657,6 +657,13 @@ async function main() {
   if (allEvents.length > 0) {
     console.log(`Date range: ${allEvents[0].startTimeLocal} — ${allEvents[allEvents.length - 1].startTimeLocal}`);
   }
+
+  try {
+    const { generateAndSave } = await import("./exploreNarratives");
+    await generateAndSave();
+  } catch (err: any) {
+    console.error("Narrative generation failed (non-fatal):", err.message);
+  }
 }
 
 main().catch((err) => {

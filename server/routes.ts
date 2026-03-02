@@ -475,6 +475,69 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
+  const NARRATIVES_PATH = path.resolve(process.cwd(), "data", "generatedNarratives.json");
+  const MOVEMENT_CACHE_PATH = path.resolve(process.cwd(), "data", "playerMovementCache.json");
+
+  function loadNarratives() {
+    try {
+      if (!fs.existsSync(NARRATIVES_PATH)) return null;
+      return JSON.parse(fs.readFileSync(NARRATIVES_PATH, "utf-8"));
+    } catch {
+      return null;
+    }
+  }
+
+  app.get("/api/narratives", (_req, res) => {
+    const data = loadNarratives();
+    if (!data || !data.cards) {
+      return res.json({ cards: [], lastUpdated: null });
+    }
+    return res.json({ cards: data.cards, lastUpdated: data.lastUpdated });
+  });
+
+  app.get("/api/debug/explore-narratives", (_req, res) => {
+    const data = loadNarratives();
+    if (!data) {
+      return res.json({ error: "No narratives generated yet. Run a refresh or rebuild." });
+    }
+    return res.json(data);
+  });
+
+  app.get("/api/debug/player-movement", (_req, res) => {
+    try {
+      if (!fs.existsSync(MOVEMENT_CACHE_PATH)) {
+        return res.json({ lastSeen: {}, movements: [], lastUpdated: null });
+      }
+      const cache = JSON.parse(fs.readFileSync(MOVEMENT_CACHE_PATH, "utf-8"));
+      return res.json(cache);
+    } catch {
+      return res.json({ error: "Failed to read player movement cache" });
+    }
+  });
+
+  app.post("/api/rebuild-explore", (_req, res) => {
+    const scriptPath = path.resolve(process.cwd(), "scripts", "exploreNarratives.ts");
+    execFile(
+      "npx",
+      ["tsx", scriptPath],
+      { cwd: process.cwd(), timeout: 60000, env: { ...process.env } },
+      (error, stdout, stderr) => {
+        if (stdout) console.log("[rebuild-explore] stdout:", stdout);
+        if (stderr) console.error("[rebuild-explore] stderr:", stderr);
+        if (error) {
+          return res.status(500).json({ success: false, error: error.message });
+        }
+        const data = loadNarratives();
+        return res.json({
+          success: true,
+          cardCount: data?.cards?.length ?? 0,
+          cards: data?.cards ?? [],
+          lastUpdated: data?.lastUpdated ?? null,
+        });
+      }
+    );
+  });
+
   app.get("/api/debug/cricket-sample", (_req, res) => {
     const generated = loadGeneratedEvents();
     if (!generated || !generated.events) {

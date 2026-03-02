@@ -1,0 +1,163 @@
+{
+  "lastUpdated": "2026-03-02T06:02:55.791Z",
+  "debug": {
+    "playoffPushCount": 6,
+    "momentumCount": 1,
+    "leagueMomentCount": 2,
+    "playerMovementCount": 0,
+    "totalBeforeCap": 9
+  },
+  "cards": [
+    {
+      "id": "playoff_push_nhl_anaheim_ducks",
+      "title": "Ducks Push Week",
+      "subtitle": "6 games in 5 days · back-to-back",
+      "impact": {
+        "label": "Impacts: Family Game Night",
+        "ritualId": "friday_lights",
+        "tabHint": "Rituals"
+      },
+      "priority": 100,
+      "triggeredAt": "2026-03-02T06:02:55.791Z",
+      "expiresAt": "2026-03-09T06:02:55.791Z",
+      "kind": "playoff_push",
+      "meta": {
+        "team": "Anaheim Ducks",
+        "league": "NHL",
+        "sport": "hockey",
+        "gamesInWindow": 6,
+        "hasBackToBack": true,
+        "daysSpan": 5,
+        "eventIds": [
+          "nhl_2025020968",
+          "nhl_2025020973",
+          "nhl_2025020987",
+          "rugby-svns-rj2l89-d1",
+          "rugby-svns-rj2l89-d2",
+          "nhl_2025021006"
+        ],
+        "reason": "Anaheim Ducks has 6 games in the next 7 days"
+      }
+    },
+    {
+      "id": "playoff_push_nhl_boston_bruins",
+      "title": "Bruins Push Week",
+      "subtitle": "6 games in 5 days · back-to-back",
+      "impact": {
+        "label": "Impacts: Sunday Coffee & Chill",
+        "ritualId": "sunday_session",
+        "tabHint": "Rituals"
+      },
+      "priority": 100,
+      "triggeredAt": "2026-03-02T06:02:55.791Z",
+      "expiresAt": "2026-03-09T06:02:55.791Z",
+      "kind": "playoff_push",
+      "meta": {
+        "team": "Boston Bruins",
+        "league": "NHL",
+        "sport": "hockey",
+        "gamesInWindow": 6,
+        "hasBackToBack": true,
+        "daysSpan": 5,
+        "eventIds": [
+          "nhl_2025020959",
+          "nhl_2025020979",
+          "nhl_2025020990",
+          "rugby-svns-rj2l89-d1",
+          "rugby-svns-rj2l89-d2",
+          "nhl_2025021002"
+        ],
+        "reason": "Boston Bruins has 6 games in the next 7 days"
+      }
+    },
+    {
+      "id": "playoff_push_ahl_san_diego_gulls",
+      "title": "Gulls Push Week",
+      "subtitle": "5 games in 4 days · back-to-back",
+      "impact": {
+        "label": "Impacts: Family Game Night",
+        "ritualId": "friday_lights",
+        "tabHint": "Rituals"
+      },
+      "priority": 100,
+      "triggeredAt": "2026-03-02T06:02:55.791Z",
+      "expiresAt": "2026-03-09T06:02:55.791Z",
+      "kind": "playoff_push",
+      "meta": {
+        "team": "San Diego Gulls",
+        "league": "AHL",
+        "sport": "hockey",
+        "gamesInWindow": 5,
+        "hasBackToBack": true,
+        "daysSpan": 4,
+        "eventIds": [
+          "ahl-1028625",
+          "ahl-1028637",
+          "ahl-1028652",
+          "rugby-svns-rj2l89-d1",
+          "rugby-svns-rj2l89-d2"
+        ],
+        "reason": "San Diego Gulls has 5 games in the next 7 days"
+      }
+    },
+    {
+      "id": "playoff_push_ncaa_boston_university",
+      "title": "University Push Week",
+      "subtitle": "3 games in 1 days · back-to-back",
+      "impact": {
+        "label": "Impacts: Sunday Coffee & Chill",
+        "ritualId": "sunday_session",
+        "tabHint": "Rituals"
+      },
+      "priority": 100,
+      "triggeredAt": "2026-03-02T06:02:55.791Z",
+      "expiresAt": "2026-03-09T06:02:55.791Z",
+      "kind": "playoff_push",
+      "meta": {
+        "team": "Boston University",
+        "league": "NCAA",
+        "sport": "hockey",
+        "gamesInWindow": 3,
+        "hasBackToBack": true,
+        "daysSpan": 1,
+        "eventIds": [
+          "ncaa-bu-iwrpxs",
+          "rugby-svns-rj2l89-d1",
+          "rugby-svns-rj2l89-d2"
+        ],
+        "reason": "Boston University has 3 games in the next 7 days"
+      }
+    },
+    {
+      "id": "playoff_push_echl_tulsa_oilers",
+      "title": "Oilers Push Week",
+      "subtitle": "6 games in 4 days · back-to-back",
+      "impact": {
+        "label": "Impacts: Saturday Game Day",
+        "ritualId": "saturday_spotlight",
+        "tabHint": "Rituals"
+      },
+      "priority": 100,
+      "triggeredAt": "2026-03-02T06:02:55.791Z",
+      "expiresAt": "2026-03-09T06:02:55.791Z",
+      "kind": "playoff_push",
+      "meta": {
+        "team": "Tulsa Oilers",
+        "league": "ECHL",
+        "sport": "hockey",
+        "gamesInWindow": 6,
+        "hasBackToBack": true,
+        "daysSpan": 4,
+        "eventIds": [
+          "echl-web-25121",
+          "echl-web-25125",
+          "echl-web-25137",
+          "rugby-svns-rj2l89-d1",
+          "rugby-svns-rj2l89-d2",
+          "echl-web-25149"
+        ],
+        "reason": "Tulsa Oilers has 6 games in the next 7 days"
+      }
+    }
+  ]
+}

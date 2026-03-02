@@ -209,6 +209,8 @@ export default function SettingsScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const [refreshMessage, setRefreshMessage] = useState<{ text: string; ok: boolean } | null>(null);
   const [meta, setMeta] = useState<GeneratedMeta | null>(null);
+  const [rebuildingExplore, setRebuildingExplore] = useState(false);
+  const [rebuildMessage, setRebuildMessage] = useState<{ text: string; ok: boolean } | null>(null);
 
   const fetchMeta = useCallback(async () => {
     try {
@@ -246,6 +248,30 @@ export default function SettingsScreen() {
       setRefreshMessage({ text: "Refresh failed. Check connection.", ok: false });
     } finally {
       setRefreshing(false);
+    }
+  };
+
+  const handleRebuildExplore = async () => {
+    if (rebuildingExplore) return;
+    setRebuildingExplore(true);
+    setRebuildMessage(null);
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+    try {
+      const url = new URL("/api/rebuild-explore", getApiUrl());
+      const res = await fetch(url.toString(), { method: "POST" });
+      const data = await res.json();
+      if (data.success) {
+        setRebuildMessage({ text: `${data.cardCount} narrative cards generated`, ok: true });
+        queryClient.invalidateQueries({ queryKey: ["/api/narratives"] });
+      } else {
+        setRebuildMessage({ text: "Rebuild failed. Try again.", ok: false });
+      }
+    } catch {
+      setRebuildMessage({ text: "Rebuild failed. Check connection.", ok: false });
+    } finally {
+      setRebuildingExplore(false);
     }
   };
 
@@ -420,6 +446,52 @@ export default function SettingsScreen() {
                     ]}
                   >
                     {refreshMessage.text}
+                  </Text>
+                </View>
+              </View>
+            )}
+            <View style={styles.sourceDivider} />
+            <Pressable
+              onPress={handleRebuildExplore}
+              disabled={rebuildingExplore}
+              style={({ pressed }) => [
+                styles.refreshRow,
+                { opacity: pressed && !rebuildingExplore ? 0.7 : 1 },
+              ]}
+              testID="rebuild-explore-btn"
+            >
+              <View style={styles.refreshLeft}>
+                {rebuildingExplore ? (
+                  <ActivityIndicator size="small" color="#64B5F6" />
+                ) : (
+                  <Ionicons name="compass" size={20} color="#64B5F6" />
+                )}
+                <View>
+                  <Text style={styles.refreshLabel}>Rebuild Explore</Text>
+                  <Text style={styles.refreshDesc}>
+                    Regenerate narrative cards from current data
+                  </Text>
+                </View>
+              </View>
+              {!rebuildingExplore && (
+                <Ionicons name="chevron-forward" size={16} color={Colors.textMuted} />
+              )}
+            </Pressable>
+            {rebuildMessage && (
+              <View style={styles.refreshResultBlock}>
+                <View style={styles.refreshResultRow}>
+                  <Ionicons
+                    name={rebuildMessage.ok ? "checkmark-circle" : "alert-circle"}
+                    size={14}
+                    color={rebuildMessage.ok ? Colors.accent : Colors.live}
+                  />
+                  <Text
+                    style={[
+                      styles.refreshResultText,
+                      { color: rebuildMessage.ok ? Colors.accent : Colors.live },
+                    ]}
+                  >
+                    {rebuildMessage.text}
                   </Text>
                 </View>
               </View>

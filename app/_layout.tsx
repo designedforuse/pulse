@@ -42,6 +42,14 @@ function RootLayoutNav() {
         }}
       />
       <Stack.Screen
+        name="narrative/[id]"
+        options={{
+          headerShown: true,
+          title: "",
+          headerBackTitle: "Explore",
+        }}
+      />
+      <Stack.Screen
         name="settings"
         options={{
           headerShown: true,

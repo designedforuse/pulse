@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,43 +6,81 @@ import {
   Pressable,
   Platform,
   ScrollView,
+  RefreshControl,
+  ActivityIndicator,
 } from "react-native";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
-import { LinearGradient } from "expo-linear-gradient";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Colors from "@/constants/colors";
-import { getModes } from "@/lib/data";
+import { getApiUrl } from "@/lib/query-client";
 
-const modeIcons: Record<string, { icon: keyof typeof Ionicons.glyphMap; gradient: string[]; timeWindow: string }> = {
-  weekend_night_bonding: {
-    icon: "moon",
-    gradient: ["#2C2C2E", "#3A3A3C", "#48484A"],
-    timeWindow: "Fri, Sat, Sun  4:00 PM – 2:00 AM",
-  },
-  weekend_night_rituals: {
-    icon: "moon",
-    gradient: ["#2C2C2E", "#3A3A3C", "#48484A"],
-    timeWindow: "Fri, Sat, Sun  4:00 PM – 2:00 AM",
-  },
-  weekend_mornings: {
-    icon: "sunny",
-    gradient: ["#2C2C2E", "#3A3A3C", "#48484A"],
-    timeWindow: "Sat, Sun  4:00 AM – 2:00 PM",
-  },
+interface NarrativeImpact {
+  label: string;
+  ritualId?: string;
+  tabHint?: "Watch" | "Rituals";
+}
+
+interface ExploreNarrativeCard {
+  id: string;
+  title: string;
+  subtitle: string;
+  impact?: NarrativeImpact;
+  priority: number;
+  triggeredAt: string;
+  expiresAt?: string;
+  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement";
+  meta?: Record<string, any>;
+}
+
+const KIND_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap; color: string; label: string }> = {
+  playoff_push: { icon: "flame", color: "#FF453A", label: "Playoff Push" },
+  momentum: { icon: "trending-up", color: "#00E676", label: "Momentum" },
+  league_moment: { icon: "trophy", color: "#FFD54F", label: "League Moment" },
+  player_movement: { icon: "swap-horizontal", color: "#64B5F6", label: "Player Movement" },
 };
+
+function timeAgo(iso: string): string {
+  const diff = Date.now() - new Date(iso).getTime();
+  const mins = Math.floor(diff / 60000);
+  if (mins < 60) return `${mins}m ago`;
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return `${hrs}h ago`;
+  return `${Math.floor(hrs / 24)}d ago`;
+}
 
 export default function ExploreScreen() {
   const insets = useSafeAreaInsets();
-  const modes = getModes();
+  const queryClient = useQueryClient();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
+  const [refreshing, setRefreshing] = useState(false);
 
-  const handleModePress = (modeId: string) => {
+  const { data, isLoading } = useQuery<{ cards: ExploreNarrativeCard[]; lastUpdated: string | null }>({
+    queryKey: ["/api/narratives"],
+  });
+
+  const cards = data?.cards ?? [];
+
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+    try {
+      const url = new URL("/api/rebuild-explore", getApiUrl());
+      await fetch(url.toString(), { method: "POST" });
+      await queryClient.invalidateQueries({ queryKey: ["/api/narratives"] });
+    } catch {}
+    setRefreshing(false);
+  }, [queryClient]);
+
+  const handleCardPress = (card: ExploreNarrativeCard) => {
     if (Platform.OS !== "web") {
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     }
-    router.push({ pathname: "/mode/[id]", params: { id: modeId } });
+    router.push({
+      pathname: "/narrative/[id]",
+      params: { id: card.id, cardJson: JSON.stringify(card) },
+    });
   };
 
   return (
@@ -56,10 +94,18 @@ export default function ExploreScreen() {
           },
         ]}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={Colors.accent}
+            colors={[Colors.accent]}
+          />
+        }
       >
         <View style={styles.header}>
           <View style={styles.headerLeft}>
-            <Ionicons name="layers" size={28} color={Colors.accent} />
+            <Ionicons name="compass" size={28} color={Colors.accent} />
             <Text style={styles.headerTitle}>Explore</Text>
           </View>
           <Pressable
@@ -75,56 +121,67 @@ export default function ExploreScreen() {
           </Pressable>
         </View>
         <Text style={styles.subtitle}>
-          Browse weekend windows and sport packs
+          Upstream narrative intelligence
         </Text>
 
-        <View style={styles.modesContainer}>
-          {modes.map((mode) => {
-            const config = modeIcons[mode.id] || {
-              icon: "list" as keyof typeof Ionicons.glyphMap,
-              gradient: [Colors.card, Colors.cardHighlight],
-              timeWindow: "",
-            };
-            const isNight = mode.id === "weekend_night_bonding" || mode.id === "weekend_night_rituals";
-            const accentColor = isNight ? "#818CF8" : "#FB923C";
-            return (
-              <Pressable
-                key={mode.id}
-                onPress={() => handleModePress(mode.id)}
-                style={({ pressed }) => [
-                  styles.modeCard,
-                  { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] },
-                ]}
-                testID={`mode-${mode.id}`}
-              >
-                <LinearGradient
-                  colors={config.gradient}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 1 }}
-                  style={styles.modeGradient}
+        {isLoading ? (
+          <View style={styles.emptyContainer}>
+            <ActivityIndicator size="large" color={Colors.accent} />
+          </View>
+        ) : cards.length === 0 ? (
+          <View style={styles.emptyContainer}>
+            <Ionicons name="pulse-outline" size={48} color={Colors.textMuted} />
+            <Text style={styles.emptyTitle}>Nothing spiking right now</Text>
+            <Text style={styles.emptySubtitle}>
+              Explore will surface stories when thresholds are triggered.
+            </Text>
+          </View>
+        ) : (
+          <View style={styles.cardsContainer}>
+            {cards.map((card) => {
+              const config = KIND_CONFIG[card.kind] || KIND_CONFIG.league_moment;
+              return (
+                <Pressable
+                  key={card.id}
+                  onPress={() => handleCardPress(card)}
+                  style={({ pressed }) => [
+                    styles.narrativeCard,
+                    { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] },
+                  ]}
+                  testID={`narrative-${card.id}`}
                 >
-                  <View style={[styles.modeIconContainer, { backgroundColor: accentColor + "20" }]}>
-                    <Ionicons name={config.icon} size={32} color={accentColor} />
+                  <View style={[styles.cardAccent, { backgroundColor: config.color }]} />
+                  <View style={styles.cardContent}>
+                    <View style={styles.cardHeader}>
+                      <View style={[styles.kindBadge, { backgroundColor: config.color + "20" }]}>
+                        <Ionicons name={config.icon} size={14} color={config.color} />
+                        <Text style={[styles.kindLabel, { color: config.color }]}>{config.label}</Text>
+                      </View>
+                      <Text style={styles.timeAgo}>{timeAgo(card.triggeredAt)}</Text>
+                    </View>
+                    <Text style={styles.cardTitle} numberOfLines={1}>{card.title}</Text>
+                    <Text style={styles.cardSubtitle} numberOfLines={2}>{card.subtitle}</Text>
+                    {card.impact && (
+                      <View style={styles.impactRow}>
+                        <Ionicons name="link-outline" size={12} color={Colors.accent} />
+                        <Text style={styles.impactText}>{card.impact.label}</Text>
+                      </View>
+                    )}
                   </View>
-                  <Text style={styles.modeTitle}>{mode.title}</Text>
-                  {config.timeWindow ? (
-                    <Text style={styles.modeTimeWindow}>{config.timeWindow}</Text>
-                  ) : null}
-                  <Text style={styles.modePackCount}>
-                    {mode.packs.length} sport packs
-                  </Text>
-                  <View style={styles.modeArrow}>
-                    <Ionicons
-                      name="chevron-forward"
-                      size={20}
-                      color={Colors.textMuted}
-                    />
+                  <View style={styles.cardChevron}>
+                    <Ionicons name="chevron-forward" size={16} color={Colors.textMuted} />
                   </View>
-                </LinearGradient>
-              </Pressable>
-            );
-          })}
-        </View>
+                </Pressable>
+              );
+            })}
+          </View>
+        )}
+
+        {data?.lastUpdated && (
+          <Text style={styles.lastUpdated}>
+            Last generated: {timeAgo(data.lastUpdated)}
+          </Text>
+        )}
       </ScrollView>
     </View>
   );
@@ -169,51 +226,104 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
     marginBottom: 24,
   },
-  modesContainer: {
-    gap: 16,
+  emptyContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 80,
+    gap: 12,
   },
-  modeCard: {
-    borderRadius: 18,
+  emptyTitle: {
+    fontSize: 18,
+    fontWeight: "600" as const,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_600SemiBold",
+  },
+  emptySubtitle: {
+    fontSize: 14,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_400Regular",
+    textAlign: "center",
+    paddingHorizontal: 24,
+    lineHeight: 20,
+  },
+  cardsContainer: {
+    gap: 12,
+  },
+  narrativeCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: Colors.card,
+    borderRadius: 14,
     overflow: "hidden",
     borderWidth: 1,
     borderColor: Colors.border,
   },
-  modeGradient: {
-    padding: 24,
-    borderRadius: 18,
-    minHeight: 150,
-    justifyContent: "flex-end",
+  cardAccent: {
+    width: 4,
+    alignSelf: "stretch",
   },
-  modeIconContainer: {
-    width: 56,
-    height: 56,
-    borderRadius: 16,
+  cardContent: {
+    flex: 1,
+    padding: 14,
+    gap: 4,
+  },
+  cardHeader: {
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 16,
+    justifyContent: "space-between",
+    marginBottom: 2,
   },
-  modeTitle: {
-    fontSize: 22,
+  kindBadge: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
+  },
+  kindLabel: {
+    fontSize: 11,
+    fontWeight: "600" as const,
+    fontFamily: "Inter_600SemiBold",
+    textTransform: "uppercase" as const,
+    letterSpacing: 0.5,
+  },
+  timeAgo: {
+    fontSize: 11,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
+  },
+  cardTitle: {
+    fontSize: 17,
     fontWeight: "700" as const,
     color: Colors.textPrimary,
     fontFamily: "Inter_700Bold",
-    marginBottom: 2,
   },
-  modeTimeWindow: {
+  cardSubtitle: {
     fontSize: 13,
     color: Colors.textSecondary,
-    fontFamily: "Inter_500Medium",
-    marginBottom: 4,
-    letterSpacing: 0.2,
+    fontFamily: "Inter_400Regular",
+    lineHeight: 18,
   },
-  modePackCount: {
-    fontSize: 14,
+  impactRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    marginTop: 4,
+  },
+  impactText: {
+    fontSize: 12,
+    color: Colors.accent,
+    fontFamily: "Inter_500Medium",
+  },
+  cardChevron: {
+    paddingRight: 12,
+  },
+  lastUpdated: {
+    fontSize: 11,
     color: Colors.textMuted,
-    fontFamily: "Inter_500Medium",
-  },
-  modeArrow: {
-    position: "absolute",
-    right: 20,
-    top: 24,
+    fontFamily: "Inter_400Regular",
+    textAlign: "center",
+    marginTop: 16,
   },
 });
