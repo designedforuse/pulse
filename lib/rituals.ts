@@ -76,7 +76,7 @@ export const RITUALS: Ritual[] = [
   },
   {
     id: "sunday_session",
-    label: "Sunday Morning Coffee",
+    label: "Sunday Coffee & Chill",
     icon: "sunny",
     sports: ["rugby", "cricket", "soccer"],
     days: [0],
