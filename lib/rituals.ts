@@ -21,7 +21,7 @@ export interface Ritual {
 export const RITUALS: Ritual[] = [
   {
     id: "friday_lights",
-    label: "Friday Lights",
+    label: "Friday Family Game Night",
     icon: "moon",
     sports: ["hockey", "basketball", "soccer"],
     days: [5],
@@ -32,7 +32,7 @@ export const RITUALS: Ritual[] = [
   },
   {
     id: "friday_after_hours",
-    label: "Friday After Hours",
+    label: "Friday Night Mode",
     icon: "moon",
     sports: ["rugby", "cricket"],
     days: [5],
@@ -43,7 +43,7 @@ export const RITUALS: Ritual[] = [
   },
   {
     id: "saturday_sunrise",
-    label: "Saturday Sunrise",
+    label: "Saturday Warm-Up",
     icon: "sunny",
     sports: ["rugby", "cricket", "soccer"],
     days: [6],
@@ -54,7 +54,7 @@ export const RITUALS: Ritual[] = [
   },
   {
     id: "saturday_spotlight",
-    label: "Saturday Spotlight",
+    label: "Saturday Game Day",
     icon: "partly-sunny",
     sports: ["hockey", "basketball", "soccer"],
     days: [6],
@@ -65,7 +65,7 @@ export const RITUALS: Ritual[] = [
   },
   {
     id: "saturday_after_hours",
-    label: "Saturday After Hours",
+    label: "Saturday Extra Time",
     icon: "moon",
     sports: ["hockey", "basketball", "soccer", "rugby", "cricket"],
     days: [6],
@@ -76,7 +76,7 @@ export const RITUALS: Ritual[] = [
   },
   {
     id: "sunday_session",
-    label: "Sunday Session",
+    label: "Sunday Morning Coffee",
     icon: "sunny",
     sports: ["rugby", "cricket", "soccer"],
     days: [0],
