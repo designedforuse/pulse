@@ -110,7 +110,7 @@ export default function RitualsScreen() {
           </Pressable>
         </View>
         <Text style={styles.subtitle}>
-          Your personalized viewing windows
+          Personalized rituals for how you watch
         </Text>
 
         <View style={styles.ritualsContainer}>
