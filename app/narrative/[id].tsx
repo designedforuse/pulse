@@ -119,7 +119,8 @@ export default function NarrativeDetailScreen() {
       const start = new Date(e.startTimeLocal);
       return start >= now && start <= weekEnd;
     })
-    .sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
+    .sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime())
+    .slice(0, 8);
 
   const handleTabNav = (tab: "Watch" | "Rituals") => {
     if (Platform.OS !== "web") {
@@ -166,9 +167,17 @@ export default function NarrativeDetailScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Why this triggered</Text>
           <View style={styles.reasonCard}>
-            <Text style={styles.reasonText}>
-              {card.meta?.reason || "Threshold conditions were met based on current data."}
-            </Text>
+            {card.kind === "playoff_push" && card.meta?.teams?.length > 1 ? (
+              card.meta.teams.map((t: any, i: number) => (
+                <Text key={i} style={[styles.reasonText, i > 0 && { marginTop: 8 }]}>
+                  {t.reason}
+                </Text>
+              ))
+            ) : (
+              <Text style={styles.reasonText}>
+                {card.meta?.reason || "Threshold conditions were met based on current data."}
+              </Text>
+            )}
           </View>
         </View>
 

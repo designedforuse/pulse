@@ -154,55 +154,181 @@ function hasBackToBack(events: AppEvent[]): boolean {
   return false;
 }
 
-function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date): ExploreNarrativeCard[] {
-  const cards: ExploreNarrativeCard[] = [];
+interface PushCandidate {
+  team: string;
+  league: string;
+  sport: string;
+  shortName: string;
+  gamesInNext7Days: number;
+  gamesInNext5Days: number;
+  hasBackToBack: boolean;
+  windowStart: string;
+  windowEnd: string;
+  eventIds: string[];
+  reason: string;
+  events: AppEvent[];
+}
+
+function isTeamFavoriteOrTracked(teamName: string, favorites: Favorites): boolean {
+  const favTeams = getAllFavoriteTeams(favorites);
+  if (favTeams.some(f => {
+    const normFav = normalizeTeamName(f.team);
+    const normTeam = normalizeTeamName(teamName);
+    return normFav.includes(normTeam) || normTeam.includes(normFav);
+  })) return true;
+  return TRACKED_PUSH_TEAMS.some(t => {
+    const normT = normalizeTeamName(t);
+    const normTeam = normalizeTeamName(teamName);
+    return normT.includes(normTeam) || normTeam.includes(normT);
+  });
+}
+
+function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date): {
+  cards: ExploreNarrativeCard[];
+  rawCandidates: number;
+  afterFavoriteFilter: number;
+  combined: boolean;
+} {
   const favTeams = getAllFavoriteTeams(favorites);
   const hockeyFavs = favTeams.filter(f => f.sport === "hockey");
 
+  const candidatePool = new Map<string, { team: string; league: string; sport: string }>();
   for (const fav of hockeyFavs) {
-    const teamEvents = getEventsForTeam(events, fav.team, 7, now);
-    if (teamEvents.length < 3 && !hasBackToBack(teamEvents)) continue;
+    candidatePool.set(normalizeTeamName(fav.team), { team: fav.team, league: fav.league, sport: fav.sport });
+  }
+  for (const tracked of TRACKED_PUSH_TEAMS) {
+    const key = normalizeTeamName(tracked);
+    if (!candidatePool.has(key)) {
+      const league = tracked.includes("Gulls") ? "AHL" : tracked.includes("Oilers") ? "ECHL" : "NHL";
+      candidatePool.set(key, { team: tracked, league, sport: "hockey" });
+    }
+  }
+
+  const allTeamsToEvaluate = Array.from(candidatePool.values());
+  const rawCandidateCount = allTeamsToEvaluate.length;
+  const rawCandidates: PushCandidate[] = [];
+
+  for (const fav of allTeamsToEvaluate) {
+
+    const teamEvents7 = getEventsForTeam(events, fav.team, 7, now);
+    const teamEvents5 = getEventsForTeam(events, fav.team, 5, now);
+    const b2b = hasBackToBack(teamEvents7);
+    const gamesIn7 = teamEvents7.length;
+    const gamesIn5 = teamEvents5.length;
+
+    const condition1 = gamesIn5 >= 4;
+    const condition2 = b2b && gamesIn7 >= 4;
+    if (!condition1 && !condition2) continue;
 
     const shortName = fav.team.split(" ").pop() || fav.team;
-    const b2b = hasBackToBack(teamEvents);
-    const daysSpan = teamEvents.length >= 2
-      ? Math.ceil((new Date(teamEvents[teamEvents.length - 1].startTimeLocal).getTime() - new Date(teamEvents[0].startTimeLocal).getTime()) / 86400000)
+    const daysSpan = teamEvents7.length >= 2
+      ? Math.ceil((new Date(teamEvents7[teamEvents7.length - 1].startTimeLocal).getTime() - new Date(teamEvents7[0].startTimeLocal).getTime()) / 86400000)
       : 0;
 
+    const reasonParts: string[] = [];
+    if (condition1) reasonParts.push(`${gamesIn5} games in 5 days`);
+    if (condition2) reasonParts.push(`back-to-back + ${gamesIn7} games in 7 days`);
+
+    rawCandidates.push({
+      team: fav.team,
+      league: fav.league,
+      sport: fav.sport,
+      shortName,
+      gamesInNext7Days: gamesIn7,
+      gamesInNext5Days: gamesIn5,
+      hasBackToBack: b2b,
+      windowStart: now.toISOString(),
+      windowEnd: new Date(now.getTime() + 7 * 86400000).toISOString(),
+      eventIds: teamEvents7.map(e => e.id),
+      reason: `${fav.team}: ${reasonParts.join(", ")}`,
+      events: teamEvents7,
+    });
+  }
+
+  if (rawCandidates.length === 0) {
+    return { cards: [], rawCandidates: rawCandidateCount, afterFavoriteFilter: 0, combined: false };
+  }
+
+  const allPushEvents = rawCandidates.flatMap(c => c.events);
+  const ritual = findBestRitual(allPushEvents);
+  const allEventIds = [...new Set(rawCandidates.flatMap(c => c.eventIds))];
+  const allRituals: RitualDef[] = [];
+  for (const c of rawCandidates) {
+    const r = findBestRitual(c.events);
+    if (r && !allRituals.some(ar => ar.id === r.id)) allRituals.push(r);
+  }
+  const impact: NarrativeImpact = ritual
+    ? { label: `Impacts: ${allRituals.map(r => r.label).join(", ") || ritual.label}`, ritualId: ritual.id, tabHint: "Rituals" }
+    : { label: "Feeds: Watch", tabHint: "Watch" };
+
+  if (rawCandidates.length === 1) {
+    const c = rawCandidates[0];
     const subtitleParts: string[] = [];
-    if (teamEvents.length >= 3) subtitleParts.push(`${teamEvents.length} games in ${daysSpan} days`);
-    if (b2b) subtitleParts.push("back-to-back");
+    subtitleParts.push(`${c.gamesInNext5Days} in 5 days`);
+    if (c.hasBackToBack) subtitleParts.push("back-to-back");
 
-    const ritual = findBestRitual(teamEvents);
-    const impact: NarrativeImpact = ritual
-      ? { label: `Impacts: ${ritual.label}`, ritualId: ritual.id, tabHint: "Rituals" }
-      : { label: "Feeds: Watch", tabHint: "Watch" };
+    return {
+      cards: [{
+        id: `playoff_push_combined`,
+        title: `${c.shortName} Push Week`,
+        subtitle: subtitleParts.join(" · "),
+        impact,
+        priority: 100,
+        triggeredAt: now.toISOString(),
+        expiresAt: new Date(now.getTime() + 7 * 86400000).toISOString(),
+        kind: "playoff_push",
+        meta: {
+          teams: [{ team: c.team, league: c.league, gamesInNext7Days: c.gamesInNext7Days, gamesInNext5Days: c.gamesInNext5Days, hasBackToBack: c.hasBackToBack, reason: c.reason }],
+          eventIds: c.eventIds,
+          gamesInNext7Days: c.gamesInNext7Days,
+          gamesInNext5Days: c.gamesInNext5Days,
+          hasBackToBack: c.hasBackToBack,
+          windowStart: c.windowStart,
+          windowEnd: c.windowEnd,
+          reason: c.reason,
+        },
+      }],
+      rawCandidates: rawCandidateCount,
+      afterFavoriteFilter: rawCandidates.length,
+      combined: false,
+    };
+  }
 
-    cards.push({
-      id: `playoff_push_${fav.league.toLowerCase().replace(/\s/g, "")}_${normalizeTeamName(fav.team).replace(/\s/g, "_")}`,
-      title: `${shortName} Push Week`,
-      subtitle: subtitleParts.join(" · ") || "Dense schedule ahead",
+  const subtitleParts = rawCandidates.map(c => {
+    const best = c.gamesInNext5Days >= 4 ? `${c.gamesInNext5Days} in 5` : `${c.gamesInNext7Days} in 7`;
+    return `${c.shortName} (${best})`;
+  });
+
+  return {
+    cards: [{
+      id: `playoff_push_combined`,
+      title: "Favorites Push Week",
+      subtitle: subtitleParts.join(" · "),
       impact,
       priority: 100,
       triggeredAt: now.toISOString(),
       expiresAt: new Date(now.getTime() + 7 * 86400000).toISOString(),
       kind: "playoff_push",
       meta: {
-        team: fav.team,
-        league: fav.league,
-        sport: fav.sport,
-        gamesInWindow: teamEvents.length,
-        hasBackToBack: b2b,
-        daysSpan,
-        eventIds: teamEvents.map(e => e.id),
-        reason: teamEvents.length >= 3
-          ? `${fav.team} has ${teamEvents.length} games in the next 7 days`
-          : `${fav.team} has back-to-back games`,
+        teams: rawCandidates.map(c => ({
+          team: c.team,
+          league: c.league,
+          gamesInNext7Days: c.gamesInNext7Days,
+          gamesInNext5Days: c.gamesInNext5Days,
+          hasBackToBack: c.hasBackToBack,
+          reason: c.reason,
+        })),
+        eventIds: allEventIds.slice(0, 8),
+        combinedTeamCount: rawCandidates.length,
+        windowStart: now.toISOString(),
+        windowEnd: new Date(now.getTime() + 7 * 86400000).toISOString(),
+        reason: rawCandidates.map(c => c.reason).join("; "),
       },
-    });
-  }
-
-  return cards;
+    }],
+    rawCandidates: rawCandidateCount,
+    afterFavoriteFilter: rawCandidates.length,
+    combined: true,
+  };
 }
 
 async function fetchNhlStandings(): Promise<any | null> {
@@ -476,6 +602,7 @@ function saveMovementCache(cache: PlayerMovementCache): void {
 }
 
 const TRACKED_TEAMS = ["ANA", "SDG"];
+const TRACKED_PUSH_TEAMS = ["Anaheim Ducks", "San Diego Gulls", "Tulsa Oilers"];
 const TRACKED_TEAM_NAMES = ["Anaheim Ducks", "San Diego Gulls", "Tulsa Oilers"];
 
 async function fetchNhlBoxscorePlayers(teamAbbrev: string, now: Date): Promise<{ name: string; id: string; team: string }[]> {
@@ -622,6 +749,10 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
   cards: ExploreNarrativeCard[];
   debug: {
     playoffPushCount: number;
+    rawPushCandidates: number;
+    pushAfterFavoriteFilter: number;
+    pushCombined: boolean;
+    pushFinalCount: number;
     momentumCount: number;
     leagueMomentCount: number;
     playerMovementCount: number;
@@ -630,8 +761,8 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
 }> {
   console.log("\n=== Generating Explore Narratives ===");
 
-  const playoffPush = generatePlayoffPush(events, favorites, now);
-  console.log(`  Playoff Push: ${playoffPush.length} card(s)`);
+  const pushResult = generatePlayoffPush(events, favorites, now);
+  console.log(`  Playoff Push: ${pushResult.cards.length} card(s) (raw=${pushResult.rawCandidates}, filtered=${pushResult.afterFavoriteFilter}, combined=${pushResult.combined})`);
 
   const nhlGames = new Map<string, any[]>();
   for (const [team, abbrev] of Object.entries(NHL_TEAM_ABBREVS)) {
@@ -655,7 +786,9 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     console.log(`  Player Movement: skipped (${(err as Error).message})`);
   }
 
-  const allCards = [...playoffPush, ...momentum, ...leagueMoments, ...playerMovementCards];
+  const pushCards = pushResult.cards.slice(0, 1);
+
+  const allCards = [...pushCards, ...momentum, ...leagueMoments, ...playerMovementCards];
   allCards.sort((a, b) => {
     if (b.priority !== a.priority) return b.priority - a.priority;
     return new Date(b.triggeredAt).getTime() - new Date(a.triggeredAt).getTime();
@@ -664,7 +797,11 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
   const capped = allCards.slice(0, 5);
 
   const debug = {
-    playoffPushCount: playoffPush.length,
+    playoffPushCount: pushResult.cards.length,
+    rawPushCandidates: pushResult.rawCandidates,
+    pushAfterFavoriteFilter: pushResult.afterFavoriteFilter,
+    pushCombined: pushResult.combined,
+    pushFinalCount: pushCards.length,
     momentumCount: momentum.length,
     leagueMomentCount: leagueMoments.length,
     playerMovementCount: playerMovementCards.length,

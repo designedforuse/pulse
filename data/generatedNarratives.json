@@ -1,33 +1,209 @@
 {
-  "lastUpdated": "2026-03-02T06:02:55.791Z",
+  "lastUpdated": "2026-03-02T06:23:06.962Z",
   "debug": {
-    "playoffPushCount": 6,
+    "playoffPushCount": 1,
+    "rawPushCandidates": 6,
+    "pushAfterFavoriteFilter": 4,
+    "pushCombined": true,
+    "pushFinalCount": 1,
     "momentumCount": 1,
     "leagueMomentCount": 2,
     "playerMovementCount": 0,
-    "totalBeforeCap": 9
+    "totalBeforeCap": 4
   },
   "cards": [
     {
-      "id": "playoff_push_nhl_anaheim_ducks",
-      "title": "Ducks Push Week",
-      "subtitle": "6 games in 5 days · back-to-back",
+      "id": "playoff_push_combined",
+      "title": "Favorites Push Week",
+      "subtitle": "Ducks (6 in 7) · Bruins (6 in 7) · Gulls (5 in 7) · Oilers (6 in 7)",
       "impact": {
-        "label": "Impacts: Family Game Night",
+        "label": "Impacts: Family Game Night, Sunday Coffee & Chill, Saturday Game Day",
         "ritualId": "friday_lights",
         "tabHint": "Rituals"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-02T06:02:55.791Z",
-      "expiresAt": "2026-03-09T06:02:55.791Z",
+      "triggeredAt": "2026-03-02T06:23:06.962Z",
+      "expiresAt": "2026-03-09T06:23:06.962Z",
       "kind": "playoff_push",
+      "meta": {
+        "teams": [
+          {
+            "team": "Anaheim Ducks",
+            "league": "NHL",
+            "gamesInNext7Days": 6,
+            "gamesInNext5Days": 3,
+            "hasBackToBack": true,
+            "reason": "Anaheim Ducks: back-to-back + 6 games in 7 days"
+          },
+          {
+            "team": "Boston Bruins",
+            "league": "NHL",
+            "gamesInNext7Days": 6,
+            "gamesInNext5Days": 2,
+            "hasBackToBack": true,
+            "reason": "Boston Bruins: back-to-back + 6 games in 7 days"
+          },
+          {
+            "team": "San Diego Gulls",
+            "league": "AHL",
+            "gamesInNext7Days": 5,
+            "gamesInNext5Days": 2,
+            "hasBackToBack": true,
+            "reason": "San Diego Gulls: back-to-back + 5 games in 7 days"
+          },
+          {
+            "team": "Tulsa Oilers",
+            "league": "ECHL",
+            "gamesInNext7Days": 6,
+            "gamesInNext5Days": 2,
+            "hasBackToBack": true,
+            "reason": "Tulsa Oilers: back-to-back + 6 games in 7 days"
+          }
+        ],
+        "eventIds": [
+          "nhl_2025020968",
+          "nhl_2025020973",
+          "nhl_2025020987",
+          "rugby-svns-rj2l89-d1",
+          "rugby-svns-rj2l89-d2",
+          "nhl_2025021006",
+          "nhl_2025020959",
+          "nhl_2025020979"
+        ],
+        "combinedTeamCount": 4,
+        "windowStart": "2026-03-02T06:23:06.962Z",
+        "windowEnd": "2026-03-09T06:23:06.962Z",
+        "reason": "Anaheim Ducks: back-to-back + 6 games in 7 days; Boston Bruins: back-to-back + 6 games in 7 days; San Diego Gulls: back-to-back + 5 games in 7 days; Tulsa Oilers: back-to-back + 6 games in 7 days"
+      }
+    },
+    {
+      "id": "league_moment_rivalry",
+      "title": "Rivalry Weekend",
+      "subtitle": "2 rivalry matchups in the next 7 days",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 70,
+      "triggeredAt": "2026-03-02T06:23:06.962Z",
+      "expiresAt": "2026-03-09T06:23:06.962Z",
+      "kind": "league_moment",
+      "meta": {
+        "type": "rivalry",
+        "matchCount": 2,
+        "rivalries": [
+          "Keystone State Rivalry",
+          "Derby della Madonnina"
+        ],
+        "matches": [
+          {
+            "label": "Keystone State Rivalry",
+            "away": "Philadelphia Flyers",
+            "home": "Pittsburgh Penguins",
+            "league": "NHL",
+            "startTime": "2026-03-07T22:30:00.000Z"
+          },
+          {
+            "label": "Derby della Madonnina",
+            "away": "Internazionale",
+            "home": "AC Milan",
+            "league": "Serie A",
+            "startTime": "2026-03-08T19:45:00.000Z"
+          }
+        ],
+        "eventIds": [
+          "nhl_2025020993",
+          "soccer-seriea-20260308-1945-internazionale-at-ac-milan"
+        ],
+        "reason": "2 known rivalry matchup(s) found: Keystone State Rivalry, Derby della Madonnina"
+      }
+    },
+    {
+      "id": "league_moment_tournament",
+      "title": "Big Stage",
+      "subtitle": "3 tournament/knockout matches this week",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 70,
+      "triggeredAt": "2026-03-02T06:23:06.962Z",
+      "expiresAt": "2026-03-09T06:23:06.962Z",
+      "kind": "league_moment",
+      "meta": {
+        "type": "tournament",
+        "matchCount": 3,
+        "matches": [
+          {
+            "away": "TBC",
+            "home": "TBC",
+            "league": "ICC",
+            "round": "T20 WC Semi-Final 1 – Match 53",
+            "startTime": "2026-03-04T13:30:00.000Z"
+          },
+          {
+            "away": "TBC",
+            "home": "TBC",
+            "league": "ICC",
+            "round": "T20 WC Semi-Final 2 – Match 54",
+            "startTime": "2026-03-05T13:30:00.000Z"
+          },
+          {
+            "away": "TBC",
+            "home": "TBC",
+            "league": "ICC",
+            "round": "T20 WC Final – Match 55",
+            "startTime": "2026-03-08T13:30:00.000Z"
+          }
+        ],
+        "eventIds": [
+          "cricket-t20wc-7259363de2",
+          "cricket-t20wc-b20ed3d724",
+          "cricket-t20wc-5c7914345e"
+        ],
+        "reason": "Found 3 tournament stage match(es) in the next 7 days"
+      }
+    },
+    {
+      "id": "momentum_ana",
+      "title": "Ducks Heating Up",
+      "subtitle": "5-game win streak · +3 goal diff",
+      "impact": {
+        "label": "Feeds: Family Game Night",
+        "ritualId": "friday_lights",
+        "tabHint": "Rituals"
+      },
+      "priority": 60,
+      "triggeredAt": "2026-03-02T06:23:06.962Z",
+      "expiresAt": "2026-03-05T06:23:06.962Z",
+      "kind": "momentum",
       "meta": {
         "team": "Anaheim Ducks",
         "league": "NHL",
-        "sport": "hockey",
-        "gamesInWindow": 6,
-        "hasBackToBack": true,
-        "daysSpan": 5,
+        "abbrev": "ANA",
+        "winStreak": 5,
+        "pointStreak": 5,
+        "goalDiff": 3,
+        "recentGames": [
+          {
+            "date": "2026-03-02T01:00:00Z",
+            "opponent": "Calgary",
+            "score": "3-2",
+            "result": "W"
+          },
+          {
+            "date": "2026-02-28T03:00:00Z",
+            "opponent": "Winnipeg",
+            "score": "5-4",
+            "result": "W"
+          },
+          {
+            "date": "2026-02-26T03:30:00Z",
+            "opponent": "Edmonton",
+            "score": "6-5",
+            "result": "W"
+          }
+        ],
         "eventIds": [
           "nhl_2025020968",
           "nhl_2025020973",
@@ -36,127 +212,7 @@
           "rugby-svns-rj2l89-d2",
           "nhl_2025021006"
         ],
-        "reason": "Anaheim Ducks has 6 games in the next 7 days"
-      }
-    },
-    {
-      "id": "playoff_push_nhl_boston_bruins",
-      "title": "Bruins Push Week",
-      "subtitle": "6 games in 5 days · back-to-back",
-      "impact": {
-        "label": "Impacts: Sunday Coffee & Chill",
-        "ritualId": "sunday_session",
-        "tabHint": "Rituals"
-      },
-      "priority": 100,
-      "triggeredAt": "2026-03-02T06:02:55.791Z",
-      "expiresAt": "2026-03-09T06:02:55.791Z",
-      "kind": "playoff_push",
-      "meta": {
-        "team": "Boston Bruins",
-        "league": "NHL",
-        "sport": "hockey",
-        "gamesInWindow": 6,
-        "hasBackToBack": true,
-        "daysSpan": 5,
-        "eventIds": [
-          "nhl_2025020959",
-          "nhl_2025020979",
-          "nhl_2025020990",
-          "rugby-svns-rj2l89-d1",
-          "rugby-svns-rj2l89-d2",
-          "nhl_2025021002"
-        ],
-        "reason": "Boston Bruins has 6 games in the next 7 days"
-      }
-    },
-    {
-      "id": "playoff_push_ahl_san_diego_gulls",
-      "title": "Gulls Push Week",
-      "subtitle": "5 games in 4 days · back-to-back",
-      "impact": {
-        "label": "Impacts: Family Game Night",
-        "ritualId": "friday_lights",
-        "tabHint": "Rituals"
-      },
-      "priority": 100,
-      "triggeredAt": "2026-03-02T06:02:55.791Z",
-      "expiresAt": "2026-03-09T06:02:55.791Z",
-      "kind": "playoff_push",
-      "meta": {
-        "team": "San Diego Gulls",
-        "league": "AHL",
-        "sport": "hockey",
-        "gamesInWindow": 5,
-        "hasBackToBack": true,
-        "daysSpan": 4,
-        "eventIds": [
-          "ahl-1028625",
-          "ahl-1028637",
-          "ahl-1028652",
-          "rugby-svns-rj2l89-d1",
-          "rugby-svns-rj2l89-d2"
-        ],
-        "reason": "San Diego Gulls has 5 games in the next 7 days"
-      }
-    },
-    {
-      "id": "playoff_push_ncaa_boston_university",
-      "title": "University Push Week",
-      "subtitle": "3 games in 1 days · back-to-back",
-      "impact": {
-        "label": "Impacts: Sunday Coffee & Chill",
-        "ritualId": "sunday_session",
-        "tabHint": "Rituals"
-      },
-      "priority": 100,
-      "triggeredAt": "2026-03-02T06:02:55.791Z",
-      "expiresAt": "2026-03-09T06:02:55.791Z",
-      "kind": "playoff_push",
-      "meta": {
-        "team": "Boston University",
-        "league": "NCAA",
-        "sport": "hockey",
-        "gamesInWindow": 3,
-        "hasBackToBack": true,
-        "daysSpan": 1,
-        "eventIds": [
-          "ncaa-bu-iwrpxs",
-          "rugby-svns-rj2l89-d1",
-          "rugby-svns-rj2l89-d2"
-        ],
-        "reason": "Boston University has 3 games in the next 7 days"
-      }
-    },
-    {
-      "id": "playoff_push_echl_tulsa_oilers",
-      "title": "Oilers Push Week",
-      "subtitle": "6 games in 4 days · back-to-back",
-      "impact": {
-        "label": "Impacts: Saturday Game Day",
-        "ritualId": "saturday_spotlight",
-        "tabHint": "Rituals"
-      },
-      "priority": 100,
-      "triggeredAt": "2026-03-02T06:02:55.791Z",
-      "expiresAt": "2026-03-09T06:02:55.791Z",
-      "kind": "playoff_push",
-      "meta": {
-        "team": "Tulsa Oilers",
-        "league": "ECHL",
-        "sport": "hockey",
-        "gamesInWindow": 6,
-        "hasBackToBack": true,
-        "daysSpan": 4,
-        "eventIds": [
-          "echl-web-25121",
-          "echl-web-25125",
-          "echl-web-25137",
-          "rugby-svns-rj2l89-d1",
-          "rugby-svns-rj2l89-d2",
-          "echl-web-25149"
-        ],
-        "reason": "Tulsa Oilers has 6 games in the next 7 days"
+        "reason": "Anaheim Ducks is on a 5-game win streak"
       }
     }
   ]
