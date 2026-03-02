@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import Animated, {
@@ -77,18 +78,42 @@ function formatEventDate(startTimeLocal: string): { date: string; time: string }
   return { date: `${month} ${day}`, time };
 }
 
+const TENSION_ACCENT_COLORS: Record<string, string> = {
+  "High Drama": "#E57373",
+  "Tight Game": Colors.accentSoft,
+  "Heating Up": "#FFB74D",
+};
+
+function getTensionLabel(tensionRank: number): string | null {
+  if (tensionRank >= 4) return "High Drama";
+  if (tensionRank === 3) return "Tight Game";
+  if (tensionRank === 2) return "Heating Up";
+  return null;
+}
+
+function getHeroMicroLabel(isFav: boolean, tensionRank: number, event: SportEvent, now: Date): string | null {
+  if (isFav) return "\u2B50 Favorite";
+  if (tensionRank >= 3) return "\uD83D\uDD25 High Tension";
+  const startMs = new Date(event.startTimeLocal).getTime();
+  const minsUntil = (startMs - now.getTime()) / 60000;
+  if (minsUntil > 0 && minsUntil <= 45) return "\u23F3 Starting Soon";
+  return null;
+}
+
 function ChaosCard({
   event,
   isPrimary,
   now,
   score,
   isFav,
+  tensionRank = 0,
 }: {
   event: SportEvent;
   isPrimary: boolean;
   now: Date;
   score?: { awayScore: number; homeScore: number; period?: string; clock?: string; status?: string; cricketAway?: string; cricketHome?: string };
   isFav: boolean;
+  tensionRank?: number;
 }) {
   const sportColor = getSportColor(event.sport);
   const { gameState, displayClockText, displayStatusText } = normalizeGameState(event, score, now);
@@ -97,7 +122,8 @@ function ChaosCard({
   const flashStyle = useScoreFlash(score?.awayScore, score?.homeScore, score?.cricketAway, score?.cricketHome);
   const isLiveState = gameState === "LIVE";
   const isFinalState = gameState === "FINAL";
-  const scoreColorStyle = isLiveState ? styles.scoreLive : isFinalState ? null : null;
+  const tensionLabel = getTensionLabel(tensionRank);
+  const tensionAccentColor = tensionLabel ? TENSION_ACCENT_COLORS[tensionLabel] : null;
 
   const handlePress = () => {
     if (Platform.OS !== "web") {
@@ -115,6 +141,7 @@ function ChaosCard({
         : null;
 
   if (isPrimary) {
+    const microLabel = getHeroMicroLabel(isFav, tensionRank, event, now);
     return (
       <Pressable
         onPress={handlePress}
@@ -124,72 +151,86 @@ function ChaosCard({
           { opacity: pressed ? 0.9 : isFinalState ? 0.55 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] },
         ]}
       >
-        <Animated.View style={[styles.primaryInner, flashStyle]}>
-          <View style={styles.primaryHeader}>
-            <Text style={[styles.primaryLeague, { color: sportColor }]}>
-              {event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league}
-            </Text>
-            {isFav && <Text style={styles.favStar}>★</Text>}
-            <View style={{ flex: 1 }} />
-            {isLiveState && (
-              <View style={styles.liveChip}>
-                <LiveDot />
-                <Text style={styles.liveText}>LIVE</Text>
-              </View>
+        <Animated.View style={flashStyle}>
+          <LinearGradient
+            colors={["rgba(0,201,104,0.07)", "transparent"]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={styles.primaryInner}
+          >
+            {tensionAccentColor && (
+              <View style={[styles.tensionAccent, { backgroundColor: tensionAccentColor }]} />
             )}
-            {isFinalState && (
-              <Text style={styles.finalLabel}>FINAL</Text>
-            )}
-          </View>
-
-          {matchupText ? (
-            <Text style={styles.primaryMatchup} numberOfLines={2}>{matchupText}</Text>
-          ) : (
-            <View style={styles.primaryTeams}>
-              <View style={styles.primaryTeamRow}>
-                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={28} />
-                <Text style={styles.primaryTeamName} numberOfLines={1}>
-                  {displayTeamName(event.awayTeam, event.league)}
-                </Text>
-                {hasScore && event.sport !== "cricket" && (
-                  <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
-                    {score.awayScore}
-                  </Text>
-                )}
-              </View>
-              <Text style={styles.vsText}>vs</Text>
-              <View style={styles.primaryTeamRow}>
-                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={28} />
-                <Text style={styles.primaryTeamName} numberOfLines={1}>
-                  {displayTeamName(event.homeTeam, event.league)}
-                </Text>
-                {hasScore && event.sport !== "cricket" && (
-                  <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
-                    {score.homeScore}
-                  </Text>
-                )}
-              </View>
-              {hasScore && event.sport === "cricket" && (
-                <View style={styles.cricketScoreBlock}>
-                  {score.cricketAway ? <Text style={[styles.cricketScoreText, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketAway}</Text> : null}
-                  {score.cricketHome ? <Text style={[styles.cricketScoreText, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketHome}</Text> : null}
+            <View style={styles.primaryHeader}>
+              <Text style={[styles.primaryLeague, { color: sportColor }]}>
+                {event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league}
+              </Text>
+              {isFav && <Text style={styles.favStar}>{"\u2605"}</Text>}
+              <View style={{ flex: 1 }} />
+              {isLiveState && (
+                <View style={styles.liveChip}>
+                  <LiveDot />
+                  <Text style={styles.liveText}>LIVE</Text>
                 </View>
               )}
+              {isFinalState && (
+                <Text style={styles.finalLabel}>FINAL</Text>
+              )}
             </View>
-          )}
 
-          <View style={styles.primaryFooter}>
-            <View style={styles.primaryTimeRow}>
-              {isLiveState && displayClockText ? (
-                <Text style={styles.primaryClock}>{displayClockText}</Text>
-              ) : isFinalState && displayStatusText ? (
-                <Text style={styles.primaryFinalStatus}>{displayStatusText}</Text>
-              ) : gameState === "UPCOMING" ? (
-                <Text style={styles.primaryTime}>{date} · {time}</Text>
-              ) : null}
+            {microLabel && (
+              <Text style={styles.heroMicroLabel}>{microLabel}</Text>
+            )}
+
+            {matchupText ? (
+              <Text style={styles.primaryMatchup} numberOfLines={2}>{matchupText}</Text>
+            ) : (
+              <View style={styles.primaryTeams}>
+                <View style={styles.primaryTeamRow}>
+                  <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={28} />
+                  <Text style={styles.heroTeamName} numberOfLines={1}>
+                    {displayTeamName(event.awayTeam, event.league)}
+                  </Text>
+                  {hasScore && event.sport !== "cricket" && (
+                    <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
+                      {score.awayScore}
+                    </Text>
+                  )}
+                </View>
+                <Text style={styles.vsText}>vs</Text>
+                <View style={styles.primaryTeamRow}>
+                  <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={28} />
+                  <Text style={styles.heroTeamName} numberOfLines={1}>
+                    {displayTeamName(event.homeTeam, event.league)}
+                  </Text>
+                  {hasScore && event.sport !== "cricket" && (
+                    <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
+                      {score.homeScore}
+                    </Text>
+                  )}
+                </View>
+                {hasScore && event.sport === "cricket" && (
+                  <View style={styles.cricketScoreBlock}>
+                    {score.cricketAway ? <Text style={[styles.cricketScoreText, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketAway}</Text> : null}
+                    {score.cricketHome ? <Text style={[styles.cricketScoreText, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketHome}</Text> : null}
+                  </View>
+                )}
+              </View>
+            )}
+
+            <View style={styles.primaryFooter}>
+              <View style={styles.primaryTimeRow}>
+                {isLiveState && displayClockText ? (
+                  <Text style={styles.primaryClock}>{displayClockText}</Text>
+                ) : isFinalState && displayStatusText ? (
+                  <Text style={styles.primaryFinalStatus}>{displayStatusText}</Text>
+                ) : gameState === "UPCOMING" ? (
+                  <Text style={styles.primaryTime}>{date} {"\u00B7"} {time}</Text>
+                ) : null}
+              </View>
+              <ProviderLogo providerId={event.providerId} size={22} />
             </View>
-            <ProviderLogo providerId={event.providerId} size={22} />
-          </View>
+          </LinearGradient>
         </Animated.View>
       </Pressable>
     );
@@ -204,11 +245,14 @@ function ChaosCard({
       ]}
     >
       <Animated.View style={[styles.secondaryInner, flashStyle]}>
+        {tensionAccentColor && (
+          <View style={[styles.tensionAccentSecondary, { backgroundColor: tensionAccentColor }]} />
+        )}
         <View style={styles.secondaryHeader}>
-          <Text style={[styles.secondaryLeague, { color: sportColor }]} numberOfLines={1}>
+          <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
             {event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.league}
           </Text>
-          {isFav && <Text style={styles.favStarSmall}>★</Text>}
+          {isFav && <Text style={styles.favStarSmall}>{"\u2605"}</Text>}
           {isLiveState && (
             <View style={styles.liveChipSmall}>
               <LiveDot />
@@ -257,7 +301,9 @@ function ChaosCard({
           ) : gameState === "UPCOMING" ? (
             <Text style={styles.secondaryTime} numberOfLines={1}>{time}</Text>
           ) : null}
-          <ProviderLogo providerId={event.providerId} size={18} />
+          <View style={{ opacity: 0.9 }}>
+            <ProviderLogo providerId={event.providerId} size={18} />
+          </View>
         </View>
       </Animated.View>
     </Pressable>
@@ -272,11 +318,13 @@ function SecondaryCarousel({
   now,
   getScore,
   favorites,
+  chaosDebugRanks,
 }: {
   events: SportEvent[];
   now: Date;
   getScore: (id: string) => any;
   favorites: any;
+  chaosDebugRanks?: { id: string; emotion: number; tension: number; sportPri: number; isLive: boolean }[];
 }) {
   const { width: screenWidth } = useWindowDimensions();
   const contentWidth = screenWidth - PAGE_PADDING * 2;
@@ -293,9 +341,10 @@ function SecondaryCarousel({
         now={now}
         score={getScore(item.id)}
         isFav={favoriteInvolved(item, favorites)}
+        tensionRank={chaosDebugRanks?.find(r => r.id === item.id)?.tension ?? 0}
       />
     </View>
-  ), [tileWidth, now, getScore, favorites]);
+  ), [tileWidth, now, getScore, favorites, chaosDebugRanks]);
 
   return (
     <FlatList
@@ -625,7 +674,7 @@ export default function WatchScreen() {
             <View style={styles.chaosTitleRow}>
               <Ionicons name="flash" size={20} color="#818CF8" />
               <Text style={styles.chaosTitle}>
-                {chaosSetup.candidateCount > 0 ? "4-Game Chaos Setup" : "Next Up"}
+                {chaosSetup.candidateCount > 0 ? "Chaos View" : "Next Up"}
               </Text>
               <View style={{ flex: 1 }} />
               <Pressable
@@ -636,7 +685,7 @@ export default function WatchScreen() {
                 ]}
               >
                 <Ionicons name="shuffle" size={16} color={Colors.accent} />
-                <Text style={styles.rebuildText}>Rebuild</Text>
+                <Text style={styles.rebuildText}>Reshuffle</Text>
               </Pressable>
             </View>
 
@@ -660,6 +709,7 @@ export default function WatchScreen() {
               now={now}
               score={getScore(chaosSetup.primary!.id)}
               isFav={favoriteInvolved(chaosSetup.primary!, favorites)}
+              tensionRank={chaosSetup.debug?.selectedRanks?.find(r => r.id === chaosSetup.primary!.id)?.tension ?? 0}
             />
 
             {chaosSetup.secondary.length > 0 && (
@@ -668,6 +718,7 @@ export default function WatchScreen() {
                 now={now}
                 getScore={getScore}
                 favorites={favorites}
+                chaosDebugRanks={chaosSetup.debug?.selectedRanks}
               />
             )}
           </View>
@@ -864,8 +915,33 @@ const styles = StyleSheet.create({
   },
   primaryInner: {
     backgroundColor: Colors.card,
-    padding: 20,
+    paddingVertical: 28,
+    paddingHorizontal: 20,
     borderRadius: 17,
+    overflow: "hidden" as const,
+  },
+  tensionAccent: {
+    position: "absolute" as const,
+    left: 0,
+    top: 8,
+    bottom: 8,
+    width: 3,
+    borderRadius: 2,
+  },
+  tensionAccentSecondary: {
+    position: "absolute" as const,
+    left: 0,
+    top: 6,
+    bottom: 6,
+    width: 3,
+    borderRadius: 2,
+  },
+  heroMicroLabel: {
+    fontSize: 11,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_500Medium",
+    marginBottom: 10,
+    marginTop: -6,
   },
   primaryHeader: {
     flexDirection: "row",
@@ -892,6 +968,13 @@ const styles = StyleSheet.create({
     fontWeight: "600" as const,
     color: Colors.textPrimary,
     fontFamily: "Inter_600SemiBold",
+    flex: 1,
+  },
+  heroTeamName: {
+    fontSize: 22,
+    fontWeight: "700" as const,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_700Bold",
     flex: 1,
   },
   primaryMatchup: {
@@ -951,6 +1034,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.card,
     padding: 14,
     borderRadius: 13,
+    overflow: "hidden" as const,
   },
   secondaryHeader: {
     flexDirection: "row",
@@ -961,6 +1045,11 @@ const styles = StyleSheet.create({
   },
   secondaryLeague: {
     fontSize: 11,
+    fontFamily: "Inter_600SemiBold",
+    letterSpacing: 0.2,
+  },
+  secondaryLeagueSm: {
+    fontSize: 10,
     fontFamily: "Inter_600SemiBold",
     letterSpacing: 0.2,
   },
