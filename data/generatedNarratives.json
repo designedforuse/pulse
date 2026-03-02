@@ -1,30 +1,63 @@
 {
-  "lastUpdated": "2026-03-02T06:23:06.962Z",
+  "lastUpdated": "2026-03-02T06:50:44.110Z",
   "debug": {
-    "playoffPushCount": 1,
-    "rawPushCandidates": 6,
-    "pushAfterFavoriteFilter": 4,
-    "pushCombined": true,
-    "pushFinalCount": 1,
-    "momentumCount": 1,
-    "leagueMomentCount": 2,
-    "playerMovementCount": 0,
-    "totalBeforeCap": 4
+    "rawCandidatesByKindAndRegion": {
+      "playoff_push": {
+        "SoCal": 1,
+        "NewEngland": 1
+      },
+      "momentum": {
+        "SoCal": 1
+      },
+      "league_moment": {
+        "Other": 2
+      }
+    },
+    "combinedPushByRegion": {
+      "SoCal": true,
+      "NewEngland": false
+    },
+    "finalFeedByRegion": {
+      "SoCal": [
+        "playoff_push: SoCal Push Week",
+        "momentum: Ducks Heating Up"
+      ],
+      "NewEngland": [
+        "playoff_push: Bruins Push Week"
+      ],
+      "Other": [
+        "league_moment: Rivalry Weekend"
+      ]
+    },
+    "droppedCandidatesReasons": [
+      {
+        "id": "league_moment_tournament",
+        "kind": "league_moment",
+        "region": "Other",
+        "title": "Big Stage",
+        "reason": "max 1 league_moment per region (Other)"
+      }
+    ],
+    "totalBeforeCap": 5,
+    "totalAfterCap": 4
   },
   "cards": [
     {
-      "id": "playoff_push_combined",
-      "title": "Favorites Push Week",
-      "subtitle": "Ducks (6 in 7) · Bruins (6 in 7) · Gulls (5 in 7) · Oilers (6 in 7)",
+      "id": "playoff_push_socal",
+      "title": "SoCal Push Week",
+      "subtitle": "Ducks (6 in 7) · Gulls (5 in 7) · Oilers (6 in 7)",
       "impact": {
-        "label": "Impacts: Family Game Night, Sunday Coffee & Chill, Saturday Game Day",
+        "label": "Impacts: Family Game Night, Saturday Game Day",
         "ritualId": "friday_lights",
         "tabHint": "Rituals"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-02T06:23:06.962Z",
-      "expiresAt": "2026-03-09T06:23:06.962Z",
+      "triggeredAt": "2026-03-02T06:50:44.110Z",
+      "expiresAt": "2026-03-09T06:50:44.110Z",
       "kind": "playoff_push",
+      "region": "SoCal",
+      "regionPriority": 2,
+      "regionLabel": "SoCal",
       "meta": {
         "teams": [
           {
@@ -34,14 +67,6 @@
             "gamesInNext5Days": 3,
             "hasBackToBack": true,
             "reason": "Anaheim Ducks: back-to-back + 6 games in 7 days"
-          },
-          {
-            "team": "Boston Bruins",
-            "league": "NHL",
-            "gamesInNext7Days": 6,
-            "gamesInNext5Days": 2,
-            "hasBackToBack": true,
-            "reason": "Boston Bruins: back-to-back + 6 games in 7 days"
           },
           {
             "team": "San Diego Gulls",
@@ -67,101 +92,13 @@
           "rugby-svns-rj2l89-d1",
           "rugby-svns-rj2l89-d2",
           "nhl_2025021006",
-          "nhl_2025020959",
-          "nhl_2025020979"
+          "ahl-1028625",
+          "ahl-1028637"
         ],
-        "combinedTeamCount": 4,
-        "windowStart": "2026-03-02T06:23:06.962Z",
-        "windowEnd": "2026-03-09T06:23:06.962Z",
-        "reason": "Anaheim Ducks: back-to-back + 6 games in 7 days; Boston Bruins: back-to-back + 6 games in 7 days; San Diego Gulls: back-to-back + 5 games in 7 days; Tulsa Oilers: back-to-back + 6 games in 7 days"
-      }
-    },
-    {
-      "id": "league_moment_rivalry",
-      "title": "Rivalry Weekend",
-      "subtitle": "2 rivalry matchups in the next 7 days",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 70,
-      "triggeredAt": "2026-03-02T06:23:06.962Z",
-      "expiresAt": "2026-03-09T06:23:06.962Z",
-      "kind": "league_moment",
-      "meta": {
-        "type": "rivalry",
-        "matchCount": 2,
-        "rivalries": [
-          "Keystone State Rivalry",
-          "Derby della Madonnina"
-        ],
-        "matches": [
-          {
-            "label": "Keystone State Rivalry",
-            "away": "Philadelphia Flyers",
-            "home": "Pittsburgh Penguins",
-            "league": "NHL",
-            "startTime": "2026-03-07T22:30:00.000Z"
-          },
-          {
-            "label": "Derby della Madonnina",
-            "away": "Internazionale",
-            "home": "AC Milan",
-            "league": "Serie A",
-            "startTime": "2026-03-08T19:45:00.000Z"
-          }
-        ],
-        "eventIds": [
-          "nhl_2025020993",
-          "soccer-seriea-20260308-1945-internazionale-at-ac-milan"
-        ],
-        "reason": "2 known rivalry matchup(s) found: Keystone State Rivalry, Derby della Madonnina"
-      }
-    },
-    {
-      "id": "league_moment_tournament",
-      "title": "Big Stage",
-      "subtitle": "3 tournament/knockout matches this week",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 70,
-      "triggeredAt": "2026-03-02T06:23:06.962Z",
-      "expiresAt": "2026-03-09T06:23:06.962Z",
-      "kind": "league_moment",
-      "meta": {
-        "type": "tournament",
-        "matchCount": 3,
-        "matches": [
-          {
-            "away": "TBC",
-            "home": "TBC",
-            "league": "ICC",
-            "round": "T20 WC Semi-Final 1 – Match 53",
-            "startTime": "2026-03-04T13:30:00.000Z"
-          },
-          {
-            "away": "TBC",
-            "home": "TBC",
-            "league": "ICC",
-            "round": "T20 WC Semi-Final 2 – Match 54",
-            "startTime": "2026-03-05T13:30:00.000Z"
-          },
-          {
-            "away": "TBC",
-            "home": "TBC",
-            "league": "ICC",
-            "round": "T20 WC Final – Match 55",
-            "startTime": "2026-03-08T13:30:00.000Z"
-          }
-        ],
-        "eventIds": [
-          "cricket-t20wc-7259363de2",
-          "cricket-t20wc-b20ed3d724",
-          "cricket-t20wc-5c7914345e"
-        ],
-        "reason": "Found 3 tournament stage match(es) in the next 7 days"
+        "combinedTeamCount": 3,
+        "windowStart": "2026-03-02T06:50:44.110Z",
+        "windowEnd": "2026-03-09T06:50:44.110Z",
+        "reason": "Anaheim Ducks: back-to-back + 6 games in 7 days; San Diego Gulls: back-to-back + 5 games in 7 days; Tulsa Oilers: back-to-back + 6 games in 7 days"
       }
     },
     {
@@ -174,9 +111,12 @@
         "tabHint": "Rituals"
       },
       "priority": 60,
-      "triggeredAt": "2026-03-02T06:23:06.962Z",
-      "expiresAt": "2026-03-05T06:23:06.962Z",
+      "triggeredAt": "2026-03-02T06:50:44.110Z",
+      "expiresAt": "2026-03-05T06:50:44.110Z",
       "kind": "momentum",
+      "region": "SoCal",
+      "regionPriority": 2,
+      "regionLabel": "SoCal",
       "meta": {
         "team": "Anaheim Ducks",
         "league": "NHL",
@@ -213,6 +153,92 @@
           "nhl_2025021006"
         ],
         "reason": "Anaheim Ducks is on a 5-game win streak"
+      }
+    },
+    {
+      "id": "playoff_push_newengland",
+      "title": "Bruins Push Week",
+      "subtitle": "6 in 7 · back-to-back",
+      "impact": {
+        "label": "Impacts: Sunday Coffee & Chill",
+        "ritualId": "sunday_session",
+        "tabHint": "Rituals"
+      },
+      "priority": 100,
+      "triggeredAt": "2026-03-02T06:50:44.110Z",
+      "expiresAt": "2026-03-09T06:50:44.110Z",
+      "kind": "playoff_push",
+      "region": "NewEngland",
+      "regionPriority": 3,
+      "regionLabel": "New England",
+      "meta": {
+        "teams": [
+          {
+            "team": "Boston Bruins",
+            "league": "NHL",
+            "gamesInNext7Days": 6,
+            "gamesInNext5Days": 2,
+            "hasBackToBack": true,
+            "reason": "Boston Bruins: back-to-back + 6 games in 7 days"
+          }
+        ],
+        "eventIds": [
+          "nhl_2025020959",
+          "nhl_2025020979",
+          "nhl_2025020990",
+          "rugby-svns-rj2l89-d1",
+          "rugby-svns-rj2l89-d2",
+          "nhl_2025021002"
+        ],
+        "combinedTeamCount": 1,
+        "windowStart": "2026-03-02T06:50:44.110Z",
+        "windowEnd": "2026-03-09T06:50:44.110Z",
+        "reason": "Boston Bruins: back-to-back + 6 games in 7 days"
+      }
+    },
+    {
+      "id": "league_moment_rivalry",
+      "title": "Rivalry Weekend",
+      "subtitle": "2 rivalry matchups in the next 7 days",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 70,
+      "triggeredAt": "2026-03-02T06:50:44.110Z",
+      "expiresAt": "2026-03-09T06:50:44.110Z",
+      "kind": "league_moment",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "rivalry",
+        "matchCount": 2,
+        "rivalries": [
+          "Keystone State Rivalry",
+          "Derby della Madonnina"
+        ],
+        "matches": [
+          {
+            "label": "Keystone State Rivalry",
+            "away": "Philadelphia Flyers",
+            "home": "Pittsburgh Penguins",
+            "league": "NHL",
+            "startTime": "2026-03-07T22:30:00.000Z"
+          },
+          {
+            "label": "Derby della Madonnina",
+            "away": "Internazionale",
+            "home": "AC Milan",
+            "league": "Serie A",
+            "startTime": "2026-03-08T19:45:00.000Z"
+          }
+        ],
+        "eventIds": [
+          "nhl_2025020993",
+          "soccer-seriea-20260308-1945-internazionale-at-ac-milan"
+        ],
+        "reason": "2 known rivalry matchup(s) found: Keystone State Rivalry, Derby della Madonnina"
       }
     }
   ]

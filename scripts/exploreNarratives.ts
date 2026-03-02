@@ -11,6 +11,8 @@ export interface NarrativeImpact {
   tabHint?: "Watch" | "Rituals";
 }
 
+export type Region = "SouthAfrica" | "SoCal" | "NewEngland" | "Other";
+
 export interface ExploreNarrativeCard {
   id: string;
   title: string;
@@ -20,7 +22,74 @@ export interface ExploreNarrativeCard {
   triggeredAt: string;
   expiresAt?: string;
   kind: "playoff_push" | "momentum" | "league_moment" | "player_movement";
+  region: Region;
+  regionPriority: number;
+  regionLabel: string;
   meta?: Record<string, any>;
+}
+
+const REGION_CONFIG: Record<Region, { priority: number; label: string }> = {
+  SouthAfrica: { priority: 1, label: "South Africa" },
+  SoCal: { priority: 2, label: "SoCal" },
+  NewEngland: { priority: 3, label: "New England" },
+  Other: { priority: 99, label: "Other" },
+};
+
+const TEAM_REGION_MAP: Record<string, Region> = {
+  "anaheim ducks": "SoCal",
+  "san diego gulls": "SoCal",
+  "tulsa oilers": "SoCal",
+  "san diego fc": "SoCal",
+  "san diego wave": "SoCal",
+  "orange county sc": "SoCal",
+  "la galaxy": "SoCal",
+  "lafc": "SoCal",
+  "california legion": "SoCal",
+
+  "boston bruins": "NewEngland",
+  "boston university": "NewEngland",
+  "new england revolution": "NewEngland",
+  "new england free jacks": "NewEngland",
+
+  "stormers": "SouthAfrica",
+  "south africa": "SouthAfrica",
+  "mi cape town": "SouthAfrica",
+  "paarl royals": "SouthAfrica",
+  "springboks": "SouthAfrica",
+};
+
+const LEAGUE_REGION_MAP: Record<string, Region> = {
+  "SA20": "SouthAfrica",
+};
+
+function getRegionForTeam(teamName: string): Region {
+  const norm = teamName.toLowerCase().trim();
+  for (const [key, region] of Object.entries(TEAM_REGION_MAP)) {
+    if (norm.includes(key) || key.includes(norm)) return region;
+  }
+  return "Other";
+}
+
+function getRegionForLeague(league: string): Region {
+  return LEAGUE_REGION_MAP[league] || "Other";
+}
+
+function resolveRegion(teamName: string, league?: string): Region {
+  const teamRegion = getRegionForTeam(teamName);
+  if (teamRegion !== "Other") return teamRegion;
+  if (league) {
+    const leagueRegion = getRegionForLeague(league);
+    if (leagueRegion !== "Other") return leagueRegion;
+  }
+  return "Other";
+}
+
+function getRegionPriority(region: Region): number {
+  return REGION_CONFIG[region].priority;
+}
+
+function getRegionLabel(region: Region): string {
+  return REGION_CONFIG[region].label;
 }
 
 interface AppEvent {
@@ -183,11 +252,23 @@ function isTeamFavoriteOrTracked(teamName: string, favorites: Favorites): boolea
   });
 }
 
+interface PushDebugInfo {
+  rawCandidates: number;
+  afterThresholdFilter: number;
+  candidatesByRegion: Record<string, number>;
+  combinedByRegion: Record<string, boolean>;
+}
+
+const PUSH_TITLE_MAP: Record<Region, string> = {
+  SouthAfrica: "Home Push Week",
+  SoCal: "SoCal Push Week",
+  NewEngland: "Boston Push Week",
+  Other: "Push Week",
+};
+
 function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date): {
   cards: ExploreNarrativeCard[];
-  rawCandidates: number;
-  afterFavoriteFilter: number;
-  combined: boolean;
+  debugInfo: PushDebugInfo;
 } {
   const favTeams = getAllFavoriteTeams(favorites);
   const hockeyFavs = favTeams.filter(f => f.sport === "hockey");
@@ -206,10 +287,9 @@ function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date
 
   const allTeamsToEvaluate = Array.from(candidatePool.values());
   const rawCandidateCount = allTeamsToEvaluate.length;
-  const rawCandidates: PushCandidate[] = [];
+  const qualifiedCandidates: (PushCandidate & { region: Region })[] = [];
 
   for (const fav of allTeamsToEvaluate) {
-
     const teamEvents7 = getEventsForTeam(events, fav.team, 7, now);
     const teamEvents5 = getEventsForTeam(events, fav.team, 5, now);
     const b2b = hasBackToBack(teamEvents7);
@@ -221,15 +301,11 @@ function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date
     if (!condition1 && !condition2) continue;
 
     const shortName = fav.team.split(" ").pop() || fav.team;
-    const daysSpan = teamEvents7.length >= 2
-      ? Math.ceil((new Date(teamEvents7[teamEvents7.length - 1].startTimeLocal).getTime() - new Date(teamEvents7[0].startTimeLocal).getTime()) / 86400000)
-      : 0;
-
     const reasonParts: string[] = [];
     if (condition1) reasonParts.push(`${gamesIn5} games in 5 days`);
     if (condition2) reasonParts.push(`back-to-back + ${gamesIn7} games in 7 days`);
 
-    rawCandidates.push({
+    qualifiedCandidates.push({
       team: fav.team,
       league: fav.league,
       sport: fav.sport,
@@ -242,75 +318,64 @@ function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date
       eventIds: teamEvents7.map(e => e.id),
       reason: `${fav.team}: ${reasonParts.join(", ")}`,
       events: teamEvents7,
+      region: getRegionForTeam(fav.team),
     });
   }
 
-  if (rawCandidates.length === 0) {
-    return { cards: [], rawCandidates: rawCandidateCount, afterFavoriteFilter: 0, combined: false };
+  const regionGroups = new Map<Region, (PushCandidate & { region: Region })[]>();
+  for (const c of qualifiedCandidates) {
+    const group = regionGroups.get(c.region) || [];
+    group.push(c);
+    regionGroups.set(c.region, group);
   }
 
-  const allPushEvents = rawCandidates.flatMap(c => c.events);
-  const ritual = findBestRitual(allPushEvents);
-  const allEventIds = [...new Set(rawCandidates.flatMap(c => c.eventIds))];
-  const allRituals: RitualDef[] = [];
-  for (const c of rawCandidates) {
-    const r = findBestRitual(c.events);
-    if (r && !allRituals.some(ar => ar.id === r.id)) allRituals.push(r);
-  }
-  const impact: NarrativeImpact = ritual
-    ? { label: `Impacts: ${allRituals.map(r => r.label).join(", ") || ritual.label}`, ritualId: ritual.id, tabHint: "Rituals" }
-    : { label: "Feeds: Watch", tabHint: "Watch" };
-
-  if (rawCandidates.length === 1) {
-    const c = rawCandidates[0];
-    const subtitleParts: string[] = [];
-    subtitleParts.push(`${c.gamesInNext5Days} in 5 days`);
-    if (c.hasBackToBack) subtitleParts.push("back-to-back");
-
-    return {
-      cards: [{
-        id: `playoff_push_combined`,
-        title: `${c.shortName} Push Week`,
-        subtitle: subtitleParts.join(" · "),
-        impact,
-        priority: 100,
-        triggeredAt: now.toISOString(),
-        expiresAt: new Date(now.getTime() + 7 * 86400000).toISOString(),
-        kind: "playoff_push",
-        meta: {
-          teams: [{ team: c.team, league: c.league, gamesInNext7Days: c.gamesInNext7Days, gamesInNext5Days: c.gamesInNext5Days, hasBackToBack: c.hasBackToBack, reason: c.reason }],
-          eventIds: c.eventIds,
-          gamesInNext7Days: c.gamesInNext7Days,
-          gamesInNext5Days: c.gamesInNext5Days,
-          hasBackToBack: c.hasBackToBack,
-          windowStart: c.windowStart,
-          windowEnd: c.windowEnd,
-          reason: c.reason,
-        },
-      }],
-      rawCandidates: rawCandidateCount,
-      afterFavoriteFilter: rawCandidates.length,
-      combined: false,
-    };
+  const candidatesByRegion: Record<string, number> = {};
+  const combinedByRegion: Record<string, boolean> = {};
+  for (const [region, group] of regionGroups) {
+    candidatesByRegion[region] = group.length;
+    combinedByRegion[region] = group.length > 1;
   }
 
-  const subtitleParts = rawCandidates.map(c => {
-    const best = c.gamesInNext5Days >= 4 ? `${c.gamesInNext5Days} in 5` : `${c.gamesInNext7Days} in 7`;
-    return `${c.shortName} (${best})`;
-  });
+  const cards: ExploreNarrativeCard[] = [];
 
-  return {
-    cards: [{
-      id: `playoff_push_combined`,
-      title: "Favorites Push Week",
-      subtitle: subtitleParts.join(" · "),
+  for (const [region, group] of regionGroups) {
+    const regionEvents = group.flatMap(c => c.events);
+    const ritual = findBestRitual(regionEvents);
+    const allRituals: RitualDef[] = [];
+    for (const c of group) {
+      const r = findBestRitual(c.events);
+      if (r && !allRituals.some(ar => ar.id === r.id)) allRituals.push(r);
+    }
+    const impact: NarrativeImpact = ritual
+      ? { label: `Impacts: ${allRituals.map(r => r.label).join(", ") || ritual.label}`, ritualId: ritual.id, tabHint: "Rituals" }
+      : { label: "Feeds: Watch", tabHint: "Watch" };
+
+    const allEventIds = [...new Set(group.flatMap(c => c.eventIds))];
+    const title = group.length === 1
+      ? `${group[0].shortName} Push Week`
+      : PUSH_TITLE_MAP[region];
+
+    const subtitle = group.map(c => {
+      const best = c.gamesInNext5Days >= 4 ? `${c.gamesInNext5Days} in 5` : `${c.gamesInNext7Days} in 7`;
+      return group.length === 1
+        ? [best, c.hasBackToBack ? "back-to-back" : ""].filter(Boolean).join(" · ")
+        : `${c.shortName} (${best})`;
+    }).join(" · ");
+
+    cards.push({
+      id: `playoff_push_${region.toLowerCase()}`,
+      title,
+      subtitle,
       impact,
       priority: 100,
       triggeredAt: now.toISOString(),
       expiresAt: new Date(now.getTime() + 7 * 86400000).toISOString(),
       kind: "playoff_push",
+      region,
+      regionPriority: getRegionPriority(region),
+      regionLabel: getRegionLabel(region),
       meta: {
-        teams: rawCandidates.map(c => ({
+        teams: group.map(c => ({
           team: c.team,
           league: c.league,
           gamesInNext7Days: c.gamesInNext7Days,
@@ -319,15 +384,22 @@ function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date
           reason: c.reason,
         })),
         eventIds: allEventIds.slice(0, 8),
-        combinedTeamCount: rawCandidates.length,
+        combinedTeamCount: group.length,
         windowStart: now.toISOString(),
         windowEnd: new Date(now.getTime() + 7 * 86400000).toISOString(),
-        reason: rawCandidates.map(c => c.reason).join("; "),
+        reason: group.map(c => c.reason).join("; "),
       },
-    }],
-    rawCandidates: rawCandidateCount,
-    afterFavoriteFilter: rawCandidates.length,
-    combined: true,
+    });
+  }
+
+  return {
+    cards,
+    debugInfo: {
+      rawCandidates: rawCandidateCount,
+      afterThresholdFilter: qualifiedCandidates.length,
+      candidatesByRegion,
+      combinedByRegion,
+    },
   };
 }
 
@@ -430,6 +502,7 @@ function generateMomentum(events: AppEvent[], favorites: Favorites, now: Date, n
       ? { label: `Feeds: ${ritual.label}`, ritualId: ritual.id, tabHint: "Rituals" }
       : { label: "Feeds: Watch", tabHint: "Watch" };
 
+    const teamRegion = resolveRegion(fav.team, fav.league);
     cards.push({
       id: `momentum_${abbrev.toLowerCase()}`,
       title: `${shortName} Heating Up`,
@@ -439,6 +512,9 @@ function generateMomentum(events: AppEvent[], favorites: Favorites, now: Date, n
       triggeredAt: now.toISOString(),
       expiresAt: new Date(now.getTime() + 3 * 86400000).toISOString(),
       kind: "momentum",
+      region: teamRegion,
+      regionPriority: getRegionPriority(teamRegion),
+      regionLabel: getRegionLabel(teamRegion),
       meta: {
         team: fav.team,
         league: fav.league,
@@ -517,6 +593,7 @@ function generateLeagueMoments(events: AppEvent[], now: Date): ExploreNarrativeC
       ? `${rivalryMatches[0].label}: ${rivalryMatches[0].event.awayTeam} @ ${rivalryMatches[0].event.homeTeam}`
       : `${rivalryMatches.length} rivalry matchups in the next 7 days`;
 
+    const rivalryRegion = resolveRegion(rivalryMatches[0].event.homeTeam, rivalryMatches[0].event.league);
     cards.push({
       id: "league_moment_rivalry",
       title: rivalryMatches.length === 1 ? rivalryMatches[0].label : "Rivalry Weekend",
@@ -526,6 +603,9 @@ function generateLeagueMoments(events: AppEvent[], now: Date): ExploreNarrativeC
       triggeredAt: now.toISOString(),
       expiresAt: windowEnd.toISOString(),
       kind: "league_moment",
+      region: rivalryRegion,
+      regionPriority: getRegionPriority(rivalryRegion),
+      regionLabel: getRegionLabel(rivalryRegion),
       meta: {
         type: "rivalry",
         matchCount: rivalryMatches.length,
@@ -544,6 +624,7 @@ function generateLeagueMoments(events: AppEvent[], now: Date): ExploreNarrativeC
   }
 
   if (tournamentMatches.length > 0) {
+    const tournamentRegion = resolveRegion(tournamentMatches[0].homeTeam, tournamentMatches[0].league);
     cards.push({
       id: "league_moment_tournament",
       title: "Big Stage",
@@ -553,6 +634,9 @@ function generateLeagueMoments(events: AppEvent[], now: Date): ExploreNarrativeC
       triggeredAt: now.toISOString(),
       expiresAt: windowEnd.toISOString(),
       kind: "league_moment",
+      region: tournamentRegion,
+      regionPriority: getRegionPriority(tournamentRegion),
+      regionLabel: getRegionLabel(tournamentRegion),
       meta: {
         type: "tournament",
         matchCount: tournamentMatches.length,
@@ -723,6 +807,7 @@ function generatePlayerMovement(cache: PlayerMovementCache, now: Date): ExploreN
     teamMentions.add(m.toTeam.replace(/ \(.*\)/, ""));
   }
 
+  const movementRegion = resolveRegion(recentMovements[0]?.toTeam || "");
   return [{
     id: "player_movement_system",
     title: "System Shuffle",
@@ -732,6 +817,9 @@ function generatePlayerMovement(cache: PlayerMovementCache, now: Date): ExploreN
     triggeredAt: now.toISOString(),
     expiresAt: new Date(now.getTime() + 7 * 86400000).toISOString(),
     kind: "player_movement",
+    region: movementRegion,
+    regionPriority: getRegionPriority(movementRegion),
+    regionLabel: getRegionLabel(movementRegion),
     meta: {
       movements: recentMovements.map(m => ({
         player: m.playerName,
@@ -745,24 +833,32 @@ function generatePlayerMovement(cache: PlayerMovementCache, now: Date): ExploreN
   }];
 }
 
+interface DroppedCandidate {
+  id: string;
+  kind: string;
+  region: string;
+  title: string;
+  reason: string;
+}
+
 export async function generateNarratives(events: AppEvent[], favorites: Favorites, now: Date): Promise<{
   cards: ExploreNarrativeCard[];
   debug: {
-    playoffPushCount: number;
-    rawPushCandidates: number;
-    pushAfterFavoriteFilter: number;
-    pushCombined: boolean;
-    pushFinalCount: number;
-    momentumCount: number;
-    leagueMomentCount: number;
-    playerMovementCount: number;
+    rawCandidatesByKindAndRegion: Record<string, Record<string, number>>;
+    combinedPushByRegion: Record<string, boolean>;
+    finalFeedByRegion: Record<string, string[]>;
+    droppedCandidatesReasons: DroppedCandidate[];
     totalBeforeCap: number;
+    totalAfterCap: number;
   };
 }> {
   console.log("\n=== Generating Explore Narratives ===");
 
   const pushResult = generatePlayoffPush(events, favorites, now);
-  console.log(`  Playoff Push: ${pushResult.cards.length} card(s) (raw=${pushResult.rawCandidates}, filtered=${pushResult.afterFavoriteFilter}, combined=${pushResult.combined})`);
+  console.log(`  Playoff Push: ${pushResult.cards.length} card(s) by region`);
+  for (const c of pushResult.cards) {
+    console.log(`    [${c.region}] ${c.title}: ${c.subtitle}`);
+  }
 
   const nhlGames = new Map<string, any[]>();
   for (const [team, abbrev] of Object.entries(NHL_TEAM_ABBREVS)) {
@@ -786,35 +882,69 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     console.log(`  Player Movement: skipped (${(err as Error).message})`);
   }
 
-  const pushCards = pushResult.cards.slice(0, 1);
+  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...playerMovementCards];
 
-  const allCards = [...pushCards, ...momentum, ...leagueMoments, ...playerMovementCards];
-  allCards.sort((a, b) => {
+  const rawCandidatesByKindAndRegion: Record<string, Record<string, number>> = {};
+  for (const c of allCandidates) {
+    if (!rawCandidatesByKindAndRegion[c.kind]) rawCandidatesByKindAndRegion[c.kind] = {};
+    rawCandidatesByKindAndRegion[c.kind][c.region] = (rawCandidatesByKindAndRegion[c.kind][c.region] || 0) + 1;
+  }
+
+  allCandidates.sort((a, b) => {
+    if (a.regionPriority !== b.regionPriority) return a.regionPriority - b.regionPriority;
     if (b.priority !== a.priority) return b.priority - a.priority;
     return new Date(b.triggeredAt).getTime() - new Date(a.triggeredAt).getTime();
   });
 
-  const capped = allCards.slice(0, 5);
+  const dropped: DroppedCandidate[] = [];
+  const kindRegionCount = new Map<string, number>();
+  const selected: ExploreNarrativeCard[] = [];
+
+  for (const card of allCandidates) {
+    const key = `${card.kind}::${card.region}`;
+
+    if ((kindRegionCount.get(key) || 0) >= 1) {
+      dropped.push({ id: card.id, kind: card.kind, region: card.region, title: card.title, reason: `max 1 ${card.kind} per region (${card.region})` });
+      continue;
+    }
+
+    if (selected.length >= 4) {
+      dropped.push({ id: card.id, kind: card.kind, region: card.region, title: card.title, reason: "feed cap (max 4)" });
+      continue;
+    }
+
+    selected.push(card);
+    kindRegionCount.set(key, (kindRegionCount.get(key) || 0) + 1);
+  }
+
+  const finalFeedByRegion: Record<string, string[]> = {};
+  for (const c of selected) {
+    if (!finalFeedByRegion[c.region]) finalFeedByRegion[c.region] = [];
+    finalFeedByRegion[c.region].push(`${c.kind}: ${c.title}`);
+  }
 
   const debug = {
-    playoffPushCount: pushResult.cards.length,
-    rawPushCandidates: pushResult.rawCandidates,
-    pushAfterFavoriteFilter: pushResult.afterFavoriteFilter,
-    pushCombined: pushResult.combined,
-    pushFinalCount: pushCards.length,
-    momentumCount: momentum.length,
-    leagueMomentCount: leagueMoments.length,
-    playerMovementCount: playerMovementCards.length,
-    totalBeforeCap: allCards.length,
+    rawCandidatesByKindAndRegion,
+    combinedPushByRegion: pushResult.debugInfo.combinedByRegion,
+    finalFeedByRegion,
+    droppedCandidatesReasons: dropped,
+    totalBeforeCap: allCandidates.length,
+    totalAfterCap: selected.length,
   };
 
-  console.log(`  Total: ${allCards.length} → capped to ${capped.length}`);
-  for (const c of capped) {
-    console.log(`    [${c.kind}] ${c.title}: ${c.subtitle}`);
+  console.log(`  Total: ${allCandidates.length} → selected ${selected.length}`);
+  for (const c of selected) {
+    console.log(`    [${c.region}/${c.kind}] ${c.title}: ${c.subtitle}`);
+  }
+  if (dropped.length > 0) {
+    console.log(`  Dropped ${dropped.length} candidate(s):`);
+    for (const d of dropped) {
+      console.log(`    ✗ ${d.title} (${d.reason})`);
+    }
   }
   console.log("=== Narratives Complete ===\n");
 
-  return { cards: capped, debug };
+  return { cards: selected, debug };
 }
 
 export async function generateAndSave(): Promise<ExploreNarrativeCard[]> {
