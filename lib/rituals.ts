@@ -313,14 +313,7 @@ export function classifyEventForRitual(
   const w = getGuideDayWindow(targetDow, ritual.startHour, ritual.endHour, now);
 
   const eventStartMs = new Date(event.startTimeLocal).getTime();
-  const eventEndMs = getEventEnd(event).getTime();
-
-  const eventStartParts = getLocalParts(new Date(eventStartMs));
-  const onTargetDay = eventStartMs >= w.dayStartUtc.getTime() && eventStartMs <= w.dayEndUtc.getTime();
-
-  if (!onTargetDay) {
-    return { included: false, reason: "wrong-day" };
-  }
+  const eventEndMs = getEffectiveEventEnd(event, now).getTime();
 
   const overlaps = eventStartMs < w.windowEndUtc.getTime() && eventEndMs > w.windowStartUtc.getTime();
 
@@ -489,6 +482,14 @@ export interface RitualFilterDebug {
   };
 }
 
+function getEffectiveEventEnd(event: SportEvent, now: Date): Date {
+  const estimatedEnd = getEventEnd(event);
+  if (now > estimatedEnd && isEventLive(event, now)) {
+    return new Date(now.getTime() + 30 * 60 * 1000);
+  }
+  return estimatedEnd;
+}
+
 export function getEventsForRitual(
   allEvents: SportEvent[],
   ritual: Ritual,
@@ -500,14 +501,17 @@ export function getEventsForRitual(
 
   const sportMatched = allEvents.filter((e) => ritual.sports.includes(e.sport));
 
+  const maxLookback = 12 * 3600000;
+  const candidateStart = w.windowStartUtc.getTime() - maxLookback;
+  const candidateEnd = w.windowEndUtc.getTime();
   const dayMatched = sportMatched.filter((e) => {
     const eventMs = new Date(e.startTimeLocal).getTime();
-    return eventMs >= w.dayStartUtc.getTime() && eventMs <= w.dayEndUtc.getTime();
+    return eventMs >= candidateStart && eventMs < candidateEnd;
   });
 
   const overlapMatched = dayMatched.filter((e) => {
     const eventStartMs = new Date(e.startTimeLocal).getTime();
-    const eventEndMs = getEventEnd(e).getTime();
+    const eventEndMs = getEffectiveEventEnd(e, now).getTime();
     return eventStartMs < w.windowEndUtc.getTime() && eventEndMs > w.windowStartUtc.getTime();
   });
 
