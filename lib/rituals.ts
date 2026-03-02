@@ -21,7 +21,7 @@ export interface Ritual {
 export const RITUALS: Ritual[] = [
   {
     id: "friday_lights",
-    label: "Friday Family Game Night",
+    label: "Family Game Night",
     icon: "moon",
     sports: ["hockey", "basketball", "soccer"],
     days: [5],
