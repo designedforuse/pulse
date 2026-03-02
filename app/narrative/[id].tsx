@@ -112,12 +112,24 @@ export default function NarrativeDetailScreen() {
   const eventIds = new Set<string>(card.meta?.eventIds || []);
   const now = new Date();
   const weekEnd = new Date(now.getTime() + 7 * 86400000);
+  const cardTeam = (card.meta?.team || "").toLowerCase();
+  const cardLeague = card.meta?.league || "";
 
   const relevantEvents = (eventsData?.events || [])
     .filter(e => {
       if (!eventIds.has(e.id)) return false;
       const start = new Date(e.startTimeLocal);
-      return start >= now && start <= weekEnd;
+      if (start < now || start > weekEnd) return false;
+      if (cardTeam && cardLeague) {
+        if (e.league !== cardLeague) return false;
+        const home = e.homeTeam.toLowerCase();
+        const away = e.awayTeam.toLowerCase();
+        if (!home.includes(cardTeam) && !away.includes(cardTeam) &&
+            !cardTeam.includes(home) && !cardTeam.includes(away)) {
+          if (home && away) return false;
+        }
+      }
+      return true;
     })
     .sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime())
     .slice(0, 8);
@@ -233,10 +245,10 @@ export default function NarrativeDetailScreen() {
           </View>
         )}
 
-        {relevantEvents.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Upcoming Games</Text>
-            {relevantEvents.map((event) => (
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Upcoming Games</Text>
+          {relevantEvents.length > 0 ? (
+            relevantEvents.map((event) => (
               <Pressable
                 key={event.id}
                 onPress={() => handleEventPress(event.id)}
@@ -257,9 +269,16 @@ export default function NarrativeDetailScreen() {
                 </View>
                 <Ionicons name="chevron-forward" size={14} color={Colors.textMuted} />
               </Pressable>
-            ))}
-          </View>
-        )}
+            ))
+          ) : (
+            <View style={styles.emptyEvents}>
+              <Ionicons name="calendar-outline" size={24} color={Colors.textMuted} />
+              <Text style={styles.emptyEventsText}>
+                {cardTeam ? `No upcoming ${card.meta?.team || ""} games found.` : "No upcoming games found."}
+              </Text>
+            </View>
+          )}
+        </View>
 
         {card.impact?.tabHint && (
           <View style={styles.section}>
@@ -498,6 +517,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: Colors.textSecondary,
     fontFamily: "Inter_400Regular",
+  },
+  emptyEvents: {
+    alignItems: "center",
+    paddingVertical: 24,
+    gap: 8,
+  },
+  emptyEventsText: {
+    fontSize: 14,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
+    textAlign: "center" as const,
   },
   deepLinkButton: {
     flexDirection: "row",

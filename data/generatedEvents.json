@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-02T17:28:18.502Z",
+  "lastUpdated": "2026-03-02T20:54:38.948Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -28,10 +28,10 @@
   "rugbySourceUsed": "ical",
   "cricketSourceUsed": "cricapi",
   "nhlCount": 111,
-  "ahlCount": 231,
+  "ahlCount": 228,
   "ahlAdded": 19,
   "ahlUpdated": 189,
-  "ahlPruned": 20,
+  "ahlPruned": 22,
   "echlCount": 16,
   "echlAdded": 4,
   "echlUpdated": 16,
@@ -80,14 +80,14 @@
   "mlsUpdated": 75,
   "mlsPruned": 75,
   "mlsSourceUsed": "ical",
-  "serieaCount": 52,
+  "serieaCount": 51,
   "serieaAdded": 0,
-  "serieaUpdated": 52,
+  "serieaUpdated": 51,
   "serieaPruned": 52,
   "serieaSourceUsed": "espn",
-  "laligaCount": 53,
+  "laligaCount": 52,
   "laligaAdded": 0,
-  "laligaUpdated": 53,
+  "laligaUpdated": 52,
   "laligaPruned": 53,
   "laligaSourceUsed": "espn",
   "bundesligaCount": 46,
@@ -125,40 +125,40 @@
   "championsLeagueUpdated": 16,
   "championsLeaguePruned": 16,
   "championsLeagueSourceUsed": "ical",
-  "faCupCount": 10,
+  "faCupCount": 9,
   "faCupAdded": 0,
-  "faCupUpdated": 10,
+  "faCupUpdated": 9,
   "faCupPruned": 10,
   "faCupSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-02T17:28:18.502Z",
+    "lastRefreshAt": "2026-03-02T20:54:38.948Z",
     "sources": {
       "nhl": {
         "count": 111,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "NHL API"
       },
       "ahl": {
-        "count": 231,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "count": 228,
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 16,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 3,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 114,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 19,
@@ -178,53 +178,53 @@
       },
       "iccT20Wc": {
         "count": 25,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 12,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 51,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 75,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
-        "count": 52,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "count": 51,
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
-        "count": 53,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "count": 52,
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 46,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 45,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 16,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 32,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
@@ -236,101 +236,24 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 16,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "iCal Feed"
       },
       "faCup": {
-        "count": 10,
-        "lastFetchAt": "2026-03-02T17:28:18.502Z",
+        "count": 9,
+        "lastFetchAt": "2026-03-02T20:54:38.948Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-02-16T19:30:00.000Z"
       }
     }
   },
   "events": [
-    {
-      "id": "ahl-1028528",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Toronto Marlies",
-      "awayTeam": "Laval Rocket",
-      "startTimeLocal": "2026-02-16T19:00:00.000Z",
-      "endTimeLocal": "2026-02-16T21:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "soccer-facup-20260216-1930-brentford-at-macclesfield-fc",
-      "sport": "soccer",
-      "league": "FA Cup",
-      "awayTeam": "Brentford",
-      "homeTeam": "Macclesfield FC",
-      "startTimeLocal": "2026-02-16T19:30:00.000Z",
-      "endTimeLocal": "2026-02-16T21:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "soccer-facup",
-      "leagueKey": "facup",
-      "providerReason": "facup-disneyplus"
-    },
-    {
-      "id": "soccer-seriea-20260216-1945-lecce-at-cagliari",
-      "sport": "soccer",
-      "league": "Serie A",
-      "awayTeam": "Lecce",
-      "homeTeam": "Cagliari",
-      "startTimeLocal": "2026-02-16T19:45:00.000Z",
-      "endTimeLocal": "2026-02-16T22:00:00.000Z",
-      "providerId": "primevideo",
-      "isLive": false,
-      "source": "soccer-seriea",
-      "leagueKey": "seriea"
-    },
-    {
-      "id": "ahl-1028526",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Belleville Senators",
-      "awayTeam": "Hershey Bears",
-      "startTimeLocal": "2026-02-16T20:00:00.000Z",
-      "endTimeLocal": "2026-02-16T22:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "ahl-1028527",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Manitoba Moose",
-      "awayTeam": "Calgary Wranglers",
-      "startTimeLocal": "2026-02-16T20:00:00.000Z",
-      "endTimeLocal": "2026-02-16T22:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "soccer-laliga-20260216-2000-barcelona-at-girona",
-      "sport": "soccer",
-      "league": "La Liga",
-      "awayTeam": "Barcelona",
-      "homeTeam": "Girona",
-      "startTimeLocal": "2026-02-16T20:00:00.000Z",
-      "endTimeLocal": "2026-02-16T22:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "soccer-laliga",
-      "leagueKey": "laliga",
-      "providerReason": "laliga-disneyplus"
-    },
     {
       "id": "ahl-1028525",
       "sport": "hockey",
@@ -4907,7 +4830,7 @@
       "startTimeLocal": "2026-03-02T19:00:00.000Z",
       "endTimeLocal": "2026-03-02T21:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": false,
+      "isLive": true,
       "source": "nhl",
       "broadcastNetworks": [
         "NHLN",

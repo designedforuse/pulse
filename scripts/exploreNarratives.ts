@@ -201,15 +201,20 @@ function findBestRitual(events: AppEvent[]): RitualDef | null {
   return null;
 }
 
-function getEventsForTeam(events: AppEvent[], teamName: string, nextDays: number, now: Date): AppEvent[] {
+function teamNamesMatch(candidate: string, target: string): boolean {
+  const a = normalizeTeamName(candidate);
+  const b = normalizeTeamName(target);
+  if (!a || !b) return false;
+  return a === b || a.includes(b) || b.includes(a);
+}
+
+function getEventsForTeam(events: AppEvent[], teamName: string, nextDays: number, now: Date, league?: string): AppEvent[] {
   const windowEnd = new Date(now.getTime() + nextDays * 86400000);
   return events.filter(e => {
     const start = new Date(e.startTimeLocal);
     if (start < now || start > windowEnd) return false;
-    return normalizeTeamName(e.homeTeam).includes(normalizeTeamName(teamName)) ||
-           normalizeTeamName(e.awayTeam).includes(normalizeTeamName(teamName)) ||
-           normalizeTeamName(teamName).includes(normalizeTeamName(e.homeTeam)) ||
-           normalizeTeamName(teamName).includes(normalizeTeamName(e.awayTeam));
+    if (league && e.league !== league) return false;
+    return teamNamesMatch(e.homeTeam, teamName) || teamNamesMatch(e.awayTeam, teamName);
   }).sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
 }
 
@@ -290,8 +295,8 @@ function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date
   const qualifiedCandidates: (PushCandidate & { region: Region })[] = [];
 
   for (const fav of allTeamsToEvaluate) {
-    const teamEvents7 = getEventsForTeam(events, fav.team, 7, now);
-    const teamEvents5 = getEventsForTeam(events, fav.team, 5, now);
+    const teamEvents7 = getEventsForTeam(events, fav.team, 7, now, fav.league);
+    const teamEvents5 = getEventsForTeam(events, fav.team, 5, now, fav.league);
     const b2b = hasBackToBack(teamEvents7);
     const gamesIn7 = teamEvents7.length;
     const gamesIn5 = teamEvents5.length;
@@ -496,7 +501,7 @@ function generateMomentum(events: AppEvent[], favorites: Favorites, now: Date, n
     else if (pointStreak >= 3) subtitleParts.push(`${pointStreak}-game point streak`);
     if (goalDiff > 0) subtitleParts.push(`+${goalDiff} goal diff`);
 
-    const teamEvents = getEventsForTeam(events, fav.team, 7, now);
+    const teamEvents = getEventsForTeam(events, fav.team, 7, now, fav.league);
     const ritual = findBestRitual(teamEvents);
     const impact: NarrativeImpact = ritual
       ? { label: `Feeds: ${ritual.label}`, ritualId: ritual.id, tabHint: "Rituals" }

@@ -500,7 +500,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
     if (!data) {
       return res.json({ error: "No narratives generated yet. Run a refresh or rebuild." });
     }
-    return res.json(data);
+    const eventsData = loadGeneratedEvents();
+    const eventMap = new Map((eventsData?.events || []).map((e: any) => [e.id, e]));
+    const enriched = (data.cards || []).map((card: any) => {
+      const eventIds: string[] = card.meta?.eventIds || [];
+      const teamEventIds = (card.meta?.teams || []).flatMap((t: any) => t.eventIds || []);
+      const allIds = [...new Set([...eventIds, ...teamEventIds])];
+      const eventsDetail = allIds.map((id: string) => {
+        const e = eventMap.get(id);
+        return e
+          ? { id, league: e.league, sport: e.sport, homeTeam: e.homeTeam, awayTeam: e.awayTeam, startTimeLocal: e.startTimeLocal }
+          : { id, missing: true };
+      });
+      return {
+        id: card.id,
+        kind: card.kind,
+        title: card.title,
+        team: card.meta?.team || null,
+        league: card.meta?.league || null,
+        region: card.region || null,
+        priority: card.priority,
+        eventCount: allIds.length,
+        eventsDetail,
+        inclusionReason: card.meta?.team && card.meta?.league
+          ? "filteredByTeamAndLeague"
+          : allIds.length > 0 ? "cardEventIds" : "noEvents",
+      };
+    });
+    return res.json({ cards: enriched, generatedAt: data.generatedAt });
   });
 
   app.get("/api/debug/player-movement", (_req, res) => {

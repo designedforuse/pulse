@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-02T17:28:18.604Z",
+  "lastUpdated": "2026-03-02T20:54:39.047Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -79,7 +79,7 @@
         ],
         "playersIngested": 610,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-02T17:28:18.604Z"
+        "timestamp": "2026-03-02T20:54:39.047Z"
       },
       "cacheHistoryCount": 610,
       "error": null
@@ -89,15 +89,15 @@
     {
       "id": "playoff_push_socal",
       "title": "SoCal Push Week",
-      "subtitle": "Ducks (6 in 7) · Gulls (5 in 7) · Oilers (6 in 7)",
+      "subtitle": "Ducks (4 in 7) · Oilers (4 in 7)",
       "impact": {
         "label": "Impacts: Family Game Night, Saturday Game Day",
         "ritualId": "friday_lights",
         "tabHint": "Rituals"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-02T17:28:18.604Z",
-      "expiresAt": "2026-03-09T17:28:18.604Z",
+      "triggeredAt": "2026-03-02T20:54:39.047Z",
+      "expiresAt": "2026-03-09T20:54:39.047Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -107,42 +107,34 @@
           {
             "team": "Anaheim Ducks",
             "league": "NHL",
-            "gamesInNext7Days": 6,
+            "gamesInNext7Days": 4,
             "gamesInNext5Days": 3,
             "hasBackToBack": true,
-            "reason": "Anaheim Ducks: back-to-back + 6 games in 7 days"
-          },
-          {
-            "team": "San Diego Gulls",
-            "league": "AHL",
-            "gamesInNext7Days": 5,
-            "gamesInNext5Days": 2,
-            "hasBackToBack": true,
-            "reason": "San Diego Gulls: back-to-back + 5 games in 7 days"
+            "reason": "Anaheim Ducks: back-to-back + 4 games in 7 days"
           },
           {
             "team": "Tulsa Oilers",
             "league": "ECHL",
-            "gamesInNext7Days": 6,
+            "gamesInNext7Days": 4,
             "gamesInNext5Days": 2,
             "hasBackToBack": true,
-            "reason": "Tulsa Oilers: back-to-back + 6 games in 7 days"
+            "reason": "Tulsa Oilers: back-to-back + 4 games in 7 days"
           }
         ],
         "eventIds": [
           "nhl_2025020968",
           "nhl_2025020973",
           "nhl_2025020987",
-          "rugby-svns-rj2l89-d1",
-          "rugby-svns-rj2l89-d2",
           "nhl_2025021006",
-          "ahl-1028625",
-          "ahl-1028637"
+          "echl-web-25121",
+          "echl-web-25125",
+          "echl-web-25137",
+          "echl-web-25149"
         ],
-        "combinedTeamCount": 3,
-        "windowStart": "2026-03-02T17:28:18.604Z",
-        "windowEnd": "2026-03-09T17:28:18.604Z",
-        "reason": "Anaheim Ducks: back-to-back + 6 games in 7 days; San Diego Gulls: back-to-back + 5 games in 7 days; Tulsa Oilers: back-to-back + 6 games in 7 days"
+        "combinedTeamCount": 2,
+        "windowStart": "2026-03-02T20:54:39.047Z",
+        "windowEnd": "2026-03-09T20:54:39.047Z",
+        "reason": "Anaheim Ducks: back-to-back + 4 games in 7 days; Tulsa Oilers: back-to-back + 4 games in 7 days"
       }
     },
     {
@@ -155,8 +147,8 @@
         "tabHint": "Rituals"
       },
       "priority": 60,
-      "triggeredAt": "2026-03-02T17:28:18.604Z",
-      "expiresAt": "2026-03-05T17:28:18.604Z",
+      "triggeredAt": "2026-03-02T20:54:39.047Z",
+      "expiresAt": "2026-03-05T20:54:39.047Z",
       "kind": "momentum",
       "region": "SoCal",
       "regionPriority": 2,
@@ -192,8 +184,6 @@
           "nhl_2025020968",
           "nhl_2025020973",
           "nhl_2025020987",
-          "rugby-svns-rj2l89-d1",
-          "rugby-svns-rj2l89-d2",
           "nhl_2025021006"
         ],
         "reason": "Anaheim Ducks is on a 5-game win streak"
@@ -202,15 +192,14 @@
     {
       "id": "playoff_push_newengland",
       "title": "Bruins Push Week",
-      "subtitle": "6 in 7 · back-to-back",
+      "subtitle": "4 in 7 · back-to-back",
       "impact": {
-        "label": "Impacts: Sunday Coffee & Chill",
-        "ritualId": "sunday_session",
-        "tabHint": "Rituals"
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-02T17:28:18.604Z",
-      "expiresAt": "2026-03-09T17:28:18.604Z",
+      "triggeredAt": "2026-03-02T20:54:39.047Z",
+      "expiresAt": "2026-03-09T20:54:39.047Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -220,24 +209,22 @@
           {
             "team": "Boston Bruins",
             "league": "NHL",
-            "gamesInNext7Days": 6,
-            "gamesInNext5Days": 2,
+            "gamesInNext7Days": 4,
+            "gamesInNext5Days": 3,
             "hasBackToBack": true,
-            "reason": "Boston Bruins: back-to-back + 6 games in 7 days"
+            "reason": "Boston Bruins: back-to-back + 4 games in 7 days"
           }
         ],
         "eventIds": [
           "nhl_2025020959",
           "nhl_2025020979",
           "nhl_2025020990",
-          "rugby-svns-rj2l89-d1",
-          "rugby-svns-rj2l89-d2",
           "nhl_2025021002"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-02T17:28:18.604Z",
-        "windowEnd": "2026-03-09T17:28:18.604Z",
-        "reason": "Boston Bruins: back-to-back + 6 games in 7 days"
+        "windowStart": "2026-03-02T20:54:39.047Z",
+        "windowEnd": "2026-03-09T20:54:39.047Z",
+        "reason": "Boston Bruins: back-to-back + 4 games in 7 days"
       }
     },
     {
@@ -249,8 +236,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-02T17:28:18.604Z",
-      "expiresAt": "2026-03-09T17:28:18.604Z",
+      "triggeredAt": "2026-03-02T20:54:39.047Z",
+      "expiresAt": "2026-03-09T20:54:39.047Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
