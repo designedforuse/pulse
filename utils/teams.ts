@@ -141,9 +141,78 @@ const SHORT_NAMES: Record<string, string> = {
   "Queensland Reds": "Reds",
 };
 
+const COMPACT_NAMES: Record<string, string> = {
+  "Las Vegas Lights FC": "LV Lights",
+  "Orange County SC": "OC SC",
+  "Colorado Springs Switchbacks FC": "CO Springs",
+  "El Paso Locomotive FC": "El Paso",
+  "Birmingham Legion FC": "Birmingham",
+  "Louisville City FC": "Louisville",
+  "Sacramento Republic FC": "Sacramento",
+  "Phoenix Rising FC": "Phoenix",
+  "Pittsburgh Riverhounds": "Pittsburgh",
+  "Tampa Bay Rowdies": "TB Rowdies",
+  "San Antonio FC": "San Antonio",
+  "Rhode Island FC": "Rhode Island",
+  "Charleston Battery": "Charleston",
+  "Hartford Athletic": "Hartford",
+  "Detroit City FC": "Detroit City",
+  "Loudoun United FC": "Loudoun Utd",
+  "New Mexico United": "NM United",
+  "Monterey Bay": "Monterey Bay",
+  "Oakland Roots": "Oakland",
+  "FC Tulsa": "Tulsa",
+  "Brooklyn FC": "Brooklyn",
+  "Sporting JAX": "JAX",
+  "Miami FC": "Miami",
+  "Indy Eleven": "Indy",
+  "New York City Football Club": "NYCFC",
+  "Los Angeles Football Club": "LAFC",
+  "New England Revolution": "Revolution",
+  "Sporting Kansas City": "Sporting KC",
+  "San Jose Earthquakes": "Earthquakes",
+  "Minnesota United FC": "Minnesota",
+  "Seattle Sounders FC": "Sounders",
+  "Philadelphia Union": "Union",
+  "Houston Dynamo FC": "Dynamo",
+  "St. Louis CITY SC": "St. Louis",
+  "Red Bull New York": "NY Red Bulls",
+  "Chicago Fire FC": "Chicago Fire",
+  "Portland Timbers": "Timbers",
+  "Colorado Rapids": "Rapids",
+  "Vancouver Whitecaps FC": "Whitecaps",
+  "San Diego FC": "San Diego",
+  "FC Bayern München": "Bayern",
+  "Borussia Dortmund": "Dortmund",
+  "Bayer 04 Leverkusen": "Leverkusen",
+  "Eintracht Frankfurt": "Frankfurt",
+  "Borussia Mönchengladbach": "Gladbach",
+  "Wolverhampton Wanderers": "Wolves",
+  "Brighton & Hove Albion": "Brighton",
+  "Paris Saint-Germain": "PSG",
+  "Atlético de Madrid": "Atlético",
+  "Coachella Valley Firebirds": "CV Firebirds",
+  "Wilkes-Barre/Scranton Penguins": "WBS Penguins",
+  "Springfield Thunderbirds": "T-birds",
+  "Henderson Silver Knights": "Silver Knights",
+  "Greenville Swamp Rabbits": "Swamp Rabbits",
+  "San Diego Gulls": "Gulls",
+  "Anaheim Ducks": "Ducks",
+  "Boston University": "BU",
+};
+
 export function displayTeamName(team: string, league?: string): string {
   if (league === "Japan League One") {
     return JL_SHORT_NAMES[team] || team;
   }
   return SHORT_NAMES[team] || team;
+}
+
+export function compactTeamName(team: string, league?: string): string {
+  if (league === "Japan League One") {
+    return JL_SHORT_NAMES[team] || team;
+  }
+  if (COMPACT_NAMES[team]) return COMPACT_NAMES[team];
+  if (SHORT_NAMES[team]) return SHORT_NAMES[team];
+  return team;
 }

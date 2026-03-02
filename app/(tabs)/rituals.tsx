@@ -13,7 +13,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import Colors from "@/constants/colors";
 import { TeamLogo } from "@/components/TeamLogo";
-import { displayTeamName } from "@/utils/teams";
+import { compactTeamName } from "@/utils/teams";
 import { useEvents } from "@/lib/events-context";
 import { useFavorites } from "@/lib/favorites-context";
 import {
@@ -33,13 +33,12 @@ interface RitualData {
 
 function formatFeaturedTime(iso: string): string {
   const d = new Date(iso);
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const h = d.getHours();
   const m = d.getMinutes();
   const ampm = h >= 12 ? "PM" : "AM";
   const hour = h % 12 || 12;
   const min = m === 0 ? "" : `:${m.toString().padStart(2, "0")}`;
-  return `${monthNames[d.getMonth()]} ${d.getDate()} · ${hour}${min} ${ampm}`;
+  return `@ ${hour}${min} ${ampm}`;
 }
 
 const SPORT_COLORS: Record<string, string> = {
@@ -59,8 +58,8 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
     );
   }
 
-  const away = displayTeamName(event.awayTeam, event.league);
-  const home = displayTeamName(event.homeTeam, event.league);
+  const away = compactTeamName(event.awayTeam, event.league);
+  const home = compactTeamName(event.homeTeam, event.league);
   const sportColor = SPORT_COLORS[event.sport] || "#90A4AE";
   const league = event.league || event.sport.toUpperCase();
 
