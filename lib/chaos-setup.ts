@@ -163,15 +163,31 @@ function getCandidatePool(
   return candidates;
 }
 
+function getTodayBoundsPT(now: Date): { todayStart: Date; todayEnd: Date } {
+  const ptFormatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Los_Angeles",
+    year: "numeric", month: "2-digit", day: "2-digit",
+  });
+  const parts = ptFormatter.formatToParts(now);
+  const y = parts.find(p => p.type === "year")!.value;
+  const m = parts.find(p => p.type === "month")!.value;
+  const d = parts.find(p => p.type === "day")!.value;
+
+  const pstMidnight = new Date(`${y}-${m}-${d}T00:00:00-08:00`);
+  const pdtMidnight = new Date(`${y}-${m}-${d}T00:00:00-07:00`);
+  const pstHour = Number(pstMidnight.toLocaleString("en-US", { timeZone: "America/Los_Angeles", hour: "numeric", hour12: false }));
+  const todayStart = pstHour === 0 ? pstMidnight : pdtMidnight;
+  const todayEnd = new Date(todayStart.getTime() + 24 * 60 * 60 * 1000);
+  return { todayStart, todayEnd };
+}
+
 function getBackfillCandidates(
   allEvents: SportEvent[],
   favorites: Favorites,
   now: Date,
   usedIds: Set<string>,
 ): ChaosCandidate[] {
-  const todayStart = new Date(now);
-  todayStart.setHours(0, 0, 0, 0);
-  const tomorrowEnd = new Date(todayStart.getTime() + 2 * 24 * 60 * 60 * 1000);
+  const { todayEnd } = getTodayBoundsPT(now);
 
   const candidates: ChaosCandidate[] = [];
 
@@ -179,7 +195,7 @@ function getBackfillCandidates(
     if (usedIds.has(event.id)) continue;
     const start = new Date(event.startTimeLocal);
     if (start <= now) continue;
-    if (start > tomorrowEnd) continue;
+    if (start > todayEnd) continue;
 
     const isFav = favoriteInvolved(event, favorites);
     const score = computeFeaturedScore(event, favorites, now);
@@ -414,8 +430,14 @@ function getNextUpCandidate(
   favorites: Favorites,
   now: Date,
 ): SportEvent | null {
+  const { todayEnd } = getTodayBoundsPT(now);
+  const tomorrowEnd = new Date(todayEnd.getTime() + 24 * 60 * 60 * 1000);
+
   const upcoming = allEvents
-    .filter((e) => new Date(e.startTimeLocal) > now)
+    .filter((e) => {
+      const start = new Date(e.startTimeLocal);
+      return start > now && start <= tomorrowEnd;
+    })
     .sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
 
   const favUpcoming = upcoming.find((e) => favoriteInvolved(e, favorites));
