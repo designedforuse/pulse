@@ -506,20 +506,49 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/debug/player-movement", (_req, res) => {
     try {
       if (!fs.existsSync(MOVEMENT_CACHE_PATH)) {
-        return res.json({ lastSeen: {}, movements: [], lastUpdated: null });
+        return res.json({ history: {}, movements: [], lastUpdated: null, summary: { playersTracked: 0, recentMovements: 0 } });
       }
       const cache = JSON.parse(fs.readFileSync(MOVEMENT_CACHE_PATH, "utf-8"));
-      return res.json(cache);
+      const history = cache.history || {};
+      const movements = cache.movements || [];
+      const sampleTeams = ["ANA", "BOS"];
+      const sampleHistory: Record<string, any[]> = {};
+      for (const team of sampleTeams) {
+        sampleHistory[team] = [];
+        for (const [playerId, entry] of Object.entries(history as Record<string, any>)) {
+          const sightings = entry.sightings || [];
+          const onTeam = sightings.some((s: any) => s.teamAbbrev === team);
+          if (onTeam && sampleHistory[team].length < 5) {
+            sampleHistory[team].push({ playerId, name: entry.name, sightings: sightings.slice(-3) });
+          }
+        }
+      }
+      return res.json({
+        lastUpdated: cache.lastUpdated,
+        lastRunMeta: cache.lastRunMeta || null,
+        summary: {
+          playersTracked: Object.keys(history).length,
+          recentMovements: movements.length,
+          observedTeamsLastRun: cache.lastRunMeta?.observedTeams || [],
+          skippedTeamsLastRun: cache.lastRunMeta?.skippedTeams || [],
+          movementsDetectedLastRun: cache.lastRunMeta?.movementsDetectedThisRun || [],
+        },
+        movements,
+        sampleHistoryFor: sampleHistory,
+      });
     } catch {
       return res.json({ error: "Failed to read player movement cache" });
     }
   });
 
-  app.post("/api/rebuild-explore", (_req, res) => {
+  app.post("/api/rebuild-explore", (req, res) => {
     const scriptPath = path.resolve(process.cwd(), "scripts", "exploreNarratives.ts");
+    const simulate = req.query.simulateMovement === "1" && process.env.NODE_ENV !== "production";
+    const args = ["tsx", scriptPath];
+    if (simulate) args.push("--simulate-movement");
     execFile(
       "npx",
-      ["tsx", scriptPath],
+      args,
       { cwd: process.cwd(), timeout: 60000, env: { ...process.env } },
       (error, stdout, stderr) => {
         if (stdout) console.log("[rebuild-explore] stdout:", stdout);
@@ -533,6 +562,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           cardCount: data?.cards?.length ?? 0,
           cards: data?.cards ?? [],
           lastUpdated: data?.lastUpdated ?? null,
+          simulateMovement: simulate,
         });
       }
     );

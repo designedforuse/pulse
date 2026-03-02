@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-02T06:58:51.345Z",
+  "lastUpdated": "2026-03-02T07:08:52.390Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -46,15 +46,43 @@
       "movementAfterCap": 0,
       "movementFinalCount": 0,
       "movementDroppedReasons": [],
-      "cacheStats": {
-        "lastSeenCount": 21,
-        "recentMovements": 0,
-        "trackedTeams": [
+      "runMeta": {
+        "observedTeams": [
           "ANA",
-          "SDG"
+          "BOS",
+          "LAK",
+          "SJS",
+          "SEA",
+          "VGK",
+          "CGY",
+          "EDM",
+          "VAN",
+          "COL",
+          "MTL",
+          "NYI",
+          "STL",
+          "TOR",
+          "WPG",
+          "OTT"
         ],
-        "error": null
-      }
+        "skippedTeams": [
+          {
+            "team": "San Diego Gulls",
+            "league": "AHL",
+            "reason": "LEAGUE_NOT_SUPPORTED"
+          },
+          {
+            "team": "Tulsa Oilers",
+            "league": "ECHL",
+            "reason": "LEAGUE_NOT_SUPPORTED"
+          }
+        ],
+        "playersIngested": 610,
+        "movementsDetectedThisRun": [],
+        "timestamp": "2026-03-02T07:08:52.390Z"
+      },
+      "cacheHistoryCount": 610,
+      "error": null
     }
   },
   "cards": [
@@ -68,8 +96,8 @@
         "tabHint": "Rituals"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-02T06:58:51.345Z",
-      "expiresAt": "2026-03-09T06:58:51.345Z",
+      "triggeredAt": "2026-03-02T07:08:52.390Z",
+      "expiresAt": "2026-03-09T07:08:52.390Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -112,8 +140,8 @@
           "ahl-1028637"
         ],
         "combinedTeamCount": 3,
-        "windowStart": "2026-03-02T06:58:51.345Z",
-        "windowEnd": "2026-03-09T06:58:51.345Z",
+        "windowStart": "2026-03-02T07:08:52.390Z",
+        "windowEnd": "2026-03-09T07:08:52.390Z",
         "reason": "Anaheim Ducks: back-to-back + 6 games in 7 days; San Diego Gulls: back-to-back + 5 games in 7 days; Tulsa Oilers: back-to-back + 6 games in 7 days"
       }
     },
@@ -127,8 +155,8 @@
         "tabHint": "Rituals"
       },
       "priority": 60,
-      "triggeredAt": "2026-03-02T06:58:51.345Z",
-      "expiresAt": "2026-03-05T06:58:51.345Z",
+      "triggeredAt": "2026-03-02T07:08:52.390Z",
+      "expiresAt": "2026-03-05T07:08:52.390Z",
       "kind": "momentum",
       "region": "SoCal",
       "regionPriority": 2,
@@ -181,8 +209,8 @@
         "tabHint": "Rituals"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-02T06:58:51.345Z",
-      "expiresAt": "2026-03-09T06:58:51.345Z",
+      "triggeredAt": "2026-03-02T07:08:52.390Z",
+      "expiresAt": "2026-03-09T07:08:52.390Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -207,8 +235,8 @@
           "nhl_2025021002"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-02T06:58:51.345Z",
-        "windowEnd": "2026-03-09T06:58:51.345Z",
+        "windowStart": "2026-03-02T07:08:52.390Z",
+        "windowEnd": "2026-03-09T07:08:52.390Z",
         "reason": "Boston Bruins: back-to-back + 6 games in 7 days"
       }
     },
@@ -221,8 +249,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-02T06:58:51.345Z",
-      "expiresAt": "2026-03-09T06:58:51.345Z",
+      "triggeredAt": "2026-03-02T07:08:52.390Z",
+      "expiresAt": "2026-03-09T07:08:52.390Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,

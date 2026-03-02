@@ -656,6 +656,12 @@ function generateLeagueMoments(events: AppEvent[], now: Date): ExploreNarrativeC
   return cards;
 }
 
+interface PlayerSighting {
+  teamAbbrev: string;
+  gameId: string;
+  seenAt: string;
+}
+
 interface PlayerMovementEntry {
   playerId: string;
   playerName: string;
@@ -667,133 +673,295 @@ interface PlayerMovementEntry {
 }
 
 interface PlayerMovementCache {
-  lastSeen: Record<string, { team: string; lastDate: string; playerId?: string }>;
+  history: Record<string, { name: string; sightings: PlayerSighting[] }>;
   movements: PlayerMovementEntry[];
   lastUpdated: string;
+  lastRunMeta?: MovementRunMeta;
 }
+
+interface MovementRunMeta {
+  observedTeams: string[];
+  skippedTeams: { team: string; league: string; reason: string }[];
+  playersIngested: number;
+  movementsDetectedThisRun: PlayerMovementEntry[];
+  timestamp: string;
+}
+
+interface PlayerAppearance {
+  playerId: string;
+  playerName: string;
+  teamAbbrev: string;
+  gameId: string;
+  league: string;
+}
+
+interface BoxscoreProvider {
+  league: string;
+  fetch(teamAbbrev: string, now: Date): Promise<PlayerAppearance[]>;
+}
+
+const MAX_SIGHTING_HISTORY = 10;
 
 function loadMovementCache(): PlayerMovementCache {
   try {
     if (fs.existsSync(MOVEMENT_CACHE_PATH)) {
-      return JSON.parse(fs.readFileSync(MOVEMENT_CACHE_PATH, "utf8"));
+      const raw = JSON.parse(fs.readFileSync(MOVEMENT_CACHE_PATH, "utf8"));
+      if (raw.lastSeen && !raw.history) {
+        const history: PlayerMovementCache["history"] = {};
+        for (const [id, entry] of Object.entries(raw.lastSeen as Record<string, any>)) {
+          history[id] = {
+            name: id,
+            sightings: [{ teamAbbrev: entry.team?.replace(/ \(.*\)/, "") || "UNK", gameId: "migrated", seenAt: entry.lastDate || new Date().toISOString() }],
+          };
+        }
+        return { history, movements: raw.movements || [], lastUpdated: raw.lastUpdated || new Date().toISOString() };
+      }
+      return raw;
     }
   } catch {}
-  return { lastSeen: {}, movements: [], lastUpdated: new Date().toISOString() };
+  return { history: {}, movements: [], lastUpdated: new Date().toISOString() };
 }
 
 function saveMovementCache(cache: PlayerMovementCache): void {
   fs.writeFileSync(MOVEMENT_CACHE_PATH, JSON.stringify(cache, null, 2));
 }
 
-const TRACKED_TEAMS = ["ANA", "SDG"];
+const MOVEMENT_PRIMARY_TEAMS = ["ANA"];
+
+const MOVEMENT_OBSERVED_NHL_TEAMS = [
+  "ANA", "BOS", "LAK", "SJS", "SEA", "VGK", "CGY", "EDM", "VAN",
+];
+
+const MOVEMENT_TRACKED_NONHL: { team: string; league: string; abbrev: string }[] = [
+  { team: "San Diego Gulls", league: "AHL", abbrev: "SDG" },
+  { team: "Tulsa Oilers", league: "ECHL", abbrev: "TUL" },
+];
+
 const TRACKED_PUSH_TEAMS = ["Anaheim Ducks", "San Diego Gulls", "Tulsa Oilers"];
 const TRACKED_TEAM_NAMES = ["Anaheim Ducks", "San Diego Gulls", "Tulsa Oilers"];
 
-async function fetchNhlBoxscorePlayers(teamAbbrev: string, now: Date): Promise<{ name: string; id: string; team: string }[]> {
-  const players: { name: string; id: string; team: string }[] = [];
-  try {
-    const schedUrl = `https://api-web.nhle.com/v1/club-schedule-season/${teamAbbrev}/20252026`;
-    const res = await fetch(schedUrl, {
-      headers: { "User-Agent": "Mozilla/5.0 (compatible; SportsGuide/1.0)" },
-      signal: AbortSignal.timeout(10000),
+function buildObservedTeamSet(events: AppEvent[], now: Date): string[] {
+  const teamSet = new Set(MOVEMENT_OBSERVED_NHL_TEAMS);
+
+  const fourteenDaysOut = new Date(now.getTime() + 14 * 86400000);
+  for (const event of events) {
+    if (event.league !== "NHL") continue;
+    const start = new Date(event.startTimeLocal);
+    if (start < now || start > fourteenDaysOut) continue;
+    const homeNorm = normalizeTeamName(event.homeTeam);
+    const awayNorm = normalizeTeamName(event.awayTeam);
+    const primaryInvolved = MOVEMENT_PRIMARY_TEAMS.some(abbr => {
+      const lower = abbr.toLowerCase();
+      return homeNorm.includes(lower) || awayNorm.includes(lower);
     });
-    if (!res.ok) return players;
-    const data = await res.json() as any;
-    const games = (data.games || [])
-      .filter((g: any) => (g.gameState === "OFF" || g.gameState === "FINAL" || g.gameState === "7"))
-      .sort((a: any, b: any) => new Date(b.startTimeUTC || b.gameDate).getTime() - new Date(a.startTimeUTC || a.gameDate).getTime())
-      .slice(0, 3);
-
-    for (const game of games) {
-      try {
-        const boxUrl = `https://api-web.nhle.com/v1/gamecenter/${game.id}/boxscore`;
-        const boxRes = await fetch(boxUrl, {
-          headers: { "User-Agent": "Mozilla/5.0 (compatible; SportsGuide/1.0)" },
-          signal: AbortSignal.timeout(10000),
-        });
-        if (!boxRes.ok) continue;
-        const box = await boxRes.json() as any;
-
-        const processTeam = (teamData: any, teamName: string) => {
-          if (!teamData) return;
-          for (const pos of ["forwards", "defense", "goalies"]) {
-            const group = teamData[pos] || [];
-            for (const p of group) {
-              if (p.playerId && p.name?.default) {
-                players.push({
-                  name: p.name.default,
-                  id: String(p.playerId),
-                  team: teamName,
-                });
-              }
-            }
-          }
-        };
-
-        const homeAbbrev = box.homeTeam?.abbrev || "";
-        const awayAbbrev = box.awayTeam?.abbrev || "";
-        if (homeAbbrev === teamAbbrev) {
-          processTeam(box.playerByGameStats?.homeTeam, `${teamAbbrev} (NHL)`);
-        }
-        if (awayAbbrev === teamAbbrev) {
-          processTeam(box.playerByGameStats?.awayTeam, `${teamAbbrev} (NHL)`);
-        }
-      } catch {
-        continue;
+    if (!primaryInvolved) continue;
+    for (const [fullName, abbr] of Object.entries(ALL_NHL_ABBREVS)) {
+      if (normalizeTeamName(fullName) === homeNorm || normalizeTeamName(fullName) === awayNorm) {
+        teamSet.add(abbr);
       }
     }
-  } catch (err) {
-    console.log(`  Player movement: NHL boxscore fetch failed for ${teamAbbrev}:`, (err as Error).message);
   }
-  return players;
+
+  return [...teamSet];
 }
 
-async function detectPlayerMovements(now: Date): Promise<{ cache: PlayerMovementCache; newMovements: PlayerMovementEntry[] }> {
+const ALL_NHL_ABBREVS: Record<string, string> = {
+  "Anaheim Ducks": "ANA", "Arizona Coyotes": "ARI", "Boston Bruins": "BOS",
+  "Buffalo Sabres": "BUF", "Calgary Flames": "CGY", "Carolina Hurricanes": "CAR",
+  "Chicago Blackhawks": "CHI", "Colorado Avalanche": "COL", "Columbus Blue Jackets": "CBJ",
+  "Dallas Stars": "DAL", "Detroit Red Wings": "DET", "Edmonton Oilers": "EDM",
+  "Florida Panthers": "FLA", "Los Angeles Kings": "LAK", "Minnesota Wild": "MIN",
+  "Montréal Canadiens": "MTL", "Nashville Predators": "NSH", "New Jersey Devils": "NJD",
+  "New York Islanders": "NYI", "New York Rangers": "NYR", "Ottawa Senators": "OTT",
+  "Philadelphia Flyers": "PHI", "Pittsburgh Penguins": "PIT", "San Jose Sharks": "SJS",
+  "Seattle Kraken": "SEA", "St. Louis Blues": "STL", "Tampa Bay Lightning": "TBL",
+  "Toronto Maple Leafs": "TOR", "Utah Hockey Club": "UTA", "Vancouver Canucks": "VAN",
+  "Vegas Golden Knights": "VGK", "Washington Capitals": "WSH", "Winnipeg Jets": "WPG",
+};
+
+const nhlBoxscoreProvider: BoxscoreProvider = {
+  league: "NHL",
+  async fetch(teamAbbrev: string, now: Date): Promise<PlayerAppearance[]> {
+    const appearances: PlayerAppearance[] = [];
+    try {
+      const schedUrl = `https://api-web.nhle.com/v1/club-schedule-season/${teamAbbrev}/20252026`;
+      const res = await fetch(schedUrl, {
+        headers: { "User-Agent": "Mozilla/5.0 (compatible; SportsGuide/1.0)" },
+        signal: AbortSignal.timeout(10000),
+      });
+      if (!res.ok) return appearances;
+      const data = await res.json() as any;
+      const games = (data.games || [])
+        .filter((g: any) => (g.gameState === "OFF" || g.gameState === "FINAL" || g.gameState === "7"))
+        .sort((a: any, b: any) => new Date(b.startTimeUTC || b.gameDate).getTime() - new Date(a.startTimeUTC || a.gameDate).getTime())
+        .slice(0, 3);
+
+      for (const game of games) {
+        try {
+          const boxUrl = `https://api-web.nhle.com/v1/gamecenter/${game.id}/boxscore`;
+          const boxRes = await fetch(boxUrl, {
+            headers: { "User-Agent": "Mozilla/5.0 (compatible; SportsGuide/1.0)" },
+            signal: AbortSignal.timeout(10000),
+          });
+          if (!boxRes.ok) continue;
+          const box = await boxRes.json() as any;
+
+          const processTeam = (teamData: any, abbrev: string) => {
+            if (!teamData) return;
+            for (const pos of ["forwards", "defense", "goalies"]) {
+              const group = teamData[pos] || [];
+              for (const p of group) {
+                if (p.playerId && p.name?.default) {
+                  appearances.push({
+                    playerId: String(p.playerId),
+                    playerName: p.name.default,
+                    teamAbbrev: abbrev,
+                    gameId: String(game.id),
+                    league: "NHL",
+                  });
+                }
+              }
+            }
+          };
+
+          const homeAbbrev = box.homeTeam?.abbrev || "";
+          const awayAbbrev = box.awayTeam?.abbrev || "";
+          processTeam(box.playerByGameStats?.homeTeam, homeAbbrev);
+          processTeam(box.playerByGameStats?.awayTeam, awayAbbrev);
+        } catch {
+          continue;
+        }
+      }
+    } catch (err) {
+      console.log(`  Player movement: NHL boxscore fetch failed for ${teamAbbrev}:`, (err as Error).message);
+    }
+    return appearances;
+  },
+};
+
+function getProviderForLeague(league: string): BoxscoreProvider | null {
+  if (league === "NHL") return nhlBoxscoreProvider;
+  return null;
+}
+
+async function detectPlayerMovements(
+  events: AppEvent[],
+  now: Date,
+  simulateMovement = false,
+): Promise<{ cache: PlayerMovementCache; newMovements: PlayerMovementEntry[]; runMeta: MovementRunMeta }> {
   const cache = loadMovementCache();
   const newMovements: PlayerMovementEntry[] = [];
 
-  const allPlayers: { name: string; id: string; team: string }[] = [];
-  for (const abbrev of TRACKED_TEAMS) {
-    const players = await fetchNhlBoxscorePlayers(abbrev, now);
-    allPlayers.push(...players);
+  const observedTeams = buildObservedTeamSet(events, now);
+  const skippedTeams: MovementRunMeta["skippedTeams"] = [];
+
+  for (const entry of MOVEMENT_TRACKED_NONHL) {
+    const provider = getProviderForLeague(entry.league);
+    if (!provider) {
+      skippedTeams.push({ team: entry.team, league: entry.league, reason: "LEAGUE_NOT_SUPPORTED" });
+      console.log(`  Player movement: skipped ${entry.team} (${entry.league}) — LEAGUE_NOT_SUPPORTED`);
+    }
   }
 
-  const playerMap = new Map<string, { name: string; team: string }>();
-  for (const p of allPlayers) {
-    const key = p.id || normalizeTeamName(p.name);
-    if (!playerMap.has(key)) {
-      playerMap.set(key, { name: p.name, team: p.team });
+  const allAppearances: PlayerAppearance[] = [];
+  const teamsFetched: string[] = [];
+  for (const abbrev of observedTeams) {
+    const appearances = await nhlBoxscoreProvider.fetch(abbrev, now);
+    if (appearances.length > 0) teamsFetched.push(abbrev);
+    allAppearances.push(...appearances);
+  }
+  console.log(`  Player movement: fetched boxscores for ${teamsFetched.length}/${observedTeams.length} NHL teams (${allAppearances.length} player appearances)`);
+
+  const latestByPlayer = new Map<string, PlayerAppearance>();
+  for (const app of allAppearances) {
+    const existing = latestByPlayer.get(app.playerId);
+    if (!existing) {
+      latestByPlayer.set(app.playerId, app);
     }
+  }
+
+  for (const [playerId, app] of latestByPlayer) {
+    const entry = cache.history[playerId] || { name: app.playerName, sightings: [] };
+    entry.name = app.playerName;
+
+    const alreadySeen = entry.sightings.some(s => s.gameId === app.gameId && s.teamAbbrev === app.teamAbbrev);
+    if (!alreadySeen) {
+      entry.sightings.push({
+        teamAbbrev: app.teamAbbrev,
+        gameId: app.gameId,
+        seenAt: now.toISOString(),
+      });
+      if (entry.sightings.length > MAX_SIGHTING_HISTORY) {
+        entry.sightings = entry.sightings.slice(-MAX_SIGHTING_HISTORY);
+      }
+    }
+
+    cache.history[playerId] = entry;
+  }
+
+  if (simulateMovement) {
+    console.log("  Player movement: [SIMULATE] injecting fake ANA → BOS transition");
+    const fakeId = "SIM_99999";
+    const fakeName = "Test Simulated Player";
+    cache.history[fakeId] = {
+      name: fakeName,
+      sightings: [
+        { teamAbbrev: "ANA", gameId: "sim_old", seenAt: new Date(now.getTime() - 3 * 86400000).toISOString() },
+        { teamAbbrev: "BOS", gameId: "sim_new", seenAt: now.toISOString() },
+      ],
+    };
   }
 
   const cutoff = new Date(now.getTime() - 14 * 86400000);
-  for (const [key, { name, team }] of playerMap) {
-    const prev = cache.lastSeen[key];
-    if (prev && prev.team !== team) {
-      const lastDate = new Date(prev.lastDate);
-      if (lastDate > cutoff) {
-        const movement: PlayerMovementEntry = {
-          playerId: key,
-          playerName: name,
-          fromTeam: prev.team,
-          toTeam: team,
-          detectedAt: now.toISOString(),
-          lastSeenFrom: prev.lastDate,
-          firstSeenTo: now.toISOString(),
-        };
-        newMovements.push(movement);
-        cache.movements.push(movement);
-      }
-    }
-    cache.lastSeen[key] = { team, lastDate: now.toISOString(), playerId: key };
+  const dedupeWindow = new Date(now.getTime() - 7 * 86400000);
+  const existingTransitions = new Set(
+    cache.movements
+      .filter(m => new Date(m.detectedAt) > dedupeWindow)
+      .map(m => `${m.playerId}::${m.fromTeam}::${m.toTeam}`)
+  );
+
+  for (const [playerId, entry] of Object.entries(cache.history)) {
+    const { sightings, name } = entry;
+    if (sightings.length < 2) continue;
+
+    const sorted = [...sightings].sort((a, b) => new Date(a.seenAt).getTime() - new Date(b.seenAt).getTime());
+    const latest = sorted[sorted.length - 1];
+    const previous = sorted.slice(0, -1).reverse().find(s => s.teamAbbrev !== latest.teamAbbrev);
+    if (!previous) continue;
+
+    const prevDate = new Date(previous.seenAt);
+    if (prevDate < cutoff) continue;
+
+    const dedupeKey = `${playerId}::${previous.teamAbbrev}::${latest.teamAbbrev}`;
+    if (existingTransitions.has(dedupeKey)) continue;
+
+    const movement: PlayerMovementEntry = {
+      playerId,
+      playerName: name,
+      fromTeam: previous.teamAbbrev,
+      toTeam: latest.teamAbbrev,
+      detectedAt: now.toISOString(),
+      lastSeenFrom: previous.seenAt,
+      firstSeenTo: latest.seenAt,
+    };
+    newMovements.push(movement);
+    cache.movements.push(movement);
   }
 
-  const weekAgo = new Date(now.getTime() - 7 * 86400000);
-  cache.movements = cache.movements.filter(m => new Date(m.detectedAt) > weekAgo);
+  cache.movements = cache.movements.filter(m => new Date(m.detectedAt) > dedupeWindow);
   cache.lastUpdated = now.toISOString();
-  saveMovementCache(cache);
 
-  return { cache, newMovements };
+  const runMeta: MovementRunMeta = {
+    observedTeams,
+    skippedTeams,
+    playersIngested: latestByPlayer.size,
+    movementsDetectedThisRun: newMovements,
+    timestamp: now.toISOString(),
+  };
+  cache.lastRunMeta = runMeta;
+
+  saveMovementCache(cache);
+  return { cache, newMovements, runMeta };
 }
 
 function generatePlayerMovement(cache: PlayerMovementCache, now: Date): ExploreNarrativeCard[] {
@@ -803,11 +971,17 @@ function generatePlayerMovement(cache: PlayerMovementCache, now: Date): ExploreN
 
   const teamMentions = new Set<string>();
   for (const m of recentMovements) {
-    teamMentions.add(m.fromTeam.replace(/ \(.*\)/, ""));
-    teamMentions.add(m.toTeam.replace(/ \(.*\)/, ""));
+    teamMentions.add(m.fromTeam);
+    teamMentions.add(m.toTeam);
   }
 
-  const movementRegion = resolveRegion(recentMovements[0]?.toTeam || "");
+  const primaryTeam = recentMovements.find(m =>
+    MOVEMENT_PRIMARY_TEAMS.includes(m.fromTeam) || MOVEMENT_PRIMARY_TEAMS.includes(m.toTeam)
+  );
+  const regionTeam = primaryTeam?.toTeam || primaryTeam?.fromTeam || recentMovements[0]?.toTeam || "";
+  const abbrevToName = Object.entries(ALL_NHL_ABBREVS).reduce((acc, [name, abbr]) => { acc[abbr] = name; return acc; }, {} as Record<string, string>);
+  const movementRegion = resolveRegion(abbrevToName[regionTeam] || regionTeam);
+
   return [{
     id: "player_movement_system",
     title: "System Shuffle",
@@ -826,6 +1000,8 @@ function generatePlayerMovement(cache: PlayerMovementCache, now: Date): ExploreN
         from: m.fromTeam,
         to: m.toTeam,
         detected: m.detectedAt,
+        lastSeenFrom: m.lastSeenFrom,
+        firstSeenTo: m.firstSeenTo,
       })),
       count: recentMovements.length,
       reason: `${recentMovements.length} player(s) detected moving between tracked teams in the last 7 days`,
@@ -841,7 +1017,7 @@ interface DroppedCandidate {
   reason: string;
 }
 
-export async function generateNarratives(events: AppEvent[], favorites: Favorites, now: Date): Promise<{
+export async function generateNarratives(events: AppEvent[], favorites: Favorites, now: Date, options?: { simulateMovement?: boolean }): Promise<{
   cards: ExploreNarrativeCard[];
   debug: {
     rawCandidatesByKindAndRegion: Record<string, Record<string, number>>;
@@ -850,6 +1026,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     droppedCandidatesReasons: DroppedCandidate[];
     totalBeforeCap: number;
     totalAfterCap: number;
+    playerMovement: any;
   };
 }> {
   console.log("\n=== Generating Explore Narratives ===");
@@ -874,16 +1051,23 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
   console.log(`  League Moments: ${leagueMoments.length} card(s)`);
 
   let playerMovementCards: ExploreNarrativeCard[] = [];
-  let movementCacheStats = { lastSeenCount: 0, recentMovements: 0, trackedTeams: TRACKED_TEAMS, error: null as string | null };
+  let movementRunMeta: MovementRunMeta | null = null;
+  let movementError: string | null = null;
+  let movementCacheHistoryCount = 0;
   try {
-    const { cache } = await detectPlayerMovements(now);
+    const { cache, runMeta } = await detectPlayerMovements(events, now, options?.simulateMovement ?? false);
     playerMovementCards = generatePlayerMovement(cache, now);
-    movementCacheStats.lastSeenCount = Object.keys(cache.lastSeen).length;
-    movementCacheStats.recentMovements = cache.movements.length;
-    console.log(`  Player Movement: ${playerMovementCards.length} card(s) (${cache.movements.length} recent movements, ${movementCacheStats.lastSeenCount} players tracked in cache)`);
+    movementRunMeta = runMeta;
+    movementCacheHistoryCount = Object.keys(cache.history).length;
+    console.log(`  Player Movement: ${playerMovementCards.length} card(s) (${cache.movements.length} recent movements, ${movementCacheHistoryCount} players tracked in cache)`);
+    if (runMeta.skippedTeams.length > 0) {
+      for (const s of runMeta.skippedTeams) {
+        console.log(`    Skipped: ${s.team} (${s.league}) — ${s.reason}`);
+      }
+    }
   } catch (err) {
-    movementCacheStats.error = (err as Error).message;
-    console.log(`  Player Movement: skipped (${(err as Error).message})`);
+    movementError = (err as Error).message;
+    console.log(`  Player Movement: skipped (${movementError})`);
   }
 
   const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...playerMovementCards];
@@ -943,7 +1127,9 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
       movementAfterCap: movementInFeed,
       movementFinalCount: movementInFeed,
       movementDroppedReasons: movementDropped.map(d => d.reason),
-      cacheStats: movementCacheStats,
+      runMeta: movementRunMeta,
+      cacheHistoryCount: movementCacheHistoryCount,
+      error: movementError,
     },
   };
 
@@ -962,7 +1148,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
   return { cards: selected, debug };
 }
 
-export async function generateAndSave(): Promise<ExploreNarrativeCard[]> {
+export async function generateAndSave(options?: { simulateMovement?: boolean }): Promise<ExploreNarrativeCard[]> {
   let events: AppEvent[] = [];
   let favorites: Favorites = {};
 
@@ -983,7 +1169,7 @@ export async function generateAndSave(): Promise<ExploreNarrativeCard[]> {
   }
 
   const now = new Date();
-  const { cards, debug } = await generateNarratives(events, favorites, now);
+  const { cards, debug } = await generateNarratives(events, favorites, now, options);
 
   const output = {
     lastUpdated: now.toISOString(),
@@ -998,7 +1184,8 @@ export async function generateAndSave(): Promise<ExploreNarrativeCard[]> {
 }
 
 if (require.main === module) {
-  generateAndSave().catch((err) => {
+  const simulate = process.argv.includes("--simulate-movement");
+  generateAndSave({ simulateMovement: simulate }).catch((err) => {
     console.error("Fatal error:", err);
     process.exit(1);
   });

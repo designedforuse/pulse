@@ -1,111 +1,6246 @@
 {
-  "lastSeen": {
+  "history": {
+    "8470613": {
+      "name": "B. Burns",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8470621": {
+      "name": "C. Perry",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8471214": {
+      "name": "A. Ovechkin",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8471215": {
+      "name": "E. Malkin",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8471685": {
+      "name": "A. Kopitar",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8471724": {
+      "name": "K. Letang",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8471817": {
+      "name": "R. Reaves",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020928",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8473419": {
+      "name": "B. Marchand",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8473422": {
+      "name": "N. Foligno",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8473503": {
+      "name": "J. Reimer",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8473507": {
+      "name": "J. Petry",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8473512": {
+      "name": "C. Giroux",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8473604": {
+      "name": "J. Toews",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
     "8473986": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8473986"
+      "name": "A. Killorn",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8473994": {
+      "name": "J. Benn",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474013": {
+      "name": "I. Cole",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474037": {
+      "name": "J. van Riemsdyk",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474141": {
+      "name": "P. Kane",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474150": {
+      "name": "M. Backlund",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474151": {
+      "name": "R. McDonagh",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474189": {
+      "name": "L. Eller",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474563": {
+      "name": "D. Doughty",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020929",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474567": {
+      "name": "Z. Bogosian",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474568": {
+      "name": "L. Schenn",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474574": {
+      "name": "T. Myers",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020901",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474578": {
+      "name": "E. Karlsson",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474586": {
+      "name": "J. Eberle",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474593": {
+      "name": "J. Markstrom",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474596": {
+      "name": "J. Allen",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474641": {
+      "name": "A. Henrique",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474679": {
+      "name": "G. Nyquist",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474716": {
+      "name": "J. Spurgeon",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475149": {
+      "name": "M. Johansson",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475166": {
+      "name": "J. Tavares",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475167": {
+      "name": "V. Hedman",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475168": {
+      "name": "M. Duchene",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475169": {
+      "name": "E. Kane",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475170": {
+      "name": "B. Schenn",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475171": {
+      "name": "O. Ekman-Larsson",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475172": {
+      "name": "N. Kadri",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475179": {
+      "name": "D. Kulikov",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020948",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8475184": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8475184"
+      "name": "C. Kreider",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475188": {
+      "name": "B. McNabb",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475191": {
+      "name": "R. Smith",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475200": {
+      "name": "D. Orlov",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475208": {
+      "name": "B. Dumoulin",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475218": {
+      "name": "M. Ekholm",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475220": {
+      "name": "M. Foligno",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475231": {
+      "name": "C. Cizikas",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475235": {
+      "name": "N. Deslauriers",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475279": {
+      "name": "B. Chiarot",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475311": {
+      "name": "D. Kuemper",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475314": {
+      "name": "A. Lee",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475324": {
+      "name": "N. Jensen",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475343": {
+      "name": "N. Dowd",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475455": {
+      "name": "B. Dillon",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8475462": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8475462"
+      "name": "R. Gudas",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475660": {
+      "name": "C. Talbot",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475683": {
+      "name": "S. Bobrovsky",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475692": {
+      "name": "M. Zuccarello",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475714": {
+      "name": "C. Jarnkrok",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475726": {
+      "name": "T. Toffoli",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475745": {
+      "name": "C. Coyle",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475752": {
+      "name": "T. Pitlick",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020951",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475753": {
+      "name": "J. Faulk",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475754": {
+      "name": "B. Nelson",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475755": {
+      "name": "A. Petrovic",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475760": {
+      "name": "N. Bjugstad",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475764": {
+      "name": "C. Fowler",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475765": {
+      "name": "V. Tarasenko",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475768": {
+      "name": "J. Schwartz",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475786": {
+      "name": "Z. Hyman",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475790": {
+      "name": "E. Gudbranson",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475799": {
+      "name": "N. Niederreiter",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020895",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475809": {
+      "name": "S. Wedgewood",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475810": {
+      "name": "B. Rust",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475831": {
+      "name": "P. Grubauer",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475848": {
+      "name": "B. Gallagher",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475906": {
+      "name": "J. Klingberg",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8475913": {
+      "name": "M. Stone",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476278": {
+      "name": "C. Blackwell",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476292": {
+      "name": "O. Palat",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476312": {
+      "name": "J. Manson",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476331": {
+      "name": "D. DeMelo",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476341": {
+      "name": "A. Forsberg",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476372": {
+      "name": "N. Seeler",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476374": {
+      "name": "S. Kuraly",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476392": {
+      "name": "A. Lowry",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476393": {
+      "name": "N. Cousins",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476399": {
+      "name": "B. Coleman",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476412": {
+      "name": "J. Binnington",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020951",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476419": {
+      "name": "J. Pageau",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476429": {
+      "name": "S. Mayfield",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476432": {
+      "name": "B. Jenner",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476434": {
+      "name": "J. Gibson",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476438": {
+      "name": "B. Saad",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476441": {
+      "name": "J. Edmundson",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476453": {
+      "name": "N. Kucherov",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476454": {
+      "name": "R. Nugent-Hopkins",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476455": {
+      "name": "G. Landeskog",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476457": {
+      "name": "A. Larsson",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476460": {
+      "name": "M. Scheifele",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476461": {
+      "name": "S. Couturier",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476462": {
+      "name": "D. Hamilton",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476467": {
+      "name": "J. Oleksiak",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476469": {
+      "name": "J. Armia",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020929",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476473": {
+      "name": "C. Murphy",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476479": {
+      "name": "P. Danault",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476480": {
+      "name": "V. Namestnikov",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476483": {
+      "name": "R. Rakell",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476624": {
+      "name": "B. Goodrow",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476826": {
+      "name": "Y. Gourde",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476853": {
+      "name": "M. Rielly",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476854": {
+      "name": "H. Lindholm",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476871": {
+      "name": "T. Pearson",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476872": {
+      "name": "S. Laughton",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476875": {
+      "name": "M. Matheson",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476878": {
+      "name": "Z. Girgensons",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476879": {
+      "name": "C. Ceci",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476880": {
+      "name": "T. Wilson",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476881": {
+      "name": "T. Hertl",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476882": {
+      "name": "T. Teravainen",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476883": {
+      "name": "A. Vasilevskiy",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8476885": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8476885"
+      "name": "J. Trouba",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476891": {
+      "name": "M. Grzelcyk",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476892": {
+      "name": "C. Parayko",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476897": {
+      "name": "O. Sundqvist",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020951",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476902": {
+      "name": "E. Lindell",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476905": {
+      "name": "C. Stephenson",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476914": {
+      "name": "J. Korpisalo",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476917": {
+      "name": "A. Pelech",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476923": {
+      "name": "D. Severson",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476925": {
+      "name": "C. Sissons",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476927": {
+      "name": "T. Blueger",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476931": {
+      "name": "J. McCabe",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476932": {
+      "name": "A. Stolarz",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476945": {
+      "name": "C. Hellebuyck",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476967": {
+      "name": "B. Kulak",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476981": {
+      "name": "J. Anderson",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476994": {
+      "name": "V. Hinostroza",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8476999": {
+      "name": "L. Ullmark",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477015": {
+      "name": "C. Brown",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477018": {
+      "name": "B. Hutton",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477021": {
+      "name": "A. Kerfoot",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477149": {
+      "name": "S. Sabourin",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477220": {
+      "name": "N. Schmidt",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477346": {
+      "name": "M. Weegar",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477365": {
+      "name": "C. Clifton",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477369": {
+      "name": "C. Soucy",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477402": {
+      "name": "P. Buchnevich",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477404": {
+      "name": "J. Guentzel",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477406": {
+      "name": "M. Janmark",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477407": {
+      "name": "A. Duclair",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020948",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477409": {
+      "name": "C. Verhaeghe",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477416": {
+      "name": "O. Bjorkstrand",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477425": {
+      "name": "M. Wood",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477429": {
+      "name": "A. Copp",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477444": {
+      "name": "A. Burakovsky",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477447": {
+      "name": "S. Theodore",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477450": {
+      "name": "J. Dickinson",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477451": {
+      "name": "R. Hartman",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477454": {
+      "name": "A. Erne",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477456": {
+      "name": "J. Compher",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477465": {
+      "name": "T. Jarry",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477476": {
+      "name": "A. Lehkonen",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477479": {
+      "name": "T. Bertuzzi",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477480": {
+      "name": "E. Comrie",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477488": {
+      "name": "B. Pesce",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477492": {
+      "name": "N. MacKinnon",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477494": {
+      "name": "J. Drouin",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477496": {
+      "name": "E. Lindholm",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477497": {
+      "name": "S. Monahan",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477498": {
+      "name": "D. Nurse",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477499": {
+      "name": "R. Ristolainen",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477500": {
+      "name": "B. Horvat",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477501": {
+      "name": "V. Nichushkin",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477503": {
+      "name": "M. Domi",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477504": {
+      "name": "J. Morrissey",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020895",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477505": {
+      "name": "A. Wennberg",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477506": {
+      "name": "R. Pulock",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477507": {
+      "name": "N. Zadorov",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477508": {
+      "name": "C. Lazar",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477511": {
+      "name": "A. Mantha",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8477527": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8477527"
+      "name": "R. Johnston",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477573": {
+      "name": "N. Walker",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477810": {
+      "name": "J. Hanley",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477845": {
+      "name": "T. van Riemsdyk",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477903": {
+      "name": "G. Hathaway",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477919": {
+      "name": "F. Gaudreau",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477932": {
+      "name": "A. Ekblad",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477933": {
+      "name": "S. Reinhart",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477934": {
+      "name": "L. Draisaitl",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477935": {
+      "name": "S. Bennett",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477938": {
+      "name": "H. Fleury",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477939": {
+      "name": "W. Nylander",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477946": {
+      "name": "D. Larkin",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477948": {
+      "name": "T. Sanheim",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477950": {
+      "name": "T. DeAngelo",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477951": {
+      "name": "N. Schmaltz",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477953": {
+      "name": "K. Kapanen",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020936",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477955": {
+      "name": "J. McCann",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477956": {
+      "name": "D. Pastrnak",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477960": {
+      "name": "A. Kempe",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477964": {
+      "name": "I. Barbashev",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477968": {
+      "name": "A. Nedeljkovic",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477969": {
+      "name": "M. Pettersson",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477970": {
+      "name": "V. Vanecek",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477986": {
+      "name": "B. Montour",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477987": {
+      "name": "R. Donato",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477989": {
+      "name": "C. Dvorak",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477992": {
+      "name": "J. Johansson",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8477998": {
+      "name": "W. Foegele",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478007": {
+      "name": "E. Merzlikins",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478009": {
+      "name": "I. Sorokin",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478010": {
+      "name": "B. Point",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478013": {
+      "name": "J. Walman",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478020": {
+      "name": "M. Amadio",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8478024": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8478024"
+      "name": "V. Husso",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478038": {
+      "name": "D. Toews",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478042": {
+      "name": "V. Arvidsson",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478046": {
+      "name": "D. Heinen",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020937",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478055": {
+      "name": "G. Forsling",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478057": {
+      "name": "D. Joshua",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478109": {
+      "name": "V. Olofsson",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478133": {
+      "name": "J. Evans",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478136": {
+      "name": "J. Middleton",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478178": {
+      "name": "D. Raddysh",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478233": {
+      "name": "A. Mangiapane",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478396": {
+      "name": "N. Hanifin",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478397": {
+      "name": "R. Andersson",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478398": {
+      "name": "K. Connor",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478399": {
+      "name": "J. Siegenthaler",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478401": {
+      "name": "P. Zacha",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478402": {
+      "name": "C. McDavid",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478403": {
+      "name": "J. Eichel",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478406": {
+      "name": "M. Blackwood",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478407": {
+      "name": "V. Dunn",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478414": {
+      "name": "T. Meier",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478416": {
+      "name": "E. Cernak",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478421": {
+      "name": "A. Greer",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8478424": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8478424"
+      "name": "J. Harkins",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478434": {
+      "name": "K. Kolesar",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478435": {
+      "name": "D. Vladar",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478438": {
+      "name": "T. Novak",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478439": {
+      "name": "T. Konecny",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478440": {
+      "name": "D. Strome",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478443": {
+      "name": "B. Carlo",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478444": {
+      "name": "B. Boeser",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478445": {
+      "name": "M. Barzal",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478450": {
+      "name": "P. Wotherspoon",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478454": {
+      "name": "N. Juulsen",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020907",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478458": {
+      "name": "J. Roslovic",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478460": {
+      "name": "Z. Werenski",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478462": {
+      "name": "N. Roy",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478463": {
+      "name": "A. Beauvillier",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478468": {
+      "name": "J. Lauzon",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478469": {
+      "name": "T. Chabot",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478470": {
+      "name": "S. Montembeault",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478474": {
+      "name": "L. Crouse",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478483": {
+      "name": "M. Marner",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478493": {
+      "name": "J. Eriksson Ek",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478498": {
+      "name": "J. DeBrusk",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478499": {
+      "name": "A. Hill",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478500": {
+      "name": "I. Provorov",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478507": {
+      "name": "J. Marino",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478508": {
+      "name": "Y. Trenin",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478542": {
+      "name": "E. Rodrigues",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478550": {
+      "name": "A. Panarin",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478569": {
+      "name": "N. Acciari",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478831": {
+      "name": "K. Stenlund",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478851": {
+      "name": "A. Carrier",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478854": {
+      "name": "R. Shea",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478856": {
+      "name": "C. Garland",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478859": {
+      "name": "N. Mikkola",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478864": {
+      "name": "K. Kaprizov",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478872": {
+      "name": "K. Vejmelka",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8478873": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8478873"
+      "name": "T. Terry",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478891": {
+      "name": "M. Appleton",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478904": {
+      "name": "S. Lorentz",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020921",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478911": {
+      "name": "M. Roy",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478916": {
+      "name": "J. Daccord",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478971": {
+      "name": "C. Ingram",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8478975": {
+      "name": "M. Marchment",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479066": {
+      "name": "R. Lomberg",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479193": {
+      "name": "C. DeSmith",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479292": {
+      "name": "C. Lindgren",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479293": {
+      "name": "B. Tanev",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479314": {
+      "name": "M. Tkachuk",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479318": {
+      "name": "A. Matthews",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479324": {
+      "name": "R. Lindgren",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479325": {
+      "name": "C. McAvoy",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479336": {
+      "name": "C. Grundstrom",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479337": {
+      "name": "A. DeBrincat",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479343": {
+      "name": "C. Keller",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479345": {
+      "name": "J. Chychrun",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479351": {
+      "name": "S. Steel",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479361": {
+      "name": "J. Woll",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479365": {
+      "name": "T. Frederic",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479369": {
+      "name": "A. Peeke",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479371": {
+      "name": "D. Fabbro",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479372": {
+      "name": "J. Mahura",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479378": {
+      "name": "L. Stanley",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479385": {
+      "name": "J. Kyrou",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479398": {
+      "name": "S. Girard",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479400": {
+      "name": "P. Dubois",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479406": {
+      "name": "F. Gustavsson",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479407": {
+      "name": "J. Bratt",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479410": {
+      "name": "M. Sergachev",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479414": {
+      "name": "N. Bastian",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479421": {
+      "name": "J. Moverare",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479425": {
+      "name": "F. Hronek",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479442": {
+      "name": "T. Stecher",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479496": {
+      "name": "D. Rittich",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479520": {
+      "name": "B. Duhaime",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479525": {
+      "name": "R. Colton",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479542": {
+      "name": "B. Hagel",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479550": {
+      "name": "T. Laczynski",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479576": {
+      "name": "V. Desharnais",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479591": {
+      "name": "M. Eyssimont",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479638": {
+      "name": "J. Brazeau",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479639": {
+      "name": "D. Coghlan",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479661": {
+      "name": "T. Jeannot",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479671": {
+      "name": "M. Olivier",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479675": {
+      "name": "T. Moore",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8479705": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8479705"
+      "name": "J. Viel",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479973": {
+      "name": "S. Skinner",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479977": {
+      "name": "K. Yamamoto",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479979": {
+      "name": "J. Oettinger",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479983": {
+      "name": "M. Ferraro",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479985": {
+      "name": "C. Fleury",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479987": {
+      "name": "M. Geekie",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479992": {
+      "name": "M. Rasmussen",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479996": {
+      "name": "C. Glass",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479998": {
+      "name": "M. Anderson",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8479999": {
+      "name": "C. Mittelstadt",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480002": {
+      "name": "N. Hischier",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480003": {
+      "name": "J. Boqvist",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020948",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480009": {
+      "name": "E. Tolvanen",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480012": {
+      "name": "E. Pettersson",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480014": {
+      "name": "G. Vilardi",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480015": {
+      "name": "O. Tippett",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480018": {
+      "name": "N. Suzuki",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480022": {
+      "name": "M. DiPietro",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480023": {
+      "name": "R. Thomas",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020951",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480027": {
+      "name": "J. Robertson",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480028": {
+      "name": "M. Frost",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480035": {
+      "name": "H. Jokiharju",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480036": {
+      "name": "M. Heiskanen",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480039": {
+      "name": "M. Necas",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480043": {
+      "name": "T. Liljegren",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020928",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480049": {
+      "name": "D. Samberg",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480058": {
+      "name": "P. Joseph",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8480068": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8480068"
+      "name": "R. Poehling",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480069": {
+      "name": "C. Makar",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480074": {
+      "name": "A. Texier",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480084": {
+      "name": "N. DeSimone",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480113": {
+      "name": "A. Iafallo",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480144": {
+      "name": "D. Kampf",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480185": {
+      "name": "E. Luostarinen",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480188": {
+      "name": "F. Zetterlund",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480193": {
+      "name": "D. Tarasov",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480208": {
+      "name": "D. Batherson",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480220": {
+      "name": "N. Cates",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480280": {
+      "name": "J. Swayman",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480281": {
+      "name": "A. Toropchenko",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480289": {
+      "name": "M. Barron",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480313": {
+      "name": "L. Thompson",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480355": {
+      "name": "M. Kastelic",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480426": {
+      "name": "C. D'Astous",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480434": {
+      "name": "S. Durzi",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480448": {
+      "name": "P. Kelly",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480459": {
+      "name": "P. Suter",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480727": {
+      "name": "Z. Whitecloud",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480748": {
+      "name": "K. Sherwood",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480796": {
+      "name": "M. Fehérváry",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480797": {
+      "name": "J. Farabee",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480798": {
+      "name": "P. Kurashev",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480800": {
+      "name": "Q. Hughes",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480801": {
+      "name": "B. Tkachuk",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480803": {
+      "name": "E. Bouchard",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480806": {
+      "name": "I. Lundestrom",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480813": {
+      "name": "J. Veleno",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020895",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480834": {
+      "name": "T. Emberson",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480835": {
+      "name": "J. Drury",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480840": {
+      "name": "O. Bäck",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8480843": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8480843"
+      "name": "L. Dostal",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480849": {
+      "name": "B. Hayton",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480855": {
+      "name": "J. McBain",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480860": {
+      "name": "K. Bahl",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480865": {
+      "name": "N. Dobson",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480873": {
+      "name": "R. Sandin",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480878": {
+      "name": "N. Lundkvist",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480879": {
+      "name": "J. Bernard-Docker",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480893": {
+      "name": "K. Marchenko",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480947": {
+      "name": "K. Lankinen",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480980": {
+      "name": "C. Dewar",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480981": {
+      "name": "J. Hofer",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480990": {
+      "name": "D. Chisholm",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8480995": {
+      "name": "P. Holmberg",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481006": {
+      "name": "T. Tucker",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481013": {
+      "name": "J. Berggren",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481024": {
+      "name": "L. Karlsson",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481028": {
+      "name": "M. Pospisil",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481032": {
+      "name": "P. Cotter",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481033": {
+      "name": "A. Schmid",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481035": {
+      "name": "S. Ersson",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481043": {
+      "name": "C. Koepke",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481056": {
+      "name": "S. Stastney",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481068": {
+      "name": "Y. Sharangovich",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481122": {
+      "name": "S. Benoit",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481133": {
+      "name": "C. Reinhardt",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481167": {
+      "name": "B. Pachal",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481219": {
+      "name": "J. Aspirot",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481237": {
+      "name": "K. MacLean",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481477": {
+      "name": "N. Sturm",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481481": {
+      "name": "B. Lizotte",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481519": {
+      "name": "S. Knight",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481523": {
+      "name": "K. Dach",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481527": {
+      "name": "K. Korczak",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481528": {
+      "name": "D. Cozens",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481532": {
+      "name": "A. Turcotte",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481533": {
+      "name": "T. Zegras",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481535": {
+      "name": "N. Hoglander",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481540": {
+      "name": "C. Caufield",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481542": {
+      "name": "M. Seider",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481546": {
+      "name": "C. York",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481553": {
+      "name": "B. Brink",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481554": {
+      "name": "K. Kakko",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481556": {
+      "name": "J. Beecher",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481557": {
+      "name": "M. Boldy",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481559": {
+      "name": "J. Hughes",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8481563": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8481563"
+      "name": "D. Helleson",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481568": {
+      "name": "A. Vlasic",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481572": {
+      "name": "V. Heinola",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481580": {
+      "name": "C. McMichael",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481581": {
+      "name": "T. Harley",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481582": {
+      "name": "N. Robertson",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481593": {
+      "name": "J. Struble",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481596": {
+      "name": "S. Pinto",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481598": {
+      "name": "P. Broberg",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481600": {
+      "name": "T. Bjornfot",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481601": {
+      "name": "S. Holmstrom",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481604": {
+      "name": "P. Dorofeyev",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8481605": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8481605"
+      "name": "J. LaCombe",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481606": {
+      "name": "J. Spence",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481607": {
+      "name": "A. Johansson",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481617": {
+      "name": "V. Podkolzin",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481618": {
+      "name": "A. Newhook",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481624": {
+      "name": "I. Mikheyev",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481641": {
+      "name": "J. Kiviranta",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481655": {
+      "name": "C. Schwindt",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481656": {
+      "name": "A. Protas",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481668": {
+      "name": "A. Silovs",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481692": {
+      "name": "D. Wolf",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481711": {
+      "name": "M. Maccelli",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481716": {
+      "name": "D. Voronkov",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481721": {
+      "name": "A. Gritsyuk",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481725": {
+      "name": "E. Soderblom",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8481806": {
+      "name": "L. Crevier",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482055": {
+      "name": "D. O'Connor",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482074": {
+      "name": "C. Zary",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482077": {
+      "name": "D. Holloway",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482078": {
+      "name": "L. Raymond",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482079": {
+      "name": "M. Rossi",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482087": {
+      "name": "K. Guhle",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482088": {
+      "name": "J. Sourdif",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482089": {
+      "name": "J. Neighbours",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482090": {
+      "name": "J. Finley",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482092": {
+      "name": "R. Greig",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482094": {
+      "name": "D. Hunt",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482095": {
+      "name": "T. Kleven",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482105": {
+      "name": "J. Sanderson",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482110": {
+      "name": "D. Mercer",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482113": {
+      "name": "A. Lundell",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482116": {
+      "name": "T. Stützle",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482122": {
+      "name": "B. Faber",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482124": {
+      "name": "Q. Byfield",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482125": {
+      "name": "A. Holtz",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482126": {
+      "name": "E. Andrae",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482131": {
+      "name": "D. Sebrango",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020948",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482137": {
+      "name": "Y. Askarov",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482142": {
+      "name": "J. Drysdale",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482145": {
+      "name": "M. Bourque",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482149": {
+      "name": "C. Perfetti",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482155": {
+      "name": "A. Laferriere",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482165": {
+      "name": "Y. Kuznetsov",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482166": {
+      "name": "S. Mukhamadullin",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482175": {
+      "name": "J. Peterka",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482177": {
+      "name": "M. Khusnutdinov",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8482178": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8482178"
+      "name": "I. Moore",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482201": {
+      "name": "G. Goncalves",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482245": {
+      "name": "A. Zub",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482259": {
+      "name": "B. McMann",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482408": {
+      "name": "J. Malott",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482411": {
+      "name": "H. Shepard",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020907",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482445": {
+      "name": "D. Cooley",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482475": {
+      "name": "E. Chinakhov",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482476": {
+      "name": "E. Heineman",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482487": {
+      "name": "J. Dobes",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482511": {
+      "name": "M. Lohrei",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482516": {
+      "name": "M. Kessel",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020951",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482634": {
+      "name": "A. Steeves",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482652": {
+      "name": "W. Duehr",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482655": {
+      "name": "J. Moser",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482660": {
+      "name": "K. Johnson",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482661": {
+      "name": "J. Wallstedt",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482665": {
+      "name": "M. Beniers",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482667": {
+      "name": "W. Eklund",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482679": {
+      "name": "M. Coronato",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482684": {
+      "name": "L. Hughes",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482691": {
+      "name": "A. Räty",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020901",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482699": {
+      "name": "D. Guenther",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482703": {
+      "name": "C. Dach",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482705": {
+      "name": "C. Sillinger",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482713": {
+      "name": "M. Samoskevich",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482720": {
+      "name": "M. Knies",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482726": {
+      "name": "S. Helenius",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482730": {
+      "name": "B. Clarke",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482733": {
+      "name": "L. Mailloux",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482737": {
+      "name": "Z. Bolduc",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482740": {
+      "name": "W. Johnston",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8482745": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8482745"
+      "name": "M. McTavish",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482751": {
+      "name": "R. Winterton",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482762": {
+      "name": "S. Edvinsson",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482775": {
+      "name": "O. Kapanen",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482783": {
+      "name": "A. Kolosov",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020907",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8482803": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8482803"
+      "name": "O. Zellweger",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482821": {
+      "name": "A. Soderblom",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482858": {
+      "name": "R. Evans",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482859": {
+      "name": "Z. Ostapchuk",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482874": {
+      "name": "J. Melanson",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482929": {
+      "name": "E. Lilleberg",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482947": {
+      "name": "Z. Bardakov",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482964": {
+      "name": "A. Xhekaj",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482982": {
+      "name": "J. Greaves",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482993": {
+      "name": "A. Hayes",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483406": {
+      "name": "T. Ward",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483425": {
+      "name": "L. Bichsel",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483431": {
+      "name": "L. Cooley",
+      "sightings": [
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025020914",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8483445": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8483445"
+      "name": "C. Gauthier",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483450": {
+      "name": "R. Greene",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483457": {
+      "name": "L. Hutson",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483464": {
+      "name": "M. Kasper",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483466": {
+      "name": "K. Korchinski",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483476": {
+      "name": "J. Lekkerimäki",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020901",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483485": {
+      "name": "D. Mateychuk",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483489": {
+      "name": "F. Minten",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8483490": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8483490"
+      "name": "P. Mintyukov",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483493": {
+      "name": "F. Nazar",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483495": {
+      "name": "S. Nemec",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483499": {
+      "name": "L. Ohgren",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483505": {
+      "name": "M. Poitras",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483510": {
+      "name": "E. Salomonsson",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020933",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483512": {
+      "name": "M. Savoie",
+      "sightings": [
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025020917",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483515": {
+      "name": "J. Slafkovský",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483516": {
+      "name": "J. Snuggerud",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483524": {
+      "name": "S. Wright",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483525": {
+      "name": "D. Yurov",
+      "sightings": [
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025020927",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483553": {
+      "name": "M. Gatcomb",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483570": {
+      "name": "B. Meyers",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483573": {
+      "name": "E. Frank",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483609": {
+      "name": "A. Klapka",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483630": {
+      "name": "P. Regenda",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483676": {
+      "name": "S. Halliday",
+      "sightings": [
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483678": {
+      "name": "E. Pettersson",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483711": {
+      "name": "D. DiVincentiis",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020915",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483733": {
+      "name": "N. Grebenkin",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483752": {
+      "name": "D. James",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020912",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483771": {
+      "name": "S. Vilmanis",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483808": {
+      "name": "A. Kuzmenko",
+      "sightings": [
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8483890": {
+      "name": "B. Bowman",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484136": {
+      "name": "M. Sasson",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020901",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484142": {
+      "name": "D. Barkey",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020907",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484144": {
+      "name": "C. Bedard",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484149": {
+      "name": "G. Brindley",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8484153": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8484153"
+      "name": "L. Carlsson",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484158": {
+      "name": "E. Cowan",
+      "sightings": [
+        {
+          "teamAbbrev": "TOR",
+          "gameId": "2025020939",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484164": {
+      "name": "D. Dvorsky",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484166": {
+      "name": "A. Fantilli",
+      "sightings": [
+        {
+          "teamAbbrev": "CBJ",
+          "gameId": "2025020918",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484177": {
+      "name": "L. Hameenaho",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484186": {
+      "name": "R. Leonard",
+      "sightings": [
+        {
+          "teamAbbrev": "WSH",
+          "gameId": "2025020931",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484197": {
+      "name": "O. Moore",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484221": {
+      "name": "C. Ritchie",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484223": {
+      "name": "A. Sandin-Pellikka",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484227": {
+      "name": "W. Smith",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484240": {
+      "name": "T. Willander",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484258": {
+      "name": "S. Malinski",
+      "sightings": [
+        {
+          "teamAbbrev": "COL",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484268": {
+      "name": "N. Tolopilo",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484304": {
+      "name": "U. Balinskis",
+      "sightings": [
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025020893",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484312": {
+      "name": "G. Romanov",
+      "sightings": [
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025020925",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484387": {
+      "name": "M. Michkov",
+      "sightings": [
+        {
+          "teamAbbrev": "PHI",
+          "gameId": "2025020935",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484471": {
+      "name": "E. Finnie",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025020920",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8484762": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8484762"
+      "name": "B. Sennecke",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484768": {
+      "name": "Z. Parekh",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020944",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484783": {
+      "name": "A. Levshunov",
+      "sightings": [
+        {
+          "teamAbbrev": "CHI",
+          "gameId": "2025020938",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484798": {
+      "name": "Z. Buium",
+      "sightings": [
+        {
+          "teamAbbrev": "VAN",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484800": {
+      "name": "B. Catton",
+      "sightings": [
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025020946",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484801": {
+      "name": "M. Celebrini",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484806": {
+      "name": "S. Dickinson",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484829": {
+      "name": "J. Hryckowian",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484860": {
+      "name": "M. Gridin",
+      "sightings": [
+        {
+          "teamAbbrev": "CGY",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484911": {
+      "name": "C. Graf",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484938": {
+      "name": "A. Hyry",
+      "sightings": [
+        {
+          "teamAbbrev": "DAL",
+          "gameId": "2025020913",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484958": {
+      "name": "M. Tsyplakov",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025020943",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8484984": {
+      "name": "I. Demidov",
+      "sightings": [
+        {
+          "teamAbbrev": "MTL",
+          "gameId": "2025020940",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8485251": {
+      "name": "K. Uchacz",
+      "sightings": [
+        {
+          "teamAbbrev": "VGK",
+          "gameId": "2025020916",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8485366": {
+      "name": "M. Schaefer",
+      "sightings": [
+        {
+          "teamAbbrev": "NYI",
+          "gameId": "2025020919",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8485402": {
+      "name": "M. Misa",
+      "sightings": [
+        {
+          "teamAbbrev": "SJS",
+          "gameId": "2025020950",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8485414": {
+      "name": "B. Kindel",
+      "sightings": [
+        {
+          "teamAbbrev": "PIT",
+          "gameId": "2025020947",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     },
     "8485512": {
-      "team": "ANA (NHL)",
-      "lastDate": "2026-03-02T06:58:51.345Z",
-      "playerId": "8485512"
+      "name": "T. Washe",
+      "sightings": [
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "migrated",
+          "seenAt": "2026-03-02T06:58:51.345Z"
+        },
+        {
+          "teamAbbrev": "ANA",
+          "gameId": "2025020952",
+          "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
     }
   },
   "movements": [],
-  "lastUpdated": "2026-03-02T06:58:51.345Z"
+  "lastUpdated": "2026-03-02T07:08:52.390Z",
+  "lastRunMeta": {
+    "observedTeams": [
+      "ANA",
+      "BOS",
+      "LAK",
+      "SJS",
+      "SEA",
+      "VGK",
+      "CGY",
+      "EDM",
+      "VAN",
+      "COL",
+      "MTL",
+      "NYI",
+      "STL",
+      "TOR",
+      "WPG",
+      "OTT"
+    ],
+    "skippedTeams": [
+      {
+        "team": "San Diego Gulls",
+        "league": "AHL",
+        "reason": "LEAGUE_NOT_SUPPORTED"
+      },
+      {
+        "team": "Tulsa Oilers",
+        "league": "ECHL",
+        "reason": "LEAGUE_NOT_SUPPORTED"
+      }
+    ],
+    "playersIngested": 610,
+    "movementsDetectedThisRun": [],
+    "timestamp": "2026-03-02T07:08:52.390Z"
+  }
 }
