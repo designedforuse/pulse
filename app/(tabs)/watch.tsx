@@ -51,7 +51,6 @@ import type { Favorites } from "@/lib/data";
 import {
   buildChaosSetup,
   selfHealChaosSetup,
-  findHigherPriorityAlert,
   type ChaosSetup,
 } from "@/lib/chaos-setup";
 
@@ -488,7 +487,6 @@ export default function WatchScreen() {
   const [now, setNow] = useState<Date>(new Date());
   const [refreshing, setRefreshing] = useState(false);
   const [chaosSetup, setChaosSetup] = useState<ChaosSetup | null>(null);
-  const [alertEvent, setAlertEvent] = useState<SportEvent | null>(null);
   const chaosRef = useRef<ChaosSetup | null>(null);
 
   const getScoreStatus = useCallback(
@@ -506,7 +504,6 @@ export default function WatchScreen() {
     const setup = buildChaosSetup(allEvents, favorites, t, getScoreStatus, getScoreData);
     setChaosSetup(setup);
     chaosRef.current = setup;
-    setAlertEvent(null);
   }, [allEvents, favorites, getScoreStatus, getScoreData]);
 
   const initialised = useRef(false);
@@ -535,12 +532,7 @@ export default function WatchScreen() {
     if (healed) {
       setChaosSetup(healed);
       chaosRef.current = healed;
-      setAlertEvent(null);
-      return;
     }
-
-    const higher = findHigherPriorityAlert(current, allEvents, favorites, now, getScoreStatus);
-    setAlertEvent(higher);
   }, [now, scores]);
 
   const handleRebuild = useCallback(() => {
@@ -719,20 +711,6 @@ export default function WatchScreen() {
                 <Text style={styles.rebuildText}>Reshuffle</Text>
               </Pressable>
             </View>
-
-            {alertEvent && (
-              <Pressable
-                onPress={handleRebuild}
-                style={({ pressed }) => [
-                  styles.alertBanner,
-                  { opacity: pressed ? 0.85 : 1 },
-                ]}
-              >
-                <Ionicons name="arrow-up-circle" size={18} color="#FFD54F" />
-                <Text style={styles.alertText}>Higher priority game now live</Text>
-                <Text style={styles.alertAction}>Update Setup</Text>
-              </Pressable>
-            )}
 
             <ChaosCard
               event={chaosSetup.primary!}
@@ -930,31 +908,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   rebuildText: {
-    fontSize: 13,
-    fontWeight: "600" as const,
-    color: Colors.accent,
-    fontFamily: "Inter_600SemiBold",
-  },
-
-  alertBanner: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-    backgroundColor: "rgba(255, 213, 79, 0.12)",
-    borderWidth: 1,
-    borderColor: "rgba(255, 213, 79, 0.3)",
-    borderRadius: 12,
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    marginBottom: 12,
-  },
-  alertText: {
-    fontSize: 13,
-    color: "#FFD54F",
-    fontFamily: "Inter_500Medium",
-    flex: 1,
-  },
-  alertAction: {
     fontSize: 13,
     fontWeight: "600" as const,
     color: Colors.accent,
