@@ -218,7 +218,7 @@ export default function GuideDetailScreen() {
   const { allEvents } = useEvents();
   const { getScore } = useScores();
   const { favorites } = useFavorites();
-  const { getOverride, setOverride, clearOverride } = useRitualOverrides();
+  const { getOverride, setOverride, clearOverride, loaded: overridesLoaded } = useRitualOverrides();
   const [pickerVisible, setPickerVisible] = useState(false);
 
   const now = useMemo(() => new Date(), []);
@@ -247,14 +247,15 @@ export default function GuideDetailScreen() {
   }, [overrideId, allRitualEvents, now]);
 
   useEffect(() => {
-    if (!overrideId || !id) return;
+    if (!overrideId || !id || !overridesLoaded) return;
+    if (allRitualEvents.length === 0) return;
     const freshNow = new Date();
     const ev = allRitualEvents.find((e) => e.id === overrideId);
     const sixHoursAgo = freshNow.getTime() - 6 * 3600000;
     if (!ev || new Date(ev.startTimeLocal).getTime() < sixHoursAgo) {
       clearOverride(id);
     }
-  }, [overrideId, id, allRitualEvents]);
+  }, [overrideId, id, allRitualEvents, overridesLoaded]);
 
   const featured = overrideEvent || autoFeatured;
 
