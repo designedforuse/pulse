@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useCallback, useEffect } from "react";
+import React, { useMemo, useState, useCallback, useEffect, useRef } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,7 +7,7 @@ import {
   Pressable,
   Platform,
   Modal,
-  FlatList,
+  Animated as RNAnimated
 } from "react-native";
 import Animated from "react-native-reanimated";
 import { useScoreFlash } from "@/hooks/useScoreFlash";
@@ -58,12 +58,16 @@ function GuideEventCard({
   completed,
   score,
   featured,
+  onSetFeatured,
+  isCurrentFeatured,
 }: {
   event: SportEvent;
   isFav: boolean;
   completed: boolean;
   score?: ScoreData;
   featured?: boolean;
+  onSetFeatured?: (eventId: string) => void;
+  isCurrentFeatured?: boolean;
 }) {
   const provider = getProviderById(event.providerId);
   const sportColor = getSportColor(event.sport);
@@ -77,6 +81,10 @@ function GuideEventCard({
   const handlePress = () => {
     if (Platform.OS !== "web") {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+    if (onSetFeatured) {
+      onSetFeatured(event.id);
+      return;
     }
     router.push({
       pathname: "/event-sheet",
@@ -170,48 +178,6 @@ function GuideEventCard({
   );
 }
 
-function PickerRow({
-  event,
-  isSelected,
-  onSelect,
-}: {
-  event: SportEvent;
-  isSelected: boolean;
-  onSelect: () => void;
-}) {
-  const provider = getProviderById(event.providerId);
-  const sportColor = getSportColor(event.sport);
-  const { date, time } = formatEventDate(event.startTimeLocal);
-  return (
-    <Pressable
-      onPress={onSelect}
-      style={({ pressed }) => [
-        pickerStyles.row,
-        isSelected && pickerStyles.rowSelected,
-        { opacity: pressed ? 0.8 : 1 },
-      ]}
-    >
-      <View style={pickerStyles.rowLeft}>
-        <Text style={[pickerStyles.leagueLabel, { color: sportColor }]}>
-          {event.league}
-        </Text>
-        <Text style={pickerStyles.matchup} numberOfLines={1}>
-          {displayTeamName(event.awayTeam)} @ {displayTeamName(event.homeTeam)}
-        </Text>
-        <Text style={pickerStyles.dateTime}>{date} · {time}</Text>
-      </View>
-      <View style={pickerStyles.rowRight}>
-        {provider && (
-          <ProviderLogo providerId={event.providerId} size={20} />
-        )}
-        {isSelected && (
-          <Ionicons name="checkmark-circle" size={20} color={Colors.accent} />
-        )}
-      </View>
-    </Pressable>
-  );
-}
-
 export default function GuideDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const ritual = getRitualById(id);
@@ -219,7 +185,10 @@ export default function GuideDetailScreen() {
   const { getScore } = useScores();
   const { favorites } = useFavorites();
   const { getOverride, setOverride, clearOverride, loaded: overridesLoaded } = useRitualOverrides();
-  const [pickerVisible, setPickerVisible] = useState(false);
+  const [sheetEventId, setSheetEventId] = useState<string | null>(null);
+  const [toastVisible, setToastVisible] = useState(false);
+  const [toastMessage, setToastMessage] = useState("Featured game updated");
+  const toastOpacity = useRef(new RNAnimated.Value(0)).current;
 
   const now = useMemo(() => new Date(), []);
 
@@ -329,17 +298,32 @@ export default function GuideDetailScreen() {
 
   const isOverrideActive = !!overrideEvent;
 
-  const handleSelectOverride = useCallback(
-    (eventId: string) => {
-      if (!id) return;
-      if (Platform.OS !== "web") {
-        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-      }
-      setOverride(id, eventId);
-      setPickerVisible(false);
-    },
-    [id, setOverride],
-  );
+  const sheetEvent = useMemo(() => {
+    if (!sheetEventId) return null;
+    return allRitualEvents.find((e) => e.id === sheetEventId) || null;
+  }, [sheetEventId, allRitualEvents]);
+
+  const isSheetEventFeatured = sheetEventId === featured?.id;
+
+  const showToast = useCallback((msg: string) => {
+    setToastMessage(msg);
+    setToastVisible(true);
+    RNAnimated.sequence([
+      RNAnimated.timing(toastOpacity, { toValue: 1, duration: 200, useNativeDriver: true }),
+      RNAnimated.delay(1500),
+      RNAnimated.timing(toastOpacity, { toValue: 0, duration: 300, useNativeDriver: true }),
+    ]).start(() => setToastVisible(false));
+  }, [toastOpacity]);
+
+  const handleSetFeatured = useCallback(() => {
+    if (!id || !sheetEventId) return;
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    }
+    setOverride(id, sheetEventId);
+    setSheetEventId(null);
+    showToast("Featured game updated");
+  }, [id, sheetEventId, setOverride, showToast]);
 
   const handleResetAuto = useCallback(() => {
     if (!id) return;
@@ -347,8 +331,13 @@ export default function GuideDetailScreen() {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     }
     clearOverride(id);
-    setPickerVisible(false);
-  }, [id, clearOverride]);
+    setSheetEventId(null);
+    showToast("Reverted to auto selection");
+  }, [id, clearOverride, showToast]);
+
+  const openGameSheet = useCallback((eventId: string) => {
+    setSheetEventId(eventId);
+  }, []);
 
   if (!ritual) {
     return (
@@ -411,77 +400,24 @@ export default function GuideDetailScreen() {
               score={getScore(featured.id)}
               featured
             />
-            {allRitualEvents.length > 1 && (
+            {isOverrideActive && (
               <Pressable
-                onPress={() => setPickerVisible(true)}
+                onPress={handleResetAuto}
                 style={({ pressed }) => [
                   styles.changeFeaturedBtn,
                   { opacity: pressed ? 0.7 : 1 },
                 ]}
-                testID="change-featured-btn"
+                testID="reset-auto-btn"
               >
-                <Ionicons name="swap-horizontal" size={14} color={Colors.accent} />
-                <Text style={styles.changeFeaturedText}>
-                  {isOverrideActive ? "Change Featured Game" : "Set Featured Game"}
-                </Text>
-                {isOverrideActive && (
-                  <View style={styles.overrideBadge}>
-                    <Text style={styles.overrideBadgeText}>MANUAL</Text>
-                  </View>
-                )}
+                <Ionicons name="refresh" size={14} color={Colors.textSecondary} />
+                <Text style={[styles.changeFeaturedText, { color: Colors.textSecondary }]}>Reset to Auto</Text>
+                <View style={styles.overrideBadge}>
+                  <Text style={styles.overrideBadgeText}>MANUAL</Text>
+                </View>
               </Pressable>
             )}
           </View>
         )}
-
-        <Modal
-          visible={pickerVisible}
-          transparent
-          animationType="slide"
-          onRequestClose={() => setPickerVisible(false)}
-        >
-          <View style={pickerStyles.modalContainer}>
-            <Pressable
-              style={pickerStyles.overlay}
-              onPress={() => setPickerVisible(false)}
-            />
-            <View style={pickerStyles.sheet}>
-              <View style={pickerStyles.handle} />
-              <View style={pickerStyles.header}>
-                <Text style={pickerStyles.headerTitle}>Choose Featured Game</Text>
-                <Pressable onPress={() => setPickerVisible(false)} hitSlop={8}>
-                  <Ionicons name="close-circle" size={26} color={Colors.textMuted} />
-                </Pressable>
-              </View>
-              {isOverrideActive && (
-                <Pressable
-                  onPress={handleResetAuto}
-                  style={({ pressed }) => [
-                    pickerStyles.resetRow,
-                    { opacity: pressed ? 0.7 : 1 },
-                  ]}
-                  testID="reset-auto-btn"
-                >
-                  <Ionicons name="refresh" size={18} color={Colors.textSecondary} />
-                  <Text style={pickerStyles.resetText}>Reset to Auto</Text>
-                </Pressable>
-              )}
-              <FlatList
-                data={allRitualEvents}
-                keyExtractor={(e) => e.id}
-                renderItem={({ item }) => (
-                  <PickerRow
-                    event={item}
-                    isSelected={featured?.id === item.id}
-                    onSelect={() => handleSelectOverride(item.id)}
-                  />
-                )}
-                contentContainerStyle={pickerStyles.listContent}
-                showsVerticalScrollIndicator={false}
-              />
-            </View>
-          </View>
-        </Modal>
 
         {(featured || moreGames.length > 0) && (
           <View style={styles.sectionBlock}>
@@ -502,6 +438,8 @@ export default function GuideDetailScreen() {
                   isFav
                   completed={isEventCompleted(event, now)}
                   score={getScore(event.id)}
+                  onSetFeatured={openGameSheet}
+                  isCurrentFeatured={event.id === featured?.id}
                 />
               ))
             ) : (
@@ -596,6 +534,8 @@ export default function GuideDetailScreen() {
                   isFav={false}
                   completed={isEventCompleted(event, now)}
                   score={getScore(event.id)}
+                  onSetFeatured={openGameSheet}
+                  isCurrentFeatured={event.id === featured?.id}
                 />
               ))
             ) : hasActiveFilter ? (
@@ -617,6 +557,104 @@ export default function GuideDetailScreen() {
           </View>
         )}
       </ScrollView>
+
+      <Modal
+        visible={!!sheetEventId}
+        transparent
+        animationType="slide"
+        onRequestClose={() => setSheetEventId(null)}
+      >
+        <View style={sheetStyles.modalContainer}>
+          <Pressable
+            style={sheetStyles.overlay}
+            onPress={() => setSheetEventId(null)}
+          />
+          <View style={sheetStyles.sheet}>
+            <View style={sheetStyles.handle} />
+            {sheetEvent && (() => {
+              const se = sheetEvent;
+              const seProvider = getProviderById(se.providerId);
+              const seSportColor = getSportColor(se.sport);
+              const { date: seDate, time: seTime } = formatEventDate(se.startTimeLocal);
+              return (
+                <>
+                  <View style={sheetStyles.eventInfo}>
+                    <Text style={[sheetStyles.leagueLabel, { color: seSportColor }]}>
+                      {getLeagueDisplayLabel(se)}
+                    </Text>
+                    <View style={sheetStyles.matchupRow}>
+                      <TeamLogo teamName={se.awayTeam} league={se.league} sport={se.sport} size={24} />
+                      <Text style={sheetStyles.teamName} numberOfLines={1}>
+                        {displayTeamName(se.awayTeam, se.league)}
+                      </Text>
+                      <Text style={sheetStyles.atText}>
+                        {["NHL","AHL","ECHL","NCAA Hockey","MLS","USL"].includes(se.league) ? "at" : "vs"}
+                      </Text>
+                      <TeamLogo teamName={se.homeTeam} league={se.league} sport={se.sport} size={24} />
+                      <Text style={sheetStyles.teamName} numberOfLines={1}>
+                        {displayTeamName(se.homeTeam, se.league)}
+                      </Text>
+                    </View>
+                    <View style={sheetStyles.metaRow}>
+                      <Ionicons name="calendar-outline" size={13} color={Colors.textSecondary} />
+                      <Text style={sheetStyles.metaText}>{seDate} · {seTime}</Text>
+                      {seProvider && (
+                        <>
+                          <Text style={sheetStyles.metaDot}>·</Text>
+                          <ProviderLogo providerId={se.providerId} size={18} />
+                          <Text style={sheetStyles.metaText}>{seProvider.name}</Text>
+                        </>
+                      )}
+                    </View>
+                  </View>
+
+                  <View style={sheetStyles.actions}>
+                    {isSheetEventFeatured ? (
+                      <View style={[sheetStyles.actionBtn, sheetStyles.actionBtnDisabled]}>
+                        <Ionicons name="checkmark-circle" size={20} color={Colors.textMuted} />
+                        <Text style={[sheetStyles.actionBtnText, { color: Colors.textMuted }]}>Already Featured</Text>
+                      </View>
+                    ) : (
+                      <Pressable
+                        onPress={handleSetFeatured}
+                        style={({ pressed }) => [
+                          sheetStyles.actionBtn,
+                          sheetStyles.actionBtnPrimary,
+                          { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] },
+                        ]}
+                        testID="set-featured-btn"
+                      >
+                        <Ionicons name="star" size={20} color={Colors.background} />
+                        <Text style={[sheetStyles.actionBtnText, { color: Colors.background }]}>Set as Featured</Text>
+                      </Pressable>
+                    )}
+                    {isSheetEventFeatured && isOverrideActive && (
+                      <Pressable
+                        onPress={handleResetAuto}
+                        style={({ pressed }) => [
+                          sheetStyles.actionBtn,
+                          { opacity: pressed ? 0.85 : 1 },
+                        ]}
+                        testID="reset-auto-sheet-btn"
+                      >
+                        <Ionicons name="refresh" size={18} color={Colors.textSecondary} />
+                        <Text style={[sheetStyles.actionBtnText, { color: Colors.textSecondary }]}>Reset to Auto</Text>
+                      </Pressable>
+                    )}
+                  </View>
+                </>
+              );
+            })()}
+          </View>
+        </View>
+      </Modal>
+
+      {toastVisible && (
+        <RNAnimated.View style={[sheetStyles.toast, { opacity: toastOpacity }]} pointerEvents="none">
+          <Ionicons name="checkmark-circle" size={18} color={Colors.accent} />
+          <Text style={sheetStyles.toastText}>{toastMessage}</Text>
+        </RNAnimated.View>
+      )}
     </View>
   );
 }
@@ -1046,7 +1084,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const pickerStyles = StyleSheet.create({
+const sheetStyles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     justifyContent: "flex-end",
@@ -1056,92 +1094,118 @@ const pickerStyles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.55)",
   },
   sheet: {
-    maxHeight: "70%",
     backgroundColor: Colors.card,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    paddingBottom: Platform.OS === "web" ? 34 : 20,
+    paddingBottom: Platform.OS === "web" ? 34 : 24,
   },
   handle: {
     width: 36,
     height: 4,
     borderRadius: 2,
     backgroundColor: Colors.textMuted,
-    alignSelf: "center",
+    alignSelf: "center" as const,
     marginTop: 10,
-    marginBottom: 8,
+    marginBottom: 12,
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+  eventInfo: {
     paddingHorizontal: 20,
-    paddingBottom: 12,
+    gap: 8,
+    paddingBottom: 16,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: Colors.border,
   },
-  headerTitle: {
-    fontSize: 17,
+  leagueLabel: {
+    fontSize: 12,
+    fontWeight: "700" as const,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.3,
+    textTransform: "uppercase" as const,
+  },
+  matchupRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 6,
+    flexWrap: "wrap" as const,
+  },
+  teamName: {
+    fontSize: 16,
     fontWeight: "600" as const,
     color: Colors.textPrimary,
     fontFamily: "Inter_600SemiBold",
+    flexShrink: 1,
   },
-  resetRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-    paddingHorizontal: 20,
-    paddingVertical: 14,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: Colors.border,
+  atText: {
+    fontSize: 13,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
+    marginHorizontal: 2,
   },
-  resetText: {
-    fontSize: 15,
-    color: Colors.textSecondary,
-    fontFamily: "Inter_500Medium",
+  metaRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 5,
+    marginTop: 2,
   },
-  listContent: {
-    paddingHorizontal: 12,
-    paddingTop: 4,
-    paddingBottom: 12,
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingVertical: 14,
-    paddingHorizontal: 12,
-    borderRadius: 12,
-    marginVertical: 2,
-  },
-  rowSelected: {
-    backgroundColor: Colors.accent + "12",
-  },
-  rowLeft: {
-    flex: 1,
-    gap: 2,
-  },
-  leagueLabel: {
-    fontSize: 11,
-    fontWeight: "700" as const,
-    fontFamily: "Inter_700Bold",
-    letterSpacing: 0.2,
-  },
-  matchup: {
-    fontSize: 15,
-    fontWeight: "500" as const,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_500Medium",
-  },
-  dateTime: {
+  metaText: {
     fontSize: 12,
     color: Colors.textSecondary,
     fontFamily: "Inter_400Regular",
-    marginTop: 1,
   },
-  rowRight: {
-    flexDirection: "row",
-    alignItems: "center",
+  metaDot: {
+    fontSize: 12,
+    color: Colors.textMuted,
+  },
+  actions: {
+    paddingHorizontal: 20,
+    paddingTop: 16,
     gap: 10,
-    marginLeft: 12,
+  },
+  actionBtn: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    justifyContent: "center" as const,
+    gap: 8,
+    paddingVertical: 14,
+    borderRadius: 14,
+    backgroundColor: Colors.cardHighlight,
+  },
+  actionBtnPrimary: {
+    backgroundColor: Colors.accent,
+  },
+  actionBtnDisabled: {
+    backgroundColor: Colors.cardHighlight,
+    opacity: 0.6,
+  },
+  actionBtnText: {
+    fontSize: 15,
+    fontWeight: "600" as const,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+  },
+  toast: {
+    position: "absolute" as const,
+    bottom: 90,
+    alignSelf: "center" as const,
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 8,
+    backgroundColor: Colors.card,
+    paddingHorizontal: 18,
+    paddingVertical: 12,
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: Colors.accent + "44",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 8,
+  },
+  toastText: {
+    fontSize: 14,
+    fontWeight: "600" as const,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_600SemiBold",
   },
 });
