@@ -110,18 +110,24 @@ function computeOccurrence(ritual: Ritual, now: Date): RitualOccurrence {
     Date.UTC(local.year, local.month - 1, local.day - daysBack, 12),
   );
   const currentOccParts = getLocalParts(currentOccDate);
-  const currentDayMidnight = midnightInTZ(
-    currentOccParts.year,
-    currentOccParts.month,
-    currentOccParts.day,
-  );
-  const occStart = new Date(currentDayMidnight.getTime() + startH * 3600000);
+  const y = currentOccParts.year;
+  const mo = currentOccParts.month;
+  const da = currentOccParts.day;
+  const occStart = localHourToUtc(y, mo, da, startH);
   let occEnd: Date;
   if (crossMidnight) {
-    occEnd = new Date(currentDayMidnight.getTime() + 86400000 + endH * 3600000);
+    const nextD = new Date(Date.UTC(y, mo - 1, da + 1, 12));
+    const np = getLocalParts(nextD);
+    occEnd = localHourToUtc(np.year, np.month, np.day, endH);
   } else {
     const effectiveEnd = Math.min(endH, 24);
-    occEnd = new Date(currentDayMidnight.getTime() + effectiveEnd * 3600000);
+    if (effectiveEnd === 24) {
+      const nextD = new Date(Date.UTC(y, mo - 1, da + 1, 12));
+      const np = getLocalParts(nextD);
+      occEnd = midnightInTZ(np.year, np.month, np.day);
+    } else {
+      occEnd = localHourToUtc(y, mo, da, effectiveEnd);
+    }
   }
 
   const nowMs = now.getTime();
@@ -130,15 +136,26 @@ function computeOccurrence(ritual: Ritual, now: Date): RitualOccurrence {
   }
 
   if (nowMs >= occEnd.getTime()) {
-    const nextDate = new Date(currentDayMidnight.getTime() + 7 * 86400000);
+    const nextDate = new Date(Date.UTC(y, mo - 1, da + 7, 12));
     const nextParts = getLocalParts(nextDate);
-    const nextMidnight = midnightInTZ(nextParts.year, nextParts.month, nextParts.day);
-    const nextStart = new Date(nextMidnight.getTime() + startH * 3600000);
+    const ny = nextParts.year;
+    const nm = nextParts.month;
+    const nd = nextParts.day;
+    const nextStart = localHourToUtc(ny, nm, nd, startH);
     let nextEnd: Date;
     if (crossMidnight) {
-      nextEnd = new Date(nextMidnight.getTime() + 86400000 + endH * 3600000);
+      const dayAfter = new Date(Date.UTC(ny, nm - 1, nd + 1, 12));
+      const dap = getLocalParts(dayAfter);
+      nextEnd = localHourToUtc(dap.year, dap.month, dap.day, endH);
     } else {
-      nextEnd = new Date(nextMidnight.getTime() + Math.min(endH, 24) * 3600000);
+      const eEnd = Math.min(endH, 24);
+      if (eEnd === 24) {
+        const dayAfter = new Date(Date.UTC(ny, nm - 1, nd + 1, 12));
+        const dap = getLocalParts(dayAfter);
+        nextEnd = midnightInTZ(dap.year, dap.month, dap.day);
+      } else {
+        nextEnd = localHourToUtc(ny, nm, nd, eEnd);
+      }
     }
     return { ritual, isActive: false, nextStartAt: nextStart, nextEndAt: nextEnd };
   }
@@ -210,8 +227,8 @@ function getLocalParts(d: Date): { year: number; month: number; day: number; dow
   };
 }
 
-function midnightInTZ(year: number, month: number, day: number): Date {
-  const guess = new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
+function localHourToUtc(year: number, month: number, day: number, hour: number): Date {
+  const guess = new Date(Date.UTC(year, month - 1, day, hour + 8, 0, 0));
   const parts = new Intl.DateTimeFormat("en-US", {
     timeZone: TZ,
     year: "numeric",
@@ -219,36 +236,17 @@ function midnightInTZ(year: number, month: number, day: number): Date {
     day: "numeric",
     hour: "numeric",
     minute: "numeric",
-    second: "numeric",
     hour12: false,
   }).formatToParts(guess);
-
   const get = (type: string) => parseInt(parts.find((p) => p.type === type)?.value || "0", 10);
   const localH = get("hour") === 24 ? 0 : get("hour");
-  const localM = get("minute");
-  const localS = get("second");
+  const diff = localH - hour;
+  if (diff === 0) return guess;
+  return new Date(guess.getTime() - diff * 3600000);
+}
 
-  const offsetMs = (localH * 3600 + localM * 60 + localS) * 1000;
-  const candidate = new Date(guess.getTime() - offsetMs);
-
-  const verify = new Intl.DateTimeFormat("en-US", {
-    timeZone: TZ,
-    day: "numeric",
-    hour: "numeric",
-    hour12: false,
-  }).formatToParts(candidate);
-
-  const verifyDay = parseInt(verify.find((p) => p.type === "day")?.value || "0", 10);
-  const verifyHour = parseInt(verify.find((p) => p.type === "hour")?.value || "0", 10);
-
-  if (verifyDay !== day) {
-    return new Date(candidate.getTime() + (verifyDay < day ? 86400000 : -86400000));
-  }
-  if (verifyHour !== 0 && verifyHour !== 24) {
-    return new Date(candidate.getTime() - verifyHour * 3600000);
-  }
-
-  return candidate;
+function midnightInTZ(year: number, month: number, day: number): Date {
+  return localHourToUtc(year, month, day, 0);
 }
 
 export interface GuideDayWindow {
@@ -281,11 +279,18 @@ export function getGuideDayWindow(
   const targetParts = getLocalParts(targetDate);
 
   const dayStart = midnightInTZ(targetParts.year, targetParts.month, targetParts.day);
-  const dayEnd = new Date(dayStart.getTime() + 86400000 - 1);
+  const nextDayStart = midnightInTZ(
+    targetParts.month === 12 && targetParts.day === 31 ? targetParts.year + 1 : targetParts.year,
+    targetParts.month === 12 && targetParts.day === 31 ? 1 : targetParts.month,
+    targetParts.month === 12 && targetParts.day === 31 ? 1 : targetParts.day + 1,
+  );
+  const dayEnd = new Date(nextDayStart.getTime() - 1);
 
-  const windowStart = new Date(dayStart.getTime() + startHour * 3600000);
+  const windowStart = localHourToUtc(targetParts.year, targetParts.month, targetParts.day, startHour);
   const effectiveEnd = Math.min(endHour, 24);
-  const windowEnd = new Date(dayStart.getTime() + effectiveEnd * 3600000);
+  const windowEnd = effectiveEnd === 24
+    ? nextDayStart
+    : localHourToUtc(targetParts.year, targetParts.month, targetParts.day, effectiveEnd);
 
   const ptDate = `${targetParts.year}-${String(targetParts.month).padStart(2, "0")}-${String(targetParts.day).padStart(2, "0")}`;
 
