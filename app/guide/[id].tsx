@@ -294,6 +294,39 @@ export default function GuideDetailScreen() {
     return { favoritesEvents: favs, moreGames: others };
   }, [rest, favorites, now]);
 
+  const [sportFilter, setSportFilter] = useState<string | null>(null);
+  const [leagueFilter, setLeagueFilter] = useState<string | null>(null);
+
+  const { sportChips, leagueChips, filteredMoreGames, leagueSportMap } = useMemo(() => {
+    const sports = new Map<string, number>();
+    const leagues = new Map<string, number>();
+    const lsMap = new Map<string, string>();
+    for (const e of moreGames) {
+      sports.set(e.sport, (sports.get(e.sport) || 0) + 1);
+      leagues.set(e.league, (leagues.get(e.league) || 0) + 1);
+      if (!lsMap.has(e.league)) lsMap.set(e.league, e.sport);
+    }
+    const sChips = Array.from(sports.entries())
+      .sort((a, b) => b[1] - a[1])
+      .map(([sport, count]) => ({ key: sport, label: sport.charAt(0).toUpperCase() + sport.slice(1), count }));
+    const lChips = Array.from(leagues.entries())
+      .sort((a, b) => b[1] - a[1])
+      .map(([league, count]) => ({ key: league, label: league, count }));
+
+    let filtered = moreGames;
+    if (sportFilter) {
+      filtered = filtered.filter((e) => e.sport === sportFilter);
+    }
+    if (leagueFilter) {
+      filtered = filtered.filter((e) => e.league === leagueFilter);
+    }
+    return { sportChips: sChips, leagueChips: lChips, filteredMoreGames: filtered, leagueSportMap: lsMap };
+  }, [moreGames, sportFilter, leagueFilter]);
+
+  const showSportChips = sportChips.length > 1;
+  const showLeagueChips = leagueChips.length > 1;
+  const hasActiveFilter = sportFilter !== null || leagueFilter !== null;
+
   const isOverrideActive = !!overrideEvent;
 
   const handleSelectOverride = useCallback(
@@ -485,18 +518,92 @@ export default function GuideDetailScreen() {
               <Ionicons name="football-outline" size={16} color={Colors.textSecondary} />
               <Text style={styles.sectionLabel}>More Games</Text>
               <View style={styles.countChipMuted}>
-                <Text style={styles.countChipMutedText}>{moreGames.length}</Text>
+                <Text style={styles.countChipMutedText}>
+                  {hasActiveFilter ? `${filteredMoreGames.length}/${moreGames.length}` : moreGames.length}
+                </Text>
               </View>
             </View>
-            {moreGames.map((event) => (
-              <GuideEventCard
-                key={event.id}
-                event={event}
-                isFav={false}
-                completed={isEventCompleted(event, now)}
-                score={getScore(event.id)}
-              />
-            ))}
+
+            {(showSportChips || showLeagueChips) && (
+              <View style={styles.chipSection}>
+                <ScrollView
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={styles.chipRow}
+                >
+                  <Pressable
+                    onPress={() => {
+                      setSportFilter(null);
+                      setLeagueFilter(null);
+                      if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                    }}
+                    style={[styles.chip, !hasActiveFilter && styles.chipActive]}
+                    testID="filter-chip-all"
+                  >
+                    <Text style={[styles.chipLabel, !hasActiveFilter && styles.chipLabelActive]}>All</Text>
+                  </Pressable>
+
+                  {showSportChips && sportChips.map((sc) => {
+                    const isActive = sportFilter === sc.key;
+                    const color = getSportColor(sc.key);
+                    return (
+                      <Pressable
+                        key={`sport-${sc.key}`}
+                        onPress={() => {
+                          setSportFilter(isActive ? null : sc.key);
+                          if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                        }}
+                        style={[styles.chip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
+                        testID={`filter-chip-sport-${sc.key}`}
+                      >
+                        <Text style={[styles.chipLabel, isActive && { color }]}>{sc.label}</Text>
+                        <View style={[styles.chipCount, isActive && { backgroundColor: color + "18" }]}>
+                          <Text style={[styles.chipCountText, isActive && { color }]}>{sc.count}</Text>
+                        </View>
+                      </Pressable>
+                    );
+                  })}
+
+                  {showLeagueChips && leagueChips.map((lc) => {
+                    const isActive = leagueFilter === lc.key;
+                    const color = getSportColor(leagueSportMap.get(lc.key) || "");
+                    return (
+                      <Pressable
+                        key={`league-${lc.key}`}
+                        onPress={() => {
+                          setLeagueFilter(isActive ? null : lc.key);
+                          if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                        }}
+                        style={[styles.chip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
+                        testID={`filter-chip-league-${lc.key}`}
+                      >
+                        <Text style={[styles.chipLabel, isActive && { color }]}>{lc.label}</Text>
+                        <View style={[styles.chipCount, isActive && { backgroundColor: color + "18" }]}>
+                          <Text style={[styles.chipCountText, isActive && { color }]}>{lc.count}</Text>
+                        </View>
+                      </Pressable>
+                    );
+                  })}
+                </ScrollView>
+              </View>
+            )}
+
+            {filteredMoreGames.length > 0 ? (
+              filteredMoreGames.map((event) => (
+                <GuideEventCard
+                  key={event.id}
+                  event={event}
+                  isFav={false}
+                  completed={isEventCompleted(event, now)}
+                  score={getScore(event.id)}
+                />
+              ))
+            ) : hasActiveFilter ? (
+              <View style={styles.filterEmpty}>
+                <Ionicons name="filter-outline" size={20} color={Colors.textMuted} />
+                <Text style={styles.filterEmptyText}>No games match these filters</Text>
+              </View>
+            ) : null}
           </View>
         )}
 
@@ -611,6 +718,60 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: Colors.textSecondary,
     fontFamily: "Inter_600SemiBold",
+  },
+  chipSection: {
+    marginBottom: 8,
+  },
+  chipRow: {
+    gap: 6,
+    alignItems: "center",
+    paddingVertical: 4,
+  },
+  chip: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    backgroundColor: Colors.card,
+  },
+  chipActive: {
+    backgroundColor: Colors.accent + "18",
+    borderColor: Colors.accent + "44",
+  },
+  chipLabel: {
+    fontSize: 11,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_600SemiBold",
+  },
+  chipLabelActive: {
+    color: Colors.accent,
+  },
+  chipCount: {
+    backgroundColor: Colors.cardHighlight,
+    paddingHorizontal: 5,
+    paddingVertical: 1,
+    borderRadius: 7,
+    minWidth: 16,
+    alignItems: "center" as const,
+  },
+  chipCountText: {
+    fontSize: 9,
+    color: Colors.textMuted,
+    fontFamily: "Inter_600SemiBold",
+  },
+  filterEmpty: {
+    paddingVertical: 24,
+    alignItems: "center" as const,
+    gap: 8,
+  },
+  filterEmptyText: {
+    fontSize: 13,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
   },
   featuredCard: {
     backgroundColor: Colors.card,
