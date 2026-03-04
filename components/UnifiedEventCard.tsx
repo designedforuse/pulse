@@ -67,6 +67,75 @@ function getPhaseChipPriority(event: SportEvent): number {
   return 0;
 }
 
+function getCricketTeamAbbr(teamName: string): string {
+  const abbrs: Record<string, string> = {
+    "india": "IND", "australia": "AUS", "england": "ENG", "south africa": "SA",
+    "new zealand": "NZ", "pakistan": "PAK", "sri lanka": "SL", "bangladesh": "BAN",
+    "west indies": "WI", "afghanistan": "AFG", "ireland": "IRE", "zimbabwe": "ZIM",
+    "netherlands": "NED", "scotland": "SCO", "nepal": "NEP", "namibia": "NAM",
+    "oman": "OMA", "usa": "USA", "uae": "UAE", "canada": "CAN", "uganda": "UGA",
+    "papua new guinea": "PNG",
+  };
+  const lower = teamName.toLowerCase().trim();
+  if (abbrs[lower]) return abbrs[lower];
+  if (lower.length <= 4) return lower.toUpperCase();
+  return lower.substring(0, 3).toUpperCase();
+}
+
+export function formatCricketLiveDetail(
+  event: SportEvent,
+  score: ScoreData | undefined,
+  isLive: boolean
+): string | null {
+  if (!isLive || !score || event.sport !== "cricket") return null;
+
+  const period = (score.period || "").trim();
+
+  const breakPatterns = /innings break|rain delay|strategic timeout|drinks|stumps|bad light|match delayed|tea|lunch/i;
+  if (breakPatterns.test(period)) {
+    const parts: string[] = [];
+    const awayAbbr = getCricketTeamAbbr(event.awayTeam);
+    const homeAbbr = getCricketTeamAbbr(event.homeTeam);
+    if (score.cricketAway && score.cricketAway !== "Yet to bat") parts.push(`${awayAbbr} ${score.cricketAway}`);
+    if (score.cricketHome && score.cricketHome !== "Yet to bat") parts.push(`${homeAbbr} ${score.cricketHome}`);
+    return parts.length > 0 ? `${parts.join(" • ")} · ${period}` : period;
+  }
+
+  const parts: string[] = [];
+  const awayAbbr = getCricketTeamAbbr(event.awayTeam);
+  const homeAbbr = getCricketTeamAbbr(event.homeTeam);
+
+  if (score.cricketAway && score.cricketAway !== "Yet to bat") {
+    parts.push(`${awayAbbr} ${score.cricketAway}`);
+  }
+  if (score.cricketHome && score.cricketHome !== "Yet to bat") {
+    parts.push(`${homeAbbr} ${score.cricketHome}`);
+  }
+
+  if (parts.length === 0) {
+    if (period && period !== "In Progress") return period;
+    return null;
+  }
+
+  let detail = parts.join(" • ");
+
+  const needMatch = period.match(/need\s+(\d+)\s+runs?\s*(?:in\s+([\d.]+)\s*(?:ov(?:ers?)?|balls?)?)?/i);
+  const rrrMatch = period.match(/req.*rate[:\s]*([\d.]+)/i);
+  const trailMatch = period.match(/trail\s+by\s+(\d+)/i);
+  const leadMatch = period.match(/lead\s+by\s+(\d+)/i);
+  if (needMatch) {
+    detail += needMatch[2] ? ` · need ${needMatch[1]} in ${needMatch[2]}` : ` · need ${needMatch[1]}`;
+  } else if (rrrMatch) {
+    detail += ` · RRR ${rrrMatch[1]}`;
+  } else if (trailMatch) {
+    detail += ` · trail by ${trailMatch[1]}`;
+  } else if (leadMatch) {
+    detail += ` · lead by ${leadMatch[1]}`;
+  }
+
+  return detail;
+}
+
 function LiveDot() {
   return <View style={uStyles.liveDotStatic} />;
 }
@@ -168,6 +237,7 @@ export default function UnifiedEventCard({
 
   const isTennis = event.sport === "tennis";
   const isCricket = event.sport === "cricket";
+  const cricketLiveDetail = formatCricketLiveDetail(event, score, isLive);
 
   const awayRank = isTennis ? event.tennisPlayer1Rank : undefined;
   const homeRank = isTennis ? event.tennisPlayer2Rank : undefined;
@@ -266,6 +336,12 @@ export default function UnifiedEventCard({
             <Text style={uStyles.venueText} numberOfLines={1}>{event.olympicVenue}</Text>
           ) : null}
         </View>
+
+        {cricketLiveDetail ? (
+          <Text style={uStyles.cricketLiveDetail} numberOfLines={1} ellipsizeMode="tail">
+            {cricketLiveDetail}
+          </Text>
+        ) : null}
 
         <View style={uStyles.footer}>
           <View style={uStyles.footerLeft}>
@@ -469,6 +545,14 @@ const uStyles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
     color: Colors.textMuted,
     marginTop: 4,
+    paddingLeft: 4,
+  },
+  cricketLiveDetail: {
+    fontSize: 11,
+    fontFamily: "Inter_500Medium",
+    color: Colors.accentSoft || "#66BB6A",
+    marginTop: 2,
+    marginBottom: 2,
     paddingLeft: 4,
   },
   footer: {

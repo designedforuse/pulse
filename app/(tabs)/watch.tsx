@@ -27,7 +27,7 @@ import { displayTeamName } from "@/utils/teams";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
-import UnifiedEventCard from "@/components/UnifiedEventCard";
+import UnifiedEventCard, { formatCricketLiveDetail } from "@/components/UnifiedEventCard";
 import {
   getSportColor,
   type SportEvent,
@@ -214,6 +214,15 @@ function ChaosCard({
               </View>
             )}
 
+            {(() => {
+              const detail = formatCricketLiveDetail(event, score, isLiveState);
+              return detail ? (
+                <Text style={styles.cricketLiveDetail} numberOfLines={1} ellipsizeMode="tail">
+                  {detail}
+                </Text>
+              ) : null;
+            })()}
+
             <View style={styles.primaryFooter}>
               <View style={styles.primaryTimeRow}>
                 {isLiveState && displayClockText ? (
@@ -287,6 +296,15 @@ function ChaosCard({
             </View>
           </View>
         )}
+
+        {(() => {
+          const detail = formatCricketLiveDetail(event, score, isLiveState);
+          return detail ? (
+            <Text style={styles.cricketLiveDetailSm} numberOfLines={1} ellipsizeMode="tail">
+              {detail}
+            </Text>
+          ) : null;
+        })()}
 
         <View style={styles.secondaryFooter}>
           {isLiveState && displayClockText ? (
@@ -1297,6 +1315,20 @@ const styles = StyleSheet.create({
     fontWeight: "600" as const,
     color: Colors.textPrimary,
     fontFamily: "Inter_600SemiBold",
+  },
+  cricketLiveDetail: {
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
+    color: Colors.accentSoft,
+    marginTop: 6,
+    paddingHorizontal: 14,
+  },
+  cricketLiveDetailSm: {
+    fontSize: 10,
+    fontFamily: "Inter_500Medium",
+    color: Colors.accentSoft,
+    marginTop: 4,
+    paddingHorizontal: 10,
   },
   scoreLive: {
     color: Colors.accentSoft,
