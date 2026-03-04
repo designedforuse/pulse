@@ -378,6 +378,27 @@ function generateMatchups(round: string, dayDateStr: string, matchCount: number)
   return matches;
 }
 
+const TOP_10_FULL_NAMES = new Map(ATP_TOP_10.map(p => [p.name.toLowerCase(), p]));
+const TOP_10_LAST_NAMES = new Map(ATP_TOP_10.map(p => [p.lastName.toLowerCase(), p]));
+
+function findTop10Player(displayName: string | undefined): TopPlayerDef | null {
+  if (!displayName) return null;
+  const lower = displayName.toLowerCase().trim();
+  if (TOP_10_FULL_NAMES.has(lower)) return TOP_10_FULL_NAMES.get(lower)!;
+  for (const [lastName, player] of TOP_10_LAST_NAMES) {
+    if (lower.endsWith(lastName) || lower.includes(` ${lastName}`)) {
+      return player;
+    }
+  }
+  return null;
+}
+
+function hasTop10Player(comp: EspnCompetition): boolean {
+  const p1 = comp.competitors?.[0]?.athlete?.displayName;
+  const p2 = comp.competitors?.[1]?.athlete?.displayName;
+  return !!(findTop10Player(p1) || findTop10Player(p2));
+}
+
 const ESPN_ATP_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/tennis/atp/scoreboard";
 
 interface EspnCompetitor {
@@ -468,6 +489,9 @@ function espnMatchToEvent(
   const p1Last = p1Name.split(" ").pop() || p1Name;
   const p2Last = p2Name.split(" ").pop() || p2Name;
 
+  const p1Top = findTop10Player(p1Name);
+  const p2Top = findTop10Player(p2Name);
+
   const id = `tennis-espn-${comp.id}`;
 
   return {
@@ -489,6 +513,8 @@ function espnMatchToEvent(
     tennisRound: round,
     tennisPlayer1: p1Last,
     tennisPlayer2: p2Last,
+    tennisPlayer1Rank: p1Top?.rank,
+    tennisPlayer2Rank: p2Top?.rank,
     tournamentName: tournament.name,
   };
 }
@@ -569,16 +595,21 @@ export async function fetchTennisEvents(): Promise<TennisFetchResult> {
     if (espnComps && espnComps.length > 0) {
       const liveAndUpcoming = espnComps.filter(c => {
         const state = c.status?.type?.state;
-        return state === "in" || state === "pre";
+        return (state === "in" || state === "pre") && hasTop10Player(c);
       });
       const recent = espnComps.filter(c => {
         const state = c.status?.type?.state;
         if (state !== "post") return false;
+        if (!hasTop10Player(c)) return false;
         const matchDate = new Date(c.date || "");
         const hoursAgo = (now.getTime() - matchDate.getTime()) / 3600000;
         return hoursAgo < 24;
       });
       const toInclude = [...liveAndUpcoming, ...recent];
+      const totalBefore = espnComps.filter(c => {
+        const s = c.status?.type?.state;
+        return s === "in" || s === "pre" || s === "post";
+      }).length;
 
       for (const comp of toInclude) {
         const ev = espnMatchToEvent(comp, tournament);
@@ -586,7 +617,7 @@ export async function fetchTennisEvents(): Promise<TennisFetchResult> {
       }
       espnCount += toInclude.length;
       tournamentCounts[tournament.name] = toInclude.length;
-      console.log(`  Tennis: ${tournament.shortName} — ${toInclude.length} ESPN matches (${liveAndUpcoming.length} active, ${recent.length} recent)`);
+      console.log(`  Tennis: ${tournament.shortName} — ${toInclude.length} top-10 matches of ${totalBefore} total (${liveAndUpcoming.length} active, ${recent.length} recent)`);
     } else {
       const fallback = generateFallbackSessions(tournament, windowStart, windowEnd);
       events.push(...fallback);
@@ -608,8 +639,15 @@ export function mergeTennisEvents(
   fresh: AppEvent[],
   now: Date
 ): TennisMergeResult {
+  const freshIds = new Set(fresh.map(e => e.id));
+  const sixHoursAgo = new Date(now.getTime() - 6 * 3600000);
+
   const index = new Map<string, AppEvent>();
   for (const e of existing) {
+    if (e.source === "espn-tennis" && !freshIds.has(e.id)) {
+      const eventStart = new Date(e.startTimeLocal);
+      if (eventStart < sixHoursAgo) continue;
+    }
     index.set(e.id, e);
   }
 
