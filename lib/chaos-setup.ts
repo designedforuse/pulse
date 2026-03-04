@@ -247,13 +247,15 @@ function chaosSort(a: ChaosCandidate, b: ChaosCandidate, ritualMode: boolean): n
 
   if (bothHockey) {
     if (Math.abs(bHCS - aHCS) > 3) return bHCS - aHCS;
-    const statusOrder: Record<string, number> = { SHOOTOUT: 0, OT: 1, LIVE: 2, INTERMISSION: 3 };
     const aStatus = a.hockeyChaosScore?.statusScore ?? 0;
     const bStatus = b.hockeyChaosScore?.statusScore ?? 0;
     if (aStatus !== bStatus) return bStatus - aStatus;
     const aDiff = a.hockeyChaosScore?.closenessScore ?? 0;
     const bDiff = b.hockeyChaosScore?.closenessScore ?? 0;
     if (aDiff !== bDiff) return bDiff - aDiff;
+    const aTP = a.hockeyChaosScore?.timePressure ?? 0;
+    const bTP = b.hockeyChaosScore?.timePressure ?? 0;
+    if (aTP !== bTP) return bTP - aTP;
     if (a.hockeyChaosScore!.situationBoosts !== b.hockeyChaosScore!.situationBoosts) {
       return b.hockeyChaosScore!.situationBoosts - a.hockeyChaosScore!.situationBoosts;
     }

@@ -120,12 +120,9 @@ function computeSituationBoosts(score: ScoreData | undefined): { value: number; 
     }
   }
 
-  const gameState = (score.gameState || "").toUpperCase();
-  if (gameState === "CRIT") {
-    if (!reasons.some(r => r.includes("Final 2 min"))) {
-      boosts += 10;
-      reasons.push("Critical game moment");
-    }
+  if ((score as any).goaliePulled) {
+    boosts += 30;
+    reasons.push("Goalie pulled — empty net");
   }
 
   return { value: boosts, reasons };
