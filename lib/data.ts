@@ -194,21 +194,21 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
 
 const TENNIS_PROVIDER_MAP: Record<string, ResolvedProvider> = {
   "tennischannel": {
-    providerId: "tennischannel",
+    providerId: "youtubetv",
     providerName: "Tennis Channel",
     launchAppId: "youtubetv",
     launchAppName: "YouTube TV",
     displayLabel: "Watch on YouTube TV",
   },
   "espn-broadcast": {
-    providerId: "espn",
+    providerId: "youtubetv",
     providerName: "ESPN",
     launchAppId: "youtubetv",
     launchAppName: "YouTube TV",
     displayLabel: "Watch on YouTube TV",
   },
   "tnt-broadcast": {
-    providerId: "tnt",
+    providerId: "youtubetv",
     providerName: "TNT",
     launchAppId: "youtubetv",
     launchAppName: "YouTube TV",
@@ -225,7 +225,7 @@ export function resolveTennisProvider(event: SportEvent): ResolvedProvider | nul
   if (mapped) return mapped;
 
   return {
-    providerId: "tennischannel",
+    providerId: "youtubetv",
     providerName: "Tennis Channel",
     launchAppId: "youtubetv",
     launchAppName: "YouTube TV",
