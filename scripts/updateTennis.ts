@@ -79,6 +79,7 @@ interface TennisTournament {
   providerId: string;
   providerReason: string;
   rounds: { name: string; startDay: number; endDay: number; matchesPerDay: number }[];
+  espnTournamentId?: number;
 }
 
 const GRAND_SLAM_ROUNDS = [
@@ -113,6 +114,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerId: "youtubetv",
     providerReason: "espn-broadcast",
     rounds: GRAND_SLAM_ROUNDS,
+    espnTournamentId: 154,
   },
   {
     name: "French Open",
@@ -126,6 +128,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerId: "youtubetv",
     providerReason: "tnt-broadcast",
     rounds: GRAND_SLAM_ROUNDS,
+    espnTournamentId: 172,
   },
   {
     name: "Wimbledon",
@@ -139,6 +142,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerId: "youtubetv",
     providerReason: "espn-broadcast",
     rounds: GRAND_SLAM_ROUNDS,
+    espnTournamentId: 188,
   },
   {
     name: "US Open",
@@ -152,6 +156,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerId: "youtubetv",
     providerReason: "espn-broadcast",
     rounds: GRAND_SLAM_ROUNDS,
+    espnTournamentId: 189,
   },
   {
     name: "Indian Wells Masters",
@@ -165,6 +170,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerId: "tennischannel",
     providerReason: "tennis-channel",
     rounds: MASTERS_ROUNDS,
+    espnTournamentId: 411,
   },
   {
     name: "Miami Masters",
@@ -178,6 +184,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerId: "tennischannel",
     providerReason: "tennis-channel",
     rounds: MASTERS_ROUNDS,
+    espnTournamentId: 403,
   },
   {
     name: "Monte-Carlo Masters",
@@ -191,6 +198,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerId: "tennischannel",
     providerReason: "tennis-channel",
     rounds: MASTERS_ROUNDS,
+    espnTournamentId: 410,
   },
   {
     name: "Madrid Open",
@@ -204,6 +212,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerId: "tennischannel",
     providerReason: "tennis-channel",
     rounds: MASTERS_ROUNDS,
+    espnTournamentId: 7485,
   },
   {
     name: "Italian Open",
@@ -217,6 +226,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerId: "tennischannel",
     providerReason: "tennis-channel",
     rounds: MASTERS_ROUNDS,
+    espnTournamentId: 416,
   },
   {
     name: "Canadian Open",
@@ -230,6 +240,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerId: "tennischannel",
     providerReason: "tennis-channel",
     rounds: MASTERS_ROUNDS,
+    espnTournamentId: 414,
   },
   {
     name: "Cincinnati Open",
@@ -243,6 +254,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerId: "tennischannel",
     providerReason: "tennis-channel",
     rounds: MASTERS_ROUNDS,
+    espnTournamentId: 422,
   },
   {
     name: "Shanghai Masters",
@@ -256,6 +268,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerId: "tennischannel",
     providerReason: "tennis-channel",
     rounds: MASTERS_ROUNDS,
+    espnTournamentId: 7696,
   },
   {
     name: "Paris Masters",
@@ -269,6 +282,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerId: "tennischannel",
     providerReason: "tennis-channel",
     rounds: MASTERS_ROUNDS,
+    espnTournamentId: 429,
   },
 ];
 
@@ -364,80 +378,229 @@ function generateMatchups(round: string, dayDateStr: string, matchCount: number)
   return matches;
 }
 
-export function fetchTennisEvents(): TennisFetchResult {
-  console.log(`  Tennis: Loading hardcoded schedule (${TOURNAMENTS.length} tournaments)...`);
+const ESPN_ATP_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/tennis/atp/scoreboard";
+
+interface EspnCompetitor {
+  athlete?: { displayName?: string; shortName?: string };
+  homeAway?: string;
+  winner?: boolean;
+  linescores?: { value: number; winner?: boolean }[];
+}
+
+interface EspnCompetition {
+  id: string;
+  date: string;
+  startDate?: string;
+  status?: { type?: { state?: string; description?: string; detail?: string }; period?: number };
+  round?: { displayName?: string };
+  type?: { text?: string; slug?: string };
+  competitors?: EspnCompetitor[];
+  venue?: { fullName?: string; court?: string };
+  tournamentId?: number;
+}
+
+interface EspnGrouping {
+  grouping?: { slug?: string; displayName?: string };
+  competitions?: EspnCompetition[];
+}
+
+interface EspnEvent {
+  id: string;
+  name: string;
+  date: string;
+  endDate?: string;
+  groupings?: EspnGrouping[];
+}
+
+async function fetchEspnTournamentMatches(): Promise<Map<number, EspnCompetition[]>> {
+  const result = new Map<number, EspnCompetition[]>();
+  try {
+    const resp = await fetch(ESPN_ATP_SCOREBOARD);
+    if (!resp.ok) {
+      console.warn(`  Tennis ESPN: HTTP ${resp.status}`);
+      return result;
+    }
+    const data = await resp.json() as { events?: EspnEvent[] };
+    const events = data.events || [];
+
+    for (const event of events) {
+      const groupings = event.groupings || [];
+      const mensSingles = groupings.find(g => g.grouping?.slug === "mens-singles");
+      if (!mensSingles) continue;
+
+      const matches = (mensSingles.competitions || []).filter(c => {
+        const p1 = c.competitors?.[0]?.athlete?.displayName;
+        return p1 && p1 !== "TBD";
+      });
+
+      if (matches.length > 0) {
+        const tId = matches[0]?.tournamentId;
+        if (tId) {
+          result.set(tId, matches);
+          console.log(`  Tennis ESPN: ${event.name} — ${matches.length} men's singles matches`);
+        }
+      }
+    }
+  } catch (err: any) {
+    console.warn(`  Tennis ESPN: fetch failed — ${err.message}`);
+  }
+  return result;
+}
+
+function espnMatchToEvent(
+  comp: EspnCompetition,
+  tournament: TennisTournament,
+): AppEvent | null {
+  const p1 = comp.competitors?.[0]?.athlete;
+  const p2 = comp.competitors?.[1]?.athlete;
+  const state = comp.status?.type?.state;
+  const isLive = state === "in";
+  const round = comp.round?.displayName || "Match";
+
+  const rawDate = comp.date || comp.startDate || "";
+  const parsed = new Date(rawDate);
+  if (isNaN(parsed.getTime())) return null;
+  const startUtc = parsed.toISOString();
+  const endUtc = new Date(parsed.getTime() + MATCH_DURATION_MIN * 60000).toISOString();
+
+  const p1Name = p1?.displayName || "TBD";
+  const p2Name = p2?.displayName || "TBD";
+  const p1Last = p1Name.split(" ").pop() || p1Name;
+  const p2Last = p2Name.split(" ").pop() || p2Name;
+
+  const id = `tennis-espn-${comp.id}`;
+
+  return {
+    id,
+    sport: "tennis",
+    league: tournament.league,
+    awayTeam: p1Last,
+    homeTeam: p2Last,
+    startTimeLocal: startUtc,
+    endTimeLocal: endUtc,
+    providerId: tournament.providerId,
+    isLive,
+    source: "espn-tennis",
+    leagueKey: tournament.leagueKey,
+    providerReason: tournament.providerReason,
+    eventType: "match",
+    sessionTitle: `${tournament.shortName} — ${round}`,
+    competitionType: tournament.league === "Grand Slam" ? "international" : "domestic",
+    tennisRound: round,
+    tennisPlayer1: p1Last,
+    tennisPlayer2: p2Last,
+    tournamentName: tournament.name,
+  };
+}
+
+function generateFallbackSessions(tournament: TennisTournament, windowStart: Date, windowEnd: Date): AppEvent[] {
+  const events: AppEvent[] = [];
+  const tStart = new Date(tournament.startDate + "T00:00:00Z");
+  const tEnd = new Date(tournament.endDate + "T23:59:59Z");
+  const totalDays = Math.ceil((tEnd.getTime() - tStart.getTime()) / 86400000);
+  const seenIds = new Set<string>();
+
+  for (let dayIdx = 0; dayIdx <= totalDays; dayIdx++) {
+    const dayDate = addDays(tournament.startDate, dayIdx);
+    const dateStr = formatDateLocal(dayDate);
+    if (dayDate < windowStart || dayDate > windowEnd) continue;
+
+    const { name: round } = getRoundForDay(tournament, dayIdx);
+    const tzOffset = SESSION_START_TZ_OFFSET[tournament.country] ?? "+00:00";
+    const startHours = SESSION_START_HOURS[tournament.country] ?? [11];
+    const sessionsPerDay = Math.min(startHours.length, 2);
+
+    for (let si = 0; si < sessionsPerDay; si++) {
+      const hour = startHours[si % startHours.length];
+      const startIso = `${dateStr}T${String(hour).padStart(2, "0")}:00:00${tzOffset}`;
+      const startUtc = new Date(startIso).toISOString();
+      const endUtc = new Date(new Date(startUtc).getTime() + MATCH_DURATION_MIN * 60000).toISOString();
+
+      const id = stableId(tournament.name, dateStr, si);
+      if (seenIds.has(id)) continue;
+      seenIds.add(id);
+
+      events.push({
+        id,
+        sport: "tennis",
+        league: tournament.league,
+        awayTeam: "TBD",
+        homeTeam: "TBD",
+        startTimeLocal: startUtc,
+        endTimeLocal: endUtc,
+        providerId: tournament.providerId,
+        isLive: false,
+        source: "tennis-hardcoded",
+        leagueKey: tournament.leagueKey,
+        providerReason: tournament.providerReason,
+        eventType: "session",
+        sessionTitle: `${tournament.shortName} — ${round}`,
+        competitionType: tournament.league === "Grand Slam" ? "international" : "domestic",
+        tennisRound: round,
+        tournamentName: tournament.name,
+      });
+    }
+  }
+  return events;
+}
+
+export async function fetchTennisEvents(): Promise<TennisFetchResult> {
+  console.log(`  Tennis: Fetching from ESPN + fallback schedule (${TOURNAMENTS.length} tournaments)...`);
 
   const now = new Date();
   const windowStart = new Date(now.getTime() - 14 * 86400000);
   const windowEnd = new Date(now.getTime() + 30 * 86400000);
 
+  const espnMatches = await fetchEspnTournamentMatches();
+
   const events: AppEvent[] = [];
   const tournamentCounts: Record<string, number> = {};
-  const seenIds = new Set<string>();
+  let espnCount = 0;
+  let fallbackCount = 0;
 
   for (const tournament of TOURNAMENTS) {
     const tStart = new Date(tournament.startDate + "T00:00:00Z");
     const tEnd = new Date(tournament.endDate + "T23:59:59Z");
-    let count = 0;
 
-    const totalDays = Math.ceil((tEnd.getTime() - tStart.getTime()) / 86400000);
+    if (tEnd < windowStart || tStart > windowEnd) continue;
 
-    for (let dayIdx = 0; dayIdx <= totalDays; dayIdx++) {
-      const dayDate = addDays(tournament.startDate, dayIdx);
-      const dateStr = formatDateLocal(dayDate);
+    const espnComps = tournament.espnTournamentId ? espnMatches.get(tournament.espnTournamentId) : undefined;
 
-      if (dayDate < windowStart || dayDate > windowEnd) continue;
+    if (espnComps && espnComps.length > 0) {
+      const liveAndUpcoming = espnComps.filter(c => {
+        const state = c.status?.type?.state;
+        return state === "in" || state === "pre";
+      });
+      const recent = espnComps.filter(c => {
+        const state = c.status?.type?.state;
+        if (state !== "post") return false;
+        const matchDate = new Date(c.date || "");
+        const hoursAgo = (now.getTime() - matchDate.getTime()) / 3600000;
+        return hoursAgo < 24;
+      });
+      const toInclude = [...liveAndUpcoming, ...recent];
 
-      const { name: round, matchesPerDay } = getRoundForDay(tournament, dayIdx);
-      const tzOffset = SESSION_START_TZ_OFFSET[tournament.country] ?? "+00:00";
-      const startHours = SESSION_START_HOURS[tournament.country] ?? [11];
-
-      const sessionsPerDay = Math.min(startHours.length, 2);
-
-      for (let si = 0; si < sessionsPerDay; si++) {
-        const hour = startHours[si % startHours.length];
-        const startIso = `${dateStr}T${String(hour).padStart(2, "0")}:00:00${tzOffset}`;
-        const startUtc = new Date(startIso).toISOString();
-        const endUtc = new Date(new Date(startUtc).getTime() + MATCH_DURATION_MIN * 60000).toISOString();
-
-        const id = stableId(tournament.name, dateStr, si);
-        if (seenIds.has(id)) continue;
-        seenIds.add(id);
-
-        events.push({
-          id,
-          sport: "tennis",
-          league: tournament.league,
-          awayTeam: "TBD",
-          homeTeam: "TBD",
-          startTimeLocal: startUtc,
-          endTimeLocal: endUtc,
-          providerId: tournament.providerId,
-          isLive: false,
-          source: "tennis-hardcoded",
-          leagueKey: tournament.leagueKey,
-          providerReason: tournament.providerReason,
-          eventType: "session",
-          sessionTitle: `${tournament.shortName} — ${round}`,
-          competitionType: tournament.league === "Grand Slam" ? "international" : "domestic",
-          tennisRound: round,
-          tournamentName: tournament.name,
-        });
-        count++;
+      for (const comp of toInclude) {
+        const ev = espnMatchToEvent(comp, tournament);
+        if (ev) events.push(ev);
+      }
+      espnCount += toInclude.length;
+      tournamentCounts[tournament.name] = toInclude.length;
+      console.log(`  Tennis: ${tournament.shortName} — ${toInclude.length} ESPN matches (${liveAndUpcoming.length} active, ${recent.length} recent)`);
+    } else {
+      const fallback = generateFallbackSessions(tournament, windowStart, windowEnd);
+      events.push(...fallback);
+      fallbackCount += fallback.length;
+      if (fallback.length > 0) {
+        tournamentCounts[tournament.name] = fallback.length;
       }
     }
-
-    if (count > 0) {
-      tournamentCounts[tournament.name] = count;
-    }
   }
 
-  console.log(`  Tennis: ${events.length} matches in retention window`);
-  if (Object.keys(tournamentCounts).length > 0) {
-    console.log(`  Tennis tournaments: ${JSON.stringify(tournamentCounts)}`);
-  }
+  const sourceUsed = espnCount > 0 ? "espn" : "hardcoded";
+  console.log(`  Tennis: ${events.length} total (${espnCount} ESPN, ${fallbackCount} fallback) in retention window`);
 
-  return { events, sourceUsed: "hardcoded", count: events.length, tournamentCounts };
+  return { events, sourceUsed, count: events.length, tournamentCounts };
 }
 
 export function mergeTennisEvents(

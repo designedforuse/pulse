@@ -286,7 +286,7 @@ async function main() {
   const t20WcFetchResult = fetchIccT20WcEvents();
   const olympicHockeyFetchResult = fetchOlympicHockeyEvents();
   const mlrFetchResult = fetchMlrEvents();
-  const tennisFetchResult = fetchTennisEvents();
+  const tennisFetchResult = await fetchTennisEvents();
 
   const [nhlEvents, ahlFetchResult, echlFetchResult, buFetchResult, rugbyFetchResult, cricketFetchResult, eplFetchResult, mlsFetchResult, serieAFetchResult, laLigaFetchResult, bundesligaFetchResult, ligue1FetchResult, nwslFetchResult, uslFetchResult, championsCupFetchResult, championsLeagueFetchResult, faCupFetchResult] = await Promise.all([
     fetchNHLEvents(days),

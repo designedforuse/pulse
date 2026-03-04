@@ -18,7 +18,6 @@ import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
 import UnifiedEventCard from "@/components/UnifiedEventCard";
 import {
-  getProviderById,
   getSportColor,
   resolveProviderDisplay,
   type SportEvent,
