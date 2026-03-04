@@ -1,12 +1,9 @@
 {
-  "lastUpdated": "2026-03-04T04:11:58.632Z",
+  "lastUpdated": "2026-03-04T05:37:04.015Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
         "NewEngland": 1,
-        "SoCal": 1
-      },
-      "momentum": {
         "SoCal": 1
       },
       "league_moment": {
@@ -19,8 +16,7 @@
     },
     "finalFeedByRegion": {
       "SoCal": [
-        "playoff_push: Oilers Push Week",
-        "momentum: Ducks Heating Up"
+        "playoff_push: Oilers Push Week"
       ],
       "NewEngland": [
         "playoff_push: Bruins Push Week"
@@ -38,8 +34,8 @@
         "reason": "max 1 league_moment per region (Other)"
       }
     ],
-    "totalBeforeCap": 5,
-    "totalAfterCap": 4,
+    "totalBeforeCap": 4,
+    "totalAfterCap": 3,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -76,11 +72,11 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 601,
+        "playersIngested": 598,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-04T04:11:58.632Z"
+        "timestamp": "2026-03-04T05:37:04.015Z"
       },
-      "cacheHistoryCount": 661,
+      "cacheHistoryCount": 663,
       "error": null
     }
   },
@@ -95,8 +91,8 @@
         "tabHint": "Rituals"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-04T04:11:58.632Z",
-      "expiresAt": "2026-03-11T04:11:58.632Z",
+      "triggeredAt": "2026-03-04T05:37:04.015Z",
+      "expiresAt": "2026-03-11T05:37:04.015Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -119,61 +115,9 @@
           "echl-web-25149"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-04T04:11:58.632Z",
-        "windowEnd": "2026-03-11T04:11:58.632Z",
+        "windowStart": "2026-03-04T05:37:04.015Z",
+        "windowEnd": "2026-03-11T05:37:04.015Z",
         "reason": "Tulsa Oilers: 4 games in 5 days, back-to-back + 4 games in 7 days"
-      }
-    },
-    {
-      "id": "momentum_ana",
-      "title": "Ducks Heating Up",
-      "subtitle": "5-game win streak · +3 goal diff",
-      "impact": {
-        "label": "Feeds: Family Game Night",
-        "ritualId": "friday_lights",
-        "tabHint": "Rituals"
-      },
-      "priority": 60,
-      "triggeredAt": "2026-03-04T04:11:58.632Z",
-      "expiresAt": "2026-03-07T04:11:58.632Z",
-      "kind": "momentum",
-      "region": "SoCal",
-      "regionPriority": 2,
-      "regionLabel": "SoCal",
-      "meta": {
-        "team": "Anaheim Ducks",
-        "league": "NHL",
-        "abbrev": "ANA",
-        "winStreak": 5,
-        "pointStreak": 5,
-        "goalDiff": 3,
-        "recentGames": [
-          {
-            "date": "2026-03-02T01:00:00Z",
-            "opponent": "Calgary",
-            "score": "3-2",
-            "result": "W"
-          },
-          {
-            "date": "2026-02-28T03:00:00Z",
-            "opponent": "Winnipeg",
-            "score": "5-4",
-            "result": "W"
-          },
-          {
-            "date": "2026-02-26T03:30:00Z",
-            "opponent": "Edmonton",
-            "score": "6-5",
-            "result": "W"
-          }
-        ],
-        "eventIds": [
-          "nhl_2025020973",
-          "nhl_2025020987",
-          "nhl_2025021006",
-          "nhl_2025021022"
-        ],
-        "reason": "Anaheim Ducks is on a 5-game win streak"
       }
     },
     {
@@ -185,8 +129,8 @@
         "tabHint": "Watch"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-04T04:11:58.632Z",
-      "expiresAt": "2026-03-11T04:11:58.632Z",
+      "triggeredAt": "2026-03-04T05:37:04.015Z",
+      "expiresAt": "2026-03-11T05:37:04.015Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -209,8 +153,8 @@
           "nhl_2025021012"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-04T04:11:58.632Z",
-        "windowEnd": "2026-03-11T04:11:58.632Z",
+        "windowStart": "2026-03-04T05:37:04.015Z",
+        "windowEnd": "2026-03-11T05:37:04.015Z",
         "reason": "Boston Bruins: back-to-back + 4 games in 7 days"
       }
     },
@@ -223,8 +167,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-04T04:11:58.632Z",
-      "expiresAt": "2026-03-11T04:11:58.632Z",
+      "triggeredAt": "2026-03-04T05:37:04.015Z",
+      "expiresAt": "2026-03-11T05:37:04.015Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,

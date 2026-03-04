@@ -10,6 +10,18 @@ export interface ScoreData {
   status?: string;
   cricketAway?: string;
   cricketHome?: string;
+  secondsRemaining?: number;
+  periodNumber?: number;
+  periodType?: string;
+  inIntermission?: boolean;
+  gameState?: string;
+  awaySog?: number;
+  homeSog?: number;
+  lastGoalTimeInPeriod?: string;
+  lastGoalPeriod?: number;
+  lastGoalStrength?: string;
+  lastGoalTeam?: string;
+  goalCount?: number;
 }
 
 interface ScoresApiResponse {

@@ -3,6 +3,7 @@ import type { ScoreData } from "@/lib/scores-context";
 import { getEventEnd, isEventLive } from "@/utils/time";
 import { favoriteInvolved } from "@/utils/favorites";
 import { computeFeaturedScore, isNowInAnyRitualWindow, type FeaturedScore } from "@/lib/rituals";
+import { computeHockeyChaosScore, type ChaosScoreResult } from "@/lib/chaos-score";
 
 const CHAOS_WINDOW_MS = 90 * 60 * 1000;
 const CHAOS_DEBUG = __DEV__;
@@ -127,6 +128,7 @@ export interface ChaosCandidate {
   isBackfill: boolean;
   emotionRank: number;
   tensionRank: number;
+  hockeyChaosScore?: ChaosScoreResult;
 }
 
 function getCandidatePool(
@@ -157,7 +159,13 @@ function getCandidatePool(
     const emotion = getEmotionRank(event, favorites);
     const tension = getTensionRank(event, live, getScoreData);
 
-    candidates.push({ event, score, isFavorite: isFav, isLive: live, isAnchor: anchor, isBackfill: false, emotionRank: emotion, tensionRank: tension });
+    let hockeyChaosScore: ChaosScoreResult | undefined;
+    if (event.sport === "hockey" && live) {
+      const scoreData = getScoreData?.(event.id);
+      hockeyChaosScore = computeHockeyChaosScore(event, scoreData, favorites, now);
+    }
+
+    candidates.push({ event, score, isFavorite: isFav, isLive: live, isAnchor: anchor, isBackfill: false, emotionRank: emotion, tensionRank: tension, hockeyChaosScore });
   }
 
   return candidates;
@@ -233,6 +241,32 @@ function chaosSort(a: ChaosCandidate, b: ChaosCandidate, ritualMode: boolean): n
   const bLive = b.isLive ? 0 : 1;
   if (aLive !== bLive) return aLive - bLive;
 
+  const aHCS = a.hockeyChaosScore?.total ?? 0;
+  const bHCS = b.hockeyChaosScore?.total ?? 0;
+  const bothHockey = a.event.sport === "hockey" && b.event.sport === "hockey" && aHCS > 0 && bHCS > 0;
+
+  if (bothHockey) {
+    if (Math.abs(bHCS - aHCS) > 3) return bHCS - aHCS;
+    const statusOrder: Record<string, number> = { SHOOTOUT: 0, OT: 1, LIVE: 2, INTERMISSION: 3 };
+    const aStatus = a.hockeyChaosScore?.statusScore ?? 0;
+    const bStatus = b.hockeyChaosScore?.statusScore ?? 0;
+    if (aStatus !== bStatus) return bStatus - aStatus;
+    const aDiff = a.hockeyChaosScore?.closenessScore ?? 0;
+    const bDiff = b.hockeyChaosScore?.closenessScore ?? 0;
+    if (aDiff !== bDiff) return bDiff - aDiff;
+    if (a.hockeyChaosScore!.situationBoosts !== b.hockeyChaosScore!.situationBoosts) {
+      return b.hockeyChaosScore!.situationBoosts - a.hockeyChaosScore!.situationBoosts;
+    }
+    return b.hockeyChaosScore!.favoritesBoost - a.hockeyChaosScore!.favoritesBoost;
+  }
+
+  if (a.event.sport === "hockey" && a.hockeyChaosScore && a.hockeyChaosScore.total > 0 && b.event.sport !== "hockey") {
+    return -1;
+  }
+  if (b.event.sport === "hockey" && b.hockeyChaosScore && b.hockeyChaosScore.total > 0 && a.event.sport !== "hockey") {
+    return 1;
+  }
+
   if (b.emotionRank !== a.emotionRank) return b.emotionRank - a.emotionRank;
 
   if (ritualMode) {
@@ -283,7 +317,18 @@ export interface ChaosDebug {
   selectedIds: string[];
   ritualMode: boolean;
   activeRitualId: string | null;
-  selectedRanks?: { id: string; emotion: number; tension: number; sportPri: number; isLive: boolean; isFav: boolean; isAnchor: boolean; isBackfill: boolean }[];
+  selectedRanks?: {
+    id: string;
+    emotion: number;
+    tension: number;
+    sportPri: number;
+    isLive: boolean;
+    isFav: boolean;
+    isAnchor: boolean;
+    isBackfill: boolean;
+    hockeyChaosTotal?: number;
+    hockeyChaosReasons?: string[];
+  }[];
 }
 
 export function buildChaosSetup(
@@ -405,6 +450,8 @@ export function buildChaosSetup(
       isFav: c.isFavorite,
       isAnchor: c.isAnchor,
       isBackfill: c.isBackfill,
+      hockeyChaosTotal: c.hockeyChaosScore?.total,
+      hockeyChaosReasons: c.hockeyChaosScore?.reasons,
     })),
   };
 
@@ -421,8 +468,10 @@ export function buildChaosSetup(
     );
     for (const c of selected) {
       const start = new Date(c.event.startTimeLocal);
+      const hcs = c.hockeyChaosScore;
+      const hcsStr = hcs ? ` chaosScore=${hcs.total}(st=${hcs.statusScore}+cl=${hcs.closenessScore}+tp=${hcs.timePressure}+sit=${hcs.situationBoosts}+fav=${hcs.favoritesBoost}+mom=${hcs.momentum}) [${hcs.reasons.join(", ")}]` : "";
       console.log(
-        `  [CHAOS]  ${c.event.id}: live=${c.isLive} fav=${c.isFavorite} anchor=${c.isAnchor} backfill=${c.isBackfill} emotion=${c.emotionRank} tension=${c.tensionRank} sportPri=${getSportPriority(c.event.sport)} start=${fmtPT(start)} ${c.event.awayTeam} @ ${c.event.homeTeam}`,
+        `  [CHAOS]  ${c.event.id}: live=${c.isLive} fav=${c.isFavorite} anchor=${c.isAnchor} backfill=${c.isBackfill} emotion=${c.emotionRank} tension=${c.tensionRank} sportPri=${getSportPriority(c.event.sport)} start=${fmtPT(start)} ${c.event.awayTeam} @ ${c.event.homeTeam}${hcsStr}`,
       );
     }
     const topPool = pool

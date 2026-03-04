@@ -9,6 +9,18 @@ export interface ScoreData {
   status?: string;
   cricketAway?: string;
   cricketHome?: string;
+  secondsRemaining?: number;
+  periodNumber?: number;
+  periodType?: string;
+  inIntermission?: boolean;
+  gameState?: string;
+  awaySog?: number;
+  homeSog?: number;
+  lastGoalTimeInPeriod?: string;
+  lastGoalPeriod?: number;
+  lastGoalStrength?: string;
+  lastGoalTeam?: string;
+  goalCount?: number;
 }
 
 export interface ScoresResponse {
@@ -151,12 +163,37 @@ async function fetchNhlScores(eventIds: string[]): Promise<Record<string, ScoreD
         }
       }
 
+      let lastGoalTimeInPeriod: string | undefined;
+      let lastGoalPeriod: number | undefined;
+      let lastGoalStrength: string | undefined;
+      let lastGoalTeam: string | undefined;
+      const goals = game.goals || [];
+      if (goals.length > 0) {
+        const last = goals[goals.length - 1];
+        lastGoalTimeInPeriod = last.timeInPeriod;
+        lastGoalPeriod = last.period ?? last.periodDescriptor?.number;
+        lastGoalStrength = last.strength;
+        lastGoalTeam = last.teamAbbrev;
+      }
+
       scores[eventId] = {
         awayScore: game.awayTeam?.score ?? 0,
         homeScore: game.homeTeam?.score ?? 0,
         period,
         clock,
         status,
+        secondsRemaining: game.clock?.secondsRemaining,
+        periodNumber: game.periodDescriptor?.number,
+        periodType: game.periodDescriptor?.periodType,
+        inIntermission: game.clock?.inIntermission ?? false,
+        gameState: state,
+        awaySog: game.awayTeam?.sog,
+        homeSog: game.homeTeam?.sog,
+        lastGoalTimeInPeriod,
+        lastGoalPeriod,
+        lastGoalStrength,
+        lastGoalTeam,
+        goalCount: goals.length,
       };
     }
   } catch (err) {
