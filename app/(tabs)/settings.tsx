@@ -610,33 +610,41 @@ export default function SettingsScreen() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>How It Works</Text>
+          <Text style={styles.sectionTitle}>Using the App</Text>
           <View style={styles.card}>
             <View style={styles.howItWorksItem}>
               <View style={[styles.stepBadge, { backgroundColor: Colors.accentDim }]}>
                 <Text style={[styles.stepText, { color: Colors.accent }]}>1</Text>
               </View>
-              <Text style={styles.howItWorksText}>
-                Browse weekend windows in Explore
-              </Text>
+              <View style={styles.howItWorksContent}>
+                <Text style={styles.howItWorksTitle}>Watch — what's exciting right now</Text>
+                <Text style={styles.howItWorksDesc}>Chaos Mode surfaces the best live game based on tension, score, and timing.</Text>
+              </View>
             </View>
             <View style={styles.divider} />
             <View style={styles.howItWorksItem}>
               <View style={[styles.stepBadge, { backgroundColor: Colors.accentDim }]}>
                 <Text style={[styles.stepText, { color: Colors.accent }]}>2</Text>
               </View>
-              <Text style={styles.howItWorksText}>
-                Browse sport packs and find events
-              </Text>
+              <View style={styles.howItWorksContent}>
+                <Text style={styles.howItWorksTitle}>Rituals — your weekly viewing habits</Text>
+                <Text style={styles.howItWorksDesc}>Rituals group games into time windows (like Sunday mornings) so you can quickly see your key matchups.</Text>
+              </View>
             </View>
             <View style={styles.divider} />
             <View style={styles.howItWorksItem}>
               <View style={[styles.stepBadge, { backgroundColor: Colors.accentDim }]}>
                 <Text style={[styles.stepText, { color: Colors.accent }]}>3</Text>
               </View>
-              <Text style={styles.howItWorksText}>
-                Tap an event and open it in your streaming app
-              </Text>
+              <View style={styles.howItWorksContent}>
+                <Text style={styles.howItWorksTitle}>Explore — browse the full schedule</Text>
+                <Text style={styles.howItWorksDesc}>Use Explore to scan upcoming windows, leagues, and events.</Text>
+              </View>
+            </View>
+            <View style={styles.divider} />
+            <View style={styles.howItWorksFooter}>
+              <Ionicons name="open-outline" size={14} color={Colors.textSecondary} />
+              <Text style={styles.howItWorksFooterText}>Tap any event to open it in the streaming provider.</Text>
             </View>
           </View>
         </View>
@@ -847,12 +855,36 @@ const styles = StyleSheet.create({
     fontWeight: "700" as const,
     fontFamily: "Inter_700Bold",
   },
-  howItWorksText: {
+  howItWorksContent: {
+    flex: 1,
+    gap: 2,
+  },
+  howItWorksTitle: {
     fontSize: 14,
     color: Colors.textPrimary,
-    fontFamily: "Inter_400Regular",
-    flex: 1,
+    fontFamily: "Inter_600SemiBold",
     lineHeight: 20,
+  },
+  howItWorksDesc: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_400Regular",
+    lineHeight: 18,
+  },
+  howItWorksFooter: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+  },
+  howItWorksFooterText: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_400Regular",
+    fontStyle: "italic" as const,
+    flex: 1,
+    lineHeight: 18,
   },
   refreshRow: {
     flexDirection: "row",
