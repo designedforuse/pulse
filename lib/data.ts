@@ -35,6 +35,12 @@ export interface SportEvent {
   olympicRound?: string;
   olympicVenue?: string;
   providerReason?: string;
+  tennisRound?: string;
+  tennisPlayer1?: string;
+  tennisPlayer2?: string;
+  tennisPlayer1Rank?: number;
+  tennisPlayer2Rank?: number;
+  tournamentName?: string;
 }
 
 export interface Pack {

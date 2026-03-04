@@ -29,11 +29,13 @@ import { getRugbyClockDisplay } from "@/utils/rugbyClock";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
+import TennisCard from "@/components/TennisCard";
 import {
   getProviderById,
   getSportColor,
   type SportEvent,
 } from "@/lib/data";
+import { getTennisRoundPriority } from "@/data/tennisTopPlayers";
 import { useEvents } from "@/lib/events-context";
 import { useScores } from "@/lib/scores-context";
 import { useFavorites } from "@/lib/favorites-context";
@@ -661,13 +663,19 @@ export default function WatchScreen() {
     [liveEvents, chaosIds]
   );
 
-  const SPORT_PRIORITY: Record<string, number> = { rugby: 0, cricket: 1, hockey: 2, soccer: 3 };
+  const SPORT_PRIORITY: Record<string, number> = { rugby: 0, cricket: 1, hockey: 2, soccer: 3, tennis: 4 };
 
   const sortedLive = useMemo(() => {
     return [...filteredLive].sort((a, b) => {
       const aFav = favoriteInvolved(a, favorites) ? 0 : 1;
       const bFav = favoriteInvolved(b, favorites) ? 0 : 1;
       if (aFav !== bFav) return aFav - bFav;
+      if (a.sport === "tennis" && b.sport === "tennis") {
+        const aRound = getTennisRoundPriority(a.tennisRound || "");
+        const bRound = getTennisRoundPriority(b.tennisRound || "");
+        if (aRound !== bRound) return bRound - aRound;
+        return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
+      }
       const aSp = SPORT_PRIORITY[a.sport] ?? 9;
       const bSp = SPORT_PRIORITY[b.sport] ?? 9;
       if (aSp !== bSp) return aSp - bSp;
@@ -787,16 +795,26 @@ export default function WatchScreen() {
                 </Text>
               </View>
             </View>
-            {visibleLive.map((event) => (
-              <LiveEventRow
-                key={event.id}
-                event={event}
-                isLive
-                now={now}
-                score={getScore(event.id)}
-                isFav={favoriteInvolved(event, favorites)}
-              />
-            ))}
+            {visibleLive.map((event) =>
+              event.sport === "tennis" ? (
+                <TennisCard
+                  key={event.id}
+                  event={event}
+                  now={now}
+                  score={getScore(event.id)}
+                  showTension
+                />
+              ) : (
+                <LiveEventRow
+                  key={event.id}
+                  event={event}
+                  isLive
+                  now={now}
+                  score={getScore(event.id)}
+                  isFav={favoriteInvolved(event, favorites)}
+                />
+              )
+            )}
             {(hiddenCount > 0 || liveExpanded) && (
               <Pressable
                 onPress={() => setLiveExpanded((prev) => !prev)}
@@ -920,16 +938,25 @@ export default function WatchScreen() {
                     <Text style={styles.dayDividerText}>{group.label}</Text>
                   </View>
                 )}
-                {group.events.map((event) => (
-                  <LiveEventRow
-                    key={event.id}
-                    event={event}
-                    isLive={false}
-                    now={now}
-                    score={getScore(event.id)}
-                    isFav={favoriteInvolved(event, favorites)}
-                  />
-                ))}
+                {group.events.map((event) =>
+                  event.sport === "tennis" ? (
+                    <TennisCard
+                      key={event.id}
+                      event={event}
+                      now={now}
+                      score={getScore(event.id)}
+                    />
+                  ) : (
+                    <LiveEventRow
+                      key={event.id}
+                      event={event}
+                      isLive={false}
+                      now={now}
+                      score={getScore(event.id)}
+                      isFav={favoriteInvolved(event, favorites)}
+                    />
+                  )
+                )}
               </View>
             ))
           )}

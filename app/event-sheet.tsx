@@ -125,6 +125,7 @@ export default function EventSheet() {
   };
 
   const isSession = event.eventType === "session" && event.sessionTitle;
+  const isTennisMatch = event.sport === "tennis";
   const isTbcMatch = (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel;
   const isTbdOlympic = event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound;
 
@@ -138,7 +139,28 @@ export default function EventSheet() {
             <Text style={[styles.headerLeague, { color: sportColor }]}>{leagueLabel}</Text>
           </View>
 
-          {isSession ? (
+          {isTennisMatch ? (
+            <View style={styles.matchupContainer}>
+              {event.tournamentName && (
+                <Text style={[styles.venueText, { marginBottom: 8, color: "#CE93D8" }]}>{event.tournamentName}{event.tennisRound ? ` — ${event.tennisRound}` : ""}</Text>
+              )}
+              <View style={styles.matchupRow}>
+                <View style={styles.teamSide}>
+                  <Text style={styles.teamName}>
+                    {event.tennisPlayer1Rank ? `#${event.tennisPlayer1Rank} ` : ""}{event.tennisPlayer1 || event.awayTeam}
+                  </Text>
+                  {score && <Text style={[styles.sheetScore, isLiveState && styles.sheetScoreLive]}>{score.awayScore}</Text>}
+                </View>
+                <Text style={styles.atText}>vs</Text>
+                <View style={styles.teamSide}>
+                  <Text style={styles.teamName}>
+                    {event.tennisPlayer2Rank ? `#${event.tennisPlayer2Rank} ` : ""}{event.tennisPlayer2 || event.homeTeam}
+                  </Text>
+                  {score && <Text style={[styles.sheetScore, isLiveState && styles.sheetScoreLive]}>{score.homeScore}</Text>}
+                </View>
+              </View>
+            </View>
+          ) : isSession ? (
             <View style={styles.matchupContainer}>
               <Text style={styles.singleTeamName}>{event.sessionTitle}</Text>
             </View>
