@@ -129,9 +129,9 @@ const SUPER_8: T20WcMatch[] = [
 ];
 
 const KNOCKOUTS: T20WcMatch[] = [
-  { matchNum: 53, date: "2026-03-04", timeIST: "13:30", team1: "South Africa", team2: "New Zealand", venue: "Eden Gardens, Kolkata", group: "Semi-Final 1" },
-  { matchNum: 54, date: "2026-03-05", timeIST: "13:30", team1: "England", team2: "India", venue: "Wankhede Stadium, Mumbai", group: "Semi-Final 2" },
-  { matchNum: 55, date: "2026-03-08", timeIST: "19:00", team1: "TBC", team2: "TBC", venue: "Narendra Modi Stadium, Ahmedabad", group: "Final" },
+  { matchNum: 53, date: "2026-03-04", timeIST: "14:00", team1: "South Africa", team2: "New Zealand", venue: "Eden Gardens, Kolkata", group: "Semi-Final 1" },
+  { matchNum: 54, date: "2026-03-05", timeIST: "14:00", team1: "India", team2: "England", venue: "Wankhede Stadium, Mumbai", group: "Semi-Final 2" },
+  { matchNum: 55, date: "2026-03-08", timeIST: "15:00", team1: "TBC", team2: "TBC", venue: "Narendra Modi Stadium, Ahmedabad", group: "Final" },
 ];
 
 const ALL_MATCHES: T20WcMatch[] = [...GROUP_STAGE, ...SUPER_8, ...KNOCKOUTS];
