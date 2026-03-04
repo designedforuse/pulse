@@ -618,7 +618,7 @@ export default function SettingsScreen() {
               </View>
               <View style={styles.howItWorksContent}>
                 <Text style={styles.howItWorksTitle}>Watch — what's exciting right now</Text>
-                <Text style={styles.howItWorksDesc}>Chaos Mode surfaces the best live game based on tension, score, and timing.</Text>
+                <Text style={styles.howItWorksDesc}>Chaos Mode surfaces the most compelling live game based on score, tension, and timing.</Text>
               </View>
             </View>
             <View style={styles.divider} />
@@ -628,7 +628,7 @@ export default function SettingsScreen() {
               </View>
               <View style={styles.howItWorksContent}>
                 <Text style={styles.howItWorksTitle}>Rituals — your weekly viewing habits</Text>
-                <Text style={styles.howItWorksDesc}>Rituals group games into time windows (like Sunday mornings) so you can quickly see your key matchups.</Text>
+                <Text style={styles.howItWorksDesc}>Rituals group games into time windows (like Sunday mornings or Friday night hockey) so you can quickly find your regular matchups.</Text>
               </View>
             </View>
             <View style={styles.divider} />
@@ -637,14 +637,20 @@ export default function SettingsScreen() {
                 <Text style={[styles.stepText, { color: Colors.accent }]}>3</Text>
               </View>
               <View style={styles.howItWorksContent}>
-                <Text style={styles.howItWorksTitle}>Explore — browse the full schedule</Text>
-                <Text style={styles.howItWorksDesc}>Use Explore to scan upcoming windows, leagues, and events.</Text>
+                <Text style={styles.howItWorksTitle}>Explore — discover games across leagues</Text>
+                <Text style={styles.howItWorksDesc}>Explore highlights events based on league moments and momentum:</Text>
+                <View style={styles.howItWorksBullets}>
+                  <Text style={styles.howItWorksBullet}>• Movement – regular season matchups</Text>
+                  <Text style={styles.howItWorksBullet}>• Momentum – teams gaining form</Text>
+                  <Text style={styles.howItWorksBullet}>• Playoff Push – late-season stakes</Text>
+                  <Text style={styles.howItWorksBullet}>• League Moments – finals, derbies, and marquee events</Text>
+                </View>
               </View>
             </View>
             <View style={styles.divider} />
             <View style={styles.howItWorksFooter}>
               <Ionicons name="open-outline" size={14} color={Colors.textSecondary} />
-              <Text style={styles.howItWorksFooterText}>Tap any event to open it in the streaming provider.</Text>
+              <Text style={styles.howItWorksFooterText}>Tap any event to open the broadcast in your streaming provider.</Text>
             </View>
           </View>
         </View>
@@ -870,6 +876,17 @@ const styles = StyleSheet.create({
     color: Colors.textSecondary,
     fontFamily: "Inter_400Regular",
     lineHeight: 18,
+  },
+  howItWorksBullets: {
+    marginTop: 4,
+    gap: 2,
+  },
+  howItWorksBullet: {
+    fontSize: 12,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_400Regular",
+    lineHeight: 18,
+    paddingLeft: 4,
   },
   howItWorksFooter: {
     flexDirection: "row" as const,
