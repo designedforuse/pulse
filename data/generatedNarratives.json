@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-02T20:54:39.047Z",
+  "lastUpdated": "2026-03-03T03:50:51.829Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -77,11 +77,11 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 610,
+        "playersIngested": 590,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-02T20:54:39.047Z"
+        "timestamp": "2026-03-03T03:50:51.829Z"
       },
-      "cacheHistoryCount": 610,
+      "cacheHistoryCount": 611,
       "error": null
     }
   },
@@ -96,8 +96,8 @@
         "tabHint": "Rituals"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-02T20:54:39.047Z",
-      "expiresAt": "2026-03-09T20:54:39.047Z",
+      "triggeredAt": "2026-03-03T03:50:51.829Z",
+      "expiresAt": "2026-03-10T03:50:51.829Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -116,7 +116,7 @@
             "team": "Tulsa Oilers",
             "league": "ECHL",
             "gamesInNext7Days": 4,
-            "gamesInNext5Days": 2,
+            "gamesInNext5Days": 3,
             "hasBackToBack": true,
             "reason": "Tulsa Oilers: back-to-back + 4 games in 7 days"
           }
@@ -132,8 +132,8 @@
           "echl-web-25149"
         ],
         "combinedTeamCount": 2,
-        "windowStart": "2026-03-02T20:54:39.047Z",
-        "windowEnd": "2026-03-09T20:54:39.047Z",
+        "windowStart": "2026-03-03T03:50:51.829Z",
+        "windowEnd": "2026-03-10T03:50:51.829Z",
         "reason": "Anaheim Ducks: back-to-back + 4 games in 7 days; Tulsa Oilers: back-to-back + 4 games in 7 days"
       }
     },
@@ -147,8 +147,8 @@
         "tabHint": "Rituals"
       },
       "priority": 60,
-      "triggeredAt": "2026-03-02T20:54:39.047Z",
-      "expiresAt": "2026-03-05T20:54:39.047Z",
+      "triggeredAt": "2026-03-03T03:50:51.829Z",
+      "expiresAt": "2026-03-06T03:50:51.829Z",
       "kind": "momentum",
       "region": "SoCal",
       "regionPriority": 2,
@@ -198,8 +198,8 @@
         "tabHint": "Watch"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-02T20:54:39.047Z",
-      "expiresAt": "2026-03-09T20:54:39.047Z",
+      "triggeredAt": "2026-03-03T03:50:51.829Z",
+      "expiresAt": "2026-03-10T03:50:51.829Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -222,8 +222,8 @@
           "nhl_2025021002"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-02T20:54:39.047Z",
-        "windowEnd": "2026-03-09T20:54:39.047Z",
+        "windowStart": "2026-03-03T03:50:51.829Z",
+        "windowEnd": "2026-03-10T03:50:51.829Z",
         "reason": "Boston Bruins: back-to-back + 4 games in 7 days"
       }
     },
@@ -236,8 +236,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-02T20:54:39.047Z",
-      "expiresAt": "2026-03-09T20:54:39.047Z",
+      "triggeredAt": "2026-03-03T03:50:51.829Z",
+      "expiresAt": "2026-03-10T03:50:51.829Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,

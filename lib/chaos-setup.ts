@@ -229,6 +229,10 @@ function getBackfillCandidates(
 }
 
 function chaosSort(a: ChaosCandidate, b: ChaosCandidate, ritualMode: boolean): number {
+  const aLive = a.isLive ? 0 : 1;
+  const bLive = b.isLive ? 0 : 1;
+  if (aLive !== bLive) return aLive - bLive;
+
   if (b.emotionRank !== a.emotionRank) return b.emotionRank - a.emotionRank;
 
   if (ritualMode) {
@@ -244,10 +248,6 @@ function chaosSort(a: ChaosCandidate, b: ChaosCandidate, ritualMode: boolean): n
     const bSP = getSportPriority(b.event.sport);
     if (bSP !== aSP) return bSP - aSP;
   }
-
-  const aLive = a.isLive ? 0 : 1;
-  const bLive = b.isLive ? 0 : 1;
-  if (aLive !== bLive) return aLive - bLive;
 
   const aStart = new Date(a.score.startTime).getTime();
   const bStart = new Date(b.score.startTime).getTime();
@@ -283,7 +283,7 @@ export interface ChaosDebug {
   selectedIds: string[];
   ritualMode: boolean;
   activeRitualId: string | null;
-  selectedRanks?: { id: string; emotion: number; tension: number; sportPri: number; isLive: boolean }[];
+  selectedRanks?: { id: string; emotion: number; tension: number; sportPri: number; isLive: boolean; isFav: boolean; isAnchor: boolean; isBackfill: boolean }[];
 }
 
 export function buildChaosSetup(
@@ -380,6 +380,8 @@ export function buildChaosSetup(
     }
   }
 
+  selected.sort((a, b) => chaosSort(a, b, inRitual));
+
   const debug: ChaosDebug = {
     anchorFound: anchors.length > 0,
     anchorIds: anchors.map((a) => a.event.id),
@@ -395,6 +397,9 @@ export function buildChaosSetup(
       tension: c.tensionRank,
       sportPri: getSportPriority(c.event.sport),
       isLive: c.isLive,
+      isFav: c.isFavorite,
+      isAnchor: c.isAnchor,
+      isBackfill: c.isBackfill,
     })),
   };
 
@@ -407,11 +412,25 @@ export function buildChaosSetup(
         hour12: true,
       }).format(d);
     console.log(
-      `[CHAOS] mode=${inRitual ? "RITUAL" : "FREE"}${ritualId ? ` (${ritualId})` : ""} | nowPT=${fmtPT(now)} | anchors=${anchors.length} live=${liveCount} soon=${soonCount} backfill=${backfillCount} selected=${selected.length}`,
+      `[CHAOS] mode=${inRitual ? "RITUAL" : "FREE"}${ritualId ? ` (${ritualId})` : ""} | nowPT=${fmtPT(now)} | pool=${pool.length} anchors=${anchors.length} live=${liveCount} soon=${soonCount} backfill=${backfillCount} selected=${selected.length}`,
     );
-    if (debug.selectedRanks) {
-      for (const r of debug.selectedRanks) {
-        console.log(`  [CHAOS]  ${r.id}: emotion=${r.emotion} tension=${r.tension} sportPri=${r.sportPri} live=${r.isLive}`);
+    for (const c of selected) {
+      const start = new Date(c.event.startTimeLocal);
+      console.log(
+        `  [CHAOS]  ${c.event.id}: live=${c.isLive} fav=${c.isFavorite} anchor=${c.isAnchor} backfill=${c.isBackfill} emotion=${c.emotionRank} tension=${c.tensionRank} sportPri=${getSportPriority(c.event.sport)} start=${fmtPT(start)} ${c.event.awayTeam} @ ${c.event.homeTeam}`,
+      );
+    }
+    const topPool = pool
+      .slice()
+      .sort((a, b) => chaosSort(a, b, inRitual))
+      .slice(0, 10);
+    if (topPool.length > selected.length) {
+      console.log(`  [CHAOS] Top 10 pool (for comparison):`);
+      for (const c of topPool) {
+        const start = new Date(c.event.startTimeLocal);
+        console.log(
+          `    [CHAOS]  ${c.event.id}: live=${c.isLive} fav=${c.isFavorite} emotion=${c.emotionRank} tension=${c.tensionRank} sportPri=${getSportPriority(c.event.sport)} start=${fmtPT(start)} ${c.event.awayTeam} @ ${c.event.homeTeam}`,
+        );
       }
     }
   }
@@ -527,9 +546,21 @@ export function selfHealChaosSetup(
   }
 
   const merged = [...kept, ...replacements];
-  const anchorFirst = merged.filter((e) => isAnchorTeam(e));
-  const nonAnchor = merged.filter((e) => !isAnchorTeam(e));
-  const finalList = [...anchorFirst, ...nonAnchor];
+  const mergedCandidates = merged.map((e) => {
+    const live = isEventLive(e, now) || getScoreStatus?.(e.id) === "live";
+    return {
+      event: e,
+      score: computeFeaturedScore(e, favorites, now),
+      isFavorite: favoriteInvolved(e, favorites),
+      isLive: !!live,
+      isAnchor: isAnchorTeam(e),
+      isBackfill: false,
+      emotionRank: getEmotionRank(e, favorites),
+      tensionRank: getTensionRank(e, !!live, getScoreData),
+    } as ChaosCandidate;
+  });
+  mergedCandidates.sort((a, b) => chaosSort(a, b, inRitual));
+  const finalList = mergedCandidates.map((c) => c.event);
 
   if (CHAOS_DEBUG) {
     console.log(

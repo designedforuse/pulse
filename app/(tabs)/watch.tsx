@@ -323,7 +323,7 @@ function SecondaryCarousel({
   now: Date;
   getScore: (id: string) => any;
   favorites: any;
-  chaosDebugRanks?: { id: string; emotion: number; tension: number; sportPri: number; isLive: boolean }[];
+  chaosDebugRanks?: { id: string; emotion: number; tension: number; sportPri: number; isLive: boolean; isFav: boolean; isAnchor: boolean; isBackfill: boolean }[];
 }) {
   const { width: screenWidth } = useWindowDimensions();
   const contentWidth = screenWidth - PAGE_PADDING * 2;
