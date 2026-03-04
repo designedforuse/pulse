@@ -20,6 +20,8 @@ import {
   getProviderById,
   formatStartTime,
   getSportColor,
+  resolveProviderDisplay,
+  formatProviderReason,
 } from "@/lib/data";
 import { useEvents } from "@/lib/events-context";
 import { useScores } from "@/lib/scores-context";
@@ -52,7 +54,8 @@ export default function EventSheet() {
   const insets = useSafeAreaInsets();
   const { getScore } = useScores();
   const score = getScore(event.id);
-  const provider = getProviderById(event.providerId);
+  const resolved = resolveProviderDisplay(event);
+  const launchProvider = resolved.launchProvider;
   const sportColor = getSportColor(event.sport);
   const leagueLabel = event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league;
   const dateLabel = formatDetailDate(event.startTimeLocal);
@@ -60,9 +63,10 @@ export default function EventSheet() {
   const { gameState, displayClockText, displayStatusText } = normalizeGameState(event, score, new Date());
   const isLiveState = gameState === "LIVE";
   const isFinalState = gameState === "FINAL";
+  const reasonLabel = formatProviderReason(event.providerReason);
 
   const handleOpenProvider = async () => {
-    if (!provider) return;
+    if (!launchProvider) return;
 
     if (Platform.OS !== "web") {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -71,27 +75,27 @@ export default function EventSheet() {
     if (Platform.OS === "web") {
       Alert.alert(
         "Desktop Browser",
-        `Open ${provider.name} on your Android device to watch this event.`
+        `Open ${launchProvider.name} on your Android device to watch this event.`
       );
       return;
     }
 
-    if (provider.launchUrl) {
+    if (launchProvider.launchUrl) {
       try {
         await IntentLauncher.startActivityAsync(
           "android.intent.action.VIEW",
           {
-            data: provider.launchUrl,
-            packageName: provider.packageName,
+            data: launchProvider.launchUrl,
+            packageName: launchProvider.packageName,
           }
         );
       } catch {
         try {
-          await Linking.openURL(provider.launchUrl);
+          await Linking.openURL(launchProvider.launchUrl);
         } catch {
           Alert.alert(
             "App Not Installed",
-            `${provider.name} is not installed on this device.`,
+            `${launchProvider.name} is not installed on this device.`,
             [{ text: "OK" }]
           );
         }
@@ -102,13 +106,13 @@ export default function EventSheet() {
     try {
       const FLAG_ACTIVITY_NEW_TASK = 268435456;
       const params: IntentLauncher.IntentLauncherParams = {
-        packageName: provider.packageName,
+        packageName: launchProvider.packageName,
         category: "android.intent.category.LAUNCHER",
         flags: FLAG_ACTIVITY_NEW_TASK,
       };
 
-      if (provider.activity) {
-        params.className = provider.activity;
+      if (launchProvider.activity) {
+        params.className = launchProvider.activity;
       }
 
       await IntentLauncher.startActivityAsync(
@@ -118,7 +122,7 @@ export default function EventSheet() {
     } catch {
       Alert.alert(
         "App Not Installed",
-        `${provider.name} is not installed on this device.`,
+        `${launchProvider.name} is not installed on this device.`,
         [{ text: "OK" }]
       );
     }
@@ -212,14 +216,14 @@ export default function EventSheet() {
             <Text style={styles.venueText}>{event.olympicVenue}</Text>
           ) : null}
 
-          {event.providerReason ? (
+          {reasonLabel ? (
             <Text style={styles.providerReasonText}>
-              {event.providerReason}
+              {reasonLabel}
             </Text>
           ) : null}
         </View>
 
-        {provider && (
+        {launchProvider && (
           <Pressable
             onPress={handleOpenProvider}
             style={({ pressed }) => [
@@ -228,7 +232,8 @@ export default function EventSheet() {
             ]}
             testID="open-provider-btn"
           >
-            <ProviderLogo providerId={event.providerId} size={40} />
+            <ProviderLogo providerId={launchProvider.id} size={28} />
+            <Text style={styles.openButtonText}>{resolved.launchLabel}</Text>
           </Pressable>
         )}
       </View>
@@ -378,15 +383,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8,
-    backgroundColor: "#D32F2F",
+    gap: 10,
+    backgroundColor: "#3A3A3C",
     paddingVertical: 16,
     borderRadius: 14,
   },
   openButtonText: {
     fontSize: 16,
     fontWeight: "700" as const,
-    color: Colors.background,
+    color: Colors.textPrimary,
     fontFamily: "Inter_700Bold",
   },
   closeButton: {

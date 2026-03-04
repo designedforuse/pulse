@@ -7,7 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
-import { getSportColor, getSportIcon, type SportEvent } from "@/lib/data";
+import { getSportColor, getSportIcon, resolveProviderDisplay, type SportEvent } from "@/lib/data";
 import { displayTeamName } from "@/utils/teams";
 import { normalizeGameState } from "@/utils/gameState";
 import { useScoreFlash } from "@/hooks/useScoreFlash";
@@ -366,7 +366,7 @@ export default function UnifiedEventCard({
                 <Text style={uStyles.tensionTagText}>{tensionLabel}</Text>
               </View>
             )}
-            <ProviderLogo providerId={event.providerId} size={18} />
+            <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
           </View>
         </View>
       </Animated.View>

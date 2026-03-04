@@ -29,6 +29,7 @@ import {
   getProviderById,
   formatStartTime,
   getSportColor,
+  resolveProviderDisplay,
   type SportEvent,
 } from "@/lib/data";
 import { useEvents } from "@/lib/events-context";
@@ -73,7 +74,8 @@ function formatEventDate(startTimeLocal: string): { date: string; time: string }
 }
 
 function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isLive: boolean; now: Date; isFav: boolean; score?: { awayScore: number; homeScore: number; period?: string; clock?: string; status?: string } }) {
-  const provider = getProviderById(event.providerId);
+  const resolved = resolveProviderDisplay(event);
+  const provider = resolved.launchProvider;
   const sportColor = getSportColor(event.sport);
   const { date, time } = formatEventDate(event.startTimeLocal);
   const hasScore = !!score;
@@ -185,7 +187,7 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
           )}
           {provider && (
             <View style={styles.providerRow}>
-              <ProviderLogo providerId={event.providerId} size={20} />
+              <ProviderLogo providerId={resolved.brandId} size={20} />
             </View>
           )}
         </View>

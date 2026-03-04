@@ -172,6 +172,98 @@ export function getSportColor(sport: string): string {
   return colors[sport] || "#90A4AE";
 }
 
+export interface ResolvedProvider {
+  providerId: string;
+  providerName: string;
+  launchAppId: string;
+  launchAppName: string;
+  displayLabel: string;
+}
+
+const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
+  youtubetv: "YouTube TV",
+  disneyplus: "Disney+",
+  flosports: "FloSports",
+  victoryplus: "Victory+",
+  primevideo: "Prime Video",
+  appletv: "Apple TV",
+  tennischannel: "Tennis Channel",
+  espn: "ESPN",
+  tnt: "TNT",
+};
+
+const TENNIS_PROVIDER_MAP: Record<string, ResolvedProvider> = {
+  "tennischannel": {
+    providerId: "tennischannel",
+    providerName: "Tennis Channel",
+    launchAppId: "youtubetv",
+    launchAppName: "YouTube TV",
+    displayLabel: "Watch on YouTube TV",
+  },
+  "espn-broadcast": {
+    providerId: "espn",
+    providerName: "ESPN",
+    launchAppId: "youtubetv",
+    launchAppName: "YouTube TV",
+    displayLabel: "Watch on YouTube TV",
+  },
+  "tnt-broadcast": {
+    providerId: "tnt",
+    providerName: "TNT",
+    launchAppId: "youtubetv",
+    launchAppName: "YouTube TV",
+    displayLabel: "Watch on YouTube TV",
+  },
+};
+
+export function resolveTennisProvider(event: SportEvent): ResolvedProvider | null {
+  if (event.sport !== "tennis") return null;
+
+  const key = event.providerReason || event.providerId;
+  const mapped = TENNIS_PROVIDER_MAP[key] || TENNIS_PROVIDER_MAP[event.providerId];
+
+  if (mapped) return mapped;
+
+  return {
+    providerId: "tennischannel",
+    providerName: "Tennis Channel",
+    launchAppId: "youtubetv",
+    launchAppName: "YouTube TV",
+    displayLabel: "Watch on YouTube TV",
+  };
+}
+
+export function resolveProviderDisplay(event: SportEvent): { brandId: string; brandName: string; launchProvider: Provider | undefined; launchLabel: string } {
+  const tennis = resolveTennisProvider(event);
+  if (tennis) {
+    return {
+      brandId: tennis.providerId,
+      brandName: tennis.providerName,
+      launchProvider: getProviderById(tennis.launchAppId),
+      launchLabel: tennis.displayLabel,
+    };
+  }
+  const provider = getProviderById(event.providerId);
+  return {
+    brandId: event.providerId,
+    brandName: provider?.name || PROVIDER_DISPLAY_NAMES[event.providerId] || event.providerId,
+    launchProvider: provider,
+    launchLabel: provider ? `Watch on ${provider.name}` : "Watch",
+  };
+}
+
+export function formatProviderReason(reason: string | undefined): string | null {
+  if (!reason) return null;
+  const labels: Record<string, string> = {
+    "tennis-channel": "Tennis Channel",
+    "espn-broadcast": "ESPN Broadcast",
+    "tnt-broadcast": "TNT Broadcast",
+    "flosports": "FloSports",
+    "victoryplus": "Victory+",
+  };
+  return labels[reason] || reason.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+}
+
 export function getSportIcon(sport: string): string {
   const icons: Record<string, string> = {
     hockey: "snow",

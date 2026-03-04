@@ -20,6 +20,7 @@ import UnifiedEventCard from "@/components/UnifiedEventCard";
 import {
   getProviderById,
   getSportColor,
+  resolveProviderDisplay,
   type SportEvent,
 } from "@/lib/data";
 import { useEvents } from "@/lib/events-context";
@@ -444,7 +445,8 @@ export default function GuideDetailScreen() {
             <View style={sheetStyles.handle} />
             {sheetEvent && (() => {
               const se = sheetEvent;
-              const seProvider = getProviderById(se.providerId);
+              const seResolved = resolveProviderDisplay(se);
+              const seProvider = seResolved.launchProvider;
               const seSportColor = getSportColor(se.sport);
               const { date: seDate, time: seTime } = formatEventDate(se.startTimeLocal);
               return (
@@ -472,8 +474,8 @@ export default function GuideDetailScreen() {
                       {seProvider && (
                         <>
                           <Text style={sheetStyles.metaDot}>·</Text>
-                          <ProviderLogo providerId={se.providerId} size={18} />
-                          <Text style={sheetStyles.metaText}>{seProvider.name}</Text>
+                          <ProviderLogo providerId={seResolved.brandId} size={18} />
+                          <Text style={sheetStyles.metaText}>{seResolved.brandName}</Text>
                         </>
                       )}
                     </View>

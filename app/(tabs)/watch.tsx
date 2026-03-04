@@ -30,6 +30,7 @@ import { TeamLogo } from "@/components/TeamLogo";
 import UnifiedEventCard, { formatCricketLiveDetail } from "@/components/UnifiedEventCard";
 import {
   getSportColor,
+  resolveProviderDisplay,
   type SportEvent,
 } from "@/lib/data";
 import { getTennisRoundPriority } from "@/data/tennisTopPlayers";
@@ -233,7 +234,7 @@ function ChaosCard({
                   <Text style={styles.primaryTime}>{date} {"\u00B7"} {time}</Text>
                 ) : null}
               </View>
-              <ProviderLogo providerId={event.providerId} size={22} />
+              <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={22} />
             </View>
           </LinearGradient>
         </Animated.View>
@@ -321,7 +322,7 @@ function ChaosCard({
             <Text style={styles.secondaryTime} numberOfLines={1}>{time}</Text>
           ) : null}
           <View style={{ opacity: 0.9 }}>
-            <ProviderLogo providerId={event.providerId} size={18} />
+            <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
           </View>
         </View>
       </Animated.View>
