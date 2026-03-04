@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-04T04:02:55.801Z",
+  "lastUpdated": "2026-03-04T04:11:58.551Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -29,9 +29,9 @@
   "cricketSourceUsed": "cricapi",
   "nhlCount": 110,
   "ahlCount": 227,
-  "ahlAdded": 33,
-  "ahlUpdated": 183,
-  "ahlPruned": 34,
+  "ahlAdded": 32,
+  "ahlUpdated": 184,
+  "ahlPruned": 32,
   "echlCount": 16,
   "echlAdded": 4,
   "echlUpdated": 16,
@@ -62,18 +62,18 @@
   "iccT20WcCount": 22,
   "iccT20WcAdded": 22,
   "iccT20WcUpdated": 0,
-  "iccT20WcPruned": 25,
+  "iccT20WcPruned": 22,
   "iccT20WcSourceUsed": "hardcoded-schedule",
   "t20wcDedupedCount": 0,
   "olympicHockeyCount": 8,
   "olympicHockeyAdded": 0,
   "olympicHockeyUpdated": 8,
-  "olympicHockeyPruned": 4,
+  "olympicHockeyPruned": 0,
   "olympicHockeySourceUsed": "hardcoded-schedule",
   "eplCount": 54,
-  "eplAdded": 3,
-  "eplUpdated": 47,
-  "eplPruned": 47,
+  "eplAdded": 0,
+  "eplUpdated": 50,
+  "eplPruned": 50,
   "eplSourceUsed": "ical",
   "mlsCount": 75,
   "mlsAdded": 0,
@@ -123,42 +123,42 @@
   "championsLeagueCount": 12,
   "championsLeagueAdded": 0,
   "championsLeagueUpdated": 12,
-  "championsLeaguePruned": 16,
+  "championsLeaguePruned": 12,
   "championsLeagueSourceUsed": "ical",
   "faCupCount": 9,
-  "faCupAdded": 1,
-  "faCupUpdated": 8,
+  "faCupAdded": 0,
+  "faCupUpdated": 9,
   "faCupPruned": 9,
   "faCupSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-04T04:02:55.801Z",
+    "lastRefreshAt": "2026-03-04T04:11:58.551Z",
     "sources": {
       "nhl": {
         "count": 110,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 227,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 16,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 3,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 114,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 19,
@@ -178,53 +178,53 @@
       },
       "iccT20Wc": {
         "count": 22,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 8,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 54,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 75,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 51,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 52,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 46,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 45,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 16,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 32,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
@@ -236,18 +236,18 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 12,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "iCal Feed"
       },
       "faCup": {
         "count": 9,
-        "lastFetchAt": "2026-03-04T04:02:55.801Z",
+        "lastFetchAt": "2026-03-04T04:11:58.551Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-03T19:45:00.000Z"
       }
@@ -4867,8 +4867,8 @@
       "league": "ICC",
       "awayTeam": "South Africa",
       "homeTeam": "New Zealand",
-      "startTimeLocal": "2026-03-04T08:30:00.000Z",
-      "endTimeLocal": "2026-03-04T12:00:00.000Z",
+      "startTimeLocal": "2026-03-04T13:30:00.000Z",
+      "endTimeLocal": "2026-03-04T17:00:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
       "source": "cricket-t20wc-schedule",
@@ -5189,8 +5189,8 @@
       "league": "ICC",
       "awayTeam": "India",
       "homeTeam": "England",
-      "startTimeLocal": "2026-03-05T08:30:00.000Z",
-      "endTimeLocal": "2026-03-05T12:00:00.000Z",
+      "startTimeLocal": "2026-03-05T13:30:00.000Z",
+      "endTimeLocal": "2026-03-05T17:00:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
       "source": "cricket-t20wc-schedule",
@@ -6827,27 +6827,6 @@
       "providerReason": "mls-appletv"
     },
     {
-      "id": "cricket-t20wc-d20c4ab40f",
-      "sport": "cricket",
-      "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
-      "startTimeLocal": "2026-03-08T09:30:00.000Z",
-      "endTimeLocal": "2026-03-08T13:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-t20wc-schedule",
-      "leagueKey": "icc",
-      "competitionName": "ICC Men's T20 World Cup 2026",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "India",
-      "seriesName": "ICC Men's T20 World Cup 2026",
-      "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC Final – Match 55",
-      "t20WcVenue": "Narendra Modi Stadium, Ahmedabad"
-    },
-    {
       "id": "soccer-seriea-20260308-1130-cremonese-at-lecce",
       "sport": "soccer",
       "league": "Serie A",
@@ -6887,6 +6866,27 @@
       "source": "soccer-laliga",
       "leagueKey": "laliga",
       "providerReason": "laliga-disneyplus"
+    },
+    {
+      "id": "cricket-t20wc-d20c4ab40f",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "TBC",
+      "homeTeam": "TBC",
+      "startTimeLocal": "2026-03-08T13:30:00.000Z",
+      "endTimeLocal": "2026-03-08T17:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "cricket-t20wc-schedule",
+      "leagueKey": "icc",
+      "competitionName": "ICC Men's T20 World Cup 2026",
+      "competitionType": "international",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "ICC Men's T20 World Cup 2026",
+      "isIccT20Wc": true,
+      "t20WcMatchLabel": "T20 WC Final – Match 55",
+      "t20WcVenue": "Narendra Modi Stadium, Ahmedabad"
     },
     {
       "id": "soccer-facup-20260308-1330-sunderland-at-port-vale",
