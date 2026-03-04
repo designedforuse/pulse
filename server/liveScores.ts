@@ -686,7 +686,7 @@ async function fetchNcaaHockeyScores(
 }
 
 let cricketScoreCache: { data: Record<string, ScoreData>; ts: number } = { data: {}, ts: 0 };
-const CRICKET_CACHE_TTL = 120_000;
+const CRICKET_CACHE_TTL = 300_000;
 
 async function fetchCricketScores(
   events: { id: string; homeTeam: string; awayTeam: string }[]
@@ -694,11 +694,12 @@ async function fetchCricketScores(
   const scores: Record<string, ScoreData> = {};
   if (events.length === 0) return scores;
 
-  if (Date.now() - cricketScoreCache.ts < CRICKET_CACHE_TTL && Object.keys(cricketScoreCache.data).length > 0) {
+  const cacheAge = Date.now() - cricketScoreCache.ts;
+  if (cacheAge < CRICKET_CACHE_TTL) {
     for (const ev of events) {
       if (cricketScoreCache.data[ev.id]) scores[ev.id] = cricketScoreCache.data[ev.id];
     }
-    if (Object.keys(scores).length > 0) return scores;
+    return scores;
   }
 
   const apiKey = process.env.CRICAPI_KEY;
