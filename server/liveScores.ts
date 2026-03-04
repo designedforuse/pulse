@@ -685,22 +685,36 @@ async function fetchNcaaHockeyScores(
   return scores;
 }
 
+let cricketScoreCache: { data: Record<string, ScoreData>; ts: number } = { data: {}, ts: 0 };
+const CRICKET_CACHE_TTL = 120_000;
+
 async function fetchCricketScores(
   events: { id: string; homeTeam: string; awayTeam: string }[]
 ): Promise<Record<string, ScoreData>> {
   const scores: Record<string, ScoreData> = {};
   if (events.length === 0) return scores;
 
+  if (Date.now() - cricketScoreCache.ts < CRICKET_CACHE_TTL && Object.keys(cricketScoreCache.data).length > 0) {
+    for (const ev of events) {
+      if (cricketScoreCache.data[ev.id]) scores[ev.id] = cricketScoreCache.data[ev.id];
+    }
+    if (Object.keys(scores).length > 0) return scores;
+  }
+
   const apiKey = process.env.CRICAPI_KEY;
   if (!apiKey) return scores;
 
   try {
     const res = await fetch(`https://api.cricapi.com/v1/currentMatches?apikey=${apiKey}&offset=0`);
-    if (!res.ok) return scores;
+    if (!res.ok) return { ...cricketScoreCache.data };
     const data = await res.json() as any;
-    if (data.status !== "success") return scores;
+    if (data.status !== "success") {
+      console.warn("[liveScores] CricAPI non-success:", data.status, data.reason || "");
+      return { ...cricketScoreCache.data };
+    }
 
     const matches = data.data || [];
+    console.log(`[liveScores] CricAPI returned ${matches.length} matches for ${events.length} cricket events`);
 
     for (const ourEvent of events) {
       if (scores[ourEvent.id]) continue;
@@ -759,6 +773,11 @@ async function fetchCricketScores(
     }
   } catch (err) {
     console.error("[liveScores] Cricket fetch error:", err);
+    return { ...cricketScoreCache.data };
+  }
+
+  if (Object.keys(scores).length > 0) {
+    cricketScoreCache = { data: { ...scores }, ts: Date.now() };
   }
 
   return scores;

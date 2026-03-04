@@ -294,6 +294,12 @@ function ChaosCard({
                 </Text>
               )}
             </View>
+            {hasScore && event.sport === "cricket" && (
+              <View style={styles.cricketScoreBlockSm}>
+                {score.cricketAway ? <Text style={[styles.cricketScoreTextSm, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketAway}</Text> : null}
+                {score.cricketHome ? <Text style={[styles.cricketScoreTextSm, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketHome}</Text> : null}
+              </View>
+            )}
           </View>
         )}
 
@@ -1329,6 +1335,16 @@ const styles = StyleSheet.create({
     color: Colors.accentSoft,
     marginTop: 4,
     paddingHorizontal: 10,
+  },
+  cricketScoreBlockSm: {
+    marginTop: 2,
+    gap: 1,
+  },
+  cricketScoreTextSm: {
+    fontSize: 11,
+    fontWeight: "600" as const,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_600SemiBold",
   },
   scoreLive: {
     color: Colors.accentSoft,
