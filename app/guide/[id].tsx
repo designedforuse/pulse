@@ -489,6 +489,7 @@ export default function GuideDetailScreen() {
                         key={`sport-${sc.key}`}
                         onPress={() => {
                           setSportFilter(isActive ? null : sc.key);
+                          setLeagueFilter(null);
                           if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                         }}
                         style={[styles.chip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
@@ -510,6 +511,7 @@ export default function GuideDetailScreen() {
                         key={`league-${lc.key}`}
                         onPress={() => {
                           setLeagueFilter(isActive ? null : lc.key);
+                          setSportFilter(null);
                           if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                         }}
                         style={[styles.chip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
