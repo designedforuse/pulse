@@ -165,6 +165,12 @@
       "name": "Apple TV",
       "packageName": "com.apple.atve.androidtv.appletv",
       "launchUrl": "https://tv.apple.com"
+    },
+    {
+      "id": "tennischannel",
+      "name": "Tennis Channel",
+      "packageName": "com.sinclairmedia.tennischannel",
+      "launchUrl": "https://www.tennischannel.com"
     }
   ],
   "events": [
