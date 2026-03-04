@@ -392,17 +392,15 @@ export function fetchTennisEvents(): TennisFetchResult {
       const tzOffset = SESSION_START_TZ_OFFSET[tournament.country] ?? "+00:00";
       const startHours = SESSION_START_HOURS[tournament.country] ?? [11];
 
-      const matchups = generateMatchups(round, dateStr, matchesPerDay);
+      const sessionsPerDay = Math.min(startHours.length, 2);
 
-      for (let mi = 0; mi < matchups.length; mi++) {
-        const matchup = matchups[mi];
-        const hourIdx = mi % startHours.length;
-        const hour = startHours[hourIdx];
+      for (let si = 0; si < sessionsPerDay; si++) {
+        const hour = startHours[si % startHours.length];
         const startIso = `${dateStr}T${String(hour).padStart(2, "0")}:00:00${tzOffset}`;
         const startUtc = new Date(startIso).toISOString();
         const endUtc = new Date(new Date(startUtc).getTime() + MATCH_DURATION_MIN * 60000).toISOString();
 
-        const id = stableId(tournament.name, dateStr, mi);
+        const id = stableId(tournament.name, dateStr, si);
         if (seenIds.has(id)) continue;
         seenIds.add(id);
 
@@ -410,8 +408,8 @@ export function fetchTennisEvents(): TennisFetchResult {
           id,
           sport: "tennis",
           league: tournament.league,
-          awayTeam: matchup.p1.lastName,
-          homeTeam: matchup.p2.lastName,
+          awayTeam: "TBD",
+          homeTeam: "TBD",
           startTimeLocal: startUtc,
           endTimeLocal: endUtc,
           providerId: tournament.providerId,
@@ -419,14 +417,10 @@ export function fetchTennisEvents(): TennisFetchResult {
           source: "tennis-hardcoded",
           leagueKey: tournament.leagueKey,
           providerReason: tournament.providerReason,
-          eventType: "match",
+          eventType: "session",
           sessionTitle: `${tournament.shortName} — ${round}`,
           competitionType: tournament.league === "Grand Slam" ? "international" : "domestic",
           tennisRound: round,
-          tennisPlayer1: matchup.p1.lastName,
-          tennisPlayer2: matchup.p2.lastName,
-          tennisPlayer1Rank: matchup.p1.rank,
-          tennisPlayer2Rank: matchup.p2.rank,
           tournamentName: tournament.name,
         });
         count++;
