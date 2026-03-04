@@ -573,13 +573,46 @@ export default function WatchScreen() {
     });
   }, [allEvents, now, favoritesOnly, favorites, getScore]);
 
-  const upNextEvents = useMemo(() => {
+  const [upNextSportFilter, setUpNextSportFilter] = useState<string | null>(null);
+  const [upNextLeagueFilter, setUpNextLeagueFilter] = useState<string | null>(null);
+
+  const upNextAll = useMemo(() => {
     const upcoming = getUpNextEvents(allEvents, now);
     const filtered = favoritesOnly ? upcoming.filter((e) => favoriteInvolved(e, favorites)) : upcoming;
     return [...filtered].sort(
       (a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
     );
   }, [allEvents, now, favoritesOnly, favorites]);
+
+  const { upNextSportChips, upNextLeagueChips, upNextEvents, upNextLeagueSportMap, upNextHasFilter } = useMemo(() => {
+    const sports = new Map<string, number>();
+    const leagues = new Map<string, number>();
+    const lsMap = new Map<string, string>();
+    for (const e of upNextAll) {
+      sports.set(e.sport, (sports.get(e.sport) || 0) + 1);
+      leagues.set(e.league, (leagues.get(e.league) || 0) + 1);
+      if (!lsMap.has(e.league)) lsMap.set(e.league, e.sport);
+    }
+    const sChips = Array.from(sports.entries())
+      .sort((a, b) => b[1] - a[1])
+      .map(([sport, count]) => ({ key: sport, label: sport.charAt(0).toUpperCase() + sport.slice(1), count }));
+    const lChips = Array.from(leagues.entries())
+      .sort((a, b) => b[1] - a[1])
+      .map(([league, count]) => ({ key: league, label: league, count }));
+
+    let events = upNextAll;
+    if (upNextSportFilter) {
+      events = events.filter((e) => e.sport === upNextSportFilter);
+    }
+    if (upNextLeagueFilter) {
+      events = events.filter((e) => e.league === upNextLeagueFilter);
+    }
+    const hasFilter = upNextSportFilter !== null || upNextLeagueFilter !== null;
+    return { upNextSportChips: sChips, upNextLeagueChips: lChips, upNextEvents: events, upNextLeagueSportMap: lsMap, upNextHasFilter: hasFilter };
+  }, [upNextAll, upNextSportFilter, upNextLeagueFilter]);
+
+  const showUpNextSportChips = upNextSportChips.length > 1;
+  const showUpNextLeagueChips = upNextLeagueChips.length > 1;
 
   const upNextDayGroups = useMemo(() => {
     const groups: { label: string; key: string; events: SportEvent[] }[] = [];
@@ -789,13 +822,79 @@ export default function WatchScreen() {
           <View style={styles.sectionHeaderRow}>
             <Ionicons name="time-outline" size={16} color={Colors.textSecondary} />
             <Text style={styles.sectionTitle}>Up Next</Text>
-            {upNextEvents.length > 0 && (
+            {upNextAll.length > 0 && (
               <View style={styles.sectionCount}>
-                <Text style={styles.sectionCountText}>{upNextEvents.length}</Text>
+                <Text style={styles.sectionCountText}>
+                  {upNextHasFilter ? `${upNextEvents.length}/${upNextAll.length}` : upNextAll.length}
+                </Text>
               </View>
             )}
           </View>
-          {upNextEvents.length === 0 ? (
+          {upNextAll.length > 0 && (showUpNextSportChips || showUpNextLeagueChips) && (
+            <View style={styles.upNextChipSection}>
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.upNextChipRow}
+              >
+                <Pressable
+                  onPress={() => {
+                    setUpNextSportFilter(null);
+                    setUpNextLeagueFilter(null);
+                  }}
+                  style={[styles.upNextChip, !upNextHasFilter && styles.upNextChipActive]}
+                  testID="upnext-chip-all"
+                >
+                  <Text style={[styles.upNextChipLabel, !upNextHasFilter && styles.upNextChipLabelActive]}>All</Text>
+                </Pressable>
+
+                {showUpNextSportChips && upNextSportChips.map((sc) => {
+                  const isActive = upNextSportFilter === sc.key;
+                  const color = getSportColor(sc.key);
+                  return (
+                    <Pressable
+                      key={`sport-${sc.key}`}
+                      onPress={() => {
+                        setUpNextSportFilter(isActive ? null : sc.key);
+                        setUpNextLeagueFilter(null);
+                        if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                      }}
+                      style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
+                      testID={`upnext-chip-sport-${sc.key}`}
+                    >
+                      <Text style={[styles.upNextChipLabel, isActive && { color }]}>{sc.label}</Text>
+                      <View style={[styles.upNextChipCount, isActive && { backgroundColor: color + "18" }]}>
+                        <Text style={[styles.upNextChipCountText, isActive && { color }]}>{sc.count}</Text>
+                      </View>
+                    </Pressable>
+                  );
+                })}
+
+                {showUpNextLeagueChips && upNextLeagueChips.map((lc) => {
+                  const isActive = upNextLeagueFilter === lc.key;
+                  const color = getSportColor(upNextLeagueSportMap.get(lc.key) || "");
+                  return (
+                    <Pressable
+                      key={`league-${lc.key}`}
+                      onPress={() => {
+                        setUpNextLeagueFilter(isActive ? null : lc.key);
+                        setUpNextSportFilter(null);
+                        if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                      }}
+                      style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
+                      testID={`upnext-chip-league-${lc.key}`}
+                    >
+                      <Text style={[styles.upNextChipLabel, isActive && { color }]}>{lc.label}</Text>
+                      <View style={[styles.upNextChipCount, isActive && { backgroundColor: color + "18" }]}>
+                        <Text style={[styles.upNextChipCountText, isActive && { color }]}>{lc.count}</Text>
+                      </View>
+                    </Pressable>
+                  );
+                })}
+              </ScrollView>
+            </View>
+          )}
+          {upNextEvents.length === 0 && !upNextHasFilter ? (
             <View style={styles.upNextEmpty}>
               <Ionicons name="moon-outline" size={28} color={Colors.textSecondary} style={{ marginBottom: 8 }} />
               <Text style={styles.upNextEmptyText}>Nothing coming up in the next 24 hours.</Text>
@@ -806,6 +905,11 @@ export default function WatchScreen() {
                 <Text style={styles.upNextEmptyActionText}>Explore narratives</Text>
                 <Ionicons name="arrow-forward" size={14} color={Colors.accent} />
               </Pressable>
+            </View>
+          ) : upNextEvents.length === 0 && upNextHasFilter ? (
+            <View style={styles.upNextFilterEmpty}>
+              <Ionicons name="filter-outline" size={20} color={Colors.textMuted} />
+              <Text style={styles.upNextFilterEmptyText}>No games match this filter</Text>
             </View>
           ) : (
             upNextDayGroups.map((group, gi) => (
@@ -1138,6 +1242,60 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
     letterSpacing: 0.5,
     textTransform: "uppercase" as const,
+  },
+  upNextChipSection: {
+    marginBottom: 8,
+  },
+  upNextChipRow: {
+    gap: 6,
+    alignItems: "center",
+    paddingVertical: 4,
+  },
+  upNextChip: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    backgroundColor: Colors.card,
+  },
+  upNextChipActive: {
+    backgroundColor: Colors.accent + "18",
+    borderColor: Colors.accent + "44",
+  },
+  upNextChipLabel: {
+    fontSize: 11,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_600SemiBold",
+  },
+  upNextChipLabelActive: {
+    color: Colors.accent,
+  },
+  upNextChipCount: {
+    backgroundColor: Colors.cardHighlight,
+    paddingHorizontal: 5,
+    paddingVertical: 1,
+    borderRadius: 7,
+    minWidth: 16,
+    alignItems: "center" as const,
+  },
+  upNextChipCountText: {
+    fontSize: 9,
+    color: Colors.textMuted,
+    fontFamily: "Inter_600SemiBold",
+  },
+  upNextFilterEmpty: {
+    paddingVertical: 24,
+    alignItems: "center" as const,
+    gap: 8,
+  },
+  upNextFilterEmptyText: {
+    fontSize: 13,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
   },
   upNextEmpty: {
     alignItems: "center",
