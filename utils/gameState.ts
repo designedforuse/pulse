@@ -50,7 +50,7 @@ export function normalizeGameState(
     if (matchesKeywords(score.status, LIVE_KEYWORDS) || score.clock || score.period) {
       let clockText: string | null = null;
 
-      if (event.sport === "Rugby") {
+      if (event.sport === "rugby" || event.sport === "Rugby") {
         clockText = getRugbyClockDisplay(score) || null;
       } else if (event.sport === "cricket") {
         clockText = null;

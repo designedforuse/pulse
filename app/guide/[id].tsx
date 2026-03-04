@@ -9,26 +9,23 @@ import {
   Modal,
   Animated as RNAnimated
 } from "react-native";
-import Animated from "react-native-reanimated";
-import { useScoreFlash } from "@/hooks/useScoreFlash";
 import { useLocalSearchParams, router, Stack } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
 import Colors from "@/constants/colors";
 import { displayTeamName } from "@/utils/teams";
-import { getRugbyClockDisplay } from "@/utils/rugbyClock";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
+import UnifiedEventCard from "@/components/UnifiedEventCard";
 import {
   getProviderById,
   getSportColor,
   type SportEvent,
 } from "@/lib/data";
 import { useEvents } from "@/lib/events-context";
-import { useScores, type ScoreData } from "@/lib/scores-context";
+import { useScores } from "@/lib/scores-context";
 import { useFavorites } from "@/lib/favorites-context";
-import { isEventLive, isEventCompleted, formatTimeSinceStart } from "@/utils/time";
-import { normalizeGameState } from "@/utils/gameState";
+import { isEventLive } from "@/utils/time";
 import { favoriteInvolved } from "@/utils/favorites";
 import { useRitualOverrides } from "@/lib/ritual-overrides-context";
 import {
@@ -50,132 +47,6 @@ function getLeagueDisplayLabel(e: SportEvent): string {
   if (e.isIccT20Wc) return "T20 World Cup";
   if (e.isOlympic) return "Olympics";
   return e.league;
-}
-
-function GuideEventCard({
-  event,
-  isFav,
-  completed,
-  score,
-  featured,
-  onSetFeatured,
-  isCurrentFeatured,
-}: {
-  event: SportEvent;
-  isFav: boolean;
-  completed: boolean;
-  score?: ScoreData;
-  featured?: boolean;
-  onSetFeatured?: (eventId: string) => void;
-  isCurrentFeatured?: boolean;
-}) {
-  const provider = getProviderById(event.providerId);
-  const sportColor = getSportColor(event.sport);
-  const { date, time } = formatEventDate(event.startTimeLocal);
-  const hasScore = !!score;
-  const flashStyle = useScoreFlash(score?.awayScore, score?.homeScore, score?.cricketAway, score?.cricketHome);
-  const { gameState, displayClockText, displayStatusText } = normalizeGameState(event, score, new Date());
-  const isLiveState = gameState === "LIVE";
-  const isFinalState = gameState === "FINAL";
-
-  const handlePress = () => {
-    if (Platform.OS !== "web") {
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    }
-    if (onSetFeatured) {
-      onSetFeatured(event.id);
-      return;
-    }
-    router.push({
-      pathname: "/event-sheet",
-      params: { eventId: event.id },
-    });
-  };
-
-  return (
-    <Pressable
-      onPress={handlePress}
-      style={({ pressed }) => [
-        featured ? styles.featuredCard : styles.eventCard,
-        isFinalState && styles.eventCardCompleted,
-        {
-          opacity: pressed ? 0.85 : isFinalState ? 0.55 : 1,
-          transform: [{ scale: pressed ? 0.98 : 1 }],
-        },
-      ]}
-    >
-      <Animated.View style={[featured ? styles.featuredInner : styles.cardInner, flashStyle]}>
-        <View style={styles.cardTeamsSection}>
-          <View style={styles.cardHeaderRow}>
-            <Text style={[featured ? styles.featuredLeague : styles.cardLeague, { color: sportColor }]}>
-              {getLeagueDisplayLabel(event)}
-            </Text>
-            {isFav && <Text style={styles.favStar}>★</Text>}
-            {featured && (
-              <View style={styles.featuredBadge}>
-                <Ionicons name="star" size={9} color={Colors.accent} />
-                <Text style={styles.featuredBadgeText}>FEATURED</Text>
-              </View>
-            )}
-            {isFinalState && (
-              <Text style={styles.completedLabel}>FINAL</Text>
-            )}
-          </View>
-
-          <View style={styles.teamStack}>
-            <View style={styles.teamScoreRow}>
-              <View style={styles.teamNameRow}>
-                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={featured ? 24 : 20} />
-                <Text style={featured ? styles.featuredTeamName : styles.teamName} numberOfLines={1}>
-                  {displayTeamName(event.awayTeam, event.league)}
-                </Text>
-              </View>
-              {hasScore && event.sport === "cricket"
-                ? <Text style={[styles.cricketScore, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketAway || ""}</Text>
-                : hasScore && <Text style={[featured ? styles.featuredScoreText : styles.scoreText, isLiveState && styles.scoreLive]}>{score.awayScore}</Text>}
-            </View>
-            <View style={styles.teamScoreRow}>
-              <View style={styles.teamNameRow}>
-                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={featured ? 24 : 20} />
-                <Text style={featured ? styles.featuredTeamName : styles.teamName} numberOfLines={1}>
-                  {displayTeamName(event.homeTeam, event.league)}
-                </Text>
-              </View>
-              {hasScore && event.sport === "cricket"
-                ? <Text style={[styles.cricketScore, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketHome || ""}</Text>
-                : hasScore && <Text style={[featured ? styles.featuredScoreText : styles.scoreText, isLiveState && styles.scoreLive]}>{score.homeScore}</Text>}
-            </View>
-          </View>
-        </View>
-
-        <View style={styles.cardDivider} />
-
-        <View style={styles.cardTimeSection}>
-          {isLiveState && (
-            <View style={styles.liveChip}>
-              <View style={styles.liveDot} />
-              <Text style={styles.liveLabel}>LIVE</Text>
-            </View>
-          )}
-          {isLiveState ? (
-            displayClockText ? <Text style={styles.scorePeriod}>{displayClockText}</Text> : null
-          ) : isFinalState ? (
-            <Text style={styles.scoreFinal}>{displayStatusText || "FT"}</Text>
-          ) : (
-            <>
-              <Text style={featured ? styles.featuredDate : styles.cardDate}>{date}</Text>
-              <Text style={featured ? styles.featuredTime : styles.cardTime}>{time}</Text>
-            </>
-          )}
-          {provider && (
-            <View style={styles.providerRow}>
-              <ProviderLogo providerId={event.providerId} size={featured ? 24 : 20} />
-            </View>
-          )}
-        </View>
-      </Animated.View>
-    </Pressable>
-  );
 }
 
 export default function GuideDetailScreen() {
@@ -393,11 +264,11 @@ export default function GuideDetailScreen() {
 
         {featured && (
           <View style={styles.featuredSection}>
-            <GuideEventCard
+            <UnifiedEventCard
               event={featured}
-              isFav={favoriteInvolved(featured, favorites)}
-              completed={isEventCompleted(featured, now)}
+              now={now}
               score={getScore(featured.id)}
+              isFav={favoriteInvolved(featured, favorites)}
               featured
             />
             {isOverrideActive && (
@@ -432,14 +303,13 @@ export default function GuideDetailScreen() {
             </View>
             {favoritesEvents.length > 0 ? (
               favoritesEvents.map((event) => (
-                <GuideEventCard
+                <UnifiedEventCard
                   key={event.id}
                   event={event}
-                  isFav
-                  completed={isEventCompleted(event, now)}
+                  now={now}
                   score={getScore(event.id)}
+                  isFav
                   onSetFeatured={openGameSheet}
-                  isCurrentFeatured={event.id === featured?.id}
                 />
               ))
             ) : (
@@ -530,14 +400,13 @@ export default function GuideDetailScreen() {
 
             {filteredMoreGames.length > 0 ? (
               filteredMoreGames.map((event) => (
-                <GuideEventCard
+                <UnifiedEventCard
                   key={event.id}
                   event={event}
-                  isFav={false}
-                  completed={isEventCompleted(event, now)}
+                  now={now}
                   score={getScore(event.id)}
+                  isFav={false}
                   onSetFeatured={openGameSheet}
-                  isCurrentFeatured={event.id === featured?.id}
                 />
               ))
             ) : hasActiveFilter ? (
@@ -812,221 +681,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: Colors.textMuted,
     fontFamily: "Inter_400Regular",
-  },
-  featuredCard: {
-    backgroundColor: Colors.card,
-    borderRadius: 18,
-    marginBottom: 10,
-    borderWidth: 1.5,
-    borderColor: Colors.accent + "40",
-    overflow: "hidden",
-  },
-  featuredInner: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-    borderRadius: 17,
-  },
-  featuredLeague: {
-    fontSize: 14,
-    fontFamily: "Inter_700Bold",
-    letterSpacing: 0.2,
-  },
-  featuredTeamName: {
-    fontSize: 18,
-    fontWeight: "600" as const,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_600SemiBold",
-  },
-  featuredScoreText: {
-    fontSize: 18,
-    fontWeight: "700" as const,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_700Bold",
-    minWidth: 22,
-    textAlign: "right",
-  },
-  featuredDate: {
-    fontSize: 16,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_500Medium",
-  },
-  featuredTime: {
-    fontSize: 16,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_400Regular",
-    marginTop: 2,
-  },
-  featuredBadge: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 3,
-    backgroundColor: Colors.accent + "18",
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 6,
-  },
-  featuredBadgeText: {
-    fontSize: 9,
-    fontWeight: "700" as const,
-    color: Colors.accent,
-    fontFamily: "Inter_700Bold",
-    letterSpacing: 0.3,
-  },
-  eventCard: {
-    backgroundColor: Colors.card,
-    borderRadius: 16,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    overflow: "hidden",
-  },
-  eventCardCompleted: {
-    borderColor: Colors.border,
-  },
-  cardInner: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingVertical: 16,
-    paddingHorizontal: 18,
-    borderRadius: 15,
-  },
-  cardTeamsSection: {
-    flex: 1,
-    marginRight: 16,
-  },
-  cardHeaderRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-    marginBottom: 8,
-  },
-  cardLeague: {
-    fontSize: 12,
-    fontFamily: "Inter_600SemiBold",
-    letterSpacing: 0.2,
-  },
-  favStar: {
-    fontSize: 12,
-    color: Colors.favStar,
-  },
-  liveChip: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
-    backgroundColor: Colors.liveDim,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 6,
-  },
-  liveDot: {
-    width: 5,
-    height: 5,
-    borderRadius: 3,
-    backgroundColor: Colors.live,
-  },
-  liveLabel: {
-    fontSize: 10,
-    fontWeight: "700" as const,
-    color: Colors.live,
-    fontFamily: "Inter_700Bold",
-  },
-  completedLabel: {
-    fontSize: 10,
-    fontWeight: "700" as const,
-    color: Colors.textMuted,
-    fontFamily: "Inter_700Bold",
-    letterSpacing: 0.3,
-  },
-  teamStack: {
-    gap: 4,
-  },
-  teamName: {
-    fontSize: 16,
-    fontWeight: "500" as const,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_500Medium",
-  },
-  cardDivider: {
-    width: 1,
-    alignSelf: "stretch",
-    backgroundColor: Colors.border,
-  },
-  cardTimeSection: {
-    paddingLeft: 16,
-    alignItems: "center",
-    minWidth: 80,
-  },
-  cardDate: {
-    fontSize: 15,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_500Medium",
-  },
-  cardTime: {
-    fontSize: 15,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_400Regular",
-    marginTop: 2,
-  },
-  teamScoreRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: 8,
-  },
-  teamNameRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    flex: 1,
-    flexShrink: 1,
-  },
-  scoreText: {
-    fontSize: 16,
-    fontWeight: "700" as const,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_700Bold",
-    minWidth: 20,
-    textAlign: "right",
-  },
-  cricketScore: {
-    fontSize: 13,
-    fontWeight: "600" as const,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_600SemiBold",
-    textAlign: "right",
-    flexShrink: 0,
-  },
-  scoreLive: {
-    color: Colors.accent,
-  },
-  scorePeriod: {
-    fontSize: 14,
-    color: Colors.accent,
-    fontFamily: "Inter_700Bold",
-    marginBottom: 2,
-  },
-  scoreClock: {
-    fontSize: 12,
-    color: Colors.accent,
-    fontFamily: "Inter_500Medium",
-    marginBottom: 2,
-  },
-  elapsedText: {
-    fontSize: 11,
-    color: Colors.textSecondary,
-    fontFamily: "Inter_400Regular",
-    textAlign: "center",
-  },
-  scoreFinal: {
-    fontSize: 12,
-    color: Colors.textMuted,
-    fontFamily: "Inter_500Medium",
-    marginBottom: 2,
-  },
-  providerRow: {
-    marginTop: 8,
-    alignItems: "center",
   },
   emptyContainer: {
     alignItems: "center",

@@ -174,7 +174,7 @@ export function getSportColor(sport: string): string {
 
 export function getSportIcon(sport: string): string {
   const icons: Record<string, string> = {
-    hockey: "ice-cream",
+    hockey: "snow",
     rugby: "american-football",
     cricket: "baseball",
     soccer: "football",
