@@ -299,14 +299,21 @@ export function buildChaosSetup(
   const selected: ChaosCandidate[] = [];
   const usedIds = new Set<string>();
 
-  const anchors = pool.filter((c) => c.isAnchor).sort(anchorSort);
+  const livePool = pool.filter((c) => c.isLive);
+  const liveCount = livePool.length;
+  const soonCount = pool.length - liveCount;
+  const hasLive = liveCount > 0;
+
+  const selectionPool = hasLive ? livePool : pool;
+
+  const anchors = selectionPool.filter((c) => c.isAnchor).sort(anchorSort);
   for (const anchor of anchors) {
     if (selected.length >= 4) break;
     selected.push(anchor);
     usedIds.add(anchor.event.id);
   }
 
-  const nonAnchors = pool.filter((c) => !usedIds.has(c.event.id));
+  const nonAnchors = selectionPool.filter((c) => !usedIds.has(c.event.id));
   nonAnchors.sort((a, b) => chaosSort(a, b, inRitual));
 
   if (selected.length < 4) {
@@ -348,11 +355,9 @@ export function buildChaosSetup(
     }
   }
 
-  const liveCount = pool.filter((c) => c.isLive).length;
-  const soonCount = pool.filter((c) => !c.isLive).length;
   let backfillCount = 0;
 
-  if (selected.length < 4) {
+  if (selected.length < 4 && !hasLive) {
     const backfill = getBackfillCandidates(allEvents, favorites, now, usedIds);
     for (const candidate of backfill) {
       if (selected.length >= 4) break;
@@ -412,7 +417,7 @@ export function buildChaosSetup(
         hour12: true,
       }).format(d);
     console.log(
-      `[CHAOS] mode=${inRitual ? "RITUAL" : "FREE"}${ritualId ? ` (${ritualId})` : ""} | nowPT=${fmtPT(now)} | pool=${pool.length} anchors=${anchors.length} live=${liveCount} soon=${soonCount} backfill=${backfillCount} selected=${selected.length}`,
+      `[CHAOS] mode=${inRitual ? "RITUAL" : "FREE"}${ritualId ? ` (${ritualId})` : ""} | nowPT=${fmtPT(now)} | pool=${pool.length} selectionPool=${selectionPool.length}(${hasLive ? "LIVE-ONLY" : "all"}) anchors=${anchors.length} live=${liveCount} soon=${soonCount} backfill=${backfillCount} selected=${selected.length}`,
     );
     for (const c of selected) {
       const start = new Date(c.event.startTimeLocal);
@@ -503,8 +508,12 @@ export function selfHealChaosSetup(
     );
   }
 
-  const pool = getCandidatePool(allEvents, favorites, now, getScoreStatus, getScoreData)
+  const fullPool = getCandidatePool(allEvents, favorites, now, getScoreStatus, getScoreData)
     .filter((c) => !usedIds.has(c.event.id) && !isTerminalEvent(c.event, now, getScoreStatus));
+
+  const liveReplacements = fullPool.filter((c) => c.isLive);
+  const hasLiveReplacements = liveReplacements.length > 0;
+  const pool = hasLiveReplacements ? liveReplacements : fullPool;
 
   const anchors = pool.filter((c) => c.isAnchor).sort(anchorSort);
   const nonAnchors = pool.filter((c) => !c.isAnchor).sort((a, b) => chaosSort(a, b, inRitual));
@@ -535,7 +544,7 @@ export function selfHealChaosSetup(
     usedSports.add(c.event.sport);
   }
 
-  if (replacements.length < slotsNeeded) {
+  if (replacements.length < slotsNeeded && !hasLiveReplacements) {
     const allUsed = new Set([...usedIds, ...replacementIds]);
     const backfill = getBackfillCandidates(allEvents, favorites, now, allUsed);
     for (const c of backfill) {
