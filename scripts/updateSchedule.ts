@@ -328,7 +328,7 @@ async function main() {
   const mlrResult = mergeMlrEvents(existingMlr, mlrFetchResult.events, now);
   const championsLeagueResult = mergeChampionsLeagueEvents(existingChampionsLeague, championsLeagueFetchResult.events, now);
   const faCupResult = mergeFaCupEvents(existingFaCup, faCupFetchResult.events, now);
-  const tennisResult = mergeTennisEvents(existingTennis, tennisFetchResult.events, now);
+  const tennisResult = mergeTennisEvents(existingTennis, tennisFetchResult.events, now, tennisFetchResult.espnActiveTournaments);
 
   function toPtDate(iso: string): string {
     return new Intl.DateTimeFormat("en-US", {

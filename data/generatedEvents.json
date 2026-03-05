@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-04T23:57:28.753Z",
+  "lastUpdated": "2026-03-05T00:02:10.674Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -28,7 +28,7 @@
   "buSourceUsed": "chn",
   "rugbySourceUsed": "ical",
   "cricketSourceUsed": "cricapi",
-  "nhlCount": 110,
+  "nhlCount": 108,
   "ahlCount": 229,
   "ahlAdded": 38,
   "ahlUpdated": 185,
@@ -101,8 +101,8 @@
   "ligue1Updated": 45,
   "ligue1Pruned": 45,
   "ligue1SourceUsed": "espn",
-  "nwslCount": 18,
-  "nwslAdded": 0,
+  "nwslCount": 19,
+  "nwslAdded": 1,
   "nwslUpdated": 18,
   "nwslPruned": 18,
   "nwslSourceUsed": "ical",
@@ -131,45 +131,45 @@
   "faCupUpdated": 9,
   "faCupPruned": 9,
   "faCupSourceUsed": "espn",
-  "tennisCount": 74,
-  "tennisAdded": 0,
+  "tennisCount": 43,
+  "tennisAdded": 3,
   "tennisUpdated": 42,
-  "tennisPruned": 0,
+  "tennisPruned": 2,
   "tennisSourceUsed": "espn",
   "tennisTournamentCounts": {
-    "Indian Wells Masters": 6,
+    "Indian Wells Masters": 7,
     "Miami Masters": 32,
-    "Monte-Carlo Masters": 4
+    "Monte-Carlo Masters": 6
   },
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-04T23:57:28.753Z",
+    "lastRefreshAt": "2026-03-05T00:02:10.674Z",
     "sources": {
       "nhl": {
-        "count": 110,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "count": 108,
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 229,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 16,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 3,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 114,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 19,
@@ -189,53 +189,53 @@
       },
       "iccT20Wc": {
         "count": 19,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 4,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 53,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 75,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 50,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 51,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 46,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 45,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
-        "count": 18,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "count": 19,
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 34,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
@@ -247,46 +247,34 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 8,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "iCal Feed"
       },
       "faCup": {
         "count": 9,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-03T19:45:00.000Z"
       },
       "tennis": {
-        "count": 74,
-        "lastFetchAt": "2026-03-04T23:57:28.753Z",
+        "count": 43,
+        "lastFetchAt": "2026-03-05T00:02:10.674Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
-          "Indian Wells Masters": 6,
+          "Indian Wells Masters": 7,
           "Miami Masters": 32,
-          "Monte-Carlo Masters": 4
+          "Monte-Carlo Masters": 6
         }
       }
     }
   },
   "events": [
-    {
-      "id": "ahl-1028532",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Grand Rapids Griffins",
-      "awayTeam": "Cleveland Monsters",
-      "startTimeLocal": "2026-02-19T00:00:00.000Z",
-      "endTimeLocal": "2026-02-19T02:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
     {
       "id": "ahl-1028535",
       "sport": "hockey",
@@ -3904,25 +3892,6 @@
       "providerReason": "bundesliga-disneyplus"
     },
     {
-      "id": "tennis-indian-wells-masters-2026-03-01-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-01T15:00:00.000Z",
-      "endTimeLocal": "2026-03-01T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Round of 64",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 64",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
       "id": "soccer-laliga-20260301-1515-osasuna-at-valencia",
       "sport": "soccer",
       "league": "La Liga",
@@ -4018,25 +3987,6 @@
       "isLive": false,
       "source": "soccer-seriea",
       "leagueKey": "seriea"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-01-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-01T17:00:00.000Z",
-      "endTimeLocal": "2026-03-01T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Round of 64",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 64",
-      "tournamentName": "Indian Wells Masters"
     },
     {
       "id": "soccer-laliga-20260301-1730-sevilla-at-real-betis",
@@ -4297,44 +4247,6 @@
       "providerReason": "mls-appletv"
     },
     {
-      "id": "tennis-indian-wells-masters-2026-03-02-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-02T15:00:00.000Z",
-      "endTimeLocal": "2026-03-02T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Round of 64",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 64",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-02-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-02T17:00:00.000Z",
-      "endTimeLocal": "2026-03-02T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Round of 64",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 64",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
       "id": "soccer-seriea-20260302-1730-bologna-at-pisa",
       "sport": "soccer",
       "league": "Serie A",
@@ -4387,25 +4299,6 @@
       "source": "ahl-hockeytech"
     },
     {
-      "id": "tennis-indian-wells-masters-2026-03-03-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-03T15:00:00.000Z",
-      "endTimeLocal": "2026-03-03T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Round of 32",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 32",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
       "id": "ahl-1028623",
       "sport": "hockey",
       "league": "AHL",
@@ -4416,25 +4309,6 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-03-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-03T17:00:00.000Z",
-      "endTimeLocal": "2026-03-03T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Round of 32",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 32",
-      "tournamentName": "Indian Wells Masters"
     },
     {
       "id": "ahl-1028617",
@@ -4519,99 +4393,6 @@
       "providerReason": "epl-yttv"
     },
     {
-      "id": "nhl_2025020959",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Pittsburgh Penguins",
-      "homeTeam": "Boston Bruins",
-      "startTimeLocal": "2026-03-04T00:00:00.000Z",
-      "endTimeLocal": "2026-03-04T02:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "SNP",
-        "TVAS",
-        "SN-PIT",
-        "NESN"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
-      "id": "nhl_2025020960",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Vegas Golden Knights",
-      "homeTeam": "Buffalo Sabres",
-      "startTimeLocal": "2026-03-04T00:00:00.000Z",
-      "endTimeLocal": "2026-03-04T02:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "MSG-B",
-        "SCRIPPS"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
-      "id": "nhl_2025020961",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Florida Panthers",
-      "homeTeam": "New Jersey Devils",
-      "startTimeLocal": "2026-03-04T00:00:00.000Z",
-      "endTimeLocal": "2026-03-04T02:45:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "TNT",
-        "HBO MAX",
-        "SCRIPPS"
-      ],
-      "isNational": true,
-      "providerReason": "national"
-    },
-    {
-      "id": "nhl_2025020962",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Utah Mammoth",
-      "homeTeam": "Washington Capitals",
-      "startTimeLocal": "2026-03-04T00:00:00.000Z",
-      "endTimeLocal": "2026-03-04T02:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "Utah16",
-        "MNMT2"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
-      "id": "nhl_2025020963",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Nashville Predators",
-      "homeTeam": "Columbus Blue Jackets",
-      "startTimeLocal": "2026-03-04T00:00:00.000Z",
-      "endTimeLocal": "2026-03-04T02:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "FDSNSO",
-        "FDSNOH"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
       "id": "ahl-1028618",
       "sport": "hockey",
       "league": "AHL",
@@ -4636,118 +4417,6 @@
       "source": "ahl-hockeytech"
     },
     {
-      "id": "nhl_2025020964",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Chicago Blackhawks",
-      "homeTeam": "Winnipeg Jets",
-      "startTimeLocal": "2026-03-04T01:00:00.000Z",
-      "endTimeLocal": "2026-03-04T03:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "TSN3",
-        "CHSN"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
-      "id": "nhl_2025020965",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Dallas Stars",
-      "homeTeam": "Calgary Flames",
-      "startTimeLocal": "2026-03-04T02:00:00.000Z",
-      "endTimeLocal": "2026-03-04T04:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "SN1",
-        "Victory+"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
-      "id": "nhl_2025020966",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Ottawa Senators",
-      "homeTeam": "Edmonton Oilers",
-      "startTimeLocal": "2026-03-04T02:00:00.000Z",
-      "endTimeLocal": "2026-03-04T04:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "SNW",
-        "TSN5",
-        "RDS2"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
-      "id": "nhl_2025020967",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Tampa Bay Lightning",
-      "homeTeam": "Minnesota Wild",
-      "startTimeLocal": "2026-03-04T02:30:00.000Z",
-      "endTimeLocal": "2026-03-04T05:15:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "TNT",
-        "truTV",
-        "HBO MAX",
-        "The Spot"
-      ],
-      "isNational": true,
-      "providerReason": "national"
-    },
-    {
-      "id": "nhl_2025020968",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Colorado Avalanche",
-      "homeTeam": "Anaheim Ducks",
-      "startTimeLocal": "2026-03-04T03:00:00.000Z",
-      "endTimeLocal": "2026-03-04T05:45:00.000Z",
-      "providerId": "victoryplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "Victory+",
-        "ALT"
-      ],
-      "isNational": false,
-      "providerReason": "ducks-rsn"
-    },
-    {
-      "id": "nhl_2025020969",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Montréal Canadiens",
-      "homeTeam": "San Jose Sharks",
-      "startTimeLocal": "2026-03-04T03:00:00.000Z",
-      "endTimeLocal": "2026-03-04T05:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "TSN2",
-        "RDS",
-        "NBCSCA"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
       "id": "cricket-t20wc-cbec75daa6",
       "sport": "cricket",
       "league": "ICC",
@@ -4769,25 +4438,6 @@
       "t20WcVenue": "Eden Gardens, Kolkata"
     },
     {
-      "id": "tennis-indian-wells-masters-2026-03-04-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-04T15:00:00.000Z",
-      "endTimeLocal": "2026-03-04T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Round of 32",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 32",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
       "id": "ahl-1028626",
       "sport": "hockey",
       "league": "AHL",
@@ -4798,25 +4448,6 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-04-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-04T17:00:00.000Z",
-      "endTimeLocal": "2026-03-04T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Round of 32",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 32",
-      "tournamentName": "Indian Wells Masters"
     },
     {
       "id": "soccer-laliga-20260304-1800-real-oviedo-at-rayo-vallecano",
@@ -5129,44 +4760,6 @@
       "t20WcVenue": "Wankhede Stadium, Mumbai"
     },
     {
-      "id": "tennis-indian-wells-masters-2026-03-05-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-05T15:00:00.000Z",
-      "endTimeLocal": "2026-03-05T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Round of 16",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 16",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-05-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-05T17:00:00.000Z",
-      "endTimeLocal": "2026-03-05T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Round of 16",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 16",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
       "id": "tennis-espn-172873",
       "sport": "tennis",
       "league": "ATP Masters 1000",
@@ -5460,6 +5053,28 @@
       "tournamentName": "Indian Wells Masters"
     },
     {
+      "id": "tennis-espn-172883",
+      "sport": "tennis",
+      "league": "ATP Masters 1000",
+      "awayTeam": "Diallo",
+      "homeTeam": "Rublev",
+      "startTimeLocal": "2026-03-06T05:00:00.000Z",
+      "endTimeLocal": "2026-03-06T07:30:00.000Z",
+      "providerId": "tennischannel",
+      "isLive": false,
+      "source": "espn-tennis",
+      "leagueKey": "atp-masters",
+      "providerReason": "tennis-channel",
+      "eventType": "match",
+      "sessionTitle": "Indian Wells — Round 2",
+      "competitionType": "domestic",
+      "tennisRound": "Round 2",
+      "tennisPlayer1": "Diallo",
+      "tennisPlayer2": "Rublev",
+      "tennisPlayer2Rank": 9,
+      "tournamentName": "Indian Wells Masters"
+    },
+    {
       "id": "rugby-superrugby-2drvl9",
       "sport": "rugby",
       "league": "Super Rugby",
@@ -5484,44 +5099,6 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "superrugby"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-06-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-06T15:00:00.000Z",
-      "endTimeLocal": "2026-03-06T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Round of 16",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 16",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-06-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-06T17:00:00.000Z",
-      "endTimeLocal": "2026-03-06T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Round of 16",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 16",
-      "tournamentName": "Indian Wells Masters"
     },
     {
       "id": "soccer-bundesliga-20260306-1930-borussia-m-nchengladbach-at-bayern-munich",
@@ -6097,25 +5674,6 @@
       "providerReason": "bundesliga-disneyplus"
     },
     {
-      "id": "tennis-indian-wells-masters-2026-03-07-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-07T15:00:00.000Z",
-      "endTimeLocal": "2026-03-07T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Quarterfinals",
-      "competitionType": "domestic",
-      "tennisRound": "Quarterfinals",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
       "id": "soccer-laliga-20260307-1515-girona-at-levante",
       "sport": "soccer",
       "league": "La Liga",
@@ -6168,25 +5726,6 @@
       "isLive": false,
       "source": "soccer-seriea",
       "leagueKey": "seriea"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-07-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-07T17:00:00.000Z",
-      "endTimeLocal": "2026-03-07T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Quarterfinals",
-      "competitionType": "domestic",
-      "tennisRound": "Quarterfinals",
-      "tournamentName": "Indian Wells Masters"
     },
     {
       "id": "nhl_2025020990",
@@ -7127,25 +6666,6 @@
       "providerReason": "bundesliga-disneyplus"
     },
     {
-      "id": "tennis-indian-wells-masters-2026-03-08-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-08T15:00:00.000Z",
-      "endTimeLocal": "2026-03-08T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Quarterfinals",
-      "competitionType": "domestic",
-      "tennisRound": "Quarterfinals",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
       "id": "soccer-laliga-20260308-1515-real-betis-at-getafe",
       "sport": "soccer",
       "league": "La Liga",
@@ -7256,25 +6776,6 @@
       "isLive": false,
       "source": "soccer-seriea",
       "leagueKey": "seriea"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-08-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-08T17:00:00.000Z",
-      "endTimeLocal": "2026-03-08T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Quarterfinals",
-      "competitionType": "domestic",
-      "tennisRound": "Quarterfinals",
-      "tournamentName": "Indian Wells Masters"
     },
     {
       "id": "soccer-laliga-20260308-1730-rayo-vallecano-at-sevilla",
@@ -7601,44 +7102,6 @@
       "providerReason": "national"
     },
     {
-      "id": "tennis-indian-wells-masters-2026-03-09-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-09T15:00:00.000Z",
-      "endTimeLocal": "2026-03-09T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Semifinals",
-      "competitionType": "domestic",
-      "tennisRound": "Semifinals",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-09-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-09T17:00:00.000Z",
-      "endTimeLocal": "2026-03-09T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Semifinals",
-      "competitionType": "domestic",
-      "tennisRound": "Semifinals",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
       "id": "soccer-facup-20260309-1930-brentford-at-west-ham-united",
       "sport": "soccer",
       "league": "FA Cup",
@@ -7769,44 +7232,6 @@
       ],
       "isNational": false,
       "providerReason": "espnplus-default"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-10-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-10T15:00:00.000Z",
-      "endTimeLocal": "2026-03-10T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Semifinals",
-      "competitionType": "domestic",
-      "tennisRound": "Semifinals",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-10-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-10T17:00:00.000Z",
-      "endTimeLocal": "2026-03-10T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Semifinals",
-      "competitionType": "domestic",
-      "tennisRound": "Semifinals",
-      "tournamentName": "Indian Wells Masters"
     },
     {
       "id": "nhl_2025021012",
@@ -8074,25 +7499,6 @@
       "source": "ahl-hockeytech"
     },
     {
-      "id": "tennis-indian-wells-masters-2026-03-11-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-11T15:00:00.000Z",
-      "endTimeLocal": "2026-03-11T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Final",
-      "competitionType": "domestic",
-      "tennisRound": "Final",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
       "id": "soccer-usl-20260311-1600-hartford-athletic-at-birmingham-legion-fc",
       "sport": "soccer",
       "league": "USL",
@@ -8105,25 +7511,6 @@
       "source": "soccer-usl",
       "leagueKey": "usl",
       "providerReason": "usl-disneyplus"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-11-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-11T17:00:00.000Z",
-      "endTimeLocal": "2026-03-11T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Final",
-      "competitionType": "domestic",
-      "tennisRound": "Final",
-      "tournamentName": "Indian Wells Masters"
     },
     {
       "id": "ahl-1028671",
@@ -8282,44 +7669,6 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-12-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-12T15:00:00.000Z",
-      "endTimeLocal": "2026-03-12T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Final",
-      "competitionType": "domestic",
-      "tennisRound": "Final",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-12-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-12T17:00:00.000Z",
-      "endTimeLocal": "2026-03-12T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Final",
-      "competitionType": "domestic",
-      "tennisRound": "Final",
-      "tournamentName": "Indian Wells Masters"
     },
     {
       "id": "nhl_2025021027",
@@ -8608,44 +7957,6 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "superrugby"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-13-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-13T15:00:00.000Z",
-      "endTimeLocal": "2026-03-13T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Early Rounds",
-      "competitionType": "domestic",
-      "tennisRound": "Early Rounds",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-13-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-13T17:00:00.000Z",
-      "endTimeLocal": "2026-03-13T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Early Rounds",
-      "competitionType": "domestic",
-      "tennisRound": "Early Rounds",
-      "tournamentName": "Indian Wells Masters"
     },
     {
       "id": "soccer-bundesliga-20260313-1930-st-pauli-at-borussia-m-nchengladbach",
@@ -9195,25 +8506,6 @@
       "providerReason": "epl-yttv"
     },
     {
-      "id": "tennis-indian-wells-masters-2026-03-14-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-14T15:00:00.000Z",
-      "endTimeLocal": "2026-03-14T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Early Rounds",
-      "competitionType": "domestic",
-      "tennisRound": "Early Rounds",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
       "id": "soccer-laliga-20260314-1515-getafe-at-atl-tico-madrid",
       "sport": "soccer",
       "league": "La Liga",
@@ -9300,25 +8592,6 @@
       "isLive": false,
       "source": "soccer-seriea",
       "leagueKey": "seriea"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-14-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-14T17:00:00.000Z",
-      "endTimeLocal": "2026-03-14T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Early Rounds",
-      "competitionType": "domestic",
-      "tennisRound": "Early Rounds",
-      "tournamentName": "Indian Wells Masters"
     },
     {
       "id": "soccer-epl-20260314-1730-everton-at-arsenal",
@@ -10465,25 +9738,6 @@
       "providerReason": "bundesliga-disneyplus"
     },
     {
-      "id": "tennis-indian-wells-masters-2026-03-15-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-15T15:00:00.000Z",
-      "endTimeLocal": "2026-03-15T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Early Rounds",
-      "competitionType": "domestic",
-      "tennisRound": "Early Rounds",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
       "id": "tennis-miami-masters-2026-03-15-m0",
       "sport": "tennis",
       "league": "ATP Masters 1000",
@@ -10599,25 +9853,6 @@
       "isLive": false,
       "source": "soccer-seriea",
       "leagueKey": "seriea"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-15-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-15T17:00:00.000Z",
-      "endTimeLocal": "2026-03-15T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Early Rounds",
-      "competitionType": "domestic",
-      "tennisRound": "Early Rounds",
-      "tournamentName": "Indian Wells Masters"
     },
     {
       "id": "tennis-miami-masters-2026-03-15-m1",
@@ -10989,25 +10224,6 @@
       "providerReason": "espnplus-default"
     },
     {
-      "id": "tennis-indian-wells-masters-2026-03-16-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-16T15:00:00.000Z",
-      "endTimeLocal": "2026-03-16T17:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Early Rounds",
-      "competitionType": "domestic",
-      "tennisRound": "Early Rounds",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
       "id": "tennis-miami-masters-2026-03-16-m0",
       "sport": "tennis",
       "league": "ATP Masters 1000",
@@ -11025,25 +10241,6 @@
       "competitionType": "domestic",
       "tennisRound": "Round of 64",
       "tournamentName": "Miami Masters"
-    },
-    {
-      "id": "tennis-indian-wells-masters-2026-03-16-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-03-16T17:00:00.000Z",
-      "endTimeLocal": "2026-03-16T19:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "session",
-      "sessionTitle": "Indian Wells — Early Rounds",
-      "competitionType": "domestic",
-      "tennisRound": "Early Rounds",
-      "tournamentName": "Indian Wells Masters"
     },
     {
       "id": "tennis-miami-masters-2026-03-16-m1",
@@ -11249,6 +10446,61 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "nhl_2025021068",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "New York Islanders",
+      "homeTeam": "Toronto Maple Leafs",
+      "startTimeLocal": "2026-03-17T23:00:00.000Z",
+      "endTimeLocal": "2026-03-18T01:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TSN4",
+        "MSGSN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2025021069",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Boston Bruins",
+      "homeTeam": "Montréal Canadiens",
+      "startTimeLocal": "2026-03-17T23:00:00.000Z",
+      "endTimeLocal": "2026-03-18T01:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TSN2",
+        "RDS",
+        "NESN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2025021070",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Carolina Hurricanes",
+      "homeTeam": "Columbus Blue Jackets",
+      "startTimeLocal": "2026-03-17T23:00:00.000Z",
+      "endTimeLocal": "2026-03-18T01:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNSO",
+        "FDSNOH"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
       "id": "ahl-1028708",
       "sport": "hockey",
       "league": "AHL",
@@ -11261,6 +10513,44 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "nhl_2025021072",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Minnesota Wild",
+      "homeTeam": "Chicago Blackhawks",
+      "startTimeLocal": "2026-03-17T23:30:00.000Z",
+      "endTimeLocal": "2026-03-18T02:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TNT",
+        "HBO MAX",
+        "FDSNNOX",
+        "FDSNWIX"
+      ],
+      "isNational": true,
+      "providerReason": "national"
+    },
+    {
+      "id": "nhl_2025021071",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Nashville Predators",
+      "homeTeam": "Winnipeg Jets",
+      "startTimeLocal": "2026-03-18T00:00:00.000Z",
+      "endTimeLocal": "2026-03-18T02:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TSN3",
+        "FDSNSO"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
       "id": "ahl-1028710",
       "sport": "hockey",
       "league": "AHL",
@@ -11271,6 +10561,24 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "nhl_2025021073",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "San Jose Sharks",
+      "homeTeam": "Edmonton Oilers",
+      "startTimeLocal": "2026-03-18T01:00:00.000Z",
+      "endTimeLocal": "2026-03-18T03:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNW",
+        "NBCSCA"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028707",
@@ -11295,6 +10603,61 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "nhl_2025021074",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Florida Panthers",
+      "homeTeam": "Vancouver Canucks",
+      "startTimeLocal": "2026-03-18T02:00:00.000Z",
+      "endTimeLocal": "2026-03-18T04:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNP",
+        "SCRIPPS"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2025021075",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Buffalo Sabres",
+      "homeTeam": "Vegas Golden Knights",
+      "startTimeLocal": "2026-03-18T02:00:00.000Z",
+      "endTimeLocal": "2026-03-18T04:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "MSG-B",
+        "SCRIPPS"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2025021076",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Tampa Bay Lightning",
+      "homeTeam": "Seattle Kraken",
+      "startTimeLocal": "2026-03-18T02:00:00.000Z",
+      "endTimeLocal": "2026-03-18T04:45:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TNT",
+        "HBO MAX",
+        "The Spot"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "tennis-miami-masters-2026-03-18-m0",
@@ -13807,6 +13170,32 @@
       "source": "soccer-usl",
       "leagueKey": "usl",
       "providerReason": "usl-disneyplus"
+    },
+    {
+      "id": "ahl-1028759",
+      "sport": "hockey",
+      "league": "AHL",
+      "homeTeam": "Iowa Wild",
+      "awayTeam": "Chicago Wolves",
+      "startTimeLocal": "2026-03-26T00:00:00.000Z",
+      "endTimeLocal": "2026-03-26T02:45:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "ahl-hockeytech"
+    },
+    {
+      "id": "soccer-nwsl-20260326-0000-orlando-pride-at-chicago-stars",
+      "sport": "soccer",
+      "league": "NWSL",
+      "awayTeam": "Orlando Pride",
+      "homeTeam": "Chicago Stars",
+      "startTimeLocal": "2026-03-26T00:00:00.000Z",
+      "endTimeLocal": "2026-03-26T03:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-nwsl",
+      "leagueKey": "nwsl",
+      "providerReason": "nwsl-default"
     },
     {
       "id": "tennis-miami-masters-2026-03-26-m0",

@@ -27,6 +27,7 @@ export interface TennisFetchResult {
   sourceUsed: string;
   count: number;
   tournamentCounts: Record<string, number>;
+  espnActiveTournaments: Set<string>;
 }
 
 export interface TennisMergeResult {
@@ -581,6 +582,7 @@ export async function fetchTennisEvents(): Promise<TennisFetchResult> {
 
   const events: AppEvent[] = [];
   const tournamentCounts: Record<string, number> = {};
+  const espnActiveTournaments = new Set<string>();
   let espnCount = 0;
   let fallbackCount = 0;
 
@@ -616,6 +618,7 @@ export async function fetchTennisEvents(): Promise<TennisFetchResult> {
         if (ev) events.push(ev);
       }
       espnCount += toInclude.length;
+      espnActiveTournaments.add(tournament.name);
       tournamentCounts[tournament.name] = toInclude.length;
       console.log(`  Tennis: ${tournament.shortName} — ${toInclude.length} top-10 matches of ${totalBefore} total (${liveAndUpcoming.length} active, ${recent.length} recent)`);
     } else {
@@ -630,23 +633,31 @@ export async function fetchTennisEvents(): Promise<TennisFetchResult> {
 
   const sourceUsed = espnCount > 0 ? "espn" : "hardcoded";
   console.log(`  Tennis: ${events.length} total (${espnCount} ESPN, ${fallbackCount} fallback) in retention window`);
+  if (espnActiveTournaments.size > 0) {
+    console.log(`  Tennis: ESPN active tournaments (fallback suppressed): ${[...espnActiveTournaments].join(", ")}`);
+  }
 
-  return { events, sourceUsed, count: events.length, tournamentCounts };
+  return { events, sourceUsed, count: events.length, tournamentCounts, espnActiveTournaments };
 }
 
 export function mergeTennisEvents(
   existing: AppEvent[],
   fresh: AppEvent[],
-  now: Date
+  now: Date,
+  espnActiveTournaments?: Set<string>
 ): TennisMergeResult {
   const freshIds = new Set(fresh.map(e => e.id));
   const sixHoursAgo = new Date(now.getTime() - 6 * 3600000);
+  const activeNames = espnActiveTournaments || new Set<string>();
 
   const index = new Map<string, AppEvent>();
   for (const e of existing) {
     if (e.source === "espn-tennis" && !freshIds.has(e.id)) {
       const eventStart = new Date(e.startTimeLocal);
       if (eventStart < sixHoursAgo) continue;
+    }
+    if (e.source === "tennis-hardcoded" && e.tournamentName && activeNames.has(e.tournamentName)) {
+      continue;
     }
     index.set(e.id, e);
   }
