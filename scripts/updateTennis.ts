@@ -394,16 +394,15 @@ function findTop10Player(displayName: string | undefined): TopPlayerDef | null {
   return null;
 }
 
-function hasTop10Player(comp: EspnCompetition): boolean {
-  const p1 = comp.competitors?.[0]?.athlete?.displayName;
-  const p2 = comp.competitors?.[1]?.athlete?.displayName;
-  return !!(findTop10Player(p1) || findTop10Player(p2));
+function hasSeededPlayer(comp: EspnCompetition): boolean {
+  return !!(comp.competitors?.[0]?.curatedRank?.current || comp.competitors?.[1]?.curatedRank?.current);
 }
 
 const ESPN_ATP_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/tennis/atp/scoreboard";
 
 interface EspnCompetitor {
   athlete?: { displayName?: string; shortName?: string; links?: { href: string }[]; flag?: { href?: string; alt?: string } };
+  curatedRank?: { current?: number };
   homeAway?: string;
   winner?: boolean;
   linescores?: { value: number; winner?: boolean }[];
@@ -490,8 +489,8 @@ function espnMatchToEvent(
   const p1Last = p1Name.split(" ").pop() || p1Name;
   const p2Last = p2Name.split(" ").pop() || p2Name;
 
-  const p1Top = findTop10Player(p1Name);
-  const p2Top = findTop10Player(p2Name);
+  const p1Seed = comp.competitors?.[0]?.curatedRank?.current;
+  const p2Seed = comp.competitors?.[1]?.curatedRank?.current;
 
   const p1Flag = comp.competitors?.[0]?.athlete?.flag?.href;
   const p2Flag = comp.competitors?.[1]?.athlete?.flag?.href;
@@ -517,8 +516,8 @@ function espnMatchToEvent(
     tennisRound: round,
     tennisPlayer1: p1Last,
     tennisPlayer2: p2Last,
-    tennisPlayer1Rank: p1Top?.rank,
-    tennisPlayer2Rank: p2Top?.rank,
+    tennisPlayer1Rank: p1Seed,
+    tennisPlayer2Rank: p2Seed,
     tennisPlayer1Flag: p1Flag,
     tennisPlayer2Flag: p2Flag,
     tournamentName: tournament.name,
@@ -602,12 +601,12 @@ export async function fetchTennisEvents(): Promise<TennisFetchResult> {
     if (espnComps && espnComps.length > 0) {
       const liveAndUpcoming = espnComps.filter(c => {
         const state = c.status?.type?.state;
-        return (state === "in" || state === "pre") && hasTop10Player(c);
+        return (state === "in" || state === "pre") && hasSeededPlayer(c);
       });
       const recent = espnComps.filter(c => {
         const state = c.status?.type?.state;
         if (state !== "post") return false;
-        if (!hasTop10Player(c)) return false;
+        if (!hasSeededPlayer(c)) return false;
         const matchDate = new Date(c.date || "");
         const hoursAgo = (now.getTime() - matchDate.getTime()) / 3600000;
         return hoursAgo < 24;
@@ -625,7 +624,7 @@ export async function fetchTennisEvents(): Promise<TennisFetchResult> {
       espnCount += toInclude.length;
       espnActiveTournaments.add(tournament.name);
       tournamentCounts[tournament.name] = toInclude.length;
-      console.log(`  Tennis: ${tournament.shortName} — ${toInclude.length} top-10 matches of ${totalBefore} total (${liveAndUpcoming.length} active, ${recent.length} recent)`);
+      console.log(`  Tennis: ${tournament.shortName} — ${toInclude.length} seeded matches of ${totalBefore} total (${liveAndUpcoming.length} active, ${recent.length} recent)`);
     } else {
       const fallback = generateFallbackSessions(tournament, windowStart, windowEnd);
       events.push(...fallback);

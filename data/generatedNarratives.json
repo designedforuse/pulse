@@ -1,10 +1,9 @@
 {
-  "lastUpdated": "2026-03-05T00:13:04.803Z",
+  "lastUpdated": "2026-03-05T04:52:38.842Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
-        "NewEngland": 1,
-        "SoCal": 1
+        "NewEngland": 1
       },
       "league_moment": {
         "Other": 1,
@@ -12,13 +11,9 @@
       }
     },
     "combinedPushByRegion": {
-      "NewEngland": false,
-      "SoCal": false
+      "NewEngland": false
     },
     "finalFeedByRegion": {
-      "SoCal": [
-        "playoff_push: Oilers Push Week"
-      ],
       "NewEngland": [
         "playoff_push: Bruins Push Week",
         "league_moment: Big Stage"
@@ -28,8 +23,8 @@
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 4,
-    "totalAfterCap": 4,
+    "totalBeforeCap": 3,
+    "totalAfterCap": 3,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -47,7 +42,6 @@
           "CGY",
           "EDM",
           "VAN",
-          "NYI",
           "MTL",
           "STL",
           "TOR",
@@ -66,54 +60,15 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 594,
+        "playersIngested": 574,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-05T00:13:04.803Z"
+        "timestamp": "2026-03-05T04:52:38.842Z"
       },
-      "cacheHistoryCount": 664,
+      "cacheHistoryCount": 668,
       "error": null
     }
   },
   "cards": [
-    {
-      "id": "playoff_push_socal",
-      "title": "Oilers Push Week",
-      "subtitle": "4 in 5 · back-to-back",
-      "impact": {
-        "label": "Impacts: Saturday Game Day",
-        "ritualId": "saturday_spotlight",
-        "tabHint": "Rituals"
-      },
-      "priority": 100,
-      "triggeredAt": "2026-03-05T00:13:04.803Z",
-      "expiresAt": "2026-03-12T00:13:04.803Z",
-      "kind": "playoff_push",
-      "region": "SoCal",
-      "regionPriority": 2,
-      "regionLabel": "SoCal",
-      "meta": {
-        "teams": [
-          {
-            "team": "Tulsa Oilers",
-            "league": "ECHL",
-            "gamesInNext7Days": 4,
-            "gamesInNext5Days": 4,
-            "hasBackToBack": true,
-            "reason": "Tulsa Oilers: 4 games in 5 days, back-to-back + 4 games in 7 days"
-          }
-        ],
-        "eventIds": [
-          "echl-web-25121",
-          "echl-web-25125",
-          "echl-web-25137",
-          "echl-web-25149"
-        ],
-        "combinedTeamCount": 1,
-        "windowStart": "2026-03-05T00:13:04.803Z",
-        "windowEnd": "2026-03-12T00:13:04.803Z",
-        "reason": "Tulsa Oilers: 4 games in 5 days, back-to-back + 4 games in 7 days"
-      }
-    },
     {
       "id": "playoff_push_newengland",
       "title": "Bruins Push Week",
@@ -123,8 +78,8 @@
         "tabHint": "Watch"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-05T00:13:04.803Z",
-      "expiresAt": "2026-03-12T00:13:04.803Z",
+      "triggeredAt": "2026-03-05T04:52:38.842Z",
+      "expiresAt": "2026-03-12T04:52:38.842Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -147,8 +102,8 @@
           "nhl_2025021012"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-05T00:13:04.803Z",
-        "windowEnd": "2026-03-12T00:13:04.803Z",
+        "windowStart": "2026-03-05T04:52:38.842Z",
+        "windowEnd": "2026-03-12T04:52:38.842Z",
         "reason": "Boston Bruins: back-to-back + 4 games in 7 days"
       }
     },
@@ -161,8 +116,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-05T00:13:04.803Z",
-      "expiresAt": "2026-03-12T00:13:04.803Z",
+      "triggeredAt": "2026-03-05T04:52:38.842Z",
+      "expiresAt": "2026-03-12T04:52:38.842Z",
       "kind": "league_moment",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -202,8 +157,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-05T00:13:04.803Z",
-      "expiresAt": "2026-03-12T00:13:04.803Z",
+      "triggeredAt": "2026-03-05T04:52:38.842Z",
+      "expiresAt": "2026-03-12T04:52:38.842Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
