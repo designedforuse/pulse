@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T04:52:38.842Z",
+  "lastUpdated": "2026-03-05T05:14:44.534Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -62,7 +62,7 @@
         ],
         "playersIngested": 574,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-05T04:52:38.842Z"
+        "timestamp": "2026-03-05T05:14:44.534Z"
       },
       "cacheHistoryCount": 668,
       "error": null
@@ -78,8 +78,8 @@
         "tabHint": "Watch"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-05T04:52:38.842Z",
-      "expiresAt": "2026-03-12T04:52:38.842Z",
+      "triggeredAt": "2026-03-05T05:14:44.534Z",
+      "expiresAt": "2026-03-12T05:14:44.534Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -102,8 +102,8 @@
           "nhl_2025021012"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-05T04:52:38.842Z",
-        "windowEnd": "2026-03-12T04:52:38.842Z",
+        "windowStart": "2026-03-05T05:14:44.534Z",
+        "windowEnd": "2026-03-12T05:14:44.534Z",
         "reason": "Boston Bruins: back-to-back + 4 games in 7 days"
       }
     },
@@ -116,8 +116,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-05T04:52:38.842Z",
-      "expiresAt": "2026-03-12T04:52:38.842Z",
+      "triggeredAt": "2026-03-05T05:14:44.534Z",
+      "expiresAt": "2026-03-12T05:14:44.534Z",
       "kind": "league_moment",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -157,8 +157,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-05T04:52:38.842Z",
-      "expiresAt": "2026-03-12T04:52:38.842Z",
+      "triggeredAt": "2026-03-05T05:14:44.534Z",
+      "expiresAt": "2026-03-12T05:14:44.534Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,

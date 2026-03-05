@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T04:52:38.768Z",
+  "lastUpdated": "2026-03-05T05:14:44.462Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -131,9 +131,9 @@
   "faCupUpdated": 9,
   "faCupPruned": 9,
   "faCupSourceUsed": "espn",
-  "tennisCount": 60,
-  "tennisAdded": 19,
-  "tennisUpdated": 42,
+  "tennisCount": 59,
+  "tennisAdded": 2,
+  "tennisUpdated": 59,
   "tennisPruned": 2,
   "tennisSourceUsed": "espn",
   "tennisTournamentCounts": {
@@ -142,34 +142,34 @@
     "Monte-Carlo Masters": 6
   },
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-05T04:52:38.768Z",
+    "lastRefreshAt": "2026-03-05T05:14:44.462Z",
     "sources": {
       "nhl": {
         "count": 108,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 226,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 17,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 3,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 114,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 19,
@@ -189,53 +189,53 @@
       },
       "iccT20Wc": {
         "count": 19,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 4,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 53,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 75,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 50,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 51,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 46,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 45,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 21,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 34,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
@@ -247,24 +247,24 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 8,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "iCal Feed"
       },
       "faCup": {
         "count": 9,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-03T19:45:00.000Z"
       },
       "tennis": {
-        "count": 60,
-        "lastFetchAt": "2026-03-05T04:52:38.768Z",
+        "count": 59,
+        "lastFetchAt": "2026-03-05T05:14:44.462Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Indian Wells Masters": 23,
@@ -4639,7 +4639,7 @@
       "startTimeLocal": "2026-03-05T03:00:00.000Z",
       "endTimeLocal": "2026-03-05T05:45:00.000Z",
       "providerId": "flosports",
-      "isLive": false,
+      "isLive": true,
       "source": "ahl-hockeytech"
     },
     {
@@ -4651,7 +4651,7 @@
       "startTimeLocal": "2026-03-05T03:00:00.000Z",
       "endTimeLocal": "2026-03-05T05:45:00.000Z",
       "providerId": "flosports",
-      "isLive": false,
+      "isLive": true,
       "source": "ahl-hockeytech"
     },
     {
@@ -4663,7 +4663,7 @@
       "startTimeLocal": "2026-03-05T03:00:00.000Z",
       "endTimeLocal": "2026-03-05T05:45:00.000Z",
       "providerId": "flosports",
-      "isLive": false,
+      "isLive": true,
       "source": "ahl-hockeytech"
     },
     {
@@ -4686,30 +4686,6 @@
       "isIccT20Wc": true,
       "t20WcMatchLabel": "T20 WC Semi-Final 2",
       "t20WcVenue": "Wankhede Stadium, Mumbai"
-    },
-    {
-      "id": "tennis-espn-172873",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Dimitrov",
-      "homeTeam": "Atmane",
-      "startTimeLocal": "2026-03-05T19:00:00.000Z",
-      "endTimeLocal": "2026-03-05T21:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Indian Wells — Round 1",
-      "competitionType": "domestic",
-      "tennisRound": "Round 1",
-      "tennisPlayer1": "Dimitrov",
-      "tennisPlayer2": "Atmane",
-      "tennisPlayer1Rank": 10,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/bul.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
-      "tournamentName": "Indian Wells Masters"
     },
     {
       "id": "soccer-epl-20260305-2000-crystal-palace-at-spurs",

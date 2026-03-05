@@ -394,8 +394,15 @@ function findTop10Player(displayName: string | undefined): TopPlayerDef | null {
   return null;
 }
 
-function hasSeededPlayer(comp: EspnCompetition): boolean {
-  return !!(comp.competitors?.[0]?.curatedRank?.current || comp.competitors?.[1]?.curatedRank?.current);
+function hasSeededPlayer(comp: EspnCompetition, tournamentEspnId?: number): boolean {
+  const p1Rank = comp.competitors?.[0]?.curatedRank?.current;
+  const p2Rank = comp.competitors?.[1]?.curatedRank?.current;
+  if (p1Rank || p2Rank) return true;
+  const seedMap = tournamentEspnId ? espnSeedMaps.get(tournamentEspnId) : undefined;
+  if (!seedMap) return false;
+  const p1Name = comp.competitors?.[0]?.athlete?.displayName;
+  const p2Name = comp.competitors?.[1]?.athlete?.displayName;
+  return !!(p1Name && seedMap.has(p1Name)) || !!(p2Name && seedMap.has(p2Name));
 }
 
 const ESPN_ATP_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/tennis/atp/scoreboard";
@@ -433,6 +440,8 @@ interface EspnEvent {
   groupings?: EspnGrouping[];
 }
 
+const espnSeedMaps = new Map<number, Map<string, number>>();
+
 async function fetchEspnTournamentMatches(): Promise<Map<number, EspnCompetition[]>> {
   const result = new Map<number, EspnCompetition[]>();
   try {
@@ -457,8 +466,19 @@ async function fetchEspnTournamentMatches(): Promise<Map<number, EspnCompetition
       if (matches.length > 0) {
         const tId = matches[0]?.tournamentId;
         if (tId) {
+          const seedMap = new Map<string, number>();
+          for (const c of matches) {
+            for (const p of (c.competitors || [])) {
+              const name = p.athlete?.displayName;
+              const seed = p.curatedRank?.current;
+              if (name && seed && !seedMap.has(name)) {
+                seedMap.set(name, seed);
+              }
+            }
+          }
+          espnSeedMaps.set(tId, seedMap);
           result.set(tId, matches);
-          console.log(`  Tennis ESPN: ${event.name} — ${matches.length} men's singles matches`);
+          console.log(`  Tennis ESPN: ${event.name} — ${matches.length} men's singles matches (${seedMap.size} seeds)`);
         }
       }
     }
@@ -489,8 +509,9 @@ function espnMatchToEvent(
   const p1Last = p1Name.split(" ").pop() || p1Name;
   const p2Last = p2Name.split(" ").pop() || p2Name;
 
-  const p1Seed = comp.competitors?.[0]?.curatedRank?.current;
-  const p2Seed = comp.competitors?.[1]?.curatedRank?.current;
+  const seedMap = espnSeedMaps.get(tournament.espnTournamentId || 0);
+  const p1Seed = comp.competitors?.[0]?.curatedRank?.current || (seedMap?.get(p1Name));
+  const p2Seed = comp.competitors?.[1]?.curatedRank?.current || (seedMap?.get(p2Name));
 
   const p1Flag = comp.competitors?.[0]?.athlete?.flag?.href;
   const p2Flag = comp.competitors?.[1]?.athlete?.flag?.href;
@@ -601,12 +622,12 @@ export async function fetchTennisEvents(): Promise<TennisFetchResult> {
     if (espnComps && espnComps.length > 0) {
       const liveAndUpcoming = espnComps.filter(c => {
         const state = c.status?.type?.state;
-        return (state === "in" || state === "pre") && hasSeededPlayer(c);
+        return (state === "in" || state === "pre") && hasSeededPlayer(c, tournament.espnTournamentId);
       });
       const recent = espnComps.filter(c => {
         const state = c.status?.type?.state;
         if (state !== "post") return false;
-        if (!hasSeededPlayer(c)) return false;
+        if (!hasSeededPlayer(c, tournament.espnTournamentId)) return false;
         const matchDate = new Date(c.date || "");
         const hoursAgo = (now.getTime() - matchDate.getTime()) / 3600000;
         return hoursAgo < 24;
@@ -657,6 +678,7 @@ export function mergeTennisEvents(
   const index = new Map<string, AppEvent>();
   for (const e of existing) {
     if (e.source === "espn-tennis" && !freshIds.has(e.id)) {
+      if (e.tournamentName && activeNames.has(e.tournamentName)) continue;
       const eventStart = new Date(e.startTimeLocal);
       if (eventStart < sixHoursAgo) continue;
     }
