@@ -150,13 +150,6 @@ function PhaseChip({ label, sportColor, isHot }: { label: string; sportColor: st
   );
 }
 
-function RankBadge({ rank, sportColor }: { rank: number; sportColor: string }) {
-  return (
-    <View style={[uStyles.rankBadge, { backgroundColor: sportColor + "30" }]}>
-      <Text style={[uStyles.rankText, { color: sportColor }]}>#{rank}</Text>
-    </View>
-  );
-}
 
 export interface UnifiedEventCardProps {
   event: SportEvent;
@@ -293,32 +286,24 @@ export default function UnifiedEventCard({
           {showTeamLayout ? (
             <>
               <View style={uStyles.teamRow}>
-                {awayRank ? (
-                  <RankBadge rank={awayRank} sportColor={sportColor} />
-                ) : (
-                  <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={logoSize} />
-                )}
+                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={logoSize} />
                 <Text
                   style={[uStyles.teamName, featured && uStyles.teamNameFeatured]}
                   numberOfLines={1}
                 >
-                  {awayName}
+                  {awayName}{awayRank ? <Text style={[uStyles.rankInline, { color: sportColor }]}>{` (${awayRank})`}</Text> : null}
                 </Text>
                 {hasScore && isCricket
                   ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{score.cricketAway || ""}</Text>
                   : hasScore && <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.awayScore}</Text>}
               </View>
               <View style={uStyles.teamRow}>
-                {homeRank ? (
-                  <RankBadge rank={homeRank} sportColor={sportColor} />
-                ) : (
-                  <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={logoSize} />
-                )}
+                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={logoSize} />
                 <Text
                   style={[uStyles.teamName, featured && uStyles.teamNameFeatured]}
                   numberOfLines={1}
                 >
-                  {homeName}
+                  {homeName}{homeRank ? <Text style={[uStyles.rankInline, { color: sportColor }]}>{` (${homeRank})`}</Text> : null}
                 </Text>
                 {hasScore && isCricket
                   ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{score.cricketHome || ""}</Text>
@@ -493,17 +478,6 @@ const uStyles = StyleSheet.create({
     alignItems: "center" as const,
     gap: 8,
   },
-  rankBadge: {
-    paddingHorizontal: 5,
-    paddingVertical: 1,
-    borderRadius: 4,
-    minWidth: 28,
-    alignItems: "center" as const,
-  },
-  rankText: {
-    fontSize: 10,
-    fontFamily: "Inter_600SemiBold",
-  },
   teamName: {
     fontSize: 16,
     fontFamily: "Inter_600SemiBold",
@@ -530,6 +504,10 @@ const uStyles = StyleSheet.create({
     textAlign: "right" as const,
     flexShrink: 0,
     maxWidth: 120,
+  },
+  rankInline: {
+    fontSize: 13,
+    fontFamily: "Inter_500Medium",
   },
   scoreLive: {
     color: Colors.accent,
