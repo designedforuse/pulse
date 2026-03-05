@@ -40,6 +40,8 @@ export interface SportEvent {
   tennisPlayer2?: string;
   tennisPlayer1Rank?: number;
   tennisPlayer2Rank?: number;
+  tennisPlayer1Flag?: string;
+  tennisPlayer2Flag?: string;
   tournamentName?: string;
 }
 

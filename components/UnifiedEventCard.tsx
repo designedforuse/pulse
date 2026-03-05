@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Pressable, Platform } from "react-native";
+import { View, Text, Image, StyleSheet, Pressable, Platform } from "react-native";
 import { router } from "expo-router";
 import * as Haptics from "expo-haptics";
 import Animated from "react-native-reanimated";
@@ -234,6 +234,8 @@ export default function UnifiedEventCard({
 
   const awayRank = isTennis ? event.tennisPlayer1Rank : undefined;
   const homeRank = isTennis ? event.tennisPlayer2Rank : undefined;
+  const awayFlag = isTennis ? event.tennisPlayer1Flag : undefined;
+  const homeFlag = isTennis ? event.tennisPlayer2Flag : undefined;
 
   const logoSize = featured ? 22 : 20;
 
@@ -286,7 +288,11 @@ export default function UnifiedEventCard({
           {showTeamLayout ? (
             <>
               <View style={uStyles.teamRow}>
-                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={logoSize} />
+                {awayFlag ? (
+                  <Image source={{ uri: awayFlag }} style={[uStyles.flagIcon, { width: logoSize, height: Math.round(logoSize * 0.7) }]} resizeMode="contain" />
+                ) : (
+                  <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={logoSize} />
+                )}
                 <Text
                   style={[uStyles.teamName, featured && uStyles.teamNameFeatured]}
                   numberOfLines={1}
@@ -298,7 +304,11 @@ export default function UnifiedEventCard({
                   : hasScore && <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.awayScore}</Text>}
               </View>
               <View style={uStyles.teamRow}>
-                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={logoSize} />
+                {homeFlag ? (
+                  <Image source={{ uri: homeFlag }} style={[uStyles.flagIcon, { width: logoSize, height: Math.round(logoSize * 0.7) }]} resizeMode="contain" />
+                ) : (
+                  <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={logoSize} />
+                )}
                 <Text
                   style={[uStyles.teamName, featured && uStyles.teamNameFeatured]}
                   numberOfLines={1}
@@ -504,6 +514,10 @@ const uStyles = StyleSheet.create({
     textAlign: "right" as const,
     flexShrink: 0,
     maxWidth: 120,
+  },
+  flagIcon: {
+    marginRight: 6,
+    borderRadius: 2,
   },
   rankInline: {
     fontSize: 13,

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T00:02:10.744Z",
+  "lastUpdated": "2026-03-05T00:13:04.803Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -68,7 +68,7 @@
         ],
         "playersIngested": 594,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-05T00:02:10.744Z"
+        "timestamp": "2026-03-05T00:13:04.803Z"
       },
       "cacheHistoryCount": 664,
       "error": null
@@ -85,8 +85,8 @@
         "tabHint": "Rituals"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-05T00:02:10.744Z",
-      "expiresAt": "2026-03-12T00:02:10.744Z",
+      "triggeredAt": "2026-03-05T00:13:04.803Z",
+      "expiresAt": "2026-03-12T00:13:04.803Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -109,8 +109,8 @@
           "echl-web-25149"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-05T00:02:10.744Z",
-        "windowEnd": "2026-03-12T00:02:10.744Z",
+        "windowStart": "2026-03-05T00:13:04.803Z",
+        "windowEnd": "2026-03-12T00:13:04.803Z",
         "reason": "Tulsa Oilers: 4 games in 5 days, back-to-back + 4 games in 7 days"
       }
     },
@@ -123,8 +123,8 @@
         "tabHint": "Watch"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-05T00:02:10.744Z",
-      "expiresAt": "2026-03-12T00:02:10.744Z",
+      "triggeredAt": "2026-03-05T00:13:04.803Z",
+      "expiresAt": "2026-03-12T00:13:04.803Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -147,8 +147,8 @@
           "nhl_2025021012"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-05T00:02:10.744Z",
-        "windowEnd": "2026-03-12T00:02:10.744Z",
+        "windowStart": "2026-03-05T00:13:04.803Z",
+        "windowEnd": "2026-03-12T00:13:04.803Z",
         "reason": "Boston Bruins: back-to-back + 4 games in 7 days"
       }
     },
@@ -161,8 +161,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-05T00:02:10.744Z",
-      "expiresAt": "2026-03-12T00:02:10.744Z",
+      "triggeredAt": "2026-03-05T00:13:04.803Z",
+      "expiresAt": "2026-03-12T00:13:04.803Z",
       "kind": "league_moment",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -202,8 +202,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-05T00:02:10.744Z",
-      "expiresAt": "2026-03-12T00:02:10.744Z",
+      "triggeredAt": "2026-03-05T00:13:04.803Z",
+      "expiresAt": "2026-03-12T00:13:04.803Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T00:02:10.674Z",
+  "lastUpdated": "2026-03-05T00:13:04.728Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -29,14 +29,14 @@
   "rugbySourceUsed": "ical",
   "cricketSourceUsed": "cricapi",
   "nhlCount": 108,
-  "ahlCount": 229,
-  "ahlAdded": 38,
-  "ahlUpdated": 185,
-  "ahlPruned": 38,
-  "echlCount": 16,
+  "ahlCount": 227,
+  "ahlAdded": 37,
+  "ahlUpdated": 186,
+  "ahlPruned": 39,
+  "echlCount": 17,
   "echlAdded": 4,
   "echlUpdated": 16,
-  "echlPruned": 4,
+  "echlPruned": 3,
   "echlWebCount": 20,
   "buCount": 3,
   "buAdded": 0,
@@ -102,9 +102,9 @@
   "ligue1Pruned": 45,
   "ligue1SourceUsed": "espn",
   "nwslCount": 19,
-  "nwslAdded": 1,
-  "nwslUpdated": 18,
-  "nwslPruned": 18,
+  "nwslAdded": 0,
+  "nwslUpdated": 19,
+  "nwslPruned": 19,
   "nwslSourceUsed": "ical",
   "uslCount": 34,
   "uslAdded": 0,
@@ -132,8 +132,8 @@
   "faCupPruned": 9,
   "faCupSourceUsed": "espn",
   "tennisCount": 43,
-  "tennisAdded": 3,
-  "tennisUpdated": 42,
+  "tennisAdded": 2,
+  "tennisUpdated": 43,
   "tennisPruned": 2,
   "tennisSourceUsed": "espn",
   "tennisTournamentCounts": {
@@ -142,34 +142,34 @@
     "Monte-Carlo Masters": 6
   },
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-05T00:02:10.674Z",
+    "lastRefreshAt": "2026-03-05T00:13:04.728Z",
     "sources": {
       "nhl": {
         "count": 108,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "NHL API"
       },
       "ahl": {
-        "count": 229,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "count": 227,
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
-        "count": 16,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "count": 17,
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 3,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 114,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 19,
@@ -189,53 +189,53 @@
       },
       "iccT20Wc": {
         "count": 19,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 4,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 53,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 75,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 50,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 51,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 46,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 45,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 19,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 34,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
@@ -247,24 +247,24 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 8,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "iCal Feed"
       },
       "faCup": {
         "count": 9,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-03T19:45:00.000Z"
       },
       "tennis": {
         "count": 43,
-        "lastFetchAt": "2026-03-05T00:02:10.674Z",
+        "lastFetchAt": "2026-03-05T00:13:04.728Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Indian Wells Masters": 7,
@@ -275,30 +275,6 @@
     }
   },
   "events": [
-    {
-      "id": "ahl-1028535",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Rochester Americans",
-      "awayTeam": "Charlotte Checkers",
-      "startTimeLocal": "2026-02-19T00:05:00.000Z",
-      "endTimeLocal": "2026-02-19T02:50:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "ahl-1028537",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Springfield Thunderbirds",
-      "awayTeam": "Wilkes-Barre/Scranton Penguins",
-      "startTimeLocal": "2026-02-19T00:05:00.000Z",
-      "endTimeLocal": "2026-02-19T02:50:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
     {
       "id": "ahl-1028533",
       "sport": "hockey",
@@ -4556,7 +4532,7 @@
       "startTimeLocal": "2026-03-05T00:00:00.000Z",
       "endTimeLocal": "2026-03-05T02:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": false,
+      "isLive": true,
       "source": "nhl",
       "broadcastNetworks": [
         "FDSNDET",
@@ -4574,7 +4550,7 @@
       "startTimeLocal": "2026-03-05T00:00:00.000Z",
       "endTimeLocal": "2026-03-05T02:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": false,
+      "isLive": true,
       "source": "nhl",
       "broadcastNetworks": [
         "ESPN+",
@@ -4594,7 +4570,7 @@
       "startTimeLocal": "2026-03-05T00:00:00.000Z",
       "endTimeLocal": "2026-03-05T02:45:00.000Z",
       "providerId": "flosports",
-      "isLive": false,
+      "isLive": true,
       "source": "ahl-hockeytech"
     },
     {
@@ -4618,7 +4594,7 @@
       "startTimeLocal": "2026-03-05T00:00:00.000Z",
       "endTimeLocal": "2026-03-05T02:45:00.000Z",
       "providerId": "flosports",
-      "isLive": false,
+      "isLive": true,
       "source": "ahl-hockeytech"
     },
     {
@@ -4630,7 +4606,7 @@
       "startTimeLocal": "2026-03-05T00:05:00.000Z",
       "endTimeLocal": "2026-03-05T02:50:00.000Z",
       "providerId": "flosports",
-      "isLive": false,
+      "isLive": true,
       "source": "ahl-hockeytech"
     },
     {
@@ -4779,6 +4755,8 @@
       "tennisPlayer1": "Dimitrov",
       "tennisPlayer2": "Atmane",
       "tennisPlayer1Rank": 10,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/bul.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
       "tournamentName": "Indian Wells Masters"
     },
     {
@@ -4962,6 +4940,7 @@
       "tennisPlayer1": "Zverev",
       "tennisPlayer2": "TBD",
       "tennisPlayer1Rank": 2,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
       "tournamentName": "Indian Wells Masters"
     },
     {
@@ -4984,6 +4963,8 @@
       "tennisPlayer1": "Sinner",
       "tennisPlayer2": "Svrcina",
       "tennisPlayer1Rank": 1,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
       "tournamentName": "Indian Wells Masters"
     },
     {
@@ -5006,6 +4987,7 @@
       "tennisPlayer1": "Ruud",
       "tennisPlayer2": "TBD",
       "tennisPlayer1Rank": 6,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
       "tournamentName": "Indian Wells Masters"
     },
     {
@@ -5028,6 +5010,7 @@
       "tennisPlayer1": "Minaur",
       "tennisPlayer2": "TBD",
       "tennisPlayer1Rank": 8,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
       "tournamentName": "Indian Wells Masters"
     },
     {
@@ -5050,6 +5033,7 @@
       "tennisPlayer1": "Fritz",
       "tennisPlayer2": "TBD",
       "tennisPlayer1Rank": 5,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
       "tournamentName": "Indian Wells Masters"
     },
     {
@@ -5072,6 +5056,8 @@
       "tennisPlayer1": "Diallo",
       "tennisPlayer2": "Rublev",
       "tennisPlayer2Rank": 9,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/rus.png",
       "tournamentName": "Indian Wells Masters"
     },
     {
@@ -13196,6 +13182,18 @@
       "source": "soccer-nwsl",
       "leagueKey": "nwsl",
       "providerReason": "nwsl-default"
+    },
+    {
+      "id": "echl-web-25252",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Tulsa Oilers",
+      "awayTeam": "Trois-Rivières Lions",
+      "startTimeLocal": "2026-03-26T00:05:00.000Z",
+      "endTimeLocal": "2026-03-26T02:50:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
     },
     {
       "id": "tennis-miami-masters-2026-03-26-m0",

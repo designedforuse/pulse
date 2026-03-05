@@ -403,7 +403,7 @@ function hasTop10Player(comp: EspnCompetition): boolean {
 const ESPN_ATP_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/tennis/atp/scoreboard";
 
 interface EspnCompetitor {
-  athlete?: { displayName?: string; shortName?: string; links?: { href: string }[] };
+  athlete?: { displayName?: string; shortName?: string; links?: { href: string }[]; flag?: { href?: string; alt?: string } };
   homeAway?: string;
   winner?: boolean;
   linescores?: { value: number; winner?: boolean }[];
@@ -493,12 +493,8 @@ function espnMatchToEvent(
   const p1Top = findTop10Player(p1Name);
   const p2Top = findTop10Player(p2Name);
 
-  const p1Links = comp.competitors?.[0]?.athlete?.links || [];
-  const p2Links = comp.competitors?.[1]?.athlete?.links || [];
-  const p1EspnId = p1Links[0]?.href?.match(/\/id\/(\d+)\//)?.[1];
-  const p2EspnId = p2Links[0]?.href?.match(/\/id\/(\d+)\//)?.[1];
-  const p1Headshot = p1EspnId ? `https://a.espncdn.com/combiner/i?img=/i/headshots/tennis/players/full/${p1EspnId}.png&w=96&h=70` : undefined;
-  const p2Headshot = p2EspnId ? `https://a.espncdn.com/combiner/i?img=/i/headshots/tennis/players/full/${p2EspnId}.png&w=96&h=70` : undefined;
+  const p1Flag = comp.competitors?.[0]?.athlete?.flag?.href;
+  const p2Flag = comp.competitors?.[1]?.athlete?.flag?.href;
 
   const id = `tennis-espn-${comp.id}`;
 
@@ -523,6 +519,8 @@ function espnMatchToEvent(
     tennisPlayer2: p2Last,
     tennisPlayer1Rank: p1Top?.rank,
     tennisPlayer2Rank: p2Top?.rank,
+    tennisPlayer1Flag: p1Flag,
+    tennisPlayer2Flag: p2Flag,
     tournamentName: tournament.name,
   };
 }
