@@ -445,7 +445,7 @@ function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date
       title,
       subtitle,
       impact,
-      priority: 100,
+      priority: 90,
       triggeredAt: now.toISOString(),
       expiresAt: new Date(now.getTime() + 7 * 86400000).toISOString(),
       kind: "playoff_push",
@@ -587,7 +587,7 @@ function generateMomentum(events: AppEvent[], favorites: Favorites, now: Date, n
       title: `${shortName} Heating Up`,
       subtitle: subtitleParts.join(" · "),
       impact,
-      priority: 60,
+      priority: 80,
       triggeredAt: now.toISOString(),
       expiresAt: new Date(now.getTime() + 3 * 86400000).toISOString(),
       kind: "momentum",
@@ -1066,7 +1066,7 @@ function generatePlayerMovement(cache: PlayerMovementCache, now: Date): ExploreN
     title: "System Shuffle",
     subtitle: `${recentMovements.length} player move${recentMovements.length > 1 ? "s" : ""} detected (${[...teamMentions].join(" ↔ ")})`,
     impact: { label: "Feeds: Watch", tabHint: "Watch" },
-    priority: 90,
+    priority: 85,
     triggeredAt: now.toISOString(),
     expiresAt: new Date(now.getTime() + 7 * 86400000).toISOString(),
     kind: "player_movement",
@@ -1202,7 +1202,7 @@ function generateRivalryGame(
       title,
       subtitle,
       impact,
-      priority: 90,
+      priority: 96,
       triggeredAt: now.toISOString(),
       expiresAt: new Date(startDate.getTime() + 4 * 3600000).toISOString(),
       kind: "rivalry_game",
@@ -1510,7 +1510,7 @@ async function generateUpsetAlert(
       title,
       subtitle,
       impact,
-      priority: 95,
+      priority: 98,
       triggeredAt: now.toISOString(),
       expiresAt,
       kind: "upset_alert",
@@ -1845,11 +1845,11 @@ function generateDeadlineWatch(
 
     const narrative = buildDeadlineNarrative(cfg, teamShort, movementAbbrevs72h);
 
-    let priority = 80;
-    if (isTeamFavoriteOrTracked(cfg.team, favorites)) priority += 10;
-    if (cfg.playoffBubble) priority += 5;
-    if (movementAbbrevs72h.has(cfg.abbrev)) priority += 8;
-    priority += Math.min(cfg.expiringContracts * 2, 6);
+    let priority = 92;
+    if (isTeamFavoriteOrTracked(cfg.team, favorites)) priority += 3;
+    if (cfg.playoffBubble) priority += 2;
+    if (movementAbbrevs72h.has(cfg.abbrev)) priority += 2;
+    priority += Math.min(cfg.expiringContracts, 3);
 
     const hasConfirmedTrade = recentMovements.some(m =>
       (m.fromTeam === cfg.abbrev || m.toTeam === cfg.abbrev) && new Date(m.detectedAt) > recentCutoff
@@ -2006,8 +2006,8 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
       continue;
     }
 
-    if (selected.length >= 4) {
-      dropped.push({ id: card.id, kind: card.kind, region: card.region, title: card.title, reason: "feed cap (max 4)" });
+    if (selected.length >= 6) {
+      dropped.push({ id: card.id, kind: card.kind, region: card.region, title: card.title, reason: "feed cap (max 6)" });
       continue;
     }
 
@@ -2041,6 +2041,9 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
       cacheHistoryCount: movementCacheHistoryCount,
       error: movementError,
     },
+    exploreFeedCap: 6,
+    candidateCountBeforeCap: allCandidates.length,
+    candidateCountAfterCap: selected.length,
     deadlineWatch: deadlineResult.debug,
     rivalryGame: rivalryResult.debug,
     upsetAlert: upsetResult.debug,
