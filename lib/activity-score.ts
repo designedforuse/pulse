@@ -4,12 +4,24 @@ import type { ScoreData } from "@/lib/scores-context";
 export interface ActivitySignal {
   name: string;
   points: number;
+  reason: string;
 }
 
 export interface ActivityScore {
   total: number;
   signals: ActivitySignal[];
 }
+
+const SIGNAL_REASONS: Record<string, string> = {
+  "Goal scored": "Goal just scored",
+  "Overtime": "Overtime started",
+  "Match point": "Match point",
+  "Upset Alert": "Upset brewing",
+  "Red card": "Red card",
+  "Late close game": "One-goal game late",
+  "Power play": "Power play",
+  "Goalie pulled": "Goalie pulled",
+};
 
 function detectGoalScored(
   event: SportEvent,
@@ -131,6 +143,25 @@ function detectLateCloseGame(
   return false;
 }
 
+function detectPowerPlay(
+  event: SportEvent,
+  current: ScoreData | undefined,
+): boolean {
+  if (!current) return false;
+  if (event.sport.toLowerCase() !== "hockey") return false;
+  if (current.lastGoalStrength === "pp" || current.lastGoalStrength === "sh") return true;
+  return false;
+}
+
+function detectGoaliePulled(
+  event: SportEvent,
+  current: ScoreData | undefined,
+): boolean {
+  if (!current) return false;
+  if (event.sport.toLowerCase() !== "hockey") return false;
+  return !!(current as any).goaliePulled;
+}
+
 export function computeActivityScore(
   event: SportEvent,
   currentScore: ScoreData | undefined,
@@ -143,25 +174,39 @@ export function computeActivityScore(
   }
 
   if (detectGoalScored(event, currentScore, previousScore)) {
-    signals.push({ name: "Goal scored", points: 40 });
+    signals.push({ name: "Goal scored", points: 40, reason: SIGNAL_REASONS["Goal scored"] });
   }
 
   if (detectOvertime(event, currentScore)) {
-    signals.push({ name: "Overtime", points: 35 });
+    signals.push({ name: "Overtime", points: 35, reason: SIGNAL_REASONS["Overtime"] });
   }
 
   if (detectMatchPoint(event, currentScore)) {
-    signals.push({ name: "Match point", points: 35 });
+    signals.push({ name: "Match point", points: 35, reason: SIGNAL_REASONS["Match point"] });
   }
 
   if (detectUpsetSituation(event, currentScore)) {
-    signals.push({ name: "Upset Alert", points: 30 });
+    signals.push({ name: "Upset Alert", points: 30, reason: SIGNAL_REASONS["Upset Alert"] });
+  }
+
+  if (detectGoaliePulled(event, currentScore)) {
+    signals.push({ name: "Goalie pulled", points: 25, reason: SIGNAL_REASONS["Goalie pulled"] });
+  }
+
+  if (detectPowerPlay(event, currentScore)) {
+    signals.push({ name: "Power play", points: 20, reason: SIGNAL_REASONS["Power play"] });
   }
 
   if (detectLateCloseGame(event, currentScore)) {
-    signals.push({ name: "Late close game", points: 20 });
+    signals.push({ name: "Late close game", points: 20, reason: SIGNAL_REASONS["Late close game"] });
   }
 
   const total = signals.reduce((sum, s) => sum + s.points, 0);
   return { total, signals };
+}
+
+export function getPromotionReason(signals: ActivitySignal[]): string {
+  if (signals.length === 0) return "Live momentum spike";
+  const sorted = [...signals].sort((a, b) => b.points - a.points);
+  return sorted[0].reason;
 }

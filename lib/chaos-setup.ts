@@ -4,7 +4,7 @@ import { getEventEnd, isEventLive } from "@/utils/time";
 import { favoriteInvolved } from "@/utils/favorites";
 import { computeFeaturedScore, isNowInAnyRitualWindow, type FeaturedScore } from "@/lib/rituals";
 import { computeHockeyChaosScore, type ChaosScoreResult } from "@/lib/chaos-score";
-import { computeActivityScore, type ActivityScore } from "@/lib/activity-score";
+import { computeActivityScore, getPromotionReason, type ActivityScore } from "@/lib/activity-score";
 
 const CHAOS_WINDOW_MS = 90 * 60 * 1000;
 const CHAOS_DEBUG = __DEV__;
@@ -310,6 +310,8 @@ export interface ChaosSetup {
   candidateCount: number;
   debug?: ChaosDebug;
   promotedEventId?: string;
+  promotionReason?: string;
+  promotedAt?: number;
   originalSlot4?: SportEvent;
   slot4ActivityScore?: number;
   slot4ActivitySignals?: string[];
@@ -771,14 +773,16 @@ export function evaluateSlot4Promotion(
     bestCandidate,
   ];
 
-  const sortedSignalNames = [...bestScore.signals]
-    .sort((a, b) => b.points - a.points)
-    .map((s) => s.name);
+  const sortedSignals = [...bestScore.signals].sort((a, b) => b.points - a.points);
+  const sortedSignalNames = sortedSignals.map((s) => s.name);
+  const reason = getPromotionReason(bestScore.signals);
 
   return {
     ...setup,
     secondary: newSecondary,
     promotedEventId: bestCandidate.id,
+    promotionReason: reason,
+    promotedAt: now.getTime(),
     originalSlot4: setup.originalSlot4 ?? currentSlot4 ?? undefined,
     slot4ActivityScore: bestScore.total,
     slot4ActivitySignals: sortedSignalNames,

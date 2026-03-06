@@ -342,7 +342,7 @@ function SecondaryCarousel({
   favorites,
   chaosDebugRanks,
   promotedEventId,
-  activitySignals,
+  promotionReason,
 }: {
   events: SportEvent[];
   now: Date;
@@ -350,7 +350,7 @@ function SecondaryCarousel({
   favorites: any;
   chaosDebugRanks?: { id: string; emotion: number; tension: number; sportPri: number; isLive: boolean; isFav: boolean; isAnchor: boolean; isBackfill: boolean; hockeyChaosTotal?: number; hockeyChaosReasons?: string[] }[];
   promotedEventId?: string;
-  activitySignals?: string[];
+  promotionReason?: string;
 }) {
   const { width: screenWidth } = useWindowDimensions();
   const contentWidth = screenWidth - PAGE_PADDING * 2;
@@ -365,11 +365,13 @@ function SecondaryCarousel({
       <View style={{ width: tileWidth, marginRight: TILE_GAP }}>
         {isPromoted && (
           <View style={styles.emergingMomentBanner}>
-            <Ionicons name="flash" size={12} color="#FFD600" />
-            <Text style={styles.emergingMomentText}>Emerging Moment</Text>
-            {activitySignals && activitySignals.length > 0 && (
-              <Text style={styles.emergingMomentSignal}>{activitySignals[0]}</Text>
-            )}
+            <View style={styles.emergingMomentRow}>
+              <Ionicons name="flash" size={12} color="#FFD600" />
+              <Text style={styles.emergingMomentText}>Emerging Moment</Text>
+            </View>
+            <Text style={styles.emergingMomentReason}>
+              {promotionReason || "Live momentum spike"}
+            </Text>
           </View>
         )}
         <ChaosCard
@@ -382,7 +384,7 @@ function SecondaryCarousel({
         />
       </View>
     );
-  }, [tileWidth, now, getScore, favorites, chaosDebugRanks, promotedEventId, activitySignals]);
+  }, [tileWidth, now, getScore, favorites, chaosDebugRanks, promotedEventId, promotionReason]);
 
   return (
     <FlatList
@@ -412,6 +414,8 @@ export default function WatchScreen() {
   const [chaosSetup, setChaosSetup] = useState<ChaosSetup | null>(null);
   const chaosRef = useRef<ChaosSetup | null>(null);
   const prevScoresRef = useRef<Record<string, ScoreData>>({});
+  const [promotionToast, setPromotionToast] = useState<{ message: string; reason: string } | null>(null);
+  const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const getScoreStatus = useCallback(
     (id: string) => getScore(id)?.status,
@@ -471,13 +475,33 @@ export default function WatchScreen() {
       getScoreData,
       prevScoresRef.current,
     );
-    if (promoted) {
+    if (promoted && promoted.promotedEventId) {
       setChaosSetup(promoted);
       chaosRef.current = promoted;
+
+      const promotedEvent = promoted.secondary.find(
+        (e) => e.id === promoted.promotedEventId,
+      );
+      if (promotedEvent) {
+        const matchup = `${promotedEvent.awayTeam} vs ${promotedEvent.homeTeam}`;
+        const reason = promoted.promotionReason || "Live momentum spike";
+        setPromotionToast({ message: matchup, reason });
+        if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+        toastTimerRef.current = setTimeout(() => {
+          setPromotionToast(null);
+          toastTimerRef.current = null;
+        }, 6000);
+      }
     }
 
     prevScoresRef.current = { ...scores };
   }, [scores]);
+
+  useEffect(() => {
+    return () => {
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    };
+  }, []);
 
   const handleRebuild = useCallback(() => {
     if (Platform.OS !== "web") {
@@ -639,6 +663,31 @@ export default function WatchScreen() {
 
   return (
     <View style={styles.container}>
+      {promotionToast && (
+        <View style={[styles.promotionToast, { top: (Platform.OS === "web" ? webTopInset : insets.top) + 8 }]}>
+          <Ionicons name="flash" size={14} color="#FFD600" />
+          <View style={styles.promotionToastContent}>
+            <Text style={styles.promotionToastTitle} numberOfLines={1}>
+              Promoted: {promotionToast.message}
+            </Text>
+            <Text style={styles.promotionToastReason} numberOfLines={1}>
+              {promotionToast.reason}
+            </Text>
+          </View>
+          <Pressable
+            onPress={() => {
+              setPromotionToast(null);
+              if (toastTimerRef.current) {
+                clearTimeout(toastTimerRef.current);
+                toastTimerRef.current = null;
+              }
+            }}
+            hitSlop={8}
+          >
+            <Ionicons name="close" size={16} color={Colors.textMuted} />
+          </Pressable>
+        </View>
+      )}
       <ScrollView
         contentContainerStyle={[
           styles.scrollContent,
@@ -712,7 +761,7 @@ export default function WatchScreen() {
                 favorites={favorites}
                 chaosDebugRanks={chaosSetup.debug?.selectedRanks}
                 promotedEventId={chaosSetup.promotedEventId}
-                activitySignals={chaosSetup.slot4ActivitySignals}
+                promotionReason={chaosSetup.promotionReason}
               />
             )}
           </View>
@@ -1089,16 +1138,18 @@ const styles = StyleSheet.create({
   },
 
   emergingMomentBanner: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    gap: 4,
     paddingHorizontal: 10,
-    paddingVertical: 5,
+    paddingVertical: 6,
     marginBottom: 6,
     backgroundColor: "rgba(255, 214, 0, 0.12)",
     borderRadius: 8,
     borderWidth: 1,
     borderColor: "rgba(255, 214, 0, 0.25)",
+  },
+  emergingMomentRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 4,
   },
   emergingMomentText: {
     fontSize: 11,
@@ -1106,11 +1157,42 @@ const styles = StyleSheet.create({
     color: "#FFD600",
     letterSpacing: 0.3,
   },
-  emergingMomentSignal: {
+  emergingMomentReason: {
     fontSize: 10,
     fontFamily: "Inter_400Regular",
     color: "rgba(255, 214, 0, 0.7)",
-    marginLeft: 4,
+    marginTop: 2,
+    marginLeft: 16,
+  },
+  promotionToast: {
+    position: "absolute" as const,
+    left: 16,
+    right: 16,
+    zIndex: 100,
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 10,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    backgroundColor: "rgba(44, 44, 46, 0.97)",
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "rgba(255, 214, 0, 0.3)",
+    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.5)",
+  },
+  promotionToastContent: {
+    flex: 1,
+  },
+  promotionToastTitle: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+  },
+  promotionToastReason: {
+    fontSize: 11,
+    fontFamily: "Inter_400Regular",
+    color: "#FFD600",
+    marginTop: 2,
   },
   secondaryCard: {
     borderRadius: 14,
