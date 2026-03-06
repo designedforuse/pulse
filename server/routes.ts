@@ -534,7 +534,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           : allIds.length > 0 ? "cardEventIds" : "noEvents",
       };
     });
-    return res.json({ cards: enriched, generatedAt: data.generatedAt });
+    return res.json({ cards: enriched, debug: data.debug || {}, generatedAt: data.generatedAt });
   });
 
   app.get("/api/debug/player-movement", (_req, res) => {

@@ -31,7 +31,7 @@ interface ExploreNarrativeCard {
   priority: number;
   triggeredAt: string;
   expiresAt?: string;
-  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch";
+  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game";
   meta?: Record<string, any>;
 }
 
@@ -41,6 +41,7 @@ const KIND_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap; color:
   league_moment: { icon: "trophy", color: "#FFD54F", label: "League Moment" },
   player_movement: { icon: "swap-horizontal", color: "#64B5F6", label: "Player Movement" },
   deadline_watch: { icon: "time", color: "#FF9800", label: "Deadline Watch" },
+  rivalry_game: { icon: "flash", color: "#E040FB", label: "Rivalry Game" },
 };
 
 function timeAgo(iso: string): string {

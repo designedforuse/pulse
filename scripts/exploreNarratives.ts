@@ -29,7 +29,7 @@ export interface ExploreNarrativeCard {
   priority: number;
   triggeredAt: string;
   expiresAt?: string;
-  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch";
+  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game";
   region: Region;
   regionPriority: number;
   regionLabel: string;
@@ -161,6 +161,15 @@ const RIVALRY_PAIRS: { teams: [string, string]; label: string; sport: string }[]
   { teams: ["Borussia Dortmund", "Bayern Munich"], label: "Der Klassiker", sport: "soccer" },
   { teams: ["Paris Saint-Germain", "Marseille"], label: "Le Classique", sport: "soccer" },
   { teams: ["LA Galaxy", "LAFC"], label: "El Tráfico", sport: "soccer" },
+  { teams: ["Stormers", "Bulls"], label: "Jukskei Derby", sport: "rugby" },
+  { teams: ["South Africa", "New Zealand"], label: "Freedom Cup", sport: "rugby" },
+  { teams: ["South Africa", "Australia"], label: "Mandela Challenge Plate", sport: "rugby" },
+  { teams: ["New Zealand", "Australia"], label: "Bledisloe Cup", sport: "rugby" },
+  { teams: ["Sharks", "Stormers"], label: "SA Super Rugby Rivalry", sport: "rugby" },
+  { teams: ["South Africa", "Australia"], label: "SA vs AUS", sport: "cricket" },
+  { teams: ["India", "Pakistan"], label: "The Greatest Rivalry", sport: "cricket" },
+  { teams: ["Australia", "England"], label: "The Ashes", sport: "cricket" },
+  { teams: ["India", "Australia"], label: "Border-Gavaskar Trophy", sport: "cricket" },
 ];
 
 const DERBY_KEYWORDS = ["derby", "clásico", "clasico", "rivalry", "el tráfico", "el trafico"];
@@ -1061,6 +1070,144 @@ function generatePlayerMovement(cache: PlayerMovementCache, now: Date): ExploreN
   }];
 }
 
+interface RivalryGameCandidate {
+  event: AppEvent;
+  label: string;
+  rivalrySport: string;
+  region: Region;
+}
+
+function buildRivalryNarrative(event: AppEvent, label: string): string {
+  const cityAway = event.awayTeam;
+  const cityHome = event.homeTeam;
+  const sportName = event.sport === "hockey" ? "hockey" : event.sport;
+
+  const first = `${cityAway} and ${cityHome} meet tonight in one of ${sportName}'s most storied rivalries.`;
+  const second = "These games tend to carry extra emotional weight regardless of standings.";
+  return `${first}\n\n${second}`;
+}
+
+function formatRivalryTime(isoDate: string): string {
+  const d = new Date(isoDate);
+  const h = d.getHours();
+  const m = d.getMinutes();
+  const ampm = h >= 12 ? "PM" : "AM";
+  const h12 = h % 12 || 12;
+  return m === 0 ? `${h12}:00 ${ampm}` : `${h12}:${m.toString().padStart(2, "0")} ${ampm}`;
+}
+
+function generateRivalryGame(
+  events: AppEvent[],
+  now: Date,
+): {
+  cards: ExploreNarrativeCard[];
+  debug: { rawRivalryCandidates: number; rivalryAfterRegionFilter: number; rivalryFinalCount: number };
+} {
+  const cutoff = new Date(now.getTime() + 24 * 3600000);
+  const upcoming = events.filter(e => {
+    const start = new Date(e.startTimeLocal);
+    return start >= now && start <= cutoff;
+  });
+
+  const candidates: RivalryGameCandidate[] = [];
+
+  for (const ev of upcoming) {
+    const normAway = normalizeTeamName(ev.awayTeam);
+    const normHome = normalizeTeamName(ev.homeTeam);
+
+    for (const pair of RIVALRY_PAIRS) {
+      const normA = normalizeTeamName(pair.teams[0]);
+      const normB = normalizeTeamName(pair.teams[1]);
+
+      const match =
+        ((normAway.includes(normA) || normA.includes(normAway)) &&
+         (normHome.includes(normB) || normB.includes(normHome))) ||
+        ((normAway.includes(normB) || normB.includes(normAway)) &&
+         (normHome.includes(normA) || normA.includes(normHome)));
+
+      if (match) {
+        candidates.push({
+          event: ev,
+          label: pair.label,
+          rivalrySport: pair.sport,
+          region: resolveRegion(ev.homeTeam, ev.league),
+        });
+        break;
+      }
+    }
+  }
+
+  const debug = {
+    rawRivalryCandidates: candidates.length,
+    rivalryAfterRegionFilter: 0,
+    rivalryFinalCount: 0,
+  };
+
+  if (candidates.length === 0) return { cards: [], debug };
+
+  candidates.sort((a, b) => {
+    const rp = getRegionPriority(a.region) - getRegionPriority(b.region);
+    if (rp !== 0) return rp;
+    return new Date(a.event.startTimeLocal).getTime() - new Date(b.event.startTimeLocal).getTime();
+  });
+
+  const regionSeen = new Set<Region>();
+  const filtered: RivalryGameCandidate[] = [];
+  for (const c of candidates) {
+    if (regionSeen.has(c.region)) continue;
+    regionSeen.add(c.region);
+    filtered.push(c);
+    if (filtered.length >= 2) break;
+  }
+
+  debug.rivalryAfterRegionFilter = filtered.length;
+
+  const cards: ExploreNarrativeCard[] = [];
+  for (const c of filtered) {
+    const ev = c.event;
+    const startDate = new Date(ev.startTimeLocal);
+    const isTonight = startDate.getDate() === now.getDate();
+    const timeLabel = isTonight ? `Tonight at ${formatRivalryTime(ev.startTimeLocal)}` : `Tomorrow at ${formatRivalryTime(ev.startTimeLocal)}`;
+
+    const title = isTonight ? "Rivalry Game Tonight" : "Rivalry Game Tomorrow";
+    const subtitle = `${ev.awayTeam} vs ${ev.homeTeam} · ${timeLabel}`;
+
+    const ritual = findBestRitual([ev]);
+    const impact: NarrativeImpact = ritual
+      ? { label: `Impacts: ${ritual.label}`, ritualId: ritual.id, tabHint: "Rituals" }
+      : { label: "Feeds: Watch", tabHint: "Watch" };
+
+    const narrative = buildRivalryNarrative(ev, c.label);
+
+    cards.push({
+      id: `rivalry_game_${ev.id}`,
+      title,
+      subtitle,
+      impact,
+      priority: 90,
+      triggeredAt: now.toISOString(),
+      expiresAt: new Date(startDate.getTime() + 4 * 3600000).toISOString(),
+      kind: "rivalry_game",
+      region: c.region,
+      regionPriority: getRegionPriority(c.region),
+      regionLabel: getRegionLabel(c.region),
+      meta: {
+        rivalryLabel: c.label,
+        sport: ev.sport,
+        league: ev.league,
+        awayTeam: ev.awayTeam,
+        homeTeam: ev.homeTeam,
+        startTime: ev.startTimeLocal,
+        eventIds: [ev.id],
+        reason: narrative,
+      },
+    });
+  }
+
+  debug.rivalryFinalCount = cards.length;
+  return { cards, debug };
+}
+
 const NHL_TRADE_DEADLINE = "2026-03-07T15:00:00-05:00";
 const DEADLINE_WINDOW_HOURS = 72;
 
@@ -1318,7 +1465,13 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     console.log(`      triggers: ${c.meta?.triggers?.join(", ")}`);
   }
 
-  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...playerMovementCards, ...deadlineResult.cards];
+  const rivalryResult = generateRivalryGame(events, now);
+  console.log(`  Rivalry Game: ${rivalryResult.cards.length} card(s) (${rivalryResult.debug.rawRivalryCandidates} candidates)`);
+  for (const c of rivalryResult.cards) {
+    console.log(`    [${c.region}] ${c.title}: ${c.subtitle}`);
+  }
+
+  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...playerMovementCards, ...deadlineResult.cards, ...rivalryResult.cards];
 
   const rawCandidatesByKindAndRegion: Record<string, Record<string, number>> = {};
   for (const c of allCandidates) {
@@ -1380,6 +1533,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
       error: movementError,
     },
     deadlineWatch: deadlineResult.debug,
+    rivalryGame: rivalryResult.debug,
   };
 
   console.log(`  Total: ${allCandidates.length} → selected ${selected.length}`);

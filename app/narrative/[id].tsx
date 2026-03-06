@@ -41,7 +41,7 @@ interface ExploreNarrativeCard {
   priority: number;
   triggeredAt: string;
   expiresAt?: string;
-  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch";
+  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game";
   meta?: Record<string, any>;
   video?: NarrativeVideo;
 }
@@ -61,6 +61,7 @@ const KIND_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap; color:
   league_moment: { icon: "trophy", color: "#FFD54F", label: "League Moment" },
   player_movement: { icon: "swap-horizontal", color: "#64B5F6", label: "Player Movement" },
   deadline_watch: { icon: "time", color: "#FF9800", label: "Deadline Watch" },
+  rivalry_game: { icon: "flash", color: "#E040FB", label: "Rivalry Game" },
 };
 
 function formatEventTime(iso: string): string {
@@ -264,7 +265,7 @@ export default function NarrativeDetailScreen() {
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>
-            {card.kind === "deadline_watch" || card.kind === "playoff_push" ? "Why this matters" : "Why this triggered"}
+            {card.kind === "deadline_watch" || card.kind === "playoff_push" || card.kind === "rivalry_game" ? "Why this matters" : "Why this triggered"}
           </Text>
           <View style={styles.reasonCard}>
             {card.kind === "playoff_push" && card.meta?.teams?.length > 1 ? (
@@ -277,7 +278,7 @@ export default function NarrativeDetailScreen() {
                   ))}
                 </React.Fragment>
               ))
-            ) : (card.kind === "deadline_watch" || card.kind === "playoff_push") && card.meta?.reason ? (
+            ) : (card.kind === "deadline_watch" || card.kind === "playoff_push" || card.kind === "rivalry_game") && card.meta?.reason ? (
               card.meta.reason.split("\n\n").map((paragraph: string, i: number) => (
                 <Text key={i} style={[styles.reasonText, i > 0 && { marginTop: 10 }]}>
                   {paragraph}
@@ -324,6 +325,19 @@ export default function NarrativeDetailScreen() {
                   </View>
                 </View>
               ))}
+            </View>
+          </View>
+        )}
+
+        {card.kind === "rivalry_game" && card.meta && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Rivalry Matchup</Text>
+            <View style={styles.rivalryCard}>
+              <View style={styles.rivalryRow}>
+                <Text style={styles.rivalryLabel}>{card.meta.rivalryLabel}</Text>
+                <Text style={styles.rivalryTeams}>{card.meta.awayTeam} @ {card.meta.homeTeam}</Text>
+                <Text style={styles.rivalryTime}>{card.meta.league} · {formatEventTime(card.meta.startTime)}</Text>
+              </View>
             </View>
           </View>
         )}
@@ -396,7 +410,7 @@ export default function NarrativeDetailScreen() {
         )}
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Upcoming Games</Text>
+          <Text style={styles.sectionTitle}>{card.kind === "rivalry_game" ? "Upcoming Event" : "Upcoming Games"}</Text>
           {relevantEvents.length > 0 ? (
             relevantEvents.map((event) => (
               <Pressable
