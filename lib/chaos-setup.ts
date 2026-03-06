@@ -4,6 +4,7 @@ import { getEventEnd, isEventLive } from "@/utils/time";
 import { favoriteInvolved } from "@/utils/favorites";
 import { computeFeaturedScore, isNowInAnyRitualWindow, type FeaturedScore } from "@/lib/rituals";
 import { computeHockeyChaosScore, type ChaosScoreResult } from "@/lib/chaos-score";
+import { computeActivityScore, type ActivityScore } from "@/lib/activity-score";
 
 const CHAOS_WINDOW_MS = 90 * 60 * 1000;
 const CHAOS_DEBUG = __DEV__;
@@ -308,7 +309,13 @@ export interface ChaosSetup {
   generatedAt: number;
   candidateCount: number;
   debug?: ChaosDebug;
+  promotedEventId?: string;
+  originalSlot4?: SportEvent;
+  slot4ActivityScore?: number;
+  slot4ActivitySignals?: string[];
 }
+
+const PROMOTION_THRESHOLD = 15;
 
 export interface ChaosDebug {
   anchorFound: boolean;
@@ -694,4 +701,87 @@ export function findHigherPriorityAlert(
   }
 
   return null;
+}
+
+export function evaluateSlot4Promotion(
+  setup: ChaosSetup,
+  allEvents: SportEvent[],
+  now: Date,
+  getScoreStatus?: (id: string) => string | undefined,
+  getScoreData?: (id: string) => ScoreData | undefined,
+  previousScores?: Record<string, ScoreData>,
+): ChaosSetup | null {
+  if (!setup.primary) return null;
+  if (setup.secondary.length === 0) return null;
+
+  const stableSlots = [setup.primary, ...setup.secondary.slice(0, 2)];
+  const stableIds = new Set(stableSlots.map((e) => e.id));
+
+  const currentSlot4 = setup.secondary.length >= 3 ? setup.secondary[2] : null;
+  const slot4Event = currentSlot4 ?? setup.originalSlot4 ?? null;
+
+  const slot4IsLive = slot4Event
+    ? (isEventLive(slot4Event, now) || getScoreStatus?.(slot4Event.id) === "live")
+    : false;
+
+  const slot4Score = (slot4Event && slot4IsLive)
+    ? computeActivityScore(
+        slot4Event,
+        getScoreData?.(slot4Event.id),
+        previousScores?.[slot4Event.id],
+      )
+    : { total: 0, signals: [] } as ActivityScore;
+
+  let bestCandidate: SportEvent | null = null;
+  let bestScore: ActivityScore = { total: 0, signals: [] };
+
+  for (const event of allEvents) {
+    if (stableIds.has(event.id)) continue;
+    if (currentSlot4 && event.id === currentSlot4.id) continue;
+
+    const live = isEventLive(event, now) || getScoreStatus?.(event.id) === "live";
+    if (!live) continue;
+
+    if (isTerminalEvent(event, now, getScoreStatus)) continue;
+
+    const score = computeActivityScore(
+      event,
+      getScoreData?.(event.id),
+      previousScores?.[event.id],
+    );
+
+    if (score.total > bestScore.total) {
+      bestScore = score;
+      bestCandidate = event;
+    }
+  }
+
+  if (!bestCandidate) return null;
+  if (bestScore.total - slot4Score.total < PROMOTION_THRESHOLD) return null;
+
+  if (CHAOS_DEBUG) {
+    const sortedSignals = [...bestScore.signals].sort((a, b) => b.points - a.points);
+    console.log(
+      `[CHAOS] Slot 4 promotion: ${bestCandidate.awayTeam} @ ${bestCandidate.homeTeam} (activity=${bestScore.total} [${sortedSignals.map(s => s.name).join(", ")}]) replaces ${slot4Event ? `${slot4Event.awayTeam} @ ${slot4Event.homeTeam}` : "empty"} (activity=${slot4Score.total})`,
+    );
+  }
+
+  const newSecondary = [
+    ...setup.secondary.slice(0, 2),
+    bestCandidate,
+  ];
+
+  const sortedSignalNames = [...bestScore.signals]
+    .sort((a, b) => b.points - a.points)
+    .map((s) => s.name);
+
+  return {
+    ...setup,
+    secondary: newSecondary,
+    promotedEventId: bestCandidate.id,
+    originalSlot4: setup.originalSlot4 ?? currentSlot4 ?? undefined,
+    slot4ActivityScore: bestScore.total,
+    slot4ActivitySignals: sortedSignalNames,
+    generatedAt: now.getTime(),
+  };
 }

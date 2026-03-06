@@ -48,8 +48,10 @@ import type { Favorites } from "@/lib/data";
 import {
   buildChaosSetup,
   selfHealChaosSetup,
+  evaluateSlot4Promotion,
   type ChaosSetup,
 } from "@/lib/chaos-setup";
+import type { ScoreData } from "@/lib/scores-context";
 
 function LiveDot() {
   const opacity = useSharedValue(1);
@@ -339,12 +341,16 @@ function SecondaryCarousel({
   getScore,
   favorites,
   chaosDebugRanks,
+  promotedEventId,
+  activitySignals,
 }: {
   events: SportEvent[];
   now: Date;
   getScore: (id: string) => any;
   favorites: any;
   chaosDebugRanks?: { id: string; emotion: number; tension: number; sportPri: number; isLive: boolean; isFav: boolean; isAnchor: boolean; isBackfill: boolean; hockeyChaosTotal?: number; hockeyChaosReasons?: string[] }[];
+  promotedEventId?: string;
+  activitySignals?: string[];
 }) {
   const { width: screenWidth } = useWindowDimensions();
   const contentWidth = screenWidth - PAGE_PADDING * 2;
@@ -353,18 +359,30 @@ function SecondaryCarousel({
     : Math.round(contentWidth * 0.82);
   const snapInterval = tileWidth + TILE_GAP;
 
-  const renderTile = useCallback(({ item }: { item: SportEvent }) => (
-    <View style={{ width: tileWidth, marginRight: TILE_GAP }}>
-      <ChaosCard
-        event={item}
-        isPrimary={false}
-        now={now}
-        score={getScore(item.id)}
-        favorites={favorites}
-        tensionRank={chaosDebugRanks?.find(r => r.id === item.id)?.tension ?? 0}
-      />
-    </View>
-  ), [tileWidth, now, getScore, favorites, chaosDebugRanks]);
+  const renderTile = useCallback(({ item }: { item: SportEvent }) => {
+    const isPromoted = item.id === promotedEventId;
+    return (
+      <View style={{ width: tileWidth, marginRight: TILE_GAP }}>
+        {isPromoted && (
+          <View style={styles.emergingMomentBanner}>
+            <Ionicons name="flash" size={12} color="#FFD600" />
+            <Text style={styles.emergingMomentText}>Emerging Moment</Text>
+            {activitySignals && activitySignals.length > 0 && (
+              <Text style={styles.emergingMomentSignal}>{activitySignals[0]}</Text>
+            )}
+          </View>
+        )}
+        <ChaosCard
+          event={item}
+          isPrimary={false}
+          now={now}
+          score={getScore(item.id)}
+          favorites={favorites}
+          tensionRank={chaosDebugRanks?.find(r => r.id === item.id)?.tension ?? 0}
+        />
+      </View>
+    );
+  }, [tileWidth, now, getScore, favorites, chaosDebugRanks, promotedEventId, activitySignals]);
 
   return (
     <FlatList
@@ -393,6 +411,7 @@ export default function WatchScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const [chaosSetup, setChaosSetup] = useState<ChaosSetup | null>(null);
   const chaosRef = useRef<ChaosSetup | null>(null);
+  const prevScoresRef = useRef<Record<string, ScoreData>>({});
 
   const getScoreStatus = useCallback(
     (id: string) => getScore(id)?.status,
@@ -439,6 +458,26 @@ export default function WatchScreen() {
       chaosRef.current = healed;
     }
   }, [now, scores]);
+
+  useEffect(() => {
+    if (!chaosRef.current) return;
+    const current = chaosRef.current;
+
+    const promoted = evaluateSlot4Promotion(
+      current,
+      allEvents,
+      now,
+      getScoreStatus,
+      getScoreData,
+      prevScoresRef.current,
+    );
+    if (promoted) {
+      setChaosSetup(promoted);
+      chaosRef.current = promoted;
+    }
+
+    prevScoresRef.current = { ...scores };
+  }, [scores]);
 
   const handleRebuild = useCallback(() => {
     if (Platform.OS !== "web") {
@@ -672,6 +711,8 @@ export default function WatchScreen() {
                 getScore={getScore}
                 favorites={favorites}
                 chaosDebugRanks={chaosSetup.debug?.selectedRanks}
+                promotedEventId={chaosSetup.promotedEventId}
+                activitySignals={chaosSetup.slot4ActivitySignals}
               />
             )}
           </View>
@@ -1047,6 +1088,30 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
   },
 
+  emergingMomentBanner: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginBottom: 6,
+    backgroundColor: "rgba(255, 214, 0, 0.12)",
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "rgba(255, 214, 0, 0.25)",
+  },
+  emergingMomentText: {
+    fontSize: 11,
+    fontFamily: "Inter_600SemiBold",
+    color: "#FFD600",
+    letterSpacing: 0.3,
+  },
+  emergingMomentSignal: {
+    fontSize: 10,
+    fontFamily: "Inter_400Regular",
+    color: "rgba(255, 214, 0, 0.7)",
+    marginLeft: 4,
+  },
   secondaryCard: {
     borderRadius: 14,
     overflow: "hidden",
