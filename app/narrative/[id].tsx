@@ -178,12 +178,20 @@ export default function NarrativeDetailScreen() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Why this triggered</Text>
+          <Text style={styles.sectionTitle}>
+            {card.kind === "deadline_watch" ? "Why this matters" : "Why this triggered"}
+          </Text>
           <View style={styles.reasonCard}>
             {card.kind === "playoff_push" && card.meta?.teams?.length > 1 ? (
               card.meta.teams.map((t: any, i: number) => (
                 <Text key={i} style={[styles.reasonText, i > 0 && { marginTop: 8 }]}>
                   {t.reason}
+                </Text>
+              ))
+            ) : card.kind === "deadline_watch" && card.meta?.reason ? (
+              card.meta.reason.split("\n\n").map((paragraph: string, i: number) => (
+                <Text key={i} style={[styles.reasonText, i > 0 && { marginTop: 10 }]}>
+                  {paragraph}
                 </Text>
               ))
             ) : (
@@ -247,45 +255,55 @@ export default function NarrativeDetailScreen() {
         )}
 
         {card.kind === "deadline_watch" && card.meta && (
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Deadline Intel</Text>
-            <View style={styles.reasonCard}>
-              <View style={styles.deadlineRow}>
-                <Ionicons name="time" size={16} color="#FF9800" />
-                <Text style={styles.deadlineLabel}>
-                  {card.meta.hoursUntil > 0
-                    ? `${Math.round(card.meta.hoursUntil)}h until deadline`
-                    : "Deadline has passed"}
-                </Text>
-              </View>
-              {card.meta.tradeWatch && (
+          <>
+            <View style={styles.section}>
+              <Text style={styles.sectionTitle}>Trade Deadline Countdown</Text>
+              <View style={styles.reasonCard}>
                 <View style={styles.deadlineRow}>
-                  <Ionicons name="eye" size={16} color="#FF9800" />
-                  <Text style={styles.deadlineLabel}>On trade-watch list</Text>
-                </View>
-              )}
-              {card.meta.expiringContracts > 0 && (
-                <View style={styles.deadlineRow}>
-                  <Ionicons name="document-text" size={16} color="#FF9800" />
+                  <Ionicons name="timer-outline" size={16} color="#FF9800" />
                   <Text style={styles.deadlineLabel}>
-                    {card.meta.expiringContracts} expiring contract{card.meta.expiringContracts > 1 ? "s" : ""}
+                    {card.meta.hoursUntil > 0
+                      ? `${Math.round(card.meta.hoursUntil)}h remaining`
+                      : "Deadline has passed"}
                   </Text>
                 </View>
-              )}
-              {card.meta.playoffBubble && (
-                <View style={styles.deadlineRow}>
-                  <Ionicons name="analytics" size={16} color="#FF9800" />
-                  <Text style={styles.deadlineLabel}>Playoff bubble team</Text>
-                </View>
-              )}
-              {card.meta.recentTradeActivity && (
-                <View style={styles.deadlineRow}>
-                  <Ionicons name="swap-horizontal" size={16} color="#FF9800" />
-                  <Text style={styles.deadlineLabel}>Recent trade activity detected</Text>
-                </View>
-              )}
+                {card.meta.tradeWatch && (
+                  <View style={styles.deadlineRow}>
+                    <Ionicons name="eye-outline" size={16} color="#FF9800" />
+                    <Text style={styles.deadlineLabel}>On trade-watch list</Text>
+                  </View>
+                )}
+                {card.meta.expiringContracts > 0 && (
+                  <View style={styles.deadlineRow}>
+                    <Ionicons name="document-text-outline" size={16} color="#FF9800" />
+                    <Text style={styles.deadlineLabel}>
+                      {card.meta.expiringContracts} expiring contract{card.meta.expiringContracts > 1 ? "s" : ""}
+                    </Text>
+                  </View>
+                )}
+                {card.meta.playoffBubble && (
+                  <View style={styles.deadlineRow}>
+                    <Ionicons name="analytics-outline" size={16} color="#FF9800" />
+                    <Text style={styles.deadlineLabel}>Playoff bubble team</Text>
+                  </View>
+                )}
+              </View>
             </View>
-          </View>
+
+            {card.meta.players?.length > 0 && (
+              <View style={styles.section}>
+                <Text style={styles.sectionTitle}>Players to Watch</Text>
+                <View style={styles.reasonCard}>
+                  {card.meta.players.map((p: any, i: number) => (
+                    <View key={i} style={[styles.playerRow, i > 0 && styles.resultRowBorder]}>
+                      <Text style={styles.playerName}>{p.name}</Text>
+                      <Text style={styles.playerStatus}>{p.status}</Text>
+                    </View>
+                  ))}
+                </View>
+              </View>
+            )}
+          </>
         )}
 
         <View style={styles.section}>
@@ -541,6 +559,22 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
     fontFamily: "Inter_500Medium",
     flex: 1,
+  },
+  playerRow: {
+    flexDirection: "row" as const,
+    justifyContent: "space-between" as const,
+    alignItems: "center" as const,
+    paddingVertical: 10,
+  },
+  playerName: {
+    fontSize: 15,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_600SemiBold",
+  },
+  playerStatus: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_400Regular",
   },
   eventCard: {
     flexDirection: "row",

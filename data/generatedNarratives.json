@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-06T03:20:47.423Z",
+  "lastUpdated": "2026-03-06T03:31:31.017Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -83,14 +83,14 @@
         ],
         "playersIngested": 597,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-06T03:20:47.423Z"
+        "timestamp": "2026-03-06T03:31:31.017Z"
       },
       "cacheHistoryCount": 694,
       "error": null
     },
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": 40.65349361111111,
+      "hoursUntil": 40.4747175,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -116,8 +116,8 @@
         "tabHint": "Rituals"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-06T03:20:47.423Z",
-      "expiresAt": "2026-03-13T03:20:47.423Z",
+      "triggeredAt": "2026-03-06T03:31:31.017Z",
+      "expiresAt": "2026-03-13T03:31:31.017Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -140,21 +140,21 @@
           "echl-web-25179"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T03:20:47.423Z",
-        "windowEnd": "2026-03-13T03:20:47.423Z",
+        "windowStart": "2026-03-06T03:31:31.017Z",
+        "windowEnd": "2026-03-13T03:31:31.017Z",
         "reason": "Tulsa Oilers: back-to-back + 4 games in 7 days"
       }
     },
     {
       "id": "deadline_watch_ana",
       "title": "Ducks on Deadline Watch",
-      "subtitle": "Deadline in 2 days — 3 expiring contracts",
+      "subtitle": "3 contracts expiring before the trade deadline (Henrique, Vatrano, Gudas)",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-06T03:20:47.423Z",
+      "triggeredAt": "2026-03-06T03:31:31.017Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
@@ -164,7 +164,7 @@
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 40.7,
+        "hoursUntil": 40.5,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -173,7 +173,21 @@
         "expiringContracts": 3,
         "playoffBubble": false,
         "recentTradeActivity": false,
-        "reason": "Triggered by: trade-watch list, 3 expiring contracts",
+        "reason": "Anaheim has 3 expiring contracts heading into the trade deadline and has appeared on multiple trade-watch lists.\n\nPlayers like Adam Henrique, Frank Vatrano, and Radko Gudas could attract interest if the Ducks decide to move assets.",
+        "players": [
+          {
+            "name": "Adam Henrique",
+            "status": "UFA"
+          },
+          {
+            "name": "Frank Vatrano",
+            "status": "UFA"
+          },
+          {
+            "name": "Radko Gudas",
+            "status": "Trade interest"
+          }
+        ],
         "eventIds": [
           "nhl_2025020987",
           "nhl_2025021006",
@@ -191,8 +205,8 @@
         "tabHint": "Watch"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-06T03:20:47.423Z",
-      "expiresAt": "2026-03-13T03:20:47.423Z",
+      "triggeredAt": "2026-03-06T03:31:31.017Z",
+      "expiresAt": "2026-03-13T03:31:31.017Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -215,21 +229,21 @@
           "nhl_2025021027"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T03:20:47.423Z",
-        "windowEnd": "2026-03-13T03:20:47.423Z",
+        "windowStart": "2026-03-06T03:31:31.017Z",
+        "windowEnd": "2026-03-13T03:31:31.017Z",
         "reason": "Boston Bruins: back-to-back + 4 games in 7 days"
       }
     },
     {
       "id": "deadline_watch_bos",
       "title": "Bruins on Deadline Watch",
-      "subtitle": "Deadline in 2 days — 2 expiring contracts • bubble team",
+      "subtitle": "2 contracts expiring before the trade deadline (DeBrusk, Grzelcyk)",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-06T03:20:47.423Z",
+      "triggeredAt": "2026-03-06T03:31:31.017Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
@@ -239,7 +253,7 @@
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 40.7,
+        "hoursUntil": 40.5,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",
@@ -249,7 +263,17 @@
         "expiringContracts": 2,
         "playoffBubble": true,
         "recentTradeActivity": false,
-        "reason": "Triggered by: trade-watch list, 2 expiring contracts, playoff bubble",
+        "reason": "Boston has 2 expiring contracts heading into the trade deadline and has appeared on multiple trade-watch lists.\n\nSitting on the playoff bubble, the Bruins may look to add — or could become sellers if things don't turn around.\n\nPlayers like Jake DeBrusk and Matt Grzelcyk could attract interest if the Bruins decide to move assets.",
+        "players": [
+          {
+            "name": "Jake DeBrusk",
+            "status": "UFA"
+          },
+          {
+            "name": "Matt Grzelcyk",
+            "status": "UFA"
+          }
+        ],
         "eventIds": [
           "nhl_2025020990",
           "nhl_2025021002",

@@ -1017,19 +1017,71 @@ function generatePlayerMovement(cache: PlayerMovementCache, now: Date): ExploreN
 const NHL_TRADE_DEADLINE = "2026-03-07T15:00:00-05:00";
 const DEADLINE_WINDOW_HOURS = 72;
 
+interface DeadlinePlayer {
+  name: string;
+  status: string;
+}
+
 interface DeadlineTeamConfig {
   team: string;
   abbrev: string;
   tradeWatch: boolean;
   expiringContracts: number;
   playoffBubble: boolean;
+  players: DeadlinePlayer[];
 }
 
 const DEADLINE_TEAMS: DeadlineTeamConfig[] = [
-  { team: "Anaheim Ducks", abbrev: "ANA", tradeWatch: true, expiringContracts: 3, playoffBubble: false },
-  { team: "Boston Bruins", abbrev: "BOS", tradeWatch: true, expiringContracts: 2, playoffBubble: true },
-  { team: "San Diego Gulls", abbrev: "SDG", tradeWatch: false, expiringContracts: 0, playoffBubble: false },
+  {
+    team: "Anaheim Ducks", abbrev: "ANA", tradeWatch: true, expiringContracts: 3, playoffBubble: false,
+    players: [
+      { name: "Adam Henrique", status: "UFA" },
+      { name: "Frank Vatrano", status: "UFA" },
+      { name: "Radko Gudas", status: "Trade interest" },
+    ],
+  },
+  {
+    team: "Boston Bruins", abbrev: "BOS", tradeWatch: true, expiringContracts: 2, playoffBubble: true,
+    players: [
+      { name: "Jake DeBrusk", status: "UFA" },
+      { name: "Matt Grzelcyk", status: "UFA" },
+    ],
+  },
+  {
+    team: "San Diego Gulls", abbrev: "SDG", tradeWatch: false, expiringContracts: 0, playoffBubble: false,
+    players: [],
+  },
 ];
+
+function buildDeadlineNarrative(cfg: DeadlineTeamConfig, teamShort: string, movementAbbrevs: Set<string>): string {
+  const parts: string[] = [];
+
+  if (cfg.expiringContracts > 0 && cfg.tradeWatch) {
+    const contractWord = cfg.expiringContracts === 1 ? "an expiring contract" : `${cfg.expiringContracts} expiring contracts`;
+    parts.push(`${cfg.team.split(" ").slice(0, -1).join(" ")} has ${contractWord} heading into the trade deadline and has appeared on multiple trade-watch lists.`);
+  } else if (cfg.expiringContracts > 0) {
+    const contractWord = cfg.expiringContracts === 1 ? "an expiring contract" : `${cfg.expiringContracts} expiring contracts`;
+    parts.push(`${cfg.team.split(" ").slice(0, -1).join(" ")} has ${contractWord} to address before the deadline.`);
+  } else if (cfg.tradeWatch) {
+    parts.push(`${cfg.team.split(" ").slice(0, -1).join(" ")} has been generating trade buzz in recent weeks.`);
+  }
+
+  if (cfg.playoffBubble) {
+    parts.push(`Sitting on the playoff bubble, the ${teamShort} may look to add — or could become sellers if things don't turn around.`);
+  }
+
+  if (cfg.players.length > 0) {
+    const playerNames = cfg.players.map(p => p.name);
+    const nameList = playerNames.length <= 2 ? playerNames.join(" and ") : `${playerNames.slice(0, -1).join(", ")}, and ${playerNames[playerNames.length - 1]}`;
+    parts.push(`Players like ${nameList} could attract interest if the ${teamShort} decide to move assets.`);
+  }
+
+  if (movementAbbrevs.has(cfg.abbrev)) {
+    parts.push(`Recent roster activity suggests the front office is already exploring its options.`);
+  }
+
+  return parts.join("\n\n");
+}
 
 function generateDeadlineWatch(
   events: AppEvent[],
@@ -1074,24 +1126,18 @@ function generateDeadlineWatch(
     const teamShort = cfg.team.split(" ").pop() || cfg.team;
     const title = `${teamShort} on Deadline Watch`;
 
-    const subtitleParts: string[] = [];
-    if (hoursUntil > 24) {
-      const daysUntil = Math.ceil(hoursUntil / 24);
-      subtitleParts.push(`Deadline in ${daysUntil} day${daysUntil > 1 ? "s" : ""}`);
-    } else if (hoursUntil > 0) {
-      const h = Math.floor(hoursUntil);
-      subtitleParts.push(h > 1 ? `Deadline in ${h} hours` : "Deadline tomorrow at 12 PM PT");
+    let subtitle = "";
+    if (cfg.expiringContracts > 0) {
+      const playerLastNames = cfg.players.map(p => p.name.split(" ").pop()).filter(Boolean);
+      const namesSuffix = playerLastNames.length > 0 ? ` (${playerLastNames.join(", ")})` : "";
+      subtitle = `${cfg.expiringContracts} contract${cfg.expiringContracts > 1 ? "s" : ""} expiring before the trade deadline${namesSuffix}`;
+    } else if (cfg.tradeWatch) {
+      subtitle = "On the trade-watch radar heading into the deadline";
     } else {
-      subtitleParts.push("Deadline passed");
+      subtitle = "Monitoring ahead of the trade deadline";
     }
 
-    const detailParts: string[] = [];
-    if (cfg.expiringContracts > 0) detailParts.push(`${cfg.expiringContracts} expiring contract${cfg.expiringContracts > 1 ? "s" : ""}`);
-    if (cfg.playoffBubble) detailParts.push("bubble team");
-    if (movementAbbrevs72h.has(cfg.abbrev)) detailParts.push("move already made");
-    if (detailParts.length > 0) subtitleParts.push(detailParts.join(" • "));
-
-    const subtitle = subtitleParts.join(" — ");
+    const narrative = buildDeadlineNarrative(cfg, teamShort, movementAbbrevs72h);
 
     let priority = 80;
     if (isTeamFavoriteOrTracked(cfg.team, favorites)) priority += 10;
@@ -1129,7 +1175,8 @@ function generateDeadlineWatch(
         expiringContracts: cfg.expiringContracts,
         playoffBubble: cfg.playoffBubble,
         recentTradeActivity: movementAbbrevs72h.has(cfg.abbrev),
-        reason: `Triggered by: ${triggers.join(", ")}`,
+        reason: narrative,
+        players: cfg.players,
         eventIds: teamEvents.map(e => e.id),
       },
     });
