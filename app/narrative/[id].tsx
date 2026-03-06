@@ -30,7 +30,7 @@ interface ExploreNarrativeCard {
   priority: number;
   triggeredAt: string;
   expiresAt?: string;
-  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement";
+  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch";
   meta?: Record<string, any>;
 }
 
@@ -48,6 +48,7 @@ const KIND_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap; color:
   momentum: { icon: "trending-up", color: "#00E676", label: "Momentum" },
   league_moment: { icon: "trophy", color: "#FFD54F", label: "League Moment" },
   player_movement: { icon: "swap-horizontal", color: "#64B5F6", label: "Player Movement" },
+  deadline_watch: { icon: "time", color: "#FF9800", label: "Deadline Watch" },
 };
 
 function formatEventTime(iso: string): string {
@@ -241,6 +242,48 @@ export default function NarrativeDetailScreen() {
                   <Text style={styles.rivalryTime}>{m.league} · {formatEventTime(m.startTime)}</Text>
                 </View>
               ))}
+            </View>
+          </View>
+        )}
+
+        {card.kind === "deadline_watch" && card.meta && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Deadline Intel</Text>
+            <View style={styles.reasonCard}>
+              <View style={styles.deadlineRow}>
+                <Ionicons name="time" size={16} color="#FF9800" />
+                <Text style={styles.deadlineLabel}>
+                  {card.meta.hoursUntil > 0
+                    ? `${Math.round(card.meta.hoursUntil)}h until deadline`
+                    : "Deadline has passed"}
+                </Text>
+              </View>
+              {card.meta.tradeWatch && (
+                <View style={styles.deadlineRow}>
+                  <Ionicons name="eye" size={16} color="#FF9800" />
+                  <Text style={styles.deadlineLabel}>On trade-watch list</Text>
+                </View>
+              )}
+              {card.meta.expiringContracts > 0 && (
+                <View style={styles.deadlineRow}>
+                  <Ionicons name="document-text" size={16} color="#FF9800" />
+                  <Text style={styles.deadlineLabel}>
+                    {card.meta.expiringContracts} expiring contract{card.meta.expiringContracts > 1 ? "s" : ""}
+                  </Text>
+                </View>
+              )}
+              {card.meta.playoffBubble && (
+                <View style={styles.deadlineRow}>
+                  <Ionicons name="analytics" size={16} color="#FF9800" />
+                  <Text style={styles.deadlineLabel}>Playoff bubble team</Text>
+                </View>
+              )}
+              {card.meta.recentTradeActivity && (
+                <View style={styles.deadlineRow}>
+                  <Ionicons name="swap-horizontal" size={16} color="#FF9800" />
+                  <Text style={styles.deadlineLabel}>Recent trade activity detected</Text>
+                </View>
+              )}
             </View>
           </View>
         )}
@@ -486,6 +529,18 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: Colors.textSecondary,
     fontFamily: "Inter_400Regular",
+  },
+  deadlineRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 10,
+    paddingVertical: 6,
+  },
+  deadlineLabel: {
+    fontSize: 14,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_500Medium",
+    flex: 1,
   },
   eventCard: {
     flexDirection: "row",

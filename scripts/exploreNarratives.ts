@@ -21,7 +21,7 @@ export interface ExploreNarrativeCard {
   priority: number;
   triggeredAt: string;
   expiresAt?: string;
-  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement";
+  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch";
   region: Region;
   regionPriority: number;
   regionLabel: string;
@@ -1014,6 +1014,130 @@ function generatePlayerMovement(cache: PlayerMovementCache, now: Date): ExploreN
   }];
 }
 
+const NHL_TRADE_DEADLINE = "2026-03-07T15:00:00-05:00";
+const DEADLINE_WINDOW_HOURS = 72;
+
+interface DeadlineTeamConfig {
+  team: string;
+  abbrev: string;
+  tradeWatch: boolean;
+  expiringContracts: number;
+  playoffBubble: boolean;
+}
+
+const DEADLINE_TEAMS: DeadlineTeamConfig[] = [
+  { team: "Anaheim Ducks", abbrev: "ANA", tradeWatch: true, expiringContracts: 3, playoffBubble: false },
+  { team: "Boston Bruins", abbrev: "BOS", tradeWatch: true, expiringContracts: 2, playoffBubble: true },
+  { team: "San Diego Gulls", abbrev: "SDG", tradeWatch: false, expiringContracts: 0, playoffBubble: false },
+];
+
+function generateDeadlineWatch(
+  events: AppEvent[],
+  favorites: Favorites,
+  now: Date,
+  recentMovements: PlayerMovementEntry[]
+): { cards: ExploreNarrativeCard[]; debug: { active: boolean; hoursUntil: number; teamsEvaluated: number; triggers: Record<string, string[]> } } {
+  const deadlineDate = new Date(NHL_TRADE_DEADLINE);
+  const hoursUntil = (deadlineDate.getTime() - now.getTime()) / 3600000;
+  const debug = { active: false, hoursUntil, teamsEvaluated: 0, triggers: {} as Record<string, string[]> };
+
+  if (hoursUntil < -24 || hoursUntil > DEADLINE_WINDOW_HOURS) {
+    return { cards: [], debug };
+  }
+  debug.active = true;
+
+  const movementAbbrevs72h = new Set<string>();
+  const recentCutoff = new Date(now.getTime() - 72 * 3600000);
+  for (const m of recentMovements) {
+    if (new Date(m.detectedAt) > recentCutoff) {
+      movementAbbrevs72h.add(m.fromTeam);
+      movementAbbrevs72h.add(m.toTeam);
+    }
+  }
+
+  const cards: ExploreNarrativeCard[] = [];
+
+  for (const cfg of DEADLINE_TEAMS) {
+    if (!isTeamFavoriteOrTracked(cfg.team, favorites)) continue;
+    debug.teamsEvaluated++;
+
+    const triggers: string[] = [];
+    if (cfg.tradeWatch) triggers.push("trade-watch list");
+    if (cfg.expiringContracts > 0) triggers.push(`${cfg.expiringContracts} expiring contract${cfg.expiringContracts > 1 ? "s" : ""}`);
+    if (cfg.playoffBubble) triggers.push("playoff bubble");
+    if (movementAbbrevs72h.has(cfg.abbrev)) triggers.push("recent trade activity");
+
+    if (triggers.length === 0) continue;
+
+    debug.triggers[cfg.team] = triggers;
+
+    const teamShort = cfg.team.split(" ").pop() || cfg.team;
+    const title = `${teamShort} on Deadline Watch`;
+
+    const subtitleParts: string[] = [];
+    if (hoursUntil > 24) {
+      const daysUntil = Math.ceil(hoursUntil / 24);
+      subtitleParts.push(`Deadline in ${daysUntil} day${daysUntil > 1 ? "s" : ""}`);
+    } else if (hoursUntil > 0) {
+      const h = Math.floor(hoursUntil);
+      subtitleParts.push(h > 1 ? `Deadline in ${h} hours` : "Deadline tomorrow at 12 PM PT");
+    } else {
+      subtitleParts.push("Deadline passed");
+    }
+
+    const detailParts: string[] = [];
+    if (cfg.expiringContracts > 0) detailParts.push(`${cfg.expiringContracts} expiring contract${cfg.expiringContracts > 1 ? "s" : ""}`);
+    if (cfg.playoffBubble) detailParts.push("bubble team");
+    if (movementAbbrevs72h.has(cfg.abbrev)) detailParts.push("move already made");
+    if (detailParts.length > 0) subtitleParts.push(detailParts.join(" • "));
+
+    const subtitle = subtitleParts.join(" — ");
+
+    let priority = 80;
+    if (isTeamFavoriteOrTracked(cfg.team, favorites)) priority += 10;
+    if (cfg.playoffBubble) priority += 5;
+    if (movementAbbrevs72h.has(cfg.abbrev)) priority += 8;
+    priority += Math.min(cfg.expiringContracts * 2, 6);
+
+    const hasConfirmedTrade = recentMovements.some(m =>
+      (m.fromTeam === cfg.abbrev || m.toTeam === cfg.abbrev) && new Date(m.detectedAt) > recentCutoff
+    );
+    if (hasConfirmedTrade) continue;
+
+    const region = resolveRegion(cfg.team);
+    const teamEvents = getEventsForTeam(events, cfg.team, 7, now, "NHL");
+
+    cards.push({
+      id: `deadline_watch_${cfg.abbrev.toLowerCase()}`,
+      title,
+      subtitle,
+      impact: { label: "Feeds: Watch", tabHint: "Watch" },
+      priority,
+      triggeredAt: now.toISOString(),
+      expiresAt: new Date(deadlineDate.getTime() + 24 * 3600000).toISOString(),
+      kind: "deadline_watch",
+      region,
+      regionPriority: getRegionPriority(region),
+      regionLabel: getRegionLabel(region),
+      meta: {
+        team: cfg.team,
+        abbrev: cfg.abbrev,
+        deadlineDate: NHL_TRADE_DEADLINE,
+        hoursUntil: Math.round(hoursUntil * 10) / 10,
+        triggers,
+        tradeWatch: cfg.tradeWatch,
+        expiringContracts: cfg.expiringContracts,
+        playoffBubble: cfg.playoffBubble,
+        recentTradeActivity: movementAbbrevs72h.has(cfg.abbrev),
+        reason: `Triggered by: ${triggers.join(", ")}`,
+        eventIds: teamEvents.map(e => e.id),
+      },
+    });
+  }
+
+  return { cards, debug };
+}
+
 interface DroppedCandidate {
   id: string;
   kind: string;
@@ -1032,6 +1156,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     totalBeforeCap: number;
     totalAfterCap: number;
     playerMovement: any;
+    deadlineWatch: any;
   };
 }> {
   console.log("\n=== Generating Explore Narratives ===");
@@ -1075,7 +1200,15 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     console.log(`  Player Movement: skipped (${movementError})`);
   }
 
-  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...playerMovementCards];
+  const movementCache = loadMovementCache();
+  const deadlineResult = generateDeadlineWatch(events, favorites, now, movementCache.movements);
+  console.log(`  Deadline Watch: ${deadlineResult.cards.length} card(s) (active: ${deadlineResult.debug.active}, ${deadlineResult.debug.hoursUntil.toFixed(1)}h until deadline)`);
+  for (const c of deadlineResult.cards) {
+    console.log(`    [${c.region}] ${c.title}: ${c.subtitle}`);
+    console.log(`      triggers: ${c.meta?.triggers?.join(", ")}`);
+  }
+
+  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...playerMovementCards, ...deadlineResult.cards];
 
   const rawCandidatesByKindAndRegion: Record<string, Record<string, number>> = {};
   for (const c of allCandidates) {
@@ -1136,6 +1269,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
       cacheHistoryCount: movementCacheHistoryCount,
       error: movementError,
     },
+    deadlineWatch: deadlineResult.debug,
   };
 
   console.log(`  Total: ${allCandidates.length} → selected ${selected.length}`);

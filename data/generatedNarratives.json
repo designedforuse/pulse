@@ -1,30 +1,51 @@
 {
-  "lastUpdated": "2026-03-05T05:14:44.534Z",
+  "lastUpdated": "2026-03-06T03:20:47.423Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
-        "NewEngland": 1
+        "NewEngland": 1,
+        "SoCal": 1
       },
       "league_moment": {
-        "Other": 1,
+        "Other": 2
+      },
+      "deadline_watch": {
+        "SoCal": 1,
         "NewEngland": 1
       }
     },
     "combinedPushByRegion": {
-      "NewEngland": false
+      "NewEngland": false,
+      "SoCal": false
     },
     "finalFeedByRegion": {
+      "SoCal": [
+        "playoff_push: Oilers Push Week",
+        "deadline_watch: Ducks on Deadline Watch"
+      ],
       "NewEngland": [
         "playoff_push: Bruins Push Week",
-        "league_moment: Big Stage"
-      ],
-      "Other": [
-        "league_moment: Rivalry Weekend"
+        "deadline_watch: Bruins on Deadline Watch"
       ]
     },
-    "droppedCandidatesReasons": [],
-    "totalBeforeCap": 3,
-    "totalAfterCap": 3,
+    "droppedCandidatesReasons": [
+      {
+        "id": "league_moment_rivalry",
+        "kind": "league_moment",
+        "region": "Other",
+        "title": "Rivalry Weekend",
+        "reason": "feed cap (max 4)"
+      },
+      {
+        "id": "league_moment_tournament",
+        "kind": "league_moment",
+        "region": "Other",
+        "title": "Big Stage",
+        "reason": "feed cap (max 4)"
+      }
+    ],
+    "totalBeforeCap": 6,
+    "totalAfterCap": 4,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -60,15 +81,107 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 574,
+        "playersIngested": 597,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-05T05:14:44.534Z"
+        "timestamp": "2026-03-06T03:20:47.423Z"
       },
-      "cacheHistoryCount": 668,
+      "cacheHistoryCount": 694,
       "error": null
+    },
+    "deadlineWatch": {
+      "active": true,
+      "hoursUntil": 40.65349361111111,
+      "teamsEvaluated": 3,
+      "triggers": {
+        "Anaheim Ducks": [
+          "trade-watch list",
+          "3 expiring contracts"
+        ],
+        "Boston Bruins": [
+          "trade-watch list",
+          "2 expiring contracts",
+          "playoff bubble"
+        ]
+      }
     }
   },
   "cards": [
+    {
+      "id": "playoff_push_socal",
+      "title": "Oilers Push Week",
+      "subtitle": "4 in 7 · back-to-back",
+      "impact": {
+        "label": "Impacts: Saturday Game Day",
+        "ritualId": "saturday_spotlight",
+        "tabHint": "Rituals"
+      },
+      "priority": 100,
+      "triggeredAt": "2026-03-06T03:20:47.423Z",
+      "expiresAt": "2026-03-13T03:20:47.423Z",
+      "kind": "playoff_push",
+      "region": "SoCal",
+      "regionPriority": 2,
+      "regionLabel": "SoCal",
+      "meta": {
+        "teams": [
+          {
+            "team": "Tulsa Oilers",
+            "league": "ECHL",
+            "gamesInNext7Days": 4,
+            "gamesInNext5Days": 3,
+            "hasBackToBack": true,
+            "reason": "Tulsa Oilers: back-to-back + 4 games in 7 days"
+          }
+        ],
+        "eventIds": [
+          "echl-web-25125",
+          "echl-web-25137",
+          "echl-web-25149",
+          "echl-web-25179"
+        ],
+        "combinedTeamCount": 1,
+        "windowStart": "2026-03-06T03:20:47.423Z",
+        "windowEnd": "2026-03-13T03:20:47.423Z",
+        "reason": "Tulsa Oilers: back-to-back + 4 games in 7 days"
+      }
+    },
+    {
+      "id": "deadline_watch_ana",
+      "title": "Ducks on Deadline Watch",
+      "subtitle": "Deadline in 2 days — 3 expiring contracts",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 96,
+      "triggeredAt": "2026-03-06T03:20:47.423Z",
+      "expiresAt": "2026-03-08T20:00:00.000Z",
+      "kind": "deadline_watch",
+      "region": "SoCal",
+      "regionPriority": 2,
+      "regionLabel": "SoCal",
+      "meta": {
+        "team": "Anaheim Ducks",
+        "abbrev": "ANA",
+        "deadlineDate": "2026-03-07T15:00:00-05:00",
+        "hoursUntil": 40.7,
+        "triggers": [
+          "trade-watch list",
+          "3 expiring contracts"
+        ],
+        "tradeWatch": true,
+        "expiringContracts": 3,
+        "playoffBubble": false,
+        "recentTradeActivity": false,
+        "reason": "Triggered by: trade-watch list, 3 expiring contracts",
+        "eventIds": [
+          "nhl_2025020987",
+          "nhl_2025021006",
+          "nhl_2025021022",
+          "nhl_2025021029"
+        ]
+      }
+    },
     {
       "id": "playoff_push_newengland",
       "title": "Bruins Push Week",
@@ -78,8 +191,8 @@
         "tabHint": "Watch"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-05T05:14:44.534Z",
-      "expiresAt": "2026-03-12T05:14:44.534Z",
+      "triggeredAt": "2026-03-06T03:20:47.423Z",
+      "expiresAt": "2026-03-13T03:20:47.423Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -96,101 +209,53 @@
           }
         ],
         "eventIds": [
-          "nhl_2025020979",
           "nhl_2025020990",
           "nhl_2025021002",
-          "nhl_2025021012"
+          "nhl_2025021012",
+          "nhl_2025021027"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-05T05:14:44.534Z",
-        "windowEnd": "2026-03-12T05:14:44.534Z",
+        "windowStart": "2026-03-06T03:20:47.423Z",
+        "windowEnd": "2026-03-13T03:20:47.423Z",
         "reason": "Boston Bruins: back-to-back + 4 games in 7 days"
       }
     },
     {
-      "id": "league_moment_tournament",
-      "title": "Big Stage",
-      "subtitle": "2 tournament/knockout matches this week",
+      "id": "deadline_watch_bos",
+      "title": "Bruins on Deadline Watch",
+      "subtitle": "Deadline in 2 days — 2 expiring contracts • bubble team",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
-      "priority": 70,
-      "triggeredAt": "2026-03-05T05:14:44.534Z",
-      "expiresAt": "2026-03-12T05:14:44.534Z",
-      "kind": "league_moment",
+      "priority": 99,
+      "triggeredAt": "2026-03-06T03:20:47.423Z",
+      "expiresAt": "2026-03-08T20:00:00.000Z",
+      "kind": "deadline_watch",
       "region": "NewEngland",
       "regionPriority": 3,
       "regionLabel": "New England",
       "meta": {
-        "type": "tournament",
-        "matchCount": 2,
-        "matches": [
-          {
-            "away": "India",
-            "home": "England",
-            "league": "ICC",
-            "round": "T20 WC Semi-Final 2",
-            "startTime": "2026-03-05T13:30:00.000Z"
-          },
-          {
-            "away": "TBC",
-            "home": "TBC",
-            "league": "ICC",
-            "round": "T20 WC Final – Match 55",
-            "startTime": "2026-03-08T13:30:00.000Z"
-          }
+        "team": "Boston Bruins",
+        "abbrev": "BOS",
+        "deadlineDate": "2026-03-07T15:00:00-05:00",
+        "hoursUntil": 40.7,
+        "triggers": [
+          "trade-watch list",
+          "2 expiring contracts",
+          "playoff bubble"
         ],
+        "tradeWatch": true,
+        "expiringContracts": 2,
+        "playoffBubble": true,
+        "recentTradeActivity": false,
+        "reason": "Triggered by: trade-watch list, 2 expiring contracts, playoff bubble",
         "eventIds": [
-          "cricket-t20wc-7db831b237",
-          "cricket-t20wc-d20c4ab40f"
-        ],
-        "reason": "Found 2 tournament stage match(es) in the next 7 days"
-      }
-    },
-    {
-      "id": "league_moment_rivalry",
-      "title": "Rivalry Weekend",
-      "subtitle": "2 rivalry matchups in the next 7 days",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 70,
-      "triggeredAt": "2026-03-05T05:14:44.534Z",
-      "expiresAt": "2026-03-12T05:14:44.534Z",
-      "kind": "league_moment",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "type": "rivalry",
-        "matchCount": 2,
-        "rivalries": [
-          "Keystone State Rivalry",
-          "Derby della Madonnina"
-        ],
-        "matches": [
-          {
-            "label": "Keystone State Rivalry",
-            "away": "Philadelphia Flyers",
-            "home": "Pittsburgh Penguins",
-            "league": "NHL",
-            "startTime": "2026-03-07T22:30:00.000Z"
-          },
-          {
-            "label": "Derby della Madonnina",
-            "away": "Internazionale",
-            "home": "AC Milan",
-            "league": "Serie A",
-            "startTime": "2026-03-08T19:45:00.000Z"
-          }
-        ],
-        "eventIds": [
-          "nhl_2025020993",
-          "soccer-seriea-20260308-1945-internazionale-at-ac-milan"
-        ],
-        "reason": "2 known rivalry matchup(s) found: Keystone State Rivalry, Derby della Madonnina"
+          "nhl_2025020990",
+          "nhl_2025021002",
+          "nhl_2025021012",
+          "nhl_2025021027"
+        ]
       }
     }
   ]
