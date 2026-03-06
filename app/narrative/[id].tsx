@@ -179,16 +179,20 @@ export default function NarrativeDetailScreen() {
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>
-            {card.kind === "deadline_watch" ? "Why this matters" : "Why this triggered"}
+            {card.kind === "deadline_watch" || card.kind === "playoff_push" ? "Why this matters" : "Why this triggered"}
           </Text>
           <View style={styles.reasonCard}>
             {card.kind === "playoff_push" && card.meta?.teams?.length > 1 ? (
               card.meta.teams.map((t: any, i: number) => (
-                <Text key={i} style={[styles.reasonText, i > 0 && { marginTop: 8 }]}>
-                  {t.reason}
-                </Text>
+                <React.Fragment key={i}>
+                  {(t.reason || "").split("\n\n").map((p: string, j: number) => (
+                    <Text key={`${i}-${j}`} style={[styles.reasonText, (i > 0 || j > 0) && { marginTop: 10 }]}>
+                      {p}
+                    </Text>
+                  ))}
+                </React.Fragment>
               ))
-            ) : card.kind === "deadline_watch" && card.meta?.reason ? (
+            ) : (card.kind === "deadline_watch" || card.kind === "playoff_push") && card.meta?.reason ? (
               card.meta.reason.split("\n\n").map((paragraph: string, i: number) => (
                 <Text key={i} style={[styles.reasonText, i > 0 && { marginTop: 10 }]}>
                   {paragraph}

@@ -317,6 +317,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -342,6 +347,16 @@
           "teamAbbrev": "LAK",
           "gameId": "2025020929",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8474564": {
+      "name": "S. Stamkos",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -440,6 +455,16 @@
         }
       ]
     },
+    "8474600": {
+      "name": "R. Josi",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
     "8474641": {
       "name": "A. Henrique",
       "sightings": [
@@ -532,6 +557,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -777,6 +807,16 @@
           "teamAbbrev": "DET",
           "gameId": "2025020970",
           "seenAt": "2026-03-05T04:50:57.276Z"
+        }
+      ]
+    },
+    "8475287": {
+      "name": "E. Haula",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -1367,6 +1407,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -1527,6 +1572,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -1725,6 +1775,16 @@
         }
       ]
     },
+    "8476539": {
+      "name": "J. Marchessault",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
     "8476624": {
       "name": "B. Goodrow",
       "sightings": [
@@ -1747,6 +1807,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -1787,6 +1852,21 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
+    "8476869": {
+      "name": "B. Skjei",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -1857,6 +1937,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -1932,6 +2017,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -1957,6 +2047,16 @@
           "teamAbbrev": "ANA",
           "gameId": "2025020973",
           "seenAt": "2026-03-06T03:20:47.423Z"
+        }
+      ]
+    },
+    "8476887": {
+      "name": "F. Forsberg",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -2062,6 +2162,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -2317,6 +2422,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -2407,6 +2517,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -2452,6 +2567,21 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
+    "8477424": {
+      "name": "J. Saros",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -2712,6 +2842,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -2867,6 +3002,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -3217,6 +3357,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -3342,6 +3487,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -3397,6 +3547,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -3487,6 +3642,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -3612,6 +3772,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -3717,6 +3882,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -3812,6 +3982,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -4232,6 +4407,16 @@
           "teamAbbrev": "MIN",
           "gameId": "2025020951",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        }
+      ]
+    },
+    "8478519": {
+      "name": "A. Cirelli",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -4692,6 +4877,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -4827,6 +5017,21 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
+    "8479370": {
+      "name": "T. Jost",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -5087,6 +5292,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -5127,6 +5337,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -5167,6 +5382,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -5270,6 +5490,16 @@
         }
       ]
     },
+    "8479980": {
+      "name": "N. Hague",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
     "8479983": {
       "name": "M. Ferraro",
       "sightings": [
@@ -5312,6 +5542,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -5367,6 +5602,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -5785,6 +6025,16 @@
         }
       ]
     },
+    "8480246": {
+      "name": "N. Perbix",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
     "8480280": {
       "name": "J. Swayman",
       "sightings": [
@@ -5797,6 +6047,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -5867,6 +6122,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -5877,6 +6137,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -6315,6 +6580,16 @@
         }
       ]
     },
+    "8480887": {
+      "name": "J. Harris",
+      "sightings": [
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
     "8480891": {
       "name": "M. Kesselring",
       "sightings": [
@@ -6412,6 +6687,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -6442,6 +6722,16 @@
           "teamAbbrev": "STL",
           "gameId": "2025020943",
           "seenAt": "2026-03-06T03:20:47.423Z"
+        }
+      ]
+    },
+    "8481020": {
+      "name": "J. Annunen",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -6967,6 +7257,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025020933",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -7620,6 +7915,16 @@
         }
       ]
     },
+    "8482103": {
+      "name": "O. Wiesblatt",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
     "8482105": {
       "name": "J. Sanderson",
       "sightings": [
@@ -7652,6 +7957,16 @@
           "teamAbbrev": "NJD",
           "gameId": "2025020943",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        }
+      ]
+    },
+    "8482111": {
+      "name": "J. Barron",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -7790,6 +8105,16 @@
         }
       ]
     },
+    "8482146": {
+      "name": "L. Evangelista",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
     "8482149": {
       "name": "C. Perfetti",
       "sightings": [
@@ -7887,6 +8212,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -7912,6 +8242,16 @@
           "teamAbbrev": "ANA",
           "gameId": "2025020973",
           "seenAt": "2026-03-06T03:20:47.423Z"
+        }
+      ]
+    },
+    "8482192": {
+      "name": "I. Phillips",
+      "sightings": [
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -8057,6 +8397,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -8102,6 +8447,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025020912",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -8280,6 +8630,16 @@
         }
       ]
     },
+    "8482715": {
+      "name": "R. Ufko",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
     "8482720": {
       "name": "M. Knies",
       "sightings": [
@@ -8385,6 +8745,16 @@
         }
       ]
     },
+    "8482742": {
+      "name": "Z. L'Heureux",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
     "8482745": {
       "name": "M. McTavish",
       "sightings": [
@@ -8432,6 +8802,16 @@
           "teamAbbrev": "DET",
           "gameId": "2025020970",
           "seenAt": "2026-03-05T04:50:57.276Z"
+        }
+      ]
+    },
+    "8482768": {
+      "name": "F. Svechkov",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -8675,6 +9055,16 @@
         }
       ]
     },
+    "8483398": {
+      "name": "D. Carlile",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
     "8483406": {
       "name": "T. Ward",
       "sightings": [
@@ -8745,6 +9135,16 @@
         }
       ]
     },
+    "8483447": {
+      "name": "C. Geekie",
+      "sightings": [
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025020980",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
     "8483450": {
       "name": "R. Greene",
       "sightings": [
@@ -8795,6 +9195,16 @@
         }
       ]
     },
+    "8483465": {
+      "name": "J. Kemell",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
     "8483466": {
       "name": "K. Korchinski",
       "sightings": [
@@ -8837,6 +9247,11 @@
           "teamAbbrev": "BOS",
           "gameId": "2025020959",
           "seenAt": "2026-03-04T04:02:55.897Z"
+        },
+        {
+          "teamAbbrev": "BOS",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -8957,6 +9372,16 @@
           "teamAbbrev": "EDM",
           "gameId": "2025020929",
           "seenAt": "2026-03-04T05:37:04.015Z"
+        }
+      ]
+    },
+    "8483513": {
+      "name": "R. Schaefer",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
         }
       ]
     },
@@ -9525,6 +9950,16 @@
         }
       ]
     },
+    "8484241": {
+      "name": "M. Wood",
+      "sightings": [
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025020979",
+          "seenAt": "2026-03-06T03:51:15.227Z"
+        }
+      ]
+    },
     "8484255": {
       "name": "J. Polin",
       "sightings": [
@@ -9937,7 +10372,7 @@
     }
   },
   "movements": [],
-  "lastUpdated": "2026-03-06T03:31:31.017Z",
+  "lastUpdated": "2026-03-06T03:51:15.227Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -9967,8 +10402,8 @@
         "reason": "LEAGUE_NOT_SUPPORTED"
       }
     ],
-    "playersIngested": 597,
+    "playersIngested": 617,
     "movementsDetectedThisRun": [],
-    "timestamp": "2026-03-06T03:31:31.017Z"
+    "timestamp": "2026-03-06T03:51:15.227Z"
   }
 }

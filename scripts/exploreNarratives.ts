@@ -271,6 +271,34 @@ const PUSH_TITLE_MAP: Record<Region, string> = {
   Other: "Push Week",
 };
 
+const NUMBER_WORDS: Record<number, string> = { 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven" };
+
+function buildPushSubtitle(c: PushCandidate): string {
+  const gamesWord = NUMBER_WORDS[c.gamesInNext5Days >= 4 ? c.gamesInNext5Days : c.gamesInNext7Days] || String(c.gamesInNext5Days >= 4 ? c.gamesInNext5Days : c.gamesInNext7Days);
+  const windowWord = c.gamesInNext5Days >= 4 ? NUMBER_WORDS[5] || "5" : NUMBER_WORDS[7] || "7";
+  const base = `${gamesWord.charAt(0).toUpperCase() + gamesWord.slice(1)} games in ${windowWord} days`;
+  return c.hasBackToBack ? `${base}, including a back-to-back` : base;
+}
+
+function buildPushNarrative(team: string, gamesInNext5Days: number, gamesInNext7Days: number, hasB2B: boolean): string {
+  const cityName = team.split(" ").slice(0, -1).join(" ");
+  const useShort = gamesInNext5Days >= 4;
+  const count = useShort ? gamesInNext5Days : gamesInNext7Days;
+  const window = useShort ? 5 : 7;
+  const gamesWord = NUMBER_WORDS[count] || String(count);
+  const windowWord = NUMBER_WORDS[window] || String(window);
+
+  let first = `${cityName} plays ${gamesWord} times in ${windowWord} days`;
+  if (hasB2B) {
+    first += ", including a back-to-back this weekend.";
+  } else {
+    first += ".";
+  }
+
+  const second = "This stretch could shape momentum heading into the final push of the season.";
+  return `${first}\n\n${second}`;
+}
+
 function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date): {
   cards: ExploreNarrativeCard[];
   debugInfo: PushDebugInfo;
@@ -321,7 +349,7 @@ function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date
       windowStart: now.toISOString(),
       windowEnd: new Date(now.getTime() + 7 * 86400000).toISOString(),
       eventIds: teamEvents7.map(e => e.id),
-      reason: `${fav.team}: ${reasonParts.join(", ")}`,
+      reason: buildPushNarrative(fav.team, gamesIn5, gamesIn7, b2b),
       events: teamEvents7,
       region: getRegionForTeam(fav.team),
     });
@@ -360,12 +388,9 @@ function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date
       ? `${group[0].shortName} Push Week`
       : PUSH_TITLE_MAP[region];
 
-    const subtitle = group.map(c => {
-      const best = c.gamesInNext5Days >= 4 ? `${c.gamesInNext5Days} in 5` : `${c.gamesInNext7Days} in 7`;
-      return group.length === 1
-        ? [best, c.hasBackToBack ? "back-to-back" : ""].filter(Boolean).join(" · ")
-        : `${c.shortName} (${best})`;
-    }).join(" · ");
+    const subtitle = group.length === 1
+      ? buildPushSubtitle(group[0])
+      : group.map(c => `${c.shortName}: ${buildPushSubtitle(c)}`).join(" · ");
 
     cards.push({
       id: `playoff_push_${region.toLowerCase()}`,
@@ -392,7 +417,7 @@ function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date
         combinedTeamCount: group.length,
         windowStart: now.toISOString(),
         windowEnd: new Date(now.getTime() + 7 * 86400000).toISOString(),
-        reason: group.map(c => c.reason).join("; "),
+        reason: group.map(c => c.reason).join("\n\n"),
       },
     });
   }

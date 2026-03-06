@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-06T03:31:31.017Z",
+  "lastUpdated": "2026-03-06T03:51:15.227Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -81,16 +81,16 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 597,
+        "playersIngested": 617,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-06T03:31:31.017Z"
+        "timestamp": "2026-03-06T03:51:15.227Z"
       },
-      "cacheHistoryCount": 694,
+      "cacheHistoryCount": 719,
       "error": null
     },
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": 40.4747175,
+      "hoursUntil": 40.14577027777778,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -109,15 +109,15 @@
     {
       "id": "playoff_push_socal",
       "title": "Oilers Push Week",
-      "subtitle": "4 in 7 · back-to-back",
+      "subtitle": "Four games in seven days, including a back-to-back",
       "impact": {
         "label": "Impacts: Saturday Game Day",
         "ritualId": "saturday_spotlight",
         "tabHint": "Rituals"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-06T03:31:31.017Z",
-      "expiresAt": "2026-03-13T03:31:31.017Z",
+      "triggeredAt": "2026-03-06T03:51:15.227Z",
+      "expiresAt": "2026-03-13T03:51:15.227Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -130,7 +130,7 @@
             "gamesInNext7Days": 4,
             "gamesInNext5Days": 3,
             "hasBackToBack": true,
-            "reason": "Tulsa Oilers: back-to-back + 4 games in 7 days"
+            "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
           }
         ],
         "eventIds": [
@@ -140,9 +140,9 @@
           "echl-web-25179"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T03:31:31.017Z",
-        "windowEnd": "2026-03-13T03:31:31.017Z",
-        "reason": "Tulsa Oilers: back-to-back + 4 games in 7 days"
+        "windowStart": "2026-03-06T03:51:15.227Z",
+        "windowEnd": "2026-03-13T03:51:15.227Z",
+        "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       }
     },
     {
@@ -154,7 +154,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-06T03:31:31.017Z",
+      "triggeredAt": "2026-03-06T03:51:15.227Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
@@ -164,7 +164,7 @@
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 40.5,
+        "hoursUntil": 40.1,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -199,14 +199,14 @@
     {
       "id": "playoff_push_newengland",
       "title": "Bruins Push Week",
-      "subtitle": "4 in 7 · back-to-back",
+      "subtitle": "Four games in seven days, including a back-to-back",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-06T03:31:31.017Z",
-      "expiresAt": "2026-03-13T03:31:31.017Z",
+      "triggeredAt": "2026-03-06T03:51:15.227Z",
+      "expiresAt": "2026-03-13T03:51:15.227Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -219,7 +219,7 @@
             "gamesInNext7Days": 4,
             "gamesInNext5Days": 3,
             "hasBackToBack": true,
-            "reason": "Boston Bruins: back-to-back + 4 games in 7 days"
+            "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
           }
         ],
         "eventIds": [
@@ -229,9 +229,9 @@
           "nhl_2025021027"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T03:31:31.017Z",
-        "windowEnd": "2026-03-13T03:31:31.017Z",
-        "reason": "Boston Bruins: back-to-back + 4 games in 7 days"
+        "windowStart": "2026-03-06T03:51:15.227Z",
+        "windowEnd": "2026-03-13T03:51:15.227Z",
+        "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       }
     },
     {
@@ -243,7 +243,7 @@
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-06T03:31:31.017Z",
+      "triggeredAt": "2026-03-06T03:51:15.227Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
@@ -253,7 +253,7 @@
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 40.5,
+        "hoursUntil": 40.1,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",
