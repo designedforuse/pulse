@@ -499,7 +499,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     if (!data || !data.cards) {
       return res.json({ cards: [], lastUpdated: null });
     }
-    return res.json({ cards: data.cards, lastUpdated: data.lastUpdated });
+    return res.json({ cards: data.cards, lastUpdated: data.lastUpdated, tonightStory: data.tonightStory || null });
   });
 
   app.get("/api/debug/explore-narratives", (_req, res) => {
@@ -534,7 +534,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           : allIds.length > 0 ? "cardEventIds" : "noEvents",
       };
     });
-    return res.json({ cards: enriched, debug: data.debug || {}, generatedAt: data.generatedAt });
+    return res.json({ cards: enriched, debug: data.debug || {}, generatedAt: data.generatedAt, tonightStory: data.tonightStory || null });
   });
 
   app.get("/api/debug/player-movement", (_req, res) => {

@@ -1900,8 +1900,114 @@ interface DroppedCandidate {
   reason: string;
 }
 
+export interface TonightStory {
+  signalType: string;
+  signalLabel: string;
+  headline: string;
+  body: string;
+  sourceEventId?: string;
+  sourceCard: { id: string; kind: string; title: string };
+}
+
+const TONIGHT_STORY_PRIORITY: string[] = [
+  "upset_alert",
+  "rivalry_game",
+  "clinch_watch",
+  "deadline_watch",
+  "playoff_push",
+  "momentum",
+  "league_moment",
+  "player_movement",
+];
+
+const TONIGHT_STORY_SIGNAL_LABELS: Record<string, string> = {
+  upset_alert: "UPSET ALERT",
+  rivalry_game: "RIVALRY GAME",
+  clinch_watch: "CLINCH WATCH",
+  deadline_watch: "DEADLINE WATCH",
+  playoff_push: "PLAYOFF PUSH",
+  momentum: "MOMENTUM",
+  league_moment: "LEAGUE MOMENT",
+  player_movement: "PLAYER MOVEMENT",
+};
+
+function buildTonightStory(candidates: ExploreNarrativeCard[]): TonightStory | null {
+  if (candidates.length === 0) return null;
+
+  let best: ExploreNarrativeCard | null = null;
+  for (const kind of TONIGHT_STORY_PRIORITY) {
+    const match = candidates.find(c => c.kind === kind);
+    if (match) { best = match; break; }
+  }
+  if (!best) return null;
+
+  const meta = best.meta || {};
+  const teamA = meta.awayTeam || meta.team || meta.teams?.[0]?.team || "";
+  const teamB = meta.homeTeam || meta.teams?.[1]?.team || "";
+  const eventIds = meta.eventIds || [];
+
+  let headline = "";
+  let body = "";
+
+  switch (best.kind) {
+    case "rivalry_game":
+      headline = "Rivalry Night";
+      body = teamA && teamB
+        ? `${teamA} faces ${teamB} tonight in one of the sport's most intense rivalries.`
+        : "A fierce rivalry matchup is on the schedule tonight.";
+      break;
+    case "deadline_watch":
+      headline = "Deadline Tension";
+      body = "Teams are making their final moves before the trade deadline.";
+      break;
+    case "clinch_watch":
+      headline = "Playoff Stakes";
+      body = teamA
+        ? `${teamA} could clinch advancement tonight.`
+        : "A team could clinch advancement tonight.";
+      break;
+    case "upset_alert":
+      headline = "Shock Result";
+      body = "A surprising result has shaken up the competition.";
+      break;
+    case "playoff_push":
+      headline = "Packed Schedule";
+      body = teamA
+        ? `${teamA} enters a critical stretch with games stacking up.`
+        : "A team enters a critical stretch with games stacking up.";
+      break;
+    case "momentum":
+      headline = "Hot Streak";
+      body = teamA
+        ? `${teamA} is riding momentum with a strong recent run.`
+        : "A team is riding momentum heading into tonight.";
+      break;
+    case "league_moment":
+      headline = "League Spotlight";
+      body = best.subtitle || "A significant league-wide moment is unfolding.";
+      break;
+    case "player_movement":
+      headline = "Roster Shakeup";
+      body = "A notable roster move is shaping the competition.";
+      break;
+    default:
+      headline = "Tonight's Narrative";
+      body = best.subtitle || "Something interesting is happening in the sports world.";
+  }
+
+  return {
+    signalType: best.kind,
+    signalLabel: TONIGHT_STORY_SIGNAL_LABELS[best.kind] || best.kind.toUpperCase(),
+    headline,
+    body,
+    sourceEventId: eventIds[0] || undefined,
+    sourceCard: { id: best.id, kind: best.kind, title: best.title },
+  };
+}
+
 export async function generateNarratives(events: AppEvent[], favorites: Favorites, now: Date, options?: { simulateMovement?: boolean }): Promise<{
   cards: ExploreNarrativeCard[];
+  tonightStory: TonightStory | null;
   debug: {
     rawCandidatesByKindAndRegion: Record<string, Record<string, number>>;
     combinedPushByRegion: Record<string, boolean>;
@@ -1911,6 +2017,9 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     totalAfterCap: number;
     playerMovement: any;
     deadlineWatch: any;
+    tonightStorySelectedSignal: string | null;
+    tonightStoryHeadline: string | null;
+    tonightStorySourceEvent: string | null;
   };
 }> {
   console.log("\n=== Generating Explore Narratives ===");
@@ -1982,6 +2091,13 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
 
   const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...playerMovementCards, ...deadlineResult.cards, ...rivalryResult.cards, ...upsetResult.cards, ...clinchResult.cards];
 
+  const tonightStory = buildTonightStory(allCandidates);
+  if (tonightStory) {
+    console.log(`  Tonight's Story: [${tonightStory.signalType}] "${tonightStory.headline}" — ${tonightStory.body}`);
+  } else {
+    console.log("  Tonight's Story: none (no candidates)");
+  }
+
   const rawCandidatesByKindAndRegion: Record<string, Record<string, number>> = {};
   for (const c of allCandidates) {
     if (!rawCandidatesByKindAndRegion[c.kind]) rawCandidatesByKindAndRegion[c.kind] = {};
@@ -2048,6 +2164,9 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     rivalryGame: rivalryResult.debug,
     upsetAlert: upsetResult.debug,
     clinchWatch: clinchResult.debug,
+    tonightStorySelectedSignal: tonightStory?.signalType || null,
+    tonightStoryHeadline: tonightStory?.headline || null,
+    tonightStorySourceEvent: tonightStory?.sourceEventId || null,
   };
 
   console.log(`  Total: ${allCandidates.length} → selected ${selected.length}`);
@@ -2062,7 +2181,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
   }
   console.log("=== Narratives Complete ===\n");
 
-  return { cards: selected, debug };
+  return { cards: selected, tonightStory, debug };
 }
 
 export async function generateAndSave(options?: { simulateMovement?: boolean }): Promise<ExploreNarrativeCard[]> {
@@ -2086,12 +2205,13 @@ export async function generateAndSave(options?: { simulateMovement?: boolean }):
   }
 
   const now = new Date();
-  const { cards, debug } = await generateNarratives(events, favorites, now, options);
+  const { cards, tonightStory, debug } = await generateNarratives(events, favorites, now, options);
 
   const output = {
     lastUpdated: now.toISOString(),
     debug,
     cards,
+    tonightStory,
   };
 
   fs.writeFileSync(NARRATIVES_PATH, JSON.stringify(output, null, 2));

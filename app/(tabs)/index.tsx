@@ -23,6 +23,15 @@ interface NarrativeImpact {
   tabHint?: "Watch" | "Rituals";
 }
 
+interface TonightStory {
+  signalType: string;
+  signalLabel: string;
+  headline: string;
+  body: string;
+  sourceEventId?: string;
+  sourceCard: { id: string; kind: string; title: string };
+}
+
 interface ExploreNarrativeCard {
   id: string;
   title: string;
@@ -61,11 +70,12 @@ export default function ExploreScreen() {
   const webTopInset = Platform.OS === "web" ? 67 : 0;
   const [refreshing, setRefreshing] = useState(false);
 
-  const { data, isLoading } = useQuery<{ cards: ExploreNarrativeCard[]; lastUpdated: string | null }>({
+  const { data, isLoading } = useQuery<{ cards: ExploreNarrativeCard[]; lastUpdated: string | null; tonightStory: TonightStory | null }>({
     queryKey: ["/api/narratives"],
   });
 
   const cards = data?.cards ?? [];
+  const tonightStory = data?.tonightStory ?? null;
 
   const onRefresh = useCallback(async () => {
     setRefreshing(true);
@@ -127,6 +137,32 @@ export default function ExploreScreen() {
         <Text style={styles.subtitle}>
           Upstream narrative intelligence
         </Text>
+
+        {tonightStory && (
+          <View style={styles.tonightStoryContainer}>
+            <Text style={styles.tonightStoryKicker}>
+              LIVE SIGNAL  •  {tonightStory.signalLabel}
+            </Text>
+            <Text style={styles.tonightStoryLabel}>TONIGHT'S STORY</Text>
+            <Text style={styles.tonightStoryHeadline}>{tonightStory.headline}</Text>
+            <Text style={styles.tonightStoryBody}>{tonightStory.body}</Text>
+            {tonightStory.sourceCard && (
+              <Pressable
+                onPress={() => {
+                  const matchingCard = cards.find(c => c.id === tonightStory.sourceCard.id);
+                  if (matchingCard) handleCardPress(matchingCard);
+                }}
+                style={({ pressed }) => [
+                  styles.tonightStoryCta,
+                  { opacity: pressed ? 0.7 : 1 },
+                ]}
+              >
+                <Text style={styles.tonightStoryCtaText}>Read more</Text>
+                <Ionicons name="arrow-forward" size={14} color={Colors.accent} />
+              </Pressable>
+            )}
+          </View>
+        )}
 
         {isLoading ? (
           <View style={styles.emptyContainer}>
@@ -249,6 +285,55 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingHorizontal: 24,
     lineHeight: 20,
+  },
+  tonightStoryContainer: {
+    backgroundColor: Colors.card,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    padding: 20,
+    marginBottom: 20,
+  },
+  tonightStoryKicker: {
+    fontSize: 10,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textMuted,
+    letterSpacing: 1.2,
+    textTransform: "uppercase" as const,
+    marginBottom: 10,
+  },
+  tonightStoryLabel: {
+    fontSize: 11,
+    fontFamily: "Inter_700Bold",
+    color: Colors.accent,
+    letterSpacing: 1.5,
+    textTransform: "uppercase" as const,
+    marginBottom: 6,
+  },
+  tonightStoryHeadline: {
+    fontSize: 22,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    marginBottom: 8,
+  },
+  tonightStoryBody: {
+    fontSize: 14,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textSecondary,
+    lineHeight: 21,
+    marginBottom: 12,
+  },
+  tonightStoryCta: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 6,
+    alignSelf: "flex-start" as const,
+    paddingTop: 4,
+  },
+  tonightStoryCtaText: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.accent,
   },
   cardsContainer: {
     gap: 12,

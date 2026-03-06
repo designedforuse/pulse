@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-06T05:30:49.106Z",
+  "lastUpdated": "2026-03-06T06:16:34.830Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -12,9 +12,6 @@
       "deadline_watch": {
         "SoCal": 1,
         "NewEngland": 1
-      },
-      "upset_alert": {
-        "Other": 1
       },
       "clinch_watch": {
         "SoCal": 1,
@@ -40,13 +37,6 @@
     },
     "droppedCandidatesReasons": [
       {
-        "id": "upset_alert_nhl_2025020978",
-        "kind": "upset_alert",
-        "region": "Other",
-        "title": "Upset Alert",
-        "reason": "feed cap (max 6)"
-      },
-      {
         "id": "clinch_watch_rugby-svns-rj2l89-d1",
         "kind": "clinch_watch",
         "region": "Other",
@@ -68,7 +58,7 @@
         "reason": "feed cap (max 6)"
       }
     ],
-    "totalBeforeCap": 10,
+    "totalBeforeCap": 9,
     "totalAfterCap": 6,
     "playerMovement": {
       "rawMovementCandidates": 0,
@@ -108,17 +98,17 @@
         ],
         "playersIngested": 637,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-06T05:30:49.106Z"
+        "timestamp": "2026-03-06T06:16:34.830Z"
       },
       "cacheHistoryCount": 722,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 10,
+    "candidateCountBeforeCap": 9,
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": 38.486359444444446,
+      "hoursUntil": 37.72365833333333,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -138,16 +128,19 @@
       "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 1,
+      "rawUpsetCandidates": 0,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 1,
-      "upsetFinalCount": 1
+      "upsetCompletedCandidates": 0,
+      "upsetFinalCount": 0
     },
     "clinchWatch": {
       "rawClinchCandidates": 3,
       "clinchAfterRegionFilter": 3,
       "clinchFinalCount": 3
-    }
+    },
+    "tonightStorySelectedSignal": "clinch_watch",
+    "tonightStoryHeadline": "Playoff Stakes",
+    "tonightStorySourceEvent": "nhl_2025020987"
   },
   "cards": [
     {
@@ -159,7 +152,7 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-06T05:30:49.106Z",
+      "triggeredAt": "2026-03-06T06:16:34.830Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
@@ -176,7 +169,7 @@
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 38.5,
+        "hoursUntil": 37.7,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -218,7 +211,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-06T05:30:49.106Z",
+      "triggeredAt": "2026-03-06T06:16:34.830Z",
       "expiresAt": "2026-03-07T06:00:00.000Z",
       "kind": "clinch_watch",
       "region": "SoCal",
@@ -248,8 +241,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-06T05:30:49.106Z",
-      "expiresAt": "2026-03-13T05:30:49.106Z",
+      "triggeredAt": "2026-03-06T06:16:34.830Z",
+      "expiresAt": "2026-03-13T06:16:34.830Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -272,8 +265,8 @@
           "echl-web-25179"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T05:30:49.106Z",
-        "windowEnd": "2026-03-13T05:30:49.106Z",
+        "windowStart": "2026-03-06T06:16:34.830Z",
+        "windowEnd": "2026-03-13T06:16:34.830Z",
         "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       }
     },
@@ -286,7 +279,7 @@
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-06T05:30:49.106Z",
+      "triggeredAt": "2026-03-06T06:16:34.830Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
@@ -303,7 +296,7 @@
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 38.5,
+        "hoursUntil": 37.7,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",
@@ -341,7 +334,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-06T05:30:49.106Z",
+      "triggeredAt": "2026-03-06T06:16:34.830Z",
       "expiresAt": "2026-03-07T21:30:00.000Z",
       "kind": "clinch_watch",
       "region": "NewEngland",
@@ -370,8 +363,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-06T05:30:49.106Z",
-      "expiresAt": "2026-03-13T05:30:49.106Z",
+      "triggeredAt": "2026-03-06T06:16:34.830Z",
+      "expiresAt": "2026-03-13T06:16:34.830Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -401,10 +394,22 @@
           "nhl_2025021027"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T05:30:49.106Z",
-        "windowEnd": "2026-03-13T05:30:49.106Z",
+        "windowStart": "2026-03-06T06:16:34.830Z",
+        "windowEnd": "2026-03-13T06:16:34.830Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       }
     }
-  ]
+  ],
+  "tonightStory": {
+    "signalType": "clinch_watch",
+    "signalLabel": "CLINCH WATCH",
+    "headline": "Playoff Stakes",
+    "body": "Montréal Canadiens could clinch advancement tonight.",
+    "sourceEventId": "nhl_2025020987",
+    "sourceCard": {
+      "id": "clinch_watch_nhl_2025020987",
+      "kind": "clinch_watch",
+      "title": "Clinch Watch"
+    }
+  }
 }
