@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-06T03:51:15.227Z",
+  "lastUpdated": "2026-03-06T04:04:29.950Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -67,7 +67,8 @@
           "STL",
           "TOR",
           "WPG",
-          "OTT"
+          "OTT",
+          "PHI"
         ],
         "skippedTeams": [
           {
@@ -81,16 +82,16 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 617,
+        "playersIngested": 638,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-06T03:51:15.227Z"
+        "timestamp": "2026-03-06T04:04:29.950Z"
       },
-      "cacheHistoryCount": 719,
+      "cacheHistoryCount": 721,
       "error": null
     },
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": 40.14577027777778,
+      "hoursUntil": 39.92501388888889,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -116,8 +117,8 @@
         "tabHint": "Rituals"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-06T03:51:15.227Z",
-      "expiresAt": "2026-03-13T03:51:15.227Z",
+      "triggeredAt": "2026-03-06T04:04:29.950Z",
+      "expiresAt": "2026-03-13T04:04:29.950Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -140,8 +141,8 @@
           "echl-web-25179"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T03:51:15.227Z",
-        "windowEnd": "2026-03-13T03:51:15.227Z",
+        "windowStart": "2026-03-06T04:04:29.950Z",
+        "windowEnd": "2026-03-13T04:04:29.950Z",
         "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       }
     },
@@ -154,7 +155,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-06T03:51:15.227Z",
+      "triggeredAt": "2026-03-06T04:04:29.950Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
@@ -164,7 +165,7 @@
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 40.1,
+        "hoursUntil": 39.9,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -205,8 +206,8 @@
         "tabHint": "Watch"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-06T03:51:15.227Z",
-      "expiresAt": "2026-03-13T03:51:15.227Z",
+      "triggeredAt": "2026-03-06T04:04:29.950Z",
+      "expiresAt": "2026-03-13T04:04:29.950Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -229,8 +230,8 @@
           "nhl_2025021027"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T03:51:15.227Z",
-        "windowEnd": "2026-03-13T03:51:15.227Z",
+        "windowStart": "2026-03-06T04:04:29.950Z",
+        "windowEnd": "2026-03-13T04:04:29.950Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       }
     },
@@ -243,7 +244,7 @@
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-06T03:51:15.227Z",
+      "triggeredAt": "2026-03-06T04:04:29.950Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
@@ -253,7 +254,7 @@
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 40.1,
+        "hoursUntil": 39.9,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",

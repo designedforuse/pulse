@@ -458,28 +458,31 @@ async function fetchEspnTournamentMatches(): Promise<Map<number, EspnCompetition
       const mensSingles = groupings.find(g => g.grouping?.slug === "mens-singles");
       if (!mensSingles) continue;
 
-      const matches = (mensSingles.competitions || []).filter(c => {
+      const allComps = mensSingles.competitions || [];
+
+      const seedMap = new Map<string, number>();
+      let tId: number | undefined;
+      for (const c of allComps) {
+        if (!tId) tId = c.tournamentId;
+        for (const p of (c.competitors || [])) {
+          const name = p.athlete?.displayName;
+          const seed = p.curatedRank?.current;
+          if (name && name !== "TBD" && seed && !seedMap.has(name)) {
+            seedMap.set(name, seed);
+          }
+        }
+      }
+
+      const matches = allComps.filter(c => {
         const p1 = c.competitors?.[0]?.athlete?.displayName;
-        return p1 && p1 !== "TBD";
+        const p2 = c.competitors?.[1]?.athlete?.displayName;
+        return p1 && p1 !== "TBD" && p2 && p2 !== "TBD";
       });
 
-      if (matches.length > 0) {
-        const tId = matches[0]?.tournamentId;
-        if (tId) {
-          const seedMap = new Map<string, number>();
-          for (const c of matches) {
-            for (const p of (c.competitors || [])) {
-              const name = p.athlete?.displayName;
-              const seed = p.curatedRank?.current;
-              if (name && seed && !seedMap.has(name)) {
-                seedMap.set(name, seed);
-              }
-            }
-          }
-          espnSeedMaps.set(tId, seedMap);
-          result.set(tId, matches);
-          console.log(`  Tennis ESPN: ${event.name} — ${matches.length} men's singles matches (${seedMap.size} seeds)`);
-        }
+      if (tId && matches.length > 0) {
+        espnSeedMaps.set(tId, seedMap);
+        result.set(tId, matches);
+        console.log(`  Tennis ESPN: ${event.name} — ${matches.length} men's singles matches (${seedMap.size} seeds, ${allComps.length - matches.length} TBD filtered)`);
       }
     }
   } catch (err: any) {
@@ -656,13 +659,17 @@ export async function fetchTennisEvents(): Promise<TennisFetchResult> {
     }
   }
 
+  const beforeFilter = events.length;
+  const filtered = events.filter(e => e.awayTeam !== "TBD" && e.homeTeam !== "TBD");
+  const tbdDropped = beforeFilter - filtered.length;
+
   const sourceUsed = espnCount > 0 ? "espn" : "hardcoded";
-  console.log(`  Tennis: ${events.length} total (${espnCount} ESPN, ${fallbackCount} fallback) in retention window`);
+  console.log(`  Tennis: ${filtered.length} total (${espnCount} ESPN, ${fallbackCount} fallback) in retention window${tbdDropped > 0 ? ` (${tbdDropped} TBD dropped)` : ""}`);
   if (espnActiveTournaments.size > 0) {
     console.log(`  Tennis: ESPN active tournaments (fallback suppressed): ${[...espnActiveTournaments].join(", ")}`);
   }
 
-  return { events, sourceUsed, count: events.length, tournamentCounts, espnActiveTournaments };
+  return { events: filtered, sourceUsed, count: filtered.length, tournamentCounts, espnActiveTournaments };
 }
 
 export function mergeTennisEvents(
@@ -677,6 +684,7 @@ export function mergeTennisEvents(
 
   const index = new Map<string, AppEvent>();
   for (const e of existing) {
+    if (e.awayTeam === "TBD" || e.homeTeam === "TBD") continue;
     if (e.source === "espn-tennis" && !freshIds.has(e.id)) {
       if (e.tournamentName && activeNames.has(e.tournamentName)) continue;
       const eventStart = new Date(e.startTimeLocal);
