@@ -41,7 +41,7 @@ interface ExploreNarrativeCard {
   priority: number;
   triggeredAt: string;
   expiresAt?: string;
-  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game" | "upset_alert";
+  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game" | "upset_alert" | "clinch_watch";
   meta?: Record<string, any>;
   video?: NarrativeVideo;
 }
@@ -63,6 +63,7 @@ const KIND_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap; color:
   deadline_watch: { icon: "time", color: "#FF9800", label: "Deadline Watch" },
   rivalry_game: { icon: "flash", color: "#E040FB", label: "Rivalry Game" },
   upset_alert: { icon: "alert-circle", color: "#FF1744", label: "Upset Alert" },
+  clinch_watch: { icon: "flag", color: "#00BCD4", label: "Clinch Watch" },
 };
 
 function formatEventTime(iso: string): string {
@@ -266,7 +267,7 @@ export default function NarrativeDetailScreen() {
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>
-            {card.kind === "deadline_watch" || card.kind === "playoff_push" || card.kind === "rivalry_game" || card.kind === "upset_alert" ? "Why this matters" : "Why this triggered"}
+            {card.kind === "deadline_watch" || card.kind === "playoff_push" || card.kind === "rivalry_game" || card.kind === "upset_alert" || card.kind === "clinch_watch" ? "Why this matters" : "Why this triggered"}
           </Text>
           <View style={styles.reasonCard}>
             {card.kind === "playoff_push" && card.meta?.teams?.length > 1 ? (
@@ -279,7 +280,7 @@ export default function NarrativeDetailScreen() {
                   ))}
                 </React.Fragment>
               ))
-            ) : (card.kind === "deadline_watch" || card.kind === "playoff_push" || card.kind === "rivalry_game" || card.kind === "upset_alert") && card.meta?.reason ? (
+            ) : (card.kind === "deadline_watch" || card.kind === "playoff_push" || card.kind === "rivalry_game" || card.kind === "upset_alert" || card.kind === "clinch_watch") && card.meta?.reason ? (
               card.meta.reason.split("\n\n").map((paragraph: string, i: number) => (
                 <Text key={i} style={[styles.reasonText, i > 0 && { marginTop: 10 }]}>
                   {paragraph}
@@ -326,6 +327,19 @@ export default function NarrativeDetailScreen() {
                   </View>
                 </View>
               ))}
+            </View>
+          </View>
+        )}
+
+        {card.kind === "clinch_watch" && card.meta && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Clinch Scenario</Text>
+            <View style={styles.rivalryCard}>
+              <View style={styles.rivalryRow}>
+                <Text style={styles.rivalryLabel}>{card.meta.conditionLabel}</Text>
+                <Text style={styles.rivalryTeams}>{card.meta.awayTeam} @ {card.meta.homeTeam}</Text>
+                <Text style={styles.rivalryTime}>{card.meta.league} · {formatEventTime(card.meta.startTime)}</Text>
+              </View>
             </View>
           </View>
         )}
@@ -429,7 +443,7 @@ export default function NarrativeDetailScreen() {
         )}
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>{card.kind === "rivalry_game" || card.kind === "upset_alert" ? "Upcoming Event" : "Upcoming Games"}</Text>
+          <Text style={styles.sectionTitle}>{card.kind === "rivalry_game" || card.kind === "upset_alert" || card.kind === "clinch_watch" ? "Relevant Event" : "Upcoming Games"}</Text>
           {relevantEvents.length > 0 ? (
             relevantEvents.map((event) => (
               <Pressable

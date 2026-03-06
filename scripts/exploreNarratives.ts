@@ -29,7 +29,7 @@ export interface ExploreNarrativeCard {
   priority: number;
   triggeredAt: string;
   expiresAt?: string;
-  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game" | "upset_alert";
+  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game" | "upset_alert" | "clinch_watch";
   region: Region;
   regionPriority: number;
   regionLabel: string;
@@ -1539,6 +1539,172 @@ async function generateUpsetAlert(
   return { cards, debug };
 }
 
+const CLINCH_SCENARIOS: {
+  teamName: string;
+  sport: string;
+  league: string;
+  conditionLabel: string;
+  expiresAt?: string;
+  region?: Region;
+}[] = [
+  { teamName: "Anaheim Ducks", sport: "hockey", league: "NHL", conditionLabel: "Can clinch playoff berth with a win" },
+  { teamName: "Boston Bruins", sport: "hockey", league: "NHL", conditionLabel: "Can secure wild card spot with a win" },
+  { teamName: "South Africa", sport: "rugby", league: "Test Rugby", conditionLabel: "Can secure semifinal place" },
+  { teamName: "Stormers", sport: "rugby", league: "URC", conditionLabel: "Can clinch home quarterfinal" },
+];
+
+const CLINCH_TOURNAMENT_KEYWORDS = ["final", "semifinal", "semi-final", "championship", "gold medal", "title match", "grand final"];
+
+interface ClinchCandidate {
+  event: AppEvent;
+  source: "team_config" | "tournament";
+  conditionLabel: string;
+  region: Region;
+}
+
+function buildClinchNarrative(c: ClinchCandidate): string {
+  if (c.source === "tournament") {
+    const sport = c.event.sport;
+    return `${c.event.awayTeam} and ${c.event.homeTeam} meet with a ${sport} title on the line.\n\nThis is the kind of moment entire seasons build toward.`;
+  }
+  return `${c.event.homeTeam} have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration.`;
+}
+
+function generateClinchWatch(
+  events: AppEvent[],
+  now: Date,
+): {
+  cards: ExploreNarrativeCard[];
+  debug: { rawClinchCandidates: number; clinchAfterRegionFilter: number; clinchFinalCount: number };
+} {
+  const cutoff = new Date(now.getTime() + 48 * 3600000);
+  const upcoming = events.filter(e => {
+    const start = new Date(e.startTimeLocal);
+    return start >= now && start <= cutoff;
+  });
+
+  const candidates: ClinchCandidate[] = [];
+
+  for (const ev of upcoming) {
+    for (const scenario of CLINCH_SCENARIOS) {
+      if (scenario.expiresAt && new Date(scenario.expiresAt) < now) continue;
+
+      const normHome = normalizeTeamName(ev.homeTeam);
+      const normAway = normalizeTeamName(ev.awayTeam);
+      const normTarget = normalizeTeamName(scenario.teamName);
+
+      if ((normHome.includes(normTarget) || normTarget.includes(normHome) ||
+           normAway.includes(normTarget) || normTarget.includes(normAway)) &&
+          ev.sport === scenario.sport) {
+        candidates.push({
+          event: ev,
+          source: "team_config",
+          conditionLabel: scenario.conditionLabel,
+          region: scenario.region || resolveRegion(ev.homeTeam, ev.league),
+        });
+        break;
+      }
+    }
+
+    const nameFields = [
+      ev.sessionTitle || "",
+      ev.tennisRound || "",
+      ev.olympicRound || "",
+      ev.t20WcMatchLabel || "",
+    ].join(" ").toLowerCase();
+
+    if (CLINCH_TOURNAMENT_KEYWORDS.some(kw => nameFields.includes(kw))) {
+      const alreadyAdded = candidates.some(c => c.event.id === ev.id);
+      if (!alreadyAdded) {
+        const isFinal = nameFields.includes("final") || nameFields.includes("championship") || nameFields.includes("gold medal") || nameFields.includes("title match") || nameFields.includes("grand final");
+        const label = isFinal
+          ? `${ev.sport.charAt(0).toUpperCase() + ev.sport.slice(1)} title on the line`
+          : "Advancement on the line";
+
+        candidates.push({
+          event: ev,
+          source: "tournament",
+          conditionLabel: label,
+          region: resolveRegion(ev.homeTeam, ev.league),
+        });
+      }
+    }
+  }
+
+  const debug = {
+    rawClinchCandidates: candidates.length,
+    clinchAfterRegionFilter: 0,
+    clinchFinalCount: 0,
+  };
+
+  if (candidates.length === 0) return { cards: [], debug };
+
+  candidates.sort((a, b) => {
+    const rp = getRegionPriority(a.region) - getRegionPriority(b.region);
+    if (rp !== 0) return rp;
+    return new Date(a.event.startTimeLocal).getTime() - new Date(b.event.startTimeLocal).getTime();
+  });
+
+  const regionSeen = new Set<Region>();
+  const filtered: ClinchCandidate[] = [];
+  for (const c of candidates) {
+    if (regionSeen.has(c.region)) continue;
+    regionSeen.add(c.region);
+    filtered.push(c);
+  }
+
+  debug.clinchAfterRegionFilter = filtered.length;
+
+  const cards: ExploreNarrativeCard[] = [];
+  for (const c of filtered) {
+    const ev = c.event;
+    const startDate = new Date(ev.startTimeLocal);
+    const isTonight = startDate.getDate() === now.getDate();
+
+    let subtitle: string;
+    if (c.source === "tournament") {
+      subtitle = `${ev.awayTeam} vs ${ev.homeTeam} · ${c.conditionLabel}`;
+    } else {
+      const timeLabel = isTonight ? "tonight" : "in the next 48h";
+      subtitle = `${c.conditionLabel} ${timeLabel}`;
+    }
+
+    const narrative = buildClinchNarrative(c);
+    const ritual = findBestRitual([ev]);
+    const impact: NarrativeImpact = ritual
+      ? { label: `Impacts: ${ritual.label}`, ritualId: ritual.id, tabHint: "Watch" }
+      : { label: "Feeds: Watch", tabHint: "Watch" };
+
+    cards.push({
+      id: `clinch_watch_${ev.id}`,
+      title: "Clinch Watch",
+      subtitle,
+      impact,
+      priority: 92,
+      triggeredAt: now.toISOString(),
+      expiresAt: new Date(startDate.getTime() + 4 * 3600000).toISOString(),
+      kind: "clinch_watch",
+      region: c.region,
+      regionPriority: getRegionPriority(c.region),
+      regionLabel: getRegionLabel(c.region),
+      meta: {
+        source: c.source,
+        conditionLabel: c.conditionLabel,
+        sport: ev.sport,
+        league: ev.league,
+        awayTeam: ev.awayTeam,
+        homeTeam: ev.homeTeam,
+        startTime: ev.startTimeLocal,
+        eventIds: [ev.id],
+        reason: narrative,
+      },
+    });
+  }
+
+  debug.clinchFinalCount = cards.length;
+  return { cards, debug };
+}
+
 const NHL_TRADE_DEADLINE = "2026-03-07T15:00:00-05:00";
 const DEADLINE_WINDOW_HOURS = 72;
 
@@ -1808,7 +1974,13 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     console.log(`    [${c.region}] ${c.title}: ${c.subtitle}`);
   }
 
-  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...playerMovementCards, ...deadlineResult.cards, ...rivalryResult.cards, ...upsetResult.cards];
+  const clinchResult = generateClinchWatch(events, now);
+  console.log(`  Clinch Watch: ${clinchResult.cards.length} card(s) (${clinchResult.debug.rawClinchCandidates} candidates)`);
+  for (const c of clinchResult.cards) {
+    console.log(`    [${c.region}] ${c.title}: ${c.subtitle}`);
+  }
+
+  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...playerMovementCards, ...deadlineResult.cards, ...rivalryResult.cards, ...upsetResult.cards, ...clinchResult.cards];
 
   const rawCandidatesByKindAndRegion: Record<string, Record<string, number>> = {};
   for (const c of allCandidates) {
@@ -1872,6 +2044,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     deadlineWatch: deadlineResult.debug,
     rivalryGame: rivalryResult.debug,
     upsetAlert: upsetResult.debug,
+    clinchWatch: clinchResult.debug,
   };
 
   console.log(`  Total: ${allCandidates.length} → selected ${selected.length}`);
