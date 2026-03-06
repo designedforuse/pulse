@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useCallback } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,12 +7,15 @@ import {
   Pressable,
   Platform,
   ActivityIndicator,
+  Image,
+  Linking,
 } from "react-native";
 import { useLocalSearchParams, router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import { useQuery } from "@tanstack/react-query";
+import { Video, ResizeMode } from "expo-av";
 import Colors from "@/constants/colors";
 import { getApiUrl } from "@/lib/query-client";
 
@@ -20,6 +23,14 @@ interface NarrativeImpact {
   label: string;
   ritualId?: string;
   tabHint?: "Watch" | "Rituals";
+}
+
+interface NarrativeVideo {
+  url: string;
+  thumbnailUrl: string;
+  durationSeconds: number;
+  title: string;
+  source: "youtube" | "nhl" | "league" | "social";
 }
 
 interface ExploreNarrativeCard {
@@ -32,6 +43,7 @@ interface ExploreNarrativeCard {
   expiresAt?: string;
   kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch";
   meta?: Record<string, any>;
+  video?: NarrativeVideo;
 }
 
 interface SportEvent {
@@ -153,6 +165,27 @@ export default function NarrativeDetailScreen() {
     router.push({ pathname: "/event-sheet", params: { eventId } });
   };
 
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const videoRef = useRef<Video>(null);
+
+  const formatDuration = useCallback((seconds: number) => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m}:${s.toString().padStart(2, "0")}`;
+  }, []);
+
+  const isYouTubeUrl = useCallback((url: string) => {
+    return url.includes("youtube.com") || url.includes("youtu.be");
+  }, []);
+
+  const handleVideoTap = useCallback((video: NarrativeVideo) => {
+    if (isYouTubeUrl(video.url)) {
+      Linking.openURL(video.url);
+    } else {
+      setVideoPlaying(true);
+    }
+  }, [isYouTubeUrl]);
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -176,6 +209,58 @@ export default function NarrativeDetailScreen() {
             </View>
           )}
         </View>
+
+        {card.video && (
+          <View style={styles.videoSection}>
+            {!videoPlaying || isYouTubeUrl(card.video.url) ? (
+              <Pressable
+                style={styles.videoThumbnailContainer}
+                onPress={() => handleVideoTap(card.video!)}
+              >
+                <Image
+                  source={{ uri: card.video.thumbnailUrl }}
+                  style={styles.videoThumbnail}
+                  resizeMode="cover"
+                />
+                <View style={styles.videoOverlay}>
+                  <View style={styles.videoPlayButton}>
+                    <Ionicons name="play" size={28} color="#FFFFFF" />
+                  </View>
+                </View>
+                <View style={styles.videoDurationBadge}>
+                  <Text style={styles.videoDurationText}>
+                    {formatDuration(card.video.durationSeconds)}
+                  </Text>
+                </View>
+                {isYouTubeUrl(card.video.url) && (
+                  <View style={styles.videoSourceBadge}>
+                    <Ionicons name="logo-youtube" size={14} color="#FF0000" />
+                  </View>
+                )}
+                <Text style={styles.videoTitle} numberOfLines={1}>
+                  {card.video.title}
+                </Text>
+              </Pressable>
+            ) : (
+              <View style={styles.videoPlayerContainer}>
+                <Video
+                  ref={videoRef}
+                  source={{ uri: card.video.url }}
+                  style={styles.videoPlayer}
+                  useNativeControls
+                  resizeMode={ResizeMode.CONTAIN}
+                  shouldPlay={false}
+                />
+                <Pressable
+                  style={styles.videoCloseButton}
+                  onPress={() => setVideoPlaying(false)}
+                >
+                  <Ionicons name="close-circle" size={24} color={Colors.textSecondary} />
+                </Pressable>
+              </View>
+            )}
+          </View>
+        )}
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>
@@ -579,6 +664,78 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: Colors.textSecondary,
     fontFamily: "Inter_400Regular",
+  },
+  videoSection: {
+    marginHorizontal: 20,
+    marginTop: 16,
+    marginBottom: 4,
+  },
+  videoThumbnailContainer: {
+    borderRadius: 12,
+    overflow: "hidden" as const,
+    backgroundColor: Colors.card,
+  },
+  videoThumbnail: {
+    width: "100%" as const,
+    aspectRatio: 16 / 9,
+  },
+  videoOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "center" as const,
+    alignItems: "center" as const,
+    backgroundColor: "rgba(0,0,0,0.35)",
+  },
+  videoPlayButton: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    backgroundColor: "rgba(0,0,0,0.6)",
+    justifyContent: "center" as const,
+    alignItems: "center" as const,
+    paddingLeft: 4,
+  },
+  videoDurationBadge: {
+    position: "absolute" as const,
+    bottom: 36,
+    right: 10,
+    backgroundColor: "rgba(0,0,0,0.75)",
+    borderRadius: 4,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+  },
+  videoDurationText: {
+    fontSize: 12,
+    color: "#FFFFFF",
+    fontFamily: "Inter_600SemiBold",
+  },
+  videoSourceBadge: {
+    position: "absolute" as const,
+    top: 10,
+    right: 10,
+    backgroundColor: "rgba(0,0,0,0.6)",
+    borderRadius: 4,
+    padding: 4,
+  },
+  videoTitle: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_500Medium",
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+  },
+  videoPlayerContainer: {
+    borderRadius: 12,
+    overflow: "hidden" as const,
+    backgroundColor: "#000000",
+  },
+  videoPlayer: {
+    width: "100%" as const,
+    aspectRatio: 16 / 9,
+  },
+  videoCloseButton: {
+    position: "absolute" as const,
+    top: 8,
+    right: 8,
   },
   eventCard: {
     flexDirection: "row",

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-06T04:04:29.950Z",
+  "lastUpdated": "2026-03-06T04:48:31.934Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -82,16 +82,16 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 638,
+        "playersIngested": 637,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-06T04:04:29.950Z"
+        "timestamp": "2026-03-06T04:48:31.934Z"
       },
-      "cacheHistoryCount": 721,
+      "cacheHistoryCount": 722,
       "error": null
     },
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": 39.92501388888889,
+      "hoursUntil": 39.19112944444444,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -117,8 +117,8 @@
         "tabHint": "Rituals"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-06T04:04:29.950Z",
-      "expiresAt": "2026-03-13T04:04:29.950Z",
+      "triggeredAt": "2026-03-06T04:48:31.934Z",
+      "expiresAt": "2026-03-13T04:48:31.934Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -141,8 +141,8 @@
           "echl-web-25179"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T04:04:29.950Z",
-        "windowEnd": "2026-03-13T04:04:29.950Z",
+        "windowStart": "2026-03-06T04:48:31.934Z",
+        "windowEnd": "2026-03-13T04:48:31.934Z",
         "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       }
     },
@@ -155,17 +155,24 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-06T04:04:29.950Z",
+      "triggeredAt": "2026-03-06T04:48:31.934Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
       "regionPriority": 2,
       "regionLabel": "SoCal",
+      "video": {
+        "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "thumbnailUrl": "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+        "durationSeconds": 22,
+        "title": "Ducks trade deadline preview",
+        "source": "youtube"
+      },
       "meta": {
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 39.9,
+        "hoursUntil": 39.2,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -206,12 +213,19 @@
         "tabHint": "Watch"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-06T04:04:29.950Z",
-      "expiresAt": "2026-03-13T04:04:29.950Z",
+      "triggeredAt": "2026-03-06T04:48:31.934Z",
+      "expiresAt": "2026-03-13T04:48:31.934Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
       "regionLabel": "New England",
+      "video": {
+        "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "thumbnailUrl": "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+        "durationSeconds": 24,
+        "title": "Bruins push week preview",
+        "source": "youtube"
+      },
       "meta": {
         "teams": [
           {
@@ -230,8 +244,8 @@
           "nhl_2025021027"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T04:04:29.950Z",
-        "windowEnd": "2026-03-13T04:04:29.950Z",
+        "windowStart": "2026-03-06T04:48:31.934Z",
+        "windowEnd": "2026-03-13T04:48:31.934Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       }
     },
@@ -244,17 +258,24 @@
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-06T04:04:29.950Z",
+      "triggeredAt": "2026-03-06T04:48:31.934Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
       "regionPriority": 3,
       "regionLabel": "New England",
+      "video": {
+        "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "thumbnailUrl": "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+        "durationSeconds": 18,
+        "title": "Bruins deadline positioning breakdown",
+        "source": "youtube"
+      },
       "meta": {
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 39.9,
+        "hoursUntil": 39.2,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",

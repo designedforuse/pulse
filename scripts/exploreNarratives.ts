@@ -13,6 +13,14 @@ export interface NarrativeImpact {
 
 export type Region = "SouthAfrica" | "SoCal" | "NewEngland" | "Other";
 
+export interface NarrativeVideo {
+  url: string;
+  thumbnailUrl: string;
+  durationSeconds: number;
+  title: string;
+  source: "youtube" | "nhl" | "league" | "social";
+}
+
 export interface ExploreNarrativeCard {
   id: string;
   title: string;
@@ -26,6 +34,7 @@ export interface ExploreNarrativeCard {
   regionPriority: number;
   regionLabel: string;
   meta?: Record<string, any>;
+  video?: NarrativeVideo;
 }
 
 const REGION_CONFIG: Record<Region, { priority: number; label: string }> = {
@@ -271,6 +280,16 @@ const PUSH_TITLE_MAP: Record<Region, string> = {
   Other: "Push Week",
 };
 
+const PUSH_VIDEOS: Record<string, NarrativeVideo> = {
+  "Boston Bruins": {
+    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    thumbnailUrl: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+    durationSeconds: 24,
+    title: "Bruins push week preview",
+    source: "youtube",
+  },
+};
+
 const NUMBER_WORDS: Record<number, string> = { 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven" };
 
 function buildPushSubtitle(c: PushCandidate): string {
@@ -392,6 +411,8 @@ function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date
       ? buildPushSubtitle(group[0])
       : group.map(c => `${c.shortName}: ${buildPushSubtitle(c)}`).join(" · ");
 
+    const pushVideo = group.map(c => PUSH_VIDEOS[c.team]).find(v => v != null);
+
     cards.push({
       id: `playoff_push_${region.toLowerCase()}`,
       title,
@@ -404,6 +425,7 @@ function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date
       region,
       regionPriority: getRegionPriority(region),
       regionLabel: getRegionLabel(region),
+      video: pushVideo,
       meta: {
         teams: group.map(c => ({
           team: c.team,
@@ -1054,6 +1076,7 @@ interface DeadlineTeamConfig {
   expiringContracts: number;
   playoffBubble: boolean;
   players: DeadlinePlayer[];
+  video?: NarrativeVideo;
 }
 
 const DEADLINE_TEAMS: DeadlineTeamConfig[] = [
@@ -1064,6 +1087,13 @@ const DEADLINE_TEAMS: DeadlineTeamConfig[] = [
       { name: "Frank Vatrano", status: "UFA" },
       { name: "Radko Gudas", status: "Trade interest" },
     ],
+    video: {
+      url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      thumbnailUrl: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+      durationSeconds: 22,
+      title: "Ducks trade deadline preview",
+      source: "youtube",
+    },
   },
   {
     team: "Boston Bruins", abbrev: "BOS", tradeWatch: true, expiringContracts: 2, playoffBubble: true,
@@ -1071,6 +1101,13 @@ const DEADLINE_TEAMS: DeadlineTeamConfig[] = [
       { name: "Jake DeBrusk", status: "UFA" },
       { name: "Matt Grzelcyk", status: "UFA" },
     ],
+    video: {
+      url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      thumbnailUrl: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+      durationSeconds: 18,
+      title: "Bruins deadline positioning breakdown",
+      source: "youtube",
+    },
   },
   {
     team: "San Diego Gulls", abbrev: "SDG", tradeWatch: false, expiringContracts: 0, playoffBubble: false,
@@ -1190,6 +1227,7 @@ function generateDeadlineWatch(
       region,
       regionPriority: getRegionPriority(region),
       regionLabel: getRegionLabel(region),
+      video: cfg.video,
       meta: {
         team: cfg.team,
         abbrev: cfg.abbrev,
