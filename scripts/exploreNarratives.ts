@@ -29,7 +29,7 @@ export interface ExploreNarrativeCard {
   priority: number;
   triggeredAt: string;
   expiresAt?: string;
-  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game";
+  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game" | "upset_alert";
   region: Region;
   regionPriority: number;
   regionLabel: string;
@@ -117,6 +117,24 @@ interface AppEvent {
   t20WcMatchLabel?: string;
   competitionType?: string;
   sessionTitle?: string;
+  tennisPlayer1?: string;
+  tennisPlayer2?: string;
+  tennisPlayer1Rank?: number;
+  tennisPlayer2Rank?: number;
+  tennisRound?: string;
+  tournamentName?: string;
+}
+
+interface ScoreData {
+  awayScore: number;
+  homeScore: number;
+  period?: string;
+  clock?: string;
+  status?: string;
+  gameState?: string;
+  secondsRemaining?: number;
+  periodNumber?: number;
+  inIntermission?: boolean;
 }
 
 interface Favorites {
@@ -1208,6 +1226,319 @@ function generateRivalryGame(
   return { cards, debug };
 }
 
+const UPSET_TEAM_FAVORITES: { sport: string; team: string; league: string }[] = [
+  { sport: "hockey", team: "Edmonton Oilers", league: "NHL" },
+  { sport: "hockey", team: "Colorado Avalanche", league: "NHL" },
+  { sport: "hockey", team: "Dallas Stars", league: "NHL" },
+  { sport: "hockey", team: "Florida Panthers", league: "NHL" },
+  { sport: "hockey", team: "Winnipeg Jets", league: "NHL" },
+  { sport: "soccer", team: "Manchester City", league: "EPL" },
+  { sport: "soccer", team: "Arsenal", league: "EPL" },
+  { sport: "soccer", team: "Liverpool", league: "EPL" },
+  { sport: "soccer", team: "Real Madrid", league: "La Liga" },
+  { sport: "soccer", team: "Barcelona", league: "La Liga" },
+  { sport: "rugby", team: "South Africa", league: "Test Rugby" },
+  { sport: "rugby", team: "New Zealand", league: "Test Rugby" },
+  { sport: "rugby", team: "Stormers", league: "URC" },
+  { sport: "cricket", team: "India", league: "International Cricket" },
+  { sport: "cricket", team: "Australia", league: "International Cricket" },
+];
+
+interface UpsetCandidate {
+  event: AppEvent;
+  mode: "completed" | "live";
+  upsetType: string;
+  favoriteName: string;
+  underdogName: string;
+  favoriteRank?: number;
+  underdogRank?: number;
+  score?: ScoreData;
+  region: Region;
+}
+
+function isTeamFavorite(teamName: string, sport: string): boolean {
+  const norm = normalizeTeamName(teamName);
+  return UPSET_TEAM_FAVORITES.some(f =>
+    f.sport === sport && (normalizeTeamName(f.team).includes(norm) || norm.includes(normalizeTeamName(f.team)))
+  );
+}
+
+function isTrailingLate(score: ScoreData, sport: string): boolean {
+  const status = (score.status || "").toLowerCase();
+  const period = (score.period || "").toLowerCase();
+  if (status === "final" || status === "ended") return false;
+  if (typeof score.awayScore !== "number" || typeof score.homeScore !== "number") return false;
+
+  const diff = Math.abs(score.awayScore - score.homeScore);
+  if (diff === 0) return false;
+
+  if (sport === "hockey") {
+    if (period.includes("ot") || period.includes("so")) return true;
+    if (period.includes("p3") || period.includes("3rd") || (score.periodNumber && score.periodNumber >= 3)) {
+      if (typeof score.secondsRemaining === "number") return score.secondsRemaining <= 600;
+      return true;
+    }
+    return false;
+  }
+  if (sport === "soccer") {
+    if (period.includes("2nd") || period.includes("extra") || period.includes("added")) return true;
+    return false;
+  }
+  if (sport === "rugby") {
+    if (period.includes("2nd") || (score.periodNumber && score.periodNumber >= 2)) return true;
+    return false;
+  }
+  return false;
+}
+
+function buildUpsetNarrative(c: UpsetCandidate): string {
+  if (c.event.sport === "tennis") {
+    if (c.mode === "completed") {
+      const seedInfo = c.favoriteRank ? ` (seed ${c.favoriteRank})` : "";
+      return `${c.favoriteName}${seedInfo} entered as the higher seed, but ${c.underdogName} knocked ${c.favoriteName.split(" ").pop()} out.\n\nThis opens up the draw and changes the shape of the tournament.`;
+    }
+    return `${c.underdogName} is threatening an upset against ${c.favoriteName}.\n\nThe higher seed is in trouble and the match is still live.`;
+  }
+
+  if (c.mode === "completed") {
+    return `${c.underdogName} pulled off the upset against ${c.favoriteName}.\n\nA result like this can shift momentum for the rest of the season.`;
+  }
+  return `${c.favoriteName} is in trouble late against ${c.underdogName}.\n\nThe favorite is trailing and running out of time.`;
+}
+
+function buildUpsetSubtitle(c: UpsetCandidate): string {
+  if (c.event.sport === "tennis") {
+    const tournament = c.event.tournamentName || c.event.sessionTitle?.split("—")[0]?.trim() || "";
+    const suffix = tournament ? ` at ${tournament}` : "";
+    if (c.mode === "completed") {
+      return `${c.underdogName} stuns ${c.favoriteName}${suffix}`;
+    }
+    return `${c.favoriteName} in trouble against ${c.underdogName}${suffix}`;
+  }
+  if (c.mode === "completed") {
+    return `${c.underdogName} upsets ${c.favoriteName}`;
+  }
+  return `${c.favoriteName} trailing late vs ${c.underdogName}`;
+}
+
+async function fetchScoresForUpset(): Promise<Record<string, ScoreData>> {
+  try {
+    const port = process.env.PORT || "5000";
+    const resp = await fetch(`http://localhost:${port}/api/scores`);
+    if (!resp.ok) return {};
+    const data = await resp.json() as { scores?: Record<string, ScoreData> };
+    return data.scores || {};
+  } catch {
+    return {};
+  }
+}
+
+async function generateUpsetAlert(
+  events: AppEvent[],
+  now: Date,
+): Promise<{
+  cards: ExploreNarrativeCard[];
+  debug: { rawUpsetCandidates: number; upsetLiveCandidates: number; upsetCompletedCandidates: number; upsetFinalCount: number };
+}> {
+  const scores = await fetchScoresForUpset();
+  const candidates: UpsetCandidate[] = [];
+
+  const recentCutoff = new Date(now.getTime() - 6 * 3600000);
+  const futureCutoff = new Date(now.getTime() + 2 * 3600000);
+
+  for (const ev of events) {
+    const start = new Date(ev.startTimeLocal);
+    if (start < recentCutoff || start > futureCutoff) continue;
+
+    const score = scores[ev.id];
+
+    if (ev.sport === "tennis") {
+      const p1 = ev.tennisPlayer1;
+      const p2 = ev.tennisPlayer2;
+      const r1 = ev.tennisPlayer1Rank;
+      const r2 = ev.tennisPlayer2Rank;
+
+      if (!p1 || !p2) continue;
+
+      const r1Valid = typeof r1 === "number" && r1 > 0;
+      const r2Valid = typeof r2 === "number" && r2 > 0;
+
+      const hasSeedGap = (r1Valid && r2Valid && Math.abs(r1 - r2) >= 5) || (r1Valid && !r2Valid) || (r2Valid && !r1Valid);
+      if (!hasSeedGap) continue;
+
+      const favoriteIsP1 = r1Valid && r2Valid ? r1 < r2 : r1Valid;
+      const favoriteName = favoriteIsP1 ? p1 : p2;
+      const underdogName = favoriteIsP1 ? p2 : p1;
+      const favoriteRank = favoriteIsP1 ? r1 : r2;
+      const underdogRank = favoriteIsP1 ? r2 : r1;
+      const favoriteIsAway = favoriteIsP1;
+
+      if (score) {
+        const status = (score.status || "").toLowerCase();
+        const isFinal = status === "final" || status === "ended" || (score.period || "").toLowerCase().includes("final");
+
+        if (isFinal) {
+          const favoriteScore = favoriteIsAway ? score.awayScore : score.homeScore;
+          const underdogScore = favoriteIsAway ? score.homeScore : score.awayScore;
+          if (underdogScore > favoriteScore) {
+            candidates.push({
+              event: ev,
+              mode: "completed",
+              upsetType: "tennis_seed_upset",
+              favoriteName,
+              underdogName,
+              favoriteRank,
+              underdogRank,
+              score,
+              region: resolveRegion(ev.homeTeam, ev.league),
+            });
+          }
+          continue;
+        }
+
+        const isLive = status === "live" || status === "in progress" || !!(score.period && score.clock);
+        if (isLive) {
+          const favoriteScore = favoriteIsAway ? score.awayScore : score.homeScore;
+          const underdogScore = favoriteIsAway ? score.homeScore : score.awayScore;
+          if (underdogScore > favoriteScore) {
+            candidates.push({
+              event: ev,
+              mode: "live",
+              upsetType: "tennis_live_upset",
+              favoriteName,
+              underdogName,
+              favoriteRank,
+              underdogRank,
+              score,
+              region: resolveRegion(ev.homeTeam, ev.league),
+            });
+          }
+        }
+      }
+      continue;
+    }
+
+    if (!score) continue;
+    const status = (score.status || "").toLowerCase();
+    const isLive = status === "live" || status === "in progress" || !!(score.period && score.clock);
+    const isFinal = status === "final" || status === "ended" || (score.period || "").toLowerCase().includes("final");
+
+    if (!isLive && !isFinal) continue;
+
+    const homeFav = isTeamFavorite(ev.homeTeam, ev.sport);
+    const awayFav = isTeamFavorite(ev.awayTeam, ev.sport);
+    if (!homeFav && !awayFav) continue;
+    if (homeFav && awayFav) continue;
+
+    const favoriteName = homeFav ? ev.homeTeam : ev.awayTeam;
+    const underdogName = homeFav ? ev.awayTeam : ev.homeTeam;
+    const favoriteScore = homeFav ? score.homeScore : score.awayScore;
+    const underdogScore = homeFav ? score.awayScore : score.homeScore;
+
+    if (isFinal && underdogScore > favoriteScore) {
+      candidates.push({
+        event: ev,
+        mode: "completed",
+        upsetType: "team_upset",
+        favoriteName,
+        underdogName,
+        score,
+        region: resolveRegion(ev.homeTeam, ev.league),
+      });
+    } else if (isLive && underdogScore > favoriteScore && isTrailingLate(score, ev.sport)) {
+      candidates.push({
+        event: ev,
+        mode: "live",
+        upsetType: "team_live_upset",
+        favoriteName,
+        underdogName,
+        score,
+        region: resolveRegion(ev.homeTeam, ev.league),
+      });
+    }
+  }
+
+  const liveCandidates = candidates.filter(c => c.mode === "live");
+  const completedCandidates = candidates.filter(c => c.mode === "completed");
+
+  const debug = {
+    rawUpsetCandidates: candidates.length,
+    upsetLiveCandidates: liveCandidates.length,
+    upsetCompletedCandidates: completedCandidates.length,
+    upsetFinalCount: 0,
+  };
+
+  if (candidates.length === 0) return { cards: [], debug };
+
+  candidates.sort((a, b) => {
+    if (a.mode === "live" && b.mode !== "live") return -1;
+    if (b.mode === "live" && a.mode !== "live") return 1;
+    const rp = getRegionPriority(a.region) - getRegionPriority(b.region);
+    if (rp !== 0) return rp;
+    return new Date(b.event.startTimeLocal).getTime() - new Date(a.event.startTimeLocal).getTime();
+  });
+
+  const regionSeen = new Set<Region>();
+  const filtered: UpsetCandidate[] = [];
+  for (const c of candidates) {
+    if (regionSeen.has(c.region)) continue;
+    regionSeen.add(c.region);
+    filtered.push(c);
+    if (filtered.length >= 2) break;
+  }
+
+  const cards: ExploreNarrativeCard[] = [];
+  for (const c of filtered) {
+    const ev = c.event;
+    const title = c.mode === "live" ? "Upset Alert" : "Upset Alert";
+    const subtitle = buildUpsetSubtitle(c);
+    const narrative = buildUpsetNarrative(c);
+
+    const ritual = findBestRitual([ev]);
+    const impact: NarrativeImpact = c.mode === "live"
+      ? (ritual
+        ? { label: `Impacts: ${ritual.label}`, ritualId: ritual.id, tabHint: "Watch" }
+        : { label: "Feeds: Watch", tabHint: "Watch" })
+      : { label: "Feeds: Watch", tabHint: "Watch" };
+
+    const expiresAt = c.mode === "live"
+      ? new Date(now.getTime() + 2 * 3600000).toISOString()
+      : new Date(now.getTime() + 6 * 3600000).toISOString();
+
+    cards.push({
+      id: `upset_alert_${ev.id}`,
+      title,
+      subtitle,
+      impact,
+      priority: 95,
+      triggeredAt: now.toISOString(),
+      expiresAt,
+      kind: "upset_alert",
+      region: c.region,
+      regionPriority: getRegionPriority(c.region),
+      regionLabel: getRegionLabel(c.region),
+      meta: {
+        mode: c.mode,
+        upsetType: c.upsetType,
+        sport: ev.sport,
+        league: ev.league,
+        favoriteName: c.favoriteName,
+        underdogName: c.underdogName,
+        favoriteRank: c.favoriteRank,
+        underdogRank: c.underdogRank,
+        awayTeam: ev.awayTeam,
+        homeTeam: ev.homeTeam,
+        startTime: ev.startTimeLocal,
+        eventIds: [ev.id],
+        reason: narrative,
+      },
+    });
+  }
+
+  debug.upsetFinalCount = cards.length;
+  return { cards, debug };
+}
+
 const NHL_TRADE_DEADLINE = "2026-03-07T15:00:00-05:00";
 const DEADLINE_WINDOW_HOURS = 72;
 
@@ -1471,7 +1802,13 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     console.log(`    [${c.region}] ${c.title}: ${c.subtitle}`);
   }
 
-  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...playerMovementCards, ...deadlineResult.cards, ...rivalryResult.cards];
+  const upsetResult = await generateUpsetAlert(events, now);
+  console.log(`  Upset Alert: ${upsetResult.cards.length} card(s) (${upsetResult.debug.rawUpsetCandidates} candidates, ${upsetResult.debug.upsetLiveCandidates} live, ${upsetResult.debug.upsetCompletedCandidates} completed)`);
+  for (const c of upsetResult.cards) {
+    console.log(`    [${c.region}] ${c.title}: ${c.subtitle}`);
+  }
+
+  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...playerMovementCards, ...deadlineResult.cards, ...rivalryResult.cards, ...upsetResult.cards];
 
   const rawCandidatesByKindAndRegion: Record<string, Record<string, number>> = {};
   for (const c of allCandidates) {
@@ -1534,6 +1871,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     },
     deadlineWatch: deadlineResult.debug,
     rivalryGame: rivalryResult.debug,
+    upsetAlert: upsetResult.debug,
   };
 
   console.log(`  Total: ${allCandidates.length} → selected ${selected.length}`);

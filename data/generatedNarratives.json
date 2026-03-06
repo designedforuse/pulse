@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-06T05:01:21.374Z",
+  "lastUpdated": "2026-03-06T05:13:18.116Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -12,6 +12,9 @@
       "deadline_watch": {
         "SoCal": 1,
         "NewEngland": 1
+      },
+      "upset_alert": {
+        "Other": 1
       }
     },
     "combinedPushByRegion": {
@@ -30,6 +33,13 @@
     },
     "droppedCandidatesReasons": [
       {
+        "id": "upset_alert_nhl_2025020978",
+        "kind": "upset_alert",
+        "region": "Other",
+        "title": "Upset Alert",
+        "reason": "feed cap (max 4)"
+      },
+      {
         "id": "league_moment_rivalry",
         "kind": "league_moment",
         "region": "Other",
@@ -44,7 +54,7 @@
         "reason": "feed cap (max 4)"
       }
     ],
-    "totalBeforeCap": 6,
+    "totalBeforeCap": 7,
     "totalAfterCap": 4,
     "playerMovement": {
       "rawMovementCandidates": 0,
@@ -84,14 +94,14 @@
         ],
         "playersIngested": 637,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-06T05:01:21.374Z"
+        "timestamp": "2026-03-06T05:13:18.116Z"
       },
       "cacheHistoryCount": 722,
       "error": null
     },
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": 38.97739611111111,
+      "hoursUntil": 38.77830111111111,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -109,6 +119,12 @@
       "rawRivalryCandidates": 0,
       "rivalryAfterRegionFilter": 0,
       "rivalryFinalCount": 0
+    },
+    "upsetAlert": {
+      "rawUpsetCandidates": 1,
+      "upsetLiveCandidates": 0,
+      "upsetCompletedCandidates": 1,
+      "upsetFinalCount": 1
     }
   },
   "cards": [
@@ -122,8 +138,8 @@
         "tabHint": "Rituals"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-06T05:01:21.374Z",
-      "expiresAt": "2026-03-13T05:01:21.374Z",
+      "triggeredAt": "2026-03-06T05:13:18.116Z",
+      "expiresAt": "2026-03-13T05:13:18.116Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -146,8 +162,8 @@
           "echl-web-25179"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T05:01:21.374Z",
-        "windowEnd": "2026-03-13T05:01:21.374Z",
+        "windowStart": "2026-03-06T05:13:18.116Z",
+        "windowEnd": "2026-03-13T05:13:18.116Z",
         "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       }
     },
@@ -160,7 +176,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-06T05:01:21.374Z",
+      "triggeredAt": "2026-03-06T05:13:18.116Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
@@ -177,7 +193,7 @@
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 39,
+        "hoursUntil": 38.8,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -218,8 +234,8 @@
         "tabHint": "Watch"
       },
       "priority": 100,
-      "triggeredAt": "2026-03-06T05:01:21.374Z",
-      "expiresAt": "2026-03-13T05:01:21.374Z",
+      "triggeredAt": "2026-03-06T05:13:18.116Z",
+      "expiresAt": "2026-03-13T05:13:18.116Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -249,8 +265,8 @@
           "nhl_2025021027"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T05:01:21.374Z",
-        "windowEnd": "2026-03-13T05:01:21.374Z",
+        "windowStart": "2026-03-06T05:13:18.116Z",
+        "windowEnd": "2026-03-13T05:13:18.116Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       }
     },
@@ -263,7 +279,7 @@
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-06T05:01:21.374Z",
+      "triggeredAt": "2026-03-06T05:13:18.116Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
@@ -280,7 +296,7 @@
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 39,
+        "hoursUntil": 38.8,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",
