@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-06T06:16:34.830Z",
+  "lastUpdated": "2026-03-06T06:35:45.111Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -98,7 +98,7 @@
         ],
         "playersIngested": 637,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-06T06:16:34.830Z"
+        "timestamp": "2026-03-06T06:35:45.111Z"
       },
       "cacheHistoryCount": 722,
       "error": null
@@ -108,7 +108,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": 37.72365833333333,
+      "hoursUntil": 37.404135833333335,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -152,24 +152,17 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-06T06:16:34.830Z",
+      "triggeredAt": "2026-03-06T06:35:45.111Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
       "regionPriority": 2,
       "regionLabel": "SoCal",
-      "video": {
-        "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        "thumbnailUrl": "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
-        "durationSeconds": 22,
-        "title": "Ducks trade deadline preview",
-        "source": "youtube"
-      },
       "meta": {
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 37.7,
+        "hoursUntil": 37.4,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -199,6 +192,13 @@
           "nhl_2025021022",
           "nhl_2025021029"
         ]
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=YFTyXbC1sf0",
+        "thumbnailUrl": "https://img.youtube.com/vi/YFTyXbC1sf0/hqdefault.jpg",
+        "durationSeconds": 58,
+        "title": "Are the Anaheim Ducks in a Good Place After This Trade Deadline?",
+        "source": "youtube"
       }
     },
     {
@@ -211,7 +211,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-06T06:16:34.830Z",
+      "triggeredAt": "2026-03-06T06:35:45.111Z",
       "expiresAt": "2026-03-07T06:00:00.000Z",
       "kind": "clinch_watch",
       "region": "SoCal",
@@ -229,6 +229,13 @@
           "nhl_2025020987"
         ],
         "reason": "Anaheim Ducks have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=CWVLbvqLqFk",
+        "thumbnailUrl": "https://img.youtube.com/vi/CWVLbvqLqFk/hqdefault.jpg",
+        "durationSeconds": 113,
+        "title": "Canadiens CLINCH final playoff spot!",
+        "source": "youtube"
       }
     },
     {
@@ -241,8 +248,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-06T06:16:34.830Z",
-      "expiresAt": "2026-03-13T06:16:34.830Z",
+      "triggeredAt": "2026-03-06T06:35:45.111Z",
+      "expiresAt": "2026-03-13T06:35:45.111Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -265,9 +272,16 @@
           "echl-web-25179"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T06:16:34.830Z",
-        "windowEnd": "2026-03-13T06:16:34.830Z",
+        "windowStart": "2026-03-06T06:35:45.111Z",
+        "windowEnd": "2026-03-13T06:35:45.111Z",
         "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=92baGKRg69M",
+        "thumbnailUrl": "https://img.youtube.com/vi/92baGKRg69M/hqdefault.jpg",
+        "durationSeconds": 140,
+        "title": "Tulsa Oilers vs Idaho Steelheads - 4/26/19",
+        "source": "youtube"
       }
     },
     {
@@ -279,24 +293,17 @@
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-06T06:16:34.830Z",
+      "triggeredAt": "2026-03-06T06:35:45.111Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
       "regionPriority": 3,
       "regionLabel": "New England",
-      "video": {
-        "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        "thumbnailUrl": "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
-        "durationSeconds": 18,
-        "title": "Bruins deadline positioning breakdown",
-        "source": "youtube"
-      },
       "meta": {
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 37.7,
+        "hoursUntil": 37.4,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",
@@ -323,6 +330,13 @@
           "nhl_2025021012",
           "nhl_2025021027"
         ]
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=FHv4ZG0qReM",
+        "thumbnailUrl": "https://img.youtube.com/vi/FHv4ZG0qReM/hqdefault.jpg",
+        "durationSeconds": 117,
+        "title": "NHL Trade Deadline Call: Bruins and Avalanche",
+        "source": "youtube"
       }
     },
     {
@@ -334,7 +348,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-06T06:16:34.830Z",
+      "triggeredAt": "2026-03-06T06:35:45.111Z",
       "expiresAt": "2026-03-07T21:30:00.000Z",
       "kind": "clinch_watch",
       "region": "NewEngland",
@@ -352,6 +366,13 @@
           "nhl_2025020990"
         ],
         "reason": "Boston Bruins have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=iqKjkrggTNg",
+        "thumbnailUrl": "https://img.youtube.com/vi/iqKjkrggTNg/hqdefault.jpg",
+        "durationSeconds": 162,
+        "title": "Capitals clinch Presidents' Trophy with 4-1 win",
+        "source": "youtube"
       }
     },
     {
@@ -363,19 +384,12 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-06T06:16:34.830Z",
-      "expiresAt": "2026-03-13T06:16:34.830Z",
+      "triggeredAt": "2026-03-06T06:35:45.111Z",
+      "expiresAt": "2026-03-13T06:35:45.111Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
       "regionLabel": "New England",
-      "video": {
-        "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        "thumbnailUrl": "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
-        "durationSeconds": 24,
-        "title": "Bruins push week preview",
-        "source": "youtube"
-      },
       "meta": {
         "teams": [
           {
@@ -394,9 +408,16 @@
           "nhl_2025021027"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T06:16:34.830Z",
-        "windowEnd": "2026-03-13T06:16:34.830Z",
+        "windowStart": "2026-03-06T06:35:45.111Z",
+        "windowEnd": "2026-03-13T06:35:45.111Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=SMkzFDXKS1g",
+        "thumbnailUrl": "https://img.youtube.com/vi/SMkzFDXKS1g/hqdefault.jpg",
+        "durationSeconds": 10,
+        "title": "Zadorov poked Malkin from the bench and Geno took exception 😳",
+        "source": "youtube"
       }
     }
   ],

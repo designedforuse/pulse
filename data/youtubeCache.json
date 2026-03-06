@@ -1,0 +1,68 @@
+{
+  "anaheim ducks trade deadline preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=YFTyXbC1sf0",
+      "thumbnailUrl": "https://img.youtube.com/vi/YFTyXbC1sf0/hqdefault.jpg",
+      "durationSeconds": 58,
+      "title": "Are the Anaheim Ducks in a Good Place After This Trade Deadline?",
+      "source": "youtube"
+    },
+    "fetchedAt": "2026-03-06T06:33:35.889Z",
+    "query": "Anaheim Ducks trade deadline preview"
+  },
+  "montréal canadiens playoff clinch highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=CWVLbvqLqFk",
+      "thumbnailUrl": "https://img.youtube.com/vi/CWVLbvqLqFk/hqdefault.jpg",
+      "durationSeconds": 113,
+      "title": "Canadiens CLINCH final playoff spot!",
+      "source": "youtube"
+    },
+    "fetchedAt": "2026-03-06T06:33:36.405Z",
+    "query": "Montréal Canadiens playoff clinch highlights"
+  },
+  "tulsa oilers playoff push highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=92baGKRg69M",
+      "thumbnailUrl": "https://img.youtube.com/vi/92baGKRg69M/hqdefault.jpg",
+      "durationSeconds": 140,
+      "title": "Tulsa Oilers vs Idaho Steelheads - 4/26/19",
+      "source": "youtube"
+    },
+    "fetchedAt": "2026-03-06T06:33:36.868Z",
+    "query": "Tulsa Oilers playoff push highlights"
+  },
+  "boston bruins trade deadline preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=FHv4ZG0qReM",
+      "thumbnailUrl": "https://img.youtube.com/vi/FHv4ZG0qReM/hqdefault.jpg",
+      "durationSeconds": 117,
+      "title": "NHL Trade Deadline Call: Bruins and Avalanche",
+      "source": "youtube"
+    },
+    "fetchedAt": "2026-03-06T06:33:37.420Z",
+    "query": "Boston Bruins trade deadline preview"
+  },
+  "washington capitals playoff clinch highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=iqKjkrggTNg",
+      "thumbnailUrl": "https://img.youtube.com/vi/iqKjkrggTNg/hqdefault.jpg",
+      "durationSeconds": 162,
+      "title": "Capitals clinch Presidents' Trophy with 4-1 win",
+      "source": "youtube"
+    },
+    "fetchedAt": "2026-03-06T06:33:38.650Z",
+    "query": "Washington Capitals playoff clinch highlights"
+  },
+  "boston bruins playoff push highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=SMkzFDXKS1g",
+      "thumbnailUrl": "https://img.youtube.com/vi/SMkzFDXKS1g/hqdefault.jpg",
+      "durationSeconds": 10,
+      "title": "Zadorov poked Malkin from the bench and Geno took exception 😳",
+      "source": "youtube"
+    },
+    "fetchedAt": "2026-03-06T06:33:39.892Z",
+    "query": "Boston Bruins playoff push highlights"
+  }
+}

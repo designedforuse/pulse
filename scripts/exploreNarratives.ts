@@ -4,6 +4,139 @@ import * as path from "path";
 const EVENTS_PATH = path.resolve(__dirname, "..", "data", "generatedEvents.json");
 const NARRATIVES_PATH = path.resolve(__dirname, "..", "data", "generatedNarratives.json");
 const MOVEMENT_CACHE_PATH = path.resolve(__dirname, "..", "data", "playerMovementCache.json");
+const YT_CACHE_PATH = path.resolve(__dirname, "..", "data", "youtubeCache.json");
+
+interface YouTubeCacheEntry {
+  video: NarrativeVideo;
+  fetchedAt: string;
+  query: string;
+}
+
+function loadYouTubeCache(): Record<string, YouTubeCacheEntry> {
+  try {
+    if (fs.existsSync(YT_CACHE_PATH)) {
+      return JSON.parse(fs.readFileSync(YT_CACHE_PATH, "utf8"));
+    }
+  } catch {}
+  return {};
+}
+
+function saveYouTubeCache(cache: Record<string, YouTubeCacheEntry>): void {
+  try {
+    fs.writeFileSync(YT_CACHE_PATH, JSON.stringify(cache, null, 2));
+  } catch (err) {
+    console.error("Failed to save YouTube cache:", (err as Error).message);
+  }
+}
+
+function parseDurationText(text: string): number {
+  if (!text) return 0;
+  const parts = text.split(":").map(Number);
+  if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+  if (parts.length === 2) return parts[0] * 60 + parts[1];
+  return parts[0] || 0;
+}
+
+async function searchYouTubeVideo(query: string): Promise<NarrativeVideo | null> {
+  const cache = loadYouTubeCache();
+  const cacheKey = query.toLowerCase().trim();
+  const cached = cache[cacheKey];
+  if (cached) {
+    const age = Date.now() - new Date(cached.fetchedAt).getTime();
+    if (age < 24 * 3600000) {
+      console.log(`[YouTube] Cache hit for "${query}"`);
+      return cached.video;
+    }
+  }
+
+  try {
+    const sp = "EgIYAQ%3D%3D";
+    const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}&sp=${sp}`;
+
+    const resp = await fetch(searchUrl, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.9",
+      },
+    });
+
+    if (!resp.ok) {
+      console.warn(`[YouTube] Search failed (${resp.status}) for "${query}"`);
+      return null;
+    }
+
+    const html = await resp.text();
+    const match = html.match(/var ytInitialData = ({.*?});<\/script>/s);
+    if (!match) {
+      console.warn(`[YouTube] Could not parse page data for "${query}"`);
+      return null;
+    }
+
+    const data = JSON.parse(match[1]);
+    const contents = data?.contents?.twoColumnSearchResultsRenderer?.primaryContents
+      ?.sectionListRenderer?.contents?.[0]?.itemSectionRenderer?.contents || [];
+
+    const videos = contents.filter((c: any) => c?.videoRenderer?.videoId).slice(0, 3);
+
+    if (videos.length === 0) {
+      console.warn(`[YouTube] No results for "${query}"`);
+      return null;
+    }
+
+    const best = videos[0].videoRenderer;
+    const videoId = best.videoId;
+    const title = best.title?.runs?.[0]?.text || query;
+    const lengthText = best.lengthText?.simpleText || "0:00";
+    const durationSeconds = parseDurationText(lengthText);
+
+    const video: NarrativeVideo = {
+      url: `https://www.youtube.com/watch?v=${videoId}`,
+      thumbnailUrl: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
+      durationSeconds,
+      title,
+      source: "youtube",
+    };
+
+    cache[cacheKey] = { video, fetchedAt: new Date().toISOString(), query };
+    saveYouTubeCache(cache);
+
+    console.log(`[YouTube] Found video for "${query}": ${video.title} (${durationSeconds}s)`);
+    return video;
+  } catch (err) {
+    console.warn(`[YouTube] Error searching for "${query}":`, (err as Error).message);
+    return null;
+  }
+}
+
+function buildVideoSearchQuery(card: ExploreNarrativeCard): string | null {
+  const meta = card.meta || {};
+  const teamA = meta.awayTeam || meta.team || meta.teams?.[0]?.team || "";
+  const teamB = meta.homeTeam || meta.teams?.[1]?.team || "";
+
+  switch (card.kind) {
+    case "deadline_watch":
+      return teamA ? `${teamA} trade deadline preview` : null;
+    case "rivalry_game":
+      return teamA && teamB ? `${teamA} vs ${teamB} rivalry highlights` : null;
+    case "upset_alert": {
+      const playerA = meta.favoriteName || meta.awayTeam || "";
+      const playerB = meta.underdogName || meta.homeTeam || "";
+      return playerA && playerB ? `${playerA} vs ${playerB} upset highlights` : null;
+    }
+    case "clinch_watch":
+      return teamA ? `${teamA} playoff clinch highlights` : null;
+    case "playoff_push":
+      return teamA ? `${teamA} playoff push highlights` : null;
+    case "momentum":
+      return teamA ? `${teamA} highlights` : null;
+    case "league_moment":
+      return card.title ? `${card.title} sports` : null;
+    case "player_movement":
+      return meta.playerName ? `${meta.playerName} trade highlights` : null;
+    default:
+      return null;
+  }
+}
 
 export interface NarrativeImpact {
   label: string;
@@ -307,15 +440,7 @@ const PUSH_TITLE_MAP: Record<Region, string> = {
   Other: "Push Week",
 };
 
-const PUSH_VIDEOS: Record<string, NarrativeVideo> = {
-  "Boston Bruins": {
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    thumbnailUrl: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
-    durationSeconds: 24,
-    title: "Bruins push week preview",
-    source: "youtube",
-  },
-};
+const PUSH_VIDEOS: Record<string, NarrativeVideo> = {};
 
 const NUMBER_WORDS: Record<number, string> = { 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven" };
 
@@ -440,7 +565,7 @@ function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date
 
     const pushVideo = group.map(c => PUSH_VIDEOS[c.team]).find(v => v != null);
 
-    cards.push({
+    const pushCard: ExploreNarrativeCard = {
       id: `playoff_push_${region.toLowerCase()}`,
       title,
       subtitle,
@@ -452,7 +577,6 @@ function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date
       region,
       regionPriority: getRegionPriority(region),
       regionLabel: getRegionLabel(region),
-      video: pushVideo,
       meta: {
         teams: group.map(c => ({
           team: c.team,
@@ -468,7 +592,9 @@ function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date
         windowEnd: new Date(now.getTime() + 7 * 86400000).toISOString(),
         reason: group.map(c => c.reason).join("\n\n"),
       },
-    });
+    };
+    if (pushVideo) pushCard.video = pushVideo;
+    cards.push(pushCard);
   }
 
   return {
@@ -1731,13 +1857,6 @@ const DEADLINE_TEAMS: DeadlineTeamConfig[] = [
       { name: "Frank Vatrano", status: "UFA" },
       { name: "Radko Gudas", status: "Trade interest" },
     ],
-    video: {
-      url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      thumbnailUrl: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
-      durationSeconds: 22,
-      title: "Ducks trade deadline preview",
-      source: "youtube",
-    },
   },
   {
     team: "Boston Bruins", abbrev: "BOS", tradeWatch: true, expiringContracts: 2, playoffBubble: true,
@@ -1745,13 +1864,6 @@ const DEADLINE_TEAMS: DeadlineTeamConfig[] = [
       { name: "Jake DeBrusk", status: "UFA" },
       { name: "Matt Grzelcyk", status: "UFA" },
     ],
-    video: {
-      url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      thumbnailUrl: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
-      durationSeconds: 18,
-      title: "Bruins deadline positioning breakdown",
-      source: "youtube",
-    },
   },
   {
     team: "San Diego Gulls", abbrev: "SDG", tradeWatch: false, expiringContracts: 0, playoffBubble: false,
@@ -1859,7 +1971,7 @@ function generateDeadlineWatch(
     const region = resolveRegion(cfg.team);
     const teamEvents = getEventsForTeam(events, cfg.team, 7, now, "NHL");
 
-    cards.push({
+    const deadlineCard: ExploreNarrativeCard = {
       id: `deadline_watch_${cfg.abbrev.toLowerCase()}`,
       title,
       subtitle,
@@ -1871,7 +1983,6 @@ function generateDeadlineWatch(
       region,
       regionPriority: getRegionPriority(region),
       regionLabel: getRegionLabel(region),
-      video: cfg.video,
       meta: {
         team: cfg.team,
         abbrev: cfg.abbrev,
@@ -1886,7 +1997,9 @@ function generateDeadlineWatch(
         players: cfg.players,
         eventIds: teamEvents.map(e => e.id),
       },
-    });
+    };
+    if (cfg.video) deadlineCard.video = cfg.video;
+    cards.push(deadlineCard);
   }
 
   return { cards, debug };
@@ -2177,6 +2290,18 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     console.log(`  Dropped ${dropped.length} candidate(s):`);
     for (const d of dropped) {
       console.log(`    ✗ ${d.title} (${d.reason})`);
+    }
+  }
+  console.log("  Attaching YouTube videos to selected cards...");
+  for (const card of selected) {
+    if (card.video) continue;
+    const query = buildVideoSearchQuery(card);
+    if (!query) continue;
+    try {
+      const video = await searchYouTubeVideo(query);
+      if (video) card.video = video;
+    } catch (err) {
+      console.warn(`[YouTube] Failed for ${card.id}:`, (err as Error).message);
     }
   }
   console.log("=== Narratives Complete ===\n");
