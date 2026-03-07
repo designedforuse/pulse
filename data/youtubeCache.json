@@ -1,79 +1,46 @@
 {
   "anaheim ducks trade deadline preview": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=YFTyXbC1sf0",
-      "thumbnailUrl": "https://img.youtube.com/vi/YFTyXbC1sf0/hqdefault.jpg",
-      "durationSeconds": 58,
-      "title": "Are the Anaheim Ducks in a Good Place After This Trade Deadline?",
+      "url": "https://www.youtube.com/watch?v=7B0KRcPZvpI",
+      "thumbnailUrl": "https://img.youtube.com/vi/7B0KRcPZvpI/hqdefault.jpg",
+      "durationSeconds": 1209,
+      "title": "NHL Trade Deadline Reaction 🚨 John Carlson to Ducks, Nick Foligno to Wild | The Point",
       "source": "youtube"
     },
-    "fetchedAt": "2026-03-06T06:33:35.889Z",
+    "fetchedAt": "2026-03-07T00:50:16.199Z",
     "query": "Anaheim Ducks trade deadline preview"
-  },
-  "montréal canadiens playoff clinch highlights": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=CWVLbvqLqFk",
-      "thumbnailUrl": "https://img.youtube.com/vi/CWVLbvqLqFk/hqdefault.jpg",
-      "durationSeconds": 113,
-      "title": "Canadiens CLINCH final playoff spot!",
-      "source": "youtube"
-    },
-    "fetchedAt": "2026-03-06T06:33:36.405Z",
-    "query": "Montréal Canadiens playoff clinch highlights"
-  },
-  "tulsa oilers playoff push highlights": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=92baGKRg69M",
-      "thumbnailUrl": "https://img.youtube.com/vi/92baGKRg69M/hqdefault.jpg",
-      "durationSeconds": 140,
-      "title": "Tulsa Oilers vs Idaho Steelheads - 4/26/19",
-      "source": "youtube"
-    },
-    "fetchedAt": "2026-03-06T06:33:36.868Z",
-    "query": "Tulsa Oilers playoff push highlights"
   },
   "boston bruins trade deadline preview": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=FHv4ZG0qReM",
-      "thumbnailUrl": "https://img.youtube.com/vi/FHv4ZG0qReM/hqdefault.jpg",
-      "durationSeconds": 117,
-      "title": "NHL Trade Deadline Call: Bruins and Avalanche",
+      "url": "https://www.youtube.com/watch?v=JPn4iCELIfA",
+      "thumbnailUrl": "https://img.youtube.com/vi/JPn4iCELIfA/hqdefault.jpg",
+      "durationSeconds": 511,
+      "title": "The Truth Behind the Boston Bruins Trade Deadline Moves Revealed...",
       "source": "youtube"
     },
-    "fetchedAt": "2026-03-06T06:33:37.420Z",
+    "fetchedAt": "2026-03-07T00:50:16.899Z",
     "query": "Boston Bruins trade deadline preview"
-  },
-  "washington capitals playoff clinch highlights": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=iqKjkrggTNg",
-      "thumbnailUrl": "https://img.youtube.com/vi/iqKjkrggTNg/hqdefault.jpg",
-      "durationSeconds": 162,
-      "title": "Capitals clinch Presidents' Trophy with 4-1 win",
-      "source": "youtube"
-    },
-    "fetchedAt": "2026-03-06T06:33:38.650Z",
-    "query": "Washington Capitals playoff clinch highlights"
   },
   "boston bruins playoff push highlights": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=SMkzFDXKS1g",
-      "thumbnailUrl": "https://img.youtube.com/vi/SMkzFDXKS1g/hqdefault.jpg",
-      "durationSeconds": 10,
-      "title": "Zadorov poked Malkin from the bench and Geno took exception 😳",
+      "url": "https://www.youtube.com/watch?v=ZhDJvzB-Sps",
+      "thumbnailUrl": "https://img.youtube.com/vi/ZhDJvzB-Sps/hqdefault.jpg",
+      "durationSeconds": 694,
+      "title": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
       "source": "youtube"
     },
-    "fetchedAt": "2026-03-06T06:33:39.892Z",
+    "fetchedAt": "2026-03-07T00:50:17.329Z",
     "query": "Boston Bruins playoff push highlights"
   },
   "philadelphia flyers vs pittsburgh penguins rivalry highlights": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=dez832zrzgY",
-      "thumbnailUrl": "https://img.youtube.com/vi/dez832zrzgY/hqdefault.jpg",
-      "durationSeconds": 189,
-      "title": "Penguins@Flyers",
+      "url": "https://www.youtube.com/watch?v=gQk9J0Zxc-U",
+      "thumbnailUrl": "https://img.youtube.com/vi/gQk9J0Zxc-U/hqdefault.jpg",
+      "durationSeconds": 506,
+      "title": "THE PITTSBURGH PENGUINS JUST FLEECED THE COLORADO AVALANCHE HARD—OR DID THEY? Kulak For Girard Trade",
       "source": "youtube"
     },
-    "fetchedAt": "2026-03-07T00:41:15.296Z",
+    "fetchedAt": "2026-03-07T00:50:18.596Z",
     "query": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights"
   }
 }

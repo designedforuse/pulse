@@ -50,7 +50,7 @@ async function searchYouTubeVideo(query: string): Promise<NarrativeVideo | null>
   }
 
   try {
-    const sp = "EgIYAQ%3D%3D";
+    const sp = "CAISBAgEEAE%3D";
     const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}&sp=${sp}`;
 
     const resp = await fetch(searchUrl, {
@@ -76,7 +76,18 @@ async function searchYouTubeVideo(query: string): Promise<NarrativeVideo | null>
     const contents = data?.contents?.twoColumnSearchResultsRenderer?.primaryContents
       ?.sectionListRenderer?.contents?.[0]?.itemSectionRenderer?.contents || [];
 
-    const videos = contents.filter((c: any) => c?.videoRenderer?.videoId).slice(0, 3);
+    const currentYear = new Date().getFullYear();
+    const recentYearCutoff = currentYear - 1;
+    const allVideos = contents.filter((c: any) => c?.videoRenderer?.videoId);
+    const recentVideos = allVideos.filter((c: any) => {
+      const published = c.videoRenderer?.publishedTimeText?.simpleText || "";
+      if (/\d+\s+years?\s+ago/i.test(published)) return false;
+      const title = c.videoRenderer?.title?.runs?.[0]?.text || "";
+      const oldYearMatch = title.match(/\b(19\d{2}|20\d{2})\b/);
+      if (oldYearMatch && parseInt(oldYearMatch[1], 10) < recentYearCutoff) return false;
+      return true;
+    });
+    const videos = (recentVideos.length > 0 ? recentVideos : allVideos).slice(0, 5);
 
     if (videos.length === 0) {
       console.warn(`[YouTube] No results for "${query}"`);

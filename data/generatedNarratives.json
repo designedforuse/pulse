@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-07T00:41:08.330Z",
+  "lastUpdated": "2026-03-07T00:50:08.242Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -116,7 +116,7 @@
         ],
         "playersIngested": 637,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-07T00:41:08.330Z"
+        "timestamp": "2026-03-07T00:50:08.242Z"
       },
       "cacheHistoryCount": 722,
       "error": null
@@ -126,7 +126,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": 19.314352777777778,
+      "hoursUntil": 19.16437722222222,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -175,7 +175,7 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-07T00:41:08.330Z",
+      "triggeredAt": "2026-03-07T00:50:08.242Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
@@ -185,7 +185,7 @@
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 19.3,
+        "hoursUntil": 19.2,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -217,10 +217,10 @@
         ]
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=YFTyXbC1sf0",
-        "thumbnailUrl": "https://img.youtube.com/vi/YFTyXbC1sf0/hqdefault.jpg",
-        "durationSeconds": 58,
-        "title": "Are the Anaheim Ducks in a Good Place After This Trade Deadline?",
+        "url": "https://www.youtube.com/watch?v=7B0KRcPZvpI",
+        "thumbnailUrl": "https://img.youtube.com/vi/7B0KRcPZvpI/hqdefault.jpg",
+        "durationSeconds": 1209,
+        "title": "NHL Trade Deadline Reaction 🚨 John Carlson to Ducks, Nick Foligno to Wild | The Point",
         "source": "youtube"
       }
     },
@@ -234,8 +234,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-07T00:41:08.330Z",
-      "expiresAt": "2026-03-14T00:41:08.330Z",
+      "triggeredAt": "2026-03-07T00:50:08.242Z",
+      "expiresAt": "2026-03-14T00:50:08.242Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -258,16 +258,9 @@
           "echl-web-25179"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-07T00:41:08.330Z",
-        "windowEnd": "2026-03-14T00:41:08.330Z",
+        "windowStart": "2026-03-07T00:50:08.242Z",
+        "windowEnd": "2026-03-14T00:50:08.242Z",
         "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
-      },
-      "video": {
-        "url": "https://www.youtube.com/watch?v=92baGKRg69M",
-        "thumbnailUrl": "https://img.youtube.com/vi/92baGKRg69M/hqdefault.jpg",
-        "durationSeconds": 140,
-        "title": "Tulsa Oilers vs Idaho Steelheads - 4/26/19",
-        "source": "youtube"
       }
     },
     {
@@ -279,7 +272,7 @@
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-07T00:41:08.330Z",
+      "triggeredAt": "2026-03-07T00:50:08.242Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
@@ -289,7 +282,7 @@
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 19.3,
+        "hoursUntil": 19.2,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",
@@ -318,10 +311,10 @@
         ]
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=FHv4ZG0qReM",
-        "thumbnailUrl": "https://img.youtube.com/vi/FHv4ZG0qReM/hqdefault.jpg",
-        "durationSeconds": 117,
-        "title": "NHL Trade Deadline Call: Bruins and Avalanche",
+        "url": "https://www.youtube.com/watch?v=JPn4iCELIfA",
+        "thumbnailUrl": "https://img.youtube.com/vi/JPn4iCELIfA/hqdefault.jpg",
+        "durationSeconds": 511,
+        "title": "The Truth Behind the Boston Bruins Trade Deadline Moves Revealed...",
         "source": "youtube"
       }
     },
@@ -334,8 +327,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-07T00:41:08.330Z",
-      "expiresAt": "2026-03-14T00:41:08.330Z",
+      "triggeredAt": "2026-03-07T00:50:08.242Z",
+      "expiresAt": "2026-03-14T00:50:08.242Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -358,15 +351,15 @@
           "nhl_2025021027"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-07T00:41:08.330Z",
-        "windowEnd": "2026-03-14T00:41:08.330Z",
+        "windowStart": "2026-03-07T00:50:08.242Z",
+        "windowEnd": "2026-03-14T00:50:08.242Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=SMkzFDXKS1g",
-        "thumbnailUrl": "https://img.youtube.com/vi/SMkzFDXKS1g/hqdefault.jpg",
-        "durationSeconds": 10,
-        "title": "Zadorov poked Malkin from the bench and Geno took exception 😳",
+        "url": "https://www.youtube.com/watch?v=ZhDJvzB-Sps",
+        "thumbnailUrl": "https://img.youtube.com/vi/ZhDJvzB-Sps/hqdefault.jpg",
+        "durationSeconds": 694,
+        "title": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
         "source": "youtube"
       }
     },
@@ -379,7 +372,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-07T00:41:08.330Z",
+      "triggeredAt": "2026-03-07T00:50:08.242Z",
       "expiresAt": "2026-03-08T02:30:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
@@ -398,10 +391,10 @@
         "reason": "Philadelphia Flyers and Pittsburgh Penguins meet tonight in one of hockey's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=dez832zrzgY",
-        "thumbnailUrl": "https://img.youtube.com/vi/dez832zrzgY/hqdefault.jpg",
-        "durationSeconds": 189,
-        "title": "Penguins@Flyers",
+        "url": "https://www.youtube.com/watch?v=gQk9J0Zxc-U",
+        "thumbnailUrl": "https://img.youtube.com/vi/gQk9J0Zxc-U/hqdefault.jpg",
+        "durationSeconds": 506,
+        "title": "THE PITTSBURGH PENGUINS JUST FLEECED THE COLORADO AVALANCHE HARD—OR DID THEY? Kulak For Girard Trade",
         "source": "youtube"
       }
     },
@@ -414,7 +407,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-07T00:41:08.330Z",
+      "triggeredAt": "2026-03-07T00:50:08.242Z",
       "expiresAt": "2026-03-08T07:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
