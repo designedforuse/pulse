@@ -157,7 +157,11 @@ export default function ExploreScreen() {
                   { opacity: pressed ? 0.7 : 1 },
                 ]}
               >
-                <Text style={styles.tonightStoryCtaText}>Read more</Text>
+                <Text style={styles.tonightStoryCtaText}>
+                  {tonightStory.signalType === "multi_team_night" || tonightStory.signalType === "single_team_game"
+                    ? "Track all games"
+                    : "Read more"}
+                </Text>
                 <Ionicons name="arrow-forward" size={14} color={Colors.accent} />
               </Pressable>
             )}

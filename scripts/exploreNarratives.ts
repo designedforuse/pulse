@@ -2229,16 +2229,14 @@ export interface TonightStory {
   sourceCard: { id: string; kind: string; title: string };
 }
 
-const TONIGHT_STORY_PRIORITY: string[] = [
-  "upset_alert",
-  "rivalry_game",
-  "clinch_watch",
-  "deadline_watch",
-  "playoff_push",
-  "momentum",
-  "league_moment",
-  "player_movement",
-];
+interface TonightStoryDebug {
+  selectedSignal: string | null;
+  selectedHeadline: string | null;
+  selectedScore: number;
+  sourceEventId: string | null;
+  reason: string;
+  scoredCandidates: { label: string; score: number; reason: string }[];
+}
 
 const TONIGHT_STORY_SIGNAL_LABELS: Record<string, string> = {
   upset_alert: "UPSET ALERT",
@@ -2249,79 +2247,376 @@ const TONIGHT_STORY_SIGNAL_LABELS: Record<string, string> = {
   momentum: "MOMENTUM",
   league_moment: "LEAGUE MOMENT",
   player_movement: "PLAYER MOVEMENT",
+  multi_team_night: "YOUR TEAMS",
+  single_team_game: "YOUR TEAM",
+  ritual_night: "RITUAL NIGHT",
 };
 
-function buildTonightStory(candidates: ExploreNarrativeCard[]): TonightStory | null {
-  if (candidates.length === 0) return null;
+const AFFILIATE_LADDER: { parent: string; affiliates: string[] }[] = [
+  { parent: "Anaheim Ducks", affiliates: ["San Diego Gulls", "Tulsa Oilers"] },
+  { parent: "Boston Bruins", affiliates: ["Providence Bruins", "Maine Mariners"] },
+  { parent: "New York Rangers", affiliates: ["Hartford Wolf Pack", "Jacksonville Icemen"] },
+  { parent: "Pittsburgh Penguins", affiliates: ["Wilkes-Barre/Scranton Penguins", "Wheeling Nailers"] },
+  { parent: "Philadelphia Flyers", affiliates: ["Lehigh Valley Phantoms", "Reading Royals"] },
+  { parent: "Chicago Blackhawks", affiliates: ["Rockford IceHogs", "Indy Fuel"] },
+  { parent: "Detroit Red Wings", affiliates: ["Grand Rapids Griffins", "Toledo Walleye"] },
+  { parent: "Los Angeles Kings", affiliates: ["Ontario Reign", "Greenville Swamp Rabbits"] },
+  { parent: "Colorado Avalanche", affiliates: ["Colorado Eagles", "Utah Grizzlies"] },
+  { parent: "Tampa Bay Lightning", affiliates: ["Syracuse Crunch", "Orlando Solar Bears"] },
+  { parent: "Edmonton Oilers", affiliates: ["Bakersfield Condors"] },
+  { parent: "Calgary Flames", affiliates: ["Calgary Wranglers", "Rapid City Rush"] },
+  { parent: "Montréal Canadiens", affiliates: ["Laval Rocket", "Trois-Rivières Lions"] },
+  { parent: "Montreal Canadiens", affiliates: ["Laval Rocket", "Trois-Rivières Lions"] },
+  { parent: "Toronto Maple Leafs", affiliates: ["Toronto Marlies", "Newfoundland Growlers"] },
+];
 
-  let best: ExploreNarrativeCard | null = null;
-  for (const kind of TONIGHT_STORY_PRIORITY) {
-    const match = candidates.find(c => c.kind === kind);
-    if (match) { best = match; break; }
+function getRelatedTeams(teamName: string): string[] {
+  const norm = normalizeTeamName(teamName);
+  const related: string[] = [];
+  for (const entry of AFFILIATE_LADDER) {
+    const allInGroup = [entry.parent, ...entry.affiliates];
+    const normAll = allInGroup.map(t => normalizeTeamName(t));
+    if (normAll.some(n => n.includes(norm) || norm.includes(n))) {
+      for (const t of allInGroup) {
+        if (normalizeTeamName(t) !== norm) related.push(t);
+      }
+    }
   }
-  if (!best) return null;
+  return related;
+}
 
-  const meta = best.meta || {};
-  const teamA = meta.awayTeam || meta.team || meta.teams?.[0]?.team || "";
-  const teamB = meta.homeTeam || meta.teams?.[1]?.team || "";
-  const eventIds = meta.eventIds || [];
-
-  let headline = "";
-  let body = "";
-
-  switch (best.kind) {
-    case "rivalry_game":
-      headline = "Rivalry Night";
-      body = teamA && teamB
-        ? `${teamA} faces ${teamB} tonight in one of the sport's most intense rivalries.`
-        : "A fierce rivalry matchup is on the schedule tonight.";
-      break;
-    case "deadline_watch":
-      headline = "Deadline Tension";
-      body = "Teams are making their final moves before the trade deadline.";
-      break;
-    case "clinch_watch":
-      headline = "Playoff Stakes";
-      body = teamA
-        ? `${teamA} could clinch advancement tonight.`
-        : "A team could clinch advancement tonight.";
-      break;
-    case "upset_alert":
-      headline = "Shock Result";
-      body = "A surprising result has shaken up the competition.";
-      break;
-    case "playoff_push":
-      headline = "Packed Schedule";
-      body = teamA
-        ? `${teamA} enters a critical stretch with games stacking up.`
-        : "A team enters a critical stretch with games stacking up.";
-      break;
-    case "momentum":
-      headline = "Hot Streak";
-      body = teamA
-        ? `${teamA} is riding momentum with a strong recent run.`
-        : "A team is riding momentum heading into tonight.";
-      break;
-    case "league_moment":
-      headline = "League Spotlight";
-      body = best.subtitle || "A significant league-wide moment is unfolding.";
-      break;
-    case "player_movement":
-      headline = "Roster Shakeup";
-      body = "A notable roster move is shaping the competition.";
-      break;
-    default:
-      headline = "Tonight's Narrative";
-      body = best.subtitle || "Something interesting is happening in the sports world.";
+function getFollowedTeamNames(favorites: Favorites): string[] {
+  const teams: string[] = [];
+  for (const [, leagues] of Object.entries(favorites)) {
+    if (!leagues) continue;
+    for (const [, teamList] of Object.entries(leagues)) {
+      teams.push(...teamList);
+    }
   }
+  return teams;
+}
+
+interface TonightStoryCandidate {
+  score: number;
+  signalType: string;
+  headline: string;
+  body: string;
+  reason: string;
+  sourceEventId?: string;
+  sourceCard: { id: string; kind: string; title: string };
+}
+
+function buildTonightStory(
+  candidates: ExploreNarrativeCard[],
+  events: AppEvent[],
+  favorites: Favorites,
+  now: Date,
+): { story: TonightStory | null; debug: TonightStoryDebug } {
+  const debugResult: TonightStoryDebug = {
+    selectedSignal: null,
+    selectedHeadline: null,
+    selectedScore: 0,
+    sourceEventId: null,
+    reason: "",
+    scoredCandidates: [],
+  };
+
+  if (candidates.length === 0 && events.length === 0) {
+    debugResult.reason = "no candidates or events";
+    return { story: null, debug: debugResult };
+  }
+
+  const followedNames = getFollowedTeamNames(favorites);
+  const allStories: TonightStoryCandidate[] = [];
+
+  const todayStart = new Date(now);
+  todayStart.setHours(0, 0, 0, 0);
+  const todayEnd = new Date(todayStart.getTime() + 86400000);
+  const tonightEvents = events.filter(e => {
+    const start = new Date(e.startTimeLocal);
+    return start >= todayStart && start < todayEnd;
+  });
+
+  function storyTeamMatch(eventTeamName: string, favTeamName: string): boolean {
+    const normEv = normalizeTeamName(eventTeamName);
+    const normFav = normalizeTeamName(favTeamName);
+    if (normEv === normFav) return true;
+    const evWords = new Set(normEv.split(/\s+/));
+    const favWords = normFav.split(/\s+/);
+    if (favWords.length >= 2) {
+      return favWords.every(w => evWords.has(w));
+    }
+    if (favWords.length === 1 && favWords[0].length >= 6) {
+      return evWords.has(favWords[0]);
+    }
+    return false;
+  }
+
+  if (followedNames.length > 0) {
+    const followedNorm = followedNames.map(n => normalizeTeamName(n));
+    const relatedMap = new Map<string, string[]>();
+    for (const fn of followedNames) {
+      relatedMap.set(fn, getRelatedTeams(fn));
+    }
+
+    const followedTonightEvents: { event: AppEvent; followedTeam: string; isAffiliate: boolean; matchedTeam: string }[] = [];
+    for (const ev of tonightEvents) {
+      let matched = false;
+      for (const fn of followedNames) {
+        if (storyTeamMatch(ev.homeTeam, fn)) {
+          followedTonightEvents.push({ event: ev, followedTeam: fn, isAffiliate: false, matchedTeam: ev.homeTeam });
+          matched = true;
+          break;
+        }
+        if (storyTeamMatch(ev.awayTeam, fn)) {
+          followedTonightEvents.push({ event: ev, followedTeam: fn, isAffiliate: false, matchedTeam: ev.awayTeam });
+          matched = true;
+          break;
+        }
+      }
+      if (matched) continue;
+      for (const fn of followedNames) {
+        const affiliates = relatedMap.get(fn) || [];
+        let affMatched = false;
+        for (const aff of affiliates) {
+          if (storyTeamMatch(ev.homeTeam, aff)) {
+            followedTonightEvents.push({ event: ev, followedTeam: fn, isAffiliate: true, matchedTeam: ev.homeTeam });
+            affMatched = true;
+            break;
+          }
+          if (storyTeamMatch(ev.awayTeam, aff)) {
+            followedTonightEvents.push({ event: ev, followedTeam: fn, isAffiliate: true, matchedTeam: ev.awayTeam });
+            affMatched = true;
+            break;
+          }
+        }
+        if (affMatched) break;
+      }
+    }
+
+    const seenEventIds = new Set<string>();
+    const dedupedEvents: typeof followedTonightEvents = [];
+    for (const entry of followedTonightEvents) {
+      if (!seenEventIds.has(entry.event.id)) {
+        seenEventIds.add(entry.event.id);
+        dedupedEvents.push(entry);
+      }
+    }
+
+    const distinctTeamsPlaying = new Set<string>();
+    const teamsByLeague = new Map<string, string[]>();
+    const allEventIds: string[] = [];
+    for (const entry of dedupedEvents) {
+      const ev = entry.event;
+      const displayName = entry.isAffiliate ? entry.matchedTeam : entry.followedTeam;
+      distinctTeamsPlaying.add(displayName);
+      if (!teamsByLeague.has(ev.league)) teamsByLeague.set(ev.league, []);
+      if (!teamsByLeague.get(ev.league)!.includes(displayName)) {
+        teamsByLeague.get(ev.league)!.push(displayName);
+      }
+      allEventIds.push(ev.id);
+    }
+
+    if (distinctTeamsPlaying.size >= 2) {
+      const directFollowed = dedupedEvents.filter(e => !e.isAffiliate).map(e => e.followedTeam);
+      const affiliateMatched = dedupedEvents.filter(e => e.isAffiliate).map(e => e.matchedTeam);
+      const orderedTeams = [...new Set([...directFollowed, ...affiliateMatched])];
+
+      const MAX_DISPLAY = 5;
+      const displayTeams = orderedTeams.slice(0, MAX_DISPLAY);
+      const extraCount = orderedTeams.length - displayTeams.length;
+
+      const leagueList = [...teamsByLeague.keys()];
+      const leagueSuffix = leagueList.length > 1
+        ? ` across the ${leagueList.join(", ")}`
+        : ` in the ${leagueList[0] || "league"}`;
+
+      let teamStr: string;
+      if (displayTeams.length === 2) {
+        teamStr = `${displayTeams[0]} and ${displayTeams[1]}`;
+      } else {
+        teamStr = `${displayTeams.slice(0, -1).join(", ")}, and ${displayTeams[displayTeams.length - 1]}`;
+      }
+      if (extraCount > 0) {
+        teamStr += ` (+${extraCount} more)`;
+      }
+
+      const sportsInPlay = new Set(dedupedEvents.map(e => e.event.sport));
+      const headline = sportsInPlay.size === 1
+        ? (sportsInPlay.has("hockey") ? "Your Hockey Night" : sportsInPlay.has("soccer") ? "Your Football Night" : "Your Game Night")
+        : "Your Sports Night";
+
+      const score = 200 + (distinctTeamsPlaying.size * 20);
+      allStories.push({
+        score,
+        signalType: "multi_team_night",
+        headline,
+        body: `The ${teamStr} all play tonight${leagueSuffix}.`,
+        reason: `${distinctTeamsPlaying.size} followed/affiliate teams playing tonight`,
+        sourceEventId: allEventIds[0],
+        sourceCard: { id: "tonight_multi_team", kind: "multi_team_night", title: headline },
+      });
+    }
+
+    if (dedupedEvents.length === 1) {
+      const entry = dedupedEvents[0];
+      const ev = entry.event;
+      const displayTeam = entry.isAffiliate ? entry.matchedTeam : entry.followedTeam;
+      const score = 150;
+      allStories.push({
+        score,
+        signalType: "single_team_game",
+        headline: `${entry.followedTeam} Tonight`,
+        body: `${ev.awayTeam} at ${ev.homeTeam} — catch the action in the ${ev.league}.`,
+        reason: `single followed team (${entry.followedTeam}) playing tonight`,
+        sourceEventId: ev.id,
+        sourceCard: { id: "tonight_single_team", kind: "single_team_game", title: `${entry.followedTeam} Tonight` },
+      });
+    }
+  }
+
+  const activeRitual = findBestRitual(tonightEvents);
+  if (activeRitual && followedNames.length > 0) {
+    const matchedRitualEvents = tonightEvents.filter(e => activeRitual.sports.includes(e.sport));
+    const followedInRitual = matchedRitualEvents.filter(e => {
+      return followedNames.some(fn =>
+        storyTeamMatch(e.homeTeam, fn) || storyTeamMatch(e.awayTeam, fn)
+      );
+    });
+    if (followedInRitual.length > 0) {
+      allStories.push({
+        score: 130,
+        signalType: "ritual_night",
+        headline: activeRitual.label,
+        body: `Your ${activeRitual.label} lineup includes ${followedInRitual.length} game${followedInRitual.length > 1 ? "s" : ""} with teams you follow.`,
+        reason: `ritual "${activeRitual.label}" has ${followedInRitual.length} followed-team game(s)`,
+        sourceEventId: followedInRitual[0]?.id,
+        sourceCard: { id: `tonight_ritual_${activeRitual.id}`, kind: "ritual_night", title: activeRitual.label },
+      });
+    }
+  }
+
+  const CARD_KIND_SCORES: Record<string, number> = {
+    upset_alert: 120,
+    clinch_watch: 110,
+    deadline_watch: 100,
+    playoff_push: 90,
+    momentum: 70,
+    rivalry_game: 60,
+    league_moment: 50,
+    player_movement: 40,
+  };
+
+  for (const card of candidates) {
+    const meta = card.meta || {};
+    const teamA = meta.awayTeam || meta.team || meta.teams?.[0]?.team || "";
+    const teamB = meta.homeTeam || meta.teams?.[1]?.team || "";
+    const eventIds = meta.eventIds || [];
+
+    let baseScore = CARD_KIND_SCORES[card.kind] || 30;
+
+    const cardTeams = [teamA, teamB].filter(Boolean);
+    const followedInCard = cardTeams.filter(t =>
+      followedNames.some(fn => storyTeamMatch(t, fn))
+    );
+    if (followedInCard.length > 0) {
+      baseScore += 80;
+    }
+
+    let headline = "";
+    let body = "";
+
+    switch (card.kind) {
+      case "rivalry_game":
+        headline = followedInCard.length > 0 ? "Your Rivalry Night" : "Rivalry Night";
+        body = teamA && teamB
+          ? `${teamA} faces ${teamB} tonight in one of the sport's most intense rivalries.`
+          : "A fierce rivalry matchup is on the schedule tonight.";
+        break;
+      case "deadline_watch":
+        headline = "Deadline Tension";
+        body = followedInCard.length > 0
+          ? `${followedInCard[0]} is navigating the trade deadline — moves are expected.`
+          : "Teams are making their final moves before the trade deadline.";
+        break;
+      case "clinch_watch":
+        headline = "Playoff Stakes";
+        body = teamA
+          ? `${teamA} could clinch advancement tonight.`
+          : "A team could clinch advancement tonight.";
+        break;
+      case "upset_alert":
+        headline = "Shock Result";
+        body = "A surprising result has shaken up the competition.";
+        break;
+      case "playoff_push":
+        headline = followedInCard.length > 0 ? "Your Team's Push" : "Packed Schedule";
+        body = teamA
+          ? `${teamA} enters a critical stretch with games stacking up.`
+          : "A team enters a critical stretch with games stacking up.";
+        break;
+      case "momentum":
+        headline = "Hot Streak";
+        body = teamA
+          ? `${teamA} is riding momentum with a strong recent run.`
+          : "A team is riding momentum heading into tonight.";
+        break;
+      case "league_moment":
+        headline = "League Spotlight";
+        body = card.subtitle || "A significant league-wide moment is unfolding.";
+        break;
+      case "player_movement":
+        headline = "Roster Shakeup";
+        body = "A notable roster move is shaping the competition.";
+        break;
+      default:
+        headline = "Tonight's Narrative";
+        body = card.subtitle || "Something interesting is happening in the sports world.";
+    }
+
+    allStories.push({
+      score: baseScore,
+      signalType: card.kind,
+      headline,
+      body,
+      reason: followedInCard.length > 0
+        ? `${card.kind} involving followed team(s): ${followedInCard.join(", ")}`
+        : `${card.kind} (generic, no followed teams)`,
+      sourceEventId: eventIds[0] || undefined,
+      sourceCard: { id: card.id, kind: card.kind, title: card.title },
+    });
+  }
+
+  allStories.sort((a, b) => b.score - a.score);
+
+  debugResult.scoredCandidates = allStories.map(s => ({
+    label: `[${s.signalType}] ${s.headline}`,
+    score: s.score,
+    reason: s.reason,
+  }));
+
+  if (allStories.length === 0) {
+    debugResult.reason = "no stories scored";
+    return { story: null, debug: debugResult };
+  }
+
+  const winner = allStories[0];
+  debugResult.selectedSignal = winner.signalType;
+  debugResult.selectedHeadline = winner.headline;
+  debugResult.selectedScore = winner.score;
+  debugResult.sourceEventId = winner.sourceEventId || null;
+  debugResult.reason = winner.reason;
 
   return {
-    signalType: best.kind,
-    signalLabel: TONIGHT_STORY_SIGNAL_LABELS[best.kind] || best.kind.toUpperCase(),
-    headline,
-    body,
-    sourceEventId: eventIds[0] || undefined,
-    sourceCard: { id: best.id, kind: best.kind, title: best.title },
+    story: {
+      signalType: winner.signalType,
+      signalLabel: TONIGHT_STORY_SIGNAL_LABELS[winner.signalType] || winner.signalType.toUpperCase(),
+      headline: winner.headline,
+      body: winner.body,
+      sourceEventId: winner.sourceEventId,
+      sourceCard: winner.sourceCard,
+    },
+    debug: debugResult,
   };
 }
 
@@ -2340,6 +2635,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     tonightStorySelectedSignal: string | null;
     tonightStoryHeadline: string | null;
     tonightStorySourceEvent: string | null;
+    tonightStoryDebug: TonightStoryDebug | null;
   };
 }> {
   console.log("\n=== Generating Explore Narratives ===");
@@ -2424,9 +2720,11 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
 
   const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...playerMovementCards, ...deadlineResult.cards, ...rivalryResult.cards, ...upsetResult.cards, ...clinchResult.cards, ...clinchResult.fallbackPushCards];
 
-  const tonightStory = buildTonightStory(allCandidates);
+  const tonightStoryResult = buildTonightStory(allCandidates, events, favorites, now);
+  const tonightStory = tonightStoryResult.story;
   if (tonightStory) {
     console.log(`  Tonight's Story: [${tonightStory.signalType}] "${tonightStory.headline}" — ${tonightStory.body}`);
+    console.log(`    Reason: ${tonightStoryResult.debug.reason} (score: ${tonightStoryResult.debug.selectedScore})`);
   } else {
     console.log("  Tonight's Story: none (no candidates)");
   }
@@ -2500,6 +2798,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     tonightStorySelectedSignal: tonightStory?.signalType || null,
     tonightStoryHeadline: tonightStory?.headline || null,
     tonightStorySourceEvent: tonightStory?.sourceEventId || null,
+    tonightStoryDebug: tonightStoryResult.debug,
   };
 
   console.log(`  Total: ${allCandidates.length} → selected ${selected.length}`);

@@ -82,5 +82,25 @@
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
+  },
+  "playoff_push:anaheim ducks playoff push march 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=N29gGvWf1eY",
+      "thumbnailUrl": "https://img.youtube.com/vi/N29gGvWf1eY/hqdefault.jpg",
+      "durationSeconds": 7241,
+      "title": "The Canadiens’ Top Trade Target Should Be… | The Sick Podcast with Tony Marinaro March 5 2026",
+      "source": "youtube",
+      "channel": "The Sick Podcast with Tony Marinaro",
+      "publishedAt": "Streamed 20 hours ago"
+    },
+    "fetchedAt": "2026-03-07T01:12:14.759Z",
+    "query": "Anaheim Ducks playoff push March 2026",
+    "debug": {
+      "searchQuery": "Anaheim Ducks playoff push March 2026",
+      "selectedVideoTitle": "The Canadiens’ Top Trade Target Should Be… | The Sick Podcast with Tony Marinaro March 5 2026",
+      "selectedVideoPublishedAt": "Streamed 20 hours ago",
+      "selectedVideoChannel": "The Sick Podcast with Tony Marinaro",
+      "rejectedForAgeCount": 0
+    }
   }
 }

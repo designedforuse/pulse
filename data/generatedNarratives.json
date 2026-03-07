@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-07T00:55:32.159Z",
+  "lastUpdated": "2026-03-07T01:12:07.406Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -22,13 +22,12 @@
       }
     },
     "combinedPushByRegion": {
-      "NewEngland": false,
-      "SoCal": false
+      "NewEngland": false
     },
     "finalFeedByRegion": {
       "SoCal": [
         "deadline_watch: Ducks on Deadline Watch",
-        "playoff_push: Oilers Push Week"
+        "playoff_push: Playoff Push"
       ],
       "NewEngland": [
         "deadline_watch: Bruins on Deadline Watch",
@@ -41,7 +40,7 @@
     },
     "droppedCandidatesReasons": [
       {
-        "id": "playoff_push_clinch_fallback_nhl_2025020987",
+        "id": "playoff_push_clinch_fallback_nhl_2025021006",
         "kind": "playoff_push",
         "region": "SoCal",
         "title": "Playoff Push",
@@ -116,7 +115,7 @@
         ],
         "playersIngested": 637,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-07T00:55:32.159Z"
+        "timestamp": "2026-03-07T01:12:07.406Z"
       },
       "cacheHistoryCount": 722,
       "error": null
@@ -126,7 +125,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": 19.074400277777777,
+      "hoursUntil": 18.797942777777777,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -158,12 +157,87 @@
       "clinchGatedOut": [
         "Anaheim Ducks: before Mar 25, 71 pts < 95",
         "Boston Bruins: before Mar 25, 73 pts < 95",
-        "Boston Bruins: before Mar 25, 73 pts < 95"
+        "Boston Bruins: before Mar 25, 73 pts < 95",
+        "Anaheim Ducks: before Mar 25, 71 pts < 95"
       ]
     },
-    "tonightStorySelectedSignal": "rivalry_game",
-    "tonightStoryHeadline": "Rivalry Night",
-    "tonightStorySourceEvent": "nhl_2025020993",
+    "tonightStorySelectedSignal": "multi_team_night",
+    "tonightStoryHeadline": "Your Sports Night",
+    "tonightStorySourceEvent": "echl-web-25125",
+    "tonightStoryDebug": {
+      "selectedSignal": "multi_team_night",
+      "selectedHeadline": "Your Sports Night",
+      "selectedScore": 400,
+      "sourceEventId": "echl-web-25125",
+      "reason": "10 followed/affiliate teams playing tonight",
+      "scoredCandidates": [
+        {
+          "label": "[multi_team_night] Your Sports Night",
+          "score": 400,
+          "reason": "10 followed/affiliate teams playing tonight"
+        },
+        {
+          "label": "[deadline_watch] Deadline Tension",
+          "score": 180,
+          "reason": "deadline_watch involving followed team(s): Anaheim Ducks"
+        },
+        {
+          "label": "[deadline_watch] Deadline Tension",
+          "score": 180,
+          "reason": "deadline_watch involving followed team(s): Boston Bruins"
+        },
+        {
+          "label": "[playoff_push] Your Team's Push",
+          "score": 170,
+          "reason": "playoff_push involving followed team(s): Boston Bruins"
+        },
+        {
+          "label": "[playoff_push] Your Team's Push",
+          "score": 170,
+          "reason": "playoff_push involving followed team(s): Anaheim Ducks"
+        },
+        {
+          "label": "[playoff_push] Your Team's Push",
+          "score": 170,
+          "reason": "playoff_push involving followed team(s): Boston Bruins"
+        },
+        {
+          "label": "[playoff_push] Your Team's Push",
+          "score": 170,
+          "reason": "playoff_push involving followed team(s): Boston Bruins"
+        },
+        {
+          "label": "[playoff_push] Your Team's Push",
+          "score": 170,
+          "reason": "playoff_push involving followed team(s): Anaheim Ducks"
+        },
+        {
+          "label": "[ritual_night] Family Game Night",
+          "score": 130,
+          "reason": "ritual \"Family Game Night\" has 8 followed-team game(s)"
+        },
+        {
+          "label": "[clinch_watch] Playoff Stakes",
+          "score": 110,
+          "reason": "clinch_watch (generic, no followed teams)"
+        },
+        {
+          "label": "[rivalry_game] Rivalry Night",
+          "score": 60,
+          "reason": "rivalry_game (generic, no followed teams)"
+        },
+        {
+          "label": "[league_moment] League Spotlight",
+          "score": 50,
+          "reason": "league_moment (generic, no followed teams)"
+        },
+        {
+          "label": "[league_moment] League Spotlight",
+          "score": 50,
+          "reason": "league_moment (generic, no followed teams)"
+        }
+      ]
+    },
     "videoSelection": {
       "deadline_watch_ana": {
         "searchQuery": "Anaheim Ducks trade deadline preview March 2026",
@@ -172,11 +246,11 @@
         "selectedVideoChannel": "Picks & Parlays",
         "rejectedForAgeCount": 0
       },
-      "playoff_push_socal": {
-        "searchQuery": "Tulsa Oilers playoff push March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
+      "playoff_push_clinch_fallback_nhl_2025020987": {
+        "searchQuery": "Anaheim Ducks playoff push March 2026",
+        "selectedVideoTitle": "The Canadiens’ Top Trade Target Should Be… | The Sick Podcast with Tony Marinaro March 5 2026",
+        "selectedVideoPublishedAt": "Streamed 20 hours ago",
+        "selectedVideoChannel": "The Sick Podcast with Tony Marinaro",
         "rejectedForAgeCount": 0
       },
       "deadline_watch_bos": {
@@ -212,7 +286,7 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-07T00:55:32.159Z",
+      "triggeredAt": "2026-03-07T01:12:07.406Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
@@ -222,7 +296,7 @@
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 19.1,
+        "hoursUntil": 18.8,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -264,17 +338,17 @@
       }
     },
     {
-      "id": "playoff_push_socal",
-      "title": "Oilers Push Week",
-      "subtitle": "Four games in seven days, including a back-to-back",
+      "id": "playoff_push_clinch_fallback_nhl_2025020987",
+      "title": "Playoff Push",
+      "subtitle": "A win keeps Anaheim Ducks in the playoff race.",
       "impact": {
-        "label": "Impacts: Saturday Game Day",
-        "ritualId": "saturday_spotlight",
-        "tabHint": "Rituals"
+        "label": "Impacts: Family Game Night",
+        "ritualId": "friday_lights",
+        "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-07T00:55:32.159Z",
-      "expiresAt": "2026-03-14T00:55:32.159Z",
+      "triggeredAt": "2026-03-07T01:12:07.406Z",
+      "expiresAt": "2026-03-07T06:00:00.000Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -282,24 +356,24 @@
       "meta": {
         "teams": [
           {
-            "team": "Tulsa Oilers",
-            "league": "ECHL",
-            "gamesInNext7Days": 4,
-            "gamesInNext5Days": 3,
-            "hasBackToBack": true,
-            "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+            "team": "Anaheim Ducks",
+            "league": "NHL"
           }
         ],
         "eventIds": [
-          "echl-web-25125",
-          "echl-web-25137",
-          "echl-web-25149",
-          "echl-web-25179"
+          "nhl_2025020987"
         ],
-        "combinedTeamCount": 1,
-        "windowStart": "2026-03-07T00:55:32.159Z",
-        "windowEnd": "2026-03-14T00:55:32.159Z",
-        "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+        "reason": "Anaheim Ducks has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
+        "clinchFallback": true
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=N29gGvWf1eY",
+        "thumbnailUrl": "https://img.youtube.com/vi/N29gGvWf1eY/hqdefault.jpg",
+        "durationSeconds": 7241,
+        "title": "The Canadiens’ Top Trade Target Should Be… | The Sick Podcast with Tony Marinaro March 5 2026",
+        "source": "youtube",
+        "channel": "The Sick Podcast with Tony Marinaro",
+        "publishedAt": "Streamed 20 hours ago"
       }
     },
     {
@@ -311,7 +385,7 @@
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-07T00:55:32.159Z",
+      "triggeredAt": "2026-03-07T01:12:07.406Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
@@ -321,7 +395,7 @@
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 19.1,
+        "hoursUntil": 18.8,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",
@@ -368,8 +442,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-07T00:55:32.159Z",
-      "expiresAt": "2026-03-14T00:55:32.159Z",
+      "triggeredAt": "2026-03-07T01:12:07.406Z",
+      "expiresAt": "2026-03-14T01:12:07.406Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -392,8 +466,8 @@
           "nhl_2025021027"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-07T00:55:32.159Z",
-        "windowEnd": "2026-03-14T00:55:32.159Z",
+        "windowStart": "2026-03-07T01:12:07.406Z",
+        "windowEnd": "2026-03-14T01:12:07.406Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "video": {
@@ -415,7 +489,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-07T00:55:32.159Z",
+      "triggeredAt": "2026-03-07T01:12:07.406Z",
       "expiresAt": "2026-03-08T02:30:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
@@ -443,7 +517,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-07T00:55:32.159Z",
+      "triggeredAt": "2026-03-07T01:12:07.406Z",
       "expiresAt": "2026-03-08T07:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -465,15 +539,15 @@
     }
   ],
   "tonightStory": {
-    "signalType": "rivalry_game",
-    "signalLabel": "RIVALRY GAME",
-    "headline": "Rivalry Night",
-    "body": "Philadelphia Flyers faces Pittsburgh Penguins tonight in one of the sport's most intense rivalries.",
-    "sourceEventId": "nhl_2025020993",
+    "signalType": "multi_team_night",
+    "signalLabel": "YOUR TEAMS",
+    "headline": "Your Sports Night",
+    "body": "The Tulsa Oilers, Hurricanes, Anaheim Ducks, San Diego Gulls, and Sungoliath (+5 more) all play tonight across the ECHL, NHL, AHL, Japan League One, MLS, Ligue 1, NCAA Hockey.",
+    "sourceEventId": "echl-web-25125",
     "sourceCard": {
-      "id": "rivalry_game_nhl_2025020993",
-      "kind": "rivalry_game",
-      "title": "Rivalry Game Tonight"
+      "id": "tonight_multi_team",
+      "kind": "multi_team_night",
+      "title": "Your Sports Night"
     }
   }
 }
