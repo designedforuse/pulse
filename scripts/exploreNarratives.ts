@@ -1696,12 +1696,56 @@ function buildClinchNarrative(c: ClinchCandidate): string {
   return `${c.event.homeTeam} have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration.`;
 }
 
+const CLINCH_ELIGIBLE_DATE_MONTH = 3;
+const CLINCH_ELIGIBLE_DATE_DAY = 25;
+const CLINCH_MIN_POINTS = 95;
+
+interface NhlStandingsTeam {
+  teamAbbrev?: { default?: string };
+  teamName?: { default?: string };
+  points?: number;
+  divisionSequence?: number;
+  wildcardSequence?: number;
+  conferenceSequence?: number;
+}
+
+function isNhlTeamClinchEligible(
+  teamName: string,
+  standings: NhlStandingsTeam[],
+  now: Date,
+): { eligible: boolean; points: number; inPlayoffPosition: boolean; dateOk: boolean } {
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+  const dateOk = month > CLINCH_ELIGIBLE_DATE_MONTH ||
+    (month === CLINCH_ELIGIBLE_DATE_MONTH && day >= CLINCH_ELIGIBLE_DATE_DAY);
+
+  const normTarget = normalizeTeamName(teamName);
+  const team = standings.find(t => {
+    const name = normalizeTeamName(t.teamName?.default || "");
+    return name.includes(normTarget) || normTarget.includes(name);
+  });
+
+  const points = team?.points ?? 0;
+  const divSeq = team?.divisionSequence ?? 99;
+  const wcSeq = team?.wildcardSequence ?? 99;
+  const inPlayoffPosition = divSeq <= 3 || (wcSeq >= 1 && wcSeq <= 2);
+
+  return {
+    eligible: dateOk && inPlayoffPosition && points >= CLINCH_MIN_POINTS,
+    points,
+    inPlayoffPosition,
+    dateOk,
+  };
+}
+
 function generateClinchWatch(
   events: AppEvent[],
   now: Date,
+  nhlStandings: NhlStandingsTeam[],
 ): {
   cards: ExploreNarrativeCard[];
-  debug: { rawClinchCandidates: number; clinchAfterRegionFilter: number; clinchFinalCount: number };
+  fallbackPushCards: ExploreNarrativeCard[];
+  debug: { rawClinchCandidates: number; clinchAfterRegionFilter: number; clinchFinalCount: number; clinchGatedOut: string[] };
 } {
   const cutoff = new Date(now.getTime() + 48 * 3600000);
   const upcoming = events.filter(e => {
@@ -1710,6 +1754,8 @@ function generateClinchWatch(
   });
 
   const candidates: ClinchCandidate[] = [];
+  const fallbackPushCards: ExploreNarrativeCard[] = [];
+  const clinchGatedOut: string[] = [];
 
   for (const ev of upcoming) {
     for (const scenario of CLINCH_SCENARIOS) {
@@ -1722,6 +1768,47 @@ function generateClinchWatch(
       if ((normHome.includes(normTarget) || normTarget.includes(normHome) ||
            normAway.includes(normTarget) || normTarget.includes(normAway)) &&
           ev.sport === scenario.sport) {
+
+        if (scenario.sport === "hockey" && scenario.league === "NHL") {
+          const eligibility = isNhlTeamClinchEligible(scenario.teamName, nhlStandings, now);
+          if (!eligibility.eligible) {
+            const reasons: string[] = [];
+            if (!eligibility.dateOk) reasons.push(`before Mar ${CLINCH_ELIGIBLE_DATE_DAY}`);
+            if (!eligibility.inPlayoffPosition) reasons.push("not in playoff position");
+            if (eligibility.points < CLINCH_MIN_POINTS) reasons.push(`${eligibility.points} pts < ${CLINCH_MIN_POINTS}`);
+            clinchGatedOut.push(`${scenario.teamName}: ${reasons.join(", ")}`);
+
+            const matchedTeam = normHome.includes(normTarget) || normTarget.includes(normHome)
+              ? ev.homeTeam : ev.awayTeam;
+            const region = scenario.region || resolveRegion(ev.homeTeam, ev.league);
+            const ritual = findBestRitual([ev]);
+            const impact: NarrativeImpact = ritual
+              ? { label: `Impacts: ${ritual.label}`, ritualId: ritual.id, tabHint: "Watch" }
+              : { label: "Feeds: Watch", tabHint: "Watch" };
+
+            fallbackPushCards.push({
+              id: `playoff_push_clinch_fallback_${ev.id}`,
+              title: "Playoff Push",
+              subtitle: `A win keeps ${matchedTeam} in the playoff race.`,
+              impact,
+              priority: 90,
+              triggeredAt: now.toISOString(),
+              expiresAt: new Date(new Date(ev.startTimeLocal).getTime() + 4 * 3600000).toISOString(),
+              kind: "playoff_push",
+              region,
+              regionPriority: getRegionPriority(region),
+              regionLabel: getRegionLabel(region),
+              meta: {
+                teams: [{ team: matchedTeam, league: scenario.league }],
+                eventIds: [ev.id],
+                reason: `${matchedTeam} has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.`,
+                clinchFallback: true,
+              },
+            });
+            break;
+          }
+        }
+
         candidates.push({
           event: ev,
           source: "team_config",
@@ -1828,7 +1915,8 @@ function generateClinchWatch(
   }
 
   debug.clinchFinalCount = cards.length;
-  return { cards, debug };
+  debug.clinchGatedOut = clinchGatedOut;
+  return { cards, fallbackPushCards, debug };
 }
 
 const NHL_TRADE_DEADLINE = "2026-03-07T15:00:00-05:00";
@@ -2196,13 +2284,26 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     console.log(`    [${c.region}] ${c.title}: ${c.subtitle}`);
   }
 
-  const clinchResult = generateClinchWatch(events, now);
+  const nhlStandingsData = await fetchNhlStandings();
+  const nhlStandings: NhlStandingsTeam[] = nhlStandingsData?.standings || [];
+  console.log(`  NHL Standings: ${nhlStandings.length} teams fetched`);
+
+  const clinchResult = generateClinchWatch(events, now, nhlStandings);
   console.log(`  Clinch Watch: ${clinchResult.cards.length} card(s) (${clinchResult.debug.rawClinchCandidates} candidates)`);
   for (const c of clinchResult.cards) {
     console.log(`    [${c.region}] ${c.title}: ${c.subtitle}`);
   }
+  if (clinchResult.debug.clinchGatedOut.length > 0) {
+    console.log(`  Clinch Watch gated out: ${clinchResult.debug.clinchGatedOut.join("; ")}`);
+  }
+  if (clinchResult.fallbackPushCards.length > 0) {
+    console.log(`  Clinch → Playoff Push fallbacks: ${clinchResult.fallbackPushCards.length}`);
+    for (const c of clinchResult.fallbackPushCards) {
+      console.log(`    [${c.region}] ${c.title}: ${c.subtitle}`);
+    }
+  }
 
-  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...playerMovementCards, ...deadlineResult.cards, ...rivalryResult.cards, ...upsetResult.cards, ...clinchResult.cards];
+  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...playerMovementCards, ...deadlineResult.cards, ...rivalryResult.cards, ...upsetResult.cards, ...clinchResult.cards, ...clinchResult.fallbackPushCards];
 
   const tonightStory = buildTonightStory(allCandidates);
   if (tonightStory) {

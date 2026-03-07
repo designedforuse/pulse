@@ -1,10 +1,11 @@
 {
-  "lastUpdated": "2026-03-06T06:35:45.111Z",
+  "lastUpdated": "2026-03-07T00:41:08.330Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
-        "NewEngland": 1,
-        "SoCal": 1
+        "NewEngland": 2,
+        "SoCal": 2,
+        "Other": 1
       },
       "league_moment": {
         "Other": 2
@@ -13,9 +14,10 @@
         "SoCal": 1,
         "NewEngland": 1
       },
+      "rivalry_game": {
+        "Other": 1
+      },
       "clinch_watch": {
-        "SoCal": 1,
-        "NewEngland": 1,
         "Other": 1
       }
     },
@@ -26,21 +28,37 @@
     "finalFeedByRegion": {
       "SoCal": [
         "deadline_watch: Ducks on Deadline Watch",
-        "clinch_watch: Clinch Watch",
         "playoff_push: Oilers Push Week"
       ],
       "NewEngland": [
         "deadline_watch: Bruins on Deadline Watch",
-        "clinch_watch: Clinch Watch",
         "playoff_push: Bruins Push Week"
+      ],
+      "Other": [
+        "rivalry_game: Rivalry Game Tonight",
+        "clinch_watch: Clinch Watch"
       ]
     },
     "droppedCandidatesReasons": [
       {
-        "id": "clinch_watch_rugby-svns-rj2l89-d1",
-        "kind": "clinch_watch",
+        "id": "playoff_push_clinch_fallback_nhl_2025020987",
+        "kind": "playoff_push",
+        "region": "SoCal",
+        "title": "Playoff Push",
+        "reason": "max 1 playoff_push per region (SoCal)"
+      },
+      {
+        "id": "playoff_push_clinch_fallback_nhl_2025020990",
+        "kind": "playoff_push",
+        "region": "NewEngland",
+        "title": "Playoff Push",
+        "reason": "max 1 playoff_push per region (NewEngland)"
+      },
+      {
+        "id": "playoff_push_clinch_fallback_nhl_2025021002",
+        "kind": "playoff_push",
         "region": "Other",
-        "title": "Clinch Watch",
+        "title": "Playoff Push",
         "reason": "feed cap (max 6)"
       },
       {
@@ -58,7 +76,7 @@
         "reason": "feed cap (max 6)"
       }
     ],
-    "totalBeforeCap": 9,
+    "totalBeforeCap": 11,
     "totalAfterCap": 6,
     "playerMovement": {
       "rawMovementCandidates": 0,
@@ -98,17 +116,17 @@
         ],
         "playersIngested": 637,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-06T06:35:45.111Z"
+        "timestamp": "2026-03-07T00:41:08.330Z"
       },
       "cacheHistoryCount": 722,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 9,
+    "candidateCountBeforeCap": 11,
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": 37.404135833333335,
+      "hoursUntil": 19.314352777777778,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -123,9 +141,9 @@
       }
     },
     "rivalryGame": {
-      "rawRivalryCandidates": 0,
-      "rivalryAfterRegionFilter": 0,
-      "rivalryFinalCount": 0
+      "rawRivalryCandidates": 1,
+      "rivalryAfterRegionFilter": 1,
+      "rivalryFinalCount": 1
     },
     "upsetAlert": {
       "rawUpsetCandidates": 0,
@@ -135,12 +153,17 @@
     },
     "clinchWatch": {
       "rawClinchCandidates": 3,
-      "clinchAfterRegionFilter": 3,
-      "clinchFinalCount": 3
+      "clinchAfterRegionFilter": 1,
+      "clinchFinalCount": 1,
+      "clinchGatedOut": [
+        "Anaheim Ducks: before Mar 25, 71 pts < 95",
+        "Boston Bruins: before Mar 25, 73 pts < 95",
+        "Boston Bruins: before Mar 25, 73 pts < 95"
+      ]
     },
-    "tonightStorySelectedSignal": "clinch_watch",
-    "tonightStoryHeadline": "Playoff Stakes",
-    "tonightStorySourceEvent": "nhl_2025020987"
+    "tonightStorySelectedSignal": "rivalry_game",
+    "tonightStoryHeadline": "Rivalry Night",
+    "tonightStorySourceEvent": "nhl_2025020993"
   },
   "cards": [
     {
@@ -152,7 +175,7 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-06T06:35:45.111Z",
+      "triggeredAt": "2026-03-07T00:41:08.330Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
@@ -162,7 +185,7 @@
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 37.4,
+        "hoursUntil": 19.3,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -202,43 +225,6 @@
       }
     },
     {
-      "id": "clinch_watch_nhl_2025020987",
-      "title": "Clinch Watch",
-      "subtitle": "Can clinch playoff berth with a win in the next 48h",
-      "impact": {
-        "label": "Impacts: Family Game Night",
-        "ritualId": "friday_lights",
-        "tabHint": "Watch"
-      },
-      "priority": 92,
-      "triggeredAt": "2026-03-06T06:35:45.111Z",
-      "expiresAt": "2026-03-07T06:00:00.000Z",
-      "kind": "clinch_watch",
-      "region": "SoCal",
-      "regionPriority": 2,
-      "regionLabel": "SoCal",
-      "meta": {
-        "source": "team_config",
-        "conditionLabel": "Can clinch playoff berth with a win",
-        "sport": "hockey",
-        "league": "NHL",
-        "awayTeam": "Montréal Canadiens",
-        "homeTeam": "Anaheim Ducks",
-        "startTime": "2026-03-07T02:00:00.000Z",
-        "eventIds": [
-          "nhl_2025020987"
-        ],
-        "reason": "Anaheim Ducks have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
-      },
-      "video": {
-        "url": "https://www.youtube.com/watch?v=CWVLbvqLqFk",
-        "thumbnailUrl": "https://img.youtube.com/vi/CWVLbvqLqFk/hqdefault.jpg",
-        "durationSeconds": 113,
-        "title": "Canadiens CLINCH final playoff spot!",
-        "source": "youtube"
-      }
-    },
-    {
       "id": "playoff_push_socal",
       "title": "Oilers Push Week",
       "subtitle": "Four games in seven days, including a back-to-back",
@@ -248,8 +234,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-06T06:35:45.111Z",
-      "expiresAt": "2026-03-13T06:35:45.111Z",
+      "triggeredAt": "2026-03-07T00:41:08.330Z",
+      "expiresAt": "2026-03-14T00:41:08.330Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -272,8 +258,8 @@
           "echl-web-25179"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T06:35:45.111Z",
-        "windowEnd": "2026-03-13T06:35:45.111Z",
+        "windowStart": "2026-03-07T00:41:08.330Z",
+        "windowEnd": "2026-03-14T00:41:08.330Z",
         "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "video": {
@@ -293,7 +279,7 @@
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-06T06:35:45.111Z",
+      "triggeredAt": "2026-03-07T00:41:08.330Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
@@ -303,7 +289,7 @@
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 37.4,
+        "hoursUntil": 19.3,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",
@@ -340,42 +326,6 @@
       }
     },
     {
-      "id": "clinch_watch_nhl_2025020990",
-      "title": "Clinch Watch",
-      "subtitle": "Can secure wild card spot with a win in the next 48h",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 92,
-      "triggeredAt": "2026-03-06T06:35:45.111Z",
-      "expiresAt": "2026-03-07T21:30:00.000Z",
-      "kind": "clinch_watch",
-      "region": "NewEngland",
-      "regionPriority": 3,
-      "regionLabel": "New England",
-      "meta": {
-        "source": "team_config",
-        "conditionLabel": "Can secure wild card spot with a win",
-        "sport": "hockey",
-        "league": "NHL",
-        "awayTeam": "Washington Capitals",
-        "homeTeam": "Boston Bruins",
-        "startTime": "2026-03-07T17:30:00.000Z",
-        "eventIds": [
-          "nhl_2025020990"
-        ],
-        "reason": "Boston Bruins have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
-      },
-      "video": {
-        "url": "https://www.youtube.com/watch?v=iqKjkrggTNg",
-        "thumbnailUrl": "https://img.youtube.com/vi/iqKjkrggTNg/hqdefault.jpg",
-        "durationSeconds": 162,
-        "title": "Capitals clinch Presidents' Trophy with 4-1 win",
-        "source": "youtube"
-      }
-    },
-    {
       "id": "playoff_push_newengland",
       "title": "Bruins Push Week",
       "subtitle": "Four games in seven days, including a back-to-back",
@@ -384,8 +334,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-06T06:35:45.111Z",
-      "expiresAt": "2026-03-13T06:35:45.111Z",
+      "triggeredAt": "2026-03-07T00:41:08.330Z",
+      "expiresAt": "2026-03-14T00:41:08.330Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -408,8 +358,8 @@
           "nhl_2025021027"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-06T06:35:45.111Z",
-        "windowEnd": "2026-03-13T06:35:45.111Z",
+        "windowStart": "2026-03-07T00:41:08.330Z",
+        "windowEnd": "2026-03-14T00:41:08.330Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "video": {
@@ -419,18 +369,82 @@
         "title": "Zadorov poked Malkin from the bench and Geno took exception 😳",
         "source": "youtube"
       }
+    },
+    {
+      "id": "rivalry_game_nhl_2025020993",
+      "title": "Rivalry Game Tonight",
+      "subtitle": "Philadelphia Flyers vs Pittsburgh Penguins · Tonight at 10:30 PM",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 96,
+      "triggeredAt": "2026-03-07T00:41:08.330Z",
+      "expiresAt": "2026-03-08T02:30:00.000Z",
+      "kind": "rivalry_game",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "rivalryLabel": "Keystone State Rivalry",
+        "sport": "hockey",
+        "league": "NHL",
+        "awayTeam": "Philadelphia Flyers",
+        "homeTeam": "Pittsburgh Penguins",
+        "startTime": "2026-03-07T22:30:00.000Z",
+        "eventIds": [
+          "nhl_2025020993"
+        ],
+        "reason": "Philadelphia Flyers and Pittsburgh Penguins meet tonight in one of hockey's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
+      },
+      "video": {
+        "url": "https://www.youtube.com/watch?v=dez832zrzgY",
+        "thumbnailUrl": "https://img.youtube.com/vi/dez832zrzgY/hqdefault.jpg",
+        "durationSeconds": 189,
+        "title": "Penguins@Flyers",
+        "source": "youtube"
+      }
+    },
+    {
+      "id": "clinch_watch_rugby-svns-rj2l89-d1",
+      "title": "Clinch Watch",
+      "subtitle": "Can secure semifinal place in the next 48h",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 92,
+      "triggeredAt": "2026-03-07T00:41:08.330Z",
+      "expiresAt": "2026-03-08T07:00:00.000Z",
+      "kind": "clinch_watch",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "source": "team_config",
+        "conditionLabel": "Can secure semifinal place",
+        "sport": "rugby",
+        "league": "HSBC SVNS",
+        "awayTeam": "",
+        "homeTeam": "SVNS Vancouver",
+        "startTime": "2026-03-08T03:00:00.000Z",
+        "eventIds": [
+          "rugby-svns-rj2l89-d1"
+        ],
+        "reason": "SVNS Vancouver have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
+      }
     }
   ],
   "tonightStory": {
-    "signalType": "clinch_watch",
-    "signalLabel": "CLINCH WATCH",
-    "headline": "Playoff Stakes",
-    "body": "Montréal Canadiens could clinch advancement tonight.",
-    "sourceEventId": "nhl_2025020987",
+    "signalType": "rivalry_game",
+    "signalLabel": "RIVALRY GAME",
+    "headline": "Rivalry Night",
+    "body": "Philadelphia Flyers faces Pittsburgh Penguins tonight in one of the sport's most intense rivalries.",
+    "sourceEventId": "nhl_2025020993",
     "sourceCard": {
-      "id": "clinch_watch_nhl_2025020987",
-      "kind": "clinch_watch",
-      "title": "Clinch Watch"
+      "id": "rivalry_game_nhl_2025020993",
+      "kind": "rivalry_game",
+      "title": "Rivalry Game Tonight"
     }
   }
 }

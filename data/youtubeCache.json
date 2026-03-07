@@ -64,5 +64,16 @@
     },
     "fetchedAt": "2026-03-06T06:33:39.892Z",
     "query": "Boston Bruins playoff push highlights"
+  },
+  "philadelphia flyers vs pittsburgh penguins rivalry highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=dez832zrzgY",
+      "thumbnailUrl": "https://img.youtube.com/vi/dez832zrzgY/hqdefault.jpg",
+      "durationSeconds": 189,
+      "title": "Penguins@Flyers",
+      "source": "youtube"
+    },
+    "fetchedAt": "2026-03-07T00:41:15.296Z",
+    "query": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights"
   }
 }
