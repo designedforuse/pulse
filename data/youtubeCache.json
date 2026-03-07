@@ -98,5 +98,29 @@
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
+  },
+  "upset_alert:draper vs agut upset highlights march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-07T20:03:16.861Z",
+    "query": "Draper vs Agut upset highlights March 2026",
+    "debug": {
+      "searchQuery": "Draper vs Agut upset highlights March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:moutet vs kovacevic upset highlights march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-07T20:13:10.425Z",
+    "query": "Moutet vs Kovacevic upset highlights March 2026",
+    "debug": {
+      "searchQuery": "Moutet vs Kovacevic upset highlights March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
   }
 }

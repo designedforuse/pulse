@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import {
   StyleSheet,
   Text,
@@ -16,6 +16,7 @@ import * as Haptics from "expo-haptics";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Colors from "@/constants/colors";
 import { getApiUrl } from "@/lib/query-client";
+import { useFavorites } from "@/lib/favorites-context";
 
 interface NarrativeImpact {
   label: string;
@@ -30,6 +31,7 @@ interface TonightStory {
   body: string;
   sourceEventId?: string;
   sourceCard: { id: string; kind: string; title: string };
+  sports?: string[];
 }
 
 interface ExploreNarrativeCard {
@@ -42,6 +44,7 @@ interface ExploreNarrativeCard {
   expiresAt?: string;
   kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game" | "upset_alert" | "clinch_watch";
   meta?: Record<string, any>;
+  sports?: string[];
 }
 
 const KIND_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap; color: string; label: string }> = {
@@ -67,6 +70,7 @@ function timeAgo(iso: string): string {
 export default function ExploreScreen() {
   const insets = useSafeAreaInsets();
   const queryClient = useQueryClient();
+  const { disabledSports } = useFavorites();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
   const [refreshing, setRefreshing] = useState(false);
 
@@ -74,8 +78,26 @@ export default function ExploreScreen() {
     queryKey: ["/api/narratives"],
   });
 
-  const cards = data?.cards ?? [];
-  const tonightStory = data?.tonightStory ?? null;
+  const allCards = data?.cards ?? [];
+  const rawTonightStory = data?.tonightStory ?? null;
+
+  const cards = useMemo(() => {
+    if (disabledSports.size === 0) return allCards;
+    return allCards.filter((card) => {
+      const cardSports = card.sports;
+      if (!cardSports || cardSports.length === 0) return true;
+      return cardSports.some((s) => !disabledSports.has(s.toLowerCase()));
+    });
+  }, [allCards, disabledSports]);
+
+  const tonightStory = useMemo(() => {
+    if (!rawTonightStory || disabledSports.size === 0) return rawTonightStory;
+    const storySports = rawTonightStory.sports;
+    if (storySports && storySports.length > 0 && storySports.every((s) => disabledSports.has(s.toLowerCase()))) {
+      return null;
+    }
+    return rawTonightStory;
+  }, [rawTonightStory, disabledSports]);
 
   const onRefresh = useCallback(async () => {
     setRefreshing(true);

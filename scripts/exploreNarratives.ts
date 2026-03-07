@@ -287,6 +287,7 @@ export interface ExploreNarrativeCard {
   regionLabel: string;
   meta?: Record<string, any>;
   video?: NarrativeVideo;
+  sports?: string[];
 }
 
 const REGION_CONFIG: Record<Region, { priority: number; label: string }> = {
@@ -2227,6 +2228,7 @@ export interface TonightStory {
   body: string;
   sourceEventId?: string;
   sourceCard: { id: string; kind: string; title: string };
+  sports?: string[];
 }
 
 interface TonightStoryDebug {
@@ -2304,6 +2306,7 @@ interface TonightStoryCandidate {
   reason: string;
   sourceEventId?: string;
   sourceCard: { id: string; kind: string; title: string };
+  sports?: string[];
 }
 
 function buildTonightStory(
@@ -2455,6 +2458,7 @@ function buildTonightStory(
         reason: `${distinctTeamsPlaying.size} followed/affiliate teams playing tonight`,
         sourceEventId: allEventIds[0],
         sourceCard: { id: "tonight_multi_team", kind: "multi_team_night", title: headline },
+        sports: [...sportsInPlay],
       });
     }
 
@@ -2471,6 +2475,7 @@ function buildTonightStory(
         reason: `single followed team (${entry.followedTeam}) playing tonight`,
         sourceEventId: ev.id,
         sourceCard: { id: "tonight_single_team", kind: "single_team_game", title: `${entry.followedTeam} Tonight` },
+        sports: [ev.sport],
       });
     }
   }
@@ -2492,6 +2497,7 @@ function buildTonightStory(
         reason: `ritual "${activeRitual.label}" has ${followedInRitual.length} followed-team game(s)`,
         sourceEventId: followedInRitual[0]?.id,
         sourceCard: { id: `tonight_ritual_${activeRitual.id}`, kind: "ritual_night", title: activeRitual.label },
+        sports: [...new Set(followedInRitual.map(e => e.sport))],
       });
     }
   }
@@ -2584,6 +2590,7 @@ function buildTonightStory(
         : `${card.kind} (generic, no followed teams)`,
       sourceEventId: eventIds[0] || undefined,
       sourceCard: { id: card.id, kind: card.kind, title: card.title },
+      sports: deriveCardSports(card, events),
     });
   }
 
@@ -2615,9 +2622,48 @@ function buildTonightStory(
       body: winner.body,
       sourceEventId: winner.sourceEventId,
       sourceCard: winner.sourceCard,
+      sports: winner.sports || [],
     },
     debug: debugResult,
   };
+}
+
+function deriveCardSports(card: ExploreNarrativeCard, events: AppEvent[]): string[] {
+  const meta = card.meta || {};
+  if (meta.sport) return [meta.sport.toLowerCase()];
+  if (meta.rivalrySport) return [meta.rivalrySport.toLowerCase()];
+
+  const eventIds: string[] = [
+    ...(meta.eventIds || []),
+    ...(meta.teams || []).flatMap((t: any) => t.eventIds || []),
+  ];
+  if (eventIds.length > 0) {
+    const eventMap = new Map(events.map(e => [e.id, e]));
+    const sports = new Set<string>();
+    for (const id of eventIds) {
+      const ev = eventMap.get(id);
+      if (ev) sports.add(ev.sport.toLowerCase());
+    }
+    if (sports.size > 0) return [...sports];
+  }
+
+  if (meta.matches && Array.isArray(meta.matches)) {
+    const leagueSports = new Set<string>();
+    for (const m of meta.matches) {
+      const league = (m.league || "").toLowerCase();
+      if (league.includes("nhl") || league.includes("ahl") || league.includes("echl") || league.includes("ncaa")) leagueSports.add("hockey");
+      else if (league.includes("rugby") || league.includes("urc") || league.includes("super rugby") || league.includes("mlr") || league.includes("premiership") && !league.includes("epl")) leagueSports.add("rugby");
+      else if (league.includes("cricket") || league.includes("test") || league.includes("odi") || league.includes("t20")) leagueSports.add("cricket");
+      else if (league.includes("tennis") || league.includes("atp") || league.includes("wta")) leagueSports.add("tennis");
+      else leagueSports.add("soccer");
+    }
+    if (leagueSports.size > 0) return [...leagueSports];
+  }
+
+  const kind = card.kind;
+  if (kind === "playoff_push" || kind === "momentum" || kind === "deadline_watch" || kind === "player_movement") return ["hockey"];
+
+  return [];
 }
 
 export async function generateNarratives(events: AppEvent[], favorites: Favorites, now: Date, options?: { simulateMovement?: boolean }): Promise<{
@@ -2760,6 +2806,10 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
 
     selected.push(card);
     kindRegionCount.set(key, (kindRegionCount.get(key) || 0) + 1);
+  }
+
+  for (const card of selected) {
+    card.sports = deriveCardSports(card, events);
   }
 
   const finalFeedByRegion: Record<string, string[]> = {};

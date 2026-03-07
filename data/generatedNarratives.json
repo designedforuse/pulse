@@ -1,12 +1,7 @@
 {
-  "lastUpdated": "2026-03-07T16:22:20.271Z",
+  "lastUpdated": "2026-03-07T20:19:42.582Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
-      "playoff_push": {
-        "NewEngland": 2,
-        "Other": 1,
-        "SoCal": 1
-      },
       "league_moment": {
         "Other": 2
       },
@@ -20,35 +15,33 @@
       "rivalry_game": {
         "Other": 1
       },
+      "upset_alert": {
+        "Other": 1
+      },
       "clinch_watch": {
         "Other": 1
+      },
+      "playoff_push": {
+        "Other": 1,
+        "SoCal": 1
       }
     },
-    "combinedPushByRegion": {
-      "NewEngland": false
-    },
+    "combinedPushByRegion": {},
     "finalFeedByRegion": {
       "SoCal": [
         "deadline_watch: Ducks on Deadline Watch",
         "playoff_push: Playoff Push"
       ],
       "NewEngland": [
-        "deadline_watch: Bruins on Deadline Watch",
-        "playoff_push: Bruins Push Week"
+        "deadline_watch: Bruins on Deadline Watch"
       ],
       "Other": [
+        "upset_alert: Upset Alert",
         "rivalry_game: Rivalry Game Tonight",
         "clinch_watch: Clinch Watch"
       ]
     },
     "droppedCandidatesReasons": [
-      {
-        "id": "playoff_push_clinch_fallback_nhl_2025020990",
-        "kind": "playoff_push",
-        "region": "NewEngland",
-        "title": "Playoff Push",
-        "reason": "max 1 playoff_push per region (NewEngland)"
-      },
       {
         "id": "playoff_push_clinch_fallback_nhl_2025021002",
         "kind": "playoff_push",
@@ -78,7 +71,7 @@
         "reason": "feed cap (max 6)"
       }
     ],
-    "totalBeforeCap": 11,
+    "totalBeforeCap": 10,
     "totalAfterCap": 6,
     "playerMovement": {
       "rawMovementCandidates": 1,
@@ -119,19 +112,19 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 664,
+        "playersIngested": 666,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-07T16:22:20.271Z"
+        "timestamp": "2026-03-07T20:19:42.582Z"
       },
-      "cacheHistoryCount": 731,
+      "cacheHistoryCount": 732,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 11,
+    "candidateCountBeforeCap": 10,
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": 3.6277025,
+      "hoursUntil": -0.328495,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -146,23 +139,22 @@
       }
     },
     "rivalryGame": {
-      "rawRivalryCandidates": 1,
+      "rawRivalryCandidates": 2,
       "rivalryAfterRegionFilter": 1,
       "rivalryFinalCount": 1
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 0,
-      "upsetLiveCandidates": 0,
+      "rawUpsetCandidates": 2,
+      "upsetLiveCandidates": 2,
       "upsetCompletedCandidates": 0,
-      "upsetFinalCount": 0
+      "upsetFinalCount": 1
     },
     "clinchWatch": {
       "rawClinchCandidates": 3,
       "clinchAfterRegionFilter": 1,
       "clinchFinalCount": 1,
       "clinchGatedOut": [
-        "Boston Bruins: before Mar 25, 73 pts < 95",
-        "Boston Bruins: before Mar 25, 73 pts < 95",
+        "Boston Bruins: before Mar 25, 75 pts < 95",
         "Anaheim Ducks: before Mar 25, 73 pts < 95"
       ]
     },
@@ -172,14 +164,14 @@
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 400,
+      "selectedScore": 380,
       "sourceEventId": "echl-web-25125",
-      "reason": "10 followed/affiliate teams playing tonight",
+      "reason": "9 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 400,
-          "reason": "10 followed/affiliate teams playing tonight"
+          "score": 380,
+          "reason": "9 followed/affiliate teams playing tonight"
         },
         {
           "label": "[deadline_watch] Deadline Tension",
@@ -199,22 +191,17 @@
         {
           "label": "[playoff_push] Your Team's Push",
           "score": 170,
-          "reason": "playoff_push involving followed team(s): Boston Bruins"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): Boston Bruins"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
           "reason": "playoff_push involving followed team(s): Anaheim Ducks"
         },
         {
           "label": "[ritual_night] Family Game Night",
           "score": 130,
-          "reason": "ritual \"Family Game Night\" has 8 followed-team game(s)"
+          "reason": "ritual \"Family Game Night\" has 7 followed-team game(s)"
+        },
+        {
+          "label": "[upset_alert] Shock Result",
+          "score": 120,
+          "reason": "upset_alert (generic, no followed teams)"
         },
         {
           "label": "[clinch_watch] Playoff Stakes",
@@ -265,8 +252,8 @@
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
-      "playoff_push_newengland": {
-        "searchQuery": "Boston Bruins playoff push March 2026",
+      "upset_alert_tennis-espn-172906": {
+        "searchQuery": "Moutet vs Kovacevic upset highlights March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
@@ -291,7 +278,7 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-07T16:22:20.271Z",
+      "triggeredAt": "2026-03-07T20:19:42.582Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
@@ -301,7 +288,7 @@
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 3.6,
+        "hoursUntil": -0.3,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -328,9 +315,13 @@
         "eventIds": [
           "nhl_2025021006",
           "nhl_2025021022",
-          "nhl_2025021029"
+          "nhl_2025021029",
+          "nhl_2025021043"
         ]
       },
+      "sports": [
+        "hockey"
+      ],
       "video": {
         "url": "https://www.youtube.com/watch?v=OPxYDNMP6XU",
         "thumbnailUrl": "https://img.youtube.com/vi/OPxYDNMP6XU/hqdefault.jpg",
@@ -350,7 +341,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-07T16:22:20.271Z",
+      "triggeredAt": "2026-03-07T20:19:42.582Z",
       "expiresAt": "2026-03-09T05:00:00.000Z",
       "kind": "playoff_push",
       "region": "SoCal",
@@ -369,6 +360,9 @@
         "reason": "Anaheim Ducks has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
         "clinchFallback": true
       },
+      "sports": [
+        "hockey"
+      ],
       "video": {
         "url": "https://www.youtube.com/watch?v=Yjoq2fU5ebQ",
         "thumbnailUrl": "https://img.youtube.com/vi/Yjoq2fU5ebQ/hqdefault.jpg",
@@ -388,7 +382,7 @@
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-07T16:22:20.271Z",
+      "triggeredAt": "2026-03-07T20:19:42.582Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
@@ -398,7 +392,7 @@
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 3.6,
+        "hoursUntil": -0.3,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",
@@ -420,50 +414,50 @@
           }
         ],
         "eventIds": [
-          "nhl_2025020990",
           "nhl_2025021002",
           "nhl_2025021012",
-          "nhl_2025021027"
+          "nhl_2025021027",
+          "nhl_2025021044"
         ]
-      }
+      },
+      "sports": [
+        "hockey"
+      ]
     },
     {
-      "id": "playoff_push_newengland",
-      "title": "Bruins Push Week",
-      "subtitle": "Four games in seven days, including a back-to-back",
+      "id": "upset_alert_tennis-espn-172906",
+      "title": "Upset Alert",
+      "subtitle": "Moutet in trouble against Kovacevic at Indian Wells Masters",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
-      "priority": 90,
-      "triggeredAt": "2026-03-07T16:22:20.271Z",
-      "expiresAt": "2026-03-14T16:22:20.271Z",
-      "kind": "playoff_push",
-      "region": "NewEngland",
-      "regionPriority": 3,
-      "regionLabel": "New England",
+      "priority": 98,
+      "triggeredAt": "2026-03-07T20:19:42.582Z",
+      "expiresAt": "2026-03-07T22:19:42.582Z",
+      "kind": "upset_alert",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
       "meta": {
-        "teams": [
-          {
-            "team": "Boston Bruins",
-            "league": "NHL",
-            "gamesInNext7Days": 4,
-            "gamesInNext5Days": 3,
-            "hasBackToBack": true,
-            "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
-          }
-        ],
+        "mode": "live",
+        "upsetType": "tennis_live_upset",
+        "sport": "tennis",
+        "league": "ATP Masters 1000",
+        "favoriteName": "Moutet",
+        "underdogName": "Kovacevic",
+        "favoriteRank": 31,
+        "awayTeam": "Moutet",
+        "homeTeam": "Kovacevic",
+        "startTime": "2026-03-07T19:00:00.000Z",
         "eventIds": [
-          "nhl_2025020990",
-          "nhl_2025021002",
-          "nhl_2025021012",
-          "nhl_2025021027"
+          "tennis-espn-172906"
         ],
-        "combinedTeamCount": 1,
-        "windowStart": "2026-03-07T16:22:20.271Z",
-        "windowEnd": "2026-03-14T16:22:20.271Z",
-        "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
-      }
+        "reason": "Kovacevic is threatening an upset against Moutet.\n\nThe higher seed is in trouble and the match is still live."
+      },
+      "sports": [
+        "tennis"
+      ]
     },
     {
       "id": "rivalry_game_nhl_2025020993",
@@ -474,7 +468,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-07T16:22:20.271Z",
+      "triggeredAt": "2026-03-07T20:19:42.582Z",
       "expiresAt": "2026-03-08T02:30:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
@@ -491,7 +485,10 @@
           "nhl_2025020993"
         ],
         "reason": "Philadelphia Flyers and Pittsburgh Penguins meet tonight in one of hockey's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
-      }
+      },
+      "sports": [
+        "hockey"
+      ]
     },
     {
       "id": "clinch_watch_rugby-svns-rj2l89-d1",
@@ -502,7 +499,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-07T16:22:20.271Z",
+      "triggeredAt": "2026-03-07T20:19:42.582Z",
       "expiresAt": "2026-03-08T07:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -520,19 +517,27 @@
           "rugby-svns-rj2l89-d1"
         ],
         "reason": "SVNS Vancouver have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
-      }
+      },
+      "sports": [
+        "rugby"
+      ]
     }
   ],
   "tonightStory": {
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Tulsa Oilers, Hurricanes, Anaheim Ducks, San Diego Gulls, and Sungoliath (+5 more) all play tonight across the ECHL, NHL, AHL, Japan League One, MLS, Ligue 1, NCAA Hockey.",
+    "body": "The Tulsa Oilers, Hurricanes, Anaheim Ducks, San Diego Gulls, and Sungoliath (+4 more) all play tonight across the ECHL, NHL, AHL, Japan League One, Ligue 1, NCAA Hockey.",
     "sourceEventId": "echl-web-25125",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
-    }
+    },
+    "sports": [
+      "hockey",
+      "rugby",
+      "soccer"
+    ]
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useMemo } from "react";
 import {
   StyleSheet,
   Text,
@@ -18,6 +18,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Video, ResizeMode } from "expo-av";
 import Colors from "@/constants/colors";
 import { getApiUrl } from "@/lib/query-client";
+import { useFavorites } from "@/lib/favorites-context";
 
 interface NarrativeImpact {
   label: string;
@@ -91,6 +92,7 @@ function getSportColor(sport: string): string {
 export default function NarrativeDetailScreen() {
   const { id, cardJson } = useLocalSearchParams<{ id: string; cardJson: string }>();
   const insets = useSafeAreaInsets();
+  const { disabledSports } = useFavorites();
 
   let parsedCard: ExploreNarrativeCard | null = null;
   try {
@@ -133,6 +135,7 @@ export default function NarrativeDetailScreen() {
 
   const relevantEvents = (eventsData?.events || [])
     .filter(e => {
+      if (disabledSports.size > 0 && disabledSports.has(e.sport.toLowerCase())) return false;
       if (!eventIds.has(e.id)) return false;
       const start = new Date(e.startTimeLocal);
       if (start < now || start > weekEnd) return false;
