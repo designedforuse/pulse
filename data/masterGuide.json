@@ -171,6 +171,18 @@
       "name": "Tennis Channel",
       "packageName": "com.sinclairmedia.tennischannel",
       "launchUrl": "https://www.tennischannel.com"
+    },
+    {
+      "id": "espnplus",
+      "name": "ESPN+",
+      "packageName": "com.espn.score_center",
+      "launchUrl": "https://plus.espn.com"
+    },
+    {
+      "id": "cbsgolazo",
+      "name": "CBS Sports Golazo",
+      "packageName": "com.cbs.sports",
+      "launchUrl": "https://www.cbssports.com/soccer/usl/"
     }
   ],
   "events": [

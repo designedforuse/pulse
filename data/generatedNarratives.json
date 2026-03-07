@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-07T07:19:00.761Z",
+  "lastUpdated": "2026-03-07T16:16:39.864Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -20,9 +20,6 @@
       "rivalry_game": {
         "Other": 1
       },
-      "upset_alert": {
-        "Other": 1
-      },
       "clinch_watch": {
         "Other": 1
       }
@@ -40,8 +37,8 @@
         "playoff_push: Bruins Push Week"
       ],
       "Other": [
-        "upset_alert: Upset Alert",
-        "rivalry_game: Rivalry Game Tonight"
+        "rivalry_game: Rivalry Game Tonight",
+        "clinch_watch: Clinch Watch"
       ]
     },
     "droppedCandidatesReasons": [
@@ -51,13 +48,6 @@
         "region": "NewEngland",
         "title": "Playoff Push",
         "reason": "max 1 playoff_push per region (NewEngland)"
-      },
-      {
-        "id": "clinch_watch_rugby-svns-rj2l89-d1",
-        "kind": "clinch_watch",
-        "region": "Other",
-        "title": "Clinch Watch",
-        "reason": "feed cap (max 6)"
       },
       {
         "id": "playoff_push_clinch_fallback_nhl_2025021002",
@@ -88,7 +78,7 @@
         "reason": "feed cap (max 6)"
       }
     ],
-    "totalBeforeCap": 12,
+    "totalBeforeCap": 11,
     "totalAfterCap": 6,
     "playerMovement": {
       "rawMovementCandidates": 1,
@@ -130,55 +120,18 @@
           }
         ],
         "playersIngested": 664,
-        "movementsDetectedThisRun": [
-          {
-            "playerId": "8475343",
-            "playerName": "N. Dowd",
-            "fromTeam": "WSH",
-            "toTeam": "VGK",
-            "detectedAt": "2026-03-07T07:19:00.761Z",
-            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
-            "firstSeenTo": "2026-03-07T07:19:00.761Z"
-          },
-          {
-            "playerId": "8476473",
-            "playerName": "C. Murphy",
-            "fromTeam": "CHI",
-            "toTeam": "EDM",
-            "detectedAt": "2026-03-07T07:19:00.761Z",
-            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-            "firstSeenTo": "2026-03-07T07:19:00.761Z"
-          },
-          {
-            "playerId": "8477450",
-            "playerName": "J. Dickinson",
-            "fromTeam": "CHI",
-            "toTeam": "EDM",
-            "detectedAt": "2026-03-07T07:19:00.761Z",
-            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
-            "firstSeenTo": "2026-03-07T07:19:00.761Z"
-          },
-          {
-            "playerId": "8482703",
-            "playerName": "C. Dach",
-            "fromTeam": "CHI",
-            "toTeam": "EDM",
-            "detectedAt": "2026-03-07T07:19:00.761Z",
-            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-            "firstSeenTo": "2026-03-07T07:19:00.761Z"
-          }
-        ],
-        "timestamp": "2026-03-07T07:19:00.761Z"
+        "movementsDetectedThisRun": [],
+        "timestamp": "2026-03-07T16:16:39.864Z"
       },
       "cacheHistoryCount": 731,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 12,
+    "candidateCountBeforeCap": 11,
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": 12.683121944444444,
+      "hoursUntil": 3.72226,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -198,10 +151,10 @@
       "rivalryFinalCount": 1
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 2,
+      "rawUpsetCandidates": 0,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 2,
-      "upsetFinalCount": 1
+      "upsetCompletedCandidates": 0,
+      "upsetFinalCount": 0
     },
     "clinchWatch": {
       "rawClinchCandidates": 3,
@@ -227,11 +180,6 @@
           "label": "[multi_team_night] Your Sports Night",
           "score": 400,
           "reason": "10 followed/affiliate teams playing tonight"
-        },
-        {
-          "label": "[upset_alert] Shock Result",
-          "score": 200,
-          "reason": "upset_alert involving followed team(s): Carolina Hurricanes"
         },
         {
           "label": "[deadline_watch] Deadline Tension",
@@ -298,34 +246,27 @@
     "videoSelection": {
       "deadline_watch_ana": {
         "searchQuery": "Anaheim Ducks trade deadline preview March 2026",
-        "selectedVideoTitle": "Friday NHL Best Bets! | Blues vs Sharks & Canadiens vs Ducks Picks & Predictions 3/6",
-        "selectedVideoPublishedAt": "5 hours ago",
-        "selectedVideoChannel": "Picks & Parlays",
+        "selectedVideoTitle": "Disappointing & Confusing Deadline For The Habs! | The Sick Podcast with Tony Marinaro March 6 2026",
+        "selectedVideoPublishedAt": "Streamed 10 hours ago",
+        "selectedVideoChannel": "The Sick Podcast with Tony Marinaro",
         "rejectedForAgeCount": 0
       },
       "playoff_push_clinch_fallback_nhl_2025021006": {
         "searchQuery": "Anaheim Ducks playoff push March 2026",
-        "selectedVideoTitle": "The Canadiens’ Top Trade Target Should Be… | The Sick Podcast with Tony Marinaro March 5 2026",
-        "selectedVideoPublishedAt": "Streamed 20 hours ago",
-        "selectedVideoChannel": "The Sick Podcast with Tony Marinaro",
+        "selectedVideoTitle": "Alberta seeing higher oil prices amid war in Iran | CTV News Calgary at Six for March 6, 2026",
+        "selectedVideoPublishedAt": "13 hours ago",
+        "selectedVideoChannel": "CTV News",
         "rejectedForAgeCount": 0
       },
       "deadline_watch_bos": {
         "searchQuery": "Boston Bruins trade deadline preview March 2026",
-        "selectedVideoTitle": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
-        "selectedVideoPublishedAt": "20 hours ago",
-        "selectedVideoChannel": "NHL",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
       "playoff_push_newengland": {
         "searchQuery": "Boston Bruins playoff push March 2026",
-        "selectedVideoTitle": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
-        "selectedVideoPublishedAt": "20 hours ago",
-        "selectedVideoChannel": "NHL",
-        "rejectedForAgeCount": 0
-      },
-      "upset_alert_nhl_2025020986": {
-        "searchQuery": "Edmonton Oilers vs Carolina Hurricanes upset highlights March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
@@ -350,7 +291,7 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-07T07:19:00.761Z",
+      "triggeredAt": "2026-03-07T16:16:39.864Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
@@ -360,7 +301,7 @@
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 12.7,
+        "hoursUntil": 3.7,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -391,13 +332,13 @@
         ]
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=u20gq1io7GU",
-        "thumbnailUrl": "https://img.youtube.com/vi/u20gq1io7GU/hqdefault.jpg",
-        "durationSeconds": 602,
-        "title": "Friday NHL Best Bets! | Blues vs Sharks & Canadiens vs Ducks Picks & Predictions 3/6",
+        "url": "https://www.youtube.com/watch?v=OPxYDNMP6XU",
+        "thumbnailUrl": "https://img.youtube.com/vi/OPxYDNMP6XU/hqdefault.jpg",
+        "durationSeconds": 4231,
+        "title": "Disappointing & Confusing Deadline For The Habs! | The Sick Podcast with Tony Marinaro March 6 2026",
         "source": "youtube",
-        "channel": "Picks & Parlays",
-        "publishedAt": "5 hours ago"
+        "channel": "The Sick Podcast with Tony Marinaro",
+        "publishedAt": "Streamed 10 hours ago"
       }
     },
     {
@@ -409,7 +350,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-07T07:19:00.761Z",
+      "triggeredAt": "2026-03-07T16:16:39.864Z",
       "expiresAt": "2026-03-09T05:00:00.000Z",
       "kind": "playoff_push",
       "region": "SoCal",
@@ -429,13 +370,13 @@
         "clinchFallback": true
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=N29gGvWf1eY",
-        "thumbnailUrl": "https://img.youtube.com/vi/N29gGvWf1eY/hqdefault.jpg",
-        "durationSeconds": 7241,
-        "title": "The Canadiens’ Top Trade Target Should Be… | The Sick Podcast with Tony Marinaro March 5 2026",
+        "url": "https://www.youtube.com/watch?v=Yjoq2fU5ebQ",
+        "thumbnailUrl": "https://img.youtube.com/vi/Yjoq2fU5ebQ/hqdefault.jpg",
+        "durationSeconds": 2577,
+        "title": "Alberta seeing higher oil prices amid war in Iran | CTV News Calgary at Six for March 6, 2026",
         "source": "youtube",
-        "channel": "The Sick Podcast with Tony Marinaro",
-        "publishedAt": "Streamed 20 hours ago"
+        "channel": "CTV News",
+        "publishedAt": "13 hours ago"
       }
     },
     {
@@ -447,7 +388,7 @@
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-07T07:19:00.761Z",
+      "triggeredAt": "2026-03-07T16:16:39.864Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
@@ -457,7 +398,7 @@
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 12.7,
+        "hoursUntil": 3.7,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",
@@ -484,15 +425,6 @@
           "nhl_2025021012",
           "nhl_2025021027"
         ]
-      },
-      "video": {
-        "url": "https://www.youtube.com/watch?v=ZhDJvzB-Sps",
-        "thumbnailUrl": "https://img.youtube.com/vi/ZhDJvzB-Sps/hqdefault.jpg",
-        "durationSeconds": 694,
-        "title": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
-        "source": "youtube",
-        "channel": "NHL",
-        "publishedAt": "20 hours ago"
       }
     },
     {
@@ -504,8 +436,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-07T07:19:00.761Z",
-      "expiresAt": "2026-03-14T07:19:00.761Z",
+      "triggeredAt": "2026-03-07T16:16:39.864Z",
+      "expiresAt": "2026-03-14T16:16:39.864Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -528,49 +460,9 @@
           "nhl_2025021027"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-07T07:19:00.761Z",
-        "windowEnd": "2026-03-14T07:19:00.761Z",
+        "windowStart": "2026-03-07T16:16:39.864Z",
+        "windowEnd": "2026-03-14T16:16:39.864Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
-      },
-      "video": {
-        "url": "https://www.youtube.com/watch?v=ZhDJvzB-Sps",
-        "thumbnailUrl": "https://img.youtube.com/vi/ZhDJvzB-Sps/hqdefault.jpg",
-        "durationSeconds": 694,
-        "title": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
-        "source": "youtube",
-        "channel": "NHL",
-        "publishedAt": "20 hours ago"
-      }
-    },
-    {
-      "id": "upset_alert_nhl_2025020986",
-      "title": "Upset Alert",
-      "subtitle": "Carolina Hurricanes upsets Edmonton Oilers",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 98,
-      "triggeredAt": "2026-03-07T07:19:00.761Z",
-      "expiresAt": "2026-03-07T13:19:00.761Z",
-      "kind": "upset_alert",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "mode": "completed",
-        "upsetType": "team_upset",
-        "sport": "hockey",
-        "league": "NHL",
-        "favoriteName": "Edmonton Oilers",
-        "underdogName": "Carolina Hurricanes",
-        "awayTeam": "Carolina Hurricanes",
-        "homeTeam": "Edmonton Oilers",
-        "startTime": "2026-03-07T02:00:00.000Z",
-        "eventIds": [
-          "nhl_2025020986"
-        ],
-        "reason": "Carolina Hurricanes pulled off the upset against Edmonton Oilers.\n\nA result like this can shift momentum for the rest of the season."
       }
     },
     {
@@ -582,7 +474,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-07T07:19:00.761Z",
+      "triggeredAt": "2026-03-07T16:16:39.864Z",
       "expiresAt": "2026-03-08T02:30:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
@@ -599,6 +491,35 @@
           "nhl_2025020993"
         ],
         "reason": "Philadelphia Flyers and Pittsburgh Penguins meet tonight in one of hockey's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
+      }
+    },
+    {
+      "id": "clinch_watch_rugby-svns-rj2l89-d1",
+      "title": "Clinch Watch",
+      "subtitle": "Can secure semifinal place in the next 48h",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 92,
+      "triggeredAt": "2026-03-07T16:16:39.864Z",
+      "expiresAt": "2026-03-08T07:00:00.000Z",
+      "kind": "clinch_watch",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "source": "team_config",
+        "conditionLabel": "Can secure semifinal place",
+        "sport": "rugby",
+        "league": "HSBC SVNS",
+        "awayTeam": "",
+        "homeTeam": "SVNS Vancouver",
+        "startTime": "2026-03-08T03:00:00.000Z",
+        "eventIds": [
+          "rugby-svns-rj2l89-d1"
+        ],
+        "reason": "SVNS Vancouver have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
       }
     }
   ],

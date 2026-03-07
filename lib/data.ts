@@ -191,6 +191,8 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   appletv: "Apple TV",
   tennischannel: "Tennis Channel",
   espn: "ESPN",
+  espnplus: "ESPN+",
+  cbsgolazo: "CBS Sports Golazo",
   tnt: "TNT",
 };
 

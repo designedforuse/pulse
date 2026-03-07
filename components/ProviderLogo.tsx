@@ -13,6 +13,8 @@ const PROVIDER_IMAGES: Record<string, any> = {
 const PROVIDER_TEXT_LABELS: Record<string, string> = {
   tennischannel: "TC",
   espn: "ESPN",
+  espnplus: "ESPN+",
+  cbsgolazo: "Golazo",
   tnt: "TNT",
 };
 

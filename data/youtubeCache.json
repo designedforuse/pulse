@@ -1,21 +1,21 @@
 {
   "deadline_watch:anaheim ducks trade deadline preview march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=u20gq1io7GU",
-      "thumbnailUrl": "https://img.youtube.com/vi/u20gq1io7GU/hqdefault.jpg",
-      "durationSeconds": 602,
-      "title": "Friday NHL Best Bets! | Blues vs Sharks & Canadiens vs Ducks Picks & Predictions 3/6",
+      "url": "https://www.youtube.com/watch?v=OPxYDNMP6XU",
+      "thumbnailUrl": "https://img.youtube.com/vi/OPxYDNMP6XU/hqdefault.jpg",
+      "durationSeconds": 4231,
+      "title": "Disappointing & Confusing Deadline For The Habs! | The Sick Podcast with Tony Marinaro March 6 2026",
       "source": "youtube",
-      "channel": "Picks & Parlays",
-      "publishedAt": "5 hours ago"
+      "channel": "The Sick Podcast with Tony Marinaro",
+      "publishedAt": "Streamed 10 hours ago"
     },
-    "fetchedAt": "2026-03-07T00:55:42.088Z",
+    "fetchedAt": "2026-03-07T16:16:49.205Z",
     "query": "Anaheim Ducks trade deadline preview March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks trade deadline preview March 2026",
-      "selectedVideoTitle": "Friday NHL Best Bets! | Blues vs Sharks & Canadiens vs Ducks Picks & Predictions 3/6",
-      "selectedVideoPublishedAt": "5 hours ago",
-      "selectedVideoChannel": "Picks & Parlays",
+      "selectedVideoTitle": "Disappointing & Confusing Deadline For The Habs! | The Sick Podcast with Tony Marinaro March 6 2026",
+      "selectedVideoPublishedAt": "Streamed 10 hours ago",
+      "selectedVideoChannel": "The Sick Podcast with Tony Marinaro",
       "rejectedForAgeCount": 0
     }
   },
@@ -32,48 +32,32 @@
     }
   },
   "deadline_watch:boston bruins trade deadline preview march 2026": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=ZhDJvzB-Sps",
-      "thumbnailUrl": "https://img.youtube.com/vi/ZhDJvzB-Sps/hqdefault.jpg",
-      "durationSeconds": 694,
-      "title": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
-      "source": "youtube",
-      "channel": "NHL",
-      "publishedAt": "20 hours ago"
-    },
-    "fetchedAt": "2026-03-07T00:55:42.684Z",
+    "video": null,
+    "fetchedAt": "2026-03-07T16:16:49.673Z",
     "query": "Boston Bruins trade deadline preview March 2026",
     "debug": {
       "searchQuery": "Boston Bruins trade deadline preview March 2026",
-      "selectedVideoTitle": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
-      "selectedVideoPublishedAt": "20 hours ago",
-      "selectedVideoChannel": "NHL",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   },
   "playoff_push:boston bruins playoff push march 2026": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=ZhDJvzB-Sps",
-      "thumbnailUrl": "https://img.youtube.com/vi/ZhDJvzB-Sps/hqdefault.jpg",
-      "durationSeconds": 694,
-      "title": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
-      "source": "youtube",
-      "channel": "NHL",
-      "publishedAt": "20 hours ago"
-    },
-    "fetchedAt": "2026-03-07T00:55:43.011Z",
+    "video": null,
+    "fetchedAt": "2026-03-07T16:16:49.871Z",
     "query": "Boston Bruins playoff push March 2026",
     "debug": {
       "searchQuery": "Boston Bruins playoff push March 2026",
-      "selectedVideoTitle": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
-      "selectedVideoPublishedAt": "20 hours ago",
-      "selectedVideoChannel": "NHL",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   },
   "rivalry_game:philadelphia flyers vs pittsburgh penguins rivalry highlights": {
     "video": null,
-    "fetchedAt": "2026-03-07T00:55:43.815Z",
+    "fetchedAt": "2026-03-07T16:16:50.961Z",
     "query": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights",
     "debug": {
       "searchQuery": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights",
@@ -85,21 +69,21 @@
   },
   "playoff_push:anaheim ducks playoff push march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=N29gGvWf1eY",
-      "thumbnailUrl": "https://img.youtube.com/vi/N29gGvWf1eY/hqdefault.jpg",
-      "durationSeconds": 7241,
-      "title": "The Canadiens’ Top Trade Target Should Be… | The Sick Podcast with Tony Marinaro March 5 2026",
+      "url": "https://www.youtube.com/watch?v=Yjoq2fU5ebQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/Yjoq2fU5ebQ/hqdefault.jpg",
+      "durationSeconds": 2577,
+      "title": "Alberta seeing higher oil prices amid war in Iran | CTV News Calgary at Six for March 6, 2026",
       "source": "youtube",
-      "channel": "The Sick Podcast with Tony Marinaro",
-      "publishedAt": "Streamed 20 hours ago"
+      "channel": "CTV News",
+      "publishedAt": "13 hours ago"
     },
-    "fetchedAt": "2026-03-07T01:12:14.759Z",
+    "fetchedAt": "2026-03-07T16:16:49.444Z",
     "query": "Anaheim Ducks playoff push March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push March 2026",
-      "selectedVideoTitle": "The Canadiens’ Top Trade Target Should Be… | The Sick Podcast with Tony Marinaro March 5 2026",
-      "selectedVideoPublishedAt": "Streamed 20 hours ago",
-      "selectedVideoChannel": "The Sick Podcast with Tony Marinaro",
+      "selectedVideoTitle": "Alberta seeing higher oil prices amid war in Iran | CTV News Calgary at Six for March 6, 2026",
+      "selectedVideoPublishedAt": "13 hours ago",
+      "selectedVideoChannel": "CTV News",
       "rejectedForAgeCount": 0
     }
   },

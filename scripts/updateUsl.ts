@@ -106,6 +106,21 @@ export async function fetchUslEvents(): Promise<SoccerFetchResult & { firstMatch
       if (seenIds.has(id)) continue;
       seenIds.add(id);
 
+      const broadcastNames = (comp.broadcasts || []).flatMap((b: any) => b.names || []);
+      const broadcastStr = broadcastNames.join(" ").toLowerCase();
+      let providerId = "espnplus";
+      let providerReason = "usl-espnplus";
+      if (broadcastStr.includes("golazo") || broadcastStr.includes("cbs sports")) {
+        providerId = "cbsgolazo";
+        providerReason = "usl-cbsgolazo";
+      } else if (broadcastStr.includes("espn+") || broadcastStr.includes("espn plus") || broadcastStr.includes("espn select")) {
+        providerId = "espnplus";
+        providerReason = "usl-espnplus";
+      } else if (broadcastNames.length === 0) {
+        providerId = "cbsgolazo";
+        providerReason = "usl-cbsgolazo-default";
+      }
+
       events.push({
         id,
         sport: "soccer",
@@ -114,11 +129,11 @@ export async function fetchUslEvents(): Promise<SoccerFetchResult & { firstMatch
         homeTeam,
         startTimeLocal: startUtc,
         endTimeLocal: endUtc,
-        providerId: "disneyplus",
+        providerId,
         isLive: false,
         source: "soccer-usl",
         leagueKey: "usl",
-        providerReason: "usl-disneyplus",
+        providerReason,
       });
     }
 
