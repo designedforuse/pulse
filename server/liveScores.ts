@@ -425,6 +425,9 @@ const ESPN_RUGBY_LEAGUE_PATHS: Record<string, string> = {
   "URC": "270557",
   "Super Rugby": "242041",
   "Top 14": "270559",
+  "Six Nations": "180659",
+  "English Premiership": "267979",
+  "European Champions Cup": "271937",
 };
 
 function normalizeTeamName(name: string): string {
