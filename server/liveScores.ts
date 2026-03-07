@@ -688,7 +688,12 @@ async function fetchNcaaHockeyScores(
 
           if (statusState === "in") {
             const displayClock = comp.status?.displayClock || "";
-            const period = statusDetail || "Live";
+            const periodNum = comp.status?.period || 0;
+            let period = "Live";
+            if (periodNum === 1) period = "1st";
+            else if (periodNum === 2) period = "2nd";
+            else if (periodNum === 3) period = "3rd";
+            else if (periodNum > 3) period = "OT";
             scores[ourEvent.id] = {
               awayScore: parseInt(awayComp.score || "0", 10),
               homeScore: parseInt(homeComp.score || "0", 10),
