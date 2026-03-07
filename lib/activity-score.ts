@@ -82,15 +82,41 @@ function detectMatchPoint(
   if (event.sport.toLowerCase() !== "tennis") return false;
   const status = (current.status || "").toLowerCase();
   const period = (current.period || "").toLowerCase();
-  if (status.includes("match point") || period.includes("match point")) return true;
-  if (status.includes("championship point") || period.includes("championship point")) return true;
+  const detail = (current.tennisStatusDetail || "").toLowerCase();
+  if (status.includes("match point") || period.includes("match point") || detail.includes("match point")) return true;
+  if (status.includes("championship point") || period.includes("championship point") || detail.includes("championship point")) return true;
 
-  const away = current.awayScore ?? 0;
-  const home = current.homeScore ?? 0;
   const setsToWin = 2;
-  if ((away === setsToWin - 1 && home < away) || (home === setsToWin - 1 && away < home)) {
-    return true;
+  const p1Sets = current.awayScore ?? 0;
+  const p2Sets = current.homeScore ?? 0;
+  const gameScore = current.tennisGameScore;
+  const setScores = current.tennisSetScores;
+  if (!gameScore || !setScores) return false;
+
+  const currentSet = setScores[setScores.length - 1];
+  if (!currentSet) return false;
+  const p1Games = currentSet.p1;
+  const p2Games = currentSet.p2;
+
+  const g1 = parseInt(gameScore.p1, 10);
+  const g2 = parseInt(gameScore.p2, 10);
+  const isAd1 = gameScore.p1.toLowerCase() === "ad";
+  const isAd2 = gameScore.p2.toLowerCase() === "ad";
+
+  const p1HasGamePoint = (g1 >= 40 && g1 > g2) || isAd1;
+  const p2HasGamePoint = (g2 >= 40 && g2 > g1) || isAd2;
+
+  const isTiebreak = p1Games >= 6 && p2Games >= 6;
+
+  if (p1Sets === setsToWin - 1 && p1HasGamePoint) {
+    if (isTiebreak && p1Games > p2Games) return true;
+    if (!isTiebreak && p1Games >= 5 && p1Games > p2Games) return true;
   }
+  if (p2Sets === setsToWin - 1 && p2HasGamePoint) {
+    if (isTiebreak && p2Games > p1Games) return true;
+    if (!isTiebreak && p2Games >= 5 && p2Games > p1Games) return true;
+  }
+
   return false;
 }
 
