@@ -200,7 +200,9 @@ export default function RitualsScreen() {
         </Text>
 
         <View style={styles.ritualsContainer}>
-          {sortedRituals.map((occ) => (
+          {sortedRituals.filter((occ) =>
+            disabledSports.size === 0 || occ.ritual.sports.some((s) => !disabledSports.has(s.toLowerCase()))
+          ).map((occ) => (
             <RitualTile
               key={occ.ritual.id}
               ritual={occ.ritual}

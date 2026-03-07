@@ -52,9 +52,14 @@ function getLeagueDisplayLabel(e: SportEvent): string {
 export default function GuideDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const ritual = getRitualById(id);
-  const { allEvents } = useEvents();
+  const { allEvents: rawEvents } = useEvents();
   const { getScore } = useScores();
-  const { favorites } = useFavorites();
+  const { favorites, disabledSports } = useFavorites();
+
+  const allEvents = useMemo(
+    () => disabledSports.size === 0 ? rawEvents : rawEvents.filter((e) => !disabledSports.has(e.sport.toLowerCase())),
+    [rawEvents, disabledSports]
+  );
   const { getOverride, setOverride, clearOverride, loaded: overridesLoaded } = useRitualOverrides();
   const [sheetEventId, setSheetEventId] = useState<string | null>(null);
   const [toastVisible, setToastVisible] = useState(false);
