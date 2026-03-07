@@ -1,46 +1,86 @@
 {
-  "anaheim ducks trade deadline preview": {
+  "deadline_watch:anaheim ducks trade deadline preview march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=7B0KRcPZvpI",
-      "thumbnailUrl": "https://img.youtube.com/vi/7B0KRcPZvpI/hqdefault.jpg",
-      "durationSeconds": 1209,
-      "title": "NHL Trade Deadline Reaction 🚨 John Carlson to Ducks, Nick Foligno to Wild | The Point",
-      "source": "youtube"
+      "url": "https://www.youtube.com/watch?v=u20gq1io7GU",
+      "thumbnailUrl": "https://img.youtube.com/vi/u20gq1io7GU/hqdefault.jpg",
+      "durationSeconds": 602,
+      "title": "Friday NHL Best Bets! | Blues vs Sharks & Canadiens vs Ducks Picks & Predictions 3/6",
+      "source": "youtube",
+      "channel": "Picks & Parlays",
+      "publishedAt": "5 hours ago"
     },
-    "fetchedAt": "2026-03-07T00:50:16.199Z",
-    "query": "Anaheim Ducks trade deadline preview"
+    "fetchedAt": "2026-03-07T00:55:42.088Z",
+    "query": "Anaheim Ducks trade deadline preview March 2026",
+    "debug": {
+      "searchQuery": "Anaheim Ducks trade deadline preview March 2026",
+      "selectedVideoTitle": "Friday NHL Best Bets! | Blues vs Sharks & Canadiens vs Ducks Picks & Predictions 3/6",
+      "selectedVideoPublishedAt": "5 hours ago",
+      "selectedVideoChannel": "Picks & Parlays",
+      "rejectedForAgeCount": 0
+    }
   },
-  "boston bruins trade deadline preview": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=JPn4iCELIfA",
-      "thumbnailUrl": "https://img.youtube.com/vi/JPn4iCELIfA/hqdefault.jpg",
-      "durationSeconds": 511,
-      "title": "The Truth Behind the Boston Bruins Trade Deadline Moves Revealed...",
-      "source": "youtube"
-    },
-    "fetchedAt": "2026-03-07T00:50:16.899Z",
-    "query": "Boston Bruins trade deadline preview"
+  "playoff_push:tulsa oilers playoff push march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-07T00:55:42.307Z",
+    "query": "Tulsa Oilers playoff push March 2026",
+    "debug": {
+      "searchQuery": "Tulsa Oilers playoff push March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
   },
-  "boston bruins playoff push highlights": {
+  "deadline_watch:boston bruins trade deadline preview march 2026": {
     "video": {
       "url": "https://www.youtube.com/watch?v=ZhDJvzB-Sps",
       "thumbnailUrl": "https://img.youtube.com/vi/ZhDJvzB-Sps/hqdefault.jpg",
       "durationSeconds": 694,
       "title": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
-      "source": "youtube"
+      "source": "youtube",
+      "channel": "NHL",
+      "publishedAt": "20 hours ago"
     },
-    "fetchedAt": "2026-03-07T00:50:17.329Z",
-    "query": "Boston Bruins playoff push highlights"
+    "fetchedAt": "2026-03-07T00:55:42.684Z",
+    "query": "Boston Bruins trade deadline preview March 2026",
+    "debug": {
+      "searchQuery": "Boston Bruins trade deadline preview March 2026",
+      "selectedVideoTitle": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
+      "selectedVideoPublishedAt": "20 hours ago",
+      "selectedVideoChannel": "NHL",
+      "rejectedForAgeCount": 0
+    }
   },
-  "philadelphia flyers vs pittsburgh penguins rivalry highlights": {
+  "playoff_push:boston bruins playoff push march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=gQk9J0Zxc-U",
-      "thumbnailUrl": "https://img.youtube.com/vi/gQk9J0Zxc-U/hqdefault.jpg",
-      "durationSeconds": 506,
-      "title": "THE PITTSBURGH PENGUINS JUST FLEECED THE COLORADO AVALANCHE HARD—OR DID THEY? Kulak For Girard Trade",
-      "source": "youtube"
+      "url": "https://www.youtube.com/watch?v=ZhDJvzB-Sps",
+      "thumbnailUrl": "https://img.youtube.com/vi/ZhDJvzB-Sps/hqdefault.jpg",
+      "durationSeconds": 694,
+      "title": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
+      "source": "youtube",
+      "channel": "NHL",
+      "publishedAt": "20 hours ago"
     },
-    "fetchedAt": "2026-03-07T00:50:18.596Z",
-    "query": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights"
+    "fetchedAt": "2026-03-07T00:55:43.011Z",
+    "query": "Boston Bruins playoff push March 2026",
+    "debug": {
+      "searchQuery": "Boston Bruins playoff push March 2026",
+      "selectedVideoTitle": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
+      "selectedVideoPublishedAt": "20 hours ago",
+      "selectedVideoChannel": "NHL",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "rivalry_game:philadelphia flyers vs pittsburgh penguins rivalry highlights": {
+    "video": null,
+    "fetchedAt": "2026-03-07T00:55:43.815Z",
+    "query": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights",
+    "debug": {
+      "searchQuery": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
   }
 }

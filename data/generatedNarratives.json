@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-07T00:50:08.242Z",
+  "lastUpdated": "2026-03-07T00:55:32.159Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -116,7 +116,7 @@
         ],
         "playersIngested": 637,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-07T00:50:08.242Z"
+        "timestamp": "2026-03-07T00:55:32.159Z"
       },
       "cacheHistoryCount": 722,
       "error": null
@@ -126,7 +126,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": 19.16437722222222,
+      "hoursUntil": 19.074400277777777,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -163,7 +163,44 @@
     },
     "tonightStorySelectedSignal": "rivalry_game",
     "tonightStoryHeadline": "Rivalry Night",
-    "tonightStorySourceEvent": "nhl_2025020993"
+    "tonightStorySourceEvent": "nhl_2025020993",
+    "videoSelection": {
+      "deadline_watch_ana": {
+        "searchQuery": "Anaheim Ducks trade deadline preview March 2026",
+        "selectedVideoTitle": "Friday NHL Best Bets! | Blues vs Sharks & Canadiens vs Ducks Picks & Predictions 3/6",
+        "selectedVideoPublishedAt": "5 hours ago",
+        "selectedVideoChannel": "Picks & Parlays",
+        "rejectedForAgeCount": 0
+      },
+      "playoff_push_socal": {
+        "searchQuery": "Tulsa Oilers playoff push March 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
+        "rejectedForAgeCount": 0
+      },
+      "deadline_watch_bos": {
+        "searchQuery": "Boston Bruins trade deadline preview March 2026",
+        "selectedVideoTitle": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
+        "selectedVideoPublishedAt": "20 hours ago",
+        "selectedVideoChannel": "NHL",
+        "rejectedForAgeCount": 0
+      },
+      "playoff_push_newengland": {
+        "searchQuery": "Boston Bruins playoff push March 2026",
+        "selectedVideoTitle": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
+        "selectedVideoPublishedAt": "20 hours ago",
+        "selectedVideoChannel": "NHL",
+        "rejectedForAgeCount": 0
+      },
+      "rivalry_game_nhl_2025020993": {
+        "searchQuery": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
+        "rejectedForAgeCount": 0
+      }
+    }
   },
   "cards": [
     {
@@ -175,7 +212,7 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-07T00:50:08.242Z",
+      "triggeredAt": "2026-03-07T00:55:32.159Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
@@ -185,7 +222,7 @@
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 19.2,
+        "hoursUntil": 19.1,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -217,11 +254,13 @@
         ]
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=7B0KRcPZvpI",
-        "thumbnailUrl": "https://img.youtube.com/vi/7B0KRcPZvpI/hqdefault.jpg",
-        "durationSeconds": 1209,
-        "title": "NHL Trade Deadline Reaction 🚨 John Carlson to Ducks, Nick Foligno to Wild | The Point",
-        "source": "youtube"
+        "url": "https://www.youtube.com/watch?v=u20gq1io7GU",
+        "thumbnailUrl": "https://img.youtube.com/vi/u20gq1io7GU/hqdefault.jpg",
+        "durationSeconds": 602,
+        "title": "Friday NHL Best Bets! | Blues vs Sharks & Canadiens vs Ducks Picks & Predictions 3/6",
+        "source": "youtube",
+        "channel": "Picks & Parlays",
+        "publishedAt": "5 hours ago"
       }
     },
     {
@@ -234,8 +273,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-07T00:50:08.242Z",
-      "expiresAt": "2026-03-14T00:50:08.242Z",
+      "triggeredAt": "2026-03-07T00:55:32.159Z",
+      "expiresAt": "2026-03-14T00:55:32.159Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -258,8 +297,8 @@
           "echl-web-25179"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-07T00:50:08.242Z",
-        "windowEnd": "2026-03-14T00:50:08.242Z",
+        "windowStart": "2026-03-07T00:55:32.159Z",
+        "windowEnd": "2026-03-14T00:55:32.159Z",
         "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       }
     },
@@ -272,7 +311,7 @@
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-07T00:50:08.242Z",
+      "triggeredAt": "2026-03-07T00:55:32.159Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
@@ -282,7 +321,7 @@
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": 19.2,
+        "hoursUntil": 19.1,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",
@@ -311,11 +350,13 @@
         ]
       },
       "video": {
-        "url": "https://www.youtube.com/watch?v=JPn4iCELIfA",
-        "thumbnailUrl": "https://img.youtube.com/vi/JPn4iCELIfA/hqdefault.jpg",
-        "durationSeconds": 511,
-        "title": "The Truth Behind the Boston Bruins Trade Deadline Moves Revealed...",
-        "source": "youtube"
+        "url": "https://www.youtube.com/watch?v=ZhDJvzB-Sps",
+        "thumbnailUrl": "https://img.youtube.com/vi/ZhDJvzB-Sps/hqdefault.jpg",
+        "durationSeconds": 694,
+        "title": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
+        "source": "youtube",
+        "channel": "NHL",
+        "publishedAt": "20 hours ago"
       }
     },
     {
@@ -327,8 +368,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-07T00:50:08.242Z",
-      "expiresAt": "2026-03-14T00:50:08.242Z",
+      "triggeredAt": "2026-03-07T00:55:32.159Z",
+      "expiresAt": "2026-03-14T00:55:32.159Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -351,8 +392,8 @@
           "nhl_2025021027"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-07T00:50:08.242Z",
-        "windowEnd": "2026-03-14T00:50:08.242Z",
+        "windowStart": "2026-03-07T00:55:32.159Z",
+        "windowEnd": "2026-03-14T00:55:32.159Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "video": {
@@ -360,7 +401,9 @@
         "thumbnailUrl": "https://img.youtube.com/vi/ZhDJvzB-Sps/hqdefault.jpg",
         "durationSeconds": 694,
         "title": "Bruins vs. Predators | NHL Highlights | March 05, 2026",
-        "source": "youtube"
+        "source": "youtube",
+        "channel": "NHL",
+        "publishedAt": "20 hours ago"
       }
     },
     {
@@ -372,7 +415,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-07T00:50:08.242Z",
+      "triggeredAt": "2026-03-07T00:55:32.159Z",
       "expiresAt": "2026-03-08T02:30:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
@@ -389,13 +432,6 @@
           "nhl_2025020993"
         ],
         "reason": "Philadelphia Flyers and Pittsburgh Penguins meet tonight in one of hockey's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
-      },
-      "video": {
-        "url": "https://www.youtube.com/watch?v=gQk9J0Zxc-U",
-        "thumbnailUrl": "https://img.youtube.com/vi/gQk9J0Zxc-U/hqdefault.jpg",
-        "durationSeconds": 506,
-        "title": "THE PITTSBURGH PENGUINS JUST FLEECED THE COLORADO AVALANCHE HARD—OR DID THEY? Kulak For Girard Trade",
-        "source": "youtube"
       }
     },
     {
@@ -407,7 +443,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-07T00:50:08.242Z",
+      "triggeredAt": "2026-03-07T00:55:32.159Z",
       "expiresAt": "2026-03-08T07:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",

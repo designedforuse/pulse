@@ -6,10 +6,19 @@ const NARRATIVES_PATH = path.resolve(__dirname, "..", "data", "generatedNarrativ
 const MOVEMENT_CACHE_PATH = path.resolve(__dirname, "..", "data", "playerMovementCache.json");
 const YT_CACHE_PATH = path.resolve(__dirname, "..", "data", "youtubeCache.json");
 
+interface VideoDebugInfo {
+  searchQuery: string;
+  selectedVideoTitle: string | null;
+  selectedVideoPublishedAt: string | null;
+  selectedVideoChannel: string | null;
+  rejectedForAgeCount: number;
+}
+
 interface YouTubeCacheEntry {
-  video: NarrativeVideo;
+  video: NarrativeVideo | null;
   fetchedAt: string;
   query: string;
+  debug?: VideoDebugInfo;
 }
 
 function loadYouTubeCache(): Record<string, YouTubeCacheEntry> {
@@ -37,20 +46,72 @@ function parseDurationText(text: string): number {
   return parts[0] || 0;
 }
 
-async function searchYouTubeVideo(query: string): Promise<NarrativeVideo | null> {
+type CardKind = ExploreNarrativeCard["kind"];
+
+const RECENCY_WINDOW_DAYS: Record<CardKind, number> = {
+  deadline_watch: 7,
+  playoff_push: 7,
+  clinch_watch: 7,
+  upset_alert: 3,
+  rivalry_game: 30,
+  momentum: 14,
+  league_moment: 14,
+  player_movement: 7,
+};
+
+const TRUSTED_CHANNELS = [
+  "nhl", "espn", "sportsnet", "tsn", "atp tour", "tennis tv",
+  "rugbypass", "sky sports", "nbc sports", "the hockey guy",
+  "fox sports", "bt sport", "dazn", "premier league",
+  "major league soccer", "mls", "supersport",
+];
+
+function parsePublishedAge(text: string): number | null {
+  if (!text) return null;
+  const m = text.match(/(\d+)\s+(second|minute|hour|day|week|month|year)s?\s+ago/i);
+  if (!m) return null;
+  const n = parseInt(m[1], 10);
+  const unit = m[2].toLowerCase();
+  const multipliers: Record<string, number> = {
+    second: 1 / 86400, minute: 1 / 1440, hour: 1 / 24,
+    day: 1, week: 7, month: 30, year: 365,
+  };
+  return n * (multipliers[unit] || 1);
+}
+
+function isTrustedChannel(channelName: string): boolean {
+  const lower = channelName.toLowerCase();
+  return TRUSTED_CHANNELS.some(tc => lower.includes(tc));
+}
+
+interface VideoSearchResult {
+  video: NarrativeVideo | null;
+  debug: VideoDebugInfo;
+}
+
+async function searchYouTubeVideo(query: string, cardKind: CardKind): Promise<VideoSearchResult> {
+  const maxAgeDays = RECENCY_WINDOW_DAYS[cardKind] || 14;
+  const debugInfo: VideoDebugInfo = {
+    searchQuery: query,
+    selectedVideoTitle: null,
+    selectedVideoPublishedAt: null,
+    selectedVideoChannel: null,
+    rejectedForAgeCount: 0,
+  };
+
   const cache = loadYouTubeCache();
-  const cacheKey = query.toLowerCase().trim();
+  const cacheKey = `${cardKind}:${query.toLowerCase().trim()}`;
   const cached = cache[cacheKey];
   if (cached) {
     const age = Date.now() - new Date(cached.fetchedAt).getTime();
-    if (age < 24 * 3600000) {
-      console.log(`[YouTube] Cache hit for "${query}"`);
-      return cached.video;
+    if (age < 12 * 3600000) {
+      console.log(`[YouTube] Cache hit for "${query}" (${cached.video ? "has video" : "no video"})`);
+      return { video: cached.video || null, debug: cached.debug || debugInfo };
     }
   }
 
   try {
-    const sp = "CAISBAgEEAE%3D";
+    const sp = "CAISBAgCEAE%3D";
     const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}&sp=${sp}`;
 
     const resp = await fetch(searchUrl, {
@@ -62,14 +123,14 @@ async function searchYouTubeVideo(query: string): Promise<NarrativeVideo | null>
 
     if (!resp.ok) {
       console.warn(`[YouTube] Search failed (${resp.status}) for "${query}"`);
-      return null;
+      return { video: null, debug: debugInfo };
     }
 
     const html = await resp.text();
     const match = html.match(/var ytInitialData = ({.*?});<\/script>/s);
     if (!match) {
       console.warn(`[YouTube] Could not parse page data for "${query}"`);
-      return null;
+      return { video: null, debug: debugInfo };
     }
 
     const data = JSON.parse(match[1]);
@@ -79,43 +140,86 @@ async function searchYouTubeVideo(query: string): Promise<NarrativeVideo | null>
     const currentYear = new Date().getFullYear();
     const recentYearCutoff = currentYear - 1;
     const allVideos = contents.filter((c: any) => c?.videoRenderer?.videoId);
-    const recentVideos = allVideos.filter((c: any) => {
-      const published = c.videoRenderer?.publishedTimeText?.simpleText || "";
-      if (/\d+\s+years?\s+ago/i.test(published)) return false;
-      const title = c.videoRenderer?.title?.runs?.[0]?.text || "";
-      const oldYearMatch = title.match(/\b(19\d{2}|20\d{2})\b/);
-      if (oldYearMatch && parseInt(oldYearMatch[1], 10) < recentYearCutoff) return false;
-      return true;
-    });
-    const videos = (recentVideos.length > 0 ? recentVideos : allVideos).slice(0, 5);
 
-    if (videos.length === 0) {
-      console.warn(`[YouTube] No results for "${query}"`);
-      return null;
+    interface ScoredVideo {
+      renderer: any;
+      ageDays: number | null;
+      channel: string;
+      trusted: boolean;
+      title: string;
     }
 
-    const best = videos[0].videoRenderer;
-    const videoId = best.videoId;
-    const title = best.title?.runs?.[0]?.text || query;
-    const lengthText = best.lengthText?.simpleText || "0:00";
+    const scored: ScoredVideo[] = [];
+
+    for (const c of allVideos) {
+      const r = c.videoRenderer;
+      const published = r?.publishedTimeText?.simpleText || "";
+      const ageDays = parsePublishedAge(published);
+      const title = r?.title?.runs?.[0]?.text || "";
+      const channel = r?.ownerText?.runs?.[0]?.text || r?.longBylineText?.runs?.[0]?.text || "";
+      const trusted = isTrustedChannel(channel);
+
+      const oldYearMatch = title.match(/\b(19\d{2}|20\d{2})\b/);
+      if (oldYearMatch && parseInt(oldYearMatch[1], 10) < recentYearCutoff) {
+        debugInfo.rejectedForAgeCount++;
+        continue;
+      }
+
+      if (ageDays !== null && ageDays > maxAgeDays) {
+        debugInfo.rejectedForAgeCount++;
+        continue;
+      }
+
+      if (/\d+\s+years?\s+ago/i.test(published)) {
+        debugInfo.rejectedForAgeCount++;
+        continue;
+      }
+
+      scored.push({ renderer: r, ageDays, channel, trusted, title });
+    }
+
+    scored.sort((a, b) => {
+      if (a.trusted !== b.trusted) return a.trusted ? -1 : 1;
+      const ageA = a.ageDays ?? 999;
+      const ageB = b.ageDays ?? 999;
+      return ageA - ageB;
+    });
+
+    if (scored.length === 0) {
+      console.warn(`[YouTube] No recent results for "${query}" (rejected ${debugInfo.rejectedForAgeCount} for age, window=${maxAgeDays}d)`);
+      cache[cacheKey] = { video: null, fetchedAt: new Date().toISOString(), query, debug: debugInfo };
+      saveYouTubeCache(cache);
+      return { video: null, debug: debugInfo };
+    }
+
+    const best = scored[0];
+    const videoId = best.renderer.videoId;
+    const lengthText = best.renderer.lengthText?.simpleText || "0:00";
     const durationSeconds = parseDurationText(lengthText);
+    const publishedAt = best.renderer?.publishedTimeText?.simpleText || null;
 
     const video: NarrativeVideo = {
       url: `https://www.youtube.com/watch?v=${videoId}`,
       thumbnailUrl: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
       durationSeconds,
-      title,
+      title: best.title,
       source: "youtube",
+      channel: best.channel,
+      publishedAt: publishedAt,
     };
 
-    cache[cacheKey] = { video, fetchedAt: new Date().toISOString(), query };
+    debugInfo.selectedVideoTitle = best.title;
+    debugInfo.selectedVideoPublishedAt = publishedAt;
+    debugInfo.selectedVideoChannel = best.channel;
+
+    cache[cacheKey] = { video, fetchedAt: new Date().toISOString(), query, debug: debugInfo };
     saveYouTubeCache(cache);
 
-    console.log(`[YouTube] Found video for "${query}": ${video.title} (${durationSeconds}s)`);
-    return video;
+    console.log(`[YouTube] Selected for "${query}": "${best.title}" by ${best.channel} (${publishedAt || "unknown age"}, trusted=${best.trusted})`);
+    return { video, debug: debugInfo };
   } catch (err) {
     console.warn(`[YouTube] Error searching for "${query}":`, (err as Error).message);
-    return null;
+    return { video: null, debug: debugInfo };
   }
 }
 
@@ -123,27 +227,29 @@ function buildVideoSearchQuery(card: ExploreNarrativeCard): string | null {
   const meta = card.meta || {};
   const teamA = meta.awayTeam || meta.team || meta.teams?.[0]?.team || "";
   const teamB = meta.homeTeam || meta.teams?.[1]?.team || "";
+  const now = new Date();
+  const monthYear = `${now.toLocaleString("en-US", { month: "long" })} ${now.getFullYear()}`;
 
   switch (card.kind) {
     case "deadline_watch":
-      return teamA ? `${teamA} trade deadline preview` : null;
+      return teamA ? `${teamA} trade deadline preview ${monthYear}` : null;
     case "rivalry_game":
       return teamA && teamB ? `${teamA} vs ${teamB} rivalry highlights` : null;
     case "upset_alert": {
       const playerA = meta.favoriteName || meta.awayTeam || "";
       const playerB = meta.underdogName || meta.homeTeam || "";
-      return playerA && playerB ? `${playerA} vs ${playerB} upset highlights` : null;
+      return playerA && playerB ? `${playerA} vs ${playerB} upset highlights ${monthYear}` : null;
     }
     case "clinch_watch":
-      return teamA ? `${teamA} playoff clinch highlights` : null;
+      return teamA ? `${teamA} clinch playoff berth ${monthYear}` : null;
     case "playoff_push":
-      return teamA ? `${teamA} playoff push highlights` : null;
+      return teamA ? `${teamA} playoff push ${monthYear}` : null;
     case "momentum":
-      return teamA ? `${teamA} highlights` : null;
+      return teamA ? `${teamA} highlights ${monthYear}` : null;
     case "league_moment":
-      return card.title ? `${card.title} sports` : null;
+      return card.title ? `${card.title} sports ${monthYear}` : null;
     case "player_movement":
-      return meta.playerName ? `${meta.playerName} trade highlights` : null;
+      return meta.playerName ? `${meta.playerName} trade ${monthYear}` : null;
     default:
       return null;
   }
@@ -163,6 +269,8 @@ export interface NarrativeVideo {
   durationSeconds: number;
   title: string;
   source: "youtube" | "nhl" | "league" | "social";
+  channel?: string;
+  publishedAt?: string | null;
 }
 
 export interface ExploreNarrativeCard {
@@ -2405,17 +2513,23 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     }
   }
   console.log("  Attaching YouTube videos to selected cards...");
+  const videoDebug: Record<string, VideoDebugInfo> = {};
   for (const card of selected) {
     if (card.video) continue;
     const query = buildVideoSearchQuery(card);
     if (!query) continue;
     try {
-      const video = await searchYouTubeVideo(query);
-      if (video) card.video = video;
+      const result = await searchYouTubeVideo(query, card.kind);
+      if (result.video) card.video = result.video;
+      videoDebug[card.id] = result.debug;
+      if (!result.video && result.debug.rejectedForAgeCount > 0) {
+        console.log(`    [${card.id}] No recent video (${result.debug.rejectedForAgeCount} rejected for age, window=${RECENCY_WINDOW_DAYS[card.kind]}d)`);
+      }
     } catch (err) {
       console.warn(`[YouTube] Failed for ${card.id}:`, (err as Error).message);
     }
   }
+  debug.videoSelection = videoDebug;
   console.log("=== Narratives Complete ===\n");
 
   return { cards: selected, tonightStory, debug };
