@@ -23,6 +23,20 @@ const SIGNAL_REASONS: Record<string, string> = {
   "Goalie pulled": "Goalie pulled",
 };
 
+function getScoringReason(sport: string, current: ScoreData | undefined, previous: ScoreData | undefined): string {
+  const s = sport.toLowerCase();
+  if (s === "rugby") {
+    const prevTotal = (previous?.awayScore ?? 0) + (previous?.homeScore ?? 0);
+    const curTotal = (current?.awayScore ?? 0) + (current?.homeScore ?? 0);
+    const diff = curTotal - prevTotal;
+    if (diff >= 5) return "Try scored";
+    if (diff === 3) return "Penalty scored";
+    return "Score update";
+  }
+  if (s === "soccer") return "Goal just scored";
+  return "Goal just scored";
+}
+
 function detectGoalScored(
   event: SportEvent,
   current: ScoreData | undefined,
@@ -174,7 +188,7 @@ export function computeActivityScore(
   }
 
   if (detectGoalScored(event, currentScore, previousScore)) {
-    signals.push({ name: "Goal scored", points: 40, reason: SIGNAL_REASONS["Goal scored"] });
+    signals.push({ name: "Goal scored", points: 40, reason: getScoringReason(event.sport, currentScore, previousScore) });
   }
 
   if (detectOvertime(event, currentScore)) {
@@ -198,7 +212,8 @@ export function computeActivityScore(
   }
 
   if (detectLateCloseGame(event, currentScore)) {
-    signals.push({ name: "Late close game", points: 20, reason: SIGNAL_REASONS["Late close game"] });
+    const lateReason = event.sport.toLowerCase() === "rugby" ? "Close game late" : SIGNAL_REASONS["Late close game"];
+    signals.push({ name: "Late close game", points: 20, reason: lateReason });
   }
 
   const total = signals.reduce((sum, s) => sum + s.points, 0);

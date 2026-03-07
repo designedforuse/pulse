@@ -381,6 +381,14 @@ function SecondaryCarousel({
     const isPromoted = item.id === promotedEventId;
     return (
       <View style={{ width: tileWidth, marginRight: TILE_GAP }}>
+        <ChaosCard
+          event={item}
+          isPrimary={false}
+          now={now}
+          score={getScore(item.id)}
+          favorites={favorites}
+          tensionRank={chaosDebugRanks?.find(r => r.id === item.id)?.tension ?? 0}
+        />
         {isPromoted && (
           <View style={styles.emergingMomentBanner}>
             <View style={styles.emergingMomentRow}>
@@ -392,14 +400,6 @@ function SecondaryCarousel({
             </Text>
           </View>
         )}
-        <ChaosCard
-          event={item}
-          isPrimary={false}
-          now={now}
-          score={getScore(item.id)}
-          favorites={favorites}
-          tensionRank={chaosDebugRanks?.find(r => r.id === item.id)?.tension ?? 0}
-        />
       </View>
     );
   }, [tileWidth, now, getScore, favorites, chaosDebugRanks, promotedEventId, promotionReason]);
@@ -1205,7 +1205,7 @@ const styles = StyleSheet.create({
   emergingMomentBanner: {
     paddingHorizontal: 10,
     paddingVertical: 6,
-    marginBottom: 6,
+    marginTop: 6,
     backgroundColor: "rgba(255, 214, 0, 0.12)",
     borderRadius: 8,
     borderWidth: 1,
