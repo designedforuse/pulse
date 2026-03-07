@@ -108,16 +108,16 @@ export async function fetchUslEvents(): Promise<SoccerFetchResult & { firstMatch
 
       const broadcastNames = (comp.broadcasts || []).flatMap((b: any) => b.names || []);
       const broadcastStr = broadcastNames.join(" ").toLowerCase();
-      let providerId = "espnplus";
+      let providerId = "disneyplus";
       let providerReason = "usl-espnplus";
       if (broadcastStr.includes("golazo") || broadcastStr.includes("cbs sports")) {
-        providerId = "cbsgolazo";
+        providerId = "primevideo";
         providerReason = "usl-cbsgolazo";
       } else if (broadcastStr.includes("espn+") || broadcastStr.includes("espn plus") || broadcastStr.includes("espn select")) {
-        providerId = "espnplus";
+        providerId = "disneyplus";
         providerReason = "usl-espnplus";
       } else if (broadcastNames.length === 0) {
-        providerId = "cbsgolazo";
+        providerId = "primevideo";
         providerReason = "usl-cbsgolazo-default";
       }
 
