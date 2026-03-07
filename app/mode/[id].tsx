@@ -131,7 +131,7 @@ export default function ModeDetailScreen() {
   const mode = getModeById(id);
   const { getEventsForPack, debugShowAll, favoritesOnly, leagueSeasonStarts } = useEvents();
   const { getScore } = useScores();
-  const { favorites } = useFavorites();
+  const { favorites, disabledSports } = useFavorites();
   const [activeSport, setActiveSportState] = useState<SportFilter>("all");
   const [activeLeague, setActiveLeague] = useState<string>("all");
   const [loaded, setLoaded] = useState(false);
@@ -172,7 +172,9 @@ export default function ModeDetailScreen() {
 
   const packData: PackWeekendData[] = useMemo(() => {
     if (!mode) return [];
-    return mode.packs.map((pack: Pack) => {
+    return mode.packs
+      .filter((pack: Pack) => !disabledSports.has(pack.sport.toLowerCase()))
+      .map((pack: Pack) => {
       const events = getEventsForPack(pack);
 
       if (debugShowAll) {
@@ -187,7 +189,7 @@ export default function ModeDetailScreen() {
       );
       return { pack, thisWeekend, nextWeekend };
     });
-  }, [mode, id, windows, debugShowAll]);
+  }, [mode, id, windows, debugShowAll, disabledSports]);
 
   const filteredPackData = useMemo(() => {
     if (activeSport === "all") return packData;

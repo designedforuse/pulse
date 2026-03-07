@@ -423,9 +423,14 @@ function SecondaryCarousel({
 export default function WatchScreen() {
   const insets = useSafeAreaInsets();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
-  const { allEvents, favoritesOnly } = useEvents();
+  const { allEvents: rawEvents, favoritesOnly } = useEvents();
   const { getScore, scores } = useScores();
-  const { favorites } = useFavorites();
+  const { favorites, disabledSports } = useFavorites();
+
+  const allEvents = useMemo(
+    () => disabledSports.size === 0 ? rawEvents : rawEvents.filter((e) => !disabledSports.has(e.sport.toLowerCase())),
+    [rawEvents, disabledSports]
+  );
 
   const [now, setNow] = useState<Date>(new Date());
   const [refreshing, setRefreshing] = useState(false);

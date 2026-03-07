@@ -1,14 +1,20 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode, useMemo } from "react";
+import { Platform } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as Haptics from "expo-haptics";
 import { getFavorites, type Favorites, type SportFavorites } from "@/lib/data";
 
 const STORAGE_KEY = "favorites.disabled";
+const SPORTS_STORAGE_KEY = "favorites.disabledSports";
 
 interface FavoritesContextValue {
   favorites: Favorites;
   allTeams: Favorites;
   isTeamEnabled: (sport: string, league: string, team: string) => boolean;
   toggleTeam: (sport: string, league: string, team: string) => void;
+  isSportEnabled: (sport: string) => boolean;
+  toggleSport: (sport: string) => void;
+  disabledSports: Set<string>;
   enabledCount: number;
   totalCount: number;
 }
@@ -56,6 +62,7 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
   const allTeams = useMemo(() => getFavorites(), []);
   const totalCount = useMemo(() => countTeams(allTeams), [allTeams]);
   const [disabled, setDisabled] = useState<Set<string>>(new Set());
+  const [disabledSports, setDisabledSports] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     AsyncStorage.getItem(STORAGE_KEY).then((raw) => {
@@ -64,6 +71,16 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
           const arr = JSON.parse(raw);
           if (Array.isArray(arr)) {
             setDisabled(new Set(arr));
+          }
+        } catch {}
+      }
+    });
+    AsyncStorage.getItem(SPORTS_STORAGE_KEY).then((raw) => {
+      if (raw) {
+        try {
+          const arr = JSON.parse(raw);
+          if (Array.isArray(arr)) {
+            setDisabledSports(new Set(arr));
           }
         } catch {}
       }
@@ -101,9 +118,34 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
     []
   );
 
+  const isSportEnabled = useCallback(
+    (sport: string) => !disabledSports.has(sport.toLowerCase()),
+    [disabledSports]
+  );
+
+  const toggleSport = useCallback(
+    (sport: string) => {
+      const key = sport.toLowerCase();
+      setDisabledSports((prev) => {
+        const next = new Set(prev);
+        if (next.has(key)) {
+          next.delete(key);
+        } else {
+          next.add(key);
+        }
+        AsyncStorage.setItem(SPORTS_STORAGE_KEY, JSON.stringify([...next]));
+        return next;
+      });
+      if (Platform.OS !== "web") {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+      }
+    },
+    []
+  );
+
   const value = useMemo(
-    () => ({ favorites, allTeams, isTeamEnabled, toggleTeam, enabledCount, totalCount }),
-    [favorites, allTeams, isTeamEnabled, toggleTeam, enabledCount, totalCount]
+    () => ({ favorites, allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, disabledSports, enabledCount, totalCount }),
+    [favorites, allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, disabledSports, enabledCount, totalCount]
   );
 
   return (

@@ -129,8 +129,13 @@ function RitualTile({ ritual, data }: { ritual: Ritual; data: RitualData }) {
 
 export default function RitualsScreen() {
   const insets = useSafeAreaInsets();
-  const { allEvents } = useEvents();
-  const { favorites } = useFavorites();
+  const { allEvents: rawEvents } = useEvents();
+  const { favorites, disabledSports } = useFavorites();
+
+  const allEvents = useMemo(
+    () => disabledSports.size === 0 ? rawEvents : rawEvents.filter((e) => !disabledSports.has(e.sport.toLowerCase())),
+    [rawEvents, disabledSports]
+  );
   const { overrides } = useRitualOverrides();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
 

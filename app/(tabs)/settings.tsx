@@ -58,36 +58,22 @@ function isStale(isoDate: string): boolean {
 }
 
 function FavoritesSection() {
-  const { allTeams, isTeamEnabled, toggleTeam, enabledCount, totalCount } = useFavorites();
-  const sportOrder = ["hockey", "rugby", "cricket", "soccer"];
+  const { allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, enabledCount, totalCount } = useFavorites();
+  const sportOrder = ["hockey", "rugby", "cricket", "soccer", "tennis"];
   const sportLabels: Record<string, string> = {
     hockey: "Hockey",
     rugby: "Rugby",
     cricket: "Cricket",
     soccer: "Soccer",
+    tennis: "Tennis",
   };
   const sportIcons: Record<string, keyof typeof Ionicons.glyphMap> = {
     hockey: "snow",
     rugby: "american-football",
     cricket: "baseball",
     soccer: "football",
+    tennis: "tennisball",
   };
-
-  const hasFavorites = sportOrder.some((sport) => {
-    const sportFavs = allTeams[sport];
-    return sportFavs && Object.keys(sportFavs).length > 0;
-  });
-
-  if (!hasFavorites) {
-    return (
-      <View style={styles.card}>
-        <View style={styles.emptyFavRow}>
-          <Ionicons name="star-outline" size={18} color={Colors.textMuted} />
-          <Text style={styles.emptyFavText}>No favorites configured.</Text>
-        </View>
-      </View>
-    );
-  }
 
   const handleToggle = (sport: string, league: string, team: string) => {
     if (Platform.OS !== "web") {
@@ -108,9 +94,10 @@ function FavoritesSection() {
       </View>
       {sportOrder.map((sport) => {
         const sportFavs = allTeams[sport];
-        if (!sportFavs || Object.keys(sportFavs).length === 0) return null;
+        const hasTeams = sportFavs && Object.keys(sportFavs).length > 0;
+        const sportEnabled = isSportEnabled(sport);
         const sportColor = getSportColor(sport);
-        const leagues = Object.keys(sportFavs);
+        const leagues = hasTeams ? Object.keys(sportFavs!) : [];
         const showDivider = !isFirstSport;
         isFirstSport = false;
 
@@ -119,14 +106,22 @@ function FavoritesSection() {
             {showDivider && <View style={styles.sportDivider} />}
             <View style={styles.sportHeader}>
               <View style={[styles.sportIconBg, { backgroundColor: sportColor + "22" }]}>
-                <Ionicons name={sportIcons[sport]} size={14} color={sportColor} />
+                <Ionicons name={sportIcons[sport]} size={14} color={sportEnabled ? sportColor : Colors.textMuted} />
               </View>
-              <Text style={[styles.sportLabel, { color: sportColor }]}>
+              <Text style={[styles.sportLabel, { color: sportEnabled ? sportColor : Colors.textMuted }]}>
                 {sportLabels[sport]}
               </Text>
+              <View style={{ flex: 1 }} />
+              <Switch
+                value={sportEnabled}
+                onValueChange={() => toggleSport(sport)}
+                trackColor={{ false: Colors.border, true: sportColor + "55" }}
+                thumbColor={sportEnabled ? sportColor : Colors.textMuted}
+                style={styles.teamSwitch}
+              />
             </View>
-            {leagues.map((league) => {
-              const teams = sportFavs[league];
+            {sportEnabled && leagues.map((league) => {
+              const teams = sportFavs![league];
               if (!teams || teams.length === 0) return null;
               return (
                 <React.Fragment key={league}>
