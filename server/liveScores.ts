@@ -1,6 +1,13 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 
+export interface TennisSetScore {
+  p1: number;
+  p2: number;
+  tiebreak?: string;
+  winner?: 1 | 2;
+}
+
 export interface ScoreData {
   awayScore: number;
   homeScore: number;
@@ -21,6 +28,11 @@ export interface ScoreData {
   lastGoalStrength?: string;
   lastGoalTeam?: string;
   goalCount?: number;
+  tennisSetScores?: TennisSetScore[];
+  tennisGameScore?: { p1: string; p2: string };
+  tennisServer?: 1 | 2;
+  tennisStatusDetail?: string;
+  tennisWinner?: 1 | 2;
 }
 
 export interface ScoresResponse {
@@ -38,6 +50,7 @@ interface LiveEventIdBuckets {
   soccer: Map<string, string[]>;
   rugby: Map<string, { id: string; homeTeam: string; awayTeam: string }[]>;
   cricket: { id: string; homeTeam: string; awayTeam: string }[];
+  tennis: { id: string; espnId: string }[];
 }
 
 function loadLiveEventIds(): LiveEventIdBuckets {
@@ -48,6 +61,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
   const soccer = new Map<string, string[]>();
   const rugby = new Map<string, { id: string; homeTeam: string; awayTeam: string }[]>();
   const cricket: { id: string; homeTeam: string; awayTeam: string }[] = [];
+  const tennis: { id: string; espnId: string }[] = [];
 
   try {
     const raw = fs.readFileSync(GENERATED_EVENTS_PATH, "utf-8");
@@ -99,12 +113,15 @@ function loadLiveEventIds(): LiveEventIdBuckets {
           homeTeam: event.homeTeam || "",
           awayTeam: event.awayTeam || "",
         });
+      } else if (event.id.startsWith("tennis-espn-")) {
+        const espnId = event.id.replace("tennis-espn-", "");
+        tennis.push({ id: event.id, espnId });
       }
     }
   } catch {
   }
 
-  return { nhl, ahl, echl, ncaa, soccer, rugby, cricket };
+  return { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis };
 }
 
 async function fetchNhlScores(eventIds: string[]): Promise<Record<string, ScoreData>> {
@@ -784,11 +801,128 @@ async function fetchCricketScores(
   return scores;
 }
 
+const ESPN_TENNIS_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/tennis/atp/scoreboard";
+
+async function fetchTennisScores(
+  events: { id: string; espnId: string }[],
+): Promise<Record<string, ScoreData>> {
+  const scores: Record<string, ScoreData> = {};
+  if (events.length === 0) return scores;
+
+  try {
+    const res = await fetch(ESPN_TENNIS_SCOREBOARD);
+    if (!res.ok) return scores;
+    const data = (await res.json()) as any;
+
+    const espnIdToLocal = new Map<string, string>();
+    for (const e of events) espnIdToLocal.set(e.espnId, e.id);
+
+    for (const ev of data.events || []) {
+      for (const g of ev.groupings || []) {
+        if (g.grouping?.slug !== "mens-singles") continue;
+        for (const comp of g.competitions || []) {
+          const localId = espnIdToLocal.get(String(comp.id));
+          if (!localId) continue;
+
+          const c1 = comp.competitors?.[0];
+          const c2 = comp.competitors?.[1];
+          if (!c1 || !c2) continue;
+
+          const state = comp.status?.type?.state;
+          const isLive = state === "in";
+          const isPost = state === "post";
+          if (!isLive && !isPost) continue;
+
+          const ls1: any[] = c1.linescores || [];
+          const ls2: any[] = c2.linescores || [];
+          const maxSets = Math.max(ls1.length, ls2.length);
+
+          const tennisSetScores: TennisSetScore[] = [];
+          let p1SetsWon = 0;
+          let p2SetsWon = 0;
+
+          for (let i = 0; i < maxSets; i++) {
+            const s1 = ls1[i]?.value ?? 0;
+            const s2 = ls2[i]?.value ?? 0;
+            const tb1 = ls1[i]?.tiebreak;
+            const tb2 = ls2[i]?.tiebreak;
+            const setEntry: TennisSetScore = { p1: s1, p2: s2 };
+
+            if (tb1 !== undefined || tb2 !== undefined) {
+              const loserTb = Math.min(tb1 ?? 0, tb2 ?? 0);
+              setEntry.tiebreak = String(loserTb);
+            }
+
+            const p1Won = ls1[i]?.winner === true;
+            const p2Won = ls2[i]?.winner === true;
+            const isCompleted =
+              (i < maxSets - 1) ||
+              isPost ||
+              (p1Won || p2Won);
+            if (isCompleted) {
+              if (p1Won || p2Won) {
+                setEntry.winner = p1Won ? 1 : 2;
+              } else if (s1 !== s2) {
+                setEntry.winner = s1 > s2 ? 1 : 2;
+              } else if (tb1 !== undefined && tb2 !== undefined) {
+                setEntry.winner = tb1 > tb2 ? 1 : 2;
+              } else {
+                setEntry.winner = 1;
+              }
+              if (setEntry.winner === 1) p1SetsWon++;
+              else p2SetsWon++;
+            }
+
+            tennisSetScores.push(setEntry);
+          }
+
+          let tennisGameScore: { p1: string; p2: string } | undefined;
+          if (isLive) {
+            const detail = comp.status?.type?.detail || comp.status?.type?.shortDetail || "";
+            const gameMatch = detail.match(/(\d+|AD|Ad)-(\d+|AD|Ad)\s*$/);
+            if (gameMatch) {
+              tennisGameScore = { p1: gameMatch[1], p2: gameMatch[2] };
+            }
+          }
+
+          let tennisServer: 1 | 2 | undefined;
+          if (c1.isServing) tennisServer = 1;
+          else if (c2.isServing) tennisServer = 2;
+
+          const statusDetail = comp.status?.type?.description || comp.status?.type?.detail || "";
+
+          let tennisWinner: 1 | 2 | undefined;
+          if (isPost) {
+            if (c1.winner) tennisWinner = 1;
+            else if (c2.winner) tennisWinner = 2;
+          }
+
+          scores[localId] = {
+            awayScore: p1SetsWon,
+            homeScore: p2SetsWon,
+            period: isLive ? `Set ${comp.status?.period || tennisSetScores.length}` : "Final",
+            status: isLive ? "live" : "final",
+            tennisSetScores,
+            tennisGameScore,
+            tennisServer,
+            tennisStatusDetail: statusDetail || undefined,
+            tennisWinner,
+          };
+        }
+      }
+    }
+  } catch (err) {
+    console.error("[liveScores] Tennis fetch error:", err);
+  }
+
+  return scores;
+}
+
 export async function fetchAllLiveScores(): Promise<ScoresResponse> {
-  const { nhl, ahl, echl, ncaa, soccer, rugby, cricket } = loadLiveEventIds();
+  const { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis } = loadLiveEventIds();
 
   const japanLeagueOne = rugby.get("Japan League One") || [];
-  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, jlOneScores, cricketScores] = await Promise.all([
+  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, jlOneScores, cricketScores, tennisScores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchAhlScores(ahl),
     fetchEchlScores(echl),
@@ -797,10 +931,11 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
     fetchRugbyScores(rugby),
     fetchJapanLeagueOneScores(japanLeagueOne),
     fetchCricketScores(cricket),
+    fetchTennisScores(tennis),
   ]);
 
   return {
-    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...jlOneScores, ...cricketScores },
+    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...jlOneScores, ...cricketScores, ...tennisScores },
     fetchedAt: new Date().toISOString(),
   };
 }

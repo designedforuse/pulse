@@ -27,7 +27,7 @@ import { displayTeamName } from "@/utils/teams";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
-import UnifiedEventCard, { formatCricketLiveDetail } from "@/components/UnifiedEventCard";
+import UnifiedEventCard, { formatCricketLiveDetail, TennisScoreboard } from "@/components/UnifiedEventCard";
 import {
   getSportColor,
   resolveProviderDisplay,
@@ -35,7 +35,7 @@ import {
 } from "@/lib/data";
 import { getTennisRoundPriority } from "@/data/tennisTopPlayers";
 import { useEvents } from "@/lib/events-context";
-import { useScores } from "@/lib/scores-context";
+import { useScores, type ScoreData } from "@/lib/scores-context";
 import { useFavorites } from "@/lib/favorites-context";
 import {
   getLiveEventsNow,
@@ -51,7 +51,6 @@ import {
   evaluateSlot4Promotion,
   type ChaosSetup,
 } from "@/lib/chaos-setup";
-import type { ScoreData } from "@/lib/scores-context";
 
 function LiveDot() {
   const opacity = useSharedValue(1);
@@ -109,7 +108,7 @@ function ChaosCard({
   event: SportEvent;
   isPrimary: boolean;
   now: Date;
-  score?: { awayScore: number; homeScore: number; period?: string; clock?: string; status?: string; cricketAway?: string; cricketHome?: string };
+  score?: ScoreData;
   favorites: Favorites;
   tensionRank?: number;
 }) {
@@ -183,6 +182,16 @@ function ChaosCard({
 
             {matchupText ? (
               <Text style={styles.primaryMatchup} numberOfLines={2}>{matchupText}</Text>
+            ) : event.sport === "tennis" ? (
+              <View style={styles.primaryTeams}>
+                <TennisScoreboard
+                  event={event}
+                  score={score}
+                  isLive={isLiveState}
+                  isFinal={isFinalState}
+                  featured
+                />
+              </View>
             ) : (
               <View style={styles.primaryTeams}>
                 <View style={styles.primaryTeamRow}>
@@ -273,6 +282,15 @@ function ChaosCard({
 
         {matchupText ? (
           <Text style={styles.secondaryTeamName} numberOfLines={2}>{matchupText}</Text>
+        ) : event.sport === "tennis" ? (
+          <View style={styles.secondaryTeams}>
+            <TennisScoreboard
+              event={event}
+              score={score}
+              isLive={isLiveState}
+              isFinal={isFinalState}
+            />
+          </View>
         ) : (
           <View style={styles.secondaryTeams}>
             <View style={styles.secondaryTeamRow}>

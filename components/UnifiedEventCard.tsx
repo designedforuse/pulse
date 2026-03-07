@@ -13,7 +13,7 @@ import { normalizeGameState } from "@/utils/gameState";
 import { useScoreFlash } from "@/hooks/useScoreFlash";
 import { formatTimeUntilStart } from "@/utils/time";
 import { getTennisRoundShort, getTennisRoundPriority } from "@/data/tennisTopPlayers";
-import type { ScoreData } from "@/lib/scores-context";
+import type { ScoreData, TennisSetScore } from "@/lib/scores-context";
 
 function getSportDisplayName(sport: string): string {
   const names: Record<string, string> = {
@@ -151,6 +151,251 @@ function PhaseChip({ label, sportColor, isHot }: { label: string; sportColor: st
 }
 
 
+const SUPERSCRIPT_MAP: Record<string, string> = {
+  "0": "\u2070", "1": "\u00B9", "2": "\u00B2", "3": "\u00B3",
+  "4": "\u2074", "5": "\u2075", "6": "\u2076", "7": "\u2077",
+  "8": "\u2078", "9": "\u2079",
+};
+
+function superscriptDigits(s: string): string {
+  return s.split("").map(c => SUPERSCRIPT_MAP[c] || c).join("");
+}
+
+export function TennisScoreboard({
+  event,
+  score,
+  isLive,
+  isFinal,
+  featured,
+}: {
+  event: SportEvent;
+  score?: ScoreData;
+  isLive: boolean;
+  isFinal: boolean;
+  featured?: boolean;
+}) {
+  const p1Name = event.tennisPlayer1 || event.awayTeam;
+  const p2Name = event.tennisPlayer2 || event.homeTeam;
+  const p1Flag = event.tennisPlayer1Flag;
+  const p2Flag = event.tennisPlayer2Flag;
+  const p1Rank = event.tennisPlayer1Rank;
+  const p2Rank = event.tennisPlayer2Rank;
+  const sportColor = getSportColor("tennis");
+  const logoSize = featured ? 22 : 20;
+
+  const sets = score?.tennisSetScores || [];
+  const gameScore = score?.tennisGameScore;
+  const server = score?.tennisServer;
+  const winner = score?.tennisWinner;
+  const hasScoreData = sets.length > 0;
+  const statusDetail = score?.tennisStatusDetail;
+
+  const isSuspended = statusDetail &&
+    /suspended|rain|delay|medical|retired|walkover/i.test(statusDetail);
+
+  const renderPlayerRow = (
+    playerNum: 1 | 2,
+    name: string,
+    flag?: string,
+    rank?: number,
+  ) => {
+    const isWinner = winner === playerNum;
+    const isServing = server === playerNum;
+    const nameOpacity = isFinal && winner && !isWinner ? 0.5 : 1;
+
+    return (
+      <View style={tsStyles.playerRow}>
+        {flag ? (
+          <Image
+            source={{ uri: flag }}
+            style={[tsStyles.flag, { width: logoSize, height: Math.round(logoSize * 0.7) }]}
+            resizeMode="contain"
+          />
+        ) : (
+          <View style={[tsStyles.flag, { width: logoSize, height: Math.round(logoSize * 0.7) }]} />
+        )}
+        <View style={tsStyles.nameContainer}>
+          {isServing && isLive && (
+            <View style={tsStyles.servingDot} />
+          )}
+          <Text
+            style={[
+              tsStyles.playerName,
+              featured && tsStyles.playerNameFeatured,
+              { opacity: nameOpacity },
+              isWinner && tsStyles.playerNameWinner,
+            ]}
+            numberOfLines={1}
+          >
+            {name}
+            {rank ? (
+              <Text style={[tsStyles.rankText, { color: sportColor }]}>{` (${rank})`}</Text>
+            ) : null}
+          </Text>
+        </View>
+        {hasScoreData && (
+          <View style={tsStyles.setsContainer}>
+            {sets.map((s, i) => {
+              const val = playerNum === 1 ? s.p1 : s.p2;
+              const isSetWinner = s.winner === playerNum;
+              const isCurrentSet = i === sets.length - 1 && !s.winner && isLive;
+              const showTb = s.tiebreak && isSetWinner;
+              return (
+                <View key={i} style={tsStyles.setScoreCell}>
+                  <Text
+                    style={[
+                      tsStyles.setScore,
+                      isSetWinner && tsStyles.setScoreWon,
+                      isCurrentSet && isLive && tsStyles.setScoreCurrent,
+                    ]}
+                  >
+                    {val}
+                    {showTb ? (
+                      <Text style={tsStyles.tiebreakScore}>
+                        {superscriptDigits(s.tiebreak || "")}
+                      </Text>
+                    ) : null}
+                  </Text>
+                </View>
+              );
+            })}
+            {gameScore && isLive && (
+              <View style={[tsStyles.setScoreCell, tsStyles.gameScoreCell]}>
+                <Text style={[tsStyles.gameScore, isLive && tsStyles.gameScoreLive]}>
+                  {playerNum === 1 ? gameScore.p1 : gameScore.p2}
+                </Text>
+              </View>
+            )}
+          </View>
+        )}
+        {!hasScoreData && isLive && (
+          <Text style={tsStyles.liveNow}>Live</Text>
+        )}
+        {!hasScoreData && isFinal && score && (
+          <Text style={tsStyles.finalSetsText}>
+            {score.awayScore}–{score.homeScore}
+          </Text>
+        )}
+      </View>
+    );
+  };
+
+  return (
+    <View style={tsStyles.scoreboard}>
+      {renderPlayerRow(1, p1Name, p1Flag, p1Rank)}
+      {renderPlayerRow(2, p2Name, p2Flag, p2Rank)}
+      {isSuspended && (
+        <Text style={tsStyles.statusLabel}>{statusDetail}</Text>
+      )}
+    </View>
+  );
+}
+
+const tsStyles = StyleSheet.create({
+  scoreboard: {
+    gap: 4,
+    paddingLeft: 4,
+  },
+  playerRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 6,
+    minHeight: 24,
+  },
+  flag: {
+    borderRadius: 2,
+  },
+  nameContainer: {
+    flex: 1,
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 4,
+  },
+  servingDot: {
+    width: 5,
+    height: 5,
+    borderRadius: 2.5,
+    backgroundColor: Colors.accent,
+  },
+  playerName: {
+    fontSize: 15,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+    flexShrink: 1,
+  },
+  playerNameFeatured: {
+    fontSize: 16,
+  },
+  playerNameWinner: {
+    fontFamily: "Inter_700Bold",
+  },
+  rankText: {
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
+  },
+  setsContainer: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 0,
+  },
+  setScoreCell: {
+    width: 22,
+    alignItems: "center" as const,
+  },
+  setScore: {
+    fontSize: 14,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textMuted,
+    textAlign: "center" as const,
+  },
+  setScoreWon: {
+    color: Colors.textPrimary,
+    fontFamily: "Inter_700Bold",
+  },
+  setScoreCurrent: {
+    color: Colors.accent,
+  },
+  tiebreakScore: {
+    fontSize: 9,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textMuted,
+  },
+  gameScoreCell: {
+    width: 28,
+    borderLeftWidth: 1,
+    borderLeftColor: "rgba(72,72,74,0.4)",
+    marginLeft: 2,
+    paddingLeft: 2,
+  },
+  gameScore: {
+    fontSize: 14,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textSecondary,
+    textAlign: "center" as const,
+  },
+  gameScoreLive: {
+    color: Colors.accent,
+  },
+  liveNow: {
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
+    color: Colors.accent,
+  },
+  statusLabel: {
+    fontSize: 11,
+    fontFamily: "Inter_500Medium",
+    color: "#FFB74D",
+    marginTop: 2,
+    paddingLeft: 4,
+  },
+  finalSetsText: {
+    fontSize: 14,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textMuted,
+    textAlign: "right" as const,
+  },
+});
+
 export interface UnifiedEventCardProps {
   event: SportEvent;
   now: Date;
@@ -285,7 +530,15 @@ export default function UnifiedEventCard({
         </View>
 
         <View style={uStyles.body}>
-          {showTeamLayout ? (
+          {isTennis && showTeamLayout ? (
+            <TennisScoreboard
+              event={event}
+              score={score}
+              isLive={isLive}
+              isFinal={isFinal}
+              featured={featured}
+            />
+          ) : showTeamLayout ? (
             <>
               <View style={uStyles.teamRow}>
                 {awayFlag ? (
@@ -301,7 +554,7 @@ export default function UnifiedEventCard({
                 </Text>
                 {hasScore && isCricket
                   ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{score.cricketAway || ""}</Text>
-                  : hasScore && <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.awayScore}</Text>}
+                  : hasScore && !isTennis && <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.awayScore}</Text>}
               </View>
               <View style={uStyles.teamRow}>
                 {homeFlag ? (
@@ -317,7 +570,7 @@ export default function UnifiedEventCard({
                 </Text>
                 {hasScore && isCricket
                   ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{score.cricketHome || ""}</Text>
-                  : hasScore && <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.homeScore}</Text>}
+                  : hasScore && !isTennis && <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.homeScore}</Text>}
               </View>
             </>
           ) : (

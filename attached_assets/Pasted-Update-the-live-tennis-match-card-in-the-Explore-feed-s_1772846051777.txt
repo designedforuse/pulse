@@ -1,0 +1,186 @@
+Update the live tennis match card in the Explore feed so it shows live score data.
+
+Problem:
+The current live tennis card shows:
+- sport / tournament
+- round
+- live badge
+- player names
+- match start time
+
+But for a live tennis match, the most important information is missing:
+- current set score
+- current game score
+- serving indicator if available
+- match status details when relevant
+
+Goal:
+Make the card feel truly live by displaying tennis scoring prominently and clearly, while keeping the current dark visual style.
+
+Please implement the following:
+
+1. Add live tennis score display
+For live tennis matches, show:
+- sets won by each player
+- per-set score breakdown
+- current game score
+- serving indicator if available
+
+Example layout:
+
+Tennis · Indian Wells Masters   Round 2   LIVE
+
+🇨🇦 Shapovalov        1   6 3   30
+🇦🇷 Etcheverry       0   4 2   15
+
+Started 2h 3m ago
+
+Or, if space is tighter:
+
+Tennis · Indian Wells Masters   Round 2   LIVE
+
+🇨🇦 Shapovalov
+🇦🇷 Etcheverry
+
+Sets: 1–0
+Set scores: 6–4, 3–2
+Game: 30–15
+
+Started 2h 3m ago
+
+Preferred approach:
+Use a compact row-based scoreboard that resembles a real tennis scoreboard.
+
+2. Data model updates
+Please support the following tennis live data fields if available from the feed/API:
+
+- competitor1.name
+- competitor2.name
+- competitor1.flag / countryCode
+- competitor2.flag / countryCode
+- currentRound
+- tournamentName
+- isLive
+- startTime
+- sets[] with score by player for each completed/in-progress set
+- currentGameScore (ex: 15, 30, 40, Ad)
+- server / servingPlayerId
+- matchStatusText
+- statusDetail (optional, e.g. “3rd set”, “tiebreak”, “suspended”)
+
+Suggested normalized structure:
+
+{
+  sport: "Tennis",
+  tournament: "Indian Wells Masters",
+  round: "Round 2",
+  isLive: true,
+  startedAt: "...",
+  players: [
+    {
+      id: "p1",
+      name: "Shapovalov",
+      countryCode: "CAN",
+      isServing: true
+    },
+    {
+      id: "p2",
+      name: "Etcheverry",
+      countryCode: "ARG",
+      isServing: false
+    }
+  ],
+  setScores: [
+    { p1: 6, p2: 4 },
+    { p1: 3, p2: 2 }
+  ],
+  currentGameScore: {
+    p1: "30",
+    p2: "15"
+  },
+  statusDetail: "Set 2"
+}
+
+3. UI requirements
+- Keep the existing card style and hierarchy
+- Preserve the top metadata row:
+  - Tennis
+  - tournament
+  - round pill
+  - live badge
+- Show the score in the main body, not hidden below
+- Make the score glanceable first, names second
+- Do not let the score overflow or wrap awkwardly
+- Support 2-set and 3-set layouts
+- Handle long player names gracefully
+- Keep the YouTube TV badge / provider branding if it already exists
+
+4. Scoreboard layout guidance
+Preferred structure:
+- one row per player
+- columns for:
+  - flag
+  - name
+  - set scores
+  - current game score
+- current server should be marked with:
+  - a small dot
+  - or a tennis ball icon
+  - or a subtle accent beside the serving player
+
+Example:
+
+🇨🇦 Shapovalov   6 3   30 ●
+🇦🇷 Etcheverry  4 2   15
+
+Alternative:
+Add a dedicated “Serving” accent if that works better visually.
+
+5. Edge cases
+Please handle these cases:
+
+A. Match not started yet
+- no score shown
+- show scheduled start time instead
+
+B. Live but score unavailable
+- show “Live now”
+- fall back gracefully without broken layout
+
+C. Tiebreak
+- show tiebreak score if available
+- example: 6–6 (4–2 TB) or equivalent compact display
+
+D. Match finished
+- replace live game score with final result styling
+- show winner emphasis if appropriate
+
+E. Suspended / rain delay / medical timeout
+- show status label such as:
+  - Suspended
+  - Rain Delay
+  - Medical Timeout
+
+6. Component behavior
+Please find the component that renders the live tennis card and:
+- refactor it to support a dedicated tennis scoreboard view
+- do not treat tennis like a generic event card
+- add a formatter/helper for tennis score rendering
+- separate tennis-specific UI from generic live event cards if needed
+
+7. If real score data is not currently wired
+If the underlying data source does not yet provide tennis live scoring:
+- identify where the feed is missing data
+- add placeholder support in the model for set/game scoring
+- wire the UI so it is ready once live score fields are available
+- document exactly which fields are still needed from the API
+
+8. Deliverables
+After making the change, please provide:
+- files changed
+- whether score data was already available or needed new wiring
+- the final data shape used for tennis live scoring
+- one example rendered state for:
+  - live in-progress match
+  - pre-match
+  - final result

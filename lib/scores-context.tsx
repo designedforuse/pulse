@@ -2,6 +2,13 @@ import React, { createContext, useContext, useMemo, ReactNode } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getQueryFn } from "@/lib/query-client";
 
+export interface TennisSetScore {
+  p1: number;
+  p2: number;
+  tiebreak?: string;
+  winner?: 1 | 2;
+}
+
 export interface ScoreData {
   awayScore: number;
   homeScore: number;
@@ -22,6 +29,11 @@ export interface ScoreData {
   lastGoalStrength?: string;
   lastGoalTeam?: string;
   goalCount?: number;
+  tennisSetScores?: TennisSetScore[];
+  tennisGameScore?: { p1: string; p2: string };
+  tennisServer?: 1 | 2;
+  tennisStatusDetail?: string;
+  tennisWinner?: 1 | 2;
 }
 
 interface ScoresApiResponse {
