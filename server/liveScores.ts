@@ -402,12 +402,20 @@ async function fetchSoccerScores(soccerMap: Map<string, string[]>): Promise<Reco
 
             if (statusState === "in") {
               const clock = comp.status?.displayClock || "";
-              const period = statusDetail || "Live";
+              const periodNum = comp.status?.period || 0;
+              let period = "Live";
+              if (periodNum === 1) period = "1H";
+              else if (periodNum === 2) period = "2H";
+              else if (periodNum === 3) period = "ET1";
+              else if (periodNum === 4) period = "ET2";
+              else if (periodNum === 5) period = "PK";
+              const shortDetail = (statusDetail || "").toLowerCase();
+              if (shortDetail.includes("halftime") || shortDetail === "ht") period = "HT";
               scores[eventId] = {
                 awayScore: parseInt(awayComp.score || "0", 10),
                 homeScore: parseInt(homeComp.score || "0", 10),
                 period,
-                clock: clock !== period ? clock : undefined,
+                clock,
                 status: "live",
               };
             } else if (statusState === "post") {
