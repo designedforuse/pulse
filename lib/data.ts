@@ -66,6 +66,7 @@ export interface Favorites {
   rugby?: SportFavorites;
   cricket?: SportFavorites;
   soccer?: SportFavorites;
+  racing?: SportFavorites;
   [key: string]: SportFavorites | undefined;
 }
 
@@ -170,6 +171,7 @@ export function getSportColor(sport: string): string {
     cricket: "#FFD54F",
     soccer: "#81C784",
     tennis: "#CE93D8",
+    racing: "#E53935",
   };
   return colors[sport] || "#90A4AE";
 }
@@ -275,6 +277,7 @@ export function getSportIcon(sport: string): string {
     cricket: "baseball",
     soccer: "football",
     tennis: "tennisball-outline",
+    racing: "speedometer",
   };
   return icons[sport] || "ellipse";
 }

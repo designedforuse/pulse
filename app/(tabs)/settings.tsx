@@ -59,13 +59,14 @@ function isStale(isoDate: string): boolean {
 
 function FavoritesSection() {
   const { allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, enabledCount, totalCount } = useFavorites();
-  const sportOrder = ["hockey", "rugby", "cricket", "soccer", "tennis"];
+  const sportOrder = ["hockey", "rugby", "cricket", "soccer", "tennis", "racing"];
   const sportLabels: Record<string, string> = {
     hockey: "Hockey",
     rugby: "Rugby",
     cricket: "Cricket",
     soccer: "Soccer",
     tennis: "Tennis",
+    racing: "Racing",
   };
   const sportIcons: Record<string, keyof typeof Ionicons.glyphMap> = {
     hockey: "snow",
@@ -73,6 +74,7 @@ function FavoritesSection() {
     cricket: "baseball",
     soccer: "football",
     tennis: "tennisball",
+    racing: "speedometer",
   };
 
   const handleToggle = (sport: string, league: string, team: string) => {

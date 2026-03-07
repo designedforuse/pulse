@@ -45,7 +45,7 @@ export const RITUALS: Ritual[] = [
     id: "saturday_sunrise",
     label: "Saturday Warm-Up",
     icon: "partly-sunny",
-    sports: ["rugby", "cricket", "soccer"],
+    sports: ["rugby", "cricket", "soccer", "racing"],
     days: [6],
     startHour: 6,
     endHour: 12,
@@ -67,7 +67,7 @@ export const RITUALS: Ritual[] = [
     id: "saturday_after_hours",
     label: "Saturday Extra Time",
     icon: "moon",
-    sports: ["hockey", "basketball", "soccer", "rugby", "cricket"],
+    sports: ["hockey", "basketball", "soccer", "rugby", "cricket", "racing"],
     days: [6],
     startHour: 20,
     endHour: 24,
@@ -78,7 +78,7 @@ export const RITUALS: Ritual[] = [
     id: "sunday_session",
     label: "Sunday Coffee & Chill",
     icon: "cafe",
-    sports: ["rugby", "cricket", "soccer"],
+    sports: ["rugby", "cricket", "soccer", "racing"],
     days: [0],
     startHour: 6,
     endHour: 12,
@@ -334,6 +334,7 @@ const SPORT_RANK: Record<string, number> = {
   cricket: 2,
   hockey: 3,
   soccer: 4,
+  racing: 5,
 };
 
 function getSportRank(sport: string): number {
@@ -385,11 +386,19 @@ const SOCCER_LADDER: { rank: number; match: (e: SportEvent) => boolean }[] = [
   { rank: 9, match: (e) => leagueIs(e, "USL") || leagueContains(e, "usl") },
 ];
 
+const RACING_LADDER: { rank: number; match: (e: SportEvent) => boolean }[] = [
+  { rank: 1, match: (e) => teamContains(e, "race") },
+  { rank: 2, match: (e) => teamContains(e, "sprint") },
+  { rank: 3, match: (e) => teamContains(e, "qualifying") },
+  { rank: 4, match: (e) => teamContains(e, "practice") },
+];
+
 const SPORT_LADDERS: Record<string, { rank: number; match: (e: SportEvent) => boolean }[]> = {
   rugby: RUGBY_LADDER,
   cricket: CRICKET_LADDER,
   hockey: HOCKEY_LADDER,
   soccer: SOCCER_LADDER,
+  racing: RACING_LADDER,
 };
 
 function teamContains(e: SportEvent, needle: string): boolean {

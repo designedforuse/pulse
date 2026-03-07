@@ -22,6 +22,7 @@ function getSportDisplayName(sport: string): string {
     cricket: "Cricket",
     soccer: "Soccer",
     tennis: "Tennis",
+    racing: "Racing",
   };
   return names[sport] || sport.charAt(0).toUpperCase() + sport.slice(1);
 }
@@ -475,6 +476,7 @@ export default function UnifiedEventCard({
 
   const isTennis = event.sport === "tennis";
   const isCricket = event.sport === "cricket";
+  const isRacing = event.sport === "racing";
   const cricketLiveDetail = formatCricketLiveDetail(event, score, isLive);
 
   const awayRank = isTennis ? event.tennisPlayer1Rank : undefined;
@@ -530,7 +532,41 @@ export default function UnifiedEventCard({
         </View>
 
         <View style={uStyles.body}>
-          {isTennis && showTeamLayout ? (
+          {isRacing ? (
+            <View style={uStyles.racingLayout}>
+              <View style={uStyles.racingCircuitRow}>
+                <Ionicons name="flag" size={featured ? 18 : 16} color={sportColor} />
+                <Text
+                  style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
+                  numberOfLines={1}
+                >
+                  {event.competitionName || event.homeTeam}
+                </Text>
+              </View>
+              <View style={uStyles.racingSessionRow}>
+                <View style={[uStyles.racingSessionChip, { backgroundColor: sportColor + "1A" }]}>
+                  <Text style={[uStyles.racingSessionText, { color: sportColor }]}>
+                    {event.sessionTitle || event.awayTeam}
+                  </Text>
+                </View>
+                {isLive && score?.racingLap && (
+                  <Text style={[uStyles.racingStatusText, { color: sportColor }]}>
+                    {score.racingLap}
+                  </Text>
+                )}
+                {isLive && score?.racingStatus && score.racingStatus !== score.racingLap && (
+                  <Text style={[uStyles.racingStatusText, { color: /red flag/i.test(score.racingStatus) ? "#FF5252" : sportColor }]}>
+                    {score.racingStatus}
+                  </Text>
+                )}
+              </View>
+              {isLive && score?.racingLeader && (
+                <Text style={uStyles.racingLeaderText} numberOfLines={1}>
+                  Leader: {score.racingLeader}
+                </Text>
+              )}
+            </View>
+          ) : isTennis && showTeamLayout ? (
             <TennisScoreboard
               event={event}
               score={score}
@@ -784,6 +820,49 @@ const uStyles = StyleSheet.create({
     fontFamily: "Inter_500Medium",
     color: Colors.textPrimary,
     paddingLeft: 4,
+  },
+  racingLayout: {
+    gap: 8,
+    paddingLeft: 4,
+  },
+  racingCircuitRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 8,
+  },
+  racingCircuitName: {
+    fontSize: 17,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    flex: 1,
+  },
+  racingCircuitNameFeatured: {
+    fontSize: 18,
+  },
+  racingSessionRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 8,
+  },
+  racingSessionChip: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 8,
+  },
+  racingSessionText: {
+    fontSize: 12,
+    fontFamily: "Inter_600SemiBold",
+    letterSpacing: 0.3,
+  },
+  racingStatusText: {
+    fontSize: 12,
+    fontFamily: "Inter_600SemiBold",
+  },
+  racingLeaderText: {
+    fontSize: 11,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+    marginTop: 2,
   },
   venueText: {
     fontSize: 11,

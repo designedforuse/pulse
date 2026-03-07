@@ -34,6 +34,10 @@ export interface ScoreData {
   tennisServer?: 1 | 2;
   tennisStatusDetail?: string;
   tennisWinner?: 1 | 2;
+  racingStatus?: string;
+  racingLap?: string;
+  racingLeader?: string;
+  racingSessionType?: string;
 }
 
 interface ScoresApiResponse {

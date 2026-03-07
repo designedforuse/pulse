@@ -429,6 +429,24 @@ const SIX_NATIONS_FLAGS: Record<string, string> = {
   "Scotland": "https://a.espncdn.com/i/teamlogos/countries/500/sco.png",
 };
 
+const ESPN_F1_IDS: Record<string, string> = {
+  "Red Bull Racing": "1",
+  "Red Bull": "1",
+  "Ferrari": "2",
+  "McLaren": "3",
+  "Mercedes": "4",
+  "Aston Martin": "5",
+  "Alpine": "6",
+  "Williams": "7",
+  "Haas": "8",
+  "Haas F1 Team": "8",
+  "RB": "9",
+  "VCARB": "9",
+  "Visa Cash App RB": "9",
+  "Sauber": "10",
+  "Kick Sauber": "10",
+};
+
 const AHL_HOCKEYTECH_IDS: Record<string, string> = {
   "Abbotsford Canucks": "440",
   "Bakersfield Condors": "402",
@@ -508,6 +526,12 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
   if (sportLower === "rugby" || league === "URC" || league === "Super Rugby" || league === "English Premiership" || league === "European Champions Cup") {
     const id = ESPN_RUGBY_IDS[teamName];
     if (id) return `https://a.espncdn.com/i/teamlogos/rugby/teams/500/${id}.png`;
+  }
+
+  if (sportLower === "racing" || league === "F1") {
+    const id = ESPN_F1_IDS[teamName];
+    if (id) return `https://a.espncdn.com/i/teamlogos/f1/500/${id}.png`;
+    return null;
   }
 
   if (sportLower === "cricket" || league === "ICC") {

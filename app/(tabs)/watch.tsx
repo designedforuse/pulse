@@ -131,7 +131,8 @@ function ChaosCard({
     router.push({ pathname: "/event-sheet", params: { eventId: event.id } });
   };
 
-  const matchupText = event.eventType === "session" && event.sessionTitle
+  const isRacing = event.sport === "racing";
+  const matchupText = event.eventType === "session" && event.sessionTitle && !isRacing
     ? event.sessionTitle
     : (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel
       ? event.t20WcMatchLabel
@@ -180,7 +181,28 @@ function ChaosCard({
               <Text style={styles.heroMicroLabel}>{microLabel}</Text>
             )}
 
-            {matchupText ? (
+            {isRacing ? (
+              <View style={styles.primaryTeams}>
+                <View style={styles.racingCircuitRow}>
+                  <Ionicons name="flag" size={20} color={sportColor} />
+                  <Text style={styles.racingCircuitName} numberOfLines={1}>
+                    {event.competitionName || event.homeTeam}
+                  </Text>
+                </View>
+                <View style={styles.racingSessionRow}>
+                  <View style={[styles.racingSessionChip, { backgroundColor: sportColor + "1A" }]}>
+                    <Text style={[styles.racingSessionText, { color: sportColor }]}>
+                      {event.sessionTitle || event.awayTeam}
+                    </Text>
+                  </View>
+                  {isLiveState && score?.period && (
+                    <Text style={[styles.racingStatusText, { color: sportColor }]}>
+                      {score.period}
+                    </Text>
+                  )}
+                </View>
+              </View>
+            ) : matchupText ? (
               <Text style={styles.primaryMatchup} numberOfLines={2}>{matchupText}</Text>
             ) : event.sport === "tennis" ? (
               <View style={styles.primaryTeams}>
@@ -280,7 +302,28 @@ function ChaosCard({
           )}
         </View>
 
-        {matchupText ? (
+        {isRacing ? (
+          <View style={styles.secondaryTeams}>
+            <View style={styles.racingCircuitRowSm}>
+              <Ionicons name="flag" size={16} color={sportColor} />
+              <Text style={styles.racingCircuitNameSm} numberOfLines={1}>
+                {event.competitionName || event.homeTeam}
+              </Text>
+            </View>
+            <View style={styles.racingSessionRow}>
+              <View style={[styles.racingSessionChipSm, { backgroundColor: sportColor + "1A" }]}>
+                <Text style={[styles.racingSessionTextSm, { color: sportColor }]}>
+                  {event.sessionTitle || event.awayTeam}
+                </Text>
+              </View>
+              {isLiveState && score?.period && (
+                <Text style={[styles.racingStatusTextSm, { color: sportColor }]}>
+                  {score.period}
+                </Text>
+              )}
+            </View>
+          </View>
+        ) : matchupText ? (
           <Text style={styles.secondaryTeamName} numberOfLines={2}>{matchupText}</Text>
         ) : event.sport === "tennis" ? (
           <View style={styles.secondaryTeams}>
@@ -1642,5 +1685,62 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: Colors.favStar,
     fontFamily: "Inter_500Medium",
+  },
+  racingCircuitRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 8,
+    marginBottom: 4,
+  },
+  racingCircuitName: {
+    fontSize: 20,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    flex: 1,
+  },
+  racingCircuitRowSm: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 6,
+    marginBottom: 2,
+  },
+  racingCircuitNameSm: {
+    fontSize: 15,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    flex: 1,
+  },
+  racingSessionRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 8,
+  },
+  racingSessionChip: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 8,
+  },
+  racingSessionText: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
+    letterSpacing: 0.3,
+  },
+  racingSessionChipSm: {
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 6,
+  },
+  racingSessionTextSm: {
+    fontSize: 11,
+    fontFamily: "Inter_600SemiBold",
+    letterSpacing: 0.3,
+  },
+  racingStatusText: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
+  },
+  racingStatusTextSm: {
+    fontSize: 11,
+    fontFamily: "Inter_600SemiBold",
   },
 });

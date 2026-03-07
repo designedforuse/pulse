@@ -376,6 +376,7 @@ interface AppEvent {
   tennisPlayer2Rank?: number;
   tennisRound?: string;
   tournamentName?: string;
+  competitionName?: string;
 }
 
 interface ScoreData {
@@ -441,6 +442,12 @@ const RIVALRY_PAIRS: { teams: [string, string]; label: string; sport: string }[]
   { teams: ["India", "Pakistan"], label: "The Greatest Rivalry", sport: "cricket" },
   { teams: ["Australia", "England"], label: "The Ashes", sport: "cricket" },
   { teams: ["India", "Australia"], label: "Border-Gavaskar Trophy", sport: "cricket" },
+  { teams: ["Ferrari", "McLaren"], label: "Constructors' Battle", sport: "racing" },
+  { teams: ["Red Bull", "Mercedes"], label: "Silver vs Bull", sport: "racing" },
+  { teams: ["Red Bull", "Ferrari"], label: "Championship Rivals", sport: "racing" },
+  { teams: ["Ferrari", "Mercedes"], label: "Legacy Rivalry", sport: "racing" },
+  { teams: ["McLaren", "Mercedes"], label: "Woking vs Brackley", sport: "racing" },
+  { teams: ["Red Bull", "McLaren"], label: "Papaya vs Bull", sport: "racing" },
 ];
 
 const DERBY_KEYWORDS = ["derby", "clásico", "clasico", "rivalry", "el tráfico", "el trafico"];
@@ -975,6 +982,73 @@ function generateLeagueMoments(events: AppEvent[], now: Date): ExploreNarrativeC
         eventIds: tournamentMatches.map(e => e.id),
         reason: `Found ${tournamentMatches.length} tournament stage match(es) in the next 7 days`,
       },
+    });
+  }
+
+  return cards;
+}
+
+function generateF1RaceWeekend(events: AppEvent[], now: Date): ExploreNarrativeCard[] {
+  const cards: ExploreNarrativeCard[] = [];
+  const windowEnd = new Date(now.getTime() + 48 * 3600000);
+
+  const f1Events = events.filter(e => {
+    if (e.sport !== "racing" || e.league !== "F1") return false;
+    const start = new Date(e.startTimeLocal);
+    return start >= now && start <= windowEnd;
+  });
+
+  if (f1Events.length === 0) return cards;
+
+  const gpGroups = new Map<string, AppEvent[]>();
+  for (const ev of f1Events) {
+    const gpName = ev.competitionName || ev.homeTeam || "Grand Prix";
+    const group = gpGroups.get(gpName) || [];
+    group.push(ev);
+    gpGroups.set(gpName, group);
+  }
+
+  for (const [gpName, sessions] of gpGroups) {
+    sessions.sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
+
+    const raceSession = sessions.find(s => s.sessionTitle === "Race");
+    const qualSession = sessions.find(s => s.sessionTitle === "Qualifying");
+    const sprintSession = sessions.find(s => s.sessionTitle === "Sprint");
+
+    const highlightSession = raceSession || qualSession || sprintSession || sessions[0];
+    const highlightTime = new Date(highlightSession.startTimeLocal);
+    const hoursAway = (highlightTime.getTime() - now.getTime()) / 3600000;
+
+    const sessionList = sessions.map(s => s.sessionTitle || s.awayTeam).join(", ");
+    const subtitle = hoursAway <= 4
+      ? `${gpName} — ${highlightSession.sessionTitle || "Session"} starting soon`
+      : `${gpName} — ${sessions.length} session${sessions.length > 1 ? "s" : ""} in the next 48h: ${sessionList}`;
+
+    cards.push({
+      id: `f1_race_weekend_${gpName.toLowerCase().replace(/[^a-z0-9]/g, "_")}`,
+      title: `${gpName}`,
+      subtitle,
+      impact: { label: "Feeds: Watch", tabHint: "Watch" },
+      priority: raceSession ? 85 : qualSession ? 75 : 65,
+      triggeredAt: now.toISOString(),
+      expiresAt: new Date(highlightTime.getTime() + 4 * 3600000).toISOString(),
+      kind: "league_moment",
+      region: "Other" as Region,
+      regionPriority: getRegionPriority("Other"),
+      regionLabel: getRegionLabel("Other"),
+      meta: {
+        type: "f1_race_weekend",
+        grandPrix: gpName,
+        sessionCount: sessions.length,
+        sessions: sessions.map(s => ({
+          sessionTitle: s.sessionTitle || s.awayTeam,
+          startTime: s.startTimeLocal,
+          eventId: s.id,
+        })),
+        eventIds: sessions.map(s => s.id),
+        reason: `${gpName} race weekend — ${sessions.length} session(s) within 48 hours`,
+      },
+      sports: ["racing"],
     });
   }
 
@@ -2655,6 +2729,7 @@ function deriveCardSports(card: ExploreNarrativeCard, events: AppEvent[]): strin
       else if (league.includes("rugby") || league.includes("urc") || league.includes("super rugby") || league.includes("mlr") || league.includes("premiership") && !league.includes("epl")) leagueSports.add("rugby");
       else if (league.includes("cricket") || league.includes("test") || league.includes("odi") || league.includes("t20")) leagueSports.add("cricket");
       else if (league.includes("tennis") || league.includes("atp") || league.includes("wta")) leagueSports.add("tennis");
+      else if (league.includes("f1") || league.includes("formula") || league.includes("racing")) leagueSports.add("racing");
       else leagueSports.add("soccer");
     }
     if (leagueSports.size > 0) return [...leagueSports];
@@ -2704,6 +2779,12 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
 
   const leagueMoments = generateLeagueMoments(events, now);
   console.log(`  League Moments: ${leagueMoments.length} card(s)`);
+
+  const f1RaceWeekend = generateF1RaceWeekend(events, now);
+  console.log(`  F1 Race Weekend: ${f1RaceWeekend.length} card(s)`);
+  for (const c of f1RaceWeekend) {
+    console.log(`    ${c.title}: ${c.subtitle}`);
+  }
 
   let playerMovementCards: ExploreNarrativeCard[] = [];
   let movementRunMeta: MovementRunMeta | null = null;
@@ -2764,7 +2845,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     }
   }
 
-  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...playerMovementCards, ...deadlineResult.cards, ...rivalryResult.cards, ...upsetResult.cards, ...clinchResult.cards, ...clinchResult.fallbackPushCards];
+  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...f1RaceWeekend, ...playerMovementCards, ...deadlineResult.cards, ...rivalryResult.cards, ...upsetResult.cards, ...clinchResult.cards, ...clinchResult.fallbackPushCards];
 
   const tonightStoryResult = buildTonightStory(allCandidates, events, favorites, now);
   const tonightStory = tonightStoryResult.story;

@@ -17,6 +17,14 @@
           ]
         },
         {
+          "id": "f1_weekend",
+          "title": "F1 Race Weekend",
+          "sport": "racing",
+          "leagues": [
+            "F1"
+          ]
+        },
+        {
           "id": "soccer_night",
           "title": "Soccer Night",
           "sport": "soccer",
@@ -106,6 +114,14 @@
             "Test Cricket",
             "T20I Cricket",
             "ODI Cricket"
+          ]
+        },
+        {
+          "id": "f1_morning",
+          "title": "F1 Race Weekend",
+          "sport": "racing",
+          "leagues": [
+            "F1"
           ]
         },
         {
@@ -441,6 +457,20 @@
       ],
       "USL": [
         "Orange County SC"
+      ]
+    },
+    "racing": {
+      "F1": [
+        "Red Bull Racing",
+        "Ferrari",
+        "McLaren",
+        "Mercedes",
+        "Aston Martin",
+        "Alpine",
+        "Williams",
+        "Haas",
+        "RB",
+        "Kick Sauber"
       ]
     }
   }

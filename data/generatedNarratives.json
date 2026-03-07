@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-07T20:19:42.582Z",
+  "lastUpdated": "2026-03-07T21:23:55.962Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -114,7 +114,7 @@
         ],
         "playersIngested": 666,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-07T20:19:42.582Z"
+        "timestamp": "2026-03-07T21:23:55.962Z"
       },
       "cacheHistoryCount": 732,
       "error": null
@@ -124,7 +124,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": -0.328495,
+      "hoursUntil": -1.3988783333333332,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -144,9 +144,9 @@
       "rivalryFinalCount": 1
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 2,
-      "upsetLiveCandidates": 2,
-      "upsetCompletedCandidates": 0,
+      "rawUpsetCandidates": 1,
+      "upsetLiveCandidates": 0,
+      "upsetCompletedCandidates": 1,
       "upsetFinalCount": 1
     },
     "clinchWatch": {
@@ -164,14 +164,14 @@
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 380,
+      "selectedScore": 400,
       "sourceEventId": "echl-web-25125",
-      "reason": "9 followed/affiliate teams playing tonight",
+      "reason": "10 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 380,
-          "reason": "9 followed/affiliate teams playing tonight"
+          "score": 400,
+          "reason": "10 followed/affiliate teams playing tonight"
         },
         {
           "label": "[deadline_watch] Deadline Tension",
@@ -196,7 +196,7 @@
         {
           "label": "[ritual_night] Family Game Night",
           "score": 130,
-          "reason": "ritual \"Family Game Night\" has 7 followed-team game(s)"
+          "reason": "ritual \"Family Game Night\" has 8 followed-team game(s)"
         },
         {
           "label": "[upset_alert] Shock Result",
@@ -278,7 +278,7 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-07T20:19:42.582Z",
+      "triggeredAt": "2026-03-07T21:23:55.962Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
@@ -288,7 +288,7 @@
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": -0.3,
+        "hoursUntil": -1.4,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -341,7 +341,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-07T20:19:42.582Z",
+      "triggeredAt": "2026-03-07T21:23:55.962Z",
       "expiresAt": "2026-03-09T05:00:00.000Z",
       "kind": "playoff_push",
       "region": "SoCal",
@@ -382,7 +382,7 @@
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-07T20:19:42.582Z",
+      "triggeredAt": "2026-03-07T21:23:55.962Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
@@ -392,7 +392,7 @@
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": -0.3,
+        "hoursUntil": -1.4,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",
@@ -427,21 +427,21 @@
     {
       "id": "upset_alert_tennis-espn-172906",
       "title": "Upset Alert",
-      "subtitle": "Moutet in trouble against Kovacevic at Indian Wells Masters",
+      "subtitle": "Kovacevic stuns Moutet at Indian Wells Masters",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-07T20:19:42.582Z",
-      "expiresAt": "2026-03-07T22:19:42.582Z",
+      "triggeredAt": "2026-03-07T21:23:55.962Z",
+      "expiresAt": "2026-03-08T03:23:55.962Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "mode": "live",
-        "upsetType": "tennis_live_upset",
+        "mode": "completed",
+        "upsetType": "tennis_seed_upset",
         "sport": "tennis",
         "league": "ATP Masters 1000",
         "favoriteName": "Moutet",
@@ -449,11 +449,11 @@
         "favoriteRank": 31,
         "awayTeam": "Moutet",
         "homeTeam": "Kovacevic",
-        "startTime": "2026-03-07T19:00:00.000Z",
+        "startTime": "2026-03-07T19:10:00.000Z",
         "eventIds": [
           "tennis-espn-172906"
         ],
-        "reason": "Kovacevic is threatening an upset against Moutet.\n\nThe higher seed is in trouble and the match is still live."
+        "reason": "Moutet (seed 31) entered as the higher seed, but Kovacevic knocked Moutet out.\n\nThis opens up the draw and changes the shape of the tournament."
       },
       "sports": [
         "tennis"
@@ -468,7 +468,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-07T20:19:42.582Z",
+      "triggeredAt": "2026-03-07T21:23:55.962Z",
       "expiresAt": "2026-03-08T02:30:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
@@ -499,7 +499,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-07T20:19:42.582Z",
+      "triggeredAt": "2026-03-07T21:23:55.962Z",
       "expiresAt": "2026-03-08T07:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -527,7 +527,7 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Tulsa Oilers, Hurricanes, Anaheim Ducks, San Diego Gulls, and Sungoliath (+4 more) all play tonight across the ECHL, NHL, AHL, Japan League One, Ligue 1, NCAA Hockey.",
+    "body": "The Tulsa Oilers, Hurricanes, Anaheim Ducks, San Diego Gulls, and Sungoliath (+5 more) all play tonight across the ECHL, NHL, AHL, Japan League One, MLS, Ligue 1, NCAA Hockey.",
     "sourceEventId": "echl-web-25125",
     "sourceCard": {
       "id": "tonight_multi_team",

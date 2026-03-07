@@ -33,6 +33,10 @@ export interface ScoreData {
   tennisServer?: 1 | 2;
   tennisStatusDetail?: string;
   tennisWinner?: 1 | 2;
+  racingStatus?: string;
+  racingLap?: string;
+  racingLeader?: string;
+  racingSessionType?: string;
 }
 
 export interface ScoresResponse {
@@ -51,6 +55,7 @@ interface LiveEventIdBuckets {
   rugby: Map<string, { id: string; homeTeam: string; awayTeam: string }[]>;
   cricket: { id: string; homeTeam: string; awayTeam: string }[];
   tennis: { id: string; espnId: string }[];
+  f1: { id: string; espnCompId: string; sessionTitle: string }[];
 }
 
 function loadLiveEventIds(): LiveEventIdBuckets {
@@ -62,6 +67,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
   const rugby = new Map<string, { id: string; homeTeam: string; awayTeam: string }[]>();
   const cricket: { id: string; homeTeam: string; awayTeam: string }[] = [];
   const tennis: { id: string; espnId: string }[] = [];
+  const f1: { id: string; espnCompId: string; sessionTitle: string }[] = [];
 
   try {
     const raw = fs.readFileSync(GENERATED_EVENTS_PATH, "utf-8");
@@ -75,6 +81,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
         soccer: 135 * 60 * 1000,
         rugby: 135 * 60 * 1000,
         cricket: 480 * 60 * 1000,
+        racing: 180 * 60 * 1000,
       };
       const duration = sportDurations[event.sport] ?? 120 * 60 * 1000;
       const end = start + duration;
@@ -116,12 +123,15 @@ function loadLiveEventIds(): LiveEventIdBuckets {
       } else if (event.id.startsWith("tennis-espn-")) {
         const espnId = event.id.replace("tennis-espn-", "");
         tennis.push({ id: event.id, espnId });
+      } else if (event.id.startsWith("f1-espn-")) {
+        const espnCompId = event.id.replace("f1-espn-", "");
+        f1.push({ id: event.id, espnCompId, sessionTitle: event.sessionTitle || event.awayTeam || "" });
       }
     }
   } catch {
   }
 
-  return { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis };
+  return { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1 };
 }
 
 async function fetchNhlScores(eventIds: string[]): Promise<Record<string, ScoreData>> {
@@ -921,11 +931,103 @@ async function fetchTennisScores(
   return scores;
 }
 
+const ESPN_F1_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/racing/f1/scoreboard";
+
+async function fetchF1Scores(
+  events: { id: string; espnCompId: string; sessionTitle: string }[]
+): Promise<Record<string, ScoreData>> {
+  const scores: Record<string, ScoreData> = {};
+  if (events.length === 0) return scores;
+
+  try {
+    const res = await fetch(ESPN_F1_SCOREBOARD);
+    if (!res.ok) return scores;
+    const data = await res.json() as any;
+
+    const compIdToLocal = new Map<string, { id: string; sessionTitle: string }>();
+    for (const e of events) compIdToLocal.set(e.espnCompId, { id: e.id, sessionTitle: e.sessionTitle });
+
+    for (const ev of data.events || []) {
+      const competitions = ev.competitions || [];
+      for (const comp of competitions) {
+        const localInfo = compIdToLocal.get(String(comp.id));
+        if (!localInfo) continue;
+
+        const statusType = comp.status?.type;
+        const state = statusType?.state;
+        const isLive = state === "in";
+        const isPost = state === "post";
+        if (!isLive && !isPost) continue;
+
+        const statusDetail = statusType?.shortDetail || statusType?.detail || "";
+        const description = statusType?.description || "";
+
+        let racingLap: string | undefined;
+        let racingLeader: string | undefined;
+        let racingStatus: string | undefined;
+
+        if (isLive) {
+          const lapMatch = statusDetail.match(/Lap\s+(\d+)\s*(?:of|\/)\s*(\d+)/i);
+          if (lapMatch) {
+            racingLap = `Lap ${lapMatch[1]}/${lapMatch[2]}`;
+          }
+
+          if (/red\s*flag/i.test(statusDetail) || /red\s*flag/i.test(description)) {
+            racingStatus = "Red Flag";
+          } else if (/safety\s*car/i.test(statusDetail) || /caution/i.test(statusDetail)) {
+            racingStatus = "Safety Car";
+          } else if (/virtual\s*safety/i.test(statusDetail)) {
+            racingStatus = "VSC";
+          } else if (/delay/i.test(statusDetail)) {
+            racingStatus = "Delayed";
+          } else {
+            racingStatus = statusDetail || "In Progress";
+          }
+
+          const competitors = comp.competitors || [];
+          if (competitors.length > 0) {
+            const sorted = [...competitors].sort((a: any, b: any) => {
+              const orderA = a.order ?? a.position ?? 999;
+              const orderB = b.order ?? b.position ?? 999;
+              return orderA - orderB;
+            });
+            const leader = sorted[0];
+            if (leader?.athlete?.displayName) {
+              racingLeader = leader.athlete.displayName;
+            } else if (leader?.team?.displayName) {
+              racingLeader = leader.team.displayName;
+            }
+          }
+        }
+
+        const period = isPost
+          ? "Final"
+          : racingLap || racingStatus || "Live";
+
+        scores[localInfo.id] = {
+          awayScore: 0,
+          homeScore: 0,
+          period,
+          status: isPost ? "final" : "live",
+          racingStatus: isPost ? "Complete" : racingStatus,
+          racingLap,
+          racingLeader,
+          racingSessionType: localInfo.sessionTitle,
+        };
+      }
+    }
+  } catch (err) {
+    console.error("[liveScores] F1 fetch error:", err);
+  }
+
+  return scores;
+}
+
 export async function fetchAllLiveScores(): Promise<ScoresResponse> {
-  const { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis } = loadLiveEventIds();
+  const { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1 } = loadLiveEventIds();
 
   const japanLeagueOne = rugby.get("Japan League One") || [];
-  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, jlOneScores, cricketScores, tennisScores] = await Promise.all([
+  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, jlOneScores, cricketScores, tennisScores, f1Scores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchAhlScores(ahl),
     fetchEchlScores(echl),
@@ -935,10 +1037,11 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
     fetchJapanLeagueOneScores(japanLeagueOne),
     fetchCricketScores(cricket),
     fetchTennisScores(tennis),
+    fetchF1Scores(f1),
   ]);
 
   return {
-    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...jlOneScores, ...cricketScores, ...tennisScores },
+    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...jlOneScores, ...cricketScores, ...tennisScores, ...f1Scores },
     fetchedAt: new Date().toISOString(),
   };
 }
