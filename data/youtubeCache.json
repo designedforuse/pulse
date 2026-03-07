@@ -102,5 +102,17 @@
       "selectedVideoChannel": "The Sick Podcast with Tony Marinaro",
       "rejectedForAgeCount": 0
     }
+  },
+  "upset_alert:edmonton oilers vs carolina hurricanes upset highlights march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-07T07:19:09.352Z",
+    "query": "Edmonton Oilers vs Carolina Hurricanes upset highlights March 2026",
+    "debug": {
+      "searchQuery": "Edmonton Oilers vs Carolina Hurricanes upset highlights March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
   }
 }
