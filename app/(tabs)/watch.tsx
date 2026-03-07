@@ -163,7 +163,7 @@ function ChaosCard({
             )}
             <View style={styles.primaryHeader}>
               <Text style={[styles.primaryLeague, { color: sportColor }]}>
-                {event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league}
+                {event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.tournamentName || event.league}
               </Text>
               <View style={{ flex: 1 }} />
               {isLiveState && (
@@ -289,7 +289,7 @@ function ChaosCard({
         )}
         <View style={styles.secondaryHeader}>
           <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
-            {event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.league}
+            {event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.tournamentName || event.league}
           </Text>
           {isLiveState && (
             <View style={styles.liveChipSmall}>
