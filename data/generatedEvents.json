@@ -5075,20 +5075,6 @@
       "tournamentName": "Indian Wells Masters"
     },
     {
-      "id": "soccer-mls-20260307-1930-houston-dynamo-fc-at-new-england-revolution",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Houston Dynamo FC",
-      "homeTeam": "New England Revolution",
-      "startTimeLocal": "2026-03-07T19:30:00.000Z",
-      "endTimeLocal": "2026-03-07T21:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
       "id": "soccer-mls-20260307-1930-orlando-city-at-new-york-city-football-club",
       "sport": "soccer",
       "league": "MLS",
