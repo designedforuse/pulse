@@ -622,6 +622,29 @@ export default function WatchScreen() {
     return groups;
   }, [upNextEvents]);
 
+  const UP_NEXT_INITIAL_LIMIT = 5;
+  const [upNextExpanded, setUpNextExpanded] = useState(false);
+
+  const { visibleDayGroups, upNextHiddenCount } = useMemo(() => {
+    const totalEvents = upNextEvents.length;
+    if (upNextExpanded || totalEvents <= UP_NEXT_INITIAL_LIMIT) {
+      return { visibleDayGroups: upNextDayGroups, upNextHiddenCount: 0 };
+    }
+    let remaining = UP_NEXT_INITIAL_LIMIT;
+    const truncated: typeof upNextDayGroups = [];
+    for (const group of upNextDayGroups) {
+      if (remaining <= 0) break;
+      if (group.events.length <= remaining) {
+        truncated.push(group);
+        remaining -= group.events.length;
+      } else {
+        truncated.push({ ...group, events: group.events.slice(0, remaining) });
+        remaining = 0;
+      }
+    }
+    return { visibleDayGroups: truncated, upNextHiddenCount: totalEvents - UP_NEXT_INITIAL_LIMIT };
+  }, [upNextDayGroups, upNextExpanded, upNextEvents.length]);
+
   useEffect(() => {
     if (!__DEV__) return;
     const windowEnd = new Date(now.getTime() + 24 * 60 * 60 * 1000);
@@ -860,6 +883,7 @@ export default function WatchScreen() {
                   onPress={() => {
                     setUpNextSportFilter(null);
                     setUpNextLeagueFilter(null);
+                    setUpNextExpanded(false);
                   }}
                   style={[styles.upNextChip, !upNextHasFilter && styles.upNextChipActive]}
                   testID="upnext-chip-all"
@@ -876,6 +900,7 @@ export default function WatchScreen() {
                       onPress={() => {
                         setUpNextSportFilter(isActive ? null : sc.key);
                         setUpNextLeagueFilter(null);
+                        setUpNextExpanded(false);
                         if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                       }}
                       style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
@@ -898,6 +923,7 @@ export default function WatchScreen() {
                       onPress={() => {
                         setUpNextLeagueFilter(isActive ? null : lc.key);
                         setUpNextSportFilter(null);
+                        setUpNextExpanded(false);
                         if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                       }}
                       style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
@@ -931,26 +957,47 @@ export default function WatchScreen() {
               <Text style={styles.upNextFilterEmptyText}>No games match this filter</Text>
             </View>
           ) : (
-            upNextDayGroups.map((group, gi) => (
-              <View key={group.key}>
-                {upNextDayGroups.length > 1 && (
-                  <View style={[styles.dayDivider, gi === 0 && { marginTop: 0 }]}>
-                    {gi > 0 && <View style={styles.dayDividerLine} />}
-                    <Text style={styles.dayDividerText}>{group.label}</Text>
-                  </View>
-                )}
-                {group.events.map((event) => (
-                  <UnifiedEventCard
-                    key={event.id}
-                    event={event}
-                    now={now}
-                    score={getScore(event.id)}
-                    isFav={favoriteInvolved(event, favorites)}
-                    showCountdown={true}
+            <>
+              {visibleDayGroups.map((group, gi) => (
+                <View key={group.key}>
+                  {visibleDayGroups.length > 1 && (
+                    <View style={[styles.dayDivider, gi === 0 && { marginTop: 0 }]}>
+                      {gi > 0 && <View style={styles.dayDividerLine} />}
+                      <Text style={styles.dayDividerText}>{group.label}</Text>
+                    </View>
+                  )}
+                  {group.events.map((event) => (
+                    <UnifiedEventCard
+                      key={event.id}
+                      event={event}
+                      now={now}
+                      score={getScore(event.id)}
+                      isFav={favoriteInvolved(event, favorites)}
+                      showCountdown={true}
+                    />
+                  ))}
+                </View>
+              ))}
+              {(upNextHiddenCount > 0 || upNextExpanded) && (
+                <Pressable
+                  onPress={() => setUpNextExpanded((prev) => !prev)}
+                  style={({ pressed }) => [
+                    styles.expandButton,
+                    { opacity: pressed ? 0.7 : 1 },
+                  ]}
+                  testID="upnext-more-games"
+                >
+                  <Text style={styles.expandButtonText}>
+                    {upNextExpanded ? "Show fewer" : `More games (${upNextHiddenCount})`}
+                  </Text>
+                  <Ionicons
+                    name={upNextExpanded ? "chevron-up" : "chevron-down"}
+                    size={16}
+                    color={Colors.accentSoft}
                   />
-                ))}
-              </View>
-            ))
+                </Pressable>
+              )}
+            </>
           )}
         </View>
 
