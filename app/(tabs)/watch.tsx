@@ -370,8 +370,8 @@ function ChaosCard({
                 ) : null}
               </View>
             ) : matchupText ? (
-              <View>
-                <Text style={styles.primaryMatchup} numberOfLines={2}>{matchupText}</Text>
+              <View style={isSvnsSession ? styles.svnsPrimaryContent : undefined}>
+                <Text style={[styles.primaryMatchup, isSvnsSession && { marginBottom: 4 }]} numberOfLines={2}>{matchupText}</Text>
                 {isSvnsSession && svnsDisplayMatch && (
                   <ChaosCardSvnsRow match={svnsDisplayMatch} />
                 )}
@@ -498,8 +498,8 @@ function ChaosCard({
             ) : null}
           </View>
         ) : matchupText ? (
-          <View>
-            <Text style={styles.secondaryTeamName} numberOfLines={2}>{matchupText}</Text>
+          <View style={isSvnsSession ? styles.svnsSecondaryContent : undefined}>
+            <Text style={[styles.secondaryTeamName, isSvnsSession && { marginBottom: 2 }]} numberOfLines={2}>{matchupText}</Text>
             {isSvnsSession && svnsDisplayMatch && (
               <ChaosCardSvnsRow match={svnsDisplayMatch} small />
             )}
@@ -1514,6 +1514,16 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontFamily: "Inter_600SemiBold",
     letterSpacing: 0.2,
+  },
+  svnsPrimaryContent: {
+    minHeight: 70,
+    marginBottom: 14,
+    justifyContent: "center" as const,
+  },
+  svnsSecondaryContent: {
+    minHeight: 50,
+    marginBottom: 10,
+    justifyContent: "center" as const,
   },
   secondaryTeams: {
     gap: 4,
