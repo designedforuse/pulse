@@ -11,7 +11,7 @@ const NHL_ABBREVS: Record<string, string> = {
   "Detroit Red Wings": "DET",
   "Edmonton Oilers": "EDM",
   "Florida Panthers": "FLA",
-  "Los Angeles Kings": "LAK",
+  "Los Angeles Kings": "LA",
   "Minnesota Wild": "MIN",
   "Montréal Canadiens": "MTL",
   "Nashville Predators": "NSH",
@@ -21,10 +21,10 @@ const NHL_ABBREVS: Record<string, string> = {
   "Ottawa Senators": "OTT",
   "Philadelphia Flyers": "PHI",
   "Pittsburgh Penguins": "PIT",
-  "San Jose Sharks": "SJS",
+  "San Jose Sharks": "SJ",
   "Seattle Kraken": "SEA",
   "St. Louis Blues": "STL",
-  "Tampa Bay Lightning": "TBL",
+  "Tampa Bay Lightning": "TB",
   "Toronto Maple Leafs": "TOR",
   "Utah Mammoth": "UTA",
   "Vancouver Canucks": "VAN",
@@ -492,7 +492,7 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
 
   if (league === "AHL") {
     const id = AHL_HOCKEYTECH_IDS[teamName];
-    if (id) return `https://assets.leaguestat.com/ahl/logos/${id}.png`;
+    if (id) return `https://lscluster.hockeytech.com/download.php?client_code=ahl&file_path=img/logos/${id}.png`;
     return null;
   }
 
