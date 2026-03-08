@@ -42,18 +42,47 @@ function getDuration(leagueKey: string): number {
 
 const SVNS_SCHEDULE: Array<{
   city: string;
-  startDate: string;
-  endDate: string;
+  days: Array<{ date: string; startUtc: string; endUtc: string }>;
 }> = [
-  { city: "Dubai", startDate: "2025-11-29T08:00:00.000Z", endDate: "2025-11-30T18:00:00.000Z" },
-  { city: "Cape Town", startDate: "2025-12-06T08:00:00.000Z", endDate: "2025-12-07T18:00:00.000Z" },
-  { city: "Singapore", startDate: "2026-01-31T02:00:00.000Z", endDate: "2026-02-01T14:00:00.000Z" },
-  { city: "Perth", startDate: "2026-02-07T01:00:00.000Z", endDate: "2026-02-08T13:00:00.000Z" },
-  { city: "Vancouver", startDate: "2026-03-07T17:00:00.000Z", endDate: "2026-03-08T23:00:00.000Z" },
-  { city: "New York", startDate: "2026-03-14T14:00:00.000Z", endDate: "2026-03-15T22:00:00.000Z" },
-  { city: "Hong Kong", startDate: "2026-04-17T02:00:00.000Z", endDate: "2026-04-19T14:00:00.000Z" },
-  { city: "Valladolid", startDate: "2026-05-29T08:00:00.000Z", endDate: "2026-05-31T18:00:00.000Z" },
-  { city: "Bordeaux", startDate: "2026-06-05T08:00:00.000Z", endDate: "2026-06-07T18:00:00.000Z" },
+  { city: "Dubai", days: [
+    { date: "2025-11-29", startUtc: "2025-11-29T08:00:00.000Z", endUtc: "2025-11-29T16:00:00.000Z" },
+    { date: "2025-11-30", startUtc: "2025-11-30T08:00:00.000Z", endUtc: "2025-11-30T18:00:00.000Z" },
+  ]},
+  { city: "Cape Town", days: [
+    { date: "2025-12-06", startUtc: "2025-12-06T08:00:00.000Z", endUtc: "2025-12-06T16:00:00.000Z" },
+    { date: "2025-12-07", startUtc: "2025-12-07T08:00:00.000Z", endUtc: "2025-12-07T18:00:00.000Z" },
+  ]},
+  { city: "Singapore", days: [
+    { date: "2026-01-31", startUtc: "2026-01-31T02:00:00.000Z", endUtc: "2026-01-31T11:00:00.000Z" },
+    { date: "2026-02-01", startUtc: "2026-02-01T02:00:00.000Z", endUtc: "2026-02-01T14:00:00.000Z" },
+  ]},
+  { city: "Perth", days: [
+    { date: "2026-02-07", startUtc: "2026-02-07T01:00:00.000Z", endUtc: "2026-02-07T10:00:00.000Z" },
+    { date: "2026-02-08", startUtc: "2026-02-08T01:00:00.000Z", endUtc: "2026-02-08T13:00:00.000Z" },
+  ]},
+  { city: "Vancouver", days: [
+    { date: "2026-03-07", startUtc: "2026-03-07T18:00:00.000Z", endUtc: "2026-03-08T02:30:00.000Z" },
+    { date: "2026-03-08", startUtc: "2026-03-08T17:00:00.000Z", endUtc: "2026-03-09T01:30:00.000Z" },
+  ]},
+  { city: "New York", days: [
+    { date: "2026-03-14", startUtc: "2026-03-14T14:00:00.000Z", endUtc: "2026-03-14T22:30:00.000Z" },
+    { date: "2026-03-15", startUtc: "2026-03-15T14:00:00.000Z", endUtc: "2026-03-15T22:00:00.000Z" },
+  ]},
+  { city: "Hong Kong", days: [
+    { date: "2026-04-17", startUtc: "2026-04-17T02:00:00.000Z", endUtc: "2026-04-17T12:00:00.000Z" },
+    { date: "2026-04-18", startUtc: "2026-04-18T02:00:00.000Z", endUtc: "2026-04-18T12:00:00.000Z" },
+    { date: "2026-04-19", startUtc: "2026-04-19T02:00:00.000Z", endUtc: "2026-04-19T14:00:00.000Z" },
+  ]},
+  { city: "Valladolid", days: [
+    { date: "2026-05-29", startUtc: "2026-05-29T08:00:00.000Z", endUtc: "2026-05-29T18:00:00.000Z" },
+    { date: "2026-05-30", startUtc: "2026-05-30T08:00:00.000Z", endUtc: "2026-05-30T18:00:00.000Z" },
+    { date: "2026-05-31", startUtc: "2026-05-31T08:00:00.000Z", endUtc: "2026-05-31T18:00:00.000Z" },
+  ]},
+  { city: "Bordeaux", days: [
+    { date: "2026-06-05", startUtc: "2026-06-05T08:00:00.000Z", endUtc: "2026-06-05T18:00:00.000Z" },
+    { date: "2026-06-06", startUtc: "2026-06-06T08:00:00.000Z", endUtc: "2026-06-06T18:00:00.000Z" },
+    { date: "2026-06-07", startUtc: "2026-06-07T08:00:00.000Z", endUtc: "2026-06-07T18:00:00.000Z" },
+  ]},
 ];
 
 interface AppEvent {
@@ -556,52 +585,21 @@ async function fetchLeagueOneEventsAllRugbyFallback(windowStart: Date, windowEnd
   }
 }
 
-const SVNS_SESSION_DURATION_MIN = 180;
-
 function buildSvnsEvents(windowStart: Date, windowEnd: Date): AppEvent[] {
   const events: AppEvent[] = [];
 
   for (const stop of SVNS_SCHEDULE) {
-    const stopStart = new Date(stop.startDate);
-    const stopEnd = new Date(stop.endDate);
-    const startDay = new Date(Date.UTC(stopStart.getUTCFullYear(), stopStart.getUTCMonth(), stopStart.getUTCDate()));
-    const endDay = new Date(Date.UTC(stopEnd.getUTCFullYear(), stopEnd.getUTCMonth(), stopEnd.getUTCDate()));
-    const dayCount = Math.max(Math.round((endDay.getTime() - startDay.getTime()) / 86400000) + 1, 1);
+    const firstDayDate = stop.days[0]?.date || "";
+    for (let d = 0; d < stop.days.length; d++) {
+      const day = stop.days[d];
+      const dayStart = new Date(day.startUtc);
+      const dayEnd = new Date(day.endUtc);
 
-    for (let d = 0; d < dayCount; d++) {
-      const dayDate = new Date(stopStart.getTime() + d * 86400000);
-      if (dayDate < windowStart || dayDate > windowEnd) continue;
+      if (dayEnd < windowStart || dayStart > windowEnd) continue;
 
       const dayLabel = `Day ${d + 1}`;
       const sessionTitle = `SVNS ${stop.city} – ${dayLabel}`;
-      const id = `rugby-svns-${stableHash(`svns-${stop.city}-${stop.startDate}`)}-d${d + 1}`;
-
-      let sessionStart: string;
-      let sessionEnd: string;
-
-      const dayMidnightUtc = new Date(Date.UTC(
-        dayDate.getUTCFullYear(),
-        dayDate.getUTCMonth(),
-        dayDate.getUTCDate(),
-      ));
-      if (d === 0) {
-        const startPt = wallClockToUtc(
-          dayMidnightUtc.getUTCFullYear(),
-          dayMidnightUtc.getUTCMonth(),
-          dayMidnightUtc.getUTCDate(),
-          19, 0, "America/Los_Angeles",
-        );
-        sessionStart = startPt.toISOString();
-      } else {
-        const startPt = wallClockToUtc(
-          dayMidnightUtc.getUTCFullYear(),
-          dayMidnightUtc.getUTCMonth(),
-          dayMidnightUtc.getUTCDate(),
-          10, 0, "America/Los_Angeles",
-        );
-        sessionStart = startPt.toISOString();
-      }
-      sessionEnd = addDuration(sessionStart, SVNS_SESSION_DURATION_MIN);
+      const id = `rugby-svns-${stableHash(`svns-${stop.city}-${firstDayDate}`)}-d${d + 1}`;
 
       events.push({
         id,
@@ -609,8 +607,8 @@ function buildSvnsEvents(windowStart: Date, windowEnd: Date): AppEvent[] {
         league: LEAGUE_LABELS.svns,
         homeTeam: `SVNS ${stop.city}`,
         awayTeam: "",
-        startTimeLocal: sessionStart,
-        endTimeLocal: sessionEnd,
+        startTimeLocal: day.startUtc,
+        endTimeLocal: day.endUtc,
         providerId: LEAGUE_PROVIDERS.svns,
         isLive: false,
         source: "rugby",

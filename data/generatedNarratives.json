@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-07T21:23:55.962Z",
+  "lastUpdated": "2026-03-08T05:57:11.976Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -60,7 +60,7 @@
         "id": "league_moment_rivalry",
         "kind": "league_moment",
         "region": "Other",
-        "title": "Rivalry Weekend",
+        "title": "Derby della Madonnina",
         "reason": "feed cap (max 6)"
       },
       {
@@ -92,8 +92,8 @@
           "CGY",
           "EDM",
           "VAN",
-          "MTL",
           "STL",
+          "MTL",
           "TOR",
           "WPG",
           "OTT",
@@ -112,11 +112,30 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 666,
-        "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-07T21:23:55.962Z"
+        "playersIngested": 675,
+        "movementsDetectedThisRun": [
+          {
+            "playerId": "8475170",
+            "playerName": "B. Schenn",
+            "fromTeam": "STL",
+            "toTeam": "NYI",
+            "detectedAt": "2026-03-08T05:57:11.976Z",
+            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+            "firstSeenTo": "2026-03-08T05:57:11.976Z"
+          },
+          {
+            "playerId": "8476872",
+            "playerName": "S. Laughton",
+            "fromTeam": "TOR",
+            "toTeam": "LAK",
+            "detectedAt": "2026-03-08T05:57:11.976Z",
+            "lastSeenFrom": "2026-03-03T03:50:51.829Z",
+            "firstSeenTo": "2026-03-08T05:57:11.976Z"
+          }
+        ],
+        "timestamp": "2026-03-08T05:57:11.976Z"
       },
-      "cacheHistoryCount": 732,
+      "cacheHistoryCount": 740,
       "error": null
     },
     "exploreFeedCap": 6,
@@ -124,7 +143,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": -1.3988783333333332,
+      "hoursUntil": -9.953326666666667,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -139,7 +158,7 @@
       }
     },
     "rivalryGame": {
-      "rawRivalryCandidates": 2,
+      "rawRivalryCandidates": 1,
       "rivalryAfterRegionFilter": 1,
       "rivalryFinalCount": 1
     },
@@ -150,7 +169,7 @@
       "upsetFinalCount": 1
     },
     "clinchWatch": {
-      "rawClinchCandidates": 3,
+      "rawClinchCandidates": 2,
       "clinchAfterRegionFilter": 1,
       "clinchFinalCount": 1,
       "clinchGatedOut": [
@@ -160,18 +179,18 @@
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "echl-web-25125",
+    "tonightStorySourceEvent": "echl-web-25137",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 400,
-      "sourceEventId": "echl-web-25125",
-      "reason": "10 followed/affiliate teams playing tonight",
+      "selectedScore": 340,
+      "sourceEventId": "echl-web-25137",
+      "reason": "7 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 400,
-          "reason": "10 followed/affiliate teams playing tonight"
+          "score": 340,
+          "reason": "7 followed/affiliate teams playing tonight"
         },
         {
           "label": "[deadline_watch] Deadline Tension",
@@ -194,9 +213,9 @@
           "reason": "playoff_push involving followed team(s): Anaheim Ducks"
         },
         {
-          "label": "[ritual_night] Family Game Night",
+          "label": "[ritual_night] Saturday Game Day",
           "score": 130,
-          "reason": "ritual \"Family Game Night\" has 8 followed-team game(s)"
+          "reason": "ritual \"Saturday Game Day\" has 7 followed-team game(s)"
         },
         {
           "label": "[upset_alert] Shock Result",
@@ -234,33 +253,40 @@
       "deadline_watch_ana": {
         "searchQuery": "Anaheim Ducks trade deadline preview March 2026",
         "selectedVideoTitle": "Disappointing & Confusing Deadline For The Habs! | The Sick Podcast with Tony Marinaro March 6 2026",
-        "selectedVideoPublishedAt": "Streamed 10 hours ago",
+        "selectedVideoPublishedAt": "Streamed 23 hours ago",
         "selectedVideoChannel": "The Sick Podcast with Tony Marinaro",
         "rejectedForAgeCount": 0
       },
       "playoff_push_clinch_fallback_nhl_2025021006": {
         "searchQuery": "Anaheim Ducks playoff push March 2026",
-        "selectedVideoTitle": "Alberta seeing higher oil prices amid war in Iran | CTV News Calgary at Six for March 6, 2026",
-        "selectedVideoPublishedAt": "13 hours ago",
-        "selectedVideoChannel": "CTV News",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
       "deadline_watch_bos": {
         "searchQuery": "Boston Bruins trade deadline preview March 2026",
+        "selectedVideoTitle": "Flyers vs. Penguins | NHL Highlights | March 07, 2026",
+        "selectedVideoPublishedAt": "3 hours ago",
+        "selectedVideoChannel": "NHL",
+        "rejectedForAgeCount": 0
+      },
+      "upset_alert_tennis-espn-172910": {
+        "searchQuery": "Lehecka vs Baez upset highlights March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
-      "upset_alert_tennis-espn-172906": {
-        "searchQuery": "Moutet vs Kovacevic upset highlights March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
+      "rivalry_game_soccer-seriea-20260308-1945-internazionale-at-ac-milan": {
+        "searchQuery": "Internazionale vs AC Milan rivalry highlights",
+        "selectedVideoTitle": "AC MILAN VS INTER MILAN (SIMULATED REALITY)",
+        "selectedVideoPublishedAt": "6 hours ago",
+        "selectedVideoChannel": "Football Sim Central",
+        "rejectedForAgeCount": 1
       },
-      "rivalry_game_nhl_2025020993": {
-        "searchQuery": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights",
+      "clinch_watch_cricket-t20wc-d20c4ab40f": {
+        "searchQuery": "TBC clinch playoff berth March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
@@ -278,7 +304,7 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-07T21:23:55.962Z",
+      "triggeredAt": "2026-03-08T05:57:11.976Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
@@ -288,7 +314,7 @@
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": -1.4,
+        "hoursUntil": -10,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -329,7 +355,7 @@
         "title": "Disappointing & Confusing Deadline For The Habs! | The Sick Podcast with Tony Marinaro March 6 2026",
         "source": "youtube",
         "channel": "The Sick Podcast with Tony Marinaro",
-        "publishedAt": "Streamed 10 hours ago"
+        "publishedAt": "Streamed 23 hours ago"
       }
     },
     {
@@ -341,7 +367,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-07T21:23:55.962Z",
+      "triggeredAt": "2026-03-08T05:57:11.976Z",
       "expiresAt": "2026-03-09T05:00:00.000Z",
       "kind": "playoff_push",
       "region": "SoCal",
@@ -362,16 +388,7 @@
       },
       "sports": [
         "hockey"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=Yjoq2fU5ebQ",
-        "thumbnailUrl": "https://img.youtube.com/vi/Yjoq2fU5ebQ/hqdefault.jpg",
-        "durationSeconds": 2577,
-        "title": "Alberta seeing higher oil prices amid war in Iran | CTV News Calgary at Six for March 6, 2026",
-        "source": "youtube",
-        "channel": "CTV News",
-        "publishedAt": "13 hours ago"
-      }
+      ]
     },
     {
       "id": "deadline_watch_bos",
@@ -382,7 +399,7 @@
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-07T21:23:55.962Z",
+      "triggeredAt": "2026-03-08T05:57:11.976Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
@@ -392,7 +409,7 @@
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": -1.4,
+        "hoursUntil": -10,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",
@@ -422,19 +439,28 @@
       },
       "sports": [
         "hockey"
-      ]
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=AjhL22poJbM",
+        "thumbnailUrl": "https://img.youtube.com/vi/AjhL22poJbM/hqdefault.jpg",
+        "durationSeconds": 696,
+        "title": "Flyers vs. Penguins | NHL Highlights | March 07, 2026",
+        "source": "youtube",
+        "channel": "NHL",
+        "publishedAt": "3 hours ago"
+      }
     },
     {
-      "id": "upset_alert_tennis-espn-172906",
+      "id": "upset_alert_tennis-espn-172910",
       "title": "Upset Alert",
-      "subtitle": "Kovacevic stuns Moutet at Indian Wells Masters",
+      "subtitle": "Baez stuns Lehecka at Indian Wells Masters",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-07T21:23:55.962Z",
-      "expiresAt": "2026-03-08T03:23:55.962Z",
+      "triggeredAt": "2026-03-08T05:57:11.976Z",
+      "expiresAt": "2026-03-08T11:57:11.976Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
@@ -444,82 +470,92 @@
         "upsetType": "tennis_seed_upset",
         "sport": "tennis",
         "league": "ATP Masters 1000",
-        "favoriteName": "Moutet",
-        "underdogName": "Kovacevic",
-        "favoriteRank": 31,
-        "awayTeam": "Moutet",
-        "homeTeam": "Kovacevic",
-        "startTime": "2026-03-07T19:10:00.000Z",
+        "favoriteName": "Lehecka",
+        "underdogName": "Baez",
+        "favoriteRank": 22,
+        "awayTeam": "Lehecka",
+        "homeTeam": "Baez",
+        "startTime": "2026-03-08T03:25:00.000Z",
         "eventIds": [
-          "tennis-espn-172906"
+          "tennis-espn-172910"
         ],
-        "reason": "Moutet (seed 31) entered as the higher seed, but Kovacevic knocked Moutet out.\n\nThis opens up the draw and changes the shape of the tournament."
+        "reason": "Lehecka (seed 22) entered as the higher seed, but Baez knocked Lehecka out.\n\nThis opens up the draw and changes the shape of the tournament."
       },
       "sports": [
         "tennis"
       ]
     },
     {
-      "id": "rivalry_game_nhl_2025020993",
+      "id": "rivalry_game_soccer-seriea-20260308-1945-internazionale-at-ac-milan",
       "title": "Rivalry Game Tonight",
-      "subtitle": "Philadelphia Flyers vs Pittsburgh Penguins · Tonight at 10:30 PM",
+      "subtitle": "Internazionale vs AC Milan · Tonight at 7:45 PM",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-07T21:23:55.962Z",
-      "expiresAt": "2026-03-08T02:30:00.000Z",
+      "triggeredAt": "2026-03-08T05:57:11.976Z",
+      "expiresAt": "2026-03-08T23:45:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "rivalryLabel": "Keystone State Rivalry",
-        "sport": "hockey",
-        "league": "NHL",
-        "awayTeam": "Philadelphia Flyers",
-        "homeTeam": "Pittsburgh Penguins",
-        "startTime": "2026-03-07T22:30:00.000Z",
+        "rivalryLabel": "Derby della Madonnina",
+        "sport": "soccer",
+        "league": "Serie A",
+        "awayTeam": "Internazionale",
+        "homeTeam": "AC Milan",
+        "startTime": "2026-03-08T19:45:00.000Z",
         "eventIds": [
-          "nhl_2025020993"
+          "soccer-seriea-20260308-1945-internazionale-at-ac-milan"
         ],
-        "reason": "Philadelphia Flyers and Pittsburgh Penguins meet tonight in one of hockey's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
+        "reason": "Internazionale and AC Milan meet tonight in one of soccer's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
       },
       "sports": [
-        "hockey"
-      ]
+        "soccer"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=DS6EcWnIXRw",
+        "thumbnailUrl": "https://img.youtube.com/vi/DS6EcWnIXRw/hqdefault.jpg",
+        "durationSeconds": 745,
+        "title": "AC MILAN VS INTER MILAN (SIMULATED REALITY)",
+        "source": "youtube",
+        "channel": "Football Sim Central",
+        "publishedAt": "6 hours ago"
+      }
     },
     {
-      "id": "clinch_watch_rugby-svns-rj2l89-d1",
+      "id": "clinch_watch_cricket-t20wc-d20c4ab40f",
       "title": "Clinch Watch",
-      "subtitle": "Can secure semifinal place in the next 48h",
+      "subtitle": "TBC vs TBC · Cricket title on the line",
       "impact": {
-        "label": "Feeds: Watch",
+        "label": "Impacts: Sunday Coffee & Chill",
+        "ritualId": "sunday_session",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-07T21:23:55.962Z",
-      "expiresAt": "2026-03-08T07:00:00.000Z",
+      "triggeredAt": "2026-03-08T05:57:11.976Z",
+      "expiresAt": "2026-03-08T17:30:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "source": "team_config",
-        "conditionLabel": "Can secure semifinal place",
-        "sport": "rugby",
-        "league": "HSBC SVNS",
-        "awayTeam": "",
-        "homeTeam": "SVNS Vancouver",
-        "startTime": "2026-03-08T03:00:00.000Z",
+        "source": "tournament",
+        "conditionLabel": "Cricket title on the line",
+        "sport": "cricket",
+        "league": "ICC",
+        "awayTeam": "TBC",
+        "homeTeam": "TBC",
+        "startTime": "2026-03-08T13:30:00.000Z",
         "eventIds": [
-          "rugby-svns-rj2l89-d1"
+          "cricket-t20wc-d20c4ab40f"
         ],
-        "reason": "SVNS Vancouver have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
+        "reason": "TBC and TBC meet with a cricket title on the line.\n\nThis is the kind of moment entire seasons build toward."
       },
       "sports": [
-        "rugby"
+        "cricket"
       ]
     }
   ],
@@ -527,8 +563,8 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Tulsa Oilers, Hurricanes, Anaheim Ducks, San Diego Gulls, and Sungoliath (+5 more) all play tonight across the ECHL, NHL, AHL, Japan League One, MLS, Ligue 1, NCAA Hockey.",
-    "sourceEventId": "echl-web-25125",
+    "body": "The Tulsa Oilers, San Diego FC, San Diego Gulls, Hurricanes, and Orange County SC (+2 more) all play tonight across the ECHL, MLS, AHL, NHL, USL.",
+    "sourceEventId": "echl-web-25137",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
@@ -536,7 +572,6 @@
     },
     "sports": [
       "hockey",
-      "rugby",
       "soccer"
     ]
   }

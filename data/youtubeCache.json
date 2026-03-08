@@ -7,14 +7,14 @@
       "title": "Disappointing & Confusing Deadline For The Habs! | The Sick Podcast with Tony Marinaro March 6 2026",
       "source": "youtube",
       "channel": "The Sick Podcast with Tony Marinaro",
-      "publishedAt": "Streamed 10 hours ago"
+      "publishedAt": "Streamed 23 hours ago"
     },
-    "fetchedAt": "2026-03-07T16:16:49.205Z",
+    "fetchedAt": "2026-03-08T05:57:20.219Z",
     "query": "Anaheim Ducks trade deadline preview March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks trade deadline preview March 2026",
       "selectedVideoTitle": "Disappointing & Confusing Deadline For The Habs! | The Sick Podcast with Tony Marinaro March 6 2026",
-      "selectedVideoPublishedAt": "Streamed 10 hours ago",
+      "selectedVideoPublishedAt": "Streamed 23 hours ago",
       "selectedVideoChannel": "The Sick Podcast with Tony Marinaro",
       "rejectedForAgeCount": 0
     }
@@ -32,14 +32,22 @@
     }
   },
   "deadline_watch:boston bruins trade deadline preview march 2026": {
-    "video": null,
-    "fetchedAt": "2026-03-07T16:16:49.673Z",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=AjhL22poJbM",
+      "thumbnailUrl": "https://img.youtube.com/vi/AjhL22poJbM/hqdefault.jpg",
+      "durationSeconds": 696,
+      "title": "Flyers vs. Penguins | NHL Highlights | March 07, 2026",
+      "source": "youtube",
+      "channel": "NHL",
+      "publishedAt": "3 hours ago"
+    },
+    "fetchedAt": "2026-03-08T05:57:20.734Z",
     "query": "Boston Bruins trade deadline preview March 2026",
     "debug": {
       "searchQuery": "Boston Bruins trade deadline preview March 2026",
-      "selectedVideoTitle": null,
-      "selectedVideoPublishedAt": null,
-      "selectedVideoChannel": null,
+      "selectedVideoTitle": "Flyers vs. Penguins | NHL Highlights | March 07, 2026",
+      "selectedVideoPublishedAt": "3 hours ago",
+      "selectedVideoChannel": "NHL",
       "rejectedForAgeCount": 0
     }
   },
@@ -68,22 +76,14 @@
     }
   },
   "playoff_push:anaheim ducks playoff push march 2026": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=Yjoq2fU5ebQ",
-      "thumbnailUrl": "https://img.youtube.com/vi/Yjoq2fU5ebQ/hqdefault.jpg",
-      "durationSeconds": 2577,
-      "title": "Alberta seeing higher oil prices amid war in Iran | CTV News Calgary at Six for March 6, 2026",
-      "source": "youtube",
-      "channel": "CTV News",
-      "publishedAt": "13 hours ago"
-    },
-    "fetchedAt": "2026-03-07T16:16:49.444Z",
+    "video": null,
+    "fetchedAt": "2026-03-08T05:57:20.479Z",
     "query": "Anaheim Ducks playoff push March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push March 2026",
-      "selectedVideoTitle": "Alberta seeing higher oil prices amid war in Iran | CTV News Calgary at Six for March 6, 2026",
-      "selectedVideoPublishedAt": "13 hours ago",
-      "selectedVideoChannel": "CTV News",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   },
@@ -117,6 +117,50 @@
     "query": "Moutet vs Kovacevic upset highlights March 2026",
     "debug": {
       "searchQuery": "Moutet vs Kovacevic upset highlights March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:lehecka vs baez upset highlights march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-08T05:57:21.028Z",
+    "query": "Lehecka vs Baez upset highlights March 2026",
+    "debug": {
+      "searchQuery": "Lehecka vs Baez upset highlights March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "rivalry_game:internazionale vs ac milan rivalry highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=DS6EcWnIXRw",
+      "thumbnailUrl": "https://img.youtube.com/vi/DS6EcWnIXRw/hqdefault.jpg",
+      "durationSeconds": 745,
+      "title": "AC MILAN VS INTER MILAN (SIMULATED REALITY)",
+      "source": "youtube",
+      "channel": "Football Sim Central",
+      "publishedAt": "6 hours ago"
+    },
+    "fetchedAt": "2026-03-08T05:57:22.368Z",
+    "query": "Internazionale vs AC Milan rivalry highlights",
+    "debug": {
+      "searchQuery": "Internazionale vs AC Milan rivalry highlights",
+      "selectedVideoTitle": "AC MILAN VS INTER MILAN (SIMULATED REALITY)",
+      "selectedVideoPublishedAt": "6 hours ago",
+      "selectedVideoChannel": "Football Sim Central",
+      "rejectedForAgeCount": 1
+    }
+  },
+  "clinch_watch:tbc clinch playoff berth march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-08T05:57:23.300Z",
+    "query": "TBC clinch playoff berth March 2026",
+    "debug": {
+      "searchQuery": "TBC clinch playoff berth March 2026",
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,
