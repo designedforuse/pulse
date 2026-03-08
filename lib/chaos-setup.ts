@@ -93,7 +93,7 @@ export interface RacingChaosScoreResult {
   reasons: string[];
 }
 
-function getF1SessionType(event: SportEvent): string {
+export function getF1SessionType(event: SportEvent): string {
   const title = (event.sessionTitle || event.awayTeam || "").toLowerCase().trim();
   if (/\brace\b/.test(title)) return "race";
   if (/\bsprint qualifying\b/.test(title) || /\bsprint shootout\b/.test(title)) return "sprint qualifying";

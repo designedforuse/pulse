@@ -27,7 +27,7 @@ import { displayTeamName } from "@/utils/teams";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
-import UnifiedEventCard, { formatCricketLiveDetail, TennisScoreboard } from "@/components/UnifiedEventCard";
+import UnifiedEventCard, { formatCricketLiveDetail, TennisScoreboard, getGrandPrixFlag, getDriverFlag } from "@/components/UnifiedEventCard";
 import {
   getSportColor,
   resolveProviderDisplay,
@@ -49,6 +49,7 @@ import {
   buildChaosSetup,
   selfHealChaosSetup,
   evaluateSlot4Promotion,
+  getF1SessionType,
   type ChaosSetup,
 } from "@/lib/chaos-setup";
 
@@ -140,6 +141,44 @@ function ChaosCard({
         ? event.olympicRound
         : null;
 
+  const racingSessionType = isRacing ? getF1SessionType(event) : "";
+  const gpName = event.competitionName || event.homeTeam || "";
+  const gpFlag = isRacing ? getGrandPrixFlag(gpName) : null;
+  const gpDisplay = gpFlag ? `${gpFlag} ${gpName}` : gpName;
+
+  const leaderName = score?.racingLeader;
+  const leaderFlag = getDriverFlag(score?.racingLeaderCountry);
+  const leaderPos = score?.racingLeaderPosition;
+  const lapNum = score?.racingLapNum;
+  const totalLaps = score?.racingTotalLaps;
+  const racingStatus = score?.racingStatus;
+  const leaderTeam = score?.racingLeaderTeam;
+
+  const racingLeaderLine = leaderName
+    ? `${leaderPos ? `P${leaderPos} ` : ""}${leaderFlag ? `${leaderFlag} ` : ""}${leaderName}`
+    : null;
+
+  const racingLapLine = lapNum && totalLaps
+    ? `Lap ${lapNum} / ${totalLaps}`
+    : lapNum
+      ? `Lap ${lapNum}`
+      : null;
+
+  const racingFooterText = isLiveState
+    ? (racingLapLine || racingStatus || "In Progress")
+    : isFinalState
+      ? "Final"
+      : null;
+
+  const racingWinnerLine = isFinalState && leaderName
+    ? `Winner: ${leaderFlag ? `${leaderFlag} ` : ""}${leaderName}`
+    : null;
+
+  const isQualifying = racingSessionType === "qualifying" || racingSessionType === "sprint qualifying";
+  const qualifyingPhaseText = isQualifying && score?.period
+    ? score.period
+    : null;
+
   if (isPrimary) {
     const microLabel = getHeroMicroLabel(tensionRank, event, now);
     return (
@@ -183,24 +222,34 @@ function ChaosCard({
 
             {isRacing ? (
               <View style={styles.primaryTeams}>
-                <View style={styles.racingCircuitRow}>
-                  <Ionicons name="flag" size={20} color={sportColor} />
-                  <Text style={styles.racingCircuitName} numberOfLines={1}>
-                    {event.competitionName || event.homeTeam}
-                  </Text>
-                </View>
+                <Text style={styles.racingGpTitle} numberOfLines={1}>
+                  {gpDisplay}
+                </Text>
                 <View style={styles.racingSessionRow}>
                   <View style={[styles.racingSessionChip, { backgroundColor: sportColor + "1A" }]}>
                     <Text style={[styles.racingSessionText, { color: sportColor }]}>
                       {event.sessionTitle || event.awayTeam}
                     </Text>
                   </View>
-                  {isLiveState && score?.period && (
-                    <Text style={[styles.racingStatusText, { color: sportColor }]}>
-                      {score.period}
+                  {isLiveState && racingStatus && racingStatus !== "In Progress" && (
+                    <Text style={[styles.racingStatusText, { color: racingStatus === "Red Flag" ? "#FF3B30" : racingStatus === "Safety Car" ? "#FFD600" : sportColor }]}>
+                      {racingStatus}
                     </Text>
                   )}
                 </View>
+                {isLiveState && racingLeaderLine ? (
+                  <View style={styles.racingLeaderRow}>
+                    <Text style={styles.racingLeaderText}>{racingLeaderLine}</Text>
+                    {leaderTeam ? <Text style={styles.racingLeaderTeam}>{leaderTeam}</Text> : null}
+                  </View>
+                ) : isLiveState && isQualifying && qualifyingPhaseText ? (
+                  <Text style={styles.racingQualifyingPhase}>{qualifyingPhaseText}</Text>
+                ) : isFinalState && racingWinnerLine ? (
+                  <View style={styles.racingLeaderRow}>
+                    <Text style={styles.racingLeaderText}>{racingWinnerLine}</Text>
+                    {leaderTeam ? <Text style={styles.racingLeaderTeam}>{leaderTeam}</Text> : null}
+                  </View>
+                ) : null}
               </View>
             ) : matchupText ? (
               <Text style={styles.primaryMatchup} numberOfLines={2}>{matchupText}</Text>
@@ -259,7 +308,9 @@ function ChaosCard({
 
             <View style={styles.primaryFooter}>
               <View style={styles.primaryTimeRow}>
-                {isLiveState && displayClockText ? (
+                {isRacing && racingFooterText ? (
+                  <Text style={[styles.primaryClock, isFinalState && styles.primaryFinalStatus]}>{racingFooterText}</Text>
+                ) : isLiveState && displayClockText ? (
                   <Text style={styles.primaryClock}>{displayClockText}</Text>
                 ) : isFinalState && displayStatusText ? (
                   <Text style={styles.primaryFinalStatus}>{displayStatusText}</Text>
@@ -304,24 +355,28 @@ function ChaosCard({
 
         {isRacing ? (
           <View style={styles.secondaryTeams}>
-            <View style={styles.racingCircuitRowSm}>
-              <Ionicons name="flag" size={16} color={sportColor} />
-              <Text style={styles.racingCircuitNameSm} numberOfLines={1}>
-                {event.competitionName || event.homeTeam}
-              </Text>
-            </View>
+            <Text style={styles.racingGpTitleSm} numberOfLines={1}>
+              {gpDisplay}
+            </Text>
             <View style={styles.racingSessionRow}>
               <View style={[styles.racingSessionChipSm, { backgroundColor: sportColor + "1A" }]}>
                 <Text style={[styles.racingSessionTextSm, { color: sportColor }]}>
                   {event.sessionTitle || event.awayTeam}
                 </Text>
               </View>
-              {isLiveState && score?.period && (
-                <Text style={[styles.racingStatusTextSm, { color: sportColor }]}>
-                  {score.period}
+              {isLiveState && racingStatus && racingStatus !== "In Progress" && (
+                <Text style={[styles.racingStatusTextSm, { color: racingStatus === "Red Flag" ? "#FF3B30" : racingStatus === "Safety Car" ? "#FFD600" : sportColor }]}>
+                  {racingStatus}
                 </Text>
               )}
             </View>
+            {isLiveState && racingLeaderLine ? (
+              <Text style={styles.racingLeaderTextSm} numberOfLines={1}>{racingLeaderLine}</Text>
+            ) : isLiveState && isQualifying && qualifyingPhaseText ? (
+              <Text style={styles.racingQualifyingPhaseSm}>{qualifyingPhaseText}</Text>
+            ) : isFinalState && racingWinnerLine ? (
+              <Text style={styles.racingLeaderTextSm} numberOfLines={1}>{racingWinnerLine}</Text>
+            ) : null}
           </View>
         ) : matchupText ? (
           <Text style={styles.secondaryTeamName} numberOfLines={2}>{matchupText}</Text>
@@ -377,7 +432,9 @@ function ChaosCard({
         })()}
 
         <View style={styles.secondaryFooter}>
-          {isLiveState && displayClockText ? (
+          {isRacing && racingFooterText ? (
+            <Text style={[styles.secondaryClock, isFinalState && styles.secondaryFinal]} numberOfLines={1}>{racingFooterText}</Text>
+          ) : isLiveState && displayClockText ? (
             <Text style={styles.secondaryClock} numberOfLines={1}>{displayClockText}</Text>
           ) : isFinalState && displayStatusText ? (
             <Text style={styles.secondaryFinal} numberOfLines={1}>{displayStatusText}</Text>
@@ -1699,34 +1756,23 @@ const styles = StyleSheet.create({
     color: Colors.favStar,
     fontFamily: "Inter_500Medium",
   },
-  racingCircuitRow: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    gap: 8,
-    marginBottom: 4,
-  },
-  racingCircuitName: {
+  racingGpTitle: {
     fontSize: 20,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
-    flex: 1,
+    marginBottom: 6,
   },
-  racingCircuitRowSm: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    gap: 6,
-    marginBottom: 2,
-  },
-  racingCircuitNameSm: {
+  racingGpTitleSm: {
     fontSize: 15,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
-    flex: 1,
+    marginBottom: 4,
   },
   racingSessionRow: {
     flexDirection: "row" as const,
     alignItems: "center" as const,
     gap: 8,
+    marginBottom: 6,
   },
   racingSessionChip: {
     paddingHorizontal: 10,
@@ -1755,5 +1801,37 @@ const styles = StyleSheet.create({
   racingStatusTextSm: {
     fontSize: 11,
     fontFamily: "Inter_600SemiBold",
+  },
+  racingLeaderRow: {
+    marginTop: 2,
+  },
+  racingLeaderText: {
+    fontSize: 17,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+  },
+  racingLeaderTextSm: {
+    fontSize: 14,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+    marginTop: 4,
+  },
+  racingLeaderTeam: {
+    fontSize: 13,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textSecondary,
+    marginTop: 2,
+  },
+  racingQualifyingPhase: {
+    fontSize: 15,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textSecondary,
+    marginTop: 4,
+  },
+  racingQualifyingPhaseSm: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textSecondary,
+    marginTop: 2,
   },
 });

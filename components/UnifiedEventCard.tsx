@@ -44,7 +44,7 @@ const GP_FLAGS: Record<string, string> = {
   "Abu Dhabi": "🇦🇪",
 };
 
-function getGrandPrixFlag(gpName: string): string | null {
+export function getGrandPrixFlag(gpName: string): string | null {
   for (const [key, flag] of Object.entries(GP_FLAGS)) {
     if (gpName.includes(key)) return flag;
   }
@@ -97,7 +97,7 @@ const DRIVER_COUNTRY_FLAGS: Record<string, string> = {
   "Indonesia": "🇮🇩", "Israel": "🇮🇱",
 };
 
-function getDriverFlag(countryName?: string): string | null {
+export function getDriverFlag(countryName?: string): string | null {
   if (!countryName) return null;
   return DRIVER_COUNTRY_FLAGS[countryName] || null;
 }
