@@ -420,6 +420,14 @@ function SecondaryCarousel({
     : Math.round(contentWidth * 0.82);
   const snapInterval = tileWidth + TILE_GAP;
 
+  const orderedEvents = useMemo(() => {
+    if (!promotedEventId) return events;
+    const idx = events.findIndex((e) => e.id === promotedEventId);
+    if (idx <= 0) return events;
+    const promoted = events[idx];
+    return [promoted, ...events.slice(0, idx), ...events.slice(idx + 1)];
+  }, [events, promotedEventId]);
+
   const renderTile = useCallback(({ item }: { item: SportEvent }) => {
     const isPromoted = item.id === promotedEventId;
     return (
@@ -449,7 +457,7 @@ function SecondaryCarousel({
 
   return (
     <FlatList
-      data={events}
+      data={orderedEvents}
       keyExtractor={(item) => item.id}
       renderItem={renderTile}
       horizontal
