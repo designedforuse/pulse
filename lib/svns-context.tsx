@@ -67,3 +67,23 @@ export function formatSvnsMatchTime(match: SvnsMatch): string {
   const d = new Date(match.time);
   return d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit", hour12: true });
 }
+
+const COUNTRY_ABBR_FLAGS: Record<string, string> = {
+  AUS: "🇦🇺", ARG: "🇦🇷", FIJ: "🇫🇯", FRA: "🇫🇷", NZL: "🇳🇿",
+  RSA: "🇿🇦", GBR: "🇬🇧", ESP: "🇪🇸", USA: "🇺🇸", CAN: "🇨🇦",
+  JPN: "🇯🇵", KEN: "🇰🇪", SAM: "🇼🇸", IRE: "🇮🇪", URU: "🇺🇾",
+  CHI: "🇨🇱", BRA: "🇧🇷", POR: "🇵🇹", GER: "🇩🇪", ITA: "🇮🇹",
+  HKG: "🇭🇰", KOR: "🇰🇷", CHN: "🇨🇳", MEX: "🇲🇽", COL: "🇨🇴",
+  TGA: "🇹🇴", WAL: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", SCO: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", ENG: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+  ZIM: "🇿🇼", UGA: "🇺🇬", PAR: "🇵🇾",
+};
+
+export function getSvnsTeamFlag(abbr: string): string {
+  return COUNTRY_ABBR_FLAGS[abbr] || "";
+}
+
+export function extractSvnsSessionDay(sessionTitle: string): string | null {
+  const match = sessionTitle.match(/Day\s+(\d+)/i);
+  if (match) return `Session: Day ${match[1]}`;
+  return null;
+}

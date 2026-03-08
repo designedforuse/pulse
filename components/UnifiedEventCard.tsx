@@ -14,7 +14,7 @@ import { useScoreFlash } from "@/hooks/useScoreFlash";
 import { formatTimeUntilStart } from "@/utils/time";
 import { getTennisRoundShort, getTennisRoundPriority } from "@/data/tennisTopPlayers";
 import type { ScoreData, TennisSetScore } from "@/lib/scores-context";
-import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTime, type SvnsMatch } from "@/lib/svns-context";
+import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTime, getSvnsTeamFlag, extractSvnsSessionDay, type SvnsMatch } from "@/lib/svns-context";
 
 const GP_FLAGS: Record<string, string> = {
   "Australian": "🇦🇺",
@@ -118,6 +118,10 @@ function getSportDisplayName(sport: string): string {
 function getLeagueLabel(event: SportEvent): string {
   if (event.isIccT20Wc) return "T20 World Cup";
   if (event.isOlympic) return "Olympics";
+  if (event.leagueKey === "svns" && event.eventType === "session") {
+    const city = extractSvnsCity(event.homeTeam);
+    if (city) return `${city} SVNS`;
+  }
   if (event.tournamentName) return event.tournamentName;
   return event.league;
 }
@@ -492,6 +496,9 @@ function SvnsMatchRow({ match, isLive }: { match: SvnsMatch; isLive: boolean }) 
   const genderLabel = match.gender === "womens" ? "W" : "M";
   const phaseShort = match.phase.replace("Cup Semi Finals", "Semi").replace("Cup Final", "Final").replace("3rd Place Play-Off", "3rd Place").replace("5th Place Play-Off", "5th Place").replace("7th Place Play-Off", "7th Place").replace("5th Place Semi Final", "5th SF");
   const timeStr = formatSvnsMatchTime(match);
+  const hasScore = isMatchLive || isCompleted;
+  const flag1 = getSvnsTeamFlag(match.team1Abbr);
+  const flag2 = getSvnsTeamFlag(match.team2Abbr);
 
   return (
     <View style={svnsStyles.matchRow}>
@@ -502,7 +509,7 @@ function SvnsMatchRow({ match, isLive }: { match: SvnsMatch; isLive: boolean }) 
         {genderLabel}
       </Text>
       <Text style={svnsStyles.matchTeams} numberOfLines={1}>
-        {match.team1Abbr} {isMatchLive || isCompleted ? match.team1Score : ""}{isMatchLive || isCompleted ? "–" : " vs "}{isMatchLive || isCompleted ? match.team2Score : ""} {match.team2Abbr}
+        {flag1} {match.team1Abbr} {hasScore ? `${match.team1Score}–${match.team2Score}` : "vs"} {match.team2Abbr} {flag2}
       </Text>
       <Text style={svnsStyles.matchPhase} numberOfLines={1}>{phaseShort}</Text>
       {isUpcoming && <Text style={svnsStyles.matchTime}>{timeStr}</Text>}
@@ -602,13 +609,16 @@ export default function UnifiedEventCard({
   const isTbd = event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound;
   const showTeamLayout = !isSession && !isTbc && !isTbd;
 
-  const matchupFallback = isSession
-    ? event.sessionTitle
-    : isTbc
-      ? event.t20WcMatchLabel
-      : isTbd
-        ? event.olympicRound
-        : null;
+  const svnsSessionLabel = isSvnsSession && event.sessionTitle ? extractSvnsSessionDay(event.sessionTitle) : null;
+  const matchupFallback = isSvnsSession && svnsSessionLabel
+    ? svnsSessionLabel
+    : isSession
+      ? event.sessionTitle
+      : isTbc
+        ? event.t20WcMatchLabel
+        : isTbd
+          ? event.olympicRound
+          : null;
 
   const handlePress = () => {
     if (Platform.OS !== "web") {

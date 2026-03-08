@@ -52,7 +52,7 @@ import {
   getF1SessionType,
   type ChaosSetup,
 } from "@/lib/chaos-setup";
-import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTime, type SvnsMatch } from "@/lib/svns-context";
+import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTime, getSvnsTeamFlag, extractSvnsSessionDay, type SvnsMatch } from "@/lib/svns-context";
 
 function LiveDot() {
   const opacity = useSharedValue(1);
@@ -144,8 +144,9 @@ function ChaosCardSvnsRow({ match, small }: { match: SvnsMatch; small?: boolean 
     .replace("5th Place Semi Final", "5th SF");
   const timeStr = formatSvnsMatchTime(match);
   const hasScore = isMatchLive || isCompleted;
-  const scoreStr = hasScore ? `${match.team1Score}–${match.team2Score}` : "";
   const prefix = isMatchLive ? "NOW" : isCompleted ? "LAST" : "NEXT";
+  const flag1 = getSvnsTeamFlag(match.team1Abbr);
+  const flag2 = getSvnsTeamFlag(match.team2Abbr);
 
   return (
     <View style={chaosSvnsStyles.row}>
@@ -156,7 +157,7 @@ function ChaosCardSvnsRow({ match, small }: { match: SvnsMatch; small?: boolean 
         {genderLabel}
       </Text>
       <Text style={[chaosSvnsStyles.teams, small && { fontSize: 11 }]} numberOfLines={1}>
-        {match.team1Abbr} {hasScore ? scoreStr : "vs"} {match.team2Abbr}
+        {flag1} {match.team1Abbr} {hasScore ? `${match.team1Score}–${match.team2Score}` : "vs"} {match.team2Abbr} {flag2}
       </Text>
       <Text style={chaosSvnsStyles.phase} numberOfLines={1}>{phaseShort}</Text>
       {!hasScore && <Text style={chaosSvnsStyles.time}>{timeStr}</Text>}
@@ -242,7 +243,10 @@ function ChaosCard({
   const svnsData = useSvnsMatches(svnsCity);
   const svnsDisplayMatch: SvnsMatch | null = svnsData?.liveMatch || svnsData?.nextMatch || svnsData?.lastCompletedMatch || null;
 
-  const matchupText = event.eventType === "session" && event.sessionTitle && !isRacing
+  const svnsSessionLabel = isSvnsSession && event.sessionTitle ? extractSvnsSessionDay(event.sessionTitle) : null;
+  const matchupText = isSvnsSession && svnsSessionLabel
+    ? svnsSessionLabel
+    : event.eventType === "session" && event.sessionTitle && !isRacing
     ? event.sessionTitle
     : (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel
       ? event.t20WcMatchLabel
@@ -313,6 +317,10 @@ function ChaosCard({
               {isRacing ? (
                 <Text style={[styles.primaryLeague, { color: sportColor }]}>
                   F1 · <Text style={{ color: Colors.textSecondary }}>{gpShort}</Text>
+                </Text>
+              ) : isSvnsSession && svnsCity ? (
+                <Text style={[styles.primaryLeague, { color: sportColor }]}>
+                  {svnsCity} SVNS
                 </Text>
               ) : (
                 <Text style={[styles.primaryLeague, { color: sportColor }]}>
@@ -442,6 +450,10 @@ function ChaosCard({
           {isRacing ? (
             <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
               F1 · <Text style={{ color: Colors.textSecondary }}>{gpShort}</Text>
+            </Text>
+          ) : isSvnsSession && svnsCity ? (
+            <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
+              {svnsCity} SVNS
             </Text>
           ) : (
             <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
