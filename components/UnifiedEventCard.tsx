@@ -14,6 +14,7 @@ import { useScoreFlash } from "@/hooks/useScoreFlash";
 import { formatTimeUntilStart } from "@/utils/time";
 import { getTennisRoundShort, getTennisRoundPriority } from "@/data/tennisTopPlayers";
 import type { ScoreData, TennisSetScore } from "@/lib/scores-context";
+import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTime, type SvnsMatch } from "@/lib/svns-context";
 
 const GP_FLAGS: Record<string, string> = {
   "Australian": "🇦🇺",
@@ -484,6 +485,72 @@ const tsStyles = StyleSheet.create({
   },
 });
 
+function SvnsMatchRow({ match, isLive }: { match: SvnsMatch; isLive: boolean }) {
+  const isMatchLive = match.status.startsWith("L");
+  const isCompleted = match.status === "C";
+  const isUpcoming = match.status === "U";
+  const genderLabel = match.gender === "womens" ? "W" : "M";
+  const phaseShort = match.phase.replace("Cup Semi Finals", "Semi").replace("Cup Final", "Final").replace("3rd Place Play-Off", "3rd Place").replace("5th Place Play-Off", "5th Place").replace("7th Place Play-Off", "7th Place").replace("5th Place Semi Final", "5th SF");
+  const timeStr = formatSvnsMatchTime(match);
+
+  return (
+    <View style={svnsStyles.matchRow}>
+      {isMatchLive && (
+        <View style={svnsStyles.matchLiveDot} />
+      )}
+      <Text style={[svnsStyles.matchGender, { color: match.gender === "womens" ? "#FF6B9D" : "#64B5F6" }]}>
+        {genderLabel}
+      </Text>
+      <Text style={svnsStyles.matchTeams} numberOfLines={1}>
+        {match.team1Abbr} {isMatchLive || isCompleted ? match.team1Score : ""}{isMatchLive || isCompleted ? "–" : " vs "}{isMatchLive || isCompleted ? match.team2Score : ""} {match.team2Abbr}
+      </Text>
+      <Text style={svnsStyles.matchPhase} numberOfLines={1}>{phaseShort}</Text>
+      {isUpcoming && <Text style={svnsStyles.matchTime}>{timeStr}</Text>}
+      {isMatchLive && <Text style={svnsStyles.matchLiveLabel}>LIVE</Text>}
+    </View>
+  );
+}
+
+const svnsStyles = StyleSheet.create({
+  matchRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    marginTop: 6,
+    gap: 6,
+  },
+  matchLiveDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: "#FF3B30",
+  },
+  matchGender: {
+    fontSize: 11,
+    fontFamily: "Inter_600SemiBold",
+  },
+  matchTeams: {
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textPrimary,
+    flex: 1,
+  },
+  matchPhase: {
+    fontSize: 10,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textMuted,
+  },
+  matchTime: {
+    fontSize: 10,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+  },
+  matchLiveLabel: {
+    fontSize: 9,
+    fontFamily: "Inter_700Bold",
+    color: "#FF3B30",
+  },
+});
+
 export interface UnifiedEventCardProps {
   event: SportEvent;
   now: Date;
@@ -526,6 +593,11 @@ export default function UnifiedEventCard({
   const isHotPhase = getPhaseChipPriority(event) >= 80;
 
   const isSession = event.eventType === "session" && event.sessionTitle;
+  const isSvnsSession = isSession && event.leagueKey === "svns";
+  const svnsCity = isSvnsSession ? extractSvnsCity(event.homeTeam) : null;
+  const svnsData = useSvnsMatches(svnsCity);
+  const svnsDisplayMatch: SvnsMatch | null = svnsData?.liveMatch || svnsData?.nextMatch || svnsData?.lastCompletedMatch || null;
+
   const isTbc = (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel;
   const isTbd = event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound;
   const showTeamLayout = !isSession && !isTbc && !isTbd;
@@ -715,9 +787,14 @@ export default function UnifiedEventCard({
               </View>
             </>
           ) : (
-            <Text style={uStyles.fallbackMatchup} numberOfLines={2}>
-              {matchupFallback}
-            </Text>
+            <>
+              <Text style={uStyles.fallbackMatchup} numberOfLines={2}>
+                {matchupFallback}
+              </Text>
+              {isSvnsSession && svnsDisplayMatch && (
+                <SvnsMatchRow match={svnsDisplayMatch} isLive={isLive} />
+              )}
+            </>
           )}
           {event.t20WcVenue && isTbc ? (
             <Text style={uStyles.venueText} numberOfLines={1}>{event.t20WcVenue}</Text>

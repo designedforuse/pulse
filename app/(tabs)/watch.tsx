@@ -52,6 +52,7 @@ import {
   getF1SessionType,
   type ChaosSetup,
 } from "@/lib/chaos-setup";
+import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTime, type SvnsMatch } from "@/lib/svns-context";
 
 function LiveDot() {
   const opacity = useSharedValue(1);
@@ -130,6 +131,77 @@ function shortenGpName(gpName: string): string {
     .trim();
 }
 
+function ChaosCardSvnsRow({ match, small }: { match: SvnsMatch; small?: boolean }) {
+  const isMatchLive = match.status.startsWith("L");
+  const isCompleted = match.status === "C";
+  const genderLabel = match.gender === "womens" ? "W" : "M";
+  const phaseShort = match.phase
+    .replace("Cup Semi Finals", "Semi")
+    .replace("Cup Final", "Final")
+    .replace("3rd Place Play-Off", "3rd Place")
+    .replace("5th Place Play-Off", "5th Place")
+    .replace("7th Place Play-Off", "7th Place")
+    .replace("5th Place Semi Final", "5th SF");
+  const timeStr = formatSvnsMatchTime(match);
+  const hasScore = isMatchLive || isCompleted;
+  const scoreStr = hasScore ? `${match.team1Score}–${match.team2Score}` : "";
+  const prefix = isMatchLive ? "NOW" : isCompleted ? "LAST" : "NEXT";
+
+  return (
+    <View style={chaosSvnsStyles.row}>
+      <Text style={[chaosSvnsStyles.prefix, isMatchLive && chaosSvnsStyles.prefixLive]}>
+        {prefix}
+      </Text>
+      <Text style={[chaosSvnsStyles.gender, { color: match.gender === "womens" ? "#FF6B9D" : "#64B5F6" }]}>
+        {genderLabel}
+      </Text>
+      <Text style={[chaosSvnsStyles.teams, small && { fontSize: 11 }]} numberOfLines={1}>
+        {match.team1Abbr} {hasScore ? scoreStr : "vs"} {match.team2Abbr}
+      </Text>
+      <Text style={chaosSvnsStyles.phase} numberOfLines={1}>{phaseShort}</Text>
+      {!hasScore && <Text style={chaosSvnsStyles.time}>{timeStr}</Text>}
+    </View>
+  );
+}
+
+const chaosSvnsStyles = StyleSheet.create({
+  row: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    marginTop: 6,
+    gap: 5,
+  },
+  prefix: {
+    fontSize: 9,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textMuted,
+    letterSpacing: 0.5,
+  },
+  prefixLive: {
+    color: "#FF3B30",
+  },
+  gender: {
+    fontSize: 10,
+    fontFamily: "Inter_600SemiBold",
+  },
+  teams: {
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textPrimary,
+    flex: 1,
+  },
+  phase: {
+    fontSize: 9,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textMuted,
+  },
+  time: {
+    fontSize: 10,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+  },
+});
+
 function ChaosCard({
   event,
   isPrimary,
@@ -165,6 +237,11 @@ function ChaosCard({
   };
 
   const isRacing = event.sport === "racing";
+  const isSvnsSession = event.eventType === "session" && event.leagueKey === "svns";
+  const svnsCity = isSvnsSession ? extractSvnsCity(event.homeTeam) : null;
+  const svnsData = useSvnsMatches(svnsCity);
+  const svnsDisplayMatch: SvnsMatch | null = svnsData?.liveMatch || svnsData?.nextMatch || svnsData?.lastCompletedMatch || null;
+
   const matchupText = event.eventType === "session" && event.sessionTitle && !isRacing
     ? event.sessionTitle
     : (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel
@@ -285,7 +362,12 @@ function ChaosCard({
                 ) : null}
               </View>
             ) : matchupText ? (
-              <Text style={styles.primaryMatchup} numberOfLines={2}>{matchupText}</Text>
+              <View>
+                <Text style={styles.primaryMatchup} numberOfLines={2}>{matchupText}</Text>
+                {isSvnsSession && svnsDisplayMatch && (
+                  <ChaosCardSvnsRow match={svnsDisplayMatch} />
+                )}
+              </View>
             ) : event.sport === "tennis" ? (
               <View style={styles.primaryTeams}>
                 <TennisScoreboard
@@ -404,7 +486,12 @@ function ChaosCard({
             ) : null}
           </View>
         ) : matchupText ? (
-          <Text style={styles.secondaryTeamName} numberOfLines={2}>{matchupText}</Text>
+          <View>
+            <Text style={styles.secondaryTeamName} numberOfLines={2}>{matchupText}</Text>
+            {isSvnsSession && svnsDisplayMatch && (
+              <ChaosCardSvnsRow match={svnsDisplayMatch} small />
+            )}
+          </View>
         ) : event.sport === "tennis" ? (
           <View style={styles.secondaryTeams}>
             <TennisScoreboard

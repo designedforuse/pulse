@@ -27,7 +27,8 @@ The application features a frontend built with Expo Router for file-based naviga
 - **Explore Tab (Tonight's Story):** A hero module surfacing high-priority narrative signals as editorial summaries, personalized based on followed teams and ritual context.
 - **Explore Tab (YouTube Videos):** Narrative cards automatically receive contextual YouTube videos via search with caching and trusted channel prioritization.
 - **Explore Tab (Narrative System):** Displays dynamic, narrative-driven intelligence cards (e.g., Playoff Push, Player Movement, League Moment, Momentum, Deadline Watch, Rivalry Game, Upset Alert, Clinch Watch) based on triggered data thresholds and configured logic.
-- **API Endpoints:** The Express server provides endpoints for event data, live scores, narrative cards, and debug information.
+- **SVNS Live Match Tracking:** SVNS session cards display the current/next match from the World Rugby API (`api.wr-rims-prod.pulselive.com`), showing team abbreviations, scores, phase, and gender label. Data is fetched via `/api/svns-matches?city=X` with 60s server-side caching and 45s client polling. Event IDs for all 9 SVNS stops are mapped in `server/svnsMatches.ts`.
+- **API Endpoints:** The Express server provides endpoints for event data, live scores, narrative cards, SVNS match schedules, and debug information.
 
 ## External Dependencies
 - **Expo (React Native):** Frontend framework.
@@ -44,6 +45,7 @@ The application features a frontend built with Expo Router for file-based naviga
 - **all.rugby:** Japan League One Rugby schedule data (scraped).
 - **MLR (hardcoded):** Major League Rugby schedule data.
 - **CricAPI:** International and domestic Cricket fixtures.
+- **World Rugby API (api.wr-rims-prod.pulselive.com):** SVNS match schedules and live scores.
 - **Apple TV:** Streaming provider integration.
 - **YouTube TV:** Streaming provider integration.
 - **Disney+:** Streaming provider integration.

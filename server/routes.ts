@@ -6,6 +6,7 @@ import { execFile } from "node:child_process";
 import { fetchRawCricketMatches, searchRawCricketMatches } from "../scripts/updateCricket";
 import { fetchPlayerJourney, fetchPlayerJourneyDebug } from "./playerJourney";
 import { fetchAllLiveScores } from "./liveScores";
+import { fetchSvnsMatches, getSvnsCities } from "./svnsMatches";
 
 const GENERATED_EVENTS_PATH = path.resolve(
   process.cwd(),
@@ -116,6 +117,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ eventId, rawLiveStatus: raw, normalizedLiveStatus: normalized, displayClockText });
     } catch (err) {
       res.status(500).json({ error: String(err) });
+    }
+  });
+
+  app.get("/api/svns-matches/:city", async (req, res) => {
+    try {
+      const city = decodeURIComponent(req.params.city);
+      const result = await fetchSvnsMatches(city);
+      return res.json(result);
+    } catch (err: any) {
+      console.error("[svns-matches] Error:", err);
+      return res.status(500).json({ error: err.message });
     }
   });
 
