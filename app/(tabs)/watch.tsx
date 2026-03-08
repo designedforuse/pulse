@@ -1511,14 +1511,10 @@ const styles = StyleSheet.create({
     letterSpacing: 0.2,
   },
   svnsPrimaryContent: {
-    minHeight: 70,
     marginBottom: 14,
-    justifyContent: "center" as const,
   },
   svnsSecondaryContent: {
-    minHeight: 50,
     marginBottom: 10,
-    justifyContent: "center" as const,
   },
   secondaryTeams: {
     gap: 4,
