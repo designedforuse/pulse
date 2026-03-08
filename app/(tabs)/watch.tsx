@@ -143,7 +143,7 @@ function ChaosCardSvnsRow({ match, small }: { match: SvnsMatch; small?: boolean 
 
   return (
     <View style={chaosSvnsStyles.row}>
-      <Text style={[chaosSvnsStyles.teams, small && { fontSize: 11 }]} numberOfLines={1}>
+      <Text style={[chaosSvnsStyles.teams, small && { fontSize: 14 }]} numberOfLines={1}>
         {flag1} {match.team1Abbr} {hasScore ? `${match.team1Score}–${match.team2Score}` : "vs"} {match.team2Abbr} {flag2}
       </Text>
     </View>
@@ -171,8 +171,8 @@ const chaosSvnsStyles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
   },
   teams: {
-    fontSize: 12,
-    fontFamily: "Inter_500Medium",
+    fontSize: 16,
+    fontFamily: "Inter_600SemiBold",
     color: Colors.textPrimary,
     flex: 1,
   },
