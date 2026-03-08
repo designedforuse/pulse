@@ -447,6 +447,39 @@ const ESPN_F1_IDS: Record<string, string> = {
   "Kick Sauber": "10",
 };
 
+const ECHL_HOCKEYTECH_IDS: Record<string, string> = {
+  "Adirondack Thunder": "74",
+  "Allen Americans": "66",
+  "Atlanta Gladiators": "10",
+  "Bloomington Bison": "107",
+  "Cincinnati Cyclones": "5",
+  "Florida Everblades": "8",
+  "Fort Wayne Komets": "60",
+  "Greensboro Gargoyles": "108",
+  "Greenville Swamp Rabbits": "52",
+  "Idaho Steelheads": "11",
+  "Indy Fuel": "65",
+  "Iowa Heartlanders": "98",
+  "Jacksonville Icemen": "79",
+  "Kalamazoo Wings": "50",
+  "Kansas City Mavericks": "68",
+  "Maine Mariners": "82",
+  "Norfolk Admirals": "76",
+  "Orlando Solar Bears": "61",
+  "Rapid City Rush": "70",
+  "Reading Royals": "17",
+  "Savannah Ghost Pirates": "102",
+  "South Carolina Stingrays": "18",
+  "Tahoe Knight Monsters": "106",
+  "Toledo Walleye": "21",
+  "Trois-Rivières Lions": "99",
+  "Tulsa Oilers": "71",
+  "Utah Grizzlies": "23",
+  "Wheeling Nailers": "25",
+  "Wichita Thunder": "72",
+  "Worcester Railers": "77",
+};
+
 const AHL_HOCKEYTECH_IDS: Record<string, string> = {
   "Abbotsford Canucks": "440",
   "Bakersfield Condors": "402",
@@ -497,6 +530,8 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
   }
 
   if (league === "ECHL") {
+    const id = ECHL_HOCKEYTECH_IDS[teamName];
+    if (id) return `https://lscluster.hockeytech.com/download.php?client_code=echl&file_path=img/logos/${id}.png`;
     return null;
   }
 
