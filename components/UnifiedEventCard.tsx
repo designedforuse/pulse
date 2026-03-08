@@ -15,6 +15,42 @@ import { formatTimeUntilStart } from "@/utils/time";
 import { getTennisRoundShort, getTennisRoundPriority } from "@/data/tennisTopPlayers";
 import type { ScoreData, TennisSetScore } from "@/lib/scores-context";
 
+const GP_FLAGS: Record<string, string> = {
+  "Australian": "🇦🇺",
+  "Bahrain": "🇧🇭",
+  "Saudi Arabian": "🇸🇦",
+  "Japanese": "🇯🇵",
+  "Chinese": "🇨🇳",
+  "Miami": "🇺🇸",
+  "Emilia Romagna": "🇮🇹",
+  "Monaco": "🇲🇨",
+  "Spanish": "🇪🇸",
+  "Canadian": "🇨🇦",
+  "Austrian": "🇦🇹",
+  "British": "🇬🇧",
+  "Belgian": "🇧🇪",
+  "Hungarian": "🇭🇺",
+  "Dutch": "🇳🇱",
+  "Italian": "🇮🇹",
+  "Azerbaijan": "🇦🇿",
+  "Singapore": "🇸🇬",
+  "United States": "🇺🇸",
+  "Mexico City": "🇲🇽",
+  "Mexican": "🇲🇽",
+  "São Paulo": "🇧🇷",
+  "Brazilian": "🇧🇷",
+  "Las Vegas": "🇺🇸",
+  "Qatar": "🇶🇦",
+  "Abu Dhabi": "🇦🇪",
+};
+
+function getGrandPrixFlag(gpName: string): string | null {
+  for (const [key, flag] of Object.entries(GP_FLAGS)) {
+    if (gpName.includes(key)) return flag;
+  }
+  return null;
+}
+
 function getSportDisplayName(sport: string): string {
   const names: Record<string, string> = {
     hockey: "Hockey",
@@ -477,6 +513,7 @@ export default function UnifiedEventCard({
   const isTennis = event.sport === "tennis";
   const isCricket = event.sport === "cricket";
   const isRacing = event.sport === "racing";
+  const gpFlag = isRacing ? getGrandPrixFlag(event.competitionName || event.homeTeam) : null;
   const cricketLiveDetail = formatCricketLiveDetail(event, score, isLive);
 
   const awayRank = isTennis ? event.tennisPlayer1Rank : undefined;
@@ -535,7 +572,7 @@ export default function UnifiedEventCard({
           {isRacing ? (
             <View style={uStyles.racingLayout}>
               <View style={uStyles.racingCircuitRow}>
-                <Ionicons name="flag" size={featured ? 18 : 16} color={sportColor} />
+                <Text style={{ fontSize: featured ? 18 : 16 }}>{gpFlag || "🏁"}</Text>
                 <Text
                   style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
                   numberOfLines={1}
