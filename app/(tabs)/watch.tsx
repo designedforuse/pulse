@@ -726,6 +726,11 @@ export default function WatchScreen() {
       const bFav = favoriteInvolved(b, favorites) ? 0 : 1;
       if (aFav !== bFav) return aFav - bFav;
       if (a.sport === "tennis" && b.sport === "tennis") {
+        const aScore = getScore(a.id);
+        const bScore = getScore(b.id);
+        const aHasData = aScore?.tennisSetScores && aScore.tennisSetScores.length > 0 ? 0 : 1;
+        const bHasData = bScore?.tennisSetScores && bScore.tennisSetScores.length > 0 ? 0 : 1;
+        if (aHasData !== bHasData) return aHasData - bHasData;
         const aRound = getTennisRoundPriority(a.tennisRound || "");
         const bRound = getTennisRoundPriority(b.tennisRound || "");
         if (aRound !== bRound) return bRound - aRound;
@@ -736,7 +741,7 @@ export default function WatchScreen() {
       if (aSp !== bSp) return aSp - bSp;
       return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
     });
-  }, [filteredLive, favorites]);
+  }, [filteredLive, favorites, scores]);
 
   const [liveExpanded, setLiveExpanded] = useState(false);
 
