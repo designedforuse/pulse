@@ -51,8 +51,38 @@ function getGrandPrixFlag(gpName: string): string | null {
   return null;
 }
 
+const GP_LOCATIONS: Record<string, string> = {
+  "Australian": "Australia",
+  "Bahrain": "Bahrain",
+  "Saudi Arabian": "Saudi Arabia",
+  "Japanese": "Japan",
+  "Chinese": "China",
+  "Miami": "Miami",
+  "Emilia Romagna": "Imola",
+  "Monaco": "Monaco",
+  "Spanish": "Spain",
+  "Canadian": "Canada",
+  "Austrian": "Austria",
+  "British": "Britain",
+  "Belgian": "Belgium",
+  "Hungarian": "Hungary",
+  "Dutch": "Netherlands",
+  "Italian": "Italy",
+  "Azerbaijan": "Azerbaijan",
+  "Singapore": "Singapore",
+  "United States": "USA",
+  "Mexico City": "Mexico",
+  "Mexican": "Mexico",
+  "São Paulo": "Brazil",
+  "Brazilian": "Brazil",
+  "Las Vegas": "Las Vegas",
+  "Qatar": "Qatar",
+  "Abu Dhabi": "Abu Dhabi",
+};
+
 function getGrandPrixLocation(gpName: string): string {
-  return gpName.replace(/\s*Grand\s*Prix$/i, "").trim() || gpName;
+  const raw = gpName.replace(/\s*Grand\s*Prix$/i, "").trim();
+  return GP_LOCATIONS[raw] || raw || gpName;
 }
 
 function getSportDisplayName(sport: string): string {
