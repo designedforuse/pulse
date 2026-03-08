@@ -84,6 +84,6 @@ export function getSvnsTeamFlag(abbr: string): string {
 
 export function extractSvnsSessionDay(sessionTitle: string): string | null {
   const match = sessionTitle.match(/Day\s+(\d+)/i);
-  if (match) return `Session: Day ${match[1]}`;
+  if (match) return `Day ${match[1]}`;
   return null;
 }

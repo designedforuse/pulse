@@ -143,9 +143,6 @@ function ChaosCardSvnsRow({ match, small }: { match: SvnsMatch; small?: boolean 
 
   return (
     <View style={chaosSvnsStyles.row}>
-      <Text style={[chaosSvnsStyles.gender, { color: match.gender === "womens" ? "#FF6B9D" : "#64B5F6" }]}>
-        {genderLabel}
-      </Text>
       <Text style={[chaosSvnsStyles.teams, small && { fontSize: 11 }]} numberOfLines={1}>
         {flag1} {match.team1Abbr} {hasScore ? `${match.team1Score}–${match.team2Score}` : "vs"} {match.team2Abbr} {flag2}
       </Text>
@@ -232,17 +229,10 @@ function ChaosCard({
   const svnsDisplayMatch: SvnsMatch | null = svnsData?.liveMatch || svnsData?.nextMatch || svnsData?.lastCompletedMatch || null;
 
   const svnsSessionLabel = isSvnsSession && event.sessionTitle ? extractSvnsSessionDay(event.sessionTitle) : null;
-  const svnsPhaseShort = svnsDisplayMatch?.phase
-    ? svnsDisplayMatch.phase
-        .replace("Cup Semi Finals", "Semi")
-        .replace("Cup Final", "Final")
-        .replace("3rd Place Play-Off", "3rd Place")
-        .replace("5th Place Play-Off", "5th Place")
-        .replace("7th Place Play-Off", "7th Place")
-        .replace("5th Place Semi Final", "5th SF")
-    : null;
-  const matchupText = isSvnsSession && svnsSessionLabel
-    ? svnsSessionLabel + (svnsPhaseShort ? `, ${svnsPhaseShort}` : "")
+  const svnsGenderFull = svnsDisplayMatch ? (svnsDisplayMatch.gender === "womens" ? "Women's" : "Men's") : null;
+  const svnsPhase = svnsDisplayMatch?.phase || null;
+  const matchupText = isSvnsSession && svnsDisplayMatch && svnsGenderFull
+    ? svnsGenderFull + (svnsPhase ? ` | ${svnsPhase}` : "")
     : event.eventType === "session" && event.sessionTitle && !isRacing
     ? event.sessionTitle
     : (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel
@@ -317,7 +307,7 @@ function ChaosCard({
                 </Text>
               ) : isSvnsSession && svnsCity ? (
                 <Text style={[styles.primaryLeague, { color: sportColor }]}>
-                  {svnsCity} SVNS
+                  {svnsCity} SVNS{svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}
                 </Text>
               ) : (
                 <Text style={[styles.primaryLeague, { color: sportColor }]}>
@@ -454,7 +444,7 @@ function ChaosCard({
             </Text>
           ) : isSvnsSession && svnsCity ? (
             <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
-              {svnsCity} SVNS
+              {svnsCity} SVNS{svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}
             </Text>
           ) : (
             <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
