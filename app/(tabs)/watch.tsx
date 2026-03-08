@@ -233,9 +233,15 @@ function ChaosCard({
               <View style={[styles.tensionAccent, { backgroundColor: tensionAccentColor }]} />
             )}
             <View style={styles.primaryHeader}>
-              <Text style={[styles.primaryLeague, { color: sportColor }]}>
-                {isRacing ? `F1 · ${gpShort}` : event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.tournamentName || event.league}
-              </Text>
+              {isRacing ? (
+                <Text style={[styles.primaryLeague, { color: sportColor }]}>
+                  F1 · <Text style={{ color: Colors.textSecondary }}>{gpShort}</Text>
+                </Text>
+              ) : (
+                <Text style={[styles.primaryLeague, { color: sportColor }]}>
+                  {event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.tournamentName || event.league}
+                </Text>
+              )}
               <View style={{ flex: 1 }} />
               {isLiveState && (
                 <View style={styles.liveChip}>
@@ -254,11 +260,6 @@ function ChaosCard({
 
             {isRacing ? (
               <View style={styles.primaryTeams}>
-                {isLiveState && racingStatus && racingStatus !== "In Progress" && (
-                  <Text style={[styles.racingFlagStatus, { color: racingStatus === "Red Flag" ? "#FF3B30" : racingStatus === "Safety Car" ? "#FFD600" : sportColor }]}>
-                    {racingStatus}
-                  </Text>
-                )}
                 {isLiveState && racingLeaderLine ? (
                   <View style={styles.racingLeaderRow}>
                     <Text style={styles.racingLeaderText}>{racingLeaderLine}</Text>
@@ -371,9 +372,15 @@ function ChaosCard({
           <View style={[styles.tensionAccentSecondary, { backgroundColor: tensionAccentColor }]} />
         )}
         <View style={styles.secondaryHeader}>
-          <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
-            {isRacing ? `F1 · ${gpShort}` : event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.tournamentName || event.league}
-          </Text>
+          {isRacing ? (
+            <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
+              F1 · <Text style={{ color: Colors.textSecondary }}>{gpShort}</Text>
+            </Text>
+          ) : (
+            <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
+              {event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.tournamentName || event.league}
+            </Text>
+          )}
           {isLiveState && (
             <View style={styles.liveChipSmall}>
               <LiveDot />
@@ -387,11 +394,6 @@ function ChaosCard({
 
         {isRacing ? (
           <View style={styles.secondaryTeams}>
-            {isLiveState && racingStatus && racingStatus !== "In Progress" && (
-              <Text style={[styles.racingFlagStatusSm, { color: racingStatus === "Red Flag" ? "#FF3B30" : racingStatus === "Safety Car" ? "#FFD600" : sportColor }]}>
-                {racingStatus}
-              </Text>
-            )}
             {isLiveState && racingLeaderLine ? (
               <>
                 <Text style={styles.racingLeaderTextSm} numberOfLines={1}>{racingLeaderLine}</Text>
@@ -1793,18 +1795,6 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: Colors.favStar,
     fontFamily: "Inter_500Medium",
-  },
-  racingFlagStatus: {
-    fontSize: 14,
-    fontFamily: "Inter_700Bold",
-    letterSpacing: 0.3,
-    marginBottom: 4,
-  },
-  racingFlagStatusSm: {
-    fontSize: 12,
-    fontFamily: "Inter_700Bold",
-    letterSpacing: 0.3,
-    marginBottom: 2,
   },
   racingLeaderRow: {
     marginTop: 2,
