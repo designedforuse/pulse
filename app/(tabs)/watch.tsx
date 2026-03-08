@@ -169,8 +169,8 @@ const chaosSvnsStyles = StyleSheet.create({
   row: {
     flexDirection: "row" as const,
     alignItems: "center" as const,
-    marginTop: 6,
     gap: 5,
+    flex: 1,
   },
   prefix: {
     fontSize: 9,
@@ -371,10 +371,7 @@ function ChaosCard({
               </View>
             ) : matchupText ? (
               <View style={isSvnsSession ? styles.svnsPrimaryContent : undefined}>
-                <Text style={[styles.primaryMatchup, isSvnsSession && { marginBottom: 4 }]} numberOfLines={2}>{matchupText}</Text>
-                {isSvnsSession && svnsDisplayMatch && (
-                  <ChaosCardSvnsRow match={svnsDisplayMatch} />
-                )}
+                <Text style={styles.primaryMatchup} numberOfLines={2}>{matchupText}</Text>
               </View>
             ) : event.sport === "tennis" ? (
               <View style={styles.primaryTeams}>
@@ -416,7 +413,9 @@ function ChaosCard({
 
             <View style={styles.primaryFooter}>
               <View style={styles.primaryTimeRow}>
-                {isRacing && racingFooterText ? (
+                {isSvnsSession && svnsDisplayMatch ? (
+                  <ChaosCardSvnsRow match={svnsDisplayMatch} />
+                ) : isRacing && racingFooterText ? (
                   <Text style={[styles.primaryClock, isFinalState && styles.primaryFinalStatus]}>{racingFooterText}</Text>
                 ) : isLiveState && displayClockText ? (
                   <Text style={styles.primaryClock}>{displayClockText}</Text>
@@ -499,10 +498,7 @@ function ChaosCard({
           </View>
         ) : matchupText ? (
           <View style={isSvnsSession ? styles.svnsSecondaryContent : undefined}>
-            <Text style={[styles.secondaryTeamName, isSvnsSession && { marginBottom: 2 }]} numberOfLines={2}>{matchupText}</Text>
-            {isSvnsSession && svnsDisplayMatch && (
-              <ChaosCardSvnsRow match={svnsDisplayMatch} small />
-            )}
+            <Text style={styles.secondaryTeamName} numberOfLines={2}>{matchupText}</Text>
           </View>
         ) : event.sport === "tennis" ? (
           <View style={styles.secondaryTeams}>
@@ -541,7 +537,9 @@ function ChaosCard({
         )}
 
         <View style={styles.secondaryFooter}>
-          {isRacing && racingFooterText ? (
+          {isSvnsSession && svnsDisplayMatch ? (
+            <ChaosCardSvnsRow match={svnsDisplayMatch} small />
+          ) : isRacing && racingFooterText ? (
             <Text style={[styles.secondaryClock, isFinalState && styles.secondaryFinal]} numberOfLines={1}>{racingFooterText}</Text>
           ) : isLiveState && displayClockText ? (
             <Text style={styles.secondaryClock} numberOfLines={1}>{displayClockText}</Text>
