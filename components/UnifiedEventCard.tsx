@@ -641,6 +641,11 @@ export default function UnifiedEventCard({
               {(isLive || isFinal) && score?.racingLeader && (
                 <View style={uStyles.racingLeaderSection}>
                   <View style={uStyles.racingLeaderRow}>
+                    {score.racingLeaderPosition != null && (
+                      <Text style={[uStyles.racingPositionBadge, { color: sportColor }]}>
+                        P{score.racingLeaderPosition}
+                      </Text>
+                    )}
                     {getDriverFlag(score.racingLeaderCountry) && (
                       <Text style={uStyles.racingDriverFlag}>
                         {getDriverFlag(score.racingLeaderCountry)}
@@ -649,11 +654,6 @@ export default function UnifiedEventCard({
                     <Text style={uStyles.racingLeaderName} numberOfLines={1}>
                       {score.racingLeader}
                     </Text>
-                    {score.racingLeaderNumber != null && (
-                      <Text style={[uStyles.racingDriverNumber, { color: sportColor }]}>
-                        #{score.racingLeaderNumber}
-                      </Text>
-                    )}
                   </View>
                   {score.racingLeaderTeam && (
                     <Text style={uStyles.racingLeaderTeam} numberOfLines={1}>
@@ -970,8 +970,8 @@ const uStyles = StyleSheet.create({
     color: Colors.textPrimary,
     flex: 1,
   },
-  racingDriverNumber: {
-    fontSize: 12,
+  racingPositionBadge: {
+    fontSize: 13,
     fontFamily: "Inter_700Bold",
   },
   racingLeaderTeam: {

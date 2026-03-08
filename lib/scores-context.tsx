@@ -39,6 +39,7 @@ export interface ScoreData {
   racingLeader?: string;
   racingLeaderCountry?: string;
   racingLeaderTeam?: string;
+  racingLeaderPosition?: number;
   racingLeaderNumber?: number;
   racingLeaderGrid?: number;
   racingLapNum?: number;

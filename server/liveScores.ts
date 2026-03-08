@@ -38,6 +38,7 @@ export interface ScoreData {
   racingLeader?: string;
   racingLeaderCountry?: string;
   racingLeaderTeam?: string;
+  racingLeaderPosition?: number;
   racingLeaderNumber?: number;
   racingLeaderGrid?: number;
   racingLapNum?: number;
@@ -985,6 +986,7 @@ async function fetchF1Scores(
         let racingLeader: string | undefined;
         let racingLeaderCountry: string | undefined;
         let racingLeaderTeam: string | undefined;
+        let racingLeaderPosition: number | undefined;
         let racingLeaderNumber: number | undefined;
         let racingLeaderGrid: number | undefined;
         let racingLapNum: number | undefined;
@@ -1020,6 +1022,8 @@ async function fetchF1Scores(
             return orderA - orderB;
           });
           const leader = sorted[0];
+          const leaderPos = leader?.order ?? leader?.position;
+          if (leaderPos != null) racingLeaderPosition = typeof leaderPos === "number" ? leaderPos : parseInt(leaderPos, 10) || undefined;
           if (leader?.athlete?.displayName) {
             racingLeader = leader.athlete.displayName;
             const flagAlt = leader.athlete?.flag?.alt;
@@ -1051,6 +1055,7 @@ async function fetchF1Scores(
           racingLeader,
           racingLeaderCountry,
           racingLeaderTeam,
+          racingLeaderPosition,
           racingLeaderNumber,
           racingLeaderGrid,
           racingLapNum,
