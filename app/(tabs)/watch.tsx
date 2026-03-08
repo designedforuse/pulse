@@ -149,7 +149,6 @@ function ChaosCardSvnsRow({ match, small }: { match: SvnsMatch; small?: boolean 
       <Text style={[chaosSvnsStyles.teams, small && { fontSize: 11 }]} numberOfLines={1}>
         {flag1} {match.team1Abbr} {hasScore ? `${match.team1Score}–${match.team2Score}` : "vs"} {match.team2Abbr} {flag2}
       </Text>
-      {!hasScore && <Text style={chaosSvnsStyles.time}>{timeStr}</Text>}
     </View>
   );
 }
@@ -415,8 +414,8 @@ function ChaosCard({
             <View style={styles.primaryFooter}>
               <View style={styles.primaryTimeRow}>
                 {isSvnsSession && svnsDisplayMatch ? (
-                  <Text style={svnsDisplayMatch.status.startsWith("L") ? styles.primaryClock : styles.primaryTime}>
-                    {svnsDisplayMatch.status.startsWith("L") ? "NOW" : svnsDisplayMatch.status === "C" ? "LAST" : "NEXT"}
+                  <Text style={styles.primaryClock}>
+                    {svnsDisplayMatch.status.startsWith("L") ? "Live now" : svnsDisplayMatch.status === "C" ? "Last match" : `Next match @ ${formatSvnsMatchTime(svnsDisplayMatch)}`}
                   </Text>
                 ) : isRacing && racingFooterText ? (
                   <Text style={[styles.primaryClock, isFinalState && styles.primaryFinalStatus]}>{racingFooterText}</Text>
@@ -544,8 +543,8 @@ function ChaosCard({
 
         <View style={styles.secondaryFooter}>
           {isSvnsSession && svnsDisplayMatch ? (
-            <Text style={svnsDisplayMatch.status.startsWith("L") ? styles.secondaryClock : styles.secondaryTime} numberOfLines={1}>
-              {svnsDisplayMatch.status.startsWith("L") ? "NOW" : svnsDisplayMatch.status === "C" ? "LAST" : "NEXT"}
+            <Text style={styles.secondaryClock} numberOfLines={1}>
+              {svnsDisplayMatch.status.startsWith("L") ? "Live now" : svnsDisplayMatch.status === "C" ? "Last match" : `Next @ ${formatSvnsMatchTime(svnsDisplayMatch)}`}
             </Text>
           ) : isRacing && racingFooterText ? (
             <Text style={[styles.secondaryClock, isFinalState && styles.secondaryFinal]} numberOfLines={1}>{racingFooterText}</Text>
