@@ -135,13 +135,6 @@ function ChaosCardSvnsRow({ match, small }: { match: SvnsMatch; small?: boolean 
   const isMatchLive = match.status.startsWith("L");
   const isCompleted = match.status === "C";
   const genderLabel = match.gender === "womens" ? "W" : "M";
-  const phaseShort = match.phase
-    .replace("Cup Semi Finals", "Semi")
-    .replace("Cup Final", "Final")
-    .replace("3rd Place Play-Off", "3rd Place")
-    .replace("5th Place Play-Off", "5th Place")
-    .replace("7th Place Play-Off", "7th Place")
-    .replace("5th Place Semi Final", "5th SF");
   const timeStr = formatSvnsMatchTime(match);
   const hasScore = isMatchLive || isCompleted;
   const prefix = isMatchLive ? "NOW" : isCompleted ? "LAST" : "NEXT";
@@ -156,7 +149,6 @@ function ChaosCardSvnsRow({ match, small }: { match: SvnsMatch; small?: boolean 
       <Text style={[chaosSvnsStyles.teams, small && { fontSize: 11 }]} numberOfLines={1}>
         {flag1} {match.team1Abbr} {hasScore ? `${match.team1Score}–${match.team2Score}` : "vs"} {match.team2Abbr} {flag2}
       </Text>
-      <Text style={chaosSvnsStyles.phase} numberOfLines={1}>{phaseShort}</Text>
       {!hasScore && <Text style={chaosSvnsStyles.time}>{timeStr}</Text>}
     </View>
   );
@@ -241,8 +233,17 @@ function ChaosCard({
   const svnsDisplayMatch: SvnsMatch | null = svnsData?.liveMatch || svnsData?.nextMatch || svnsData?.lastCompletedMatch || null;
 
   const svnsSessionLabel = isSvnsSession && event.sessionTitle ? extractSvnsSessionDay(event.sessionTitle) : null;
+  const svnsPhaseShort = svnsDisplayMatch?.phase
+    ? svnsDisplayMatch.phase
+        .replace("Cup Semi Finals", "Semi")
+        .replace("Cup Final", "Final")
+        .replace("3rd Place Play-Off", "3rd Place")
+        .replace("5th Place Play-Off", "5th Place")
+        .replace("7th Place Play-Off", "7th Place")
+        .replace("5th Place Semi Final", "5th SF")
+    : null;
   const matchupText = isSvnsSession && svnsSessionLabel
-    ? svnsSessionLabel
+    ? svnsSessionLabel + (svnsPhaseShort ? `, ${svnsPhaseShort}` : "")
     : event.eventType === "session" && event.sessionTitle && !isRacing
     ? event.sessionTitle
     : (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel
