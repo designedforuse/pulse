@@ -36,6 +36,12 @@ export interface ScoreData {
   racingStatus?: string;
   racingLap?: string;
   racingLeader?: string;
+  racingLeaderCountry?: string;
+  racingLeaderTeam?: string;
+  racingLeaderNumber?: number;
+  racingLeaderGrid?: number;
+  racingLapNum?: number;
+  racingTotalLaps?: number;
   racingSessionType?: string;
 }
 
@@ -977,12 +983,20 @@ async function fetchF1Scores(
 
         let racingLap: string | undefined;
         let racingLeader: string | undefined;
+        let racingLeaderCountry: string | undefined;
+        let racingLeaderTeam: string | undefined;
+        let racingLeaderNumber: number | undefined;
+        let racingLeaderGrid: number | undefined;
+        let racingLapNum: number | undefined;
+        let racingTotalLaps: number | undefined;
         let racingStatus: string | undefined;
 
         if (isLive) {
           const lapMatch = statusDetail.match(/Lap\s+(\d+)\s*(?:of|\/)\s*(\d+)/i);
           if (lapMatch) {
             racingLap = `Lap ${lapMatch[1]}/${lapMatch[2]}`;
+            racingLapNum = parseInt(lapMatch[1], 10) || undefined;
+            racingTotalLaps = parseInt(lapMatch[2], 10) || undefined;
           }
 
           if (/red\s*flag/i.test(statusDetail) || /red\s*flag/i.test(description)) {
@@ -996,20 +1010,30 @@ async function fetchF1Scores(
           } else {
             racingStatus = statusDetail || "In Progress";
           }
+        }
 
-          const competitors = comp.competitors || [];
-          if (competitors.length > 0) {
-            const sorted = [...competitors].sort((a: any, b: any) => {
-              const orderA = a.order ?? a.position ?? 999;
-              const orderB = b.order ?? b.position ?? 999;
-              return orderA - orderB;
-            });
-            const leader = sorted[0];
-            if (leader?.athlete?.displayName) {
-              racingLeader = leader.athlete.displayName;
-            } else if (leader?.team?.displayName) {
-              racingLeader = leader.team.displayName;
-            }
+        const competitors = comp.competitors || [];
+        if (competitors.length > 0) {
+          const sorted = [...competitors].sort((a: any, b: any) => {
+            const orderA = a.order ?? a.position ?? 999;
+            const orderB = b.order ?? b.position ?? 999;
+            return orderA - orderB;
+          });
+          const leader = sorted[0];
+          if (leader?.athlete?.displayName) {
+            racingLeader = leader.athlete.displayName;
+            const flagAlt = leader.athlete?.flag?.alt;
+            if (flagAlt) racingLeaderCountry = flagAlt;
+            if (leader.athlete?.jersey) racingLeaderNumber = parseInt(leader.athlete.jersey, 10) || undefined;
+          } else if (leader?.team?.displayName) {
+            racingLeader = leader.team.displayName;
+          }
+          if (leader?.team?.displayName) {
+            racingLeaderTeam = leader.team.displayName;
+          }
+          if (leader?.order != null || leader?.position != null) {
+            const gridPos = leader?.statistics?.find?.((s: any) => s.name === "gridPosition")?.displayValue;
+            if (gridPos) racingLeaderGrid = parseInt(gridPos, 10) || undefined;
           }
         }
 
@@ -1025,6 +1049,12 @@ async function fetchF1Scores(
           racingStatus: isPost ? "Complete" : racingStatus,
           racingLap,
           racingLeader,
+          racingLeaderCountry,
+          racingLeaderTeam,
+          racingLeaderNumber,
+          racingLeaderGrid,
+          racingLapNum,
+          racingTotalLaps,
           racingSessionType: localInfo.sessionTitle,
         };
       }

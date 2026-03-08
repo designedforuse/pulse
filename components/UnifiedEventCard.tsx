@@ -85,6 +85,23 @@ function getGrandPrixLocation(gpName: string): string {
   return GP_LOCATIONS[raw] || raw || gpName;
 }
 
+const DRIVER_COUNTRY_FLAGS: Record<string, string> = {
+  "Monaco": "🇲🇨", "Netherlands": "🇳🇱", "United Kingdom": "🇬🇧", "Great Britain": "🇬🇧",
+  "Spain": "🇪🇸", "Mexico": "🇲🇽", "Australia": "🇦🇺", "France": "🇫🇷",
+  "Finland": "🇫🇮", "Canada": "🇨🇦", "Germany": "🇩🇪", "Japan": "🇯🇵",
+  "Thailand": "🇹🇭", "Denmark": "🇩🇰", "China": "🇨🇳", "United States": "🇺🇸",
+  "Italy": "🇮🇹", "New Zealand": "🇳🇿", "Brazil": "🇧🇷", "Argentina": "🇦🇷",
+  "Belgium": "🇧🇪", "Switzerland": "🇨🇭", "Austria": "🇦🇹", "Poland": "🇵🇱",
+  "Sweden": "🇸🇪", "Norway": "🇳🇴", "Ireland": "🇮🇪", "Russia": "🇷🇺",
+  "South Africa": "🇿🇦", "India": "🇮🇳", "Colombia": "🇨🇴", "Venezuela": "🇻🇪",
+  "Indonesia": "🇮🇩", "Israel": "🇮🇱",
+};
+
+function getDriverFlag(countryName?: string): string | null {
+  if (!countryName) return null;
+  return DRIVER_COUNTRY_FLAGS[countryName] || null;
+}
+
 function getSportDisplayName(sport: string): string {
   const names: Record<string, string> = {
     hockey: "Hockey",
@@ -621,16 +638,35 @@ export default function UnifiedEventCard({
                   {event.competitionName || event.homeTeam}
                 </Text>
               </View>
-              {(isLive || isFinal) && (score?.racingLeader || score?.racingLap || score?.racingStatus) && (
+              {(isLive || isFinal) && score?.racingLeader && (
+                <View style={uStyles.racingLeaderSection}>
+                  <View style={uStyles.racingLeaderRow}>
+                    {getDriverFlag(score.racingLeaderCountry) && (
+                      <Text style={uStyles.racingDriverFlag}>
+                        {getDriverFlag(score.racingLeaderCountry)}
+                      </Text>
+                    )}
+                    <Text style={uStyles.racingLeaderName} numberOfLines={1}>
+                      {score.racingLeader}
+                    </Text>
+                    {score.racingLeaderNumber != null && (
+                      <Text style={[uStyles.racingDriverNumber, { color: sportColor }]}>
+                        #{score.racingLeaderNumber}
+                      </Text>
+                    )}
+                  </View>
+                  {score.racingLeaderTeam && (
+                    <Text style={uStyles.racingLeaderTeam} numberOfLines={1}>
+                      {score.racingLeaderTeam}
+                    </Text>
+                  )}
+                </View>
+              )}
+              {(isLive || isFinal) && (score?.racingLap || score?.racingStatus) && (
                 <Text style={uStyles.racingContextLine} numberOfLines={1}>
-                  {isFinal && score?.racingLeader
-                    ? `Winner: ${score.racingLeader}`
-                    : [
-                        score?.racingLeader ? `Leader: ${score.racingLeader}` : null,
-                        score?.racingLap || null,
-                      ].filter(Boolean).join(" · ")}
+                  {score?.racingLap || (isFinal ? "Complete" : "")}
                   {isLive && score?.racingStatus && score.racingStatus !== score.racingLap
-                    ? ` · ${score.racingStatus}`
+                    ? (score?.racingLap ? " · " : "") + score.racingStatus
                     : ""}
                 </Text>
               )}
@@ -703,7 +739,9 @@ export default function UnifiedEventCard({
                 {score?.racingLap || score?.racingStatus || "In Progress"}
               </Text>
             ) : isRacing && isFinal ? (
-              <Text style={uStyles.finalStatus}>Final</Text>
+              <Text style={uStyles.finalStatus}>
+                {score?.racingLeader ? "Winner" : "Final"}
+              </Text>
             ) : isLive && displayClockText ? (
               <Text style={uStyles.clockText}>{displayClockText}</Text>
             ) : isFinal ? (
@@ -913,6 +951,34 @@ const uStyles = StyleSheet.create({
   },
   racingCircuitNameFeatured: {
     fontSize: 18,
+  },
+  racingLeaderSection: {
+    marginTop: 4,
+    gap: 2,
+  },
+  racingLeaderRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 6,
+  },
+  racingDriverFlag: {
+    fontSize: 14,
+  },
+  racingLeaderName: {
+    fontSize: 15,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+    flex: 1,
+  },
+  racingDriverNumber: {
+    fontSize: 12,
+    fontFamily: "Inter_700Bold",
+  },
+  racingLeaderTeam: {
+    fontSize: 12,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textSecondary,
+    marginLeft: 20,
   },
   racingContextLine: {
     fontSize: 12,
