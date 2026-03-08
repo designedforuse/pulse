@@ -496,20 +496,19 @@ export function buildChaosSetup(
 
   if (selected.length < 4) {
     const usedSports = new Set(selected.map((c) => c.event.sport));
-    const diverseRemaining = nonAnchors
-      .filter((c) => !usedIds.has(c.event.id))
-      .sort((a, b) => {
+    const remaining = nonAnchors.filter((c) => !usedIds.has(c.event.id));
+
+    while (selected.length < 4 && remaining.length > 0) {
+      remaining.sort((a, b) => {
         const aSportNew = usedSports.has(a.event.sport) ? 1 : 0;
         const bSportNew = usedSports.has(b.event.sport) ? 1 : 0;
         if (aSportNew !== bSportNew) return aSportNew - bSportNew;
         return chaosSort(a, b, inRitual);
       });
-
-    for (const candidate of diverseRemaining) {
-      if (selected.length >= 4) break;
-      selected.push(candidate);
-      usedIds.add(candidate.event.id);
-      usedSports.add(candidate.event.sport);
+      const pick = remaining.shift()!;
+      selected.push(pick);
+      usedIds.add(pick.event.id);
+      usedSports.add(pick.event.sport);
     }
   }
 

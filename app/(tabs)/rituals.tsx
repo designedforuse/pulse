@@ -14,6 +14,7 @@ import * as Haptics from "expo-haptics";
 import Colors from "@/constants/colors";
 import { TeamLogo } from "@/components/TeamLogo";
 import { compactTeamName } from "@/utils/teams";
+import { getGrandPrixFlag } from "@/components/UnifiedEventCard";
 import { useEvents } from "@/lib/events-context";
 import { useFavorites } from "@/lib/favorites-context";
 import {
@@ -46,7 +47,32 @@ const SPORT_COLORS: Record<string, string> = {
   rugby: "#FF8A65",
   cricket: "#FFD54F",
   soccer: "#81C784",
+  racing: "#E53935",
 };
+
+function buildSessionDisplayName(event: SportEvent): string | null {
+  if (event.eventType !== "session") return null;
+  const isRacing = event.sport === "racing";
+  const isSvns = event.league === "HSBC SVNS";
+
+  if (isRacing) {
+    const gpName = event.competitionName || event.homeTeam || "";
+    const gpFlag = getGrandPrixFlag(gpName);
+    const session = event.sessionTitle || event.awayTeam || "";
+    return `${gpFlag ? gpFlag + " " : ""}${gpName}: ${session}`;
+  }
+
+  if (isSvns) {
+    const title = event.sessionTitle || event.homeTeam || "";
+    return title;
+  }
+
+  if (event.sessionTitle) {
+    return event.sessionTitle;
+  }
+
+  return null;
+}
 
 function FeaturedStrip({ event }: { event: SportEvent | null }) {
   if (!event) {
@@ -58,10 +84,29 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
     );
   }
 
-  const away = compactTeamName(event.awayTeam, event.league);
-  const home = compactTeamName(event.homeTeam, event.league);
   const sportColor = SPORT_COLORS[event.sport] || "#90A4AE";
   const league = event.league || event.sport.toUpperCase();
+  const sessionName = buildSessionDisplayName(event);
+
+  if (sessionName) {
+    return (
+      <View style={styles.featuredStrip}>
+        <View style={styles.featuredStripLine} />
+        <View style={[styles.leagueHeader, { backgroundColor: sportColor + "12" }]}>
+          <Text style={[styles.leagueHeaderText, { color: sportColor }]}>{league}</Text>
+        </View>
+        <View style={styles.featuredContent}>
+          <Text style={styles.featuredSessionName} numberOfLines={1}>{sessionName}</Text>
+          <Text style={styles.featuredTime} numberOfLines={1}>
+            {formatFeaturedTime(event.startTimeLocal)}
+          </Text>
+        </View>
+      </View>
+    );
+  }
+
+  const away = compactTeamName(event.awayTeam, event.league);
+  const home = compactTeamName(event.homeTeam, event.league);
 
   return (
     <View style={styles.featuredStrip}>
@@ -358,6 +403,13 @@ const styles = StyleSheet.create({
     color: Colors.textSecondary,
     fontFamily: "Inter_400Regular",
     flexShrink: 0,
+  },
+  featuredSessionName: {
+    fontSize: 14,
+    fontWeight: "600" as const,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_600SemiBold",
+    flex: 1,
   },
   featuredEmpty: {
     fontSize: 12,
