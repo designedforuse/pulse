@@ -51,6 +51,10 @@ function getGrandPrixFlag(gpName: string): string | null {
   return null;
 }
 
+function getGrandPrixLocation(gpName: string): string {
+  return gpName.replace(/\s*Grand\s*Prix$/i, "").trim() || gpName;
+}
+
 function getSportDisplayName(sport: string): string {
   const names: Record<string, string> = {
     hockey: "Hockey",
@@ -583,7 +587,7 @@ export default function UnifiedEventCard({
               <View style={uStyles.racingSessionRow}>
                 <View style={[uStyles.racingSessionChip, { backgroundColor: sportColor + "1A" }]}>
                   <Text style={[uStyles.racingSessionText, { color: sportColor }]}>
-                    {event.sessionTitle || event.awayTeam}
+                    {getGrandPrixLocation(event.competitionName || event.homeTeam)}: {event.sessionTitle || event.awayTeam}
                   </Text>
                 </View>
                 {isLive && score?.racingLap && (
