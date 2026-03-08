@@ -13441,7 +13441,7 @@
       "firstSeenTo": "2026-03-08T05:57:11.976Z"
     }
   ],
-  "lastUpdated": "2026-03-08T05:57:11.976Z",
+  "lastUpdated": "2026-03-08T06:05:29.019Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -13474,26 +13474,7 @@
       }
     ],
     "playersIngested": 675,
-    "movementsDetectedThisRun": [
-      {
-        "playerId": "8475170",
-        "playerName": "B. Schenn",
-        "fromTeam": "STL",
-        "toTeam": "NYI",
-        "detectedAt": "2026-03-08T05:57:11.976Z",
-        "lastSeenFrom": "2026-03-06T03:20:47.423Z",
-        "firstSeenTo": "2026-03-08T05:57:11.976Z"
-      },
-      {
-        "playerId": "8476872",
-        "playerName": "S. Laughton",
-        "fromTeam": "TOR",
-        "toTeam": "LAK",
-        "detectedAt": "2026-03-08T05:57:11.976Z",
-        "lastSeenFrom": "2026-03-03T03:50:51.829Z",
-        "firstSeenTo": "2026-03-08T05:57:11.976Z"
-      }
-    ],
-    "timestamp": "2026-03-08T05:57:11.976Z"
+    "movementsDetectedThisRun": [],
+    "timestamp": "2026-03-08T06:05:29.019Z"
   }
 }

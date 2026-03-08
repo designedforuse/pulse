@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-08T05:57:11.833Z",
+  "lastUpdated": "2026-03-08T06:05:28.927Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -31,22 +31,22 @@
   "cricketSourceUsed": "cricapi",
   "nhlCount": 110,
   "ahlCount": 222,
-  "ahlAdded": 34,
-  "ahlUpdated": 189,
-  "ahlPruned": 34,
+  "ahlAdded": 20,
+  "ahlUpdated": 203,
+  "ahlPruned": 20,
   "echlCount": 16,
   "echlAdded": 3,
   "echlUpdated": 16,
   "echlPruned": 3,
   "echlWebCount": 19,
   "buCount": 4,
-  "buAdded": 1,
-  "buUpdated": 3,
+  "buAdded": 0,
+  "buUpdated": 4,
   "buPruned": 0,
   "rugbyCount": 124,
-  "rugbyAdded": 6,
-  "rugbyUpdated": 113,
-  "rugbyPruned": 6,
+  "rugbyAdded": 0,
+  "rugbyUpdated": 119,
+  "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 26,
     "top14": 22,
@@ -56,11 +56,13 @@
     "leagueone": 25,
     "svns": 4
   },
-  "cricketCount": 0,
-  "cricketAdded": 0,
+  "cricketCount": 1,
+  "cricketAdded": 1,
   "cricketUpdated": 0,
   "cricketPruned": 0,
-  "cricketCounts": {},
+  "cricketCounts": {
+    "International Cricket": 1
+  },
   "iccT20WcCount": 14,
   "iccT20WcAdded": 14,
   "iccT20WcUpdated": 0,
@@ -80,7 +82,7 @@
   "mlsCount": 62,
   "mlsAdded": 0,
   "mlsUpdated": 62,
-  "mlsPruned": 74,
+  "mlsPruned": 62,
   "mlsSourceUsed": "ical",
   "serieaCount": 46,
   "serieaAdded": 0,
@@ -103,14 +105,14 @@
   "ligue1Pruned": 41,
   "ligue1SourceUsed": "espn",
   "nwslCount": 28,
-  "nwslAdded": 3,
-  "nwslUpdated": 25,
-  "nwslPruned": 25,
+  "nwslAdded": 0,
+  "nwslUpdated": 28,
+  "nwslPruned": 28,
   "nwslSourceUsed": "ical",
   "uslCount": 45,
-  "uslAdded": 9,
-  "uslUpdated": 36,
-  "uslPruned": 37,
+  "uslAdded": 0,
+  "uslUpdated": 45,
+  "uslPruned": 45,
   "uslSourceUsed": "espn",
   "championsCupCount": 0,
   "championsCupAdded": 0,
@@ -118,8 +120,8 @@
   "championsCupPruned": 0,
   "championsCupSourceUsed": "ical",
   "mlrCount": 1,
-  "mlrAdded": 1,
-  "mlrUpdated": 0,
+  "mlrAdded": 0,
+  "mlrUpdated": 1,
   "mlrPruned": 0,
   "mlrSourceUsed": "hardcoded",
   "championsLeagueCount": 8,
@@ -133,8 +135,8 @@
   "faCupPruned": 9,
   "faCupSourceUsed": "espn",
   "tennisCount": 33,
-  "tennisAdded": 9,
-  "tennisUpdated": 24,
+  "tennisAdded": 0,
+  "tennisUpdated": 33,
   "tennisPruned": 0,
   "tennisSourceUsed": "espn",
   "tennisTournamentCounts": {
@@ -156,34 +158,34 @@
     "Miami Grand Prix": 5
   },
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-08T05:57:11.833Z",
+    "lastRefreshAt": "2026-03-08T06:05:28.927Z",
     "sources": {
       "nhl": {
         "count": 110,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 222,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 16,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 4,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 124,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 26,
@@ -196,60 +198,62 @@
         }
       },
       "cricket": {
-        "count": 0,
-        "lastFetchAt": "2026-02-27T04:58:48.463Z",
+        "count": 1,
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "CricAPI",
-        "leagueCounts": {}
+        "leagueCounts": {
+          "International Cricket": 1
+        }
       },
       "iccT20Wc": {
         "count": 14,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 1,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 48,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 62,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 46,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 46,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 40,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 41,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 28,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 45,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
@@ -261,24 +265,24 @@
       },
       "mlr": {
         "count": 1,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 8,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "iCal Feed"
       },
       "faCup": {
         "count": 9,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-03T19:45:00.000Z"
       },
       "tennis": {
         "count": 33,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Indian Wells Masters": 33,
@@ -288,7 +292,7 @@
       },
       "f1": {
         "count": 30,
-        "lastFetchAt": "2026-03-08T05:57:11.833Z",
+        "lastFetchAt": "2026-03-08T06:05:28.927Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Australian Grand Prix": 5,
@@ -5225,8 +5229,8 @@
       "id": "cricket-t20wc-d20c4ab40f",
       "sport": "cricket",
       "league": "ICC",
-      "awayTeam": "TBC",
-      "homeTeam": "TBC",
+      "awayTeam": "India",
+      "homeTeam": "New Zealand",
       "startTimeLocal": "2026-03-08T13:30:00.000Z",
       "endTimeLocal": "2026-03-08T17:00:00.000Z",
       "providerId": "youtubetv",
@@ -5239,7 +5243,7 @@
       "hostCountry": "India",
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
-      "t20WcMatchLabel": "T20 WC Final – Match 55",
+      "t20WcMatchLabel": "T20 WC Final",
       "t20WcVenue": "Narendra Modi Stadium, Ahmedabad"
     },
     {
@@ -6510,6 +6514,25 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "cricket-intl-u9mqel",
+      "sport": "cricket",
+      "league": "International Cricket",
+      "awayTeam": "Bangladesh",
+      "homeTeam": "Pakistan",
+      "startTimeLocal": "2026-03-11T08:15:00.000Z",
+      "endTimeLocal": "2026-03-11T11:45:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "intl",
+      "competitionName": "International Cricket",
+      "competitionType": "international",
+      "hostCountry": "Bangladesh",
+      "seriesName": "1st ODI, Pakistan tour of Bangladesh 2026",
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "soccer-usl-20260311-1600-hartford-athletic-at-birmingham-legion-fc",

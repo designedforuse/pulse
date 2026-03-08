@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-08T05:57:11.976Z",
+  "lastUpdated": "2026-03-08T06:05:29.019Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -113,27 +113,8 @@
           }
         ],
         "playersIngested": 675,
-        "movementsDetectedThisRun": [
-          {
-            "playerId": "8475170",
-            "playerName": "B. Schenn",
-            "fromTeam": "STL",
-            "toTeam": "NYI",
-            "detectedAt": "2026-03-08T05:57:11.976Z",
-            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
-            "firstSeenTo": "2026-03-08T05:57:11.976Z"
-          },
-          {
-            "playerId": "8476872",
-            "playerName": "S. Laughton",
-            "fromTeam": "TOR",
-            "toTeam": "LAK",
-            "detectedAt": "2026-03-08T05:57:11.976Z",
-            "lastSeenFrom": "2026-03-03T03:50:51.829Z",
-            "firstSeenTo": "2026-03-08T05:57:11.976Z"
-          }
-        ],
-        "timestamp": "2026-03-08T05:57:11.976Z"
+        "movementsDetectedThisRun": [],
+        "timestamp": "2026-03-08T06:05:29.019Z"
       },
       "cacheHistoryCount": 740,
       "error": null
@@ -143,7 +124,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": true,
-      "hoursUntil": -9.953326666666667,
+      "hoursUntil": -10.091394166666667,
       "teamsEvaluated": 3,
       "triggers": {
         "Anaheim Ducks": [
@@ -286,7 +267,7 @@
         "rejectedForAgeCount": 1
       },
       "clinch_watch_cricket-t20wc-d20c4ab40f": {
-        "searchQuery": "TBC clinch playoff berth March 2026",
+        "searchQuery": "India clinch playoff berth March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
@@ -304,7 +285,7 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-08T05:57:11.976Z",
+      "triggeredAt": "2026-03-08T06:05:29.019Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "SoCal",
@@ -314,7 +295,7 @@
         "team": "Anaheim Ducks",
         "abbrev": "ANA",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": -10,
+        "hoursUntil": -10.1,
         "triggers": [
           "trade-watch list",
           "3 expiring contracts"
@@ -367,7 +348,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-08T05:57:11.976Z",
+      "triggeredAt": "2026-03-08T06:05:29.019Z",
       "expiresAt": "2026-03-09T05:00:00.000Z",
       "kind": "playoff_push",
       "region": "SoCal",
@@ -399,7 +380,7 @@
         "tabHint": "Watch"
       },
       "priority": 99,
-      "triggeredAt": "2026-03-08T05:57:11.976Z",
+      "triggeredAt": "2026-03-08T06:05:29.019Z",
       "expiresAt": "2026-03-08T20:00:00.000Z",
       "kind": "deadline_watch",
       "region": "NewEngland",
@@ -409,7 +390,7 @@
         "team": "Boston Bruins",
         "abbrev": "BOS",
         "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": -10,
+        "hoursUntil": -10.1,
         "triggers": [
           "trade-watch list",
           "2 expiring contracts",
@@ -459,8 +440,8 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-08T05:57:11.976Z",
-      "expiresAt": "2026-03-08T11:57:11.976Z",
+      "triggeredAt": "2026-03-08T06:05:29.019Z",
+      "expiresAt": "2026-03-08T12:05:29.019Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
@@ -494,7 +475,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-08T05:57:11.976Z",
+      "triggeredAt": "2026-03-08T06:05:29.019Z",
       "expiresAt": "2026-03-08T23:45:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
@@ -528,14 +509,14 @@
     {
       "id": "clinch_watch_cricket-t20wc-d20c4ab40f",
       "title": "Clinch Watch",
-      "subtitle": "TBC vs TBC · Cricket title on the line",
+      "subtitle": "India vs New Zealand · Cricket title on the line",
       "impact": {
         "label": "Impacts: Sunday Coffee & Chill",
         "ritualId": "sunday_session",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-08T05:57:11.976Z",
+      "triggeredAt": "2026-03-08T06:05:29.019Z",
       "expiresAt": "2026-03-08T17:30:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -546,13 +527,13 @@
         "conditionLabel": "Cricket title on the line",
         "sport": "cricket",
         "league": "ICC",
-        "awayTeam": "TBC",
-        "homeTeam": "TBC",
+        "awayTeam": "India",
+        "homeTeam": "New Zealand",
         "startTime": "2026-03-08T13:30:00.000Z",
         "eventIds": [
           "cricket-t20wc-d20c4ab40f"
         ],
-        "reason": "TBC and TBC meet with a cricket title on the line.\n\nThis is the kind of moment entire seasons build toward."
+        "reason": "India and New Zealand meet with a cricket title on the line.\n\nThis is the kind of moment entire seasons build toward."
       },
       "sports": [
         "cricket"

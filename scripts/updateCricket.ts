@@ -503,7 +503,7 @@ function matchToEvent(match: CricApiMatch, classification: {
   country: string;
   seriesName: string;
   isIccT20Wc: boolean;
-}): AppEvent {
+}): AppEvent | null {
   const teams = match.teams || [];
   const awayTeam = teams[0] || "TBD";
   const homeTeam = teams[1] || "TBD";
@@ -519,7 +519,11 @@ function matchToEvent(match: CricApiMatch, classification: {
       startTime = parsed.toISOString();
     }
   } else {
-    startTime = new Date(match.date + "T00:00:00Z").toISOString();
+    const fallback = new Date(match.date + "T00:00:00Z");
+    if (isNaN(fallback.getTime())) {
+      return null;
+    }
+    startTime = fallback.toISOString();
   }
 
   const durationMin = CRICKET_DURATION_MIN[match.matchType] || 210;
@@ -728,6 +732,7 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
       seriesName: string;
       isIccT20Wc: boolean;
     });
+    if (!event) continue;
     events.push(event);
 
     const key = classification.league;

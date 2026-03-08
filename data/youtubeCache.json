@@ -166,5 +166,17 @@
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
+  },
+  "clinch_watch:india clinch playoff berth march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-08T06:05:37.619Z",
+    "query": "India clinch playoff berth March 2026",
+    "debug": {
+      "searchQuery": "India clinch playoff berth March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
   }
 }
