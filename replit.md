@@ -11,7 +11,7 @@ The application features a frontend built with Expo Router for file-based naviga
 
 **Key Architectural Decisions & Features:**
 - **Navigation:** A 3-tab interface (Watch, Rituals, Explore) with Watch as the default tab.
-- **Watch Tab (4-Game Chaos Setup):** Displays a multiview module prioritizing live events and anchor teams with dynamic promotion for Slot 4 based on real-time activity signals (e.g., goals, overtime).
+- **Watch Tab (4-Game Chaos Setup):** Displays a multiview module prioritizing live events and anchor teams with dynamic promotion for Slot 4 based on real-time activity signals (e.g., goals, overtime, Safety Car, Red Flag, final laps). F1 Race and Sprint sessions are Chaos Mode eligible with session-based scoring (Race +80, Sprint +40, Qualifying +15); Practice sessions remain in Live Now only.
 - **Ritual Featured Override:** Users can manually override the featured game on Ritual Detail pages.
 - **Event Presentation:** Users select viewing modes, displaying sport packs with filtered event lists. Event cards launch streaming applications.
 - **Game State Normalization:** A helper consistently categorizes events as FINAL, LIVE, or UPCOMING.

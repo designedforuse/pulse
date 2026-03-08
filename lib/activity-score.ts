@@ -21,6 +21,9 @@ const SIGNAL_REASONS: Record<string, string> = {
   "Late close game": "One-goal game late",
   "Power play": "Power play",
   "Goalie pulled": "Goalie pulled",
+  "Red Flag": "Red Flag deployed",
+  "Safety Car": "Safety Car deployed",
+  "Final laps": "Final laps of race",
 };
 
 function getScoringReason(sport: string, current: ScoreData | undefined, previous: ScoreData | undefined): string {
@@ -202,6 +205,33 @@ function detectGoaliePulled(
   return !!(current as any).goaliePulled;
 }
 
+function detectRacingRedFlag(
+  event: SportEvent,
+  current: ScoreData | undefined,
+): boolean {
+  if (!current || event.sport.toLowerCase() !== "racing") return false;
+  const status = (current.racingStatus || "").toLowerCase();
+  return status.includes("red flag");
+}
+
+function detectRacingSafetyCar(
+  event: SportEvent,
+  current: ScoreData | undefined,
+): boolean {
+  if (!current || event.sport.toLowerCase() !== "racing") return false;
+  const status = (current.racingStatus || "").toLowerCase();
+  return status.includes("safety car") || status === "sc" || status.includes("vsc");
+}
+
+function detectRacingFinalLaps(
+  event: SportEvent,
+  current: ScoreData | undefined,
+): boolean {
+  if (!current || event.sport.toLowerCase() !== "racing") return false;
+  if (current.racingLapNum == null || current.racingTotalLaps == null || current.racingTotalLaps === 0) return false;
+  return current.racingLapNum / current.racingTotalLaps >= 0.85;
+}
+
 export function computeActivityScore(
   event: SportEvent,
   currentScore: ScoreData | undefined,
@@ -229,8 +259,16 @@ export function computeActivityScore(
     signals.push({ name: "Upset Alert", points: 30, reason: SIGNAL_REASONS["Upset Alert"] });
   }
 
+  if (detectRacingRedFlag(event, currentScore)) {
+    signals.push({ name: "Red Flag", points: 30, reason: SIGNAL_REASONS["Red Flag"] });
+  }
+
   if (detectGoaliePulled(event, currentScore)) {
     signals.push({ name: "Goalie pulled", points: 25, reason: SIGNAL_REASONS["Goalie pulled"] });
+  }
+
+  if (detectRacingSafetyCar(event, currentScore)) {
+    signals.push({ name: "Safety Car", points: 20, reason: SIGNAL_REASONS["Safety Car"] });
   }
 
   if (detectPowerPlay(event, currentScore)) {
@@ -240,6 +278,10 @@ export function computeActivityScore(
   if (detectLateCloseGame(event, currentScore)) {
     const lateReason = event.sport.toLowerCase() === "rugby" ? "Close game late" : SIGNAL_REASONS["Late close game"];
     signals.push({ name: "Late close game", points: 20, reason: lateReason });
+  }
+
+  if (detectRacingFinalLaps(event, currentScore)) {
+    signals.push({ name: "Final laps", points: 25, reason: SIGNAL_REASONS["Final laps"] });
   }
 
   const total = signals.reduce((sum, s) => sum + s.points, 0);

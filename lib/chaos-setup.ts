@@ -9,9 +9,9 @@ import { computeActivityScore, getPromotionReason, type ActivityScore } from "@/
 const CHAOS_WINDOW_MS = 90 * 60 * 1000;
 const CHAOS_DEBUG = __DEV__;
 
-const FOCUS_SPORTS = new Set(["rugby", "cricket", "hockey", "soccer"]);
+const FOCUS_SPORTS = new Set(["rugby", "cricket", "hockey", "soccer", "racing"]);
 
-const SPORT_PRIORITY: Record<string, number> = { rugby: 4, cricket: 3, hockey: 2, soccer: 1 };
+const SPORT_PRIORITY: Record<string, number> = { rugby: 4, cricket: 3, hockey: 2, racing: 2, soccer: 1 };
 
 function getSportPriority(sport: string): number {
   return SPORT_PRIORITY[sport] ?? 0;
@@ -55,6 +55,12 @@ export function getTensionRank(
     else if (diff <= 14) rank = 2;
   } else if (sport === "cricket") {
     rank = 1;
+  } else if (sport === "racing") {
+    const sessionTitle = (event.sessionTitle || event.awayTeam || "").toLowerCase();
+    if (/\brace\b/.test(sessionTitle)) rank = 3;
+    else if (/\bsprint\b/.test(sessionTitle)) rank = 2;
+    else if (/\bqualifying\b/.test(sessionTitle)) rank = 2;
+    else rank = 1;
   } else {
     if (diff <= 1) rank = 3;
     else if (diff <= 2) rank = 2;
@@ -69,6 +75,88 @@ export function getTensionRank(
   if (isOT) rank = Math.min(rank + 2, 5);
 
   return rank;
+}
+
+const F1_SESSION_PRIORITY: Record<string, number> = {
+  race: 80,
+  sprint: 40,
+  qualifying: 15,
+  "sprint qualifying": 10,
+  "sprint shootout": 10,
+};
+
+export interface RacingChaosScoreResult {
+  total: number;
+  sessionScore: number;
+  situationBoosts: number;
+  favoritesBoost: number;
+  reasons: string[];
+}
+
+function getF1SessionType(event: SportEvent): string {
+  const title = (event.sessionTitle || event.awayTeam || "").toLowerCase().trim();
+  if (/\brace\b/.test(title)) return "race";
+  if (/\bsprint qualifying\b/.test(title) || /\bsprint shootout\b/.test(title)) return "sprint qualifying";
+  if (/\bsprint\b/.test(title)) return "sprint";
+  if (/\bqualifying\b/.test(title)) return "qualifying";
+  if (/\bpractice\b/.test(title) || /\bfp\d/i.test(title)) return "practice";
+  return title;
+}
+
+function isF1ChaosEligible(sessionType: string): boolean {
+  return sessionType === "race" || sessionType === "sprint" || sessionType === "qualifying";
+}
+
+export function computeRacingChaosScore(
+  event: SportEvent,
+  scoreData: ScoreData | undefined,
+  favorites: Favorites,
+): RacingChaosScoreResult {
+  const reasons: string[] = [];
+  const sessionType = getF1SessionType(event);
+  const sessionScore = F1_SESSION_PRIORITY[sessionType] ?? 0;
+
+  if (!isF1ChaosEligible(sessionType)) {
+    return { total: 0, sessionScore: 0, situationBoosts: 0, favoritesBoost: 0, reasons: [`${sessionType || "Unknown"} session — not eligible for Chaos Mode`] };
+  }
+
+  reasons.push(`${sessionType.charAt(0).toUpperCase() + sessionType.slice(1)} session`);
+
+  let situationBoosts = 0;
+
+  if (scoreData) {
+    const status = (scoreData.racingStatus || "").toLowerCase();
+    if (status.includes("red flag")) {
+      situationBoosts += 25;
+      reasons.push("Red Flag");
+    } else if (status.includes("safety car") || status === "sc") {
+      situationBoosts += 15;
+      reasons.push("Safety Car");
+    } else if (status.includes("vsc")) {
+      situationBoosts += 10;
+      reasons.push("Virtual Safety Car");
+    }
+
+    if (scoreData.racingLapNum != null && scoreData.racingTotalLaps != null && scoreData.racingTotalLaps > 0) {
+      const progress = scoreData.racingLapNum / scoreData.racingTotalLaps;
+      if (progress >= 0.85) {
+        situationBoosts += 20;
+        reasons.push("Final laps");
+      } else if (progress >= 0.65) {
+        situationBoosts += 10;
+        reasons.push("Late race");
+      }
+    }
+  }
+
+  let favoritesBoost = 0;
+  if (favoriteInvolved(event, favorites)) {
+    favoritesBoost = 8;
+    reasons.push("Favorite team/driver");
+  }
+
+  const total = sessionScore + situationBoosts + favoritesBoost;
+  return { total, sessionScore, situationBoosts, favoritesBoost, reasons };
 }
 
 const TERMINAL_STATUSES = [
@@ -130,6 +218,7 @@ export interface ChaosCandidate {
   emotionRank: number;
   tensionRank: number;
   hockeyChaosScore?: ChaosScoreResult;
+  racingChaosScore?: RacingChaosScoreResult;
 }
 
 function getCandidatePool(
@@ -166,7 +255,13 @@ function getCandidatePool(
       hockeyChaosScore = computeHockeyChaosScore(event, scoreData, favorites, now);
     }
 
-    candidates.push({ event, score, isFavorite: isFav, isLive: live, isAnchor: anchor, isBackfill: false, emotionRank: emotion, tensionRank: tension, hockeyChaosScore });
+    let racingChaosScore: RacingChaosScoreResult | undefined;
+    if (event.sport === "racing" && live) {
+      const scoreData = getScoreData?.(event.id);
+      racingChaosScore = computeRacingChaosScore(event, scoreData, favorites);
+    }
+
+    candidates.push({ event, score, isFavorite: isFav, isLive: live, isAnchor: anchor, isBackfill: false, emotionRank: emotion, tensionRank: tension, hockeyChaosScore, racingChaosScore });
   }
 
   return candidates;
@@ -270,6 +365,19 @@ function chaosSort(a: ChaosCandidate, b: ChaosCandidate, ritualMode: boolean): n
     return 1;
   }
 
+  const aRCS = a.racingChaosScore?.total ?? 0;
+  const bRCS = b.racingChaosScore?.total ?? 0;
+  const bothRacing = a.event.sport === "racing" && b.event.sport === "racing" && aRCS > 0 && bRCS > 0;
+  if (bothRacing) {
+    if (bRCS !== aRCS) return bRCS - aRCS;
+  }
+  if (a.event.sport === "racing" && aRCS >= 40 && b.event.sport !== "racing" && b.event.sport !== "hockey") {
+    return -1;
+  }
+  if (b.event.sport === "racing" && bRCS >= 40 && a.event.sport !== "racing" && a.event.sport !== "hockey") {
+    return 1;
+  }
+
   if (b.emotionRank !== a.emotionRank) return b.emotionRank - a.emotionRank;
 
   if (ritualMode) {
@@ -339,6 +447,9 @@ export interface ChaosDebug {
     isBackfill: boolean;
     hockeyChaosTotal?: number;
     hockeyChaosReasons?: string[];
+    racingChaosTotal?: number;
+    racingChaosReasons?: string[];
+    racingSessionType?: string;
   }[];
 }
 
@@ -463,6 +574,9 @@ export function buildChaosSetup(
       isBackfill: c.isBackfill,
       hockeyChaosTotal: c.hockeyChaosScore?.total,
       hockeyChaosReasons: c.hockeyChaosScore?.reasons,
+      racingChaosTotal: c.racingChaosScore?.total,
+      racingChaosReasons: c.racingChaosScore?.reasons,
+      racingSessionType: c.event.sport === "racing" ? getF1SessionType(c.event) : undefined,
     })),
   };
 
@@ -481,8 +595,10 @@ export function buildChaosSetup(
       const start = new Date(c.event.startTimeLocal);
       const hcs = c.hockeyChaosScore;
       const hcsStr = hcs ? ` chaosScore=${hcs.total}(st=${hcs.statusScore}+cl=${hcs.closenessScore}+tp=${hcs.timePressure}+sit=${hcs.situationBoosts}+fav=${hcs.favoritesBoost}+mom=${hcs.momentum}) [${hcs.reasons.join(", ")}]` : "";
+      const rcs = c.racingChaosScore;
+      const rcsStr = rcs ? ` racingScore=${rcs.total}(session=${rcs.sessionScore}+sit=${rcs.situationBoosts}+fav=${rcs.favoritesBoost}) [${rcs.reasons.join(", ")}]` : "";
       console.log(
-        `  [CHAOS]  ${c.event.id}: live=${c.isLive} fav=${c.isFavorite} anchor=${c.isAnchor} backfill=${c.isBackfill} emotion=${c.emotionRank} tension=${c.tensionRank} sportPri=${getSportPriority(c.event.sport)} start=${fmtPT(start)} ${c.event.awayTeam} @ ${c.event.homeTeam}${hcsStr}`,
+        `  [CHAOS]  ${c.event.id}: live=${c.isLive} fav=${c.isFavorite} anchor=${c.isAnchor} backfill=${c.isBackfill} emotion=${c.emotionRank} tension=${c.tensionRank} sportPri=${getSportPriority(c.event.sport)} start=${fmtPT(start)} ${c.event.awayTeam} @ ${c.event.homeTeam}${hcsStr}${rcsStr}`,
       );
     }
     const topPool = pool
