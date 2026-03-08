@@ -565,7 +565,7 @@ export default function UnifiedEventCard({
   const isCricket = event.sport === "cricket";
   const isRacing = event.sport === "racing";
   const gpFlag = isRacing ? getGrandPrixFlag(event.competitionName || event.homeTeam) : null;
-  const cricketLiveDetail = formatCricketLiveDetail(event, score, isLive);
+
 
   const awayRank = isTennis ? event.tennisPlayer1Rank : undefined;
   const homeRank = isTennis ? event.tennisPlayer2Rank : undefined;
@@ -725,12 +725,6 @@ export default function UnifiedEventCard({
             <Text style={uStyles.venueText} numberOfLines={1}>{event.olympicVenue}</Text>
           ) : null}
         </View>
-
-        {cricketLiveDetail ? (
-          <Text style={uStyles.cricketLiveDetail} numberOfLines={1} ellipsizeMode="tail">
-            {cricketLiveDetail}
-          </Text>
-        ) : null}
 
         <View style={uStyles.footer}>
           <View style={uStyles.footerLeft}>
@@ -1002,14 +996,6 @@ const uStyles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
     color: Colors.textMuted,
     marginTop: 4,
-    paddingLeft: 4,
-  },
-  cricketLiveDetail: {
-    fontSize: 11,
-    fontFamily: "Inter_500Medium",
-    color: Colors.accentSoft || "#66BB6A",
-    marginTop: 2,
-    marginBottom: 2,
     paddingLeft: 4,
   },
   footer: {
