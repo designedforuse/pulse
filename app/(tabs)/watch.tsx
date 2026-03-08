@@ -98,6 +98,38 @@ function getHeroMicroLabel(tensionRank: number, event: SportEvent, now: Date): s
   return null;
 }
 
+const F1_DRIVER_CONSTRUCTORS: Record<string, string> = {
+  "Max Verstappen": "Red Bull Racing", "Sergio Perez": "Red Bull Racing",
+  "Lewis Hamilton": "Ferrari", "Charles Leclerc": "Ferrari",
+  "Lando Norris": "McLaren", "Oscar Piastri": "McLaren",
+  "Carlos Sainz": "Williams", "Alexander Albon": "Williams",
+  "George Russell": "Mercedes", "Andrea Kimi Antonelli": "Mercedes",
+  "Fernando Alonso": "Aston Martin", "Lance Stroll": "Aston Martin",
+  "Pierre Gasly": "Alpine", "Jack Doohan": "Alpine",
+  "Yuki Tsunoda": "Racing Bulls", "Isack Hadjar": "Racing Bulls",
+  "Nico Hulkenberg": "Sauber", "Gabriel Bortoleto": "Sauber",
+  "Esteban Ocon": "Haas", "Oliver Bearman": "Haas",
+  "Liam Lawson": "Red Bull Racing",
+};
+
+const CONSTRUCTOR_COLORS: Record<string, string> = {
+  "Red Bull Racing": "#3671C6", "Ferrari": "#E8002D", "McLaren": "#FF8000",
+  "Mercedes": "#27F4D2", "Aston Martin": "#229971", "Alpine": "#FF87BC",
+  "Williams": "#64C4FF", "Racing Bulls": "#6692FF", "Sauber": "#52E252",
+  "Haas": "#B6BABD",
+};
+
+function getConstructorForDriver(driverName: string): string | undefined {
+  return F1_DRIVER_CONSTRUCTORS[driverName];
+}
+
+function shortenGpName(gpName: string): string {
+  return gpName
+    .replace(/\s*Grand\s*Prix$/i, " GP")
+    .replace(/\s*Gran\s*Premio$/i, " GP")
+    .trim();
+}
+
 function ChaosCard({
   event,
   isPrimary,
@@ -143,8 +175,8 @@ function ChaosCard({
 
   const racingSessionType = isRacing ? getF1SessionType(event) : "";
   const gpName = event.competitionName || event.homeTeam || "";
+  const gpShort = isRacing ? shortenGpName(gpName) : "";
   const gpFlag = isRacing ? getGrandPrixFlag(gpName) : null;
-  const gpDisplay = gpFlag ? `${gpFlag} ${gpName}` : gpName;
 
   const leaderName = score?.racingLeader;
   const leaderFlag = getDriverFlag(score?.racingLeaderCountry);
@@ -152,7 +184,7 @@ function ChaosCard({
   const lapNum = score?.racingLapNum;
   const totalLaps = score?.racingTotalLaps;
   const racingStatus = score?.racingStatus;
-  const leaderTeam = score?.racingLeaderTeam;
+  const leaderTeam = score?.racingLeaderTeam || (leaderName ? getConstructorForDriver(leaderName) : undefined);
 
   const racingLeaderLine = leaderName
     ? `${leaderPos ? `P${leaderPos} ` : ""}${leaderFlag ? `${leaderFlag} ` : ""}${leaderName}`
@@ -202,7 +234,7 @@ function ChaosCard({
             )}
             <View style={styles.primaryHeader}>
               <Text style={[styles.primaryLeague, { color: sportColor }]}>
-                {event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.tournamentName || event.league}
+                {isRacing ? `F1 · ${gpShort}` : event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.tournamentName || event.league}
               </Text>
               <View style={{ flex: 1 }} />
               {isLiveState && (
@@ -222,32 +254,32 @@ function ChaosCard({
 
             {isRacing ? (
               <View style={styles.primaryTeams}>
-                <Text style={styles.racingGpTitle} numberOfLines={1}>
-                  {gpDisplay}
-                </Text>
-                <View style={styles.racingSessionRow}>
-                  <View style={[styles.racingSessionChip, { backgroundColor: sportColor + "1A" }]}>
-                    <Text style={[styles.racingSessionText, { color: sportColor }]}>
-                      {event.sessionTitle || event.awayTeam}
-                    </Text>
-                  </View>
-                  {isLiveState && racingStatus && racingStatus !== "In Progress" && (
-                    <Text style={[styles.racingStatusText, { color: racingStatus === "Red Flag" ? "#FF3B30" : racingStatus === "Safety Car" ? "#FFD600" : sportColor }]}>
-                      {racingStatus}
-                    </Text>
-                  )}
-                </View>
+                {isLiveState && racingStatus && racingStatus !== "In Progress" && (
+                  <Text style={[styles.racingFlagStatus, { color: racingStatus === "Red Flag" ? "#FF3B30" : racingStatus === "Safety Car" ? "#FFD600" : sportColor }]}>
+                    {racingStatus}
+                  </Text>
+                )}
                 {isLiveState && racingLeaderLine ? (
                   <View style={styles.racingLeaderRow}>
                     <Text style={styles.racingLeaderText}>{racingLeaderLine}</Text>
-                    {leaderTeam ? <Text style={styles.racingLeaderTeam}>{leaderTeam}</Text> : null}
+                    {leaderTeam ? (
+                      <View style={styles.racingConstructorRow}>
+                        <View style={[styles.racingConstructorDot, { backgroundColor: CONSTRUCTOR_COLORS[leaderTeam] || sportColor }]} />
+                        <Text style={styles.racingLeaderTeam}>{leaderTeam}</Text>
+                      </View>
+                    ) : null}
                   </View>
                 ) : isLiveState && isQualifying && qualifyingPhaseText ? (
                   <Text style={styles.racingQualifyingPhase}>{qualifyingPhaseText}</Text>
                 ) : isFinalState && racingWinnerLine ? (
                   <View style={styles.racingLeaderRow}>
                     <Text style={styles.racingLeaderText}>{racingWinnerLine}</Text>
-                    {leaderTeam ? <Text style={styles.racingLeaderTeam}>{leaderTeam}</Text> : null}
+                    {leaderTeam ? (
+                      <View style={styles.racingConstructorRow}>
+                        <View style={[styles.racingConstructorDot, { backgroundColor: CONSTRUCTOR_COLORS[leaderTeam] || sportColor }]} />
+                        <Text style={styles.racingLeaderTeam}>{leaderTeam}</Text>
+                      </View>
+                    ) : null}
                   </View>
                 ) : null}
               </View>
@@ -340,7 +372,7 @@ function ChaosCard({
         )}
         <View style={styles.secondaryHeader}>
           <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
-            {event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.tournamentName || event.league}
+            {isRacing ? `F1 · ${gpShort}` : event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.tournamentName || event.league}
           </Text>
           {isLiveState && (
             <View style={styles.liveChipSmall}>
@@ -355,27 +387,33 @@ function ChaosCard({
 
         {isRacing ? (
           <View style={styles.secondaryTeams}>
-            <Text style={styles.racingGpTitleSm} numberOfLines={1}>
-              {gpDisplay}
-            </Text>
-            <View style={styles.racingSessionRow}>
-              <View style={[styles.racingSessionChipSm, { backgroundColor: sportColor + "1A" }]}>
-                <Text style={[styles.racingSessionTextSm, { color: sportColor }]}>
-                  {event.sessionTitle || event.awayTeam}
-                </Text>
-              </View>
-              {isLiveState && racingStatus && racingStatus !== "In Progress" && (
-                <Text style={[styles.racingStatusTextSm, { color: racingStatus === "Red Flag" ? "#FF3B30" : racingStatus === "Safety Car" ? "#FFD600" : sportColor }]}>
-                  {racingStatus}
-                </Text>
-              )}
-            </View>
+            {isLiveState && racingStatus && racingStatus !== "In Progress" && (
+              <Text style={[styles.racingFlagStatusSm, { color: racingStatus === "Red Flag" ? "#FF3B30" : racingStatus === "Safety Car" ? "#FFD600" : sportColor }]}>
+                {racingStatus}
+              </Text>
+            )}
             {isLiveState && racingLeaderLine ? (
-              <Text style={styles.racingLeaderTextSm} numberOfLines={1}>{racingLeaderLine}</Text>
+              <>
+                <Text style={styles.racingLeaderTextSm} numberOfLines={1}>{racingLeaderLine}</Text>
+                {leaderTeam ? (
+                  <View style={styles.racingConstructorRowSm}>
+                    <View style={[styles.racingConstructorDotSm, { backgroundColor: CONSTRUCTOR_COLORS[leaderTeam] || sportColor }]} />
+                    <Text style={styles.racingLeaderTeamSm}>{leaderTeam}</Text>
+                  </View>
+                ) : null}
+              </>
             ) : isLiveState && isQualifying && qualifyingPhaseText ? (
               <Text style={styles.racingQualifyingPhaseSm}>{qualifyingPhaseText}</Text>
             ) : isFinalState && racingWinnerLine ? (
-              <Text style={styles.racingLeaderTextSm} numberOfLines={1}>{racingWinnerLine}</Text>
+              <>
+                <Text style={styles.racingLeaderTextSm} numberOfLines={1}>{racingWinnerLine}</Text>
+                {leaderTeam ? (
+                  <View style={styles.racingConstructorRowSm}>
+                    <View style={[styles.racingConstructorDotSm, { backgroundColor: CONSTRUCTOR_COLORS[leaderTeam] || sportColor }]} />
+                    <Text style={styles.racingLeaderTeamSm}>{leaderTeam}</Text>
+                  </View>
+                ) : null}
+              </>
             ) : null}
           </View>
         ) : matchupText ? (
@@ -1756,71 +1794,63 @@ const styles = StyleSheet.create({
     color: Colors.favStar,
     fontFamily: "Inter_500Medium",
   },
-  racingGpTitle: {
-    fontSize: 20,
+  racingFlagStatus: {
+    fontSize: 14,
     fontFamily: "Inter_700Bold",
-    color: Colors.textPrimary,
-    marginBottom: 6,
-  },
-  racingGpTitleSm: {
-    fontSize: 15,
-    fontFamily: "Inter_700Bold",
-    color: Colors.textPrimary,
+    letterSpacing: 0.3,
     marginBottom: 4,
   },
-  racingSessionRow: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    gap: 8,
-    marginBottom: 6,
-  },
-  racingSessionChip: {
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 8,
-  },
-  racingSessionText: {
-    fontSize: 13,
-    fontFamily: "Inter_600SemiBold",
+  racingFlagStatusSm: {
+    fontSize: 12,
+    fontFamily: "Inter_700Bold",
     letterSpacing: 0.3,
-  },
-  racingSessionChipSm: {
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 6,
-  },
-  racingSessionTextSm: {
-    fontSize: 11,
-    fontFamily: "Inter_600SemiBold",
-    letterSpacing: 0.3,
-  },
-  racingStatusText: {
-    fontSize: 13,
-    fontFamily: "Inter_600SemiBold",
-  },
-  racingStatusTextSm: {
-    fontSize: 11,
-    fontFamily: "Inter_600SemiBold",
+    marginBottom: 2,
   },
   racingLeaderRow: {
     marginTop: 2,
   },
   racingLeaderText: {
-    fontSize: 17,
-    fontFamily: "Inter_600SemiBold",
+    fontSize: 18,
+    fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
   },
   racingLeaderTextSm: {
-    fontSize: 14,
+    fontSize: 15,
     fontFamily: "Inter_600SemiBold",
     color: Colors.textPrimary,
+    marginTop: 2,
+  },
+  racingConstructorRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 6,
     marginTop: 4,
   },
+  racingConstructorRowSm: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 5,
+    marginTop: 3,
+  },
+  racingConstructorDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+  },
+  racingConstructorDotSm: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+  },
   racingLeaderTeam: {
-    fontSize: 13,
-    fontFamily: "Inter_400Regular",
+    fontSize: 14,
+    fontFamily: "Inter_500Medium",
     color: Colors.textSecondary,
-    marginTop: 2,
+  },
+  racingLeaderTeamSm: {
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
   },
   racingQualifyingPhase: {
     fontSize: 15,

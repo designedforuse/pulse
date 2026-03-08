@@ -86,7 +86,7 @@ function getGrandPrixLocation(gpName: string): string {
 }
 
 const DRIVER_COUNTRY_FLAGS: Record<string, string> = {
-  "Monaco": "🇲🇨", "Netherlands": "🇳🇱", "United Kingdom": "🇬🇧", "Great Britain": "🇬🇧",
+  "Monaco": "🇲🇨", "Netherlands": "🇳🇱", "United Kingdom": "🇬🇧", "Great Britain": "🇬🇧", "Britain": "🇬🇧",
   "Spain": "🇪🇸", "Mexico": "🇲🇽", "Australia": "🇦🇺", "France": "🇫🇷",
   "Finland": "🇫🇮", "Canada": "🇨🇦", "Germany": "🇩🇪", "Japan": "🇯🇵",
   "Thailand": "🇹🇭", "Denmark": "🇩🇰", "China": "🇨🇳", "United States": "🇺🇸",
