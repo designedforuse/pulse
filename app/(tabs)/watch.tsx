@@ -303,9 +303,9 @@ function ChaosCard({
                   <Text style={styles.heroTeamName} numberOfLines={1}>
                     {displayTeamName(event.awayTeam, event.league)}{awayIsFav ? <Text style={styles.teamFavStarHero}>{" \u2605"}</Text> : null}
                   </Text>
-                  {hasScore && event.sport !== "cricket" && (
+                  {hasScore && (
                     <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
-                      {score.awayScore}
+                      {event.sport === "cricket" ? (score.cricketAway || "") : score.awayScore}
                     </Text>
                   )}
                 </View>
@@ -315,29 +315,14 @@ function ChaosCard({
                   <Text style={styles.heroTeamName} numberOfLines={1}>
                     {displayTeamName(event.homeTeam, event.league)}{homeIsFav ? <Text style={styles.teamFavStarHero}>{" \u2605"}</Text> : null}
                   </Text>
-                  {hasScore && event.sport !== "cricket" && (
+                  {hasScore && (
                     <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
-                      {score.homeScore}
+                      {event.sport === "cricket" ? (score.cricketHome || "") : score.homeScore}
                     </Text>
                   )}
                 </View>
-                {hasScore && event.sport === "cricket" && (
-                  <View style={styles.cricketScoreBlock}>
-                    {score.cricketAway ? <Text style={[styles.cricketScoreText, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketAway}</Text> : null}
-                    {score.cricketHome ? <Text style={[styles.cricketScoreText, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketHome}</Text> : null}
-                  </View>
-                )}
               </View>
             )}
-
-            {(() => {
-              const detail = formatCricketLiveDetail(event, score, isLiveState);
-              return detail ? (
-                <Text style={styles.cricketLiveDetail} numberOfLines={1} ellipsizeMode="tail">
-                  {detail}
-                </Text>
-              ) : null;
-            })()}
 
             <View style={styles.primaryFooter}>
               <View style={styles.primaryTimeRow}>
@@ -436,9 +421,9 @@ function ChaosCard({
               <Text style={styles.secondaryTeamName} numberOfLines={1}>
                 {displayTeamName(event.awayTeam, event.league)}{awayIsFav ? <Text style={styles.teamFavStar}>{" \u2605"}</Text> : null}
               </Text>
-              {hasScore && event.sport !== "cricket" && (
+              {hasScore && (
                 <Text style={[styles.secondaryScore, isLiveState && styles.scoreLive]}>
-                  {score.awayScore}
+                  {event.sport === "cricket" ? (score.cricketAway || "") : score.awayScore}
                 </Text>
               )}
             </View>
@@ -447,29 +432,14 @@ function ChaosCard({
               <Text style={styles.secondaryTeamName} numberOfLines={1}>
                 {displayTeamName(event.homeTeam, event.league)}{homeIsFav ? <Text style={styles.teamFavStar}>{" \u2605"}</Text> : null}
               </Text>
-              {hasScore && event.sport !== "cricket" && (
+              {hasScore && (
                 <Text style={[styles.secondaryScore, isLiveState && styles.scoreLive]}>
-                  {score.homeScore}
+                  {event.sport === "cricket" ? (score.cricketHome || "") : score.homeScore}
                 </Text>
               )}
             </View>
-            {hasScore && event.sport === "cricket" && (
-              <View style={styles.cricketScoreBlockSm}>
-                {score.cricketAway ? <Text style={[styles.cricketScoreTextSm, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketAway}</Text> : null}
-                {score.cricketHome ? <Text style={[styles.cricketScoreTextSm, isLiveState && styles.scoreLive]} numberOfLines={1}>{score.cricketHome}</Text> : null}
-              </View>
-            )}
           </View>
         )}
-
-        {(() => {
-          const detail = formatCricketLiveDetail(event, score, isLiveState);
-          return detail ? (
-            <Text style={styles.cricketLiveDetailSm} numberOfLines={1} ellipsizeMode="tail">
-              {detail}
-            </Text>
-          ) : null;
-        })()}
 
         <View style={styles.secondaryFooter}>
           {isRacing && racingFooterText ? (
@@ -1682,40 +1652,6 @@ const styles = StyleSheet.create({
     fontWeight: "700" as const,
     fontFamily: "Inter_700Bold",
     letterSpacing: 0.4,
-  },
-  cricketScoreBlock: {
-    marginTop: 4,
-    gap: 2,
-  },
-  cricketScoreText: {
-    fontSize: 13,
-    fontWeight: "600" as const,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_600SemiBold",
-  },
-  cricketLiveDetail: {
-    fontSize: 12,
-    fontFamily: "Inter_500Medium",
-    color: Colors.accentSoft,
-    marginTop: 6,
-    paddingHorizontal: 14,
-  },
-  cricketLiveDetailSm: {
-    fontSize: 10,
-    fontFamily: "Inter_500Medium",
-    color: Colors.accentSoft,
-    marginTop: 4,
-    paddingHorizontal: 10,
-  },
-  cricketScoreBlockSm: {
-    marginTop: 2,
-    gap: 1,
-  },
-  cricketScoreTextSm: {
-    fontSize: 11,
-    fontWeight: "600" as const,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_600SemiBold",
   },
   scoreLive: {
     color: Colors.accentSoft,
