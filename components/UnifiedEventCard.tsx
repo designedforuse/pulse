@@ -582,7 +582,14 @@ export default function UnifiedEventCard({
           <Text style={uStyles.headerLeague} numberOfLines={1}>
             {getLeagueLabel(event)}
           </Text>
-          {phaseLabel && (
+          {isRacing && (event.sessionTitle || event.awayTeam) && (
+            <View style={[uStyles.racingSessionPill, { backgroundColor: sportColor + "1A" }]}>
+              <Text style={[uStyles.racingSessionPillText, { color: sportColor }]}>
+                {event.sessionTitle || event.awayTeam}
+              </Text>
+            </View>
+          )}
+          {!isRacing && phaseLabel && (
             <PhaseChip label={phaseLabel} sportColor={sportColor} isHot={isHotPhase} />
           )}
           <View style={{ flex: 1 }} />
@@ -614,26 +621,17 @@ export default function UnifiedEventCard({
                   {event.competitionName || event.homeTeam}
                 </Text>
               </View>
-              <View style={uStyles.racingSessionRow}>
-                <View style={[uStyles.racingSessionChip, { backgroundColor: sportColor + "1A" }]}>
-                  <Text style={[uStyles.racingSessionText, { color: sportColor }]}>
-                    {getGrandPrixLocation(event.competitionName || event.homeTeam)}: {event.sessionTitle || event.awayTeam}
-                  </Text>
-                </View>
-                {isLive && score?.racingLap && (
-                  <Text style={[uStyles.racingStatusText, { color: sportColor }]}>
-                    {score.racingLap}
-                  </Text>
-                )}
-                {isLive && score?.racingStatus && score.racingStatus !== score.racingLap && (
-                  <Text style={[uStyles.racingStatusText, { color: /red flag/i.test(score.racingStatus) ? "#FF5252" : sportColor }]}>
-                    {score.racingStatus}
-                  </Text>
-                )}
-              </View>
-              {isLive && score?.racingLeader && (
-                <Text style={uStyles.racingLeaderText} numberOfLines={1}>
-                  Leader: {score.racingLeader}
+              {(isLive || isFinal) && (score?.racingLeader || score?.racingLap || score?.racingStatus) && (
+                <Text style={uStyles.racingContextLine} numberOfLines={1}>
+                  {isFinal && score?.racingLeader
+                    ? `Winner: ${score.racingLeader}`
+                    : [
+                        score?.racingLeader ? `Leader: ${score.racingLeader}` : null,
+                        score?.racingLap || null,
+                      ].filter(Boolean).join(" · ")}
+                  {isLive && score?.racingStatus && score.racingStatus !== score.racingLap
+                    ? ` · ${score.racingStatus}`
+                    : ""}
                 </Text>
               )}
             </View>
@@ -700,7 +698,13 @@ export default function UnifiedEventCard({
 
         <View style={uStyles.footer}>
           <View style={uStyles.footerLeft}>
-            {isLive && displayClockText ? (
+            {isRacing && isLive ? (
+              <Text style={uStyles.clockText}>
+                {score?.racingLap || score?.racingStatus || "In Progress"}
+              </Text>
+            ) : isRacing && isFinal ? (
+              <Text style={uStyles.finalStatus}>Final</Text>
+            ) : isLive && displayClockText ? (
               <Text style={uStyles.clockText}>{displayClockText}</Text>
             ) : isFinal ? (
               <Text style={uStyles.finalStatus}>Final</Text>
@@ -893,7 +897,7 @@ const uStyles = StyleSheet.create({
     paddingLeft: 4,
   },
   racingLayout: {
-    gap: 8,
+    gap: 4,
     paddingLeft: 4,
   },
   racingCircuitRow: {
@@ -910,30 +914,22 @@ const uStyles = StyleSheet.create({
   racingCircuitNameFeatured: {
     fontSize: 18,
   },
-  racingSessionRow: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    gap: 8,
-  },
-  racingSessionChip: {
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 8,
-  },
-  racingSessionText: {
+  racingContextLine: {
     fontSize: 12,
-    fontFamily: "Inter_600SemiBold",
-    letterSpacing: 0.3,
-  },
-  racingStatusText: {
-    fontSize: 12,
-    fontFamily: "Inter_600SemiBold",
-  },
-  racingLeaderText: {
-    fontSize: 11,
     fontFamily: "Inter_500Medium",
     color: Colors.textSecondary,
     marginTop: 2,
+  },
+  racingSessionPill: {
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 6,
+    marginLeft: 4,
+  },
+  racingSessionPillText: {
+    fontSize: 11,
+    fontFamily: "Inter_600SemiBold",
+    letterSpacing: 0.3,
   },
   venueText: {
     fontSize: 11,
