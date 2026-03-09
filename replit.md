@@ -28,6 +28,7 @@ The application features a frontend built with Expo Router for file-based naviga
 - **Explore Tab (YouTube Videos):** Narrative cards automatically receive contextual YouTube videos via search with caching and trusted channel prioritization.
 - **Explore Tab (Narrative System):** Displays dynamic, narrative-driven intelligence cards (e.g., Playoff Push, Player Movement, League Moment, Momentum, Deadline Watch, Rivalry Game, Upset Alert, Clinch Watch) based on triggered data thresholds and configured logic.
 - **SVNS Live Match Tracking:** SVNS session cards display the current/next match from the World Rugby API (`api.wr-rims-prod.pulselive.com`), showing team abbreviations, scores, phase, and gender label. Data is fetched via `/api/svns-matches?city=X` with 60s server-side caching and 45s client polling. Event IDs for all 9 SVNS stops are mapped in `server/svnsMatches.ts`.
+- **Automatic Schedule Refresh:** The server uses `node-cron` to automatically refresh all schedule data twice daily (6:00 AM and 6:00 PM). A manual refresh button is available in the Settings tab. Status available via `/api/refresh-status`.
 - **API Endpoints:** The Express server provides endpoints for event data, live scores, narrative cards, SVNS match schedules, and debug information.
 
 ## External Dependencies

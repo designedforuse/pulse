@@ -3,6 +3,7 @@ import { createServer, type Server } from "node:http";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { execFile } from "node:child_process";
+import cron from "node-cron";
 import { fetchRawCricketMatches, searchRawCricketMatches } from "../scripts/updateCricket";
 import { fetchPlayerJourney, fetchPlayerJourneyDebug } from "./playerJourney";
 import { fetchAllLiveScores } from "./liveScores";
@@ -1481,6 +1482,50 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (err: any) {
       return res.status(502).json({ error: err.message ?? "Failed to fetch player journey debug" });
     }
+  });
+
+  let lastAutoRefreshAt: string | null = null;
+  let autoRefreshRunning = false;
+
+  function runScheduledRefresh() {
+    if (autoRefreshRunning) {
+      console.log("[cron] Skipping — previous refresh still running");
+      return;
+    }
+    autoRefreshRunning = true;
+    const scriptPath = path.resolve(process.cwd(), "scripts", "updateSchedule.ts");
+    console.log("[cron] Running scheduled schedule refresh...");
+    execFile(
+      "npx",
+      ["tsx", scriptPath, "--days=14"],
+      { cwd: process.cwd(), timeout: 120000, env: { ...process.env } },
+      (error, stdout, stderr) => {
+        autoRefreshRunning = false;
+        if (stdout) console.log("[cron] stdout:", stdout);
+        if (stderr) console.error("[cron] stderr:", stderr);
+        if (error) {
+          console.error("[cron] Scheduled refresh failed:", error.message);
+        } else {
+          lastAutoRefreshAt = new Date().toISOString();
+          console.log("[cron] Scheduled refresh completed at", lastAutoRefreshAt);
+        }
+      }
+    );
+  }
+
+  cron.schedule("0 6,18 * * *", () => {
+    runScheduledRefresh();
+  });
+  console.log("[cron] Auto-refresh scheduled for 6:00 AM and 6:00 PM daily");
+
+  app.get("/api/refresh-status", (_req, res) => {
+    const generated = loadGeneratedEvents();
+    res.json({
+      lastManualRefreshAt: generated?.lastUpdated || null,
+      lastAutoRefreshAt,
+      autoRefreshRunning,
+      nextScheduled: "Daily at 6:00 AM and 6:00 PM",
+    });
   });
 
   const httpServer = createServer(app);
