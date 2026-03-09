@@ -225,7 +225,7 @@ export default function RitualsScreen() {
       >
         <View style={styles.header}>
           <View style={styles.headerLeft}>
-            <Ionicons name="compass" size={28} color={Colors.accent} />
+            <Ionicons name="grid" size={28} color={Colors.accent} />
             <Text style={styles.headerTitle}>Rituals</Text>
           </View>
           <Pressable
