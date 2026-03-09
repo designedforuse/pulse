@@ -15,11 +15,11 @@ function NativeTabLayout() {
         <Label>Watch</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="rituals">
-        <Icon sf={{ default: "compass", selected: "compass.fill" }} md="explore" />
+        <Icon sf={{ default: "square.grid.2x2", selected: "square.grid.2x2.fill" }} md="grid-view" />
         <Label>Rituals</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="index">
-        <Icon sf={{ default: "square.grid.2x2", selected: "square.grid.2x2.fill" }} md="grid-view" />
+        <Icon sf={{ default: "compass", selected: "compass.fill" }} md="explore" />
         <Label>Stories</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="live" hidden />
@@ -73,7 +73,7 @@ function ClassicTabLayout() {
         options={{
           title: "Rituals",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="compass" size={size} color={color} />
+            <Ionicons name="grid" size={size} color={color} />
           ),
         }}
       />
@@ -82,7 +82,7 @@ function ClassicTabLayout() {
         options={{
           title: "Stories",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="grid" size={size} color={color} />
+            <Ionicons name="compass" size={size} color={color} />
           ),
         }}
       />
