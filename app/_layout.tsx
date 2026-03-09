@@ -31,7 +31,7 @@ function RootLayoutNav() {
         options={{
           headerShown: true,
           title: "",
-          headerBackTitle: "Explore",
+          headerBackTitle: "Stories",
         }}
       />
       <Stack.Screen
@@ -47,7 +47,7 @@ function RootLayoutNav() {
         options={{
           headerShown: true,
           title: "",
-          headerBackTitle: "Explore",
+          headerBackTitle: "Stories",
         }}
       />
       <Stack.Screen

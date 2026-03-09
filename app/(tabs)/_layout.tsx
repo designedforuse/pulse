@@ -20,7 +20,7 @@ function NativeTabLayout() {
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="index">
         <Icon sf={{ default: "square.grid.2x2", selected: "square.grid.2x2.fill" }} md="grid-view" />
-        <Label>Explore</Label>
+        <Label>Stories</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="live" hidden />
       <NativeTabs.Trigger name="settings" hidden />
@@ -80,7 +80,7 @@ function ClassicTabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Explore",
+          title: "Stories",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="grid" size={size} color={color} />
           ),

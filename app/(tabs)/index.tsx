@@ -142,7 +142,7 @@ export default function ExploreScreen() {
         <View style={styles.header}>
           <View style={styles.headerLeft}>
             <Ionicons name="compass" size={28} color={Colors.accent} />
-            <Text style={styles.headerTitle}>Explore</Text>
+            <Text style={styles.headerTitle}>Stories</Text>
           </View>
           <Pressable
             onPress={() => router.push("/settings")}
@@ -199,7 +199,7 @@ export default function ExploreScreen() {
             <Ionicons name="pulse-outline" size={48} color={Colors.textMuted} />
             <Text style={styles.emptyTitle}>Nothing spiking right now</Text>
             <Text style={styles.emptySubtitle}>
-              Explore will surface stories when thresholds are triggered.
+              Stories will surface when thresholds are triggered.
             </Text>
           </View>
         ) : (

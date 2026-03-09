@@ -464,7 +464,7 @@ export default function SettingsScreen() {
                   <Ionicons name="compass" size={20} color="#64B5F6" />
                 )}
                 <View>
-                  <Text style={styles.refreshLabel}>Rebuild Explore</Text>
+                  <Text style={styles.refreshLabel}>Rebuild Stories</Text>
                   <Text style={styles.refreshDesc}>
                     Regenerate narrative cards from current data
                   </Text>
@@ -647,8 +647,8 @@ export default function SettingsScreen() {
                 <Text style={[styles.stepText, { color: Colors.accent }]}>3</Text>
               </View>
               <View style={styles.howItWorksContent}>
-                <Text style={styles.howItWorksTitle}>Explore — discover games across leagues</Text>
-                <Text style={styles.howItWorksDesc}>Explore highlights events based on league moments and momentum:</Text>
+                <Text style={styles.howItWorksTitle}>Stories — discover games across leagues</Text>
+                <Text style={styles.howItWorksDesc}>Stories highlights events based on league moments and momentum:</Text>
                 <View style={styles.howItWorksBullets}>
                   <Text style={styles.howItWorksBullet}>• Movement – regular season matchups</Text>
                   <Text style={styles.howItWorksBullet}>• Momentum – teams gaining form</Text>
