@@ -821,11 +821,10 @@ const styles = StyleSheet.create({
     paddingLeft: 48,
   },
   leagueLabel: {
-    fontSize: 11,
-    color: Colors.textMuted,
+    fontSize: 13,
+    color: Colors.textSecondary,
     fontFamily: "Inter_600SemiBold",
-    textTransform: "uppercase" as const,
-    letterSpacing: 0.5,
+    letterSpacing: 0.3,
   },
   leagueSwitch: {
     transform: [{ scaleX: 0.7 }, { scaleY: 0.7 }],
