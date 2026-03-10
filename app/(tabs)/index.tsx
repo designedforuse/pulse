@@ -171,8 +171,12 @@ export default function ExploreScreen() {
             {tonightStory.sourceCard && (
               <Pressable
                 onPress={() => {
-                  const matchingCard = cards.find(c => c.id === tonightStory.sourceCard.id);
-                  if (matchingCard) handleCardPress(matchingCard);
+                  if (tonightStory.signalType === "multi_team_night" || tonightStory.signalType === "single_team_game") {
+                    router.push("/(tabs)/watch");
+                  } else {
+                    const matchingCard = cards.find(c => c.id === tonightStory.sourceCard.id);
+                    if (matchingCard) handleCardPress(matchingCard);
+                  }
                 }}
                 style={({ pressed }) => [
                   styles.tonightStoryCta,
