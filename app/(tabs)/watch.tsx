@@ -9,7 +9,6 @@ import {
   FlatList,
   RefreshControl,
   useWindowDimensions,
-  ActivityIndicator,
 } from "react-native";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -633,6 +632,113 @@ function SecondaryCarousel({
   );
 }
 
+function SkeletonBar({ width, height, style }: { width: number | string; height: number; style?: any }) {
+  const opacity = useSharedValue(0.3);
+  React.useEffect(() => {
+    opacity.value = withRepeat(withSequence(withTiming(0.7, { duration: 800 }), withTiming(0.3, { duration: 800 })), -1);
+  }, []);
+  const animStyle = useAnimatedStyle(() => ({ opacity: opacity.value }));
+  return (
+    <Animated.View
+      style={[
+        { width: width as any, height, borderRadius: 8, backgroundColor: "#3A3A3C" },
+        animStyle,
+        style,
+      ]}
+    />
+  );
+}
+
+function ChaosSkeleton() {
+  return (
+    <View style={skeletonStyles.container}>
+      <View style={skeletonStyles.titleRow}>
+        <SkeletonBar width={20} height={20} style={{ borderRadius: 10 }} />
+        <SkeletonBar width={120} height={18} />
+      </View>
+      <View style={skeletonStyles.primaryCard}>
+        <View style={skeletonStyles.cardHeader}>
+          <SkeletonBar width={60} height={14} />
+          <SkeletonBar width={100} height={14} />
+        </View>
+        <View style={skeletonStyles.teamRow}>
+          <SkeletonBar width={28} height={28} style={{ borderRadius: 14 }} />
+          <SkeletonBar width={140} height={18} />
+        </View>
+        <View style={skeletonStyles.teamRow}>
+          <SkeletonBar width={28} height={28} style={{ borderRadius: 14 }} />
+          <SkeletonBar width={120} height={18} />
+        </View>
+        <View style={skeletonStyles.timeRow}>
+          <SkeletonBar width={80} height={14} />
+          <SkeletonBar width={90} height={14} />
+        </View>
+      </View>
+      <View style={skeletonStyles.secondaryRow}>
+        {[0, 1, 2].map((i) => (
+          <View key={i} style={skeletonStyles.secondaryCard}>
+            <SkeletonBar width={50} height={12} />
+            <SkeletonBar width={"80%"} height={14} style={{ marginTop: 8 }} />
+            <SkeletonBar width={"60%"} height={14} style={{ marginTop: 6 }} />
+            <SkeletonBar width={60} height={12} style={{ marginTop: 8 }} />
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+}
+
+const skeletonStyles = StyleSheet.create({
+  container: {
+    marginBottom: 24,
+  },
+  titleRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    marginBottom: 12,
+    paddingHorizontal: 4,
+  },
+  primaryCard: {
+    backgroundColor: Colors.card,
+    borderRadius: 16,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: "rgba(72, 72, 74, 0.6)",
+    marginBottom: 12,
+  },
+  cardHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    marginBottom: 14,
+  },
+  teamRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    marginBottom: 10,
+  },
+  timeRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 4,
+  },
+  secondaryRow: {
+    flexDirection: "row",
+    gap: 10,
+  },
+  secondaryCard: {
+    flex: 1,
+    backgroundColor: Colors.card,
+    borderRadius: 14,
+    padding: 14,
+    borderWidth: 1,
+    borderColor: "rgba(72, 72, 74, 0.6)",
+  },
+});
+
 export default function WatchScreen() {
   const insets = useSafeAreaInsets();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
@@ -1046,10 +1152,7 @@ export default function WatchScreen() {
             )}
           </View>
         ) : eventsLoading ? (
-          <View style={styles.emptyState}>
-            <ActivityIndicator size="large" color={Colors.accent} />
-            <Text style={styles.emptyTitle}>Loading games...</Text>
-          </View>
+          <ChaosSkeleton />
         ) : (
           <View style={styles.emptyState}>
             <Ionicons name="time-outline" size={40} color={Colors.textMuted} />
