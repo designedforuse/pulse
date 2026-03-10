@@ -465,16 +465,13 @@ export default function SettingsScreen() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Display</Text>
+          <Text style={styles.sectionTitle}>Favorites</Text>
           <View style={styles.card}>
             <View style={styles.debugRow}>
               <View style={styles.debugLeft}>
                 <Ionicons name="star" size={18} color={Colors.favStar} />
                 <View>
-                  <Text style={styles.refreshLabel}>Favorites Only</Text>
-                  <Text style={styles.refreshDesc}>
-                    Show only events involving your favorite teams
-                  </Text>
+                  <Text style={styles.refreshLabel}>Favorite Teams Only</Text>
                 </View>
               </View>
               <Switch
