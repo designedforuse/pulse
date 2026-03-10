@@ -269,6 +269,7 @@ export default function SettingsScreen() {
   const [meta, setMeta] = useState<GeneratedMeta | null>(null);
   const [rebuildingExplore, setRebuildingExplore] = useState(false);
   const [rebuildMessage, setRebuildMessage] = useState<{ text: string; ok: boolean } | null>(null);
+  const [storiesLastUpdated, setStoriesLastUpdated] = useState<string | null>(null);
 
   const fetchMeta = useCallback(async () => {
     try {
@@ -281,9 +282,21 @@ export default function SettingsScreen() {
     } catch {}
   }, []);
 
+  const fetchStoriesTimestamp = useCallback(async () => {
+    try {
+      const url = new URL("/api/narratives", getApiUrl());
+      const res = await fetch(url.toString());
+      const data = await res.json();
+      if (data && data.lastUpdated) {
+        setStoriesLastUpdated(data.lastUpdated);
+      }
+    } catch {}
+  }, []);
+
   useEffect(() => {
     fetchMeta();
-  }, [fetchMeta]);
+    fetchStoriesTimestamp();
+  }, [fetchMeta, fetchStoriesTimestamp]);
 
   const handleRefresh = async () => {
     if (refreshing) return;
@@ -322,6 +335,7 @@ export default function SettingsScreen() {
       if (data.success) {
         setRebuildMessage({ text: `${data.cardCount} narrative cards generated`, ok: true });
         queryClient.invalidateQueries({ queryKey: ["/api/narratives"] });
+        fetchStoriesTimestamp();
       } else {
         setRebuildMessage({ text: "Rebuild failed. Try again.", ok: false });
       }
@@ -352,19 +366,6 @@ export default function SettingsScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Schedules & Stories</Text>
           <View style={styles.card}>
-            {meta && (
-              <View style={styles.metaBlock}>
-                <View style={styles.metaHeaderRow}>
-                  <Ionicons name="time-outline" size={14} color={Colors.textSecondary} />
-                  <Text style={styles.metaRefreshText}>
-                    Last refreshed: {formatTimeAgo(meta.lastRefreshAt)}
-                  </Text>
-                  {isStale(meta.lastRefreshAt) && (
-                    <Ionicons name="warning" size={13} color="#F59E0B" style={{ marginLeft: 4 }} />
-                  )}
-                </View>
-              </View>
-            )}
             <Pressable
               onPress={handleRefresh}
               disabled={refreshing}
@@ -382,6 +383,11 @@ export default function SettingsScreen() {
                 )}
                 <View>
                   <Text style={styles.refreshLabel}>Refresh Schedules</Text>
+                  {meta && (
+                    <Text style={styles.refreshDesc}>
+                      Last refreshed: {formatTimeAgo(meta.lastRefreshAt)}
+                    </Text>
+                  )}
                 </View>
               </View>
               {!refreshing && (
@@ -425,6 +431,11 @@ export default function SettingsScreen() {
                 )}
                 <View>
                   <Text style={styles.refreshLabel}>Rebuild Stories</Text>
+                  {storiesLastUpdated && (
+                    <Text style={styles.refreshDesc}>
+                      Last rebuilt: {formatTimeAgo(storiesLastUpdated)}
+                    </Text>
+                  )}
                 </View>
               </View>
               {!rebuildingExplore && (
