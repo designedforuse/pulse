@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Master Sports Guide Alpha Release 1.0",
+    "name": "Sports Watch",
     "slug": "mastersportsguidealpharelease10",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -20,7 +20,7 @@
     "android": {
       "package": "com.mastersportsguidealpharelease10.app",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#000000",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
