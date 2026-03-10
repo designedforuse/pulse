@@ -351,7 +351,7 @@ export default function SettingsScreen() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>My Favorite Teams</Text>
+          <Text style={styles.sectionTitle}>Sports</Text>
           <FavoritesSection />
         </View>
 
