@@ -366,7 +366,7 @@ export default function SettingsScreen() {
                 <Text style={[styles.stepText, { color: Colors.accent }]}>1</Text>
               </View>
               <View style={styles.howItWorksContent}>
-                <Text style={styles.howItWorksTitle}>Watch — what's exciting right now</Text>
+                <Text style={styles.howItWorksTitle}>Watch: what's exciting right now</Text>
                 <Text style={styles.howItWorksDesc}>Chaos Mode surfaces the most compelling live game based on score, tension, and timing.</Text>
               </View>
             </View>
@@ -376,7 +376,7 @@ export default function SettingsScreen() {
                 <Text style={[styles.stepText, { color: Colors.accent }]}>2</Text>
               </View>
               <View style={styles.howItWorksContent}>
-                <Text style={styles.howItWorksTitle}>Rituals — your weekly viewing habits</Text>
+                <Text style={styles.howItWorksTitle}>Rituals: your weekly viewing habits</Text>
                 <Text style={styles.howItWorksDesc}>Rituals group games into time windows (like Sunday mornings or Friday night hockey) so you can quickly find your regular matchups.</Text>
               </View>
             </View>
@@ -386,13 +386,13 @@ export default function SettingsScreen() {
                 <Text style={[styles.stepText, { color: Colors.accent }]}>3</Text>
               </View>
               <View style={styles.howItWorksContent}>
-                <Text style={styles.howItWorksTitle}>Stories — discover games across leagues</Text>
+                <Text style={styles.howItWorksTitle}>Stories: discover games across leagues</Text>
                 <Text style={styles.howItWorksDesc}>Stories highlights events based on league moments and momentum:</Text>
                 <View style={styles.howItWorksBullets}>
-                  <Text style={styles.howItWorksBullet}>• Movement – regular season matchups</Text>
-                  <Text style={styles.howItWorksBullet}>• Momentum – teams gaining form</Text>
-                  <Text style={styles.howItWorksBullet}>• Playoff Push – late-season stakes</Text>
-                  <Text style={styles.howItWorksBullet}>• League Moments – finals, derbies, and marquee events</Text>
+                  <Text style={styles.howItWorksBullet}>• Movement: regular season matchups</Text>
+                  <Text style={styles.howItWorksBullet}>• Momentum: teams gaining form</Text>
+                  <Text style={styles.howItWorksBullet}>• Playoff Push: late-season stakes</Text>
+                  <Text style={styles.howItWorksBullet}>• League Moments: finals, derbies, and marquee events</Text>
                 </View>
               </View>
             </View>
@@ -756,7 +756,7 @@ const styles = StyleSheet.create({
   },
   howItWorksItem: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
     gap: 12,
     paddingHorizontal: 14,
     paddingVertical: 14,
