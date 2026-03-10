@@ -60,6 +60,7 @@ function isStale(isoDate: string): boolean {
 function FavoritesSection() {
   const { allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, enabledCount, totalCount } = useFavorites();
   const [expandedSports, setExpandedSports] = useState<Record<string, boolean>>({});
+  const [expandedLeagues, setExpandedLeagues] = useState<Record<string, boolean>>({});
   const sportOrder = ["hockey", "rugby", "cricket", "soccer", "tennis", "racing"];
   const sportLabels: Record<string, string> = {
     hockey: "Hockey",
@@ -142,12 +143,46 @@ function FavoritesSection() {
             {sportEnabled && isExpanded && leagues.map((league) => {
               const teams = sportFavs![league];
               if (!teams || teams.length === 0) return null;
+              const leagueKey = `${sport}::${league}`;
+              const leagueExpanded = !!expandedLeagues[leagueKey];
+              const allEnabled = teams.every((t) => isTeamEnabled(sport, league, t));
+              const someEnabled = teams.some((t) => isTeamEnabled(sport, league, t));
               return (
                 <React.Fragment key={league}>
-                  <View style={styles.leagueLabelRow}>
+                  <Pressable
+                    onPress={() => {
+                      if (Platform.OS !== "web") {
+                        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                      }
+                      setExpandedLeagues((prev) => ({ ...prev, [leagueKey]: !prev[leagueKey] }));
+                    }}
+                    style={styles.leagueLabelRow}
+                  >
                     <Text style={styles.leagueLabel}>{league}</Text>
-                  </View>
-                  {teams.map((team) => {
+                    <View style={{ flex: 1 }} />
+                    <Ionicons
+                      name={leagueExpanded ? "chevron-up" : "chevron-down"}
+                      size={14}
+                      color={Colors.textMuted}
+                      style={{ marginRight: 8 }}
+                    />
+                    <Switch
+                      value={allEnabled}
+                      onValueChange={() => {
+                        const targetState = !allEnabled;
+                        for (const team of teams) {
+                          const current = isTeamEnabled(sport, league, team);
+                          if (current !== targetState) {
+                            toggleTeam(sport, league, team);
+                          }
+                        }
+                      }}
+                      trackColor={{ false: Colors.border, true: Colors.favStar + "55" }}
+                      thumbColor={allEnabled ? Colors.favStar : someEnabled ? Colors.favStar : Colors.textMuted}
+                      style={styles.leagueSwitch}
+                    />
+                  </Pressable>
+                  {leagueExpanded && teams.map((team) => {
                     const enabled = isTeamEnabled(sport, league, team);
                     return (
                       <View key={team} style={styles.teamToggleRow}>
@@ -778,9 +813,11 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   leagueLabelRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
     paddingHorizontal: 14,
     paddingTop: 8,
-    paddingBottom: 2,
+    paddingBottom: 6,
     paddingLeft: 48,
   },
   leagueLabel: {
@@ -789,6 +826,9 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
     textTransform: "uppercase" as const,
     letterSpacing: 0.5,
+  },
+  leagueSwitch: {
+    transform: [{ scaleX: 0.7 }, { scaleY: 0.7 }],
   },
   teamToggleRow: {
     flexDirection: "row",
