@@ -79,6 +79,20 @@ function FavoritesSection() {
     racing: "speedometer",
   };
 
+  const leagueOrder: Record<string, string[]> = {
+    rugby: ["English Premiership", "Top 14", "URC", "Super Rugby", "Champions Cup", "Six Nations", "Japan League One", "MLR", "HSBC SVNS"],
+  };
+
+  const sortLeagues = (sport: string, leagues: string[]) => {
+    const order = leagueOrder[sport];
+    if (!order) return leagues;
+    return [...leagues].sort((a, b) => {
+      const ai = order.indexOf(a);
+      const bi = order.indexOf(b);
+      return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+    });
+  };
+
   const handleToggle = (sport: string, league: string, team: string) => {
     if (Platform.OS !== "web") {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -101,7 +115,7 @@ function FavoritesSection() {
         const hasTeams = sportFavs && Object.keys(sportFavs).length > 0;
         const sportEnabled = isSportEnabled(sport);
         const sportColor = getSportColor(sport);
-        const leagues = hasTeams ? Object.keys(sportFavs!) : [];
+        const leagues = hasTeams ? sortLeagues(sport, Object.keys(sportFavs!)) : [];
         const showDivider = !isFirstSport;
         isFirstSport = false;
 
