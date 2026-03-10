@@ -459,6 +459,25 @@
         "Orange County SC"
       ]
     },
+    "tennis": {
+      "Grand Slams": [
+        "Australian Open",
+        "French Open",
+        "Wimbledon",
+        "US Open"
+      ],
+      "ATP Masters 1000": [
+        "Indian Wells Masters",
+        "Miami Masters",
+        "Monte-Carlo Masters",
+        "Madrid Open",
+        "Italian Open",
+        "Canadian Open",
+        "Cincinnati Open",
+        "Shanghai Masters",
+        "Paris Masters"
+      ]
+    },
     "racing": {
       "F1": [
         "Red Bull Racing",
