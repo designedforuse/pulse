@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-10T05:06:02.765Z",
+  "lastUpdated": "2026-03-10T05:20:52.740Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -57,8 +57,8 @@
     "svns": 4
   },
   "cricketCount": 4,
-  "cricketAdded": 2,
-  "cricketUpdated": 1,
+  "cricketAdded": 0,
+  "cricketUpdated": 3,
   "cricketPruned": 0,
   "cricketCounts": {
     "T20I Cricket": 1,
@@ -67,7 +67,7 @@
   "iccT20WcCount": 11,
   "iccT20WcAdded": 11,
   "iccT20WcUpdated": 0,
-  "iccT20WcPruned": 12,
+  "iccT20WcPruned": 11,
   "iccT20WcSourceUsed": "hardcoded-schedule",
   "t20wcDedupedCount": 0,
   "olympicHockeyCount": 0,
@@ -78,7 +78,7 @@
   "eplCount": 43,
   "eplAdded": 0,
   "eplUpdated": 39,
-  "eplPruned": 40,
+  "eplPruned": 39,
   "eplSourceUsed": "ical",
   "mlsCount": 60,
   "mlsAdded": 0,
@@ -88,12 +88,12 @@
   "serieaCount": 40,
   "serieaAdded": 0,
   "serieaUpdated": 40,
-  "serieaPruned": 42,
+  "serieaPruned": 40,
   "serieaSourceUsed": "espn",
   "laligaCount": 41,
   "laligaAdded": 0,
   "laligaUpdated": 41,
-  "laligaPruned": 42,
+  "laligaPruned": 41,
   "laligaSourceUsed": "espn",
   "bundesligaCount": 37,
   "bundesligaAdded": 0,
@@ -136,8 +136,8 @@
   "faCupPruned": 9,
   "faCupSourceUsed": "espn",
   "tennisCount": 16,
-  "tennisAdded": 4,
-  "tennisUpdated": 12,
+  "tennisAdded": 0,
+  "tennisUpdated": 16,
   "tennisPruned": 0,
   "tennisSourceUsed": "espn",
   "tennisTournamentCounts": {
@@ -159,34 +159,34 @@
     "Miami Grand Prix": 5
   },
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-10T05:06:02.765Z",
+    "lastRefreshAt": "2026-03-10T05:20:52.740Z",
     "sources": {
       "nhl": {
         "count": 166,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 226,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 4,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 122,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 26,
@@ -200,7 +200,7 @@
       },
       "cricket": {
         "count": 4,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "T20I Cricket": 1,
@@ -209,53 +209,53 @@
       },
       "iccT20Wc": {
         "count": 11,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 43,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 60,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 40,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 41,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 37,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 36,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 29,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 46,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
@@ -267,24 +267,24 @@
       },
       "mlr": {
         "count": 1,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 8,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "iCal Feed"
       },
       "faCup": {
         "count": 9,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-03T19:45:00.000Z"
       },
       "tennis": {
         "count": 16,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Indian Wells Masters": 16,
@@ -294,7 +294,7 @@
       },
       "f1": {
         "count": 30,
-        "lastFetchAt": "2026-03-10T05:06:02.765Z",
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Australian Grand Prix": 5,
@@ -303,6 +303,15 @@
           "Bahrain Grand Prix": 5,
           "Saudi Arabian Grand Prix": 5,
           "Miami Grand Prix": 5
+        }
+      },
+      "golf": {
+        "count": 8,
+        "lastFetchAt": "2026-03-10T05:20:52.740Z",
+        "sourceName": "Hardcoded Schedule",
+        "tournamentCounts": {
+          "Players Championship": 4,
+          "The Masters": 4
         }
       }
     }
@@ -5450,6 +5459,24 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "golf-players-championship-2026-03-12",
+      "sport": "golf",
+      "league": "The Majors",
+      "awayTeam": "TBD",
+      "homeTeam": "Players Championship",
+      "startTimeLocal": "2026-03-12T14:00:00.000Z",
+      "endTimeLocal": "2026-03-12T19:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "golf-hardcoded",
+      "leagueKey": "golf-majors",
+      "providerReason": "cbs-broadcast",
+      "eventType": "session",
+      "sessionTitle": "Players — Round 1",
+      "competitionType": "international",
+      "tournamentName": "Players Championship"
+    },
+    {
       "id": "nhl_2025021027",
       "sport": "hockey",
       "league": "NHL",
@@ -5790,6 +5817,24 @@
       "seriesName": "2nd ODI, Pakistan tour of Bangladesh 2026",
       "gender": "men",
       "isIccT20Wc": false
+    },
+    {
+      "id": "golf-players-championship-2026-03-13",
+      "sport": "golf",
+      "league": "The Majors",
+      "awayTeam": "TBD",
+      "homeTeam": "Players Championship",
+      "startTimeLocal": "2026-03-13T14:00:00.000Z",
+      "endTimeLocal": "2026-03-13T19:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "golf-hardcoded",
+      "leagueKey": "golf-majors",
+      "providerReason": "cbs-broadcast",
+      "eventType": "session",
+      "sessionTitle": "Players — Round 2",
+      "competitionType": "international",
+      "tournamentName": "Players Championship"
     },
     {
       "id": "cricket-t20i-3yh2z0",
@@ -6281,6 +6326,24 @@
       "isLive": false,
       "source": "soccer-seriea",
       "leagueKey": "seriea"
+    },
+    {
+      "id": "golf-players-championship-2026-03-14",
+      "sport": "golf",
+      "league": "The Majors",
+      "awayTeam": "TBD",
+      "homeTeam": "Players Championship",
+      "startTimeLocal": "2026-03-14T14:00:00.000Z",
+      "endTimeLocal": "2026-03-14T19:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "golf-hardcoded",
+      "leagueKey": "golf-majors",
+      "providerReason": "cbs-broadcast",
+      "eventType": "session",
+      "sessionTitle": "Players — Round 3",
+      "competitionType": "international",
+      "tournamentName": "Players Championship"
     },
     {
       "id": "rugby-sixnations-ifo64c",
@@ -7641,6 +7704,24 @@
       "source": "soccer-ligue1",
       "leagueKey": "ligue1",
       "providerReason": "ligue1-yttv"
+    },
+    {
+      "id": "golf-players-championship-2026-03-15",
+      "sport": "golf",
+      "league": "The Majors",
+      "awayTeam": "TBD",
+      "homeTeam": "Players Championship",
+      "startTimeLocal": "2026-03-15T14:00:00.000Z",
+      "endTimeLocal": "2026-03-15T19:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "golf-hardcoded",
+      "leagueKey": "golf-majors",
+      "providerReason": "cbs-broadcast",
+      "eventType": "session",
+      "sessionTitle": "Players — Final Round",
+      "competitionType": "international",
+      "tournamentName": "Players Championship"
     },
     {
       "id": "soccer-bundesliga-20260315-1430-mainz-at-werder-bremen",
@@ -13770,6 +13851,24 @@
       "providerReason": "nwsl-default"
     },
     {
+      "id": "golf-the-masters-2026-04-09",
+      "sport": "golf",
+      "league": "The Majors",
+      "awayTeam": "TBD",
+      "homeTeam": "The Masters",
+      "startTimeLocal": "2026-04-09T14:00:00.000Z",
+      "endTimeLocal": "2026-04-09T19:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "golf-hardcoded",
+      "leagueKey": "golf-majors",
+      "providerReason": "cbs-broadcast",
+      "eventType": "session",
+      "sessionTitle": "Masters — Round 1",
+      "competitionType": "international",
+      "tournamentName": "The Masters"
+    },
+    {
       "id": "f1-espn-401839043",
       "sport": "racing",
       "league": "F1",
@@ -13785,6 +13884,24 @@
       "eventType": "session",
       "sessionTitle": "Practice 1",
       "competitionName": "Bahrain Grand Prix"
+    },
+    {
+      "id": "golf-the-masters-2026-04-10",
+      "sport": "golf",
+      "league": "The Majors",
+      "awayTeam": "TBD",
+      "homeTeam": "The Masters",
+      "startTimeLocal": "2026-04-10T14:00:00.000Z",
+      "endTimeLocal": "2026-04-10T19:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "golf-hardcoded",
+      "leagueKey": "golf-majors",
+      "providerReason": "cbs-broadcast",
+      "eventType": "session",
+      "sessionTitle": "Masters — Round 2",
+      "competitionType": "international",
+      "tournamentName": "The Masters"
     },
     {
       "id": "f1-espn-401839044",
@@ -13821,6 +13938,24 @@
       "competitionName": "Bahrain Grand Prix"
     },
     {
+      "id": "golf-the-masters-2026-04-11",
+      "sport": "golf",
+      "league": "The Majors",
+      "awayTeam": "TBD",
+      "homeTeam": "The Masters",
+      "startTimeLocal": "2026-04-11T14:00:00.000Z",
+      "endTimeLocal": "2026-04-11T19:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "golf-hardcoded",
+      "leagueKey": "golf-majors",
+      "providerReason": "cbs-broadcast",
+      "eventType": "session",
+      "sessionTitle": "Masters — Round 3",
+      "competitionType": "international",
+      "tournamentName": "The Masters"
+    },
+    {
       "id": "f1-espn-401839046",
       "sport": "racing",
       "league": "F1",
@@ -13836,6 +13971,24 @@
       "eventType": "session",
       "sessionTitle": "Qualifying",
       "competitionName": "Bahrain Grand Prix"
+    },
+    {
+      "id": "golf-the-masters-2026-04-12",
+      "sport": "golf",
+      "league": "The Majors",
+      "awayTeam": "TBD",
+      "homeTeam": "The Masters",
+      "startTimeLocal": "2026-04-12T14:00:00.000Z",
+      "endTimeLocal": "2026-04-12T19:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "golf-hardcoded",
+      "leagueKey": "golf-majors",
+      "providerReason": "cbs-broadcast",
+      "eventType": "session",
+      "sessionTitle": "Masters — Final Round",
+      "competitionType": "international",
+      "tournamentName": "The Masters"
     },
     {
       "id": "f1-espn-401839047",

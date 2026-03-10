@@ -1,7 +1,10 @@
 {
-  "lastUpdated": "2026-03-10T05:06:02.842Z",
+  "lastUpdated": "2026-03-10T05:20:52.790Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
+      "league_moment": {
+        "Other": 1
+      },
       "player_movement": {
         "Other": 1
       }
@@ -9,12 +12,13 @@
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
       "Other": [
-        "player_movement: System Shuffle"
+        "player_movement: System Shuffle",
+        "league_moment: Big Stage"
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 1,
-    "totalAfterCap": 1,
+    "totalBeforeCap": 2,
+    "totalAfterCap": 2,
     "playerMovement": {
       "rawMovementCandidates": 1,
       "movementAfterRegionFilter": 1,
@@ -55,17 +59,17 @@
         ],
         "playersIngested": 652,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-10T05:06:02.842Z"
+        "timestamp": "2026-03-10T05:20:52.790Z"
       },
       "cacheHistoryCount": 753,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 1,
-    "candidateCountAfterCap": 1,
+    "candidateCountBeforeCap": 2,
+    "candidateCountAfterCap": 2,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -57.100789444444445,
+      "hoursUntil": -57.34799722222222,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -102,13 +106,26 @@
           "reason": "single followed team (Boston Bruins) playing tonight"
         },
         {
+          "label": "[league_moment] League Spotlight",
+          "score": 50,
+          "reason": "league_moment (generic, no followed teams)"
+        },
+        {
           "label": "[player_movement] Roster Shakeup",
           "score": 40,
           "reason": "player_movement (generic, no followed teams)"
         }
       ]
     },
-    "videoSelection": {}
+    "videoSelection": {
+      "league_moment_tournament": {
+        "searchQuery": "Big Stage sports March 2026",
+        "selectedVideoTitle": "16 News Now at 10 p.m. Streamcast - March 9, 2026",
+        "selectedVideoPublishedAt": "57 minutes ago",
+        "selectedVideoChannel": "WNDU 16 News Now",
+        "rejectedForAgeCount": 0
+      }
+    }
   },
   "cards": [
     {
@@ -120,8 +137,8 @@
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-03-10T05:06:02.842Z",
-      "expiresAt": "2026-03-17T05:06:02.842Z",
+      "triggeredAt": "2026-03-10T05:20:52.790Z",
+      "expiresAt": "2026-03-17T05:20:52.790Z",
       "kind": "player_movement",
       "region": "Other",
       "regionPriority": 99,
@@ -239,6 +256,51 @@
       "sports": [
         "hockey"
       ]
+    },
+    {
+      "id": "league_moment_tournament",
+      "title": "Big Stage",
+      "subtitle": "1 tournament/knockout match this week",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 70,
+      "triggeredAt": "2026-03-10T05:20:52.790Z",
+      "expiresAt": "2026-03-17T05:20:52.790Z",
+      "kind": "league_moment",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "tournament",
+        "matchCount": 1,
+        "matches": [
+          {
+            "away": "TBD",
+            "home": "Players Championship",
+            "league": "The Majors",
+            "round": "Players — Final Round",
+            "startTime": "2026-03-15T14:00:00.000Z"
+          }
+        ],
+        "eventIds": [
+          "golf-players-championship-2026-03-15"
+        ],
+        "reason": "Found 1 tournament stage match(es) in the next 7 days"
+      },
+      "sports": [
+        "golf"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=rNXENW-AJgQ",
+        "thumbnailUrl": "https://img.youtube.com/vi/rNXENW-AJgQ/hqdefault.jpg",
+        "durationSeconds": 1833,
+        "title": "16 News Now at 10 p.m. Streamcast - March 9, 2026",
+        "source": "youtube",
+        "channel": "WNDU 16 News Now",
+        "publishedAt": "57 minutes ago"
+      }
     }
   ],
   "tonightStory": {

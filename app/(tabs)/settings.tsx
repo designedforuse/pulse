@@ -61,7 +61,7 @@ function FavoritesSection() {
   const { allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, isLeagueEnabled, toggleLeague, enabledCount, totalCount } = useFavorites();
   const [expandedSports, setExpandedSports] = useState<Record<string, boolean>>({});
   const [expandedLeagues, setExpandedLeagues] = useState<Record<string, boolean>>({});
-  const sportOrder = ["hockey", "rugby", "cricket", "soccer", "tennis", "racing"];
+  const sportOrder = ["hockey", "rugby", "cricket", "soccer", "tennis", "racing", "golf"];
   const sportLabels: Record<string, string> = {
     hockey: "Hockey",
     rugby: "Rugby",
@@ -69,6 +69,7 @@ function FavoritesSection() {
     soccer: "Soccer",
     tennis: "Tennis",
     racing: "Racing",
+    golf: "Golf",
   };
   const sportIcons: Record<string, keyof typeof Ionicons.glyphMap> = {
     hockey: "snow",
@@ -77,12 +78,14 @@ function FavoritesSection() {
     soccer: "football",
     tennis: "tennisball",
     racing: "speedometer",
+    golf: "golf",
   };
 
   const leagueOrder: Record<string, string[]> = {
     rugby: ["English Premiership", "Top 14", "URC", "Super Rugby", "Champions Cup", "Six Nations", "Japan League One", "MLR", "HSBC SVNS"],
     soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "MLS", "NWSL", "USL", "Champions League", "FA Cup"],
     tennis: ["Grand Slams", "ATP Masters 1000"],
+    golf: ["The Majors"],
   };
 
   const sortLeagues = (sport: string, leagues: string[]) => {

@@ -190,5 +190,25 @@
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
+  },
+  "league_moment:big stage sports march 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=rNXENW-AJgQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/rNXENW-AJgQ/hqdefault.jpg",
+      "durationSeconds": 1833,
+      "title": "16 News Now at 10 p.m. Streamcast - March 9, 2026",
+      "source": "youtube",
+      "channel": "WNDU 16 News Now",
+      "publishedAt": "57 minutes ago"
+    },
+    "fetchedAt": "2026-03-10T05:21:05.381Z",
+    "query": "Big Stage sports March 2026",
+    "debug": {
+      "searchQuery": "Big Stage sports March 2026",
+      "selectedVideoTitle": "16 News Now at 10 p.m. Streamcast - March 9, 2026",
+      "selectedVideoPublishedAt": "57 minutes ago",
+      "selectedVideoChannel": "WNDU 16 News Now",
+      "rejectedForAgeCount": 0
+    }
   }
 }

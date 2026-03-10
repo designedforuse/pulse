@@ -21,6 +21,7 @@ import { fetchChampionsLeagueEvents, mergeChampionsLeagueEvents } from "./update
 import { fetchFaCupEvents, mergeFaCupEvents } from "./updateFaCup";
 import { fetchTennisEvents, mergeTennisEvents } from "./updateTennis";
 import { fetchF1Events, mergeF1Events } from "./updateF1";
+import { fetchGolfEvents, mergeGolfEvents } from "./updateGolf";
 
 const NHL_API_BASE = "https://api-web.nhle.com/v1";
 const OUTPUT_PATH = path.resolve(__dirname, "../data/generatedEvents.json");
@@ -264,6 +265,7 @@ async function main() {
   const existingFaCup = loadExistingByPrefix("soccer-facup-");
   const existingTennis = loadExistingByPrefix("tennis-");
   const existingF1 = loadExistingByPrefix("f1-");
+  const existingGolf = loadExistingByPrefix("golf-");
   console.log(`Existing cached AHL events: ${existingAhl.length}`);
   console.log(`Existing cached ECHL events: ${existingEchl.length}`);
   console.log(`Existing cached BU events: ${existingBu.length}`);
@@ -285,10 +287,12 @@ async function main() {
   console.log(`Existing cached FA Cup events: ${existingFaCup.length}`);
   console.log(`Existing cached Tennis events: ${existingTennis.length}`);
   console.log(`Existing cached F1 events: ${existingF1.length}`);
+  console.log(`Existing cached Golf events: ${existingGolf.length}`);
 
   const t20WcFetchResult = fetchIccT20WcEvents();
   const olympicHockeyFetchResult = fetchOlympicHockeyEvents();
   const mlrFetchResult = fetchMlrEvents();
+  const golfFetchResult = fetchGolfEvents();
   const tennisFetchResult = await fetchTennisEvents();
 
   const [nhlEvents, ahlFetchResult, echlFetchResult, buFetchResult, rugbyFetchResult, cricketFetchResult, eplFetchResult, mlsFetchResult, serieAFetchResult, laLigaFetchResult, bundesligaFetchResult, ligue1FetchResult, nwslFetchResult, uslFetchResult, championsCupFetchResult, championsLeagueFetchResult, faCupFetchResult, f1FetchResult] = await Promise.all([
@@ -334,6 +338,7 @@ async function main() {
   const faCupResult = mergeFaCupEvents(existingFaCup, faCupFetchResult.events, now);
   const tennisResult = mergeTennisEvents(existingTennis, tennisFetchResult.events, now, tennisFetchResult.espnActiveTournaments);
   const f1Result = mergeF1Events(existingF1, f1FetchResult.events);
+  const golfResult = mergeGolfEvents(existingGolf, golfFetchResult.events, now);
 
   function toPtDate(iso: string): string {
     return new Intl.DateTimeFormat("en-US", {
@@ -424,8 +429,10 @@ async function main() {
   console.log(`  Tennis merge: +${tennisResult.added} added, ~${tennisResult.updated} updated, -${tennisResult.pruned} pruned → ${tennisResult.merged.length} total`);
   console.log(`  F1 source: ${f1FetchResult.sourceUsed} (${f1FetchResult.count} sessions across ${Object.keys(f1FetchResult.raceCounts).length} GPs)`);
   console.log(`  F1 merge: +${f1Result.added} added, ~${f1Result.updated} updated, -${f1Result.pruned} pruned → ${f1Result.merged.length} total`);
+  console.log(`  Golf source: ${golfFetchResult.sourceUsed} (${golfFetchResult.count} sessions across ${Object.keys(golfFetchResult.tournamentCounts).length} tournaments)`);
+  console.log(`  Golf merge: +${golfResult.added} added, ~${golfResult.updated} updated, -${golfResult.pruned} pruned → ${golfResult.merged.length} total`);
 
-  const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged, ...buResult.merged, ...rugbyResult.merged, ...championsCupResult.merged, ...mlrResult.merged, ...cricketResult.merged, ...t20WcResult.merged, ...olympicHockeyResult.merged, ...eplResult.merged, ...mlsResult.merged, ...serieAResult.merged, ...laLigaResult.merged, ...bundesligaResult.merged, ...ligue1Result.merged, ...nwslResult.merged, ...uslResult.merged, ...championsLeagueResult.merged, ...faCupResult.merged, ...tennisResult.merged, ...f1Result.merged].sort(
+  const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged, ...buResult.merged, ...rugbyResult.merged, ...championsCupResult.merged, ...mlrResult.merged, ...cricketResult.merged, ...t20WcResult.merged, ...olympicHockeyResult.merged, ...eplResult.merged, ...mlsResult.merged, ...serieAResult.merged, ...laLigaResult.merged, ...bundesligaResult.merged, ...ligue1Result.merged, ...nwslResult.merged, ...uslResult.merged, ...championsLeagueResult.merged, ...faCupResult.merged, ...tennisResult.merged, ...f1Result.merged, ...golfResult.merged].sort(
     (a, b) =>
       new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
   );
@@ -564,6 +571,12 @@ async function main() {
         sourceName: "ESPN F1 API",
         raceCounts: f1FetchResult.raceCounts,
       },
+      golf: {
+        count: golfResult.merged.length,
+        lastFetchAt: nowIso,
+        sourceName: "Hardcoded Schedule",
+        tournamentCounts: golfFetchResult.tournamentCounts,
+      },
     },
   };
 
@@ -683,13 +696,19 @@ async function main() {
     f1Pruned: f1Result.pruned,
     f1SourceUsed: f1FetchResult.sourceUsed,
     f1RaceCounts: f1FetchResult.raceCounts,
+    golfCount: golfResult.merged.length,
+    golfAdded: golfResult.added,
+    golfUpdated: golfResult.updated,
+    golfPruned: golfResult.pruned,
+    golfSourceUsed: golfFetchResult.sourceUsed,
+    golfTournamentCounts: golfFetchResult.tournamentCounts,
     generatedMeta,
     events: allEvents,
   };
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
   console.log(
-    `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlResult.merged.length} AHL + ${echlResult.merged.length} ECHL + ${buResult.merged.length} NCAA + ${rugbyResult.merged.length} Rugby + ${championsCupResult.merged.length} Champions Cup + ${mlrResult.merged.length} MLR + ${cricketResult.merged.length} Cricket + ${t20WcResult.merged.length} T20WC + ${olympicHockeyResult.merged.length} Olympic Hockey + ${eplResult.merged.length} EPL + ${mlsResult.merged.length} MLS + ${serieAResult.merged.length} Serie A + ${laLigaResult.merged.length} La Liga + ${bundesligaResult.merged.length} Bundesliga + ${ligue1Result.merged.length} Ligue 1 + ${nwslResult.merged.length} NWSL + ${uslResult.merged.length} USL + ${championsLeagueResult.merged.length} UCL + ${faCupResult.merged.length} FA Cup + ${tennisResult.merged.length} Tennis + ${f1Result.merged.length} F1) to ${OUTPUT_PATH}`
+    `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlResult.merged.length} AHL + ${echlResult.merged.length} ECHL + ${buResult.merged.length} NCAA + ${rugbyResult.merged.length} Rugby + ${championsCupResult.merged.length} Champions Cup + ${mlrResult.merged.length} MLR + ${cricketResult.merged.length} Cricket + ${t20WcResult.merged.length} T20WC + ${olympicHockeyResult.merged.length} Olympic Hockey + ${eplResult.merged.length} EPL + ${mlsResult.merged.length} MLS + ${serieAResult.merged.length} Serie A + ${laLigaResult.merged.length} La Liga + ${bundesligaResult.merged.length} Bundesliga + ${ligue1Result.merged.length} Ligue 1 + ${nwslResult.merged.length} NWSL + ${uslResult.merged.length} USL + ${championsLeagueResult.merged.length} UCL + ${faCupResult.merged.length} FA Cup + ${tennisResult.merged.length} Tennis + ${f1Result.merged.length} F1 + ${golfResult.merged.length} Golf) to ${OUTPUT_PATH}`
   );
   console.log(`AHL source: ${ahlSourceLabel}`);
   if (allEvents.length > 0) {

@@ -45,6 +45,7 @@ The application features a frontend built with Expo Router for file-based naviga
 - **ESPN API (site.api.espn.com):** USL, FA Cup, ATP Tennis, and F1 Racing schedule data.
 - **all.rugby:** Japan League One Rugby schedule data (scraped).
 - **MLR (hardcoded):** Major League Rugby schedule data.
+- **Golf Majors (hardcoded):** Players Championship, The Masters, PGA Championship, US Open, British Open schedule data.
 - **CricAPI:** International and domestic Cricket fixtures.
 - **World Rugby API (api.wr-rims-prod.pulselive.com):** SVNS match schedules and live scores.
 - **Apple TV:** Streaming provider integration.

@@ -516,6 +516,15 @@
         "Qatar Grand Prix",
         "Abu Dhabi Grand Prix"
       ]
+    },
+    "golf": {
+      "The Majors": [
+        "Players Championship",
+        "The Masters",
+        "PGA Championship",
+        "US Open",
+        "British Open"
+      ]
     }
   }
 }

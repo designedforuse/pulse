@@ -317,6 +317,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
           tennisPruned: generated?.tennisPruned ?? 0,
           tennisSourceUsed: generated?.tennisSourceUsed ?? "unknown",
           tennisTournamentCounts: generated?.tennisTournamentCounts ?? {},
+          golfCount: generated?.golfCount ?? 0,
+          golfAdded: generated?.golfAdded ?? 0,
+          golfUpdated: generated?.golfUpdated ?? 0,
+          golfPruned: generated?.golfPruned ?? 0,
+          golfSourceUsed: generated?.golfSourceUsed ?? "unknown",
+          golfTournamentCounts: generated?.golfTournamentCounts ?? {},
         });
       }
     );
@@ -477,9 +483,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const soccerTotal = epl + mls + serieA + laLiga + bundesliga + ligue1 + nwsl + usl + championsLeague + faCup;
     const rugbyTotal = rugby + championsCup + mlr;
     const tennis = events.filter((e: any) => e.source === "tennis-hardcoded").length;
-    const other = events.length - nhl - ahl - echl - ncaa - rugbyTotal - cricketTotal - olympicHockey - soccerTotal - tennis;
+    const golf = events.filter((e: any) => e.source === "golf-hardcoded").length;
+    const other = events.length - nhl - ahl - echl - ncaa - rugbyTotal - cricketTotal - olympicHockey - soccerTotal - tennis - golf;
     return res.json({
-      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, championsCup, mlr, rugbyTotal, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, olympicHockey, epl, mls, serieA, laLiga, bundesliga, ligue1, nwsl, usl, championsLeague, faCup, soccerTotal, tennis, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, championsCup, mlr, rugbyTotal, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, olympicHockey, epl, mls, serieA, laLiga, bundesliga, ligue1, nwsl, usl, championsLeague, faCup, soccerTotal, tennis, golf, other, total: events.length,
       lastUpdated: generated.lastUpdated,
       ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",

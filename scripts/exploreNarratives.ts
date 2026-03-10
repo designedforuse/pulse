@@ -2575,7 +2575,8 @@ function buildTonightStory(
   if (activeRitual && followedNames.length > 0) {
     const matchedRitualEvents = tonightEvents.filter(e => activeRitual.sports.includes(e.sport));
     const followedInRitual = matchedRitualEvents.filter(e => {
-      return followedNames.some(fn =>
+      const sportTeams = followedBySport.get(e.sport) || [];
+      return sportTeams.some(fn =>
         storyTeamMatch(e.homeTeam, fn) || storyTeamMatch(e.awayTeam, fn)
       );
     });
@@ -2613,8 +2614,12 @@ function buildTonightStory(
     let baseScore = CARD_KIND_SCORES[card.kind] || 30;
 
     const cardTeams = [teamA, teamB].filter(Boolean);
+    const cardSportList = card.sports || [];
     const followedInCard = cardTeams.filter(t =>
-      followedNames.some(fn => storyTeamMatch(t, fn))
+      cardSportList.some(s => {
+        const sportTeams = followedBySport.get(s) || [];
+        return sportTeams.some(fn => storyTeamMatch(t, fn));
+      }) || (cardSportList.length === 0 && followedNames.some(fn => storyTeamMatch(t, fn)))
     );
     if (followedInCard.length > 0) {
       baseScore += 80;
