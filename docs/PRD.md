@@ -1,6 +1,6 @@
-# Master Sports Guide — Product Requirements Document
+# Sports Watch — Product Requirements Document
 
-**Version:** 1.0
+**Version:** 1.1
 **Last Updated:** March 10, 2026
 
 ---
@@ -8,7 +8,7 @@
 ## 1. Product Overview
 
 ### Mission
-Master Sports Guide is a mobile-first sports schedule and live tracking application that gives fans an organized, personalized command center for following their favorite teams and leagues across multiple sports. The app eliminates the friction of jumping between apps, websites, and TV guides by consolidating schedules, live scores, streaming provider links, and narrative context into a single experience.
+Sports Watch is a mobile-first sports schedule and live tracking application that gives fans an organized, personalized command center for following their favorite teams and leagues across multiple sports. The app eliminates the friction of jumping between apps, websites, and TV guides by consolidating schedules, live scores, streaming provider links, and narrative context into a single experience.
 
 ### Target User
 Sports enthusiasts who follow multiple sports and leagues across different time zones and streaming platforms. The typical user watches hockey, rugby, cricket, soccer, tennis, golf, and/or F1 racing, and wants to know what's on, what's live, and where to watch — without checking five different apps.
@@ -106,6 +106,10 @@ Settings (gear icon) → toggle sports on/off → expand sport → toggle indivi
 | Racing | 2 |
 | Soccer | 1 |
 | Other | 0 |
+
+**Loading State:**
+- On initial app launch, a skeleton loader mimics the Chaos Mode card layout (animated shimmer bars for title, primary card with team rows, and 3 secondary card placeholders) while event data is fetched from the API.
+- Chaos Mode initialization uses a fingerprint-based approach (event count + first 5 event IDs) to detect when fresh API data replaces the local fallback dataset, triggering an automatic rebuild without requiring a manual refresh.
 
 **Up Next Section:**
 - Shows all upcoming events starting within the next 24 hours.
@@ -318,6 +322,7 @@ interface AppEvent {
 - **Retention Window:** Events are kept from 14 days in the past to 21–60 days in the future (varies by sport).
 - **Merge Strategy:** Fresh data is merged with existing cached data — new events are added, existing events are updated, events outside the retention window are pruned.
 - **Stable IDs:** Every script generates deterministic IDs to prevent duplicates across refresh cycles.
+- **Cricket Deduplication:** CricAPI occasionally returns the same match across paginated responses. Matches are deduplicated by CricAPI match ID before classification, and a secondary team+time deduplication pass runs during the merge step to catch any remaining duplicates.
 
 ### Narrative Generation
 - **Manual:** "Rebuild Stories" button in Settings triggers `POST /api/rebuild-explore`.
@@ -461,6 +466,12 @@ utils/                  # Utility functions
 - **Body:** 14–16pt.
 - **Headers:** 20–28pt.
 - **Display:** 48–64pt max.
+
+### Branding
+- **App Name:** Sports Watch
+- **App Icon:** Bold, geometric, italic green "S" (`#00E676`) on black background (ESPN-style single-letter branding).
+- **Splash Screen:** Pure black background (`#000000`) with centered green "S" icon.
+- **Android Adaptive Icon:** Green "S" foreground on black background, with white monochrome variant.
 
 ### Platform Adaptations
 - **iOS:** Native liquid glass tab bar via `expo-router` NativeTabs (when available).
