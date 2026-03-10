@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-10T04:05:23.945Z",
+  "lastUpdated": "2026-03-10T05:06:02.842Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "player_movement": {
@@ -55,7 +55,7 @@
         ],
         "playersIngested": 652,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-10T04:05:23.945Z"
+        "timestamp": "2026-03-10T05:06:02.842Z"
       },
       "cacheHistoryCount": 753,
       "error": null
@@ -65,7 +65,7 @@
     "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -56.08998472222222,
+      "hoursUntil": -57.100789444444445,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -86,20 +86,20 @@
       "clinchFinalCount": 0,
       "clinchGatedOut": []
     },
-    "tonightStorySelectedSignal": "multi_team_night",
-    "tonightStoryHeadline": "Your Hockey Night",
+    "tonightStorySelectedSignal": "single_team_game",
+    "tonightStoryHeadline": "Boston Bruins Tonight",
     "tonightStorySourceEvent": "nhl_2025021012",
     "tonightStoryDebug": {
-      "selectedSignal": "multi_team_night",
-      "selectedHeadline": "Your Hockey Night",
-      "selectedScore": 240,
+      "selectedSignal": "single_team_game",
+      "selectedHeadline": "Boston Bruins Tonight",
+      "selectedScore": 150,
       "sourceEventId": "nhl_2025021012",
-      "reason": "2 followed/affiliate teams playing tonight",
+      "reason": "single followed team (Boston Bruins) playing tonight",
       "scoredCandidates": [
         {
-          "label": "[multi_team_night] Your Hockey Night",
-          "score": 240,
-          "reason": "2 followed/affiliate teams playing tonight"
+          "label": "[single_team_game] Boston Bruins Tonight",
+          "score": 150,
+          "reason": "single followed team (Boston Bruins) playing tonight"
         },
         {
           "label": "[player_movement] Roster Shakeup",
@@ -120,8 +120,8 @@
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-03-10T04:05:23.945Z",
-      "expiresAt": "2026-03-17T04:05:23.945Z",
+      "triggeredAt": "2026-03-10T05:06:02.842Z",
+      "expiresAt": "2026-03-17T05:06:02.842Z",
       "kind": "player_movement",
       "region": "Other",
       "regionPriority": 99,
@@ -242,15 +242,15 @@
     }
   ],
   "tonightStory": {
-    "signalType": "multi_team_night",
-    "signalLabel": "YOUR TEAMS",
-    "headline": "Your Hockey Night",
-    "body": "The Boston Bruins and Hurricanes all play tonight in the NHL.",
+    "signalType": "single_team_game",
+    "signalLabel": "YOUR TEAM",
+    "headline": "Boston Bruins Tonight",
+    "body": "Los Angeles Kings at Boston Bruins — catch the action in the NHL.",
     "sourceEventId": "nhl_2025021012",
     "sourceCard": {
-      "id": "tonight_multi_team",
-      "kind": "multi_team_night",
-      "title": "Your Hockey Night"
+      "id": "tonight_single_team",
+      "kind": "single_team_game",
+      "title": "Boston Bruins Tonight"
     },
     "sports": [
       "hockey"
