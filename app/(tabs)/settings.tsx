@@ -382,9 +382,6 @@ export default function SettingsScreen() {
                 )}
                 <View>
                   <Text style={styles.refreshLabel}>Refresh Schedules</Text>
-                  <Text style={styles.refreshDesc}>
-                    Pull latest NHL + AHL + ECHL + NCAA + Rugby + Cricket + T20WC + Olympics + Soccer data
-                  </Text>
                 </View>
               </View>
               {!refreshing && (
@@ -428,9 +425,6 @@ export default function SettingsScreen() {
                 )}
                 <View>
                   <Text style={styles.refreshLabel}>Rebuild Stories</Text>
-                  <Text style={styles.refreshDesc}>
-                    Regenerate narrative cards from current data
-                  </Text>
                 </View>
               </View>
               {!rebuildingExplore && (
