@@ -344,7 +344,7 @@ export default function SettingsScreen() {
         contentContainerStyle={[
           styles.scrollContent,
           {
-            paddingTop: 12,
+            paddingTop: insets.top + 12,
             paddingBottom: Platform.OS === "web" ? 34 : 100,
           },
         ]}
