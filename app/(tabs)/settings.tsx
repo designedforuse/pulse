@@ -256,8 +256,7 @@ export default function SettingsScreen() {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     }
     try {
-      const url = new URL("/api/rebuild-explore", getApiUrl());
-      const res = await fetch(url.toString(), { method: "POST" });
+      const res = await apiRequest("POST", "/api/rebuild-explore");
       const data = await res.json();
       if (data.success) {
         setRebuildMessage({ text: `${data.cardCount} narrative cards generated`, ok: true });
