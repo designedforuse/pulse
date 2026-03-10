@@ -81,6 +81,7 @@ function FavoritesSection() {
 
   const leagueOrder: Record<string, string[]> = {
     rugby: ["English Premiership", "Top 14", "URC", "Super Rugby", "Champions Cup", "Six Nations", "Japan League One", "MLR", "HSBC SVNS"],
+    soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "MLS", "NWSL", "USL", "Champions League", "FA Cup"],
   };
 
   const sortLeagues = (sport: string, leagues: string[]) => {
