@@ -364,6 +364,28 @@ export default function SettingsScreen() {
         </View>
 
         <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Favorites</Text>
+          <View style={styles.card}>
+            <View style={styles.debugRow}>
+              <View style={styles.debugLeft}>
+                <Ionicons name="star" size={18} color={Colors.favStar} />
+                <View>
+                  <Text style={styles.refreshLabel}>Favorite Teams Only</Text>
+                </View>
+              </View>
+              <Switch
+                value={favoritesOnly}
+                onValueChange={setFavoritesOnly}
+                trackColor={{ false: Colors.border, true: Colors.favStar + "55" }}
+                thumbColor={favoritesOnly ? Colors.favStar : Colors.textMuted}
+                style={styles.debugSwitch}
+                testID="favorites-only-toggle"
+              />
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.section}>
           <Text style={styles.sectionTitle}>Schedules & Stories</Text>
           <View style={styles.card}>
             <Pressable
@@ -461,28 +483,6 @@ export default function SettingsScreen() {
                 </View>
               </View>
             )}
-          </View>
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Favorites</Text>
-          <View style={styles.card}>
-            <View style={styles.debugRow}>
-              <View style={styles.debugLeft}>
-                <Ionicons name="star" size={18} color={Colors.favStar} />
-                <View>
-                  <Text style={styles.refreshLabel}>Favorite Teams Only</Text>
-                </View>
-              </View>
-              <Switch
-                value={favoritesOnly}
-                onValueChange={setFavoritesOnly}
-                trackColor={{ false: Colors.border, true: Colors.favStar + "55" }}
-                thumbColor={favoritesOnly ? Colors.favStar : Colors.textMuted}
-                style={styles.debugSwitch}
-                testID="favorites-only-toggle"
-              />
-            </View>
           </View>
         </View>
 
