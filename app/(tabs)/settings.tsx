@@ -359,6 +359,52 @@ export default function SettingsScreen() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Using the App</Text>
+          <View style={styles.card}>
+            <View style={styles.howItWorksItem}>
+              <View style={[styles.stepBadge, { backgroundColor: Colors.accentDim }]}>
+                <Text style={[styles.stepText, { color: Colors.accent }]}>1</Text>
+              </View>
+              <View style={styles.howItWorksContent}>
+                <Text style={styles.howItWorksTitle}>Watch — what's exciting right now</Text>
+                <Text style={styles.howItWorksDesc}>Chaos Mode surfaces the most compelling live game based on score, tension, and timing.</Text>
+              </View>
+            </View>
+            <View style={styles.divider} />
+            <View style={styles.howItWorksItem}>
+              <View style={[styles.stepBadge, { backgroundColor: Colors.accentDim }]}>
+                <Text style={[styles.stepText, { color: Colors.accent }]}>2</Text>
+              </View>
+              <View style={styles.howItWorksContent}>
+                <Text style={styles.howItWorksTitle}>Rituals — your weekly viewing habits</Text>
+                <Text style={styles.howItWorksDesc}>Rituals group games into time windows (like Sunday mornings or Friday night hockey) so you can quickly find your regular matchups.</Text>
+              </View>
+            </View>
+            <View style={styles.divider} />
+            <View style={styles.howItWorksItem}>
+              <View style={[styles.stepBadge, { backgroundColor: Colors.accentDim }]}>
+                <Text style={[styles.stepText, { color: Colors.accent }]}>3</Text>
+              </View>
+              <View style={styles.howItWorksContent}>
+                <Text style={styles.howItWorksTitle}>Stories — discover games across leagues</Text>
+                <Text style={styles.howItWorksDesc}>Stories highlights events based on league moments and momentum:</Text>
+                <View style={styles.howItWorksBullets}>
+                  <Text style={styles.howItWorksBullet}>• Movement – regular season matchups</Text>
+                  <Text style={styles.howItWorksBullet}>• Momentum – teams gaining form</Text>
+                  <Text style={styles.howItWorksBullet}>• Playoff Push – late-season stakes</Text>
+                  <Text style={styles.howItWorksBullet}>• League Moments – finals, derbies, and marquee events</Text>
+                </View>
+              </View>
+            </View>
+            <View style={styles.divider} />
+            <View style={styles.howItWorksFooter}>
+              <Ionicons name="open-outline" size={14} color={Colors.textSecondary} />
+              <Text style={styles.howItWorksFooterText}>Tap any event to open the broadcast in your streaming provider.</Text>
+            </View>
+          </View>
+        </View>
+
+        <View style={styles.section}>
           <Text style={styles.sectionTitle}>Sports</Text>
           <FavoritesSection />
         </View>
@@ -539,51 +585,6 @@ export default function SettingsScreen() {
           </View>
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Using the App</Text>
-          <View style={styles.card}>
-            <View style={styles.howItWorksItem}>
-              <View style={[styles.stepBadge, { backgroundColor: Colors.accentDim }]}>
-                <Text style={[styles.stepText, { color: Colors.accent }]}>1</Text>
-              </View>
-              <View style={styles.howItWorksContent}>
-                <Text style={styles.howItWorksTitle}>Watch — what's exciting right now</Text>
-                <Text style={styles.howItWorksDesc}>Chaos Mode surfaces the most compelling live game based on score, tension, and timing.</Text>
-              </View>
-            </View>
-            <View style={styles.divider} />
-            <View style={styles.howItWorksItem}>
-              <View style={[styles.stepBadge, { backgroundColor: Colors.accentDim }]}>
-                <Text style={[styles.stepText, { color: Colors.accent }]}>2</Text>
-              </View>
-              <View style={styles.howItWorksContent}>
-                <Text style={styles.howItWorksTitle}>Rituals — your weekly viewing habits</Text>
-                <Text style={styles.howItWorksDesc}>Rituals group games into time windows (like Sunday mornings or Friday night hockey) so you can quickly find your regular matchups.</Text>
-              </View>
-            </View>
-            <View style={styles.divider} />
-            <View style={styles.howItWorksItem}>
-              <View style={[styles.stepBadge, { backgroundColor: Colors.accentDim }]}>
-                <Text style={[styles.stepText, { color: Colors.accent }]}>3</Text>
-              </View>
-              <View style={styles.howItWorksContent}>
-                <Text style={styles.howItWorksTitle}>Stories — discover games across leagues</Text>
-                <Text style={styles.howItWorksDesc}>Stories highlights events based on league moments and momentum:</Text>
-                <View style={styles.howItWorksBullets}>
-                  <Text style={styles.howItWorksBullet}>• Movement – regular season matchups</Text>
-                  <Text style={styles.howItWorksBullet}>• Momentum – teams gaining form</Text>
-                  <Text style={styles.howItWorksBullet}>• Playoff Push – late-season stakes</Text>
-                  <Text style={styles.howItWorksBullet}>• League Moments – finals, derbies, and marquee events</Text>
-                </View>
-              </View>
-            </View>
-            <View style={styles.divider} />
-            <View style={styles.howItWorksFooter}>
-              <Ionicons name="open-outline" size={14} color={Colors.textSecondary} />
-              <Text style={styles.howItWorksFooterText}>Tap any event to open the broadcast in your streaming provider.</Text>
-            </View>
-          </View>
-        </View>
       </ScrollView>
     </View>
   );
