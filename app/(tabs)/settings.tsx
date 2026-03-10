@@ -881,9 +881,10 @@ const styles = StyleSheet.create({
   },
   refreshLeft: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
     gap: 12,
     flex: 1,
+    paddingTop: 2,
   },
   refreshLabel: {
     fontSize: 15,
@@ -1000,9 +1001,10 @@ const styles = StyleSheet.create({
   },
   debugLeft: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
     gap: 12,
     flex: 1,
+    paddingTop: 2,
   },
   debugSwitch: {
     transform: [{ scaleX: 0.85 }, { scaleY: 0.85 }],
