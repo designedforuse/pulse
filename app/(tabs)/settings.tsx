@@ -109,12 +109,6 @@ function FavoritesSection() {
 
   return (
     <View style={styles.card}>
-      <View style={styles.favCountRow}>
-        <Ionicons name="star" size={14} color={Colors.favStar} />
-        <Text style={styles.favCountText}>
-          {enabledCount} of {totalCount} teams active
-        </Text>
-      </View>
       {sportOrder.map((sport) => {
         const sportFavs = allTeams[sport];
         const hasTeams = sportFavs && Object.keys(sportFavs).length > 0;
