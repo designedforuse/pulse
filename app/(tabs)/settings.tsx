@@ -490,31 +490,6 @@ export default function SettingsScreen() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Debug</Text>
-          <View style={styles.card}>
-            <View style={styles.debugRow}>
-              <View style={styles.debugLeft}>
-                <Ionicons name="bug-outline" size={18} color={Colors.live} />
-                <View>
-                  <Text style={styles.refreshLabel}>Show All Games</Text>
-                  <Text style={styles.refreshDesc}>
-                    Ignore weekend filter on Mode screens
-                  </Text>
-                </View>
-              </View>
-              <Switch
-                value={debugShowAll}
-                onValueChange={setDebugShowAll}
-                trackColor={{ false: Colors.border, true: Colors.live + "55" }}
-                thumbColor={debugShowAll ? Colors.live : Colors.textMuted}
-                style={styles.debugSwitch}
-                testID="debug-show-all-toggle"
-              />
-            </View>
-          </View>
-        </View>
-
-        <View style={styles.section}>
           <Text style={styles.sectionTitle}>About</Text>
           <View style={styles.card}>
             <SettingsRow
