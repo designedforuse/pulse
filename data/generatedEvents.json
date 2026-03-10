@@ -5264,26 +5264,6 @@
       "isIccT20Wc": false
     },
     {
-      "id": "cricket-odi-u9mqel",
-      "sport": "cricket",
-      "league": "ODI Cricket",
-      "awayTeam": "Bangladesh",
-      "homeTeam": "Pakistan",
-      "startTimeLocal": "2026-03-11T08:15:00.000Z",
-      "endTimeLocal": "2026-03-11T16:15:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "odi",
-      "competitionName": "ODI Cricket",
-      "competitionType": "international",
-      "format": "odi",
-      "hostCountry": "Bangladesh",
-      "seriesName": "1st ODI, Pakistan tour of Bangladesh 2026",
-      "gender": "men",
-      "isIccT20Wc": false
-    },
-    {
       "id": "soccer-usl-20260311-1600-hartford-athletic-at-birmingham-legion-fc",
       "sport": "soccer",
       "league": "USL",

@@ -697,13 +697,24 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
 
   console.log(`  Cricket: Fetched ${allMatches.length} total matches from ${pagesRead} pages`);
 
+  const seenIds = new Map<string, CricApiMatch>();
+  for (const match of allMatches) {
+    if (!seenIds.has(match.id)) {
+      seenIds.set(match.id, match);
+    }
+  }
+  const uniqueMatches = Array.from(seenIds.values());
+  if (uniqueMatches.length < allMatches.length) {
+    console.log(`  Cricket: Deduped ${allMatches.length} → ${uniqueMatches.length} unique matches`);
+  }
+
   const events: AppEvent[] = [];
   const counts: Record<string, number> = {};
   let skipped = 0;
   let womenFiltered = 0;
   let intlNationFiltered = 0;
 
-  for (const match of allMatches) {
+  for (const match of uniqueMatches) {
     const classification = classifyMatch(match);
     if (classification.type === "skip") {
       skipped++;
@@ -796,7 +807,19 @@ export function mergeCricketEvents(
     mergedMap.set(id, e);
   }
 
-  const merged = Array.from(mergedMap.values()).sort(
+  const teamTimeKeys = new Set<string>();
+  const deduped: AppEvent[] = [];
+  for (const e of Array.from(mergedMap.values())) {
+    const ttKey = `${(e.homeTeam || "").toLowerCase()}|${(e.awayTeam || "").toLowerCase()}|${e.startTimeLocal}`;
+    if (teamTimeKeys.has(ttKey)) {
+      pruned++;
+      continue;
+    }
+    teamTimeKeys.add(ttKey);
+    deduped.push(e);
+  }
+
+  const merged = deduped.sort(
     (a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
   );
 
