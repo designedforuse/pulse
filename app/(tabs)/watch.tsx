@@ -679,16 +679,23 @@ export default function WatchScreen() {
     chaosRef.current = setup;
   }, [allEvents, favorites, getScoreStatus, getScoreData]);
 
-  const initialised = useRef(false);
+  const eventFingerprint = useMemo(() => {
+    if (allEvents.length === 0) return "";
+    const sample = allEvents.slice(0, 5).map(e => e.id).join("|");
+    return `${allEvents.length}:${sample}`;
+  }, [allEvents]);
+
+  const prevFingerprintRef = useRef("");
   useEffect(() => {
-    if (!initialised.current && allEvents.length > 0) {
-      initialised.current = true;
-      const t = new Date();
-      const setup = buildChaosSetup(allEvents, favorites, t, getScoreStatus, getScoreData);
-      setChaosSetup(setup);
-      chaosRef.current = setup;
-    }
-  }, [allEvents.length]);
+    if (allEvents.length === 0) return;
+    const prev = prevFingerprintRef.current;
+    prevFingerprintRef.current = eventFingerprint;
+    if (chaosRef.current && prev === eventFingerprint) return;
+    const t = new Date();
+    const setup = buildChaosSetup(allEvents, favorites, t, getScoreStatus, getScoreData);
+    setChaosSetup(setup);
+    chaosRef.current = setup;
+  }, [eventFingerprint, favorites, getScoreStatus, getScoreData]);
 
   useEffect(() => {
     const interval = setInterval(() => {
