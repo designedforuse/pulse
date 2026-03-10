@@ -350,7 +350,7 @@ export default function SettingsScreen() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Schedule Data</Text>
+          <Text style={styles.sectionTitle}>Schedules & Stories</Text>
           <View style={styles.card}>
             {meta && (
               <View style={styles.metaBlock}>
@@ -363,103 +363,6 @@ export default function SettingsScreen() {
                     <Ionicons name="warning" size={13} color="#F59E0B" style={{ marginLeft: 4 }} />
                   )}
                 </View>
-                <View style={styles.sourceDivider} />
-                <SourceRow league="NHL" meta={meta.sources.nhl} />
-                <View style={styles.sourceDivider} />
-                <SourceRow league="AHL" meta={meta.sources.ahl} />
-                <View style={styles.sourceDivider} />
-                <SourceRow league="ECHL" meta={meta.sources.echl} />
-                <View style={styles.sourceDivider} />
-                {meta.sources.ncaa && (
-                  <>
-                    <SourceRow league="NCAA" meta={meta.sources.ncaa} />
-                    <View style={styles.sourceDivider} />
-                  </>
-                )}
-                {meta.sources.rugby && (
-                  <>
-                    <SourceRow league="Rugby" meta={meta.sources.rugby} />
-                    <View style={styles.sourceDivider} />
-                  </>
-                )}
-                {meta.sources.cricket && (
-                  <>
-                    <SourceRow league="Cricket" meta={meta.sources.cricket} />
-                    <View style={styles.sourceDivider} />
-                  </>
-                )}
-                {meta.sources.iccT20Wc && (
-                  <>
-                    <SourceRow league="T20 World Cup" meta={meta.sources.iccT20Wc} />
-                    <View style={styles.sourceDivider} />
-                  </>
-                )}
-                {meta.sources.olympicHockey && (
-                  <>
-                    <SourceRow league="Olympic Hockey" meta={meta.sources.olympicHockey} />
-                    <View style={styles.sourceDivider} />
-                  </>
-                )}
-                {meta.sources.epl && (
-                  <>
-                    <SourceRow league="EPL" meta={meta.sources.epl} />
-                    <View style={styles.sourceDivider} />
-                  </>
-                )}
-                {meta.sources.mls && (
-                  <>
-                    <SourceRow league="MLS" meta={meta.sources.mls} />
-                    <View style={styles.sourceDivider} />
-                  </>
-                )}
-                {meta.sources.serieA && (
-                  <>
-                    <SourceRow league="Serie A" meta={meta.sources.serieA} />
-                    <View style={styles.sourceDivider} />
-                  </>
-                )}
-                {meta.sources.laLiga && (
-                  <>
-                    <SourceRow league="La Liga" meta={meta.sources.laLiga} />
-                    <View style={styles.sourceDivider} />
-                  </>
-                )}
-                {meta.sources.bundesliga && (
-                  <>
-                    <SourceRow league="Bundesliga" meta={meta.sources.bundesliga} />
-                    <View style={styles.sourceDivider} />
-                  </>
-                )}
-                {meta.sources.ligue1 && (
-                  <>
-                    <SourceRow league="Ligue 1" meta={meta.sources.ligue1} />
-                    <View style={styles.sourceDivider} />
-                  </>
-                )}
-                {meta.sources.nwsl && (
-                  <>
-                    <SourceRow league="NWSL" meta={meta.sources.nwsl} />
-                    <View style={styles.sourceDivider} />
-                  </>
-                )}
-                {meta.sources.usl && (
-                  <>
-                    <SourceRow league="USL" meta={meta.sources.usl} />
-                    <View style={styles.sourceDivider} />
-                  </>
-                )}
-                {meta.sources.championsLeague && (
-                  <>
-                    <SourceRow league="Champions League" meta={meta.sources.championsLeague} />
-                    <View style={styles.sourceDivider} />
-                  </>
-                )}
-                {meta.sources.faCup && (
-                  <>
-                    <SourceRow league="FA Cup" meta={meta.sources.faCup} />
-                    <View style={styles.sourceDivider} />
-                  </>
-                )}
               </View>
             )}
             <Pressable

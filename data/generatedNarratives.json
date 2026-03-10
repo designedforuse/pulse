@@ -1,24 +1,20 @@
 {
-  "lastUpdated": "2026-03-10T02:33:45.902Z",
+  "lastUpdated": "2026-03-10T04:05:23.945Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "player_movement": {
-        "Other": 1
-      },
-      "upset_alert": {
         "Other": 1
       }
     },
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
       "Other": [
-        "upset_alert: Upset Alert",
         "player_movement: System Shuffle"
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 2,
-    "totalAfterCap": 2,
+    "totalBeforeCap": 1,
+    "totalAfterCap": 1,
     "playerMovement": {
       "rawMovementCandidates": 1,
       "movementAfterRegionFilter": 1,
@@ -59,17 +55,17 @@
         ],
         "playersIngested": 652,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-10T02:33:45.902Z"
+        "timestamp": "2026-03-10T04:05:23.945Z"
       },
-      "cacheHistoryCount": 751,
+      "cacheHistoryCount": 753,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 2,
-    "candidateCountAfterCap": 2,
+    "candidateCountBeforeCap": 1,
+    "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -54.56275055555555,
+      "hoursUntil": -56.08998472222222,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -79,10 +75,10 @@
       "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 1,
+      "rawUpsetCandidates": 0,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 1,
-      "upsetFinalCount": 1
+      "upsetCompletedCandidates": 0,
+      "upsetFinalCount": 0
     },
     "clinchWatch": {
       "rawClinchCandidates": 0,
@@ -106,63 +102,15 @@
           "reason": "2 followed/affiliate teams playing tonight"
         },
         {
-          "label": "[upset_alert] Shock Result",
-          "score": 120,
-          "reason": "upset_alert (generic, no followed teams)"
-        },
-        {
           "label": "[player_movement] Roster Shakeup",
           "score": 40,
           "reason": "player_movement (generic, no followed teams)"
         }
       ]
     },
-    "videoSelection": {
-      "upset_alert_tennis-espn-172921": {
-        "searchQuery": "Fritz vs Michelsen upset highlights March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
-      }
-    }
+    "videoSelection": {}
   },
   "cards": [
-    {
-      "id": "upset_alert_tennis-espn-172921",
-      "title": "Upset Alert",
-      "subtitle": "Michelsen stuns Fritz at Indian Wells Masters",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 98,
-      "triggeredAt": "2026-03-10T02:33:45.902Z",
-      "expiresAt": "2026-03-10T08:33:45.902Z",
-      "kind": "upset_alert",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "mode": "completed",
-        "upsetType": "tennis_seed_upset",
-        "sport": "tennis",
-        "league": "ATP Masters 1000",
-        "favoriteName": "Fritz",
-        "underdogName": "Michelsen",
-        "favoriteRank": 7,
-        "awayTeam": "Fritz",
-        "homeTeam": "Michelsen",
-        "startTime": "2026-03-09T21:00:00.000Z",
-        "eventIds": [
-          "tennis-espn-172921"
-        ],
-        "reason": "Fritz (seed 7) entered as the higher seed, but Michelsen knocked Fritz out.\n\nThis opens up the draw and changes the shape of the tournament."
-      },
-      "sports": [
-        "tennis"
-      ]
-    },
     {
       "id": "player_movement_system",
       "title": "System Shuffle",
@@ -172,8 +120,8 @@
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-03-10T02:33:45.902Z",
-      "expiresAt": "2026-03-17T02:33:45.902Z",
+      "triggeredAt": "2026-03-10T04:05:23.945Z",
+      "expiresAt": "2026-03-17T04:05:23.945Z",
       "kind": "player_movement",
       "region": "Other",
       "regionPriority": 99,
