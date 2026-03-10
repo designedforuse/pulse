@@ -2042,9 +2042,10 @@ function generateClinchWatch(
     rawClinchCandidates: candidates.length,
     clinchAfterRegionFilter: 0,
     clinchFinalCount: 0,
+    clinchGatedOut: [] as string[],
   };
 
-  if (candidates.length === 0) return { cards: [], debug };
+  if (candidates.length === 0) return { cards: [], fallbackPushCards: [], debug };
 
   candidates.sort((a, b) => {
     const rp = getRegionPriority(a.region) - getRegionPriority(b.region);
