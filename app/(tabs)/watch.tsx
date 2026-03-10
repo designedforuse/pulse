@@ -9,6 +9,7 @@ import {
   FlatList,
   RefreshControl,
   useWindowDimensions,
+  ActivityIndicator,
 } from "react-native";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -635,7 +636,7 @@ function SecondaryCarousel({
 export default function WatchScreen() {
   const insets = useSafeAreaInsets();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
-  const { allEvents: rawEvents, favoritesOnly } = useEvents();
+  const { allEvents: rawEvents, favoritesOnly, isLoading: eventsLoading } = useEvents();
   const { getScore, scores } = useScores();
   const { favorites, disabledSports, disabledLeagues } = useFavorites();
 
@@ -1036,6 +1037,11 @@ export default function WatchScreen() {
                 promotionReason={chaosSetup.promotionReason}
               />
             )}
+          </View>
+        ) : eventsLoading ? (
+          <View style={styles.emptyState}>
+            <ActivityIndicator size="large" color={Colors.accent} />
+            <Text style={styles.emptyTitle}>Loading games...</Text>
           </View>
         ) : (
           <View style={styles.emptyState}>
