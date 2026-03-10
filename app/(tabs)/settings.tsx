@@ -555,36 +555,6 @@ export default function SettingsScreen() {
           </View>
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Streaming Providers</Text>
-          <View style={styles.card}>
-            {providers.map((provider, index) => {
-              const networks: Record<string, string> = {
-                "YouTube TV": "ESPN, NBC Sports, CBS Sports, Fox Sports, TNT Sports, BeIn Sports, Willow TV",
-                "Disney+": "ESPN+",
-                "Prime Video": "RugbyPass TV",
-              };
-              const networkList = networks[provider.name];
-              return (
-                <React.Fragment key={provider.id}>
-                  {index > 0 && <View style={styles.divider} />}
-                  <View style={styles.row}>
-                    <View style={styles.rowLeft}>
-                      <Ionicons name="tv-outline" size={18} color={Colors.textSecondary} />
-                      <View style={{ flex: 1 }}>
-                        <Text style={styles.rowLabel}>{provider.name}</Text>
-                        {networkList && (
-                          <Text style={styles.providerNetworks}>{networkList}</Text>
-                        )}
-                      </View>
-                    </View>
-                  </View>
-                </React.Fragment>
-              );
-            })}
-          </View>
-        </View>
-
       </ScrollView>
     </View>
   );
