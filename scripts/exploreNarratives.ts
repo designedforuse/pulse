@@ -2373,6 +2373,19 @@ function getFollowedTeamNames(favorites: Favorites): string[] {
   return teams;
 }
 
+function getFollowedTeamNamesBySport(favorites: Favorites): Map<string, string[]> {
+  const result = new Map<string, string[]>();
+  for (const [sport, leagues] of Object.entries(favorites)) {
+    if (!leagues) continue;
+    const teams: string[] = [];
+    for (const [, teamList] of Object.entries(leagues)) {
+      teams.push(...teamList);
+    }
+    if (teams.length > 0) result.set(sport, teams);
+  }
+  return result;
+}
+
 interface TonightStoryCandidate {
   score: number;
   signalType: string;
@@ -2405,6 +2418,7 @@ function buildTonightStory(
   }
 
   const followedNames = getFollowedTeamNames(favorites);
+  const followedBySport = getFollowedTeamNamesBySport(favorites);
   const allStories: TonightStoryCandidate[] = [];
 
   const todayStart = new Date(now);
@@ -2431,7 +2445,6 @@ function buildTonightStory(
   }
 
   if (followedNames.length > 0) {
-    const followedNorm = followedNames.map(n => normalizeTeamName(n));
     const relatedMap = new Map<string, string[]>();
     for (const fn of followedNames) {
       relatedMap.set(fn, getRelatedTeams(fn));
@@ -2439,8 +2452,11 @@ function buildTonightStory(
 
     const followedTonightEvents: { event: AppEvent; followedTeam: string; isAffiliate: boolean; matchedTeam: string }[] = [];
     for (const ev of tonightEvents) {
+      const sportTeams = followedBySport.get(ev.sport) || [];
+      if (sportTeams.length === 0) continue;
+
       let matched = false;
-      for (const fn of followedNames) {
+      for (const fn of sportTeams) {
         if (storyTeamMatch(ev.homeTeam, fn)) {
           followedTonightEvents.push({ event: ev, followedTeam: fn, isAffiliate: false, matchedTeam: ev.homeTeam });
           matched = true;
@@ -2453,7 +2469,7 @@ function buildTonightStory(
         }
       }
       if (matched) continue;
-      for (const fn of followedNames) {
+      for (const fn of sportTeams) {
         const affiliates = relatedMap.get(fn) || [];
         let affMatched = false;
         for (const aff of affiliates) {
