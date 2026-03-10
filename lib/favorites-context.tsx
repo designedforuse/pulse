@@ -6,6 +6,11 @@ import { getFavorites, type Favorites, type SportFavorites } from "@/lib/data";
 
 const STORAGE_KEY = "favorites.disabled";
 const SPORTS_STORAGE_KEY = "favorites.disabledSports";
+const LEAGUES_STORAGE_KEY = "favorites.disabledLeagues";
+
+function leagueKey(sport: string, league: string): string {
+  return `${sport}::${league}`;
+}
 
 interface FavoritesContextValue {
   favorites: Favorites;
@@ -14,7 +19,10 @@ interface FavoritesContextValue {
   toggleTeam: (sport: string, league: string, team: string) => void;
   isSportEnabled: (sport: string) => boolean;
   toggleSport: (sport: string) => void;
+  isLeagueEnabled: (sport: string, league: string) => boolean;
+  toggleLeague: (sport: string, league: string) => void;
   disabledSports: Set<string>;
+  disabledLeagues: Set<string>;
   enabledCount: number;
   totalCount: number;
 }
@@ -63,6 +71,7 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
   const totalCount = useMemo(() => countTeams(allTeams), [allTeams]);
   const [disabled, setDisabled] = useState<Set<string>>(new Set());
   const [disabledSports, setDisabledSports] = useState<Set<string>>(new Set());
+  const [disabledLeagues, setDisabledLeagues] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     AsyncStorage.getItem(STORAGE_KEY).then((raw) => {
@@ -81,6 +90,16 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
           const arr = JSON.parse(raw);
           if (Array.isArray(arr)) {
             setDisabledSports(new Set(arr));
+          }
+        } catch {}
+      }
+    });
+    AsyncStorage.getItem(LEAGUES_STORAGE_KEY).then((raw) => {
+      if (raw) {
+        try {
+          const arr = JSON.parse(raw);
+          if (Array.isArray(arr)) {
+            setDisabledLeagues(new Set(arr));
           }
         } catch {}
       }
@@ -143,9 +162,34 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
     []
   );
 
+  const isLeagueEnabled = useCallback(
+    (sport: string, league: string) => !disabledLeagues.has(leagueKey(sport, league)),
+    [disabledLeagues]
+  );
+
+  const toggleLeague = useCallback(
+    (sport: string, league: string) => {
+      const key = leagueKey(sport, league);
+      setDisabledLeagues((prev) => {
+        const next = new Set(prev);
+        if (next.has(key)) {
+          next.delete(key);
+        } else {
+          next.add(key);
+        }
+        AsyncStorage.setItem(LEAGUES_STORAGE_KEY, JSON.stringify([...next]));
+        return next;
+      });
+      if (Platform.OS !== "web") {
+        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+      }
+    },
+    []
+  );
+
   const value = useMemo(
-    () => ({ favorites, allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, disabledSports, enabledCount, totalCount }),
-    [favorites, allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, disabledSports, enabledCount, totalCount]
+    () => ({ favorites, allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, isLeagueEnabled, toggleLeague, disabledSports, disabledLeagues, enabledCount, totalCount }),
+    [favorites, allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, isLeagueEnabled, toggleLeague, disabledSports, disabledLeagues, enabledCount, totalCount]
   );
 
   return (

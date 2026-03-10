@@ -637,11 +637,20 @@ export default function WatchScreen() {
   const webTopInset = Platform.OS === "web" ? 67 : 0;
   const { allEvents: rawEvents, favoritesOnly } = useEvents();
   const { getScore, scores } = useScores();
-  const { favorites, disabledSports } = useFavorites();
+  const { favorites, disabledSports, disabledLeagues } = useFavorites();
 
   const allEvents = useMemo(
-    () => disabledSports.size === 0 ? rawEvents : rawEvents.filter((e) => !disabledSports.has(e.sport.toLowerCase())),
-    [rawEvents, disabledSports]
+    () => {
+      let filtered = rawEvents;
+      if (disabledSports.size > 0) {
+        filtered = filtered.filter((e) => !disabledSports.has(e.sport.toLowerCase()));
+      }
+      if (disabledLeagues.size > 0) {
+        filtered = filtered.filter((e) => !disabledLeagues.has(`${e.sport}::${e.league}`));
+      }
+      return filtered;
+    },
+    [rawEvents, disabledSports, disabledLeagues]
   );
 
   const [now, setNow] = useState<Date>(new Date());

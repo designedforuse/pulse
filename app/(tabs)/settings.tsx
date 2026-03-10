@@ -58,7 +58,7 @@ function isStale(isoDate: string): boolean {
 }
 
 function FavoritesSection() {
-  const { allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, enabledCount, totalCount } = useFavorites();
+  const { allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, isLeagueEnabled, toggleLeague, enabledCount, totalCount } = useFavorites();
   const [expandedSports, setExpandedSports] = useState<Record<string, boolean>>({});
   const [expandedLeagues, setExpandedLeagues] = useState<Record<string, boolean>>({});
   const sportOrder = ["hockey", "rugby", "cricket", "soccer", "tennis", "racing"];
@@ -159,10 +159,9 @@ function FavoritesSection() {
             {sportEnabled && isExpanded && leagues.map((league) => {
               const teams = sportFavs![league];
               if (!teams || teams.length === 0) return null;
-              const leagueKey = `${sport}::${league}`;
-              const leagueExpanded = !!expandedLeagues[leagueKey];
-              const allEnabled = teams.every((t) => isTeamEnabled(sport, league, t));
-              const someEnabled = teams.some((t) => isTeamEnabled(sport, league, t));
+              const lKey = `${sport}::${league}`;
+              const leagueExpanded = !!expandedLeagues[lKey];
+              const leagueOn = isLeagueEnabled(sport, league);
               return (
                 <React.Fragment key={league}>
                   <Pressable
@@ -170,11 +169,11 @@ function FavoritesSection() {
                       if (Platform.OS !== "web") {
                         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                       }
-                      setExpandedLeagues((prev) => ({ ...prev, [leagueKey]: !prev[leagueKey] }));
+                      setExpandedLeagues((prev) => ({ ...prev, [lKey]: !prev[lKey] }));
                     }}
                     style={styles.leagueLabelRow}
                   >
-                    <Text style={styles.leagueLabel}>{league}</Text>
+                    <Text style={[styles.leagueLabel, !leagueOn && styles.teamNameDisabled]}>{league}</Text>
                     <View style={{ flex: 1 }} />
                     <Ionicons
                       name={leagueExpanded ? "chevron-up" : "chevron-down"}
@@ -183,18 +182,12 @@ function FavoritesSection() {
                       style={{ marginRight: 8 }}
                     />
                     <Switch
-                      value={allEnabled}
+                      value={leagueOn}
                       onValueChange={() => {
-                        const targetState = !allEnabled;
-                        for (const team of teams) {
-                          const current = isTeamEnabled(sport, league, team);
-                          if (current !== targetState) {
-                            toggleTeam(sport, league, team);
-                          }
-                        }
+                        toggleLeague(sport, league);
                       }}
                       trackColor={{ false: Colors.border, true: Colors.favStar + "55" }}
-                      thumbColor={allEnabled ? Colors.favStar : someEnabled ? Colors.favStar : Colors.textMuted}
+                      thumbColor={leagueOn ? Colors.favStar : Colors.textMuted}
                       style={styles.leagueSwitch}
                     />
                   </Pressable>
