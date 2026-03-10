@@ -178,5 +178,17 @@
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
+  },
+  "upset_alert:fritz vs michelsen upset highlights march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-10T02:33:40.942Z",
+    "query": "Fritz vs Michelsen upset highlights March 2026",
+    "debug": {
+      "searchQuery": "Fritz vs Michelsen upset highlights March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
   }
 }

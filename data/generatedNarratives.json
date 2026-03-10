@@ -1,86 +1,30 @@
 {
-  "lastUpdated": "2026-03-08T06:05:29.019Z",
+  "lastUpdated": "2026-03-10T02:33:45.902Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
-      "league_moment": {
-        "Other": 2
-      },
       "player_movement": {
-        "Other": 1
-      },
-      "deadline_watch": {
-        "SoCal": 1,
-        "NewEngland": 1
-      },
-      "rivalry_game": {
         "Other": 1
       },
       "upset_alert": {
         "Other": 1
-      },
-      "clinch_watch": {
-        "Other": 1
-      },
-      "playoff_push": {
-        "Other": 1,
-        "SoCal": 1
       }
     },
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
-      "SoCal": [
-        "deadline_watch: Ducks on Deadline Watch",
-        "playoff_push: Playoff Push"
-      ],
-      "NewEngland": [
-        "deadline_watch: Bruins on Deadline Watch"
-      ],
       "Other": [
         "upset_alert: Upset Alert",
-        "rivalry_game: Rivalry Game Tonight",
-        "clinch_watch: Clinch Watch"
+        "player_movement: System Shuffle"
       ]
     },
-    "droppedCandidatesReasons": [
-      {
-        "id": "playoff_push_clinch_fallback_nhl_2025021002",
-        "kind": "playoff_push",
-        "region": "Other",
-        "title": "Playoff Push",
-        "reason": "feed cap (max 6)"
-      },
-      {
-        "id": "player_movement_system",
-        "kind": "player_movement",
-        "region": "Other",
-        "title": "System Shuffle",
-        "reason": "feed cap (max 6)"
-      },
-      {
-        "id": "league_moment_rivalry",
-        "kind": "league_moment",
-        "region": "Other",
-        "title": "Derby della Madonnina",
-        "reason": "feed cap (max 6)"
-      },
-      {
-        "id": "league_moment_tournament",
-        "kind": "league_moment",
-        "region": "Other",
-        "title": "Big Stage",
-        "reason": "feed cap (max 6)"
-      }
-    ],
-    "totalBeforeCap": 10,
-    "totalAfterCap": 6,
+    "droppedCandidatesReasons": [],
+    "totalBeforeCap": 2,
+    "totalAfterCap": 2,
     "playerMovement": {
       "rawMovementCandidates": 1,
       "movementAfterRegionFilter": 1,
-      "movementAfterCap": 0,
-      "movementFinalCount": 0,
-      "movementDroppedReasons": [
-        "feed cap (max 6)"
-      ],
+      "movementAfterCap": 1,
+      "movementFinalCount": 1,
+      "movementDroppedReasons": [],
       "runMeta": {
         "observedTeams": [
           "ANA",
@@ -92,13 +36,14 @@
           "CGY",
           "EDM",
           "VAN",
-          "STL",
           "MTL",
           "TOR",
           "WPG",
           "OTT",
           "PHI",
-          "DET"
+          "DET",
+          "NYI",
+          "BUF"
         ],
         "skippedTeams": [
           {
@@ -112,36 +57,26 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 675,
+        "playersIngested": 652,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-08T06:05:29.019Z"
+        "timestamp": "2026-03-10T02:33:45.902Z"
       },
-      "cacheHistoryCount": 740,
+      "cacheHistoryCount": 751,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 10,
-    "candidateCountAfterCap": 6,
+    "candidateCountBeforeCap": 2,
+    "candidateCountAfterCap": 2,
     "deadlineWatch": {
-      "active": true,
-      "hoursUntil": -10.091394166666667,
-      "teamsEvaluated": 3,
-      "triggers": {
-        "Anaheim Ducks": [
-          "trade-watch list",
-          "3 expiring contracts"
-        ],
-        "Boston Bruins": [
-          "trade-watch list",
-          "2 expiring contracts",
-          "playoff bubble"
-        ]
-      }
+      "active": false,
+      "hoursUntil": -54.56275055555555,
+      "teamsEvaluated": 0,
+      "triggers": {}
     },
     "rivalryGame": {
-      "rawRivalryCandidates": 1,
-      "rivalryAfterRegionFilter": 1,
-      "rivalryFinalCount": 1
+      "rawRivalryCandidates": 0,
+      "rivalryAfterRegionFilter": 0,
+      "rivalryFinalCount": 0
     },
     "upsetAlert": {
       "rawUpsetCandidates": 1,
@@ -150,78 +85,30 @@
       "upsetFinalCount": 1
     },
     "clinchWatch": {
-      "rawClinchCandidates": 2,
-      "clinchAfterRegionFilter": 1,
-      "clinchFinalCount": 1,
-      "clinchGatedOut": [
-        "Boston Bruins: before Mar 25, 75 pts < 95",
-        "Anaheim Ducks: before Mar 25, 73 pts < 95"
-      ]
+      "rawClinchCandidates": 0,
+      "clinchAfterRegionFilter": 0,
+      "clinchFinalCount": 0,
+      "clinchGatedOut": []
     },
     "tonightStorySelectedSignal": "multi_team_night",
-    "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "echl-web-25137",
+    "tonightStoryHeadline": "Your Hockey Night",
+    "tonightStorySourceEvent": "nhl_2025021012",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
-      "selectedHeadline": "Your Sports Night",
-      "selectedScore": 340,
-      "sourceEventId": "echl-web-25137",
-      "reason": "7 followed/affiliate teams playing tonight",
+      "selectedHeadline": "Your Hockey Night",
+      "selectedScore": 240,
+      "sourceEventId": "nhl_2025021012",
+      "reason": "2 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
-          "label": "[multi_team_night] Your Sports Night",
-          "score": 340,
-          "reason": "7 followed/affiliate teams playing tonight"
-        },
-        {
-          "label": "[deadline_watch] Deadline Tension",
-          "score": 180,
-          "reason": "deadline_watch involving followed team(s): Anaheim Ducks"
-        },
-        {
-          "label": "[deadline_watch] Deadline Tension",
-          "score": 180,
-          "reason": "deadline_watch involving followed team(s): Boston Bruins"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): Boston Bruins"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): Anaheim Ducks"
-        },
-        {
-          "label": "[ritual_night] Saturday Game Day",
-          "score": 130,
-          "reason": "ritual \"Saturday Game Day\" has 7 followed-team game(s)"
+          "label": "[multi_team_night] Your Hockey Night",
+          "score": 240,
+          "reason": "2 followed/affiliate teams playing tonight"
         },
         {
           "label": "[upset_alert] Shock Result",
           "score": 120,
           "reason": "upset_alert (generic, no followed teams)"
-        },
-        {
-          "label": "[clinch_watch] Playoff Stakes",
-          "score": 110,
-          "reason": "clinch_watch (generic, no followed teams)"
-        },
-        {
-          "label": "[rivalry_game] Rivalry Night",
-          "score": 60,
-          "reason": "rivalry_game (generic, no followed teams)"
-        },
-        {
-          "label": "[league_moment] League Spotlight",
-          "score": 50,
-          "reason": "league_moment (generic, no followed teams)"
-        },
-        {
-          "label": "[league_moment] League Spotlight",
-          "score": 50,
-          "reason": "league_moment (generic, no followed teams)"
         },
         {
           "label": "[player_movement] Roster Shakeup",
@@ -231,43 +118,8 @@
       ]
     },
     "videoSelection": {
-      "deadline_watch_ana": {
-        "searchQuery": "Anaheim Ducks trade deadline preview March 2026",
-        "selectedVideoTitle": "Disappointing & Confusing Deadline For The Habs! | The Sick Podcast with Tony Marinaro March 6 2026",
-        "selectedVideoPublishedAt": "Streamed 23 hours ago",
-        "selectedVideoChannel": "The Sick Podcast with Tony Marinaro",
-        "rejectedForAgeCount": 0
-      },
-      "playoff_push_clinch_fallback_nhl_2025021006": {
-        "searchQuery": "Anaheim Ducks playoff push March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
-      },
-      "deadline_watch_bos": {
-        "searchQuery": "Boston Bruins trade deadline preview March 2026",
-        "selectedVideoTitle": "Flyers vs. Penguins | NHL Highlights | March 07, 2026",
-        "selectedVideoPublishedAt": "3 hours ago",
-        "selectedVideoChannel": "NHL",
-        "rejectedForAgeCount": 0
-      },
-      "upset_alert_tennis-espn-172910": {
-        "searchQuery": "Lehecka vs Baez upset highlights March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
-      },
-      "rivalry_game_soccer-seriea-20260308-1945-internazionale-at-ac-milan": {
-        "searchQuery": "Internazionale vs AC Milan rivalry highlights",
-        "selectedVideoTitle": "AC MILAN VS INTER MILAN (SIMULATED REALITY)",
-        "selectedVideoPublishedAt": "6 hours ago",
-        "selectedVideoChannel": "Football Sim Central",
-        "rejectedForAgeCount": 1
-      },
-      "clinch_watch_cricket-t20wc-d20c4ab40f": {
-        "searchQuery": "India clinch playoff berth March 2026",
+      "upset_alert_tennis-espn-172921": {
+        "searchQuery": "Fritz vs Michelsen upset highlights March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
@@ -277,171 +129,16 @@
   },
   "cards": [
     {
-      "id": "deadline_watch_ana",
-      "title": "Ducks on Deadline Watch",
-      "subtitle": "3 contracts expiring before the trade deadline (Henrique, Vatrano, Gudas)",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 98,
-      "triggeredAt": "2026-03-08T06:05:29.019Z",
-      "expiresAt": "2026-03-08T20:00:00.000Z",
-      "kind": "deadline_watch",
-      "region": "SoCal",
-      "regionPriority": 2,
-      "regionLabel": "SoCal",
-      "meta": {
-        "team": "Anaheim Ducks",
-        "abbrev": "ANA",
-        "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": -10.1,
-        "triggers": [
-          "trade-watch list",
-          "3 expiring contracts"
-        ],
-        "tradeWatch": true,
-        "expiringContracts": 3,
-        "playoffBubble": false,
-        "recentTradeActivity": false,
-        "reason": "Anaheim has 3 expiring contracts heading into the trade deadline and has appeared on multiple trade-watch lists.\n\nPlayers like Adam Henrique, Frank Vatrano, and Radko Gudas could attract interest if the Ducks decide to move assets.",
-        "players": [
-          {
-            "name": "Adam Henrique",
-            "status": "UFA"
-          },
-          {
-            "name": "Frank Vatrano",
-            "status": "UFA"
-          },
-          {
-            "name": "Radko Gudas",
-            "status": "Trade interest"
-          }
-        ],
-        "eventIds": [
-          "nhl_2025021006",
-          "nhl_2025021022",
-          "nhl_2025021029",
-          "nhl_2025021043"
-        ]
-      },
-      "sports": [
-        "hockey"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=OPxYDNMP6XU",
-        "thumbnailUrl": "https://img.youtube.com/vi/OPxYDNMP6XU/hqdefault.jpg",
-        "durationSeconds": 4231,
-        "title": "Disappointing & Confusing Deadline For The Habs! | The Sick Podcast with Tony Marinaro March 6 2026",
-        "source": "youtube",
-        "channel": "The Sick Podcast with Tony Marinaro",
-        "publishedAt": "Streamed 23 hours ago"
-      }
-    },
-    {
-      "id": "playoff_push_clinch_fallback_nhl_2025021006",
-      "title": "Playoff Push",
-      "subtitle": "A win keeps Anaheim Ducks in the playoff race.",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 90,
-      "triggeredAt": "2026-03-08T06:05:29.019Z",
-      "expiresAt": "2026-03-09T05:00:00.000Z",
-      "kind": "playoff_push",
-      "region": "SoCal",
-      "regionPriority": 2,
-      "regionLabel": "SoCal",
-      "meta": {
-        "teams": [
-          {
-            "team": "Anaheim Ducks",
-            "league": "NHL"
-          }
-        ],
-        "eventIds": [
-          "nhl_2025021006"
-        ],
-        "reason": "Anaheim Ducks has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
-        "clinchFallback": true
-      },
-      "sports": [
-        "hockey"
-      ]
-    },
-    {
-      "id": "deadline_watch_bos",
-      "title": "Bruins on Deadline Watch",
-      "subtitle": "2 contracts expiring before the trade deadline (DeBrusk, Grzelcyk)",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 99,
-      "triggeredAt": "2026-03-08T06:05:29.019Z",
-      "expiresAt": "2026-03-08T20:00:00.000Z",
-      "kind": "deadline_watch",
-      "region": "NewEngland",
-      "regionPriority": 3,
-      "regionLabel": "New England",
-      "meta": {
-        "team": "Boston Bruins",
-        "abbrev": "BOS",
-        "deadlineDate": "2026-03-07T15:00:00-05:00",
-        "hoursUntil": -10.1,
-        "triggers": [
-          "trade-watch list",
-          "2 expiring contracts",
-          "playoff bubble"
-        ],
-        "tradeWatch": true,
-        "expiringContracts": 2,
-        "playoffBubble": true,
-        "recentTradeActivity": false,
-        "reason": "Boston has 2 expiring contracts heading into the trade deadline and has appeared on multiple trade-watch lists.\n\nSitting on the playoff bubble, the Bruins may look to add — or could become sellers if things don't turn around.\n\nPlayers like Jake DeBrusk and Matt Grzelcyk could attract interest if the Bruins decide to move assets.",
-        "players": [
-          {
-            "name": "Jake DeBrusk",
-            "status": "UFA"
-          },
-          {
-            "name": "Matt Grzelcyk",
-            "status": "UFA"
-          }
-        ],
-        "eventIds": [
-          "nhl_2025021002",
-          "nhl_2025021012",
-          "nhl_2025021027",
-          "nhl_2025021044"
-        ]
-      },
-      "sports": [
-        "hockey"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=AjhL22poJbM",
-        "thumbnailUrl": "https://img.youtube.com/vi/AjhL22poJbM/hqdefault.jpg",
-        "durationSeconds": 696,
-        "title": "Flyers vs. Penguins | NHL Highlights | March 07, 2026",
-        "source": "youtube",
-        "channel": "NHL",
-        "publishedAt": "3 hours ago"
-      }
-    },
-    {
-      "id": "upset_alert_tennis-espn-172910",
+      "id": "upset_alert_tennis-espn-172921",
       "title": "Upset Alert",
-      "subtitle": "Baez stuns Lehecka at Indian Wells Masters",
+      "subtitle": "Michelsen stuns Fritz at Indian Wells Masters",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-08T06:05:29.019Z",
-      "expiresAt": "2026-03-08T12:05:29.019Z",
+      "triggeredAt": "2026-03-10T02:33:45.902Z",
+      "expiresAt": "2026-03-10T08:33:45.902Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
@@ -451,109 +148,164 @@
         "upsetType": "tennis_seed_upset",
         "sport": "tennis",
         "league": "ATP Masters 1000",
-        "favoriteName": "Lehecka",
-        "underdogName": "Baez",
-        "favoriteRank": 22,
-        "awayTeam": "Lehecka",
-        "homeTeam": "Baez",
-        "startTime": "2026-03-08T03:25:00.000Z",
+        "favoriteName": "Fritz",
+        "underdogName": "Michelsen",
+        "favoriteRank": 7,
+        "awayTeam": "Fritz",
+        "homeTeam": "Michelsen",
+        "startTime": "2026-03-09T21:00:00.000Z",
         "eventIds": [
-          "tennis-espn-172910"
+          "tennis-espn-172921"
         ],
-        "reason": "Lehecka (seed 22) entered as the higher seed, but Baez knocked Lehecka out.\n\nThis opens up the draw and changes the shape of the tournament."
+        "reason": "Fritz (seed 7) entered as the higher seed, but Michelsen knocked Fritz out.\n\nThis opens up the draw and changes the shape of the tournament."
       },
       "sports": [
         "tennis"
       ]
     },
     {
-      "id": "rivalry_game_soccer-seriea-20260308-1945-internazionale-at-ac-milan",
-      "title": "Rivalry Game Tonight",
-      "subtitle": "Internazionale vs AC Milan · Tonight at 7:45 PM",
+      "id": "player_movement_system",
+      "title": "System Shuffle",
+      "subtitle": "13 player moves detected (WSH ↔ VGK ↔ CHI ↔ EDM ↔ PHI ↔ MIN ↔ STL ↔ NYI ↔ TOR ↔ LAK ↔ DET ↔ PIT ↔ OTT ↔ COL ↔ CGY ↔ VAN ↔ CBJ)",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
-      "priority": 96,
-      "triggeredAt": "2026-03-08T06:05:29.019Z",
-      "expiresAt": "2026-03-08T23:45:00.000Z",
-      "kind": "rivalry_game",
+      "priority": 85,
+      "triggeredAt": "2026-03-10T02:33:45.902Z",
+      "expiresAt": "2026-03-17T02:33:45.902Z",
+      "kind": "player_movement",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "rivalryLabel": "Derby della Madonnina",
-        "sport": "soccer",
-        "league": "Serie A",
-        "awayTeam": "Internazionale",
-        "homeTeam": "AC Milan",
-        "startTime": "2026-03-08T19:45:00.000Z",
-        "eventIds": [
-          "soccer-seriea-20260308-1945-internazionale-at-ac-milan"
+        "movements": [
+          {
+            "player": "N. Dowd",
+            "from": "WSH",
+            "to": "VGK",
+            "detected": "2026-03-07T07:19:00.761Z",
+            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
+            "firstSeenTo": "2026-03-07T07:19:00.761Z"
+          },
+          {
+            "player": "C. Murphy",
+            "from": "CHI",
+            "to": "EDM",
+            "detected": "2026-03-07T07:19:00.761Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-07T07:19:00.761Z"
+          },
+          {
+            "player": "J. Dickinson",
+            "from": "CHI",
+            "to": "EDM",
+            "detected": "2026-03-07T07:19:00.761Z",
+            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
+            "firstSeenTo": "2026-03-07T07:19:00.761Z"
+          },
+          {
+            "player": "C. Dach",
+            "from": "CHI",
+            "to": "EDM",
+            "detected": "2026-03-07T07:19:00.761Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-07T07:19:00.761Z"
+          },
+          {
+            "player": "B. Brink",
+            "from": "PHI",
+            "to": "MIN",
+            "detected": "2026-03-07T20:12:59.450Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-07T20:12:59.450Z"
+          },
+          {
+            "player": "B. Schenn",
+            "from": "STL",
+            "to": "NYI",
+            "detected": "2026-03-08T05:57:11.976Z",
+            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+            "firstSeenTo": "2026-03-08T05:57:11.976Z"
+          },
+          {
+            "player": "S. Laughton",
+            "from": "TOR",
+            "to": "LAK",
+            "detected": "2026-03-08T05:57:11.976Z",
+            "lastSeenFrom": "2026-03-03T03:50:51.829Z",
+            "firstSeenTo": "2026-03-08T05:57:11.976Z"
+          },
+          {
+            "player": "J. Drouin",
+            "from": "NYI",
+            "to": "STL",
+            "detected": "2026-03-09T04:14:15.420Z",
+            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+            "firstSeenTo": "2026-03-09T04:14:15.420Z"
+          },
+          {
+            "player": "E. Soderblom",
+            "from": "DET",
+            "to": "PIT",
+            "detected": "2026-03-09T04:14:15.420Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-09T04:14:15.420Z"
+          },
+          {
+            "player": "A. Mangiapane",
+            "from": "EDM",
+            "to": "CHI",
+            "detected": "2026-03-09T20:15:48.605Z",
+            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
+            "firstSeenTo": "2026-03-09T20:15:48.605Z"
+          },
+          {
+            "player": "W. Foegele",
+            "from": "LAK",
+            "to": "OTT",
+            "detected": "2026-03-10T02:28:51.292Z",
+            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
+            "firstSeenTo": "2026-03-10T02:28:51.292Z"
+          },
+          {
+            "player": "V. Olofsson",
+            "from": "COL",
+            "to": "CGY",
+            "detected": "2026-03-10T02:28:51.292Z",
+            "lastSeenFrom": "2026-03-04T05:37:04.015Z",
+            "firstSeenTo": "2026-03-10T02:28:51.292Z"
+          },
+          {
+            "player": "C. Garland",
+            "from": "VAN",
+            "to": "CBJ",
+            "detected": "2026-03-10T02:28:51.292Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-10T02:28:51.292Z"
+          }
         ],
-        "reason": "Internazionale and AC Milan meet tonight in one of soccer's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
+        "count": 13,
+        "reason": "13 player(s) detected moving between tracked teams in the last 7 days"
       },
       "sports": [
-        "soccer"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=DS6EcWnIXRw",
-        "thumbnailUrl": "https://img.youtube.com/vi/DS6EcWnIXRw/hqdefault.jpg",
-        "durationSeconds": 745,
-        "title": "AC MILAN VS INTER MILAN (SIMULATED REALITY)",
-        "source": "youtube",
-        "channel": "Football Sim Central",
-        "publishedAt": "6 hours ago"
-      }
-    },
-    {
-      "id": "clinch_watch_cricket-t20wc-d20c4ab40f",
-      "title": "Clinch Watch",
-      "subtitle": "India vs New Zealand · Cricket title on the line",
-      "impact": {
-        "label": "Impacts: Sunday Coffee & Chill",
-        "ritualId": "sunday_session",
-        "tabHint": "Watch"
-      },
-      "priority": 92,
-      "triggeredAt": "2026-03-08T06:05:29.019Z",
-      "expiresAt": "2026-03-08T17:30:00.000Z",
-      "kind": "clinch_watch",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "source": "tournament",
-        "conditionLabel": "Cricket title on the line",
-        "sport": "cricket",
-        "league": "ICC",
-        "awayTeam": "India",
-        "homeTeam": "New Zealand",
-        "startTime": "2026-03-08T13:30:00.000Z",
-        "eventIds": [
-          "cricket-t20wc-d20c4ab40f"
-        ],
-        "reason": "India and New Zealand meet with a cricket title on the line.\n\nThis is the kind of moment entire seasons build toward."
-      },
-      "sports": [
-        "cricket"
+        "hockey"
       ]
     }
   ],
   "tonightStory": {
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
-    "headline": "Your Sports Night",
-    "body": "The Tulsa Oilers, San Diego FC, San Diego Gulls, Hurricanes, and Orange County SC (+2 more) all play tonight across the ECHL, MLS, AHL, NHL, USL.",
-    "sourceEventId": "echl-web-25137",
+    "headline": "Your Hockey Night",
+    "body": "The Boston Bruins and Hurricanes all play tonight in the NHL.",
+    "sourceEventId": "nhl_2025021012",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
-      "title": "Your Sports Night"
+      "title": "Your Hockey Night"
     },
     "sports": [
-      "hockey",
-      "soccer"
+      "hockey"
     ]
   }
 }

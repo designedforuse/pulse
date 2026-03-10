@@ -59,6 +59,7 @@ function isStale(isoDate: string): boolean {
 
 function FavoritesSection() {
   const { allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, enabledCount, totalCount } = useFavorites();
+  const [expandedSports, setExpandedSports] = useState<Record<string, boolean>>({});
   const sportOrder = ["hockey", "rugby", "cricket", "soccer", "tennis", "racing"];
   const sportLabels: Record<string, string> = {
     hockey: "Hockey",
@@ -103,10 +104,20 @@ function FavoritesSection() {
         const showDivider = !isFirstSport;
         isFirstSport = false;
 
+        const isExpanded = !!expandedSports[sport];
+
         return (
           <React.Fragment key={sport}>
             {showDivider && <View style={styles.sportDivider} />}
-            <View style={styles.sportHeader}>
+            <Pressable
+              onPress={() => {
+                if (Platform.OS !== "web") {
+                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                }
+                setExpandedSports((prev) => ({ ...prev, [sport]: !prev[sport] }));
+              }}
+              style={styles.sportHeader}
+            >
               <View style={[styles.sportIconBg, { backgroundColor: sportColor + "22" }]}>
                 <Ionicons name={sportIcons[sport]} size={14} color={sportEnabled ? sportColor : Colors.textMuted} />
               </View>
@@ -114,6 +125,12 @@ function FavoritesSection() {
                 {sportLabels[sport]}
               </Text>
               <View style={{ flex: 1 }} />
+              <Ionicons
+                name={isExpanded ? "chevron-up" : "chevron-down"}
+                size={16}
+                color={Colors.textMuted}
+                style={{ marginRight: 10 }}
+              />
               <Switch
                 value={sportEnabled}
                 onValueChange={() => toggleSport(sport)}
@@ -121,8 +138,8 @@ function FavoritesSection() {
                 thumbColor={sportEnabled ? sportColor : Colors.textMuted}
                 style={styles.teamSwitch}
               />
-            </View>
-            {sportEnabled && leagues.map((league) => {
+            </Pressable>
+            {sportEnabled && isExpanded && leagues.map((league) => {
               const teams = sportFavs![league];
               if (!teams || teams.length === 0) return null;
               return (
