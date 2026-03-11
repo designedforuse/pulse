@@ -201,7 +201,7 @@ A single hero card at the top of the Stories feed, selected from the highest-pri
 | | La Liga | ESPN API | REST API |
 | | Bundesliga | ESPN API | REST API |
 | | Ligue 1 | ESPN API | REST API |
-| | Champions League | fixturedownload.com | iCal feed |
+| | Champions League | ESPN API | REST API |
 | | FA Cup | ESPN API | REST API |
 | | NWSL | fixturedownload.com | iCal feed |
 | | USL | ESPN API | REST API |
