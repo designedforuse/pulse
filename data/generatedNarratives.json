@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-11T13:00:53.818Z",
+  "lastUpdated": "2026-03-11T13:46:49.939Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -109,7 +109,7 @@
         ],
         "playersIngested": 678,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-11T13:00:53.818Z"
+        "timestamp": "2026-03-11T13:46:49.939Z"
       },
       "cacheHistoryCount": 758,
       "error": null
@@ -119,7 +119,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -89.01494944444444,
+      "hoursUntil": -89.78053861111111,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -259,8 +259,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-11T13:00:53.818Z",
-      "expiresAt": "2026-03-18T13:00:53.818Z",
+      "triggeredAt": "2026-03-11T13:46:49.939Z",
+      "expiresAt": "2026-03-18T13:46:49.939Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -283,8 +283,8 @@
           "ahl-1028709"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-11T13:00:53.818Z",
-        "windowEnd": "2026-03-18T13:00:53.818Z",
+        "windowStart": "2026-03-11T13:46:49.939Z",
+        "windowEnd": "2026-03-18T13:46:49.939Z",
         "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -309,8 +309,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-11T13:00:53.818Z",
-      "expiresAt": "2026-03-18T13:00:53.818Z",
+      "triggeredAt": "2026-03-11T13:46:49.939Z",
+      "expiresAt": "2026-03-18T13:46:49.939Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -333,8 +333,8 @@
           "nhl_2025021069"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-11T13:00:53.818Z",
-        "windowEnd": "2026-03-18T13:00:53.818Z",
+        "windowStart": "2026-03-11T13:46:49.939Z",
+        "windowEnd": "2026-03-18T13:46:49.939Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -359,8 +359,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-11T13:00:53.818Z",
-      "expiresAt": "2026-03-14T13:00:53.818Z",
+      "triggeredAt": "2026-03-11T13:46:49.939Z",
+      "expiresAt": "2026-03-14T13:46:49.939Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -422,7 +422,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-11T13:00:53.818Z",
+      "triggeredAt": "2026-03-11T13:46:49.939Z",
       "expiresAt": "2026-03-12T08:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -454,7 +454,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-11T13:00:53.818Z",
+      "triggeredAt": "2026-03-11T13:46:49.939Z",
       "expiresAt": "2026-03-13T03:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -495,8 +495,8 @@
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-03-11T13:00:53.818Z",
-      "expiresAt": "2026-03-18T13:00:53.818Z",
+      "triggeredAt": "2026-03-11T13:46:49.939Z",
+      "expiresAt": "2026-03-18T13:46:49.939Z",
       "kind": "player_movement",
       "region": "Other",
       "regionPriority": 99,

@@ -576,6 +576,16 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
   if (league === "NCAAB") {
     const NCAAB_IDS: Record<string, string> = {
       "UC Irvine Anteaters": "300",
+      "UC Davis Aggies": "302",
+      "UC Santa Barbara Gauchos": "2540",
+      "UC San Diego Tritons": "28",
+      "UC Riverside Highlanders": "27",
+      "Cal Poly Mustangs": "13",
+      "Hawai'i Rainbow Warriors": "62",
+      "Long Beach State Beach": "299",
+      "Cal State Fullerton Titans": "2239",
+      "Cal State Northridge Matadors": "2463",
+      "Cal State Bakersfield Roadrunners": "2934",
     };
     const id = NCAAB_IDS[teamName];
     if (id) return `https://a.espncdn.com/i/teamlogos/ncaa/500/${id}.png`;

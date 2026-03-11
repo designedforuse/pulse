@@ -1,20 +1,25 @@
 import type { AppEvent, SoccerFetchResult, SoccerMergeResult } from "./soccerIcalUtils";
 import { mergeSoccerLeagueEvents } from "./soccerIcalUtils";
 
-const ESPN_NCAAB_TEAM_API = "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/teams";
+const ESPN_NCAAB_BASE = "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball";
+const BIG_WEST_GROUP_ID = "9";
+const UCI_ESPN_ID = "300";
 const NCAAB_DURATION_MIN = 130;
 
-const UCI_ESPN_ID = "300";
-const UCI_DISPLAY_NAME = "UC Irvine Anteaters";
+interface EspnCompetitor {
+  team: { displayName: string; abbreviation: string };
+  homeAway: string;
+}
 
-interface EspnTeamGame {
+interface EspnCompetition {
+  competitors: EspnCompetitor[];
+  broadcasts?: { market?: string; names?: string[] }[];
+}
+
+interface EspnEvent {
   id: string;
   date: string;
-  competitions: {
-    competitors: { team: { displayName: string; abbreviation: string }; homeAway: string }[];
-    broadcasts?: { market?: string; names?: string[] }[];
-    status?: { type?: { state?: string } };
-  }[];
+  competitions: EspnCompetition[];
 }
 
 function addDuration(isoString: string, minutes: number): string {
@@ -32,7 +37,7 @@ function stableId(startUtc: string, away: string, home: string): string {
   return `basketball-ncaab-${dateStr}-${timeStr}-${a}-at-${h}`;
 }
 
-function resolveProvider(broadcasts?: { market?: string; names?: string[] }[]): { providerId: string; providerReason: string } {
+function resolveProvider(broadcasts?: EspnCompetition["broadcasts"]): { providerId: string; providerReason: string } {
   if (!broadcasts || broadcasts.length === 0) {
     return { providerId: "disneyplus", providerReason: "ncaab-espn-plus-default" };
   }
@@ -46,45 +51,75 @@ function resolveProvider(broadcasts?: { market?: string; names?: string[] }[]): 
   return { providerId: "disneyplus", providerReason: "ncaab-default" };
 }
 
-async function fetchUciSchedule(): Promise<EspnTeamGame[]> {
-  const season = new Date().getFullYear() >= 2026 ? "2026" : "2025";
-  const url = `${ESPN_NCAAB_TEAM_API}/${UCI_ESPN_ID}/schedule?season=${season}`;
+function formatDate(d: Date): string {
+  return d.toISOString().slice(0, 10).replace(/-/g, "");
+}
+
+async function fetchBigWestScoreboard(dateStr: string): Promise<EspnEvent[]> {
+  const url = `${ESPN_NCAAB_BASE}/scoreboard?groups=${BIG_WEST_GROUP_ID}&dates=${dateStr}&limit=50`;
   try {
     const res = await fetch(url, {
       headers: { "User-Agent": "Mozilla/5.0 (compatible; SportsGuide/1.0)" },
     });
-    if (!res.ok) {
-      console.error(`  NCAAB: ESPN team schedule API returned ${res.status}`);
-      return [];
-    }
+    if (!res.ok) return [];
     const data = await res.json() as any;
-    return (data.events || []) as EspnTeamGame[];
-  } catch (err: any) {
-    console.error(`  NCAAB: Error fetching UCI schedule:`, err.message);
+    return (data.events || []) as EspnEvent[];
+  } catch {
+    return [];
+  }
+}
+
+async function fetchUciOutOfConferenceGames(windowStart: Date, windowEnd: Date): Promise<EspnEvent[]> {
+  const season = new Date().getFullYear() >= 2026 ? "2026" : "2025";
+  const url = `${ESPN_NCAAB_BASE}/teams/${UCI_ESPN_ID}/schedule?season=${season}`;
+  try {
+    const res = await fetch(url, {
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; SportsGuide/1.0)" },
+    });
+    if (!res.ok) return [];
+    const data = await res.json() as any;
+    const games: EspnEvent[] = (data.events || []).filter((e: any) => {
+      const d = new Date(e.date);
+      return d >= windowStart && d <= windowEnd;
+    });
+    return games;
+  } catch {
     return [];
   }
 }
 
 export async function fetchNcaabEvents(): Promise<SoccerFetchResult> {
-  console.log(`  NCAAB: Fetching UC Irvine schedule from ESPN...`);
+  console.log(`  NCAAB: Fetching Big West conference games from ESPN...`);
   try {
     const now = new Date();
     const windowStart = new Date(now.getTime() - 14 * 86400000);
     const windowEnd = new Date(now.getTime() + 30 * 86400000);
 
-    const espnGames = await fetchUciSchedule();
-    console.log(`  NCAAB: Fetched ${espnGames.length} UCI games`);
+    const allEspnEvents: EspnEvent[] = [];
+
+    let cursor = new Date(windowStart);
+    while (cursor <= windowEnd) {
+      const dateStr = formatDate(cursor);
+      const dayEvents = await fetchBigWestScoreboard(dateStr);
+      allEspnEvents.push(...dayEvents);
+      cursor = new Date(cursor.getTime() + 86400000);
+    }
+
+    const uciOutOfConf = await fetchUciOutOfConferenceGames(windowStart, windowEnd);
+    allEspnEvents.push(...uciOutOfConf);
+
+    console.log(`  NCAAB: Raw events fetched: ${allEspnEvents.length} (Big West conference + UCI out-of-conf)`);
 
     const events: AppEvent[] = [];
     const seenIds = new Set<string>();
 
-    for (const game of espnGames) {
-      const startUtc = new Date(game.date).toISOString();
+    for (const espnEvent of allEspnEvents) {
+      const startUtc = new Date(espnEvent.date).toISOString();
       const startDate = new Date(startUtc);
 
       if (startDate < windowStart || startDate > windowEnd) continue;
 
-      const comp = game.competitions?.[0];
+      const comp = espnEvent.competitions?.[0];
       if (!comp?.competitors || comp.competitors.length < 2) continue;
 
       const homeComp = comp.competitors.find(c => c.homeAway === "home");
@@ -93,8 +128,10 @@ export async function fetchNcaabEvents(): Promise<SoccerFetchResult> {
 
       const homeTeam = homeComp.team.displayName;
       const awayTeam = awayComp.team.displayName;
-      const endUtc = addDuration(startUtc, NCAAB_DURATION_MIN);
 
+      if (homeTeam.includes("TBD") || awayTeam.includes("TBD")) continue;
+
+      const endUtc = addDuration(startUtc, NCAAB_DURATION_MIN);
       const id = stableId(startUtc, awayTeam, homeTeam);
       if (seenIds.has(id)) continue;
       seenIds.add(id);
@@ -117,7 +154,7 @@ export async function fetchNcaabEvents(): Promise<SoccerFetchResult> {
       });
     }
 
-    console.log(`  NCAAB: ${events.length} UCI events in retention window`);
+    console.log(`  NCAAB: ${events.length} Big West events in retention window`);
     return { events, sourceUsed: "espn", count: events.length };
   } catch (err: any) {
     console.error(`  NCAAB: Error processing events:`, err.message);
