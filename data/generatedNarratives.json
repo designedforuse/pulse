@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-11T04:11:44.394Z",
+  "lastUpdated": "2026-03-11T04:24:50.971Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -121,63 +121,8 @@
           }
         ],
         "playersIngested": 661,
-        "movementsDetectedThisRun": [
-          {
-            "playerId": "8470621",
-            "playerName": "C. Perry",
-            "fromTeam": "LAK",
-            "toTeam": "TBL",
-            "detectedAt": "2026-03-11T04:11:44.394Z",
-            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
-            "firstSeenTo": "2026-03-11T04:11:44.394Z"
-          },
-          {
-            "playerId": "8474574",
-            "playerName": "T. Myers",
-            "fromTeam": "VAN",
-            "toTeam": "DAL",
-            "detectedAt": "2026-03-11T04:11:44.394Z",
-            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-            "firstSeenTo": "2026-03-11T04:11:44.394Z"
-          },
-          {
-            "playerId": "8476458",
-            "playerName": "R. Strome",
-            "fromTeam": "ANA",
-            "toTeam": "CGY",
-            "detectedAt": "2026-03-11T04:11:44.394Z",
-            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
-            "firstSeenTo": "2026-03-11T04:11:44.394Z"
-          },
-          {
-            "playerId": "8476994",
-            "playerName": "V. Hinostroza",
-            "fromTeam": "MIN",
-            "toTeam": "FLA",
-            "detectedAt": "2026-03-11T04:11:44.394Z",
-            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
-            "firstSeenTo": "2026-03-11T04:11:44.394Z"
-          },
-          {
-            "playerId": "8478047",
-            "playerName": "M. Bunting",
-            "fromTeam": "NSH",
-            "toTeam": "DAL",
-            "detectedAt": "2026-03-11T04:11:44.394Z",
-            "lastSeenFrom": "2026-03-07T07:19:00.761Z",
-            "firstSeenTo": "2026-03-11T04:11:44.394Z"
-          },
-          {
-            "playerId": "8479378",
-            "playerName": "L. Stanley",
-            "fromTeam": "WPG",
-            "toTeam": "BUF",
-            "detectedAt": "2026-03-11T04:11:44.394Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-11T04:11:44.394Z"
-          }
-        ],
-        "timestamp": "2026-03-11T04:11:44.394Z"
+        "movementsDetectedThisRun": [],
+        "timestamp": "2026-03-11T04:24:50.971Z"
       },
       "cacheHistoryCount": 758,
       "error": null
@@ -187,7 +132,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -80.195665,
+      "hoursUntil": -80.4141586111111,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -339,8 +284,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-11T04:11:44.394Z",
-      "expiresAt": "2026-03-18T04:11:44.394Z",
+      "triggeredAt": "2026-03-11T04:24:50.971Z",
+      "expiresAt": "2026-03-18T04:24:50.971Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -363,8 +308,8 @@
           "ahl-1028709"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-11T04:11:44.394Z",
-        "windowEnd": "2026-03-18T04:11:44.394Z",
+        "windowStart": "2026-03-11T04:24:50.971Z",
+        "windowEnd": "2026-03-18T04:24:50.971Z",
         "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -389,8 +334,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-11T04:11:44.394Z",
-      "expiresAt": "2026-03-18T04:11:44.394Z",
+      "triggeredAt": "2026-03-11T04:24:50.971Z",
+      "expiresAt": "2026-03-18T04:24:50.971Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -413,8 +358,8 @@
           "nhl_2025021069"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-11T04:11:44.394Z",
-        "windowEnd": "2026-03-18T04:11:44.394Z",
+        "windowStart": "2026-03-11T04:24:50.971Z",
+        "windowEnd": "2026-03-18T04:24:50.971Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -439,8 +384,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-11T04:11:44.394Z",
-      "expiresAt": "2026-03-14T04:11:44.394Z",
+      "triggeredAt": "2026-03-11T04:24:50.971Z",
+      "expiresAt": "2026-03-14T04:24:50.971Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -502,8 +447,8 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-11T04:11:44.394Z",
-      "expiresAt": "2026-03-11T10:11:44.394Z",
+      "triggeredAt": "2026-03-11T04:24:50.971Z",
+      "expiresAt": "2026-03-11T10:24:50.971Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
@@ -536,7 +481,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-11T04:11:44.394Z",
+      "triggeredAt": "2026-03-11T04:24:50.971Z",
       "expiresAt": "2026-03-12T08:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -568,7 +513,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-11T04:11:44.394Z",
+      "triggeredAt": "2026-03-11T04:24:50.971Z",
       "expiresAt": "2026-03-13T03:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",

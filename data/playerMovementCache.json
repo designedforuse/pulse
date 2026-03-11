@@ -16519,7 +16519,7 @@
       "firstSeenTo": "2026-03-11T04:11:44.394Z"
     }
   ],
-  "lastUpdated": "2026-03-11T04:11:44.394Z",
+  "lastUpdated": "2026-03-11T04:24:50.971Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -16553,62 +16553,7 @@
       }
     ],
     "playersIngested": 661,
-    "movementsDetectedThisRun": [
-      {
-        "playerId": "8470621",
-        "playerName": "C. Perry",
-        "fromTeam": "LAK",
-        "toTeam": "TBL",
-        "detectedAt": "2026-03-11T04:11:44.394Z",
-        "lastSeenFrom": "2026-03-06T05:30:49.106Z",
-        "firstSeenTo": "2026-03-11T04:11:44.394Z"
-      },
-      {
-        "playerId": "8474574",
-        "playerName": "T. Myers",
-        "fromTeam": "VAN",
-        "toTeam": "DAL",
-        "detectedAt": "2026-03-11T04:11:44.394Z",
-        "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-        "firstSeenTo": "2026-03-11T04:11:44.394Z"
-      },
-      {
-        "playerId": "8476458",
-        "playerName": "R. Strome",
-        "fromTeam": "ANA",
-        "toTeam": "CGY",
-        "detectedAt": "2026-03-11T04:11:44.394Z",
-        "lastSeenFrom": "2026-03-06T03:20:47.423Z",
-        "firstSeenTo": "2026-03-11T04:11:44.394Z"
-      },
-      {
-        "playerId": "8476994",
-        "playerName": "V. Hinostroza",
-        "fromTeam": "MIN",
-        "toTeam": "FLA",
-        "detectedAt": "2026-03-11T04:11:44.394Z",
-        "lastSeenFrom": "2026-03-04T04:02:55.897Z",
-        "firstSeenTo": "2026-03-11T04:11:44.394Z"
-      },
-      {
-        "playerId": "8478047",
-        "playerName": "M. Bunting",
-        "fromTeam": "NSH",
-        "toTeam": "DAL",
-        "detectedAt": "2026-03-11T04:11:44.394Z",
-        "lastSeenFrom": "2026-03-07T07:19:00.761Z",
-        "firstSeenTo": "2026-03-11T04:11:44.394Z"
-      },
-      {
-        "playerId": "8479378",
-        "playerName": "L. Stanley",
-        "fromTeam": "WPG",
-        "toTeam": "BUF",
-        "detectedAt": "2026-03-11T04:11:44.394Z",
-        "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-        "firstSeenTo": "2026-03-11T04:11:44.394Z"
-      }
-    ],
-    "timestamp": "2026-03-11T04:11:44.394Z"
+    "movementsDetectedThisRun": [],
+    "timestamp": "2026-03-11T04:24:50.971Z"
   }
 }
