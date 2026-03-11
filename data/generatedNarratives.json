@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-11T05:27:56.431Z",
+  "lastUpdated": "2026-03-11T05:31:39.910Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -121,7 +121,7 @@
         ],
         "playersIngested": 678,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-11T05:27:56.431Z"
+        "timestamp": "2026-03-11T05:31:39.910Z"
       },
       "cacheHistoryCount": 758,
       "error": null
@@ -131,7 +131,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -81.46567527777778,
+      "hoursUntil": -81.52775277777778,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -161,14 +161,14 @@
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 380,
+      "selectedScore": 300,
       "sourceEventId": "basketball-nba-20260311-0000-boston-celtics-at-san-antonio-spurs",
-      "reason": "9 followed/affiliate teams playing tonight",
+      "reason": "5 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 380,
-          "reason": "9 followed/affiliate teams playing tonight"
+          "score": 300,
+          "reason": "5 followed/affiliate teams playing tonight"
         },
         {
           "label": "[upset_alert] Shock Result",
@@ -283,8 +283,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-11T05:27:56.431Z",
-      "expiresAt": "2026-03-18T05:27:56.431Z",
+      "triggeredAt": "2026-03-11T05:31:39.910Z",
+      "expiresAt": "2026-03-18T05:31:39.910Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -307,8 +307,8 @@
           "ahl-1028709"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-11T05:27:56.431Z",
-        "windowEnd": "2026-03-18T05:27:56.431Z",
+        "windowStart": "2026-03-11T05:31:39.910Z",
+        "windowEnd": "2026-03-18T05:31:39.910Z",
         "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -333,8 +333,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-11T05:27:56.431Z",
-      "expiresAt": "2026-03-18T05:27:56.431Z",
+      "triggeredAt": "2026-03-11T05:31:39.910Z",
+      "expiresAt": "2026-03-18T05:31:39.910Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -357,8 +357,8 @@
           "nhl_2025021069"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-11T05:27:56.431Z",
-        "windowEnd": "2026-03-18T05:27:56.431Z",
+        "windowStart": "2026-03-11T05:31:39.910Z",
+        "windowEnd": "2026-03-18T05:31:39.910Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -383,8 +383,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-11T05:27:56.431Z",
-      "expiresAt": "2026-03-14T05:27:56.431Z",
+      "triggeredAt": "2026-03-11T05:31:39.910Z",
+      "expiresAt": "2026-03-14T05:31:39.910Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -446,8 +446,8 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-11T05:27:56.431Z",
-      "expiresAt": "2026-03-11T11:27:56.431Z",
+      "triggeredAt": "2026-03-11T05:31:39.910Z",
+      "expiresAt": "2026-03-11T11:31:39.910Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
@@ -480,7 +480,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-11T05:27:56.431Z",
+      "triggeredAt": "2026-03-11T05:31:39.910Z",
       "expiresAt": "2026-03-12T08:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -512,7 +512,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-11T05:27:56.431Z",
+      "triggeredAt": "2026-03-11T05:31:39.910Z",
       "expiresAt": "2026-03-13T03:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -549,7 +549,7 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Boston Celtics, Anaheim Ducks, Los Angeles Lakers, Arsenal, and Bodo/Glimt (+4 more) all play tonight across the NBA, NHL, Champions League, AHL, NCAA Hockey.",
+    "body": "The Boston Celtics, Anaheim Ducks, Los Angeles Lakers, Boston University, and Providence Bruins all play tonight across the NBA, NHL, AHL, NCAA Hockey.",
     "sourceEventId": "basketball-nba-20260311-0000-boston-celtics-at-san-antonio-spurs",
     "sourceCard": {
       "id": "tonight_multi_team",
@@ -558,8 +558,7 @@
     },
     "sports": [
       "basketball",
-      "hockey",
-      "soccer"
+      "hockey"
     ]
   }
 }
