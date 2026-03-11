@@ -1119,7 +1119,7 @@ async function fetchNbaScores(eventIds: string[]): Promise<Record<string, ScoreD
             const periodNum = comp.status?.period || 0;
             let period = "Live";
             const ordinals = ["", "1st", "2nd", "3rd", "4th"];
-            if (periodNum >= 1 && periodNum <= 4) period = `${ordinals[periodNum]} Qtr`;
+            if (periodNum >= 1 && periodNum <= 4) period = ordinals[periodNum];
             else if (periodNum === 5) period = "OT";
             else if (periodNum > 5) period = `${periodNum - 4}OT`;
 

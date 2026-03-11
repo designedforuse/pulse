@@ -139,7 +139,7 @@ function getPhaseChipLabel(event: SportEvent, score: ScoreData | undefined, isLi
   }
   if (isLive && score?.period) {
     const p = score.period.trim();
-    if (/^(1st|2nd|3rd|ot|so|overtime|shootout|1st half|2nd half|ht|ft|et)/i.test(p)) {
+    if (/^(1st|2nd|3rd|4th|ot|so|overtime|shootout|1st half|2nd half|ht|ft|et)/i.test(p)) {
       if (/overtime/i.test(p)) return "OT";
       if (/shootout/i.test(p)) return "SO";
       if (/1st half/i.test(p)) return "1H";
