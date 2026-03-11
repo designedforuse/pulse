@@ -63,6 +63,7 @@ interface LiveEventIdBuckets {
   cricket: { id: string; homeTeam: string; awayTeam: string }[];
   tennis: { id: string; espnId: string }[];
   f1: { id: string; espnCompId: string; sessionTitle: string }[];
+  nba: string[];
 }
 
 function loadLiveEventIds(): LiveEventIdBuckets {
@@ -75,6 +76,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
   const cricket: { id: string; homeTeam: string; awayTeam: string }[] = [];
   const tennis: { id: string; espnId: string }[] = [];
   const f1: { id: string; espnCompId: string; sessionTitle: string }[] = [];
+  const nba: string[] = [];
 
   try {
     const raw = fs.readFileSync(GENERATED_EVENTS_PATH, "utf-8");
@@ -89,6 +91,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
         rugby: 135 * 60 * 1000,
         cricket: 480 * 60 * 1000,
         racing: 180 * 60 * 1000,
+        basketball: 165 * 60 * 1000,
       };
       const duration = sportDurations[event.sport] ?? 120 * 60 * 1000;
       const end = start + duration;
@@ -133,12 +136,14 @@ function loadLiveEventIds(): LiveEventIdBuckets {
       } else if (event.id.startsWith("f1-espn-")) {
         const espnCompId = event.id.replace("f1-espn-", "");
         f1.push({ id: event.id, espnCompId, sessionTitle: event.sessionTitle || event.awayTeam || "" });
+      } else if (event.id.startsWith("basketball-nba-")) {
+        nba.push(event.id);
       }
     }
   } catch {
   }
 
-  return { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1 };
+  return { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba };
 }
 
 async function fetchNhlScores(eventIds: string[]): Promise<Record<string, ScoreData>> {
@@ -1072,11 +1077,81 @@ async function fetchF1Scores(
   return scores;
 }
 
+async function fetchNbaScores(eventIds: string[]): Promise<Record<string, ScoreData>> {
+  const scores: Record<string, ScoreData> = {};
+  if (eventIds.length === 0) return scores;
+
+  try {
+    const today = new Date().toISOString().split("T")[0].replace(/-/g, "");
+    const yesterday = new Date(Date.now() - 86400000).toISOString().split("T")[0].replace(/-/g, "");
+    const allEspnEvents: any[] = [];
+
+    for (const dateStr of [today, yesterday]) {
+      const url = `https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=${dateStr}&limit=100`;
+      const res = await fetch(url);
+      if (!res.ok) continue;
+      const data = await res.json() as any;
+      allEspnEvents.push(...(data.events || []));
+    }
+
+    for (const espnEvent of allEspnEvents) {
+      const comp = espnEvent.competitions?.[0];
+      if (!comp) continue;
+
+      const homeComp = comp.competitors?.find((c: any) => c.homeAway === "home");
+      const awayComp = comp.competitors?.find((c: any) => c.homeAway === "away");
+      if (!homeComp || !awayComp) continue;
+
+      const homeName = (homeComp.team?.shortDisplayName || homeComp.team?.displayName || "").toLowerCase();
+      const awayName = (awayComp.team?.shortDisplayName || awayComp.team?.displayName || "").toLowerCase();
+
+      for (const eventId of eventIds) {
+        const idLower = eventId.toLowerCase();
+        const homeSlug = homeName.replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-");
+        const awaySlug = awayName.replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-");
+
+        if (idLower.includes(homeSlug.substring(0, 6)) || idLower.includes(awaySlug.substring(0, 6))) {
+          const statusState = comp.status?.type?.state;
+          const statusDetail = comp.status?.type?.shortDetail || comp.status?.displayClock || "";
+
+          if (statusState === "in") {
+            const clock = comp.status?.displayClock || "";
+            const periodNum = comp.status?.period || 0;
+            let period = "Live";
+            if (periodNum >= 1 && periodNum <= 4) period = `Q${periodNum}`;
+            else if (periodNum === 5) period = "OT";
+            else if (periodNum > 5) period = `${periodNum - 4}OT`;
+
+            scores[eventId] = {
+              awayScore: parseInt(awayComp.score || "0", 10),
+              homeScore: parseInt(homeComp.score || "0", 10),
+              period: clock ? `${period} ${clock}` : period,
+              status: "live",
+            };
+          } else if (statusState === "post") {
+            scores[eventId] = {
+              awayScore: parseInt(awayComp.score || "0", 10),
+              homeScore: parseInt(homeComp.score || "0", 10),
+              period: statusDetail || "Final",
+              status: "final",
+            };
+          }
+          break;
+        }
+      }
+    }
+  } catch (err) {
+    console.error("[liveScores] NBA fetch error:", err);
+  }
+
+  return scores;
+}
+
 export async function fetchAllLiveScores(): Promise<ScoresResponse> {
-  const { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1 } = loadLiveEventIds();
+  const { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba } = loadLiveEventIds();
 
   const japanLeagueOne = rugby.get("Japan League One") || [];
-  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, jlOneScores, cricketScores, tennisScores, f1Scores] = await Promise.all([
+  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, jlOneScores, cricketScores, tennisScores, f1Scores, nbaScores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchAhlScores(ahl),
     fetchEchlScores(echl),
@@ -1087,10 +1162,11 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
     fetchCricketScores(cricket),
     fetchTennisScores(tennis),
     fetchF1Scores(f1),
+    fetchNbaScores(nba),
   ]);
 
   return {
-    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...jlOneScores, ...cricketScores, ...tennisScores, ...f1Scores },
+    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...jlOneScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores },
     fetchedAt: new Date().toISOString(),
   };
 }

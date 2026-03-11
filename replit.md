@@ -43,6 +43,7 @@ The application features a frontend built with Expo Router for file-based naviga
 - **rugbyfixture.io (iCal feeds):** URC, Top 14, English Premiership, European Champions Cup Rugby schedules.
 - **fixturedownload.com (iCal feeds):** Super Rugby Pacific, EPL, and MLS schedules.
 - **ESPN API (site.api.espn.com):** Champions League (uefa.champions) and Europa League (uefa.europa) schedule data.
+- **ESPN API (site.api.espn.com):** NBA basketball schedule and live score data.
 - **ESPN API (site.api.espn.com):** USL, FA Cup, ATP Tennis, and F1 Racing schedule data.
 - **all.rugby:** Japan League One Rugby schedule data (scraped).
 - **MLR (hardcoded):** Major League Rugby schedule data.

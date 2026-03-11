@@ -1010,7 +1010,7 @@ export default function WatchScreen() {
     [liveEvents, chaosIds]
   );
 
-  const SPORT_PRIORITY: Record<string, number> = { rugby: 0, cricket: 1, hockey: 2, soccer: 3, tennis: 4 };
+  const SPORT_PRIORITY: Record<string, number> = { rugby: 0, cricket: 1, hockey: 2, basketball: 3, soccer: 4, tennis: 5 };
 
   const sortedLive = useMemo(() => {
     return [...filteredLive].sort((a, b) => {

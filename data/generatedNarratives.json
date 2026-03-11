@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-11T04:39:43.321Z",
+  "lastUpdated": "2026-03-11T04:55:01.810Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -105,8 +105,7 @@
           "PHI",
           "DET",
           "NYI",
-          "BUF",
-          "CAR"
+          "BUF"
         ],
         "skippedTeams": [
           {
@@ -120,9 +119,28 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 661,
-        "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-11T04:39:43.321Z"
+        "playersIngested": 678,
+        "movementsDetectedThisRun": [
+          {
+            "playerId": "8475172",
+            "playerName": "N. Kadri",
+            "fromTeam": "CGY",
+            "toTeam": "COL",
+            "detectedAt": "2026-03-11T04:55:01.810Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-11T04:55:01.810Z"
+          },
+          {
+            "playerId": "8478462",
+            "playerName": "N. Roy",
+            "fromTeam": "TOR",
+            "toTeam": "COL",
+            "detectedAt": "2026-03-11T04:55:01.810Z",
+            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
+            "firstSeenTo": "2026-03-11T04:55:01.810Z"
+          }
+        ],
+        "timestamp": "2026-03-11T04:55:01.810Z"
       },
       "cacheHistoryCount": 758,
       "error": null
@@ -132,7 +150,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -80.66203361111111,
+      "hoursUntil": -80.91716944444444,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -158,18 +176,18 @@
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "nhl_2025021022",
+    "tonightStorySourceEvent": "basketball-nba-20260311-0000-toronto-raptors-at-houston-rockets",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 340,
-      "sourceEventId": "nhl_2025021022",
-      "reason": "7 followed/affiliate teams playing tonight",
+      "selectedScore": 500,
+      "sourceEventId": "basketball-nba-20260311-0000-toronto-raptors-at-houston-rockets",
+      "reason": "15 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 340,
-          "reason": "7 followed/affiliate teams playing tonight"
+          "score": 500,
+          "reason": "15 followed/affiliate teams playing tonight"
         },
         {
           "label": "[upset_alert] Shock Result",
@@ -284,8 +302,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-11T04:39:43.321Z",
-      "expiresAt": "2026-03-18T04:39:43.321Z",
+      "triggeredAt": "2026-03-11T04:55:01.810Z",
+      "expiresAt": "2026-03-18T04:55:01.810Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -308,8 +326,8 @@
           "ahl-1028709"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-11T04:39:43.321Z",
-        "windowEnd": "2026-03-18T04:39:43.321Z",
+        "windowStart": "2026-03-11T04:55:01.810Z",
+        "windowEnd": "2026-03-18T04:55:01.810Z",
         "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -334,8 +352,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-11T04:39:43.321Z",
-      "expiresAt": "2026-03-18T04:39:43.321Z",
+      "triggeredAt": "2026-03-11T04:55:01.810Z",
+      "expiresAt": "2026-03-18T04:55:01.810Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -358,8 +376,8 @@
           "nhl_2025021069"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-11T04:39:43.321Z",
-        "windowEnd": "2026-03-18T04:39:43.321Z",
+        "windowStart": "2026-03-11T04:55:01.810Z",
+        "windowEnd": "2026-03-18T04:55:01.810Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -384,8 +402,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-11T04:39:43.321Z",
-      "expiresAt": "2026-03-14T04:39:43.321Z",
+      "triggeredAt": "2026-03-11T04:55:01.810Z",
+      "expiresAt": "2026-03-14T04:55:01.810Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -447,8 +465,8 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-11T04:39:43.321Z",
-      "expiresAt": "2026-03-11T10:39:43.321Z",
+      "triggeredAt": "2026-03-11T04:55:01.810Z",
+      "expiresAt": "2026-03-11T10:55:01.810Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
@@ -481,7 +499,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-11T04:39:43.321Z",
+      "triggeredAt": "2026-03-11T04:55:01.810Z",
       "expiresAt": "2026-03-12T08:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -513,7 +531,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-11T04:39:43.321Z",
+      "triggeredAt": "2026-03-11T04:55:01.810Z",
       "expiresAt": "2026-03-13T03:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -550,14 +568,15 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Anaheim Ducks, Arsenal, Bodo/Glimt, Chelsea, and Manchester City (+2 more) all play tonight across the NHL, Champions League, AHL, NCAA Hockey.",
-    "sourceEventId": "nhl_2025021022",
+    "body": "The Houston Rockets, Milwaukee Bucks, Boston Celtics, Anaheim Ducks, and Chicago Bulls (+10 more) all play tonight across the NBA, NHL, Champions League, AHL, NCAA Hockey.",
+    "sourceEventId": "basketball-nba-20260311-0000-toronto-raptors-at-houston-rockets",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
     },
     "sports": [
+      "basketball",
       "hockey",
       "soccer"
     ]

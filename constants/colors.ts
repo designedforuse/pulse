@@ -17,6 +17,7 @@ const Colors = {
   rugby: "#FF8A65",
   cricket: "#FFD54F",
   soccer: "#81C784",
+  basketball: "#FFA726",
   tennis: "#CE93D8",
   white: "#FFFFFF",
   overlay: "rgba(0, 0, 0, 0.6)",

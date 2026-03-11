@@ -9,9 +9,9 @@ import { computeActivityScore, getPromotionReason, type ActivityScore } from "@/
 const CHAOS_WINDOW_MS = 90 * 60 * 1000;
 const CHAOS_DEBUG = __DEV__;
 
-const FOCUS_SPORTS = new Set(["rugby", "cricket", "hockey", "soccer", "racing"]);
+const FOCUS_SPORTS = new Set(["rugby", "cricket", "hockey", "soccer", "basketball", "racing"]);
 
-const SPORT_PRIORITY: Record<string, number> = { rugby: 4, cricket: 3, hockey: 2, racing: 2, soccer: 1 };
+const SPORT_PRIORITY: Record<string, number> = { rugby: 4, cricket: 3, hockey: 2, racing: 2, basketball: 2, soccer: 1 };
 
 function getSportPriority(sport: string): number {
   return SPORT_PRIORITY[sport] ?? 0;
