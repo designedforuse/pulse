@@ -16937,7 +16937,7 @@
       "firstSeenTo": "2026-03-11T04:55:01.810Z"
     }
   ],
-  "lastUpdated": "2026-03-11T04:55:01.810Z",
+  "lastUpdated": "2026-03-11T05:27:56.431Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -16970,26 +16970,7 @@
       }
     ],
     "playersIngested": 678,
-    "movementsDetectedThisRun": [
-      {
-        "playerId": "8475172",
-        "playerName": "N. Kadri",
-        "fromTeam": "CGY",
-        "toTeam": "COL",
-        "detectedAt": "2026-03-11T04:55:01.810Z",
-        "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-        "firstSeenTo": "2026-03-11T04:55:01.810Z"
-      },
-      {
-        "playerId": "8478462",
-        "playerName": "N. Roy",
-        "fromTeam": "TOR",
-        "toTeam": "COL",
-        "detectedAt": "2026-03-11T04:55:01.810Z",
-        "lastSeenFrom": "2026-03-05T04:50:57.276Z",
-        "firstSeenTo": "2026-03-11T04:55:01.810Z"
-      }
-    ],
-    "timestamp": "2026-03-11T04:55:01.810Z"
+    "movementsDetectedThisRun": [],
+    "timestamp": "2026-03-11T05:27:56.431Z"
   }
 }
