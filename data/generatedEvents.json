@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-11T04:55:01.690Z",
+  "lastUpdated": "2026-03-11T13:00:53.656Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -23,7 +23,8 @@
     "FA Cup (ESPN API)",
     "Tennis (hardcoded)",
     "F1 (ESPN API)",
-    "NBA (ESPN API)"
+    "NBA (ESPN API)",
+    "NCAAB Big West (ESPN API)"
   ],
   "ahlSourceUsed": "hockeytech",
   "ahlOddsKeyUsed": null,
@@ -58,13 +59,13 @@
     "leagueone": 25,
     "svns": 4
   },
-  "cricketCount": 3,
-  "cricketAdded": 1,
-  "cricketUpdated": 2,
-  "cricketPruned": 1,
+  "cricketCount": 12,
+  "cricketAdded": 9,
+  "cricketUpdated": 0,
+  "cricketPruned": 0,
   "cricketCounts": {
-    "T20I Cricket": 1,
-    "ODI Cricket": 2
+    "ICC": 23,
+    "SA20": 1
   },
   "iccT20WcCount": 10,
   "iccT20WcAdded": 10,
@@ -175,39 +176,44 @@
     "The Masters": 4
   },
   "nbaCount": 265,
-  "nbaAdded": 265,
-  "nbaUpdated": 0,
-  "nbaPruned": 0,
+  "nbaAdded": 0,
+  "nbaUpdated": 265,
+  "nbaPruned": 265,
   "nbaSourceUsed": "espn",
+  "ncaabCount": 5,
+  "ncaabAdded": 5,
+  "ncaabUpdated": 0,
+  "ncaabPruned": 0,
+  "ncaabSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-11T04:55:01.690Z",
+    "lastRefreshAt": "2026-03-11T13:00:53.656Z",
     "sources": {
       "nhl": {
         "count": 108,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 225,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 4,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 122,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 26,
@@ -220,63 +226,63 @@
         }
       },
       "cricket": {
-        "count": 3,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "count": 12,
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
-          "T20I Cricket": 1,
-          "ODI Cricket": 2
+          "ICC": 23,
+          "SA20": 1
         }
       },
       "iccT20Wc": {
         "count": 10,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 43,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 60,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 40,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 41,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 37,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 36,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 29,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 46,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
@@ -288,29 +294,29 @@
       },
       "mlr": {
         "count": 1,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 20,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 24,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 9,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-03T19:45:00.000Z"
       },
       "tennis": {
         "count": 10,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Indian Wells Masters": 10,
@@ -320,7 +326,7 @@
       },
       "f1": {
         "count": 30,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Australian Grand Prix": 5,
@@ -333,7 +339,7 @@
       },
       "golf": {
         "count": 8,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Players Championship": 4,
@@ -342,7 +348,12 @@
       },
       "nba": {
         "count": 265,
-        "lastFetchAt": "2026-03-11T04:55:01.690Z",
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
+        "sourceName": "ESPN API"
+      },
+      "ncaab": {
+        "count": 5,
+        "lastFetchAt": "2026-03-11T13:00:53.656Z",
         "sourceName": "ESPN API"
       }
     }
@@ -483,6 +494,46 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "cricket-icc-spz8e4",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "India",
+      "homeTeam": "Zimbabwe",
+      "startTimeLocal": "2026-02-26T00:00:00.000Z",
+      "endTimeLocal": "2026-02-26T03:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "icc",
+      "competitionName": "ICC",
+      "competitionType": "international",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "48th Match, Super 8 Group 1 (X1 v X2), ICC Men's T20 World Cup 2026",
+      "gender": "men",
+      "isIccT20Wc": true
+    },
+    {
+      "id": "cricket-icc-q6j86m",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "West Indies",
+      "homeTeam": "South Africa",
+      "startTimeLocal": "2026-02-26T00:00:00.000Z",
+      "endTimeLocal": "2026-02-26T03:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "icc",
+      "competitionName": "ICC",
+      "competitionType": "international",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "47th Match, Super 8 Group 1 (X3 v X4), ICC Men's T20 World Cup 2026",
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "ahl-1028583",
@@ -769,6 +820,26 @@
       "providerReason": "uel-yttv"
     },
     {
+      "id": "cricket-icc-90eyf6",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "England",
+      "homeTeam": "New Zealand",
+      "startTimeLocal": "2026-02-27T00:00:00.000Z",
+      "endTimeLocal": "2026-02-27T03:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "icc",
+      "competitionName": "ICC",
+      "competitionType": "international",
+      "format": "t20",
+      "hostCountry": "Sri Lanka",
+      "seriesName": "49th Match, Super 8 Group 2 (Y1 v Y2), ICC Men's T20 World Cup 2026",
+      "gender": "men",
+      "isIccT20Wc": true
+    },
+    {
       "id": "basketball-nba-20260227-0000-charlotte-hornets-at-indiana-pacers",
       "sport": "basketball",
       "league": "NBA",
@@ -919,6 +990,20 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-regional-yttv"
+    },
+    {
+      "id": "basketball-ncaab-20260227-0300-uc-irvine-anteaters-at-cal-state-northridge-matadors",
+      "sport": "basketball",
+      "league": "NCAAB",
+      "awayTeam": "UC Irvine Anteaters",
+      "homeTeam": "Cal State Northridge Matadors",
+      "startTimeLocal": "2026-02-27T03:00:00.000Z",
+      "endTimeLocal": "2026-02-27T05:10:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "basketball-ncaab",
+      "leagueKey": "ncaab",
+      "providerReason": "ncaab-default"
     },
     {
       "id": "rugby-superrugby-f6wx5m",
@@ -1120,6 +1205,26 @@
       "providerId": "disneyplus",
       "isLive": false,
       "source": "ncaa-bu"
+    },
+    {
+      "id": "cricket-icc-tu2wwv",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "Pakistan",
+      "homeTeam": "Sri Lanka",
+      "startTimeLocal": "2026-02-28T00:00:00.000Z",
+      "endTimeLocal": "2026-02-28T03:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "icc",
+      "competitionName": "ICC",
+      "competitionType": "international",
+      "format": "t20",
+      "hostCountry": "Sri Lanka",
+      "seriesName": "50th Match, Super 8 Group 2 (Y3 v Y4), ICC Men's T20 World Cup 2026",
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "basketball-nba-20260228-0000-cleveland-cavaliers-at-detroit-pistons",
@@ -1989,6 +2094,46 @@
       "source": "ncaa-bu"
     },
     {
+      "id": "cricket-icc-e77mh6",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "India",
+      "homeTeam": "West Indies",
+      "startTimeLocal": "2026-03-01T00:00:00.000Z",
+      "endTimeLocal": "2026-03-01T03:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "icc",
+      "competitionName": "ICC",
+      "competitionType": "international",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "52nd Match, Super 8 Group 1 (X1 v X3), ICC Men's T20 World Cup 2026",
+      "gender": "men",
+      "isIccT20Wc": true
+    },
+    {
+      "id": "cricket-icc-hfqgbq",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "Zimbabwe",
+      "homeTeam": "South Africa",
+      "startTimeLocal": "2026-03-01T00:00:00.000Z",
+      "endTimeLocal": "2026-03-01T03:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "icc",
+      "competitionName": "ICC",
+      "competitionType": "international",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "51st Match, Super 8 Group 1 (X2 v X4), ICC Men's T20 World Cup 2026",
+      "gender": "men",
+      "isIccT20Wc": true
+    },
+    {
       "id": "basketball-nba-20260301-0000-toronto-raptors-at-washington-wizards",
       "sport": "basketball",
       "league": "NBA",
@@ -2236,6 +2381,20 @@
       "source": "soccer-mls",
       "leagueKey": "mls",
       "providerReason": "mls-appletv"
+    },
+    {
+      "id": "basketball-ncaab-20260301-0330-uc-santa-barbara-gauchos-at-uc-irvine-anteaters",
+      "sport": "basketball",
+      "league": "NCAAB",
+      "awayTeam": "UC Santa Barbara Gauchos",
+      "homeTeam": "UC Irvine Anteaters",
+      "startTimeLocal": "2026-03-01T03:30:00.000Z",
+      "endTimeLocal": "2026-03-01T05:40:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "basketball-ncaab",
+      "leagueKey": "ncaab",
+      "providerReason": "ncaab-default"
     },
     {
       "id": "rugby-leagueone-61v9mh",
@@ -3149,6 +3308,26 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "cricket-icc-vewh72",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "South Africa",
+      "homeTeam": "New Zealand",
+      "startTimeLocal": "2026-03-04T00:00:00.000Z",
+      "endTimeLocal": "2026-03-04T03:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "icc",
+      "competitionName": "ICC",
+      "competitionType": "international",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "1st Semi-Final, ICC Men's T20 World Cup 2026",
+      "gender": "men",
+      "isIccT20Wc": true
+    },
+    {
       "id": "basketball-nba-20260304-0000-dallas-mavericks-at-charlotte-hornets",
       "sport": "basketball",
       "league": "NBA",
@@ -3454,6 +3633,26 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "cricket-icc-48tzs",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "India",
+      "homeTeam": "England",
+      "startTimeLocal": "2026-03-05T00:00:00.000Z",
+      "endTimeLocal": "2026-03-05T03:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "icc",
+      "competitionName": "ICC",
+      "competitionType": "international",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "2nd Semi-Final, ICC Men's T20 World Cup 2026",
+      "gender": "men",
+      "isIccT20Wc": true
     },
     {
       "id": "basketball-nba-20260305-0000-oklahoma-city-thunder-at-new-york-knicks",
@@ -3776,6 +3975,20 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-regional-yttv"
+    },
+    {
+      "id": "basketball-ncaab-20260306-0300-cal-poly-mustangs-at-uc-irvine-anteaters",
+      "sport": "basketball",
+      "league": "NCAAB",
+      "awayTeam": "Cal Poly Mustangs",
+      "homeTeam": "UC Irvine Anteaters",
+      "startTimeLocal": "2026-03-06T03:00:00.000Z",
+      "endTimeLocal": "2026-03-06T05:10:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "basketball-ncaab",
+      "leagueKey": "ncaab",
+      "providerReason": "ncaab-default"
     },
     {
       "id": "f1-espn-401839029",
@@ -4767,6 +4980,26 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "cricket-icc-cc51le",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "India",
+      "homeTeam": "New Zealand",
+      "startTimeLocal": "2026-03-08T00:00:00.000Z",
+      "endTimeLocal": "2026-03-08T03:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "icc",
+      "competitionName": "ICC",
+      "competitionType": "international",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "Final, ICC Men's T20 World Cup 2026",
+      "gender": "men",
+      "isIccT20Wc": true
+    },
+    {
       "id": "ahl-1028650",
       "sport": "hockey",
       "league": "AHL",
@@ -4887,6 +5120,20 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-regional-yttv"
+    },
+    {
+      "id": "basketball-ncaab-20260308-0100-uc-davis-aggies-at-uc-irvine-anteaters",
+      "sport": "basketball",
+      "league": "NCAAB",
+      "awayTeam": "UC Davis Aggies",
+      "homeTeam": "UC Irvine Anteaters",
+      "startTimeLocal": "2026-03-08T01:00:00.000Z",
+      "endTimeLocal": "2026-03-08T03:10:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "basketball-ncaab",
+      "leagueKey": "ncaab",
+      "providerReason": "ncaab-default"
     },
     {
       "id": "echl-web-25137",
@@ -7856,6 +8103,20 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "basketball-ncaab-20260314-0100-tbd-at-uc-irvine-anteaters",
+      "sport": "basketball",
+      "league": "NCAAB",
+      "awayTeam": "TBD",
+      "homeTeam": "UC Irvine Anteaters",
+      "startTimeLocal": "2026-03-14T01:00:00.000Z",
+      "endTimeLocal": "2026-03-14T03:10:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "basketball-ncaab",
+      "leagueKey": "ncaab",
+      "providerReason": "ncaab-default"
     },
     {
       "id": "ahl-1028676",

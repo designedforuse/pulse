@@ -573,6 +573,15 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
     return CRICKET_COUNTRY_FLAGS[teamName] || null;
   }
 
+  if (league === "NCAAB") {
+    const NCAAB_IDS: Record<string, string> = {
+      "UC Irvine Anteaters": "300",
+    };
+    const id = NCAAB_IDS[teamName];
+    if (id) return `https://a.espncdn.com/i/teamlogos/ncaa/500/${id}.png`;
+    return null;
+  }
+
   if (sportLower === "basketball" || league === "NBA") {
     const NBA_IDS: Record<string, string> = {
       "Atlanta Hawks": "1", "Boston Celtics": "2", "Brooklyn Nets": "17",

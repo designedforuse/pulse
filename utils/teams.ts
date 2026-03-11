@@ -48,6 +48,7 @@ const SHORT_NAMES: Record<string, string> = {
   "Utah Hockey Club": "Utah HC",
 
   "Atlanta Hawks": "Hawks",
+  "UC Irvine Anteaters": "Anteaters",
   "Boston Celtics": "Celtics",
   "Brooklyn Nets": "Nets",
   "Charlotte Hornets": "Hornets",
