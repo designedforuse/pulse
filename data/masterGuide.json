@@ -36,6 +36,7 @@
             "Bundesliga",
             "Ligue 1",
             "Champions League",
+            "Europa League",
             "FA Cup",
             "NWSL",
             "USL"
@@ -136,6 +137,7 @@
             "Bundesliga",
             "Ligue 1",
             "Champions League",
+            "Europa League",
             "FA Cup",
             "NWSL",
             "USL"
@@ -496,6 +498,32 @@
         "Real Madrid",
         "Sporting CP",
         "Tottenham Hotspur",
+        "Villarreal"
+      ],
+      "Europa League": [
+        "AS Roma",
+        "Aston Villa",
+        "Bologna",
+        "Braga",
+        "Celta Vigo",
+        "Celtic",
+        "Dinamo Zagreb",
+        "Eintracht Frankfurt",
+        "Fenerbahce",
+        "Ferencvaros",
+        "Feyenoord Rotterdam",
+        "Lille",
+        "Lyon",
+        "Malmö FF",
+        "Napoli",
+        "Nice",
+        "Nottingham Forest",
+        "PAOK Salonika",
+        "Rangers",
+        "Real Betis",
+        "SC Freiburg",
+        "Tottenham Hotspur",
+        "VfB Stuttgart",
         "Villarreal"
       ]
     },

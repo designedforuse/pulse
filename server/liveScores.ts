@@ -355,6 +355,7 @@ const ESPN_LEAGUE_PATHS: Record<string, string> = {
   "NWSL": "usa.nwsl",
   "USL": "usa.usl.1",
   "Champions League": "uefa.champions",
+  "Europa League": "uefa.europa",
   "FA Cup": "eng.fa",
 };
 

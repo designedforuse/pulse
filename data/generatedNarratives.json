@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-11T04:24:50.971Z",
+  "lastUpdated": "2026-03-11T04:39:43.321Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -122,7 +122,7 @@
         ],
         "playersIngested": 661,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-11T04:24:50.971Z"
+        "timestamp": "2026-03-11T04:39:43.321Z"
       },
       "cacheHistoryCount": 758,
       "error": null
@@ -132,7 +132,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -80.4141586111111,
+      "hoursUntil": -80.66203361111111,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -157,19 +157,19 @@
       ]
     },
     "tonightStorySelectedSignal": "multi_team_night",
-    "tonightStoryHeadline": "Your Hockey Night",
+    "tonightStoryHeadline": "Your Sports Night",
     "tonightStorySourceEvent": "nhl_2025021022",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
-      "selectedHeadline": "Your Hockey Night",
-      "selectedScore": 260,
+      "selectedHeadline": "Your Sports Night",
+      "selectedScore": 340,
       "sourceEventId": "nhl_2025021022",
-      "reason": "3 followed/affiliate teams playing tonight",
+      "reason": "7 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
-          "label": "[multi_team_night] Your Hockey Night",
-          "score": 260,
-          "reason": "3 followed/affiliate teams playing tonight"
+          "label": "[multi_team_night] Your Sports Night",
+          "score": 340,
+          "reason": "7 followed/affiliate teams playing tonight"
         },
         {
           "label": "[upset_alert] Shock Result",
@@ -284,8 +284,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-11T04:24:50.971Z",
-      "expiresAt": "2026-03-18T04:24:50.971Z",
+      "triggeredAt": "2026-03-11T04:39:43.321Z",
+      "expiresAt": "2026-03-18T04:39:43.321Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -308,8 +308,8 @@
           "ahl-1028709"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-11T04:24:50.971Z",
-        "windowEnd": "2026-03-18T04:24:50.971Z",
+        "windowStart": "2026-03-11T04:39:43.321Z",
+        "windowEnd": "2026-03-18T04:39:43.321Z",
         "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -334,8 +334,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-11T04:24:50.971Z",
-      "expiresAt": "2026-03-18T04:24:50.971Z",
+      "triggeredAt": "2026-03-11T04:39:43.321Z",
+      "expiresAt": "2026-03-18T04:39:43.321Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -358,8 +358,8 @@
           "nhl_2025021069"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-11T04:24:50.971Z",
-        "windowEnd": "2026-03-18T04:24:50.971Z",
+        "windowStart": "2026-03-11T04:39:43.321Z",
+        "windowEnd": "2026-03-18T04:39:43.321Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -384,8 +384,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-11T04:24:50.971Z",
-      "expiresAt": "2026-03-14T04:24:50.971Z",
+      "triggeredAt": "2026-03-11T04:39:43.321Z",
+      "expiresAt": "2026-03-14T04:39:43.321Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -447,8 +447,8 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-11T04:24:50.971Z",
-      "expiresAt": "2026-03-11T10:24:50.971Z",
+      "triggeredAt": "2026-03-11T04:39:43.321Z",
+      "expiresAt": "2026-03-11T10:39:43.321Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
@@ -481,7 +481,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-11T04:24:50.971Z",
+      "triggeredAt": "2026-03-11T04:39:43.321Z",
       "expiresAt": "2026-03-12T08:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -513,7 +513,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-11T04:24:50.971Z",
+      "triggeredAt": "2026-03-11T04:39:43.321Z",
       "expiresAt": "2026-03-13T03:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -549,16 +549,17 @@
   "tonightStory": {
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
-    "headline": "Your Hockey Night",
-    "body": "The Anaheim Ducks, Boston University, and Providence Bruins all play tonight across the NHL, AHL, NCAA Hockey.",
+    "headline": "Your Sports Night",
+    "body": "The Anaheim Ducks, Arsenal, Bodo/Glimt, Chelsea, and Manchester City (+2 more) all play tonight across the NHL, Champions League, AHL, NCAA Hockey.",
     "sourceEventId": "nhl_2025021022",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
-      "title": "Your Hockey Night"
+      "title": "Your Sports Night"
     },
     "sports": [
-      "hockey"
+      "hockey",
+      "soccer"
     ]
   }
 }

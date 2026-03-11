@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-11T04:11:44.292Z",
+  "lastUpdated": "2026-03-11T04:39:43.278Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -18,7 +18,8 @@
     "Ligue 1 (iCal feed)",
     "NWSL (iCal feed)",
     "USL (ESPN API)",
-    "Champions League (iCal feed)",
+    "Champions League (ESPN API)",
+    "Europa League (ESPN API)",
     "FA Cup (ESPN API)",
     "Tennis (hardcoded)",
     "F1 (ESPN API)"
@@ -31,9 +32,9 @@
   "cricketSourceUsed": "cricapi",
   "nhlCount": 166,
   "ahlCount": 225,
-  "ahlAdded": 40,
-  "ahlUpdated": 191,
-  "ahlPruned": 41,
+  "ahlAdded": 38,
+  "ahlUpdated": 193,
+  "ahlPruned": 38,
   "echlCount": 15,
   "echlAdded": 4,
   "echlUpdated": 15,
@@ -67,7 +68,7 @@
   "iccT20WcCount": 10,
   "iccT20WcAdded": 10,
   "iccT20WcUpdated": 0,
-  "iccT20WcPruned": 11,
+  "iccT20WcPruned": 10,
   "iccT20WcSourceUsed": "hardcoded-schedule",
   "t20wcDedupedCount": 0,
   "olympicHockeyCount": 0,
@@ -126,18 +127,23 @@
   "mlrPruned": 0,
   "mlrSourceUsed": "hardcoded",
   "championsLeagueCount": 20,
-  "championsLeagueAdded": 18,
-  "championsLeagueUpdated": 2,
-  "championsLeaguePruned": 8,
+  "championsLeagueAdded": 0,
+  "championsLeagueUpdated": 20,
+  "championsLeaguePruned": 20,
   "championsLeagueSourceUsed": "espn",
+  "europaLeagueCount": 24,
+  "europaLeagueAdded": 24,
+  "europaLeagueUpdated": 0,
+  "europaLeaguePruned": 0,
+  "europaLeagueSourceUsed": "espn",
   "faCupCount": 9,
   "faCupAdded": 0,
   "faCupUpdated": 9,
   "faCupPruned": 9,
   "faCupSourceUsed": "espn",
   "tennisCount": 10,
-  "tennisAdded": 2,
-  "tennisUpdated": 8,
+  "tennisAdded": 0,
+  "tennisUpdated": 10,
   "tennisPruned": 0,
   "tennisSourceUsed": "espn",
   "tennisTournamentCounts": {
@@ -168,34 +174,34 @@
     "The Masters": 4
   },
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-11T04:11:44.292Z",
+    "lastRefreshAt": "2026-03-11T04:39:43.278Z",
     "sources": {
       "nhl": {
         "count": 166,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 225,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 4,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 122,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 26,
@@ -209,7 +215,7 @@
       },
       "cricket": {
         "count": 3,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "T20I Cricket": 1,
@@ -218,53 +224,53 @@
       },
       "iccT20Wc": {
         "count": 10,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 43,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 60,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 40,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 41,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 37,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 36,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 29,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 46,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
@@ -276,24 +282,29 @@
       },
       "mlr": {
         "count": 1,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 20,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
-        "sourceName": "iCal Feed"
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
+        "sourceName": "ESPN API"
+      },
+      "europaLeague": {
+        "count": 24,
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
+        "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 9,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-03T19:45:00.000Z"
       },
       "tennis": {
         "count": 10,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Indian Wells Masters": 10,
@@ -303,7 +314,7 @@
       },
       "f1": {
         "count": 30,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Australian Grand Prix": 5,
@@ -316,7 +327,7 @@
       },
       "golf": {
         "count": 8,
-        "lastFetchAt": "2026-03-11T04:11:44.292Z",
+        "lastFetchAt": "2026-03-11T04:39:43.278Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Players Championship": 4,
@@ -549,6 +560,118 @@
       "seriesName": "ICC Men's T20 World Cup 2026",
       "isIccT20Wc": true,
       "t20WcVenue": "MA Chidambaram Stadium, Chennai"
+    },
+    {
+      "id": "soccer-europaleague-20260226-1745-ludogorets-razgrad-at-ferencvaros",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Ludogorets Razgrad",
+      "homeTeam": "Ferencvaros",
+      "startTimeLocal": "2026-02-26T17:45:00.000Z",
+      "endTimeLocal": "2026-02-26T20:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260226-1745-lille-at-red-star-belgrade",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Lille",
+      "homeTeam": "Red Star Belgrade",
+      "startTimeLocal": "2026-02-26T17:45:00.000Z",
+      "endTimeLocal": "2026-02-26T20:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260226-1745-celtic-at-vfb-stuttgart",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Celtic",
+      "homeTeam": "VfB Stuttgart",
+      "startTimeLocal": "2026-02-26T17:45:00.000Z",
+      "endTimeLocal": "2026-02-26T20:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260226-1745-panathinaikos-at-viktoria-plzen",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Panathinaikos",
+      "homeTeam": "Viktoria Plzen",
+      "startTimeLocal": "2026-02-26T17:45:00.000Z",
+      "endTimeLocal": "2026-02-26T20:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260226-2000-sk-brann-at-bologna",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "SK Brann",
+      "homeTeam": "Bologna",
+      "startTimeLocal": "2026-02-26T20:00:00.000Z",
+      "endTimeLocal": "2026-02-26T22:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260226-2000-paok-salonika-at-celta-vigo",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "PAOK Salonika",
+      "homeTeam": "Celta Vigo",
+      "startTimeLocal": "2026-02-26T20:00:00.000Z",
+      "endTimeLocal": "2026-02-26T22:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260226-2000-fenerbahce-at-nottingham-forest",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Fenerbahce",
+      "homeTeam": "Nottingham Forest",
+      "startTimeLocal": "2026-02-26T20:00:00.000Z",
+      "endTimeLocal": "2026-02-26T22:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260226-2000-dinamo-zagreb-at-racing-genk",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Dinamo Zagreb",
+      "homeTeam": "Racing Genk",
+      "startTimeLocal": "2026-02-26T20:00:00.000Z",
+      "endTimeLocal": "2026-02-26T22:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
     },
     {
       "id": "ahl-1028585",
@@ -5229,6 +5352,118 @@
       "tournamentName": "Players Championship"
     },
     {
+      "id": "soccer-europaleague-20260312-1745-as-roma-at-bologna",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "AS Roma",
+      "homeTeam": "Bologna",
+      "startTimeLocal": "2026-03-12T17:45:00.000Z",
+      "endTimeLocal": "2026-03-12T20:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260312-1745-aston-villa-at-lille",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Aston Villa",
+      "homeTeam": "Lille",
+      "startTimeLocal": "2026-03-12T17:45:00.000Z",
+      "endTimeLocal": "2026-03-12T20:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260312-1745-real-betis-at-panathinaikos",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Real Betis",
+      "homeTeam": "Panathinaikos",
+      "startTimeLocal": "2026-03-12T17:45:00.000Z",
+      "endTimeLocal": "2026-03-12T20:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260312-1745-fc-porto-at-vfb-stuttgart",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "FC Porto",
+      "homeTeam": "VfB Stuttgart",
+      "startTimeLocal": "2026-03-12T17:45:00.000Z",
+      "endTimeLocal": "2026-03-12T20:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260312-2000-lyon-at-celta-vigo",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Lyon",
+      "homeTeam": "Celta Vigo",
+      "startTimeLocal": "2026-03-12T20:00:00.000Z",
+      "endTimeLocal": "2026-03-12T22:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260312-2000-braga-at-ferencvaros",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Braga",
+      "homeTeam": "Ferencvaros",
+      "startTimeLocal": "2026-03-12T20:00:00.000Z",
+      "endTimeLocal": "2026-03-12T22:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260312-2000-fc-midtjylland-at-nottingham-forest",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "FC Midtjylland",
+      "homeTeam": "Nottingham Forest",
+      "startTimeLocal": "2026-03-12T20:00:00.000Z",
+      "endTimeLocal": "2026-03-12T22:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260312-2000-sc-freiburg-at-racing-genk",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "SC Freiburg",
+      "homeTeam": "Racing Genk",
+      "startTimeLocal": "2026-03-12T20:00:00.000Z",
+      "endTimeLocal": "2026-03-12T22:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
       "id": "nhl_2025021027",
       "sport": "hockey",
       "league": "NHL",
@@ -8351,6 +8586,20 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "soccer-europaleague-20260318-1530-ferencvaros-at-braga",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Ferencvaros",
+      "homeTeam": "Braga",
+      "startTimeLocal": "2026-03-18T15:30:00.000Z",
+      "endTimeLocal": "2026-03-18T17:45:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
       "id": "ahl-1028719",
       "sport": "hockey",
       "league": "AHL",
@@ -8626,6 +8875,104 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "soccer-europaleague-20260319-1745-nottingham-forest-at-fc-midtjylland",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Nottingham Forest",
+      "homeTeam": "FC Midtjylland",
+      "startTimeLocal": "2026-03-19T17:45:00.000Z",
+      "endTimeLocal": "2026-03-19T20:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260319-1745-celta-vigo-at-lyon",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Celta Vigo",
+      "homeTeam": "Lyon",
+      "startTimeLocal": "2026-03-19T17:45:00.000Z",
+      "endTimeLocal": "2026-03-19T20:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260319-1745-racing-genk-at-sc-freiburg",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Racing Genk",
+      "homeTeam": "SC Freiburg",
+      "startTimeLocal": "2026-03-19T17:45:00.000Z",
+      "endTimeLocal": "2026-03-19T20:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260319-2000-bologna-at-as-roma",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Bologna",
+      "homeTeam": "AS Roma",
+      "startTimeLocal": "2026-03-19T20:00:00.000Z",
+      "endTimeLocal": "2026-03-19T22:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260319-2000-lille-at-aston-villa",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Lille",
+      "homeTeam": "Aston Villa",
+      "startTimeLocal": "2026-03-19T20:00:00.000Z",
+      "endTimeLocal": "2026-03-19T22:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260319-2000-vfb-stuttgart-at-fc-porto",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "VfB Stuttgart",
+      "homeTeam": "FC Porto",
+      "startTimeLocal": "2026-03-19T20:00:00.000Z",
+      "endTimeLocal": "2026-03-19T22:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
+    },
+    {
+      "id": "soccer-europaleague-20260319-2000-panathinaikos-at-real-betis",
+      "sport": "soccer",
+      "league": "Europa League",
+      "awayTeam": "Panathinaikos",
+      "homeTeam": "Real Betis",
+      "startTimeLocal": "2026-03-19T20:00:00.000Z",
+      "endTimeLocal": "2026-03-19T22:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-europaleague",
+      "leagueKey": "europaleague",
+      "providerReason": "uel-yttv"
     },
     {
       "id": "nhl_2025021083",
