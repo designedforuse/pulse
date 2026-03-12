@@ -1162,7 +1162,7 @@ async function fetchNcaabBasketballScores(eventIds: string[]): Promise<Record<st
     const allEspnEvents: any[] = [];
 
     for (const dateStr of [today, yesterday]) {
-      const url = `https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=${dateStr}&limit=100`;
+      const url = `https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?groups=9&dates=${dateStr}&limit=100`;
       const res = await fetch(url);
       if (!res.ok) continue;
       const data = await res.json() as any;
