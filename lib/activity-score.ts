@@ -37,7 +37,9 @@ function getScoringReason(sport: string, current: ScoreData | undefined, previou
     return "Score update";
   }
   if (s === "soccer") return "Goal just scored";
-  return "Goal just scored";
+  if (s === "hockey") return "Goal just scored";
+  if (s === "basketball") return "Points scored";
+  return "Score update";
 }
 
 function detectGoalScored(
@@ -276,7 +278,11 @@ export function computeActivityScore(
   }
 
   if (detectLateCloseGame(event, currentScore)) {
-    const lateReason = event.sport.toLowerCase() === "rugby" ? "Close game late" : SIGNAL_REASONS["Late close game"];
+    const sp = event.sport.toLowerCase();
+    let lateReason = "Close game late";
+    if (sp === "hockey" || sp === "soccer") lateReason = "One-goal game late";
+    else if (sp === "basketball") lateReason = "One-possession game";
+    else if (sp === "tennis") lateReason = "Final set battle";
     signals.push({ name: "Late close game", points: 20, reason: lateReason });
   }
 
