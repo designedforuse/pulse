@@ -646,7 +646,12 @@ export default function UnifiedEventCard({
   const isTennis = event.sport === "tennis";
   const isCricket = event.sport === "cricket";
   const isRacing = event.sport === "racing";
+  const isGolf = event.sport === "golf";
   const gpFlag = isRacing ? getGrandPrixFlag(event.competitionName || event.homeTeam) : null;
+  const golfTournament = isGolf ? (event.tournamentName || event.homeTeam) : null;
+  const golfRound = isGolf && event.sessionTitle
+    ? (event.sessionTitle.match(/Round \d+/)?.[0] || event.sessionTitle.split("—")[1]?.trim() || event.sessionTitle)
+    : null;
 
 
   const awayRank = isTennis ? event.tennisPlayer1Rank : undefined;
@@ -688,7 +693,14 @@ export default function UnifiedEventCard({
               </Text>
             </View>
           )}
-          {!isRacing && phaseLabel && (
+          {isGolf && golfRound && (
+            <View style={[uStyles.racingSessionPill, { backgroundColor: sportColor + "1A" }]}>
+              <Text style={[uStyles.racingSessionPillText, { color: sportColor }]}>
+                {golfRound}
+              </Text>
+            </View>
+          )}
+          {!isRacing && !isGolf && phaseLabel && (
             <PhaseChip label={phaseLabel} sportColor={sportColor} isHot={isHotPhase} />
           )}
           <View style={{ flex: 1 }} />
@@ -709,7 +721,19 @@ export default function UnifiedEventCard({
         </View>
 
         <View style={uStyles.body}>
-          {isRacing ? (
+          {isGolf ? (
+            <View style={uStyles.racingLayout}>
+              <View style={uStyles.racingCircuitRow}>
+                <Text style={{ fontSize: featured ? 18 : 16 }}>⛳</Text>
+                <Text
+                  style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
+                  numberOfLines={1}
+                >
+                  {golfTournament}
+                </Text>
+              </View>
+            </View>
+          ) : isRacing ? (
             <View style={uStyles.racingLayout}>
               <View style={uStyles.racingCircuitRow}>
                 <Text style={{ fontSize: featured ? 18 : 16 }}>{gpFlag || "🏁"}</Text>
