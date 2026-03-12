@@ -53,21 +53,21 @@
   },
   "playoff_push:boston bruins playoff push march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=H46sF0aj-BY",
-      "thumbnailUrl": "https://img.youtube.com/vi/H46sF0aj-BY/hqdefault.jpg",
-      "durationSeconds": 29546,
-      "title": "🟣 COFFEEMAN_UA стрім — DayZ | українською",
+      "url": "https://www.youtube.com/watch?v=aoep-TMu0pQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/aoep-TMu0pQ/hqdefault.jpg",
+      "durationSeconds": 695,
+      "title": "Canadiens vs. Senators | NHL Highlights | March 11, 2026",
       "source": "youtube",
-      "channel": "Streams UA",
-      "publishedAt": "16 hours ago"
+      "channel": "NHL",
+      "publishedAt": "2 hours ago"
     },
-    "fetchedAt": "2026-03-11T04:11:53.473Z",
+    "fetchedAt": "2026-03-12T05:04:02.252Z",
     "query": "Boston Bruins playoff push March 2026",
     "debug": {
       "searchQuery": "Boston Bruins playoff push March 2026",
-      "selectedVideoTitle": "🟣 COFFEEMAN_UA стрім — DayZ | українською",
-      "selectedVideoPublishedAt": "16 hours ago",
-      "selectedVideoChannel": "Streams UA",
+      "selectedVideoTitle": "Canadiens vs. Senators | NHL Highlights | March 11, 2026",
+      "selectedVideoPublishedAt": "2 hours ago",
+      "selectedVideoChannel": "NHL",
       "rejectedForAgeCount": 0
     }
   },
@@ -85,21 +85,21 @@
   },
   "playoff_push:anaheim ducks playoff push march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=rgpy2sRw_Rw",
-      "thumbnailUrl": "https://img.youtube.com/vi/rgpy2sRw_Rw/hqdefault.jpg",
-      "durationSeconds": 2733,
-      "title": "Manitoba PCs sharing concerns about safe consumption site|CTV News Winnipeg at Six for Mar. 10, 2026",
+      "url": "https://www.youtube.com/watch?v=1dfV8S522Zw",
+      "thumbnailUrl": "https://img.youtube.com/vi/1dfV8S522Zw/hqdefault.jpg",
+      "durationSeconds": 3881,
+      "title": "NASHCAST EP41: Mike Weir \"BRING THE GREEN JACKET\"",
       "source": "youtube",
-      "channel": "CTV News",
-      "publishedAt": "1 hour ago"
+      "channel": "NASHCAST",
+      "publishedAt": "15 hours ago"
     },
-    "fetchedAt": "2026-03-11T04:11:56.495Z",
+    "fetchedAt": "2026-03-12T05:04:04.334Z",
     "query": "Anaheim Ducks playoff push March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push March 2026",
-      "selectedVideoTitle": "Manitoba PCs sharing concerns about safe consumption site|CTV News Winnipeg at Six for Mar. 10, 2026",
-      "selectedVideoPublishedAt": "1 hour ago",
-      "selectedVideoChannel": "CTV News",
+      "selectedVideoTitle": "NASHCAST EP41: Mike Weir \"BRING THE GREEN JACKET\"",
+      "selectedVideoPublishedAt": "15 hours ago",
+      "selectedVideoChannel": "NASHCAST",
       "rejectedForAgeCount": 0
     }
   },
@@ -228,41 +228,33 @@
     }
   },
   "playoff_push:san diego gulls playoff push march 2026": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=YHDS2A7EGZs",
-      "thumbnailUrl": "https://img.youtube.com/vi/YHDS2A7EGZs/hqdefault.jpg",
-      "durationSeconds": 1621,
-      "title": "DOMINATE: Anaheim Ducks’ Cutter Gauthier LEADS with Elite Speed and Scoring Power This Season",
-      "source": "youtube",
-      "channel": "Locked On Ducks (Anaheim)",
-      "publishedAt": "2 hours ago"
-    },
-    "fetchedAt": "2026-03-11T04:11:53.147Z",
+    "video": null,
+    "fetchedAt": "2026-03-12T05:04:01.987Z",
     "query": "San Diego Gulls playoff push March 2026",
     "debug": {
       "searchQuery": "San Diego Gulls playoff push March 2026",
-      "selectedVideoTitle": "DOMINATE: Anaheim Ducks’ Cutter Gauthier LEADS with Elite Speed and Scoring Power This Season",
-      "selectedVideoPublishedAt": "2 hours ago",
-      "selectedVideoChannel": "Locked On Ducks (Anaheim)",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   },
   "momentum:boston bruins highlights march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=XJLA4RSm3hA",
-      "thumbnailUrl": "https://img.youtube.com/vi/XJLA4RSm3hA/hqdefault.jpg",
-      "durationSeconds": 696,
-      "title": "Kings vs. Bruins | NHL Highlights | March 10, 2026",
+      "url": "https://www.youtube.com/watch?v=aoep-TMu0pQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/aoep-TMu0pQ/hqdefault.jpg",
+      "durationSeconds": 695,
+      "title": "Canadiens vs. Senators | NHL Highlights | March 11, 2026",
       "source": "youtube",
       "channel": "NHL",
-      "publishedAt": "1 hour ago"
+      "publishedAt": "2 hours ago"
     },
-    "fetchedAt": "2026-03-11T04:11:53.779Z",
+    "fetchedAt": "2026-03-12T05:04:02.511Z",
     "query": "Boston Bruins highlights March 2026",
     "debug": {
       "searchQuery": "Boston Bruins highlights March 2026",
-      "selectedVideoTitle": "Kings vs. Bruins | NHL Highlights | March 10, 2026",
-      "selectedVideoPublishedAt": "1 hour ago",
+      "selectedVideoTitle": "Canadiens vs. Senators | NHL Highlights | March 11, 2026",
+      "selectedVideoPublishedAt": "2 hours ago",
       "selectedVideoChannel": "NHL",
       "rejectedForAgeCount": 0
     }
@@ -281,10 +273,22 @@
   },
   "clinch_watch:zverev clinch playoff berth march 2026": {
     "video": null,
-    "fetchedAt": "2026-03-11T04:11:55.422Z",
+    "fetchedAt": "2026-03-12T05:04:03.394Z",
     "query": "Zverev clinch playoff berth March 2026",
     "debug": {
       "searchQuery": "Zverev clinch playoff berth March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:djokovic vs draper upset highlights march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-12T05:04:02.707Z",
+    "query": "Djokovic vs Draper upset highlights March 2026",
+    "debug": {
+      "searchQuery": "Djokovic vs Draper upset highlights March 2026",
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,
