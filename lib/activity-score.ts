@@ -26,6 +26,12 @@ const SIGNAL_REASONS: Record<string, string> = {
   "Final laps": "Final laps of race",
 };
 
+function parseClockSeconds(period: string): number | null {
+  const match = period.match(/(\d+):(\d+)$/);
+  if (!match) return null;
+  return parseInt(match[1], 10) * 60 + parseInt(match[2], 10);
+}
+
 function getScoringReason(sport: string, current: ScoreData | undefined, previous: ScoreData | undefined): string {
   const s = sport.toLowerCase();
   if (s === "rugby") {
@@ -38,7 +44,16 @@ function getScoringReason(sport: string, current: ScoreData | undefined, previou
   }
   if (s === "soccer") return "Goal just scored";
   if (s === "hockey") return "Goal just scored";
-  if (s === "basketball") return "Points scored";
+  if (s === "basketball") {
+    const prevTotal = (previous?.awayScore ?? 0) + (previous?.homeScore ?? 0);
+    const curTotal = (current?.awayScore ?? 0) + (current?.homeScore ?? 0);
+    const diff = curTotal - prevTotal;
+    if (diff === 1) return "Free throw";
+    if (diff === 2) return "2-pointer";
+    if (diff === 3) return "3-pointer";
+    if (diff > 3) return `${diff}pts scored`;
+    return "Points scored";
+  }
   return "Score update";
 }
 
@@ -52,7 +67,12 @@ function detectGoalScored(
   if (sport === "tennis" || sport === "cricket") return false;
   const prevTotal = (previous.awayScore ?? 0) + (previous.homeScore ?? 0);
   const curTotal = (current.awayScore ?? 0) + (current.homeScore ?? 0);
-  return curTotal > prevTotal;
+  if (curTotal <= prevTotal) return false;
+  if (sport === "basketball") {
+    const clockSecs = parseClockSeconds(current.period || "");
+    if (clockSecs === null || clockSecs > 120) return false;
+  }
+  return true;
 }
 
 function detectOvertime(
