@@ -531,6 +531,7 @@ function matchToEvent(match: CricApiMatch, classification: {
 
   return {
     id: `cricket-${leagueKey}-${stableHash(match.id)}`,
+    cricketMatchId: match.id,
     sport: "cricket",
     league: classification.league,
     awayTeam,
@@ -677,7 +678,7 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
   let offset = 0;
   let totalRows = 0;
   let pagesRead = 0;
-  const MAX_PAGES = 6;
+  const MAX_PAGES = 10;
 
   while (pagesRead < MAX_PAGES) {
     const page = await fetchMatchesPage(apiKey, offset);

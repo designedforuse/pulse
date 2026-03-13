@@ -50,7 +50,7 @@ The application features a frontend built with Expo Router for file-based naviga
 - **MLR (hardcoded):** Major League Rugby schedule data.
 - **Golf Majors (hardcoded):** Players Championship, The Masters, PGA Championship, US Open, British Open schedule data.
 - **World Marathon Majors (hardcoded):** Tokyo, Boston, London, Sydney, Berlin, Chicago, and New York City marathons as athletics/session events on FloSports.
-- **CricAPI:** International and domestic Cricket fixtures.
+- **CricAPI:** International and domestic Cricket fixtures and live scores. Uses `/v1/cricScore` (free tier, no credits needed) for live match detection, and `/v1/matches` (paginated, MAX_PAGES=10) for schedule. Each cricket event stores `cricketMatchId` (CricAPI UUID) for reliable ID-based score matching. The `currentMatches` endpoint was replaced because it requires credits (account has 0 credits).
 - **World Rugby API (api.wr-rims-prod.pulselive.com):** SVNS match schedules and live scores.
 - **Apple TV:** Streaming provider integration.
 - **YouTube TV:** Streaming provider integration.

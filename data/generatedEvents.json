@@ -5874,7 +5874,8 @@
       "hostCountry": "Bangladesh",
       "seriesName": "1st ODI, Pakistan tour of Bangladesh 2026",
       "gender": "men",
-      "isIccT20Wc": false
+      "isIccT20Wc": false,
+      "cricketMatchId": "994ae8e0-d138-495e-9975-a77d28e6f5af"
     },
     {
       "id": "soccer-usl-20260311-1600-hartford-athletic-at-birmingham-legion-fc",
@@ -6914,7 +6915,8 @@
       "hostCountry": "Bangladesh",
       "seriesName": "2nd ODI, Pakistan tour of Bangladesh 2026",
       "gender": "men",
-      "isIccT20Wc": false
+      "isIccT20Wc": false,
+      "cricketMatchId": "fc9053b9-efdf-4953-9be8-79f89e4928a4"
     },
     {
       "id": "golf-players-championship-2026-03-13",

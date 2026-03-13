@@ -60,7 +60,7 @@ interface LiveEventIdBuckets {
   ncaa: { id: string; homeTeam: string; awayTeam: string; startTime: string }[];
   soccer: Map<string, string[]>;
   rugby: Map<string, { id: string; homeTeam: string; awayTeam: string }[]>;
-  cricket: { id: string; homeTeam: string; awayTeam: string }[];
+  cricket: { id: string; homeTeam: string; awayTeam: string; cricketMatchId?: string }[];
   tennis: { id: string; espnId: string }[];
   f1: { id: string; espnCompId: string; sessionTitle: string }[];
   nba: string[];
@@ -131,6 +131,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
           id: event.id,
           homeTeam: event.homeTeam || "",
           awayTeam: event.awayTeam || "",
+          cricketMatchId: event.cricketMatchId || undefined,
         });
       } else if (event.id.startsWith("tennis-espn-")) {
         const espnId = event.id.replace("tennis-espn-", "");
@@ -748,8 +749,14 @@ async function fetchNcaaHockeyScores(
 let cricketScoreCache: { data: Record<string, ScoreData>; ts: number } = { data: {}, ts: 0 };
 const CRICKET_CACHE_TTL = 300_000;
 
+function cricScoreTeamMatches(cricName: string, ourTeam: string): boolean {
+  const clean = cricName.replace(/\s*\[[^\]]*\]/g, "").trim().toLowerCase();
+  const our = ourTeam.toLowerCase();
+  return clean === our || clean.includes(our) || our.includes(clean);
+}
+
 async function fetchCricketScores(
-  events: { id: string; homeTeam: string; awayTeam: string }[]
+  events: { id: string; homeTeam: string; awayTeam: string; cricketMatchId?: string }[]
 ): Promise<Record<string, ScoreData>> {
   const scores: Record<string, ScoreData> = {};
   if (events.length === 0) return scores;
@@ -766,67 +773,63 @@ async function fetchCricketScores(
   if (!apiKey) return scores;
 
   try {
-    const res = await fetch(`https://api.cricapi.com/v1/currentMatches?apikey=${apiKey}&offset=0`);
+    const res = await fetch(`https://api.cricapi.com/v1/cricScore?apikey=${apiKey}`);
     if (!res.ok) return { ...cricketScoreCache.data };
     const data = await res.json() as any;
     if (data.status !== "success") {
-      console.warn("[liveScores] CricAPI non-success:", data.status, data.reason || "");
+      console.warn("[liveScores] CricAPI cricScore non-success:", data.status, data.reason || "");
       return { ...cricketScoreCache.data };
     }
 
-    const matches = data.data || [];
-    console.log(`[liveScores] CricAPI returned ${matches.length} matches for ${events.length} cricket events`);
+    const matches = (data.data || []) as any[];
+    const liveOrResult = matches.filter((m: any) => m.ms === "live" || m.ms === "result");
+    console.log(`[liveScores] CricAPI cricScore: ${matches.length} total, ${liveOrResult.length} live/result for ${events.length} cricket events`);
 
     for (const ourEvent of events) {
       if (scores[ourEvent.id]) continue;
 
-      for (const match of matches) {
-        const matchTeams = (match.teams || []) as string[];
-        const matchName = (match.name || "") as string;
+      for (const match of liveOrResult) {
+        const isLive = match.ms === "live";
+        const isResult = match.ms === "result";
 
-        const homeInMatch = matchTeams.some((t: string) => teamsMatch(t, ourEvent.homeTeam)) ||
-          matchName.toLowerCase().includes(ourEvent.homeTeam.toLowerCase());
-        const awayInMatch = matchTeams.some((t: string) => teamsMatch(t, ourEvent.awayTeam)) ||
-          matchName.toLowerCase().includes(ourEvent.awayTeam.toLowerCase());
+        const idMatches = ourEvent.cricketMatchId && ourEvent.cricketMatchId === match.id;
+        const t1Name = (match.t1 || "") as string;
+        const t2Name = (match.t2 || "") as string;
+        const teamMatch = !idMatches && (
+          (cricScoreTeamMatches(t1Name, ourEvent.homeTeam) && cricScoreTeamMatches(t2Name, ourEvent.awayTeam)) ||
+          (cricScoreTeamMatches(t1Name, ourEvent.awayTeam) && cricScoreTeamMatches(t2Name, ourEvent.homeTeam))
+        );
 
-        if (!homeInMatch || !awayInMatch) continue;
+        if (!idMatches && !teamMatch) continue;
 
-        const scoreEntries = (match.score || []) as any[];
-        const matchStarted = match.matchStarted === true;
-        const matchEnded = match.matchEnded === true;
-        const statusText = (match.status || "") as string;
+        const rawStatus = (match.status || "") as string;
+        const t1s = (match.t1s || "") as string;
+        const t2s = (match.t2s || "") as string;
 
-        if (!matchStarted && !matchEnded) continue;
+        const t1IsHome = cricScoreTeamMatches(t1Name, ourEvent.homeTeam);
+        const cricketHome = t1IsHome ? t1s : t2s;
+        const cricketAway = t1IsHome ? t2s : t1s;
 
-        let cricketHome = "";
-        let cricketAway = "";
+        const isStaleStatus = /match starts at/i.test(rawStatus) || /^toss/i.test(rawStatus);
 
-        for (const s of scoreEntries) {
-          const inning = (s.inning || "").toLowerCase();
-          if (inning.includes(ourEvent.homeTeam.toLowerCase())) {
-            cricketHome = `${s.r}/${s.w} (${s.o})`;
-          } else if (inning.includes(ourEvent.awayTeam.toLowerCase())) {
-            cricketAway = `${s.r}/${s.w} (${s.o})`;
-          }
-        }
-
-        if (matchEnded) {
+        if (isResult) {
           scores[ourEvent.id] = {
             awayScore: 0,
             homeScore: 0,
-            period: statusText || "Final",
+            period: rawStatus || "Final",
             status: "final",
             cricketAway: cricketAway || undefined,
             cricketHome: cricketHome || undefined,
           };
-        } else if (matchStarted) {
+        } else if (isLive) {
+          const liveStatus = isStaleStatus ? "In Progress" : (rawStatus || "In Progress");
           scores[ourEvent.id] = {
             awayScore: 0,
             homeScore: 0,
-            period: statusText || "In Progress",
+            period: liveStatus,
             status: "live",
-            cricketAway: cricketAway || "Yet to bat",
-            cricketHome: cricketHome || "Yet to bat",
+            cricketAway: cricketAway || undefined,
+            cricketHome: cricketHome || undefined,
           };
         }
         break;
