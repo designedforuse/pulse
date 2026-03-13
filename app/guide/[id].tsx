@@ -252,7 +252,7 @@ export default function GuideDetailScreen() {
       >
         <View style={styles.headerSection}>
           <View style={styles.titleRow}>
-            <View style={[styles.ritualIconWrap, { backgroundColor: ritual.icon === "moon" ? "#818CF820" : "#FB923C20" }]}>
+            <View style={[styles.ritualIconWrap, { backgroundColor: ritual.icon === "moon" ? "#818CF833" : "#FB923C33" }]}>
               <Ionicons
                 name={ritual.icon}
                 size={24}
@@ -601,15 +601,15 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
   },
   countChip: {
-    backgroundColor: Colors.favStar + "20",
-    paddingHorizontal: 8,
+    backgroundColor: Colors.favStar,
+    paddingHorizontal: 10,
     paddingVertical: 3,
-    borderRadius: 8,
+    borderRadius: 10,
   },
   countChipText: {
     fontSize: 12,
     fontWeight: "700" as const,
-    color: Colors.favStar,
+    color: "#FFFFFF",
     fontFamily: "Inter_700Bold",
   },
   favoritesEmpty: {
@@ -646,19 +646,19 @@ const styles = StyleSheet.create({
     flexDirection: "row" as const,
     alignItems: "center" as const,
     gap: 4,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 16,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
     borderWidth: 1,
     borderColor: Colors.border,
     backgroundColor: Colors.card,
   },
   chipActive: {
-    backgroundColor: Colors.accent + "18",
-    borderColor: Colors.accent + "44",
+    backgroundColor: Colors.accent + "22",
+    borderColor: Colors.accent + "60",
   },
   chipLabel: {
-    fontSize: 11,
+    fontSize: 12,
     color: Colors.textSecondary,
     fontFamily: "Inter_600SemiBold",
   },
@@ -667,15 +667,15 @@ const styles = StyleSheet.create({
   },
   chipCount: {
     backgroundColor: Colors.cardHighlight,
-    paddingHorizontal: 5,
+    paddingHorizontal: 6,
     paddingVertical: 1,
-    borderRadius: 7,
-    minWidth: 16,
+    borderRadius: 8,
+    minWidth: 18,
     alignItems: "center" as const,
   },
   chipCountText: {
-    fontSize: 9,
-    color: Colors.textMuted,
+    fontSize: 10,
+    color: Colors.textSecondary,
     fontFamily: "Inter_600SemiBold",
   },
   filterEmpty: {

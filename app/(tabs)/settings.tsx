@@ -61,7 +61,7 @@ function FavoritesSection() {
   const { allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, isLeagueEnabled, toggleLeague, enabledCount, totalCount } = useFavorites();
   const [expandedSports, setExpandedSports] = useState<Record<string, boolean>>({});
   const [expandedLeagues, setExpandedLeagues] = useState<Record<string, boolean>>({});
-  const sportOrder = ["hockey", "rugby", "cricket", "soccer", "basketball", "tennis", "racing", "golf"];
+  const sportOrder = ["hockey", "rugby", "cricket", "soccer", "basketball", "tennis", "racing", "golf", "athletics"];
   const sportLabels: Record<string, string> = {
     hockey: "Hockey",
     rugby: "Rugby",
@@ -71,6 +71,7 @@ function FavoritesSection() {
     tennis: "Tennis",
     racing: "Racing",
     golf: "Golf",
+    athletics: "Athletics",
   };
   const sportIcons: Record<string, keyof typeof Ionicons.glyphMap> = {
     hockey: "snow",
@@ -81,6 +82,7 @@ function FavoritesSection() {
     tennis: "tennisball",
     racing: "speedometer",
     golf: "golf",
+    athletics: "walk-outline",
   };
 
   const leagueOrder: Record<string, string[]> = {
@@ -135,7 +137,7 @@ function FavoritesSection() {
               }}
               style={styles.sportHeader}
             >
-              <View style={[styles.sportIconBg, { backgroundColor: sportColor + "22" }]}>
+              <View style={[styles.sportIconBg, { backgroundColor: sportColor + "33" }]}>
                 <Ionicons name={sportIcons[sport]} size={14} color={sportEnabled ? sportColor : Colors.textMuted} />
               </View>
               <Text style={[styles.sportLabel, { color: sportEnabled ? sportColor : Colors.textMuted }]}>
@@ -362,8 +364,8 @@ export default function SettingsScreen() {
           <Text style={styles.sectionTitle}>Using the App</Text>
           <View style={styles.card}>
             <View style={styles.howItWorksItem}>
-              <View style={[styles.stepBadge, { backgroundColor: Colors.accentDim }]}>
-                <Text style={[styles.stepText, { color: Colors.accent }]}>1</Text>
+              <View style={[styles.stepBadge, { backgroundColor: Colors.accent }]}>
+                <Text style={[styles.stepText, { color: "#FFFFFF" }]}>1</Text>
               </View>
               <View style={styles.howItWorksContent}>
                 <Text style={styles.howItWorksTitle}>Watch: What's exciting right now</Text>
@@ -372,8 +374,8 @@ export default function SettingsScreen() {
             </View>
             <View style={styles.divider} />
             <View style={styles.howItWorksItem}>
-              <View style={[styles.stepBadge, { backgroundColor: Colors.accentDim }]}>
-                <Text style={[styles.stepText, { color: Colors.accent }]}>2</Text>
+              <View style={[styles.stepBadge, { backgroundColor: Colors.accent }]}>
+                <Text style={[styles.stepText, { color: "#FFFFFF" }]}>2</Text>
               </View>
               <View style={styles.howItWorksContent}>
                 <Text style={styles.howItWorksTitle}>Rituals: Your weekly viewing habits</Text>
@@ -382,8 +384,8 @@ export default function SettingsScreen() {
             </View>
             <View style={styles.divider} />
             <View style={styles.howItWorksItem}>
-              <View style={[styles.stepBadge, { backgroundColor: Colors.accentDim }]}>
-                <Text style={[styles.stepText, { color: Colors.accent }]}>3</Text>
+              <View style={[styles.stepBadge, { backgroundColor: Colors.accent }]}>
+                <Text style={[styles.stepText, { color: "#FFFFFF" }]}>3</Text>
               </View>
               <View style={styles.howItWorksContent}>
                 <Text style={styles.howItWorksTitle}>Stories: Discover games across leagues</Text>
@@ -622,7 +624,7 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: Colors.card,
-    borderRadius: 14,
+    borderRadius: 16,
     overflow: "hidden",
     borderWidth: 1,
     borderColor: Colors.border,

@@ -202,9 +202,9 @@ export default function NarrativeDetailScreen() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.topSection}>
-          <View style={[styles.kindBadgeLarge, { backgroundColor: config.color + "20" }]}>
-            <Ionicons name={config.icon} size={20} color={config.color} />
-            <Text style={[styles.kindLabelLarge, { color: config.color }]}>{config.label}</Text>
+          <View style={[styles.kindBadgeLarge, { backgroundColor: config.color }]}>
+            <Ionicons name={config.icon} size={20} color="#FFFFFF" />
+            <Text style={[styles.kindLabelLarge, { color: "#FFFFFF" }]}>{config.label}</Text>
           </View>
           <Text style={styles.title}>{card.title}</Text>
           <Text style={styles.subtitle}>{card.subtitle}</Text>
@@ -583,7 +583,7 @@ const styles = StyleSheet.create({
   },
   reasonCard: {
     backgroundColor: Colors.card,
-    borderRadius: 12,
+    borderRadius: 16,
     padding: 16,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -596,7 +596,7 @@ const styles = StyleSheet.create({
   },
   resultsCard: {
     backgroundColor: Colors.card,
-    borderRadius: 12,
+    borderRadius: 16,
     padding: 12,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -630,7 +630,7 @@ const styles = StyleSheet.create({
   },
   movementsCard: {
     backgroundColor: Colors.card,
-    borderRadius: 12,
+    borderRadius: 16,
     padding: 12,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -662,7 +662,7 @@ const styles = StyleSheet.create({
   },
   rivalryCard: {
     backgroundColor: Colors.card,
-    borderRadius: 12,
+    borderRadius: 16,
     padding: 12,
     borderWidth: 1,
     borderColor: Colors.border,
@@ -721,7 +721,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   videoThumbnailContainer: {
-    borderRadius: 12,
+    borderRadius: 16,
     overflow: "hidden" as const,
     backgroundColor: Colors.card,
   },
@@ -774,7 +774,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   videoPlayerContainer: {
-    borderRadius: 12,
+    borderRadius: 16,
     overflow: "hidden" as const,
     backgroundColor: "#000000",
   },
@@ -791,7 +791,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: Colors.card,
-    borderRadius: 12,
+    borderRadius: 16,
     padding: 14,
     marginBottom: 8,
     borderWidth: 1,
@@ -835,8 +835,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 8,
     backgroundColor: Colors.accent,
-    borderRadius: 12,
-    paddingVertical: 14,
+    borderRadius: 16,
+    paddingVertical: 16,
   },
   deepLinkText: {
     fontSize: 16,

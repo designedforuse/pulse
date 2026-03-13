@@ -1094,7 +1094,9 @@ export default function WatchScreen() {
       >
         <View style={styles.header}>
           <View style={styles.headerLeft}>
-            <Ionicons name="trophy" size={28} color={Colors.accent} />
+            <View style={styles.headerIconWrap}>
+              <Ionicons name="trophy" size={22} color={Colors.accent} />
+            </View>
             <Text style={styles.headerTitle}>Watch</Text>
           </View>
           <Pressable
@@ -1106,7 +1108,7 @@ export default function WatchScreen() {
             ]}
             testID="settings-button"
           >
-            <Ionicons name="settings-outline" size={24} color={Colors.textSecondary} />
+            <Ionicons name="settings-outline" size={22} color={Colors.textSecondary} />
           </Pressable>
         </View>
 
@@ -1384,19 +1386,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 10,
   },
+  headerIconWrap: {
+    width: 38,
+    height: 38,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: Colors.accentDim,
+  },
   headerTitle: {
-    fontSize: 26,
+    fontSize: 28,
     fontWeight: "700" as const,
     color: Colors.textPrimary,
     fontFamily: "Inter_700Bold",
+    letterSpacing: -0.5,
   },
   settingsButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 38,
+    height: 38,
+    borderRadius: 19,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: Colors.card,
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
 
   chaosSection: {
@@ -1421,8 +1434,8 @@ const styles = StyleSheet.create({
     gap: 5,
     backgroundColor: Colors.accentDim,
     paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 10,
+    paddingVertical: 7,
+    borderRadius: 14,
   },
   rebuildText: {
     fontSize: 13,
@@ -1731,19 +1744,19 @@ const styles = StyleSheet.create({
     flexDirection: "row" as const,
     alignItems: "center" as const,
     gap: 4,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 16,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
     borderWidth: 1,
     borderColor: Colors.border,
     backgroundColor: Colors.card,
   },
   upNextChipActive: {
-    backgroundColor: Colors.accent + "18",
-    borderColor: Colors.accent + "44",
+    backgroundColor: Colors.accent + "22",
+    borderColor: Colors.accent + "60",
   },
   upNextChipLabel: {
-    fontSize: 11,
+    fontSize: 12,
     color: Colors.textSecondary,
     fontFamily: "Inter_600SemiBold",
   },
@@ -1752,15 +1765,15 @@ const styles = StyleSheet.create({
   },
   upNextChipCount: {
     backgroundColor: Colors.cardHighlight,
-    paddingHorizontal: 5,
+    paddingHorizontal: 6,
     paddingVertical: 1,
-    borderRadius: 7,
-    minWidth: 16,
+    borderRadius: 8,
+    minWidth: 18,
     alignItems: "center" as const,
   },
   upNextChipCountText: {
-    fontSize: 9,
-    color: Colors.textMuted,
+    fontSize: 10,
+    color: Colors.textSecondary,
     fontFamily: "Inter_600SemiBold",
   },
   upNextFilterEmpty: {
@@ -1812,22 +1825,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   sectionTitle: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "700" as const,
-    color: Colors.textSecondary,
+    color: Colors.textPrimary,
     fontFamily: "Inter_700Bold",
-    letterSpacing: 0.3,
+    letterSpacing: -0.3,
   },
   sectionCount: {
-    backgroundColor: "rgba(161, 161, 166, 0.15)",
+    backgroundColor: Colors.cardHighlight,
     paddingHorizontal: 8,
-    paddingVertical: 2,
-    borderRadius: 8,
+    paddingVertical: 3,
+    borderRadius: 10,
   },
   sectionCountText: {
     fontSize: 12,
     fontWeight: "600" as const,
-    color: Colors.textSecondary,
+    color: Colors.textPrimary,
     fontFamily: "Inter_600SemiBold",
   },
 
@@ -1927,10 +1940,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 6,
-    paddingVertical: 12,
+    paddingVertical: 13,
     marginTop: 4,
-    borderRadius: 10,
-    backgroundColor: "rgba(44, 44, 46, 0.6)",
+    borderRadius: 14,
+    backgroundColor: Colors.card,
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
   expandButtonText: {
     fontSize: 13,
