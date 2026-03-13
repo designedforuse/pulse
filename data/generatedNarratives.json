@@ -1,14 +1,11 @@
 {
-  "lastUpdated": "2026-03-12T05:03:52.662Z",
+  "lastUpdated": "2026-03-13T04:29:52.527Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
-        "NewEngland": 2,
+        "NewEngland": 1,
         "SoCal": 1,
-        "Other": 1
-      },
-      "momentum": {
-        "NewEngland": 1
+        "Other": 2
       },
       "league_moment": {
         "Other": 3
@@ -25,35 +22,35 @@
     },
     "combinedPushByRegion": {
       "NewEngland": false,
-      "SoCal": true
+      "SoCal": false
     },
     "finalFeedByRegion": {
       "SoCal": [
-        "playoff_push: SoCal Push Week"
+        "playoff_push: Gulls Push Week"
       ],
       "NewEngland": [
-        "playoff_push: Bruins Push Week",
-        "momentum: Bruins Heating Up"
+        "playoff_push: Bruins Push Week"
       ],
       "Other": [
         "upset_alert: Upset Alert",
         "clinch_watch: Clinch Watch",
-        "playoff_push: Playoff Push"
+        "playoff_push: Playoff Push",
+        "player_movement: System Shuffle"
       ]
     },
     "droppedCandidatesReasons": [
       {
-        "id": "playoff_push_clinch_fallback_nhl_2025021027",
+        "id": "playoff_push_clinch_fallback_nhl_2025021044",
         "kind": "playoff_push",
-        "region": "NewEngland",
+        "region": "Other",
         "title": "Playoff Push",
-        "reason": "max 1 playoff_push per region (NewEngland)"
+        "reason": "max 1 playoff_push per region (Other)"
       },
       {
-        "id": "player_movement_system",
-        "kind": "player_movement",
+        "id": "f1_race_weekend_chinese_grand_prix",
+        "kind": "league_moment",
         "region": "Other",
-        "title": "System Shuffle",
+        "title": "Chinese Grand Prix",
         "reason": "feed cap (max 6)"
       },
       {
@@ -69,25 +66,16 @@
         "region": "Other",
         "title": "Big Stage",
         "reason": "feed cap (max 6)"
-      },
-      {
-        "id": "f1_race_weekend_chinese_grand_prix",
-        "kind": "league_moment",
-        "region": "Other",
-        "title": "Chinese Grand Prix",
-        "reason": "feed cap (max 6)"
       }
     ],
-    "totalBeforeCap": 11,
+    "totalBeforeCap": 10,
     "totalAfterCap": 6,
     "playerMovement": {
       "rawMovementCandidates": 1,
       "movementAfterRegionFilter": 1,
-      "movementAfterCap": 0,
-      "movementFinalCount": 0,
-      "movementDroppedReasons": [
-        "feed cap (max 6)"
-      ],
+      "movementAfterCap": 1,
+      "movementFinalCount": 1,
+      "movementDroppedReasons": [],
       "runMeta": {
         "observedTeams": [
           "ANA",
@@ -99,14 +87,14 @@
           "CGY",
           "EDM",
           "VAN",
-          "TOR",
           "OTT",
           "MTL",
           "PHI",
           "DET",
           "NYI",
           "BUF",
-          "CAR"
+          "CAR",
+          "CBJ"
         ],
         "skippedTeams": [
           {
@@ -120,29 +108,56 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 660,
+        "playersIngested": 670,
         "movementsDetectedThisRun": [
           {
-            "playerId": "8480043",
-            "playerName": "T. Liljegren",
-            "fromTeam": "SJS",
-            "toTeam": "WSH",
-            "detectedAt": "2026-03-12T05:03:52.662Z",
-            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-            "firstSeenTo": "2026-03-12T05:03:52.662Z"
+            "playerId": "8473422",
+            "playerName": "N. Foligno",
+            "fromTeam": "CHI",
+            "toTeam": "MIN",
+            "detectedAt": "2026-03-13T04:29:52.527Z",
+            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
+            "firstSeenTo": "2026-03-13T04:29:52.527Z"
+          },
+          {
+            "playerId": "8474568",
+            "playerName": "L. Schenn",
+            "fromTeam": "WPG",
+            "toTeam": "BUF",
+            "detectedAt": "2026-03-13T04:29:52.527Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-13T04:29:52.527Z"
+          },
+          {
+            "playerId": "8476871",
+            "playerName": "T. Pearson",
+            "fromTeam": "WPG",
+            "toTeam": "BUF",
+            "detectedAt": "2026-03-13T04:29:52.527Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-13T04:29:52.527Z"
+          },
+          {
+            "playerId": "8481133",
+            "playerName": "C. Reinhardt",
+            "fromTeam": "VGK",
+            "toTeam": "FLA",
+            "detectedAt": "2026-03-13T04:29:52.527Z",
+            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
+            "firstSeenTo": "2026-03-13T04:29:52.527Z"
           }
         ],
-        "timestamp": "2026-03-12T05:03:52.662Z"
+        "timestamp": "2026-03-13T04:29:52.527Z"
       },
-      "cacheHistoryCount": 759,
+      "cacheHistoryCount": 766,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 11,
+    "candidateCountBeforeCap": 10,
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -105.06462833333333,
+      "hoursUntil": -128.49792416666668,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -158,28 +173,28 @@
       "upsetFinalCount": 1
     },
     "clinchWatch": {
-      "rawClinchCandidates": 4,
+      "rawClinchCandidates": 3,
       "clinchAfterRegionFilter": 1,
       "clinchFinalCount": 1,
       "clinchGatedOut": [
-        "Boston Bruins: before Mar 25, 78 pts < 95",
-        "Anaheim Ducks: before Mar 25, 75 pts < 95"
+        "Anaheim Ducks: before Mar 25, 75 pts < 95",
+        "Boston Bruins: before Mar 25, 78 pts < 95"
       ]
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "ahl-1028670",
+    "tonightStorySourceEvent": "echl-web-25179",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 280,
-      "sourceEventId": "ahl-1028670",
-      "reason": "4 followed/affiliate teams playing tonight",
+      "selectedScore": 340,
+      "sourceEventId": "echl-web-25179",
+      "reason": "7 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 280,
-          "reason": "4 followed/affiliate teams playing tonight"
+          "score": 340,
+          "reason": "7 followed/affiliate teams playing tonight"
         },
         {
           "label": "[playoff_push] Your Team's Push",
@@ -189,12 +204,7 @@
         {
           "label": "[playoff_push] Your Team's Push",
           "score": 170,
-          "reason": "playoff_push involving followed team(s): San Diego Gulls, Tulsa Oilers"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): Boston Bruins"
+          "reason": "playoff_push involving followed team(s): San Diego Gulls"
         },
         {
           "label": "[playoff_push] Your Team's Push",
@@ -202,9 +212,9 @@
           "reason": "playoff_push involving followed team(s): Anaheim Ducks"
         },
         {
-          "label": "[momentum] Hot Streak",
-          "score": 150,
-          "reason": "momentum involving followed team(s): Boston Bruins"
+          "label": "[playoff_push] Your Team's Push",
+          "score": 170,
+          "reason": "playoff_push involving followed team(s): Boston Bruins"
         },
         {
           "label": "[upset_alert] Shock Result",
@@ -248,37 +258,30 @@
       },
       "playoff_push_newengland": {
         "searchQuery": "Boston Bruins playoff push March 2026",
-        "selectedVideoTitle": "Canadiens vs. Senators | NHL Highlights | March 11, 2026",
-        "selectedVideoPublishedAt": "2 hours ago",
-        "selectedVideoChannel": "NHL",
+        "selectedVideoTitle": "Kobo gonna actually reach Chapter 3 this time... OR DOES SHE?!",
+        "selectedVideoPublishedAt": "12 hours ago",
+        "selectedVideoChannel": "GohDroxen",
         "rejectedForAgeCount": 0
       },
-      "momentum_bos": {
-        "searchQuery": "Boston Bruins highlights March 2026",
-        "selectedVideoTitle": "Canadiens vs. Senators | NHL Highlights | March 11, 2026",
-        "selectedVideoPublishedAt": "2 hours ago",
-        "selectedVideoChannel": "NHL",
+      "upset_alert_nhl_2025021036": {
+        "searchQuery": "Winnipeg Jets vs New York Rangers upset highlights March 2026",
+        "selectedVideoTitle": "Pushing back against infill | CTV Your Morning Edmonton for March 12, 2026",
+        "selectedVideoPublishedAt": "10 hours ago",
+        "selectedVideoChannel": "CTV News",
         "rejectedForAgeCount": 0
       },
-      "upset_alert_tennis-espn-172931": {
-        "searchQuery": "Djokovic vs Draper upset highlights March 2026",
+      "clinch_watch_tennis-espn-172939": {
+        "searchQuery": "Medvedev clinch playoff berth March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
-      "clinch_watch_tennis-espn-172938": {
-        "searchQuery": "Zverev clinch playoff berth March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
-      },
-      "playoff_push_clinch_fallback_nhl_2025021029": {
+      "playoff_push_clinch_fallback_nhl_2025021043": {
         "searchQuery": "Anaheim Ducks playoff push March 2026",
-        "selectedVideoTitle": "NASHCAST EP41: Mike Weir \"BRING THE GREEN JACKET\"",
-        "selectedVideoPublishedAt": "15 hours ago",
-        "selectedVideoChannel": "NASHCAST",
+        "selectedVideoTitle": "Tom Stillman Joins the Show | Last Minute Blues Podcast",
+        "selectedVideoPublishedAt": "7 hours ago",
+        "selectedVideoChannel": "101 ESPN",
         "rejectedForAgeCount": 0
       }
     }
@@ -286,16 +289,16 @@
   "cards": [
     {
       "id": "playoff_push_socal",
-      "title": "SoCal Push Week",
-      "subtitle": "Gulls: Four games in seven days, including a back-to-back · Oilers: Four games in seven days, including a back-to-back",
+      "title": "Gulls Push Week",
+      "subtitle": "Four games in seven days, including a back-to-back",
       "impact": {
-        "label": "Impacts: Family Game Night, Saturday Game Day",
+        "label": "Impacts: Family Game Night",
         "ritualId": "friday_lights",
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-12T05:03:52.662Z",
-      "expiresAt": "2026-03-19T05:03:52.662Z",
+      "triggeredAt": "2026-03-13T04:29:52.527Z",
+      "expiresAt": "2026-03-20T04:29:52.527Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -306,33 +309,21 @@
             "team": "San Diego Gulls",
             "league": "AHL",
             "gamesInNext7Days": 4,
-            "gamesInNext5Days": 2,
-            "hasBackToBack": true,
-            "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
-          },
-          {
-            "team": "Tulsa Oilers",
-            "league": "ECHL",
-            "gamesInNext7Days": 4,
             "gamesInNext5Days": 3,
             "hasBackToBack": true,
-            "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+            "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
           }
         ],
         "eventIds": [
           "ahl-1028681",
           "ahl-1028693",
           "ahl-1028709",
-          "ahl-1028714",
-          "echl-web-25179",
-          "echl-web-25193",
-          "echl-web-25201",
-          "echl-web-25206"
+          "ahl-1028714"
         ],
-        "combinedTeamCount": 2,
-        "windowStart": "2026-03-12T05:03:52.662Z",
-        "windowEnd": "2026-03-19T05:03:52.662Z",
-        "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season.\n\nTulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+        "combinedTeamCount": 1,
+        "windowStart": "2026-03-13T04:29:52.527Z",
+        "windowEnd": "2026-03-20T04:29:52.527Z",
+        "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
         "hockey"
@@ -347,8 +338,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-12T05:03:52.662Z",
-      "expiresAt": "2026-03-19T05:03:52.662Z",
+      "triggeredAt": "2026-03-13T04:29:52.527Z",
+      "expiresAt": "2026-03-20T04:29:52.527Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -365,139 +356,83 @@
           }
         ],
         "eventIds": [
-          "nhl_2025021027",
           "nhl_2025021044",
           "nhl_2025021064",
-          "nhl_2025021069"
+          "nhl_2025021069",
+          "nhl_2025021083"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-12T05:03:52.662Z",
-        "windowEnd": "2026-03-19T05:03:52.662Z",
+        "windowStart": "2026-03-13T04:29:52.527Z",
+        "windowEnd": "2026-03-20T04:29:52.527Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=aoep-TMu0pQ",
-        "thumbnailUrl": "https://img.youtube.com/vi/aoep-TMu0pQ/hqdefault.jpg",
-        "durationSeconds": 695,
-        "title": "Canadiens vs. Senators | NHL Highlights | March 11, 2026",
+        "url": "https://www.youtube.com/watch?v=LwOqH7Xp27Y",
+        "thumbnailUrl": "https://img.youtube.com/vi/LwOqH7Xp27Y/hqdefault.jpg",
+        "durationSeconds": 22353,
+        "title": "Kobo gonna actually reach Chapter 3 this time... OR DOES SHE?!",
         "source": "youtube",
-        "channel": "NHL",
-        "publishedAt": "2 hours ago"
+        "channel": "GohDroxen",
+        "publishedAt": "12 hours ago"
       }
     },
     {
-      "id": "momentum_bos",
-      "title": "Bruins Heating Up",
-      "subtitle": "3-game point streak · +2 goal diff",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 80,
-      "triggeredAt": "2026-03-12T05:03:52.662Z",
-      "expiresAt": "2026-03-15T05:03:52.662Z",
-      "kind": "momentum",
-      "region": "NewEngland",
-      "regionPriority": 3,
-      "regionLabel": "New England",
-      "meta": {
-        "team": "Boston Bruins",
-        "league": "NHL",
-        "abbrev": "BOS",
-        "winStreak": 1,
-        "pointStreak": 3,
-        "goalDiff": 2,
-        "recentGames": [
-          {
-            "date": "2026-03-10T23:00:00Z",
-            "opponent": "Los Angeles",
-            "score": "2-1",
-            "result": "W"
-          },
-          {
-            "date": "2026-03-08T20:30:00Z",
-            "opponent": "Pittsburgh",
-            "score": "5-4",
-            "result": "L"
-          },
-          {
-            "date": "2026-03-07T17:30:00Z",
-            "opponent": "Washington",
-            "score": "3-1",
-            "result": "W"
-          }
-        ],
-        "eventIds": [
-          "nhl_2025021027",
-          "nhl_2025021044",
-          "nhl_2025021064",
-          "nhl_2025021069"
-        ],
-        "reason": "Boston Bruins has earned points in 3 straight games"
-      },
-      "sports": [
-        "hockey"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=aoep-TMu0pQ",
-        "thumbnailUrl": "https://img.youtube.com/vi/aoep-TMu0pQ/hqdefault.jpg",
-        "durationSeconds": 695,
-        "title": "Canadiens vs. Senators | NHL Highlights | March 11, 2026",
-        "source": "youtube",
-        "channel": "NHL",
-        "publishedAt": "2 hours ago"
-      }
-    },
-    {
-      "id": "upset_alert_tennis-espn-172931",
+      "id": "upset_alert_nhl_2025021036",
       "title": "Upset Alert",
-      "subtitle": "Draper stuns Djokovic at Indian Wells Masters",
+      "subtitle": "New York Rangers upsets Winnipeg Jets",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-12T05:03:52.662Z",
-      "expiresAt": "2026-03-12T11:03:52.662Z",
+      "triggeredAt": "2026-03-13T04:29:52.527Z",
+      "expiresAt": "2026-03-13T10:29:52.527Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "mode": "completed",
-        "upsetType": "tennis_seed_upset",
-        "sport": "tennis",
-        "league": "ATP Masters 1000",
-        "favoriteName": "Djokovic",
-        "underdogName": "Draper",
-        "favoriteRank": 3,
-        "underdogRank": 14,
-        "awayTeam": "Draper",
-        "homeTeam": "Djokovic",
-        "startTime": "2026-03-12T01:10:00.000Z",
+        "upsetType": "team_upset",
+        "sport": "hockey",
+        "league": "NHL",
+        "favoriteName": "Winnipeg Jets",
+        "underdogName": "New York Rangers",
+        "awayTeam": "New York Rangers",
+        "homeTeam": "Winnipeg Jets",
+        "startTime": "2026-03-13T00:00:00.000Z",
         "eventIds": [
-          "tennis-espn-172931"
+          "nhl_2025021036"
         ],
-        "reason": "Djokovic (seed 3) entered as the higher seed, but Draper knocked Djokovic out.\n\nThis opens up the draw and changes the shape of the tournament."
+        "reason": "New York Rangers pulled off the upset against Winnipeg Jets.\n\nA result like this can shift momentum for the rest of the season."
       },
       "sports": [
-        "tennis"
-      ]
+        "hockey"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=a1pa5zl0EKQ",
+        "thumbnailUrl": "https://img.youtube.com/vi/a1pa5zl0EKQ/hqdefault.jpg",
+        "durationSeconds": 8123,
+        "title": "Pushing back against infill | CTV Your Morning Edmonton for March 12, 2026",
+        "source": "youtube",
+        "channel": "CTV News",
+        "publishedAt": "10 hours ago"
+      }
     },
     {
-      "id": "clinch_watch_tennis-espn-172938",
+      "id": "clinch_watch_tennis-espn-172939",
       "title": "Clinch Watch",
-      "subtitle": "Zverev vs Fils · Tennis title on the line",
+      "subtitle": "Medvedev vs Alcaraz · Tennis title on the line",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-12T05:03:52.662Z",
-      "expiresAt": "2026-03-12T22:00:00.000Z",
+      "triggeredAt": "2026-03-13T04:29:52.527Z",
+      "expiresAt": "2026-03-14T08:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
@@ -507,20 +442,20 @@
         "conditionLabel": "Tennis title on the line",
         "sport": "tennis",
         "league": "ATP Masters 1000",
-        "awayTeam": "Zverev",
-        "homeTeam": "Fils",
-        "startTime": "2026-03-12T18:00:00.000Z",
+        "awayTeam": "Medvedev",
+        "homeTeam": "Alcaraz",
+        "startTime": "2026-03-14T04:00:00.000Z",
         "eventIds": [
-          "tennis-espn-172938"
+          "tennis-espn-172939"
         ],
-        "reason": "Zverev and Fils meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
+        "reason": "Medvedev and Alcaraz meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
       },
       "sports": [
         "tennis"
       ]
     },
     {
-      "id": "playoff_push_clinch_fallback_nhl_2025021029",
+      "id": "playoff_push_clinch_fallback_nhl_2025021043",
       "title": "Playoff Push",
       "subtitle": "A win keeps Anaheim Ducks in the playoff race.",
       "impact": {
@@ -528,8 +463,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-12T05:03:52.662Z",
-      "expiresAt": "2026-03-13T03:00:00.000Z",
+      "triggeredAt": "2026-03-13T04:29:52.527Z",
+      "expiresAt": "2026-03-14T21:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
       "regionPriority": 99,
@@ -542,7 +477,7 @@
           }
         ],
         "eventIds": [
-          "nhl_2025021029"
+          "nhl_2025021043"
         ],
         "reason": "Anaheim Ducks has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
         "clinchFallback": true
@@ -551,22 +486,255 @@
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=1dfV8S522Zw",
-        "thumbnailUrl": "https://img.youtube.com/vi/1dfV8S522Zw/hqdefault.jpg",
-        "durationSeconds": 3881,
-        "title": "NASHCAST EP41: Mike Weir \"BRING THE GREEN JACKET\"",
+        "url": "https://www.youtube.com/watch?v=pK4_a4A97qQ",
+        "thumbnailUrl": "https://img.youtube.com/vi/pK4_a4A97qQ/hqdefault.jpg",
+        "durationSeconds": 3620,
+        "title": "Tom Stillman Joins the Show | Last Minute Blues Podcast",
         "source": "youtube",
-        "channel": "NASHCAST",
-        "publishedAt": "15 hours ago"
+        "channel": "101 ESPN",
+        "publishedAt": "7 hours ago"
       }
+    },
+    {
+      "id": "player_movement_system",
+      "title": "System Shuffle",
+      "subtitle": "26 player moves detected (WSH ↔ VGK ↔ CHI ↔ EDM ↔ PHI ↔ MIN ↔ STL ↔ NYI ↔ TOR ↔ LAK ↔ DET ↔ PIT ↔ OTT ↔ COL ↔ CGY ↔ VAN ↔ CBJ ↔ TBL ↔ DAL ↔ ANA ↔ FLA ↔ NSH ↔ WPG ↔ BUF ↔ SJS)",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 85,
+      "triggeredAt": "2026-03-13T04:29:52.527Z",
+      "expiresAt": "2026-03-20T04:29:52.527Z",
+      "kind": "player_movement",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "movements": [
+          {
+            "player": "N. Dowd",
+            "from": "WSH",
+            "to": "VGK",
+            "detected": "2026-03-07T07:19:00.761Z",
+            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
+            "firstSeenTo": "2026-03-07T07:19:00.761Z"
+          },
+          {
+            "player": "C. Murphy",
+            "from": "CHI",
+            "to": "EDM",
+            "detected": "2026-03-07T07:19:00.761Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-07T07:19:00.761Z"
+          },
+          {
+            "player": "J. Dickinson",
+            "from": "CHI",
+            "to": "EDM",
+            "detected": "2026-03-07T07:19:00.761Z",
+            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
+            "firstSeenTo": "2026-03-07T07:19:00.761Z"
+          },
+          {
+            "player": "C. Dach",
+            "from": "CHI",
+            "to": "EDM",
+            "detected": "2026-03-07T07:19:00.761Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-07T07:19:00.761Z"
+          },
+          {
+            "player": "B. Brink",
+            "from": "PHI",
+            "to": "MIN",
+            "detected": "2026-03-07T20:12:59.450Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-07T20:12:59.450Z"
+          },
+          {
+            "player": "B. Schenn",
+            "from": "STL",
+            "to": "NYI",
+            "detected": "2026-03-08T05:57:11.976Z",
+            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+            "firstSeenTo": "2026-03-08T05:57:11.976Z"
+          },
+          {
+            "player": "S. Laughton",
+            "from": "TOR",
+            "to": "LAK",
+            "detected": "2026-03-08T05:57:11.976Z",
+            "lastSeenFrom": "2026-03-03T03:50:51.829Z",
+            "firstSeenTo": "2026-03-08T05:57:11.976Z"
+          },
+          {
+            "player": "J. Drouin",
+            "from": "NYI",
+            "to": "STL",
+            "detected": "2026-03-09T04:14:15.420Z",
+            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+            "firstSeenTo": "2026-03-09T04:14:15.420Z"
+          },
+          {
+            "player": "E. Soderblom",
+            "from": "DET",
+            "to": "PIT",
+            "detected": "2026-03-09T04:14:15.420Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-09T04:14:15.420Z"
+          },
+          {
+            "player": "A. Mangiapane",
+            "from": "EDM",
+            "to": "CHI",
+            "detected": "2026-03-09T20:15:48.605Z",
+            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
+            "firstSeenTo": "2026-03-09T20:15:48.605Z"
+          },
+          {
+            "player": "W. Foegele",
+            "from": "LAK",
+            "to": "OTT",
+            "detected": "2026-03-10T02:28:51.292Z",
+            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
+            "firstSeenTo": "2026-03-10T02:28:51.292Z"
+          },
+          {
+            "player": "V. Olofsson",
+            "from": "COL",
+            "to": "CGY",
+            "detected": "2026-03-10T02:28:51.292Z",
+            "lastSeenFrom": "2026-03-04T05:37:04.015Z",
+            "firstSeenTo": "2026-03-10T02:28:51.292Z"
+          },
+          {
+            "player": "C. Garland",
+            "from": "VAN",
+            "to": "CBJ",
+            "detected": "2026-03-10T02:28:51.292Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-10T02:28:51.292Z"
+          },
+          {
+            "player": "C. Perry",
+            "from": "LAK",
+            "to": "TBL",
+            "detected": "2026-03-11T04:11:44.394Z",
+            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
+            "firstSeenTo": "2026-03-11T04:11:44.394Z"
+          },
+          {
+            "player": "T. Myers",
+            "from": "VAN",
+            "to": "DAL",
+            "detected": "2026-03-11T04:11:44.394Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-11T04:11:44.394Z"
+          },
+          {
+            "player": "R. Strome",
+            "from": "ANA",
+            "to": "CGY",
+            "detected": "2026-03-11T04:11:44.394Z",
+            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+            "firstSeenTo": "2026-03-11T04:11:44.394Z"
+          },
+          {
+            "player": "V. Hinostroza",
+            "from": "MIN",
+            "to": "FLA",
+            "detected": "2026-03-11T04:11:44.394Z",
+            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
+            "firstSeenTo": "2026-03-11T04:11:44.394Z"
+          },
+          {
+            "player": "M. Bunting",
+            "from": "NSH",
+            "to": "DAL",
+            "detected": "2026-03-11T04:11:44.394Z",
+            "lastSeenFrom": "2026-03-07T07:19:00.761Z",
+            "firstSeenTo": "2026-03-11T04:11:44.394Z"
+          },
+          {
+            "player": "L. Stanley",
+            "from": "WPG",
+            "to": "BUF",
+            "detected": "2026-03-11T04:11:44.394Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-11T04:11:44.394Z"
+          },
+          {
+            "player": "N. Kadri",
+            "from": "CGY",
+            "to": "COL",
+            "detected": "2026-03-11T04:55:01.810Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-11T04:55:01.810Z"
+          },
+          {
+            "player": "N. Roy",
+            "from": "TOR",
+            "to": "COL",
+            "detected": "2026-03-11T04:55:01.810Z",
+            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
+            "firstSeenTo": "2026-03-11T04:55:01.810Z"
+          },
+          {
+            "player": "T. Liljegren",
+            "from": "SJS",
+            "to": "WSH",
+            "detected": "2026-03-12T05:03:52.662Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-12T05:03:52.662Z"
+          },
+          {
+            "player": "N. Foligno",
+            "from": "CHI",
+            "to": "MIN",
+            "detected": "2026-03-13T04:29:52.527Z",
+            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
+            "firstSeenTo": "2026-03-13T04:29:52.527Z"
+          },
+          {
+            "player": "L. Schenn",
+            "from": "WPG",
+            "to": "BUF",
+            "detected": "2026-03-13T04:29:52.527Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-13T04:29:52.527Z"
+          },
+          {
+            "player": "T. Pearson",
+            "from": "WPG",
+            "to": "BUF",
+            "detected": "2026-03-13T04:29:52.527Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-13T04:29:52.527Z"
+          },
+          {
+            "player": "C. Reinhardt",
+            "from": "VGK",
+            "to": "FLA",
+            "detected": "2026-03-13T04:29:52.527Z",
+            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
+            "firstSeenTo": "2026-03-13T04:29:52.527Z"
+          }
+        ],
+        "count": 26,
+        "reason": "26 player(s) detected moving between tracked teams in the last 7 days"
+      },
+      "sports": [
+        "hockey"
+      ]
     }
   ],
   "tonightStory": {
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The San Diego Gulls, Players Championship, Boston Bruins, and Anaheim Ducks all play tonight across the AHL, The Majors, NHL.",
-    "sourceEventId": "ahl-1028670",
+    "body": "The Tulsa Oilers, Boston Celtics, Los Angeles Lakers, Chinese Grand Prix, and Hurricanes (+2 more) all play tonight across the ECHL, NBA, F1, Super Rugby, The Majors, Ligue 1.",
+    "sourceEventId": "echl-web-25179",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
@@ -574,7 +742,11 @@
     },
     "sports": [
       "hockey",
-      "golf"
+      "basketball",
+      "racing",
+      "rugby",
+      "golf",
+      "soccer"
     ]
   }
 }

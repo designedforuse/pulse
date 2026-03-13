@@ -53,21 +53,21 @@
   },
   "playoff_push:boston bruins playoff push march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=aoep-TMu0pQ",
-      "thumbnailUrl": "https://img.youtube.com/vi/aoep-TMu0pQ/hqdefault.jpg",
-      "durationSeconds": 695,
-      "title": "Canadiens vs. Senators | NHL Highlights | March 11, 2026",
+      "url": "https://www.youtube.com/watch?v=LwOqH7Xp27Y",
+      "thumbnailUrl": "https://img.youtube.com/vi/LwOqH7Xp27Y/hqdefault.jpg",
+      "durationSeconds": 22353,
+      "title": "Kobo gonna actually reach Chapter 3 this time... OR DOES SHE?!",
       "source": "youtube",
-      "channel": "NHL",
-      "publishedAt": "2 hours ago"
+      "channel": "GohDroxen",
+      "publishedAt": "12 hours ago"
     },
-    "fetchedAt": "2026-03-12T05:04:02.252Z",
+    "fetchedAt": "2026-03-13T04:29:58.430Z",
     "query": "Boston Bruins playoff push March 2026",
     "debug": {
       "searchQuery": "Boston Bruins playoff push March 2026",
-      "selectedVideoTitle": "Canadiens vs. Senators | NHL Highlights | March 11, 2026",
-      "selectedVideoPublishedAt": "2 hours ago",
-      "selectedVideoChannel": "NHL",
+      "selectedVideoTitle": "Kobo gonna actually reach Chapter 3 this time... OR DOES SHE?!",
+      "selectedVideoPublishedAt": "12 hours ago",
+      "selectedVideoChannel": "GohDroxen",
       "rejectedForAgeCount": 0
     }
   },
@@ -85,21 +85,21 @@
   },
   "playoff_push:anaheim ducks playoff push march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=1dfV8S522Zw",
-      "thumbnailUrl": "https://img.youtube.com/vi/1dfV8S522Zw/hqdefault.jpg",
-      "durationSeconds": 3881,
-      "title": "NASHCAST EP41: Mike Weir \"BRING THE GREEN JACKET\"",
+      "url": "https://www.youtube.com/watch?v=pK4_a4A97qQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/pK4_a4A97qQ/hqdefault.jpg",
+      "durationSeconds": 3620,
+      "title": "Tom Stillman Joins the Show | Last Minute Blues Podcast",
       "source": "youtube",
-      "channel": "NASHCAST",
-      "publishedAt": "15 hours ago"
+      "channel": "101 ESPN",
+      "publishedAt": "7 hours ago"
     },
-    "fetchedAt": "2026-03-12T05:04:04.334Z",
+    "fetchedAt": "2026-03-13T04:29:59.851Z",
     "query": "Anaheim Ducks playoff push March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push March 2026",
-      "selectedVideoTitle": "NASHCAST EP41: Mike Weir \"BRING THE GREEN JACKET\"",
-      "selectedVideoPublishedAt": "15 hours ago",
-      "selectedVideoChannel": "NASHCAST",
+      "selectedVideoTitle": "Tom Stillman Joins the Show | Last Minute Blues Podcast",
+      "selectedVideoPublishedAt": "7 hours ago",
+      "selectedVideoChannel": "101 ESPN",
       "rejectedForAgeCount": 0
     }
   },
@@ -229,7 +229,7 @@
   },
   "playoff_push:san diego gulls playoff push march 2026": {
     "video": null,
-    "fetchedAt": "2026-03-12T05:04:01.987Z",
+    "fetchedAt": "2026-03-13T04:29:58.210Z",
     "query": "San Diego Gulls playoff push March 2026",
     "debug": {
       "searchQuery": "San Diego Gulls playoff push March 2026",
@@ -289,6 +289,38 @@
     "query": "Djokovic vs Draper upset highlights March 2026",
     "debug": {
       "searchQuery": "Djokovic vs Draper upset highlights March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:winnipeg jets vs new york rangers upset highlights march 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=a1pa5zl0EKQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/a1pa5zl0EKQ/hqdefault.jpg",
+      "durationSeconds": 8123,
+      "title": "Pushing back against infill | CTV Your Morning Edmonton for March 12, 2026",
+      "source": "youtube",
+      "channel": "CTV News",
+      "publishedAt": "10 hours ago"
+    },
+    "fetchedAt": "2026-03-13T04:29:58.731Z",
+    "query": "Winnipeg Jets vs New York Rangers upset highlights March 2026",
+    "debug": {
+      "searchQuery": "Winnipeg Jets vs New York Rangers upset highlights March 2026",
+      "selectedVideoTitle": "Pushing back against infill | CTV Your Morning Edmonton for March 12, 2026",
+      "selectedVideoPublishedAt": "10 hours ago",
+      "selectedVideoChannel": "CTV News",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:medvedev clinch playoff berth march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-13T04:29:58.902Z",
+    "query": "Medvedev clinch playoff berth March 2026",
+    "debug": {
+      "searchQuery": "Medvedev clinch playoff berth March 2026",
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,

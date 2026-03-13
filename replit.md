@@ -23,6 +23,7 @@ The application features a frontend built with Expo Router for file-based naviga
 - **UI/UX Design:** A Google-app-inspired dark theme with charcoal background, card surfaces, green accents, sport-specific colors, and the Inter font. iOS utilizes native liquid glass tabs.
 - **Event Data Processing:** Node.js scripts fetch, merge, and update schedules from various sports APIs.
 - **F1 Racing Integration:** Formula 1 events are fetched from ESPN, with specific card layouts and live score features.
+- **Athletics (Marathon) Integration:** World Marathon Majors events display with 🏃 emoji + marathon name card layout in deep orange (#FF5722), sourced from a hardcoded schedule in `scripts/updateMarathon.ts`. Retention window: 14 days past, 120 days future.
 - **Live Scores:** Real-time score updates for in-progress games, with sport-specific displays (e.g., tennis scoreboard, cricket live detail).
 - **Explore Tab (Tonight's Story):** A hero module surfacing high-priority narrative signals as editorial summaries, personalized based on followed teams and ritual context.
 - **Explore Tab (YouTube Videos):** Narrative cards automatically receive contextual YouTube videos via search with caching and trusted channel prioritization.
@@ -48,6 +49,7 @@ The application features a frontend built with Expo Router for file-based naviga
 - **all.rugby:** Japan League One Rugby schedule data (scraped).
 - **MLR (hardcoded):** Major League Rugby schedule data.
 - **Golf Majors (hardcoded):** Players Championship, The Masters, PGA Championship, US Open, British Open schedule data.
+- **World Marathon Majors (hardcoded):** Tokyo, Boston, London, Sydney, Berlin, Chicago, and New York City marathons as athletics/session events on FloSports.
 - **CricAPI:** International and domestic Cricket fixtures.
 - **World Rugby API (api.wr-rims-prod.pulselive.com):** SVNS match schedules and live scores.
 - **Apple TV:** Streaming provider integration.

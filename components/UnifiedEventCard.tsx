@@ -111,6 +111,7 @@ function getSportDisplayName(sport: string): string {
     soccer: "Soccer",
     tennis: "Tennis",
     racing: "Racing",
+    athletics: "Athletics",
   };
   return names[sport] || sport.charAt(0).toUpperCase() + sport.slice(1);
 }
@@ -647,11 +648,13 @@ export default function UnifiedEventCard({
   const isCricket = event.sport === "cricket";
   const isRacing = event.sport === "racing";
   const isGolf = event.sport === "golf";
+  const isAthletics = event.sport === "athletics";
   const gpFlag = isRacing ? getGrandPrixFlag(event.competitionName || event.homeTeam) : null;
   const golfTournament = isGolf ? (event.tournamentName || event.homeTeam) : null;
   const golfRound = isGolf && event.sessionTitle
     ? (event.sessionTitle.match(/Round \d+/)?.[0] || event.sessionTitle.split("—")[1]?.trim() || event.sessionTitle)
     : null;
+  const athleticsTournament = isAthletics ? (event.tournamentName || event.homeTeam) : null;
 
 
   const awayRank = isTennis ? event.tennisPlayer1Rank : undefined;
@@ -700,7 +703,7 @@ export default function UnifiedEventCard({
               </Text>
             </View>
           )}
-          {!isRacing && !isGolf && phaseLabel && (
+          {!isRacing && !isGolf && !isAthletics && phaseLabel && (
             <PhaseChip label={phaseLabel} sportColor={sportColor} isHot={isHotPhase} />
           )}
           <View style={{ flex: 1 }} />
@@ -721,7 +724,19 @@ export default function UnifiedEventCard({
         </View>
 
         <View style={uStyles.body}>
-          {isGolf ? (
+          {isAthletics ? (
+            <View style={uStyles.racingLayout}>
+              <View style={uStyles.racingCircuitRow}>
+                <Text style={{ fontSize: featured ? 18 : 16 }}>🏃</Text>
+                <Text
+                  style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
+                  numberOfLines={1}
+                >
+                  {athleticsTournament}
+                </Text>
+              </View>
+            </View>
+          ) : isGolf ? (
             <View style={uStyles.racingLayout}>
               <View style={uStyles.racingCircuitRow}>
                 <Text style={{ fontSize: featured ? 18 : 16 }}>⛳</Text>

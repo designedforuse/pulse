@@ -174,6 +174,7 @@ export function getSportColor(sport: string): string {
     tennis: "#CE93D8",
     racing: "#E53935",
     golf: "#4CAF50",
+    athletics: "#FF5722",
   };
   return colors[sport] || "#90A4AE";
 }
@@ -282,6 +283,7 @@ export function getSportIcon(sport: string): string {
     tennis: "tennisball-outline",
     racing: "speedometer",
     golf: "golf",
+    athletics: "walk-outline",
   };
   return icons[sport] || "ellipse";
 }

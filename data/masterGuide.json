@@ -158,6 +158,14 @@
           "leagues": [
             "NBA"
           ]
+        },
+        {
+          "id": "athletics_morning",
+          "title": "Marathon",
+          "sport": "athletics",
+          "leagues": [
+            "World Marathon Majors"
+          ]
         }
       ]
     }
