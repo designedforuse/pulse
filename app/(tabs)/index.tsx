@@ -125,8 +125,8 @@ export default function ExploreScreen() {
         contentContainerStyle={[
           styles.scrollContent,
           {
-            paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 12,
-            paddingBottom: Platform.OS === "web" ? 34 : 100,
+            paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 16,
+            paddingBottom: Platform.OS === "web" ? 34 : 110,
           },
         ]}
         showsVerticalScrollIndicator={false}
@@ -141,7 +141,9 @@ export default function ExploreScreen() {
       >
         <View style={styles.header}>
           <View style={styles.headerLeft}>
-            <Ionicons name="compass" size={28} color={Colors.accent} />
+            <View style={styles.headerIconWrap}>
+              <Ionicons name="compass" size={20} color="#fff" />
+            </View>
             <Text style={styles.headerTitle}>Stories</Text>
           </View>
           <Pressable
@@ -153,44 +155,45 @@ export default function ExploreScreen() {
             ]}
             testID="explore-settings-button"
           >
-            <Ionicons name="settings-outline" size={24} color={Colors.textSecondary} />
+            <Ionicons name="settings-outline" size={22} color={Colors.textSecondary} />
           </Pressable>
         </View>
-        <Text style={styles.subtitle}>
-          Upstream narrative intelligence
-        </Text>
+        <Text style={styles.subtitle}>Narrative intelligence, live</Text>
 
         {tonightStory && (
-          <View style={styles.tonightStoryContainer}>
-            <Text style={styles.tonightStoryKicker}>
-              LIVE SIGNAL  •  {tonightStory.signalLabel}
-            </Text>
-            <Text style={styles.tonightStoryLabel}>TONIGHT'S STORY</Text>
-            <Text style={styles.tonightStoryHeadline}>{tonightStory.headline}</Text>
-            <Text style={styles.tonightStoryBody}>{tonightStory.body}</Text>
-            {tonightStory.sourceCard && (
-              <Pressable
-                onPress={() => {
-                  if (tonightStory.signalType === "multi_team_night" || tonightStory.signalType === "single_team_game") {
-                    router.push("/(tabs)/watch");
-                  } else {
-                    const matchingCard = cards.find(c => c.id === tonightStory.sourceCard.id);
-                    if (matchingCard) handleCardPress(matchingCard);
-                  }
-                }}
-                style={({ pressed }) => [
-                  styles.tonightStoryCta,
-                  { opacity: pressed ? 0.7 : 1 },
-                ]}
-              >
-                <Text style={styles.tonightStoryCtaText}>
-                  {tonightStory.signalType === "multi_team_night" || tonightStory.signalType === "single_team_game"
-                    ? "Track all games"
-                    : "Read more"}
-                </Text>
-                <Ionicons name="arrow-forward" size={14} color={Colors.accent} />
-              </Pressable>
-            )}
+          <View style={styles.tonightCard}>
+            <View style={styles.tonightCardHeader}>
+              <View style={styles.tonightLiveRow}>
+                <View style={styles.liveIndicator} />
+                <Text style={styles.tonightLiveLabel}>LIVE SIGNAL</Text>
+                <Text style={styles.tonightSignalLabel}> · {tonightStory.signalLabel}</Text>
+              </View>
+              <Text style={styles.tonightKicker}>TONIGHT'S STORY</Text>
+            </View>
+            <View style={styles.tonightCardBody}>
+              <Text style={styles.tonightHeadline}>{tonightStory.headline}</Text>
+              <Text style={styles.tonightBody}>{tonightStory.body}</Text>
+              {tonightStory.sourceCard && (
+                <Pressable
+                  onPress={() => {
+                    if (tonightStory.signalType === "multi_team_night" || tonightStory.signalType === "single_team_game") {
+                      router.push("/(tabs)/watch");
+                    } else {
+                      const matchingCard = cards.find(c => c.id === tonightStory.sourceCard.id);
+                      if (matchingCard) handleCardPress(matchingCard);
+                    }
+                  }}
+                  style={({ pressed }) => [styles.tonightCta, { opacity: pressed ? 0.7 : 1 }]}
+                >
+                  <Text style={styles.tonightCtaText}>
+                    {tonightStory.signalType === "multi_team_night" || tonightStory.signalType === "single_team_game"
+                      ? "Track all games"
+                      : "Read more"}
+                  </Text>
+                  <Ionicons name="arrow-forward" size={14} color={Colors.accent} />
+                </Pressable>
+              )}
+            </View>
           </View>
         )}
 
@@ -200,10 +203,12 @@ export default function ExploreScreen() {
           </View>
         ) : cards.length === 0 ? (
           <View style={styles.emptyContainer}>
-            <Ionicons name="pulse-outline" size={48} color={Colors.textMuted} />
+            <View style={styles.emptyIconWrap}>
+              <Ionicons name="pulse-outline" size={32} color={Colors.textMuted} />
+            </View>
             <Text style={styles.emptyTitle}>Nothing spiking right now</Text>
             <Text style={styles.emptySubtitle}>
-              Stories will surface when thresholds are triggered.
+              Stories surface when thresholds are triggered.
             </Text>
           </View>
         ) : (
@@ -216,20 +221,19 @@ export default function ExploreScreen() {
                   onPress={() => handleCardPress(card)}
                   style={({ pressed }) => [
                     styles.narrativeCard,
-                    { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] },
+                    { transform: [{ scale: pressed ? 0.975 : 1 }] },
                   ]}
                   testID={`narrative-${card.id}`}
                 >
-                  <View style={[styles.cardAccent, { backgroundColor: config.color }]} />
-                  <View style={styles.cardContent}>
-                    <View style={styles.cardHeader}>
-                      <View style={[styles.kindBadge, { backgroundColor: config.color + "20" }]}>
-                        <Ionicons name={config.icon} size={14} color={config.color} />
-                        <Text style={[styles.kindLabel, { color: config.color }]}>{config.label}</Text>
-                      </View>
-                      <Text style={styles.timeAgo}>{timeAgo(card.triggeredAt)}</Text>
+                  <View style={[styles.cardColorHeader, { backgroundColor: config.color + "18" }]}>
+                    <View style={[styles.kindBadge, { backgroundColor: config.color }]}>
+                      <Ionicons name={config.icon} size={12} color="#fff" />
+                      <Text style={styles.kindLabel}>{config.label}</Text>
                     </View>
-                    <Text style={styles.cardTitle} numberOfLines={1}>{card.title}</Text>
+                    <Text style={styles.timeAgo}>{timeAgo(card.triggeredAt)}</Text>
+                  </View>
+                  <View style={styles.cardBody}>
+                    <Text style={styles.cardTitle} numberOfLines={2}>{card.title}</Text>
                     <Text style={styles.cardSubtitle} numberOfLines={2}>{card.subtitle}</Text>
                     {card.impact && (
                       <View style={styles.impactRow}>
@@ -237,9 +241,10 @@ export default function ExploreScreen() {
                         <Text style={styles.impactText}>{card.impact.label}</Text>
                       </View>
                     )}
-                  </View>
-                  <View style={styles.cardChevron}>
-                    <Ionicons name="chevron-forward" size={16} color={Colors.textMuted} />
+                    <View style={styles.cardFooter}>
+                      <Text style={styles.readMore}>Read more</Text>
+                      <Ionicons name="arrow-forward" size={13} color={Colors.accent} />
+                    </View>
                   </View>
                 </Pressable>
               );
@@ -248,9 +253,7 @@ export default function ExploreScreen() {
         )}
 
         {data?.lastUpdated && (
-          <Text style={styles.lastUpdated}>
-            Last generated: {timeAgo(data.lastUpdated)}
-          </Text>
+          <Text style={styles.lastUpdated}>Updated {timeAgo(data.lastUpdated)}</Text>
         )}
       </ScrollView>
     </View>
@@ -263,7 +266,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   scrollContent: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
   },
   header: {
     flexDirection: "row",
@@ -276,37 +279,58 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 10,
   },
+  headerIconWrap: {
+    width: 38,
+    height: 38,
+    borderRadius: 12,
+    backgroundColor: "#64B5F6",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   settingsButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 38,
+    height: 38,
+    borderRadius: 19,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: Colors.card,
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
   headerTitle: {
-    fontSize: 26,
+    fontSize: 28,
     fontWeight: "700" as const,
     color: Colors.textPrimary,
     fontFamily: "Inter_700Bold",
+    letterSpacing: -0.5,
   },
   subtitle: {
-    fontSize: 15,
-    color: Colors.textSecondary,
+    fontSize: 14,
+    color: Colors.textMuted,
     fontFamily: "Inter_400Regular",
-    marginBottom: 24,
+    marginBottom: 20,
   },
   emptyContainer: {
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 80,
-    gap: 12,
+    gap: 14,
+  },
+  emptyIconWrap: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    backgroundColor: Colors.card,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
   emptyTitle: {
     fontSize: 18,
-    fontWeight: "600" as const,
+    fontWeight: "700" as const,
     color: Colors.textPrimary,
-    fontFamily: "Inter_600SemiBold",
+    fontFamily: "Inter_700Bold",
   },
   emptySubtitle: {
     fontSize: 14,
@@ -316,51 +340,83 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     lineHeight: 20,
   },
-  tonightStoryContainer: {
+  tonightCard: {
     backgroundColor: Colors.card,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    padding: 20,
+    borderRadius: 20,
+    borderWidth: 1.5,
+    borderColor: Colors.accent + "40",
+    overflow: "hidden",
     marginBottom: 20,
   },
-  tonightStoryKicker: {
+  tonightCardHeader: {
+    backgroundColor: Colors.accent + "15",
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.accent + "20",
+  },
+  tonightLiveRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 4,
+  },
+  liveIndicator: {
+    width: 7,
+    height: 7,
+    borderRadius: 4,
+    backgroundColor: "#FF453A",
+    marginRight: 6,
+  },
+  tonightLiveLabel: {
+    fontSize: 10,
+    fontFamily: "Inter_700Bold",
+    color: "#FF453A",
+    letterSpacing: 1.2,
+    textTransform: "uppercase" as const,
+  },
+  tonightSignalLabel: {
     fontSize: 10,
     fontFamily: "Inter_500Medium",
     color: Colors.textMuted,
-    letterSpacing: 1.2,
     textTransform: "uppercase" as const,
-    marginBottom: 10,
+    letterSpacing: 0.8,
   },
-  tonightStoryLabel: {
+  tonightKicker: {
     fontSize: 11,
     fontFamily: "Inter_700Bold",
     color: Colors.accent,
     letterSpacing: 1.5,
     textTransform: "uppercase" as const,
-    marginBottom: 6,
   },
-  tonightStoryHeadline: {
+  tonightCardBody: {
+    padding: 16,
+  },
+  tonightHeadline: {
     fontSize: 22,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
+    letterSpacing: -0.3,
     marginBottom: 8,
+    lineHeight: 28,
   },
-  tonightStoryBody: {
+  tonightBody: {
     fontSize: 14,
     fontFamily: "Inter_400Regular",
     color: Colors.textSecondary,
     lineHeight: 21,
-    marginBottom: 12,
+    marginBottom: 14,
   },
-  tonightStoryCta: {
+  tonightCta: {
     flexDirection: "row" as const,
     alignItems: "center" as const,
-    gap: 6,
+    gap: 5,
     alignSelf: "flex-start" as const,
-    paddingTop: 4,
+    backgroundColor: Colors.accent + "15",
+    paddingHorizontal: 12,
+    paddingVertical: 7,
+    borderRadius: 20,
   },
-  tonightStoryCtaText: {
+  tonightCtaText: {
     fontSize: 13,
     fontFamily: "Inter_600SemiBold",
     color: Colors.accent,
@@ -369,54 +425,52 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   narrativeCard: {
-    flexDirection: "row",
-    alignItems: "center",
     backgroundColor: Colors.card,
-    borderRadius: 14,
-    overflow: "hidden",
+    borderRadius: 20,
     borderWidth: 1,
     borderColor: Colors.border,
+    overflow: "hidden",
   },
-  cardAccent: {
-    width: 4,
-    alignSelf: "stretch",
-  },
-  cardContent: {
-    flex: 1,
-    padding: 14,
-    gap: 4,
-  },
-  cardHeader: {
+  cardColorHeader: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: 2,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
   },
   kindBadge: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 4,
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 8,
+    gap: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 10,
   },
   kindLabel: {
     fontSize: 11,
-    fontWeight: "600" as const,
-    fontFamily: "Inter_600SemiBold",
+    fontWeight: "700" as const,
+    fontFamily: "Inter_700Bold",
+    color: "#fff",
     textTransform: "uppercase" as const,
-    letterSpacing: 0.5,
+    letterSpacing: 0.4,
   },
   timeAgo: {
     fontSize: 11,
     color: Colors.textMuted,
     fontFamily: "Inter_400Regular",
   },
+  cardBody: {
+    padding: 14,
+    paddingTop: 10,
+    gap: 4,
+  },
   cardTitle: {
     fontSize: 17,
     fontWeight: "700" as const,
     color: Colors.textPrimary,
     fontFamily: "Inter_700Bold",
+    letterSpacing: -0.2,
+    lineHeight: 23,
   },
   cardSubtitle: {
     fontSize: 13,
@@ -435,8 +489,16 @@ const styles = StyleSheet.create({
     color: Colors.accent,
     fontFamily: "Inter_500Medium",
   },
-  cardChevron: {
-    paddingRight: 12,
+  cardFooter: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    marginTop: 8,
+  },
+  readMore: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.accent,
   },
   lastUpdated: {
     fontSize: 11,

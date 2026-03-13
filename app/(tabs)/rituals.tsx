@@ -39,7 +39,7 @@ function formatFeaturedTime(iso: string): string {
   const ampm = h >= 12 ? "PM" : "AM";
   const hour = h % 12 || 12;
   const min = m === 0 ? "" : `:${m.toString().padStart(2, "0")}`;
-  return `@ ${hour}${min} ${ampm}`;
+  return `${hour}${min} ${ampm}`;
 }
 
 const SPORT_COLORS: Record<string, string> = {
@@ -63,8 +63,7 @@ function buildSessionDisplayName(event: SportEvent): string | null {
   }
 
   if (isSvns) {
-    const title = event.sessionTitle || event.homeTeam || "";
-    return title;
+    return event.sessionTitle || event.homeTeam || "";
   }
 
   if (event.sessionTitle) {
@@ -74,11 +73,10 @@ function buildSessionDisplayName(event: SportEvent): string | null {
   return null;
 }
 
-function FeaturedStrip({ event }: { event: SportEvent | null }) {
+function FeaturedStrip({ event, accentColor }: { event: SportEvent | null; accentColor: string }) {
   if (!event) {
     return (
-      <View style={styles.featuredStrip}>
-        <View style={styles.featuredStripLine} />
+      <View style={[styles.featuredStrip, { borderTopColor: accentColor + "18" }]}>
         <Text style={styles.featuredEmpty}>No featured game this week</Text>
       </View>
     );
@@ -88,43 +86,26 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
   const league = event.league || event.sport.toUpperCase();
   const sessionName = buildSessionDisplayName(event);
 
-  if (sessionName) {
-    return (
-      <View style={styles.featuredStrip}>
-        <View style={styles.featuredStripLine} />
-        <View style={[styles.leagueHeader, { backgroundColor: sportColor + "12" }]}>
-          <Text style={[styles.leagueHeaderText, { color: sportColor }]}>{league}</Text>
-        </View>
-        <View style={styles.featuredContent}>
-          <Text style={styles.featuredSessionName} numberOfLines={1}>{sessionName}</Text>
-          <Text style={styles.featuredTime} numberOfLines={1}>
-            {formatFeaturedTime(event.startTimeLocal)}
-          </Text>
-        </View>
-      </View>
-    );
-  }
-
-  const away = compactTeamName(event.awayTeam, event.league);
-  const home = compactTeamName(event.homeTeam, event.league);
-
   return (
-    <View style={styles.featuredStrip}>
-      <View style={styles.featuredStripLine} />
-      <View style={[styles.leagueHeader, { backgroundColor: sportColor + "12" }]}>
-        <Text style={[styles.leagueHeaderText, { color: sportColor }]}>{league}</Text>
-      </View>
-      <View style={styles.featuredContent}>
-        <View style={styles.featuredMatchup}>
-          <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={18} />
-          <Text style={styles.featuredTeam} numberOfLines={1}>{away}</Text>
-          <Text style={styles.featuredAt}>@</Text>
-          <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={18} />
-          <Text style={styles.featuredTeam} numberOfLines={1}>{home}</Text>
+    <View style={[styles.featuredStrip, { borderTopColor: accentColor + "30" }]}>
+      <View style={styles.featuredRow}>
+        <View style={[styles.leaguePill, { backgroundColor: sportColor }]}>
+          <Text style={styles.leaguePillText}>{league}</Text>
         </View>
-        <Text style={styles.featuredTime} numberOfLines={1}>
-          {formatFeaturedTime(event.startTimeLocal)}
-        </Text>
+        <View style={styles.featuredRight}>
+          {sessionName ? (
+            <Text style={styles.featuredSessionName} numberOfLines={1}>{sessionName}</Text>
+          ) : (
+            <View style={styles.featuredMatchup}>
+              <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={16} />
+              <Text style={styles.featuredTeam} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
+              <Text style={styles.featuredAt}>vs</Text>
+              <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={16} />
+              <Text style={styles.featuredTeam} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
+            </View>
+          )}
+        </View>
+        <Text style={styles.featuredTime}>{formatFeaturedTime(event.startTimeLocal)}</Text>
       </View>
     </View>
   );
@@ -146,28 +127,28 @@ function RitualTile({ ritual, data }: { ritual: Ritual; data: RitualData }) {
       onPress={handlePress}
       style={({ pressed }) => [
         styles.ritualTile,
-        { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] },
+        { borderColor: accentColor + "40", transform: [{ scale: pressed ? 0.975 : 1 }] },
       ]}
       testID={`ritual-${ritual.id}`}
     >
-      <View style={styles.ritualTopRow}>
-        <View style={[styles.ritualIconWrap, { backgroundColor: accentColor + "20" }]}>
-          <Ionicons name={ritual.icon} size={22} color={accentColor} />
-        </View>
-        <View style={styles.ritualTextWrap}>
-          <Text style={styles.ritualLabel} numberOfLines={1}>{ritual.label}</Text>
-          <Text style={styles.ritualTime} numberOfLines={1}>
-            {formatRitualTimeWindow(ritual)}
-          </Text>
-        </View>
-        {data.eventCount > 0 ? (
-          <View style={styles.ritualCountBadge}>
-            <Text style={styles.ritualCountText}>{data.eventCount}</Text>
+      <View style={[styles.ritualAccentBar, { backgroundColor: accentColor }]} />
+      <View style={styles.ritualInner}>
+        <View style={styles.ritualTopRow}>
+          <View style={[styles.ritualIconWrap, { backgroundColor: accentColor + "25" }]}>
+            <Ionicons name={ritual.icon} size={24} color={accentColor} />
           </View>
-        ) : null}
-        <Ionicons name="chevron-forward" size={16} color={Colors.textMuted} />
+          <View style={styles.ritualTextWrap}>
+            <Text style={styles.ritualLabel} numberOfLines={1}>{ritual.label}</Text>
+            <Text style={styles.ritualTime} numberOfLines={1}>{formatRitualTimeWindow(ritual)}</Text>
+          </View>
+          {data.eventCount > 0 ? (
+            <View style={[styles.ritualCountBadge, { backgroundColor: accentColor }]}>
+              <Text style={styles.ritualCountText}>{data.eventCount}</Text>
+            </View>
+          ) : null}
+        </View>
+        <FeaturedStrip event={data.featured} accentColor={accentColor} />
       </View>
-      <FeaturedStrip event={data.featured} />
     </Pressable>
   );
 }
@@ -185,7 +166,6 @@ export default function RitualsScreen() {
   const webTopInset = Platform.OS === "web" ? 67 : 0;
 
   const now = useMemo(() => new Date(), []);
-
   const sortedRituals = useMemo(() => getSortedRituals(now), [now]);
 
   const ritualData = useMemo(() => {
@@ -217,15 +197,17 @@ export default function RitualsScreen() {
         contentContainerStyle={[
           styles.scrollContent,
           {
-            paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 12,
-            paddingBottom: Platform.OS === "web" ? 34 : 100,
+            paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 16,
+            paddingBottom: Platform.OS === "web" ? 34 : 110,
           },
         ]}
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.header}>
           <View style={styles.headerLeft}>
-            <Ionicons name="grid" size={28} color={Colors.accent} />
+            <View style={styles.headerIconWrap}>
+              <Ionicons name="grid" size={20} color="#fff" />
+            </View>
             <Text style={styles.headerTitle}>Rituals</Text>
           </View>
           <Pressable
@@ -237,12 +219,11 @@ export default function RitualsScreen() {
             ]}
             testID="rituals-settings-button"
           >
-            <Ionicons name="settings-outline" size={24} color={Colors.textSecondary} />
+            <Ionicons name="settings-outline" size={22} color={Colors.textSecondary} />
           </Pressable>
         </View>
-        <Text style={styles.subtitle}>
-          Personalized rituals for how you watch
-        </Text>
+
+        <Text style={styles.subtitle}>Your personalized viewing schedule</Text>
 
         <View style={styles.ritualsContainer}>
           {sortedRituals.filter((occ) =>
@@ -266,7 +247,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   scrollContent: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
   },
   header: {
     flexDirection: "row",
@@ -279,36 +260,55 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 10,
   },
+  headerIconWrap: {
+    width: 38,
+    height: 38,
+    borderRadius: 12,
+    backgroundColor: Colors.accent,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   settingsButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 38,
+    height: 38,
+    borderRadius: 19,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: Colors.card,
+    borderWidth: 1,
+    borderColor: Colors.border,
   },
   headerTitle: {
-    fontSize: 26,
+    fontSize: 28,
     fontWeight: "700" as const,
     color: Colors.textPrimary,
     fontFamily: "Inter_700Bold",
+    letterSpacing: -0.5,
   },
   subtitle: {
-    fontSize: 15,
-    color: Colors.textSecondary,
+    fontSize: 14,
+    color: Colors.textMuted,
     fontFamily: "Inter_400Regular",
-    marginBottom: 24,
+    marginBottom: 20,
   },
   ritualsContainer: {
-    gap: 10,
+    gap: 12,
   },
   ritualTile: {
     backgroundColor: Colors.card,
-    borderRadius: 14,
-    paddingVertical: 14,
+    borderRadius: 20,
+    borderWidth: 1.5,
+    overflow: "hidden",
+    flexDirection: "row",
+  },
+  ritualAccentBar: {
+    width: 5,
+  },
+  ritualInner: {
+    flex: 1,
+    paddingVertical: 16,
     paddingHorizontal: 14,
-    borderWidth: 1,
-    borderColor: Colors.border,
+    paddingLeft: 12,
   },
   ritualTopRow: {
     flexDirection: "row",
@@ -316,9 +316,9 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   ritualIconWrap: {
-    width: 40,
-    height: 40,
-    borderRadius: 12,
+    width: 48,
+    height: 48,
+    borderRadius: 16,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -326,90 +326,89 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   ritualLabel: {
-    fontSize: 15,
-    fontWeight: "600" as const,
+    fontSize: 17,
+    fontWeight: "700" as const,
     color: Colors.textPrimary,
-    fontFamily: "Inter_600SemiBold",
-    marginBottom: 2,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: -0.2,
+    marginBottom: 3,
   },
   ritualTime: {
     fontSize: 12,
-    color: Colors.textSecondary,
+    color: Colors.textMuted,
     fontFamily: "Inter_400Regular",
   },
   ritualCountBadge: {
-    backgroundColor: Colors.accent + "20",
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 10,
-    minWidth: 24,
+    minWidth: 32,
+    height: 32,
+    borderRadius: 16,
     alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 8,
   },
   ritualCountText: {
-    fontSize: 12,
+    fontSize: 15,
     fontWeight: "700" as const,
-    color: Colors.accent,
+    color: "#fff",
     fontFamily: "Inter_700Bold",
   },
   featuredStrip: {
-    marginTop: 10,
+    marginTop: 14,
+    borderTopWidth: 1,
+    paddingTop: 12,
   },
-  featuredStripLine: {
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: "rgba(161, 161, 166, 0.15)",
-    marginBottom: 10,
-    marginHorizontal: -2,
-  },
-  leagueHeader: {
-    borderRadius: 6,
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    alignSelf: "flex-start" as const,
-    marginBottom: 6,
-  },
-  leagueHeaderText: {
-    fontSize: 10,
-    fontWeight: "700" as const,
-    fontFamily: "Inter_700Bold",
-    letterSpacing: 0.5,
-    textTransform: "uppercase" as const,
-  },
-  featuredContent: {
+  featuredRow: {
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
   },
-  featuredMatchup: {
+  leaguePill: {
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
+    flexShrink: 0,
+  },
+  leaguePillText: {
+    fontSize: 10,
+    fontWeight: "700" as const,
+    fontFamily: "Inter_700Bold",
+    color: "#fff",
+    letterSpacing: 0.4,
+    textTransform: "uppercase" as const,
+  },
+  featuredRight: {
     flex: 1,
+  },
+  featuredMatchup: {
     flexDirection: "row",
     alignItems: "center",
     gap: 4,
   },
   featuredTeam: {
     fontSize: 13,
-    fontWeight: "500" as const,
+    fontWeight: "600" as const,
     color: Colors.textPrimary,
-    fontFamily: "Inter_500Medium",
+    fontFamily: "Inter_600SemiBold",
     flexShrink: 1,
   },
   featuredAt: {
-    fontSize: 11,
+    fontSize: 10,
     color: Colors.textMuted,
     fontFamily: "Inter_400Regular",
     marginHorizontal: 1,
   },
   featuredTime: {
-    fontSize: 11,
+    fontSize: 12,
+    fontWeight: "600" as const,
     color: Colors.textSecondary,
-    fontFamily: "Inter_400Regular",
+    fontFamily: "Inter_600SemiBold",
     flexShrink: 0,
   },
   featuredSessionName: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: "600" as const,
     color: Colors.textPrimary,
     fontFamily: "Inter_600SemiBold",
-    flex: 1,
   },
   featuredEmpty: {
     fontSize: 12,
