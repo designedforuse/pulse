@@ -11,7 +11,7 @@ import {
   useWindowDimensions,
 } from "react-native";
 import { router } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
@@ -377,10 +377,12 @@ function ChaosCard({
               <View style={styles.primaryTeams}>
                 <View style={styles.primaryTeamRow}>
                   <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={28} />
-                  <Text style={styles.heroTeamName} numberOfLines={1}>
-                    {displayTeamName(event.awayTeam, event.league)}
-                  </Text>
-                  {awayIsFav && <Ionicons name="star" size={18} color={Colors.favStar} />}
+                  <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 5 }}>
+                    <Text style={[styles.heroTeamName, { flex: 0, flexShrink: 1 }]} numberOfLines={1}>
+                      {displayTeamName(event.awayTeam, event.league)}
+                    </Text>
+                    {awayIsFav && <MaterialCommunityIcons name="star" size={19} color={Colors.favStar} />}
+                  </View>
                   {hasScore && (
                     <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
                       {event.sport === "cricket" ? (score.cricketAway || "") : score.awayScore}
@@ -390,10 +392,12 @@ function ChaosCard({
                 <Text style={styles.vsText}>vs</Text>
                 <View style={styles.primaryTeamRow}>
                   <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={28} />
-                  <Text style={styles.heroTeamName} numberOfLines={1}>
-                    {displayTeamName(event.homeTeam, event.league)}
-                  </Text>
-                  {homeIsFav && <Ionicons name="star" size={18} color={Colors.favStar} />}
+                  <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 5 }}>
+                    <Text style={[styles.heroTeamName, { flex: 0, flexShrink: 1 }]} numberOfLines={1}>
+                      {displayTeamName(event.homeTeam, event.league)}
+                    </Text>
+                    {homeIsFav && <MaterialCommunityIcons name="star" size={19} color={Colors.favStar} />}
+                  </View>
                   {hasScore && (
                     <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
                       {event.sport === "cricket" ? (score.cricketHome || "") : score.homeScore}
@@ -510,10 +514,12 @@ function ChaosCard({
           <View style={styles.secondaryTeams}>
             <View style={styles.secondaryTeamRow}>
               <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={18} />
-              <Text style={styles.secondaryTeamName} numberOfLines={1}>
-                {displayTeamName(event.awayTeam, event.league)}
-              </Text>
-              {awayIsFav && <Ionicons name="star" size={13} color={Colors.favStar} />}
+              <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 4 }}>
+                <Text style={[styles.secondaryTeamName, { flex: 0, flexShrink: 1 }]} numberOfLines={1}>
+                  {displayTeamName(event.awayTeam, event.league)}
+                </Text>
+                {awayIsFav && <MaterialCommunityIcons name="star" size={13} color={Colors.favStar} />}
+              </View>
               {hasScore && (
                 <Text style={[styles.secondaryScore, isLiveState && styles.scoreLive]}>
                   {event.sport === "cricket" ? (score.cricketAway || "") : score.awayScore}
@@ -522,10 +528,12 @@ function ChaosCard({
             </View>
             <View style={styles.secondaryTeamRow}>
               <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={18} />
-              <Text style={styles.secondaryTeamName} numberOfLines={1}>
-                {displayTeamName(event.homeTeam, event.league)}
-              </Text>
-              {homeIsFav && <Ionicons name="star" size={13} color={Colors.favStar} />}
+              <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 4 }}>
+                <Text style={[styles.secondaryTeamName, { flex: 0, flexShrink: 1 }]} numberOfLines={1}>
+                  {displayTeamName(event.homeTeam, event.league)}
+                </Text>
+                {homeIsFav && <MaterialCommunityIcons name="star" size={13} color={Colors.favStar} />}
+              </View>
               {hasScore && (
                 <Text style={[styles.secondaryScore, isLiveState && styles.scoreLive]}>
                   {event.sport === "cricket" ? (score.cricketHome || "") : score.homeScore}

@@ -3,7 +3,7 @@ import { View, Text, Image, StyleSheet, Pressable, Platform } from "react-native
 import { router } from "expo-router";
 import * as Haptics from "expo-haptics";
 import Animated from "react-native-reanimated";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
@@ -713,7 +713,7 @@ export default function UnifiedEventCard({
               <Text style={uStyles.featuredBadgeText}>FEATURED</Text>
             </View>
           )}
-          {isFav && <Ionicons name="star" size={13} color={Colors.favStar} />}
+          {isFav && <MaterialCommunityIcons name="star" size={13} color={Colors.favStar} />}
           {isLive && (
             <View style={uStyles.liveChip}>
               <LiveDot />
