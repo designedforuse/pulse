@@ -1624,7 +1624,7 @@ const styles = StyleSheet.create({
   },
   primaryTime: {
     fontSize: 14,
-    color: Colors.textSecondary,
+    color: "#A78BFA",
     fontFamily: "Inter_500Medium",
   },
   primaryClock: {
@@ -1765,8 +1765,8 @@ const styles = StyleSheet.create({
   },
   secondaryTime: {
     fontSize: 12,
-    color: Colors.textSecondary,
-    fontFamily: "Inter_400Regular",
+    color: "#A78BFA",
+    fontFamily: "Inter_500Medium",
   },
 
   emptyState: {
@@ -2005,7 +2005,7 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
   },
   secondaryClock: {
-    fontSize: 10,
+    fontSize: 12,
     color: "#A78BFA",
     fontFamily: "Inter_600SemiBold",
   },
