@@ -1120,12 +1120,12 @@ export default function WatchScreen() {
             </LinearGradient>
 
             <View style={styles.headerStats}>
-              <View style={styles.statChip}>
-                <Ionicons name="grid" size={20} color="#58CC02" />
+              <View style={[styles.statChip, { backgroundColor: "rgba(88,204,2,0.15)", borderRadius: 12, paddingHorizontal: 9, paddingVertical: 5 }]}>
+                <Ionicons name="grid" size={18} color="#58CC02" />
                 <Text style={[styles.liveStatCount, { color: "#58CC02" }]}>{ritualCount}</Text>
               </View>
-              <View style={styles.statChip}>
-                <Ionicons name="compass" size={22} color="#1CB0F6" />
+              <View style={[styles.statChip, { backgroundColor: "rgba(28,176,246,0.15)", borderRadius: 12, paddingHorizontal: 9, paddingVertical: 5 }]}>
+                <Ionicons name="compass" size={20} color="#1CB0F6" />
                 <Text style={styles.nextStatCount}>{storiesCount}</Text>
               </View>
             </View>
