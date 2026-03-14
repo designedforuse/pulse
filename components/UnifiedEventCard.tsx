@@ -713,7 +713,7 @@ export default function UnifiedEventCard({
               <Text style={uStyles.featuredBadgeText}>FEATURED</Text>
             </View>
           )}
-          {isFav && <Text style={uStyles.favStar}>★</Text>}
+          {isFav && <Ionicons name="star" size={13} color={Colors.favStar} />}
           {isLive && (
             <View style={uStyles.liveChip}>
               <LiveDot />

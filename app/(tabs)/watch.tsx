@@ -378,8 +378,9 @@ function ChaosCard({
                 <View style={styles.primaryTeamRow}>
                   <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={28} />
                   <Text style={styles.heroTeamName} numberOfLines={1}>
-                    {displayTeamName(event.awayTeam, event.league)}{awayIsFav ? <Text style={styles.teamFavStarHero}>{" \u2605"}</Text> : null}
+                    {displayTeamName(event.awayTeam, event.league)}
                   </Text>
+                  {awayIsFav && <Ionicons name="star" size={18} color={Colors.favStar} />}
                   {hasScore && (
                     <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
                       {event.sport === "cricket" ? (score.cricketAway || "") : score.awayScore}
@@ -390,8 +391,9 @@ function ChaosCard({
                 <View style={styles.primaryTeamRow}>
                   <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={28} />
                   <Text style={styles.heroTeamName} numberOfLines={1}>
-                    {displayTeamName(event.homeTeam, event.league)}{homeIsFav ? <Text style={styles.teamFavStarHero}>{" \u2605"}</Text> : null}
+                    {displayTeamName(event.homeTeam, event.league)}
                   </Text>
+                  {homeIsFav && <Ionicons name="star" size={18} color={Colors.favStar} />}
                   {hasScore && (
                     <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
                       {event.sport === "cricket" ? (score.cricketHome || "") : score.homeScore}
@@ -509,8 +511,9 @@ function ChaosCard({
             <View style={styles.secondaryTeamRow}>
               <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={18} />
               <Text style={styles.secondaryTeamName} numberOfLines={1}>
-                {displayTeamName(event.awayTeam, event.league)}{awayIsFav ? <Text style={styles.teamFavStar}>{" \u2605"}</Text> : null}
+                {displayTeamName(event.awayTeam, event.league)}
               </Text>
+              {awayIsFav && <Ionicons name="star" size={13} color={Colors.favStar} />}
               {hasScore && (
                 <Text style={[styles.secondaryScore, isLiveState && styles.scoreLive]}>
                   {event.sport === "cricket" ? (score.cricketAway || "") : score.awayScore}
@@ -520,8 +523,9 @@ function ChaosCard({
             <View style={styles.secondaryTeamRow}>
               <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={18} />
               <Text style={styles.secondaryTeamName} numberOfLines={1}>
-                {displayTeamName(event.homeTeam, event.league)}{homeIsFav ? <Text style={styles.teamFavStar}>{" \u2605"}</Text> : null}
+                {displayTeamName(event.homeTeam, event.league)}
               </Text>
+              {homeIsFav && <Ionicons name="star" size={13} color={Colors.favStar} />}
               {hasScore && (
                 <Text style={[styles.secondaryScore, isLiveState && styles.scoreLive]}>
                   {event.sport === "cricket" ? (score.cricketHome || "") : score.homeScore}
