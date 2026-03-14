@@ -1,6 +1,6 @@
 import type { SportEvent } from "@/lib/data";
 import type { ScoreData } from "@/lib/scores-context";
-import { isEventLive, getEventEnd, formatTimeSinceStart } from "@/utils/time";
+import { isEventLive, isEventCompleted, getEventEnd, formatTimeSinceStart } from "@/utils/time";
 import { getRugbyClockDisplay } from "@/utils/rugbyClock";
 
 export type GameState = "FINAL" | "LIVE" | "UPCOMING";
@@ -47,7 +47,7 @@ export function normalizeGameState(
       return { gameState: "FINAL", displayClockText: null, displayStatusText: statusText };
     }
 
-    if (matchesKeywords(score.status, LIVE_KEYWORDS) || score.clock || score.period) {
+    if (!isEventCompleted(event, now) && (matchesKeywords(score.status, LIVE_KEYWORDS) || score.clock || score.period)) {
       let clockText: string | null = null;
 
       if (event.sport === "rugby" || event.sport === "Rugby") {

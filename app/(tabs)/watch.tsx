@@ -41,6 +41,7 @@ import {
   getLiveEventsNow,
   getUpNextEvents,
   formatLastUpdated,
+  isEventCompleted,
 } from "@/utils/time";
 import { normalizeGameState } from "@/utils/gameState";
 import { favoriteInvolved, isTeamFavorite } from "@/utils/favorites";
@@ -898,6 +899,8 @@ export default function WatchScreen() {
     const timeLiveIds = new Set(timeLive.map((e) => e.id));
     const scoreLive = allEvents.filter((e) => {
       if (timeLiveIds.has(e.id)) return false;
+      // Don't trust score API's "live" status if the event is past its expected duration
+      if (isEventCompleted(e, now)) return false;
       const s = getScore(e.id);
       return s && s.status === "live";
     });
