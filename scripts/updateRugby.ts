@@ -731,5 +731,31 @@ export function mergeRugbyEvents(
   const pruned = beforePrune - merged.length;
   merged.sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
 
-  return { merged, added, updated, pruned };
+  // Remove team-conflict duplicates: same team appearing in 2 matches at the same time
+  const teamTimeSet = new Map<string, string>(); // "team|timeSlot" -> event id
+  const conflictIds = new Set<string>();
+  for (const e of merged) {
+    const slot = new Date(e.startTimeLocal).toISOString().slice(0, 16);
+    for (const team of [e.homeTeam, e.awayTeam]) {
+      const key = `${team}|${slot}`;
+      if (teamTimeSet.has(key)) {
+        // Keep the fresher event (from fresh ids), drop the stale one
+        const existingId = teamTimeSet.get(key)!;
+        if (freshIds.has(e.id) && !freshIds.has(existingId)) {
+          conflictIds.add(existingId);
+          teamTimeSet.set(key, e.id);
+        } else {
+          conflictIds.add(e.id);
+        }
+      } else {
+        teamTimeSet.set(key, e.id);
+      }
+    }
+  }
+  const deduped = conflictIds.size > 0 ? merged.filter(e => !conflictIds.has(e.id)) : merged;
+  if (conflictIds.size > 0) {
+    console.log(`  Rugby [merge]: Removed ${conflictIds.size} team-conflict duplicate(s)`);
+  }
+
+  return { merged: deduped, added, updated, pruned };
 }

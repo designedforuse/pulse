@@ -7428,19 +7428,6 @@
       "leagueKey": "leagueone"
     },
     {
-      "id": "rugby-leagueone-8yqydk",
-      "sport": "rugby",
-      "league": "Japan League One",
-      "homeTeam": "Black Rams Tokyo",
-      "awayTeam": "Shizuoka Blue Revs",
-      "startTimeLocal": "2026-03-14T04:00:00.000Z",
-      "endTimeLocal": "2026-03-14T06:15:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "rugby",
-      "leagueKey": "leagueone"
-    },
-    {
       "id": "tennis-espn-172939",
       "sport": "tennis",
       "league": "ATP Masters 1000",
