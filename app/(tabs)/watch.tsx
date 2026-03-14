@@ -604,7 +604,7 @@ function SecondaryCarousel({
         {isPromoted && (
           <View style={styles.emergingMomentBanner}>
             <View style={styles.emergingMomentRow}>
-              <Ionicons name="flash" size={12} color="#FFD600" />
+              <Ionicons name="flash" size={12} color="#1C1C1E" />
               <Text style={styles.emergingMomentText}>Emerging Moment</Text>
             </View>
             <Text style={styles.emergingMomentReason}>
@@ -1051,7 +1051,7 @@ export default function WatchScreen() {
     <View style={styles.container}>
       {promotionToast && (
         <View style={[styles.promotionToast, { top: (Platform.OS === "web" ? webTopInset : insets.top) + 8 }]}>
-          <Ionicons name="flash" size={14} color="#FFD600" />
+          <Ionicons name="flash" size={14} color="#1C1C1E" />
           <View style={styles.promotionToastContent}>
             <Text style={styles.promotionToastTitle} numberOfLines={1}>
               Promoted: {promotionToast.message}
@@ -1070,7 +1070,7 @@ export default function WatchScreen() {
             }}
             hitSlop={8}
           >
-            <Ionicons name="close" size={16} color={Colors.textMuted} />
+            <Ionicons name="close" size={16} color="#5C4700" />
           </Pressable>
         </View>
       )}
@@ -1564,12 +1564,14 @@ const styles = StyleSheet.create({
 
   emergingMomentBanner: {
     paddingHorizontal: 10,
-    paddingVertical: 6,
+    paddingVertical: 7,
     marginTop: 6,
-    backgroundColor: "rgba(255, 214, 0, 0.12)",
-    borderRadius: 8,
+    backgroundColor: "#FFD600",
+    borderRadius: 12,
     borderWidth: 1,
-    borderColor: "rgba(255, 214, 0, 0.25)",
+    borderColor: "#C9A800",
+    borderBottomWidth: 3,
+    borderBottomColor: "#A08800",
   },
   emergingMomentRow: {
     flexDirection: "row" as const,
@@ -1579,13 +1581,13 @@ const styles = StyleSheet.create({
   emergingMomentText: {
     fontSize: 11,
     fontFamily: "Inter_600SemiBold",
-    color: "#FFD600",
+    color: "#1C1C1E",
     letterSpacing: 0.3,
   },
   emergingMomentReason: {
     fontSize: 10,
     fontFamily: "Inter_400Regular",
-    color: "rgba(255, 214, 0, 0.7)",
+    color: "#3D3000",
     marginTop: 2,
     marginLeft: 16,
   },
@@ -1599,11 +1601,13 @@ const styles = StyleSheet.create({
     gap: 10,
     paddingHorizontal: 14,
     paddingVertical: 12,
-    backgroundColor: "rgba(44, 44, 46, 0.97)",
-    borderRadius: 12,
+    backgroundColor: "#FFD600",
+    borderRadius: 14,
     borderWidth: 1,
-    borderColor: "rgba(255, 214, 0, 0.3)",
-    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.5)",
+    borderColor: "#C9A800",
+    borderBottomWidth: 4,
+    borderBottomColor: "#A08800",
+    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.4)",
   },
   promotionToastContent: {
     flex: 1,
@@ -1611,12 +1615,12 @@ const styles = StyleSheet.create({
   promotionToastTitle: {
     fontSize: 13,
     fontFamily: "Inter_600SemiBold",
-    color: Colors.textPrimary,
+    color: "#1C1C1E",
   },
   promotionToastReason: {
     fontSize: 11,
     fontFamily: "Inter_400Regular",
-    color: "#FFD600",
+    color: "#3D3000",
     marginTop: 2,
   },
   secondaryCard: {
