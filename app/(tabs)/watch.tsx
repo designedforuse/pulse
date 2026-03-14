@@ -1412,7 +1412,7 @@ const styles = StyleSheet.create({
   stickyTop: {
     backgroundColor: Colors.background,
     paddingHorizontal: 16,
-    paddingBottom: 4,
+    paddingBottom: 0,
   },
   scrollContent: {
     paddingHorizontal: 16,
@@ -1477,7 +1477,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: 14,
+    marginBottom: 0,
   },
   chaosBannerLabel: {
     fontSize: 11,
