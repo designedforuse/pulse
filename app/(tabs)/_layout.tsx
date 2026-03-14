@@ -36,9 +36,9 @@ function TabIcon({
 
 const tabIconStyles = StyleSheet.create({
   wrap: {
-    width: 46,
-    height: 38,
-    borderRadius: 13,
+    width: 48,
+    height: 48,
+    borderRadius: 14,
     alignItems: "center",
     justifyContent: "center",
     borderWidth: 2,
@@ -87,7 +87,9 @@ function ClassicTabLayout() {
           borderTopWidth: 1,
           borderTopColor: Colors.border,
           elevation: 0,
-          ...(isWeb ? { height: 84 } : {}),
+          height: isWeb ? 84 : 72,
+          paddingTop: 8,
+          paddingBottom: 10,
         },
         tabBarBackground: () =>
           isIOS ? (
