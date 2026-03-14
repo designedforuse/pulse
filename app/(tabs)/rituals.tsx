@@ -197,6 +197,20 @@ export default function RitualsScreen() {
 
   return (
     <View style={styles.container}>
+      <View style={[styles.headerBanner, { paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 20 }]}>
+        <View style={styles.headerBannerRow}>
+          <Text style={styles.headerTitle}>Rituals</Text>
+          <Pressable
+            onPress={() => router.push("/settings")}
+            hitSlop={12}
+            style={({ pressed }) => [styles.settingsButton, { opacity: pressed ? 0.6 : 1 }]}
+            testID="rituals-settings-button"
+          >
+            <Ionicons name="settings-outline" size={22} color="rgba(255,255,255,0.85)" />
+          </Pressable>
+        </View>
+        <Text style={styles.subtitle}>Your personalized viewing schedule</Text>
+      </View>
       <ScrollView
         contentContainerStyle={[
           styles.scrollContent,
@@ -206,20 +220,6 @@ export default function RitualsScreen() {
         ]}
         showsVerticalScrollIndicator={false}
       >
-        <View style={[styles.headerBanner, { paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 20 }]}>
-          <View style={styles.headerBannerRow}>
-            <Text style={styles.headerTitle}>Rituals</Text>
-            <Pressable
-              onPress={() => router.push("/settings")}
-              hitSlop={12}
-              style={({ pressed }) => [styles.settingsButton, { opacity: pressed ? 0.6 : 1 }]}
-              testID="rituals-settings-button"
-            >
-              <Ionicons name="settings-outline" size={22} color="rgba(255,255,255,0.85)" />
-            </Pressable>
-          </View>
-          <Text style={styles.subtitle}>Your personalized viewing schedule</Text>
-        </View>
 
         <View style={styles.ritualsContainer}>
           {sortedRituals.filter((occ) =>
@@ -244,13 +244,12 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: 16,
+    paddingTop: 20,
   },
   headerBanner: {
     backgroundColor: Colors.accent,
-    marginHorizontal: -16,
     paddingHorizontal: 20,
-    paddingBottom: 28,
-    marginBottom: 20,
+    paddingBottom: 24,
   },
   headerBannerRow: {
     flexDirection: "row",

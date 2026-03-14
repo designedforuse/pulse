@@ -121,6 +121,20 @@ export default function ExploreScreen() {
 
   return (
     <View style={styles.container}>
+      <View style={[styles.headerBanner, { paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 20 }]}>
+        <View style={styles.headerBannerRow}>
+          <Text style={styles.headerTitle}>Stories</Text>
+          <Pressable
+            onPress={() => router.push("/settings")}
+            hitSlop={12}
+            style={({ pressed }) => [styles.settingsButton, { opacity: pressed ? 0.6 : 1 }]}
+            testID="explore-settings-button"
+          >
+            <Ionicons name="settings-outline" size={22} color="rgba(255,255,255,0.85)" />
+          </Pressable>
+        </View>
+        <Text style={styles.subtitle}>Narrative intelligence, live</Text>
+      </View>
       <ScrollView
         contentContainerStyle={[
           styles.scrollContent,
@@ -138,20 +152,6 @@ export default function ExploreScreen() {
           />
         }
       >
-        <View style={[styles.headerBanner, { paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 20 }]}>
-          <View style={styles.headerBannerRow}>
-            <Text style={styles.headerTitle}>Stories</Text>
-            <Pressable
-              onPress={() => router.push("/settings")}
-              hitSlop={12}
-              style={({ pressed }) => [styles.settingsButton, { opacity: pressed ? 0.6 : 1 }]}
-              testID="explore-settings-button"
-            >
-              <Ionicons name="settings-outline" size={22} color="rgba(255,255,255,0.85)" />
-            </Pressable>
-          </View>
-          <Text style={styles.subtitle}>Narrative intelligence, live</Text>
-        </View>
 
         {tonightStory && (
           <View style={styles.tonightCard}>
@@ -260,13 +260,12 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: 16,
+    paddingTop: 20,
   },
   headerBanner: {
     backgroundColor: "#1CB0F6",
-    marginHorizontal: -16,
     paddingHorizontal: 20,
-    paddingBottom: 28,
-    marginBottom: 20,
+    paddingBottom: 24,
   },
   headerBannerRow: {
     flexDirection: "row",
