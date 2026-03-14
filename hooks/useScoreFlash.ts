@@ -54,7 +54,7 @@ export function useScoreFlash(awayScore?: number, homeScore?: number, cricketAwa
   const flashStyle = useAnimatedStyle(() => ({
     backgroundColor:
       flashOpacity.value > 0
-        ? `rgba(0, 230, 118, ${flashOpacity.value * 0.15})`
+        ? `rgba(167, 139, 250, ${flashOpacity.value * 0.15})`
         : "transparent",
   }));
 
