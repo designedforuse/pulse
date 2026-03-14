@@ -1202,7 +1202,7 @@ export default function WatchScreen() {
                 <Ionicons
                   name={liveExpanded ? "chevron-up" : "chevron-down"}
                   size={16}
-                  color="#1C1C1E"
+                  color="#FFFFFF"
                 />
               </Pressable>
             )}
@@ -1342,7 +1342,7 @@ export default function WatchScreen() {
                   <Ionicons
                     name={upNextExpanded ? "chevron-up" : "chevron-down"}
                     size={16}
-                    color="#1C1C1E"
+                    color="#FFFFFF"
                   />
                 </Pressable>
               )}
@@ -1954,10 +1954,11 @@ const styles = StyleSheet.create({
     borderBottomColor: "#3A8500",
   },
   expandButtonText: {
-    fontSize: 13,
-    color: "#1C1C1E",
+    fontSize: 14,
+    color: "#FFFFFF",
     fontFamily: "Inter_700Bold",
-    letterSpacing: 0.3,
+    letterSpacing: 1,
+    textTransform: "uppercase" as const,
   },
   footerMeta: {
     paddingHorizontal: 4,
