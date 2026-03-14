@@ -1124,8 +1124,8 @@ export default function WatchScreen() {
 
           <View style={styles.headerStats}>
             <View style={styles.statChip}>
-              <Ionicons name="grid" size={20} color="#FF9600" />
-              <Text style={styles.liveStatCount}>{ritualCount}</Text>
+              <Ionicons name="grid" size={20} color="#58CC02" />
+              <Text style={[styles.liveStatCount, { color: "#58CC02" }]}>{ritualCount}</Text>
             </View>
             <View style={styles.statChip}>
               <Ionicons name="compass" size={22} color="#1CB0F6" />
