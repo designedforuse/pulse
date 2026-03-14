@@ -82,9 +82,9 @@ function formatEventDate(startTimeLocal: string): { date: string; time: string }
 }
 
 const TENSION_ACCENT_COLORS: Record<string, string> = {
-  "High Drama": "#E57373",
-  "Tight Game": Colors.accentSoft,
-  "Heating Up": "#FFB74D",
+  "High Drama": "#9333EA",
+  "Tight Game": "#818CF8",
+  "Heating Up": "#A78BFA",
 };
 
 function getTensionLabel(tensionRank: number): string | null {
@@ -295,14 +295,12 @@ function ChaosCard({
       >
         <Animated.View style={flashStyle}>
           <LinearGradient
-            colors={["rgba(0,201,104,0.07)", "transparent"]}
+            colors={["rgba(129,140,248,0.12)", "transparent"]}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={styles.primaryInner}
           >
-            {tensionAccentColor && (
-              <View style={[styles.tensionAccent, { backgroundColor: tensionAccentColor }]} />
-            )}
+            <View style={[styles.tensionAccent, { backgroundColor: tensionAccentColor ?? "rgba(129,140,248,0.25)" }]} />
             <View style={styles.primaryHeader}>
               {isRacing ? (
                 <Text style={[styles.primaryLeague, { color: sportColor }]}>
@@ -443,9 +441,7 @@ function ChaosCard({
       ]}
     >
       <Animated.View style={[styles.secondaryInner, flashStyle]}>
-        {tensionAccentColor && (
-          <View style={[styles.tensionAccentSecondary, { backgroundColor: tensionAccentColor }]} />
-        )}
+        <View style={[styles.tensionAccentSecondary, { backgroundColor: tensionAccentColor ?? "rgba(129,140,248,0.2)" }]} />
         <View style={styles.secondaryHeader}>
           {isRacing ? (
             <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
@@ -1113,23 +1109,25 @@ export default function WatchScreen() {
         }
       >
         <View style={styles.header}>
-          <LinearGradient
-            colors={["#58CC02", "#1CB0F6"]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            style={styles.brandPill}
-          >
-            <Text style={styles.brandPillText}>SPORTS WATCH</Text>
-          </LinearGradient>
+          <View style={styles.headerLeft}>
+            <LinearGradient
+              colors={["#58CC02", "#1CB0F6"]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.brandPill}
+            >
+              <Text style={styles.brandPillText}>SPORTS WATCH</Text>
+            </LinearGradient>
 
-          <View style={styles.headerStats}>
-            <View style={styles.statChip}>
-              <Ionicons name="grid" size={20} color="#58CC02" />
-              <Text style={[styles.liveStatCount, { color: "#58CC02" }]}>{ritualCount}</Text>
-            </View>
-            <View style={styles.statChip}>
-              <Ionicons name="compass" size={22} color="#1CB0F6" />
-              <Text style={styles.nextStatCount}>{storiesCount}</Text>
+            <View style={styles.headerStats}>
+              <View style={styles.statChip}>
+                <Ionicons name="grid" size={20} color="#58CC02" />
+                <Text style={[styles.liveStatCount, { color: "#58CC02" }]}>{ritualCount}</Text>
+              </View>
+              <View style={styles.statChip}>
+                <Ionicons name="compass" size={22} color="#1CB0F6" />
+                <Text style={styles.nextStatCount}>{storiesCount}</Text>
+              </View>
             </View>
           </View>
 
@@ -1142,7 +1140,7 @@ export default function WatchScreen() {
             ]}
             testID="settings-button"
           >
-            <Ionicons name="settings-outline" size={18} color={Colors.textMuted} />
+            <Ionicons name="settings-outline" size={18} color="rgba(255,255,255,0.5)" />
           </Pressable>
         </View>
 
@@ -1418,6 +1416,11 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     paddingHorizontal: 4,
   },
+  headerLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 18,
+  },
   brandPill: {
     borderRadius: 18,
     paddingHorizontal: 11,
@@ -1605,7 +1608,7 @@ const styles = StyleSheet.create({
   },
   primaryClock: {
     fontSize: 14,
-    color: Colors.accentSoft,
+    color: "#A78BFA",
     fontFamily: "Inter_600SemiBold",
   },
   primaryElapsed: {
@@ -1948,7 +1951,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.4,
   },
   scoreLive: {
-    color: Colors.accentSoft,
+    color: "#A78BFA",
   },
   finalLabel: {
     fontSize: 11,
