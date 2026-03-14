@@ -8,9 +8,9 @@ import React from "react";
 import Colors from "@/constants/colors";
 
 const TAB_COLORS = {
-  watch: "#1CB0F6",
-  rituals: "#FF9600",
-  stories: "#CE82FF",
+  watch: "#FF4B4B",
+  rituals: "#58CC02",
+  stories: "#1CB0F6",
 };
 
 function TabIcon({
@@ -45,7 +45,7 @@ const tabIconStyles = StyleSheet.create({
     borderColor: "transparent",
   },
   wrapFocused: {
-    borderColor: Colors.accent,
+    borderColor: "rgba(88, 204, 2, 0.55)",
   },
 });
 
