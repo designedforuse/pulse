@@ -1082,23 +1082,13 @@ export default function WatchScreen() {
           </Pressable>
         </View>
       )}
-      <ScrollView
-        contentContainerStyle={[
-          styles.scrollContent,
+      <View
+        style={[
+          styles.stickyTop,
           {
             paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 12,
-            paddingBottom: Platform.OS === "web" ? 34 : 100,
           },
         ]}
-        showsVerticalScrollIndicator={false}
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={handleManualRefresh}
-            tintColor={Colors.accent}
-            colors={[Colors.accent]}
-          />
-        }
       >
         <View style={styles.header}>
           <View style={styles.headerLeft}>
@@ -1136,29 +1126,50 @@ export default function WatchScreen() {
           </Pressable>
         </View>
 
+        {hasChaos && (
+          <View style={styles.chaosBanner}>
+            <View>
+              <Text style={styles.chaosBannerLabel}>4-GAME CHAOS</Text>
+              <View style={{ flexDirection: "row", alignItems: "center", gap: 7 }}>
+                <Ionicons name="flash" size={22} color="#fff" />
+                <Text style={styles.chaosBannerTitle}>
+                  {chaosSetup.candidateCount > 0 ? "Chaos Mode" : "Next Up"}
+                </Text>
+              </View>
+            </View>
+            <Pressable
+              onPress={handleRebuild}
+              style={({ pressed }) => [
+                styles.rebuildButton,
+                { opacity: pressed ? 0.7 : 1 },
+              ]}
+            >
+              <Ionicons name="shuffle" size={20} color="#fff" />
+            </Pressable>
+          </View>
+        )}
+      </View>
+
+      <ScrollView
+        contentContainerStyle={[
+          styles.scrollContent,
+          {
+            paddingTop: 12,
+            paddingBottom: Platform.OS === "web" ? 34 : 100,
+          },
+        ]}
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={handleManualRefresh}
+            tintColor={Colors.accent}
+            colors={[Colors.accent]}
+          />
+        }
+      >
         {hasChaos ? (
           <View style={styles.chaosSection}>
-            <View style={styles.chaosBanner}>
-              <View>
-                <Text style={styles.chaosBannerLabel}>4-GAME CHAOS</Text>
-                <View style={{ flexDirection: "row", alignItems: "center", gap: 7 }}>
-                  <Ionicons name="flash" size={22} color="#fff" />
-                  <Text style={styles.chaosBannerTitle}>
-                    {chaosSetup.candidateCount > 0 ? "Chaos Mode" : "Next Up"}
-                  </Text>
-                </View>
-              </View>
-              <Pressable
-                onPress={handleRebuild}
-                style={({ pressed }) => [
-                  styles.rebuildButton,
-                  { opacity: pressed ? 0.7 : 1 },
-                ]}
-              >
-                <Ionicons name="shuffle" size={20} color="#fff" />
-              </Pressable>
-            </View>
-
             <ChaosCard
               event={chaosSetup.primary!}
               isPrimary
@@ -1397,6 +1408,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
+  },
+  stickyTop: {
+    backgroundColor: Colors.background,
+    paddingHorizontal: 16,
+    paddingBottom: 4,
   },
   scrollContent: {
     paddingHorizontal: 16,
