@@ -59,8 +59,8 @@ interface SportEvent {
 const KIND_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap; color: string; label: string }> = {
   playoff_push: { icon: "flame", color: "#FF453A", label: "Playoff Push" },
   momentum: { icon: "trending-up", color: "#58CC02", label: "Momentum" },
-  league_moment: { icon: "trophy", color: "#FFD54F", label: "League Moment" },
-  player_movement: { icon: "swap-horizontal", color: "#64B5F6", label: "Player Movement" },
+  league_moment: { icon: "trophy", color: "#FFC800", label: "League Moment" },
+  player_movement: { icon: "swap-horizontal", color: "#1CB0F6", label: "Player Movement" },
   deadline_watch: { icon: "time", color: "#FF9800", label: "Deadline Watch" },
   rivalry_game: { icon: "flash", color: "#E040FB", label: "Rivalry Game" },
   upset_alert: { icon: "alert-circle", color: "#FF1744", label: "Upset Alert" },

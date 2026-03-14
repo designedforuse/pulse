@@ -43,11 +43,15 @@ function formatFeaturedTime(iso: string): string {
 }
 
 const SPORT_COLORS: Record<string, string> = {
-  hockey: "#4FC3F7",
-  rugby: "#FF8A65",
-  cricket: "#FFD54F",
-  soccer: "#81C784",
+  hockey: "#1CB0F6",
+  rugby: "#FF9600",
+  cricket: "#FFC800",
+  soccer: "#35C7A5",
+  basketball: "#FF4B4B",
+  tennis: "#CE82FF",
   racing: "#E53935",
+  golf: "#22C55E",
+  athletics: "#FF6B00",
 };
 
 function buildSessionDisplayName(event: SportEvent): string | null {

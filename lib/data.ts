@@ -166,15 +166,15 @@ export function formatStartTime(isoString: string): string {
 
 export function getSportColor(sport: string): string {
   const colors: Record<string, string> = {
-    hockey: "#4FC3F7",
-    rugby: "#FF8A65",
-    cricket: "#FFD54F",
-    soccer: "#81C784",
-    basketball: "#FFA726",
-    tennis: "#CE93D8",
+    hockey: "#1CB0F6",
+    rugby: "#FF9600",
+    cricket: "#FFC800",
+    soccer: "#35C7A5",
+    basketball: "#FF4B4B",
+    tennis: "#CE82FF",
     racing: "#E53935",
-    golf: "#4CAF50",
-    athletics: "#FF5722",
+    golf: "#22C55E",
+    athletics: "#FF6B00",
   };
   return colors[sport] || "#90A4AE";
 }
