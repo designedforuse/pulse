@@ -1304,16 +1304,10 @@ export default function WatchScreen() {
 
         {sortedLive.length > 0 && (
           <View style={styles.liveSection}>
-            <View style={styles.sectionHeaderRow}>
-              <View style={styles.sectionLiveIcon}>
-                <LiveDot />
-              </View>
-              <Text style={[styles.sectionTitle, { color: Colors.live }]}>Live Now</Text>
-              <View style={[styles.sectionCount, { backgroundColor: Colors.liveDim }]}>
-                <Text style={[styles.sectionCountText, { color: Colors.live }]}>
-                  {sortedLive.length}
-                </Text>
-              </View>
+            <View style={styles.liveHeaderRow}>
+              <View style={styles.liveHeaderLine} />
+              <Text style={styles.liveHeaderText}>Also happening now</Text>
+              <View style={styles.liveHeaderLine} />
             </View>
             {visibleLive.map((event) => (
               <UnifiedEventCard
@@ -1873,6 +1867,27 @@ const styles = StyleSheet.create({
 
   liveSection: {
     marginBottom: 20,
+  },
+  liveHeaderRow: {
+    flexDirection: "row" as const,
+    alignItems: "center",
+    paddingHorizontal: 4,
+    paddingTop: 8,
+    paddingBottom: 12,
+    gap: 10,
+  },
+  liveHeaderLine: {
+    flex: 1,
+    height: 1.5,
+    backgroundColor: Colors.textMuted,
+    opacity: 0.5,
+    borderRadius: 1,
+  },
+  liveHeaderText: {
+    fontSize: 12,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textMuted,
+    letterSpacing: 0.3,
   },
   upNextSection: {
     marginBottom: 20,
