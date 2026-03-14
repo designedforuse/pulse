@@ -47,6 +47,8 @@ export interface ScoreData {
   golfLeader?: string;
   golfLeaderScore?: string;
   golfLeaderCountry?: string;
+  golfLeaderThru?: string;
+  golfRound?: number;
 }
 
 export interface ScoresResponse {
@@ -1265,6 +1267,21 @@ async function fetchGolfScores(events: { id: string; tournamentName: string }[])
       const golfLeaderScore: string = leader.score || "";
       const golfLeaderCountry: string = leader.athlete?.flag?.alt || "";
 
+      // Determine current round and leader's thru-hole
+      const currentRound: number = comp.status?.period ?? 0;
+      const leaderRoundEntry = (leader.linescores || []).find((r: any) => r.period === currentRound);
+      const roundHoles: any[] = leaderRoundEntry?.linescores || [];
+      const playedHoles = roundHoles.filter((h: any) =>
+        h.displayValue && h.displayValue !== "0" && h.displayValue !== "0.0" && h.displayValue !== "-"
+      );
+      let golfLeaderThru: string | undefined;
+      if (playedHoles.length === 18) {
+        golfLeaderThru = "F";
+      } else if (playedHoles.length > 0) {
+        const lastHole = playedHoles[playedHoles.length - 1];
+        golfLeaderThru = `Thru ${lastHole.period}`;
+      }
+
       const scorePayload: ScoreData = {
         awayScore: 0,
         homeScore: 0,
@@ -1272,6 +1289,8 @@ async function fetchGolfScores(events: { id: string; tournamentName: string }[])
         golfLeader,
         golfLeaderScore,
         golfLeaderCountry,
+        golfLeaderThru,
+        golfRound: currentRound || undefined,
       };
 
       for (const ev of events) {

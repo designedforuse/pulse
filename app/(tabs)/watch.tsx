@@ -286,6 +286,7 @@ function ChaosCard({
   const golfLeaderName = isGolf ? (score?.golfLeader || null) : null;
   const golfLeaderScore = isGolf ? (score?.golfLeaderScore || null) : null;
   const golfLeaderFlag = isGolf && score?.golfLeaderCountry ? getDriverFlag(score.golfLeaderCountry) : null;
+  const golfLeaderThru = isGolf ? (score?.golfLeaderThru || null) : null;
 
   // Strip tournament name prefix from golf session titles e.g. "Players — Round 3" → "Round 3"
   const golfSessionDisplayText = isGolf && matchupText
@@ -374,9 +375,14 @@ function ChaosCard({
                     <Text style={styles.golfLeaderText}>
                       {golfLeaderFlag ? `${golfLeaderFlag} ` : ""}{golfLeaderName}
                     </Text>
-                    {golfLeaderScore ? (
-                      <Text style={styles.golfLeaderScore}>{golfLeaderScore}</Text>
-                    ) : null}
+                    <View style={styles.golfLeaderScoreBlock}>
+                      {golfLeaderScore ? (
+                        <Text style={styles.golfLeaderScore}>{golfLeaderScore}</Text>
+                      ) : null}
+                      {golfLeaderThru ? (
+                        <Text style={styles.golfLeaderThruText}>{golfLeaderThru}</Text>
+                      ) : null}
+                    </View>
                   </View>
                 )}
               </View>
@@ -516,9 +522,14 @@ function ChaosCard({
                 <Text style={styles.golfLeaderTextSm} numberOfLines={1}>
                   {golfLeaderFlag ? `${golfLeaderFlag} ` : ""}{golfLeaderName}
                 </Text>
-                {golfLeaderScore ? (
-                  <Text style={styles.golfLeaderScoreSm}>{golfLeaderScore}</Text>
-                ) : null}
+                <View style={styles.golfLeaderScoreBlockSm}>
+                  {golfLeaderScore ? (
+                    <Text style={styles.golfLeaderScoreSm}>{golfLeaderScore}</Text>
+                  ) : null}
+                  {golfLeaderThru ? (
+                    <Text style={styles.golfLeaderThruTextSm}>{golfLeaderThru}</Text>
+                  ) : null}
+                </View>
               </View>
             )}
           </View>
@@ -2156,10 +2167,19 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
     flex: 1,
   },
+  golfLeaderScoreBlock: {
+    alignItems: "flex-end" as const,
+    gap: 1,
+  },
   golfLeaderScore: {
     fontSize: 20,
     fontFamily: "Inter_700Bold",
     color: "#A78BFA",
+  },
+  golfLeaderThruText: {
+    fontSize: 11,
+    fontFamily: "Inter_500Medium",
+    color: "rgba(167,139,250,0.7)",
   },
   golfLeaderRowSm: {
     flexDirection: "row" as const,
@@ -2173,9 +2193,18 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
     flex: 1,
   },
+  golfLeaderScoreBlockSm: {
+    alignItems: "flex-end" as const,
+    gap: 1,
+  },
   golfLeaderScoreSm: {
     fontSize: 14,
     fontFamily: "Inter_700Bold",
     color: "#A78BFA",
+  },
+  golfLeaderThruTextSm: {
+    fontSize: 10,
+    fontFamily: "Inter_500Medium",
+    color: "rgba(167,139,250,0.7)",
   },
 });
