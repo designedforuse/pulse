@@ -1144,12 +1144,26 @@ export default function WatchScreen() {
   return (
     <View style={styles.container}>
       {promotionToast && (
-        <View style={[styles.promotionToast, { top: (Platform.OS === "web" ? webTopInset : insets.top) + 8 }]}>
-          <Ionicons name="flash" size={14} color="#1C1C1E" />
+        <View
+          style={[
+            styles.promotionToast,
+            { bottom: (Platform.OS === "web" ? 34 : insets.bottom) + 70 },
+          ]}
+        >
+          <LinearGradient
+            colors={["#5B21B6", "#7C3AED", "rgba(255,255,255,0.18)", "#7C3AED", "#5B21B6"]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={StyleSheet.absoluteFill}
+          />
           <View style={styles.promotionToastContent}>
-            <Text style={styles.promotionToastTitle} numberOfLines={1}>
-              Promoted: {promotionToast.message}
-            </Text>
+            <View style={styles.promotionToastHeader}>
+              <Ionicons name="flash" size={13} color="white" />
+              <Text style={styles.promotionToastLabel}>Chaos Alert</Text>
+              <Text style={styles.promotionToastTitle} numberOfLines={1}>
+                {promotionToast.message}
+              </Text>
+            </View>
             <Text style={styles.promotionToastReason} numberOfLines={1}>
               {promotionToast.reason}
             </Text>
@@ -1164,7 +1178,7 @@ export default function WatchScreen() {
             }}
             hitSlop={8}
           >
-            <Ionicons name="close" size={16} color="#5C4700" />
+            <Ionicons name="close" size={16} color="rgba(255,255,255,0.8)" />
           </Pressable>
         </View>
       )}
@@ -1733,27 +1747,40 @@ const styles = StyleSheet.create({
     gap: 10,
     paddingHorizontal: 14,
     paddingVertical: 12,
-    backgroundColor: "#FFD600",
     borderRadius: 14,
+    overflow: "hidden" as const,
     borderWidth: 1,
-    borderColor: "#C9A800",
-    borderBottomWidth: 4,
-    borderBottomColor: "#A08800",
-    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.4)",
+    borderColor: "rgba(167,139,250,0.4)",
+    borderBottomWidth: 3,
+    borderBottomColor: "rgba(91,33,182,0.8)",
+    boxShadow: "0px 4px 24px rgba(109,40,217,0.5)",
   },
   promotionToastContent: {
     flex: 1,
   },
+  promotionToastHeader: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 5,
+    marginBottom: 2,
+  },
+  promotionToastLabel: {
+    fontSize: 12,
+    fontFamily: "Inter_700Bold",
+    color: "white",
+    letterSpacing: 0.4,
+  },
   promotionToastTitle: {
-    fontSize: 13,
-    fontFamily: "Inter_600SemiBold",
-    color: "#1C1C1E",
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
+    color: "rgba(255,255,255,0.75)",
+    flex: 1,
   },
   promotionToastReason: {
     fontSize: 11,
     fontFamily: "Inter_400Regular",
-    color: "#3D3000",
-    marginTop: 2,
+    color: "rgba(255,255,255,0.6)",
+    marginTop: 1,
   },
   secondaryCard: {
     borderRadius: 14,
