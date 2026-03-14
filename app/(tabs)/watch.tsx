@@ -22,8 +22,6 @@ import Animated, {
   withRepeat,
   withTiming,
   withSequence,
-  withDelay,
-  Easing,
 } from "react-native-reanimated";
 import { useScoreFlash } from "@/hooks/useScoreFlash";
 import { displayTeamName } from "@/utils/teams";
@@ -604,64 +602,38 @@ const TILE_GAP = 14;
 const PAGE_PADDING = 16;
 
 function SheenBorderOverlay({ visible }: { visible: boolean }) {
-  const rotation = useSharedValue(0);
   const opacity = useSharedValue(0);
 
   useEffect(() => {
     if (visible) {
-      rotation.value = 0;
-      opacity.value = withTiming(1, { duration: 250 });
-      rotation.value = withRepeat(
-        withTiming(360, { duration: 1100, easing: Easing.linear }),
-        4,
-        false
+      opacity.value = withSequence(
+        withTiming(1, { duration: 200 }),
+        withRepeat(
+          withSequence(
+            withTiming(0.35, { duration: 380 }),
+            withTiming(1, { duration: 380 })
+          ),
+          6,
+          false
+        ),
+        withTiming(0, { duration: 400 })
       );
-      opacity.value = withDelay(4200, withTiming(0, { duration: 600 }));
     } else {
-      opacity.value = withTiming(0, { duration: 300 });
+      opacity.value = withTiming(0, { duration: 200 });
     }
   }, [visible]);
 
-  const containerStyle = useAnimatedStyle(() => ({ opacity: opacity.value }));
-  const sheenStyle = useAnimatedStyle(() => ({
-    transform: [{ rotate: `${rotation.value}deg` }],
-  }));
+  const animStyle = useAnimatedStyle(() => ({ opacity: opacity.value }));
 
   return (
     <Animated.View
-      style={[StyleSheet.absoluteFillObject, { borderRadius: 16, overflow: "hidden" }, containerStyle]}
+      style={[
+        StyleSheet.absoluteFillObject,
+        { borderRadius: 16, borderWidth: 2, borderColor: "#A78BFA" },
+        animStyle,
+      ]}
       pointerEvents="none"
-    >
-      <Animated.View
-        style={[sheenStyle, { position: "absolute", width: "320%", height: "320%", top: "-110%", left: "-110%" }]}
-      >
-        <LinearGradient
-          colors={[
-            "transparent",
-            "rgba(167,139,250,0.05)",
-            "rgba(167,139,250,0.7)",
-            "rgba(220,210,255,0.97)",
-            "rgba(167,139,250,0.7)",
-            "rgba(167,139,250,0.05)",
-            "transparent",
-          ]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={{ flex: 1 }}
-        />
-      </Animated.View>
-      <View
-        style={{
-          position: "absolute",
-          top: 2,
-          left: 2,
-          right: 2,
-          bottom: 2,
-          borderRadius: 14,
-          backgroundColor: Colors.card,
-        }}
-      />
-    </Animated.View>
+    />
   );
 }
 
@@ -727,12 +699,6 @@ function SecondaryCarousel({
             favorites={favorites}
             tensionRank={chaosDebugRanks?.find(r => r.id === item.id)?.tension ?? 0}
           />
-          {showSheen && (
-            <View
-              style={[StyleSheet.absoluteFillObject, { borderRadius: 16, borderWidth: 2, borderColor: "#A78BFA" }]}
-              pointerEvents="none"
-            />
-          )}
           <SheenBorderOverlay visible={showSheen} />
         </View>
       </View>
