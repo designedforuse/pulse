@@ -125,7 +125,6 @@ export default function ExploreScreen() {
         contentContainerStyle={[
           styles.scrollContent,
           {
-            paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 16,
             paddingBottom: Platform.OS === "web" ? 34 : 110,
           },
         ]}
@@ -139,26 +138,20 @@ export default function ExploreScreen() {
           />
         }
       >
-        <View style={styles.header}>
-          <View style={styles.headerLeft}>
-            <View style={styles.headerIconWrap}>
-              <Ionicons name="compass" size={20} color="#fff" />
-            </View>
+        <View style={[styles.headerBanner, { paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 20 }]}>
+          <View style={styles.headerBannerRow}>
             <Text style={styles.headerTitle}>Stories</Text>
+            <Pressable
+              onPress={() => router.push("/settings")}
+              hitSlop={12}
+              style={({ pressed }) => [styles.settingsButton, { opacity: pressed ? 0.6 : 1 }]}
+              testID="explore-settings-button"
+            >
+              <Ionicons name="settings-outline" size={22} color="rgba(255,255,255,0.85)" />
+            </Pressable>
           </View>
-          <Pressable
-            onPress={() => router.push("/settings")}
-            hitSlop={12}
-            style={({ pressed }) => [
-              styles.settingsButton,
-              { opacity: pressed ? 0.6 : 1 },
-            ]}
-            testID="explore-settings-button"
-          >
-            <Ionicons name="settings-outline" size={22} color={Colors.textSecondary} />
-          </Pressable>
+          <Text style={styles.subtitle}>Narrative intelligence, live</Text>
         </View>
-        <Text style={styles.subtitle}>Narrative intelligence, live</Text>
 
         {tonightStory && (
           <View style={styles.tonightCard}>
@@ -268,24 +261,18 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingHorizontal: 16,
   },
-  header: {
+  headerBanner: {
+    backgroundColor: "#1CB0F6",
+    marginHorizontal: -16,
+    paddingHorizontal: 20,
+    paddingBottom: 28,
+    marginBottom: 20,
+  },
+  headerBannerRow: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     marginBottom: 6,
-  },
-  headerLeft: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 10,
-  },
-  headerIconWrap: {
-    width: 38,
-    height: 38,
-    borderRadius: 12,
-    backgroundColor: "#1CB0F6",
-    alignItems: "center",
-    justifyContent: "center",
   },
   settingsButton: {
     width: 38,
@@ -293,22 +280,18 @@ const styles = StyleSheet.create({
     borderRadius: 19,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: Colors.card,
-    borderWidth: 1,
-    borderColor: Colors.border,
+    backgroundColor: "rgba(0,0,0,0.15)",
   },
   headerTitle: {
-    fontSize: 28,
-    fontWeight: "700" as const,
-    color: Colors.textPrimary,
+    fontSize: 32,
+    color: "#fff",
     fontFamily: "Inter_700Bold",
     letterSpacing: -0.5,
   },
   subtitle: {
     fontSize: 14,
-    color: Colors.textMuted,
+    color: "rgba(255,255,255,0.75)",
     fontFamily: "Inter_400Regular",
-    marginBottom: 20,
   },
   emptyContainer: {
     alignItems: "center",

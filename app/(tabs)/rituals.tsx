@@ -201,33 +201,25 @@ export default function RitualsScreen() {
         contentContainerStyle={[
           styles.scrollContent,
           {
-            paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 16,
             paddingBottom: Platform.OS === "web" ? 34 : 110,
           },
         ]}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.header}>
-          <View style={styles.headerLeft}>
-            <View style={styles.headerIconWrap}>
-              <Ionicons name="grid" size={20} color="#fff" />
-            </View>
+        <View style={[styles.headerBanner, { paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 20 }]}>
+          <View style={styles.headerBannerRow}>
             <Text style={styles.headerTitle}>Rituals</Text>
+            <Pressable
+              onPress={() => router.push("/settings")}
+              hitSlop={12}
+              style={({ pressed }) => [styles.settingsButton, { opacity: pressed ? 0.6 : 1 }]}
+              testID="rituals-settings-button"
+            >
+              <Ionicons name="settings-outline" size={22} color="rgba(255,255,255,0.85)" />
+            </Pressable>
           </View>
-          <Pressable
-            onPress={() => router.push("/settings")}
-            hitSlop={12}
-            style={({ pressed }) => [
-              styles.settingsButton,
-              { opacity: pressed ? 0.6 : 1 },
-            ]}
-            testID="rituals-settings-button"
-          >
-            <Ionicons name="settings-outline" size={22} color={Colors.textSecondary} />
-          </Pressable>
+          <Text style={styles.subtitle}>Your personalized viewing schedule</Text>
         </View>
-
-        <Text style={styles.subtitle}>Your personalized viewing schedule</Text>
 
         <View style={styles.ritualsContainer}>
           {sortedRituals.filter((occ) =>
@@ -253,24 +245,18 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingHorizontal: 16,
   },
-  header: {
+  headerBanner: {
+    backgroundColor: Colors.accent,
+    marginHorizontal: -16,
+    paddingHorizontal: 20,
+    paddingBottom: 28,
+    marginBottom: 20,
+  },
+  headerBannerRow: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     marginBottom: 6,
-  },
-  headerLeft: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 10,
-  },
-  headerIconWrap: {
-    width: 38,
-    height: 38,
-    borderRadius: 12,
-    backgroundColor: Colors.accent,
-    alignItems: "center",
-    justifyContent: "center",
   },
   settingsButton: {
     width: 38,
@@ -278,22 +264,18 @@ const styles = StyleSheet.create({
     borderRadius: 19,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: Colors.card,
-    borderWidth: 1,
-    borderColor: Colors.border,
+    backgroundColor: "rgba(0,0,0,0.15)",
   },
   headerTitle: {
-    fontSize: 28,
-    fontWeight: "700" as const,
-    color: Colors.textPrimary,
+    fontSize: 32,
+    color: "#fff",
     fontFamily: "Inter_700Bold",
     letterSpacing: -0.5,
   },
   subtitle: {
     fontSize: 14,
-    color: Colors.textMuted,
+    color: "rgba(255,255,255,0.75)",
     fontFamily: "Inter_400Regular",
-    marginBottom: 20,
   },
   ritualsContainer: {
     gap: 12,
