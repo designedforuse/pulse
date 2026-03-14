@@ -675,6 +675,28 @@ async function fetchJapanLeagueOneScores(
   return scores;
 }
 
+// ESPN display name → CHN/stored team name aliases for NCAA hockey
+const NCAA_HOCKEY_ALIASES: Record<string, string> = {
+  "UConn Huskies": "Connecticut",
+  "UConn": "Connecticut",
+  "Massachusetts Lowell River Hawks": "Mass.-Lowell",
+  "UMass Lowell": "Mass.-Lowell",
+  "Massachusetts Minutemen": "UMass",
+  "UMass Minutemen": "UMass",
+  "Northeastern Huskies": "Northeastern",
+  "Boston University Terriers": "Boston University",
+  "Boston College Eagles": "Boston College",
+  "Maine Black Bears": "Maine",
+  "Vermont Catamounts": "Vermont",
+  "New Hampshire Wildcats": "New Hampshire",
+  "Merrimack Warriors": "Merrimack",
+  "Sacred Heart Pioneers": "Sacred Heart",
+};
+
+function resolveNcaaTeamName(espnName: string): string {
+  return NCAA_HOCKEY_ALIASES[espnName] || espnName;
+}
+
 async function fetchNcaaHockeyScores(
   events: { id: string; homeTeam: string; awayTeam: string; startTime: string }[]
 ): Promise<Record<string, ScoreData>> {
@@ -702,8 +724,8 @@ async function fetchNcaaHockeyScores(
       const awayComp = comp.competitors?.find((c: any) => c.homeAway === "away");
       if (!homeComp || !awayComp) continue;
 
-      const espnHome = homeComp.team?.displayName || homeComp.team?.shortDisplayName || "";
-      const espnAway = awayComp.team?.displayName || awayComp.team?.shortDisplayName || "";
+      const espnHome = resolveNcaaTeamName(homeComp.team?.displayName || homeComp.team?.shortDisplayName || "");
+      const espnAway = resolveNcaaTeamName(awayComp.team?.displayName || awayComp.team?.shortDisplayName || "");
 
       const espnDateStr = espnEvent.date || comp.date || "";
       const espnStartMs = espnDateStr ? new Date(espnDateStr).getTime() : 0;

@@ -18938,42 +18938,6 @@
   },
   "movements": [
     {
-      "playerId": "8475343",
-      "playerName": "N. Dowd",
-      "fromTeam": "WSH",
-      "toTeam": "VGK",
-      "detectedAt": "2026-03-07T07:19:00.761Z",
-      "lastSeenFrom": "2026-03-05T04:50:57.276Z",
-      "firstSeenTo": "2026-03-07T07:19:00.761Z"
-    },
-    {
-      "playerId": "8476473",
-      "playerName": "C. Murphy",
-      "fromTeam": "CHI",
-      "toTeam": "EDM",
-      "detectedAt": "2026-03-07T07:19:00.761Z",
-      "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-      "firstSeenTo": "2026-03-07T07:19:00.761Z"
-    },
-    {
-      "playerId": "8477450",
-      "playerName": "J. Dickinson",
-      "fromTeam": "CHI",
-      "toTeam": "EDM",
-      "detectedAt": "2026-03-07T07:19:00.761Z",
-      "lastSeenFrom": "2026-03-04T04:02:55.897Z",
-      "firstSeenTo": "2026-03-07T07:19:00.761Z"
-    },
-    {
-      "playerId": "8482703",
-      "playerName": "C. Dach",
-      "fromTeam": "CHI",
-      "toTeam": "EDM",
-      "detectedAt": "2026-03-07T07:19:00.761Z",
-      "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-      "firstSeenTo": "2026-03-07T07:19:00.761Z"
-    },
-    {
       "playerId": "8481553",
       "playerName": "B. Brink",
       "fromTeam": "PHI",
@@ -19188,9 +19152,45 @@
       "detectedAt": "2026-03-14T06:00:32.337Z",
       "lastSeenFrom": "2026-03-07T07:19:00.761Z",
       "firstSeenTo": "2026-03-14T06:00:32.337Z"
+    },
+    {
+      "playerId": "8475343",
+      "playerName": "N. Dowd",
+      "fromTeam": "WSH",
+      "toTeam": "VGK",
+      "detectedAt": "2026-03-14T18:00:34.353Z",
+      "lastSeenFrom": "2026-03-05T04:50:57.276Z",
+      "firstSeenTo": "2026-03-14T06:00:32.337Z"
+    },
+    {
+      "playerId": "8476473",
+      "playerName": "C. Murphy",
+      "fromTeam": "CHI",
+      "toTeam": "EDM",
+      "detectedAt": "2026-03-14T18:00:34.353Z",
+      "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+      "firstSeenTo": "2026-03-09T20:15:48.605Z"
+    },
+    {
+      "playerId": "8477450",
+      "playerName": "J. Dickinson",
+      "fromTeam": "CHI",
+      "toTeam": "EDM",
+      "detectedAt": "2026-03-14T18:00:34.353Z",
+      "lastSeenFrom": "2026-03-04T04:02:55.897Z",
+      "firstSeenTo": "2026-03-09T20:15:48.605Z"
+    },
+    {
+      "playerId": "8482703",
+      "playerName": "C. Dach",
+      "fromTeam": "CHI",
+      "toTeam": "EDM",
+      "detectedAt": "2026-03-14T18:00:34.353Z",
+      "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+      "firstSeenTo": "2026-03-09T20:15:48.605Z"
     }
   ],
-  "lastUpdated": "2026-03-14T06:00:32.337Z",
+  "lastUpdated": "2026-03-14T18:00:34.353Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -19202,7 +19202,6 @@
       "CGY",
       "EDM",
       "VAN",
-      "OTT",
       "MTL",
       "PHI",
       "DET",
@@ -19226,24 +19225,42 @@
     "playersIngested": 651,
     "movementsDetectedThisRun": [
       {
-        "playerId": "8475753",
-        "playerName": "J. Faulk",
-        "fromTeam": "STL",
-        "toTeam": "DET",
-        "detectedAt": "2026-03-14T06:00:32.337Z",
-        "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+        "playerId": "8475343",
+        "playerName": "N. Dowd",
+        "fromTeam": "WSH",
+        "toTeam": "VGK",
+        "detectedAt": "2026-03-14T18:00:34.353Z",
+        "lastSeenFrom": "2026-03-05T04:50:57.276Z",
         "firstSeenTo": "2026-03-14T06:00:32.337Z"
       },
       {
-        "playerId": "8483565",
-        "playerName": "N. Blankenburg",
-        "fromTeam": "NSH",
-        "toTeam": "COL",
-        "detectedAt": "2026-03-14T06:00:32.337Z",
-        "lastSeenFrom": "2026-03-07T07:19:00.761Z",
-        "firstSeenTo": "2026-03-14T06:00:32.337Z"
+        "playerId": "8476473",
+        "playerName": "C. Murphy",
+        "fromTeam": "CHI",
+        "toTeam": "EDM",
+        "detectedAt": "2026-03-14T18:00:34.353Z",
+        "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+        "firstSeenTo": "2026-03-09T20:15:48.605Z"
+      },
+      {
+        "playerId": "8477450",
+        "playerName": "J. Dickinson",
+        "fromTeam": "CHI",
+        "toTeam": "EDM",
+        "detectedAt": "2026-03-14T18:00:34.353Z",
+        "lastSeenFrom": "2026-03-04T04:02:55.897Z",
+        "firstSeenTo": "2026-03-09T20:15:48.605Z"
+      },
+      {
+        "playerId": "8482703",
+        "playerName": "C. Dach",
+        "fromTeam": "CHI",
+        "toTeam": "EDM",
+        "detectedAt": "2026-03-14T18:00:34.353Z",
+        "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+        "firstSeenTo": "2026-03-09T20:15:48.605Z"
       }
     ],
-    "timestamp": "2026-03-14T06:00:32.337Z"
+    "timestamp": "2026-03-14T18:00:34.353Z"
   }
 }

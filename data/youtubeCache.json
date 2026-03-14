@@ -59,14 +59,14 @@
       "title": "Saskatchewan NDP predicts higher rates under coal plans | CTV News Regina at Six March 13, 2026",
       "source": "youtube",
       "channel": "CTV News",
-      "publishedAt": "3 hours ago"
+      "publishedAt": "15 hours ago"
     },
-    "fetchedAt": "2026-03-14T06:00:40.381Z",
+    "fetchedAt": "2026-03-14T18:00:42.628Z",
     "query": "Boston Bruins playoff push March 2026",
     "debug": {
       "searchQuery": "Boston Bruins playoff push March 2026",
       "selectedVideoTitle": "Saskatchewan NDP predicts higher rates under coal plans | CTV News Regina at Six March 13, 2026",
-      "selectedVideoPublishedAt": "3 hours ago",
+      "selectedVideoPublishedAt": "15 hours ago",
       "selectedVideoChannel": "CTV News",
       "rejectedForAgeCount": 0
     }
@@ -229,7 +229,7 @@
   },
   "playoff_push:san diego gulls playoff push march 2026": {
     "video": null,
-    "fetchedAt": "2026-03-14T06:00:40.159Z",
+    "fetchedAt": "2026-03-14T18:00:42.269Z",
     "query": "San Diego Gulls playoff push March 2026",
     "debug": {
       "searchQuery": "San Diego Gulls playoff push March 2026",
@@ -329,21 +329,33 @@
   },
   "league_moment:chinese grand prix sports march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=UT15Nesz7k4",
-      "thumbnailUrl": "https://img.youtube.com/vi/UT15Nesz7k4/hqdefault.jpg",
-      "durationSeconds": 4053,
-      "title": "🔴F1 LIVE - Chinese GP SPRINT - Commentary + Live Timing🏎️",
+      "url": "https://www.youtube.com/watch?v=B8_vZL0Xq8k",
+      "thumbnailUrl": "https://img.youtube.com/vi/B8_vZL0Xq8k/hqdefault.jpg",
+      "durationSeconds": 723,
+      "title": "Wang Yibo's new season for 85Racing officially announced: a breakthrough with both professional raci",
       "source": "youtube",
-      "channel": "Nexadevil",
-      "publishedAt": "Streamed 2 hours ago"
+      "channel": "China Celebrity Drama Hub",
+      "publishedAt": "1 hour ago"
     },
-    "fetchedAt": "2026-03-14T06:00:40.950Z",
+    "fetchedAt": "2026-03-14T18:00:43.307Z",
     "query": "Chinese Grand Prix sports March 2026",
     "debug": {
       "searchQuery": "Chinese Grand Prix sports March 2026",
-      "selectedVideoTitle": "🔴F1 LIVE - Chinese GP SPRINT - Commentary + Live Timing🏎️",
-      "selectedVideoPublishedAt": "Streamed 2 hours ago",
-      "selectedVideoChannel": "Nexadevil",
+      "selectedVideoTitle": "Wang Yibo's new season for 85Racing officially announced: a breakthrough with both professional raci",
+      "selectedVideoPublishedAt": "1 hour ago",
+      "selectedVideoChannel": "China Celebrity Drama Hub",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:sinner clinch playoff berth march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-14T18:00:42.892Z",
+    "query": "Sinner clinch playoff berth March 2026",
+    "debug": {
+      "searchQuery": "Sinner clinch playoff berth March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   }

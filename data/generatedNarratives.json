@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-03-14T06:00:32.337Z",
+  "lastUpdated": "2026-03-14T18:00:34.353Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
         "NewEngland": 1,
         "SoCal": 1,
-        "Other": 3
+        "Other": 2
       },
       "league_moment": {
         "Other": 3
@@ -37,13 +37,6 @@
     },
     "droppedCandidatesReasons": [
       {
-        "id": "playoff_push_clinch_fallback_nhl_2025021044",
-        "kind": "playoff_push",
-        "region": "Other",
-        "title": "Playoff Push",
-        "reason": "max 1 playoff_push per region (Other)"
-      },
-      {
         "id": "playoff_push_clinch_fallback_nhl_2025021059",
         "kind": "playoff_push",
         "region": "Other",
@@ -65,7 +58,7 @@
         "reason": "max 1 league_moment per region (Other)"
       }
     ],
-    "totalBeforeCap": 10,
+    "totalBeforeCap": 9,
     "totalAfterCap": 6,
     "playerMovement": {
       "rawMovementCandidates": 1,
@@ -84,7 +77,6 @@
           "CGY",
           "EDM",
           "VAN",
-          "OTT",
           "MTL",
           "PHI",
           "DET",
@@ -108,35 +100,53 @@
         "playersIngested": 651,
         "movementsDetectedThisRun": [
           {
-            "playerId": "8475753",
-            "playerName": "J. Faulk",
-            "fromTeam": "STL",
-            "toTeam": "DET",
-            "detectedAt": "2026-03-14T06:00:32.337Z",
-            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+            "playerId": "8475343",
+            "playerName": "N. Dowd",
+            "fromTeam": "WSH",
+            "toTeam": "VGK",
+            "detectedAt": "2026-03-14T18:00:34.353Z",
+            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
             "firstSeenTo": "2026-03-14T06:00:32.337Z"
           },
           {
-            "playerId": "8483565",
-            "playerName": "N. Blankenburg",
-            "fromTeam": "NSH",
-            "toTeam": "COL",
-            "detectedAt": "2026-03-14T06:00:32.337Z",
-            "lastSeenFrom": "2026-03-07T07:19:00.761Z",
-            "firstSeenTo": "2026-03-14T06:00:32.337Z"
+            "playerId": "8476473",
+            "playerName": "C. Murphy",
+            "fromTeam": "CHI",
+            "toTeam": "EDM",
+            "detectedAt": "2026-03-14T18:00:34.353Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-09T20:15:48.605Z"
+          },
+          {
+            "playerId": "8477450",
+            "playerName": "J. Dickinson",
+            "fromTeam": "CHI",
+            "toTeam": "EDM",
+            "detectedAt": "2026-03-14T18:00:34.353Z",
+            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
+            "firstSeenTo": "2026-03-09T20:15:48.605Z"
+          },
+          {
+            "playerId": "8482703",
+            "playerName": "C. Dach",
+            "fromTeam": "CHI",
+            "toTeam": "EDM",
+            "detectedAt": "2026-03-14T18:00:34.353Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-09T20:15:48.605Z"
           }
         ],
-        "timestamp": "2026-03-14T06:00:32.337Z"
+        "timestamp": "2026-03-14T18:00:34.353Z"
       },
       "cacheHistoryCount": 767,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 10,
+    "candidateCountBeforeCap": 9,
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -154.0089825,
+      "hoursUntil": -166.0095425,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -152,11 +162,10 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 5,
+      "rawClinchCandidates": 4,
       "clinchAfterRegionFilter": 1,
       "clinchFinalCount": 1,
       "clinchGatedOut": [
-        "Anaheim Ducks: before Mar 25, 75 pts < 95",
         "Boston Bruins: before Mar 25, 78 pts < 95",
         "Anaheim Ducks: before Mar 25, 75 pts < 95"
       ]
@@ -185,11 +194,6 @@
           "label": "[playoff_push] Your Team's Push",
           "score": 170,
           "reason": "playoff_push involving followed team(s): San Diego Gulls, Tulsa Oilers"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): Anaheim Ducks"
         },
         {
           "label": "[playoff_push] Your Team's Push",
@@ -244,22 +248,29 @@
       "playoff_push_newengland": {
         "searchQuery": "Boston Bruins playoff push March 2026",
         "selectedVideoTitle": "Saskatchewan NDP predicts higher rates under coal plans | CTV News Regina at Six March 13, 2026",
-        "selectedVideoPublishedAt": "3 hours ago",
+        "selectedVideoPublishedAt": "15 hours ago",
         "selectedVideoChannel": "CTV News",
         "rejectedForAgeCount": 0
       },
-      "playoff_push_clinch_fallback_nhl_2025021043": {
-        "searchQuery": "Anaheim Ducks playoff push March 2026",
-        "selectedVideoTitle": "2nd broken wire keeps O-Train shut down | CTV News Ottawa at Five for Friday, March 13, 2026",
-        "selectedVideoPublishedAt": "5 hours ago",
+      "clinch_watch_tennis-espn-172942": {
+        "searchQuery": "Sinner clinch playoff berth March 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
+        "rejectedForAgeCount": 0
+      },
+      "playoff_push_clinch_fallback_nhl_2025021044": {
+        "searchQuery": "Boston Bruins playoff push March 2026",
+        "selectedVideoTitle": "Saskatchewan NDP predicts higher rates under coal plans | CTV News Regina at Six March 13, 2026",
+        "selectedVideoPublishedAt": "15 hours ago",
         "selectedVideoChannel": "CTV News",
         "rejectedForAgeCount": 0
       },
       "f1_race_weekend_chinese_grand_prix": {
         "searchQuery": "Chinese Grand Prix sports March 2026",
-        "selectedVideoTitle": "🔴F1 LIVE - Chinese GP SPRINT - Commentary + Live Timing🏎️",
-        "selectedVideoPublishedAt": "Streamed 2 hours ago",
-        "selectedVideoChannel": "Nexadevil",
+        "selectedVideoTitle": "Wang Yibo's new season for 85Racing officially announced: a breakthrough with both professional raci",
+        "selectedVideoPublishedAt": "1 hour ago",
+        "selectedVideoChannel": "China Celebrity Drama Hub",
         "rejectedForAgeCount": 0
       }
     }
@@ -275,8 +286,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-14T06:00:32.337Z",
-      "expiresAt": "2026-03-21T06:00:32.337Z",
+      "triggeredAt": "2026-03-14T18:00:34.353Z",
+      "expiresAt": "2026-03-21T18:00:34.353Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -311,8 +322,8 @@
           "echl-web-25211"
         ],
         "combinedTeamCount": 2,
-        "windowStart": "2026-03-14T06:00:32.337Z",
-        "windowEnd": "2026-03-21T06:00:32.337Z",
+        "windowStart": "2026-03-14T18:00:34.353Z",
+        "windowEnd": "2026-03-21T18:00:34.353Z",
         "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season.\n\nTulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -328,8 +339,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-14T06:00:32.337Z",
-      "expiresAt": "2026-03-21T06:00:32.337Z",
+      "triggeredAt": "2026-03-14T18:00:34.353Z",
+      "expiresAt": "2026-03-21T18:00:34.353Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -352,8 +363,8 @@
           "nhl_2025021083"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-14T06:00:32.337Z",
-        "windowEnd": "2026-03-21T06:00:32.337Z",
+        "windowStart": "2026-03-14T18:00:34.353Z",
+        "windowEnd": "2026-03-21T18:00:34.353Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -366,53 +377,52 @@
         "title": "Saskatchewan NDP predicts higher rates under coal plans | CTV News Regina at Six March 13, 2026",
         "source": "youtube",
         "channel": "CTV News",
-        "publishedAt": "3 hours ago"
+        "publishedAt": "15 hours ago"
       }
     },
     {
-      "id": "clinch_watch_rugby-svns-wxakat-d1",
+      "id": "clinch_watch_tennis-espn-172942",
       "title": "Clinch Watch",
-      "subtitle": "Can secure semifinal place tonight",
+      "subtitle": "Sinner vs Zverev · Tennis title on the line",
       "impact": {
-        "label": "Impacts: Saturday Warm-Up",
-        "ritualId": "saturday_sunrise",
+        "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-14T06:00:32.337Z",
-      "expiresAt": "2026-03-14T18:00:00.000Z",
+      "triggeredAt": "2026-03-14T18:00:34.353Z",
+      "expiresAt": "2026-03-15T00:30:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "source": "team_config",
-        "conditionLabel": "Can secure semifinal place",
-        "sport": "rugby",
-        "league": "HSBC SVNS",
-        "awayTeam": "",
-        "homeTeam": "SVNS New York",
-        "startTime": "2026-03-14T14:00:00.000Z",
+        "source": "tournament",
+        "conditionLabel": "Tennis title on the line",
+        "sport": "tennis",
+        "league": "ATP Masters 1000",
+        "awayTeam": "Sinner",
+        "homeTeam": "Zverev",
+        "startTime": "2026-03-14T20:30:00.000Z",
         "eventIds": [
-          "rugby-svns-wxakat-d1"
+          "tennis-espn-172942"
         ],
-        "reason": "SVNS New York have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
+        "reason": "Sinner and Zverev meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
       },
       "sports": [
-        "rugby"
+        "tennis"
       ]
     },
     {
-      "id": "playoff_push_clinch_fallback_nhl_2025021043",
+      "id": "playoff_push_clinch_fallback_nhl_2025021044",
       "title": "Playoff Push",
-      "subtitle": "A win keeps Anaheim Ducks in the playoff race.",
+      "subtitle": "A win keeps Boston Bruins in the playoff race.",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-14T06:00:32.337Z",
-      "expiresAt": "2026-03-14T21:00:00.000Z",
+      "triggeredAt": "2026-03-14T18:00:34.353Z",
+      "expiresAt": "2026-03-14T23:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
       "regionPriority": 99,
@@ -420,39 +430,39 @@
       "meta": {
         "teams": [
           {
-            "team": "Anaheim Ducks",
+            "team": "Boston Bruins",
             "league": "NHL"
           }
         ],
         "eventIds": [
-          "nhl_2025021043"
+          "nhl_2025021044"
         ],
-        "reason": "Anaheim Ducks has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
+        "reason": "Boston Bruins has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
         "clinchFallback": true
       },
       "sports": [
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=9-TZxAI-By8",
-        "thumbnailUrl": "https://img.youtube.com/vi/9-TZxAI-By8/hqdefault.jpg",
-        "durationSeconds": 1338,
-        "title": "2nd broken wire keeps O-Train shut down | CTV News Ottawa at Five for Friday, March 13, 2026",
+        "url": "https://www.youtube.com/watch?v=PTtjBCnVn8Q",
+        "thumbnailUrl": "https://img.youtube.com/vi/PTtjBCnVn8Q/hqdefault.jpg",
+        "durationSeconds": 2614,
+        "title": "Saskatchewan NDP predicts higher rates under coal plans | CTV News Regina at Six March 13, 2026",
         "source": "youtube",
         "channel": "CTV News",
-        "publishedAt": "5 hours ago"
+        "publishedAt": "15 hours ago"
       }
     },
     {
       "id": "f1_race_weekend_chinese_grand_prix",
       "title": "Chinese Grand Prix",
-      "subtitle": "Chinese Grand Prix — 2 sessions in the next 48h: Qualifying, Race",
+      "subtitle": "Chinese Grand Prix — 1 session in the next 48h: Race",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-03-14T06:00:32.337Z",
+      "triggeredAt": "2026-03-14T18:00:34.353Z",
       "expiresAt": "2026-03-15T11:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
@@ -461,13 +471,8 @@
       "meta": {
         "type": "f1_race_weekend",
         "grandPrix": "Chinese Grand Prix",
-        "sessionCount": 2,
+        "sessionCount": 1,
         "sessions": [
-          {
-            "sessionTitle": "Qualifying",
-            "startTime": "2026-03-14T07:00:00.000Z",
-            "eventId": "f1-espn-401839036"
-          },
           {
             "sessionTitle": "Race",
             "startTime": "2026-03-15T07:00:00.000Z",
@@ -475,73 +480,40 @@
           }
         ],
         "eventIds": [
-          "f1-espn-401839036",
           "f1-espn-401839037"
         ],
-        "reason": "Chinese Grand Prix race weekend — 2 session(s) within 48 hours"
+        "reason": "Chinese Grand Prix race weekend — 1 session(s) within 48 hours"
       },
       "sports": [
         "racing"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=UT15Nesz7k4",
-        "thumbnailUrl": "https://img.youtube.com/vi/UT15Nesz7k4/hqdefault.jpg",
-        "durationSeconds": 4053,
-        "title": "🔴F1 LIVE - Chinese GP SPRINT - Commentary + Live Timing🏎️",
+        "url": "https://www.youtube.com/watch?v=B8_vZL0Xq8k",
+        "thumbnailUrl": "https://img.youtube.com/vi/B8_vZL0Xq8k/hqdefault.jpg",
+        "durationSeconds": 723,
+        "title": "Wang Yibo's new season for 85Racing officially announced: a breakthrough with both professional raci",
         "source": "youtube",
-        "channel": "Nexadevil",
-        "publishedAt": "Streamed 2 hours ago"
+        "channel": "China Celebrity Drama Hub",
+        "publishedAt": "1 hour ago"
       }
     },
     {
       "id": "player_movement_system",
       "title": "System Shuffle",
-      "subtitle": "28 player moves detected (WSH ↔ VGK ↔ CHI ↔ EDM ↔ PHI ↔ MIN ↔ STL ↔ NYI ↔ TOR ↔ LAK ↔ DET ↔ PIT ↔ OTT ↔ COL ↔ CGY ↔ VAN ↔ CBJ ↔ TBL ↔ DAL ↔ ANA ↔ FLA ↔ NSH ↔ WPG ↔ BUF ↔ SJS)",
+      "subtitle": "28 player moves detected (PHI ↔ MIN ↔ STL ↔ NYI ↔ TOR ↔ LAK ↔ DET ↔ PIT ↔ EDM ↔ CHI ↔ OTT ↔ COL ↔ CGY ↔ VAN ↔ CBJ ↔ TBL ↔ DAL ↔ ANA ↔ FLA ↔ NSH ↔ WPG ↔ BUF ↔ SJS ↔ WSH ↔ VGK)",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-03-14T06:00:32.337Z",
-      "expiresAt": "2026-03-21T06:00:32.337Z",
+      "triggeredAt": "2026-03-14T18:00:34.353Z",
+      "expiresAt": "2026-03-21T18:00:34.353Z",
       "kind": "player_movement",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "movements": [
-          {
-            "player": "N. Dowd",
-            "from": "WSH",
-            "to": "VGK",
-            "detected": "2026-03-07T07:19:00.761Z",
-            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
-            "firstSeenTo": "2026-03-07T07:19:00.761Z"
-          },
-          {
-            "player": "C. Murphy",
-            "from": "CHI",
-            "to": "EDM",
-            "detected": "2026-03-07T07:19:00.761Z",
-            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-            "firstSeenTo": "2026-03-07T07:19:00.761Z"
-          },
-          {
-            "player": "J. Dickinson",
-            "from": "CHI",
-            "to": "EDM",
-            "detected": "2026-03-07T07:19:00.761Z",
-            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
-            "firstSeenTo": "2026-03-07T07:19:00.761Z"
-          },
-          {
-            "player": "C. Dach",
-            "from": "CHI",
-            "to": "EDM",
-            "detected": "2026-03-07T07:19:00.761Z",
-            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-            "firstSeenTo": "2026-03-07T07:19:00.761Z"
-          },
           {
             "player": "B. Brink",
             "from": "PHI",
@@ -733,6 +705,38 @@
             "detected": "2026-03-14T06:00:32.337Z",
             "lastSeenFrom": "2026-03-07T07:19:00.761Z",
             "firstSeenTo": "2026-03-14T06:00:32.337Z"
+          },
+          {
+            "player": "N. Dowd",
+            "from": "WSH",
+            "to": "VGK",
+            "detected": "2026-03-14T18:00:34.353Z",
+            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
+            "firstSeenTo": "2026-03-14T06:00:32.337Z"
+          },
+          {
+            "player": "C. Murphy",
+            "from": "CHI",
+            "to": "EDM",
+            "detected": "2026-03-14T18:00:34.353Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-09T20:15:48.605Z"
+          },
+          {
+            "player": "J. Dickinson",
+            "from": "CHI",
+            "to": "EDM",
+            "detected": "2026-03-14T18:00:34.353Z",
+            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
+            "firstSeenTo": "2026-03-09T20:15:48.605Z"
+          },
+          {
+            "player": "C. Dach",
+            "from": "CHI",
+            "to": "EDM",
+            "detected": "2026-03-14T18:00:34.353Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-09T20:15:48.605Z"
           }
         ],
         "count": 28,
