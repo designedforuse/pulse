@@ -1985,7 +1985,7 @@ const styles = StyleSheet.create({
   },
   secondaryClock: {
     fontSize: 10,
-    color: Colors.accentSoft,
+    color: "#A78BFA",
     fontFamily: "Inter_600SemiBold",
   },
   secondaryFinal: {
