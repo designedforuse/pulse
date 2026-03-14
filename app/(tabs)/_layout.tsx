@@ -7,6 +7,48 @@ import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import Colors from "@/constants/colors";
 
+const TAB_COLORS = {
+  watch: "#1CB0F6",
+  rituals: "#FF9600",
+  stories: "#CE82FF",
+};
+
+function TabIcon({
+  iconName,
+  focused,
+  color,
+}: {
+  iconName: keyof typeof Ionicons.glyphMap;
+  focused: boolean;
+  color: string;
+}) {
+  return (
+    <View
+      style={[
+        tabIconStyles.wrap,
+        focused && tabIconStyles.wrapFocused,
+      ]}
+    >
+      <Ionicons name={iconName} size={24} color={color} />
+    </View>
+  );
+}
+
+const tabIconStyles = StyleSheet.create({
+  wrap: {
+    width: 46,
+    height: 38,
+    borderRadius: 13,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 2,
+    borderColor: "transparent",
+  },
+  wrapFocused: {
+    borderColor: Colors.accent,
+  },
+});
+
 function NativeTabLayout() {
   return (
     <NativeTabs initialRouteName="watch">
@@ -38,7 +80,7 @@ function ClassicTabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: Colors.accent,
-        tabBarInactiveTintColor: Colors.tabInactive,
+        tabBarInactiveTintColor: Colors.textMuted,
         tabBarStyle: {
           position: "absolute" as const,
           backgroundColor: isIOS ? "transparent" : Colors.background,
@@ -63,8 +105,8 @@ function ClassicTabLayout() {
         name="watch"
         options={{
           title: "Watch",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="play-circle" size={size} color={color} />
+          tabBarIcon: ({ focused }) => (
+            <TabIcon iconName="play-circle" color={TAB_COLORS.watch} focused={focused} />
           ),
         }}
       />
@@ -72,8 +114,8 @@ function ClassicTabLayout() {
         name="rituals"
         options={{
           title: "Rituals",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="grid" size={size} color={color} />
+          tabBarIcon: ({ focused }) => (
+            <TabIcon iconName="grid" color={TAB_COLORS.rituals} focused={focused} />
           ),
         }}
       />
@@ -81,8 +123,8 @@ function ClassicTabLayout() {
         name="index"
         options={{
           title: "Stories",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="compass" size={size} color={color} />
+          tabBarIcon: ({ focused }) => (
+            <TabIcon iconName="compass" color={TAB_COLORS.stories} focused={focused} />
           ),
         }}
       />
