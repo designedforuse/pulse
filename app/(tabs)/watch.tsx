@@ -1149,7 +1149,7 @@ export default function WatchScreen() {
                 <View style={{ flexDirection: "row", alignItems: "center", gap: 7 }}>
                   <Ionicons name="flash" size={22} color="#fff" />
                   <Text style={styles.chaosBannerTitle}>
-                    {chaosSetup.candidateCount > 0 ? "CHAOS MODE" : "NEXT UP"}
+                    {chaosSetup.candidateCount > 0 ? "Chaos Mode" : "Next Up"}
                   </Text>
                 </View>
               </View>
@@ -1161,7 +1161,6 @@ export default function WatchScreen() {
                 ]}
               >
                 <Ionicons name="shuffle" size={20} color="#fff" />
-                <Text style={styles.rebuildText}>Reshuffle</Text>
               </Pressable>
             </View>
 
