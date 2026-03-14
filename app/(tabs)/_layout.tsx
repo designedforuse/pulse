@@ -46,7 +46,7 @@ const tabIconStyles = StyleSheet.create({
     borderColor: "transparent",
   },
   wrapFocused: {
-    borderColor: "rgba(88, 204, 2, 0.55)",
+    borderColor: "rgba(255,255,255,0.1)",
   },
 });
 
