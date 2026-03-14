@@ -9,7 +9,7 @@ import React from "react";
 import Colors from "@/constants/colors";
 
 const TAB_COLORS = {
-  watch: "#FF4B4B",
+  watch: "#818CF8",
   rituals: "#58CC02",
   stories: "#1CB0F6",
 };
@@ -107,7 +107,7 @@ function ClassicTabLayout() {
         options={{
           title: "Watch",
           tabBarIcon: ({ focused }) => (
-            <TabIcon iconName="play-circle" color={TAB_COLORS.watch} focused={focused} />
+            <TabIcon iconName="flash" color={TAB_COLORS.watch} focused={focused} />
           ),
         }}
       />

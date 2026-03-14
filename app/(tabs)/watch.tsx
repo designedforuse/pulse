@@ -1143,12 +1143,13 @@ export default function WatchScreen() {
 
         {hasChaos ? (
           <View style={styles.chaosSection}>
-            <View style={styles.chaosTitleRow}>
-              <Ionicons name="flash" size={20} color="#818CF8" />
-              <Text style={styles.chaosTitle}>
-                {chaosSetup.candidateCount > 0 ? "Chaos Mode" : "Next Up"}
-              </Text>
-              <View style={{ flex: 1 }} />
+            <View style={styles.chaosBanner}>
+              <View>
+                <Text style={styles.chaosBannerLabel}>⚡ 4-GAME CHAOS</Text>
+                <Text style={styles.chaosBannerTitle}>
+                  {chaosSetup.candidateCount > 0 ? "Chaos Mode" : "Next Up"}
+                </Text>
+              </View>
               <Pressable
                 onPress={handleRebuild}
                 style={({ pressed }) => [
@@ -1156,7 +1157,7 @@ export default function WatchScreen() {
                   { opacity: pressed ? 0.7 : 1 },
                 ]}
               >
-                <Ionicons name="shuffle" size={16} color={Colors.accent} />
+                <Ionicons name="shuffle" size={15} color="#fff" />
                 <Text style={styles.rebuildText}>Reshuffle</Text>
               </Pressable>
             </View>
@@ -1448,33 +1449,43 @@ const styles = StyleSheet.create({
   chaosSection: {
     marginBottom: 24,
   },
-  chaosTitleRow: {
+  chaosBanner: {
+    backgroundColor: "#818CF8",
+    borderRadius: 18,
+    borderBottomWidth: 4,
+    borderBottomColor: "#4F46E5",
+    paddingHorizontal: 18,
+    paddingVertical: 14,
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
-    marginBottom: 12,
-    paddingHorizontal: 4,
+    justifyContent: "space-between",
+    marginBottom: 14,
   },
-  chaosTitle: {
-    fontSize: 18,
-    fontWeight: "700" as const,
-    color: Colors.textPrimary,
+  chaosBannerLabel: {
+    fontSize: 11,
+    fontFamily: "Inter_600SemiBold",
+    color: "rgba(255,255,255,0.7)",
+    letterSpacing: 0.8,
+    marginBottom: 3,
+  },
+  chaosBannerTitle: {
+    fontSize: 20,
     fontFamily: "Inter_700Bold",
+    color: "#fff",
   },
   rebuildButton: {
     flexDirection: "row",
     alignItems: "center",
     gap: 5,
-    backgroundColor: Colors.accentDim,
-    paddingHorizontal: 12,
-    paddingVertical: 7,
+    backgroundColor: "rgba(0,0,0,0.2)",
+    paddingHorizontal: 13,
+    paddingVertical: 8,
     borderRadius: 14,
   },
   rebuildText: {
     fontSize: 13,
-    fontWeight: "600" as const,
-    color: Colors.accent,
     fontFamily: "Inter_600SemiBold",
+    color: "#fff",
   },
 
   primaryCard: {
