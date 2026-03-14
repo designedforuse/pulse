@@ -226,6 +226,7 @@ function ChaosCard({
   };
 
   const isRacing = event.sport === "racing";
+  const isGolf = event.sport === "golf";
   const isSvnsSession = event.eventType === "session" && event.leagueKey === "svns";
   const svnsCity = isSvnsSession ? extractSvnsCity(event.homeTeam) : null;
   const svnsData = useSvnsMatches(svnsCity);
@@ -281,6 +282,10 @@ function ChaosCard({
   const qualifyingPhaseText = isQualifying && score?.period
     ? score.period
     : null;
+
+  const golfLeaderName = isGolf ? (score?.golfLeader || null) : null;
+  const golfLeaderScore = isGolf ? (score?.golfLeaderScore || null) : null;
+  const golfLeaderFlag = isGolf && score?.golfLeaderCountry ? getDriverFlag(score.golfLeaderCountry) : null;
 
   if (isPrimary) {
     const microLabel = getHeroMicroLabel(tensionRank, event, now);
@@ -355,9 +360,19 @@ function ChaosCard({
               </View>
             ) : matchupText ? (
               <View style={isSvnsSession ? styles.svnsPrimaryContent : undefined}>
-                <Text style={[styles.primaryMatchup, isSvnsSession && { marginBottom: 4 }]} numberOfLines={2}>{matchupText}</Text>
+                <Text style={[styles.primaryMatchup, (isSvnsSession || (isGolf && golfLeaderName)) && { marginBottom: 4 }]} numberOfLines={2}>{matchupText}</Text>
                 {isSvnsSession && svnsDisplayMatch && (
                   <ChaosCardSvnsRow match={svnsDisplayMatch} />
+                )}
+                {isGolf && golfLeaderName && (
+                  <View style={styles.golfLeaderRow}>
+                    <Text style={styles.golfLeaderText}>
+                      {golfLeaderFlag ? `${golfLeaderFlag} ` : ""}{golfLeaderName}
+                    </Text>
+                    {golfLeaderScore ? (
+                      <Text style={styles.golfLeaderScore}>{golfLeaderScore}</Text>
+                    ) : null}
+                  </View>
                 )}
               </View>
             ) : event.sport === "tennis" ? (
@@ -487,9 +502,19 @@ function ChaosCard({
           </View>
         ) : matchupText ? (
           <View style={isSvnsSession ? styles.svnsSecondaryContent : undefined}>
-            <Text style={[styles.secondaryTeamName, isSvnsSession && { marginBottom: 2 }]} numberOfLines={2}>{matchupText}</Text>
+            <Text style={[styles.secondaryTeamName, (isSvnsSession || (isGolf && golfLeaderName)) && { marginBottom: 2 }]} numberOfLines={2}>{matchupText}</Text>
             {isSvnsSession && svnsDisplayMatch && (
               <ChaosCardSvnsRow match={svnsDisplayMatch} small />
+            )}
+            {isGolf && golfLeaderName && (
+              <View style={styles.golfLeaderRowSm}>
+                <Text style={styles.golfLeaderTextSm} numberOfLines={1}>
+                  {golfLeaderFlag ? `${golfLeaderFlag} ` : ""}{golfLeaderName}
+                </Text>
+                {golfLeaderScore ? (
+                  <Text style={styles.golfLeaderScoreSm}>{golfLeaderScore}</Text>
+                ) : null}
+              </View>
             )}
           </View>
         ) : event.sport === "tennis" ? (
@@ -2113,5 +2138,39 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
     color: Colors.textSecondary,
     marginTop: 2,
+  },
+  golfLeaderRow: {
+    flexDirection: "row" as const,
+    alignItems: "center",
+    gap: 8,
+    marginTop: 2,
+  },
+  golfLeaderText: {
+    fontSize: 18,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+    flex: 1,
+  },
+  golfLeaderScore: {
+    fontSize: 20,
+    fontFamily: "Inter_700Bold",
+    color: "#22C55E",
+  },
+  golfLeaderRowSm: {
+    flexDirection: "row" as const,
+    alignItems: "center",
+    gap: 6,
+    marginTop: 2,
+  },
+  golfLeaderTextSm: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+    flex: 1,
+  },
+  golfLeaderScoreSm: {
+    fontSize: 14,
+    fontFamily: "Inter_700Bold",
+    color: "#22C55E",
   },
 });

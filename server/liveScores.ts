@@ -44,6 +44,9 @@ export interface ScoreData {
   racingLapNum?: number;
   racingTotalLaps?: number;
   racingSessionType?: string;
+  golfLeader?: string;
+  golfLeaderScore?: string;
+  golfLeaderCountry?: string;
 }
 
 export interface ScoresResponse {
@@ -65,6 +68,7 @@ interface LiveEventIdBuckets {
   f1: { id: string; espnCompId: string; sessionTitle: string }[];
   nba: string[];
   ncaabBasketball: string[];
+  golf: { id: string; tournamentName: string }[];
 }
 
 function loadLiveEventIds(): LiveEventIdBuckets {
@@ -79,6 +83,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
   const f1: { id: string; espnCompId: string; sessionTitle: string }[] = [];
   const nba: string[] = [];
   const ncaabBasketball: string[] = [];
+  const golf: { id: string; tournamentName: string }[] = [];
 
   try {
     const raw = fs.readFileSync(GENERATED_EVENTS_PATH, "utf-8");
@@ -143,12 +148,14 @@ function loadLiveEventIds(): LiveEventIdBuckets {
         nba.push(event.id);
       } else if (event.id.startsWith("basketball-ncaab-")) {
         ncaabBasketball.push(event.id);
+      } else if (event.id.startsWith("golf-")) {
+        golf.push({ id: event.id, tournamentName: event.homeTeam || "" });
       }
     }
   } catch {
   }
 
-  return { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba, ncaabBasketball };
+  return { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba, ncaabBasketball, golf };
 }
 
 async function fetchNhlScores(eventIds: string[]): Promise<Record<string, ScoreData>> {
@@ -1226,11 +1233,68 @@ async function fetchNcaabBasketballScores(eventIds: string[]): Promise<Record<st
   return scores;
 }
 
+function slugify(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().replace(/\s+/g, "-");
+}
+
+async function fetchGolfScores(events: { id: string; tournamentName: string }[]): Promise<Record<string, ScoreData>> {
+  const scores: Record<string, ScoreData> = {};
+  if (events.length === 0) return scores;
+
+  try {
+    const res = await fetch("https://site.api.espn.com/apis/site/v2/sports/golf/pga/scoreboard");
+    if (!res.ok) return scores;
+    const data = await res.json() as any;
+
+    for (const espnEvent of data.events || []) {
+      const statusState: string = espnEvent.status?.type?.state || "";
+      if (statusState === "pre") continue;
+
+      const espnName: string = espnEvent.name || "";
+      const espnSlug = slugify(espnName);
+
+      const comp = espnEvent.competitions?.[0];
+      if (!comp) continue;
+
+      const competitors: any[] = comp.competitors || [];
+      competitors.sort((a: any, b: any) => (a.order ?? 99) - (b.order ?? 99));
+      const leader = competitors[0];
+      if (!leader) continue;
+
+      const golfLeader: string = leader.athlete?.displayName || "";
+      const golfLeaderScore: string = leader.score || "";
+      const golfLeaderCountry: string = leader.athlete?.flag?.alt || "";
+
+      const scorePayload: ScoreData = {
+        awayScore: 0,
+        homeScore: 0,
+        status: statusState === "post" ? "final" : "live",
+        golfLeader,
+        golfLeaderScore,
+        golfLeaderCountry,
+      };
+
+      for (const ev of events) {
+        const evSlug = slugify(ev.tournamentName);
+        const espnWords = espnSlug.split("-").filter(w => w.length > 3);
+        const matched = espnWords.length > 0 && espnWords.some(w => evSlug.includes(w));
+        if (matched) {
+          scores[ev.id] = scorePayload;
+        }
+      }
+    }
+  } catch (err) {
+    console.error("[liveScores] Golf fetch error:", err);
+  }
+
+  return scores;
+}
+
 export async function fetchAllLiveScores(): Promise<ScoresResponse> {
-  const { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba, ncaabBasketball } = loadLiveEventIds();
+  const { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba, ncaabBasketball, golf } = loadLiveEventIds();
 
   const japanLeagueOne = rugby.get("Japan League One") || [];
-  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, jlOneScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores] = await Promise.all([
+  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, jlOneScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchAhlScores(ahl),
     fetchEchlScores(echl),
@@ -1243,10 +1307,11 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
     fetchF1Scores(f1),
     fetchNbaScores(nba),
     fetchNcaabBasketballScores(ncaabBasketball),
+    fetchGolfScores(golf),
   ]);
 
   return {
-    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...jlOneScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores },
+    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...jlOneScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores, ...golfScores },
     fetchedAt: new Date().toISOString(),
   };
 }
