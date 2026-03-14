@@ -1105,16 +1105,26 @@ export default function WatchScreen() {
         }
       >
         <View style={styles.header}>
+          <LinearGradient
+            colors={["#58CC02", "#1CB0F6"]}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.brandPill}
+          >
+            <Text style={styles.brandPillText}>SPORTS WATCH</Text>
+          </LinearGradient>
+
           <View style={styles.headerStats}>
             <View style={styles.statChip}>
-              <View style={styles.liveStatDot} />
+              <Ionicons name="flame" size={22} color="#FF9600" />
               <Text style={styles.liveStatCount}>{liveEvents.length}</Text>
             </View>
             <View style={styles.statChip}>
-              <Ionicons name="time" size={22} color="#1CB0F6" />
+              <Ionicons name="alarm" size={22} color="#1CB0F6" />
               <Text style={styles.nextStatCount}>{upNextAll.length}</Text>
             </View>
           </View>
+
           <Pressable
             onPress={() => router.push("/settings")}
             hitSlop={16}
@@ -1397,29 +1407,34 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     paddingHorizontal: 4,
   },
+  brandPill: {
+    borderRadius: 18,
+    paddingHorizontal: 11,
+    paddingVertical: 6,
+  },
+  brandPillText: {
+    fontSize: 11,
+    fontFamily: "Inter_700Bold",
+    color: "#fff",
+    letterSpacing: 0.8,
+  },
   headerStats: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 22,
+    gap: 18,
   },
   statChip: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 7,
-  },
-  liveStatDot: {
-    width: 14,
-    height: 14,
-    borderRadius: 7,
-    backgroundColor: "#FF4B4B",
+    gap: 5,
   },
   liveStatCount: {
-    fontSize: 20,
+    fontSize: 16,
     fontFamily: "Inter_700Bold",
     color: "#FF4B4B",
   },
   nextStatCount: {
-    fontSize: 20,
+    fontSize: 16,
     fontFamily: "Inter_700Bold",
     color: "#1CB0F6",
   },
