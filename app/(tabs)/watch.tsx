@@ -1145,10 +1145,13 @@ export default function WatchScreen() {
           <View style={styles.chaosSection}>
             <View style={styles.chaosBanner}>
               <View>
-                <Text style={styles.chaosBannerLabel}>⚡ 4-GAME CHAOS</Text>
-                <Text style={styles.chaosBannerTitle}>
-                  {chaosSetup.candidateCount > 0 ? "Chaos Mode" : "Next Up"}
-                </Text>
+                <Text style={styles.chaosBannerLabel}>4-GAME CHAOS</Text>
+                <View style={{ flexDirection: "row", alignItems: "center", gap: 7 }}>
+                  <Ionicons name="flash" size={22} color="#fff" />
+                  <Text style={styles.chaosBannerTitle}>
+                    {chaosSetup.candidateCount > 0 ? "CHAOS MODE" : "NEXT UP"}
+                  </Text>
+                </View>
               </View>
               <Pressable
                 onPress={handleRebuild}
@@ -1157,7 +1160,7 @@ export default function WatchScreen() {
                   { opacity: pressed ? 0.7 : 1 },
                 ]}
               >
-                <Ionicons name="shuffle" size={15} color="#fff" />
+                <Ionicons name="shuffle" size={20} color="#fff" />
                 <Text style={styles.rebuildText}>Reshuffle</Text>
               </Pressable>
             </View>
@@ -1455,7 +1458,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 4,
     borderBottomColor: "#4F46E5",
     paddingHorizontal: 18,
-    paddingVertical: 14,
+    paddingVertical: 20,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -1466,25 +1469,26 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
     color: "rgba(255,255,255,0.7)",
     letterSpacing: 0.8,
-    marginBottom: 3,
+    marginBottom: 6,
   },
   chaosBannerTitle: {
-    fontSize: 20,
+    fontSize: 22,
     fontFamily: "Inter_700Bold",
     color: "#fff",
+    letterSpacing: 0.3,
   },
   rebuildButton: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 5,
+    gap: 6,
     backgroundColor: "rgba(0,0,0,0.2)",
-    paddingHorizontal: 13,
-    paddingVertical: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
     borderRadius: 14,
   },
   rebuildText: {
-    fontSize: 13,
-    fontFamily: "Inter_600SemiBold",
+    fontSize: 14,
+    fontFamily: "Inter_700Bold",
     color: "#fff",
   },
 
