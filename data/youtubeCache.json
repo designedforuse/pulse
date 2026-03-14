@@ -53,21 +53,21 @@
   },
   "playoff_push:boston bruins playoff push march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=LwOqH7Xp27Y",
-      "thumbnailUrl": "https://img.youtube.com/vi/LwOqH7Xp27Y/hqdefault.jpg",
-      "durationSeconds": 22353,
-      "title": "Kobo gonna actually reach Chapter 3 this time... OR DOES SHE?!",
+      "url": "https://www.youtube.com/watch?v=PTtjBCnVn8Q",
+      "thumbnailUrl": "https://img.youtube.com/vi/PTtjBCnVn8Q/hqdefault.jpg",
+      "durationSeconds": 2614,
+      "title": "Saskatchewan NDP predicts higher rates under coal plans | CTV News Regina at Six March 13, 2026",
       "source": "youtube",
-      "channel": "GohDroxen",
-      "publishedAt": "12 hours ago"
+      "channel": "CTV News",
+      "publishedAt": "3 hours ago"
     },
-    "fetchedAt": "2026-03-13T04:29:58.430Z",
+    "fetchedAt": "2026-03-14T06:00:40.381Z",
     "query": "Boston Bruins playoff push March 2026",
     "debug": {
       "searchQuery": "Boston Bruins playoff push March 2026",
-      "selectedVideoTitle": "Kobo gonna actually reach Chapter 3 this time... OR DOES SHE?!",
-      "selectedVideoPublishedAt": "12 hours ago",
-      "selectedVideoChannel": "GohDroxen",
+      "selectedVideoTitle": "Saskatchewan NDP predicts higher rates under coal plans | CTV News Regina at Six March 13, 2026",
+      "selectedVideoPublishedAt": "3 hours ago",
+      "selectedVideoChannel": "CTV News",
       "rejectedForAgeCount": 0
     }
   },
@@ -85,21 +85,21 @@
   },
   "playoff_push:anaheim ducks playoff push march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=pK4_a4A97qQ",
-      "thumbnailUrl": "https://img.youtube.com/vi/pK4_a4A97qQ/hqdefault.jpg",
-      "durationSeconds": 3620,
-      "title": "Tom Stillman Joins the Show | Last Minute Blues Podcast",
+      "url": "https://www.youtube.com/watch?v=9-TZxAI-By8",
+      "thumbnailUrl": "https://img.youtube.com/vi/9-TZxAI-By8/hqdefault.jpg",
+      "durationSeconds": 1338,
+      "title": "2nd broken wire keeps O-Train shut down | CTV News Ottawa at Five for Friday, March 13, 2026",
       "source": "youtube",
-      "channel": "101 ESPN",
-      "publishedAt": "7 hours ago"
+      "channel": "CTV News",
+      "publishedAt": "5 hours ago"
     },
-    "fetchedAt": "2026-03-13T04:29:59.851Z",
+    "fetchedAt": "2026-03-14T06:00:40.635Z",
     "query": "Anaheim Ducks playoff push March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push March 2026",
-      "selectedVideoTitle": "Tom Stillman Joins the Show | Last Minute Blues Podcast",
-      "selectedVideoPublishedAt": "7 hours ago",
-      "selectedVideoChannel": "101 ESPN",
+      "selectedVideoTitle": "2nd broken wire keeps O-Train shut down | CTV News Ottawa at Five for Friday, March 13, 2026",
+      "selectedVideoPublishedAt": "5 hours ago",
+      "selectedVideoChannel": "CTV News",
       "rejectedForAgeCount": 0
     }
   },
@@ -229,7 +229,7 @@
   },
   "playoff_push:san diego gulls playoff push march 2026": {
     "video": null,
-    "fetchedAt": "2026-03-13T04:29:58.210Z",
+    "fetchedAt": "2026-03-14T06:00:40.159Z",
     "query": "San Diego Gulls playoff push March 2026",
     "debug": {
       "searchQuery": "San Diego Gulls playoff push March 2026",
@@ -324,6 +324,26 @@
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:chinese grand prix sports march 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=UT15Nesz7k4",
+      "thumbnailUrl": "https://img.youtube.com/vi/UT15Nesz7k4/hqdefault.jpg",
+      "durationSeconds": 4053,
+      "title": "🔴F1 LIVE - Chinese GP SPRINT - Commentary + Live Timing🏎️",
+      "source": "youtube",
+      "channel": "Nexadevil",
+      "publishedAt": "Streamed 2 hours ago"
+    },
+    "fetchedAt": "2026-03-14T06:00:40.950Z",
+    "query": "Chinese Grand Prix sports March 2026",
+    "debug": {
+      "searchQuery": "Chinese Grand Prix sports March 2026",
+      "selectedVideoTitle": "🔴F1 LIVE - Chinese GP SPRINT - Commentary + Live Timing🏎️",
+      "selectedVideoPublishedAt": "Streamed 2 hours ago",
+      "selectedVideoChannel": "Nexadevil",
       "rejectedForAgeCount": 0
     }
   }

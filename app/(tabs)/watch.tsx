@@ -302,19 +302,15 @@ function ChaosCard({
           >
             <View style={[styles.tensionAccent, { backgroundColor: tensionAccentColor ?? "rgba(129,140,248,0.25)" }]} />
             <View style={styles.primaryHeader}>
-              {isRacing ? (
-                <Text style={[styles.primaryLeague, { color: sportColor }]}>
-                  F1 · <Text style={{ color: Colors.textSecondary }}>{gpShort}</Text>
+              <View style={[styles.leaguePill, { backgroundColor: sportColor }]}>
+                <Text style={styles.leaguePillText} numberOfLines={1}>
+                  {isRacing
+                    ? `F1${gpShort ? ` · ${gpShort}` : ""}`
+                    : isSvnsSession && svnsCity
+                    ? `${svnsCity} SVNS${svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}`
+                    : event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.tournamentName || event.league}
                 </Text>
-              ) : isSvnsSession && svnsCity ? (
-                <Text style={[styles.primaryLeague, { color: sportColor }]}>
-                  {svnsCity} SVNS{svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}
-                </Text>
-              ) : (
-                <Text style={[styles.primaryLeague, { color: sportColor }]}>
-                  {event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.tournamentName || event.league}
-                </Text>
-              )}
+              </View>
               <View style={{ flex: 1 }} />
               {isLiveState && (
                 <View style={styles.liveChip}>
@@ -443,19 +439,15 @@ function ChaosCard({
       <Animated.View style={[styles.secondaryInner, flashStyle]}>
         <View style={[styles.tensionAccentSecondary, { backgroundColor: tensionAccentColor ?? "rgba(129,140,248,0.2)" }]} />
         <View style={styles.secondaryHeader}>
-          {isRacing ? (
-            <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
-              F1 · <Text style={{ color: Colors.textSecondary }}>{gpShort}</Text>
+          <View style={[styles.leaguePill, { backgroundColor: sportColor }]}>
+            <Text style={styles.leaguePillText} numberOfLines={1}>
+              {isRacing
+                ? `F1${gpShort ? ` · ${gpShort}` : ""}`
+                : isSvnsSession && svnsCity
+                ? `${svnsCity} SVNS${svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}`
+                : event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.tournamentName || event.league}
             </Text>
-          ) : isSvnsSession && svnsCity ? (
-            <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
-              {svnsCity} SVNS{svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}
-            </Text>
-          ) : (
-            <Text style={[styles.secondaryLeagueSm, { color: sportColor }]} numberOfLines={1}>
-              {event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.tournamentName || event.league}
-            </Text>
-          )}
+          </View>
           {isLiveState && (
             <View style={styles.liveChipSmall}>
               <LiveDot />
@@ -1546,6 +1538,19 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontFamily: "Inter_600SemiBold",
     letterSpacing: 0.3,
+  },
+  leaguePill: {
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
+    flexShrink: 1,
+  },
+  leaguePillText: {
+    fontSize: 10,
+    fontFamily: "Inter_700Bold",
+    color: "#fff",
+    letterSpacing: 0.4,
+    textTransform: "uppercase" as const,
   },
   primaryTeams: {
     gap: 6,

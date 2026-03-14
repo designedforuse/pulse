@@ -1,19 +1,16 @@
 {
-  "lastUpdated": "2026-03-13T04:29:52.527Z",
+  "lastUpdated": "2026-03-14T06:00:32.337Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
         "NewEngland": 1,
         "SoCal": 1,
-        "Other": 2
+        "Other": 3
       },
       "league_moment": {
         "Other": 3
       },
       "player_movement": {
-        "Other": 1
-      },
-      "upset_alert": {
         "Other": 1
       },
       "clinch_watch": {
@@ -22,19 +19,19 @@
     },
     "combinedPushByRegion": {
       "NewEngland": false,
-      "SoCal": false
+      "SoCal": true
     },
     "finalFeedByRegion": {
       "SoCal": [
-        "playoff_push: Gulls Push Week"
+        "playoff_push: SoCal Push Week"
       ],
       "NewEngland": [
         "playoff_push: Bruins Push Week"
       ],
       "Other": [
-        "upset_alert: Upset Alert",
         "clinch_watch: Clinch Watch",
         "playoff_push: Playoff Push",
+        "league_moment: Chinese Grand Prix",
         "player_movement: System Shuffle"
       ]
     },
@@ -47,25 +44,25 @@
         "reason": "max 1 playoff_push per region (Other)"
       },
       {
-        "id": "f1_race_weekend_chinese_grand_prix",
-        "kind": "league_moment",
+        "id": "playoff_push_clinch_fallback_nhl_2025021059",
+        "kind": "playoff_push",
         "region": "Other",
-        "title": "Chinese Grand Prix",
-        "reason": "feed cap (max 6)"
+        "title": "Playoff Push",
+        "reason": "max 1 playoff_push per region (Other)"
       },
       {
         "id": "league_moment_rivalry",
         "kind": "league_moment",
         "region": "Other",
         "title": "Original Six Clash",
-        "reason": "feed cap (max 6)"
+        "reason": "max 1 league_moment per region (Other)"
       },
       {
         "id": "league_moment_tournament",
         "kind": "league_moment",
         "region": "Other",
         "title": "Big Stage",
-        "reason": "feed cap (max 6)"
+        "reason": "max 1 league_moment per region (Other)"
       }
     ],
     "totalBeforeCap": 10,
@@ -108,48 +105,30 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 670,
+        "playersIngested": 651,
         "movementsDetectedThisRun": [
           {
-            "playerId": "8473422",
-            "playerName": "N. Foligno",
-            "fromTeam": "CHI",
-            "toTeam": "MIN",
-            "detectedAt": "2026-03-13T04:29:52.527Z",
-            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
-            "firstSeenTo": "2026-03-13T04:29:52.527Z"
+            "playerId": "8475753",
+            "playerName": "J. Faulk",
+            "fromTeam": "STL",
+            "toTeam": "DET",
+            "detectedAt": "2026-03-14T06:00:32.337Z",
+            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+            "firstSeenTo": "2026-03-14T06:00:32.337Z"
           },
           {
-            "playerId": "8474568",
-            "playerName": "L. Schenn",
-            "fromTeam": "WPG",
-            "toTeam": "BUF",
-            "detectedAt": "2026-03-13T04:29:52.527Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-13T04:29:52.527Z"
-          },
-          {
-            "playerId": "8476871",
-            "playerName": "T. Pearson",
-            "fromTeam": "WPG",
-            "toTeam": "BUF",
-            "detectedAt": "2026-03-13T04:29:52.527Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-13T04:29:52.527Z"
-          },
-          {
-            "playerId": "8481133",
-            "playerName": "C. Reinhardt",
-            "fromTeam": "VGK",
-            "toTeam": "FLA",
-            "detectedAt": "2026-03-13T04:29:52.527Z",
-            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
-            "firstSeenTo": "2026-03-13T04:29:52.527Z"
+            "playerId": "8483565",
+            "playerName": "N. Blankenburg",
+            "fromTeam": "NSH",
+            "toTeam": "COL",
+            "detectedAt": "2026-03-14T06:00:32.337Z",
+            "lastSeenFrom": "2026-03-07T07:19:00.761Z",
+            "firstSeenTo": "2026-03-14T06:00:32.337Z"
           }
         ],
-        "timestamp": "2026-03-13T04:29:52.527Z"
+        "timestamp": "2026-03-14T06:00:32.337Z"
       },
-      "cacheHistoryCount": 766,
+      "cacheHistoryCount": 767,
       "error": null
     },
     "exploreFeedCap": 6,
@@ -157,7 +136,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -128.49792416666668,
+      "hoursUntil": -154.0089825,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -167,34 +146,35 @@
       "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 1,
+      "rawUpsetCandidates": 0,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 1,
-      "upsetFinalCount": 1
+      "upsetCompletedCandidates": 0,
+      "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 3,
+      "rawClinchCandidates": 5,
       "clinchAfterRegionFilter": 1,
       "clinchFinalCount": 1,
       "clinchGatedOut": [
         "Anaheim Ducks: before Mar 25, 75 pts < 95",
-        "Boston Bruins: before Mar 25, 78 pts < 95"
+        "Boston Bruins: before Mar 25, 78 pts < 95",
+        "Anaheim Ducks: before Mar 25, 75 pts < 95"
       ]
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "echl-web-25179",
+    "tonightStorySourceEvent": "basketball-ncaab-20260314-0100-cal-state-northridge-matadors-at-uc-irvine-anteaters",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 340,
-      "sourceEventId": "echl-web-25179",
-      "reason": "7 followed/affiliate teams playing tonight",
+      "selectedScore": 420,
+      "sourceEventId": "basketball-ncaab-20260314-0100-cal-state-northridge-matadors-at-uc-irvine-anteaters",
+      "reason": "11 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 340,
-          "reason": "7 followed/affiliate teams playing tonight"
+          "score": 420,
+          "reason": "11 followed/affiliate teams playing tonight"
         },
         {
           "label": "[playoff_push] Your Team's Push",
@@ -204,7 +184,7 @@
         {
           "label": "[playoff_push] Your Team's Push",
           "score": 170,
-          "reason": "playoff_push involving followed team(s): San Diego Gulls"
+          "reason": "playoff_push involving followed team(s): San Diego Gulls, Tulsa Oilers"
         },
         {
           "label": "[playoff_push] Your Team's Push",
@@ -217,9 +197,14 @@
           "reason": "playoff_push involving followed team(s): Boston Bruins"
         },
         {
-          "label": "[upset_alert] Shock Result",
-          "score": 120,
-          "reason": "upset_alert (generic, no followed teams)"
+          "label": "[playoff_push] Your Team's Push",
+          "score": 170,
+          "reason": "playoff_push involving followed team(s): Anaheim Ducks"
+        },
+        {
+          "label": "[ritual_night] Family Game Night",
+          "score": 130,
+          "reason": "ritual \"Family Game Night\" has 8 followed-team game(s)"
         },
         {
           "label": "[clinch_watch] Playoff Stakes",
@@ -258,30 +243,23 @@
       },
       "playoff_push_newengland": {
         "searchQuery": "Boston Bruins playoff push March 2026",
-        "selectedVideoTitle": "Kobo gonna actually reach Chapter 3 this time... OR DOES SHE?!",
-        "selectedVideoPublishedAt": "12 hours ago",
-        "selectedVideoChannel": "GohDroxen",
-        "rejectedForAgeCount": 0
-      },
-      "upset_alert_nhl_2025021036": {
-        "searchQuery": "Winnipeg Jets vs New York Rangers upset highlights March 2026",
-        "selectedVideoTitle": "Pushing back against infill | CTV Your Morning Edmonton for March 12, 2026",
-        "selectedVideoPublishedAt": "10 hours ago",
+        "selectedVideoTitle": "Saskatchewan NDP predicts higher rates under coal plans | CTV News Regina at Six March 13, 2026",
+        "selectedVideoPublishedAt": "3 hours ago",
         "selectedVideoChannel": "CTV News",
-        "rejectedForAgeCount": 0
-      },
-      "clinch_watch_tennis-espn-172939": {
-        "searchQuery": "Medvedev clinch playoff berth March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
       "playoff_push_clinch_fallback_nhl_2025021043": {
         "searchQuery": "Anaheim Ducks playoff push March 2026",
-        "selectedVideoTitle": "Tom Stillman Joins the Show | Last Minute Blues Podcast",
-        "selectedVideoPublishedAt": "7 hours ago",
-        "selectedVideoChannel": "101 ESPN",
+        "selectedVideoTitle": "2nd broken wire keeps O-Train shut down | CTV News Ottawa at Five for Friday, March 13, 2026",
+        "selectedVideoPublishedAt": "5 hours ago",
+        "selectedVideoChannel": "CTV News",
+        "rejectedForAgeCount": 0
+      },
+      "f1_race_weekend_chinese_grand_prix": {
+        "searchQuery": "Chinese Grand Prix sports March 2026",
+        "selectedVideoTitle": "🔴F1 LIVE - Chinese GP SPRINT - Commentary + Live Timing🏎️",
+        "selectedVideoPublishedAt": "Streamed 2 hours ago",
+        "selectedVideoChannel": "Nexadevil",
         "rejectedForAgeCount": 0
       }
     }
@@ -289,16 +267,16 @@
   "cards": [
     {
       "id": "playoff_push_socal",
-      "title": "Gulls Push Week",
-      "subtitle": "Four games in seven days, including a back-to-back",
+      "title": "SoCal Push Week",
+      "subtitle": "Gulls: Four games in seven days, including a back-to-back · Oilers: Four games in seven days, including a back-to-back",
       "impact": {
-        "label": "Impacts: Family Game Night",
-        "ritualId": "friday_lights",
+        "label": "Impacts: Saturday Game Day",
+        "ritualId": "saturday_spotlight",
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-13T04:29:52.527Z",
-      "expiresAt": "2026-03-20T04:29:52.527Z",
+      "triggeredAt": "2026-03-14T06:00:32.337Z",
+      "expiresAt": "2026-03-21T06:00:32.337Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -312,18 +290,30 @@
             "gamesInNext5Days": 3,
             "hasBackToBack": true,
             "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+          },
+          {
+            "team": "Tulsa Oilers",
+            "league": "ECHL",
+            "gamesInNext7Days": 4,
+            "gamesInNext5Days": 3,
+            "hasBackToBack": true,
+            "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
           }
         ],
         "eventIds": [
-          "ahl-1028681",
           "ahl-1028693",
           "ahl-1028709",
-          "ahl-1028714"
+          "ahl-1028714",
+          "ahl-1028728",
+          "echl-web-25193",
+          "echl-web-25201",
+          "echl-web-25206",
+          "echl-web-25211"
         ],
-        "combinedTeamCount": 1,
-        "windowStart": "2026-03-13T04:29:52.527Z",
-        "windowEnd": "2026-03-20T04:29:52.527Z",
-        "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+        "combinedTeamCount": 2,
+        "windowStart": "2026-03-14T06:00:32.337Z",
+        "windowEnd": "2026-03-21T06:00:32.337Z",
+        "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season.\n\nTulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
         "hockey"
@@ -338,8 +328,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-13T04:29:52.527Z",
-      "expiresAt": "2026-03-20T04:29:52.527Z",
+      "triggeredAt": "2026-03-14T06:00:32.337Z",
+      "expiresAt": "2026-03-21T06:00:32.337Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -362,96 +352,54 @@
           "nhl_2025021083"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-13T04:29:52.527Z",
-        "windowEnd": "2026-03-20T04:29:52.527Z",
+        "windowStart": "2026-03-14T06:00:32.337Z",
+        "windowEnd": "2026-03-21T06:00:32.337Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=LwOqH7Xp27Y",
-        "thumbnailUrl": "https://img.youtube.com/vi/LwOqH7Xp27Y/hqdefault.jpg",
-        "durationSeconds": 22353,
-        "title": "Kobo gonna actually reach Chapter 3 this time... OR DOES SHE?!",
-        "source": "youtube",
-        "channel": "GohDroxen",
-        "publishedAt": "12 hours ago"
-      }
-    },
-    {
-      "id": "upset_alert_nhl_2025021036",
-      "title": "Upset Alert",
-      "subtitle": "New York Rangers upsets Winnipeg Jets",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 98,
-      "triggeredAt": "2026-03-13T04:29:52.527Z",
-      "expiresAt": "2026-03-13T10:29:52.527Z",
-      "kind": "upset_alert",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "mode": "completed",
-        "upsetType": "team_upset",
-        "sport": "hockey",
-        "league": "NHL",
-        "favoriteName": "Winnipeg Jets",
-        "underdogName": "New York Rangers",
-        "awayTeam": "New York Rangers",
-        "homeTeam": "Winnipeg Jets",
-        "startTime": "2026-03-13T00:00:00.000Z",
-        "eventIds": [
-          "nhl_2025021036"
-        ],
-        "reason": "New York Rangers pulled off the upset against Winnipeg Jets.\n\nA result like this can shift momentum for the rest of the season."
-      },
-      "sports": [
-        "hockey"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=a1pa5zl0EKQ",
-        "thumbnailUrl": "https://img.youtube.com/vi/a1pa5zl0EKQ/hqdefault.jpg",
-        "durationSeconds": 8123,
-        "title": "Pushing back against infill | CTV Your Morning Edmonton for March 12, 2026",
+        "url": "https://www.youtube.com/watch?v=PTtjBCnVn8Q",
+        "thumbnailUrl": "https://img.youtube.com/vi/PTtjBCnVn8Q/hqdefault.jpg",
+        "durationSeconds": 2614,
+        "title": "Saskatchewan NDP predicts higher rates under coal plans | CTV News Regina at Six March 13, 2026",
         "source": "youtube",
         "channel": "CTV News",
-        "publishedAt": "10 hours ago"
+        "publishedAt": "3 hours ago"
       }
     },
     {
-      "id": "clinch_watch_tennis-espn-172939",
+      "id": "clinch_watch_rugby-svns-wxakat-d1",
       "title": "Clinch Watch",
-      "subtitle": "Medvedev vs Alcaraz · Tennis title on the line",
+      "subtitle": "Can secure semifinal place tonight",
       "impact": {
-        "label": "Feeds: Watch",
+        "label": "Impacts: Saturday Warm-Up",
+        "ritualId": "saturday_sunrise",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-13T04:29:52.527Z",
-      "expiresAt": "2026-03-14T08:00:00.000Z",
+      "triggeredAt": "2026-03-14T06:00:32.337Z",
+      "expiresAt": "2026-03-14T18:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "source": "tournament",
-        "conditionLabel": "Tennis title on the line",
-        "sport": "tennis",
-        "league": "ATP Masters 1000",
-        "awayTeam": "Medvedev",
-        "homeTeam": "Alcaraz",
-        "startTime": "2026-03-14T04:00:00.000Z",
+        "source": "team_config",
+        "conditionLabel": "Can secure semifinal place",
+        "sport": "rugby",
+        "league": "HSBC SVNS",
+        "awayTeam": "",
+        "homeTeam": "SVNS New York",
+        "startTime": "2026-03-14T14:00:00.000Z",
         "eventIds": [
-          "tennis-espn-172939"
+          "rugby-svns-wxakat-d1"
         ],
-        "reason": "Medvedev and Alcaraz meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
+        "reason": "SVNS New York have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
       },
       "sports": [
-        "tennis"
+        "rugby"
       ]
     },
     {
@@ -463,7 +411,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-13T04:29:52.527Z",
+      "triggeredAt": "2026-03-14T06:00:32.337Z",
       "expiresAt": "2026-03-14T21:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -486,26 +434,76 @@
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=pK4_a4A97qQ",
-        "thumbnailUrl": "https://img.youtube.com/vi/pK4_a4A97qQ/hqdefault.jpg",
-        "durationSeconds": 3620,
-        "title": "Tom Stillman Joins the Show | Last Minute Blues Podcast",
+        "url": "https://www.youtube.com/watch?v=9-TZxAI-By8",
+        "thumbnailUrl": "https://img.youtube.com/vi/9-TZxAI-By8/hqdefault.jpg",
+        "durationSeconds": 1338,
+        "title": "2nd broken wire keeps O-Train shut down | CTV News Ottawa at Five for Friday, March 13, 2026",
         "source": "youtube",
-        "channel": "101 ESPN",
-        "publishedAt": "7 hours ago"
+        "channel": "CTV News",
+        "publishedAt": "5 hours ago"
       }
     },
     {
-      "id": "player_movement_system",
-      "title": "System Shuffle",
-      "subtitle": "26 player moves detected (WSH ↔ VGK ↔ CHI ↔ EDM ↔ PHI ↔ MIN ↔ STL ↔ NYI ↔ TOR ↔ LAK ↔ DET ↔ PIT ↔ OTT ↔ COL ↔ CGY ↔ VAN ↔ CBJ ↔ TBL ↔ DAL ↔ ANA ↔ FLA ↔ NSH ↔ WPG ↔ BUF ↔ SJS)",
+      "id": "f1_race_weekend_chinese_grand_prix",
+      "title": "Chinese Grand Prix",
+      "subtitle": "Chinese Grand Prix — 2 sessions in the next 48h: Qualifying, Race",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-03-13T04:29:52.527Z",
-      "expiresAt": "2026-03-20T04:29:52.527Z",
+      "triggeredAt": "2026-03-14T06:00:32.337Z",
+      "expiresAt": "2026-03-15T11:00:00.000Z",
+      "kind": "league_moment",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "f1_race_weekend",
+        "grandPrix": "Chinese Grand Prix",
+        "sessionCount": 2,
+        "sessions": [
+          {
+            "sessionTitle": "Qualifying",
+            "startTime": "2026-03-14T07:00:00.000Z",
+            "eventId": "f1-espn-401839036"
+          },
+          {
+            "sessionTitle": "Race",
+            "startTime": "2026-03-15T07:00:00.000Z",
+            "eventId": "f1-espn-401839037"
+          }
+        ],
+        "eventIds": [
+          "f1-espn-401839036",
+          "f1-espn-401839037"
+        ],
+        "reason": "Chinese Grand Prix race weekend — 2 session(s) within 48 hours"
+      },
+      "sports": [
+        "racing"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=UT15Nesz7k4",
+        "thumbnailUrl": "https://img.youtube.com/vi/UT15Nesz7k4/hqdefault.jpg",
+        "durationSeconds": 4053,
+        "title": "🔴F1 LIVE - Chinese GP SPRINT - Commentary + Live Timing🏎️",
+        "source": "youtube",
+        "channel": "Nexadevil",
+        "publishedAt": "Streamed 2 hours ago"
+      }
+    },
+    {
+      "id": "player_movement_system",
+      "title": "System Shuffle",
+      "subtitle": "28 player moves detected (WSH ↔ VGK ↔ CHI ↔ EDM ↔ PHI ↔ MIN ↔ STL ↔ NYI ↔ TOR ↔ LAK ↔ DET ↔ PIT ↔ OTT ↔ COL ↔ CGY ↔ VAN ↔ CBJ ↔ TBL ↔ DAL ↔ ANA ↔ FLA ↔ NSH ↔ WPG ↔ BUF ↔ SJS)",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 85,
+      "triggeredAt": "2026-03-14T06:00:32.337Z",
+      "expiresAt": "2026-03-21T06:00:32.337Z",
       "kind": "player_movement",
       "region": "Other",
       "regionPriority": 99,
@@ -719,10 +717,26 @@
             "detected": "2026-03-13T04:29:52.527Z",
             "lastSeenFrom": "2026-03-05T04:50:57.276Z",
             "firstSeenTo": "2026-03-13T04:29:52.527Z"
+          },
+          {
+            "player": "J. Faulk",
+            "from": "STL",
+            "to": "DET",
+            "detected": "2026-03-14T06:00:32.337Z",
+            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+            "firstSeenTo": "2026-03-14T06:00:32.337Z"
+          },
+          {
+            "player": "N. Blankenburg",
+            "from": "NSH",
+            "to": "COL",
+            "detected": "2026-03-14T06:00:32.337Z",
+            "lastSeenFrom": "2026-03-07T07:19:00.761Z",
+            "firstSeenTo": "2026-03-14T06:00:32.337Z"
           }
         ],
-        "count": 26,
-        "reason": "26 player(s) detected moving between tracked teams in the last 7 days"
+        "count": 28,
+        "reason": "28 player(s) detected moving between tracked teams in the last 7 days"
       },
       "sports": [
         "hockey"
@@ -733,18 +747,17 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Tulsa Oilers, Boston Celtics, Los Angeles Lakers, Chinese Grand Prix, and Hurricanes (+2 more) all play tonight across the ECHL, NBA, F1, Super Rugby, The Majors, Ligue 1.",
-    "sourceEventId": "echl-web-25179",
+    "body": "The UC Irvine Anteaters, San Diego Gulls, Chinese Grand Prix, Players Championship, and Bayern Munich (+6 more) all play tonight across the NCAAB, AHL, F1, The Majors, Bundesliga, La Liga, NHL, NCAA Hockey, NBA.",
+    "sourceEventId": "basketball-ncaab-20260314-0100-cal-state-northridge-matadors-at-uc-irvine-anteaters",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
     },
     "sports": [
-      "hockey",
       "basketball",
+      "hockey",
       "racing",
-      "rugby",
       "golf",
       "soccer"
     ]
