@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
 import {
   StyleSheet,
   Text,
@@ -46,6 +47,7 @@ import {
 import { normalizeGameState } from "@/utils/gameState";
 import { favoriteInvolved, isTeamFavorite } from "@/utils/favorites";
 import type { Favorites } from "@/lib/data";
+import { RITUALS } from "@/lib/rituals";
 import {
   buildChaosSetup,
   selfHealChaosSetup,
@@ -758,6 +760,9 @@ export default function WatchScreen() {
   const { allEvents: rawEvents, favoritesOnly, isLoading: eventsLoading } = useEvents();
   const { getScore, scores } = useScores();
   const { favorites, disabledSports, disabledLeagues } = useFavorites();
+  const { data: narrativesData } = useQuery<{ cards: unknown[] }>({ queryKey: ["/api/narratives"] });
+  const ritualCount = RITUALS.length;
+  const storiesCount = narrativesData?.cards?.length ?? 0;
 
   const allEvents = useMemo(
     () => {
@@ -1119,12 +1124,12 @@ export default function WatchScreen() {
 
           <View style={styles.headerStats}>
             <View style={styles.statChip}>
-              <Ionicons name="flame" size={22} color="#FF9600" />
-              <Text style={styles.liveStatCount}>{liveEvents.length}</Text>
+              <Ionicons name="grid" size={20} color="#FF9600" />
+              <Text style={styles.liveStatCount}>{ritualCount}</Text>
             </View>
             <View style={styles.statChip}>
-              <Ionicons name="alarm" size={22} color="#1CB0F6" />
-              <Text style={styles.nextStatCount}>{upNextAll.length}</Text>
+              <Ionicons name="compass" size={22} color="#1CB0F6" />
+              <Text style={styles.nextStatCount}>{storiesCount}</Text>
             </View>
           </View>
 
