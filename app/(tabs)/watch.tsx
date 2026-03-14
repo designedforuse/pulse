@@ -1873,7 +1873,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 4,
     paddingTop: 8,
-    paddingBottom: 12,
+    paddingBottom: 8,
     gap: 10,
   },
   liveHeaderLine: {
@@ -1884,7 +1884,7 @@ const styles = StyleSheet.create({
     borderRadius: 1,
   },
   liveHeaderText: {
-    fontSize: 12,
+    fontSize: 15,
     fontFamily: "Inter_600SemiBold",
     color: Colors.textMuted,
     letterSpacing: 0.3,
