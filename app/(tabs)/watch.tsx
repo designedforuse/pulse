@@ -1129,11 +1129,11 @@ export default function WatchScreen() {
         {hasChaos && (
           <View style={styles.chaosBanner}>
             <View>
-              <Text style={styles.chaosBannerLabel}>4-GAME CHAOS</Text>
+              <Text style={styles.chaosBannerLabel}>4-GAME MULTIVIEW</Text>
               <View style={{ flexDirection: "row", alignItems: "center", gap: 7 }}>
                 <Ionicons name="flash" size={22} color="#fff" />
                 <Text style={styles.chaosBannerTitle}>
-                  {chaosSetup.candidateCount > 0 ? "Chaos Mode" : "Next Up"}
+                  {chaosSetup.candidateCount > 0 ? "Chaos View" : "Next Up"}
                 </Text>
               </View>
             </View>
