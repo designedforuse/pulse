@@ -22,6 +22,8 @@ import Animated, {
   withRepeat,
   withTiming,
   withSequence,
+  withDelay,
+  Easing,
 } from "react-native-reanimated";
 import { useScoreFlash } from "@/hooks/useScoreFlash";
 import { displayTeamName } from "@/utils/teams";
@@ -601,6 +603,68 @@ function ChaosCard({
 const TILE_GAP = 14;
 const PAGE_PADDING = 16;
 
+function SheenBorderOverlay({ visible }: { visible: boolean }) {
+  const rotation = useSharedValue(0);
+  const opacity = useSharedValue(0);
+
+  useEffect(() => {
+    if (visible) {
+      rotation.value = 0;
+      opacity.value = withTiming(1, { duration: 250 });
+      rotation.value = withRepeat(
+        withTiming(360, { duration: 1100, easing: Easing.linear }),
+        4,
+        false
+      );
+      opacity.value = withDelay(4200, withTiming(0, { duration: 600 }));
+    } else {
+      opacity.value = withTiming(0, { duration: 300 });
+    }
+  }, [visible]);
+
+  const containerStyle = useAnimatedStyle(() => ({ opacity: opacity.value }));
+  const sheenStyle = useAnimatedStyle(() => ({
+    transform: [{ rotate: `${rotation.value}deg` }],
+  }));
+
+  return (
+    <Animated.View
+      style={[StyleSheet.absoluteFillObject, { borderRadius: 16, overflow: "hidden" }, containerStyle]}
+      pointerEvents="none"
+    >
+      <Animated.View
+        style={[sheenStyle, { position: "absolute", width: "320%", height: "320%", top: "-110%", left: "-110%" }]}
+      >
+        <LinearGradient
+          colors={[
+            "transparent",
+            "rgba(167,139,250,0.05)",
+            "rgba(167,139,250,0.7)",
+            "rgba(220,210,255,0.97)",
+            "rgba(167,139,250,0.7)",
+            "rgba(167,139,250,0.05)",
+            "transparent",
+          ]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={{ flex: 1 }}
+        />
+      </Animated.View>
+      <View
+        style={{
+          position: "absolute",
+          top: 2,
+          left: 2,
+          right: 2,
+          bottom: 2,
+          borderRadius: 14,
+          backgroundColor: Colors.card,
+        }}
+      />
+    </Animated.View>
+  );
+}
+
 function SecondaryCarousel({
   events,
   now,
@@ -608,7 +672,6 @@ function SecondaryCarousel({
   favorites,
   chaosDebugRanks,
   promotedEventId,
-  promotionReason,
 }: {
   events: SportEvent[];
   now: Date;
@@ -616,7 +679,6 @@ function SecondaryCarousel({
   favorites: any;
   chaosDebugRanks?: { id: string; emotion: number; tension: number; sportPri: number; isLive: boolean; isFav: boolean; isAnchor: boolean; isBackfill: boolean; hockeyChaosTotal?: number; hockeyChaosReasons?: string[] }[];
   promotedEventId?: string;
-  promotionReason?: string;
 }) {
   const { width: screenWidth } = useWindowDimensions();
   const contentWidth = screenWidth - PAGE_PADDING * 2;
@@ -624,6 +686,25 @@ function SecondaryCarousel({
     ? contentWidth
     : Math.round(contentWidth * 0.82);
   const snapInterval = tileWidth + TILE_GAP;
+
+  const [sheenEventId, setSheenEventId] = useState<string | undefined>(undefined);
+  const prevPromotedIdRef = useRef<string | undefined>(undefined);
+  const sheenTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (promotedEventId && promotedEventId !== prevPromotedIdRef.current) {
+      prevPromotedIdRef.current = promotedEventId;
+      setSheenEventId(promotedEventId);
+      if (sheenTimerRef.current) clearTimeout(sheenTimerRef.current);
+      sheenTimerRef.current = setTimeout(() => {
+        setSheenEventId(undefined);
+        sheenTimerRef.current = null;
+      }, 5200);
+    }
+    return () => {
+      if (sheenTimerRef.current) clearTimeout(sheenTimerRef.current);
+    };
+  }, [promotedEventId]);
 
   const orderedEvents = useMemo(() => {
     if (!promotedEventId) return events;
@@ -634,31 +715,29 @@ function SecondaryCarousel({
   }, [events, promotedEventId]);
 
   const renderTile = useCallback(({ item }: { item: SportEvent }) => {
-    const isPromoted = item.id === promotedEventId;
+    const showSheen = item.id === sheenEventId;
     return (
       <View style={{ width: tileWidth, marginRight: TILE_GAP }}>
-        <ChaosCard
-          event={item}
-          isPrimary={false}
-          now={now}
-          score={getScore(item.id)}
-          favorites={favorites}
-          tensionRank={chaosDebugRanks?.find(r => r.id === item.id)?.tension ?? 0}
-        />
-        {isPromoted && (
-          <View style={styles.emergingMomentBanner}>
-            <View style={styles.emergingMomentRow}>
-              <Ionicons name="flash" size={12} color="#1C1C1E" />
-              <Text style={styles.emergingMomentText}>Emerging Moment</Text>
-            </View>
-            <Text style={styles.emergingMomentReason}>
-              {promotionReason || "Live momentum spike"}
-            </Text>
-          </View>
-        )}
+        <View style={{ position: "relative" }}>
+          <ChaosCard
+            event={item}
+            isPrimary={false}
+            now={now}
+            score={getScore(item.id)}
+            favorites={favorites}
+            tensionRank={chaosDebugRanks?.find(r => r.id === item.id)?.tension ?? 0}
+          />
+          {showSheen && (
+            <View
+              style={[StyleSheet.absoluteFillObject, { borderRadius: 16, borderWidth: 2, borderColor: "#A78BFA" }]}
+              pointerEvents="none"
+            />
+          )}
+          <SheenBorderOverlay visible={showSheen} />
+        </View>
       </View>
     );
-  }, [tileWidth, now, getScore, favorites, chaosDebugRanks, promotedEventId, promotionReason]);
+  }, [tileWidth, now, getScore, favorites, chaosDebugRanks, sheenEventId]);
 
   return (
     <FlatList
@@ -1228,7 +1307,6 @@ export default function WatchScreen() {
                 favorites={favorites}
                 chaosDebugRanks={chaosSetup.debug?.selectedRanks}
                 promotedEventId={chaosSetup.promotedEventId}
-                promotionReason={chaosSetup.promotionReason}
               />
             )}
           </View>
@@ -1679,35 +1757,6 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
   },
 
-  emergingMomentBanner: {
-    paddingHorizontal: 10,
-    paddingVertical: 7,
-    marginTop: 6,
-    backgroundColor: "#FFD600",
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: "#C9A800",
-    borderBottomWidth: 3,
-    borderBottomColor: "#A08800",
-  },
-  emergingMomentRow: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    gap: 4,
-  },
-  emergingMomentText: {
-    fontSize: 11,
-    fontFamily: "Inter_600SemiBold",
-    color: "#1C1C1E",
-    letterSpacing: 0.3,
-  },
-  emergingMomentReason: {
-    fontSize: 10,
-    fontFamily: "Inter_400Regular",
-    color: "#3D3000",
-    marginTop: 2,
-    marginLeft: 16,
-  },
   promotionToast: {
     position: "absolute" as const,
     left: 16,
