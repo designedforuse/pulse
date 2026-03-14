@@ -287,6 +287,11 @@ function ChaosCard({
   const golfLeaderScore = isGolf ? (score?.golfLeaderScore || null) : null;
   const golfLeaderFlag = isGolf && score?.golfLeaderCountry ? getDriverFlag(score.golfLeaderCountry) : null;
 
+  // Strip tournament name prefix from golf session titles e.g. "Players — Round 3" → "Round 3"
+  const golfSessionDisplayText = isGolf && matchupText
+    ? (matchupText.includes(" \u2014 ") ? matchupText.split(" \u2014 ").slice(1).join(" \u2014 ") : matchupText)
+    : matchupText;
+
   if (isPrimary) {
     const microLabel = getHeroMicroLabel(tensionRank, event, now);
     return (
@@ -360,7 +365,7 @@ function ChaosCard({
               </View>
             ) : matchupText ? (
               <View style={isSvnsSession ? styles.svnsPrimaryContent : undefined}>
-                <Text style={[styles.primaryMatchup, (isSvnsSession || (isGolf && golfLeaderName)) && { marginBottom: 4 }]} numberOfLines={2}>{matchupText}</Text>
+                <Text style={[styles.primaryMatchup, (isSvnsSession || (isGolf && golfLeaderName)) && { marginBottom: 4 }]} numberOfLines={2}>{golfSessionDisplayText}</Text>
                 {isSvnsSession && svnsDisplayMatch && (
                   <ChaosCardSvnsRow match={svnsDisplayMatch} />
                 )}
@@ -501,8 +506,8 @@ function ChaosCard({
             ) : null}
           </View>
         ) : matchupText ? (
-          <View style={isSvnsSession ? styles.svnsSecondaryContent : undefined}>
-            <Text style={[styles.secondaryTeamName, (isSvnsSession || (isGolf && golfLeaderName)) && { marginBottom: 2 }]} numberOfLines={2}>{matchupText}</Text>
+          <View style={(isSvnsSession || isGolf) ? styles.svnsSecondaryContent : undefined}>
+            <Text style={[styles.secondaryTeamName, (isSvnsSession || (isGolf && golfLeaderName)) && { marginBottom: 2 }]} numberOfLines={2}>{golfSessionDisplayText}</Text>
             {isSvnsSession && svnsDisplayMatch && (
               <ChaosCardSvnsRow match={svnsDisplayMatch} small />
             )}
@@ -2154,7 +2159,7 @@ const styles = StyleSheet.create({
   golfLeaderScore: {
     fontSize: 20,
     fontFamily: "Inter_700Bold",
-    color: "#22C55E",
+    color: "#A78BFA",
   },
   golfLeaderRowSm: {
     flexDirection: "row" as const,
@@ -2171,6 +2176,6 @@ const styles = StyleSheet.create({
   golfLeaderScoreSm: {
     fontSize: 14,
     fontFamily: "Inter_700Bold",
-    color: "#22C55E",
+    color: "#A78BFA",
   },
 });
