@@ -895,13 +895,13 @@ const uStyles = StyleSheet.create({
   card: {
     borderRadius: 14,
     overflow: "hidden",
-    borderWidth: 1,
-    borderColor: "rgba(72, 72, 74, 0.6)",
+    borderWidth: 2,
+    borderColor: "rgba(255,255,255,0.1)",
     marginBottom: 10,
   },
   cardFeatured: {
-    borderWidth: 1.5,
-    borderColor: Colors.accent + "40",
+    borderWidth: 2,
+    borderColor: Colors.accent + "60",
     borderRadius: 16,
   },
   cardInner: {

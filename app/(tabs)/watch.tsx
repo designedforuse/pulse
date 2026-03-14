@@ -703,8 +703,8 @@ const skeletonStyles = StyleSheet.create({
     backgroundColor: Colors.card,
     borderRadius: 16,
     padding: 16,
-    borderWidth: 1,
-    borderColor: "rgba(72, 72, 74, 0.6)",
+    borderWidth: 2,
+    borderColor: "rgba(255,255,255,0.1)",
     marginBottom: 12,
   },
   cardHeader: {
@@ -734,8 +734,8 @@ const skeletonStyles = StyleSheet.create({
     backgroundColor: Colors.card,
     borderRadius: 14,
     padding: 14,
-    borderWidth: 1,
-    borderColor: "rgba(72, 72, 74, 0.6)",
+    borderWidth: 2,
+    borderColor: "rgba(255,255,255,0.1)",
   },
 });
 
@@ -1626,8 +1626,8 @@ const styles = StyleSheet.create({
   secondaryCard: {
     borderRadius: 14,
     overflow: "hidden",
-    borderWidth: 1,
-    borderColor: "rgba(72, 72, 74, 0.6)",
+    borderWidth: 2,
+    borderColor: "rgba(255,255,255,0.1)",
   },
   secondaryInner: {
     backgroundColor: Colors.card,
