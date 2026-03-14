@@ -1105,22 +1105,26 @@ export default function WatchScreen() {
         }
       >
         <View style={styles.header}>
-          <View style={styles.headerLeft}>
-            <View style={styles.headerIconWrap}>
-              <Ionicons name="trophy" size={22} color={Colors.accent} />
+          <View style={styles.headerStats}>
+            <View style={styles.statChip}>
+              <View style={styles.liveStatDot} />
+              <Text style={styles.liveStatCount}>{liveEvents.length}</Text>
             </View>
-            <Text style={styles.headerTitle}>Watch</Text>
+            <View style={styles.statChip}>
+              <Ionicons name="time" size={22} color="#1CB0F6" />
+              <Text style={styles.nextStatCount}>{upNextAll.length}</Text>
+            </View>
           </View>
           <Pressable
             onPress={() => router.push("/settings")}
-            hitSlop={12}
+            hitSlop={16}
             style={({ pressed }) => [
               styles.settingsButton,
               { opacity: pressed ? 0.6 : 1 },
             ]}
             testID="settings-button"
           >
-            <Ionicons name="settings-outline" size={22} color={Colors.textSecondary} />
+            <Ionicons name="settings-outline" size={18} color={Colors.textMuted} />
           </Pressable>
         </View>
 
@@ -1393,35 +1397,34 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     paddingHorizontal: 4,
   },
-  headerLeft: {
+  headerStats: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 10,
+    gap: 22,
   },
-  headerIconWrap: {
-    width: 38,
-    height: 38,
-    borderRadius: 12,
+  statChip: {
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: Colors.accentDim,
+    gap: 7,
   },
-  headerTitle: {
-    fontSize: 28,
-    fontWeight: "700" as const,
-    color: Colors.textPrimary,
+  liveStatDot: {
+    width: 14,
+    height: 14,
+    borderRadius: 7,
+    backgroundColor: "#FF4B4B",
+  },
+  liveStatCount: {
+    fontSize: 20,
     fontFamily: "Inter_700Bold",
-    letterSpacing: -0.5,
+    color: "#FF4B4B",
+  },
+  nextStatCount: {
+    fontSize: 20,
+    fontFamily: "Inter_700Bold",
+    color: "#1CB0F6",
   },
   settingsButton: {
-    width: 38,
-    height: 38,
-    borderRadius: 19,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: Colors.card,
-    borderWidth: 1,
-    borderColor: Colors.border,
+    padding: 6,
   },
 
   chaosSection: {
