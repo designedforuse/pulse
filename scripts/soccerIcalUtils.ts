@@ -268,5 +268,31 @@ export function mergeSoccerLeagueEvents(
 
   merged.sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
 
-  return { merged, added, updated, pruned };
+  // Deduplicate: same two teams in the same league on the same day — keep the fetched version
+  const fetchedIds = new Set(fetched.map(fe => fe.id));
+  const matchDayKey = (e: AppEvent) => {
+    const day = new Date(e.startTimeLocal).toISOString().slice(0, 10);
+    const teams = [e.homeTeam, e.awayTeam].sort().join("|");
+    return `${e.league}|${day}|${teams}`;
+  };
+  const seenMatchDay = new Map<string, string>(); // key -> id
+  const dupIds = new Set<string>();
+  for (const e of merged) {
+    const key = matchDayKey(e);
+    if (seenMatchDay.has(key)) {
+      const existingId = seenMatchDay.get(key)!;
+      // Prefer the fetched event; if both or neither fetched, prefer the later-added (current)
+      if (fetchedIds.has(e.id) && !fetchedIds.has(existingId)) {
+        dupIds.add(existingId);
+        seenMatchDay.set(key, e.id);
+      } else {
+        dupIds.add(e.id);
+      }
+    } else {
+      seenMatchDay.set(key, e.id);
+    }
+  }
+  const deduped = dupIds.size > 0 ? merged.filter(e => !dupIds.has(e.id)) : merged;
+
+  return { merged: deduped, added, updated, pruned };
 }

@@ -6719,20 +6719,6 @@
       "leagueKey": "superrugby"
     },
     {
-      "id": "soccer-epl-20260314-1230-man-city-at-west-ham",
-      "sport": "soccer",
-      "league": "EPL",
-      "awayTeam": "Man City",
-      "homeTeam": "West Ham",
-      "startTimeLocal": "2026-03-14T12:30:00.000Z",
-      "endTimeLocal": "2026-03-14T14:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "soccer-epl",
-      "leagueKey": "epl",
-      "providerReason": "epl-yttv"
-    },
-    {
       "id": "soccer-laliga-20260314-1300-athletic-club-at-girona",
       "sport": "soccer",
       "league": "La Liga",
