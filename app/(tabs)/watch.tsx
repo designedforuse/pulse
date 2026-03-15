@@ -859,6 +859,9 @@ export default function WatchScreen() {
   const prevScoresRef = useRef<Record<string, ScoreData>>({});
   const [promotionToast, setPromotionToast] = useState<{ reason: string; scoringTeam?: string; isPowerPlay?: boolean } | null>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [liveBannerActive, setLiveBannerActive] = useState(false);
+  const stickyHeightRef = useRef(0);
+  const liveSectionYRef = useRef(999999);
 
   const getScoreStatus = useCallback(
     (id: string) => getScore(id)?.status,
@@ -1198,6 +1201,7 @@ export default function WatchScreen() {
             paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 12,
           },
         ]}
+        onLayout={(e) => { stickyHeightRef.current = e.nativeEvent.layout.height; }}
       >
         <View style={styles.header}>
           <View style={styles.headerLeft}>
@@ -1235,7 +1239,20 @@ export default function WatchScreen() {
           </Pressable>
         </View>
 
-        {hasChaos && (
+        {sortedLive.length > 0 && liveBannerActive ? (
+          <View style={styles.liveBanner}>
+            <View>
+              <Text style={styles.chaosBannerLabel}>ALSO HAPPENING NOW</Text>
+              <View style={{ flexDirection: "row", alignItems: "center", gap: 7 }}>
+                <View style={styles.liveDot} />
+                <Text style={styles.chaosBannerTitle}>Live Now</Text>
+              </View>
+            </View>
+            <View style={styles.liveCountBadge}>
+              <Text style={styles.liveCountBadgeText}>{sortedLive.length}</Text>
+            </View>
+          </View>
+        ) : hasChaos ? (
           <View style={styles.chaosBanner}>
             <View>
               <Text style={styles.chaosBannerLabel}>4-GAME MULTIVIEW</Text>
@@ -1256,7 +1273,7 @@ export default function WatchScreen() {
               <Ionicons name="shuffle" size={20} color="#fff" />
             </Pressable>
           </View>
-        )}
+        ) : null}
       </View>
 
       <ScrollView
@@ -1268,6 +1285,13 @@ export default function WatchScreen() {
           },
         ]}
         showsVerticalScrollIndicator={false}
+        scrollEventThrottle={16}
+        onScroll={(e) => {
+          const y = e.nativeEvent.contentOffset.y;
+          const threshold = liveSectionYRef.current - stickyHeightRef.current;
+          const active = y >= threshold;
+          if (active !== liveBannerActive) setLiveBannerActive(active);
+        }}
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
@@ -1312,7 +1336,10 @@ export default function WatchScreen() {
         )}
 
         {sortedLive.length > 0 && (
-          <View style={styles.liveSection}>
+          <View
+            style={styles.liveSection}
+            onLayout={(e) => { liveSectionYRef.current = e.nativeEvent.layout.y; }}
+          >
             <View style={styles.liveHeaderRow}>
               <View style={styles.liveHeaderLine} />
               <Text style={styles.liveHeaderText}>Also happening now</Text>
@@ -1575,6 +1602,37 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     marginBottom: 0,
+  },
+  liveBanner: {
+    backgroundColor: "#1CB0F6",
+    borderRadius: 18,
+    borderBottomWidth: 4,
+    borderBottomColor: "#0E80B8",
+    paddingHorizontal: 18,
+    paddingVertical: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 0,
+  },
+  liveDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: "#fff",
+  },
+  liveCountBadge: {
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    backgroundColor: "rgba(255,255,255,0.2)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  liveCountBadgeText: {
+    fontSize: 18,
+    fontFamily: "Inter_700Bold",
+    color: "#fff",
   },
   chaosBannerLabel: {
     fontSize: 11,
