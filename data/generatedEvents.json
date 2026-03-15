@@ -7680,19 +7680,6 @@
       "leagueKey": "superrugby"
     },
     {
-      "id": "rugby-leagueone-s9lxo1",
-      "sport": "rugby",
-      "league": "Japan League One",
-      "homeTeam": "Tokyo Sungoliath",
-      "awayTeam": "Black Rams Tokyo",
-      "startTimeLocal": "2026-03-15T04:00:00.000Z",
-      "endTimeLocal": "2026-03-15T06:15:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "rugby",
-      "leagueKey": "leagueone"
-    },
-    {
       "id": "rugby-leagueone-blfdkm",
       "sport": "rugby",
       "league": "Japan League One",
