@@ -1860,8 +1860,8 @@ const styles = StyleSheet.create({
     flexDirection: "row" as const,
     alignItems: "center",
     paddingHorizontal: 4,
-    paddingTop: 8,
-    paddingBottom: 24,
+    paddingTop: 12,
+    paddingBottom: 36,
     gap: 10,
   },
   liveHeaderLine: {
