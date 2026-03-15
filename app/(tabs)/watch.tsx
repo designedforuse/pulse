@@ -1007,11 +1007,17 @@ export default function WatchScreen() {
 
   const upNextAll = useMemo(() => {
     const upcoming = getUpNextEvents(allEvents, now);
-    const filtered = favoritesOnly ? upcoming.filter((e) => favoriteInvolved(e, favorites)) : upcoming;
+    const notFinal = upcoming.filter((e) => {
+      const score = getScore(e.id);
+      if (!score) return true;
+      const { gameState } = normalizeGameState(e, score, now);
+      return gameState !== "FINAL";
+    });
+    const filtered = favoritesOnly ? notFinal.filter((e) => favoriteInvolved(e, favorites)) : notFinal;
     return [...filtered].sort(
       (a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
     );
-  }, [allEvents, now, favoritesOnly, favorites]);
+  }, [allEvents, now, favoritesOnly, favorites, getScore]);
 
   const { upNextSportChips, upNextLeagueChips, upNextEvents, upNextLeagueSportMap, upNextHasFilter } = useMemo(() => {
     const sports = new Map<string, number>();
