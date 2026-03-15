@@ -1518,13 +1518,13 @@ export default function WatchScreen() {
                   ]}
                   testID="upnext-more-games"
                 >
-                  <Text style={styles.expandButtonText}>
+                  <Text style={[styles.expandButtonText, { color: "#fff" }]}>
                     {upNextExpanded ? "Show fewer" : `More games (${upNextHiddenCount})`}
                   </Text>
                   <Ionicons
                     name={upNextExpanded ? "chevron-up" : "chevron-down"}
                     size={16}
-                    color="#1C1C1E"
+                    color="#fff"
                   />
                 </Pressable>
               )}
@@ -2228,9 +2228,10 @@ const styles = StyleSheet.create({
     borderBottomColor: "#0E80B8",
   },
   expandButtonGreen: {
-    backgroundColor: Colors.accent,
-    borderColor: Colors.accentSoft,
-    borderBottomColor: "#3A8500",
+    backgroundColor: Colors.card,
+    borderColor: Colors.cardHighlight,
+    borderBottomWidth: 2,
+    borderBottomColor: Colors.cardHighlight,
   },
   expandButtonText: {
     fontSize: 14,
