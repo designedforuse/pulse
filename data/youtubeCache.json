@@ -21,7 +21,7 @@
   },
   "playoff_push:tulsa oilers playoff push march 2026": {
     "video": null,
-    "fetchedAt": "2026-03-07T00:55:42.307Z",
+    "fetchedAt": "2026-03-15T18:00:42.026Z",
     "query": "Tulsa Oilers playoff push March 2026",
     "debug": {
       "searchQuery": "Tulsa Oilers playoff push March 2026",
@@ -52,22 +52,14 @@
     }
   },
   "playoff_push:boston bruins playoff push march 2026": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=PTtjBCnVn8Q",
-      "thumbnailUrl": "https://img.youtube.com/vi/PTtjBCnVn8Q/hqdefault.jpg",
-      "durationSeconds": 2614,
-      "title": "Saskatchewan NDP predicts higher rates under coal plans | CTV News Regina at Six March 13, 2026",
-      "source": "youtube",
-      "channel": "CTV News",
-      "publishedAt": "15 hours ago"
-    },
-    "fetchedAt": "2026-03-14T18:00:42.628Z",
+    "video": null,
+    "fetchedAt": "2026-03-15T18:00:42.207Z",
     "query": "Boston Bruins playoff push March 2026",
     "debug": {
       "searchQuery": "Boston Bruins playoff push March 2026",
-      "selectedVideoTitle": "Saskatchewan NDP predicts higher rates under coal plans | CTV News Regina at Six March 13, 2026",
-      "selectedVideoPublishedAt": "15 hours ago",
-      "selectedVideoChannel": "CTV News",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   },
@@ -85,21 +77,21 @@
   },
   "playoff_push:anaheim ducks playoff push march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=9-TZxAI-By8",
-      "thumbnailUrl": "https://img.youtube.com/vi/9-TZxAI-By8/hqdefault.jpg",
-      "durationSeconds": 1338,
-      "title": "2nd broken wire keeps O-Train shut down | CTV News Ottawa at Five for Friday, March 13, 2026",
+      "url": "https://www.youtube.com/watch?v=d6GLHxSuRTk",
+      "thumbnailUrl": "https://img.youtube.com/vi/d6GLHxSuRTk/hqdefault.jpg",
+      "durationSeconds": 399,
+      "title": "Maple Leafs Hopeful Auston Matthews Won't Need Surgery | Saturday Headlines",
       "source": "youtube",
-      "channel": "CTV News",
-      "publishedAt": "5 hours ago"
+      "channel": "SPORTSNET",
+      "publishedAt": "16 hours ago"
     },
-    "fetchedAt": "2026-03-14T06:00:40.635Z",
+    "fetchedAt": "2026-03-15T18:00:42.747Z",
     "query": "Anaheim Ducks playoff push March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push March 2026",
-      "selectedVideoTitle": "2nd broken wire keeps O-Train shut down | CTV News Ottawa at Five for Friday, March 13, 2026",
-      "selectedVideoPublishedAt": "5 hours ago",
-      "selectedVideoChannel": "CTV News",
+      "selectedVideoTitle": "Maple Leafs Hopeful Auston Matthews Won't Need Surgery | Saturday Headlines",
+      "selectedVideoPublishedAt": "16 hours ago",
+      "selectedVideoChannel": "SPORTSNET",
       "rejectedForAgeCount": 0
     }
   },
@@ -349,13 +341,33 @@
   },
   "clinch_watch:sinner clinch playoff berth march 2026": {
     "video": null,
-    "fetchedAt": "2026-03-14T18:00:42.892Z",
+    "fetchedAt": "2026-03-15T18:00:42.464Z",
     "query": "Sinner clinch playoff berth March 2026",
     "debug": {
       "searchQuery": "Sinner clinch playoff berth March 2026",
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:original six clash sports march 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=gGj3bxAhCts",
+      "thumbnailUrl": "https://img.youtube.com/vi/gGj3bxAhCts/hqdefault.jpg",
+      "durationSeconds": 11676,
+      "title": "2026 NCAA DII wrestling championship finals | FULL REPLAY",
+      "source": "youtube",
+      "channel": "NCAA Championships",
+      "publishedAt": "1 hour ago"
+    },
+    "fetchedAt": "2026-03-15T18:00:44.101Z",
+    "query": "Original Six Clash sports March 2026",
+    "debug": {
+      "searchQuery": "Original Six Clash sports March 2026",
+      "selectedVideoTitle": "2026 NCAA DII wrestling championship finals | FULL REPLAY",
+      "selectedVideoPublishedAt": "1 hour ago",
+      "selectedVideoChannel": "NCAA Championships",
       "rejectedForAgeCount": 0
     }
   }
