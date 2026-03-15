@@ -379,9 +379,6 @@ function ChaosCard({
                       {golfLeaderScore ? (
                         <Text style={styles.golfLeaderScore}>{golfLeaderScore}</Text>
                       ) : null}
-                      {golfLeaderThru ? (
-                        <Text style={styles.golfLeaderThruText}>{golfLeaderThru}</Text>
-                      ) : null}
                     </View>
                   </View>
                 )}
@@ -438,7 +435,9 @@ function ChaosCard({
                   </Text>
                 ) : isRacing && racingFooterText ? (
                   <Text style={[styles.primaryClock, isFinalState && styles.primaryFinalStatus]}>{racingFooterText}</Text>
-                ) : isLiveState && displayClockText ? (
+                ) : isGolf && isLiveState && golfLeaderThru ? (
+                  <Text style={styles.primaryClock}>{golfLeaderThru}</Text>
+                ) : isLiveState && !isGolf && displayClockText ? (
                   <Text style={styles.primaryClock}>{displayClockText}</Text>
                 ) : isFinalState && displayStatusText ? (
                   <Text style={styles.primaryFinalStatus}>{displayStatusText}</Text>
@@ -526,9 +525,6 @@ function ChaosCard({
                   {golfLeaderScore ? (
                     <Text style={styles.golfLeaderScoreSm}>{golfLeaderScore}</Text>
                   ) : null}
-                  {golfLeaderThru ? (
-                    <Text style={styles.golfLeaderThruTextSm}>{golfLeaderThru}</Text>
-                  ) : null}
                 </View>
               </View>
             )}
@@ -582,7 +578,9 @@ function ChaosCard({
             </Text>
           ) : isRacing && racingFooterText ? (
             <Text style={[styles.secondaryClock, isFinalState && styles.secondaryFinal]} numberOfLines={1}>{racingFooterText}</Text>
-          ) : isLiveState && displayClockText ? (
+          ) : isGolf && isLiveState && golfLeaderThru ? (
+            <Text style={styles.secondaryClock} numberOfLines={1}>{golfLeaderThru}</Text>
+          ) : isLiveState && !isGolf && displayClockText ? (
             <Text style={styles.secondaryClock} numberOfLines={1}>{displayClockText}</Text>
           ) : isFinalState && displayStatusText ? (
             <Text style={styles.secondaryFinal} numberOfLines={1}>{displayStatusText}</Text>

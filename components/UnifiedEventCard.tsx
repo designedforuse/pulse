@@ -864,7 +864,9 @@ export default function UnifiedEventCard({
               <Text style={uStyles.finalStatus}>
                 {score?.racingLeader ? "Winner" : "Final"}
               </Text>
-            ) : isLive && displayClockText ? (
+            ) : isGolf && isLive && score?.golfLeaderThru ? (
+              <Text style={uStyles.clockText}>{score.golfLeaderThru}</Text>
+            ) : isLive && !isGolf && displayClockText ? (
               <Text style={uStyles.clockText}>{displayClockText}</Text>
             ) : isFinal ? (
               <Text style={uStyles.finalStatus}>Final</Text>
