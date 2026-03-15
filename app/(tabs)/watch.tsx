@@ -1191,7 +1191,7 @@ export default function WatchScreen() {
         <View style={styles.header}>
           <View style={styles.headerLeft}>
             <LinearGradient
-              colors={["#58CC02", "#1CB0F6"]}
+              colors={["#7C3AED", "#1CB0F6", "#58CC02"]}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
               style={styles.brandPill}
