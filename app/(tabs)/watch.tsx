@@ -1861,7 +1861,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 4,
     paddingTop: 8,
-    paddingBottom: 16,
+    paddingBottom: 24,
     gap: 10,
   },
   liveHeaderLine: {
