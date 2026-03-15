@@ -18,6 +18,8 @@ import Colors from "@/constants/colors";
 import { getApiUrl } from "@/lib/query-client";
 import { useFavorites } from "@/lib/favorites-context";
 
+const PINK = "#FF85C8";
+
 interface NarrativeImpact {
   label: string;
   ritualId?: string;
@@ -147,8 +149,8 @@ export default function ExploreScreen() {
           <RefreshControl
             refreshing={refreshing}
             onRefresh={onRefresh}
-            tintColor={Colors.accent}
-            colors={[Colors.accent]}
+            tintColor={PINK}
+            colors={[PINK]}
           />
         }
       >
@@ -183,7 +185,7 @@ export default function ExploreScreen() {
                       ? "Track all games"
                       : "Read more"}
                   </Text>
-                  <Ionicons name="arrow-forward" size={14} color={Colors.accent} />
+                  <Ionicons name="arrow-forward" size={14} color={PINK} />
                 </Pressable>
               )}
             </View>
@@ -192,7 +194,7 @@ export default function ExploreScreen() {
 
         {isLoading ? (
           <View style={styles.emptyContainer}>
-            <ActivityIndicator size="large" color={Colors.accent} />
+            <ActivityIndicator size="large" color={PINK} />
           </View>
         ) : cards.length === 0 ? (
           <View style={styles.emptyContainer}>
@@ -230,13 +232,13 @@ export default function ExploreScreen() {
                     <Text style={styles.cardSubtitle} numberOfLines={2}>{card.subtitle}</Text>
                     {card.impact && (
                       <View style={styles.impactRow}>
-                        <Ionicons name="link-outline" size={12} color={Colors.accent} />
+                        <Ionicons name="link-outline" size={12} color={PINK} />
                         <Text style={styles.impactText}>{card.impact.label}</Text>
                       </View>
                     )}
                     <View style={styles.cardFooter}>
                       <Text style={styles.readMore}>Read more</Text>
-                      <Ionicons name="arrow-forward" size={13} color={Colors.accent} />
+                      <Ionicons name="arrow-forward" size={13} color={PINK} />
                     </View>
                   </View>
                 </Pressable>
@@ -326,16 +328,16 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.card,
     borderRadius: 20,
     borderWidth: 1.5,
-    borderColor: Colors.accent + "40",
+    borderColor: PINK + "40",
     overflow: "hidden",
     marginBottom: 20,
   },
   tonightCardHeader: {
-    backgroundColor: Colors.accent + "15",
+    backgroundColor: PINK + "15",
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: Colors.accent + "20",
+    borderBottomColor: PINK + "20",
   },
   tonightLiveRow: {
     flexDirection: "row",
@@ -366,7 +368,7 @@ const styles = StyleSheet.create({
   tonightKicker: {
     fontSize: 11,
     fontFamily: "Inter_700Bold",
-    color: Colors.accent,
+    color: PINK,
     letterSpacing: 1.5,
     textTransform: "uppercase" as const,
   },
@@ -393,7 +395,7 @@ const styles = StyleSheet.create({
     alignItems: "center" as const,
     gap: 5,
     alignSelf: "flex-start" as const,
-    backgroundColor: Colors.accent + "15",
+    backgroundColor: PINK + "15",
     paddingHorizontal: 12,
     paddingVertical: 7,
     borderRadius: 20,
@@ -401,7 +403,7 @@ const styles = StyleSheet.create({
   tonightCtaText: {
     fontSize: 13,
     fontFamily: "Inter_600SemiBold",
-    color: Colors.accent,
+    color: PINK,
   },
   cardsContainer: {
     gap: 12,
@@ -468,7 +470,7 @@ const styles = StyleSheet.create({
   },
   impactText: {
     fontSize: 12,
-    color: Colors.accent,
+    color: PINK,
     fontFamily: "Inter_500Medium",
   },
   cardFooter: {
@@ -480,7 +482,7 @@ const styles = StyleSheet.create({
   readMore: {
     fontSize: 13,
     fontFamily: "Inter_600SemiBold",
-    color: Colors.accent,
+    color: PINK,
   },
   lastUpdated: {
     fontSize: 11,
