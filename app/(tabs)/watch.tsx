@@ -983,7 +983,12 @@ export default function WatchScreen() {
   }, [rebuildChaos]);
 
   const liveEvents = useMemo(() => {
-    const timeLive = getLiveEventsNow(allEvents, now);
+    const timeLive = getLiveEventsNow(allEvents, now).filter((e) => {
+      const score = getScore(e.id);
+      if (!score) return true;
+      const { gameState } = normalizeGameState(e, score, now);
+      return gameState !== "FINAL";
+    });
     const timeLiveIds = new Set(timeLive.map((e) => e.id));
     const scoreLive = allEvents.filter((e) => {
       if (timeLiveIds.has(e.id)) return false;
