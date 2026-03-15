@@ -860,8 +860,10 @@ export default function WatchScreen() {
   const [promotionToast, setPromotionToast] = useState<{ reason: string; scoringTeam?: string; isPowerPlay?: boolean } | null>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [liveBannerActive, setLiveBannerActive] = useState(false);
+  const [upNextBannerActive, setUpNextBannerActive] = useState(false);
   const stickyHeightRef = useRef(0);
   const liveSectionYRef = useRef(999999);
+  const upNextSectionYRef = useRef(999999);
 
   const getScoreStatus = useCallback(
     (id: string) => getScore(id)?.status,
@@ -1239,7 +1241,20 @@ export default function WatchScreen() {
           </Pressable>
         </View>
 
-        {sortedLive.length > 0 && liveBannerActive ? (
+        {upNextBannerActive ? (
+          <View style={styles.upNextBanner}>
+            <View>
+              <Text style={[styles.chaosBannerLabel, { color: "rgba(28,28,30,0.6)" }]}>23-HOUR LOOK AHEAD</Text>
+              <View style={{ flexDirection: "row", alignItems: "center", gap: 7 }}>
+                <Ionicons name="time-outline" size={22} color="#1C1C1E" />
+                <Text style={[styles.chaosBannerTitle, { color: "#1C1C1E" }]}>Up Next</Text>
+              </View>
+            </View>
+            <View style={styles.upNextCountBadge}>
+              <Text style={styles.upNextCountBadgeText}>{upNextAll.length}</Text>
+            </View>
+          </View>
+        ) : sortedLive.length > 0 && liveBannerActive ? (
           <View style={styles.liveBanner}>
             <View>
               <Text style={styles.chaosBannerLabel}>ALSO HAPPENING NOW</Text>
@@ -1288,9 +1303,10 @@ export default function WatchScreen() {
         scrollEventThrottle={16}
         onScroll={(e) => {
           const y = e.nativeEvent.contentOffset.y;
-          const threshold = liveSectionYRef.current;
-          const active = y >= threshold;
-          if (active !== liveBannerActive) setLiveBannerActive(active);
+          const liveActive = y >= liveSectionYRef.current;
+          const upActive = y >= upNextSectionYRef.current;
+          if (liveActive !== liveBannerActive) setLiveBannerActive(liveActive);
+          if (upActive !== upNextBannerActive) setUpNextBannerActive(upActive);
         }}
         refreshControl={
           <RefreshControl
@@ -1376,7 +1392,10 @@ export default function WatchScreen() {
           </View>
         )}
 
-        <View style={styles.upNextSection}>
+        <View
+          style={styles.upNextSection}
+          onLayout={(e) => { upNextSectionYRef.current = e.nativeEvent.layout.y; }}
+        >
           <View style={styles.liveHeaderRow}>
             <View style={styles.liveHeaderLine} />
             <Text style={styles.liveHeaderText}>Coming up next</Text>
@@ -1633,6 +1652,31 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: "Inter_700Bold",
     color: "#fff",
+  },
+  upNextBanner: {
+    backgroundColor: Colors.accent,
+    borderRadius: 18,
+    borderBottomWidth: 4,
+    borderBottomColor: "#3A8500",
+    paddingHorizontal: 18,
+    paddingVertical: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 0,
+  },
+  upNextCountBadge: {
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    backgroundColor: "rgba(28,28,30,0.15)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  upNextCountBadgeText: {
+    fontSize: 18,
+    fontFamily: "Inter_700Bold",
+    color: "#1C1C1E",
   },
   chaosBannerLabel: {
     fontSize: 11,
