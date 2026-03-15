@@ -1304,10 +1304,15 @@ async function fetchGolfScores(events: { id: string; tournamentName: string }[])
         golfLeaderThru = `Thru ${lastHole.period}`;
       }
 
+      // Only call the tournament "final" if ESPN says "post" AND the leader
+      // has actually finished their current round (18 holes played).
+      // If statusState is "post" but the leader is only "Thru 6", ESPN is
+      // reporting the previous round's post-state while a new round is live.
+      const leaderFinishedRound = golfLeaderThru === "F" || playedHoles.length === 18;
       const scorePayload: ScoreData = {
         awayScore: 0,
         homeScore: 0,
-        status: statusState === "post" ? "final" : "live",
+        status: (statusState === "post" && leaderFinishedRound) ? "final" : "live",
         golfLeader,
         golfLeaderScore,
         golfLeaderCountry,
