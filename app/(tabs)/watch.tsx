@@ -1341,7 +1341,7 @@ export default function WatchScreen() {
         <View style={styles.upNextSection}>
           <View style={styles.liveHeaderRow}>
             <View style={styles.liveHeaderLine} />
-            <Text style={styles.liveHeaderText}>Up Next</Text>
+            <Text style={styles.liveHeaderText}>Coming up next</Text>
             <View style={styles.liveHeaderLine} />
           </View>
           {upNextAll.length > 0 && (showUpNextSportChips || showUpNextLeagueChips) && (
