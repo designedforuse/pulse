@@ -678,7 +678,7 @@ export default function UnifiedEventCard({
       testID={`event-${event.id}`}
     >
       <Animated.View style={[uStyles.cardInner, featured && uStyles.cardInnerFeatured, flashStyle]}>
-        <View style={[uStyles.accentBar, { backgroundColor: sportColor }]} />
+        <View style={[uStyles.accentBar, { backgroundColor: isLive ? "#1CB0F6" : sportColor }]} />
 
         <View style={uStyles.header}>
           <Ionicons name={sportIcon} size={13} color={sportColor} />
@@ -1046,7 +1046,7 @@ const uStyles = StyleSheet.create({
     fontFamily: "Inter_500Medium",
   },
   scoreLive: {
-    color: Colors.accent,
+    color: "#1CB0F6",
   },
   fallbackMatchup: {
     fontSize: 15,
@@ -1152,7 +1152,7 @@ const uStyles = StyleSheet.create({
   clockText: {
     fontSize: 13,
     fontFamily: "Inter_600SemiBold",
-    color: Colors.accentSoft,
+    color: "#1CB0F6",
   },
   finalStatus: {
     fontSize: 13,
