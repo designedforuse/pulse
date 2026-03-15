@@ -1288,7 +1288,7 @@ export default function WatchScreen() {
         scrollEventThrottle={16}
         onScroll={(e) => {
           const y = e.nativeEvent.contentOffset.y;
-          const threshold = liveSectionYRef.current - stickyHeightRef.current;
+          const threshold = liveSectionYRef.current;
           const active = y >= threshold;
           if (active !== liveBannerActive) setLiveBannerActive(active);
         }}
