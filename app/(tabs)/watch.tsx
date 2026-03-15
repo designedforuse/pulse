@@ -857,7 +857,7 @@ export default function WatchScreen() {
   const [chaosSetup, setChaosSetup] = useState<ChaosSetup | null>(null);
   const chaosRef = useRef<ChaosSetup | null>(null);
   const prevScoresRef = useRef<Record<string, ScoreData>>({});
-  const [promotionToast, setPromotionToast] = useState<{ message: string; reason: string } | null>(null);
+  const [promotionToast, setPromotionToast] = useState<{ reason: string; scoringTeam?: string } | null>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const getScoreStatus = useCallback(
@@ -933,9 +933,17 @@ export default function WatchScreen() {
         (e) => e.id === promoted.promotedEventId,
       );
       if (promotedEvent) {
-        const matchup = `${promotedEvent.awayTeam} vs ${promotedEvent.homeTeam}`;
         const reason = promoted.promotionReason || "Live momentum spike";
-        setPromotionToast({ message: matchup, reason });
+        const currentScoreData = getScoreData(promotedEvent.id);
+        const prevScoreData = prevScoresRef.current[promotedEvent.id];
+        let scoringTeam: string | undefined;
+        if (currentScoreData && prevScoreData) {
+          const homeScored = (currentScoreData.homeScore ?? 0) > (prevScoreData.homeScore ?? 0);
+          const awayScored = (currentScoreData.awayScore ?? 0) > (prevScoreData.awayScore ?? 0);
+          if (homeScored) scoringTeam = promotedEvent.homeTeam;
+          else if (awayScored) scoringTeam = promotedEvent.awayTeam;
+        }
+        setPromotionToast({ reason, scoringTeam });
         if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
         toastTimerRef.current = setTimeout(() => {
           setPromotionToast(null);
@@ -1160,26 +1168,13 @@ export default function WatchScreen() {
             <View style={styles.promotionToastHeader}>
               <Ionicons name="flash" size={13} color="white" />
               <Text style={styles.promotionToastLabel}>Chaos Alert</Text>
-              <Text style={styles.promotionToastTitle} numberOfLines={1}>
-                {promotionToast.message}
-              </Text>
             </View>
             <Text style={styles.promotionToastReason} numberOfLines={1}>
-              {promotionToast.reason}
+              {promotionToast.scoringTeam
+                ? `${promotionToast.reason.replace(" just", "")} by ${displayTeamName(promotionToast.scoringTeam)}`
+                : promotionToast.reason}
             </Text>
           </View>
-          <Pressable
-            onPress={() => {
-              setPromotionToast(null);
-              if (toastTimerRef.current) {
-                clearTimeout(toastTimerRef.current);
-                toastTimerRef.current = null;
-              }
-            }}
-            hitSlop={8}
-          >
-            <Ionicons name="close" size={16} color="rgba(255,255,255,0.8)" />
-          </Pressable>
         </View>
       )}
       <View
@@ -1736,9 +1731,7 @@ const styles = StyleSheet.create({
     left: 16,
     right: 16,
     zIndex: 100,
-    flexDirection: "row" as const,
     alignItems: "center" as const,
-    gap: 10,
     paddingHorizontal: 14,
     paddingVertical: 12,
     borderRadius: 14,
@@ -1750,31 +1743,26 @@ const styles = StyleSheet.create({
     boxShadow: "0px 4px 24px rgba(109,40,217,0.5)",
   },
   promotionToastContent: {
-    flex: 1,
+    alignItems: "center" as const,
   },
   promotionToastHeader: {
     flexDirection: "row" as const,
     alignItems: "center" as const,
+    justifyContent: "center" as const,
     gap: 5,
-    marginBottom: 2,
+    marginBottom: 3,
   },
   promotionToastLabel: {
-    fontSize: 12,
+    fontSize: 13,
     fontFamily: "Inter_700Bold",
     color: "white",
     letterSpacing: 0.4,
   },
-  promotionToastTitle: {
-    fontSize: 12,
-    fontFamily: "Inter_500Medium",
-    color: "rgba(255,255,255,0.75)",
-    flex: 1,
-  },
   promotionToastReason: {
-    fontSize: 11,
+    fontSize: 12,
     fontFamily: "Inter_400Regular",
-    color: "rgba(255,255,255,0.6)",
-    marginTop: 1,
+    color: "rgba(255,255,255,0.75)",
+    textAlign: "center" as const,
   },
   secondaryCard: {
     borderRadius: 14,
