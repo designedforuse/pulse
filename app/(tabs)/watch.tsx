@@ -1461,6 +1461,7 @@ export default function WatchScreen() {
                   onPress={() => setUpNextExpanded((prev) => !prev)}
                   style={({ pressed }) => [
                     styles.expandButton,
+                    styles.expandButtonGreen,
                     { opacity: pressed ? 0.7 : 1 },
                   ]}
                   testID="upnext-more-games"
@@ -2117,6 +2118,11 @@ const styles = StyleSheet.create({
     borderColor: "rgba(28,176,246,0.5)",
     borderBottomWidth: 4,
     borderBottomColor: "#0E80B8",
+  },
+  expandButtonGreen: {
+    backgroundColor: Colors.accent,
+    borderColor: Colors.accentSoft,
+    borderBottomColor: "#3A8500",
   },
   expandButtonText: {
     fontSize: 14,
