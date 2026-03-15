@@ -857,7 +857,7 @@ export default function WatchScreen() {
   const [chaosSetup, setChaosSetup] = useState<ChaosSetup | null>(null);
   const chaosRef = useRef<ChaosSetup | null>(null);
   const prevScoresRef = useRef<Record<string, ScoreData>>({});
-  const [promotionToast, setPromotionToast] = useState<{ reason: string; scoringTeam?: string } | null>(null);
+  const [promotionToast, setPromotionToast] = useState<{ reason: string; scoringTeam?: string; isPowerPlay?: boolean } | null>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const getScoreStatus = useCallback(
@@ -943,7 +943,8 @@ export default function WatchScreen() {
           if (homeScored) scoringTeam = promotedEvent.homeTeam;
           else if (awayScored) scoringTeam = promotedEvent.awayTeam;
         }
-        setPromotionToast({ reason, scoringTeam });
+        const isPowerPlay = promoted.slot4ActivitySignals?.includes("Power play") ?? false;
+        setPromotionToast({ reason, scoringTeam, isPowerPlay });
         if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
         toastTimerRef.current = setTimeout(() => {
           setPromotionToast(null);
@@ -1170,9 +1171,11 @@ export default function WatchScreen() {
               <Text style={styles.promotionToastLabel}>Chaos Alert</Text>
             </View>
             <Text style={styles.promotionToastReason} numberOfLines={1}>
-              {promotionToast.scoringTeam
-                ? `${displayTeamName(promotionToast.scoringTeam)} scores!`
-                : promotionToast.reason}
+              {promotionToast.isPowerPlay && promotionToast.scoringTeam
+                ? `${displayTeamName(promotionToast.scoringTeam)} power play`
+                : promotionToast.scoringTeam
+                  ? `${displayTeamName(promotionToast.scoringTeam)} score!`
+                  : promotionToast.reason}
             </Text>
           </View>
         </View>
