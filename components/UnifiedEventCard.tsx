@@ -569,6 +569,7 @@ export interface UnifiedEventCardProps {
   tensionRank?: number;
   showTension?: boolean;
   showCountdown?: boolean;
+  accentBarColor?: string;
 }
 
 export default function UnifiedEventCard({
@@ -581,6 +582,7 @@ export default function UnifiedEventCard({
   tensionRank = 0,
   showTension = false,
   showCountdown = true,
+  accentBarColor,
 }: UnifiedEventCardProps) {
   const sportColor = getSportColor(event.sport);
   const sportIcon = getSportIcon(event.sport) as any;
@@ -678,7 +680,7 @@ export default function UnifiedEventCard({
       testID={`event-${event.id}`}
     >
       <Animated.View style={[uStyles.cardInner, featured && uStyles.cardInnerFeatured, flashStyle]}>
-        <View style={[uStyles.accentBar, { backgroundColor: isLive ? "#1CB0F6" : sportColor }]} />
+        <View style={[uStyles.accentBar, { backgroundColor: isLive ? "#1CB0F6" : (accentBarColor ?? sportColor) }]} />
 
         <View style={uStyles.header}>
           <Ionicons name={sportIcon} size={13} color={sportColor} />

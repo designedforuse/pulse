@@ -1244,10 +1244,10 @@ export default function WatchScreen() {
         {upNextBannerActive ? (
           <View style={styles.upNextBanner}>
             <View>
-              <Text style={[styles.chaosBannerLabel, { color: "rgba(28,28,30,0.6)" }]}>23-HOUR LOOK AHEAD</Text>
+              <Text style={styles.chaosBannerLabel}>23-HOUR LOOK AHEAD</Text>
               <View style={{ flexDirection: "row", alignItems: "center", gap: 7 }}>
-                <Ionicons name="time-outline" size={22} color="#1C1C1E" />
-                <Text style={[styles.chaosBannerTitle, { color: "#1C1C1E" }]}>Up Next</Text>
+                <Ionicons name="time-outline" size={22} color="#fff" />
+                <Text style={styles.chaosBannerTitle}>Up Next</Text>
               </View>
             </View>
             <View style={styles.upNextCountBadge}>
@@ -1503,6 +1503,7 @@ export default function WatchScreen() {
                       score={getScore(event.id)}
                       isFav={favoriteInvolved(event, favorites)}
                       showCountdown={true}
+                      accentBarColor={Colors.accent}
                     />
                   ))}
                 </View>
@@ -1669,14 +1670,14 @@ const styles = StyleSheet.create({
     width: 44,
     height: 44,
     borderRadius: 12,
-    backgroundColor: "rgba(28,28,30,0.15)",
+    backgroundColor: "rgba(255,255,255,0.25)",
     alignItems: "center",
     justifyContent: "center",
   },
   upNextCountBadgeText: {
     fontSize: 18,
     fontFamily: "Inter_700Bold",
-    color: "#1C1C1E",
+    color: "#fff",
   },
   chaosBannerLabel: {
     fontSize: 11,
