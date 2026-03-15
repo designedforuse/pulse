@@ -1171,7 +1171,7 @@ export default function WatchScreen() {
             </View>
             <Text style={styles.promotionToastReason} numberOfLines={1}>
               {promotionToast.scoringTeam
-                ? `${promotionToast.reason.replace(" just", "")} by ${displayTeamName(promotionToast.scoringTeam)}`
+                ? `${displayTeamName(promotionToast.scoringTeam)} scores!`
                 : promotionToast.reason}
             </Text>
           </View>
