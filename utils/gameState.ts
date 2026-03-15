@@ -47,7 +47,10 @@ export function normalizeGameState(
       return { gameState: "FINAL", displayClockText: null, displayStatusText: statusText };
     }
 
-    if (!isEventCompleted(event, now) && (matchesKeywords(score.status, LIVE_KEYWORDS) || score.clock || score.period)) {
+    // Trust an explicit "live" score status regardless of the event's scheduled end time.
+    // Time-based completion is only a fallback; real-time score data takes priority.
+    const hasExplicitLiveStatus = matchesKeywords(score.status, LIVE_KEYWORDS);
+    if (hasExplicitLiveStatus || (!isEventCompleted(event, now) && (score.clock || score.period))) {
       let clockText: string | null = null;
 
       if (event.sport === "rugby" || event.sport === "Rugby") {

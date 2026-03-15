@@ -5,6 +5,10 @@ const DEFAULT_DURATIONS: Record<string, number> = {
   soccer: 2 * 60 + 15,
   rugby: 2 * 60 + 15,
   cricket: 8 * 60,
+  golf: 10 * 60,
+  tennis: 4 * 60,
+  athletics: 4 * 60,
+  racing: 4 * 60,
 };
 
 function getDefaultDurationMs(sport: string): number {
