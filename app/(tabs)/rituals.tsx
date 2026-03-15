@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   headerBanner: {
-    backgroundColor: Colors.accent,
+    backgroundColor: "#35C7A5",
     paddingHorizontal: 20,
     paddingBottom: 24,
   },

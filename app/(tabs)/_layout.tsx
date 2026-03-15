@@ -11,7 +11,7 @@ import Colors from "@/constants/colors";
 
 const TAB_COLORS = {
   watch: "#818CF8",
-  rituals: "#58CC02",
+  rituals: "#35C7A5",
   stories: "#1CB0F6",
 };
 
