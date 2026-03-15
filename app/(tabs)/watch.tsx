@@ -1339,16 +1339,10 @@ export default function WatchScreen() {
         )}
 
         <View style={styles.upNextSection}>
-          <View style={styles.sectionHeaderRow}>
-            <Ionicons name="time-outline" size={16} color={Colors.textSecondary} />
-            <Text style={styles.sectionTitle}>Up Next</Text>
-            {upNextAll.length > 0 && (
-              <View style={styles.sectionCount}>
-                <Text style={styles.sectionCountText}>
-                  {upNextHasFilter ? `${upNextEvents.length}/${upNextAll.length}` : upNextAll.length}
-                </Text>
-              </View>
-            )}
+          <View style={styles.liveHeaderRow}>
+            <View style={styles.liveHeaderLine} />
+            <Text style={styles.liveHeaderText}>Up Next</Text>
+            <View style={styles.liveHeaderLine} />
           </View>
           {upNextAll.length > 0 && (showUpNextSportChips || showUpNextLeagueChips) && (
             <View style={styles.upNextChipSection}>
