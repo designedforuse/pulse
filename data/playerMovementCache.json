@@ -21563,24 +21563,6 @@
   },
   "movements": [
     {
-      "playerId": "8477494",
-      "playerName": "J. Drouin",
-      "fromTeam": "NYI",
-      "toTeam": "STL",
-      "detectedAt": "2026-03-09T04:14:15.420Z",
-      "lastSeenFrom": "2026-03-06T03:20:47.423Z",
-      "firstSeenTo": "2026-03-09T04:14:15.420Z"
-    },
-    {
-      "playerId": "8481725",
-      "playerName": "E. Soderblom",
-      "fromTeam": "DET",
-      "toTeam": "PIT",
-      "detectedAt": "2026-03-09T04:14:15.420Z",
-      "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-      "firstSeenTo": "2026-03-09T04:14:15.420Z"
-    },
-    {
       "playerId": "8478233",
       "playerName": "A. Mangiapane",
       "fromTeam": "EDM",
@@ -21822,9 +21804,18 @@
       "detectedAt": "2026-03-15T18:00:32.932Z",
       "lastSeenFrom": "2026-03-03T03:50:51.829Z",
       "firstSeenTo": "2026-03-15T18:00:32.932Z"
+    },
+    {
+      "playerId": "8477494",
+      "playerName": "J. Drouin",
+      "fromTeam": "NYI",
+      "toTeam": "STL",
+      "detectedAt": "2026-03-16T18:00:40.098Z",
+      "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+      "firstSeenTo": "2026-03-15T18:00:32.932Z"
     }
   ],
-  "lastUpdated": "2026-03-16T02:44:20.205Z",
+  "lastUpdated": "2026-03-16T18:00:40.098Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -21858,7 +21849,17 @@
       }
     ],
     "playersIngested": 647,
-    "movementsDetectedThisRun": [],
-    "timestamp": "2026-03-16T02:44:20.205Z"
+    "movementsDetectedThisRun": [
+      {
+        "playerId": "8477494",
+        "playerName": "J. Drouin",
+        "fromTeam": "NYI",
+        "toTeam": "STL",
+        "detectedAt": "2026-03-16T18:00:40.098Z",
+        "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+        "firstSeenTo": "2026-03-15T18:00:32.932Z"
+      }
+    ],
+    "timestamp": "2026-03-16T18:00:40.098Z"
   }
 }

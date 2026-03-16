@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-16T02:44:20.115Z",
+  "lastUpdated": "2026-03-16T18:00:39.997Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -34,14 +34,14 @@
   "cricketSourceUsed": "cricapi",
   "nhlCount": 165,
   "ahlCount": 222,
-  "ahlAdded": 12,
-  "ahlUpdated": 209,
-  "ahlPruned": 21,
+  "ahlAdded": 24,
+  "ahlUpdated": 196,
+  "ahlPruned": 24,
   "echlCount": 15,
-  "echlAdded": 3,
-  "echlUpdated": 16,
-  "echlPruned": 4,
-  "echlWebCount": 19,
+  "echlAdded": 5,
+  "echlUpdated": 15,
+  "echlPruned": 5,
+  "echlWebCount": 20,
   "buCount": 3,
   "buAdded": 0,
   "buUpdated": 3,
@@ -49,7 +49,7 @@
   "rugbyCount": 103,
   "rugbyAdded": 0,
   "rugbyUpdated": 101,
-  "rugbyPruned": 1,
+  "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 19,
     "top14": 14,
@@ -83,32 +83,32 @@
   "mlsCount": 60,
   "mlsAdded": 0,
   "mlsUpdated": 60,
-  "mlsPruned": 64,
+  "mlsPruned": 60,
   "mlsSourceUsed": "ical",
-  "serieaCount": 39,
-  "serieaAdded": 1,
+  "serieaCount": 40,
+  "serieaAdded": 2,
   "serieaUpdated": 38,
   "serieaPruned": 39,
   "serieaSourceUsed": "espn",
   "laligaCount": 41,
-  "laligaAdded": 1,
-  "laligaUpdated": 40,
+  "laligaAdded": 0,
+  "laligaUpdated": 41,
   "laligaPruned": 41,
   "laligaSourceUsed": "espn",
   "bundesligaCount": 37,
   "bundesligaAdded": 0,
   "bundesligaUpdated": 37,
-  "bundesligaPruned": 38,
+  "bundesligaPruned": 37,
   "bundesligaSourceUsed": "espn",
   "ligue1Count": 36,
-  "ligue1Added": 1,
-  "ligue1Updated": 35,
+  "ligue1Added": 0,
+  "ligue1Updated": 36,
   "ligue1Pruned": 36,
   "ligue1SourceUsed": "espn",
   "nwslCount": 37,
-  "nwslAdded": 1,
-  "nwslUpdated": 36,
-  "nwslPruned": 36,
+  "nwslAdded": 0,
+  "nwslUpdated": 37,
+  "nwslPruned": 37,
   "nwslSourceUsed": "ical",
   "uslCount": 57,
   "uslAdded": 0,
@@ -140,13 +140,13 @@
   "faCupUpdated": 13,
   "faCupPruned": 13,
   "faCupSourceUsed": "espn",
-  "tennisCount": 1,
+  "tennisCount": 0,
   "tennisAdded": 0,
-  "tennisUpdated": 1,
+  "tennisUpdated": 0,
   "tennisPruned": 0,
-  "tennisSourceUsed": "espn",
+  "tennisSourceUsed": "hardcoded",
   "tennisTournamentCounts": {
-    "Indian Wells Masters": 1,
+    "Indian Wells Masters": 28,
     "Miami Masters": 32,
     "Monte-Carlo Masters": 24
   },
@@ -163,10 +163,10 @@
     "Saudi Arabian Grand Prix": 5,
     "Miami Grand Prix": 5
   },
-  "golfCount": 9,
+  "golfCount": 10,
   "golfAdded": 1,
   "golfUpdated": 9,
-  "golfPruned": 1,
+  "golfPruned": 0,
   "golfSourceUsed": "hardcoded",
   "golfTournamentCounts": {
     "Players Championship": 4,
@@ -174,44 +174,44 @@
     "PGA Championship": 2
   },
   "nbaCount": 266,
-  "nbaAdded": 11,
-  "nbaUpdated": 255,
-  "nbaPruned": 265,
+  "nbaAdded": 0,
+  "nbaUpdated": 266,
+  "nbaPruned": 266,
   "nbaSourceUsed": "espn",
   "ncaabCount": 19,
-  "ncaabAdded": 2,
-  "ncaabUpdated": 17,
-  "ncaabPruned": 17,
+  "ncaabAdded": 0,
+  "ncaabUpdated": 19,
+  "ncaabPruned": 19,
   "ncaabSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-16T02:44:20.115Z",
+    "lastRefreshAt": "2026-03-16T18:00:39.997Z",
     "sources": {
       "nhl": {
         "count": 165,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 222,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 3,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 103,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 19,
@@ -231,97 +231,97 @@
       },
       "iccT20Wc": {
         "count": 3,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 32,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 60,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
-        "count": 39,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "count": 40,
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 41,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 37,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 36,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 37,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 57,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
       "championsCup": {
         "count": 12,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 4,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 16,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 16,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 13,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-03T19:45:00.000Z"
       },
       "tennis": {
-        "count": 1,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "count": 0,
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
-          "Indian Wells Masters": 1,
+          "Indian Wells Masters": 28,
           "Miami Masters": 32,
           "Monte-Carlo Masters": 24
         }
       },
       "f1": {
         "count": 30,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Australian Grand Prix": 5,
@@ -333,8 +333,8 @@
         }
       },
       "golf": {
-        "count": 9,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "count": 10,
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Players Championship": 4,
@@ -344,7 +344,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Boston Marathon": 1,
@@ -353,30 +353,17 @@
       },
       "nba": {
         "count": 266,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "ESPN API"
       },
       "ncaab": {
         "count": 19,
-        "lastFetchAt": "2026-03-16T02:44:20.115Z",
+        "lastFetchAt": "2026-03-16T18:00:39.997Z",
         "sourceName": "ESPN API"
       }
     }
   },
   "events": [
-    {
-      "id": "soccer-seriea-20260302-1730-bologna-at-pisa",
-      "sport": "soccer",
-      "league": "Serie A",
-      "awayTeam": "Bologna",
-      "homeTeam": "Pisa",
-      "startTimeLocal": "2026-03-02T17:30:00.000Z",
-      "endTimeLocal": "2026-03-02T19:45:00.000Z",
-      "providerId": "primevideo",
-      "isLive": false,
-      "source": "soccer-seriea",
-      "leagueKey": "seriea"
-    },
     {
       "id": "soccer-seriea-20260302-1945-fiorentina-at-udinese",
       "sport": "soccer",
@@ -6610,31 +6597,6 @@
       "source": "echl"
     },
     {
-      "id": "tennis-espn-172941",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Sinner",
-      "homeTeam": "Medvedev",
-      "startTimeLocal": "2026-03-15T21:25:00.000Z",
-      "endTimeLocal": "2026-03-15T23:55:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Indian Wells — Final",
-      "competitionType": "domestic",
-      "tennisRound": "Final",
-      "tennisPlayer1": "Sinner",
-      "tennisPlayer2": "Medvedev",
-      "tennisPlayer1Rank": 2,
-      "tennisPlayer2Rank": 11,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/rus.png",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
       "id": "ahl-1028702",
       "sport": "hockey",
       "league": "AHL",
@@ -7469,7 +7431,7 @@
       "isLive": false,
       "source": "basketball-ncaab",
       "leagueKey": "ncaab",
-      "providerReason": "ncaab-espn-plus-default"
+      "providerReason": "ncaab-espn-abc"
     },
     {
       "id": "ahl-1028717",
@@ -17778,6 +17740,32 @@
       "providerReason": "nba-regional-yttv"
     },
     {
+      "id": "soccer-seriea-20260406-1300-como-at-udinese",
+      "sport": "soccer",
+      "league": "Serie A",
+      "awayTeam": "Como",
+      "homeTeam": "Udinese",
+      "startTimeLocal": "2026-04-06T13:00:00.000Z",
+      "endTimeLocal": "2026-04-06T15:15:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "soccer-seriea",
+      "leagueKey": "seriea"
+    },
+    {
+      "id": "soccer-seriea-20260406-1600-genoa-at-juventus",
+      "sport": "soccer",
+      "league": "Serie A",
+      "awayTeam": "Genoa",
+      "homeTeam": "Juventus",
+      "startTimeLocal": "2026-04-06T16:00:00.000Z",
+      "endTimeLocal": "2026-04-06T18:15:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "soccer-seriea",
+      "leagueKey": "seriea"
+    },
+    {
       "id": "golf-the-masters-2026-04-09",
       "sport": "golf",
       "league": "The Majors",
@@ -18153,6 +18141,24 @@
       "providerReason": "cbs-broadcast",
       "eventType": "session",
       "sessionTitle": "PGA — Round 1",
+      "competitionType": "international",
+      "tournamentName": "PGA Championship"
+    },
+    {
+      "id": "golf-pga-championship-2026-05-15",
+      "sport": "golf",
+      "league": "The Majors",
+      "awayTeam": "TBD",
+      "homeTeam": "PGA Championship",
+      "startTimeLocal": "2026-05-15T14:00:00.000Z",
+      "endTimeLocal": "2026-05-15T19:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "golf-hardcoded",
+      "leagueKey": "golf-majors",
+      "providerReason": "cbs-broadcast",
+      "eventType": "session",
+      "sessionTitle": "PGA — Round 2",
       "competitionType": "international",
       "tournamentName": "PGA Championship"
     }

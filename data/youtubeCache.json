@@ -53,7 +53,7 @@
   },
   "playoff_push:boston bruins playoff push march 2026": {
     "video": null,
-    "fetchedAt": "2026-03-15T18:00:42.207Z",
+    "fetchedAt": "2026-03-16T18:00:52.707Z",
     "query": "Boston Bruins playoff push March 2026",
     "debug": {
       "searchQuery": "Boston Bruins playoff push March 2026",
@@ -221,7 +221,7 @@
   },
   "playoff_push:san diego gulls playoff push march 2026": {
     "video": null,
-    "fetchedAt": "2026-03-16T02:44:31.609Z",
+    "fetchedAt": "2026-03-16T18:00:52.400Z",
     "query": "San Diego Gulls playoff push March 2026",
     "debug": {
       "searchQuery": "San Diego Gulls playoff push March 2026",
@@ -385,21 +385,21 @@
   },
   "league_moment:rivalry weekend sports march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=UuaFe0Ev2KQ",
-      "thumbnailUrl": "https://img.youtube.com/vi/UuaFe0Ev2KQ/hqdefault.jpg",
-      "durationSeconds": 3926,
-      "title": "NCAA Tournament Bracket Breakdown | March Madness | Yahoo! Sports",
+      "url": "https://www.youtube.com/watch?v=-9YyvqScB0U",
+      "thumbnailUrl": "https://img.youtube.com/vi/-9YyvqScB0U/hqdefault.jpg",
+      "durationSeconds": 370,
+      "title": "Sports influencer Ryan Hammer on March Madness bracket tips, sleeper teams & the Illini",
       "source": "youtube",
-      "channel": "Yahoo! Sports",
-      "publishedAt": "Streamed 1 hour ago"
+      "channel": "FOX 32 Chicago",
+      "publishedAt": "56 minutes ago"
     },
-    "fetchedAt": "2026-03-16T02:44:32.327Z",
+    "fetchedAt": "2026-03-16T18:00:53.380Z",
     "query": "Rivalry Weekend sports March 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports March 2026",
-      "selectedVideoTitle": "NCAA Tournament Bracket Breakdown | March Madness | Yahoo! Sports",
-      "selectedVideoPublishedAt": "Streamed 1 hour ago",
-      "selectedVideoChannel": "Yahoo! Sports",
+      "selectedVideoTitle": "Sports influencer Ryan Hammer on March Madness bracket tips, sleeper teams & the Illini",
+      "selectedVideoPublishedAt": "56 minutes ago",
+      "selectedVideoChannel": "FOX 32 Chicago",
       "rejectedForAgeCount": 0
     }
   }
