@@ -100,7 +100,7 @@ export default function DailyWrapCard() {
     const ordered = [...favs, ...others];
 
     const [head, ...rest] = ordered;
-    return { headline: head ?? null, secondary: rest.slice(0, 5), favCount: favs.length };
+    return { headline: head ?? null, secondary: rest, favCount: favs.length };
   }, [data, favorites]);
 
   return (
@@ -156,10 +156,10 @@ export default function DailyWrapCard() {
                 >
                   <Text style={styles.secondaryEmoji}>{getSportEmoji(entry.sport)}</Text>
                   <View style={styles.secondaryBody}>
-                    <Text style={styles.secondaryEditorial} numberOfLines={1}>
+                    <Text style={styles.secondaryEditorial}>
                       {entry.editorial}
                     </Text>
-                    <Text style={styles.secondaryDetail} numberOfLines={1}>
+                    <Text style={styles.secondaryDetail}>
                       {entry.detail}
                     </Text>
                   </View>
@@ -294,7 +294,7 @@ const styles = StyleSheet.create({
   },
   secondaryRow: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-start",
     paddingVertical: 10,
     borderBottomWidth: 1,
     borderBottomColor: Colors.border + "80",
