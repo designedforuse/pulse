@@ -594,7 +594,7 @@ export async function fetchRawCricketMatches(limit: number = 50): Promise<Cricke
   const allMatches: CricApiMatch[] = [];
   let offset = 0;
   let pagesRead = 0;
-  const MAX_PAGES = 6;
+  const MAX_PAGES = 3; // keep low — free tier 100 hits/day
 
   while (pagesRead < MAX_PAGES) {
     const page = await fetchMatchesPage(apiKey, offset);
@@ -678,7 +678,10 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
   let offset = 0;
   let totalRows = 0;
   let pagesRead = 0;
-  const MAX_PAGES = 10;
+  // Keep MAX_PAGES low — free tier is 100 hits/day shared across all calls.
+  // 3 pages × 25 matches = 75 matches per refresh, plenty for our filter.
+  const MAX_PAGES = 3;
+  const FUTURE_MATCH_TARGET = 15; // stop early once we have this many future matches
 
   while (pagesRead < MAX_PAGES) {
     const page = await fetchMatchesPage(apiKey, offset);
@@ -688,9 +691,15 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
     totalRows = page.info.totalRows;
     pagesRead++;
 
-    console.log(`  Cricket: Page ${pagesRead}, offset=${offset}, got ${page.data.length} matches (total in API: ${totalRows})`);
+    const now = new Date();
+    const futureCount = allMatches.filter(m => new Date(m.dateTimeGMT || m.date) > now).length;
+    console.log(`  Cricket: Page ${pagesRead}, offset=${offset}, got ${page.data.length} matches, ${futureCount} future (total in API: ${totalRows})`);
 
     if (allMatches.length >= totalRows) break;
+    if (futureCount >= FUTURE_MATCH_TARGET) {
+      console.log(`  Cricket: Stopping early — found ${futureCount} future matches`);
+      break;
+    }
     offset += page.data.length;
 
     await new Promise((r) => setTimeout(r, 200));

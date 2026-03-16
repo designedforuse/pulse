@@ -221,7 +221,7 @@
   },
   "playoff_push:san diego gulls playoff push march 2026": {
     "video": null,
-    "fetchedAt": "2026-03-14T18:00:42.269Z",
+    "fetchedAt": "2026-03-16T02:44:31.609Z",
     "query": "San Diego Gulls playoff push March 2026",
     "debug": {
       "searchQuery": "San Diego Gulls playoff push March 2026",
@@ -368,6 +368,38 @@
       "selectedVideoTitle": "2026 NCAA DII wrestling championship finals | FULL REPLAY",
       "selectedVideoPublishedAt": "1 hour ago",
       "selectedVideoChannel": "NCAA Championships",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:florida panthers vs seattle kraken upset highlights march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-16T02:44:31.861Z",
+    "query": "Florida Panthers vs Seattle Kraken upset highlights March 2026",
+    "debug": {
+      "searchQuery": "Florida Panthers vs Seattle Kraken upset highlights March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:rivalry weekend sports march 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=UuaFe0Ev2KQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/UuaFe0Ev2KQ/hqdefault.jpg",
+      "durationSeconds": 3926,
+      "title": "NCAA Tournament Bracket Breakdown | March Madness | Yahoo! Sports",
+      "source": "youtube",
+      "channel": "Yahoo! Sports",
+      "publishedAt": "Streamed 1 hour ago"
+    },
+    "fetchedAt": "2026-03-16T02:44:32.327Z",
+    "query": "Rivalry Weekend sports March 2026",
+    "debug": {
+      "searchQuery": "Rivalry Weekend sports March 2026",
+      "selectedVideoTitle": "NCAA Tournament Bracket Breakdown | March Madness | Yahoo! Sports",
+      "selectedVideoPublishedAt": "Streamed 1 hour ago",
+      "selectedVideoChannel": "Yahoo! Sports",
       "rejectedForAgeCount": 0
     }
   }

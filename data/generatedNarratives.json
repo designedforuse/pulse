@@ -1,19 +1,18 @@
 {
-  "lastUpdated": "2026-03-15T18:00:32.932Z",
+  "lastUpdated": "2026-03-16T02:44:20.205Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
         "NewEngland": 1,
-        "SoCal": 1,
-        "Other": 2
+        "SoCal": 1
       },
       "league_moment": {
-        "Other": 2
+        "Other": 1
       },
       "player_movement": {
         "Other": 1
       },
-      "clinch_watch": {
+      "upset_alert": {
         "Other": 1
       }
     },
@@ -23,36 +22,20 @@
     },
     "finalFeedByRegion": {
       "SoCal": [
-        "playoff_push: Oilers Push Week"
+        "playoff_push: Gulls Push Week"
       ],
       "NewEngland": [
         "playoff_push: Bruins Push Week"
       ],
       "Other": [
-        "clinch_watch: Clinch Watch",
-        "playoff_push: Playoff Push",
+        "upset_alert: Upset Alert",
         "player_movement: System Shuffle",
-        "league_moment: Original Six Clash"
+        "league_moment: Rivalry Weekend"
       ]
     },
-    "droppedCandidatesReasons": [
-      {
-        "id": "playoff_push_clinch_fallback_nhl_2025021064",
-        "kind": "playoff_push",
-        "region": "Other",
-        "title": "Playoff Push",
-        "reason": "max 1 playoff_push per region (Other)"
-      },
-      {
-        "id": "league_moment_tournament",
-        "kind": "league_moment",
-        "region": "Other",
-        "title": "Big Stage",
-        "reason": "max 1 league_moment per region (Other)"
-      }
-    ],
-    "totalBeforeCap": 8,
-    "totalAfterCap": 6,
+    "droppedCandidatesReasons": [],
+    "totalBeforeCap": 5,
+    "totalAfterCap": 5,
     "playerMovement": {
       "rawMovementCandidates": 1,
       "movementAfterRegionFilter": 1,
@@ -91,56 +74,19 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 671,
-        "movementsDetectedThisRun": [
-          {
-            "playerId": "8475170",
-            "playerName": "B. Schenn",
-            "fromTeam": "STL",
-            "toTeam": "NYI",
-            "detectedAt": "2026-03-15T18:00:32.932Z",
-            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
-            "firstSeenTo": "2026-03-14T06:00:32.337Z"
-          },
-          {
-            "playerId": "8476872",
-            "playerName": "S. Laughton",
-            "fromTeam": "TOR",
-            "toTeam": "LAK",
-            "detectedAt": "2026-03-15T18:00:32.932Z",
-            "lastSeenFrom": "2026-03-03T03:50:51.829Z",
-            "firstSeenTo": "2026-03-11T04:11:44.394Z"
-          },
-          {
-            "playerId": "8481553",
-            "playerName": "B. Brink",
-            "fromTeam": "PHI",
-            "toTeam": "MIN",
-            "detectedAt": "2026-03-15T18:00:32.932Z",
-            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-            "firstSeenTo": "2026-03-07T20:12:59.450Z"
-          },
-          {
-            "playerId": "8482259",
-            "playerName": "B. McMann",
-            "fromTeam": "TOR",
-            "toTeam": "SEA",
-            "detectedAt": "2026-03-15T18:00:32.932Z",
-            "lastSeenFrom": "2026-03-03T03:50:51.829Z",
-            "firstSeenTo": "2026-03-15T18:00:32.932Z"
-          }
-        ],
-        "timestamp": "2026-03-15T18:00:32.932Z"
+        "playersIngested": 647,
+        "movementsDetectedThisRun": [],
+        "timestamp": "2026-03-16T02:44:20.205Z"
       },
-      "cacheHistoryCount": 777,
+      "cacheHistoryCount": 778,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 8,
-    "candidateCountAfterCap": 6,
+    "candidateCountBeforeCap": 5,
+    "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -190.00914777777777,
+      "hoursUntil": -198.73894583333333,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -150,34 +96,31 @@
       "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 0,
+      "rawUpsetCandidates": 1,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 0,
-      "upsetFinalCount": 0
+      "upsetCompletedCandidates": 1,
+      "upsetFinalCount": 1
     },
     "clinchWatch": {
-      "rawClinchCandidates": 1,
-      "clinchAfterRegionFilter": 1,
-      "clinchFinalCount": 1,
-      "clinchGatedOut": [
-        "Anaheim Ducks: before Mar 25, 75 pts < 95",
-        "Boston Bruins: before Mar 25, 80 pts < 95"
-      ]
+      "rawClinchCandidates": 0,
+      "clinchAfterRegionFilter": 0,
+      "clinchFinalCount": 0,
+      "clinchGatedOut": []
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "soccer-mls-20260315-0030-san-diego-fc-at-fc-dallas",
+    "tonightStorySourceEvent": "nhl_2025021064",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 480,
-      "sourceEventId": "soccer-mls-20260315-0030-san-diego-fc-at-fc-dallas",
-      "reason": "14 followed/affiliate teams playing tonight",
+      "selectedScore": 240,
+      "sourceEventId": "nhl_2025021064",
+      "reason": "2 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 480,
-          "reason": "14 followed/affiliate teams playing tonight"
+          "score": 240,
+          "reason": "2 followed/affiliate teams playing tonight"
         },
         {
           "label": "[playoff_push] Your Team's Push",
@@ -187,32 +130,12 @@
         {
           "label": "[playoff_push] Your Team's Push",
           "score": 170,
-          "reason": "playoff_push involving followed team(s): Tulsa Oilers"
+          "reason": "playoff_push involving followed team(s): San Diego Gulls"
         },
         {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): Anaheim Ducks"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): Boston Bruins"
-        },
-        {
-          "label": "[ritual_night] Saturday Game Day",
-          "score": 130,
-          "reason": "ritual \"Saturday Game Day\" has 11 followed-team game(s)"
-        },
-        {
-          "label": "[clinch_watch] Playoff Stakes",
-          "score": 110,
-          "reason": "clinch_watch (generic, no followed teams)"
-        },
-        {
-          "label": "[league_moment] League Spotlight",
-          "score": 50,
-          "reason": "league_moment (generic, no followed teams)"
+          "label": "[upset_alert] Shock Result",
+          "score": 120,
+          "reason": "upset_alert (generic, no followed teams)"
         },
         {
           "label": "[league_moment] League Spotlight",
@@ -228,7 +151,7 @@
     },
     "videoSelection": {
       "playoff_push_socal": {
-        "searchQuery": "Tulsa Oilers playoff push March 2026",
+        "searchQuery": "San Diego Gulls playoff push March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
@@ -241,25 +164,18 @@
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
-      "clinch_watch_tennis-espn-172941": {
-        "searchQuery": "Sinner clinch playoff berth March 2026",
+      "upset_alert_nhl_2025021062": {
+        "searchQuery": "Florida Panthers vs Seattle Kraken upset highlights March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
-      "playoff_push_clinch_fallback_nhl_2025021059": {
-        "searchQuery": "Anaheim Ducks playoff push March 2026",
-        "selectedVideoTitle": "Maple Leafs Hopeful Auston Matthews Won't Need Surgery | Saturday Headlines",
-        "selectedVideoPublishedAt": "16 hours ago",
-        "selectedVideoChannel": "SPORTSNET",
-        "rejectedForAgeCount": 0
-      },
       "league_moment_rivalry": {
-        "searchQuery": "Original Six Clash sports March 2026",
-        "selectedVideoTitle": "2026 NCAA DII wrestling championship finals | FULL REPLAY",
-        "selectedVideoPublishedAt": "1 hour ago",
-        "selectedVideoChannel": "NCAA Championships",
+        "searchQuery": "Rivalry Weekend sports March 2026",
+        "selectedVideoTitle": "NCAA Tournament Bracket Breakdown | March Madness | Yahoo! Sports",
+        "selectedVideoPublishedAt": "Streamed 1 hour ago",
+        "selectedVideoChannel": "Yahoo! Sports",
         "rejectedForAgeCount": 0
       }
     }
@@ -267,7 +183,7 @@
   "cards": [
     {
       "id": "playoff_push_socal",
-      "title": "Oilers Push Week",
+      "title": "Gulls Push Week",
       "subtitle": "Four games in seven days, including a back-to-back",
       "impact": {
         "label": "Impacts: Family Game Night",
@@ -275,8 +191,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-15T18:00:32.932Z",
-      "expiresAt": "2026-03-22T18:00:32.932Z",
+      "triggeredAt": "2026-03-16T02:44:20.205Z",
+      "expiresAt": "2026-03-23T02:44:20.205Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -284,24 +200,24 @@
       "meta": {
         "teams": [
           {
-            "team": "Tulsa Oilers",
-            "league": "ECHL",
+            "team": "San Diego Gulls",
+            "league": "AHL",
             "gamesInNext7Days": 4,
-            "gamesInNext5Days": 2,
+            "gamesInNext5Days": 3,
             "hasBackToBack": true,
-            "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+            "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
           }
         ],
         "eventIds": [
-          "echl-web-25201",
-          "echl-web-25206",
-          "echl-web-25211",
-          "echl-web-25228"
+          "ahl-1028709",
+          "ahl-1028714",
+          "ahl-1028728",
+          "ahl-1028751"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-15T18:00:32.932Z",
-        "windowEnd": "2026-03-22T18:00:32.932Z",
-        "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+        "windowStart": "2026-03-16T02:44:20.205Z",
+        "windowEnd": "2026-03-23T02:44:20.205Z",
+        "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
         "hockey"
@@ -317,8 +233,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-15T18:00:32.932Z",
-      "expiresAt": "2026-03-22T18:00:32.932Z",
+      "triggeredAt": "2026-03-16T02:44:20.205Z",
+      "expiresAt": "2026-03-23T02:44:20.205Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -341,8 +257,8 @@
           "nhl_2025021108"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-15T18:00:32.932Z",
-        "windowEnd": "2026-03-22T18:00:32.932Z",
+        "windowStart": "2026-03-16T02:44:20.205Z",
+        "windowEnd": "2026-03-23T02:44:20.205Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -350,77 +266,38 @@
       ]
     },
     {
-      "id": "clinch_watch_tennis-espn-172941",
-      "title": "Clinch Watch",
-      "subtitle": "Sinner vs Medvedev · Tennis title on the line",
+      "id": "upset_alert_nhl_2025021062",
+      "title": "Upset Alert",
+      "subtitle": "Seattle Kraken upsets Florida Panthers",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
-      "priority": 92,
-      "triggeredAt": "2026-03-15T18:00:32.932Z",
-      "expiresAt": "2026-03-16T01:00:00.000Z",
-      "kind": "clinch_watch",
+      "priority": 98,
+      "triggeredAt": "2026-03-16T02:44:20.205Z",
+      "expiresAt": "2026-03-16T08:44:20.205Z",
+      "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "source": "tournament",
-        "conditionLabel": "Tennis title on the line",
-        "sport": "tennis",
-        "league": "ATP Masters 1000",
-        "awayTeam": "Sinner",
-        "homeTeam": "Medvedev",
-        "startTime": "2026-03-15T21:00:00.000Z",
+        "mode": "completed",
+        "upsetType": "team_upset",
+        "sport": "hockey",
+        "league": "NHL",
+        "favoriteName": "Florida Panthers",
+        "underdogName": "Seattle Kraken",
+        "awayTeam": "Florida Panthers",
+        "homeTeam": "Seattle Kraken",
+        "startTime": "2026-03-16T00:00:00.000Z",
         "eventIds": [
-          "tennis-espn-172941"
+          "nhl_2025021062"
         ],
-        "reason": "Sinner and Medvedev meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
-      },
-      "sports": [
-        "tennis"
-      ]
-    },
-    {
-      "id": "playoff_push_clinch_fallback_nhl_2025021059",
-      "title": "Playoff Push",
-      "subtitle": "A win keeps Anaheim Ducks in the playoff race.",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 90,
-      "triggeredAt": "2026-03-15T18:00:32.932Z",
-      "expiresAt": "2026-03-16T03:00:00.000Z",
-      "kind": "playoff_push",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "teams": [
-          {
-            "team": "Anaheim Ducks",
-            "league": "NHL"
-          }
-        ],
-        "eventIds": [
-          "nhl_2025021059"
-        ],
-        "reason": "Anaheim Ducks has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
-        "clinchFallback": true
+        "reason": "Seattle Kraken pulled off the upset against Florida Panthers.\n\nA result like this can shift momentum for the rest of the season."
       },
       "sports": [
         "hockey"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=d6GLHxSuRTk",
-        "thumbnailUrl": "https://img.youtube.com/vi/d6GLHxSuRTk/hqdefault.jpg",
-        "durationSeconds": 399,
-        "title": "Maple Leafs Hopeful Auston Matthews Won't Need Surgery | Saturday Headlines",
-        "source": "youtube",
-        "channel": "SPORTSNET",
-        "publishedAt": "16 hours ago"
-      }
+      ]
     },
     {
       "id": "player_movement_system",
@@ -431,8 +308,8 @@
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-03-15T18:00:32.932Z",
-      "expiresAt": "2026-03-22T18:00:32.932Z",
+      "triggeredAt": "2026-03-16T02:44:20.205Z",
+      "expiresAt": "2026-03-23T02:44:20.205Z",
       "kind": "player_movement",
       "region": "Other",
       "regionPriority": 99,
@@ -681,24 +558,25 @@
     },
     {
       "id": "league_moment_rivalry",
-      "title": "Original Six Clash",
-      "subtitle": "Original Six Clash: Boston Bruins @ Montréal Canadiens",
+      "title": "Rivalry Weekend",
+      "subtitle": "2 rivalry matchups in the next 7 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-15T18:00:32.932Z",
-      "expiresAt": "2026-03-22T18:00:32.932Z",
+      "triggeredAt": "2026-03-16T02:44:20.205Z",
+      "expiresAt": "2026-03-23T02:44:20.205Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "rivalry",
-        "matchCount": 1,
+        "matchCount": 2,
         "rivalries": [
-          "Original Six Clash"
+          "Original Six Clash",
+          "Madrid Derby"
         ],
         "matches": [
           {
@@ -707,24 +585,33 @@
             "home": "Montréal Canadiens",
             "league": "NHL",
             "startTime": "2026-03-17T23:00:00.000Z"
+          },
+          {
+            "label": "Madrid Derby",
+            "away": "Atlético Madrid",
+            "home": "Real Madrid",
+            "league": "La Liga",
+            "startTime": "2026-03-22T20:00:00.000Z"
           }
         ],
         "eventIds": [
-          "nhl_2025021069"
+          "nhl_2025021069",
+          "soccer-laliga-20260322-2000-atl-tico-madrid-at-real-madrid"
         ],
-        "reason": "1 known rivalry matchup(s) found: Original Six Clash"
+        "reason": "2 known rivalry matchup(s) found: Original Six Clash, Madrid Derby"
       },
       "sports": [
-        "hockey"
+        "hockey",
+        "soccer"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=gGj3bxAhCts",
-        "thumbnailUrl": "https://img.youtube.com/vi/gGj3bxAhCts/hqdefault.jpg",
-        "durationSeconds": 11676,
-        "title": "2026 NCAA DII wrestling championship finals | FULL REPLAY",
+        "url": "https://www.youtube.com/watch?v=UuaFe0Ev2KQ",
+        "thumbnailUrl": "https://img.youtube.com/vi/UuaFe0Ev2KQ/hqdefault.jpg",
+        "durationSeconds": 3926,
+        "title": "NCAA Tournament Bracket Breakdown | March Madness | Yahoo! Sports",
         "source": "youtube",
-        "channel": "NCAA Championships",
-        "publishedAt": "1 hour ago"
+        "channel": "Yahoo! Sports",
+        "publishedAt": "Streamed 1 hour ago"
       }
     }
   ],
@@ -732,20 +619,16 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The San Diego FC, Los Angeles Lakers, San Diego Wave, San Diego Gulls, and Tulsa Oilers (+9 more) all play tonight across the MLS, NBA, NWSL, AHL, ECHL, USL, NCAAB, Japan League One, F1, The Majors, Serie A, NHL.",
-    "sourceEventId": "soccer-mls-20260315-0030-san-diego-fc-at-fc-dallas",
+    "body": "The Boston Bruins and Boston Celtics all play tonight across the NHL, NBA.",
+    "sourceEventId": "nhl_2025021064",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
     },
     "sports": [
-      "soccer",
-      "basketball",
       "hockey",
-      "rugby",
-      "racing",
-      "golf"
+      "basketball"
     ]
   }
 }

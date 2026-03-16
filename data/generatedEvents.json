@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-15T18:00:32.845Z",
+  "lastUpdated": "2026-03-16T02:44:20.115Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -32,27 +32,27 @@
   "buSourceUsed": "chn",
   "rugbySourceUsed": "ical",
   "cricketSourceUsed": "cricapi",
-  "nhlCount": 164,
-  "ahlCount": 231,
-  "ahlAdded": 27,
-  "ahlUpdated": 194,
-  "ahlPruned": 26,
-  "echlCount": 16,
+  "nhlCount": 165,
+  "ahlCount": 222,
+  "ahlAdded": 12,
+  "ahlUpdated": 209,
+  "ahlPruned": 21,
+  "echlCount": 15,
   "echlAdded": 3,
   "echlUpdated": 16,
-  "echlPruned": 3,
+  "echlPruned": 4,
   "echlWebCount": 19,
   "buCount": 3,
   "buAdded": 0,
   "buUpdated": 3,
-  "buPruned": 1,
-  "rugbyCount": 104,
-  "rugbyAdded": 3,
-  "rugbyUpdated": 99,
-  "rugbyPruned": 5,
+  "buPruned": 0,
+  "rugbyCount": 103,
+  "rugbyAdded": 0,
+  "rugbyUpdated": 101,
+  "rugbyPruned": 1,
   "rugbyCounts": {
     "urc": 19,
-    "top14": 15,
+    "top14": 14,
     "superrugby": 23,
     "premiership": 10,
     "sixnations": 6,
@@ -62,12 +62,12 @@
   "cricketCount": 6,
   "cricketAdded": 0,
   "cricketUpdated": 0,
-  "cricketPruned": 2,
+  "cricketPruned": 0,
   "cricketCounts": {},
   "iccT20WcCount": 3,
   "iccT20WcAdded": 3,
   "iccT20WcUpdated": 0,
-  "iccT20WcPruned": 5,
+  "iccT20WcPruned": 3,
   "iccT20WcSourceUsed": "hardcoded-schedule",
   "t20wcDedupedCount": 0,
   "olympicHockeyCount": 0,
@@ -78,42 +78,42 @@
   "eplCount": 32,
   "eplAdded": 0,
   "eplUpdated": 29,
-  "eplPruned": 33,
+  "eplPruned": 29,
   "eplSourceUsed": "ical",
-  "mlsCount": 64,
-  "mlsAdded": 15,
-  "mlsUpdated": 49,
-  "mlsPruned": 60,
+  "mlsCount": 60,
+  "mlsAdded": 0,
+  "mlsUpdated": 60,
+  "mlsPruned": 64,
   "mlsSourceUsed": "ical",
   "serieaCount": 39,
-  "serieaAdded": 3,
-  "serieaUpdated": 36,
-  "serieaPruned": 40,
+  "serieaAdded": 1,
+  "serieaUpdated": 38,
+  "serieaPruned": 39,
   "serieaSourceUsed": "espn",
   "laligaCount": 41,
-  "laligaAdded": 8,
-  "laligaUpdated": 33,
-  "laligaPruned": 37,
+  "laligaAdded": 1,
+  "laligaUpdated": 40,
+  "laligaPruned": 41,
   "laligaSourceUsed": "espn",
-  "bundesligaCount": 38,
-  "bundesligaAdded": 2,
-  "bundesligaUpdated": 36,
+  "bundesligaCount": 37,
+  "bundesligaAdded": 0,
+  "bundesligaUpdated": 37,
   "bundesligaPruned": 38,
   "bundesligaSourceUsed": "espn",
   "ligue1Count": 36,
-  "ligue1Added": 5,
-  "ligue1Updated": 31,
+  "ligue1Added": 1,
+  "ligue1Updated": 35,
   "ligue1Pruned": 36,
   "ligue1SourceUsed": "espn",
-  "nwslCount": 36,
-  "nwslAdded": 3,
-  "nwslUpdated": 33,
-  "nwslPruned": 33,
+  "nwslCount": 37,
+  "nwslAdded": 1,
+  "nwslUpdated": 36,
+  "nwslPruned": 36,
   "nwslSourceUsed": "ical",
   "uslCount": 57,
-  "uslAdded": 11,
-  "uslUpdated": 46,
-  "uslPruned": 46,
+  "uslAdded": 0,
+  "uslUpdated": 57,
+  "uslPruned": 57,
   "uslSourceUsed": "espn",
   "championsCupCount": 12,
   "championsCupAdded": 0,
@@ -121,8 +121,8 @@
   "championsCupPruned": 0,
   "championsCupSourceUsed": "ical",
   "mlrCount": 4,
-  "mlrAdded": 2,
-  "mlrUpdated": 2,
+  "mlrAdded": 0,
+  "mlrUpdated": 4,
   "mlrPruned": 0,
   "mlrSourceUsed": "hardcoded",
   "championsLeagueCount": 16,
@@ -136,17 +136,17 @@
   "europaLeaguePruned": 16,
   "europaLeagueSourceUsed": "espn",
   "faCupCount": 13,
-  "faCupAdded": 2,
-  "faCupUpdated": 11,
-  "faCupPruned": 11,
+  "faCupAdded": 0,
+  "faCupUpdated": 13,
+  "faCupPruned": 13,
   "faCupSourceUsed": "espn",
-  "tennisCount": 3,
-  "tennisAdded": 1,
-  "tennisUpdated": 2,
+  "tennisCount": 1,
+  "tennisAdded": 0,
+  "tennisUpdated": 1,
   "tennisPruned": 0,
   "tennisSourceUsed": "espn",
   "tennisTournamentCounts": {
-    "Indian Wells Masters": 3,
+    "Indian Wells Masters": 1,
     "Miami Masters": 32,
     "Monte-Carlo Masters": 24
   },
@@ -165,57 +165,57 @@
   },
   "golfCount": 9,
   "golfAdded": 1,
-  "golfUpdated": 8,
-  "golfPruned": 0,
+  "golfUpdated": 9,
+  "golfPruned": 1,
   "golfSourceUsed": "hardcoded",
   "golfTournamentCounts": {
     "Players Championship": 4,
     "The Masters": 4,
-    "PGA Championship": 1
+    "PGA Championship": 2
   },
-  "nbaCount": 265,
-  "nbaAdded": 3,
-  "nbaUpdated": 262,
-  "nbaPruned": 267,
+  "nbaCount": 266,
+  "nbaAdded": 11,
+  "nbaUpdated": 255,
+  "nbaPruned": 265,
   "nbaSourceUsed": "espn",
-  "ncaabCount": 17,
-  "ncaabAdded": 1,
-  "ncaabUpdated": 16,
-  "ncaabPruned": 22,
+  "ncaabCount": 19,
+  "ncaabAdded": 2,
+  "ncaabUpdated": 17,
+  "ncaabPruned": 17,
   "ncaabSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-15T18:00:32.845Z",
+    "lastRefreshAt": "2026-03-16T02:44:20.115Z",
     "sources": {
       "nhl": {
-        "count": 164,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "count": 165,
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "NHL API"
       },
       "ahl": {
-        "count": 231,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "count": 222,
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
-        "count": 16,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "count": 15,
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 3,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
-        "count": 104,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "count": 103,
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 19,
-          "top14": 15,
+          "top14": 14,
           "superrugby": 23,
           "premiership": 10,
           "sixnations": 6,
@@ -231,97 +231,97 @@
       },
       "iccT20Wc": {
         "count": 3,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 32,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
-        "count": 64,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "count": 60,
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 39,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 41,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
-        "count": 38,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "count": 37,
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 36,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
-        "count": 36,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "count": 37,
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 57,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
       "championsCup": {
         "count": 12,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 4,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 16,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 16,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 13,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-03T19:45:00.000Z"
       },
       "tennis": {
-        "count": 3,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "count": 1,
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
-          "Indian Wells Masters": 3,
+          "Indian Wells Masters": 1,
           "Miami Masters": 32,
           "Monte-Carlo Masters": 24
         }
       },
       "f1": {
         "count": 30,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Australian Grand Prix": 5,
@@ -334,17 +334,17 @@
       },
       "golf": {
         "count": 9,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Players Championship": 4,
           "The Masters": 4,
-          "PGA Championship": 1
+          "PGA Championship": 2
         }
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Boston Marathon": 1,
@@ -352,402 +352,18 @@
         }
       },
       "nba": {
-        "count": 265,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "count": 266,
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "ESPN API"
       },
       "ncaab": {
-        "count": 17,
-        "lastFetchAt": "2026-03-15T18:00:32.845Z",
+        "count": 19,
+        "lastFetchAt": "2026-03-16T02:44:20.115Z",
         "sourceName": "ESPN API"
       }
     }
   },
   "events": [
-    {
-      "id": "soccer-bundesliga-20260301-1830-rb-leipzig-at-hamburg-sv",
-      "sport": "soccer",
-      "league": "Bundesliga",
-      "awayTeam": "RB Leipzig",
-      "homeTeam": "Hamburg SV",
-      "startTimeLocal": "2026-03-01T18:30:00.000Z",
-      "endTimeLocal": "2026-03-01T20:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "soccer-bundesliga",
-      "leagueKey": "bundesliga",
-      "providerReason": "bundesliga-disneyplus"
-    },
-    {
-      "id": "soccer-mls-20260301-1930-d-c-united-at-austin-fc",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "D.C. United",
-      "homeTeam": "Austin FC",
-      "startTimeLocal": "2026-03-01T19:30:00.000Z",
-      "endTimeLocal": "2026-03-01T21:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-seriea-20260301-1945-juventus-at-as-roma",
-      "sport": "soccer",
-      "league": "Serie A",
-      "awayTeam": "Juventus",
-      "homeTeam": "AS Roma",
-      "startTimeLocal": "2026-03-01T19:45:00.000Z",
-      "endTimeLocal": "2026-03-01T22:00:00.000Z",
-      "providerId": "primevideo",
-      "isLive": false,
-      "source": "soccer-seriea",
-      "leagueKey": "seriea"
-    },
-    {
-      "id": "soccer-ligue1-20260301-1945-lyon-at-marseille",
-      "sport": "soccer",
-      "league": "Ligue 1",
-      "awayTeam": "Lyon",
-      "homeTeam": "Marseille",
-      "startTimeLocal": "2026-03-01T19:45:00.000Z",
-      "endTimeLocal": "2026-03-01T22:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "soccer-ligue1",
-      "leagueKey": "ligue1",
-      "providerReason": "ligue1-yttv"
-    },
-    {
-      "id": "ahl-1028608",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Calgary Wranglers",
-      "awayTeam": "Abbotsford Canucks",
-      "startTimeLocal": "2026-03-01T20:00:00.000Z",
-      "endTimeLocal": "2026-03-01T22:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "soccer-laliga-20260301-2000-celta-vigo-at-girona",
-      "sport": "soccer",
-      "league": "La Liga",
-      "awayTeam": "Celta Vigo",
-      "homeTeam": "Girona",
-      "startTimeLocal": "2026-03-01T20:00:00.000Z",
-      "endTimeLocal": "2026-03-01T22:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "soccer-laliga",
-      "leagueKey": "laliga",
-      "providerReason": "laliga-disneyplus"
-    },
-    {
-      "id": "ahl-1028610",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Lehigh Valley Phantoms",
-      "awayTeam": "Hartford Wolf Pack",
-      "startTimeLocal": "2026-03-01T20:05:00.000Z",
-      "endTimeLocal": "2026-03-01T22:50:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "ahl-1028613",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Providence Bruins",
-      "awayTeam": "Bridgeport Islanders",
-      "startTimeLocal": "2026-03-01T20:05:00.000Z",
-      "endTimeLocal": "2026-03-01T22:50:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "rugby-top14-3hwuqe",
-      "sport": "rugby",
-      "league": "Top 14",
-      "homeTeam": "Pau",
-      "awayTeam": "Bordeaux",
-      "startTimeLocal": "2026-03-01T20:05:00.000Z",
-      "endTimeLocal": "2026-03-01T22:05:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "rugby",
-      "leagueKey": "top14"
-    },
-    {
-      "id": "basketball-nba-20260301-2030-cleveland-cavaliers-at-brooklyn-nets",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Cleveland Cavaliers",
-      "homeTeam": "Brooklyn Nets",
-      "startTimeLocal": "2026-03-01T20:30:00.000Z",
-      "endTimeLocal": "2026-03-01T23:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
-    {
-      "id": "basketball-nba-20260301-2030-milwaukee-bucks-at-chicago-bulls",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Milwaukee Bucks",
-      "homeTeam": "Chicago Bulls",
-      "startTimeLocal": "2026-03-01T20:30:00.000Z",
-      "endTimeLocal": "2026-03-01T23:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
-    {
-      "id": "basketball-nba-20260301-2030-minnesota-timberwolves-at-denver-nuggets",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Minnesota Timberwolves",
-      "homeTeam": "Denver Nuggets",
-      "startTimeLocal": "2026-03-01T20:30:00.000Z",
-      "endTimeLocal": "2026-03-01T23:00:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
-    },
-    {
-      "id": "ahl-1028611",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Milwaukee Admirals",
-      "awayTeam": "Manitoba Moose",
-      "startTimeLocal": "2026-03-01T21:00:00.000Z",
-      "endTimeLocal": "2026-03-01T23:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "ahl-1028615",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Syracuse Crunch",
-      "awayTeam": "Rochester Americans",
-      "startTimeLocal": "2026-03-01T21:00:00.000Z",
-      "endTimeLocal": "2026-03-01T23:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "ahl-1028616",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Toronto Marlies",
-      "awayTeam": "Chicago Wolves",
-      "startTimeLocal": "2026-03-01T21:00:00.000Z",
-      "endTimeLocal": "2026-03-01T23:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "echl-web-25116",
-      "sport": "hockey",
-      "league": "ECHL",
-      "homeTeam": "Tulsa Oilers",
-      "awayTeam": "Rapid City Rush",
-      "startTimeLocal": "2026-03-01T21:05:00.000Z",
-      "endTimeLocal": "2026-03-01T23:50:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "echl"
-    },
-    {
-      "id": "soccer-mls-20260301-2130-new-york-city-football-club-at-philadelphia-union",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "New York City Football Club",
-      "homeTeam": "Philadelphia Union",
-      "startTimeLocal": "2026-03-01T21:30:00.000Z",
-      "endTimeLocal": "2026-03-01T23:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "basketball-nba-20260301-2200-memphis-grizzlies-at-indiana-pacers",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Memphis Grizzlies",
-      "homeTeam": "Indiana Pacers",
-      "startTimeLocal": "2026-03-01T22:00:00.000Z",
-      "endTimeLocal": "2026-03-02T00:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
-    {
-      "id": "ahl-1028612",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Ontario Reign",
-      "awayTeam": "Bakersfield Condors",
-      "startTimeLocal": "2026-03-01T23:00:00.000Z",
-      "endTimeLocal": "2026-03-02T01:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "basketball-nba-20260301-2300-portland-trail-blazers-at-atlanta-hawks",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Portland Trail Blazers",
-      "homeTeam": "Atlanta Hawks",
-      "startTimeLocal": "2026-03-01T23:00:00.000Z",
-      "endTimeLocal": "2026-03-02T01:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
-    {
-      "id": "basketball-nba-20260301-2300-detroit-pistons-at-orlando-magic",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Detroit Pistons",
-      "homeTeam": "Orlando Magic",
-      "startTimeLocal": "2026-03-01T23:00:00.000Z",
-      "endTimeLocal": "2026-03-02T01:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
-    {
-      "id": "soccer-mls-20260302-0000-inter-miami-cf-at-orlando-city",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Inter Miami CF",
-      "homeTeam": "Orlando City",
-      "startTimeLocal": "2026-03-02T00:00:00.000Z",
-      "endTimeLocal": "2026-03-02T02:00:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "ahl-1028609",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Henderson Silver Knights",
-      "awayTeam": "Colorado Eagles",
-      "startTimeLocal": "2026-03-02T01:00:00.000Z",
-      "endTimeLocal": "2026-03-02T03:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "ahl-1028614",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "San Jose Barracuda",
-      "awayTeam": "Tucson Roadrunners",
-      "startTimeLocal": "2026-03-02T01:00:00.000Z",
-      "endTimeLocal": "2026-03-02T03:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "basketball-nba-20260302-0100-philadelphia-76ers-at-boston-celtics",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Philadelphia 76ers",
-      "homeTeam": "Boston Celtics",
-      "startTimeLocal": "2026-03-02T01:00:00.000Z",
-      "endTimeLocal": "2026-03-02T03:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
-    {
-      "id": "basketball-nba-20260302-0100-oklahoma-city-thunder-at-dallas-mavericks",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Oklahoma City Thunder",
-      "homeTeam": "Dallas Mavericks",
-      "startTimeLocal": "2026-03-02T01:00:00.000Z",
-      "endTimeLocal": "2026-03-02T03:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
-    {
-      "id": "soccer-mls-20260302-0200-st-louis-city-sc-at-san-diego-fc",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "St. Louis CITY SC",
-      "homeTeam": "San Diego FC",
-      "startTimeLocal": "2026-03-02T02:00:00.000Z",
-      "endTimeLocal": "2026-03-02T04:00:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "basketball-nba-20260302-0200-new-orleans-pelicans-at-la-clippers",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "New Orleans Pelicans",
-      "homeTeam": "LA Clippers",
-      "startTimeLocal": "2026-03-02T02:00:00.000Z",
-      "endTimeLocal": "2026-03-02T04:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
-    {
-      "id": "basketball-nba-20260302-0230-sacramento-kings-at-los-angeles-lakers",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Sacramento Kings",
-      "homeTeam": "Los Angeles Lakers",
-      "startTimeLocal": "2026-03-02T02:30:00.000Z",
-      "endTimeLocal": "2026-03-02T05:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
     {
       "id": "soccer-seriea-20260302-1730-bologna-at-pisa",
       "sport": "soccer",
@@ -5587,26 +5203,6 @@
       "leagueKey": "sixnations"
     },
     {
-      "id": "nhl_2025021043",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Anaheim Ducks",
-      "homeTeam": "Ottawa Senators",
-      "startTimeLocal": "2026-03-14T17:00:00.000Z",
-      "endTimeLocal": "2026-03-14T19:45:00.000Z",
-      "providerId": "victoryplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "TVAS",
-        "TSN5",
-        "Victory+",
-        "KCOP-13"
-      ],
-      "isNational": false,
-      "providerReason": "ducks-rsn"
-    },
-    {
       "id": "ncaa-bu-j3rdxf",
       "sport": "hockey",
       "league": "NCAA Hockey",
@@ -5730,25 +5326,6 @@
       "providerReason": "ligue1-yttv"
     },
     {
-      "id": "nhl_2025021044",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Boston Bruins",
-      "homeTeam": "Washington Capitals",
-      "startTimeLocal": "2026-03-14T19:00:00.000Z",
-      "endTimeLocal": "2026-03-14T21:45:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "ABC",
-        "SN360",
-        "TVAS"
-      ],
-      "isNational": true,
-      "providerReason": "national"
-    },
-    {
       "id": "soccer-mls-20260314-1900-philadelphia-union-at-atlanta-united",
       "sport": "soccer",
       "league": "MLS",
@@ -5816,24 +5393,6 @@
       "isLive": false,
       "source": "soccer-seriea",
       "leagueKey": "seriea"
-    },
-    {
-      "id": "nhl_2025021045",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Colorado Avalanche",
-      "homeTeam": "Winnipeg Jets",
-      "startTimeLocal": "2026-03-14T20:00:00.000Z",
-      "endTimeLocal": "2026-03-14T22:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "TSN3",
-        "ALT"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028697",
@@ -5959,31 +5518,6 @@
       "leagueKey": "sixnations"
     },
     {
-      "id": "tennis-espn-172942",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Sinner",
-      "homeTeam": "Zverev",
-      "startTimeLocal": "2026-03-14T20:40:00.000Z",
-      "endTimeLocal": "2026-03-14T23:10:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Indian Wells — Semifinal",
-      "competitionType": "domestic",
-      "tennisRound": "Semifinal",
-      "tennisPlayer1": "Sinner",
-      "tennisPlayer2": "Zverev",
-      "tennisPlayer1Rank": 2,
-      "tennisPlayer2Rank": 4,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
       "id": "ahl-1028695",
       "sport": "hockey",
       "league": "AHL",
@@ -6008,25 +5542,6 @@
       "source": "soccer-usl",
       "leagueKey": "usl",
       "providerReason": "usl-espnplus"
-    },
-    {
-      "id": "nhl_2025021046",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "New York Rangers",
-      "homeTeam": "Minnesota Wild",
-      "startTimeLocal": "2026-03-14T22:00:00.000Z",
-      "endTimeLocal": "2026-03-15T00:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "FDSNNO",
-        "MSG",
-        "FDSNWIX"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028687",
@@ -6107,125 +5622,6 @@
       "providerReason": "nwsl-default"
     },
     {
-      "id": "tennis-espn-172939",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Medvedev",
-      "homeTeam": "Alcaraz",
-      "startTimeLocal": "2026-03-14T22:30:00.000Z",
-      "endTimeLocal": "2026-03-15T01:00:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Indian Wells — Semifinal",
-      "competitionType": "domestic",
-      "tennisRound": "Semifinal",
-      "tennisPlayer1": "Medvedev",
-      "tennisPlayer2": "Alcaraz",
-      "tennisPlayer1Rank": 11,
-      "tennisPlayer2Rank": 1,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/rus.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
-      "tournamentName": "Indian Wells Masters"
-    },
-    {
-      "id": "nhl_2025021047",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Toronto Maple Leafs",
-      "homeTeam": "Buffalo Sabres",
-      "startTimeLocal": "2026-03-14T23:00:00.000Z",
-      "endTimeLocal": "2026-03-15T01:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "SN",
-        "NHLN",
-        "CBC",
-        "MSG-B"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
-      "id": "nhl_2025021048",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "San Jose Sharks",
-      "homeTeam": "Montréal Canadiens",
-      "startTimeLocal": "2026-03-14T23:00:00.000Z",
-      "endTimeLocal": "2026-03-15T01:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "SNE",
-        "TVAS",
-        "CITY",
-        "NBCSCA"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
-      "id": "nhl_2025021049",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Carolina Hurricanes",
-      "homeTeam": "Tampa Bay Lightning",
-      "startTimeLocal": "2026-03-14T23:00:00.000Z",
-      "endTimeLocal": "2026-03-15T01:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "FDSNSO",
-        "The Spot"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
-      "id": "nhl_2025021050",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Los Angeles Kings",
-      "homeTeam": "New Jersey Devils",
-      "startTimeLocal": "2026-03-14T23:00:00.000Z",
-      "endTimeLocal": "2026-03-15T01:45:00.000Z",
-      "providerId": "primevideo",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "FDSNW",
-        "MSGSN"
-      ],
-      "isNational": false,
-      "providerReason": "kings-rsn"
-    },
-    {
-      "id": "nhl_2025021051",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Calgary Flames",
-      "homeTeam": "New York Islanders",
-      "startTimeLocal": "2026-03-14T23:00:00.000Z",
-      "endTimeLocal": "2026-03-15T01:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "SNW",
-        "MSGSN2"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
       "id": "ahl-1028688",
       "sport": "hockey",
       "league": "AHL",
@@ -6290,24 +5686,6 @@
       "source": "ahl-hockeytech"
     },
     {
-      "id": "nhl_2025021052",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Columbus Blue Jackets",
-      "homeTeam": "Philadelphia Flyers",
-      "startTimeLocal": "2026-03-14T23:30:00.000Z",
-      "endTimeLocal": "2026-03-15T02:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "FDSNOH",
-        "NBCSP"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
       "id": "soccer-mls-20260314-2330-inter-miami-cf-at-charlotte-fc",
       "sport": "soccer",
       "league": "MLS",
@@ -6348,24 +5726,6 @@
       "source": "soccer-mls",
       "leagueKey": "mls",
       "providerReason": "mls-appletv"
-    },
-    {
-      "id": "nhl_2025021053",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Detroit Red Wings",
-      "homeTeam": "Dallas Stars",
-      "startTimeLocal": "2026-03-15T00:00:00.000Z",
-      "endTimeLocal": "2026-03-15T02:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "FDSNDET",
-        "Victory+"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028692",
@@ -6490,24 +5850,6 @@
       "providerReason": "nwsl-default"
     },
     {
-      "id": "nhl_2025021054",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Pittsburgh Penguins",
-      "homeTeam": "Utah Mammoth",
-      "startTimeLocal": "2026-03-15T01:00:00.000Z",
-      "endTimeLocal": "2026-03-15T03:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "Utah16",
-        "SN-PIT"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
       "id": "ahl-1028690",
       "sport": "hockey",
       "league": "AHL",
@@ -6570,46 +5912,6 @@
       "source": "soccer-mls",
       "leagueKey": "mls",
       "providerReason": "mls-appletv"
-    },
-    {
-      "id": "nhl_2025021055",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Seattle Kraken",
-      "homeTeam": "Vancouver Canucks",
-      "startTimeLocal": "2026-03-15T02:00:00.000Z",
-      "endTimeLocal": "2026-03-15T04:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "CBC",
-        "SN",
-        "CITY",
-        "KHN/Prime",
-        "KING 5",
-        "KONG"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
-      "id": "nhl_2025021056",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Chicago Blackhawks",
-      "homeTeam": "Vegas Golden Knights",
-      "startTimeLocal": "2026-03-15T02:00:00.000Z",
-      "endTimeLocal": "2026-03-15T04:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "CHSN",
-        "SCRIPPS"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
     },
     {
       "id": "ahl-1028686",
@@ -7296,13 +6598,25 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "echl-web-25201",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Utah Grizzlies",
+      "awayTeam": "Tulsa Oilers",
+      "startTimeLocal": "2026-03-15T21:10:00.000Z",
+      "endTimeLocal": "2026-03-15T23:55:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
+    },
+    {
       "id": "tennis-espn-172941",
       "sport": "tennis",
       "league": "ATP Masters 1000",
       "awayTeam": "Sinner",
       "homeTeam": "Medvedev",
-      "startTimeLocal": "2026-03-15T21:00:00.000Z",
-      "endTimeLocal": "2026-03-15T23:30:00.000Z",
+      "startTimeLocal": "2026-03-15T21:25:00.000Z",
+      "endTimeLocal": "2026-03-15T23:55:00.000Z",
       "providerId": "tennischannel",
       "isLive": false,
       "source": "espn-tennis",
@@ -7319,18 +6633,6 @@
       "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
       "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/rus.png",
       "tournamentName": "Indian Wells Masters"
-    },
-    {
-      "id": "echl-web-25201",
-      "sport": "hockey",
-      "league": "ECHL",
-      "homeTeam": "Utah Grizzlies",
-      "awayTeam": "Tulsa Oilers",
-      "startTimeLocal": "2026-03-15T21:10:00.000Z",
-      "endTimeLocal": "2026-03-15T23:55:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "echl"
     },
     {
       "id": "ahl-1028702",
@@ -8156,6 +7458,20 @@
       "providerReason": "nba-regional-yttv"
     },
     {
+      "id": "basketball-ncaab-20260318-0300-unlv-rebels-at-uc-irvine-anteaters",
+      "sport": "basketball",
+      "league": "NCAAB",
+      "awayTeam": "UNLV Rebels",
+      "homeTeam": "UC Irvine Anteaters",
+      "startTimeLocal": "2026-03-18T03:00:00.000Z",
+      "endTimeLocal": "2026-03-18T05:10:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "basketball-ncaab",
+      "leagueKey": "ncaab",
+      "providerReason": "ncaab-espn-plus-default"
+    },
+    {
       "id": "ahl-1028717",
       "sport": "hockey",
       "league": "AHL",
@@ -8681,6 +7997,20 @@
       "source": "soccer-europaleague",
       "leagueKey": "europaleague",
       "providerReason": "uel-yttv"
+    },
+    {
+      "id": "basketball-ncaab-20260319-2025-hawai-i-rainbow-warriors-at-arkansas-razorbacks",
+      "sport": "basketball",
+      "league": "NCAAB",
+      "awayTeam": "Hawai'i Rainbow Warriors",
+      "homeTeam": "Arkansas Razorbacks",
+      "startTimeLocal": "2026-03-19T20:25:00.000Z",
+      "endTimeLocal": "2026-03-19T22:35:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "basketball-ncaab",
+      "leagueKey": "ncaab",
+      "providerReason": "ncaab-default"
     },
     {
       "id": "nhl_2025021083",
@@ -17003,6 +16333,24 @@
       "providerReason": "facup-disneyplus"
     },
     {
+      "id": "nhl_2025021207",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Detroit Red Wings",
+      "homeTeam": "New York Rangers",
+      "startTimeLocal": "2026-04-04T16:30:00.000Z",
+      "endTimeLocal": "2026-04-04T19:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ABC",
+        "SN1"
+      ],
+      "isNational": true,
+      "providerReason": "national"
+    },
+    {
       "id": "soccer-laliga-20260404-1630-osasuna-at-alav-s",
       "sport": "soccer",
       "league": "La Liga",
@@ -17029,6 +16377,26 @@
       "source": "soccer-bundesliga",
       "leagueKey": "bundesliga",
       "providerReason": "bundesliga-disneyplus"
+    },
+    {
+      "id": "nhl_2025021208",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Minnesota Wild",
+      "homeTeam": "Ottawa Senators",
+      "startTimeLocal": "2026-04-04T17:00:00.000Z",
+      "endTimeLocal": "2026-04-04T19:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TVAS",
+        "TSN5",
+        "FDSNNO",
+        "FDSNWIX"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "soccer-ligue1-20260404-1700-stade-rennais-at-brest",
@@ -17070,6 +16438,24 @@
       "isLive": false,
       "source": "soccer-seriea",
       "leagueKey": "seriea"
+    },
+    {
+      "id": "nhl_2025021209",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Colorado Avalanche",
+      "homeTeam": "Dallas Stars",
+      "startTimeLocal": "2026-04-04T19:00:00.000Z",
+      "endTimeLocal": "2026-04-04T21:45:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ABC",
+        "SN1"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "ahl-1028827",
@@ -17276,6 +16662,42 @@
       "providerReason": "mls-appletv"
     },
     {
+      "id": "nhl_2025021210",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Boston Bruins",
+      "homeTeam": "Tampa Bay Lightning",
+      "startTimeLocal": "2026-04-04T21:00:00.000Z",
+      "endTimeLocal": "2026-04-04T23:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "The Spot",
+        "NESN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2025021211",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Florida Panthers",
+      "homeTeam": "Pittsburgh Penguins",
+      "startTimeLocal": "2026-04-04T21:00:00.000Z",
+      "endTimeLocal": "2026-04-04T23:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN-PIT",
+        "SCRIPPS"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
       "id": "soccer-usl-20260404-2100-lexington-at-colorado-springs-switchbacks-fc",
       "sport": "soccer",
       "league": "USL",
@@ -17376,6 +16798,117 @@
       "source": "soccer-nwsl",
       "leagueKey": "nwsl",
       "providerReason": "nwsl-default"
+    },
+    {
+      "id": "nhl_2025021212",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Montréal Canadiens",
+      "homeTeam": "New Jersey Devils",
+      "startTimeLocal": "2026-04-04T23:00:00.000Z",
+      "endTimeLocal": "2026-04-05T01:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNE",
+        "TVAS",
+        "CITY",
+        "MSG"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2025021213",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Buffalo Sabres",
+      "homeTeam": "Washington Capitals",
+      "startTimeLocal": "2026-04-04T23:00:00.000Z",
+      "endTimeLocal": "2026-04-05T01:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "MSG-B",
+        "MNMT"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2025021214",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "New York Islanders",
+      "homeTeam": "Carolina Hurricanes",
+      "startTimeLocal": "2026-04-04T23:00:00.000Z",
+      "endTimeLocal": "2026-04-05T01:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNSO",
+        "MSGSN"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2025021215",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Winnipeg Jets",
+      "homeTeam": "Columbus Blue Jackets",
+      "startTimeLocal": "2026-04-04T23:00:00.000Z",
+      "endTimeLocal": "2026-04-05T01:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNW",
+        "FDSNOH"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2025021216",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Utah Mammoth",
+      "homeTeam": "Vancouver Canucks",
+      "startTimeLocal": "2026-04-04T23:00:00.000Z",
+      "endTimeLocal": "2026-04-05T01:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNP",
+        "Utah16"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2025021217",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Toronto Maple Leafs",
+      "homeTeam": "Los Angeles Kings",
+      "startTimeLocal": "2026-04-04T23:00:00.000Z",
+      "endTimeLocal": "2026-04-05T01:45:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SNO",
+        "CBC",
+        "FDSNSC"
+      ],
+      "isNational": false,
+      "providerReason": "kings-rsn"
     },
     {
       "id": "ahl-1028824",
@@ -17672,6 +17205,82 @@
       "providerReason": "mls-appletv"
     },
     {
+      "id": "nhl_2025021218",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Vegas Golden Knights",
+      "homeTeam": "Edmonton Oilers",
+      "startTimeLocal": "2026-04-05T02:00:00.000Z",
+      "endTimeLocal": "2026-04-05T04:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "CBC",
+        "SN",
+        "SCRIPPS"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2025021219",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Calgary Flames",
+      "homeTeam": "Anaheim Ducks",
+      "startTimeLocal": "2026-04-05T02:00:00.000Z",
+      "endTimeLocal": "2026-04-05T04:45:00.000Z",
+      "providerId": "victoryplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN1",
+        "CITY",
+        "KTTV",
+        "Victory+"
+      ],
+      "isNational": false,
+      "providerReason": "ducks-rsn"
+    },
+    {
+      "id": "nhl_2025021220",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Nashville Predators",
+      "homeTeam": "San Jose Sharks",
+      "startTimeLocal": "2026-04-05T02:00:00.000Z",
+      "endTimeLocal": "2026-04-05T04:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "FDSNSO",
+        "NBCSCA"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2025021221",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Chicago Blackhawks",
+      "homeTeam": "Seattle Kraken",
+      "startTimeLocal": "2026-04-05T02:00:00.000Z",
+      "endTimeLocal": "2026-04-05T04:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "CHSN",
+        "KHN/Prime",
+        "KONG"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
       "id": "ahl-1028823",
       "sport": "hockey",
       "league": "AHL",
@@ -17958,6 +17567,215 @@
       "source": "soccer-laliga",
       "leagueKey": "laliga",
       "providerReason": "laliga-disneyplus"
+    },
+    {
+      "id": "soccer-seriea-20260405-1845-as-roma-at-internazionale",
+      "sport": "soccer",
+      "league": "Serie A",
+      "awayTeam": "AS Roma",
+      "homeTeam": "Internazionale",
+      "startTimeLocal": "2026-04-05T18:45:00.000Z",
+      "endTimeLocal": "2026-04-05T21:00:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "soccer-seriea",
+      "leagueKey": "seriea"
+    },
+    {
+      "id": "soccer-ligue1-20260405-1845-marseille-at-as-monaco",
+      "sport": "soccer",
+      "league": "Ligue 1",
+      "awayTeam": "Marseille",
+      "homeTeam": "AS Monaco",
+      "startTimeLocal": "2026-04-05T18:45:00.000Z",
+      "endTimeLocal": "2026-04-05T21:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-ligue1",
+      "leagueKey": "ligue1",
+      "providerReason": "ligue1-yttv"
+    },
+    {
+      "id": "soccer-laliga-20260405-1900-espanyol-at-real-betis",
+      "sport": "soccer",
+      "league": "La Liga",
+      "awayTeam": "Espanyol",
+      "homeTeam": "Real Betis",
+      "startTimeLocal": "2026-04-05T19:00:00.000Z",
+      "endTimeLocal": "2026-04-05T21:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-laliga",
+      "leagueKey": "laliga",
+      "providerReason": "laliga-disneyplus"
+    },
+    {
+      "id": "basketball-nba-20260405-1930-toronto-raptors-at-boston-celtics",
+      "sport": "basketball",
+      "league": "NBA",
+      "awayTeam": "Toronto Raptors",
+      "homeTeam": "Boston Celtics",
+      "startTimeLocal": "2026-04-05T19:30:00.000Z",
+      "endTimeLocal": "2026-04-05T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "basketball-nba",
+      "leagueKey": "nba",
+      "providerReason": "nba-nbatv"
+    },
+    {
+      "id": "basketball-nba-20260405-1930-washington-wizards-at-brooklyn-nets",
+      "sport": "basketball",
+      "league": "NBA",
+      "awayTeam": "Washington Wizards",
+      "homeTeam": "Brooklyn Nets",
+      "startTimeLocal": "2026-04-05T19:30:00.000Z",
+      "endTimeLocal": "2026-04-05T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "basketball-nba",
+      "leagueKey": "nba",
+      "providerReason": "nba-regional-yttv"
+    },
+    {
+      "id": "basketball-nba-20260405-1930-phoenix-suns-at-chicago-bulls",
+      "sport": "basketball",
+      "league": "NBA",
+      "awayTeam": "Phoenix Suns",
+      "homeTeam": "Chicago Bulls",
+      "startTimeLocal": "2026-04-05T19:30:00.000Z",
+      "endTimeLocal": "2026-04-05T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "basketball-nba",
+      "leagueKey": "nba",
+      "providerReason": "nba-regional-yttv"
+    },
+    {
+      "id": "basketball-nba-20260405-1930-memphis-grizzlies-at-milwaukee-bucks",
+      "sport": "basketball",
+      "league": "NBA",
+      "awayTeam": "Memphis Grizzlies",
+      "homeTeam": "Milwaukee Bucks",
+      "startTimeLocal": "2026-04-05T19:30:00.000Z",
+      "endTimeLocal": "2026-04-05T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "basketball-nba",
+      "leagueKey": "nba",
+      "providerReason": "nba-regional-yttv"
+    },
+    {
+      "id": "soccer-nwsl-20260405-2100-washington-spirit-at-bay",
+      "sport": "soccer",
+      "league": "NWSL",
+      "awayTeam": "Washington Spirit",
+      "homeTeam": "Bay",
+      "startTimeLocal": "2026-04-05T21:00:00.000Z",
+      "endTimeLocal": "2026-04-06T00:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-nwsl",
+      "leagueKey": "nwsl",
+      "providerReason": "nwsl-default"
+    },
+    {
+      "id": "basketball-nba-20260405-2200-indiana-pacers-at-cleveland-cavaliers",
+      "sport": "basketball",
+      "league": "NBA",
+      "awayTeam": "Indiana Pacers",
+      "homeTeam": "Cleveland Cavaliers",
+      "startTimeLocal": "2026-04-05T22:00:00.000Z",
+      "endTimeLocal": "2026-04-06T00:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "basketball-nba",
+      "leagueKey": "nba",
+      "providerReason": "nba-regional-yttv"
+    },
+    {
+      "id": "basketball-nba-20260405-2300-charlotte-hornets-at-minnesota-timberwolves",
+      "sport": "basketball",
+      "league": "NBA",
+      "awayTeam": "Charlotte Hornets",
+      "homeTeam": "Minnesota Timberwolves",
+      "startTimeLocal": "2026-04-05T23:00:00.000Z",
+      "endTimeLocal": "2026-04-06T01:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "basketball-nba",
+      "leagueKey": "nba",
+      "providerReason": "nba-regional-yttv"
+    },
+    {
+      "id": "basketball-nba-20260405-2300-orlando-magic-at-new-orleans-pelicans",
+      "sport": "basketball",
+      "league": "NBA",
+      "awayTeam": "Orlando Magic",
+      "homeTeam": "New Orleans Pelicans",
+      "startTimeLocal": "2026-04-05T23:00:00.000Z",
+      "endTimeLocal": "2026-04-06T01:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "basketball-nba",
+      "leagueKey": "nba",
+      "providerReason": "nba-regional-yttv"
+    },
+    {
+      "id": "basketball-nba-20260405-2300-utah-jazz-at-oklahoma-city-thunder",
+      "sport": "basketball",
+      "league": "NBA",
+      "awayTeam": "Utah Jazz",
+      "homeTeam": "Oklahoma City Thunder",
+      "startTimeLocal": "2026-04-05T23:00:00.000Z",
+      "endTimeLocal": "2026-04-06T01:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "basketball-nba",
+      "leagueKey": "nba",
+      "providerReason": "nba-regional-yttv"
+    },
+    {
+      "id": "basketball-nba-20260405-2330-los-angeles-lakers-at-dallas-mavericks",
+      "sport": "basketball",
+      "league": "NBA",
+      "awayTeam": "Los Angeles Lakers",
+      "homeTeam": "Dallas Mavericks",
+      "startTimeLocal": "2026-04-05T23:30:00.000Z",
+      "endTimeLocal": "2026-04-06T02:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "basketball-nba",
+      "leagueKey": "nba",
+      "providerReason": "nba-regional-yttv"
+    },
+    {
+      "id": "basketball-nba-20260406-0100-la-clippers-at-sacramento-kings",
+      "sport": "basketball",
+      "league": "NBA",
+      "awayTeam": "LA Clippers",
+      "homeTeam": "Sacramento Kings",
+      "startTimeLocal": "2026-04-06T01:00:00.000Z",
+      "endTimeLocal": "2026-04-06T03:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "basketball-nba",
+      "leagueKey": "nba",
+      "providerReason": "nba-regional-yttv"
+    },
+    {
+      "id": "basketball-nba-20260406-0200-houston-rockets-at-golden-state-warriors",
+      "sport": "basketball",
+      "league": "NBA",
+      "awayTeam": "Houston Rockets",
+      "homeTeam": "Golden State Warriors",
+      "startTimeLocal": "2026-04-06T02:00:00.000Z",
+      "endTimeLocal": "2026-04-06T04:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "basketball-nba",
+      "leagueKey": "nba",
+      "providerReason": "nba-regional-yttv"
     },
     {
       "id": "golf-the-masters-2026-04-09",
