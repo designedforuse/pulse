@@ -17,6 +17,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Colors from "@/constants/colors";
 import { getApiUrl } from "@/lib/query-client";
 import { useFavorites } from "@/lib/favorites-context";
+import DailyWrapCard from "@/components/DailyWrapCard";
 
 const PINK = "#FF85C8";
 
@@ -154,6 +155,8 @@ export default function ExploreScreen() {
           />
         }
       >
+
+        <DailyWrapCard />
 
         {tonightStory && (
           <View style={styles.tonightCard}>

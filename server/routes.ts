@@ -8,6 +8,7 @@ import { fetchRawCricketMatches, searchRawCricketMatches } from "../scripts/upda
 import { fetchPlayerJourney, fetchPlayerJourneyDebug } from "./playerJourney";
 import { fetchAllLiveScores } from "./liveScores";
 import { fetchSvnsMatches, getSvnsCities } from "./svnsMatches";
+import { fetchDailyWrap } from "./dailyWrap";
 
 const GENERATED_EVENTS_PATH = path.resolve(
   process.cwd(),
@@ -85,6 +86,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (err) {
       console.error("[scores] Error fetching live scores:", err);
       res.status(500).json({ error: "Failed to fetch live scores" });
+    }
+  });
+
+  app.get("/api/daily-wrap", async (req, res) => {
+    try {
+      const tz = parseInt(req.query.tz as string, 10) || 0;
+      const result = await fetchDailyWrap(tz);
+      res.json(result);
+    } catch (err) {
+      console.error("[daily-wrap] Error:", err);
+      res.status(500).json({ error: "Failed to build daily wrap" });
     }
   });
 
