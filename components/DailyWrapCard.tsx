@@ -3,8 +3,10 @@ import {
   View,
   Text,
   StyleSheet,
+  Pressable,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { getApiUrl } from "@/lib/query-client";
 import { useFavorites } from "@/lib/favorites-context";
@@ -13,7 +15,7 @@ import Colors from "@/constants/colors";
 
 const PINK = "#FF85C8";
 
-interface DailyWrapEntry {
+export interface DailyWrapEntry {
   eventId: string;
   sport: string;
   league: string;
@@ -27,15 +29,16 @@ interface DailyWrapEntry {
   loserScore?: string;
   priorityScore: number;
   startTimeLocal: string;
+  isFav?: boolean;
 }
 
-interface DailyWrapResponse {
+export interface DailyWrapResponse {
   date: string;
   hasResults: boolean;
   results: DailyWrapEntry[];
 }
 
-const SPORT_EMOJIS: Record<string, string> = {
+export const SPORT_EMOJIS: Record<string, string> = {
   hockey: "🏒",
   soccer: "⚽",
   rugby: "🏉",
@@ -47,11 +50,11 @@ const SPORT_EMOJIS: Record<string, string> = {
   athletics: "🏃",
 };
 
-function getSportEmoji(sport: string): string {
+export function getSportEmoji(sport: string): string {
   return SPORT_EMOJIS[sport?.toLowerCase()] || "🏆";
 }
 
-function buildFavoriteSet(favorites: Favorites): Set<string> {
+export function buildFavoriteSet(favorites: Favorites): Set<string> {
   const teams = new Set<string>();
   for (const sport of Object.values(favorites)) {
     for (const leagueTeams of Object.values(sport)) {
@@ -63,7 +66,7 @@ function buildFavoriteSet(favorites: Favorites): Set<string> {
   return teams;
 }
 
-function isEntryFavorite(entry: DailyWrapEntry, favTeams: Set<string>): boolean {
+export function isEntryFavorite(entry: DailyWrapEntry, favTeams: Set<string>): boolean {
   if (favTeams.size === 0) return false;
   return (
     favTeams.has(entry.homeTeam?.toLowerCase()) ||
@@ -72,8 +75,19 @@ function isEntryFavorite(entry: DailyWrapEntry, favTeams: Set<string>): boolean 
   );
 }
 
+export function tagEntries(results: DailyWrapEntry[], favorites: Favorites) {
+  const favTeams = buildFavoriteSet(favorites);
+  const tagged = results.map((r) => ({ ...r, isFav: isEntryFavorite(r, favTeams) }));
+  const favs = tagged.filter((r) => r.isFav).sort((a, b) => b.priorityScore - a.priorityScore);
+  const others = tagged.filter((r) => !r.isFav).sort((a, b) => b.priorityScore - a.priorityScore);
+  return [...favs, ...others];
+}
+
+const PREVIEW_COUNT = 5;
+
 export default function DailyWrapCard() {
   const { favorites } = useFavorites();
+  const router = useRouter();
   const tz = new Date().getTimezoneOffset();
 
   const { data, isLoading } = useQuery<DailyWrapResponse>({
@@ -88,23 +102,23 @@ export default function DailyWrapCard() {
     refetchInterval: 10 * 60 * 1000,
   });
 
-  const { headline, secondary, favCount } = useMemo(() => {
-    if (!data?.results?.length) return { headline: null, secondary: [], favCount: 0 };
-
-    const favTeams = buildFavoriteSet(favorites);
-    const tagged = data.results.map((r) => ({ ...r, isFav: isEntryFavorite(r, favTeams) }));
-
-    // Sort: favorites first (within their priority tier), then by priority
-    const favs = tagged.filter((r) => r.isFav).sort((a, b) => b.priorityScore - a.priorityScore);
-    const others = tagged.filter((r) => !r.isFav).sort((a, b) => b.priorityScore - a.priorityScore);
-    const ordered = [...favs, ...others];
-
+  const { headline, secondary, favCount, total } = useMemo(() => {
+    if (!data?.results?.length) return { headline: null, secondary: [], favCount: 0, total: 0 };
+    const ordered = tagEntries(data.results, favorites);
+    const favs = ordered.filter((r) => r.isFav);
     const [head, ...rest] = ordered;
-    return { headline: head ?? null, secondary: rest, favCount: favs.length };
+    return {
+      headline: head ?? null,
+      secondary: rest.slice(0, PREVIEW_COUNT),
+      favCount: favs.length,
+      total: data.results.length,
+    };
   }, [data, favorites]);
 
+  const handleOpen = () => router.push("/daily-wrap-full");
+
   return (
-    <View style={styles.card}>
+    <Pressable onPress={handleOpen} style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}>
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.headerLeft}>
@@ -146,22 +160,18 @@ export default function DailyWrapCard() {
             </View>
           )}
 
-          {/* Secondary results */}
+          {/* Secondary results (capped at PREVIEW_COUNT) */}
           {secondary.length > 0 && (
             <View style={styles.secondaryList}>
               {secondary.map((entry, idx) => (
                 <View
                   key={entry.eventId}
-                  style={[styles.secondaryRow, idx === 0 && styles.secondaryRowFirst]}
+                  style={[styles.secondaryRow, idx === secondary.length - 1 && styles.secondaryRowLast]}
                 >
                   <Text style={styles.secondaryEmoji}>{getSportEmoji(entry.sport)}</Text>
                   <View style={styles.secondaryBody}>
-                    <Text style={styles.secondaryEditorial}>
-                      {entry.editorial}
-                    </Text>
-                    <Text style={styles.secondaryDetail}>
-                      {entry.detail}
-                    </Text>
+                    <Text style={styles.secondaryEditorial}>{entry.editorial}</Text>
+                    <Text style={styles.secondaryDetail}>{entry.detail}</Text>
                   </View>
                   {entry.isFav && <Text style={styles.favStar}>⭐</Text>}
                 </View>
@@ -169,16 +179,17 @@ export default function DailyWrapCard() {
             </View>
           )}
 
-          {/* Footer summary */}
+          {/* See all footer */}
           <View style={styles.footer}>
             <Text style={styles.footerText}>
-              {data.results.length} result{data.results.length !== 1 ? "s" : ""}
-              {favCount > 0 ? ` · ${favCount} from your teams` : " · Today's top results"}
+              {favCount > 0 ? `${favCount} from your teams · ` : ""}
+              See all {total} results
             </Text>
+            <Ionicons name="chevron-forward" size={13} color={PINK} />
           </View>
         </>
       )}
-    </View>
+    </Pressable>
   );
 }
 
@@ -190,6 +201,9 @@ const styles = StyleSheet.create({
     borderColor: PINK + "40",
     overflow: "hidden",
     marginBottom: 20,
+  },
+  cardPressed: {
+    opacity: 0.85,
   },
   header: {
     backgroundColor: PINK + "15",
@@ -290,7 +304,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: Colors.border,
     paddingHorizontal: 14,
-    paddingBottom: 4,
   },
   secondaryRow: {
     flexDirection: "row",
@@ -300,9 +313,8 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.border + "80",
     gap: 10,
   },
-  secondaryRowFirst: {
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.border + "80",
+  secondaryRowLast: {
+    borderBottomWidth: 0,
   },
   secondaryEmoji: {
     fontSize: 16,
@@ -329,14 +341,17 @@ const styles = StyleSheet.create({
   },
   footer: {
     paddingHorizontal: 16,
-    paddingVertical: 10,
+    paddingVertical: 11,
     borderTopWidth: 1,
     borderTopColor: Colors.border,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 4,
   },
   footerText: {
-    fontSize: 11,
-    fontFamily: "Inter_400Regular",
-    color: Colors.textMuted,
-    textAlign: "center",
+    fontSize: 12,
+    fontFamily: "Inter_600SemiBold",
+    color: PINK,
   },
 });

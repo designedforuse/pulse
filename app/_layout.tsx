@@ -59,6 +59,14 @@ function RootLayoutNav() {
         }}
       />
       <Stack.Screen
+        name="daily-wrap-full"
+        options={{
+          headerShown: true,
+          title: "Daily Wrap",
+          headerBackTitle: "Stories",
+        }}
+      />
+      <Stack.Screen
         name="event-sheet"
         options={{
           presentation: "formSheet",
