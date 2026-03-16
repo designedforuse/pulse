@@ -24,7 +24,7 @@ import {
 } from "@/components/DailyWrapCard";
 
 const PINK = "#FF85C8";
-const FOLD = 19;
+const FOLD = 10;
 
 function ResultRow({
   entry,
