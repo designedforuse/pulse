@@ -165,7 +165,7 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
               {ritual.label}
             </p>
             <p className="text-[12px] mt-1" style={{ color: primaryColor + "cc" }}>
-              {ritual.timeLabel} · {ritual.context}
+              {ritual.timeLabel}
             </p>
           </div>
           <div
