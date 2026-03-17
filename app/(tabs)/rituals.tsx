@@ -165,6 +165,14 @@ function RitualTile({ ritual, data }: { ritual: Ritual; data: RitualData }) {
             </View>
           ) : null}
         </View>
+        <View style={styles.sportBands}>
+          {ritual.sports.map((s) => (
+            <View
+              key={s}
+              style={[styles.sportBand, { backgroundColor: SPORT_COLORS[s] ?? "#444" }]}
+            />
+          ))}
+        </View>
         <FeaturedStrip event={data.featured} />
       </View>
     </Pressable>
@@ -361,11 +369,22 @@ const styles = StyleSheet.create({
     color: ACCENT + "99",
     fontFamily: "Inter_400Regular",
   },
+  sportBands: {
+    flexDirection: "row",
+    gap: 6,
+    marginTop: 12,
+    marginBottom: 2,
+  },
+  sportBand: {
+    flex: 1,
+    height: 4,
+    borderRadius: 2,
+  },
   featuredStrip: {
-    marginTop: 14,
+    marginTop: 10,
     borderTopWidth: 1,
     borderTopColor: ACCENT + "30",
-    paddingTop: 12,
+    paddingTop: 10,
     gap: 8,
   },
   featuredChipsRow: {
