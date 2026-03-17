@@ -210,8 +210,15 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-1.5">
                 <span
-                  className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded"
-                  style={{ backgroundColor: featuredSportColor + "30", color: featuredSportColor }}
+                  className="text-[10px] font-bold uppercase text-white rounded-lg"
+                  style={{
+                    backgroundColor: featuredSportColor,
+                    paddingLeft: 8,
+                    paddingRight: 8,
+                    paddingTop: 3,
+                    paddingBottom: 3,
+                    letterSpacing: "0.4px",
+                  }}
                 >
                   {ritual.featured.sport}
                 </span>
