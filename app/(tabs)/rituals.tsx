@@ -40,7 +40,7 @@ function formatFeaturedTime(iso: string): string {
   const m = d.getMinutes();
   const ampm = h >= 12 ? "PM" : "AM";
   const hour = h % 12 || 12;
-  const min = m === 0 ? "" : `:${m.toString().padStart(2, "0")}`;
+  const min = `:${m.toString().padStart(2, "0")}`;
   return `${hour}${min} ${ampm}`;
 }
 
