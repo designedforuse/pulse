@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const SPORT_COLORS: Record<string, string> = {
   hockey: "#1CB0F6",
   rugby: "#FF9600",
@@ -22,6 +24,10 @@ interface RitualData {
     sport: string;
     awayTeam: string;
     homeTeam: string;
+    awayLogo: string | null;
+    homeLogo: string | null;
+    awayAbbr: string;
+    homeAbbr: string;
     time: string;
   } | null;
 }
@@ -39,6 +45,10 @@ const RITUALS: RitualData[] = [
       sport: "hockey",
       awayTeam: "Boston Bruins",
       homeTeam: "Montreal Canadiens",
+      awayLogo: "https://a.espncdn.com/i/teamlogos/nhl/500/bos.png",
+      homeLogo: "https://a.espncdn.com/i/teamlogos/nhl/500/mtl.png",
+      awayAbbr: "BOS",
+      homeAbbr: "MTL",
       time: "6:00 PM",
     },
   },
@@ -54,6 +64,10 @@ const RITUALS: RitualData[] = [
       sport: "rugby",
       awayTeam: "Leinster",
       homeTeam: "Munster",
+      awayLogo: null,
+      homeLogo: null,
+      awayAbbr: "LEI",
+      homeAbbr: "MUN",
       time: "8:30 AM",
     },
   },
@@ -69,6 +83,10 @@ const RITUALS: RitualData[] = [
       sport: "cricket",
       awayTeam: "Mumbai Indians",
       homeTeam: "Chennai Super Kings",
+      awayLogo: null,
+      homeLogo: null,
+      awayAbbr: "MI",
+      homeAbbr: "CSK",
       time: "9:30 PM",
     },
   },
@@ -77,6 +95,50 @@ const RITUALS: RitualData[] = [
 function shortTeam(name: string): string {
   const parts = name.split(" ");
   return parts[parts.length - 1];
+}
+
+function TeamLogo({
+  url,
+  abbr,
+  sportColor,
+  size = 20,
+}: {
+  url: string | null;
+  abbr: string;
+  sportColor: string;
+  size?: number;
+}) {
+  const [failed, setFailed] = useState(false);
+
+  if (url && !failed) {
+    return (
+      <img
+        src={url}
+        alt={abbr}
+        width={size}
+        height={size}
+        className="object-contain shrink-0"
+        style={{ width: size, height: size }}
+        onError={() => setFailed(true)}
+      />
+    );
+  }
+
+  return (
+    <div
+      className="rounded-full flex items-center justify-center shrink-0 text-[8px] font-black"
+      style={{
+        width: size,
+        height: size,
+        backgroundColor: sportColor + "25",
+        color: sportColor,
+        border: `1px solid ${sportColor}40`,
+        letterSpacing: "-0.5px",
+      }}
+    >
+      {abbr.slice(0, 3)}
+    </div>
+  );
 }
 
 function RitualCard({ ritual }: { ritual: RitualData }) {
@@ -141,12 +203,28 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
               >
                 {ritual.featured.league}
               </span>
-              <div className="flex items-baseline justify-between gap-2 mt-1.5">
-                <p className="text-[14px] font-semibold text-white truncate">
-                  {shortTeam(ritual.featured.awayTeam)}{" "}
-                  <span className="text-zinc-500 text-[12px] font-normal">vs</span>{" "}
-                  {shortTeam(ritual.featured.homeTeam)}
-                </p>
+              <div className="flex items-center justify-between gap-2 mt-2">
+                <div className="flex items-center gap-1.5 min-w-0">
+                  <TeamLogo
+                    url={ritual.featured.awayLogo}
+                    abbr={ritual.featured.awayAbbr}
+                    sportColor={featuredSportColor}
+                    size={20}
+                  />
+                  <span className="text-[14px] font-semibold text-white truncate">
+                    {shortTeam(ritual.featured.awayTeam)}
+                  </span>
+                  <span className="text-zinc-500 text-[12px] font-normal shrink-0">vs</span>
+                  <span className="text-[14px] font-semibold text-white truncate">
+                    {shortTeam(ritual.featured.homeTeam)}
+                  </span>
+                  <TeamLogo
+                    url={ritual.featured.homeLogo}
+                    abbr={ritual.featured.homeAbbr}
+                    sportColor={featuredSportColor}
+                    size={20}
+                  />
+                </div>
                 <p className="text-[13px] font-semibold text-white shrink-0">{ritual.featured.time}</p>
               </div>
             </div>
