@@ -193,20 +193,9 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
 
         {ritual.featured ? (
           <div
-            className="relative rounded-xl p-3 overflow-hidden"
+            className="rounded-xl p-3"
             style={{ backgroundColor: "rgba(0,0,0,0.35)", border: `1px solid ${featuredSportColor}25` }}
           >
-            <div
-              className="absolute rounded-sm"
-              style={{
-                left: 0,
-                top: 8,
-                bottom: 8,
-                width: 3,
-                borderRadius: 2,
-                backgroundColor: featuredSportColor,
-              }}
-            />
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-1.5">
                 <span
