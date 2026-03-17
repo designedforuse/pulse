@@ -83,15 +83,6 @@ function shortTeam(name: string): string {
   return parts[parts.length - 1];
 }
 
-function toInitials(name: string): string {
-  return name
-    .split(" ")
-    .map((p) => p[0])
-    .join("")
-    .slice(0, 3)
-    .toUpperCase();
-}
-
 function RitualCard({ ritual }: { ritual: RitualData }) {
   const primaryColor = getPrimaryColor(ritual.sports);
   const featuredSportColor = ritual.featured ? (SPORT_COLORS[ritual.featured.sport] ?? "#90A4AE") : primaryColor;
@@ -147,12 +138,6 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
             className="rounded-xl p-3 flex items-center gap-3"
             style={{ backgroundColor: "rgba(0,0,0,0.35)", border: `1px solid ${featuredSportColor}25` }}
           >
-            <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-[11px] font-black tracking-tight shrink-0"
-              style={{ backgroundColor: featuredSportColor + "22", color: featuredSportColor }}
-            >
-              {toInitials(ritual.featured.awayTeam)}
-            </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-1.5 mb-0.5">
                 <span
