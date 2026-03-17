@@ -197,12 +197,20 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
             style={{ backgroundColor: "rgba(0,0,0,0.35)", border: `1px solid ${featuredSportColor}25` }}
           >
             <div className="flex-1 min-w-0">
-              <span
-                className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded"
-                style={{ backgroundColor: featuredSportColor + "30", color: featuredSportColor }}
-              >
-                {ritual.featured.league}
-              </span>
+              <div className="flex items-center gap-1.5">
+                <span
+                  className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded"
+                  style={{ backgroundColor: featuredSportColor + "30", color: featuredSportColor }}
+                >
+                  {ritual.featured.sport}
+                </span>
+                <span
+                  className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded"
+                  style={{ backgroundColor: "#ffffff12", color: "#6b7280" }}
+                >
+                  {ritual.featured.league}
+                </span>
+              </div>
               <div className="flex items-center justify-between gap-2 mt-2">
                 <div className="flex items-center gap-1.5 min-w-0">
                   <TeamLogo
