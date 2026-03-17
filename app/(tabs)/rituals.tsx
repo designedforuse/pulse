@@ -432,7 +432,7 @@ const styles = StyleSheet.create({
   featuredTime: {
     fontSize: 12,
     fontWeight: "600" as const,
-    color: Colors.textSecondary,
+    color: "#ffffff",
     fontFamily: "Inter_600SemiBold",
     flexShrink: 0,
     marginLeft: "auto" as any,
