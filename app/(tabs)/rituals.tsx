@@ -311,7 +311,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   ritualAccentBar: {
-    width: 5,
+    width: 3,
     backgroundColor: ACCENT,
   },
   ritualInner: {
