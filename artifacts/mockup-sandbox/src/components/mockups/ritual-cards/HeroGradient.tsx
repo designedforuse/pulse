@@ -74,17 +74,13 @@ const RITUALS: RitualData[] = [
   },
 ];
 
-function getPrimaryColor(sports: string[]): string {
-  return SPORT_COLORS[sports[0]] ?? "#90A4AE";
-}
-
 function shortTeam(name: string): string {
   const parts = name.split(" ");
   return parts[parts.length - 1];
 }
 
 function RitualCard({ ritual }: { ritual: RitualData }) {
-  const primaryColor = getPrimaryColor(ritual.sports);
+  const primaryColor = "#35C7A5";
   const featuredSportColor = ritual.featured ? (SPORT_COLORS[ritual.featured.sport] ?? "#90A4AE") : primaryColor;
 
   return (
