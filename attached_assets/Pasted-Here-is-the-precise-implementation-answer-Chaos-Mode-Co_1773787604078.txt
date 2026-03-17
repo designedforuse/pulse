@@ -1,0 +1,287 @@
+Here is the precise implementation answer.
+
+Chaos Mode — Complete Implementation Map
+1. Responsible files
+File	Role
+lib/chaos-setup.ts	Master file. Candidate pool assembly, sport diversity, anchor priority, slot ordering, backfill, Slot 4 promotion, self-heal
+lib/chaos-score.ts	Hockey-only per-game chaos scoring (status, closeness, time pressure, situation boosts, favorites, momentum, tiebreak)
+lib/activity-score.ts	Cross-sport real-time activity signal detection (goal, OT, match point, upset, Safety Car, Red Flag, final laps, goalie pulled, power play, late close game) — used exclusively by Slot 4 promotion
+lib/rituals.ts	Exports computeFeaturedScore() and isNowInAnyRitualWindow() which Chaos Setup imports for scoring and ritual mode detection
+app/(tabs)/watch.tsx	Calls buildChaosSetup(), selfHealChaosSetup(), and evaluateSlot4Promotion() on a 45-second polling interval; drives the visual sheen on promoted events
+2. Main functions and call chain
+Primary entry point:
+
+// app/(tabs)/watch.tsx, ~line 878
+const setup = buildChaosSetup(allEvents, favorites, t, getScoreStatus, getScoreData);
+The full call chain:
+
+buildChaosSetup()                   ← lib/chaos-setup.ts:456
+  └─ getCandidatePool()             ← chaos-setup.ts:224
+       ├─ computeFeaturedScore()    ← lib/rituals.ts (base scoring)
+       ├─ getEmotionRank()          ← chaos-setup.ts:20
+       ├─ getTensionRank()          ← chaos-setup.ts:36
+       ├─ computeHockeyChaosScore() ← lib/chaos-score.ts:153 (hockey + live only)
+       └─ computeRacingChaosScore() ← chaos-setup.ts:110 (racing + live only)
+  └─ anchorSort()                   ← chaos-setup.ts:404
+  └─ chaosSort()                    ← chaos-setup.ts:335
+  └─ getBackfillCandidates()        ← chaos-setup.ts:288
+  └─ getNextUpCandidate()           ← chaos-setup.ts:627
+evaluateSlot4Promotion()            ← chaos-setup.ts:823 (runs every 45s)
+  └─ computeActivityScore()         ← lib/activity-score.ts:257
+selfHealChaosSetup()                ← chaos-setup.ts:648 (runs every 45s)
+3. Scoring dimensions — exact breakdown
+There are two separate scoring systems depending on sport:
+
+A. chaosSort() — universal ranking for all sports (chaos-setup.ts:335)
+This is the primary sort applied to all 4 selected slots. It is a cascading tiebreaker (not additive):
+
+1. Live vs not live       — live wins unconditionally
+2. Hockey Chaos Score     — if both are hockey + live: compare hockeyChaosScore.total
+   2a. If only one is hockey+live, hockey beats all non-hockey (unconditional)
+3. Racing Chaos Score     — if both racing+live: compare racingChaosScore.total
+   3a. Racing with score ≥40 beats non-hockey, non-racing
+4. emotionRank            — 3 (favorite team) > 2 (favorite league) > 1 (FOCUS_SPORTS) > 0
+5. Ritual mode branch:
+   - IN RITUAL:  sportPriority first, then tensionRank
+   - NOT RITUAL: tensionRank first, then sportPriority
+6. startTime              — earlier start wins
+7. event.id               — lexicographic tiebreak
+emotionRank values (getEmotionRank(), chaos-setup.ts:20):
+
+3 = favorite team involved (favoriteInvolved())
+2 = any team in a league the user has favorited
+1 = sport is in FOCUS_SPORTS set
+0 = anything else
+tensionRank values (getTensionRank(), chaos-setup.ts:36):
+
+Hockey/Soccer: diff≤1 → 3, diff≤2 → 2, else → 1
+Rugby:         diff≤7 → 3, diff≤14 → 2, else → 1
+Racing:        race → 3, sprint/qualifying → 2, else → 1
+Cricket:       always 1
++OT/SO boost:  min(rank + 2, 5)
+Non-live:      always 0
+B. computeHockeyChaosScore() — hockey-only additive score (chaos-score.ts:153)
+Only computed for hockey events that are currently live. Component breakdown:
+
+statusScore       // STATUS_WEIGHTS lookup
+  SHOOTOUT → 80
+  OT       → 70
+  LIVE     → 50
+  INTERMISSION → 45
+closenessScore    // score differential
+  diff=0 → 25
+  diff=1 → 20
+  diff=2 → 10
+  diff>2 → 0
+timePressure      // 0–25
+  OT/SO: 25
+  Intermission: 5–15 proportional to period
+  Regulation: proportional to minutes remaining (max 25 in final minute)
+situationBoosts   // additive, can stack
+  power play goal/shorthanded goal: +15
+  penalty shot goal:               +25
+  final 2min, one-goal game:       +25
+  goal scored in last 2 min:       +18
+  goalie pulled:                   +30
+favoritesBoost    // capped at 10
+  favorite team involved: +8 (raw), min(8, 10) = 8
+momentum          // 0–10
+  shots-on-goal differential × 2, capped at 10
+TOTAL = sum of all components (no cap)
+C. computeRacingChaosScore() — F1/racing additive score (chaos-setup.ts:110)
+Only computed for racing events that are live. F1 Practice sessions are not eligible:
+
+sessionScore      // F1_SESSION_PRIORITY lookup
+  race:             80
+  sprint:           40
+  qualifying:       15
+  sprint qualifying: 10
+  sprint shootout:  10
+  practice:          0 (blocked — returns total=0)
+situationBoosts
+  Red Flag:         +25
+  Safety Car / SC:  +15
+  VSC:              +10
+  final laps (≥85% complete): +20
+  late race (≥65% complete):  +10
+favoritesBoost
+  favorite involved: +8
+TOTAL = sessionScore + situationBoosts + favoritesBoost
+D. computeActivityScore() — cross-sport, Slot 4 promotion only (activity-score.ts:257)
+Not used in initial slot selection. Only runs in evaluateSlot4Promotion():
+
+Goal scored:      +40  (basketball: only in last 2 mins of game)
+Overtime/SO:      +35  (hockey, soccer, rugby)
+Match point:      +35  (tennis)
+Upset alert:      +30  (tennis: rank gap ≥5, underdog leading)
+Red Flag:         +30  (F1)
+Goalie pulled:    +25  (hockey)
+Final laps (≥85%):+25  (F1)
+Safety Car:       +20  (F1)
+Power play:       +20  (hockey)
+Late close game:  +20  (hockey P3 last 10min ±1; soccer 2nd half ±1; rugby 2nd half ±7; tennis ≥1 set each ±1)
+TOTAL = sum of triggered signals (additive, no cap)
+4. How favorite teams affect ranking
+Favorites are consumed in three separate layers:
+
+Layer 1 — emotionRank = 3 (universal, all sports):
+
+// chaos-setup.ts:20–33
+export function getEmotionRank(event: SportEvent, favorites: Favorites): number {
+  if (favoriteInvolved(event, favorites)) return 3;  // highest priority
+  const league = event.league.toLowerCase();
+  // if user has ANY team in this league → emotionRank 2
+  if (favLeagues.has(league)) return 2;
+  if (FOCUS_SPORTS.has(event.sport)) return 1;
+  return 0;
+}
+Layer 2 — favoritesBoost (hockey and racing scoring):
+
+// chaos-score.ts:131–136, chaos-setup.ts:152–156
+if (favoriteInvolved(event, favorites)) return { value: 8 };  // added to total score
+Layer 3 — guaranteed slot (selection pass, chaos-setup.ts:487–495):
+
+// If no anchors and no favorites yet selected, force a favorite in:
+const hasAnchorsOrFavs = selected.some((c) => c.isFavorite);
+if (!hasAnchorsOrFavs) {
+  const favCandidate = nonAnchors.find((c) => c.isFavorite);
+  if (favCandidate) { selected.push(favCandidate); }
+}
+Layer 4 — backfill sort (fallback to upcoming events):
+
+// Favorite upcoming events sort before non-favorites in backfill
+const aFav = a.isFavorite ? 0 : 1;
+const bFav = b.isFavorite ? 0 : 1;
+if (aFav !== bFav) return aFav - bFav;
+favoriteInvolved() (utils/favorites.ts) checks both awayTeam and homeTeam against the user's active favorites object using case-insensitive string matching.
+
+5. How anchor teams affect ranking
+Anchor teams are hardcoded in chaos-setup.ts:183–191 and cannot be changed by the user:
+
+const ANCHOR_TEAMS = [
+  { team: "anaheim ducks", sport: "hockey", league: "NHL" },
+  { team: "san diego gulls", sport: "hockey", league: "AHL" },
+];
+const ANCHOR_ALIASES: Record<string, string[]> = {
+  "anaheim ducks": ["ducks", "anaheim"],
+  "san diego gulls": ["gulls", "sd gulls"],
+};
+Matching — isAnchorTeam() normalizes to lowercase, checks exact match and substring match on both homeTeam and awayTeam, plus all aliases.
+
+Selection behavior:
+
+// chaos-setup.ts:476–481
+const anchors = selectionPool.filter((c) => c.isAnchor).sort(anchorSort);
+for (const anchor of anchors) {
+  if (selected.length >= 4) break;
+  selected.push(anchor);       // anchors fill first, before anyone else
+  usedIds.add(anchor.event.id);
+}
+anchorSort() sorts anchors by: live first, then earliest start time. Anchors are placed into slots before any chaosSort pass runs for the general pool.
+
+In selfHealChaosSetup(), anchors again get placement priority in replacement slots (chaos-setup.ts:693–703).
+
+6. How sport diversity is enforced
+Sport diversity is soft-enforced during the fill pass, not the anchor pass. It runs in the third selection phase only (chaos-setup.ts:498–513):
+
+const usedSports = new Set(selected.map((c) => c.event.sport));
+const remaining = nonAnchors.filter((c) => !usedIds.has(c.event.id));
+while (selected.length < 4 && remaining.length > 0) {
+  remaining.sort((a, b) => {
+    // Events with a NEW sport sort before events of a sport already selected
+    const aSportNew = usedSports.has(a.event.sport) ? 1 : 0;
+    const bSportNew = usedSports.has(b.event.sport) ? 1 : 0;
+    if (aSportNew !== bSportNew) return aSportNew - bSportNew;
+    // Within same "new vs existing" group, fall back to chaosSort
+    return chaosSort(a, b, inRitual);
+  });
+  const pick = remaining.shift()!;
+  selected.push(pick);
+  usedIds.add(pick.event.id);
+  usedSports.add(pick.event.sport);  // update the used set after each pick
+}
+This is re-sorted every iteration, so after each pick the diversity preference adjusts. If there are fewer than 4 distinct sports available, duplicates fill the remaining slots (the fourth selection pass — lines 515–522 — has no sport filter at all).
+
+7. How backfilling with upcoming events works
+Backfill only activates when there are no live events in the candidate pool:
+
+// chaos-setup.ts:526
+if (selected.length < 4 && !hasLive) {
+  const backfill = getBackfillCandidates(allEvents, favorites, now, usedIds);
+  ...
+}
+getBackfillCandidates() (chaos-setup.ts:288) selects from today's calendar only:
+
+Time window: now < startTime ≤ PT midnight (today's end in Pacific Time)
+Already-used IDs: excluded
+Sort order:
+Favorites first
+Then score.sportRank (lower = higher priority, from computeFeaturedScore())
+Then score.ladderRank
+Then earliest start time
+If the pool is completely empty after all passes, getNextUpCandidate() (chaos-setup.ts:627) expands the window to tomorrow's end and returns a single event — a favorite if one exists, otherwise the earliest upcoming event.
+
+8. Whether ritual timing, narrative/story signals, or user preferences affect Chaos Mode
+Ritual timing — yes, indirectly:
+
+isNowInAnyRitualWindow(now) is called at the top of buildChaosSetup(). If the current time falls inside any defined ritual window, inRitual = true. This swaps the sort order inside chaosSort():
+
+if (ritualMode) {
+  // sportPriority FIRST, tensionRank second
+} else {
+  // tensionRank FIRST, sportPriority second
+}
+In ritual mode, sport type wins over closeness. Outside ritual windows, closeness wins over sport type. The active ritualId is logged in the debug object but is not used for filtering — all sports remain eligible.
+
+Narrative/story signals — no:
+computeActivityScore() runs in evaluateSlot4Promotion() for Slot 4 only and detects real-time signals (goals, OT, Red Flags). It has no connection to the Stories/narratives tab content. The Stories tab generates its narrative cards independently on the server via /api/narratives — those cards are never fed back into Chaos scoring.
+
+User preferences beyond favorites:
+
+disabledSports — no effect on Chaos. The sport toggle in Settings is applied in watch.tsx before calling buildChaosSetup(), but only for the event lists shown in "Live Now" and "Upcoming" sections. The allEvents array passed into buildChaosSetup() comes from the full unfiltered useEvents() pool. The disabled sport filter does not strip events before Chaos selection.
+favoritesOnly — no effect on Chaos. It only filters the "Live Now" and "Upcoming" flat lists below the Chaos view.
+debugShowAll — no effect on Chaos.
+9. Constants, hardcoded tables, and special-case logic
+CHAOS_WINDOW_MS = 90 * 60 * 1000 (chaos-setup.ts:9)
+Events starting within 90 minutes of now are included in the live+soon candidate pool.
+
+FOCUS_SPORTS (chaos-setup.ts:12)
+
+new Set(["rugby", "cricket", "hockey", "soccer", "basketball", "racing"])
+// golf, tennis, athletics are NOT focus sports → emotionRank = 0 unless favorite
+SPORT_PRIORITY (chaos-setup.ts:14)
+
+{ rugby: 4, cricket: 3, hockey: 2, racing: 2, basketball: 2, soccer: 1 }
+// Applies as tiebreaker inside chaosSort — direction changes in ritual mode
+F1_SESSION_PRIORITY (chaos-setup.ts:80–86)
+
+{ race: 80, sprint: 40, qualifying: 15, "sprint qualifying": 10, "sprint shootout": 10 }
+// practice → score 0, explicitly excluded from Chaos eligibility
+STATUS_WEIGHTS (chaos-score.ts:44–51)
+
+{ SHOOTOUT: 80, OT: 70, LIVE: 50, INTERMISSION: 45, FINAL: 0, UPCOMING: 0 }
+PROMOTION_THRESHOLD = 15 (chaos-setup.ts:428)
+A Slot 4 replacement is only promoted if its activityScore.total exceeds the current Slot 4's activity score by at least 15 points.
+
+ANCHOR_TEAMS (chaos-setup.ts:183–191)
+Hardcoded to Anaheim Ducks (NHL) and San Diego Gulls (AHL). Cannot be changed by user preferences. Matched with aliases ["ducks", "anaheim"] and ["gulls", "sd gulls"].
+
+TERMINAL_STATUSES (chaos-setup.ts:162–165)
+
+["final", "ft", "ended", "full time", "completed", "f/ot", "f/so", "game over", "post", "finished"]
+Any event whose score status prefix-matches one of these strings is removed from all pools. Events past their computed end time are also considered terminal (unless getScoreStatus says "live").
+
+Hockey-specific situation boost caps (chaos-score.ts):
+
+Power play / shorthanded goal: +15
+Penalty shot: +25
+Final 2 min + one-goal game: +25
+Goal in last 2 min: +18
+Goalie pulled: +30
+favoritesBoost is hard-capped: Math.min(rawFavBoost, 10)
+Slot 4 promotion visual trigger (watch.tsx:665–677):
+When a promotion event ID changes, a CSS sheen animation (sheenEventId) fires on the promoted tile. The tile is also reordered to position 0 visually (but not structurally) in the Chaos row:
+
+if (!promotedEventId) return events;
+const idx = events.findIndex((e) => e.id === promotedEventId);
+return [events[idx], ...events.slice(0, idx), ...events.slice(idx + 1)];
