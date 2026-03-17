@@ -154,9 +154,6 @@ function RitualTile({ ritual, data }: { ritual: Ritual; data: RitualData }) {
       <View style={styles.ritualAccentBar} />
       <View style={styles.ritualInner}>
         <View style={styles.ritualTopRow}>
-          <View style={styles.ritualIconWrap}>
-            <Ionicons name={ritual.icon} size={24} color={ACCENT} />
-          </View>
           <View style={styles.ritualTextWrap}>
             <Text style={styles.ritualLabel} numberOfLines={1}>{ritual.label}</Text>
             <Text style={styles.ritualTime} numberOfLines={1}>{formatRitualTimeWindow(ritual)}</Text>
