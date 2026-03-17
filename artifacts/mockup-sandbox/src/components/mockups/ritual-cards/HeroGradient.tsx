@@ -253,7 +253,7 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
                 </div>
                 <ion-icon
                   name={getTimeOfDayIcon(ritual.featured.time)}
-                  style={{ fontSize: "18px", color: "#ffffff99" }}
+                  style={{ fontSize: "18px", color: "#35C7A5" }}
                 />
               </div>
               <div className="flex items-center justify-between gap-2 mt-2">
