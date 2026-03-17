@@ -1,5 +1,13 @@
 import { useState } from "react";
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "ion-icon": { name: string; style?: React.CSSProperties };
+    }
+  }
+}
+
 const SPORT_COLORS: Record<string, string> = {
   hockey: "#1CB0F6",
   rugby: "#FF9600",
@@ -97,17 +105,17 @@ function shortTeam(name: string): string {
   return parts[parts.length - 1];
 }
 
-function getTimeOfDayEmoji(time: string): string {
+function getTimeOfDayIcon(time: string): string {
   const match = time.match(/(\d+):(\d+)\s*(AM|PM)/i);
-  if (!match) return "🕐";
+  if (!match) return "time-outline";
   let hour = parseInt(match[1]);
   const period = match[3].toUpperCase();
   if (period === "PM" && hour !== 12) hour += 12;
   if (period === "AM" && hour === 12) hour = 0;
-  if (hour >= 5 && hour < 12) return "🌅";
-  if (hour >= 12 && hour < 17) return "☀️";
-  if (hour >= 17 && hour < 21) return "🌇";
-  return "🌙";
+  if (hour >= 5 && hour < 12) return "partly-sunny";
+  if (hour >= 12 && hour < 17) return "sunny";
+  if (hour >= 17 && hour < 21) return "partly-sunny";
+  return "moon";
 }
 
 function TeamLogo({
@@ -243,7 +251,10 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
                     {ritual.featured.league}
                   </span>
                 </div>
-                <span className="text-[16px] leading-none">{getTimeOfDayEmoji(ritual.featured.time)}</span>
+                <ion-icon
+                  name={getTimeOfDayIcon(ritual.featured.time)}
+                  style={{ fontSize: "18px", color: "#ffffff99" }}
+                />
               </div>
               <div className="flex items-center justify-between gap-2 mt-2">
                 <div className="flex items-center gap-1.5 min-w-0">
