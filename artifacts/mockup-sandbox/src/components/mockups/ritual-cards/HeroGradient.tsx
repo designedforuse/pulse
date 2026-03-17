@@ -151,7 +151,6 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
             </div>
             <div className="text-right shrink-0">
               <p className="text-[13px] font-semibold text-white">{ritual.featured.time}</p>
-              <p className="text-[10px] text-zinc-600">start</p>
             </div>
           </div>
         ) : (
