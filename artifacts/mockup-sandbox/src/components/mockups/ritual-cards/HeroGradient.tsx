@@ -255,7 +255,7 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
                   <p className="text-[12px] font-semibold" style={{ color: "#35C7A5" }}>{ritual.featured.time}</p>
                   <ion-icon
                     name={getTimeOfDayIcon(ritual.featured.time)}
-                    style={{ fontSize: "16px", color: "#35C7A5" }}
+                    style={{ fontSize: "13px", color: "#35C7A5" }}
                   />
                 </div>
               </div>

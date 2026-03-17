@@ -116,7 +116,7 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
           </View>
           <View style={styles.featuredTimeGroup}>
             <Text style={styles.featuredTime}>{timeLabel}</Text>
-            <Ionicons name={timeIcon as any} size={16} color={ACCENT} />
+            <Ionicons name={timeIcon as any} size={13} color={ACCENT} />
           </View>
         </View>
 
