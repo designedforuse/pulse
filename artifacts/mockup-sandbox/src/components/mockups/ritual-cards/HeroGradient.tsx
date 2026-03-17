@@ -97,6 +97,19 @@ function shortTeam(name: string): string {
   return parts[parts.length - 1];
 }
 
+function getTimeOfDayEmoji(time: string): string {
+  const match = time.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (!match) return "🕐";
+  let hour = parseInt(match[1]);
+  const period = match[3].toUpperCase();
+  if (period === "PM" && hour !== 12) hour += 12;
+  if (period === "AM" && hour === 12) hour = 0;
+  if (hour >= 5 && hour < 12) return "🌅";
+  if (hour >= 12 && hour < 17) return "☀️";
+  if (hour >= 17 && hour < 21) return "🌇";
+  return "🌙";
+}
+
 function TeamLogo({
   url,
   abbr,
@@ -208,26 +221,29 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
             style={{ backgroundColor: "rgba(0,0,0,0.35)", border: `1px solid ${featuredSportColor}25` }}
           >
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-1.5">
-                <span
-                  className="text-[10px] font-bold uppercase text-white rounded-lg"
-                  style={{
-                    backgroundColor: featuredSportColor,
-                    paddingLeft: 8,
-                    paddingRight: 8,
-                    paddingTop: 3,
-                    paddingBottom: 3,
-                    letterSpacing: "0.4px",
-                  }}
-                >
-                  {ritual.featured.sport}
-                </span>
-                <span
-                  className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded"
-                  style={{ backgroundColor: "#ffffff12", color: "#6b7280" }}
-                >
-                  {ritual.featured.league}
-                </span>
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-1.5">
+                  <span
+                    className="text-[10px] font-bold uppercase text-white rounded-lg"
+                    style={{
+                      backgroundColor: featuredSportColor,
+                      paddingLeft: 8,
+                      paddingRight: 8,
+                      paddingTop: 3,
+                      paddingBottom: 3,
+                      letterSpacing: "0.4px",
+                    }}
+                  >
+                    {ritual.featured.sport}
+                  </span>
+                  <span
+                    className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded"
+                    style={{ backgroundColor: "#ffffff12", color: "#6b7280" }}
+                  >
+                    {ritual.featured.league}
+                  </span>
+                </div>
+                <span className="text-[16px] leading-none">{getTimeOfDayEmoji(ritual.featured.time)}</span>
               </div>
               <div className="flex items-center justify-between gap-2 mt-2">
                 <div className="flex items-center gap-1.5 min-w-0">
