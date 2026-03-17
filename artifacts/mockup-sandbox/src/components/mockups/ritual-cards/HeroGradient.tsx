@@ -131,26 +131,24 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
 
         {ritual.featured ? (
           <div
-            className="rounded-xl p-3 flex items-center gap-3"
+            className="rounded-xl p-3"
             style={{ backgroundColor: "rgba(0,0,0,0.35)", border: `1px solid ${featuredSportColor}25` }}
           >
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-1.5 mb-0.5">
-                <span
-                  className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded"
-                  style={{ backgroundColor: featuredSportColor + "30", color: featuredSportColor }}
-                >
-                  {ritual.featured.league}
-                </span>
+              <span
+                className="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded"
+                style={{ backgroundColor: featuredSportColor + "30", color: featuredSportColor }}
+              >
+                {ritual.featured.league}
+              </span>
+              <div className="flex items-baseline justify-between gap-2 mt-1.5">
+                <p className="text-[14px] font-semibold text-white truncate">
+                  {shortTeam(ritual.featured.awayTeam)}{" "}
+                  <span className="text-zinc-500 text-[12px] font-normal">vs</span>{" "}
+                  {shortTeam(ritual.featured.homeTeam)}
+                </p>
+                <p className="text-[13px] font-semibold text-white shrink-0">{ritual.featured.time}</p>
               </div>
-              <p className="text-[14px] font-semibold text-white truncate">
-                {shortTeam(ritual.featured.awayTeam)}{" "}
-                <span className="text-zinc-500 text-[12px] font-normal">vs</span>{" "}
-                {shortTeam(ritual.featured.homeTeam)}
-              </p>
-            </div>
-            <div className="text-right shrink-0">
-              <p className="text-[13px] font-semibold text-white">{ritual.featured.time}</p>
             </div>
           </div>
         ) : (
