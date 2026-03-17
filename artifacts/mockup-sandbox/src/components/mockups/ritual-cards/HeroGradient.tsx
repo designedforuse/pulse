@@ -142,7 +142,6 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
                 >
                   {ritual.featured.league}
                 </span>
-                <span className="text-[10px] text-zinc-500">featured</span>
               </div>
               <p className="text-[14px] font-semibold text-white truncate">
                 {shortTeam(ritual.featured.awayTeam)}{" "}
