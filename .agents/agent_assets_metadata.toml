@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "BCzZEiJcUNr5OpJ6RpZse"
+uri = "file://PRD.md"
+type = "text"
+title = "Sports Watch PRD v2.0"
