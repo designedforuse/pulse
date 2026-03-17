@@ -157,6 +157,17 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
         className="absolute top-0 left-0 right-0 h-px"
         style={{ background: `linear-gradient(90deg, transparent, ${primaryColor}70, transparent)` }}
       />
+      <div
+        className="absolute"
+        style={{
+          left: 0,
+          top: 8,
+          bottom: 8,
+          width: 3,
+          borderRadius: 2,
+          backgroundColor: primaryColor,
+        }}
+      />
 
       <div className="p-4">
         <div className="flex items-start justify-between gap-2 mb-3">
