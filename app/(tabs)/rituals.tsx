@@ -393,7 +393,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.35)",
     borderRadius: 12,
     borderWidth: 1,
-    padding: 10,
+    padding: 14,
     gap: 8,
   },
   featuredChipsRow: {
