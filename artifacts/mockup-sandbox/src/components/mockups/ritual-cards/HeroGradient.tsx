@@ -163,7 +163,7 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
           left: 0,
           top: 8,
           bottom: 8,
-          width: 3,
+          width: 5,
           borderRadius: 2,
           backgroundColor: primaryColor,
         }}
