@@ -104,31 +104,33 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
 
   return (
     <View style={styles.featuredStrip}>
-      <View style={styles.featuredChipsRow}>
-        <View style={styles.featuredChips}>
-          <View style={[styles.sportPill, { backgroundColor: sportColor }]}>
-            <Text style={styles.sportPillText}>{event.sport.toUpperCase()}</Text>
+      <View style={[styles.featuredBox, { borderColor: sportColor + "30" }]}>
+        <View style={styles.featuredChipsRow}>
+          <View style={styles.featuredChips}>
+            <View style={[styles.sportPill, { backgroundColor: sportColor }]}>
+              <Text style={styles.sportPillText}>{event.sport.toUpperCase()}</Text>
+            </View>
+            <View style={styles.leaguePillGrey}>
+              <Text style={styles.leaguePillGreyText}>{league}</Text>
+            </View>
           </View>
-          <View style={styles.leaguePillGrey}>
-            <Text style={styles.leaguePillGreyText}>{league}</Text>
-          </View>
+          <Ionicons name={timeIcon as any} size={18} color={ACCENT} />
         </View>
-        <Ionicons name={timeIcon as any} size={18} color={ACCENT} />
-      </View>
 
-      <View style={styles.featuredMatchupRow}>
-        {sessionName ? (
-          <Text style={styles.featuredSessionName} numberOfLines={1}>{sessionName}</Text>
-        ) : (
-          <View style={styles.featuredMatchup}>
-            <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={18} />
-            <Text style={styles.featuredTeam} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
-            <Text style={styles.featuredAt}>vs</Text>
-            <Text style={styles.featuredTeam} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
-            <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={18} />
-          </View>
-        )}
-        <Text style={styles.featuredTime}>{timeLabel}</Text>
+        <View style={styles.featuredMatchupRow}>
+          {sessionName ? (
+            <Text style={styles.featuredSessionName} numberOfLines={1}>{sessionName}</Text>
+          ) : (
+            <View style={styles.featuredMatchup}>
+              <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={18} />
+              <Text style={styles.featuredTeam} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
+              <Text style={styles.featuredAt}>vs</Text>
+              <Text style={styles.featuredTeam} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
+              <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={18} />
+            </View>
+          )}
+          <Text style={styles.featuredTime}>{timeLabel}</Text>
+        </View>
       </View>
     </View>
   );
@@ -385,6 +387,13 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: ACCENT + "30",
     paddingTop: 10,
+    gap: 8,
+  },
+  featuredBox: {
+    backgroundColor: "rgba(0,0,0,0.35)",
+    borderRadius: 12,
+    borderWidth: 1,
+    padding: 10,
     gap: 8,
   },
   featuredChipsRow: {
