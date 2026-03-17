@@ -251,34 +251,34 @@ function RitualCard({ ritual }: { ritual: RitualData }) {
                     {ritual.featured.league}
                   </span>
                 </div>
-                <ion-icon
-                  name={getTimeOfDayIcon(ritual.featured.time)}
-                  style={{ fontSize: "18px", color: "#35C7A5" }}
-                />
-              </div>
-              <div className="flex items-center justify-between gap-2 mt-2">
-                <div className="flex items-center gap-1.5 min-w-0">
-                  <TeamLogo
-                    url={ritual.featured.awayLogo}
-                    abbr={ritual.featured.awayAbbr}
-                    sportColor={featuredSportColor}
-                    size={20}
-                  />
-                  <span className="text-[14px] font-semibold text-white truncate">
-                    {shortTeam(ritual.featured.awayTeam)}
-                  </span>
-                  <span className="text-zinc-500 text-[12px] font-normal shrink-0">vs</span>
-                  <span className="text-[14px] font-semibold text-white truncate">
-                    {shortTeam(ritual.featured.homeTeam)}
-                  </span>
-                  <TeamLogo
-                    url={ritual.featured.homeLogo}
-                    abbr={ritual.featured.homeAbbr}
-                    sportColor={featuredSportColor}
-                    size={20}
+                <div className="flex items-center gap-1">
+                  <p className="text-[12px] font-semibold text-white">{ritual.featured.time}</p>
+                  <ion-icon
+                    name={getTimeOfDayIcon(ritual.featured.time)}
+                    style={{ fontSize: "16px", color: "#35C7A5" }}
                   />
                 </div>
-                <p className="text-[13px] font-semibold text-white shrink-0">{ritual.featured.time}</p>
+              </div>
+              <div className="flex items-center gap-1.5 mt-2">
+                <TeamLogo
+                  url={ritual.featured.awayLogo}
+                  abbr={ritual.featured.awayAbbr}
+                  sportColor={featuredSportColor}
+                  size={20}
+                />
+                <span className="text-[14px] font-semibold text-white truncate">
+                  {shortTeam(ritual.featured.awayTeam)}
+                </span>
+                <span className="text-zinc-500 text-[12px] font-normal shrink-0">vs</span>
+                <span className="text-[14px] font-semibold text-white truncate">
+                  {shortTeam(ritual.featured.homeTeam)}
+                </span>
+                <TeamLogo
+                  url={ritual.featured.homeLogo}
+                  abbr={ritual.featured.homeAbbr}
+                  sportColor={featuredSportColor}
+                  size={20}
+                />
               </div>
             </div>
           </div>

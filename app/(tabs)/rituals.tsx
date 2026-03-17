@@ -114,7 +114,10 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
               <Text style={styles.leaguePillGreyText}>{league}</Text>
             </View>
           </View>
-          <Ionicons name={timeIcon as any} size={18} color={ACCENT} />
+          <View style={styles.featuredTimeGroup}>
+            <Text style={styles.featuredTime}>{timeLabel}</Text>
+            <Ionicons name={timeIcon as any} size={16} color={ACCENT} />
+          </View>
         </View>
 
         <View style={styles.featuredMatchupRow}>
@@ -129,7 +132,6 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
               <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={18} />
             </View>
           )}
-          <Text style={styles.featuredTime}>{timeLabel}</Text>
         </View>
       </View>
     </View>
@@ -401,6 +403,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
+  featuredTimeGroup: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+  },
   featuredChips: {
     flexDirection: "row",
     alignItems: "center",
@@ -463,7 +470,6 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     fontFamily: "Inter_600SemiBold",
     flexShrink: 0,
-    marginLeft: "auto" as any,
   },
   featuredSessionName: {
     fontSize: 13,
