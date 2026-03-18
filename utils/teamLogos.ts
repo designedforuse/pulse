@@ -520,7 +520,7 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
 
   if (league === "NHL") {
     const abbrev = NHL_ABBREVS[teamName];
-    if (abbrev) return `https://a.espncdn.com/i/teamlogos/nhl/500/${abbrev.toLowerCase()}.png`;
+    if (abbrev) return `https://a.espncdn.com/i/teamlogos/nhl/500-dark/${abbrev.toLowerCase()}.png`;
   }
 
   if (league === "AHL") {
