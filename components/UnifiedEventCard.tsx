@@ -720,12 +720,6 @@ export default function UnifiedEventCard({
       style={({ pressed }) => [
         uStyles.card,
         featured && uStyles.cardFeatured,
-        showEspnStyle && {
-          borderTopColor: sportColor,
-          borderTopWidth: 2,
-          borderTopLeftRadius: 0,
-          borderTopRightRadius: 0,
-        },
         {
           opacity: pressed ? 0.85 : isFinal ? 0.55 : 1,
           transform: [{ scale: pressed ? 0.98 : 1 }],
@@ -736,6 +730,9 @@ export default function UnifiedEventCard({
       <Animated.View style={[uStyles.cardInner, featured && uStyles.cardInnerFeatured, flashStyle]}>
         {!showEspnStyle && (
           <View style={[uStyles.accentBar, { backgroundColor: isLive ? "#1CB0F6" : (accentBarColor ?? sportColor) }]} />
+        )}
+        {showEspnStyle && (
+          <View style={[uStyles.topAccentBar, { backgroundColor: sportColor }]} />
         )}
 
         {!showEspnStyle && (
@@ -1006,6 +1003,13 @@ const uStyles = StyleSheet.create({
     bottom: 8,
     width: 3,
     borderRadius: 2,
+  },
+  topAccentBar: {
+    position: "absolute" as const,
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 3,
   },
   header: {
     flexDirection: "row" as const,
