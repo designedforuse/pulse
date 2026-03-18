@@ -890,6 +890,7 @@ export default function WatchScreen() {
   const upNextSectionYRef = useRef(999999);
   const upNextChipOffsetRef = useRef(999999);
   const [upNextChipSticky, setUpNextChipSticky] = useState(false);
+  const [stickyTopHeight, setStickyTopHeight] = useState(0);
 
   const getScoreStatus = useCallback(
     (id: string) => getScore(id)?.status,
@@ -1229,7 +1230,10 @@ export default function WatchScreen() {
             paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 12,
           },
         ]}
-        onLayout={(e) => { stickyHeightRef.current = e.nativeEvent.layout.height; }}
+        onLayout={(e) => {
+          stickyHeightRef.current = e.nativeEvent.layout.height;
+          setStickyTopHeight(e.nativeEvent.layout.height);
+        }}
       >
         <View style={styles.header}>
           <View style={styles.headerLeft}>
@@ -1316,69 +1320,70 @@ export default function WatchScreen() {
           </View>
         ) : null}
 
-        {upNextChipSticky && (showUpNextSportChips || showUpNextLeagueChips) && (
-          <View style={styles.stickyChipBar}>
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={styles.upNextChipRow}
-            >
-              <Pressable
-                onPress={() => {
-                  setUpNextSportFilter(null);
-                  setUpNextLeagueFilter(null);
-                  setUpNextExpanded(false);
-                }}
-                style={[styles.upNextChip, !upNextHasFilter && styles.upNextChipActive]}
-              >
-                <Text style={[styles.upNextChipLabel, !upNextHasFilter && styles.upNextChipLabelActive]}>All</Text>
-              </Pressable>
-              {showUpNextSportChips && upNextSportChips.map((sc) => {
-                const isActive = upNextSportFilter === sc.key;
-                const color = getSportColor(sc.key);
-                return (
-                  <Pressable
-                    key={`sticky-sport-${sc.key}`}
-                    onPress={() => {
-                      setUpNextSportFilter(isActive ? null : sc.key);
-                      setUpNextLeagueFilter(null);
-                      setUpNextExpanded(false);
-                      if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                    }}
-                    style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
-                  >
-                    <Text style={[styles.upNextChipLabel, isActive && { color }]}>{sc.label}</Text>
-                    <View style={[styles.upNextChipCount, isActive && { backgroundColor: color + "18" }]}>
-                      <Text style={[styles.upNextChipCountText, isActive && { color }]}>{sc.count}</Text>
-                    </View>
-                  </Pressable>
-                );
-              })}
-              {showUpNextLeagueChips && upNextLeagueChips.map((lc) => {
-                const isActive = upNextLeagueFilter === lc.key;
-                const color = getSportColor(upNextLeagueSportMap.get(lc.key) || "");
-                return (
-                  <Pressable
-                    key={`sticky-league-${lc.key}`}
-                    onPress={() => {
-                      setUpNextLeagueFilter(isActive ? null : lc.key);
-                      setUpNextSportFilter(null);
-                      setUpNextExpanded(false);
-                      if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                    }}
-                    style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
-                  >
-                    <Text style={[styles.upNextChipLabel, isActive && { color }]}>{lc.label}</Text>
-                    <View style={[styles.upNextChipCount, isActive && { backgroundColor: color + "18" }]}>
-                      <Text style={[styles.upNextChipCountText, isActive && { color }]}>{lc.count}</Text>
-                    </View>
-                  </Pressable>
-                );
-              })}
-            </ScrollView>
-          </View>
-        )}
       </View>
+
+      {upNextChipSticky && (showUpNextSportChips || showUpNextLeagueChips) && (
+        <View style={[styles.stickyChipBar, { top: stickyTopHeight }]} pointerEvents="box-none">
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.upNextChipRow}
+          >
+            <Pressable
+              onPress={() => {
+                setUpNextSportFilter(null);
+                setUpNextLeagueFilter(null);
+                setUpNextExpanded(false);
+              }}
+              style={[styles.upNextChip, !upNextHasFilter && styles.upNextChipActive]}
+            >
+              <Text style={[styles.upNextChipLabel, !upNextHasFilter && styles.upNextChipLabelActive]}>All</Text>
+            </Pressable>
+            {showUpNextSportChips && upNextSportChips.map((sc) => {
+              const isActive = upNextSportFilter === sc.key;
+              const color = getSportColor(sc.key);
+              return (
+                <Pressable
+                  key={`sticky-sport-${sc.key}`}
+                  onPress={() => {
+                    setUpNextSportFilter(isActive ? null : sc.key);
+                    setUpNextLeagueFilter(null);
+                    setUpNextExpanded(false);
+                    if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                  }}
+                  style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
+                >
+                  <Text style={[styles.upNextChipLabel, isActive && { color }]}>{sc.label}</Text>
+                  <View style={[styles.upNextChipCount, isActive && { backgroundColor: color + "18" }]}>
+                    <Text style={[styles.upNextChipCountText, isActive && { color }]}>{sc.count}</Text>
+                  </View>
+                </Pressable>
+              );
+            })}
+            {showUpNextLeagueChips && upNextLeagueChips.map((lc) => {
+              const isActive = upNextLeagueFilter === lc.key;
+              const color = getSportColor(upNextLeagueSportMap.get(lc.key) || "");
+              return (
+                <Pressable
+                  key={`sticky-league-${lc.key}`}
+                  onPress={() => {
+                    setUpNextLeagueFilter(isActive ? null : lc.key);
+                    setUpNextSportFilter(null);
+                    setUpNextExpanded(false);
+                    if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                  }}
+                  style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
+                >
+                  <Text style={[styles.upNextChipLabel, isActive && { color }]}>{lc.label}</Text>
+                  <View style={[styles.upNextChipCount, isActive && { backgroundColor: color + "18" }]}>
+                    <Text style={[styles.upNextChipCountText, isActive && { color }]}>{lc.count}</Text>
+                  </View>
+                </Pressable>
+              );
+            })}
+          </ScrollView>
+        </View>
+      )}
 
       <ScrollView
         contentContainerStyle={[
@@ -2108,6 +2113,12 @@ const styles = StyleSheet.create({
     textTransform: "uppercase" as const,
   },
   stickyChipBar: {
+    position: "absolute" as const,
+    left: 0,
+    right: 0,
+    zIndex: 100,
+    backgroundColor: Colors.background,
+    paddingHorizontal: 16,
     paddingTop: 10,
     paddingBottom: 10,
   },
