@@ -724,6 +724,8 @@ export default function UnifiedEventCard({
           borderColor: "transparent",
           borderTopColor: sportColor,
           borderTopWidth: 2,
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
         },
         {
           opacity: pressed ? 0.85 : isFinal ? 0.55 : 1,
