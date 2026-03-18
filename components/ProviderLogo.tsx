@@ -66,12 +66,10 @@ const styles = StyleSheet.create({
   imagePill: {
     alignItems: "center",
     justifyContent: "center",
-    alignSelf: "flex-start",
   },
   textPill: {
     alignItems: "center",
     justifyContent: "center",
-    alignSelf: "flex-start",
     backgroundColor: "rgba(255,255,255,0.1)",
     borderRadius: 6,
   },
