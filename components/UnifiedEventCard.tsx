@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, StyleSheet, Pressable, Platform } from "react-native";
 import { router } from "expo-router";
 import * as Haptics from "expo-haptics";
-import Animated from "react-native-reanimated";
+import Animated, { useSharedValue, withRepeat, withSequence, withTiming, useAnimatedStyle } from "react-native-reanimated";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
@@ -231,7 +231,19 @@ export function formatCricketLiveDetail(
 }
 
 function LiveDot() {
-  return <View style={uStyles.liveDotStatic} />;
+  const opacity = useSharedValue(1);
+  React.useEffect(() => {
+    opacity.value = withRepeat(
+      withSequence(
+        withTiming(0.3, { duration: 800 }),
+        withTiming(1, { duration: 800 })
+      ),
+      -1,
+      false
+    );
+  }, []);
+  const animStyle = useAnimatedStyle(() => ({ opacity: opacity.value }));
+  return <Animated.View style={[uStyles.liveDotStatic, animStyle]} />;
 }
 
 function PhaseChip({ label, sportColor, isHot }: { label: string; sportColor: string; isHot: boolean }) {
@@ -683,11 +695,9 @@ export default function UnifiedEventCard({
         <View style={[uStyles.accentBar, { backgroundColor: isLive ? "#1CB0F6" : (accentBarColor ?? sportColor) }]} />
 
         <View style={uStyles.header}>
-          <Ionicons name={sportIcon} size={13} color={sportColor} />
-          <Text style={[uStyles.headerSport, { color: sportColor }]}>
-            {getSportDisplayName(event.sport)}
-          </Text>
-          <Text style={uStyles.headerDot}>·</Text>
+          <View style={[uStyles.sportPill, { backgroundColor: sportColor }]}>
+            <Text style={uStyles.sportPillText}>{getSportDisplayName(event.sport).toUpperCase()}</Text>
+          </View>
           <Text style={uStyles.headerLeague} numberOfLines={1}>
             {getLeagueLabel(event)}
           </Text>
@@ -977,14 +987,25 @@ const uStyles = StyleSheet.create({
     fontSize: 11,
     color: Colors.favStar,
   },
+  sportPill: {
+    paddingHorizontal: 7,
+    paddingVertical: 2,
+    borderRadius: 8,
+  },
+  sportPillText: {
+    fontSize: 9,
+    fontFamily: "Inter_700Bold",
+    color: "#ffffff",
+    letterSpacing: 0.4,
+  },
   liveChip: {
     flexDirection: "row" as const,
     alignItems: "center" as const,
     gap: 4,
-    backgroundColor: "rgba(0,230,118,0.15)",
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 8,
+    backgroundColor: Colors.liveDim,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 6,
   },
   liveDotStatic: {
     width: 6,
