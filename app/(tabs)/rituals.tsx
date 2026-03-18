@@ -13,6 +13,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import Colors from "@/constants/colors";
 import { TeamLogo } from "@/components/TeamLogo";
+import ProviderLogo from "@/components/ProviderLogo";
 import { compactTeamName } from "@/utils/teams";
 import { getGrandPrixFlag } from "@/components/UnifiedEventCard";
 import { useEvents } from "@/lib/events-context";
@@ -25,6 +26,7 @@ import {
   type Ritual,
 } from "@/lib/rituals";
 import type { SportEvent } from "@/lib/data";
+import { resolveProviderDisplay } from "@/lib/data";
 import { useRitualOverrides } from "@/lib/ritual-overrides-context";
 
 const ACCENT = "#35C7A5";
@@ -44,13 +46,6 @@ function formatFeaturedTime(iso: string): string {
   return `${hour}${min} ${ampm}`;
 }
 
-function getTimeOfDayIcon(iso: string): string {
-  const h = new Date(iso).getHours();
-  if (h >= 5 && h < 12) return "partly-sunny";
-  if (h >= 12 && h < 17) return "sunny";
-  if (h >= 17 && h < 21) return "partly-sunny";
-  return "moon";
-}
 
 const SPORT_COLORS: Record<string, string> = {
   hockey: "#1CB0F6",
@@ -97,45 +92,41 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
   }
 
   const sportColor = SPORT_COLORS[event.sport] || "#90A4AE";
-  const league = event.league || event.sport.toUpperCase();
   const sessionName = buildSessionDisplayName(event);
   const timeLabel = formatFeaturedTime(event.startTimeLocal);
-  const timeIcon = getTimeOfDayIcon(event.startTimeLocal);
+
+  const provider = resolveProviderDisplay(event);
 
   return (
     <View style={styles.featuredStrip}>
-      <View style={[styles.featuredBox, { borderColor: sportColor + "30" }]}>
-        <View style={styles.featuredChipsRow}>
-          <View style={styles.featuredChips}>
-            <View style={[styles.sportPill, { backgroundColor: sportColor }]}>
-              <Text style={styles.sportPillText}>{league}</Text>
-            </View>
-          </View>
-          <View style={styles.featuredTimeGroup}>
-            <Ionicons name={timeIcon as any} size={13} color={ACCENT} />
-            <Text style={styles.featuredTime}>{timeLabel}</Text>
-          </View>
-        </View>
-
-        <View style={styles.featuredMatchupRow}>
-          {sessionName ? (
-            <Text style={styles.featuredSessionName} numberOfLines={1}>{sessionName}</Text>
-          ) : (
-            <View style={styles.featuredMatchup}>
-              <View style={styles.featuredTeamLeft}>
-                <Text style={styles.featuredTeamText} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
-                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={20} />
+      <View style={[styles.featuredBox, { borderTopColor: sportColor }]}>
+        {sessionName ? (
+          <Text style={styles.featuredSessionName} numberOfLines={1}>{sessionName}</Text>
+        ) : (
+          <>
+            <View style={styles.espnMatchup}>
+              {/* Away team */}
+              <View style={styles.espnTeam}>
+                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={44} />
+                <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
               </View>
-              <View style={styles.featuredVsCenter} pointerEvents="none">
-                <Text style={styles.featuredAt}>vs</Text>
+              {/* Center: time */}
+              <View style={styles.espnCenter}>
+                <Text style={styles.espnTime}>{timeLabel}</Text>
               </View>
-              <View style={styles.featuredTeamRight}>
-                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={20} />
-                <Text style={styles.featuredTeamText} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
+              {/* Home team */}
+              <View style={styles.espnTeam}>
+                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={44} />
+                <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
               </View>
             </View>
-          )}
-        </View>
+            {provider.brandId && (
+              <View style={styles.espnProvider}>
+                <ProviderLogo providerId={provider.brandId} size={20} />
+              </View>
+            )}
+          </>
+        )}
       </View>
     </View>
   );
@@ -397,107 +388,44 @@ const styles = StyleSheet.create({
   featuredBox: {
     backgroundColor: "rgba(0,0,0,0.35)",
     borderRadius: 12,
-    borderWidth: 1,
-    padding: 14,
-    gap: 8,
+    borderTopWidth: 2,
+    paddingHorizontal: 14,
+    paddingTop: 16,
+    paddingBottom: 14,
+    gap: 12,
   },
-  featuredChipsRow: {
+  espnMatchup: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
   },
-  featuredTimeGroup: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
-  },
-  featuredChips: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-  },
-  sportPill: {
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 8,
-  },
-  sportPillText: {
-    fontSize: 10,
-    fontWeight: "700" as const,
-    fontFamily: "Inter_700Bold",
-    color: "#fff",
-    letterSpacing: 0.4,
-    textTransform: "uppercase" as const,
-  },
-  leaguePillGrey: {
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 8,
-    backgroundColor: "rgba(255,255,255,0.07)",
-  },
-  leaguePillGreyText: {
-    fontSize: 10,
-    fontWeight: "700" as const,
-    fontFamily: "Inter_700Bold",
-    color: "#6b7280",
-    letterSpacing: 0.4,
-    textTransform: "uppercase" as const,
-  },
-  featuredMatchupRow: {
-    flexDirection: "row",
+  espnTeam: {
+    flex: 1,
     alignItems: "center",
     gap: 8,
-    paddingTop: 5,
-    paddingBottom: 10,
   },
-  featuredMatchup: {
-    flexDirection: "row",
-    alignItems: "center",
-    flex: 1,
-    position: "relative" as const,
-  },
-  featuredTeamLeft: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    gap: 5,
-    paddingRight: 18,
-  },
-  featuredTeamRight: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    gap: 5,
-    paddingLeft: 18,
-  },
-  featuredVsCenter: {
-    position: "absolute" as const,
-    left: 0,
-    right: 0,
-    alignItems: "center" as const,
-    justifyContent: "center" as const,
-  },
-  featuredTeamText: {
-    fontSize: 13,
-    fontWeight: "600" as const,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_600SemiBold",
-    flexShrink: 1,
-  },
-  featuredAt: {
-    fontSize: 10,
-    color: Colors.textMuted,
-    fontFamily: "Inter_400Regular",
-    marginHorizontal: 6,
-  },
-  featuredTime: {
+  espnTeamName: {
     fontSize: 12,
-    fontWeight: "600" as const,
-    color: ACCENT,
-    fontFamily: "Inter_600SemiBold",
-    flexShrink: 0,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    textAlign: "center" as const,
+    letterSpacing: 0.3,
+  },
+  espnCenter: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 8,
+  },
+  espnTime: {
+    fontSize: 16,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    textAlign: "center" as const,
+  },
+  espnProvider: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: 2,
   },
   featuredSessionName: {
     fontSize: 13,
