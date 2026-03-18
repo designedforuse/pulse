@@ -727,7 +727,7 @@ export default function UnifiedEventCard({
 
         <View style={uStyles.header}>
           <View style={[uStyles.sportPill, { backgroundColor: sportColor }]}>
-            <Text style={uStyles.sportPillText} numberOfLines={1}>{getLeagueLabel(event).toUpperCase()}</Text>
+            <Text style={uStyles.sportPillText} numberOfLines={1}>{getLeagueLabel(event)}</Text>
           </View>
           {isRacing && (event.sessionTitle || event.awayTeam) && (
             <View style={[uStyles.racingSessionPill, { backgroundColor: sportColor + "1A" }]}>
@@ -1022,15 +1022,17 @@ const uStyles = StyleSheet.create({
     color: Colors.favStar,
   },
   sportPill: {
-    paddingHorizontal: 7,
-    paddingVertical: 2,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
     borderRadius: 8,
+    flexShrink: 1,
   },
   sportPillText: {
-    fontSize: 9,
+    fontSize: 10,
     fontFamily: "Inter_700Bold",
     color: "#ffffff",
     letterSpacing: 0.4,
+    textTransform: "uppercase" as const,
   },
   liveChip: {
     flexDirection: "row" as const,
