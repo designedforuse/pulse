@@ -27,6 +27,14 @@ export function TeamLogo({ teamName, league, sport, size = 20 }: TeamLogoProps) 
 
   const showFallback = !url || failed;
 
+  // Detect 1×1 transparent GIF placeholders (e.g. HockeyTech missing logos)
+  const handleLoad = (e: any) => {
+    const { width, height } = e?.nativeEvent?.source ?? {};
+    if (width != null && height != null && width <= 1 && height <= 1) {
+      setFailed(true);
+    }
+  };
+
   if (showFallback) {
     if (__DEV__ && teamName && teamName !== "TBC" && teamName !== "TBD") {
       const key = `${league}::${teamName}`;
@@ -64,6 +72,7 @@ export function TeamLogo({ teamName, league, sport, size = 20 }: TeamLogoProps) 
       source={{ uri: url }}
       style={[styles.logo, { width: size, height: size }]}
       resizeMode="contain"
+      onLoad={handleLoad}
       onError={() => setFailed(true)}
     />
   );

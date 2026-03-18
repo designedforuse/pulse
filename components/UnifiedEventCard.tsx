@@ -248,21 +248,24 @@ function LiveDot() {
 
 function LiveScanBar({ color }: { color: string }) {
   const BAR = 18;
-  const TRACK = 48;
+  const [trackW, setTrackW] = React.useState(80);
   const tx = useSharedValue(-BAR);
   React.useEffect(() => {
     tx.value = withRepeat(
       withSequence(
-        withTiming(TRACK, { duration: 900 }),
+        withTiming(trackW, { duration: 900 }),
         withTiming(-BAR, { duration: 900 })
       ),
       -1,
       false
     );
-  }, []);
+  }, [trackW]);
   const animStyle = useAnimatedStyle(() => ({ transform: [{ translateX: tx.value }] }));
   return (
-    <View style={{ width: TRACK, height: 2, overflow: "hidden", marginTop: 3, borderRadius: 1 }}>
+    <View
+      style={{ width: "100%", height: 2, overflow: "hidden", marginTop: 3, borderRadius: 1 }}
+      onLayout={(e) => setTrackW(e.nativeEvent.layout.width)}
+    >
       <Animated.View style={[{ width: BAR, height: 2, borderRadius: 1, backgroundColor: color }, animStyle]} />
     </View>
   );
@@ -899,7 +902,7 @@ export default function UnifiedEventCard({
             ) : isGolf && isLive && score?.golfLeaderThru ? (
               <Text style={uStyles.clockText}>{score.golfLeaderThru}</Text>
             ) : isLive && !isGolf && displayClockText ? (
-              <View>
+              <View style={{ alignSelf: "flex-start" }}>
                 <Text style={uStyles.clockText}>{displayClockText}</Text>
                 <LiveScanBar color="#1CB0F6" />
               </View>
