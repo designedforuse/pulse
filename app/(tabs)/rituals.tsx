@@ -100,6 +100,9 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
   return (
     <View style={styles.featuredStrip}>
       <View style={[styles.featuredBox, { borderTopColor: sportColor }]}>
+        <View style={styles.featuredChip}>
+          <Text style={styles.featuredChipText}>FEATURED</Text>
+        </View>
         {sessionName ? (
           <Text style={styles.featuredSessionName} numberOfLines={1}>{sessionName}</Text>
         ) : (
@@ -393,6 +396,22 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 14,
     gap: 12,
+  },
+  featuredChip: {
+    alignSelf: "center" as const,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    borderRadius: 20,
+    backgroundColor: "rgba(53, 199, 165, 0.12)",
+    borderWidth: 1,
+    borderColor: "rgba(53, 199, 165, 0.35)",
+  },
+  featuredChipText: {
+    fontSize: 9,
+    fontFamily: "Inter_700Bold",
+    color: ACCENT,
+    letterSpacing: 1.2,
+    textTransform: "uppercase" as const,
   },
   espnMatchup: {
     flexDirection: "row",
