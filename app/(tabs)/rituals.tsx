@@ -124,13 +124,13 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
             <View style={styles.featuredMatchup}>
               <View style={styles.featuredTeamLeft}>
                 <Text style={styles.featuredTeamText} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
-                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={18} />
+                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={20} glow />
               </View>
               <View style={styles.featuredVsCenter} pointerEvents="none">
                 <Text style={styles.featuredAt}>vs</Text>
               </View>
               <View style={styles.featuredTeamRight}>
-                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={18} />
+                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={20} glow />
                 <Text style={styles.featuredTeamText} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
               </View>
             </View>
