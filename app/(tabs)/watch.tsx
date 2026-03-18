@@ -1270,7 +1270,7 @@ export default function WatchScreen() {
         {upNextBannerActive ? (
           <View style={styles.upNextBanner}>
             <View>
-              <Text style={styles.chaosBannerLabel}>23-HOUR LOOK AHEAD</Text>
+              <Text style={styles.chaosBannerLabel}>24-HOUR LOOK AHEAD</Text>
               <View style={{ flexDirection: "row", alignItems: "center", gap: 7 }}>
                 <Ionicons name="time-outline" size={22} color="#fff" />
                 <Text style={styles.chaosBannerTitle}>Up Next</Text>
