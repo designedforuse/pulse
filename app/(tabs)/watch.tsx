@@ -888,6 +888,8 @@ export default function WatchScreen() {
   const stickyHeightRef = useRef(0);
   const liveSectionYRef = useRef(999999);
   const upNextSectionYRef = useRef(999999);
+  const upNextChipOffsetRef = useRef(999999);
+  const [upNextChipSticky, setUpNextChipSticky] = useState(false);
 
   const getScoreStatus = useCallback(
     (id: string) => getScore(id)?.status,
@@ -1313,6 +1315,69 @@ export default function WatchScreen() {
             </Pressable>
           </View>
         ) : null}
+
+        {upNextChipSticky && (showUpNextSportChips || showUpNextLeagueChips) && (
+          <View style={styles.stickyChipBar}>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.upNextChipRow}
+            >
+              <Pressable
+                onPress={() => {
+                  setUpNextSportFilter(null);
+                  setUpNextLeagueFilter(null);
+                  setUpNextExpanded(false);
+                }}
+                style={[styles.upNextChip, !upNextHasFilter && styles.upNextChipActive]}
+              >
+                <Text style={[styles.upNextChipLabel, !upNextHasFilter && styles.upNextChipLabelActive]}>All</Text>
+              </Pressable>
+              {showUpNextSportChips && upNextSportChips.map((sc) => {
+                const isActive = upNextSportFilter === sc.key;
+                const color = getSportColor(sc.key);
+                return (
+                  <Pressable
+                    key={`sticky-sport-${sc.key}`}
+                    onPress={() => {
+                      setUpNextSportFilter(isActive ? null : sc.key);
+                      setUpNextLeagueFilter(null);
+                      setUpNextExpanded(false);
+                      if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                    }}
+                    style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
+                  >
+                    <Text style={[styles.upNextChipLabel, isActive && { color }]}>{sc.label}</Text>
+                    <View style={[styles.upNextChipCount, isActive && { backgroundColor: color + "18" }]}>
+                      <Text style={[styles.upNextChipCountText, isActive && { color }]}>{sc.count}</Text>
+                    </View>
+                  </Pressable>
+                );
+              })}
+              {showUpNextLeagueChips && upNextLeagueChips.map((lc) => {
+                const isActive = upNextLeagueFilter === lc.key;
+                const color = getSportColor(upNextLeagueSportMap.get(lc.key) || "");
+                return (
+                  <Pressable
+                    key={`sticky-league-${lc.key}`}
+                    onPress={() => {
+                      setUpNextLeagueFilter(isActive ? null : lc.key);
+                      setUpNextSportFilter(null);
+                      setUpNextExpanded(false);
+                      if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                    }}
+                    style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
+                  >
+                    <Text style={[styles.upNextChipLabel, isActive && { color }]}>{lc.label}</Text>
+                    <View style={[styles.upNextChipCount, isActive && { backgroundColor: color + "18" }]}>
+                      <Text style={[styles.upNextChipCountText, isActive && { color }]}>{lc.count}</Text>
+                    </View>
+                  </Pressable>
+                );
+              })}
+            </ScrollView>
+          </View>
+        )}
       </View>
 
       <ScrollView
@@ -1331,6 +1396,9 @@ export default function WatchScreen() {
           const upActive = y >= upNextSectionYRef.current;
           if (liveActive !== liveBannerActive) setLiveBannerActive(liveActive);
           if (upActive !== upNextBannerActive) setUpNextBannerActive(upActive);
+          const chipAbsoluteY = upNextSectionYRef.current + upNextChipOffsetRef.current;
+          const chipActive = (showUpNextSportChips || showUpNextLeagueChips) && y >= chipAbsoluteY - stickyHeightRef.current - 10;
+          if (chipActive !== upNextChipSticky) setUpNextChipSticky(chipActive);
         }}
         refreshControl={
           <RefreshControl
@@ -1427,7 +1495,10 @@ export default function WatchScreen() {
             <View style={styles.liveHeaderLine} />
           </View>
           {upNextAll.length > 0 && (showUpNextSportChips || showUpNextLeagueChips) && (
-            <View style={styles.upNextChipSection}>
+            <View
+              style={[styles.upNextChipSection, upNextChipSticky && { opacity: 0 }]}
+              onLayout={(e) => { upNextChipOffsetRef.current = e.nativeEvent.layout.y; }}
+            >
               <ScrollView
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -2035,6 +2106,10 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
     letterSpacing: 0.5,
     textTransform: "uppercase" as const,
+  },
+  stickyChipBar: {
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   upNextChipSection: {
     marginBottom: 8,
