@@ -730,42 +730,44 @@ export default function UnifiedEventCard({
       <Animated.View style={[uStyles.cardInner, featured && uStyles.cardInnerFeatured, flashStyle]}>
         <View style={[uStyles.accentBar, { backgroundColor: isLive ? "#1CB0F6" : (accentBarColor ?? sportColor) }]} />
 
-        <View style={uStyles.header}>
-          <View style={[uStyles.sportPill, { backgroundColor: sportColor }]}>
-            <Text style={uStyles.sportPillText} numberOfLines={1}>{getLeagueLabel(event)}</Text>
+        {!showEspnStyle && (
+          <View style={uStyles.header}>
+            <View style={[uStyles.sportPill, { backgroundColor: sportColor }]}>
+              <Text style={uStyles.sportPillText} numberOfLines={1}>{getLeagueLabel(event)}</Text>
+            </View>
+            {isRacing && (event.sessionTitle || event.awayTeam) && (
+              <View style={[uStyles.racingSessionPill, { backgroundColor: sportColor + "1A" }]}>
+                <Text style={[uStyles.racingSessionPillText, { color: sportColor }]}>
+                  {event.sessionTitle || event.awayTeam}
+                </Text>
+              </View>
+            )}
+            {isGolf && golfRound && (
+              <View style={[uStyles.racingSessionPill, { backgroundColor: sportColor + "1A" }]}>
+                <Text style={[uStyles.racingSessionPillText, { color: sportColor }]}>
+                  {golfRound}
+                </Text>
+              </View>
+            )}
+            {!isRacing && !isGolf && !isAthletics && phaseLabel && (
+              <PhaseChip label={phaseLabel} sportColor={sportColor} isHot={isHotPhase} />
+            )}
+            <View style={{ flex: 1 }} />
+            {featured && (
+              <View style={uStyles.featuredBadge}>
+                <Ionicons name="star" size={8} color={Colors.accent} />
+                <Text style={uStyles.featuredBadgeText}>FEATURED</Text>
+              </View>
+            )}
+            {isLive && (
+              <View style={uStyles.liveChip}>
+                <LiveDot />
+                <Text style={uStyles.liveText}>LIVE</Text>
+              </View>
+            )}
+            {isFinal && <Text style={uStyles.finalLabel}>FINAL</Text>}
           </View>
-          {isRacing && (event.sessionTitle || event.awayTeam) && (
-            <View style={[uStyles.racingSessionPill, { backgroundColor: sportColor + "1A" }]}>
-              <Text style={[uStyles.racingSessionPillText, { color: sportColor }]}>
-                {event.sessionTitle || event.awayTeam}
-              </Text>
-            </View>
-          )}
-          {isGolf && golfRound && (
-            <View style={[uStyles.racingSessionPill, { backgroundColor: sportColor + "1A" }]}>
-              <Text style={[uStyles.racingSessionPillText, { color: sportColor }]}>
-                {golfRound}
-              </Text>
-            </View>
-          )}
-          {!isRacing && !isGolf && !isAthletics && phaseLabel && (
-            <PhaseChip label={phaseLabel} sportColor={sportColor} isHot={isHotPhase} />
-          )}
-          <View style={{ flex: 1 }} />
-          {featured && (
-            <View style={uStyles.featuredBadge}>
-              <Ionicons name="star" size={8} color={Colors.accent} />
-              <Text style={uStyles.featuredBadgeText}>FEATURED</Text>
-            </View>
-          )}
-          {isLive && (
-            <View style={uStyles.liveChip}>
-              <LiveDot />
-              <Text style={uStyles.liveText}>LIVE</Text>
-            </View>
-          )}
-          {isFinal && <Text style={uStyles.finalLabel}>FINAL</Text>}
-        </View>
+        )}
 
         <View style={uStyles.body}>
           {isAthletics ? (
@@ -845,18 +847,23 @@ export default function UnifiedEventCard({
               featured={featured}
             />
           ) : showEspnStyle ? (
-            <View style={uStyles.espnMatchup}>
-              <View style={uStyles.espnTeam}>
-                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={32} />
-                <Text style={uStyles.espnTeamName} numberOfLines={1}>{awayName}</Text>
+            <View>
+              <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
+                <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>{getLeagueLabel(event)}</Text>
               </View>
-              <View style={uStyles.espnCenter}>
-                <Text style={uStyles.espnTime}>{timeStr}</Text>
-                {providerBrandId && <ProviderLogo providerId={providerBrandId} size={20} />}
-              </View>
-              <View style={uStyles.espnTeam}>
-                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={32} />
-                <Text style={uStyles.espnTeamName} numberOfLines={1}>{homeName}</Text>
+              <View style={uStyles.espnMatchup}>
+                <View style={uStyles.espnTeam}>
+                  <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={32} />
+                  <Text style={uStyles.espnTeamName} numberOfLines={1}>{awayName}</Text>
+                </View>
+                <View style={uStyles.espnCenter}>
+                  <Text style={uStyles.espnTime}>{timeStr}</Text>
+                  {providerBrandId && <ProviderLogo providerId={providerBrandId} size={20} />}
+                </View>
+                <View style={uStyles.espnTeam}>
+                  <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={32} />
+                  <Text style={uStyles.espnTeamName} numberOfLines={1}>{homeName}</Text>
+                </View>
               </View>
             </View>
           ) : showTeamLayout ? (
@@ -1222,11 +1229,24 @@ const uStyles = StyleSheet.create({
     alignItems: "center" as const,
     gap: 8,
   },
+  espnLeagueChip: {
+    alignSelf: "center" as const,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    borderRadius: 20,
+    borderWidth: 1,
+    marginBottom: 8,
+  },
+  espnLeagueChipText: {
+    fontSize: 9,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 1.2,
+    textTransform: "uppercase" as const,
+  },
   espnMatchup: {
     flexDirection: "row" as const,
     alignItems: "center" as const,
     justifyContent: "space-between" as const,
-    marginTop: 4,
   },
   espnTeam: {
     flex: 1,
