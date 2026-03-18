@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Image, View, Text, StyleSheet, Platform } from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+import { Image, View, Text, StyleSheet } from "react-native";
 import { getTeamLogoUrl } from "@/utils/teamLogos";
 
 const loggedMissing = new Set<string>();
@@ -15,10 +15,9 @@ interface TeamLogoProps {
   league: string;
   sport?: string;
   size?: number;
-  glow?: boolean;
 }
 
-export function TeamLogo({ teamName, league, sport, size = 20, glow = false }: TeamLogoProps) {
+export function TeamLogo({ teamName, league, sport, size = 20 }: TeamLogoProps) {
   const url = getTeamLogoUrl(teamName, league, sport);
   const [failed, setFailed] = useState(false);
 
@@ -28,6 +27,7 @@ export function TeamLogo({ teamName, league, sport, size = 20, glow = false }: T
 
   const showFallback = !url || failed;
 
+  // Detect 1×1 transparent GIF placeholders (e.g. HockeyTech missing logos)
   const handleLoad = (e: any) => {
     const { width, height } = e?.nativeEvent?.source ?? {};
     if (width != null && height != null && width <= 1 && height <= 1) {
@@ -67,25 +67,6 @@ export function TeamLogo({ teamName, league, sport, size = 20, glow = false }: T
     );
   }
 
-  if (glow) {
-    return (
-      <View
-        style={[
-          styles.glowWrapper,
-          { width: size, height: size, borderRadius: size * 0.5 },
-        ]}
-      >
-        <Image
-          source={{ uri: url }}
-          style={{ width: size, height: size }}
-          resizeMode="contain"
-          onLoad={handleLoad}
-          onError={() => setFailed(true)}
-        />
-      </View>
-    );
-  }
-
   return (
     <Image
       source={{ uri: url }}
@@ -101,23 +82,6 @@ const styles = StyleSheet.create({
   logo: {
     marginRight: 6,
     borderRadius: 2,
-  },
-  glowWrapper: {
-    alignItems: "center",
-    justifyContent: "center",
-    ...Platform.select({
-      ios: {
-        shadowColor: "#ffffff",
-        shadowOffset: { width: 0, height: 0 },
-        shadowOpacity: 0.45,
-        shadowRadius: 6,
-      },
-      android: {
-        elevation: 4,
-        shadowColor: "#ffffff",
-      },
-      default: {},
-    }),
   },
   initialsBadge: {
     backgroundColor: "rgba(161, 161, 166, 0.2)",

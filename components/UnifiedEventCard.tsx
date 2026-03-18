@@ -845,7 +845,7 @@ export default function UnifiedEventCard({
                 {awayFlag ? (
                   <Image source={{ uri: awayFlag }} style={[uStyles.flagIcon, { width: logoSize, height: Math.round(logoSize * 0.7) }]} resizeMode="contain" />
                 ) : (
-                  <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={logoSize} glow />
+                  <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={logoSize} />
                 )}
                 <Text
                   style={[uStyles.teamName, featured && uStyles.teamNameFeatured]}
@@ -863,7 +863,7 @@ export default function UnifiedEventCard({
                 {homeFlag ? (
                   <Image source={{ uri: homeFlag }} style={[uStyles.flagIcon, { width: logoSize, height: Math.round(logoSize * 0.7) }]} resizeMode="contain" />
                 ) : (
-                  <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={logoSize} glow />
+                  <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={logoSize} />
                 )}
                 <Text
                   style={[uStyles.teamName, featured && uStyles.teamNameFeatured]}

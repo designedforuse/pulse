@@ -420,7 +420,7 @@ function ChaosCard({
             ) : (
               <View style={styles.primaryTeams}>
                 <View style={styles.primaryTeamRow}>
-                  <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={28} glow />
+                  <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={28} />
                   <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 5 }}>
                     <Text style={[styles.heroTeamName, { flex: 0, flexShrink: 1 }]} numberOfLines={1}>
                       {displayTeamName(event.awayTeam, event.league)}
@@ -434,7 +434,7 @@ function ChaosCard({
                   )}
                 </View>
                 <View style={styles.primaryTeamRow}>
-                  <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={28} glow />
+                  <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={28} />
                   <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 5 }}>
                     <Text style={[styles.heroTeamName, { flex: 0, flexShrink: 1 }]} numberOfLines={1}>
                       {displayTeamName(event.homeTeam, event.league)}
@@ -567,7 +567,7 @@ function ChaosCard({
         ) : (
           <View style={styles.secondaryTeams}>
             <View style={styles.secondaryTeamRow}>
-              <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={18} glow />
+              <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={18} />
               <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 4 }}>
                 <Text style={[styles.secondaryTeamName, { flex: 0, flexShrink: 1 }]} numberOfLines={1}>
                   {displayTeamName(event.awayTeam, event.league)}
@@ -581,7 +581,7 @@ function ChaosCard({
               )}
             </View>
             <View style={styles.secondaryTeamRow}>
-              <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={18} glow />
+              <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={18} />
               <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 4 }}>
                 <Text style={[styles.secondaryTeamName, { flex: 0, flexShrink: 1 }]} numberOfLines={1}>
                   {displayTeamName(event.homeTeam, event.league)}
