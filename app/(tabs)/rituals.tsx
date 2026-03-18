@@ -423,7 +423,7 @@ const styles = StyleSheet.create({
     textAlign: "center" as const,
   },
   espnProvider: {
-    alignItems: "center",
+    flexDirection: "row",
     justifyContent: "center",
     paddingTop: 2,
   },
