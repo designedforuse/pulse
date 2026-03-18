@@ -11,6 +11,8 @@ import { getSportColor, getSportIcon, resolveProviderDisplay, type SportEvent } 
 import { displayTeamName } from "@/utils/teams";
 import { normalizeGameState } from "@/utils/gameState";
 import { useScoreFlash } from "@/hooks/useScoreFlash";
+import { useFavorites } from "@/lib/favorites-context";
+import { isTeamFavorite } from "@/utils/favorites";
 import { formatTimeUntilStart } from "@/utils/time";
 import { getTennisRoundShort, getTennisRoundPriority } from "@/data/tennisTopPlayers";
 import type { ScoreData, TennisSetScore } from "@/lib/scores-context";
@@ -622,6 +624,9 @@ export default function UnifiedEventCard({
   showCountdown = true,
   accentBarColor,
 }: UnifiedEventCardProps) {
+  const { favorites } = useFavorites();
+  const isFavAway = isTeamFavorite(event.awayTeam, event.sport, favorites);
+  const isFavHome = isTeamFavorite(event.homeTeam, event.sport, favorites);
   const sportColor = getSportColor(event.sport);
   const sportIcon = getSportIcon(event.sport) as any;
   const { gameState, displayClockText } = normalizeGameState(event, score, now);
@@ -722,11 +727,8 @@ export default function UnifiedEventCard({
 
         <View style={uStyles.header}>
           <View style={[uStyles.sportPill, { backgroundColor: sportColor }]}>
-            <Text style={uStyles.sportPillText}>{getSportDisplayName(event.sport).toUpperCase()}</Text>
+            <Text style={uStyles.sportPillText} numberOfLines={1}>{getLeagueLabel(event).toUpperCase()}</Text>
           </View>
-          <Text style={uStyles.headerLeague} numberOfLines={1}>
-            {getLeagueLabel(event)}
-          </Text>
           {isRacing && (event.sessionTitle || event.awayTeam) && (
             <View style={[uStyles.racingSessionPill, { backgroundColor: sportColor + "1A" }]}>
               <Text style={[uStyles.racingSessionPillText, { color: sportColor }]}>
@@ -751,7 +753,6 @@ export default function UnifiedEventCard({
               <Text style={uStyles.featuredBadgeText}>FEATURED</Text>
             </View>
           )}
-          {isFav && <MaterialCommunityIcons name="star" size={13} color={Colors.favStar} />}
           {isLive && (
             <View style={uStyles.liveChip}>
               <LiveDot />
@@ -852,6 +853,8 @@ export default function UnifiedEventCard({
                 >
                   {awayName}{awayRank ? <Text style={[uStyles.rankInline, { color: sportColor }]}>{` (${awayRank})`}</Text> : null}
                 </Text>
+                {isFavAway && <MaterialCommunityIcons name="star" size={11} color={Colors.favStar} />}
+                <View style={{ flex: 1 }} />
                 {hasScore && isCricket
                   ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{score.cricketAway || ""}</Text>
                   : hasScore && !isTennis && <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.awayScore}</Text>}
@@ -868,6 +871,8 @@ export default function UnifiedEventCard({
                 >
                   {homeName}{homeRank ? <Text style={[uStyles.rankInline, { color: sportColor }]}>{` (${homeRank})`}</Text> : null}
                 </Text>
+                {isFavHome && <MaterialCommunityIcons name="star" size={11} color={Colors.favStar} />}
+                <View style={{ flex: 1 }} />
                 {hasScore && isCricket
                   ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{score.cricketHome || ""}</Text>
                   : hasScore && !isTennis && <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.homeScore}</Text>}
@@ -1068,7 +1073,7 @@ const uStyles = StyleSheet.create({
     fontSize: 16,
     fontFamily: "Inter_600SemiBold",
     color: Colors.textPrimary,
-    flex: 1,
+    flexShrink: 1,
   },
   teamNameFeatured: {
     fontSize: 17,
