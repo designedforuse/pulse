@@ -721,7 +721,6 @@ export default function UnifiedEventCard({
         uStyles.card,
         featured && uStyles.cardFeatured,
         showEspnStyle && {
-          borderColor: "transparent",
           borderTopColor: sportColor,
           borderTopWidth: 2,
           borderTopLeftRadius: 0,
