@@ -1529,6 +1529,7 @@ export default function WatchScreen() {
                       isFav={favoriteInvolved(event, favorites)}
                       showCountdown={true}
                       accentBarColor={Colors.accent}
+                      espnLayout={true}
                     />
                   ))}
                 </View>

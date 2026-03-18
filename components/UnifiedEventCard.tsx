@@ -610,6 +610,7 @@ export interface UnifiedEventCardProps {
   showTension?: boolean;
   showCountdown?: boolean;
   accentBarColor?: string;
+  espnLayout?: boolean;
 }
 
 export default function UnifiedEventCard({
@@ -623,6 +624,7 @@ export default function UnifiedEventCard({
   showTension = false,
   showCountdown = true,
   accentBarColor,
+  espnLayout = false,
 }: UnifiedEventCardProps) {
   const { favorites } = useFavorites();
   const isFavAway = isTeamFavorite(event.awayTeam, event.sport, favorites);
@@ -708,6 +710,9 @@ export default function UnifiedEventCard({
   const homeFlag = isTennis ? event.tennisPlayer2Flag : undefined;
 
   const logoSize = featured ? 22 : 20;
+  const isUpcoming = !isLive && !isFinal;
+  const showEspnStyle = espnLayout && isUpcoming && showTeamLayout && !isTennis && !isRacing && !isGolf && !isAthletics;
+  const providerBrandId = resolveProviderDisplay(event).brandId;
 
   return (
     <Pressable
@@ -839,6 +844,21 @@ export default function UnifiedEventCard({
               isFinal={isFinal}
               featured={featured}
             />
+          ) : showEspnStyle ? (
+            <View style={uStyles.espnMatchup}>
+              <View style={uStyles.espnTeam}>
+                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={32} />
+                <Text style={uStyles.espnTeamName} numberOfLines={1}>{awayName}</Text>
+              </View>
+              <View style={uStyles.espnCenter}>
+                <Text style={uStyles.espnTime}>{timeStr}</Text>
+                {providerBrandId && <ProviderLogo providerId={providerBrandId} size={20} />}
+              </View>
+              <View style={uStyles.espnTeam}>
+                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={32} />
+                <Text style={uStyles.espnTeamName} numberOfLines={1}>{homeName}</Text>
+              </View>
+            </View>
           ) : showTeamLayout ? (
             <>
               <View style={uStyles.teamRow}>
@@ -895,45 +915,47 @@ export default function UnifiedEventCard({
           ) : null}
         </View>
 
-        <View style={uStyles.footer}>
-          <View style={uStyles.footerLeft}>
-            {isRacing && isLive ? (
-              <Text style={uStyles.clockText}>
-                {score?.racingLap || score?.racingStatus || "In Progress"}
-              </Text>
-            ) : isRacing && isFinal ? (
-              <Text style={uStyles.finalStatus}>
-                {score?.racingLeader ? "Winner" : "Final"}
-              </Text>
-            ) : isGolf && isLive && score?.golfLeaderThru ? (
-              <Text style={uStyles.clockText}>{score.golfLeaderThru}</Text>
-            ) : isLive && !isGolf && displayClockText ? (
-              <View style={{ alignSelf: "flex-start" }}>
-                <Text style={uStyles.clockText}>{displayClockText}</Text>
-                <LiveScanBar color="#1CB0F6" />
-              </View>
-            ) : isFinal ? (
-              <Text style={uStyles.finalStatus}>Final</Text>
-            ) : (
-              <>
-                <Text style={uStyles.timeText}>@ {timeStr}</Text>
-                {showCountdown && (
-                  <Text style={uStyles.countdownText}>
-                    {formatTimeUntilStart(event.startTimeLocal, now)}
-                  </Text>
-                )}
-              </>
-            )}
+        {!showEspnStyle && (
+          <View style={uStyles.footer}>
+            <View style={uStyles.footerLeft}>
+              {isRacing && isLive ? (
+                <Text style={uStyles.clockText}>
+                  {score?.racingLap || score?.racingStatus || "In Progress"}
+                </Text>
+              ) : isRacing && isFinal ? (
+                <Text style={uStyles.finalStatus}>
+                  {score?.racingLeader ? "Winner" : "Final"}
+                </Text>
+              ) : isGolf && isLive && score?.golfLeaderThru ? (
+                <Text style={uStyles.clockText}>{score.golfLeaderThru}</Text>
+              ) : isLive && !isGolf && displayClockText ? (
+                <View style={{ alignSelf: "flex-start" }}>
+                  <Text style={uStyles.clockText}>{displayClockText}</Text>
+                  <LiveScanBar color="#1CB0F6" />
+                </View>
+              ) : isFinal ? (
+                <Text style={uStyles.finalStatus}>Final</Text>
+              ) : (
+                <>
+                  <Text style={uStyles.timeText}>@ {timeStr}</Text>
+                  {showCountdown && (
+                    <Text style={uStyles.countdownText}>
+                      {formatTimeUntilStart(event.startTimeLocal, now)}
+                    </Text>
+                  )}
+                </>
+              )}
+            </View>
+            <View style={uStyles.footerRight}>
+              {tensionLabel && (
+                <View style={uStyles.tensionTag}>
+                  <Text style={uStyles.tensionTagText}>{tensionLabel}</Text>
+                </View>
+              )}
+              <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
+            </View>
           </View>
-          <View style={uStyles.footerRight}>
-            {tensionLabel && (
-              <View style={uStyles.tensionTag}>
-                <Text style={uStyles.tensionTagText}>{tensionLabel}</Text>
-              </View>
-            )}
-            <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
-          </View>
-        </View>
+        )}
       </Animated.View>
     </Pressable>
   );
@@ -1199,6 +1221,36 @@ const uStyles = StyleSheet.create({
     flexDirection: "row" as const,
     alignItems: "center" as const,
     gap: 8,
+  },
+  espnMatchup: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    justifyContent: "space-between" as const,
+    marginTop: 4,
+  },
+  espnTeam: {
+    flex: 1,
+    alignItems: "center" as const,
+    gap: 6,
+  },
+  espnCenter: {
+    alignItems: "center" as const,
+    justifyContent: "center" as const,
+    paddingHorizontal: 8,
+    gap: 6,
+  },
+  espnTime: {
+    fontSize: 14,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    textAlign: "center" as const,
+  },
+  espnTeamName: {
+    fontSize: 11,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+    textAlign: "center" as const,
+    letterSpacing: 0.2,
   },
   timeText: {
     fontSize: 13,
