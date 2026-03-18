@@ -323,6 +323,9 @@ function ChaosCard({
                 </Text>
               </View>
               <View style={{ flex: 1 }} />
+              {microLabel && (
+                <Text style={styles.heroMicroLabel}>{microLabel}</Text>
+              )}
               {isLiveState && (
                 <View style={styles.liveChip}>
                   <LiveDot />
@@ -333,10 +336,6 @@ function ChaosCard({
                 <Text style={styles.finalLabel}>FINAL</Text>
               )}
             </View>
-
-            {microLabel && (
-              <Text style={styles.heroMicroLabel}>{microLabel}</Text>
-            )}
 
             {isRacing ? (
               <View style={styles.primaryTeams}>
@@ -1740,8 +1739,6 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: Colors.textSecondary,
     fontFamily: "Inter_500Medium",
-    marginBottom: 10,
-    marginTop: -6,
   },
   primaryHeader: {
     flexDirection: "row",
