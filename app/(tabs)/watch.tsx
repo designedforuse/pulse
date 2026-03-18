@@ -1398,7 +1398,7 @@ export default function WatchScreen() {
           if (liveActive !== liveBannerActive) setLiveBannerActive(liveActive);
           if (upActive !== upNextBannerActive) setUpNextBannerActive(upActive);
           const chipAbsoluteY = upNextSectionYRef.current + upNextChipOffsetRef.current;
-          const chipActive = (showUpNextSportChips || showUpNextLeagueChips) && y >= chipAbsoluteY - stickyHeightRef.current - 10;
+          const chipActive = upActive && (showUpNextSportChips || showUpNextLeagueChips) && y >= chipAbsoluteY - stickyHeightRef.current - 10;
           if (chipActive !== upNextChipSticky) setUpNextChipSticky(chipActive);
         }}
         refreshControl={
