@@ -17,6 +17,25 @@ function getSportPriority(sport: string): number {
   return SPORT_PRIORITY[sport] ?? 0;
 }
 
+function isAtBreak(event: SportEvent, getScoreData?: (id: string) => ScoreData | undefined): boolean {
+  const score = getScoreData?.(event.id);
+  if (!score) return false;
+
+  if (score.inIntermission) return true;
+
+  const period = (score.period || "").toLowerCase().trim();
+  const status = (score.status || "").toLowerCase().trim();
+
+  // Halftime, period intervals, intermission, break patterns
+  const breakRe = /^(ht|half[\s-]?time|halftime|intermission|int|break)$|^\d(st|nd|rd|th)\s*(int|intermission)|period\s*(int|break)/i;
+  if (breakRe.test(period) || breakRe.test(status)) return true;
+
+  // Generic lone "INT" token (e.g. "P1 INT")
+  if (/\bint\b/.test(period) || /\bint\b/.test(status)) return true;
+
+  return false;
+}
+
 export function getEmotionRank(event: SportEvent, favorites: Favorites): number {
   if (favoriteInvolved(event, favorites)) return 3;
   const league = (event.league || "").toLowerCase();
@@ -615,9 +634,14 @@ export function buildChaosSetup(
     }
   }
 
+  // Skip break-state games (halftime, intermission, period interval) for the hero slot
+  const primaryIdx = selected.findIndex((c) => !isAtBreak(c.event, getScoreData));
+  const primaryCandidate = primaryIdx >= 0 ? selected[primaryIdx] : selected[0];
+  const secondaryCandidates = selected.filter((_, i) => i !== (primaryIdx >= 0 ? primaryIdx : 0));
+
   return {
-    primary: selected[0]?.event ?? null,
-    secondary: selected.slice(1).map((c) => c.event),
+    primary: primaryCandidate?.event ?? null,
+    secondary: secondaryCandidates.map((c) => c.event),
     generatedAt: now.getTime(),
     candidateCount: pool.length,
     debug,
