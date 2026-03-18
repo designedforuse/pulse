@@ -323,13 +323,10 @@ function ChaosCard({
                 </Text>
               </View>
               <View style={{ flex: 1 }} />
-              {microLabel && (
-                <Text style={styles.heroMicroLabel}>{microLabel}</Text>
-              )}
               {isLiveState && (
                 <View style={styles.liveChip}>
                   <LiveDot />
-                  <Text style={styles.liveText}>LIVE</Text>
+                  <Text style={styles.liveText}>{microLabel ? "HIGH TENSION" : "LIVE"}</Text>
                 </View>
               )}
               {isFinalState && (
