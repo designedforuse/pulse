@@ -220,7 +220,10 @@ export default function RitualsScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={[styles.headerBanner, { paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 20 }]}>
+      <View style={[styles.headerBanner, {
+        paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 20,
+        minHeight: (Platform.OS === "web" ? webTopInset : insets.top) + 144,
+      }]}>
         <View style={styles.headerBannerRow}>
           <Text style={styles.headerTitle}>Rituals</Text>
           <Pressable
@@ -271,7 +274,8 @@ const styles = StyleSheet.create({
   headerBanner: {
     backgroundColor: ACCENT,
     paddingHorizontal: 20,
-    paddingBottom: 62,
+    paddingBottom: 20,
+    justifyContent: "flex-end",
   },
   headerBannerRow: {
     flexDirection: "row",
