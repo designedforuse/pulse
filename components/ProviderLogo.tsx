@@ -10,15 +10,6 @@ const PROVIDER_IMAGES: Record<string, any> = {
   appletv: require("@/assets/providers/appletv.png"),
 };
 
-const PROVIDER_ASPECT: Record<string, number> = {
-  youtubetv: 3.2,
-  disneyplus: 2.8,
-  flosports: 2.6,
-  victoryplus: 1.6,
-  primevideo: 3.0,
-  appletv: 2.4,
-};
-
 const PROVIDER_TEXT_LABELS: Record<string, string> = {
   tennischannel: "TC",
   espn: "ESPN",
@@ -39,14 +30,13 @@ export default function ProviderLogo({ providerId, size = 24 }: ProviderLogoProp
   const textLabel = PROVIDER_TEXT_LABELS[providerId];
 
   if (image) {
-    const aspect = PROVIDER_ASPECT[providerId] ?? 1.8;
-    const pillHeight = size;
-    const imgWidth = Math.round(size * aspect);
+    const boxWidth = Math.round(size * 2.4);
+    const boxHeight = size;
     return (
-      <View style={[styles.imagePill, { height: pillHeight, minWidth: imgWidth }]}>
+      <View style={[styles.imagePill, { width: boxWidth, height: boxHeight }]}>
         <Image
           source={image}
-          style={{ width: imgWidth, height: pillHeight - 4, tintColor: "#FFFFFF" }}
+          style={{ width: boxWidth, height: boxHeight - 4, tintColor: "#FFFFFF" }}
           resizeMode="contain"
         />
       </View>
