@@ -610,7 +610,7 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
 
   if (sportLower === "soccer" || league === "EPL" || league === "MLS" || league === "La Liga" || league === "Serie A" || league === "Bundesliga" || league === "Ligue 1" || league === "Champions League" || league === "Europa League" || league === "FA Cup" || league === "USL" || league === "NWSL") {
     const id = ESPN_SOCCER_IDS[teamName];
-    if (id) return `https://a.espncdn.com/i/teamlogos/soccer/500/${id}.png`;
+    if (id) return `https://a.espncdn.com/i/teamlogos/soccer/500-dark/${id}.png`;
   }
 
   return null;
