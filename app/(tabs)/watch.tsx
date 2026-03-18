@@ -206,6 +206,8 @@ function ChaosCard({
   favorites: Favorites;
   tensionRank?: number;
 }) {
+  const { width: screenWidth } = useWindowDimensions();
+  const cardWidth = screenWidth - PAGE_PADDING * 2;
   const sportColor = getSportColor(event.sport);
   const { gameState, displayClockText, displayStatusText } = normalizeGameState(event, score, now);
   const { date, time } = formatEventDate(event.startTimeLocal);
@@ -301,7 +303,7 @@ function ChaosCard({
         style={({ pressed }) => [
           styles.primaryCard,
           isFinalState && styles.cardCompletedOpacity,
-          { opacity: pressed ? 0.9 : isFinalState ? 0.55 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] },
+          { width: cardWidth, opacity: pressed ? 0.9 : isFinalState ? 0.55 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] },
         ]}
       >
         <Animated.View style={[{ flex: 1 }, flashStyle]}>
