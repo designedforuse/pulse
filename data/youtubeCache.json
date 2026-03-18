@@ -233,20 +233,20 @@
   },
   "momentum:boston bruins highlights march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=aoep-TMu0pQ",
-      "thumbnailUrl": "https://img.youtube.com/vi/aoep-TMu0pQ/hqdefault.jpg",
-      "durationSeconds": 695,
-      "title": "Canadiens vs. Senators | NHL Highlights | March 11, 2026",
+      "url": "https://www.youtube.com/watch?v=WfA4Xxv3h90",
+      "thumbnailUrl": "https://img.youtube.com/vi/WfA4Xxv3h90/hqdefault.jpg",
+      "durationSeconds": 694,
+      "title": "Sharks vs. Oilers | NHL Highlights | March 17, 2026",
       "source": "youtube",
       "channel": "NHL",
-      "publishedAt": "2 hours ago"
+      "publishedAt": "13 hours ago"
     },
-    "fetchedAt": "2026-03-12T05:04:02.511Z",
+    "fetchedAt": "2026-03-18T18:00:49.979Z",
     "query": "Boston Bruins highlights March 2026",
     "debug": {
       "searchQuery": "Boston Bruins highlights March 2026",
-      "selectedVideoTitle": "Canadiens vs. Senators | NHL Highlights | March 11, 2026",
-      "selectedVideoPublishedAt": "2 hours ago",
+      "selectedVideoTitle": "Sharks vs. Oilers | NHL Highlights | March 17, 2026",
+      "selectedVideoPublishedAt": "13 hours ago",
       "selectedVideoChannel": "NHL",
       "rejectedForAgeCount": 0
     }
@@ -400,6 +400,26 @@
       "selectedVideoTitle": "Sports influencer Ryan Hammer on March Madness bracket tips, sleeper teams & the Illini",
       "selectedVideoPublishedAt": "56 minutes ago",
       "selectedVideoChannel": "FOX 32 Chicago",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:madrid derby sports march 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=6cSwKto5TX0",
+      "thumbnailUrl": "https://img.youtube.com/vi/6cSwKto5TX0/hqdefault.jpg",
+      "durationSeconds": 70,
+      "title": "Courtois Injury Scare Real Madrid Beat Manchester City UCL 2026, Courtois Injury News UCL 2026",
+      "source": "youtube",
+      "channel": "LatestUpdate ",
+      "publishedAt": "11 hours ago"
+    },
+    "fetchedAt": "2026-03-18T18:00:50.341Z",
+    "query": "Madrid Derby sports March 2026",
+    "debug": {
+      "searchQuery": "Madrid Derby sports March 2026",
+      "selectedVideoTitle": "Courtois Injury Scare Real Madrid Beat Manchester City UCL 2026, Courtois Injury News UCL 2026",
+      "selectedVideoPublishedAt": "11 hours ago",
+      "selectedVideoChannel": "LatestUpdate ",
       "rejectedForAgeCount": 0
     }
   }

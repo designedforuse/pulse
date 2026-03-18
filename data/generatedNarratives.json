@@ -1,10 +1,9 @@
 {
-  "lastUpdated": "2026-03-16T18:00:40.098Z",
+  "lastUpdated": "2026-03-18T18:00:38.134Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
-      "playoff_push": {
-        "NewEngland": 1,
-        "SoCal": 1
+      "momentum": {
+        "NewEngland": 1
       },
       "league_moment": {
         "Other": 1
@@ -13,25 +12,19 @@
         "Other": 1
       }
     },
-    "combinedPushByRegion": {
-      "NewEngland": false,
-      "SoCal": false
-    },
+    "combinedPushByRegion": {},
     "finalFeedByRegion": {
-      "SoCal": [
-        "playoff_push: Gulls Push Week"
-      ],
       "NewEngland": [
-        "playoff_push: Bruins Push Week"
+        "momentum: Bruins Heating Up"
       ],
       "Other": [
         "player_movement: System Shuffle",
-        "league_moment: Rivalry Weekend"
+        "league_moment: Madrid Derby"
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 4,
-    "totalAfterCap": 4,
+    "totalBeforeCap": 3,
+    "totalAfterCap": 3,
     "playerMovement": {
       "rawMovementCandidates": 1,
       "movementAfterRegionFilter": 1,
@@ -49,14 +42,16 @@
           "CGY",
           "EDM",
           "VAN",
-          "MTL",
           "PHI",
           "DET",
+          "MTL",
           "NYI",
           "BUF",
           "CAR",
           "CBJ",
-          "NSH"
+          "NSH",
+          "TOR",
+          "TBL"
         ],
         "skippedTeams": [
           {
@@ -70,29 +65,101 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 647,
+        "playersIngested": 646,
         "movementsDetectedThisRun": [
           {
-            "playerId": "8477494",
-            "playerName": "J. Drouin",
-            "fromTeam": "NYI",
-            "toTeam": "STL",
-            "detectedAt": "2026-03-16T18:00:40.098Z",
+            "playerId": "8470621",
+            "playerName": "C. Perry",
+            "fromTeam": "LAK",
+            "toTeam": "TBL",
+            "detectedAt": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
+            "firstSeenTo": "2026-03-18T18:00:38.134Z"
+          },
+          {
+            "playerId": "8475172",
+            "playerName": "N. Kadri",
+            "fromTeam": "CGY",
+            "toTeam": "COL",
+            "detectedAt": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-14T06:00:32.337Z"
+          },
+          {
+            "playerId": "8475235",
+            "playerName": "N. Deslauriers",
+            "fromTeam": "PHI",
+            "toTeam": "CAR",
+            "detectedAt": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-18T18:00:38.134Z"
+          },
+          {
+            "playerId": "8476458",
+            "playerName": "R. Strome",
+            "fromTeam": "ANA",
+            "toTeam": "CGY",
+            "detectedAt": "2026-03-18T18:00:38.134Z",
             "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+            "firstSeenTo": "2026-03-18T18:00:38.134Z"
+          },
+          {
+            "playerId": "8478047",
+            "playerName": "M. Bunting",
+            "fromTeam": "NSH",
+            "toTeam": "DAL",
+            "detectedAt": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-07T07:19:00.761Z",
+            "firstSeenTo": "2026-03-18T18:00:38.134Z"
+          },
+          {
+            "playerId": "8478233",
+            "playerName": "A. Mangiapane",
+            "fromTeam": "EDM",
+            "toTeam": "CHI",
+            "detectedAt": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
             "firstSeenTo": "2026-03-15T18:00:32.932Z"
+          },
+          {
+            "playerId": "8478462",
+            "playerName": "N. Roy",
+            "fromTeam": "TOR",
+            "toTeam": "COL",
+            "detectedAt": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
+            "firstSeenTo": "2026-03-14T06:00:32.337Z"
+          },
+          {
+            "playerId": "8478856",
+            "playerName": "C. Garland",
+            "fromTeam": "VAN",
+            "toTeam": "CBJ",
+            "detectedAt": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-15T18:00:32.932Z"
+          },
+          {
+            "playerId": "8479378",
+            "playerName": "L. Stanley",
+            "fromTeam": "WPG",
+            "toTeam": "BUF",
+            "detectedAt": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-18T18:00:38.134Z"
           }
         ],
-        "timestamp": "2026-03-16T18:00:40.098Z"
+        "timestamp": "2026-03-18T18:00:38.134Z"
       },
-      "cacheHistoryCount": 778,
+      "cacheHistoryCount": 782,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 4,
-    "candidateCountAfterCap": 4,
+    "candidateCountBeforeCap": 3,
+    "candidateCountAfterCap": 3,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -214.01113833333332,
+      "hoursUntil": -262.0105927777778,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -115,28 +182,23 @@
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "nhl_2025021064",
+    "tonightStorySourceEvent": "ahl-1028709",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 240,
-      "sourceEventId": "nhl_2025021064",
-      "reason": "2 followed/affiliate teams playing tonight",
+      "selectedScore": 320,
+      "sourceEventId": "ahl-1028709",
+      "reason": "6 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 240,
-          "reason": "2 followed/affiliate teams playing tonight"
+          "score": 320,
+          "reason": "6 followed/affiliate teams playing tonight"
         },
         {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): Boston Bruins"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): San Diego Gulls"
+          "label": "[momentum] Hot Streak",
+          "score": 150,
+          "reason": "momentum involving followed team(s): Boston Bruins"
         },
         {
           "label": "[league_moment] League Spotlight",
@@ -151,227 +213,103 @@
       ]
     },
     "videoSelection": {
-      "playoff_push_socal": {
-        "searchQuery": "San Diego Gulls playoff push March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
-      },
-      "playoff_push_newengland": {
-        "searchQuery": "Boston Bruins playoff push March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
+      "momentum_bos": {
+        "searchQuery": "Boston Bruins highlights March 2026",
+        "selectedVideoTitle": "Sharks vs. Oilers | NHL Highlights | March 17, 2026",
+        "selectedVideoPublishedAt": "13 hours ago",
+        "selectedVideoChannel": "NHL",
         "rejectedForAgeCount": 0
       },
       "league_moment_rivalry": {
-        "searchQuery": "Rivalry Weekend sports March 2026",
-        "selectedVideoTitle": "Sports influencer Ryan Hammer on March Madness bracket tips, sleeper teams & the Illini",
-        "selectedVideoPublishedAt": "56 minutes ago",
-        "selectedVideoChannel": "FOX 32 Chicago",
+        "searchQuery": "Madrid Derby sports March 2026",
+        "selectedVideoTitle": "Courtois Injury Scare Real Madrid Beat Manchester City UCL 2026, Courtois Injury News UCL 2026",
+        "selectedVideoPublishedAt": "11 hours ago",
+        "selectedVideoChannel": "LatestUpdate ",
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
-      "id": "playoff_push_socal",
-      "title": "Gulls Push Week",
-      "subtitle": "Four games in seven days, including a back-to-back",
+      "id": "momentum_bos",
+      "title": "Bruins Heating Up",
+      "subtitle": "3-game point streak",
       "impact": {
-        "label": "Impacts: Family Game Night",
-        "ritualId": "friday_lights",
-        "tabHint": "Rituals"
-      },
-      "priority": 90,
-      "triggeredAt": "2026-03-16T18:00:40.098Z",
-      "expiresAt": "2026-03-23T18:00:40.098Z",
-      "kind": "playoff_push",
-      "region": "SoCal",
-      "regionPriority": 2,
-      "regionLabel": "SoCal",
-      "meta": {
-        "teams": [
-          {
-            "team": "San Diego Gulls",
-            "league": "AHL",
-            "gamesInNext7Days": 4,
-            "gamesInNext5Days": 3,
-            "hasBackToBack": true,
-            "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
-          }
-        ],
-        "eventIds": [
-          "ahl-1028709",
-          "ahl-1028714",
-          "ahl-1028728",
-          "ahl-1028751"
-        ],
-        "combinedTeamCount": 1,
-        "windowStart": "2026-03-16T18:00:40.098Z",
-        "windowEnd": "2026-03-23T18:00:40.098Z",
-        "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
-      },
-      "sports": [
-        "hockey"
-      ]
-    },
-    {
-      "id": "playoff_push_newengland",
-      "title": "Bruins Push Week",
-      "subtitle": "Four games in seven days, including a back-to-back",
-      "impact": {
-        "label": "Impacts: Saturday Game Day",
+        "label": "Feeds: Saturday Game Day",
         "ritualId": "saturday_spotlight",
         "tabHint": "Rituals"
       },
-      "priority": 90,
-      "triggeredAt": "2026-03-16T18:00:40.098Z",
-      "expiresAt": "2026-03-23T18:00:40.098Z",
-      "kind": "playoff_push",
+      "priority": 80,
+      "triggeredAt": "2026-03-18T18:00:38.134Z",
+      "expiresAt": "2026-03-21T18:00:38.134Z",
+      "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
       "regionLabel": "New England",
       "meta": {
-        "teams": [
+        "team": "Boston Bruins",
+        "league": "NHL",
+        "abbrev": "BOS",
+        "winStreak": 0,
+        "pointStreak": 3,
+        "goalDiff": -1,
+        "recentGames": [
           {
-            "team": "Boston Bruins",
-            "league": "NHL",
-            "gamesInNext7Days": 4,
-            "gamesInNext5Days": 3,
-            "hasBackToBack": true,
-            "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+            "date": "2026-03-17T23:00:00Z",
+            "opponent": "Montréal",
+            "score": "3-2",
+            "result": "L"
+          },
+          {
+            "date": "2026-03-16T23:00:00Z",
+            "opponent": "New Jersey",
+            "score": "4-3",
+            "result": "L"
+          },
+          {
+            "date": "2026-03-14T19:00:00Z",
+            "opponent": "Washington",
+            "score": "2-3",
+            "result": "W"
           }
         ],
         "eventIds": [
-          "nhl_2025021064",
-          "nhl_2025021069",
           "nhl_2025021083",
-          "nhl_2025021108"
+          "nhl_2025021108",
+          "nhl_2025021120"
         ],
-        "combinedTeamCount": 1,
-        "windowStart": "2026-03-16T18:00:40.098Z",
-        "windowEnd": "2026-03-23T18:00:40.098Z",
-        "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+        "reason": "Boston Bruins has earned points in 3 straight games"
       },
       "sports": [
         "hockey"
-      ]
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=WfA4Xxv3h90",
+        "thumbnailUrl": "https://img.youtube.com/vi/WfA4Xxv3h90/hqdefault.jpg",
+        "durationSeconds": 694,
+        "title": "Sharks vs. Oilers | NHL Highlights | March 17, 2026",
+        "source": "youtube",
+        "channel": "NHL",
+        "publishedAt": "13 hours ago"
+      }
     },
     {
       "id": "player_movement_system",
       "title": "System Shuffle",
-      "subtitle": "28 player moves detected (EDM ↔ CHI ↔ LAK ↔ OTT ↔ COL ↔ CGY ↔ VAN ↔ CBJ ↔ TBL ↔ DAL ↔ ANA ↔ MIN ↔ FLA ↔ NSH ↔ WPG ↔ BUF ↔ TOR ↔ SJS ↔ WSH ↔ VGK ↔ STL ↔ DET ↔ NYI ↔ PHI ↔ SEA)",
+      "subtitle": "25 player moves detected (SJS ↔ WSH ↔ CHI ↔ MIN ↔ WPG ↔ BUF ↔ VGK ↔ FLA ↔ STL ↔ DET ↔ NSH ↔ COL ↔ EDM ↔ NYI ↔ TOR ↔ LAK ↔ PHI ↔ SEA ↔ TBL ↔ CGY ↔ CAR ↔ ANA ↔ DAL ↔ VAN ↔ CBJ)",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-03-16T18:00:40.098Z",
-      "expiresAt": "2026-03-23T18:00:40.098Z",
+      "triggeredAt": "2026-03-18T18:00:38.134Z",
+      "expiresAt": "2026-03-25T18:00:38.134Z",
       "kind": "player_movement",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "movements": [
-          {
-            "player": "A. Mangiapane",
-            "from": "EDM",
-            "to": "CHI",
-            "detected": "2026-03-09T20:15:48.605Z",
-            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
-            "firstSeenTo": "2026-03-09T20:15:48.605Z"
-          },
-          {
-            "player": "W. Foegele",
-            "from": "LAK",
-            "to": "OTT",
-            "detected": "2026-03-10T02:28:51.292Z",
-            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
-            "firstSeenTo": "2026-03-10T02:28:51.292Z"
-          },
-          {
-            "player": "V. Olofsson",
-            "from": "COL",
-            "to": "CGY",
-            "detected": "2026-03-10T02:28:51.292Z",
-            "lastSeenFrom": "2026-03-04T05:37:04.015Z",
-            "firstSeenTo": "2026-03-10T02:28:51.292Z"
-          },
-          {
-            "player": "C. Garland",
-            "from": "VAN",
-            "to": "CBJ",
-            "detected": "2026-03-10T02:28:51.292Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-10T02:28:51.292Z"
-          },
-          {
-            "player": "C. Perry",
-            "from": "LAK",
-            "to": "TBL",
-            "detected": "2026-03-11T04:11:44.394Z",
-            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
-            "firstSeenTo": "2026-03-11T04:11:44.394Z"
-          },
-          {
-            "player": "T. Myers",
-            "from": "VAN",
-            "to": "DAL",
-            "detected": "2026-03-11T04:11:44.394Z",
-            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-            "firstSeenTo": "2026-03-11T04:11:44.394Z"
-          },
-          {
-            "player": "R. Strome",
-            "from": "ANA",
-            "to": "CGY",
-            "detected": "2026-03-11T04:11:44.394Z",
-            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
-            "firstSeenTo": "2026-03-11T04:11:44.394Z"
-          },
-          {
-            "player": "V. Hinostroza",
-            "from": "MIN",
-            "to": "FLA",
-            "detected": "2026-03-11T04:11:44.394Z",
-            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
-            "firstSeenTo": "2026-03-11T04:11:44.394Z"
-          },
-          {
-            "player": "M. Bunting",
-            "from": "NSH",
-            "to": "DAL",
-            "detected": "2026-03-11T04:11:44.394Z",
-            "lastSeenFrom": "2026-03-07T07:19:00.761Z",
-            "firstSeenTo": "2026-03-11T04:11:44.394Z"
-          },
-          {
-            "player": "L. Stanley",
-            "from": "WPG",
-            "to": "BUF",
-            "detected": "2026-03-11T04:11:44.394Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-11T04:11:44.394Z"
-          },
-          {
-            "player": "N. Kadri",
-            "from": "CGY",
-            "to": "COL",
-            "detected": "2026-03-11T04:55:01.810Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-11T04:55:01.810Z"
-          },
-          {
-            "player": "N. Roy",
-            "from": "TOR",
-            "to": "COL",
-            "detected": "2026-03-11T04:55:01.810Z",
-            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
-            "firstSeenTo": "2026-03-11T04:55:01.810Z"
-          },
           {
             "player": "T. Liljegren",
             "from": "SJS",
@@ -499,10 +437,82 @@
             "detected": "2026-03-16T18:00:40.098Z",
             "lastSeenFrom": "2026-03-06T03:20:47.423Z",
             "firstSeenTo": "2026-03-15T18:00:32.932Z"
+          },
+          {
+            "player": "C. Perry",
+            "from": "LAK",
+            "to": "TBL",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
+            "firstSeenTo": "2026-03-18T18:00:38.134Z"
+          },
+          {
+            "player": "N. Kadri",
+            "from": "CGY",
+            "to": "COL",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-14T06:00:32.337Z"
+          },
+          {
+            "player": "N. Deslauriers",
+            "from": "PHI",
+            "to": "CAR",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-18T18:00:38.134Z"
+          },
+          {
+            "player": "R. Strome",
+            "from": "ANA",
+            "to": "CGY",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+            "firstSeenTo": "2026-03-18T18:00:38.134Z"
+          },
+          {
+            "player": "M. Bunting",
+            "from": "NSH",
+            "to": "DAL",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-07T07:19:00.761Z",
+            "firstSeenTo": "2026-03-18T18:00:38.134Z"
+          },
+          {
+            "player": "A. Mangiapane",
+            "from": "EDM",
+            "to": "CHI",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
+            "firstSeenTo": "2026-03-15T18:00:32.932Z"
+          },
+          {
+            "player": "N. Roy",
+            "from": "TOR",
+            "to": "COL",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
+            "firstSeenTo": "2026-03-14T06:00:32.337Z"
+          },
+          {
+            "player": "C. Garland",
+            "from": "VAN",
+            "to": "CBJ",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-15T18:00:32.932Z"
+          },
+          {
+            "player": "L. Stanley",
+            "from": "WPG",
+            "to": "BUF",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-18T18:00:38.134Z"
           }
         ],
-        "count": 28,
-        "reason": "28 player(s) detected moving between tracked teams in the last 7 days"
+        "count": 25,
+        "reason": "25 player(s) detected moving between tracked teams in the last 7 days"
       },
       "sports": [
         "hockey"
@@ -510,34 +520,26 @@
     },
     {
       "id": "league_moment_rivalry",
-      "title": "Rivalry Weekend",
-      "subtitle": "2 rivalry matchups in the next 7 days",
+      "title": "Madrid Derby",
+      "subtitle": "Madrid Derby: Atlético Madrid @ Real Madrid",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-16T18:00:40.098Z",
-      "expiresAt": "2026-03-23T18:00:40.098Z",
+      "triggeredAt": "2026-03-18T18:00:38.134Z",
+      "expiresAt": "2026-03-25T18:00:38.134Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "rivalry",
-        "matchCount": 2,
+        "matchCount": 1,
         "rivalries": [
-          "Original Six Clash",
           "Madrid Derby"
         ],
         "matches": [
-          {
-            "label": "Original Six Clash",
-            "away": "Boston Bruins",
-            "home": "Montréal Canadiens",
-            "league": "NHL",
-            "startTime": "2026-03-17T23:00:00.000Z"
-          },
           {
             "label": "Madrid Derby",
             "away": "Atlético Madrid",
@@ -547,23 +549,21 @@
           }
         ],
         "eventIds": [
-          "nhl_2025021069",
           "soccer-laliga-20260322-2000-atl-tico-madrid-at-real-madrid"
         ],
-        "reason": "2 known rivalry matchup(s) found: Original Six Clash, Madrid Derby"
+        "reason": "1 known rivalry matchup(s) found: Madrid Derby"
       },
       "sports": [
-        "hockey",
         "soccer"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=-9YyvqScB0U",
-        "thumbnailUrl": "https://img.youtube.com/vi/-9YyvqScB0U/hqdefault.jpg",
-        "durationSeconds": 370,
-        "title": "Sports influencer Ryan Hammer on March Madness bracket tips, sleeper teams & the Illini",
+        "url": "https://www.youtube.com/watch?v=6cSwKto5TX0",
+        "thumbnailUrl": "https://img.youtube.com/vi/6cSwKto5TX0/hqdefault.jpg",
+        "durationSeconds": 70,
+        "title": "Courtois Injury Scare Real Madrid Beat Manchester City UCL 2026, Courtois Injury News UCL 2026",
         "source": "youtube",
-        "channel": "FOX 32 Chicago",
-        "publishedAt": "56 minutes ago"
+        "channel": "LatestUpdate ",
+        "publishedAt": "11 hours ago"
       }
     }
   ],
@@ -571,8 +571,8 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Boston Bruins and Boston Celtics all play tonight across the NHL, NBA.",
-    "sourceEventId": "nhl_2025021064",
+    "body": "The San Diego Gulls, UC Irvine Anteaters, Bayern Munich, Tottenham Hotspur, and Boston Celtics (+1 more) all play tonight across the AHL, NCAAB, Champions League, NBA.",
+    "sourceEventId": "ahl-1028709",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
@@ -580,7 +580,8 @@
     },
     "sports": [
       "hockey",
-      "basketball"
+      "basketball",
+      "soccer"
     ]
   }
 }
