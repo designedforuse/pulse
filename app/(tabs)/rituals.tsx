@@ -122,11 +122,15 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
             <Text style={styles.featuredSessionName} numberOfLines={1}>{sessionName}</Text>
           ) : (
             <View style={styles.featuredMatchup}>
-              <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={18} />
-              <Text style={styles.featuredTeam} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
+              <View style={styles.featuredTeamLeft}>
+                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={18} />
+                <Text style={styles.featuredTeamText} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
+              </View>
               <Text style={styles.featuredAt}>vs</Text>
-              <Text style={styles.featuredTeam} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
-              <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={18} />
+              <View style={styles.featuredTeamRight}>
+                <Text style={styles.featuredTeamText} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
+                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={18} />
+              </View>
             </View>
           )}
         </View>
@@ -445,10 +449,23 @@ const styles = StyleSheet.create({
   featuredMatchup: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 4,
     flex: 1,
   },
-  featuredTeam: {
+  featuredTeamLeft: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    gap: 5,
+  },
+  featuredTeamRight: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    gap: 5,
+  },
+  featuredTeamText: {
     fontSize: 13,
     fontWeight: "600" as const,
     color: Colors.textPrimary,
@@ -459,7 +476,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: Colors.textMuted,
     fontFamily: "Inter_400Regular",
-    marginHorizontal: 1,
+    marginHorizontal: 6,
   },
   featuredTime: {
     fontSize: 12,
