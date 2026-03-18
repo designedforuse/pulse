@@ -73,6 +73,28 @@ function LiveDot() {
   return <Animated.View style={[styles.liveDot, animStyle]} />;
 }
 
+function LiveScanBar({ color }: { color: string }) {
+  const BAR = 18;
+  const TRACK = 48;
+  const tx = useSharedValue(-BAR);
+  React.useEffect(() => {
+    tx.value = withRepeat(
+      withSequence(
+        withTiming(TRACK, { duration: 900 }),
+        withTiming(-BAR, { duration: 900 })
+      ),
+      -1,
+      false
+    );
+  }, []);
+  const animStyle = useAnimatedStyle(() => ({ transform: [{ translateX: tx.value }] }));
+  return (
+    <View style={{ width: TRACK, height: 2, overflow: "hidden", marginTop: 3, borderRadius: 1 }}>
+      <Animated.View style={[{ width: BAR, height: 2, borderRadius: 1, backgroundColor: color }, animStyle]} />
+    </View>
+  );
+}
+
 function formatEventDate(startTimeLocal: string): { date: string; time: string } {
   const d = new Date(startTimeLocal);
   const month = d.toLocaleDateString("en-US", { month: "short" });
@@ -435,7 +457,10 @@ function ChaosCard({
                 ) : isGolf && isLiveState && golfLeaderThru ? (
                   <Text style={styles.primaryClock}>{golfLeaderThru}</Text>
                 ) : isLiveState && !isGolf && displayClockText ? (
-                  <Text style={styles.primaryClock}>{displayClockText}</Text>
+                  <View>
+                    <Text style={styles.primaryClock}>{displayClockText}</Text>
+                    <LiveScanBar color={sportColor} />
+                  </View>
                 ) : isFinalState && displayStatusText ? (
                   <Text style={styles.primaryFinalStatus}>{displayStatusText}</Text>
                 ) : gameState === "UPCOMING" ? (

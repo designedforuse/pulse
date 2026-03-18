@@ -246,6 +246,28 @@ function LiveDot() {
   return <Animated.View style={[uStyles.liveDotStatic, animStyle]} />;
 }
 
+function LiveScanBar({ color }: { color: string }) {
+  const BAR = 18;
+  const TRACK = 48;
+  const tx = useSharedValue(-BAR);
+  React.useEffect(() => {
+    tx.value = withRepeat(
+      withSequence(
+        withTiming(TRACK, { duration: 900 }),
+        withTiming(-BAR, { duration: 900 })
+      ),
+      -1,
+      false
+    );
+  }, []);
+  const animStyle = useAnimatedStyle(() => ({ transform: [{ translateX: tx.value }] }));
+  return (
+    <View style={{ width: TRACK, height: 2, overflow: "hidden", marginTop: 3, borderRadius: 1 }}>
+      <Animated.View style={[{ width: BAR, height: 2, borderRadius: 1, backgroundColor: color }, animStyle]} />
+    </View>
+  );
+}
+
 function PhaseChip({ label, sportColor, isHot }: { label: string; sportColor: string; isHot: boolean }) {
   return (
     <View style={[uStyles.phaseChip, { backgroundColor: sportColor + "22" }, isHot && { backgroundColor: sportColor + "38" }]}>
@@ -877,7 +899,10 @@ export default function UnifiedEventCard({
             ) : isGolf && isLive && score?.golfLeaderThru ? (
               <Text style={uStyles.clockText}>{score.golfLeaderThru}</Text>
             ) : isLive && !isGolf && displayClockText ? (
-              <Text style={uStyles.clockText}>{displayClockText}</Text>
+              <View>
+                <Text style={uStyles.clockText}>{displayClockText}</Text>
+                <LiveScanBar color={sportColor} />
+              </View>
             ) : isFinal ? (
               <Text style={uStyles.finalStatus}>Final</Text>
             ) : (
