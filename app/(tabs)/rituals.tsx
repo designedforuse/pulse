@@ -113,9 +113,14 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
                 <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={44} />
                 <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
               </View>
-              {/* Center: time */}
+              {/* Center: time + provider */}
               <View style={styles.espnCenter}>
                 <Text style={styles.espnTime}>{timeLabel}</Text>
+                {provider.brandId && (
+                  <View style={styles.espnProvider}>
+                    <ProviderLogo providerId={provider.brandId} size={18} />
+                  </View>
+                )}
               </View>
               {/* Home team */}
               <View style={styles.espnTeam}>
@@ -123,11 +128,6 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
                 <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
               </View>
             </View>
-            {provider.brandId && (
-              <View style={styles.espnProvider}>
-                <ProviderLogo providerId={provider.brandId} size={20} />
-              </View>
-            )}
           </>
         )}
       </View>
@@ -434,6 +434,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 8,
+    gap: 6,
   },
   espnTime: {
     fontSize: 16,
