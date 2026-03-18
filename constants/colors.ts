@@ -24,8 +24,8 @@ const Colors = {
   athletics: "#FF6B00",
   white: "#FFFFFF",
   overlay: "rgba(0, 0, 0, 0.6)",
-  favStar: "#FFCC00",
-  favStarDim: "rgba(255, 215, 0, 0.15)",
+  favStar: "#FFFFFF",
+  favStarDim: "rgba(255, 255, 255, 0.15)",
   divider: "rgba(255,255,255,0.1)",
 };
 
