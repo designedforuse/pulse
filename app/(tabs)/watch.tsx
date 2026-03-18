@@ -304,7 +304,7 @@ function ChaosCard({
           { opacity: pressed ? 0.9 : isFinalState ? 0.55 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] },
         ]}
       >
-        <Animated.View style={flashStyle}>
+        <Animated.View style={[{ flex: 1 }, flashStyle]}>
           <LinearGradient
             colors={["rgba(129,140,248,0.12)", "transparent"]}
             start={{ x: 0, y: 0 }}
@@ -1707,13 +1707,16 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#818CF8" + "40",
     marginBottom: 20,
+    aspectRatio: 16 / 9,
   },
   primaryInner: {
+    flex: 1,
     backgroundColor: Colors.card,
-    paddingVertical: 28,
+    paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 17,
     overflow: "hidden" as const,
+    justifyContent: "space-between" as const,
   },
   tensionAccent: {
     position: "absolute" as const,
@@ -1740,7 +1743,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
-    marginBottom: 14,
   },
   primaryLeague: {
     fontSize: 13,
