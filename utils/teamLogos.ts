@@ -480,39 +480,39 @@ const ECHL_HOCKEYTECH_IDS: Record<string, string> = {
   "Worcester Railers": "77",
 };
 
-const AHL_HOCKEYTECH_IDS: Record<string, string> = {
-  "Abbotsford Canucks": "440",
-  "Bakersfield Condors": "402",
-  "Belleville Senators": "413",
-  "Bridgeport Islanders": "317",
-  "Calgary Wranglers": "444",
-  "Charlotte Checkers": "384",
-  "Chicago Wolves": "330",
-  "Cleveland Monsters": "373",
-  "Coachella Valley Firebirds": "445",
-  "Colorado Eagles": "419",
-  "Grand Rapids Griffins": "328",
-  "Hartford Wolf Pack": "307",
-  "Henderson Silver Knights": "437",
-  "Hershey Bears": "319",
-  "Iowa Wild": "389",
-  "Laval Rocket": "415",
-  "Lehigh Valley Phantoms": "313",
-  "Manitoba Moose": "321",
-  "Milwaukee Admirals": "327",
-  "Ontario Reign": "403",
-  "Providence Bruins": "309",
-  "Rochester Americans": "323",
-  "Rockford IceHogs": "372",
-  "San Diego Gulls": "404",
-  "San Jose Barracuda": "405",
-  "Springfield Thunderbirds": "411",
-  "Syracuse Crunch": "324",
-  "Texas Stars": "380",
-  "Toronto Marlies": "335",
-  "Tucson Roadrunners": "412",
-  "Utica Comets": "390",
-  "Wilkes-Barre/Scranton Penguins": "316",
+const AHL_LOGO_URLS: Record<string, string> = {
+  "Abbotsford Canucks":           "https://theahl.com/wp-content/uploads/sites/3/2021/07/abbotsford21_64-1.png",
+  "Bakersfield Condors":          "https://theahl.com/wp-content/uploads/sites/3/2022/07/bakersfield22_64.png",
+  "Belleville Senators":          "https://theahl.com/wp-content/uploads/sites/3/2019/09/belleville18_64-1.png",
+  "Bridgeport Islanders":         "https://theahl.com/wp-content/uploads/sites/3/2024/07/bridgeport24_64-1.png",
+  "Calgary Wranglers":            "https://theahl.com/wp-content/uploads/sites/3/2022/08/calgary22_64-1.png",
+  "Charlotte Checkers":           "https://theahl.com/wp-content/uploads/sites/3/2019/09/charlotte64-1.png",
+  "Chicago Wolves":               "https://theahl.com/wp-content/uploads/sites/3/2019/09/chicago64-1.png",
+  "Cleveland Monsters":           "https://theahl.com/wp-content/uploads/sites/3/2023/07/cleveland23_64-1.png",
+  "Coachella Valley Firebirds":   "https://theahl.com/wp-content/uploads/sites/3/2021/11/coachellavalley_64.png",
+  "Colorado Eagles":              "https://theahl.com/wp-content/uploads/sites/3/2022/07/colorado_64.png",
+  "Grand Rapids Griffins":        "https://theahl.com/wp-content/uploads/sites/3/2019/09/grandrapids64-1.png",
+  "Hartford Wolf Pack":           "https://theahl.com/wp-content/uploads/sites/3/2019/09/hartford64-1.png",
+  "Henderson Silver Knights":     "https://theahl.com/wp-content/uploads/sites/3/2020/05/henderson20_64.png",
+  "Hershey Bears":                "https://theahl.com/wp-content/uploads/sites/3/2019/09/hershey64-1.png",
+  "Iowa Wild":                    "https://theahl.com/wp-content/uploads/sites/3/2019/09/iowa_word64-1.png",
+  "Laval Rocket":                 "https://theahl.com/wp-content/uploads/sites/3/2019/09/laval64-1.png",
+  "Lehigh Valley Phantoms":       "https://theahl.com/wp-content/uploads/sites/3/2019/09/lv_64_dark.png",
+  "Manitoba Moose":               "https://theahl.com/wp-content/uploads/sites/3/2019/09/manitoba64-1.png",
+  "Milwaukee Admirals":           "https://theahl.com/wp-content/uploads/sites/3/2019/09/milwaukee64-1.png",
+  "Ontario Reign":                "https://theahl.com/wp-content/uploads/sites/3/2016/04/ontario64.png",
+  "Providence Bruins":            "https://theahl.com/wp-content/uploads/sites/3/2019/09/providence64_dark.png",
+  "Rochester Americans":          "https://theahl.com/wp-content/uploads/sites/3/2019/09/rochester64.png",
+  "Rockford IceHogs":             "https://theahl.com/wp-content/uploads/sites/3/2022/05/rockford22_64.png",
+  "San Diego Gulls":              "https://theahl.com/wp-content/uploads/sites/3/2016/04/sandiego64.png",
+  "San Jose Barracuda":           "https://theahl.com/wp-content/uploads/sites/3/2024/09/sanjose24_64.png",
+  "Springfield Thunderbirds":     "https://theahl.com/wp-content/uploads/sites/3/2022/03/springfield22_64.png",
+  "Syracuse Crunch":              "https://theahl.com/wp-content/uploads/sites/3/2019/09/syracuse64-1.png",
+  "Texas Stars":                  "https://theahl.com/wp-content/uploads/sites/3/2019/09/texas64-1-1.png",
+  "Toronto Marlies":              "https://theahl.com/wp-content/uploads/sites/3/2019/09/toronto64_white.png",
+  "Tucson Roadrunners":           "https://theahl.com/wp-content/uploads/sites/3/2025/07/tucson25_64.png",
+  "Utica Comets":                 "https://theahl.com/wp-content/uploads/sites/3/2021/05/utica21_64.png",
+  "Wilkes-Barre/Scranton Penguins": "https://theahl.com/wp-content/uploads/sites/3/2019/09/wbs64.png",
 };
 
 export function getTeamLogoUrl(teamName: string, league: string, sport?: string): string | null {
@@ -524,9 +524,7 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
   }
 
   if (league === "AHL") {
-    const id = AHL_HOCKEYTECH_IDS[teamName];
-    if (id) return `https://lscluster.hockeytech.com/download.php?client_code=ahl&file_path=img/logos/${id}.png`;
-    return null;
+    return AHL_LOGO_URLS[teamName] ?? null;
   }
 
   if (league === "ECHL") {
