@@ -445,6 +445,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
+    paddingBottom: 10,
   },
   featuredMatchup: {
     flexDirection: "row",
