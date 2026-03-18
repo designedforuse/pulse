@@ -405,7 +405,6 @@ function ChaosCard({
                     </Text>
                   )}
                 </View>
-                <Text style={styles.vsText}>vs</Text>
                 <View style={styles.primaryTeamRow}>
                   <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={28} />
                   <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 5 }}>
