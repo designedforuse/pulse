@@ -8,7 +8,7 @@ import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
 import { getSportColor, getSportIcon, resolveProviderDisplay, type SportEvent } from "@/lib/data";
-import { displayTeamName } from "@/utils/teams";
+import { displayTeamName, compactTeamName } from "@/utils/teams";
 import { normalizeGameState } from "@/utils/gameState";
 import { useScoreFlash } from "@/hooks/useScoreFlash";
 import { useFavorites } from "@/lib/favorites-context";
@@ -688,8 +688,8 @@ export default function UnifiedEventCard({
           ? "Heating Up"
           : null;
 
-  const awayName = event.tennisPlayer1 || displayTeamName(event.awayTeam, event.league);
-  const homeName = event.tennisPlayer2 || displayTeamName(event.homeTeam, event.league);
+  const awayName = event.tennisPlayer1 || compactTeamName(event.awayTeam, event.league);
+  const homeName = event.tennisPlayer2 || compactTeamName(event.homeTeam, event.league);
 
   const isTennis = event.sport === "tennis";
   const isCricket = event.sport === "cricket";
