@@ -118,7 +118,7 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
                 <Text style={styles.espnTime}>{timeLabel}</Text>
                 {provider.brandId && (
                   <View style={styles.espnProvider}>
-                    <ProviderLogo providerId={provider.brandId} size={18} />
+                    <ProviderLogo providerId={provider.brandId} size={28} />
                   </View>
                 )}
               </View>
