@@ -126,7 +126,9 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
                 <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={18} />
                 <Text style={styles.featuredTeamText} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
               </View>
-              <Text style={styles.featuredAt}>vs</Text>
+              <View style={styles.featuredVsCenter} pointerEvents="none">
+                <Text style={styles.featuredAt}>vs</Text>
+              </View>
               <View style={styles.featuredTeamRight}>
                 <Text style={styles.featuredTeamText} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
                 <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={18} />
@@ -452,6 +454,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     flex: 1,
+    position: "relative" as const,
   },
   featuredTeamLeft: {
     flex: 1,
@@ -459,6 +462,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     gap: 5,
+    paddingRight: 18,
   },
   featuredTeamRight: {
     flex: 1,
@@ -466,6 +470,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     gap: 5,
+    paddingLeft: 18,
+  },
+  featuredVsCenter: {
+    position: "absolute" as const,
+    left: 0,
+    right: 0,
+    alignItems: "center" as const,
+    justifyContent: "center" as const,
   },
   featuredTeamText: {
     fontSize: 13,
