@@ -405,6 +405,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(53, 199, 165, 0.12)",
     borderWidth: 1,
     borderColor: "rgba(53, 199, 165, 0.35)",
+    marginBottom: -6,
   },
   featuredChipText: {
     fontSize: 9,
