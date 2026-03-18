@@ -78,6 +78,7 @@ function LiveScanBar({ color }: { color: string }) {
   const [trackW, setTrackW] = React.useState(80);
   const tx = useSharedValue(-BAR);
   React.useEffect(() => {
+    tx.value = -BAR;
     tx.value = withRepeat(
       withSequence(
         withTiming(trackW, { duration: 900 }),
