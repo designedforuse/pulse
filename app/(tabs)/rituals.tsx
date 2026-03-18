@@ -271,7 +271,7 @@ const styles = StyleSheet.create({
   headerBanner: {
     backgroundColor: ACCENT,
     paddingHorizontal: 20,
-    paddingBottom: 24,
+    paddingBottom: 62,
   },
   headerBannerRow: {
     flexDirection: "row",
