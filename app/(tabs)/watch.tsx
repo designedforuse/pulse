@@ -1285,7 +1285,7 @@ export default function WatchScreen() {
             <View>
               <Text style={styles.chaosBannerLabel}>ALSO HAPPENING NOW</Text>
               <View style={{ flexDirection: "row", alignItems: "center", gap: 7 }}>
-                <View style={styles.liveSmallDot} />
+                <View style={styles.liveDot} />
                 <Text style={styles.chaosBannerTitle}>Live Now</Text>
               </View>
             </View>
@@ -1734,10 +1734,10 @@ const styles = StyleSheet.create({
     marginBottom: 0,
   },
   liveDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: "#fff",
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: Colors.live,
   },
   liveCountBadge: {
     width: 44,
@@ -2252,12 +2252,6 @@ const styles = StyleSheet.create({
     paddingVertical: 1,
     borderRadius: 5,
     marginLeft: "auto" as const,
-  },
-  liveSmallDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: Colors.live,
   },
   liveText: {
     color: Colors.live,
