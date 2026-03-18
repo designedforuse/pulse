@@ -1421,7 +1421,7 @@ export default function WatchScreen() {
           style={styles.upNextSection}
           onLayout={(e) => { upNextSectionYRef.current = e.nativeEvent.layout.y; }}
         >
-          <View style={styles.liveHeaderRow}>
+          <View style={[styles.liveHeaderRow, { paddingBottom: 26 }]}>
             <View style={styles.liveHeaderLine} />
             <Text style={styles.liveHeaderText}>Coming up next</Text>
             <View style={styles.liveHeaderLine} />
