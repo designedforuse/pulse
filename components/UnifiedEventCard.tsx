@@ -720,6 +720,11 @@ export default function UnifiedEventCard({
       style={({ pressed }) => [
         uStyles.card,
         featured && uStyles.cardFeatured,
+        showEspnStyle && {
+          borderColor: "transparent",
+          borderTopColor: sportColor,
+          borderTopWidth: 2,
+        },
         {
           opacity: pressed ? 0.85 : isFinal ? 0.55 : 1,
           transform: [{ scale: pressed ? 0.98 : 1 }],
@@ -728,7 +733,9 @@ export default function UnifiedEventCard({
       testID={`event-${event.id}`}
     >
       <Animated.View style={[uStyles.cardInner, featured && uStyles.cardInnerFeatured, flashStyle]}>
-        <View style={[uStyles.accentBar, { backgroundColor: isLive ? "#1CB0F6" : (accentBarColor ?? sportColor) }]} />
+        {!showEspnStyle && (
+          <View style={[uStyles.accentBar, { backgroundColor: isLive ? "#1CB0F6" : (accentBarColor ?? sportColor) }]} />
+        )}
 
         {!showEspnStyle && (
           <View style={uStyles.header}>
