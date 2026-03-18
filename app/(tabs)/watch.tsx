@@ -1374,16 +1374,17 @@ export default function WatchScreen() {
                 onPress={() => setLiveExpanded((prev) => !prev)}
                 style={({ pressed }) => [
                   styles.expandButton,
+                  styles.expandButtonGreen,
                   { opacity: pressed ? 0.7 : 1 },
                 ]}
               >
-                <Text style={styles.expandButtonText}>
+                <Text style={[styles.expandButtonText, { color: "#fff" }]}>
                   {liveExpanded ? "Show fewer" : `View all live (${sortedLive.length})`}
                 </Text>
                 <Ionicons
                   name={liveExpanded ? "chevron-up" : "chevron-down"}
                   size={16}
-                  color="#1C1C1E"
+                  color="#fff"
                 />
               </Pressable>
             )}
