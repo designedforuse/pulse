@@ -264,6 +264,27 @@ const COMPACT_NAMES: Record<string, string> = {
   "San Diego Gulls": "Gulls",
   "Anaheim Ducks": "Ducks",
   "Boston University": "BU",
+  "Utah Mammoth": "Mammoth",
+  "Utah Hockey Club": "Utah HC",
+  "Newcastle United": "Newcastle",
+  "Bayern Munich": "Bayern",
+  "FC Bayern Munich": "Bayern",
+  "Borussia Dortmund": "Dortmund",
+  "Real Madrid": "Real Madrid",
+  "Atlético Madrid": "Atlético",
+  "Manchester City": "Man City",
+  "Manchester United": "Man Utd",
+  "Tottenham Hotspur": "Spurs",
+  "West Ham United": "West Ham",
+  "Nottm Forest": "Nott'm Forest",
+  "Nottingham Forest": "Nott'm Forest",
+  "Leicester City": "Leicester",
+  "Sheffield United": "Sheffield Utd",
+  "Crystal Palace": "Crystal Palace",
+  "Aston Villa": "Aston Villa",
+  "AC Milan": "AC Milan",
+  "Inter Milan": "Inter",
+  "Internazionale": "Inter",
 };
 
 export function displayTeamName(team: string, league?: string): string {
@@ -279,5 +300,10 @@ export function compactTeamName(team: string, league?: string): string {
   }
   if (COMPACT_NAMES[team]) return COMPACT_NAMES[team];
   if (SHORT_NAMES[team]) return SHORT_NAMES[team];
+  // Fallback: for long unmapped names, return just the last word (the nickname)
+  if (team.length > 12) {
+    const words = team.trim().split(" ");
+    if (words.length > 1) return words[words.length - 1];
+  }
   return team;
 }
