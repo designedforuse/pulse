@@ -108,10 +108,7 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
         <View style={styles.featuredChipsRow}>
           <View style={styles.featuredChips}>
             <View style={[styles.sportPill, { backgroundColor: sportColor }]}>
-              <Text style={styles.sportPillText}>{event.sport.toUpperCase()}</Text>
-            </View>
-            <View style={styles.leaguePillGrey}>
-              <Text style={styles.leaguePillGreyText}>{league}</Text>
+              <Text style={styles.sportPillText}>{league}</Text>
             </View>
           </View>
           <View style={styles.featuredTimeGroup}>
