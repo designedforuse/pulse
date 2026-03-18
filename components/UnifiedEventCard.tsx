@@ -901,7 +901,7 @@ export default function UnifiedEventCard({
             ) : isLive && !isGolf && displayClockText ? (
               <View>
                 <Text style={uStyles.clockText}>{displayClockText}</Text>
-                <LiveScanBar color={sportColor} />
+                <LiveScanBar color="#1CB0F6" />
               </View>
             ) : isFinal ? (
               <Text style={uStyles.finalStatus}>Final</Text>

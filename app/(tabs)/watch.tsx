@@ -459,7 +459,7 @@ function ChaosCard({
                 ) : isLiveState && !isGolf && displayClockText ? (
                   <View>
                     <Text style={styles.primaryClock}>{displayClockText}</Text>
-                    <LiveScanBar color={sportColor} />
+                    <LiveScanBar color="#818CF8" />
                   </View>
                 ) : isFinalState && displayStatusText ? (
                   <Text style={styles.primaryFinalStatus}>{displayStatusText}</Text>
