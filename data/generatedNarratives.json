@@ -1,7 +1,10 @@
 {
-  "lastUpdated": "2026-03-18T18:00:38.134Z",
+  "lastUpdated": "2026-03-19T01:11:19.429Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
+      "playoff_push": {
+        "NewEngland": 1
+      },
       "momentum": {
         "NewEngland": 1
       },
@@ -12,9 +15,12 @@
         "Other": 1
       }
     },
-    "combinedPushByRegion": {},
+    "combinedPushByRegion": {
+      "NewEngland": false
+    },
     "finalFeedByRegion": {
       "NewEngland": [
+        "playoff_push: Bruins Push Week",
         "momentum: Bruins Heating Up"
       ],
       "Other": [
@@ -23,8 +29,8 @@
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 3,
-    "totalAfterCap": 3,
+    "totalBeforeCap": 4,
+    "totalAfterCap": 4,
     "playerMovement": {
       "rawMovementCandidates": 1,
       "movementAfterRegionFilter": 1,
@@ -66,100 +72,18 @@
           }
         ],
         "playersIngested": 646,
-        "movementsDetectedThisRun": [
-          {
-            "playerId": "8470621",
-            "playerName": "C. Perry",
-            "fromTeam": "LAK",
-            "toTeam": "TBL",
-            "detectedAt": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
-            "firstSeenTo": "2026-03-18T18:00:38.134Z"
-          },
-          {
-            "playerId": "8475172",
-            "playerName": "N. Kadri",
-            "fromTeam": "CGY",
-            "toTeam": "COL",
-            "detectedAt": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-14T06:00:32.337Z"
-          },
-          {
-            "playerId": "8475235",
-            "playerName": "N. Deslauriers",
-            "fromTeam": "PHI",
-            "toTeam": "CAR",
-            "detectedAt": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-18T18:00:38.134Z"
-          },
-          {
-            "playerId": "8476458",
-            "playerName": "R. Strome",
-            "fromTeam": "ANA",
-            "toTeam": "CGY",
-            "detectedAt": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
-            "firstSeenTo": "2026-03-18T18:00:38.134Z"
-          },
-          {
-            "playerId": "8478047",
-            "playerName": "M. Bunting",
-            "fromTeam": "NSH",
-            "toTeam": "DAL",
-            "detectedAt": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-07T07:19:00.761Z",
-            "firstSeenTo": "2026-03-18T18:00:38.134Z"
-          },
-          {
-            "playerId": "8478233",
-            "playerName": "A. Mangiapane",
-            "fromTeam": "EDM",
-            "toTeam": "CHI",
-            "detectedAt": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
-            "firstSeenTo": "2026-03-15T18:00:32.932Z"
-          },
-          {
-            "playerId": "8478462",
-            "playerName": "N. Roy",
-            "fromTeam": "TOR",
-            "toTeam": "COL",
-            "detectedAt": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
-            "firstSeenTo": "2026-03-14T06:00:32.337Z"
-          },
-          {
-            "playerId": "8478856",
-            "playerName": "C. Garland",
-            "fromTeam": "VAN",
-            "toTeam": "CBJ",
-            "detectedAt": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-15T18:00:32.932Z"
-          },
-          {
-            "playerId": "8479378",
-            "playerName": "L. Stanley",
-            "fromTeam": "WPG",
-            "toTeam": "BUF",
-            "detectedAt": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-18T18:00:38.134Z"
-          }
-        ],
-        "timestamp": "2026-03-18T18:00:38.134Z"
+        "movementsDetectedThisRun": [],
+        "timestamp": "2026-03-19T01:11:19.429Z"
       },
       "cacheHistoryCount": 782,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 3,
-    "candidateCountAfterCap": 3,
+    "candidateCountBeforeCap": 4,
+    "candidateCountAfterCap": 4,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -262.0105927777778,
+      "hoursUntil": -269.1887302777778,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -182,18 +106,23 @@
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "ahl-1028709",
+    "tonightStorySourceEvent": "ahl-1028714",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 320,
-      "sourceEventId": "ahl-1028709",
-      "reason": "6 followed/affiliate teams playing tonight",
+      "selectedScore": 300,
+      "sourceEventId": "ahl-1028714",
+      "reason": "5 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 320,
-          "reason": "6 followed/affiliate teams playing tonight"
+          "score": 300,
+          "reason": "5 followed/affiliate teams playing tonight"
+        },
+        {
+          "label": "[playoff_push] Your Team's Push",
+          "score": 170,
+          "reason": "playoff_push involving followed team(s): Boston Bruins"
         },
         {
           "label": "[momentum] Hot Streak",
@@ -213,6 +142,13 @@
       ]
     },
     "videoSelection": {
+      "playoff_push_newengland": {
+        "searchQuery": "Boston Bruins playoff push March 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
+        "rejectedForAgeCount": 0
+      },
       "momentum_bos": {
         "searchQuery": "Boston Bruins highlights March 2026",
         "selectedVideoTitle": "Sharks vs. Oilers | NHL Highlights | March 17, 2026",
@@ -231,6 +167,48 @@
   },
   "cards": [
     {
+      "id": "playoff_push_newengland",
+      "title": "Bruins Push Week",
+      "subtitle": "Four games in seven days, including a back-to-back",
+      "impact": {
+        "label": "Impacts: Saturday Game Day",
+        "ritualId": "saturday_spotlight",
+        "tabHint": "Rituals"
+      },
+      "priority": 90,
+      "triggeredAt": "2026-03-19T01:11:19.429Z",
+      "expiresAt": "2026-03-26T01:11:19.429Z",
+      "kind": "playoff_push",
+      "region": "NewEngland",
+      "regionPriority": 3,
+      "regionLabel": "New England",
+      "meta": {
+        "teams": [
+          {
+            "team": "Boston Bruins",
+            "league": "NHL",
+            "gamesInNext7Days": 4,
+            "gamesInNext5Days": 2,
+            "hasBackToBack": true,
+            "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+          }
+        ],
+        "eventIds": [
+          "nhl_2025021083",
+          "nhl_2025021108",
+          "nhl_2025021120",
+          "nhl_2025021135"
+        ],
+        "combinedTeamCount": 1,
+        "windowStart": "2026-03-19T01:11:19.429Z",
+        "windowEnd": "2026-03-26T01:11:19.429Z",
+        "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+      },
+      "sports": [
+        "hockey"
+      ]
+    },
+    {
       "id": "momentum_bos",
       "title": "Bruins Heating Up",
       "subtitle": "3-game point streak",
@@ -240,8 +218,8 @@
         "tabHint": "Rituals"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-18T18:00:38.134Z",
-      "expiresAt": "2026-03-21T18:00:38.134Z",
+      "triggeredAt": "2026-03-19T01:11:19.429Z",
+      "expiresAt": "2026-03-22T01:11:19.429Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -276,7 +254,8 @@
         "eventIds": [
           "nhl_2025021083",
           "nhl_2025021108",
-          "nhl_2025021120"
+          "nhl_2025021120",
+          "nhl_2025021135"
         ],
         "reason": "Boston Bruins has earned points in 3 straight games"
       },
@@ -302,8 +281,8 @@
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-03-18T18:00:38.134Z",
-      "expiresAt": "2026-03-25T18:00:38.134Z",
+      "triggeredAt": "2026-03-19T01:11:19.429Z",
+      "expiresAt": "2026-03-26T01:11:19.429Z",
       "kind": "player_movement",
       "region": "Other",
       "regionPriority": 99,
@@ -527,8 +506,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-18T18:00:38.134Z",
-      "expiresAt": "2026-03-25T18:00:38.134Z",
+      "triggeredAt": "2026-03-19T01:11:19.429Z",
+      "expiresAt": "2026-03-26T01:11:19.429Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -571,8 +550,8 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The San Diego Gulls, UC Irvine Anteaters, Bayern Munich, Tottenham Hotspur, and Boston Celtics (+1 more) all play tonight across the AHL, NCAAB, Champions League, NBA.",
-    "sourceEventId": "ahl-1028709",
+    "body": "The San Diego Gulls, Tulsa Oilers, Los Angeles Lakers, Anaheim Ducks, and Boston Bruins all play tonight across the AHL, ECHL, NBA, NHL.",
+    "sourceEventId": "ahl-1028714",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
@@ -580,8 +559,7 @@
     },
     "sports": [
       "hockey",
-      "basketball",
-      "soccer"
+      "basketball"
     ]
   }
 }

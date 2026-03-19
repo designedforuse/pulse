@@ -180,12 +180,12 @@ const TOURNAMENTS: TennisTournament[] = [
     leagueKey: "atp-masters",
     location: "Miami",
     country: "USA",
-    startDate: "2026-03-15",
-    endDate: "2026-03-29",
+    startDate: "2026-03-19",
+    endDate: "2026-03-30",
     providerId: "tennischannel",
     providerReason: "tennis-channel",
     rounds: MASTERS_ROUNDS,
-    espnTournamentId: 403,
+    espnTournamentId: 713,
   },
   {
     name: "Monte-Carlo Masters",
@@ -623,10 +623,17 @@ export async function fetchTennisEvents(): Promise<TennisFetchResult> {
     const espnComps = tournament.espnTournamentId ? espnMatches.get(tournament.espnTournamentId) : undefined;
 
     if (espnComps && espnComps.length > 0) {
-      const liveAndUpcoming = espnComps.filter(c => {
-        const state = c.status?.type?.state;
-        return (state === "in" || state === "pre") && hasSeededPlayer(c, tournament.espnTournamentId);
+      // All live matches regardless of seeding
+      const liveMatches = espnComps.filter(c => c.status?.type?.state === "in");
+      // All upcoming matches — sort seeded players first, cap at 15
+      const upcomingAll = espnComps.filter(c => c.status?.type?.state === "pre");
+      upcomingAll.sort((a, b) => {
+        const aS = hasSeededPlayer(a, tournament.espnTournamentId) ? 1 : 0;
+        const bS = hasSeededPlayer(b, tournament.espnTournamentId) ? 1 : 0;
+        return bS - aS;
       });
+      const upcomingMatches = upcomingAll.slice(0, 15);
+      // Recently completed seeded matches (within 24h)
       const recent = espnComps.filter(c => {
         const state = c.status?.type?.state;
         if (state !== "post") return false;
@@ -635,6 +642,7 @@ export async function fetchTennisEvents(): Promise<TennisFetchResult> {
         const hoursAgo = (now.getTime() - matchDate.getTime()) / 3600000;
         return hoursAgo < 24;
       });
+      const liveAndUpcoming = [...liveMatches, ...upcomingMatches];
       const toInclude = [...liveAndUpcoming, ...recent];
       const totalBefore = espnComps.filter(c => {
         const s = c.status?.type?.state;
@@ -648,7 +656,7 @@ export async function fetchTennisEvents(): Promise<TennisFetchResult> {
       espnCount += toInclude.length;
       espnActiveTournaments.add(tournament.name);
       tournamentCounts[tournament.name] = toInclude.length;
-      console.log(`  Tennis: ${tournament.shortName} — ${toInclude.length} seeded matches of ${totalBefore} total (${liveAndUpcoming.length} active, ${recent.length} recent)`);
+      console.log(`  Tennis: ${tournament.shortName} — ${toInclude.length} matches of ${totalBefore} total (${liveMatches.length} live, ${upcomingMatches.length}/${upcomingAll.length} upcoming, ${recent.length} recent)`);
     } else {
       const fallback = generateFallbackSessions(tournament, windowStart, windowEnd);
       events.push(...fallback);

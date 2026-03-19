@@ -23393,7 +23393,7 @@
       "firstSeenTo": "2026-03-18T18:00:38.134Z"
     }
   ],
-  "lastUpdated": "2026-03-18T18:00:38.134Z",
+  "lastUpdated": "2026-03-19T01:11:19.429Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -23429,89 +23429,7 @@
       }
     ],
     "playersIngested": 646,
-    "movementsDetectedThisRun": [
-      {
-        "playerId": "8470621",
-        "playerName": "C. Perry",
-        "fromTeam": "LAK",
-        "toTeam": "TBL",
-        "detectedAt": "2026-03-18T18:00:38.134Z",
-        "lastSeenFrom": "2026-03-06T05:30:49.106Z",
-        "firstSeenTo": "2026-03-18T18:00:38.134Z"
-      },
-      {
-        "playerId": "8475172",
-        "playerName": "N. Kadri",
-        "fromTeam": "CGY",
-        "toTeam": "COL",
-        "detectedAt": "2026-03-18T18:00:38.134Z",
-        "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-        "firstSeenTo": "2026-03-14T06:00:32.337Z"
-      },
-      {
-        "playerId": "8475235",
-        "playerName": "N. Deslauriers",
-        "fromTeam": "PHI",
-        "toTeam": "CAR",
-        "detectedAt": "2026-03-18T18:00:38.134Z",
-        "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-        "firstSeenTo": "2026-03-18T18:00:38.134Z"
-      },
-      {
-        "playerId": "8476458",
-        "playerName": "R. Strome",
-        "fromTeam": "ANA",
-        "toTeam": "CGY",
-        "detectedAt": "2026-03-18T18:00:38.134Z",
-        "lastSeenFrom": "2026-03-06T03:20:47.423Z",
-        "firstSeenTo": "2026-03-18T18:00:38.134Z"
-      },
-      {
-        "playerId": "8478047",
-        "playerName": "M. Bunting",
-        "fromTeam": "NSH",
-        "toTeam": "DAL",
-        "detectedAt": "2026-03-18T18:00:38.134Z",
-        "lastSeenFrom": "2026-03-07T07:19:00.761Z",
-        "firstSeenTo": "2026-03-18T18:00:38.134Z"
-      },
-      {
-        "playerId": "8478233",
-        "playerName": "A. Mangiapane",
-        "fromTeam": "EDM",
-        "toTeam": "CHI",
-        "detectedAt": "2026-03-18T18:00:38.134Z",
-        "lastSeenFrom": "2026-03-06T05:30:49.106Z",
-        "firstSeenTo": "2026-03-15T18:00:32.932Z"
-      },
-      {
-        "playerId": "8478462",
-        "playerName": "N. Roy",
-        "fromTeam": "TOR",
-        "toTeam": "COL",
-        "detectedAt": "2026-03-18T18:00:38.134Z",
-        "lastSeenFrom": "2026-03-05T04:50:57.276Z",
-        "firstSeenTo": "2026-03-14T06:00:32.337Z"
-      },
-      {
-        "playerId": "8478856",
-        "playerName": "C. Garland",
-        "fromTeam": "VAN",
-        "toTeam": "CBJ",
-        "detectedAt": "2026-03-18T18:00:38.134Z",
-        "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-        "firstSeenTo": "2026-03-15T18:00:32.932Z"
-      },
-      {
-        "playerId": "8479378",
-        "playerName": "L. Stanley",
-        "fromTeam": "WPG",
-        "toTeam": "BUF",
-        "detectedAt": "2026-03-18T18:00:38.134Z",
-        "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-        "firstSeenTo": "2026-03-18T18:00:38.134Z"
-      }
-    ],
-    "timestamp": "2026-03-18T18:00:38.134Z"
+    "movementsDetectedThisRun": [],
+    "timestamp": "2026-03-19T01:11:19.429Z"
   }
 }
