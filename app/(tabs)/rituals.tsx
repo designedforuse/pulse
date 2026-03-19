@@ -444,7 +444,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start" as const,
   },
   espnStarSlot: {
-    width: 16,
+    width: 11,
     height: 44,
     justifyContent: "center" as const,
     alignItems: "center" as const,

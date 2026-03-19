@@ -1278,7 +1278,7 @@ const uStyles = StyleSheet.create({
     alignItems: "flex-start" as const,
   },
   espnStarSlot: {
-    width: 14,
+    width: 10,
     height: 32,
     justifyContent: "center" as const,
     alignItems: "center" as const,
