@@ -971,7 +971,7 @@ export default function UnifiedEventCard({
               ) : isLive && !isGolf && displayClockText ? (
                 <View style={{ alignSelf: "flex-start" }}>
                   <Text style={uStyles.clockText}>{displayClockText}</Text>
-                  <LiveScanBar color="#1CB0F6" />
+                  {!displayClockText.startsWith("Started") && <LiveScanBar color="#1CB0F6" />}
                 </View>
               ) : isFinal ? (
                 <Text style={uStyles.finalStatus}>Final</Text>
