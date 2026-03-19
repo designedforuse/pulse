@@ -301,12 +301,14 @@ export function TennisScoreboard({
   isLive,
   isFinal,
   featured,
+  scoreColor = "#A78BFA",
 }: {
   event: SportEvent;
   score?: ScoreData;
   isLive: boolean;
   isFinal: boolean;
   featured?: boolean;
+  scoreColor?: string;
 }) {
   const p1Name = event.tennisPlayer1 || event.awayTeam;
   const p2Name = event.tennisPlayer2 || event.homeTeam;
@@ -381,7 +383,7 @@ export function TennisScoreboard({
                       tsStyles.setScore,
                       isSetWinner && tsStyles.setScoreWon,
                       isCurrentSet && isLive && tsStyles.setScoreCurrent,
-                      isCurrentSet && isLive && { color: "#A78BFA" },
+                      isCurrentSet && isLive && { color: scoreColor },
                     ]}
                   >
                     {val}
@@ -396,7 +398,7 @@ export function TennisScoreboard({
             })}
             {gameScore && isLive && (
               <View style={[tsStyles.setScoreCell, tsStyles.gameScoreCell]}>
-                <Text style={[tsStyles.gameScore, isLive && tsStyles.gameScoreLive, isLive && { color: "#A78BFA" }]}>
+                <Text style={[tsStyles.gameScore, isLive && tsStyles.gameScoreLive, isLive && { color: scoreColor }]}>
                   {playerNum === 1 ? gameScore.p1 : gameScore.p2}
                 </Text>
               </View>
@@ -404,7 +406,7 @@ export function TennisScoreboard({
           </View>
         )}
         {!hasScoreData && isLive && (
-          <Text style={[tsStyles.liveNow, { color: "#1CB0F6" }]}>0</Text>
+          <Text style={[tsStyles.liveNow, { color: scoreColor }]}>0</Text>
         )}
         {!hasScoreData && isFinal && score && (
           <Text style={tsStyles.finalSetsText}>
@@ -857,6 +859,7 @@ export default function UnifiedEventCard({
               isLive={isLive}
               isFinal={isFinal}
               featured={featured}
+              scoreColor="#1CB0F6"
             />
           ) : showEspnStyle ? (
             <View>
