@@ -452,6 +452,7 @@ function ChaosCard({
             )}
 
             <View style={styles.primaryFooter}>
+              {isLiveState && <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={22} />}
               <View style={styles.primaryTimeRow}>
                 {isSvnsSession && svnsDisplayMatch ? (
                   <Text style={styles.primaryClock}>
@@ -472,7 +473,7 @@ function ChaosCard({
                   <Text style={styles.primaryTime}>{date} {"\u00B7"} {time}</Text>
                 ) : null}
               </View>
-              <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={22} />
+              {!isLiveState && <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={22} />}
             </View>
           </LinearGradient>
         </Animated.View>
@@ -599,6 +600,11 @@ function ChaosCard({
         )}
 
         <View style={styles.secondaryFooter}>
+          {isLiveState && (
+            <View style={{ opacity: 0.9 }}>
+              <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
+            </View>
+          )}
           {isSvnsSession && svnsDisplayMatch ? (
             <Text style={styles.secondaryClock} numberOfLines={1}>
               {svnsDisplayMatch.status.startsWith("L") ? "Live now" : svnsDisplayMatch.status === "C" ? "Last match" : `Next @ ${formatSvnsMatchTime(svnsDisplayMatch)}`}
@@ -614,9 +620,11 @@ function ChaosCard({
           ) : gameState === "UPCOMING" ? (
             <Text style={styles.secondaryTime} numberOfLines={1}>{time}</Text>
           ) : null}
-          <View style={{ opacity: 0.9 }}>
-            <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
-          </View>
+          {!isLiveState && (
+            <View style={{ opacity: 0.9 }}>
+              <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
+            </View>
+          )}
         </View>
       </Animated.View>
     </Pressable>
