@@ -6,35 +6,13 @@ import { Platform, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import Svg, { Defs, LinearGradient, Stop, Path } from "react-native-svg";
 import Colors from "@/constants/colors";
 
 const TAB_COLORS = {
-  watch: "#818CF8",
+  watch: "#A78BFA",
   rituals: "#35C7A5",
   stories: "#FF85C8",
 };
-
-function GradientFlashIcon({ focused }: { focused: boolean }) {
-  const opacity = focused ? 1 : 0.45;
-  return (
-    <View style={[tabIconStyles.wrap, focused && tabIconStyles.wrapFocused]}>
-      <Svg width={24} height={24} viewBox="0 0 24 24">
-        <Defs>
-          <LinearGradient id="flashGrad" x1="0" y1="0" x2="0" y2="1">
-            <Stop offset="0" stopColor="#7C3AED" stopOpacity={opacity} />
-            <Stop offset="0.5" stopColor="#1CB0F6" stopOpacity={opacity} />
-            <Stop offset="1" stopColor="#58CC02" stopOpacity={opacity} />
-          </LinearGradient>
-        </Defs>
-        <Path
-          d="M14.5 1L2.5 13.5H10L8 23L21.5 10.5H14L14.5 1Z"
-          fill="url(#flashGrad)"
-        />
-      </Svg>
-    </View>
-  );
-}
 
 function TabIcon({
   iconName,
@@ -76,7 +54,7 @@ function NativeTabLayout() {
   return (
     <NativeTabs initialRouteName="watch">
       <NativeTabs.Trigger name="watch">
-        <Icon sf={{ default: "play.rectangle", selected: "play.rectangle.fill" }} md="play-circle" />
+        <Icon sf={{ default: "waveform.path", selected: "waveform.path" }} md="monitor-heart" />
         <Label>Watch</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="rituals">
@@ -128,7 +106,9 @@ function ClassicTabLayout() {
         name="watch"
         options={{
           title: "Watch",
-          tabBarIcon: ({ focused }) => <GradientFlashIcon focused={focused} />,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon iconName="pulse" color={TAB_COLORS.watch} focused={focused} />
+          ),
         }}
       />
       <Tabs.Screen
