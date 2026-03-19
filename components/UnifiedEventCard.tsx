@@ -872,7 +872,7 @@ export default function UnifiedEventCard({
                   </View>
                   <View style={uStyles.espnTeam}>
                     {isTennis && awayFlag
-                      ? <Image source={{ uri: awayFlag }} style={{ width: 36, height: 24, borderRadius: 3 }} resizeMode="contain" />
+                      ? <Image source={{ uri: awayFlag }} style={{ width: 48, height: 32, borderRadius: 3 }} resizeMode="contain" />
                       : <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={32} />}
                     <Text style={uStyles.espnTeamName} numberOfLines={1}>{awayName}</Text>
                   </View>
@@ -888,7 +888,7 @@ export default function UnifiedEventCard({
                   </View>
                   <View style={uStyles.espnTeam}>
                     {isTennis && homeFlag
-                      ? <Image source={{ uri: homeFlag }} style={{ width: 36, height: 24, borderRadius: 3 }} resizeMode="contain" />
+                      ? <Image source={{ uri: homeFlag }} style={{ width: 48, height: 32, borderRadius: 3 }} resizeMode="contain" />
                       : <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={32} />}
                     <Text style={uStyles.espnTeamName} numberOfLines={1}>{homeName}</Text>
                   </View>
