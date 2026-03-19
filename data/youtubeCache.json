@@ -53,7 +53,7 @@
   },
   "playoff_push:boston bruins playoff push march 2026": {
     "video": null,
-    "fetchedAt": "2026-03-19T01:07:55.076Z",
+    "fetchedAt": "2026-03-19T21:10:17.247Z",
     "query": "Boston Bruins playoff push March 2026",
     "debug": {
       "searchQuery": "Boston Bruins playoff push March 2026",
@@ -76,22 +76,14 @@
     }
   },
   "playoff_push:anaheim ducks playoff push march 2026": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=d6GLHxSuRTk",
-      "thumbnailUrl": "https://img.youtube.com/vi/d6GLHxSuRTk/hqdefault.jpg",
-      "durationSeconds": 399,
-      "title": "Maple Leafs Hopeful Auston Matthews Won't Need Surgery | Saturday Headlines",
-      "source": "youtube",
-      "channel": "SPORTSNET",
-      "publishedAt": "16 hours ago"
-    },
-    "fetchedAt": "2026-03-15T18:00:42.747Z",
+    "video": null,
+    "fetchedAt": "2026-03-19T21:10:17.698Z",
     "query": "Anaheim Ducks playoff push March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push March 2026",
-      "selectedVideoTitle": "Maple Leafs Hopeful Auston Matthews Won't Need Surgery | Saturday Headlines",
-      "selectedVideoPublishedAt": "16 hours ago",
-      "selectedVideoChannel": "SPORTSNET",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   },
@@ -233,20 +225,20 @@
   },
   "momentum:boston bruins highlights march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=WfA4Xxv3h90",
-      "thumbnailUrl": "https://img.youtube.com/vi/WfA4Xxv3h90/hqdefault.jpg",
-      "durationSeconds": 694,
-      "title": "Sharks vs. Oilers | NHL Highlights | March 17, 2026",
+      "url": "https://www.youtube.com/watch?v=VKF7u1OEg2E",
+      "thumbnailUrl": "https://img.youtube.com/vi/VKF7u1OEg2E/hqdefault.jpg",
+      "durationSeconds": 2221,
+      "title": "MARCHAND MADNESS | 37 Minutes of the BEST Brad Marchand Goals",
       "source": "youtube",
       "channel": "NHL",
-      "publishedAt": "13 hours ago"
+      "publishedAt": "6 hours ago"
     },
-    "fetchedAt": "2026-03-18T18:00:49.979Z",
+    "fetchedAt": "2026-03-19T21:10:17.492Z",
     "query": "Boston Bruins highlights March 2026",
     "debug": {
       "searchQuery": "Boston Bruins highlights March 2026",
-      "selectedVideoTitle": "Sharks vs. Oilers | NHL Highlights | March 17, 2026",
-      "selectedVideoPublishedAt": "13 hours ago",
+      "selectedVideoTitle": "MARCHAND MADNESS | 37 Minutes of the BEST Brad Marchand Goals",
+      "selectedVideoPublishedAt": "6 hours ago",
       "selectedVideoChannel": "NHL",
       "rejectedForAgeCount": 0
     }
@@ -404,22 +396,26 @@
     }
   },
   "league_moment:madrid derby sports march 2026": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=6cSwKto5TX0",
-      "thumbnailUrl": "https://img.youtube.com/vi/6cSwKto5TX0/hqdefault.jpg",
-      "durationSeconds": 70,
-      "title": "Courtois Injury Scare Real Madrid Beat Manchester City UCL 2026, Courtois Injury News UCL 2026",
-      "source": "youtube",
-      "channel": "LatestUpdate ",
-      "publishedAt": "11 hours ago"
-    },
-    "fetchedAt": "2026-03-18T18:00:50.341Z",
+    "video": null,
+    "fetchedAt": "2026-03-19T21:10:18.673Z",
     "query": "Madrid Derby sports March 2026",
     "debug": {
       "searchQuery": "Madrid Derby sports March 2026",
-      "selectedVideoTitle": "Courtois Injury Scare Real Madrid Beat Manchester City UCL 2026, Courtois Injury News UCL 2026",
-      "selectedVideoPublishedAt": "11 hours ago",
-      "selectedVideoChannel": "LatestUpdate ",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:dragons clinch playoff berth march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-19T21:10:17.011Z",
+    "query": "Dragons clinch playoff berth March 2026",
+    "debug": {
+      "searchQuery": "Dragons clinch playoff berth March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   }

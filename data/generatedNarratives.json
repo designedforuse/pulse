@@ -1,9 +1,10 @@
 {
-  "lastUpdated": "2026-03-19T01:11:19.429Z",
+  "lastUpdated": "2026-03-19T21:10:08.513Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
-        "NewEngland": 1
+        "NewEngland": 2,
+        "Other": 1
       },
       "momentum": {
         "NewEngland": 1
@@ -13,24 +14,39 @@
       },
       "player_movement": {
         "Other": 1
+      },
+      "clinch_watch": {
+        "SouthAfrica": 1
       }
     },
     "combinedPushByRegion": {
       "NewEngland": false
     },
     "finalFeedByRegion": {
+      "SouthAfrica": [
+        "clinch_watch: Clinch Watch"
+      ],
       "NewEngland": [
         "playoff_push: Bruins Push Week",
         "momentum: Bruins Heating Up"
       ],
       "Other": [
+        "playoff_push: Playoff Push",
         "player_movement: System Shuffle",
         "league_moment: Madrid Derby"
       ]
     },
-    "droppedCandidatesReasons": [],
-    "totalBeforeCap": 4,
-    "totalAfterCap": 4,
+    "droppedCandidatesReasons": [
+      {
+        "id": "playoff_push_clinch_fallback_nhl_2025021083",
+        "kind": "playoff_push",
+        "region": "NewEngland",
+        "title": "Playoff Push",
+        "reason": "max 1 playoff_push per region (NewEngland)"
+      }
+    ],
+    "totalBeforeCap": 7,
+    "totalAfterCap": 6,
     "playerMovement": {
       "rawMovementCandidates": 1,
       "movementAfterRegionFilter": 1,
@@ -48,7 +64,6 @@
           "CGY",
           "EDM",
           "VAN",
-          "PHI",
           "DET",
           "MTL",
           "NYI",
@@ -71,19 +86,19 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 646,
+        "playersIngested": 643,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-19T01:11:19.429Z"
+        "timestamp": "2026-03-19T21:10:08.513Z"
       },
-      "cacheHistoryCount": 782,
+      "cacheHistoryCount": 783,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 4,
-    "candidateCountAfterCap": 4,
+    "candidateCountBeforeCap": 7,
+    "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -269.1887302777778,
+      "hoursUntil": -289.16903138888887,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -99,10 +114,13 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 0,
-      "clinchAfterRegionFilter": 0,
-      "clinchFinalCount": 0,
-      "clinchGatedOut": []
+      "rawClinchCandidates": 1,
+      "clinchAfterRegionFilter": 1,
+      "clinchFinalCount": 1,
+      "clinchGatedOut": [
+        "Boston Bruins: before Mar 25, 82 pts < 95",
+        "Anaheim Ducks: before Mar 25, 78 pts < 95"
+      ]
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
@@ -120,9 +138,24 @@
           "reason": "5 followed/affiliate teams playing tonight"
         },
         {
+          "label": "[clinch_watch] Playoff Stakes",
+          "score": 190,
+          "reason": "clinch_watch involving followed team(s): Stormers"
+        },
+        {
           "label": "[playoff_push] Your Team's Push",
           "score": 170,
           "reason": "playoff_push involving followed team(s): Boston Bruins"
+        },
+        {
+          "label": "[playoff_push] Your Team's Push",
+          "score": 170,
+          "reason": "playoff_push involving followed team(s): Boston Bruins"
+        },
+        {
+          "label": "[playoff_push] Your Team's Push",
+          "score": 170,
+          "reason": "playoff_push involving followed team(s): Anaheim Ducks"
         },
         {
           "label": "[momentum] Hot Streak",
@@ -142,6 +175,13 @@
       ]
     },
     "videoSelection": {
+      "clinch_watch_rugby-urc-pvsg7j": {
+        "searchQuery": "Dragons clinch playoff berth March 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
+        "rejectedForAgeCount": 0
+      },
       "playoff_push_newengland": {
         "searchQuery": "Boston Bruins playoff push March 2026",
         "selectedVideoTitle": null,
@@ -151,21 +191,61 @@
       },
       "momentum_bos": {
         "searchQuery": "Boston Bruins highlights March 2026",
-        "selectedVideoTitle": "Sharks vs. Oilers | NHL Highlights | March 17, 2026",
-        "selectedVideoPublishedAt": "13 hours ago",
+        "selectedVideoTitle": "MARCHAND MADNESS | 37 Minutes of the BEST Brad Marchand Goals",
+        "selectedVideoPublishedAt": "6 hours ago",
         "selectedVideoChannel": "NHL",
+        "rejectedForAgeCount": 0
+      },
+      "playoff_push_clinch_fallback_nhl_2025021098": {
+        "searchQuery": "Anaheim Ducks playoff push March 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
       "league_moment_rivalry": {
         "searchQuery": "Madrid Derby sports March 2026",
-        "selectedVideoTitle": "Courtois Injury Scare Real Madrid Beat Manchester City UCL 2026, Courtois Injury News UCL 2026",
-        "selectedVideoPublishedAt": "11 hours ago",
-        "selectedVideoChannel": "LatestUpdate ",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
+    {
+      "id": "clinch_watch_rugby-urc-pvsg7j",
+      "title": "Clinch Watch",
+      "subtitle": "Can clinch home quarterfinal in the next 48h",
+      "impact": {
+        "label": "Impacts: Saturday Warm-Up",
+        "ritualId": "saturday_sunrise",
+        "tabHint": "Watch"
+      },
+      "priority": 92,
+      "triggeredAt": "2026-03-19T21:10:08.513Z",
+      "expiresAt": "2026-03-21T21:30:00.000Z",
+      "kind": "clinch_watch",
+      "region": "SouthAfrica",
+      "regionPriority": 1,
+      "regionLabel": "South Africa",
+      "meta": {
+        "source": "team_config",
+        "conditionLabel": "Can clinch home quarterfinal",
+        "sport": "rugby",
+        "league": "URC",
+        "awayTeam": "Dragons",
+        "homeTeam": "Stormers",
+        "startTime": "2026-03-21T17:30:00.000Z",
+        "eventIds": [
+          "rugby-urc-pvsg7j"
+        ],
+        "reason": "Stormers have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
+      },
+      "sports": [
+        "rugby"
+      ]
+    },
     {
       "id": "playoff_push_newengland",
       "title": "Bruins Push Week",
@@ -176,8 +256,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-19T01:11:19.429Z",
-      "expiresAt": "2026-03-26T01:11:19.429Z",
+      "triggeredAt": "2026-03-19T21:10:08.513Z",
+      "expiresAt": "2026-03-26T21:10:08.513Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -200,8 +280,8 @@
           "nhl_2025021135"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-19T01:11:19.429Z",
-        "windowEnd": "2026-03-26T01:11:19.429Z",
+        "windowStart": "2026-03-19T21:10:08.513Z",
+        "windowEnd": "2026-03-26T21:10:08.513Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -218,8 +298,8 @@
         "tabHint": "Rituals"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-19T01:11:19.429Z",
-      "expiresAt": "2026-03-22T01:11:19.429Z",
+      "triggeredAt": "2026-03-19T21:10:08.513Z",
+      "expiresAt": "2026-03-22T21:10:08.513Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -263,40 +343,65 @@
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=WfA4Xxv3h90",
-        "thumbnailUrl": "https://img.youtube.com/vi/WfA4Xxv3h90/hqdefault.jpg",
-        "durationSeconds": 694,
-        "title": "Sharks vs. Oilers | NHL Highlights | March 17, 2026",
+        "url": "https://www.youtube.com/watch?v=VKF7u1OEg2E",
+        "thumbnailUrl": "https://img.youtube.com/vi/VKF7u1OEg2E/hqdefault.jpg",
+        "durationSeconds": 2221,
+        "title": "MARCHAND MADNESS | 37 Minutes of the BEST Brad Marchand Goals",
         "source": "youtube",
         "channel": "NHL",
-        "publishedAt": "13 hours ago"
+        "publishedAt": "6 hours ago"
       }
+    },
+    {
+      "id": "playoff_push_clinch_fallback_nhl_2025021098",
+      "title": "Playoff Push",
+      "subtitle": "A win keeps Anaheim Ducks in the playoff race.",
+      "impact": {
+        "label": "Impacts: Family Game Night",
+        "ritualId": "friday_lights",
+        "tabHint": "Watch"
+      },
+      "priority": 90,
+      "triggeredAt": "2026-03-19T21:10:08.513Z",
+      "expiresAt": "2026-03-21T06:00:00.000Z",
+      "kind": "playoff_push",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "teams": [
+          {
+            "team": "Anaheim Ducks",
+            "league": "NHL"
+          }
+        ],
+        "eventIds": [
+          "nhl_2025021098"
+        ],
+        "reason": "Anaheim Ducks has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
+        "clinchFallback": true
+      },
+      "sports": [
+        "hockey"
+      ]
     },
     {
       "id": "player_movement_system",
       "title": "System Shuffle",
-      "subtitle": "25 player moves detected (SJS ↔ WSH ↔ CHI ↔ MIN ↔ WPG ↔ BUF ↔ VGK ↔ FLA ↔ STL ↔ DET ↔ NSH ↔ COL ↔ EDM ↔ NYI ↔ TOR ↔ LAK ↔ PHI ↔ SEA ↔ TBL ↔ CGY ↔ CAR ↔ ANA ↔ DAL ↔ VAN ↔ CBJ)",
+      "subtitle": "24 player moves detected (CHI ↔ MIN ↔ WPG ↔ BUF ↔ VGK ↔ FLA ↔ STL ↔ DET ↔ NSH ↔ COL ↔ WSH ↔ EDM ↔ NYI ↔ TOR ↔ LAK ↔ PHI ↔ SEA ↔ TBL ↔ CGY ↔ CAR ↔ ANA ↔ DAL ↔ VAN ↔ CBJ)",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-03-19T01:11:19.429Z",
-      "expiresAt": "2026-03-26T01:11:19.429Z",
+      "triggeredAt": "2026-03-19T21:10:08.513Z",
+      "expiresAt": "2026-03-26T21:10:08.513Z",
       "kind": "player_movement",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "movements": [
-          {
-            "player": "T. Liljegren",
-            "from": "SJS",
-            "to": "WSH",
-            "detected": "2026-03-12T05:03:52.662Z",
-            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-            "firstSeenTo": "2026-03-12T05:03:52.662Z"
-          },
           {
             "player": "N. Foligno",
             "from": "CHI",
@@ -490,8 +595,8 @@
             "firstSeenTo": "2026-03-18T18:00:38.134Z"
           }
         ],
-        "count": 25,
-        "reason": "25 player(s) detected moving between tracked teams in the last 7 days"
+        "count": 24,
+        "reason": "24 player(s) detected moving between tracked teams in the last 7 days"
       },
       "sports": [
         "hockey"
@@ -506,8 +611,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-19T01:11:19.429Z",
-      "expiresAt": "2026-03-26T01:11:19.429Z",
+      "triggeredAt": "2026-03-19T21:10:08.513Z",
+      "expiresAt": "2026-03-26T21:10:08.513Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -534,16 +639,7 @@
       },
       "sports": [
         "soccer"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=6cSwKto5TX0",
-        "thumbnailUrl": "https://img.youtube.com/vi/6cSwKto5TX0/hqdefault.jpg",
-        "durationSeconds": 70,
-        "title": "Courtois Injury Scare Real Madrid Beat Manchester City UCL 2026, Courtois Injury News UCL 2026",
-        "source": "youtube",
-        "channel": "LatestUpdate ",
-        "publishedAt": "11 hours ago"
-      }
+      ]
     }
   ],
   "tonightStory": {

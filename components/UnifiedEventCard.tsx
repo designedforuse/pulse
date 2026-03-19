@@ -947,43 +947,56 @@ export default function UnifiedEventCard({
 
         {!showEspnStyle && (
           <View style={uStyles.footer}>
-            <View style={uStyles.footerLeft}>
-              {isRacing && isLive ? (
-                <Text style={uStyles.clockText}>
-                  {score?.racingLap || score?.racingStatus || "In Progress"}
-                </Text>
-              ) : isRacing && isFinal ? (
-                <Text style={uStyles.finalStatus}>
-                  {score?.racingLeader ? "Winner" : "Final"}
-                </Text>
-              ) : isGolf && isLive && score?.golfLeaderThru ? (
-                <Text style={uStyles.clockText}>{score.golfLeaderThru}</Text>
-              ) : isLive && !isGolf && displayClockText ? (
-                <View style={{ alignSelf: "flex-start" }}>
-                  <Text style={uStyles.clockText}>{displayClockText}</Text>
-                  {!displayClockText.startsWith("Started") && <LiveScanBar color="#1CB0F6" />}
+            {isLive ? (
+              <>
+                <View style={uStyles.footerLeft}>
+                  <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
                 </View>
-              ) : isFinal ? (
-                <Text style={uStyles.finalStatus}>Final</Text>
-              ) : (
-                <>
-                  <Text style={uStyles.timeText}>@ {timeStr}</Text>
-                  {showCountdown && (
-                    <Text style={uStyles.countdownText}>
-                      {formatTimeUntilStart(event.startTimeLocal, now)}
-                    </Text>
+                <View style={uStyles.footerRight}>
+                  {tensionLabel && (
+                    <View style={uStyles.tensionTag}>
+                      <Text style={uStyles.tensionTagText}>{tensionLabel}</Text>
+                    </View>
                   )}
-                </>
-              )}
-            </View>
-            <View style={uStyles.footerRight}>
-              {tensionLabel && (
-                <View style={uStyles.tensionTag}>
-                  <Text style={uStyles.tensionTagText}>{tensionLabel}</Text>
+                  {isRacing ? (
+                    <Text style={uStyles.clockText}>
+                      {score?.racingLap || score?.racingStatus || "In Progress"}
+                    </Text>
+                  ) : isGolf && score?.golfLeaderThru ? (
+                    <Text style={uStyles.clockText}>{score.golfLeaderThru}</Text>
+                  ) : displayClockText ? (
+                    <View style={{ alignSelf: "flex-end" }}>
+                      <Text style={uStyles.clockText}>{displayClockText}</Text>
+                      {!displayClockText.startsWith("Started") && <LiveScanBar color="#1CB0F6" />}
+                    </View>
+                  ) : null}
                 </View>
-              )}
-              <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
-            </View>
+              </>
+            ) : (
+              <>
+                <View style={uStyles.footerLeft}>
+                  {isRacing && isFinal ? (
+                    <Text style={uStyles.finalStatus}>
+                      {score?.racingLeader ? "Winner" : "Final"}
+                    </Text>
+                  ) : isFinal ? (
+                    <Text style={uStyles.finalStatus}>Final</Text>
+                  ) : (
+                    <>
+                      <Text style={uStyles.timeText}>@ {timeStr}</Text>
+                      {showCountdown && (
+                        <Text style={uStyles.countdownText}>
+                          {formatTimeUntilStart(event.startTimeLocal, now)}
+                        </Text>
+                      )}
+                    </>
+                  )}
+                </View>
+                <View style={uStyles.footerRight}>
+                  <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
+                </View>
+              </>
+            )}
           </View>
         )}
       </Animated.View>
