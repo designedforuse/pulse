@@ -43,6 +43,7 @@ export interface SportEvent {
   tennisPlayer1Flag?: string;
   tennisPlayer2Flag?: string;
   tournamentName?: string;
+  roundLabel?: string;
 }
 
 export interface Pack {

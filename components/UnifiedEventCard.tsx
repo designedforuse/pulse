@@ -140,22 +140,12 @@ function getPhaseChipLabel(event: SportEvent, score: ScoreData | undefined, isLi
     if (/group/i.test(r)) return r.replace(/Group\s*/i, "Grp ");
     return r.substring(0, 6);
   }
-  if (isLive && score?.period) {
-    const p = score.period.trim();
-    if (/^(1st|2nd|3rd|4th|ot|so|overtime|shootout|1st half|2nd half|ht|ft|et)/i.test(p)) {
-      if (/overtime/i.test(p)) return "OT";
-      if (/shootout/i.test(p)) return "SO";
-      if (/1st half/i.test(p)) return "1H";
-      if (/2nd half/i.test(p)) return "2H";
-      if (/^ht$/i.test(p)) return "HT";
-      if (/^ft$/i.test(p)) return "FT";
-      if (/^et$/i.test(p)) return "ET";
-      if (p.length <= 4) return p.toUpperCase();
-      return p.substring(0, 4);
-    }
-    if (p.length <= 6) return p;
-  }
+  if (event.roundLabel) return event.roundLabel;
   return null;
+}
+
+function isGreyPhaseChip(event: SportEvent): boolean {
+  return !!(event.tennisRound || event.roundLabel);
 }
 
 function getPhaseChipPriority(event: SportEvent): number {
@@ -764,7 +754,7 @@ export default function UnifiedEventCard({
               </View>
             )}
             {!isRacing && !isGolf && !isAthletics && phaseLabel && (
-              <PhaseChip label={phaseLabel} sportColor={sportColor} isHot={isHotPhase} grey={isTennis} />
+              <PhaseChip label={phaseLabel} sportColor={sportColor} isHot={isHotPhase} grey={isGreyPhaseChip(event)} />
             )}
             <View style={{ flex: 1 }} />
             {featured && (

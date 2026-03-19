@@ -13,6 +13,7 @@ export interface AppEvent {
   source: string;
   leagueKey?: string;
   providerReason?: string;
+  roundLabel?: string;
 }
 
 interface VEvent {

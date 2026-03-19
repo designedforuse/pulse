@@ -19,6 +19,22 @@ interface EspnEvent {
   name: string;
   date: string;
   competitions: EspnCompetition[];
+  notes?: { headline?: string; type?: string }[];
+}
+
+function extractRoundLabel(espnEvent: EspnEvent): string | undefined {
+  const note = espnEvent.notes?.find(n => n.headline);
+  if (!note?.headline) return undefined;
+  const h = note.headline.trim();
+  if (/group stage/i.test(h)) return "Group Stage";
+  if (/round of 16/i.test(h)) return "R16";
+  if (/quarter.?final/i.test(h)) return "QF";
+  if (/semi.?final/i.test(h)) return "SF";
+  if (/^final$/i.test(h)) return "Final";
+  if (/knockout/i.test(h)) return "KO";
+  if (/leg 1/i.test(h)) return h.replace(/leg 1/i, "Leg 1").trim();
+  if (/leg 2/i.test(h)) return h.replace(/leg 2/i, "Leg 2").trim();
+  return h.length <= 12 ? h : undefined;
 }
 
 function addDuration(isoString: string, minutes: number): string {
@@ -97,6 +113,7 @@ export async function fetchChampionsLeagueEvents(): Promise<SoccerFetchResult> {
       if (seenIds.has(id)) continue;
       seenIds.add(id);
 
+      const roundLabel = extractRoundLabel(espnEvent);
       events.push({
         id,
         sport: "soccer",
@@ -110,6 +127,7 @@ export async function fetchChampionsLeagueEvents(): Promise<SoccerFetchResult> {
         source: "soccer-championsleague",
         leagueKey: "championsleague",
         providerReason: "ucl-yttv",
+        ...(roundLabel ? { roundLabel } : {}),
       });
     }
 
