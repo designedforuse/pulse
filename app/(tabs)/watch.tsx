@@ -1686,7 +1686,8 @@ const styles = StyleSheet.create({
   headerLeft: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 18,
+    gap: 8,
+    flex: 1,
   },
   brandPill: {
     borderRadius: 18,
@@ -1702,7 +1703,7 @@ const styles = StyleSheet.create({
   headerStats: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 18,
+    gap: 8,
   },
   statChip: {
     flexDirection: "row",
@@ -1721,6 +1722,7 @@ const styles = StyleSheet.create({
   },
   settingsButton: {
     padding: 6,
+    flexShrink: 0,
   },
 
   chaosSection: {
