@@ -849,7 +849,7 @@ export default function UnifiedEventCard({
               isLive={isLive}
               isFinal={isFinal}
               featured={featured}
-              scoreColor="#1CB0F6"
+              scoreColor="#FFFFFF"
             />
           ) : showEspnStyle ? (
             <View>
@@ -1179,7 +1179,7 @@ const uStyles = StyleSheet.create({
     fontFamily: "Inter_500Medium",
   },
   scoreLive: {
-    color: "#1CB0F6",
+    color: "#FFFFFF",
   },
   fallbackMatchup: {
     fontSize: 15,
@@ -1339,7 +1339,7 @@ const uStyles = StyleSheet.create({
   clockText: {
     fontSize: 13,
     fontFamily: "Inter_600SemiBold",
-    color: "#1CB0F6",
+    color: Colors.textPrimary,
   },
   finalStatus: {
     fontSize: 13,
