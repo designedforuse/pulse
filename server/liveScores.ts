@@ -962,11 +962,21 @@ async function fetchTennisScores(
             }
           }
 
+          const statusDetail = comp.status?.type?.description || comp.status?.type?.detail || "";
+
           let tennisServer: 1 | 2 | undefined;
           if (c1.isServing) tennisServer = 1;
           else if (c2.isServing) tennisServer = 2;
-
-          const statusDetail = comp.status?.type?.description || comp.status?.type?.detail || "";
+          if (!tennisServer && isLive && statusDetail.includes("*")) {
+            const asteriskMatch = statusDetail.match(/(\w+)\*/);
+            if (asteriskMatch) {
+              const surname = asteriskMatch[1].toLowerCase();
+              const name1 = (c1.athlete?.displayName || c1.athlete?.shortName || "").toLowerCase();
+              const name2 = (c2.athlete?.displayName || c2.athlete?.shortName || "").toLowerCase();
+              if (name1.includes(surname)) tennisServer = 1;
+              else if (name2.includes(surname)) tennisServer = 2;
+            }
+          }
 
           let tennisWinner: 1 | 2 | undefined;
           if (isPost) {
