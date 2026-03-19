@@ -381,7 +381,7 @@ export function TennisScoreboard({
                       tsStyles.setScore,
                       isSetWinner && tsStyles.setScoreWon,
                       isCurrentSet && isLive && tsStyles.setScoreCurrent,
-                      isCurrentSet && isLive && { color: sportColor },
+                      isCurrentSet && isLive && { color: "#A78BFA" },
                     ]}
                   >
                     {val}
@@ -396,7 +396,7 @@ export function TennisScoreboard({
             })}
             {gameScore && isLive && (
               <View style={[tsStyles.setScoreCell, tsStyles.gameScoreCell]}>
-                <Text style={[tsStyles.gameScore, isLive && tsStyles.gameScoreLive, isLive && { color: sportColor }]}>
+                <Text style={[tsStyles.gameScore, isLive && tsStyles.gameScoreLive, isLive && { color: "#A78BFA" }]}>
                   {playerNum === 1 ? gameScore.p1 : gameScore.p2}
                 </Text>
               </View>
@@ -404,7 +404,7 @@ export function TennisScoreboard({
           </View>
         )}
         {!hasScoreData && isLive && (
-          <Text style={[tsStyles.liveNow, { color: sportColor }]}>Live</Text>
+          <Text style={[tsStyles.liveNow, { color: "#A78BFA" }]}>Live</Text>
         )}
         {!hasScoreData && isFinal && score && (
           <Text style={tsStyles.finalSetsText}>
