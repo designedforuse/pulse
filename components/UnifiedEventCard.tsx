@@ -1339,7 +1339,7 @@ const uStyles = StyleSheet.create({
   clockText: {
     fontSize: 13,
     fontFamily: "Inter_600SemiBold",
-    color: Colors.textPrimary,
+    color: "#1CB0F6",
   },
   finalStatus: {
     fontSize: 13,
