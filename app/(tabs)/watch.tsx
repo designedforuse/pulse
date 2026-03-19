@@ -1251,7 +1251,7 @@ export default function WatchScreen() {
               end={{ x: 1, y: 0 }}
               style={styles.brandPill}
             >
-              <Text style={styles.brandPillText}>SPORTS WATCH</Text>
+              <Text style={styles.brandPillText}>PULSE</Text>
             </LinearGradient>
 
             <View style={styles.headerStats}>

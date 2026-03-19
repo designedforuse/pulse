@@ -540,7 +540,7 @@ export default function SettingsScreen() {
             <SettingsRow
               icon="trophy-outline"
               label="App Name"
-              value="Sports Watch"
+              value="Pulse"
             />
             <View style={styles.divider} />
             <SettingsRow
