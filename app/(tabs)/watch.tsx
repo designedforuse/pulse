@@ -1251,6 +1251,7 @@ export default function WatchScreen() {
               end={{ x: 1, y: 0 }}
               style={styles.brandPill}
             >
+              <Ionicons name="pulse" size={14} color="#fff" />
               <Text style={styles.brandPillText}>PULSE</Text>
             </LinearGradient>
 
@@ -1693,6 +1694,9 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     paddingHorizontal: 11,
     paddingVertical: 6,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
   },
   brandPillText: {
     fontSize: 11,
