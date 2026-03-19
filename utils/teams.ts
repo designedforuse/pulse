@@ -566,7 +566,12 @@ export function displayTeamName(team: string, league?: string): string {
   if (league === "Japan League One") {
     return JL_SHORT_NAMES[team] || team;
   }
-  return SHORT_NAMES[team] || team;
+  if (SHORT_NAMES[team]) return SHORT_NAMES[team];
+  if (league === "NCAAB") {
+    const words = team.trim().split(" ");
+    if (words.length >= 2) return words[words.length - 1];
+  }
+  return team;
 }
 
 export function compactTeamName(team: string, league?: string): string {
@@ -575,6 +580,10 @@ export function compactTeamName(team: string, league?: string): string {
   }
   if (COMPACT_NAMES[team]) return COMPACT_NAMES[team];
   if (SHORT_NAMES[team]) return SHORT_NAMES[team];
+  if (league === "NCAAB") {
+    const words = team.trim().split(" ");
+    if (words.length >= 2) return words[words.length - 1];
+  }
   // Fallback: for long unmapped names, return just the last word (the nickname)
   if (team.length > 12) {
     const words = team.trim().split(" ");
