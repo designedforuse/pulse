@@ -291,7 +291,7 @@ export function TennisScoreboard({
   isLive,
   isFinal,
   featured,
-  scoreColor = "#A78BFA",
+  scoreColor = "#FFFFFF",
 }: {
   event: SportEvent;
   score?: ScoreData;
