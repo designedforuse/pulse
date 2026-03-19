@@ -341,9 +341,6 @@ export function TennisScoreboard({
           <View style={[tsStyles.flag, { width: logoSize, height: Math.round(logoSize * 0.7) }]} />
         )}
         <View style={tsStyles.nameContainer}>
-          {isServing && isLive && (
-            <View style={[tsStyles.servingDot, { backgroundColor: scoreColor }]} />
-          )}
           <Text
             style={[
               tsStyles.playerName,
@@ -358,6 +355,9 @@ export function TennisScoreboard({
               <Text style={[tsStyles.rankText, { color: sportColor }]}>{` (${rank})`}</Text>
             ) : null}
           </Text>
+          {isServing && isLive && (
+            <View style={[tsStyles.servingDot, { backgroundColor: scoreColor }]} />
+          )}
         </View>
         {hasScoreData && (
           <View style={tsStyles.setsContainer}>
