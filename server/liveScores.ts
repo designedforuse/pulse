@@ -1170,15 +1170,15 @@ async function fetchNbaScores(eventIds: string[]): Promise<Record<string, ScoreD
             const clock = comp.status?.displayClock || "";
             const periodNum = comp.status?.period || 0;
             let period = "Live";
-            const ordinals = ["", "1st", "2nd", "3rd", "4th"];
-            if (periodNum >= 1 && periodNum <= 4) period = ordinals[periodNum];
+            const quarters = ["", "Q1", "Q2", "Q3", "Q4"];
+            if (periodNum >= 1 && periodNum <= 4) period = quarters[periodNum];
             else if (periodNum === 5) period = "OT";
             else if (periodNum > 5) period = `${periodNum - 4}OT`;
 
             scores[eventId] = {
               awayScore: parseInt(awayComp.score || "0", 10),
               homeScore: parseInt(homeComp.score || "0", 10),
-              period: clock ? `${period} ${clock}` : period,
+              period: clock ? `${period} · ${clock}` : period,
               status: "live",
             };
           } else if (statusState === "post") {
