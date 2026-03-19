@@ -502,7 +502,7 @@ function ChaosCard({
           {isLiveState && (
             <View style={styles.liveChipSmall}>
               <LiveDot />
-              <Text style={styles.liveTextSmall}>LIVE</Text>
+              <Text style={styles.liveTextSmall}>{tensionRank >= 3 ? "HIGH TENSION" : "LIVE"}</Text>
             </View>
           )}
           {isFinalState && (
