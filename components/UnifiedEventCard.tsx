@@ -689,10 +689,10 @@ export default function UnifiedEventCard({
           : null;
 
   const liveTensionColor =
-    isLive && tensionRank >= 4 ? "#0284C7"
+    isLive && tensionRank >= 4 ? "#00B4FF"
       : isLive && tensionRank === 3 ? "#0EA5E9"
         : isLive && tensionRank === 2 ? "#38BDF8"
-          : "#1CB0F6";
+          : "rgba(28,176,246,0.35)";
 
   const awayName = event.tennisPlayer1 || compactTeamName(event.awayTeam, event.league);
   const homeName = event.tennisPlayer2 || compactTeamName(event.homeTeam, event.league);
