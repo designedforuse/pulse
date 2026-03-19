@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-19T21:10:08.513Z",
+  "lastUpdated": "2026-03-19T22:21:20.583Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -10,10 +10,13 @@
         "NewEngland": 1
       },
       "league_moment": {
-        "Other": 1
+        "SouthAfrica": 1
       },
       "player_movement": {
         "Other": 1
+      },
+      "rivalry_game": {
+        "SouthAfrica": 1
       },
       "clinch_watch": {
         "SouthAfrica": 1
@@ -24,16 +27,16 @@
     },
     "finalFeedByRegion": {
       "SouthAfrica": [
-        "clinch_watch: Clinch Watch"
+        "rivalry_game: Rivalry Game Tomorrow",
+        "clinch_watch: Clinch Watch",
+        "league_moment: Rivalry Weekend"
       ],
       "NewEngland": [
         "playoff_push: Bruins Push Week",
         "momentum: Bruins Heating Up"
       ],
       "Other": [
-        "playoff_push: Playoff Push",
-        "player_movement: System Shuffle",
-        "league_moment: Madrid Derby"
+        "playoff_push: Playoff Push"
       ]
     },
     "droppedCandidatesReasons": [
@@ -43,16 +46,25 @@
         "region": "NewEngland",
         "title": "Playoff Push",
         "reason": "max 1 playoff_push per region (NewEngland)"
+      },
+      {
+        "id": "player_movement_system",
+        "kind": "player_movement",
+        "region": "Other",
+        "title": "System Shuffle",
+        "reason": "feed cap (max 6)"
       }
     ],
-    "totalBeforeCap": 7,
+    "totalBeforeCap": 8,
     "totalAfterCap": 6,
     "playerMovement": {
       "rawMovementCandidates": 1,
       "movementAfterRegionFilter": 1,
-      "movementAfterCap": 1,
-      "movementFinalCount": 1,
-      "movementDroppedReasons": [],
+      "movementAfterCap": 0,
+      "movementFinalCount": 0,
+      "movementDroppedReasons": [
+        "feed cap (max 6)"
+      ],
       "runMeta": {
         "observedTeams": [
           "ANA",
@@ -88,24 +100,24 @@
         ],
         "playersIngested": 643,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-19T21:10:08.513Z"
+        "timestamp": "2026-03-19T22:21:20.583Z"
       },
       "cacheHistoryCount": 783,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 7,
+    "candidateCountBeforeCap": 8,
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -289.16903138888887,
+      "hoursUntil": -290.3557175,
       "teamsEvaluated": 0,
       "triggers": {}
     },
     "rivalryGame": {
-      "rawRivalryCandidates": 0,
-      "rivalryAfterRegionFilter": 0,
-      "rivalryFinalCount": 0
+      "rawRivalryCandidates": 1,
+      "rivalryAfterRegionFilter": 1,
+      "rivalryFinalCount": 1
     },
     "upsetAlert": {
       "rawUpsetCandidates": 0,
@@ -163,6 +175,11 @@
           "reason": "momentum involving followed team(s): Boston Bruins"
         },
         {
+          "label": "[rivalry_game] Your Rivalry Night",
+          "score": 140,
+          "reason": "rivalry_game involving followed team(s): South Africa"
+        },
+        {
           "label": "[league_moment] League Spotlight",
           "score": 50,
           "reason": "league_moment (generic, no followed teams)"
@@ -175,11 +192,25 @@
       ]
     },
     "videoSelection": {
+      "rivalry_game_cricket-t20i-2vymn2": {
+        "searchQuery": "New Zealand vs South Africa rivalry highlights",
+        "selectedVideoTitle": "Yuzvendra Chahal Sensational Decision! 🚫 No Alcohol for 6 Months | PBKS Star's Big Plan for IPL 2026",
+        "selectedVideoPublishedAt": "12 hours ago",
+        "selectedVideoChannel": "ABCDCINEMA1",
+        "rejectedForAgeCount": 0
+      },
       "clinch_watch_rugby-urc-pvsg7j": {
         "searchQuery": "Dragons clinch playoff berth March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
+        "rejectedForAgeCount": 0
+      },
+      "league_moment_rivalry": {
+        "searchQuery": "Rivalry Weekend sports March 2026",
+        "selectedVideoTitle": "3v3 Pro Paintball - NXL TAMPA BAY OPEN | MARCH 19 | PRO Paintball - #paintball #tampabay",
+        "selectedVideoPublishedAt": "Streamed 38 minutes ago",
+        "selectedVideoChannel": "Major League Paintball",
         "rejectedForAgeCount": 0
       },
       "playoff_push_newengland": {
@@ -202,17 +233,50 @@
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
-      },
-      "league_moment_rivalry": {
-        "searchQuery": "Madrid Derby sports March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
+    {
+      "id": "rivalry_game_cricket-t20i-2vymn2",
+      "title": "Rivalry Game Tomorrow",
+      "subtitle": "New Zealand vs South Africa · Tomorrow at 6:15 AM",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 96,
+      "triggeredAt": "2026-03-19T22:21:20.583Z",
+      "expiresAt": "2026-03-20T10:15:00.000Z",
+      "kind": "rivalry_game",
+      "region": "SouthAfrica",
+      "regionPriority": 1,
+      "regionLabel": "South Africa",
+      "meta": {
+        "rivalryLabel": "Freedom Cup",
+        "sport": "cricket",
+        "league": "T20I Cricket",
+        "awayTeam": "New Zealand",
+        "homeTeam": "South Africa",
+        "startTime": "2026-03-20T06:15:00.000Z",
+        "eventIds": [
+          "cricket-t20i-2vymn2"
+        ],
+        "reason": "New Zealand and South Africa meet tonight in one of cricket's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
+      },
+      "sports": [
+        "cricket"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=P3qc2DujWIQ",
+        "thumbnailUrl": "https://img.youtube.com/vi/P3qc2DujWIQ/hqdefault.jpg",
+        "durationSeconds": 126,
+        "title": "Yuzvendra Chahal Sensational Decision! 🚫 No Alcohol for 6 Months | PBKS Star's Big Plan for IPL 2026",
+        "source": "youtube",
+        "channel": "ABCDCINEMA1",
+        "publishedAt": "12 hours ago"
+      }
+    },
     {
       "id": "clinch_watch_rugby-urc-pvsg7j",
       "title": "Clinch Watch",
@@ -223,7 +287,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-19T21:10:08.513Z",
+      "triggeredAt": "2026-03-19T22:21:20.583Z",
       "expiresAt": "2026-03-21T21:30:00.000Z",
       "kind": "clinch_watch",
       "region": "SouthAfrica",
@@ -247,6 +311,80 @@
       ]
     },
     {
+      "id": "league_moment_rivalry",
+      "title": "Rivalry Weekend",
+      "subtitle": "4 rivalry matchups in the next 7 days",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 70,
+      "triggeredAt": "2026-03-19T22:21:20.583Z",
+      "expiresAt": "2026-03-26T22:21:20.583Z",
+      "kind": "league_moment",
+      "region": "SouthAfrica",
+      "regionPriority": 1,
+      "regionLabel": "South Africa",
+      "meta": {
+        "type": "rivalry",
+        "matchCount": 4,
+        "rivalries": [
+          "Freedom Cup",
+          "Madrid Derby"
+        ],
+        "matches": [
+          {
+            "label": "Freedom Cup",
+            "away": "New Zealand",
+            "home": "South Africa",
+            "league": "T20I Cricket",
+            "startTime": "2026-03-20T06:15:00.000Z"
+          },
+          {
+            "label": "Freedom Cup",
+            "away": "New Zealand",
+            "home": "South Africa",
+            "league": "T20I Cricket",
+            "startTime": "2026-03-22T06:15:00.000Z"
+          },
+          {
+            "label": "Madrid Derby",
+            "away": "Atlético Madrid",
+            "home": "Real Madrid",
+            "league": "La Liga",
+            "startTime": "2026-03-22T20:00:00.000Z"
+          },
+          {
+            "label": "Freedom Cup",
+            "away": "New Zealand",
+            "home": "South Africa",
+            "league": "T20I Cricket",
+            "startTime": "2026-03-25T06:15:00.000Z"
+          }
+        ],
+        "eventIds": [
+          "cricket-t20i-2vymn2",
+          "cricket-t20i-gylsxg",
+          "soccer-laliga-20260322-2000-atl-tico-madrid-at-real-madrid",
+          "cricket-t20i-o5z0f0"
+        ],
+        "reason": "4 known rivalry matchup(s) found: Freedom Cup, Madrid Derby"
+      },
+      "sports": [
+        "cricket",
+        "soccer"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=mSPQRXHykko",
+        "thumbnailUrl": "https://img.youtube.com/vi/mSPQRXHykko/hqdefault.jpg",
+        "durationSeconds": 35755,
+        "title": "3v3 Pro Paintball - NXL TAMPA BAY OPEN | MARCH 19 | PRO Paintball - #paintball #tampabay",
+        "source": "youtube",
+        "channel": "Major League Paintball",
+        "publishedAt": "Streamed 38 minutes ago"
+      }
+    },
+    {
       "id": "playoff_push_newengland",
       "title": "Bruins Push Week",
       "subtitle": "Four games in seven days, including a back-to-back",
@@ -256,8 +394,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-19T21:10:08.513Z",
-      "expiresAt": "2026-03-26T21:10:08.513Z",
+      "triggeredAt": "2026-03-19T22:21:20.583Z",
+      "expiresAt": "2026-03-26T22:21:20.583Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -280,8 +418,8 @@
           "nhl_2025021135"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-19T21:10:08.513Z",
-        "windowEnd": "2026-03-26T21:10:08.513Z",
+        "windowStart": "2026-03-19T22:21:20.583Z",
+        "windowEnd": "2026-03-26T22:21:20.583Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -298,8 +436,8 @@
         "tabHint": "Rituals"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-19T21:10:08.513Z",
-      "expiresAt": "2026-03-22T21:10:08.513Z",
+      "triggeredAt": "2026-03-19T22:21:20.583Z",
+      "expiresAt": "2026-03-22T22:21:20.583Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -362,7 +500,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-19T21:10:08.513Z",
+      "triggeredAt": "2026-03-19T22:21:20.583Z",
       "expiresAt": "2026-03-21T06:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -383,262 +521,6 @@
       },
       "sports": [
         "hockey"
-      ]
-    },
-    {
-      "id": "player_movement_system",
-      "title": "System Shuffle",
-      "subtitle": "24 player moves detected (CHI ↔ MIN ↔ WPG ↔ BUF ↔ VGK ↔ FLA ↔ STL ↔ DET ↔ NSH ↔ COL ↔ WSH ↔ EDM ↔ NYI ↔ TOR ↔ LAK ↔ PHI ↔ SEA ↔ TBL ↔ CGY ↔ CAR ↔ ANA ↔ DAL ↔ VAN ↔ CBJ)",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 85,
-      "triggeredAt": "2026-03-19T21:10:08.513Z",
-      "expiresAt": "2026-03-26T21:10:08.513Z",
-      "kind": "player_movement",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "movements": [
-          {
-            "player": "N. Foligno",
-            "from": "CHI",
-            "to": "MIN",
-            "detected": "2026-03-13T04:29:52.527Z",
-            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
-            "firstSeenTo": "2026-03-13T04:29:52.527Z"
-          },
-          {
-            "player": "L. Schenn",
-            "from": "WPG",
-            "to": "BUF",
-            "detected": "2026-03-13T04:29:52.527Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-13T04:29:52.527Z"
-          },
-          {
-            "player": "T. Pearson",
-            "from": "WPG",
-            "to": "BUF",
-            "detected": "2026-03-13T04:29:52.527Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-13T04:29:52.527Z"
-          },
-          {
-            "player": "C. Reinhardt",
-            "from": "VGK",
-            "to": "FLA",
-            "detected": "2026-03-13T04:29:52.527Z",
-            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
-            "firstSeenTo": "2026-03-13T04:29:52.527Z"
-          },
-          {
-            "player": "J. Faulk",
-            "from": "STL",
-            "to": "DET",
-            "detected": "2026-03-14T06:00:32.337Z",
-            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
-            "firstSeenTo": "2026-03-14T06:00:32.337Z"
-          },
-          {
-            "player": "N. Blankenburg",
-            "from": "NSH",
-            "to": "COL",
-            "detected": "2026-03-14T06:00:32.337Z",
-            "lastSeenFrom": "2026-03-07T07:19:00.761Z",
-            "firstSeenTo": "2026-03-14T06:00:32.337Z"
-          },
-          {
-            "player": "N. Dowd",
-            "from": "WSH",
-            "to": "VGK",
-            "detected": "2026-03-14T18:00:34.353Z",
-            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
-            "firstSeenTo": "2026-03-14T06:00:32.337Z"
-          },
-          {
-            "player": "C. Murphy",
-            "from": "CHI",
-            "to": "EDM",
-            "detected": "2026-03-14T18:00:34.353Z",
-            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-            "firstSeenTo": "2026-03-09T20:15:48.605Z"
-          },
-          {
-            "player": "J. Dickinson",
-            "from": "CHI",
-            "to": "EDM",
-            "detected": "2026-03-14T18:00:34.353Z",
-            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
-            "firstSeenTo": "2026-03-09T20:15:48.605Z"
-          },
-          {
-            "player": "C. Dach",
-            "from": "CHI",
-            "to": "EDM",
-            "detected": "2026-03-14T18:00:34.353Z",
-            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-            "firstSeenTo": "2026-03-09T20:15:48.605Z"
-          },
-          {
-            "player": "B. Schenn",
-            "from": "STL",
-            "to": "NYI",
-            "detected": "2026-03-15T18:00:32.932Z",
-            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
-            "firstSeenTo": "2026-03-14T06:00:32.337Z"
-          },
-          {
-            "player": "S. Laughton",
-            "from": "TOR",
-            "to": "LAK",
-            "detected": "2026-03-15T18:00:32.932Z",
-            "lastSeenFrom": "2026-03-03T03:50:51.829Z",
-            "firstSeenTo": "2026-03-11T04:11:44.394Z"
-          },
-          {
-            "player": "B. Brink",
-            "from": "PHI",
-            "to": "MIN",
-            "detected": "2026-03-15T18:00:32.932Z",
-            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
-            "firstSeenTo": "2026-03-07T20:12:59.450Z"
-          },
-          {
-            "player": "B. McMann",
-            "from": "TOR",
-            "to": "SEA",
-            "detected": "2026-03-15T18:00:32.932Z",
-            "lastSeenFrom": "2026-03-03T03:50:51.829Z",
-            "firstSeenTo": "2026-03-15T18:00:32.932Z"
-          },
-          {
-            "player": "J. Drouin",
-            "from": "NYI",
-            "to": "STL",
-            "detected": "2026-03-16T18:00:40.098Z",
-            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
-            "firstSeenTo": "2026-03-15T18:00:32.932Z"
-          },
-          {
-            "player": "C. Perry",
-            "from": "LAK",
-            "to": "TBL",
-            "detected": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
-            "firstSeenTo": "2026-03-18T18:00:38.134Z"
-          },
-          {
-            "player": "N. Kadri",
-            "from": "CGY",
-            "to": "COL",
-            "detected": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-14T06:00:32.337Z"
-          },
-          {
-            "player": "N. Deslauriers",
-            "from": "PHI",
-            "to": "CAR",
-            "detected": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-18T18:00:38.134Z"
-          },
-          {
-            "player": "R. Strome",
-            "from": "ANA",
-            "to": "CGY",
-            "detected": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
-            "firstSeenTo": "2026-03-18T18:00:38.134Z"
-          },
-          {
-            "player": "M. Bunting",
-            "from": "NSH",
-            "to": "DAL",
-            "detected": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-07T07:19:00.761Z",
-            "firstSeenTo": "2026-03-18T18:00:38.134Z"
-          },
-          {
-            "player": "A. Mangiapane",
-            "from": "EDM",
-            "to": "CHI",
-            "detected": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
-            "firstSeenTo": "2026-03-15T18:00:32.932Z"
-          },
-          {
-            "player": "N. Roy",
-            "from": "TOR",
-            "to": "COL",
-            "detected": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
-            "firstSeenTo": "2026-03-14T06:00:32.337Z"
-          },
-          {
-            "player": "C. Garland",
-            "from": "VAN",
-            "to": "CBJ",
-            "detected": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-15T18:00:32.932Z"
-          },
-          {
-            "player": "L. Stanley",
-            "from": "WPG",
-            "to": "BUF",
-            "detected": "2026-03-18T18:00:38.134Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-18T18:00:38.134Z"
-          }
-        ],
-        "count": 24,
-        "reason": "24 player(s) detected moving between tracked teams in the last 7 days"
-      },
-      "sports": [
-        "hockey"
-      ]
-    },
-    {
-      "id": "league_moment_rivalry",
-      "title": "Madrid Derby",
-      "subtitle": "Madrid Derby: Atlético Madrid @ Real Madrid",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 70,
-      "triggeredAt": "2026-03-19T21:10:08.513Z",
-      "expiresAt": "2026-03-26T21:10:08.513Z",
-      "kind": "league_moment",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "type": "rivalry",
-        "matchCount": 1,
-        "rivalries": [
-          "Madrid Derby"
-        ],
-        "matches": [
-          {
-            "label": "Madrid Derby",
-            "away": "Atlético Madrid",
-            "home": "Real Madrid",
-            "league": "La Liga",
-            "startTime": "2026-03-22T20:00:00.000Z"
-          }
-        ],
-        "eventIds": [
-          "soccer-laliga-20260322-2000-atl-tico-madrid-at-real-madrid"
-        ],
-        "reason": "1 known rivalry matchup(s) found: Madrid Derby"
-      },
-      "sports": [
-        "soccer"
       ]
     }
   ],

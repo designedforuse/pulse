@@ -377,21 +377,21 @@
   },
   "league_moment:rivalry weekend sports march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=-9YyvqScB0U",
-      "thumbnailUrl": "https://img.youtube.com/vi/-9YyvqScB0U/hqdefault.jpg",
-      "durationSeconds": 370,
-      "title": "Sports influencer Ryan Hammer on March Madness bracket tips, sleeper teams & the Illini",
+      "url": "https://www.youtube.com/watch?v=mSPQRXHykko",
+      "thumbnailUrl": "https://img.youtube.com/vi/mSPQRXHykko/hqdefault.jpg",
+      "durationSeconds": 35755,
+      "title": "3v3 Pro Paintball - NXL TAMPA BAY OPEN | MARCH 19 | PRO Paintball - #paintball #tampabay",
       "source": "youtube",
-      "channel": "FOX 32 Chicago",
-      "publishedAt": "56 minutes ago"
+      "channel": "Major League Paintball",
+      "publishedAt": "Streamed 38 minutes ago"
     },
-    "fetchedAt": "2026-03-16T18:00:53.380Z",
+    "fetchedAt": "2026-03-19T22:21:30.551Z",
     "query": "Rivalry Weekend sports March 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports March 2026",
-      "selectedVideoTitle": "Sports influencer Ryan Hammer on March Madness bracket tips, sleeper teams & the Illini",
-      "selectedVideoPublishedAt": "56 minutes ago",
-      "selectedVideoChannel": "FOX 32 Chicago",
+      "selectedVideoTitle": "3v3 Pro Paintball - NXL TAMPA BAY OPEN | MARCH 19 | PRO Paintball - #paintball #tampabay",
+      "selectedVideoPublishedAt": "Streamed 38 minutes ago",
+      "selectedVideoChannel": "Major League Paintball",
       "rejectedForAgeCount": 0
     }
   },
@@ -416,6 +416,26 @@
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "rivalry_game:new zealand vs south africa rivalry highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=P3qc2DujWIQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/P3qc2DujWIQ/hqdefault.jpg",
+      "durationSeconds": 126,
+      "title": "Yuzvendra Chahal Sensational Decision! 🚫 No Alcohol for 6 Months | PBKS Star's Big Plan for IPL 2026",
+      "source": "youtube",
+      "channel": "ABCDCINEMA1",
+      "publishedAt": "12 hours ago"
+    },
+    "fetchedAt": "2026-03-19T22:21:30.109Z",
+    "query": "New Zealand vs South Africa rivalry highlights",
+    "debug": {
+      "searchQuery": "New Zealand vs South Africa rivalry highlights",
+      "selectedVideoTitle": "Yuzvendra Chahal Sensational Decision! 🚫 No Alcohol for 6 Months | PBKS Star's Big Plan for IPL 2026",
+      "selectedVideoPublishedAt": "12 hours ago",
+      "selectedVideoChannel": "ABCDCINEMA1",
       "rejectedForAgeCount": 0
     }
   }
