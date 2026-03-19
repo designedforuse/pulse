@@ -23,6 +23,7 @@ import Animated, {
   withTiming,
   withSequence,
 } from "react-native-reanimated";
+import Svg, { Path } from "react-native-svg";
 import { useScoreFlash } from "@/hooks/useScoreFlash";
 import { displayTeamName } from "@/utils/teams";
 import Colors from "@/constants/colors";
@@ -218,6 +219,21 @@ const chaosSvnsStyles = StyleSheet.create({
   },
 });
 
+function SpikeBorderAccent({ color, secondary }: { color: string; secondary?: boolean }) {
+  const topOffset = secondary ? 6 : 8;
+  const bottomOffset = secondary ? 6 : 8;
+  return (
+    <View style={{ position: "absolute", left: 0, top: topOffset, bottom: bottomOffset, width: 18 }}>
+      <Svg width="100%" height="100%" viewBox="0 0 18 100" preserveAspectRatio="none">
+        <Path
+          d="M 0 0 L 3 0 L 3 38 L 3.5 40 L 5 43 L 3 47 L 15 50 L 3 53 L 5 57 L 3.5 60 L 3 62 L 3 100 L 0 100 Z"
+          fill={color}
+        />
+      </Svg>
+    </View>
+  );
+}
+
 function ChaosCard({
   event,
   isPrimary,
@@ -340,7 +356,10 @@ function ChaosCard({
             end={{ x: 1, y: 1 }}
             style={styles.primaryInner}
           >
-            <View style={[styles.tensionAccent, { backgroundColor: tensionAccentColor ?? "rgba(129,140,248,0.25)" }]} />
+            {tensionRank >= 4
+              ? <SpikeBorderAccent color={tensionAccentColor ?? "rgba(129,140,248,0.25)"} />
+              : <View style={[styles.tensionAccent, { backgroundColor: tensionAccentColor ?? "rgba(129,140,248,0.25)" }]} />
+            }
             <View style={styles.primaryHeader}>
               <View style={[styles.leaguePill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
                 <Text style={[styles.leaguePillText, { color: sportColor }]} numberOfLines={1}>
@@ -491,7 +510,10 @@ function ChaosCard({
       ]}
     >
       <Animated.View style={[styles.secondaryInner, flashStyle]}>
-        <View style={[styles.tensionAccentSecondary, { backgroundColor: tensionAccentColor ?? "rgba(129,140,248,0.2)" }]} />
+        {tensionRank >= 4
+          ? <SpikeBorderAccent color={tensionAccentColor ?? "rgba(129,140,248,0.2)"} secondary />
+          : <View style={[styles.tensionAccentSecondary, { backgroundColor: tensionAccentColor ?? "rgba(129,140,248,0.2)" }]} />
+        }
         <View style={styles.secondaryHeader}>
           <View style={[styles.leaguePill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
             <Text style={[styles.leaguePillText, { color: sportColor }]} numberOfLines={1}>
