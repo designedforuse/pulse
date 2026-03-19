@@ -53,6 +53,7 @@ import {
   selfHealChaosSetup,
   evaluateSlot4Promotion,
   getF1SessionType,
+  getTensionRank,
   type ChaosSetup,
 } from "@/lib/chaos-setup";
 import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTime, getSvnsTeamFlag, extractSvnsSessionDay, type SvnsMatch } from "@/lib/svns-context";
@@ -1462,6 +1463,7 @@ export default function WatchScreen() {
                 score={getScore(event.id)}
                 isFav={favoriteInvolved(event, favorites)}
                 showCountdown={true}
+                tensionRank={getTensionRank(event, true, getScore)}
               />
             ))}
             {(hiddenCount > 0 || liveExpanded) && (

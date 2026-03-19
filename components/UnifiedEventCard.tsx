@@ -688,6 +688,12 @@ export default function UnifiedEventCard({
           ? "Heating Up"
           : null;
 
+  const liveTensionColor =
+    isLive && tensionRank >= 4 ? "#0284C7"
+      : isLive && tensionRank === 3 ? "#0EA5E9"
+        : isLive && tensionRank === 2 ? "#38BDF8"
+          : "#1CB0F6";
+
   const awayName = event.tennisPlayer1 || compactTeamName(event.awayTeam, event.league);
   const homeName = event.tennisPlayer2 || compactTeamName(event.homeTeam, event.league);
 
@@ -729,7 +735,7 @@ export default function UnifiedEventCard({
     >
       <Animated.View style={[uStyles.cardInner, featured && uStyles.cardInnerFeatured, flashStyle]}>
         {!showEspnStyle && (
-          <View style={[uStyles.accentBar, { backgroundColor: isLive ? "#1CB0F6" : (accentBarColor ?? sportColor) }]} />
+          <View style={[uStyles.accentBar, { backgroundColor: isLive ? liveTensionColor : (accentBarColor ?? sportColor) }]} />
         )}
         {showEspnStyle && (
           <View style={[uStyles.topAccentBar, { backgroundColor: sportColor }]} />
@@ -767,7 +773,7 @@ export default function UnifiedEventCard({
             {isLive && (
               <View style={uStyles.liveChip}>
                 <LiveDot />
-                <Text style={uStyles.liveText}>LIVE</Text>
+                <Text style={uStyles.liveText}>{tensionRank >= 3 ? "HIGH TENSION" : "LIVE"}</Text>
               </View>
             )}
             {isFinal && <Text style={uStyles.finalLabel}>FINAL</Text>}
