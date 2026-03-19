@@ -857,17 +857,29 @@ export default function UnifiedEventCard({
                 <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>{getLeagueLabel(event)}</Text>
               </View>
               <View style={uStyles.espnMatchup}>
-                <View style={uStyles.espnTeam}>
-                  <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={32} />
-                  <Text style={uStyles.espnTeamName} numberOfLines={1}>{awayName}</Text>
+                {/* Away — star on the outside left */}
+                <View style={uStyles.espnTeamOuter}>
+                  <View style={uStyles.espnStarSlot}>
+                    {isFavAway && <MaterialCommunityIcons name="star" size={12} color={Colors.favStar} />}
+                  </View>
+                  <View style={uStyles.espnTeam}>
+                    <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={32} />
+                    <Text style={uStyles.espnTeamName} numberOfLines={1}>{awayName}</Text>
+                  </View>
                 </View>
                 <View style={uStyles.espnCenter}>
                   <Text style={uStyles.espnTime}>{timeStr}</Text>
                   {providerBrandId && <ProviderLogo providerId={providerBrandId} size={20} />}
                 </View>
-                <View style={uStyles.espnTeam}>
-                  <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={32} />
-                  <Text style={uStyles.espnTeamName} numberOfLines={1}>{homeName}</Text>
+                {/* Home — star on the outside right (row-reverse flips slot to right) */}
+                <View style={[uStyles.espnTeamOuter, { flexDirection: "row-reverse" }]}>
+                  <View style={uStyles.espnStarSlot}>
+                    {isFavHome && <MaterialCommunityIcons name="star" size={12} color={Colors.favStar} />}
+                  </View>
+                  <View style={uStyles.espnTeam}>
+                    <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={32} />
+                    <Text style={uStyles.espnTeamName} numberOfLines={1}>{homeName}</Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -1259,6 +1271,17 @@ const uStyles = StyleSheet.create({
     flexDirection: "row" as const,
     alignItems: "center" as const,
     justifyContent: "space-between" as const,
+  },
+  espnTeamOuter: {
+    flex: 1,
+    flexDirection: "row" as const,
+    alignItems: "flex-start" as const,
+  },
+  espnStarSlot: {
+    width: 14,
+    height: 32,
+    justifyContent: "center" as const,
+    alignItems: "center" as const,
   },
   espnTeam: {
     flex: 1,

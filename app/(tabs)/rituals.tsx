@@ -8,13 +8,14 @@ import {
   ScrollView,
 } from "react-native";
 import { router } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import Colors from "@/constants/colors";
 import { TeamLogo } from "@/components/TeamLogo";
 import ProviderLogo from "@/components/ProviderLogo";
 import { compactTeamName } from "@/utils/teams";
+import { isTeamFavorite } from "@/utils/favorites";
 import { getGrandPrixFlag } from "@/components/UnifiedEventCard";
 import { useEvents } from "@/lib/events-context";
 import { useFavorites } from "@/lib/favorites-context";
@@ -91,9 +92,12 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
     );
   }
 
+  const { favorites } = useFavorites();
   const sportColor = SPORT_COLORS[event.sport] || "#90A4AE";
   const sessionName = buildSessionDisplayName(event);
   const timeLabel = formatFeaturedTime(event.startTimeLocal);
+  const isFavAway = isTeamFavorite(event.awayTeam, event.sport, favorites);
+  const isFavHome = isTeamFavorite(event.homeTeam, event.sport, favorites);
 
   const provider = resolveProviderDisplay(event);
 
@@ -108,10 +112,15 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
         ) : (
           <>
             <View style={styles.espnMatchup}>
-              {/* Away team */}
-              <View style={styles.espnTeam}>
-                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={44} />
-                <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
+              {/* Away — star on outside left */}
+              <View style={styles.espnTeamOuter}>
+                <View style={styles.espnStarSlot}>
+                  {isFavAway && <MaterialCommunityIcons name="star" size={13} color={Colors.favStar} />}
+                </View>
+                <View style={styles.espnTeam}>
+                  <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={44} />
+                  <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
+                </View>
               </View>
               {/* Center: time + provider */}
               <View style={styles.espnCenter}>
@@ -122,10 +131,15 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
                   </View>
                 )}
               </View>
-              {/* Home team */}
-              <View style={styles.espnTeam}>
-                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={44} />
-                <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
+              {/* Home — star on outside right (row-reverse puts slot on right) */}
+              <View style={[styles.espnTeamOuter, { flexDirection: "row-reverse" }]}>
+                <View style={styles.espnStarSlot}>
+                  {isFavHome && <MaterialCommunityIcons name="star" size={13} color={Colors.favStar} />}
+                </View>
+                <View style={styles.espnTeam}>
+                  <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={44} />
+                  <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
+                </View>
               </View>
             </View>
           </>
@@ -423,6 +437,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     marginBottom: 5,
+  },
+  espnTeamOuter: {
+    flex: 1,
+    flexDirection: "row" as const,
+    alignItems: "flex-start" as const,
+  },
+  espnStarSlot: {
+    width: 16,
+    height: 44,
+    justifyContent: "center" as const,
+    alignItems: "center" as const,
   },
   espnTeam: {
     flex: 1,
