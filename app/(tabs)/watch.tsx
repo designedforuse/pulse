@@ -872,6 +872,7 @@ export default function WatchScreen() {
   const { data: narrativesData } = useQuery<{ cards: unknown[] }>({ queryKey: ["/api/narratives"] });
   const ritualCount = RITUALS.length;
   const storiesCount = narrativesData?.cards?.length ?? 0;
+  const activeSportsCount = 9 - disabledSports.size;
 
   const allEvents = useMemo(
     () => {
@@ -1254,6 +1255,10 @@ export default function WatchScreen() {
             </LinearGradient>
 
             <View style={styles.headerStats}>
+              <View style={[styles.statChip, { backgroundColor: "rgba(167,139,250,0.15)", borderRadius: 12, paddingHorizontal: 9, paddingVertical: 5 }]}>
+                <Ionicons name="layers" size={18} color="#A78BFA" />
+                <Text style={[styles.liveStatCount, { color: "#A78BFA" }]}>{activeSportsCount}</Text>
+              </View>
               <View style={[styles.statChip, { backgroundColor: "rgba(53,199,165,0.15)", borderRadius: 12, paddingHorizontal: 9, paddingVertical: 5 }]}>
                 <Ionicons name="grid" size={18} color="#35C7A5" />
                 <Text style={[styles.liveStatCount, { color: "#35C7A5" }]}>{ritualCount}</Text>
