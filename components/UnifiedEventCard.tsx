@@ -717,7 +717,7 @@ export default function UnifiedEventCard({
 
   const logoSize = featured ? 22 : 20;
   const isUpcoming = !isLive && !isFinal;
-  const showEspnStyle = espnLayout && isUpcoming && showTeamLayout && !isTennis && !isRacing && !isGolf && !isAthletics;
+  const showEspnStyle = espnLayout && isUpcoming && showTeamLayout && !isRacing && !isGolf && !isAthletics;
   const providerBrandId = resolveProviderDisplay(event).brandId;
 
   return (
@@ -849,7 +849,7 @@ export default function UnifiedEventCard({
                 </Text>
               )}
             </View>
-          ) : isTennis && showTeamLayout ? (
+          ) : isTennis && showTeamLayout && (isLive || isFinal) ? (
             <TennisScoreboard
               event={event}
               score={score}
@@ -860,7 +860,9 @@ export default function UnifiedEventCard({
           ) : showEspnStyle ? (
             <View>
               <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
-                <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>{getLeagueLabel(event)}</Text>
+                <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>
+                  {getLeagueLabel(event)}{isTennis && event.tennisRound ? ` · ${getTennisRoundShort(event.tennisRound)}` : ""}
+                </Text>
               </View>
               <View style={uStyles.espnMatchup}>
                 {/* Away — star on the outside left */}
@@ -869,7 +871,9 @@ export default function UnifiedEventCard({
                     {isFavAway && <MaterialCommunityIcons name="star" size={12} color={Colors.favStar} />}
                   </View>
                   <View style={uStyles.espnTeam}>
-                    <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={32} />
+                    {isTennis && awayFlag
+                      ? <Image source={{ uri: awayFlag }} style={{ width: 36, height: 24, borderRadius: 3 }} resizeMode="contain" />
+                      : <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={32} />}
                     <Text style={uStyles.espnTeamName} numberOfLines={1}>{awayName}</Text>
                   </View>
                 </View>
@@ -883,7 +887,9 @@ export default function UnifiedEventCard({
                     {isFavHome && <MaterialCommunityIcons name="star" size={12} color={Colors.favStar} />}
                   </View>
                   <View style={uStyles.espnTeam}>
-                    <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={32} />
+                    {isTennis && homeFlag
+                      ? <Image source={{ uri: homeFlag }} style={{ width: 36, height: 24, borderRadius: 3 }} resizeMode="contain" />
+                      : <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={32} />}
                     <Text style={uStyles.espnTeamName} numberOfLines={1}>{homeName}</Text>
                   </View>
                 </View>
