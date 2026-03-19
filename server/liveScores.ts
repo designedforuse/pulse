@@ -552,9 +552,9 @@ async function fetchRugbyScores(
               if (/half\s*time/i.test(detail) || detail === "HT" || /half\s*time/i.test(description)) {
                 period = "HT";
               } else if (periodNum === 1 || /first\s*half/i.test(description)) {
-                period = "1st Half";
+                period = "1H";
               } else if (periodNum === 2 || /second\s*half/i.test(description)) {
-                period = "2nd Half";
+                period = "2H";
               }
 
               scores[ourEvent.id] = {
@@ -1241,15 +1241,15 @@ async function fetchNcaabBasketballScores(eventIds: string[]): Promise<Record<st
             const clock = comp.status?.displayClock || "";
             const periodNum = comp.status?.period || 0;
             let period = "Live";
-            if (periodNum === 1) period = "1st Half";
-            else if (periodNum === 2) period = "2nd Half";
+            if (periodNum === 1) period = "1H";
+            else if (periodNum === 2) period = "2H";
             else if (periodNum === 3) period = "OT";
             else if (periodNum > 3) period = `${periodNum - 2}OT`;
 
             scores[eventId] = {
               awayScore: parseInt(awayComp.score || "0", 10),
               homeScore: parseInt(homeComp.score || "0", 10),
-              period: clock ? `${period} ${clock}` : period,
+              period: clock ? `${period} · ${clock}` : period,
               status: "live",
             };
           } else if (statusState === "post") {
