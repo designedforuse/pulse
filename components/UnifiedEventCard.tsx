@@ -861,7 +861,7 @@ export default function UnifiedEventCard({
             <View>
               <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
                 <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>
-                  {getLeagueLabel(event)}{isTennis && event.tennisRound ? ` · ${getTennisRoundShort(event.tennisRound)}` : ""}
+                  {getLeagueLabel(event)}
                 </Text>
               </View>
               <View style={uStyles.espnMatchup}>

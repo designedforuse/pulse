@@ -174,7 +174,7 @@ const TOURNAMENTS: TennisTournament[] = [
     espnTournamentId: 411,
   },
   {
-    name: "Miami Masters",
+    name: "Miami Open",
     shortName: "Miami Open",
     league: "ATP Masters 1000",
     leagueKey: "atp-masters",
