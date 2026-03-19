@@ -341,8 +341,8 @@ function ChaosCard({
           >
             <View style={[styles.tensionAccent, { backgroundColor: tensionAccentColor ?? "rgba(129,140,248,0.25)" }]} />
             <View style={styles.primaryHeader}>
-              <View style={[styles.leaguePill, { backgroundColor: sportColor }]}>
-                <Text style={styles.leaguePillText} numberOfLines={1}>
+              <View style={[styles.leaguePill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
+                <Text style={[styles.leaguePillText, { color: sportColor }]} numberOfLines={1}>
                   {isRacing
                     ? `F1${gpShort ? ` · ${gpShort}` : ""}`
                     : isSvnsSession && svnsCity
@@ -490,8 +490,8 @@ function ChaosCard({
       <Animated.View style={[styles.secondaryInner, flashStyle]}>
         <View style={[styles.tensionAccentSecondary, { backgroundColor: tensionAccentColor ?? "rgba(129,140,248,0.2)" }]} />
         <View style={styles.secondaryHeader}>
-          <View style={[styles.leaguePill, { backgroundColor: sportColor }]}>
-            <Text style={styles.leaguePillText} numberOfLines={1}>
+          <View style={[styles.leaguePill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
+            <Text style={[styles.leaguePillText, { color: sportColor }]} numberOfLines={1}>
               {isRacing
                 ? `F1${gpShort ? ` · ${gpShort}` : ""}`
                 : isSvnsSession && svnsCity
@@ -1854,16 +1854,16 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   leaguePill: {
-    paddingHorizontal: 8,
+    paddingHorizontal: 10,
     paddingVertical: 3,
-    borderRadius: 8,
+    borderRadius: 20,
+    borderWidth: 1,
     flexShrink: 1,
   },
   leaguePillText: {
-    fontSize: 10,
+    fontSize: 9,
     fontFamily: "Inter_700Bold",
-    color: "#fff",
-    letterSpacing: 0.4,
+    letterSpacing: 1.2,
     textTransform: "uppercase" as const,
   },
   primaryTeams: {
