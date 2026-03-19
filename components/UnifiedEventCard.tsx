@@ -404,7 +404,7 @@ export function TennisScoreboard({
           </View>
         )}
         {!hasScoreData && isLive && (
-          <Text style={[tsStyles.liveNow, { color: "#1CB0F6" }]}>-</Text>
+          <Text style={[tsStyles.liveNow, { color: "#1CB0F6" }]}>0</Text>
         )}
         {!hasScoreData && isFinal && score && (
           <Text style={tsStyles.finalSetsText}>
