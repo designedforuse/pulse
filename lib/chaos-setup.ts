@@ -65,10 +65,16 @@ export function getTensionRank(
   let rank = 1;
   const diff = Math.abs(score.homeScore - score.awayScore);
   const sport = event.sport.toLowerCase();
+  const status = (score.status || "").toLowerCase();
+  const period = (score.period || "").toLowerCase();
 
   if (sport === "hockey" || sport === "soccer") {
-    if (diff <= 1) rank = 3;
-    else if (diff <= 2) rank = 2;
+    // Suppress close-score tension in the opening period/half — game just started
+    const isEarlyPeriod = period.startsWith("p1") || period === "1h";
+    if (!isEarlyPeriod) {
+      if (diff <= 1) rank = 3;
+      else if (diff <= 2) rank = 2;
+    }
   } else if (sport === "rugby") {
     if (diff <= 7) rank = 3;
     else if (diff <= 14) rank = 2;
@@ -84,9 +90,6 @@ export function getTensionRank(
     if (diff <= 1) rank = 3;
     else if (diff <= 2) rank = 2;
   }
-
-  const status = (score.status || "").toLowerCase();
-  const period = (score.period || "").toLowerCase();
   const isOT = status.includes("ot") || status.includes("overtime") || status.includes("extra")
     || status.includes("shootout") || status.includes("penalty")
     || period.includes("ot") || period.includes("overtime") || period.includes("extra")
