@@ -416,6 +416,7 @@ function ChaosCard({
                   isLive={isLiveState}
                   isFinal={isFinalState}
                   featured
+                  scoreColor="#A78BFA"
                 />
               </View>
             ) : (
@@ -564,6 +565,7 @@ function ChaosCard({
               score={score}
               isLive={isLiveState}
               isFinal={isFinalState}
+              scoreColor="#A78BFA"
             />
           </View>
         ) : (

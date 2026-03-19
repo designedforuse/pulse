@@ -342,7 +342,7 @@ export function TennisScoreboard({
         )}
         <View style={tsStyles.nameContainer}>
           {isServing && isLive && (
-            <View style={tsStyles.servingDot} />
+            <View style={[tsStyles.servingDot, { backgroundColor: scoreColor }]} />
           )}
           <Text
             style={[
