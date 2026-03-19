@@ -907,7 +907,11 @@ export default function UnifiedEventCard({
                 <View style={{ flex: 1 }} />
                 {hasScore && isCricket
                   ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{score.cricketAway || ""}</Text>
-                  : hasScore && !isTennis && <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.awayScore}</Text>}
+                  : hasScore && !isTennis
+                    ? <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.awayScore}</Text>
+                    : isLive && !hasScore && event.sport === "hockey"
+                      ? <Text style={[uStyles.scoreText, uStyles.scoreLive]}>0</Text>
+                      : null}
               </View>
               <View style={uStyles.teamRow}>
                 {homeFlag ? (
@@ -925,7 +929,11 @@ export default function UnifiedEventCard({
                 <View style={{ flex: 1 }} />
                 {hasScore && isCricket
                   ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{score.cricketHome || ""}</Text>
-                  : hasScore && !isTennis && <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.homeScore}</Text>}
+                  : hasScore && !isTennis
+                    ? <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.homeScore}</Text>
+                    : isLive && !hasScore && event.sport === "hockey"
+                      ? <Text style={[uStyles.scoreText, uStyles.scoreLive]}>0</Text>
+                      : null}
               </View>
             </>
           ) : (
