@@ -2278,7 +2278,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.4,
   },
   scoreLive: {
-    color: "#A78BFA",
+    color: "#FFFFFF",
   },
   finalLabel: {
     fontSize: 11,
