@@ -373,7 +373,6 @@ export function TennisScoreboard({
                       tsStyles.setScore,
                       isSetWinner && tsStyles.setScoreWon,
                       isCurrentSet && isLive && tsStyles.setScoreCurrent,
-                      isCurrentSet && isLive && { color: scoreColor },
                     ]}
                   >
                     {val}
@@ -480,7 +479,8 @@ const tsStyles = StyleSheet.create({
     fontFamily: "Inter_700Bold",
   },
   setScoreCurrent: {
-    color: Colors.accent,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_700Bold",
   },
   tiebreakScore: {
     fontSize: 9,

@@ -965,8 +965,12 @@ async function fetchTennisScores(
           const statusDetail = comp.status?.type?.description || comp.status?.type?.detail || "";
 
           let tennisServer: 1 | 2 | undefined;
-          if (c1.isServing) tennisServer = 1;
-          else if (c2.isServing) tennisServer = 2;
+          if (c1.possession === true) tennisServer = 1;
+          else if (c2.possession === true) tennisServer = 2;
+          if (!tennisServer) {
+            if (c1.isServing) tennisServer = 1;
+            else if (c2.isServing) tennisServer = 2;
+          }
           if (!tennisServer && isLive && statusDetail.includes("*")) {
             const asteriskMatch = statusDetail.match(/(\w+)\*/);
             if (asteriskMatch) {
