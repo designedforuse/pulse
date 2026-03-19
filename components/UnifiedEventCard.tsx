@@ -274,10 +274,10 @@ function LiveScanBar({ color }: { color: string }) {
   );
 }
 
-function PhaseChip({ label, sportColor, isHot }: { label: string; sportColor: string; isHot: boolean }) {
+function PhaseChip({ label, sportColor, isHot, grey }: { label: string; sportColor: string; isHot: boolean; grey?: boolean }) {
   return (
-    <View style={[uStyles.phaseChip, { backgroundColor: sportColor + "22" }, isHot && { backgroundColor: sportColor + "38" }]}>
-      <Text style={[uStyles.phaseChipText, { color: sportColor }, isHot && { color: sportColor }]}>
+    <View style={[uStyles.phaseChip, grey ? { backgroundColor: "rgba(255,255,255,0.10)" } : { backgroundColor: sportColor + "22" }, !grey && isHot && { backgroundColor: sportColor + "38" }]}>
+      <Text style={[uStyles.phaseChipText, grey ? { color: Colors.textSecondary } : { color: sportColor }]}>
         {label}
       </Text>
     </View>
@@ -404,7 +404,7 @@ export function TennisScoreboard({
           </View>
         )}
         {!hasScoreData && isLive && (
-          <Text style={[tsStyles.liveNow, { color: "#A78BFA" }]}>Live</Text>
+          <Text style={[tsStyles.liveNow, { color: "#1CB0F6" }]}>-</Text>
         )}
         {!hasScoreData && isFinal && score && (
           <Text style={tsStyles.finalSetsText}>
@@ -762,7 +762,7 @@ export default function UnifiedEventCard({
               </View>
             )}
             {!isRacing && !isGolf && !isAthletics && phaseLabel && (
-              <PhaseChip label={phaseLabel} sportColor={sportColor} isHot={isHotPhase} />
+              <PhaseChip label={phaseLabel} sportColor={sportColor} isHot={isHotPhase} grey={isTennis} />
             )}
             <View style={{ flex: 1 }} />
             {featured && (
