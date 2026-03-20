@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   StyleSheet,
   Text,
   View,
   Image,
+  Animated,
   Pressable,
   Alert,
   Platform,
@@ -46,6 +47,32 @@ function formatTimeOnly(startTimeLocal: string): string {
     hour12: true,
   });
 }
+
+function PulsingDot() {
+  const opacity = useRef(new Animated.Value(1)).current;
+
+  useEffect(() => {
+    const pulse = Animated.loop(
+      Animated.sequence([
+        Animated.timing(opacity, { toValue: 0.2, duration: 700, useNativeDriver: true }),
+        Animated.timing(opacity, { toValue: 1, duration: 700, useNativeDriver: true }),
+      ])
+    );
+    pulse.start();
+    return () => pulse.stop();
+  }, []);
+
+  return <Animated.View style={[dotStyle.dot, { opacity }]} />;
+}
+
+const dotStyle = StyleSheet.create({
+  dot: {
+    width: 7,
+    height: 7,
+    borderRadius: 4,
+    backgroundColor: "#FF453A",
+  },
+});
 
 export default function EventSheet() {
   const { eventId } = useLocalSearchParams<{ eventId: string }>();
@@ -211,7 +238,7 @@ export default function EventSheet() {
                 ) : isLiveState ? (
                   <>
                     <View style={styles.liveChip}>
-                      <View style={styles.liveDot} />
+                      <PulsingDot />
                       <Text style={styles.liveChipText}>
                         {displayClockText?.includes(" · ")
                           ? `LIVE ${displayClockText.split(" · ")[0]}`
@@ -388,12 +415,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 8,
-  },
-  liveDot: {
-    width: 7,
-    height: 7,
-    borderRadius: 4,
-    backgroundColor: "#FF453A",
   },
   liveChipText: {
     fontSize: 12,
