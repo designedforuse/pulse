@@ -463,14 +463,9 @@ function ChaosCard({
                     {homeIsFav && <MaterialCommunityIcons name="star" size={19} color={Colors.favStar} />}
                   </View>
                   {hasScore && (
-                    <View style={{ alignItems: "flex-end" }}>
-                      <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
-                        {event.sport === "cricket" ? (score.cricketHome || "") : score.homeScore}
-                      </Text>
-                      {isLiveState && !isGolf && displayClockText && !displayClockText.startsWith("Started") && (
-                        <LiveScanBar color="#818CF8" />
-                      )}
-                    </View>
+                    <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
+                      {event.sport === "cricket" ? (score.cricketHome || "") : score.homeScore}
+                    </Text>
                   )}
                 </View>
               </View>
@@ -488,7 +483,17 @@ function ChaosCard({
                 ) : isGolf && isLiveState && golfLeaderThru ? (
                   <Text style={styles.primaryClock}>{golfLeaderThru}</Text>
                 ) : isLiveState && !isGolf && displayClockText ? (
-                  <Text style={styles.primaryClock}>{displayClockText}</Text>
+                  <View style={{ flexDirection: "row", alignItems: "flex-end" }}>
+                    {displayClockText.includes(" · ") && (
+                      <Text style={styles.primaryClock}>{displayClockText.split(" · ").slice(0, -1).join(" · ")} · </Text>
+                    )}
+                    <View style={{ alignItems: "flex-end" }}>
+                      <Text style={styles.primaryClock}>
+                        {displayClockText.includes(" · ") ? displayClockText.split(" · ").pop()! : displayClockText}
+                      </Text>
+                      {!displayClockText.startsWith("Started") && <LiveScanBar color="#818CF8" />}
+                    </View>
+                  </View>
                 ) : isFinalState && displayStatusText ? (
                   <Text style={styles.primaryFinalStatus}>{displayStatusText}</Text>
                 ) : gameState === "UPCOMING" ? (

@@ -930,15 +930,9 @@ export default function UnifiedEventCard({
                 {hasScore && isCricket
                   ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{score.cricketHome || ""}</Text>
                   : hasScore && !isTennis
-                    ? <View style={{ alignItems: "flex-end" }}>
-                        <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.homeScore}</Text>
-                        {isLive && displayClockText && !displayClockText.startsWith("Started") && <LiveScanBar color="#1CB0F6" />}
-                      </View>
+                    ? <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.homeScore}</Text>
                     : isLive && !hasScore && event.sport === "hockey"
-                      ? <View style={{ alignItems: "flex-end" }}>
-                          <Text style={[uStyles.scoreText, uStyles.scoreLive]}>0</Text>
-                          {displayClockText && !displayClockText.startsWith("Started") && <LiveScanBar color="#1CB0F6" />}
-                        </View>
+                      ? <Text style={[uStyles.scoreText, uStyles.scoreLive]}>0</Text>
                       : null}
               </View>
             </>
@@ -979,7 +973,17 @@ export default function UnifiedEventCard({
                   ) : isGolf && score?.golfLeaderThru ? (
                     <Text style={uStyles.clockText}>{score.golfLeaderThru}</Text>
                   ) : displayClockText ? (
-                    <Text style={uStyles.clockText}>{displayClockText}</Text>
+                    <View style={{ flexDirection: "row", alignItems: "flex-end", alignSelf: "flex-end" }}>
+                      {displayClockText.includes(" · ") && (
+                        <Text style={uStyles.clockText}>{displayClockText.split(" · ").slice(0, -1).join(" · ")} · </Text>
+                      )}
+                      <View style={{ alignItems: "flex-end" }}>
+                        <Text style={uStyles.clockText}>
+                          {displayClockText.includes(" · ") ? displayClockText.split(" · ").pop()! : displayClockText}
+                        </Text>
+                        {!displayClockText.startsWith("Started") && <LiveScanBar color="#1CB0F6" />}
+                      </View>
+                    </View>
                   ) : null}
                 </View>
               </>
