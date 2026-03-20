@@ -463,9 +463,14 @@ function ChaosCard({
                     {homeIsFav && <MaterialCommunityIcons name="star" size={19} color={Colors.favStar} />}
                   </View>
                   {hasScore && (
-                    <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
-                      {event.sport === "cricket" ? (score.cricketHome || "") : score.homeScore}
-                    </Text>
+                    <View style={{ alignItems: "flex-end" }}>
+                      <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
+                        {event.sport === "cricket" ? (score.cricketHome || "") : score.homeScore}
+                      </Text>
+                      {isLiveState && !isGolf && displayClockText && !displayClockText.startsWith("Started") && (
+                        <LiveScanBar color="#818CF8" />
+                      )}
+                    </View>
                   )}
                 </View>
               </View>
@@ -483,10 +488,7 @@ function ChaosCard({
                 ) : isGolf && isLiveState && golfLeaderThru ? (
                   <Text style={styles.primaryClock}>{golfLeaderThru}</Text>
                 ) : isLiveState && !isGolf && displayClockText ? (
-                  <View style={{ alignSelf: "flex-start" }}>
-                    <Text style={styles.primaryClock}>{displayClockText}</Text>
-                    <LiveScanBar color="#818CF8" />
-                  </View>
+                  <Text style={styles.primaryClock}>{displayClockText}</Text>
                 ) : isFinalState && displayStatusText ? (
                   <Text style={styles.primaryFinalStatus}>{displayStatusText}</Text>
                 ) : gameState === "UPCOMING" ? (

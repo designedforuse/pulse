@@ -930,9 +930,15 @@ export default function UnifiedEventCard({
                 {hasScore && isCricket
                   ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{score.cricketHome || ""}</Text>
                   : hasScore && !isTennis
-                    ? <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.homeScore}</Text>
+                    ? <View style={{ alignItems: "flex-end" }}>
+                        <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.homeScore}</Text>
+                        {isLive && displayClockText && !displayClockText.startsWith("Started") && <LiveScanBar color="#1CB0F6" />}
+                      </View>
                     : isLive && !hasScore && event.sport === "hockey"
-                      ? <Text style={[uStyles.scoreText, uStyles.scoreLive]}>0</Text>
+                      ? <View style={{ alignItems: "flex-end" }}>
+                          <Text style={[uStyles.scoreText, uStyles.scoreLive]}>0</Text>
+                          {displayClockText && !displayClockText.startsWith("Started") && <LiveScanBar color="#1CB0F6" />}
+                        </View>
                       : null}
               </View>
             </>
@@ -973,10 +979,7 @@ export default function UnifiedEventCard({
                   ) : isGolf && score?.golfLeaderThru ? (
                     <Text style={uStyles.clockText}>{score.golfLeaderThru}</Text>
                   ) : displayClockText ? (
-                    <View style={{ alignSelf: "flex-end" }}>
-                      <Text style={uStyles.clockText}>{displayClockText}</Text>
-                      {!displayClockText.startsWith("Started") && <LiveScanBar color="#1CB0F6" />}
-                    </View>
+                    <Text style={uStyles.clockText}>{displayClockText}</Text>
                   ) : null}
                 </View>
               </>
