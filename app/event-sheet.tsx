@@ -311,7 +311,8 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     paddingTop: 16,
-    justifyContent: "space-between",
+    justifyContent: "flex-start",
+    gap: 24,
   },
   topSection: {
     gap: 8,
