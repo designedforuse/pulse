@@ -1109,7 +1109,7 @@ export default function WatchScreen() {
     );
   }, [allEvents, now, favoritesOnly, favorites, getScore]);
 
-  const { upNextSportChips, upNextLeagueChips, upNextEvents, upNextLeagueSportMap, upNextHasFilter } = useMemo(() => {
+  const { upNextSportChips, upNextLeagueChips, upNextEvents, upNextLeagueSportMap } = useMemo(() => {
     const sports = new Map<string, number>();
     const leagues = new Map<string, number>();
     const lsMap = new Map<string, string>();
@@ -1132,12 +1132,14 @@ export default function WatchScreen() {
     if (upNextLeagueFilter) {
       events = events.filter((e) => e.league === upNextLeagueFilter);
     }
-    const hasFilter = upNextSportFilter !== null || upNextLeagueFilter !== null;
-    return { upNextSportChips: sChips, upNextLeagueChips: lChips, upNextEvents: events, upNextLeagueSportMap: lsMap, upNextHasFilter: hasFilter };
+    return { upNextSportChips: sChips, upNextLeagueChips: lChips, upNextEvents: events, upNextLeagueSportMap: lsMap };
   }, [upNextAll, upNextSportFilter, upNextLeagueFilter]);
 
   const showUpNextSportChips = upNextSportChips.length > 1;
-  const showUpNextLeagueChips = upNextLeagueChips.length > 1;
+  const upNextHasFilter = upNextSportFilter !== null || upNextLeagueFilter !== null;
+  const activeLeagueChips = upNextSportFilter
+    ? upNextLeagueChips.filter((lc) => upNextLeagueSportMap.get(lc.key) === upNextSportFilter)
+    : [];
 
   const upNextDayGroups = useMemo(() => {
     const groups: { label: string; key: string; events: SportEvent[] }[] = [];
@@ -1382,7 +1384,7 @@ export default function WatchScreen() {
 
       </View>
 
-      {upNextChipSticky && (showUpNextSportChips || showUpNextLeagueChips) && (
+      {upNextChipSticky && showUpNextSportChips && (
         <View style={[styles.stickyChipBar, { top: stickyTopHeight }]}>
           <ScrollView
             horizontal
@@ -1390,57 +1392,65 @@ export default function WatchScreen() {
             contentContainerStyle={styles.upNextChipRow}
           >
             <Pressable
-              onPress={() => {
-                setUpNextSportFilter(null);
-                setUpNextLeagueFilter(null);
-                setUpNextExpanded(false);
-              }}
-              style={[styles.upNextChip, !upNextHasFilter && styles.upNextChipActive]}
+              onPress={() => { setUpNextSportFilter(null); setUpNextLeagueFilter(null); setUpNextExpanded(false); }}
+              style={[styles.upNextChip, !upNextSportFilter && styles.upNextChipActive]}
             >
-              <Text style={[styles.upNextChipLabel, !upNextHasFilter && styles.upNextChipLabelActive]}>All</Text>
+              <Text style={[styles.upNextChipLabel, !upNextSportFilter && styles.upNextChipLabelActive]}>All</Text>
             </Pressable>
-            {showUpNextSportChips && upNextSportChips.map((sc) => {
-              const isActive = upNextSportFilter === sc.key;
-              const color = getSportColor(sc.key);
-              return (
-                <Pressable
-                  key={`sticky-sport-${sc.key}`}
-                  onPress={() => {
-                    setUpNextSportFilter(isActive ? null : sc.key);
-                    setUpNextLeagueFilter(null);
-                    setUpNextExpanded(false);
-                    if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                  }}
-                  style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
-                >
-                  <Text style={[styles.upNextChipLabel, isActive && { color }]}>{sc.label}</Text>
-                  <View style={[styles.upNextChipCount, isActive && { backgroundColor: color + "18" }]}>
-                    <Text style={[styles.upNextChipCountText, isActive && { color }]}>{sc.count}</Text>
-                  </View>
-                </Pressable>
-              );
-            })}
-            {showUpNextLeagueChips && upNextLeagueChips.map((lc) => {
-              const isActive = upNextLeagueFilter === lc.key;
-              const color = getSportColor(upNextLeagueSportMap.get(lc.key) || "");
-              return (
-                <Pressable
-                  key={`sticky-league-${lc.key}`}
-                  onPress={() => {
-                    setUpNextLeagueFilter(isActive ? null : lc.key);
-                    setUpNextSportFilter(null);
-                    setUpNextExpanded(false);
-                    if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                  }}
-                  style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
-                >
-                  <Text style={[styles.upNextChipLabel, isActive && { color }]}>{lc.label}</Text>
-                  <View style={[styles.upNextChipCount, isActive && { backgroundColor: color + "18" }]}>
-                    <Text style={[styles.upNextChipCountText, isActive && { color }]}>{lc.count}</Text>
-                  </View>
-                </Pressable>
-              );
-            })}
+            {!upNextSportFilter ? (
+              upNextSportChips.map((sc) => {
+                const color = getSportColor(sc.key);
+                return (
+                  <Pressable
+                    key={`sticky-sport-${sc.key}`}
+                    onPress={() => { setUpNextSportFilter(sc.key); setUpNextLeagueFilter(null); setUpNextExpanded(false); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
+                    style={styles.upNextChip}
+                  >
+                    <Text style={styles.upNextChipLabel}>{sc.label}</Text>
+                    <View style={styles.upNextChipCount}>
+                      <Text style={styles.upNextChipCountText}>{sc.count}</Text>
+                    </View>
+                  </Pressable>
+                );
+              })
+            ) : (
+              <>
+                {(() => {
+                  const sc = upNextSportChips.find((s) => s.key === upNextSportFilter);
+                  if (!sc) return null;
+                  const sportActive = !upNextLeagueFilter;
+                  const color = getSportColor(sc.key);
+                  return (
+                    <Pressable
+                      key={`sticky-sport-sel-${sc.key}`}
+                      onPress={() => { if (upNextLeagueFilter) setUpNextLeagueFilter(null); else setUpNextSportFilter(null); setUpNextExpanded(false); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
+                      style={[styles.upNextChip, { backgroundColor: color + "18", borderColor: color + "44" }, !sportActive && { opacity: 0.55 }]}
+                    >
+                      <Text style={[styles.upNextChipLabel, { color }]}>{sc.label}</Text>
+                      <View style={[styles.upNextChipCount, { backgroundColor: color + "18" }]}>
+                        <Text style={[styles.upNextChipCountText, { color }]}>{sc.count}</Text>
+                      </View>
+                    </Pressable>
+                  );
+                })()}
+                {activeLeagueChips.map((lc) => {
+                  const isActive = upNextLeagueFilter === lc.key;
+                  const color = getSportColor(upNextSportFilter);
+                  return (
+                    <Pressable
+                      key={`sticky-league-${lc.key}`}
+                      onPress={() => { setUpNextLeagueFilter(isActive ? null : lc.key); setUpNextExpanded(false); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
+                      style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
+                    >
+                      <Text style={[styles.upNextChipLabel, isActive && { color }]}>{lc.label}</Text>
+                      <View style={[styles.upNextChipCount, isActive && { backgroundColor: color + "18" }]}>
+                        <Text style={[styles.upNextChipCountText, isActive && { color }]}>{lc.count}</Text>
+                      </View>
+                    </Pressable>
+                  );
+                })}
+              </>
+            )}
           </ScrollView>
         </View>
       )}
@@ -1462,7 +1472,7 @@ export default function WatchScreen() {
           if (liveActive !== liveBannerActive) setLiveBannerActive(liveActive);
           if (upActive !== upNextBannerActive) setUpNextBannerActive(upActive);
           const chipAbsoluteY = upNextSectionYRef.current + upNextChipOffsetRef.current;
-          const chipActive = (showUpNextSportChips || showUpNextLeagueChips) && y >= chipAbsoluteY - 10;
+          const chipActive = showUpNextSportChips && y >= chipAbsoluteY - 10;
           if (chipActive !== upNextChipSticky) setUpNextChipSticky(chipActive);
         }}
         refreshControl={
@@ -1560,7 +1570,7 @@ export default function WatchScreen() {
             <Text style={styles.liveHeaderText}>Coming up next</Text>
             <View style={styles.liveHeaderLine} />
           </View>
-          {upNextAll.length > 0 && (showUpNextSportChips || showUpNextLeagueChips) && (
+          {upNextAll.length > 0 && showUpNextSportChips && (
             <View
               style={[styles.upNextChipSection, upNextChipSticky && { opacity: 0 }]}
               onLayout={(e) => { upNextChipOffsetRef.current = e.nativeEvent.layout.y; }}
@@ -1571,62 +1581,70 @@ export default function WatchScreen() {
                 contentContainerStyle={styles.upNextChipRow}
               >
                 <Pressable
-                  onPress={() => {
-                    setUpNextSportFilter(null);
-                    setUpNextLeagueFilter(null);
-                    setUpNextExpanded(false);
-                  }}
-                  style={[styles.upNextChip, !upNextHasFilter && styles.upNextChipActive]}
+                  onPress={() => { setUpNextSportFilter(null); setUpNextLeagueFilter(null); setUpNextExpanded(false); }}
+                  style={[styles.upNextChip, !upNextSportFilter && styles.upNextChipActive]}
                   testID="upnext-chip-all"
                 >
-                  <Text style={[styles.upNextChipLabel, !upNextHasFilter && styles.upNextChipLabelActive]}>All</Text>
+                  <Text style={[styles.upNextChipLabel, !upNextSportFilter && styles.upNextChipLabelActive]}>All</Text>
                 </Pressable>
 
-                {showUpNextSportChips && upNextSportChips.map((sc) => {
-                  const isActive = upNextSportFilter === sc.key;
-                  const color = getSportColor(sc.key);
-                  return (
-                    <Pressable
-                      key={`sport-${sc.key}`}
-                      onPress={() => {
-                        setUpNextSportFilter(isActive ? null : sc.key);
-                        setUpNextLeagueFilter(null);
-                        setUpNextExpanded(false);
-                        if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                      }}
-                      style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
-                      testID={`upnext-chip-sport-${sc.key}`}
-                    >
-                      <Text style={[styles.upNextChipLabel, isActive && { color }]}>{sc.label}</Text>
-                      <View style={[styles.upNextChipCount, isActive && { backgroundColor: color + "18" }]}>
-                        <Text style={[styles.upNextChipCountText, isActive && { color }]}>{sc.count}</Text>
-                      </View>
-                    </Pressable>
-                  );
-                })}
-
-                {showUpNextLeagueChips && upNextLeagueChips.map((lc) => {
-                  const isActive = upNextLeagueFilter === lc.key;
-                  const color = getSportColor(upNextLeagueSportMap.get(lc.key) || "");
-                  return (
-                    <Pressable
-                      key={`league-${lc.key}`}
-                      onPress={() => {
-                        setUpNextLeagueFilter(isActive ? null : lc.key);
-                        setUpNextSportFilter(null);
-                        setUpNextExpanded(false);
-                        if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                      }}
-                      style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
-                      testID={`upnext-chip-league-${lc.key}`}
-                    >
-                      <Text style={[styles.upNextChipLabel, isActive && { color }]}>{lc.label}</Text>
-                      <View style={[styles.upNextChipCount, isActive && { backgroundColor: color + "18" }]}>
-                        <Text style={[styles.upNextChipCountText, isActive && { color }]}>{lc.count}</Text>
-                      </View>
-                    </Pressable>
-                  );
-                })}
+                {!upNextSportFilter ? (
+                  upNextSportChips.map((sc) => {
+                    const color = getSportColor(sc.key);
+                    return (
+                      <Pressable
+                        key={`sport-${sc.key}`}
+                        onPress={() => { setUpNextSportFilter(sc.key); setUpNextLeagueFilter(null); setUpNextExpanded(false); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
+                        style={styles.upNextChip}
+                        testID={`upnext-chip-sport-${sc.key}`}
+                      >
+                        <Text style={styles.upNextChipLabel}>{sc.label}</Text>
+                        <View style={styles.upNextChipCount}>
+                          <Text style={styles.upNextChipCountText}>{sc.count}</Text>
+                        </View>
+                      </Pressable>
+                    );
+                  })
+                ) : (
+                  <>
+                    {(() => {
+                      const sc = upNextSportChips.find((s) => s.key === upNextSportFilter);
+                      if (!sc) return null;
+                      const sportActive = !upNextLeagueFilter;
+                      const color = getSportColor(sc.key);
+                      return (
+                        <Pressable
+                          key={`sport-sel-${sc.key}`}
+                          onPress={() => { if (upNextLeagueFilter) setUpNextLeagueFilter(null); else setUpNextSportFilter(null); setUpNextExpanded(false); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
+                          style={[styles.upNextChip, { backgroundColor: color + "18", borderColor: color + "44" }, !sportActive && { opacity: 0.55 }]}
+                          testID={`upnext-chip-sport-${sc.key}`}
+                        >
+                          <Text style={[styles.upNextChipLabel, { color }]}>{sc.label}</Text>
+                          <View style={[styles.upNextChipCount, { backgroundColor: color + "18" }]}>
+                            <Text style={[styles.upNextChipCountText, { color }]}>{sc.count}</Text>
+                          </View>
+                        </Pressable>
+                      );
+                    })()}
+                    {activeLeagueChips.map((lc) => {
+                      const isActive = upNextLeagueFilter === lc.key;
+                      const color = getSportColor(upNextSportFilter);
+                      return (
+                        <Pressable
+                          key={`league-${lc.key}`}
+                          onPress={() => { setUpNextLeagueFilter(isActive ? null : lc.key); setUpNextExpanded(false); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
+                          style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
+                          testID={`upnext-chip-league-${lc.key}`}
+                        >
+                          <Text style={[styles.upNextChipLabel, isActive && { color }]}>{lc.label}</Text>
+                          <View style={[styles.upNextChipCount, isActive && { backgroundColor: color + "18" }]}>
+                            <Text style={[styles.upNextChipCountText, isActive && { color }]}>{lc.count}</Text>
+                          </View>
+                        </Pressable>
+                      );
+                    })}
+                  </>
+                )}
               </ScrollView>
             </View>
           )}
