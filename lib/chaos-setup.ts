@@ -237,6 +237,7 @@ export interface ChaosCandidate {
   isLive: boolean;
   isAnchor: boolean;
   isBackfill: boolean;
+  isIntermission: boolean;
   emotionRank: number;
   tensionRank: number;
   hockeyChaosScore?: ChaosScoreResult;
@@ -283,7 +284,8 @@ function getCandidatePool(
       racingChaosScore = computeRacingChaosScore(event, scoreData, favorites);
     }
 
-    candidates.push({ event, score, isFavorite: isFav, isLive: live, isAnchor: anchor, isBackfill: false, emotionRank: emotion, tensionRank: tension, hockeyChaosScore, racingChaosScore });
+    const intermission = live && isAtBreak(event, getScoreData);
+    candidates.push({ event, score, isFavorite: isFav, isLive: live, isAnchor: anchor, isBackfill: false, isIntermission: intermission, emotionRank: emotion, tensionRank: tension, hockeyChaosScore, racingChaosScore });
   }
 
   return candidates;
@@ -333,6 +335,7 @@ function getBackfillCandidates(
       isLive: false,
       isAnchor: isAnchorTeam(event),
       isBackfill: true,
+      isIntermission: false,
       emotionRank: getEmotionRank(event, favorites),
       tensionRank: 0,
     });
@@ -489,11 +492,15 @@ export function buildChaosSetup(
   const usedIds = new Set<string>();
 
   const livePool = pool.filter((c) => c.isLive);
+  const activeLivePool = livePool.filter((c) => !c.isIntermission);
+  const intermissionPool = livePool.filter((c) => c.isIntermission);
   const liveCount = livePool.length;
   const soonCount = pool.length - liveCount;
   const hasLive = liveCount > 0;
+  const hasActiveLive = activeLivePool.length > 0;
 
-  const selectionPool = hasLive ? livePool : pool;
+  // Prefer active in-play events; intermission games fill remaining slots only if needed
+  const selectionPool = hasActiveLive ? activeLivePool : (hasLive ? livePool : pool);
 
   const anchors = selectionPool.filter((c) => c.isAnchor).sort(anchorSort);
   for (const anchor of anchors) {
@@ -543,6 +550,19 @@ export function buildChaosSetup(
     }
   }
 
+  // Fill remaining slots with intermission games — only when active in-play games
+  // couldn't fill all 4 spots (games resume normally once the interval ends)
+  if (selected.length < 4 && hasActiveLive && intermissionPool.length > 0) {
+    const intermissionRemaining = intermissionPool
+      .filter((c) => !usedIds.has(c.event.id))
+      .sort((a, b) => chaosSort(a, b, inRitual));
+    for (const candidate of intermissionRemaining) {
+      if (selected.length >= 4) break;
+      selected.push(candidate);
+      usedIds.add(candidate.event.id);
+    }
+  }
+
   let backfillCount = 0;
 
   if (selected.length < 4 && !hasLive) {
@@ -566,6 +586,7 @@ export function buildChaosSetup(
         isLive: false,
         isAnchor: isAnchorTeam(nextUp),
         isBackfill: true,
+        isIntermission: false,
         emotionRank: getEmotionRank(nextUp, favorites),
         tensionRank: 0,
       });
@@ -766,6 +787,7 @@ export function selfHealChaosSetup(
       isLive: !!live,
       isAnchor: isAnchorTeam(e),
       isBackfill: false,
+      isIntermission: !!live && isAtBreak(e, getScoreData),
       emotionRank: getEmotionRank(e, favorites),
       tensionRank: getTensionRank(e, !!live, getScoreData),
     } as ChaosCandidate;
