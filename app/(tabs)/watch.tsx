@@ -915,7 +915,7 @@ export default function WatchScreen() {
   const [chaosSetup, setChaosSetup] = useState<ChaosSetup | null>(null);
   const chaosRef = useRef<ChaosSetup | null>(null);
   const prevScoresRef = useRef<Record<string, ScoreData>>({});
-  const [promotionToast, setPromotionToast] = useState<{ reason: string; scoringTeam?: string; isPowerPlay?: boolean } | null>(null);
+  const [promotionToast, setPromotionToast] = useState<{ reason: string; scoringTeam?: string; ppStartTeam?: string; ppGoalTeam?: string } | null>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [liveBannerActive, setLiveBannerActive] = useState(false);
   const [upNextBannerActive, setUpNextBannerActive] = useState(false);
@@ -1008,8 +1008,20 @@ export default function WatchScreen() {
           if (homeScored) scoringTeam = promotedEvent.homeTeam;
           else if (awayScored) scoringTeam = promotedEvent.awayTeam;
         }
-        const isPowerPlay = promoted.slot4ActivitySignals?.includes("Power play") ?? false;
-        setPromotionToast({ reason, scoringTeam, isPowerPlay });
+        // PP start: derive the advantaged team from live situationCode
+        let ppStartTeam: string | undefined;
+        if (promoted.slot4ActivitySignals?.includes("Power play start") && currentScoreData?.situationCode?.length === 4) {
+          const awaySkaters = parseInt(currentScoreData.situationCode[1], 10);
+          const homeSkaters = parseInt(currentScoreData.situationCode[2], 10);
+          if (!isNaN(awaySkaters) && !isNaN(homeSkaters) && awaySkaters !== homeSkaters) {
+            ppStartTeam = awaySkaters > homeSkaters ? promotedEvent.awayTeam : promotedEvent.homeTeam;
+          }
+        }
+
+        // PP goal: team is whichever side just scored (already computed as scoringTeam)
+        const ppGoalTeam = promoted.slot4ActivitySignals?.includes("Power play goal") ? scoringTeam : undefined;
+
+        setPromotionToast({ reason, scoringTeam, ppStartTeam, ppGoalTeam });
         if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
         toastTimerRef.current = setTimeout(() => {
           setPromotionToast(null);
@@ -1247,11 +1259,13 @@ export default function WatchScreen() {
               <Text style={styles.promotionToastLabel}>Chaos Alert</Text>
             </View>
             <Text style={styles.promotionToastReason} numberOfLines={1}>
-              {promotionToast.isPowerPlay && promotionToast.scoringTeam
-                ? `${displayTeamName(promotionToast.scoringTeam)} power play`
-                : promotionToast.scoringTeam
-                  ? `${displayTeamName(promotionToast.scoringTeam)} score!`
-                  : promotionToast.reason}
+              {promotionToast.ppGoalTeam
+                ? `${displayTeamName(promotionToast.ppGoalTeam)} power play goal!`
+                : promotionToast.ppStartTeam
+                  ? `${displayTeamName(promotionToast.ppStartTeam)} power play start`
+                  : promotionToast.scoringTeam
+                    ? `${displayTeamName(promotionToast.scoringTeam)} score!`
+                    : promotionToast.reason}
             </Text>
           </View>
         </View>

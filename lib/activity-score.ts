@@ -19,7 +19,8 @@ const SIGNAL_REASONS: Record<string, string> = {
   "Upset Alert": "Upset brewing",
   "Red card": "Red card",
   "Late close game": "One-goal game late",
-  "Power play": "Power play",
+  "Power play start": "Power play",
+  "Power play goal": "Power play goal",
   "Goalie pulled": "Goalie pulled",
   "Red Flag": "Red Flag deployed",
   "Safety Car": "Safety Car deployed",
@@ -208,23 +209,42 @@ function detectLateCloseGame(
   return false;
 }
 
-function detectPowerPlay(
+/**
+ * Returns the team currently on the power play (man-advantage) based on live
+ * situationCode from the NHL API, or null if even-strength / no code available.
+ * Format: "XYZW" → X=awayGoalie, Y=awaySkaters, Z=homeSkaters, W=homeGoalie
+ */
+function detectActivePowerPlay(
   event: SportEvent,
   current: ScoreData | undefined,
-): boolean {
-  if (!current) return false;
-  if (event.sport.toLowerCase() !== "hockey") return false;
-
-  // Prefer live situationCode: "1551" format → [awayGoalie][awaySkaters][homeSkaters][homeGoalie]
-  // Unequal skater counts = active power play (or 3-on-5, etc.)
+): string | null {
+  if (!current || event.sport.toLowerCase() !== "hockey") return null;
   if (current.situationCode && current.situationCode.length === 4) {
     const awaySkaters = parseInt(current.situationCode[1], 10);
     const homeSkaters = parseInt(current.situationCode[2], 10);
-    return !isNaN(awaySkaters) && !isNaN(homeSkaters) && awaySkaters !== homeSkaters;
+    if (!isNaN(awaySkaters) && !isNaN(homeSkaters) && awaySkaters !== homeSkaters) {
+      return awaySkaters > homeSkaters ? (event.awayTeam ?? null) : (event.homeTeam ?? null);
+    }
   }
+  return null;
+}
 
-  // Fallback: last goal was a power play or shorthanded goal (stale — used when situationCode unavailable)
-  return current.lastGoalStrength === "pp" || current.lastGoalStrength === "sh";
+/**
+ * Returns the scoring team if a power play goal was just scored (lastGoalStrength="pp"/"sh"
+ * and the score changed since last check), otherwise null.
+ */
+function detectPowerPlayGoal(
+  event: SportEvent,
+  current: ScoreData | undefined,
+  previous: ScoreData | undefined,
+): string | null {
+  if (!current || event.sport.toLowerCase() !== "hockey") return null;
+  if (current.lastGoalStrength !== "pp" && current.lastGoalStrength !== "sh") return null;
+  const homeScored = (current.homeScore ?? 0) > (previous?.homeScore ?? 0);
+  const awayScored = (current.awayScore ?? 0) > (previous?.awayScore ?? 0);
+  if (homeScored) return event.homeTeam ?? null;
+  if (awayScored) return event.awayTeam ?? null;
+  return null;
 }
 
 function detectGoaliePulled(
@@ -302,8 +322,14 @@ export function computeActivityScore(
     signals.push({ name: "Safety Car", points: 20, reason: SIGNAL_REASONS["Safety Car"] });
   }
 
-  if (detectPowerPlay(event, currentScore)) {
-    signals.push({ name: "Power play", points: 20, reason: SIGNAL_REASONS["Power play"] });
+  const ppStartTeam = detectActivePowerPlay(event, currentScore);
+  if (ppStartTeam) {
+    signals.push({ name: "Power play start", points: 20, reason: SIGNAL_REASONS["Power play start"] });
+  }
+
+  const ppGoalTeam = detectPowerPlayGoal(event, currentScore, previousScore);
+  if (ppGoalTeam) {
+    signals.push({ name: "Power play goal", points: 25, reason: SIGNAL_REASONS["Power play goal"] });
   }
 
   if (detectLateCloseGame(event, currentScore)) {
