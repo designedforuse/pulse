@@ -271,8 +271,7 @@ export default function EventSheet() {
             ]}
             testID="open-provider-btn"
           >
-            <Text style={styles.openButtonText}>Watch on</Text>
-            <ProviderLogo providerId={launchProvider.id} size={28} />
+            <Text style={styles.openButtonText}>Watch Now</Text>
           </Pressable>
         )}
       </View>
