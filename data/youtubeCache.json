@@ -438,5 +438,25 @@
       "selectedVideoChannel": "ABCDCINEMA1",
       "rejectedForAgeCount": 0
     }
+  },
+  "upset_alert:winnipeg jets vs boston bruins upset highlights march 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=s0LqnAsao8E",
+      "thumbnailUrl": "https://img.youtube.com/vi/s0LqnAsao8E/hqdefault.jpg",
+      "durationSeconds": 495,
+      "title": "March Madness Best Bets | Upsets, Sleepers & Bracket Busters",
+      "source": "youtube",
+      "channel": "Break The Board Sports",
+      "publishedAt": "13 hours ago"
+    },
+    "fetchedAt": "2026-03-20T04:27:04.401Z",
+    "query": "Winnipeg Jets vs Boston Bruins upset highlights March 2026",
+    "debug": {
+      "searchQuery": "Winnipeg Jets vs Boston Bruins upset highlights March 2026",
+      "selectedVideoTitle": "March Madness Best Bets | Upsets, Sleepers & Bracket Busters",
+      "selectedVideoPublishedAt": "13 hours ago",
+      "selectedVideoChannel": "Break The Board Sports",
+      "rejectedForAgeCount": 0
+    }
   }
 }

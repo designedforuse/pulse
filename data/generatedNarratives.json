@@ -1,11 +1,7 @@
 {
-  "lastUpdated": "2026-03-19T22:21:20.583Z",
+  "lastUpdated": "2026-03-20T04:26:54.712Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
-      "playoff_push": {
-        "NewEngland": 2,
-        "Other": 1
-      },
       "momentum": {
         "NewEngland": 1
       },
@@ -18,21 +14,25 @@
       "rivalry_game": {
         "SouthAfrica": 1
       },
+      "upset_alert": {
+        "NewEngland": 1
+      },
       "clinch_watch": {
         "SouthAfrica": 1
+      },
+      "playoff_push": {
+        "Other": 2
       }
     },
-    "combinedPushByRegion": {
-      "NewEngland": false
-    },
+    "combinedPushByRegion": {},
     "finalFeedByRegion": {
       "SouthAfrica": [
-        "rivalry_game: Rivalry Game Tomorrow",
+        "rivalry_game: Rivalry Game Tonight",
         "clinch_watch: Clinch Watch",
         "league_moment: Rivalry Weekend"
       ],
       "NewEngland": [
-        "playoff_push: Bruins Push Week",
+        "upset_alert: Upset Alert",
         "momentum: Bruins Heating Up"
       ],
       "Other": [
@@ -41,11 +41,11 @@
     },
     "droppedCandidatesReasons": [
       {
-        "id": "playoff_push_clinch_fallback_nhl_2025021083",
+        "id": "playoff_push_clinch_fallback_nhl_2025021108",
         "kind": "playoff_push",
-        "region": "NewEngland",
+        "region": "Other",
         "title": "Playoff Push",
-        "reason": "max 1 playoff_push per region (NewEngland)"
+        "reason": "max 1 playoff_push per region (Other)"
       },
       {
         "id": "player_movement_system",
@@ -76,7 +76,6 @@
           "CGY",
           "EDM",
           "VAN",
-          "DET",
           "MTL",
           "NYI",
           "BUF",
@@ -84,7 +83,8 @@
           "CBJ",
           "NSH",
           "TOR",
-          "TBL"
+          "TBL",
+          "NYR"
         ],
         "skippedTeams": [
           {
@@ -98,11 +98,11 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 643,
+        "playersIngested": 624,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-19T22:21:20.583Z"
+        "timestamp": "2026-03-20T04:26:54.712Z"
       },
-      "cacheHistoryCount": 783,
+      "cacheHistoryCount": 787,
       "error": null
     },
     "exploreFeedCap": 6,
@@ -110,7 +110,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -290.3557175,
+      "hoursUntil": -296.4485311111111,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -120,34 +120,39 @@
       "rivalryFinalCount": 1
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 0,
+      "rawUpsetCandidates": 1,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 0,
-      "upsetFinalCount": 0
+      "upsetCompletedCandidates": 1,
+      "upsetFinalCount": 1
     },
     "clinchWatch": {
       "rawClinchCandidates": 1,
       "clinchAfterRegionFilter": 1,
       "clinchFinalCount": 1,
       "clinchGatedOut": [
-        "Boston Bruins: before Mar 25, 82 pts < 95",
-        "Anaheim Ducks: before Mar 25, 78 pts < 95"
+        "Anaheim Ducks: before Mar 25, 78 pts < 95",
+        "Boston Bruins: before Mar 25, 84 pts < 95"
       ]
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "ahl-1028714",
+    "tonightStorySourceEvent": "basketball-nba-20260320-0000-los-angeles-lakers-at-miami-heat",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
       "selectedScore": 300,
-      "sourceEventId": "ahl-1028714",
+      "sourceEventId": "basketball-nba-20260320-0000-los-angeles-lakers-at-miami-heat",
       "reason": "5 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
           "score": 300,
           "reason": "5 followed/affiliate teams playing tonight"
+        },
+        {
+          "label": "[upset_alert] Shock Result",
+          "score": 200,
+          "reason": "upset_alert involving followed team(s): Boston Bruins"
         },
         {
           "label": "[clinch_watch] Playoff Stakes",
@@ -157,17 +162,12 @@
         {
           "label": "[playoff_push] Your Team's Push",
           "score": 170,
-          "reason": "playoff_push involving followed team(s): Boston Bruins"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): Boston Bruins"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
           "reason": "playoff_push involving followed team(s): Anaheim Ducks"
+        },
+        {
+          "label": "[playoff_push] Your Team's Push",
+          "score": 170,
+          "reason": "playoff_push involving followed team(s): Boston Bruins"
         },
         {
           "label": "[momentum] Hot Streak",
@@ -213,11 +213,11 @@
         "selectedVideoChannel": "Major League Paintball",
         "rejectedForAgeCount": 0
       },
-      "playoff_push_newengland": {
-        "searchQuery": "Boston Bruins playoff push March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
+      "upset_alert_nhl_2025021083": {
+        "searchQuery": "Winnipeg Jets vs Boston Bruins upset highlights March 2026",
+        "selectedVideoTitle": "March Madness Best Bets | Upsets, Sleepers & Bracket Busters",
+        "selectedVideoPublishedAt": "13 hours ago",
+        "selectedVideoChannel": "Break The Board Sports",
         "rejectedForAgeCount": 0
       },
       "momentum_bos": {
@@ -239,14 +239,14 @@
   "cards": [
     {
       "id": "rivalry_game_cricket-t20i-2vymn2",
-      "title": "Rivalry Game Tomorrow",
-      "subtitle": "New Zealand vs South Africa · Tomorrow at 6:15 AM",
+      "title": "Rivalry Game Tonight",
+      "subtitle": "New Zealand vs South Africa · Tonight at 6:15 AM",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-19T22:21:20.583Z",
+      "triggeredAt": "2026-03-20T04:26:54.712Z",
       "expiresAt": "2026-03-20T10:15:00.000Z",
       "kind": "rivalry_game",
       "region": "SouthAfrica",
@@ -287,7 +287,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-19T22:21:20.583Z",
+      "triggeredAt": "2026-03-20T04:26:54.712Z",
       "expiresAt": "2026-03-21T21:30:00.000Z",
       "kind": "clinch_watch",
       "region": "SouthAfrica",
@@ -319,8 +319,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-19T22:21:20.583Z",
-      "expiresAt": "2026-03-26T22:21:20.583Z",
+      "triggeredAt": "2026-03-20T04:26:54.712Z",
+      "expiresAt": "2026-03-27T04:26:54.712Z",
       "kind": "league_moment",
       "region": "SouthAfrica",
       "regionPriority": 1,
@@ -385,59 +385,60 @@
       }
     },
     {
-      "id": "playoff_push_newengland",
-      "title": "Bruins Push Week",
-      "subtitle": "Four games in seven days, including a back-to-back",
+      "id": "upset_alert_nhl_2025021083",
+      "title": "Upset Alert",
+      "subtitle": "Boston Bruins upsets Winnipeg Jets",
       "impact": {
-        "label": "Impacts: Saturday Game Day",
-        "ritualId": "saturday_spotlight",
-        "tabHint": "Rituals"
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
       },
-      "priority": 90,
-      "triggeredAt": "2026-03-19T22:21:20.583Z",
-      "expiresAt": "2026-03-26T22:21:20.583Z",
-      "kind": "playoff_push",
+      "priority": 98,
+      "triggeredAt": "2026-03-20T04:26:54.712Z",
+      "expiresAt": "2026-03-20T10:26:54.712Z",
+      "kind": "upset_alert",
       "region": "NewEngland",
       "regionPriority": 3,
       "regionLabel": "New England",
       "meta": {
-        "teams": [
-          {
-            "team": "Boston Bruins",
-            "league": "NHL",
-            "gamesInNext7Days": 4,
-            "gamesInNext5Days": 2,
-            "hasBackToBack": true,
-            "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
-          }
-        ],
+        "mode": "completed",
+        "upsetType": "team_upset",
+        "sport": "hockey",
+        "league": "NHL",
+        "favoriteName": "Winnipeg Jets",
+        "underdogName": "Boston Bruins",
+        "awayTeam": "Winnipeg Jets",
+        "homeTeam": "Boston Bruins",
+        "startTime": "2026-03-19T23:00:00.000Z",
         "eventIds": [
-          "nhl_2025021083",
-          "nhl_2025021108",
-          "nhl_2025021120",
-          "nhl_2025021135"
+          "nhl_2025021083"
         ],
-        "combinedTeamCount": 1,
-        "windowStart": "2026-03-19T22:21:20.583Z",
-        "windowEnd": "2026-03-26T22:21:20.583Z",
-        "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+        "reason": "Boston Bruins pulled off the upset against Winnipeg Jets.\n\nA result like this can shift momentum for the rest of the season."
       },
       "sports": [
         "hockey"
-      ]
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=s0LqnAsao8E",
+        "thumbnailUrl": "https://img.youtube.com/vi/s0LqnAsao8E/hqdefault.jpg",
+        "durationSeconds": 495,
+        "title": "March Madness Best Bets | Upsets, Sleepers & Bracket Busters",
+        "source": "youtube",
+        "channel": "Break The Board Sports",
+        "publishedAt": "13 hours ago"
+      }
     },
     {
       "id": "momentum_bos",
       "title": "Bruins Heating Up",
-      "subtitle": "3-game point streak",
+      "subtitle": "4-game point streak · +3 goal diff",
       "impact": {
         "label": "Feeds: Saturday Game Day",
         "ritualId": "saturday_spotlight",
         "tabHint": "Rituals"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-19T22:21:20.583Z",
-      "expiresAt": "2026-03-22T22:21:20.583Z",
+      "triggeredAt": "2026-03-20T04:26:54.712Z",
+      "expiresAt": "2026-03-23T04:26:54.712Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -446,10 +447,16 @@
         "team": "Boston Bruins",
         "league": "NHL",
         "abbrev": "BOS",
-        "winStreak": 0,
-        "pointStreak": 3,
-        "goalDiff": -1,
+        "winStreak": 1,
+        "pointStreak": 4,
+        "goalDiff": 3,
         "recentGames": [
+          {
+            "date": "2026-03-19T23:00:00Z",
+            "opponent": "Winnipeg",
+            "score": "6-1",
+            "result": "W"
+          },
           {
             "date": "2026-03-17T23:00:00Z",
             "opponent": "Montréal",
@@ -461,21 +468,14 @@
             "opponent": "New Jersey",
             "score": "4-3",
             "result": "L"
-          },
-          {
-            "date": "2026-03-14T19:00:00Z",
-            "opponent": "Washington",
-            "score": "2-3",
-            "result": "W"
           }
         ],
         "eventIds": [
-          "nhl_2025021083",
           "nhl_2025021108",
           "nhl_2025021120",
           "nhl_2025021135"
         ],
-        "reason": "Boston Bruins has earned points in 3 straight games"
+        "reason": "Boston Bruins has earned points in 4 straight games"
       },
       "sports": [
         "hockey"
@@ -500,7 +500,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-19T22:21:20.583Z",
+      "triggeredAt": "2026-03-20T04:26:54.712Z",
       "expiresAt": "2026-03-21T06:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -528,16 +528,18 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The San Diego Gulls, Tulsa Oilers, Los Angeles Lakers, Anaheim Ducks, and Boston Bruins all play tonight across the AHL, ECHL, NBA, NHL.",
-    "sourceEventId": "ahl-1028714",
+    "body": "The Los Angeles Lakers, Hurricanes, South Africa, Bath, and Providence Bruins all play tonight across the NBA, Super Rugby, T20I Cricket, English Premiership, AHL.",
+    "sourceEventId": "basketball-nba-20260320-0000-los-angeles-lakers-at-miami-heat",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
     },
     "sports": [
-      "hockey",
-      "basketball"
+      "basketball",
+      "rugby",
+      "cricket",
+      "hockey"
     ]
   }
 }
