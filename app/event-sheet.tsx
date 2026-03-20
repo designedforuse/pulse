@@ -188,11 +188,10 @@ export default function EventSheet() {
                   <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={52} />
                 )}
                 <Text style={styles.espnTeamName} numberOfLines={1}>
-                  {isTennisMatch ? (event.tennisPlayer1 || event.awayTeam) : displayTeamName(event.awayTeam, event.league)}
+                  {isTennisMatch
+                    ? <>{event.tennisPlayer1 || event.awayTeam}{event.tennisPlayer1Rank ? <Text style={[styles.tennisRank, { color: sportColor }]}> [{event.tennisPlayer1Rank}]</Text> : null}</>
+                    : displayTeamName(event.awayTeam, event.league)}
                 </Text>
-                {isTennisMatch && event.tennisPlayer1Rank ? (
-                  <Text style={styles.tennisRank}>#{event.tennisPlayer1Rank}</Text>
-                ) : null}
               </View>
 
               {/* Center: time+provider (upcoming/live) or score (final) */}
@@ -226,11 +225,10 @@ export default function EventSheet() {
                   <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={52} />
                 )}
                 <Text style={styles.espnTeamName} numberOfLines={1}>
-                  {isTennisMatch ? (event.tennisPlayer2 || event.homeTeam) : displayTeamName(event.homeTeam, event.league)}
+                  {isTennisMatch
+                    ? <>{event.tennisPlayer2 || event.homeTeam}{event.tennisPlayer2Rank ? <Text style={[styles.tennisRank, { color: sportColor }]}> [{event.tennisPlayer2Rank}]</Text> : null}</>
+                    : displayTeamName(event.homeTeam, event.league)}
                 </Text>
-                {isTennisMatch && event.tennisPlayer2Rank ? (
-                  <Text style={styles.tennisRank}>#{event.tennisPlayer2Rank}</Text>
-                ) : null}
               </View>
             </View>
           )}
@@ -346,10 +344,8 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   tennisRank: {
-    fontSize: 12,
-    fontFamily: "Inter_500Medium",
-    color: Colors.textMuted,
-    textAlign: "center",
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
   },
   espnCenter: {
     alignItems: "center",
