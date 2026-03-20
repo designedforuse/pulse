@@ -190,20 +190,9 @@ export default function EventSheet() {
                 </Text>
               </View>
 
-              {/* Center: time+provider (upcoming) or score+clock (live/final) */}
+              {/* Center: time+provider (upcoming/live) or score (final) */}
               <View style={styles.espnCenter}>
-                {isLiveState && score && !isCricket ? (
-                  <>
-                    <View style={styles.espnScoreRow}>
-                      <Text style={styles.espnScore}>{score.awayScore}</Text>
-                      <Text style={styles.espnScoreDash}>–</Text>
-                      <Text style={styles.espnScore}>{score.homeScore}</Text>
-                    </View>
-                    {displayClockText ? (
-                      <Text style={styles.espnClock}>{displayClockText}</Text>
-                    ) : null}
-                  </>
-                ) : isFinalState && score && !isCricket ? (
+                {isFinalState && score && !isCricket ? (
                   <>
                     <View style={styles.espnScoreRow}>
                       <Text style={styles.espnScoreFinal}>{score.awayScore}</Text>
@@ -237,8 +226,8 @@ export default function EventSheet() {
             </View>
           )}
 
-          {/* Cricket innings scores (shown below matchup since they're long strings) */}
-          {isCricket && (isLiveState || isFinalState) && score && (score.cricketAway || score.cricketHome) && (
+          {/* Cricket innings scores — final only */}
+          {isCricket && isFinalState && score && (score.cricketAway || score.cricketHome) && (
             <View style={styles.cricketScores}>
               {score.cricketAway ? (
                 <Text style={[styles.cricketInnings, isLiveState && styles.cricketInningsLive]} numberOfLines={2}>
