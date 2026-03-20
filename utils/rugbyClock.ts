@@ -12,7 +12,7 @@ export function getRugbyClockDisplay(score: ScoreData): string {
   }
 
   if (period === "HT" || period === "FT") return period;
-  if (period && clock) return `${period} ${clock}`;
+  if (period && clock) return `${period} · ${clock}`;
   if (clock) return clock;
   if (period) return period;
   return "";
