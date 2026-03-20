@@ -25540,7 +25540,7 @@
       "firstSeenTo": "2026-03-20T06:00:09.079Z"
     }
   ],
-  "lastUpdated": "2026-03-20T06:00:09.079Z",
+  "lastUpdated": "2026-03-20T22:36:25.264Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -25575,35 +25575,7 @@
       }
     ],
     "playersIngested": 615,
-    "movementsDetectedThisRun": [
-      {
-        "playerId": "8474568",
-        "playerName": "L. Schenn",
-        "fromTeam": "WPG",
-        "toTeam": "BUF",
-        "detectedAt": "2026-03-20T06:00:09.079Z",
-        "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-        "firstSeenTo": "2026-03-15T18:00:32.932Z"
-      },
-      {
-        "playerId": "8476871",
-        "playerName": "T. Pearson",
-        "fromTeam": "WPG",
-        "toTeam": "BUF",
-        "detectedAt": "2026-03-20T06:00:09.079Z",
-        "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-        "firstSeenTo": "2026-03-13T04:29:52.527Z"
-      },
-      {
-        "playerId": "8477346",
-        "playerName": "M. Weegar",
-        "fromTeam": "CGY",
-        "toTeam": "UTA",
-        "detectedAt": "2026-03-20T06:00:09.079Z",
-        "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-        "firstSeenTo": "2026-03-20T06:00:09.079Z"
-      }
-    ],
-    "timestamp": "2026-03-20T06:00:09.079Z"
+    "movementsDetectedThisRun": [],
+    "timestamp": "2026-03-20T22:36:25.264Z"
   }
 }

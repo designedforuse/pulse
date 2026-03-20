@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-20T06:00:09.079Z",
+  "lastUpdated": "2026-03-20T22:36:25.264Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "momentum": {
@@ -11,8 +11,8 @@
       "player_movement": {
         "Other": 1
       },
-      "rivalry_game": {
-        "SouthAfrica": 1
+      "upset_alert": {
+        "Other": 1
       },
       "clinch_watch": {
         "SouthAfrica": 1
@@ -24,7 +24,6 @@
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
       "SouthAfrica": [
-        "rivalry_game: Rivalry Game Tonight",
         "clinch_watch: Clinch Watch",
         "league_moment: Rivalry Weekend"
       ],
@@ -32,6 +31,7 @@
         "momentum: Bruins Heating Up"
       ],
       "Other": [
+        "upset_alert: Upset Alert",
         "playoff_push: Playoff Push",
         "player_movement: System Shuffle"
       ]
@@ -87,36 +87,8 @@
           }
         ],
         "playersIngested": 615,
-        "movementsDetectedThisRun": [
-          {
-            "playerId": "8474568",
-            "playerName": "L. Schenn",
-            "fromTeam": "WPG",
-            "toTeam": "BUF",
-            "detectedAt": "2026-03-20T06:00:09.079Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-15T18:00:32.932Z"
-          },
-          {
-            "playerId": "8476871",
-            "playerName": "T. Pearson",
-            "fromTeam": "WPG",
-            "toTeam": "BUF",
-            "detectedAt": "2026-03-20T06:00:09.079Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-13T04:29:52.527Z"
-          },
-          {
-            "playerId": "8477346",
-            "playerName": "M. Weegar",
-            "fromTeam": "CGY",
-            "toTeam": "UTA",
-            "detectedAt": "2026-03-20T06:00:09.079Z",
-            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
-            "firstSeenTo": "2026-03-20T06:00:09.079Z"
-          }
-        ],
-        "timestamp": "2026-03-20T06:00:09.079Z"
+        "movementsDetectedThisRun": [],
+        "timestamp": "2026-03-20T22:36:25.264Z"
       },
       "cacheHistoryCount": 788,
       "error": null
@@ -126,20 +98,20 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -298.0025219444444,
+      "hoursUntil": -314.6070177777778,
       "teamsEvaluated": 0,
       "triggers": {}
     },
     "rivalryGame": {
-      "rawRivalryCandidates": 1,
-      "rivalryAfterRegionFilter": 1,
-      "rivalryFinalCount": 1
+      "rawRivalryCandidates": 0,
+      "rivalryAfterRegionFilter": 0,
+      "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 0,
+      "rawUpsetCandidates": 2,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 0,
-      "upsetFinalCount": 0
+      "upsetCompletedCandidates": 2,
+      "upsetFinalCount": 1
     },
     "clinchWatch": {
       "rawClinchCandidates": 1,
@@ -186,9 +158,9 @@
           "reason": "momentum involving followed team(s): Boston Bruins"
         },
         {
-          "label": "[rivalry_game] Your Rivalry Night",
-          "score": 140,
-          "reason": "rivalry_game involving followed team(s): South Africa"
+          "label": "[upset_alert] Shock Result",
+          "score": 120,
+          "reason": "upset_alert (generic, no followed teams)"
         },
         {
           "label": "[league_moment] League Spotlight",
@@ -203,13 +175,6 @@
       ]
     },
     "videoSelection": {
-      "rivalry_game_cricket-t20i-2vymn2": {
-        "searchQuery": "New Zealand vs South Africa rivalry highlights",
-        "selectedVideoTitle": "Yuzvendra Chahal Sensational Decision! 🚫 No Alcohol for 6 Months | PBKS Star's Big Plan for IPL 2026",
-        "selectedVideoPublishedAt": "12 hours ago",
-        "selectedVideoChannel": "ABCDCINEMA1",
-        "rejectedForAgeCount": 0
-      },
       "clinch_watch_rugby-urc-pvsg7j": {
         "searchQuery": "Dragons clinch playoff berth March 2026",
         "selectedVideoTitle": null,
@@ -219,68 +184,35 @@
       },
       "league_moment_rivalry": {
         "searchQuery": "Rivalry Weekend sports March 2026",
-        "selectedVideoTitle": "3v3 Pro Paintball - NXL TAMPA BAY OPEN | MARCH 19 | PRO Paintball - #paintball #tampabay",
-        "selectedVideoPublishedAt": "Streamed 38 minutes ago",
-        "selectedVideoChannel": "Major League Paintball",
+        "selectedVideoTitle": "UFC FIGHT NIGHT: EVLOEV VS MURPHY LIVESTREAM! (EA Sports UFC 5)",
+        "selectedVideoPublishedAt": "Streamed 42 minutes ago",
+        "selectedVideoChannel": "Mr Rob",
         "rejectedForAgeCount": 0
       },
       "momentum_bos": {
         "searchQuery": "Boston Bruins highlights March 2026",
-        "selectedVideoTitle": "MARCHAND MADNESS | 37 Minutes of the BEST Brad Marchand Goals",
-        "selectedVideoPublishedAt": "6 hours ago",
-        "selectedVideoChannel": "NHL",
+        "selectedVideoTitle": "GAME NIGHT: Playoff picture SHIFTS in dramatic night. Blue Jackets, Kings IN, Islanders,Kraken OUT",
+        "selectedVideoPublishedAt": "14 hours ago",
+        "selectedVideoChannel": "Locked On NHL",
+        "rejectedForAgeCount": 0
+      },
+      "upset_alert_tennis-espn-173209": {
+        "searchQuery": "Draper vs Opelka upset highlights March 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
       "playoff_push_clinch_fallback_nhl_2025021098": {
         "searchQuery": "Anaheim Ducks playoff push March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
+        "selectedVideoTitle": "If Oil Hits $120… What Happens to Canola Prices?",
+        "selectedVideoPublishedAt": "7 hours ago",
+        "selectedVideoChannel": "What the Futures! Podcast",
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
-    {
-      "id": "rivalry_game_cricket-t20i-2vymn2",
-      "title": "Rivalry Game Tonight",
-      "subtitle": "New Zealand vs South Africa · Tonight at 6:15 AM",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 96,
-      "triggeredAt": "2026-03-20T06:00:09.079Z",
-      "expiresAt": "2026-03-20T10:15:00.000Z",
-      "kind": "rivalry_game",
-      "region": "SouthAfrica",
-      "regionPriority": 1,
-      "regionLabel": "South Africa",
-      "meta": {
-        "rivalryLabel": "Freedom Cup",
-        "sport": "cricket",
-        "league": "T20I Cricket",
-        "awayTeam": "New Zealand",
-        "homeTeam": "South Africa",
-        "startTime": "2026-03-20T06:15:00.000Z",
-        "eventIds": [
-          "cricket-t20i-2vymn2"
-        ],
-        "reason": "New Zealand and South Africa meet tonight in one of cricket's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
-      },
-      "sports": [
-        "cricket"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=P3qc2DujWIQ",
-        "thumbnailUrl": "https://img.youtube.com/vi/P3qc2DujWIQ/hqdefault.jpg",
-        "durationSeconds": 126,
-        "title": "Yuzvendra Chahal Sensational Decision! 🚫 No Alcohol for 6 Months | PBKS Star's Big Plan for IPL 2026",
-        "source": "youtube",
-        "channel": "ABCDCINEMA1",
-        "publishedAt": "12 hours ago"
-      }
-    },
     {
       "id": "clinch_watch_rugby-urc-pvsg7j",
       "title": "Clinch Watch",
@@ -291,7 +223,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-20T06:00:09.079Z",
+      "triggeredAt": "2026-03-20T22:36:25.264Z",
       "expiresAt": "2026-03-21T21:30:00.000Z",
       "kind": "clinch_watch",
       "region": "SouthAfrica",
@@ -317,33 +249,26 @@
     {
       "id": "league_moment_rivalry",
       "title": "Rivalry Weekend",
-      "subtitle": "4 rivalry matchups in the next 7 days",
+      "subtitle": "3 rivalry matchups in the next 7 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-20T06:00:09.079Z",
-      "expiresAt": "2026-03-27T06:00:09.079Z",
+      "triggeredAt": "2026-03-20T22:36:25.264Z",
+      "expiresAt": "2026-03-27T22:36:25.264Z",
       "kind": "league_moment",
       "region": "SouthAfrica",
       "regionPriority": 1,
       "regionLabel": "South Africa",
       "meta": {
         "type": "rivalry",
-        "matchCount": 4,
+        "matchCount": 3,
         "rivalries": [
           "Freedom Cup",
           "Madrid Derby"
         ],
         "matches": [
-          {
-            "label": "Freedom Cup",
-            "away": "New Zealand",
-            "home": "South Africa",
-            "league": "T20I Cricket",
-            "startTime": "2026-03-20T06:15:00.000Z"
-          },
           {
             "label": "Freedom Cup",
             "away": "New Zealand",
@@ -367,25 +292,24 @@
           }
         ],
         "eventIds": [
-          "cricket-t20i-2vymn2",
           "cricket-t20i-gylsxg",
           "soccer-laliga-20260322-2000-atl-tico-madrid-at-real-madrid",
           "cricket-t20i-o5z0f0"
         ],
-        "reason": "4 known rivalry matchup(s) found: Freedom Cup, Madrid Derby"
+        "reason": "3 known rivalry matchup(s) found: Freedom Cup, Madrid Derby"
       },
       "sports": [
         "cricket",
         "soccer"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=mSPQRXHykko",
-        "thumbnailUrl": "https://img.youtube.com/vi/mSPQRXHykko/hqdefault.jpg",
-        "durationSeconds": 35755,
-        "title": "3v3 Pro Paintball - NXL TAMPA BAY OPEN | MARCH 19 | PRO Paintball - #paintball #tampabay",
+        "url": "https://www.youtube.com/watch?v=OD_BvIBAqOM",
+        "thumbnailUrl": "https://img.youtube.com/vi/OD_BvIBAqOM/hqdefault.jpg",
+        "durationSeconds": 4992,
+        "title": "UFC FIGHT NIGHT: EVLOEV VS MURPHY LIVESTREAM! (EA Sports UFC 5)",
         "source": "youtube",
-        "channel": "Major League Paintball",
-        "publishedAt": "Streamed 38 minutes ago"
+        "channel": "Mr Rob",
+        "publishedAt": "Streamed 42 minutes ago"
       }
     },
     {
@@ -398,8 +322,8 @@
         "tabHint": "Rituals"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-20T06:00:09.079Z",
-      "expiresAt": "2026-03-23T06:00:09.079Z",
+      "triggeredAt": "2026-03-20T22:36:25.264Z",
+      "expiresAt": "2026-03-23T22:36:25.264Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -442,14 +366,49 @@
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=VKF7u1OEg2E",
-        "thumbnailUrl": "https://img.youtube.com/vi/VKF7u1OEg2E/hqdefault.jpg",
-        "durationSeconds": 2221,
-        "title": "MARCHAND MADNESS | 37 Minutes of the BEST Brad Marchand Goals",
+        "url": "https://www.youtube.com/watch?v=XmeDjBZFl0I",
+        "thumbnailUrl": "https://img.youtube.com/vi/XmeDjBZFl0I/hqdefault.jpg",
+        "durationSeconds": 2300,
+        "title": "GAME NIGHT: Playoff picture SHIFTS in dramatic night. Blue Jackets, Kings IN, Islanders,Kraken OUT",
         "source": "youtube",
-        "channel": "NHL",
-        "publishedAt": "6 hours ago"
+        "channel": "Locked On NHL",
+        "publishedAt": "14 hours ago"
       }
+    },
+    {
+      "id": "upset_alert_tennis-espn-173209",
+      "title": "Upset Alert",
+      "subtitle": "Opelka stuns Draper at Miami Open",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 98,
+      "triggeredAt": "2026-03-20T22:36:25.264Z",
+      "expiresAt": "2026-03-21T04:36:25.264Z",
+      "kind": "upset_alert",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "mode": "completed",
+        "upsetType": "tennis_seed_upset",
+        "sport": "tennis",
+        "league": "ATP Masters 1000",
+        "favoriteName": "Draper",
+        "underdogName": "Opelka",
+        "favoriteRank": 25,
+        "awayTeam": "Opelka",
+        "homeTeam": "Draper",
+        "startTime": "2026-03-20T20:35:00.000Z",
+        "eventIds": [
+          "tennis-espn-173209"
+        ],
+        "reason": "Draper (seed 25) entered as the higher seed, but Opelka knocked Draper out.\n\nThis opens up the draw and changes the shape of the tournament."
+      },
+      "sports": [
+        "tennis"
+      ]
     },
     {
       "id": "playoff_push_clinch_fallback_nhl_2025021098",
@@ -461,7 +420,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-20T06:00:09.079Z",
+      "triggeredAt": "2026-03-20T22:36:25.264Z",
       "expiresAt": "2026-03-21T06:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -482,7 +441,16 @@
       },
       "sports": [
         "hockey"
-      ]
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=m3iuCkUR0qY",
+        "thumbnailUrl": "https://img.youtube.com/vi/m3iuCkUR0qY/hqdefault.jpg",
+        "durationSeconds": 5589,
+        "title": "If Oil Hits $120… What Happens to Canola Prices?",
+        "source": "youtube",
+        "channel": "What the Futures! Podcast",
+        "publishedAt": "7 hours ago"
+      }
     },
     {
       "id": "player_movement_system",
@@ -493,8 +461,8 @@
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-03-20T06:00:09.079Z",
-      "expiresAt": "2026-03-27T06:00:09.079Z",
+      "triggeredAt": "2026-03-20T22:36:25.264Z",
+      "expiresAt": "2026-03-27T22:36:25.264Z",
       "kind": "player_movement",
       "region": "Other",
       "regionPriority": 99,

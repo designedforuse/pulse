@@ -76,14 +76,22 @@
     }
   },
   "playoff_push:anaheim ducks playoff push march 2026": {
-    "video": null,
-    "fetchedAt": "2026-03-19T21:10:17.698Z",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=m3iuCkUR0qY",
+      "thumbnailUrl": "https://img.youtube.com/vi/m3iuCkUR0qY/hqdefault.jpg",
+      "durationSeconds": 5589,
+      "title": "If Oil Hits $120… What Happens to Canola Prices?",
+      "source": "youtube",
+      "channel": "What the Futures! Podcast",
+      "publishedAt": "7 hours ago"
+    },
+    "fetchedAt": "2026-03-20T22:36:36.748Z",
     "query": "Anaheim Ducks playoff push March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push March 2026",
-      "selectedVideoTitle": null,
-      "selectedVideoPublishedAt": null,
-      "selectedVideoChannel": null,
+      "selectedVideoTitle": "If Oil Hits $120… What Happens to Canola Prices?",
+      "selectedVideoPublishedAt": "7 hours ago",
+      "selectedVideoChannel": "What the Futures! Podcast",
       "rejectedForAgeCount": 0
     }
   },
@@ -225,21 +233,21 @@
   },
   "momentum:boston bruins highlights march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=VKF7u1OEg2E",
-      "thumbnailUrl": "https://img.youtube.com/vi/VKF7u1OEg2E/hqdefault.jpg",
-      "durationSeconds": 2221,
-      "title": "MARCHAND MADNESS | 37 Minutes of the BEST Brad Marchand Goals",
+      "url": "https://www.youtube.com/watch?v=XmeDjBZFl0I",
+      "thumbnailUrl": "https://img.youtube.com/vi/XmeDjBZFl0I/hqdefault.jpg",
+      "durationSeconds": 2300,
+      "title": "GAME NIGHT: Playoff picture SHIFTS in dramatic night. Blue Jackets, Kings IN, Islanders,Kraken OUT",
       "source": "youtube",
-      "channel": "NHL",
-      "publishedAt": "6 hours ago"
+      "channel": "Locked On NHL",
+      "publishedAt": "14 hours ago"
     },
-    "fetchedAt": "2026-03-19T21:10:17.492Z",
+    "fetchedAt": "2026-03-20T22:36:35.491Z",
     "query": "Boston Bruins highlights March 2026",
     "debug": {
       "searchQuery": "Boston Bruins highlights March 2026",
-      "selectedVideoTitle": "MARCHAND MADNESS | 37 Minutes of the BEST Brad Marchand Goals",
-      "selectedVideoPublishedAt": "6 hours ago",
-      "selectedVideoChannel": "NHL",
+      "selectedVideoTitle": "GAME NIGHT: Playoff picture SHIFTS in dramatic night. Blue Jackets, Kings IN, Islanders,Kraken OUT",
+      "selectedVideoPublishedAt": "14 hours ago",
+      "selectedVideoChannel": "Locked On NHL",
       "rejectedForAgeCount": 0
     }
   },
@@ -377,21 +385,21 @@
   },
   "league_moment:rivalry weekend sports march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=mSPQRXHykko",
-      "thumbnailUrl": "https://img.youtube.com/vi/mSPQRXHykko/hqdefault.jpg",
-      "durationSeconds": 35755,
-      "title": "3v3 Pro Paintball - NXL TAMPA BAY OPEN | MARCH 19 | PRO Paintball - #paintball #tampabay",
+      "url": "https://www.youtube.com/watch?v=OD_BvIBAqOM",
+      "thumbnailUrl": "https://img.youtube.com/vi/OD_BvIBAqOM/hqdefault.jpg",
+      "durationSeconds": 4992,
+      "title": "UFC FIGHT NIGHT: EVLOEV VS MURPHY LIVESTREAM! (EA Sports UFC 5)",
       "source": "youtube",
-      "channel": "Major League Paintball",
-      "publishedAt": "Streamed 38 minutes ago"
+      "channel": "Mr Rob",
+      "publishedAt": "Streamed 42 minutes ago"
     },
-    "fetchedAt": "2026-03-19T22:21:30.551Z",
+    "fetchedAt": "2026-03-20T22:36:35.135Z",
     "query": "Rivalry Weekend sports March 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports March 2026",
-      "selectedVideoTitle": "3v3 Pro Paintball - NXL TAMPA BAY OPEN | MARCH 19 | PRO Paintball - #paintball #tampabay",
-      "selectedVideoPublishedAt": "Streamed 38 minutes ago",
-      "selectedVideoChannel": "Major League Paintball",
+      "selectedVideoTitle": "UFC FIGHT NIGHT: EVLOEV VS MURPHY LIVESTREAM! (EA Sports UFC 5)",
+      "selectedVideoPublishedAt": "Streamed 42 minutes ago",
+      "selectedVideoChannel": "Mr Rob",
       "rejectedForAgeCount": 0
     }
   },
@@ -409,7 +417,7 @@
   },
   "clinch_watch:dragons clinch playoff berth march 2026": {
     "video": null,
-    "fetchedAt": "2026-03-19T21:10:17.011Z",
+    "fetchedAt": "2026-03-20T22:36:34.771Z",
     "query": "Dragons clinch playoff berth March 2026",
     "debug": {
       "searchQuery": "Dragons clinch playoff berth March 2026",
@@ -456,6 +464,18 @@
       "selectedVideoTitle": "March Madness Best Bets | Upsets, Sleepers & Bracket Busters",
       "selectedVideoPublishedAt": "13 hours ago",
       "selectedVideoChannel": "Break The Board Sports",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:draper vs opelka upset highlights march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-20T22:36:35.671Z",
+    "query": "Draper vs Opelka upset highlights March 2026",
+    "debug": {
+      "searchQuery": "Draper vs Opelka upset highlights March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   }
