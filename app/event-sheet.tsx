@@ -149,6 +149,9 @@ export default function EventSheet() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.dragHandleBar}>
+        <View style={styles.dragHandle} />
+      </View>
       <View style={[styles.content, { paddingBottom: bottomPadding }]}>
         <View style={styles.topSection}>
           {/* League chip */}
@@ -281,6 +284,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.card,
+  },
+  dragHandleBar: {
+    alignItems: "center",
+    paddingTop: 12,
+    paddingBottom: 4,
+  },
+  dragHandle: {
+    width: 36,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: "rgba(255,255,255,0.2)",
   },
   content: {
     flex: 1,
