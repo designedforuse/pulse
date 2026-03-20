@@ -910,6 +910,9 @@ export function evaluateSlot4Promotion(
 
     if (isTerminalEvent(event, now, getScoreStatus)) continue;
 
+    // Never promote a game that is currently in intermission — signals may be stale
+    if (isAtBreak(event, getScoreData)) continue;
+
     const score = computeActivityScore(
       event,
       getScoreData?.(event.id),
