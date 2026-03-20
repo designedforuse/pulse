@@ -679,8 +679,8 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
   let totalRows = 0;
   let pagesRead = 0;
   // API pagination is non-chronological so featured matches can be anywhere.
-  // 20 pages × 25 = 500 matches scanned. 2 runs/day = 40 hits, well within 100/day limit.
-  const MAX_PAGES = 20;
+  // 10 pages × 25 = 250 matches scanned. 2 runs/day = 20 hits, stays within 100/day budget.
+  const MAX_PAGES = 10;
 
   while (pagesRead < MAX_PAGES) {
     const page = await fetchMatchesPage(apiKey, offset);

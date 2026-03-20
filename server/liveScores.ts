@@ -861,7 +861,7 @@ async function fetchNcaaHockeyScores(
 }
 
 let cricketScoreCache: { data: Record<string, ScoreData>; ts: number } = { data: {}, ts: 0 };
-const CRICKET_CACHE_TTL = 300_000;
+const CRICKET_CACHE_TTL = 20 * 60 * 1000; // 20 min — keeps daily hits under 100 on free tier
 
 function cricScoreTeamMatches(cricName: string, ourTeam: string): boolean {
   const clean = cricName.replace(/\s*\[[^\]]*\]/g, "").trim().toLowerCase();
@@ -954,9 +954,8 @@ async function fetchCricketScores(
     return { ...cricketScoreCache.data };
   }
 
-  if (Object.keys(scores).length > 0) {
-    cricketScoreCache = { data: { ...scores }, ts: Date.now() };
-  }
+  // Always update cache timestamp so the TTL is respected even when no matches found
+  cricketScoreCache = { data: { ...scores }, ts: Date.now() };
 
   return scores;
 }
