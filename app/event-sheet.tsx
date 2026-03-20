@@ -303,7 +303,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   topSection: {
-    gap: 20,
+    gap: 8,
   },
   headerLine: {
     flexDirection: "row",
@@ -339,7 +339,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 20,
+    paddingVertical: 8,
   },
   espnTeam: {
     flex: 1,
