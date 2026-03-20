@@ -209,14 +209,17 @@ export default function EventSheet() {
                     <Text style={styles.espnFinalLabel}>{displayStatusText || "FT"}</Text>
                   </>
                 ) : isLiveState ? (
-                  <View style={styles.liveChip}>
-                    <View style={styles.liveDot} />
-                    <Text style={styles.liveChipText}>
-                      {displayClockText?.includes(" · ")
-                        ? `LIVE ${displayClockText.split(" · ")[0]}`
-                        : "LIVE"}
-                    </Text>
-                  </View>
+                  <>
+                    <View style={styles.liveChip}>
+                      <View style={styles.liveDot} />
+                      <Text style={styles.liveChipText}>
+                        {displayClockText?.includes(" · ")
+                          ? `LIVE ${displayClockText.split(" · ")[0]}`
+                          : "LIVE"}
+                      </Text>
+                    </View>
+                    {providerBrandId && <ProviderLogo providerId={providerBrandId} size={22} />}
+                  </>
                 ) : (
                   <>
                     <Text style={styles.espnTime}>{timeLabel}</Text>
