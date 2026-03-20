@@ -206,6 +206,15 @@ function detectLateCloseGame(
     if (away >= 1 && home >= 1 && Math.abs(away - home) <= 1) return true;
   }
 
+  if (sport === "basketball") {
+    // NBA: Q4 = periodNumber 4, OT = 5+. NCAAB: 2nd half = periodNumber 2, OT = 3+.
+    const isQ4orLater = periodNumber >= 4 || period.includes("q4") || period.includes("ot");
+    const isNcaabSecondHalf = periodNumber >= 2 && period.includes("2h");
+    const isEndgame = isQ4orLater || isNcaabSecondHalf;
+    const isLate = secondsRemaining !== undefined ? secondsRemaining <= 120 : false;
+    return isEndgame && isLate && diff <= 5; // within 5 = two-possession game
+  }
+
   return false;
 }
 

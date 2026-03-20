@@ -1176,11 +1176,18 @@ async function fetchNbaScores(eventIds: string[]): Promise<Record<string, ScoreD
             else if (periodNum === 5) period = "OT";
             else if (periodNum > 5) period = `${periodNum - 4}OT`;
 
+            const clockParts = clock.split(":");
+            const secondsRem = clockParts.length === 2
+              ? (parseInt(clockParts[0], 10) * 60 + parseInt(clockParts[1], 10)) || undefined
+              : undefined;
+
             scores[eventId] = {
               awayScore: parseInt(awayComp.score || "0", 10),
               homeScore: parseInt(homeComp.score || "0", 10),
               period: clock ? `${period} · ${clock}` : period,
               status: "live",
+              periodNumber: periodNum,
+              secondsRemaining: secondsRem,
             };
           } else if (statusState === "post") {
             scores[eventId] = {
@@ -1247,11 +1254,18 @@ async function fetchNcaabBasketballScores(eventIds: string[]): Promise<Record<st
             else if (periodNum === 3) period = "OT";
             else if (periodNum > 3) period = `${periodNum - 2}OT`;
 
+            const clockParts = clock.split(":");
+            const secondsRem = clockParts.length === 2
+              ? (parseInt(clockParts[0], 10) * 60 + parseInt(clockParts[1], 10)) || undefined
+              : undefined;
+
             scores[eventId] = {
               awayScore: parseInt(awayComp.score || "0", 10),
               homeScore: parseInt(homeComp.score || "0", 10),
               period: clock ? `${period} · ${clock}` : period,
               status: "live",
+              periodNumber: periodNum,
+              secondsRemaining: secondsRem,
             };
           } else if (statusState === "post") {
             scores[eventId] = {

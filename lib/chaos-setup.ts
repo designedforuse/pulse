@@ -86,6 +86,23 @@ export function getTensionRank(
     else if (/\bsprint\b/.test(sessionTitle)) rank = 2;
     else if (/\bqualifying\b/.test(sessionTitle)) rank = 2;
     else rank = 1;
+  } else if (sport === "basketball") {
+    // NBA: periodNumber 4 = Q4, 5+ = OT. NCAAB: 2 = 2nd half, 3+ = OT.
+    const isQ4orLater = (score.periodNumber ?? 0) >= 4
+      || period.includes("q4") || period.includes("ot");
+    // NCAAB 2nd half is also endgame territory
+    const isNcaabSecondHalf = (score.periodNumber ?? 0) >= 2 && period.includes("2h");
+    const isEndgame = isQ4orLater || isNcaabSecondHalf;
+    const secs = score.secondsRemaining;
+    const isLastTwoMin = isEndgame && secs !== undefined && secs <= 120;
+    const isLastMin = isEndgame && secs !== undefined && secs <= 60;
+
+    if (isLastMin && diff <= 5) rank = 4;        // HIGH DRAMA — final minute, within 5
+    else if (isLastTwoMin && diff <= 3) rank = 4; // HIGH DRAMA — final 2 min, within 3
+    else if (isLastTwoMin && diff <= 6) rank = 3; // Tight — final 2 min, within 6
+    else if (isEndgame && diff <= 3) rank = 3;    // Tight — Q4, within 3
+    else if (diff <= 1) rank = 2;                 // baseline: very close anywhere
+    else rank = 1;
   } else {
     if (diff <= 1) rank = 3;
     else if (diff <= 2) rank = 2;
