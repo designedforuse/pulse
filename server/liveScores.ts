@@ -547,14 +547,16 @@ async function fetchRugbyScores(
               const detail = statusDetail || "";
               const description = comp.status?.type?.description || "";
               const periodNum = comp.status?.period || 0;
+              const rawClock = comp.status?.displayClock || comp.status?.type?.detail || "";
+              const clock = /^\d+[''']?$/.test(rawClock.trim()) ? rawClock.trim().replace(/[''']/, "'") : undefined;
 
               let period = "";
 
               if (/half\s*time/i.test(detail) || detail === "HT" || /half\s*time/i.test(description)) {
                 period = "HT";
-              } else if (periodNum === 1 || /first\s*half/i.test(description)) {
+              } else if (periodNum === 1 || /first\s*half/i.test(description) || /STATUS_FIRST_HALF/i.test(comp.status?.type?.name || "")) {
                 period = "1H";
-              } else if (periodNum === 2 || /second\s*half/i.test(description)) {
+              } else if (periodNum === 2 || /second\s*half/i.test(description) || /STATUS_SECOND_HALF/i.test(comp.status?.type?.name || "")) {
                 period = "2H";
               }
 
@@ -562,6 +564,7 @@ async function fetchRugbyScores(
                 awayScore: parseInt(awayComp.score || "0", 10),
                 homeScore: parseInt(homeComp.score || "0", 10),
                 period: period || undefined,
+                clock,
                 status: "live",
               };
             } else if (statusState === "post") {
