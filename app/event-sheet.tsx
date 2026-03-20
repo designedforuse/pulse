@@ -208,6 +208,14 @@ export default function EventSheet() {
                     </View>
                     <Text style={styles.espnFinalLabel}>{displayStatusText || "FT"}</Text>
                   </>
+                ) : isLiveState ? (
+                  <View style={styles.liveChip}>
+                    <Text style={styles.liveChipText}>
+                      {displayClockText?.includes(" · ")
+                        ? `Live ${displayClockText.split(" · ")[0]}`
+                        : "Live"}
+                    </Text>
+                  </View>
                 ) : (
                   <>
                     <Text style={styles.espnTime}>{timeLabel}</Text>
@@ -366,6 +374,18 @@ const styles = StyleSheet.create({
     gap: 6,
     paddingHorizontal: 8,
     minWidth: 80,
+  },
+  liveChip: {
+    backgroundColor: "#FF453A",
+    paddingHorizontal: 14,
+    paddingVertical: 7,
+    borderRadius: 20,
+  },
+  liveChipText: {
+    fontSize: 13,
+    fontFamily: "Inter_700Bold",
+    color: "#FFFFFF",
+    letterSpacing: 0.3,
   },
   espnTime: {
     fontSize: 18,
