@@ -214,8 +214,17 @@ function detectPowerPlay(
 ): boolean {
   if (!current) return false;
   if (event.sport.toLowerCase() !== "hockey") return false;
-  if (current.lastGoalStrength === "pp" || current.lastGoalStrength === "sh") return true;
-  return false;
+
+  // Prefer live situationCode: "1551" format → [awayGoalie][awaySkaters][homeSkaters][homeGoalie]
+  // Unequal skater counts = active power play (or 3-on-5, etc.)
+  if (current.situationCode && current.situationCode.length === 4) {
+    const awaySkaters = parseInt(current.situationCode[1], 10);
+    const homeSkaters = parseInt(current.situationCode[2], 10);
+    return !isNaN(awaySkaters) && !isNaN(homeSkaters) && awaySkaters !== homeSkaters;
+  }
+
+  // Fallback: last goal was a power play or shorthanded goal (stale — used when situationCode unavailable)
+  return current.lastGoalStrength === "pp" || current.lastGoalStrength === "sh";
 }
 
 function detectGoaliePulled(

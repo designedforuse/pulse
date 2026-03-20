@@ -29,6 +29,7 @@ export interface ScoreData {
   lastGoalStrength?: string;
   lastGoalTeam?: string;
   goalCount?: number;
+  situationCode?: string;
   tennisSetScores?: TennisSetScore[];
   tennisGameScore?: { p1: string; p2: string };
   tennisServer?: 1 | 2;

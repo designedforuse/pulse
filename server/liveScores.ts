@@ -247,6 +247,7 @@ async function fetchNhlScores(eventIds: string[]): Promise<Record<string, ScoreD
         lastGoalStrength,
         lastGoalTeam,
         goalCount: goals.length,
+        situationCode: game.situationCode ?? undefined,
       };
     }
   } catch (err) {
