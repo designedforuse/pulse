@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   Pressable,
   Alert,
   Platform,
@@ -177,17 +178,21 @@ export default function EventSheet() {
             <View style={styles.espnMatchup}>
               {/* Away team */}
               <View style={styles.espnTeam}>
-                <TeamLogo
-                  teamName={isTennisMatch ? (event.awayTeam) : event.awayTeam}
-                  league={event.league}
-                  sport={event.sport}
-                  size={52}
-                />
-                <Text style={styles.espnTeamName} numberOfLines={2}>
-                  {isTennisMatch
-                    ? (event.tennisPlayer1Rank ? `#${event.tennisPlayer1Rank} ` : "") + (event.tennisPlayer1 || event.awayTeam)
-                    : displayTeamName(event.awayTeam, event.league)}
+                {isTennisMatch && event.tennisPlayer1Flag ? (
+                  <Image
+                    source={{ uri: event.tennisPlayer1Flag }}
+                    style={styles.tennisFlag}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={52} />
+                )}
+                <Text style={styles.espnTeamName} numberOfLines={1}>
+                  {isTennisMatch ? (event.tennisPlayer1 || event.awayTeam) : displayTeamName(event.awayTeam, event.league)}
                 </Text>
+                {isTennisMatch && event.tennisPlayer1Rank ? (
+                  <Text style={styles.tennisRank}>#{event.tennisPlayer1Rank}</Text>
+                ) : null}
               </View>
 
               {/* Center: time+provider (upcoming/live) or score (final) */}
@@ -211,17 +216,21 @@ export default function EventSheet() {
 
               {/* Home team */}
               <View style={styles.espnTeam}>
-                <TeamLogo
-                  teamName={event.homeTeam}
-                  league={event.league}
-                  sport={event.sport}
-                  size={52}
-                />
-                <Text style={styles.espnTeamName} numberOfLines={2}>
-                  {isTennisMatch
-                    ? (event.tennisPlayer2Rank ? `#${event.tennisPlayer2Rank} ` : "") + (event.tennisPlayer2 || event.homeTeam)
-                    : displayTeamName(event.homeTeam, event.league)}
+                {isTennisMatch && event.tennisPlayer2Flag ? (
+                  <Image
+                    source={{ uri: event.tennisPlayer2Flag }}
+                    style={styles.tennisFlag}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={52} />
+                )}
+                <Text style={styles.espnTeamName} numberOfLines={1}>
+                  {isTennisMatch ? (event.tennisPlayer2 || event.homeTeam) : displayTeamName(event.homeTeam, event.league)}
                 </Text>
+                {isTennisMatch && event.tennisPlayer2Rank ? (
+                  <Text style={styles.tennisRank}>#{event.tennisPlayer2Rank}</Text>
+                ) : null}
               </View>
             </View>
           )}
@@ -329,6 +338,17 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: "Inter_600SemiBold",
     color: Colors.textPrimary,
+    textAlign: "center",
+  },
+  tennisFlag: {
+    width: 64,
+    height: 42,
+    borderRadius: 6,
+  },
+  tennisRank: {
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textMuted,
     textAlign: "center",
   },
   espnCenter: {
