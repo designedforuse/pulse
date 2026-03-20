@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-20T04:26:54.635Z",
+  "lastUpdated": "2026-03-20T06:00:08.989Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -34,8 +34,8 @@
   "cricketSourceUsed": "cricapi",
   "nhlCount": 164,
   "ahlCount": 221,
-  "ahlAdded": 27,
-  "ahlUpdated": 187,
+  "ahlAdded": 26,
+  "ahlUpdated": 188,
   "ahlPruned": 26,
   "echlCount": 15,
   "echlAdded": 5,
@@ -131,8 +131,8 @@
   "championsLeaguePruned": 20,
   "championsLeagueSourceUsed": "espn",
   "europaLeagueCount": 20,
-  "europaLeagueAdded": 4,
-  "europaLeagueUpdated": 16,
+  "europaLeagueAdded": 0,
+  "europaLeagueUpdated": 20,
   "europaLeaguePruned": 20,
   "europaLeagueSourceUsed": "espn",
   "faCupCount": 12,
@@ -141,8 +141,8 @@
   "faCupPruned": 12,
   "faCupSourceUsed": "espn",
   "tennisCount": 15,
-  "tennisAdded": 2,
-  "tennisUpdated": 13,
+  "tennisAdded": 0,
+  "tennisUpdated": 15,
   "tennisPruned": 0,
   "tennisSourceUsed": "espn",
   "tennisTournamentCounts": {
@@ -150,13 +150,13 @@
     "Miami Open": 15,
     "Monte-Carlo Masters": 24
   },
-  "f1Count": 29,
+  "f1Count": 28,
   "f1Added": 0,
-  "f1Updated": 29,
+  "f1Updated": 28,
   "f1Pruned": 1,
   "f1SourceUsed": "espn-f1",
   "f1RaceCounts": {
-    "Australian Grand Prix": 4,
+    "Australian Grand Prix": 3,
     "Chinese Grand Prix": 5,
     "Japanese Grand Prix": 5,
     "Bahrain Grand Prix": 5,
@@ -174,44 +174,44 @@
     "PGA Championship": 4
   },
   "nbaCount": 265,
-  "nbaAdded": 6,
-  "nbaUpdated": 259,
-  "nbaPruned": 268,
+  "nbaAdded": 0,
+  "nbaUpdated": 265,
+  "nbaPruned": 265,
   "nbaSourceUsed": "espn",
   "ncaabCount": 14,
   "ncaabAdded": 0,
   "ncaabUpdated": 14,
-  "ncaabPruned": 19,
+  "ncaabPruned": 14,
   "ncaabSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-20T04:26:54.635Z",
+    "lastRefreshAt": "2026-03-20T06:00:08.989Z",
     "sources": {
       "nhl": {
         "count": 164,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 221,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 3,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 107,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 19,
@@ -231,87 +231,87 @@
       },
       "iccT20Wc": {
         "count": 1,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 22,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 60,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 40,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 40,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 36,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 36,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 37,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 58,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-07T00:30:00.000Z"
       },
       "championsCup": {
         "count": 19,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 4,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 20,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 20,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 12,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-06T20:00:00.000Z"
       },
       "tennis": {
         "count": 15,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Indian Wells Masters": 20,
@@ -320,11 +320,11 @@
         }
       },
       "f1": {
-        "count": 29,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "count": 28,
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
-          "Australian Grand Prix": 4,
+          "Australian Grand Prix": 3,
           "Chinese Grand Prix": 5,
           "Japanese Grand Prix": 5,
           "Bahrain Grand Prix": 5,
@@ -334,7 +334,7 @@
       },
       "golf": {
         "count": 12,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Players Championship": 4,
@@ -344,7 +344,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Boston Marathon": 1,
@@ -353,34 +353,17 @@
       },
       "nba": {
         "count": 265,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "ESPN API"
       },
       "ncaab": {
         "count": 14,
-        "lastFetchAt": "2026-03-20T04:26:54.635Z",
+        "lastFetchAt": "2026-03-20T06:00:08.989Z",
         "sourceName": "ESPN API"
       }
     }
   },
   "events": [
-    {
-      "id": "f1-espn-401839029",
-      "sport": "racing",
-      "league": "F1",
-      "awayTeam": "Practice 2",
-      "homeTeam": "Australian Grand Prix",
-      "startTimeLocal": "2026-03-06T05:00:00.000Z",
-      "endTimeLocal": "2026-03-06T06:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "espn-f1",
-      "leagueKey": "f1",
-      "providerReason": "Apple TV broadcast",
-      "eventType": "session",
-      "sessionTitle": "Practice 2",
-      "competitionName": "Australian Grand Prix"
-    },
     {
       "id": "rugby-superrugby-2drvl9",
       "sport": "rugby",
@@ -6891,7 +6874,7 @@
       "startTimeLocal": "2026-03-20T02:00:00.000Z",
       "endTimeLocal": "2026-03-20T04:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": true,
+      "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
         "SNP",
@@ -6909,7 +6892,7 @@
       "startTimeLocal": "2026-03-20T02:00:00.000Z",
       "endTimeLocal": "2026-03-20T04:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": true,
+      "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
         "ESPN+",
@@ -6927,7 +6910,7 @@
       "startTimeLocal": "2026-03-20T02:00:00.000Z",
       "endTimeLocal": "2026-03-20T04:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": true,
+      "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
         "MSG-B",
@@ -6959,7 +6942,7 @@
       "startTimeLocal": "2026-03-20T02:30:00.000Z",
       "endTimeLocal": "2026-03-20T05:15:00.000Z",
       "providerId": "primevideo",
-      "isLive": true,
+      "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
         "FDSNW",

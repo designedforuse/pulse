@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-20T04:26:54.712Z",
+  "lastUpdated": "2026-03-20T06:00:09.079Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "momentum": {
@@ -13,9 +13,6 @@
       },
       "rivalry_game": {
         "SouthAfrica": 1
-      },
-      "upset_alert": {
-        "NewEngland": 1
       },
       "clinch_watch": {
         "SouthAfrica": 1
@@ -32,11 +29,11 @@
         "league_moment: Rivalry Weekend"
       ],
       "NewEngland": [
-        "upset_alert: Upset Alert",
         "momentum: Bruins Heating Up"
       ],
       "Other": [
-        "playoff_push: Playoff Push"
+        "playoff_push: Playoff Push",
+        "player_movement: System Shuffle"
       ]
     },
     "droppedCandidatesReasons": [
@@ -46,25 +43,16 @@
         "region": "Other",
         "title": "Playoff Push",
         "reason": "max 1 playoff_push per region (Other)"
-      },
-      {
-        "id": "player_movement_system",
-        "kind": "player_movement",
-        "region": "Other",
-        "title": "System Shuffle",
-        "reason": "feed cap (max 6)"
       }
     ],
-    "totalBeforeCap": 8,
+    "totalBeforeCap": 7,
     "totalAfterCap": 6,
     "playerMovement": {
       "rawMovementCandidates": 1,
       "movementAfterRegionFilter": 1,
-      "movementAfterCap": 0,
-      "movementFinalCount": 0,
-      "movementDroppedReasons": [
-        "feed cap (max 6)"
-      ],
+      "movementAfterCap": 1,
+      "movementFinalCount": 1,
+      "movementDroppedReasons": [],
       "runMeta": {
         "observedTeams": [
           "ANA",
@@ -98,19 +86,47 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 624,
-        "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-20T04:26:54.712Z"
+        "playersIngested": 615,
+        "movementsDetectedThisRun": [
+          {
+            "playerId": "8474568",
+            "playerName": "L. Schenn",
+            "fromTeam": "WPG",
+            "toTeam": "BUF",
+            "detectedAt": "2026-03-20T06:00:09.079Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-15T18:00:32.932Z"
+          },
+          {
+            "playerId": "8476871",
+            "playerName": "T. Pearson",
+            "fromTeam": "WPG",
+            "toTeam": "BUF",
+            "detectedAt": "2026-03-20T06:00:09.079Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-13T04:29:52.527Z"
+          },
+          {
+            "playerId": "8477346",
+            "playerName": "M. Weegar",
+            "fromTeam": "CGY",
+            "toTeam": "UTA",
+            "detectedAt": "2026-03-20T06:00:09.079Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-20T06:00:09.079Z"
+          }
+        ],
+        "timestamp": "2026-03-20T06:00:09.079Z"
       },
-      "cacheHistoryCount": 787,
+      "cacheHistoryCount": 788,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 8,
+    "candidateCountBeforeCap": 7,
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -296.4485311111111,
+      "hoursUntil": -298.0025219444444,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -120,10 +136,10 @@
       "rivalryFinalCount": 1
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 1,
+      "rawUpsetCandidates": 0,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 1,
-      "upsetFinalCount": 1
+      "upsetCompletedCandidates": 0,
+      "upsetFinalCount": 0
     },
     "clinchWatch": {
       "rawClinchCandidates": 1,
@@ -148,11 +164,6 @@
           "label": "[multi_team_night] Your Sports Night",
           "score": 300,
           "reason": "5 followed/affiliate teams playing tonight"
-        },
-        {
-          "label": "[upset_alert] Shock Result",
-          "score": 200,
-          "reason": "upset_alert involving followed team(s): Boston Bruins"
         },
         {
           "label": "[clinch_watch] Playoff Stakes",
@@ -213,13 +224,6 @@
         "selectedVideoChannel": "Major League Paintball",
         "rejectedForAgeCount": 0
       },
-      "upset_alert_nhl_2025021083": {
-        "searchQuery": "Winnipeg Jets vs Boston Bruins upset highlights March 2026",
-        "selectedVideoTitle": "March Madness Best Bets | Upsets, Sleepers & Bracket Busters",
-        "selectedVideoPublishedAt": "13 hours ago",
-        "selectedVideoChannel": "Break The Board Sports",
-        "rejectedForAgeCount": 0
-      },
       "momentum_bos": {
         "searchQuery": "Boston Bruins highlights March 2026",
         "selectedVideoTitle": "MARCHAND MADNESS | 37 Minutes of the BEST Brad Marchand Goals",
@@ -246,7 +250,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-20T04:26:54.712Z",
+      "triggeredAt": "2026-03-20T06:00:09.079Z",
       "expiresAt": "2026-03-20T10:15:00.000Z",
       "kind": "rivalry_game",
       "region": "SouthAfrica",
@@ -287,7 +291,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-20T04:26:54.712Z",
+      "triggeredAt": "2026-03-20T06:00:09.079Z",
       "expiresAt": "2026-03-21T21:30:00.000Z",
       "kind": "clinch_watch",
       "region": "SouthAfrica",
@@ -319,8 +323,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-20T04:26:54.712Z",
-      "expiresAt": "2026-03-27T04:26:54.712Z",
+      "triggeredAt": "2026-03-20T06:00:09.079Z",
+      "expiresAt": "2026-03-27T06:00:09.079Z",
       "kind": "league_moment",
       "region": "SouthAfrica",
       "regionPriority": 1,
@@ -385,49 +389,6 @@
       }
     },
     {
-      "id": "upset_alert_nhl_2025021083",
-      "title": "Upset Alert",
-      "subtitle": "Boston Bruins upsets Winnipeg Jets",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 98,
-      "triggeredAt": "2026-03-20T04:26:54.712Z",
-      "expiresAt": "2026-03-20T10:26:54.712Z",
-      "kind": "upset_alert",
-      "region": "NewEngland",
-      "regionPriority": 3,
-      "regionLabel": "New England",
-      "meta": {
-        "mode": "completed",
-        "upsetType": "team_upset",
-        "sport": "hockey",
-        "league": "NHL",
-        "favoriteName": "Winnipeg Jets",
-        "underdogName": "Boston Bruins",
-        "awayTeam": "Winnipeg Jets",
-        "homeTeam": "Boston Bruins",
-        "startTime": "2026-03-19T23:00:00.000Z",
-        "eventIds": [
-          "nhl_2025021083"
-        ],
-        "reason": "Boston Bruins pulled off the upset against Winnipeg Jets.\n\nA result like this can shift momentum for the rest of the season."
-      },
-      "sports": [
-        "hockey"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=s0LqnAsao8E",
-        "thumbnailUrl": "https://img.youtube.com/vi/s0LqnAsao8E/hqdefault.jpg",
-        "durationSeconds": 495,
-        "title": "March Madness Best Bets | Upsets, Sleepers & Bracket Busters",
-        "source": "youtube",
-        "channel": "Break The Board Sports",
-        "publishedAt": "13 hours ago"
-      }
-    },
-    {
       "id": "momentum_bos",
       "title": "Bruins Heating Up",
       "subtitle": "4-game point streak · +3 goal diff",
@@ -437,8 +398,8 @@
         "tabHint": "Rituals"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-20T04:26:54.712Z",
-      "expiresAt": "2026-03-23T04:26:54.712Z",
+      "triggeredAt": "2026-03-20T06:00:09.079Z",
+      "expiresAt": "2026-03-23T06:00:09.079Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -500,7 +461,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-20T04:26:54.712Z",
+      "triggeredAt": "2026-03-20T06:00:09.079Z",
       "expiresAt": "2026-03-21T06:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -518,6 +479,215 @@
         ],
         "reason": "Anaheim Ducks has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
         "clinchFallback": true
+      },
+      "sports": [
+        "hockey"
+      ]
+    },
+    {
+      "id": "player_movement_system",
+      "title": "System Shuffle",
+      "subtitle": "23 player moves detected (STL ↔ DET ↔ NSH ↔ COL ↔ WSH ↔ VGK ↔ CHI ↔ EDM ↔ NYI ↔ TOR ↔ LAK ↔ PHI ↔ MIN ↔ SEA ↔ TBL ↔ CGY ↔ CAR ↔ ANA ↔ DAL ↔ VAN ↔ CBJ ↔ WPG ↔ BUF ↔ UTA)",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 85,
+      "triggeredAt": "2026-03-20T06:00:09.079Z",
+      "expiresAt": "2026-03-27T06:00:09.079Z",
+      "kind": "player_movement",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "movements": [
+          {
+            "player": "J. Faulk",
+            "from": "STL",
+            "to": "DET",
+            "detected": "2026-03-14T06:00:32.337Z",
+            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+            "firstSeenTo": "2026-03-14T06:00:32.337Z"
+          },
+          {
+            "player": "N. Blankenburg",
+            "from": "NSH",
+            "to": "COL",
+            "detected": "2026-03-14T06:00:32.337Z",
+            "lastSeenFrom": "2026-03-07T07:19:00.761Z",
+            "firstSeenTo": "2026-03-14T06:00:32.337Z"
+          },
+          {
+            "player": "N. Dowd",
+            "from": "WSH",
+            "to": "VGK",
+            "detected": "2026-03-14T18:00:34.353Z",
+            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
+            "firstSeenTo": "2026-03-14T06:00:32.337Z"
+          },
+          {
+            "player": "C. Murphy",
+            "from": "CHI",
+            "to": "EDM",
+            "detected": "2026-03-14T18:00:34.353Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-09T20:15:48.605Z"
+          },
+          {
+            "player": "J. Dickinson",
+            "from": "CHI",
+            "to": "EDM",
+            "detected": "2026-03-14T18:00:34.353Z",
+            "lastSeenFrom": "2026-03-04T04:02:55.897Z",
+            "firstSeenTo": "2026-03-09T20:15:48.605Z"
+          },
+          {
+            "player": "C. Dach",
+            "from": "CHI",
+            "to": "EDM",
+            "detected": "2026-03-14T18:00:34.353Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-09T20:15:48.605Z"
+          },
+          {
+            "player": "B. Schenn",
+            "from": "STL",
+            "to": "NYI",
+            "detected": "2026-03-15T18:00:32.932Z",
+            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+            "firstSeenTo": "2026-03-14T06:00:32.337Z"
+          },
+          {
+            "player": "S. Laughton",
+            "from": "TOR",
+            "to": "LAK",
+            "detected": "2026-03-15T18:00:32.932Z",
+            "lastSeenFrom": "2026-03-03T03:50:51.829Z",
+            "firstSeenTo": "2026-03-11T04:11:44.394Z"
+          },
+          {
+            "player": "B. Brink",
+            "from": "PHI",
+            "to": "MIN",
+            "detected": "2026-03-15T18:00:32.932Z",
+            "lastSeenFrom": "2026-03-02T07:07:18.792Z",
+            "firstSeenTo": "2026-03-07T20:12:59.450Z"
+          },
+          {
+            "player": "B. McMann",
+            "from": "TOR",
+            "to": "SEA",
+            "detected": "2026-03-15T18:00:32.932Z",
+            "lastSeenFrom": "2026-03-03T03:50:51.829Z",
+            "firstSeenTo": "2026-03-15T18:00:32.932Z"
+          },
+          {
+            "player": "J. Drouin",
+            "from": "NYI",
+            "to": "STL",
+            "detected": "2026-03-16T18:00:40.098Z",
+            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+            "firstSeenTo": "2026-03-15T18:00:32.932Z"
+          },
+          {
+            "player": "C. Perry",
+            "from": "LAK",
+            "to": "TBL",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
+            "firstSeenTo": "2026-03-18T18:00:38.134Z"
+          },
+          {
+            "player": "N. Kadri",
+            "from": "CGY",
+            "to": "COL",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-14T06:00:32.337Z"
+          },
+          {
+            "player": "N. Deslauriers",
+            "from": "PHI",
+            "to": "CAR",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-18T18:00:38.134Z"
+          },
+          {
+            "player": "R. Strome",
+            "from": "ANA",
+            "to": "CGY",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-06T03:20:47.423Z",
+            "firstSeenTo": "2026-03-18T18:00:38.134Z"
+          },
+          {
+            "player": "M. Bunting",
+            "from": "NSH",
+            "to": "DAL",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-07T07:19:00.761Z",
+            "firstSeenTo": "2026-03-18T18:00:38.134Z"
+          },
+          {
+            "player": "A. Mangiapane",
+            "from": "EDM",
+            "to": "CHI",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-06T05:30:49.106Z",
+            "firstSeenTo": "2026-03-15T18:00:32.932Z"
+          },
+          {
+            "player": "N. Roy",
+            "from": "TOR",
+            "to": "COL",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-05T04:50:57.276Z",
+            "firstSeenTo": "2026-03-14T06:00:32.337Z"
+          },
+          {
+            "player": "C. Garland",
+            "from": "VAN",
+            "to": "CBJ",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-15T18:00:32.932Z"
+          },
+          {
+            "player": "L. Stanley",
+            "from": "WPG",
+            "to": "BUF",
+            "detected": "2026-03-18T18:00:38.134Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-18T18:00:38.134Z"
+          },
+          {
+            "player": "L. Schenn",
+            "from": "WPG",
+            "to": "BUF",
+            "detected": "2026-03-20T06:00:09.079Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-15T18:00:32.932Z"
+          },
+          {
+            "player": "T. Pearson",
+            "from": "WPG",
+            "to": "BUF",
+            "detected": "2026-03-20T06:00:09.079Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-13T04:29:52.527Z"
+          },
+          {
+            "player": "M. Weegar",
+            "from": "CGY",
+            "to": "UTA",
+            "detected": "2026-03-20T06:00:09.079Z",
+            "lastSeenFrom": "2026-03-08T05:57:11.976Z",
+            "firstSeenTo": "2026-03-20T06:00:09.079Z"
+          }
+        ],
+        "count": 23,
+        "reason": "23 player(s) detected moving between tracked teams in the last 7 days"
       },
       "sports": [
         "hockey"
