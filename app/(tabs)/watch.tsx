@@ -920,6 +920,7 @@ export default function WatchScreen() {
   const [liveBannerActive, setLiveBannerActive] = useState(false);
   const [upNextBannerActive, setUpNextBannerActive] = useState(false);
   const stickyHeightRef = useRef(0);
+  const [stickyTopHeight, setStickyTopHeight] = useState(0);
   const liveSectionYRef = useRef(999999);
   const upNextSectionYRef = useRef(999999);
   const upNextChipOffsetRef = useRef(999999);
@@ -1277,7 +1278,10 @@ export default function WatchScreen() {
             paddingTop: (Platform.OS === "web" ? webTopInset : insets.top) + 12,
           },
         ]}
-        onLayout={(e) => { stickyHeightRef.current = e.nativeEvent.layout.height; }}
+        onLayout={(e) => {
+          stickyHeightRef.current = e.nativeEvent.layout.height;
+          setStickyTopHeight(e.nativeEvent.layout.height);
+        }}
       >
         <View style={styles.header}>
           <View style={styles.headerLeft}>
@@ -1372,7 +1376,7 @@ export default function WatchScreen() {
       </View>
 
       {upNextChipSticky && (showUpNextSportChips || showUpNextLeagueChips) && (
-        <View style={styles.stickyChipBar}>
+        <View style={[styles.stickyChipBar, { top: stickyTopHeight }]}>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -2168,10 +2172,14 @@ const styles = StyleSheet.create({
     textTransform: "uppercase" as const,
   },
   stickyChipBar: {
+    position: "absolute" as const,
+    left: 0,
+    right: 0,
+    zIndex: 10,
     backgroundColor: Colors.background,
     paddingHorizontal: 16,
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: 8,
+    paddingBottom: 8,
   },
   upNextChipSection: {
     marginBottom: 8,
