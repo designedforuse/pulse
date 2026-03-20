@@ -610,6 +610,64 @@ function resolveJlTeam(jpName: string): string {
   return trimmed;
 }
 
+async function fetchJapanLeagueOneMatchDetail(matchId: string): Promise<{
+  clock?: string;
+  period?: string;
+} | null> {
+  try {
+    const res = await fetch(`https://league-one.jp/match/${matchId}`, {
+      headers: { "User-Agent": "Mozilla/5.0", "Accept-Encoding": "identity" },
+    });
+    if (!res.ok) return null;
+    const html = await res.text();
+
+    const progressStart = html.indexOf('id="match-progress"');
+    if (progressStart === -1) return null;
+    const progressHtml = html.slice(progressStart, progressStart + 15000);
+
+    // Extract all minute-based scoring events with running scores
+    const eventRe = /<span>\s*(\d+)min\s*<\/span>\s*<br[^>]*>\s*(\d+)\s*-\s*(\d+)/g;
+    const events: Array<{ minute: number; home: number; away: number }> = [];
+    let m: RegExpExecArray | null;
+    while ((m = eventRe.exec(progressHtml)) !== null) {
+      events.push({ minute: parseInt(m[1]), home: parseInt(m[2]), away: parseInt(m[3]) });
+    }
+    if (events.length === 0) return null;
+
+    const htMarkerIndex = progressHtml.indexOf("前半終了");
+    const last = events[events.length - 1];
+
+    let period: string;
+    let clock: string | undefined;
+
+    if (htMarkerIndex === -1) {
+      // Only first-half events seen — game is in first half
+      period = "1H";
+      clock = `${last.minute}'`;
+    } else {
+      // Half-time marker exists — check if any events come after it
+      const htEventRe = /<span>\s*(\d+)min\s*<\/span>/g;
+      let lastMinuteAfterHt: number | null = null;
+      let re2: RegExpExecArray | null;
+      const postHtHtml = progressHtml.slice(htMarkerIndex);
+      while ((re2 = htEventRe.exec(postHtHtml)) !== null) {
+        lastMinuteAfterHt = parseInt(re2[1]);
+      }
+      if (lastMinuteAfterHt !== null) {
+        period = "2H";
+        clock = `${lastMinuteAfterHt}'`;
+      } else {
+        period = "HT";
+      }
+    }
+
+    return { clock, period };
+  } catch (err) {
+    console.error("[liveScores] Japan League One detail fetch error:", err);
+    return null;
+  }
+}
+
 async function fetchJapanLeagueOneScores(
   events: { id: string; homeTeam: string; awayTeam: string }[]
 ): Promise<Record<string, ScoreData>> {
@@ -618,7 +676,7 @@ async function fetchJapanLeagueOneScores(
 
   try {
     const res = await fetch("https://league-one.jp/schedule/", {
-      headers: { "User-Agent": "Mozilla/5.0" },
+      headers: { "User-Agent": "Mozilla/5.0", "Accept-Encoding": "identity" },
     });
     if (!res.ok) return scores;
     const html = await res.text();
@@ -629,9 +687,12 @@ async function fetchJapanLeagueOneScores(
     const yesterdayStr = `${String(jstYesterday.getUTCMonth() + 1).padStart(2, "0")}.${String(jstYesterday.getUTCDate()).padStart(2, "0")}`;
 
     const scheduleBlocks = html.split(/<div class="c-schedule">/);
+    const liveDetailFetches: Array<{ eventId: string; matchId: string; swapped: boolean; homeScore: number; awayScore: number }> = [];
+
     for (const block of scheduleBlocks) {
       const detailM = block.match(/<a href="\/match\/(\d+)" class="btn-match-detail">([^<]+)<\/a>/);
       if (!detailM) continue;
+      const matchId = detailM[1];
       const statusText = detailM[2];
       const isLive = statusText.includes("試合中");
       const isFinal = statusText.includes("試合終了");
@@ -662,10 +723,28 @@ async function fetchJapanLeagueOneScores(
           scores[ourEvent.id] = {
             homeScore: swappedMatch ? awayScore : homeScore,
             awayScore: swappedMatch ? homeScore : awayScore,
-            period: isLive ? undefined : "FT",
+            period: isFinal ? "FT" : undefined,
             status: isLive ? "live" : "final",
           };
+          if (isLive) {
+            liveDetailFetches.push({ eventId: ourEvent.id, matchId, swapped: !!swappedMatch, homeScore, awayScore });
+          }
           break;
+        }
+      }
+    }
+
+    // For live games, fetch detail pages in parallel to get minute + period
+    if (liveDetailFetches.length > 0) {
+      const details = await Promise.all(
+        liveDetailFetches.map((f) => fetchJapanLeagueOneMatchDetail(f.matchId))
+      );
+      for (let i = 0; i < liveDetailFetches.length; i++) {
+        const detail = details[i];
+        const f = liveDetailFetches[i];
+        if (detail && scores[f.eventId]) {
+          scores[f.eventId].period = detail.period;
+          scores[f.eventId].clock = detail.clock;
         }
       }
     }
