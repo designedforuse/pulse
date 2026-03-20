@@ -932,6 +932,12 @@ export default function WatchScreen() {
   const upNextSectionYRef = useRef(999999);
   const upNextChipOffsetRef = useRef(999999);
   const [upNextChipSticky, setUpNextChipSticky] = useState(false);
+  const inlineChipScrollRef = useRef<ScrollView>(null);
+  const stickyChipScrollRef = useRef<ScrollView>(null);
+  const resetChipScroll = useCallback(() => {
+    inlineChipScrollRef.current?.scrollTo({ x: 0, animated: false });
+    stickyChipScrollRef.current?.scrollTo({ x: 0, animated: false });
+  }, []);
 
   const getScoreStatus = useCallback(
     (id: string) => getScore(id)?.status,
@@ -1388,12 +1394,13 @@ export default function WatchScreen() {
       {upNextChipSticky && showUpNextChipBar && (
         <View style={[styles.stickyChipBar, { top: stickyTopHeight }]}>
           <ScrollView
+            ref={stickyChipScrollRef}
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.upNextChipRow}
           >
             <Pressable
-              onPress={() => { setUpNextSportFilter(null); setUpNextLeagueFilter(null); setUpNextExpanded(false); }}
+              onPress={() => { setUpNextSportFilter(null); setUpNextLeagueFilter(null); setUpNextExpanded(false); resetChipScroll(); }}
               style={[styles.upNextChip, !upNextSportFilter && styles.upNextChipActive]}
             >
               <Text style={[styles.upNextChipLabel, !upNextSportFilter && styles.upNextChipLabelActive]}>All</Text>
@@ -1404,7 +1411,7 @@ export default function WatchScreen() {
                 return (
                   <Pressable
                     key={`sticky-sport-${sc.key}`}
-                    onPress={() => { setUpNextSportFilter(sc.key); setUpNextLeagueFilter(null); setUpNextExpanded(false); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
+                    onPress={() => { setUpNextSportFilter(sc.key); setUpNextLeagueFilter(null); setUpNextExpanded(false); resetChipScroll(); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
                     style={styles.upNextChip}
                   >
                     <Text style={styles.upNextChipLabel}>{sc.label}</Text>
@@ -1424,7 +1431,7 @@ export default function WatchScreen() {
                   return (
                     <Pressable
                       key={`sticky-sport-sel-${sc.key}`}
-                      onPress={() => { if (upNextLeagueFilter) setUpNextLeagueFilter(null); else setUpNextSportFilter(null); setUpNextExpanded(false); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
+                      onPress={() => { if (upNextLeagueFilter) setUpNextLeagueFilter(null); else setUpNextSportFilter(null); setUpNextExpanded(false); resetChipScroll(); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
                       style={[styles.upNextChip, { backgroundColor: color + "18", borderColor: color + "44" }, !sportActive && { opacity: 0.55 }]}
                     >
                       <Text style={[styles.upNextChipLabel, { color }]}>{sc.label}</Text>
@@ -1440,7 +1447,7 @@ export default function WatchScreen() {
                   return (
                     <Pressable
                       key={`sticky-league-${lc.key}`}
-                      onPress={() => { setUpNextLeagueFilter(isActive ? null : lc.key); setUpNextExpanded(false); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
+                      onPress={() => { setUpNextLeagueFilter(isActive ? null : lc.key); setUpNextExpanded(false); resetChipScroll(); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
                       style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
                     >
                       <Text style={[styles.upNextChipLabel, isActive && { color }]}>{lc.label}</Text>
@@ -1577,12 +1584,13 @@ export default function WatchScreen() {
               onLayout={(e) => { upNextChipOffsetRef.current = e.nativeEvent.layout.y; }}
             >
               <ScrollView
+                ref={inlineChipScrollRef}
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={styles.upNextChipRow}
               >
                 <Pressable
-                  onPress={() => { setUpNextSportFilter(null); setUpNextLeagueFilter(null); setUpNextExpanded(false); }}
+                  onPress={() => { setUpNextSportFilter(null); setUpNextLeagueFilter(null); setUpNextExpanded(false); resetChipScroll(); }}
                   style={[styles.upNextChip, !upNextSportFilter && styles.upNextChipActive]}
                   testID="upnext-chip-all"
                 >
@@ -1595,7 +1603,7 @@ export default function WatchScreen() {
                     return (
                       <Pressable
                         key={`sport-${sc.key}`}
-                        onPress={() => { setUpNextSportFilter(sc.key); setUpNextLeagueFilter(null); setUpNextExpanded(false); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
+                        onPress={() => { setUpNextSportFilter(sc.key); setUpNextLeagueFilter(null); setUpNextExpanded(false); resetChipScroll(); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
                         style={styles.upNextChip}
                         testID={`upnext-chip-sport-${sc.key}`}
                       >
@@ -1616,7 +1624,7 @@ export default function WatchScreen() {
                       return (
                         <Pressable
                           key={`sport-sel-${sc.key}`}
-                          onPress={() => { if (upNextLeagueFilter) setUpNextLeagueFilter(null); else setUpNextSportFilter(null); setUpNextExpanded(false); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
+                          onPress={() => { if (upNextLeagueFilter) setUpNextLeagueFilter(null); else setUpNextSportFilter(null); setUpNextExpanded(false); resetChipScroll(); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
                           style={[styles.upNextChip, { backgroundColor: color + "18", borderColor: color + "44" }, !sportActive && { opacity: 0.55 }]}
                           testID={`upnext-chip-sport-${sc.key}`}
                         >
@@ -1633,7 +1641,7 @@ export default function WatchScreen() {
                       return (
                         <Pressable
                           key={`league-${lc.key}`}
-                          onPress={() => { setUpNextLeagueFilter(isActive ? null : lc.key); setUpNextExpanded(false); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
+                          onPress={() => { setUpNextLeagueFilter(isActive ? null : lc.key); setUpNextExpanded(false); resetChipScroll(); if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); }}
                           style={[styles.upNextChip, isActive && { backgroundColor: color + "18", borderColor: color + "44" }]}
                           testID={`upnext-chip-league-${lc.key}`}
                         >
