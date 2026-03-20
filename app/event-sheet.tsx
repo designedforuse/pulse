@@ -140,7 +140,9 @@ export default function EventSheet() {
       <View style={[styles.content, { paddingBottom: bottomPadding }]}>
         <View style={styles.topSection}>
           <View style={styles.headerLine}>
-            <Text style={[styles.headerLeague, { color: sportColor }]}>{leagueLabel}</Text>
+            <View style={[styles.leagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
+              <Text style={[styles.leagueChipText, { color: sportColor }]}>{leagueLabel}</Text>
+            </View>
           </View>
 
           {isTennisMatch ? (
@@ -148,19 +150,20 @@ export default function EventSheet() {
               {event.tournamentName && (
                 <Text style={[styles.venueText, { marginBottom: 8, color: "#CE93D8" }]}>{event.tournamentName}{event.tennisRound ? ` — ${event.tennisRound}` : ""}</Text>
               )}
-              <View style={styles.matchupRow}>
-                <View style={styles.teamSide}>
-                  <Text style={styles.teamName}>
-                    {event.tennisPlayer1Rank ? `#${event.tennisPlayer1Rank} ` : ""}{event.tennisPlayer1 || event.awayTeam}
+              <View style={styles.teamRowsContainer}>
+                <View style={styles.teamRow}>
+                  <Text style={styles.teamRowName} numberOfLines={1}>
+                    {event.tennisPlayer1Rank ? `#${event.tennisPlayer1Rank}  ` : ""}{event.tennisPlayer1 || event.awayTeam}
                   </Text>
-                  {score && <Text style={[styles.sheetScore, isLiveState && styles.sheetScoreLive]}>{score.awayScore}</Text>}
+                  <View style={{ flex: 1 }} />
+                  {score && <Text style={[styles.teamRowScore, isLiveState && styles.teamRowScoreLive]}>{score.awayScore}</Text>}
                 </View>
-                <Text style={styles.atText}>vs</Text>
-                <View style={styles.teamSide}>
-                  <Text style={styles.teamName}>
-                    {event.tennisPlayer2Rank ? `#${event.tennisPlayer2Rank} ` : ""}{event.tennisPlayer2 || event.homeTeam}
+                <View style={styles.teamRow}>
+                  <Text style={styles.teamRowName} numberOfLines={1}>
+                    {event.tennisPlayer2Rank ? `#${event.tennisPlayer2Rank}  ` : ""}{event.tennisPlayer2 || event.homeTeam}
                   </Text>
-                  {score && <Text style={[styles.sheetScore, isLiveState && styles.sheetScoreLive]}>{score.homeScore}</Text>}
+                  <View style={{ flex: 1 }} />
+                  {score && <Text style={[styles.teamRowScore, isLiveState && styles.teamRowScoreLive]}>{score.homeScore}</Text>}
                 </View>
               </View>
             </View>
@@ -183,21 +186,22 @@ export default function EventSheet() {
               ) : null}
             </View>
           ) : (
-            <View style={styles.matchupRow}>
-              <View style={styles.teamSide}>
-                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={28} />
-                <Text style={styles.teamName}>{displayTeamName(event.awayTeam, event.league)}</Text>
+            <View style={styles.teamRowsContainer}>
+              <View style={styles.teamRow}>
+                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={26} />
+                <Text style={styles.teamRowName} numberOfLines={1}>{displayTeamName(event.awayTeam, event.league)}</Text>
+                <View style={{ flex: 1 }} />
                 {score && event.sport === "cricket"
-                  ? score.cricketAway ? <Text style={[styles.sheetCricketScore, isLiveState && styles.sheetScoreLive]}>{score.cricketAway}</Text> : null
-                  : score && <Text style={[styles.sheetScore, isLiveState && styles.sheetScoreLive]}>{score.awayScore}</Text>}
+                  ? score.cricketAway ? <Text style={[styles.teamRowCricketScore, isLiveState && styles.teamRowScoreLive]}>{score.cricketAway}</Text> : null
+                  : score && <Text style={[styles.teamRowScore, isLiveState && styles.teamRowScoreLive]}>{score.awayScore}</Text>}
               </View>
-              <Text style={styles.atText}>{["NHL", "AHL", "ECHL", "NCAA Hockey", "MLS", "USL"].includes(event.league) ? "at" : "vs"}</Text>
-              <View style={styles.teamSide}>
-                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={28} />
-                <Text style={styles.teamName}>{displayTeamName(event.homeTeam, event.league)}</Text>
+              <View style={styles.teamRow}>
+                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={26} />
+                <Text style={styles.teamRowName} numberOfLines={1}>{displayTeamName(event.homeTeam, event.league)}</Text>
+                <View style={{ flex: 1 }} />
                 {score && event.sport === "cricket"
-                  ? score.cricketHome ? <Text style={[styles.sheetCricketScore, isLiveState && styles.sheetScoreLive]}>{score.cricketHome}</Text> : null
-                  : score && <Text style={[styles.sheetScore, isLiveState && styles.sheetScoreLive]}>{score.homeScore}</Text>}
+                  ? score.cricketHome ? <Text style={[styles.teamRowCricketScore, isLiveState && styles.teamRowScoreLive]}>{score.cricketHome}</Text> : null
+                  : score && <Text style={[styles.teamRowScore, isLiveState && styles.teamRowScoreLive]}>{score.homeScore}</Text>}
               </View>
             </View>
           )}
@@ -259,68 +263,56 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    flexWrap: "wrap",
-    gap: 4,
   },
-  headerLeague: {
-    fontSize: 16,
-    fontFamily: "Inter_600SemiBold",
-    fontWeight: "600" as const,
-  },
-  headerDot: {
-    fontSize: 14,
-    color: Colors.textMuted,
-    fontFamily: "Inter_400Regular",
-  },
-  headerDate: {
-    fontSize: 14,
-    color: Colors.textSecondary,
-    fontFamily: "Inter_400Regular",
-  },
-  liveBadge: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
-    backgroundColor: Colors.liveDim,
-    paddingHorizontal: 8,
+  leagueChip: {
+    paddingHorizontal: 12,
     paddingVertical: 4,
-    borderRadius: 8,
-    marginLeft: 6,
+    borderRadius: 20,
+    borderWidth: 1,
   },
-  liveDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: Colors.live,
-  },
-  liveText: {
-    color: Colors.live,
+  leagueChipText: {
     fontSize: 10,
-    fontWeight: "700" as const,
     fontFamily: "Inter_700Bold",
+    letterSpacing: 1.2,
+    textTransform: "uppercase" as const,
   },
   matchupContainer: {
     alignItems: "center",
     gap: 8,
     paddingVertical: 16,
   },
-  matchupRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingVertical: 24,
-    gap: 20,
+  teamRowsContainer: {
+    gap: 12,
+    paddingVertical: 20,
   },
-  teamSide: {
-    flex: 1,
-    alignItems: "center",
+  teamRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 10,
   },
-  teamName: {
-    fontSize: 20,
-    fontWeight: "600" as const,
-    color: Colors.textPrimary,
+  teamRowName: {
+    fontSize: 18,
     fontFamily: "Inter_600SemiBold",
-    textAlign: "center",
+    color: Colors.textPrimary,
+    flexShrink: 1,
+  },
+  teamRowScore: {
+    fontSize: 22,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    minWidth: 28,
+    textAlign: "right" as const,
+  },
+  teamRowCricketScore: {
+    fontSize: 14,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+    textAlign: "right" as const,
+    flexShrink: 0,
+    maxWidth: 140,
+  },
+  teamRowScoreLive: {
+    color: "#FFFFFF",
   },
   singleTeamName: {
     fontSize: 20,
@@ -328,28 +320,6 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
     fontFamily: "Inter_600SemiBold",
     textAlign: "center",
-  },
-  atText: {
-    fontSize: 16,
-    color: Colors.textMuted,
-    fontFamily: "Inter_400Regular",
-  },
-  sheetScore: {
-    fontSize: 32,
-    fontWeight: "700" as const,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_700Bold",
-    marginTop: 8,
-  },
-  sheetCricketScore: {
-    fontSize: 16,
-    fontWeight: "600" as const,
-    color: Colors.textPrimary,
-    fontFamily: "Inter_600SemiBold",
-    marginTop: 4,
-  },
-  sheetScoreLive: {
-    color: Colors.accent,
   },
   sheetPeriod: {
     fontSize: 14,
