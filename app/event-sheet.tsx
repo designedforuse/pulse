@@ -66,7 +66,7 @@ export default function EventSheet() {
   const resolved = resolveProviderDisplay(event);
   const launchProvider = resolved.launchProvider;
   const sportColor = getSportColor(event.sport);
-  const leagueLabel = event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league;
+  const leagueLabel = event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.tournamentName || event.league;
   const dateLabel = formatDetailDate(event.startTimeLocal);
   const timeLabel = formatTimeOnly(event.startTimeLocal);
   const { gameState, displayClockText, displayStatusText } = normalizeGameState(event, score, new Date());
