@@ -210,10 +210,11 @@ export default function EventSheet() {
                   </>
                 ) : isLiveState ? (
                   <View style={styles.liveChip}>
+                    <View style={styles.liveDot} />
                     <Text style={styles.liveChipText}>
                       {displayClockText?.includes(" · ")
-                        ? `Live ${displayClockText.split(" · ")[0]}`
-                        : "Live"}
+                        ? `LIVE ${displayClockText.split(" · ")[0]}`
+                        : "LIVE"}
                     </Text>
                   </View>
                 ) : (
@@ -376,16 +377,25 @@ const styles = StyleSheet.create({
     minWidth: 80,
   },
   liveChip: {
-    backgroundColor: "#FF453A",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 7,
+    backgroundColor: "rgba(255,69,58,0.18)",
     paddingHorizontal: 14,
-    paddingVertical: 7,
-    borderRadius: 20,
+    paddingVertical: 9,
+    borderRadius: 10,
+  },
+  liveDot: {
+    width: 9,
+    height: 9,
+    borderRadius: 5,
+    backgroundColor: "#FF453A",
   },
   liveChipText: {
-    fontSize: 13,
+    fontSize: 14,
     fontFamily: "Inter_700Bold",
-    color: "#FFFFFF",
-    letterSpacing: 0.3,
+    color: "#FF453A",
+    letterSpacing: 1,
   },
   espnTime: {
     fontSize: 18,
