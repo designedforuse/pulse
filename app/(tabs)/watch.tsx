@@ -1644,12 +1644,10 @@ export default function WatchScreen() {
             <>
               {visibleDayGroups.map((group, gi) => (
                 <View key={group.key}>
-                  {visibleDayGroups.length > 1 && (
-                    <View style={[styles.dayDivider, gi === 0 && { marginTop: 0 }]}>
-                      {gi > 0 && <View style={styles.dayDividerLine} />}
-                      <Text style={styles.dayDividerText}>{group.label}</Text>
-                    </View>
-                  )}
+                  <View style={[styles.dayDivider, gi === 0 && { marginTop: 0 }]}>
+                    {gi > 0 && <View style={styles.dayDividerLine} />}
+                    <Text style={styles.dayDividerText}>{group.label}</Text>
+                  </View>
                   {group.events.map((event) => (
                     <UnifiedEventCard
                       key={event.id}
