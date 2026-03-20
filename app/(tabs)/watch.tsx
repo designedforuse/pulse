@@ -1137,6 +1137,7 @@ export default function WatchScreen() {
 
   const showUpNextSportChips = upNextSportChips.length > 1;
   const upNextHasFilter = upNextSportFilter !== null || upNextLeagueFilter !== null;
+  const showUpNextChipBar = upNextAll.length > 0 && (showUpNextSportChips || upNextSportFilter !== null);
   const activeLeagueChips = upNextSportFilter
     ? upNextLeagueChips.filter((lc) => upNextLeagueSportMap.get(lc.key) === upNextSportFilter)
     : [];
@@ -1384,7 +1385,7 @@ export default function WatchScreen() {
 
       </View>
 
-      {upNextChipSticky && showUpNextSportChips && (
+      {upNextChipSticky && showUpNextChipBar && (
         <View style={[styles.stickyChipBar, { top: stickyTopHeight }]}>
           <ScrollView
             horizontal
@@ -1472,7 +1473,7 @@ export default function WatchScreen() {
           if (liveActive !== liveBannerActive) setLiveBannerActive(liveActive);
           if (upActive !== upNextBannerActive) setUpNextBannerActive(upActive);
           const chipAbsoluteY = upNextSectionYRef.current + upNextChipOffsetRef.current;
-          const chipActive = showUpNextSportChips && y >= chipAbsoluteY - 10;
+          const chipActive = showUpNextChipBar && y >= chipAbsoluteY - 10;
           if (chipActive !== upNextChipSticky) setUpNextChipSticky(chipActive);
         }}
         refreshControl={
@@ -1570,7 +1571,7 @@ export default function WatchScreen() {
             <Text style={styles.liveHeaderText}>Coming up next</Text>
             <View style={styles.liveHeaderLine} />
           </View>
-          {upNextAll.length > 0 && showUpNextSportChips && (
+          {showUpNextChipBar && (
             <View
               style={[styles.upNextChipSection, upNextChipSticky && { opacity: 0 }]}
               onLayout={(e) => { upNextChipOffsetRef.current = e.nativeEvent.layout.y; }}
