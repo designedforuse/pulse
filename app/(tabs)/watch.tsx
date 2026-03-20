@@ -483,7 +483,7 @@ function ChaosCard({
                 ) : isGolf && isLiveState && golfLeaderThru ? (
                   <Text style={styles.primaryClock}>{golfLeaderThru}</Text>
                 ) : isLiveState && !isGolf && displayClockText ? (
-                  <View style={{ flexDirection: "row", alignItems: "flex-end" }}>
+                  <View style={{ flexDirection: "row", alignItems: "flex-start" }}>
                     {displayClockText.includes(" · ") && (
                       <Text style={styles.primaryClock}>{displayClockText.split(" · ").slice(0, -1).join(" · ")} · </Text>
                     )}

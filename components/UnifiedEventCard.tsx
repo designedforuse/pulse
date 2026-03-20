@@ -973,7 +973,7 @@ export default function UnifiedEventCard({
                   ) : isGolf && score?.golfLeaderThru ? (
                     <Text style={uStyles.clockText}>{score.golfLeaderThru}</Text>
                   ) : displayClockText ? (
-                    <View style={{ flexDirection: "row", alignItems: "flex-end", alignSelf: "flex-end" }}>
+                    <View style={{ flexDirection: "row", alignItems: "flex-start", alignSelf: "flex-end" }}>
                       {displayClockText.includes(" · ") && (
                         <Text style={uStyles.clockText}>{displayClockText.split(" · ").slice(0, -1).join(" · ")} · </Text>
                       )}
