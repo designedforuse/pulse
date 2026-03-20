@@ -38,6 +38,14 @@ function formatDetailDate(startTimeLocal: string): string {
   return `${day}, ${month} ${date}, ${time}`;
 }
 
+function formatTimeOnly(startTimeLocal: string): string {
+  return new Date(startTimeLocal).toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+}
+
 export default function EventSheet() {
   const { eventId } = useLocalSearchParams<{ eventId: string }>();
   const { findEvent } = useEvents();
@@ -59,10 +67,11 @@ export default function EventSheet() {
   const sportColor = getSportColor(event.sport);
   const leagueLabel = event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league;
   const dateLabel = formatDetailDate(event.startTimeLocal);
-  const live = isEventLive(event, new Date());
+  const timeLabel = formatTimeOnly(event.startTimeLocal);
   const { gameState, displayClockText, displayStatusText } = normalizeGameState(event, score, new Date());
   const isLiveState = gameState === "LIVE";
   const isFinalState = gameState === "FINAL";
+  const isUpcoming = gameState === "UPCOMING";
   const reasonLabel = formatProviderReason(event.providerReason);
 
   const handleOpenProvider = async () => {
@@ -130,100 +139,127 @@ export default function EventSheet() {
 
   const isSession = event.eventType === "session" && event.sessionTitle;
   const isTennisMatch = event.sport === "tennis";
+  const isCricket = event.sport === "cricket";
   const isTbcMatch = (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel;
   const isTbdOlympic = event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound;
 
   const bottomPadding = Math.max(insets.bottom + 12, Platform.OS === "web" ? 34 : 24);
+  const providerBrandId = resolved.brandId;
 
   return (
     <View style={styles.container}>
       <View style={[styles.content, { paddingBottom: bottomPadding }]}>
         <View style={styles.topSection}>
+          {/* League chip */}
           <View style={styles.headerLine}>
             <View style={[styles.leagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
               <Text style={[styles.leagueChipText, { color: sportColor }]}>{leagueLabel}</Text>
             </View>
           </View>
 
-          {isTennisMatch ? (
-            <View style={styles.matchupContainer}>
-              {event.tournamentName && (
-                <Text style={[styles.venueText, { marginBottom: 8, color: "#CE93D8" }]}>{event.tournamentName}{event.tennisRound ? ` — ${event.tennisRound}` : ""}</Text>
-              )}
-              <View style={styles.teamRowsContainer}>
-                <View style={styles.teamRow}>
-                  <Text style={styles.teamRowName} numberOfLines={1}>
-                    {event.tennisPlayer1Rank ? `#${event.tennisPlayer1Rank}  ` : ""}{event.tennisPlayer1 || event.awayTeam}
-                  </Text>
-                  <View style={{ flex: 1 }} />
-                  {score && <Text style={[styles.teamRowScore, isLiveState && styles.teamRowScoreLive]}>{score.awayScore}</Text>}
-                </View>
-                <View style={styles.teamRow}>
-                  <Text style={styles.teamRowName} numberOfLines={1}>
-                    {event.tennisPlayer2Rank ? `#${event.tennisPlayer2Rank}  ` : ""}{event.tennisPlayer2 || event.homeTeam}
-                  </Text>
-                  <View style={{ flex: 1 }} />
-                  {score && <Text style={[styles.teamRowScore, isLiveState && styles.teamRowScoreLive]}>{score.homeScore}</Text>}
-                </View>
-              </View>
-            </View>
-          ) : isSession ? (
+          {/* Matchup area */}
+          {isSession ? (
             <View style={styles.matchupContainer}>
               <Text style={styles.singleTeamName}>{event.sessionTitle}</Text>
             </View>
           ) : isTbcMatch ? (
             <View style={styles.matchupContainer}>
               <Text style={styles.singleTeamName}>{event.t20WcMatchLabel}</Text>
-              {event.t20WcVenue ? (
-                <Text style={styles.venueText}>{event.t20WcVenue}</Text>
-              ) : null}
+              {event.t20WcVenue ? <Text style={styles.venueText}>{event.t20WcVenue}</Text> : null}
             </View>
           ) : isTbdOlympic ? (
             <View style={styles.matchupContainer}>
               <Text style={styles.singleTeamName}>{event.olympicRound}</Text>
-              {event.olympicVenue ? (
-                <Text style={styles.venueText}>{event.olympicVenue}</Text>
-              ) : null}
+              {event.olympicVenue ? <Text style={styles.venueText}>{event.olympicVenue}</Text> : null}
             </View>
           ) : (
-            <View style={styles.teamRowsContainer}>
-              <View style={styles.teamRow}>
-                <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={26} />
-                <Text style={styles.teamRowName} numberOfLines={1}>{displayTeamName(event.awayTeam, event.league)}</Text>
-                <View style={{ flex: 1 }} />
-                {score && event.sport === "cricket"
-                  ? score.cricketAway ? <Text style={[styles.teamRowCricketScore, isLiveState && styles.teamRowScoreLive]}>{score.cricketAway}</Text> : null
-                  : score && <Text style={[styles.teamRowScore, isLiveState && styles.teamRowScoreLive]}>{score.awayScore}</Text>}
+            /* ESPN-style centered layout */
+            <View style={styles.espnMatchup}>
+              {/* Away team */}
+              <View style={styles.espnTeam}>
+                <TeamLogo
+                  teamName={isTennisMatch ? (event.awayTeam) : event.awayTeam}
+                  league={event.league}
+                  sport={event.sport}
+                  size={52}
+                />
+                <Text style={styles.espnTeamName} numberOfLines={2}>
+                  {isTennisMatch
+                    ? (event.tennisPlayer1Rank ? `#${event.tennisPlayer1Rank} ` : "") + (event.tennisPlayer1 || event.awayTeam)
+                    : displayTeamName(event.awayTeam, event.league)}
+                </Text>
               </View>
-              <View style={styles.teamRow}>
-                <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={26} />
-                <Text style={styles.teamRowName} numberOfLines={1}>{displayTeamName(event.homeTeam, event.league)}</Text>
-                <View style={{ flex: 1 }} />
-                {score && event.sport === "cricket"
-                  ? score.cricketHome ? <Text style={[styles.teamRowCricketScore, isLiveState && styles.teamRowScoreLive]}>{score.cricketHome}</Text> : null
-                  : score && <Text style={[styles.teamRowScore, isLiveState && styles.teamRowScoreLive]}>{score.homeScore}</Text>}
+
+              {/* Center: time+provider (upcoming) or score+clock (live/final) */}
+              <View style={styles.espnCenter}>
+                {isLiveState && score && !isCricket ? (
+                  <>
+                    <View style={styles.espnScoreRow}>
+                      <Text style={styles.espnScore}>{score.awayScore}</Text>
+                      <Text style={styles.espnScoreDash}>–</Text>
+                      <Text style={styles.espnScore}>{score.homeScore}</Text>
+                    </View>
+                    {displayClockText ? (
+                      <Text style={styles.espnClock}>{displayClockText}</Text>
+                    ) : null}
+                  </>
+                ) : isFinalState && score && !isCricket ? (
+                  <>
+                    <View style={styles.espnScoreRow}>
+                      <Text style={styles.espnScoreFinal}>{score.awayScore}</Text>
+                      <Text style={styles.espnScoreDashFinal}>–</Text>
+                      <Text style={styles.espnScoreFinal}>{score.homeScore}</Text>
+                    </View>
+                    <Text style={styles.espnFinalLabel}>{displayStatusText || "FT"}</Text>
+                  </>
+                ) : (
+                  <>
+                    <Text style={styles.espnTime}>{timeLabel}</Text>
+                    {providerBrandId && <ProviderLogo providerId={providerBrandId} size={22} />}
+                  </>
+                )}
+              </View>
+
+              {/* Home team */}
+              <View style={styles.espnTeam}>
+                <TeamLogo
+                  teamName={event.homeTeam}
+                  league={event.league}
+                  sport={event.sport}
+                  size={52}
+                />
+                <Text style={styles.espnTeamName} numberOfLines={2}>
+                  {isTennisMatch
+                    ? (event.tennisPlayer2Rank ? `#${event.tennisPlayer2Rank} ` : "") + (event.tennisPlayer2 || event.homeTeam)
+                    : displayTeamName(event.homeTeam, event.league)}
+                </Text>
               </View>
             </View>
           )}
 
-          {isLiveState && displayClockText ? (
-            <Text style={[styles.sheetPeriod, styles.sheetPeriodLive]}>
-              {displayClockText}
-            </Text>
-          ) : isFinalState && displayStatusText ? (
-            <Text style={styles.sheetPeriod}>
-              {displayStatusText}
-            </Text>
-          ) : null}
+          {/* Cricket innings scores (shown below matchup since they're long strings) */}
+          {isCricket && (isLiveState || isFinalState) && score && (score.cricketAway || score.cricketHome) && (
+            <View style={styles.cricketScores}>
+              {score.cricketAway ? (
+                <Text style={[styles.cricketInnings, isLiveState && styles.cricketInningsLive]} numberOfLines={2}>
+                  {displayTeamName(event.awayTeam, event.league)}: {score.cricketAway}
+                </Text>
+              ) : null}
+              {score.cricketHome ? (
+                <Text style={[styles.cricketInnings, isLiveState && styles.cricketInningsLive]} numberOfLines={2}>
+                  {displayTeamName(event.homeTeam, event.league)}: {score.cricketHome}
+                </Text>
+              ) : null}
+              {displayClockText ? <Text style={styles.cricketStatus}>{displayClockText}</Text> : null}
+            </View>
+          )}
 
           {event.isOlympic && event.olympicVenue && !isTbdOlympic ? (
             <Text style={styles.venueText}>{event.olympicVenue}</Text>
           ) : null}
 
           {reasonLabel ? (
-            <Text style={styles.providerReasonText}>
-              {reasonLabel}
-            </Text>
+            <Text style={styles.providerReasonText}>{reasonLabel}</Text>
           ) : null}
         </View>
 
@@ -281,39 +317,6 @@ const styles = StyleSheet.create({
     gap: 8,
     paddingVertical: 16,
   },
-  teamRowsContainer: {
-    gap: 12,
-    paddingVertical: 20,
-  },
-  teamRow: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    gap: 10,
-  },
-  teamRowName: {
-    fontSize: 18,
-    fontFamily: "Inter_600SemiBold",
-    color: Colors.textPrimary,
-    flexShrink: 1,
-  },
-  teamRowScore: {
-    fontSize: 22,
-    fontFamily: "Inter_700Bold",
-    color: Colors.textPrimary,
-    minWidth: 28,
-    textAlign: "right" as const,
-  },
-  teamRowCricketScore: {
-    fontSize: 14,
-    fontFamily: "Inter_600SemiBold",
-    color: Colors.textPrimary,
-    textAlign: "right" as const,
-    flexShrink: 0,
-    maxWidth: 140,
-  },
-  teamRowScoreLive: {
-    color: "#FFFFFF",
-  },
   singleTeamName: {
     fontSize: 20,
     fontWeight: "600" as const,
@@ -321,20 +324,99 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
     textAlign: "center",
   },
-  sheetPeriod: {
-    fontSize: 14,
-    color: Colors.textMuted,
-    fontFamily: "Inter_500Medium",
+  /* ESPN-style centered matchup */
+  espnMatchup: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingVertical: 20,
+  },
+  espnTeam: {
+    flex: 1,
+    alignItems: "center",
+    gap: 10,
+  },
+  espnTeamName: {
+    fontSize: 15,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
     textAlign: "center",
   },
-  sheetPeriodLive: {
+  espnCenter: {
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 6,
+    paddingHorizontal: 8,
+    minWidth: 80,
+  },
+  espnTime: {
+    fontSize: 18,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+    textAlign: "center",
+  },
+  espnScoreRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+  },
+  espnScore: {
+    fontSize: 32,
+    fontFamily: "Inter_700Bold",
     color: Colors.accent,
-  },
-  sheetElapsed: {
-    fontSize: 14,
-    color: Colors.textSecondary,
-    fontFamily: "Inter_400Regular",
+    minWidth: 24,
     textAlign: "center",
+  },
+  espnScoreDash: {
+    fontSize: 24,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textMuted,
+  },
+  espnScoreFinal: {
+    fontSize: 32,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    minWidth: 24,
+    textAlign: "center",
+  },
+  espnScoreDashFinal: {
+    fontSize: 24,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textMuted,
+  },
+  espnClock: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.accent,
+    textAlign: "center",
+  },
+  espnFinalLabel: {
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textMuted,
+    textAlign: "center",
+    letterSpacing: 0.5,
+  },
+  /* Cricket */
+  cricketScores: {
+    gap: 4,
+    paddingVertical: 4,
+  },
+  cricketInnings: {
+    fontSize: 14,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+    textAlign: "center",
+  },
+  cricketInningsLive: {
+    color: Colors.textPrimary,
+  },
+  cricketStatus: {
+    fontSize: 13,
+    fontFamily: "Inter_500Medium",
+    color: Colors.accent,
+    textAlign: "center",
+    marginTop: 4,
   },
   venueText: {
     fontSize: 13,
@@ -363,15 +445,6 @@ const styles = StyleSheet.create({
     fontWeight: "700" as const,
     color: Colors.textPrimary,
     fontFamily: "Inter_700Bold",
-  },
-  closeButton: {
-    alignItems: "center",
-    paddingVertical: 12,
-  },
-  closeButtonText: {
-    fontSize: 15,
-    color: Colors.textSecondary,
-    fontFamily: "Inter_500Medium",
   },
   errorText: {
     fontSize: 16,
