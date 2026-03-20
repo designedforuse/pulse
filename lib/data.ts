@@ -271,7 +271,7 @@ export function formatProviderReason(reason: string | undefined): string | null 
     "flosports": "FloSports",
     "victoryplus": "Victory+",
   };
-  return labels[reason] || reason.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+  return labels[reason] ?? null;
 }
 
 export function getSportIcon(sport: string): string {
