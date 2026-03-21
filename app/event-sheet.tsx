@@ -48,6 +48,18 @@ function formatTimeOnly(startTimeLocal: string): string {
   });
 }
 
+function formatStartsIn(startTimeLocal: string, now: Date): string {
+  const diff = new Date(startTimeLocal).getTime() - now.getTime();
+  if (diff <= 0) return "Starting soon";
+  const totalMinutes = Math.floor(diff / 60000);
+  const days = Math.floor(totalMinutes / 1440);
+  const hours = Math.floor((totalMinutes % 1440) / 60);
+  const minutes = totalMinutes % 60;
+  if (days > 0) return `Starts in ${days}d${hours > 0 ? ` ${hours}h` : ""}`;
+  if (hours > 0) return `Starts in ${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
+  return `Starts in ${minutes}m`;
+}
+
 function PulsingDot() {
   const opacity = useRef(new Animated.Value(1)).current;
 
@@ -100,6 +112,7 @@ export default function EventSheet() {
   const isLiveState = gameState === "LIVE";
   const isFinalState = gameState === "FINAL";
   const isUpcoming = gameState === "UPCOMING";
+  const startsInLabel = isUpcoming ? formatStartsIn(event.startTimeLocal, new Date()) : null;
   const reasonLabel = formatProviderReason(event.providerReason);
 
   const handleOpenProvider = async () => {
@@ -303,14 +316,17 @@ export default function EventSheet() {
 
         {launchProvider && (
           <Pressable
-            onPress={handleOpenProvider}
+            onPress={isUpcoming ? undefined : handleOpenProvider}
+            disabled={isUpcoming}
             style={({ pressed }) => [
-              styles.openButton,
-              { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] },
+              isUpcoming ? styles.disabledButton : styles.openButton,
+              !isUpcoming && { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] },
             ]}
             testID="open-provider-btn"
           >
-            <Text style={styles.openButtonText}>Watch Now</Text>
+            <Text style={[styles.openButtonText, isUpcoming && styles.disabledButtonText]}>
+              {isUpcoming ? (startsInLabel ?? "Starting soon") : "Watch Now"}
+            </Text>
           </Pressable>
         )}
       </View>
@@ -513,11 +529,23 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderRadius: 14,
   },
+  disabledButton: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 16,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: Colors.textMuted,
+    backgroundColor: "transparent",
+  },
   openButtonText: {
     fontSize: 16,
     fontWeight: "700" as const,
     color: Colors.textPrimary,
     fontFamily: "Inter_700Bold",
+  },
+  disabledButtonText: {
+    color: Colors.textMuted,
   },
   errorText: {
     fontSize: 16,
