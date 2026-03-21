@@ -485,13 +485,12 @@ const styles = StyleSheet.create({
     letterSpacing: 0.8,
   },
   sheetClockPeriod: {
-    fontSize: 18,
-    fontFamily: "Inter_500Medium",
+    fontSize: 20,
+    fontFamily: "Inter_700Bold",
     color: "#FFFFFF",
-    marginTop: 1,
   },
   sheetClockTime: {
-    fontSize: 22,
+    fontSize: 20,
     fontFamily: "Inter_700Bold",
     color: "#FFFFFF",
   },
