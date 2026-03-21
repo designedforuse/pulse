@@ -1337,11 +1337,11 @@ export default function WatchScreen() {
                 <Text style={[styles.liveStatCount, { color: "#A78BFA" }]}>{activeSportsCount}</Text>
               </View>
               <View style={[styles.statChip, { backgroundColor: "rgba(53,199,165,0.15)", borderRadius: 12, paddingHorizontal: 9, paddingVertical: 5 }]}>
-                <Ionicons name="grid" size={18} color="#35C7A5" />
+                <Ionicons name="shirt" size={18} color="#35C7A5" />
                 <Text style={[styles.liveStatCount, { color: "#35C7A5" }]}>{ritualCount}</Text>
               </View>
               <View style={[styles.statChip, { backgroundColor: "rgba(255,133,200,0.15)", borderRadius: 12, paddingHorizontal: 9, paddingVertical: 5 }]}>
-                <Ionicons name="compass" size={20} color="#FF85C8" />
+                <Ionicons name="sparkles" size={20} color="#FF85C8" />
                 <Text style={styles.nextStatCount}>{storiesCount}</Text>
               </View>
             </View>

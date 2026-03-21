@@ -497,7 +497,7 @@ export default function SettingsScreen() {
                 {rebuildingExplore ? (
                   <ActivityIndicator size="small" color="#1CB0F6" />
                 ) : (
-                  <Ionicons name="compass" size={20} color="#1CB0F6" />
+                  <Ionicons name="sparkles" size={20} color="#1CB0F6" />
                 )}
                 <View>
                   <Text style={styles.refreshLabel}>Rebuild Stories</Text>
