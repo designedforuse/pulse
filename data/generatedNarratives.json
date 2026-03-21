@@ -1,7 +1,10 @@
 {
-  "lastUpdated": "2026-03-21T05:02:34.330Z",
+  "lastUpdated": "2026-03-21T22:50:12.000Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
+      "playoff_push": {
+        "NewEngland": 1
+      },
       "momentum": {
         "SoCal": 1,
         "NewEngland": 1
@@ -12,28 +15,27 @@
       "player_movement": {
         "Other": 1
       },
-      "upset_alert": {
+      "rivalry_game": {
+        "SouthAfrica": 1,
         "Other": 1
       },
-      "clinch_watch": {
-        "SouthAfrica": 1
-      },
-      "playoff_push": {
-        "Other": 1,
-        "SoCal": 1
+      "upset_alert": {
+        "Other": 1
       }
     },
-    "combinedPushByRegion": {},
+    "combinedPushByRegion": {
+      "NewEngland": false
+    },
     "finalFeedByRegion": {
       "SouthAfrica": [
-        "clinch_watch: Clinch Watch",
+        "rivalry_game: Rivalry Game Tomorrow",
         "league_moment: Rivalry Weekend"
       ],
       "SoCal": [
-        "playoff_push: Playoff Push",
         "momentum: Ducks Heating Up"
       ],
       "NewEngland": [
+        "playoff_push: Bruins Push Week",
         "momentum: Bruins Heating Up"
       ],
       "Other": [
@@ -42,10 +44,10 @@
     },
     "droppedCandidatesReasons": [
       {
-        "id": "playoff_push_clinch_fallback_nhl_2025021108",
-        "kind": "playoff_push",
+        "id": "rivalry_game_soccer-laliga-20260322-2000-atl-tico-madrid-at-real-madrid",
+        "kind": "rivalry_game",
         "region": "Other",
-        "title": "Playoff Push",
+        "title": "Rivalry Game Tomorrow",
         "reason": "feed cap (max 6)"
       },
       {
@@ -85,7 +87,8 @@
           "NSH",
           "TOR",
           "TBL",
-          "NYR"
+          "NYR",
+          "STL"
         ],
         "skippedTeams": [
           {
@@ -99,9 +102,9 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 614,
+        "playersIngested": 598,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-21T05:02:34.330Z"
+        "timestamp": "2026-03-21T22:50:12.000Z"
       },
       "cacheHistoryCount": 788,
       "error": null
@@ -111,29 +114,26 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -321.0428694444444,
+      "hoursUntil": -338.83666666666664,
       "teamsEvaluated": 0,
       "triggers": {}
     },
     "rivalryGame": {
-      "rawRivalryCandidates": 0,
-      "rivalryAfterRegionFilter": 0,
-      "rivalryFinalCount": 0
+      "rawRivalryCandidates": 2,
+      "rivalryAfterRegionFilter": 2,
+      "rivalryFinalCount": 2
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 4,
+      "rawUpsetCandidates": 3,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 4,
+      "upsetCompletedCandidates": 3,
       "upsetFinalCount": 1
     },
     "clinchWatch": {
-      "rawClinchCandidates": 1,
-      "clinchAfterRegionFilter": 1,
-      "clinchFinalCount": 1,
-      "clinchGatedOut": [
-        "Boston Bruins: before Mar 25, 84 pts < 95",
-        "Anaheim Ducks: before Mar 25, 80 pts < 95"
-      ]
+      "rawClinchCandidates": 0,
+      "clinchAfterRegionFilter": 0,
+      "clinchFinalCount": 0,
+      "clinchGatedOut": []
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
@@ -151,19 +151,9 @@
           "reason": "11 followed/affiliate teams playing tonight"
         },
         {
-          "label": "[clinch_watch] Playoff Stakes",
-          "score": 190,
-          "reason": "clinch_watch involving followed team(s): Stormers"
-        },
-        {
           "label": "[playoff_push] Your Team's Push",
           "score": 170,
           "reason": "playoff_push involving followed team(s): Boston Bruins"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): Anaheim Ducks"
         },
         {
           "label": "[momentum] Hot Streak",
@@ -174,6 +164,16 @@
           "label": "[momentum] Hot Streak",
           "score": 150,
           "reason": "momentum involving followed team(s): Boston Bruins"
+        },
+        {
+          "label": "[rivalry_game] Your Rivalry Night",
+          "score": 140,
+          "reason": "rivalry_game involving followed team(s): South Africa"
+        },
+        {
+          "label": "[rivalry_game] Your Rivalry Night",
+          "score": 140,
+          "reason": "rivalry_game involving followed team(s): Atlético Madrid"
         },
         {
           "label": "[ritual_night] Family Game Night",
@@ -198,43 +198,43 @@
       ]
     },
     "videoSelection": {
-      "clinch_watch_rugby-urc-pvsg7j": {
-        "searchQuery": "Dragons clinch playoff berth March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
+      "rivalry_game_cricket-t20i-gylsxg": {
+        "searchQuery": "New Zealand vs South Africa rivalry highlights",
+        "selectedVideoTitle": "New Zealand vs South Africa | 4TH T20I MATCH | CRICKET 26 GAMEPLAY ",
+        "selectedVideoPublishedAt": "9 hours ago",
+        "selectedVideoChannel": "RedBrothers ",
+        "rejectedForAgeCount": 1
       },
       "league_moment_rivalry": {
         "searchQuery": "Rivalry Weekend sports March 2026",
-        "selectedVideoTitle": "UFC FIGHT NIGHT: EVLOEV VS MURPHY LIVESTREAM! (EA Sports UFC 5)",
-        "selectedVideoPublishedAt": "Streamed 42 minutes ago",
-        "selectedVideoChannel": "Mr Rob",
-        "rejectedForAgeCount": 0
-      },
-      "playoff_push_clinch_fallback_nhl_2025021117": {
-        "searchQuery": "Anaheim Ducks playoff push March 2026",
-        "selectedVideoTitle": "If Oil Hits $120… What Happens to Canola Prices?",
-        "selectedVideoPublishedAt": "7 hours ago",
-        "selectedVideoChannel": "What the Futures! Podcast",
+        "selectedVideoTitle": "🔴 LIVE: Packers 2026 Mock Draft! Fixing the Roster Without a 1st Round Pick",
+        "selectedVideoPublishedAt": "Streamed 2 hours ago",
+        "selectedVideoChannel": "Packerfan Total Access 🏈🧀",
         "rejectedForAgeCount": 0
       },
       "momentum_ana": {
         "searchQuery": "Anaheim Ducks highlights March 2026",
-        "selectedVideoTitle": "If Oil Hits $120… What Happens to Canola Prices?",
-        "selectedVideoPublishedAt": "13 hours ago",
-        "selectedVideoChannel": "What the Futures! Podcast",
+        "selectedVideoTitle": "2v2 INSANITY! 🛑 Thrashers Goalie Robs Ducks One-Timer (NHL '94 Genesis)",
+        "selectedVideoPublishedAt": "3 hours ago",
+        "selectedVideoChannel": "NHL '94 Podcast",
+        "rejectedForAgeCount": 0
+      },
+      "playoff_push_newengland": {
+        "searchQuery": "Boston Bruins playoff push March 2026",
+        "selectedVideoTitle": "Panthers vs. Flames | NHL Highlights | March 20, 2026",
+        "selectedVideoPublishedAt": "18 hours ago",
+        "selectedVideoChannel": "NHL",
         "rejectedForAgeCount": 0
       },
       "momentum_bos": {
         "searchQuery": "Boston Bruins highlights March 2026",
-        "selectedVideoTitle": "GAME NIGHT: Playoff picture SHIFTS in dramatic night. Blue Jackets, Kings IN, Islanders,Kraken OUT",
-        "selectedVideoPublishedAt": "14 hours ago",
-        "selectedVideoChannel": "Locked On NHL",
+        "selectedVideoTitle": "Panthers vs. Flames | NHL Highlights | March 20, 2026",
+        "selectedVideoPublishedAt": "18 hours ago",
+        "selectedVideoChannel": "NHL",
         "rejectedForAgeCount": 0
       },
-      "upset_alert_tennis-espn-173215": {
-        "searchQuery": "Darderi vs Landaluce upset highlights March 2026",
+      "upset_alert_tennis-espn-173197": {
+        "searchQuery": "Rublev vs Tabilo upset highlights March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
@@ -244,37 +244,45 @@
   },
   "cards": [
     {
-      "id": "clinch_watch_rugby-urc-pvsg7j",
-      "title": "Clinch Watch",
-      "subtitle": "Can clinch home quarterfinal tonight",
+      "id": "rivalry_game_cricket-t20i-gylsxg",
+      "title": "Rivalry Game Tomorrow",
+      "subtitle": "New Zealand vs South Africa · Tomorrow at 6:15 AM",
       "impact": {
-        "label": "Impacts: Saturday Warm-Up",
-        "ritualId": "saturday_sunrise",
-        "tabHint": "Watch"
+        "label": "Impacts: Saturday Extra Time",
+        "ritualId": "saturday_after_hours",
+        "tabHint": "Rituals"
       },
-      "priority": 92,
-      "triggeredAt": "2026-03-21T05:02:34.330Z",
-      "expiresAt": "2026-03-21T21:30:00.000Z",
-      "kind": "clinch_watch",
+      "priority": 96,
+      "triggeredAt": "2026-03-21T22:50:12.000Z",
+      "expiresAt": "2026-03-22T10:15:00.000Z",
+      "kind": "rivalry_game",
       "region": "SouthAfrica",
       "regionPriority": 1,
       "regionLabel": "South Africa",
       "meta": {
-        "source": "team_config",
-        "conditionLabel": "Can clinch home quarterfinal",
-        "sport": "rugby",
-        "league": "URC",
-        "awayTeam": "Dragons",
-        "homeTeam": "Stormers",
-        "startTime": "2026-03-21T17:30:00.000Z",
+        "rivalryLabel": "Freedom Cup",
+        "sport": "cricket",
+        "league": "T20I Cricket",
+        "awayTeam": "New Zealand",
+        "homeTeam": "South Africa",
+        "startTime": "2026-03-22T06:15:00.000Z",
         "eventIds": [
-          "rugby-urc-pvsg7j"
+          "cricket-t20i-gylsxg"
         ],
-        "reason": "Stormers have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
+        "reason": "New Zealand and South Africa meet tonight in one of cricket's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
       },
       "sports": [
-        "rugby"
-      ]
+        "cricket"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=xmGcnRwwPjE",
+        "thumbnailUrl": "https://img.youtube.com/vi/xmGcnRwwPjE/hqdefault.jpg",
+        "durationSeconds": 716,
+        "title": "New Zealand vs South Africa | 4TH T20I MATCH | CRICKET 26 GAMEPLAY ",
+        "source": "youtube",
+        "channel": "RedBrothers ",
+        "publishedAt": "9 hours ago"
+      }
     },
     {
       "id": "league_moment_rivalry",
@@ -285,8 +293,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-21T05:02:34.330Z",
-      "expiresAt": "2026-03-28T05:02:34.330Z",
+      "triggeredAt": "2026-03-21T22:50:12.000Z",
+      "expiresAt": "2026-03-28T22:50:12.000Z",
       "kind": "league_moment",
       "region": "SouthAfrica",
       "regionPriority": 1,
@@ -333,54 +341,13 @@
         "soccer"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=OD_BvIBAqOM",
-        "thumbnailUrl": "https://img.youtube.com/vi/OD_BvIBAqOM/hqdefault.jpg",
-        "durationSeconds": 4992,
-        "title": "UFC FIGHT NIGHT: EVLOEV VS MURPHY LIVESTREAM! (EA Sports UFC 5)",
+        "url": "https://www.youtube.com/watch?v=xFXoaivDfy4",
+        "thumbnailUrl": "https://img.youtube.com/vi/xFXoaivDfy4/hqdefault.jpg",
+        "durationSeconds": 3231,
+        "title": "🔴 LIVE: Packers 2026 Mock Draft! Fixing the Roster Without a 1st Round Pick",
         "source": "youtube",
-        "channel": "Mr Rob",
-        "publishedAt": "Streamed 42 minutes ago"
-      }
-    },
-    {
-      "id": "playoff_push_clinch_fallback_nhl_2025021117",
-      "title": "Playoff Push",
-      "subtitle": "A win keeps Anaheim Ducks in the playoff race.",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 90,
-      "triggeredAt": "2026-03-21T05:02:34.330Z",
-      "expiresAt": "2026-03-23T04:00:00.000Z",
-      "kind": "playoff_push",
-      "region": "SoCal",
-      "regionPriority": 2,
-      "regionLabel": "SoCal",
-      "meta": {
-        "teams": [
-          {
-            "team": "Anaheim Ducks",
-            "league": "NHL"
-          }
-        ],
-        "eventIds": [
-          "nhl_2025021117"
-        ],
-        "reason": "Anaheim Ducks has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
-        "clinchFallback": true
-      },
-      "sports": [
-        "hockey"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=m3iuCkUR0qY",
-        "thumbnailUrl": "https://img.youtube.com/vi/m3iuCkUR0qY/hqdefault.jpg",
-        "durationSeconds": 5589,
-        "title": "If Oil Hits $120… What Happens to Canola Prices?",
-        "source": "youtube",
-        "channel": "What the Futures! Podcast",
-        "publishedAt": "7 hours ago"
+        "channel": "Packerfan Total Access 🏈🧀",
+        "publishedAt": "Streamed 2 hours ago"
       }
     },
     {
@@ -392,8 +359,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-21T05:02:34.330Z",
-      "expiresAt": "2026-03-24T05:02:34.330Z",
+      "triggeredAt": "2026-03-21T22:50:12.000Z",
+      "expiresAt": "2026-03-24T22:50:12.000Z",
       "kind": "momentum",
       "region": "SoCal",
       "regionPriority": 2,
@@ -428,7 +395,8 @@
         "eventIds": [
           "nhl_2025021117",
           "nhl_2025021134",
-          "nhl_2025021147"
+          "nhl_2025021147",
+          "nhl_2025021154"
         ],
         "reason": "Anaheim Ducks has earned points in 3 straight games"
       },
@@ -436,13 +404,64 @@
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=m3iuCkUR0qY",
-        "thumbnailUrl": "https://img.youtube.com/vi/m3iuCkUR0qY/hqdefault.jpg",
-        "durationSeconds": 5589,
-        "title": "If Oil Hits $120… What Happens to Canola Prices?",
+        "url": "https://www.youtube.com/watch?v=QDlo_ZpsYQc",
+        "thumbnailUrl": "https://img.youtube.com/vi/QDlo_ZpsYQc/hqdefault.jpg",
+        "durationSeconds": 10,
+        "title": "2v2 INSANITY! 🛑 Thrashers Goalie Robs Ducks One-Timer (NHL '94 Genesis)",
         "source": "youtube",
-        "channel": "What the Futures! Podcast",
-        "publishedAt": "13 hours ago"
+        "channel": "NHL '94 Podcast",
+        "publishedAt": "3 hours ago"
+      }
+    },
+    {
+      "id": "playoff_push_newengland",
+      "title": "Bruins Push Week",
+      "subtitle": "Four games in seven days, including a back-to-back",
+      "impact": {
+        "label": "Impacts: Saturday Game Day",
+        "ritualId": "saturday_spotlight",
+        "tabHint": "Rituals"
+      },
+      "priority": 90,
+      "triggeredAt": "2026-03-21T22:50:12.000Z",
+      "expiresAt": "2026-03-28T22:50:12.000Z",
+      "kind": "playoff_push",
+      "region": "NewEngland",
+      "regionPriority": 3,
+      "regionLabel": "New England",
+      "meta": {
+        "teams": [
+          {
+            "team": "Boston Bruins",
+            "league": "NHL",
+            "gamesInNext7Days": 4,
+            "gamesInNext5Days": 3,
+            "hasBackToBack": true,
+            "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+          }
+        ],
+        "eventIds": [
+          "nhl_2025021108",
+          "nhl_2025021120",
+          "nhl_2025021135",
+          "nhl_2025021155"
+        ],
+        "combinedTeamCount": 1,
+        "windowStart": "2026-03-21T22:50:12.000Z",
+        "windowEnd": "2026-03-28T22:50:12.000Z",
+        "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+      },
+      "sports": [
+        "hockey"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=IqMIuhlntX8",
+        "thumbnailUrl": "https://img.youtube.com/vi/IqMIuhlntX8/hqdefault.jpg",
+        "durationSeconds": 695,
+        "title": "Panthers vs. Flames | NHL Highlights | March 20, 2026",
+        "source": "youtube",
+        "channel": "NHL",
+        "publishedAt": "18 hours ago"
       }
     },
     {
@@ -455,8 +474,8 @@
         "tabHint": "Rituals"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-21T05:02:34.330Z",
-      "expiresAt": "2026-03-24T05:02:34.330Z",
+      "triggeredAt": "2026-03-21T22:50:12.000Z",
+      "expiresAt": "2026-03-24T22:50:12.000Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -491,7 +510,8 @@
         "eventIds": [
           "nhl_2025021108",
           "nhl_2025021120",
-          "nhl_2025021135"
+          "nhl_2025021135",
+          "nhl_2025021155"
         ],
         "reason": "Boston Bruins has earned points in 4 straight games"
       },
@@ -499,26 +519,26 @@
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=XmeDjBZFl0I",
-        "thumbnailUrl": "https://img.youtube.com/vi/XmeDjBZFl0I/hqdefault.jpg",
-        "durationSeconds": 2300,
-        "title": "GAME NIGHT: Playoff picture SHIFTS in dramatic night. Blue Jackets, Kings IN, Islanders,Kraken OUT",
+        "url": "https://www.youtube.com/watch?v=IqMIuhlntX8",
+        "thumbnailUrl": "https://img.youtube.com/vi/IqMIuhlntX8/hqdefault.jpg",
+        "durationSeconds": 695,
+        "title": "Panthers vs. Flames | NHL Highlights | March 20, 2026",
         "source": "youtube",
-        "channel": "Locked On NHL",
-        "publishedAt": "14 hours ago"
+        "channel": "NHL",
+        "publishedAt": "18 hours ago"
       }
     },
     {
-      "id": "upset_alert_tennis-espn-173215",
+      "id": "upset_alert_tennis-espn-173197",
       "title": "Upset Alert",
-      "subtitle": "Landaluce stuns Darderi at Miami Open",
+      "subtitle": "Tabilo stuns Rublev at Miami Open",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-21T05:02:34.330Z",
-      "expiresAt": "2026-03-21T11:02:34.330Z",
+      "triggeredAt": "2026-03-21T22:50:12.000Z",
+      "expiresAt": "2026-03-22T04:50:12.000Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
@@ -528,16 +548,16 @@
         "upsetType": "tennis_seed_upset",
         "sport": "tennis",
         "league": "ATP Masters 1000",
-        "favoriteName": "Darderi",
-        "underdogName": "Landaluce",
-        "favoriteRank": 17,
-        "awayTeam": "Landaluce",
-        "homeTeam": "Darderi",
-        "startTime": "2026-03-21T01:40:00.000Z",
+        "favoriteName": "Rublev",
+        "underdogName": "Tabilo",
+        "favoriteRank": 15,
+        "awayTeam": "Tabilo",
+        "homeTeam": "Rublev",
+        "startTime": "2026-03-21T20:20:00.000Z",
         "eventIds": [
-          "tennis-espn-173215"
+          "tennis-espn-173197"
         ],
-        "reason": "Darderi (seed 17) entered as the higher seed, but Landaluce knocked Darderi out.\n\nThis opens up the draw and changes the shape of the tournament."
+        "reason": "Rublev (seed 15) entered as the higher seed, but Tabilo knocked Rublev out.\n\nThis opens up the draw and changes the shape of the tournament."
       },
       "sports": [
         "tennis"

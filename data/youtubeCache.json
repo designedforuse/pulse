@@ -52,14 +52,22 @@
     }
   },
   "playoff_push:boston bruins playoff push march 2026": {
-    "video": null,
-    "fetchedAt": "2026-03-19T21:10:17.247Z",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=IqMIuhlntX8",
+      "thumbnailUrl": "https://img.youtube.com/vi/IqMIuhlntX8/hqdefault.jpg",
+      "durationSeconds": 695,
+      "title": "Panthers vs. Flames | NHL Highlights | March 20, 2026",
+      "source": "youtube",
+      "channel": "NHL",
+      "publishedAt": "18 hours ago"
+    },
+    "fetchedAt": "2026-03-21T22:50:20.802Z",
     "query": "Boston Bruins playoff push March 2026",
     "debug": {
       "searchQuery": "Boston Bruins playoff push March 2026",
-      "selectedVideoTitle": null,
-      "selectedVideoPublishedAt": null,
-      "selectedVideoChannel": null,
+      "selectedVideoTitle": "Panthers vs. Flames | NHL Highlights | March 20, 2026",
+      "selectedVideoPublishedAt": "18 hours ago",
+      "selectedVideoChannel": "NHL",
       "rejectedForAgeCount": 0
     }
   },
@@ -233,21 +241,21 @@
   },
   "momentum:boston bruins highlights march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=XmeDjBZFl0I",
-      "thumbnailUrl": "https://img.youtube.com/vi/XmeDjBZFl0I/hqdefault.jpg",
-      "durationSeconds": 2300,
-      "title": "GAME NIGHT: Playoff picture SHIFTS in dramatic night. Blue Jackets, Kings IN, Islanders,Kraken OUT",
+      "url": "https://www.youtube.com/watch?v=IqMIuhlntX8",
+      "thumbnailUrl": "https://img.youtube.com/vi/IqMIuhlntX8/hqdefault.jpg",
+      "durationSeconds": 695,
+      "title": "Panthers vs. Flames | NHL Highlights | March 20, 2026",
       "source": "youtube",
-      "channel": "Locked On NHL",
-      "publishedAt": "14 hours ago"
+      "channel": "NHL",
+      "publishedAt": "18 hours ago"
     },
-    "fetchedAt": "2026-03-20T22:36:35.491Z",
+    "fetchedAt": "2026-03-21T22:50:21.618Z",
     "query": "Boston Bruins highlights March 2026",
     "debug": {
       "searchQuery": "Boston Bruins highlights March 2026",
-      "selectedVideoTitle": "GAME NIGHT: Playoff picture SHIFTS in dramatic night. Blue Jackets, Kings IN, Islanders,Kraken OUT",
-      "selectedVideoPublishedAt": "14 hours ago",
-      "selectedVideoChannel": "Locked On NHL",
+      "selectedVideoTitle": "Panthers vs. Flames | NHL Highlights | March 20, 2026",
+      "selectedVideoPublishedAt": "18 hours ago",
+      "selectedVideoChannel": "NHL",
       "rejectedForAgeCount": 0
     }
   },
@@ -385,21 +393,21 @@
   },
   "league_moment:rivalry weekend sports march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=OD_BvIBAqOM",
-      "thumbnailUrl": "https://img.youtube.com/vi/OD_BvIBAqOM/hqdefault.jpg",
-      "durationSeconds": 4992,
-      "title": "UFC FIGHT NIGHT: EVLOEV VS MURPHY LIVESTREAM! (EA Sports UFC 5)",
+      "url": "https://www.youtube.com/watch?v=xFXoaivDfy4",
+      "thumbnailUrl": "https://img.youtube.com/vi/xFXoaivDfy4/hqdefault.jpg",
+      "durationSeconds": 3231,
+      "title": "🔴 LIVE: Packers 2026 Mock Draft! Fixing the Roster Without a 1st Round Pick",
       "source": "youtube",
-      "channel": "Mr Rob",
-      "publishedAt": "Streamed 42 minutes ago"
+      "channel": "Packerfan Total Access 🏈🧀",
+      "publishedAt": "Streamed 2 hours ago"
     },
-    "fetchedAt": "2026-03-20T22:36:35.135Z",
+    "fetchedAt": "2026-03-21T22:50:20.265Z",
     "query": "Rivalry Weekend sports March 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports March 2026",
-      "selectedVideoTitle": "UFC FIGHT NIGHT: EVLOEV VS MURPHY LIVESTREAM! (EA Sports UFC 5)",
-      "selectedVideoPublishedAt": "Streamed 42 minutes ago",
-      "selectedVideoChannel": "Mr Rob",
+      "selectedVideoTitle": "🔴 LIVE: Packers 2026 Mock Draft! Fixing the Roster Without a 1st Round Pick",
+      "selectedVideoPublishedAt": "Streamed 2 hours ago",
+      "selectedVideoChannel": "Packerfan Total Access 🏈🧀",
       "rejectedForAgeCount": 0
     }
   },
@@ -429,22 +437,22 @@
   },
   "rivalry_game:new zealand vs south africa rivalry highlights": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=P3qc2DujWIQ",
-      "thumbnailUrl": "https://img.youtube.com/vi/P3qc2DujWIQ/hqdefault.jpg",
-      "durationSeconds": 126,
-      "title": "Yuzvendra Chahal Sensational Decision! 🚫 No Alcohol for 6 Months | PBKS Star's Big Plan for IPL 2026",
+      "url": "https://www.youtube.com/watch?v=xmGcnRwwPjE",
+      "thumbnailUrl": "https://img.youtube.com/vi/xmGcnRwwPjE/hqdefault.jpg",
+      "durationSeconds": 716,
+      "title": "New Zealand vs South Africa | 4TH T20I MATCH | CRICKET 26 GAMEPLAY ",
       "source": "youtube",
-      "channel": "ABCDCINEMA1",
-      "publishedAt": "12 hours ago"
+      "channel": "RedBrothers ",
+      "publishedAt": "9 hours ago"
     },
-    "fetchedAt": "2026-03-19T22:21:30.109Z",
+    "fetchedAt": "2026-03-21T22:50:19.915Z",
     "query": "New Zealand vs South Africa rivalry highlights",
     "debug": {
       "searchQuery": "New Zealand vs South Africa rivalry highlights",
-      "selectedVideoTitle": "Yuzvendra Chahal Sensational Decision! 🚫 No Alcohol for 6 Months | PBKS Star's Big Plan for IPL 2026",
-      "selectedVideoPublishedAt": "12 hours ago",
-      "selectedVideoChannel": "ABCDCINEMA1",
-      "rejectedForAgeCount": 0
+      "selectedVideoTitle": "New Zealand vs South Africa | 4TH T20I MATCH | CRICKET 26 GAMEPLAY ",
+      "selectedVideoPublishedAt": "9 hours ago",
+      "selectedVideoChannel": "RedBrothers ",
+      "rejectedForAgeCount": 1
     }
   },
   "upset_alert:winnipeg jets vs boston bruins upset highlights march 2026": {
@@ -481,21 +489,21 @@
   },
   "momentum:anaheim ducks highlights march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=m3iuCkUR0qY",
-      "thumbnailUrl": "https://img.youtube.com/vi/m3iuCkUR0qY/hqdefault.jpg",
-      "durationSeconds": 5589,
-      "title": "If Oil Hits $120… What Happens to Canola Prices?",
+      "url": "https://www.youtube.com/watch?v=QDlo_ZpsYQc",
+      "thumbnailUrl": "https://img.youtube.com/vi/QDlo_ZpsYQc/hqdefault.jpg",
+      "durationSeconds": 10,
+      "title": "2v2 INSANITY! 🛑 Thrashers Goalie Robs Ducks One-Timer (NHL '94 Genesis)",
       "source": "youtube",
-      "channel": "What the Futures! Podcast",
-      "publishedAt": "13 hours ago"
+      "channel": "NHL '94 Podcast",
+      "publishedAt": "3 hours ago"
     },
-    "fetchedAt": "2026-03-21T04:48:35.009Z",
+    "fetchedAt": "2026-03-21T22:50:20.574Z",
     "query": "Anaheim Ducks highlights March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks highlights March 2026",
-      "selectedVideoTitle": "If Oil Hits $120… What Happens to Canola Prices?",
-      "selectedVideoPublishedAt": "13 hours ago",
-      "selectedVideoChannel": "What the Futures! Podcast",
+      "selectedVideoTitle": "2v2 INSANITY! 🛑 Thrashers Goalie Robs Ducks One-Timer (NHL '94 Genesis)",
+      "selectedVideoPublishedAt": "3 hours ago",
+      "selectedVideoChannel": "NHL '94 Podcast",
       "rejectedForAgeCount": 0
     }
   },
@@ -505,6 +513,18 @@
     "query": "Darderi vs Landaluce upset highlights March 2026",
     "debug": {
       "searchQuery": "Darderi vs Landaluce upset highlights March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:rublev vs tabilo upset highlights march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-21T22:50:22.432Z",
+    "query": "Rublev vs Tabilo upset highlights March 2026",
+    "debug": {
+      "searchQuery": "Rublev vs Tabilo upset highlights March 2026",
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,
