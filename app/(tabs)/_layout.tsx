@@ -62,7 +62,7 @@ function NativeTabLayout() {
         <Label>Rituals</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="index">
-        <Icon sf={{ default: "compass", selected: "compass.fill" }} md="explore" />
+        <Icon sf={{ default: "sparkles", selected: "sparkles" }} md="auto_awesome" />
         <Label>Stories</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="live" hidden />
@@ -125,7 +125,7 @@ function ClassicTabLayout() {
         options={{
           title: "Stories",
           tabBarIcon: ({ focused }) => (
-            <TabIcon iconName="compass" color={TAB_COLORS.stories} focused={focused} />
+            <TabIcon iconName="sparkles" color={TAB_COLORS.stories} focused={focused} />
           ),
         }}
       />
