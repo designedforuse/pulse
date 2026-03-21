@@ -42,7 +42,7 @@ The application features a frontend built with Expo Router for file-based naviga
 - **API-Hockey (api-sports.io):** ECHL schedule data.
 - **College Hockey News (collegehockeynews.com):** NCAA BU Hockey schedule data (scraped).
 - **rugbyfixture.io (iCal feeds):** URC, Top 14, English Premiership, European Champions Cup Rugby schedules.
-- **fixturedownload.com (iCal feeds):** Super Rugby Pacific, EPL, and MLS schedules.
+- **fixturedownload.com (iCal feeds):** Super Rugby Pacific (schedule only), EPL, and MLS schedules.
 - **ESPN API (site.api.espn.com):** Champions League (uefa.champions) and Europa League (uefa.europa) schedule data.
 - **ESPN API (site.api.espn.com):** NBA basketball schedule and live score data.
 - **ESPN API (site.api.espn.com):** USL, FA Cup, ATP Tennis, and F1 Racing schedule data.
@@ -51,7 +51,7 @@ The application features a frontend built with Expo Router for file-based naviga
 - **Golf Majors (hardcoded):** Players Championship, The Masters, PGA Championship, US Open, British Open schedule data.
 - **World Marathon Majors (hardcoded):** Tokyo, Boston, London, Sydney, Berlin, Chicago, and New York City marathons as athletics/session events on FloSports.
 - **CricAPI:** International and domestic Cricket fixtures and live scores. Uses `/v1/cricScore` (free tier, no credits needed) for live match detection, and `/v1/matches` (paginated, MAX_PAGES=10, ~20 hits/day) for schedule. Budget: 20 hits/day schedule + max 72 hits/day live (20 min TTL) = ~92/day max vs 100/day limit. Cache timestamp always updated after each API call (even when no matches found) to prevent hammering. Each cricket event stores `cricketMatchId` (CricAPI UUID) for reliable ID-based score matching. The `currentMatches` endpoint was replaced because it requires credits (account has 0 credits).
-- **World Rugby API (api.wr-rims-prod.pulselive.com):** SVNS match schedules and live scores.
+- **World Rugby API (api.wr-rims-prod.pulselive.com):** SVNS match schedules and live scores; Super Rugby Pacific live scores and game clock data (event ID: `af9ef6cd-4a14-469d-83da-dd85b9882636`).
 - **Apple TV:** Streaming provider integration.
 - **YouTube TV:** Streaming provider integration.
 - **Disney+:** Streaming provider integration.
