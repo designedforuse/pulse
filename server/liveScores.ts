@@ -432,8 +432,8 @@ async function fetchSoccerScores(soccerMap: Map<string, string[]>): Promise<Reco
               const clock = comp.status?.displayClock || "";
               const periodNum = comp.status?.period || 0;
               let period = "Live";
-              if (periodNum === 1) period = "1H";
-              else if (periodNum === 2) period = "2H";
+              if (periodNum === 1) period = "H1";
+              else if (periodNum === 2) period = "H2";
               else if (periodNum === 3) period = "ET1";
               else if (periodNum === 4) period = "ET2";
               else if (periodNum === 5) period = "PK";
@@ -555,9 +555,9 @@ async function fetchRugbyScores(
               if (/half\s*time/i.test(detail) || detail === "HT" || /half\s*time/i.test(description)) {
                 period = "HT";
               } else if (periodNum === 1 || /first\s*half/i.test(description) || /STATUS_FIRST_HALF/i.test(comp.status?.type?.name || "")) {
-                period = "1H";
+                period = "H1";
               } else if (periodNum === 2 || /second\s*half/i.test(description) || /STATUS_SECOND_HALF/i.test(comp.status?.type?.name || "")) {
-                period = "2H";
+                period = "H2";
               }
 
               scores[ourEvent.id] = {
@@ -645,7 +645,7 @@ async function fetchJapanLeagueOneMatchDetail(matchId: string): Promise<{
 
     if (htMarkerIndex === -1) {
       // Only first-half events seen — game is in first half
-      period = "1H";
+      period = "H1";
       clock = `${last.minute}'`;
     } else {
       // Half-time marker exists — check if any events come after it
@@ -657,7 +657,7 @@ async function fetchJapanLeagueOneMatchDetail(matchId: string): Promise<{
         lastMinuteAfterHt = parseInt(re2[1]);
       }
       if (lastMinuteAfterHt !== null) {
-        period = "2H";
+        period = "H2";
         clock = `${lastMinuteAfterHt}'`;
       } else {
         period = "HT";
@@ -1330,8 +1330,8 @@ async function fetchNcaabBasketballScores(eventIds: string[]): Promise<Record<st
             const clock = comp.status?.displayClock || "";
             const periodNum = comp.status?.period || 0;
             let period = "Live";
-            if (periodNum === 1) period = "1H";
-            else if (periodNum === 2) period = "2H";
+            if (periodNum === 1) period = "H1";
+            else if (periodNum === 2) period = "H2";
             else if (periodNum === 3) period = "OT";
             else if (periodNum > 3) period = `${periodNum - 2}OT`;
 
