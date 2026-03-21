@@ -55,9 +55,17 @@ function formatStartsIn(startTimeLocal: string, now: Date): string {
   const days = Math.floor(totalMinutes / 1440);
   const hours = Math.floor((totalMinutes % 1440) / 60);
   const minutes = totalMinutes % 60;
-  if (days > 0) return `Starts in ${days}d${hours > 0 ? ` ${hours}h` : ""}`;
-  if (hours > 0) return `Starts in ${hours}h${minutes > 0 ? ` ${minutes}m` : ""}`;
-  return `Starts in ${minutes}m`;
+  if (days > 0) {
+    const dayStr = `${days} ${days === 1 ? "day" : "days"}`;
+    const hourStr = hours > 0 ? ` ${hours} ${hours === 1 ? "hour" : "hours"}` : "";
+    return `Starting in ${dayStr}${hourStr}`;
+  }
+  if (hours > 0) {
+    const hourStr = `${hours} ${hours === 1 ? "hour" : "hours"}`;
+    const minStr = minutes > 0 ? ` ${minutes} ${minutes === 1 ? "minute" : "minutes"}` : "";
+    return `Starting in ${hourStr}${minStr}`;
+  }
+  return `Starting in ${minutes} ${minutes === 1 ? "minute" : "minutes"}`;
 }
 
 function PulsingDot() {
