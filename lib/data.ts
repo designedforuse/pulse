@@ -262,16 +262,8 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
   };
 }
 
-export function formatProviderReason(reason: string | undefined): string | null {
-  if (!reason) return null;
-  const labels: Record<string, string> = {
-    "tennis-channel": "Tennis Channel",
-    "espn-broadcast": "ESPN Broadcast",
-    "tnt-broadcast": "TNT Broadcast",
-    "flosports": "FloSports",
-    "victoryplus": "Victory+",
-  };
-  return labels[reason] ?? null;
+export function formatProviderReason(_reason: string | undefined): string | null {
+  return null;
 }
 
 export function getSportIcon(sport: string): string {
