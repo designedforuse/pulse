@@ -2,6 +2,7 @@ import type { AppEvent, SoccerFetchResult, SoccerMergeResult } from "./soccerIca
 import { mergeSoccerLeagueEvents } from "./soccerIcalUtils";
 
 const NWSL_ICAL_URL = "https://fixturedownload.com/download/nwsl-2026-UTC.ics";
+const ESPN_NWSL_URL = "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.nwsl/scoreboard";
 const NWSL_DURATION_MIN = 135;
 
 interface NwslVEvent {
@@ -11,6 +12,27 @@ interface NwslVEvent {
   uid: string;
   location?: string;
   description?: string;
+}
+
+interface EspnBroadcast {
+  market?: string;
+  names?: string[];
+}
+
+interface EspnCompetitor {
+  homeAway: string;
+  team: { displayName: string };
+}
+
+interface EspnCompetition {
+  date?: string;
+  broadcasts?: EspnBroadcast[];
+  competitors?: EspnCompetitor[];
+}
+
+interface EspnNwslEvent {
+  date?: string;
+  competitions?: EspnCompetition[];
 }
 
 function parseIcalDate(raw: string): string | null {
@@ -116,36 +138,6 @@ function parseTeams(summary: string): { homeTeam: string; awayTeam: string } | n
   return null;
 }
 
-function determineBroadcastProvider(description?: string): { providerId: string; providerReason: string; broadcastNetworks?: string } {
-  if (!description) {
-    return { providerId: "youtubetv", providerReason: "nwsl-default" };
-  }
-
-  const desc = description.toLowerCase();
-
-  const broadcastMatch = description.match(/(?:broadcast|network|tv|channel|air(?:ing|s)?)\s*[:\-]?\s*(.+?)(?:\\n|\n|$)/i);
-  const broadcastStr = broadcastMatch ? broadcastMatch[1].trim() : description;
-  const broadcastLower = broadcastStr.toLowerCase();
-
-  if (broadcastLower.includes("prime")) {
-    return {
-      providerId: "primevideo",
-      providerReason: "nwsl-prime",
-      broadcastNetworks: broadcastStr,
-    };
-  }
-
-  if (/\bespn\+?\b/i.test(broadcastStr) || /\babc\b/i.test(broadcastStr) || /\bespn2\b/i.test(broadcastStr)) {
-    return {
-      providerId: "disneyplus",
-      providerReason: "nwsl-espn",
-      broadcastNetworks: broadcastStr,
-    };
-  }
-
-  return { providerId: "youtubetv", providerReason: "nwsl-default" };
-}
-
 function stableId(startUtc: string, away: string, home: string): string {
   const d = new Date(startUtc);
   const dateStr = d.toISOString().slice(0, 10).replace(/-/g, "");
@@ -153,6 +145,86 @@ function stableId(startUtc: string, away: string, home: string): string {
   const a = away.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
   const h = home.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
   return `soccer-nwsl-${dateStr}-${timeStr}-${a}-at-${h}`;
+}
+
+function normalizeTeamForMatch(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/\bfc\b\.?/gi, "")
+    .replace(/[^a-z0-9]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function espnMatchKey(dateStr: string, team1: string, team2: string): string {
+  const t1 = normalizeTeamForMatch(team1);
+  const t2 = normalizeTeamForMatch(team2);
+  return `${dateStr}_${[t1, t2].sort().join("__")}`;
+}
+
+function networkToProviderId(networks: string[]): { providerId: string; providerReason: string } {
+  const allNets = networks.join(" ").toLowerCase();
+
+  if (/\bion\b/.test(allNets) || /prime\s*video/i.test(allNets) || /golazo/i.test(allNets)) {
+    return { providerId: "primevideo", providerReason: "nwsl-ion-prime" };
+  }
+  if (/espn\+/i.test(allNets)) {
+    return { providerId: "disneyplus", providerReason: "nwsl-espnplus" };
+  }
+  if (/victory\+/i.test(allNets)) {
+    return { providerId: "victoryplus", providerReason: "nwsl-victory" };
+  }
+  if (/\babc\b/i.test(allNets) || /\bespn\b/i.test(allNets) || /\bcbs/i.test(allNets)) {
+    return { providerId: "youtubetv", providerReason: "nwsl-espn-cbs" };
+  }
+  if (/paramount\+/i.test(allNets)) {
+    return { providerId: "paramount", providerReason: "nwsl-paramount" };
+  }
+  if (/nwsl\+/i.test(allNets)) {
+    return { providerId: "nwslplus", providerReason: "nwsl-nwslplus" };
+  }
+  return { providerId: "nwslplus", providerReason: "nwsl-default" };
+}
+
+async function fetchEspnNwslBroadcasters(
+  icalDates: string[]
+): Promise<Map<string, { providerId: string; providerReason: string; broadcastNetworks: string }>> {
+  const lookup = new Map<string, { providerId: string; providerReason: string; broadcastNetworks: string }>();
+
+  const uniqueDates = [...new Set(icalDates)];
+  console.log(`  NWSL ESPN: Fetching broadcaster data for ${uniqueDates.length} dates...`);
+
+  for (const dateStr of uniqueDates) {
+    try {
+      const url = `${ESPN_NWSL_URL}?dates=${dateStr}&limit=20`;
+      const res = await fetch(url, {
+        headers: { "User-Agent": "Mozilla/5.0 (compatible; SportsGuide/1.0)" },
+      });
+      if (!res.ok) continue;
+
+      const data = (await res.json()) as { events?: EspnNwslEvent[] };
+
+      for (const event of data.events || []) {
+        const comp = (event.competitions || [])[0];
+        if (!comp) continue;
+
+        const home = comp.competitors?.find((c) => c.homeAway === "home")?.team?.displayName || "";
+        const away = comp.competitors?.find((c) => c.homeAway === "away")?.team?.displayName || "";
+        if (!home || !away) continue;
+
+        const networks = (comp.broadcasts || []).flatMap((b) => b.names || []);
+        const { providerId, providerReason } = networkToProviderId(networks);
+        const broadcastNetworks = networks.join(", ");
+
+        const key = espnMatchKey(dateStr, home, away);
+        lookup.set(key, { providerId, providerReason, broadcastNetworks });
+      }
+    } catch {
+    }
+  }
+
+  console.log(`  NWSL ESPN: Built broadcaster lookup with ${lookup.size} entries`);
+  return lookup;
 }
 
 export async function fetchNwslEvents(): Promise<SoccerFetchResult> {
@@ -173,14 +245,9 @@ export async function fetchNwslEvents(): Promise<SoccerFetchResult> {
     const windowStart = new Date(now.getTime() - 14 * 86400000);
     const windowEnd = new Date(now.getTime() + 21 * 86400000);
 
-    const events: AppEvent[] = [];
-    const seenIds = new Set<string>();
-
-    let primeCount = 0;
-    let espnCount = 0;
-    let defaultCount = 0;
-
+    const windowedVEvents: Array<{ ve: NwslVEvent; startUtc: string; teams: { homeTeam: string; awayTeam: string } }> = [];
     let firstMatchUtc: string | null = null;
+
     for (const ve of vevents) {
       const startUtc = parseIcalDate(ve.dtstart);
       if (!startUtc) continue;
@@ -198,6 +265,21 @@ export async function fetchNwslEvents(): Promise<SoccerFetchResult> {
         continue;
       }
 
+      windowedVEvents.push({ ve, startUtc, teams });
+    }
+
+    const icalDates = [...new Set(
+      windowedVEvents.map(({ startUtc }) => startUtc.slice(0, 10).replace(/-/g, ""))
+    )];
+
+    const espnLookup = await fetchEspnNwslBroadcasters(icalDates);
+
+    const events: AppEvent[] = [];
+    const seenIds = new Set<string>();
+
+    const providerCounts: Record<string, number> = {};
+
+    for (const { ve, startUtc, teams } of windowedVEvents) {
       const endUtc = ve.dtend
         ? parseIcalDate(ve.dtend) || addDuration(startUtc, NWSL_DURATION_MIN)
         : addDuration(startUtc, NWSL_DURATION_MIN);
@@ -206,11 +288,15 @@ export async function fetchNwslEvents(): Promise<SoccerFetchResult> {
       if (seenIds.has(id)) continue;
       seenIds.add(id);
 
-      const { providerId, providerReason, broadcastNetworks } = determineBroadcastProvider(ve.description);
+      const dateStr = startUtc.slice(0, 10).replace(/-/g, "");
+      const lookupKey = espnMatchKey(dateStr, teams.homeTeam, teams.awayTeam);
+      const espnMatch = espnLookup.get(lookupKey);
 
-      if (providerReason === "nwsl-prime") primeCount++;
-      else if (providerReason === "nwsl-espn") espnCount++;
-      else defaultCount++;
+      const providerId = espnMatch?.providerId ?? "nwslplus";
+      const providerReason = espnMatch?.providerReason ?? "nwsl-default";
+      const broadcastNetworks = espnMatch?.broadcastNetworks;
+
+      providerCounts[providerId] = (providerCounts[providerId] || 0) + 1;
 
       const event: AppEvent = {
         id,
@@ -235,7 +321,8 @@ export async function fetchNwslEvents(): Promise<SoccerFetchResult> {
     }
 
     console.log(`  NWSL: ${events.length} events in retention window`);
-    console.log(`  NWSL providers: ${primeCount} Prime, ${espnCount} ESPN/Disney+, ${defaultCount} default YTTV`);
+    const providerSummary = Object.entries(providerCounts).map(([k, v]) => `${v} ${k}`).join(", ");
+    console.log(`  NWSL providers: ${providerSummary}`);
     if (firstMatchUtc) {
       console.log(`  NWSL: First match in feed: ${firstMatchUtc}`);
     }

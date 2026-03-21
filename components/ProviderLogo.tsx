@@ -15,6 +15,8 @@ const PROVIDER_TEXT_LABELS: Record<string, string> = {
   espn: "ESPN",
   cbsgolazo: "Golazo",
   tnt: "TNT",
+  paramount: "P+",
+  nwslplus: "NWSL+",
 };
 
 let _warnedIds: Set<string> | null = null;
