@@ -372,7 +372,7 @@ export default function EventSheet() {
             testID="open-provider-btn"
           >
             <Text style={[styles.openButtonText, isUpcoming && styles.disabledButtonText]}>
-              {isUpcoming ? (startsInLabel ?? "Starting soon") : "Watch Now"}
+              {isUpcoming ? (startsInLabel ?? "Starting soon") : isLiveState ? "Join Live" : "Watch Now"}
             </Text>
           </Pressable>
         )}
