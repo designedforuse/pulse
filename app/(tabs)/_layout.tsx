@@ -58,7 +58,7 @@ function NativeTabLayout() {
         <Label>Watch</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="rituals">
-        <Icon sf={{ default: "square.grid.2x2", selected: "square.grid.2x2.fill" }} md="grid-view" />
+        <Icon sf={{ default: "tshirt", selected: "tshirt.fill" }} md="checkroom" />
         <Label>Rituals</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="index">
@@ -116,7 +116,7 @@ function ClassicTabLayout() {
         options={{
           title: "Rituals",
           tabBarIcon: ({ focused }) => (
-            <TabIcon iconName="grid" color={TAB_COLORS.rituals} focused={focused} />
+            <TabIcon iconName="shirt" color={TAB_COLORS.rituals} focused={focused} />
           ),
         }}
       />
