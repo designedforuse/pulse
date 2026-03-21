@@ -3,7 +3,7 @@ const JL_SHORT_NAMES: Record<string, string> = {
   "Black Rams Tokyo": "Black Rams",
   "Kobelco Kobe Steelers": "Steelers",
   "Saitama Wild Knights": "Wild Knights",
-  "Tokyo-Bay Urayasu D-Rocks": "D-Rocks",
+  "Kubota Spears": "Kubota Spears",
   "Urayasu D-Rocks": "D-Rocks",
   "Toyota Verblitz": "Verblitz",
   "Mie Honda Heat": "Heat",

@@ -478,5 +478,37 @@
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
+  },
+  "momentum:anaheim ducks highlights march 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=m3iuCkUR0qY",
+      "thumbnailUrl": "https://img.youtube.com/vi/m3iuCkUR0qY/hqdefault.jpg",
+      "durationSeconds": 5589,
+      "title": "If Oil Hits $120… What Happens to Canola Prices?",
+      "source": "youtube",
+      "channel": "What the Futures! Podcast",
+      "publishedAt": "13 hours ago"
+    },
+    "fetchedAt": "2026-03-21T04:48:35.009Z",
+    "query": "Anaheim Ducks highlights March 2026",
+    "debug": {
+      "searchQuery": "Anaheim Ducks highlights March 2026",
+      "selectedVideoTitle": "If Oil Hits $120… What Happens to Canola Prices?",
+      "selectedVideoPublishedAt": "13 hours ago",
+      "selectedVideoChannel": "What the Futures! Podcast",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:darderi vs landaluce upset highlights march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-21T04:48:35.213Z",
+    "query": "Darderi vs Landaluce upset highlights March 2026",
+    "debug": {
+      "searchQuery": "Darderi vs Landaluce upset highlights March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
   }
 }

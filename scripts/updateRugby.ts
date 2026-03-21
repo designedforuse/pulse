@@ -398,7 +398,7 @@ const LEAGUE_ONE_DISPLAY_NAMES: Record<string, string> = {
   "Yokohama": "Yokohama Canon Eagles",
   "Shizuoka": "Shizuoka Blue Revs",
   "Sagamihara": "Sagamihara Dynaboars",
-  "Tokyo-Bay": "Tokyo-Bay Urayasu D-Rocks",
+  "Tokyo-Bay": "Kubota Spears",
   "Urayasu": "Urayasu D-Rocks",
   "Mie": "Mie Honda Heat",
 };
@@ -414,8 +414,8 @@ const JP_TO_EN_TEAMS: Record<string, string> = {
   "ブラックラムズ東京": "Black Rams Tokyo",
   "コベルコ神戸スティーラーズ": "Kobelco Kobe Steelers",
   "埼玉ワイルドナイツ": "Saitama Wild Knights",
-  "クボタスピアーズ船橋・東京ベイ": "Tokyo-Bay Urayasu D-Rocks",
-  "クボタスピアーズ船橋": "Tokyo-Bay Urayasu D-Rocks",
+  "クボタスピアーズ船橋・東京ベイ": "Kubota Spears",
+  "クボタスピアーズ船橋": "Kubota Spears",
   "浦安D-Rocks": "Urayasu D-Rocks",
   "トヨタヴェルブリッツ": "Toyota Verblitz",
   "三重ホンダヒート": "Mie Honda Heat",
@@ -527,8 +527,51 @@ async function fetchLeagueOneEvents(windowStart: Date, windowEnd: Date): Promise
       });
     }
 
-    console.log(`  Rugby [leagueone]: ${events.length} events in retention window`);
-    return events;
+    // De-duplicate within-round: a team plays at most once per 5-day window.
+    // Regex cross-boundary parses occasionally create bogus fixtures at unusual
+    // kickoff times. If a team appears twice within 5 days, keep the match whose
+    // kickoff slot is shared by the most other matches in that day (most common
+    // = most likely real), breaking ties by preferring later kickoff.
+    const slotCounts = new Map<string, number>();
+    for (const ev of events) {
+      const dateSlot = new Date(ev.startTimeLocal).toISOString().slice(0, 13); // YYYY-MM-DDTHH
+      slotCounts.set(dateSlot, (slotCounts.get(dateSlot) ?? 0) + 1);
+    }
+    const toDropIds = new Set<string>();
+    const teamWindowMap = new Map<string, AppEvent>(); // "team|windowKey" -> event
+    for (const ev of events.sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime())) {
+      const evTime = new Date(ev.startTimeLocal).getTime();
+      for (const team of [ev.homeTeam, ev.awayTeam]) {
+        const existing = teamWindowMap.get(team);
+        if (existing) {
+          const existingTime = new Date(existing.startTimeLocal).getTime();
+          if (Math.abs(evTime - existingTime) < 5 * 24 * 3600 * 1000) {
+            // Both within 5 days — keep the one in the more common kickoff slot
+            const evSlot = new Date(ev.startTimeLocal).toISOString().slice(0, 13);
+            const exSlot = new Date(existing.startTimeLocal).toISOString().slice(0, 13);
+            const evCount = slotCounts.get(evSlot) ?? 0;
+            const exCount = slotCounts.get(exSlot) ?? 0;
+            if (evCount > exCount || (evCount === exCount && evTime > existingTime)) {
+              toDropIds.add(existing.id);
+              teamWindowMap.set(team, ev);
+            } else {
+              toDropIds.add(ev.id);
+            }
+          } else {
+            teamWindowMap.set(team, ev);
+          }
+        } else {
+          teamWindowMap.set(team, ev);
+        }
+      }
+    }
+    const dedupedEvents = toDropIds.size > 0 ? events.filter(e => !toDropIds.has(e.id)) : events;
+    if (toDropIds.size > 0) {
+      console.log(`  Rugby [leagueone]: Removed ${toDropIds.size} within-round duplicate(s)`);
+    }
+
+    console.log(`  Rugby [leagueone]: ${dedupedEvents.length} events in retention window`);
+    return dedupedEvents;
   } catch (err) {
     console.error(`  Rugby [leagueone]: Fetch error:`, err);
     return fetchLeagueOneEventsAllRugbyFallback(windowStart, windowEnd);
@@ -714,6 +757,33 @@ export function mergeRugbyEvents(
     if (!freshIds.has(id) && freshMatchKeys.has(matchKey(e))) {
       index.delete(id);
     }
+  }
+
+  // Drop stale leagueone indexed events where either team has a fresh match within 5 days.
+  // This prevents bogus parser-generated fixtures (cross-boundary HTML regex parses)
+  // from surviving the merge when fresh data has the same teams playing nearby.
+  const leagueoneFreshByTeam = new Map<string, number[]>();
+  for (const ev of fresh.filter((e) => e.leagueKey === "leagueone")) {
+    for (const team of [ev.homeTeam, ev.awayTeam]) {
+      if (!leagueoneFreshByTeam.has(team)) leagueoneFreshByTeam.set(team, []);
+      leagueoneFreshByTeam.get(team)!.push(new Date(ev.startTimeLocal).getTime());
+    }
+  }
+  let staleDropped = 0;
+  for (const [id, ev] of index) {
+    if (ev.leagueKey !== "leagueone" || freshIds.has(id)) continue;
+    const evTime = new Date(ev.startTimeLocal).getTime();
+    for (const team of [ev.homeTeam, ev.awayTeam]) {
+      const freshTimes = leagueoneFreshByTeam.get(team) ?? [];
+      if (freshTimes.some((ft) => Math.abs(evTime - ft) < 5 * 24 * 3600 * 1000)) {
+        index.delete(id);
+        staleDropped++;
+        break;
+      }
+    }
+  }
+  if (staleDropped > 0) {
+    console.log(`  Rugby [merge]: Dropped ${staleDropped} stale leagueone event(s) superseded by fresh data`);
   }
 
   const windowStart = new Date(now.getTime() - 14 * 86400000);

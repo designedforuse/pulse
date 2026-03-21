@@ -353,7 +353,7 @@ const JL1_LOGO_MAP: Record<string, string> = {
   "Kobelco Kobe Steelers": "https://league-one.s3.ap-northeast-1.amazonaws.com/image/team_info/11185_200x200_670e71b093142.png",
   "Tokyo Sungoliath": "https://league-one.s3.ap-northeast-1.amazonaws.com/image/team_info/11188_200x200_670e738b02420.png",
   "Brave Lupus Tokyo": "https://league-one.s3.ap-northeast-1.amazonaws.com/image/team_info/11189_200x200_670e7448a796a.png",
-  "Tokyo-Bay Urayasu D-Rocks": "https://league-one.s3.ap-northeast-1.amazonaws.com/image/team_info/11184_200x200_670e70ccbfbc7.png",
+  "Kubota Spears": "https://league-one.s3.ap-northeast-1.amazonaws.com/image/team_info/11182_200x200_670e7046b8c3a.png",
   "Urayasu D-Rocks": "https://league-one.s3.ap-northeast-1.amazonaws.com/image/team_info/11184_200x200_670e70ccbfbc7.png",
   "Yokohama Canon Eagles": "https://league-one.s3.ap-northeast-1.amazonaws.com/image/team_info/11193_200x200_670e75f78a9bc.png",
   "Shizuoka Blue Revs": "https://league-one.s3.ap-northeast-1.amazonaws.com/image/team_info/11187_200x200_670e72d6dee20.png",
