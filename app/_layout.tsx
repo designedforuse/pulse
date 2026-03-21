@@ -70,7 +70,7 @@ function RootLayoutNav() {
         name="event-sheet"
         options={{
           presentation: "formSheet",
-          sheetAllowedDetents: [0.55],
+          sheetAllowedDetents: [0.42],
           sheetGrabberVisible: true,
           headerShown: false,
           contentStyle: { backgroundColor: Colors.card },
