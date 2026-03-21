@@ -174,7 +174,7 @@ function networkToProviderId(networks: string[]): { providerId: string; provider
   if (/victory\+/i.test(allNets)) {
     return { providerId: "victoryplus", providerReason: "nwsl-victory" };
   }
-  if (/\babc\b/i.test(allNets) || /\bespn\b/i.test(allNets) || /\bcbs/i.test(allNets)) {
+  if (/\babc\b/i.test(allNets) || /\bespn(?!\+)/i.test(allNets) || /\bcbs/i.test(allNets)) {
     return { providerId: "youtubetv", providerReason: "nwsl-espn-cbs" };
   }
   if (/paramount\+/i.test(allNets)) {
