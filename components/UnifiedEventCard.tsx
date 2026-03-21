@@ -238,6 +238,26 @@ function LiveDot() {
   return <Animated.View style={[uStyles.liveDotStatic, animStyle]} />;
 }
 
+function PulsingLightning() {
+  const opacity = useSharedValue(1);
+  React.useEffect(() => {
+    opacity.value = withRepeat(
+      withSequence(
+        withTiming(0.25, { duration: 600 }),
+        withTiming(1, { duration: 600 })
+      ),
+      -1,
+      false
+    );
+  }, []);
+  const animStyle = useAnimatedStyle(() => ({ opacity: opacity.value }));
+  return (
+    <Animated.View style={animStyle}>
+      <Ionicons name="flash" size={10} color="#FF453A" />
+    </Animated.View>
+  );
+}
+
 function LiveScanBar({ color }: { color: string }) {
   const BAR = 18;
   const [trackW, setTrackW] = React.useState(80);
@@ -765,7 +785,7 @@ export default function UnifiedEventCard({
             )}
             {isLive && (
               <View style={uStyles.liveChip}>
-                <LiveDot />
+                {tensionRank >= 3 ? <PulsingLightning /> : <LiveDot />}
                 <Text style={uStyles.liveText}>{tensionRank >= 3 ? "HIGH TENSION" : "LIVE"}</Text>
               </View>
             )}

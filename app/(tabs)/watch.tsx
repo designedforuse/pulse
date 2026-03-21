@@ -75,6 +75,26 @@ function LiveDot() {
   return <Animated.View style={[styles.liveDot, animStyle]} />;
 }
 
+function PulsingLightning() {
+  const opacity = useSharedValue(1);
+  React.useEffect(() => {
+    opacity.value = withRepeat(
+      withSequence(
+        withTiming(0.25, { duration: 600 }),
+        withTiming(1, { duration: 600 })
+      ),
+      -1,
+      false
+    );
+  }, []);
+  const animStyle = useAnimatedStyle(() => ({ opacity: opacity.value }));
+  return (
+    <Animated.View style={animStyle}>
+      <Ionicons name="flash" size={10} color="#FF453A" />
+    </Animated.View>
+  );
+}
+
 function LiveScanBar({ color }: { color: string }) {
   const BAR = 18;
   const [trackW, setTrackW] = React.useState(80);
@@ -373,7 +393,7 @@ function ChaosCard({
               <View style={{ flex: 1 }} />
               {isLiveState && (
                 <View style={styles.liveChip}>
-                  <LiveDot />
+                  {microLabel ? <PulsingLightning /> : <LiveDot />}
                   <Text style={styles.liveText}>{microLabel ? "HIGH TENSION" : "LIVE"}</Text>
                 </View>
               )}
@@ -533,7 +553,7 @@ function ChaosCard({
           </View>
           {isLiveState && (
             <View style={styles.liveChipSmall}>
-              <LiveDot />
+              {tensionRank >= 3 ? <PulsingLightning /> : <LiveDot />}
               <Text style={styles.liveTextSmall}>{tensionRank >= 3 ? "HIGH TENSION" : "LIVE"}</Text>
             </View>
           )}
