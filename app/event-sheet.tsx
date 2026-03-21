@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -66,6 +66,33 @@ function formatStartsIn(startTimeLocal: string, now: Date): string {
     return `Starting in ${hourStr}${minStr}`;
   }
   return `Starting in ${minutes} ${minutes === 1 ? "minute" : "minutes"}`;
+}
+
+function SheetScanBar() {
+  const tx = useRef(new Animated.Value(-18)).current;
+  const [trackW, setTrackW] = useState(60);
+
+  useEffect(() => {
+    const anim = Animated.loop(
+      Animated.sequence([
+        Animated.timing(tx, { toValue: trackW, duration: 900, useNativeDriver: true }),
+        Animated.timing(tx, { toValue: -18, duration: 900, useNativeDriver: true }),
+      ])
+    );
+    anim.start();
+    return () => anim.stop();
+  }, [trackW]);
+
+  return (
+    <View
+      style={{ width: "100%", height: 2, overflow: "hidden", marginTop: 4, borderRadius: 1 }}
+      onLayout={(e) => setTrackW(e.nativeEvent.layout.width)}
+    >
+      <Animated.View
+        style={{ width: 18, height: 2, borderRadius: 1, backgroundColor: "#FFFFFF", transform: [{ translateX: tx }] }}
+      />
+    </View>
+  );
 }
 
 function PulsingDot() {
@@ -258,14 +285,26 @@ export default function EventSheet() {
                   </>
                 ) : isLiveState ? (
                   <>
-                    <View style={styles.liveChip}>
-                      <PulsingDot />
-                      <Text style={styles.liveChipText}>
-                        {displayClockText?.includes(" · ")
-                          ? `LIVE ${displayClockText.split(" · ")[0]}`
-                          : "LIVE"}
-                      </Text>
-                    </View>
+                    {displayClockText ? (
+                      <View style={{ flexDirection: "row", alignItems: "flex-start" }}>
+                        {displayClockText.includes(" · ") && (
+                          <Text style={styles.sheetClockPeriod}>
+                            {displayClockText.split(" · ").slice(0, -1).join(" · ")} · 
+                          </Text>
+                        )}
+                        <View style={{ alignItems: "center" }}>
+                          <Text style={styles.sheetClockTime}>
+                            {displayClockText.includes(" · ") ? displayClockText.split(" · ").pop()! : displayClockText}
+                          </Text>
+                          {!displayClockText.startsWith("Started") && <SheetScanBar />}
+                        </View>
+                      </View>
+                    ) : (
+                      <View style={styles.liveChip}>
+                        <PulsingDot />
+                        <Text style={styles.liveChipText}>LIVE</Text>
+                      </View>
+                    )}
                     {providerBrandId && <ProviderLogo providerId={providerBrandId} size={22} />}
                   </>
                 ) : (
@@ -445,6 +484,17 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_700Bold",
     color: "#FF453A",
     letterSpacing: 0.8,
+  },
+  sheetClockPeriod: {
+    fontSize: 18,
+    fontFamily: "Inter_500Medium",
+    color: "#FFFFFF",
+    marginTop: 1,
+  },
+  sheetClockTime: {
+    fontSize: 22,
+    fontFamily: "Inter_700Bold",
+    color: "#FFFFFF",
   },
   espnTime: {
     fontSize: 18,
