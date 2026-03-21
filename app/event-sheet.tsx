@@ -401,8 +401,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     paddingTop: 16,
-    justifyContent: "flex-start",
-    gap: 24,
+    justifyContent: "space-between",
   },
   topSection: {
     gap: 8,
