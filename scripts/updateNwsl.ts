@@ -211,7 +211,10 @@ async function fetchEspnNwslBroadcasters(
       const res = await fetch(url, {
         headers: { "User-Agent": "Mozilla/5.0 (compatible; SportsGuide/1.0)" },
       });
-      if (!res.ok) continue;
+      if (!res.ok) {
+        console.warn(`  NWSL ESPN: dates=${dateStr} returned HTTP ${res.status} — skipping`);
+        continue;
+      }
 
       const data = (await res.json()) as { events?: EspnNwslEvent[] };
 
@@ -232,7 +235,8 @@ async function fetchEspnNwslBroadcasters(
         const key = espnMatchKey(keyDate, home, away);
         lookup.set(key, { providerId, providerReason, broadcastNetworks });
       }
-    } catch {
+    } catch (err: any) {
+      console.warn(`  NWSL ESPN: fetch failed for dates=${dateStr}: ${err?.message ?? err}`);
     }
   }
 
