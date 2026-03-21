@@ -186,13 +186,24 @@ function networkToProviderId(networks: string[]): { providerId: string; provider
   return { providerId: "nwslplus", providerReason: "nwsl-default" };
 }
 
+function shiftDate(yyyymmdd: string, deltaDays: number): string {
+  const d = new Date(`${yyyymmdd.slice(0, 4)}-${yyyymmdd.slice(4, 6)}-${yyyymmdd.slice(6, 8)}T12:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + deltaDays);
+  return d.toISOString().slice(0, 10).replace(/-/g, "");
+}
+
 async function fetchEspnNwslBroadcasters(
   icalDates: string[]
 ): Promise<Map<string, { providerId: string; providerReason: string; broadcastNetworks: string }>> {
   const lookup = new Map<string, { providerId: string; providerReason: string; broadcastNetworks: string }>();
 
-  const uniqueDates = [...new Set(icalDates)];
-  console.log(`  NWSL ESPN: Fetching broadcaster data for ${uniqueDates.length} dates...`);
+  const queryDates = new Set<string>();
+  for (const d of icalDates) {
+    queryDates.add(d);
+    queryDates.add(shiftDate(d, -1));
+  }
+  const uniqueDates = [...queryDates];
+  console.log(`  NWSL ESPN: Fetching broadcaster data for ${uniqueDates.length} dates (iCal dates + previous days)...`);
 
   for (const dateStr of uniqueDates) {
     try {
@@ -216,7 +227,9 @@ async function fetchEspnNwslBroadcasters(
         const { providerId, providerReason } = networkToProviderId(networks);
         const broadcastNetworks = networks.join(", ");
 
-        const key = espnMatchKey(dateStr, home, away);
+        const eventUtcDate = (event.date || comp.date || "").slice(0, 10).replace(/-/g, "");
+        const keyDate = eventUtcDate || dateStr;
+        const key = espnMatchKey(keyDate, home, away);
         lookup.set(key, { providerId, providerReason, broadcastNetworks });
       }
     } catch {
