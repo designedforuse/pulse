@@ -7,13 +7,14 @@ const PROVIDER_IMAGES: Record<string, any> = {
   flosports: require("@/assets/providers/flosports.png"),
   flohockey: require("@/assets/providers/flohockey.png"),
   florugby: require("@/assets/providers/florugby.png"),
+  nbcsn: require("@/assets/providers/nbcsn.png"),
   victoryplus: require("@/assets/providers/victoryplus.png"),
   primevideo: require("@/assets/providers/primevideo.png"),
   appletv: require("@/assets/providers/appletv.png"),
 };
 
 // Logos that are already full-colour and should not be white-tinted
-const NO_TINT_LOGOS = new Set(["flohockey"]);
+const NO_TINT_LOGOS = new Set(["flohockey", "nbcsn"]);
 
 const PROVIDER_TEXT_LABELS: Record<string, string> = {
   tennischannel: "TC",
@@ -32,7 +33,6 @@ const PROVIDER_TEXT_LABELS: Record<string, string> = {
   nbatv: "NBA TV",
   nbc: "NBC",
   willowtv: "Willow TV",
-  mbsn: "MBSN",
   rugbypasstv: "RugbyPass TV",
 };
 

@@ -214,7 +214,7 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   willowtv: "Willow TV",
   flohockey: "FloHockey",
   florugby: "FloRugby",
-  mbsn: "MBSN",
+  nbcsn: "NBC Sports",
   rugbypasstv: "RugbyPass TV",
 };
 
@@ -256,7 +256,7 @@ const FLORUGBY_LEAGUES = new Set(["URC", "Top 14", "English Premiership", "Europ
 function resolveRugbyBroadcastId(event: SportEvent): [string, string] {
   const league = event.league;
   if (league === "HSBC SVNS" || league === "Super Rugby") return ["rugbypasstv", "primevideo"];
-  if (league === "Six Nations") return ["mbsn", "youtubetv"];
+  if (league === "Six Nations") return ["nbcsn", "youtubetv"];
   if (league === "MLR") return ["espnplus", "disneyplus"];
   if (FLORUGBY_LEAGUES.has(league)) return ["florugby", "flosports"];
   return ["", ""];
