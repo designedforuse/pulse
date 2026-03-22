@@ -222,9 +222,9 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
 
 // Broadcaster IDs that are valid as display logos — streaming services excluded
 const BROADCASTER_IDS = new Set([
-  "espn", "espn2",
+  "espn",
   "cbs", "cbssn",
-  "nbc", "nbcsn",
+  "nbcsn",
   "abc", "tnt", "nbatv",
   "beinsports",
   "flosports",
@@ -249,7 +249,7 @@ function resolveNbaBroadcastId(event: SportEvent): [string, string] {
     if (nl.includes("espn") && !nl.includes("espn+")) return ["espn", "youtubetv"];
     if (nl.includes("espn+")) return ["espn", "disneyplus"];
     if (nl.includes("nba tv")) return ["nbatv", "youtubetv"];
-    if (nl.includes("nbc")) return ["nbc", "youtubetv"];
+    if (nl.includes("nbc")) return ["nbcsn", "youtubetv"];
   }
 
   // Fallback via providerReason for existing cached events without broadcastNetworks
@@ -258,7 +258,7 @@ function resolveNbaBroadcastId(event: SportEvent): [string, string] {
   if (reason === "nba-tnt") return ["tnt", "youtubetv"];
   if (reason === "nba-nbatv") return ["nbatv", "youtubetv"];
   if (reason === "nba-espnplus") return ["espn", "disneyplus"];
-  if (reason === "nba-nbc") return ["nbc", "youtubetv"];
+  if (reason === "nba-nbc") return ["nbcsn", "youtubetv"];
 
   return ["", ""];
 }
@@ -273,6 +273,9 @@ function resolveNcaabBroadcastId(event: SportEvent): [string, string] {
 function resolveSoccerBroadcastId(event: SportEvent): [string, string] {
   const league = event.league;
   const reason = event.providerReason || "";
+
+  // MLS → Apple TV (exclusive rights holder)
+  if (league === "MLS") return ["appletv", "appletv"];
 
   // EPL → NBC Sports Network / YouTube TV
   if (league === "EPL") return ["nbcsn", "youtubetv"];
@@ -303,7 +306,7 @@ function resolveSoccerBroadcastId(event: SportEvent): [string, string] {
 function resolveGolfBroadcastId(event: SportEvent): [string, string] {
   const reason = event.providerReason || "";
   if (reason === "cbs-broadcast") return ["cbs", "youtubetv"];
-  if (reason === "nbc-broadcast") return ["nbc", "youtubetv"];
+  if (reason === "nbc-broadcast") return ["nbcsn", "youtubetv"];
   return ["", ""];
 }
 
@@ -350,7 +353,7 @@ function resolveNwslBroadcastId(broadcastNetworks: string): string {
   if (/Prime\s*Video/i.test(n)) return "";
   if (/ESPN\+/i.test(n)) return "espn";
   if (/\bABC\b/i.test(n)) return "abc";
-  if (/\bESPN2\b/i.test(n)) return "espn2";
+  if (/\bESPN2\b/i.test(n)) return "espn";
   if (/\bCBSSN\b/i.test(n)) return "cbssn";
   if (/\bCBS\b/i.test(n)) return "cbs";
   if (/Victory\+/i.test(n)) return "victoryplus";

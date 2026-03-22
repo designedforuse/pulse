@@ -11,6 +11,7 @@ const PROVIDER_IMAGES: Record<string, any> = {
   flohockey: require("@/assets/providers/flohockey.png"),
   florugby: require("@/assets/providers/florugby.png"),
   nbcsn: require("@/assets/providers/nbcsn.png"),
+  rugbypasstv: require("@/assets/providers/rugbypasstv.png"),
   tennischannel: require("@/assets/providers/tennischannel.png"),
   cbs: require("@/assets/providers/cbs.png"),
   nbc: require("@/assets/providers/nbc.png"),
@@ -58,9 +59,7 @@ const PROVIDER_TEXT_LABELS: Record<string, string> = {
   abc: "ABC",
   cbs: "CBS",
   nbatv: "NBA TV",
-  nbc: "NBC",
   willowtv: "Willow TV",
-  rugbypasstv: "RugbyPass TV",
 };
 
 let _warnedIds: Set<string> | null = null;
