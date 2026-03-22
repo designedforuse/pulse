@@ -305,7 +305,7 @@ function resolveNwslBroadcastId(broadcastNetworks: string): string {
 
 const TENNIS_PROVIDER_MAP: Record<string, ResolvedProvider> = {
   "tennischannel": {
-    providerId: "youtubetv",
+    providerId: "tennischannel",
     providerName: "Tennis Channel",
     launchAppId: "youtubetv",
     launchAppName: "YouTube TV",
