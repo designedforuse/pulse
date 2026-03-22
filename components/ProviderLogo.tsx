@@ -5,10 +5,14 @@ const PROVIDER_IMAGES: Record<string, any> = {
   youtubetv: require("@/assets/providers/youtubetv.png"),
   disneyplus: require("@/assets/providers/disneyplus.png"),
   flosports: require("@/assets/providers/flosports.png"),
+  flohockey: require("@/assets/providers/flohockey.png"),
   victoryplus: require("@/assets/providers/victoryplus.png"),
   primevideo: require("@/assets/providers/primevideo.png"),
   appletv: require("@/assets/providers/appletv.png"),
 };
+
+// Logos that are already full-colour and should not be white-tinted
+const NO_TINT_LOGOS = new Set(["flohockey"]);
 
 const PROVIDER_TEXT_LABELS: Record<string, string> = {
   tennischannel: "TC",
@@ -27,7 +31,6 @@ const PROVIDER_TEXT_LABELS: Record<string, string> = {
   nbatv: "NBA TV",
   nbc: "NBC",
   willowtv: "Willow TV",
-  flohockey: "FloHockey",
 };
 
 let _warnedIds: Set<string> | null = null;
@@ -44,11 +47,12 @@ export default function ProviderLogo({ providerId, size = 24 }: ProviderLogoProp
   if (image) {
     const boxWidth = Math.round(size * 2.4);
     const boxHeight = size;
+    const noTint = NO_TINT_LOGOS.has(providerId);
     return (
       <View style={[styles.imagePill, { width: boxWidth, height: boxHeight }]}>
         <Image
           source={image}
-          style={{ width: boxWidth, height: boxHeight - 4, tintColor: "#FFFFFF" }}
+          style={{ width: boxWidth, height: boxHeight - 4, ...(noTint ? {} : { tintColor: "#FFFFFF" }) }}
           resizeMode="contain"
         />
       </View>
