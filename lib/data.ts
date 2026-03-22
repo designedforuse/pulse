@@ -209,7 +209,37 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   paramount: "Paramount+",
   nwslplus: "NWSL+",
   fanduelsn: "FanDuel SN",
+  nbatv: "NBA TV",
 };
+
+function resolveNbaBroadcastId(event: SportEvent): string {
+  const n = event.broadcastNetworks || "";
+  const reason = event.providerReason || "";
+
+  if (n) {
+    const nl = n.toLowerCase();
+    if (nl.includes("abc")) return "abc";
+    if (nl.includes("tnt") || nl.includes("tbs")) return "tnt";
+    if (nl.includes("espn") && !nl.includes("espn+")) return "espn";
+    if (nl.includes("espn+")) return "espnplus";
+    if (nl.includes("nba tv")) return "nbatv";
+  }
+
+  // Fallback via providerReason for existing cached events without broadcastNetworks
+  if (reason === "nba-tnt") return "tnt";
+  if (reason === "nba-nbatv") return "nbatv";
+  if (reason === "nba-espnplus") return "espnplus";
+  if (reason === "nba-espn-abc") return "espn";
+
+  return "";
+}
+
+function resolveNcaabBroadcastId(event: SportEvent): string {
+  const reason = event.providerReason || "";
+  if (reason === "ncaab-espn-plus" || reason === "ncaab-espn-plus-default" || reason === "ncaab-default") return "espnplus";
+  if (reason === "ncaab-espn-abc") return "espn";
+  return "";
+}
 
 function resolveNhlBroadcastId(event: SportEvent): string {
   const reason = event.providerReason || "";
@@ -296,6 +326,34 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
       launchProvider: getProviderById(tennis.launchAppId),
       launchLabel: tennis.displayLabel,
     };
+  }
+
+  // NBA: display the broadcast network logo; deep-link still uses providerId
+  if (event.league === "NBA") {
+    const broadcastId = resolveNbaBroadcastId(event);
+    if (broadcastId) {
+      const launchProvider = getProviderById(event.providerId);
+      return {
+        brandId: broadcastId,
+        brandName: PROVIDER_DISPLAY_NAMES[broadcastId] || broadcastId,
+        launchProvider,
+        launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
+      };
+    }
+  }
+
+  // NCAAB: display the broadcast network logo; deep-link still uses providerId
+  if (event.league === "NCAAB") {
+    const broadcastId = resolveNcaabBroadcastId(event);
+    if (broadcastId) {
+      const launchProvider = getProviderById(event.providerId);
+      return {
+        brandId: broadcastId,
+        brandName: PROVIDER_DISPLAY_NAMES[broadcastId] || broadcastId,
+        launchProvider,
+        launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
+      };
+    }
   }
 
   // NHL: display the broadcast network logo; deep-link still uses providerId

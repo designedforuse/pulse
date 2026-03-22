@@ -41,21 +41,29 @@ function formatDateRange(start: Date, end: Date): string {
   return `${fmt(start)}-${fmt(end)}`;
 }
 
-function resolveProvider(broadcasts?: EspnCompetition["broadcasts"]): { providerId: string; providerReason: string } {
+function resolveProvider(broadcasts?: EspnCompetition["broadcasts"]): { providerId: string; providerReason: string; broadcastNetworks: string } {
   if (!broadcasts || broadcasts.length === 0) {
-    return { providerId: "youtubetv", providerReason: "nba-default-yttv" };
+    return { providerId: "youtubetv", providerReason: "nba-default-yttv", broadcastNetworks: "" };
   }
-  const allNames = broadcasts.flatMap(b => b.names || []).map(n => n.toLowerCase());
-  if (allNames.some(n => n.includes("espn") || n.includes("abc"))) {
-    return { providerId: "disneyplus", providerReason: "nba-espn-abc" };
+  const allNames = broadcasts.flatMap(b => b.names || []);
+  const allNamesLower = allNames.map(n => n.toLowerCase());
+  const networksStr = allNames.join(", ");
+  if (allNamesLower.some(n => n === "abc" || n.startsWith("abc "))) {
+    return { providerId: "disneyplus", providerReason: "nba-espn-abc", broadcastNetworks: networksStr };
   }
-  if (allNames.some(n => n.includes("tnt") || n.includes("tbs"))) {
-    return { providerId: "youtubetv", providerReason: "nba-tnt" };
+  if (allNamesLower.some(n => n.includes("espn") && !n.includes("espn+"))) {
+    return { providerId: "disneyplus", providerReason: "nba-espn-abc", broadcastNetworks: networksStr };
   }
-  if (allNames.some(n => n.includes("nba tv"))) {
-    return { providerId: "youtubetv", providerReason: "nba-nbatv" };
+  if (allNamesLower.some(n => n.includes("espn+"))) {
+    return { providerId: "disneyplus", providerReason: "nba-espnplus", broadcastNetworks: networksStr };
   }
-  return { providerId: "youtubetv", providerReason: "nba-regional-yttv" };
+  if (allNamesLower.some(n => n.includes("tnt") || n.includes("tbs"))) {
+    return { providerId: "youtubetv", providerReason: "nba-tnt", broadcastNetworks: networksStr };
+  }
+  if (allNamesLower.some(n => n.includes("nba tv"))) {
+    return { providerId: "youtubetv", providerReason: "nba-nbatv", broadcastNetworks: networksStr };
+  }
+  return { providerId: "youtubetv", providerReason: "nba-regional-yttv", broadcastNetworks: networksStr };
 }
 
 async function fetchEspnPage(dateRange: string): Promise<EspnEvent[]> {
@@ -114,7 +122,7 @@ export async function fetchNbaEvents(): Promise<SoccerFetchResult> {
       if (seenIds.has(id)) continue;
       seenIds.add(id);
 
-      const { providerId, providerReason } = resolveProvider(comp.broadcasts);
+      const { providerId, providerReason, broadcastNetworks } = resolveProvider(comp.broadcasts);
 
       events.push({
         id,
@@ -129,6 +137,7 @@ export async function fetchNbaEvents(): Promise<SoccerFetchResult> {
         source: "basketball-nba",
         leagueKey: "nba",
         providerReason,
+        ...(broadcastNetworks ? { broadcastNetworks } : {}),
       });
     }
 
