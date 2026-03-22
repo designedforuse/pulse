@@ -222,12 +222,12 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
 
 // Broadcaster IDs that are valid as display logos — streaming services excluded
 const BROADCASTER_IDS = new Set([
-  "espn", "espn2", "espnplus",
-  "cbs", "cbssn", "cbsgolazo",
+  "espn", "espn2",
+  "cbs", "cbssn",
   "nbc", "nbcsn",
   "abc", "tnt", "nbatv",
   "beinsports",
-  "flosports", "flohockey", "florugby",
+  "flosports",
   "victoryplus",
   "fanduelsn",
   "tennischannel",
@@ -247,7 +247,7 @@ function resolveNbaBroadcastId(event: SportEvent): [string, string] {
     if (nl.includes("abc")) return ["abc", "youtubetv"];
     if (nl.includes("tnt") || nl.includes("tbs")) return ["tnt", "youtubetv"];
     if (nl.includes("espn") && !nl.includes("espn+")) return ["espn", "youtubetv"];
-    if (nl.includes("espn+")) return ["espnplus", "disneyplus"];
+    if (nl.includes("espn+")) return ["espn", "disneyplus"];
     if (nl.includes("nba tv")) return ["nbatv", "youtubetv"];
     if (nl.includes("nbc")) return ["nbc", "youtubetv"];
   }
@@ -257,7 +257,7 @@ function resolveNbaBroadcastId(event: SportEvent): [string, string] {
   if (reason === "nba-espn" || reason === "nba-espn-abc") return ["espn", "youtubetv"];
   if (reason === "nba-tnt") return ["tnt", "youtubetv"];
   if (reason === "nba-nbatv") return ["nbatv", "youtubetv"];
-  if (reason === "nba-espnplus") return ["espnplus", "disneyplus"];
+  if (reason === "nba-espnplus") return ["espn", "disneyplus"];
   if (reason === "nba-nbc") return ["nbc", "youtubetv"];
 
   return ["", ""];
@@ -265,7 +265,7 @@ function resolveNbaBroadcastId(event: SportEvent): [string, string] {
 
 function resolveNcaabBroadcastId(event: SportEvent): [string, string] {
   const reason = event.providerReason || "";
-  if (reason === "ncaab-espn-plus" || reason === "ncaab-espn-plus-default" || reason === "ncaab-default") return ["espnplus", "disneyplus"];
+  if (reason === "ncaab-espn-plus" || reason === "ncaab-espn-plus-default" || reason === "ncaab-default") return ["espn", "disneyplus"];
   if (reason === "ncaab-espn-abc") return ["espn", "youtubetv"];
   return ["", ""];
 }
@@ -281,10 +281,10 @@ function resolveSoccerBroadcastId(event: SportEvent): [string, string] {
   if (league === "Champions League" || league === "Europa League") return ["cbs", "youtubetv"];
 
   // Serie A → CBS Sports Golazo Network / Prime Video
-  if (league === "Serie A") return ["cbsgolazo", "primevideo"];
+  if (league === "Serie A") return ["cbssn", "primevideo"];
 
   // Bundesliga, La Liga → ESPN+ / Disney+
-  if (league === "Bundesliga" || league === "La Liga") return ["espnplus", "disneyplus"];
+  if (league === "Bundesliga" || league === "La Liga") return ["espn", "disneyplus"];
   // FA Cup → ESPN / Disney+
   if (league === "FA Cup") return ["espn", "disneyplus"];
 
@@ -292,10 +292,10 @@ function resolveSoccerBroadcastId(event: SportEvent): [string, string] {
   if (league === "Ligue 1") return ["beinsports", "youtubetv"];
 
   // USL: CBS Golazo default → CBS Golazo logo / Prime Video
-  if (league === "USL" && reason === "usl-cbsgolazo-default") return ["cbsgolazo", "primevideo"];
+  if (league === "USL" && reason === "usl-cbsgolazo-default") return ["cbssn", "primevideo"];
 
   // USL: ESPN+ → ESPN+ text / Disney+
-  if (league === "USL" && reason === "usl-espnplus") return ["espnplus", "disneyplus"];
+  if (league === "USL" && reason === "usl-espnplus") return ["espn", "disneyplus"];
 
   return ["", ""];
 }
@@ -313,13 +313,13 @@ function resolveRugbyBroadcastId(event: SportEvent): [string, string] {
   const league = event.league;
   if (league === "HSBC SVNS" || league === "Super Rugby") return ["rugbypasstv", "primevideo"];
   if (league === "Six Nations") return ["nbcsn", "youtubetv"];
-  if (league === "MLR") return ["espnplus", "disneyplus"];
-  if (FLORUGBY_LEAGUES.has(league)) return ["florugby", "flosports"];
+  if (league === "MLR") return ["espn", "disneyplus"];
+  if (FLORUGBY_LEAGUES.has(league)) return ["flosports", "flosports"];
   return ["", ""];
 }
 
 function resolveCricketBroadcastId(event: SportEvent): [string, string] {
-  if (event.providerId === "disneyplus") return ["espnplus", "disneyplus"];
+  if (event.providerId === "disneyplus") return ["espn", "disneyplus"];
   // youtubetv — Willow TV is distributed via YouTube TV
   return ["willowtv", "youtubetv"];
 }
@@ -334,7 +334,7 @@ function resolveNhlBroadcastId(event: SportEvent): string {
     if (/\bTNT\b/.test(n)) return "tnt";
   }
 
-  if (reason === "espnplus-default") return "espnplus";
+  if (reason === "espnplus-default") return "espn";
 
   // Kings RSN: games air on FanDuel Sports Network, open via Prime Video
   if (reason === "kings-rsn") return "fanduelsn";
@@ -346,9 +346,9 @@ function resolveNhlBroadcastId(event: SportEvent): string {
 function resolveNwslBroadcastId(broadcastNetworks: string): string {
   const n = broadcastNetworks;
   if (/\bION\b/i.test(n)) return "ion";
-  if (/Golazo/i.test(n)) return "cbsgolazo";
-  if (/Prime\s*Video/i.test(n)) return "primevideo";
-  if (/ESPN\+/i.test(n)) return "espnplus";
+  if (/Golazo/i.test(n)) return "cbssn";
+  if (/Prime\s*Video/i.test(n)) return "";
+  if (/ESPN\+/i.test(n)) return "espn";
   if (/\bABC\b/i.test(n)) return "abc";
   if (/\bESPN2\b/i.test(n)) return "espn2";
   if (/\bCBSSN\b/i.test(n)) return "cbssn";
@@ -453,12 +453,12 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
     }
   }
 
-  // AHL / ECHL: display FloHockey brand, still launch via FloSports app
+  // AHL / ECHL: display FloSports brand
   if ((event.league === "AHL" || event.league === "ECHL") && event.providerId === "flosports") {
     const launchProvider = getProviderById("flosports");
     return {
-      brandId: "flohockey",
-      brandName: "FloHockey",
+      brandId: "flosports",
+      brandName: "FloSports",
       launchProvider,
       launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
     };
@@ -476,12 +476,12 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
     };
   }
 
-  // NCAA Hockey: ESPN+ via Disney+
+  // NCAA Hockey: ESPN via Disney+
   if (event.league === "NCAA Hockey") {
     const launchProvider = getProviderById(event.providerId);
     return {
-      brandId: "espnplus",
-      brandName: "ESPN+",
+      brandId: "espn",
+      brandName: "ESPN",
       launchProvider,
       launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
     };
