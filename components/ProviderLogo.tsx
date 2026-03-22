@@ -13,10 +13,16 @@ const PROVIDER_IMAGES: Record<string, any> = {
 const PROVIDER_TEXT_LABELS: Record<string, string> = {
   tennischannel: "TC",
   espn: "ESPN",
+  espnplus: "ESPN+",
+  espn2: "ESPN2",
   cbsgolazo: "Golazo",
   tnt: "TNT",
   paramount: "P+",
   nwslplus: "NWSL+",
+  ion: "ION",
+  abc: "ABC",
+  cbs: "CBS",
+  cbssn: "CBS SN",
 };
 
 let _warnedIds: Set<string> | null = null;

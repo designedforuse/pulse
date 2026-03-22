@@ -35,6 +35,7 @@ export interface SportEvent {
   olympicRound?: string;
   olympicVenue?: string;
   providerReason?: string;
+  broadcastNetworks?: string;
   tennisRound?: string;
   tennisPlayer1?: string;
   tennisPlayer2?: string;
@@ -198,9 +199,32 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   tennischannel: "Tennis Channel",
   espn: "ESPN",
   espnplus: "ESPN+",
-  cbsgolazo: "CBS Sports Golazo",
+  espn2: "ESPN2",
+  cbsgolazo: "CBS Golazo",
   tnt: "TNT",
+  ion: "ION",
+  abc: "ABC",
+  cbs: "CBS",
+  cbssn: "CBS Sports Network",
+  paramount: "Paramount+",
+  nwslplus: "NWSL+",
 };
+
+function resolveNwslBroadcastId(broadcastNetworks: string): string {
+  const n = broadcastNetworks;
+  if (/\bION\b/i.test(n)) return "ion";
+  if (/Golazo/i.test(n)) return "cbsgolazo";
+  if (/Prime\s*Video/i.test(n)) return "primevideo";
+  if (/ESPN\+/i.test(n)) return "espnplus";
+  if (/\bABC\b/i.test(n)) return "abc";
+  if (/\bESPN2\b/i.test(n)) return "espn2";
+  if (/\bCBSSN\b/i.test(n)) return "cbssn";
+  if (/\bCBS\b/i.test(n)) return "cbs";
+  if (/Victory\+/i.test(n)) return "victoryplus";
+  if (/Paramount\+/i.test(n)) return "paramount";
+  if (/NWSL\+/i.test(n)) return "nwslplus";
+  return "";
+}
 
 const TENNIS_PROVIDER_MAP: Record<string, ResolvedProvider> = {
   "tennischannel": {
@@ -253,6 +277,21 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
       launchLabel: tennis.displayLabel,
     };
   }
+
+  // NWSL: display the broadcast network logo; deep-link still uses providerId
+  if (event.leagueKey === "nwsl" && event.broadcastNetworks) {
+    const broadcastId = resolveNwslBroadcastId(event.broadcastNetworks);
+    if (broadcastId) {
+      const launchProvider = getProviderById(event.providerId);
+      return {
+        brandId: broadcastId,
+        brandName: PROVIDER_DISPLAY_NAMES[broadcastId] || broadcastId,
+        launchProvider,
+        launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
+      };
+    }
+  }
+
   const provider = getProviderById(event.providerId);
   return {
     brandId: event.providerId,
