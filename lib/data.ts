@@ -211,6 +211,7 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   fanduelsn: "FanDuel SN",
   nbatv: "NBA TV",
   nbc: "NBC",
+  willowtv: "Willow TV",
 };
 
 // Returns [displayId, launchProviderId]
@@ -244,6 +245,12 @@ function resolveNcaabBroadcastId(event: SportEvent): [string, string] {
   if (reason === "ncaab-espn-plus" || reason === "ncaab-espn-plus-default" || reason === "ncaab-default") return ["espnplus", "disneyplus"];
   if (reason === "ncaab-espn-abc") return ["espn", "youtubetv"];
   return ["", ""];
+}
+
+function resolveCricketBroadcastId(event: SportEvent): [string, string] {
+  if (event.providerId === "disneyplus") return ["espnplus", "disneyplus"];
+  // youtubetv — Willow TV is distributed via YouTube TV
+  return ["willowtv", "youtubetv"];
 }
 
 function resolveNhlBroadcastId(event: SportEvent): string {
@@ -330,6 +337,29 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
       brandName: tennis.providerName,
       launchProvider: getProviderById(tennis.launchAppId),
       launchLabel: tennis.displayLabel,
+    };
+  }
+
+  // Cricket: Willow TV (YouTube TV) or ESPN+ (Disney+)
+  if (event.sport === "cricket") {
+    const [broadcastId, launchProviderId] = resolveCricketBroadcastId(event);
+    const launchProvider = getProviderById(launchProviderId);
+    return {
+      brandId: broadcastId,
+      brandName: PROVIDER_DISPLAY_NAMES[broadcastId] || broadcastId,
+      launchProvider,
+      launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
+    };
+  }
+
+  // NCAA Hockey: ESPN+ via Disney+
+  if (event.league === "NCAA Hockey") {
+    const launchProvider = getProviderById(event.providerId);
+    return {
+      brandId: "espnplus",
+      brandName: "ESPN+",
+      launchProvider,
+      launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
     };
   }
 
