@@ -210,6 +210,22 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   nwslplus: "NWSL+",
 };
 
+function resolveNhlBroadcastId(event: SportEvent): string {
+  const reason = event.providerReason || "";
+  const n = event.broadcastNetworks || "";
+
+  if (reason === "national") {
+    if (/\bABC\b/.test(n)) return "abc";
+    if (/\bESPN\b(?!\+)/.test(n)) return "espn";
+    if (/\bTNT\b/.test(n)) return "tnt";
+  }
+
+  if (reason === "espnplus-default") return "espnplus";
+
+  // RSN reasons (ducks-rsn, kings-rsn, etc.) — providerId is already the broadcast network
+  return "";
+}
+
 function resolveNwslBroadcastId(broadcastNetworks: string): string {
   const n = broadcastNetworks;
   if (/\bION\b/i.test(n)) return "ion";
@@ -276,6 +292,20 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
       launchProvider: getProviderById(tennis.launchAppId),
       launchLabel: tennis.displayLabel,
     };
+  }
+
+  // NHL: display the broadcast network logo; deep-link still uses providerId
+  if (event.league === "NHL") {
+    const broadcastId = resolveNhlBroadcastId(event);
+    if (broadcastId) {
+      const launchProvider = getProviderById(event.providerId);
+      return {
+        brandId: broadcastId,
+        brandName: PROVIDER_DISPLAY_NAMES[broadcastId] || broadcastId,
+        launchProvider,
+        launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
+      };
+    }
   }
 
   // NWSL: display the broadcast network logo; deep-link still uses providerId
