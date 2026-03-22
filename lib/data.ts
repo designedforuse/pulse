@@ -263,8 +263,8 @@ function resolveSoccerBroadcastId(event: SportEvent): [string, string] {
   // Champions League + Europa League → CBS / YouTube TV
   if (league === "Champions League" || league === "Europa League") return ["cbs", "youtubetv"];
 
-  // Serie A → CBS Sports Network (text label) / Prime Video
-  if (league === "Serie A") return ["cbssn", "primevideo"];
+  // Serie A → CBS Sports Golazo Network / Prime Video
+  if (league === "Serie A") return ["cbsgolazo", "primevideo"];
 
   // Bundesliga, La Liga → ESPN+ / Disney+
   if (league === "Bundesliga" || league === "La Liga") return ["espnplus", "disneyplus"];
