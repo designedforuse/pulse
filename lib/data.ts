@@ -206,6 +206,7 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   abc: "ABC",
   cbs: "CBS",
   cbssn: "CBS Sports Network",
+  nbc: "NBC",
   paramount: "Paramount+",
   nwslplus: "NWSL+",
   fanduelsn: "FanDuel SN",
@@ -248,6 +249,13 @@ function resolveNcaabBroadcastId(event: SportEvent): [string, string] {
   const reason = event.providerReason || "";
   if (reason === "ncaab-espn-plus" || reason === "ncaab-espn-plus-default" || reason === "ncaab-default") return ["espnplus", "disneyplus"];
   if (reason === "ncaab-espn-abc") return ["espn", "youtubetv"];
+  return ["", ""];
+}
+
+function resolveGolfBroadcastId(event: SportEvent): [string, string] {
+  const reason = event.providerReason || "";
+  if (reason === "cbs-broadcast") return ["cbs", "youtubetv"];
+  if (reason === "nbc-broadcast") return ["nbc", "youtubetv"];
   return ["", ""];
 }
 
@@ -353,6 +361,20 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
       launchProvider: getProviderById(tennis.launchAppId),
       launchLabel: tennis.displayLabel,
     };
+  }
+
+  // Golf: display broadcast network (CBS/NBC), launch via YouTube TV
+  if (event.sport === "golf") {
+    const [broadcastId, launchProviderId] = resolveGolfBroadcastId(event);
+    if (broadcastId) {
+      const launchProvider = getProviderById(launchProviderId);
+      return {
+        brandId: broadcastId,
+        brandName: PROVIDER_DISPLAY_NAMES[broadcastId] || broadcastId,
+        launchProvider,
+        launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
+      };
+    }
   }
 
   // Rugby: display broadcast network logo; launch app determined by league
