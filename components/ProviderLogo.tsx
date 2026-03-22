@@ -24,7 +24,7 @@ const PROVIDER_IMAGES: Record<string, any> = {
 };
 
 // Logos that are already full-colour and should not be white-tinted
-const NO_TINT_LOGOS = new Set(["espn", "flohockey", "nbcsn", "tennischannel", "cbs", "nbc", "cbsgolazo", "beinsports", "espnplus", "cbssn", "fanduelsn"]);
+const NO_TINT_LOGOS = new Set(["espn", "espn2", "flohockey", "nbcsn", "tennischannel", "cbs", "nbc", "cbsgolazo", "beinsports", "espnplus", "cbssn", "fanduelsn"]);
 
 const PROVIDER_TEXT_LABELS: Record<string, string> = {
   tnt: "TNT",
