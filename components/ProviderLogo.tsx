@@ -2,6 +2,7 @@ import React from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
 
 const PROVIDER_IMAGES: Record<string, any> = {
+  espn: require("@/assets/providers/espn.png"),
   youtubetv: require("@/assets/providers/youtubetv.png"),
   disneyplus: require("@/assets/providers/disneyplus.png"),
   flosports: require("@/assets/providers/flosports.png"),
@@ -21,10 +22,9 @@ const PROVIDER_IMAGES: Record<string, any> = {
 };
 
 // Logos that are already full-colour and should not be white-tinted
-const NO_TINT_LOGOS = new Set(["flohockey", "nbcsn", "tennischannel", "cbs", "nbc", "cbsgolazo", "beinsports", "espnplus", "cbssn"]);
+const NO_TINT_LOGOS = new Set(["espn", "flohockey", "nbcsn", "tennischannel", "cbs", "nbc", "cbsgolazo", "beinsports", "espnplus", "cbssn"]);
 
 const PROVIDER_TEXT_LABELS: Record<string, string> = {
-  espn: "ESPN",
   espn2: "ESPN2",
   tnt: "TNT",
   paramount: "P+",
