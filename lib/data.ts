@@ -213,6 +213,9 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   nbc: "NBC",
   willowtv: "Willow TV",
   flohockey: "FloHockey",
+  florugby: "FloRugby",
+  mbsn: "MBSN",
+  rugbypasstv: "RugbyPass TV",
 };
 
 // Returns [displayId, launchProviderId]
@@ -245,6 +248,17 @@ function resolveNcaabBroadcastId(event: SportEvent): [string, string] {
   const reason = event.providerReason || "";
   if (reason === "ncaab-espn-plus" || reason === "ncaab-espn-plus-default" || reason === "ncaab-default") return ["espnplus", "disneyplus"];
   if (reason === "ncaab-espn-abc") return ["espn", "youtubetv"];
+  return ["", ""];
+}
+
+const FLORUGBY_LEAGUES = new Set(["URC", "Top 14", "English Premiership", "European Champions Cup", "Japan League One"]);
+
+function resolveRugbyBroadcastId(event: SportEvent): [string, string] {
+  const league = event.league;
+  if (league === "HSBC SVNS" || league === "Super Rugby") return ["rugbypasstv", "primevideo"];
+  if (league === "Six Nations") return ["mbsn", "youtubetv"];
+  if (league === "MLR") return ["espnplus", "disneyplus"];
+  if (FLORUGBY_LEAGUES.has(league)) return ["florugby", "flosports"];
   return ["", ""];
 }
 
@@ -339,6 +353,20 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
       launchProvider: getProviderById(tennis.launchAppId),
       launchLabel: tennis.displayLabel,
     };
+  }
+
+  // Rugby: display broadcast network logo; launch app determined by league
+  if (event.sport === "rugby") {
+    const [broadcastId, launchProviderId] = resolveRugbyBroadcastId(event);
+    if (broadcastId) {
+      const launchProvider = getProviderById(launchProviderId);
+      return {
+        brandId: broadcastId,
+        brandName: PROVIDER_DISPLAY_NAMES[broadcastId] || broadcastId,
+        launchProvider,
+        launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
+      };
+    }
   }
 
   // AHL / ECHL: display FloHockey brand, still launch via FloSports app
