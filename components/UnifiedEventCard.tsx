@@ -118,6 +118,10 @@ function getSportDisplayName(sport: string): string {
   return names[sport] || sport.charAt(0).toUpperCase() + sport.slice(1);
 }
 
+const LEAGUE_DISPLAY_NAMES: Record<string, string> = {
+  "English Premiership": "Premiership",
+};
+
 function getLeagueLabel(event: SportEvent): string {
   if (event.isIccT20Wc) return "T20 World Cup";
   if (event.isOlympic) return "Olympics";
@@ -126,7 +130,7 @@ function getLeagueLabel(event: SportEvent): string {
     if (city) return `${city} SVNS`;
   }
   if (event.tournamentName) return event.tournamentName;
-  return event.league;
+  return LEAGUE_DISPLAY_NAMES[event.league] ?? event.league;
 }
 
 function getPhaseChipLabel(event: SportEvent, score: ScoreData | undefined, isLive: boolean): string | null {
@@ -978,7 +982,7 @@ export default function UnifiedEventCard({
             {isLive ? (
               <>
                 <View style={uStyles.footerLeft}>
-                  <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
+                  <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={14} />
                 </View>
                 <View style={uStyles.footerRight}>
                   {tensionLabel && (
@@ -1028,7 +1032,7 @@ export default function UnifiedEventCard({
                   )}
                 </View>
                 <View style={uStyles.footerRight}>
-                  <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
+                  <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={14} />
                 </View>
               </>
             )}
