@@ -220,6 +220,23 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   rugbypasstv: "RugbyPass TV",
 };
 
+// Broadcaster IDs that are valid as display logos — streaming services excluded
+const BROADCASTER_IDS = new Set([
+  "espn", "espn2", "espnplus",
+  "cbs", "cbssn", "cbsgolazo",
+  "nbc", "nbcsn",
+  "abc", "tnt", "nbatv",
+  "beinsports",
+  "flosports", "flohockey", "florugby",
+  "victoryplus",
+  "fanduelsn",
+  "tennischannel",
+  "willowtv",
+  "rugbypasstv",
+  "nwslplus",
+  "ion",
+]);
+
 // Returns [displayId, launchProviderId]
 function resolveNbaBroadcastId(event: SportEvent): [string, string] {
   const n = event.broadcastNetworks || "";
@@ -351,14 +368,14 @@ const TENNIS_PROVIDER_MAP: Record<string, ResolvedProvider> = {
     displayLabel: "Watch on YouTube TV",
   },
   "espn-broadcast": {
-    providerId: "youtubetv",
+    providerId: "espn",
     providerName: "ESPN",
     launchAppId: "youtubetv",
     launchAppName: "YouTube TV",
     displayLabel: "Watch on YouTube TV",
   },
   "tnt-broadcast": {
-    providerId: "youtubetv",
+    providerId: "tnt",
     providerName: "TNT",
     launchAppId: "youtubetv",
     launchAppName: "YouTube TV",
@@ -375,7 +392,7 @@ export function resolveTennisProvider(event: SportEvent): ResolvedProvider | nul
   if (mapped) return mapped;
 
   return {
-    providerId: "youtubetv",
+    providerId: "tennischannel",
     providerName: "Tennis Channel",
     launchAppId: "youtubetv",
     launchAppName: "YouTube TV",
@@ -528,7 +545,7 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
 
   const provider = getProviderById(event.providerId);
   return {
-    brandId: event.providerId,
+    brandId: BROADCASTER_IDS.has(event.providerId) ? event.providerId : "",
     brandName: provider?.name || PROVIDER_DISPLAY_NAMES[event.providerId] || event.providerId,
     launchProvider: provider,
     launchLabel: provider ? `Watch on ${provider.name}` : "Watch",
