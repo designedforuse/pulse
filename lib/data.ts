@@ -212,6 +212,7 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   nbatv: "NBA TV",
   nbc: "NBC",
   willowtv: "Willow TV",
+  flohockey: "FloHockey",
 };
 
 // Returns [displayId, launchProviderId]
@@ -337,6 +338,17 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
       brandName: tennis.providerName,
       launchProvider: getProviderById(tennis.launchAppId),
       launchLabel: tennis.displayLabel,
+    };
+  }
+
+  // AHL / ECHL: display FloHockey brand, still launch via FloSports app
+  if ((event.league === "AHL" || event.league === "ECHL") && event.providerId === "flosports") {
+    const launchProvider = getProviderById("flosports");
+    return {
+      brandId: "flohockey",
+      brandName: "FloHockey",
+      launchProvider,
+      launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
     };
   }
 
