@@ -210,35 +210,40 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   nwslplus: "NWSL+",
   fanduelsn: "FanDuel SN",
   nbatv: "NBA TV",
+  nbc: "NBC",
 };
 
-function resolveNbaBroadcastId(event: SportEvent): string {
+// Returns [displayId, launchProviderId]
+function resolveNbaBroadcastId(event: SportEvent): [string, string] {
   const n = event.broadcastNetworks || "";
   const reason = event.providerReason || "";
 
   if (n) {
     const nl = n.toLowerCase();
-    if (nl.includes("abc")) return "abc";
-    if (nl.includes("tnt") || nl.includes("tbs")) return "tnt";
-    if (nl.includes("espn") && !nl.includes("espn+")) return "espn";
-    if (nl.includes("espn+")) return "espnplus";
-    if (nl.includes("nba tv")) return "nbatv";
+    if (nl.includes("abc")) return ["abc", "youtubetv"];
+    if (nl.includes("tnt") || nl.includes("tbs")) return ["tnt", "youtubetv"];
+    if (nl.includes("espn") && !nl.includes("espn+")) return ["espn", "youtubetv"];
+    if (nl.includes("espn+")) return ["espnplus", "disneyplus"];
+    if (nl.includes("nba tv")) return ["nbatv", "youtubetv"];
+    if (nl.includes("nbc")) return ["nbc", "youtubetv"];
   }
 
   // Fallback via providerReason for existing cached events without broadcastNetworks
-  if (reason === "nba-tnt") return "tnt";
-  if (reason === "nba-nbatv") return "nbatv";
-  if (reason === "nba-espnplus") return "espnplus";
-  if (reason === "nba-espn-abc") return "espn";
+  if (reason === "nba-abc") return ["abc", "youtubetv"];
+  if (reason === "nba-espn" || reason === "nba-espn-abc") return ["espn", "youtubetv"];
+  if (reason === "nba-tnt") return ["tnt", "youtubetv"];
+  if (reason === "nba-nbatv") return ["nbatv", "youtubetv"];
+  if (reason === "nba-espnplus") return ["espnplus", "disneyplus"];
+  if (reason === "nba-nbc") return ["nbc", "youtubetv"];
 
-  return "";
+  return ["", ""];
 }
 
-function resolveNcaabBroadcastId(event: SportEvent): string {
+function resolveNcaabBroadcastId(event: SportEvent): [string, string] {
   const reason = event.providerReason || "";
-  if (reason === "ncaab-espn-plus" || reason === "ncaab-espn-plus-default" || reason === "ncaab-default") return "espnplus";
-  if (reason === "ncaab-espn-abc") return "espn";
-  return "";
+  if (reason === "ncaab-espn-plus" || reason === "ncaab-espn-plus-default" || reason === "ncaab-default") return ["espnplus", "disneyplus"];
+  if (reason === "ncaab-espn-abc") return ["espn", "youtubetv"];
+  return ["", ""];
 }
 
 function resolveNhlBroadcastId(event: SportEvent): string {
@@ -328,11 +333,11 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
     };
   }
 
-  // NBA: display the broadcast network logo; deep-link still uses providerId
+  // NBA: display the broadcast network logo; launch app determined by network (not cached providerId)
   if (event.league === "NBA") {
-    const broadcastId = resolveNbaBroadcastId(event);
+    const [broadcastId, launchProviderId] = resolveNbaBroadcastId(event);
     if (broadcastId) {
-      const launchProvider = getProviderById(event.providerId);
+      const launchProvider = getProviderById(launchProviderId);
       return {
         brandId: broadcastId,
         brandName: PROVIDER_DISPLAY_NAMES[broadcastId] || broadcastId,
@@ -342,11 +347,11 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
     }
   }
 
-  // NCAAB: display the broadcast network logo; deep-link still uses providerId
+  // NCAAB: display the broadcast network logo; launch app determined by network
   if (event.league === "NCAAB") {
-    const broadcastId = resolveNcaabBroadcastId(event);
+    const [broadcastId, launchProviderId] = resolveNcaabBroadcastId(event);
     if (broadcastId) {
-      const launchProvider = getProviderById(event.providerId);
+      const launchProvider = getProviderById(launchProviderId);
       return {
         brandId: broadcastId,
         brandName: PROVIDER_DISPLAY_NAMES[broadcastId] || broadcastId,

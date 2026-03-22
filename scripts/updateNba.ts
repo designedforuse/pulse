@@ -49,10 +49,10 @@ function resolveProvider(broadcasts?: EspnCompetition["broadcasts"]): { provider
   const allNamesLower = allNames.map(n => n.toLowerCase());
   const networksStr = allNames.join(", ");
   if (allNamesLower.some(n => n === "abc" || n.startsWith("abc "))) {
-    return { providerId: "disneyplus", providerReason: "nba-espn-abc", broadcastNetworks: networksStr };
+    return { providerId: "youtubetv", providerReason: "nba-abc", broadcastNetworks: networksStr };
   }
   if (allNamesLower.some(n => n.includes("espn") && !n.includes("espn+"))) {
-    return { providerId: "disneyplus", providerReason: "nba-espn-abc", broadcastNetworks: networksStr };
+    return { providerId: "youtubetv", providerReason: "nba-espn", broadcastNetworks: networksStr };
   }
   if (allNamesLower.some(n => n.includes("espn+"))) {
     return { providerId: "disneyplus", providerReason: "nba-espnplus", broadcastNetworks: networksStr };
@@ -62,6 +62,9 @@ function resolveProvider(broadcasts?: EspnCompetition["broadcasts"]): { provider
   }
   if (allNamesLower.some(n => n.includes("nba tv"))) {
     return { providerId: "youtubetv", providerReason: "nba-nbatv", broadcastNetworks: networksStr };
+  }
+  if (allNamesLower.some(n => n.includes("nbc"))) {
+    return { providerId: "youtubetv", providerReason: "nba-nbc", broadcastNetworks: networksStr };
   }
   return { providerId: "youtubetv", providerReason: "nba-regional-yttv", broadcastNetworks: networksStr };
 }
