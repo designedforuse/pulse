@@ -208,6 +208,7 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   cbssn: "CBS Sports Network",
   paramount: "Paramount+",
   nwslplus: "NWSL+",
+  fanduelsn: "FanDuel SN",
 };
 
 function resolveNhlBroadcastId(event: SportEvent): string {
@@ -222,7 +223,10 @@ function resolveNhlBroadcastId(event: SportEvent): string {
 
   if (reason === "espnplus-default") return "espnplus";
 
-  // RSN reasons (ducks-rsn, kings-rsn, etc.) — providerId is already the broadcast network
+  // Kings RSN: games air on FanDuel Sports Network, open via Prime Video
+  if (reason === "kings-rsn") return "fanduelsn";
+
+  // Other RSN reasons — providerId is already the broadcast network
   return "";
 }
 
