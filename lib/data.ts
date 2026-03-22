@@ -266,8 +266,10 @@ function resolveSoccerBroadcastId(event: SportEvent): [string, string] {
   // Serie A → CBS Sports Network (text label) / Prime Video
   if (league === "Serie A") return ["cbssn", "primevideo"];
 
-  // Bundesliga, La Liga, FA Cup → ESPN / Disney+
-  if (league === "Bundesliga" || league === "La Liga" || league === "FA Cup") return ["espn", "disneyplus"];
+  // Bundesliga, La Liga → ESPN+ / Disney+
+  if (league === "Bundesliga" || league === "La Liga") return ["espnplus", "disneyplus"];
+  // FA Cup → ESPN / Disney+
+  if (league === "FA Cup") return ["espn", "disneyplus"];
 
   // Ligue 1 → beIN Sports / YouTube TV
   if (league === "Ligue 1") return ["beinsports", "youtubetv"];
