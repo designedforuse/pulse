@@ -1,10 +1,7 @@
 {
-  "lastUpdated": "2026-03-21T22:50:12.000Z",
+  "lastUpdated": "2026-03-22T06:00:08.617Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
-      "playoff_push": {
-        "NewEngland": 1
-      },
       "momentum": {
         "SoCal": 1,
         "NewEngland": 1
@@ -23,33 +20,24 @@
         "Other": 1
       }
     },
-    "combinedPushByRegion": {
-      "NewEngland": false
-    },
+    "combinedPushByRegion": {},
     "finalFeedByRegion": {
       "SouthAfrica": [
-        "rivalry_game: Rivalry Game Tomorrow",
+        "rivalry_game: Rivalry Game Tonight",
         "league_moment: Rivalry Weekend"
       ],
       "SoCal": [
         "momentum: Ducks Heating Up"
       ],
       "NewEngland": [
-        "playoff_push: Bruins Push Week",
         "momentum: Bruins Heating Up"
       ],
       "Other": [
-        "upset_alert: Upset Alert"
+        "upset_alert: Upset Alert",
+        "rivalry_game: Rivalry Game Tonight"
       ]
     },
     "droppedCandidatesReasons": [
-      {
-        "id": "rivalry_game_soccer-laliga-20260322-2000-atl-tico-madrid-at-real-madrid",
-        "kind": "rivalry_game",
-        "region": "Other",
-        "title": "Rivalry Game Tomorrow",
-        "reason": "feed cap (max 6)"
-      },
       {
         "id": "player_movement_system",
         "kind": "player_movement",
@@ -58,7 +46,7 @@
         "reason": "feed cap (max 6)"
       }
     ],
-    "totalBeforeCap": 8,
+    "totalBeforeCap": 7,
     "totalAfterCap": 6,
     "playerMovement": {
       "rawMovementCandidates": 1,
@@ -79,16 +67,16 @@
           "CGY",
           "EDM",
           "VAN",
-          "MTL",
-          "NYI",
           "BUF",
           "CAR",
+          "MTL",
           "CBJ",
           "NSH",
           "TOR",
           "TBL",
           "NYR",
-          "STL"
+          "STL",
+          "NJD"
         ],
         "skippedTeams": [
           {
@@ -104,17 +92,17 @@
         ],
         "playersIngested": 598,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-21T22:50:12.000Z"
+        "timestamp": "2026-03-22T06:00:08.617Z"
       },
-      "cacheHistoryCount": 788,
+      "cacheHistoryCount": 790,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 8,
+    "candidateCountBeforeCap": 7,
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -338.83666666666664,
+      "hoursUntil": -346.00239361111113,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -124,9 +112,9 @@
       "rivalryFinalCount": 2
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 3,
+      "rawUpsetCandidates": 2,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 3,
+      "upsetCompletedCandidates": 2,
       "upsetFinalCount": 1
     },
     "clinchWatch": {
@@ -137,23 +125,18 @@
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "basketball-nba-20260321-0000-boston-celtics-at-memphis-grizzlies",
+    "tonightStorySourceEvent": "nhl_2025021108",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 420,
-      "sourceEventId": "basketball-nba-20260321-0000-boston-celtics-at-memphis-grizzlies",
-      "reason": "11 followed/affiliate teams playing tonight",
+      "selectedScore": 400,
+      "sourceEventId": "nhl_2025021108",
+      "reason": "10 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 420,
-          "reason": "11 followed/affiliate teams playing tonight"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): Boston Bruins"
+          "score": 400,
+          "reason": "10 followed/affiliate teams playing tonight"
         },
         {
           "label": "[momentum] Hot Streak",
@@ -176,9 +159,9 @@
           "reason": "rivalry_game involving followed team(s): Atlético Madrid"
         },
         {
-          "label": "[ritual_night] Family Game Night",
+          "label": "[ritual_night] Saturday Game Day",
           "score": 130,
-          "reason": "ritual \"Family Game Night\" has 6 followed-team game(s)"
+          "reason": "ritual \"Saturday Game Day\" has 9 followed-team game(s)"
         },
         {
           "label": "[upset_alert] Shock Result",
@@ -219,13 +202,6 @@
         "selectedVideoChannel": "NHL '94 Podcast",
         "rejectedForAgeCount": 0
       },
-      "playoff_push_newengland": {
-        "searchQuery": "Boston Bruins playoff push March 2026",
-        "selectedVideoTitle": "Panthers vs. Flames | NHL Highlights | March 20, 2026",
-        "selectedVideoPublishedAt": "18 hours ago",
-        "selectedVideoChannel": "NHL",
-        "rejectedForAgeCount": 0
-      },
       "momentum_bos": {
         "searchQuery": "Boston Bruins highlights March 2026",
         "selectedVideoTitle": "Panthers vs. Flames | NHL Highlights | March 20, 2026",
@@ -233,11 +209,18 @@
         "selectedVideoChannel": "NHL",
         "rejectedForAgeCount": 0
       },
-      "upset_alert_tennis-espn-173197": {
-        "searchQuery": "Rublev vs Tabilo upset highlights March 2026",
+      "upset_alert_nhl_2025021109": {
+        "searchQuery": "Edmonton Oilers vs Tampa Bay Lightning upset highlights March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
+        "rejectedForAgeCount": 0
+      },
+      "rivalry_game_soccer-laliga-20260322-2000-atl-tico-madrid-at-real-madrid": {
+        "searchQuery": "Atlético Madrid vs Real Madrid rivalry highlights",
+        "selectedVideoTitle": "Real Madrid vs Atletico Madrid 5-3 - All Goals & Highlights - 2026",
+        "selectedVideoPublishedAt": "8 hours ago",
+        "selectedVideoChannel": "YOUBY l يوبي and 5 more",
         "rejectedForAgeCount": 0
       }
     }
@@ -245,15 +228,15 @@
   "cards": [
     {
       "id": "rivalry_game_cricket-t20i-gylsxg",
-      "title": "Rivalry Game Tomorrow",
-      "subtitle": "New Zealand vs South Africa · Tomorrow at 6:15 AM",
+      "title": "Rivalry Game Tonight",
+      "subtitle": "New Zealand vs South Africa · Tonight at 6:15 AM",
       "impact": {
         "label": "Impacts: Saturday Extra Time",
         "ritualId": "saturday_after_hours",
         "tabHint": "Rituals"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-21T22:50:12.000Z",
+      "triggeredAt": "2026-03-22T06:00:08.617Z",
       "expiresAt": "2026-03-22T10:15:00.000Z",
       "kind": "rivalry_game",
       "region": "SouthAfrica",
@@ -293,8 +276,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-21T22:50:12.000Z",
-      "expiresAt": "2026-03-28T22:50:12.000Z",
+      "triggeredAt": "2026-03-22T06:00:08.617Z",
+      "expiresAt": "2026-03-29T06:00:08.617Z",
       "kind": "league_moment",
       "region": "SouthAfrica",
       "regionPriority": 1,
@@ -359,8 +342,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-21T22:50:12.000Z",
-      "expiresAt": "2026-03-24T22:50:12.000Z",
+      "triggeredAt": "2026-03-22T06:00:08.617Z",
+      "expiresAt": "2026-03-25T06:00:08.617Z",
       "kind": "momentum",
       "region": "SoCal",
       "regionPriority": 2,
@@ -414,68 +397,16 @@
       }
     },
     {
-      "id": "playoff_push_newengland",
-      "title": "Bruins Push Week",
-      "subtitle": "Four games in seven days, including a back-to-back",
-      "impact": {
-        "label": "Impacts: Saturday Game Day",
-        "ritualId": "saturday_spotlight",
-        "tabHint": "Rituals"
-      },
-      "priority": 90,
-      "triggeredAt": "2026-03-21T22:50:12.000Z",
-      "expiresAt": "2026-03-28T22:50:12.000Z",
-      "kind": "playoff_push",
-      "region": "NewEngland",
-      "regionPriority": 3,
-      "regionLabel": "New England",
-      "meta": {
-        "teams": [
-          {
-            "team": "Boston Bruins",
-            "league": "NHL",
-            "gamesInNext7Days": 4,
-            "gamesInNext5Days": 3,
-            "hasBackToBack": true,
-            "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
-          }
-        ],
-        "eventIds": [
-          "nhl_2025021108",
-          "nhl_2025021120",
-          "nhl_2025021135",
-          "nhl_2025021155"
-        ],
-        "combinedTeamCount": 1,
-        "windowStart": "2026-03-21T22:50:12.000Z",
-        "windowEnd": "2026-03-28T22:50:12.000Z",
-        "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
-      },
-      "sports": [
-        "hockey"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=IqMIuhlntX8",
-        "thumbnailUrl": "https://img.youtube.com/vi/IqMIuhlntX8/hqdefault.jpg",
-        "durationSeconds": 695,
-        "title": "Panthers vs. Flames | NHL Highlights | March 20, 2026",
-        "source": "youtube",
-        "channel": "NHL",
-        "publishedAt": "18 hours ago"
-      }
-    },
-    {
       "id": "momentum_bos",
       "title": "Bruins Heating Up",
-      "subtitle": "4-game point streak · +3 goal diff",
+      "subtitle": "5-game point streak · +6 goal diff",
       "impact": {
-        "label": "Feeds: Saturday Game Day",
-        "ritualId": "saturday_spotlight",
-        "tabHint": "Rituals"
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-21T22:50:12.000Z",
-      "expiresAt": "2026-03-24T22:50:12.000Z",
+      "triggeredAt": "2026-03-22T06:00:08.617Z",
+      "expiresAt": "2026-03-25T06:00:08.617Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -484,10 +415,16 @@
         "team": "Boston Bruins",
         "league": "NHL",
         "abbrev": "BOS",
-        "winStreak": 1,
-        "pointStreak": 4,
-        "goalDiff": 3,
+        "winStreak": 2,
+        "pointStreak": 5,
+        "goalDiff": 6,
         "recentGames": [
+          {
+            "date": "2026-03-22T00:00:00Z",
+            "opponent": "Detroit",
+            "score": "2-4",
+            "result": "W"
+          },
           {
             "date": "2026-03-19T23:00:00Z",
             "opponent": "Winnipeg",
@@ -499,21 +436,14 @@
             "opponent": "Montréal",
             "score": "3-2",
             "result": "L"
-          },
-          {
-            "date": "2026-03-16T23:00:00Z",
-            "opponent": "New Jersey",
-            "score": "4-3",
-            "result": "L"
           }
         ],
         "eventIds": [
-          "nhl_2025021108",
           "nhl_2025021120",
           "nhl_2025021135",
           "nhl_2025021155"
         ],
-        "reason": "Boston Bruins has earned points in 4 straight games"
+        "reason": "Boston Bruins has earned points in 5 straight games"
       },
       "sports": [
         "hockey"
@@ -529,57 +459,95 @@
       }
     },
     {
-      "id": "upset_alert_tennis-espn-173197",
+      "id": "upset_alert_nhl_2025021109",
       "title": "Upset Alert",
-      "subtitle": "Tabilo stuns Rublev at Miami Open",
+      "subtitle": "Tampa Bay Lightning upsets Edmonton Oilers",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-03-21T22:50:12.000Z",
-      "expiresAt": "2026-03-22T04:50:12.000Z",
+      "triggeredAt": "2026-03-22T06:00:08.617Z",
+      "expiresAt": "2026-03-22T12:00:08.617Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "mode": "completed",
-        "upsetType": "tennis_seed_upset",
-        "sport": "tennis",
-        "league": "ATP Masters 1000",
-        "favoriteName": "Rublev",
-        "underdogName": "Tabilo",
-        "favoriteRank": 15,
-        "awayTeam": "Tabilo",
-        "homeTeam": "Rublev",
-        "startTime": "2026-03-21T20:20:00.000Z",
+        "upsetType": "team_upset",
+        "sport": "hockey",
+        "league": "NHL",
+        "favoriteName": "Edmonton Oilers",
+        "underdogName": "Tampa Bay Lightning",
+        "awayTeam": "Tampa Bay Lightning",
+        "homeTeam": "Edmonton Oilers",
+        "startTime": "2026-03-22T02:00:00.000Z",
         "eventIds": [
-          "tennis-espn-173197"
+          "nhl_2025021109"
         ],
-        "reason": "Rublev (seed 15) entered as the higher seed, but Tabilo knocked Rublev out.\n\nThis opens up the draw and changes the shape of the tournament."
+        "reason": "Tampa Bay Lightning pulled off the upset against Edmonton Oilers.\n\nA result like this can shift momentum for the rest of the season."
       },
       "sports": [
-        "tennis"
+        "hockey"
       ]
+    },
+    {
+      "id": "rivalry_game_soccer-laliga-20260322-2000-atl-tico-madrid-at-real-madrid",
+      "title": "Rivalry Game Tonight",
+      "subtitle": "Atlético Madrid vs Real Madrid · Tonight at 8:00 PM",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 96,
+      "triggeredAt": "2026-03-22T06:00:08.617Z",
+      "expiresAt": "2026-03-23T00:00:00.000Z",
+      "kind": "rivalry_game",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "rivalryLabel": "Madrid Derby",
+        "sport": "soccer",
+        "league": "La Liga",
+        "awayTeam": "Atlético Madrid",
+        "homeTeam": "Real Madrid",
+        "startTime": "2026-03-22T20:00:00.000Z",
+        "eventIds": [
+          "soccer-laliga-20260322-2000-atl-tico-madrid-at-real-madrid"
+        ],
+        "reason": "Atlético Madrid and Real Madrid meet tonight in one of soccer's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
+      },
+      "sports": [
+        "soccer"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=5LohulqgpPo",
+        "thumbnailUrl": "https://img.youtube.com/vi/5LohulqgpPo/hqdefault.jpg",
+        "durationSeconds": 842,
+        "title": "Real Madrid vs Atletico Madrid 5-3 - All Goals & Highlights - 2026",
+        "source": "youtube",
+        "channel": "YOUBY l يوبي and 5 more",
+        "publishedAt": "8 hours ago"
+      }
     }
   ],
   "tonightStory": {
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Boston Celtics, Tulsa Oilers, Anaheim Ducks, San Diego Gulls, and Sungoliath (+6 more) all play tonight across the NBA, ECHL, NHL, AHL, Japan League One, Bundesliga, English Premiership, URC, Top 14.",
-    "sourceEventId": "basketball-nba-20260321-0000-boston-celtics-at-memphis-grizzlies",
+    "body": "The Boston Bruins, New England Revolution, Tulsa Oilers, Orange County SC, and South Africa (+5 more) all play tonight across the NHL, MLS, ECHL, USL, T20I Cricket, Serie A, Ligue 1, La Liga, NWSL.",
+    "sourceEventId": "nhl_2025021108",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
     },
     "sports": [
-      "basketball",
       "hockey",
-      "rugby",
-      "soccer"
+      "soccer",
+      "cricket"
     ]
   }
 }

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-21T22:50:11.897Z",
+  "lastUpdated": "2026-03-22T06:00:08.498Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -32,24 +32,24 @@
   "buSourceUsed": "chn",
   "rugbySourceUsed": "ical",
   "cricketSourceUsed": "cricapi",
-  "nhlCount": 167,
+  "nhlCount": 162,
   "ahlCount": 221,
-  "ahlAdded": 24,
-  "ahlUpdated": 188,
-  "ahlPruned": 23,
+  "ahlAdded": 20,
+  "ahlUpdated": 192,
+  "ahlPruned": 20,
   "echlCount": 15,
   "echlAdded": 4,
   "echlUpdated": 15,
   "echlPruned": 4,
   "echlWebCount": 19,
-  "buCount": 3,
+  "buCount": 2,
   "buAdded": 0,
-  "buUpdated": 3,
-  "buPruned": 0,
+  "buUpdated": 2,
+  "buPruned": 1,
   "rugbyCount": 101,
-  "rugbyAdded": 2,
-  "rugbyUpdated": 95,
-  "rugbyPruned": 5,
+  "rugbyAdded": 0,
+  "rugbyUpdated": 96,
+  "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 19,
     "top14": 14,
@@ -57,12 +57,12 @@
     "premiership": 10,
     "sixnations": 3,
     "leagueone": 24,
-    "svns": 4
+    "svns": 3
   },
-  "cricketCount": 17,
+  "cricketCount": 16,
   "cricketAdded": 0,
   "cricketUpdated": 8,
-  "cricketPruned": 0,
+  "cricketPruned": 1,
   "cricketCounts": {
     "MLC": 1,
     "T20I Cricket": 5,
@@ -80,33 +80,33 @@
   "olympicHockeyPruned": 0,
   "olympicHockeySourceUsed": "hardcoded-schedule",
   "eplCount": 29,
-  "eplAdded": 6,
-  "eplUpdated": 20,
-  "eplPruned": 20,
+  "eplAdded": 0,
+  "eplUpdated": 26,
+  "eplPruned": 26,
   "eplSourceUsed": "ical",
   "mlsCount": 60,
-  "mlsAdded": 3,
-  "mlsUpdated": 57,
+  "mlsAdded": 10,
+  "mlsUpdated": 50,
   "mlsPruned": 60,
   "mlsSourceUsed": "ical",
   "serieaCount": 41,
-  "serieaAdded": 4,
-  "serieaUpdated": 37,
-  "serieaPruned": 40,
+  "serieaAdded": 0,
+  "serieaUpdated": 41,
+  "serieaPruned": 41,
   "serieaSourceUsed": "espn",
   "laligaCount": 40,
-  "laligaAdded": 4,
-  "laligaUpdated": 36,
+  "laligaAdded": 0,
+  "laligaUpdated": 40,
   "laligaPruned": 40,
   "laligaSourceUsed": "espn",
   "bundesligaCount": 35,
-  "bundesligaAdded": 5,
-  "bundesligaUpdated": 30,
-  "bundesligaPruned": 36,
+  "bundesligaAdded": 0,
+  "bundesligaUpdated": 35,
+  "bundesligaPruned": 35,
   "bundesligaSourceUsed": "espn",
   "ligue1Count": 37,
-  "ligue1Added": 3,
-  "ligue1Updated": 34,
+  "ligue1Added": 0,
+  "ligue1Updated": 37,
   "ligue1Pruned": 37,
   "ligue1SourceUsed": "espn",
   "nwslCount": 37,
@@ -114,10 +114,10 @@
   "nwslUpdated": 37,
   "nwslPruned": 37,
   "nwslSourceUsed": "ical",
-  "uslCount": 59,
-  "uslAdded": 1,
-  "uslUpdated": 58,
-  "uslPruned": 58,
+  "uslCount": 60,
+  "uslAdded": 9,
+  "uslUpdated": 51,
+  "uslPruned": 59,
   "uslSourceUsed": "espn",
   "championsCupCount": 19,
   "championsCupAdded": 0,
@@ -125,8 +125,8 @@
   "championsCupPruned": 0,
   "championsCupSourceUsed": "ical",
   "mlrCount": 5,
-  "mlrAdded": 1,
-  "mlrUpdated": 4,
+  "mlrAdded": 0,
+  "mlrUpdated": 5,
   "mlrPruned": 0,
   "mlrSourceUsed": "hardcoded",
   "championsLeagueCount": 20,
@@ -142,25 +142,24 @@
   "faCupCount": 8,
   "faCupAdded": 0,
   "faCupUpdated": 8,
-  "faCupPruned": 11,
+  "faCupPruned": 8,
   "faCupSourceUsed": "espn",
-  "tennisCount": 34,
-  "tennisAdded": 11,
-  "tennisUpdated": 23,
+  "tennisCount": 32,
+  "tennisAdded": 6,
+  "tennisUpdated": 26,
   "tennisPruned": 0,
   "tennisSourceUsed": "espn",
   "tennisTournamentCounts": {
-    "Indian Wells Masters": 18,
-    "Miami Open": 34,
+    "Indian Wells Masters": 16,
+    "Miami Open": 32,
     "Monte-Carlo Masters": 24
   },
-  "f1Count": 26,
+  "f1Count": 25,
   "f1Added": 0,
-  "f1Updated": 26,
-  "f1Pruned": 0,
+  "f1Updated": 25,
+  "f1Pruned": 1,
   "f1SourceUsed": "espn-f1",
   "f1RaceCounts": {
-    "Australian Grand Prix": 1,
     "Chinese Grand Prix": 5,
     "Japanese Grand Prix": 5,
     "Bahrain Grand Prix": 5,
@@ -177,45 +176,45 @@
     "The Masters": 4,
     "PGA Championship": 4
   },
-  "nbaCount": 272,
+  "nbaCount": 267,
   "nbaAdded": 0,
-  "nbaUpdated": 272,
-  "nbaPruned": 273,
+  "nbaUpdated": 267,
+  "nbaPruned": 272,
   "nbaSourceUsed": "espn",
-  "ncaabCount": 14,
+  "ncaabCount": 9,
   "ncaabAdded": 0,
-  "ncaabUpdated": 14,
+  "ncaabUpdated": 9,
   "ncaabPruned": 14,
   "ncaabSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-21T22:50:11.897Z",
+    "lastRefreshAt": "2026-03-22T06:00:08.498Z",
     "sources": {
       "nhl": {
-        "count": 167,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "count": 162,
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 221,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
-        "count": 3,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "count": 2,
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 101,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 19,
@@ -224,12 +223,12 @@
           "premiership": 10,
           "sixnations": 3,
           "leagueone": 24,
-          "svns": 4
+          "svns": 3
         }
       },
       "cricket": {
-        "count": 17,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "count": 16,
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "MLC": 1,
@@ -239,100 +238,99 @@
       },
       "iccT20Wc": {
         "count": 1,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 29,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 60,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 41,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 40,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 35,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 37,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 37,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
-        "count": 59,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "count": 60,
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "ESPN API",
-        "firstMatchDate": "2026-03-07T23:00:00.000Z"
+        "firstMatchDate": "2026-03-08T19:30:00.000Z"
       },
       "championsCup": {
         "count": 19,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 5,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 20,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 20,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 8,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "ESPN API",
-        "firstMatchDate": "2026-03-07T12:15:00.000Z"
+        "firstMatchDate": "2026-03-08T12:00:00.000Z"
       },
       "tennis": {
-        "count": 34,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "count": 32,
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
-          "Indian Wells Masters": 18,
-          "Miami Open": 34,
+          "Indian Wells Masters": 16,
+          "Miami Open": 32,
           "Monte-Carlo Masters": 24
         }
       },
       "f1": {
-        "count": 26,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "count": 25,
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
-          "Australian Grand Prix": 1,
           "Chinese Grand Prix": 5,
           "Japanese Grand Prix": 5,
           "Bahrain Grand Prix": 5,
@@ -342,7 +340,7 @@
       },
       "golf": {
         "count": 12,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Players Championship": 4,
@@ -352,7 +350,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Boston Marathon": 1,
@@ -360,592 +358,18 @@
         }
       },
       "nba": {
-        "count": 272,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "count": 267,
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "ESPN API"
       },
       "ncaab": {
-        "count": 14,
-        "lastFetchAt": "2026-03-21T22:50:11.897Z",
+        "count": 9,
+        "lastFetchAt": "2026-03-22T06:00:08.498Z",
         "sourceName": "ESPN API"
       }
     }
   },
   "events": [
-    {
-      "id": "ahl-1028648",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Hartford Wolf Pack",
-      "awayTeam": "Hershey Bears",
-      "startTimeLocal": "2026-03-07T23:00:00.000Z",
-      "endTimeLocal": "2026-03-08T01:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "soccer-usl-20260307-2300-pittsburgh-riverhounds-at-charleston-battery",
-      "sport": "soccer",
-      "league": "USL",
-      "awayTeam": "Pittsburgh Riverhounds",
-      "homeTeam": "Charleston Battery",
-      "startTimeLocal": "2026-03-07T23:00:00.000Z",
-      "endTimeLocal": "2026-03-08T01:15:00.000Z",
-      "providerId": "primevideo",
-      "isLive": false,
-      "source": "soccer-usl",
-      "leagueKey": "usl",
-      "providerReason": "usl-cbsgolazo-default"
-    },
-    {
-      "id": "basketball-nba-20260307-2300-brooklyn-nets-at-detroit-pistons",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Brooklyn Nets",
-      "homeTeam": "Detroit Pistons",
-      "startTimeLocal": "2026-03-07T23:00:00.000Z",
-      "endTimeLocal": "2026-03-08T01:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
-    {
-      "id": "basketball-nba-20260307-2300-philadelphia-76ers-at-atlanta-hawks",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Philadelphia 76ers",
-      "homeTeam": "Atlanta Hawks",
-      "startTimeLocal": "2026-03-07T23:00:00.000Z",
-      "endTimeLocal": "2026-03-08T01:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
-    },
-    {
-      "id": "ahl-1028653",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Springfield Thunderbirds",
-      "awayTeam": "Iowa Wild",
-      "startTimeLocal": "2026-03-07T23:05:00.000Z",
-      "endTimeLocal": "2026-03-08T01:50:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "ncaa-bu-iwrpxs",
-      "sport": "hockey",
-      "league": "NCAA Hockey",
-      "homeTeam": "Mass.-Lowell",
-      "awayTeam": "Boston University",
-      "startTimeLocal": "2026-03-07T23:05:00.000Z",
-      "endTimeLocal": "2026-03-08T01:50:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "ncaa-bu"
-    },
-    {
-      "id": "ahl-1028643",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Belleville Senators",
-      "awayTeam": "Utica Comets",
-      "startTimeLocal": "2026-03-08T00:00:00.000Z",
-      "endTimeLocal": "2026-03-08T02:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "ahl-1028651",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Milwaukee Admirals",
-      "awayTeam": "San Jose Barracuda",
-      "startTimeLocal": "2026-03-08T00:00:00.000Z",
-      "endTimeLocal": "2026-03-08T02:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "cricket-icc-cc51le",
-      "cricketMatchId": "c6cab877-9772-4aff-bb46-01c90cd16b4f",
-      "sport": "cricket",
-      "league": "ICC",
-      "awayTeam": "India",
-      "homeTeam": "New Zealand",
-      "startTimeLocal": "2026-03-08T00:00:00.000Z",
-      "endTimeLocal": "2026-03-08T03:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "icc",
-      "competitionName": "ICC",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "India",
-      "seriesName": "Final, ICC Men's T20 World Cup 2026",
-      "gender": "men",
-      "isIccT20Wc": true
-    },
-    {
-      "id": "basketball-ncaab-20260308-0000-cal-state-bakersfield-roadrunners-at-cal-poly-mustangs",
-      "sport": "basketball",
-      "league": "NCAAB",
-      "awayTeam": "Cal State Bakersfield Roadrunners",
-      "homeTeam": "Cal Poly Mustangs",
-      "startTimeLocal": "2026-03-08T00:00:00.000Z",
-      "endTimeLocal": "2026-03-08T02:10:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "basketball-ncaab",
-      "leagueKey": "ncaab",
-      "providerReason": "ncaab-espn-plus"
-    },
-    {
-      "id": "ahl-1028650",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Lehigh Valley Phantoms",
-      "awayTeam": "Charlotte Checkers",
-      "startTimeLocal": "2026-03-08T00:05:00.000Z",
-      "endTimeLocal": "2026-03-08T02:50:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "soccer-mls-20260308-0030-real-salt-lake-at-atlanta-united",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Real Salt Lake",
-      "homeTeam": "Atlanta United",
-      "startTimeLocal": "2026-03-08T00:30:00.000Z",
-      "endTimeLocal": "2026-03-08T02:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260308-0030-austin-fc-at-charlotte-fc",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Austin FC",
-      "homeTeam": "Charlotte FC",
-      "startTimeLocal": "2026-03-08T00:30:00.000Z",
-      "endTimeLocal": "2026-03-08T02:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260308-0030-chicago-fire-fc-at-columbus-crew",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Chicago Fire FC",
-      "homeTeam": "Columbus Crew",
-      "startTimeLocal": "2026-03-08T00:30:00.000Z",
-      "endTimeLocal": "2026-03-08T02:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260308-0030-san-jose-earthquakes-at-philadelphia-union",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "San Jose Earthquakes",
-      "homeTeam": "Philadelphia Union",
-      "startTimeLocal": "2026-03-08T00:30:00.000Z",
-      "endTimeLocal": "2026-03-08T02:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-usl-20260308-0030-hartford-athletic-at-sporting-jax",
-      "sport": "soccer",
-      "league": "USL",
-      "awayTeam": "Hartford Athletic",
-      "homeTeam": "Sporting JAX",
-      "startTimeLocal": "2026-03-08T00:30:00.000Z",
-      "endTimeLocal": "2026-03-08T02:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "soccer-usl",
-      "leagueKey": "usl",
-      "providerReason": "usl-espnplus"
-    },
-    {
-      "id": "ahl-1028645",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Chicago Wolves",
-      "awayTeam": "Texas Stars",
-      "startTimeLocal": "2026-03-08T01:00:00.000Z",
-      "endTimeLocal": "2026-03-08T03:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "basketball-nba-20260308-0100-la-clippers-at-memphis-grizzlies",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "LA Clippers",
-      "homeTeam": "Memphis Grizzlies",
-      "startTimeLocal": "2026-03-08T01:00:00.000Z",
-      "endTimeLocal": "2026-03-08T03:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
-    {
-      "id": "basketball-nba-20260308-0100-utah-jazz-at-milwaukee-bucks",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Utah Jazz",
-      "homeTeam": "Milwaukee Bucks",
-      "startTimeLocal": "2026-03-08T01:00:00.000Z",
-      "endTimeLocal": "2026-03-08T03:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
-    {
-      "id": "basketball-ncaab-20260308-0100-cal-state-fullerton-titans-at-cal-state-northridge-matadors",
-      "sport": "basketball",
-      "league": "NCAAB",
-      "awayTeam": "Cal State Fullerton Titans",
-      "homeTeam": "Cal State Northridge Matadors",
-      "startTimeLocal": "2026-03-08T01:00:00.000Z",
-      "endTimeLocal": "2026-03-08T03:10:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "basketball-ncaab",
-      "leagueKey": "ncaab",
-      "providerReason": "ncaab-espn-plus"
-    },
-    {
-      "id": "basketball-ncaab-20260308-0100-uc-davis-aggies-at-uc-irvine-anteaters",
-      "sport": "basketball",
-      "league": "NCAAB",
-      "awayTeam": "UC Davis Aggies",
-      "homeTeam": "UC Irvine Anteaters",
-      "startTimeLocal": "2026-03-08T01:00:00.000Z",
-      "endTimeLocal": "2026-03-08T03:10:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "basketball-ncaab",
-      "leagueKey": "ncaab",
-      "providerReason": "ncaab-espn-abc"
-    },
-    {
-      "id": "echl-web-25137",
-      "sport": "hockey",
-      "league": "ECHL",
-      "homeTeam": "Allen Americans",
-      "awayTeam": "Tulsa Oilers",
-      "startTimeLocal": "2026-03-08T01:10:00.000Z",
-      "endTimeLocal": "2026-03-08T03:55:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "echl"
-    },
-    {
-      "id": "soccer-mls-20260308-0130-san-diego-fc-at-sporting-kansas-city",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "San Diego FC",
-      "homeTeam": "Sporting Kansas City",
-      "startTimeLocal": "2026-03-08T01:30:00.000Z",
-      "endTimeLocal": "2026-03-08T03:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260308-0130-minnesota-united-fc-at-nashville-sc",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Minnesota United FC",
-      "homeTeam": "Nashville SC",
-      "startTimeLocal": "2026-03-08T01:30:00.000Z",
-      "endTimeLocal": "2026-03-08T03:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260308-0130-seattle-sounders-fc-at-st-louis-city-sc",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Seattle Sounders FC",
-      "homeTeam": "St. Louis CITY SC",
-      "startTimeLocal": "2026-03-08T01:30:00.000Z",
-      "endTimeLocal": "2026-03-08T03:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-usl-20260308-0130-phoenix-rising-fc-at-san-antonio-fc",
-      "sport": "soccer",
-      "league": "USL",
-      "awayTeam": "Phoenix Rising FC",
-      "homeTeam": "San Antonio FC",
-      "startTimeLocal": "2026-03-08T01:30:00.000Z",
-      "endTimeLocal": "2026-03-08T03:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "soccer-usl",
-      "leagueKey": "usl",
-      "providerReason": "usl-espnplus"
-    },
-    {
-      "id": "basketball-nba-20260308-0130-golden-state-warriors-at-oklahoma-city-thunder",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Golden State Warriors",
-      "homeTeam": "Oklahoma City Thunder",
-      "startTimeLocal": "2026-03-08T01:30:00.000Z",
-      "endTimeLocal": "2026-03-08T04:00:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
-    },
-    {
-      "id": "ahl-1028647",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Coachella Valley Firebirds",
-      "awayTeam": "Calgary Wranglers",
-      "startTimeLocal": "2026-03-08T02:00:00.000Z",
-      "endTimeLocal": "2026-03-08T04:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "ahl-1028652",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "San Diego Gulls",
-      "awayTeam": "Rockford IceHogs",
-      "startTimeLocal": "2026-03-08T02:00:00.000Z",
-      "endTimeLocal": "2026-03-08T04:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "soccer-usl-20260308-0200-colorado-springs-switchbacks-fc-at-el-paso-locomotive-fc",
-      "sport": "soccer",
-      "league": "USL",
-      "awayTeam": "Colorado Springs Switchbacks FC",
-      "homeTeam": "El Paso Locomotive FC",
-      "startTimeLocal": "2026-03-08T02:00:00.000Z",
-      "endTimeLocal": "2026-03-08T04:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "soccer-usl",
-      "leagueKey": "usl",
-      "providerReason": "usl-espnplus"
-    },
-    {
-      "id": "basketball-ncaab-20260308-0200-uc-san-diego-tritons-at-uc-santa-barbara-gauchos",
-      "sport": "basketball",
-      "league": "NCAAB",
-      "awayTeam": "UC San Diego Tritons",
-      "homeTeam": "UC Santa Barbara Gauchos",
-      "startTimeLocal": "2026-03-08T02:00:00.000Z",
-      "endTimeLocal": "2026-03-08T04:10:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "basketball-ncaab",
-      "leagueKey": "ncaab",
-      "providerReason": "ncaab-espn-plus"
-    },
-    {
-      "id": "soccer-mls-20260308-0230-la-galaxy-at-colorado-rapids",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "LA Galaxy",
-      "homeTeam": "Colorado Rapids",
-      "startTimeLocal": "2026-03-08T02:30:00.000Z",
-      "endTimeLocal": "2026-03-08T04:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-usl-20260308-0230-tampa-bay-rowdies-at-birmingham-legion-fc",
-      "sport": "soccer",
-      "league": "USL",
-      "awayTeam": "Tampa Bay Rowdies",
-      "homeTeam": "Birmingham Legion FC",
-      "startTimeLocal": "2026-03-08T02:30:00.000Z",
-      "endTimeLocal": "2026-03-08T04:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "soccer-usl",
-      "leagueKey": "usl",
-      "providerReason": "usl-espnplus"
-    },
-    {
-      "id": "ahl-1028641",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Abbotsford Canucks",
-      "awayTeam": "Colorado Eagles",
-      "startTimeLocal": "2026-03-08T03:00:00.000Z",
-      "endTimeLocal": "2026-03-08T05:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "ahl-1028642",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Bakersfield Condors",
-      "awayTeam": "Tucson Roadrunners",
-      "startTimeLocal": "2026-03-08T03:00:00.000Z",
-      "endTimeLocal": "2026-03-08T05:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "soccer-usl-20260308-0300-oakland-roots-at-monterey-bay",
-      "sport": "soccer",
-      "league": "USL",
-      "awayTeam": "Oakland Roots",
-      "homeTeam": "Monterey Bay",
-      "startTimeLocal": "2026-03-08T03:00:00.000Z",
-      "endTimeLocal": "2026-03-08T05:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "soccer-usl",
-      "leagueKey": "usl",
-      "providerReason": "usl-espnplus"
-    },
-    {
-      "id": "soccer-usl-20260308-0300-las-vegas-lights-fc-at-orange-county-sc",
-      "sport": "soccer",
-      "league": "USL",
-      "awayTeam": "Las Vegas Lights FC",
-      "homeTeam": "Orange County SC",
-      "startTimeLocal": "2026-03-08T03:00:00.000Z",
-      "endTimeLocal": "2026-03-08T05:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "soccer-usl",
-      "leagueKey": "usl",
-      "providerReason": "usl-espnplus"
-    },
-    {
-      "id": "soccer-usl-20260308-0300-fc-tulsa-at-sacramento-republic-fc",
-      "sport": "soccer",
-      "league": "USL",
-      "awayTeam": "FC Tulsa",
-      "homeTeam": "Sacramento Republic FC",
-      "startTimeLocal": "2026-03-08T03:00:00.000Z",
-      "endTimeLocal": "2026-03-08T05:15:00.000Z",
-      "providerId": "primevideo",
-      "isLive": false,
-      "source": "soccer-usl",
-      "leagueKey": "usl",
-      "providerReason": "usl-cbsgolazo-default"
-    },
-    {
-      "id": "soccer-mls-20260308-0330-fc-dallas-at-los-angeles-football-club",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "FC Dallas",
-      "homeTeam": "Los Angeles Football Club",
-      "startTimeLocal": "2026-03-08T03:30:00.000Z",
-      "endTimeLocal": "2026-03-08T05:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260308-0330-vancouver-whitecaps-fc-at-portland-timbers",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Vancouver Whitecaps FC",
-      "homeTeam": "Portland Timbers",
-      "startTimeLocal": "2026-03-08T03:30:00.000Z",
-      "endTimeLocal": "2026-03-08T05:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "f1-espn-401839032",
-      "sport": "racing",
-      "league": "F1",
-      "awayTeam": "Race",
-      "homeTeam": "Australian Grand Prix",
-      "startTimeLocal": "2026-03-08T04:00:00.000Z",
-      "endTimeLocal": "2026-03-08T06:00:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "espn-f1",
-      "leagueKey": "f1",
-      "providerReason": "Apple TV broadcast",
-      "eventType": "session",
-      "sessionTitle": "Race",
-      "competitionName": "Australian Grand Prix"
-    },
-    {
-      "id": "basketball-ncaab-20260308-0459-long-beach-state-beach-at-hawai-i-rainbow-warriors",
-      "sport": "basketball",
-      "league": "NCAAB",
-      "awayTeam": "Long Beach State Beach",
-      "homeTeam": "Hawai'i Rainbow Warriors",
-      "startTimeLocal": "2026-03-08T04:59:00.000Z",
-      "endTimeLocal": "2026-03-08T07:09:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "basketball-ncaab",
-      "leagueKey": "ncaab",
-      "providerReason": "ncaab-espn-plus"
-    },
     {
       "id": "soccer-seriea-20260308-1130-cremonese-at-lecce",
       "sport": "soccer",
@@ -1196,11 +620,12 @@
       "homeTeam": "Cleveland Cavaliers",
       "startTimeLocal": "2026-03-08T17:00:00.000Z",
       "endTimeLocal": "2026-03-08T19:30:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-abc",
+      "broadcastNetworks": "ABC"
     },
     {
       "id": "soccer-laliga-20260308-1730-rayo-vallecano-at-sevilla",
@@ -1298,11 +723,12 @@
       "homeTeam": "Los Angeles Lakers",
       "startTimeLocal": "2026-03-08T19:30:00.000Z",
       "endTimeLocal": "2026-03-08T22:00:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-abc",
+      "broadcastNetworks": "ABC"
     },
     {
       "id": "soccer-seriea-20260308-1945-internazionale-at-ac-milan",
@@ -1407,7 +833,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN Sun, FanDuel SN DET, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260308-2200-dallas-mavericks-at-toronto-raptors",
@@ -1421,7 +848,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Sportsnet, KFAA-TV, Mavs.com, NBA League Pass"
     },
     {
       "id": "soccer-mls-20260308-2300-toronto-fc-at-fc-cincinnati",
@@ -1449,7 +877,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "MNMT, NBA League Pass, GCSEN, Pelicans.com"
     },
     {
       "id": "basketball-nba-20260309-0000-orlando-magic-at-milwaukee-bucks",
@@ -1463,7 +892,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN WI, FanDuel SN FL, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260309-0000-houston-rockets-at-san-antonio-spurs",
@@ -1477,7 +907,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock"
     },
     {
       "id": "basketball-nba-20260309-0100-indiana-pacers-at-portland-trail-blazers",
@@ -1491,7 +922,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KUNP 16, BlazerVision, FanDuel SN IN, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260309-0100-chicago-bulls-at-sacramento-kings",
@@ -1505,7 +937,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "CHSN+, NBA League Pass, NBC Sports CA"
     },
     {
       "id": "basketball-nba-20260309-0200-charlotte-hornets-at-phoenix-suns",
@@ -1519,7 +952,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "Peacock, NBCSN, FanDuel SN SE, Arizona's Family 3TV, Suns Live"
     },
     {
       "id": "soccer-facup-20260309-1930-brentford-at-west-ham-united",
@@ -1574,7 +1008,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN OH, NBC Sports Phil, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260309-2330-memphis-grizzlies-at-brooklyn-nets",
@@ -1588,7 +1023,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "YES, FanDuel SN SE, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260309-2330-denver-nuggets-at-oklahoma-city-thunder",
@@ -1602,7 +1038,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "Peacock, NBCSN, Altitude Sports, FanDuel SN OK"
     },
     {
       "id": "basketball-nba-20260310-0100-golden-state-warriors-at-utah-jazz",
@@ -1616,7 +1053,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC Sports BA, NBA League Pass, KJZZ-TV, Jazz+"
     },
     {
       "id": "basketball-nba-20260310-0200-new-york-knicks-at-la-clippers",
@@ -1630,7 +1068,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "Peacock, NBCSN, MSG, FanDuel SN SoCal"
     },
     {
       "id": "soccer-championsleague-20260310-1745-liverpool-at-galatasaray",
@@ -1700,7 +1139,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN SE, NBA League Pass, NBC Sports Phil"
     },
     {
       "id": "basketball-nba-20260310-2330-detroit-pistons-at-brooklyn-nets",
@@ -1714,7 +1154,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "YES, FanDuel SN DET Ext, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260310-2330-washington-wizards-at-miami-heat",
@@ -1728,7 +1169,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN Sun, MNMT, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260310-2330-dallas-mavericks-at-atlanta-hawks",
@@ -1742,7 +1184,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KFAA-TV, Mavs.com, FanDuel SN SE, NBA League Pass"
     },
     {
       "id": "cricket-odi-qazknj",
@@ -1777,7 +1220,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Space City Home Network, TSN, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260311-0000-phoenix-suns-at-milwaukee-bucks",
@@ -1791,7 +1235,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN WI, Arizona's Family 3TV, Suns Live, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260311-0000-boston-celtics-at-san-antonio-spurs",
@@ -1805,7 +1250,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock, NBC Sports BO, FanDuel SN SW"
     },
     {
       "id": "ahl-1028663",
@@ -1843,7 +1289,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "CHSN, NBA League Pass, NBC Sports BA"
     },
     {
       "id": "basketball-nba-20260311-0200-charlotte-hornets-at-portland-trail-blazers",
@@ -1857,7 +1304,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KUNP 16, BlazerVision, FanDuel SN SE, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260311-0200-indiana-pacers-at-sacramento-kings",
@@ -1871,7 +1319,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN IN, NBA League Pass, NBC Sports CA"
     },
     {
       "id": "basketball-nba-20260311-0300-minnesota-timberwolves-at-los-angeles-lakers",
@@ -1885,7 +1334,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock, Spectrum Sports Net, Spectrum Sports Net +"
     },
     {
       "id": "cricket-intl-u9mqel",
@@ -2045,11 +1495,12 @@
       "homeTeam": "Orlando Magic",
       "startTimeLocal": "2026-03-11T23:30:00.000Z",
       "endTimeLocal": "2026-03-12T02:00:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-espn",
+      "broadcastNetworks": "ESPN, FanDuel SN FL, FanDuel SN OH"
     },
     {
       "id": "ahl-1028665",
@@ -2087,7 +1538,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "GCSEN, Pelicans.com, Sportsnet, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260312-0100-new-york-knicks-at-utah-jazz",
@@ -2101,7 +1553,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KJZZ-TV, Jazz+, MSG, NBA League Pass"
     },
     {
       "id": "basketball-ncaab-20260312-0100-cal-poly-mustangs-at-uc-san-diego-tritons",
@@ -2173,11 +1626,12 @@
       "homeTeam": "Denver Nuggets",
       "startTimeLocal": "2026-03-12T02:00:00.000Z",
       "endTimeLocal": "2026-03-12T04:30:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-espn",
+      "broadcastNetworks": "ESPN, Altitude Sports, Space City Home Network"
     },
     {
       "id": "basketball-nba-20260312-0200-charlotte-hornets-at-sacramento-kings",
@@ -2191,7 +1645,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN SE, NBA League Pass, NBC Sports CA"
     },
     {
       "id": "basketball-nba-20260312-0230-minnesota-timberwolves-at-la-clippers",
@@ -2205,7 +1660,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN North, NBA League Pass, FanDuel SN SoCal"
     },
     {
       "id": "basketball-ncaab-20260312-0330-uc-santa-barbara-gauchos-at-uc-davis-aggies",
@@ -2363,7 +1819,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Prime Video"
     },
     {
       "id": "basketball-nba-20260312-2300-phoenix-suns-at-indiana-pacers",
@@ -2377,7 +1834,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN IN, Arizona's Family 3TV, Suns Live, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260312-2300-washington-wizards-at-orlando-magic",
@@ -2391,7 +1849,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "MNMT, NBA League Pass, FanDuel SN FL"
     },
     {
       "id": "basketball-nba-20260312-2330-brooklyn-nets-at-atlanta-hawks",
@@ -2405,7 +1864,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "YES, NBA League Pass, FanDuel SN SE"
     },
     {
       "id": "basketball-nba-20260312-2330-milwaukee-bucks-at-miami-heat",
@@ -2419,7 +1879,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN Sun, FanDuel SN WI, NBA League Pass"
     },
     {
       "id": "cricket-odi-e6q8cy",
@@ -2454,7 +1915,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SE, KFAA-TV, Mavs.com, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260313-0100-denver-nuggets-at-san-antonio-spurs",
@@ -2468,7 +1930,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Altitude Sports, NBA League Pass, FanDuel SN SW"
     },
     {
       "id": "basketball-ncaab-20260313-0100-uc-san-diego-tritons-at-cal-state-northridge-matadors",
@@ -2508,7 +1971,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "Prime Video, NBC Sports BO, FanDuel SN OK"
     },
     {
       "id": "basketball-nba-20260313-0230-chicago-bulls-at-los-angeles-lakers",
@@ -2522,7 +1986,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Spectrum Sports Net, Spectrum Sports Net +, CHSN+, NBA League Pass"
     },
     {
       "id": "f1-espn-401839033",
@@ -2809,7 +2274,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN DET, FanDuel SN SE, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260313-2330-new-york-knicks-at-indiana-pacers",
@@ -2823,7 +2289,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "MSG, FanDuel SN IN, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260313-2330-phoenix-suns-at-toronto-raptors",
@@ -2837,7 +2304,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Arizona's Family 3TV, Suns Live, NBA League Pass, TSN"
     },
     {
       "id": "basketball-nba-20260313-2330-cleveland-cavaliers-at-dallas-mavericks",
@@ -2851,7 +2319,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Prime Video, FanDuel SN OH, KFAA-TV, Mavs.com"
     },
     {
       "id": "ahl-1028680",
@@ -2904,7 +2373,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Space City Home Network, GCSEN, Pelicans.com, NBA League Pass"
     },
     {
       "id": "ahl-1028674",
@@ -2968,7 +2438,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "Prime Video, NBC Sports BA"
     },
     {
       "id": "basketball-nba-20260314-0200-utah-jazz-at-portland-trail-blazers",
@@ -2982,7 +2453,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KUNP 16, BlazerVision, KJZZ-TV, Jazz+, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260314-0230-chicago-bulls-at-la-clippers",
@@ -2996,7 +2468,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "CHSN, NBA League Pass, FanDuel SN SoCal"
     },
     {
       "id": "rugby-leagueone-m0x0lc",
@@ -3428,7 +2901,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "YES, NBA League Pass, NBC Sports Phil"
     },
     {
       "id": "soccer-epl-20260314-1730-everton-at-arsenal",
@@ -3554,7 +3028,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN WI, FanDuel SN SE, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260314-1930-charlotte-hornets-at-san-antonio-spurs",
@@ -3568,7 +3043,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Prime Video, FanDuel SN SE, FanDuel SN SW"
     },
     {
       "id": "soccer-seriea-20260314-1945-juventus-at-udinese",
@@ -3771,7 +3247,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "MNMT, NBC Sports BO, NBA TV"
     },
     {
       "id": "ahl-1028694",
@@ -3990,7 +3467,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN FL, NBA League Pass, WKCF"
     },
     {
       "id": "soccer-mls-20260315-0030-d-c-united-at-chicago-fire-fc",
@@ -4042,11 +3520,12 @@
       "homeTeam": "Los Angeles Lakers",
       "startTimeLocal": "2026-03-15T00:30:00.000Z",
       "endTimeLocal": "2026-03-15T03:00:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-abc",
+      "broadcastNetworks": "ABC"
     },
     {
       "id": "soccer-nwsl-20260315-0045-houston-dash-at-san-diego-wave",
@@ -4243,11 +3722,12 @@
       "homeTeam": "LA Clippers",
       "startTimeLocal": "2026-03-15T02:30:00.000Z",
       "endTimeLocal": "2026-03-15T05:00:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-espn",
+      "broadcastNetworks": "ESPN, NBC Sports CA, FanDuel SN SoCal"
     },
     {
       "id": "rugby-superrugby-d2oai1",
@@ -4587,11 +4067,12 @@
       "homeTeam": "Oklahoma City Thunder",
       "startTimeLocal": "2026-03-15T17:00:00.000Z",
       "endTimeLocal": "2026-03-15T19:30:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-abc",
+      "broadcastNetworks": "ABC"
     },
     {
       "id": "soccer-laliga-20260315-1730-celta-vigo-at-real-betis",
@@ -4697,7 +4178,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "FanDuel SN OH, KFAA-TV, Mavs.com, NBA TV"
     },
     {
       "id": "basketball-nba-20260315-1930-detroit-pistons-at-toronto-raptors",
@@ -4711,7 +4193,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Sportsnet, FanDuel SN DET, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260315-1930-indiana-pacers-at-milwaukee-bucks",
@@ -4725,7 +4208,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN IN, NBA League Pass, FanDuel SN WI"
     },
     {
       "id": "soccer-seriea-20260315-1945-ac-milan-at-lazio",
@@ -4831,7 +4315,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "KUNP 16, BlazerVision, NBA League Pass, NBC Sports Phil"
     },
     {
       "id": "ahl-1028700",
@@ -4898,7 +4383,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock"
     },
     {
       "id": "basketball-nba-20260316-0200-utah-jazz-at-sacramento-kings",
@@ -4912,7 +4398,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC Sports CA, KJZZ-TV, Jazz+, NBA League Pass"
     },
     {
       "id": "soccer-seriea-20260316-1945-fiorentina-at-cremonese",
@@ -4967,7 +4454,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "Peacock, NBCSN"
     },
     {
       "id": "basketball-nba-20260316-2300-golden-state-warriors-at-washington-wizards",
@@ -4981,7 +4469,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "MNMT, NBC Sports BA, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260316-2330-portland-trail-blazers-at-brooklyn-nets",
@@ -4995,7 +4484,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KUNP 16, BlazerVision, NBA League Pass, YES"
     },
     {
       "id": "basketball-nba-20260316-2330-phoenix-suns-at-boston-celtics",
@@ -5009,7 +4499,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC Sports BO, Arizona's Family 3TV, Suns Live, NBA League Pass"
     },
     {
       "id": "cricket-t20i-circve",
@@ -5044,7 +4535,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "CHSN, FanDuel SN SE, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260317-0000-dallas-mavericks-at-new-orleans-pelicans",
@@ -5058,7 +4550,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "GCSEN, Pelicans.com, KFAA-TV, Mavs.com, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260317-0130-los-angeles-lakers-at-houston-rockets",
@@ -5072,7 +4565,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "Peacock, NBCSN, Spectrum Sports Net, Spectrum Sports Net +, Space City Home Network"
     },
     {
       "id": "basketball-nba-20260317-0200-san-antonio-spurs-at-la-clippers",
@@ -5086,7 +4580,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN SoCal, KENS 5, Peacock, NBCSN Extra"
     },
     {
       "id": "ahl-1028711",
@@ -5180,7 +4675,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN Sun, NBA League Pass, FanDuel SN SE"
     },
     {
       "id": "basketball-nba-20260317-2300-oklahoma-city-thunder-at-orlando-magic",
@@ -5194,7 +4690,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN FL, FanDuel SN OK, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260317-2300-detroit-pistons-at-washington-wizards",
@@ -5208,7 +4705,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "MNMT, FanDuel SN DET, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260317-2330-indiana-pacers-at-new-york-knicks",
@@ -5222,7 +4720,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN IN, NBA League Pass, MSG"
     },
     {
       "id": "ahl-1028710",
@@ -5248,7 +4747,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock, FanDuel SN OH, FanDuel SN WI"
     },
     {
       "id": "basketball-nba-20260318-0000-phoenix-suns-at-minnesota-timberwolves",
@@ -5262,7 +4762,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN North, Arizona's Family 3TV, Suns Live, NBA League Pass"
     },
     {
       "id": "ahl-1028707",
@@ -5300,7 +4801,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock, Altitude Sports, NBC Sports Phil"
     },
     {
       "id": "basketball-nba-20260318-0200-san-antonio-spurs-at-sacramento-kings",
@@ -5314,7 +4816,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN SW, NBC Sports CA, NBA League Pass"
     },
     {
       "id": "basketball-ncaab-20260318-0300-unlv-rebels-at-uc-irvine-anteaters",
@@ -5468,11 +4971,12 @@
       "homeTeam": "Boston Celtics",
       "startTimeLocal": "2026-03-18T23:00:00.000Z",
       "endTimeLocal": "2026-03-19T01:30:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-espn",
+      "broadcastNetworks": "ESPN, NBC Sports BO, NBC Sports BA"
     },
     {
       "id": "ahl-1028716",
@@ -5498,7 +5002,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "YES, FanDuel SN OK, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260318-2330-portland-trail-blazers-at-indiana-pacers",
@@ -5512,7 +5017,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN IN, KUNP 16, BlazerVision, NBA League Pass"
     },
     {
       "id": "ahl-1028720",
@@ -5538,7 +5044,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "CHSN, TSN, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260319-0000-utah-jazz-at-minnesota-timberwolves",
@@ -5552,7 +5059,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN North, KJZZ-TV, Jazz+, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260319-0000-la-clippers-at-new-orleans-pelicans",
@@ -5566,7 +5074,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "GCSEN, Pelicans.com, FanDuel SN SoCal, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260319-0030-atlanta-hawks-at-dallas-mavericks",
@@ -5580,7 +5089,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KFAA-TV, Mavs.com, FanDuel SN SE, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260319-0030-denver-nuggets-at-memphis-grizzlies",
@@ -5594,7 +5104,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SE, Altitude Sports, NBA League Pass"
     },
     {
       "id": "ahl-1028714",
@@ -5628,11 +5139,12 @@
       "homeTeam": "Houston Rockets",
       "startTimeLocal": "2026-03-19T01:30:00.000Z",
       "endTimeLocal": "2026-03-19T04:00:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-espn",
+      "broadcastNetworks": "ESPN, Spectrum Sports Net, Spectrum Sports Net +"
     },
     {
       "id": "ahl-1028718",
@@ -5770,7 +5282,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "NBA TV, FanDuel SN FL, FanDuel SN SE"
     },
     {
       "id": "basketball-nba-20260319-2300-detroit-pistons-at-washington-wizards",
@@ -5784,7 +5297,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "MNMT, FanDuel SN DET Ext, NBA League Pass"
     },
     {
       "id": "ahl-1028722",
@@ -5810,7 +5324,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN Sun, Spectrum Sports Net, Spectrum Sports Net +, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260320-0000-cleveland-cavaliers-at-chicago-bulls",
@@ -5824,7 +5339,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "CHSN, FanDuel SN OH, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260320-0000-la-clippers-at-new-orleans-pelicans",
@@ -5838,7 +5354,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "GCSEN, Pelicans.com, FanDuel SN SoCal, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260320-0000-phoenix-suns-at-san-antonio-spurs",
@@ -5852,7 +5369,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Arizona's Family 3TV, Suns Live, NBA League Pass, FanDuel SN SW"
     },
     {
       "id": "ahl-1028721",
@@ -5878,7 +5396,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN WI, NBA League Pass, KJZZ-TV, Jazz+"
     },
     {
       "id": "basketball-nba-20260320-0200-philadelphia-76ers-at-sacramento-kings",
@@ -5892,7 +5411,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC Sports CA, NBC Sports Phil +, NBA League Pass"
     },
     {
       "id": "rugby-leagueone-9e6seh",
@@ -6089,45 +5609,6 @@
       "providerReason": "laliga-disneyplus"
     },
     {
-      "id": "nhl_2025021094",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Carolina Hurricanes",
-      "homeTeam": "Toronto Maple Leafs",
-      "startTimeLocal": "2026-03-20T23:00:00.000Z",
-      "endTimeLocal": "2026-03-21T01:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "SNO",
-        "NHLN",
-        "TVAS",
-        "FDSNSO"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
-      "id": "nhl_2025021095",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "New Jersey Devils",
-      "homeTeam": "Washington Capitals",
-      "startTimeLocal": "2026-03-20T23:00:00.000Z",
-      "endTimeLocal": "2026-03-21T01:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "SN",
-        "MNMT",
-        "MSGSN"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
       "id": "ahl-1028723",
       "sport": "hockey",
       "league": "AHL",
@@ -6176,30 +5657,6 @@
       "source": "ahl-hockeytech"
     },
     {
-      "id": "tennis-espn-173224",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Blanch",
-      "homeTeam": "Fils",
-      "startTimeLocal": "2026-03-20T23:25:00.000Z",
-      "endTimeLocal": "2026-03-21T01:55:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Miami Open — Round 2",
-      "competitionType": "domestic",
-      "tennisRound": "Round 2",
-      "tennisPlayer1": "Blanch",
-      "tennisPlayer2": "Fils",
-      "tennisPlayer2Rank": 28,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
-      "tournamentName": "Miami Open"
-    },
-    {
       "id": "basketball-nba-20260320-2330-new-york-knicks-at-brooklyn-nets",
       "sport": "basketball",
       "league": "NBA",
@@ -6211,7 +5668,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "YES, MSG, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260320-2330-golden-state-warriors-at-detroit-pistons",
@@ -6225,7 +5683,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN DET, NBC Sports BA"
     },
     {
       "id": "ahl-1028724",
@@ -6293,7 +5752,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "NBA TV, Space City Home Network, FanDuel SN SE"
     },
     {
       "id": "basketball-nba-20260321-0000-boston-celtics-at-memphis-grizzlies",
@@ -6307,7 +5767,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN SE, NBC Sports BO, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260321-0000-portland-trail-blazers-at-minnesota-timberwolves",
@@ -6321,140 +5782,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
-    {
-      "id": "tennis-espn-173207",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Korda",
-      "homeTeam": "Carabelli",
-      "startTimeLocal": "2026-03-21T00:10:00.000Z",
-      "endTimeLocal": "2026-03-21T02:40:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Miami Open — Round 2",
-      "competitionType": "domestic",
-      "tennisRound": "Round 2",
-      "tennisPlayer1": "Korda",
-      "tennisPlayer2": "Carabelli",
-      "tennisPlayer1Rank": 32,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
-      "tournamentName": "Miami Open"
-    },
-    {
-      "id": "tennis-espn-173206",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Fonseca",
-      "homeTeam": "Alcaraz",
-      "startTimeLocal": "2026-03-21T00:25:00.000Z",
-      "endTimeLocal": "2026-03-21T02:55:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Miami Open — Round 2",
-      "competitionType": "domestic",
-      "tennisRound": "Round 2",
-      "tennisPlayer1": "Fonseca",
-      "tennisPlayer2": "Alcaraz",
-      "tennisPlayer2Rank": 1,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
-      "tournamentName": "Miami Open"
-    },
-    {
-      "id": "nhl_2025021096",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Colorado Avalanche",
-      "homeTeam": "Chicago Blackhawks",
-      "startTimeLocal": "2026-03-21T00:30:00.000Z",
-      "endTimeLocal": "2026-03-21T03:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "CHSN",
-        "ALT",
-        "KTVD"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
-      "id": "tennis-espn-173212",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Cobolli",
-      "homeTeam": "Collignon",
-      "startTimeLocal": "2026-03-21T00:50:00.000Z",
-      "endTimeLocal": "2026-03-21T03:20:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Miami Open — Round 2",
-      "competitionType": "domestic",
-      "tennisRound": "Round 2",
-      "tennisPlayer1": "Cobolli",
-      "tennisPlayer2": "Collignon",
-      "tennisPlayer1Rank": 13,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
-      "tournamentName": "Miami Open"
-    },
-    {
-      "id": "nhl_2025021097",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Florida Panthers",
-      "homeTeam": "Calgary Flames",
-      "startTimeLocal": "2026-03-21T01:00:00.000Z",
-      "endTimeLocal": "2026-03-21T03:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "SNW",
-        "SCRIPPS"
-      ],
-      "isNational": false,
-      "providerReason": "espnplus-default"
-    },
-    {
-      "id": "tennis-espn-173227",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Minaur",
-      "homeTeam": "Tsitsipas",
-      "startTimeLocal": "2026-03-21T01:00:00.000Z",
-      "endTimeLocal": "2026-03-21T03:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Miami Open — Round 2",
-      "competitionType": "domestic",
-      "tennisRound": "Round 2",
-      "tennisPlayer1": "Minaur",
-      "tennisPlayer2": "Tsitsipas",
-      "tennisPlayer1Rank": 5,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/gre.png",
-      "tournamentName": "Miami Open"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KUNP 16, BlazerVision, NBA League Pass, FanDuel SN North"
     },
     {
       "id": "basketball-nba-20260321-0100-toronto-raptors-at-denver-nuggets",
@@ -6468,7 +5797,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Altitude 2 Sports, Sportsnet, NBA League Pass"
     },
     {
       "id": "echl-web-25211",
@@ -6481,98 +5811,6 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "echl"
-    },
-    {
-      "id": "tennis-espn-173216",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Lehecka",
-      "homeTeam": "Kouame",
-      "startTimeLocal": "2026-03-21T01:20:00.000Z",
-      "endTimeLocal": "2026-03-21T03:50:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Miami Open — Round 2",
-      "competitionType": "domestic",
-      "tennisRound": "Round 2",
-      "tennisPlayer1": "Lehecka",
-      "tennisPlayer2": "Kouame",
-      "tennisPlayer1Rank": 21,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
-      "tournamentName": "Miami Open"
-    },
-    {
-      "id": "tennis-espn-173215",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Landaluce",
-      "homeTeam": "Darderi",
-      "startTimeLocal": "2026-03-21T01:40:00.000Z",
-      "endTimeLocal": "2026-03-21T04:10:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Miami Open — Round 2",
-      "competitionType": "domestic",
-      "tennisRound": "Round 2",
-      "tennisPlayer1": "Landaluce",
-      "tennisPlayer2": "Darderi",
-      "tennisPlayer2Rank": 17,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
-      "tournamentName": "Miami Open"
-    },
-    {
-      "id": "tennis-espn-173225",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Vacherot",
-      "homeTeam": "Navone",
-      "startTimeLocal": "2026-03-21T01:55:00.000Z",
-      "endTimeLocal": "2026-03-21T04:25:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Miami Open — Round 2",
-      "competitionType": "domestic",
-      "tennisRound": "Round 2",
-      "tennisPlayer1": "Vacherot",
-      "tennisPlayer2": "Navone",
-      "tennisPlayer1Rank": 24,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/mon.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
-      "tournamentName": "Miami Open"
-    },
-    {
-      "id": "nhl_2025021098",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Anaheim Ducks",
-      "homeTeam": "Utah Mammoth",
-      "startTimeLocal": "2026-03-21T02:00:00.000Z",
-      "endTimeLocal": "2026-03-21T04:45:00.000Z",
-      "providerId": "victoryplus",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "TVAS",
-        "Utah16",
-        "Victory+",
-        "KCOP-13"
-      ],
-      "isNational": false,
-      "providerReason": "ducks-rsn"
     },
     {
       "id": "ahl-1028728",
@@ -7439,7 +6677,7 @@
       "startTimeLocal": "2026-03-21T20:00:00.000Z",
       "endTimeLocal": "2026-03-21T22:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": true,
+      "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
         "FDSNNO",
@@ -7506,7 +6744,7 @@
       "startTimeLocal": "2026-03-21T20:00:00.000Z",
       "endTimeLocal": "2026-03-21T22:45:00.000Z",
       "providerId": "flosports",
-      "isLive": true,
+      "isLive": false,
       "source": "ahl-hockeytech"
     },
     {
@@ -7640,7 +6878,7 @@
       "startTimeLocal": "2026-03-21T21:00:00.000Z",
       "endTimeLocal": "2026-03-21T23:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": true,
+      "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
         "FDSNOH",
@@ -7662,7 +6900,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "MNMT, FanDuel SN OK, NBA League Pass"
     },
     {
       "id": "tennis-espn-173204",
@@ -7673,7 +6912,7 @@
       "startTimeLocal": "2026-03-21T21:25:00.000Z",
       "endTimeLocal": "2026-03-21T23:55:00.000Z",
       "providerId": "tennischannel",
-      "isLive": true,
+      "isLive": false,
       "source": "espn-tennis",
       "leagueKey": "atp-masters",
       "providerReason": "tennis-channel",
@@ -7759,8 +6998,8 @@
       "league": "ATP Masters 1000",
       "awayTeam": "Humbert",
       "homeTeam": "Diallo",
-      "startTimeLocal": "2026-03-21T22:50:00.000Z",
-      "endTimeLocal": "2026-03-22T01:20:00.000Z",
+      "startTimeLocal": "2026-03-21T22:55:00.000Z",
+      "endTimeLocal": "2026-03-22T01:25:00.000Z",
       "providerId": "tennischannel",
       "isLive": false,
       "source": "espn-tennis",
@@ -7913,30 +7152,6 @@
       "providerReason": "usl-cbsgolazo-default"
     },
     {
-      "id": "tennis-espn-173226",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Shevchenko",
-      "homeTeam": "Shelton",
-      "startTimeLocal": "2026-03-21T23:00:00.000Z",
-      "endTimeLocal": "2026-03-22T01:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Miami Open — Round 2",
-      "competitionType": "domestic",
-      "tennisRound": "Round 2",
-      "tennisPlayer1": "Shevchenko",
-      "tennisPlayer2": "Shelton",
-      "tennisPlayer2Rank": 8,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/kaz.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
-      "tournamentName": "Miami Open"
-    },
-    {
       "id": "basketball-nba-20260321-2300-memphis-grizzlies-at-charlotte-hornets",
       "sport": "basketball",
       "league": "NBA",
@@ -7948,7 +7163,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SE, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260321-2300-los-angeles-lakers-at-orlando-magic",
@@ -7962,7 +7178,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "Spectrum Sports Net, Spectrum Sports Net +, FanDuel SN FL, NBA TV"
     },
     {
       "id": "basketball-nba-20260321-2300-cleveland-cavaliers-at-new-orleans-pelicans",
@@ -7976,7 +7193,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN OH, NBA League Pass, GCSEN, Pelicans.com"
     },
     {
       "id": "ahl-1028740",
@@ -7991,11 +7209,11 @@
       "source": "ahl-hockeytech"
     },
     {
-      "id": "tennis-espn-173205",
+      "id": "tennis-espn-173226",
       "sport": "tennis",
       "league": "ATP Masters 1000",
-      "awayTeam": "Cazaux",
-      "homeTeam": "Tiafoe",
+      "awayTeam": "Shevchenko",
+      "homeTeam": "Shelton",
       "startTimeLocal": "2026-03-21T23:10:00.000Z",
       "endTimeLocal": "2026-03-22T01:40:00.000Z",
       "providerId": "tennischannel",
@@ -8007,10 +7225,10 @@
       "sessionTitle": "Miami Open — Round 2",
       "competitionType": "domestic",
       "tennisRound": "Round 2",
-      "tennisPlayer1": "Cazaux",
-      "tennisPlayer2": "Tiafoe",
-      "tennisPlayer2Rank": 19,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+      "tennisPlayer1": "Shevchenko",
+      "tennisPlayer2": "Shelton",
+      "tennisPlayer2Rank": 8,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/kaz.png",
       "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
       "tournamentName": "Miami Open"
     },
@@ -8057,6 +7275,30 @@
       "providerReason": "usl-espnplus"
     },
     {
+      "id": "tennis-espn-173205",
+      "sport": "tennis",
+      "league": "ATP Masters 1000",
+      "awayTeam": "Cazaux",
+      "homeTeam": "Tiafoe",
+      "startTimeLocal": "2026-03-21T23:40:00.000Z",
+      "endTimeLocal": "2026-03-22T02:10:00.000Z",
+      "providerId": "tennischannel",
+      "isLive": false,
+      "source": "espn-tennis",
+      "leagueKey": "atp-masters",
+      "providerReason": "tennis-channel",
+      "eventType": "match",
+      "sessionTitle": "Miami Open — Round 2",
+      "competitionType": "domestic",
+      "tennisRound": "Round 2",
+      "tennisPlayer1": "Cazaux",
+      "tennisPlayer2": "Tiafoe",
+      "tennisPlayer2Rank": 19,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "tournamentName": "Miami Open"
+    },
+    {
       "id": "nhl_2025021108",
       "sport": "hockey",
       "league": "NHL",
@@ -8100,13 +7342,70 @@
       "providerReason": "usl-espnplus"
     },
     {
+      "id": "basketball-nba-20260322-0000-golden-state-warriors-at-atlanta-hawks",
+      "sport": "basketball",
+      "league": "NBA",
+      "awayTeam": "Golden State Warriors",
+      "homeTeam": "Atlanta Hawks",
+      "startTimeLocal": "2026-03-22T00:00:00.000Z",
+      "endTimeLocal": "2026-03-22T02:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "basketball-nba",
+      "leagueKey": "nba",
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN SE, NBC Sports BA, NBA League Pass"
+    },
+    {
+      "id": "basketball-nba-20260322-0000-miami-heat-at-houston-rockets",
+      "sport": "basketball",
+      "league": "NBA",
+      "awayTeam": "Miami Heat",
+      "homeTeam": "Houston Rockets",
+      "startTimeLocal": "2026-03-22T00:00:00.000Z",
+      "endTimeLocal": "2026-03-22T02:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "basketball-nba",
+      "leagueKey": "nba",
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN Sun, NBA League Pass, Space City Home Network"
+    },
+    {
+      "id": "basketball-nba-20260322-0000-indiana-pacers-at-san-antonio-spurs",
+      "sport": "basketball",
+      "league": "NBA",
+      "awayTeam": "Indiana Pacers",
+      "homeTeam": "San Antonio Spurs",
+      "startTimeLocal": "2026-03-22T00:00:00.000Z",
+      "endTimeLocal": "2026-03-22T02:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "basketball-nba",
+      "leagueKey": "nba",
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN IN, NBA League Pass, FanDuel SN SW"
+    },
+    {
+      "id": "ahl-1028735",
+      "sport": "hockey",
+      "league": "AHL",
+      "homeTeam": "Colorado Eagles",
+      "awayTeam": "Coachella Valley Firebirds",
+      "startTimeLocal": "2026-03-22T00:05:00.000Z",
+      "endTimeLocal": "2026-03-22T02:50:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "ahl-hockeytech"
+    },
+    {
       "id": "tennis-espn-173201",
       "sport": "tennis",
       "league": "ATP Masters 1000",
       "awayTeam": "Cilic",
       "homeTeam": "Nakashima",
-      "startTimeLocal": "2026-03-22T00:00:00.000Z",
-      "endTimeLocal": "2026-03-22T02:30:00.000Z",
+      "startTimeLocal": "2026-03-22T00:20:00.000Z",
+      "endTimeLocal": "2026-03-22T02:50:00.000Z",
       "providerId": "tennischannel",
       "isLive": false,
       "source": "espn-tennis",
@@ -8122,60 +7421,6 @@
       "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/cro.png",
       "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
       "tournamentName": "Miami Open"
-    },
-    {
-      "id": "basketball-nba-20260322-0000-golden-state-warriors-at-atlanta-hawks",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Golden State Warriors",
-      "homeTeam": "Atlanta Hawks",
-      "startTimeLocal": "2026-03-22T00:00:00.000Z",
-      "endTimeLocal": "2026-03-22T02:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
-    {
-      "id": "basketball-nba-20260322-0000-miami-heat-at-houston-rockets",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Miami Heat",
-      "homeTeam": "Houston Rockets",
-      "startTimeLocal": "2026-03-22T00:00:00.000Z",
-      "endTimeLocal": "2026-03-22T02:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
-    {
-      "id": "basketball-nba-20260322-0000-indiana-pacers-at-san-antonio-spurs",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Indiana Pacers",
-      "homeTeam": "San Antonio Spurs",
-      "startTimeLocal": "2026-03-22T00:00:00.000Z",
-      "endTimeLocal": "2026-03-22T02:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
-    },
-    {
-      "id": "ahl-1028735",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Colorado Eagles",
-      "awayTeam": "Coachella Valley Firebirds",
-      "startTimeLocal": "2026-03-22T00:05:00.000Z",
-      "endTimeLocal": "2026-03-22T02:50:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
     },
     {
       "id": "soccer-mls-20260322-0030-los-angeles-football-club-at-austin-fc",
@@ -8248,30 +7493,6 @@
       "providerReason": "usl-espnplus"
     },
     {
-      "id": "tennis-espn-173200",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Zverev",
-      "homeTeam": "Damm",
-      "startTimeLocal": "2026-03-22T00:30:00.000Z",
-      "endTimeLocal": "2026-03-22T03:00:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Miami Open — Round 2",
-      "competitionType": "domestic",
-      "tennisRound": "Round 2",
-      "tennisPlayer1": "Zverev",
-      "tennisPlayer2": "Damm",
-      "tennisPlayer1Rank": 3,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
-      "tournamentName": "Miami Open"
-    },
-    {
       "id": "basketball-nba-20260322-0030-la-clippers-at-dallas-mavericks",
       "sport": "basketball",
       "league": "NBA",
@@ -8283,7 +7504,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KFAA-TV, Mavs.com, FanDuel SN SoCal, NBA League Pass"
     },
     {
       "id": "soccer-nwsl-20260322-0045-angel-city-at-bay",
@@ -8337,6 +7559,30 @@
       "source": "echl"
     },
     {
+      "id": "tennis-espn-173200",
+      "sport": "tennis",
+      "league": "ATP Masters 1000",
+      "awayTeam": "Zverev",
+      "homeTeam": "Damm",
+      "startTimeLocal": "2026-03-22T01:20:00.000Z",
+      "endTimeLocal": "2026-03-22T03:50:00.000Z",
+      "providerId": "tennischannel",
+      "isLive": false,
+      "source": "espn-tennis",
+      "leagueKey": "atp-masters",
+      "providerReason": "tennis-channel",
+      "eventType": "match",
+      "sessionTitle": "Miami Open — Round 2",
+      "competitionType": "domestic",
+      "tennisRound": "Round 2",
+      "tennisPlayer1": "Zverev",
+      "tennisPlayer2": "Damm",
+      "tennisPlayer1Rank": 3,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "tournamentName": "Miami Open"
+    },
+    {
       "id": "basketball-nba-20260322-0130-philadelphia-76ers-at-utah-jazz",
       "sport": "basketball",
       "league": "NBA",
@@ -8348,7 +7594,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "KJZZ-TV, Jazz+, NBC Sports Phil, NBA League Pass"
     },
     {
       "id": "nhl_2025021109",
@@ -8437,7 +7684,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "FanDuel SN WI, Arizona's Family 3TV, Suns Live, NBA TV"
     },
     {
       "id": "soccer-mls-20260322-0230-san-jose-earthquakes-at-vancouver-whitecaps-fc",
@@ -9190,7 +8438,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "KUNP 16, BlazerVision, Altitude Sports, NBA TV"
     },
     {
       "id": "ahl-1028746",
@@ -9228,7 +8477,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "YES, NBA League Pass, NBC Sports CA"
     },
     {
       "id": "nhl_2025021114",
@@ -9334,7 +8584,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "MNMT, NBA League Pass, MSG"
     },
     {
       "id": "nhl_2025021116",
@@ -9409,7 +8660,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock"
     },
     {
       "id": "tennis-espn-173230",
@@ -9466,7 +8718,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Arizona's Family 3TV, Suns Live, Sportsnet, NBA League Pass"
     },
     {
       "id": "tennis-espn-173244",
@@ -9493,6 +8746,152 @@
       "tournamentName": "Miami Open"
     },
     {
+      "id": "tennis-espn-173229",
+      "sport": "tennis",
+      "league": "ATP Masters 1000",
+      "awayTeam": "Humbert",
+      "homeTeam": "Shevchenko",
+      "startTimeLocal": "2026-03-23T04:00:00.000Z",
+      "endTimeLocal": "2026-03-23T06:30:00.000Z",
+      "providerId": "tennischannel",
+      "isLive": false,
+      "source": "espn-tennis",
+      "leagueKey": "atp-masters",
+      "providerReason": "tennis-channel",
+      "eventType": "match",
+      "sessionTitle": "Miami Open — Round 3",
+      "competitionType": "domestic",
+      "tennisRound": "Round 3",
+      "tennisPlayer1": "Humbert",
+      "tennisPlayer2": "Shevchenko",
+      "tennisPlayer1Rank": 31,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/kaz.png",
+      "tournamentName": "Miami Open"
+    },
+    {
+      "id": "tennis-espn-173231",
+      "sport": "tennis",
+      "league": "ATP Masters 1000",
+      "awayTeam": "Medvedev",
+      "homeTeam": "Cerundolo",
+      "startTimeLocal": "2026-03-23T04:00:00.000Z",
+      "endTimeLocal": "2026-03-23T06:30:00.000Z",
+      "providerId": "tennischannel",
+      "isLive": false,
+      "source": "espn-tennis",
+      "leagueKey": "atp-masters",
+      "providerReason": "tennis-channel",
+      "eventType": "match",
+      "sessionTitle": "Miami Open — Round 3",
+      "competitionType": "domestic",
+      "tennisRound": "Round 3",
+      "tennisPlayer1": "Medvedev",
+      "tennisPlayer2": "Cerundolo",
+      "tennisPlayer1Rank": 9,
+      "tennisPlayer2Rank": 18,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/rus.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
+      "tournamentName": "Miami Open"
+    },
+    {
+      "id": "tennis-espn-173241",
+      "sport": "tennis",
+      "league": "ATP Masters 1000",
+      "awayTeam": "Zverev",
+      "homeTeam": "Cilic",
+      "startTimeLocal": "2026-03-23T04:00:00.000Z",
+      "endTimeLocal": "2026-03-23T06:30:00.000Z",
+      "providerId": "tennischannel",
+      "isLive": false,
+      "source": "espn-tennis",
+      "leagueKey": "atp-masters",
+      "providerReason": "tennis-channel",
+      "eventType": "match",
+      "sessionTitle": "Miami Open — Round 3",
+      "competitionType": "domestic",
+      "tennisRound": "Round 3",
+      "tennisPlayer1": "Zverev",
+      "tennisPlayer2": "Cilic",
+      "tennisPlayer1Rank": 3,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/cro.png",
+      "tournamentName": "Miami Open"
+    },
+    {
+      "id": "tennis-espn-173243",
+      "sport": "tennis",
+      "league": "ATP Masters 1000",
+      "awayTeam": "Mensik",
+      "homeTeam": "Tiafoe",
+      "startTimeLocal": "2026-03-23T04:00:00.000Z",
+      "endTimeLocal": "2026-03-23T06:30:00.000Z",
+      "providerId": "tennischannel",
+      "isLive": false,
+      "source": "espn-tennis",
+      "leagueKey": "atp-masters",
+      "providerReason": "tennis-channel",
+      "eventType": "match",
+      "sessionTitle": "Miami Open — Round 3",
+      "competitionType": "domestic",
+      "tennisRound": "Round 3",
+      "tennisPlayer1": "Mensik",
+      "tennisPlayer2": "Tiafoe",
+      "tennisPlayer1Rank": 12,
+      "tennisPlayer2Rank": 19,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "tournamentName": "Miami Open"
+    },
+    {
+      "id": "tennis-espn-173245",
+      "sport": "tennis",
+      "league": "ATP Masters 1000",
+      "awayTeam": "Sinner",
+      "homeTeam": "Moutet",
+      "startTimeLocal": "2026-03-23T04:00:00.000Z",
+      "endTimeLocal": "2026-03-23T06:30:00.000Z",
+      "providerId": "tennischannel",
+      "isLive": false,
+      "source": "espn-tennis",
+      "leagueKey": "atp-masters",
+      "providerReason": "tennis-channel",
+      "eventType": "match",
+      "sessionTitle": "Miami Open — Round 3",
+      "competitionType": "domestic",
+      "tennisRound": "Round 3",
+      "tennisPlayer1": "Sinner",
+      "tennisPlayer2": "Moutet",
+      "tennisPlayer1Rank": 2,
+      "tennisPlayer2Rank": 30,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+      "tournamentName": "Miami Open"
+    },
+    {
+      "id": "tennis-espn-173242",
+      "sport": "tennis",
+      "league": "ATP Masters 1000",
+      "awayTeam": "Majchrzak",
+      "homeTeam": "Halys",
+      "startTimeLocal": "2026-03-23T04:00:00.000Z",
+      "endTimeLocal": "2026-03-23T06:30:00.000Z",
+      "providerId": "tennischannel",
+      "isLive": false,
+      "source": "espn-tennis",
+      "leagueKey": "atp-masters",
+      "providerReason": "tennis-channel",
+      "eventType": "match",
+      "sessionTitle": "Miami Open — Round 3",
+      "competitionType": "domestic",
+      "tennisRound": "Round 3",
+      "tennisPlayer1": "Majchrzak",
+      "tennisPlayer2": "Halys",
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/pol.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+      "tournamentName": "Miami Open"
+    },
+    {
       "id": "basketball-nba-20260323-2300-los-angeles-lakers-at-detroit-pistons",
       "sport": "basketball",
       "league": "NBA",
@@ -9504,7 +8903,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Spectrum Sports Net, Spectrum Sports Net +, NBA League Pass, FanDuel SN DET"
     },
     {
       "id": "basketball-nba-20260323-2300-indiana-pacers-at-orlando-magic",
@@ -9518,7 +8918,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN FL, FanDuel SN IN, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260323-2300-oklahoma-city-thunder-at-philadelphia-76ers",
@@ -9532,7 +8933,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN OK, NBA League Pass, NBC Sports Phil"
     },
     {
       "id": "basketball-nba-20260323-2300-san-antonio-spurs-at-miami-heat",
@@ -9546,7 +8948,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "Peacock, NBCSN, FanDuel SN Sun, FanDuel SN SW"
     },
     {
       "id": "nhl_2025021119",
@@ -9580,7 +8983,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SE, NBA League Pass"
     },
     {
       "id": "ahl-1028755",
@@ -9606,7 +9010,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "CHSN, Space City Home Network, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260324-0100-toronto-raptors-at-utah-jazz",
@@ -9620,7 +9025,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KJZZ-TV, Jazz+, Sportsnet, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260324-0130-golden-state-warriors-at-dallas-mavericks",
@@ -9634,7 +9040,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "Peacock, NBCSN, NBC Sports BA"
     },
     {
       "id": "basketball-nba-20260324-0200-brooklyn-nets-at-portland-trail-blazers",
@@ -9648,7 +9055,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KUNP 16, BlazerVision, YES, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260324-0230-milwaukee-bucks-at-la-clippers",
@@ -9662,7 +9070,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN WI, NBA League Pass, FanDuel SN SoCal"
     },
     {
       "id": "nhl_2025021120",
@@ -9820,7 +9229,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN SE, NBC Sports CA, NBA League Pass"
     },
     {
       "id": "nhl_2025021127",
@@ -9853,7 +9263,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "GCSEN, Pelicans.com, NBA League Pass, MSG"
     },
     {
       "id": "nhl_2025021128",
@@ -9940,7 +9351,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock, FanDuel SN OH"
     },
     {
       "id": "nhl_2025021133",
@@ -10011,7 +9423,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock, Altitude Sports"
     },
     {
       "id": "cricket-t20i-o5z0f0",
@@ -10122,11 +9535,12 @@
       "homeTeam": "Detroit Pistons",
       "startTimeLocal": "2026-03-25T23:00:00.000Z",
       "endTimeLocal": "2026-03-26T01:30:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-espn",
+      "broadcastNetworks": "ESPN, FanDuel SN DET, FanDuel SN SE"
     },
     {
       "id": "basketball-nba-20260325-2300-los-angeles-lakers-at-indiana-pacers",
@@ -10140,7 +9554,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Spectrum Sports Net, Spectrum Sports Net +, NBA League Pass, FanDuel SN IN"
     },
     {
       "id": "basketball-nba-20260325-2300-chicago-bulls-at-philadelphia-76ers",
@@ -10154,7 +9569,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "CHSN, NBA League Pass, NBC Sports Phil"
     },
     {
       "id": "ahl-1028762",
@@ -10234,7 +9650,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC Sports BO, FanDuel SN OK, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260325-2330-miami-heat-at-cleveland-cavaliers",
@@ -10248,7 +9665,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN Sun, NBA League Pass, FanDuel SN OH"
     },
     {
       "id": "ahl-1028759",
@@ -10289,7 +9707,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SE, FanDuel SN SW, NBA League Pass"
     },
     {
       "id": "echl-web-25252",
@@ -10330,7 +9749,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "MNMT, NBA League Pass, KJZZ-TV, Jazz+"
     },
     {
       "id": "ahl-1028757",
@@ -10352,11 +9772,12 @@
       "homeTeam": "Minnesota Timberwolves",
       "startTimeLocal": "2026-03-26T01:30:00.000Z",
       "endTimeLocal": "2026-03-26T04:00:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-espn",
+      "broadcastNetworks": "ESPN, Space City Home Network, FanDuel SN North"
     },
     {
       "id": "ahl-1028758",
@@ -10409,7 +9830,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KFAA-TV, Mavs.com, NBA League Pass, Altitude Sports"
     },
     {
       "id": "basketball-nba-20260326-0200-brooklyn-nets-at-golden-state-warriors",
@@ -10423,7 +9845,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC Sports BA, YES, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260326-0200-milwaukee-bucks-at-portland-trail-blazers",
@@ -10437,7 +9860,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KUNP 16, BlazerVision, FanDuel SN WI, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260326-0230-toronto-raptors-at-la-clippers",
@@ -10451,7 +9875,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "TSN, NBA League Pass, FanDuel SN SoCal"
     },
     {
       "id": "nhl_2025021137",
@@ -10589,7 +10014,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "FanDuel SN SE, MSG, NBA TV"
     },
     {
       "id": "basketball-nba-20260326-2300-new-orleans-pelicans-at-detroit-pistons",
@@ -10603,7 +10029,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN DET, GCSEN, Pelicans.com, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260326-2300-sacramento-kings-at-orlando-magic",
@@ -10617,7 +10044,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN FL, NBC Sports CA, NBA League Pass"
     },
     {
       "id": "nhl_2025021143",
@@ -10945,7 +10373,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN IN, FanDuel SN SoCal, NBA League Pass"
     },
     {
       "id": "ahl-1028769",
@@ -10983,7 +10412,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC Sports BO, FanDuel SN SE, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260327-2330-miami-heat-at-cleveland-cavaliers",
@@ -10997,7 +10427,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "NBA TV, FanDuel SN Sun, FanDuel SN OH"
     },
     {
       "id": "ahl-1028770",
@@ -11023,7 +10454,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SE, Space City Home Network, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260328-0000-chicago-bulls-at-oklahoma-city-thunder",
@@ -11037,7 +10469,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "NBA TV, CHSN+, FanDuel SN OK"
     },
     {
       "id": "basketball-nba-20260328-0030-new-orleans-pelicans-at-toronto-raptors",
@@ -11051,7 +10484,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "GCSEN, Pelicans.com, NBA League Pass, Sportsnet"
     },
     {
       "id": "basketball-nba-20260328-0100-utah-jazz-at-denver-nuggets",
@@ -11065,7 +10499,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Altitude Sports, KJZZ-TV, Jazz+, NBA League Pass"
     },
     {
       "id": "ahl-1028765",
@@ -11118,7 +10553,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "MNMT, NBA League Pass, NBC Sports BA"
     },
     {
       "id": "basketball-nba-20260328-0200-dallas-mavericks-at-portland-trail-blazers",
@@ -11132,7 +10568,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "NBA TV, KUNP 16, BlazerVision, KFAA-TV, Mavs.com"
     },
     {
       "id": "f1-espn-401839040",
@@ -11163,7 +10600,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Spectrum Sports Net, Spectrum Sports Net +, YES, NBA League Pass"
     },
     {
       "id": "rugby-leagueone-rw4jmm",
@@ -11617,7 +11055,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Prime Video, FanDuel SN SW"
     },
     {
       "id": "nhl_2025021154",
@@ -11809,11 +11248,12 @@
       "homeTeam": "Minnesota Timberwolves",
       "startTimeLocal": "2026-03-28T21:30:00.000Z",
       "endTimeLocal": "2026-03-29T00:00:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-abc",
+      "broadcastNetworks": "ABC, FanDuel SN North Extra, FanDuel SN DET"
     },
     {
       "id": "ahl-1028780",
@@ -11853,7 +11293,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN SE, NBC Sports Phil, NBA League Pass"
     },
     {
       "id": "ahl-1028787",
@@ -12108,7 +11549,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN SE, NBC Sports CA, NBA League Pass"
     },
     {
       "id": "nhl_2025021163",
@@ -12179,7 +11621,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "CHSN, NBA League Pass, FanDuel SN SE"
     },
     {
       "id": "echl-web-25277",
@@ -12320,7 +11763,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "NBA TV, KJZZ-TV, Jazz+, Arizona's Family 3TV, Suns Live"
     },
     {
       "id": "nhl_2025021166",
@@ -12591,7 +12035,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "FanDuel SN WI, FanDuel SN SoCal, NBA TV"
     },
     {
       "id": "ahl-1028790",
@@ -12687,7 +12132,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN Sun, NBA League Pass, FanDuel SN IN"
     },
     {
       "id": "ahl-1028792",
@@ -12713,7 +12159,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "YES, NBC Sports CA, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260329-2200-boston-celtics-at-charlotte-hornets",
@@ -12727,7 +12174,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN SE, NBC Sports BO, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260329-2200-orlando-magic-at-toronto-raptors",
@@ -12741,7 +12189,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN FL, NBA League Pass, TSN"
     },
     {
       "id": "basketball-nba-20260329-2200-washington-wizards-at-portland-trail-blazers",
@@ -12755,7 +12204,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "MNMT, NBA League Pass, BlazerVision"
     },
     {
       "id": "nhl_2025021171",
@@ -12845,7 +12295,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Space City Home Network, NBA League Pass, GCSEN, Pelicans.com"
     },
     {
       "id": "basketball-nba-20260329-2330-new-york-knicks-at-oklahoma-city-thunder",
@@ -12859,7 +12310,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock"
     },
     {
       "id": "basketball-nba-20260330-0200-golden-state-warriors-at-denver-nuggets",
@@ -12873,7 +12325,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock"
     },
     {
       "id": "nhl_2025021173",
@@ -12907,7 +12360,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "Peacock, NBCSN, NBC Sports Phil"
     },
     {
       "id": "basketball-nba-20260330-2330-boston-celtics-at-atlanta-hawks",
@@ -12921,7 +12375,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN SE, NBC Sports BO, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260331-0000-phoenix-suns-at-memphis-grizzlies",
@@ -12935,7 +12390,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SE, Arizona's Family 3TV, Suns Live, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260331-0000-chicago-bulls-at-san-antonio-spurs",
@@ -12949,7 +12405,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "Peacock, NBCSN Extra, CHSN, FanDuel SN SW"
     },
     {
       "id": "nhl_2025021174",
@@ -12981,7 +12438,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KFAA-TV, Mavs.com, FanDuel SN North, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260331-0100-cleveland-cavaliers-at-utah-jazz",
@@ -12995,7 +12453,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN OH, NBA League Pass, KJZZ-TV, Jazz+"
     },
     {
       "id": "basketball-nba-20260331-0130-detroit-pistons-at-oklahoma-city-thunder",
@@ -13009,7 +12468,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "Peacock, NBCSN"
     },
     {
       "id": "nhl_2025021175",
@@ -13079,7 +12539,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "MNMT, NBA League Pass, Spectrum Sports Net, Spectrum Sports Net +"
     },
     {
       "id": "nhl_2025021178",
@@ -13235,7 +12696,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN FL, Arizona's Family 3TV, Suns Live, NBA League Pass"
     },
     {
       "id": "nhl_2025021185",
@@ -13267,7 +12729,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SE, NBA League Pass, WLNY"
     },
     {
       "id": "basketball-nba-20260401-0000-toronto-raptors-at-detroit-pistons",
@@ -13281,7 +12744,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN DET Ext, Sportsnet, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260401-0000-new-york-knicks-at-houston-rockets",
@@ -13295,7 +12759,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock, MSG"
     },
     {
       "id": "basketball-nba-20260401-0000-dallas-mavericks-at-milwaukee-bucks",
@@ -13309,7 +12774,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN WI, KFAA-TV, Mavs.com, NBA League Pass"
     },
     {
       "id": "nhl_2025021186",
@@ -13372,7 +12838,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Spectrum Sports Net, Spectrum Sports Net +, FanDuel SN OH, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260401-0300-portland-trail-blazers-at-la-clippers",
@@ -13386,7 +12853,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock, KUNP 16, BlazerVision, FanDuel SN SoCal"
     },
     {
       "id": "ahl-1028801",
@@ -13424,7 +12892,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "MNMT, NBC Sports Phil, NBA League Pass"
     },
     {
       "id": "ahl-1028804",
@@ -13450,7 +12919,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN Sun, NBC Sports BO, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260401-2330-atlanta-hawks-at-orlando-magic",
@@ -13460,11 +12930,12 @@
       "homeTeam": "Orlando Magic",
       "startTimeLocal": "2026-04-01T23:30:00.000Z",
       "endTimeLocal": "2026-04-02T02:00:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-espn",
+      "broadcastNetworks": "ESPN, FanDuel SN FL, FanDuel SN SE"
     },
     {
       "id": "ahl-1028803",
@@ -13502,7 +12973,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SE, MSG, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260402-0000-sacramento-kings-at-toronto-raptors",
@@ -13516,7 +12988,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC Sports CA, NBA League Pass, TSN"
     },
     {
       "id": "basketball-nba-20260402-0000-indiana-pacers-at-chicago-bulls",
@@ -13530,7 +13003,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "CHSN, FanDuel SN IN, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260402-0000-milwaukee-bucks-at-houston-rockets",
@@ -13544,7 +13018,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Space City Home Network, FanDuel SN WI, NBA League Pass"
     },
     {
       "id": "nhl_2025021188",
@@ -13614,7 +13089,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "ALT2/KTVD, NBA League Pass, KJZZ-TV, Jazz+"
     },
     {
       "id": "echl-web-25294",
@@ -13672,11 +13148,12 @@
       "homeTeam": "Golden State Warriors",
       "startTimeLocal": "2026-04-02T02:00:00.000Z",
       "endTimeLocal": "2026-04-02T04:30:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-espn",
+      "broadcastNetworks": "ESPN, NBC Sports BA, FanDuel SN SW"
     },
     {
       "id": "nhl_2025021191",
@@ -13802,7 +13279,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SE, Arizona's Family 3TV, Suns Live, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260402-2300-minnesota-timberwolves-at-detroit-pistons",
@@ -13816,7 +13294,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Prime Video, FanDuel SN DET, FanDuel SN North Extra"
     },
     {
       "id": "nhl_2025021194",
@@ -13904,7 +13383,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Prime Video, Spectrum Sports Net, Spectrum Sports Net +"
     },
     {
       "id": "nhl_2025021201",
@@ -13973,7 +13453,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC Sports BA, FanDuel SN OH, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260403-0200-new-orleans-pelicans-at-portland-trail-blazers",
@@ -13987,7 +13468,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KUNP 16, BlazerVision, GCSEN, Pelicans.com, NBA League Pass"
     },
     {
       "id": "nhl_2025021204",
@@ -14019,7 +13501,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SoCal, FanDuel SN SW, NBA League Pass"
     },
     {
       "id": "rugby-superrugby-p244p4",
@@ -14334,7 +13817,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN IN, NBA League Pass, FanDuel SN SE"
     },
     {
       "id": "basketball-nba-20260403-2300-minnesota-timberwolves-at-philadelphia-76ers",
@@ -14348,7 +13832,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN North, WCAU, NBC 10, NBA League Pass"
     },
     {
       "id": "ahl-1028815",
@@ -14398,7 +13883,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "YES, FanDuel SN SE, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260403-2330-chicago-bulls-at-new-york-knicks",
@@ -14412,7 +13898,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "CHSN, MSG, NBA TV"
     },
     {
       "id": "ahl-1028812",
@@ -14480,7 +13967,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Space City Home Network, KJZZ-TV, Jazz+, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260404-0000-toronto-raptors-at-memphis-grizzlies",
@@ -14494,7 +13982,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SE, Sportsnet, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260404-0000-boston-celtics-at-milwaukee-bucks",
@@ -14508,7 +13997,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN WI, NBC Sports BO, NBA League Pass"
     },
     {
       "id": "soccer-nwsl-20260404-0030-racing-louisville-at-houston-dash",
@@ -14537,7 +14027,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KFAA-TV, Mavs.com, FanDuel SN FL, NBA League Pass"
     },
     {
       "id": "soccer-nwsl-20260404-0100-chicago-stars-at-utah-royals",
@@ -14649,7 +14140,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "NBC Sports CA, GCSEN, Pelicans.com, NBA TV"
     },
     {
       "id": "rugby-mlr-20260404-0230-old-glory-dc-at-seattle-seawolves",
@@ -15182,7 +14674,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "MNMT, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260404-1900-san-antonio-spurs-at-denver-nuggets",
@@ -15196,7 +14689,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Prime Video, FanDuel SN SW"
     },
     {
       "id": "soccer-ligue1-20260404-1905-lens-at-lille",
@@ -15625,7 +15119,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "FanDuel SN DET, NBC Sports Phil, NBA TV"
     },
     {
       "id": "ahl-1028828",
@@ -16372,7 +15867,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-nbatv"
+      "providerReason": "nba-nbatv",
+      "broadcastNetworks": "NBC Sports BO, Sportsnet, NBA TV"
     },
     {
       "id": "basketball-nba-20260405-1930-washington-wizards-at-brooklyn-nets",
@@ -16386,7 +15882,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "MNMT, WLNY"
     },
     {
       "id": "basketball-nba-20260405-1930-phoenix-suns-at-chicago-bulls",
@@ -16400,7 +15897,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "CHSN, Arizona's Family 3TV, Suns Live"
     },
     {
       "id": "basketball-nba-20260405-1930-memphis-grizzlies-at-milwaukee-bucks",
@@ -16414,7 +15912,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN WI, FanDuel SN SE"
     },
     {
       "id": "nhl_2025021225",
@@ -16462,7 +15961,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN OH, FanDuel SN IN"
     },
     {
       "id": "nhl_2025021226",
@@ -16513,7 +16013,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SE, FanDuel SN North"
     },
     {
       "id": "basketball-nba-20260405-2300-orlando-magic-at-new-orleans-pelicans",
@@ -16527,7 +16028,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "GCSEN, Pelicans.com, FanDuel SN FL"
     },
     {
       "id": "basketball-nba-20260405-2300-utah-jazz-at-oklahoma-city-thunder",
@@ -16541,7 +16043,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN OK, KJZZ-TV, Jazz+"
     },
     {
       "id": "basketball-nba-20260405-2330-los-angeles-lakers-at-dallas-mavericks",
@@ -16555,7 +16058,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock"
     },
     {
       "id": "basketball-nba-20260406-0100-la-clippers-at-sacramento-kings",
@@ -16569,7 +16073,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC Sports CA, FanDuel SN SoCal"
     },
     {
       "id": "nhl_2025021228",
@@ -16601,7 +16106,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock"
     },
     {
       "id": "soccer-seriea-20260406-1030-como-at-udinese",
@@ -16712,7 +16218,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "Peacock, NBCSN, MSG"
     },
     {
       "id": "basketball-nba-20260406-2300-detroit-pistons-at-orlando-magic",
@@ -16726,7 +16233,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN FL, FanDuel SN DET"
     },
     {
       "id": "nhl_2025021230",
@@ -16759,7 +16267,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN OH, FanDuel SN SE"
     },
     {
       "id": "basketball-nba-20260407-0000-philadelphia-76ers-at-san-antonio-spurs",
@@ -16773,7 +16282,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC Sports Phil, FanDuel SN SW"
     },
     {
       "id": "basketball-nba-20260407-0100-portland-trail-blazers-at-denver-nuggets",
@@ -16787,7 +16297,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KUNP 16, BlazerVision, Altitude Sports"
     },
     {
       "id": "nhl_2025021231",
@@ -16971,7 +16482,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "MNMT, CHSN"
     },
     {
       "id": "basketball-nba-20260407-2300-minnesota-timberwolves-at-indiana-pacers",
@@ -16985,7 +16497,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN IN, FanDuel SN North"
     },
     {
       "id": "basketball-nba-20260407-2330-milwaukee-bucks-at-brooklyn-nets",
@@ -16999,7 +16512,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN WI, WLNY"
     },
     {
       "id": "basketball-nba-20260407-2330-miami-heat-at-toronto-raptors",
@@ -17013,7 +16527,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN Sun, TSN"
     },
     {
       "id": "nhl_2025021238",
@@ -17106,7 +16621,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock, NBC Sports BO"
     },
     {
       "id": "basketball-nba-20260408-0000-utah-jazz-at-new-orleans-pelicans",
@@ -17120,7 +16636,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "GCSEN, Pelicans.com, KJZZ-TV, Jazz+"
     },
     {
       "id": "nhl_2025021241",
@@ -17202,7 +16719,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC Sports BA, NBC Sports CA"
     },
     {
       "id": "basketball-nba-20260408-0230-oklahoma-city-thunder-at-los-angeles-lakers",
@@ -17216,7 +16734,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Spectrum Sports Net, Spectrum Sports Net +, FanDuel SN OK"
     },
     {
       "id": "basketball-nba-20260408-0230-dallas-mavericks-at-la-clippers",
@@ -17230,7 +16749,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KFAA-TV, Mavs.com, FanDuel SN SoCal"
     },
     {
       "id": "basketball-nba-20260408-0300-houston-rockets-at-phoenix-suns",
@@ -17244,7 +16764,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC, Peacock, Space City Home Network"
     },
     {
       "id": "ahl-1028848",
@@ -17344,7 +16865,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN OH, FanDuel SN SE"
     },
     {
       "id": "basketball-nba-20260408-2300-minnesota-timberwolves-at-orlando-magic",
@@ -17358,7 +16880,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN FL, FanDuel SN North"
     },
     {
       "id": "basketball-nba-20260408-2300-milwaukee-bucks-at-detroit-pistons",
@@ -17368,11 +16891,12 @@
       "homeTeam": "Detroit Pistons",
       "startTimeLocal": "2026-04-08T23:00:00.000Z",
       "endTimeLocal": "2026-04-09T01:30:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-espn",
+      "broadcastNetworks": "ESPN, FanDuel SN DET, FanDuel SN WI"
     },
     {
       "id": "nhl_2025021245",
@@ -17441,7 +16965,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SE, KTVD-TV (My20)"
     },
     {
       "id": "ahl-1028843",
@@ -17475,11 +17000,12 @@
       "homeTeam": "San Antonio Spurs",
       "startTimeLocal": "2026-04-09T01:30:00.000Z",
       "endTimeLocal": "2026-04-09T04:00:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-espn-abc"
+      "providerReason": "nba-espn",
+      "broadcastNetworks": "ESPN, KUNP 16, BlazerVision, FanDuel SN SW"
     },
     {
       "id": "nhl_2025021246",
@@ -17529,7 +17055,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN OK, FanDuel SN SoCal"
     },
     {
       "id": "basketball-nba-20260409-0200-dallas-mavericks-at-phoenix-suns",
@@ -17543,7 +17070,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KFAA-TV, Mavs.com, Arizona's Family 3TV, Suns Live"
     },
     {
       "id": "golf-the-masters-2026-04-09",
@@ -17742,7 +17270,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN Sun, Sportsnet"
     },
     {
       "id": "basketball-nba-20260409-2300-chicago-bulls-at-washington-wizards",
@@ -17756,7 +17285,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "MNMT, CHSN"
     },
     {
       "id": "basketball-nba-20260409-2330-indiana-pacers-at-brooklyn-nets",
@@ -17770,7 +17300,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN IN, YES"
     },
     {
       "id": "basketball-nba-20260409-2330-boston-celtics-at-new-york-knicks",
@@ -17784,7 +17315,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Prime Video, MSG"
     },
     {
       "id": "nhl_2025021253",
@@ -17816,7 +17348,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "Space City Home Network, NBC Sports Phil"
     },
     {
       "id": "nhl_2025021255",
@@ -17945,7 +17478,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Prime Video"
     },
     {
       "id": "nhl_2025021260",
@@ -18187,7 +17721,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SE, FanDuel SN DET"
     },
     {
       "id": "basketball-nba-20260410-2300-miami-heat-at-washington-wizards",
@@ -18201,7 +17736,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN Sun, MNMT"
     },
     {
       "id": "basketball-nba-20260410-2300-cleveland-cavaliers-at-atlanta-hawks",
@@ -18215,7 +17751,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Prime Video"
     },
     {
       "id": "ahl-1028860",
@@ -18241,7 +17778,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "GCSEN, Pelicans.com, NBC Sports BO"
     },
     {
       "id": "basketball-nba-20260410-2330-philadelphia-76ers-at-indiana-pacers",
@@ -18255,7 +17793,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "FanDuel SN IN, NBC Sports Phil"
     },
     {
       "id": "basketball-nba-20260410-2330-toronto-raptors-at-new-york-knicks",
@@ -18269,7 +17808,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "MSG, TSN"
     },
     {
       "id": "ahl-1028857",
@@ -18307,7 +17847,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "CHSN, FanDuel SN FL"
     },
     {
       "id": "basketball-nba-20260411-0000-brooklyn-nets-at-milwaukee-bucks",
@@ -18321,7 +17862,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN WI, WLNY"
     },
     {
       "id": "basketball-nba-20260411-0000-dallas-mavericks-at-san-antonio-spurs",
@@ -18335,7 +17877,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KFAA-TV, Mavs.com, KENS 5"
     },
     {
       "id": "echl-web-25347",
@@ -18373,7 +17916,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Altitude Sports, FanDuel SN OK"
     },
     {
       "id": "ahl-1028852",
@@ -18399,7 +17943,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Prime Video, Space City Home Network, FanDuel SN North"
     },
     {
       "id": "basketball-nba-20260411-0130-memphis-grizzlies-at-utah-jazz",
@@ -18413,7 +17958,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "FanDuel SN SE, KJZZ-TV, Jazz+"
     },
     {
       "id": "ahl-1028850",
@@ -18463,7 +18009,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "KUNP 16, BlazerVision, FanDuel SN SoCal"
     },
     {
       "id": "basketball-nba-20260411-0200-golden-state-warriors-at-sacramento-kings",
@@ -18477,7 +18024,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-nbc",
+      "broadcastNetworks": "NBC Sports BA, NBC Sports CA"
     },
     {
       "id": "rugby-superrugby-un01ji",
@@ -18504,7 +18052,8 @@
       "isLive": false,
       "source": "basketball-nba",
       "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv"
+      "providerReason": "nba-regional-yttv",
+      "broadcastNetworks": "Spectrum Sports Net, Spectrum Sports Net +, Arizona's Family 3TV, Suns Live"
     },
     {
       "id": "rugby-superrugby-523r8f",
@@ -19018,6 +18567,404 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "ahl-1028867",
+      "sport": "hockey",
+      "league": "AHL",
+      "homeTeam": "Grand Rapids Griffins",
+      "awayTeam": "Rockford IceHogs",
+      "startTimeLocal": "2026-04-11T23:00:00.000Z",
+      "endTimeLocal": "2026-04-12T01:45:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "ahl-hockeytech"
+    },
+    {
+      "id": "ahl-1028871",
+      "sport": "hockey",
+      "league": "AHL",
+      "homeTeam": "Milwaukee Admirals",
+      "awayTeam": "Chicago Wolves",
+      "startTimeLocal": "2026-04-11T23:00:00.000Z",
+      "endTimeLocal": "2026-04-12T01:45:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "ahl-hockeytech"
+    },
+    {
+      "id": "ahl-1028874",
+      "sport": "hockey",
+      "league": "AHL",
+      "homeTeam": "Syracuse Crunch",
+      "awayTeam": "Utica Comets",
+      "startTimeLocal": "2026-04-11T23:00:00.000Z",
+      "endTimeLocal": "2026-04-12T01:45:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "ahl-hockeytech"
+    },
+    {
+      "id": "soccer-usl-20260411-2300-charleston-battery-at-brooklyn-fc",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Charleston Battery",
+      "homeTeam": "Brooklyn FC",
+      "startTimeLocal": "2026-04-11T23:00:00.000Z",
+      "endTimeLocal": "2026-04-12T01:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-espnplus"
+    },
+    {
+      "id": "soccer-usl-20260411-2300-el-paso-locomotive-fc-at-hartford-athletic",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "El Paso Locomotive FC",
+      "homeTeam": "Hartford Athletic",
+      "startTimeLocal": "2026-04-11T23:00:00.000Z",
+      "endTimeLocal": "2026-04-12T01:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-espnplus"
+    },
+    {
+      "id": "soccer-usl-20260411-2300-monterey-bay-at-indy-eleven",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Monterey Bay",
+      "homeTeam": "Indy Eleven",
+      "startTimeLocal": "2026-04-11T23:00:00.000Z",
+      "endTimeLocal": "2026-04-12T01:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-espnplus"
+    },
+    {
+      "id": "soccer-usl-20260411-2300-rhode-island-fc-at-lexington",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Rhode Island FC",
+      "homeTeam": "Lexington",
+      "startTimeLocal": "2026-04-11T23:00:00.000Z",
+      "endTimeLocal": "2026-04-12T01:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-espnplus"
+    },
+    {
+      "id": "ahl-1028870",
+      "sport": "hockey",
+      "league": "AHL",
+      "homeTeam": "Lehigh Valley Phantoms",
+      "awayTeam": "Bridgeport Islanders",
+      "startTimeLocal": "2026-04-11T23:05:00.000Z",
+      "endTimeLocal": "2026-04-12T01:50:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "ahl-hockeytech"
+    },
+    {
+      "id": "ahl-1028872",
+      "sport": "hockey",
+      "league": "AHL",
+      "homeTeam": "Providence Bruins",
+      "awayTeam": "Rochester Americans",
+      "startTimeLocal": "2026-04-11T23:05:00.000Z",
+      "endTimeLocal": "2026-04-12T01:50:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "ahl-hockeytech"
+    },
+    {
+      "id": "soccer-mls-20260411-2330-nashville-sc-at-charlotte-fc",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "Nashville SC",
+      "homeTeam": "Charlotte FC",
+      "startTimeLocal": "2026-04-11T23:30:00.000Z",
+      "endTimeLocal": "2026-04-12T01:30:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "soccer-mls-20260411-2330-red-bull-new-york-at-inter-miami-cf",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "Red Bull New York",
+      "homeTeam": "Inter Miami CF",
+      "startTimeLocal": "2026-04-11T23:30:00.000Z",
+      "endTimeLocal": "2026-04-12T01:30:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "soccer-mls-20260411-2330-philadelphia-union-at-cf-montr-al",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "Philadelphia Union",
+      "homeTeam": "CF Montréal",
+      "startTimeLocal": "2026-04-11T23:30:00.000Z",
+      "endTimeLocal": "2026-04-12T01:30:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "soccer-mls-20260411-2330-d-c-united-at-new-england-revolution",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "D.C. United",
+      "homeTeam": "New England Revolution",
+      "startTimeLocal": "2026-04-11T23:30:00.000Z",
+      "endTimeLocal": "2026-04-12T01:30:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "soccer-mls-20260411-2330-new-york-city-football-club-at-vancouver-whitecaps-fc",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "New York City Football Club",
+      "homeTeam": "Vancouver Whitecaps FC",
+      "startTimeLocal": "2026-04-11T23:30:00.000Z",
+      "endTimeLocal": "2026-04-12T01:30:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "soccer-usl-20260411-2330-oakland-roots-at-tampa-bay-rowdies",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Oakland Roots",
+      "homeTeam": "Tampa Bay Rowdies",
+      "startTimeLocal": "2026-04-11T23:30:00.000Z",
+      "endTimeLocal": "2026-04-12T01:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-espnplus"
+    },
+    {
+      "id": "ahl-1028863",
+      "sport": "hockey",
+      "league": "AHL",
+      "homeTeam": "Calgary Wranglers",
+      "awayTeam": "Abbotsford Canucks",
+      "startTimeLocal": "2026-04-12T00:00:00.000Z",
+      "endTimeLocal": "2026-04-12T02:45:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "ahl-hockeytech"
+    },
+    {
+      "id": "soccer-usl-20260412-0000-orange-county-sc-at-fc-tulsa",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Orange County SC",
+      "homeTeam": "FC Tulsa",
+      "startTimeLocal": "2026-04-12T00:00:00.000Z",
+      "endTimeLocal": "2026-04-12T02:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-espnplus"
+    },
+    {
+      "id": "echl-web-25363",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Tulsa Oilers",
+      "awayTeam": "Idaho Steelheads",
+      "startTimeLocal": "2026-04-12T00:05:00.000Z",
+      "endTimeLocal": "2026-04-12T02:50:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
+    },
+    {
+      "id": "soccer-mls-20260412-0030-atlanta-united-at-chicago-fire-fc",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "Atlanta United",
+      "homeTeam": "Chicago Fire FC",
+      "startTimeLocal": "2026-04-12T00:30:00.000Z",
+      "endTimeLocal": "2026-04-12T02:30:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "soccer-mls-20260412-0030-st-louis-city-sc-at-fc-dallas",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "St. Louis CITY SC",
+      "homeTeam": "FC Dallas",
+      "startTimeLocal": "2026-04-12T00:30:00.000Z",
+      "endTimeLocal": "2026-04-12T02:30:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "soccer-mls-20260412-0030-san-jose-earthquakes-at-sporting-kansas-city",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "San Jose Earthquakes",
+      "homeTeam": "Sporting Kansas City",
+      "startTimeLocal": "2026-04-12T00:30:00.000Z",
+      "endTimeLocal": "2026-04-12T02:30:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "soccer-usl-20260412-0030-miami-fc-at-san-antonio-fc",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Miami FC",
+      "homeTeam": "San Antonio FC",
+      "startTimeLocal": "2026-04-12T00:30:00.000Z",
+      "endTimeLocal": "2026-04-12T02:45:00.000Z",
+      "providerId": "primevideo",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-cbsgolazo-default"
+    },
+    {
+      "id": "ahl-1028865",
+      "sport": "hockey",
+      "league": "AHL",
+      "homeTeam": "Coachella Valley Firebirds",
+      "awayTeam": "Ontario Reign",
+      "startTimeLocal": "2026-04-12T01:00:00.000Z",
+      "endTimeLocal": "2026-04-12T03:45:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "ahl-hockeytech"
+    },
+    {
+      "id": "ahl-1028868",
+      "sport": "hockey",
+      "league": "AHL",
+      "homeTeam": "Henderson Silver Knights",
+      "awayTeam": "San Jose Barracuda",
+      "startTimeLocal": "2026-04-12T01:00:00.000Z",
+      "endTimeLocal": "2026-04-12T03:45:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "ahl-hockeytech"
+    },
+    {
+      "id": "ahl-1028866",
+      "sport": "hockey",
+      "league": "AHL",
+      "homeTeam": "Colorado Eagles",
+      "awayTeam": "Tucson Roadrunners",
+      "startTimeLocal": "2026-04-12T01:05:00.000Z",
+      "endTimeLocal": "2026-04-12T03:50:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "ahl-hockeytech"
+    },
+    {
+      "id": "soccer-mls-20260412-0130-houston-dynamo-fc-at-colorado-rapids",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "Houston Dynamo FC",
+      "homeTeam": "Colorado Rapids",
+      "startTimeLocal": "2026-04-12T01:30:00.000Z",
+      "endTimeLocal": "2026-04-12T03:30:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "ahl-1028862",
+      "sport": "hockey",
+      "league": "AHL",
+      "homeTeam": "Bakersfield Condors",
+      "awayTeam": "San Diego Gulls",
+      "startTimeLocal": "2026-04-12T02:00:00.000Z",
+      "endTimeLocal": "2026-04-12T04:45:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "ahl-hockeytech"
+    },
+    {
+      "id": "soccer-usl-20260412-0200-new-mexico-united-at-phoenix-rising-fc",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "New Mexico United",
+      "homeTeam": "Phoenix Rising FC",
+      "startTimeLocal": "2026-04-12T02:00:00.000Z",
+      "endTimeLocal": "2026-04-12T04:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-espnplus"
+    },
+    {
+      "id": "soccer-mls-20260412-0230-minnesota-united-fc-at-san-diego-fc",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "Minnesota United FC",
+      "homeTeam": "San Diego FC",
+      "startTimeLocal": "2026-04-12T02:30:00.000Z",
+      "endTimeLocal": "2026-04-12T04:30:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "soccer-usl-20260412-0230-sacramento-republic-fc-at-las-vegas-lights-fc",
+      "sport": "soccer",
+      "league": "USL",
+      "awayTeam": "Sacramento Republic FC",
+      "homeTeam": "Las Vegas Lights FC",
+      "startTimeLocal": "2026-04-12T02:30:00.000Z",
+      "endTimeLocal": "2026-04-12T04:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "soccer-usl",
+      "leagueKey": "usl",
+      "providerReason": "usl-espnplus"
     },
     {
       "id": "golf-the-masters-2026-04-12",

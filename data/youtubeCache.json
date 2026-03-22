@@ -530,5 +530,37 @@
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
+  },
+  "upset_alert:edmonton oilers vs tampa bay lightning upset highlights march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-22T06:00:15.684Z",
+    "query": "Edmonton Oilers vs Tampa Bay Lightning upset highlights March 2026",
+    "debug": {
+      "searchQuery": "Edmonton Oilers vs Tampa Bay Lightning upset highlights March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "rivalry_game:atlético madrid vs real madrid rivalry highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=5LohulqgpPo",
+      "thumbnailUrl": "https://img.youtube.com/vi/5LohulqgpPo/hqdefault.jpg",
+      "durationSeconds": 842,
+      "title": "Real Madrid vs Atletico Madrid 5-3 - All Goals & Highlights - 2026",
+      "source": "youtube",
+      "channel": "YOUBY l يوبي and 5 more",
+      "publishedAt": "8 hours ago"
+    },
+    "fetchedAt": "2026-03-22T06:00:16.271Z",
+    "query": "Atlético Madrid vs Real Madrid rivalry highlights",
+    "debug": {
+      "searchQuery": "Atlético Madrid vs Real Madrid rivalry highlights",
+      "selectedVideoTitle": "Real Madrid vs Atletico Madrid 5-3 - All Goals & Highlights - 2026",
+      "selectedVideoPublishedAt": "8 hours ago",
+      "selectedVideoChannel": "YOUBY l يوبي and 5 more",
+      "rejectedForAgeCount": 0
+    }
   }
 }
