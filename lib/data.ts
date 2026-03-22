@@ -201,6 +201,7 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   espnplus: "ESPN+",
   espn2: "ESPN2",
   cbsgolazo: "CBS Golazo",
+  beinsports: "beIN Sports",
   tnt: "TNT",
   ion: "ION",
   abc: "ABC",
@@ -249,6 +250,34 @@ function resolveNcaabBroadcastId(event: SportEvent): [string, string] {
   const reason = event.providerReason || "";
   if (reason === "ncaab-espn-plus" || reason === "ncaab-espn-plus-default" || reason === "ncaab-default") return ["espnplus", "disneyplus"];
   if (reason === "ncaab-espn-abc") return ["espn", "youtubetv"];
+  return ["", ""];
+}
+
+function resolveSoccerBroadcastId(event: SportEvent): [string, string] {
+  const league = event.league;
+  const reason = event.providerReason || "";
+
+  // EPL → NBC Sports Network / YouTube TV
+  if (league === "EPL") return ["nbcsn", "youtubetv"];
+
+  // Champions League + Europa League → CBS / YouTube TV
+  if (league === "Champions League" || league === "Europa League") return ["cbs", "youtubetv"];
+
+  // Serie A → CBS Sports Network (text label) / Prime Video
+  if (league === "Serie A") return ["cbssn", "primevideo"];
+
+  // Bundesliga, La Liga, FA Cup → ESPN / Disney+
+  if (league === "Bundesliga" || league === "La Liga" || league === "FA Cup") return ["espn", "disneyplus"];
+
+  // Ligue 1 → beIN Sports / YouTube TV
+  if (league === "Ligue 1") return ["beinsports", "youtubetv"];
+
+  // USL: CBS Golazo default → CBS Golazo logo / Prime Video
+  if (league === "USL" && reason === "usl-cbsgolazo-default") return ["cbsgolazo", "primevideo"];
+
+  // USL: ESPN+ → ESPN+ text / Disney+
+  if (league === "USL" && reason === "usl-espnplus") return ["espnplus", "disneyplus"];
+
   return ["", ""];
 }
 
@@ -361,6 +390,20 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
       launchProvider: getProviderById(tennis.launchAppId),
       launchLabel: tennis.displayLabel,
     };
+  }
+
+  // Soccer: display broadcast network logo; launch app determined by league
+  if (event.sport === "soccer") {
+    const [broadcastId, launchProviderId] = resolveSoccerBroadcastId(event);
+    if (broadcastId) {
+      const launchProvider = getProviderById(launchProviderId);
+      return {
+        brandId: broadcastId,
+        brandName: PROVIDER_DISPLAY_NAMES[broadcastId] || broadcastId,
+        launchProvider,
+        launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
+      };
+    }
   }
 
   // Golf: display broadcast network (CBS/NBC), launch via YouTube TV

@@ -11,19 +11,20 @@ const PROVIDER_IMAGES: Record<string, any> = {
   tennischannel: require("@/assets/providers/tennischannel.png"),
   cbs: require("@/assets/providers/cbs.png"),
   nbc: require("@/assets/providers/nbc.png"),
+  cbsgolazo: require("@/assets/providers/cbsgolazo.png"),
+  beinsports: require("@/assets/providers/beinsports.png"),
   victoryplus: require("@/assets/providers/victoryplus.png"),
   primevideo: require("@/assets/providers/primevideo.png"),
   appletv: require("@/assets/providers/appletv.png"),
 };
 
 // Logos that are already full-colour and should not be white-tinted
-const NO_TINT_LOGOS = new Set(["flohockey", "nbcsn", "tennischannel", "cbs", "nbc"]);
+const NO_TINT_LOGOS = new Set(["flohockey", "nbcsn", "tennischannel", "cbs", "nbc", "cbsgolazo", "beinsports"]);
 
 const PROVIDER_TEXT_LABELS: Record<string, string> = {
   espn: "ESPN",
   espnplus: "ESPN+",
   espn2: "ESPN2",
-  cbsgolazo: "Golazo",
   tnt: "TNT",
   paramount: "P+",
   nwslplus: "NWSL+",
