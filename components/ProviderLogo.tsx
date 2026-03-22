@@ -23,6 +23,30 @@ const PROVIDER_IMAGES: Record<string, any> = {
   appletv: require("@/assets/providers/appletv.png"),
 };
 
+// Measured aspect ratios (width / height) for every logo asset
+const LOGO_ASPECT: Record<string, number> = {
+  espn: 4.05,
+  espn2: 5.17,
+  espnplus: 4.98,
+  cbssn: 4.82,
+  cbsgolazo: 1.13,
+  cbs: 3.45,
+  nbcsn: 3.61,
+  nbc: 1.02,
+  flosports: 8.77,
+  flohockey: 9.52,
+  florugby: 8.51,
+  beinsports: 5.88,
+  fanduelsn: 3.51,
+  tennischannel: 3.57,
+  rugbypasstv: 0.73,
+  victoryplus: 8.07,
+  youtubetv: 5.56,
+  disneyplus: 1.83,
+  primevideo: 3.17,
+  appletv: 1.98,
+};
+
 // Logos that are already full-colour and should not be white-tinted
 const NO_TINT_LOGOS = new Set<string>();
 
@@ -51,14 +75,24 @@ export default function ProviderLogo({ providerId, size = 24 }: ProviderLogoProp
   const textLabel = PROVIDER_TEXT_LABELS[providerId];
 
   if (image) {
-    const boxWidth = Math.round(size * 2.4);
-    const boxHeight = size;
     const noTint = NO_TINT_LOGOS.has(providerId);
+    // Render every logo at exactly the same height so they look uniform.
+    // Width is derived from the logo's real aspect ratio so nothing is squeezed.
+    const logoH = Math.round(size * 0.7);
+    const aspect = LOGO_ASPECT[providerId] ?? 3.5;
+    const MAX_W = Math.round(size * 4.5);
+    const MIN_W = logoH; // at least a square
+    const logoW = Math.max(MIN_W, Math.min(Math.round(logoH * aspect), MAX_W));
+
     return (
-      <View style={[styles.imagePill, { width: boxWidth, height: boxHeight }]}>
+      <View style={[styles.imageWrap, { width: logoW, height: size }]}>
         <Image
           source={image}
-          style={{ width: boxWidth, height: boxHeight - 4, ...(noTint ? {} : { tintColor: "#FFFFFF" }) }}
+          style={{
+            width: logoW,
+            height: logoH,
+            ...(noTint ? {} : { tintColor: "#FFFFFF" }),
+          }}
           resizeMode="contain"
         />
       </View>
@@ -85,8 +119,8 @@ export default function ProviderLogo({ providerId, size = 24 }: ProviderLogoProp
 }
 
 const styles = StyleSheet.create({
-  imagePill: {
-    alignItems: "center",
+  imageWrap: {
+    alignItems: "flex-start",
     justifyContent: "center",
   },
   textPill: {
