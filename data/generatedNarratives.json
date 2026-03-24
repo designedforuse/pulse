@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-24T23:56:41.609Z",
+  "lastUpdated": "2026-03-24T23:57:25.613Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -119,7 +119,7 @@
         ],
         "playersIngested": 643,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-24T23:56:41.609Z"
+        "timestamp": "2026-03-24T23:57:25.613Z"
       },
       "cacheHistoryCount": 797,
       "error": null
@@ -129,7 +129,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -411.9448913888889,
+      "hoursUntil": -411.95711472222223,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -275,7 +275,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-24T23:56:41.609Z",
+      "triggeredAt": "2026-03-24T23:57:25.613Z",
       "expiresAt": "2026-03-25T10:15:00.000Z",
       "kind": "rivalry_game",
       "region": "SouthAfrica",
@@ -315,8 +315,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-24T23:56:41.609Z",
-      "expiresAt": "2026-03-31T23:56:41.609Z",
+      "triggeredAt": "2026-03-24T23:57:25.613Z",
+      "expiresAt": "2026-03-31T23:57:25.613Z",
       "kind": "league_moment",
       "region": "SouthAfrica",
       "regionPriority": 1,
@@ -363,8 +363,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-24T23:56:41.609Z",
-      "expiresAt": "2026-03-27T23:56:41.609Z",
+      "triggeredAt": "2026-03-24T23:57:25.613Z",
+      "expiresAt": "2026-03-27T23:57:25.613Z",
       "kind": "momentum",
       "region": "SoCal",
       "regionPriority": 2,
@@ -417,8 +417,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-24T23:56:41.609Z",
-      "expiresAt": "2026-03-31T23:56:41.609Z",
+      "triggeredAt": "2026-03-24T23:57:25.613Z",
+      "expiresAt": "2026-03-31T23:57:25.613Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -441,8 +441,8 @@
           "nhl_2025021178"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-24T23:56:41.609Z",
-        "windowEnd": "2026-03-31T23:56:41.609Z",
+        "windowStart": "2026-03-24T23:57:25.613Z",
+        "windowEnd": "2026-03-31T23:57:25.613Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -467,8 +467,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-24T23:56:41.609Z",
-      "expiresAt": "2026-03-27T23:56:41.609Z",
+      "triggeredAt": "2026-03-24T23:57:25.613Z",
+      "expiresAt": "2026-03-27T23:57:25.613Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -521,7 +521,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-24T23:56:41.609Z",
+      "triggeredAt": "2026-03-24T23:57:25.613Z",
       "expiresAt": "2026-03-25T23:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",

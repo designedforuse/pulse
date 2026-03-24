@@ -49,7 +49,7 @@ const LOGO_SCALE: Record<string, number> = {
   beinsports:    1.0,
   fanduelsn:     0.9,
   tennischannel: 0.8,
-  rugbypasstv:   1.0,
+  rugbypasstv:   1.2,
   victoryplus:   1.0,
   youtubetv:     1.0,
   disneyplus:    1.0,
