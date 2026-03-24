@@ -76,21 +76,20 @@ export default function ProviderLogo({ providerId, size = 24 }: ProviderLogoProp
 
   if (image) {
     const noTint = NO_TINT_LOGOS.has(providerId);
-    // Render every logo at exactly the same height so they look uniform.
-    // Width is derived from the logo's real aspect ratio so nothing is squeezed.
-    const logoH = Math.round(size * 0.7);
-    const aspect = LOGO_ASPECT[providerId] ?? 3.5;
-    const MAX_W = Math.round(size * 4.5);
-    const MIN_W = logoH; // at least a square
-    const logoW = Math.max(MIN_W, Math.min(Math.round(logoH * aspect), MAX_W));
+    // Fixed bounding box: every logo slot is the same width × height.
+    // resizeMode="contain" scales each logo proportionally within the box —
+    // wide logos fill the width (and are shorter), tall logos fill the height
+    // (and are narrower). All logos share an identical horizontal footprint.
+    const BOX_W = Math.round(size * 3);
+    const BOX_H = Math.round(size * 0.85);
 
     return (
-      <View style={[styles.imageWrap, { width: logoW, height: size }]}>
+      <View style={[styles.imageWrap, { width: BOX_W, height: size }]}>
         <Image
           source={image}
           style={{
-            width: logoW,
-            height: logoH,
+            width: BOX_W,
+            height: BOX_H,
             ...(noTint ? {} : { tintColor: "#FFFFFF" }),
           }}
           resizeMode="contain"
