@@ -997,7 +997,7 @@ export default function UnifiedEventCard({
             {isLive ? (
               <>
                 <View style={uStyles.footerLeft}>
-                  <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={14} />
+                  <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
                 </View>
                 <View style={uStyles.footerRight}>
                   {tensionLabel && (
@@ -1047,7 +1047,7 @@ export default function UnifiedEventCard({
                   )}
                 </View>
                 <View style={uStyles.footerRight}>
-                  <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={14} />
+                  <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
                 </View>
               </>
             )}
