@@ -36,7 +36,7 @@ const LOGO_SCALE: Record<string, number> = {
   cbs:           1.0,
   nbcsn:         1.0,
   nbc:           1.0,
-  flosports:     0.0,
+  flosports:     1.2,
   flohockey:     1.0,
   florugby:      1.0,
   beinsports:    1.0,
