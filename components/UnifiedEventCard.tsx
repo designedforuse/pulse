@@ -315,6 +315,7 @@ export function TennisScoreboard({
   isLive,
   isFinal,
   featured,
+  compact,
   scoreColor = "#FFFFFF",
 }: {
   event: SportEvent;
@@ -322,6 +323,7 @@ export function TennisScoreboard({
   isLive: boolean;
   isFinal: boolean;
   featured?: boolean;
+  compact?: boolean;
   scoreColor?: string;
 }) {
   const p1Name = event.tennisPlayer1 || event.awayTeam;
@@ -331,7 +333,7 @@ export function TennisScoreboard({
   const p1Rank = event.tennisPlayer1Rank;
   const p2Rank = event.tennisPlayer2Rank;
   const sportColor = getSportColor("tennis");
-  const logoSize = featured ? 22 : 20;
+  const logoSize = featured ? 22 : compact ? 16 : 20;
 
   const sets = score?.tennisSetScores || [];
   const gameScore = score?.tennisGameScore;
@@ -354,7 +356,7 @@ export function TennisScoreboard({
     const nameOpacity = isFinal && winner && !isWinner ? 0.5 : 1;
 
     return (
-      <View style={tsStyles.playerRow}>
+      <View style={[tsStyles.playerRow, compact && tsStyles.playerRowCompact]}>
         {flag ? (
           <Image
             source={{ uri: flag }}
@@ -369,6 +371,7 @@ export function TennisScoreboard({
             style={[
               tsStyles.playerName,
               featured && tsStyles.playerNameFeatured,
+              compact && tsStyles.playerNameCompact,
               { opacity: nameOpacity },
               isWinner && tsStyles.playerNameWinner,
             ]}
@@ -431,7 +434,7 @@ export function TennisScoreboard({
   };
 
   return (
-    <View style={tsStyles.scoreboard}>
+    <View style={[tsStyles.scoreboard, compact && tsStyles.scoreboardCompact]}>
       {renderPlayerRow(1, p1Name, p1Flag, p1Rank)}
       {renderPlayerRow(2, p2Name, p2Flag, p2Rank)}
       {isSuspended && (
@@ -446,11 +449,19 @@ const tsStyles = StyleSheet.create({
     gap: 4,
     paddingLeft: 4,
   },
+  scoreboardCompact: {
+    paddingLeft: 0,
+    gap: 2,
+  },
   playerRow: {
     flexDirection: "row" as const,
     alignItems: "center" as const,
     gap: 6,
     minHeight: 24,
+  },
+  playerRowCompact: {
+    gap: 4,
+    minHeight: 20,
   },
   flag: {
     borderRadius: 2,
@@ -475,6 +486,10 @@ const tsStyles = StyleSheet.create({
   },
   playerNameFeatured: {
     fontSize: 16,
+  },
+  playerNameCompact: {
+    fontSize: 14,
+    fontFamily: "Inter_500Medium",
   },
   playerNameWinner: {
     fontFamily: "Inter_700Bold",

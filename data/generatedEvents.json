@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-24T18:01:12.869Z",
+  "lastUpdated": "2026-03-24T22:30:13.305Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -61,9 +61,15 @@
   },
   "cricketCount": 16,
   "cricketAdded": 0,
-  "cricketUpdated": 0,
+  "cricketUpdated": 8,
   "cricketPruned": 0,
-  "cricketCounts": {},
+  "cricketCounts": {
+    "Test Cricket": 6,
+    "T20I Cricket": 12,
+    "International Cricket": 3,
+    "MLC": 1,
+    "ODI Cricket": 9
+  },
   "iccT20WcCount": 0,
   "iccT20WcAdded": 0,
   "iccT20WcUpdated": 0,
@@ -125,10 +131,10 @@
   "mlrUpdated": 7,
   "mlrPruned": 0,
   "mlrSourceUsed": "hardcoded",
-  "championsLeagueCount": 19,
+  "championsLeagueCount": 18,
   "championsLeagueAdded": 0,
-  "championsLeagueUpdated": 19,
-  "championsLeaguePruned": 19,
+  "championsLeagueUpdated": 18,
+  "championsLeaguePruned": 18,
   "championsLeagueSourceUsed": "espn",
   "europaLeagueCount": 20,
   "europaLeagueAdded": 0,
@@ -150,9 +156,9 @@
     "Miami Open": 11,
     "Monte-Carlo Masters": 24
   },
-  "f1Count": 28,
+  "f1Count": 29,
   "f1Added": 0,
-  "f1Updated": 28,
+  "f1Updated": 29,
   "f1Pruned": 0,
   "f1SourceUsed": "espn-f1",
   "f1RaceCounts": {
@@ -161,7 +167,7 @@
     "Bahrain Grand Prix": 5,
     "Saudi Arabian Grand Prix": 5,
     "Miami Grand Prix": 5,
-    "Canadian Grand Prix": 3
+    "Canadian Grand Prix": 4
   },
   "golfCount": 12,
   "golfAdded": 0,
@@ -184,34 +190,34 @@
   "ncaabPruned": 9,
   "ncaabSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-24T18:01:12.869Z",
+    "lastRefreshAt": "2026-03-24T22:30:13.305Z",
     "sources": {
       "nhl": {
         "count": 163,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 222,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 2,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 102,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 19,
@@ -225,93 +231,99 @@
       },
       "cricket": {
         "count": 16,
-        "lastFetchAt": "2026-03-22T06:00:08.498Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "CricAPI",
-        "leagueCounts": {}
+        "leagueCounts": {
+          "Test Cricket": 6,
+          "T20I Cricket": 12,
+          "International Cricket": 3,
+          "MLC": 1,
+          "ODI Cricket": 9
+        }
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 35,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 60,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 40,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 40,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 36,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 35,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 37,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 60,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-11T16:00:00.000Z"
       },
       "championsCup": {
         "count": 19,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 7,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
-        "count": 19,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "count": 18,
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 20,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 4,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-04-04T11:45:00.000Z"
       },
       "tennis": {
         "count": 11,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Indian Wells Masters": 12,
@@ -320,8 +332,8 @@
         }
       },
       "f1": {
-        "count": 28,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "count": 29,
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Chinese Grand Prix": 5,
@@ -329,12 +341,12 @@
           "Bahrain Grand Prix": 5,
           "Saudi Arabian Grand Prix": 5,
           "Miami Grand Prix": 5,
-          "Canadian Grand Prix": 3
+          "Canadian Grand Prix": 4
         }
       },
       "golf": {
         "count": 12,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Players Championship": 4,
@@ -344,7 +356,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Boston Marathon": 1,
@@ -353,59 +365,17 @@
       },
       "nba": {
         "count": 267,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "ESPN API"
       },
       "ncaab": {
         "count": 9,
-        "lastFetchAt": "2026-03-24T18:01:12.869Z",
+        "lastFetchAt": "2026-03-24T22:30:13.305Z",
         "sourceName": "ESPN API"
       }
     }
   },
   "events": [
-    {
-      "id": "soccer-championsleague-20260310-2000-bayern-munich-at-atalanta",
-      "sport": "soccer",
-      "league": "Champions League",
-      "awayTeam": "Bayern Munich",
-      "homeTeam": "Atalanta",
-      "startTimeLocal": "2026-03-10T20:00:00.000Z",
-      "endTimeLocal": "2026-03-10T22:15:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "soccer-championsleague",
-      "leagueKey": "championsleague",
-      "providerReason": "ucl-yttv"
-    },
-    {
-      "id": "soccer-championsleague-20260310-2000-tottenham-hotspur-at-atl-tico-madrid",
-      "sport": "soccer",
-      "league": "Champions League",
-      "awayTeam": "Tottenham Hotspur",
-      "homeTeam": "Atlético Madrid",
-      "startTimeLocal": "2026-03-10T20:00:00.000Z",
-      "endTimeLocal": "2026-03-10T22:15:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "soccer-championsleague",
-      "leagueKey": "championsleague",
-      "providerReason": "ucl-yttv"
-    },
-    {
-      "id": "soccer-championsleague-20260310-2000-barcelona-at-newcastle-united",
-      "sport": "soccer",
-      "league": "Champions League",
-      "awayTeam": "Barcelona",
-      "homeTeam": "Newcastle United",
-      "startTimeLocal": "2026-03-10T20:00:00.000Z",
-      "endTimeLocal": "2026-03-10T22:15:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "soccer-championsleague",
-      "leagueKey": "championsleague",
-      "providerReason": "ucl-yttv"
-    },
     {
       "id": "basketball-nba-20260310-2300-memphis-grizzlies-at-philadelphia-76ers",
       "sport": "basketball",
@@ -7033,55 +7003,6 @@
       "broadcastNetworks": "Arizona's Family 3TV, Suns Live, Sportsnet, NBA League Pass"
     },
     {
-      "id": "tennis-espn-173243",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Mensik",
-      "homeTeam": "Tiafoe",
-      "startTimeLocal": "2026-03-23T18:45:00.000Z",
-      "endTimeLocal": "2026-03-23T21:15:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Miami Open — Round 3",
-      "competitionType": "domestic",
-      "tennisRound": "Round 3",
-      "tennisPlayer1": "Mensik",
-      "tennisPlayer2": "Tiafoe",
-      "tennisPlayer1Rank": 12,
-      "tennisPlayer2Rank": 19,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
-      "tournamentName": "Miami Open"
-    },
-    {
-      "id": "tennis-espn-173241",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Zverev",
-      "homeTeam": "Cilic",
-      "startTimeLocal": "2026-03-23T22:00:00.000Z",
-      "endTimeLocal": "2026-03-24T00:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Miami Open — Round 3",
-      "competitionType": "domestic",
-      "tennisRound": "Round 3",
-      "tennisPlayer1": "Zverev",
-      "tennisPlayer2": "Cilic",
-      "tennisPlayer1Rank": 3,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/cro.png",
-      "tournamentName": "Miami Open"
-    },
-    {
       "id": "basketball-nba-20260323-2300-los-angeles-lakers-at-detroit-pistons",
       "sport": "basketball",
       "league": "NBA",
@@ -7321,7 +7242,7 @@
       "startTimeLocal": "2026-03-24T16:10:00.000Z",
       "endTimeLocal": "2026-03-24T18:40:00.000Z",
       "providerId": "tennischannel",
-      "isLive": true,
+      "isLive": false,
       "source": "espn-tennis",
       "leagueKey": "atp-masters",
       "providerReason": "tennis-channel",
@@ -7368,8 +7289,8 @@
       "league": "ATP Masters 1000",
       "awayTeam": "Paul",
       "homeTeam": "Etcheverry",
-      "startTimeLocal": "2026-03-24T19:00:00.000Z",
-      "endTimeLocal": "2026-03-24T21:30:00.000Z",
+      "startTimeLocal": "2026-03-24T20:35:00.000Z",
+      "endTimeLocal": "2026-03-24T23:05:00.000Z",
       "providerId": "tennischannel",
       "isLive": false,
       "source": "espn-tennis",
@@ -7388,39 +7309,15 @@
       "tournamentName": "Miami Open"
     },
     {
-      "id": "tennis-espn-173251",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Tiafoe",
-      "homeTeam": "Atmane",
-      "startTimeLocal": "2026-03-24T20:00:00.000Z",
-      "endTimeLocal": "2026-03-24T22:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Miami Open — Round 4",
-      "competitionType": "domestic",
-      "tennisRound": "Round 4",
-      "tennisPlayer1": "Tiafoe",
-      "tennisPlayer2": "Atmane",
-      "tennisPlayer1Rank": 19,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
-      "tournamentName": "Miami Open"
-    },
-    {
       "id": "tennis-espn-173254",
       "sport": "tennis",
       "league": "ATP Masters 1000",
       "awayTeam": "Sinner",
       "homeTeam": "Michelsen",
-      "startTimeLocal": "2026-03-24T20:00:00.000Z",
-      "endTimeLocal": "2026-03-24T22:30:00.000Z",
+      "startTimeLocal": "2026-03-24T21:00:00.000Z",
+      "endTimeLocal": "2026-03-24T23:30:00.000Z",
       "providerId": "tennischannel",
-      "isLive": false,
+      "isLive": true,
       "source": "espn-tennis",
       "leagueKey": "atp-masters",
       "providerReason": "tennis-channel",
@@ -7433,6 +7330,30 @@
       "tennisPlayer1Rank": 2,
       "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
       "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "tournamentName": "Miami Open"
+    },
+    {
+      "id": "tennis-espn-173251",
+      "sport": "tennis",
+      "league": "ATP Masters 1000",
+      "awayTeam": "Tiafoe",
+      "homeTeam": "Atmane",
+      "startTimeLocal": "2026-03-24T22:15:00.000Z",
+      "endTimeLocal": "2026-03-25T00:45:00.000Z",
+      "providerId": "tennischannel",
+      "isLive": true,
+      "source": "espn-tennis",
+      "leagueKey": "atp-masters",
+      "providerReason": "tennis-channel",
+      "eventType": "match",
+      "sessionTitle": "Miami Open — Round 4",
+      "competitionType": "domestic",
+      "tennisRound": "Round 4",
+      "tennisPlayer1": "Tiafoe",
+      "tennisPlayer2": "Atmane",
+      "tennisPlayer1Rank": 19,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
       "tournamentName": "Miami Open"
     },
     {
@@ -7859,6 +7780,30 @@
       "isIccT20Wc": false
     },
     {
+      "id": "tennis-espn-173253",
+      "sport": "tennis",
+      "league": "ATP Masters 1000",
+      "awayTeam": "Lehecka",
+      "homeTeam": "Landaluce",
+      "startTimeLocal": "2026-03-25T19:00:00.000Z",
+      "endTimeLocal": "2026-03-25T21:30:00.000Z",
+      "providerId": "tennischannel",
+      "isLive": false,
+      "source": "espn-tennis",
+      "leagueKey": "atp-masters",
+      "providerReason": "tennis-channel",
+      "eventType": "match",
+      "sessionTitle": "Miami Open — Quarterfinal",
+      "competitionType": "domestic",
+      "tennisRound": "Quarterfinal",
+      "tennisPlayer1": "Lehecka",
+      "tennisPlayer2": "Landaluce",
+      "tennisPlayer1Rank": 21,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+      "tournamentName": "Miami Open"
+    },
+    {
       "id": "ahl-1028756",
       "sport": "hockey",
       "league": "AHL",
@@ -8132,6 +8077,31 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "echl"
+    },
+    {
+      "id": "tennis-espn-173256",
+      "sport": "tennis",
+      "league": "ATP Masters 1000",
+      "awayTeam": "Fils",
+      "homeTeam": "Paul",
+      "startTimeLocal": "2026-03-26T00:30:00.000Z",
+      "endTimeLocal": "2026-03-26T03:00:00.000Z",
+      "providerId": "tennischannel",
+      "isLive": false,
+      "source": "espn-tennis",
+      "leagueKey": "atp-masters",
+      "providerReason": "tennis-channel",
+      "eventType": "match",
+      "sessionTitle": "Miami Open — Quarterfinal",
+      "competitionType": "domestic",
+      "tennisRound": "Quarterfinal",
+      "tennisPlayer1": "Fils",
+      "tennisPlayer2": "Paul",
+      "tennisPlayer1Rank": 28,
+      "tennisPlayer2Rank": 22,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "tournamentName": "Miami Open"
     },
     {
       "id": "soccer-nwsl-20260326-0100-kansas-city-current-at-seattle-reign",
@@ -18528,6 +18498,34 @@
       "providerReason": "laliga-disneyplus"
     },
     {
+      "id": "soccer-championsleague-20260414-1900-barcelona-at-atl-tico-madrid",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Barcelona",
+      "homeTeam": "Atlético Madrid",
+      "startTimeLocal": "2026-04-14T19:00:00.000Z",
+      "endTimeLocal": "2026-04-14T21:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
+    },
+    {
+      "id": "soccer-championsleague-20260414-1900-paris-saint-germain-at-liverpool",
+      "sport": "soccer",
+      "league": "Champions League",
+      "awayTeam": "Paris Saint-Germain",
+      "homeTeam": "Liverpool",
+      "startTimeLocal": "2026-04-14T19:00:00.000Z",
+      "endTimeLocal": "2026-04-14T21:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-championsleague",
+      "leagueKey": "championsleague",
+      "providerReason": "ucl-yttv"
+    },
+    {
       "id": "f1-espn-401839048",
       "sport": "racing",
       "league": "F1",
@@ -18852,6 +18850,23 @@
       "providerReason": "Apple TV broadcast",
       "eventType": "session",
       "sessionTitle": "SR",
+      "competitionName": "Canadian Grand Prix"
+    },
+    {
+      "id": "f1-espn-401839061",
+      "sport": "racing",
+      "league": "F1",
+      "awayTeam": "Qualifying",
+      "homeTeam": "Canadian Grand Prix",
+      "startTimeLocal": "2026-05-23T20:00:00.000Z",
+      "endTimeLocal": "2026-05-23T21:30:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "espn-f1",
+      "leagueKey": "f1",
+      "providerReason": "Apple TV broadcast",
+      "eventType": "session",
+      "sessionTitle": "Qualifying",
       "competitionName": "Canadian Grand Prix"
     }
   ]
