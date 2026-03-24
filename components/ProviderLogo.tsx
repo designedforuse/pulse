@@ -26,6 +26,7 @@ const PROVIDER_IMAGES: Record<string, any> = {
   willowtv: require("@/assets/providers/willowtv.png"),
   tnt: require("@/assets/providers/tnt.png"),
   ion: require("@/assets/providers/ion.png"),
+  nwslplus: require("@/assets/providers/nwslplus.png"),
 };
 
 // Per-logo optical scale multiplier (applied to the base bounding box).
@@ -56,6 +57,7 @@ const LOGO_SCALE: Record<string, number> = {
   willowtv:      1.0,
   tnt:           1.0,
   ion:           1.0,
+  nwslplus:      1.0,
 };
 
 // Measured aspect ratios (width / height) for every logo asset
@@ -87,7 +89,6 @@ const NO_TINT_LOGOS = new Set<string>();
 
 const PROVIDER_TEXT_LABELS: Record<string, string> = {
   paramount: "P+",
-  nwslplus: "NWSL+",
   abc: "ABC",
   cbs: "CBS",
   nbatv: "NBA TV",

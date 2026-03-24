@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-24T23:45:49.173Z",
+  "lastUpdated": "2026-03-24T23:47:59.640Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -184,34 +184,34 @@
   "ncaabPruned": 9,
   "ncaabSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-24T23:45:49.173Z",
+    "lastRefreshAt": "2026-03-24T23:47:59.640Z",
     "sources": {
       "nhl": {
         "count": 163,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 222,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 15,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
       "ncaa": {
         "count": 2,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "College Hockey News",
         "teamFilter": "Boston University"
       },
       "rugby": {
         "count": 102,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 19,
@@ -231,87 +231,87 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 35,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 60,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 40,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 40,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 36,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 35,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 37,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 60,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-11T16:00:00.000Z"
       },
       "championsCup": {
         "count": 19,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 7,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 18,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 20,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 4,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-04-04T11:45:00.000Z"
       },
       "tennis": {
         "count": 10,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Indian Wells Masters": 12,
@@ -321,7 +321,7 @@
       },
       "f1": {
         "count": 29,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Chinese Grand Prix": 5,
@@ -334,7 +334,7 @@
       },
       "golf": {
         "count": 12,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Players Championship": 4,
@@ -344,7 +344,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Boston Marathon": 1,
@@ -353,12 +353,12 @@
       },
       "nba": {
         "count": 263,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "ESPN API"
       },
       "ncaab": {
         "count": 9,
-        "lastFetchAt": "2026-03-24T23:45:49.173Z",
+        "lastFetchAt": "2026-03-24T23:47:59.640Z",
         "sourceName": "ESPN API"
       }
     }
