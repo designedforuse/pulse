@@ -2,16 +2,22 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useEffect } from "react";
+import { AppState, AppStateStatus } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
-import { queryClient } from "@/lib/query-client";
+import { queryClient, getApiUrl } from "@/lib/query-client";
 import { EventsProvider } from "@/lib/events-context";
 import { ScoresProvider } from "@/lib/scores-context";
 import { FavoritesProvider } from "@/lib/favorites-context";
 import { RitualOverridesProvider } from "@/lib/ritual-overrides-context";
 import { useFonts, Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold } from "@expo-google-fonts/inter";
 import Colors from "@/constants/colors";
+
+function triggerScheduleRefresh() {
+  const url = new URL("/api/refresh", getApiUrl()).toString();
+  fetch(url, { method: "POST" }).catch(() => {});
+}
 
 SplashScreen.preventAutoHideAsync();
 
@@ -93,6 +99,19 @@ export default function RootLayout() {
       SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
+
+  useEffect(() => {
+    // Refresh schedule on initial launch
+    triggerScheduleRefresh();
+
+    // Refresh schedule whenever the app returns to the foreground
+    const subscription = AppState.addEventListener("change", (nextState: AppStateStatus) => {
+      if (nextState === "active") {
+        triggerScheduleRefresh();
+      }
+    });
+    return () => subscription.remove();
+  }, []);
 
   if (!fontsLoaded) return null;
 
