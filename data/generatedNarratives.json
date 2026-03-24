@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-03-24T22:56:34.327Z",
+  "lastUpdated": "2026-03-24T23:04:52.089Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
-        "NewEngland": 2,
+        "NewEngland": 1,
         "Other": 2
       },
       "momentum": {
@@ -45,13 +45,6 @@
     },
     "droppedCandidatesReasons": [
       {
-        "id": "playoff_push_clinch_fallback_nhl_2025021120",
-        "kind": "playoff_push",
-        "region": "NewEngland",
-        "title": "Playoff Push",
-        "reason": "max 1 playoff_push per region (NewEngland)"
-      },
-      {
         "id": "playoff_push_clinch_fallback_nhl_2025021134",
         "kind": "playoff_push",
         "region": "Other",
@@ -80,7 +73,7 @@
         "reason": "feed cap (max 6)"
       }
     ],
-    "totalBeforeCap": 11,
+    "totalBeforeCap": 10,
     "totalAfterCap": 6,
     "playerMovement": {
       "rawMovementCandidates": 1,
@@ -101,15 +94,16 @@
           "CGY",
           "EDM",
           "VAN",
-          "CAR",
-          "MTL",
           "CBJ",
+          "MTL",
           "NSH",
+          "CAR",
           "TOR",
           "TBL",
           "NYR",
           "STL",
-          "NJD"
+          "NJD",
+          "FLA"
         ],
         "skippedTeams": [
           {
@@ -125,17 +119,17 @@
         ],
         "playersIngested": 643,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-24T22:56:34.327Z"
+        "timestamp": "2026-03-24T23:04:52.089Z"
       },
       "cacheHistoryCount": 797,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 11,
+    "candidateCountBeforeCap": 10,
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -410.9428686111111,
+      "hoursUntil": -411.08113583333335,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -155,26 +149,20 @@
       "clinchAfterRegionFilter": 1,
       "clinchFinalCount": 1,
       "clinchGatedOut": [
-        "Boston Bruins: before Mar 25, 86 pts < 95",
         "Anaheim Ducks: before Mar 25, 82 pts < 95",
         "Boston Bruins: before Mar 25, 86 pts < 95"
       ]
     },
     "tonightStorySelectedSignal": "playoff_push",
     "tonightStoryHeadline": "Your Team's Push",
-    "tonightStorySourceEvent": "nhl_2025021120",
+    "tonightStorySourceEvent": "nhl_2025021135",
     "tonightStoryDebug": {
       "selectedSignal": "playoff_push",
       "selectedHeadline": "Your Team's Push",
       "selectedScore": 170,
-      "sourceEventId": "nhl_2025021120",
+      "sourceEventId": "nhl_2025021135",
       "reason": "playoff_push involving followed team(s): Boston Bruins",
       "scoredCandidates": [
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): Boston Bruins"
-        },
         {
           "label": "[playoff_push] Your Team's Push",
           "score": 170,
@@ -287,7 +275,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-24T22:56:34.327Z",
+      "triggeredAt": "2026-03-24T23:04:52.089Z",
       "expiresAt": "2026-03-25T10:15:00.000Z",
       "kind": "rivalry_game",
       "region": "SouthAfrica",
@@ -327,8 +315,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-24T22:56:34.327Z",
-      "expiresAt": "2026-03-31T22:56:34.327Z",
+      "triggeredAt": "2026-03-24T23:04:52.089Z",
+      "expiresAt": "2026-03-31T23:04:52.089Z",
       "kind": "league_moment",
       "region": "SouthAfrica",
       "regionPriority": 1,
@@ -375,8 +363,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-24T22:56:34.327Z",
-      "expiresAt": "2026-03-27T22:56:34.327Z",
+      "triggeredAt": "2026-03-24T23:04:52.089Z",
+      "expiresAt": "2026-03-27T23:04:52.089Z",
       "kind": "momentum",
       "region": "SoCal",
       "regionPriority": 2,
@@ -423,14 +411,14 @@
     {
       "id": "playoff_push_newengland",
       "title": "Bruins Push Week",
-      "subtitle": "Four games in five days, including a back-to-back",
+      "subtitle": "Four games in seven days, including a back-to-back",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-24T22:56:34.327Z",
-      "expiresAt": "2026-03-31T22:56:34.327Z",
+      "triggeredAt": "2026-03-24T23:04:52.089Z",
+      "expiresAt": "2026-03-31T23:04:52.089Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -441,21 +429,21 @@
             "team": "Boston Bruins",
             "league": "NHL",
             "gamesInNext7Days": 4,
-            "gamesInNext5Days": 4,
+            "gamesInNext5Days": 3,
             "hasBackToBack": true,
-            "reason": "Boston plays four times in five days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+            "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
           }
         ],
         "eventIds": [
-          "nhl_2025021120",
           "nhl_2025021135",
           "nhl_2025021155",
-          "nhl_2025021170"
+          "nhl_2025021170",
+          "nhl_2025021178"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-24T22:56:34.327Z",
-        "windowEnd": "2026-03-31T22:56:34.327Z",
-        "reason": "Boston plays four times in five days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+        "windowStart": "2026-03-24T23:04:52.089Z",
+        "windowEnd": "2026-03-31T23:04:52.089Z",
+        "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
         "hockey"
@@ -479,8 +467,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-24T22:56:34.327Z",
-      "expiresAt": "2026-03-27T22:56:34.327Z",
+      "triggeredAt": "2026-03-24T23:04:52.089Z",
+      "expiresAt": "2026-03-27T23:04:52.089Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -513,10 +501,10 @@
           }
         ],
         "eventIds": [
-          "nhl_2025021120",
           "nhl_2025021135",
           "nhl_2025021155",
-          "nhl_2025021170"
+          "nhl_2025021170",
+          "nhl_2025021178"
         ],
         "reason": "Boston Bruins has earned points in 5 straight games"
       },
@@ -533,7 +521,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-24T22:56:34.327Z",
+      "triggeredAt": "2026-03-24T23:04:52.089Z",
       "expiresAt": "2026-03-25T23:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -562,7 +550,7 @@
     "signalLabel": "PLAYOFF PUSH",
     "headline": "Your Team's Push",
     "body": "Boston Bruins enters a critical stretch with games stacking up.",
-    "sourceEventId": "nhl_2025021120",
+    "sourceEventId": "nhl_2025021135",
     "sourceCard": {
       "id": "playoff_push_newengland",
       "kind": "playoff_push",

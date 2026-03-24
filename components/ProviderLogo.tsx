@@ -24,6 +24,32 @@ const PROVIDER_IMAGES: Record<string, any> = {
   appletv: require("@/assets/providers/appletv.png"),
 };
 
+// Per-logo optical scale multiplier (applied to the base bounding box).
+// 1.0 = default box size. Increase to make a logo larger, decrease to shrink it.
+// Tune these values individually until each logo looks right at all card sizes.
+const LOGO_SCALE: Record<string, number> = {
+  espn:          1.0,
+  espn2:         1.0,
+  espnplus:      1.0,
+  cbssn:         1.0,
+  cbsgolazo:     1.0,
+  cbs:           1.0,
+  nbcsn:         1.0,
+  nbc:           1.0,
+  flosports:     1.0,
+  flohockey:     1.0,
+  florugby:      1.0,
+  beinsports:    1.0,
+  fanduelsn:     1.0,
+  tennischannel: 1.0,
+  rugbypasstv:   1.0,
+  victoryplus:   1.0,
+  youtubetv:     1.0,
+  disneyplus:    1.0,
+  primevideo:    1.0,
+  appletv:       1.0,
+};
+
 // Measured aspect ratios (width / height) for every logo asset
 const LOGO_ASPECT: Record<string, number> = {
   espn: 4.05,
@@ -70,18 +96,21 @@ interface ProviderLogoProps {
   size?: number;
 }
 
-export default function ProviderLogo({ providerId, size = 24 }: ProviderLogoProps) {
+export default function ProviderLogo({
+  providerId,
+  size = 24,
+}: ProviderLogoProps) {
   const image = PROVIDER_IMAGES[providerId];
   const textLabel = PROVIDER_TEXT_LABELS[providerId];
 
   if (image) {
     const noTint = NO_TINT_LOGOS.has(providerId);
-    // Fixed bounding box: every logo slot is the same width × height.
-    // resizeMode="contain" scales each logo proportionally within the box —
-    // wide logos fill the width (and are shorter), tall logos fill the height
-    // (and are narrower). All logos share an identical horizontal footprint.
-    const BOX_W = Math.round(size * 3);
-    const BOX_H = Math.round(size * 0.85);
+    // Fixed base bounding box scaled by per-logo optical multiplier.
+    // All logos start with the same box; LOGO_SCALE lets you nudge each
+    // one individually until it looks right without touching the others.
+    const scale = LOGO_SCALE[providerId] ?? 1.0;
+    const BOX_W = Math.round(size * 3 * scale);
+    const BOX_H = Math.round(size * 0.85 * scale);
 
     return (
       <View style={[styles.imageWrap, { width: BOX_W, height: size }]}>
@@ -101,7 +130,12 @@ export default function ProviderLogo({ providerId, size = 24 }: ProviderLogoProp
   if (textLabel) {
     const fontSize = Math.round(size * 0.5);
     return (
-      <View style={[styles.textPill, { height: size, paddingHorizontal: Math.round(size * 0.3) }]}>
+      <View
+        style={[
+          styles.textPill,
+          { height: size, paddingHorizontal: Math.round(size * 0.3) },
+        ]}
+      >
         <Text style={[styles.textLabel, { fontSize }]}>{textLabel}</Text>
       </View>
     );
@@ -111,7 +145,9 @@ export default function ProviderLogo({ providerId, size = 24 }: ProviderLogoProp
     if (!_warnedIds) _warnedIds = new Set();
     if (!_warnedIds.has(providerId)) {
       _warnedIds.add(providerId);
-      console.warn(`[ProviderLogo] No icon mapping for providerId: "${providerId}"`);
+      console.warn(
+        `[ProviderLogo] No icon mapping for providerId: "${providerId}"`,
+      );
     }
   }
   return null;
