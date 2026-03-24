@@ -28,7 +28,7 @@ const PROVIDER_IMAGES: Record<string, any> = {
 // 1.0 = default box size. Increase to make a logo larger, decrease to shrink it.
 // Tune these values individually until each logo looks right at all card sizes.
 const LOGO_SCALE: Record<string, number> = {
-  espn:          1.0,
+  espn:          0.85,
   espn2:         1.0,
   espnplus:      1.0,
   cbssn:         1.0,
