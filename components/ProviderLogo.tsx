@@ -28,6 +28,7 @@ const PROVIDER_IMAGES: Record<string, any> = {
   ion: require("@/assets/providers/ion.png"),
   nwslplus: require("@/assets/providers/nwslplus.png"),
   nbatv: require("@/assets/providers/nbatv.png"),
+  paramount: require("@/assets/providers/paramount.png"),
 };
 
 // Per-logo optical scale multiplier (applied to the base bounding box).
@@ -60,6 +61,7 @@ const LOGO_SCALE: Record<string, number> = {
   ion:           1.0,
   nwslplus:      1.0,
   nbatv:         1.0,
+  paramount:     1.0,
 };
 
 // Measured aspect ratios (width / height) for every logo asset
@@ -90,7 +92,6 @@ const LOGO_ASPECT: Record<string, number> = {
 const NO_TINT_LOGOS = new Set<string>();
 
 const PROVIDER_TEXT_LABELS: Record<string, string> = {
-  paramount: "P+",
   abc: "ABC",
   cbs: "CBS",
 };
