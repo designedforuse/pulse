@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse — Provider Logo Reference</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #111;
+    color: #e2e8f0;
+    font-size: 13px;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+  }
+  .subtitle {
+    font-size: 11px;
+    color: #64748b;
+    margin-bottom: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  thead th {
+    background: #1e293b;
+    color: #94a3b8;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid #334155;
+    position: sticky;
+    top: 0;
+  }
+  tbody tr {
+    border-bottom: 1px solid #1e293b;
+  }
+  tbody tr:hover { background: #1a2332; }
+  td {
+    padding: 7px 10px;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .logo-id {
+    font-family: "SF Mono", "Fira Code", monospace;
+    font-size: 11px;
+    color: #7dd3fc;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .tag {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-right: 3px;
+    white-space: nowrap;
+  }
+  .tag-image { background: #14532d; color: #86efac; }
+  .tag-text  { background: #312e81; color: #a5b4fc; }
+  .sport-tag {
+    display: inline-block;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 10px;
+    background: #1e293b;
+    color: #94a3b8;
+    margin: 1px 2px 1px 0;
+    white-space: nowrap;
+  }
+  .dims {
+    font-family: "SF Mono", "Fira Code", monospace;
+    font-size: 11px;
+    color: #fbbf24;
+    white-space: nowrap;
+  }
+  .dims-text {
+    font-family: "SF Mono", "Fira Code", monospace;
+    font-size: 11px;
+    color: #a78bfa;
+    white-space: nowrap;
+  }
+  .dim-label {
+    font-size: 10px;
+    color: #475569;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .section-header td {
+    background: #0f172a;
+    color: #475569;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    border-top: 1px solid #1e293b;
+  }
+</style>
+</head>
+<body>
+<h1>Provider Logo Reference</h1>
+<p class="subtitle">All logos displayed in the Pulse event card UI · Sizes in dp (density-independent pixels)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:110px">Logo ID</th>
+      <th style="width:60px">Type</th>
+      <th>Shown On (card / sport / league context)</th>
+      <th style="width:180px">Dimensions by card variant</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- ── IMAGE LOGOS ─────────────────────────────────────────── -->
+    <tr class="section-header"><td colspan="4">Image logos</td></tr>
+
+    <tr>
+      <td class="logo-id">espn</td>
+      <td><span class="tag tag-image">image</span></td>
+      <td>
+        <span class="sport-tag">NHL</span> national (ESPN broadcast)<br>
+        <span class="sport-tag">NBA</span> ABC, ESPN, ESPN+ broadcasts<br>
+        <span class="sport-tag">NCAAB</span> ESPN / ESPN+ broadcasts<br>
+        <span class="sport-tag">NCAA Hockey</span> all games<br>
+        <span class="sport-tag">Soccer</span> Bundesliga, La Liga, FA Cup, USL-ESPN+<br>
+        <span class="sport-tag">Rugby</span> MLR<br>
+        <span class="sport-tag">Cricket</span> Disney+ events<br>
+        <span class="sport-tag">NWSL</span> ESPN+ / ESPN2 broadcasts
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims">40 × 10 dp</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims">57 × 14 dp</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">cbssn</td>
+      <td><span class="tag tag-image">image</span></td>
+      <td>
+        <span class="sport-tag">Soccer</span> Serie A, USL-Golazo<br>
+        <span class="sport-tag">NWSL</span> Golazo / CBSSN broadcasts
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims">48 × 10 dp</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims">67 × 14 dp</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">cbs</td>
+      <td><span class="tag tag-image">image</span></td>
+      <td>
+        <span class="sport-tag">Soccer</span> Champions League, Europa League<br>
+        <span class="sport-tag">Golf</span> CBS broadcast rounds
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims">34 × 10 dp</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims">48 × 14 dp</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">nbcsn</td>
+      <td><span class="tag tag-image">image</span></td>
+      <td>
+        <span class="sport-tag">Soccer</span> EPL<br>
+        <span class="sport-tag">Rugby</span> Six Nations<br>
+        <span class="sport-tag">Golf</span> NBC broadcast rounds<br>
+        <span class="sport-tag">NBA</span> NBC / Peacock broadcasts
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims">36 × 10 dp</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims">51 × 14 dp</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">beinsports</td>
+      <td><span class="tag tag-image">image</span></td>
+      <td>
+        <span class="sport-tag">Soccer</span> Ligue 1
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims">59 × 10 dp</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims">82 × 14 dp</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">flosports</td>
+      <td><span class="tag tag-image">image</span></td>
+      <td>
+        <span class="sport-tag">Rugby</span> URC, Top 14, Premiership, Champs Cup, Japan L1<br>
+        <span class="sport-tag">Hockey</span> AHL, ECHL
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims">63 × 7 dp</span> <span style="color:#475569;font-size:10px">(width-capped)</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims">90 × 10 dp</span> <span style="color:#475569;font-size:10px">(width-capped)</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">rugbypasstv</td>
+      <td><span class="tag tag-image">image</span></td>
+      <td>
+        <span class="sport-tag">Rugby</span> HSBC SVNS, Super Rugby Pacific
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims">10 × 10 dp</span> <span style="color:#475569;font-size:10px">(square — tall logo)</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims">14 × 14 dp</span> <span style="color:#475569;font-size:10px">(square)</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">tennischannel</td>
+      <td><span class="tag tag-image">image</span></td>
+      <td>
+        <span class="sport-tag">Tennis</span> default / all unmatched events
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims">36 × 10 dp</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims">50 × 14 dp</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">fanduelsn</td>
+      <td><span class="tag tag-image">image</span></td>
+      <td>
+        <span class="sport-tag">NHL</span> LA Kings RSN games<br>
+        <span class="sport-tag">NBA</span> LA Clippers games (non-national)
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims">35 × 10 dp</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims">49 × 14 dp</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">victoryplus</td>
+      <td><span class="tag tag-image">image</span></td>
+      <td>
+        <span class="sport-tag">NWSL</span> Victory+ broadcasts
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims">63 × 8 dp</span> <span style="color:#475569;font-size:10px">(width-capped)</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims">90 × 11 dp</span> <span style="color:#475569;font-size:10px">(width-capped)</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">appletv</td>
+      <td><span class="tag tag-image">image</span></td>
+      <td>
+        <span class="sport-tag">Soccer</span> MLS (exclusive rights)
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims">20 × 10 dp</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims">28 × 14 dp</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">primevideo</td>
+      <td><span class="tag tag-image">image</span></td>
+      <td>
+        <span class="sport-tag">NBA</span> Prime Video broadcast games
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims">32 × 10 dp</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims">44 × 14 dp</span>
+      </td>
+    </tr>
+
+    <!-- ── TEXT PILL LOGOS ─────────────────────────────────────── -->
+    <tr class="section-header"><td colspan="4">Text pill logos</td></tr>
+
+    <tr>
+      <td class="logo-id">tnt</td>
+      <td><span class="tag tag-text">text</span></td>
+      <td>
+        <span class="sport-tag">NBA</span> TNT / TBS broadcasts<br>
+        <span class="sport-tag">NHL</span> TNT national broadcasts<br>
+        <span class="sport-tag">Tennis</span> TNT broadcast events
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims-text">pill h=14 · font 7sp · label "TNT"</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims-text">pill h=20 · font 10sp · label "TNT"</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">abc</td>
+      <td><span class="tag tag-text">text</span></td>
+      <td>
+        <span class="sport-tag">NHL</span> ABC national broadcasts<br>
+        <span class="sport-tag">NWSL</span> ABC broadcasts
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims-text">pill h=14 · font 7sp · label "ABC"</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims-text">pill h=20 · font 10sp · label "ABC"</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">nbaleaguepass</td>
+      <td><span class="tag tag-text">text</span></td>
+      <td>
+        <span class="sport-tag">NBA</span> all other games (non-national, non-Clippers)
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims-text">pill h=14 · font 7sp · label "NBA LP"</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims-text">pill h=20 · font 10sp · label "NBA LP"</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">ion</td>
+      <td><span class="tag tag-text">text</span></td>
+      <td>
+        <span class="sport-tag">NWSL</span> ION broadcasts
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims-text">pill h=14 · font 7sp · label "ION"</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims-text">pill h=20 · font 10sp · label "ION"</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">nwslplus</td>
+      <td><span class="tag tag-text">text</span></td>
+      <td>
+        <span class="sport-tag">NWSL</span> NWSL+ streaming games
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims-text">pill h=14 · font 7sp · label "NWSL+"</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims-text">pill h=20 · font 10sp · label "NWSL+"</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">willowtv</td>
+      <td><span class="tag tag-text">text</span></td>
+      <td>
+        <span class="sport-tag">Cricket</span> non-Disney+ events (YouTube TV)
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims-text">pill h=14 · font 7sp · label "Willow TV"</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims-text">pill h=20 · font 10sp · label "Willow TV"</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="logo-id">nbatv</td>
+      <td><span class="tag tag-text">text</span></td>
+      <td>
+        <span style="color:#475569;font-size:11px;font-style:italic">Reserved (in allowlist) — no active resolver currently maps here</span>
+      </td>
+      <td>
+        <span class="dim-label">Live / upcoming footer (size 14):</span>
+        <span class="dims-text">pill h=14 · font 7sp · label "NBA TV"</span><br>
+        <span class="dim-label">ESPN-centre upcoming (size 20):</span>
+        <span class="dims-text">pill h=20 · font 10sp · label "NBA TV"</span>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+<div style="margin-top:20px;padding:12px;background:#0f172a;border-radius:6px;font-size:11px;color:#475569;line-height:1.7">
+  <strong style="color:#64748b">Card variants:</strong><br>
+  <strong style="color:#94a3b8">Live / upcoming footer (size 14)</strong> — bottom-left of standard event cards while live; bottom-right for upcoming/final cards. logoH = <code style="color:#fbbf24">10 dp</code>, MAX_W = <code style="color:#fbbf24">63 dp</code>.<br>
+  <strong style="color:#94a3b8">ESPN-centre upcoming (size 20)</strong> — centre column of ESPN-style layout for upcoming non-session games. logoH = <code style="color:#fbbf24">14 dp</code>, MAX_W = <code style="color:#fbbf24">90 dp</code>.<br>
+  <strong style="color:#94a3b8">Width-capped</strong> logos (FloSports, Victory+) exceed the max-width so are constrained by width, rendering shorter than the target logoH.
+</div>
+</body>
+</html>

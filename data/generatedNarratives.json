@@ -1,7 +1,10 @@
 {
-  "lastUpdated": "2026-03-22T06:00:08.617Z",
+  "lastUpdated": "2026-03-24T18:01:12.923Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
+      "playoff_push": {
+        "NewEngland": 1
+      },
       "momentum": {
         "SoCal": 1,
         "NewEngland": 1
@@ -13,28 +16,29 @@
         "Other": 1
       },
       "rivalry_game": {
-        "SouthAfrica": 1,
-        "Other": 1
+        "SouthAfrica": 1
       },
       "upset_alert": {
         "Other": 1
       }
     },
-    "combinedPushByRegion": {},
+    "combinedPushByRegion": {
+      "NewEngland": false
+    },
     "finalFeedByRegion": {
       "SouthAfrica": [
-        "rivalry_game: Rivalry Game Tonight",
-        "league_moment: Rivalry Weekend"
+        "rivalry_game: Rivalry Game Tomorrow",
+        "league_moment: Freedom Cup"
       ],
       "SoCal": [
         "momentum: Ducks Heating Up"
       ],
       "NewEngland": [
+        "playoff_push: Bruins Push Week",
         "momentum: Bruins Heating Up"
       ],
       "Other": [
-        "upset_alert: Upset Alert",
-        "rivalry_game: Rivalry Game Tonight"
+        "upset_alert: Upset Alert"
       ]
     },
     "droppedCandidatesReasons": [
@@ -67,7 +71,6 @@
           "CGY",
           "EDM",
           "VAN",
-          "BUF",
           "CAR",
           "MTL",
           "CBJ",
@@ -90,11 +93,11 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 598,
+        "playersIngested": 643,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-22T06:00:08.617Z"
+        "timestamp": "2026-03-24T18:01:12.923Z"
       },
-      "cacheHistoryCount": 790,
+      "cacheHistoryCount": 797,
       "error": null
     },
     "exploreFeedCap": 6,
@@ -102,19 +105,19 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -346.00239361111113,
+      "hoursUntil": -406.02025638888887,
       "teamsEvaluated": 0,
       "triggers": {}
     },
     "rivalryGame": {
-      "rawRivalryCandidates": 2,
-      "rivalryAfterRegionFilter": 2,
-      "rivalryFinalCount": 2
+      "rawRivalryCandidates": 1,
+      "rivalryAfterRegionFilter": 1,
+      "rivalryFinalCount": 1
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 2,
+      "rawUpsetCandidates": 1,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 2,
+      "upsetCompletedCandidates": 1,
       "upsetFinalCount": 1
     },
     "clinchWatch": {
@@ -123,20 +126,25 @@
       "clinchFinalCount": 0,
       "clinchGatedOut": []
     },
-    "tonightStorySelectedSignal": "multi_team_night",
-    "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "nhl_2025021108",
+    "tonightStorySelectedSignal": "playoff_push",
+    "tonightStoryHeadline": "Your Team's Push",
+    "tonightStorySourceEvent": "nhl_2025021120",
     "tonightStoryDebug": {
-      "selectedSignal": "multi_team_night",
-      "selectedHeadline": "Your Sports Night",
-      "selectedScore": 400,
-      "sourceEventId": "nhl_2025021108",
-      "reason": "10 followed/affiliate teams playing tonight",
+      "selectedSignal": "playoff_push",
+      "selectedHeadline": "Your Team's Push",
+      "selectedScore": 170,
+      "sourceEventId": "nhl_2025021120",
+      "reason": "playoff_push involving followed team(s): Boston Bruins",
       "scoredCandidates": [
         {
-          "label": "[multi_team_night] Your Sports Night",
-          "score": 400,
-          "reason": "10 followed/affiliate teams playing tonight"
+          "label": "[playoff_push] Your Team's Push",
+          "score": 170,
+          "reason": "playoff_push involving followed team(s): Boston Bruins"
+        },
+        {
+          "label": "[single_team_game] Boston Bruins Tonight",
+          "score": 150,
+          "reason": "single followed team (Boston Bruins) playing tonight"
         },
         {
           "label": "[momentum] Hot Streak",
@@ -152,16 +160,6 @@
           "label": "[rivalry_game] Your Rivalry Night",
           "score": 140,
           "reason": "rivalry_game involving followed team(s): South Africa"
-        },
-        {
-          "label": "[rivalry_game] Your Rivalry Night",
-          "score": 140,
-          "reason": "rivalry_game involving followed team(s): Atlético Madrid"
-        },
-        {
-          "label": "[ritual_night] Saturday Game Day",
-          "score": 130,
-          "reason": "ritual \"Saturday Game Day\" has 9 followed-team game(s)"
         },
         {
           "label": "[upset_alert] Shock Result",
@@ -181,63 +179,62 @@
       ]
     },
     "videoSelection": {
-      "rivalry_game_cricket-t20i-gylsxg": {
+      "rivalry_game_cricket-t20i-o5z0f0": {
         "searchQuery": "New Zealand vs South Africa rivalry highlights",
-        "selectedVideoTitle": "New Zealand vs South Africa | 4TH T20I MATCH | CRICKET 26 GAMEPLAY ",
-        "selectedVideoPublishedAt": "9 hours ago",
-        "selectedVideoChannel": "RedBrothers ",
-        "rejectedForAgeCount": 1
+        "selectedVideoTitle": "​🏆 IPL 2026: RCB-யின் மிரட்டலான Playing 11!#rcb #kingkohli #ipl #lokicricketuniverse",
+        "selectedVideoPublishedAt": "3 hours ago",
+        "selectedVideoChannel": "Loki Cricket Universe",
+        "rejectedForAgeCount": 0
       },
       "league_moment_rivalry": {
-        "searchQuery": "Rivalry Weekend sports March 2026",
-        "selectedVideoTitle": "🔴 LIVE: Packers 2026 Mock Draft! Fixing the Roster Without a 1st Round Pick",
-        "selectedVideoPublishedAt": "Streamed 2 hours ago",
-        "selectedVideoChannel": "Packerfan Total Access 🏈🧀",
+        "searchQuery": "Freedom Cup sports March 2026",
+        "selectedVideoTitle": "060 Phil Phails @ Fitness with James Carr | ADHD, Broken Heart & Trying to Be Normal",
+        "selectedVideoPublishedAt": "2 hours ago",
+        "selectedVideoChannel": "Phil Phails",
         "rejectedForAgeCount": 0
       },
       "momentum_ana": {
         "searchQuery": "Anaheim Ducks highlights March 2026",
-        "selectedVideoTitle": "2v2 INSANITY! 🛑 Thrashers Goalie Robs Ducks One-Timer (NHL '94 Genesis)",
-        "selectedVideoPublishedAt": "3 hours ago",
-        "selectedVideoChannel": "NHL '94 Podcast",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
+        "rejectedForAgeCount": 1
+      },
+      "playoff_push_newengland": {
+        "searchQuery": "Boston Bruins playoff push March 2026",
+        "selectedVideoTitle": "NHL PICKS TODAY | Bruins vs Maple Leafs | Lightning vs Wild | Golden Knights vs Jets | March 24",
+        "selectedVideoPublishedAt": "4 hours ago",
+        "selectedVideoChannel": "Daily Betting Picks",
         "rejectedForAgeCount": 0
       },
       "momentum_bos": {
         "searchQuery": "Boston Bruins highlights March 2026",
-        "selectedVideoTitle": "Panthers vs. Flames | NHL Highlights | March 20, 2026",
-        "selectedVideoPublishedAt": "18 hours ago",
-        "selectedVideoChannel": "NHL",
-        "rejectedForAgeCount": 0
-      },
-      "upset_alert_nhl_2025021109": {
-        "searchQuery": "Edmonton Oilers vs Tampa Bay Lightning upset highlights March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
-      "rivalry_game_soccer-laliga-20260322-2000-atl-tico-madrid-at-real-madrid": {
-        "searchQuery": "Atlético Madrid vs Real Madrid rivalry highlights",
-        "selectedVideoTitle": "Real Madrid vs Atletico Madrid 5-3 - All Goals & Highlights - 2026",
-        "selectedVideoPublishedAt": "8 hours ago",
-        "selectedVideoChannel": "YOUBY l يوبي and 5 more",
+      "upset_alert_tennis-espn-173248": {
+        "searchQuery": "Korda vs Landaluce upset highlights March 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
-      "id": "rivalry_game_cricket-t20i-gylsxg",
-      "title": "Rivalry Game Tonight",
-      "subtitle": "New Zealand vs South Africa · Tonight at 6:15 AM",
+      "id": "rivalry_game_cricket-t20i-o5z0f0",
+      "title": "Rivalry Game Tomorrow",
+      "subtitle": "New Zealand vs South Africa · Tomorrow at 6:15 AM",
       "impact": {
-        "label": "Impacts: Saturday Extra Time",
-        "ritualId": "saturday_after_hours",
-        "tabHint": "Rituals"
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-03-22T06:00:08.617Z",
-      "expiresAt": "2026-03-22T10:15:00.000Z",
+      "triggeredAt": "2026-03-24T18:01:12.923Z",
+      "expiresAt": "2026-03-25T10:15:00.000Z",
       "kind": "rivalry_game",
       "region": "SouthAfrica",
       "regionPriority": 1,
@@ -248,9 +245,9 @@
         "league": "T20I Cricket",
         "awayTeam": "New Zealand",
         "homeTeam": "South Africa",
-        "startTime": "2026-03-22T06:15:00.000Z",
+        "startTime": "2026-03-25T06:15:00.000Z",
         "eventIds": [
-          "cricket-t20i-gylsxg"
+          "cricket-t20i-o5z0f0"
         ],
         "reason": "New Zealand and South Africa meet tonight in one of cricket's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
       },
@@ -258,52 +255,37 @@
         "cricket"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=xmGcnRwwPjE",
-        "thumbnailUrl": "https://img.youtube.com/vi/xmGcnRwwPjE/hqdefault.jpg",
-        "durationSeconds": 716,
-        "title": "New Zealand vs South Africa | 4TH T20I MATCH | CRICKET 26 GAMEPLAY ",
+        "url": "https://www.youtube.com/watch?v=SXs-rRfT33M",
+        "thumbnailUrl": "https://img.youtube.com/vi/SXs-rRfT33M/hqdefault.jpg",
+        "durationSeconds": 28,
+        "title": "​🏆 IPL 2026: RCB-யின் மிரட்டலான Playing 11!#rcb #kingkohli #ipl #lokicricketuniverse",
         "source": "youtube",
-        "channel": "RedBrothers ",
-        "publishedAt": "9 hours ago"
+        "channel": "Loki Cricket Universe",
+        "publishedAt": "3 hours ago"
       }
     },
     {
       "id": "league_moment_rivalry",
-      "title": "Rivalry Weekend",
-      "subtitle": "3 rivalry matchups in the next 7 days",
+      "title": "Freedom Cup",
+      "subtitle": "Freedom Cup: New Zealand @ South Africa",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-03-22T06:00:08.617Z",
-      "expiresAt": "2026-03-29T06:00:08.617Z",
+      "triggeredAt": "2026-03-24T18:01:12.923Z",
+      "expiresAt": "2026-03-31T18:01:12.923Z",
       "kind": "league_moment",
       "region": "SouthAfrica",
       "regionPriority": 1,
       "regionLabel": "South Africa",
       "meta": {
         "type": "rivalry",
-        "matchCount": 3,
+        "matchCount": 1,
         "rivalries": [
-          "Freedom Cup",
-          "Madrid Derby"
+          "Freedom Cup"
         ],
         "matches": [
-          {
-            "label": "Freedom Cup",
-            "away": "New Zealand",
-            "home": "South Africa",
-            "league": "T20I Cricket",
-            "startTime": "2026-03-22T06:15:00.000Z"
-          },
-          {
-            "label": "Madrid Derby",
-            "away": "Atlético Madrid",
-            "home": "Real Madrid",
-            "league": "La Liga",
-            "startTime": "2026-03-22T20:00:00.000Z"
-          },
           {
             "label": "Freedom Cup",
             "away": "New Zealand",
@@ -313,37 +295,34 @@
           }
         ],
         "eventIds": [
-          "cricket-t20i-gylsxg",
-          "soccer-laliga-20260322-2000-atl-tico-madrid-at-real-madrid",
           "cricket-t20i-o5z0f0"
         ],
-        "reason": "3 known rivalry matchup(s) found: Freedom Cup, Madrid Derby"
+        "reason": "1 known rivalry matchup(s) found: Freedom Cup"
       },
       "sports": [
-        "cricket",
-        "soccer"
+        "cricket"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=xFXoaivDfy4",
-        "thumbnailUrl": "https://img.youtube.com/vi/xFXoaivDfy4/hqdefault.jpg",
-        "durationSeconds": 3231,
-        "title": "🔴 LIVE: Packers 2026 Mock Draft! Fixing the Roster Without a 1st Round Pick",
+        "url": "https://www.youtube.com/watch?v=1uijIeVIQQg",
+        "thumbnailUrl": "https://img.youtube.com/vi/1uijIeVIQQg/hqdefault.jpg",
+        "durationSeconds": 9984,
+        "title": "060 Phil Phails @ Fitness with James Carr | ADHD, Broken Heart & Trying to Be Normal",
         "source": "youtube",
-        "channel": "Packerfan Total Access 🏈🧀",
-        "publishedAt": "Streamed 2 hours ago"
+        "channel": "Phil Phails",
+        "publishedAt": "2 hours ago"
       }
     },
     {
       "id": "momentum_ana",
       "title": "Ducks Heating Up",
-      "subtitle": "3-game point streak · +3 goal diff",
+      "subtitle": "4-game point streak · +3 goal diff",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-22T06:00:08.617Z",
-      "expiresAt": "2026-03-25T06:00:08.617Z",
+      "triggeredAt": "2026-03-24T18:01:12.923Z",
+      "expiresAt": "2026-03-27T18:01:12.923Z",
       "kind": "momentum",
       "region": "SoCal",
       "regionPriority": 2,
@@ -352,10 +331,16 @@
         "team": "Anaheim Ducks",
         "league": "NHL",
         "abbrev": "ANA",
-        "winStreak": 1,
-        "pointStreak": 3,
+        "winStreak": 2,
+        "pointStreak": 4,
         "goalDiff": 3,
         "recentGames": [
+          {
+            "date": "2026-03-23T00:00:00Z",
+            "opponent": "Buffalo",
+            "score": "6-5",
+            "result": "W"
+          },
           {
             "date": "2026-03-21T02:00:00Z",
             "opponent": "Utah",
@@ -367,33 +352,68 @@
             "opponent": "Philadelphia",
             "score": "2-3",
             "result": "L"
-          },
-          {
-            "date": "2026-03-15T23:00:00Z",
-            "opponent": "Montréal",
-            "score": "3-4",
-            "result": "W"
           }
         ],
         "eventIds": [
-          "nhl_2025021117",
           "nhl_2025021134",
           "nhl_2025021147",
-          "nhl_2025021154"
+          "nhl_2025021154",
+          "nhl_2025021176"
         ],
-        "reason": "Anaheim Ducks has earned points in 3 straight games"
+        "reason": "Anaheim Ducks has earned points in 4 straight games"
+      },
+      "sports": [
+        "hockey"
+      ]
+    },
+    {
+      "id": "playoff_push_newengland",
+      "title": "Bruins Push Week",
+      "subtitle": "Four games in seven days, including a back-to-back",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 90,
+      "triggeredAt": "2026-03-24T18:01:12.923Z",
+      "expiresAt": "2026-03-31T18:01:12.923Z",
+      "kind": "playoff_push",
+      "region": "NewEngland",
+      "regionPriority": 3,
+      "regionLabel": "New England",
+      "meta": {
+        "teams": [
+          {
+            "team": "Boston Bruins",
+            "league": "NHL",
+            "gamesInNext7Days": 4,
+            "gamesInNext5Days": 3,
+            "hasBackToBack": true,
+            "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+          }
+        ],
+        "eventIds": [
+          "nhl_2025021120",
+          "nhl_2025021135",
+          "nhl_2025021155",
+          "nhl_2025021170"
+        ],
+        "combinedTeamCount": 1,
+        "windowStart": "2026-03-24T18:01:12.923Z",
+        "windowEnd": "2026-03-31T18:01:12.923Z",
+        "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=QDlo_ZpsYQc",
-        "thumbnailUrl": "https://img.youtube.com/vi/QDlo_ZpsYQc/hqdefault.jpg",
-        "durationSeconds": 10,
-        "title": "2v2 INSANITY! 🛑 Thrashers Goalie Robs Ducks One-Timer (NHL '94 Genesis)",
+        "url": "https://www.youtube.com/watch?v=0XcxWgvbedA",
+        "thumbnailUrl": "https://img.youtube.com/vi/0XcxWgvbedA/hqdefault.jpg",
+        "durationSeconds": 166,
+        "title": "NHL PICKS TODAY | Bruins vs Maple Leafs | Lightning vs Wild | Golden Knights vs Jets | March 24",
         "source": "youtube",
-        "channel": "NHL '94 Podcast",
-        "publishedAt": "3 hours ago"
+        "channel": "Daily Betting Picks",
+        "publishedAt": "4 hours ago"
       }
     },
     {
@@ -405,8 +425,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-22T06:00:08.617Z",
-      "expiresAt": "2026-03-25T06:00:08.617Z",
+      "triggeredAt": "2026-03-24T18:01:12.923Z",
+      "expiresAt": "2026-03-27T18:01:12.923Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -441,113 +461,64 @@
         "eventIds": [
           "nhl_2025021120",
           "nhl_2025021135",
-          "nhl_2025021155"
+          "nhl_2025021155",
+          "nhl_2025021170"
         ],
         "reason": "Boston Bruins has earned points in 5 straight games"
-      },
-      "sports": [
-        "hockey"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=IqMIuhlntX8",
-        "thumbnailUrl": "https://img.youtube.com/vi/IqMIuhlntX8/hqdefault.jpg",
-        "durationSeconds": 695,
-        "title": "Panthers vs. Flames | NHL Highlights | March 20, 2026",
-        "source": "youtube",
-        "channel": "NHL",
-        "publishedAt": "18 hours ago"
-      }
-    },
-    {
-      "id": "upset_alert_nhl_2025021109",
-      "title": "Upset Alert",
-      "subtitle": "Tampa Bay Lightning upsets Edmonton Oilers",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 98,
-      "triggeredAt": "2026-03-22T06:00:08.617Z",
-      "expiresAt": "2026-03-22T12:00:08.617Z",
-      "kind": "upset_alert",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "mode": "completed",
-        "upsetType": "team_upset",
-        "sport": "hockey",
-        "league": "NHL",
-        "favoriteName": "Edmonton Oilers",
-        "underdogName": "Tampa Bay Lightning",
-        "awayTeam": "Tampa Bay Lightning",
-        "homeTeam": "Edmonton Oilers",
-        "startTime": "2026-03-22T02:00:00.000Z",
-        "eventIds": [
-          "nhl_2025021109"
-        ],
-        "reason": "Tampa Bay Lightning pulled off the upset against Edmonton Oilers.\n\nA result like this can shift momentum for the rest of the season."
       },
       "sports": [
         "hockey"
       ]
     },
     {
-      "id": "rivalry_game_soccer-laliga-20260322-2000-atl-tico-madrid-at-real-madrid",
-      "title": "Rivalry Game Tonight",
-      "subtitle": "Atlético Madrid vs Real Madrid · Tonight at 8:00 PM",
+      "id": "upset_alert_tennis-espn-173248",
+      "title": "Upset Alert",
+      "subtitle": "Landaluce stuns Korda at Miami Open",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
-      "priority": 96,
-      "triggeredAt": "2026-03-22T06:00:08.617Z",
-      "expiresAt": "2026-03-23T00:00:00.000Z",
-      "kind": "rivalry_game",
+      "priority": 98,
+      "triggeredAt": "2026-03-24T18:01:12.923Z",
+      "expiresAt": "2026-03-25T00:01:12.923Z",
+      "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "rivalryLabel": "Madrid Derby",
-        "sport": "soccer",
-        "league": "La Liga",
-        "awayTeam": "Atlético Madrid",
-        "homeTeam": "Real Madrid",
-        "startTime": "2026-03-22T20:00:00.000Z",
+        "mode": "completed",
+        "upsetType": "tennis_seed_upset",
+        "sport": "tennis",
+        "league": "ATP Masters 1000",
+        "favoriteName": "Korda",
+        "underdogName": "Landaluce",
+        "favoriteRank": 32,
+        "awayTeam": "Landaluce",
+        "homeTeam": "Korda",
+        "startTime": "2026-03-24T15:10:00.000Z",
         "eventIds": [
-          "soccer-laliga-20260322-2000-atl-tico-madrid-at-real-madrid"
+          "tennis-espn-173248"
         ],
-        "reason": "Atlético Madrid and Real Madrid meet tonight in one of soccer's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
+        "reason": "Korda (seed 32) entered as the higher seed, but Landaluce knocked Korda out.\n\nThis opens up the draw and changes the shape of the tournament."
       },
       "sports": [
-        "soccer"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=5LohulqgpPo",
-        "thumbnailUrl": "https://img.youtube.com/vi/5LohulqgpPo/hqdefault.jpg",
-        "durationSeconds": 842,
-        "title": "Real Madrid vs Atletico Madrid 5-3 - All Goals & Highlights - 2026",
-        "source": "youtube",
-        "channel": "YOUBY l يوبي and 5 more",
-        "publishedAt": "8 hours ago"
-      }
+        "tennis"
+      ]
     }
   ],
   "tonightStory": {
-    "signalType": "multi_team_night",
-    "signalLabel": "YOUR TEAMS",
-    "headline": "Your Sports Night",
-    "body": "The Boston Bruins, New England Revolution, Tulsa Oilers, Orange County SC, and South Africa (+5 more) all play tonight across the NHL, MLS, ECHL, USL, T20I Cricket, Serie A, Ligue 1, La Liga, NWSL.",
-    "sourceEventId": "nhl_2025021108",
+    "signalType": "playoff_push",
+    "signalLabel": "PLAYOFF PUSH",
+    "headline": "Your Team's Push",
+    "body": "Boston Bruins enters a critical stretch with games stacking up.",
+    "sourceEventId": "nhl_2025021120",
     "sourceCard": {
-      "id": "tonight_multi_team",
-      "kind": "multi_team_night",
-      "title": "Your Sports Night"
+      "id": "playoff_push_newengland",
+      "kind": "playoff_push",
+      "title": "Bruins Push Week"
     },
     "sports": [
-      "hockey",
-      "soccer",
-      "cricket"
+      "hockey"
     ]
   }
 }

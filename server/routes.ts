@@ -212,6 +212,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  app.get("/logo-reference", (_req, res) => {
+    const filePath = path.resolve(process.cwd(), "server", "templates", "logo-reference.html");
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
+    res.sendFile(filePath);
+  });
+
   app.post("/api/refresh", (req, res) => {
     const daysParam = parseInt(req.query.days as string, 10) || 14;
     const scriptPath = path.resolve(process.cwd(), "scripts", "updateSchedule.ts");
