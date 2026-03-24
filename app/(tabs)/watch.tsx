@@ -492,7 +492,7 @@ function ChaosCard({
             )}
 
             <View style={styles.primaryFooter}>
-              {isLiveState && <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={28} />}
+              {isLiveState && <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={24} />}
               <View style={styles.primaryTimeRow}>
                 {isSvnsSession && svnsDisplayMatch ? (
                   <Text style={styles.primaryClock}>
@@ -654,7 +654,7 @@ function ChaosCard({
         <View style={styles.secondaryFooter}>
           {isLiveState && (
             <View style={{ opacity: 0.9 }}>
-              <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={22} />
+              <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
             </View>
           )}
           {isSvnsSession && svnsDisplayMatch ? (
@@ -674,7 +674,7 @@ function ChaosCard({
           ) : null}
           {!isLiveState && (
             <View style={{ opacity: 0.9 }}>
-              <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={22} />
+              <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={18} />
             </View>
           )}
         </View>
