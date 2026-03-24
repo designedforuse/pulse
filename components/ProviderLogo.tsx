@@ -59,6 +59,7 @@ const PROVIDER_TEXT_LABELS: Record<string, string> = {
   abc: "ABC",
   cbs: "CBS",
   nbatv: "NBA TV",
+  nbaleaguepass: "NBA LP",
   willowtv: "Willow TV",
 };
 

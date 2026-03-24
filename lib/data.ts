@@ -225,7 +225,7 @@ const BROADCASTER_IDS = new Set([
   "espn",
   "cbs", "cbssn",
   "nbcsn",
-  "abc", "tnt", "nbatv",
+  "abc", "tnt", "nbatv", "primevideo", "nbaleaguepass",
   "beinsports",
   "flosports",
   "victoryplus",
@@ -244,23 +244,30 @@ function resolveNbaBroadcastId(event: SportEvent): [string, string] {
 
   if (n) {
     const nl = n.toLowerCase();
-    if (nl.includes("abc")) return ["abc", "youtubetv"];
-    if (nl.includes("tnt") || nl.includes("tbs")) return ["tnt", "youtubetv"];
-    if (nl.includes("espn") && !nl.includes("espn+")) return ["espn", "youtubetv"];
+    // ABC and ESPN (non-plus) → ESPN logo, open YouTube TV
+    if (nl.includes("abc") || (nl.includes("espn") && !nl.includes("espn+"))) return ["espn", "youtubetv"];
+    // ESPN+ → ESPN logo, open Disney+
     if (nl.includes("espn+")) return ["espn", "disneyplus"];
-    if (nl.includes("nba tv")) return ["nbatv", "youtubetv"];
-    if (nl.includes("nbc")) return ["nbcsn", "youtubetv"];
+    // TNT / TBS
+    if (nl.includes("tnt") || nl.includes("tbs")) return ["tnt", "youtubetv"];
+    // NBC or Peacock → NBC Sports Network logo, open YouTube TV
+    if (nl.includes("nbc") || nl.includes("peacock")) return ["nbcsn", "youtubetv"];
+    // Prime Video
+    if (nl.includes("prime video") || nl.includes("amazon prime")) return ["primevideo", "primevideo"];
   }
 
-  // Fallback via providerReason for existing cached events without broadcastNetworks
-  if (reason === "nba-abc") return ["abc", "youtubetv"];
-  if (reason === "nba-espn" || reason === "nba-espn-abc") return ["espn", "youtubetv"];
+  // Fallback via providerReason for cached events without broadcastNetworks
+  if (reason === "nba-abc" || reason === "nba-espn" || reason === "nba-espn-abc") return ["espn", "youtubetv"];
   if (reason === "nba-tnt") return ["tnt", "youtubetv"];
-  if (reason === "nba-nbatv") return ["nbatv", "youtubetv"];
   if (reason === "nba-espnplus") return ["espn", "disneyplus"];
   if (reason === "nba-nbc") return ["nbcsn", "youtubetv"];
 
-  return ["", ""];
+  // Clippers games → FanDuel Sports Network, open Prime Video
+  const teams = `${event.homeTeam ?? ""} ${event.awayTeam ?? ""}`.toLowerCase();
+  if (teams.includes("clippers")) return ["fanduelsn", "primevideo"];
+
+  // All other NBA games → NBA League Pass, open Prime Video
+  return ["nbaleaguepass", "primevideo"];
 }
 
 function resolveNcaabBroadcastId(event: SportEvent): [string, string] {
