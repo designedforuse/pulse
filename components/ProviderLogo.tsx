@@ -23,6 +23,7 @@ const PROVIDER_IMAGES: Record<string, any> = {
   primevideo: require("@/assets/providers/primevideo.png"),
   appletv: require("@/assets/providers/appletv.png"),
   nbaleaguepass: require("@/assets/providers/nbaleaguepass.png"),
+  willowtv: require("@/assets/providers/willowtv.png"),
 };
 
 // Per-logo optical scale multiplier (applied to the base bounding box).
@@ -50,6 +51,7 @@ const LOGO_SCALE: Record<string, number> = {
   primevideo:    1.0,
   appletv:       1.0,
   nbaleaguepass: 1.0,
+  willowtv:      1.0,
 };
 
 // Measured aspect ratios (width / height) for every logo asset
@@ -87,7 +89,6 @@ const PROVIDER_TEXT_LABELS: Record<string, string> = {
   abc: "ABC",
   cbs: "CBS",
   nbatv: "NBA TV",
-  willowtv: "Willow TV",
 };
 
 let _warnedIds: Set<string> | null = null;
