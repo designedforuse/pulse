@@ -339,7 +339,7 @@ function resolveNhlBroadcastId(event: SportEvent): string {
   const n = event.broadcastNetworks || "";
 
   if (reason === "national") {
-    if (/\bABC\b/.test(n)) return "abc";
+    if (/\bABC\b/.test(n)) return "espn";
     if (/\bESPN\b(?!\+)/.test(n)) return "espn";
     if (/\bTNT\b/.test(n)) return "tnt";
   }
