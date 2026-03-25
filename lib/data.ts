@@ -359,10 +359,10 @@ function resolveNwslBroadcastId(broadcastNetworks: string): string {
   if (/Golazo/i.test(n)) return "cbssn";
   if (/Prime\s*Video/i.test(n)) return "";
   if (/ESPN\+/i.test(n)) return "espn";
-  if (/\bABC\b/i.test(n)) return "abc";
+  if (/\bABC\b/i.test(n)) return "espn";
   if (/\bESPN2\b/i.test(n)) return "espn";
   if (/\bCBSSN\b/i.test(n)) return "cbssn";
-  if (/\bCBS\b/i.test(n)) return "cbs";
+  if (/\bCBS\b/i.test(n)) return "cbssn";
   if (/Victory\+/i.test(n)) return "victoryplus";
   if (/Paramount\+/i.test(n)) return "paramount";
   if (/NWSL\+/i.test(n)) return "nwslplus";
