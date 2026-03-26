@@ -750,6 +750,7 @@ export default function UnifiedEventCard({
   const logoSize = featured ? 22 : 20;
   const isUpcoming = !isLive && !isFinal;
   const showEspnStyle = espnLayout && isUpcoming && showTeamLayout && !isRacing && !isGolf && !isAthletics;
+  const showRacingEspnStyle = espnLayout && isUpcoming && isRacing;
   const providerBrandId = resolveProviderDisplay(event).brandId;
 
   return (
@@ -766,14 +767,14 @@ export default function UnifiedEventCard({
       testID={`event-${event.id}`}
     >
       <Animated.View style={[uStyles.cardInner, featured && uStyles.cardInnerFeatured, flashStyle]}>
-        {!showEspnStyle && (
+        {!showEspnStyle && !showRacingEspnStyle && (
           <View style={[uStyles.accentBar, { backgroundColor: isLive ? liveTensionColor : (accentBarColor ?? sportColor) }]} />
         )}
-        {showEspnStyle && (
+        {(showEspnStyle || showRacingEspnStyle) && (
           <View style={[uStyles.topAccentBar, { backgroundColor: sportColor }]} />
         )}
 
-        {!showEspnStyle && (
+        {!showEspnStyle && !showRacingEspnStyle && (
           <View style={uStyles.header}>
             <View style={[uStyles.sportPill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
               <Text style={[uStyles.sportPillText, { color: sportColor }]} numberOfLines={1}>{getLeagueLabel(event)}</Text>
@@ -813,7 +814,34 @@ export default function UnifiedEventCard({
         )}
 
         <View style={uStyles.body}>
-          {isAthletics ? (
+          {showRacingEspnStyle ? (
+            <View style={uStyles.racingEspnBody}>
+              <View style={uStyles.racingEspnBadgeRow}>
+                <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50", marginBottom: 0 }]}>
+                  <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>
+                    {getLeagueLabel(event)}
+                  </Text>
+                </View>
+                {(event.sessionTitle || event.awayTeam) && (
+                  <View style={[uStyles.racingSessionPill, { backgroundColor: sportColor + "1A", marginLeft: 0 }]}>
+                    <Text style={[uStyles.racingSessionPillText, { color: sportColor }]}>
+                      {event.sessionTitle || event.awayTeam}
+                    </Text>
+                  </View>
+                )}
+              </View>
+              <View style={uStyles.racingEspnCircuitRow}>
+                <Text style={uStyles.racingEspnFlag}>{gpFlag || "🏁"}</Text>
+                <Text style={uStyles.racingEspnTitle} numberOfLines={2}>
+                  {event.competitionName || event.homeTeam}
+                </Text>
+              </View>
+              <View style={uStyles.racingEspnTimeRow}>
+                <Text style={uStyles.espnTime}>{timeStr}</Text>
+                {providerBrandId && <ProviderLogo providerId={providerBrandId} size={20} />}
+              </View>
+            </View>
+          ) : isAthletics ? (
             <View style={uStyles.racingLayout}>
               <View style={uStyles.racingCircuitRow}>
                 <Text style={{ fontSize: featured ? 18 : 16 }}>🏃</Text>
@@ -992,7 +1020,7 @@ export default function UnifiedEventCard({
           ) : null}
         </View>
 
-        {!showEspnStyle && (
+        {!showEspnStyle && !showRacingEspnStyle && (
           <View style={uStyles.footer}>
             {isLive ? (
               <>
@@ -1303,6 +1331,41 @@ const uStyles = StyleSheet.create({
     fontSize: 11,
     fontFamily: "Inter_600SemiBold",
     letterSpacing: 0.3,
+  },
+  racingEspnBody: {
+    alignItems: "center" as const,
+    paddingVertical: 10,
+    paddingHorizontal: 8,
+    gap: 8,
+  },
+  racingEspnBadgeRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    justifyContent: "center" as const,
+    gap: 6,
+  },
+  racingEspnCircuitRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    justifyContent: "center" as const,
+    gap: 8,
+    paddingHorizontal: 4,
+  },
+  racingEspnFlag: {
+    fontSize: 22,
+  },
+  racingEspnTitle: {
+    fontSize: 18,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    textAlign: "center" as const,
+    flexShrink: 1,
+  },
+  racingEspnTimeRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    justifyContent: "center" as const,
+    gap: 10,
   },
   venueText: {
     fontSize: 11,
