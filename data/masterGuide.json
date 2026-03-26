@@ -197,6 +197,12 @@
       "activity": "tv.kidoodle.android.ui.MainActivity"
     },
     {
+      "id": "nwslplus",
+      "name": "NWSL+",
+      "packageName": "com.android.chrome",
+      "launchUrl": "https://plus.nwslsoccer.com/home"
+    },
+    {
       "id": "primevideo",
       "name": "Prime Video",
       "packageName": "com.amazon.avod.thirdpartyclient",
