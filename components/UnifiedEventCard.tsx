@@ -815,30 +815,39 @@ export default function UnifiedEventCard({
 
         <View style={uStyles.body}>
           {showRacingEspnStyle ? (
-            <View style={uStyles.racingEspnBody}>
-              <View style={uStyles.racingEspnBadgeRow}>
-                <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50", marginBottom: 0 }]}>
-                  <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>
-                    {getLeagueLabel(event)}
-                  </Text>
-                </View>
-                {(event.sessionTitle || event.awayTeam) && (
-                  <View style={[uStyles.racingSessionPill, { backgroundColor: sportColor + "1A", marginLeft: 0 }]}>
-                    <Text style={[uStyles.racingSessionPillText, { color: sportColor }]}>
-                      {event.sessionTitle || event.awayTeam}
-                    </Text>
-                  </View>
-                )}
-              </View>
-              <View style={uStyles.racingEspnCircuitRow}>
-                <Text style={uStyles.racingEspnFlag}>{gpFlag || "🏁"}</Text>
-                <Text style={uStyles.racingEspnTitle} numberOfLines={2}>
-                  {event.competitionName || event.homeTeam}
+            <View>
+              {/* F1 league chip — no session pill */}
+              <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
+                <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>
+                  {getLeagueLabel(event)}
                 </Text>
               </View>
-              <View style={uStyles.racingEspnTimeRow}>
-                <Text style={uStyles.espnTime}>{timeStr}</Text>
-                {providerBrandId && <ProviderLogo providerId={providerBrandId} size={20} />}
+              {/* 3-column matchup mirroring Tennis ESPN card */}
+              <View style={uStyles.espnMatchup}>
+                {/* Left: GP flag + short country name */}
+                <View style={uStyles.espnTeamOuter}>
+                  <View style={uStyles.espnStarSlot} />
+                  <View style={uStyles.espnTeam}>
+                    <Text style={uStyles.racingEspnFlagLarge}>{gpFlag || "🏁"}</Text>
+                    <Text style={uStyles.espnTeamName} numberOfLines={1}>
+                      {`${getGrandPrixLocation(event.competitionName || event.homeTeam)} GP`}
+                    </Text>
+                  </View>
+                </View>
+                {/* Center: time + provider logo */}
+                <View style={uStyles.espnCenter}>
+                  <Text style={uStyles.espnTime}>{timeStr}</Text>
+                  {providerBrandId && <ProviderLogo providerId={providerBrandId} size={20} />}
+                </View>
+                {/* Right: session title (Practice 1, Race, Qualifying…) */}
+                <View style={[uStyles.espnTeamOuter, { flexDirection: "row-reverse" }]}>
+                  <View style={uStyles.espnStarSlot} />
+                  <View style={uStyles.espnTeam}>
+                    <Text style={[uStyles.racingEspnTitle, { color: Colors.textPrimary }]} numberOfLines={2}>
+                      {event.sessionTitle || event.awayTeam || ""}
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
           ) : isAthletics ? (
@@ -1353,6 +1362,9 @@ const uStyles = StyleSheet.create({
   },
   racingEspnFlag: {
     fontSize: 22,
+  },
+  racingEspnFlagLarge: {
+    fontSize: 36,
   },
   racingEspnTitle: {
     fontSize: 18,
