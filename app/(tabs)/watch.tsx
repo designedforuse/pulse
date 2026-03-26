@@ -545,7 +545,7 @@ function ChaosCard({
           <View style={[styles.leaguePill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
             <Text style={[styles.leaguePillText, { color: sportColor }]} numberOfLines={1}>
               {isRacing
-                ? `F1${gpShort ? ` · ${gpShort}` : ""}`
+                ? "Formula 1"
                 : isSvnsSession && svnsCity
                 ? `${svnsCity} SVNS${svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}`
                 : event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.tournamentName || event.league}
@@ -586,6 +586,15 @@ function ChaosCard({
                   </View>
                 ) : null}
               </>
+            ) : !isLiveState && !isFinalState ? (
+              <View style={styles.racingUpcomingRow}>
+                {gpFlag ? <Text style={styles.racingUpcomingFlag}>{gpFlag}</Text> : null}
+                {(event.sessionTitle || event.awayTeam) ? (
+                  <Text style={styles.racingUpcomingSession} numberOfLines={1}>
+                    {event.sessionTitle || event.awayTeam}
+                  </Text>
+                ) : null}
+              </View>
             ) : null}
           </View>
         ) : matchupText ? (
@@ -2535,6 +2544,21 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
     color: Colors.textSecondary,
     marginTop: 2,
+  },
+  racingUpcomingRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 6,
+    marginTop: 2,
+  },
+  racingUpcomingFlag: {
+    fontSize: 16,
+  },
+  racingUpcomingSession: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+    flex: 1,
   },
   golfLeaderRow: {
     flexDirection: "row" as const,
