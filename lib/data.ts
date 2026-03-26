@@ -235,6 +235,7 @@ const BROADCASTER_IDS = new Set([
   "rugbypasstv",
   "nwslplus",
   "ion",
+  "appletv",
 ]);
 
 // Returns [displayId, launchProviderId]

@@ -1364,7 +1364,7 @@ const uStyles = StyleSheet.create({
     fontSize: 22,
   },
   racingEspnFlagLarge: {
-    fontSize: 36,
+    fontSize: 28,
   },
   racingEspnTitle: {
     fontSize: 18,
