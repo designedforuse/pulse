@@ -120,6 +120,7 @@ function getSportDisplayName(sport: string): string {
 
 const LEAGUE_DISPLAY_NAMES: Record<string, string> = {
   "English Premiership": "Premiership",
+  "F1": "Formula 1",
 };
 
 function getLeagueLabel(event: SportEvent): string {
@@ -1367,7 +1368,7 @@ const uStyles = StyleSheet.create({
     fontSize: 28,
   },
   racingEspnTitle: {
-    fontSize: 18,
+    fontSize: 15,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
     textAlign: "center" as const,
