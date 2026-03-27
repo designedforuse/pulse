@@ -14,6 +14,7 @@ export interface AppEvent {
   leagueKey?: string;
   providerReason?: string;
   roundLabel?: string;
+  broadcastNetworks?: string;
 }
 
 interface VEvent {

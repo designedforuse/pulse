@@ -236,6 +236,9 @@ const BROADCASTER_IDS = new Set([
   "nwslplus",
   "ion",
   "appletv",
+  "fox",
+  "fs1",
+  "espn2",
 ]);
 
 // Returns [displayId, launchProviderId]
@@ -284,6 +287,26 @@ function resolveSoccerBroadcastId(event: SportEvent): [string, string] {
 
   // MLS → Apple TV (exclusive rights holder)
   if (league === "MLS") return ["appletv", "appletv"];
+
+  // FIFA World Cup → FOX/FS1 based on providerReason
+  if (league === "FIFA World Cup") {
+    const reason = event.providerReason || "";
+    if (reason.includes("fs1")) return ["fs1", "youtubetv"];
+    if (reason.includes("fox")) return ["fox", "youtubetv"];
+    return ["fox", "youtubetv"];
+  }
+
+  // International Friendlies → by broadcast network
+  if (league === "International Friendly") {
+    const reason = event.providerReason || "";
+    if (reason.includes("fs1")) return ["fs1", "youtubetv"];
+    if (reason.includes("fox")) return ["fox", "youtubetv"];
+    if (reason.includes("tnt")) return ["tnt", "tnt"];
+    if (reason.includes("espn2")) return ["espn2", "disneyplus"];
+    if (reason.includes("espn")) return ["espn", "disneyplus"];
+    if (reason.includes("cbs")) return ["cbs", "youtubetv"];
+    return ["fox", "youtubetv"];
+  }
 
   // EPL → NBC Sports Network / YouTube TV
   if (league === "EPL") return ["nbcsn", "youtubetv"];

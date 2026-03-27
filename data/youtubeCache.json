@@ -53,21 +53,21 @@
   },
   "playoff_push:boston bruins playoff push march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=0XcxWgvbedA",
-      "thumbnailUrl": "https://img.youtube.com/vi/0XcxWgvbedA/hqdefault.jpg",
-      "durationSeconds": 166,
-      "title": "NHL PICKS TODAY | Bruins vs Maple Leafs | Lightning vs Wild | Golden Knights vs Jets | March 24",
+      "url": "https://www.youtube.com/watch?v=UzJ2TDMFBf8",
+      "thumbnailUrl": "https://img.youtube.com/vi/UzJ2TDMFBf8/hqdefault.jpg",
+      "durationSeconds": 484,
+      "title": "NHL Power Rankings: March 2026 Update - ESPN",
       "source": "youtube",
-      "channel": "Daily Betting Picks",
-      "publishedAt": "4 hours ago"
+      "channel": "boytoymichelle",
+      "publishedAt": "38 minutes ago"
     },
-    "fetchedAt": "2026-03-24T17:57:12.275Z",
+    "fetchedAt": "2026-03-27T04:08:56.883Z",
     "query": "Boston Bruins playoff push March 2026",
     "debug": {
       "searchQuery": "Boston Bruins playoff push March 2026",
-      "selectedVideoTitle": "NHL PICKS TODAY | Bruins vs Maple Leafs | Lightning vs Wild | Golden Knights vs Jets | March 24",
-      "selectedVideoPublishedAt": "4 hours ago",
-      "selectedVideoChannel": "Daily Betting Picks",
+      "selectedVideoTitle": "NHL Power Rankings: March 2026 Update - ESPN",
+      "selectedVideoPublishedAt": "38 minutes ago",
+      "selectedVideoChannel": "boytoymichelle",
       "rejectedForAgeCount": 0
     }
   },
@@ -85,21 +85,21 @@
   },
   "playoff_push:anaheim ducks playoff push march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=m3iuCkUR0qY",
-      "thumbnailUrl": "https://img.youtube.com/vi/m3iuCkUR0qY/hqdefault.jpg",
-      "durationSeconds": 5589,
-      "title": "If Oil Hits $120… What Happens to Canola Prices?",
+      "url": "https://www.youtube.com/watch?v=UzJ2TDMFBf8",
+      "thumbnailUrl": "https://img.youtube.com/vi/UzJ2TDMFBf8/hqdefault.jpg",
+      "durationSeconds": 484,
+      "title": "NHL Power Rankings: March 2026 Update - ESPN",
       "source": "youtube",
-      "channel": "What the Futures! Podcast",
-      "publishedAt": "7 hours ago"
+      "channel": "boytoymichelle",
+      "publishedAt": "38 minutes ago"
     },
-    "fetchedAt": "2026-03-20T22:36:36.748Z",
+    "fetchedAt": "2026-03-27T04:08:59.021Z",
     "query": "Anaheim Ducks playoff push March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push March 2026",
-      "selectedVideoTitle": "If Oil Hits $120… What Happens to Canola Prices?",
-      "selectedVideoPublishedAt": "7 hours ago",
-      "selectedVideoChannel": "What the Futures! Podcast",
+      "selectedVideoTitle": "NHL Power Rankings: March 2026 Update - ESPN",
+      "selectedVideoPublishedAt": "38 minutes ago",
+      "selectedVideoChannel": "boytoymichelle",
       "rejectedForAgeCount": 0
     }
   },
@@ -480,15 +480,23 @@
     }
   },
   "momentum:anaheim ducks highlights march 2026": {
-    "video": null,
-    "fetchedAt": "2026-03-24T17:57:11.912Z",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=_ok55RGFdnk",
+      "thumbnailUrl": "https://img.youtube.com/vi/_ok55RGFdnk/hqdefault.jpg",
+      "durationSeconds": 609,
+      "title": "Anaheim Ducks at Calgary Flames | FULL Overtime Highlights - March 26, 2026",
+      "source": "youtube",
+      "channel": "SPORTSNET",
+      "publishedAt": "7 minutes ago"
+    },
+    "fetchedAt": "2026-03-27T04:08:56.620Z",
     "query": "Anaheim Ducks highlights March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks highlights March 2026",
-      "selectedVideoTitle": null,
-      "selectedVideoPublishedAt": null,
-      "selectedVideoChannel": null,
-      "rejectedForAgeCount": 1
+      "selectedVideoTitle": "Anaheim Ducks at Calgary Flames | FULL Overtime Highlights - March 26, 2026",
+      "selectedVideoPublishedAt": "7 minutes ago",
+      "selectedVideoChannel": "SPORTSNET",
+      "rejectedForAgeCount": 0
     }
   },
   "upset_alert:darderi vs landaluce upset highlights march 2026": {
@@ -597,6 +605,42 @@
     "query": "Lehecka clinch playoff berth March 2026",
     "debug": {
       "searchQuery": "Lehecka clinch playoff berth March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:edinburgh clinch playoff berth march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-27T04:08:56.348Z",
+    "query": "Edinburgh clinch playoff berth March 2026",
+    "debug": {
+      "searchQuery": "Edinburgh clinch playoff berth March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:florida panthers vs minnesota wild upset highlights march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-27T04:08:57.170Z",
+    "query": "Florida Panthers vs Minnesota Wild upset highlights March 2026",
+    "debug": {
+      "searchQuery": "Florida Panthers vs Minnesota Wild upset highlights March 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:fils clinch playoff berth march 2026": {
+    "video": null,
+    "fetchedAt": "2026-03-27T04:08:58.048Z",
+    "query": "Fils clinch playoff berth March 2026",
+    "debug": {
+      "searchQuery": "Fils clinch playoff berth March 2026",
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,

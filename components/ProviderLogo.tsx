@@ -29,6 +29,8 @@ const PROVIDER_IMAGES: Record<string, any> = {
   nwslplus: require("@/assets/providers/nwslplus.png"),
   nbatv: require("@/assets/providers/nbatv.png"),
   paramount: require("@/assets/providers/paramount.png"),
+  fox: require("@/assets/providers/fox.png"),
+  fs1: require("@/assets/providers/fs1.png"),
 };
 
 // Per-logo optical scale multiplier (applied to the base bounding box).
@@ -62,6 +64,8 @@ const LOGO_SCALE: Record<string, number> = {
   nwslplus:      1.0,
   nbatv:         1.0,
   paramount:     1.0,
+  fox:           1.1,
+  fs1:           1.0,
 };
 
 // Measured aspect ratios (width / height) for every logo asset
@@ -86,6 +90,8 @@ const LOGO_ASPECT: Record<string, number> = {
   disneyplus: 1.83,
   primevideo: 3.17,
   appletv: 1.98,
+  fox: 2.4,
+  fs1: 2.0,
 };
 
 // Logos that are already full-colour and should not be white-tinted

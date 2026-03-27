@@ -209,6 +209,18 @@
       "activity": "com.amazon.avod.thirdpartyclient.LauncherActivity"
     },
     {
+      "id": "fox",
+      "name": "FOX",
+      "packageName": "com.google.android.apps.youtube.unplugged",
+      "activity": "com.google.android.apps.youtube.unplugged.MainActivity"
+    },
+    {
+      "id": "fs1",
+      "name": "FS1",
+      "packageName": "com.google.android.apps.youtube.unplugged",
+      "activity": "com.google.android.apps.youtube.unplugged.MainActivity"
+    },
+    {
       "id": "appletv",
       "name": "Apple TV",
       "packageName": "com.apple.atve.androidtv.appletv",

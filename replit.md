@@ -50,9 +50,12 @@ The application features a frontend built with Expo Router for file-based naviga
 - **MLR (hardcoded):** Major League Rugby schedule data.
 - **Golf Majors (hardcoded):** Players Championship, The Masters, PGA Championship, US Open, British Open schedule data.
 - **World Marathon Majors (hardcoded):** Tokyo, Boston, London, Sydney, Berlin, Chicago, and New York City marathons as athletics/session events on FloSports.
+- **ESPN API (site.api.espn.com):** International Soccer — FIFA World Cup 2026 (`soccer/fifa.world`, 104 events, FOX/FS1 on YouTube TV) and International Friendlies (`soccer/fifa.friendly`, filtered to events with US broadcast coverage, mapped to FOX/FS1/ESPN2/TNT). Retention: 14 days past, World Cup through Aug 2026, friendlies 60 days future.
 - **CricAPI:** International and domestic Cricket fixtures and live scores. Uses `/v1/cricScore` (free tier, no credits needed) for live match detection, and `/v1/matches` (paginated, MAX_PAGES=10, ~20 hits/day) for schedule. Budget: 20 hits/day schedule + max 72 hits/day live (20 min TTL) = ~92/day max vs 100/day limit. Cache timestamp always updated after each API call (even when no matches found) to prevent hammering. Each cricket event stores `cricketMatchId` (CricAPI UUID) for reliable ID-based score matching. The `currentMatches` endpoint was replaced because it requires credits (account has 0 credits).
 - **World Rugby API (api.wr-rims-prod.pulselive.com):** SVNS match schedules and live scores; Super Rugby Pacific live scores and game clock data (event ID: `af9ef6cd-4a14-469d-83da-dd85b9882636`).
 - **Apple TV:** Streaming provider integration.
+- **FOX:** Network broadcast provider (World Cup, Friendlies) — launches YouTube TV.
+- **FS1:** Fox Sports 1 broadcast provider (World Cup, Friendlies) — launches YouTube TV.
 - **YouTube TV:** Streaming provider integration.
 - **Disney+:** Streaming provider integration.
 - **FloSports:** Streaming provider integration.

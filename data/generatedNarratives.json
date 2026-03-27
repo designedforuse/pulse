@@ -1,26 +1,25 @@
 {
-  "lastUpdated": "2026-03-25T00:08:33.190Z",
+  "lastUpdated": "2026-03-27T04:09:10.641Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
-        "NewEngland": 1,
-        "Other": 2
+        "NewEngland": 2,
+        "Other": 1
       },
       "momentum": {
-        "SoCal": 1,
-        "NewEngland": 1
+        "SoCal": 1
       },
       "league_moment": {
-        "SouthAfrica": 1,
-        "Other": 1
+        "Other": 2
       },
       "player_movement": {
         "Other": 1
       },
-      "rivalry_game": {
-        "SouthAfrica": 1
+      "upset_alert": {
+        "Other": 1
       },
       "clinch_watch": {
+        "SouthAfrica": 1,
         "Other": 1
       }
     },
@@ -29,40 +28,40 @@
     },
     "finalFeedByRegion": {
       "SouthAfrica": [
-        "rivalry_game: Rivalry Game Tonight",
-        "league_moment: Freedom Cup"
+        "clinch_watch: Clinch Watch"
       ],
       "SoCal": [
         "momentum: Ducks Heating Up"
       ],
       "NewEngland": [
-        "playoff_push: Bruins Push Week",
-        "momentum: Bruins Heating Up"
+        "playoff_push: Bruins Push Week"
       ],
       "Other": [
-        "clinch_watch: Clinch Watch"
+        "upset_alert: Upset Alert",
+        "clinch_watch: Clinch Watch",
+        "playoff_push: Playoff Push"
       ]
     },
     "droppedCandidatesReasons": [
       {
-        "id": "playoff_push_clinch_fallback_nhl_2025021134",
+        "id": "playoff_push_clinch_fallback_nhl_2025021155",
         "kind": "playoff_push",
-        "region": "Other",
+        "region": "NewEngland",
         "title": "Playoff Push",
-        "reason": "feed cap (max 6)"
-      },
-      {
-        "id": "playoff_push_clinch_fallback_nhl_2025021135",
-        "kind": "playoff_push",
-        "region": "Other",
-        "title": "Playoff Push",
-        "reason": "feed cap (max 6)"
+        "reason": "max 1 playoff_push per region (NewEngland)"
       },
       {
         "id": "player_movement_system",
         "kind": "player_movement",
         "region": "Other",
         "title": "System Shuffle",
+        "reason": "feed cap (max 6)"
+      },
+      {
+        "id": "f1_race_weekend_japanese_grand_prix",
+        "kind": "league_moment",
+        "region": "Other",
+        "title": "Japanese Grand Prix",
         "reason": "feed cap (max 6)"
       },
       {
@@ -94,7 +93,6 @@
           "CGY",
           "EDM",
           "VAN",
-          "CBJ",
           "MTL",
           "NSH",
           "CAR",
@@ -117,11 +115,11 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 643,
+        "playersIngested": 670,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-25T00:08:33.190Z"
+        "timestamp": "2026-03-27T04:09:10.641Z"
       },
-      "cacheHistoryCount": 797,
+      "cacheHistoryCount": 803,
       "error": null
     },
     "exploreFeedCap": 6,
@@ -129,44 +127,49 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -412.1425527777778,
+      "hoursUntil": -464.15295583333335,
       "teamsEvaluated": 0,
       "triggers": {}
     },
     "rivalryGame": {
-      "rawRivalryCandidates": 1,
-      "rivalryAfterRegionFilter": 1,
-      "rivalryFinalCount": 1
+      "rawRivalryCandidates": 0,
+      "rivalryAfterRegionFilter": 0,
+      "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 0,
+      "rawUpsetCandidates": 2,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 0,
-      "upsetFinalCount": 0
+      "upsetCompletedCandidates": 2,
+      "upsetFinalCount": 1
     },
     "clinchWatch": {
       "rawClinchCandidates": 3,
-      "clinchAfterRegionFilter": 1,
-      "clinchFinalCount": 1,
+      "clinchAfterRegionFilter": 2,
+      "clinchFinalCount": 2,
       "clinchGatedOut": [
-        "Anaheim Ducks: 82 pts < 95",
-        "Boston Bruins: 86 pts < 95"
+        "Anaheim Ducks: 86 pts < 95",
+        "Boston Bruins: 88 pts < 95"
       ]
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "nhl_2025021134",
+    "tonightStorySourceEvent": "nhl_2025021147",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 320,
-      "sourceEventId": "nhl_2025021134",
-      "reason": "6 followed/affiliate teams playing tonight",
+      "selectedScore": 260,
+      "sourceEventId": "nhl_2025021147",
+      "reason": "3 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 320,
-          "reason": "6 followed/affiliate teams playing tonight"
+          "score": 260,
+          "reason": "3 followed/affiliate teams playing tonight"
+        },
+        {
+          "label": "[clinch_watch] Playoff Stakes",
+          "score": 190,
+          "reason": "clinch_watch involving followed team(s): Stormers"
         },
         {
           "label": "[playoff_push] Your Team's Push",
@@ -189,14 +192,9 @@
           "reason": "momentum involving followed team(s): Anaheim Ducks"
         },
         {
-          "label": "[momentum] Hot Streak",
-          "score": 150,
-          "reason": "momentum involving followed team(s): Boston Bruins"
-        },
-        {
-          "label": "[rivalry_game] Your Rivalry Night",
-          "score": 140,
-          "reason": "rivalry_game involving followed team(s): South Africa"
+          "label": "[upset_alert] Shock Result",
+          "score": 120,
+          "reason": "upset_alert (generic, no followed teams)"
         },
         {
           "label": "[clinch_watch] Playoff Stakes",
@@ -221,150 +219,95 @@
       ]
     },
     "videoSelection": {
-      "rivalry_game_cricket-t20i-o5z0f0": {
-        "searchQuery": "New Zealand vs South Africa rivalry highlights",
-        "selectedVideoTitle": "​🏆 IPL 2026: RCB-யின் மிரட்டலான Playing 11!#rcb #kingkohli #ipl #lokicricketuniverse",
-        "selectedVideoPublishedAt": "3 hours ago",
-        "selectedVideoChannel": "Loki Cricket Universe",
-        "rejectedForAgeCount": 0
-      },
-      "league_moment_rivalry": {
-        "searchQuery": "Freedom Cup sports March 2026",
-        "selectedVideoTitle": "060 Phil Phails @ Fitness with James Carr | ADHD, Broken Heart & Trying to Be Normal",
-        "selectedVideoPublishedAt": "2 hours ago",
-        "selectedVideoChannel": "Phil Phails",
+      "clinch_watch_rugby-urc-sx99rb": {
+        "searchQuery": "Edinburgh clinch playoff berth March 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
       "momentum_ana": {
         "searchQuery": "Anaheim Ducks highlights March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 1
+        "selectedVideoTitle": "Anaheim Ducks at Calgary Flames | FULL Overtime Highlights - March 26, 2026",
+        "selectedVideoPublishedAt": "7 minutes ago",
+        "selectedVideoChannel": "SPORTSNET",
+        "rejectedForAgeCount": 0
       },
       "playoff_push_newengland": {
         "searchQuery": "Boston Bruins playoff push March 2026",
-        "selectedVideoTitle": "NHL PICKS TODAY | Bruins vs Maple Leafs | Lightning vs Wild | Golden Knights vs Jets | March 24",
-        "selectedVideoPublishedAt": "4 hours ago",
-        "selectedVideoChannel": "Daily Betting Picks",
+        "selectedVideoTitle": "NHL Power Rankings: March 2026 Update - ESPN",
+        "selectedVideoPublishedAt": "38 minutes ago",
+        "selectedVideoChannel": "boytoymichelle",
         "rejectedForAgeCount": 0
       },
-      "momentum_bos": {
-        "searchQuery": "Boston Bruins highlights March 2026",
+      "upset_alert_nhl_2025021140": {
+        "searchQuery": "Florida Panthers vs Minnesota Wild upset highlights March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
-      "clinch_watch_tennis-espn-173253": {
-        "searchQuery": "Lehecka clinch playoff berth March 2026",
+      "clinch_watch_tennis-espn-173257": {
+        "searchQuery": "Fils clinch playoff berth March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
+        "rejectedForAgeCount": 0
+      },
+      "playoff_push_clinch_fallback_nhl_2025021154": {
+        "searchQuery": "Anaheim Ducks playoff push March 2026",
+        "selectedVideoTitle": "NHL Power Rankings: March 2026 Update - ESPN",
+        "selectedVideoPublishedAt": "38 minutes ago",
+        "selectedVideoChannel": "boytoymichelle",
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
-      "id": "rivalry_game_cricket-t20i-o5z0f0",
-      "title": "Rivalry Game Tonight",
-      "subtitle": "New Zealand vs South Africa · Tonight at 6:15 AM",
+      "id": "clinch_watch_rugby-urc-sx99rb",
+      "title": "Clinch Watch",
+      "subtitle": "Can clinch home quarterfinal in the next 48h",
       "impact": {
-        "label": "Feeds: Watch",
+        "label": "Impacts: Saturday Warm-Up",
+        "ritualId": "saturday_sunrise",
         "tabHint": "Watch"
       },
-      "priority": 96,
-      "triggeredAt": "2026-03-25T00:08:33.190Z",
-      "expiresAt": "2026-03-25T10:15:00.000Z",
-      "kind": "rivalry_game",
+      "priority": 92,
+      "triggeredAt": "2026-03-27T04:09:10.641Z",
+      "expiresAt": "2026-03-28T21:00:00.000Z",
+      "kind": "clinch_watch",
       "region": "SouthAfrica",
       "regionPriority": 1,
       "regionLabel": "South Africa",
       "meta": {
-        "rivalryLabel": "Freedom Cup",
-        "sport": "cricket",
-        "league": "T20I Cricket",
-        "awayTeam": "New Zealand",
-        "homeTeam": "South Africa",
-        "startTime": "2026-03-25T06:15:00.000Z",
+        "source": "team_config",
+        "conditionLabel": "Can clinch home quarterfinal",
+        "sport": "rugby",
+        "league": "URC",
+        "awayTeam": "Edinburgh",
+        "homeTeam": "Stormers",
+        "startTime": "2026-03-28T17:00:00.000Z",
         "eventIds": [
-          "cricket-t20i-o5z0f0"
+          "rugby-urc-sx99rb"
         ],
-        "reason": "New Zealand and South Africa meet tonight in one of cricket's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
+        "reason": "Stormers have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
       },
       "sports": [
-        "cricket"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=SXs-rRfT33M",
-        "thumbnailUrl": "https://img.youtube.com/vi/SXs-rRfT33M/hqdefault.jpg",
-        "durationSeconds": 28,
-        "title": "​🏆 IPL 2026: RCB-யின் மிரட்டலான Playing 11!#rcb #kingkohli #ipl #lokicricketuniverse",
-        "source": "youtube",
-        "channel": "Loki Cricket Universe",
-        "publishedAt": "3 hours ago"
-      }
-    },
-    {
-      "id": "league_moment_rivalry",
-      "title": "Freedom Cup",
-      "subtitle": "Freedom Cup: New Zealand @ South Africa",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 70,
-      "triggeredAt": "2026-03-25T00:08:33.190Z",
-      "expiresAt": "2026-04-01T00:08:33.190Z",
-      "kind": "league_moment",
-      "region": "SouthAfrica",
-      "regionPriority": 1,
-      "regionLabel": "South Africa",
-      "meta": {
-        "type": "rivalry",
-        "matchCount": 1,
-        "rivalries": [
-          "Freedom Cup"
-        ],
-        "matches": [
-          {
-            "label": "Freedom Cup",
-            "away": "New Zealand",
-            "home": "South Africa",
-            "league": "T20I Cricket",
-            "startTime": "2026-03-25T06:15:00.000Z"
-          }
-        ],
-        "eventIds": [
-          "cricket-t20i-o5z0f0"
-        ],
-        "reason": "1 known rivalry matchup(s) found: Freedom Cup"
-      },
-      "sports": [
-        "cricket"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=1uijIeVIQQg",
-        "thumbnailUrl": "https://img.youtube.com/vi/1uijIeVIQQg/hqdefault.jpg",
-        "durationSeconds": 9984,
-        "title": "060 Phil Phails @ Fitness with James Carr | ADHD, Broken Heart & Trying to Be Normal",
-        "source": "youtube",
-        "channel": "Phil Phails",
-        "publishedAt": "2 hours ago"
-      }
+        "rugby"
+      ]
     },
     {
       "id": "momentum_ana",
       "title": "Ducks Heating Up",
-      "subtitle": "4-game point streak · +3 goal diff",
+      "subtitle": "4-game win streak · +4 goal diff",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-25T00:08:33.190Z",
-      "expiresAt": "2026-03-28T00:08:33.190Z",
+      "triggeredAt": "2026-03-27T04:09:10.641Z",
+      "expiresAt": "2026-03-30T04:09:10.641Z",
       "kind": "momentum",
       "region": "SoCal",
       "regionPriority": 2,
@@ -373,40 +316,48 @@
         "team": "Anaheim Ducks",
         "league": "NHL",
         "abbrev": "ANA",
-        "winStreak": 2,
-        "pointStreak": 4,
-        "goalDiff": 3,
+        "winStreak": 4,
+        "pointStreak": 5,
+        "goalDiff": 4,
         "recentGames": [
+          {
+            "date": "2026-03-27T01:00:00Z",
+            "opponent": "Calgary",
+            "score": "2-3",
+            "result": "W"
+          },
+          {
+            "date": "2026-03-25T02:00:00Z",
+            "opponent": "Vancouver",
+            "score": "3-5",
+            "result": "W"
+          },
           {
             "date": "2026-03-23T00:00:00Z",
             "opponent": "Buffalo",
             "score": "6-5",
             "result": "W"
-          },
-          {
-            "date": "2026-03-21T02:00:00Z",
-            "opponent": "Utah",
-            "score": "1-4",
-            "result": "W"
-          },
-          {
-            "date": "2026-03-19T02:00:00Z",
-            "opponent": "Philadelphia",
-            "score": "2-3",
-            "result": "L"
           }
         ],
         "eventIds": [
-          "nhl_2025021134",
-          "nhl_2025021147",
           "nhl_2025021154",
-          "nhl_2025021176"
+          "nhl_2025021176",
+          "nhl_2025021190"
         ],
-        "reason": "Anaheim Ducks has earned points in 4 straight games"
+        "reason": "Anaheim Ducks is on a 4-game win streak"
       },
       "sports": [
         "hockey"
-      ]
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=_ok55RGFdnk",
+        "thumbnailUrl": "https://img.youtube.com/vi/_ok55RGFdnk/hqdefault.jpg",
+        "durationSeconds": 609,
+        "title": "Anaheim Ducks at Calgary Flames | FULL Overtime Highlights - March 26, 2026",
+        "source": "youtube",
+        "channel": "SPORTSNET",
+        "publishedAt": "7 minutes ago"
+      }
     },
     {
       "id": "playoff_push_newengland",
@@ -417,8 +368,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-25T00:08:33.190Z",
-      "expiresAt": "2026-04-01T00:08:33.190Z",
+      "triggeredAt": "2026-03-27T04:09:10.641Z",
+      "expiresAt": "2026-04-03T04:09:10.641Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -435,94 +386,74 @@
           }
         ],
         "eventIds": [
-          "nhl_2025021135",
           "nhl_2025021155",
           "nhl_2025021170",
-          "nhl_2025021178"
+          "nhl_2025021178",
+          "nhl_2025021193"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-25T00:08:33.190Z",
-        "windowEnd": "2026-04-01T00:08:33.190Z",
+        "windowStart": "2026-03-27T04:09:10.641Z",
+        "windowEnd": "2026-04-03T04:09:10.641Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=0XcxWgvbedA",
-        "thumbnailUrl": "https://img.youtube.com/vi/0XcxWgvbedA/hqdefault.jpg",
-        "durationSeconds": 166,
-        "title": "NHL PICKS TODAY | Bruins vs Maple Leafs | Lightning vs Wild | Golden Knights vs Jets | March 24",
+        "url": "https://www.youtube.com/watch?v=UzJ2TDMFBf8",
+        "thumbnailUrl": "https://img.youtube.com/vi/UzJ2TDMFBf8/hqdefault.jpg",
+        "durationSeconds": 484,
+        "title": "NHL Power Rankings: March 2026 Update - ESPN",
         "source": "youtube",
-        "channel": "Daily Betting Picks",
-        "publishedAt": "4 hours ago"
+        "channel": "boytoymichelle",
+        "publishedAt": "38 minutes ago"
       }
     },
     {
-      "id": "momentum_bos",
-      "title": "Bruins Heating Up",
-      "subtitle": "5-game point streak · +6 goal diff",
+      "id": "upset_alert_nhl_2025021140",
+      "title": "Upset Alert",
+      "subtitle": "Minnesota Wild upsets Florida Panthers",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
-      "priority": 80,
-      "triggeredAt": "2026-03-25T00:08:33.190Z",
-      "expiresAt": "2026-03-28T00:08:33.190Z",
-      "kind": "momentum",
-      "region": "NewEngland",
-      "regionPriority": 3,
-      "regionLabel": "New England",
+      "priority": 98,
+      "triggeredAt": "2026-03-27T04:09:10.641Z",
+      "expiresAt": "2026-03-27T10:09:10.641Z",
+      "kind": "upset_alert",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
       "meta": {
-        "team": "Boston Bruins",
+        "mode": "completed",
+        "upsetType": "team_upset",
+        "sport": "hockey",
         "league": "NHL",
-        "abbrev": "BOS",
-        "winStreak": 2,
-        "pointStreak": 5,
-        "goalDiff": 6,
-        "recentGames": [
-          {
-            "date": "2026-03-22T00:00:00Z",
-            "opponent": "Detroit",
-            "score": "2-4",
-            "result": "W"
-          },
-          {
-            "date": "2026-03-19T23:00:00Z",
-            "opponent": "Winnipeg",
-            "score": "6-1",
-            "result": "W"
-          },
-          {
-            "date": "2026-03-17T23:00:00Z",
-            "opponent": "Montréal",
-            "score": "3-2",
-            "result": "L"
-          }
-        ],
+        "favoriteName": "Florida Panthers",
+        "underdogName": "Minnesota Wild",
+        "awayTeam": "Minnesota Wild",
+        "homeTeam": "Florida Panthers",
+        "startTime": "2026-03-26T23:00:00.000Z",
         "eventIds": [
-          "nhl_2025021135",
-          "nhl_2025021155",
-          "nhl_2025021170",
-          "nhl_2025021178"
+          "nhl_2025021140"
         ],
-        "reason": "Boston Bruins has earned points in 5 straight games"
+        "reason": "Minnesota Wild pulled off the upset against Florida Panthers.\n\nA result like this can shift momentum for the rest of the season."
       },
       "sports": [
         "hockey"
       ]
     },
     {
-      "id": "clinch_watch_tennis-espn-173253",
+      "id": "clinch_watch_tennis-espn-173257",
       "title": "Clinch Watch",
-      "subtitle": "Lehecka vs Landaluce · Tennis title on the line",
+      "subtitle": "Fils vs Lehecka · Tennis title on the line",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-25T00:08:33.190Z",
-      "expiresAt": "2026-03-25T23:00:00.000Z",
+      "triggeredAt": "2026-03-27T04:09:10.641Z",
+      "expiresAt": "2026-03-27T23:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
@@ -532,25 +463,66 @@
         "conditionLabel": "Tennis title on the line",
         "sport": "tennis",
         "league": "ATP Masters 1000",
-        "awayTeam": "Lehecka",
-        "homeTeam": "Landaluce",
-        "startTime": "2026-03-25T19:00:00.000Z",
+        "awayTeam": "Fils",
+        "homeTeam": "Lehecka",
+        "startTime": "2026-03-27T19:00:00.000Z",
         "eventIds": [
-          "tennis-espn-173253"
+          "tennis-espn-173257"
         ],
-        "reason": "Lehecka and Landaluce meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
+        "reason": "Fils and Lehecka meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
       },
       "sports": [
         "tennis"
       ]
+    },
+    {
+      "id": "playoff_push_clinch_fallback_nhl_2025021154",
+      "title": "Playoff Push",
+      "subtitle": "A win keeps Anaheim Ducks in the playoff race.",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 90,
+      "triggeredAt": "2026-03-27T04:09:10.641Z",
+      "expiresAt": "2026-03-28T23:30:00.000Z",
+      "kind": "playoff_push",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "teams": [
+          {
+            "team": "Anaheim Ducks",
+            "league": "NHL"
+          }
+        ],
+        "eventIds": [
+          "nhl_2025021154"
+        ],
+        "reason": "Anaheim Ducks has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
+        "clinchFallback": true
+      },
+      "sports": [
+        "hockey"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=UzJ2TDMFBf8",
+        "thumbnailUrl": "https://img.youtube.com/vi/UzJ2TDMFBf8/hqdefault.jpg",
+        "durationSeconds": 484,
+        "title": "NHL Power Rankings: March 2026 Update - ESPN",
+        "source": "youtube",
+        "channel": "boytoymichelle",
+        "publishedAt": "38 minutes ago"
+      }
     }
   ],
   "tonightStory": {
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Anaheim Ducks, South Africa, Los Angeles Lakers, Boston Bruins, and Boston Celtics (+1 more) all play tonight across the NHL, T20I Cricket, NBA, AHL.",
-    "sourceEventId": "nhl_2025021134",
+    "body": "The Anaheim Ducks, Japanese Grand Prix, and Boston Celtics all play tonight across the NHL, F1, NBA.",
+    "sourceEventId": "nhl_2025021147",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
@@ -558,7 +530,7 @@
     },
     "sports": [
       "hockey",
-      "cricket",
+      "racing",
       "basketball"
     ]
   }
