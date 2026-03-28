@@ -2,12 +2,17 @@ import * as fs from "fs";
 import * as path from "path";
 
 const FEATURED_CRICKET_NATIONS = new Set([
-  "south africa", "india", "west indies", "new zealand",
-  "australia", "england", "pakistan", "sri lanka",
+  // ICC Full Members (Tier 1)
+  "india", "australia", "england", "south africa", "new zealand",
+  "pakistan", "sri lanka", "west indies", "bangladesh", "afghanistan",
+  "zimbabwe", "ireland",
+  // Key Associates (regularly appear in T20 World Cup / high-profile bilateral series)
+  "scotland", "netherlands", "nepal", "uae", "united arab emirates",
+  "namibia", "oman", "usa", "united states", "canada",
+  "papua new guinea", "uganda",
 ]);
 
 function passesNationFilter(event: { homeTeam: string; awayTeam: string; competitionType?: string; isIccT20Wc?: boolean }): boolean {
-  if (event.isIccT20Wc) return true;
   if (event.competitionType !== "international") return true;
   const teams = [event.homeTeam, event.awayTeam].map((t) => t.toLowerCase());
   return teams.some((t) => FEATURED_CRICKET_NATIONS.has(t));
@@ -22,6 +27,7 @@ const CRICKET_DURATION_MIN: Record<string, number> = {
 
 const ALLOWED_DOMESTIC_LEAGUES: Record<string, { league: string; country: string }> = {
   ipl: { league: "IPL", country: "India" },
+  "indian premier league": { league: "IPL", country: "India" },
   bbl: { league: "BBL", country: "Australia" },
   "super smash": { league: "Super Smash", country: "New Zealand" },
   sa20: { league: "SA20", country: "South Africa" },
@@ -475,9 +481,10 @@ function resolveHostCountry(venue: string, teams: string[]): string {
 }
 
 function getProvider(league: string, country: string): string {
+  if (league === "IPL") return "willowtv";
   const disneyCountries = ["New Zealand", "Caribbean"];
   if (disneyCountries.includes(country)) return "disneyplus";
-  return "youtubetv";
+  return "willowtv";
 }
 
 function getLeagueKey(league: string): string {
@@ -730,7 +737,7 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
       continue;
     }
 
-    if (classification.type === "international" && !classification.isIccT20Wc) {
+    if (classification.type === "international") {
       const teams = (match.teams || []).map((t) => t.toLowerCase());
       const hasFeatured = teams.some((t) => FEATURED_CRICKET_NATIONS.has(t));
       if (!hasFeatured) {
