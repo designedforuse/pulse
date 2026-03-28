@@ -886,6 +886,11 @@ export default function UnifiedEventCard({
                   {event.competitionName || event.homeTeam}
                 </Text>
               </View>
+              {(event.sessionTitle || event.awayTeam) && (
+                <Text style={uStyles.racingSessionSubtitle} numberOfLines={1}>
+                  {event.sessionTitle || event.awayTeam}
+                </Text>
+              )}
               {(isLive || isFinal) && score?.racingLeader && (
                 <View style={uStyles.racingLeaderSection}>
                   <View style={uStyles.racingLeaderRow}>
@@ -1296,6 +1301,12 @@ const uStyles = StyleSheet.create({
   },
   racingCircuitNameFeatured: {
     fontSize: 18,
+  },
+  racingSessionSubtitle: {
+    fontSize: 13,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+    marginTop: 2,
   },
   racingLeaderSection: {
     marginTop: 4,
