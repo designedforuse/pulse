@@ -717,10 +717,44 @@ export async function fetchRugbyEvents(): Promise<RugbyFetchResult> {
 
   allEvents.sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
 
-  const sourceUsed = sourceParts.length > 0 ? "ical" : "none";
-  console.log(`  Rugby total: ${allEvents.length} events (${sourceParts.join(", ")})`);
+  // De-duplicate same home+away matchup within 36 hours (iCal timezone artifact:
+  // some feeds emit both a UTC entry and a local-time-treated-as-UTC entry, landing
+  // on different calendar dates but referring to the same fixture).
+  const matchupDropIds = new Set<string>();
+  const matchupSeen = new Map<string, AppEvent>(); // "homeTeam|awayTeam|leagueKey" → representative event
+  for (const ev of allEvents) {
+    const key = `${ev.homeTeam}|${ev.awayTeam}|${ev.leagueKey ?? ev.league}`;
+    const prev = matchupSeen.get(key);
+    if (prev) {
+      const prevMs = new Date(prev.startTimeLocal).getTime();
+      const evMs = new Date(ev.startTimeLocal).getTime();
+      const gapHours = Math.abs(evMs - prevMs) / 3600000;
+      if (gapHours <= 36) {
+        // Keep the EARLIER entry (UTC iCal entries are canonical; local-time-as-UTC
+        // artifacts shift the time forward, producing the later duplicate)
+        if (evMs < prevMs) {
+          matchupDropIds.add(prev.id);
+          matchupSeen.set(key, ev);
+        } else {
+          matchupDropIds.add(ev.id);
+        }
+      } else {
+        // More than 36h apart → genuinely different fixtures; update to latest
+        matchupSeen.set(key, ev);
+      }
+    } else {
+      matchupSeen.set(key, ev);
+    }
+  }
+  const deduped = matchupDropIds.size > 0 ? allEvents.filter(e => !matchupDropIds.has(e.id)) : allEvents;
+  if (matchupDropIds.size > 0) {
+    console.log(`  Rugby [dedup]: Removed ${matchupDropIds.size} same-matchup duplicate(s) (iCal timezone artifact)`);
+  }
 
-  return { events: allEvents, sourceUsed, counts };
+  const sourceUsed = sourceParts.length > 0 ? "ical" : "none";
+  console.log(`  Rugby total: ${deduped.length} events (${sourceParts.join(", ")})`);
+
+  return { events: deduped, sourceUsed, counts };
 }
 
 export function mergeRugbyEvents(
@@ -822,9 +856,43 @@ export function mergeRugbyEvents(
       }
     }
   }
-  const deduped = conflictIds.size > 0 ? merged.filter(e => !conflictIds.has(e.id)) : merged;
-  if (conflictIds.size > 0) {
-    console.log(`  Rugby [merge]: Removed ${conflictIds.size} team-conflict duplicate(s)`);
+
+  // Remove same-matchup duplicates within 36h (iCal timezone artifact where UTC and
+  // local-time-as-UTC entries land on different calendar dates for the same fixture).
+  // Prefer fresh IDs; among equals prefer the later start time (local time = more accurate).
+  const matchupSeen = new Map<string, AppEvent>(); // "leagueKey|homeTeam|awayTeam" → kept event
+  for (const e of merged) {
+    if (conflictIds.has(e.id)) continue;
+    const key = `${e.leagueKey ?? e.league}|${e.homeTeam}|${e.awayTeam}`;
+    const prev = matchupSeen.get(key);
+    if (prev) {
+      const prevMs = new Date(prev.startTimeLocal).getTime();
+      const evMs = new Date(e.startTimeLocal).getTime();
+      const gapHours = Math.abs(evMs - prevMs) / 3600000;
+      if (gapHours <= 36) {
+        // Among duplicates: prefer fresh over stale; among equal freshness keep the
+        // EARLIER timestamp (UTC iCal entries are canonical; local-time-as-UTC
+        // artifacts typically shift the time forward producing the later duplicate).
+        const keepCurrent = freshIds.has(e.id) && !freshIds.has(prev.id);
+        if (keepCurrent) {
+          conflictIds.add(prev.id);
+          matchupSeen.set(key, e);
+        } else {
+          conflictIds.add(e.id); // drop the later (current) duplicate
+        }
+      } else {
+        // More than 36h apart → genuinely different fixtures; track latest
+        if (evMs > prevMs) matchupSeen.set(key, e);
+      }
+    } else {
+      matchupSeen.set(key, e);
+    }
+  }
+
+  const totalConflicts = conflictIds.size;
+  const deduped = totalConflicts > 0 ? merged.filter(e => !conflictIds.has(e.id)) : merged;
+  if (totalConflicts > 0) {
+    console.log(`  Rugby [merge]: Removed ${totalConflicts} duplicate(s) (team-conflict + same-matchup)`);
   }
 
   return { merged: deduped, added, updated, pruned };

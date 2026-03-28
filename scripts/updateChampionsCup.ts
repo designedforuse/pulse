@@ -194,8 +194,41 @@ export async function fetchChampionsCupEvents(): Promise<ChampionsCupFetchResult
       });
     }
 
-    console.log(`  Champions Cup: ${events.length} events in retention window`);
-    return { events, sourceUsed: "ical", count: events.length, firstMatchDate: firstMatchDate ?? undefined };
+    // De-duplicate same matchup within 36h (iCal timezone artifact: some feeds emit
+    // both UTC and local-time-as-UTC entries for the same fixture with different hour values).
+    events.sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
+    const cupDropIds = new Set<string>();
+    const cupSeen = new Map<string, AppEvent>(); // "homeTeam|awayTeam" → representative
+    for (const ev of events) {
+      const key = `${ev.homeTeam}|${ev.awayTeam}`;
+      const prev = cupSeen.get(key);
+      if (prev) {
+        const prevMs = new Date(prev.startTimeLocal).getTime();
+        const evMs = new Date(ev.startTimeLocal).getTime();
+        const gapHours = Math.abs(evMs - prevMs) / 3600000;
+        if (gapHours <= 36) {
+          if (evMs < prevMs) {
+            // keep current (earlier); drop prev
+            cupDropIds.add(prev.id);
+            cupSeen.set(key, ev);
+          } else {
+            // keep prev (earlier); drop current
+            cupDropIds.add(ev.id);
+          }
+        } else {
+          cupSeen.set(key, ev);
+        }
+      } else {
+        cupSeen.set(key, ev);
+      }
+    }
+    const dedupedEvents = cupDropIds.size > 0 ? events.filter(e => !cupDropIds.has(e.id)) : events;
+    if (cupDropIds.size > 0) {
+      console.log(`  Champions Cup: Removed ${cupDropIds.size} same-matchup duplicate(s)`);
+    }
+
+    console.log(`  Champions Cup: ${dedupedEvents.length} events in retention window`);
+    return { events: dedupedEvents, sourceUsed: "ical", count: dedupedEvents.length, firstMatchDate: firstMatchDate ?? undefined };
   } catch (err: any) {
     console.error(`  Champions Cup: Error:`, err.message);
     return { events: [], sourceUsed: "none", count: 0 };
@@ -240,5 +273,32 @@ export function mergeChampionsCupEvents(
   const pruned = beforePrune - merged.length;
   merged.sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
 
-  return { merged, added, updated, pruned };
+  const freshIds = new Set(fresh.map(e => e.id));
+  const matchupSeen = new Map<string, AppEvent>();
+  const dupDropIds = new Set<string>();
+  for (const e of merged) {
+    const key = `${e.homeTeam}|${e.awayTeam}`;
+    const prev = matchupSeen.get(key);
+    if (prev) {
+      const prevMs = new Date(prev.startTimeLocal).getTime();
+      const evMs = new Date(e.startTimeLocal).getTime();
+      const gapHours = Math.abs(evMs - prevMs) / 3600000;
+      if (gapHours <= 36) {
+        // Keep earlier entry (UTC canonical); only override if current is fresh and prev is stale
+        const keepCurrent = freshIds.has(e.id) && !freshIds.has(prev.id);
+        if (keepCurrent) { dupDropIds.add(prev.id); matchupSeen.set(key, e); }
+        else { dupDropIds.add(e.id); } // drop later duplicate
+      } else {
+        if (evMs > prevMs) matchupSeen.set(key, e);
+      }
+    } else {
+      matchupSeen.set(key, e);
+    }
+  }
+  const deduped = dupDropIds.size > 0 ? merged.filter(e => !dupDropIds.has(e.id)) : merged;
+  if (dupDropIds.size > 0) {
+    console.log(`  Champions Cup [merge]: Removed ${dupDropIds.size} same-matchup duplicate(s)`);
+  }
+
+  return { merged: deduped, added, updated, pruned };
 }

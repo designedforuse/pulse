@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-28T16:15:32.802Z",
+  "lastUpdated": "2026-03-28T16:35:25.001Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -111,7 +111,7 @@
         ],
         "playersIngested": 664,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-28T16:15:32.802Z"
+        "timestamp": "2026-03-28T16:35:25.001Z"
       },
       "cacheHistoryCount": 806,
       "error": null
@@ -121,7 +121,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -500.2591116666667,
+      "hoursUntil": -500.59027805555553,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -152,14 +152,14 @@
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 420,
+      "selectedScore": 400,
       "sourceEventId": "f1-espn-401839040",
-      "reason": "11 followed/affiliate teams playing tonight",
+      "reason": "10 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 420,
-          "reason": "11 followed/affiliate teams playing tonight"
+          "score": 400,
+          "reason": "10 followed/affiliate teams playing tonight"
         },
         {
           "label": "[clinch_watch] Playoff Stakes",
@@ -274,7 +274,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-28T16:15:32.802Z",
+      "triggeredAt": "2026-03-28T16:35:25.001Z",
       "expiresAt": "2026-03-28T21:00:00.000Z",
       "kind": "clinch_watch",
       "region": "SouthAfrica",
@@ -307,8 +307,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-28T16:15:32.802Z",
-      "expiresAt": "2026-04-04T16:15:32.802Z",
+      "triggeredAt": "2026-03-28T16:35:25.001Z",
+      "expiresAt": "2026-04-04T16:35:25.001Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -331,8 +331,8 @@
           "ahl-1028816"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-28T16:15:32.802Z",
-        "windowEnd": "2026-04-04T16:15:32.802Z",
+        "windowStart": "2026-03-28T16:35:25.001Z",
+        "windowEnd": "2026-04-04T16:35:25.001Z",
         "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -349,8 +349,8 @@
         "tabHint": "Rituals"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-28T16:15:32.802Z",
-      "expiresAt": "2026-03-31T16:15:32.802Z",
+      "triggeredAt": "2026-03-28T16:35:25.001Z",
+      "expiresAt": "2026-03-31T16:35:25.001Z",
       "kind": "momentum",
       "region": "SoCal",
       "regionPriority": 2,
@@ -412,8 +412,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-28T16:15:32.802Z",
-      "expiresAt": "2026-04-04T16:15:32.802Z",
+      "triggeredAt": "2026-03-28T16:35:25.001Z",
+      "expiresAt": "2026-04-04T16:35:25.001Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -436,8 +436,8 @@
           "nhl_2025021193"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-28T16:15:32.802Z",
-        "windowEnd": "2026-04-04T16:15:32.802Z",
+        "windowStart": "2026-03-28T16:35:25.001Z",
+        "windowEnd": "2026-04-04T16:35:25.001Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -453,7 +453,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-28T16:15:32.802Z",
+      "triggeredAt": "2026-03-28T16:35:25.001Z",
       "expiresAt": "2026-03-29T08:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -485,7 +485,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-28T16:15:32.802Z",
+      "triggeredAt": "2026-03-28T16:35:25.001Z",
       "expiresAt": "2026-03-28T23:30:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -522,7 +522,7 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Japanese Grand Prix, Los Angeles Lakers, Hurricanes, Sungoliath, and Bath (+6 more) all play tonight across the F1, NBA, Super Rugby, Japan League One, English Premiership, URC, NHL, Top 14, MLR, AHL.",
+    "body": "The Japanese Grand Prix, Los Angeles Lakers, Hurricanes, Sungoliath, and Stormers (+5 more) all play tonight across the F1, NBA, Super Rugby, Japan League One, URC, NHL, Top 14, MLR, AHL.",
     "sourceEventId": "f1-espn-401839040",
     "sourceCard": {
       "id": "tonight_multi_team",
@@ -541,42 +541,6 @@
       "monthLabel": "March 2026",
       "monthKey": "2026-03",
       "leagues": [
-        {
-          "sport": "soccer",
-          "displayName": "EPL",
-          "leagueKey": "epl",
-          "dateRangeLabel": "Mar 14–22",
-          "startDate": "2026-03-14T15:00:00.000Z",
-          "endDate": "2026-03-22T14:15:00.000Z",
-          "eventCount": 23
-        },
-        {
-          "sport": "soccer",
-          "displayName": "La Liga",
-          "leagueKey": "laliga",
-          "dateRangeLabel": "Mar 14–22",
-          "startDate": "2026-03-14T15:15:00.000Z",
-          "endDate": "2026-03-22T20:00:00.000Z",
-          "eventCount": 18
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Ligue 1",
-          "leagueKey": "ligue1",
-          "dateRangeLabel": "Mar 14–22",
-          "startDate": "2026-03-14T16:00:00.000Z",
-          "endDate": "2026-03-22T19:45:00.000Z",
-          "eventCount": 16
-        },
-        {
-          "sport": "soccer",
-          "displayName": "NWSL",
-          "leagueKey": "nwsl",
-          "dateRangeLabel": "Mar 14–29",
-          "startDate": "2026-03-14T16:30:00.000Z",
-          "endDate": "2026-03-29T23:00:00.000Z",
-          "eventCount": 28
-        },
         {
           "sport": "rugby",
           "displayName": "Six Nations",
@@ -615,6 +579,15 @@
         },
         {
           "sport": "soccer",
+          "displayName": "EPL",
+          "leagueKey": "epl",
+          "dateRangeLabel": "Mar 14–22",
+          "startDate": "2026-03-14T17:30:00.000Z",
+          "endDate": "2026-03-22T14:15:00.000Z",
+          "eventCount": 19
+        },
+        {
+          "sport": "soccer",
           "displayName": "MLS",
           "leagueKey": "mls",
           "dateRangeLabel": "Mar 14–22",
@@ -624,12 +597,30 @@
         },
         {
           "sport": "soccer",
+          "displayName": "La Liga",
+          "leagueKey": "laliga",
+          "dateRangeLabel": "Mar 14–22",
+          "startDate": "2026-03-14T17:30:00.000Z",
+          "endDate": "2026-03-22T20:00:00.000Z",
+          "eventCount": 17
+        },
+        {
+          "sport": "soccer",
           "displayName": "Bundesliga",
           "leagueKey": "bundesliga",
           "dateRangeLabel": "Mar 14–22",
           "startDate": "2026-03-14T17:30:00.000Z",
           "endDate": "2026-03-22T18:30:00.000Z",
           "eventCount": 13
+        },
+        {
+          "sport": "soccer",
+          "displayName": "Ligue 1",
+          "leagueKey": "ligue1",
+          "dateRangeLabel": "Mar 14–22",
+          "startDate": "2026-03-14T18:00:00.000Z",
+          "endDate": "2026-03-22T19:45:00.000Z",
+          "eventCount": 15
         },
         {
           "sport": "soccer",
@@ -648,6 +639,15 @@
           "startDate": "2026-03-14T20:00:00.000Z",
           "endDate": "2026-03-31T23:00:00.000Z",
           "eventCount": 114
+        },
+        {
+          "sport": "soccer",
+          "displayName": "NWSL",
+          "leagueKey": "nwsl",
+          "dateRangeLabel": "Mar 14–29",
+          "startDate": "2026-03-14T20:00:00.000Z",
+          "endDate": "2026-03-29T23:00:00.000Z",
+          "eventCount": 27
         },
         {
           "sport": "cricket",
@@ -755,7 +755,7 @@
           "dateRangeLabel": "Mar 20–28",
           "startDate": "2026-03-20T17:00:00.000Z",
           "endDate": "2026-03-28T19:45:00.000Z",
-          "eventCount": 18
+          "eventCount": 16
         },
         {
           "sport": "rugby",
@@ -764,7 +764,7 @@
           "dateRangeLabel": "Mar 20–29",
           "startDate": "2026-03-20T19:45:00.000Z",
           "endDate": "2026-03-29T15:00:00.000Z",
-          "eventCount": 14
+          "eventCount": 10
         },
         {
           "sport": "rugby",
@@ -773,7 +773,7 @@
           "dateRangeLabel": "Mar 21–29",
           "startDate": "2026-03-21T13:30:00.000Z",
           "endDate": "2026-03-29T19:05:00.000Z",
-          "eventCount": 15
+          "eventCount": 14
         },
         {
           "sport": "soccer",
@@ -848,10 +848,10 @@
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "Apr 1–10",
+          "dateRangeLabel": "Apr 1–17",
           "startDate": "2026-04-01T00:30:00.000Z",
-          "endDate": "2026-04-10T02:30:00.000Z",
-          "eventCount": 75
+          "endDate": "2026-04-17T02:30:00.000Z",
+          "eventCount": 127
         },
         {
           "sport": "hockey",
@@ -881,22 +881,22 @@
           "eventCount": 13
         },
         {
+          "sport": "soccer",
+          "displayName": "Ligue 1",
+          "leagueKey": "ligue1",
+          "dateRangeLabel": "Apr 3–18",
+          "startDate": "2026-04-03T18:45:00.000Z",
+          "endDate": "2026-04-18T15:00:00.000Z",
+          "eventCount": 18
+        },
+        {
           "sport": "rugby",
           "displayName": "European Champions Cup",
           "leagueKey": "championscup",
           "dateRangeLabel": "Apr 3–5",
-          "startDate": "2026-04-03T18:00:00.000Z",
+          "startDate": "2026-04-03T19:00:00.000Z",
           "endDate": "2026-04-05T16:30:00.000Z",
-          "eventCount": 19
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Ligue 1",
-          "leagueKey": "ligue1",
-          "dateRangeLabel": "Apr 3–17",
-          "startDate": "2026-04-03T18:45:00.000Z",
-          "endDate": "2026-04-17T18:45:00.000Z",
-          "eventCount": 17
+          "eventCount": 9
         },
         {
           "sport": "soccer",
@@ -949,8 +949,8 @@
           "leagueKey": "seriea",
           "dateRangeLabel": "Apr 4–18",
           "startDate": "2026-04-04T13:00:00.000Z",
-          "endDate": "2026-04-18T13:00:00.000Z",
-          "eventCount": 23
+          "endDate": "2026-04-18T16:00:00.000Z",
+          "eventCount": 24
         },
         {
           "sport": "soccer",
@@ -958,8 +958,8 @@
           "leagueKey": "bundesliga",
           "dateRangeLabel": "Apr 4–18",
           "startDate": "2026-04-04T13:30:00.000Z",
-          "endDate": "2026-04-18T13:30:00.000Z",
-          "eventCount": 23
+          "endDate": "2026-04-18T16:30:00.000Z",
+          "eventCount": 24
         },
         {
           "sport": "soccer",
@@ -1021,17 +1021,17 @@
           "leagueKey": "epl",
           "dateRangeLabel": "Apr 10–18",
           "startDate": "2026-04-10T19:00:00.000Z",
-          "endDate": "2026-04-18T14:00:00.000Z",
-          "eventCount": 15
+          "endDate": "2026-04-18T16:30:00.000Z",
+          "eventCount": 16
         },
         {
           "sport": "rugby",
           "displayName": "SVNS Hong Kong",
           "leagueKey": "svns",
-          "dateRangeLabel": "Apr 17–18",
+          "dateRangeLabel": "Apr 17",
           "startDate": "2026-04-17T02:00:00.000Z",
-          "endDate": "2026-04-18T02:00:00.000Z",
-          "eventCount": 2
+          "endDate": "2026-04-17T02:00:00.000Z",
+          "eventCount": 1
         },
         {
           "sport": "cricket",
@@ -1057,8 +1057,8 @@
           "leagueKey": "urc",
           "dateRangeLabel": "Apr 17–18",
           "startDate": "2026-04-17T18:45:00.000Z",
-          "endDate": "2026-04-18T13:45:00.000Z",
-          "eventCount": 4
+          "endDate": "2026-04-18T16:30:00.000Z",
+          "eventCount": 6
         },
         {
           "sport": "rugby",
@@ -1066,8 +1066,8 @@
           "leagueKey": "premiership",
           "dateRangeLabel": "Apr 17–18",
           "startDate": "2026-04-17T18:45:00.000Z",
-          "endDate": "2026-04-18T14:05:00.000Z",
-          "eventCount": 3
+          "endDate": "2026-04-18T16:30:00.000Z",
+          "eventCount": 4
         },
         {
           "sport": "rugby",
