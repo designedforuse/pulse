@@ -1,10 +1,11 @@
 {
-  "lastUpdated": "2026-03-27T04:09:10.641Z",
+  "lastUpdated": "2026-03-28T03:41:40.857Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
         "NewEngland": 2,
-        "Other": 1
+        "SoCal": 1,
+        "Other": 2
       },
       "momentum": {
         "SoCal": 1
@@ -12,32 +13,27 @@
       "league_moment": {
         "Other": 2
       },
-      "player_movement": {
-        "Other": 1
-      },
-      "upset_alert": {
-        "Other": 1
-      },
       "clinch_watch": {
         "SouthAfrica": 1,
         "Other": 1
       }
     },
     "combinedPushByRegion": {
-      "NewEngland": false
+      "NewEngland": false,
+      "SoCal": false
     },
     "finalFeedByRegion": {
       "SouthAfrica": [
         "clinch_watch: Clinch Watch"
       ],
       "SoCal": [
+        "playoff_push: Gulls Push Week",
         "momentum: Ducks Heating Up"
       ],
       "NewEngland": [
         "playoff_push: Bruins Push Week"
       ],
       "Other": [
-        "upset_alert: Upset Alert",
         "clinch_watch: Clinch Watch",
         "playoff_push: Playoff Push"
       ]
@@ -51,11 +47,11 @@
         "reason": "max 1 playoff_push per region (NewEngland)"
       },
       {
-        "id": "player_movement_system",
-        "kind": "player_movement",
+        "id": "playoff_push_clinch_fallback_nhl_2025021170",
+        "kind": "playoff_push",
         "region": "Other",
-        "title": "System Shuffle",
-        "reason": "feed cap (max 6)"
+        "title": "Playoff Push",
+        "reason": "max 1 playoff_push per region (Other)"
       },
       {
         "id": "f1_race_weekend_japanese_grand_prix",
@@ -75,13 +71,11 @@
     "totalBeforeCap": 10,
     "totalAfterCap": 6,
     "playerMovement": {
-      "rawMovementCandidates": 1,
-      "movementAfterRegionFilter": 1,
+      "rawMovementCandidates": 0,
+      "movementAfterRegionFilter": 0,
       "movementAfterCap": 0,
       "movementFinalCount": 0,
-      "movementDroppedReasons": [
-        "feed cap (max 6)"
-      ],
+      "movementDroppedReasons": [],
       "runMeta": {
         "observedTeams": [
           "ANA",
@@ -115,11 +109,11 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 670,
+        "playersIngested": 664,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-27T04:09:10.641Z"
+        "timestamp": "2026-03-28T03:41:40.857Z"
       },
-      "cacheHistoryCount": 803,
+      "cacheHistoryCount": 806,
       "error": null
     },
     "exploreFeedCap": 6,
@@ -127,7 +121,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -464.15295583333335,
+      "hoursUntil": -487.6946825,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -137,34 +131,35 @@
       "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 2,
+      "rawUpsetCandidates": 0,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 2,
-      "upsetFinalCount": 1
+      "upsetCompletedCandidates": 0,
+      "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 3,
+      "rawClinchCandidates": 2,
       "clinchAfterRegionFilter": 2,
       "clinchFinalCount": 2,
       "clinchGatedOut": [
         "Anaheim Ducks: 86 pts < 95",
+        "Boston Bruins: 88 pts < 95",
         "Boston Bruins: 88 pts < 95"
       ]
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "nhl_2025021147",
+    "tonightStorySourceEvent": "f1-espn-401839040",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 260,
-      "sourceEventId": "nhl_2025021147",
-      "reason": "3 followed/affiliate teams playing tonight",
+      "selectedScore": 420,
+      "sourceEventId": "f1-espn-401839040",
+      "reason": "11 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 260,
-          "reason": "3 followed/affiliate teams playing tonight"
+          "score": 420,
+          "reason": "11 followed/affiliate teams playing tonight"
         },
         {
           "label": "[clinch_watch] Playoff Stakes",
@@ -179,7 +174,17 @@
         {
           "label": "[playoff_push] Your Team's Push",
           "score": 170,
+          "reason": "playoff_push involving followed team(s): San Diego Gulls"
+        },
+        {
+          "label": "[playoff_push] Your Team's Push",
+          "score": 170,
           "reason": "playoff_push involving followed team(s): Anaheim Ducks"
+        },
+        {
+          "label": "[playoff_push] Your Team's Push",
+          "score": 170,
+          "reason": "playoff_push involving followed team(s): Boston Bruins"
         },
         {
           "label": "[playoff_push] Your Team's Push",
@@ -192,9 +197,9 @@
           "reason": "momentum involving followed team(s): Anaheim Ducks"
         },
         {
-          "label": "[upset_alert] Shock Result",
-          "score": 120,
-          "reason": "upset_alert (generic, no followed teams)"
+          "label": "[ritual_night] Family Game Night",
+          "score": 130,
+          "reason": "ritual \"Family Game Night\" has 3 followed-team game(s)"
         },
         {
           "label": "[clinch_watch] Playoff Stakes",
@@ -210,11 +215,6 @@
           "label": "[league_moment] League Spotlight",
           "score": 50,
           "reason": "league_moment (generic, no followed teams)"
-        },
-        {
-          "label": "[player_movement] Roster Shakeup",
-          "score": 40,
-          "reason": "player_movement (generic, no followed teams)"
         }
       ]
     },
@@ -226,29 +226,29 @@
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
-      "momentum_ana": {
-        "searchQuery": "Anaheim Ducks highlights March 2026",
-        "selectedVideoTitle": "Anaheim Ducks at Calgary Flames | FULL Overtime Highlights - March 26, 2026",
-        "selectedVideoPublishedAt": "7 minutes ago",
-        "selectedVideoChannel": "SPORTSNET",
-        "rejectedForAgeCount": 0
-      },
-      "playoff_push_newengland": {
-        "searchQuery": "Boston Bruins playoff push March 2026",
-        "selectedVideoTitle": "NHL Power Rankings: March 2026 Update - ESPN",
-        "selectedVideoPublishedAt": "38 minutes ago",
-        "selectedVideoChannel": "boytoymichelle",
-        "rejectedForAgeCount": 0
-      },
-      "upset_alert_nhl_2025021140": {
-        "searchQuery": "Florida Panthers vs Minnesota Wild upset highlights March 2026",
+      "playoff_push_socal": {
+        "searchQuery": "San Diego Gulls playoff push March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
-      "clinch_watch_tennis-espn-173257": {
-        "searchQuery": "Fils clinch playoff berth March 2026",
+      "momentum_ana": {
+        "searchQuery": "Anaheim Ducks highlights March 2026",
+        "selectedVideoTitle": "Ducks vs. Flames | NHL Highlights | March 26, 2026",
+        "selectedVideoPublishedAt": "23 hours ago",
+        "selectedVideoChannel": "NHL",
+        "rejectedForAgeCount": 0
+      },
+      "playoff_push_newengland": {
+        "searchQuery": "Boston Bruins playoff push March 2026",
+        "selectedVideoTitle": "NHL Power Rankings: March 2026 Update - ESPN",
+        "selectedVideoPublishedAt": "1 day ago",
+        "selectedVideoChannel": "boytoymichelle",
+        "rejectedForAgeCount": 0
+      },
+      "clinch_watch_tennis-espn-173228": {
+        "searchQuery": "Sinner clinch playoff berth March 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
@@ -256,9 +256,9 @@
       },
       "playoff_push_clinch_fallback_nhl_2025021154": {
         "searchQuery": "Anaheim Ducks playoff push March 2026",
-        "selectedVideoTitle": "NHL Power Rankings: March 2026 Update - ESPN",
-        "selectedVideoPublishedAt": "38 minutes ago",
-        "selectedVideoChannel": "boytoymichelle",
+        "selectedVideoTitle": "Ducks vs. Flames | NHL Highlights | March 26, 2026",
+        "selectedVideoPublishedAt": "23 hours ago",
+        "selectedVideoChannel": "NHL",
         "rejectedForAgeCount": 0
       }
     }
@@ -267,14 +267,14 @@
     {
       "id": "clinch_watch_rugby-urc-sx99rb",
       "title": "Clinch Watch",
-      "subtitle": "Can clinch home quarterfinal in the next 48h",
+      "subtitle": "Can clinch home quarterfinal tonight",
       "impact": {
         "label": "Impacts: Saturday Warm-Up",
         "ritualId": "saturday_sunrise",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-27T04:09:10.641Z",
+      "triggeredAt": "2026-03-28T03:41:40.857Z",
       "expiresAt": "2026-03-28T21:00:00.000Z",
       "kind": "clinch_watch",
       "region": "SouthAfrica",
@@ -298,16 +298,59 @@
       ]
     },
     {
+      "id": "playoff_push_socal",
+      "title": "Gulls Push Week",
+      "subtitle": "Four games in seven days, including a back-to-back",
+      "impact": {
+        "label": "Impacts: Saturday Game Day",
+        "ritualId": "saturday_spotlight",
+        "tabHint": "Rituals"
+      },
+      "priority": 90,
+      "triggeredAt": "2026-03-28T03:41:40.857Z",
+      "expiresAt": "2026-04-04T03:41:40.857Z",
+      "kind": "playoff_push",
+      "region": "SoCal",
+      "regionPriority": 2,
+      "regionLabel": "SoCal",
+      "meta": {
+        "teams": [
+          {
+            "team": "San Diego Gulls",
+            "league": "AHL",
+            "gamesInNext7Days": 4,
+            "gamesInNext5Days": 3,
+            "hasBackToBack": true,
+            "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+          }
+        ],
+        "eventIds": [
+          "ahl-1028774",
+          "ahl-1028788",
+          "ahl-1028806",
+          "ahl-1028816"
+        ],
+        "combinedTeamCount": 1,
+        "windowStart": "2026-03-28T03:41:40.857Z",
+        "windowEnd": "2026-04-04T03:41:40.857Z",
+        "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+      },
+      "sports": [
+        "hockey"
+      ]
+    },
+    {
       "id": "momentum_ana",
       "title": "Ducks Heating Up",
       "subtitle": "4-game win streak · +4 goal diff",
       "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
+        "label": "Feeds: Family Game Night",
+        "ritualId": "friday_lights",
+        "tabHint": "Rituals"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-27T04:09:10.641Z",
-      "expiresAt": "2026-03-30T04:09:10.641Z",
+      "triggeredAt": "2026-03-28T03:41:40.857Z",
+      "expiresAt": "2026-03-31T03:41:40.857Z",
       "kind": "momentum",
       "region": "SoCal",
       "regionPriority": 2,
@@ -342,7 +385,8 @@
         "eventIds": [
           "nhl_2025021154",
           "nhl_2025021176",
-          "nhl_2025021190"
+          "nhl_2025021190",
+          "nhl_2025021206"
         ],
         "reason": "Anaheim Ducks is on a 4-game win streak"
       },
@@ -350,13 +394,13 @@
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=_ok55RGFdnk",
-        "thumbnailUrl": "https://img.youtube.com/vi/_ok55RGFdnk/hqdefault.jpg",
-        "durationSeconds": 609,
-        "title": "Anaheim Ducks at Calgary Flames | FULL Overtime Highlights - March 26, 2026",
+        "url": "https://www.youtube.com/watch?v=8M6Otuq_V2M",
+        "thumbnailUrl": "https://img.youtube.com/vi/8M6Otuq_V2M/hqdefault.jpg",
+        "durationSeconds": 686,
+        "title": "Ducks vs. Flames | NHL Highlights | March 26, 2026",
         "source": "youtube",
-        "channel": "SPORTSNET",
-        "publishedAt": "7 minutes ago"
+        "channel": "NHL",
+        "publishedAt": "23 hours ago"
       }
     },
     {
@@ -368,8 +412,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-27T04:09:10.641Z",
-      "expiresAt": "2026-04-03T04:09:10.641Z",
+      "triggeredAt": "2026-03-28T03:41:40.857Z",
+      "expiresAt": "2026-04-04T03:41:40.857Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -392,8 +436,8 @@
           "nhl_2025021193"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-27T04:09:10.641Z",
-        "windowEnd": "2026-04-03T04:09:10.641Z",
+        "windowStart": "2026-03-28T03:41:40.857Z",
+        "windowEnd": "2026-04-04T03:41:40.857Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -406,54 +450,20 @@
         "title": "NHL Power Rankings: March 2026 Update - ESPN",
         "source": "youtube",
         "channel": "boytoymichelle",
-        "publishedAt": "38 minutes ago"
+        "publishedAt": "1 day ago"
       }
     },
     {
-      "id": "upset_alert_nhl_2025021140",
-      "title": "Upset Alert",
-      "subtitle": "Minnesota Wild upsets Florida Panthers",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 98,
-      "triggeredAt": "2026-03-27T04:09:10.641Z",
-      "expiresAt": "2026-03-27T10:09:10.641Z",
-      "kind": "upset_alert",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "mode": "completed",
-        "upsetType": "team_upset",
-        "sport": "hockey",
-        "league": "NHL",
-        "favoriteName": "Florida Panthers",
-        "underdogName": "Minnesota Wild",
-        "awayTeam": "Minnesota Wild",
-        "homeTeam": "Florida Panthers",
-        "startTime": "2026-03-26T23:00:00.000Z",
-        "eventIds": [
-          "nhl_2025021140"
-        ],
-        "reason": "Minnesota Wild pulled off the upset against Florida Panthers.\n\nA result like this can shift momentum for the rest of the season."
-      },
-      "sports": [
-        "hockey"
-      ]
-    },
-    {
-      "id": "clinch_watch_tennis-espn-173257",
+      "id": "clinch_watch_tennis-espn-173228",
       "title": "Clinch Watch",
-      "subtitle": "Fils vs Lehecka · Tennis title on the line",
+      "subtitle": "Sinner vs Lehecka · Tennis title on the line",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-03-27T04:09:10.641Z",
-      "expiresAt": "2026-03-27T23:00:00.000Z",
+      "triggeredAt": "2026-03-28T03:41:40.857Z",
+      "expiresAt": "2026-03-29T08:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
@@ -463,13 +473,13 @@
         "conditionLabel": "Tennis title on the line",
         "sport": "tennis",
         "league": "ATP Masters 1000",
-        "awayTeam": "Fils",
+        "awayTeam": "Sinner",
         "homeTeam": "Lehecka",
-        "startTime": "2026-03-27T19:00:00.000Z",
+        "startTime": "2026-03-29T04:00:00.000Z",
         "eventIds": [
-          "tennis-espn-173257"
+          "tennis-espn-173228"
         ],
-        "reason": "Fils and Lehecka meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
+        "reason": "Sinner and Lehecka meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
       },
       "sports": [
         "tennis"
@@ -484,7 +494,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-27T04:09:10.641Z",
+      "triggeredAt": "2026-03-28T03:41:40.857Z",
       "expiresAt": "2026-03-28T23:30:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -507,13 +517,13 @@
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=UzJ2TDMFBf8",
-        "thumbnailUrl": "https://img.youtube.com/vi/UzJ2TDMFBf8/hqdefault.jpg",
-        "durationSeconds": 484,
-        "title": "NHL Power Rankings: March 2026 Update - ESPN",
+        "url": "https://www.youtube.com/watch?v=8M6Otuq_V2M",
+        "thumbnailUrl": "https://img.youtube.com/vi/8M6Otuq_V2M/hqdefault.jpg",
+        "durationSeconds": 686,
+        "title": "Ducks vs. Flames | NHL Highlights | March 26, 2026",
         "source": "youtube",
-        "channel": "boytoymichelle",
-        "publishedAt": "38 minutes ago"
+        "channel": "NHL",
+        "publishedAt": "23 hours ago"
       }
     }
   ],
@@ -521,17 +531,18 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Anaheim Ducks, Japanese Grand Prix, and Boston Celtics all play tonight across the NHL, F1, NBA.",
-    "sourceEventId": "nhl_2025021147",
+    "body": "The Japanese Grand Prix, Los Angeles Lakers, Hurricanes, Sungoliath, and Bath (+6 more) all play tonight across the F1, NBA, Super Rugby, Japan League One, English Premiership, URC, NHL, Top 14, MLR, AHL.",
+    "sourceEventId": "f1-espn-401839040",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
     },
     "sports": [
-      "hockey",
       "racing",
-      "basketball"
+      "basketball",
+      "rugby",
+      "hockey"
     ]
   }
 }
