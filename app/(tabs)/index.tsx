@@ -50,24 +50,29 @@ interface ExploreNarrativeCard {
   sports?: string[];
 }
 
-interface MonthSnapshotHighlight {
+interface MonthSnapshotLeague {
   sport: string;
-  league: string;
+  displayName: string;
   leagueKey: string;
-  eventLabel: string;
-  dateLabel: string;
-  dateISO: string;
+  dateRangeLabel: string;
+  startDate: string;
+  endDate: string;
   eventCount: number;
 }
 
-interface MonthSnapshot {
-  highlights: MonthSnapshotHighlight[];
+interface MonthSnapshotData {
   monthLabel: string;
-  dateRange: string;
+  monthKey: string;
+  leagues: MonthSnapshotLeague[];
+}
+
+interface MonthSnapshot {
+  currentMonth: MonthSnapshotData;
+  nextMonth: MonthSnapshotData;
 }
 
 const SNAPSHOT_COLOR = "#6366F1";
-const SNAPSHOT_MAX_VISIBLE = 6;
+const SNAPSHOT_MAX_VISIBLE = 5;
 
 const SPORT_EMOJI: Record<string, string> = {
   hockey: "🏒",
@@ -107,6 +112,7 @@ export default function ExploreScreen() {
   const { disabledSports, isSportEnabled } = useFavorites();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
   const [refreshing, setRefreshing] = useState(false);
+  const [snapshotTab, setSnapshotTab] = useState<"current" | "next">("current");
 
   const { data, isLoading } = useQuery<{ cards: ExploreNarrativeCard[]; lastUpdated: string | null; tonightStory: TonightStory | null; monthSnapshot: MonthSnapshot | null }>({
     queryKey: ["/api/narratives"],
@@ -137,9 +143,14 @@ export default function ExploreScreen() {
   const monthSnapshot = useMemo(() => {
     if (!rawMonthSnapshot) return null;
     if (disabledSports.size === 0) return rawMonthSnapshot;
-    const filtered = rawMonthSnapshot.highlights.filter(h => isSportEnabled(h.sport));
-    if (filtered.length === 0) return null;
-    return { ...rawMonthSnapshot, highlights: filtered };
+    const filterLeagues = (data: MonthSnapshotData): MonthSnapshotData => ({
+      ...data,
+      leagues: data.leagues.filter(l => isSportEnabled(l.sport)),
+    });
+    return {
+      currentMonth: filterLeagues(rawMonthSnapshot.currentMonth),
+      nextMonth: filterLeagues(rawMonthSnapshot.nextMonth),
+    };
   }, [rawMonthSnapshot, disabledSports, isSportEnabled]);
 
   const onRefresh = useCallback(async () => {
@@ -238,42 +249,78 @@ export default function ExploreScreen() {
           </View>
         )}
 
-        {monthSnapshot && (
-          <View style={styles.snapshotCard}>
-            <View style={styles.snapshotHeader}>
-              <View style={styles.snapshotBadge}>
-                <Ionicons name="calendar-outline" size={11} color="#fff" />
-                <Text style={styles.snapshotBadgeText}>MONTH AHEAD</Text>
+        {monthSnapshot && (() => {
+          const activeData = snapshotTab === "current" ? monthSnapshot.currentMonth : monthSnapshot.nextMonth;
+          const visibleLeagues = activeData.leagues.slice(0, SNAPSHOT_MAX_VISIBLE);
+          const remainingCount = activeData.leagues.length - SNAPSHOT_MAX_VISIBLE;
+          return (
+            <View style={styles.snapshotCard}>
+              <View style={styles.snapshotHeader}>
+                <View style={styles.snapshotBadge}>
+                  <Ionicons name="calendar-outline" size={11} color="#fff" />
+                  <Text style={styles.snapshotBadgeText}>SCHEDULE</Text>
+                </View>
+                <View style={styles.snapshotTabs}>
+                  <Pressable
+                    onPress={() => setSnapshotTab("current")}
+                    style={[styles.snapshotTab, snapshotTab === "current" && styles.snapshotTabActive]}
+                  >
+                    <Text style={[styles.snapshotTabText, snapshotTab === "current" && styles.snapshotTabTextActive]}>
+                      {monthSnapshot.currentMonth.monthLabel.split(" ")[0]}
+                    </Text>
+                  </Pressable>
+                  <Pressable
+                    onPress={() => setSnapshotTab("next")}
+                    style={[styles.snapshotTab, snapshotTab === "next" && styles.snapshotTabActive]}
+                  >
+                    <Text style={[styles.snapshotTabText, snapshotTab === "next" && styles.snapshotTabTextActive]}>
+                      {monthSnapshot.nextMonth.monthLabel.split(" ")[0]}
+                    </Text>
+                  </Pressable>
+                </View>
               </View>
-              <Text style={styles.snapshotDateRange}>{monthSnapshot.dateRange}</Text>
-            </View>
-            <View style={styles.snapshotBody}>
-              {monthSnapshot.highlights.slice(0, SNAPSHOT_MAX_VISIBLE).map((item, idx) => (
-                <View
-                  key={`${item.sport}-${item.leagueKey}-${idx}`}
-                  style={[styles.snapshotRow, idx > 0 && styles.snapshotRowBorder]}
-                >
-                  <View style={styles.snapshotDatePill}>
-                    <Text style={styles.snapshotDateText} numberOfLines={1}>{item.dateLabel}</Text>
+              <View style={styles.snapshotBody}>
+                {activeData.leagues.length === 0 ? (
+                  <View style={styles.snapshotEmptyRow}>
+                    <Text style={styles.snapshotEmptyText}>No events scheduled</Text>
                   </View>
-                  <Text style={styles.snapshotEmoji}>{SPORT_EMOJI[item.sport] ?? "🏆"}</Text>
-                  <View style={styles.snapshotLeagueInfo}>
-                    <Text style={styles.snapshotLeagueName} numberOfLines={1}>{item.league}</Text>
-                    <Text style={styles.snapshotEventLabel} numberOfLines={1}>{item.eventLabel}</Text>
-                  </View>
-                </View>
-              ))}
-              {monthSnapshot.highlights.length > SNAPSHOT_MAX_VISIBLE && (
-                <View style={[styles.snapshotRow, styles.snapshotRowBorder, styles.snapshotMoreRow]}>
-                  <Ionicons name="ellipsis-horizontal" size={14} color={SNAPSHOT_COLOR} />
-                  <Text style={styles.snapshotMoreText}>
-                    +{monthSnapshot.highlights.length - SNAPSHOT_MAX_VISIBLE} more leagues & tournaments
-                  </Text>
-                </View>
-              )}
+                ) : (
+                  <>
+                    {visibleLeagues.map((item, idx) => (
+                      <View
+                        key={`${item.sport}-${item.leagueKey}-${idx}`}
+                        style={[styles.snapshotRow, idx > 0 && styles.snapshotRowBorder]}
+                      >
+                        <Text style={styles.snapshotEmoji}>{SPORT_EMOJI[item.sport] ?? "🏆"}</Text>
+                        <Text style={styles.snapshotLeagueName} numberOfLines={1}>{item.displayName}</Text>
+                        <Text style={styles.snapshotDateRange}>{item.dateRangeLabel}</Text>
+                      </View>
+                    ))}
+                    {remainingCount > 0 && (
+                      <Pressable
+                        onPress={() => {
+                          if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                          router.push({
+                            pathname: "/month-schedule",
+                            params: {
+                              monthDataJson: JSON.stringify(activeData),
+                            },
+                          });
+                        }}
+                        style={({ pressed }) => [styles.snapshotViewAllRow, { opacity: pressed ? 0.7 : 1 }]}
+                      >
+                        <Text style={styles.snapshotViewAllText}>
+                          View all {activeData.leagues.length} leagues & tournaments
+                        </Text>
+                        <Ionicons name="arrow-forward" size={13} color={SNAPSHOT_COLOR} />
+                      </Pressable>
+                    )}
+                  </>
+                )}
+              </View>
             </View>
-          </View>
-        )}
+          );
+        })()}
 
         {isLoading ? (
           <View style={styles.emptyContainer}>
@@ -589,7 +636,7 @@ const styles = StyleSheet.create({
     alignItems: "center" as const,
     justifyContent: "space-between" as const,
     paddingHorizontal: 14,
-    paddingVertical: 11,
+    paddingVertical: 10,
     borderBottomWidth: 1,
     borderBottomColor: SNAPSHOT_COLOR + "25",
   },
@@ -608,10 +655,29 @@ const styles = StyleSheet.create({
     color: "#fff",
     letterSpacing: 0.8,
   },
-  snapshotDateRange: {
-    fontSize: 11,
+  snapshotTabs: {
+    flexDirection: "row" as const,
+    gap: 6,
+  },
+  snapshotTab: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: Colors.border,
+  },
+  snapshotTabActive: {
+    backgroundColor: SNAPSHOT_COLOR + "25",
+    borderColor: SNAPSHOT_COLOR + "60",
+  },
+  snapshotTabText: {
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
     color: Colors.textMuted,
-    fontFamily: "Inter_400Regular",
+  },
+  snapshotTabTextActive: {
+    color: SNAPSHOT_COLOR,
+    fontFamily: "Inter_600SemiBold",
   },
   snapshotBody: {
     paddingVertical: 4,
@@ -620,56 +686,50 @@ const styles = StyleSheet.create({
     flexDirection: "row" as const,
     alignItems: "center" as const,
     paddingHorizontal: 14,
-    paddingVertical: 10,
+    paddingVertical: 11,
     gap: 10,
   },
   snapshotRowBorder: {
     borderTopWidth: 1,
     borderTopColor: Colors.border,
   },
-  snapshotMoreRow: {
-    justifyContent: "center" as const,
-    paddingVertical: 10,
-    gap: 6,
-  },
-  snapshotDatePill: {
-    backgroundColor: Colors.background,
-    borderRadius: 8,
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    minWidth: 58,
-    alignItems: "center" as const,
-    borderWidth: 1,
-    borderColor: Colors.border,
-  },
-  snapshotDateText: {
-    fontSize: 11,
-    fontFamily: "Inter_600SemiBold",
-    color: Colors.textSecondary,
-    textAlign: "center" as const,
-  },
   snapshotEmoji: {
-    fontSize: 16,
-    width: 22,
+    fontSize: 15,
+    width: 20,
     textAlign: "center" as const,
-  },
-  snapshotLeagueInfo: {
-    flex: 1,
-    gap: 1,
   },
   snapshotLeagueName: {
+    flex: 1,
     fontSize: 13,
     fontFamily: "Inter_600SemiBold",
     color: Colors.textPrimary,
   },
-  snapshotEventLabel: {
-    fontSize: 11,
-    fontFamily: "Inter_400Regular",
-    color: Colors.textMuted,
-  },
-  snapshotMoreText: {
+  snapshotDateRange: {
     fontSize: 12,
     fontFamily: "Inter_500Medium",
+    color: Colors.textMuted,
+  },
+  snapshotViewAllRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    justifyContent: "center" as const,
+    gap: 5,
+    borderTopWidth: 1,
+    borderTopColor: Colors.border,
+    paddingVertical: 12,
+  },
+  snapshotViewAllText: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
     color: SNAPSHOT_COLOR,
+  },
+  snapshotEmptyRow: {
+    paddingVertical: 20,
+    alignItems: "center" as const,
+  },
+  snapshotEmptyText: {
+    fontSize: 13,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
   },
 });

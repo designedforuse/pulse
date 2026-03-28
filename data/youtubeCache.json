@@ -52,22 +52,14 @@
     }
   },
   "playoff_push:boston bruins playoff push march 2026": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=UzJ2TDMFBf8",
-      "thumbnailUrl": "https://img.youtube.com/vi/UzJ2TDMFBf8/hqdefault.jpg",
-      "durationSeconds": 484,
-      "title": "NHL Power Rankings: March 2026 Update - ESPN",
-      "source": "youtube",
-      "channel": "boytoymichelle",
-      "publishedAt": "1 day ago"
-    },
-    "fetchedAt": "2026-03-28T03:41:55.810Z",
+    "video": null,
+    "fetchedAt": "2026-03-28T16:14:58.586Z",
     "query": "Boston Bruins playoff push March 2026",
     "debug": {
       "searchQuery": "Boston Bruins playoff push March 2026",
-      "selectedVideoTitle": "NHL Power Rankings: March 2026 Update - ESPN",
-      "selectedVideoPublishedAt": "1 day ago",
-      "selectedVideoChannel": "boytoymichelle",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   },
@@ -85,21 +77,21 @@
   },
   "playoff_push:anaheim ducks playoff push march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=8M6Otuq_V2M",
-      "thumbnailUrl": "https://img.youtube.com/vi/8M6Otuq_V2M/hqdefault.jpg",
-      "durationSeconds": 686,
-      "title": "Ducks vs. Flames | NHL Highlights | March 26, 2026",
+      "url": "https://www.youtube.com/watch?v=GfrnSh16nes",
+      "thumbnailUrl": "https://img.youtube.com/vi/GfrnSh16nes/hqdefault.jpg",
+      "durationSeconds": 2576,
+      "title": "End is near for Calgary water restrictions | CTV News Calgary at 6 for March 27, 2026",
       "source": "youtube",
-      "channel": "NHL",
-      "publishedAt": "23 hours ago"
+      "channel": "CTV News",
+      "publishedAt": "14 hours ago"
     },
-    "fetchedAt": "2026-03-28T03:41:57.786Z",
+    "fetchedAt": "2026-03-28T16:15:00.536Z",
     "query": "Anaheim Ducks playoff push March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push March 2026",
-      "selectedVideoTitle": "Ducks vs. Flames | NHL Highlights | March 26, 2026",
-      "selectedVideoPublishedAt": "23 hours ago",
-      "selectedVideoChannel": "NHL",
+      "selectedVideoTitle": "End is near for Calgary water restrictions | CTV News Calgary at 6 for March 27, 2026",
+      "selectedVideoPublishedAt": "14 hours ago",
+      "selectedVideoChannel": "CTV News",
       "rejectedForAgeCount": 0
     }
   },
@@ -229,7 +221,7 @@
   },
   "playoff_push:san diego gulls playoff push march 2026": {
     "video": null,
-    "fetchedAt": "2026-03-28T03:41:55.269Z",
+    "fetchedAt": "2026-03-28T16:14:58.037Z",
     "query": "San Diego Gulls playoff push March 2026",
     "debug": {
       "searchQuery": "San Diego Gulls playoff push March 2026",
@@ -341,7 +333,7 @@
   },
   "clinch_watch:sinner clinch playoff berth march 2026": {
     "video": null,
-    "fetchedAt": "2026-03-28T03:41:56.767Z",
+    "fetchedAt": "2026-03-28T16:14:59.487Z",
     "query": "Sinner clinch playoff berth March 2026",
     "debug": {
       "searchQuery": "Sinner clinch playoff berth March 2026",
@@ -481,21 +473,21 @@
   },
   "momentum:anaheim ducks highlights march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=8M6Otuq_V2M",
-      "thumbnailUrl": "https://img.youtube.com/vi/8M6Otuq_V2M/hqdefault.jpg",
-      "durationSeconds": 686,
-      "title": "Ducks vs. Flames | NHL Highlights | March 26, 2026",
+      "url": "https://www.youtube.com/watch?v=Hk7_gUsoWtk",
+      "thumbnailUrl": "https://img.youtube.com/vi/Hk7_gUsoWtk/hqdefault.jpg",
+      "durationSeconds": 2196,
+      "title": "Duck Hunt at the Dome | Live Reaction, Analysis, & Highlights | March 26th, 2026",
       "source": "youtube",
-      "channel": "NHL",
-      "publishedAt": "23 hours ago"
+      "channel": "Game Over Calgary",
+      "publishedAt": "Streamed 1 day ago"
     },
-    "fetchedAt": "2026-03-28T03:41:55.593Z",
+    "fetchedAt": "2026-03-28T16:14:58.368Z",
     "query": "Anaheim Ducks highlights March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks highlights March 2026",
-      "selectedVideoTitle": "Ducks vs. Flames | NHL Highlights | March 26, 2026",
-      "selectedVideoPublishedAt": "23 hours ago",
-      "selectedVideoChannel": "NHL",
+      "selectedVideoTitle": "Duck Hunt at the Dome | Live Reaction, Analysis, & Highlights | March 26th, 2026",
+      "selectedVideoPublishedAt": "Streamed 1 day ago",
+      "selectedVideoChannel": "Game Over Calgary",
       "rejectedForAgeCount": 0
     }
   },
@@ -613,7 +605,7 @@
   },
   "clinch_watch:edinburgh clinch playoff berth march 2026": {
     "video": null,
-    "fetchedAt": "2026-03-28T03:41:55.039Z",
+    "fetchedAt": "2026-03-28T16:14:57.804Z",
     "query": "Edinburgh clinch playoff berth March 2026",
     "debug": {
       "searchQuery": "Edinburgh clinch playoff berth March 2026",

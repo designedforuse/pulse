@@ -290,20 +290,25 @@ export interface ExploreNarrativeCard {
   sports?: string[];
 }
 
-export interface MonthSnapshotHighlight {
+export interface MonthSnapshotLeague {
   sport: string;
-  league: string;
+  displayName: string;
   leagueKey: string;
-  eventLabel: string;
-  dateLabel: string;
-  dateISO: string;
+  dateRangeLabel: string;
+  startDate: string;
+  endDate: string;
   eventCount: number;
 }
 
-export interface MonthSnapshot {
-  highlights: MonthSnapshotHighlight[];
+export interface MonthSnapshotData {
   monthLabel: string;
-  dateRange: string;
+  monthKey: string;
+  leagues: MonthSnapshotLeague[];
+}
+
+export interface MonthSnapshot {
+  currentMonth: MonthSnapshotData;
+  nextMonth: MonthSnapshotData;
 }
 
 const REGION_CONFIG: Record<Region, { priority: number; label: string }> = {
@@ -2783,148 +2788,110 @@ function formatSnapshotDate(date: Date): string {
   return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
-function deriveHighlightLabel(events: AppEvent[], sport: string, league: string, leagueKey: string): string {
-  const count = events.length;
-  const sessionTitles = events.map(e => e.sessionTitle).filter(Boolean) as string[];
-
-  if (sport === "tennis") {
-    const titleWithDash = sessionTitles.find(t => t.includes("—"));
-    if (titleWithDash) {
-      const parts = titleWithDash.split("—");
-      const tournName = parts[0].trim();
-      const round = parts[1]?.trim() || "";
-      const shortRound = round.replace("Semifinal", "Semis").replace("Quarterfinal", "QF");
-      return shortRound ? `${tournName} · ${shortRound}` : tournName;
-    }
-    return `${count} match${count !== 1 ? "es" : ""}`;
-  }
-
-  if (sport === "racing") {
-    const uniqueGPs = [...new Set(events.map(e => e.homeTeam).filter(Boolean))];
-    if (uniqueGPs.length === 1) {
-      const gpName = uniqueGPs[0].replace(" Grand Prix", " GP");
-      return `${gpName} Weekend`;
-    }
-    return `${uniqueGPs.length} Grand Prix`;
-  }
-
-  if (sport === "golf") {
-    const golfTitle = sessionTitles[0];
-    if (golfTitle) return golfTitle.split("—")[0].trim();
-    return "Tournament";
-  }
-
-  if (sport === "athletics") {
-    if (count === 1 && sessionTitles[0]) return sessionTitles[0];
-    if (count === 2 && sessionTitles.length >= 2) {
-      const cities = sessionTitles.map(t => t.replace(" Marathon", ""));
-      return `${cities[0]} & ${cities[1]} Marathon`;
-    }
-    return `${count} marathons`;
-  }
-
-  if (sport === "rugby" && leagueKey === "svns") {
-    const svnsTitle = sessionTitles[0];
-    if (svnsTitle) return svnsTitle.replace(/SVNS\s+/i, "").split("–")[0].trim();
-    return `${count} sessions`;
-  }
-
-  if (sport === "rugby" && leagueKey === "championscup") {
-    if (count <= 2) return "Final";
-    if (count <= 4) return "Semifinals";
-    if (count <= 8) return "Quarterfinals";
-    return "Knockout Rounds";
-  }
-
-  if (sport === "soccer") {
-    if (leagueKey === "championsleague" || leagueKey === "europaleague") {
-      if (count <= 4) return "Semifinals";
-      if (count <= 8) return "Quarterfinals";
-      return `${count} matches`;
-    }
-    if (leagueKey === "facup") {
-      if (count <= 2) return "Semifinals";
-      if (count <= 4) return "Quarterfinals";
-      return `${count} matches`;
-    }
-    if (leagueKey === "intl-friendly") {
-      return `${count} international${count !== 1 ? "s" : ""}`;
-    }
-    if (leagueKey === "fifa-world-cup") {
-      if (count <= 2) return "Final";
-      if (count <= 4) return "Semifinals";
-      if (count <= 8) return "Quarterfinals";
-      if (count <= 16) return "Round of 16";
-      if (count <= 32) return "Group Stage";
-      return `${count} matches`;
-    }
-  }
-
-  if ((leagueKey === "nhl" || league === "NHL") && count >= 50) return "Final weeks · Playoff push";
-  if ((leagueKey === "nba" || league === "NBA") && count >= 50) return "Final weeks · Playoff race";
-
-  if (count === 1) return "1 match";
-  return `${count} games`;
+function formatDateRange(startDate: Date, endDate: Date): string {
+  const startStr = formatSnapshotDate(startDate);
+  if (startDate.toDateString() === endDate.toDateString()) return startStr;
+  const sameMonth = startDate.getMonth() === endDate.getMonth() && startDate.getFullYear() === endDate.getFullYear();
+  const endStr = sameMonth
+    ? endDate.toLocaleDateString("en-US", { day: "numeric" })
+    : formatSnapshotDate(endDate);
+  return `${startStr}–${endStr}`;
 }
 
-export function generateMonthSnapshot(events: AppEvent[], now: Date): MonthSnapshot | null {
-  const windowEnd = new Date(now.getTime() + 30 * 86400 * 1000);
+function getSnapshotGroupKey(event: AppEvent): string {
+  if (event.sport === "tennis" && event.sessionTitle?.includes("—")) {
+    const name = event.sessionTitle.split("—")[0].trim().toLowerCase().replace(/\s+/g, "-");
+    return `tennis::${name}`;
+  }
+  if (event.sport === "racing" && event.homeTeam) {
+    return `racing::${event.homeTeam.toLowerCase().replace(/\s+/g, "-")}`;
+  }
+  if (event.sport === "golf" && event.sessionTitle) {
+    const name = event.sessionTitle.split("—")[0].trim().toLowerCase().replace(/\s+/g, "-");
+    return `golf::${name}`;
+  }
+  if (event.sport === "athletics" && event.sessionTitle) {
+    return `athletics::${event.sessionTitle.toLowerCase().replace(/\s+/g, "-")}`;
+  }
+  if (event.sport === "rugby" && (event.leagueKey === "svns") && event.sessionTitle) {
+    const city = event.sessionTitle.replace(/SVNS\s+/i, "").split(/[–-]/)[0].trim().toLowerCase().replace(/\s+/g, "-");
+    return `rugby::svns::${city}`;
+  }
+  const lk = event.leagueKey || event.league.toLowerCase().replace(/\s+/g, "-");
+  return `${event.sport}::${lk}`;
+}
 
-  const upcoming = events.filter(e => {
-    const start = new Date(e.startTimeLocal);
-    return start >= now && start <= windowEnd;
+function getSnapshotDisplayName(events: AppEvent[], sport: string, league: string, leagueKey: string): string {
+  if (sport === "tennis" && events[0]?.sessionTitle?.includes("—")) {
+    return events[0].sessionTitle.split("—")[0].trim();
+  }
+  if (sport === "racing" && events[0]?.homeTeam) {
+    return events[0].homeTeam.replace(" Grand Prix", " GP");
+  }
+  if (sport === "golf" && events[0]?.sessionTitle) {
+    const name = events[0].sessionTitle.split("—")[0].trim();
+    return name === "Masters" ? "The Masters" : name;
+  }
+  if (sport === "athletics" && events[0]?.sessionTitle) {
+    return events[0].sessionTitle;
+  }
+  if (sport === "rugby" && leagueKey === "svns" && events[0]?.sessionTitle) {
+    const city = events[0].sessionTitle.replace(/SVNS\s+/i, "").split(/[–-]/)[0].trim();
+    return `SVNS ${city}`;
+  }
+  return league;
+}
+
+function buildMonthData(events: AppEvent[], monthStart: Date): MonthSnapshotData {
+  const monthEnd = new Date(monthStart.getFullYear(), monthStart.getMonth() + 1, 0, 23, 59, 59, 999);
+  const monthKey = `${monthStart.getFullYear()}-${String(monthStart.getMonth() + 1).padStart(2, "0")}`;
+  const monthLabel = monthStart.toLocaleString("en-US", { month: "long", year: "numeric" });
+
+  const monthEvents = events.filter(e => {
+    const d = new Date(e.startTimeLocal);
+    return d >= monthStart && d <= monthEnd;
   });
 
-  if (upcoming.length === 0) return null;
-
-  const leagueGroups = new Map<string, {
-    sport: string;
-    league: string;
-    leagueKey: string;
-    events: AppEvent[];
-  }>();
-
-  for (const event of upcoming) {
+  const groups = new Map<string, { sport: string; league: string; leagueKey: string; events: AppEvent[] }>();
+  for (const event of monthEvents) {
+    const key = getSnapshotGroupKey(event);
     const lk = event.leagueKey || event.league.toLowerCase().replace(/\s+/g, "-");
-    const key = `${event.sport}::${lk}`;
-    const existing = leagueGroups.get(key);
+    const existing = groups.get(key);
     if (!existing) {
-      leagueGroups.set(key, { sport: event.sport, league: event.league, leagueKey: lk, events: [event] });
+      groups.set(key, { sport: event.sport, league: event.league, leagueKey: lk, events: [event] });
     } else {
       existing.events.push(event);
     }
   }
 
-  const highlights: MonthSnapshotHighlight[] = [];
-
-  for (const [, group] of leagueGroups) {
+  const leagues: MonthSnapshotLeague[] = [];
+  for (const [, group] of groups) {
     group.events.sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
-    const firstEvent = group.events[0];
-    const firstDate = new Date(firstEvent.startTimeLocal);
-    highlights.push({
+    const first = group.events[0];
+    const last = group.events[group.events.length - 1];
+    const startDate = new Date(first.startTimeLocal);
+    const endDate = new Date(last.startTimeLocal);
+    leagues.push({
       sport: group.sport,
-      league: group.league,
+      displayName: getSnapshotDisplayName(group.events, group.sport, group.league, group.leagueKey),
       leagueKey: group.leagueKey,
-      eventLabel: deriveHighlightLabel(group.events, group.sport, group.league, group.leagueKey),
-      dateLabel: formatSnapshotDate(firstDate),
-      dateISO: firstEvent.startTimeLocal,
+      dateRangeLabel: formatDateRange(startDate, endDate),
+      startDate: first.startTimeLocal,
+      endDate: last.startTimeLocal,
       eventCount: group.events.length,
     });
   }
 
-  highlights.sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime());
+  leagues.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
+  return { monthLabel, monthKey, leagues };
+}
 
-  const startMonthStr = now.toLocaleString("en-US", { month: "long" });
-  const endMonthStr = windowEnd.toLocaleString("en-US", { month: "long" });
-  const endYear = windowEnd.getFullYear();
-  const monthLabel = startMonthStr === endMonthStr
-    ? `${startMonthStr} ${endYear}`
-    : `${now.toLocaleString("en-US", { month: "short" })} – ${windowEnd.toLocaleString("en-US", { month: "short" })} ${endYear}`;
-
+export function generateMonthSnapshot(events: AppEvent[], now: Date): MonthSnapshot {
+  const currentMonthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  const nextMonthStart = new Date(now.getFullYear(), now.getMonth() + 1, 1);
   return {
-    highlights,
-    monthLabel,
-    dateRange: `${formatSnapshotDate(now)} – ${formatSnapshotDate(windowEnd)}`,
+    currentMonth: buildMonthData(events, currentMonthStart),
+    nextMonth: buildMonthData(events, nextMonthStart),
   };
 }
 
@@ -3151,7 +3118,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
   console.log("=== Narratives Complete ===\n");
 
   const monthSnapshot = generateMonthSnapshot(events, now);
-  console.log(`  Month Snapshot: ${monthSnapshot ? monthSnapshot.highlights.length + " league highlights" : "none"}`);
+  console.log(`  Month Snapshot: ${monthSnapshot ? monthSnapshot.currentMonth.leagues.length + " leagues (current) / " + monthSnapshot.nextMonth.leagues.length + " leagues (next)" : "none"}`);
 
   return { cards: selected, tonightStory, monthSnapshot, debug };
 }
