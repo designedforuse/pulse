@@ -290,6 +290,22 @@ export interface ExploreNarrativeCard {
   sports?: string[];
 }
 
+export interface MonthSnapshotHighlight {
+  sport: string;
+  league: string;
+  leagueKey: string;
+  eventLabel: string;
+  dateLabel: string;
+  dateISO: string;
+  eventCount: number;
+}
+
+export interface MonthSnapshot {
+  highlights: MonthSnapshotHighlight[];
+  monthLabel: string;
+  dateRange: string;
+}
+
 const REGION_CONFIG: Record<Region, { priority: number; label: string }> = {
   SouthAfrica: { priority: 1, label: "South Africa" },
   SoCal: { priority: 2, label: "SoCal" },
@@ -2763,9 +2779,159 @@ function deriveCardSports(card: ExploreNarrativeCard, events: AppEvent[]): strin
   return [];
 }
 
+function formatSnapshotDate(date: Date): string {
+  return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+}
+
+function deriveHighlightLabel(events: AppEvent[], sport: string, league: string, leagueKey: string): string {
+  const count = events.length;
+  const sessionTitles = events.map(e => e.sessionTitle).filter(Boolean) as string[];
+
+  if (sport === "tennis") {
+    const titleWithDash = sessionTitles.find(t => t.includes("—"));
+    if (titleWithDash) {
+      const parts = titleWithDash.split("—");
+      const tournName = parts[0].trim();
+      const round = parts[1]?.trim() || "";
+      const shortRound = round.replace("Semifinal", "Semis").replace("Quarterfinal", "QF");
+      return shortRound ? `${tournName} · ${shortRound}` : tournName;
+    }
+    return `${count} match${count !== 1 ? "es" : ""}`;
+  }
+
+  if (sport === "racing") {
+    const uniqueGPs = [...new Set(events.map(e => e.homeTeam).filter(Boolean))];
+    if (uniqueGPs.length === 1) {
+      const gpName = uniqueGPs[0].replace(" Grand Prix", " GP");
+      return `${gpName} Weekend`;
+    }
+    return `${uniqueGPs.length} Grand Prix`;
+  }
+
+  if (sport === "golf") {
+    const golfTitle = sessionTitles[0];
+    if (golfTitle) return golfTitle.split("—")[0].trim();
+    return "Tournament";
+  }
+
+  if (sport === "athletics") {
+    if (count === 1 && sessionTitles[0]) return sessionTitles[0];
+    if (count === 2 && sessionTitles.length >= 2) {
+      const cities = sessionTitles.map(t => t.replace(" Marathon", ""));
+      return `${cities[0]} & ${cities[1]} Marathon`;
+    }
+    return `${count} marathons`;
+  }
+
+  if (sport === "rugby" && leagueKey === "svns") {
+    const svnsTitle = sessionTitles[0];
+    if (svnsTitle) return svnsTitle.replace(/SVNS\s+/i, "").split("–")[0].trim();
+    return `${count} sessions`;
+  }
+
+  if (sport === "rugby" && leagueKey === "championscup") {
+    if (count <= 2) return "Final";
+    if (count <= 4) return "Semifinals";
+    if (count <= 8) return "Quarterfinals";
+    return "Knockout Rounds";
+  }
+
+  if (sport === "soccer") {
+    if (leagueKey === "championsleague" || leagueKey === "europaleague") {
+      if (count <= 4) return "Semifinals";
+      if (count <= 8) return "Quarterfinals";
+      return `${count} matches`;
+    }
+    if (leagueKey === "facup") {
+      if (count <= 2) return "Semifinals";
+      if (count <= 4) return "Quarterfinals";
+      return `${count} matches`;
+    }
+    if (leagueKey === "intl-friendly") {
+      return `${count} international${count !== 1 ? "s" : ""}`;
+    }
+    if (leagueKey === "fifa-world-cup") {
+      if (count <= 2) return "Final";
+      if (count <= 4) return "Semifinals";
+      if (count <= 8) return "Quarterfinals";
+      if (count <= 16) return "Round of 16";
+      if (count <= 32) return "Group Stage";
+      return `${count} matches`;
+    }
+  }
+
+  if ((leagueKey === "nhl" || league === "NHL") && count >= 50) return "Final weeks · Playoff push";
+  if ((leagueKey === "nba" || league === "NBA") && count >= 50) return "Final weeks · Playoff race";
+
+  if (count === 1) return "1 match";
+  return `${count} games`;
+}
+
+export function generateMonthSnapshot(events: AppEvent[], now: Date): MonthSnapshot | null {
+  const windowEnd = new Date(now.getTime() + 30 * 86400 * 1000);
+
+  const upcoming = events.filter(e => {
+    const start = new Date(e.startTimeLocal);
+    return start >= now && start <= windowEnd;
+  });
+
+  if (upcoming.length === 0) return null;
+
+  const leagueGroups = new Map<string, {
+    sport: string;
+    league: string;
+    leagueKey: string;
+    events: AppEvent[];
+  }>();
+
+  for (const event of upcoming) {
+    const lk = event.leagueKey || event.league.toLowerCase().replace(/\s+/g, "-");
+    const key = `${event.sport}::${lk}`;
+    const existing = leagueGroups.get(key);
+    if (!existing) {
+      leagueGroups.set(key, { sport: event.sport, league: event.league, leagueKey: lk, events: [event] });
+    } else {
+      existing.events.push(event);
+    }
+  }
+
+  const highlights: MonthSnapshotHighlight[] = [];
+
+  for (const [, group] of leagueGroups) {
+    group.events.sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
+    const firstEvent = group.events[0];
+    const firstDate = new Date(firstEvent.startTimeLocal);
+    highlights.push({
+      sport: group.sport,
+      league: group.league,
+      leagueKey: group.leagueKey,
+      eventLabel: deriveHighlightLabel(group.events, group.sport, group.league, group.leagueKey),
+      dateLabel: formatSnapshotDate(firstDate),
+      dateISO: firstEvent.startTimeLocal,
+      eventCount: group.events.length,
+    });
+  }
+
+  highlights.sort((a, b) => new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime());
+
+  const startMonthStr = now.toLocaleString("en-US", { month: "long" });
+  const endMonthStr = windowEnd.toLocaleString("en-US", { month: "long" });
+  const endYear = windowEnd.getFullYear();
+  const monthLabel = startMonthStr === endMonthStr
+    ? `${startMonthStr} ${endYear}`
+    : `${now.toLocaleString("en-US", { month: "short" })} – ${windowEnd.toLocaleString("en-US", { month: "short" })} ${endYear}`;
+
+  return {
+    highlights,
+    monthLabel,
+    dateRange: `${formatSnapshotDate(now)} – ${formatSnapshotDate(windowEnd)}`,
+  };
+}
+
 export async function generateNarratives(events: AppEvent[], favorites: Favorites, now: Date, options?: { simulateMovement?: boolean }): Promise<{
   cards: ExploreNarrativeCard[];
   tonightStory: TonightStory | null;
+  monthSnapshot: MonthSnapshot | null;
   debug: {
     rawCandidatesByKindAndRegion: Record<string, Record<string, number>>;
     combinedPushByRegion: Record<string, boolean>;
@@ -2984,7 +3150,10 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
   debug.videoSelection = videoDebug;
   console.log("=== Narratives Complete ===\n");
 
-  return { cards: selected, tonightStory, debug };
+  const monthSnapshot = generateMonthSnapshot(events, now);
+  console.log(`  Month Snapshot: ${monthSnapshot ? monthSnapshot.highlights.length + " league highlights" : "none"}`);
+
+  return { cards: selected, tonightStory, monthSnapshot, debug };
 }
 
 export async function generateAndSave(options?: { simulateMovement?: boolean }): Promise<ExploreNarrativeCard[]> {
@@ -3008,13 +3177,14 @@ export async function generateAndSave(options?: { simulateMovement?: boolean }):
   }
 
   const now = new Date();
-  const { cards, tonightStory, debug } = await generateNarratives(events, favorites, now, options);
+  const { cards, tonightStory, monthSnapshot, debug } = await generateNarratives(events, favorites, now, options);
 
   const output = {
     lastUpdated: now.toISOString(),
     debug,
     cards,
     tonightStory,
+    monthSnapshot,
   };
 
   fs.writeFileSync(NARRATIVES_PATH, JSON.stringify(output, null, 2));
