@@ -5,7 +5,7 @@ const PROVIDER_IMAGES: Record<string, any> = {
   // ── Approved broadcasters ─────────────────────────────────────────────────
   espn:          require("@/assets/providers/espn.png"),
   nbcsn:         require("@/assets/providers/nbcsn.png"),
-  cbs:           require("@/assets/providers/cbs.png"),
+  cbs:           require("@/assets/providers/cbssn.png"),
   cbssn:         require("@/assets/providers/cbssn.png"),
   fox:           require("@/assets/providers/foxsports.png"),
   fs1:           require("@/assets/providers/foxsports.png"),
@@ -38,7 +38,7 @@ const LOGO_SCALE: Record<string, number> = {
   // Approved broadcasters
   espn:          0.65,
   nbcsn:         1.0,
-  cbs:           1.0,
+  cbs:           1.2,
   cbssn:         1.2,
   fox:           1.1,
   fs1:           1.1,
@@ -69,7 +69,7 @@ const LOGO_ASPECT: Record<string, number> = {
   // Approved broadcasters
   espn:          4.05,
   nbcsn:         3.61,
-  cbs:           3.45,
+  cbs:           4.82,
   cbssn:         4.82,
   fox:           1.89,
   fs1:           1.89,
