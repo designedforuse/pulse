@@ -52,14 +52,22 @@
     }
   },
   "playoff_push:boston bruins playoff push march 2026": {
-    "video": null,
-    "fetchedAt": "2026-03-28T16:14:58.586Z",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=GDAiZiHgKWM",
+      "thumbnailUrl": "https://img.youtube.com/vi/GDAiZiHgKWM/hqdefault.jpg",
+      "durationSeconds": 645,
+      "title": "Bruins vs. Blue Jackets | NHL Highlights | March 29, 2026",
+      "source": "youtube",
+      "channel": "NHL",
+      "publishedAt": "17 hours ago"
+    },
+    "fetchedAt": "2026-03-30T18:28:54.132Z",
     "query": "Boston Bruins playoff push March 2026",
     "debug": {
       "searchQuery": "Boston Bruins playoff push March 2026",
-      "selectedVideoTitle": null,
-      "selectedVideoPublishedAt": null,
-      "selectedVideoChannel": null,
+      "selectedVideoTitle": "Bruins vs. Blue Jackets | NHL Highlights | March 29, 2026",
+      "selectedVideoPublishedAt": "17 hours ago",
+      "selectedVideoChannel": "NHL",
       "rejectedForAgeCount": 0
     }
   },
@@ -77,21 +85,21 @@
   },
   "playoff_push:anaheim ducks playoff push march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=GfrnSh16nes",
-      "thumbnailUrl": "https://img.youtube.com/vi/GfrnSh16nes/hqdefault.jpg",
-      "durationSeconds": 2576,
-      "title": "End is near for Calgary water restrictions | CTV News Calgary at 6 for March 27, 2026",
+      "url": "https://www.youtube.com/watch?v=SiMav3UkmqU",
+      "thumbnailUrl": "https://img.youtube.com/vi/SiMav3UkmqU/hqdefault.jpg",
+      "durationSeconds": 2738,
+      "title": "Avi Lewis wins federal NDP leadership race | CTV News Toronto at Six for March 29, 2026",
       "source": "youtube",
-      "channel": "CTV News",
-      "publishedAt": "14 hours ago"
+      "channel": "CP24",
+      "publishedAt": "16 hours ago"
     },
-    "fetchedAt": "2026-03-28T16:15:00.536Z",
+    "fetchedAt": "2026-03-30T18:28:53.865Z",
     "query": "Anaheim Ducks playoff push March 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push March 2026",
-      "selectedVideoTitle": "End is near for Calgary water restrictions | CTV News Calgary at 6 for March 27, 2026",
-      "selectedVideoPublishedAt": "14 hours ago",
-      "selectedVideoChannel": "CTV News",
+      "selectedVideoTitle": "Avi Lewis wins federal NDP leadership race | CTV News Toronto at Six for March 29, 2026",
+      "selectedVideoPublishedAt": "16 hours ago",
+      "selectedVideoChannel": "CP24",
       "rejectedForAgeCount": 0
     }
   },
@@ -232,14 +240,22 @@
     }
   },
   "momentum:boston bruins highlights march 2026": {
-    "video": null,
-    "fetchedAt": "2026-03-24T17:57:13.868Z",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=3qTKr-qhZrY",
+      "thumbnailUrl": "https://img.youtube.com/vi/3qTKr-qhZrY/hqdefault.jpg",
+      "durationSeconds": 403,
+      "title": "Czechs are hot - Zacha and Necas star in Plays of the Week 🇨🇿",
+      "source": "youtube",
+      "channel": "NHL Europe",
+      "publishedAt": "2 hours ago"
+    },
+    "fetchedAt": "2026-03-30T18:28:54.479Z",
     "query": "Boston Bruins highlights March 2026",
     "debug": {
       "searchQuery": "Boston Bruins highlights March 2026",
-      "selectedVideoTitle": null,
-      "selectedVideoPublishedAt": null,
-      "selectedVideoChannel": null,
+      "selectedVideoTitle": "Czechs are hot - Zacha and Necas star in Plays of the Week 🇨🇿",
+      "selectedVideoPublishedAt": "2 hours ago",
+      "selectedVideoChannel": "NHL Europe",
       "rejectedForAgeCount": 0
     }
   },

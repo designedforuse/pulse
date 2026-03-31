@@ -1,75 +1,31 @@
 {
-  "lastUpdated": "2026-03-28T16:35:25.001Z",
+  "lastUpdated": "2026-03-31T00:07:33.246Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
-        "NewEngland": 2,
         "SoCal": 1,
-        "Other": 2
+        "NewEngland": 1
       },
       "momentum": {
-        "SoCal": 1
-      },
-      "league_moment": {
-        "Other": 2
-      },
-      "clinch_watch": {
-        "SouthAfrica": 1,
-        "Other": 1
+        "NewEngland": 1
       }
     },
     "combinedPushByRegion": {
-      "NewEngland": false,
-      "SoCal": false
+      "SoCal": false,
+      "NewEngland": false
     },
     "finalFeedByRegion": {
-      "SouthAfrica": [
-        "clinch_watch: Clinch Watch"
-      ],
       "SoCal": [
-        "playoff_push: Gulls Push Week",
-        "momentum: Ducks Heating Up"
+        "playoff_push: Ducks Push Week"
       ],
       "NewEngland": [
-        "playoff_push: Bruins Push Week"
-      ],
-      "Other": [
-        "clinch_watch: Clinch Watch",
-        "playoff_push: Playoff Push"
+        "playoff_push: Bruins Push Week",
+        "momentum: Bruins Heating Up"
       ]
     },
-    "droppedCandidatesReasons": [
-      {
-        "id": "playoff_push_clinch_fallback_nhl_2025021155",
-        "kind": "playoff_push",
-        "region": "NewEngland",
-        "title": "Playoff Push",
-        "reason": "max 1 playoff_push per region (NewEngland)"
-      },
-      {
-        "id": "playoff_push_clinch_fallback_nhl_2025021170",
-        "kind": "playoff_push",
-        "region": "Other",
-        "title": "Playoff Push",
-        "reason": "max 1 playoff_push per region (Other)"
-      },
-      {
-        "id": "f1_race_weekend_japanese_grand_prix",
-        "kind": "league_moment",
-        "region": "Other",
-        "title": "Japanese Grand Prix",
-        "reason": "feed cap (max 6)"
-      },
-      {
-        "id": "league_moment_tournament",
-        "kind": "league_moment",
-        "region": "Other",
-        "title": "Big Stage",
-        "reason": "feed cap (max 6)"
-      }
-    ],
-    "totalBeforeCap": 10,
-    "totalAfterCap": 6,
+    "droppedCandidatesReasons": [],
+    "totalBeforeCap": 3,
+    "totalAfterCap": 3,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -87,15 +43,16 @@
           "CGY",
           "EDM",
           "VAN",
-          "MTL",
-          "NSH",
-          "CAR",
           "TOR",
+          "MTL",
           "TBL",
           "NYR",
           "STL",
           "NJD",
-          "FLA"
+          "FLA",
+          "NSH",
+          "CBJ",
+          "NYI"
         ],
         "skippedTeams": [
           {
@@ -109,19 +66,19 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 664,
+        "playersIngested": 601,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-28T16:35:25.001Z"
+        "timestamp": "2026-03-31T00:07:33.246Z"
       },
-      "cacheHistoryCount": 806,
+      "cacheHistoryCount": 809,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 10,
-    "candidateCountAfterCap": 6,
+    "candidateCountBeforeCap": 3,
+    "candidateCountAfterCap": 3,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -500.59027805555553,
+      "hoursUntil": -556.1259016666667,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -137,44 +94,25 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 2,
-      "clinchAfterRegionFilter": 2,
-      "clinchFinalCount": 2,
-      "clinchGatedOut": [
-        "Anaheim Ducks: 86 pts < 95",
-        "Boston Bruins: 88 pts < 95",
-        "Boston Bruins: 88 pts < 95"
-      ]
+      "rawClinchCandidates": 0,
+      "clinchAfterRegionFilter": 0,
+      "clinchFinalCount": 0,
+      "clinchGatedOut": []
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "f1-espn-401839040",
+    "tonightStorySourceEvent": "nhl_2025021176",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 400,
-      "sourceEventId": "f1-espn-401839040",
-      "reason": "10 followed/affiliate teams playing tonight",
+      "selectedScore": 260,
+      "sourceEventId": "nhl_2025021176",
+      "reason": "3 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 400,
-          "reason": "10 followed/affiliate teams playing tonight"
-        },
-        {
-          "label": "[clinch_watch] Playoff Stakes",
-          "score": 190,
-          "reason": "clinch_watch involving followed team(s): Stormers"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): Boston Bruins"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): San Diego Gulls"
+          "score": 260,
+          "reason": "3 followed/affiliate teams playing tonight"
         },
         {
           "label": "[playoff_push] Your Team's Push",
@@ -187,128 +125,49 @@
           "reason": "playoff_push involving followed team(s): Boston Bruins"
         },
         {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): Boston Bruins"
-        },
-        {
           "label": "[momentum] Hot Streak",
           "score": 150,
-          "reason": "momentum involving followed team(s): Anaheim Ducks"
-        },
-        {
-          "label": "[ritual_night] Family Game Night",
-          "score": 130,
-          "reason": "ritual \"Family Game Night\" has 3 followed-team game(s)"
-        },
-        {
-          "label": "[clinch_watch] Playoff Stakes",
-          "score": 110,
-          "reason": "clinch_watch (generic, no followed teams)"
-        },
-        {
-          "label": "[league_moment] League Spotlight",
-          "score": 50,
-          "reason": "league_moment (generic, no followed teams)"
-        },
-        {
-          "label": "[league_moment] League Spotlight",
-          "score": 50,
-          "reason": "league_moment (generic, no followed teams)"
+          "reason": "momentum involving followed team(s): Boston Bruins"
         }
       ]
     },
     "videoSelection": {
-      "clinch_watch_rugby-urc-sx99rb": {
-        "searchQuery": "Edinburgh clinch playoff berth March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
-      },
       "playoff_push_socal": {
-        "searchQuery": "San Diego Gulls playoff push March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
-      },
-      "momentum_ana": {
-        "searchQuery": "Anaheim Ducks highlights March 2026",
-        "selectedVideoTitle": "Duck Hunt at the Dome | Live Reaction, Analysis, & Highlights | March 26th, 2026",
-        "selectedVideoPublishedAt": "Streamed 1 day ago",
-        "selectedVideoChannel": "Game Over Calgary",
+        "searchQuery": "Anaheim Ducks playoff push March 2026",
+        "selectedVideoTitle": "Avi Lewis wins federal NDP leadership race | CTV News Toronto at Six for March 29, 2026",
+        "selectedVideoPublishedAt": "16 hours ago",
+        "selectedVideoChannel": "CP24",
         "rejectedForAgeCount": 0
       },
       "playoff_push_newengland": {
         "searchQuery": "Boston Bruins playoff push March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
+        "selectedVideoTitle": "Bruins vs. Blue Jackets | NHL Highlights | March 29, 2026",
+        "selectedVideoPublishedAt": "17 hours ago",
+        "selectedVideoChannel": "NHL",
         "rejectedForAgeCount": 0
       },
-      "clinch_watch_tennis-espn-173228": {
-        "searchQuery": "Sinner clinch playoff berth March 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
-      },
-      "playoff_push_clinch_fallback_nhl_2025021154": {
-        "searchQuery": "Anaheim Ducks playoff push March 2026",
-        "selectedVideoTitle": "End is near for Calgary water restrictions | CTV News Calgary at 6 for March 27, 2026",
-        "selectedVideoPublishedAt": "14 hours ago",
-        "selectedVideoChannel": "CTV News",
+      "momentum_bos": {
+        "searchQuery": "Boston Bruins highlights March 2026",
+        "selectedVideoTitle": "Czechs are hot - Zacha and Necas star in Plays of the Week 🇨🇿",
+        "selectedVideoPublishedAt": "2 hours ago",
+        "selectedVideoChannel": "NHL Europe",
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
-      "id": "clinch_watch_rugby-urc-sx99rb",
-      "title": "Clinch Watch",
-      "subtitle": "Can clinch home quarterfinal tonight",
-      "impact": {
-        "label": "Impacts: Saturday Warm-Up",
-        "ritualId": "saturday_sunrise",
-        "tabHint": "Watch"
-      },
-      "priority": 92,
-      "triggeredAt": "2026-03-28T16:35:25.001Z",
-      "expiresAt": "2026-03-28T21:00:00.000Z",
-      "kind": "clinch_watch",
-      "region": "SouthAfrica",
-      "regionPriority": 1,
-      "regionLabel": "South Africa",
-      "meta": {
-        "source": "team_config",
-        "conditionLabel": "Can clinch home quarterfinal",
-        "sport": "rugby",
-        "league": "URC",
-        "awayTeam": "Edinburgh",
-        "homeTeam": "Stormers",
-        "startTime": "2026-03-28T17:00:00.000Z",
-        "eventIds": [
-          "rugby-urc-sx99rb"
-        ],
-        "reason": "Stormers have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
-      },
-      "sports": [
-        "rugby"
-      ]
-    },
-    {
       "id": "playoff_push_socal",
-      "title": "Gulls Push Week",
+      "title": "Ducks Push Week",
       "subtitle": "Four games in seven days, including a back-to-back",
       "impact": {
-        "label": "Impacts: Saturday Game Day",
-        "ritualId": "saturday_spotlight",
+        "label": "Impacts: Family Game Night",
+        "ritualId": "friday_lights",
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-28T16:35:25.001Z",
-      "expiresAt": "2026-04-04T16:35:25.001Z",
+      "triggeredAt": "2026-03-31T00:07:33.246Z",
+      "expiresAt": "2026-04-07T00:07:33.246Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -316,91 +175,36 @@
       "meta": {
         "teams": [
           {
-            "team": "San Diego Gulls",
-            "league": "AHL",
+            "team": "Anaheim Ducks",
+            "league": "NHL",
             "gamesInNext7Days": 4,
             "gamesInNext5Days": 3,
             "hasBackToBack": true,
-            "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+            "reason": "Anaheim plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
           }
         ],
         "eventIds": [
-          "ahl-1028774",
-          "ahl-1028788",
-          "ahl-1028806",
-          "ahl-1028816"
-        ],
-        "combinedTeamCount": 1,
-        "windowStart": "2026-03-28T16:35:25.001Z",
-        "windowEnd": "2026-04-04T16:35:25.001Z",
-        "reason": "San Diego plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
-      },
-      "sports": [
-        "hockey"
-      ]
-    },
-    {
-      "id": "momentum_ana",
-      "title": "Ducks Heating Up",
-      "subtitle": "4-game win streak · +4 goal diff",
-      "impact": {
-        "label": "Feeds: Family Game Night",
-        "ritualId": "friday_lights",
-        "tabHint": "Rituals"
-      },
-      "priority": 80,
-      "triggeredAt": "2026-03-28T16:35:25.001Z",
-      "expiresAt": "2026-03-31T16:35:25.001Z",
-      "kind": "momentum",
-      "region": "SoCal",
-      "regionPriority": 2,
-      "regionLabel": "SoCal",
-      "meta": {
-        "team": "Anaheim Ducks",
-        "league": "NHL",
-        "abbrev": "ANA",
-        "winStreak": 4,
-        "pointStreak": 5,
-        "goalDiff": 4,
-        "recentGames": [
-          {
-            "date": "2026-03-27T01:00:00Z",
-            "opponent": "Calgary",
-            "score": "2-3",
-            "result": "W"
-          },
-          {
-            "date": "2026-03-25T02:00:00Z",
-            "opponent": "Vancouver",
-            "score": "3-5",
-            "result": "W"
-          },
-          {
-            "date": "2026-03-23T00:00:00Z",
-            "opponent": "Buffalo",
-            "score": "6-5",
-            "result": "W"
-          }
-        ],
-        "eventIds": [
-          "nhl_2025021154",
           "nhl_2025021176",
           "nhl_2025021190",
-          "nhl_2025021206"
+          "nhl_2025021206",
+          "nhl_2025021219"
         ],
-        "reason": "Anaheim Ducks is on a 4-game win streak"
+        "combinedTeamCount": 1,
+        "windowStart": "2026-03-31T00:07:33.246Z",
+        "windowEnd": "2026-04-07T00:07:33.246Z",
+        "reason": "Anaheim plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=Hk7_gUsoWtk",
-        "thumbnailUrl": "https://img.youtube.com/vi/Hk7_gUsoWtk/hqdefault.jpg",
-        "durationSeconds": 2196,
-        "title": "Duck Hunt at the Dome | Live Reaction, Analysis, & Highlights | March 26th, 2026",
+        "url": "https://www.youtube.com/watch?v=SiMav3UkmqU",
+        "thumbnailUrl": "https://img.youtube.com/vi/SiMav3UkmqU/hqdefault.jpg",
+        "durationSeconds": 2738,
+        "title": "Avi Lewis wins federal NDP leadership race | CTV News Toronto at Six for March 29, 2026",
         "source": "youtube",
-        "channel": "Game Over Calgary",
-        "publishedAt": "Streamed 1 day ago"
+        "channel": "CP24",
+        "publishedAt": "16 hours ago"
       }
     },
     {
@@ -412,8 +216,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-28T16:35:25.001Z",
-      "expiresAt": "2026-04-04T16:35:25.001Z",
+      "triggeredAt": "2026-03-31T00:07:33.246Z",
+      "expiresAt": "2026-04-07T00:07:33.246Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -430,91 +234,90 @@
           }
         ],
         "eventIds": [
-          "nhl_2025021155",
-          "nhl_2025021170",
           "nhl_2025021178",
-          "nhl_2025021193"
+          "nhl_2025021193",
+          "nhl_2025021210",
+          "nhl_2025021224"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-28T16:35:25.001Z",
-        "windowEnd": "2026-04-04T16:35:25.001Z",
+        "windowStart": "2026-03-31T00:07:33.246Z",
+        "windowEnd": "2026-04-07T00:07:33.246Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
-      },
-      "sports": [
-        "hockey"
-      ]
-    },
-    {
-      "id": "clinch_watch_tennis-espn-173228",
-      "title": "Clinch Watch",
-      "subtitle": "Sinner vs Lehecka · Tennis title on the line",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 92,
-      "triggeredAt": "2026-03-28T16:35:25.001Z",
-      "expiresAt": "2026-03-29T08:00:00.000Z",
-      "kind": "clinch_watch",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "source": "tournament",
-        "conditionLabel": "Tennis title on the line",
-        "sport": "tennis",
-        "league": "ATP Masters 1000",
-        "awayTeam": "Sinner",
-        "homeTeam": "Lehecka",
-        "startTime": "2026-03-29T04:00:00.000Z",
-        "eventIds": [
-          "tennis-espn-173228"
-        ],
-        "reason": "Sinner and Lehecka meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
-      },
-      "sports": [
-        "tennis"
-      ]
-    },
-    {
-      "id": "playoff_push_clinch_fallback_nhl_2025021154",
-      "title": "Playoff Push",
-      "subtitle": "A win keeps Anaheim Ducks in the playoff race.",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 90,
-      "triggeredAt": "2026-03-28T16:35:25.001Z",
-      "expiresAt": "2026-03-28T23:30:00.000Z",
-      "kind": "playoff_push",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "teams": [
-          {
-            "team": "Anaheim Ducks",
-            "league": "NHL"
-          }
-        ],
-        "eventIds": [
-          "nhl_2025021154"
-        ],
-        "reason": "Anaheim Ducks has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
-        "clinchFallback": true
       },
       "sports": [
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=GfrnSh16nes",
-        "thumbnailUrl": "https://img.youtube.com/vi/GfrnSh16nes/hqdefault.jpg",
-        "durationSeconds": 2576,
-        "title": "End is near for Calgary water restrictions | CTV News Calgary at 6 for March 27, 2026",
+        "url": "https://www.youtube.com/watch?v=GDAiZiHgKWM",
+        "thumbnailUrl": "https://img.youtube.com/vi/GDAiZiHgKWM/hqdefault.jpg",
+        "durationSeconds": 645,
+        "title": "Bruins vs. Blue Jackets | NHL Highlights | March 29, 2026",
         "source": "youtube",
-        "channel": "CTV News",
-        "publishedAt": "14 hours ago"
+        "channel": "NHL",
+        "publishedAt": "17 hours ago"
+      }
+    },
+    {
+      "id": "momentum_bos",
+      "title": "Bruins Heating Up",
+      "subtitle": "3-game win streak · +5 goal diff",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 80,
+      "triggeredAt": "2026-03-31T00:07:33.246Z",
+      "expiresAt": "2026-04-03T00:07:33.246Z",
+      "kind": "momentum",
+      "region": "NewEngland",
+      "regionPriority": 3,
+      "regionLabel": "New England",
+      "meta": {
+        "team": "Boston Bruins",
+        "league": "NHL",
+        "abbrev": "BOS",
+        "winStreak": 3,
+        "pointStreak": 3,
+        "goalDiff": 5,
+        "recentGames": [
+          {
+            "date": "2026-03-29T21:00:00Z",
+            "opponent": "Columbus",
+            "score": "3-4",
+            "result": "W"
+          },
+          {
+            "date": "2026-03-28T21:00:00Z",
+            "opponent": "Minnesota",
+            "score": "6-3",
+            "result": "W"
+          },
+          {
+            "date": "2026-03-25T23:30:00Z",
+            "opponent": "Buffalo",
+            "score": "3-4",
+            "result": "W"
+          }
+        ],
+        "eventIds": [
+          "nhl_2025021178",
+          "nhl_2025021193",
+          "nhl_2025021210",
+          "nhl_2025021224"
+        ],
+        "reason": "Boston Bruins is on a 3-game win streak"
+      },
+      "sports": [
+        "hockey"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=3qTKr-qhZrY",
+        "thumbnailUrl": "https://img.youtube.com/vi/3qTKr-qhZrY/hqdefault.jpg",
+        "durationSeconds": 403,
+        "title": "Czechs are hot - Zacha and Necas star in Plays of the Week 🇨🇿",
+        "source": "youtube",
+        "channel": "NHL Europe",
+        "publishedAt": "2 hours ago"
       }
     }
   ],
@@ -522,18 +325,16 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Japanese Grand Prix, Los Angeles Lakers, Hurricanes, Sungoliath, and Stormers (+5 more) all play tonight across the F1, NBA, Super Rugby, Japan League One, URC, NHL, Top 14, MLR, AHL.",
-    "sourceEventId": "f1-espn-401839040",
+    "body": "The Anaheim Ducks, Los Angeles Lakers, and Boston Bruins all play tonight across the NHL, NBA.",
+    "sourceEventId": "nhl_2025021176",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
     },
     "sports": [
-      "racing",
-      "basketball",
-      "rugby",
-      "hockey"
+      "hockey",
+      "basketball"
     ]
   },
   "monthSnapshot": {
@@ -542,193 +343,13 @@
       "monthKey": "2026-03",
       "leagues": [
         {
-          "sport": "rugby",
-          "displayName": "Six Nations",
-          "leagueKey": "sixnations",
-          "dateRangeLabel": "Mar 14",
-          "startDate": "2026-03-14T16:40:00.000Z",
-          "endDate": "2026-03-14T20:10:00.000Z",
-          "eventCount": 2
-        },
-        {
-          "sport": "hockey",
-          "displayName": "NCAA Hockey",
-          "leagueKey": "ncaa-hockey",
-          "dateRangeLabel": "Mar 14",
-          "startDate": "2026-03-14T17:00:00.000Z",
-          "endDate": "2026-03-14T17:00:00.000Z",
-          "eventCount": 1
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Serie A",
-          "leagueKey": "seriea",
-          "dateRangeLabel": "Mar 14–22",
-          "startDate": "2026-03-14T17:00:00.000Z",
-          "endDate": "2026-03-22T19:45:00.000Z",
-          "eventCount": 18
-        },
-        {
-          "sport": "basketball",
-          "displayName": "NBA",
-          "leagueKey": "nba",
-          "dateRangeLabel": "Mar 14–31",
-          "startDate": "2026-03-14T17:00:00.000Z",
-          "endDate": "2026-03-31T23:30:00.000Z",
-          "eventCount": 132
-        },
-        {
-          "sport": "soccer",
-          "displayName": "EPL",
-          "leagueKey": "epl",
-          "dateRangeLabel": "Mar 14–22",
-          "startDate": "2026-03-14T17:30:00.000Z",
-          "endDate": "2026-03-22T14:15:00.000Z",
-          "eventCount": 19
-        },
-        {
-          "sport": "soccer",
-          "displayName": "MLS",
-          "leagueKey": "mls",
-          "dateRangeLabel": "Mar 14–22",
-          "startDate": "2026-03-14T17:30:00.000Z",
-          "endDate": "2026-03-22T23:00:00.000Z",
-          "eventCount": 30
-        },
-        {
-          "sport": "soccer",
-          "displayName": "La Liga",
-          "leagueKey": "laliga",
-          "dateRangeLabel": "Mar 14–22",
-          "startDate": "2026-03-14T17:30:00.000Z",
-          "endDate": "2026-03-22T20:00:00.000Z",
-          "eventCount": 17
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Bundesliga",
-          "leagueKey": "bundesliga",
-          "dateRangeLabel": "Mar 14–22",
-          "startDate": "2026-03-14T17:30:00.000Z",
-          "endDate": "2026-03-22T18:30:00.000Z",
-          "eventCount": 13
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Ligue 1",
-          "leagueKey": "ligue1",
-          "dateRangeLabel": "Mar 14–22",
-          "startDate": "2026-03-14T18:00:00.000Z",
-          "endDate": "2026-03-22T19:45:00.000Z",
-          "eventCount": 15
-        },
-        {
-          "sport": "soccer",
-          "displayName": "USL",
-          "leagueKey": "usl",
-          "dateRangeLabel": "Mar 14–29",
-          "startDate": "2026-03-14T19:00:00.000Z",
-          "endDate": "2026-03-29T20:00:00.000Z",
-          "eventCount": 35
-        },
-        {
           "sport": "hockey",
           "displayName": "AHL",
           "leagueKey": "ahl",
-          "dateRangeLabel": "Mar 14–31",
-          "startDate": "2026-03-14T20:00:00.000Z",
+          "dateRangeLabel": "Mar 17–31",
+          "startDate": "2026-03-17T17:30:00.000Z",
           "endDate": "2026-03-31T23:00:00.000Z",
-          "eventCount": 114
-        },
-        {
-          "sport": "soccer",
-          "displayName": "NWSL",
-          "leagueKey": "nwsl",
-          "dateRangeLabel": "Mar 14–29",
-          "startDate": "2026-03-14T20:00:00.000Z",
-          "endDate": "2026-03-29T23:00:00.000Z",
-          "eventCount": 27
-        },
-        {
-          "sport": "cricket",
-          "displayName": "T20I Cricket",
-          "leagueKey": "t20i",
-          "dateRangeLabel": "Mar 15–25",
-          "startDate": "2026-03-15T00:00:00.000Z",
-          "endDate": "2026-03-25T06:15:00.000Z",
-          "eventCount": 5
-        },
-        {
-          "sport": "hockey",
-          "displayName": "ECHL",
-          "leagueKey": "echl",
-          "dateRangeLabel": "Mar 15–29",
-          "startDate": "2026-03-15T01:10:00.000Z",
-          "endDate": "2026-03-29T00:05:00.000Z",
-          "eventCount": 7
-        },
-        {
-          "sport": "basketball",
-          "displayName": "NCAAB",
-          "leagueKey": "ncaab",
-          "dateRangeLabel": "Mar 15–19",
-          "startDate": "2026-03-15T02:05:00.000Z",
-          "endDate": "2026-03-19T20:27:00.000Z",
-          "eventCount": 3
-        },
-        {
-          "sport": "rugby",
-          "displayName": "Super Rugby",
-          "leagueKey": "superrugby",
-          "dateRangeLabel": "Mar 15–28",
-          "startDate": "2026-03-15T02:35:00.000Z",
-          "endDate": "2026-03-28T08:35:00.000Z",
-          "eventCount": 11
-        },
-        {
-          "sport": "rugby",
-          "displayName": "Japan League One",
-          "leagueKey": "leagueone",
-          "dateRangeLabel": "Mar 15–29",
-          "startDate": "2026-03-15T05:05:00.000Z",
-          "endDate": "2026-03-29T05:30:00.000Z",
-          "eventCount": 14
-        },
-        {
-          "sport": "racing",
-          "displayName": "Chinese GP",
-          "leagueKey": "f1",
-          "dateRangeLabel": "Mar 15",
-          "startDate": "2026-03-15T07:00:00.000Z",
-          "endDate": "2026-03-15T07:00:00.000Z",
-          "eventCount": 1
-        },
-        {
-          "sport": "cricket",
-          "displayName": "ODI Cricket",
-          "leagueKey": "odi",
-          "dateRangeLabel": "Mar 15",
-          "startDate": "2026-03-15T08:15:00.000Z",
-          "endDate": "2026-03-15T08:15:00.000Z",
-          "eventCount": 1
-        },
-        {
-          "sport": "rugby",
-          "displayName": "SVNS New York",
-          "leagueKey": "svns",
-          "dateRangeLabel": "Mar 15",
-          "startDate": "2026-03-15T14:00:00.000Z",
-          "endDate": "2026-03-15T14:00:00.000Z",
-          "eventCount": 1
-        },
-        {
-          "sport": "golf",
-          "displayName": "Players",
-          "leagueKey": "golf-majors",
-          "dateRangeLabel": "Mar 15",
-          "startDate": "2026-03-15T14:00:00.000Z",
-          "endDate": "2026-03-15T14:00:00.000Z",
-          "eventCount": 1
+          "eventCount": 93
         },
         {
           "sport": "soccer",
@@ -740,6 +361,24 @@
           "eventCount": 8
         },
         {
+          "sport": "basketball",
+          "displayName": "NBA",
+          "leagueKey": "nba",
+          "dateRangeLabel": "Mar 17–31",
+          "startDate": "2026-03-17T23:00:00.000Z",
+          "endDate": "2026-03-31T23:30:00.000Z",
+          "eventCount": 110
+        },
+        {
+          "sport": "basketball",
+          "displayName": "NCAAB",
+          "leagueKey": "ncaab",
+          "dateRangeLabel": "Mar 18–19",
+          "startDate": "2026-03-18T03:00:00.000Z",
+          "endDate": "2026-03-19T20:27:00.000Z",
+          "eventCount": 2
+        },
+        {
           "sport": "soccer",
           "displayName": "Europa League",
           "leagueKey": "europaleague",
@@ -747,6 +386,42 @@
           "startDate": "2026-03-18T15:30:00.000Z",
           "endDate": "2026-03-19T20:00:00.000Z",
           "eventCount": 8
+        },
+        {
+          "sport": "hockey",
+          "displayName": "ECHL",
+          "leagueKey": "echl",
+          "dateRangeLabel": "Mar 19–29",
+          "startDate": "2026-03-19T01:10:00.000Z",
+          "endDate": "2026-03-29T00:05:00.000Z",
+          "eventCount": 5
+        },
+        {
+          "sport": "rugby",
+          "displayName": "Japan League One",
+          "leagueKey": "leagueone",
+          "dateRangeLabel": "Mar 20–29",
+          "startDate": "2026-03-20T05:30:00.000Z",
+          "endDate": "2026-03-29T05:30:00.000Z",
+          "eventCount": 12
+        },
+        {
+          "sport": "rugby",
+          "displayName": "Super Rugby",
+          "leagueKey": "superrugby",
+          "dateRangeLabel": "Mar 20–28",
+          "startDate": "2026-03-20T06:05:00.000Z",
+          "endDate": "2026-03-28T08:35:00.000Z",
+          "eventCount": 10
+        },
+        {
+          "sport": "cricket",
+          "displayName": "T20I Cricket",
+          "leagueKey": "t20i",
+          "dateRangeLabel": "Mar 20–25",
+          "startDate": "2026-03-20T06:15:00.000Z",
+          "endDate": "2026-03-25T06:15:00.000Z",
+          "eventCount": 3
         },
         {
           "sport": "rugby",
@@ -758,6 +433,24 @@
           "eventCount": 16
         },
         {
+          "sport": "soccer",
+          "displayName": "Serie A",
+          "leagueKey": "seriea",
+          "dateRangeLabel": "Mar 20–22",
+          "startDate": "2026-03-20T17:30:00.000Z",
+          "endDate": "2026-03-22T19:45:00.000Z",
+          "eventCount": 10
+        },
+        {
+          "sport": "soccer",
+          "displayName": "Bundesliga",
+          "leagueKey": "bundesliga",
+          "dateRangeLabel": "Mar 20–22",
+          "startDate": "2026-03-20T19:30:00.000Z",
+          "endDate": "2026-03-22T18:30:00.000Z",
+          "eventCount": 9
+        },
+        {
           "sport": "rugby",
           "displayName": "English Premiership",
           "leagueKey": "premiership",
@@ -767,6 +460,42 @@
           "eventCount": 10
         },
         {
+          "sport": "soccer",
+          "displayName": "Ligue 1",
+          "leagueKey": "ligue1",
+          "dateRangeLabel": "Mar 20–22",
+          "startDate": "2026-03-20T19:45:00.000Z",
+          "endDate": "2026-03-22T19:45:00.000Z",
+          "eventCount": 9
+        },
+        {
+          "sport": "soccer",
+          "displayName": "EPL",
+          "leagueKey": "epl",
+          "dateRangeLabel": "Mar 20–22",
+          "startDate": "2026-03-20T20:00:00.000Z",
+          "endDate": "2026-03-22T14:15:00.000Z",
+          "eventCount": 10
+        },
+        {
+          "sport": "soccer",
+          "displayName": "La Liga",
+          "leagueKey": "laliga",
+          "dateRangeLabel": "Mar 20–22",
+          "startDate": "2026-03-20T20:00:00.000Z",
+          "endDate": "2026-03-22T20:00:00.000Z",
+          "eventCount": 10
+        },
+        {
+          "sport": "soccer",
+          "displayName": "NWSL",
+          "leagueKey": "nwsl",
+          "dateRangeLabel": "Mar 21–29",
+          "startDate": "2026-03-21T00:00:00.000Z",
+          "endDate": "2026-03-29T23:00:00.000Z",
+          "eventCount": 21
+        },
+        {
           "sport": "rugby",
           "displayName": "Top 14",
           "leagueKey": "top14",
@@ -774,6 +503,24 @@
           "startDate": "2026-03-21T13:30:00.000Z",
           "endDate": "2026-03-29T19:05:00.000Z",
           "eventCount": 14
+        },
+        {
+          "sport": "soccer",
+          "displayName": "MLS",
+          "leagueKey": "mls",
+          "dateRangeLabel": "Mar 21–22",
+          "startDate": "2026-03-21T18:30:00.000Z",
+          "endDate": "2026-03-22T23:00:00.000Z",
+          "eventCount": 15
+        },
+        {
+          "sport": "soccer",
+          "displayName": "USL",
+          "leagueKey": "usl",
+          "dateRangeLabel": "Mar 21–29",
+          "startDate": "2026-03-21T19:00:00.000Z",
+          "endDate": "2026-03-29T20:00:00.000Z",
+          "eventCount": 25
         },
         {
           "sport": "soccer",
@@ -794,24 +541,6 @@
           "eventCount": 5
         },
         {
-          "sport": "tennis",
-          "displayName": "Miami Open",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "Mar 27–29",
-          "startDate": "2026-03-27T19:10:00.000Z",
-          "endDate": "2026-03-29T04:00:00.000Z",
-          "eventCount": 3
-        },
-        {
-          "sport": "hockey",
-          "displayName": "NHL",
-          "leagueKey": "nhl",
-          "dateRangeLabel": "Mar 27–31",
-          "startDate": "2026-03-27T23:00:00.000Z",
-          "endDate": "2026-03-31T23:30:00.000Z",
-          "eventCount": 36
-        },
-        {
           "sport": "rugby",
           "displayName": "MLR",
           "leagueKey": "mlr",
@@ -819,6 +548,15 @@
           "startDate": "2026-03-28T22:00:00.000Z",
           "endDate": "2026-03-28T22:00:00.000Z",
           "eventCount": 1
+        },
+        {
+          "sport": "hockey",
+          "displayName": "NHL",
+          "leagueKey": "nhl",
+          "dateRangeLabel": "Mar 30–31",
+          "startDate": "2026-03-30T23:00:00.000Z",
+          "endDate": "2026-03-31T23:30:00.000Z",
+          "eventCount": 13
         }
       ]
     },
@@ -857,10 +595,10 @@
           "sport": "hockey",
           "displayName": "AHL",
           "leagueKey": "ahl",
-          "dateRangeLabel": "Apr 1–18",
+          "dateRangeLabel": "Apr 1–19",
           "startDate": "2026-04-01T02:00:00.000Z",
-          "endDate": "2026-04-18T02:00:00.000Z",
-          "eventCount": 106
+          "endDate": "2026-04-19T22:00:00.000Z",
+          "eventCount": 127
         },
         {
           "sport": "hockey",
@@ -868,8 +606,8 @@
           "leagueKey": "echl",
           "dateRangeLabel": "Apr 2–18",
           "startDate": "2026-04-02T01:05:00.000Z",
-          "endDate": "2026-04-18T00:05:00.000Z",
-          "eventCount": 8
+          "endDate": "2026-04-18T23:05:00.000Z",
+          "eventCount": 9
         },
         {
           "sport": "rugby",
@@ -884,10 +622,10 @@
           "sport": "soccer",
           "displayName": "Ligue 1",
           "leagueKey": "ligue1",
-          "dateRangeLabel": "Apr 3–18",
+          "dateRangeLabel": "Apr 3–19",
           "startDate": "2026-04-03T18:45:00.000Z",
-          "endDate": "2026-04-18T15:00:00.000Z",
-          "eventCount": 18
+          "endDate": "2026-04-19T18:45:00.000Z",
+          "eventCount": 25
         },
         {
           "sport": "rugby",
@@ -920,10 +658,10 @@
           "sport": "rugby",
           "displayName": "MLR",
           "leagueKey": "mlr",
-          "dateRangeLabel": "Apr 4–13",
+          "dateRangeLabel": "Apr 4–20",
           "startDate": "2026-04-04T02:30:00.000Z",
-          "endDate": "2026-04-13T00:00:00.000Z",
-          "eventCount": 6
+          "endDate": "2026-04-20T00:00:00.000Z",
+          "eventCount": 9
         },
         {
           "sport": "rugby",
@@ -947,37 +685,37 @@
           "sport": "soccer",
           "displayName": "Serie A",
           "leagueKey": "seriea",
-          "dateRangeLabel": "Apr 4–18",
+          "dateRangeLabel": "Apr 4–20",
           "startDate": "2026-04-04T13:00:00.000Z",
-          "endDate": "2026-04-18T16:00:00.000Z",
-          "eventCount": 24
+          "endDate": "2026-04-20T18:45:00.000Z",
+          "eventCount": 30
         },
         {
           "sport": "soccer",
           "displayName": "Bundesliga",
           "leagueKey": "bundesliga",
-          "dateRangeLabel": "Apr 4–18",
+          "dateRangeLabel": "Apr 4–19",
           "startDate": "2026-04-04T13:30:00.000Z",
-          "endDate": "2026-04-18T16:30:00.000Z",
-          "eventCount": 24
+          "endDate": "2026-04-19T17:30:00.000Z",
+          "eventCount": 27
         },
         {
           "sport": "soccer",
           "displayName": "MLS",
           "leagueKey": "mls",
-          "dateRangeLabel": "Apr 4–18",
+          "dateRangeLabel": "Apr 4–19",
           "startDate": "2026-04-04T18:30:00.000Z",
-          "endDate": "2026-04-18T02:30:00.000Z",
-          "eventCount": 31
+          "endDate": "2026-04-19T23:00:00.000Z",
+          "eventCount": 45
         },
         {
           "sport": "soccer",
           "displayName": "USL",
           "leagueKey": "usl",
-          "dateRangeLabel": "Apr 4–12",
+          "dateRangeLabel": "Apr 4–19",
           "startDate": "2026-04-04T20:00:00.000Z",
-          "endDate": "2026-04-12T21:00:00.000Z",
-          "eventCount": 24
+          "endDate": "2026-04-19T21:00:00.000Z",
+          "eventCount": 34
         },
         {
           "sport": "soccer",
@@ -1019,19 +757,19 @@
           "sport": "soccer",
           "displayName": "EPL",
           "leagueKey": "epl",
-          "dateRangeLabel": "Apr 10–18",
+          "dateRangeLabel": "Apr 10–20",
           "startDate": "2026-04-10T19:00:00.000Z",
-          "endDate": "2026-04-18T16:30:00.000Z",
-          "eventCount": 16
+          "endDate": "2026-04-20T19:00:00.000Z",
+          "eventCount": 22
         },
         {
           "sport": "rugby",
           "displayName": "SVNS Hong Kong",
           "leagueKey": "svns",
-          "dateRangeLabel": "Apr 17",
+          "dateRangeLabel": "Apr 17–19",
           "startDate": "2026-04-17T02:00:00.000Z",
-          "endDate": "2026-04-17T02:00:00.000Z",
-          "eventCount": 1
+          "endDate": "2026-04-19T02:00:00.000Z",
+          "eventCount": 2
         },
         {
           "sport": "cricket",
@@ -1057,17 +795,17 @@
           "leagueKey": "urc",
           "dateRangeLabel": "Apr 17–18",
           "startDate": "2026-04-17T18:45:00.000Z",
-          "endDate": "2026-04-18T16:30:00.000Z",
-          "eventCount": 6
+          "endDate": "2026-04-18T18:45:00.000Z",
+          "eventCount": 8
         },
         {
           "sport": "rugby",
           "displayName": "English Premiership",
           "leagueKey": "premiership",
-          "dateRangeLabel": "Apr 17–18",
+          "dateRangeLabel": "Apr 17–19",
           "startDate": "2026-04-17T18:45:00.000Z",
-          "endDate": "2026-04-18T16:30:00.000Z",
-          "eventCount": 4
+          "endDate": "2026-04-19T14:00:00.000Z",
+          "eventCount": 5
         },
         {
           "sport": "rugby",
