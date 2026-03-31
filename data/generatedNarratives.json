@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-31T00:07:33.246Z",
+  "lastUpdated": "2026-03-31T00:19:53.631Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -68,7 +68,7 @@
         ],
         "playersIngested": 601,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-31T00:07:33.246Z"
+        "timestamp": "2026-03-31T00:19:53.631Z"
       },
       "cacheHistoryCount": 809,
       "error": null
@@ -78,7 +78,7 @@
     "candidateCountAfterCap": 3,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -556.1259016666667,
+      "hoursUntil": -556.3315641666667,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -105,14 +105,14 @@
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 260,
+      "selectedScore": 280,
       "sourceEventId": "nhl_2025021176",
-      "reason": "3 followed/affiliate teams playing tonight",
+      "reason": "4 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 260,
-          "reason": "3 followed/affiliate teams playing tonight"
+          "score": 280,
+          "reason": "4 followed/affiliate teams playing tonight"
         },
         {
           "label": "[playoff_push] Your Team's Push",
@@ -166,8 +166,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-31T00:07:33.246Z",
-      "expiresAt": "2026-04-07T00:07:33.246Z",
+      "triggeredAt": "2026-03-31T00:19:53.631Z",
+      "expiresAt": "2026-04-07T00:19:53.631Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -190,8 +190,8 @@
           "nhl_2025021219"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-31T00:07:33.246Z",
-        "windowEnd": "2026-04-07T00:07:33.246Z",
+        "windowStart": "2026-03-31T00:19:53.631Z",
+        "windowEnd": "2026-04-07T00:19:53.631Z",
         "reason": "Anaheim plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -216,8 +216,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-31T00:07:33.246Z",
-      "expiresAt": "2026-04-07T00:07:33.246Z",
+      "triggeredAt": "2026-03-31T00:19:53.631Z",
+      "expiresAt": "2026-04-07T00:19:53.631Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -240,8 +240,8 @@
           "nhl_2025021224"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-31T00:07:33.246Z",
-        "windowEnd": "2026-04-07T00:07:33.246Z",
+        "windowStart": "2026-03-31T00:19:53.631Z",
+        "windowEnd": "2026-04-07T00:19:53.631Z",
         "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -266,8 +266,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-31T00:07:33.246Z",
-      "expiresAt": "2026-04-03T00:07:33.246Z",
+      "triggeredAt": "2026-03-31T00:19:53.631Z",
+      "expiresAt": "2026-04-03T00:19:53.631Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -325,7 +325,7 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Anaheim Ducks, Los Angeles Lakers, and Boston Bruins all play tonight across the NHL, NBA.",
+    "body": "The Anaheim Ducks, Los Angeles Lakers, Boston Bruins, and United States all play tonight across the NHL, NBA, International Friendly.",
     "sourceEventId": "nhl_2025021176",
     "sourceCard": {
       "id": "tonight_multi_team",
@@ -334,7 +334,8 @@
     },
     "sports": [
       "hockey",
-      "basketball"
+      "basketball",
+      "soccer"
     ]
   },
   "monthSnapshot": {

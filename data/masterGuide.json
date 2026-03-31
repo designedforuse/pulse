@@ -479,6 +479,18 @@
       ]
     },
     "cricket": {
+      "IPL": [
+        "Mumbai Indians",
+        "Chennai Super Kings",
+        "Royal Challengers Bengaluru",
+        "Delhi Capitals",
+        "Kolkata Knight Riders",
+        "Sunrisers Hyderabad",
+        "Punjab Kings",
+        "Rajasthan Royals",
+        "Gujarat Titans",
+        "Lucknow Super Giants"
+      ],
       "International": [
         "South Africa"
       ],
@@ -519,7 +531,31 @@
         "Marseille",
         "Tottenham Hotspur"
       ],
-      "Europa League": []
+      "Europa League": [],
+      "FIFA World Cup": [
+        "United States",
+        "England",
+        "France",
+        "Brazil",
+        "Germany",
+        "Spain",
+        "Argentina",
+        "Mexico",
+        "Portugal",
+        "Netherlands"
+      ],
+      "International Friendly": [
+        "United States",
+        "England",
+        "France",
+        "Brazil",
+        "Germany",
+        "Spain",
+        "Argentina",
+        "Mexico",
+        "Portugal",
+        "Netherlands"
+      ]
     },
     "basketball": {
       "NBA": [
