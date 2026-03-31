@@ -3,7 +3,7 @@ import { View, Image, Text, StyleSheet } from "react-native";
 
 const PROVIDER_IMAGES: Record<string, any> = {
   espn: require("@/assets/providers/espn.png"),
-  espn2: require("@/assets/providers/espn2.png"),
+  espn2: require("@/assets/providers/espn.png"),
   fanduelsn: require("@/assets/providers/fanduelsn.png"),
   youtubetv: require("@/assets/providers/youtubetv.png"),
   disneyplus: require("@/assets/providers/disneyplus.png"),
@@ -29,8 +29,8 @@ const PROVIDER_IMAGES: Record<string, any> = {
   nwslplus: require("@/assets/providers/nwslplus.png"),
   nbatv: require("@/assets/providers/nbatv.png"),
   paramount: require("@/assets/providers/paramount.png"),
-  fox: require("@/assets/providers/fox.png"),
-  fs1: require("@/assets/providers/fs1.png"),
+  fox: require("@/assets/providers/foxsports.png"),
+  fs1: require("@/assets/providers/foxsports.png"),
 };
 
 // Per-logo optical scale multiplier (applied to the base bounding box).
@@ -38,7 +38,7 @@ const PROVIDER_IMAGES: Record<string, any> = {
 // Tune these values individually until each logo looks right at all card sizes.
 const LOGO_SCALE: Record<string, number> = {
   espn:          0.65,
-  espn2:         1.0,
+  espn2:         0.65,
   espnplus:      1.0,
   cbssn:         1.2,
   cbsgolazo:     1.0,
@@ -71,7 +71,7 @@ const LOGO_SCALE: Record<string, number> = {
 // Measured aspect ratios (width / height) for every logo asset
 const LOGO_ASPECT: Record<string, number> = {
   espn: 4.05,
-  espn2: 5.17,
+  espn2: 4.05,
   espnplus: 4.98,
   cbssn: 4.82,
   cbsgolazo: 1.13,
@@ -90,8 +90,8 @@ const LOGO_ASPECT: Record<string, number> = {
   disneyplus: 1.83,
   primevideo: 3.17,
   appletv: 1.98,
-  fox: 2.4,
-  fs1: 2.0,
+  fox: 1.89,
+  fs1: 1.89,
 };
 
 // Logos that are already full-colour and should not be white-tinted
