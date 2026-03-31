@@ -54,6 +54,48 @@ export function getGrandPrixFlag(gpName: string): string | null {
   return null;
 }
 
+const COUNTRY_FLAGS: Record<string, string> = {
+  "Afghanistan": "🇦🇫", "Albania": "🇦🇱", "Algeria": "🇩🇿", "Angola": "🇦🇴",
+  "Argentina": "🇦🇷", "Armenia": "🇦🇲", "Australia": "🇦🇺", "Austria": "🇦🇹",
+  "Azerbaijan": "🇦🇿", "Bahrain": "🇧🇭", "Bangladesh": "🇧🇩", "Belgium": "🇧🇪",
+  "Bolivia": "🇧🇴", "Bosnia and Herzegovina": "🇧🇦", "Bosnia & Herzegovina": "🇧🇦",
+  "Brazil": "🇧🇷", "Bulgaria": "🇧🇬", "Burkina Faso": "🇧🇫", "Cameroon": "🇨🇲",
+  "Canada": "🇨🇦", "Chile": "🇨🇱", "China": "🇨🇳", "Colombia": "🇨🇴",
+  "Costa Rica": "🇨🇷", "Croatia": "🇭🇷", "Cuba": "🇨🇺", "Czech Republic": "🇨🇿",
+  "Czechia": "🇨🇿", "Denmark": "🇩🇰", "Ecuador": "🇪🇨", "Egypt": "🇪🇬",
+  "El Salvador": "🇸🇻", "England": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "Estonia": "🇪🇪", "Ethiopia": "🇪🇹",
+  "Finland": "🇫🇮", "France": "🇫🇷", "Germany": "🇩🇪", "Ghana": "🇬🇭",
+  "Greece": "🇬🇷", "Guatemala": "🇬🇹", "Honduras": "🇭🇳", "Hungary": "🇭🇺",
+  "Iceland": "🇮🇸", "India": "🇮🇳", "Indonesia": "🇮🇩", "Iran": "🇮🇷",
+  "Iraq": "🇮🇶", "Ireland": "🇮🇪", "Republic of Ireland": "🇮🇪",
+  "Israel": "🇮🇱", "Italy": "🇮🇹", "Ivory Coast": "🇨🇮", "Jamaica": "🇯🇲",
+  "Japan": "🇯🇵", "Jordan": "🇯🇴", "Kenya": "🇰🇪", "South Korea": "🇰🇷",
+  "Korea Republic": "🇰🇷", "Kosovo": "🇽🇰", "Kuwait": "🇰🇼", "Latvia": "🇱🇻",
+  "Lebanon": "🇱🇧", "Libya": "🇱🇾", "Lithuania": "🇱🇹", "Luxembourg": "🇱🇺",
+  "Malaysia": "🇲🇾", "Mali": "🇲🇱", "Malta": "🇲🇹", "Mexico": "🇲🇽",
+  "Moldova": "🇲🇩", "Montenegro": "🇲🇪", "Morocco": "🇲🇦", "Mozambique": "🇲🇿",
+  "Netherlands": "🇳🇱", "New Zealand": "🇳🇿", "Nicaragua": "🇳🇮",
+  "Nigeria": "🇳🇬", "North Korea": "🇰🇵", "North Macedonia": "🇲🇰",
+  "Norway": "🇳🇴", "Oman": "🇴🇲", "Pakistan": "🇵🇰", "Panama": "🇵🇦",
+  "Paraguay": "🇵🇾", "Peru": "🇵🇪", "Philippines": "🇵🇭", "Poland": "🇵🇱",
+  "Portugal": "🇵🇹", "Qatar": "🇶🇦", "Romania": "🇷🇴", "Russia": "🇷🇺",
+  "Saudi Arabia": "🇸🇦", "Scotland": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "Senegal": "🇸🇳",
+  "Serbia": "🇷🇸", "Slovakia": "🇸🇰", "Slovenia": "🇸🇮", "South Africa": "🇿🇦",
+  "Spain": "🇪🇸", "Sri Lanka": "🇱🇰", "Sweden": "🇸🇪", "Switzerland": "🇨🇭",
+  "Syria": "🇸🇾", "Tanzania": "🇹🇿", "Thailand": "🇹🇭", "Trinidad and Tobago": "🇹🇹",
+  "Tunisia": "🇹🇳", "Turkey": "🇹🇷", "Türkiye": "🇹🇷", "Uganda": "🇺🇬",
+  "Ukraine": "🇺🇦", "United Arab Emirates": "🇦🇪", "UAE": "🇦🇪",
+  "United States": "🇺🇸", "USA": "🇺🇸", "Uruguay": "🇺🇾", "Venezuela": "🇻🇪",
+  "Vietnam": "🇻🇳", "Wales": "🏴󠁧󠁢󠁷󠁬󠁳󠁿", "Zambia": "🇿🇲", "Zimbabwe": "🇿🇼",
+  "Jamaica": "🇯🇲", "Haiti": "🇭🇹", "Curaçao": "🇨🇼", "Suriname": "🇸🇷",
+};
+
+export function getCountryFlag(country: string): string | null {
+  return COUNTRY_FLAGS[country] ?? null;
+}
+
+const INTL_SOCCER_LEAGUES = new Set(["FIFA World Cup", "International Friendly"]);
+
 const GP_LOCATIONS: Record<string, string> = {
   "Australian": "Australia",
   "Bahrain": "Bahrain",
@@ -747,6 +789,9 @@ export default function UnifiedEventCard({
   const homeRank = isTennis ? event.tennisPlayer2Rank : undefined;
   const awayFlag = isTennis ? event.tennisPlayer1Flag : undefined;
   const homeFlag = isTennis ? event.tennisPlayer2Flag : undefined;
+  const isIntlSoccer = INTL_SOCCER_LEAGUES.has(event.league);
+  const awayFlagEmoji = isIntlSoccer ? getCountryFlag(event.awayTeam) : null;
+  const homeFlagEmoji = isIntlSoccer ? getCountryFlag(event.homeTeam) : null;
 
   const logoSize = featured ? 22 : 20;
   const isUpcoming = !isLive && !isFinal;
@@ -949,7 +994,9 @@ export default function UnifiedEventCard({
                   <View style={uStyles.espnTeam}>
                     {isTennis && awayFlag
                       ? <Image source={{ uri: awayFlag }} style={{ width: 48, height: 32, borderRadius: 3 }} resizeMode="contain" />
-                      : <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={32} />}
+                      : isIntlSoccer && awayFlagEmoji
+                        ? <Text style={uStyles.espnFlagEmoji}>{awayFlagEmoji}</Text>
+                        : <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={32} />}
                     <Text style={uStyles.espnTeamName} numberOfLines={1}>{awayName}</Text>
                   </View>
                 </View>
@@ -965,7 +1012,9 @@ export default function UnifiedEventCard({
                   <View style={uStyles.espnTeam}>
                     {isTennis && homeFlag
                       ? <Image source={{ uri: homeFlag }} style={{ width: 48, height: 32, borderRadius: 3 }} resizeMode="contain" />
-                      : <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={32} />}
+                      : isIntlSoccer && homeFlagEmoji
+                        ? <Text style={uStyles.espnFlagEmoji}>{homeFlagEmoji}</Text>
+                        : <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={32} />}
                     <Text style={uStyles.espnTeamName} numberOfLines={1}>{homeName}</Text>
                   </View>
                 </View>
@@ -976,6 +1025,8 @@ export default function UnifiedEventCard({
               <View style={uStyles.teamRow}>
                 {awayFlag ? (
                   <Image source={{ uri: awayFlag }} style={[uStyles.flagIcon, { width: logoSize, height: Math.round(logoSize * 0.7) }]} resizeMode="contain" />
+                ) : isIntlSoccer && awayFlagEmoji ? (
+                  <Text style={[uStyles.teamFlagEmoji, { fontSize: logoSize + 4 }]}>{awayFlagEmoji}</Text>
                 ) : (
                   <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={logoSize} />
                 )}
@@ -998,6 +1049,8 @@ export default function UnifiedEventCard({
               <View style={uStyles.teamRow}>
                 {homeFlag ? (
                   <Image source={{ uri: homeFlag }} style={[uStyles.flagIcon, { width: logoSize, height: Math.round(logoSize * 0.7) }]} resizeMode="contain" />
+                ) : isIntlSoccer && homeFlagEmoji ? (
+                  <Text style={[uStyles.teamFlagEmoji, { fontSize: logoSize + 4 }]}>{homeFlagEmoji}</Text>
                 ) : (
                   <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={logoSize} />
                 )}
@@ -1271,6 +1324,10 @@ const uStyles = StyleSheet.create({
     marginRight: 6,
     borderRadius: 2,
   },
+  teamFlagEmoji: {
+    marginRight: 6,
+    lineHeight: 24,
+  },
   rankInline: {
     fontSize: 13,
     fontFamily: "Inter_500Medium",
@@ -1466,6 +1523,11 @@ const uStyles = StyleSheet.create({
     color: Colors.textPrimary,
     textAlign: "center" as const,
     letterSpacing: 0.2,
+  },
+  espnFlagEmoji: {
+    fontSize: 28,
+    textAlign: "center" as const,
+    lineHeight: 34,
   },
   timeText: {
     fontSize: 13,
