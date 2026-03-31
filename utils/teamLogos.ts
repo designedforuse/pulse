@@ -362,21 +362,28 @@ const JL1_LOGO_MAP: Record<string, string> = {
   "Sagamihara Dynaboars": "https://league-one.s3.ap-northeast-1.amazonaws.com/image/team_info/11192_200x200_670e75a955eea.png",
 };
 
+const LNR_BASE = "https://cdn.lnr.fr/club";
+const LNR_HASH = "3b11bd4ce6d123075823c85941013c743abb7668";
+const lnr = (slug: string) => `${LNR_BASE}/${slug}/photo/logo.${LNR_HASH}`;
+
 const TOP14_LOGO_MAP: Record<string, string> = {
-  "Toulouse": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25922.png",
-  "La Rochelle": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/119318.png",
-  "Toulon": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25986.png",
-  "Racing Métro": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/99855.png",
-  "Stade Français": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25921.png",
-  "Bordeaux": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/143737.png",
-  "Clermont": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25917.png",
-  "Lyon": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/143736.png",
-  "Montpellier": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25918.png",
-  "Castres": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25916.png",
-  "Pau": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/270567.png",
-  "Bayonne": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25912.png",
-  "Perpignan": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25920.png",
-  "Montauban": "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25918.png",
+  // Official logos from top14.lnr.fr/classement
+  "Toulouse":       lnr("toulouse"),
+  "Pau":            lnr("pau"),
+  "Stade Français": lnr("paris"),
+  "Bordeaux":       lnr("bordeaux-begles"),
+  "Montpellier":    lnr("montpellier"),
+  "Clermont":       lnr("clermont"),
+  "Racing 92":      lnr("racing-92"),
+  "Castres":        lnr("castres"),
+  "La Rochelle":    lnr("la-rochelle"),
+  "Bayonne":        lnr("bayonne"),
+  "Toulon":         lnr("toulon"),
+  "Lyon":           lnr("lyon"),
+  "Perpignan":      lnr("perpignan"),
+  "Montauban":      lnr("montauban"),
+  // Legacy name aliases
+  "Racing Métro":   lnr("racing-92"),
 };
 
 const CRICKET_COUNTRY_FLAGS: Record<string, string> = {
