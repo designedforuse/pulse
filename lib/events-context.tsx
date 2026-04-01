@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getQueryFn } from "@/lib/query-client";
 import guideData from "@/data/masterGuide.json";
 import type { SportEvent, Pack } from "@/lib/data";
-import { useProviders } from "@/lib/providers-context";
+import { useProviders, getEventBroadcasterIds } from "@/lib/providers-context";
 
 const DEBUG_KEY = "prefs.debugShowAll";
 const SVNS_KEY = "prefs.showSvnsSessions";
@@ -47,7 +47,7 @@ interface EventsContextValue {
 const EventsContext = createContext<EventsContextValue | null>(null);
 
 export function EventsProvider({ children }: { children: ReactNode }) {
-  const { isEventVisible } = useProviders();
+  const { disabledProviders } = useProviders();
   const [debugShowAll, setDebugShowAllState] = useState(false);
   const [showSvnsSessions, setShowSvnsState] = useState(true);
   const [favoritesOnly, setFavoritesOnlyState] = useState(false);
@@ -103,9 +103,16 @@ export function EventsProvider({ children }: { children: ReactNode }) {
   const value = useMemo(() => {
     const isSvnsSession = (e: SportEvent) => e.eventType === "session" && e.leagueKey === "svns";
 
+    const isProviderVisible = (event: SportEvent): boolean => {
+      if (disabledProviders.size === 0) return true;
+      const ids = getEventBroadcasterIds(event);
+      if (ids.length === 0) return true;
+      return ids.some((id) => !disabledProviders.has(id));
+    };
+
     const getEventsForPack = (pack: Pack): SportEvent[] => {
       return allEvents.filter((event) => {
-        if (!isEventVisible(event)) return false;
+        if (!isProviderVisible(event)) return false;
         if (!showSvnsSessions && isSvnsSession(event)) return false;
         if (event.sport !== pack.sport) return false;
         if (pack.leagues) {
@@ -126,7 +133,7 @@ export function EventsProvider({ children }: { children: ReactNode }) {
       return allEvents.find((e) => e.id === id);
     };
 
-    const visibleEvents = allEvents.filter(isEventVisible);
+    const visibleEvents = allEvents.filter(isProviderVisible);
 
     return {
       allEvents: showSvnsSessions ? visibleEvents : visibleEvents.filter((e) => !isSvnsSession(e)),
@@ -141,7 +148,7 @@ export function EventsProvider({ children }: { children: ReactNode }) {
       setFavoritesOnly,
       leagueSeasonStarts,
     };
-  }, [allEvents, isLoading, debugShowAll, showSvnsSessions, favoritesOnly, leagueSeasonStarts, isEventVisible]);
+  }, [allEvents, isLoading, debugShowAll, showSvnsSessions, favoritesOnly, leagueSeasonStarts, disabledProviders]);
 
   return (
     <EventsContext.Provider value={value}>{children}</EventsContext.Provider>

@@ -31,7 +31,7 @@ export const PROVIDER_LIST: ProviderEntry[] = [
   { id: "ion",           label: "ION",                    logoId: "ion" },
 ];
 
-function getEventBroadcasterIds(event: SportEvent): string[] {
+export function getEventBroadcasterIds(event: SportEvent): string[] {
   const pid = event.providerId || "";
   const bc = (event.broadcastNetworks || "").toLowerCase();
 
@@ -67,7 +67,6 @@ interface ProvidersContextValue {
   disabledProviders: Set<string>;
   isProviderEnabled: (id: string) => boolean;
   toggleProvider: (id: string) => void;
-  isEventVisible: (event: SportEvent) => boolean;
 }
 
 const ProvidersContext = createContext<ProvidersContextValue | null>(null);
@@ -104,19 +103,9 @@ export function ProvidersProvider({ children }: { children: ReactNode }) {
     [disabledProviders]
   );
 
-  const isEventVisible = useCallback(
-    (event: SportEvent) => {
-      if (disabledProviders.size === 0) return true;
-      const ids = getEventBroadcasterIds(event);
-      if (ids.length === 0) return true;
-      return ids.some((id) => !disabledProviders.has(id));
-    },
-    [disabledProviders]
-  );
-
   const value = useMemo(
-    () => ({ disabledProviders, isProviderEnabled, toggleProvider, isEventVisible }),
-    [disabledProviders, isProviderEnabled, toggleProvider, isEventVisible]
+    () => ({ disabledProviders, isProviderEnabled, toggleProvider }),
+    [disabledProviders, isProviderEnabled, toggleProvider]
   );
 
   return (
