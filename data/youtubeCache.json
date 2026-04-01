@@ -53,20 +53,20 @@
   },
   "playoff_push:boston bruins playoff push march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=GDAiZiHgKWM",
-      "thumbnailUrl": "https://img.youtube.com/vi/GDAiZiHgKWM/hqdefault.jpg",
-      "durationSeconds": 645,
-      "title": "Bruins vs. Blue Jackets | NHL Highlights | March 29, 2026",
+      "url": "https://www.youtube.com/watch?v=N5WLhMq46Pg",
+      "thumbnailUrl": "https://img.youtube.com/vi/N5WLhMq46Pg/hqdefault.jpg",
+      "durationSeconds": 692,
+      "title": "Canucks vs. Golden Knights | NHL Highlights | March 30, 2026",
       "source": "youtube",
       "channel": "NHL",
-      "publishedAt": "17 hours ago"
+      "publishedAt": "16 hours ago"
     },
-    "fetchedAt": "2026-03-30T18:28:54.132Z",
+    "fetchedAt": "2026-03-31T21:25:13.469Z",
     "query": "Boston Bruins playoff push March 2026",
     "debug": {
       "searchQuery": "Boston Bruins playoff push March 2026",
-      "selectedVideoTitle": "Bruins vs. Blue Jackets | NHL Highlights | March 29, 2026",
-      "selectedVideoPublishedAt": "17 hours ago",
+      "selectedVideoTitle": "Canucks vs. Golden Knights | NHL Highlights | March 30, 2026",
+      "selectedVideoPublishedAt": "16 hours ago",
       "selectedVideoChannel": "NHL",
       "rejectedForAgeCount": 0
     }
@@ -241,21 +241,21 @@
   },
   "momentum:boston bruins highlights march 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=3qTKr-qhZrY",
-      "thumbnailUrl": "https://img.youtube.com/vi/3qTKr-qhZrY/hqdefault.jpg",
-      "durationSeconds": 403,
-      "title": "Czechs are hot - Zacha and Necas star in Plays of the Week 🇨🇿",
+      "url": "https://www.youtube.com/watch?v=N5WLhMq46Pg",
+      "thumbnailUrl": "https://img.youtube.com/vi/N5WLhMq46Pg/hqdefault.jpg",
+      "durationSeconds": 692,
+      "title": "Canucks vs. Golden Knights | NHL Highlights | March 30, 2026",
       "source": "youtube",
-      "channel": "NHL Europe",
-      "publishedAt": "2 hours ago"
+      "channel": "NHL",
+      "publishedAt": "16 hours ago"
     },
-    "fetchedAt": "2026-03-30T18:28:54.479Z",
+    "fetchedAt": "2026-03-31T21:25:13.752Z",
     "query": "Boston Bruins highlights March 2026",
     "debug": {
       "searchQuery": "Boston Bruins highlights March 2026",
-      "selectedVideoTitle": "Czechs are hot - Zacha and Necas star in Plays of the Week 🇨🇿",
-      "selectedVideoPublishedAt": "2 hours ago",
-      "selectedVideoChannel": "NHL Europe",
+      "selectedVideoTitle": "Canucks vs. Golden Knights | NHL Highlights | March 30, 2026",
+      "selectedVideoPublishedAt": "16 hours ago",
+      "selectedVideoChannel": "NHL",
       "rejectedForAgeCount": 0
     }
   },

@@ -1,9 +1,8 @@
 {
-  "lastUpdated": "2026-03-31T00:19:53.631Z",
+  "lastUpdated": "2026-03-31T22:50:57.376Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
-        "SoCal": 1,
         "NewEngland": 1
       },
       "momentum": {
@@ -11,21 +10,17 @@
       }
     },
     "combinedPushByRegion": {
-      "SoCal": false,
       "NewEngland": false
     },
     "finalFeedByRegion": {
-      "SoCal": [
-        "playoff_push: Ducks Push Week"
-      ],
       "NewEngland": [
         "playoff_push: Bruins Push Week",
         "momentum: Bruins Heating Up"
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 3,
-    "totalAfterCap": 3,
+    "totalBeforeCap": 2,
+    "totalAfterCap": 2,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -43,7 +38,6 @@
           "CGY",
           "EDM",
           "VAN",
-          "TOR",
           "MTL",
           "TBL",
           "NYR",
@@ -66,19 +60,19 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 601,
+        "playersIngested": 616,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-03-31T00:19:53.631Z"
+        "timestamp": "2026-03-31T22:50:57.376Z"
       },
-      "cacheHistoryCount": 809,
+      "cacheHistoryCount": 810,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 3,
-    "candidateCountAfterCap": 3,
+    "candidateCountBeforeCap": 2,
+    "candidateCountAfterCap": 2,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -556.3315641666667,
+      "hoursUntil": -578.8492711111111,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -117,11 +111,6 @@
         {
           "label": "[playoff_push] Your Team's Push",
           "score": 170,
-          "reason": "playoff_push involving followed team(s): Anaheim Ducks"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
           "reason": "playoff_push involving followed team(s): Boston Bruins"
         },
         {
@@ -132,92 +121,34 @@
       ]
     },
     "videoSelection": {
-      "playoff_push_socal": {
-        "searchQuery": "Anaheim Ducks playoff push March 2026",
-        "selectedVideoTitle": "Avi Lewis wins federal NDP leadership race | CTV News Toronto at Six for March 29, 2026",
-        "selectedVideoPublishedAt": "16 hours ago",
-        "selectedVideoChannel": "CP24",
-        "rejectedForAgeCount": 0
-      },
       "playoff_push_newengland": {
         "searchQuery": "Boston Bruins playoff push March 2026",
-        "selectedVideoTitle": "Bruins vs. Blue Jackets | NHL Highlights | March 29, 2026",
-        "selectedVideoPublishedAt": "17 hours ago",
+        "selectedVideoTitle": "Canucks vs. Golden Knights | NHL Highlights | March 30, 2026",
+        "selectedVideoPublishedAt": "16 hours ago",
         "selectedVideoChannel": "NHL",
         "rejectedForAgeCount": 0
       },
       "momentum_bos": {
         "searchQuery": "Boston Bruins highlights March 2026",
-        "selectedVideoTitle": "Czechs are hot - Zacha and Necas star in Plays of the Week 🇨🇿",
-        "selectedVideoPublishedAt": "2 hours ago",
-        "selectedVideoChannel": "NHL Europe",
+        "selectedVideoTitle": "Canucks vs. Golden Knights | NHL Highlights | March 30, 2026",
+        "selectedVideoPublishedAt": "16 hours ago",
+        "selectedVideoChannel": "NHL",
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
-      "id": "playoff_push_socal",
-      "title": "Ducks Push Week",
-      "subtitle": "Four games in seven days, including a back-to-back",
-      "impact": {
-        "label": "Impacts: Family Game Night",
-        "ritualId": "friday_lights",
-        "tabHint": "Rituals"
-      },
-      "priority": 90,
-      "triggeredAt": "2026-03-31T00:19:53.631Z",
-      "expiresAt": "2026-04-07T00:19:53.631Z",
-      "kind": "playoff_push",
-      "region": "SoCal",
-      "regionPriority": 2,
-      "regionLabel": "SoCal",
-      "meta": {
-        "teams": [
-          {
-            "team": "Anaheim Ducks",
-            "league": "NHL",
-            "gamesInNext7Days": 4,
-            "gamesInNext5Days": 3,
-            "hasBackToBack": true,
-            "reason": "Anaheim plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
-          }
-        ],
-        "eventIds": [
-          "nhl_2025021176",
-          "nhl_2025021190",
-          "nhl_2025021206",
-          "nhl_2025021219"
-        ],
-        "combinedTeamCount": 1,
-        "windowStart": "2026-03-31T00:19:53.631Z",
-        "windowEnd": "2026-04-07T00:19:53.631Z",
-        "reason": "Anaheim plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
-      },
-      "sports": [
-        "hockey"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=SiMav3UkmqU",
-        "thumbnailUrl": "https://img.youtube.com/vi/SiMav3UkmqU/hqdefault.jpg",
-        "durationSeconds": 2738,
-        "title": "Avi Lewis wins federal NDP leadership race | CTV News Toronto at Six for March 29, 2026",
-        "source": "youtube",
-        "channel": "CP24",
-        "publishedAt": "16 hours ago"
-      }
-    },
-    {
       "id": "playoff_push_newengland",
       "title": "Bruins Push Week",
-      "subtitle": "Four games in seven days, including a back-to-back",
+      "subtitle": "Four games in five days, including a back-to-back",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-03-31T00:19:53.631Z",
-      "expiresAt": "2026-04-07T00:19:53.631Z",
+      "triggeredAt": "2026-03-31T22:50:57.376Z",
+      "expiresAt": "2026-04-07T22:50:57.376Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -228,9 +159,9 @@
             "team": "Boston Bruins",
             "league": "NHL",
             "gamesInNext7Days": 4,
-            "gamesInNext5Days": 3,
+            "gamesInNext5Days": 4,
             "hasBackToBack": true,
-            "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+            "reason": "Boston plays four times in five days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
           }
         ],
         "eventIds": [
@@ -240,21 +171,21 @@
           "nhl_2025021224"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-03-31T00:19:53.631Z",
-        "windowEnd": "2026-04-07T00:19:53.631Z",
-        "reason": "Boston plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
+        "windowStart": "2026-03-31T22:50:57.376Z",
+        "windowEnd": "2026-04-07T22:50:57.376Z",
+        "reason": "Boston plays four times in five days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=GDAiZiHgKWM",
-        "thumbnailUrl": "https://img.youtube.com/vi/GDAiZiHgKWM/hqdefault.jpg",
-        "durationSeconds": 645,
-        "title": "Bruins vs. Blue Jackets | NHL Highlights | March 29, 2026",
+        "url": "https://www.youtube.com/watch?v=N5WLhMq46Pg",
+        "thumbnailUrl": "https://img.youtube.com/vi/N5WLhMq46Pg/hqdefault.jpg",
+        "durationSeconds": 692,
+        "title": "Canucks vs. Golden Knights | NHL Highlights | March 30, 2026",
         "source": "youtube",
         "channel": "NHL",
-        "publishedAt": "17 hours ago"
+        "publishedAt": "16 hours ago"
       }
     },
     {
@@ -266,8 +197,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-03-31T00:19:53.631Z",
-      "expiresAt": "2026-04-03T00:19:53.631Z",
+      "triggeredAt": "2026-03-31T22:50:57.376Z",
+      "expiresAt": "2026-04-03T22:50:57.376Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -311,13 +242,13 @@
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=3qTKr-qhZrY",
-        "thumbnailUrl": "https://img.youtube.com/vi/3qTKr-qhZrY/hqdefault.jpg",
-        "durationSeconds": 403,
-        "title": "Czechs are hot - Zacha and Necas star in Plays of the Week 🇨🇿",
+        "url": "https://www.youtube.com/watch?v=N5WLhMq46Pg",
+        "thumbnailUrl": "https://img.youtube.com/vi/N5WLhMq46Pg/hqdefault.jpg",
+        "durationSeconds": 692,
+        "title": "Canucks vs. Golden Knights | NHL Highlights | March 30, 2026",
         "source": "youtube",
-        "channel": "NHL Europe",
-        "publishedAt": "2 hours ago"
+        "channel": "NHL",
+        "publishedAt": "16 hours ago"
       }
     }
   ],
@@ -348,18 +279,9 @@
           "displayName": "AHL",
           "leagueKey": "ahl",
           "dateRangeLabel": "Mar 17–31",
-          "startDate": "2026-03-17T17:30:00.000Z",
+          "startDate": "2026-03-17T23:00:00.000Z",
           "endDate": "2026-03-31T23:00:00.000Z",
-          "eventCount": 93
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Champions League",
-          "leagueKey": "championsleague",
-          "dateRangeLabel": "Mar 17–18",
-          "startDate": "2026-03-17T17:45:00.000Z",
-          "endDate": "2026-03-18T20:00:00.000Z",
-          "eventCount": 8
+          "eventCount": 92
         },
         {
           "sport": "basketball",
@@ -387,6 +309,15 @@
           "startDate": "2026-03-18T15:30:00.000Z",
           "endDate": "2026-03-19T20:00:00.000Z",
           "eventCount": 8
+        },
+        {
+          "sport": "soccer",
+          "displayName": "Champions League",
+          "leagueKey": "championsleague",
+          "dateRangeLabel": "Mar 18",
+          "startDate": "2026-03-18T17:45:00.000Z",
+          "endDate": "2026-03-18T20:00:00.000Z",
+          "eventCount": 4
         },
         {
           "sport": "hockey",
@@ -611,6 +542,15 @@
           "eventCount": 9
         },
         {
+          "sport": "cricket",
+          "displayName": "ICC",
+          "leagueKey": "icc",
+          "dateRangeLabel": "Apr 2–12",
+          "startDate": "2026-04-02T07:30:00.000Z",
+          "endDate": "2026-04-12T07:30:00.000Z",
+          "eventCount": 6
+        },
+        {
           "sport": "rugby",
           "displayName": "Super Rugby",
           "leagueKey": "superrugby",
@@ -650,8 +590,8 @@
           "sport": "soccer",
           "displayName": "NWSL",
           "leagueKey": "nwsl",
-          "dateRangeLabel": "Apr 4–5",
-          "startDate": "2026-04-04T00:00:00.000Z",
+          "dateRangeLabel": "Apr 3–5",
+          "startDate": "2026-04-03T23:00:00.000Z",
           "endDate": "2026-04-05T21:00:00.000Z",
           "eventCount": 8
         },
@@ -762,6 +702,15 @@
           "startDate": "2026-04-10T19:00:00.000Z",
           "endDate": "2026-04-20T19:00:00.000Z",
           "eventCount": 22
+        },
+        {
+          "sport": "cricket",
+          "displayName": "IPL",
+          "leagueKey": "ipl",
+          "dateRangeLabel": "Apr 13–21",
+          "startDate": "2026-04-13T14:00:00.000Z",
+          "endDate": "2026-04-21T14:00:00.000Z",
+          "eventCount": 11
         },
         {
           "sport": "rugby",

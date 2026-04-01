@@ -4,6 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getQueryFn } from "@/lib/query-client";
 import guideData from "@/data/masterGuide.json";
 import type { SportEvent, Pack } from "@/lib/data";
+import { useProviders } from "@/lib/providers-context";
 
 const DEBUG_KEY = "prefs.debugShowAll";
 const SVNS_KEY = "prefs.showSvnsSessions";
@@ -46,6 +47,7 @@ interface EventsContextValue {
 const EventsContext = createContext<EventsContextValue | null>(null);
 
 export function EventsProvider({ children }: { children: ReactNode }) {
+  const { isEventVisible } = useProviders();
   const [debugShowAll, setDebugShowAllState] = useState(false);
   const [showSvnsSessions, setShowSvnsState] = useState(true);
   const [favoritesOnly, setFavoritesOnlyState] = useState(false);
@@ -103,6 +105,7 @@ export function EventsProvider({ children }: { children: ReactNode }) {
 
     const getEventsForPack = (pack: Pack): SportEvent[] => {
       return allEvents.filter((event) => {
+        if (!isEventVisible(event)) return false;
         if (!showSvnsSessions && isSvnsSession(event)) return false;
         if (event.sport !== pack.sport) return false;
         if (pack.leagues) {
@@ -123,8 +126,10 @@ export function EventsProvider({ children }: { children: ReactNode }) {
       return allEvents.find((e) => e.id === id);
     };
 
+    const visibleEvents = allEvents.filter(isEventVisible);
+
     return {
-      allEvents: showSvnsSessions ? allEvents : allEvents.filter((e) => !isSvnsSession(e)),
+      allEvents: showSvnsSessions ? visibleEvents : visibleEvents.filter((e) => !isSvnsSession(e)),
       isLoading,
       getEventsForPack,
       findEvent,
@@ -136,7 +141,7 @@ export function EventsProvider({ children }: { children: ReactNode }) {
       setFavoritesOnly,
       leagueSeasonStarts,
     };
-  }, [allEvents, isLoading, debugShowAll, showSvnsSessions, favoritesOnly, leagueSeasonStarts]);
+  }, [allEvents, isLoading, debugShowAll, showSvnsSessions, favoritesOnly, leagueSeasonStarts, isEventVisible]);
 
   return (
     <EventsContext.Provider value={value}>{children}</EventsContext.Provider>

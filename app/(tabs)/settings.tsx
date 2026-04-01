@@ -18,6 +18,8 @@ import { getProviders, getSportColor } from "@/lib/data";
 import { apiRequest, getApiUrl } from "@/lib/query-client";
 import { useEvents } from "@/lib/events-context";
 import { useFavorites } from "@/lib/favorites-context";
+import { useProviders, PROVIDER_LIST } from "@/lib/providers-context";
+import ProviderLogo from "@/components/ProviderLogo";
 
 interface SourceMeta {
   count: number;
@@ -55,6 +57,56 @@ function formatTimeAgo(isoDate: string): string {
 
 function isStale(isoDate: string): boolean {
   return Date.now() - new Date(isoDate).getTime() > STALE_THRESHOLD_MS;
+}
+
+function ProvidersSection() {
+  const { isProviderEnabled, toggleProvider, disabledProviders } = useProviders();
+
+  const handleToggle = (id: string) => {
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+    toggleProvider(id);
+  };
+
+  const disabledCount = disabledProviders.size;
+
+  return (
+    <View style={styles.card}>
+      {disabledCount > 0 && (
+        <View style={styles.providersBanner}>
+          <Ionicons name="eye-off-outline" size={13} color={Colors.textMuted} />
+          <Text style={styles.providersBannerText}>
+            {disabledCount} network{disabledCount !== 1 ? "s" : ""} hidden from schedule
+          </Text>
+        </View>
+      )}
+      {PROVIDER_LIST.map((provider, index) => {
+        const enabled = isProviderEnabled(provider.id);
+        return (
+          <React.Fragment key={provider.id}>
+            {index > 0 && <View style={styles.sportDivider} />}
+            <View style={styles.providerRow}>
+              <View style={styles.providerLogoWrap}>
+                <ProviderLogo providerId={provider.logoId} size={20} />
+              </View>
+              <Text style={[styles.providerLabel, !enabled && styles.teamNameDisabled]}>
+                {provider.label}
+              </Text>
+              <View style={{ flex: 1 }} />
+              <Switch
+                value={enabled}
+                onValueChange={() => handleToggle(provider.id)}
+                trackColor={{ false: Colors.border, true: Colors.accent + "55" }}
+                thumbColor={enabled ? Colors.accent : Colors.textMuted}
+                style={styles.teamSwitch}
+              />
+            </View>
+          </React.Fragment>
+        );
+      })}
+    </View>
+  );
 }
 
 function FavoritesSection() {
@@ -408,6 +460,11 @@ export default function SettingsScreen() {
         </View>
 
         <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Networks</Text>
+          <ProvidersSection />
+        </View>
+
+        <View style={styles.section}>
           <Text style={styles.sectionTitle}>Sports</Text>
           <FavoritesSection />
         </View>
@@ -633,6 +690,37 @@ const styles = StyleSheet.create({
   sportDivider: {
     height: 1,
     backgroundColor: Colors.border,
+  },
+  providerRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    paddingHorizontal: 14,
+    paddingVertical: 11,
+  },
+  providerLogoWrap: {
+    width: 72,
+    alignItems: "flex-start",
+    justifyContent: "center",
+  },
+  providerLabel: {
+    fontSize: 14,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_500Medium",
+  },
+  providersBanner: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border,
+  },
+  providersBannerText: {
+    fontSize: 12,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
   },
   sportHeader: {
     flexDirection: "row",

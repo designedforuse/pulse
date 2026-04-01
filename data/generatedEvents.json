@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-31T00:19:53.589Z",
+  "lastUpdated": "2026-03-31T22:50:57.274Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -33,7 +33,7 @@
   "rugbySourceUsed": "ical",
   "cricketSourceUsed": "cricapi",
   "nhlCount": 140,
-  "ahlCount": 220,
+  "ahlCount": 219,
   "ahlAdded": 0,
   "ahlUpdated": 172,
   "ahlPruned": 0,
@@ -59,11 +59,19 @@
     "leagueone": 24,
     "svns": 3
   },
-  "cricketCount": 4,
+  "cricketCount": 21,
   "cricketAdded": 0,
-  "cricketUpdated": 0,
+  "cricketUpdated": 17,
   "cricketPruned": 0,
-  "cricketCounts": {},
+  "cricketCounts": {
+    "ICC": 7,
+    "MLC": 33,
+    "T20I Cricket": 11,
+    "International Cricket": 7,
+    "IPL": 50,
+    "Test Cricket": 6,
+    "ODI Cricket": 12
+  },
   "iccT20WcCount": 0,
   "iccT20WcAdded": 0,
   "iccT20WcUpdated": 0,
@@ -125,10 +133,10 @@
   "mlrUpdated": 10,
   "mlrPruned": 0,
   "mlrSourceUsed": "hardcoded",
-  "championsLeagueCount": 16,
+  "championsLeagueCount": 12,
   "championsLeagueAdded": 0,
-  "championsLeagueUpdated": 16,
-  "championsLeaguePruned": 16,
+  "championsLeagueUpdated": 12,
+  "championsLeaguePruned": 12,
   "championsLeagueSourceUsed": "espn",
   "europaLeagueCount": 16,
   "europaLeagueAdded": 0,
@@ -182,27 +190,27 @@
   "ncaabPruned": 2,
   "ncaabSourceUsed": "espn",
   "intlSoccerCount": 114,
-  "intlSoccerAdded": 10,
-  "intlSoccerUpdated": 104,
+  "intlSoccerAdded": 22,
+  "intlSoccerUpdated": 92,
   "intlSoccerPruned": 104,
   "intlSoccerSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-03-31T00:19:53.589Z",
+    "lastRefreshAt": "2026-03-31T22:50:57.274Z",
     "sources": {
       "nhl": {
         "count": 140,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "NHL API"
       },
       "ahl": {
-        "count": 220,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "count": 219,
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 14,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
@@ -214,7 +222,7 @@
       },
       "rugby": {
         "count": 109,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 24,
@@ -227,94 +235,102 @@
         }
       },
       "cricket": {
-        "count": 4,
-        "lastFetchAt": "2026-03-28T03:41:40.671Z",
+        "count": 21,
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "CricAPI",
-        "leagueCounts": {}
+        "leagueCounts": {
+          "ICC": 7,
+          "MLC": 33,
+          "T20I Cricket": 11,
+          "International Cricket": 7,
+          "IPL": 50,
+          "Test Cricket": 6,
+          "ODI Cricket": 12
+        }
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 32,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 60,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 40,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 30,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 36,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 34,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 29,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 59,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-21T19:00:00.000Z"
       },
       "championsCup": {
         "count": 9,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 10,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
-        "count": 16,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "count": 12,
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 16,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 4,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-04-04T11:45:00.000Z"
       },
       "tennis": {
         "count": 0,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Miami Open": 26,
@@ -324,7 +340,7 @@
       },
       "f1": {
         "count": 25,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Japanese Grand Prix": 5,
@@ -336,7 +352,7 @@
       },
       "golf": {
         "count": 8,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "The Masters": 4,
@@ -345,7 +361,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Boston Marathon": 1,
@@ -354,85 +370,17 @@
       },
       "nba": {
         "count": 214,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "ESPN API"
       },
       "ncaab": {
         "count": 2,
-        "lastFetchAt": "2026-03-31T00:19:53.589Z",
+        "lastFetchAt": "2026-03-31T22:50:57.274Z",
         "sourceName": "ESPN API"
       }
     }
   },
   "events": [
-    {
-      "id": "ahl-1028711",
-      "sport": "hockey",
-      "league": "AHL",
-      "homeTeam": "Toronto Marlies",
-      "awayTeam": "Cleveland Monsters",
-      "startTimeLocal": "2026-03-17T17:30:00.000Z",
-      "endTimeLocal": "2026-03-17T20:15:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "ahl-hockeytech"
-    },
-    {
-      "id": "soccer-championsleague-20260317-1745-bodo-glimt-at-sporting-cp",
-      "sport": "soccer",
-      "league": "Champions League",
-      "awayTeam": "Bodo/Glimt",
-      "homeTeam": "Sporting CP",
-      "startTimeLocal": "2026-03-17T17:45:00.000Z",
-      "endTimeLocal": "2026-03-17T20:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "soccer-championsleague",
-      "leagueKey": "championsleague",
-      "providerReason": "ucl-yttv"
-    },
-    {
-      "id": "soccer-championsleague-20260317-2000-bayer-leverkusen-at-arsenal",
-      "sport": "soccer",
-      "league": "Champions League",
-      "awayTeam": "Bayer Leverkusen",
-      "homeTeam": "Arsenal",
-      "startTimeLocal": "2026-03-17T20:00:00.000Z",
-      "endTimeLocal": "2026-03-17T22:15:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "soccer-championsleague",
-      "leagueKey": "championsleague",
-      "providerReason": "ucl-yttv"
-    },
-    {
-      "id": "soccer-championsleague-20260317-2000-paris-saint-germain-at-chelsea",
-      "sport": "soccer",
-      "league": "Champions League",
-      "awayTeam": "Paris Saint-Germain",
-      "homeTeam": "Chelsea",
-      "startTimeLocal": "2026-03-17T20:00:00.000Z",
-      "endTimeLocal": "2026-03-17T22:15:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "soccer-championsleague",
-      "leagueKey": "championsleague",
-      "providerReason": "ucl-yttv"
-    },
-    {
-      "id": "soccer-championsleague-20260317-2000-real-madrid-at-manchester-city",
-      "sport": "soccer",
-      "league": "Champions League",
-      "awayTeam": "Real Madrid",
-      "homeTeam": "Manchester City",
-      "startTimeLocal": "2026-03-17T20:00:00.000Z",
-      "endTimeLocal": "2026-03-17T22:15:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "soccer-championsleague",
-      "leagueKey": "championsleague",
-      "providerReason": "ucl-yttv"
-    },
     {
       "id": "ahl-1028708",
       "sport": "hockey",
@@ -5900,7 +5848,7 @@
       "startTimeLocal": "2026-03-30T23:00:00.000Z",
       "endTimeLocal": "2026-03-31T01:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": true,
+      "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
         "NHLN",
@@ -6135,7 +6083,7 @@
         "FOX4",
         "SN360",
         "Victory+",
-        "NESN"
+        "NESNplus"
       ],
       "isNational": false,
       "providerReason": "espnplus-default"
@@ -6227,7 +6175,7 @@
       "source": "nhl",
       "broadcastNetworks": [
         "FDSNDET",
-        "SN-PIT"
+        "SN-PIT+"
       ],
       "isNational": false,
       "providerReason": "espnplus-default"
@@ -6764,6 +6712,27 @@
       "broadcastNetworks": "ESPN, NBC Sports BA, FanDuel SN SW"
     },
     {
+      "id": "cricket-icc-jqbknr",
+      "cricketMatchId": "b48b0179-df62-4a65-b86c-a78e02c0b29d",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "Scotland",
+      "homeTeam": "Oman",
+      "startTimeLocal": "2026-04-02T07:30:00.000Z",
+      "endTimeLocal": "2026-04-02T15:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "icc",
+      "competitionName": "ICC",
+      "competitionType": "international",
+      "format": "odi",
+      "hostCountry": "South Africa",
+      "seriesName": "92nd Match, ICC Cricket World Cup League Two 2023-27",
+      "gender": "men",
+      "isIccT20Wc": false
+    },
+    {
       "id": "nhl_2025021191",
       "sport": "hockey",
       "league": "NHL",
@@ -7275,6 +7244,21 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "soccer-nwsl-20260403-2300-san-diego-wave-at-boston-legacy",
+      "sport": "soccer",
+      "league": "NWSL",
+      "awayTeam": "San Diego Wave",
+      "homeTeam": "Boston Legacy",
+      "startTimeLocal": "2026-04-03T23:00:00.000Z",
+      "endTimeLocal": "2026-04-04T02:00:00.000Z",
+      "providerId": "nwslplus",
+      "isLive": false,
+      "source": "soccer-nwsl",
+      "leagueKey": "nwsl",
+      "providerReason": "nwsl-nwslplus",
+      "broadcastNetworks": "NWSL+"
+    },
+    {
       "id": "basketball-nba-20260403-2300-indiana-pacers-at-charlotte-hornets",
       "sport": "basketball",
       "league": "NBA",
@@ -7408,20 +7392,6 @@
       "leagueKey": "nwsl",
       "providerReason": "nwsl-ion-prime",
       "broadcastNetworks": "Prime Video"
-    },
-    {
-      "id": "soccer-nwsl-20260404-0000-san-diego-wave-at-boston-legacy",
-      "sport": "soccer",
-      "league": "NWSL",
-      "awayTeam": "San Diego Wave",
-      "homeTeam": "Boston Legacy",
-      "startTimeLocal": "2026-04-04T00:00:00.000Z",
-      "endTimeLocal": "2026-04-04T03:00:00.000Z",
-      "providerId": "nwslplus",
-      "isLive": false,
-      "source": "soccer-nwsl",
-      "leagueKey": "nwsl",
-      "providerReason": "nwsl-default"
     },
     {
       "id": "basketball-nba-20260404-0000-utah-jazz-at-houston-rockets",
@@ -7689,6 +7659,27 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "superrugby"
+    },
+    {
+      "id": "cricket-icc-vt4y8a",
+      "cricketMatchId": "a54aaaea-538a-4e31-a9ee-0643a69208df",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "Namibia",
+      "homeTeam": "Oman",
+      "startTimeLocal": "2026-04-04T07:30:00.000Z",
+      "endTimeLocal": "2026-04-04T15:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "icc",
+      "competitionName": "ICC",
+      "competitionType": "international",
+      "format": "odi",
+      "hostCountry": "South Africa",
+      "seriesName": "93rd Match, ICC Cricket World Cup League Two 2023-27",
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "rugby-superrugby-jlr37o",
@@ -8298,7 +8289,7 @@
       "source": "nhl",
       "broadcastNetworks": [
         "The Spot",
-        "NESN"
+        "NESNplus"
       ],
       "isNational": false,
       "providerReason": "espnplus-default"
@@ -9579,6 +9570,27 @@
       "broadcastNetworks": "NBC, Peacock"
     },
     {
+      "id": "cricket-icc-g2dwkj",
+      "cricketMatchId": "fee7ccb0-2e8d-4095-8708-ede0658d8197",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "Namibia",
+      "homeTeam": "Scotland",
+      "startTimeLocal": "2026-04-06T07:30:00.000Z",
+      "endTimeLocal": "2026-04-06T15:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "icc",
+      "competitionName": "ICC",
+      "competitionType": "international",
+      "format": "odi",
+      "hostCountry": "South Africa",
+      "seriesName": "94th Match, ICC Cricket World Cup League Two 2023-27",
+      "gender": "men",
+      "isIccT20Wc": false
+    },
+    {
       "id": "soccer-seriea-20260406-1030-como-at-udinese",
       "sport": "soccer",
       "league": "Serie A",
@@ -10236,6 +10248,27 @@
       "leagueKey": "nba",
       "providerReason": "nba-nbc",
       "broadcastNetworks": "NBC, Peacock, Space City Home Network"
+    },
+    {
+      "id": "cricket-icc-3snt0z",
+      "cricketMatchId": "3855c9b2-312c-4e93-9cc9-51e6c7d25af1",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "Scotland",
+      "homeTeam": "Oman",
+      "startTimeLocal": "2026-04-08T07:30:00.000Z",
+      "endTimeLocal": "2026-04-08T15:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "icc",
+      "competitionName": "ICC",
+      "competitionType": "international",
+      "format": "odi",
+      "hostCountry": "South Africa",
+      "seriesName": "95th Match, ICC Cricket World Cup League Two 2023-27",
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "ahl-1028848",
@@ -10981,6 +11014,27 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "superrugby"
+    },
+    {
+      "id": "cricket-icc-qda490",
+      "cricketMatchId": "3c134b4c-bdc7-4cdb-92ad-a682b83886b4",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "Namibia",
+      "homeTeam": "Oman",
+      "startTimeLocal": "2026-04-10T07:30:00.000Z",
+      "endTimeLocal": "2026-04-10T15:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "icc",
+      "competitionName": "ICC",
+      "competitionType": "international",
+      "format": "odi",
+      "hostCountry": "South Africa",
+      "seriesName": "96th Match, ICC Cricket World Cup League Two 2023-27",
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "f1-espn-401839043",
@@ -12703,6 +12757,27 @@
       "providerReason": "usl-espnplus"
     },
     {
+      "id": "cricket-icc-9ywqtz",
+      "cricketMatchId": "26e41590-30d6-4699-bd85-3bc248dfa01e",
+      "sport": "cricket",
+      "league": "ICC",
+      "awayTeam": "Namibia",
+      "homeTeam": "Scotland",
+      "startTimeLocal": "2026-04-12T07:30:00.000Z",
+      "endTimeLocal": "2026-04-12T15:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "icc",
+      "competitionName": "ICC",
+      "competitionType": "international",
+      "format": "odi",
+      "hostCountry": "South Africa",
+      "seriesName": "97th Match, ICC Cricket World Cup League Two 2023-27",
+      "gender": "men",
+      "isIccT20Wc": false
+    },
+    {
       "id": "soccer-seriea-20260412-1030-sassuolo-at-genoa",
       "sport": "soccer",
       "league": "Serie A",
@@ -13195,7 +13270,7 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-nbc",
-      "broadcastNetworks": "FanDuel SN FL, NBC Sports BO"
+      "broadcastNetworks": "FanDuel SN FL, NBA League Pass, NBC Sports BO"
     },
     {
       "id": "basketball-nba-20260412-2200-washington-wizards-at-cleveland-cavaliers",
@@ -13210,7 +13285,7 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-regional-yttv",
-      "broadcastNetworks": "MNMT, MNMT2, FanDuel SN OH"
+      "broadcastNetworks": "MNMT, MNMT2, NBA League Pass, FanDuel SN OH"
     },
     {
       "id": "basketball-nba-20260412-2200-detroit-pistons-at-indiana-pacers",
@@ -13225,7 +13300,7 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-regional-yttv",
-      "broadcastNetworks": "FanDuel SN IN, FanDuel SN DET"
+      "broadcastNetworks": "FanDuel SN IN, FanDuel SN DET, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260412-2200-atlanta-hawks-at-miami-heat",
@@ -13240,7 +13315,7 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-regional-yttv",
-      "broadcastNetworks": "FanDuel SN Sun, FanDuel SN SE"
+      "broadcastNetworks": "FanDuel SN Sun, FanDuel SN SE, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260412-2200-charlotte-hornets-at-new-york-knicks",
@@ -13255,7 +13330,7 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-regional-yttv",
-      "broadcastNetworks": "FanDuel SN SE, MSG"
+      "broadcastNetworks": "FanDuel SN SE, NBA League Pass, MSG"
     },
     {
       "id": "basketball-nba-20260412-2200-milwaukee-bucks-at-philadelphia-76ers",
@@ -13270,7 +13345,7 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-nbc",
-      "broadcastNetworks": "FanDuel SN WI, NBC Sports Phil"
+      "broadcastNetworks": "FanDuel SN WI, NBA League Pass, NBC Sports Phil"
     },
     {
       "id": "basketball-nba-20260412-2200-brooklyn-nets-at-toronto-raptors",
@@ -13285,7 +13360,7 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-regional-yttv",
-      "broadcastNetworks": "Sportsnet, YES"
+      "broadcastNetworks": "Sportsnet, YES, NBA League Pass"
     },
     {
       "id": "nhl_2025021279",
@@ -13366,7 +13441,7 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-regional-yttv",
-      "broadcastNetworks": "CHSN, KFAA-TV, Mavs.com"
+      "broadcastNetworks": "CHSN, NBA League Pass, KFAA-TV, Mavs.com"
     },
     {
       "id": "basketball-nba-20260413-0030-memphis-grizzlies-at-houston-rockets",
@@ -13381,7 +13456,7 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-regional-yttv",
-      "broadcastNetworks": "Space City Home Network, FanDuel SN SE"
+      "broadcastNetworks": "Space City Home Network, FanDuel SN SE, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260413-0030-new-orleans-pelicans-at-minnesota-timberwolves",
@@ -13396,7 +13471,7 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-regional-yttv",
-      "broadcastNetworks": "FanDuel SN North, GCSEN, Pelicans.com"
+      "broadcastNetworks": "FanDuel SN North, GCSEN, Pelicans.com, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260413-0030-phoenix-suns-at-oklahoma-city-thunder",
@@ -13411,7 +13486,7 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-regional-yttv",
-      "broadcastNetworks": "FanDuel SN OK, Arizona's Family 3TV, Suns Live"
+      "broadcastNetworks": "FanDuel SN OK, Arizona's Family 3TV, Suns Live, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260413-0030-denver-nuggets-at-san-antonio-spurs",
@@ -13426,7 +13501,7 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-regional-yttv",
-      "broadcastNetworks": "Altitude Sports, FanDuel SN SW"
+      "broadcastNetworks": "Altitude Sports, NBA League Pass, FanDuel SN SW"
     },
     {
       "id": "basketball-nba-20260413-0030-utah-jazz-at-los-angeles-lakers",
@@ -13441,7 +13516,7 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-regional-yttv",
-      "broadcastNetworks": "Spectrum Sports Net, Spectrum Sports Net +, KJZZ-TV, Jazz+"
+      "broadcastNetworks": "Spectrum Sports Net, Spectrum Sports Net +, KJZZ-TV, Jazz+, NBA League Pass"
     },
     {
       "id": "basketball-nba-20260413-0030-golden-state-warriors-at-la-clippers",
@@ -13456,7 +13531,7 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-nbc",
-      "broadcastNetworks": "NBC Sports BA, FanDuel SN SoCal"
+      "broadcastNetworks": "NBC Sports BA, NBA League Pass, FanDuel SN SoCal"
     },
     {
       "id": "basketball-nba-20260413-0030-sacramento-kings-at-portland-trail-blazers",
@@ -13471,7 +13546,7 @@
       "source": "basketball-nba",
       "leagueKey": "nba",
       "providerReason": "nba-nbc",
-      "broadcastNetworks": "KUNP 16, BlazerVision, NBC Sports CA"
+      "broadcastNetworks": "KUNP 16, BlazerVision, NBC Sports CA, NBA League Pass"
     },
     {
       "id": "nhl_2025021281",
@@ -13504,6 +13579,27 @@
       "source": "soccer-mls",
       "leagueKey": "mls",
       "providerReason": "mls-appletv"
+    },
+    {
+      "id": "cricket-ipl-lol2qf",
+      "cricketMatchId": "4a2b94e3-1e2d-45dc-b542-4764807e06e2",
+      "sport": "cricket",
+      "league": "IPL",
+      "awayTeam": "Sunrisers Hyderabad",
+      "homeTeam": "Rajasthan Royals",
+      "startTimeLocal": "2026-04-13T14:00:00.000Z",
+      "endTimeLocal": "2026-04-13T17:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "ipl",
+      "competitionName": "IPL",
+      "competitionType": "domestic",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "21st Match, Indian Premier League 2026",
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "soccer-seriea-20260413-1845-lazio-at-fiorentina",
@@ -13743,6 +13839,27 @@
       "leagueKey": "nba",
       "providerReason": "nba-regional-yttv",
       "broadcastNetworks": "Prime Video"
+    },
+    {
+      "id": "cricket-ipl-gvf86v",
+      "cricketMatchId": "f30e699c-2e4f-48dd-98d2-4321d9e622e7",
+      "sport": "cricket",
+      "league": "IPL",
+      "awayTeam": "Chennai Super Kings",
+      "homeTeam": "Kolkata Knight Riders",
+      "startTimeLocal": "2026-04-14T14:00:00.000Z",
+      "endTimeLocal": "2026-04-14T17:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "ipl",
+      "competitionName": "IPL",
+      "competitionType": "domestic",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "22nd Match, Indian Premier League 2026",
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "soccer-championsleague-20260414-1900-barcelona-at-atl-tico-madrid",
@@ -13985,6 +14102,27 @@
       "broadcastNetworks": "Prime Video"
     },
     {
+      "id": "cricket-ipl-epu3y0",
+      "cricketMatchId": "e8225a82-12c7-4bc8-8e40-4892f52d7d21",
+      "sport": "cricket",
+      "league": "IPL",
+      "awayTeam": "Royal Challengers Bengaluru",
+      "homeTeam": "Lucknow Super Giants",
+      "startTimeLocal": "2026-04-15T14:00:00.000Z",
+      "endTimeLocal": "2026-04-15T17:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "ipl",
+      "competitionName": "IPL",
+      "competitionType": "domestic",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "23rd Match, Indian Premier League 2026",
+      "gender": "men",
+      "isIccT20Wc": false
+    },
+    {
       "id": "soccer-championsleague-20260415-1900-sporting-cp-at-arsenal",
       "sport": "soccer",
       "league": "Champions League",
@@ -14211,6 +14349,27 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "cricket-ipl-wr0ngv",
+      "cricketMatchId": "d0279d32-e120-4b96-b600-efa118f6ec12",
+      "sport": "cricket",
+      "league": "IPL",
+      "awayTeam": "Mumbai Indians",
+      "homeTeam": "Punjab Kings",
+      "startTimeLocal": "2026-04-16T14:00:00.000Z",
+      "endTimeLocal": "2026-04-16T17:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "ipl",
+      "competitionName": "IPL",
+      "competitionType": "domestic",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "24th Match, Indian Premier League 2026",
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "soccer-europaleague-20260416-1645-sc-freiburg-at-celta-vigo",
@@ -14487,6 +14646,27 @@
       "eventType": "session",
       "sessionTitle": "Practice 1",
       "competitionName": "Saudi Arabian Grand Prix"
+    },
+    {
+      "id": "cricket-ipl-mzp8zy",
+      "cricketMatchId": "c8f30ec3-a953-438a-ba4a-c5dedd97063a",
+      "sport": "cricket",
+      "league": "IPL",
+      "awayTeam": "Gujarat Titans",
+      "homeTeam": "Kolkata Knight Riders",
+      "startTimeLocal": "2026-04-17T14:00:00.000Z",
+      "endTimeLocal": "2026-04-17T17:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "ipl",
+      "competitionName": "IPL",
+      "competitionType": "domestic",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "25th Match, Indian Premier League 2026",
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "soccer-seriea-20260417-1630-como-at-sassuolo",
@@ -14873,6 +15053,27 @@
       "leagueKey": "superrugby"
     },
     {
+      "id": "cricket-ipl-x78k5f",
+      "cricketMatchId": "d9242d24-f86f-4dbd-8291-3b00eadcda4a",
+      "sport": "cricket",
+      "league": "IPL",
+      "awayTeam": "Royal Challengers Bengaluru",
+      "homeTeam": "Delhi Capitals",
+      "startTimeLocal": "2026-04-18T10:00:00.000Z",
+      "endTimeLocal": "2026-04-18T13:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "ipl",
+      "competitionName": "IPL",
+      "competitionType": "domestic",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "26th Match, Indian Premier League 2026",
+      "gender": "men",
+      "isIccT20Wc": false
+    },
+    {
       "id": "soccer-epl-20260418-1130-fulham-at-brentford",
       "sport": "soccer",
       "league": "EPL",
@@ -15101,6 +15302,27 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "premiership"
+    },
+    {
+      "id": "cricket-ipl-me4elp",
+      "cricketMatchId": "de4a5f85-ea02-4426-a074-a0bff9f757ca",
+      "sport": "cricket",
+      "league": "IPL",
+      "awayTeam": "Sunrisers Hyderabad",
+      "homeTeam": "Chennai Super Kings",
+      "startTimeLocal": "2026-04-18T14:00:00.000Z",
+      "endTimeLocal": "2026-04-18T17:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "ipl",
+      "competitionName": "IPL",
+      "competitionType": "domestic",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "27th Match, Indian Premier League 2026",
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "soccer-epl-20260418-1400-wolves-at-leeds",
@@ -15865,6 +16087,27 @@
       "providerReason": "usl-espnplus"
     },
     {
+      "id": "cricket-ipl-tfdwox",
+      "cricketMatchId": "a86beb23-22f5-4afb-914c-f2b9f6711166",
+      "sport": "cricket",
+      "league": "IPL",
+      "awayTeam": "Kolkata Knight Riders",
+      "homeTeam": "Rajasthan Royals",
+      "startTimeLocal": "2026-04-19T10:00:00.000Z",
+      "endTimeLocal": "2026-04-19T13:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "ipl",
+      "competitionName": "IPL",
+      "competitionType": "domestic",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "28th Match, Indian Premier League 2026",
+      "gender": "men",
+      "isIccT20Wc": false
+    },
+    {
       "id": "soccer-seriea-20260419-1030-torino-at-cremonese",
       "sport": "soccer",
       "league": "Serie A",
@@ -15972,6 +16215,27 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "premiership"
+    },
+    {
+      "id": "cricket-ipl-odqf5",
+      "cricketMatchId": "91f9f16f-8c16-408b-ac66-7b5c7e9b4af0",
+      "sport": "cricket",
+      "league": "IPL",
+      "awayTeam": "Punjab Kings",
+      "homeTeam": "Lucknow Super Giants",
+      "startTimeLocal": "2026-04-19T14:00:00.000Z",
+      "endTimeLocal": "2026-04-19T17:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "ipl",
+      "competitionName": "IPL",
+      "competitionType": "domestic",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "29th Match, Indian Premier League 2026",
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "soccer-ligue1-20260419-1515-paris-fc-at-metz",
@@ -16243,6 +16507,27 @@
       "providerReason": "mlr-disneyplus"
     },
     {
+      "id": "cricket-ipl-t8gyuw",
+      "cricketMatchId": "f72cb89b-3085-4556-a814-d28a44885b0e",
+      "sport": "cricket",
+      "league": "IPL",
+      "awayTeam": "Gujarat Titans",
+      "homeTeam": "Mumbai Indians",
+      "startTimeLocal": "2026-04-20T14:00:00.000Z",
+      "endTimeLocal": "2026-04-20T17:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "ipl",
+      "competitionName": "IPL",
+      "competitionType": "domestic",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "30th Match, Indian Premier League 2026",
+      "gender": "men",
+      "isIccT20Wc": false
+    },
+    {
       "id": "athletics-marathon-boston-marathon",
       "sport": "athletics",
       "league": "World Marathon Majors",
@@ -16285,6 +16570,27 @@
       "source": "soccer-epl",
       "leagueKey": "epl",
       "providerReason": "epl-yttv"
+    },
+    {
+      "id": "cricket-ipl-t3jmhs",
+      "cricketMatchId": "771739a7-564d-412d-a181-05722657e8f6",
+      "sport": "cricket",
+      "league": "IPL",
+      "awayTeam": "Sunrisers Hyderabad",
+      "homeTeam": "Delhi Capitals",
+      "startTimeLocal": "2026-04-21T14:00:00.000Z",
+      "endTimeLocal": "2026-04-21T17:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "ipl",
+      "competitionName": "IPL",
+      "competitionType": "domestic",
+      "format": "t20",
+      "hostCountry": "India",
+      "seriesName": "31st Match, Indian Premier League 2026",
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "athletics-marathon-london-marathon",
@@ -16561,10 +16867,10 @@
       "broadcastNetworks": "FOX"
     },
     {
-      "id": "soccer-fifa-world-cup-20260612-0200-winner-playoff-path-d-at-south-korea",
+      "id": "soccer-fifa-world-cup-20260612-0200-czechia-at-south-korea",
       "sport": "soccer",
       "league": "FIFA World Cup",
-      "awayTeam": "Winner Playoff Path D",
+      "awayTeam": "Czechia",
       "homeTeam": "South Korea",
       "startTimeLocal": "2026-06-12T02:00:00.000Z",
       "endTimeLocal": "2026-06-12T04:00:00.000Z",
@@ -16576,10 +16882,10 @@
       "broadcastNetworks": "FS1"
     },
     {
-      "id": "soccer-fifa-world-cup-20260612-1900-winner-playoff-path-a-at-canada",
+      "id": "soccer-fifa-world-cup-20260612-1900-bosnia-and-herzegovina-at-canada",
       "sport": "soccer",
       "league": "FIFA World Cup",
-      "awayTeam": "Winner Playoff Path A",
+      "awayTeam": "Bosnia and Herzegovina",
       "homeTeam": "Canada",
       "startTimeLocal": "2026-06-12T19:00:00.000Z",
       "endTimeLocal": "2026-06-12T21:00:00.000Z",
@@ -16651,10 +16957,10 @@
       "broadcastNetworks": "FS1"
     },
     {
-      "id": "soccer-fifa-world-cup-20260614-0400-winner-playoff-path-c-at-australia",
+      "id": "soccer-fifa-world-cup-20260614-0400-t-rkiye-at-australia",
       "sport": "soccer",
       "league": "FIFA World Cup",
-      "awayTeam": "Winner Playoff Path C",
+      "awayTeam": "Türkiye",
       "homeTeam": "Australia",
       "startTimeLocal": "2026-06-14T04:00:00.000Z",
       "endTimeLocal": "2026-06-14T06:00:00.000Z",
@@ -16711,11 +17017,11 @@
       "broadcastNetworks": "FS1"
     },
     {
-      "id": "soccer-fifa-world-cup-20260615-0200-tunisia-at-winner-playoff-path-b",
+      "id": "soccer-fifa-world-cup-20260615-0200-tunisia-at-sweden",
       "sport": "soccer",
       "league": "FIFA World Cup",
       "awayTeam": "Tunisia",
-      "homeTeam": "Winner Playoff Path B",
+      "homeTeam": "Sweden",
       "startTimeLocal": "2026-06-15T02:00:00.000Z",
       "endTimeLocal": "2026-06-15T04:00:00.000Z",
       "providerId": "youtubetv",
@@ -16906,11 +17212,11 @@
       "broadcastNetworks": "FS1"
     },
     {
-      "id": "soccer-fifa-world-cup-20260618-1600-south-africa-at-winner-playoff-path-d",
+      "id": "soccer-fifa-world-cup-20260618-1600-south-africa-at-czechia",
       "sport": "soccer",
       "league": "FIFA World Cup",
       "awayTeam": "South Africa",
-      "homeTeam": "Winner Playoff Path D",
+      "homeTeam": "Czechia",
       "startTimeLocal": "2026-06-18T16:00:00.000Z",
       "endTimeLocal": "2026-06-18T18:00:00.000Z",
       "providerId": "youtubetv",
@@ -16921,10 +17227,10 @@
       "broadcastNetworks": "FOX"
     },
     {
-      "id": "soccer-fifa-world-cup-20260618-1900-winner-playoff-path-a-at-switzerland",
+      "id": "soccer-fifa-world-cup-20260618-1900-bosnia-and-herzegovina-at-switzerland",
       "sport": "soccer",
       "league": "FIFA World Cup",
-      "awayTeam": "Winner Playoff Path A",
+      "awayTeam": "Bosnia and Herzegovina",
       "homeTeam": "Switzerland",
       "startTimeLocal": "2026-06-18T19:00:00.000Z",
       "endTimeLocal": "2026-06-18T21:00:00.000Z",
@@ -17011,11 +17317,11 @@
       "broadcastNetworks": "FOX"
     },
     {
-      "id": "soccer-fifa-world-cup-20260620-0400-paraguay-at-winner-playoff-path-c",
+      "id": "soccer-fifa-world-cup-20260620-0400-paraguay-at-t-rkiye",
       "sport": "soccer",
       "league": "FIFA World Cup",
       "awayTeam": "Paraguay",
-      "homeTeam": "Winner Playoff Path C",
+      "homeTeam": "Türkiye",
       "startTimeLocal": "2026-06-20T04:00:00.000Z",
       "endTimeLocal": "2026-06-20T06:00:00.000Z",
       "providerId": "youtubetv",
@@ -17026,10 +17332,10 @@
       "broadcastNetworks": "FS1"
     },
     {
-      "id": "soccer-fifa-world-cup-20260620-1700-winner-playoff-path-b-at-netherlands",
+      "id": "soccer-fifa-world-cup-20260620-1700-sweden-at-netherlands",
       "sport": "soccer",
       "league": "FIFA World Cup",
-      "awayTeam": "Winner Playoff Path B",
+      "awayTeam": "Sweden",
       "homeTeam": "Netherlands",
       "startTimeLocal": "2026-06-20T17:00:00.000Z",
       "endTimeLocal": "2026-06-20T19:00:00.000Z",
@@ -17281,11 +17587,11 @@
       "broadcastNetworks": "FOX"
     },
     {
-      "id": "soccer-fifa-world-cup-20260624-1900-qatar-at-winner-playoff-path-a",
+      "id": "soccer-fifa-world-cup-20260624-1900-qatar-at-bosnia-and-herzegovina",
       "sport": "soccer",
       "league": "FIFA World Cup",
       "awayTeam": "Qatar",
-      "homeTeam": "Winner Playoff Path A",
+      "homeTeam": "Bosnia and Herzegovina",
       "startTimeLocal": "2026-06-24T19:00:00.000Z",
       "endTimeLocal": "2026-06-24T21:00:00.000Z",
       "providerId": "youtubetv",
@@ -17341,11 +17647,11 @@
       "broadcastNetworks": "FS1"
     },
     {
-      "id": "soccer-fifa-world-cup-20260625-0100-mexico-at-winner-playoff-path-d",
+      "id": "soccer-fifa-world-cup-20260625-0100-mexico-at-czechia",
       "sport": "soccer",
       "league": "FIFA World Cup",
       "awayTeam": "Mexico",
-      "homeTeam": "Winner Playoff Path D",
+      "homeTeam": "Czechia",
       "startTimeLocal": "2026-06-25T01:00:00.000Z",
       "endTimeLocal": "2026-06-25T03:00:00.000Z",
       "providerId": "youtubetv",
@@ -17386,10 +17692,10 @@
       "broadcastNetworks": "FOX"
     },
     {
-      "id": "soccer-fifa-world-cup-20260625-2300-winner-playoff-path-b-at-japan",
+      "id": "soccer-fifa-world-cup-20260625-2300-sweden-at-japan",
       "sport": "soccer",
       "league": "FIFA World Cup",
-      "awayTeam": "Winner Playoff Path B",
+      "awayTeam": "Sweden",
       "homeTeam": "Japan",
       "startTimeLocal": "2026-06-25T23:00:00.000Z",
       "endTimeLocal": "2026-06-26T01:00:00.000Z",
@@ -17431,11 +17737,11 @@
       "broadcastNetworks": "FS1"
     },
     {
-      "id": "soccer-fifa-world-cup-20260626-0200-united-states-at-winner-playoff-path-c",
+      "id": "soccer-fifa-world-cup-20260626-0200-united-states-at-t-rkiye",
       "sport": "soccer",
       "league": "FIFA World Cup",
       "awayTeam": "United States",
-      "homeTeam": "Winner Playoff Path C",
+      "homeTeam": "Türkiye",
       "startTimeLocal": "2026-06-26T02:00:00.000Z",
       "endTimeLocal": "2026-06-26T04:00:00.000Z",
       "providerId": "youtubetv",
