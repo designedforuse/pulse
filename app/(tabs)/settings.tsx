@@ -60,7 +60,7 @@ function isStale(isoDate: string): boolean {
 }
 
 function ProvidersSection() {
-  const { isProviderEnabled, toggleProvider, disabledProviders } = useProviders();
+  const { toggleProvider, disabledProviders } = useProviders();
 
   const handleToggle = (id: string) => {
     if (Platform.OS !== "web") {
@@ -82,7 +82,7 @@ function ProvidersSection() {
         </View>
       )}
       {PROVIDER_LIST.map((provider, index) => {
-        const enabled = isProviderEnabled(provider.id);
+        const enabled = !disabledProviders.has(provider.id);
         return (
           <React.Fragment key={provider.id}>
             {index > 0 && <View style={styles.sportDivider} />}

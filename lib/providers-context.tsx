@@ -65,47 +65,38 @@ export function getEventBroadcasterIds(event: SportEvent): string[] {
 
 interface ProvidersContextValue {
   disabledProviders: Set<string>;
-  isProviderEnabled: (id: string) => boolean;
   toggleProvider: (id: string) => void;
 }
 
 const ProvidersContext = createContext<ProvidersContextValue | null>(null);
 
 export function ProvidersProvider({ children }: { children: ReactNode }) {
-  const [disabledProviders, setDisabledProviders] = useState<Set<string>>(new Set());
+  const [disabledArr, setDisabledArr] = useState<string[]>([]);
 
   useEffect(() => {
     AsyncStorage.getItem(STORAGE_KEY).then((raw) => {
       if (raw) {
         try {
           const arr = JSON.parse(raw);
-          if (Array.isArray(arr)) setDisabledProviders(new Set(arr));
+          if (Array.isArray(arr)) setDisabledArr(arr);
         } catch {}
       }
     });
   }, []);
 
   const toggleProvider = useCallback((id: string) => {
-    setDisabledProviders((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
-      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify([...next]));
+    setDisabledArr((prev) => {
+      const next = prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id];
+      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(next));
       return next;
     });
   }, []);
 
-  const isProviderEnabled = useCallback(
-    (id: string) => !disabledProviders.has(id),
-    [disabledProviders]
-  );
+  const disabledProviders = useMemo(() => new Set(disabledArr), [disabledArr]);
 
   const value = useMemo(
-    () => ({ disabledProviders, isProviderEnabled, toggleProvider }),
-    [disabledProviders, isProviderEnabled, toggleProvider]
+    () => ({ disabledProviders, toggleProvider }),
+    [disabledProviders, toggleProvider]
   );
 
   return (
