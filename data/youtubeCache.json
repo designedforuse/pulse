@@ -654,5 +654,45 @@
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
+  },
+  "playoff_push:boston bruins playoff push april 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=e-jgyExroGQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/e-jgyExroGQ/hqdefault.jpg",
+      "durationSeconds": 2182,
+      "title": "Tampa Bay Lightning Recap: 4-1 Loss to Canadiens | Penguins Preview & Mailbag",
+      "source": "youtube",
+      "channel": "Backchecking the Bolts",
+      "publishedAt": "8 hours ago"
+    },
+    "fetchedAt": "2026-04-02T01:30:04.277Z",
+    "query": "Boston Bruins playoff push April 2026",
+    "debug": {
+      "searchQuery": "Boston Bruins playoff push April 2026",
+      "selectedVideoTitle": "Tampa Bay Lightning Recap: 4-1 Loss to Canadiens | Penguins Preview & Mailbag",
+      "selectedVideoPublishedAt": "8 hours ago",
+      "selectedVideoChannel": "Backchecking the Bolts",
+      "rejectedForAgeCount": 1
+    }
+  },
+  "momentum:boston bruins highlights april 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=rrMgmcqNQ0g",
+      "thumbnailUrl": "https://img.youtube.com/vi/rrMgmcqNQ0g/hqdefault.jpg",
+      "durationSeconds": 852,
+      "title": "*RANKING* THE TOP 25 BEST NHL PROSPECTS! (2026)",
+      "source": "youtube",
+      "channel": "Graviteh",
+      "publishedAt": "5 hours ago"
+    },
+    "fetchedAt": "2026-04-02T01:30:04.584Z",
+    "query": "Boston Bruins highlights April 2026",
+    "debug": {
+      "searchQuery": "Boston Bruins highlights April 2026",
+      "selectedVideoTitle": "*RANKING* THE TOP 25 BEST NHL PROSPECTS! (2026)",
+      "selectedVideoPublishedAt": "5 hours ago",
+      "selectedVideoChannel": "Graviteh",
+      "rejectedForAgeCount": 0
+    }
   }
 }

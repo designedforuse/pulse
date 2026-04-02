@@ -33,7 +33,10 @@ export const PROVIDER_LIST: ProviderEntry[] = [
 
 export function getEventBroadcasterIds(event: SportEvent): string[] {
   const pid = event.providerId || "";
-  const bc = (event.broadcastNetworks || "").toLowerCase();
+  const rawBc = Array.isArray(event.broadcastNetworks)
+    ? event.broadcastNetworks.join(", ")
+    : (event.broadcastNetworks || "");
+  const bc = String(rawBc).toLowerCase();
 
   switch (pid) {
     case "flosports":     return ["flosports"];

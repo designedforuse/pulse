@@ -35,7 +35,7 @@ export interface SportEvent {
   olympicRound?: string;
   olympicVenue?: string;
   providerReason?: string;
-  broadcastNetworks?: string;
+  broadcastNetworks?: string | string[];
   tennisRound?: string;
   tennisPlayer1?: string;
   tennisPlayer2?: string;
@@ -243,7 +243,8 @@ const BROADCASTER_IDS = new Set([
 
 // Returns [displayId, launchProviderId]
 function resolveNbaBroadcastId(event: SportEvent): [string, string] {
-  const n = event.broadcastNetworks || "";
+  const rawN = event.broadcastNetworks;
+  const n = Array.isArray(rawN) ? rawN.join(", ") : (rawN || "");
   const reason = event.providerReason || "";
 
   if (n) {
@@ -360,7 +361,8 @@ function resolveCricketBroadcastId(event: SportEvent): [string, string] {
 
 function resolveNhlBroadcastId(event: SportEvent): string {
   const reason = event.providerReason || "";
-  const n = event.broadcastNetworks || "";
+  const rawN = event.broadcastNetworks;
+  const n = Array.isArray(rawN) ? rawN.join(", ") : (rawN || "");
 
   if (reason === "national") {
     if (/\bABC\b/.test(n)) return "espn";
