@@ -52,14 +52,24 @@ export function getEventBroadcasterIds(event: SportEvent): string[] {
     case "nbaleaguepass": return ["nbaleaguepass"];
     case "youtubetv": {
       const ids: string[] = [];
+      const reason = event.providerReason || "";
       if (bc.includes("fox") || bc.includes("fs1") || bc.includes("fs 1")) ids.push("fox");
       if (bc.includes("nbc")) ids.push("nbcsn");
       if (bc.includes("cbs")) ids.push("cbssn");
-      if (bc.includes("fanduel")) ids.push("fanduelsn");
+      // For NBA regional games (nba-regional-yttv), "FanDuel SN DET Ext" etc. are RSN
+      // feeds — not the standalone FanDuel Sports Network. Only detect fanduelsn for
+      // non-regional events (where it IS the primary channel).
+      if (bc.includes("fanduel") && reason !== "nba-regional-yttv") ids.push("fanduelsn");
       if (bc.includes("nba tv")) ids.push("nbatv");
       if (bc.includes("tennis channel")) ids.push("tennischannel");
       if (bc.includes("ion")) ids.push("ion");
       if (bc.includes("tnt") || bc.includes("trutv") || bc.includes("truetv") || bc.includes("hbo max")) ids.push("tnt");
+      // NBA regional games: use the same display-broadcaster logic as the event card.
+      // Clippers games show FanDuel SN logo; all other regional NBA show League Pass.
+      if (reason === "nba-regional-yttv") {
+        const teams = `${event.homeTeam ?? ""} ${event.awayTeam ?? ""}`.toLowerCase();
+        ids.push(teams.includes("clippers") ? "fanduelsn" : "nbaleaguepass");
+      }
       return ids.length > 0 ? ids : ["fox"];
     }
     default: return [];
