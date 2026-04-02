@@ -84,6 +84,8 @@ function buildSessionDisplayName(event: SportEvent): string | null {
 }
 
 function FeaturedStrip({ event }: { event: SportEvent | null }) {
+  const { favorites } = useFavorites();
+
   if (!event) {
     return (
       <View style={styles.featuredStrip}>
@@ -91,8 +93,6 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
       </View>
     );
   }
-
-  const { favorites } = useFavorites();
   const sportColor = SPORT_COLORS[event.sport] || "#90A4AE";
   const sessionName = buildSessionDisplayName(event);
   const timeLabel = formatFeaturedTime(event.startTimeLocal);

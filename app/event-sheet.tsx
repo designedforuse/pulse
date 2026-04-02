@@ -125,6 +125,8 @@ export default function EventSheet() {
   const { eventId } = useLocalSearchParams<{ eventId: string }>();
   const { findEvent } = useEvents();
   const event = findEvent(eventId);
+  const insets = useSafeAreaInsets();
+  const { getScore } = useScores();
 
   if (!event) {
     return (
@@ -133,9 +135,6 @@ export default function EventSheet() {
       </View>
     );
   }
-
-  const insets = useSafeAreaInsets();
-  const { getScore } = useScores();
   const score = getScore(event.id);
   const resolved = resolveProviderDisplay(event);
   const launchProvider = resolved.launchProvider;

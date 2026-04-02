@@ -110,6 +110,27 @@ export default function NarrativeDetailScreen() {
     queryKey: ["/api/events"],
   });
 
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const videoRef = useRef<Video>(null);
+
+  const formatDuration = useCallback((seconds: number) => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m}:${s.toString().padStart(2, "0")}`;
+  }, []);
+
+  const isYouTubeUrl = useCallback((url: string) => {
+    return url.includes("youtube.com") || url.includes("youtu.be");
+  }, []);
+
+  const handleVideoTap = useCallback((video: NarrativeVideo) => {
+    if (isYouTubeUrl(video.url)) {
+      Linking.openURL(video.url);
+    } else {
+      setVideoPlaying(true);
+    }
+  }, [isYouTubeUrl]);
+
   if (!card && narrativesLoading) {
     return (
       <View style={[styles.container, { paddingTop: insets.top, alignItems: "center", justifyContent: "center" }]}>
@@ -170,27 +191,6 @@ export default function NarrativeDetailScreen() {
     }
     router.push({ pathname: "/event-sheet", params: { eventId } });
   };
-
-  const [videoPlaying, setVideoPlaying] = useState(false);
-  const videoRef = useRef<Video>(null);
-
-  const formatDuration = useCallback((seconds: number) => {
-    const m = Math.floor(seconds / 60);
-    const s = seconds % 60;
-    return `${m}:${s.toString().padStart(2, "0")}`;
-  }, []);
-
-  const isYouTubeUrl = useCallback((url: string) => {
-    return url.includes("youtube.com") || url.includes("youtu.be");
-  }, []);
-
-  const handleVideoTap = useCallback((video: NarrativeVideo) => {
-    if (isYouTubeUrl(video.url)) {
-      Linking.openURL(video.url);
-    } else {
-      setVideoPlaying(true);
-    }
-  }, [isYouTubeUrl]);
 
   return (
     <View style={styles.container}>
