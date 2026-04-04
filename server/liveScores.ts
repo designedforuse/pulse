@@ -473,6 +473,7 @@ const ESPN_RUGBY_LEAGUE_PATHS: Record<string, string> = {
   "Six Nations": "180659",
   "English Premiership": "267979",
   "European Champions Cup": "271937",
+  "MLR": "289262",
 };
 
 // World Rugby API – Super Rugby Pacific 2026
