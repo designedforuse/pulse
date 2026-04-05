@@ -563,7 +563,7 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
 
   const sportLower = sport?.toLowerCase();
 
-  if (sportLower === "rugby" || league === "URC" || league === "Super Rugby" || league === "English Premiership" || league === "European Champions Cup") {
+  if (sportLower === "rugby" || league === "URC" || league === "Super Rugby" || league === "English Premiership" || league === "Champions Cup") {
     const id = ESPN_RUGBY_IDS[teamName];
     if (id) return `https://a.espncdn.com/i/teamlogos/rugby/teams/500/${id}.png`;
   }

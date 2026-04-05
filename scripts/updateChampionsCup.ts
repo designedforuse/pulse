@@ -181,7 +181,7 @@ export async function fetchChampionsCupEvents(): Promise<ChampionsCupFetchResult
       events.push({
         id,
         sport: "rugby",
-        league: "European Champions Cup",
+        league: "Champions Cup",
         awayTeam: teams.away,
         homeTeam: teams.home,
         startTimeLocal: startUtc,

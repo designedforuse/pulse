@@ -472,7 +472,7 @@ const ESPN_RUGBY_LEAGUE_PATHS: Record<string, string> = {
   "Top 14": "270559",
   "Six Nations": "180659",
   "English Premiership": "267979",
-  "European Champions Cup": "271937",
+  "Champions Cup": "271937",
   "MLR": "289262",
 };
 

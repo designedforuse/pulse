@@ -342,7 +342,7 @@ function resolveGolfBroadcastId(event: SportEvent): [string, string] {
   return ["", ""];
 }
 
-const FLORUGBY_LEAGUES = new Set(["URC", "Top 14", "English Premiership", "European Champions Cup", "Japan League One"]);
+const FLORUGBY_LEAGUES = new Set(["URC", "Top 14", "English Premiership", "Champions Cup", "Japan League One"]);
 
 function resolveRugbyBroadcastId(event: SportEvent): [string, string] {
   const league = event.league;
