@@ -447,7 +447,7 @@ export default function SettingsScreen() {
             style={({ pressed }) => [styles.accordionHeader, pressed && { opacity: 0.7 }]}
             onPress={() => toggleSection("favorites")}
           >
-            <Text style={styles.accordionTitle}>Favorites</Text>
+            <Text style={styles.accordionTitle}>Your Favorites</Text>
             <Ionicons
               name={openSection === "favorites" ? "chevron-up" : "chevron-down"}
               size={16}
