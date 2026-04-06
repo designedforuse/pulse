@@ -427,7 +427,7 @@ export default function SettingsScreen() {
             style={({ pressed }) => [styles.accordionHeader, pressed && { opacity: 0.7 }]}
             onPress={() => toggleSection("sports")}
           >
-            <Text style={styles.accordionTitle}>Sports</Text>
+            <Text style={styles.accordionTitle}>Sports Packs</Text>
             <Ionicons
               name={openSection === "sports" ? "chevron-up" : "chevron-down"}
               size={16}
