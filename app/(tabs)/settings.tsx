@@ -502,7 +502,7 @@ export default function SettingsScreen() {
             style={({ pressed }) => [styles.accordionHeader, pressed && { opacity: 0.7 }]}
             onPress={() => toggleSection("schedules")}
           >
-            <Text style={styles.accordionTitle}>Schedules & Stories</Text>
+            <Text style={styles.accordionTitle}>Refresh Data</Text>
             <Ionicons
               name={openSection === "schedules" ? "chevron-up" : "chevron-down"}
               size={16}
