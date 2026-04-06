@@ -694,5 +694,49 @@
       "selectedVideoChannel": "Graviteh",
       "rejectedForAgeCount": 0
     }
+  },
+  "playoff_push:tulsa oilers playoff push april 2026": {
+    "video": null,
+    "fetchedAt": "2026-04-06T21:13:25.436Z",
+    "query": "Tulsa Oilers playoff push April 2026",
+    "debug": {
+      "searchQuery": "Tulsa Oilers playoff push April 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:boston bruins clinch playoff berth april 2026": {
+    "video": null,
+    "fetchedAt": "2026-04-06T21:13:25.668Z",
+    "query": "Boston Bruins clinch playoff berth April 2026",
+    "debug": {
+      "searchQuery": "Boston Bruins clinch playoff berth April 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:big stage sports april 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=R-OP1UyHOg8",
+      "thumbnailUrl": "https://img.youtube.com/vi/R-OP1UyHOg8/hqdefault.jpg",
+      "durationSeconds": 1631,
+      "title": "You Don’t See This in the NHL Every Day | Weird Vol. 135",
+      "source": "youtube",
+      "channel": "NHL",
+      "publishedAt": "2 hours ago"
+    },
+    "fetchedAt": "2026-04-06T21:13:26.058Z",
+    "query": "Big Stage sports April 2026",
+    "debug": {
+      "searchQuery": "Big Stage sports April 2026",
+      "selectedVideoTitle": "You Don’t See This in the NHL Every Day | Weird Vol. 135",
+      "selectedVideoPublishedAt": "2 hours ago",
+      "selectedVideoChannel": "NHL",
+      "rejectedForAgeCount": 0
+    }
   }
 }
