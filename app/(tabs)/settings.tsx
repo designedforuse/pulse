@@ -113,13 +113,14 @@ function FavoritesSection() {
   const { allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, isLeagueEnabled, toggleLeague, enabledCount, totalCount } = useFavorites();
   const [expandedSports, setExpandedSports] = useState<Record<string, boolean>>({});
   const [expandedLeagues, setExpandedLeagues] = useState<Record<string, boolean>>({});
-  const sportOrder = ["hockey", "rugby", "cricket", "soccer", "basketball", "tennis", "racing", "golf", "athletics"];
+  const sportOrder = ["hockey", "rugby", "cricket", "soccer", "basketball", "baseball", "tennis", "racing", "golf", "athletics"];
   const sportLabels: Record<string, string> = {
     hockey: "Hockey",
     rugby: "Rugby",
     cricket: "Cricket",
     soccer: "Soccer",
     basketball: "Basketball",
+    baseball: "Baseball",
     tennis: "Tennis",
     racing: "Racing",
     golf: "Golf",
@@ -131,6 +132,7 @@ function FavoritesSection() {
     cricket: "baseball",
     soccer: "football",
     basketball: "basketball",
+    baseball: "baseball-outline",
     tennis: "tennisball",
     racing: "speedometer",
     golf: "golf",
@@ -142,6 +144,7 @@ function FavoritesSection() {
     soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "MLS", "NWSL", "USL", "Champions League", "Europa League", "FA Cup", "FIFA World Cup", "International Friendly"],
     cricket: ["IPL", "International", "SA20", "BBL", "The Hundred", "CPL", "MLC", "Super Smash"],
     basketball: ["NBA", "NCAAB"],
+    baseball: ["MLB"],
     tennis: ["Grand Slams", "ATP Masters 1000"],
     golf: ["The Majors"],
   };
