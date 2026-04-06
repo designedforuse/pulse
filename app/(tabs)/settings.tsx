@@ -476,6 +476,26 @@ export default function SettingsScreen() {
           )}
         </View>
 
+        {/* Networks */}
+        <View style={styles.accordionSection}>
+          <Pressable
+            style={({ pressed }) => [styles.accordionHeader, pressed && { opacity: 0.7 }]}
+            onPress={() => toggleSection("networks")}
+          >
+            <Text style={styles.accordionTitle}>Networks</Text>
+            <Ionicons
+              name={openSection === "networks" ? "chevron-up" : "chevron-down"}
+              size={16}
+              color={Colors.textMuted}
+            />
+          </Pressable>
+          {openSection === "networks" && (
+            <View style={styles.accordionContent}>
+              <ProvidersSection />
+            </View>
+          )}
+        </View>
+
         {/* Schedules & Stories */}
         <View style={styles.accordionSection}>
           <Pressable
@@ -587,26 +607,6 @@ export default function SettingsScreen() {
               </View>
             )}
           </View>
-          )}
-        </View>
-
-        {/* Networks */}
-        <View style={styles.accordionSection}>
-          <Pressable
-            style={({ pressed }) => [styles.accordionHeader, pressed && { opacity: 0.7 }]}
-            onPress={() => toggleSection("networks")}
-          >
-            <Text style={styles.accordionTitle}>Networks</Text>
-            <Ionicons
-              name={openSection === "networks" ? "chevron-up" : "chevron-down"}
-              size={16}
-              color={Colors.textMuted}
-            />
-          </Pressable>
-          {openSection === "networks" && (
-            <View style={styles.accordionContent}>
-              <ProvidersSection />
-            </View>
           )}
         </View>
 
