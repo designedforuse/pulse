@@ -82,7 +82,7 @@ const LOGO_ASPECT: Record<string, number> = {
   beinsports:    5.88,
   fanduelsn:     3.51,
   victoryplus:   8.07,
-  nbatv:         2.80,
+  nbatv:         2.43,
   nbaleaguepass: 3.64,
   nwslplus:      3.00,
   tennischannel: 3.57,
