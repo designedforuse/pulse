@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-06T22:55:35.422Z",
+  "lastUpdated": "2026-04-06T23:22:42.940Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -173,10 +173,10 @@
     "The Masters": 4,
     "PGA Championship": 4
   },
-  "nbaCount": 168,
+  "nbaCount": 164,
   "nbaAdded": 0,
-  "nbaUpdated": 168,
-  "nbaPruned": 168,
+  "nbaUpdated": 164,
+  "nbaPruned": 164,
   "nbaSourceUsed": "espn",
   "ncaabCount": 0,
   "ncaabAdded": 0,
@@ -188,28 +188,28 @@
   "intlSoccerUpdated": 104,
   "intlSoccerPruned": 104,
   "intlSoccerSourceUsed": "espn",
-  "mlbCount": 229,
+  "mlbCount": 231,
   "mlbAdded": 24,
-  "mlbUpdated": 229,
-  "mlbPruned": 229,
+  "mlbUpdated": 231,
+  "mlbPruned": 231,
   "mlbSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-04-06T22:55:35.422Z",
+    "lastRefreshAt": "2026-04-06T23:22:42.940Z",
     "sources": {
       "nhl": {
         "count": 91,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 172,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 11,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
@@ -221,7 +221,7 @@
       },
       "rugby": {
         "count": 109,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 24,
@@ -241,87 +241,87 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 32,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 71,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 40,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 40,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 36,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 35,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 29,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 51,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-25T23:00:00.000Z"
       },
       "championsCup": {
         "count": 11,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 13,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 8,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 8,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 6,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-04-04T11:45:00.000Z"
       },
       "tennis": {
         "count": 0,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Miami Open": 16,
@@ -332,7 +332,7 @@
       },
       "f1": {
         "count": 27,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Japanese Grand Prix": 5,
@@ -345,7 +345,7 @@
       },
       "golf": {
         "count": 8,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "The Masters": 4,
@@ -354,7 +354,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Boston Marathon": 1,
@@ -362,8 +362,8 @@
         }
       },
       "nba": {
-        "count": 168,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "count": 164,
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "ESPN API"
       },
       "ncaab": {
@@ -372,73 +372,13 @@
         "sourceName": "ESPN API"
       },
       "mlb": {
-        "count": 229,
-        "lastFetchAt": "2026-04-06T22:55:35.422Z",
+        "count": 231,
+        "lastFetchAt": "2026-04-06T23:22:42.940Z",
         "sourceName": "ESPN API"
       }
     }
   },
   "events": [
-    {
-      "id": "basketball-nba-20260323-2300-los-angeles-lakers-at-detroit-pistons",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Los Angeles Lakers",
-      "homeTeam": "Detroit Pistons",
-      "startTimeLocal": "2026-03-23T23:00:00.000Z",
-      "endTimeLocal": "2026-03-24T01:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv",
-      "broadcastNetworks": "Spectrum Sports Net, Spectrum Sports Net +, NBA League Pass, FanDuel SN DET"
-    },
-    {
-      "id": "basketball-nba-20260323-2300-indiana-pacers-at-orlando-magic",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Indiana Pacers",
-      "homeTeam": "Orlando Magic",
-      "startTimeLocal": "2026-03-23T23:00:00.000Z",
-      "endTimeLocal": "2026-03-24T01:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-regional-yttv",
-      "broadcastNetworks": "FanDuel SN FL, FanDuel SN IN, NBA League Pass"
-    },
-    {
-      "id": "basketball-nba-20260323-2300-oklahoma-city-thunder-at-philadelphia-76ers",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "Oklahoma City Thunder",
-      "homeTeam": "Philadelphia 76ers",
-      "startTimeLocal": "2026-03-23T23:00:00.000Z",
-      "endTimeLocal": "2026-03-24T01:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-nbc",
-      "broadcastNetworks": "FanDuel SN OK, NBA League Pass, NBC Sports Phil"
-    },
-    {
-      "id": "basketball-nba-20260323-2300-san-antonio-spurs-at-miami-heat",
-      "sport": "basketball",
-      "league": "NBA",
-      "awayTeam": "San Antonio Spurs",
-      "homeTeam": "Miami Heat",
-      "startTimeLocal": "2026-03-23T23:00:00.000Z",
-      "endTimeLocal": "2026-03-24T01:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "basketball-nba",
-      "leagueKey": "nba",
-      "providerReason": "nba-nbc",
-      "broadcastNetworks": "Peacock, NBCSN, FanDuel SN Sun, FanDuel SN SW"
-    },
     {
       "id": "basketball-nba-20260323-2330-memphis-grizzlies-at-atlanta-hawks",
       "sport": "basketball",
@@ -8091,7 +8031,7 @@
       "startTimeLocal": "2026-04-06T23:00:00.000Z",
       "endTimeLocal": "2026-04-07T01:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": false,
+      "isLive": true,
       "source": "nhl",
       "broadcastNetworks": [
         "NHLN",
@@ -8111,7 +8051,7 @@
       "startTimeLocal": "2026-04-06T23:00:00.000Z",
       "endTimeLocal": "2026-04-07T01:45:00.000Z",
       "providerId": "flosports",
-      "isLive": false,
+      "isLive": true,
       "source": "ahl-hockeytech"
     },
     {
@@ -13599,6 +13539,36 @@
       ],
       "isNational": false,
       "providerReason": "espnplus-default"
+    },
+    {
+      "id": "baseball-mlb-20260413-2305-los-angeles-angels-at-new-york-yankees",
+      "sport": "baseball",
+      "league": "MLB",
+      "awayTeam": "Los Angeles Angels",
+      "homeTeam": "New York Yankees",
+      "startTimeLocal": "2026-04-13T23:05:00.000Z",
+      "endTimeLocal": "2026-04-14T02:05:00.000Z",
+      "providerId": "mlbtv",
+      "isLive": false,
+      "source": "baseball-mlb",
+      "leagueKey": "mlb",
+      "providerReason": "mlb-regional",
+      "broadcastNetworks": "MLB.TV, FanDuel SN West, YES"
+    },
+    {
+      "id": "baseball-mlb-20260413-2315-miami-marlins-at-atlanta-braves",
+      "sport": "baseball",
+      "league": "MLB",
+      "awayTeam": "Miami Marlins",
+      "homeTeam": "Atlanta Braves",
+      "startTimeLocal": "2026-04-13T23:15:00.000Z",
+      "endTimeLocal": "2026-04-14T02:15:00.000Z",
+      "providerId": "mlbtv",
+      "isLive": false,
+      "source": "baseball-mlb",
+      "leagueKey": "mlb",
+      "providerReason": "mlb-regional",
+      "broadcastNetworks": "MLB.TV, BravesVision, Marlins.TV"
     },
     {
       "id": "nhl_2025021285",
