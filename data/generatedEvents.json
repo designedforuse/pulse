@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-06T23:41:15.488Z",
+  "lastUpdated": "2026-04-06T23:53:16.172Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -188,28 +188,28 @@
   "intlSoccerUpdated": 104,
   "intlSoccerPruned": 104,
   "intlSoccerSourceUsed": "espn",
-  "mlbCount": 231,
-  "mlbAdded": 25,
-  "mlbUpdated": 230,
-  "mlbPruned": 231,
+  "mlbCount": 232,
+  "mlbAdded": 24,
+  "mlbUpdated": 232,
+  "mlbPruned": 232,
   "mlbSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-04-06T23:41:15.488Z",
+    "lastRefreshAt": "2026-04-06T23:53:16.172Z",
     "sources": {
       "nhl": {
         "count": 91,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 172,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 11,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
@@ -221,7 +221,7 @@
       },
       "rugby": {
         "count": 109,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 24,
@@ -241,87 +241,87 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 32,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 71,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 40,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 40,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 36,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 35,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 29,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 51,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-25T23:00:00.000Z"
       },
       "championsCup": {
         "count": 11,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 13,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 8,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 8,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 6,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-04-04T11:45:00.000Z"
       },
       "tennis": {
         "count": 0,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Miami Open": 16,
@@ -332,7 +332,7 @@
       },
       "f1": {
         "count": 27,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Japanese Grand Prix": 5,
@@ -345,7 +345,7 @@
       },
       "golf": {
         "count": 8,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "The Masters": 4,
@@ -354,7 +354,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Boston Marathon": 1,
@@ -363,7 +363,7 @@
       },
       "nba": {
         "count": 163,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "ESPN API"
       },
       "ncaab": {
@@ -372,8 +372,8 @@
         "sourceName": "ESPN API"
       },
       "mlb": {
-        "count": 231,
-        "lastFetchAt": "2026-04-06T23:41:15.488Z",
+        "count": 232,
+        "lastFetchAt": "2026-04-06T23:53:16.172Z",
         "sourceName": "ESPN API"
       }
     }
@@ -8022,7 +8022,7 @@
       "startTimeLocal": "2026-04-06T23:00:00.000Z",
       "endTimeLocal": "2026-04-07T01:45:00.000Z",
       "providerId": "flosports",
-      "isLive": true,
+      "isLive": false,
       "source": "ahl-hockeytech"
     },
     {
@@ -8079,7 +8079,7 @@
       "startTimeLocal": "2026-04-06T23:30:00.000Z",
       "endTimeLocal": "2026-04-07T02:15:00.000Z",
       "providerId": "disneyplus",
-      "isLive": false,
+      "isLive": true,
       "source": "nhl",
       "broadcastNetworks": [
         "Prime",
@@ -13573,6 +13573,21 @@
       "leagueKey": "mlb",
       "providerReason": "mlb-regional",
       "broadcastNetworks": "MLB.TV, Twins.TV, NESN"
+    },
+    {
+      "id": "baseball-mlb-20260413-2345-cleveland-guardians-at-st-louis-cardinals",
+      "sport": "baseball",
+      "league": "MLB",
+      "awayTeam": "Cleveland Guardians",
+      "homeTeam": "St. Louis Cardinals",
+      "startTimeLocal": "2026-04-13T23:45:00.000Z",
+      "endTimeLocal": "2026-04-14T02:45:00.000Z",
+      "providerId": "mlbtv",
+      "isLive": false,
+      "source": "baseball-mlb",
+      "leagueKey": "mlb",
+      "providerReason": "mlb-regional",
+      "broadcastNetworks": "MLB.TV, CLEGuardians.TV, Cardinals.TV"
     },
     {
       "id": "nhl_2025021286",
