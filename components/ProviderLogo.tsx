@@ -57,7 +57,7 @@ const LOGO_SCALE: Record<string, number> = {
   willowtv:      1.0,
   rugbypasstv:   1.2,
   ion:           0.9,
-  mlbtv:         0.9,
+  mlbtv:         1.2,
   // Aliases
   espn2:         0.65,
   flohockey:     1.2,
@@ -89,7 +89,7 @@ const LOGO_ASPECT: Record<string, number> = {
   willowtv:      3.00,
   rugbypasstv:   0.73,
   ion:           2.00,
-  mlbtv:         2.50,
+  mlbtv:         4.15,
   // Aliases
   espn2:         4.05,
   flohockey:     8.77,
