@@ -597,6 +597,25 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
     return null;
   }
 
+  if (sportLower === "baseball" || league === "MLB") {
+    const MLB_IDS: Record<string, string> = {
+      "Arizona Diamondbacks": "29", "Atlanta Braves": "15", "Baltimore Orioles": "1",
+      "Boston Red Sox": "2", "Chicago Cubs": "16", "Chicago White Sox": "4",
+      "Cincinnati Reds": "17", "Cleveland Guardians": "5", "Colorado Rockies": "27",
+      "Detroit Tigers": "6", "Houston Astros": "18", "Kansas City Royals": "7",
+      "Los Angeles Angels": "3", "Los Angeles Dodgers": "19", "Miami Marlins": "28",
+      "Milwaukee Brewers": "8", "Minnesota Twins": "9", "New York Mets": "21",
+      "New York Yankees": "10", "Oakland Athletics": "11", "Philadelphia Phillies": "22",
+      "Pittsburgh Pirates": "23", "San Diego Padres": "25", "San Francisco Giants": "26",
+      "Seattle Mariners": "12", "St. Louis Cardinals": "24", "Tampa Bay Rays": "30",
+      "Texas Rangers": "13", "Toronto Blue Jays": "14", "Washington Nationals": "20",
+      "Anaheim Angels": "3", "Athletics": "11",
+    };
+    const id = MLB_IDS[teamName];
+    if (id) return `https://a.espncdn.com/i/teamlogos/mlb/500-dark/${id}.png`;
+    return null;
+  }
+
   if (sportLower === "basketball" || league === "NBA") {
     const NBA_IDS: Record<string, string> = {
       "Atlanta Hawks": "1", "Boston Celtics": "2", "Brooklyn Nets": "17",

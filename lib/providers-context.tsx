@@ -29,6 +29,7 @@ export const PROVIDER_LIST: ProviderEntry[] = [
   { id: "willowtv",      label: "Willow TV",              logoId: "willowtv" },
   { id: "rugbypasstv",   label: "RugbyPass TV",           logoId: "rugbypasstv" },
   { id: "ion",           label: "ION",                    logoId: "ion" },
+  { id: "mlbtv",        label: "MLB.TV",                 logoId: "mlbtv" },
 ];
 
 export function getEventBroadcasterIds(event: SportEvent): string[] {
@@ -50,6 +51,7 @@ export function getEventBroadcasterIds(event: SportEvent): string[] {
     case "rugbypasstv":   return ["rugbypasstv"];
     case "beinsports":    return ["beinsports"];
     case "nbaleaguepass": return ["nbaleaguepass"];
+    case "mlbtv":     return ["mlbtv"];
     case "youtubetv": {
       const ids: string[] = [];
       const reason = event.providerReason || "";
@@ -63,6 +65,7 @@ export function getEventBroadcasterIds(event: SportEvent): string[] {
       if (bc.includes("nba tv")) ids.push("nbatv");
       if (bc.includes("tennis channel")) ids.push("tennischannel");
       if (bc.includes("ion")) ids.push("ion");
+      if (bc.includes("peacock")) ids.push("nbcsn");
       if (bc.includes("tnt") || bc.includes("trutv") || bc.includes("truetv") || bc.includes("hbo max")) ids.push("tnt");
       // NBA regional games: use the same display-broadcaster logic as the event card.
       // Clippers games show FanDuel SN logo; all other regional NBA show League Pass.

@@ -426,11 +426,11 @@ interface RitualDef {
 }
 
 const RITUALS: RitualDef[] = [
-  { id: "friday_lights", label: "Family Game Night", sports: ["hockey", "basketball", "soccer"], days: [5], startHour: 18, endHour: 21 },
+  { id: "friday_lights", label: "Family Game Night", sports: ["hockey", "basketball", "soccer", "baseball"], days: [5], startHour: 18, endHour: 21 },
   { id: "friday_after_hours", label: "Friday Night Mode", sports: ["rugby", "cricket"], days: [5], startHour: 21, endHour: 24 },
   { id: "saturday_sunrise", label: "Saturday Warm-Up", sports: ["rugby", "cricket", "soccer"], days: [6], startHour: 6, endHour: 12 },
   { id: "saturday_spotlight", label: "Saturday Game Day", sports: ["hockey", "basketball", "soccer"], days: [6], startHour: 16, endHour: 20 },
-  { id: "saturday_after_hours", label: "Saturday Extra Time", sports: ["hockey", "basketball", "soccer", "rugby", "cricket"], days: [6], startHour: 20, endHour: 24 },
+  { id: "saturday_after_hours", label: "Saturday Extra Time", sports: ["hockey", "basketball", "soccer", "rugby", "cricket", "baseball"], days: [6], startHour: 20, endHour: 24 },
   { id: "sunday_session", label: "Sunday Coffee & Chill", sports: ["rugby", "cricket", "soccer"], days: [0], startHour: 6, endHour: 12 },
 ];
 
@@ -469,6 +469,13 @@ const RIVALRY_PAIRS: { teams: [string, string]; label: string; sport: string }[]
   { teams: ["Ferrari", "Mercedes"], label: "Legacy Rivalry", sport: "racing" },
   { teams: ["McLaren", "Mercedes"], label: "Woking vs Brackley", sport: "racing" },
   { teams: ["Red Bull", "McLaren"], label: "Papaya vs Bull", sport: "racing" },
+  { teams: ["Los Angeles Dodgers", "San Francisco Giants"], label: "The Classic Rivalry", sport: "baseball" },
+  { teams: ["Los Angeles Dodgers", "San Diego Padres"], label: "SoCal Showdown", sport: "baseball" },
+  { teams: ["Los Angeles Angels", "Los Angeles Dodgers"], label: "Freeway Series", sport: "baseball" },
+  { teams: ["New York Yankees", "Boston Red Sox"], label: "The Greatest Rivalry", sport: "baseball" },
+  { teams: ["New York Yankees", "New York Mets"], label: "Subway Series", sport: "baseball" },
+  { teams: ["Chicago Cubs", "St. Louis Cardinals"], label: "Cubs-Cards Classic", sport: "baseball" },
+  { teams: ["San Francisco Giants", "Los Angeles Dodgers"], label: "The Classic Rivalry", sport: "baseball" },
 ];
 
 const DERBY_KEYWORDS = ["derby", "clásico", "clasico", "rivalry", "el tráfico", "el trafico"];

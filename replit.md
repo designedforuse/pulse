@@ -61,4 +61,5 @@ The application features a frontend built with Expo Router for file-based naviga
 - **FloSports:** Streaming provider integration.
 - **Victory+:** Streaming provider integration.
 - **Prime Video:** Streaming provider integration.
+- **ESPN API (site.api.espn.com):** MLB baseball schedule and live score data. All 30 teams, 14 days back / 7 days forward. National broadcasts (ESPN→Disney+, FOX/FS1/TBS/Peacock→YouTube TV, Apple TV+, Prime Video) and regional/MLB.TV games resolved via `providerReason`. SoCal RSNs (Dodgers, Angels home games) tagged `mlb-socal-rsn` → MLB.TV. Live scores show inning + top/bot half.
 - **Google Fonts (Inter):** Font library.

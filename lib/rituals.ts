@@ -335,6 +335,7 @@ const SPORT_RANK: Record<string, number> = {
   hockey: 3,
   soccer: 4,
   racing: 5,
+  baseball: 6,
 };
 
 function getSportRank(sport: string): number {
@@ -393,12 +394,20 @@ const RACING_LADDER: { rank: number; match: (e: SportEvent) => boolean }[] = [
   { rank: 4, match: (e) => teamContains(e, "practice") },
 ];
 
+const BASEBALL_LADDER: { rank: number; match: (e: SportEvent) => boolean }[] = [
+  { rank: 1, match: (e) => teamContains(e, "dodgers") },
+  { rank: 2, match: (e) => teamContains(e, "angels") },
+  { rank: 3, match: (e) => (e.providerReason || "").startsWith("mlb-appletv") || (e.providerReason || "").startsWith("mlb-fox") || (e.providerReason || "").startsWith("mlb-espn") || (e.providerReason || "").startsWith("mlb-tbs") || (e.providerReason || "").startsWith("mlb-prime") },
+  { rank: 4, match: (e) => leagueIs(e, "MLB") },
+];
+
 const SPORT_LADDERS: Record<string, { rank: number; match: (e: SportEvent) => boolean }[]> = {
   rugby: RUGBY_LADDER,
   cricket: CRICKET_LADDER,
   hockey: HOCKEY_LADDER,
   soccer: SOCCER_LADDER,
   racing: RACING_LADDER,
+  baseball: BASEBALL_LADDER,
 };
 
 function teamContains(e: SportEvent, needle: string): boolean {

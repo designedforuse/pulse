@@ -49,6 +49,14 @@
           "leagues": [
             "NBA"
           ]
+        },
+        {
+          "id": "baseball_night",
+          "title": "Baseball Night",
+          "sport": "baseball",
+          "leagues": [
+            "MLB"
+          ]
         }
       ]
     },
@@ -160,6 +168,14 @@
           ]
         },
         {
+          "id": "baseball_morning",
+          "title": "Baseball Day",
+          "sport": "baseball",
+          "leagues": [
+            "MLB"
+          ]
+        },
+        {
           "id": "athletics_morning",
           "title": "Marathon",
           "sport": "athletics",
@@ -225,6 +241,12 @@
       "name": "Apple TV",
       "packageName": "com.apple.atve.androidtv.appletv",
       "launchUrl": "https://tv.apple.com"
+    },
+    {
+      "id": "mlbtv",
+      "name": "MLB.TV",
+      "packageName": "com.bamnetworks.mobile.android.gameday.atbat",
+      "launchUrl": "https://www.mlb.com/tv"
     },
     {
       "id": "tennischannel",

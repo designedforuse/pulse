@@ -173,6 +173,7 @@ export function getSportColor(sport: string): string {
     cricket: "#FFC800",
     soccer: "#35C7A5",
     basketball: "#FF4B4B",
+    baseball: "#C8102E",
     tennis: "#CE82FF",
     racing: "#E53935",
     golf: "#22C55E",
@@ -218,6 +219,7 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   florugby: "FloRugby",
   nbcsn: "NBC Sports",
   rugbypasstv: "RugbyPass TV",
+  mlbtv: "MLB.TV",
 };
 
 // Broadcaster IDs that are valid as display logos — streaming services excluded
@@ -239,6 +241,7 @@ const BROADCASTER_IDS = new Set([
   "fox",
   "fs1",
   "espn2",
+  "mlbtv",
 ]);
 
 // Returns [displayId, launchProviderId]
@@ -436,6 +439,18 @@ export function resolveTennisProvider(event: SportEvent): ResolvedProvider | nul
   };
 }
 
+function resolveBaseballBroadcastId(event: SportEvent): [string, string] {
+  const reason = event.providerReason || "";
+  if (reason === "mlb-espn" || reason === "mlb-espnplus") return ["espn", "disneyplus"];
+  if (reason === "mlb-fox") return ["fox", "youtubetv"];
+  if (reason === "mlb-fs1") return ["fs1", "youtubetv"];
+  if (reason === "mlb-tbs") return ["tnt", "youtubetv"];
+  if (reason === "mlb-peacock") return ["nbcsn", "youtubetv"];
+  if (reason === "mlb-prime") return ["primevideo", "primevideo"];
+  if (reason === "mlb-appletv") return ["appletv", "appletv"];
+  return ["mlbtv", "mlbtv"];
+}
+
 export function resolveProviderDisplay(event: SportEvent): { brandId: string; brandName: string; launchProvider: Provider | undefined; launchLabel: string } {
   const tennis = resolveTennisProvider(event);
   if (tennis) {
@@ -551,6 +566,18 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
     }
   }
 
+  // Baseball / MLB: display broadcast network logo; launch determined by providerReason
+  if (event.sport === "baseball" || event.league === "MLB") {
+    const [broadcastId, launchProviderId] = resolveBaseballBroadcastId(event);
+    const launchProvider = getProviderById(launchProviderId);
+    return {
+      brandId: broadcastId,
+      brandName: PROVIDER_DISPLAY_NAMES[broadcastId] || broadcastId,
+      launchProvider,
+      launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
+    };
+  }
+
   // NHL: display the broadcast network logo; deep-link still uses providerId
   if (event.league === "NHL") {
     const broadcastId = resolveNhlBroadcastId(event);
@@ -599,6 +626,7 @@ export function getSportIcon(sport: string): string {
     cricket: "baseball",
     soccer: "football",
     basketball: "basketball",
+    baseball: "baseball",
     tennis: "tennisball-outline",
     racing: "speedometer",
     golf: "golf",

@@ -23,6 +23,7 @@ const PROVIDER_IMAGES: Record<string, any> = {
   willowtv:      require("@/assets/providers/willowtv.png"),
   rugbypasstv:   require("@/assets/providers/rugbypasstv.png"),
   ion:           require("@/assets/providers/ion.png"),
+  mlbtv:         require("@/assets/providers/mlbtv.png"),
   // ── Aliases → approved logos ──────────────────────────────────────────────
   espn2:         require("@/assets/providers/espn.png"),      // ESPN2 → ESPN
   flohockey:     require("@/assets/providers/flosports.png"), // FloHockey → FloSports
@@ -56,6 +57,7 @@ const LOGO_SCALE: Record<string, number> = {
   willowtv:      1.0,
   rugbypasstv:   1.2,
   ion:           0.9,
+  mlbtv:         0.9,
   // Aliases
   espn2:         0.65,
   flohockey:     1.2,
@@ -87,6 +89,7 @@ const LOGO_ASPECT: Record<string, number> = {
   willowtv:      3.00,
   rugbypasstv:   0.73,
   ion:           2.00,
+  mlbtv:         2.50,
   // Aliases
   espn2:         4.05,
   flohockey:     8.77,
