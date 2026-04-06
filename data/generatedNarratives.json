@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-06T21:58:36.021Z",
+  "lastUpdated": "2026-04-06T22:45:48.782Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -75,7 +75,7 @@
         ],
         "playersIngested": 648,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-06T21:58:36.021Z"
+        "timestamp": "2026-04-06T22:45:48.782Z"
       },
       "cacheHistoryCount": 833,
       "error": null
@@ -85,7 +85,7 @@
     "candidateCountAfterCap": 3,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -721.9766725,
+      "hoursUntil": -722.7635505555555,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -180,8 +180,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-04-06T21:58:36.021Z",
-      "expiresAt": "2026-04-13T21:58:36.021Z",
+      "triggeredAt": "2026-04-06T22:45:48.782Z",
+      "expiresAt": "2026-04-13T22:45:48.782Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -204,8 +204,8 @@
           "echl-web-25374"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-04-06T21:58:36.021Z",
-        "windowEnd": "2026-04-13T21:58:36.021Z",
+        "windowStart": "2026-04-06T22:45:48.782Z",
+        "windowEnd": "2026-04-13T22:45:48.782Z",
         "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -221,7 +221,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-04-06T21:58:36.021Z",
+      "triggeredAt": "2026-04-06T22:45:48.782Z",
       "expiresAt": "2026-04-08T03:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -253,8 +253,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-06T21:58:36.021Z",
-      "expiresAt": "2026-04-13T21:58:36.021Z",
+      "triggeredAt": "2026-04-06T22:45:48.782Z",
+      "expiresAt": "2026-04-13T22:45:48.782Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -343,8 +343,8 @@
           "leagueKey": "mlb",
           "dateRangeLabel": "Apr 1–13",
           "startDate": "2026-04-01T00:10:00.000Z",
-          "endDate": "2026-04-13T20:10:00.000Z",
-          "eventCount": 147
+          "endDate": "2026-04-13T22:40:00.000Z",
+          "eventCount": 150
         },
         {
           "sport": "hockey",
