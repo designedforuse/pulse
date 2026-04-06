@@ -421,26 +421,6 @@ export default function SettingsScreen() {
         ]}
         showsVerticalScrollIndicator={false}
       >
-        {/* Sports */}
-        <View style={styles.accordionSection}>
-          <Pressable
-            style={({ pressed }) => [styles.accordionHeader, pressed && { opacity: 0.7 }]}
-            onPress={() => toggleSection("sports")}
-          >
-            <Text style={styles.accordionTitle}>Sports Packs</Text>
-            <Ionicons
-              name={openSection === "sports" ? "chevron-up" : "chevron-down"}
-              size={16}
-              color={Colors.textMuted}
-            />
-          </Pressable>
-          {openSection === "sports" && (
-            <View style={styles.accordionContent}>
-              <FavoritesSection />
-            </View>
-          )}
-        </View>
-
         {/* Favorites */}
         <View style={styles.accordionSection}>
           <Pressable
@@ -472,6 +452,26 @@ export default function SettingsScreen() {
                   testID="favorites-only-toggle"
                 />
               </View>
+            </View>
+          )}
+        </View>
+
+        {/* Sports */}
+        <View style={styles.accordionSection}>
+          <Pressable
+            style={({ pressed }) => [styles.accordionHeader, pressed && { opacity: 0.7 }]}
+            onPress={() => toggleSection("sports")}
+          >
+            <Text style={styles.accordionTitle}>Sports Packs</Text>
+            <Ionicons
+              name={openSection === "sports" ? "chevron-up" : "chevron-down"}
+              size={16}
+              color={Colors.textMuted}
+            />
+          </Pressable>
+          {openSection === "sports" && (
+            <View style={styles.accordionContent}>
+              <FavoritesSection />
             </View>
           )}
         </View>
