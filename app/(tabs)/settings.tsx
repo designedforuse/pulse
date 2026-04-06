@@ -319,12 +319,20 @@ export default function SettingsScreen() {
   const queryClient = useQueryClient();
   const { debugShowAll, setDebugShowAll, favoritesOnly, setFavoritesOnly } = useEvents();
 
+  const [openSection, setOpenSection] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
   const [refreshMessage, setRefreshMessage] = useState<{ text: string; ok: boolean } | null>(null);
   const [meta, setMeta] = useState<GeneratedMeta | null>(null);
   const [rebuildingExplore, setRebuildingExplore] = useState(false);
   const [rebuildMessage, setRebuildMessage] = useState<{ text: string; ok: boolean } | null>(null);
   const [storiesLastUpdated, setStoriesLastUpdated] = useState<string | null>(null);
+
+  const toggleSection = (id: string) => {
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    }
+    setOpenSection((prev) => (prev === id ? null : id));
+  };
 
   const fetchMeta = useCallback(async () => {
     try {
@@ -413,87 +421,155 @@ export default function SettingsScreen() {
         ]}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Using the App</Text>
-          <View style={styles.card}>
-            <View style={styles.howItWorksItem}>
-              <View style={[styles.stepBadge, { backgroundColor: Colors.accent }]}>
-                <Text style={[styles.stepText, { color: "#FFFFFF" }]}>1</Text>
-              </View>
-              <View style={styles.howItWorksContent}>
-                <Text style={styles.howItWorksTitle}>Watch: What's exciting right now</Text>
-                <Text style={styles.howItWorksDesc}>Chaos Mode surfaces the most compelling live game based on score, tension, and timing.</Text>
-              </View>
-            </View>
-            <View style={styles.divider} />
-            <View style={styles.howItWorksItem}>
-              <View style={[styles.stepBadge, { backgroundColor: Colors.accent }]}>
-                <Text style={[styles.stepText, { color: "#FFFFFF" }]}>2</Text>
-              </View>
-              <View style={styles.howItWorksContent}>
-                <Text style={styles.howItWorksTitle}>Rituals: Your weekly viewing habits</Text>
-                <Text style={styles.howItWorksDesc}>Rituals group games into time windows (like Sunday mornings or Friday night hockey) so you can quickly find your regular matchups.</Text>
-              </View>
-            </View>
-            <View style={styles.divider} />
-            <View style={styles.howItWorksItem}>
-              <View style={[styles.stepBadge, { backgroundColor: Colors.accent }]}>
-                <Text style={[styles.stepText, { color: "#FFFFFF" }]}>3</Text>
-              </View>
-              <View style={styles.howItWorksContent}>
-                <Text style={styles.howItWorksTitle}>Stories: Discover games across leagues</Text>
-                <Text style={styles.howItWorksDesc}>Stories highlights events based on league moments and momentum:</Text>
-                <View style={styles.howItWorksBullets}>
-                  <Text style={styles.howItWorksBullet}>• Movement: regular season matchups</Text>
-                  <Text style={styles.howItWorksBullet}>• Momentum: teams gaining form</Text>
-                  <Text style={styles.howItWorksBullet}>• Playoff Push: late-season stakes</Text>
-                  <Text style={styles.howItWorksBullet}>• League Moments: finals, derbies, and marquee events</Text>
+        {/* Using the App */}
+        <View style={styles.accordionSection}>
+          <Pressable
+            style={({ pressed }) => [styles.accordionHeader, pressed && { opacity: 0.7 }]}
+            onPress={() => toggleSection("guide")}
+          >
+            <Text style={styles.accordionTitle}>Using the App</Text>
+            <Ionicons
+              name={openSection === "guide" ? "chevron-up" : "chevron-down"}
+              size={16}
+              color={Colors.textMuted}
+            />
+          </Pressable>
+          {openSection === "guide" && (
+            <View style={[styles.card, styles.accordionContent]}>
+              <View style={styles.howItWorksItem}>
+                <View style={[styles.stepBadge, { backgroundColor: Colors.accent }]}>
+                  <Text style={[styles.stepText, { color: "#FFFFFF" }]}>1</Text>
+                </View>
+                <View style={styles.howItWorksContent}>
+                  <Text style={styles.howItWorksTitle}>Watch: What's exciting right now</Text>
+                  <Text style={styles.howItWorksDesc}>Chaos Mode surfaces the most compelling live game based on score, tension, and timing.</Text>
                 </View>
               </View>
-            </View>
-            <View style={styles.divider} />
-            <View style={styles.howItWorksFooter}>
-              <Ionicons name="open-outline" size={14} color={Colors.textSecondary} />
-              <Text style={styles.howItWorksFooterText}>Tap any event to open the broadcast in your streaming provider.</Text>
-            </View>
-          </View>
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Networks</Text>
-          <ProvidersSection />
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Sports</Text>
-          <FavoritesSection />
-        </View>
-
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Favorites</Text>
-          <View style={styles.card}>
-            <View style={styles.debugRow}>
-              <View style={styles.debugLeft}>
-                <Ionicons name="star" size={18} color={Colors.favStar} />
-                <View>
-                  <Text style={styles.refreshLabel}>Favorite Teams Only</Text>
+              <View style={styles.divider} />
+              <View style={styles.howItWorksItem}>
+                <View style={[styles.stepBadge, { backgroundColor: Colors.accent }]}>
+                  <Text style={[styles.stepText, { color: "#FFFFFF" }]}>2</Text>
+                </View>
+                <View style={styles.howItWorksContent}>
+                  <Text style={styles.howItWorksTitle}>Rituals: Your weekly viewing habits</Text>
+                  <Text style={styles.howItWorksDesc}>Rituals group games into time windows (like Sunday mornings or Friday night hockey) so you can quickly find your regular matchups.</Text>
                 </View>
               </View>
-              <Switch
-                value={favoritesOnly}
-                onValueChange={setFavoritesOnly}
-                trackColor={{ false: Colors.border, true: Colors.favStar + "55" }}
-                thumbColor={favoritesOnly ? Colors.favStar : Colors.textMuted}
-                style={styles.debugSwitch}
-                testID="favorites-only-toggle"
-              />
+              <View style={styles.divider} />
+              <View style={styles.howItWorksItem}>
+                <View style={[styles.stepBadge, { backgroundColor: Colors.accent }]}>
+                  <Text style={[styles.stepText, { color: "#FFFFFF" }]}>3</Text>
+                </View>
+                <View style={styles.howItWorksContent}>
+                  <Text style={styles.howItWorksTitle}>Stories: Discover games across leagues</Text>
+                  <Text style={styles.howItWorksDesc}>Stories highlights events based on league moments and momentum:</Text>
+                  <View style={styles.howItWorksBullets}>
+                    <Text style={styles.howItWorksBullet}>• Movement: regular season matchups</Text>
+                    <Text style={styles.howItWorksBullet}>• Momentum: teams gaining form</Text>
+                    <Text style={styles.howItWorksBullet}>• Playoff Push: late-season stakes</Text>
+                    <Text style={styles.howItWorksBullet}>• League Moments: finals, derbies, and marquee events</Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.divider} />
+              <View style={styles.howItWorksFooter}>
+                <Ionicons name="open-outline" size={14} color={Colors.textSecondary} />
+                <Text style={styles.howItWorksFooterText}>Tap any event to open the broadcast in your streaming provider.</Text>
+              </View>
             </View>
-          </View>
+          )}
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Schedules & Stories</Text>
-          <View style={styles.card}>
+        {/* Networks */}
+        <View style={styles.accordionSection}>
+          <Pressable
+            style={({ pressed }) => [styles.accordionHeader, pressed && { opacity: 0.7 }]}
+            onPress={() => toggleSection("networks")}
+          >
+            <Text style={styles.accordionTitle}>Networks</Text>
+            <Ionicons
+              name={openSection === "networks" ? "chevron-up" : "chevron-down"}
+              size={16}
+              color={Colors.textMuted}
+            />
+          </Pressable>
+          {openSection === "networks" && (
+            <View style={styles.accordionContent}>
+              <ProvidersSection />
+            </View>
+          )}
+        </View>
+
+        {/* Sports */}
+        <View style={styles.accordionSection}>
+          <Pressable
+            style={({ pressed }) => [styles.accordionHeader, pressed && { opacity: 0.7 }]}
+            onPress={() => toggleSection("sports")}
+          >
+            <Text style={styles.accordionTitle}>Sports</Text>
+            <Ionicons
+              name={openSection === "sports" ? "chevron-up" : "chevron-down"}
+              size={16}
+              color={Colors.textMuted}
+            />
+          </Pressable>
+          {openSection === "sports" && (
+            <View style={styles.accordionContent}>
+              <FavoritesSection />
+            </View>
+          )}
+        </View>
+
+        {/* Favorites */}
+        <View style={styles.accordionSection}>
+          <Pressable
+            style={({ pressed }) => [styles.accordionHeader, pressed && { opacity: 0.7 }]}
+            onPress={() => toggleSection("favorites")}
+          >
+            <Text style={styles.accordionTitle}>Favorites</Text>
+            <Ionicons
+              name={openSection === "favorites" ? "chevron-up" : "chevron-down"}
+              size={16}
+              color={Colors.textMuted}
+            />
+          </Pressable>
+          {openSection === "favorites" && (
+            <View style={[styles.card, styles.accordionContent]}>
+              <View style={styles.debugRow}>
+                <View style={styles.debugLeft}>
+                  <Ionicons name="star" size={18} color={Colors.favStar} />
+                  <View>
+                    <Text style={styles.refreshLabel}>Favorite Teams Only</Text>
+                  </View>
+                </View>
+                <Switch
+                  value={favoritesOnly}
+                  onValueChange={setFavoritesOnly}
+                  trackColor={{ false: Colors.border, true: Colors.favStar + "55" }}
+                  thumbColor={favoritesOnly ? Colors.favStar : Colors.textMuted}
+                  style={styles.debugSwitch}
+                  testID="favorites-only-toggle"
+                />
+              </View>
+            </View>
+          )}
+        </View>
+
+        {/* Schedules & Stories */}
+        <View style={styles.accordionSection}>
+          <Pressable
+            style={({ pressed }) => [styles.accordionHeader, pressed && { opacity: 0.7 }]}
+            onPress={() => toggleSection("schedules")}
+          >
+            <Text style={styles.accordionTitle}>Schedules & Stories</Text>
+            <Ionicons
+              name={openSection === "schedules" ? "chevron-up" : "chevron-down"}
+              size={16}
+              color={Colors.textMuted}
+            />
+          </Pressable>
+          {openSection === "schedules" && (
+          <View style={[styles.card, styles.accordionContent]}>
             <Pressable
               onPress={handleRefresh}
               disabled={refreshing}
@@ -590,29 +666,43 @@ export default function SettingsScreen() {
               </View>
             )}
           </View>
+          )}
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>About</Text>
-          <View style={styles.card}>
-            <SettingsRow
-              icon="trophy-outline"
-              label="App Name"
-              value="Pulse"
+        {/* About */}
+        <View style={styles.accordionSection}>
+          <Pressable
+            style={({ pressed }) => [styles.accordionHeader, pressed && { opacity: 0.7 }]}
+            onPress={() => toggleSection("about")}
+          >
+            <Text style={styles.accordionTitle}>About</Text>
+            <Ionicons
+              name={openSection === "about" ? "chevron-up" : "chevron-down"}
+              size={16}
+              color={Colors.textMuted}
             />
-            <View style={styles.divider} />
-            <SettingsRow
-              icon="code-slash"
-              label="Version"
-              value="1.0.0 MVP"
-            />
-            <View style={styles.divider} />
-            <SettingsRow
-              icon="layers-outline"
-              label="Platform"
-              value={Platform.OS === "android" ? "Android" : Platform.OS === "ios" ? "iOS" : "Web"}
-            />
-          </View>
+          </Pressable>
+          {openSection === "about" && (
+            <View style={[styles.card, styles.accordionContent]}>
+              <SettingsRow
+                icon="trophy-outline"
+                label="App Name"
+                value="Pulse"
+              />
+              <View style={styles.divider} />
+              <SettingsRow
+                icon="code-slash"
+                label="Version"
+                value="1.0.0 MVP"
+              />
+              <View style={styles.divider} />
+              <SettingsRow
+                icon="layers-outline"
+                label="Platform"
+                value={Platform.OS === "android" ? "Android" : Platform.OS === "ios" ? "iOS" : "Web"}
+              />
+            </View>
+          )}
         </View>
 
       </ScrollView>
@@ -679,6 +769,29 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     marginBottom: 10,
     marginLeft: 4,
+  },
+  accordionSection: {
+    marginBottom: 8,
+  },
+  accordionHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: Colors.card,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    paddingHorizontal: 16,
+    paddingVertical: 15,
+  },
+  accordionTitle: {
+    fontSize: 15,
+    fontWeight: "600" as const,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_600SemiBold",
+  },
+  accordionContent: {
+    marginTop: 4,
   },
   card: {
     backgroundColor: Colors.card,
