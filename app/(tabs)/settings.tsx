@@ -110,9 +110,7 @@ function ProvidersSection() {
 }
 
 function FavoritesSection() {
-  const { allTeams, isTeamEnabled, toggleTeam, isSportEnabled, toggleSport, isLeagueEnabled, toggleLeague, enabledCount, totalCount } = useFavorites();
-  const [expandedSports, setExpandedSports] = useState<Record<string, boolean>>({});
-  const [expandedLeagues, setExpandedLeagues] = useState<Record<string, boolean>>({});
+  const { isSportEnabled, toggleSport } = useFavorites();
   const sportOrder = ["hockey", "rugby", "cricket", "soccer", "basketball", "baseball", "tennis", "racing", "golf", "athletics"];
   const sportLabels: Record<string, string> = {
     hockey: "Hockey",
@@ -139,60 +137,20 @@ function FavoritesSection() {
     athletics: "walk-outline",
   };
 
-  const leagueOrder: Record<string, string[]> = {
-    rugby: ["English Premiership", "Top 14", "URC", "Super Rugby", "Champions Cup", "Six Nations", "Japan League One", "MLR", "HSBC SVNS"],
-    soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "MLS", "NWSL", "USL", "Champions League", "Europa League", "FA Cup", "FIFA World Cup", "International Friendly"],
-    cricket: ["IPL", "International", "SA20", "BBL", "The Hundred", "CPL", "MLC", "Super Smash"],
-    basketball: ["NBA", "NCAAB"],
-    baseball: ["MLB"],
-    tennis: ["Grand Slams", "ATP Masters 1000"],
-    golf: ["The Majors"],
-  };
-
-  const sortLeagues = (sport: string, leagues: string[]) => {
-    const order = leagueOrder[sport];
-    if (!order) return leagues;
-    return [...leagues].sort((a, b) => {
-      const ai = order.indexOf(a);
-      const bi = order.indexOf(b);
-      return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
-    });
-  };
-
-  const handleToggle = (sport: string, league: string, team: string) => {
-    if (Platform.OS !== "web") {
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    }
-    toggleTeam(sport, league, team);
-  };
-
   let isFirstSport = true;
 
   return (
     <View style={styles.card}>
       {sportOrder.map((sport) => {
-        const sportFavs = allTeams[sport];
-        const hasTeams = sportFavs && Object.keys(sportFavs).length > 0;
         const sportEnabled = isSportEnabled(sport);
         const sportColor = getSportColor(sport);
-        const leagues = hasTeams ? sortLeagues(sport, Object.keys(sportFavs!)) : [];
         const showDivider = !isFirstSport;
         isFirstSport = false;
-
-        const isExpanded = !!expandedSports[sport];
 
         return (
           <React.Fragment key={sport}>
             {showDivider && <View style={styles.sportDivider} />}
-            <Pressable
-              onPress={() => {
-                if (Platform.OS !== "web") {
-                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                }
-                setExpandedSports((prev) => ({ ...prev, [sport]: !prev[sport] }));
-              }}
-              style={styles.sportHeader}
-            >
+            <View style={styles.sportHeader}>
               <View style={[styles.sportIconBg, { backgroundColor: sportColor + "33" }]}>
                 <Ionicons name={sportIcons[sport]} size={14} color={sportEnabled ? sportColor : Colors.textMuted} />
               </View>
@@ -200,84 +158,73 @@ function FavoritesSection() {
                 {sportLabels[sport]}
               </Text>
               <View style={{ flex: 1 }} />
-              <Ionicons
-                name={isExpanded ? "chevron-up" : "chevron-down"}
-                size={16}
-                color={Colors.textMuted}
-                style={{ marginRight: 10 }}
-              />
               <Switch
                 value={sportEnabled}
-                onValueChange={() => toggleSport(sport)}
+                onValueChange={() => {
+                  if (Platform.OS !== "web") {
+                    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                  }
+                  toggleSport(sport);
+                }}
                 trackColor={{ false: Colors.border, true: sportColor + "55" }}
                 thumbColor={sportEnabled ? sportColor : Colors.textMuted}
                 style={styles.teamSwitch}
               />
-            </Pressable>
-            {sportEnabled && isExpanded && leagues.map((league) => {
-              const teams = sportFavs![league];
-              if (!teams || teams.length === 0) return null;
-              const lKey = `${sport}::${league}`;
-              const leagueExpanded = !!expandedLeagues[lKey];
-              const leagueOn = isLeagueEnabled(sport, league);
-              return (
-                <React.Fragment key={league}>
-                  <Pressable
-                    onPress={() => {
-                      if (Platform.OS !== "web") {
-                        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                      }
-                      setExpandedLeagues((prev) => ({ ...prev, [lKey]: !prev[lKey] }));
-                    }}
-                    style={styles.leagueLabelRow}
-                  >
-                    <Text style={[styles.leagueLabel, !leagueOn && styles.teamNameDisabled]}>{league}</Text>
-                    <View style={{ flex: 1 }} />
-                    <Ionicons
-                      name={leagueExpanded ? "chevron-up" : "chevron-down"}
-                      size={14}
-                      color={Colors.textMuted}
-                      style={{ marginRight: 8 }}
-                    />
-                    <Switch
-                      value={leagueOn}
-                      onValueChange={() => {
-                        toggleLeague(sport, league);
-                      }}
-                      trackColor={{ false: Colors.border, true: Colors.favStar + "55" }}
-                      thumbColor={leagueOn ? Colors.favStar : Colors.textMuted}
-                      style={styles.leagueSwitch}
-                    />
-                  </Pressable>
-                  {leagueExpanded && teams.map((team) => {
-                    const enabled = isTeamEnabled(sport, league, team);
-                    return (
-                      <View key={team} style={styles.teamToggleRow}>
-                        <Text
-                          style={[
-                            styles.teamName,
-                            !enabled && styles.teamNameDisabled,
-                          ]}
-                          numberOfLines={1}
-                        >
-                          {team}
-                        </Text>
-                        <Switch
-                          value={enabled}
-                          onValueChange={() => handleToggle(sport, league, team)}
-                          trackColor={{ false: Colors.border, true: Colors.favStar + "55" }}
-                          thumbColor={enabled ? Colors.favStar : Colors.textMuted}
-                          style={styles.teamSwitch}
-                        />
-                      </View>
-                    );
-                  })}
-                </React.Fragment>
-              );
-            })}
+            </View>
           </React.Fragment>
         );
       })}
+    </View>
+  );
+}
+
+function FavoriteTeamChips() {
+  const { allTeams, isTeamEnabled, toggleTeam } = useFavorites();
+
+  const chips: { team: string; sport: string; league: string }[] = [];
+  for (const sport of Object.keys(allTeams)) {
+    const sportFavs = allTeams[sport];
+    if (!sportFavs) continue;
+    for (const league of Object.keys(sportFavs)) {
+      const teams = sportFavs[league];
+      if (!teams) continue;
+      for (const team of teams) {
+        chips.push({ team, sport, league });
+      }
+    }
+  }
+
+  if (chips.length === 0) return null;
+
+  return (
+    <View style={styles.chipsContainer}>
+      <View style={styles.chipsWrap}>
+        {chips.map(({ team, sport, league }) => {
+          const enabled = isTeamEnabled(sport, league, team);
+          const sportColor = getSportColor(sport);
+          return (
+            <Pressable
+              key={`${sport}::${league}::${team}`}
+              onPress={() => {
+                if (Platform.OS !== "web") {
+                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                }
+                toggleTeam(sport, league, team);
+              }}
+              style={[
+                styles.chip,
+                enabled
+                  ? { backgroundColor: sportColor + "22", borderColor: sportColor + "88" }
+                  : { backgroundColor: Colors.card, borderColor: Colors.border },
+              ]}
+            >
+              <Text style={[styles.chipText, { color: enabled ? sportColor : Colors.textMuted }]}>
+                {team}
+              </Text>
+            </Pressable>
+          );
+        })}
+      </View>
     </View>
   );
 }
@@ -439,6 +386,8 @@ export default function SettingsScreen() {
           </Pressable>
           {openSection === "favorites" && (
             <View style={[styles.card, styles.accordionContent]}>
+              <FavoriteTeamChips />
+              <View style={styles.chipsDivider} />
               <View style={styles.debugRow}>
                 <View style={styles.debugLeft}>
                   <Ionicons name="star" size={18} color={Colors.favStar} />
@@ -895,6 +844,33 @@ const styles = StyleSheet.create({
   },
   teamSwitch: {
     transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }],
+  },
+  chipsContainer: {
+    paddingHorizontal: 14,
+    paddingTop: 12,
+    paddingBottom: 4,
+  },
+  chipsWrap: {
+    flexDirection: "row" as const,
+    flexWrap: "wrap" as const,
+    gap: 8,
+  },
+  chip: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
+    borderWidth: 1,
+  },
+  chipText: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
+    letterSpacing: 0.1,
+  },
+  chipsDivider: {
+    height: 1,
+    backgroundColor: Colors.border,
+    marginTop: 12,
+    marginBottom: 0,
   },
   favCountRow: {
     flexDirection: "row",
