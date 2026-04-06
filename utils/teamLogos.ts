@@ -612,7 +612,7 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
       "Anaheim Angels": "3", "Athletics": "11",
     };
     const id = MLB_IDS[teamName];
-    if (id) return `https://a.espncdn.com/i/teamlogos/mlb/500-dark/${id}.png`;
+    if (id) return `https://a.espncdn.com/i/teamlogos/mlb/500/${id}.png`;
     return null;
   }
 
