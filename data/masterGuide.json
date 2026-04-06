@@ -501,18 +501,7 @@
       ]
     },
     "cricket": {
-      "IPL": [
-        "Mumbai Indians",
-        "Chennai Super Kings",
-        "Royal Challengers Bengaluru",
-        "Delhi Capitals",
-        "Kolkata Knight Riders",
-        "Sunrisers Hyderabad",
-        "Punjab Kings",
-        "Rajasthan Royals",
-        "Gujarat Titans",
-        "Lucknow Super Giants"
-      ],
+      "IPL": [],
       "International": [
         "South Africa"
       ],
