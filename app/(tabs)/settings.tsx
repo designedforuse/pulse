@@ -110,31 +110,31 @@ function ProvidersSection() {
 }
 
 function FavoritesSection() {
-  const { isSportEnabled, toggleSport } = useFavorites();
+  const { isSportEnabled, toggleSport, isLeagueEnabled, toggleLeague } = useFavorites();
+  const [expandedSports, setExpandedSports] = useState<Record<string, boolean>>({});
+
   const sportOrder = ["hockey", "rugby", "cricket", "soccer", "basketball", "baseball", "tennis", "racing", "golf", "athletics"];
   const sportLabels: Record<string, string> = {
-    hockey: "Hockey",
-    rugby: "Rugby",
-    cricket: "Cricket",
-    soccer: "Soccer",
-    basketball: "Basketball",
-    baseball: "Baseball",
-    tennis: "Tennis",
-    racing: "Racing",
-    golf: "Golf",
-    athletics: "Athletics",
+    hockey: "Hockey", rugby: "Rugby", cricket: "Cricket", soccer: "Soccer",
+    basketball: "Basketball", baseball: "Baseball", tennis: "Tennis",
+    racing: "Racing", golf: "Golf", athletics: "Athletics",
   };
   const sportIcons: Record<string, keyof typeof Ionicons.glyphMap> = {
-    hockey: "snow",
-    rugby: "american-football",
-    cricket: "baseball",
-    soccer: "football",
-    basketball: "basketball",
-    baseball: "baseball-outline",
-    tennis: "tennisball",
-    racing: "speedometer",
-    golf: "golf",
-    athletics: "walk-outline",
+    hockey: "snow", rugby: "american-football", cricket: "baseball", soccer: "football",
+    basketball: "basketball", baseball: "baseball-outline", tennis: "tennisball",
+    racing: "speedometer", golf: "golf", athletics: "walk-outline",
+  };
+  const sportLeagues: Record<string, string[]> = {
+    hockey: ["NHL", "AHL", "ECHL", "NCAA Hockey"],
+    rugby: ["English Premiership", "Top 14", "URC", "Super Rugby", "Champions Cup", "Six Nations", "Japan League One", "MLR", "HSBC SVNS"],
+    cricket: ["IPL", "International", "SA20", "BBL", "The Hundred", "CPL", "MLC"],
+    soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "MLS", "NWSL", "USL", "Champions League", "Europa League", "FA Cup", "FIFA World Cup", "International Friendly"],
+    basketball: ["NBA", "NCAAB"],
+    baseball: ["MLB"],
+    tennis: ["Grand Slams", "ATP Masters 1000"],
+    racing: ["F1"],
+    golf: ["The Majors"],
+    athletics: ["World Marathon Majors"],
   };
 
   let isFirstSport = true;
@@ -144,13 +144,21 @@ function FavoritesSection() {
       {sportOrder.map((sport) => {
         const sportEnabled = isSportEnabled(sport);
         const sportColor = getSportColor(sport);
+        const leagues = sportLeagues[sport] ?? [];
+        const isExpanded = !!expandedSports[sport];
         const showDivider = !isFirstSport;
         isFirstSport = false;
 
         return (
           <React.Fragment key={sport}>
             {showDivider && <View style={styles.sportDivider} />}
-            <View style={styles.sportHeader}>
+            <Pressable
+              onPress={() => {
+                if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                setExpandedSports((prev) => ({ ...prev, [sport]: !prev[sport] }));
+              }}
+              style={styles.sportHeader}
+            >
               <View style={[styles.sportIconBg, { backgroundColor: sportColor + "33" }]}>
                 <Ionicons name={sportIcons[sport]} size={14} color={sportEnabled ? sportColor : Colors.textMuted} />
               </View>
@@ -158,19 +166,44 @@ function FavoritesSection() {
                 {sportLabels[sport]}
               </Text>
               <View style={{ flex: 1 }} />
+              <Ionicons
+                name={isExpanded ? "chevron-up" : "chevron-down"}
+                size={14}
+                color={Colors.textMuted}
+                style={{ marginRight: 8 }}
+              />
               <Switch
                 value={sportEnabled}
                 onValueChange={() => {
-                  if (Platform.OS !== "web") {
-                    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                  }
+                  if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                   toggleSport(sport);
                 }}
                 trackColor={{ false: Colors.border, true: sportColor + "55" }}
                 thumbColor={sportEnabled ? sportColor : Colors.textMuted}
                 style={styles.teamSwitch}
               />
-            </View>
+            </Pressable>
+            {isExpanded && leagues.map((league, i) => {
+              const leagueOn = isLeagueEnabled(sport, league);
+              return (
+                <View key={league} style={styles.leagueToggleRow}>
+                  {i > 0 && <View style={styles.leagueRowDivider} />}
+                  <Text style={[styles.leagueToggleLabel, !leagueOn && styles.teamNameDisabled]}>
+                    {league}
+                  </Text>
+                  <Switch
+                    value={leagueOn}
+                    onValueChange={() => {
+                      if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                      toggleLeague(sport, league);
+                    }}
+                    trackColor={{ false: Colors.border, true: sportColor + "55" }}
+                    thumbColor={leagueOn ? sportColor : Colors.textMuted}
+                    style={styles.leagueSwitch}
+                  />
+                </View>
+              );
+            })}
           </React.Fragment>
         );
       })}
@@ -824,6 +857,27 @@ const styles = StyleSheet.create({
   },
   leagueSwitch: {
     transform: [{ scaleX: 0.7 }, { scaleY: 0.7 }],
+  },
+  leagueToggleRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    justifyContent: "space-between" as const,
+    paddingLeft: 48,
+    paddingRight: 14,
+    paddingVertical: 2,
+  },
+  leagueToggleLabel: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    fontFamily: "Inter_500Medium",
+    flex: 1,
+  },
+  leagueRowDivider: {
+    height: 1,
+    backgroundColor: Colors.border,
+    marginLeft: 48,
+    marginRight: 14,
+    opacity: 0.5,
   },
   teamToggleRow: {
     flexDirection: "row",
