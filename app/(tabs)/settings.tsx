@@ -185,10 +185,13 @@ function FavoriteTeamChips() {
   for (const sport of Object.keys(allTeams)) {
     const sportFavs = allTeams[sport];
     if (!sportFavs) continue;
+    const seen = new Set<string>();
     for (const league of Object.keys(sportFavs)) {
       const teams = sportFavs[league];
       if (!teams) continue;
       for (const team of teams) {
+        if (seen.has(team)) continue;
+        seen.add(team);
         chips.push({ team, sport, league });
       }
     }
