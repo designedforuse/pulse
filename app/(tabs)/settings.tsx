@@ -113,7 +113,7 @@ function FavoritesSection() {
   const { isSportEnabled, toggleSport, isLeagueEnabled, toggleLeague } = useFavorites();
   const [expandedSports, setExpandedSports] = useState<Record<string, boolean>>({});
 
-  const sportOrder = ["baseball", "basketball", "hockey", "soccer", "tennis", "racing", "golf", "athletics", "rugby", "cricket"];
+  const sportOrder = ["baseball", "basketball", "hockey", "soccer", "golf", "tennis", "racing", "athletics", "rugby", "cricket"];
   const sportLabels: Record<string, string> = {
     hockey: "Hockey", rugby: "Rugby", cricket: "Cricket", soccer: "Soccer",
     basketball: "Basketball", baseball: "Baseball", tennis: "Tennis",
