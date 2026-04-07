@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-07T04:36:44.710Z",
+  "lastUpdated": "2026-04-07T04:53:26.487Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -194,22 +194,22 @@
   "mlbPruned": 233,
   "mlbSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-04-07T04:36:44.710Z",
+    "lastRefreshAt": "2026-04-07T04:53:26.487Z",
     "sources": {
       "nhl": {
         "count": 84,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 171,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 11,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
@@ -221,7 +221,7 @@
       },
       "rugby": {
         "count": 109,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 24,
@@ -241,87 +241,87 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 32,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 71,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 40,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 40,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 36,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 35,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 29,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 51,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-25T23:00:00.000Z"
       },
       "championsCup": {
         "count": 11,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 13,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 8,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 8,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 6,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-04-04T11:45:00.000Z"
       },
       "tennis": {
         "count": 0,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Miami Open": 14,
@@ -332,7 +332,7 @@
       },
       "f1": {
         "count": 27,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Japanese Grand Prix": 5,
@@ -345,7 +345,7 @@
       },
       "golf": {
         "count": 8,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "The Masters": 4,
@@ -354,7 +354,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Boston Marathon": 1,
@@ -363,7 +363,7 @@
       },
       "nba": {
         "count": 158,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "ESPN API"
       },
       "ncaab": {
@@ -373,7 +373,7 @@
       },
       "mlb": {
         "count": 233,
-        "lastFetchAt": "2026-04-07T04:36:44.710Z",
+        "lastFetchAt": "2026-04-07T04:53:26.487Z",
         "sourceName": "ESPN API"
       }
     }
@@ -8017,7 +8017,7 @@
       "startTimeLocal": "2026-04-07T02:00:00.000Z",
       "endTimeLocal": "2026-04-07T04:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": true,
+      "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
         "TVAS",
@@ -18569,6 +18569,24 @@
       "competitionName": "Miami Grand Prix"
     },
     {
+      "id": "cycling-grand-tour-giro-d-italia-2026",
+      "sport": "cycling",
+      "league": "Grand Tour",
+      "awayTeam": "Nessebar, Bulgaria → Rome, Italy",
+      "homeTeam": "Giro d'Italia",
+      "startTimeLocal": "2026-05-08T12:00:00.000Z",
+      "endTimeLocal": "2026-05-31T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "cycling-hardcoded",
+      "leagueKey": "grand-tour",
+      "providerReason": "tnt-broadcast",
+      "eventType": "session",
+      "sessionTitle": "Giro d'Italia 2026",
+      "competitionType": "international",
+      "tournamentName": "Giro d'Italia"
+    },
+    {
       "id": "golf-pga-championship-2026-05-14",
       "sport": "golf",
       "league": "The Majors",
@@ -20131,6 +20149,24 @@
       "broadcastNetworks": "FOX"
     },
     {
+      "id": "cycling-grand-tour-tour-de-france-2026",
+      "sport": "cycling",
+      "league": "Grand Tour",
+      "awayTeam": "Barcelona, Spain → Paris, France",
+      "homeTeam": "Tour de France",
+      "startTimeLocal": "2026-07-04T12:00:00.000Z",
+      "endTimeLocal": "2026-07-26T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "cycling-hardcoded",
+      "leagueKey": "grand-tour",
+      "providerReason": "nbc-broadcast",
+      "eventType": "session",
+      "sessionTitle": "Tour de France 2026",
+      "competitionType": "international",
+      "tournamentName": "Tour de France"
+    },
+    {
       "id": "soccer-fifa-world-cup-20260704-1700-round-of-32-3-winner-at-round-of-32-1-winner",
       "sport": "soccer",
       "league": "FIFA World Cup",
@@ -20369,6 +20405,24 @@
       "leagueKey": "fifa-world-cup",
       "providerReason": "fifa-world-cup-fox",
       "broadcastNetworks": "FOX"
+    },
+    {
+      "id": "cycling-grand-tour-vuelta-a-espa-a-2026",
+      "sport": "cycling",
+      "league": "Grand Tour",
+      "awayTeam": "Monaco → Madrid, Spain",
+      "homeTeam": "Vuelta a España",
+      "startTimeLocal": "2026-08-22T12:00:00.000Z",
+      "endTimeLocal": "2026-09-13T22:00:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "cycling-hardcoded",
+      "leagueKey": "grand-tour",
+      "providerReason": "nbc-broadcast",
+      "eventType": "session",
+      "sessionTitle": "Vuelta a España 2026",
+      "competitionType": "international",
+      "tournamentName": "Vuelta a España"
     }
   ]
 }

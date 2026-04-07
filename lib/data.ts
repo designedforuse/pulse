@@ -179,6 +179,7 @@ export function getSportColor(sport: string): string {
     golf: "#22C55E",
     athletics: "#FF6B00",
     "horse-racing": "#C9882F",
+    cycling: "#F5C518",
   };
   return colors[sport] || "#90A4AE";
 }
@@ -353,6 +354,13 @@ function resolveHorseRacingBroadcastId(event: SportEvent): [string, string] {
   return ["", ""];
 }
 
+function resolveCyclingBroadcastId(event: SportEvent): [string, string] {
+  const reason = event.providerReason || "";
+  if (reason === "tnt-broadcast") return ["tnt", "youtubetv"];
+  if (reason === "nbc-broadcast") return ["nbcsn", "youtubetv"];
+  return ["", ""];
+}
+
 const FLORUGBY_LEAGUES = new Set(["URC", "Top 14", "English Premiership", "Champions Cup", "Japan League One"]);
 
 function resolveRugbyBroadcastId(event: SportEvent): [string, string] {
@@ -501,6 +509,20 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
   // Horse Racing: display broadcast network (NBC/FOX), launch via YouTube TV
   if (event.sport === "horse-racing") {
     const [broadcastId, launchProviderId] = resolveHorseRacingBroadcastId(event);
+    if (broadcastId) {
+      const launchProvider = getProviderById(launchProviderId);
+      return {
+        brandId: broadcastId,
+        brandName: PROVIDER_DISPLAY_NAMES[broadcastId] || broadcastId,
+        launchProvider,
+        launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
+      };
+    }
+  }
+
+  // Cycling: display broadcast network (TNT Sports/NBC Sports), launch via YouTube TV
+  if (event.sport === "cycling") {
+    const [broadcastId, launchProviderId] = resolveCyclingBroadcastId(event);
     if (broadcastId) {
       const launchProvider = getProviderById(launchProviderId);
       return {

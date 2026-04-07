@@ -778,6 +778,7 @@ export default function UnifiedEventCard({
   const isGolf = event.sport === "golf";
   const isAthletics = event.sport === "athletics";
   const isHorseRacing = event.sport === "horse-racing";
+  const isCycling = event.sport === "cycling";
   const gpFlag = isRacing ? getGrandPrixFlag(event.competitionName || event.homeTeam) : null;
   const golfTournament = isGolf ? (event.tournamentName || event.homeTeam) : null;
   const golfRound = isGolf && event.sessionTitle
@@ -785,6 +786,7 @@ export default function UnifiedEventCard({
     : null;
   const athleticsTournament = isAthletics ? (event.tournamentName || event.homeTeam) : null;
   const horseRacingName = isHorseRacing ? (event.tournamentName || event.homeTeam) : null;
+  const cyclingTourName = isCycling ? (event.tournamentName || event.homeTeam) : null;
 
 
   const awayRank = isTennis ? event.tennisPlayer1Rank : undefined;
@@ -797,7 +799,7 @@ export default function UnifiedEventCard({
 
   const logoSize = featured ? 22 : 20;
   const isUpcoming = !isLive && !isFinal;
-  const showEspnStyle = espnLayout && isUpcoming && showTeamLayout && !isRacing && !isGolf && !isAthletics && !isHorseRacing;
+  const showEspnStyle = espnLayout && isUpcoming && showTeamLayout && !isRacing && !isGolf && !isAthletics && !isHorseRacing && !isCycling;
   const showRacingEspnStyle = espnLayout && isUpcoming && isRacing;
   const providerBrandId = resolveProviderDisplay(event).brandId;
 
@@ -919,6 +921,18 @@ export default function UnifiedEventCard({
                   numberOfLines={1}
                 >
                   {horseRacingName}
+                </Text>
+              </View>
+            </View>
+          ) : isCycling ? (
+            <View style={uStyles.racingLayout}>
+              <View style={uStyles.racingCircuitRow}>
+                <Text style={{ fontSize: featured ? 18 : 16 }}>🚴</Text>
+                <Text
+                  style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
+                  numberOfLines={1}
+                >
+                  {cyclingTourName}
                 </Text>
               </View>
             </View>

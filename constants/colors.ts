@@ -23,6 +23,7 @@ const Colors = {
   golf: "#22C55E",
   athletics: "#FF6B00",
   "horse-racing": "#C9882F",
+  cycling: "#F5C518",
   white: "#FFFFFF",
   overlay: "rgba(0, 0, 0, 0.6)",
   favStar: "#FFFFFF",
