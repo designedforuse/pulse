@@ -393,10 +393,7 @@ export default function SettingsScreen() {
               <View style={styles.chipsDivider} />
               <View style={styles.debugRow}>
                 <View style={styles.debugLeft}>
-                  <Ionicons name="star" size={18} color={Colors.favStar} />
-                  <View>
-                    <Text style={styles.refreshLabel}>Favorite Teams Only</Text>
-                  </View>
+                  <Text style={styles.refreshLabel}>Only show favorites in schedules</Text>
                 </View>
                 <Switch
                   value={favoritesOnly}
