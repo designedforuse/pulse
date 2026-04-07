@@ -946,6 +946,157 @@ async function fetchNcaaHockeyScores(
   return scores;
 }
 
+// ─── IPL Official Live Scores ────────────────────────────────────────────────
+// Uses the official iplt20.com data feed — no rate limits, 60s TTL
+
+interface IplCompetition {
+  CompetitionID: number;
+  CompetitionName: string;
+  feedsource: string;
+  live: number;
+  fixtures: number;
+  SeasonID: number;
+}
+
+let iplCompCache: { id: number; feedsource: string; ts: number } | null = null;
+const IPL_COMP_CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
+
+let iplScoreCache: { data: Record<string, ScoreData>; ts: number } = { data: {}, ts: 0 };
+const IPL_SCORE_CACHE_TTL = 60 * 1000; // 60 seconds
+
+async function getIplCompetition(): Promise<{ id: number; feedsource: string } | null> {
+  const now = Date.now();
+  if (iplCompCache && now - iplCompCache.ts < IPL_COMP_CACHE_TTL) {
+    return { id: iplCompCache.id, feedsource: iplCompCache.feedsource };
+  }
+  try {
+    const res = await fetch("https://scores.iplt20.com/ipl/mc/competition.js", {
+      headers: { "User-Agent": "Mozilla/5.0" },
+    });
+    if (!res.ok) return null;
+    const text = await res.text();
+    const match = text.match(/oncomptetion\((.+)\)/s);
+    if (!match) return null;
+    const json = JSON.parse(match[1]) as { competition?: IplCompetition[] };
+    const comps = json.competition || [];
+    // Prefer live=1, fall back to highest SeasonID
+    const live = comps.find((c) => c.live === 1 && c.CompetitionName.toUpperCase().includes("IPL"));
+    const latest = comps.sort((a, b) => b.SeasonID - a.SeasonID)[0];
+    const chosen = live || latest;
+    if (!chosen) return null;
+    iplCompCache = { id: chosen.CompetitionID, feedsource: chosen.feedsource, ts: now };
+    console.log(`[IPL] Competition: ${chosen.CompetitionName} (ID ${chosen.CompetitionID})`);
+    return { id: chosen.CompetitionID, feedsource: chosen.feedsource };
+  } catch (err) {
+    console.error("[IPL] Failed to fetch competition list:", err);
+    return null;
+  }
+}
+
+async function fetchIplLiveScores(
+  events: { id: string; homeTeam: string; awayTeam: string }[]
+): Promise<Record<string, ScoreData>> {
+  const scores: Record<string, ScoreData> = {};
+  if (events.length === 0) return scores;
+
+  const cacheAge = Date.now() - iplScoreCache.ts;
+  if (cacheAge < IPL_SCORE_CACHE_TTL) {
+    for (const ev of events) {
+      if (iplScoreCache.data[ev.id]) scores[ev.id] = iplScoreCache.data[ev.id];
+    }
+    return scores;
+  }
+
+  const comp = await getIplCompetition();
+  if (!comp) return { ...iplScoreCache.data };
+
+  try {
+    const url = `${comp.feedsource}/${comp.id}-matchschedule.js`;
+    const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" } });
+    if (!res.ok) return { ...iplScoreCache.data };
+
+    const text = await res.text();
+    const m = text.match(/MatchSchedule\((.+)\)/s);
+    if (!m) return { ...iplScoreCache.data };
+
+    const json = JSON.parse(m[1]) as {
+      Matchsummary?: Array<{
+        MatchID: number;
+        MatchStatus: string;
+        HomeTeamName: string;
+        AwayTeamName: string;
+        FirstBattingTeamName: string;
+        FirstBattingSummary: string;
+        SecondBattingTeamName: string;
+        SecondBattingSummary: string;
+        Commentss: string;
+        MatchProgress?: string;
+        MatchDate: string;
+      }>;
+    };
+
+    const allMatches = json.Matchsummary || [];
+    const relevantMatches = allMatches.filter(
+      (m) => m.MatchStatus === "Live" || m.MatchStatus === "Post"
+    );
+
+    console.log(
+      `[IPL] Schedule feed: ${allMatches.length} total, ${relevantMatches.filter((m) => m.MatchStatus === "Live").length} live`
+    );
+
+    for (const ourEvent of events) {
+      const homeLower = ourEvent.homeTeam.toLowerCase();
+      const awayLower = ourEvent.awayTeam.toLowerCase();
+
+      for (const match of relevantMatches) {
+        const mHome = (match.HomeTeamName || "").toLowerCase();
+        const mAway = (match.AwayTeamName || "").toLowerCase();
+
+        const matchesHome = mHome === homeLower || homeLower.includes(mHome) || mHome.includes(homeLower);
+        const matchesAway = mAway === awayLower || awayLower.includes(mAway) || mAway.includes(awayLower);
+        if (!matchesHome || !matchesAway) continue;
+
+        const firstIsHome = (match.FirstBattingTeamName || "").toLowerCase() === mHome;
+        const homeScore = firstIsHome ? match.FirstBattingSummary : match.SecondBattingSummary;
+        const awayScore = firstIsHome ? match.SecondBattingSummary : match.FirstBattingSummary;
+
+        const hasSecondInnings = (match.SecondBattingSummary || "").trim().length > 0;
+        const inningsLabel = hasSecondInnings ? "2nd Inns" : "1st Inns";
+
+        if (match.MatchStatus === "Live") {
+          scores[ourEvent.id] = {
+            awayScore: 0,
+            homeScore: 0,
+            period: inningsLabel,
+            status: "live",
+            cricketHome: homeScore || undefined,
+            cricketAway: awayScore || undefined,
+          };
+        } else {
+          // Post — show final result
+          const resultText = (match.Commentss || "").trim() || "Final";
+          scores[ourEvent.id] = {
+            awayScore: 0,
+            homeScore: 0,
+            period: resultText,
+            status: "final",
+            cricketHome: homeScore || undefined,
+            cricketAway: awayScore || undefined,
+          };
+        }
+        break;
+      }
+    }
+  } catch (err) {
+    console.error("[IPL] Live score fetch error:", err);
+    return { ...iplScoreCache.data };
+  }
+
+  iplScoreCache = { data: { ...scores }, ts: Date.now() };
+  return scores;
+}
+
+// ─── CricAPI (non-IPL cricket) ───────────────────────────────────────────────
 let cricketScoreCache: { data: Record<string, ScoreData>; ts: number } = { data: {}, ts: 0 };
 const CRICKET_CACHE_TTL = 20 * 60 * 1000; // 20 min — keeps daily hits under 100 on free tier
 
@@ -1606,9 +1757,13 @@ async function fetchMlbScores(eventIds: string[]): Promise<Record<string, ScoreD
 export async function fetchAllLiveScores(): Promise<ScoresResponse> {
   const { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba, ncaabBasketball, golf, mlb } = loadLiveEventIds();
 
+  // Split cricket into IPL (official IPL feed) vs other (CricAPI)
+  const iplEvents = cricket.filter((e) => e.id.startsWith("cricket-ipl-"));
+  const nonIplCricket = cricket.filter((e) => !e.id.startsWith("cricket-ipl-"));
+
   const japanLeagueOne = rugby.get("Japan League One") || [];
   const superRugbyEvents = rugby.get("Super Rugby") || [];
-  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, superRugbyScores, jlOneScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores] = await Promise.all([
+  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, superRugbyScores, jlOneScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchAhlScores(ahl),
     fetchEchlScores(echl),
@@ -1617,7 +1772,8 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
     fetchRugbyScores(rugby),
     fetchSuperRugbyScores(superRugbyEvents),
     fetchJapanLeagueOneScores(japanLeagueOne),
-    fetchCricketScores(cricket),
+    fetchIplLiveScores(iplEvents),
+    fetchCricketScores(nonIplCricket),
     fetchTennisScores(tennis),
     fetchF1Scores(f1),
     fetchNbaScores(nba),
@@ -1627,7 +1783,7 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
   ]);
 
   return {
-    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...superRugbyScores, ...jlOneScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores, ...golfScores, ...mlbScores },
+    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...superRugbyScores, ...jlOneScores, ...iplScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores, ...golfScores, ...mlbScores },
     fetchedAt: new Date().toISOString(),
   };
 }
