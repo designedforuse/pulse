@@ -63,14 +63,14 @@ iOS uses native liquid glass tab bar. Android uses a standard bottom tab bar.
 - Appears when the next game starts within 60 minutes
 - Shows which game is starting soon
 
-#### 4-Game Chaos View
-The signature feature. A 2×2 multiview grid that auto-selects the best 4 games to watch simultaneously.
+#### 3-Game Chaos View
+The signature feature. A 1×3 multiview grid that auto-selects the best 3 games to watch simultaneously.
 
 **Slot logic:**
-- Slots 1–3: Anchor teams (favorited), prioritized by live status and closeness of score
-- Slot 4 (Chaos Slot): Dynamically promoted based on real-time excitement signals
+- Slots 1–2: Anchor teams (favorited), prioritized by live status and closeness of score
+- Slot 3 (Chaos Slot): Dynamically promoted based on real-time excitement signals
 
-**Chaos signals (Slot 4 eligibility):**
+**Chaos signals (Slot 3 eligibility):**
 - Goals scored in last 5 minutes
 - Overtime / extra time
 - F1 Safety Car, Red Flag, final laps
