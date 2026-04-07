@@ -136,7 +136,7 @@ function FavoritesSection() {
     golf: ["The Majors"],
     "horse-racing": ["Triple Crown"],
     cycling: ["Grand Tour"],
-    athletics: ["World Marathon Majors"],
+    athletics: ["World Marathon Majors", "Diamond League"],
   };
 
   let isFirstSport = true;

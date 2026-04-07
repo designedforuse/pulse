@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-07T04:53:26.487Z",
+  "lastUpdated": "2026-04-07T05:08:19.295Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -194,22 +194,22 @@
   "mlbPruned": 233,
   "mlbSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-04-07T04:53:26.487Z",
+    "lastRefreshAt": "2026-04-07T05:08:19.295Z",
     "sources": {
       "nhl": {
         "count": 84,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 171,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 11,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
@@ -221,7 +221,7 @@
       },
       "rugby": {
         "count": 109,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 24,
@@ -241,87 +241,87 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 32,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 71,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 40,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 40,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 36,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 35,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 29,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 51,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-25T23:00:00.000Z"
       },
       "championsCup": {
         "count": 11,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 13,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 8,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 8,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 6,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-04-04T11:45:00.000Z"
       },
       "tennis": {
         "count": 0,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Miami Open": 14,
@@ -332,7 +332,7 @@
       },
       "f1": {
         "count": 27,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Japanese Grand Prix": 5,
@@ -345,7 +345,7 @@
       },
       "golf": {
         "count": 8,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "The Masters": 4,
@@ -354,7 +354,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Boston Marathon": 1,
@@ -363,7 +363,7 @@
       },
       "nba": {
         "count": 158,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "ESPN API"
       },
       "ncaab": {
@@ -373,7 +373,7 @@
       },
       "mlb": {
         "count": 233,
-        "lastFetchAt": "2026-04-07T04:53:26.487Z",
+        "lastFetchAt": "2026-04-07T05:08:19.295Z",
         "sourceName": "ESPN API"
       }
     }
@@ -18587,6 +18587,23 @@
       "tournamentName": "Giro d'Italia"
     },
     {
+      "id": "athletics-diamond-league-doha-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League — Doha",
+      "startTimeLocal": "2026-05-08T16:00:00.000Z",
+      "endTimeLocal": "2026-05-08T19:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League — Doha",
+      "competitionType": "international",
+      "tournamentName": "Diamond League — Doha"
+    },
+    {
       "id": "golf-pga-championship-2026-05-14",
       "sport": "golf",
       "league": "The Majors",
@@ -18621,6 +18638,23 @@
       "sessionTitle": "PGA — Round 2",
       "competitionType": "international",
       "tournamentName": "PGA Championship"
+    },
+    {
+      "id": "athletics-diamond-league-shanghai-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League — Shanghai",
+      "startTimeLocal": "2026-05-16T12:00:00.000Z",
+      "endTimeLocal": "2026-05-16T15:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League — Shanghai",
+      "competitionType": "international",
+      "tournamentName": "Diamond League — Shanghai"
     },
     {
       "id": "golf-pga-championship-2026-05-16",
@@ -18711,6 +18745,23 @@
       "competitionName": "Canadian Grand Prix"
     },
     {
+      "id": "athletics-diamond-league-xiamen-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League — Xiamen",
+      "startTimeLocal": "2026-05-23T12:00:00.000Z",
+      "endTimeLocal": "2026-05-23T15:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League — Xiamen",
+      "competitionType": "international",
+      "tournamentName": "Diamond League — Xiamen"
+    },
+    {
       "id": "f1-espn-401839060",
       "sport": "racing",
       "league": "F1",
@@ -18762,6 +18813,23 @@
       "competitionName": "Canadian Grand Prix"
     },
     {
+      "id": "athletics-diamond-league-rabat-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League — Rabat",
+      "startTimeLocal": "2026-05-31T18:00:00.000Z",
+      "endTimeLocal": "2026-05-31T21:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League — Rabat",
+      "competitionType": "international",
+      "tournamentName": "Diamond League — Rabat"
+    },
+    {
       "id": "soccer-intl-friendly-20260531-1930-senegal-at-united-states",
       "sport": "soccer",
       "league": "International Friendly",
@@ -18775,6 +18843,23 @@
       "leagueKey": "intl-friendly",
       "providerReason": "intl-friendly-tnt",
       "broadcastNetworks": "TNT, truTV, Tele, Universo, HBO Max, Peacock"
+    },
+    {
+      "id": "athletics-diamond-league-rome-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League — Rome",
+      "startTimeLocal": "2026-06-04T17:00:00.000Z",
+      "endTimeLocal": "2026-06-04T20:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League — Rome",
+      "competitionType": "international",
+      "tournamentName": "Diamond League — Rome"
     },
     {
       "id": "f1-espn-401839063",
@@ -18827,6 +18912,40 @@
       "sessionTitle": "Belmont Stakes",
       "competitionType": "domestic",
       "tournamentName": "Belmont Stakes"
+    },
+    {
+      "id": "athletics-diamond-league-stockholm-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League — Stockholm",
+      "startTimeLocal": "2026-06-07T17:00:00.000Z",
+      "endTimeLocal": "2026-06-07T20:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League — Stockholm",
+      "competitionType": "international",
+      "tournamentName": "Diamond League — Stockholm"
+    },
+    {
+      "id": "athletics-diamond-league-oslo-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League — Oslo",
+      "startTimeLocal": "2026-06-10T17:00:00.000Z",
+      "endTimeLocal": "2026-06-10T20:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League — Oslo",
+      "competitionType": "international",
+      "tournamentName": "Diamond League — Oslo"
     },
     {
       "id": "soccer-fifa-world-cup-20260611-1900-south-africa-at-mexico",
@@ -19729,6 +19848,23 @@
       "broadcastNetworks": "FOX, Tele, Peacock"
     },
     {
+      "id": "athletics-diamond-league-paris-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League — Paris",
+      "startTimeLocal": "2026-06-26T17:00:00.000Z",
+      "endTimeLocal": "2026-06-26T20:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League — Paris",
+      "competitionType": "international",
+      "tournamentName": "Diamond League — Paris"
+    },
+    {
       "id": "soccer-fifa-world-cup-20260626-1900-france-at-norway",
       "sport": "soccer",
       "league": "FIFA World Cup",
@@ -20182,6 +20318,23 @@
       "broadcastNetworks": "FOX"
     },
     {
+      "id": "athletics-diamond-league-eugene-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League — Eugene",
+      "startTimeLocal": "2026-07-04T19:00:00.000Z",
+      "endTimeLocal": "2026-07-04T22:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League — Eugene",
+      "competitionType": "international",
+      "tournamentName": "Diamond League — Eugene"
+    },
+    {
       "id": "soccer-fifa-world-cup-20260704-2100-round-of-32-5-winner-at-round-of-32-2-winner",
       "sport": "soccer",
       "league": "FIFA World Cup",
@@ -20302,6 +20455,23 @@
       "broadcastNetworks": "FOX"
     },
     {
+      "id": "athletics-diamond-league-monaco-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League — Monaco",
+      "startTimeLocal": "2026-07-10T17:00:00.000Z",
+      "endTimeLocal": "2026-07-10T20:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League — Monaco",
+      "competitionType": "international",
+      "tournamentName": "Diamond League — Monaco"
+    },
+    {
       "id": "soccer-fifa-world-cup-20260710-1900-round-of-16-6-winner-at-round-of-16-5-winner",
       "sport": "soccer",
       "league": "FIFA World Cup",
@@ -20377,6 +20547,23 @@
       "broadcastNetworks": "FOX"
     },
     {
+      "id": "athletics-diamond-league-london-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League — London",
+      "startTimeLocal": "2026-07-18T17:00:00.000Z",
+      "endTimeLocal": "2026-07-18T20:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League — London",
+      "competitionType": "international",
+      "tournamentName": "Diamond League — London"
+    },
+    {
       "id": "soccer-fifa-world-cup-20260718-2100-semifinal-2-loser-at-semifinal-1-loser",
       "sport": "soccer",
       "league": "FIFA World Cup",
@@ -20407,6 +20594,23 @@
       "broadcastNetworks": "FOX"
     },
     {
+      "id": "athletics-diamond-league-lausanne-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League — Lausanne",
+      "startTimeLocal": "2026-08-21T17:00:00.000Z",
+      "endTimeLocal": "2026-08-21T20:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League — Lausanne",
+      "competitionType": "international",
+      "tournamentName": "Diamond League — Lausanne"
+    },
+    {
       "id": "cycling-grand-tour-vuelta-a-espa-a-2026",
       "sport": "cycling",
       "league": "Grand Tour",
@@ -20423,6 +20627,74 @@
       "sessionTitle": "Vuelta a España 2026",
       "competitionType": "international",
       "tournamentName": "Vuelta a España"
+    },
+    {
+      "id": "athletics-diamond-league-silesia-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League — Silesia",
+      "startTimeLocal": "2026-08-23T17:00:00.000Z",
+      "endTimeLocal": "2026-08-23T20:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League — Silesia",
+      "competitionType": "international",
+      "tournamentName": "Diamond League — Silesia"
+    },
+    {
+      "id": "athletics-diamond-league-zurich-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League — Zurich",
+      "startTimeLocal": "2026-08-27T17:00:00.000Z",
+      "endTimeLocal": "2026-08-27T20:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League — Zurich",
+      "competitionType": "international",
+      "tournamentName": "Diamond League — Zurich"
+    },
+    {
+      "id": "athletics-diamond-league-brussels-final-day-1-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League Final — Brussels",
+      "startTimeLocal": "2026-09-04T17:00:00.000Z",
+      "endTimeLocal": "2026-09-04T20:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League Final — Brussels",
+      "competitionType": "international",
+      "tournamentName": "Diamond League Final — Brussels"
+    },
+    {
+      "id": "athletics-diamond-league-brussels-final-day-2-2026",
+      "sport": "athletics",
+      "league": "Diamond League",
+      "awayTeam": "",
+      "homeTeam": "Diamond League Final — Brussels",
+      "startTimeLocal": "2026-09-05T15:00:00.000Z",
+      "endTimeLocal": "2026-09-05T18:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "diamond-league-hardcoded",
+      "leagueKey": "diamond-league",
+      "eventType": "session",
+      "sessionTitle": "Diamond League Final — Brussels",
+      "competitionType": "international",
+      "tournamentName": "Diamond League Final — Brussels"
     }
   ]
 }
