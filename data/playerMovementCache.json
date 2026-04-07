@@ -195,11 +195,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025021012",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -242,6 +237,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -1100,11 +1100,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025021012",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -1147,6 +1142,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -1192,6 +1192,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -1602,6 +1607,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -1827,6 +1837,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -2475,11 +2490,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025021012",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -2522,6 +2532,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -2792,17 +2807,17 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
     "8475311": {
       "name": "D. Kuemper",
       "sightings": [
-        {
-          "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
         {
           "teamAbbrev": "LAK",
           "gameId": "2025021012",
@@ -2847,6 +2862,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -4635,11 +4655,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025021012",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -4682,6 +4697,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -5335,11 +5355,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025021012",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -5382,6 +5397,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -5982,6 +6002,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -6197,6 +6222,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -6487,6 +6517,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -6518,11 +6553,6 @@
     "8476872": {
       "name": "S. Laughton",
       "sightings": [
-        {
-          "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
         {
           "teamAbbrev": "LAK",
           "gameId": "2025021012",
@@ -6567,6 +6597,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -6780,11 +6815,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025021012",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -6827,6 +6857,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -7117,6 +7152,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -8267,6 +8307,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025021180",
           "seenAt": "2026-04-02T01:29:54.218Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -8772,6 +8817,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -11315,11 +11365,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025021012",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -11362,6 +11407,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -14835,11 +14885,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025021012",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -14882,6 +14927,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -16907,6 +16957,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -18055,11 +18110,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025021012",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -18102,6 +18152,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -18635,11 +18690,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025021012",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -18682,6 +18732,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -20287,6 +20342,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -22697,6 +22757,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -27012,6 +27077,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -27190,11 +27260,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025021012",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -27237,6 +27302,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -27537,6 +27607,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -27635,11 +27710,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025021012",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -27682,6 +27752,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -28260,11 +28335,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020997",
-          "seenAt": "2026-03-08T05:57:11.976Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025020828",
           "seenAt": "2026-03-10T02:28:51.292Z"
         },
@@ -28307,6 +28377,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -28517,6 +28592,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -29477,6 +29557,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021161",
           "seenAt": "2026-03-31T21:25:06.570Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -29540,11 +29625,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025021012",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -29587,6 +29667,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -29595,11 +29680,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025021012",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -29642,6 +29722,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -29847,6 +29932,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -30117,6 +30207,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -30850,11 +30945,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020944",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025020958",
           "seenAt": "2026-03-04T04:02:55.897Z"
         },
@@ -30897,6 +30987,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -31282,6 +31377,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -31927,6 +32027,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -32750,11 +32855,6 @@
       "sightings": [
         {
           "teamAbbrev": "LAK",
-          "gameId": "2025020828",
-          "seenAt": "2026-03-10T02:28:51.292Z"
-        },
-        {
-          "teamAbbrev": "LAK",
           "gameId": "2025021012",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -32797,6 +32897,11 @@
           "teamAbbrev": "LAK",
           "gameId": "2025021217",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "LAK",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -34032,6 +34137,11 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021204",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NSH",
+          "gameId": "2025021232",
+          "seenAt": "2026-04-07T14:53:46.737Z"
         }
       ]
     },
@@ -35592,7 +35702,7 @@
     }
   },
   "movements": [],
-  "lastUpdated": "2026-04-07T05:08:19.425Z",
+  "lastUpdated": "2026-04-07T15:46:23.788Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -35625,8 +35735,8 @@
         "reason": "LEAGUE_NOT_SUPPORTED"
       }
     ],
-    "playersIngested": 656,
+    "playersIngested": 651,
     "movementsDetectedThisRun": [],
-    "timestamp": "2026-04-07T05:08:19.425Z"
+    "timestamp": "2026-04-07T15:46:23.788Z"
   }
 }

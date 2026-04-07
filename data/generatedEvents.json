@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-07T05:08:19.295Z",
+  "lastUpdated": "2026-04-07T15:46:23.730Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -35,7 +35,7 @@
   "nhlCount": 84,
   "ahlCount": 171,
   "ahlAdded": 0,
-  "ahlUpdated": 161,
+  "ahlUpdated": 152,
   "ahlPruned": 0,
   "echlCount": 11,
   "echlAdded": 1,
@@ -151,9 +151,9 @@
     "Madrid Open": 18,
     "Italian Open": 4
   },
-  "f1Count": 27,
+  "f1Count": 29,
   "f1Added": 0,
-  "f1Updated": 27,
+  "f1Updated": 29,
   "f1Pruned": 0,
   "f1SourceUsed": "espn-f1",
   "f1RaceCounts": {
@@ -162,7 +162,7 @@
     "Saudi Arabian Grand Prix": 5,
     "Miami Grand Prix": 5,
     "Canadian Grand Prix": 5,
-    "Monaco Grand Prix": 2
+    "Monaco Grand Prix": 4
   },
   "golfCount": 8,
   "golfAdded": 0,
@@ -194,22 +194,22 @@
   "mlbPruned": 233,
   "mlbSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-04-07T05:08:19.295Z",
+    "lastRefreshAt": "2026-04-07T15:46:23.730Z",
     "sources": {
       "nhl": {
         "count": 84,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 171,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 11,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
@@ -221,7 +221,7 @@
       },
       "rugby": {
         "count": 109,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 24,
@@ -241,87 +241,87 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 32,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 71,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 40,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 40,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 36,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 35,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 29,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 51,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-25T23:00:00.000Z"
       },
       "championsCup": {
         "count": 11,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 13,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 8,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 8,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 6,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-04-04T11:45:00.000Z"
       },
       "tennis": {
         "count": 0,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Miami Open": 14,
@@ -331,8 +331,8 @@
         }
       },
       "f1": {
-        "count": 27,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "count": 29,
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Japanese Grand Prix": 5,
@@ -340,12 +340,12 @@
           "Saudi Arabian Grand Prix": 5,
           "Miami Grand Prix": 5,
           "Canadian Grand Prix": 5,
-          "Monaco Grand Prix": 2
+          "Monaco Grand Prix": 4
         }
       },
       "golf": {
         "count": 8,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "The Masters": 4,
@@ -354,7 +354,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Boston Marathon": 1,
@@ -363,7 +363,7 @@
       },
       "nba": {
         "count": 158,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "ESPN API"
       },
       "ncaab": {
@@ -373,7 +373,7 @@
       },
       "mlb": {
         "count": 233,
-        "lastFetchAt": "2026-04-07T05:08:19.295Z",
+        "lastFetchAt": "2026-04-07T15:46:23.730Z",
         "sourceName": "ESPN API"
       }
     }
@@ -8036,7 +8036,7 @@
       "startTimeLocal": "2026-04-07T02:30:00.000Z",
       "endTimeLocal": "2026-04-07T05:15:00.000Z",
       "providerId": "primevideo",
-      "isLive": true,
+      "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
         "FDSNSO",
@@ -18893,6 +18893,40 @@
       "providerReason": "Apple TV broadcast",
       "eventType": "session",
       "sessionTitle": "Practice 2",
+      "competitionName": "Monaco Grand Prix"
+    },
+    {
+      "id": "f1-espn-401839065",
+      "sport": "racing",
+      "league": "F1",
+      "awayTeam": "Practice 3",
+      "homeTeam": "Monaco Grand Prix",
+      "startTimeLocal": "2026-06-06T10:30:00.000Z",
+      "endTimeLocal": "2026-06-06T12:00:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "espn-f1",
+      "leagueKey": "f1",
+      "providerReason": "Apple TV broadcast",
+      "eventType": "session",
+      "sessionTitle": "Practice 3",
+      "competitionName": "Monaco Grand Prix"
+    },
+    {
+      "id": "f1-espn-401839066",
+      "sport": "racing",
+      "league": "F1",
+      "awayTeam": "Qualifying",
+      "homeTeam": "Monaco Grand Prix",
+      "startTimeLocal": "2026-06-06T14:00:00.000Z",
+      "endTimeLocal": "2026-06-06T15:30:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "espn-f1",
+      "leagueKey": "f1",
+      "providerReason": "Apple TV broadcast",
+      "eventType": "session",
+      "sessionTitle": "Qualifying",
       "competitionName": "Monaco Grand Prix"
     },
     {
