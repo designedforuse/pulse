@@ -186,22 +186,24 @@ function FavoritesSection() {
             {isExpanded && leagues.map((league, i) => {
               const leagueOn = isLeagueEnabled(sport, league);
               return (
-                <View key={league} style={styles.leagueToggleRow}>
+                <React.Fragment key={league}>
                   {i > 0 && <View style={styles.leagueRowDivider} />}
-                  <Text style={[styles.leagueToggleLabel, !leagueOn && styles.teamNameDisabled]}>
-                    {league}
-                  </Text>
-                  <Switch
-                    value={leagueOn}
-                    onValueChange={() => {
-                      if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                      toggleLeague(sport, league);
-                    }}
-                    trackColor={{ false: Colors.border, true: sportColor + "55" }}
-                    thumbColor={leagueOn ? sportColor : Colors.textMuted}
-                    style={styles.leagueSwitch}
-                  />
-                </View>
+                  <View style={styles.leagueToggleRow}>
+                    <Text style={[styles.leagueToggleLabel, !leagueOn && styles.teamNameDisabled]}>
+                      {league}
+                    </Text>
+                    <Switch
+                      value={leagueOn}
+                      onValueChange={() => {
+                        if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                        toggleLeague(sport, league);
+                      }}
+                      trackColor={{ false: Colors.border, true: sportColor + "55" }}
+                      thumbColor={leagueOn ? sportColor : Colors.textMuted}
+                      style={styles.leagueSwitch}
+                    />
+                  </View>
+                </React.Fragment>
               );
             })}
           </React.Fragment>
