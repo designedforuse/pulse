@@ -346,6 +346,13 @@ function resolveGolfBroadcastId(event: SportEvent): [string, string] {
   return ["", ""];
 }
 
+function resolveHorseRacingBroadcastId(event: SportEvent): [string, string] {
+  const reason = event.providerReason || "";
+  if (reason === "fox-broadcast") return ["fox", "youtubetv"];
+  if (reason === "nbc-broadcast") return ["nbcsn", "youtubetv"];
+  return ["", ""];
+}
+
 const FLORUGBY_LEAGUES = new Set(["URC", "Top 14", "English Premiership", "Champions Cup", "Japan League One"]);
 
 function resolveRugbyBroadcastId(event: SportEvent): [string, string] {
@@ -480,6 +487,20 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
   // Golf: display broadcast network (CBS/NBC), launch via YouTube TV
   if (event.sport === "golf") {
     const [broadcastId, launchProviderId] = resolveGolfBroadcastId(event);
+    if (broadcastId) {
+      const launchProvider = getProviderById(launchProviderId);
+      return {
+        brandId: broadcastId,
+        brandName: PROVIDER_DISPLAY_NAMES[broadcastId] || broadcastId,
+        launchProvider,
+        launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
+      };
+    }
+  }
+
+  // Horse Racing: display broadcast network (NBC/FOX), launch via YouTube TV
+  if (event.sport === "horse-racing") {
+    const [broadcastId, launchProviderId] = resolveHorseRacingBroadcastId(event);
     if (broadcastId) {
       const launchProvider = getProviderById(launchProviderId);
       return {

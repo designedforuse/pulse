@@ -67,7 +67,7 @@ const TRIPLE_CROWN_RACES: TripleCrownRace[] = [
     startUtc: "2026-06-06T18:30:00.000Z",
     durationMin: 360,
     providerId: "youtubetv",
-    providerReason: "nbc-broadcast",
+    providerReason: "fox-broadcast",
   },
 ];
 
