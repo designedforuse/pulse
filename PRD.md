@@ -1,14 +1,14 @@
-# Sports Watch — Product Requirements Document
+# Pulse — Product Requirements Document
 
-**Version:** 2.0  
-**Date:** March 2026  
+**Version:** 3.0  
+**Date:** April 2026  
 **Status:** Active Development
 
 ---
 
 ## 1. Product Vision
 
-Sports Watch is a personal sports companion for fans who follow multiple sports at once. It eliminates the fragmentation of tracking schedules across team apps, league sites, and streaming platforms by surfacing the right games at the right time — and making it easy to start watching in one tap.
+Pulse is a personal sports companion for fans who follow multiple sports at once. It eliminates the fragmentation of tracking schedules across team apps, league sites, and streaming platforms by surfacing the right games at the right time — and making it easy to start watching in one tap.
 
 The core promise: *you never miss a game that matters to you, and you never have to think hard about what's on.*
 
@@ -99,7 +99,10 @@ All events use the `UnifiedEventCard` component:
   - Golf: leaderboard position + through-hole + score-to-par
   - F1: session type + leader + lap count
   - Cricket: innings, runs, wickets, overs
-  - Athletics/Marathon: event name + date
+  - Athletics/Marathon: 🏃 emoji + event name + date
+  - Athletics/Diamond League: 🏃 emoji + "Diamond League — City"
+  - Horse Racing: 🐎 emoji + race name (Triple Crown)
+  - Cycling: 🚴 emoji + tour name + route
 
 #### Live Score Display
 - Polls live score endpoint every 45 seconds while app is foregrounded
@@ -120,7 +123,7 @@ Rituals are curated multi-sport viewing packages. Each ritual bundles a collecti
 **Ritual detail view:**
 - Featured game at top (manually overridable by user)
 - Event list filtered to ritual's sport/time criteria
-- Session-type events (F1, SVNS) display as tournament name + flag emoji, not team matchup
+- Session-type events (F1, SVNS, cycling, horse racing) display as tournament name + emoji, not team matchup
 
 **Featured override:**
 - User can tap any event on a ritual detail page to promote it to the featured slot
@@ -215,38 +218,89 @@ Each card can optionally surface a contextual YouTube video via search (cached, 
 - Users can disable entire sports (e.g., hide cricket from all views)
 - Disabled sports are excluded from Watch tab, Rituals, and Stories
 
+**League-level toggles:**
+- Within each sport, individual leagues can be toggled on/off
+- e.g., Athletics: "World Marathon Majors" and "Diamond League" are independent toggles
+
 **Storage:** AsyncStorage (local, persistent).
 
 ---
 
 ## 6. Sports Coverage
 
-| Sport | Leagues / Competitions | Data Source |
-|---|---|---|
-| Ice Hockey | NHL, AHL, ECHL, NCAA (BU) | NHL API, HockeyTech, API-Hockey, CHN scrape |
-| Soccer | EPL, La Liga, Bundesliga, Serie A, Ligue 1, Champions League, Europa, MLS, USL, FA Cup, NWSL | iCal feeds (fixturedownload), ESPN API |
-| Rugby Union | URC, Top 14, English Premiership, European Champions Cup, Super Rugby Pacific, Japan League One, MLR, SVNS | rugbyfixture.io iCal, all.rugby scrape, hardcoded |
-| Basketball | NBA | ESPN API |
-| Tennis | ATP (all tiers), Grand Slams | ESPN API |
-| Formula 1 | All sessions (Race, Sprint, Qualifying, Practice) | ESPN API |
-| Golf | Players Championship, The Masters, PGA Championship, US Open, The Open Championship | Hardcoded schedule + ESPN live scores |
-| Cricket | International + domestic fixtures | CricAPI (free tier, 3 pages max) |
-| Athletics | World Marathon Majors (7 races) | Hardcoded schedule |
+| Sport | Leagues / Competitions | Data Source | Broadcaster(s) |
+|---|---|---|---|
+| Baseball | MLB (all 30 teams) | ESPN API | ESPN+, FOX, FS1, Apple TV+, Prime Video, YouTube TV, MLB.TV |
+| Basketball | NBA, NCAAB | ESPN API | Disney+/ESPN+ |
+| Ice Hockey | NHL, AHL, ECHL, NCAA (BU) | NHL API, HockeyTech, API-Hockey, CHN scrape | Disney+, Victory+, YouTube TV |
+| Soccer | EPL, La Liga, Bundesliga, Serie A, Ligue 1, Champions League, Europa League, FA Cup, MLS, USL, NWSL | iCal feeds (fixturedownload, rugbyfixture), ESPN API | Apple TV+, YouTube TV, Disney+ |
+| International Soccer | FIFA World Cup 2026, International Friendlies (US broadcast only) | ESPN API | FOX, FS1, ESPN2, TNT → YouTube TV |
+| Rugby Union | URC, Top 14, English Premiership, European Champions Cup, Super Rugby Pacific, Japan League One, MLR, SVNS | rugbyfixture.io iCal, all.rugby scrape, World Rugby API, hardcoded | FloSports, YouTube TV |
+| Tennis | ATP (all tiers) | ESPN API | Disney+/ESPN+ |
+| Formula 1 | All sessions (Race, Sprint, Qualifying, Practice) | ESPN API | Disney+/ESPN+ |
+| Golf | The Players, The Masters, PGA Championship, US Open, The Open | Hardcoded schedule + ESPN live scores | YouTube TV |
+| Cricket | International + domestic (inc. IPL) | CricAPI (free tier) + IPL official feed (iplt20.com) | FloSports |
+| Athletics | World Marathon Majors (7 races), Diamond League (16 meets) | Hardcoded schedule | FloSports |
+| Horse Racing | Triple Crown — Kentucky Derby, Preakness Stakes, Belmont Stakes | Hardcoded schedule | NBC (Kentucky Derby, Preakness) → YouTube TV; FOX (Belmont) → YouTube TV |
+| Cycling | Grand Tour — Giro d'Italia, Tour de France, Vuelta a España | Hardcoded schedule | TNT Sports (Giro) → YouTube TV; NBC Sports (TdF, Vuelta) → YouTube TV |
+
+### Athletics — Diamond League Detail
+
+16 events in the 2026 season, all on FloSports:
+
+| # | Date | City |
+|---|------|------|
+| 1 | May 8 | Doha, Qatar |
+| 2 | May 16 | Shanghai, China |
+| 3 | May 23 | Xiamen, China |
+| 4 | May 31 | Rabat, Morocco |
+| 5 | June 4 | Rome, Italy |
+| 6 | June 7 | Stockholm, Sweden |
+| 7 | June 10 | Oslo, Norway |
+| 8 | June 26 | Paris, France |
+| 9 | July 4 | Eugene, USA |
+| 10 | July 10 | Monaco |
+| 11 | July 18 | London, Great Britain |
+| 12 | Aug 21 | Lausanne, Switzerland |
+| 13 | Aug 23 | Silesia, Poland |
+| 14 | Aug 27 | Zurich, Switzerland |
+| 🏆 | Sep 4 | Brussels Final — Day 1 |
+| 🏆 | Sep 5 | Brussels Final — Day 2 |
+
+### Cycling — Grand Tour Detail
+
+| Race | Dates | Route | Provider |
+|---|---|---|---|
+| Giro d'Italia | May 8–31 | Nessebar, Bulgaria → Rome, Italy | TNT Sports → YouTube TV |
+| Tour de France | July 4–26 | Barcelona, Spain → Paris, France | NBC Sports → YouTube TV |
+| Vuelta a España | Aug 22–Sept 13 | Monaco → Madrid, Spain | NBC Sports → YouTube TV |
+
+### Horse Racing — Triple Crown Detail
+
+| Race | Date | Venue | Provider |
+|---|---|---|---|
+| Kentucky Derby | May 2 | Churchill Downs, Louisville | NBC → YouTube TV |
+| Preakness Stakes | May 16 | Pimlico Race Course, Baltimore | NBC → YouTube TV |
+| Belmont Stakes | June 6 | Belmont Park, New York | FOX → YouTube TV |
 
 ---
 
 ## 7. Streaming Provider Integrations
 
-| Provider | Sports Covered |
-|---|---|
-| Apple TV+ | MLS |
-| YouTube TV | Broad coverage (NHL, NBA, EPL, etc.) |
-| Disney+ / ESPN+ | F1, NHL, MLS, UFC |
-| FloSports | Marathon Majors, wrestling, MLR |
-| Victory+ | NHL games |
-| Prime Video | NFL, select soccer |
+| Provider | Deep Link | Sports Covered |
+|---|---|---|
+| Apple TV+ | `videos://` | MLS |
+| YouTube TV | `googleyoutubetv://` | Broad coverage — NHL, NBA, EPL, soccer, FOX/FS1, NBC Sports, TNT Sports |
+| Disney+ / ESPN+ | `disneyplus://` | F1, NHL, NBA, NCAAB, MLS, Tennis, UFC |
+| FloSports | `flosports://` | Marathon Majors, Diamond League, wrestling, MLR, rugby |
+| Victory+ | `victoryplus://` | NHL games |
+| Prime Video | `primevideo://` | NFL, select soccer, select MLB |
+| FOX (via YouTube TV) | → YouTube TV | World Cup 2026, Belmont Stakes, select MLB |
+| FS1 (via YouTube TV) | → YouTube TV | World Cup 2026, select soccer |
+| NBC Sports (via YouTube TV) | → YouTube TV | Kentucky Derby, Preakness, Tour de France, Vuelta a España |
+| TNT Sports (via YouTube TV) | → YouTube TV | Giro d'Italia |
 
-Tapping a provider badge on an event card deep-links to the provider's app (or App Store if not installed).
+Tapping a provider badge on an event card deep-links to the provider's app (or the App Store if not installed). FOX, FS1, NBC Sports, and TNT Sports route through YouTube TV.
 
 ---
 
@@ -274,7 +328,18 @@ SVNS (Sevens World Series) session cards show live match data from within each t
 
 Refresh status available at `/api/refresh-status`.
 
-CricAPI quota management: Maximum 3 pages per fetch cycle (≈6 API hits/day from auto-refreshes) to stay within 100 hits/day free tier.
+**Retention windows by sport:**
+| Sport | Past | Future |
+|---|---|---|
+| Most sports | 14 days | 7–14 days |
+| Athletics (Marathon) | 14 days | 120 days |
+| Athletics (Diamond League) | 14 days | 160 days |
+| Cycling | 14 days | 180 days |
+| Golf | 14 days | 180 days |
+| International Soccer (World Cup) | 14 days | through Aug 2026 |
+| International Soccer (Friendlies) | 14 days | 60 days |
+
+CricAPI quota management: MAX_PAGES=10 per fetch cycle; budget ≈92 hits/day (20 schedule + 72 live) vs. 100/day free tier limit. Cache timestamp always updated after each call to prevent hammering.
 
 ---
 
@@ -310,21 +375,31 @@ CricAPI quota management: Maximum 3 pages per fetch cycle (≈6 API hits/day fro
 
 **Sport colors:**
 
-| Sport | Color |
-|---|---|
-| Hockey | `#1CB0F6` |
-| Soccer | `#35C7A5` |
-| Basketball | `#FF4B4B` |
-| Rugby | `#FF9600` |
-| Cricket | `#FFC800` |
-| Tennis | `#CE82FF` |
-| F1 / Racing | `#E53935` |
-| Golf | `#22C55E` |
-| Athletics | `#FF5722` |
+| Sport | Color | Notes |
+|---|---|---|
+| Baseball | `#E53935` | MLB red |
+| Basketball | `#FF4B4B` | |
+| Hockey | `#1CB0F6` | |
+| Soccer | `#35C7A5` | |
+| Rugby | `#FF9600` | |
+| Cricket | `#FFC800` | |
+| Tennis | `#CE82FF` | |
+| F1 / Racing | `#E53935` | |
+| Golf | `#22C55E` | |
+| Athletics | `#FF5722` | Deep orange — both Marathon and Diamond League |
+| Horse Racing | `#C9882F` | Golden amber |
+| Cycling | `#F5C518` | Tour de France yellow |
 
 **Card style:** `borderRadius: 20`, `borderBottomWidth: 4` (3D depth buttons), sport-color accent bar on left edge.
 
 **Tab bar:** iOS 26 native liquid glass tabs via `expo-router` NativeTabs + `expo-glass-effect`.
+
+**Session-type event display:**
+- Athletics (marathon / Diamond League): 🏃 + event name
+- Horse Racing (Triple Crown): 🐎 + race name
+- Cycling (Grand Tour): 🚴 + tour name
+- F1: session type label
+- SVNS: tournament name + flag emoji
 
 ---
 
@@ -332,10 +407,12 @@ CricAPI quota management: Maximum 3 pages per fetch cycle (≈6 API hits/day fro
 
 - **No UUID package** — use `Date.now().toString() + Math.random().toString(36).substr(2, 9)` for IDs
 - **No hardcoded domain URLs** — all API calls use `getApiUrl()` from `@/lib/query-client`
-- **CricAPI free tier** — 100 hits/day; MAX_PAGES=3 per fetch; early-stop at 15+ future matches found
+- **CricAPI free tier** — ~92 hits/day max; MAX_PAGES=10; early-stop when sufficient future matches found
+- **IPL live scores** — sourced from official iplt20.com feed; `cricket-ipl-` prefix events use separate fetcher; 60s polling; no rate limits
 - **Golf FINAL state** — only trusts ESPN "post" status if leader has completed all 18 holes
 - **AsyncStorage** for all persistent user state (favorites, sport toggles, ritual overrides)
 - **React Query** for all server state; default fetcher configured in `@/lib/query-client`
+- **Static hardcoded schedules** — Horse Racing (Triple Crown), Cycling (Grand Tour), Diamond League, Golf Majors, Marathon Majors use hardcoded data; refreshed via `updateSchedule.ts` on server start and cron
 
 ---
 
