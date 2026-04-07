@@ -178,6 +178,7 @@ export function getSportColor(sport: string): string {
     racing: "#E53935",
     golf: "#22C55E",
     athletics: "#FF6B00",
+    "horse-racing": "#C9882F",
   };
   return colors[sport] || "#90A4AE";
 }

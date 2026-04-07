@@ -113,16 +113,16 @@ function FavoritesSection() {
   const { isSportEnabled, toggleSport, isLeagueEnabled, toggleLeague } = useFavorites();
   const [expandedSports, setExpandedSports] = useState<Record<string, boolean>>({});
 
-  const sportOrder = ["baseball", "basketball", "hockey", "soccer", "golf", "tennis", "racing", "athletics", "rugby", "cricket"];
+  const sportOrder = ["baseball", "basketball", "hockey", "soccer", "golf", "tennis", "racing", "horse-racing", "athletics", "rugby", "cricket"];
   const sportLabels: Record<string, string> = {
     hockey: "Hockey", rugby: "Rugby", cricket: "Cricket", soccer: "Soccer",
     basketball: "Basketball", baseball: "Baseball", tennis: "Tennis",
-    racing: "Racing", golf: "Golf", athletics: "Athletics",
+    racing: "Racing", golf: "Golf", athletics: "Athletics", "horse-racing": "Horse Racing",
   };
   const sportIcons: Record<string, keyof typeof Ionicons.glyphMap> = {
     hockey: "snow", rugby: "american-football", cricket: "baseball", soccer: "football",
     basketball: "basketball", baseball: "baseball-outline", tennis: "tennisball",
-    racing: "speedometer", golf: "golf", athletics: "walk-outline",
+    racing: "speedometer", golf: "golf", athletics: "walk-outline", "horse-racing": "ribbon",
   };
   const sportLeagues: Record<string, string[]> = {
     hockey: ["NHL", "AHL", "ECHL", "NCAA Hockey"],
@@ -134,6 +134,7 @@ function FavoritesSection() {
     tennis: ["Grand Slams", "ATP Masters 1000"],
     racing: ["F1"],
     golf: ["The Majors"],
+    "horse-racing": ["Triple Crown"],
     athletics: ["World Marathon Majors"],
   };
 
@@ -216,7 +217,7 @@ function FavoritesSection() {
 function FavoriteTeamChips() {
   const { allTeams, isTeamEnabled, toggleTeam } = useFavorites();
 
-  const sportOrder = ["baseball", "basketball", "hockey", "soccer", "golf", "tennis", "racing", "athletics", "rugby", "cricket"];
+  const sportOrder = ["baseball", "basketball", "hockey", "soccer", "golf", "tennis", "racing", "horse-racing", "athletics", "rugby", "cricket"];
   const chips: { team: string; sport: string; league: string }[] = [];
   for (const sport of sportOrder) {
     const sportFavs = allTeams[sport];

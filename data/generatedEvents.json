@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-07T01:07:37.394Z",
+  "lastUpdated": "2026-04-07T04:31:00.174Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -188,28 +188,28 @@
   "intlSoccerUpdated": 104,
   "intlSoccerPruned": 104,
   "intlSoccerSourceUsed": "espn",
-  "mlbCount": 231,
-  "mlbAdded": 21,
+  "mlbCount": 233,
+  "mlbAdded": 23,
   "mlbUpdated": 231,
   "mlbPruned": 231,
   "mlbSourceUsed": "espn",
   "generatedMeta": {
-    "lastRefreshAt": "2026-04-07T01:07:37.394Z",
+    "lastRefreshAt": "2026-04-07T04:31:00.174Z",
     "sources": {
       "nhl": {
         "count": 84,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 171,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 11,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "HockeyTech",
         "teamFilter": "Tulsa Oilers"
       },
@@ -221,7 +221,7 @@
       },
       "rugby": {
         "count": 109,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 24,
@@ -241,87 +241,87 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 32,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 71,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 40,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 40,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 36,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 35,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 29,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 51,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-03-25T23:00:00.000Z"
       },
       "championsCup": {
         "count": 11,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 13,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 8,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 8,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 6,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-04-04T11:45:00.000Z"
       },
       "tennis": {
         "count": 0,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Miami Open": 14,
@@ -332,7 +332,7 @@
       },
       "f1": {
         "count": 27,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Japanese Grand Prix": 5,
@@ -345,7 +345,7 @@
       },
       "golf": {
         "count": 8,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "The Masters": 4,
@@ -354,7 +354,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Boston Marathon": 1,
@@ -363,7 +363,7 @@
       },
       "nba": {
         "count": 158,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "ESPN API"
       },
       "ncaab": {
@@ -372,8 +372,8 @@
         "sourceName": "ESPN API"
       },
       "mlb": {
-        "count": 231,
-        "lastFetchAt": "2026-04-07T01:07:37.394Z",
+        "count": 233,
+        "lastFetchAt": "2026-04-07T04:31:00.174Z",
         "sourceName": "ESPN API"
       }
     }
@@ -7765,7 +7765,7 @@
       "startTimeLocal": "2026-04-06T23:00:00.000Z",
       "endTimeLocal": "2026-04-07T01:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": true,
+      "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
         "NHLN",
@@ -7785,7 +7785,7 @@
       "startTimeLocal": "2026-04-06T23:00:00.000Z",
       "endTimeLocal": "2026-04-07T01:45:00.000Z",
       "providerId": "flosports",
-      "isLive": true,
+      "isLive": false,
       "source": "ahl-hockeytech"
     },
     {
@@ -7842,7 +7842,7 @@
       "startTimeLocal": "2026-04-06T23:30:00.000Z",
       "endTimeLocal": "2026-04-07T02:15:00.000Z",
       "providerId": "disneyplus",
-      "isLive": true,
+      "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
         "Prime",
@@ -8017,7 +8017,7 @@
       "startTimeLocal": "2026-04-07T02:00:00.000Z",
       "endTimeLocal": "2026-04-07T04:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": false,
+      "isLive": true,
       "source": "nhl",
       "broadcastNetworks": [
         "TVAS",
@@ -8036,7 +8036,7 @@
       "startTimeLocal": "2026-04-07T02:30:00.000Z",
       "endTimeLocal": "2026-04-07T05:15:00.000Z",
       "providerId": "primevideo",
-      "isLive": false,
+      "isLive": true,
       "source": "nhl",
       "broadcastNetworks": [
         "FDSNSO",
@@ -13466,6 +13466,21 @@
       "providerReason": "national"
     },
     {
+      "id": "baseball-mlb-20260414-0140-texas-rangers-at-athletics",
+      "sport": "baseball",
+      "league": "MLB",
+      "awayTeam": "Texas Rangers",
+      "homeTeam": "Athletics",
+      "startTimeLocal": "2026-04-14T01:40:00.000Z",
+      "endTimeLocal": "2026-04-14T04:40:00.000Z",
+      "providerId": "mlbtv",
+      "isLive": false,
+      "source": "baseball-mlb",
+      "leagueKey": "mlb",
+      "providerReason": "mlb-regional",
+      "broadcastNetworks": "MLB.TV, Rangers Sports Network, NBC Sports BA +"
+    },
+    {
       "id": "nhl_2025021290",
       "sport": "hockey",
       "league": "NHL",
@@ -13482,6 +13497,21 @@
       ],
       "isNational": false,
       "providerReason": "espnplus-default"
+    },
+    {
+      "id": "baseball-mlb-20260414-0210-new-york-mets-at-los-angeles-dodgers",
+      "sport": "baseball",
+      "league": "MLB",
+      "awayTeam": "New York Mets",
+      "homeTeam": "Los Angeles Dodgers",
+      "startTimeLocal": "2026-04-14T02:10:00.000Z",
+      "endTimeLocal": "2026-04-14T05:10:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "baseball-mlb",
+      "leagueKey": "mlb",
+      "providerReason": "mlb-espn",
+      "broadcastNetworks": "ESPN Unlmtd, MLB.TV, Sportsnet LA, SNY"
     },
     {
       "id": "basketball-nba-20260414-0400-tbd-at-tbd",
@@ -18487,6 +18517,24 @@
       "competitionName": "Miami Grand Prix"
     },
     {
+      "id": "horse-racing-triple-crown-kentucky-derby",
+      "sport": "horse-racing",
+      "league": "Triple Crown",
+      "awayTeam": "Churchill Downs, Louisville KY",
+      "homeTeam": "Kentucky Derby",
+      "startTimeLocal": "2026-05-02T18:30:00.000Z",
+      "endTimeLocal": "2026-05-03T00:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "horse-racing-hardcoded",
+      "leagueKey": "triple-crown",
+      "providerReason": "nbc-broadcast",
+      "eventType": "session",
+      "sessionTitle": "Kentucky Derby",
+      "competitionType": "domestic",
+      "tournamentName": "Kentucky Derby"
+    },
+    {
       "id": "f1-espn-401839056",
       "sport": "racing",
       "league": "F1",
@@ -18573,6 +18621,24 @@
       "sessionTitle": "PGA — Round 3",
       "competitionType": "international",
       "tournamentName": "PGA Championship"
+    },
+    {
+      "id": "horse-racing-triple-crown-preakness-stakes",
+      "sport": "horse-racing",
+      "league": "Triple Crown",
+      "awayTeam": "Laurel Park, Laurel MD",
+      "homeTeam": "Preakness Stakes",
+      "startTimeLocal": "2026-05-16T18:30:00.000Z",
+      "endTimeLocal": "2026-05-17T00:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "horse-racing-hardcoded",
+      "leagueKey": "triple-crown",
+      "providerReason": "nbc-broadcast",
+      "eventType": "session",
+      "sessionTitle": "Preakness Stakes",
+      "competitionType": "domestic",
+      "tournamentName": "Preakness Stakes"
     },
     {
       "id": "golf-pga-championship-2026-05-17",
@@ -18725,6 +18791,24 @@
       "eventType": "session",
       "sessionTitle": "Practice 2",
       "competitionName": "Monaco Grand Prix"
+    },
+    {
+      "id": "horse-racing-triple-crown-belmont-stakes",
+      "sport": "horse-racing",
+      "league": "Triple Crown",
+      "awayTeam": "Saratoga Race Course, Saratoga Springs NY",
+      "homeTeam": "Belmont Stakes",
+      "startTimeLocal": "2026-06-06T18:30:00.000Z",
+      "endTimeLocal": "2026-06-07T00:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "horse-racing-hardcoded",
+      "leagueKey": "triple-crown",
+      "providerReason": "nbc-broadcast",
+      "eventType": "session",
+      "sessionTitle": "Belmont Stakes",
+      "competitionType": "domestic",
+      "tournamentName": "Belmont Stakes"
     },
     {
       "id": "soccer-fifa-world-cup-20260611-1900-south-africa-at-mexico",

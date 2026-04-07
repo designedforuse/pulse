@@ -647,6 +647,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -1257,6 +1262,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021047",
           "seenAt": "2026-03-15T18:00:32.932Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -1345,11 +1355,6 @@
       "sightings": [
         {
           "teamAbbrev": "SEA",
-          "gameId": "2025021040",
-          "seenAt": "2026-03-14T06:00:32.337Z"
-        },
-        {
-          "teamAbbrev": "SEA",
           "gameId": "2025021055",
           "seenAt": "2026-03-15T18:00:32.932Z"
         },
@@ -1392,6 +1397,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -1600,11 +1610,6 @@
       "sightings": [
         {
           "teamAbbrev": "EDM",
-          "gameId": "2025020936",
-          "seenAt": "2026-03-06T05:30:49.106Z"
-        },
-        {
-          "teamAbbrev": "EDM",
           "gameId": "2025020986",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -1647,6 +1652,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -2520,11 +2530,6 @@
       "sightings": [
         {
           "teamAbbrev": "EDM",
-          "gameId": "2025020936",
-          "seenAt": "2026-03-06T05:30:49.106Z"
-        },
-        {
-          "teamAbbrev": "EDM",
           "gameId": "2025020986",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -2567,6 +2572,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -3335,11 +3345,6 @@
       "sightings": [
         {
           "teamAbbrev": "BUF",
-          "gameId": "2025021003",
-          "seenAt": "2026-03-09T20:15:48.605Z"
-        },
-        {
-          "teamAbbrev": "BUF",
           "gameId": "2025021013",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -3382,6 +3387,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -3772,17 +3782,17 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
     "8475786": {
       "name": "Z. Hyman",
       "sightings": [
-        {
-          "teamAbbrev": "EDM",
-          "gameId": "2025020936",
-          "seenAt": "2026-03-06T05:30:49.106Z"
-        },
         {
           "teamAbbrev": "EDM",
           "gameId": "2025020986",
@@ -3827,6 +3837,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021200",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -3982,6 +3997,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025020895",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -4070,11 +4090,6 @@
       "sightings": [
         {
           "teamAbbrev": "SEA",
-          "gameId": "2025021040",
-          "seenAt": "2026-03-14T06:00:32.337Z"
-        },
-        {
-          "teamAbbrev": "SEA",
           "gameId": "2025021055",
           "seenAt": "2026-03-15T18:00:32.932Z"
         },
@@ -4117,6 +4132,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -4602,6 +4622,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -4857,6 +4882,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -5400,11 +5430,6 @@
       "sightings": [
         {
           "teamAbbrev": "EDM",
-          "gameId": "2025020936",
-          "seenAt": "2026-03-06T05:30:49.106Z"
-        },
-        {
-          "teamAbbrev": "EDM",
           "gameId": "2025020986",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -5447,6 +5472,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -5478,11 +5508,6 @@
     "8476457": {
       "name": "A. Larsson",
       "sightings": [
-        {
-          "teamAbbrev": "SEA",
-          "gameId": "2025021040",
-          "seenAt": "2026-03-14T06:00:32.337Z"
-        },
         {
           "teamAbbrev": "SEA",
           "gameId": "2025021055",
@@ -5527,6 +5552,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -5672,6 +5702,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -5954,11 +5989,6 @@
       "name": "C. Murphy",
       "sightings": [
         {
-          "teamAbbrev": "CHI",
-          "gameId": "2025020938",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
           "teamAbbrev": "EDM",
           "gameId": "2025020986",
           "seenAt": "2026-03-07T07:19:00.761Z"
@@ -6002,6 +6032,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -6067,6 +6102,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025020933",
           "seenAt": "2026-03-02T07:07:18.792Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -7250,11 +7290,6 @@
       "sightings": [
         {
           "teamAbbrev": "SEA",
-          "gameId": "2025021040",
-          "seenAt": "2026-03-14T06:00:32.337Z"
-        },
-        {
-          "teamAbbrev": "SEA",
           "gameId": "2025021055",
           "seenAt": "2026-03-15T18:00:32.932Z"
         },
@@ -7297,6 +7332,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -7787,6 +7827,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -8964,11 +9009,6 @@
       "name": "J. Dickinson",
       "sightings": [
         {
-          "teamAbbrev": "CHI",
-          "gameId": "2025020964",
-          "seenAt": "2026-03-04T04:02:55.897Z"
-        },
-        {
           "teamAbbrev": "EDM",
           "gameId": "2025020986",
           "seenAt": "2026-03-07T07:19:00.761Z"
@@ -9012,6 +9052,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -9170,11 +9215,6 @@
       "sightings": [
         {
           "teamAbbrev": "EDM",
-          "gameId": "2025020936",
-          "seenAt": "2026-03-06T05:30:49.106Z"
-        },
-        {
-          "teamAbbrev": "EDM",
           "gameId": "2025020986",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -9217,6 +9257,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -9377,6 +9422,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -9605,11 +9655,6 @@
       "sightings": [
         {
           "teamAbbrev": "EDM",
-          "gameId": "2025020936",
-          "seenAt": "2026-03-06T05:30:49.106Z"
-        },
-        {
-          "teamAbbrev": "EDM",
           "gameId": "2025020986",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -9652,6 +9697,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -9892,6 +9942,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -10092,6 +10147,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -10415,11 +10475,6 @@
       "sightings": [
         {
           "teamAbbrev": "SEA",
-          "gameId": "2025021040",
-          "seenAt": "2026-03-14T06:00:32.337Z"
-        },
-        {
-          "teamAbbrev": "SEA",
           "gameId": "2025021055",
           "seenAt": "2026-03-15T18:00:32.932Z"
         },
@@ -10462,6 +10517,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -10707,6 +10767,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -10910,11 +10975,6 @@
       "sightings": [
         {
           "teamAbbrev": "BUF",
-          "gameId": "2025020960",
-          "seenAt": "2026-03-04T04:02:55.897Z"
-        },
-        {
-          "teamAbbrev": "BUF",
           "gameId": "2025021003",
           "seenAt": "2026-03-09T20:15:48.605Z"
         },
@@ -10957,6 +11017,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -11075,11 +11140,6 @@
       "sightings": [
         {
           "teamAbbrev": "EDM",
-          "gameId": "2025020936",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "EDM",
           "gameId": "2025020986",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -11122,17 +11182,17 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
     "8477955": {
       "name": "J. McCann",
       "sightings": [
-        {
-          "teamAbbrev": "SEA",
-          "gameId": "2025021000",
-          "seenAt": "2026-03-08T05:57:11.976Z"
-        },
         {
           "teamAbbrev": "SEA",
           "gameId": "2025021024",
@@ -11177,6 +11237,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -11500,11 +11565,6 @@
       "sightings": [
         {
           "teamAbbrev": "SEA",
-          "gameId": "2025021040",
-          "seenAt": "2026-03-14T06:00:32.337Z"
-        },
-        {
-          "teamAbbrev": "SEA",
           "gameId": "2025021055",
           "seenAt": "2026-03-15T18:00:32.932Z"
         },
@@ -11547,6 +11607,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -11880,11 +11945,6 @@
       "sightings": [
         {
           "teamAbbrev": "EDM",
-          "gameId": "2025020936",
-          "seenAt": "2026-03-06T05:30:49.106Z"
-        },
-        {
-          "teamAbbrev": "EDM",
           "gameId": "2025020986",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -11927,6 +11987,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -12797,6 +12862,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -12915,11 +12985,6 @@
       "sightings": [
         {
           "teamAbbrev": "EDM",
-          "gameId": "2025020936",
-          "seenAt": "2026-03-06T05:30:49.106Z"
-        },
-        {
-          "teamAbbrev": "EDM",
           "gameId": "2025020986",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -12962,6 +13027,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -13060,11 +13130,6 @@
       "sightings": [
         {
           "teamAbbrev": "SEA",
-          "gameId": "2025021040",
-          "seenAt": "2026-03-14T06:00:32.337Z"
-        },
-        {
-          "teamAbbrev": "SEA",
           "gameId": "2025021055",
           "seenAt": "2026-03-15T18:00:32.932Z"
         },
@@ -13107,6 +13172,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -13117,6 +13187,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-02T01:29:54.218Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -13905,11 +13980,6 @@
       "sightings": [
         {
           "teamAbbrev": "EDM",
-          "gameId": "2025020936",
-          "seenAt": "2026-03-06T05:30:49.106Z"
-        },
-        {
-          "teamAbbrev": "EDM",
           "gameId": "2025020986",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -13952,6 +14022,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -15510,11 +15585,6 @@
       "sightings": [
         {
           "teamAbbrev": "SEA",
-          "gameId": "2025021040",
-          "seenAt": "2026-03-14T06:00:32.337Z"
-        },
-        {
-          "teamAbbrev": "SEA",
           "gameId": "2025021055",
           "seenAt": "2026-03-15T18:00:32.932Z"
         },
@@ -15557,6 +15627,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021203",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -15620,11 +15695,6 @@
       "sightings": [
         {
           "teamAbbrev": "EDM",
-          "gameId": "2025020936",
-          "seenAt": "2026-03-06T05:30:49.106Z"
-        },
-        {
-          "teamAbbrev": "EDM",
           "gameId": "2025020986",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -15667,6 +15737,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -16115,11 +16190,6 @@
       "sightings": [
         {
           "teamAbbrev": "SEA",
-          "gameId": "2025021040",
-          "seenAt": "2026-03-14T06:00:32.337Z"
-        },
-        {
-          "teamAbbrev": "SEA",
           "gameId": "2025021055",
           "seenAt": "2026-03-15T18:00:32.932Z"
         },
@@ -16162,6 +16232,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -16515,11 +16590,6 @@
       "sightings": [
         {
           "teamAbbrev": "BUF",
-          "gameId": "2025021003",
-          "seenAt": "2026-03-09T20:15:48.605Z"
-        },
-        {
-          "teamAbbrev": "BUF",
           "gameId": "2025021013",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -16562,6 +16632,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -16707,6 +16782,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -16864,11 +16944,6 @@
       "name": "L. Stanley",
       "sightings": [
         {
-          "teamAbbrev": "WPG",
-          "gameId": "2025020964",
-          "seenAt": "2026-03-08T05:57:11.976Z"
-        },
-        {
           "teamAbbrev": "BUF",
           "gameId": "2025021013",
           "seenAt": "2026-03-11T04:11:44.394Z"
@@ -16912,6 +16987,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -17285,11 +17365,6 @@
       "sightings": [
         {
           "teamAbbrev": "BUF",
-          "gameId": "2025021003",
-          "seenAt": "2026-03-09T20:15:48.605Z"
-        },
-        {
-          "teamAbbrev": "BUF",
           "gameId": "2025021013",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -17332,6 +17407,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -18382,6 +18462,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021139",
           "seenAt": "2026-03-27T04:08:45.678Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -18765,11 +18850,6 @@
       "sightings": [
         {
           "teamAbbrev": "SEA",
-          "gameId": "2025021000",
-          "seenAt": "2026-03-08T05:57:11.976Z"
-        },
-        {
-          "teamAbbrev": "SEA",
           "gameId": "2025021024",
           "seenAt": "2026-03-11T04:55:01.810Z"
         },
@@ -18812,6 +18892,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -18912,6 +18997,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -19382,6 +19472,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -19427,6 +19522,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -19458,11 +19558,6 @@
     "8480064": {
       "name": "J. Norris",
       "sightings": [
-        {
-          "teamAbbrev": "BUF",
-          "gameId": "2025021003",
-          "seenAt": "2026-03-09T20:15:48.605Z"
-        },
         {
           "teamAbbrev": "BUF",
           "gameId": "2025021013",
@@ -19507,6 +19602,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -19707,6 +19807,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -19747,6 +19852,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -19987,6 +20097,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -21065,11 +21180,6 @@
       "sightings": [
         {
           "teamAbbrev": "BUF",
-          "gameId": "2025021003",
-          "seenAt": "2026-03-09T20:15:48.605Z"
-        },
-        {
-          "teamAbbrev": "BUF",
           "gameId": "2025021013",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -21112,17 +21222,17 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
     "8480803": {
       "name": "E. Bouchard",
       "sightings": [
-        {
-          "teamAbbrev": "EDM",
-          "gameId": "2025020936",
-          "seenAt": "2026-03-06T05:30:49.106Z"
-        },
         {
           "teamAbbrev": "EDM",
           "gameId": "2025020986",
@@ -21167,6 +21277,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -21215,11 +21330,6 @@
       "sightings": [
         {
           "teamAbbrev": "BUF",
-          "gameId": "2025021003",
-          "seenAt": "2026-03-09T20:15:48.605Z"
-        },
-        {
-          "teamAbbrev": "BUF",
           "gameId": "2025021013",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -21262,6 +21372,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -21430,11 +21545,6 @@
       "sightings": [
         {
           "teamAbbrev": "EDM",
-          "gameId": "2025020929",
-          "seenAt": "2026-03-04T05:37:04.015Z"
-        },
-        {
-          "teamAbbrev": "EDM",
           "gameId": "2025020936",
           "seenAt": "2026-03-06T05:30:49.106Z"
         },
@@ -21477,6 +21587,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -21518,11 +21633,6 @@
     "8480839": {
       "name": "R. Dahlin",
       "sightings": [
-        {
-          "teamAbbrev": "BUF",
-          "gameId": "2025021003",
-          "seenAt": "2026-03-09T20:15:48.605Z"
-        },
         {
           "teamAbbrev": "BUF",
           "gameId": "2025021013",
@@ -21567,6 +21677,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -22877,6 +22992,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -23435,11 +23555,6 @@
       "sightings": [
         {
           "teamAbbrev": "BUF",
-          "gameId": "2025021003",
-          "seenAt": "2026-03-09T20:15:48.605Z"
-        },
-        {
-          "teamAbbrev": "BUF",
           "gameId": "2025021013",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -23482,6 +23597,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -23535,11 +23655,6 @@
       "sightings": [
         {
           "teamAbbrev": "BUF",
-          "gameId": "2025021003",
-          "seenAt": "2026-03-09T20:15:48.605Z"
-        },
-        {
-          "teamAbbrev": "BUF",
           "gameId": "2025021013",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -23582,6 +23697,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -24080,11 +24200,6 @@
       "sightings": [
         {
           "teamAbbrev": "BUF",
-          "gameId": "2025020960",
-          "seenAt": "2026-03-04T04:02:55.897Z"
-        },
-        {
-          "teamAbbrev": "BUF",
           "gameId": "2025021003",
           "seenAt": "2026-03-09T20:15:48.605Z"
         },
@@ -24127,6 +24242,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021159",
           "seenAt": "2026-04-02T01:29:54.218Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -24163,11 +24283,6 @@
     "8481554": {
       "name": "K. Kakko",
       "sightings": [
-        {
-          "teamAbbrev": "SEA",
-          "gameId": "2025021040",
-          "seenAt": "2026-03-14T06:00:32.337Z"
-        },
         {
           "teamAbbrev": "SEA",
           "gameId": "2025021055",
@@ -24212,6 +24327,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -25070,11 +25190,6 @@
       "sightings": [
         {
           "teamAbbrev": "EDM",
-          "gameId": "2025020936",
-          "seenAt": "2026-03-06T05:30:49.106Z"
-        },
-        {
-          "teamAbbrev": "EDM",
           "gameId": "2025020986",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -25117,6 +25232,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -26500,11 +26620,6 @@
       "sightings": [
         {
           "teamAbbrev": "BUF",
-          "gameId": "2025021003",
-          "seenAt": "2026-03-09T20:15:48.605Z"
-        },
-        {
-          "teamAbbrev": "BUF",
           "gameId": "2025021013",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -26547,6 +26662,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -27462,6 +27582,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -28029,11 +28154,6 @@
       "name": "B. McMann",
       "sightings": [
         {
-          "teamAbbrev": "TOR",
-          "gameId": "2025020954",
-          "seenAt": "2026-03-03T03:50:51.829Z"
-        },
-        {
           "teamAbbrev": "SEA",
           "gameId": "2025021055",
           "seenAt": "2026-03-15T18:00:32.932Z"
@@ -28077,6 +28197,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -28492,6 +28617,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025020977",
           "seenAt": "2026-03-09T04:14:15.420Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -28590,11 +28720,6 @@
       "sightings": [
         {
           "teamAbbrev": "BUF",
-          "gameId": "2025021003",
-          "seenAt": "2026-03-09T20:15:48.605Z"
-        },
-        {
-          "teamAbbrev": "BUF",
           "gameId": "2025021013",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -28637,6 +28762,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -28730,11 +28860,6 @@
       "sightings": [
         {
           "teamAbbrev": "SEA",
-          "gameId": "2025021040",
-          "seenAt": "2026-03-14T06:00:32.337Z"
-        },
-        {
-          "teamAbbrev": "SEA",
           "gameId": "2025021055",
           "seenAt": "2026-03-15T18:00:32.932Z"
         },
@@ -28777,6 +28902,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -28840,11 +28970,6 @@
       "sightings": [
         {
           "teamAbbrev": "BUF",
-          "gameId": "2025021003",
-          "seenAt": "2026-03-09T20:15:48.605Z"
-        },
-        {
-          "teamAbbrev": "BUF",
           "gameId": "2025021013",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -28887,6 +29012,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -29777,6 +29907,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021076",
           "seenAt": "2026-03-18T18:00:38.134Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -29882,6 +30017,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -30195,11 +30335,6 @@
       "sightings": [
         {
           "teamAbbrev": "SEA",
-          "gameId": "2025021040",
-          "seenAt": "2026-03-14T06:00:32.337Z"
-        },
-        {
-          "teamAbbrev": "SEA",
           "gameId": "2025021055",
           "seenAt": "2026-03-15T18:00:32.932Z"
         },
@@ -30242,6 +30377,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -31132,6 +31272,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021215",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -31615,11 +31760,6 @@
       "sightings": [
         {
           "teamAbbrev": "EDM",
-          "gameId": "2025020936",
-          "seenAt": "2026-03-06T05:30:49.106Z"
-        },
-        {
-          "teamAbbrev": "EDM",
           "gameId": "2025020986",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -31662,6 +31802,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -32875,11 +33020,6 @@
       "sightings": [
         {
           "teamAbbrev": "BUF",
-          "gameId": "2025021003",
-          "seenAt": "2026-03-09T20:15:48.605Z"
-        },
-        {
-          "teamAbbrev": "BUF",
           "gameId": "2025021013",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -32922,6 +33062,11 @@
           "teamAbbrev": "BUF",
           "gameId": "2025021179",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "BUF",
+          "gameId": "2025021229",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -33222,6 +33367,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -34192,6 +34342,11 @@
           "teamAbbrev": "EDM",
           "gameId": "2025021187",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "EDM",
+          "gameId": "2025021218",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -34450,11 +34605,6 @@
       "sightings": [
         {
           "teamAbbrev": "SEA",
-          "gameId": "2025021040",
-          "seenAt": "2026-03-14T06:00:32.337Z"
-        },
-        {
-          "teamAbbrev": "SEA",
           "gameId": "2025021055",
           "seenAt": "2026-03-15T18:00:32.932Z"
         },
@@ -34497,6 +34647,11 @@
           "teamAbbrev": "SEA",
           "gameId": "2025021221",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "SEA",
+          "gameId": "2025021230",
+          "seenAt": "2026-04-07T04:31:00.329Z"
         }
       ]
     },
@@ -35332,7 +35487,7 @@
     }
   },
   "movements": [],
-  "lastUpdated": "2026-04-07T01:07:37.435Z",
+  "lastUpdated": "2026-04-07T04:31:00.329Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -35365,8 +35520,8 @@
         "reason": "LEAGUE_NOT_SUPPORTED"
       }
     ],
-    "playersIngested": 648,
+    "playersIngested": 655,
     "movementsDetectedThisRun": [],
-    "timestamp": "2026-04-07T01:07:37.435Z"
+    "timestamp": "2026-04-07T04:31:00.329Z"
   }
 }

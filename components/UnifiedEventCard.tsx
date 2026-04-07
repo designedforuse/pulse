@@ -777,12 +777,14 @@ export default function UnifiedEventCard({
   const isRacing = event.sport === "racing";
   const isGolf = event.sport === "golf";
   const isAthletics = event.sport === "athletics";
+  const isHorseRacing = event.sport === "horse-racing";
   const gpFlag = isRacing ? getGrandPrixFlag(event.competitionName || event.homeTeam) : null;
   const golfTournament = isGolf ? (event.tournamentName || event.homeTeam) : null;
   const golfRound = isGolf && event.sessionTitle
     ? (event.sessionTitle.match(/Round \d+/)?.[0] || event.sessionTitle.split("—")[1]?.trim() || event.sessionTitle)
     : null;
   const athleticsTournament = isAthletics ? (event.tournamentName || event.homeTeam) : null;
+  const horseRacingName = isHorseRacing ? (event.tournamentName || event.homeTeam) : null;
 
 
   const awayRank = isTennis ? event.tennisPlayer1Rank : undefined;
@@ -795,7 +797,7 @@ export default function UnifiedEventCard({
 
   const logoSize = featured ? 22 : 20;
   const isUpcoming = !isLive && !isFinal;
-  const showEspnStyle = espnLayout && isUpcoming && showTeamLayout && !isRacing && !isGolf && !isAthletics;
+  const showEspnStyle = espnLayout && isUpcoming && showTeamLayout && !isRacing && !isGolf && !isAthletics && !isHorseRacing;
   const showRacingEspnStyle = espnLayout && isUpcoming && isRacing;
   const providerBrandId = resolveProviderDisplay(event).brandId;
 
@@ -905,6 +907,18 @@ export default function UnifiedEventCard({
                   numberOfLines={1}
                 >
                   {athleticsTournament}
+                </Text>
+              </View>
+            </View>
+          ) : isHorseRacing ? (
+            <View style={uStyles.racingLayout}>
+              <View style={uStyles.racingCircuitRow}>
+                <Text style={{ fontSize: featured ? 18 : 16 }}>🐎</Text>
+                <Text
+                  style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
+                  numberOfLines={1}
+                >
+                  {horseRacingName}
                 </Text>
               </View>
             </View>
