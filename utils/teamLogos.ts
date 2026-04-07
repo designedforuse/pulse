@@ -574,6 +574,23 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
     return null;
   }
 
+  if (league === "IPL") {
+    const IPL_URLS: Record<string, string> = {
+      "Chennai Super Kings":        "https://documents.iplt20.com/ipl/CSK/logos/Logooutline/CSKoutline.png",
+      "Delhi Capitals":             "https://documents.iplt20.com/ipl/DC/Logos/LogoOutline/DCoutline.png",
+      "Gujarat Titans":             "https://documents.iplt20.com/ipl/GT/Logos/Logooutline/GToutline.png",
+      "Kolkata Knight Riders":      "https://documents.iplt20.com/ipl/KKR/Logos/Logooutline/KKRoutline.png",
+      "Lucknow Super Giants":       "https://documents.iplt20.com/ipl/LSG/Logos/Logooutline/LSGoutline.png",
+      "Mumbai Indians":             "https://documents.iplt20.com/ipl/MI/Logos/Logooutline/MIoutline.png",
+      "Punjab Kings":               "https://documents.iplt20.com/ipl/PBKS/Logos/Logooutline/PBKSoutline.png",
+      "Rajasthan Royals":           "https://documents.iplt20.com/ipl/RR/Logos/Logooutline/RRoutline.png",
+      "Royal Challengers Bengaluru":"https://documents.iplt20.com/ipl/RCB/Logos/Logooutline/RCBoutline.png",
+      "Royal Challengers Bangalore":"https://documents.iplt20.com/ipl/RCB/Logos/Logooutline/RCBoutline.png",
+      "Sunrisers Hyderabad":        "https://documents.iplt20.com/ipl/SRH/Logos/Logooutline/SRHoutline.png",
+    };
+    return IPL_URLS[teamName] || null;
+  }
+
   if (sportLower === "cricket" || league === "ICC") {
     return CRICKET_COUNTRY_FLAGS[teamName] || null;
   }
