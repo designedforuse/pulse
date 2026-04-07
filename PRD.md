@@ -42,7 +42,7 @@ Three-tab interface. Watch is the default landing tab.
 
 | Tab | Icon | Color | Purpose |
 |-----|------|-------|---------|
-| **Watch** | Pulse / heartbeat waveform | Purple | Live events, Chaos multiview, full schedule |
+| **Watch** | Pulse / heartbeat waveform | Purple | Live events, Chaos multiview, 24-hour look ahead schedule |
 | **Rituals** | Jersey / t-shirt | Teal | Curated viewing packages organized by mode |
 | **Stories** | Sparkles | Pink | Daily wrap, tonight's narrative, intelligence cards |
 
