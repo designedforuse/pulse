@@ -216,8 +216,9 @@ function FavoritesSection() {
 function FavoriteTeamChips() {
   const { allTeams, isTeamEnabled, toggleTeam } = useFavorites();
 
+  const sportOrder = ["baseball", "basketball", "hockey", "soccer", "golf", "tennis", "racing", "athletics", "rugby", "cricket"];
   const chips: { team: string; sport: string; league: string }[] = [];
-  for (const sport of Object.keys(allTeams)) {
+  for (const sport of sportOrder) {
     const sportFavs = allTeams[sport];
     if (!sportFavs) continue;
     const seen = new Set<string>();
