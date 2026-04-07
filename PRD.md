@@ -40,11 +40,11 @@ Follows 3–8 sports. Has 4–12 anchor teams. Watches on a mix of Apple TV, You
 
 Three-tab interface. Watch is the default landing tab.
 
-| Tab | Icon | Purpose |
-|-----|------|---------|
-| **Watch** | ⚡ | Live events, Chaos multiview, full schedule |
-| **Rituals** | Teal | Curated viewing packages organized by mode |
-| **Stories** | Pink | Daily wrap, tonight's narrative, intelligence cards |
+| Tab | Icon | Color | Purpose |
+|-----|------|-------|---------|
+| **Watch** | Pulse / heartbeat waveform | Purple | Live events, Chaos multiview, full schedule |
+| **Rituals** | Jersey / t-shirt | Teal | Curated viewing packages organized by mode |
+| **Stories** | Sparkles | Pink | Daily wrap, tonight's narrative, intelligence cards |
 
 iOS uses native liquid glass tab bar. Android uses a standard bottom tab bar.
 
