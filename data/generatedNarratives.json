@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-07T01:00:43.654Z",
+  "lastUpdated": "2026-04-07T01:04:50.294Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -75,7 +75,7 @@
         ],
         "playersIngested": 648,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-07T01:00:43.654Z"
+        "timestamp": "2026-04-07T01:04:50.294Z"
       },
       "cacheHistoryCount": 833,
       "error": null
@@ -85,7 +85,7 @@
     "candidateCountAfterCap": 3,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -725.0121261111111,
+      "hoursUntil": -725.0806372222222,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -180,8 +180,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-04-07T01:00:43.654Z",
-      "expiresAt": "2026-04-14T01:00:43.654Z",
+      "triggeredAt": "2026-04-07T01:04:50.294Z",
+      "expiresAt": "2026-04-14T01:04:50.294Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -204,8 +204,8 @@
           "echl-web-25374"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-04-07T01:00:43.654Z",
-        "windowEnd": "2026-04-14T01:00:43.654Z",
+        "windowStart": "2026-04-07T01:04:50.294Z",
+        "windowEnd": "2026-04-14T01:04:50.294Z",
         "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -221,7 +221,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-04-07T01:00:43.654Z",
+      "triggeredAt": "2026-04-07T01:04:50.294Z",
       "expiresAt": "2026-04-08T03:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -253,8 +253,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-07T01:00:43.654Z",
-      "expiresAt": "2026-04-14T01:00:43.654Z",
+      "triggeredAt": "2026-04-07T01:04:50.294Z",
+      "expiresAt": "2026-04-14T01:04:50.294Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
