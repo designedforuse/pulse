@@ -697,7 +697,7 @@
   },
   "playoff_push:tulsa oilers playoff push april 2026": {
     "video": null,
-    "fetchedAt": "2026-04-07T14:53:55.649Z",
+    "fetchedAt": "2026-04-08T03:21:44.770Z",
     "query": "Tulsa Oilers playoff push April 2026",
     "debug": {
       "searchQuery": "Tulsa Oilers playoff push April 2026",
@@ -729,21 +729,61 @@
   },
   "league_moment:big stage sports april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=dLkhmz56Cxg",
-      "thumbnailUrl": "https://img.youtube.com/vi/dLkhmz56Cxg/hqdefault.jpg",
-      "durationSeconds": 679,
-      "title": "Chutkire Bada Khabar || 7th APRIL 2026 || 4PM Digital Bulletin || Kanak News",
+      "url": "https://www.youtube.com/watch?v=3Wwj2VXMRxk",
+      "thumbnailUrl": "https://img.youtube.com/vi/3Wwj2VXMRxk/hqdefault.jpg",
+      "durationSeconds": 2345,
+      "title": "KSAT News at 6 p.m. : Apr 07, 2026",
       "source": "youtube",
-      "channel": "Kanak News",
-      "publishedAt": "4 hours ago"
+      "channel": "KSAT 12",
+      "publishedAt": "3 hours ago"
     },
-    "fetchedAt": "2026-04-07T14:53:56.631Z",
+    "fetchedAt": "2026-04-08T03:21:45.547Z",
     "query": "Big Stage sports April 2026",
     "debug": {
       "searchQuery": "Big Stage sports April 2026",
-      "selectedVideoTitle": "Chutkire Bada Khabar || 7th APRIL 2026 || 4PM Digital Bulletin || Kanak News",
-      "selectedVideoPublishedAt": "4 hours ago",
-      "selectedVideoChannel": "Kanak News",
+      "selectedVideoTitle": "KSAT News at 6 p.m. : Apr 07, 2026",
+      "selectedVideoPublishedAt": "3 hours ago",
+      "selectedVideoChannel": "KSAT 12",
+      "rejectedForAgeCount": 1
+    }
+  },
+  "upset_alert:real madrid vs bayern munich upset highlights april 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=3cTTkzmjbBk",
+      "thumbnailUrl": "https://img.youtube.com/vi/3cTTkzmjbBk/hqdefault.jpg",
+      "durationSeconds": 711,
+      "title": "\"THE KINGS ARE DETHRONED?! Bayern Beat Real Madrid 2-1 at the Bernabéu | Fans GO CRAZY 😱\"",
+      "source": "youtube",
+      "channel": "STAR COMPS HINDI",
+      "publishedAt": "2 hours ago"
+    },
+    "fetchedAt": "2026-04-07T23:44:35.834Z",
+    "query": "Real Madrid vs Bayern Munich upset highlights April 2026",
+    "debug": {
+      "searchQuery": "Real Madrid vs Bayern Munich upset highlights April 2026",
+      "selectedVideoTitle": "\"THE KINGS ARE DETHRONED?! Bayern Beat Real Madrid 2-1 at the Bernabéu | Fans GO CRAZY 😱\"",
+      "selectedVideoPublishedAt": "2 hours ago",
+      "selectedVideoChannel": "STAR COMPS HINDI",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:florida panthers vs montréal canadiens upset highlights april 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=yqj6BRb6p0c",
+      "thumbnailUrl": "https://img.youtube.com/vi/yqj6BRb6p0c/hqdefault.jpg",
+      "durationSeconds": 2788,
+      "title": "Trump escalates threats to Iran | CTV News Montreal at Six for Tuesday, April 7, 2026",
+      "source": "youtube",
+      "channel": "CTV News",
+      "publishedAt": "9 minutes ago"
+    },
+    "fetchedAt": "2026-04-08T03:21:45.083Z",
+    "query": "Florida Panthers vs Montréal Canadiens upset highlights April 2026",
+    "debug": {
+      "searchQuery": "Florida Panthers vs Montréal Canadiens upset highlights April 2026",
+      "selectedVideoTitle": "Trump escalates threats to Iran | CTV News Montreal at Six for Tuesday, April 7, 2026",
+      "selectedVideoPublishedAt": "9 minutes ago",
+      "selectedVideoChannel": "CTV News",
       "rejectedForAgeCount": 0
     }
   }

@@ -533,6 +533,18 @@ function matchToEvent(match: CricApiMatch, classification: {
     startTime = fallback.toISOString();
   }
 
+  // IPL matches are played in India (IST = UTC+5:30). CricAPI often provides
+  // IST times mislabeled as GMT, or omits the time entirely (midnight fallback).
+  // Valid IPL UTC start times: 10:00 (3:30 PM IST weekend) or 14:00 (7:30 PM IST evening).
+  // Any UTC hour < 10 is invalid for an India match — correct to 14:00 UTC.
+  if (classification.league === "IPL") {
+    const utcHour = new Date(startTime).getUTCHours();
+    if (utcHour < 10) {
+      const datePart = startTime.substring(0, 10);
+      startTime = datePart + "T14:00:00.000Z";
+    }
+  }
+
   const durationMin = CRICKET_DURATION_MIN[match.matchType] || 210;
   const leagueKey = getLeagueKey(classification.league);
 
