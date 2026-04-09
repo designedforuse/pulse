@@ -241,30 +241,38 @@ export default function EventSheet() {
 
           {/* Matchup area */}
           {isSession && isGolf ? (
-            <View style={styles.golfMatchupContainer}>
-              {event.tournamentName === "The Masters" ? (
-                <Image source={MASTERS_LOGO} style={styles.golfTournamentLogo} resizeMode="contain" />
-              ) : (
-                <Text style={styles.golfEmoji}>⛳</Text>
-              )}
-              <Text style={styles.golfTournamentName}>{event.tournamentName || event.homeTeam}</Text>
-              {event.sessionTitle && (
-                <View style={[styles.golfRoundChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "40" }]}>
-                  <Text style={[styles.golfRoundChipText, { color: sportColor }]}>
-                    {event.sessionTitle.split("—")[1]?.trim() || event.sessionTitle}
-                  </Text>
-                </View>
-              )}
-              <View style={styles.golfTimeRow}>
-                <Text style={styles.golfTime}>{timeLabel}</Text>
-                <Text style={styles.golfTimeSep}>·</Text>
-                <Text style={styles.golfDate}>{dateLabel}</Text>
+            <View style={styles.espnMatchup}>
+              {/* Left: logo + tournament name */}
+              <View style={styles.espnTeam}>
+                {event.tournamentName === "The Masters" ? (
+                  <Image source={MASTERS_LOGO} style={styles.golfSheetLogo} resizeMode="contain" />
+                ) : (
+                  <Text style={{ fontSize: 44 }}>⛳</Text>
+                )}
+                <Text style={styles.espnTeamName} numberOfLines={2}>
+                  {event.tournamentName || event.homeTeam}
+                </Text>
               </View>
-              {providerBrandId && (
-                <View style={styles.golfProviderRow}>
-                  <ProviderLogo providerId={providerBrandId} size={24} />
-                </View>
-              )}
+
+              {/* Center: time + provider */}
+              <View style={styles.espnCenter}>
+                {isLiveState ? (
+                  <View style={styles.liveChip}>
+                    <PulsingDot />
+                    <Text style={styles.liveChipText}>LIVE</Text>
+                  </View>
+                ) : (
+                  <Text style={styles.espnTime}>{timeLabel}</Text>
+                )}
+                {providerBrandId && <ProviderLogo providerId={providerBrandId} size={22} />}
+              </View>
+
+              {/* Right: round label */}
+              <View style={styles.espnTeam}>
+                <Text style={styles.golfRoundLabel} numberOfLines={2}>
+                  {event.sessionTitle?.split("—")[1]?.trim() || event.sessionTitle || ""}
+                </Text>
+              </View>
             </View>
           ) : isSession ? (
             <View style={styles.matchupContainer}>
@@ -605,56 +613,15 @@ const styles = StyleSheet.create({
     textAlign: "center",
     letterSpacing: 0.3,
   },
-  golfMatchupContainer: {
-    alignItems: "center",
-    gap: 12,
-    paddingVertical: 12,
+  golfSheetLogo: {
+    width: 64,
+    height: 64,
   },
-  golfTournamentLogo: {
-    width: 96,
-    height: 96,
-  },
-  golfEmoji: {
-    fontSize: 52,
-  },
-  golfTournamentName: {
-    fontSize: 22,
+  golfRoundLabel: {
+    fontSize: 18,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
     textAlign: "center",
-  },
-  golfRoundChip: {
-    paddingHorizontal: 16,
-    paddingVertical: 6,
-    borderRadius: 20,
-    borderWidth: 1,
-  },
-  golfRoundChipText: {
-    fontSize: 13,
-    fontFamily: "Inter_700Bold",
-    letterSpacing: 0.6,
-  },
-  golfTimeRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  golfTime: {
-    fontSize: 16,
-    fontFamily: "Inter_600SemiBold",
-    color: Colors.textPrimary,
-  },
-  golfTimeSep: {
-    fontSize: 14,
-    color: Colors.textMuted,
-  },
-  golfDate: {
-    fontSize: 14,
-    fontFamily: "Inter_400Regular",
-    color: Colors.textSecondary,
-  },
-  golfProviderRow: {
-    marginTop: 4,
   },
   openButton: {
     flexDirection: "row",
