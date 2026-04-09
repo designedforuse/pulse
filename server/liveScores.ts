@@ -49,6 +49,10 @@ export interface ScoreData {
   golfLeaderCountry?: string;
   golfLeaderThru?: string;
   golfRound?: number;
+  golfActiveLeader?: string;
+  golfActiveLeaderScore?: string;
+  golfActiveLeaderCountry?: string;
+  golfActiveLeaderThru?: string;
 }
 
 export interface ScoresResponse {
@@ -1608,6 +1612,20 @@ function slugify(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().replace(/\s+/g, "-");
 }
 
+function countGolfPlayedHoles(competitor: any, currentRound: number): number {
+  const roundEntry = (competitor.linescores || []).find((r: any) => r.period === currentRound);
+  const holes: any[] = roundEntry?.linescores || [];
+  return holes.filter((h: any) =>
+    h.displayValue && h.displayValue !== "0" && h.displayValue !== "0.0" && h.displayValue !== "-"
+  ).length;
+}
+
+function golfThruLabel(holesPlayed: number, lastHolePeriod?: number): string {
+  if (holesPlayed === 18) return "F";
+  if (holesPlayed > 0) return `Thru ${lastHolePeriod ?? holesPlayed}`;
+  return "•";
+}
+
 async function fetchGolfScores(events: { id: string; tournamentName: string }[]): Promise<Record<string, ScoreData>> {
   const scores: Record<string, ScoreData> = {};
   if (events.length === 0) return scores;
@@ -1632,30 +1650,43 @@ async function fetchGolfScores(events: { id: string; tournamentName: string }[])
       const leader = competitors[0];
       if (!leader) continue;
 
+      const currentRound: number = comp.status?.period ?? 0;
+
+      // Leader info
       const golfLeader: string = leader.athlete?.displayName || "";
       const golfLeaderScore: string = leader.score || "";
       const golfLeaderCountry: string = leader.athlete?.flag?.alt || "";
 
-      // Determine current round and leader's thru-hole
-      const currentRound: number = comp.status?.period ?? 0;
+      const leaderHolesPlayed = countGolfPlayedHoles(leader, currentRound);
       const leaderRoundEntry = (leader.linescores || []).find((r: any) => r.period === currentRound);
-      const roundHoles: any[] = leaderRoundEntry?.linescores || [];
-      const playedHoles = roundHoles.filter((h: any) =>
+      const leaderRoundHoles: any[] = leaderRoundEntry?.linescores || [];
+      const leaderPlayedHolesArr = leaderRoundHoles.filter((h: any) =>
         h.displayValue && h.displayValue !== "0" && h.displayValue !== "0.0" && h.displayValue !== "-"
       );
-      let golfLeaderThru: string | undefined;
-      if (playedHoles.length === 18) {
-        golfLeaderThru = "F";
-      } else if (playedHoles.length > 0) {
-        const lastHole = playedHoles[playedHoles.length - 1];
-        golfLeaderThru = `Thru ${lastHole.period}`;
+      const lastLeaderHole = leaderPlayedHolesArr[leaderPlayedHolesArr.length - 1];
+      const golfLeaderThru = golfThruLabel(leaderHolesPlayed, lastLeaderHole?.period);
+
+      // Best active player: best-positioned (lowest order) competitor currently on the course
+      // (1–17 holes played in current round), skipping the overall leader
+      let golfActiveLeader: string | undefined;
+      let golfActiveLeaderScore: string | undefined;
+      let golfActiveLeaderCountry: string | undefined;
+      let golfActiveLeaderThru: string | undefined;
+
+      for (const comp of competitors) {
+        const holesPlayed = countGolfPlayedHoles(comp, currentRound);
+        const isOnCourse = holesPlayed > 0 && holesPlayed < 18;
+        if (!isOnCourse) continue;
+        const name: string = comp.athlete?.displayName || "";
+        if (name === golfLeader) continue; // skip if same as overall leader
+        golfActiveLeader = name;
+        golfActiveLeaderScore = comp.score;
+        golfActiveLeaderCountry = comp.athlete?.flag?.alt;
+        golfActiveLeaderThru = `Thru ${holesPlayed}`;
+        break; // first active player in leaderboard order = best active position
       }
 
-      // Only call the tournament "final" if ESPN says "post" AND the leader
-      // has actually finished their current round (18 holes played).
-      // If statusState is "post" but the leader is only "Thru 6", ESPN is
-      // reporting the previous round's post-state while a new round is live.
-      const leaderFinishedRound = golfLeaderThru === "F" || playedHoles.length === 18;
+      const leaderFinishedRound = leaderHolesPlayed === 18;
       const scorePayload: ScoreData = {
         awayScore: 0,
         homeScore: 0,
@@ -1665,6 +1696,10 @@ async function fetchGolfScores(events: { id: string; tournamentName: string }[])
         golfLeaderCountry,
         golfLeaderThru,
         golfRound: currentRound || undefined,
+        golfActiveLeader,
+        golfActiveLeaderScore,
+        golfActiveLeaderCountry,
+        golfActiveLeaderThru,
       };
 
       for (const ev of events) {

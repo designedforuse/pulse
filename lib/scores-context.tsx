@@ -46,6 +46,15 @@ export interface ScoreData {
   racingLapNum?: number;
   racingTotalLaps?: number;
   racingSessionType?: string;
+  golfLeader?: string;
+  golfLeaderScore?: string;
+  golfLeaderCountry?: string;
+  golfLeaderThru?: string;
+  golfRound?: number;
+  golfActiveLeader?: string;
+  golfActiveLeaderScore?: string;
+  golfActiveLeaderCountry?: string;
+  golfActiveLeaderThru?: string;
 }
 
 interface ScoresApiResponse {

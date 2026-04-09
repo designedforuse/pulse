@@ -988,7 +988,42 @@ export default function UnifiedEventCard({
                 >
                   {golfTournament}
                 </Text>
+                {golfRound && (
+                  <Text style={[uStyles.racingSessionSubtitle, { marginLeft: 4 }]} numberOfLines={1}>
+                    R{golfRound}
+                  </Text>
+                )}
               </View>
+              {(isLive || isFinal) && score?.golfLeader && (
+                <View style={uStyles.golfLeaderSection}>
+                  {/* Overall leader row */}
+                  <View style={uStyles.golfLeaderRow}>
+                    <Text style={[uStyles.golfLeaderScore, { color: sportColor }]} numberOfLines={1}>
+                      {score.golfLeaderScore}
+                    </Text>
+                    <Text style={uStyles.golfLeaderName} numberOfLines={1}>
+                      {score.golfLeader.split(" ").pop()}
+                    </Text>
+                    <Text style={uStyles.golfLeaderThru} numberOfLines={1}>
+                      {score.golfLeaderThru}
+                    </Text>
+                  </View>
+                  {/* Active best player — only when different from leader and still on course */}
+                  {isLive && score.golfActiveLeader && (
+                    <View style={[uStyles.golfLeaderRow, uStyles.golfActiveRow]}>
+                      <Text style={[uStyles.golfLeaderScore, uStyles.golfActiveScore]} numberOfLines={1}>
+                        {score.golfActiveLeaderScore}
+                      </Text>
+                      <Text style={[uStyles.golfLeaderName, uStyles.golfActiveName]} numberOfLines={1}>
+                        {score.golfActiveLeader.split(" ").pop()}
+                      </Text>
+                      <Text style={[uStyles.golfLeaderThru, uStyles.golfActiveThru]} numberOfLines={1}>
+                        {score.golfActiveLeaderThru}
+                      </Text>
+                    </View>
+                  )}
+                </View>
+              )}
             </View>
           ) : isRacing ? (
             <View style={uStyles.racingLayout}>
@@ -1438,6 +1473,44 @@ const uStyles = StyleSheet.create({
   racingLeaderSection: {
     marginTop: 4,
     gap: 2,
+  },
+  golfLeaderSection: {
+    marginTop: 6,
+    gap: 3,
+  },
+  golfLeaderRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 6,
+  },
+  golfLeaderScore: {
+    fontSize: 14,
+    fontFamily: "Inter_700Bold",
+    minWidth: 32,
+  },
+  golfLeaderName: {
+    fontSize: 14,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+    flex: 1,
+  },
+  golfLeaderThru: {
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+  },
+  golfActiveRow: {
+    opacity: 0.75,
+  },
+  golfActiveScore: {
+    color: Colors.textSecondary,
+  },
+  golfActiveName: {
+    color: Colors.textSecondary,
+    fontFamily: "Inter_500Medium",
+  },
+  golfActiveThru: {
+    color: Colors.textMuted,
   },
   racingLeaderRow: {
     flexDirection: "row" as const,
