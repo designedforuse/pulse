@@ -697,7 +697,7 @@
   },
   "playoff_push:tulsa oilers playoff push april 2026": {
     "video": null,
-    "fetchedAt": "2026-04-08T03:21:44.770Z",
+    "fetchedAt": "2026-04-08T18:00:15.975Z",
     "query": "Tulsa Oilers playoff push April 2026",
     "debug": {
       "searchQuery": "Tulsa Oilers playoff push April 2026",
@@ -729,22 +729,22 @@
   },
   "league_moment:big stage sports april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=3Wwj2VXMRxk",
-      "thumbnailUrl": "https://img.youtube.com/vi/3Wwj2VXMRxk/hqdefault.jpg",
-      "durationSeconds": 2345,
-      "title": "KSAT News at 6 p.m. : Apr 07, 2026",
+      "url": "https://www.youtube.com/watch?v=RKj5RzQ5c7w",
+      "thumbnailUrl": "https://img.youtube.com/vi/RKj5RzQ5c7w/hqdefault.jpg",
+      "durationSeconds": 969,
+      "title": "Iran’s Big Victory? || Ceasefire || ARY News 11 AM Headlines || 8th April 2026",
       "source": "youtube",
-      "channel": "KSAT 12",
-      "publishedAt": "3 hours ago"
+      "channel": "ARY News",
+      "publishedAt": "11h ago"
     },
-    "fetchedAt": "2026-04-08T03:21:45.547Z",
+    "fetchedAt": "2026-04-08T18:00:16.473Z",
     "query": "Big Stage sports April 2026",
     "debug": {
       "searchQuery": "Big Stage sports April 2026",
-      "selectedVideoTitle": "KSAT News at 6 p.m. : Apr 07, 2026",
-      "selectedVideoPublishedAt": "3 hours ago",
-      "selectedVideoChannel": "KSAT 12",
-      "rejectedForAgeCount": 1
+      "selectedVideoTitle": "Iran’s Big Victory? || Ceasefire || ARY News 11 AM Headlines || 8th April 2026",
+      "selectedVideoPublishedAt": "11h ago",
+      "selectedVideoChannel": "ARY News",
+      "rejectedForAgeCount": 0
     }
   },
   "upset_alert:real madrid vs bayern munich upset highlights april 2026": {
@@ -784,6 +784,26 @@
       "selectedVideoTitle": "Trump escalates threats to Iran | CTV News Montreal at Six for Tuesday, April 7, 2026",
       "selectedVideoPublishedAt": "9 minutes ago",
       "selectedVideoChannel": "CTV News",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:barcelona vs atlético madrid upset highlights april 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=LgaoU7KA9iA",
+      "thumbnailUrl": "https://img.youtube.com/vi/LgaoU7KA9iA/hqdefault.jpg",
+      "durationSeconds": 604,
+      "title": "\"CAMP NOU IN SHOCK 😱 Barcelona DESTROYED by Atlético Madrid 2-0 | 10 Men NIGHTMARE | UCL Reaction\"",
+      "source": "youtube",
+      "channel": "STAR COMPS HINDI",
+      "publishedAt": "2h ago"
+    },
+    "fetchedAt": "2026-04-09T00:38:54.473Z",
+    "query": "Barcelona vs Atlético Madrid upset highlights April 2026",
+    "debug": {
+      "searchQuery": "Barcelona vs Atlético Madrid upset highlights April 2026",
+      "selectedVideoTitle": "\"CAMP NOU IN SHOCK 😱 Barcelona DESTROYED by Atlético Madrid 2-0 | 10 Men NIGHTMARE | UCL Reaction\"",
+      "selectedVideoPublishedAt": "2h ago",
+      "selectedVideoChannel": "STAR COMPS HINDI",
       "rejectedForAgeCount": 0
     }
   }

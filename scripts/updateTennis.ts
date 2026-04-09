@@ -442,8 +442,25 @@ interface EspnEvent {
 
 const espnSeedMaps = new Map<number, Map<string, number>>();
 
-async function fetchEspnTournamentMatches(): Promise<Map<number, EspnCompetition[]>> {
-  const result = new Map<number, EspnCompetition[]>();
+// Match ESPN event name to our tournament list by keyword overlap (name-based, not ID-based)
+function matchEspnEventToTournament(espnEventName: string): TennisTournament | null {
+  const lower = espnEventName.toLowerCase();
+  // Try each tournament — check if any keyword from our name appears in the ESPN name
+  let bestMatch: TennisTournament | null = null;
+  let bestScore = 0;
+  for (const t of TOURNAMENTS) {
+    const keywords = t.name.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+    const score = keywords.filter(kw => lower.includes(kw)).length;
+    if (score > bestScore) {
+      bestScore = score;
+      bestMatch = t;
+    }
+  }
+  return bestScore >= 1 ? bestMatch : null;
+}
+
+async function fetchEspnTournamentMatches(): Promise<Map<string, EspnCompetition[]>> {
+  const result = new Map<string, EspnCompetition[]>();
   try {
     const resp = await fetch(ESPN_ATP_SCOREBOARD);
     if (!resp.ok) {
@@ -460,10 +477,15 @@ async function fetchEspnTournamentMatches(): Promise<Map<number, EspnCompetition
 
       const allComps = mensSingles.competitions || [];
 
+      // Match to our tournament list by name
+      const matchedTournament = matchEspnEventToTournament(event.name);
+      if (!matchedTournament) {
+        console.log(`  Tennis ESPN: No tournament match for "${event.name}" — skipping`);
+        continue;
+      }
+
       const seedMap = new Map<string, number>();
-      let tId: number | undefined;
       for (const c of allComps) {
-        if (!tId) tId = c.tournamentId;
         for (const p of (c.competitors || [])) {
           const name = p.athlete?.displayName;
           const seed = p.curatedRank?.current;
@@ -479,10 +501,10 @@ async function fetchEspnTournamentMatches(): Promise<Map<number, EspnCompetition
         return p1 && p1 !== "TBD" && p2 && p2 !== "TBD";
       });
 
-      if (tId && matches.length > 0) {
-        espnSeedMaps.set(tId, seedMap);
-        result.set(tId, matches);
-        console.log(`  Tennis ESPN: ${event.name} — ${matches.length} men's singles matches (${seedMap.size} seeds, ${allComps.length - matches.length} TBD filtered)`);
+      if (matches.length > 0) {
+        espnSeedMaps.set(matchedTournament.espnTournamentId || 0, seedMap);
+        result.set(matchedTournament.name, matches);
+        console.log(`  Tennis ESPN: ${event.name} → ${matchedTournament.name} — ${matches.length} men's singles matches (${seedMap.size} seeds, ${allComps.length - matches.length} TBD filtered)`);
       }
     }
   } catch (err: any) {
@@ -620,7 +642,7 @@ export async function fetchTennisEvents(): Promise<TennisFetchResult> {
 
     if (tEnd < windowStart || tStart > windowEnd) continue;
 
-    const espnComps = tournament.espnTournamentId ? espnMatches.get(tournament.espnTournamentId) : undefined;
+    const espnComps = espnMatches.get(tournament.name);
 
     if (espnComps && espnComps.length > 0) {
       // All live matches regardless of seeding
