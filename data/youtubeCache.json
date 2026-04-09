@@ -729,21 +729,21 @@
   },
   "league_moment:big stage sports april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=RKj5RzQ5c7w",
-      "thumbnailUrl": "https://img.youtube.com/vi/RKj5RzQ5c7w/hqdefault.jpg",
-      "durationSeconds": 969,
-      "title": "Iran’s Big Victory? || Ceasefire || ARY News 11 AM Headlines || 8th April 2026",
+      "url": "https://www.youtube.com/watch?v=67RehKtFW5U",
+      "thumbnailUrl": "https://img.youtube.com/vi/67RehKtFW5U/hqdefault.jpg",
+      "durationSeconds": 2150,
+      "title": "did this book hurt you, too? | Shoulda Books ep. 17",
       "source": "youtube",
-      "channel": "ARY News",
-      "publishedAt": "11h ago"
+      "channel": "Shoulda Books",
+      "publishedAt": "7 minutes ago"
     },
-    "fetchedAt": "2026-04-08T18:00:16.473Z",
+    "fetchedAt": "2026-04-09T13:07:47.540Z",
     "query": "Big Stage sports April 2026",
     "debug": {
       "searchQuery": "Big Stage sports April 2026",
-      "selectedVideoTitle": "Iran’s Big Victory? || Ceasefire || ARY News 11 AM Headlines || 8th April 2026",
-      "selectedVideoPublishedAt": "11h ago",
-      "selectedVideoChannel": "ARY News",
+      "selectedVideoTitle": "did this book hurt you, too? | Shoulda Books ep. 17",
+      "selectedVideoPublishedAt": "7 minutes ago",
+      "selectedVideoChannel": "Shoulda Books",
       "rejectedForAgeCount": 0
     }
   },
@@ -804,6 +804,38 @@
       "selectedVideoTitle": "\"CAMP NOU IN SHOCK 😱 Barcelona DESTROYED by Atlético Madrid 2-0 | 10 Men NIGHTMARE | UCL Reaction\"",
       "selectedVideoPublishedAt": "2h ago",
       "selectedVideoChannel": "STAR COMPS HINDI",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "playoff_push:anaheim ducks playoff push april 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=ZfrWoBg0ynA",
+      "thumbnailUrl": "https://img.youtube.com/vi/ZfrWoBg0ynA/hqdefault.jpg",
+      "durationSeconds": 8121,
+      "title": "Slippery commute in Edmonton after more snow | CTV Your Morning Edmonton for April 8, 2026",
+      "source": "youtube",
+      "channel": "CTV News",
+      "publishedAt": "19 hours ago"
+    },
+    "fetchedAt": "2026-04-09T13:07:46.890Z",
+    "query": "Anaheim Ducks playoff push April 2026",
+    "debug": {
+      "searchQuery": "Anaheim Ducks playoff push April 2026",
+      "selectedVideoTitle": "Slippery commute in Edmonton after more snow | CTV Your Morning Edmonton for April 8, 2026",
+      "selectedVideoPublishedAt": "19 hours ago",
+      "selectedVideoChannel": "CTV News",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:zverev clinch playoff berth april 2026": {
+    "video": null,
+    "fetchedAt": "2026-04-09T13:07:47.108Z",
+    "query": "Zverev clinch playoff berth April 2026",
+    "debug": {
+      "searchQuery": "Zverev clinch playoff berth April 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   }

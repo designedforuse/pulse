@@ -78,8 +78,8 @@ const TOURNAMENTS: GolfTournament[] = [
     country: "USA",
     startDate: "2026-04-09",
     endDate: "2026-04-12",
-    providerId: "youtubetv",
-    providerReason: "cbs-broadcast",
+    providerId: "primevideo",
+    providerReason: "prime-video",
     rounds: FOUR_ROUND_SCHEDULE,
   },
   {

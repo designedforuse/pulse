@@ -953,7 +953,7 @@ export default function UnifiedEventCard({
                     {golfTournament === "The Masters" ? (
                       <Image
                         source={MASTERS_LOGO}
-                        style={{ width: featured ? 56 : 48, height: featured ? 56 : 48 }}
+                        style={{ width: featured ? 44 : 36, height: featured ? 44 : 36 }}
                         resizeMode="contain"
                       />
                     ) : (

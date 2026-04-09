@@ -344,6 +344,7 @@ function resolveGolfBroadcastId(event: SportEvent): [string, string] {
   const reason = event.providerReason || "";
   if (reason === "cbs-broadcast") return ["cbs", "youtubetv"];
   if (reason === "nbc-broadcast") return ["nbcsn", "youtubetv"];
+  if (reason === "prime-video") return ["primevideo", "primevideo"];
   return ["", ""];
 }
 

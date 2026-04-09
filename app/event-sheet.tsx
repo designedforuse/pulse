@@ -10,6 +10,7 @@ import {
   Platform,
   Linking,
 } from "react-native";
+
 import { useLocalSearchParams, router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
@@ -30,6 +31,8 @@ import { useScores } from "@/lib/scores-context";
 import { isEventLive, formatTimeSinceStart } from "@/utils/time";
 import { normalizeGameState } from "@/utils/gameState";
 import { displayTeamName } from "@/utils/teams";
+
+const MASTERS_LOGO = require("@/assets/images/masters-logo.png");
 
 function formatDetailDate(startTimeLocal: string): string {
   const d = new Date(startTimeLocal);
@@ -213,6 +216,7 @@ export default function EventSheet() {
   };
 
   const isSession = event.eventType === "session" && event.sessionTitle;
+  const isGolf = event.sport === "golf";
   const isTennisMatch = event.sport === "tennis";
   const isCricket = event.sport === "cricket";
   const isTbcMatch = (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel;
@@ -236,7 +240,33 @@ export default function EventSheet() {
           </View>
 
           {/* Matchup area */}
-          {isSession ? (
+          {isSession && isGolf ? (
+            <View style={styles.golfMatchupContainer}>
+              {event.tournamentName === "The Masters" ? (
+                <Image source={MASTERS_LOGO} style={styles.golfTournamentLogo} resizeMode="contain" />
+              ) : (
+                <Text style={styles.golfEmoji}>⛳</Text>
+              )}
+              <Text style={styles.golfTournamentName}>{event.tournamentName || event.homeTeam}</Text>
+              {event.sessionTitle && (
+                <View style={[styles.golfRoundChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "40" }]}>
+                  <Text style={[styles.golfRoundChipText, { color: sportColor }]}>
+                    {event.sessionTitle.split("—")[1]?.trim() || event.sessionTitle}
+                  </Text>
+                </View>
+              )}
+              <View style={styles.golfTimeRow}>
+                <Text style={styles.golfTime}>{timeLabel}</Text>
+                <Text style={styles.golfTimeSep}>·</Text>
+                <Text style={styles.golfDate}>{dateLabel}</Text>
+              </View>
+              {providerBrandId && (
+                <View style={styles.golfProviderRow}>
+                  <ProviderLogo providerId={providerBrandId} size={24} />
+                </View>
+              )}
+            </View>
+          ) : isSession ? (
             <View style={styles.matchupContainer}>
               <Text style={styles.singleTeamName}>{event.sessionTitle}</Text>
             </View>
@@ -574,6 +604,57 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
     textAlign: "center",
     letterSpacing: 0.3,
+  },
+  golfMatchupContainer: {
+    alignItems: "center",
+    gap: 12,
+    paddingVertical: 12,
+  },
+  golfTournamentLogo: {
+    width: 96,
+    height: 96,
+  },
+  golfEmoji: {
+    fontSize: 52,
+  },
+  golfTournamentName: {
+    fontSize: 22,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    textAlign: "center",
+  },
+  golfRoundChip: {
+    paddingHorizontal: 16,
+    paddingVertical: 6,
+    borderRadius: 20,
+    borderWidth: 1,
+  },
+  golfRoundChipText: {
+    fontSize: 13,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.6,
+  },
+  golfTimeRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  golfTime: {
+    fontSize: 16,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+  },
+  golfTimeSep: {
+    fontSize: 14,
+    color: Colors.textMuted,
+  },
+  golfDate: {
+    fontSize: 14,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textSecondary,
+  },
+  golfProviderRow: {
+    marginTop: 4,
   },
   openButton: {
     flexDirection: "row",
