@@ -18,6 +18,8 @@ import { getTennisRoundShort, getTennisRoundPriority } from "@/data/tennisTopPla
 import type { ScoreData, TennisSetScore } from "@/lib/scores-context";
 import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTime, getSvnsTeamFlag, extractSvnsSessionDay, type SvnsMatch } from "@/lib/svns-context";
 
+const MASTERS_LOGO = require("@/assets/images/masters-logo.png");
+
 const GP_FLAGS: Record<string, string> = {
   "Australian": "🇦🇺",
   "Bahrain": "🇧🇭",
@@ -948,7 +950,15 @@ export default function UnifiedEventCard({
                 <View style={uStyles.espnTeamOuter}>
                   <View style={uStyles.espnStarSlot} />
                   <View style={uStyles.espnTeam}>
-                    <Text style={{ fontSize: featured ? 28 : 24 }}>⛳</Text>
+                    {golfTournament === "The Masters" ? (
+                      <Image
+                        source={MASTERS_LOGO}
+                        style={{ width: featured ? 56 : 48, height: featured ? 56 : 48 }}
+                        resizeMode="contain"
+                      />
+                    ) : (
+                      <Text style={{ fontSize: featured ? 28 : 24 }}>⛳</Text>
+                    )}
                     <Text style={uStyles.espnTeamName} numberOfLines={2}>
                       {golfTournament}
                     </Text>
