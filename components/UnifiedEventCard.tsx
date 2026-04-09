@@ -801,6 +801,7 @@ export default function UnifiedEventCard({
   const isUpcoming = !isLive && !isFinal;
   const showEspnStyle = espnLayout && isUpcoming && showTeamLayout && !isRacing && !isGolf && !isAthletics && !isHorseRacing && !isCycling;
   const showRacingEspnStyle = espnLayout && isUpcoming && isRacing;
+  const showGolfEspnStyle = espnLayout && isUpcoming && isGolf;
   const providerBrandId = resolveProviderDisplay(event).brandId;
 
   return (
@@ -817,14 +818,14 @@ export default function UnifiedEventCard({
       testID={`event-${event.id}`}
     >
       <Animated.View style={[uStyles.cardInner, featured && uStyles.cardInnerFeatured, flashStyle]}>
-        {!showEspnStyle && !showRacingEspnStyle && (
+        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && (
           <View style={[uStyles.accentBar, { backgroundColor: isLive ? liveTensionColor : (accentBarColor ?? sportColor) }]} />
         )}
-        {(showEspnStyle || showRacingEspnStyle) && (
+        {(showEspnStyle || showRacingEspnStyle || showGolfEspnStyle) && (
           <View style={[uStyles.topAccentBar, { backgroundColor: sportColor }]} />
         )}
 
-        {!showEspnStyle && !showRacingEspnStyle && (
+        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && (
           <View style={uStyles.header}>
             <View style={[uStyles.sportPill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
               <Text style={[uStyles.sportPillText, { color: sportColor }]} numberOfLines={1}>{getLeagueLabel(event)}</Text>
@@ -934,6 +935,37 @@ export default function UnifiedEventCard({
                 >
                   {cyclingTourName}
                 </Text>
+              </View>
+            </View>
+          ) : showGolfEspnStyle ? (
+            <View>
+              <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
+                <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>
+                  {getLeagueLabel(event)}
+                </Text>
+              </View>
+              <View style={uStyles.espnMatchup}>
+                <View style={uStyles.espnTeamOuter}>
+                  <View style={uStyles.espnStarSlot} />
+                  <View style={uStyles.espnTeam}>
+                    <Text style={{ fontSize: featured ? 28 : 24 }}>⛳</Text>
+                    <Text style={uStyles.espnTeamName} numberOfLines={2}>
+                      {golfTournament}
+                    </Text>
+                  </View>
+                </View>
+                <View style={uStyles.espnCenter}>
+                  <Text style={uStyles.espnTime}>{timeStr}</Text>
+                  {providerBrandId && <ProviderLogo providerId={providerBrandId} size={20} />}
+                </View>
+                <View style={[uStyles.espnTeamOuter, { flexDirection: "row-reverse" }]}>
+                  <View style={uStyles.espnStarSlot} />
+                  <View style={uStyles.espnTeam}>
+                    <Text style={[uStyles.racingEspnTitle, { color: Colors.textPrimary }]} numberOfLines={2}>
+                      {golfRound || ""}
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
           ) : isGolf ? (
@@ -1116,7 +1148,7 @@ export default function UnifiedEventCard({
           ) : null}
         </View>
 
-        {!showEspnStyle && !showRacingEspnStyle && (
+        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && (
           <View style={uStyles.footer}>
             {isLive ? (
               <>
