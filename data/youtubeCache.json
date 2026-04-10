@@ -838,5 +838,37 @@
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
+  },
+  "clinch_watch:tampa bay lightning clinch playoff berth april 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=5tmI5RIbWbQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/5tmI5RIbWbQ/hqdefault.jpg",
+      "durationSeconds": 0,
+      "title": "🔴 Tampa Bay Lightning vs Montreal Canadiens LIVE | NHL Hockey | April 9, 2026 | Score",
+      "source": "youtube",
+      "channel": "College Score Nation",
+      "publishedAt": null
+    },
+    "fetchedAt": "2026-04-09T22:09:45.523Z",
+    "query": "Tampa Bay Lightning clinch playoff berth April 2026",
+    "debug": {
+      "searchQuery": "Tampa Bay Lightning clinch playoff berth April 2026",
+      "selectedVideoTitle": "🔴 Tampa Bay Lightning vs Montreal Canadiens LIVE | NHL Hockey | April 9, 2026 | Score",
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": "College Score Nation",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:bahrain grand prix sports april 2026": {
+    "video": null,
+    "fetchedAt": "2026-04-09T22:09:45.768Z",
+    "query": "Bahrain Grand Prix sports April 2026",
+    "debug": {
+      "searchQuery": "Bahrain Grand Prix sports April 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
   }
 }

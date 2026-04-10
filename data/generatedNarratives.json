@@ -1,11 +1,12 @@
 {
-  "lastUpdated": "2026-04-09T13:07:37.872Z",
+  "lastUpdated": "2026-04-09T23:54:15.235Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
         "Other": 2
       },
       "clinch_watch": {
+        "NewEngland": 1,
         "Other": 1
       },
       "playoff_push": {
@@ -17,22 +18,25 @@
       "SoCal": [
         "playoff_push: Playoff Push"
       ],
+      "NewEngland": [
+        "clinch_watch: Clinch Watch"
+      ],
       "Other": [
         "clinch_watch: Clinch Watch",
-        "league_moment: Big Stage"
+        "league_moment: Bahrain Grand Prix"
       ]
     },
     "droppedCandidatesReasons": [
       {
-        "id": "f1_race_weekend_bahrain_grand_prix",
+        "id": "league_moment_tournament",
         "kind": "league_moment",
         "region": "Other",
-        "title": "Bahrain Grand Prix",
+        "title": "Big Stage",
         "reason": "max 1 league_moment per region (Other)"
       }
     ],
-    "totalBeforeCap": 4,
-    "totalAfterCap": 3,
+    "totalBeforeCap": 5,
+    "totalAfterCap": 4,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -50,9 +54,8 @@
           "CGY",
           "EDM",
           "VAN",
-          "MTL",
-          "TBL",
           "CBJ",
+          "MTL",
           "NYI",
           "PHI",
           "MIN",
@@ -70,19 +73,19 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 609,
+        "playersIngested": 602,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-09T13:07:37.872Z"
+        "timestamp": "2026-04-09T23:54:15.235Z"
       },
       "cacheHistoryCount": 837,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 4,
-    "candidateCountAfterCap": 3,
+    "candidateCountBeforeCap": 5,
+    "candidateCountAfterCap": 4,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -785.1271866666667,
+      "hoursUntil": -795.9042319444444,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -98,9 +101,9 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 1,
-      "clinchAfterRegionFilter": 1,
-      "clinchFinalCount": 1,
+      "rawClinchCandidates": 5,
+      "clinchAfterRegionFilter": 2,
+      "clinchFinalCount": 2,
       "clinchGatedOut": [
         "Anaheim Ducks: 87 pts < 95"
       ]
@@ -119,6 +122,11 @@
           "label": "[multi_team_night] Your Sports Night",
           "score": 260,
           "reason": "3 followed/affiliate teams playing tonight"
+        },
+        {
+          "label": "[clinch_watch] Playoff Stakes",
+          "score": 190,
+          "reason": "clinch_watch involving followed team(s): Boston Bruins"
         },
         {
           "label": "[playoff_push] Your Team's Push",
@@ -150,6 +158,13 @@
         "selectedVideoChannel": "CTV News",
         "rejectedForAgeCount": 0
       },
+      "clinch_watch_nhl_2025021261": {
+        "searchQuery": "Tampa Bay Lightning clinch playoff berth April 2026",
+        "selectedVideoTitle": "🔴 Tampa Bay Lightning vs Montreal Canadiens LIVE | NHL Hockey | April 9, 2026 | Score",
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": "College Score Nation",
+        "rejectedForAgeCount": 0
+      },
       "clinch_watch_tennis-espn-173898": {
         "searchQuery": "Zverev clinch playoff berth April 2026",
         "selectedVideoTitle": null,
@@ -157,11 +172,11 @@
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
-      "league_moment_tournament": {
-        "searchQuery": "Big Stage sports April 2026",
-        "selectedVideoTitle": "did this book hurt you, too? | Shoulda Books ep. 17",
-        "selectedVideoPublishedAt": "7 minutes ago",
-        "selectedVideoChannel": "Shoulda Books",
+      "f1_race_weekend_bahrain_grand_prix": {
+        "searchQuery": "Bahrain Grand Prix sports April 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       }
     }
@@ -176,7 +191,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-04-09T13:07:37.872Z",
+      "triggeredAt": "2026-04-09T23:54:15.235Z",
       "expiresAt": "2026-04-10T06:00:00.000Z",
       "kind": "playoff_push",
       "region": "SoCal",
@@ -209,6 +224,47 @@
       }
     },
     {
+      "id": "clinch_watch_nhl_2025021261",
+      "title": "Clinch Watch",
+      "subtitle": "Can secure wild card spot with a win in the next 48h",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 92,
+      "triggeredAt": "2026-04-09T23:54:15.235Z",
+      "expiresAt": "2026-04-11T20:30:00.000Z",
+      "kind": "clinch_watch",
+      "region": "NewEngland",
+      "regionPriority": 3,
+      "regionLabel": "New England",
+      "meta": {
+        "source": "team_config",
+        "conditionLabel": "Can secure wild card spot with a win",
+        "sport": "hockey",
+        "league": "NHL",
+        "awayTeam": "Tampa Bay Lightning",
+        "homeTeam": "Boston Bruins",
+        "startTime": "2026-04-11T16:30:00.000Z",
+        "eventIds": [
+          "nhl_2025021261"
+        ],
+        "reason": "Boston Bruins have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
+      },
+      "sports": [
+        "hockey"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=5tmI5RIbWbQ",
+        "thumbnailUrl": "https://img.youtube.com/vi/5tmI5RIbWbQ/hqdefault.jpg",
+        "durationSeconds": 0,
+        "title": "🔴 Tampa Bay Lightning vs Montreal Canadiens LIVE | NHL Hockey | April 9, 2026 | Score",
+        "source": "youtube",
+        "channel": "College Score Nation",
+        "publishedAt": null
+      }
+    },
+    {
       "id": "clinch_watch_tennis-espn-173898",
       "title": "Clinch Watch",
       "subtitle": "Zverev vs Fonseca · Tennis title on the line",
@@ -217,8 +273,8 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-04-09T13:07:37.872Z",
-      "expiresAt": "2026-04-10T08:00:00.000Z",
+      "triggeredAt": "2026-04-09T23:54:15.235Z",
+      "expiresAt": "2026-04-10T13:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
@@ -230,7 +286,7 @@
         "league": "ATP Masters 1000",
         "awayTeam": "Zverev",
         "homeTeam": "Fonseca",
-        "startTime": "2026-04-10T04:00:00.000Z",
+        "startTime": "2026-04-10T09:00:00.000Z",
         "eventIds": [
           "tennis-espn-173898"
         ],
@@ -241,58 +297,57 @@
       ]
     },
     {
-      "id": "league_moment_tournament",
-      "title": "Big Stage",
-      "subtitle": "2 tournament/knockout matches this week",
+      "id": "f1_race_weekend_bahrain_grand_prix",
+      "title": "Bahrain Grand Prix",
+      "subtitle": "Bahrain Grand Prix — 4 sessions in the next 48h: Practice 1, Practice 2, Practice 3, Qualifying",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
-      "priority": 70,
-      "triggeredAt": "2026-04-09T13:07:37.872Z",
-      "expiresAt": "2026-04-16T13:07:37.872Z",
+      "priority": 75,
+      "triggeredAt": "2026-04-09T23:54:15.235Z",
+      "expiresAt": "2026-04-11T20:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "type": "tournament",
-        "matchCount": 2,
-        "matches": [
+        "type": "f1_race_weekend",
+        "grandPrix": "Bahrain Grand Prix",
+        "sessionCount": 4,
+        "sessions": [
           {
-            "away": "Zverev",
-            "home": "Fonseca",
-            "league": "ATP Masters 1000",
-            "round": "Monte-Carlo — Quarterfinal",
-            "startTime": "2026-04-10T04:00:00.000Z"
+            "sessionTitle": "Practice 1",
+            "startTime": "2026-04-10T11:30:00.000Z",
+            "eventId": "f1-espn-401839043"
           },
           {
-            "away": "TBD",
-            "home": "The Masters",
-            "league": "The Majors",
-            "round": "Masters — Final Round",
-            "startTime": "2026-04-12T14:00:00.000Z"
+            "sessionTitle": "Practice 2",
+            "startTime": "2026-04-10T15:00:00.000Z",
+            "eventId": "f1-espn-401839044"
+          },
+          {
+            "sessionTitle": "Practice 3",
+            "startTime": "2026-04-11T12:30:00.000Z",
+            "eventId": "f1-espn-401839045"
+          },
+          {
+            "sessionTitle": "Qualifying",
+            "startTime": "2026-04-11T16:00:00.000Z",
+            "eventId": "f1-espn-401839046"
           }
         ],
         "eventIds": [
-          "tennis-espn-173898",
-          "golf-the-masters-2026-04-12"
+          "f1-espn-401839043",
+          "f1-espn-401839044",
+          "f1-espn-401839045",
+          "f1-espn-401839046"
         ],
-        "reason": "Found 2 tournament stage match(es) in the next 7 days"
+        "reason": "Bahrain Grand Prix race weekend — 4 session(s) within 48 hours"
       },
       "sports": [
-        "tennis",
-        "golf"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=67RehKtFW5U",
-        "thumbnailUrl": "https://img.youtube.com/vi/67RehKtFW5U/hqdefault.jpg",
-        "durationSeconds": 2150,
-        "title": "did this book hurt you, too? | Shoulda Books ep. 17",
-        "source": "youtube",
-        "channel": "Shoulda Books",
-        "publishedAt": "7 minutes ago"
-      }
+        "racing"
+      ]
     }
   ],
   "tonightStory": {
@@ -341,8 +396,8 @@
           "leagueKey": "mlb",
           "dateRangeLabel": "Apr 1–16",
           "startDate": "2026-04-01T00:10:00.000Z",
-          "endDate": "2026-04-16T02:00:00.000Z",
-          "eventCount": 186
+          "endDate": "2026-04-16T22:10:00.000Z",
+          "eventCount": 193
         },
         {
           "sport": "hockey",
@@ -357,10 +412,10 @@
           "sport": "cricket",
           "displayName": "IPL",
           "leagueKey": "ipl",
-          "dateRangeLabel": "Apr 1–29",
+          "dateRangeLabel": "Apr 1–30",
           "startDate": "2026-04-01T14:00:00.000Z",
-          "endDate": "2026-04-29T14:00:00.000Z",
-          "eventCount": 43
+          "endDate": "2026-04-30T14:00:00.000Z",
+          "eventCount": 44
         },
         {
           "sport": "hockey",
@@ -447,9 +502,9 @@
           "sport": "soccer",
           "displayName": "FA Cup",
           "leagueKey": "facup",
-          "dateRangeLabel": "Apr 4–25",
+          "dateRangeLabel": "Apr 4–26",
           "startDate": "2026-04-04T11:45:00.000Z",
-          "endDate": "2026-04-25T14:00:00.000Z",
+          "endDate": "2026-04-26T14:00:00.000Z",
           "eventCount": 6
         },
         {
@@ -498,22 +553,13 @@
           "eventCount": 10
         },
         {
-          "sport": "tennis",
-          "displayName": "Monte-Carlo",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "Apr 8–10",
-          "startDate": "2026-04-08T13:35:00.000Z",
-          "endDate": "2026-04-10T04:00:00.000Z",
-          "eventCount": 12
-        },
-        {
           "sport": "soccer",
           "displayName": "Europa League",
           "leagueKey": "europaleague",
-          "dateRangeLabel": "Apr 8–16",
+          "dateRangeLabel": "Apr 8–30",
           "startDate": "2026-04-08T16:45:00.000Z",
-          "endDate": "2026-04-16T19:00:00.000Z",
-          "eventCount": 8
+          "endDate": "2026-04-30T18:00:00.000Z",
+          "eventCount": 10
         },
         {
           "sport": "hockey",
@@ -523,6 +569,15 @@
           "startDate": "2026-04-08T23:00:00.000Z",
           "endDate": "2026-04-17T02:30:00.000Z",
           "eventCount": 69
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Monte-Carlo",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "Apr 9–10",
+          "startDate": "2026-04-09T09:10:00.000Z",
+          "endDate": "2026-04-10T13:30:00.000Z",
+          "eventCount": 10
         },
         {
           "sport": "golf",

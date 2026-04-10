@@ -36892,7 +36892,7 @@
     }
   },
   "movements": [],
-  "lastUpdated": "2026-04-09T13:07:37.872Z",
+  "lastUpdated": "2026-04-09T23:54:15.235Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -36904,9 +36904,8 @@
       "CGY",
       "EDM",
       "VAN",
-      "MTL",
-      "TBL",
       "CBJ",
+      "MTL",
       "NYI",
       "PHI",
       "MIN",
@@ -36924,8 +36923,8 @@
         "reason": "LEAGUE_NOT_SUPPORTED"
       }
     ],
-    "playersIngested": 609,
+    "playersIngested": 602,
     "movementsDetectedThisRun": [],
-    "timestamp": "2026-04-09T13:07:37.872Z"
+    "timestamp": "2026-04-09T23:54:15.235Z"
   }
 }
