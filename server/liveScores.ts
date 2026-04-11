@@ -636,18 +636,52 @@ async function fetchRugbyScores(
             if (statusState === "in") {
               const detail = statusDetail || "";
               const description = comp.status?.type?.description || "";
+              const statusName = comp.status?.type?.name || "";
               const periodNum = comp.status?.period || 0;
+
+              // Parse clock — ESPN rugby uses "42'" (minute + apostrophe) for live minutes
+              // and also MM:SS format (e.g. "40:00"). Accept both.
               const rawClock = comp.status?.displayClock || comp.status?.type?.detail || "";
-              const clock = /^\d+[''']?$/.test(rawClock.trim()) ? rawClock.trim().replace(/[''']/, "'") : undefined;
+              const rawTrimmed = rawClock.trim();
+              let clock: string | undefined;
+              if (/^\d+[''']?$/.test(rawTrimmed)) {
+                // "34'" or "34" → normalize to "34'"
+                clock = rawTrimmed.replace(/[''']/g, "") + "'";
+              } else if (/^\d{1,3}:\d{2}$/.test(rawTrimmed) && !rawTrimmed.startsWith("0:")) {
+                // "40:32" → extract leading minutes → "40'"
+                const mins = parseInt(rawTrimmed.split(":")[0], 10);
+                if (mins > 0) clock = `${mins}'`;
+              }
 
               let period = "";
 
-              if (/half\s*time/i.test(detail) || detail === "HT" || /half\s*time/i.test(description)) {
+              // ESPN uses "1st Half" / "2nd Half" (ordinal) — not "first" / "second".
+              // Also support period numbers and STATUS_* names as fallbacks.
+              if (
+                /half\s*time/i.test(detail) ||
+                detail === "HT" ||
+                /half\s*time/i.test(description) ||
+                /halftime/i.test(description) ||
+                /STATUS_HALFTIME/i.test(statusName)
+              ) {
                 period = "HT";
-              } else if (periodNum === 1 || /first\s*half/i.test(description) || /STATUS_FIRST_HALF/i.test(comp.status?.type?.name || "")) {
+              } else if (
+                periodNum === 1 ||
+                /\b(1st|first)\s+half\b/i.test(description) ||
+                /\b(1st|first)\s+half\b/i.test(detail) ||
+                /STATUS_FIRST_HALF/i.test(statusName)
+              ) {
                 period = "H1";
-              } else if (periodNum === 2 || /second\s*half/i.test(description) || /STATUS_SECOND_HALF/i.test(comp.status?.type?.name || "")) {
+              } else if (
+                periodNum === 2 ||
+                /\b(2nd|second)\s+half\b/i.test(description) ||
+                /\b(2nd|second)\s+half\b/i.test(detail) ||
+                /STATUS_SECOND_HALF/i.test(statusName)
+              ) {
                 period = "H2";
+              } else if (periodNum >= 1) {
+                // Fallback: generic period number
+                period = `H${periodNum}`;
               }
 
               scores[ourEvent.id] = {
