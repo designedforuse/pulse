@@ -47,6 +47,16 @@ export function normalizeGameState(
       return { gameState: "FINAL", displayClockText: null, displayStatusText: statusText };
     }
 
+    // Hockey: P3 at 00:00 with a non-tied score is effectively final — the API
+    // sometimes stays "live" for a brief window after the buzzer.
+    const isHockey = event.sport === "hockey" || event.sport === "Hockey";
+    const clockIsZero = score.clock === "00:00" || score.secondsRemaining === 0;
+    const inRegulationThird = score.periodNumber === 3 || score.period === "P3";
+    const scoresNotTied = score.awayScore !== score.homeScore;
+    if (isHockey && clockIsZero && inRegulationThird && scoresNotTied) {
+      return { gameState: "FINAL", displayClockText: null, displayStatusText: "Final" };
+    }
+
     // Trust an explicit "live" score status regardless of the event's scheduled end time.
     // Time-based completion is only a fallback; real-time score data takes priority.
     const hasExplicitLiveStatus = matchesKeywords(score.status, LIVE_KEYWORDS);

@@ -26,6 +26,12 @@ function detectHockeyStatus(score: ScoreData | undefined, event: SportEvent, now
   const status = (score.status || "").toLowerCase();
   if (status === "final" || status.startsWith("f/")) return "FINAL";
 
+  // P3 at 00:00 with a non-tied score: game is over even if API still says live
+  const clockIsZero = score.clock === "00:00" || score.secondsRemaining === 0;
+  const inRegulationThird = score.periodNumber === 3 || score.period === "P3";
+  const scoresNotTied = score.awayScore !== score.homeScore;
+  if (clockIsZero && inRegulationThird && scoresNotTied) return "FINAL";
+
   const periodType = (score.periodType || "").toUpperCase();
   if (periodType === "SO") return "SHOOTOUT";
   if (periodType === "OT") return "OT";
