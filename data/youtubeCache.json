@@ -708,22 +708,14 @@
     }
   },
   "clinch_watch:boston bruins clinch playoff berth april 2026": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=BUzcRL8LJP0",
-      "thumbnailUrl": "https://img.youtube.com/vi/BUzcRL8LJP0/hqdefault.jpg",
-      "durationSeconds": 2180,
-      "title": "Is Bruins' recent play cause for CONCERN? | The PuckUps Podcast Clips",
-      "source": "youtube",
-      "channel": "The PuckUps Podcast ",
-      "publishedAt": "2 hours ago"
-    },
-    "fetchedAt": "2026-04-07T14:53:56.213Z",
+    "video": null,
+    "fetchedAt": "2026-04-12T14:58:18.161Z",
     "query": "Boston Bruins clinch playoff berth April 2026",
     "debug": {
       "searchQuery": "Boston Bruins clinch playoff berth April 2026",
-      "selectedVideoTitle": "Is Bruins' recent play cause for CONCERN? | The PuckUps Podcast Clips",
-      "selectedVideoPublishedAt": "2 hours ago",
-      "selectedVideoChannel": "The PuckUps Podcast ",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   },
@@ -808,22 +800,14 @@
     }
   },
   "playoff_push:anaheim ducks playoff push april 2026": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=ZfrWoBg0ynA",
-      "thumbnailUrl": "https://img.youtube.com/vi/ZfrWoBg0ynA/hqdefault.jpg",
-      "durationSeconds": 8121,
-      "title": "Slippery commute in Edmonton after more snow | CTV Your Morning Edmonton for April 8, 2026",
-      "source": "youtube",
-      "channel": "CTV News",
-      "publishedAt": "19 hours ago"
-    },
-    "fetchedAt": "2026-04-09T13:07:46.890Z",
+    "video": null,
+    "fetchedAt": "2026-04-12T14:58:17.941Z",
     "query": "Anaheim Ducks playoff push April 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push April 2026",
-      "selectedVideoTitle": "Slippery commute in Edmonton after more snow | CTV Your Morning Edmonton for April 8, 2026",
-      "selectedVideoPublishedAt": "19 hours ago",
-      "selectedVideoChannel": "CTV News",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   },
@@ -861,7 +845,7 @@
   },
   "league_moment:bahrain grand prix sports april 2026": {
     "video": null,
-    "fetchedAt": "2026-04-09T22:09:45.768Z",
+    "fetchedAt": "2026-04-12T14:58:18.394Z",
     "query": "Bahrain Grand Prix sports April 2026",
     "debug": {
       "searchQuery": "Bahrain Grand Prix sports April 2026",

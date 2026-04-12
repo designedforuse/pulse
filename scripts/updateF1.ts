@@ -40,13 +40,18 @@ const SESSION_LABELS: Record<string, string> = {
   Race: "Race",
   Sprint: "Sprint",
   SQ: "Sprint Qualifying",
+  // ESPN 2024+ sprint weekend format
+  SS: "Sprint Qualifying",  // Sprint Shootout → Sprint Qualifying
+  SR: "Sprint",             // Sprint Race
 };
 
 const SESSION_PRIORITY: Record<string, number> = {
   Race: 1,
   Sprint: 2,
+  SR: 2,   // Sprint Race (ESPN 2024+ abbreviation)
   Qual: 3,
   SQ: 4,
+  SS: 4,   // Sprint Shootout / Sprint Qualifying (ESPN 2024+ abbreviation)
   FP3: 5,
   FP2: 6,
   FP1: 7,
