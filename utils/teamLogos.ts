@@ -666,6 +666,11 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
   }
 
   if (sportLower === "soccer" || league === "EPL" || league === "MLS" || league === "La Liga" || league === "Serie A" || league === "Bundesliga" || league === "Ligue 1" || league === "Champions League" || league === "Europa League" || league === "FA Cup" || league === "USL" || league === "NWSL") {
+    // Some clubs don't have a -dark variant on ESPN CDN — use the standard 500 URL directly.
+    const SOCCER_NO_DARK: Record<string, string> = {
+      "Real Oviedo": "https://a.espncdn.com/i/teamlogos/soccer/500/92.png",
+    };
+    if (SOCCER_NO_DARK[teamName]) return SOCCER_NO_DARK[teamName];
     const id = ESPN_SOCCER_IDS[teamName];
     if (id) return `https://a.espncdn.com/i/teamlogos/soccer/500-dark/${id}.png`;
   }
