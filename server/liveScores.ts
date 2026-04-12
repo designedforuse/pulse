@@ -566,12 +566,26 @@ async function fetchSuperRugbyScores(
   return scores;
 }
 
+// Alias map for European rugby clubs whose ESPN display names differ from
+// the city/short names stored in our iCal-sourced events.
+const RUGBY_TEAM_ALIASES: Record<string, string> = {
+  "stadetoulousain": "toulouse",
+  "bordeauxbegles": "bordeaux",
+  "stadebordaissien": "bordeaux",
+  "racing92": "racing",
+  "racingmetro92": "racing",
+  "stadefrancaisparis": "stadefrancais",
+  "montpellierherault": "montpellier",
+  "ubborrdeauxbegles": "bordeaux",
+};
+
 function normalizeTeamName(name: string): string {
-  return name
+  const base = name
     .toLowerCase()
     .replace(/^the\s+/, "")
     .replace(/\s+(rugby|super|fc|rfc)$/i, "")
     .replace(/[^a-z0-9]/g, "");
+  return RUGBY_TEAM_ALIASES[base] ?? base;
 }
 
 function teamsMatch(espnName: string, ourName: string): boolean {
@@ -1136,7 +1150,7 @@ async function fetchIplLiveScores(
 
 // ─── CricAPI (non-IPL cricket) ───────────────────────────────────────────────
 let cricketScoreCache: { data: Record<string, ScoreData>; ts: number } = { data: {}, ts: 0 };
-const CRICKET_CACHE_TTL = 20 * 60 * 1000; // 20 min — keeps daily hits under 100 on free tier
+const CRICKET_CACHE_TTL = 30 * 60 * 1000; // 30 min — keeps daily hits under 50 on free tier
 
 function cricScoreTeamMatches(cricName: string, ourTeam: string): boolean {
   const clean = cricName.replace(/\s*\[[^\]]*\]/g, "").trim().toLowerCase();
@@ -1163,10 +1177,17 @@ async function fetchCricketScores(
 
   try {
     const res = await fetch(`https://api.cricapi.com/v1/cricScore?apikey=${apiKey}`);
-    if (!res.ok) return { ...cricketScoreCache.data };
+    if (!res.ok) {
+      cricketScoreCache = { data: cricketScoreCache.data, ts: Date.now() };
+      return { ...cricketScoreCache.data };
+    }
     const data = await res.json() as any;
     if (data.status !== "success") {
-      console.warn("[liveScores] CricAPI cricScore non-success:", data.status, data.reason || "");
+      const reason = data.reason || "";
+      console.warn("[liveScores] CricAPI cricScore non-success:", data.status, reason);
+      // Always stamp the cache on failure so we don't immediately retry and burn more hits.
+      // If the daily limit is exceeded, back off for the full TTL period.
+      cricketScoreCache = { data: cricketScoreCache.data, ts: Date.now() };
       return { ...cricketScoreCache.data };
     }
 
