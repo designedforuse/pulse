@@ -362,6 +362,16 @@ const JL1_LOGO_MAP: Record<string, string> = {
   "Sagamihara Dynaboars": "https://league-one.s3.ap-northeast-1.amazonaws.com/image/team_info/11192_200x200_670e75a955eea.png",
 };
 
+const MLR_LOGO_MAP: Record<string, string> = {
+  // Official logos from majorleague.rugby/teams — statics-maker CDN
+  "Anthem RC":              "https://statics-maker.llt-services.com/mlr/images/2025/06/24/original/b71a8348-5820-4f68-9855-0bca8da3ff05-819.png",
+  "California Legion":      "https://statics-maker.llt-services.com/mlr/images/2025/12/10/original/16735014-c399-4ff8-af15-2b9627627782-177.png",
+  "Chicago Hounds":         "https://statics-maker.llt-services.com/mlr/images/2025/06/24/original/f3b3c133-7394-4c27-81f5-d302a9bcfd5a-687.png",
+  "New England Free Jacks": "https://statics-maker.llt-services.com/mlr/images/2025/06/24/original/1dceff6e-070d-42e2-a6a4-aabf8d9a60fe-678.png",
+  "Old Glory DC":           "https://statics-maker.llt-services.com/mlr/images/2025/06/24/original/605a85cd-a520-4687-9611-d144a838af44-7.png",
+  "Seattle Seawolves":      "https://statics-maker.llt-services.com/mlr/images/2025/06/24/original/48a432a4-f91a-4cf3-b5a5-83147eb4b312-827.png",
+};
+
 const LNR_BASE = "https://cdn.lnr.fr/club";
 const LNR_HASH = "3b11bd4ce6d123075823c85941013c743abb7668";
 const lnr = (slug: string) => `${LNR_BASE}/${slug}/photo/logo.${LNR_HASH}`;
@@ -551,6 +561,10 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
 
   if (league === "Japan League One") {
     return JL1_LOGO_MAP[teamName] || null;
+  }
+
+  if (league === "MLR") {
+    return MLR_LOGO_MAP[teamName] || null;
   }
 
   if (league === "Top 14") {
