@@ -1,37 +1,29 @@
 {
-  "lastUpdated": "2026-04-12T14:58:11.289Z",
+  "lastUpdated": "2026-04-13T04:21:15.777Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
-        "Other": 2
-      },
-      "clinch_watch": {
         "Other": 1
       },
+      "clinch_watch": {
+        "NewEngland": 1
+      },
       "playoff_push": {
-        "SoCal": 1
+        "Other": 1
       }
     },
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
-      "SoCal": [
-        "playoff_push: Playoff Push"
+      "NewEngland": [
+        "clinch_watch: Clinch Watch"
       ],
       "Other": [
-        "clinch_watch: Clinch Watch",
-        "league_moment: Bahrain Grand Prix"
+        "playoff_push: Playoff Push",
+        "league_moment: Merseyside Derby"
       ]
     },
-    "droppedCandidatesReasons": [
-      {
-        "id": "league_moment_rivalry",
-        "kind": "league_moment",
-        "region": "Other",
-        "title": "Merseyside Derby",
-        "reason": "max 1 league_moment per region (Other)"
-      }
-    ],
-    "totalBeforeCap": 4,
+    "droppedCandidatesReasons": [],
+    "totalBeforeCap": 3,
     "totalAfterCap": 3,
     "playerMovement": {
       "rawMovementCandidates": 0,
@@ -51,7 +43,6 @@
           "EDM",
           "VAN",
           "MTL",
-          "NYI",
           "PHI",
           "MIN",
           "NSH"
@@ -68,19 +59,19 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 558,
+        "playersIngested": 502,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-12T14:58:11.289Z"
+        "timestamp": "2026-04-13T04:21:15.777Z"
       },
-      "cacheHistoryCount": 843,
+      "cacheHistoryCount": 847,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 4,
+    "candidateCountBeforeCap": 3,
     "candidateCountAfterCap": 3,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -858.9698025,
+      "hoursUntil": -872.3543825,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -100,23 +91,23 @@
       "clinchAfterRegionFilter": 1,
       "clinchFinalCount": 1,
       "clinchGatedOut": [
-        "Anaheim Ducks: 89 pts < 95"
+        "Anaheim Ducks: 90 pts < 95"
       ]
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "soccer-usl-20260412-0000-orange-county-sc-at-fc-tulsa",
+    "tonightStorySourceEvent": "nhl_2025021280",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 380,
-      "sourceEventId": "soccer-usl-20260412-0000-orange-county-sc-at-fc-tulsa",
-      "reason": "9 followed/affiliate teams playing tonight",
+      "selectedScore": 300,
+      "sourceEventId": "nhl_2025021280",
+      "reason": "5 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 380,
-          "reason": "9 followed/affiliate teams playing tonight"
+          "score": 300,
+          "reason": "5 followed/affiliate teams playing tonight"
         },
         {
           "label": "[clinch_watch] Playoff Stakes",
@@ -129,16 +120,6 @@
           "reason": "playoff_push involving followed team(s): Anaheim Ducks"
         },
         {
-          "label": "[ritual_night] Saturday Game Day",
-          "score": 130,
-          "reason": "ritual \"Saturday Game Day\" has 7 followed-team game(s)"
-        },
-        {
-          "label": "[league_moment] League Spotlight",
-          "score": 50,
-          "reason": "league_moment (generic, no followed teams)"
-        },
-        {
           "label": "[league_moment] League Spotlight",
           "score": 50,
           "reason": "league_moment (generic, no followed teams)"
@@ -146,32 +127,73 @@
       ]
     },
     "videoSelection": {
-      "playoff_push_clinch_fallback_nhl_2025021280": {
+      "clinch_watch_nhl_2025021292": {
+        "searchQuery": "New Jersey Devils clinch playoff berth April 2026",
+        "selectedVideoTitle": "Ottawa Senators vs New Jersey Devils Post Game Show | April 12th",
+        "selectedVideoPublishedAt": "Streamed 1 hour ago",
+        "selectedVideoChannel": "Coming In Hot with Wallace, York & Nichols",
+        "rejectedForAgeCount": 0
+      },
+      "playoff_push_clinch_fallback_nhl_2025021296": {
         "searchQuery": "Anaheim Ducks playoff push April 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
-      "clinch_watch_nhl_2025021278": {
-        "searchQuery": "Boston Bruins clinch playoff berth April 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
-      },
-      "f1_race_weekend_bahrain_grand_prix": {
-        "searchQuery": "Bahrain Grand Prix sports April 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
+      "league_moment_rivalry": {
+        "searchQuery": "Merseyside Derby sports April 2026",
+        "selectedVideoTitle": "You Don’t Know This About Mohamed Salah | Mo Salah Lifestyle, Salary, Net Worth, Liverpool Goals",
+        "selectedVideoPublishedAt": "11 hours ago",
+        "selectedVideoChannel": "Best Line",
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
-      "id": "playoff_push_clinch_fallback_nhl_2025021280",
+      "id": "clinch_watch_nhl_2025021292",
+      "title": "Clinch Watch",
+      "subtitle": "Can secure wild card spot with a win in the next 48h",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 92,
+      "triggeredAt": "2026-04-13T04:21:15.777Z",
+      "expiresAt": "2026-04-15T03:00:00.000Z",
+      "kind": "clinch_watch",
+      "region": "NewEngland",
+      "regionPriority": 3,
+      "regionLabel": "New England",
+      "meta": {
+        "source": "team_config",
+        "conditionLabel": "Can secure wild card spot with a win",
+        "sport": "hockey",
+        "league": "NHL",
+        "awayTeam": "New Jersey Devils",
+        "homeTeam": "Boston Bruins",
+        "startTime": "2026-04-14T23:00:00.000Z",
+        "eventIds": [
+          "nhl_2025021292"
+        ],
+        "reason": "Boston Bruins have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
+      },
+      "sports": [
+        "hockey"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=ZygD0fuW7lg",
+        "thumbnailUrl": "https://img.youtube.com/vi/ZygD0fuW7lg/hqdefault.jpg",
+        "durationSeconds": 2696,
+        "title": "Ottawa Senators vs New Jersey Devils Post Game Show | April 12th",
+        "source": "youtube",
+        "channel": "Coming In Hot with Wallace, York & Nichols",
+        "publishedAt": "Streamed 1 hour ago"
+      }
+    },
+    {
+      "id": "playoff_push_clinch_fallback_nhl_2025021296",
       "title": "Playoff Push",
       "subtitle": "A win keeps Anaheim Ducks in the playoff race.",
       "impact": {
@@ -179,12 +201,12 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-04-12T14:58:11.289Z",
-      "expiresAt": "2026-04-13T04:00:00.000Z",
+      "triggeredAt": "2026-04-13T04:21:15.777Z",
+      "expiresAt": "2026-04-15T04:00:00.000Z",
       "kind": "playoff_push",
-      "region": "SoCal",
-      "regionPriority": 2,
-      "regionLabel": "SoCal",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
       "meta": {
         "teams": [
           {
@@ -193,7 +215,7 @@
           }
         ],
         "eventIds": [
-          "nhl_2025021280"
+          "nhl_2025021296"
         ],
         "reason": "Anaheim Ducks has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
         "clinchFallback": true
@@ -203,89 +225,71 @@
       ]
     },
     {
-      "id": "clinch_watch_nhl_2025021278",
-      "title": "Clinch Watch",
-      "subtitle": "Can secure wild card spot with a win tonight",
+      "id": "league_moment_rivalry",
+      "title": "Merseyside Derby",
+      "subtitle": "Merseyside Derby: Liverpool @ Everton",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
-      "priority": 92,
-      "triggeredAt": "2026-04-12T14:58:11.289Z",
-      "expiresAt": "2026-04-13T02:00:00.000Z",
-      "kind": "clinch_watch",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "source": "team_config",
-        "conditionLabel": "Can secure wild card spot with a win",
-        "sport": "hockey",
-        "league": "NHL",
-        "awayTeam": "Boston Bruins",
-        "homeTeam": "Columbus Blue Jackets",
-        "startTime": "2026-04-12T22:00:00.000Z",
-        "eventIds": [
-          "nhl_2025021278"
-        ],
-        "reason": "Columbus Blue Jackets have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
-      },
-      "sports": [
-        "hockey"
-      ]
-    },
-    {
-      "id": "f1_race_weekend_bahrain_grand_prix",
-      "title": "Bahrain Grand Prix",
-      "subtitle": "Bahrain Grand Prix — Race starting soon",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 85,
-      "triggeredAt": "2026-04-12T14:58:11.289Z",
-      "expiresAt": "2026-04-12T19:00:00.000Z",
+      "priority": 70,
+      "triggeredAt": "2026-04-13T04:21:15.777Z",
+      "expiresAt": "2026-04-20T04:21:15.777Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "type": "f1_race_weekend",
-        "grandPrix": "Bahrain Grand Prix",
-        "sessionCount": 1,
-        "sessions": [
+        "type": "rivalry",
+        "matchCount": 1,
+        "rivalries": [
+          "Merseyside Derby"
+        ],
+        "matches": [
           {
-            "sessionTitle": "Race",
-            "startTime": "2026-04-12T15:00:00.000Z",
-            "eventId": "f1-espn-401839047"
+            "label": "Merseyside Derby",
+            "away": "Liverpool",
+            "home": "Everton",
+            "league": "EPL",
+            "startTime": "2026-04-19T13:00:00.000Z"
           }
         ],
         "eventIds": [
-          "f1-espn-401839047"
+          "soccer-epl-20260419-1300-liverpool-at-everton"
         ],
-        "reason": "Bahrain Grand Prix race weekend — 1 session(s) within 48 hours"
+        "reason": "1 known rivalry matchup(s) found: Merseyside Derby"
       },
       "sports": [
-        "racing"
-      ]
+        "soccer"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=Q1mDEyoJ_yI",
+        "thumbnailUrl": "https://img.youtube.com/vi/Q1mDEyoJ_yI/hqdefault.jpg",
+        "durationSeconds": 521,
+        "title": "You Don’t Know This About Mohamed Salah | Mo Salah Lifestyle, Salary, Net Worth, Liverpool Goals",
+        "source": "youtube",
+        "channel": "Best Line",
+        "publishedAt": "11 hours ago"
+      }
     }
   ],
   "tonightStory": {
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Orange County SC, Tulsa Oilers, Los Angeles Dodgers, San Diego Gulls, and San Diego FC (+4 more) all play tonight across the USL, ECHL, MLB, AHL, MLS, NHL, NBA.",
-    "sourceEventId": "soccer-usl-20260412-0000-orange-county-sc-at-fc-tulsa",
+    "body": "The Anaheim Ducks, California Legion, Los Angeles Lakers, Lazio, and Boston Red Sox all play tonight across the NHL, MLR, NBA, Serie A, MLB.",
+    "sourceEventId": "nhl_2025021280",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
     },
     "sports": [
-      "soccer",
       "hockey",
-      "baseball",
-      "basketball"
+      "rugby",
+      "basketball",
+      "soccer",
+      "baseball"
     ]
   },
   "monthSnapshot": {
@@ -297,10 +301,10 @@
           "sport": "basketball",
           "displayName": "NBA",
           "leagueKey": "nba",
-          "dateRangeLabel": "Apr 1–18",
+          "dateRangeLabel": "Apr 1–20",
           "startDate": "2026-04-01T00:00:00.000Z",
-          "endDate": "2026-04-18T02:00:00.000Z",
-          "eventCount": 107
+          "endDate": "2026-04-20T01:00:00.000Z",
+          "eventCount": 115
         },
         {
           "sport": "soccer",
@@ -317,8 +321,8 @@
           "leagueKey": "mlb",
           "dateRangeLabel": "Apr 1–19",
           "startDate": "2026-04-01T00:10:00.000Z",
-          "endDate": "2026-04-19T01:38:00.000Z",
-          "eventCount": 221
+          "endDate": "2026-04-19T23:20:00.000Z",
+          "eventCount": 233
         },
         {
           "sport": "hockey",
@@ -501,6 +505,15 @@
           "eventCount": 5
         },
         {
+          "sport": "hockey",
+          "displayName": "SHL",
+          "leagueKey": "shl",
+          "dateRangeLabel": "Apr 10–14",
+          "startDate": "2026-04-10T17:00:00.000Z",
+          "endDate": "2026-04-14T17:00:00.000Z",
+          "eventCount": 5
+        },
+        {
           "sport": "soccer",
           "displayName": "EPL",
           "leagueKey": "epl",
@@ -510,13 +523,13 @@
           "eventCount": 35
         },
         {
-          "sport": "hockey",
-          "displayName": "NHL",
-          "leagueKey": "nhl",
-          "dateRangeLabel": "Apr 11–17",
-          "startDate": "2026-04-11T16:30:00.000Z",
-          "endDate": "2026-04-17T02:00:00.000Z",
-          "eventCount": 52
+          "sport": "soccer",
+          "displayName": "CAF Champions League",
+          "leagueKey": "cafchampionsleague",
+          "dateRangeLabel": "Apr 11–18",
+          "startDate": "2026-04-11T19:00:00.000Z",
+          "endDate": "2026-04-18T19:00:00.000Z",
+          "eventCount": 4
         },
         {
           "sport": "tennis",
@@ -526,6 +539,15 @@
           "startDate": "2026-04-12T13:10:00.000Z",
           "endDate": "2026-04-12T13:10:00.000Z",
           "eventCount": 1
+        },
+        {
+          "sport": "hockey",
+          "displayName": "NHL",
+          "leagueKey": "nhl",
+          "dateRangeLabel": "Apr 12–17",
+          "startDate": "2026-04-12T19:00:00.000Z",
+          "endDate": "2026-04-17T02:00:00.000Z",
+          "eventCount": 37
         },
         {
           "sport": "rugby",
@@ -638,8 +660,8 @@
           "leagueKey": "ligue1",
           "dateRangeLabel": "May 1–3",
           "startDate": "2026-05-01T18:45:00.000Z",
-          "endDate": "2026-05-03T13:00:00.000Z",
-          "eventCount": 5
+          "endDate": "2026-05-03T18:45:00.000Z",
+          "eventCount": 9
         },
         {
           "sport": "soccer",
@@ -656,8 +678,8 @@
           "leagueKey": "laliga",
           "dateRangeLabel": "May 1–3",
           "startDate": "2026-05-01T19:00:00.000Z",
-          "endDate": "2026-05-03T14:15:00.000Z",
-          "eventCount": 5
+          "endDate": "2026-05-03T18:00:00.000Z",
+          "eventCount": 9
         },
         {
           "sport": "soccer",
@@ -665,8 +687,8 @@
           "leagueKey": "nwsl",
           "dateRangeLabel": "May 2–3",
           "startDate": "2026-05-02T00:00:00.000Z",
-          "endDate": "2026-05-03T00:45:00.000Z",
-          "eventCount": 4
+          "endDate": "2026-05-03T23:00:00.000Z",
+          "eventCount": 8
         },
         {
           "sport": "soccer",
@@ -674,8 +696,8 @@
           "leagueKey": "bundesliga",
           "dateRangeLabel": "May 2–3",
           "startDate": "2026-05-02T13:30:00.000Z",
-          "endDate": "2026-05-03T13:30:00.000Z",
-          "eventCount": 7
+          "endDate": "2026-05-03T17:30:00.000Z",
+          "eventCount": 9
         },
         {
           "sport": "soccer",
@@ -683,8 +705,8 @@
           "leagueKey": "mls",
           "dateRangeLabel": "May 2–3",
           "startDate": "2026-05-02T18:30:00.000Z",
-          "endDate": "2026-05-03T02:30:00.000Z",
-          "eventCount": 13
+          "endDate": "2026-05-03T23:00:00.000Z",
+          "eventCount": 15
         },
         {
           "sport": "horse-racing",
@@ -701,8 +723,26 @@
           "leagueKey": "usl",
           "dateRangeLabel": "May 2–3",
           "startDate": "2026-05-02T21:00:00.000Z",
-          "endDate": "2026-05-03T02:30:00.000Z",
+          "endDate": "2026-05-03T23:00:00.000Z",
+          "eventCount": 11
+        },
+        {
+          "sport": "soccer",
+          "displayName": "Serie A",
+          "leagueKey": "seriea",
+          "dateRangeLabel": "May 3",
+          "startDate": "2026-05-03T18:00:00.000Z",
+          "endDate": "2026-05-03T18:00:00.000Z",
           "eventCount": 10
+        },
+        {
+          "sport": "rugby",
+          "displayName": "MLR",
+          "leagueKey": "mlr",
+          "dateRangeLabel": "May 3–4",
+          "startDate": "2026-05-03T20:00:00.000Z",
+          "endDate": "2026-05-04T00:00:00.000Z",
+          "eventCount": 2
         },
         {
           "sport": "cycling",
