@@ -128,7 +128,7 @@ function FavoritesSection() {
     hockey: ["NHL", "AHL", "ECHL", "SHL", "NCAA Hockey"],
     rugby: ["English Premiership", "Top 14", "URC", "Super Rugby", "Champions Cup", "Six Nations", "Japan League One", "MLR", "HSBC SVNS"],
     cricket: ["IPL", "International", "SA20", "BBL", "The Hundred", "CPL", "MLC"],
-    soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "MLS", "NWSL", "USL", "Champions League", "Europa League", "FA Cup", "FIFA World Cup", "International Friendly"],
+    soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "MLS", "NWSL", "USL", "Champions League", "Europa League", "FA Cup", "CAF Champions League", "FIFA World Cup", "International Friendly"],
     basketball: ["NBA", "NCAAB"],
     baseball: ["MLB"],
     tennis: ["Grand Slams", "ATP Masters 1000"],

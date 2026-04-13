@@ -49,7 +49,7 @@ const LEAGUE_PREFERRED_ORDER: Record<string, string[]> = {
   hockey: ["NHL", "AHL", "ECHL", "SHL", "NCAA Hockey", "Olympic Hockey"],
   rugby: ["URC", "Top 14", "English Premiership", "Six Nations", "European Champions Cup", "MLR", "Japan League One", "Super Rugby", "HSBC SVNS"],
   cricket: ["IPL", "BBL", "Super Smash", "SA20", "The Hundred", "MLC", "CPL", "T20 World Cup", "Test Cricket", "T20I Cricket", "ODI Cricket"],
-  soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "MLS", "NWSL", "USL"],
+  soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "Champions League", "Europa League", "FA Cup", "CAF Champions League", "MLS", "NWSL", "USL"],
 };
 
 function getLeagueKey(e: SportEvent): string {
@@ -79,6 +79,7 @@ const LEAGUE_SHORT_LABELS: Record<string, string> = {
   "Japan League One": "League One",
   "HSBC SVNS": "SVNS",
   "European Champions Cup": "Champions Cup",
+  "CAF Champions League": "CAF CL",
   "Test Cricket": "Test",
   "T20I Cricket": "T20I",
   "ODI Cricket": "ODI",

@@ -39,6 +39,7 @@
             "Champions League",
             "Europa League",
             "FA Cup",
+            "CAF Champions League",
             "NWSL",
             "USL"
           ]
@@ -157,6 +158,7 @@
             "Champions League",
             "Europa League",
             "FA Cup",
+            "CAF Champions League",
             "NWSL",
             "USL"
           ]
@@ -536,6 +538,9 @@
       ],
       "Champions League": [],
       "Europa League": [],
+      "CAF Champions League": [
+        "Mamelodi Sundowns"
+      ],
       "FIFA World Cup": [
         "United States",
         "Bafana Bafana"

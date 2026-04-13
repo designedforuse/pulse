@@ -560,6 +560,17 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
     };
   }
 
+  // CAF Champions League: beIN Sports via YouTube TV
+  if (event.league === "CAF Champions League") {
+    const launchProvider = getProviderById("youtubetv");
+    return {
+      brandId: "beinsports",
+      brandName: "beIN Sports",
+      launchProvider,
+      launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
+    };
+  }
+
   // SHL (Swedish Hockey League): FloSports
   if (event.league === "SHL" && event.providerId === "flosports") {
     const launchProvider = getProviderById("flosports");

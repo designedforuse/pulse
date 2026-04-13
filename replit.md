@@ -45,7 +45,7 @@ The application features a frontend built with Expo Router for file-based naviga
 - **College Hockey News (collegehockeynews.com):** NCAA BU Hockey schedule data (scraped).
 - **rugbyfixture.io (iCal feeds):** URC, Top 14, English Premiership, European Champions Cup Rugby schedules.
 - **fixturedownload.com (iCal feeds):** Super Rugby Pacific (schedule only), EPL, and MLS schedules.
-- **ESPN API (site.api.espn.com):** Champions League (uefa.champions) and Europa League (uefa.europa) schedule data.
+- **ESPN API (site.api.espn.com):** Champions League (uefa.champions), Europa League (uefa.europa), and CAF Champions League (caf.champions) schedule data. CAF CL broadcasts on beIN Sports via YouTube TV; Mamelodi Sundowns is a tracked favorite. Retention: 60 days past, 90 days future.
 - **ESPN API (site.api.espn.com):** NBA basketball schedule and live score data.
 - **ESPN API (site.api.espn.com):** USL, FA Cup, ATP Tennis, and F1 Racing schedule data.
 - **all.rugby:** Japan League One Rugby schedule data (scraped).
