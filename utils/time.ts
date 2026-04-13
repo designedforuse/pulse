@@ -39,7 +39,7 @@ export function isEventCompleted(event: SportEvent, now: Date): boolean {
 
 export function isEventUpNext(event: SportEvent, now: Date): boolean {
   const start = new Date(event.startTimeLocal);
-  const windowEnd = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+  const windowEnd = new Date(now.getTime() + 48 * 60 * 60 * 1000);
   return start > now && start <= windowEnd;
 }
 

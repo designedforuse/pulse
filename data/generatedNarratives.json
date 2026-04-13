@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-13T04:21:15.777Z",
+  "lastUpdated": "2026-04-13T04:22:45.834Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -61,7 +61,7 @@
         ],
         "playersIngested": 502,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-13T04:21:15.777Z"
+        "timestamp": "2026-04-13T04:22:45.834Z"
       },
       "cacheHistoryCount": 847,
       "error": null
@@ -71,7 +71,7 @@
     "candidateCountAfterCap": 3,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -872.3543825,
+      "hoursUntil": -872.3793983333334,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -160,7 +160,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-04-13T04:21:15.777Z",
+      "triggeredAt": "2026-04-13T04:22:45.834Z",
       "expiresAt": "2026-04-15T03:00:00.000Z",
       "kind": "clinch_watch",
       "region": "NewEngland",
@@ -201,7 +201,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-04-13T04:21:15.777Z",
+      "triggeredAt": "2026-04-13T04:22:45.834Z",
       "expiresAt": "2026-04-15T04:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -233,8 +233,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-13T04:21:15.777Z",
-      "expiresAt": "2026-04-20T04:21:15.777Z",
+      "triggeredAt": "2026-04-13T04:22:45.834Z",
+      "expiresAt": "2026-04-20T04:22:45.834Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
