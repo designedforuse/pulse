@@ -497,8 +497,39 @@ const ECHL_HOCKEYTECH_IDS: Record<string, string> = {
   "Worcester Railers": "77",
 };
 
-// SHL logos: app shows team-initials fallback when null
-const SHL_LOGO_URLS: Record<string, string> = {};
+// SHL logos from API-Sports CDN (api-sports.io/hockey/teams/{id}.png)
+// Team names match what the Odds API returns (with Swedish diacritics)
+const SHL_LOGO_URLS: Record<string, string> = {
+  // Confirmed from live Odds API data:
+  "Luleå HF":        "https://media.api-sports.io/hockey/teams/538.png",
+  "Rögle BK":        "https://media.api-sports.io/hockey/teams/542.png",
+  "Skellefteå AIK":  "https://media.api-sports.io/hockey/teams/543.png",
+  "Växjö Lakers":    "https://media.api-sports.io/hockey/teams/544.png",
+  // Remaining 10 teams (Odds API full names with Swedish characters):
+  "Brynäs IF":       "https://media.api-sports.io/hockey/teams/531.png",
+  "Färjestad BK":    "https://media.api-sports.io/hockey/teams/1523.png",
+  "Frölunda HC":     "https://media.api-sports.io/hockey/teams/534.png",
+  "HV71":            "https://media.api-sports.io/hockey/teams/535.png",
+  "Leksands IF":     "https://media.api-sports.io/hockey/teams/2054.png",
+  "Linköping HC":    "https://media.api-sports.io/hockey/teams/2045.png",
+  "Malmö Redhawks":  "https://media.api-sports.io/hockey/teams/539.png",
+  "MoDo Hockey":     "https://media.api-sports.io/hockey/teams/522.png",
+  "Timrå IK":        "https://media.api-sports.io/hockey/teams/525.png",
+  "Örebro HK":       "https://media.api-sports.io/hockey/teams/540.png",
+  // Common Odds API name variants (without diacritics or shortened):
+  "Brynas IF":       "https://media.api-sports.io/hockey/teams/531.png",
+  "Farjestad BK":    "https://media.api-sports.io/hockey/teams/1523.png",
+  "Frolunda HC":     "https://media.api-sports.io/hockey/teams/534.png",
+  "Linkoping HC":    "https://media.api-sports.io/hockey/teams/2045.png",
+  "Malmo Redhawks":  "https://media.api-sports.io/hockey/teams/539.png",
+  "MODO Hockey":     "https://media.api-sports.io/hockey/teams/522.png",
+  "Timra IK":        "https://media.api-sports.io/hockey/teams/525.png",
+  "Orebro HK":       "https://media.api-sports.io/hockey/teams/540.png",
+  "Skelleftea AIK":  "https://media.api-sports.io/hockey/teams/543.png",
+  "Vaxjo Lakers":    "https://media.api-sports.io/hockey/teams/544.png",
+  "Rogle BK":        "https://media.api-sports.io/hockey/teams/542.png",
+  "Lulea HF":        "https://media.api-sports.io/hockey/teams/538.png",
+};
 
 const AHL_LOGO_URLS: Record<string, string> = {
   "Abbotsford Canucks":           "https://theahl.com/wp-content/uploads/sites/3/2021/07/abbotsford21_64-1.png",
