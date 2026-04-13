@@ -497,6 +497,9 @@ const ECHL_HOCKEYTECH_IDS: Record<string, string> = {
   "Worcester Railers": "77",
 };
 
+// SHL logos: app shows team-initials fallback when null
+const SHL_LOGO_URLS: Record<string, string> = {};
+
 const AHL_LOGO_URLS: Record<string, string> = {
   "Abbotsford Canucks":           "https://theahl.com/wp-content/uploads/sites/3/2021/07/abbotsford21_64-1.png",
   "Bakersfield Condors":          "https://theahl.com/wp-content/uploads/sites/3/2022/07/bakersfield22_64.png",
@@ -542,6 +545,10 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
 
   if (league === "AHL") {
     return AHL_LOGO_URLS[teamName] ?? null;
+  }
+
+  if (league === "SHL") {
+    return SHL_LOGO_URLS[teamName] ?? null;
   }
 
   if (league === "ECHL") {

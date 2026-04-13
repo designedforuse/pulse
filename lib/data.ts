@@ -560,6 +560,17 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
     };
   }
 
+  // SHL (Swedish Hockey League): FloSports
+  if (event.league === "SHL" && event.providerId === "flosports") {
+    const launchProvider = getProviderById("flosports");
+    return {
+      brandId: "flosports",
+      brandName: "FloSports",
+      launchProvider,
+      launchLabel: launchProvider ? `Watch on ${launchProvider.name}` : "Watch",
+    };
+  }
+
   // Cricket: Willow TV (YouTube TV) or ESPN+ (Disney+)
   if (event.sport === "cricket") {
     const [broadcastId, launchProviderId] = resolveCricketBroadcastId(event);

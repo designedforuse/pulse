@@ -12,6 +12,7 @@
             "NHL",
             "AHL",
             "ECHL",
+            "SHL",
             "NCAA Hockey",
             "Olympic Hockey"
           ]
@@ -104,6 +105,7 @@
             "NHL",
             "AHL",
             "ECHL",
+            "SHL",
             "Olympic Hockey"
           ]
         },
@@ -464,6 +466,7 @@
       "ECHL": [
         "Tulsa Oilers"
       ],
+      "SHL": [],
       "Olympic Hockey": [
         "USA"
       ]

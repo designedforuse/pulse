@@ -465,7 +465,7 @@ export default function GuideDetailScreen() {
                         {displayTeamName(se.awayTeam, se.league)}
                       </Text>
                       <Text style={sheetStyles.atText}>
-                        {["NHL","AHL","ECHL","NCAA Hockey","MLS","USL"].includes(se.league) ? "at" : "vs"}
+                        {["NHL","AHL","ECHL","SHL","NCAA Hockey","MLS","USL"].includes(se.league) ? "at" : "vs"}
                       </Text>
                       <TeamLogo teamName={se.homeTeam} league={se.league} sport={se.sport} size={24} />
                       <Text style={sheetStyles.teamName} numberOfLines={1}>

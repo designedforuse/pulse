@@ -41,6 +41,7 @@ The application features a frontend built with Expo Router for file-based naviga
 - **NHL Public API (api-web.nhle.com):** NHL schedule data.
 - **HockeyTech API (lscluster.hockeytech.com):** AHL and ECHL schedule data.
 - **API-Hockey (api-sports.io):** ECHL schedule data.
+- **Odds API (api.the-odds-api.com):** SHL (Swedish Hockey League) schedule data via `icehockey_sweden_hockey_league`; upcoming events + 3-day scores; all games on FloSports. 14 teams: Brynäs IF, Frölunda HC, Färjestad BK, HV71, Leksands IF, Linköping HC, Luleå HF, Malmö Redhawks, MoDo Hockey, Rögle BK, Skellefteå AIK, Timrå IK, Växjö Lakers, Örebro HK. Retention: 14 days past, 21 days future.
 - **College Hockey News (collegehockeynews.com):** NCAA BU Hockey schedule data (scraped).
 - **rugbyfixture.io (iCal feeds):** URC, Top 14, English Premiership, European Champions Cup Rugby schedules.
 - **fixturedownload.com (iCal feeds):** Super Rugby Pacific (schedule only), EPL, and MLS schedules.
