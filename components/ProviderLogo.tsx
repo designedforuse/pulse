@@ -89,7 +89,7 @@ const LOGO_ASPECT: Record<string, number> = {
   willowtv:      3.00,
   rugbypasstv:   0.73,
   ion:           2.00,
-  mlbtv:         4.15,
+  mlbtv:         4.02,
   // Aliases
   espn2:         4.05,
   flohockey:     8.77,

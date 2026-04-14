@@ -801,7 +801,7 @@
   },
   "playoff_push:anaheim ducks playoff push april 2026": {
     "video": null,
-    "fetchedAt": "2026-04-13T04:21:26.464Z",
+    "fetchedAt": "2026-04-14T15:02:27.254Z",
     "query": "Anaheim Ducks playoff push April 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push April 2026",
@@ -857,41 +857,33 @@
   },
   "clinch_watch:new jersey devils clinch playoff berth april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=ZygD0fuW7lg",
-      "thumbnailUrl": "https://img.youtube.com/vi/ZygD0fuW7lg/hqdefault.jpg",
-      "durationSeconds": 2696,
-      "title": "Ottawa Senators vs New Jersey Devils Post Game Show | April 12th",
+      "url": "https://www.youtube.com/watch?v=3f-VU2r4OEQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/3f-VU2r4OEQ/hqdefault.jpg",
+      "durationSeconds": 1338,
+      "title": "Ottawa English school boards to see sweeping changes | CTV News Ottawa at Five for April 13, 2026",
       "source": "youtube",
-      "channel": "Coming In Hot with Wallace, York & Nichols",
-      "publishedAt": "Streamed 1 hour ago"
+      "channel": "CTV News",
+      "publishedAt": "1 hour ago"
     },
-    "fetchedAt": "2026-04-13T04:21:26.248Z",
+    "fetchedAt": "2026-04-14T15:02:27.022Z",
     "query": "New Jersey Devils clinch playoff berth April 2026",
     "debug": {
       "searchQuery": "New Jersey Devils clinch playoff berth April 2026",
-      "selectedVideoTitle": "Ottawa Senators vs New Jersey Devils Post Game Show | April 12th",
-      "selectedVideoPublishedAt": "Streamed 1 hour ago",
-      "selectedVideoChannel": "Coming In Hot with Wallace, York & Nichols",
+      "selectedVideoTitle": "Ottawa English school boards to see sweeping changes | CTV News Ottawa at Five for April 13, 2026",
+      "selectedVideoPublishedAt": "1 hour ago",
+      "selectedVideoChannel": "CTV News",
       "rejectedForAgeCount": 0
     }
   },
   "league_moment:merseyside derby sports april 2026": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=Q1mDEyoJ_yI",
-      "thumbnailUrl": "https://img.youtube.com/vi/Q1mDEyoJ_yI/hqdefault.jpg",
-      "durationSeconds": 521,
-      "title": "You Don’t Know This About Mohamed Salah | Mo Salah Lifestyle, Salary, Net Worth, Liverpool Goals",
-      "source": "youtube",
-      "channel": "Best Line",
-      "publishedAt": "11 hours ago"
-    },
-    "fetchedAt": "2026-04-13T04:21:26.673Z",
+    "video": null,
+    "fetchedAt": "2026-04-14T15:02:27.489Z",
     "query": "Merseyside Derby sports April 2026",
     "debug": {
       "searchQuery": "Merseyside Derby sports April 2026",
-      "selectedVideoTitle": "You Don’t Know This About Mohamed Salah | Mo Salah Lifestyle, Salary, Net Worth, Liverpool Goals",
-      "selectedVideoPublishedAt": "11 hours ago",
-      "selectedVideoChannel": "Best Line",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   }

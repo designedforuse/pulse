@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-13T04:22:45.834Z",
+  "lastUpdated": "2026-04-14T18:34:23.845Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -59,11 +59,11 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 502,
+        "playersIngested": 519,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-13T04:22:45.834Z"
+        "timestamp": "2026-04-14T18:34:23.845Z"
       },
-      "cacheHistoryCount": 847,
+      "cacheHistoryCount": 861,
       "error": null
     },
     "exploreFeedCap": 6,
@@ -71,7 +71,7 @@
     "candidateCountAfterCap": 3,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -872.3793983333334,
+      "hoursUntil": -910.5732902777778,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -96,18 +96,18 @@
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "nhl_2025021280",
+    "tonightStorySourceEvent": "baseball-mlb-20260414-0210-new-york-mets-at-los-angeles-dodgers",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 300,
-      "sourceEventId": "nhl_2025021280",
-      "reason": "5 followed/affiliate teams playing tonight",
+      "selectedScore": 260,
+      "sourceEventId": "baseball-mlb-20260414-0210-new-york-mets-at-los-angeles-dodgers",
+      "reason": "3 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 300,
-          "reason": "5 followed/affiliate teams playing tonight"
+          "score": 260,
+          "reason": "3 followed/affiliate teams playing tonight"
         },
         {
           "label": "[clinch_watch] Playoff Stakes",
@@ -129,9 +129,9 @@
     "videoSelection": {
       "clinch_watch_nhl_2025021292": {
         "searchQuery": "New Jersey Devils clinch playoff berth April 2026",
-        "selectedVideoTitle": "Ottawa Senators vs New Jersey Devils Post Game Show | April 12th",
-        "selectedVideoPublishedAt": "Streamed 1 hour ago",
-        "selectedVideoChannel": "Coming In Hot with Wallace, York & Nichols",
+        "selectedVideoTitle": "Ottawa English school boards to see sweeping changes | CTV News Ottawa at Five for April 13, 2026",
+        "selectedVideoPublishedAt": "1 hour ago",
+        "selectedVideoChannel": "CTV News",
         "rejectedForAgeCount": 0
       },
       "playoff_push_clinch_fallback_nhl_2025021296": {
@@ -143,9 +143,9 @@
       },
       "league_moment_rivalry": {
         "searchQuery": "Merseyside Derby sports April 2026",
-        "selectedVideoTitle": "You Don’t Know This About Mohamed Salah | Mo Salah Lifestyle, Salary, Net Worth, Liverpool Goals",
-        "selectedVideoPublishedAt": "11 hours ago",
-        "selectedVideoChannel": "Best Line",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       }
     }
@@ -154,13 +154,13 @@
     {
       "id": "clinch_watch_nhl_2025021292",
       "title": "Clinch Watch",
-      "subtitle": "Can secure wild card spot with a win in the next 48h",
+      "subtitle": "Can secure wild card spot with a win tonight",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-04-13T04:22:45.834Z",
+      "triggeredAt": "2026-04-14T18:34:23.845Z",
       "expiresAt": "2026-04-15T03:00:00.000Z",
       "kind": "clinch_watch",
       "region": "NewEngland",
@@ -183,13 +183,13 @@
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=ZygD0fuW7lg",
-        "thumbnailUrl": "https://img.youtube.com/vi/ZygD0fuW7lg/hqdefault.jpg",
-        "durationSeconds": 2696,
-        "title": "Ottawa Senators vs New Jersey Devils Post Game Show | April 12th",
+        "url": "https://www.youtube.com/watch?v=3f-VU2r4OEQ",
+        "thumbnailUrl": "https://img.youtube.com/vi/3f-VU2r4OEQ/hqdefault.jpg",
+        "durationSeconds": 1338,
+        "title": "Ottawa English school boards to see sweeping changes | CTV News Ottawa at Five for April 13, 2026",
         "source": "youtube",
-        "channel": "Coming In Hot with Wallace, York & Nichols",
-        "publishedAt": "Streamed 1 hour ago"
+        "channel": "CTV News",
+        "publishedAt": "1 hour ago"
       }
     },
     {
@@ -201,7 +201,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-04-13T04:22:45.834Z",
+      "triggeredAt": "2026-04-14T18:34:23.845Z",
       "expiresAt": "2026-04-15T04:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -233,8 +233,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-13T04:22:45.834Z",
-      "expiresAt": "2026-04-20T04:22:45.834Z",
+      "triggeredAt": "2026-04-14T18:34:23.845Z",
+      "expiresAt": "2026-04-21T18:34:23.845Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -261,35 +261,23 @@
       },
       "sports": [
         "soccer"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=Q1mDEyoJ_yI",
-        "thumbnailUrl": "https://img.youtube.com/vi/Q1mDEyoJ_yI/hqdefault.jpg",
-        "durationSeconds": 521,
-        "title": "You Don’t Know This About Mohamed Salah | Mo Salah Lifestyle, Salary, Net Worth, Liverpool Goals",
-        "source": "youtube",
-        "channel": "Best Line",
-        "publishedAt": "11 hours ago"
-      }
+      ]
     }
   ],
   "tonightStory": {
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Anaheim Ducks, California Legion, Los Angeles Lakers, Lazio, and Boston Red Sox all play tonight across the NHL, MLR, NBA, Serie A, MLB.",
-    "sourceEventId": "nhl_2025021280",
+    "body": "The Los Angeles Dodgers, Boston Bruins, and Boston Red Sox all play tonight across the MLB, NHL.",
+    "sourceEventId": "baseball-mlb-20260414-0210-new-york-mets-at-los-angeles-dodgers",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
     },
     "sports": [
-      "hockey",
-      "rugby",
-      "basketball",
-      "soccer",
-      "baseball"
+      "baseball",
+      "hockey"
     ]
   },
   "monthSnapshot": {
@@ -319,10 +307,10 @@
           "sport": "baseball",
           "displayName": "MLB",
           "leagueKey": "mlb",
-          "dateRangeLabel": "Apr 1–19",
+          "dateRangeLabel": "Apr 1–21",
           "startDate": "2026-04-01T00:10:00.000Z",
-          "endDate": "2026-04-19T23:20:00.000Z",
-          "eventCount": 233
+          "endDate": "2026-04-21T01:40:00.000Z",
+          "eventCount": 243
         },
         {
           "sport": "hockey",
@@ -508,10 +496,10 @@
           "sport": "hockey",
           "displayName": "SHL",
           "leagueKey": "shl",
-          "dateRangeLabel": "Apr 10–14",
+          "dateRangeLabel": "Apr 10–15",
           "startDate": "2026-04-10T17:00:00.000Z",
-          "endDate": "2026-04-14T17:00:00.000Z",
-          "eventCount": 5
+          "endDate": "2026-04-15T17:00:00.000Z",
+          "eventCount": 7
         },
         {
           "sport": "soccer",
@@ -532,22 +520,13 @@
           "eventCount": 4
         },
         {
-          "sport": "tennis",
-          "displayName": "Monte-Carlo",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "Apr 12",
-          "startDate": "2026-04-12T13:10:00.000Z",
-          "endDate": "2026-04-12T13:10:00.000Z",
-          "eventCount": 1
-        },
-        {
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "Apr 12–17",
-          "startDate": "2026-04-12T19:00:00.000Z",
+          "dateRangeLabel": "Apr 13–17",
+          "startDate": "2026-04-13T23:00:00.000Z",
           "endDate": "2026-04-17T02:00:00.000Z",
-          "eventCount": 37
+          "eventCount": 31
         },
         {
           "sport": "rugby",
@@ -628,6 +607,15 @@
       "monthKey": "2026-05",
       "leagues": [
         {
+          "sport": "cricket",
+          "displayName": "ICC",
+          "leagueKey": "icc",
+          "dateRangeLabel": "May 1–5",
+          "startDate": "2026-05-01T00:00:00.000Z",
+          "endDate": "2026-05-05T00:00:00.000Z",
+          "eventCount": 3
+        },
+        {
           "sport": "rugby",
           "displayName": "Super Rugby",
           "leagueKey": "superrugby",
@@ -643,6 +631,15 @@
           "dateRangeLabel": "May 1–3",
           "startDate": "2026-05-01T10:00:00.000Z",
           "endDate": "2026-05-03T05:30:00.000Z",
+          "eventCount": 6
+        },
+        {
+          "sport": "cricket",
+          "displayName": "IPL",
+          "leagueKey": "ipl",
+          "dateRangeLabel": "May 1–5",
+          "startDate": "2026-05-01T14:00:00.000Z",
+          "endDate": "2026-05-05T14:00:00.000Z",
           "eventCount": 6
         },
         {
@@ -667,19 +664,19 @@
           "sport": "soccer",
           "displayName": "EPL",
           "leagueKey": "epl",
-          "dateRangeLabel": "May 1–3",
+          "dateRangeLabel": "May 1–4",
           "startDate": "2026-05-01T19:00:00.000Z",
-          "endDate": "2026-05-03T14:30:00.000Z",
-          "eventCount": 8
+          "endDate": "2026-05-04T19:00:00.000Z",
+          "eventCount": 10
         },
         {
           "sport": "soccer",
           "displayName": "La Liga",
           "leagueKey": "laliga",
-          "dateRangeLabel": "May 1–3",
+          "dateRangeLabel": "May 1–4",
           "startDate": "2026-05-01T19:00:00.000Z",
-          "endDate": "2026-05-03T18:00:00.000Z",
-          "eventCount": 9
+          "endDate": "2026-05-04T19:00:00.000Z",
+          "eventCount": 10
         },
         {
           "sport": "soccer",
@@ -698,6 +695,15 @@
           "startDate": "2026-05-02T13:30:00.000Z",
           "endDate": "2026-05-03T17:30:00.000Z",
           "eventCount": 9
+        },
+        {
+          "sport": "rugby",
+          "displayName": "Champions Cup",
+          "leagueKey": "championscup",
+          "dateRangeLabel": "May 2",
+          "startDate": "2026-05-02T14:00:00.000Z",
+          "endDate": "2026-05-02T14:00:00.000Z",
+          "eventCount": 1
         },
         {
           "sport": "soccer",
@@ -742,6 +748,15 @@
           "dateRangeLabel": "May 3–4",
           "startDate": "2026-05-03T20:00:00.000Z",
           "endDate": "2026-05-04T00:00:00.000Z",
+          "eventCount": 2
+        },
+        {
+          "sport": "soccer",
+          "displayName": "Champions League",
+          "leagueKey": "championsleague",
+          "dateRangeLabel": "May 5",
+          "startDate": "2026-05-05T18:00:00.000Z",
+          "endDate": "2026-05-05T18:00:00.000Z",
           "eventCount": 2
         },
         {
