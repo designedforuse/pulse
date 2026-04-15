@@ -2016,7 +2016,6 @@ const styles = StyleSheet.create({
   },
   videoOverlay: {
     backgroundColor: "rgba(0,0,0,0.62)",
-    zIndex: 1,
   },
   tensionAccent: {
     position: "absolute" as const,
