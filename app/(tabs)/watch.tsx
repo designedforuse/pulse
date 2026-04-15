@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
-import { WebView } from "react-native-webview";
 import { useQuery } from "@tanstack/react-query";
 import {
   StyleSheet,
   Text,
   View,
+  Image,
   Pressable,
   Platform,
   ScrollView,
@@ -256,35 +256,36 @@ function SpikeBorderAccent({ color, secondary }: { color: string; secondary?: bo
   );
 }
 
-function buildChaosYouTubeHtml(videoIds: string[]): string {
-  const idsJson = JSON.stringify(videoIds);
-  return `<!DOCTYPE html>
-<html><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;height:100%;overflow:hidden;background:#000}
-#p{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-   width:177.78vh;height:100%;min-width:100%;min-height:56.25vw}
-iframe{width:100%;height:100%;border:0}
-</style></head><body><div id="p"></div>
-<script>
-var ids=${idsJson},idx=0,player;
-function onYouTubeIframeAPIReady(){next()}
-function next(){
-  if(idx>=ids.length)return;
-  var v=ids[idx];
-  if(player){player.loadVideoById({videoId:v,suggestedQuality:'hd720'})}
-  else{player=new YT.Player('p',{videoId:v,playerVars:{autoplay:1,mute:1,controls:0,
-    showinfo:0,rel:0,modestbranding:1,playsinline:1,loop:1,playlist:v,
-    iv_load_policy:3,disablekb:1,fs:0},
-    events:{
-      onReady:function(e){e.target.playVideo()},
-      onError:function(){idx++;setTimeout(next,200)}
-    }
-  })}
-}
-</script>
-<script src="https://www.youtube.com/iframe_api" async></script>
-</body></html>`;
+function ThumbnailBackground({ videoIds }: { videoIds: string[] }) {
+  const scale = useSharedValue(1);
+
+  useEffect(() => {
+    if (!videoIds.length) return;
+    scale.value = withRepeat(
+      withSequence(
+        withTiming(1.08, { duration: 9000 }),
+        withTiming(1.0, { duration: 9000 })
+      ),
+      -1,
+      false
+    );
+  }, [videoIds[0]]);
+
+  const animStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: scale.value }],
+  }));
+
+  if (!videoIds.length) return null;
+
+  return (
+    <Animated.View style={[StyleSheet.absoluteFill, animStyle]}>
+      <Image
+        source={{ uri: `https://img.youtube.com/vi/${videoIds[0]}/maxresdefault.jpg` }}
+        style={StyleSheet.absoluteFill}
+        resizeMode="cover"
+      />
+    </Animated.View>
+  );
 }
 
 function ChaosCard({
@@ -411,24 +412,12 @@ function ChaosCard({
             end={{ x: 1, y: 1 }}
             style={styles.primaryInner}
           >
-            {/* ── YouTube video background ── */}
-            {!!videoIds?.length && Platform.OS !== "web" && (
-              <WebView
-                source={{ html: buildChaosYouTubeHtml(videoIds) }}
-                style={StyleSheet.absoluteFill}
-                scrollEnabled={false}
-                allowsInlineMediaPlayback
-                mediaPlaybackRequiresUserAction={false}
-                javaScriptEnabled
-                allowsFullscreenVideo={false}
-                pointerEvents="none"
-                originWhitelist={["*"]}
-              />
-            )}
-            {!!videoIds?.length && Platform.OS !== "web" && (
+            {/* ── Highlights thumbnail background ── */}
+            {!!videoIds?.length && <ThumbnailBackground videoIds={videoIds} />}
+            {!!videoIds?.length && (
               <View style={[StyleSheet.absoluteFill, styles.videoOverlay]} />
             )}
-            {/* ─────────────────────────── */}
+            {/* ─────────────────────────────────── */}
             {tensionRank >= 4
               ? <SpikeBorderAccent color={tensionAccentColor ?? "rgba(129,140,248,0.25)"} />
               : <View style={[styles.tensionAccent, { backgroundColor: tensionAccentColor ?? "rgba(129,140,248,0.25)" }]} />
