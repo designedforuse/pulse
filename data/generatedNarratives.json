@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-15T00:47:03.868Z",
+  "lastUpdated": "2026-04-15T00:50:52.013Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -52,7 +52,7 @@
         ],
         "playersIngested": 373,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-15T00:47:03.868Z"
+        "timestamp": "2026-04-15T00:50:52.013Z"
       },
       "cacheHistoryCount": 861,
       "error": null
@@ -62,7 +62,7 @@
     "candidateCountAfterCap": 2,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -916.7844077777778,
+      "hoursUntil": -916.8477813888888,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -137,8 +137,8 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-04-15T00:47:03.868Z",
-      "expiresAt": "2026-04-15T06:47:03.868Z",
+      "triggeredAt": "2026-04-15T00:50:52.013Z",
+      "expiresAt": "2026-04-15T06:50:52.013Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
@@ -171,8 +171,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-15T00:47:03.868Z",
-      "expiresAt": "2026-04-22T00:47:03.868Z",
+      "triggeredAt": "2026-04-15T00:50:52.013Z",
+      "expiresAt": "2026-04-22T00:50:52.013Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
