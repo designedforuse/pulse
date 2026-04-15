@@ -6,6 +6,7 @@ import {
   View,
   Image,
   Pressable,
+  Linking,
   Platform,
   ScrollView,
   FlatList,
@@ -49,6 +50,7 @@ import {
 } from "@/utils/time";
 import { normalizeGameState } from "@/utils/gameState";
 import { favoriteInvolved, isTeamFavorite } from "@/utils/favorites";
+import { getTuneInUrl } from "@/utils/tuneIn";
 import type { Favorites } from "@/lib/data";
 import { RITUALS } from "@/lib/rituals";
 import {
@@ -562,7 +564,20 @@ function ChaosCard({
                   <Text style={styles.primaryTime}>{date} {"\u00B7"} {time}</Text>
                 ) : null}
               </View>
-              {!isLiveState && <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={22} />}
+              {isLiveState ? (
+                <Pressable
+                  onPress={() => {
+                    const team = event.homeTeam || event.awayTeam || event.league || "";
+                    Linking.openURL(getTuneInUrl(team)).catch(() => {});
+                  }}
+                  style={({ pressed }) => [styles.listenButton, { opacity: pressed ? 0.65 : 1 }]}
+                >
+                  <Ionicons name="radio-outline" size={12} color="#818CF8" />
+                  <Text style={styles.listenButtonText}>Listen</Text>
+                </Pressable>
+              ) : (
+                <ProviderLogo providerId={resolveProviderDisplay(event).brandId} size={22} />
+              )}
             </View>
           </LinearGradient>
         </Animated.View>
@@ -2114,6 +2129,22 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
+  },
+  listenButton: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 4,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "rgba(129,140,248,0.35)",
+    backgroundColor: "rgba(129,140,248,0.1)",
+  },
+  listenButtonText: {
+    fontSize: 11,
+    fontFamily: "Inter_500Medium",
+    color: "#818CF8",
   },
   primaryTime: {
     fontSize: 14,
