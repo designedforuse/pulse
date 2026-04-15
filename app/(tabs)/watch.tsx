@@ -256,6 +256,37 @@ function SpikeBorderAccent({ color, secondary }: { color: string; secondary?: bo
   );
 }
 
+function buildChaosYouTubeHtml(videoIds: string[]): string {
+  const idsJson = JSON.stringify(videoIds);
+  return `<!DOCTYPE html>
+<html><head><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:#000}
+#p{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+   width:177.78vh;height:100%;min-width:100%;min-height:56.25vw}
+iframe{width:100%;height:100%;border:0}
+</style></head><body><div id="p"></div>
+<script>
+var ids=${idsJson},idx=0,player;
+function onYouTubeIframeAPIReady(){next()}
+function next(){
+  if(idx>=ids.length)return;
+  var v=ids[idx];
+  if(player){player.loadVideoById({videoId:v,suggestedQuality:'hd720'})}
+  else{player=new YT.Player('p',{videoId:v,playerVars:{autoplay:1,mute:1,controls:0,
+    showinfo:0,rel:0,modestbranding:1,playsinline:1,loop:1,playlist:v,
+    iv_load_policy:3,disablekb:1,fs:0},
+    events:{
+      onReady:function(e){e.target.playVideo()},
+      onError:function(){idx++;setTimeout(next,200)}
+    }
+  })}
+}
+</script>
+<script src="https://www.youtube.com/iframe_api" async></script>
+</body></html>`;
+}
+
 function ChaosCard({
   event,
   isPrimary,
@@ -263,7 +294,7 @@ function ChaosCard({
   score,
   favorites,
   tensionRank = 0,
-  videoId,
+  videoIds,
 }: {
   event: SportEvent;
   isPrimary: boolean;
@@ -271,7 +302,7 @@ function ChaosCard({
   score?: ScoreData;
   favorites: Favorites;
   tensionRank?: number;
-  videoId?: string | null;
+  videoIds?: string[];
 }) {
   const { width: screenWidth } = useWindowDimensions();
   const cardWidth = screenWidth - PAGE_PADDING * 2;
@@ -381,9 +412,9 @@ function ChaosCard({
             style={styles.primaryInner}
           >
             {/* ── YouTube video background ── */}
-            {!!videoId && Platform.OS !== "web" && (
+            {!!videoIds?.length && Platform.OS !== "web" && (
               <WebView
-                source={{ uri: `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&controls=0&playlist=${videoId}&playsinline=1&rel=0&showinfo=0&modestbranding=1` }}
+                source={{ html: buildChaosYouTubeHtml(videoIds) }}
                 style={StyleSheet.absoluteFill}
                 scrollEnabled={false}
                 allowsInlineMediaPlayback
@@ -391,9 +422,10 @@ function ChaosCard({
                 javaScriptEnabled
                 allowsFullscreenVideo={false}
                 pointerEvents="none"
+                originWhitelist={["*"]}
               />
             )}
-            {!!videoId && Platform.OS !== "web" && (
+            {!!videoIds?.length && Platform.OS !== "web" && (
               <View style={[StyleSheet.absoluteFill, styles.videoOverlay]} />
             )}
             {/* ─────────────────────────── */}
@@ -973,7 +1005,7 @@ export default function WatchScreen() {
   const [chaosSetup, setChaosSetup] = useState<ChaosSetup | null>(null);
   const chaosRef = useRef<ChaosSetup | null>(null);
   const prevScoresRef = useRef<Record<string, ScoreData>>({});
-  const [chaosVideoId, setChaosVideoId] = useState<string | null>(null);
+  const [chaosVideoIds, setChaosVideoIds] = useState<string[]>([]);
   const chaosVideoPrimaryIdRef = useRef<string | null>(null);
   const [promotionToast, setPromotionToast] = useState<{ reason: string; scoringTeam?: string; ppStartTeam?: string; ppGoalTeam?: string } | null>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -1108,10 +1140,10 @@ export default function WatchScreen() {
 
   useEffect(() => {
     const primary = chaosSetup?.primary;
-    if (!primary) { setChaosVideoId(null); return; }
+    if (!primary) { setChaosVideoIds([]); return; }
     if (chaosVideoPrimaryIdRef.current === primary.id) return;
     chaosVideoPrimaryIdRef.current = primary.id;
-    setChaosVideoId(null);
+    setChaosVideoIds([]);
     if (Platform.OS === "web") return;
     const url = new URL("/api/chaos-youtube", getApiUrl());
     url.searchParams.set("team1", primary.awayTeam || "");
@@ -1119,9 +1151,9 @@ export default function WatchScreen() {
     if (primary.league) url.searchParams.set("league", primary.league);
     fetch(url.toString())
       .then((r) => r.json())
-      .then((data: { videoId?: string | null }) => {
+      .then((data: { videoIds?: string[] }) => {
         if (chaosVideoPrimaryIdRef.current === primary.id) {
-          setChaosVideoId(data.videoId || null);
+          setChaosVideoIds(data.videoIds || []);
         }
       })
       .catch(() => {});
@@ -1575,7 +1607,7 @@ export default function WatchScreen() {
               score={getScore(chaosSetup.primary!.id)}
               favorites={favorites}
               tensionRank={chaosSetup.debug?.selectedRanks?.find(r => r.id === chaosSetup.primary!.id)?.tension ?? 0}
-              videoId={chaosVideoId}
+              videoIds={chaosVideoIds}
             />
 
             {chaosSetup.secondary.length > 0 && (

@@ -1510,11 +1510,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // ── Chaos YouTube background video ────────────────────────────────────────
-  const chaosVideoCache: Record<string, { videoId: string | null; fetchedAt: number }> = {};
+  const chaosVideoCache: Record<string, { videoIds: string[]; fetchedAt: number }> = {};
 
   app.get("/api/chaos-youtube", async (req, res) => {
     const { team1, team2, league } = req.query as { team1?: string; team2?: string; league?: string };
-    if (!team1) return res.json({ videoId: null });
+    if (!team1) return res.json({ videoIds: [] });
 
     const now = new Date();
     const monthYear = `${now.toLocaleString("en-US", { month: "long" })} ${now.getFullYear()}`;
@@ -1524,7 +1524,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
     const cached = chaosVideoCache[cacheKey];
     if (cached && Date.now() - cached.fetchedAt < 6 * 3600 * 1000) {
-      return res.json({ videoId: cached.videoId });
+      return res.json({ videoIds: cached.videoIds });
     }
 
     try {
@@ -1538,30 +1538,32 @@ export async function registerRoutes(app: Express): Promise<Server> {
       });
 
       if (!resp.ok) {
-        chaosVideoCache[cacheKey] = { videoId: null, fetchedAt: Date.now() };
-        return res.json({ videoId: null });
+        chaosVideoCache[cacheKey] = { videoIds: [], fetchedAt: Date.now() };
+        return res.json({ videoIds: [] });
       }
 
       const html = await resp.text();
       const match = html.match(/var ytInitialData = ({.*?});<\/script>/s);
       if (!match) {
-        chaosVideoCache[cacheKey] = { videoId: null, fetchedAt: Date.now() };
-        return res.json({ videoId: null });
+        chaosVideoCache[cacheKey] = { videoIds: [], fetchedAt: Date.now() };
+        return res.json({ videoIds: [] });
       }
 
       const data = JSON.parse(match[1]);
       const contents =
         data?.contents?.twoColumnSearchResultsRenderer?.primaryContents
           ?.sectionListRenderer?.contents?.[0]?.itemSectionRenderer?.contents || [];
-      const videos = contents.filter((c: any) => c?.videoRenderer?.videoId);
-      const videoId: string | null = videos[0]?.videoRenderer?.videoId || null;
+      const videoIds: string[] = contents
+        .filter((c: any) => c?.videoRenderer?.videoId)
+        .slice(0, 5)
+        .map((c: any) => c.videoRenderer.videoId as string);
 
-      console.log(`[chaos-youtube] "${searchQuery}" → ${videoId || "none"}`);
-      chaosVideoCache[cacheKey] = { videoId, fetchedAt: Date.now() };
-      return res.json({ videoId });
+      console.log(`[chaos-youtube] "${searchQuery}" → ${videoIds.length} candidates: ${videoIds.join(", ") || "none"}`);
+      chaosVideoCache[cacheKey] = { videoIds, fetchedAt: Date.now() };
+      return res.json({ videoIds });
     } catch (err) {
-      chaosVideoCache[cacheKey] = { videoId: null, fetchedAt: Date.now() };
-      return res.json({ videoId: null });
+      chaosVideoCache[cacheKey] = { videoIds: [], fetchedAt: Date.now() };
+      return res.json({ videoIds: [] });
     }
   });
   // ──────────────────────────────────────────────────────────────────────────
