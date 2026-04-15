@@ -542,6 +542,11 @@
           "teamAbbrev": "MIN",
           "gameId": "2025021286",
           "seenAt": "2026-04-14T15:02:20.313Z"
+        },
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025021267",
+          "seenAt": "2026-04-15T00:26:36.465Z"
         }
       ]
     },
@@ -1957,6 +1962,11 @@
           "teamAbbrev": "MIN",
           "gameId": "2025021286",
           "seenAt": "2026-04-14T15:02:20.313Z"
+        },
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025021267",
+          "seenAt": "2026-04-15T00:26:36.465Z"
         }
       ]
     },
@@ -4020,11 +4030,6 @@
       "sightings": [
         {
           "teamAbbrev": "MIN",
-          "gameId": "2025020927",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "MIN",
           "gameId": "2025020951",
           "seenAt": "2026-03-04T04:02:55.897Z"
         },
@@ -4067,6 +4072,11 @@
           "teamAbbrev": "MIN",
           "gameId": "2025021286",
           "seenAt": "2026-04-14T15:02:20.313Z"
+        },
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025021267",
+          "seenAt": "2026-04-15T00:26:36.465Z"
         }
       ]
     },
@@ -9707,6 +9717,11 @@
           "teamAbbrev": "MIN",
           "gameId": "2025021286",
           "seenAt": "2026-04-14T15:02:20.313Z"
+        },
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025021267",
+          "seenAt": "2026-04-15T00:26:36.465Z"
         }
       ]
     },
@@ -13570,11 +13585,6 @@
       "sightings": [
         {
           "teamAbbrev": "MIN",
-          "gameId": "2025020927",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "MIN",
           "gameId": "2025020951",
           "seenAt": "2026-03-04T04:02:55.897Z"
         },
@@ -13617,6 +13627,11 @@
           "teamAbbrev": "MIN",
           "gameId": "2025021286",
           "seenAt": "2026-04-14T15:02:20.313Z"
+        },
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025021267",
+          "seenAt": "2026-04-15T00:26:36.465Z"
         }
       ]
     },
@@ -15875,11 +15890,6 @@
       "sightings": [
         {
           "teamAbbrev": "MIN",
-          "gameId": "2025020927",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "MIN",
           "gameId": "2025020951",
           "seenAt": "2026-03-04T04:02:55.897Z"
         },
@@ -15922,6 +15932,11 @@
           "teamAbbrev": "MIN",
           "gameId": "2025021286",
           "seenAt": "2026-04-14T15:02:20.313Z"
+        },
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025021267",
+          "seenAt": "2026-04-15T00:26:36.465Z"
         }
       ]
     },
@@ -18595,11 +18610,6 @@
       "sightings": [
         {
           "teamAbbrev": "MIN",
-          "gameId": "2025020927",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "MIN",
           "gameId": "2025020951",
           "seenAt": "2026-03-04T04:02:55.897Z"
         },
@@ -18642,6 +18652,11 @@
           "teamAbbrev": "MIN",
           "gameId": "2025021286",
           "seenAt": "2026-04-14T15:02:20.313Z"
+        },
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025021267",
+          "seenAt": "2026-04-15T00:26:36.465Z"
         }
       ]
     },
@@ -26232,6 +26247,11 @@
           "teamAbbrev": "MIN",
           "gameId": "2025021286",
           "seenAt": "2026-04-14T15:02:20.313Z"
+        },
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025021267",
+          "seenAt": "2026-04-15T00:26:36.465Z"
         }
       ]
     },
@@ -31125,11 +31145,6 @@
       "sightings": [
         {
           "teamAbbrev": "MIN",
-          "gameId": "2025020927",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "MIN",
           "gameId": "2025020951",
           "seenAt": "2026-03-04T04:02:55.897Z"
         },
@@ -31172,6 +31187,11 @@
           "teamAbbrev": "MIN",
           "gameId": "2025021286",
           "seenAt": "2026-04-14T15:02:20.313Z"
+        },
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025021267",
+          "seenAt": "2026-04-15T00:26:36.465Z"
         }
       ]
     },
@@ -34737,6 +34757,11 @@
           "teamAbbrev": "MIN",
           "gameId": "2025021286",
           "seenAt": "2026-04-14T15:02:20.313Z"
+        },
+        {
+          "teamAbbrev": "MIN",
+          "gameId": "2025021267",
+          "seenAt": "2026-04-15T00:26:36.465Z"
         }
       ]
     },
@@ -38547,7 +38572,7 @@
     }
   },
   "movements": [],
-  "lastUpdated": "2026-04-14T18:34:23.845Z",
+  "lastUpdated": "2026-04-15T00:33:40.127Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -38559,9 +38584,6 @@
       "CGY",
       "EDM",
       "VAN",
-      "MTL",
-      "PHI",
-      "MIN",
       "NSH"
     ],
     "skippedTeams": [
@@ -38576,8 +38598,8 @@
         "reason": "LEAGUE_NOT_SUPPORTED"
       }
     ],
-    "playersIngested": 519,
+    "playersIngested": 373,
     "movementsDetectedThisRun": [],
-    "timestamp": "2026-04-14T18:34:23.845Z"
+    "timestamp": "2026-04-15T00:33:40.127Z"
   }
 }

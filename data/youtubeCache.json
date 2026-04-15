@@ -886,5 +886,37 @@
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
+  },
+  "upset_alert:liverpool vs paris saint-germain upset highlights april 2026": {
+    "video": null,
+    "fetchedAt": "2026-04-15T00:26:43.284Z",
+    "query": "Liverpool vs Paris Saint-Germain upset highlights April 2026",
+    "debug": {
+      "searchQuery": "Liverpool vs Paris Saint-Germain upset highlights April 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:rivalry weekend sports april 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=pK3o9Uey-V8",
+      "thumbnailUrl": "https://img.youtube.com/vi/pK3o9Uey-V8/hqdefault.jpg",
+      "durationSeconds": 314,
+      "title": "MLB Highlights | Angels vs. Yankees - April 13, 2026",
+      "source": "youtube",
+      "channel": "MLB x SPORTSNET",
+      "publishedAt": "20 hours ago"
+    },
+    "fetchedAt": "2026-04-15T00:26:43.787Z",
+    "query": "Rivalry Weekend sports April 2026",
+    "debug": {
+      "searchQuery": "Rivalry Weekend sports April 2026",
+      "selectedVideoTitle": "MLB Highlights | Angels vs. Yankees - April 13, 2026",
+      "selectedVideoPublishedAt": "20 hours ago",
+      "selectedVideoChannel": "MLB x SPORTSNET",
+      "rejectedForAgeCount": 0
+    }
   }
 }

@@ -1,30 +1,24 @@
 {
-  "lastUpdated": "2026-04-14T18:34:23.845Z",
+  "lastUpdated": "2026-04-15T00:33:40.127Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
         "Other": 1
       },
-      "clinch_watch": {
-        "NewEngland": 1
-      },
-      "playoff_push": {
+      "upset_alert": {
         "Other": 1
       }
     },
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
-      "NewEngland": [
-        "clinch_watch: Clinch Watch"
-      ],
       "Other": [
-        "playoff_push: Playoff Push",
-        "league_moment: Merseyside Derby"
+        "upset_alert: Upset Alert",
+        "league_moment: Rivalry Weekend"
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 3,
-    "totalAfterCap": 3,
+    "totalBeforeCap": 2,
+    "totalAfterCap": 2,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -42,9 +36,6 @@
           "CGY",
           "EDM",
           "VAN",
-          "MTL",
-          "PHI",
-          "MIN",
           "NSH"
         ],
         "skippedTeams": [
@@ -59,19 +50,19 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 519,
+        "playersIngested": 373,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-14T18:34:23.845Z"
+        "timestamp": "2026-04-15T00:33:40.127Z"
       },
       "cacheHistoryCount": 861,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 3,
-    "candidateCountAfterCap": 3,
+    "candidateCountBeforeCap": 2,
+    "candidateCountAfterCap": 2,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -910.5732902777778,
+      "hoursUntil": -916.5611463888889,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -81,43 +72,36 @@
       "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 0,
+      "rawUpsetCandidates": 1,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 0,
-      "upsetFinalCount": 0
+      "upsetCompletedCandidates": 1,
+      "upsetFinalCount": 1
     },
     "clinchWatch": {
-      "rawClinchCandidates": 1,
-      "clinchAfterRegionFilter": 1,
-      "clinchFinalCount": 1,
-      "clinchGatedOut": [
-        "Anaheim Ducks: 90 pts < 95"
-      ]
+      "rawClinchCandidates": 0,
+      "clinchAfterRegionFilter": 0,
+      "clinchFinalCount": 0,
+      "clinchGatedOut": []
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "baseball-mlb-20260414-0210-new-york-mets-at-los-angeles-dodgers",
+    "tonightStorySourceEvent": "nhl_2025021296",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 260,
-      "sourceEventId": "baseball-mlb-20260414-0210-new-york-mets-at-los-angeles-dodgers",
-      "reason": "3 followed/affiliate teams playing tonight",
+      "selectedScore": 280,
+      "sourceEventId": "nhl_2025021296",
+      "reason": "4 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 260,
-          "reason": "3 followed/affiliate teams playing tonight"
+          "score": 280,
+          "reason": "4 followed/affiliate teams playing tonight"
         },
         {
-          "label": "[clinch_watch] Playoff Stakes",
-          "score": 190,
-          "reason": "clinch_watch involving followed team(s): Boston Bruins"
-        },
-        {
-          "label": "[playoff_push] Your Team's Push",
-          "score": 170,
-          "reason": "playoff_push involving followed team(s): Anaheim Ducks"
+          "label": "[upset_alert] Shock Result",
+          "score": 120,
+          "reason": "upset_alert (generic, no followed teams)"
         },
         {
           "label": "[league_moment] League Spotlight",
@@ -127,123 +111,78 @@
       ]
     },
     "videoSelection": {
-      "clinch_watch_nhl_2025021292": {
-        "searchQuery": "New Jersey Devils clinch playoff berth April 2026",
-        "selectedVideoTitle": "Ottawa English school boards to see sweeping changes | CTV News Ottawa at Five for April 13, 2026",
-        "selectedVideoPublishedAt": "1 hour ago",
-        "selectedVideoChannel": "CTV News",
-        "rejectedForAgeCount": 0
-      },
-      "playoff_push_clinch_fallback_nhl_2025021296": {
-        "searchQuery": "Anaheim Ducks playoff push April 2026",
+      "upset_alert_soccer-championsleague-20260414-1900-paris-saint-germain-at-liverpool": {
+        "searchQuery": "Liverpool vs Paris Saint-Germain upset highlights April 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
       "league_moment_rivalry": {
-        "searchQuery": "Merseyside Derby sports April 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
+        "searchQuery": "Rivalry Weekend sports April 2026",
+        "selectedVideoTitle": "MLB Highlights | Angels vs. Yankees - April 13, 2026",
+        "selectedVideoPublishedAt": "20 hours ago",
+        "selectedVideoChannel": "MLB x SPORTSNET",
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
-      "id": "clinch_watch_nhl_2025021292",
-      "title": "Clinch Watch",
-      "subtitle": "Can secure wild card spot with a win tonight",
+      "id": "upset_alert_soccer-championsleague-20260414-1900-paris-saint-germain-at-liverpool",
+      "title": "Upset Alert",
+      "subtitle": "Paris Saint-Germain upsets Liverpool",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
-      "priority": 92,
-      "triggeredAt": "2026-04-14T18:34:23.845Z",
-      "expiresAt": "2026-04-15T03:00:00.000Z",
-      "kind": "clinch_watch",
-      "region": "NewEngland",
-      "regionPriority": 3,
-      "regionLabel": "New England",
-      "meta": {
-        "source": "team_config",
-        "conditionLabel": "Can secure wild card spot with a win",
-        "sport": "hockey",
-        "league": "NHL",
-        "awayTeam": "New Jersey Devils",
-        "homeTeam": "Boston Bruins",
-        "startTime": "2026-04-14T23:00:00.000Z",
-        "eventIds": [
-          "nhl_2025021292"
-        ],
-        "reason": "Boston Bruins have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
-      },
-      "sports": [
-        "hockey"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=3f-VU2r4OEQ",
-        "thumbnailUrl": "https://img.youtube.com/vi/3f-VU2r4OEQ/hqdefault.jpg",
-        "durationSeconds": 1338,
-        "title": "Ottawa English school boards to see sweeping changes | CTV News Ottawa at Five for April 13, 2026",
-        "source": "youtube",
-        "channel": "CTV News",
-        "publishedAt": "1 hour ago"
-      }
-    },
-    {
-      "id": "playoff_push_clinch_fallback_nhl_2025021296",
-      "title": "Playoff Push",
-      "subtitle": "A win keeps Anaheim Ducks in the playoff race.",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 90,
-      "triggeredAt": "2026-04-14T18:34:23.845Z",
-      "expiresAt": "2026-04-15T04:00:00.000Z",
-      "kind": "playoff_push",
+      "priority": 98,
+      "triggeredAt": "2026-04-15T00:33:40.127Z",
+      "expiresAt": "2026-04-15T06:33:40.127Z",
+      "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "teams": [
-          {
-            "team": "Anaheim Ducks",
-            "league": "NHL"
-          }
-        ],
+        "mode": "completed",
+        "upsetType": "team_upset",
+        "sport": "soccer",
+        "league": "Champions League",
+        "favoriteName": "Liverpool",
+        "underdogName": "Paris Saint-Germain",
+        "awayTeam": "Paris Saint-Germain",
+        "homeTeam": "Liverpool",
+        "startTime": "2026-04-14T19:00:00.000Z",
         "eventIds": [
-          "nhl_2025021296"
+          "soccer-championsleague-20260414-1900-paris-saint-germain-at-liverpool"
         ],
-        "reason": "Anaheim Ducks has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
-        "clinchFallback": true
+        "reason": "Paris Saint-Germain pulled off the upset against Liverpool.\n\nA result like this can shift momentum for the rest of the season."
       },
       "sports": [
-        "hockey"
+        "soccer"
       ]
     },
     {
       "id": "league_moment_rivalry",
-      "title": "Merseyside Derby",
-      "subtitle": "Merseyside Derby: Liverpool @ Everton",
+      "title": "Rivalry Weekend",
+      "subtitle": "2 rivalry matchups in the next 7 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-14T18:34:23.845Z",
-      "expiresAt": "2026-04-21T18:34:23.845Z",
+      "triggeredAt": "2026-04-15T00:33:40.127Z",
+      "expiresAt": "2026-04-22T00:33:40.127Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "rivalry",
-        "matchCount": 1,
+        "matchCount": 2,
         "rivalries": [
-          "Merseyside Derby"
+          "Merseyside Derby",
+          "The Greatest Rivalry"
         ],
         "matches": [
           {
@@ -252,32 +191,51 @@
             "home": "Everton",
             "league": "EPL",
             "startTime": "2026-04-19T13:00:00.000Z"
+          },
+          {
+            "label": "The Greatest Rivalry",
+            "away": "New York Yankees",
+            "home": "Boston Red Sox",
+            "league": "MLB",
+            "startTime": "2026-04-21T22:45:00.000Z"
           }
         ],
         "eventIds": [
-          "soccer-epl-20260419-1300-liverpool-at-everton"
+          "soccer-epl-20260419-1300-liverpool-at-everton",
+          "baseball-mlb-20260421-2245-new-york-yankees-at-boston-red-sox"
         ],
-        "reason": "1 known rivalry matchup(s) found: Merseyside Derby"
+        "reason": "2 known rivalry matchup(s) found: Merseyside Derby, The Greatest Rivalry"
       },
       "sports": [
-        "soccer"
-      ]
+        "soccer",
+        "baseball"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=pK3o9Uey-V8",
+        "thumbnailUrl": "https://img.youtube.com/vi/pK3o9Uey-V8/hqdefault.jpg",
+        "durationSeconds": 314,
+        "title": "MLB Highlights | Angels vs. Yankees - April 13, 2026",
+        "source": "youtube",
+        "channel": "MLB x SPORTSNET",
+        "publishedAt": "20 hours ago"
+      }
     }
   ],
   "tonightStory": {
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Los Angeles Dodgers, Boston Bruins, and Boston Red Sox all play tonight across the MLB, NHL.",
-    "sourceEventId": "baseball-mlb-20260414-0210-new-york-mets-at-los-angeles-dodgers",
+    "body": "The Anaheim Ducks, Los Angeles Dodgers, Boston Red Sox, and Bayern Munich all play tonight across the NHL, MLB, Champions League.",
+    "sourceEventId": "nhl_2025021296",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
     },
     "sports": [
+      "hockey",
       "baseball",
-      "hockey"
+      "soccer"
     ]
   },
   "monthSnapshot": {
@@ -285,33 +243,6 @@
       "monthLabel": "April 2026",
       "monthKey": "2026-04",
       "leagues": [
-        {
-          "sport": "basketball",
-          "displayName": "NBA",
-          "leagueKey": "nba",
-          "dateRangeLabel": "Apr 1–20",
-          "startDate": "2026-04-01T00:00:00.000Z",
-          "endDate": "2026-04-20T01:00:00.000Z",
-          "eventCount": 115
-        },
-        {
-          "sport": "soccer",
-          "displayName": "International Friendly",
-          "leagueKey": "intl-friendly",
-          "dateRangeLabel": "Apr 1",
-          "startDate": "2026-04-01T00:00:00.000Z",
-          "endDate": "2026-04-01T00:00:00.000Z",
-          "eventCount": 1
-        },
-        {
-          "sport": "baseball",
-          "displayName": "MLB",
-          "leagueKey": "mlb",
-          "dateRangeLabel": "Apr 1–21",
-          "startDate": "2026-04-01T00:10:00.000Z",
-          "endDate": "2026-04-21T01:40:00.000Z",
-          "eventCount": 243
-        },
         {
           "sport": "hockey",
           "displayName": "AHL",
@@ -329,6 +260,24 @@
           "startDate": "2026-04-01T14:00:00.000Z",
           "endDate": "2026-04-30T14:00:00.000Z",
           "eventCount": 44
+        },
+        {
+          "sport": "baseball",
+          "displayName": "MLB",
+          "leagueKey": "mlb",
+          "dateRangeLabel": "Apr 1–22",
+          "startDate": "2026-04-01T16:15:00.000Z",
+          "endDate": "2026-04-22T00:05:00.000Z",
+          "eventCount": 252
+        },
+        {
+          "sport": "basketball",
+          "displayName": "NBA",
+          "leagueKey": "nba",
+          "dateRangeLabel": "Apr 1–20",
+          "startDate": "2026-04-01T23:00:00.000Z",
+          "endDate": "2026-04-20T01:00:00.000Z",
+          "eventCount": 110
         },
         {
           "sport": "hockey",
@@ -496,10 +445,10 @@
           "sport": "hockey",
           "displayName": "SHL",
           "leagueKey": "shl",
-          "dateRangeLabel": "Apr 10–15",
+          "dateRangeLabel": "Apr 10–16",
           "startDate": "2026-04-10T17:00:00.000Z",
-          "endDate": "2026-04-15T17:00:00.000Z",
-          "eventCount": 7
+          "endDate": "2026-04-16T17:00:00.000Z",
+          "eventCount": 8
         },
         {
           "sport": "soccer",
@@ -523,10 +472,10 @@
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "Apr 13–17",
-          "startDate": "2026-04-13T23:00:00.000Z",
+          "dateRangeLabel": "Apr 14–17",
+          "startDate": "2026-04-14T23:00:00.000Z",
           "endDate": "2026-04-17T02:00:00.000Z",
-          "eventCount": 31
+          "eventCount": 21
         },
         {
           "sport": "rugby",

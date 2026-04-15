@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { WebView } from "react-native-webview";
 import { useQuery } from "@tanstack/react-query";
 import {
   StyleSheet,
@@ -35,6 +36,7 @@ import {
   resolveProviderDisplay,
   type SportEvent,
 } from "@/lib/data";
+import { getApiUrl } from "@/lib/query-client";
 import { getTennisRoundPriority } from "@/data/tennisTopPlayers";
 import { useEvents } from "@/lib/events-context";
 import { useScores, type ScoreData } from "@/lib/scores-context";
@@ -261,6 +263,7 @@ function ChaosCard({
   score,
   favorites,
   tensionRank = 0,
+  videoId,
 }: {
   event: SportEvent;
   isPrimary: boolean;
@@ -268,6 +271,7 @@ function ChaosCard({
   score?: ScoreData;
   favorites: Favorites;
   tensionRank?: number;
+  videoId?: string | null;
 }) {
   const { width: screenWidth } = useWindowDimensions();
   const cardWidth = screenWidth - PAGE_PADDING * 2;
@@ -376,6 +380,23 @@ function ChaosCard({
             end={{ x: 1, y: 1 }}
             style={styles.primaryInner}
           >
+            {/* ── YouTube video background ── */}
+            {!!videoId && Platform.OS !== "web" && (
+              <WebView
+                source={{ uri: `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&controls=0&playlist=${videoId}&playsinline=1&rel=0&showinfo=0&modestbranding=1` }}
+                style={StyleSheet.absoluteFill}
+                scrollEnabled={false}
+                allowsInlineMediaPlayback
+                mediaPlaybackRequiresUserAction={false}
+                javaScriptEnabled
+                allowsFullscreenVideo={false}
+                pointerEvents="none"
+              />
+            )}
+            {!!videoId && Platform.OS !== "web" && (
+              <View style={[StyleSheet.absoluteFill, styles.videoOverlay]} />
+            )}
+            {/* ─────────────────────────── */}
             {tensionRank >= 4
               ? <SpikeBorderAccent color={tensionAccentColor ?? "rgba(129,140,248,0.25)"} />
               : <View style={[styles.tensionAccent, { backgroundColor: tensionAccentColor ?? "rgba(129,140,248,0.25)" }]} />
@@ -952,6 +973,8 @@ export default function WatchScreen() {
   const [chaosSetup, setChaosSetup] = useState<ChaosSetup | null>(null);
   const chaosRef = useRef<ChaosSetup | null>(null);
   const prevScoresRef = useRef<Record<string, ScoreData>>({});
+  const [chaosVideoId, setChaosVideoId] = useState<string | null>(null);
+  const chaosVideoPrimaryIdRef = useRef<string | null>(null);
   const [promotionToast, setPromotionToast] = useState<{ reason: string; scoringTeam?: string; ppStartTeam?: string; ppGoalTeam?: string } | null>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [liveBannerActive, setLiveBannerActive] = useState(false);
@@ -1082,6 +1105,27 @@ export default function WatchScreen() {
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
     };
   }, []);
+
+  useEffect(() => {
+    const primary = chaosSetup?.primary;
+    if (!primary) { setChaosVideoId(null); return; }
+    if (chaosVideoPrimaryIdRef.current === primary.id) return;
+    chaosVideoPrimaryIdRef.current = primary.id;
+    setChaosVideoId(null);
+    if (Platform.OS === "web") return;
+    const url = new URL("/api/chaos-youtube", getApiUrl());
+    url.searchParams.set("team1", primary.awayTeam || "");
+    if (primary.homeTeam) url.searchParams.set("team2", primary.homeTeam);
+    if (primary.league) url.searchParams.set("league", primary.league);
+    fetch(url.toString())
+      .then((r) => r.json())
+      .then((data: { videoId?: string | null }) => {
+        if (chaosVideoPrimaryIdRef.current === primary.id) {
+          setChaosVideoId(data.videoId || null);
+        }
+      })
+      .catch(() => {});
+  }, [chaosSetup?.primary?.id]);
 
   const handleRebuild = useCallback(() => {
     if (Platform.OS !== "web") {
@@ -1531,6 +1575,7 @@ export default function WatchScreen() {
               score={getScore(chaosSetup.primary!.id)}
               favorites={favorites}
               tensionRank={chaosSetup.debug?.selectedRanks?.find(r => r.id === chaosSetup.primary!.id)?.tension ?? 0}
+              videoId={chaosVideoId}
             />
 
             {chaosSetup.secondary.length > 0 && (
@@ -1946,6 +1991,10 @@ const styles = StyleSheet.create({
     borderRadius: 17,
     overflow: "hidden" as const,
     justifyContent: "space-between" as const,
+  },
+  videoOverlay: {
+    backgroundColor: "rgba(0,0,0,0.62)",
+    zIndex: 1,
   },
   tensionAccent: {
     position: "absolute" as const,

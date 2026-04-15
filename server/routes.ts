@@ -1509,6 +1509,63 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // ── Chaos YouTube background video ────────────────────────────────────────
+  const chaosVideoCache: Record<string, { videoId: string | null; fetchedAt: number }> = {};
+
+  app.get("/api/chaos-youtube", async (req, res) => {
+    const { team1, team2, league } = req.query as { team1?: string; team2?: string; league?: string };
+    if (!team1) return res.json({ videoId: null });
+
+    const now = new Date();
+    const monthYear = `${now.toLocaleString("en-US", { month: "long" })} ${now.getFullYear()}`;
+    const parts = [team1, team2].filter(Boolean);
+    const searchQuery = `${parts.join(" ")} ${league || ""} ${monthYear} highlights`.trim().replace(/\s+/g, " ");
+    const cacheKey = searchQuery.toLowerCase();
+
+    const cached = chaosVideoCache[cacheKey];
+    if (cached && Date.now() - cached.fetchedAt < 6 * 3600 * 1000) {
+      return res.json({ videoId: cached.videoId });
+    }
+
+    try {
+      const sp = "CAISBAgCEAE%3D";
+      const url = `https://www.youtube.com/results?search_query=${encodeURIComponent(searchQuery)}&sp=${sp}`;
+      const resp = await fetch(url, {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          "Accept-Language": "en-US,en;q=0.9",
+        },
+      });
+
+      if (!resp.ok) {
+        chaosVideoCache[cacheKey] = { videoId: null, fetchedAt: Date.now() };
+        return res.json({ videoId: null });
+      }
+
+      const html = await resp.text();
+      const match = html.match(/var ytInitialData = ({.*?});<\/script>/s);
+      if (!match) {
+        chaosVideoCache[cacheKey] = { videoId: null, fetchedAt: Date.now() };
+        return res.json({ videoId: null });
+      }
+
+      const data = JSON.parse(match[1]);
+      const contents =
+        data?.contents?.twoColumnSearchResultsRenderer?.primaryContents
+          ?.sectionListRenderer?.contents?.[0]?.itemSectionRenderer?.contents || [];
+      const videos = contents.filter((c: any) => c?.videoRenderer?.videoId);
+      const videoId: string | null = videos[0]?.videoRenderer?.videoId || null;
+
+      console.log(`[chaos-youtube] "${searchQuery}" → ${videoId || "none"}`);
+      chaosVideoCache[cacheKey] = { videoId, fetchedAt: Date.now() };
+      return res.json({ videoId });
+    } catch (err) {
+      chaosVideoCache[cacheKey] = { videoId: null, fetchedAt: Date.now() };
+      return res.json({ videoId: null });
+    }
+  });
+  // ──────────────────────────────────────────────────────────────────────────
+
   let lastAutoRefreshAt: string | null = null;
   let autoRefreshRunning = false;
 
