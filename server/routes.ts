@@ -1526,16 +1526,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try { return JSON.parse(m[1]); } catch { return null; }
   }
 
-  /** Search for official NHL YouTube channel (@NHL) highlights for a team matchup.
-   *  Uses a regular YouTube search but filters to only videos posted by the "NHL" channel.
-   *  The first match is typically the most recent head-to-head highlights package. */
-  async function searchNHLChannel(team1: string, team2: string): Promise<string[]> {
-    // Use team nicknames (last word) so search finds "Ducks vs. Wild" style titles
+  /** Search an official league YouTube channel for highlights of a specific team matchup.
+   *  channelName must match exactly as shown on YouTube (e.g. "NHL", "MLB", "NBA").
+   *  searchLabel is the league token used in the search query (e.g. "NHL", "MLB", "NBA"). */
+  async function searchOfficialChannel(
+    team1: string,
+    team2: string,
+    channelName: string,
+    searchLabel: string
+  ): Promise<string[]> {
+    // Use team nicknames (last word) so search finds "Ducks vs. Wild" / "Red Sox vs. Twins" style titles
     const nickname = (full: string) => full.split(" ").slice(-1)[0];
-    const q = `${nickname(team1)} ${nickname(team2)} NHL highlights`;
-    console.log(`[chaos-youtube/nhl] Searching for: "${q}"`);
+    const q = `${nickname(team1)} ${nickname(team2)} ${searchLabel} highlights`;
+    console.log(`[chaos-youtube/${searchLabel.toLowerCase()}] Searching: "${q}"`);
 
-    // Use relevance ranking (no sp param) — finds the most relevant head-to-head matchup first
+    // Relevance ranking — surfaces the most recent head-to-head matchup first
     const url = `https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;
     const data = await parseYtInitialData(url);
     if (!data) return [];
@@ -1546,10 +1551,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
     const allVideos = contents.filter((c: any) => c?.videoRenderer?.videoId);
 
-    // Build per-team keyword sets (city + nickname) for title matching
+    // Build per-team keyword sets (full name, city word, nickname word) for title matching
     const teamKeywords = (full: string): string[] => {
       const words = full.split(" ");
-      const result: string[] = [full.toLowerCase()];        // full name
+      const result: string[] = [full.toLowerCase()];
       if (words.length > 1) result.push(words[0].toLowerCase()); // city
       result.push(words[words.length - 1].toLowerCase());         // nickname
       return result;
@@ -1559,27 +1564,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const titleHasTeam = (title: string, keys: string[]) =>
       keys.some((k) => title.toLowerCase().includes(k));
 
-    // Filter to: (a) from the NHL channel AND (b) title mentions both teams
-    const nhlVideos = allVideos.filter((c: any) => {
+    // Filter: (a) posted by the official channel AND (b) title mentions both teams
+    const officialVideos = allVideos.filter((c: any) => {
       const r = c.videoRenderer;
       const channel: string =
         r?.ownerText?.runs?.[0]?.text ?? r?.longBylineText?.runs?.[0]?.text ?? "";
       const title: string = r?.title?.runs?.[0]?.text ?? "";
       return (
-        channel.toLowerCase() === "nhl" &&
+        channel.toLowerCase() === channelName.toLowerCase() &&
         titleHasTeam(title, t1Keys) &&
         titleHasTeam(title, t2Keys)
       );
     });
 
-    const ids = nhlVideos.slice(0, 5).map((c: any) => c.videoRenderer.videoId as string);
+    const ids = officialVideos.slice(0, 5).map((c: any) => c.videoRenderer.videoId as string);
     if (ids.length) {
-      const titles = nhlVideos.slice(0, 5).map((c: any) => c.videoRenderer.title?.runs?.[0]?.text || "?");
-      console.log(`[chaos-youtube/nhl] Found ${ids.length} official NHL matchup videos: ${titles.join(" | ")}`);
+      const titles = officialVideos.slice(0, 5).map((c: any) => c.videoRenderer.title?.runs?.[0]?.text || "?");
+      console.log(`[chaos-youtube/${searchLabel.toLowerCase()}] Found ${ids.length} official videos: ${titles.join(" | ")}`);
       return ids;
     }
 
-    console.log(`[chaos-youtube/nhl] No matching NHL channel results, falling back to generic`);
+    console.log(`[chaos-youtube/${searchLabel.toLowerCase()}] No official channel results, falling back to generic`);
     return [];
   }
 
@@ -1598,14 +1603,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
       .map((c: any) => c.videoRenderer.videoId as string);
   }
 
+  // Official YouTube channel names for supported leagues
+  const OFFICIAL_CHANNELS: Record<string, { channel: string; label: string }> = {
+    NHL:  { channel: "NHL",  label: "NHL" },
+    MLB:  { channel: "MLB",  label: "MLB" },
+    NBA:  { channel: "NBA",  label: "NBA" },
+  };
+
   app.get("/api/chaos-youtube", async (req, res) => {
     const { team1, team2, league, sport } = req.query as {
       team1?: string; team2?: string; league?: string; sport?: string;
     };
     if (!team1) return res.json({ videoIds: [] });
 
-    const isNHL = league === "NHL" || (sport === "hockey" && league === "NHL");
-    const cacheKey = `${isNHL ? "nhl-ch" : "generic"}::${team1}::${team2 ?? ""}`.toLowerCase();
+    const official = league ? OFFICIAL_CHANNELS[league.toUpperCase()] : undefined;
+    const cacheKey = `${official ? official.channel : "generic"}::${team1}::${team2 ?? ""}`.toLowerCase();
 
     const cached = chaosVideoCache[cacheKey];
     if (cached && Date.now() - cached.fetchedAt < 6 * 3600 * 1000) {
@@ -1615,9 +1627,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       let videoIds: string[] = [];
 
-      if (isNHL && team2) {
-        // Try NHL channel first; fall back to generic if channel search returns nothing
-        videoIds = await searchNHLChannel(team1, team2);
+      if (official && team2) {
+        // Try the official league channel first; fall back to generic if nothing found
+        videoIds = await searchOfficialChannel(team1, team2, official.channel, official.label);
       }
 
       if (!videoIds.length) {
