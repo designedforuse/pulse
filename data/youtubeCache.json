@@ -677,21 +677,21 @@
   },
   "momentum:boston bruins highlights april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=rrMgmcqNQ0g",
-      "thumbnailUrl": "https://img.youtube.com/vi/rrMgmcqNQ0g/hqdefault.jpg",
-      "durationSeconds": 852,
-      "title": "*RANKING* THE TOP 25 BEST NHL PROSPECTS! (2026)",
+      "url": "https://www.youtube.com/watch?v=YhUtPKt-w9A",
+      "thumbnailUrl": "https://img.youtube.com/vi/YhUtPKt-w9A/hqdefault.jpg",
+      "durationSeconds": 692,
+      "title": "Hurricanes vs. Flyers | NHL Highlights | April 13, 2026",
       "source": "youtube",
-      "channel": "Graviteh",
-      "publishedAt": "5 hours ago"
+      "channel": "NHL",
+      "publishedAt": "23 hours ago"
     },
-    "fetchedAt": "2026-04-02T01:30:04.584Z",
+    "fetchedAt": "2026-04-15T01:39:27.153Z",
     "query": "Boston Bruins highlights April 2026",
     "debug": {
       "searchQuery": "Boston Bruins highlights April 2026",
-      "selectedVideoTitle": "*RANKING* THE TOP 25 BEST NHL PROSPECTS! (2026)",
-      "selectedVideoPublishedAt": "5 hours ago",
-      "selectedVideoChannel": "Graviteh",
+      "selectedVideoTitle": "Hurricanes vs. Flyers | NHL Highlights | April 13, 2026",
+      "selectedVideoPublishedAt": "23 hours ago",
+      "selectedVideoChannel": "NHL",
       "rejectedForAgeCount": 0
     }
   },

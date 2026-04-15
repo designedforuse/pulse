@@ -1,18 +1,20 @@
 {
-  "lastUpdated": "2026-04-15T00:50:52.013Z",
+  "lastUpdated": "2026-04-15T01:39:20.438Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
-      "league_moment": {
-        "Other": 1
+      "momentum": {
+        "NewEngland": 1
       },
-      "upset_alert": {
+      "league_moment": {
         "Other": 1
       }
     },
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
+      "NewEngland": [
+        "momentum: Bruins Heating Up"
+      ],
       "Other": [
-        "upset_alert: Upset Alert",
         "league_moment: Rivalry Weekend"
       ]
     },
@@ -52,9 +54,9 @@
         ],
         "playersIngested": 373,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-15T00:50:52.013Z"
+        "timestamp": "2026-04-15T01:39:20.438Z"
       },
-      "cacheHistoryCount": 861,
+      "cacheHistoryCount": 863,
       "error": null
     },
     "exploreFeedCap": 6,
@@ -62,7 +64,7 @@
     "candidateCountAfterCap": 2,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -916.8477813888888,
+      "hoursUntil": -917.6556772222223,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -72,10 +74,10 @@
       "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 1,
+      "rawUpsetCandidates": 0,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 1,
-      "upsetFinalCount": 1
+      "upsetCompletedCandidates": 0,
+      "upsetFinalCount": 0
     },
     "clinchWatch": {
       "rawClinchCandidates": 0,
@@ -99,9 +101,9 @@
           "reason": "4 followed/affiliate teams playing tonight"
         },
         {
-          "label": "[upset_alert] Shock Result",
-          "score": 120,
-          "reason": "upset_alert (generic, no followed teams)"
+          "label": "[momentum] Hot Streak",
+          "score": 150,
+          "reason": "momentum involving followed team(s): Boston Bruins"
         },
         {
           "label": "[league_moment] League Spotlight",
@@ -111,11 +113,11 @@
       ]
     },
     "videoSelection": {
-      "upset_alert_soccer-championsleague-20260414-1900-paris-saint-germain-at-liverpool": {
-        "searchQuery": "Liverpool vs Paris Saint-Germain upset highlights April 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
+      "momentum_bos": {
+        "searchQuery": "Boston Bruins highlights April 2026",
+        "selectedVideoTitle": "Hurricanes vs. Flyers | NHL Highlights | April 13, 2026",
+        "selectedVideoPublishedAt": "23 hours ago",
+        "selectedVideoChannel": "NHL",
         "rejectedForAgeCount": 0
       },
       "league_moment_rivalry": {
@@ -129,38 +131,62 @@
   },
   "cards": [
     {
-      "id": "upset_alert_soccer-championsleague-20260414-1900-paris-saint-germain-at-liverpool",
-      "title": "Upset Alert",
-      "subtitle": "Paris Saint-Germain upsets Liverpool",
+      "id": "momentum_bos",
+      "title": "Bruins Heating Up",
+      "subtitle": "+4 goal diff",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
-      "priority": 98,
-      "triggeredAt": "2026-04-15T00:50:52.013Z",
-      "expiresAt": "2026-04-15T06:50:52.013Z",
-      "kind": "upset_alert",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
+      "priority": 80,
+      "triggeredAt": "2026-04-15T01:39:20.438Z",
+      "expiresAt": "2026-04-18T01:39:20.438Z",
+      "kind": "momentum",
+      "region": "NewEngland",
+      "regionPriority": 3,
+      "regionLabel": "New England",
       "meta": {
-        "mode": "completed",
-        "upsetType": "team_upset",
-        "sport": "soccer",
-        "league": "Champions League",
-        "favoriteName": "Liverpool",
-        "underdogName": "Paris Saint-Germain",
-        "awayTeam": "Paris Saint-Germain",
-        "homeTeam": "Liverpool",
-        "startTime": "2026-04-14T19:00:00.000Z",
-        "eventIds": [
-          "soccer-championsleague-20260414-1900-paris-saint-germain-at-liverpool"
+        "team": "Boston Bruins",
+        "league": "NHL",
+        "abbrev": "BOS",
+        "winStreak": 2,
+        "pointStreak": 2,
+        "goalDiff": 4,
+        "recentGames": [
+          {
+            "date": "2026-04-14T23:00:00Z",
+            "opponent": "New Jersey",
+            "score": "4-0",
+            "result": "W"
+          },
+          {
+            "date": "2026-04-12T22:00:00Z",
+            "opponent": "Columbus",
+            "score": "2-3",
+            "result": "W"
+          },
+          {
+            "date": "2026-04-11T16:30:00Z",
+            "opponent": "Tampa Bay",
+            "score": "1-2",
+            "result": "L"
+          }
         ],
-        "reason": "Paris Saint-Germain pulled off the upset against Liverpool.\n\nA result like this can shift momentum for the rest of the season."
+        "eventIds": [],
+        "reason": "Boston Bruins has a +4 goal differential over last 3 games"
       },
       "sports": [
-        "soccer"
-      ]
+        "hockey"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=YhUtPKt-w9A",
+        "thumbnailUrl": "https://img.youtube.com/vi/YhUtPKt-w9A/hqdefault.jpg",
+        "durationSeconds": 692,
+        "title": "Hurricanes vs. Flyers | NHL Highlights | April 13, 2026",
+        "source": "youtube",
+        "channel": "NHL",
+        "publishedAt": "23 hours ago"
+      }
     },
     {
       "id": "league_moment_rivalry",
@@ -171,8 +197,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-15T00:50:52.013Z",
-      "expiresAt": "2026-04-22T00:50:52.013Z",
+      "triggeredAt": "2026-04-15T01:39:20.438Z",
+      "expiresAt": "2026-04-22T01:39:20.438Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -267,8 +293,8 @@
           "leagueKey": "mlb",
           "dateRangeLabel": "Apr 1–22",
           "startDate": "2026-04-01T16:15:00.000Z",
-          "endDate": "2026-04-22T00:40:00.000Z",
-          "eventCount": 253
+          "endDate": "2026-04-22T01:38:00.000Z",
+          "eventCount": 254
         },
         {
           "sport": "basketball",
