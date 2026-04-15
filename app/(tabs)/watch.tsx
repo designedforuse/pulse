@@ -1149,6 +1149,7 @@ export default function WatchScreen() {
     url.searchParams.set("team1", primary.awayTeam || "");
     if (primary.homeTeam) url.searchParams.set("team2", primary.homeTeam);
     if (primary.league) url.searchParams.set("league", primary.league);
+    if (primary.sport) url.searchParams.set("sport", primary.sport);
     fetch(url.toString())
       .then((r) => r.json())
       .then((data: { videoIds?: string[] }) => {

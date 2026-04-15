@@ -1512,15 +1512,100 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // ── Chaos YouTube background video ────────────────────────────────────────
   const chaosVideoCache: Record<string, { videoIds: string[]; fetchedAt: number }> = {};
 
+  const YT_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept-Language": "en-US,en;q=0.9",
+  };
+
+  async function parseYtInitialData(url: string): Promise<any | null> {
+    const resp = await fetch(url, { headers: YT_HEADERS });
+    if (!resp.ok) return null;
+    const html = await resp.text();
+    const m = html.match(/var ytInitialData = ({.*?});<\/script>/s);
+    if (!m) return null;
+    try { return JSON.parse(m[1]); } catch { return null; }
+  }
+
+  /** Search for official NHL YouTube channel (@NHL) highlights for a team matchup.
+   *  Uses a regular YouTube search but filters to only videos posted by the "NHL" channel.
+   *  The first match is typically the most recent head-to-head highlights package. */
+  async function searchNHLChannel(team1: string, team2: string): Promise<string[]> {
+    // Use team nicknames (last word) so search finds "Ducks vs. Wild" style titles
+    const nickname = (full: string) => full.split(" ").slice(-1)[0];
+    const q = `${nickname(team1)} ${nickname(team2)} NHL highlights`;
+    console.log(`[chaos-youtube/nhl] Searching for: "${q}"`);
+
+    // Use relevance ranking (no sp param) — finds the most relevant head-to-head matchup first
+    const url = `https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;
+    const data = await parseYtInitialData(url);
+    if (!data) return [];
+
+    const contents: any[] =
+      data?.contents?.twoColumnSearchResultsRenderer?.primaryContents
+        ?.sectionListRenderer?.contents?.[0]?.itemSectionRenderer?.contents ?? [];
+
+    const allVideos = contents.filter((c: any) => c?.videoRenderer?.videoId);
+
+    // Build per-team keyword sets (city + nickname) for title matching
+    const teamKeywords = (full: string): string[] => {
+      const words = full.split(" ");
+      const result: string[] = [full.toLowerCase()];        // full name
+      if (words.length > 1) result.push(words[0].toLowerCase()); // city
+      result.push(words[words.length - 1].toLowerCase());         // nickname
+      return result;
+    };
+    const t1Keys = teamKeywords(team1);
+    const t2Keys = teamKeywords(team2);
+    const titleHasTeam = (title: string, keys: string[]) =>
+      keys.some((k) => title.toLowerCase().includes(k));
+
+    // Filter to: (a) from the NHL channel AND (b) title mentions both teams
+    const nhlVideos = allVideos.filter((c: any) => {
+      const r = c.videoRenderer;
+      const channel: string =
+        r?.ownerText?.runs?.[0]?.text ?? r?.longBylineText?.runs?.[0]?.text ?? "";
+      const title: string = r?.title?.runs?.[0]?.text ?? "";
+      return (
+        channel.toLowerCase() === "nhl" &&
+        titleHasTeam(title, t1Keys) &&
+        titleHasTeam(title, t2Keys)
+      );
+    });
+
+    const ids = nhlVideos.slice(0, 5).map((c: any) => c.videoRenderer.videoId as string);
+    if (ids.length) {
+      const titles = nhlVideos.slice(0, 5).map((c: any) => c.videoRenderer.title?.runs?.[0]?.text || "?");
+      console.log(`[chaos-youtube/nhl] Found ${ids.length} official NHL matchup videos: ${titles.join(" | ")}`);
+      return ids;
+    }
+
+    console.log(`[chaos-youtube/nhl] No matching NHL channel results, falling back to generic`);
+    return [];
+  }
+
+  /** Generic YouTube search — sorted by upload date for recency. */
+  async function searchYouTubeGeneric(query: string): Promise<string[]> {
+    const sp = "CAISBAgCEAE%3D"; // sort by upload date
+    const url = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}&sp=${sp}`;
+    const data = await parseYtInitialData(url);
+    if (!data) return [];
+    const contents: any[] =
+      data?.contents?.twoColumnSearchResultsRenderer?.primaryContents
+        ?.sectionListRenderer?.contents?.[0]?.itemSectionRenderer?.contents ?? [];
+    return contents
+      .filter((c: any) => c?.videoRenderer?.videoId)
+      .slice(0, 5)
+      .map((c: any) => c.videoRenderer.videoId as string);
+  }
+
   app.get("/api/chaos-youtube", async (req, res) => {
-    const { team1, team2, league } = req.query as { team1?: string; team2?: string; league?: string };
+    const { team1, team2, league, sport } = req.query as {
+      team1?: string; team2?: string; league?: string; sport?: string;
+    };
     if (!team1) return res.json({ videoIds: [] });
 
-    const now = new Date();
-    const monthYear = `${now.toLocaleString("en-US", { month: "long" })} ${now.getFullYear()}`;
-    const parts = [team1, team2].filter(Boolean);
-    const searchQuery = `${parts.join(" ")} ${league || ""} ${monthYear} highlights`.trim().replace(/\s+/g, " ");
-    const cacheKey = searchQuery.toLowerCase();
+    const isNHL = league === "NHL" || (sport === "hockey" && league === "NHL");
+    const cacheKey = `${isNHL ? "nhl-ch" : "generic"}::${team1}::${team2 ?? ""}`.toLowerCase();
 
     const cached = chaosVideoCache[cacheKey];
     if (cached && Date.now() - cached.fetchedAt < 6 * 3600 * 1000) {
@@ -1528,37 +1613,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
 
     try {
-      const sp = "CAISBAgCEAE%3D";
-      const url = `https://www.youtube.com/results?search_query=${encodeURIComponent(searchQuery)}&sp=${sp}`;
-      const resp = await fetch(url, {
-        headers: {
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-          "Accept-Language": "en-US,en;q=0.9",
-        },
-      });
+      let videoIds: string[] = [];
 
-      if (!resp.ok) {
-        chaosVideoCache[cacheKey] = { videoIds: [], fetchedAt: Date.now() };
-        return res.json({ videoIds: [] });
+      if (isNHL && team2) {
+        // Try NHL channel first; fall back to generic if channel search returns nothing
+        videoIds = await searchNHLChannel(team1, team2);
       }
 
-      const html = await resp.text();
-      const match = html.match(/var ytInitialData = ({.*?});<\/script>/s);
-      if (!match) {
-        chaosVideoCache[cacheKey] = { videoIds: [], fetchedAt: Date.now() };
-        return res.json({ videoIds: [] });
+      if (!videoIds.length) {
+        const now = new Date();
+        const monthYear = `${now.toLocaleString("en-US", { month: "long" })} ${now.getFullYear()}`;
+        const parts = [team1, team2].filter(Boolean);
+        const q = `${parts.join(" ")} ${league || ""} ${monthYear} highlights`.trim().replace(/\s+/g, " ");
+        console.log(`[chaos-youtube/generic] "${q}"`);
+        videoIds = await searchYouTubeGeneric(q);
       }
 
-      const data = JSON.parse(match[1]);
-      const contents =
-        data?.contents?.twoColumnSearchResultsRenderer?.primaryContents
-          ?.sectionListRenderer?.contents?.[0]?.itemSectionRenderer?.contents || [];
-      const videoIds: string[] = contents
-        .filter((c: any) => c?.videoRenderer?.videoId)
-        .slice(0, 5)
-        .map((c: any) => c.videoRenderer.videoId as string);
-
-      console.log(`[chaos-youtube] "${searchQuery}" → ${videoIds.length} candidates: ${videoIds.join(", ") || "none"}`);
+      console.log(`[chaos-youtube] Final: ${videoIds.length} candidates: ${videoIds.join(", ") || "none"}`);
       chaosVideoCache[cacheKey] = { videoIds, fetchedAt: Date.now() };
       return res.json({ videoIds });
     } catch (err) {
