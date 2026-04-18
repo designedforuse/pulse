@@ -429,7 +429,7 @@ function ChaosCard({
                     ? `F1${gpShort ? ` · ${gpShort}` : ""}`
                     : isSvnsSession && svnsCity
                     ? `${svnsCity} SVNS${svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}`
-                    : event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league === "CAF Champions League" ? "CAF CL" : event.tournamentName || event.league}
+                    : event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league === "CAF Champions League" ? "CAF CL" : event.league === "English Premiership" ? "Premiership" : event.tournamentName || event.league}
                 </Text>
               </View>
               <View style={{ flex: 1 }} />
@@ -590,7 +590,7 @@ function ChaosCard({
                 ? "Formula 1"
                 : isSvnsSession && svnsCity
                 ? `${svnsCity} SVNS${svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}`
-                : event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.league === "CAF Champions League" ? "CAF CL" : event.tournamentName || event.league}
+                : event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.league === "CAF Champions League" ? "CAF CL" : event.league === "English Premiership" ? "Premiership" : event.tournamentName || event.league}
             </Text>
           </View>
           {isLiveState && (
