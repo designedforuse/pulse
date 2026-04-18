@@ -89,7 +89,8 @@ export function EventsProvider({ children }: { children: ReactNode }) {
 
   const allEvents = useMemo(() => {
     const localEvents = (guideData.events || []) as SportEvent[];
-    const isRemovedSport = (e: SportEvent) => e.sport === "basketball" || e.sport === "baseball";
+    const isRemovedSport = (e: SportEvent) =>
+      (e.sport === "basketball" && e.league !== "NCAAB") || e.sport === "baseball";
     if (!data?.events || data.events.length === 0) {
       return localEvents.filter((e) => !isRemovedSport(e));
     }
