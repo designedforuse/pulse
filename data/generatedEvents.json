@@ -159,7 +159,6 @@
   "f1SourceUsed": "espn-f1",
   "f1RaceCounts": {
     "Bahrain Grand Prix": 5,
-    "Saudi Arabian Grand Prix": 5,
     "Miami Grand Prix": 5,
     "Canadian Grand Prix": 5,
     "Monaco Grand Prix": 5,
@@ -9562,23 +9561,6 @@
       "leagueKey": "leagueone"
     },
     {
-      "id": "f1-espn-401839048",
-      "sport": "racing",
-      "league": "F1",
-      "awayTeam": "Practice 1",
-      "homeTeam": "Saudi Arabian Grand Prix",
-      "startTimeLocal": "2026-04-17T13:30:00.000Z",
-      "endTimeLocal": "2026-04-17T15:00:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "espn-f1",
-      "leagueKey": "f1",
-      "providerReason": "Apple TV broadcast",
-      "eventType": "session",
-      "sessionTitle": "Practice 1",
-      "competitionName": "Saudi Arabian Grand Prix"
-    },
-    {
       "id": "cricket-ipl-t90zt9",
       "cricketMatchId": "6bf089f5-7279-43e2-864a-3bf186db844e",
       "sport": "cricket",
@@ -9611,23 +9593,6 @@
       "isLive": false,
       "source": "soccer-seriea",
       "leagueKey": "seriea"
-    },
-    {
-      "id": "f1-espn-401839049",
-      "sport": "racing",
-      "league": "F1",
-      "awayTeam": "Practice 2",
-      "homeTeam": "Saudi Arabian Grand Prix",
-      "startTimeLocal": "2026-04-17T17:00:00.000Z",
-      "endTimeLocal": "2026-04-17T18:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "espn-f1",
-      "leagueKey": "f1",
-      "providerReason": "Apple TV broadcast",
-      "eventType": "session",
-      "sessionTitle": "Practice 2",
-      "competitionName": "Saudi Arabian Grand Prix"
     },
     {
       "id": "baseball-mlb-20260417-1820-new-york-mets-at-chicago-cubs",
@@ -10396,23 +10361,6 @@
       "providerReason": "bundesliga-disneyplus"
     },
     {
-      "id": "f1-espn-401839050",
-      "sport": "racing",
-      "league": "F1",
-      "awayTeam": "Practice 3",
-      "homeTeam": "Saudi Arabian Grand Prix",
-      "startTimeLocal": "2026-04-18T13:30:00.000Z",
-      "endTimeLocal": "2026-04-18T15:00:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "espn-f1",
-      "leagueKey": "f1",
-      "providerReason": "Apple TV broadcast",
-      "eventType": "session",
-      "sessionTitle": "Practice 3",
-      "competitionName": "Saudi Arabian Grand Prix"
-    },
-    {
       "id": "rugby-premiership-28q8e1",
       "sport": "rugby",
       "league": "English Premiership",
@@ -10667,23 +10615,6 @@
       "source": "soccer-ligue1",
       "leagueKey": "ligue1",
       "providerReason": "ligue1-yttv"
-    },
-    {
-      "id": "f1-espn-401839051",
-      "sport": "racing",
-      "league": "F1",
-      "awayTeam": "Qualifying",
-      "homeTeam": "Saudi Arabian Grand Prix",
-      "startTimeLocal": "2026-04-18T17:00:00.000Z",
-      "endTimeLocal": "2026-04-18T18:30:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "espn-f1",
-      "leagueKey": "f1",
-      "providerReason": "Apple TV broadcast",
-      "eventType": "session",
-      "sessionTitle": "Qualifying",
-      "competitionName": "Saudi Arabian Grand Prix"
     },
     {
       "id": "basketball-nba-20260418-1700-toronto-raptors-at-cleveland-cavaliers",
@@ -11799,23 +11730,6 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
-    },
-    {
-      "id": "f1-espn-401839052",
-      "sport": "racing",
-      "league": "F1",
-      "awayTeam": "Race",
-      "homeTeam": "Saudi Arabian Grand Prix",
-      "startTimeLocal": "2026-04-19T17:00:00.000Z",
-      "endTimeLocal": "2026-04-19T19:00:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "espn-f1",
-      "leagueKey": "f1",
-      "providerReason": "Apple TV broadcast",
-      "eventType": "session",
-      "sessionTitle": "Race",
-      "competitionName": "Saudi Arabian Grand Prix"
     },
     {
       "id": "basketball-nba-20260419-1700-philadelphia-76ers-at-boston-celtics",

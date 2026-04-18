@@ -63,6 +63,12 @@ function extractGrandPrixName(fullName: string): string {
     .trim();
 }
 
+// Races that have been officially canceled for the current season.
+// Events matching these names will be skipped during fetch and pruned on merge.
+const CANCELED_RACES: Set<string> = new Set([
+  "Saudi Arabian Grand Prix",
+]);
+
 function resolveF1Provider(broadcasts: any[]): { providerId: string; providerReason: string } {
   if (!broadcasts || broadcasts.length === 0) {
     return { providerId: "appletv", providerReason: "F1 default" };
@@ -103,6 +109,10 @@ export async function fetchF1Events(): Promise<F1FetchResult> {
     for (const ev of espnEvents) {
       const grandPrixFull = ev.name || "Unknown Grand Prix";
       const grandPrixShort = extractGrandPrixName(grandPrixFull);
+      if (CANCELED_RACES.has(grandPrixShort)) {
+        console.log(`[F1] Skipping canceled race: ${grandPrixShort}`);
+        continue;
+      }
       const competitions = ev.competitions || [];
 
       for (const comp of competitions) {
