@@ -31,6 +31,7 @@ import { useScores } from "@/lib/scores-context";
 import { isEventLive, formatTimeSinceStart } from "@/utils/time";
 import { normalizeGameState } from "@/utils/gameState";
 import { displayTeamName } from "@/utils/teams";
+import { getTuneInUrl } from "@/utils/tuneIn";
 
 const MASTERS_LOGO = require("@/assets/images/masters-logo.png");
 
@@ -142,7 +143,7 @@ export default function EventSheet() {
   const resolved = resolveProviderDisplay(event);
   const launchProvider = resolved.launchProvider;
   const sportColor = getSportColor(event.sport);
-  const leagueLabel = event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.tournamentName || event.league;
+  const leagueLabel = event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league === "CAF Champions League" ? "CAF CL" : event.tournamentName || event.league;
   const dateLabel = formatDetailDate(event.startTimeLocal);
   const timeLabel = formatTimeOnly(event.startTimeLocal);
   const { gameState, displayClockText, displayStatusText } = normalizeGameState(event, score, new Date());
@@ -398,21 +399,44 @@ export default function EventSheet() {
           ) : null}
         </View>
 
-        {launchProvider && (
-          <Pressable
-            onPress={isUpcoming ? undefined : handleOpenProvider}
-            disabled={isUpcoming}
-            style={({ pressed }) => [
-              isUpcoming ? styles.disabledButton : styles.openButton,
-              !isUpcoming && { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] },
-            ]}
-            testID="open-provider-btn"
-          >
-            <Text style={[styles.openButtonText, isUpcoming && styles.disabledButtonText]}>
-              {isUpcoming ? (startsInLabel ?? "Starting soon") : isLiveState ? "Join Live" : "Watch Now"}
-            </Text>
-          </Pressable>
-        )}
+        <View style={styles.bottomActions}>
+          {isLiveState && (event.homeTeam || event.awayTeam) ? (
+            <Pressable
+              onPress={() => {
+                if (Platform.OS !== "web") {
+                  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                }
+                const team = event.homeTeam || event.awayTeam || event.league || "";
+                Linking.openURL(getTuneInUrl(team)).catch(() => {
+                  Alert.alert("Unable to open TuneIn", "Please install the TuneIn app or try again.");
+                });
+              }}
+              style={({ pressed }) => [
+                styles.listenButton,
+                { opacity: pressed ? 0.7 : 1 },
+              ]}
+              testID="listen-radio-btn"
+            >
+              <Ionicons name="radio-outline" size={18} color="#818CF8" />
+              <Text style={styles.listenButtonText}>Listen on Radio</Text>
+            </Pressable>
+          ) : null}
+          {launchProvider && (
+            <Pressable
+              onPress={isUpcoming ? undefined : handleOpenProvider}
+              disabled={isUpcoming}
+              style={({ pressed }) => [
+                isUpcoming ? styles.disabledButton : styles.openButton,
+                !isUpcoming && { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] },
+              ]}
+              testID="open-provider-btn"
+            >
+              <Text style={[styles.openButtonText, isUpcoming && styles.disabledButtonText]}>
+                {isUpcoming ? (startsInLabel ?? "Starting soon") : isLiveState ? "Join Live" : "Watch Now"}
+              </Text>
+            </Pressable>
+          )}
+        </View>
       </View>
     </View>
   );
@@ -622,6 +646,26 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
     textAlign: "center",
+  },
+  bottomActions: {
+    gap: 10,
+  },
+  listenButton: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    justifyContent: "center" as const,
+    gap: 8,
+    paddingVertical: 14,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: "rgba(129,140,248,0.4)",
+    backgroundColor: "rgba(129,140,248,0.12)",
+  },
+  listenButtonText: {
+    fontSize: 15,
+    fontFamily: "Inter_600SemiBold",
+    color: "#818CF8",
+    letterSpacing: 0.3,
   },
   openButton: {
     flexDirection: "row",

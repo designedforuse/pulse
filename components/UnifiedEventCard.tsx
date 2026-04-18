@@ -165,6 +165,7 @@ function getSportDisplayName(sport: string): string {
 const LEAGUE_DISPLAY_NAMES: Record<string, string> = {
   "English Premiership": "Premiership",
   "F1": "Formula 1",
+  "CAF Champions League": "CAF CL",
 };
 
 function getLeagueLabel(event: SportEvent): string {

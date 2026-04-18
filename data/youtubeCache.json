@@ -677,20 +677,20 @@
   },
   "momentum:boston bruins highlights april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=YhUtPKt-w9A",
-      "thumbnailUrl": "https://img.youtube.com/vi/YhUtPKt-w9A/hqdefault.jpg",
-      "durationSeconds": 692,
-      "title": "Hurricanes vs. Flyers | NHL Highlights | April 13, 2026",
+      "url": "https://www.youtube.com/watch?v=ExQ7lclW05k",
+      "thumbnailUrl": "https://img.youtube.com/vi/ExQ7lclW05k/hqdefault.jpg",
+      "durationSeconds": 695,
+      "title": "Rangers vs. Lightning | NHL Highlights | April 15, 2026",
       "source": "youtube",
       "channel": "NHL",
-      "publishedAt": "23 hours ago"
+      "publishedAt": "15 hours ago"
     },
-    "fetchedAt": "2026-04-15T01:39:27.153Z",
+    "fetchedAt": "2026-04-16T18:00:20.039Z",
     "query": "Boston Bruins highlights April 2026",
     "debug": {
       "searchQuery": "Boston Bruins highlights April 2026",
-      "selectedVideoTitle": "Hurricanes vs. Flyers | NHL Highlights | April 13, 2026",
-      "selectedVideoPublishedAt": "23 hours ago",
+      "selectedVideoTitle": "Rangers vs. Lightning | NHL Highlights | April 15, 2026",
+      "selectedVideoPublishedAt": "15 hours ago",
       "selectedVideoChannel": "NHL",
       "rejectedForAgeCount": 0
     }
@@ -800,14 +800,22 @@
     }
   },
   "playoff_push:anaheim ducks playoff push april 2026": {
-    "video": null,
-    "fetchedAt": "2026-04-14T15:02:27.254Z",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=wFK6uLpVd3Y",
+      "thumbnailUrl": "https://img.youtube.com/vi/wFK6uLpVd3Y/hqdefault.jpg",
+      "durationSeconds": 8120,
+      "title": "Reports of water in gas leads to investigation | CTV Your Morning Edmonton for April 16, 2026",
+      "source": "youtube",
+      "channel": "CTV News",
+      "publishedAt": "35 minutes ago"
+    },
+    "fetchedAt": "2026-04-16T18:00:20.305Z",
     "query": "Anaheim Ducks playoff push April 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push April 2026",
-      "selectedVideoTitle": null,
-      "selectedVideoPublishedAt": null,
-      "selectedVideoChannel": null,
+      "selectedVideoTitle": "Reports of water in gas leads to investigation | CTV Your Morning Edmonton for April 16, 2026",
+      "selectedVideoPublishedAt": "35 minutes ago",
+      "selectedVideoChannel": "CTV News",
       "rejectedForAgeCount": 0
     }
   },
@@ -901,21 +909,53 @@
   },
   "league_moment:rivalry weekend sports april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=pK3o9Uey-V8",
-      "thumbnailUrl": "https://img.youtube.com/vi/pK3o9Uey-V8/hqdefault.jpg",
-      "durationSeconds": 314,
-      "title": "MLB Highlights | Angels vs. Yankees - April 13, 2026",
+      "url": "https://www.youtube.com/watch?v=F2PbW8ma8bk",
+      "thumbnailUrl": "https://img.youtube.com/vi/F2PbW8ma8bk/hqdefault.jpg",
+      "durationSeconds": 15964,
+      "title": "🔴LIVE - RCB vs LSG TATA IPL 2026 Cricket Match Today | Bengaluru vs Lucknow Live Hindi | Cricket 26",
       "source": "youtube",
-      "channel": "MLB x SPORTSNET",
-      "publishedAt": "20 hours ago"
+      "channel": "Xoro The Gamer",
+      "publishedAt": "Streamed 1 hour ago"
     },
-    "fetchedAt": "2026-04-15T00:26:43.787Z",
+    "fetchedAt": "2026-04-15T18:00:19.264Z",
     "query": "Rivalry Weekend sports April 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports April 2026",
-      "selectedVideoTitle": "MLB Highlights | Angels vs. Yankees - April 13, 2026",
-      "selectedVideoPublishedAt": "20 hours ago",
-      "selectedVideoChannel": "MLB x SPORTSNET",
+      "selectedVideoTitle": "🔴LIVE - RCB vs LSG TATA IPL 2026 Cricket Match Today | Bengaluru vs Lucknow Live Hindi | Cricket 26",
+      "selectedVideoPublishedAt": "Streamed 1 hour ago",
+      "selectedVideoChannel": "Xoro The Gamer",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:connacht clinch playoff berth april 2026": {
+    "video": null,
+    "fetchedAt": "2026-04-16T18:00:19.666Z",
+    "query": "Connacht clinch playoff berth April 2026",
+    "debug": {
+      "searchQuery": "Connacht clinch playoff berth April 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:saudi arabian grand prix sports april 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=Gg_4zc1jWk0",
+      "thumbnailUrl": "https://img.youtube.com/vi/Gg_4zc1jWk0/hqdefault.jpg",
+      "durationSeconds": 0,
+      "title": "LIVE | 2026 Formula 1 STC Saudi Arabian Grand Prix - Livestream",
+      "source": "youtube",
+      "channel": "Sports Live Now",
+      "publishedAt": null
+    },
+    "fetchedAt": "2026-04-16T18:00:20.626Z",
+    "query": "Saudi Arabian Grand Prix sports April 2026",
+    "debug": {
+      "searchQuery": "Saudi Arabian Grand Prix sports April 2026",
+      "selectedVideoTitle": "LIVE | 2026 Formula 1 STC Saudi Arabian Grand Prix - Livestream",
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": "Sports Live Now",
       "rejectedForAgeCount": 0
     }
   }
