@@ -89,13 +89,14 @@ export function EventsProvider({ children }: { children: ReactNode }) {
 
   const allEvents = useMemo(() => {
     const localEvents = (guideData.events || []) as SportEvent[];
+    const isRemovedSport = (e: SportEvent) => e.sport === "basketball" || e.sport === "baseball";
     if (!data?.events || data.events.length === 0) {
-      return localEvents;
+      return localEvents.filter((e) => !isRemovedSport(e));
     }
 
-    const apiEvents = data.events;
+    const apiEvents = data.events.filter((e) => !isRemovedSport(e));
     const apiLeagues = new Set(apiEvents.map((e) => e.league));
-    const localFiltered = localEvents.filter((e) => !apiLeagues.has(e.league));
+    const localFiltered = localEvents.filter((e) => !apiLeagues.has(e.league) && !isRemovedSport(e));
 
     return [...apiEvents, ...localFiltered];
   }, [data]);

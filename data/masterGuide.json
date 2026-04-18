@@ -43,22 +43,6 @@
             "NWSL",
             "USL"
           ]
-        },
-        {
-          "id": "basketball_night",
-          "title": "Basketball Night",
-          "sport": "basketball",
-          "leagues": [
-            "NBA"
-          ]
-        },
-        {
-          "id": "baseball_night",
-          "title": "Baseball Night",
-          "sport": "baseball",
-          "leagues": [
-            "MLB"
-          ]
         }
       ]
     },
@@ -161,22 +145,6 @@
             "CAF Champions League",
             "NWSL",
             "USL"
-          ]
-        },
-        {
-          "id": "basketball_morning",
-          "title": "Basketball Morning",
-          "sport": "basketball",
-          "leagues": [
-            "NBA"
-          ]
-        },
-        {
-          "id": "baseball_morning",
-          "title": "Baseball Day",
-          "sport": "baseball",
-          "leagues": [
-            "MLB"
           ]
         },
         {
