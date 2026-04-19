@@ -36,6 +36,44 @@ import { fetchMlbEvents, mergeMlbEvents } from "./updateMlb";
 
 const NHL_API_BASE = "https://api-web.nhle.com/v1";
 const OUTPUT_PATH = path.resolve(__dirname, "../data/generatedEvents.json");
+const MANUAL_OVERRIDES_PATH = path.resolve(__dirname, "../data/manualOverrides.json");
+
+interface ManualOverride {
+  id: string;
+  startTimeLocal?: string;
+  endTimeLocal?: string;
+  reason?: string;
+}
+
+function applyManualOverrides(events: Array<{ id: string; startTimeLocal: string; endTimeLocal?: string }>): void {
+  if (!fs.existsSync(MANUAL_OVERRIDES_PATH)) return;
+  let parsed: { events?: ManualOverride[] };
+  try {
+    parsed = JSON.parse(fs.readFileSync(MANUAL_OVERRIDES_PATH, "utf-8"));
+  } catch (err) {
+    console.warn(`  Manual overrides: failed to parse ${MANUAL_OVERRIDES_PATH}: ${(err as Error).message}`);
+    return;
+  }
+  const overrides = parsed.events ?? [];
+  if (overrides.length === 0) return;
+  const byId = new Map(events.map((e) => [e.id, e]));
+  let applied = 0;
+  let missing = 0;
+  for (const ov of overrides) {
+    const target = byId.get(ov.id);
+    if (!target) {
+      missing++;
+      console.warn(`  Manual override: no event matched id=${ov.id} (skipped)`);
+      continue;
+    }
+    if (ov.startTimeLocal) target.startTimeLocal = ov.startTimeLocal;
+    if (ov.endTimeLocal) target.endTimeLocal = ov.endTimeLocal;
+    applied++;
+    console.log(`  Manual override applied: ${ov.id}${ov.reason ? ` — ${ov.reason}` : ""}`);
+  }
+  events.sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
+  console.log(`  Manual overrides: ${applied} applied, ${missing} missing`);
+}
 
 interface NHLGame {
   id: number;
@@ -841,6 +879,8 @@ async function main() {
     generatedMeta,
     events: allEvents,
   };
+
+  applyManualOverrides(allEvents);
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
   console.log(
