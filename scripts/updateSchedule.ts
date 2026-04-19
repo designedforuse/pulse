@@ -202,8 +202,9 @@ async function fetchNHLEvents(days: number): Promise<AppEvent[]> {
 
       for (const week of schedule.gameWeek) {
         fetched.add(week.date);
-        const regularGames = week.games.filter((g) => g.gameType === 2);
-        for (const game of regularGames) {
+        // gameType: 2 = regular season, 3 = playoffs
+        const includedGames = week.games.filter((g) => g.gameType === 2 || g.gameType === 3);
+        for (const game of includedGames) {
           const event = nhlGameToEvent(game);
           if (!seenIds.has(event.id)) {
             seenIds.add(event.id);

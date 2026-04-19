@@ -677,20 +677,20 @@
   },
   "momentum:boston bruins highlights april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=ExQ7lclW05k",
-      "thumbnailUrl": "https://img.youtube.com/vi/ExQ7lclW05k/hqdefault.jpg",
-      "durationSeconds": 695,
-      "title": "Rangers vs. Lightning | NHL Highlights | April 15, 2026",
+      "url": "https://www.youtube.com/watch?v=WxBq4jFQKNo",
+      "thumbnailUrl": "https://img.youtube.com/vi/WxBq4jFQKNo/hqdefault.jpg",
+      "durationSeconds": 2509,
+      "title": "Everything on the Line 🚨 | Best NHL OT & Shootout Moments — April 2026",
       "source": "youtube",
       "channel": "NHL",
-      "publishedAt": "15 hours ago"
+      "publishedAt": "8 hours ago"
     },
-    "fetchedAt": "2026-04-16T18:00:20.039Z",
+    "fetchedAt": "2026-04-19T02:50:50.319Z",
     "query": "Boston Bruins highlights April 2026",
     "debug": {
       "searchQuery": "Boston Bruins highlights April 2026",
-      "selectedVideoTitle": "Rangers vs. Lightning | NHL Highlights | April 15, 2026",
-      "selectedVideoPublishedAt": "15 hours ago",
+      "selectedVideoTitle": "Everything on the Line 🚨 | Best NHL OT & Shootout Moments — April 2026",
+      "selectedVideoPublishedAt": "8 hours ago",
       "selectedVideoChannel": "NHL",
       "rejectedForAgeCount": 0
     }
@@ -709,7 +709,7 @@
   },
   "clinch_watch:boston bruins clinch playoff berth april 2026": {
     "video": null,
-    "fetchedAt": "2026-04-12T14:58:18.161Z",
+    "fetchedAt": "2026-04-19T02:50:51.255Z",
     "query": "Boston Bruins clinch playoff berth April 2026",
     "debug": {
       "searchQuery": "Boston Bruins clinch playoff berth April 2026",
@@ -801,20 +801,20 @@
   },
   "playoff_push:anaheim ducks playoff push april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=wFK6uLpVd3Y",
-      "thumbnailUrl": "https://img.youtube.com/vi/wFK6uLpVd3Y/hqdefault.jpg",
-      "durationSeconds": 8120,
-      "title": "Reports of water in gas leads to investigation | CTV Your Morning Edmonton for April 16, 2026",
+      "url": "https://www.youtube.com/watch?v=D6mUcIAxPL4",
+      "thumbnailUrl": "https://img.youtube.com/vi/D6mUcIAxPL4/hqdefault.jpg",
+      "durationSeconds": 1500,
+      "title": "Edmonton property tax increase finalized at 7.7% | CTV News Edmonton at 11:30 for April 17, 2026",
       "source": "youtube",
       "channel": "CTV News",
-      "publishedAt": "35 minutes ago"
+      "publishedAt": "8h ago"
     },
-    "fetchedAt": "2026-04-16T18:00:20.305Z",
+    "fetchedAt": "2026-04-19T02:50:52.185Z",
     "query": "Anaheim Ducks playoff push April 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push April 2026",
-      "selectedVideoTitle": "Reports of water in gas leads to investigation | CTV Your Morning Edmonton for April 16, 2026",
-      "selectedVideoPublishedAt": "35 minutes ago",
+      "selectedVideoTitle": "Edmonton property tax increase finalized at 7.7% | CTV News Edmonton at 11:30 for April 17, 2026",
+      "selectedVideoPublishedAt": "8h ago",
       "selectedVideoChannel": "CTV News",
       "rejectedForAgeCount": 0
     }
@@ -909,21 +909,21 @@
   },
   "league_moment:rivalry weekend sports april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=F2PbW8ma8bk",
-      "thumbnailUrl": "https://img.youtube.com/vi/F2PbW8ma8bk/hqdefault.jpg",
-      "durationSeconds": 15964,
-      "title": "🔴LIVE - RCB vs LSG TATA IPL 2026 Cricket Match Today | Bengaluru vs Lucknow Live Hindi | Cricket 26",
+      "url": "https://www.youtube.com/watch?v=0KV6tbH1H7w",
+      "thumbnailUrl": "https://img.youtube.com/vi/0KV6tbH1H7w/hqdefault.jpg",
+      "durationSeconds": 315,
+      "title": "MLB Highlights | Tigers vs. Red Sox - April 17, 2026",
       "source": "youtube",
-      "channel": "Xoro The Gamer",
-      "publishedAt": "Streamed 1 hour ago"
+      "channel": "MLB x SPORTSNET",
+      "publishedAt": "1 day ago"
     },
-    "fetchedAt": "2026-04-15T18:00:19.264Z",
+    "fetchedAt": "2026-04-19T02:50:53.176Z",
     "query": "Rivalry Weekend sports April 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports April 2026",
-      "selectedVideoTitle": "🔴LIVE - RCB vs LSG TATA IPL 2026 Cricket Match Today | Bengaluru vs Lucknow Live Hindi | Cricket 26",
-      "selectedVideoPublishedAt": "Streamed 1 hour ago",
-      "selectedVideoChannel": "Xoro The Gamer",
+      "selectedVideoTitle": "MLB Highlights | Tigers vs. Red Sox - April 17, 2026",
+      "selectedVideoPublishedAt": "1 day ago",
+      "selectedVideoChannel": "MLB x SPORTSNET",
       "rejectedForAgeCount": 0
     }
   },
@@ -956,6 +956,46 @@
       "selectedVideoTitle": "LIVE | 2026 Formula 1 STC Saudi Arabian Grand Prix - Livestream",
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": "Sports Live Now",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:dallas stars vs minnesota wild upset highlights april 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=Yg0jmoXKymQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/Yg0jmoXKymQ/hqdefault.jpg",
+      "durationSeconds": 21726,
+      "title": "🔴 Minnesota Wild vs Dallas Stars LIVE | NHL Playoffs | April 18, 2026 | Live Scoreboard",
+      "source": "youtube",
+      "channel": "Core Score Nation",
+      "publishedAt": "Streamed 16 minutes ago"
+    },
+    "fetchedAt": "2026-04-19T02:50:50.703Z",
+    "query": "Dallas Stars vs Minnesota Wild upset highlights April 2026",
+    "debug": {
+      "searchQuery": "Dallas Stars vs Minnesota Wild upset highlights April 2026",
+      "selectedVideoTitle": "🔴 Minnesota Wild vs Dallas Stars LIVE | NHL Playoffs | April 18, 2026 | Live Scoreboard",
+      "selectedVideoPublishedAt": "Streamed 16 minutes ago",
+      "selectedVideoChannel": "Core Score Nation",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "rivalry_game:liverpool vs everton rivalry highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=jig6CwLP3zw",
+      "thumbnailUrl": "https://img.youtube.com/vi/jig6CwLP3zw/hqdefault.jpg",
+      "durationSeconds": 10448,
+      "title": "Chelsea vs Man Utd LIVE Watchalong ft. @Dhruviewss @Midwicketmanager @KickitwithLala",
+      "source": "youtube",
+      "channel": "Ash Talks Football",
+      "publishedAt": "Streamed 5 hours ago"
+    },
+    "fetchedAt": "2026-04-19T02:50:51.039Z",
+    "query": "Liverpool vs Everton rivalry highlights",
+    "debug": {
+      "searchQuery": "Liverpool vs Everton rivalry highlights",
+      "selectedVideoTitle": "Chelsea vs Man Utd LIVE Watchalong ft. @Dhruviewss @Midwicketmanager @KickitwithLala",
+      "selectedVideoPublishedAt": "Streamed 5 hours ago",
+      "selectedVideoChannel": "Ash Talks Football",
       "rejectedForAgeCount": 0
     }
   }
