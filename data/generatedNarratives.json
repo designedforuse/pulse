@@ -1,14 +1,11 @@
 {
-  "lastUpdated": "2026-04-19T21:20:49.605Z",
+  "lastUpdated": "2026-04-19T21:32:26.444Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "momentum": {
         "NewEngland": 1
       },
       "league_moment": {
-        "Other": 1
-      },
-      "upset_alert": {
         "Other": 1
       },
       "clinch_watch": {
@@ -24,15 +21,14 @@
         "momentum: Bruins Heating Up"
       ],
       "Other": [
-        "upset_alert: Upset Alert",
         "clinch_watch: Clinch Watch",
         "playoff_push: Playoff Push",
         "league_moment: Rivalry Weekend"
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 5,
-    "totalAfterCap": 5,
+    "totalBeforeCap": 4,
+    "totalAfterCap": 4,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -67,17 +63,17 @@
         ],
         "playersIngested": 505,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-19T21:20:49.605Z"
+        "timestamp": "2026-04-19T21:32:26.444Z"
       },
       "cacheHistoryCount": 877,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 5,
-    "candidateCountAfterCap": 5,
+    "candidateCountBeforeCap": 4,
+    "candidateCountAfterCap": 4,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1033.3471125,
+      "hoursUntil": -1033.5406788888888,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -87,10 +83,10 @@
       "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 1,
+      "rawUpsetCandidates": 0,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 1,
-      "upsetFinalCount": 1
+      "upsetCompletedCandidates": 0,
+      "upsetFinalCount": 0
     },
     "clinchWatch": {
       "rawClinchCandidates": 1,
@@ -136,11 +132,6 @@
           "reason": "ritual \"Saturday Game Day\" has 7 followed-team game(s)"
         },
         {
-          "label": "[upset_alert] Shock Result",
-          "score": 120,
-          "reason": "upset_alert (generic, no followed teams)"
-        },
-        {
           "label": "[league_moment] League Spotlight",
           "score": 50,
           "reason": "league_moment (generic, no followed teams)"
@@ -153,13 +144,6 @@
         "selectedVideoTitle": "🔴 Los Angeles Kings vs Colorado Avalanche | Game 1 - 19th April 2026 | Full Match NHL 26 Simulation",
         "selectedVideoPublishedAt": "2 hours ago",
         "selectedVideoChannel": "Zone31",
-        "rejectedForAgeCount": 0
-      },
-      "upset_alert_soccer-epl-20260419-1530-arsenal-at-man-city": {
-        "searchQuery": "Arsenal vs Man City upset highlights April 2026",
-        "selectedVideoTitle": "Manchester city vs Arsenal 2-1 Highlights & Goals •  rayan cherki & Erling Haaland Goals ⚽⚽",
-        "selectedVideoPublishedAt": "3 hours ago",
-        "selectedVideoChannel": "Footballia",
         "rejectedForAgeCount": 0
       },
       "clinch_watch_nhl_2025030111": {
@@ -195,8 +179,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-04-19T21:20:49.605Z",
-      "expiresAt": "2026-04-22T21:20:49.605Z",
+      "triggeredAt": "2026-04-19T21:32:26.444Z",
+      "expiresAt": "2026-04-22T21:32:26.444Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -250,49 +234,6 @@
       }
     },
     {
-      "id": "upset_alert_soccer-epl-20260419-1530-arsenal-at-man-city",
-      "title": "Upset Alert",
-      "subtitle": "Man City upsets Arsenal",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 98,
-      "triggeredAt": "2026-04-19T21:20:49.605Z",
-      "expiresAt": "2026-04-20T03:20:49.605Z",
-      "kind": "upset_alert",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "mode": "completed",
-        "upsetType": "team_upset",
-        "sport": "soccer",
-        "league": "EPL",
-        "favoriteName": "Arsenal",
-        "underdogName": "Man City",
-        "awayTeam": "Arsenal",
-        "homeTeam": "Man City",
-        "startTime": "2026-04-19T15:30:00.000Z",
-        "eventIds": [
-          "soccer-epl-20260419-1530-arsenal-at-man-city"
-        ],
-        "reason": "Man City pulled off the upset against Arsenal.\n\nA result like this can shift momentum for the rest of the season."
-      },
-      "sports": [
-        "soccer"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=ijfmbhGt6x0",
-        "thumbnailUrl": "https://img.youtube.com/vi/ijfmbhGt6x0/hqdefault.jpg",
-        "durationSeconds": 502,
-        "title": "Manchester city vs Arsenal 2-1 Highlights & Goals •  rayan cherki & Erling Haaland Goals ⚽⚽",
-        "source": "youtube",
-        "channel": "Footballia",
-        "publishedAt": "3 hours ago"
-      }
-    },
-    {
       "id": "clinch_watch_nhl_2025030111",
       "title": "Clinch Watch",
       "subtitle": "Can secure wild card spot with a win tonight",
@@ -301,7 +242,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-04-19T21:20:49.605Z",
+      "triggeredAt": "2026-04-19T21:32:26.444Z",
       "expiresAt": "2026-04-20T03:30:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -342,7 +283,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-04-19T21:20:49.605Z",
+      "triggeredAt": "2026-04-19T21:32:26.444Z",
       "expiresAt": "2026-04-21T06:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -374,8 +315,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-19T21:20:49.605Z",
-      "expiresAt": "2026-04-26T21:20:49.605Z",
+      "triggeredAt": "2026-04-19T21:32:26.444Z",
+      "expiresAt": "2026-04-26T21:32:26.444Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -967,7 +908,7 @@
           "dateRangeLabel": "May 2–11",
           "startDate": "2026-05-02T17:00:00.000Z",
           "endDate": "2026-05-11T01:00:00.000Z",
-          "eventCount": 35
+          "eventCount": 37
         },
         {
           "sport": "horse-racing",

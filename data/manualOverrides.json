@@ -1,11 +1,4 @@
 {
   "_comment": "Per-event time overrides applied at the end of scripts/updateSchedule.ts. Use when a league reschedules a game but our upstream source (ESPN, etc.) hasn't caught up yet. Match by event id; set startTimeLocal (and optionally endTimeLocal) in ISO UTC. Remove an entry once upstream is correct so the manual edit doesn't drift.",
-  "events": [
-    {
-      "id": "soccer-mls-20260419-2300-san-jose-earthquakes-at-lafc",
-      "startTimeLocal": "2026-04-19T20:00:00.000Z",
-      "endTimeLocal": "2026-04-19T22:15:00.000Z",
-      "reason": "MLS rescheduled SJ @ LAFC to 1:00 PM PT kickoff; ESPN scoreboard still shows 4:00 PM PT as of 2026-04-19."
-    }
-  ]
+  "events": []
 }
