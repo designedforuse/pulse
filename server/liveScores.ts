@@ -484,85 +484,122 @@ const ESPN_RUGBY_LEAGUE_PATHS: Record<string, string> = {
   "MLR": "289262",
 };
 
-// World Rugby API – Super Rugby Pacific 2026
+// =============================================================================
+// Pulselive World Rugby API — covers all major rugby comps with live game clock.
+// Schedule endpoint shape: GET /rugby/v3/event/{eventId}/schedule?language=en
+// Each match exposes: status (U/L1/LHT/L2/L3/L4/C), clock.{secs,label},
+// scores[2], teams[2].name, eventPhase.
+// =============================================================================
 const WR_API_BASE = "https://api.wr-rims-prod.pulselive.com/rugby/v3";
-const SUPER_RUGBY_EVENT_ID = "af9ef6cd-4a14-469d-83da-dd85b9882636";
 
-let superRugbyScheduleCache: { matches: any[]; fetchedAt: number } | null = null;
-const SR_CACHE_TTL = 60_000; // 60s
+// Map our internal league names → Pulselive event IDs for the current season.
+// Update annually when a new season's event ID is published.
+const PULSELIVE_RUGBY_EVENT_IDS: Record<string, string> = {
+  "Super Rugby": "af9ef6cd-4a14-469d-83da-dd85b9882636", // Super Rugby Pacific 2026
+  "URC": "3c5cab4f-1933-4181-8907-4bed6d2fd9c6",          // URC 2026
+  "Top 14": "d72547e0-d76e-4612-9f1c-a3f60d320074",        // Top 14 2026
+  "English Premiership": "65f66693-9ccb-4784-bc3c-7b5b3cabecc3", // English Premiership 2026
+  "Champions Cup": "770bfb2a-2947-45fc-b54c-9afd2f14a9f5", // Investec Champions Cup 2026
+  "Challenge Cup": "acd1f126-cea9-4723-9343-e3b4e8d806f4", // EPCR Challenge Cup 2026
+  "MLR": "2c6f3289-6eca-4b4c-80b7-4adc26d86368",          // MLR 2026
+  "Six Nations": "b6832e99-0c73-4d56-ba57-725935c2f1dd",   // 2026 Six Nations
+};
 
-async function getSuperRugbySchedule(): Promise<any[]> {
+const pulseliveScheduleCache: Record<string, { matches: any[]; fetchedAt: number }> = {};
+const PULSELIVE_CACHE_TTL = 60_000; // 60s
+
+async function getPulseliveSchedule(eventId: string): Promise<any[]> {
   const now = Date.now();
-  if (superRugbyScheduleCache && now - superRugbyScheduleCache.fetchedAt < SR_CACHE_TTL) {
-    return superRugbyScheduleCache.matches;
+  const cached = pulseliveScheduleCache[eventId];
+  if (cached && now - cached.fetchedAt < PULSELIVE_CACHE_TTL) {
+    return cached.matches;
   }
   try {
     const res = await fetch(
-      `${WR_API_BASE}/event/${SUPER_RUGBY_EVENT_ID}/schedule?language=en`,
+      `${WR_API_BASE}/event/${eventId}/schedule?language=en`,
       { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(8000) }
     );
-    if (!res.ok) return superRugbyScheduleCache?.matches ?? [];
+    if (!res.ok) return cached?.matches ?? [];
     const data = await res.json() as any;
     const matches = data.matches || [];
-    superRugbyScheduleCache = { matches, fetchedAt: now };
+    pulseliveScheduleCache[eventId] = { matches, fetchedAt: now };
     return matches;
   } catch (err) {
-    console.error("[liveScores] Super Rugby WR API fetch error:", err);
-    return superRugbyScheduleCache?.matches ?? [];
+    console.error(`[liveScores] Pulselive event ${eventId} fetch error:`, err);
+    return cached?.matches ?? [];
   }
 }
 
-async function fetchSuperRugbyScores(
-  events: { id: string; homeTeam: string; awayTeam: string }[]
-): Promise<Record<string, ScoreData>> {
-  const scores: Record<string, ScoreData> = {};
-  if (events.length === 0) return scores;
+function pulseliveMatchToScore(wrMatch: any): ScoreData | null {
+  const status: string = wrMatch.status || "";
+  const isLive = status.startsWith("L") && status !== "C";
+  const isFinal = status === "C";
+  if (!isLive && !isFinal) return null;
 
-  const wrMatches = await getSuperRugbySchedule();
-
-  for (const wrMatch of wrMatches) {
-    const status: string = wrMatch.status || "";
-    const isLive = status.startsWith("L") && status !== "C";
-    const isFinal = status === "C";
-    if (!isLive && !isFinal) continue;
-
-    const t0: string = wrMatch.teams?.[0]?.name || "";
-    const t1: string = wrMatch.teams?.[1]?.name || "";
-
-    for (const ev of events) {
-      if (scores[ev.id]) continue;
-      if (!teamsMatch(t0, ev.homeTeam) || !teamsMatch(t1, ev.awayTeam)) continue;
-
-      if (isFinal) {
-        scores[ev.id] = {
-          homeScore: wrMatch.scores?.[0] ?? 0,
-          awayScore: wrMatch.scores?.[1] ?? 0,
-          period: "FT",
-          status: "final",
-        };
-      } else {
-        // Derive half from status code: L1 = H1, L2 = H2, LHT = HT, otherwise generic
-        let period: string | undefined;
-        if (/^L1$/i.test(status)) period = "H1";
-        else if (/^L2$/i.test(status)) period = "H2";
-        else if (/^LHT$/i.test(status)) period = "HT";
-
-        // Clock: World Rugby gives clock.secs elapsed
-        const clockSecs: number = wrMatch.clock?.secs ?? 0;
-        const clockMin = clockSecs > 0 ? `${Math.floor(clockSecs / 60)}'` : undefined;
-
-        scores[ev.id] = {
-          homeScore: wrMatch.scores?.[0] ?? 0,
-          awayScore: wrMatch.scores?.[1] ?? 0,
-          period,
-          clock: clockMin,
-          status: "live",
-        };
-      }
-      break;
-    }
+  if (isFinal) {
+    return {
+      homeScore: wrMatch.scores?.[0] ?? 0,
+      awayScore: wrMatch.scores?.[1] ?? 0,
+      period: "FT",
+      status: "final",
+    };
   }
 
+  // Status codes: L1 = first half, LHT = halftime, L2 = second half,
+  // L3/L4 = extra time periods (rare in club rugby).
+  let period: string | undefined;
+  if (/^L1$/i.test(status)) period = "H1";
+  else if (/^L2$/i.test(status)) period = "H2";
+  else if (/^LHT$/i.test(status)) period = "HT";
+  else if (/^L3$/i.test(status)) period = "ET1";
+  else if (/^L4$/i.test(status)) period = "ET2";
+
+  const clockSecs: number = wrMatch.clock?.secs ?? 0;
+  const clockMin = clockSecs > 0 ? `${Math.floor(clockSecs / 60)}'` : undefined;
+
+  return {
+    homeScore: wrMatch.scores?.[0] ?? 0,
+    awayScore: wrMatch.scores?.[1] ?? 0,
+    period,
+    clock: clockMin,
+    status: "live",
+  };
+}
+
+async function fetchPulseliveRugbyScores(
+  rugbyMap: Map<string, { id: string; homeTeam: string; awayTeam: string }[]>
+): Promise<Record<string, ScoreData>> {
+  const scores: Record<string, ScoreData> = {};
+
+  const fetches = Object.entries(PULSELIVE_RUGBY_EVENT_IDS).map(async ([league, eventId]) => {
+    const events = rugbyMap.get(league);
+    if (!events || events.length === 0) return;
+
+    const wrMatches = await getPulseliveSchedule(eventId);
+    let matched = 0;
+
+    for (const wrMatch of wrMatches) {
+      const score = pulseliveMatchToScore(wrMatch);
+      if (!score) continue;
+
+      const t0: string = wrMatch.teams?.[0]?.name || "";
+      const t1: string = wrMatch.teams?.[1]?.name || "";
+
+      for (const ev of events) {
+        if (scores[ev.id]) continue;
+        if (!teamsMatch(t0, ev.homeTeam) || !teamsMatch(t1, ev.awayTeam)) continue;
+        scores[ev.id] = score;
+        matched++;
+        break;
+      }
+    }
+
+    if (matched > 0) {
+      console.log(`[liveScores] Pulselive ${league}: matched ${matched}/${events.length} events`);
+    }
+  });
+
+  await Promise.all(fetches);
   return scores;
 }
 
@@ -1852,15 +1889,14 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
   const nonIplCricket = cricket.filter((e) => !e.id.startsWith("cricket-ipl-"));
 
   const japanLeagueOne = rugby.get("Japan League One") || [];
-  const superRugbyEvents = rugby.get("Super Rugby") || [];
-  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, superRugbyScores, jlOneScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores] = await Promise.all([
+  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, pulseliveRugbyScores, jlOneScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchAhlScores(ahl),
     fetchEchlScores(echl),
     fetchNcaaHockeyScores(ncaa),
     fetchSoccerScores(soccer),
     fetchRugbyScores(rugby),
-    fetchSuperRugbyScores(superRugbyEvents),
+    fetchPulseliveRugbyScores(rugby),
     fetchJapanLeagueOneScores(japanLeagueOne),
     fetchIplLiveScores(iplEvents),
     fetchCricketScores(nonIplCricket),
@@ -1872,8 +1908,11 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
     fetchMlbScores(mlb),
   ]);
 
+  // Pulselive results take precedence over ESPN for any matched event since
+  // Pulselive provides real-time game clock data sourced directly from the
+  // World Rugby data feed, while ESPN's clock often lags or is missing.
   return {
-    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...superRugbyScores, ...jlOneScores, ...iplScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores, ...golfScores, ...mlbScores },
+    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...pulseliveRugbyScores, ...jlOneScores, ...iplScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores, ...golfScores, ...mlbScores },
     fetchedAt: new Date().toISOString(),
   };
 }
