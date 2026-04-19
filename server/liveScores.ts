@@ -566,6 +566,145 @@ function pulseliveMatchToScore(wrMatch: any): ScoreData | null {
   };
 }
 
+// =============================================================================
+// MLR OFFICIAL SOURCE (majorleague.rugby Next.js data API)
+// =============================================================================
+// MLR matches on Pulselive lag significantly — they often remain at status "U"
+// (unstarted) with 0-0 scores even an hour into kickoff, and only flip to "C"
+// (final) hours after a match ends. The official MLR site exposes a Next.js
+// per-match data endpoint that contains real-time score, period, and gameTime
+// minute. This source takes precedence over Pulselive for MLR events.
+// =============================================================================
+const MLR_HOME = "https://www.majorleague.rugby";
+let mlrBuildId: { value: string; fetchedAt: number } | null = null;
+const MLR_BUILD_ID_TTL = 6 * 60 * 60 * 1000; // 6h
+let mlrSlugList: { slugs: string[]; fetchedAt: number } | null = null;
+const MLR_SLUG_TTL = 60_000; // 60s — covers the current matchweek
+const mlrMatchCache: Record<string, { data: any; fetchedAt: number }> = {};
+const MLR_MATCH_TTL = 30_000; // 30s per match
+
+async function getMlrBuildIdAndSlugs(): Promise<{ buildId: string; slugs: string[] } | null> {
+  const now = Date.now();
+  if (
+    mlrBuildId && now - mlrBuildId.fetchedAt < MLR_BUILD_ID_TTL &&
+    mlrSlugList && now - mlrSlugList.fetchedAt < MLR_SLUG_TTL
+  ) {
+    return { buildId: mlrBuildId.value, slugs: mlrSlugList.slugs };
+  }
+  try {
+    const res = await fetch(MLR_HOME, {
+      headers: { "User-Agent": "Mozilla/5.0 (PulseSportsApp)" },
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!res.ok) return mlrBuildId && mlrSlugList ? { buildId: mlrBuildId.value, slugs: mlrSlugList.slugs } : null;
+    const html = await res.text();
+    const buildIdMatch = html.match(/"buildId":"([^"]+)"/);
+    const slugMatches = [...html.matchAll(/\/matches\/(season-\d+-major-league-rugby-\d+-[a-z0-9-]+-vs-[a-z0-9-]+)/g)];
+    const slugs = [...new Set(slugMatches.map((m) => m[1]))];
+    if (!buildIdMatch) return null;
+    mlrBuildId = { value: buildIdMatch[1], fetchedAt: now };
+    mlrSlugList = { slugs, fetchedAt: now };
+    return { buildId: buildIdMatch[1], slugs };
+  } catch (err) {
+    console.error("[liveScores] MLR homepage fetch error:", err);
+    return mlrBuildId && mlrSlugList ? { buildId: mlrBuildId.value, slugs: mlrSlugList.slugs } : null;
+  }
+}
+
+async function getMlrMatchData(buildId: string, slug: string): Promise<any | null> {
+  const now = Date.now();
+  const cached = mlrMatchCache[slug];
+  if (cached && now - cached.fetchedAt < MLR_MATCH_TTL) {
+    return cached.data;
+  }
+  try {
+    const res = await fetch(
+      `${MLR_HOME}/_next/data/${buildId}/matches/${slug}.json`,
+      { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(8000) }
+    );
+    if (!res.ok) return cached?.data ?? null;
+    const json = await res.json() as any;
+    const game = json?.pageProps?.data?.game;
+    if (!game) return cached?.data ?? null;
+    mlrMatchCache[slug] = { data: game, fetchedAt: now };
+    return game;
+  } catch (err) {
+    console.error(`[liveScores] MLR match ${slug} fetch error:`, err);
+    return cached?.data ?? null;
+  }
+}
+
+function mlrGameToScore(game: any): ScoreData | null {
+  const periodType: string = game?.period?.type || "";
+  const periodShort: string = game?.period?.shortName || "";
+  const homeScore: number = Number(game?.homeScore ?? 0);
+  const awayScore: number = Number(game?.awayScore ?? 0);
+  const gameTime: number | null = game?.gameTime != null ? Number(game.gameTime) : null;
+
+  if (periodType === "PostMatch") {
+    return { homeScore, awayScore, period: "FT", status: "final" };
+  }
+
+  let period: string | undefined;
+  if (periodType === "FirstHalf") period = "H1";
+  else if (periodType === "HalfTime") period = "HT";
+  else if (periodType === "SecondHalf") period = "H2";
+  else if (periodType === "ExtraTimeFirstHalf") period = "ET1";
+  else if (periodType === "ExtraTimeSecondHalf") period = "ET2";
+  else if (periodShort && periodShort !== "PreMatch") period = periodShort;
+  else return null; // pre-match / scheduled — let other sources handle
+
+  const clock = gameTime != null && gameTime > 0 ? `${gameTime}'` : undefined;
+  return { homeScore, awayScore, period, clock, status: "live" };
+}
+
+function teamSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+async function fetchMlrOfficialScores(
+  mlrEvents: { id: string; homeTeam: string; awayTeam: string }[]
+): Promise<Record<string, ScoreData>> {
+  const scores: Record<string, ScoreData> = {};
+  if (!mlrEvents || mlrEvents.length === 0) return scores;
+
+  const ctx = await getMlrBuildIdAndSlugs();
+  if (!ctx) return scores;
+
+  let matched = 0;
+  for (const ev of mlrEvents) {
+    const homeS = teamSlug(ev.homeTeam);
+    const awayS = teamSlug(ev.awayTeam);
+    // Find a slug whose home/away portion contains both team slugs (in either order).
+    // Slug pattern: season-YYYY-major-league-rugby-N-{home}-vs-{away}
+    const slug = ctx.slugs.find((s) => {
+      const m = s.match(/-vs-(.+)$/);
+      if (!m) return false;
+      const fullLower = s;
+      return (
+        (fullLower.includes(`-${homeS}-vs-`) && fullLower.endsWith(`-vs-${awayS}`)) ||
+        (fullLower.includes(`-${awayS}-vs-`) && fullLower.endsWith(`-vs-${homeS}`))
+      );
+    });
+    if (!slug) continue;
+
+    const game = await getMlrMatchData(ctx.buildId, slug);
+    if (!game) continue;
+    const score = mlrGameToScore(game);
+    if (!score) continue;
+    scores[ev.id] = score;
+    matched++;
+  }
+
+  if (matched > 0) {
+    console.log(`[liveScores] MLR official: matched ${matched}/${mlrEvents.length} events`);
+  }
+  return scores;
+}
+
 async function fetchPulseliveRugbyScores(
   rugbyMap: Map<string, { id: string; homeTeam: string; awayTeam: string }[]>
 ): Promise<Record<string, ScoreData>> {
@@ -1889,7 +2028,8 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
   const nonIplCricket = cricket.filter((e) => !e.id.startsWith("cricket-ipl-"));
 
   const japanLeagueOne = rugby.get("Japan League One") || [];
-  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, pulseliveRugbyScores, jlOneScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores] = await Promise.all([
+  const mlrEvents = rugby.get("MLR") || [];
+  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, pulseliveRugbyScores, mlrOfficialScores, jlOneScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchAhlScores(ahl),
     fetchEchlScores(echl),
@@ -1897,6 +2037,7 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
     fetchSoccerScores(soccer),
     fetchRugbyScores(rugby),
     fetchPulseliveRugbyScores(rugby),
+    fetchMlrOfficialScores(mlrEvents),
     fetchJapanLeagueOneScores(japanLeagueOne),
     fetchIplLiveScores(iplEvents),
     fetchCricketScores(nonIplCricket),
@@ -1908,11 +2049,12 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
     fetchMlbScores(mlb),
   ]);
 
-  // Pulselive results take precedence over ESPN for any matched event since
-  // Pulselive provides real-time game clock data sourced directly from the
-  // World Rugby data feed, while ESPN's clock often lags or is missing.
+  // Priority order (last spread wins): ESPN rugby → Pulselive → MLR official.
+  // Pulselive overrides ESPN for European/SH/Six-Nations rugby (real-time game
+  // clock from World Rugby feed). MLR official overrides Pulselive for MLR
+  // because Pulselive's MLR feed lags badly (often shows "U"/0-0 mid-match).
   return {
-    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...pulseliveRugbyScores, ...jlOneScores, ...iplScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores, ...golfScores, ...mlbScores },
+    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...pulseliveRugbyScores, ...mlrOfficialScores, ...jlOneScores, ...iplScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores, ...golfScores, ...mlbScores },
     fetchedAt: new Date().toISOString(),
   };
 }
