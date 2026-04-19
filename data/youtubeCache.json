@@ -677,21 +677,21 @@
   },
   "momentum:boston bruins highlights april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=WxBq4jFQKNo",
-      "thumbnailUrl": "https://img.youtube.com/vi/WxBq4jFQKNo/hqdefault.jpg",
-      "durationSeconds": 2509,
-      "title": "Everything on the Line 🚨 | Best NHL OT & Shootout Moments — April 2026",
+      "url": "https://www.youtube.com/watch?v=HVHXCdpqXOk",
+      "thumbnailUrl": "https://img.youtube.com/vi/HVHXCdpqXOk/hqdefault.jpg",
+      "durationSeconds": 6598,
+      "title": "🔴 Los Angeles Kings vs Colorado Avalanche | Game 1 - 19th April 2026 | Full Match NHL 26 Simulation",
       "source": "youtube",
-      "channel": "NHL",
-      "publishedAt": "8 hours ago"
+      "channel": "Zone31",
+      "publishedAt": "2 hours ago"
     },
-    "fetchedAt": "2026-04-19T02:50:50.319Z",
+    "fetchedAt": "2026-04-19T21:10:28.441Z",
     "query": "Boston Bruins highlights April 2026",
     "debug": {
       "searchQuery": "Boston Bruins highlights April 2026",
-      "selectedVideoTitle": "Everything on the Line 🚨 | Best NHL OT & Shootout Moments — April 2026",
-      "selectedVideoPublishedAt": "8 hours ago",
-      "selectedVideoChannel": "NHL",
+      "selectedVideoTitle": "🔴 Los Angeles Kings vs Colorado Avalanche | Game 1 - 19th April 2026 | Full Match NHL 26 Simulation",
+      "selectedVideoPublishedAt": "2 hours ago",
+      "selectedVideoChannel": "Zone31",
       "rejectedForAgeCount": 0
     }
   },
@@ -708,14 +708,22 @@
     }
   },
   "clinch_watch:boston bruins clinch playoff berth april 2026": {
-    "video": null,
-    "fetchedAt": "2026-04-19T02:50:51.255Z",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=YYxZ854dC4g",
+      "thumbnailUrl": "https://img.youtube.com/vi/YYxZ854dC4g/hqdefault.jpg",
+      "durationSeconds": 2046,
+      "title": "Good Morning America Full Broadcast - Sunday, April 19, 2026",
+      "source": "youtube",
+      "channel": "ABC News",
+      "publishedAt": "3 hours ago"
+    },
+    "fetchedAt": "2026-04-19T21:10:29.326Z",
     "query": "Boston Bruins clinch playoff berth April 2026",
     "debug": {
       "searchQuery": "Boston Bruins clinch playoff berth April 2026",
-      "selectedVideoTitle": null,
-      "selectedVideoPublishedAt": null,
-      "selectedVideoChannel": null,
+      "selectedVideoTitle": "Good Morning America Full Broadcast - Sunday, April 19, 2026",
+      "selectedVideoPublishedAt": "3 hours ago",
+      "selectedVideoChannel": "ABC News",
       "rejectedForAgeCount": 0
     }
   },
@@ -800,22 +808,14 @@
     }
   },
   "playoff_push:anaheim ducks playoff push april 2026": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=D6mUcIAxPL4",
-      "thumbnailUrl": "https://img.youtube.com/vi/D6mUcIAxPL4/hqdefault.jpg",
-      "durationSeconds": 1500,
-      "title": "Edmonton property tax increase finalized at 7.7% | CTV News Edmonton at 11:30 for April 17, 2026",
-      "source": "youtube",
-      "channel": "CTV News",
-      "publishedAt": "8h ago"
-    },
-    "fetchedAt": "2026-04-19T02:50:52.185Z",
+    "video": null,
+    "fetchedAt": "2026-04-19T21:10:29.575Z",
     "query": "Anaheim Ducks playoff push April 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push April 2026",
-      "selectedVideoTitle": "Edmonton property tax increase finalized at 7.7% | CTV News Edmonton at 11:30 for April 17, 2026",
-      "selectedVideoPublishedAt": "8h ago",
-      "selectedVideoChannel": "CTV News",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   },
@@ -909,21 +909,21 @@
   },
   "league_moment:rivalry weekend sports april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=0KV6tbH1H7w",
-      "thumbnailUrl": "https://img.youtube.com/vi/0KV6tbH1H7w/hqdefault.jpg",
-      "durationSeconds": 315,
-      "title": "MLB Highlights | Tigers vs. Red Sox - April 17, 2026",
+      "url": "https://www.youtube.com/watch?v=pBJdwgQBUGY",
+      "thumbnailUrl": "https://img.youtube.com/vi/pBJdwgQBUGY/hqdefault.jpg",
+      "durationSeconds": 680,
+      "title": "NHL Playoff Highlights | Flyers vs. Penguins | Round 1 Gm 1 | April 18, 2026",
       "source": "youtube",
-      "channel": "MLB x SPORTSNET",
-      "publishedAt": "1 day ago"
+      "channel": "NHL",
+      "publishedAt": "17 hours ago"
     },
-    "fetchedAt": "2026-04-19T02:50:53.176Z",
+    "fetchedAt": "2026-04-19T21:10:30.892Z",
     "query": "Rivalry Weekend sports April 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports April 2026",
-      "selectedVideoTitle": "MLB Highlights | Tigers vs. Red Sox - April 17, 2026",
-      "selectedVideoPublishedAt": "1 day ago",
-      "selectedVideoChannel": "MLB x SPORTSNET",
+      "selectedVideoTitle": "NHL Playoff Highlights | Flyers vs. Penguins | Round 1 Gm 1 | April 18, 2026",
+      "selectedVideoPublishedAt": "17 hours ago",
+      "selectedVideoChannel": "NHL",
       "rejectedForAgeCount": 0
     }
   },
@@ -996,6 +996,26 @@
       "selectedVideoTitle": "Chelsea vs Man Utd LIVE Watchalong ft. @Dhruviewss @Midwicketmanager @KickitwithLala",
       "selectedVideoPublishedAt": "Streamed 5 hours ago",
       "selectedVideoChannel": "Ash Talks Football",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:arsenal vs man city upset highlights april 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=ijfmbhGt6x0",
+      "thumbnailUrl": "https://img.youtube.com/vi/ijfmbhGt6x0/hqdefault.jpg",
+      "durationSeconds": 502,
+      "title": "Manchester city vs Arsenal 2-1 Highlights & Goals •  rayan cherki & Erling Haaland Goals ⚽⚽",
+      "source": "youtube",
+      "channel": "Footballia",
+      "publishedAt": "3 hours ago"
+    },
+    "fetchedAt": "2026-04-19T21:10:29.029Z",
+    "query": "Arsenal vs Man City upset highlights April 2026",
+    "debug": {
+      "searchQuery": "Arsenal vs Man City upset highlights April 2026",
+      "selectedVideoTitle": "Manchester city vs Arsenal 2-1 Highlights & Goals •  rayan cherki & Erling Haaland Goals ⚽⚽",
+      "selectedVideoPublishedAt": "3 hours ago",
+      "selectedVideoChannel": "Footballia",
       "rejectedForAgeCount": 0
     }
   }

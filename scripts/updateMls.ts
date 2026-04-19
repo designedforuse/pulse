@@ -2,7 +2,11 @@ import * as fs from "fs";
 import * as path from "path";
 
 const SOCCER_DURATION_MIN = 135;
-const ICAL_URL = "https://fixturedownload.com/download/mls-2026-GMTStandardTime.ics";
+const ESPN_MLS_URL = "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/scoreboard";
+
+// Retention window: -14 days past, +21 days future.
+const PAST_DAYS = 14;
+const FUTURE_DAYS = 21;
 
 interface AppEvent {
   id: string;
@@ -19,14 +23,6 @@ interface AppEvent {
   providerReason?: string;
 }
 
-interface VEvent {
-  dtstart: string;
-  dtend?: string;
-  summary: string;
-  uid: string;
-  location?: string;
-}
-
 export interface MlsFetchResult {
   events: AppEvent[];
   sourceUsed: string;
@@ -40,107 +36,26 @@ export interface MlsMergeResult {
   pruned: number;
 }
 
+interface EspnCompetitor {
+  homeAway?: string;
+  team?: { displayName?: string; shortDisplayName?: string };
+}
+
+interface EspnCompetition {
+  date?: string;
+  competitors?: EspnCompetitor[];
+}
+
+interface EspnEvent {
+  id?: string;
+  date?: string;
+  competitions?: EspnCompetition[];
+}
+
 function addDuration(isoString: string, minutes: number): string {
   const date = new Date(isoString);
   date.setMinutes(date.getMinutes() + minutes);
   return date.toISOString();
-}
-
-function parseIcalDate(raw: string): string | null {
-  const cleaned = raw.replace(/\r/g, "").trim();
-  if (/^\d{8}T\d{6}Z$/.test(cleaned)) {
-    const y = cleaned.slice(0, 4);
-    const m = cleaned.slice(4, 6);
-    const d = cleaned.slice(6, 8);
-    const hh = cleaned.slice(9, 11);
-    const mm = cleaned.slice(11, 13);
-    const ss = cleaned.slice(13, 15);
-    return `${y}-${m}-${d}T${hh}:${mm}:${ss}.000Z`;
-  }
-  if (/^\d{8}T\d{6}$/.test(cleaned)) {
-    const y = cleaned.slice(0, 4);
-    const m = cleaned.slice(4, 6);
-    const d = cleaned.slice(6, 8);
-    const hh = cleaned.slice(9, 11);
-    const mm = cleaned.slice(11, 13);
-    const ss = cleaned.slice(13, 15);
-    return `${y}-${m}-${d}T${hh}:${mm}:${ss}.000Z`;
-  }
-  const parsed = new Date(cleaned);
-  if (!isNaN(parsed.getTime())) {
-    return parsed.toISOString();
-  }
-  return null;
-}
-
-function parseIcalText(ical: string): VEvent[] {
-  const lines: string[] = [];
-  for (const rawLine of ical.split("\n")) {
-    const line = rawLine.replace(/\r$/, "");
-    if (line.startsWith(" ") || line.startsWith("\t")) {
-      if (lines.length > 0) {
-        lines[lines.length - 1] += line.slice(1);
-      }
-    } else {
-      lines.push(line);
-    }
-  }
-
-  const events: VEvent[] = [];
-  let current: Partial<VEvent> | null = null;
-
-  for (const line of lines) {
-    if (line === "BEGIN:VEVENT") {
-      current = {};
-    } else if (line === "END:VEVENT" && current) {
-      if (current.dtstart && current.summary) {
-        events.push(current as VEvent);
-      }
-      current = null;
-    } else if (current) {
-      const colonIdx = line.indexOf(":");
-      if (colonIdx === -1) continue;
-      const key = line.slice(0, colonIdx).split(";")[0].toUpperCase();
-      const value = line.slice(colonIdx + 1);
-      switch (key) {
-        case "DTSTART":
-          current.dtstart = value;
-          break;
-        case "DTEND":
-          current.dtend = value;
-          break;
-        case "SUMMARY":
-          current.summary = value;
-          break;
-        case "UID":
-          current.uid = value;
-          break;
-        case "LOCATION":
-          current.location = value;
-          break;
-      }
-    }
-  }
-
-  return events;
-}
-
-function parseTeams(summary: string): { homeTeam: string; awayTeam: string } | null {
-  let cleaned = summary.trim();
-
-  cleaned = cleaned.replace(/\s*-\s*MLS\s+\d{4}.*$/i, "");
-
-  const vsMatch = cleaned.match(/^(.+?)\s+vs\.?\s+(.+)$/i);
-  if (vsMatch) {
-    return { homeTeam: vsMatch[1].trim(), awayTeam: vsMatch[2].trim() };
-  }
-
-  const dashMatch = cleaned.match(/^(.+?)\s+-\s+(.+)$/);
-  if (dashMatch) {
-    return { homeTeam: dashMatch[1].trim(), awayTeam: dashMatch[2].trim() };
-  }
-
-  return null;
 }
 
 function stableId(startUtc: string, away: string, home: string): string {
@@ -152,70 +67,80 @@ function stableId(startUtc: string, away: string, home: string): string {
   return `soccer-mls-${dateStr}-${timeStr}-${a}-at-${h}`;
 }
 
+function ymd(date: Date): string {
+  return date.toISOString().slice(0, 10).replace(/-/g, "");
+}
+
 export async function fetchMlsEvents(): Promise<MlsFetchResult> {
-  console.log(`  MLS: Fetching iCal from ${ICAL_URL}...`);
-  try {
-    const res = await fetch(ICAL_URL, {
-      headers: { "User-Agent": "Mozilla/5.0 (compatible; SportsGuide/1.0)" },
-    });
-    if (!res.ok) {
-      console.error(`  MLS: iCal fetch failed with ${res.status}`);
-      return { events: [], sourceUsed: "none", count: 0 };
-    }
-    const icalText = await res.text();
-    const vevents = parseIcalText(icalText);
-    console.log(`  MLS: Parsed ${vevents.length} iCal events`);
+  const now = new Date();
+  const dates: string[] = [];
+  for (let offset = -PAST_DAYS; offset <= FUTURE_DAYS; offset++) {
+    const d = new Date(now.getTime() + offset * 86400000);
+    dates.push(ymd(d));
+  }
 
-    const now = new Date();
-    const windowStart = new Date(now.getTime() - 14 * 86400000);
-    const windowEnd = new Date(now.getTime() + 21 * 86400000);
+  console.log(`  MLS: Fetching ESPN scoreboard for ${dates.length} dates (${dates[0]} → ${dates[dates.length - 1]})...`);
 
-    const events: AppEvent[] = [];
-    const seenIds = new Set<string>();
+  const events: AppEvent[] = [];
+  const seenIds = new Set<string>();
+  let totalEspnEvents = 0;
+  let httpErrors = 0;
 
-    for (const ve of vevents) {
-      const startUtc = parseIcalDate(ve.dtstart);
-      if (!startUtc) continue;
-
-      const startDate = new Date(startUtc);
-      if (startDate < windowStart || startDate > windowEnd) continue;
-
-      const teams = parseTeams(ve.summary);
-      if (!teams) {
-        console.log(`  MLS: Could not parse teams from "${ve.summary}"`);
+  for (const dateStr of dates) {
+    try {
+      const url = `${ESPN_MLS_URL}?dates=${dateStr}&limit=100`;
+      const res = await fetch(url, {
+        headers: { "User-Agent": "Mozilla/5.0 (compatible; SportsGuide/1.0)" },
+      });
+      if (!res.ok) {
+        httpErrors++;
         continue;
       }
+      const data = (await res.json()) as { events?: EspnEvent[] };
+      const espnEvents = data.events || [];
+      totalEspnEvents += espnEvents.length;
 
-      const endUtc = ve.dtend
-        ? parseIcalDate(ve.dtend) || addDuration(startUtc, SOCCER_DURATION_MIN)
-        : addDuration(startUtc, SOCCER_DURATION_MIN);
+      for (const ev of espnEvents) {
+        const comp = (ev.competitions || [])[0];
+        if (!comp) continue;
 
-      const id = stableId(startUtc, teams.awayTeam, teams.homeTeam);
-      if (seenIds.has(id)) continue;
-      seenIds.add(id);
+        const startUtc = ev.date || comp.date;
+        if (!startUtc) continue;
+        const startIso = new Date(startUtc).toISOString();
 
-      events.push({
-        id,
-        sport: "soccer",
-        league: "MLS",
-        awayTeam: teams.awayTeam,
-        homeTeam: teams.homeTeam,
-        startTimeLocal: startUtc,
-        endTimeLocal: endUtc,
-        providerId: "appletv",
-        isLive: false,
-        source: "soccer-mls",
-        leagueKey: "mls",
-        providerReason: "mls-appletv",
-      });
+        const home = comp.competitors?.find((c) => c.homeAway === "home")?.team?.displayName;
+        const away = comp.competitors?.find((c) => c.homeAway === "away")?.team?.displayName;
+        if (!home || !away) continue;
+
+        const id = stableId(startIso, away, home);
+        if (seenIds.has(id)) continue;
+        seenIds.add(id);
+
+        events.push({
+          id,
+          sport: "soccer",
+          league: "MLS",
+          awayTeam: away,
+          homeTeam: home,
+          startTimeLocal: startIso,
+          endTimeLocal: addDuration(startIso, SOCCER_DURATION_MIN),
+          providerId: "appletv",
+          isLive: false,
+          source: "soccer-mls",
+          leagueKey: "mls",
+          providerReason: "mls-appletv",
+        });
+      }
+    } catch (err: any) {
+      httpErrors++;
+      console.warn(`  MLS: ESPN fetch failed for ${dateStr}: ${err?.message ?? err}`);
     }
-
-    console.log(`  MLS: ${events.length} events in retention window`);
-    return { events, sourceUsed: "ical", count: events.length };
-  } catch (err: any) {
-    console.error(`  MLS: Error fetching iCal:`, err.message);
-    return { events: [], sourceUsed: "none", count: 0 };
   }
+
+  events.sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
+
+  console.log(`  MLS: ${events.length} events from ESPN (raw=${totalEspnEvents}, errors=${httpErrors})`);
+  return { events, sourceUsed: "espn", count: events.length };
 }
 
 export function mergeMlsEvents(
@@ -223,41 +148,43 @@ export function mergeMlsEvents(
   fetched: AppEvent[],
   now: Date
 ): MlsMergeResult {
-  const windowStart = new Date(now.getTime() - 14 * 86400000);
-  const windowEnd = new Date(now.getTime() + 21 * 86400000);
+  const windowStart = new Date(now.getTime() - PAST_DAYS * 86400000);
+  const windowEnd = new Date(now.getTime() + FUTURE_DAYS * 86400000);
 
-  const existingMap = new Map<string, AppEvent>();
-  for (const e of existing) {
-    existingMap.set(e.id, e);
+  // ESPN is the source of truth (the prior fixturedownload feed had wrong
+  // kickoff times for several games and used inconsistent team display names
+  // like "Atlanta United" vs "Atlanta United FC"). When the fetch succeeds
+  // with at least one event, replace the entire in-window slice with the
+  // fetched data. Out-of-window historical events are preserved untouched.
+  // If the fetch returned nothing at all (transient outage), keep the
+  // existing cache rather than wiping it.
+  if (fetched.length === 0) {
+    return { merged: [...existing], added: 0, updated: 0, pruned: 0 };
   }
 
   const merged: AppEvent[] = [];
-  const seenIds = new Set<string>();
+  let pruned = 0;
+  for (const e of existing) {
+    const start = new Date(e.startTimeLocal);
+    if (start < windowStart || start > windowEnd) {
+      merged.push(e);
+    } else {
+      pruned++;
+    }
+  }
+
+  const existingIdSet = new Set(existing.map((e) => e.id));
   let added = 0;
   let updated = 0;
-
   for (const fe of fetched) {
-    seenIds.add(fe.id);
-    if (existingMap.has(fe.id)) {
-      updated++;
-    } else {
-      added++;
-    }
+    if (existingIdSet.has(fe.id)) updated++;
+    else added++;
     merged.push(fe);
   }
 
-  for (const [id, e] of existingMap) {
-    if (seenIds.has(id)) continue;
-    const start = new Date(e.startTimeLocal);
-    if (start >= windowStart && start <= windowEnd) {
-      merged.push(e);
-    }
-  }
-
-  const prunedCount = existing.length - (merged.length - fetched.length);
-  const pruned = Math.max(0, prunedCount);
+  // Net pruned = events removed minus those that came back unchanged.
+  const netPruned = Math.max(0, pruned - updated);
 
   merged.sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
-
-  return { merged, added, updated, pruned };
+  return { merged, added, updated, pruned: netPruned };
 }

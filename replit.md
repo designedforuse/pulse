@@ -44,7 +44,8 @@ The application features a frontend built with Expo Router for file-based naviga
 - **Odds API (api.the-odds-api.com):** SHL (Swedish Hockey League) schedule data via `icehockey_sweden_hockey_league`; upcoming events + 3-day scores; all games on FloSports. 14 teams: Brynäs IF, Frölunda HC, Färjestad BK, HV71, Leksands IF, Linköping HC, Luleå HF, Malmö Redhawks, MoDo Hockey, Rögle BK, Skellefteå AIK, Timrå IK, Växjö Lakers, Örebro HK. Retention: 14 days past, 21 days future.
 - **College Hockey News (collegehockeynews.com):** NCAA BU Hockey schedule data (scraped).
 - **rugbyfixture.io (iCal feeds):** URC, Top 14, English Premiership, European Champions Cup Rugby schedules.
-- **fixturedownload.com (iCal feeds):** Super Rugby Pacific (schedule only), EPL, and MLS schedules.
+- **fixturedownload.com (iCal feeds):** Super Rugby Pacific (schedule only) and EPL schedules. (MLS migrated off this source — fixturedownload's iCal had wrong UTC kickoff times for several CF Montréal/Toronto FC home games.)
+- **ESPN API (site.api.espn.com):** MLS schedule data via `soccer/usa.1/scoreboard`. Replaces the prior fixturedownload iCal source which had wrong kickoff times for several Canadian-venue games. Daily fetch loop covers -14/+21 day window. All games route to Apple TV (`providerId: 'appletv', providerReason: 'mls-appletv'`). The merge replaces the entire in-window cache with each fetch since ESPN is authoritative.
 - **ESPN API (site.api.espn.com):** Champions League (uefa.champions), Europa League (uefa.europa), and CAF Champions League (caf.champions) schedule data. CAF CL broadcasts on beIN Sports via YouTube TV; Mamelodi Sundowns is a tracked favorite. Retention: 60 days past, 90 days future.
 - **ESPN API (site.api.espn.com):** NBA basketball schedule and live score data.
 - **ESPN API (site.api.espn.com):** USL, FA Cup, ATP Tennis, and F1 Racing schedule data.
