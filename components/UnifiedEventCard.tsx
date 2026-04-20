@@ -19,6 +19,7 @@ import type { ScoreData, TennisSetScore } from "@/lib/scores-context";
 import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTime, getSvnsTeamFlag, extractSvnsSessionDay, type SvnsMatch } from "@/lib/svns-context";
 
 const MASTERS_LOGO = require("@/assets/images/masters-logo.png");
+const BOSTON_MARATHON_LOGO = require("@/assets/images/boston-marathon-logo.jpeg");
 
 const GP_FLAGS: Record<string, string> = {
   "Australian": "🇦🇺",
@@ -909,17 +910,22 @@ export default function UnifiedEventCard({
             <View>
               <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
                 <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>
-                  {getLeagueLabel(event)}
+                  {event.leagueKey === "marathon-majors" ? "MARATHON MAJORS" : getLeagueLabel(event)}
                 </Text>
               </View>
               <View style={uStyles.espnMatchup}>
                 <View style={uStyles.espnTeamOuter}>
                   <View style={uStyles.espnStarSlot} />
                   <View style={uStyles.espnTeam}>
-                    <Text style={{ fontSize: featured ? 28 : 24 }}>🏃</Text>
-                    <Text style={uStyles.espnTeamName} numberOfLines={2}>
-                      {athleticsTournament}
-                    </Text>
+                    {athleticsTournament === "Boston Marathon" ? (
+                      <Image
+                        source={BOSTON_MARATHON_LOGO}
+                        style={{ width: featured ? 44 : 36, height: featured ? 44 : 36 }}
+                        resizeMode="contain"
+                      />
+                    ) : (
+                      <Text style={{ fontSize: featured ? 28 : 24 }}>🏃</Text>
+                    )}
                   </View>
                 </View>
                 <View style={uStyles.espnCenter}>
@@ -928,7 +934,11 @@ export default function UnifiedEventCard({
                 </View>
                 <View style={[uStyles.espnTeamOuter, { flexDirection: "row-reverse" }]}>
                   <View style={uStyles.espnStarSlot} />
-                  <View style={uStyles.espnTeam} />
+                  <View style={uStyles.espnTeam}>
+                    <Text style={uStyles.espnTeamName} numberOfLines={2}>
+                      {athleticsTournament}
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -1222,7 +1232,7 @@ export default function UnifiedEventCard({
           ) : null}
         </View>
 
-        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && (
+        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && (
           <View style={uStyles.footer}>
             {isLive ? (
               <>
