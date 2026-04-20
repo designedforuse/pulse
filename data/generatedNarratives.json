@@ -1,11 +1,14 @@
 {
-  "lastUpdated": "2026-04-19T21:32:26.444Z",
+  "lastUpdated": "2026-04-20T02:19:17.797Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "momentum": {
         "NewEngland": 1
       },
       "league_moment": {
+        "Other": 1
+      },
+      "rivalry_game": {
         "Other": 1
       },
       "clinch_watch": {
@@ -21,14 +24,15 @@
         "momentum: Bruins Heating Up"
       ],
       "Other": [
+        "rivalry_game: Rivalry Game Tonight",
         "clinch_watch: Clinch Watch",
         "playoff_push: Playoff Push",
         "league_moment: Rivalry Weekend"
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 4,
-    "totalAfterCap": 4,
+    "totalBeforeCap": 5,
+    "totalAfterCap": 5,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -61,26 +65,26 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 505,
+        "playersIngested": 507,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-19T21:32:26.444Z"
+        "timestamp": "2026-04-20T02:19:17.797Z"
       },
       "cacheHistoryCount": 877,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 4,
-    "candidateCountAfterCap": 4,
+    "candidateCountBeforeCap": 5,
+    "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1033.5406788888888,
+      "hoursUntil": -1038.3216102777778,
       "teamsEvaluated": 0,
       "triggers": {}
     },
     "rivalryGame": {
-      "rawRivalryCandidates": 0,
-      "rivalryAfterRegionFilter": 0,
-      "rivalryFinalCount": 0
+      "rawRivalryCandidates": 1,
+      "rivalryAfterRegionFilter": 1,
+      "rivalryFinalCount": 1
     },
     "upsetAlert": {
       "rawUpsetCandidates": 0,
@@ -98,18 +102,18 @@
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "baseball-mlb-20260419-0010-los-angeles-dodgers-at-colorado-rockies",
+    "tonightStorySourceEvent": "rugby-mlr-20260420-0000-seattle-seawolves-at-california-legion",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 400,
-      "sourceEventId": "baseball-mlb-20260419-0010-los-angeles-dodgers-at-colorado-rockies",
-      "reason": "10 followed/affiliate teams playing tonight",
+      "selectedScore": 240,
+      "sourceEventId": "rugby-mlr-20260420-0000-seattle-seawolves-at-california-legion",
+      "reason": "2 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 400,
-          "reason": "10 followed/affiliate teams playing tonight"
+          "score": 240,
+          "reason": "2 followed/affiliate teams playing tonight"
         },
         {
           "label": "[clinch_watch] Playoff Stakes",
@@ -127,9 +131,9 @@
           "reason": "momentum involving followed team(s): Boston Bruins"
         },
         {
-          "label": "[ritual_night] Saturday Game Day",
-          "score": 130,
-          "reason": "ritual \"Saturday Game Day\" has 7 followed-team game(s)"
+          "label": "[rivalry_game] Rivalry Night",
+          "score": 60,
+          "reason": "rivalry_game (generic, no followed teams)"
         },
         {
           "label": "[league_moment] League Spotlight",
@@ -146,7 +150,14 @@
         "selectedVideoChannel": "Zone31",
         "rejectedForAgeCount": 0
       },
-      "clinch_watch_nhl_2025030111": {
+      "rivalry_game_nhl_2025030142": {
+        "searchQuery": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights",
+        "selectedVideoTitle": "GAME NIGHT: STATEMENT win for Wild, Canes/Anderson SHUTOUT Sens, Flyers take Round 1 in the 'Burgh",
+        "selectedVideoPublishedAt": "20 hours ago",
+        "selectedVideoChannel": "Locked On NHL",
+        "rejectedForAgeCount": 0
+      },
+      "clinch_watch_nhl_2025030112": {
         "searchQuery": "Boston Bruins clinch playoff berth April 2026",
         "selectedVideoTitle": "Good Morning America Full Broadcast - Sunday, April 19, 2026",
         "selectedVideoPublishedAt": "3 hours ago",
@@ -179,8 +190,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-04-19T21:32:26.444Z",
-      "expiresAt": "2026-04-22T21:32:26.444Z",
+      "triggeredAt": "2026-04-20T02:19:17.797Z",
+      "expiresAt": "2026-04-23T02:19:17.797Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -213,7 +224,6 @@
           }
         ],
         "eventIds": [
-          "nhl_2025030111",
           "nhl_2025030112",
           "nhl_2025030113",
           "nhl_2025030114"
@@ -234,16 +244,56 @@
       }
     },
     {
-      "id": "clinch_watch_nhl_2025030111",
+      "id": "rivalry_game_nhl_2025030142",
+      "title": "Rivalry Game Tonight",
+      "subtitle": "Philadelphia Flyers vs Pittsburgh Penguins · Tonight at 11:00 PM",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 96,
+      "triggeredAt": "2026-04-20T02:19:17.797Z",
+      "expiresAt": "2026-04-21T03:00:00.000Z",
+      "kind": "rivalry_game",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "rivalryLabel": "Keystone State Rivalry",
+        "sport": "hockey",
+        "league": "NHL",
+        "awayTeam": "Philadelphia Flyers",
+        "homeTeam": "Pittsburgh Penguins",
+        "startTime": "2026-04-20T23:00:00.000Z",
+        "eventIds": [
+          "nhl_2025030142"
+        ],
+        "reason": "Philadelphia Flyers and Pittsburgh Penguins meet tonight in one of hockey's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
+      },
+      "sports": [
+        "hockey"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=k5niQMVddO0",
+        "thumbnailUrl": "https://img.youtube.com/vi/k5niQMVddO0/hqdefault.jpg",
+        "durationSeconds": 1836,
+        "title": "GAME NIGHT: STATEMENT win for Wild, Canes/Anderson SHUTOUT Sens, Flyers take Round 1 in the 'Burgh",
+        "source": "youtube",
+        "channel": "Locked On NHL",
+        "publishedAt": "20 hours ago"
+      }
+    },
+    {
+      "id": "clinch_watch_nhl_2025030112",
       "title": "Clinch Watch",
-      "subtitle": "Can secure wild card spot with a win tonight",
+      "subtitle": "Can secure wild card spot with a win in the next 48h",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-04-19T21:32:26.444Z",
-      "expiresAt": "2026-04-20T03:30:00.000Z",
+      "triggeredAt": "2026-04-20T02:19:17.797Z",
+      "expiresAt": "2026-04-22T03:30:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
@@ -255,9 +305,9 @@
         "league": "NHL",
         "awayTeam": "Boston Bruins",
         "homeTeam": "Buffalo Sabres",
-        "startTime": "2026-04-19T23:30:00.000Z",
+        "startTime": "2026-04-21T23:30:00.000Z",
         "eventIds": [
-          "nhl_2025030111"
+          "nhl_2025030112"
         ],
         "reason": "Buffalo Sabres have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
       },
@@ -283,7 +333,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-04-19T21:32:26.444Z",
+      "triggeredAt": "2026-04-20T02:19:17.797Z",
       "expiresAt": "2026-04-21T06:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -315,8 +365,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-19T21:32:26.444Z",
-      "expiresAt": "2026-04-26T21:32:26.444Z",
+      "triggeredAt": "2026-04-20T02:19:17.797Z",
+      "expiresAt": "2026-04-27T02:19:17.797Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -434,19 +484,16 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Los Angeles Dodgers, Los Angeles Lakers, San Diego Gulls, San Diego FC, and Orange County SC (+5 more) all play tonight across the MLB, NBA, AHL, MLS, USL, Bundesliga, MLR, NHL.",
-    "sourceEventId": "baseball-mlb-20260419-0010-los-angeles-dodgers-at-colorado-rockies",
+    "body": "The California Legion and Boston Red Sox all play tonight across the MLR, MLB.",
+    "sourceEventId": "rugby-mlr-20260420-0000-seattle-seawolves-at-california-legion",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
     },
     "sports": [
-      "baseball",
-      "basketball",
-      "hockey",
-      "soccer",
-      "rugby"
+      "rugby",
+      "baseball"
     ]
   },
   "monthSnapshot": {
@@ -454,33 +501,6 @@
       "monthLabel": "April 2026",
       "monthKey": "2026-04",
       "leagues": [
-        {
-          "sport": "basketball",
-          "displayName": "NBA",
-          "leagueKey": "nba",
-          "dateRangeLabel": "Apr 5–30",
-          "startDate": "2026-04-05T22:00:00.000Z",
-          "endDate": "2026-04-30T04:00:00.000Z",
-          "eventCount": 115
-        },
-        {
-          "sport": "baseball",
-          "displayName": "MLB",
-          "leagueKey": "mlb",
-          "dateRangeLabel": "Apr 5–26",
-          "startDate": "2026-04-05T23:20:00.000Z",
-          "endDate": "2026-04-26T20:10:00.000Z",
-          "eventCount": 256
-        },
-        {
-          "sport": "cricket",
-          "displayName": "ICC",
-          "leagueKey": "icc",
-          "dateRangeLabel": "Apr 6–29",
-          "startDate": "2026-04-06T07:30:00.000Z",
-          "endDate": "2026-04-29T00:00:00.000Z",
-          "eventCount": 7
-        },
         {
           "sport": "soccer",
           "displayName": "Serie A",
@@ -509,13 +529,31 @@
           "eventCount": 31
         },
         {
+          "sport": "baseball",
+          "displayName": "MLB",
+          "leagueKey": "mlb",
+          "dateRangeLabel": "Apr 6–26",
+          "startDate": "2026-04-06T20:10:00.000Z",
+          "endDate": "2026-04-26T23:20:00.000Z",
+          "eventCount": 256
+        },
+        {
           "sport": "hockey",
           "displayName": "AHL",
           "leagueKey": "ahl",
           "dateRangeLabel": "Apr 6–29",
           "startDate": "2026-04-06T23:00:00.000Z",
           "endDate": "2026-04-29T00:00:00.000Z",
-          "eventCount": 101
+          "eventCount": 112
+        },
+        {
+          "sport": "basketball",
+          "displayName": "NBA",
+          "leagueKey": "nba",
+          "dateRangeLabel": "Apr 6–30",
+          "startDate": "2026-04-06T23:00:00.000Z",
+          "endDate": "2026-04-30T04:00:00.000Z",
+          "eventCount": 108
         },
         {
           "sport": "soccer",
@@ -710,19 +748,10 @@
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "Apr 18–30",
-          "startDate": "2026-04-18T19:00:00.000Z",
+          "dateRangeLabel": "Apr 19–30",
+          "startDate": "2026-04-19T19:00:00.000Z",
           "endDate": "2026-04-30T16:00:00.000Z",
-          "eventCount": 44
-        },
-        {
-          "sport": "cricket",
-          "displayName": "T20I Cricket",
-          "leagueKey": "t20i",
-          "dateRangeLabel": "Apr 20–21",
-          "startDate": "2026-04-20T11:15:00.000Z",
-          "endDate": "2026-04-21T11:15:00.000Z",
-          "eventCount": 2
+          "eventCount": 41
         },
         {
           "sport": "athletics",
@@ -770,19 +799,10 @@
           "sport": "hockey",
           "displayName": "AHL",
           "leagueKey": "ahl",
-          "dateRangeLabel": "May 1–6",
+          "dateRangeLabel": "May 1–9",
           "startDate": "2026-05-01T00:00:00.000Z",
-          "endDate": "2026-05-06T00:00:00.000Z",
-          "eventCount": 4
-        },
-        {
-          "sport": "cricket",
-          "displayName": "ICC",
-          "leagueKey": "icc",
-          "dateRangeLabel": "May 1–5",
-          "startDate": "2026-05-01T00:00:00.000Z",
-          "endDate": "2026-05-05T00:00:00.000Z",
-          "eventCount": 3
+          "endDate": "2026-05-09T21:00:00.000Z",
+          "eventCount": 7
         },
         {
           "sport": "basketball",
@@ -824,10 +844,10 @@
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "May 1",
+          "dateRangeLabel": "May 1–2",
           "startDate": "2026-05-01T16:00:00.000Z",
-          "endDate": "2026-05-01T16:00:00.000Z",
-          "eventCount": 4
+          "endDate": "2026-05-02T16:00:00.000Z",
+          "eventCount": 8
         },
         {
           "sport": "racing",
@@ -880,8 +900,8 @@
           "leagueKey": "nwsl",
           "dateRangeLabel": "May 2–10",
           "startDate": "2026-05-02T00:00:00.000Z",
-          "endDate": "2026-05-10T20:00:00.000Z",
-          "eventCount": 16
+          "endDate": "2026-05-10T23:00:00.000Z",
+          "eventCount": 17
         },
         {
           "sport": "soccer",
@@ -908,7 +928,7 @@
           "dateRangeLabel": "May 2–11",
           "startDate": "2026-05-02T17:00:00.000Z",
           "endDate": "2026-05-11T01:00:00.000Z",
-          "eventCount": 37
+          "eventCount": 31
         },
         {
           "sport": "horse-racing",

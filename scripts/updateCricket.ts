@@ -1,21 +1,21 @@
 import * as fs from "fs";
 import * as path from "path";
 
+// ICC Full Members only. International cricket fixtures must be between two
+// Full Members to appear in the app. Associate nations (Nepal, UAE, Scotland,
+// Netherlands, Namibia, Oman, USA, Canada, PNG, Uganda, etc.) are filtered
+// out — even when playing each other in ICC qualifying competitions like
+// CWC League Two.
 const FEATURED_CRICKET_NATIONS = new Set([
-  // ICC Full Members (Tier 1)
   "india", "australia", "england", "south africa", "new zealand",
   "pakistan", "sri lanka", "west indies", "bangladesh", "afghanistan",
   "zimbabwe", "ireland",
-  // Key Associates (regularly appear in T20 World Cup / high-profile bilateral series)
-  "scotland", "netherlands", "nepal", "uae", "united arab emirates",
-  "namibia", "oman", "usa", "united states", "canada",
-  "papua new guinea", "uganda",
 ]);
 
 function passesNationFilter(event: { homeTeam: string; awayTeam: string; competitionType?: string; isIccT20Wc?: boolean }): boolean {
   if (event.competitionType !== "international") return true;
   const teams = [event.homeTeam, event.awayTeam].map((t) => t.toLowerCase());
-  return teams.some((t) => FEATURED_CRICKET_NATIONS.has(t));
+  return teams.every((t) => FEATURED_CRICKET_NATIONS.has(t));
 }
 
 const CRICAPI_BASE = "https://api.cricapi.com/v1";

@@ -72,14 +72,22 @@
     }
   },
   "rivalry_game:philadelphia flyers vs pittsburgh penguins rivalry highlights": {
-    "video": null,
-    "fetchedAt": "2026-03-07T16:16:50.961Z",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=k5niQMVddO0",
+      "thumbnailUrl": "https://img.youtube.com/vi/k5niQMVddO0/hqdefault.jpg",
+      "durationSeconds": 1836,
+      "title": "GAME NIGHT: STATEMENT win for Wild, Canes/Anderson SHUTOUT Sens, Flyers take Round 1 in the 'Burgh",
+      "source": "youtube",
+      "channel": "Locked On NHL",
+      "publishedAt": "20 hours ago"
+    },
+    "fetchedAt": "2026-04-20T02:19:26.994Z",
     "query": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights",
     "debug": {
       "searchQuery": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights",
-      "selectedVideoTitle": null,
-      "selectedVideoPublishedAt": null,
-      "selectedVideoChannel": null,
+      "selectedVideoTitle": "GAME NIGHT: STATEMENT win for Wild, Canes/Anderson SHUTOUT Sens, Flyers take Round 1 in the 'Burgh",
+      "selectedVideoPublishedAt": "20 hours ago",
+      "selectedVideoChannel": "Locked On NHL",
       "rejectedForAgeCount": 0
     }
   },
