@@ -30,7 +30,7 @@ import { useEvents } from "@/lib/events-context";
 import { useScores } from "@/lib/scores-context";
 import { isEventLive, formatTimeSinceStart } from "@/utils/time";
 import { normalizeGameState } from "@/utils/gameState";
-import { displayTeamName } from "@/utils/teams";
+import { displayTeamName, compactTeamName } from "@/utils/teams";
 import { getTuneInUrl } from "@/utils/tuneIn";
 
 const MASTERS_LOGO = require("@/assets/images/masters-logo.png");
@@ -303,10 +303,10 @@ export default function EventSheet() {
                 ) : (
                   <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={52} />
                 )}
-                <Text style={styles.espnTeamName} numberOfLines={1}>
+                <Text style={styles.espnTeamName} numberOfLines={2}>
                   {isTennisMatch
                     ? <>{event.tennisPlayer1 || event.awayTeam}{event.tennisPlayer1Rank ? <Text style={[styles.tennisRank, { color: sportColor }]}> [{event.tennisPlayer1Rank}]</Text> : null}</>
-                    : displayTeamName(event.awayTeam, event.league)}
+                    : compactTeamName(event.awayTeam, event.league)}
                 </Text>
               </View>
 
@@ -364,10 +364,10 @@ export default function EventSheet() {
                 ) : (
                   <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={52} />
                 )}
-                <Text style={styles.espnTeamName} numberOfLines={1}>
+                <Text style={styles.espnTeamName} numberOfLines={2}>
                   {isTennisMatch
                     ? <>{event.tennisPlayer2 || event.homeTeam}{event.tennisPlayer2Rank ? <Text style={[styles.tennisRank, { color: sportColor }]}> [{event.tennisPlayer2Rank}]</Text> : null}</>
-                    : displayTeamName(event.homeTeam, event.league)}
+                    : compactTeamName(event.homeTeam, event.league)}
                 </Text>
               </View>
             </View>
