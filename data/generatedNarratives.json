@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-20T19:44:03.183Z",
+  "lastUpdated": "2026-04-20T19:56:22.923Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "momentum": {
@@ -75,7 +75,7 @@
         ],
         "playersIngested": 529,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-20T19:44:03.183Z"
+        "timestamp": "2026-04-20T19:56:22.923Z"
       },
       "cacheHistoryCount": 877,
       "error": null
@@ -85,7 +85,7 @@
     "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1055.7342175,
+      "hoursUntil": -1055.9397008333333,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -203,8 +203,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-04-20T19:44:03.183Z",
-      "expiresAt": "2026-04-23T19:44:03.183Z",
+      "triggeredAt": "2026-04-20T19:56:22.923Z",
+      "expiresAt": "2026-04-23T19:56:22.923Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -265,7 +265,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-04-20T19:44:03.183Z",
+      "triggeredAt": "2026-04-20T19:56:22.923Z",
       "expiresAt": "2026-04-21T03:00:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
@@ -305,7 +305,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-04-20T19:44:03.183Z",
+      "triggeredAt": "2026-04-20T19:56:22.923Z",
       "expiresAt": "2026-04-21T13:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -337,7 +337,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-04-20T19:44:03.183Z",
+      "triggeredAt": "2026-04-20T19:56:22.923Z",
       "expiresAt": "2026-04-21T06:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -378,8 +378,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-20T19:44:03.183Z",
-      "expiresAt": "2026-04-27T19:44:03.183Z",
+      "triggeredAt": "2026-04-20T19:56:22.923Z",
+      "expiresAt": "2026-04-27T19:56:22.923Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,

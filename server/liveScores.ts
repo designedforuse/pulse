@@ -1,5 +1,6 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { fetchMarathonLeaderScores } from "./marathonLeader";
 
 export interface TennisSetScore {
   p1: number;
@@ -53,6 +54,11 @@ export interface ScoreData {
   golfActiveLeaderScore?: string;
   golfActiveLeaderCountry?: string;
   golfActiveLeaderThru?: string;
+  marathonLeader?: string;
+  marathonLeaderSplit?: string;
+  marathonLeaderSplitTime?: string;
+  marathonLeaderGap?: string;
+  marathonRaceStatus?: "active" | "finished";
 }
 
 export interface ScoresResponse {
@@ -76,6 +82,7 @@ interface LiveEventIdBuckets {
   ncaabBasketball: string[];
   golf: { id: string; tournamentName: string }[];
   mlb: string[];
+  marathon: string[];
 }
 
 function loadLiveEventIds(): LiveEventIdBuckets {
@@ -92,6 +99,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
   const ncaabBasketball: string[] = [];
   const golf: { id: string; tournamentName: string }[] = [];
   const mlb: string[] = [];
+  const marathon: string[] = [];
 
   try {
     const raw = fs.readFileSync(GENERATED_EVENTS_PATH, "utf-8");
@@ -160,12 +168,14 @@ function loadLiveEventIds(): LiveEventIdBuckets {
         golf.push({ id: event.id, tournamentName: event.homeTeam || "" });
       } else if (event.id.startsWith("baseball-mlb-")) {
         mlb.push(event.id);
+      } else if (event.id.startsWith("athletics-marathon-")) {
+        marathon.push(event.id);
       }
     }
   } catch {
   }
 
-  return { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba, ncaabBasketball, golf, mlb };
+  return { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba, ncaabBasketball, golf, mlb, marathon };
 }
 
 async function fetchNhlScores(eventIds: string[]): Promise<Record<string, ScoreData>> {
@@ -2021,7 +2031,7 @@ async function fetchMlbScores(eventIds: string[]): Promise<Record<string, ScoreD
 }
 
 export async function fetchAllLiveScores(): Promise<ScoresResponse> {
-  const { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba, ncaabBasketball, golf, mlb } = loadLiveEventIds();
+  const { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba, ncaabBasketball, golf, mlb, marathon } = loadLiveEventIds();
 
   // Split cricket into IPL (official IPL feed) vs other (CricAPI)
   const iplEvents = cricket.filter((e) => e.id.startsWith("cricket-ipl-"));
@@ -2029,7 +2039,7 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
 
   const japanLeagueOne = rugby.get("Japan League One") || [];
   const mlrEvents = rugby.get("MLR") || [];
-  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, pulseliveRugbyScores, mlrOfficialScores, jlOneScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores] = await Promise.all([
+  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, pulseliveRugbyScores, mlrOfficialScores, jlOneScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores, marathonScores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchAhlScores(ahl),
     fetchEchlScores(echl),
@@ -2047,6 +2057,7 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
     fetchNcaabBasketballScores(ncaabBasketball),
     fetchGolfScores(golf),
     fetchMlbScores(mlb),
+    fetchMarathonLeaderScores(marathon),
   ]);
 
   // Priority order (last spread wins): ESPN rugby → Pulselive → MLR official.
@@ -2054,7 +2065,7 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
   // clock from World Rugby feed). MLR official overrides Pulselive for MLR
   // because Pulselive's MLR feed lags badly (often shows "U"/0-0 mid-match).
   return {
-    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...pulseliveRugbyScores, ...mlrOfficialScores, ...jlOneScores, ...iplScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores, ...golfScores, ...mlbScores },
+    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...pulseliveRugbyScores, ...mlrOfficialScores, ...jlOneScores, ...iplScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores, ...golfScores, ...mlbScores, ...marathonScores },
     fetchedAt: new Date().toISOString(),
   };
 }

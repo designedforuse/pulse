@@ -953,6 +953,31 @@ export default function UnifiedEventCard({
                   {athleticsTournament}
                 </Text>
               </View>
+              {(isLive || isFinal) && score?.marathonLeader && (
+                <View style={uStyles.racingLeaderSection}>
+                  <View style={uStyles.racingLeaderRow}>
+                    <Text style={[uStyles.racingPositionBadge, { color: sportColor }]}>
+                      🥇
+                    </Text>
+                    <Text style={uStyles.racingLeaderName} numberOfLines={1}>
+                      {score.marathonLeader}
+                    </Text>
+                  </View>
+                  {(score.marathonLeaderSplit || score.marathonLeaderSplitTime) && (
+                    <Text style={uStyles.racingLeaderTeam} numberOfLines={1}>
+                      {[score.marathonLeaderSplit, score.marathonLeaderSplitTime]
+                        .filter(Boolean)
+                        .join(" · ")}
+                      {score.marathonLeaderGap ? ` · +${score.marathonLeaderGap}` : ""}
+                    </Text>
+                  )}
+                </View>
+              )}
+              {(isLive || isFinal) && score?.marathonRaceStatus && (
+                <Text style={uStyles.racingContextLine} numberOfLines={1}>
+                  {score.marathonRaceStatus === "finished" ? "Complete" : "In progress"}
+                </Text>
+              )}
             </View>
           ) : isHorseRacing ? (
             <View style={uStyles.racingLayout}>

@@ -55,6 +55,11 @@ export interface ScoreData {
   golfActiveLeaderScore?: string;
   golfActiveLeaderCountry?: string;
   golfActiveLeaderThru?: string;
+  marathonLeader?: string;
+  marathonLeaderSplit?: string;
+  marathonLeaderSplitTime?: string;
+  marathonLeaderGap?: string;
+  marathonRaceStatus?: "active" | "finished";
 }
 
 interface ScoresApiResponse {
