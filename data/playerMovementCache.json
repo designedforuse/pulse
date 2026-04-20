@@ -855,11 +855,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025020914",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025020976",
           "seenAt": "2026-03-06T04:02:15.602Z"
         },
@@ -902,6 +897,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -8975,11 +8975,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025020914",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025020976",
           "seenAt": "2026-03-06T04:02:15.602Z"
         },
@@ -9022,6 +9017,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -9115,11 +9115,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025020914",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025020976",
           "seenAt": "2026-03-06T04:02:15.602Z"
         },
@@ -9162,17 +9157,17 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
     "8477346": {
       "name": "M. Weegar",
       "sightings": [
-        {
-          "teamAbbrev": "CGY",
-          "gameId": "2025020952",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
         {
           "teamAbbrev": "CGY",
           "gameId": "2025020944",
@@ -9217,6 +9212,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -12270,11 +12270,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025020914",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025020976",
           "seenAt": "2026-03-06T04:02:15.602Z"
         },
@@ -12317,6 +12312,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -12735,11 +12735,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025020914",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025020976",
           "seenAt": "2026-03-06T04:02:15.602Z"
         },
@@ -12782,6 +12777,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -15850,11 +15850,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025020914",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025020976",
           "seenAt": "2026-03-06T04:02:15.602Z"
         },
@@ -15897,6 +15892,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -16205,11 +16205,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025020914",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025020976",
           "seenAt": "2026-03-06T04:02:15.602Z"
         },
@@ -16252,6 +16247,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021257",
           "seenAt": "2026-04-14T15:02:20.313Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -16510,11 +16510,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025020914",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025020976",
           "seenAt": "2026-03-06T04:02:15.602Z"
         },
@@ -16557,6 +16552,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -16865,11 +16865,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025020914",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025020976",
           "seenAt": "2026-03-06T04:02:15.602Z"
         },
@@ -16912,6 +16907,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021257",
           "seenAt": "2026-04-14T15:02:20.313Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -17682,6 +17682,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -18135,11 +18140,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025020914",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025020976",
           "seenAt": "2026-03-06T04:02:15.602Z"
         },
@@ -18182,6 +18182,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -19172,6 +19177,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -19792,6 +19802,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -20175,11 +20190,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025020914",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025020976",
           "seenAt": "2026-03-06T04:02:15.602Z"
         },
@@ -20222,6 +20232,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -22830,11 +22845,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025020914",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025020976",
           "seenAt": "2026-03-06T04:02:15.602Z"
         },
@@ -22877,6 +22887,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -24177,6 +24192,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021203",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -30765,11 +30785,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025020914",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025020976",
           "seenAt": "2026-03-06T04:02:15.602Z"
         },
@@ -30812,6 +30827,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -32260,11 +32280,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025020914",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025020976",
           "seenAt": "2026-03-06T04:02:15.602Z"
         },
@@ -32307,6 +32322,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -34290,11 +34310,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025020914",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025020976",
           "seenAt": "2026-03-06T04:02:15.602Z"
         },
@@ -34337,6 +34352,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025021281",
           "seenAt": "2026-04-13T04:21:15.777Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025030171",
+          "seenAt": "2026-04-20T19:44:03.183Z"
         }
       ]
     },
@@ -39662,7 +39682,7 @@
     }
   },
   "movements": [],
-  "lastUpdated": "2026-04-20T02:33:46.319Z",
+  "lastUpdated": "2026-04-20T19:44:03.183Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -39689,8 +39709,8 @@
         "reason": "LEAGUE_NOT_SUPPORTED"
       }
     ],
-    "playersIngested": 527,
+    "playersIngested": 529,
     "movementsDetectedThisRun": [],
-    "timestamp": "2026-04-20T02:33:46.319Z"
+    "timestamp": "2026-04-20T19:44:03.183Z"
   }
 }

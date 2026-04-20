@@ -73,21 +73,21 @@
   },
   "rivalry_game:philadelphia flyers vs pittsburgh penguins rivalry highlights": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=k5niQMVddO0",
-      "thumbnailUrl": "https://img.youtube.com/vi/k5niQMVddO0/hqdefault.jpg",
-      "durationSeconds": 1836,
-      "title": "GAME NIGHT: STATEMENT win for Wild, Canes/Anderson SHUTOUT Sens, Flyers take Round 1 in the 'Burgh",
+      "url": "https://www.youtube.com/watch?v=I1y6ooLE3AM",
+      "thumbnailUrl": "https://img.youtube.com/vi/I1y6ooLE3AM/hqdefault.jpg",
+      "durationSeconds": 1767,
+      "title": "Penguins Fall Behind Flyers After Stumbling in Playoff Opener",
       "source": "youtube",
-      "channel": "Locked On NHL",
-      "publishedAt": "20 hours ago"
+      "channel": "SportsNet Pittsburgh",
+      "publishedAt": "22 hours ago"
     },
-    "fetchedAt": "2026-04-20T02:19:26.994Z",
+    "fetchedAt": "2026-04-20T19:44:11.132Z",
     "query": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights",
     "debug": {
       "searchQuery": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights",
-      "selectedVideoTitle": "GAME NIGHT: STATEMENT win for Wild, Canes/Anderson SHUTOUT Sens, Flyers take Round 1 in the 'Burgh",
-      "selectedVideoPublishedAt": "20 hours ago",
-      "selectedVideoChannel": "Locked On NHL",
+      "selectedVideoTitle": "Penguins Fall Behind Flyers After Stumbling in Playoff Opener",
+      "selectedVideoPublishedAt": "22 hours ago",
+      "selectedVideoChannel": "SportsNet Pittsburgh",
       "rejectedForAgeCount": 0
     }
   },
@@ -685,21 +685,21 @@
   },
   "momentum:boston bruins highlights april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=HVHXCdpqXOk",
-      "thumbnailUrl": "https://img.youtube.com/vi/HVHXCdpqXOk/hqdefault.jpg",
-      "durationSeconds": 6598,
-      "title": "🔴 Los Angeles Kings vs Colorado Avalanche | Game 1 - 19th April 2026 | Full Match NHL 26 Simulation",
+      "url": "https://www.youtube.com/watch?v=gdzXJV8htcI",
+      "thumbnailUrl": "https://img.youtube.com/vi/gdzXJV8htcI/hqdefault.jpg",
+      "durationSeconds": 64,
+      "title": "Svenska poäng inatt – Sammanfattning 20 april 2026 (Mål av Lindholm och Stenlund!)",
       "source": "youtube",
-      "channel": "Zone31",
-      "publishedAt": "2 hours ago"
+      "channel": "Svenska NHL poäng",
+      "publishedAt": "13 hours ago"
     },
-    "fetchedAt": "2026-04-19T21:10:28.441Z",
+    "fetchedAt": "2026-04-20T19:44:10.808Z",
     "query": "Boston Bruins highlights April 2026",
     "debug": {
       "searchQuery": "Boston Bruins highlights April 2026",
-      "selectedVideoTitle": "🔴 Los Angeles Kings vs Colorado Avalanche | Game 1 - 19th April 2026 | Full Match NHL 26 Simulation",
-      "selectedVideoPublishedAt": "2 hours ago",
-      "selectedVideoChannel": "Zone31",
+      "selectedVideoTitle": "Svenska poäng inatt – Sammanfattning 20 april 2026 (Mål av Lindholm och Stenlund!)",
+      "selectedVideoPublishedAt": "13 hours ago",
+      "selectedVideoChannel": "Svenska NHL poäng",
       "rejectedForAgeCount": 0
     }
   },
@@ -816,14 +816,22 @@
     }
   },
   "playoff_push:anaheim ducks playoff push april 2026": {
-    "video": null,
-    "fetchedAt": "2026-04-19T21:10:29.575Z",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=cBFlY4QErbE",
+      "thumbnailUrl": "https://img.youtube.com/vi/cBFlY4QErbE/hqdefault.jpg",
+      "durationSeconds": 8120,
+      "title": "1 hospitalized in northeast Edmonton apartment fire | CTV Your Morning Edmonton for April 20, 2026",
+      "source": "youtube",
+      "channel": "CTV News",
+      "publishedAt": "1 hour ago"
+    },
+    "fetchedAt": "2026-04-20T19:44:11.650Z",
     "query": "Anaheim Ducks playoff push April 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push April 2026",
-      "selectedVideoTitle": null,
-      "selectedVideoPublishedAt": null,
-      "selectedVideoChannel": null,
+      "selectedVideoTitle": "1 hospitalized in northeast Edmonton apartment fire | CTV Your Morning Edmonton for April 20, 2026",
+      "selectedVideoPublishedAt": "1 hour ago",
+      "selectedVideoChannel": "CTV News",
       "rejectedForAgeCount": 0
     }
   },
@@ -917,21 +925,21 @@
   },
   "league_moment:rivalry weekend sports april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=pBJdwgQBUGY",
-      "thumbnailUrl": "https://img.youtube.com/vi/pBJdwgQBUGY/hqdefault.jpg",
-      "durationSeconds": 680,
-      "title": "NHL Playoff Highlights | Flyers vs. Penguins | Round 1 Gm 1 | April 18, 2026",
+      "url": "https://www.youtube.com/watch?v=vVwUgqvlqAM",
+      "thumbnailUrl": "https://img.youtube.com/vi/vVwUgqvlqAM/hqdefault.jpg",
+      "durationSeconds": 315,
+      "title": "MLB Highlights | Tigers vs. Red Sox - April 19, 2026",
       "source": "youtube",
-      "channel": "NHL",
-      "publishedAt": "17 hours ago"
+      "channel": "MLB x SPORTSNET",
+      "publishedAt": "20 hours ago"
     },
-    "fetchedAt": "2026-04-19T21:10:30.892Z",
+    "fetchedAt": "2026-04-20T19:44:12.810Z",
     "query": "Rivalry Weekend sports April 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports April 2026",
-      "selectedVideoTitle": "NHL Playoff Highlights | Flyers vs. Penguins | Round 1 Gm 1 | April 18, 2026",
-      "selectedVideoPublishedAt": "17 hours ago",
-      "selectedVideoChannel": "NHL",
+      "selectedVideoTitle": "MLB Highlights | Tigers vs. Red Sox - April 19, 2026",
+      "selectedVideoPublishedAt": "20 hours ago",
+      "selectedVideoChannel": "MLB x SPORTSNET",
       "rejectedForAgeCount": 0
     }
   },
@@ -1024,6 +1032,18 @@
       "selectedVideoTitle": "Manchester city vs Arsenal 2-1 Highlights & Goals •  rayan cherki & Erling Haaland Goals ⚽⚽",
       "selectedVideoPublishedAt": "3 hours ago",
       "selectedVideoChannel": "Footballia",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:gaubas clinch playoff berth april 2026": {
+    "video": null,
+    "fetchedAt": "2026-04-20T19:44:11.354Z",
+    "query": "Gaubas clinch playoff berth April 2026",
+    "debug": {
+      "searchQuery": "Gaubas clinch playoff berth April 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   }

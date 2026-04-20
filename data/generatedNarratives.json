@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "2026-04-20T02:33:46.319Z",
+  "lastUpdated": "2026-04-20T19:44:03.183Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "momentum": {
         "NewEngland": 1
       },
       "league_moment": {
-        "Other": 1
+        "Other": 2
       },
       "rivalry_game": {
         "Other": 1
@@ -30,8 +30,16 @@
         "league_moment: Rivalry Weekend"
       ]
     },
-    "droppedCandidatesReasons": [],
-    "totalBeforeCap": 5,
+    "droppedCandidatesReasons": [
+      {
+        "id": "league_moment_tournament",
+        "kind": "league_moment",
+        "region": "Other",
+        "title": "Big Stage",
+        "reason": "max 1 league_moment per region (Other)"
+      }
+    ],
+    "totalBeforeCap": 6,
     "totalAfterCap": 5,
     "playerMovement": {
       "rawMovementCandidates": 0,
@@ -65,19 +73,19 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 527,
+        "playersIngested": 529,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-20T02:33:46.319Z"
+        "timestamp": "2026-04-20T19:44:03.183Z"
       },
       "cacheHistoryCount": 877,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 5,
+    "candidateCountBeforeCap": 6,
     "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1038.5628663888888,
+      "hoursUntil": -1055.7342175,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -93,7 +101,7 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 1,
+      "rawClinchCandidates": 12,
       "clinchAfterRegionFilter": 1,
       "clinchFinalCount": 1,
       "clinchGatedOut": [
@@ -116,11 +124,6 @@
           "reason": "2 followed/affiliate teams playing tonight"
         },
         {
-          "label": "[clinch_watch] Playoff Stakes",
-          "score": 190,
-          "reason": "clinch_watch involving followed team(s): Boston Bruins"
-        },
-        {
           "label": "[playoff_push] Your Team's Push",
           "score": 170,
           "reason": "playoff_push involving followed team(s): Anaheim Ducks"
@@ -131,9 +134,19 @@
           "reason": "momentum involving followed team(s): Boston Bruins"
         },
         {
+          "label": "[clinch_watch] Playoff Stakes",
+          "score": 110,
+          "reason": "clinch_watch (generic, no followed teams)"
+        },
+        {
           "label": "[rivalry_game] Rivalry Night",
           "score": 60,
           "reason": "rivalry_game (generic, no followed teams)"
+        },
+        {
+          "label": "[league_moment] League Spotlight",
+          "score": 50,
+          "reason": "league_moment (generic, no followed teams)"
         },
         {
           "label": "[league_moment] League Spotlight",
@@ -145,37 +158,37 @@
     "videoSelection": {
       "momentum_bos": {
         "searchQuery": "Boston Bruins highlights April 2026",
-        "selectedVideoTitle": "🔴 Los Angeles Kings vs Colorado Avalanche | Game 1 - 19th April 2026 | Full Match NHL 26 Simulation",
-        "selectedVideoPublishedAt": "2 hours ago",
-        "selectedVideoChannel": "Zone31",
+        "selectedVideoTitle": "Svenska poäng inatt – Sammanfattning 20 april 2026 (Mål av Lindholm och Stenlund!)",
+        "selectedVideoPublishedAt": "13 hours ago",
+        "selectedVideoChannel": "Svenska NHL poäng",
         "rejectedForAgeCount": 0
       },
       "rivalry_game_nhl_2025030142": {
         "searchQuery": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights",
-        "selectedVideoTitle": "GAME NIGHT: STATEMENT win for Wild, Canes/Anderson SHUTOUT Sens, Flyers take Round 1 in the 'Burgh",
-        "selectedVideoPublishedAt": "20 hours ago",
-        "selectedVideoChannel": "Locked On NHL",
+        "selectedVideoTitle": "Penguins Fall Behind Flyers After Stumbling in Playoff Opener",
+        "selectedVideoPublishedAt": "22 hours ago",
+        "selectedVideoChannel": "SportsNet Pittsburgh",
         "rejectedForAgeCount": 0
       },
-      "clinch_watch_nhl_2025030112": {
-        "searchQuery": "Boston Bruins clinch playoff berth April 2026",
-        "selectedVideoTitle": "Good Morning America Full Broadcast - Sunday, April 19, 2026",
-        "selectedVideoPublishedAt": "3 hours ago",
-        "selectedVideoChannel": "ABC News",
-        "rejectedForAgeCount": 0
-      },
-      "playoff_push_clinch_fallback_nhl_2025030181": {
-        "searchQuery": "Anaheim Ducks playoff push April 2026",
+      "clinch_watch_tennis-espn-176741": {
+        "searchQuery": "Gaubas clinch playoff berth April 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
+      "playoff_push_clinch_fallback_nhl_2025030181": {
+        "searchQuery": "Anaheim Ducks playoff push April 2026",
+        "selectedVideoTitle": "1 hospitalized in northeast Edmonton apartment fire | CTV Your Morning Edmonton for April 20, 2026",
+        "selectedVideoPublishedAt": "1 hour ago",
+        "selectedVideoChannel": "CTV News",
+        "rejectedForAgeCount": 0
+      },
       "league_moment_rivalry": {
         "searchQuery": "Rivalry Weekend sports April 2026",
-        "selectedVideoTitle": "NHL Playoff Highlights | Flyers vs. Penguins | Round 1 Gm 1 | April 18, 2026",
-        "selectedVideoPublishedAt": "17 hours ago",
-        "selectedVideoChannel": "NHL",
+        "selectedVideoTitle": "MLB Highlights | Tigers vs. Red Sox - April 19, 2026",
+        "selectedVideoPublishedAt": "20 hours ago",
+        "selectedVideoChannel": "MLB x SPORTSNET",
         "rejectedForAgeCount": 0
       }
     }
@@ -190,8 +203,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-04-20T02:33:46.319Z",
-      "expiresAt": "2026-04-23T02:33:46.319Z",
+      "triggeredAt": "2026-04-20T19:44:03.183Z",
+      "expiresAt": "2026-04-23T19:44:03.183Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -234,13 +247,13 @@
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=HVHXCdpqXOk",
-        "thumbnailUrl": "https://img.youtube.com/vi/HVHXCdpqXOk/hqdefault.jpg",
-        "durationSeconds": 6598,
-        "title": "🔴 Los Angeles Kings vs Colorado Avalanche | Game 1 - 19th April 2026 | Full Match NHL 26 Simulation",
+        "url": "https://www.youtube.com/watch?v=gdzXJV8htcI",
+        "thumbnailUrl": "https://img.youtube.com/vi/gdzXJV8htcI/hqdefault.jpg",
+        "durationSeconds": 64,
+        "title": "Svenska poäng inatt – Sammanfattning 20 april 2026 (Mål av Lindholm och Stenlund!)",
         "source": "youtube",
-        "channel": "Zone31",
-        "publishedAt": "2 hours ago"
+        "channel": "Svenska NHL poäng",
+        "publishedAt": "13 hours ago"
       }
     },
     {
@@ -252,7 +265,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-04-20T02:33:46.319Z",
+      "triggeredAt": "2026-04-20T19:44:03.183Z",
       "expiresAt": "2026-04-21T03:00:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
@@ -274,55 +287,46 @@
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=k5niQMVddO0",
-        "thumbnailUrl": "https://img.youtube.com/vi/k5niQMVddO0/hqdefault.jpg",
-        "durationSeconds": 1836,
-        "title": "GAME NIGHT: STATEMENT win for Wild, Canes/Anderson SHUTOUT Sens, Flyers take Round 1 in the 'Burgh",
+        "url": "https://www.youtube.com/watch?v=I1y6ooLE3AM",
+        "thumbnailUrl": "https://img.youtube.com/vi/I1y6ooLE3AM/hqdefault.jpg",
+        "durationSeconds": 1767,
+        "title": "Penguins Fall Behind Flyers After Stumbling in Playoff Opener",
         "source": "youtube",
-        "channel": "Locked On NHL",
-        "publishedAt": "20 hours ago"
+        "channel": "SportsNet Pittsburgh",
+        "publishedAt": "22 hours ago"
       }
     },
     {
-      "id": "clinch_watch_nhl_2025030112",
+      "id": "clinch_watch_tennis-espn-176741",
       "title": "Clinch Watch",
-      "subtitle": "Can secure wild card spot with a win in the next 48h",
+      "subtitle": "Gaubas vs Sakamoto · Tennis title on the line",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-04-20T02:33:46.319Z",
-      "expiresAt": "2026-04-22T03:30:00.000Z",
+      "triggeredAt": "2026-04-20T19:44:03.183Z",
+      "expiresAt": "2026-04-21T13:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "source": "team_config",
-        "conditionLabel": "Can secure wild card spot with a win",
-        "sport": "hockey",
-        "league": "NHL",
-        "awayTeam": "Boston Bruins",
-        "homeTeam": "Buffalo Sabres",
-        "startTime": "2026-04-21T23:30:00.000Z",
+        "source": "tournament",
+        "conditionLabel": "Tennis title on the line",
+        "sport": "tennis",
+        "league": "ATP Masters 1000",
+        "awayTeam": "Gaubas",
+        "homeTeam": "Sakamoto",
+        "startTime": "2026-04-21T09:00:00.000Z",
         "eventIds": [
-          "nhl_2025030112"
+          "tennis-espn-176741"
         ],
-        "reason": "Buffalo Sabres have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
+        "reason": "Gaubas and Sakamoto meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
       },
       "sports": [
-        "hockey"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=YYxZ854dC4g",
-        "thumbnailUrl": "https://img.youtube.com/vi/YYxZ854dC4g/hqdefault.jpg",
-        "durationSeconds": 2046,
-        "title": "Good Morning America Full Broadcast - Sunday, April 19, 2026",
-        "source": "youtube",
-        "channel": "ABC News",
-        "publishedAt": "3 hours ago"
-      }
+        "tennis"
+      ]
     },
     {
       "id": "playoff_push_clinch_fallback_nhl_2025030181",
@@ -333,7 +337,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-04-20T02:33:46.319Z",
+      "triggeredAt": "2026-04-20T19:44:03.183Z",
       "expiresAt": "2026-04-21T06:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -354,26 +358,35 @@
       },
       "sports": [
         "hockey"
-      ]
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=cBFlY4QErbE",
+        "thumbnailUrl": "https://img.youtube.com/vi/cBFlY4QErbE/hqdefault.jpg",
+        "durationSeconds": 8120,
+        "title": "1 hospitalized in northeast Edmonton apartment fire | CTV Your Morning Edmonton for April 20, 2026",
+        "source": "youtube",
+        "channel": "CTV News",
+        "publishedAt": "1 hour ago"
+      }
     },
     {
       "id": "league_moment_rivalry",
       "title": "Rivalry Weekend",
-      "subtitle": "10 rivalry matchups in the next 7 days",
+      "subtitle": "11 rivalry matchups in the next 7 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-20T02:33:46.319Z",
-      "expiresAt": "2026-04-27T02:33:46.319Z",
+      "triggeredAt": "2026-04-20T19:44:03.183Z",
+      "expiresAt": "2026-04-27T19:44:03.183Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "rivalry",
-        "matchCount": 10,
+        "matchCount": 11,
         "rivalries": [
           "Keystone State Rivalry",
           "The Greatest Rivalry",
@@ -449,6 +462,13 @@
             "home": "Philadelphia Flyers",
             "league": "NHL",
             "startTime": "2026-04-26T00:00:00.000Z"
+          },
+          {
+            "label": "Keystone State Rivalry",
+            "away": "Philadelphia Flyers",
+            "home": "Pittsburgh Penguins",
+            "league": "NHL",
+            "startTime": "2026-04-27T16:00:00.000Z"
           }
         ],
         "eventIds": [
@@ -461,22 +481,23 @@
           "baseball-mlb-20260423-0145-los-angeles-dodgers-at-san-francisco-giants",
           "baseball-mlb-20260423-0145-los-angeles-dodgers-at-san-francisco-giants",
           "baseball-mlb-20260423-2210-new-york-yankees-at-boston-red-sox",
-          "nhl_2025030144"
+          "nhl_2025030144",
+          "nhl_2025030145"
         ],
-        "reason": "10 known rivalry matchup(s) found: Keystone State Rivalry, The Greatest Rivalry, The Classic Rivalry"
+        "reason": "11 known rivalry matchup(s) found: Keystone State Rivalry, The Greatest Rivalry, The Classic Rivalry"
       },
       "sports": [
         "hockey",
         "baseball"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=pBJdwgQBUGY",
-        "thumbnailUrl": "https://img.youtube.com/vi/pBJdwgQBUGY/hqdefault.jpg",
-        "durationSeconds": 680,
-        "title": "NHL Playoff Highlights | Flyers vs. Penguins | Round 1 Gm 1 | April 18, 2026",
+        "url": "https://www.youtube.com/watch?v=vVwUgqvlqAM",
+        "thumbnailUrl": "https://img.youtube.com/vi/vVwUgqvlqAM/hqdefault.jpg",
+        "durationSeconds": 315,
+        "title": "MLB Highlights | Tigers vs. Red Sox - April 19, 2026",
         "source": "youtube",
-        "channel": "NHL",
-        "publishedAt": "17 hours ago"
+        "channel": "MLB x SPORTSNET",
+        "publishedAt": "20 hours ago"
       }
     }
   ],
@@ -501,33 +522,6 @@
       "monthLabel": "April 2026",
       "monthKey": "2026-04",
       "leagues": [
-        {
-          "sport": "soccer",
-          "displayName": "Serie A",
-          "leagueKey": "seriea",
-          "dateRangeLabel": "Apr 6–27",
-          "startDate": "2026-04-06T10:30:00.000Z",
-          "endDate": "2026-04-27T18:45:00.000Z",
-          "eventCount": 34
-        },
-        {
-          "sport": "cricket",
-          "displayName": "IPL",
-          "leagueKey": "ipl",
-          "dateRangeLabel": "Apr 6–30",
-          "startDate": "2026-04-06T14:00:00.000Z",
-          "endDate": "2026-04-30T14:00:00.000Z",
-          "eventCount": 37
-        },
-        {
-          "sport": "soccer",
-          "displayName": "La Liga",
-          "leagueKey": "laliga",
-          "dateRangeLabel": "Apr 6–27",
-          "startDate": "2026-04-06T19:00:00.000Z",
-          "endDate": "2026-04-27T19:00:00.000Z",
-          "eventCount": 31
-        },
         {
           "sport": "baseball",
           "displayName": "MLB",
@@ -554,6 +548,15 @@
           "startDate": "2026-04-06T23:00:00.000Z",
           "endDate": "2026-04-30T04:00:00.000Z",
           "eventCount": 108
+        },
+        {
+          "sport": "cricket",
+          "displayName": "IPL",
+          "leagueKey": "ipl",
+          "dateRangeLabel": "Apr 7–30",
+          "startDate": "2026-04-07T14:00:00.000Z",
+          "endDate": "2026-04-30T14:00:00.000Z",
+          "eventCount": 36
         },
         {
           "sport": "soccer",
@@ -646,6 +649,15 @@
           "eventCount": 27
         },
         {
+          "sport": "soccer",
+          "displayName": "Serie A",
+          "leagueKey": "seriea",
+          "dateRangeLabel": "Apr 10–27",
+          "startDate": "2026-04-10T18:45:00.000Z",
+          "endDate": "2026-04-27T18:45:00.000Z",
+          "eventCount": 30
+        },
+        {
           "sport": "rugby",
           "displayName": "Champions Cup",
           "leagueKey": "championscup",
@@ -662,6 +674,15 @@
           "startDate": "2026-04-10T19:00:00.000Z",
           "endDate": "2026-04-27T19:00:00.000Z",
           "eventCount": 35
+        },
+        {
+          "sport": "soccer",
+          "displayName": "La Liga",
+          "leagueKey": "laliga",
+          "dateRangeLabel": "Apr 10–27",
+          "startDate": "2026-04-10T19:00:00.000Z",
+          "endDate": "2026-04-27T19:00:00.000Z",
+          "eventCount": 30
         },
         {
           "sport": "soccer",
@@ -763,6 +784,15 @@
           "eventCount": 1
         },
         {
+          "sport": "tennis",
+          "displayName": "Madrid",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "Apr 20–22",
+          "startDate": "2026-04-20T14:15:00.000Z",
+          "endDate": "2026-04-22T04:00:00.000Z",
+          "eventCount": 17
+        },
+        {
           "sport": "soccer",
           "displayName": "NWSL",
           "leagueKey": "nwsl",
@@ -835,19 +865,19 @@
           "sport": "cricket",
           "displayName": "IPL",
           "leagueKey": "ipl",
-          "dateRangeLabel": "May 1–10",
+          "dateRangeLabel": "May 1–11",
           "startDate": "2026-05-01T14:00:00.000Z",
-          "endDate": "2026-05-10T14:00:00.000Z",
-          "eventCount": 12
+          "endDate": "2026-05-11T14:00:00.000Z",
+          "eventCount": 13
         },
         {
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "May 1–2",
+          "dateRangeLabel": "May 1–3",
           "startDate": "2026-05-01T16:00:00.000Z",
-          "endDate": "2026-05-02T16:00:00.000Z",
-          "eventCount": 8
+          "endDate": "2026-05-03T16:00:00.000Z",
+          "eventCount": 12
         },
         {
           "sport": "racing",
@@ -871,27 +901,27 @@
           "sport": "soccer",
           "displayName": "Ligue 1",
           "leagueKey": "ligue1",
-          "dateRangeLabel": "May 1–9",
+          "dateRangeLabel": "May 1–10",
           "startDate": "2026-05-01T18:45:00.000Z",
-          "endDate": "2026-05-09T19:00:00.000Z",
+          "endDate": "2026-05-10T19:00:00.000Z",
           "eventCount": 18
         },
         {
           "sport": "soccer",
           "displayName": "EPL",
           "leagueKey": "epl",
-          "dateRangeLabel": "May 1–10",
+          "dateRangeLabel": "May 1–11",
           "startDate": "2026-05-01T19:00:00.000Z",
-          "endDate": "2026-05-10T15:30:00.000Z",
-          "eventCount": 21
+          "endDate": "2026-05-11T19:00:00.000Z",
+          "eventCount": 22
         },
         {
           "sport": "soccer",
           "displayName": "La Liga",
           "leagueKey": "laliga",
-          "dateRangeLabel": "May 1–10",
+          "dateRangeLabel": "May 1–11",
           "startDate": "2026-05-01T19:00:00.000Z",
-          "endDate": "2026-05-10T19:00:00.000Z",
+          "endDate": "2026-05-11T19:00:00.000Z",
           "eventCount": 20
         },
         {
@@ -928,7 +958,7 @@
           "dateRangeLabel": "May 2–11",
           "startDate": "2026-05-02T17:00:00.000Z",
           "endDate": "2026-05-11T01:00:00.000Z",
-          "eventCount": 31
+          "eventCount": 30
         },
         {
           "sport": "horse-racing",
