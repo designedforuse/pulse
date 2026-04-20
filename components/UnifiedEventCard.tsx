@@ -19,7 +19,7 @@ import type { ScoreData, TennisSetScore } from "@/lib/scores-context";
 import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTime, getSvnsTeamFlag, extractSvnsSessionDay, type SvnsMatch } from "@/lib/svns-context";
 
 const MASTERS_LOGO = require("@/assets/images/masters-logo.png");
-const BOSTON_MARATHON_LOGO = require("@/assets/images/boston-marathon-logo.jpeg");
+const BOSTON_MARATHON_LOGO = require("@/assets/images/boston-marathon-logo.png");
 
 const GP_FLAGS: Record<string, string> = {
   "Australian": "🇦🇺",
