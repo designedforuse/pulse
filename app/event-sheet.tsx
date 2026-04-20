@@ -418,7 +418,7 @@ export default function EventSheet() {
               testID="listen-radio-btn"
             >
               <Ionicons name="radio-outline" size={18} color="#818CF8" />
-              <Text style={styles.listenButtonText}>Listen on Radio</Text>
+              <Text style={styles.listenButtonText}>Listen</Text>
             </Pressable>
           ) : null}
           {launchProvider && (
@@ -648,14 +648,17 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   bottomActions: {
+    flexDirection: "row" as const,
+    alignItems: "stretch" as const,
     gap: 10,
   },
   listenButton: {
+    flex: 1,
     flexDirection: "row" as const,
     alignItems: "center" as const,
     justifyContent: "center" as const,
     gap: 8,
-    paddingVertical: 14,
+    paddingVertical: 16,
     borderRadius: 14,
     borderWidth: 1,
     borderColor: "rgba(129,140,248,0.4)",
@@ -668,6 +671,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   openButton: {
+    flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
@@ -677,6 +681,7 @@ const styles = StyleSheet.create({
     borderRadius: 14,
   },
   disabledButton: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 16,
