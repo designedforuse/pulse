@@ -15,7 +15,6 @@ const FEATURED_CRICKET_NATIONS = new Set([
 // Associate teams (their Associate-tour bilaterals are kept).
 const ASSOCIATE_CARVE_OUT_TEAMS = new Set([
   "south africa",
-  "west indies",
 ]);
 
 const ASSOCIATE_TEAM_ALIASES = new Set([
