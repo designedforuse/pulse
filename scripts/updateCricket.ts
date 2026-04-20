@@ -1,21 +1,43 @@
 import * as fs from "fs";
 import * as path from "path";
 
-// ICC Full Members only. International cricket fixtures must be between two
-// Full Members to appear in the app. Associate nations (Nepal, UAE, Scotland,
-// Netherlands, Namibia, Oman, USA, Canada, PNG, Uganda, etc.) are filtered
-// out — even when playing each other in ICC qualifying competitions like
-// CWC League Two.
+// ICC Full Members. International cricket fixtures default to Full-Member-vs-
+// Full-Member only. Associate nations (Nepal, UAE, Scotland, Netherlands,
+// Namibia, Oman, USA, Canada, PNG, Uganda, etc.) are normally filtered out
+// — even when playing each other in ICC qualifying competitions.
 const FEATURED_CRICKET_NATIONS = new Set([
   "india", "australia", "england", "south africa", "new zealand",
   "pakistan", "sri lanka", "west indies", "bangladesh", "afghanistan",
   "zimbabwe", "ireland",
 ]);
 
+// Carve-out: these Full Members are also allowed to appear in fixtures against
+// Associate teams (their Associate-tour bilaterals are kept).
+const ASSOCIATE_CARVE_OUT_TEAMS = new Set([
+  "south africa",
+  "west indies",
+]);
+
+const ASSOCIATE_TEAM_ALIASES = new Set([
+  "scotland", "netherlands", "nepal", "uae", "united arab emirates",
+  "namibia", "oman", "usa", "united states", "united states of america",
+  "canada", "papua new guinea", "uganda",
+  "hong kong", "singapore", "malaysia", "kuwait", "bahrain", "qatar",
+  "jersey", "guernsey", "italy", "germany", "denmark", "kenya",
+  "bermuda", "cayman islands",
+]);
+
 function passesNationFilter(event: { homeTeam: string; awayTeam: string; competitionType?: string; isIccT20Wc?: boolean }): boolean {
   if (event.competitionType !== "international") return true;
   const teams = [event.homeTeam, event.awayTeam].map((t) => t.toLowerCase());
-  return teams.every((t) => FEATURED_CRICKET_NATIONS.has(t));
+  if (teams.every((t) => FEATURED_CRICKET_NATIONS.has(t))) return true;
+  // Carve-out: one team is a carve-out Full Member AND the other is a
+  // recognised Associate (or any other team). We allow a carve-out team to
+  // face anyone — Full Member or Associate.
+  const hasCarveOut = teams.some((t) => ASSOCIATE_CARVE_OUT_TEAMS.has(t));
+  if (!hasCarveOut) return false;
+  const other = teams.find((t) => !ASSOCIATE_CARVE_OUT_TEAMS.has(t)) ?? teams[0];
+  return FEATURED_CRICKET_NATIONS.has(other) || ASSOCIATE_TEAM_ALIASES.has(other);
 }
 
 const CRICAPI_BASE = "https://api.cricapi.com/v1";

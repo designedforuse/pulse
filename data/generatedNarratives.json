@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-20T02:19:17.797Z",
+  "lastUpdated": "2026-04-20T02:33:46.319Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "momentum": {
@@ -65,9 +65,9 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 507,
+        "playersIngested": 527,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-20T02:19:17.797Z"
+        "timestamp": "2026-04-20T02:33:46.319Z"
       },
       "cacheHistoryCount": 877,
       "error": null
@@ -77,7 +77,7 @@
     "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1038.3216102777778,
+      "hoursUntil": -1038.5628663888888,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -190,8 +190,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-04-20T02:19:17.797Z",
-      "expiresAt": "2026-04-23T02:19:17.797Z",
+      "triggeredAt": "2026-04-20T02:33:46.319Z",
+      "expiresAt": "2026-04-23T02:33:46.319Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -200,10 +200,16 @@
         "team": "Boston Bruins",
         "league": "NHL",
         "abbrev": "BOS",
-        "winStreak": 2,
-        "pointStreak": 2,
+        "winStreak": 0,
+        "pointStreak": 0,
         "goalDiff": 4,
         "recentGames": [
+          {
+            "date": "2026-04-19T23:30:00Z",
+            "opponent": "Buffalo",
+            "score": "4-3",
+            "result": "L"
+          },
           {
             "date": "2026-04-14T23:00:00Z",
             "opponent": "New Jersey",
@@ -215,12 +221,6 @@
             "opponent": "Columbus",
             "score": "2-3",
             "result": "W"
-          },
-          {
-            "date": "2026-04-11T16:30:00Z",
-            "opponent": "Tampa Bay",
-            "score": "1-2",
-            "result": "L"
           }
         ],
         "eventIds": [
@@ -252,7 +252,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-04-20T02:19:17.797Z",
+      "triggeredAt": "2026-04-20T02:33:46.319Z",
       "expiresAt": "2026-04-21T03:00:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
@@ -292,7 +292,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-04-20T02:19:17.797Z",
+      "triggeredAt": "2026-04-20T02:33:46.319Z",
       "expiresAt": "2026-04-22T03:30:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -333,7 +333,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-04-20T02:19:17.797Z",
+      "triggeredAt": "2026-04-20T02:33:46.319Z",
       "expiresAt": "2026-04-21T06:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -365,8 +365,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-20T02:19:17.797Z",
-      "expiresAt": "2026-04-27T02:19:17.797Z",
+      "triggeredAt": "2026-04-20T02:33:46.319Z",
+      "expiresAt": "2026-04-27T02:33:46.319Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
