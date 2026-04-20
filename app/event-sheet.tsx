@@ -400,6 +400,24 @@ export default function EventSheet() {
         </View>
 
         <View style={styles.bottomActions}>
+          {launchProvider && (
+            <Pressable
+              onPress={isUpcoming ? undefined : handleOpenProvider}
+              disabled={isUpcoming}
+              style={({ pressed }) => [
+                isUpcoming ? styles.disabledButton : styles.openButton,
+                !isUpcoming && { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] },
+              ]}
+              testID="open-provider-btn"
+            >
+              {!isUpcoming ? (
+                <Ionicons name="play" size={18} color={Colors.textPrimary} />
+              ) : null}
+              <Text style={[styles.openButtonText, isUpcoming && styles.disabledButtonText]}>
+                {isUpcoming ? (startsInLabel ?? "Starting soon") : isLiveState ? "Join Live" : "Watch Now"}
+              </Text>
+            </Pressable>
+          )}
           {isLiveState && (event.homeTeam || event.awayTeam) ? (
             <Pressable
               onPress={() => {
@@ -421,21 +439,6 @@ export default function EventSheet() {
               <Text style={styles.listenButtonText}>Listen</Text>
             </Pressable>
           ) : null}
-          {launchProvider && (
-            <Pressable
-              onPress={isUpcoming ? undefined : handleOpenProvider}
-              disabled={isUpcoming}
-              style={({ pressed }) => [
-                isUpcoming ? styles.disabledButton : styles.openButton,
-                !isUpcoming && { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] },
-              ]}
-              testID="open-provider-btn"
-            >
-              <Text style={[styles.openButtonText, isUpcoming && styles.disabledButtonText]}>
-                {isUpcoming ? (startsInLabel ?? "Starting soon") : isLiveState ? "Join Live" : "Watch Now"}
-              </Text>
-            </Pressable>
-          )}
         </View>
       </View>
     </View>
@@ -654,6 +657,7 @@ const styles = StyleSheet.create({
   },
   listenButton: {
     flex: 1,
+    minWidth: 0,
     flexDirection: "row" as const,
     alignItems: "center" as const,
     justifyContent: "center" as const,
@@ -671,7 +675,8 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   openButton: {
-    flex: 1,
+    flex: 2,
+    minWidth: 0,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
@@ -681,7 +686,8 @@ const styles = StyleSheet.create({
     borderRadius: 14,
   },
   disabledButton: {
-    flex: 1,
+    flex: 2,
+    minWidth: 0,
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 16,
