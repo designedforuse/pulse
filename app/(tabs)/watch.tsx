@@ -256,38 +256,6 @@ function SpikeBorderAccent({ color, secondary }: { color: string; secondary?: bo
   );
 }
 
-function ThumbnailBackground({ videoIds }: { videoIds: string[] }) {
-  const scale = useSharedValue(1);
-
-  useEffect(() => {
-    if (!videoIds.length) return;
-    scale.value = withRepeat(
-      withSequence(
-        withTiming(1.08, { duration: 9000 }),
-        withTiming(1.0, { duration: 9000 })
-      ),
-      -1,
-      false
-    );
-  }, [videoIds[0]]);
-
-  const animStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: scale.value }],
-  }));
-
-  if (!videoIds.length) return null;
-
-  return (
-    <Animated.View style={[StyleSheet.absoluteFill, animStyle]}>
-      <Image
-        source={{ uri: `https://img.youtube.com/vi/${videoIds[0]}/maxresdefault.jpg` }}
-        style={StyleSheet.absoluteFill}
-        resizeMode="cover"
-      />
-    </Animated.View>
-  );
-}
-
 function ChaosCard({
   event,
   isPrimary,
@@ -295,7 +263,6 @@ function ChaosCard({
   score,
   favorites,
   tensionRank = 0,
-  videoIds,
 }: {
   event: SportEvent;
   isPrimary: boolean;
@@ -303,7 +270,6 @@ function ChaosCard({
   score?: ScoreData;
   favorites: Favorites;
   tensionRank?: number;
-  videoIds?: string[];
 }) {
   const { width: screenWidth } = useWindowDimensions();
   const cardWidth = screenWidth - PAGE_PADDING * 2;
@@ -412,13 +378,7 @@ function ChaosCard({
             end={{ x: 1, y: 1 }}
             style={styles.primaryInner}
           >
-            {/* ── Highlights thumbnail background ── */}
-            {!!videoIds?.length && <ThumbnailBackground videoIds={videoIds} />}
-            {!!videoIds?.length && (
-              <View style={[StyleSheet.absoluteFill, styles.videoOverlay]} />
-            )}
-            {/* ─────────────────────────────────── */}
-            {tensionRank >= 4
+{tensionRank >= 4
               ? <SpikeBorderAccent color={tensionAccentColor ?? "rgba(129,140,248,0.25)"} />
               : <View style={[styles.tensionAccent, { backgroundColor: tensionAccentColor ?? "rgba(129,140,248,0.25)" }]} />
             }
@@ -994,8 +954,6 @@ export default function WatchScreen() {
   const [chaosSetup, setChaosSetup] = useState<ChaosSetup | null>(null);
   const chaosRef = useRef<ChaosSetup | null>(null);
   const prevScoresRef = useRef<Record<string, ScoreData>>({});
-  const [chaosVideoIds, setChaosVideoIds] = useState<string[]>([]);
-  const chaosVideoPrimaryIdRef = useRef<string | null>(null);
   const [promotionToast, setPromotionToast] = useState<{ reason: string; scoringTeam?: string; ppStartTeam?: string; ppGoalTeam?: string } | null>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [liveBannerActive, setLiveBannerActive] = useState(false);
@@ -1126,28 +1084,6 @@ export default function WatchScreen() {
       if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
     };
   }, []);
-
-  useEffect(() => {
-    const primary = chaosSetup?.primary;
-    if (!primary) { setChaosVideoIds([]); return; }
-    if (chaosVideoPrimaryIdRef.current === primary.id) return;
-    chaosVideoPrimaryIdRef.current = primary.id;
-    setChaosVideoIds([]);
-    if (Platform.OS === "web") return;
-    const url = new URL("/api/chaos-youtube", getApiUrl());
-    url.searchParams.set("team1", primary.awayTeam || "");
-    if (primary.homeTeam) url.searchParams.set("team2", primary.homeTeam);
-    if (primary.league) url.searchParams.set("league", primary.league);
-    if (primary.sport) url.searchParams.set("sport", primary.sport);
-    fetch(url.toString())
-      .then((r) => r.json())
-      .then((data: { videoIds?: string[] }) => {
-        if (chaosVideoPrimaryIdRef.current === primary.id) {
-          setChaosVideoIds(data.videoIds || []);
-        }
-      })
-      .catch(() => {});
-  }, [chaosSetup?.primary?.id]);
 
   const handleRebuild = useCallback(() => {
     if (Platform.OS !== "web") {
@@ -1597,7 +1533,6 @@ export default function WatchScreen() {
               score={getScore(chaosSetup.primary!.id)}
               favorites={favorites}
               tensionRank={chaosSetup.debug?.selectedRanks?.find(r => r.id === chaosSetup.primary!.id)?.tension ?? 0}
-              videoIds={chaosVideoIds}
             />
 
             {chaosSetup.secondary.length > 0 && (
@@ -2013,9 +1948,6 @@ const styles = StyleSheet.create({
     borderRadius: 17,
     overflow: "hidden" as const,
     justifyContent: "space-between" as const,
-  },
-  videoOverlay: {
-    backgroundColor: "rgba(0,0,0,0.62)",
   },
   tensionAccent: {
     position: "absolute" as const,
