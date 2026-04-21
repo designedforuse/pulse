@@ -83,8 +83,6 @@ export function tagEntries(results: DailyWrapEntry[], favorites: Favorites) {
   return [...favs, ...others];
 }
 
-const PREVIEW_COUNT = 5;
-
 export default function DailyWrapCard() {
   const { favorites } = useFavorites();
   const router = useRouter();
@@ -102,14 +100,12 @@ export default function DailyWrapCard() {
     refetchInterval: 10 * 60 * 1000,
   });
 
-  const { headline, secondary, favCount, total } = useMemo(() => {
-    if (!data?.results?.length) return { headline: null, secondary: [], favCount: 0, total: 0 };
+  const { headline, favCount, total } = useMemo(() => {
+    if (!data?.results?.length) return { headline: null, favCount: 0, total: 0 };
     const ordered = tagEntries(data.results, favorites);
     const favs = ordered.filter((r) => r.isFav);
-    const [head, ...rest] = ordered;
     return {
-      headline: head ?? null,
-      secondary: rest.slice(0, PREVIEW_COUNT),
+      headline: ordered[0] ?? null,
       favCount: favs.length,
       total: data.results.length,
     };
@@ -160,33 +156,16 @@ export default function DailyWrapCard() {
             </View>
           )}
 
-          {/* Secondary results (capped at PREVIEW_COUNT) */}
-          {secondary.length > 0 && (
-            <View style={styles.secondaryList}>
-              {secondary.map((entry, idx) => (
-                <View
-                  key={entry.eventId}
-                  style={[styles.secondaryRow, idx === secondary.length - 1 && styles.secondaryRowLast]}
-                >
-                  <Text style={styles.secondaryEmoji}>{getSportEmoji(entry.sport)}</Text>
-                  <View style={styles.secondaryBody}>
-                    <Text style={styles.secondaryEditorial}>{entry.editorial}</Text>
-                    <Text style={styles.secondaryDetail}>{entry.detail}</Text>
-                  </View>
-                  {entry.isFav && <Text style={styles.favStar}>⭐</Text>}
-                </View>
-              ))}
+          {/* See all footer */}
+          {total > 1 && (
+            <View style={styles.footer}>
+              <Text style={styles.footerText}>
+                {favCount > 0 ? `${favCount} from your teams · ` : ""}
+                See all {total} results
+              </Text>
+              <Ionicons name="chevron-forward" size={13} color={PINK} />
             </View>
           )}
-
-          {/* See all footer */}
-          <View style={styles.footer}>
-            <Text style={styles.footerText}>
-              {favCount > 0 ? `${favCount} from your teams · ` : ""}
-              See all {total} results
-            </Text>
-            <Ionicons name="chevron-forward" size={13} color={PINK} />
-          </View>
         </>
       )}
     </Pressable>
