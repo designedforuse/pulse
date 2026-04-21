@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import { computeSeasonPhase, getChampionshipFinalsForMonth } from "../data/seasonPhases";
 
 const EVENTS_PATH = path.resolve(__dirname, "..", "data", "generatedEvents.json");
 const NARRATIVES_PATH = path.resolve(__dirname, "..", "data", "generatedNarratives.json");
@@ -298,12 +299,22 @@ export interface MonthSnapshotLeague {
   startDate: string;
   endDate: string;
   eventCount: number;
+  seasonPhase?: string | null;
+}
+
+export interface MonthSnapshotChampionshipFinal {
+  leagueKey: string;
+  sport: string;
+  name: string;
+  date: string;
+  emoji?: string;
 }
 
 export interface MonthSnapshotData {
   monthLabel: string;
   monthKey: string;
   leagues: MonthSnapshotLeague[];
+  championshipFinals?: MonthSnapshotChampionshipFinal[];
 }
 
 export interface MonthSnapshot {
@@ -2886,11 +2897,19 @@ function buildMonthData(events: AppEvent[], monthStart: Date): MonthSnapshotData
       startDate: first.startTimeLocal,
       endDate: last.startTimeLocal,
       eventCount: group.events.length,
+      seasonPhase: computeSeasonPhase(group.leagueKey, first.startTimeLocal, last.startTimeLocal),
     });
   }
 
   leagues.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
-  return { monthLabel, monthKey, leagues };
+  const championshipFinals = getChampionshipFinalsForMonth(monthKey).map(f => ({
+    leagueKey: f.leagueKey,
+    sport: f.sport,
+    name: f.name,
+    date: f.date,
+    emoji: f.emoji,
+  }));
+  return { monthLabel, monthKey, leagues, championshipFinals };
 }
 
 export function generateMonthSnapshot(events: AppEvent[], now: Date): MonthSnapshot {

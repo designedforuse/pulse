@@ -36,12 +36,42 @@ interface MonthSnapshotLeague {
   startDate: string;
   endDate: string;
   eventCount: number;
+  seasonPhase?: string | null;
+}
+
+interface MonthSnapshotChampionshipFinal {
+  leagueKey: string;
+  sport: string;
+  name: string;
+  date: string;
+  emoji?: string;
 }
 
 interface MonthSnapshotData {
   monthLabel: string;
   monthKey: string;
   leagues: MonthSnapshotLeague[];
+  championshipFinals?: MonthSnapshotChampionshipFinal[];
+}
+
+const PHASE_CHIP_STYLES: Record<string, { bg: string; border: string; fg: string }> = {
+  Final: { bg: "rgba(245,158,11,0.15)", border: "rgba(245,158,11,0.45)", fg: "#F59E0B" },
+  Playoffs: { bg: "rgba(239,68,68,0.13)", border: "rgba(239,68,68,0.40)", fg: "#F87171" },
+  Knockout: { bg: "rgba(168,85,247,0.13)", border: "rgba(168,85,247,0.40)", fg: "#C084FC" },
+  Championship: { bg: "rgba(245,158,11,0.15)", border: "rgba(245,158,11,0.45)", fg: "#F59E0B" },
+  Group: { bg: "rgba(56,189,248,0.13)", border: "rgba(56,189,248,0.38)", fg: "#7DD3FC" },
+  Tournament: { bg: "rgba(56,189,248,0.13)", border: "rgba(56,189,248,0.38)", fg: "#7DD3FC" },
+  Regular: { bg: "rgba(148,163,184,0.13)", border: "rgba(148,163,184,0.32)", fg: "#94A3B8" },
+};
+
+function getPhaseChipStyle(phase: string | null | undefined) {
+  if (!phase) return PHASE_CHIP_STYLES.Regular;
+  return PHASE_CHIP_STYLES[phase] || PHASE_CHIP_STYLES.Regular;
+}
+
+function formatFinalDate(iso: string): string {
+  const d = new Date(iso + "T12:00:00");
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
 function groupBySport(leagues: MonthSnapshotLeague[]): { sport: string; leagues: MonthSnapshotLeague[] }[] {
@@ -113,6 +143,25 @@ export default function MonthScheduleScreen() {
       >
         <Text style={styles.totalLabel}>{monthData.leagues.length} leagues & tournaments</Text>
 
+        {!!monthData.championshipFinals?.length && (
+          <View style={styles.finalsCallout}>
+            <View style={styles.finalsCalloutHeader}>
+              <Text style={styles.finalsCalloutTrophy}>🏆</Text>
+              <Text style={styles.finalsCalloutTitle}>CHAMPIONSHIP FINALS</Text>
+            </View>
+            {monthData.championshipFinals.map((f, i) => (
+              <View
+                key={`${f.leagueKey}-${i}`}
+                style={[styles.finalsRow, i > 0 && styles.finalsRowBorder]}
+              >
+                <Text style={styles.finalsEmoji}>{SPORT_EMOJI[f.sport] ?? "🏆"}</Text>
+                <Text style={styles.finalsName} numberOfLines={1}>{f.name}</Text>
+                <Text style={styles.finalsDate}>{formatFinalDate(f.date)}</Text>
+              </View>
+            ))}
+          </View>
+        )}
+
         {grouped.map(({ sport, leagues }) => (
           <View key={sport} style={styles.sportSection}>
             <View style={styles.sportHeader}>
@@ -122,15 +171,27 @@ export default function MonthScheduleScreen() {
               </Text>
             </View>
             <View style={styles.leagueCard}>
-              {leagues.map((league, idx) => (
-                <View
-                  key={`${league.leagueKey}-${idx}`}
-                  style={[styles.leagueRow, idx > 0 && styles.leagueRowBorder]}
-                >
-                  <Text style={styles.leagueName} numberOfLines={1}>{league.displayName}</Text>
-                  <Text style={styles.leagueDateRange}>{league.dateRangeLabel}</Text>
-                </View>
-              ))}
+              {leagues.map((league, idx) => {
+                const phaseStyle = getPhaseChipStyle(league.seasonPhase);
+                return (
+                  <View
+                    key={`${league.leagueKey}-${idx}`}
+                    style={[styles.leagueRow, idx > 0 && styles.leagueRowBorder]}
+                  >
+                    <View style={styles.leagueNameWrap}>
+                      <Text style={styles.leagueName} numberOfLines={1}>{league.displayName}</Text>
+                      {league.seasonPhase && (
+                        <View style={[styles.phaseChip, { backgroundColor: phaseStyle.bg, borderColor: phaseStyle.border }]}>
+                          <Text style={[styles.phaseChipText, { color: phaseStyle.fg }]}>
+                            {league.seasonPhase.toUpperCase()}
+                          </Text>
+                        </View>
+                      )}
+                    </View>
+                    <Text style={styles.leagueDateRange}>{league.dateRangeLabel}</Text>
+                  </View>
+                );
+              })}
             </View>
           </View>
         ))}
@@ -232,12 +293,81 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: Colors.border,
   },
-  leagueName: {
+  leagueNameWrap: {
     flex: 1,
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 8,
+    marginRight: 12,
+  },
+  leagueName: {
+    flexShrink: 1,
     fontSize: 14,
     fontFamily: "Inter_600SemiBold",
     color: Colors.textPrimary,
-    marginRight: 12,
+  },
+  phaseChip: {
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+    borderRadius: 6,
+    borderWidth: 1,
+  },
+  phaseChipText: {
+    fontSize: 9.5,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.6,
+  },
+  finalsCallout: {
+    backgroundColor: "rgba(245,158,11,0.07)",
+    borderWidth: 1,
+    borderColor: "rgba(245,158,11,0.32)",
+    borderRadius: 14,
+    overflow: "hidden" as const,
+    marginBottom: 4,
+  },
+  finalsCalloutHeader: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 7,
+    paddingHorizontal: 14,
+    paddingTop: 11,
+    paddingBottom: 7,
+  },
+  finalsCalloutTrophy: {
+    fontSize: 14,
+  },
+  finalsCalloutTitle: {
+    fontSize: 11,
+    fontFamily: "Inter_700Bold",
+    color: "#F59E0B",
+    letterSpacing: 0.8,
+  },
+  finalsRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    paddingHorizontal: 14,
+    paddingVertical: 11,
+    gap: 10,
+  },
+  finalsRowBorder: {
+    borderTopWidth: 1,
+    borderTopColor: "rgba(245,158,11,0.18)",
+  },
+  finalsEmoji: {
+    fontSize: 15,
+    width: 20,
+    textAlign: "center" as const,
+  },
+  finalsName: {
+    flex: 1,
+    fontSize: 13.5,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+  },
+  finalsDate: {
+    fontSize: 13,
+    fontFamily: "Inter_700Bold",
+    color: "#F59E0B",
   },
   leagueDateRange: {
     fontSize: 13,

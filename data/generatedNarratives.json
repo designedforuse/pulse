@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "2026-04-20T20:01:45.889Z",
+  "lastUpdated": "2026-04-21T13:52:53.184Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "momentum": {
         "NewEngland": 1
       },
       "league_moment": {
-        "Other": 2
+        "Other": 1
       },
       "rivalry_game": {
         "Other": 1
@@ -30,16 +30,8 @@
         "league_moment: Rivalry Weekend"
       ]
     },
-    "droppedCandidatesReasons": [
-      {
-        "id": "league_moment_tournament",
-        "kind": "league_moment",
-        "region": "Other",
-        "title": "Big Stage",
-        "reason": "max 1 league_moment per region (Other)"
-      }
-    ],
-    "totalBeforeCap": 6,
+    "droppedCandidatesReasons": [],
+    "totalBeforeCap": 5,
     "totalAfterCap": 5,
     "playerMovement": {
       "rawMovementCandidates": 0,
@@ -73,24 +65,24 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 529,
+        "playersIngested": 530,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-20T20:01:45.889Z"
+        "timestamp": "2026-04-21T13:52:53.184Z"
       },
       "cacheHistoryCount": 877,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 6,
+    "candidateCountBeforeCap": 5,
     "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1056.029413611111,
+      "hoursUntil": -1073.88144,
       "teamsEvaluated": 0,
       "triggers": {}
     },
     "rivalryGame": {
-      "rawRivalryCandidates": 1,
+      "rawRivalryCandidates": 2,
       "rivalryAfterRegionFilter": 1,
       "rivalryFinalCount": 1
     },
@@ -101,7 +93,7 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 12,
+      "rawClinchCandidates": 1,
       "clinchAfterRegionFilter": 1,
       "clinchFinalCount": 1,
       "clinchGatedOut": [
@@ -110,18 +102,23 @@
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "rugby-mlr-20260420-0000-seattle-seawolves-at-california-legion",
+    "tonightStorySourceEvent": "baseball-mlb-20260421-0040-los-angeles-dodgers-at-colorado-rockies",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 240,
-      "sourceEventId": "rugby-mlr-20260420-0000-seattle-seawolves-at-california-legion",
-      "reason": "2 followed/affiliate teams playing tonight",
+      "selectedScore": 300,
+      "sourceEventId": "baseball-mlb-20260421-0040-los-angeles-dodgers-at-colorado-rockies",
+      "reason": "5 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 240,
-          "reason": "2 followed/affiliate teams playing tonight"
+          "score": 300,
+          "reason": "5 followed/affiliate teams playing tonight"
+        },
+        {
+          "label": "[clinch_watch] Playoff Stakes",
+          "score": 190,
+          "reason": "clinch_watch involving followed team(s): Boston Bruins"
         },
         {
           "label": "[playoff_push] Your Team's Push",
@@ -134,19 +131,9 @@
           "reason": "momentum involving followed team(s): Boston Bruins"
         },
         {
-          "label": "[clinch_watch] Playoff Stakes",
-          "score": 110,
-          "reason": "clinch_watch (generic, no followed teams)"
-        },
-        {
-          "label": "[rivalry_game] Rivalry Night",
-          "score": 60,
-          "reason": "rivalry_game (generic, no followed teams)"
-        },
-        {
-          "label": "[league_moment] League Spotlight",
-          "score": 50,
-          "reason": "league_moment (generic, no followed teams)"
+          "label": "[rivalry_game] Your Rivalry Night",
+          "score": 140,
+          "reason": "rivalry_game involving followed team(s): Boston Red Sox"
         },
         {
           "label": "[league_moment] League Spotlight",
@@ -158,36 +145,36 @@
     "videoSelection": {
       "momentum_bos": {
         "searchQuery": "Boston Bruins highlights April 2026",
-        "selectedVideoTitle": "Svenska poäng inatt – Sammanfattning 20 april 2026 (Mål av Lindholm och Stenlund!)",
-        "selectedVideoPublishedAt": "13 hours ago",
-        "selectedVideoChannel": "Svenska NHL poäng",
+        "selectedVideoTitle": "Wild vs. Stars | NHL Playoff Highlights | Game 2 | April 20, 2026",
+        "selectedVideoPublishedAt": "8 hours ago",
+        "selectedVideoChannel": "NHL",
         "rejectedForAgeCount": 0
       },
-      "rivalry_game_nhl_2025030142": {
-        "searchQuery": "Philadelphia Flyers vs Pittsburgh Penguins rivalry highlights",
-        "selectedVideoTitle": "Penguins Fall Behind Flyers After Stumbling in Playoff Opener",
-        "selectedVideoPublishedAt": "22 hours ago",
-        "selectedVideoChannel": "SportsNet Pittsburgh",
+      "rivalry_game_baseball-mlb-20260421-2245-new-york-yankees-at-boston-red-sox": {
+        "searchQuery": "New York Yankees vs Boston Red Sox rivalry highlights",
+        "selectedVideoTitle": "New York Yankees up-close - Yankees steal 2nd and 3rd base, 2nd inning, April 16, 2026",
+        "selectedVideoPublishedAt": "10 hours ago",
+        "selectedVideoChannel": "pwnycny",
         "rejectedForAgeCount": 0
       },
-      "clinch_watch_tennis-espn-176741": {
-        "searchQuery": "Gaubas clinch playoff berth April 2026",
+      "clinch_watch_nhl_2025030112": {
+        "searchQuery": "Boston Bruins clinch playoff berth April 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
-      "playoff_push_clinch_fallback_nhl_2025030181": {
+      "playoff_push_clinch_fallback_nhl_2025030182": {
         "searchQuery": "Anaheim Ducks playoff push April 2026",
-        "selectedVideoTitle": "1 hospitalized in northeast Edmonton apartment fire | CTV Your Morning Edmonton for April 20, 2026",
-        "selectedVideoPublishedAt": "1 hour ago",
-        "selectedVideoChannel": "CTV News",
+        "selectedVideoTitle": "Ducks vs. Oilers | NHL Playoff Highlights | Game 1 | April 20, 2026",
+        "selectedVideoPublishedAt": "8 hours ago",
+        "selectedVideoChannel": "NHL",
         "rejectedForAgeCount": 0
       },
       "league_moment_rivalry": {
         "searchQuery": "Rivalry Weekend sports April 2026",
-        "selectedVideoTitle": "MLB Highlights | Tigers vs. Red Sox - April 19, 2026",
-        "selectedVideoPublishedAt": "20 hours ago",
+        "selectedVideoTitle": "MLB Highlights | Tigers vs. Red Sox - April 20, 2026",
+        "selectedVideoPublishedAt": "19 hours ago",
         "selectedVideoChannel": "MLB x SPORTSNET",
         "rejectedForAgeCount": 0
       }
@@ -203,8 +190,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-04-20T20:01:45.889Z",
-      "expiresAt": "2026-04-23T20:01:45.889Z",
+      "triggeredAt": "2026-04-21T13:52:53.184Z",
+      "expiresAt": "2026-04-24T13:52:53.184Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -247,89 +234,89 @@
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=gdzXJV8htcI",
-        "thumbnailUrl": "https://img.youtube.com/vi/gdzXJV8htcI/hqdefault.jpg",
-        "durationSeconds": 64,
-        "title": "Svenska poäng inatt – Sammanfattning 20 april 2026 (Mål av Lindholm och Stenlund!)",
+        "url": "https://www.youtube.com/watch?v=ceBfX0Gb_MQ",
+        "thumbnailUrl": "https://img.youtube.com/vi/ceBfX0Gb_MQ/hqdefault.jpg",
+        "durationSeconds": 685,
+        "title": "Wild vs. Stars | NHL Playoff Highlights | Game 2 | April 20, 2026",
         "source": "youtube",
-        "channel": "Svenska NHL poäng",
-        "publishedAt": "13 hours ago"
+        "channel": "NHL",
+        "publishedAt": "8 hours ago"
       }
     },
     {
-      "id": "rivalry_game_nhl_2025030142",
+      "id": "rivalry_game_baseball-mlb-20260421-2245-new-york-yankees-at-boston-red-sox",
       "title": "Rivalry Game Tonight",
-      "subtitle": "Philadelphia Flyers vs Pittsburgh Penguins · Tonight at 11:00 PM",
+      "subtitle": "New York Yankees vs Boston Red Sox · Tonight at 10:45 PM",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-04-20T20:01:45.889Z",
-      "expiresAt": "2026-04-21T03:00:00.000Z",
+      "triggeredAt": "2026-04-21T13:52:53.184Z",
+      "expiresAt": "2026-04-22T02:45:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "rivalryLabel": "Keystone State Rivalry",
-        "sport": "hockey",
-        "league": "NHL",
-        "awayTeam": "Philadelphia Flyers",
-        "homeTeam": "Pittsburgh Penguins",
-        "startTime": "2026-04-20T23:00:00.000Z",
+        "rivalryLabel": "The Greatest Rivalry",
+        "sport": "baseball",
+        "league": "MLB",
+        "awayTeam": "New York Yankees",
+        "homeTeam": "Boston Red Sox",
+        "startTime": "2026-04-21T22:45:00.000Z",
         "eventIds": [
-          "nhl_2025030142"
+          "baseball-mlb-20260421-2245-new-york-yankees-at-boston-red-sox"
         ],
-        "reason": "Philadelphia Flyers and Pittsburgh Penguins meet tonight in one of hockey's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
+        "reason": "New York Yankees and Boston Red Sox meet tonight in one of baseball's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
       },
       "sports": [
-        "hockey"
+        "baseball"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=I1y6ooLE3AM",
-        "thumbnailUrl": "https://img.youtube.com/vi/I1y6ooLE3AM/hqdefault.jpg",
-        "durationSeconds": 1767,
-        "title": "Penguins Fall Behind Flyers After Stumbling in Playoff Opener",
+        "url": "https://www.youtube.com/watch?v=a9qDehlZa1E",
+        "thumbnailUrl": "https://img.youtube.com/vi/a9qDehlZa1E/hqdefault.jpg",
+        "durationSeconds": 220,
+        "title": "New York Yankees up-close - Yankees steal 2nd and 3rd base, 2nd inning, April 16, 2026",
         "source": "youtube",
-        "channel": "SportsNet Pittsburgh",
-        "publishedAt": "22 hours ago"
+        "channel": "pwnycny",
+        "publishedAt": "10 hours ago"
       }
     },
     {
-      "id": "clinch_watch_tennis-espn-176741",
+      "id": "clinch_watch_nhl_2025030112",
       "title": "Clinch Watch",
-      "subtitle": "Gaubas vs Sakamoto · Tennis title on the line",
+      "subtitle": "Can secure wild card spot with a win tonight",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-04-20T20:01:45.889Z",
-      "expiresAt": "2026-04-21T13:00:00.000Z",
+      "triggeredAt": "2026-04-21T13:52:53.184Z",
+      "expiresAt": "2026-04-22T03:30:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "source": "tournament",
-        "conditionLabel": "Tennis title on the line",
-        "sport": "tennis",
-        "league": "ATP Masters 1000",
-        "awayTeam": "Gaubas",
-        "homeTeam": "Sakamoto",
-        "startTime": "2026-04-21T09:00:00.000Z",
+        "source": "team_config",
+        "conditionLabel": "Can secure wild card spot with a win",
+        "sport": "hockey",
+        "league": "NHL",
+        "awayTeam": "Boston Bruins",
+        "homeTeam": "Buffalo Sabres",
+        "startTime": "2026-04-21T23:30:00.000Z",
         "eventIds": [
-          "tennis-espn-176741"
+          "nhl_2025030112"
         ],
-        "reason": "Gaubas and Sakamoto meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
+        "reason": "Buffalo Sabres have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
       },
       "sports": [
-        "tennis"
+        "hockey"
       ]
     },
     {
-      "id": "playoff_push_clinch_fallback_nhl_2025030181",
+      "id": "playoff_push_clinch_fallback_nhl_2025030182",
       "title": "Playoff Push",
       "subtitle": "A win keeps Anaheim Ducks in the playoff race.",
       "impact": {
@@ -337,8 +324,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-04-20T20:01:45.889Z",
-      "expiresAt": "2026-04-21T06:00:00.000Z",
+      "triggeredAt": "2026-04-21T13:52:53.184Z",
+      "expiresAt": "2026-04-23T06:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
       "regionPriority": 99,
@@ -351,7 +338,7 @@
           }
         ],
         "eventIds": [
-          "nhl_2025030181"
+          "nhl_2025030182"
         ],
         "reason": "Anaheim Ducks has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
         "clinchFallback": true
@@ -360,46 +347,39 @@
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=cBFlY4QErbE",
-        "thumbnailUrl": "https://img.youtube.com/vi/cBFlY4QErbE/hqdefault.jpg",
-        "durationSeconds": 8120,
-        "title": "1 hospitalized in northeast Edmonton apartment fire | CTV Your Morning Edmonton for April 20, 2026",
+        "url": "https://www.youtube.com/watch?v=ydjF2qy1-YE",
+        "thumbnailUrl": "https://img.youtube.com/vi/ydjF2qy1-YE/hqdefault.jpg",
+        "durationSeconds": 680,
+        "title": "Ducks vs. Oilers | NHL Playoff Highlights | Game 1 | April 20, 2026",
         "source": "youtube",
-        "channel": "CTV News",
-        "publishedAt": "1 hour ago"
+        "channel": "NHL",
+        "publishedAt": "8 hours ago"
       }
     },
     {
       "id": "league_moment_rivalry",
       "title": "Rivalry Weekend",
-      "subtitle": "11 rivalry matchups in the next 7 days",
+      "subtitle": "10 rivalry matchups in the next 7 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-20T20:01:45.889Z",
-      "expiresAt": "2026-04-27T20:01:45.889Z",
+      "triggeredAt": "2026-04-21T13:52:53.184Z",
+      "expiresAt": "2026-04-28T13:52:53.184Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "rivalry",
-        "matchCount": 11,
+        "matchCount": 10,
         "rivalries": [
-          "Keystone State Rivalry",
           "The Greatest Rivalry",
-          "The Classic Rivalry"
+          "The Classic Rivalry",
+          "Keystone State Rivalry"
         ],
         "matches": [
-          {
-            "label": "Keystone State Rivalry",
-            "away": "Philadelphia Flyers",
-            "home": "Pittsburgh Penguins",
-            "league": "NHL",
-            "startTime": "2026-04-20T23:00:00.000Z"
-          },
           {
             "label": "The Greatest Rivalry",
             "away": "New York Yankees",
@@ -472,7 +452,6 @@
           }
         ],
         "eventIds": [
-          "nhl_2025030142",
           "baseball-mlb-20260421-2245-new-york-yankees-at-boston-red-sox",
           "baseball-mlb-20260422-0145-los-angeles-dodgers-at-san-francisco-giants",
           "baseball-mlb-20260422-0145-los-angeles-dodgers-at-san-francisco-giants",
@@ -484,20 +463,20 @@
           "nhl_2025030144",
           "nhl_2025030145"
         ],
-        "reason": "11 known rivalry matchup(s) found: Keystone State Rivalry, The Greatest Rivalry, The Classic Rivalry"
+        "reason": "10 known rivalry matchup(s) found: The Greatest Rivalry, The Classic Rivalry, Keystone State Rivalry"
       },
       "sports": [
-        "hockey",
-        "baseball"
+        "baseball",
+        "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=vVwUgqvlqAM",
-        "thumbnailUrl": "https://img.youtube.com/vi/vVwUgqvlqAM/hqdefault.jpg",
-        "durationSeconds": 315,
-        "title": "MLB Highlights | Tigers vs. Red Sox - April 19, 2026",
+        "url": "https://www.youtube.com/watch?v=0Ddp2cc4_Zk",
+        "thumbnailUrl": "https://img.youtube.com/vi/0Ddp2cc4_Zk/hqdefault.jpg",
+        "durationSeconds": 316,
+        "title": "MLB Highlights | Tigers vs. Red Sox - April 20, 2026",
         "source": "youtube",
         "channel": "MLB x SPORTSNET",
-        "publishedAt": "20 hours ago"
+        "publishedAt": "19 hours ago"
       }
     }
   ],
@@ -505,16 +484,17 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The California Legion and Boston Red Sox all play tonight across the MLR, MLB.",
-    "sourceEventId": "rugby-mlr-20260420-0000-seattle-seawolves-at-california-legion",
+    "body": "The Los Angeles Dodgers, Anaheim Ducks, Boston Red Sox, Boston Celtics, and Boston Bruins all play tonight across the MLB, NHL, NBA.",
+    "sourceEventId": "baseball-mlb-20260421-0040-los-angeles-dodgers-at-colorado-rockies",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
     },
     "sports": [
-      "rugby",
-      "baseball"
+      "baseball",
+      "hockey",
+      "basketball"
     ]
   },
   "monthSnapshot": {
@@ -529,7 +509,8 @@
           "dateRangeLabel": "Apr 6–26",
           "startDate": "2026-04-06T20:10:00.000Z",
           "endDate": "2026-04-26T23:20:00.000Z",
-          "eventCount": 256
+          "eventCount": 256,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "hockey",
@@ -538,7 +519,8 @@
           "dateRangeLabel": "Apr 6–29",
           "startDate": "2026-04-06T23:00:00.000Z",
           "endDate": "2026-04-29T00:00:00.000Z",
-          "eventCount": 112
+          "eventCount": 112,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "basketball",
@@ -547,7 +529,8 @@
           "dateRangeLabel": "Apr 6–30",
           "startDate": "2026-04-06T23:00:00.000Z",
           "endDate": "2026-04-30T04:00:00.000Z",
-          "eventCount": 108
+          "eventCount": 108,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "cricket",
@@ -556,7 +539,8 @@
           "dateRangeLabel": "Apr 7–30",
           "startDate": "2026-04-07T14:00:00.000Z",
           "endDate": "2026-04-30T14:00:00.000Z",
-          "eventCount": 36
+          "eventCount": 36,
+          "seasonPhase": "Group"
         },
         {
           "sport": "soccer",
@@ -565,7 +549,8 @@
           "dateRangeLabel": "Apr 7–29",
           "startDate": "2026-04-07T19:00:00.000Z",
           "endDate": "2026-04-29T19:00:00.000Z",
-          "eventCount": 10
+          "eventCount": 10,
+          "seasonPhase": "Knockout"
         },
         {
           "sport": "soccer",
@@ -574,7 +559,8 @@
           "dateRangeLabel": "Apr 8–30",
           "startDate": "2026-04-08T16:45:00.000Z",
           "endDate": "2026-04-30T19:00:00.000Z",
-          "eventCount": 10
+          "eventCount": 10,
+          "seasonPhase": "Knockout"
         },
         {
           "sport": "hockey",
@@ -583,7 +569,8 @@
           "dateRangeLabel": "Apr 9–18",
           "startDate": "2026-04-09T00:05:00.000Z",
           "endDate": "2026-04-18T23:05:00.000Z",
-          "eventCount": 6
+          "eventCount": 6,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "soccer",
@@ -592,7 +579,8 @@
           "dateRangeLabel": "Apr 9–30",
           "startDate": "2026-04-09T02:00:00.000Z",
           "endDate": "2026-04-30T01:00:00.000Z",
-          "eventCount": 27
+          "eventCount": 27,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "golf",
@@ -601,7 +589,8 @@
           "dateRangeLabel": "Apr 9–12",
           "startDate": "2026-04-09T14:00:00.000Z",
           "endDate": "2026-04-12T14:00:00.000Z",
-          "eventCount": 4
+          "eventCount": 4,
+          "seasonPhase": null
         },
         {
           "sport": "rugby",
@@ -610,7 +599,8 @@
           "dateRangeLabel": "Apr 10–26",
           "startDate": "2026-04-10T07:05:00.000Z",
           "endDate": "2026-04-26T04:30:00.000Z",
-          "eventCount": 15
+          "eventCount": 15,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "racing",
@@ -619,7 +609,8 @@
           "dateRangeLabel": "Apr 10–12",
           "startDate": "2026-04-10T11:30:00.000Z",
           "endDate": "2026-04-12T15:00:00.000Z",
-          "eventCount": 5
+          "eventCount": 5,
+          "seasonPhase": null
         },
         {
           "sport": "soccer",
@@ -628,7 +619,8 @@
           "dateRangeLabel": "Apr 10–26",
           "startDate": "2026-04-10T17:00:00.000Z",
           "endDate": "2026-04-26T18:45:00.000Z",
-          "eventCount": 26
+          "eventCount": 26,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "hockey",
@@ -637,7 +629,8 @@
           "dateRangeLabel": "Apr 10–23",
           "startDate": "2026-04-10T17:00:00.000Z",
           "endDate": "2026-04-23T17:00:00.000Z",
-          "eventCount": 10
+          "eventCount": 10,
+          "seasonPhase": "Final"
         },
         {
           "sport": "soccer",
@@ -646,7 +639,8 @@
           "dateRangeLabel": "Apr 10–26",
           "startDate": "2026-04-10T18:30:00.000Z",
           "endDate": "2026-04-26T15:30:00.000Z",
-          "eventCount": 27
+          "eventCount": 27,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
@@ -655,7 +649,8 @@
           "dateRangeLabel": "Apr 10–27",
           "startDate": "2026-04-10T18:45:00.000Z",
           "endDate": "2026-04-27T18:45:00.000Z",
-          "eventCount": 30
+          "eventCount": 30,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "rugby",
@@ -664,7 +659,8 @@
           "dateRangeLabel": "Apr 10–12",
           "startDate": "2026-04-10T19:00:00.000Z",
           "endDate": "2026-04-12T14:00:00.000Z",
-          "eventCount": 4
+          "eventCount": 4,
+          "seasonPhase": "Knockout"
         },
         {
           "sport": "soccer",
@@ -673,7 +669,8 @@
           "dateRangeLabel": "Apr 10–27",
           "startDate": "2026-04-10T19:00:00.000Z",
           "endDate": "2026-04-27T19:00:00.000Z",
-          "eventCount": 35
+          "eventCount": 35,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
@@ -682,7 +679,8 @@
           "dateRangeLabel": "Apr 10–27",
           "startDate": "2026-04-10T19:00:00.000Z",
           "endDate": "2026-04-27T19:00:00.000Z",
-          "eventCount": 30
+          "eventCount": 30,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
@@ -691,7 +689,8 @@
           "dateRangeLabel": "Apr 11–26",
           "startDate": "2026-04-11T17:00:00.000Z",
           "endDate": "2026-04-26T23:00:00.000Z",
-          "eventCount": 55
+          "eventCount": 55,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
@@ -700,7 +699,8 @@
           "dateRangeLabel": "Apr 11–18",
           "startDate": "2026-04-11T19:00:00.000Z",
           "endDate": "2026-04-18T19:00:00.000Z",
-          "eventCount": 4
+          "eventCount": 4,
+          "seasonPhase": "Knockout"
         },
         {
           "sport": "rugby",
@@ -709,7 +709,8 @@
           "dateRangeLabel": "Apr 11–26",
           "startDate": "2026-04-11T20:00:00.000Z",
           "endDate": "2026-04-26T23:00:00.000Z",
-          "eventCount": 9
+          "eventCount": 9,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "rugby",
@@ -718,7 +719,8 @@
           "dateRangeLabel": "Apr 17–19",
           "startDate": "2026-04-17T02:00:00.000Z",
           "endDate": "2026-04-19T02:00:00.000Z",
-          "eventCount": 2
+          "eventCount": 2,
+          "seasonPhase": null
         },
         {
           "sport": "cricket",
@@ -727,7 +729,8 @@
           "dateRangeLabel": "Apr 17",
           "startDate": "2026-04-17T08:15:00.000Z",
           "endDate": "2026-04-17T08:15:00.000Z",
-          "eventCount": 1
+          "eventCount": 1,
+          "seasonPhase": null
         },
         {
           "sport": "rugby",
@@ -736,7 +739,8 @@
           "dateRangeLabel": "Apr 17–26",
           "startDate": "2026-04-17T10:00:00.000Z",
           "endDate": "2026-04-26T05:30:00.000Z",
-          "eventCount": 12
+          "eventCount": 12,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "rugby",
@@ -745,7 +749,8 @@
           "dateRangeLabel": "Apr 17–25",
           "startDate": "2026-04-17T18:45:00.000Z",
           "endDate": "2026-04-25T18:45:00.000Z",
-          "eventCount": 16
+          "eventCount": 16,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "rugby",
@@ -754,7 +759,8 @@
           "dateRangeLabel": "Apr 17–26",
           "startDate": "2026-04-17T18:45:00.000Z",
           "endDate": "2026-04-26T14:30:00.000Z",
-          "eventCount": 10
+          "eventCount": 10,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "rugby",
@@ -763,7 +769,8 @@
           "dateRangeLabel": "Apr 18–26",
           "startDate": "2026-04-18T12:30:00.000Z",
           "endDate": "2026-04-26T19:05:00.000Z",
-          "eventCount": 14
+          "eventCount": 14,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "hockey",
@@ -772,7 +779,8 @@
           "dateRangeLabel": "Apr 19–30",
           "startDate": "2026-04-19T19:00:00.000Z",
           "endDate": "2026-04-30T16:00:00.000Z",
-          "eventCount": 41
+          "eventCount": 41,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "athletics",
@@ -781,7 +789,8 @@
           "dateRangeLabel": "Apr 20",
           "startDate": "2026-04-20T14:00:00.000Z",
           "endDate": "2026-04-20T14:00:00.000Z",
-          "eventCount": 1
+          "eventCount": 1,
+          "seasonPhase": null
         },
         {
           "sport": "tennis",
@@ -790,7 +799,8 @@
           "dateRangeLabel": "Apr 20–22",
           "startDate": "2026-04-20T14:15:00.000Z",
           "endDate": "2026-04-22T04:00:00.000Z",
-          "eventCount": 17
+          "eventCount": 17,
+          "seasonPhase": null
         },
         {
           "sport": "soccer",
@@ -799,7 +809,8 @@
           "dateRangeLabel": "Apr 24–30",
           "startDate": "2026-04-24T21:30:00.000Z",
           "endDate": "2026-04-30T02:00:00.000Z",
-          "eventCount": 12
+          "eventCount": 12,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
@@ -808,7 +819,8 @@
           "dateRangeLabel": "Apr 25–26",
           "startDate": "2026-04-25T16:15:00.000Z",
           "endDate": "2026-04-26T14:00:00.000Z",
-          "eventCount": 2
+          "eventCount": 2,
+          "seasonPhase": "Knockout"
         },
         {
           "sport": "athletics",
@@ -817,7 +829,17 @@
           "dateRangeLabel": "Apr 26",
           "startDate": "2026-04-26T08:00:00.000Z",
           "endDate": "2026-04-26T08:00:00.000Z",
-          "eventCount": 1
+          "eventCount": 1,
+          "seasonPhase": null
+        }
+      ],
+      "championshipFinals": [
+        {
+          "leagueKey": "shl",
+          "sport": "hockey",
+          "name": "SHL Le Mat Trophy Final",
+          "date": "2026-04-30",
+          "emoji": "🏆"
         }
       ]
     },
@@ -832,7 +854,8 @@
           "dateRangeLabel": "May 1–9",
           "startDate": "2026-05-01T00:00:00.000Z",
           "endDate": "2026-05-09T21:00:00.000Z",
-          "eventCount": 7
+          "eventCount": 7,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "basketball",
@@ -841,7 +864,8 @@
           "dateRangeLabel": "May 1–3",
           "startDate": "2026-05-01T04:00:00.000Z",
           "endDate": "2026-05-03T04:00:00.000Z",
-          "eventCount": 12
+          "eventCount": 12,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "rugby",
@@ -850,7 +874,8 @@
           "dateRangeLabel": "May 1–9",
           "startDate": "2026-05-01T07:05:00.000Z",
           "endDate": "2026-05-09T09:35:00.000Z",
-          "eventCount": 10
+          "eventCount": 10,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "rugby",
@@ -859,7 +884,8 @@
           "dateRangeLabel": "May 1–10",
           "startDate": "2026-05-01T10:00:00.000Z",
           "endDate": "2026-05-10T05:30:00.000Z",
-          "eventCount": 12
+          "eventCount": 12,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "cricket",
@@ -868,7 +894,8 @@
           "dateRangeLabel": "May 1–11",
           "startDate": "2026-05-01T14:00:00.000Z",
           "endDate": "2026-05-11T14:00:00.000Z",
-          "eventCount": 13
+          "eventCount": 13,
+          "seasonPhase": "Group"
         },
         {
           "sport": "hockey",
@@ -877,7 +904,8 @@
           "dateRangeLabel": "May 1–3",
           "startDate": "2026-05-01T16:00:00.000Z",
           "endDate": "2026-05-03T16:00:00.000Z",
-          "eventCount": 12
+          "eventCount": 12,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "racing",
@@ -886,7 +914,8 @@
           "dateRangeLabel": "May 1–3",
           "startDate": "2026-05-01T16:30:00.000Z",
           "endDate": "2026-05-03T20:00:00.000Z",
-          "eventCount": 5
+          "eventCount": 5,
+          "seasonPhase": null
         },
         {
           "sport": "soccer",
@@ -895,7 +924,8 @@
           "dateRangeLabel": "May 1–10",
           "startDate": "2026-05-01T18:45:00.000Z",
           "endDate": "2026-05-10T18:00:00.000Z",
-          "eventCount": 20
+          "eventCount": 20,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
@@ -904,7 +934,8 @@
           "dateRangeLabel": "May 1–10",
           "startDate": "2026-05-01T18:45:00.000Z",
           "endDate": "2026-05-10T19:00:00.000Z",
-          "eventCount": 18
+          "eventCount": 18,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
@@ -913,7 +944,8 @@
           "dateRangeLabel": "May 1–11",
           "startDate": "2026-05-01T19:00:00.000Z",
           "endDate": "2026-05-11T19:00:00.000Z",
-          "eventCount": 22
+          "eventCount": 22,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
@@ -922,7 +954,8 @@
           "dateRangeLabel": "May 1–11",
           "startDate": "2026-05-01T19:00:00.000Z",
           "endDate": "2026-05-11T19:00:00.000Z",
-          "eventCount": 20
+          "eventCount": 20,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
@@ -931,7 +964,8 @@
           "dateRangeLabel": "May 2–10",
           "startDate": "2026-05-02T00:00:00.000Z",
           "endDate": "2026-05-10T23:00:00.000Z",
-          "eventCount": 17
+          "eventCount": 17,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
@@ -940,7 +974,8 @@
           "dateRangeLabel": "May 2–10",
           "startDate": "2026-05-02T13:30:00.000Z",
           "endDate": "2026-05-10T17:30:00.000Z",
-          "eventCount": 18
+          "eventCount": 18,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "rugby",
@@ -949,7 +984,8 @@
           "dateRangeLabel": "May 2",
           "startDate": "2026-05-02T14:00:00.000Z",
           "endDate": "2026-05-02T14:00:00.000Z",
-          "eventCount": 1
+          "eventCount": 1,
+          "seasonPhase": "Knockout"
         },
         {
           "sport": "soccer",
@@ -958,7 +994,8 @@
           "dateRangeLabel": "May 2–11",
           "startDate": "2026-05-02T17:00:00.000Z",
           "endDate": "2026-05-11T01:00:00.000Z",
-          "eventCount": 30
+          "eventCount": 30,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "horse-racing",
@@ -967,7 +1004,8 @@
           "dateRangeLabel": "May 2–16",
           "startDate": "2026-05-02T18:30:00.000Z",
           "endDate": "2026-05-16T18:30:00.000Z",
-          "eventCount": 2
+          "eventCount": 2,
+          "seasonPhase": null
         },
         {
           "sport": "soccer",
@@ -976,7 +1014,8 @@
           "dateRangeLabel": "May 2–10",
           "startDate": "2026-05-02T21:00:00.000Z",
           "endDate": "2026-05-10T02:00:00.000Z",
-          "eventCount": 23
+          "eventCount": 23,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "rugby",
@@ -985,7 +1024,8 @@
           "dateRangeLabel": "May 3–4",
           "startDate": "2026-05-03T20:00:00.000Z",
           "endDate": "2026-05-04T00:00:00.000Z",
-          "eventCount": 2
+          "eventCount": 2,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
@@ -994,7 +1034,8 @@
           "dateRangeLabel": "May 5–6",
           "startDate": "2026-05-05T19:00:00.000Z",
           "endDate": "2026-05-06T19:00:00.000Z",
-          "eventCount": 2
+          "eventCount": 2,
+          "seasonPhase": "Knockout"
         },
         {
           "sport": "soccer",
@@ -1003,7 +1044,8 @@
           "dateRangeLabel": "May 7",
           "startDate": "2026-05-07T19:00:00.000Z",
           "endDate": "2026-05-07T19:00:00.000Z",
-          "eventCount": 2
+          "eventCount": 2,
+          "seasonPhase": "Knockout"
         },
         {
           "sport": "cricket",
@@ -1012,7 +1054,8 @@
           "dateRangeLabel": "May 8",
           "startDate": "2026-05-08T03:30:00.000Z",
           "endDate": "2026-05-08T03:30:00.000Z",
-          "eventCount": 1
+          "eventCount": 1,
+          "seasonPhase": null
         },
         {
           "sport": "cycling",
@@ -1021,7 +1064,8 @@
           "dateRangeLabel": "May 8",
           "startDate": "2026-05-08T12:00:00.000Z",
           "endDate": "2026-05-08T12:00:00.000Z",
-          "eventCount": 1
+          "eventCount": 1,
+          "seasonPhase": null
         },
         {
           "sport": "athletics",
@@ -1030,7 +1074,8 @@
           "dateRangeLabel": "May 8",
           "startDate": "2026-05-08T16:00:00.000Z",
           "endDate": "2026-05-08T16:00:00.000Z",
-          "eventCount": 1
+          "eventCount": 1,
+          "seasonPhase": null
         },
         {
           "sport": "rugby",
@@ -1039,7 +1084,8 @@
           "dateRangeLabel": "May 8–9",
           "startDate": "2026-05-08T18:45:00.000Z",
           "endDate": "2026-05-09T18:45:00.000Z",
-          "eventCount": 8
+          "eventCount": 8,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "rugby",
@@ -1048,7 +1094,8 @@
           "dateRangeLabel": "May 8–10",
           "startDate": "2026-05-08T18:45:00.000Z",
           "endDate": "2026-05-10T14:30:00.000Z",
-          "eventCount": 5
+          "eventCount": 5,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "rugby",
@@ -1057,7 +1104,8 @@
           "dateRangeLabel": "May 9",
           "startDate": "2026-05-09T14:00:00.000Z",
           "endDate": "2026-05-09T14:00:00.000Z",
-          "eventCount": 7
+          "eventCount": 7,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "golf",
@@ -1066,7 +1114,8 @@
           "dateRangeLabel": "May 14–17",
           "startDate": "2026-05-14T14:00:00.000Z",
           "endDate": "2026-05-17T14:00:00.000Z",
-          "eventCount": 4
+          "eventCount": 4,
+          "seasonPhase": null
         },
         {
           "sport": "soccer",
@@ -1075,7 +1124,8 @@
           "dateRangeLabel": "May 15–24",
           "startDate": "2026-05-15T18:00:00.000Z",
           "endDate": "2026-05-24T18:00:00.000Z",
-          "eventCount": 2
+          "eventCount": 2,
+          "seasonPhase": "Knockout"
         },
         {
           "sport": "athletics",
@@ -1084,7 +1134,8 @@
           "dateRangeLabel": "May 16",
           "startDate": "2026-05-16T12:00:00.000Z",
           "endDate": "2026-05-16T12:00:00.000Z",
-          "eventCount": 1
+          "eventCount": 1,
+          "seasonPhase": null
         },
         {
           "sport": "racing",
@@ -1093,7 +1144,8 @@
           "dateRangeLabel": "May 22–24",
           "startDate": "2026-05-22T16:30:00.000Z",
           "endDate": "2026-05-24T20:00:00.000Z",
-          "eventCount": 5
+          "eventCount": 5,
+          "seasonPhase": null
         },
         {
           "sport": "athletics",
@@ -1102,7 +1154,8 @@
           "dateRangeLabel": "May 23",
           "startDate": "2026-05-23T12:00:00.000Z",
           "endDate": "2026-05-23T12:00:00.000Z",
-          "eventCount": 1
+          "eventCount": 1,
+          "seasonPhase": null
         },
         {
           "sport": "athletics",
@@ -1111,7 +1164,8 @@
           "dateRangeLabel": "May 31",
           "startDate": "2026-05-31T18:00:00.000Z",
           "endDate": "2026-05-31T18:00:00.000Z",
-          "eventCount": 1
+          "eventCount": 1,
+          "seasonPhase": null
         },
         {
           "sport": "soccer",
@@ -1120,7 +1174,66 @@
           "dateRangeLabel": "May 31",
           "startDate": "2026-05-31T19:30:00.000Z",
           "endDate": "2026-05-31T19:30:00.000Z",
-          "eventCount": 1
+          "eventCount": 1,
+          "seasonPhase": null
+        }
+      ],
+      "championshipFinals": [
+        {
+          "leagueKey": "championsleague",
+          "sport": "soccer",
+          "name": "Champions League Final",
+          "date": "2026-05-30",
+          "emoji": "🏆"
+        },
+        {
+          "leagueKey": "europaleague",
+          "sport": "soccer",
+          "name": "Europa League Final",
+          "date": "2026-05-27",
+          "emoji": "🏆"
+        },
+        {
+          "leagueKey": "championscup",
+          "sport": "rugby",
+          "name": "Investec Champions Cup Final",
+          "date": "2026-05-23",
+          "emoji": "🏆"
+        },
+        {
+          "leagueKey": "facup",
+          "sport": "soccer",
+          "name": "FA Cup Final",
+          "date": "2026-05-16",
+          "emoji": "🏆"
+        },
+        {
+          "leagueKey": "ipl",
+          "sport": "cricket",
+          "name": "IPL Final",
+          "date": "2026-05-24",
+          "emoji": "🏆"
+        },
+        {
+          "leagueKey": "leagueone",
+          "sport": "rugby",
+          "name": "Japan League One Final",
+          "date": "2026-05-30",
+          "emoji": "🏆"
+        },
+        {
+          "leagueKey": "cafchampionsleague",
+          "sport": "soccer",
+          "name": "CAF Champions League Final",
+          "date": "2026-05-30",
+          "emoji": "🏆"
+        },
+        {
+          "leagueKey": "echl",
+          "sport": "hockey",
+          "name": "ECHL Kelly Cup Final",
+          "date": "2026-05-28",
+          "emoji": "🏆"
         }
       ]
     }
