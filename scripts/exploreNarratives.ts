@@ -2857,6 +2857,21 @@ function getSnapshotDisplayName(events: AppEvent[], sport: string, league: strin
     const city = events[0].sessionTitle.replace(/SVNS\s+/i, "").split(/[–-]/)[0].trim();
     return `SVNS ${city}`;
   }
+  if ((leagueKey === "triple-crown" || leagueKey === "grand-tour") && events.length > 0) {
+    const seen = new Set<string>();
+    const names: string[] = [];
+    for (const ev of events) {
+      const raw = ev.tournamentName || ev.sessionTitle || ev.homeTeam || "";
+      const name = raw.replace(/\s+\d{4}$/, "").trim();
+      if (name && !seen.has(name)) {
+        seen.add(name);
+        names.push(name);
+      }
+    }
+    if (names.length > 0) {
+      return `${league} — ${names.join(", ")}`;
+    }
+  }
   return league;
 }
 
@@ -2902,13 +2917,15 @@ function buildMonthData(events: AppEvent[], monthStart: Date): MonthSnapshotData
   }
 
   leagues.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
-  const championshipFinals = getChampionshipFinalsForMonth(monthKey).map(f => ({
-    leagueKey: f.leagueKey,
-    sport: f.sport,
-    name: f.name,
-    date: f.date,
-    emoji: f.emoji,
-  }));
+  const championshipFinals = getChampionshipFinalsForMonth(monthKey)
+    .map(f => ({
+      leagueKey: f.leagueKey,
+      sport: f.sport,
+      name: f.name,
+      date: f.date,
+      emoji: f.emoji,
+    }))
+    .sort((a, b) => a.date.localeCompare(b.date));
   return { monthLabel, monthKey, leagues, championshipFinals };
 }
 

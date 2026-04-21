@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-21T13:52:53.184Z",
+  "lastUpdated": "2026-04-21T14:43:08.697Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "momentum": {
@@ -67,7 +67,7 @@
         ],
         "playersIngested": 530,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-21T13:52:53.184Z"
+        "timestamp": "2026-04-21T14:43:08.697Z"
       },
       "cacheHistoryCount": 877,
       "error": null
@@ -77,7 +77,7 @@
     "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1073.88144,
+      "hoursUntil": -1074.7190825,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -190,8 +190,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-04-21T13:52:53.184Z",
-      "expiresAt": "2026-04-24T13:52:53.184Z",
+      "triggeredAt": "2026-04-21T14:43:08.697Z",
+      "expiresAt": "2026-04-24T14:43:08.697Z",
       "kind": "momentum",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -252,7 +252,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-04-21T13:52:53.184Z",
+      "triggeredAt": "2026-04-21T14:43:08.697Z",
       "expiresAt": "2026-04-22T02:45:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
@@ -292,7 +292,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-04-21T13:52:53.184Z",
+      "triggeredAt": "2026-04-21T14:43:08.697Z",
       "expiresAt": "2026-04-22T03:30:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -324,7 +324,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-04-21T13:52:53.184Z",
+      "triggeredAt": "2026-04-21T14:43:08.697Z",
       "expiresAt": "2026-04-23T06:00:00.000Z",
       "kind": "playoff_push",
       "region": "Other",
@@ -365,8 +365,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-21T13:52:53.184Z",
-      "expiresAt": "2026-04-28T13:52:53.184Z",
+      "triggeredAt": "2026-04-21T14:43:08.697Z",
+      "expiresAt": "2026-04-28T14:43:08.697Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -999,7 +999,7 @@
         },
         {
           "sport": "horse-racing",
-          "displayName": "Triple Crown",
+          "displayName": "Triple Crown — Kentucky Derby, Preakness Stakes",
           "leagueKey": "triple-crown",
           "dateRangeLabel": "May 2–16",
           "startDate": "2026-05-02T18:30:00.000Z",
@@ -1059,7 +1059,7 @@
         },
         {
           "sport": "cycling",
-          "displayName": "Grand Tour",
+          "displayName": "Grand Tour — Giro d'Italia",
           "leagueKey": "grand-tour",
           "dateRangeLabel": "May 8",
           "startDate": "2026-05-08T12:00:00.000Z",
@@ -1180,17 +1180,10 @@
       ],
       "championshipFinals": [
         {
-          "leagueKey": "championsleague",
+          "leagueKey": "facup",
           "sport": "soccer",
-          "name": "Champions League Final",
-          "date": "2026-05-30",
-          "emoji": "🏆"
-        },
-        {
-          "leagueKey": "europaleague",
-          "sport": "soccer",
-          "name": "Europa League Final",
-          "date": "2026-05-27",
+          "name": "FA Cup Final",
+          "date": "2026-05-16",
           "emoji": "🏆"
         },
         {
@@ -1201,17 +1194,31 @@
           "emoji": "🏆"
         },
         {
-          "leagueKey": "facup",
-          "sport": "soccer",
-          "name": "FA Cup Final",
-          "date": "2026-05-16",
-          "emoji": "🏆"
-        },
-        {
           "leagueKey": "ipl",
           "sport": "cricket",
           "name": "IPL Final",
           "date": "2026-05-24",
+          "emoji": "🏆"
+        },
+        {
+          "leagueKey": "europaleague",
+          "sport": "soccer",
+          "name": "Europa League Final",
+          "date": "2026-05-27",
+          "emoji": "🏆"
+        },
+        {
+          "leagueKey": "echl",
+          "sport": "hockey",
+          "name": "ECHL Kelly Cup Final",
+          "date": "2026-05-28",
+          "emoji": "🏆"
+        },
+        {
+          "leagueKey": "championsleague",
+          "sport": "soccer",
+          "name": "Champions League Final",
+          "date": "2026-05-30",
           "emoji": "🏆"
         },
         {
@@ -1226,13 +1233,6 @@
           "sport": "soccer",
           "name": "CAF Champions League Final",
           "date": "2026-05-30",
-          "emoji": "🏆"
-        },
-        {
-          "leagueKey": "echl",
-          "sport": "hockey",
-          "name": "ECHL Kelly Cup Final",
-          "date": "2026-05-28",
           "emoji": "🏆"
         }
       ]
