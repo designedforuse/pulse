@@ -39,7 +39,7 @@ import {
 import { getApiUrl } from "@/lib/query-client";
 import { getTennisRoundPriority } from "@/data/tennisTopPlayers";
 import { useEvents } from "@/lib/events-context";
-import { useScores, type ScoreData } from "@/lib/scores-context";
+import { useScores, type ScoreData, type SeriesStatus } from "@/lib/scores-context";
 import { useFavorites } from "@/lib/favorites-context";
 import {
   getLiveEventsNow,
@@ -256,6 +256,31 @@ function SpikeBorderAccent({ color, secondary }: { color: string; secondary?: bo
   );
 }
 
+function formatChaosSeriesStatus(ss: SeriesStatus): { label: string; gameLabel: string | null } {
+  const top = ss.topSeedTeamAbbrev;
+  const bottom = ss.bottomSeedTeamAbbrev;
+  const topW = ss.topSeedWins;
+  const botW = ss.bottomSeedWins;
+  const need = ss.neededToWin ?? 4;
+  const gameNum = ss.gameNumberOfSeries;
+  const gameLabel = gameNum ? `Game ${gameNum}` : null;
+
+  let label: string;
+  if (topW === botW) {
+    label = `Series tied ${topW}\u2013${botW}`;
+  } else {
+    const leader = topW > botW ? top : bottom;
+    const hi = Math.max(topW, botW);
+    const lo = Math.min(topW, botW);
+    if (hi >= need) {
+      label = `${leader} wins ${hi}\u2013${lo}`;
+    } else {
+      label = `${leader} leads ${hi}\u2013${lo}`;
+    }
+  }
+  return { label, gameLabel };
+}
+
 function ChaosCard({
   event,
   isPrimary,
@@ -274,6 +299,9 @@ function ChaosCard({
   const { width: screenWidth } = useWindowDimensions();
   const cardWidth = screenWidth - PAGE_PADDING * 2;
   const sportColor = getSportColor(event.sport);
+  const { getSeriesStatus } = useScores();
+  const seriesStatus = event.sport === "hockey" ? getSeriesStatus(event.id) : undefined;
+  const seriesDisplay = seriesStatus ? formatChaosSeriesStatus(seriesStatus) : null;
   const { gameState, displayClockText, displayStatusText } = normalizeGameState(event, score, now);
   const { date, time } = formatEventDate(event.startTimeLocal);
   const hasScore = !!score;
@@ -462,6 +490,19 @@ function ChaosCard({
               </View>
             ) : (
               <View style={styles.primaryTeams}>
+                {seriesDisplay && (
+                  <View style={styles.primarySeriesRow}>
+                    {seriesDisplay.gameLabel && (
+                      <Text style={[styles.primarySeriesGame, { color: sportColor }]}>
+                        {seriesDisplay.gameLabel}
+                      </Text>
+                    )}
+                    {seriesDisplay.gameLabel && (
+                      <Text style={styles.primarySeriesDot}>·</Text>
+                    )}
+                    <Text style={styles.primarySeriesLabel}>{seriesDisplay.label}</Text>
+                  </View>
+                )}
                 <View style={styles.primaryTeamRow}>
                   <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={28} />
                   <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 5 }}>
@@ -1996,6 +2037,28 @@ const styles = StyleSheet.create({
   primaryTeams: {
     gap: 6,
     marginBottom: 14,
+  },
+  primarySeriesRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 6,
+    marginBottom: 2,
+  },
+  primarySeriesGame: {
+    fontSize: 12,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.5,
+    textTransform: "uppercase" as const,
+  },
+  primarySeriesDot: {
+    fontSize: 12,
+    color: Colors.textSecondary,
+  },
+  primarySeriesLabel: {
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+    flexShrink: 1,
   },
   primaryTeamRow: {
     flexDirection: "row",
