@@ -61,8 +61,21 @@ export interface ScoreData {
   marathonRaceStatus?: "active" | "finished";
 }
 
+export interface SeriesStatus {
+  round?: number;
+  seriesAbbrev?: string;
+  seriesTitle?: string;
+  topSeedTeamAbbrev: string;
+  topSeedWins: number;
+  bottomSeedTeamAbbrev: string;
+  bottomSeedWins: number;
+  gameNumberOfSeries?: number;
+  neededToWin?: number;
+}
+
 export interface ScoresResponse {
   scores: Record<string, ScoreData>;
+  seriesStatuses?: Record<string, SeriesStatus>;
   fetchedAt: string;
 }
 
@@ -176,6 +189,61 @@ function loadLiveEventIds(): LiveEventIdBuckets {
   }
 
   return { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba, ncaabBasketball, golf, mlb, marathon };
+}
+
+async function fetchNhlSeriesStatuses(): Promise<Record<string, SeriesStatus>> {
+  const idMap = new Map<number, string>();
+  try {
+    const raw = fs.readFileSync(GENERATED_EVENTS_PATH, "utf-8");
+    const data = JSON.parse(raw);
+    for (const ev of data.events || []) {
+      if (typeof ev.id === "string" && ev.id.startsWith("nhl_")) {
+        const num = parseInt(ev.id.replace("nhl_", ""), 10);
+        if (Number.isFinite(num)) idMap.set(num, ev.id);
+      }
+    }
+  } catch {
+    return {};
+  }
+  if (idMap.size === 0) return {};
+
+  const dates: string[] = [];
+  const start = new Date();
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(start);
+    d.setUTCDate(d.getUTCDate() + i);
+    dates.push(d.toISOString().slice(0, 10));
+  }
+
+  const results: Record<string, SeriesStatus> = {};
+  await Promise.all(dates.map(async (date) => {
+    try {
+      const res = await fetch(`https://api-web.nhle.com/v1/score/${date}`);
+      if (!res.ok) return;
+      const data = await res.json() as any;
+      for (const game of data.games || []) {
+        const ss = game.seriesStatus;
+        if (!ss || !ss.topSeedTeamAbbrev || !ss.bottomSeedTeamAbbrev) continue;
+        const eventId = idMap.get(game.id);
+        if (!eventId) continue;
+        results[eventId] = {
+          round: ss.round,
+          seriesAbbrev: ss.seriesAbbrev,
+          seriesTitle: ss.seriesTitle,
+          topSeedTeamAbbrev: ss.topSeedTeamAbbrev,
+          topSeedWins: ss.topSeedWins ?? 0,
+          bottomSeedTeamAbbrev: ss.bottomSeedTeamAbbrev,
+          bottomSeedWins: ss.bottomSeedWins ?? 0,
+          gameNumberOfSeries: ss.gameNumberOfSeries,
+          neededToWin: ss.neededToWin ?? 4,
+        };
+      }
+    } catch (err) {
+      console.error(`[liveScores] NHL series fetch error ${date}:`, err);
+    }
+  }));
+
+  return results;
 }
 
 async function fetchNhlScores(eventIds: string[]): Promise<Record<string, ScoreData>> {
@@ -2039,8 +2107,9 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
 
   const japanLeagueOne = rugby.get("Japan League One") || [];
   const mlrEvents = rugby.get("MLR") || [];
-  const [nhlScores, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, pulseliveRugbyScores, mlrOfficialScores, jlOneScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores, marathonScores] = await Promise.all([
+  const [nhlScores, nhlSeriesStatuses, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, pulseliveRugbyScores, mlrOfficialScores, jlOneScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores, marathonScores] = await Promise.all([
     fetchNhlScores(nhl),
+    fetchNhlSeriesStatuses(),
     fetchAhlScores(ahl),
     fetchEchlScores(echl),
     fetchNcaaHockeyScores(ncaa),
@@ -2066,6 +2135,7 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
   // because Pulselive's MLR feed lags badly (often shows "U"/0-0 mid-match).
   return {
     scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...pulseliveRugbyScores, ...mlrOfficialScores, ...jlOneScores, ...iplScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores, ...golfScores, ...mlbScores, ...marathonScores },
+    seriesStatuses: { ...nhlSeriesStatuses },
     fetchedAt: new Date().toISOString(),
   };
 }

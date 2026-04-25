@@ -15,7 +15,8 @@ import { useFavorites } from "@/lib/favorites-context";
 import { isTeamFavorite } from "@/utils/favorites";
 import { formatTimeUntilStart } from "@/utils/time";
 import { getTennisRoundShort, getTennisRoundPriority } from "@/data/tennisTopPlayers";
-import type { ScoreData, TennisSetScore } from "@/lib/scores-context";
+import type { ScoreData, TennisSetScore, SeriesStatus } from "@/lib/scores-context";
+import { useScores } from "@/lib/scores-context";
 import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTime, getSvnsTeamFlag, extractSvnsSessionDay, type SvnsMatch } from "@/lib/svns-context";
 
 const MASTERS_LOGO = require("@/assets/images/masters-logo.png");
@@ -197,6 +198,35 @@ function getPhaseChipLabel(event: SportEvent, score: ScoreData | undefined, isLi
 
 function isGreyPhaseChip(event: SportEvent): boolean {
   return !!(event.tennisRound || event.roundLabel);
+}
+
+function formatSeriesStatus(ss: SeriesStatus): { label: string; gameLabel: string | null } {
+  const top = ss.topSeedTeamAbbrev;
+  const bottom = ss.bottomSeedTeamAbbrev;
+  const topW = ss.topSeedWins;
+  const botW = ss.bottomSeedWins;
+  const need = ss.neededToWin ?? 4;
+  const gameNum = ss.gameNumberOfSeries;
+  const gameLabel = gameNum ? `Game ${gameNum}` : null;
+
+  let label: string;
+  if (topW === botW) {
+    if (topW === 0) {
+      label = `Series tied 0–0`;
+    } else {
+      label = `Series tied ${topW}–${botW}`;
+    }
+  } else {
+    const leader = topW > botW ? top : bottom;
+    const hi = Math.max(topW, botW);
+    const lo = Math.min(topW, botW);
+    if (hi >= need) {
+      label = `${leader} wins ${hi}–${lo}`;
+    } else {
+      label = `${leader} leads ${hi}–${lo}`;
+    }
+  }
+  return { label, gameLabel };
 }
 
 function getPhaseChipPriority(event: SportEvent): number {
@@ -706,10 +736,13 @@ export default function UnifiedEventCard({
   espnLayout = false,
 }: UnifiedEventCardProps) {
   const { favorites } = useFavorites();
+  const { getSeriesStatus } = useScores();
   const isFavAway = isTeamFavorite(event.awayTeam, event.sport, favorites);
   const isFavHome = isTeamFavorite(event.homeTeam, event.sport, favorites);
   const sportColor = getSportColor(event.sport);
   const sportIcon = getSportIcon(event.sport) as any;
+  const seriesStatus = event.sport === "hockey" ? getSeriesStatus(event.id) : undefined;
+  const seriesDisplay = seriesStatus ? formatSeriesStatus(seriesStatus) : null;
   const { gameState, displayClockText } = normalizeGameState(event, score, now);
   const isLive = gameState === "LIVE";
   const isFinal = gameState === "FINAL";
@@ -1191,6 +1224,19 @@ export default function UnifiedEventCard({
             </View>
           ) : showTeamLayout ? (
             <>
+              {seriesDisplay && (
+                <View style={uStyles.seriesRow}>
+                  {seriesDisplay.gameLabel && (
+                    <Text style={[uStyles.seriesGameText, { color: sportColor }]}>
+                      {seriesDisplay.gameLabel}
+                    </Text>
+                  )}
+                  {seriesDisplay.gameLabel && (
+                    <Text style={uStyles.seriesDot}>·</Text>
+                  )}
+                  <Text style={uStyles.seriesLabelText}>{seriesDisplay.label}</Text>
+                </View>
+              )}
               <View style={uStyles.teamRow}>
                 {awayFlag ? (
                   <Image source={{ uri: awayFlag }} style={[uStyles.flagIcon, { width: logoSize, height: Math.round(logoSize * 0.7) }]} resizeMode="contain" />
@@ -1461,6 +1507,28 @@ const uStyles = StyleSheet.create({
     flexDirection: "row" as const,
     alignItems: "center" as const,
     gap: 8,
+  },
+  seriesRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 6,
+    marginBottom: 4,
+  },
+  seriesGameText: {
+    fontSize: 11,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.4,
+    textTransform: "uppercase" as const,
+  },
+  seriesDot: {
+    fontSize: 11,
+    color: Colors.textSecondary,
+  },
+  seriesLabelText: {
+    fontSize: 11,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+    flexShrink: 1,
   },
   teamName: {
     fontSize: 16,

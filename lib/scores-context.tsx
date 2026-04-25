@@ -62,14 +62,29 @@ export interface ScoreData {
   marathonRaceStatus?: "active" | "finished";
 }
 
+export interface SeriesStatus {
+  round?: number;
+  seriesAbbrev?: string;
+  seriesTitle?: string;
+  topSeedTeamAbbrev: string;
+  topSeedWins: number;
+  bottomSeedTeamAbbrev: string;
+  bottomSeedWins: number;
+  gameNumberOfSeries?: number;
+  neededToWin?: number;
+}
+
 interface ScoresApiResponse {
   scores: Record<string, ScoreData>;
+  seriesStatuses?: Record<string, SeriesStatus>;
   fetchedAt: string;
 }
 
 interface ScoresContextValue {
   scores: Record<string, ScoreData>;
+  seriesStatuses: Record<string, SeriesStatus>;
   getScore: (eventId: string) => ScoreData | undefined;
+  getSeriesStatus: (eventId: string) => SeriesStatus | undefined;
   isLoading: boolean;
 }
 
@@ -86,12 +101,17 @@ export function ScoresProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo(() => {
     const scores = data?.scores ?? {};
+    const seriesStatuses = data?.seriesStatuses ?? {};
 
     const getScore = (eventId: string): ScoreData | undefined => {
       return scores[eventId];
     };
 
-    return { scores, getScore, isLoading };
+    const getSeriesStatus = (eventId: string): SeriesStatus | undefined => {
+      return seriesStatuses[eventId];
+    };
+
+    return { scores, seriesStatuses, getScore, getSeriesStatus, isLoading };
   }, [data, isLoading]);
 
   return (
