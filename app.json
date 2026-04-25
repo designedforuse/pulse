@@ -15,7 +15,10 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.mastersportsguidealpharelease10.app"
+      "bundleIdentifier": "com.mastersportsguidealpharelease10.app",
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": ["tunein"]
+      }
     },
     "android": {
       "package": "com.mastersportsguidealpharelease10.app",

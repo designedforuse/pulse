@@ -53,6 +53,33 @@ export function getTuneInUrl(teamName: string): string {
 }
 
 /**
+ * Returns both a native-app deep link and a web fallback URL for a team.
+ * Caller should attempt to open `nativeUrl` first (after Linking.canOpenURL
+ * check on the `tunein://` scheme), and fall back to `webUrl` if the
+ * TuneIn app isn't installed or the native URL fails to open.
+ *
+ * Notes on TuneIn deep links:
+ *  - `tunein://opentunein.com/tune.ashx?id=<stationId>` opens the player
+ *    directly on a known station (works for any team in TUNEIN_STATIONS).
+ *  - TuneIn does NOT publicly support a deep-link search for the native
+ *    app, so unmapped teams fall back to the web search URL — on iOS,
+ *    Universal Links will route this into the TuneIn app if installed.
+ */
+export function getTuneInLinks(teamName: string): { nativeUrl: string | null; webUrl: string } {
+  const stationId = TUNEIN_STATIONS[teamName];
+  if (stationId) {
+    return {
+      nativeUrl: `tunein://opentunein.com/tune.ashx?id=${stationId}`,
+      webUrl: `https://tunein.com/radio/station/?stationId=${stationId}`,
+    };
+  }
+  return {
+    nativeUrl: null,
+    webUrl: `https://tunein.com/search/?query=${encodeURIComponent(teamName + " radio")}`,
+  };
+}
+
+/**
  * Returns true if the team has a known dedicated TuneIn station
  * (gives a direct stream rather than a search page).
  */

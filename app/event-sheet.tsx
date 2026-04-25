@@ -31,7 +31,7 @@ import { useScores } from "@/lib/scores-context";
 import { isEventLive, formatTimeSinceStart } from "@/utils/time";
 import { normalizeGameState } from "@/utils/gameState";
 import { displayTeamName, compactTeamName } from "@/utils/teams";
-import { getTuneInUrl } from "@/utils/tuneIn";
+import { getTuneInLinks } from "@/utils/tuneIn";
 
 const MASTERS_LOGO = require("@/assets/images/masters-logo.png");
 
@@ -420,14 +420,25 @@ export default function EventSheet() {
           )}
           {isLiveState && (event.homeTeam || event.awayTeam) ? (
             <Pressable
-              onPress={() => {
+              onPress={async () => {
                 if (Platform.OS !== "web") {
                   Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                 }
                 const team = event.homeTeam || event.awayTeam || event.league || "";
-                Linking.openURL(getTuneInUrl(team)).catch(() => {
+                const { nativeUrl, webUrl } = getTuneInLinks(team);
+                if (nativeUrl && Platform.OS !== "web") {
+                  try {
+                    await Linking.openURL(nativeUrl);
+                    return;
+                  } catch {
+                    // TuneIn app not installed or scheme blocked — fall through to web URL
+                  }
+                }
+                try {
+                  await Linking.openURL(webUrl);
+                } catch {
                   Alert.alert("Unable to open TuneIn", "Please install the TuneIn app or try again.");
-                });
+                }
               }}
               style={({ pressed }) => [
                 styles.listenButton,
