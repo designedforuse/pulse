@@ -917,21 +917,21 @@
   },
   "league_moment:rivalry weekend sports april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=0Ddp2cc4_Zk",
-      "thumbnailUrl": "https://img.youtube.com/vi/0Ddp2cc4_Zk/hqdefault.jpg",
-      "durationSeconds": 316,
-      "title": "MLB Highlights | Tigers vs. Red Sox - April 20, 2026",
+      "url": "https://www.youtube.com/watch?v=NERDHoJxtio",
+      "thumbnailUrl": "https://img.youtube.com/vi/NERDHoJxtio/hqdefault.jpg",
+      "durationSeconds": 589,
+      "title": "Boston Red Sox vs Baltimore Orioles - FULL GAME HIGHLIGHTS 🔥 April 26, 2026 MLB Season",
       "source": "youtube",
-      "channel": "MLB x SPORTSNET",
-      "publishedAt": "19 hours ago"
+      "channel": "House of Highlights",
+      "publishedAt": "1 hour ago"
     },
-    "fetchedAt": "2026-04-21T13:53:02.589Z",
+    "fetchedAt": "2026-04-26T22:14:04.966Z",
     "query": "Rivalry Weekend sports April 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports April 2026",
-      "selectedVideoTitle": "MLB Highlights | Tigers vs. Red Sox - April 20, 2026",
-      "selectedVideoPublishedAt": "19 hours ago",
-      "selectedVideoChannel": "MLB x SPORTSNET",
+      "selectedVideoTitle": "Boston Red Sox vs Baltimore Orioles - FULL GAME HIGHLIGHTS 🔥 April 26, 2026 MLB Season",
+      "selectedVideoPublishedAt": "1 hour ago",
+      "selectedVideoChannel": "House of Highlights",
       "rejectedForAgeCount": 0
     }
   },
@@ -1056,6 +1056,30 @@
       "selectedVideoTitle": "New York Yankees up-close - Yankees steal 2nd and 3rd base, 2nd inning, April 16, 2026",
       "selectedVideoPublishedAt": "10 hours ago",
       "selectedVideoChannel": "pwnycny",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "momentum:anaheim ducks highlights april 2026": {
+    "video": null,
+    "fetchedAt": "2026-04-26T22:14:04.278Z",
+    "query": "Anaheim Ducks highlights April 2026",
+    "debug": {
+      "searchQuery": "Anaheim Ducks highlights April 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:fonseca vs jodar upset highlights april 2026": {
+    "video": null,
+    "fetchedAt": "2026-04-26T22:14:04.526Z",
+    "query": "Fonseca vs Jodar upset highlights April 2026",
+    "debug": {
+      "searchQuery": "Fonseca vs Jodar upset highlights April 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   }

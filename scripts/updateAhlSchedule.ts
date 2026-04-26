@@ -245,6 +245,32 @@ export function mergeAhlEvents(
     }
   }
 
+  // Authoritative-feed pruning: when the upstream HockeyTech feed returned
+  // games, treat its full coverage window (-7d to +21d) as authoritative. Any
+  // cached game in that window NOT present in the fresh feed is treated as
+  // cancelled (e.g. an "if necessary" Game 3 in a best-of-3 playoff series
+  // that ended 2-0 — these get dropped from the upstream feed entirely rather
+  // than appearing as completed). Older past games are outside upstream's
+  // coverage so we leave them alone.
+  const HOCKEYTECH_BACK_DAYS = 7;
+  const HOCKEYTECH_AHEAD_DAYS = 21;
+  const upstreamWindowStart = new Date(now.getTime() - HOCKEYTECH_BACK_DAYS * 86400000);
+  const upstreamWindowEnd = new Date(now.getTime() + HOCKEYTECH_AHEAD_DAYS * 86400000);
+  let cancelledFromUpstream = 0;
+  if (freshAhl.length > 0) {
+    const freshIds = new Set(freshAhl.map((e) => e.id));
+    for (const [id, e] of Array.from(index.entries())) {
+      const start = new Date(e.startTimeLocal);
+      if (start >= upstreamWindowStart && start <= upstreamWindowEnd && !freshIds.has(id)) {
+        index.delete(id);
+        cancelledFromUpstream++;
+      }
+    }
+  }
+  if (cancelledFromUpstream > 0) {
+    console.log(`  AHL: Pruned ${cancelledFromUpstream} upcoming games no longer in upstream feed (likely series ended early).`);
+  }
+
   const RETENTION_PAST_DAYS = 14;
   const RETENTION_FUTURE_DAYS = 21;
   const windowStart = new Date(now.getTime() - RETENTION_PAST_DAYS * 86400000);
@@ -259,7 +285,7 @@ export function mergeAhlEvents(
     }
   }
 
-  const pruned = beforePrune - merged.length;
+  const pruned = beforePrune - merged.length + cancelledFromUpstream;
 
   merged.sort(
     (a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
