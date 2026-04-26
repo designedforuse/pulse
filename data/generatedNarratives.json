@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-26T22:19:32.303Z",
+  "lastUpdated": "2026-04-26T22:20:35.692Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "momentum": {
@@ -59,7 +59,7 @@
         ],
         "playersIngested": 372,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-26T22:19:32.303Z"
+        "timestamp": "2026-04-26T22:20:35.692Z"
       },
       "cacheHistoryCount": 877,
       "error": null
@@ -69,7 +69,7 @@
     "candidateCountAfterCap": 3,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1202.3256397222221,
+      "hoursUntil": -1202.3432477777778,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -161,8 +161,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-04-26T22:19:32.303Z",
-      "expiresAt": "2026-04-29T22:19:32.303Z",
+      "triggeredAt": "2026-04-26T22:20:35.692Z",
+      "expiresAt": "2026-04-29T22:20:35.692Z",
       "kind": "momentum",
       "region": "SoCal",
       "regionPriority": 2,
@@ -215,8 +215,8 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-04-26T22:19:32.303Z",
-      "expiresAt": "2026-04-27T00:19:32.303Z",
+      "triggeredAt": "2026-04-26T22:20:35.692Z",
+      "expiresAt": "2026-04-27T00:20:35.692Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
@@ -250,8 +250,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-26T22:19:32.303Z",
-      "expiresAt": "2026-05-03T22:19:32.303Z",
+      "triggeredAt": "2026-04-26T22:20:35.692Z",
+      "expiresAt": "2026-05-03T22:20:35.692Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -822,7 +822,7 @@
           "dateRangeLabel": "May 2–18",
           "startDate": "2026-05-02T17:00:00.000Z",
           "endDate": "2026-05-18T00:00:00.000Z",
-          "eventCount": 61,
+          "eventCount": 62,
           "seasonPhase": "Regular"
         },
         {

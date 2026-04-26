@@ -577,7 +577,7 @@ async function main() {
         count: echlResult.merged.length,
         lastFetchAt: echlFetchResult.events.length > 0 ? nowIso : (prevMeta?.sources?.echl?.lastFetchAt || nowIso),
         sourceName: echlSourceName,
-        teamFilter: "Tulsa Oilers",
+        teamFilter: "All teams",
       },
       ncaa: {
         count: buResult.merged.length,

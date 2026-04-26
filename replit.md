@@ -40,8 +40,8 @@ The application features a frontend built with Expo Router for file-based naviga
 - **React Query:** Data fetching and caching.
 - **AsyncStorage:** Persistent storage.
 - **NHL Public API (api-web.nhle.com):** NHL schedule data.
-- **HockeyTech API (lscluster.hockeytech.com):** AHL and ECHL schedule data.
-- **API-Hockey (api-sports.io):** ECHL schedule data.
+- **HockeyTech API (lscluster.hockeytech.com):** AHL and ECHL schedule data. Both leagues use authoritative-feed pruning: when the upstream feed returns games, any cached event in its coverage window (AHL -7/+21 days, ECHL -14/+21 days) that's missing from the fresh feed is removed (e.g. "if necessary" Game 3s in best-of-3 series that ended 2-0 are dropped). Empty fresh feed → skip pruning so a temporary upstream hiccup doesn't wipe the cache.
+- **API-Hockey (api-sports.io):** ECHL schedule data (preferred source; falls back to HockeyTech web when blocked by free-plan limits). ECHL coverage is league-wide (all 16+ active teams) — no team-specific filter is applied at fetch time.
 - **Odds API (api.the-odds-api.com):** SHL (Swedish Hockey League) schedule data via `icehockey_sweden_hockey_league`; upcoming events + 3-day scores; all games on FloSports. 14 teams: Brynäs IF, Frölunda HC, Färjestad BK, HV71, Leksands IF, Linköping HC, Luleå HF, Malmö Redhawks, MoDo Hockey, Rögle BK, Skellefteå AIK, Timrå IK, Växjö Lakers, Örebro HK. Retention: 14 days past, 21 days future.
 - **College Hockey News (collegehockeynews.com):** NCAA BU Hockey schedule data (scraped).
 - **rugbyfixture.io (iCal feeds):** URC, Top 14, English Premiership, European Champions Cup Rugby schedules.
