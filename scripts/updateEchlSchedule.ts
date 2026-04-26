@@ -6,7 +6,6 @@ const HOCKEYTECH_BASE = "https://lscluster.hockeytech.com/feed/index.php";
 const HOCKEYTECH_KEY = "2c2b89ea7345cae8";
 const LEAGUE_CACHE_PATH = path.resolve(__dirname, "../data/leagueIds.json");
 const HOCKEY_DURATION_MIN = 165;
-const TULSA_TEAM_NAME = "Tulsa Oilers";
 
 interface AppEvent {
   id: string;
@@ -199,17 +198,8 @@ async function fetchViaHockeyTech(): Promise<AppEvent[]> {
 
     console.log(`  ECHL web: Received ${games.length} total league games`);
 
-    const tulsaGames = games.filter((g: any) =>
-      (g.HomeLongName || "").includes("Tulsa") ||
-      (g.VisitorLongName || "").includes("Tulsa") ||
-      (g.HomeCity || "") === "Tulsa" ||
-      (g.VisitorCity || "") === "Tulsa"
-    );
-
-    console.log(`  ECHL web: ${tulsaGames.length} Tulsa Oilers games found`);
-
     const events: AppEvent[] = [];
-    for (const g of tulsaGames) {
+    for (const g of games) {
       try {
         const iso = g.GameDateISO8601;
         if (!iso) continue;
@@ -291,6 +281,31 @@ export function mergeEchlEvents(
     }
   }
 
+  // Authoritative-feed pruning: when the upstream feed returned games, treat
+  // its full coverage window (-14d to +21d) as authoritative. Any cached
+  // event in that window NOT present in the fresh feed is treated as
+  // cancelled (e.g. an "if necessary" Game N in a playoff series that ended
+  // early). Empty fresh feed → skip pruning so a temporary upstream hiccup
+  // doesn't wipe the cache.
+  const HOCKEYTECH_BACK_DAYS = 14;
+  const HOCKEYTECH_AHEAD_DAYS = 21;
+  const upstreamStart = new Date(now.getTime() - HOCKEYTECH_BACK_DAYS * 86400000);
+  const upstreamEnd = new Date(now.getTime() + HOCKEYTECH_AHEAD_DAYS * 86400000);
+  let cancelledFromUpstream = 0;
+  if (freshEchl.length > 0) {
+    const freshIds = new Set(freshEchl.map((e) => e.id));
+    for (const [id, e] of Array.from(index.entries())) {
+      const start = new Date(e.startTimeLocal);
+      if (start >= upstreamStart && start <= upstreamEnd && !freshIds.has(id)) {
+        index.delete(id);
+        cancelledFromUpstream++;
+      }
+    }
+  }
+  if (cancelledFromUpstream > 0) {
+    console.log(`  ECHL: Pruned ${cancelledFromUpstream} games no longer in upstream feed (likely series ended early or schedule revised).`);
+  }
+
   const RETENTION_PAST_DAYS = 14;
   const RETENTION_FUTURE_DAYS = 21;
   const windowStart = new Date(now.getTime() - RETENTION_PAST_DAYS * 86400000);
@@ -305,7 +320,7 @@ export function mergeEchlEvents(
     }
   }
 
-  const pruned = beforePrune - merged.length;
+  const pruned = beforePrune - merged.length + cancelledFromUpstream;
 
   merged.sort(
     (a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()

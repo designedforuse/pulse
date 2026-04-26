@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-26T22:15:16.138Z",
+  "lastUpdated": "2026-04-26T22:19:32.303Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "momentum": {
@@ -59,7 +59,7 @@
         ],
         "playersIngested": 372,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-04-26T22:15:16.138Z"
+        "timestamp": "2026-04-26T22:19:32.303Z"
       },
       "cacheHistoryCount": 877,
       "error": null
@@ -69,7 +69,7 @@
     "candidateCountAfterCap": 3,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1202.2544827777779,
+      "hoursUntil": -1202.3256397222221,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -161,8 +161,8 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-04-26T22:15:16.138Z",
-      "expiresAt": "2026-04-29T22:15:16.138Z",
+      "triggeredAt": "2026-04-26T22:19:32.303Z",
+      "expiresAt": "2026-04-29T22:19:32.303Z",
       "kind": "momentum",
       "region": "SoCal",
       "regionPriority": 2,
@@ -215,8 +215,8 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-04-26T22:15:16.138Z",
-      "expiresAt": "2026-04-27T00:15:16.138Z",
+      "triggeredAt": "2026-04-26T22:19:32.303Z",
+      "expiresAt": "2026-04-27T00:19:32.303Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
@@ -250,8 +250,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-04-26T22:15:16.138Z",
-      "expiresAt": "2026-05-03T22:15:16.138Z",
+      "triggeredAt": "2026-04-26T22:19:32.303Z",
+      "expiresAt": "2026-05-03T22:19:32.303Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -461,6 +461,16 @@
           "seasonPhase": "Playoffs"
         },
         {
+          "sport": "hockey",
+          "displayName": "ECHL",
+          "leagueKey": "echl",
+          "dateRangeLabel": "Apr 15–30",
+          "startDate": "2026-04-15T23:00:00.000Z",
+          "endDate": "2026-04-30T02:00:00.000Z",
+          "eventCount": 61,
+          "seasonPhase": "Playoffs"
+        },
+        {
           "sport": "soccer",
           "displayName": "Europa League",
           "leagueKey": "europaleague",
@@ -549,16 +559,6 @@
           "endDate": "2026-04-26T18:45:00.000Z",
           "eventCount": 19,
           "seasonPhase": "Regular"
-        },
-        {
-          "sport": "hockey",
-          "displayName": "ECHL",
-          "leagueKey": "echl",
-          "dateRangeLabel": "Apr 18",
-          "startDate": "2026-04-18T00:05:00.000Z",
-          "endDate": "2026-04-18T23:05:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": "Playoffs"
         },
         {
           "sport": "rugby",
@@ -663,6 +663,16 @@
           "startDate": "2026-05-01T00:00:00.000Z",
           "endDate": "2026-05-11T00:05:00.000Z",
           "eventCount": 26,
+          "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "hockey",
+          "displayName": "ECHL",
+          "leagueKey": "echl",
+          "dateRangeLabel": "May 1–7",
+          "startDate": "2026-05-01T00:00:00.000Z",
+          "endDate": "2026-05-07T00:05:00.000Z",
+          "eventCount": 27,
           "seasonPhase": "Playoffs"
         },
         {
@@ -812,7 +822,7 @@
           "dateRangeLabel": "May 2–18",
           "startDate": "2026-05-02T17:00:00.000Z",
           "endDate": "2026-05-18T00:00:00.000Z",
-          "eventCount": 60,
+          "eventCount": 61,
           "seasonPhase": "Regular"
         },
         {
