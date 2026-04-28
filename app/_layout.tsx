@@ -74,6 +74,14 @@ function RootLayoutNav() {
         }}
       />
       <Stack.Screen
+        name="affiliates"
+        options={{
+          headerShown: true,
+          title: "NHL Affiliates",
+          headerBackTitle: "Stories",
+        }}
+      />
+      <Stack.Screen
         name="event-sheet"
         options={{
           presentation: "formSheet",

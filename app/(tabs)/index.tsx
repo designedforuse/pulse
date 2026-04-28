@@ -383,6 +383,24 @@ export default function ExploreScreen() {
           );
         })()}
 
+        <Pressable
+          onPress={() => router.push("/affiliates")}
+          style={({ pressed }) => [
+            styles.affiliatesTile,
+            { transform: [{ scale: pressed ? 0.98 : 1 }] },
+          ]}
+          testID="stories-affiliates-tile"
+        >
+          <View style={styles.affiliatesIconWrap}>
+            <Ionicons name="git-network-outline" size={20} color={Colors.hockey} />
+          </View>
+          <View style={styles.affiliatesTextWrap}>
+            <Text style={styles.affiliatesTitle}>Hockey Family Tree</Text>
+            <Text style={styles.affiliatesSubtitle}>NHL → AHL → ECHL affiliations</Text>
+          </View>
+          <Ionicons name="chevron-forward" size={18} color={Colors.textMuted} />
+        </Pressable>
+
         {isLoading ? (
           <View style={styles.emptyContainer}>
             <ActivityIndicator size="large" color={PINK} />
@@ -484,6 +502,41 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 14,
     color: "rgba(255,255,255,0.75)",
+    fontFamily: "Inter_400Regular",
+  },
+  affiliatesTile: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: Colors.card,
+    borderRadius: 14,
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+    marginBottom: 16,
+    borderLeftWidth: 3,
+    borderLeftColor: Colors.hockey,
+  },
+  affiliatesIconWrap: {
+    width: 36,
+    height: 36,
+    borderRadius: 10,
+    backgroundColor: Colors.hockey + "1F",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 12,
+  },
+  affiliatesTextWrap: {
+    flex: 1,
+  },
+  affiliatesTitle: {
+    fontSize: 15,
+    fontWeight: "700",
+    color: Colors.textPrimary,
+    fontFamily: "Inter_700Bold",
+    marginBottom: 2,
+  },
+  affiliatesSubtitle: {
+    fontSize: 12,
+    color: Colors.textSecondary,
     fontFamily: "Inter_400Regular",
   },
   emptyContainer: {
