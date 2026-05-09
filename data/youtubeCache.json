@@ -809,21 +809,21 @@
   },
   "playoff_push:anaheim ducks playoff push april 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=ydjF2qy1-YE",
-      "thumbnailUrl": "https://img.youtube.com/vi/ydjF2qy1-YE/hqdefault.jpg",
-      "durationSeconds": 680,
-      "title": "Ducks vs. Oilers | NHL Playoff Highlights | Game 1 | April 20, 2026",
+      "url": "https://www.youtube.com/watch?v=-ILqcrwpYDU",
+      "thumbnailUrl": "https://img.youtube.com/vi/-ILqcrwpYDU/hqdefault.jpg",
+      "durationSeconds": 8200,
+      "title": "Illegal dumping video causes outrage | CTV Your Morning Vancouver for April 29, 2026",
       "source": "youtube",
-      "channel": "NHL",
-      "publishedAt": "8 hours ago"
+      "channel": "CTV News",
+      "publishedAt": "1 hour ago"
     },
-    "fetchedAt": "2026-04-21T13:53:01.525Z",
+    "fetchedAt": "2026-04-30T21:05:12.594Z",
     "query": "Anaheim Ducks playoff push April 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push April 2026",
-      "selectedVideoTitle": "Ducks vs. Oilers | NHL Playoff Highlights | Game 1 | April 20, 2026",
-      "selectedVideoPublishedAt": "8 hours ago",
-      "selectedVideoChannel": "NHL",
+      "selectedVideoTitle": "Illegal dumping video causes outrage | CTV Your Morning Vancouver for April 29, 2026",
+      "selectedVideoPublishedAt": "1 hour ago",
+      "selectedVideoChannel": "CTV News",
       "rejectedForAgeCount": 0
     }
   },
@@ -1080,6 +1080,78 @@
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:buffalo sabres clinch playoff berth april 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=cja-PNJzZwk",
+      "thumbnailUrl": "https://img.youtube.com/vi/cja-PNJzZwk/hqdefault.jpg",
+      "durationSeconds": 2728,
+      "title": "Grief after child falls from Sandy Hill high-rise | CTV News Ottawa at Six for April 29, 2026",
+      "source": "youtube",
+      "channel": "CTV News",
+      "publishedAt": "20 hours ago"
+    },
+    "fetchedAt": "2026-04-30T21:05:12.897Z",
+    "query": "Buffalo Sabres clinch playoff berth April 2026",
+    "debug": {
+      "searchQuery": "Buffalo Sabres clinch playoff berth April 2026",
+      "selectedVideoTitle": "Grief after child falls from Sandy Hill high-rise | CTV News Ottawa at Six for April 29, 2026",
+      "selectedVideoPublishedAt": "20 hours ago",
+      "selectedVideoChannel": "CTV News",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:fils clinch playoff berth april 2026": {
+    "video": null,
+    "fetchedAt": "2026-04-30T21:05:13.107Z",
+    "query": "Fils clinch playoff berth April 2026",
+    "debug": {
+      "searchQuery": "Fils clinch playoff berth April 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:miami grand prix sports april 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=YDs_4d1jIrk",
+      "thumbnailUrl": "https://img.youtube.com/vi/YDs_4d1jIrk/hqdefault.jpg",
+      "durationSeconds": 1217,
+      "title": "Inside Cadillac's New Formula 1 Team",
+      "source": "youtube",
+      "channel": "Bloomberg Live",
+      "publishedAt": "41 minutes ago"
+    },
+    "fetchedAt": "2026-04-30T21:05:13.485Z",
+    "query": "Miami Grand Prix sports April 2026",
+    "debug": {
+      "searchQuery": "Miami Grand Prix sports April 2026",
+      "selectedVideoTitle": "Inside Cadillac's New Formula 1 Team",
+      "selectedVideoPublishedAt": "41 minutes ago",
+      "selectedVideoChannel": "Bloomberg Live",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:rivalry weekend sports may 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=84iKz5AJcWw",
+      "thumbnailUrl": "https://img.youtube.com/vi/84iKz5AJcWw/hqdefault.jpg",
+      "durationSeconds": 737,
+      "title": "Wildest Family Feud Moments From This Week 😳",
+      "source": "youtube",
+      "channel": "Family Feud",
+      "publishedAt": "1 hour ago"
+    },
+    "fetchedAt": "2026-05-09T14:43:51.490Z",
+    "query": "Rivalry Weekend sports May 2026",
+    "debug": {
+      "searchQuery": "Rivalry Weekend sports May 2026",
+      "selectedVideoTitle": "Wildest Family Feud Moments From This Week 😳",
+      "selectedVideoPublishedAt": "1 hour ago",
+      "selectedVideoChannel": "Family Feud",
       "rejectedForAgeCount": 0
     }
   }
