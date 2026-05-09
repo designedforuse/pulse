@@ -1547,7 +1547,8 @@ function generateRivalryGame(
     const timeLabel = isTonight ? `Tonight at ${formatRivalryTime(ev.startTimeLocal)}` : `Tomorrow at ${formatRivalryTime(ev.startTimeLocal)}`;
 
     const title = isTonight ? "Rivalry Game Tonight" : "Rivalry Game Tomorrow";
-    const subtitle = `${ev.awayTeam} vs ${ev.homeTeam} · ${timeLabel}`;
+    const matchup = ev.awayTeam ? `${ev.awayTeam} vs ${ev.homeTeam}` : ev.homeTeam;
+    const subtitle = `${matchup} · ${timeLabel}`;
 
     const ritual = findBestRitual([ev]);
     const impact: NarrativeImpact = ritual
@@ -1924,7 +1925,10 @@ interface ClinchCandidate {
 function buildClinchNarrative(c: ClinchCandidate): string {
   if (c.source === "tournament") {
     const sport = c.event.sport;
-    return `${c.event.awayTeam} and ${c.event.homeTeam} meet with a ${sport} title on the line.\n\nThis is the kind of moment entire seasons build toward.`;
+    if (c.event.awayTeam) {
+      return `${c.event.awayTeam} and ${c.event.homeTeam} meet with a ${sport} title on the line.\n\nThis is the kind of moment entire seasons build toward.`;
+    }
+    return `${c.event.homeTeam} — a ${sport} title on the line.\n\nThis is the kind of moment entire seasons build toward.`;
   }
   return `${c.event.homeTeam} have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration.`;
 }
@@ -2110,7 +2114,8 @@ function generateClinchWatch(
 
     let subtitle: string;
     if (c.source === "tournament") {
-      subtitle = `${ev.awayTeam} vs ${ev.homeTeam} · ${c.conditionLabel}`;
+      const matchup = ev.awayTeam ? `${ev.awayTeam} vs ${ev.homeTeam}` : ev.homeTeam;
+      subtitle = `${matchup} · ${c.conditionLabel}`;
     } else {
       const timeLabel = isTonight ? "tonight" : "in the next 48h";
       subtitle = `${c.conditionLabel} ${timeLabel}`;

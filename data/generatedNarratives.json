@@ -1,20 +1,38 @@
 {
-  "lastUpdated": "2026-05-09T14:43:41.331Z",
+  "lastUpdated": "2026-05-09T18:48:45.126Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
+        "Other": 2
+      },
+      "clinch_watch": {
         "Other": 1
+      },
+      "playoff_push": {
+        "SoCal": 1
       }
     },
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
+      "SoCal": [
+        "playoff_push: Playoff Push"
+      ],
       "Other": [
+        "clinch_watch: Clinch Watch",
         "league_moment: Rivalry Weekend"
       ]
     },
-    "droppedCandidatesReasons": [],
-    "totalBeforeCap": 1,
-    "totalAfterCap": 1,
+    "droppedCandidatesReasons": [
+      {
+        "id": "league_moment_tournament",
+        "kind": "league_moment",
+        "region": "Other",
+        "title": "Big Stage",
+        "reason": "max 1 league_moment per region (Other)"
+      }
+    ],
+    "totalBeforeCap": 4,
+    "totalAfterCap": 3,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -49,17 +67,17 @@
         ],
         "playersIngested": 376,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-09T14:43:41.331Z"
+        "timestamp": "2026-05-09T18:48:45.126Z"
       },
       "cacheHistoryCount": 878,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 1,
-    "candidateCountAfterCap": 1,
+    "candidateCountBeforeCap": 4,
+    "candidateCountAfterCap": 3,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1506.7281475,
+      "hoursUntil": -1510.812535,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -75,10 +93,12 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 0,
-      "clinchAfterRegionFilter": 0,
-      "clinchFinalCount": 0,
-      "clinchGatedOut": []
+      "rawClinchCandidates": 2,
+      "clinchAfterRegionFilter": 1,
+      "clinchFinalCount": 1,
+      "clinchGatedOut": [
+        "Anaheim Ducks: 92 pts < 95"
+      ]
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
@@ -86,19 +106,34 @@
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 380,
+      "selectedScore": 400,
       "sourceEventId": "soccer-usl-20260509-0100-orange-county-sc-at-colorado-springs-switchbacks-fc",
-      "reason": "9 followed/affiliate teams playing tonight",
+      "reason": "10 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 380,
-          "reason": "9 followed/affiliate teams playing tonight"
+          "score": 400,
+          "reason": "10 followed/affiliate teams playing tonight"
+        },
+        {
+          "label": "[playoff_push] Your Team's Push",
+          "score": 170,
+          "reason": "playoff_push involving followed team(s): Anaheim Ducks"
         },
         {
           "label": "[ritual_night] Family Game Night",
           "score": 130,
           "reason": "ritual \"Family Game Night\" has 7 followed-team game(s)"
+        },
+        {
+          "label": "[clinch_watch] Playoff Stakes",
+          "score": 110,
+          "reason": "clinch_watch (generic, no followed teams)"
+        },
+        {
+          "label": "[league_moment] League Spotlight",
+          "score": 50,
+          "reason": "league_moment (generic, no followed teams)"
         },
         {
           "label": "[league_moment] League Spotlight",
@@ -108,6 +143,13 @@
       ]
     },
     "videoSelection": {
+      "playoff_push_clinch_fallback_nhl_2025030244": {
+        "searchQuery": "Anaheim Ducks playoff push May 2026",
+        "selectedVideoTitle": "Golden Knights vs. Ducks | NHL Playoff Highlights | Game 3 | May 8, 2026",
+        "selectedVideoPublishedAt": "14h ago",
+        "selectedVideoChannel": "NHL",
+        "rejectedForAgeCount": 0
+      },
       "league_moment_rivalry": {
         "searchQuery": "Rivalry Weekend sports May 2026",
         "selectedVideoTitle": "Wildest Family Feud Moments From This Week 😳",
@@ -119,6 +161,79 @@
   },
   "cards": [
     {
+      "id": "playoff_push_clinch_fallback_nhl_2025030244",
+      "title": "Playoff Push",
+      "subtitle": "A win keeps Anaheim Ducks in the playoff race.",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 90,
+      "triggeredAt": "2026-05-09T18:48:45.126Z",
+      "expiresAt": "2026-05-11T05:30:00.000Z",
+      "kind": "playoff_push",
+      "region": "SoCal",
+      "regionPriority": 2,
+      "regionLabel": "SoCal",
+      "meta": {
+        "teams": [
+          {
+            "team": "Anaheim Ducks",
+            "league": "NHL"
+          }
+        ],
+        "eventIds": [
+          "nhl_2025030244"
+        ],
+        "reason": "Anaheim Ducks has playoff implications but cannot mathematically clinch yet.\n\nEvery point matters in the stretch run.",
+        "clinchFallback": true
+      },
+      "sports": [
+        "hockey"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=LwzDt8BLKg4",
+        "thumbnailUrl": "https://img.youtube.com/vi/LwzDt8BLKg4/hqdefault.jpg",
+        "durationSeconds": 635,
+        "title": "Golden Knights vs. Ducks | NHL Playoff Highlights | Game 3 | May 8, 2026",
+        "source": "youtube",
+        "channel": "NHL",
+        "publishedAt": "14h ago"
+      }
+    },
+    {
+      "id": "clinch_watch_tennis-madrid-open-2026-05-10-m0",
+      "title": "Clinch Watch",
+      "subtitle": "Madrid — Final · Tennis title on the line",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 92,
+      "triggeredAt": "2026-05-09T18:48:45.126Z",
+      "expiresAt": "2026-05-10T13:00:00.000Z",
+      "kind": "clinch_watch",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "source": "tournament",
+        "conditionLabel": "Tennis title on the line",
+        "sport": "tennis",
+        "league": "ATP Masters 1000",
+        "awayTeam": "",
+        "homeTeam": "Madrid — Final",
+        "startTime": "2026-05-10T09:00:00.000Z",
+        "eventIds": [
+          "tennis-madrid-open-2026-05-10-m0"
+        ],
+        "reason": "Madrid — Final — a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
+      },
+      "sports": [
+        "tennis"
+      ]
+    },
+    {
       "id": "league_moment_rivalry",
       "title": "Rivalry Weekend",
       "subtitle": "11 rivalry matchups in the next 7 days",
@@ -127,8 +242,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-09T14:43:41.331Z",
-      "expiresAt": "2026-05-16T14:43:41.331Z",
+      "triggeredAt": "2026-05-09T18:48:45.126Z",
+      "expiresAt": "2026-05-16T18:48:45.126Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -255,7 +370,7 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Orange County SC, Anaheim Ducks, Los Angeles Dodgers, Hurricanes, and Lazio (+4 more) all play tonight across the USL, NHL, MLB, Super Rugby, Serie A, Bundesliga, ECHL, MLS.",
+    "body": "The Orange County SC, Anaheim Ducks, Los Angeles Dodgers, Hurricanes, and Lazio (+5 more) all play tonight across the USL, NHL, MLB, Super Rugby, Serie A, Bundesliga, MLR, ECHL, MLS.",
     "sourceEventId": "soccer-usl-20260509-0100-orange-county-sc-at-colorado-springs-switchbacks-fc",
     "sourceCard": {
       "id": "tonight_multi_team",
@@ -315,6 +430,16 @@
           "seasonPhase": "Playoffs"
         },
         {
+          "sport": "tennis",
+          "displayName": "Madrid",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "May 1–11",
+          "startDate": "2026-05-01T09:00:00.000Z",
+          "endDate": "2026-05-11T12:00:00.000Z",
+          "eventCount": 22,
+          "seasonPhase": null
+        },
+        {
           "sport": "rugby",
           "displayName": "Japan League One",
           "leagueKey": "leagueone",
@@ -350,8 +475,8 @@
           "leagueKey": "mlb",
           "dateRangeLabel": "May 1–16",
           "startDate": "2026-05-01T18:20:00.000Z",
-          "endDate": "2026-05-16T01:40:00.000Z",
-          "eventCount": 184,
+          "endDate": "2026-05-16T17:10:00.000Z",
+          "eventCount": 185,
           "seasonPhase": "Regular"
         },
         {
@@ -390,8 +515,8 @@
           "leagueKey": "nwsl",
           "dateRangeLabel": "May 2–30",
           "startDate": "2026-05-02T00:00:00.000Z",
-          "endDate": "2026-05-30T00:00:00.000Z",
-          "eventCount": 38,
+          "endDate": "2026-05-30T17:30:00.000Z",
+          "eventCount": 39,
           "seasonPhase": "Regular"
         },
         {
@@ -458,21 +583,31 @@
           "sport": "rugby",
           "displayName": "MLR",
           "leagueKey": "mlr",
-          "dateRangeLabel": "May 3–4",
+          "dateRangeLabel": "May 3–25",
           "startDate": "2026-05-03T20:00:00.000Z",
-          "endDate": "2026-05-04T00:00:00.000Z",
-          "eventCount": 2,
+          "endDate": "2026-05-25T00:00:00.000Z",
+          "eventCount": 11,
           "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
           "displayName": "Champions League",
           "leagueKey": "championsleague",
-          "dateRangeLabel": "May 5–6",
+          "dateRangeLabel": "May 5–30",
           "startDate": "2026-05-05T19:00:00.000Z",
-          "endDate": "2026-05-06T19:00:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": "Knockout"
+          "endDate": "2026-05-30T16:00:00.000Z",
+          "eventCount": 3,
+          "seasonPhase": "Final"
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Rome",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "May 6–18",
+          "startDate": "2026-05-06T09:00:00.000Z",
+          "endDate": "2026-05-18T12:00:00.000Z",
+          "eventCount": 26,
+          "seasonPhase": null
         },
         {
           "sport": "soccer",
@@ -530,8 +665,8 @@
           "leagueKey": "premiership",
           "dateRangeLabel": "May 8–30",
           "startDate": "2026-05-08T18:45:00.000Z",
-          "endDate": "2026-05-30T14:00:00.000Z",
-          "eventCount": 13,
+          "endDate": "2026-05-30T18:45:00.000Z",
+          "eventCount": 14,
           "seasonPhase": "Playoffs"
         },
         {
@@ -612,6 +747,16 @@
           "startDate": "2026-05-23T12:00:00.000Z",
           "endDate": "2026-05-23T12:00:00.000Z",
           "eventCount": 1,
+          "seasonPhase": null
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Roland Garros",
+          "leagueKey": "grand-slam",
+          "dateRangeLabel": "May 24–31",
+          "startDate": "2026-05-24T09:00:00.000Z",
+          "endDate": "2026-05-31T12:00:00.000Z",
+          "eventCount": 16,
           "seasonPhase": null
         },
         {
@@ -718,6 +863,16 @@
       "monthLabel": "June 2026",
       "monthKey": "2026-06",
       "leagues": [
+        {
+          "sport": "tennis",
+          "displayName": "Roland Garros",
+          "leagueKey": "grand-slam",
+          "dateRangeLabel": "Jun 1–8",
+          "startDate": "2026-06-01T09:00:00.000Z",
+          "endDate": "2026-06-08T12:00:00.000Z",
+          "eventCount": 16,
+          "seasonPhase": null
+        },
         {
           "sport": "athletics",
           "displayName": "Diamond League — Rome",

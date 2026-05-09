@@ -42,6 +42,13 @@ const SVNS_EVENT_IDS: Record<string, SvnsEventIds> = {
     mens: "39fdda12-ab80-4f68-97ff-1f30744d5895",
     womens: "cf1f0f65-25f9-4d97-81c0-20d5d09ec2ff",
   },
+  // Los Angeles: SVNS Grand Final, May 16-18, 2026.
+  // World Rugby (Pulselive) has not yet seeded the LA Grand Final event UUIDs
+  // into the public API as of May 2026. Once they appear in
+  // https://api.wr-rims-prod.pulselive.com/rugby/v3/series/{series-id}, fill in
+  // the mens/womens IDs here. Until then the city is stubbed so getSvnsCities()
+  // does not surface it (an empty entry would short-circuit the live fetch).
+  // "Los Angeles": { mens: "TBD", womens: "TBD" },
 };
 
 export interface SvnsMatch {
