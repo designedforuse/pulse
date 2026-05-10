@@ -1,9 +1,12 @@
 {
-  "lastUpdated": "2026-05-09T18:48:45.126Z",
+  "lastUpdated": "2026-05-10T13:27:08.067Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
         "Other": 2
+      },
+      "rivalry_game": {
+        "Other": 1
       },
       "clinch_watch": {
         "Other": 1
@@ -18,6 +21,7 @@
         "playoff_push: Playoff Push"
       ],
       "Other": [
+        "rivalry_game: Rivalry Game Tonight",
         "clinch_watch: Clinch Watch",
         "league_moment: Rivalry Weekend"
       ]
@@ -31,8 +35,8 @@
         "reason": "max 1 league_moment per region (Other)"
       }
     ],
-    "totalBeforeCap": 4,
-    "totalAfterCap": 3,
+    "totalBeforeCap": 5,
+    "totalAfterCap": 4,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -67,24 +71,24 @@
         ],
         "playersIngested": 376,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-09T18:48:45.126Z"
+        "timestamp": "2026-05-10T13:27:08.067Z"
       },
       "cacheHistoryCount": 878,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 4,
-    "candidateCountAfterCap": 3,
+    "candidateCountBeforeCap": 5,
+    "candidateCountAfterCap": 4,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1510.812535,
+      "hoursUntil": -1529.4522408333332,
       "teamsEvaluated": 0,
       "triggers": {}
     },
     "rivalryGame": {
-      "rawRivalryCandidates": 0,
-      "rivalryAfterRegionFilter": 0,
-      "rivalryFinalCount": 0
+      "rawRivalryCandidates": 1,
+      "rivalryAfterRegionFilter": 1,
+      "rivalryFinalCount": 1
     },
     "upsetAlert": {
       "rawUpsetCandidates": 0,
@@ -102,12 +106,12 @@
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "soccer-usl-20260509-0100-orange-county-sc-at-colorado-springs-switchbacks-fc",
+    "tonightStorySourceEvent": "basketball-nba-20260510-0030-oklahoma-city-thunder-at-los-angeles-lakers",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
       "selectedScore": 400,
-      "sourceEventId": "soccer-usl-20260509-0100-orange-county-sc-at-colorado-springs-switchbacks-fc",
+      "sourceEventId": "basketball-nba-20260510-0030-oklahoma-city-thunder-at-los-angeles-lakers",
       "reason": "10 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
@@ -121,14 +125,19 @@
           "reason": "playoff_push involving followed team(s): Anaheim Ducks"
         },
         {
-          "label": "[ritual_night] Family Game Night",
+          "label": "[ritual_night] Saturday Game Day",
           "score": 130,
-          "reason": "ritual \"Family Game Night\" has 7 followed-team game(s)"
+          "reason": "ritual \"Saturday Game Day\" has 4 followed-team game(s)"
         },
         {
           "label": "[clinch_watch] Playoff Stakes",
           "score": 110,
           "reason": "clinch_watch (generic, no followed teams)"
+        },
+        {
+          "label": "[rivalry_game] Rivalry Night",
+          "score": 60,
+          "reason": "rivalry_game (generic, no followed teams)"
         },
         {
           "label": "[league_moment] League Spotlight",
@@ -145,15 +154,29 @@
     "videoSelection": {
       "playoff_push_clinch_fallback_nhl_2025030244": {
         "searchQuery": "Anaheim Ducks playoff push May 2026",
-        "selectedVideoTitle": "Golden Knights vs. Ducks | NHL Playoff Highlights | Game 3 | May 8, 2026",
-        "selectedVideoPublishedAt": "14h ago",
-        "selectedVideoChannel": "NHL",
+        "selectedVideoTitle": "Leo Carlsson: \"(Dostál) is an amazing goalie still. Nothing really changed.\" | Ducks prep for Game 4",
+        "selectedVideoPublishedAt": "11h ago",
+        "selectedVideoChannel": "The Sporting Tribune",
+        "rejectedForAgeCount": 0
+      },
+      "rivalry_game_soccer-laliga-20260510-1900-real-madrid-at-barcelona": {
+        "searchQuery": "Real Madrid vs Barcelona rivalry highlights",
+        "selectedVideoTitle": "FC 26 - MESSI RONALDO NEYMAR MBAPPE HAALAND & YAMAL | ALL STARS | REAL MADRID 100-0 FC BARCELONA",
+        "selectedVideoPublishedAt": "2 hours ago",
+        "selectedVideoChannel": "CR SEVEN",
+        "rejectedForAgeCount": 3
+      },
+      "clinch_watch_tennis-italian-open-2026-05-12-m0": {
+        "searchQuery": "Ruud clinch playoff berth May 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
       "league_moment_rivalry": {
         "searchQuery": "Rivalry Weekend sports May 2026",
-        "selectedVideoTitle": "Wildest Family Feud Moments From This Week 😳",
-        "selectedVideoPublishedAt": "1 hour ago",
+        "selectedVideoTitle": "Most-viewed Family Feud rounds of April!! (2026)",
+        "selectedVideoPublishedAt": "27 minutes ago",
         "selectedVideoChannel": "Family Feud",
         "rejectedForAgeCount": 0
       }
@@ -169,7 +192,7 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-05-09T18:48:45.126Z",
+      "triggeredAt": "2026-05-10T13:27:08.067Z",
       "expiresAt": "2026-05-11T05:30:00.000Z",
       "kind": "playoff_push",
       "region": "SoCal",
@@ -192,26 +215,66 @@
         "hockey"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=LwzDt8BLKg4",
-        "thumbnailUrl": "https://img.youtube.com/vi/LwzDt8BLKg4/hqdefault.jpg",
-        "durationSeconds": 635,
-        "title": "Golden Knights vs. Ducks | NHL Playoff Highlights | Game 3 | May 8, 2026",
+        "url": "https://www.youtube.com/watch?v=aPg-9KsrwOI",
+        "thumbnailUrl": "https://img.youtube.com/vi/aPg-9KsrwOI/hqdefault.jpg",
+        "durationSeconds": 1096,
+        "title": "Leo Carlsson: \"(Dostál) is an amazing goalie still. Nothing really changed.\" | Ducks prep for Game 4",
         "source": "youtube",
-        "channel": "NHL",
-        "publishedAt": "14h ago"
+        "channel": "The Sporting Tribune",
+        "publishedAt": "11h ago"
       }
     },
     {
-      "id": "clinch_watch_tennis-madrid-open-2026-05-10-m0",
+      "id": "rivalry_game_soccer-laliga-20260510-1900-real-madrid-at-barcelona",
+      "title": "Rivalry Game Tonight",
+      "subtitle": "Real Madrid vs Barcelona · Tonight at 7:00 PM",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 96,
+      "triggeredAt": "2026-05-10T13:27:08.067Z",
+      "expiresAt": "2026-05-10T23:00:00.000Z",
+      "kind": "rivalry_game",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "rivalryLabel": "El Clásico",
+        "sport": "soccer",
+        "league": "La Liga",
+        "awayTeam": "Real Madrid",
+        "homeTeam": "Barcelona",
+        "startTime": "2026-05-10T19:00:00.000Z",
+        "eventIds": [
+          "soccer-laliga-20260510-1900-real-madrid-at-barcelona"
+        ],
+        "reason": "Real Madrid and Barcelona meet tonight in one of soccer's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
+      },
+      "sports": [
+        "soccer"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=K6hYF5lZXYA",
+        "thumbnailUrl": "https://img.youtube.com/vi/K6hYF5lZXYA/hqdefault.jpg",
+        "durationSeconds": 1148,
+        "title": "FC 26 - MESSI RONALDO NEYMAR MBAPPE HAALAND & YAMAL | ALL STARS | REAL MADRID 100-0 FC BARCELONA",
+        "source": "youtube",
+        "channel": "CR SEVEN",
+        "publishedAt": "2 hours ago"
+      }
+    },
+    {
+      "id": "clinch_watch_tennis-italian-open-2026-05-12-m0",
       "title": "Clinch Watch",
-      "subtitle": "Madrid — Final · Tennis title on the line",
+      "subtitle": "Ruud vs Medvedev · Tennis title on the line",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-05-09T18:48:45.126Z",
-      "expiresAt": "2026-05-10T13:00:00.000Z",
+      "triggeredAt": "2026-05-10T13:27:08.067Z",
+      "expiresAt": "2026-05-12T13:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
@@ -221,13 +284,13 @@
         "conditionLabel": "Tennis title on the line",
         "sport": "tennis",
         "league": "ATP Masters 1000",
-        "awayTeam": "",
-        "homeTeam": "Madrid — Final",
-        "startTime": "2026-05-10T09:00:00.000Z",
+        "awayTeam": "Ruud",
+        "homeTeam": "Medvedev",
+        "startTime": "2026-05-12T09:00:00.000Z",
         "eventIds": [
-          "tennis-madrid-open-2026-05-10-m0"
+          "tennis-italian-open-2026-05-12-m0"
         ],
-        "reason": "Madrid — Final — a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
+        "reason": "Ruud and Medvedev meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
       },
       "sports": [
         "tennis"
@@ -236,21 +299,21 @@
     {
       "id": "league_moment_rivalry",
       "title": "Rivalry Weekend",
-      "subtitle": "11 rivalry matchups in the next 7 days",
+      "subtitle": "13 rivalry matchups in the next 7 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-09T18:48:45.126Z",
-      "expiresAt": "2026-05-16T18:48:45.126Z",
+      "triggeredAt": "2026-05-10T13:27:08.067Z",
+      "expiresAt": "2026-05-17T13:27:08.067Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "rivalry",
-        "matchCount": 11,
+        "matchCount": 13,
         "rivalries": [
           "El Clásico",
           "The Classic Rivalry",
@@ -334,6 +397,20 @@
             "home": "Los Angeles Angels",
             "league": "MLB",
             "startTime": "2026-05-16T01:38:00.000Z"
+          },
+          {
+            "label": "Subway Series",
+            "away": "New York Yankees",
+            "home": "New York Mets",
+            "league": "MLB",
+            "startTime": "2026-05-16T23:15:00.000Z"
+          },
+          {
+            "label": "Freeway Series",
+            "away": "Los Angeles Dodgers",
+            "home": "Los Angeles Angels",
+            "league": "MLB",
+            "startTime": "2026-05-17T01:38:00.000Z"
           }
         ],
         "eventIds": [
@@ -347,22 +424,24 @@
           "baseball-mlb-20260515-0210-san-francisco-giants-at-los-angeles-dodgers",
           "baseball-mlb-20260515-0210-san-francisco-giants-at-los-angeles-dodgers",
           "baseball-mlb-20260515-2310-new-york-yankees-at-new-york-mets",
-          "baseball-mlb-20260516-0138-los-angeles-dodgers-at-los-angeles-angels"
+          "baseball-mlb-20260516-0138-los-angeles-dodgers-at-los-angeles-angels",
+          "baseball-mlb-20260516-2315-new-york-yankees-at-new-york-mets",
+          "baseball-mlb-20260517-0138-los-angeles-dodgers-at-los-angeles-angels"
         ],
-        "reason": "11 known rivalry matchup(s) found: El Clásico, The Classic Rivalry, Subway Series, Freeway Series"
+        "reason": "13 known rivalry matchup(s) found: El Clásico, The Classic Rivalry, Subway Series, Freeway Series"
       },
       "sports": [
         "soccer",
         "baseball"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=84iKz5AJcWw",
-        "thumbnailUrl": "https://img.youtube.com/vi/84iKz5AJcWw/hqdefault.jpg",
-        "durationSeconds": 737,
-        "title": "Wildest Family Feud Moments From This Week 😳",
+        "url": "https://www.youtube.com/watch?v=5hMl2c7SlLI",
+        "thumbnailUrl": "https://img.youtube.com/vi/5hMl2c7SlLI/hqdefault.jpg",
+        "durationSeconds": 1429,
+        "title": "Most-viewed Family Feud rounds of April!! (2026)",
         "source": "youtube",
         "channel": "Family Feud",
-        "publishedAt": "1 hour ago"
+        "publishedAt": "27 minutes ago"
       }
     }
   ],
@@ -370,16 +449,16 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Orange County SC, Anaheim Ducks, Los Angeles Dodgers, Hurricanes, and Lazio (+5 more) all play tonight across the USL, NHL, MLB, Super Rugby, Serie A, Bundesliga, MLR, ECHL, MLS.",
-    "sourceEventId": "soccer-usl-20260509-0100-orange-county-sc-at-colorado-springs-switchbacks-fc",
+    "body": "The Los Angeles Lakers, San Diego Wave, Los Angeles Dodgers, San Diego FC, and Sungoliath (+5 more) all play tonight across the NBA, NWSL, MLB, MLS, Japan League One, English Premiership, Ligue 1, Top 14, MLR.",
+    "sourceEventId": "basketball-nba-20260510-0030-oklahoma-city-thunder-at-los-angeles-lakers",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
     },
     "sports": [
+      "basketball",
       "soccer",
-      "hockey",
       "baseball",
       "rugby"
     ]
@@ -393,10 +472,10 @@
           "sport": "hockey",
           "displayName": "AHL",
           "leagueKey": "ahl",
-          "dateRangeLabel": "May 1–23",
+          "dateRangeLabel": "May 1–24",
           "startDate": "2026-05-01T00:00:00.000Z",
-          "endDate": "2026-05-23T23:00:00.000Z",
-          "eventCount": 40,
+          "endDate": "2026-05-24T19:00:00.000Z",
+          "eventCount": 49,
           "seasonPhase": "Playoffs"
         },
         {
@@ -443,10 +522,10 @@
           "sport": "rugby",
           "displayName": "Japan League One",
           "leagueKey": "leagueone",
-          "dateRangeLabel": "May 1–10",
+          "dateRangeLabel": "May 1–24",
           "startDate": "2026-05-01T10:00:00.000Z",
-          "endDate": "2026-05-10T05:30:00.000Z",
-          "eventCount": 12,
+          "endDate": "2026-05-24T05:30:00.000Z",
+          "eventCount": 14,
           "seasonPhase": "Playoffs"
         },
         {
@@ -473,10 +552,10 @@
           "sport": "baseball",
           "displayName": "MLB",
           "leagueKey": "mlb",
-          "dateRangeLabel": "May 1–16",
+          "dateRangeLabel": "May 1–17",
           "startDate": "2026-05-01T18:20:00.000Z",
-          "endDate": "2026-05-16T17:10:00.000Z",
-          "eventCount": 185,
+          "endDate": "2026-05-17T01:40:00.000Z",
+          "eventCount": 194,
           "seasonPhase": "Regular"
         },
         {
@@ -515,8 +594,8 @@
           "leagueKey": "nwsl",
           "dateRangeLabel": "May 2–30",
           "startDate": "2026-05-02T00:00:00.000Z",
-          "endDate": "2026-05-30T17:30:00.000Z",
-          "eventCount": 39,
+          "endDate": "2026-05-30T22:30:00.000Z",
+          "eventCount": 41,
           "seasonPhase": "Regular"
         },
         {
@@ -573,20 +652,20 @@
           "sport": "soccer",
           "displayName": "USL",
           "leagueKey": "usl",
-          "dateRangeLabel": "May 2–27",
+          "dateRangeLabel": "May 2–31",
           "startDate": "2026-05-02T21:00:00.000Z",
-          "endDate": "2026-05-27T23:30:00.000Z",
-          "eventCount": 37,
+          "endDate": "2026-05-31T02:30:00.000Z",
+          "eventCount": 48,
           "seasonPhase": "Regular"
         },
         {
           "sport": "rugby",
           "displayName": "MLR",
           "leagueKey": "mlr",
-          "dateRangeLabel": "May 3–25",
+          "dateRangeLabel": "May 3–30",
           "startDate": "2026-05-03T20:00:00.000Z",
-          "endDate": "2026-05-25T00:00:00.000Z",
-          "eventCount": 11,
+          "endDate": "2026-05-30T20:00:00.000Z",
+          "eventCount": 12,
           "seasonPhase": "Regular"
         },
         {
@@ -670,16 +749,6 @@
           "seasonPhase": "Playoffs"
         },
         {
-          "sport": "hockey",
-          "displayName": "NHL",
-          "leagueKey": "nhl",
-          "dateRangeLabel": "May 8–18",
-          "startDate": "2026-05-08T23:00:00.000Z",
-          "endDate": "2026-05-18T16:00:00.000Z",
-          "eventCount": 20,
-          "seasonPhase": "Playoffs"
-        },
-        {
           "sport": "rugby",
           "displayName": "Top 14",
           "leagueKey": "top14",
@@ -687,6 +756,16 @@
           "startDate": "2026-05-09T12:30:00.000Z",
           "endDate": "2026-05-30T14:00:00.000Z",
           "eventCount": 21,
+          "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "hockey",
+          "displayName": "NHL",
+          "leagueKey": "nhl",
+          "dateRangeLabel": "May 9–18",
+          "startDate": "2026-05-09T22:00:00.000Z",
+          "endDate": "2026-05-18T16:00:00.000Z",
+          "eventCount": 15,
           "seasonPhase": "Playoffs"
         },
         {
@@ -756,17 +835,17 @@
           "dateRangeLabel": "May 24–31",
           "startDate": "2026-05-24T09:00:00.000Z",
           "endDate": "2026-05-31T12:00:00.000Z",
-          "eventCount": 16,
+          "eventCount": 20,
           "seasonPhase": null
         },
         {
           "sport": "rugby",
           "displayName": "SVNS Valladolid",
           "leagueKey": "svns",
-          "dateRangeLabel": "May 29",
+          "dateRangeLabel": "May 29–31",
           "startDate": "2026-05-29T08:00:00.000Z",
-          "endDate": "2026-05-29T08:00:00.000Z",
-          "eventCount": 1,
+          "endDate": "2026-05-31T08:00:00.000Z",
+          "eventCount": 2,
           "seasonPhase": null
         },
         {

@@ -582,12 +582,13 @@ function generateFallbackSessions(tournament: TennisTournament, windowStart: Dat
     const dateStr = formatDateLocal(dayDate);
     if (dayDate < windowStart || dayDate > windowEnd) continue;
 
-    const { name: round } = getRoundForDay(tournament, dayIdx);
+    const { name: round, matchesPerDay } = getRoundForDay(tournament, dayIdx);
     const tzOffset = SESSION_START_TZ_OFFSET[tournament.country] ?? "+00:00";
     const startHours = SESSION_START_HOURS[tournament.country] ?? [11];
-    const sessionsPerDay = Math.min(startHours.length, 2);
+    const slotsPerDay = Math.max(1, Math.min(startHours.length, matchesPerDay));
+    const matchups = generateMatchups(round, dateStr, slotsPerDay);
 
-    for (let si = 0; si < sessionsPerDay; si++) {
+    for (let si = 0; si < slotsPerDay; si++) {
       const hour = startHours[si % startHours.length];
       const startIso = `${dateStr}T${String(hour).padStart(2, "0")}:00:00${tzOffset}`;
       const startUtc = new Date(startIso).toISOString();
@@ -597,12 +598,17 @@ function generateFallbackSessions(tournament: TennisTournament, windowStart: Dat
       if (seenIds.has(id)) continue;
       seenIds.add(id);
 
+      const matchup = matchups[si % matchups.length];
+      const hasMatchup = !!(matchup && matchup.p1 && matchup.p2);
+      const awayTeam = hasMatchup ? matchup.p1.lastName : "";
+      const homeTeam = hasMatchup ? matchup.p2.lastName : `${tournament.shortName} — ${round}`;
+
       events.push({
         id,
         sport: "tennis",
         league: tournament.league,
-        awayTeam: "",
-        homeTeam: `${tournament.shortName} — ${round}`,
+        awayTeam,
+        homeTeam,
         startTimeLocal: startUtc,
         endTimeLocal: endUtc,
         providerId: tournament.providerId,
@@ -610,10 +616,14 @@ function generateFallbackSessions(tournament: TennisTournament, windowStart: Dat
         source: "tennis-hardcoded",
         leagueKey: tournament.leagueKey,
         providerReason: tournament.providerReason,
-        eventType: "session",
+        eventType: hasMatchup ? "match" : "session",
         sessionTitle: `${tournament.shortName} — ${round}`,
         competitionType: tournament.league === "Grand Slam" ? "international" : "domestic",
         tennisRound: round,
+        tennisPlayer1: hasMatchup ? matchup.p1.lastName : undefined,
+        tennisPlayer2: hasMatchup ? matchup.p2.lastName : undefined,
+        tennisPlayer1Rank: hasMatchup ? matchup.p1.rank : undefined,
+        tennisPlayer2Rank: hasMatchup ? matchup.p2.rank : undefined,
         tournamentName: tournament.name,
       });
     }

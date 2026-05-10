@@ -1137,41 +1137,73 @@
   },
   "league_moment:rivalry weekend sports may 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=84iKz5AJcWw",
-      "thumbnailUrl": "https://img.youtube.com/vi/84iKz5AJcWw/hqdefault.jpg",
-      "durationSeconds": 737,
-      "title": "Wildest Family Feud Moments From This Week 😳",
+      "url": "https://www.youtube.com/watch?v=5hMl2c7SlLI",
+      "thumbnailUrl": "https://img.youtube.com/vi/5hMl2c7SlLI/hqdefault.jpg",
+      "durationSeconds": 1429,
+      "title": "Most-viewed Family Feud rounds of April!! (2026)",
       "source": "youtube",
       "channel": "Family Feud",
-      "publishedAt": "1 hour ago"
+      "publishedAt": "27 minutes ago"
     },
-    "fetchedAt": "2026-05-09T14:43:51.490Z",
+    "fetchedAt": "2026-05-10T13:27:17.769Z",
     "query": "Rivalry Weekend sports May 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports May 2026",
-      "selectedVideoTitle": "Wildest Family Feud Moments From This Week 😳",
-      "selectedVideoPublishedAt": "1 hour ago",
+      "selectedVideoTitle": "Most-viewed Family Feud rounds of April!! (2026)",
+      "selectedVideoPublishedAt": "27 minutes ago",
       "selectedVideoChannel": "Family Feud",
       "rejectedForAgeCount": 0
     }
   },
   "playoff_push:anaheim ducks playoff push may 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=LwzDt8BLKg4",
-      "thumbnailUrl": "https://img.youtube.com/vi/LwzDt8BLKg4/hqdefault.jpg",
-      "durationSeconds": 635,
-      "title": "Golden Knights vs. Ducks | NHL Playoff Highlights | Game 3 | May 8, 2026",
+      "url": "https://www.youtube.com/watch?v=aPg-9KsrwOI",
+      "thumbnailUrl": "https://img.youtube.com/vi/aPg-9KsrwOI/hqdefault.jpg",
+      "durationSeconds": 1096,
+      "title": "Leo Carlsson: \"(Dostál) is an amazing goalie still. Nothing really changed.\" | Ducks prep for Game 4",
       "source": "youtube",
-      "channel": "NHL",
-      "publishedAt": "14h ago"
+      "channel": "The Sporting Tribune",
+      "publishedAt": "11h ago"
     },
-    "fetchedAt": "2026-05-09T18:46:11.325Z",
+    "fetchedAt": "2026-05-10T13:27:16.893Z",
     "query": "Anaheim Ducks playoff push May 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push May 2026",
-      "selectedVideoTitle": "Golden Knights vs. Ducks | NHL Playoff Highlights | Game 3 | May 8, 2026",
-      "selectedVideoPublishedAt": "14h ago",
-      "selectedVideoChannel": "NHL",
+      "selectedVideoTitle": "Leo Carlsson: \"(Dostál) is an amazing goalie still. Nothing really changed.\" | Ducks prep for Game 4",
+      "selectedVideoPublishedAt": "11h ago",
+      "selectedVideoChannel": "The Sporting Tribune",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "rivalry_game:real madrid vs barcelona rivalry highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=K6hYF5lZXYA",
+      "thumbnailUrl": "https://img.youtube.com/vi/K6hYF5lZXYA/hqdefault.jpg",
+      "durationSeconds": 1148,
+      "title": "FC 26 - MESSI RONALDO NEYMAR MBAPPE HAALAND & YAMAL | ALL STARS | REAL MADRID 100-0 FC BARCELONA",
+      "source": "youtube",
+      "channel": "CR SEVEN",
+      "publishedAt": "2 hours ago"
+    },
+    "fetchedAt": "2026-05-10T13:27:17.226Z",
+    "query": "Real Madrid vs Barcelona rivalry highlights",
+    "debug": {
+      "searchQuery": "Real Madrid vs Barcelona rivalry highlights",
+      "selectedVideoTitle": "FC 26 - MESSI RONALDO NEYMAR MBAPPE HAALAND & YAMAL | ALL STARS | REAL MADRID 100-0 FC BARCELONA",
+      "selectedVideoPublishedAt": "2 hours ago",
+      "selectedVideoChannel": "CR SEVEN",
+      "rejectedForAgeCount": 3
+    }
+  },
+  "clinch_watch:ruud clinch playoff berth may 2026": {
+    "video": null,
+    "fetchedAt": "2026-05-10T13:27:17.416Z",
+    "query": "Ruud clinch playoff berth May 2026",
+    "debug": {
+      "searchQuery": "Ruud clinch playoff berth May 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   }
