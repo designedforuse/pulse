@@ -1,6 +1,7 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { fetchMarathonLeaderScores } from "./marathonLeader";
+import { fetchCyclingLeaderScores } from "./cyclingLeader";
 
 export interface TennisSetScore {
   p1: number;
@@ -101,6 +102,7 @@ interface LiveEventIdBuckets {
   golf: { id: string; tournamentName: string }[];
   mlb: string[];
   marathon: string[];
+  cycling: string[];
 }
 
 function loadLiveEventIds(): LiveEventIdBuckets {
@@ -118,6 +120,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
   const golf: { id: string; tournamentName: string }[] = [];
   const mlb: string[] = [];
   const marathon: string[] = [];
+  const cycling: string[] = [];
 
   try {
     const raw = fs.readFileSync(GENERATED_EVENTS_PATH, "utf-8");
@@ -137,7 +140,12 @@ function loadLiveEventIds(): LiveEventIdBuckets {
       const duration = sportDurations[event.sport] ?? 120 * 60 * 1000;
       const end = start + duration;
 
-      const lookbackMs = 18 * 60 * 60 * 1000;
+      // Cycling Grand Tours are multi-week umbrella events (~23 days incl. rest days).
+      // Treat them as "live" from race start through 25 days after so the leader
+      // override surfaces throughout the tour.
+      const lookbackMs = event.id.startsWith("cycling-grand-tour-")
+        ? 25 * 24 * 60 * 60 * 1000
+        : 18 * 60 * 60 * 1000;
       if (now < start - 30 * 60 * 1000 || now > start + lookbackMs) continue;
 
       if (event.id.startsWith("nhl_")) {
@@ -188,12 +196,14 @@ function loadLiveEventIds(): LiveEventIdBuckets {
         mlb.push(event.id);
       } else if (event.id.startsWith("athletics-marathon-")) {
         marathon.push(event.id);
+      } else if (event.id.startsWith("cycling-")) {
+        cycling.push(event.id);
       }
     }
   } catch {
   }
 
-  return { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba, ncaabBasketball, golf, mlb, marathon };
+  return { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba, ncaabBasketball, golf, mlb, marathon, cycling };
 }
 
 async function fetchNhlSeriesStatuses(): Promise<Record<string, SeriesStatus>> {
@@ -2104,7 +2114,7 @@ async function fetchMlbScores(eventIds: string[]): Promise<Record<string, ScoreD
 }
 
 export async function fetchAllLiveScores(): Promise<ScoresResponse> {
-  const { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba, ncaabBasketball, golf, mlb, marathon } = loadLiveEventIds();
+  const { nhl, ahl, echl, ncaa, soccer, rugby, cricket, tennis, f1, nba, ncaabBasketball, golf, mlb, marathon, cycling } = loadLiveEventIds();
 
   // Split cricket into IPL (official IPL feed) vs other (CricAPI)
   const iplEvents = cricket.filter((e) => e.id.startsWith("cricket-ipl-"));
@@ -2112,6 +2122,7 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
 
   const japanLeagueOne = rugby.get("Japan League One") || [];
   const mlrEvents = rugby.get("MLR") || [];
+  const cyclingScores = fetchCyclingLeaderScores(cycling);
   const [nhlScores, nhlSeriesStatuses, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, pulseliveRugbyScores, mlrOfficialScores, jlOneScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores, marathonScores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchNhlSeriesStatuses(),
@@ -2139,7 +2150,7 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
   // clock from World Rugby feed). MLR official overrides Pulselive for MLR
   // because Pulselive's MLR feed lags badly (often shows "U"/0-0 mid-match).
   return {
-    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...pulseliveRugbyScores, ...mlrOfficialScores, ...jlOneScores, ...iplScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores, ...golfScores, ...mlbScores, ...marathonScores },
+    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...pulseliveRugbyScores, ...mlrOfficialScores, ...jlOneScores, ...iplScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores, ...golfScores, ...mlbScores, ...marathonScores, ...cyclingScores },
     seriesStatuses: { ...nhlSeriesStatuses },
     fetchedAt: new Date().toISOString(),
   };

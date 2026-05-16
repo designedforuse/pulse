@@ -1,0 +1,29 @@
+{
+  "_README": "Manual cycling leader override. One entry per live cycling event. eventId must match the cycling event id from /api/events (e.g. cycling-grand-tour-giro-d-italia-2026, cycling-grand-tour-tour-de-france-2026, cycling-grand-tour-vuelta-a-espana-2026). Leave 'rider' empty (\"\") to hide the leader section on the card. 'gap' is the time gap to second place (e.g. '0:42' or '1:15'). 'stageNumber' is the stage after which the GC reflects (use null to omit).",
+  "leaders": [
+    {
+      "eventId": "cycling-grand-tour-giro-d-italia-2026",
+      "rider": "",
+      "team": "",
+      "country": "",
+      "gap": "",
+      "stageNumber": null
+    },
+    {
+      "eventId": "cycling-grand-tour-tour-de-france-2026",
+      "rider": "",
+      "team": "",
+      "country": "",
+      "gap": "",
+      "stageNumber": null
+    },
+    {
+      "eventId": "cycling-grand-tour-vuelta-a-espana-2026",
+      "rider": "",
+      "team": "",
+      "country": "",
+      "gap": "",
+      "stageNumber": null
+    }
+  ]
+}
