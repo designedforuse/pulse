@@ -337,6 +337,12 @@ const SESSION_START_TZ_OFFSET: Record<string, string> = {
 
 const MATCH_DURATION_MIN = 150;
 
+// ESPN serves country flags at this CDN with lowercase 3-letter codes.
+function countryCodeToFlagUrl(code: string | undefined): string | undefined {
+  if (!code) return undefined;
+  return `https://a.espncdn.com/i/teamlogos/countries/500/${code.toLowerCase()}.png`;
+}
+
 function seededShuffle<T>(arr: T[], seed: number): T[] {
   const result = [...arr];
   let s = seed;
@@ -598,17 +604,19 @@ function generateFallbackSessions(tournament: TennisTournament, windowStart: Dat
       if (seenIds.has(id)) continue;
       seenIds.add(id);
 
-      const matchup = matchups[si % matchups.length];
+      const matchup = si < matchups.length ? matchups[si] : null;
       const hasMatchup = !!(matchup && matchup.p1 && matchup.p2);
-      const awayTeam = hasMatchup ? matchup.p1.lastName : "";
-      const homeTeam = hasMatchup ? matchup.p2.lastName : `${tournament.shortName} — ${round}`;
+      // Skip placeholder slots (e.g. "Rome — Final" with no players) — these
+      // produced a second empty card on semifinal/final days where matchesPerDay=1
+      // but startHours had two entries.
+      if (!hasMatchup) continue;
 
       events.push({
         id,
         sport: "tennis",
         league: tournament.league,
-        awayTeam,
-        homeTeam,
+        awayTeam: matchup!.p1.lastName,
+        homeTeam: matchup!.p2.lastName,
         startTimeLocal: startUtc,
         endTimeLocal: endUtc,
         providerId: tournament.providerId,
@@ -616,14 +624,16 @@ function generateFallbackSessions(tournament: TennisTournament, windowStart: Dat
         source: "tennis-hardcoded",
         leagueKey: tournament.leagueKey,
         providerReason: tournament.providerReason,
-        eventType: hasMatchup ? "match" : "session",
+        eventType: "match",
         sessionTitle: `${tournament.shortName} — ${round}`,
         competitionType: tournament.league === "Grand Slam" ? "international" : "domestic",
         tennisRound: round,
-        tennisPlayer1: hasMatchup ? matchup.p1.lastName : undefined,
-        tennisPlayer2: hasMatchup ? matchup.p2.lastName : undefined,
-        tennisPlayer1Rank: hasMatchup ? matchup.p1.rank : undefined,
-        tennisPlayer2Rank: hasMatchup ? matchup.p2.rank : undefined,
+        tennisPlayer1: matchup!.p1.lastName,
+        tennisPlayer2: matchup!.p2.lastName,
+        tennisPlayer1Rank: matchup!.p1.rank,
+        tennisPlayer2Rank: matchup!.p2.rank,
+        tennisPlayer1Flag: countryCodeToFlagUrl(matchup!.p1.country),
+        tennisPlayer2Flag: countryCodeToFlagUrl(matchup!.p2.country),
         tournamentName: tournament.name,
       });
     }
@@ -725,6 +735,10 @@ export function mergeTennisEvents(
   const index = new Map<string, AppEvent>();
   for (const e of existing) {
     if (e.awayTeam === "TBD" || e.homeTeam === "TBD") continue;
+    // Drop legacy placeholder cards emitted by older versions of the fallback
+    // generator (e.g. "Rome — Final" with no players assigned). The current
+    // generator skips these, so any still in the cache should be evicted.
+    if (e.source === "tennis-hardcoded" && (!e.tennisPlayer1 || !e.tennisPlayer2)) continue;
     if (e.source === "espn-tennis" && !freshIds.has(e.id)) {
       if (e.tournamentName && activeNames.has(e.tournamentName)) continue;
       const eventStart = new Date(e.startTimeLocal);
