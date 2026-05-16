@@ -59,6 +59,11 @@ export interface ScoreData {
   marathonLeaderSplitTime?: string;
   marathonLeaderGap?: string;
   marathonRaceStatus?: "active" | "finished";
+  cyclingLeader?: string;
+  cyclingLeaderTeam?: string;
+  cyclingLeaderCountry?: string;
+  cyclingLeaderGap?: string;
+  cyclingStageNumber?: number;
 }
 
 export interface SeriesStatus {

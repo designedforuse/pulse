@@ -1025,17 +1025,73 @@ export default function UnifiedEventCard({
               </View>
             </View>
           ) : isCycling ? (
-            <View style={uStyles.racingLayout}>
-              <View style={uStyles.racingCircuitRow}>
-                <Text style={{ fontSize: featured ? 18 : 16 }}>🚴</Text>
-                <Text
-                  style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
-                  numberOfLines={1}
-                >
-                  {cyclingTourName}
-                </Text>
-              </View>
-            </View>
+            (() => {
+              const totalStages = event.cyclingTotalStages;
+              const restDays = event.cyclingRestDays || [];
+              const startDate = new Date(event.startTimeLocal);
+              const endDate = event.endTimeLocal ? new Date(event.endTimeLocal) : null;
+              const nowD = new Date();
+              let stageLabel: string | null = null;
+              if (totalStages) {
+                if (endDate && nowD > endDate) {
+                  stageLabel = "Final standings";
+                } else if (nowD < startDate) {
+                  stageLabel = `${totalStages} stages`;
+                } else {
+                  const daysSinceStart = Math.floor((nowD.getTime() - startDate.getTime()) / 86400000);
+                  let restsPassed = 0;
+                  for (const rd of restDays) {
+                    const rdDate = new Date(rd + "T00:00:00Z");
+                    if (rdDate <= nowD) restsPassed++;
+                  }
+                  const stageNum = Math.max(1, Math.min(totalStages, daysSinceStart + 1 - restsPassed));
+                  const isRestToday = restDays.some(rd => rd === nowD.toISOString().slice(0, 10));
+                  stageLabel = isRestToday
+                    ? `Rest day · Stage ${stageNum + 1} tomorrow`
+                    : `Stage ${stageNum} of ${totalStages}`;
+                }
+              }
+              const leaderStageNum = score?.cyclingStageNumber;
+              return (
+                <View style={uStyles.racingLayout}>
+                  <View style={uStyles.racingCircuitRow}>
+                    <Text style={{ fontSize: featured ? 18 : 16 }}>🚴</Text>
+                    <Text
+                      style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
+                      numberOfLines={1}
+                    >
+                      {cyclingTourName}
+                    </Text>
+                  </View>
+                  {stageLabel && (
+                    <Text style={uStyles.racingSessionSubtitle} numberOfLines={1}>
+                      {stageLabel}
+                      {event.cyclingRoute ? ` · ${event.cyclingRoute}` : ""}
+                    </Text>
+                  )}
+                  {(isLive || isFinal) && score?.cyclingLeader && (
+                    <View style={uStyles.racingLeaderSection}>
+                      <View style={uStyles.racingLeaderRow}>
+                        <Text style={[uStyles.racingPositionBadge, { color: sportColor }]}>
+                          🌸
+                        </Text>
+                        <Text style={uStyles.racingLeaderName} numberOfLines={1}>
+                          {score.cyclingLeader}
+                        </Text>
+                      </View>
+                      {(score.cyclingLeaderTeam || score.cyclingLeaderGap) && (
+                        <Text style={uStyles.racingLeaderTeam} numberOfLines={1}>
+                          {[score.cyclingLeaderTeam, score.cyclingLeaderGap ? `+${score.cyclingLeaderGap}` : null]
+                            .filter(Boolean)
+                            .join(" · ")}
+                          {leaderStageNum ? ` · after Stage ${leaderStageNum}` : ""}
+                        </Text>
+                      )}
+                    </View>
+                  )}
+                </View>
+              );
+            })()
           ) : showGolfEspnStyle ? (
             <View>
               <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>

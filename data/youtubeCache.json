@@ -1137,21 +1137,21 @@
   },
   "league_moment:rivalry weekend sports may 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=5hMl2c7SlLI",
-      "thumbnailUrl": "https://img.youtube.com/vi/5hMl2c7SlLI/hqdefault.jpg",
-      "durationSeconds": 1429,
-      "title": "Most-viewed Family Feud rounds of April!! (2026)",
+      "url": "https://www.youtube.com/watch?v=HZsCTkBV524",
+      "thumbnailUrl": "https://img.youtube.com/vi/HZsCTkBV524/hqdefault.jpg",
+      "durationSeconds": 12761,
+      "title": "🥊 LIVE : RWS: Chalarmchon vs. Kradooklek | 16 May 2026",
       "source": "youtube",
-      "channel": "Family Feud",
-      "publishedAt": "27 minutes ago"
+      "channel": "RWS - Rajadamnern World Series",
+      "publishedAt": "Streamed 43 minutes ago"
     },
-    "fetchedAt": "2026-05-10T13:27:17.769Z",
+    "fetchedAt": "2026-05-16T16:22:57.694Z",
     "query": "Rivalry Weekend sports May 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports May 2026",
-      "selectedVideoTitle": "Most-viewed Family Feud rounds of April!! (2026)",
-      "selectedVideoPublishedAt": "27 minutes ago",
-      "selectedVideoChannel": "Family Feud",
+      "selectedVideoTitle": "🥊 LIVE : RWS: Chalarmchon vs. Kradooklek | 16 May 2026",
+      "selectedVideoPublishedAt": "Streamed 43 minutes ago",
+      "selectedVideoChannel": "RWS - Rajadamnern World Series",
       "rejectedForAgeCount": 0
     }
   },
@@ -1201,6 +1201,38 @@
     "query": "Ruud clinch playoff berth May 2026",
     "debug": {
       "searchQuery": "Ruud clinch playoff berth May 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "rivalry_game:new york yankees vs new york mets rivalry highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=5v_ChSfPkoM",
+      "thumbnailUrl": "https://img.youtube.com/vi/5v_ChSfPkoM/hqdefault.jpg",
+      "durationSeconds": 626,
+      "title": "SUBWAY SERIES 🚇 New York Yankees vs. New York Mets | Full Game Highlights | ESPN MLB",
+      "source": "youtube",
+      "channel": "ESPN MLB",
+      "publishedAt": "13h ago"
+    },
+    "fetchedAt": "2026-05-16T16:22:57.075Z",
+    "query": "New York Yankees vs New York Mets rivalry highlights",
+    "debug": {
+      "searchQuery": "New York Yankees vs New York Mets rivalry highlights",
+      "selectedVideoTitle": "SUBWAY SERIES 🚇 New York Yankees vs. New York Mets | Full Game Highlights | ESPN MLB",
+      "selectedVideoPublishedAt": "13h ago",
+      "selectedVideoChannel": "ESPN MLB",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:zverev clinch playoff berth may 2026": {
+    "video": null,
+    "fetchedAt": "2026-05-16T16:22:57.280Z",
+    "query": "Zverev clinch playoff berth May 2026",
+    "debug": {
+      "searchQuery": "Zverev clinch playoff berth May 2026",
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,

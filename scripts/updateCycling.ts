@@ -15,6 +15,9 @@ interface AppEvent {
   sessionTitle?: string;
   competitionType?: string;
   tournamentName?: string;
+  cyclingRoute?: string;
+  cyclingTotalStages?: number;
+  cyclingRestDays?: string[];
 }
 
 export interface CyclingFetchResult {
@@ -38,6 +41,8 @@ interface GrandTour {
   endUtc: string;
   providerId: string;
   providerReason: string;
+  totalStages: number;
+  restDays: string[];
 }
 
 const GRAND_TOURS: GrandTour[] = [
@@ -48,6 +53,8 @@ const GRAND_TOURS: GrandTour[] = [
     endUtc: "2026-05-31T22:00:00.000Z",
     providerId: "youtubetv",
     providerReason: "tnt-broadcast",
+    totalStages: 21,
+    restDays: ["2026-05-11", "2026-05-18", "2026-05-25"],
   },
   {
     name: "Tour de France",
@@ -56,6 +63,8 @@ const GRAND_TOURS: GrandTour[] = [
     endUtc: "2026-07-26T22:00:00.000Z",
     providerId: "youtubetv",
     providerReason: "nbc-broadcast",
+    totalStages: 21,
+    restDays: ["2026-07-13", "2026-07-20"],
   },
   {
     name: "Vuelta a España",
@@ -64,6 +73,8 @@ const GRAND_TOURS: GrandTour[] = [
     endUtc: "2026-09-13T22:00:00.000Z",
     providerId: "youtubetv",
     providerReason: "nbc-broadcast",
+    totalStages: 21,
+    restDays: ["2026-08-31", "2026-09-07"],
   },
 ];
 
@@ -106,6 +117,9 @@ export function fetchCyclingEvents(): CyclingFetchResult {
       sessionTitle: `${tour.name} 2026`,
       competitionType: "international",
       tournamentName: tour.name,
+      cyclingRoute: tour.route,
+      cyclingTotalStages: tour.totalStages,
+      cyclingRestDays: tour.restDays,
     });
 
     tourCounts[tour.name] = 1;

@@ -45,6 +45,9 @@ export interface SportEvent {
   tennisPlayer2Flag?: string;
   tournamentName?: string;
   roundLabel?: string;
+  cyclingRoute?: string;
+  cyclingTotalStages?: number;
+  cyclingRestDays?: string[];
 }
 
 export interface Pack {
