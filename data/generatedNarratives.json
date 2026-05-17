@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-17T20:08:39.254Z",
+  "lastUpdated": "2026-05-17T21:07:18.334Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -49,7 +49,7 @@
         ],
         "playersIngested": 359,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-17T20:08:39.254Z"
+        "timestamp": "2026-05-17T21:07:18.334Z"
       },
       "cacheHistoryCount": 879,
       "error": null
@@ -59,7 +59,7 @@
     "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1704.1442372222223,
+      "hoursUntil": -1705.1217594444445,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -127,8 +127,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-17T20:08:39.254Z",
-      "expiresAt": "2026-05-24T20:08:39.254Z",
+      "triggeredAt": "2026-05-17T21:07:18.334Z",
+      "expiresAt": "2026-05-24T21:07:18.334Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -212,27 +212,7 @@
           "dateRangeLabel": "May 2–25",
           "startDate": "2026-05-02T17:00:00.000Z",
           "endDate": "2026-05-25T01:00:00.000Z",
-          "eventCount": 81,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "baseball",
-          "displayName": "MLB",
-          "leagueKey": "mlb",
-          "dateRangeLabel": "May 3–24",
-          "startDate": "2026-05-03T20:10:00.000Z",
-          "endDate": "2026-05-24T20:05:00.000Z",
-          "eventCount": 261,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "NWSL",
-          "leagueKey": "nwsl",
-          "dateRangeLabel": "May 3–31",
-          "startDate": "2026-05-03T21:00:00.000Z",
-          "endDate": "2026-05-31T23:00:00.000Z",
-          "eventCount": 38,
+          "eventCount": 82,
           "seasonPhase": "Regular"
         },
         {
@@ -240,10 +220,20 @@
           "displayName": "ECHL",
           "leagueKey": "echl",
           "dateRangeLabel": "May 3–20",
-          "startDate": "2026-05-03T21:05:00.000Z",
+          "startDate": "2026-05-03T21:15:00.000Z",
           "endDate": "2026-05-20T23:35:00.000Z",
-          "eventCount": 30,
+          "eventCount": 29,
           "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "NWSL",
+          "leagueKey": "nwsl",
+          "dateRangeLabel": "May 3–31",
+          "startDate": "2026-05-03T23:00:00.000Z",
+          "endDate": "2026-05-31T23:00:00.000Z",
+          "eventCount": 37,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
@@ -264,6 +254,16 @@
           "endDate": "2026-05-24T19:00:00.000Z",
           "eventCount": 36,
           "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "baseball",
+          "displayName": "MLB",
+          "leagueKey": "mlb",
+          "dateRangeLabel": "May 3–24",
+          "startDate": "2026-05-03T23:20:00.000Z",
+          "endDate": "2026-05-24T20:10:00.000Z",
+          "eventCount": 260,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "basketball",
@@ -509,10 +509,10 @@
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "May 17–31",
+          "dateRangeLabel": "May 17–25",
           "startDate": "2026-05-17T00:00:00.000Z",
-          "endDate": "2026-05-31T00:00:00.000Z",
-          "eventCount": 11,
+          "endDate": "2026-05-25T00:00:00.000Z",
+          "eventCount": 7,
           "seasonPhase": "Playoffs"
         },
         {
