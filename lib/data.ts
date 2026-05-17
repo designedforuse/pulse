@@ -378,8 +378,8 @@ function resolveRugbyBroadcastId(event: SportEvent): [string, string] {
 
 function resolveCricketBroadcastId(event: SportEvent): [string, string] {
   if (event.providerId === "disneyplus") return ["espn", "disneyplus"];
-  // youtubetv — Willow TV is distributed via YouTube TV
-  return ["willowtv", "youtubetv"];
+  // Willow TV is now distributed via FloSports (was YouTube TV).
+  return ["willowtv", "flosports"];
 }
 
 function resolveNhlBroadcastId(event: SportEvent): string {
@@ -585,7 +585,7 @@ export function resolveProviderDisplay(event: SportEvent): { brandId: string; br
     };
   }
 
-  // Cricket: Willow TV (YouTube TV) or ESPN+ (Disney+)
+  // Cricket: Willow TV (FloSports) or ESPN+ (Disney+)
   if (event.sport === "cricket") {
     const [broadcastId, launchProviderId] = resolveCricketBroadcastId(event);
     const launchProvider = getProviderById(launchProviderId);
