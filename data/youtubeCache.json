@@ -1137,21 +1137,21 @@
   },
   "league_moment:rivalry weekend sports may 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=HZsCTkBV524",
-      "thumbnailUrl": "https://img.youtube.com/vi/HZsCTkBV524/hqdefault.jpg",
-      "durationSeconds": 12761,
-      "title": "🥊 LIVE : RWS: Chalarmchon vs. Kradooklek | 16 May 2026",
+      "url": "https://www.youtube.com/watch?v=xCYboNc7LlU",
+      "thumbnailUrl": "https://img.youtube.com/vi/xCYboNc7LlU/hqdefault.jpg",
+      "durationSeconds": 796,
+      "title": "Most BRUTAL Fights in Women’s Football",
       "source": "youtube",
-      "channel": "RWS - Rajadamnern World Series",
-      "publishedAt": "Streamed 43 minutes ago"
+      "channel": "Xtreme Sports",
+      "publishedAt": "9h ago"
     },
-    "fetchedAt": "2026-05-16T16:22:57.694Z",
+    "fetchedAt": "2026-05-17T20:08:49.841Z",
     "query": "Rivalry Weekend sports May 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports May 2026",
-      "selectedVideoTitle": "🥊 LIVE : RWS: Chalarmchon vs. Kradooklek | 16 May 2026",
-      "selectedVideoPublishedAt": "Streamed 43 minutes ago",
-      "selectedVideoChannel": "RWS - Rajadamnern World Series",
+      "selectedVideoTitle": "Most BRUTAL Fights in Women’s Football",
+      "selectedVideoPublishedAt": "9h ago",
+      "selectedVideoChannel": "Xtreme Sports",
       "rejectedForAgeCount": 0
     }
   },
