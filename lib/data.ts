@@ -361,8 +361,6 @@ function resolveHorseRacingBroadcastId(event: SportEvent): [string, string] {
 function resolveCyclingBroadcastId(event: SportEvent): [string, string] {
   const reason = event.providerReason || "";
   if (reason === "flosports-broadcast") return ["flosports", "flosports"];
-  if (reason === "tnt-broadcast") return ["tnt", "youtubetv"];
-  if (reason === "nbc-broadcast") return ["nbcsn", "youtubetv"];
   return ["", ""];
 }
 
