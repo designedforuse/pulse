@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-18T02:38:51.909Z",
+  "lastUpdated": "2026-05-18T02:44:43.357Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {},
     "combinedPushByRegion": {},
@@ -41,7 +41,7 @@
         ],
         "playersIngested": 359,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-18T02:38:51.909Z"
+        "timestamp": "2026-05-18T02:44:43.357Z"
       },
       "cacheHistoryCount": 879,
       "error": null
@@ -51,7 +51,7 @@
     "candidateCountAfterCap": 0,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1710.6477525,
+      "hoursUntil": -1710.7453769444444,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -123,16 +123,6 @@
           "seasonPhase": "Regular"
         },
         {
-          "sport": "tennis",
-          "displayName": "Madrid",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "May 4–11",
-          "startDate": "2026-05-04T09:00:00.000Z",
-          "endDate": "2026-05-11T12:00:00.000Z",
-          "eventCount": 12,
-          "seasonPhase": null
-        },
-        {
           "sport": "cricket",
           "displayName": "IPL",
           "leagueKey": "ipl",
@@ -193,6 +183,16 @@
           "seasonPhase": "Playoffs"
         },
         {
+          "sport": "tennis",
+          "displayName": "Madrid",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "May 5–10",
+          "startDate": "2026-05-05T09:00:00.000Z",
+          "endDate": "2026-05-10T09:00:00.000Z",
+          "eventCount": 8,
+          "seasonPhase": null
+        },
+        {
           "sport": "soccer",
           "displayName": "Champions League",
           "leagueKey": "championsleague",
@@ -206,10 +206,10 @@
           "sport": "tennis",
           "displayName": "Rome",
           "leagueKey": "atp-masters",
-          "dateRangeLabel": "May 6–18",
+          "dateRangeLabel": "May 6–17",
           "startDate": "2026-05-06T09:00:00.000Z",
-          "endDate": "2026-05-18T12:00:00.000Z",
-          "eventCount": 22,
+          "endDate": "2026-05-17T09:00:00.000Z",
+          "eventCount": 20,
           "seasonPhase": null
         },
         {
@@ -406,10 +406,10 @@
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "May 18–25",
+          "dateRangeLabel": "May 18–31",
           "startDate": "2026-05-18T23:30:00.000Z",
-          "endDate": "2026-05-25T00:00:00.000Z",
-          "eventCount": 6,
+          "endDate": "2026-05-31T00:00:00.000Z",
+          "eventCount": 10,
           "seasonPhase": "Playoffs"
         },
         {
@@ -570,11 +570,21 @@
           "sport": "tennis",
           "displayName": "Roland Garros",
           "leagueKey": "grand-slam",
-          "dateRangeLabel": "Jun 1–8",
+          "dateRangeLabel": "Jun 1–7",
           "startDate": "2026-06-01T09:00:00.000Z",
-          "endDate": "2026-06-08T12:00:00.000Z",
-          "eventCount": 12,
+          "endDate": "2026-06-07T09:00:00.000Z",
+          "eventCount": 10,
           "seasonPhase": null
+        },
+        {
+          "sport": "hockey",
+          "displayName": "NHL",
+          "leagueKey": "nhl",
+          "dateRangeLabel": "Jun 2",
+          "startDate": "2026-06-02T00:00:00.000Z",
+          "endDate": "2026-06-02T04:00:00.000Z",
+          "eventCount": 2,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "cricket",

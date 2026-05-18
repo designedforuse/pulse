@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-18T02:38:51.685Z",
+  "lastUpdated": "2026-05-18T02:44:43.304Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -34,7 +34,7 @@
   "buSourceUsed": "chn",
   "rugbySourceUsed": "ical",
   "cricketSourceUsed": "cricapi",
-  "nhlCount": 6,
+  "nhlCount": 12,
   "ahlCount": 35,
   "ahlAdded": 0,
   "ahlUpdated": 24,
@@ -142,15 +142,15 @@
   "faCupUpdated": 1,
   "faCupPruned": 1,
   "faCupSourceUsed": "espn",
-  "tennisCount": 66,
+  "tennisCount": 58,
   "tennisAdded": 0,
-  "tennisUpdated": 64,
+  "tennisUpdated": 58,
   "tennisPruned": 0,
   "tennisSourceUsed": "hardcoded",
   "tennisTournamentCounts": {
-    "French Open": 32,
-    "Madrid Open": 10,
-    "Italian Open": 22
+    "French Open": 30,
+    "Madrid Open": 8,
+    "Italian Open": 20
   },
   "f1Count": 25,
   "f1Added": 0,
@@ -195,22 +195,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-05-18T02:38:51.685Z",
+    "lastRefreshAt": "2026-05-18T02:44:43.304Z",
     "sources": {
       "nhl": {
-        "count": 6,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "count": 12,
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 35,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 26,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -222,7 +222,7 @@
       },
       "rugby": {
         "count": 95,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 16,
@@ -242,97 +242,97 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 40,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 141,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 32,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 41,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 18,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 20,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 36,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 38,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-07T01:00:00.000Z"
       },
       "championsCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 15,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 3,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 3,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-16T14:00:00.000Z"
       },
       "tennis": {
-        "count": 66,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "count": 58,
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
-          "French Open": 32,
-          "Madrid Open": 10,
-          "Italian Open": 22
+          "French Open": 30,
+          "Madrid Open": 8,
+          "Italian Open": 20
         }
       },
       "f1": {
         "count": 25,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Canadian Grand Prix": 5,
@@ -344,7 +344,7 @@
       },
       "golf": {
         "count": 9,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "PGA Championship": 4,
@@ -354,7 +354,7 @@
       },
       "marathon": {
         "count": 1,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Sydney Marathon": 1
@@ -382,7 +382,7 @@
       },
       "cafcl": {
         "count": 10,
-        "lastFetchAt": "2026-05-18T02:38:51.685Z",
+        "lastFetchAt": "2026-05-18T02:44:43.304Z",
         "sourceName": "ESPN API"
       }
     }
@@ -1647,56 +1647,6 @@
       "source": "soccer-mls",
       "leagueKey": "mls",
       "providerReason": "mls-appletv"
-    },
-    {
-      "id": "tennis-madrid-open-2026-05-04-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Ruud",
-      "homeTeam": "Tsitsipas",
-      "startTimeLocal": "2026-05-04T09:00:00.000Z",
-      "endTimeLocal": "2026-05-04T11:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Madrid — Round of 16",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 16",
-      "tennisPlayer1": "Ruud",
-      "tennisPlayer2": "Tsitsipas",
-      "tennisPlayer1Rank": 6,
-      "tennisPlayer2Rank": 12,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/gre.png",
-      "tournamentName": "Madrid Open"
-    },
-    {
-      "id": "tennis-madrid-open-2026-05-04-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Djokovic",
-      "homeTeam": "Auger-Aliassime",
-      "startTimeLocal": "2026-05-04T12:00:00.000Z",
-      "endTimeLocal": "2026-05-04T14:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Madrid — Round of 16",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 16",
-      "tennisPlayer1": "Djokovic",
-      "tennisPlayer2": "Auger-Aliassime",
-      "tennisPlayer1Rank": 4,
-      "tennisPlayer2Rank": 22,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/srb.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
-      "tournamentName": "Madrid Open"
     },
     {
       "id": "cricket-ipl-42oe79",
@@ -4433,31 +4383,6 @@
       "providerReason": "mls-appletv"
     },
     {
-      "id": "tennis-madrid-open-2026-05-11-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Ruud",
-      "homeTeam": "Tiafoe",
-      "startTimeLocal": "2026-05-11T09:00:00.000Z",
-      "endTimeLocal": "2026-05-11T11:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Madrid — Early Rounds",
-      "competitionType": "domestic",
-      "tennisRound": "Early Rounds",
-      "tennisPlayer1": "Ruud",
-      "tennisPlayer2": "Tiafoe",
-      "tennisPlayer1Rank": 6,
-      "tennisPlayer2Rank": 16,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
-      "tournamentName": "Madrid Open"
-    },
-    {
       "id": "tennis-italian-open-2026-05-11-m0",
       "sport": "tennis",
       "league": "ATP Masters 1000",
@@ -4481,31 +4406,6 @@
       "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
       "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
       "tournamentName": "Italian Open"
-    },
-    {
-      "id": "tennis-madrid-open-2026-05-11-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Djokovic",
-      "homeTeam": "Draper",
-      "startTimeLocal": "2026-05-11T12:00:00.000Z",
-      "endTimeLocal": "2026-05-11T14:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Madrid — Early Rounds",
-      "competitionType": "domestic",
-      "tennisRound": "Early Rounds",
-      "tennisPlayer1": "Djokovic",
-      "tennisPlayer2": "Draper",
-      "tennisPlayer1Rank": 4,
-      "tennisPlayer2Rank": 18,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/srb.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/gbr.png",
-      "tournamentName": "Madrid Open"
     },
     {
       "id": "tennis-italian-open-2026-05-11-m1",
@@ -7307,56 +7207,6 @@
       "source": "ahl-hockeytech"
     },
     {
-      "id": "tennis-italian-open-2026-05-18-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Alcaraz",
-      "homeTeam": "Shelton",
-      "startTimeLocal": "2026-05-18T09:00:00.000Z",
-      "endTimeLocal": "2026-05-18T11:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Rome — Early Rounds",
-      "competitionType": "domestic",
-      "tennisRound": "Early Rounds",
-      "tennisPlayer1": "Alcaraz",
-      "tennisPlayer2": "Shelton",
-      "tennisPlayer1Rank": 3,
-      "tennisPlayer2Rank": 19,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
-      "tournamentName": "Italian Open"
-    },
-    {
-      "id": "tennis-italian-open-2026-05-18-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Djokovic",
-      "homeTeam": "Tsitsipas",
-      "startTimeLocal": "2026-05-18T12:00:00.000Z",
-      "endTimeLocal": "2026-05-18T14:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Rome — Early Rounds",
-      "competitionType": "domestic",
-      "tennisRound": "Early Rounds",
-      "tennisPlayer1": "Djokovic",
-      "tennisPlayer2": "Tsitsipas",
-      "tennisPlayer1Rank": 4,
-      "tennisPlayer2Rank": 12,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/srb.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/gre.png",
-      "tournamentName": "Italian Open"
-    },
-    {
       "id": "cricket-ipl-x77uqi",
       "cricketMatchId": "8416c2a9-4a74-4ac2-a6ae-5ad2538cbc56",
       "sport": "cricket",
@@ -9425,6 +9275,26 @@
       "tournamentName": "French Open"
     },
     {
+      "id": "nhl_2025030324",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Colorado Avalanche",
+      "homeTeam": "Vegas Golden Knights",
+      "startTimeLocal": "2026-05-26T16:00:00.000Z",
+      "endTimeLocal": "2026-05-26T18:45:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ESPN",
+        "CBC",
+        "SN",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
+    },
+    {
       "id": "tennis-french-open-2026-05-27-m0",
       "sport": "tennis",
       "league": "Grand Slam",
@@ -9633,6 +9503,48 @@
         "2026-05-18",
         "2026-05-25"
       ]
+    },
+    {
+      "id": "nhl_2025030325",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Vegas Golden Knights",
+      "homeTeam": "Colorado Avalanche",
+      "startTimeLocal": "2026-05-29T00:00:00.000Z",
+      "endTimeLocal": "2026-05-29T02:45:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ESPN",
+        "CBC",
+        "SN",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
+    },
+    {
+      "id": "nhl_2025030315",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "TBD",
+      "homeTeam": "Carolina Hurricanes",
+      "startTimeLocal": "2026-05-29T04:00:00.000Z",
+      "endTimeLocal": "2026-05-29T06:45:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TNT",
+        "truTV",
+        "HBO MAX",
+        "CBC",
+        "SN",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "rugby-superrugby-2003vz",
@@ -10197,6 +10109,26 @@
       "providerReason": "usl-espnplus"
     },
     {
+      "id": "nhl_2025030326",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Colorado Avalanche",
+      "homeTeam": "Vegas Golden Knights",
+      "startTimeLocal": "2026-05-31T00:00:00.000Z",
+      "endTimeLocal": "2026-05-31T02:45:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ABC",
+        "CBC",
+        "SN",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
+    },
+    {
       "id": "soccer-usl-20260531-0000-colorado-springs-switchbacks-fc-at-oakland-roots",
       "sport": "soccer",
       "league": "USL",
@@ -10584,6 +10516,48 @@
       "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/rus.png",
       "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
       "tournamentName": "French Open"
+    },
+    {
+      "id": "nhl_2025030327",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Vegas Golden Knights",
+      "homeTeam": "Colorado Avalanche",
+      "startTimeLocal": "2026-06-02T00:00:00.000Z",
+      "endTimeLocal": "2026-06-02T02:45:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ESPN",
+        "CBC",
+        "SN",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
+    },
+    {
+      "id": "nhl_2025030317",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "TBD",
+      "homeTeam": "Carolina Hurricanes",
+      "startTimeLocal": "2026-06-02T04:00:00.000Z",
+      "endTimeLocal": "2026-06-02T06:45:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "TNT",
+        "truTV",
+        "HBO MAX",
+        "CBC",
+        "SN",
+        "TVAS"
+      ],
+      "isNational": true,
+      "providerReason": "national"
     },
     {
       "id": "tennis-french-open-2026-06-02-m0",
@@ -11340,56 +11314,6 @@
       "source": "rugby-mlr",
       "leagueKey": "mlr",
       "providerReason": "mlr-disneyplus"
-    },
-    {
-      "id": "tennis-french-open-2026-06-08-m0",
-      "sport": "tennis",
-      "league": "Grand Slam",
-      "awayTeam": "Fritz",
-      "homeTeam": "Paul",
-      "startTimeLocal": "2026-06-08T09:00:00.000Z",
-      "endTimeLocal": "2026-06-08T11:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "grand-slam",
-      "providerReason": "tnt-broadcast",
-      "eventType": "match",
-      "sessionTitle": "Roland Garros — Early Rounds",
-      "competitionType": "international",
-      "tennisRound": "Early Rounds",
-      "tennisPlayer1": "Fritz",
-      "tennisPlayer2": "Paul",
-      "tennisPlayer1Rank": 5,
-      "tennisPlayer2Rank": 14,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
-      "tournamentName": "French Open"
-    },
-    {
-      "id": "tennis-french-open-2026-06-08-m1",
-      "sport": "tennis",
-      "league": "Grand Slam",
-      "awayTeam": "Ruud",
-      "homeTeam": "Shelton",
-      "startTimeLocal": "2026-06-08T12:00:00.000Z",
-      "endTimeLocal": "2026-06-08T14:30:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "grand-slam",
-      "providerReason": "tnt-broadcast",
-      "eventType": "match",
-      "sessionTitle": "Roland Garros — Early Rounds",
-      "competitionType": "international",
-      "tennisRound": "Early Rounds",
-      "tennisPlayer1": "Ruud",
-      "tennisPlayer2": "Shelton",
-      "tennisPlayer1Rank": 6,
-      "tennisPlayer2Rank": 19,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
-      "tournamentName": "French Open"
     },
     {
       "id": "athletics-diamond-league-oslo-2026",
