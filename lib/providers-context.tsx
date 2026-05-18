@@ -22,14 +22,11 @@ export const PROVIDER_LIST: ProviderEntry[] = [
   { id: "beinsports",    label: "beIN Sports",            logoId: "beinsports" },
   { id: "fanduelsn",     label: "FanDuel Sports Network", logoId: "fanduelsn" },
   { id: "victoryplus",   label: "Victory+",               logoId: "victoryplus" },
-  { id: "nbatv",         label: "NBA TV",                 logoId: "nbatv" },
-  { id: "nbaleaguepass", label: "NBA League Pass",        logoId: "nbaleaguepass" },
   { id: "nwslplus",      label: "NWSL+",                  logoId: "nwslplus" },
   { id: "tennischannel", label: "Tennis Channel",         logoId: "tennischannel" },
   { id: "willowtv",      label: "Willow TV",              logoId: "willowtv" },
   { id: "rugbypasstv",   label: "RugbyPass TV",           logoId: "rugbypasstv" },
   { id: "ion",           label: "ION",                    logoId: "ion" },
-  { id: "mlbtv",        label: "MLB.TV",                 logoId: "mlbtv" },
 ];
 
 export function getEventBroadcasterIds(event: SportEvent): string[] {

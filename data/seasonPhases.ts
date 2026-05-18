@@ -137,7 +137,6 @@ export const CHAMPIONSHIP_FINALS_2026: ChampionshipFinal[] = [
   { leagueKey: "leagueone", sport: "rugby", name: "Japan League One Final", date: "2026-05-30", monthKey: "2026-05", emoji: "🏆" },
   { leagueKey: "cafchampionsleague", sport: "soccer", name: "CAF Champions League Final", date: "2026-05-30", monthKey: "2026-05", emoji: "🏆" },
   { leagueKey: "nhl", sport: "hockey", name: "Stanley Cup Final", date: "2026-06-03", monthKey: "2026-06", emoji: "🏆" },
-  { leagueKey: "nba", sport: "basketball", name: "NBA Finals", date: "2026-06-04", monthKey: "2026-06", emoji: "🏆" },
   { leagueKey: "ahl", sport: "hockey", name: "AHL Calder Cup Final", date: "2026-06-04", monthKey: "2026-06", emoji: "🏆" },
   { leagueKey: "echl", sport: "hockey", name: "ECHL Kelly Cup Final", date: "2026-05-28", monthKey: "2026-05", emoji: "🏆" },
   { leagueKey: "urc", sport: "rugby", name: "URC Grand Final", date: "2026-06-20", monthKey: "2026-06", emoji: "🏆" },

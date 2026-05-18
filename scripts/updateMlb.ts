@@ -114,6 +114,14 @@ async function fetchEspnPage(dateRange: string): Promise<EspnEvent[]> {
 }
 
 export async function fetchMlbEvents(): Promise<SoccerFetchResult> {
+  // MLB disabled — league hidden from app per user preference.
+  // To re-enable, remove this early return.
+  return { events: [], sourceUsed: "disabled", count: 0 };
+  // eslint-disable-next-line no-unreachable
+  return _fetchMlbEventsImpl();
+}
+
+async function _fetchMlbEventsImpl(): Promise<SoccerFetchResult> {
   console.log(`  MLB: Fetching from ESPN API...`);
   try {
     const now = new Date();

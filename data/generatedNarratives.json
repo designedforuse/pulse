@@ -1,20 +1,12 @@
 {
-  "lastUpdated": "2026-05-17T21:07:18.334Z",
+  "lastUpdated": "2026-05-18T00:22:57.416Z",
   "debug": {
-    "rawCandidatesByKindAndRegion": {
-      "league_moment": {
-        "Other": 1
-      }
-    },
+    "rawCandidatesByKindAndRegion": {},
     "combinedPushByRegion": {},
-    "finalFeedByRegion": {
-      "Other": [
-        "league_moment: Rivalry Weekend"
-      ]
-    },
+    "finalFeedByRegion": {},
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 1,
-    "totalAfterCap": 1,
+    "totalBeforeCap": 0,
+    "totalAfterCap": 0,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -49,17 +41,17 @@
         ],
         "playersIngested": 359,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-17T21:07:18.334Z"
+        "timestamp": "2026-05-18T00:22:57.416Z"
       },
       "cacheHistoryCount": 879,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 1,
-    "candidateCountAfterCap": 1,
+    "candidateCountBeforeCap": 0,
+    "candidateCountAfterCap": 0,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1705.1217594444445,
+      "hoursUntil": -1708.3826155555555,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -82,122 +74,38 @@
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "soccer-mls-20260517-0130-fc-cincinnati-at-san-diego-fc",
+    "tonightStorySourceEvent": "rugby-mlr-20260518-0000-california-legion-at-seattle-seawolves",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 340,
-      "sourceEventId": "soccer-mls-20260517-0130-fc-cincinnati-at-san-diego-fc",
-      "reason": "7 followed/affiliate teams playing tonight",
+      "selectedScore": 240,
+      "sourceEventId": "rugby-mlr-20260518-0000-california-legion-at-seattle-seawolves",
+      "reason": "2 followed/affiliate teams playing tonight",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 340,
-          "reason": "7 followed/affiliate teams playing tonight"
-        },
-        {
-          "label": "[ritual_night] Saturday Game Day",
-          "score": 130,
-          "reason": "ritual \"Saturday Game Day\" has 4 followed-team game(s)"
-        },
-        {
-          "label": "[league_moment] League Spotlight",
-          "score": 50,
-          "reason": "league_moment (generic, no followed teams)"
+          "score": 240,
+          "reason": "2 followed/affiliate teams playing tonight"
         }
       ]
     },
-    "videoSelection": {
-      "league_moment_rivalry": {
-        "searchQuery": "Rivalry Weekend sports May 2026",
-        "selectedVideoTitle": "Most BRUTAL Fights in Women’s Football",
-        "selectedVideoPublishedAt": "9h ago",
-        "selectedVideoChannel": "Xtreme Sports",
-        "rejectedForAgeCount": 0
-      }
-    }
+    "videoSelection": {}
   },
-  "cards": [
-    {
-      "id": "league_moment_rivalry",
-      "title": "Rivalry Weekend",
-      "subtitle": "3 rivalry matchups in the next 7 days",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 70,
-      "triggeredAt": "2026-05-17T21:07:18.334Z",
-      "expiresAt": "2026-05-24T21:07:18.334Z",
-      "kind": "league_moment",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "type": "rivalry",
-        "matchCount": 3,
-        "rivalries": [
-          "SoCal Showdown"
-        ],
-        "matches": [
-          {
-            "label": "SoCal Showdown",
-            "away": "Los Angeles Dodgers",
-            "home": "San Diego Padres",
-            "league": "MLB",
-            "startTime": "2026-05-19T01:40:00.000Z"
-          },
-          {
-            "label": "SoCal Showdown",
-            "away": "Los Angeles Dodgers",
-            "home": "San Diego Padres",
-            "league": "MLB",
-            "startTime": "2026-05-20T01:40:00.000Z"
-          },
-          {
-            "label": "SoCal Showdown",
-            "away": "Los Angeles Dodgers",
-            "home": "San Diego Padres",
-            "league": "MLB",
-            "startTime": "2026-05-21T00:40:00.000Z"
-          }
-        ],
-        "eventIds": [
-          "baseball-mlb-20260519-0140-los-angeles-dodgers-at-san-diego-padres",
-          "baseball-mlb-20260520-0140-los-angeles-dodgers-at-san-diego-padres",
-          "baseball-mlb-20260521-0040-los-angeles-dodgers-at-san-diego-padres"
-        ],
-        "reason": "3 known rivalry matchup(s) found: SoCal Showdown"
-      },
-      "sports": [
-        "baseball"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=xCYboNc7LlU",
-        "thumbnailUrl": "https://img.youtube.com/vi/xCYboNc7LlU/hqdefault.jpg",
-        "durationSeconds": 796,
-        "title": "Most BRUTAL Fights in Women’s Football",
-        "source": "youtube",
-        "channel": "Xtreme Sports",
-        "publishedAt": "9h ago"
-      }
-    }
-  ],
+  "cards": [],
   "tonightStory": {
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The San Diego FC, Los Angeles Dodgers, Lazio, Mamelodi Sundowns, and Boston Red Sox (+2 more) all play tonight across the MLS, MLB, Serie A, CAF Champions League, Ligue 1, Top 14.",
-    "sourceEventId": "soccer-mls-20260517-0130-fc-cincinnati-at-san-diego-fc",
+    "body": "The California Legion and Maine Mariners all play tonight across the MLR, ECHL.",
+    "sourceEventId": "rugby-mlr-20260518-0000-california-legion-at-seattle-seawolves",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
     },
     "sports": [
-      "soccer",
-      "baseball",
-      "rugby"
+      "rugby",
+      "hockey"
     ]
   },
   "monthSnapshot": {
@@ -213,76 +121,6 @@
           "startDate": "2026-05-02T17:00:00.000Z",
           "endDate": "2026-05-25T01:00:00.000Z",
           "eventCount": 82,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "hockey",
-          "displayName": "ECHL",
-          "leagueKey": "echl",
-          "dateRangeLabel": "May 3–20",
-          "startDate": "2026-05-03T21:15:00.000Z",
-          "endDate": "2026-05-20T23:35:00.000Z",
-          "eventCount": 29,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "NWSL",
-          "leagueKey": "nwsl",
-          "dateRangeLabel": "May 3–31",
-          "startDate": "2026-05-03T23:00:00.000Z",
-          "endDate": "2026-05-31T23:00:00.000Z",
-          "eventCount": 37,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "USL",
-          "leagueKey": "usl",
-          "dateRangeLabel": "May 3–31",
-          "startDate": "2026-05-03T23:00:00.000Z",
-          "endDate": "2026-05-31T18:00:00.000Z",
-          "eventCount": 38,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "hockey",
-          "displayName": "AHL",
-          "leagueKey": "ahl",
-          "dateRangeLabel": "May 3–24",
-          "startDate": "2026-05-03T23:05:00.000Z",
-          "endDate": "2026-05-24T19:00:00.000Z",
-          "eventCount": 36,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "baseball",
-          "displayName": "MLB",
-          "leagueKey": "mlb",
-          "dateRangeLabel": "May 3–24",
-          "startDate": "2026-05-03T23:20:00.000Z",
-          "endDate": "2026-05-24T20:10:00.000Z",
-          "eventCount": 260,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "basketball",
-          "displayName": "NBA",
-          "leagueKey": "nba",
-          "dateRangeLabel": "May 3–31",
-          "startDate": "2026-05-03T23:30:00.000Z",
-          "endDate": "2026-05-31T04:00:00.000Z",
-          "eventCount": 36,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "rugby",
-          "displayName": "MLR",
-          "leagueKey": "mlr",
-          "dateRangeLabel": "May 4–31",
-          "startDate": "2026-05-04T00:00:00.000Z",
-          "endDate": "2026-05-31T20:00:00.000Z",
-          "eventCount": 12,
           "seasonPhase": "Regular"
         },
         {
@@ -336,6 +174,26 @@
           "seasonPhase": "Regular"
         },
         {
+          "sport": "hockey",
+          "displayName": "ECHL",
+          "leagueKey": "echl",
+          "dateRangeLabel": "May 4–20",
+          "startDate": "2026-05-04T23:10:00.000Z",
+          "endDate": "2026-05-20T23:35:00.000Z",
+          "eventCount": 28,
+          "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "hockey",
+          "displayName": "AHL",
+          "leagueKey": "ahl",
+          "dateRangeLabel": "May 5–24",
+          "startDate": "2026-05-05T02:00:00.000Z",
+          "endDate": "2026-05-24T19:00:00.000Z",
+          "eventCount": 35,
+          "seasonPhase": "Playoffs"
+        },
+        {
           "sport": "soccer",
           "displayName": "Champions League",
           "leagueKey": "championsleague",
@@ -354,6 +212,26 @@
           "endDate": "2026-05-18T12:00:00.000Z",
           "eventCount": 22,
           "seasonPhase": null
+        },
+        {
+          "sport": "soccer",
+          "displayName": "USL",
+          "leagueKey": "usl",
+          "dateRangeLabel": "May 7–31",
+          "startDate": "2026-05-07T01:00:00.000Z",
+          "endDate": "2026-05-31T18:00:00.000Z",
+          "eventCount": 37,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "NWSL",
+          "leagueKey": "nwsl",
+          "dateRangeLabel": "May 7–31",
+          "startDate": "2026-05-07T02:00:00.000Z",
+          "endDate": "2026-05-31T23:00:00.000Z",
+          "eventCount": 36,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
@@ -466,6 +344,16 @@
           "seasonPhase": "Playoffs"
         },
         {
+          "sport": "rugby",
+          "displayName": "MLR",
+          "leagueKey": "mlr",
+          "dateRangeLabel": "May 9–31",
+          "startDate": "2026-05-09T20:00:00.000Z",
+          "endDate": "2026-05-31T20:00:00.000Z",
+          "eventCount": 11,
+          "seasonPhase": "Regular"
+        },
+        {
           "sport": "golf",
           "displayName": "PGA",
           "leagueKey": "golf-majors",
@@ -506,16 +394,6 @@
           "seasonPhase": null
         },
         {
-          "sport": "hockey",
-          "displayName": "NHL",
-          "leagueKey": "nhl",
-          "dateRangeLabel": "May 17–25",
-          "startDate": "2026-05-17T00:00:00.000Z",
-          "endDate": "2026-05-25T00:00:00.000Z",
-          "eventCount": 7,
-          "seasonPhase": "Playoffs"
-        },
-        {
           "sport": "soccer",
           "displayName": "CAF Champions League",
           "leagueKey": "cafchampionsleague",
@@ -524,6 +402,16 @@
           "endDate": "2026-05-24T19:00:00.000Z",
           "eventCount": 2,
           "seasonPhase": "Knockout"
+        },
+        {
+          "sport": "hockey",
+          "displayName": "NHL",
+          "leagueKey": "nhl",
+          "dateRangeLabel": "May 18–25",
+          "startDate": "2026-05-18T23:30:00.000Z",
+          "endDate": "2026-05-25T00:00:00.000Z",
+          "eventCount": 6,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "racing",
@@ -673,10 +561,10 @@
           "sport": "rugby",
           "displayName": "MLR",
           "leagueKey": "mlr",
-          "dateRangeLabel": "Jun 1–7",
+          "dateRangeLabel": "Jun 1–8",
           "startDate": "2026-06-01T00:00:00.000Z",
-          "endDate": "2026-06-07T20:00:00.000Z",
-          "eventCount": 3,
+          "endDate": "2026-06-08T00:00:00.000Z",
+          "eventCount": 4,
           "seasonPhase": "Regular"
         },
         {
@@ -718,16 +606,6 @@
           "endDate": "2026-06-04T00:00:00.000Z",
           "eventCount": 1,
           "seasonPhase": "Regular"
-        },
-        {
-          "sport": "basketball",
-          "displayName": "NBA",
-          "leagueKey": "nba",
-          "dateRangeLabel": "Jun 4–6",
-          "startDate": "2026-06-04T00:30:00.000Z",
-          "endDate": "2026-06-06T00:30:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": "Final"
         },
         {
           "sport": "athletics",
@@ -876,13 +754,6 @@
           "sport": "hockey",
           "name": "Stanley Cup Final",
           "date": "2026-06-03",
-          "emoji": "🏆"
-        },
-        {
-          "leagueKey": "nba",
-          "sport": "basketball",
-          "name": "NBA Finals",
-          "date": "2026-06-04",
           "emoji": "🏆"
         },
         {
