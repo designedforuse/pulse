@@ -1,6 +1,6 @@
 import type { SportEvent } from "@/lib/data";
 import type { ScoreData } from "@/lib/scores-context";
-import { isEventLive, isEventCompleted, getEventEnd, formatTimeSinceStart, isMultiDayLiveEvent } from "@/utils/time";
+import { isEventLive, isEventCompleted, getEventEnd, formatTimeSinceStart } from "@/utils/time";
 import { getRugbyClockDisplay } from "@/utils/rugbyClock";
 
 export type GameState = "FINAL" | "LIVE" | "UPCOMING";
@@ -82,12 +82,6 @@ export function normalizeGameState(
   }
 
   if (isEventLive(event, now)) {
-    // Multi-day events (cycling Grand Tours, marathon weekends) shouldn't show
-    // an "elapsed since tour start" counter — that would read "Started 240h ago"
-    // mid-tour. Show a simple "Live stage" label instead.
-    if (isMultiDayLiveEvent(event)) {
-      return { gameState: "LIVE", displayClockText: null, displayStatusText: "Live stage" };
-    }
     const elapsed = formatTimeSinceStart(event.startTimeLocal, now);
     return { gameState: "LIVE", displayClockText: elapsed || null, displayStatusText: null };
   }

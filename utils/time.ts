@@ -26,55 +26,10 @@ export function getEventEnd(event: SportEvent): Date {
   return new Date(start.getTime() + getDefaultDurationMs(event.sport));
 }
 
-// Events whose end-to-start span exceeds this are treated as multi-day
-// tournaments (cycling Grand Tours, marathon weekends, etc). For these,
-// the time-based LIVE window is restricted to a daily "stage window"
-// derived from the start-of-day time, so the LIVE badge doesn't stay on
-// for the entire multi-week event.
-const MULTI_DAY_THRESHOLD_MS = 36 * 60 * 60 * 1000;
-const DAILY_STAGE_WINDOW_MS = 5 * 60 * 60 * 1000;
-
-function isMultiDayEvent(start: Date, end: Date): boolean {
-  return end.getTime() - start.getTime() > MULTI_DAY_THRESHOLD_MS;
-}
-
-function isWithinDailyStageWindow(start: Date, end: Date, now: Date): boolean {
-  if (now < start || now > end) return false;
-  // Build today's stage window using the start-of-tour UTC time-of-day.
-  const todayStageStart = new Date(Date.UTC(
-    now.getUTCFullYear(),
-    now.getUTCMonth(),
-    now.getUTCDate(),
-    start.getUTCHours(),
-    start.getUTCMinutes(),
-    0,
-    0,
-  ));
-  const todayStageEnd = new Date(todayStageStart.getTime() + DAILY_STAGE_WINDOW_MS);
-  return now >= todayStageStart && now <= todayStageEnd;
-}
-
-function isCyclingRestDay(event: SportEvent, now: Date): boolean {
-  const restDays = (event as SportEvent & { cyclingRestDays?: string[] }).cyclingRestDays;
-  if (!Array.isArray(restDays) || restDays.length === 0) return false;
-  const todayIso = now.toISOString().slice(0, 10);
-  return restDays.includes(todayIso);
-}
-
 export function isEventLive(event: SportEvent, now: Date): boolean {
   const start = new Date(event.startTimeLocal);
   const end = getEventEnd(event);
-  if (isMultiDayEvent(start, end)) {
-    if (isCyclingRestDay(event, now)) return false;
-    return isWithinDailyStageWindow(start, end, now);
-  }
   return now >= start && now <= end;
-}
-
-export function isMultiDayLiveEvent(event: SportEvent): boolean {
-  const start = new Date(event.startTimeLocal);
-  const end = getEventEnd(event);
-  return isMultiDayEvent(start, end);
 }
 
 export function isEventCompleted(event: SportEvent, now: Date): boolean {

@@ -78,13 +78,89 @@ const GRAND_TOURS: GrandTour[] = [
   },
 ];
 
-function stableId(name: string): string {
-  const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-  return `cycling-grand-tour-${slug}-2026`;
+// Each daily stage is modeled as its own event (mirrors the per-round golf
+// pattern). Stages broadcast windows vary, but a 5h default gives a sensible
+// LIVE window that matches how golf rounds are handled.
+const STAGE_DURATION_MIN = 5 * 60;
+
+function tourSlug(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+function stageId(tour: GrandTour, dateIso: string, stageNumber: number): string {
+  return `cycling-grand-tour-${tourSlug(tour.name)}-2026-${dateIso}-stage-${stageNumber}`;
+}
+
+function isoDateUtc(d: Date): string {
+  return d.toISOString().slice(0, 10);
+}
+
+function addDaysUtc(d: Date, days: number): Date {
+  const next = new Date(d);
+  next.setUTCDate(next.getUTCDate() + days);
+  return next;
+}
+
+function buildStageEvents(tour: GrandTour): AppEvent[] {
+  const events: AppEvent[] = [];
+  const start = new Date(tour.startUtc);
+  const end = new Date(tour.endUtc);
+  const restSet = new Set(tour.restDays);
+
+  let stageNumber = 0;
+  let cursor = new Date(Date.UTC(
+    start.getUTCFullYear(),
+    start.getUTCMonth(),
+    start.getUTCDate(),
+    start.getUTCHours(),
+    start.getUTCMinutes(),
+    0,
+    0,
+  ));
+
+  while (cursor <= end && stageNumber < tour.totalStages) {
+    const dateIso = isoDateUtc(cursor);
+    if (restSet.has(dateIso)) {
+      cursor = addDaysUtc(cursor, 1);
+      continue;
+    }
+
+    stageNumber += 1;
+    const stageStart = new Date(cursor);
+    const stageEnd = new Date(stageStart.getTime() + STAGE_DURATION_MIN * 60_000);
+    const isFinalStage = stageNumber === tour.totalStages;
+    const stageLabel = `Stage ${stageNumber}${isFinalStage ? " — Final" : ""}`;
+
+    events.push({
+      id: stageId(tour, dateIso, stageNumber),
+      sport: "cycling",
+      league: "Grand Tour",
+      awayTeam: stageLabel,
+      homeTeam: tour.name,
+      startTimeLocal: stageStart.toISOString(),
+      endTimeLocal: stageEnd.toISOString(),
+      providerId: tour.providerId,
+      isLive: false,
+      source: "cycling-hardcoded",
+      leagueKey: "grand-tour",
+      providerReason: tour.providerReason,
+      eventType: "session",
+      sessionTitle: `${tour.name} 2026 — ${stageLabel}`,
+      competitionType: "international",
+      tournamentName: tour.name,
+      cyclingRoute: tour.route,
+      cyclingTotalStages: tour.totalStages,
+      cyclingRestDays: tour.restDays,
+    });
+
+    cursor = addDaysUtc(cursor, 1);
+  }
+
+  return events;
 }
 
 export function fetchCyclingEvents(): CyclingFetchResult {
-  console.log(`  Cycling: Generating Grand Tour schedule (${GRAND_TOURS.length} races)...`);
+  console.log(`  Cycling: Generating Grand Tour stage schedule (${GRAND_TOURS.length} races)...`);
 
   const now = new Date();
   const windowStart = new Date(now.getTime() - 14 * 86400000);
@@ -94,38 +170,23 @@ export function fetchCyclingEvents(): CyclingFetchResult {
   const tourCounts: Record<string, number> = {};
 
   for (const tour of GRAND_TOURS) {
-    const start = new Date(tour.startUtc);
-    if (start < windowStart || start > windowEnd) continue;
+    const tourStart = new Date(tour.startUtc);
+    const tourEnd = new Date(tour.endUtc);
+    // Skip tours whose entire window sits outside the retention range.
+    if (tourEnd < windowStart || tourStart > windowEnd) continue;
 
-    const id = stableId(tour.name);
-    const durationMin = Math.round((new Date(tour.endUtc).getTime() - start.getTime()) / 60000);
-
-    events.push({
-      id,
-      sport: "cycling",
-      league: "Grand Tour",
-      awayTeam: tour.route,
-      homeTeam: tour.name,
-      startTimeLocal: tour.startUtc,
-      endTimeLocal: tour.endUtc,
-      providerId: tour.providerId,
-      isLive: false,
-      source: "cycling-hardcoded",
-      leagueKey: "grand-tour",
-      providerReason: tour.providerReason,
-      eventType: "session",
-      sessionTitle: `${tour.name} 2026`,
-      competitionType: "international",
-      tournamentName: tour.name,
-      cyclingRoute: tour.route,
-      cyclingTotalStages: tour.totalStages,
-      cyclingRestDays: tour.restDays,
-    });
-
-    tourCounts[tour.name] = 1;
+    const stages = buildStageEvents(tour);
+    let kept = 0;
+    for (const stage of stages) {
+      const stageStart = new Date(stage.startTimeLocal);
+      if (stageStart < windowStart || stageStart > windowEnd) continue;
+      events.push(stage);
+      kept += 1;
+    }
+    tourCounts[tour.name] = kept;
   }
 
-  console.log(`  Cycling: ${events.length} races in retention window`);
+  console.log(`  Cycling: ${events.length} stage events in retention window`);
 
   return { events, sourceUsed: "hardcoded", count: events.length, tourCounts };
 }
@@ -135,8 +196,34 @@ export function mergeCyclingEvents(
   fresh: AppEvent[],
   now: Date
 ): CyclingMergeResult {
+  const windowStart = new Date(now.getTime() - 14 * 86400000);
+  const windowEnd = new Date(now.getTime() + 180 * 86400000);
+
+  // Authoritative-feed pruning. The hardcoded GRAND_TOURS schedule is the
+  // source of truth for cycling. Any existing cycling-grand-tour-* event
+  // inside the retention window that's missing from `fresh` is stale
+  // (route changes, rest-day shifts, or the old monolithic tour-as-one-event
+  // model that's been replaced by per-stage events) and must be removed.
+  // Only prune when fresh is non-empty so a transient failure can't wipe
+  // the cache.
+  const freshById = new Map<string, AppEvent>();
+  for (const e of fresh) freshById.set(e.id, e);
+
   const index = new Map<string, AppEvent>();
+  let pruned = 0;
+
   for (const e of existing) {
+    const isCycling = typeof e.id === "string" && e.id.startsWith("cycling-grand-tour-");
+    if (!isCycling) {
+      index.set(e.id, e);
+      continue;
+    }
+    const start = new Date(e.startTimeLocal);
+    const inWindow = start >= windowStart && start <= windowEnd;
+    if (inWindow && freshById.size > 0 && !freshById.has(e.id)) {
+      pruned++;
+      continue;
+    }
     index.set(e.id, e);
   }
 
@@ -153,19 +240,21 @@ export function mergeCyclingEvents(
     }
   }
 
-  const windowStart = new Date(now.getTime() - 14 * 86400000);
-  const windowEnd = new Date(now.getTime() + 180 * 86400000);
-
-  const beforePrune = index.size;
   const merged: AppEvent[] = [];
   for (const e of index.values()) {
+    const isCycling = typeof e.id === "string" && e.id.startsWith("cycling-grand-tour-");
+    if (!isCycling) {
+      merged.push(e);
+      continue;
+    }
     const start = new Date(e.startTimeLocal);
     if (start >= windowStart && start <= windowEnd) {
       merged.push(e);
+    } else {
+      pruned++;
     }
   }
 
-  const pruned = beforePrune - merged.length;
   merged.sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
 
   return { merged, added, updated, pruned };

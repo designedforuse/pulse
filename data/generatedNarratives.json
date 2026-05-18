@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-18T02:08:13.758Z",
+  "lastUpdated": "2026-05-18T02:38:51.909Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {},
     "combinedPushByRegion": {},
@@ -41,7 +41,7 @@
         ],
         "playersIngested": 359,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-18T02:08:13.758Z"
+        "timestamp": "2026-05-18T02:38:51.909Z"
       },
       "cacheHistoryCount": 879,
       "error": null
@@ -51,7 +51,7 @@
     "candidateCountAfterCap": 0,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1710.137155,
+      "hoursUntil": -1710.6477525,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -266,10 +266,10 @@
           "sport": "cycling",
           "displayName": "Grand Tour — Giro d'Italia",
           "leagueKey": "grand-tour",
-          "dateRangeLabel": "May 8",
+          "dateRangeLabel": "May 8–31",
           "startDate": "2026-05-08T12:00:00.000Z",
-          "endDate": "2026-05-08T12:00:00.000Z",
-          "eventCount": 1,
+          "endDate": "2026-05-31T12:00:00.000Z",
+          "eventCount": 21,
           "seasonPhase": null
         },
         {
