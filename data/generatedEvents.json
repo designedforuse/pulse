@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-18T00:22:57.197Z",
+  "lastUpdated": "2026-05-18T02:08:13.540Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -39,11 +39,11 @@
   "ahlAdded": 0,
   "ahlUpdated": 24,
   "ahlPruned": 0,
-  "echlCount": 28,
+  "echlCount": 26,
   "echlAdded": 134,
-  "echlUpdated": 28,
-  "echlPruned": 134,
-  "echlWebCount": 162,
+  "echlUpdated": 26,
+  "echlPruned": 136,
+  "echlWebCount": 160,
   "buCount": 0,
   "buAdded": 0,
   "buUpdated": 0,
@@ -123,8 +123,8 @@
   "championsCupPruned": 0,
   "championsCupSourceUsed": "ical",
   "mlrCount": 15,
-  "mlrAdded": 0,
-  "mlrUpdated": 15,
+  "mlrAdded": 3,
+  "mlrUpdated": 12,
   "mlrPruned": 0,
   "mlrSourceUsed": "hardcoded",
   "championsLeagueCount": 3,
@@ -195,22 +195,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-05-18T00:22:57.197Z",
+    "lastRefreshAt": "2026-05-18T02:08:13.540Z",
     "sources": {
       "nhl": {
         "count": 6,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 35,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
-        "count": 28,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "count": 26,
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -222,7 +222,7 @@
       },
       "rugby": {
         "count": 95,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 16,
@@ -242,87 +242,87 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 40,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 141,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 32,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 41,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 18,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 20,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 36,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 38,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-07T01:00:00.000Z"
       },
       "championsCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 15,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 3,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 3,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-16T14:00:00.000Z"
       },
       "tennis": {
         "count": 66,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "French Open": 32,
@@ -332,7 +332,7 @@
       },
       "f1": {
         "count": 25,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Canadian Grand Prix": 5,
@@ -344,7 +344,7 @@
       },
       "golf": {
         "count": 9,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "PGA Championship": 4,
@@ -354,7 +354,7 @@
       },
       "marathon": {
         "count": 1,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Sydney Marathon": 1
@@ -382,7 +382,7 @@
       },
       "cafcl": {
         "count": 10,
-        "lastFetchAt": "2026-05-18T00:22:57.197Z",
+        "lastFetchAt": "2026-05-18T02:08:13.540Z",
         "sourceName": "ESPN API"
       }
     }
@@ -6008,20 +6008,6 @@
       "leagueKey": "top14"
     },
     {
-      "id": "rugby-mlr-20260516-2000-new-england-free-jacks-at-anthem-rc",
-      "sport": "rugby",
-      "league": "MLR",
-      "awayTeam": "New England Free Jacks",
-      "homeTeam": "Anthem RC",
-      "startTimeLocal": "2026-05-16T20:00:00.000Z",
-      "endTimeLocal": "2026-05-16T22:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "rugby-mlr",
-      "leagueKey": "mlr",
-      "providerReason": "mlr-disneyplus"
-    },
-    {
       "id": "soccer-mls-20260516-2030-chicago-fire-fc-at-cf-montr-al",
       "sport": "soccer",
       "league": "MLS",
@@ -6181,6 +6167,20 @@
       "source": "soccer-mls",
       "leagueKey": "mls",
       "providerReason": "mls-appletv"
+    },
+    {
+      "id": "rugby-mlr-20260517-0000-chicago-hounds-at-california-legion",
+      "sport": "rugby",
+      "league": "MLR",
+      "awayTeam": "Chicago Hounds",
+      "homeTeam": "California Legion",
+      "startTimeLocal": "2026-05-17T00:00:00.000Z",
+      "endTimeLocal": "2026-05-17T02:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "rugby-mlr",
+      "leagueKey": "mlr",
+      "providerReason": "mlr-disneyplus"
     },
     {
       "id": "echl-web-25462",
@@ -6997,10 +6997,10 @@
       "providerReason": "laliga-disneyplus"
     },
     {
-      "id": "rugby-mlr-20260517-2000-chicago-hounds-at-old-glory-dc",
+      "id": "rugby-mlr-20260517-2000-new-england-free-jacks-at-old-glory-dc",
       "sport": "rugby",
       "league": "MLR",
-      "awayTeam": "Chicago Hounds",
+      "awayTeam": "New England Free Jacks",
       "homeTeam": "Old Glory DC",
       "startTimeLocal": "2026-05-17T20:00:00.000Z",
       "endTimeLocal": "2026-05-17T22:15:00.000Z",
@@ -7048,14 +7048,14 @@
       "startTimeLocal": "2026-05-17T23:05:00.000Z",
       "endTimeLocal": "2026-05-18T01:50:00.000Z",
       "providerId": "flosports",
-      "isLive": true,
+      "isLive": false,
       "source": "echl"
     },
     {
-      "id": "rugby-mlr-20260518-0000-california-legion-at-seattle-seawolves",
+      "id": "rugby-mlr-20260518-0000-anthem-rc-at-seattle-seawolves",
       "sport": "rugby",
       "league": "MLR",
-      "awayTeam": "California Legion",
+      "awayTeam": "Anthem RC",
       "homeTeam": "Seattle Seawolves",
       "startTimeLocal": "2026-05-18T00:00:00.000Z",
       "endTimeLocal": "2026-05-18T02:15:00.000Z",
@@ -7285,18 +7285,6 @@
       "source": "ahl-hockeytech"
     },
     {
-      "id": "echl-web-25478",
-      "sport": "hockey",
-      "league": "ECHL",
-      "homeTeam": "Florida Everblades",
-      "awayTeam": "South Carolina Stingrays",
-      "startTimeLocal": "2026-05-19T23:30:00.000Z",
-      "endTimeLocal": "2026-05-20T02:15:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "echl"
-    },
-    {
       "id": "echl-web-25471",
       "sport": "hockey",
       "league": "ECHL",
@@ -7366,18 +7354,6 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
-    },
-    {
-      "id": "echl-web-25479",
-      "sport": "hockey",
-      "league": "ECHL",
-      "homeTeam": "Florida Everblades",
-      "awayTeam": "South Carolina Stingrays",
-      "startTimeLocal": "2026-05-20T23:30:00.000Z",
-      "endTimeLocal": "2026-05-21T02:15:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "echl"
     },
     {
       "id": "soccer-usl-20260520-2330-miami-fc-at-detroit-city-fc",

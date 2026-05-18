@@ -54,9 +54,9 @@ const MLR_2026_SCHEDULE: Array<{
   { week: 7, date: "2026-05-09", time: "16:00", home: "Anthem RC", away: "California Legion" },
   { week: 7, date: "2026-05-10", time: "16:00", home: "New England Free Jacks", away: "Chicago Hounds" },
   { week: 7, date: "2026-05-10", time: "20:00", home: "Seattle Seawolves", away: "Old Glory DC" },
-  { week: 8, date: "2026-05-16", time: "16:00", home: "Anthem RC", away: "New England Free Jacks" },
-  { week: 8, date: "2026-05-17", time: "16:00", home: "Old Glory DC", away: "Chicago Hounds" },
-  { week: 8, date: "2026-05-17", time: "20:00", home: "Seattle Seawolves", away: "California Legion" },
+  { week: 8, date: "2026-05-16", time: "20:00", home: "California Legion", away: "Chicago Hounds" },
+  { week: 8, date: "2026-05-17", time: "16:00", home: "Old Glory DC", away: "New England Free Jacks" },
+  { week: 8, date: "2026-05-17", time: "20:00", home: "Seattle Seawolves", away: "Anthem RC" },
   { week: 9, date: "2026-05-23", time: "16:00", home: "New England Free Jacks", away: "Old Glory DC" },
   { week: 9, date: "2026-05-24", time: "16:00", home: "Chicago Hounds", away: "Seattle Seawolves" },
   { week: 9, date: "2026-05-24", time: "20:00", home: "California Legion", away: "Anthem RC" },
@@ -155,8 +155,34 @@ export function mergeMlrEvents(
   fresh: AppEvent[],
   now: Date
 ): MlrMergeResult {
+  const windowStart = new Date(now.getTime() - 14 * 86400000);
+  const windowEnd = new Date(now.getTime() + 21 * 86400000);
+
+  // Authoritative-feed pruning: the hardcoded MLR_2026_SCHEDULE is the source of truth
+  // for this league. Any existing rugby-mlr-* event inside the retention window that is
+  // missing from `fresh` is a stale fixture (matchup correction, postponement, etc.) and
+  // must be removed. Without this guard, edits to the schedule leave phantom events
+  // behind — which is exactly how a non-existent fixture ended up flagged LIVE by the
+  // time-based fallback in utils/gameState.ts. Only prune when fresh is non-empty so a
+  // transient fetch failure doesn't wipe the cache.
+  const freshById = new Map<string, AppEvent>();
+  for (const e of fresh) freshById.set(e.id, e);
+
   const index = new Map<string, AppEvent>();
+  let pruned = 0;
+
   for (const e of existing) {
+    const isMlr = typeof e.id === "string" && e.id.startsWith("rugby-mlr-");
+    if (!isMlr) {
+      index.set(e.id, e);
+      continue;
+    }
+    const start = new Date(e.startTimeLocal);
+    const inWindow = start >= windowStart && start <= windowEnd;
+    if (inWindow && freshById.size > 0 && !freshById.has(e.id)) {
+      pruned++;
+      continue;
+    }
     index.set(e.id, e);
   }
 
@@ -173,19 +199,21 @@ export function mergeMlrEvents(
     }
   }
 
-  const windowStart = new Date(now.getTime() - 14 * 86400000);
-  const windowEnd = new Date(now.getTime() + 21 * 86400000);
-
-  const beforePrune = index.size;
   const merged: AppEvent[] = [];
   for (const e of index.values()) {
+    const isMlr = typeof e.id === "string" && e.id.startsWith("rugby-mlr-");
+    if (!isMlr) {
+      merged.push(e);
+      continue;
+    }
     const start = new Date(e.startTimeLocal);
     if (start >= windowStart && start <= windowEnd) {
       merged.push(e);
+    } else {
+      pruned++;
     }
   }
 
-  const pruned = beforePrune - merged.length;
   merged.sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
 
   return { merged, added, updated, pruned };

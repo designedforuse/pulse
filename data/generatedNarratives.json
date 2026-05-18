@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-18T00:22:57.416Z",
+  "lastUpdated": "2026-05-18T02:08:13.758Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {},
     "combinedPushByRegion": {},
@@ -41,7 +41,7 @@
         ],
         "playersIngested": 359,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-18T00:22:57.416Z"
+        "timestamp": "2026-05-18T02:08:13.758Z"
       },
       "cacheHistoryCount": 879,
       "error": null
@@ -51,7 +51,7 @@
     "candidateCountAfterCap": 0,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1708.3826155555555,
+      "hoursUntil": -1710.137155,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -72,20 +72,20 @@
       "clinchFinalCount": 0,
       "clinchGatedOut": []
     },
-    "tonightStorySelectedSignal": "multi_team_night",
-    "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "rugby-mlr-20260518-0000-california-legion-at-seattle-seawolves",
+    "tonightStorySelectedSignal": "single_team_game",
+    "tonightStoryHeadline": "Boston Bruins Tonight",
+    "tonightStorySourceEvent": "echl-web-25486",
     "tonightStoryDebug": {
-      "selectedSignal": "multi_team_night",
-      "selectedHeadline": "Your Sports Night",
-      "selectedScore": 240,
-      "sourceEventId": "rugby-mlr-20260518-0000-california-legion-at-seattle-seawolves",
-      "reason": "2 followed/affiliate teams playing tonight",
+      "selectedSignal": "single_team_game",
+      "selectedHeadline": "Boston Bruins Tonight",
+      "selectedScore": 150,
+      "sourceEventId": "echl-web-25486",
+      "reason": "single followed team (Boston Bruins) playing tonight",
       "scoredCandidates": [
         {
-          "label": "[multi_team_night] Your Sports Night",
-          "score": 240,
-          "reason": "2 followed/affiliate teams playing tonight"
+          "label": "[single_team_game] Boston Bruins Tonight",
+          "score": 150,
+          "reason": "single followed team (Boston Bruins) playing tonight"
         }
       ]
     },
@@ -93,18 +93,17 @@
   },
   "cards": [],
   "tonightStory": {
-    "signalType": "multi_team_night",
-    "signalLabel": "YOUR TEAMS",
-    "headline": "Your Sports Night",
-    "body": "The California Legion and Maine Mariners all play tonight across the MLR, ECHL.",
-    "sourceEventId": "rugby-mlr-20260518-0000-california-legion-at-seattle-seawolves",
+    "signalType": "single_team_game",
+    "signalLabel": "YOUR TEAM",
+    "headline": "Boston Bruins Tonight",
+    "body": "Maine Mariners at Wheeling Nailers — catch the action in the ECHL.",
+    "sourceEventId": "echl-web-25486",
     "sourceCard": {
-      "id": "tonight_multi_team",
-      "kind": "multi_team_night",
-      "title": "Your Sports Night"
+      "id": "tonight_single_team",
+      "kind": "single_team_game",
+      "title": "Boston Bruins Tonight"
     },
     "sports": [
-      "rugby",
       "hockey"
     ]
   },
@@ -180,7 +179,7 @@
           "dateRangeLabel": "May 4–20",
           "startDate": "2026-05-04T23:10:00.000Z",
           "endDate": "2026-05-20T23:35:00.000Z",
-          "eventCount": 28,
+          "eventCount": 26,
           "seasonPhase": "Playoffs"
         },
         {
