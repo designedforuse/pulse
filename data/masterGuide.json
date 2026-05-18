@@ -35,6 +35,14 @@
             "NWSL",
             "USL"
           ]
+        },
+        {
+          "id": "ncaab_night",
+          "title": "NCAAB Night",
+          "sport": "basketball",
+          "leagues": [
+            "NCAAB"
+          ]
         }
       ]
     },
