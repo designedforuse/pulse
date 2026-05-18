@@ -18,14 +18,6 @@
           ]
         },
         {
-          "id": "f1_weekend",
-          "title": "F1 Race Weekend",
-          "sport": "racing",
-          "leagues": [
-            "F1"
-          ]
-        },
-        {
           "id": "soccer_night",
           "title": "Soccer Night",
           "sport": "soccer",
@@ -74,6 +66,23 @@
             "BBL",
             "Super Smash",
             "MLC"
+          ]
+        },
+        {
+          "id": "f1_weekend",
+          "title": "F1 Race Weekend",
+          "sport": "racing",
+          "leagues": [
+            "F1"
+          ]
+        },
+        {
+          "id": "tennis_night",
+          "title": "Tennis Night",
+          "sport": "tennis",
+          "leagues": [
+            "ATP Masters 1000",
+            "Grand Slam"
           ]
         }
       ]
@@ -149,10 +158,44 @@
         },
         {
           "id": "athletics_morning",
-          "title": "Marathon",
+          "title": "Athletics Morning",
           "sport": "athletics",
           "leagues": [
-            "World Marathon Majors"
+            "World Marathon Majors",
+            "Diamond League"
+          ]
+        },
+        {
+          "id": "cycling_morning",
+          "title": "Cycling Morning",
+          "sport": "cycling",
+          "leagues": [
+            "Grand Tour"
+          ]
+        },
+        {
+          "id": "tennis_morning",
+          "title": "Tennis Morning",
+          "sport": "tennis",
+          "leagues": [
+            "ATP Masters 1000",
+            "Grand Slam"
+          ]
+        },
+        {
+          "id": "golf_morning",
+          "title": "Golf Morning",
+          "sport": "golf",
+          "leagues": [
+            "The Majors"
+          ]
+        },
+        {
+          "id": "horse_racing_morning",
+          "title": "Horse Racing Morning",
+          "sport": "horse-racing",
+          "leagues": [
+            "Triple Crown"
           ]
         }
       ]
