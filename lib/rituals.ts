@@ -34,7 +34,7 @@ export const RITUALS: Ritual[] = [
     id: "friday_after_hours",
     label: "Friday Night Mode",
     icon: "moon",
-    sports: ["rugby", "cricket", "tennis"],
+    sports: ["rugby", "cricket", "tennis", "athletics", "racing"],
     days: [5],
     startHour: 21,
     endHour: 24,
