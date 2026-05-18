@@ -56,7 +56,7 @@ export const RITUALS: Ritual[] = [
     id: "saturday_spotlight",
     label: "Saturday Game Day",
     icon: "sunny",
-    sports: ["hockey", "basketball", "soccer", "golf", "horse-racing"],
+    sports: ["hockey", "basketball", "soccer", "golf", "horse-racing", "tennis"],
     days: [6],
     startHour: 16,
     endHour: 20,
