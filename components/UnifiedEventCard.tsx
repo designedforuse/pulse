@@ -21,6 +21,10 @@ import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTi
 
 const MASTERS_LOGO = require("@/assets/images/masters-logo.png");
 const BOSTON_MARATHON_LOGO = require("@/assets/images/boston-marathon-logo.png");
+const GIRO_DITALIA_LOGO = require("@/assets/images/giro-ditalia-logo.png");
+
+const isGiroDItalia = (name: string | null | undefined) =>
+  !!name && /giro\s*d['’]?\s*italia/i.test(name);
 
 const GP_FLAGS: Record<string, string> = {
   "Australian": "🇦🇺",
@@ -1041,7 +1045,15 @@ export default function UnifiedEventCard({
                 <View style={uStyles.espnTeamOuter}>
                   <View style={uStyles.espnStarSlot} />
                   <View style={uStyles.espnTeam}>
-                    <Text style={{ fontSize: featured ? 28 : 24 }}>🚴</Text>
+                    {isGiroDItalia(cyclingTourName) ? (
+                      <Image
+                        source={GIRO_DITALIA_LOGO}
+                        style={{ width: featured ? 36 : 30, height: featured ? 36 : 30 }}
+                        resizeMode="contain"
+                      />
+                    ) : (
+                      <Text style={{ fontSize: featured ? 28 : 24 }}>🚴</Text>
+                    )}
                     <Text style={uStyles.espnTeamName} numberOfLines={2}>
                       {cyclingTourName}
                     </Text>
@@ -1092,7 +1104,15 @@ export default function UnifiedEventCard({
               return (
                 <View style={uStyles.racingLayout}>
                   <View style={uStyles.racingCircuitRow}>
-                    <Text style={{ fontSize: featured ? 18 : 16 }}>🚴</Text>
+                    {isGiroDItalia(cyclingTourName) ? (
+                      <Image
+                        source={GIRO_DITALIA_LOGO}
+                        style={{ width: featured ? 24 : 20, height: featured ? 24 : 20 }}
+                        resizeMode="contain"
+                      />
+                    ) : (
+                      <Text style={{ fontSize: featured ? 18 : 16 }}>🚴</Text>
+                    )}
                     <Text
                       style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
                       numberOfLines={1}
