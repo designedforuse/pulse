@@ -31,6 +31,7 @@ import { useRitualOverrides } from "@/lib/ritual-overrides-context";
 import {
   getRitualById,
   getEventsForRitual,
+  getCatchUpEventsForRitual,
   formatRitualTimeWindow,
   formatRitualSports,
 } from "@/lib/rituals";
@@ -108,6 +109,11 @@ export default function GuideDetailScreen() {
     if (!featured) return allRitualEvents;
     return allRitualEvents.filter((e) => e.id !== featured.id);
   }, [featured, allRitualEvents]);
+
+  const catchUpEvents = useMemo(() => {
+    if (!ritual) return [] as SportEvent[];
+    return getCatchUpEventsForRitual(allEvents, ritual, favorites, now).events;
+  }, [ritual, allEvents, favorites, now]);
 
   const { favoritesEvents, moreGames } = useMemo(() => {
     if (!rest.length) return { favoritesEvents: [] as SportEvent[], moreGames: [] as SportEvent[] };
@@ -225,7 +231,7 @@ export default function GuideDetailScreen() {
 
   const subtitle = `${formatRitualSports(ritual)} · ${formatRitualTimeWindow(ritual)}`;
   const contextLabel = ritual.context;
-  const hasNoEvents = !featured && favoritesEvents.length === 0 && moreGames.length === 0;
+  const hasNoEvents = !featured && favoritesEvents.length === 0 && moreGames.length === 0 && catchUpEvents.length === 0;
 
   return (
     <View style={styles.container}>
@@ -322,6 +328,31 @@ export default function GuideDetailScreen() {
                 <Text style={styles.favoritesEmptyText}>No favorites in this window</Text>
               </View>
             )}
+          </View>
+        )}
+
+        {catchUpEvents.length > 0 && (
+          <View style={styles.sectionBlock}>
+            <View style={styles.sectionHeaderRow}>
+              <Ionicons name="play-back" size={16} color="#A78BFA" />
+              <Text style={styles.sectionLabel}>Catch Up</Text>
+              <View style={styles.countChipMuted}>
+                <Text style={styles.countChipMutedText}>{catchUpEvents.length}</Text>
+              </View>
+            </View>
+            <Text style={styles.catchUpHint}>
+              Finished in the last 24h — replay before live games start
+            </Text>
+            {catchUpEvents.map((event) => (
+              <UnifiedEventCard
+                key={`catchup-${event.id}`}
+                event={event}
+                now={now}
+                score={getScore(event.id)}
+                isFav={favoriteInvolved(event, favorites)}
+                onSetFeatured={openGameSheet}
+              />
+            ))}
           </View>
         )}
 
@@ -599,6 +630,13 @@ const styles = StyleSheet.create({
     fontWeight: "600" as const,
     color: Colors.textPrimary,
     fontFamily: "Inter_600SemiBold",
+  },
+  catchUpHint: {
+    fontSize: 12,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
+    marginTop: -4,
+    marginBottom: 8,
   },
   countChip: {
     backgroundColor: Colors.favStar,

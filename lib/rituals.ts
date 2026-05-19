@@ -561,6 +561,56 @@ export function getEventsForRitual(
   return { featured, rest, debug };
 }
 
+export interface CatchUpResult {
+  events: SportEvent[];
+  windowStartUtc: Date;
+  lookbackStartUtc: Date;
+}
+
+const CATCH_UP_LOOKBACK_HOURS = 24;
+const CATCH_UP_MAX = 6;
+
+export function getCatchUpEventsForRitual(
+  allEvents: SportEvent[],
+  ritual: Ritual,
+  favorites: Favorites,
+  now: Date,
+): CatchUpResult {
+  const targetDow = ritual.days[0];
+  const w = getGuideDayWindow(targetDow, ritual.startHour, ritual.endHour, now);
+  const lookbackStart = new Date(w.windowStartUtc.getTime() - CATCH_UP_LOOKBACK_HOURS * 3600000);
+
+  const candidates = allEvents.filter((e) => {
+    if (!ritual.sports.includes(e.sport)) return false;
+    const startMs = new Date(e.startTimeLocal).getTime();
+    if (startMs < lookbackStart.getTime() || startMs >= w.windowStartUtc.getTime()) return false;
+    if (isEventLive(e, now)) return false;
+    const endMs = getEventEnd(e).getTime();
+    if (endMs >= now.getTime()) return false;
+    return true;
+  });
+
+  candidates.sort((a, b) => {
+    const aFav = favoriteInvolved(a, favorites) ? 0 : 1;
+    const bFav = favoriteInvolved(b, favorites) ? 0 : 1;
+    if (aFav !== bFav) return aFav - bFav;
+
+    const aLadder = getLadderRank(a);
+    const bLadder = getLadderRank(b);
+    if (aLadder !== bLadder) return aLadder - bLadder;
+
+    const aEnd = getEventEnd(a).getTime();
+    const bEnd = getEventEnd(b).getTime();
+    return bEnd - aEnd;
+  });
+
+  return {
+    events: candidates.slice(0, CATCH_UP_MAX),
+    windowStartUtc: w.windowStartUtc,
+    lookbackStartUtc: lookbackStart,
+  };
+}
+
 export function formatRitualTimeWindow(ritual: Ritual): string {
   const dayNames: Record<number, string> = { 0: "Sun", 1: "Mon", 2: "Tue", 3: "Wed", 4: "Thu", 5: "Fri", 6: "Sat" };
   const days = ritual.days.map((d) => dayNames[d]).join(", ");
