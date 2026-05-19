@@ -34,6 +34,10 @@ import { displayTeamName, compactTeamName } from "@/utils/teams";
 import { getTuneInLinks } from "@/utils/tuneIn";
 
 const MASTERS_LOGO = require("@/assets/images/masters-logo.png");
+const GIRO_DITALIA_LOGO = require("@/assets/images/giro-ditalia-logo.png");
+
+const isGiroDItalia = (name: string | null | undefined) =>
+  !!name && /giro\s*d['’]?\s*italia/i.test(name);
 
 function formatDetailDate(startTimeLocal: string): string {
   const d = new Date(startTimeLocal);
@@ -218,8 +222,13 @@ export default function EventSheet() {
 
   const isSession = event.eventType === "session" && event.sessionTitle;
   const isGolf = event.sport === "golf";
+  const isCycling = event.sport === "cycling";
   const isTennisMatch = event.sport === "tennis";
   const isCricket = event.sport === "cricket";
+  const cyclingTourName = isCycling ? (event.tournamentName || event.homeTeam) : null;
+  const cyclingStageLabel = isCycling && event.sessionTitle
+    ? (event.sessionTitle.split("—")[1]?.trim() || event.sessionTitle)
+    : null;
   const isTbcMatch = (event.awayTeam === "TBC" || event.homeTeam === "TBC") && event.t20WcMatchLabel;
   const isTbdOlympic = event.isOlympic && (event.awayTeam === "TBD" || event.homeTeam === "TBD") && event.olympicRound;
 
@@ -272,6 +281,40 @@ export default function EventSheet() {
               <View style={styles.espnTeam}>
                 <Text style={styles.golfRoundLabel} numberOfLines={2}>
                   {event.sessionTitle?.split("—")[1]?.trim() || event.sessionTitle || ""}
+                </Text>
+              </View>
+            </View>
+          ) : isCycling ? (
+            <View style={styles.espnMatchup}>
+              {/* Left: logo + tour name */}
+              <View style={styles.espnTeam}>
+                {isGiroDItalia(cyclingTourName) ? (
+                  <Image source={GIRO_DITALIA_LOGO} style={styles.cyclingSheetLogo} resizeMode="contain" />
+                ) : (
+                  <Text style={{ fontSize: 44 }}>🚴</Text>
+                )}
+                <Text style={styles.espnTeamName} numberOfLines={2}>
+                  {cyclingTourName}
+                </Text>
+              </View>
+
+              {/* Center: time + provider */}
+              <View style={styles.espnCenter}>
+                {isLiveState ? (
+                  <View style={styles.liveChip}>
+                    <PulsingDot />
+                    <Text style={styles.liveChipText}>LIVE</Text>
+                  </View>
+                ) : (
+                  <Text style={styles.espnTime}>{timeLabel}</Text>
+                )}
+                {providerBrandId && <ProviderLogo providerId={providerBrandId} size={22} />}
+              </View>
+
+              {/* Right: stage label */}
+              <View style={styles.espnTeam}>
+                <Text style={styles.golfRoundLabel} numberOfLines={2}>
+                  {cyclingStageLabel || ""}
                 </Text>
               </View>
             </View>
@@ -652,6 +695,10 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
   },
   golfSheetLogo: {
+    width: 64,
+    height: 64,
+  },
+  cyclingSheetLogo: {
     width: 64,
     height: 64,
   },
