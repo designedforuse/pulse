@@ -1328,6 +1328,51 @@ export default function WatchScreen() {
 
   const hasChaos = chaosSetup && chaosSetup.primary;
 
+  // "Just Finished" — recent finals from the last 8h. Favorites first, then most recent.
+  const justFinishedEvents = useMemo(() => {
+    const LOOKBACK_MS = 8 * 60 * 60 * 1000;
+    const lookbackStart = now.getTime() - LOOKBACK_MS;
+    const nowMs = now.getTime();
+    const candidates = allEvents.filter((e) => {
+      const startMs = new Date(e.startTimeLocal).getTime();
+      if (Number.isNaN(startMs)) return false;
+      if (startMs < lookbackStart || startMs > nowMs) return false;
+      if (!isEventCompleted(e, now)) return false;
+      return true;
+    });
+    const pool = favoritesOnly
+      ? candidates.filter((e) => favoriteInvolved(e, favorites))
+      : candidates;
+    pool.sort((a, b) => {
+      const aFav = favoriteInvolved(a, favorites) ? 0 : 1;
+      const bFav = favoriteInvolved(b, favorites) ? 0 : 1;
+      if (aFav !== bFav) return aFav - bFav;
+      return new Date(b.startTimeLocal).getTime() - new Date(a.startTimeLocal).getTime();
+    });
+    return pool.slice(0, 6);
+  }, [allEvents, now, favorites, favoritesOnly]);
+
+  // Promote "Just Finished" above live games when nothing live is grabbing the user:
+  // no favorite is live AND no live game has crossed the High Tension threshold (rank ≥ 3),
+  // including the Chaos Mode primary.
+  const promoteJustFinished = useMemo(() => {
+    if (justFinishedEvents.length === 0) return false;
+    const liveInteresting = sortedLive.some((e) => {
+      if (favoriteInvolved(e, favorites)) return true;
+      const tension = getTensionRank(e, true, getScore);
+      return tension >= 3;
+    });
+    if (liveInteresting) return false;
+    if (hasChaos && chaosSetup?.primary) {
+      const primary = chaosSetup.primary;
+      if (favoriteInvolved(primary, favorites)) return false;
+      const chaosTension =
+        chaosSetup.debug?.selectedRanks?.find((r) => r.id === primary.id)?.tension ?? 0;
+      if (chaosTension >= 3) return false;
+    }
+    return true;
+  }, [justFinishedEvents, sortedLive, favorites, getScore, hasChaos, chaosSetup]);
+
   return (
     <View style={styles.container}>
       {promotionToast && (
@@ -1599,6 +1644,36 @@ export default function WatchScreen() {
           </View>
         )}
 
+        {promoteJustFinished && (
+          <View style={styles.justFinishedSection}>
+            <View style={styles.justFinishedPromotedHeader}>
+              <View style={styles.justFinishedPromotedIcon}>
+                <Ionicons name="play-back" size={16} color="#A78BFA" />
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.justFinishedPromotedTitle}>Worth catching up on</Text>
+                <Text style={styles.justFinishedPromotedSub}>
+                  Nothing live grabbing you — replay something you missed
+                </Text>
+              </View>
+              <View style={styles.justFinishedCountChip}>
+                <Text style={styles.justFinishedCountText}>{justFinishedEvents.length}</Text>
+              </View>
+            </View>
+            {justFinishedEvents.map((event) => (
+              <UnifiedEventCard
+                key={`jf-promoted-${event.id}`}
+                event={event}
+                now={now}
+                score={getScore(event.id)}
+                isFav={favoriteInvolved(event, favorites)}
+                showCountdown={false}
+                accentBarColor="#A78BFA"
+              />
+            ))}
+          </View>
+        )}
+
         {sortedLive.length > 0 && (
           <View
             style={styles.liveSection}
@@ -1639,6 +1714,30 @@ export default function WatchScreen() {
                 />
               </Pressable>
             )}
+          </View>
+        )}
+
+        {!promoteJustFinished && justFinishedEvents.length > 0 && (
+          <View style={styles.justFinishedSection}>
+            <View style={styles.liveHeaderRow}>
+              <View style={styles.liveHeaderLine} />
+              <View style={styles.justFinishedInlineHeader}>
+                <Ionicons name="play-back" size={13} color="#A78BFA" />
+                <Text style={styles.liveHeaderText}>Just finished</Text>
+              </View>
+              <View style={styles.liveHeaderLine} />
+            </View>
+            {justFinishedEvents.map((event) => (
+              <UnifiedEventCard
+                key={`jf-inline-${event.id}`}
+                event={event}
+                now={now}
+                score={getScore(event.id)}
+                isFav={favoriteInvolved(event, favorites)}
+                showCountdown={false}
+                accentBarColor="#A78BFA"
+              />
+            ))}
           </View>
         )}
 
@@ -2279,6 +2378,60 @@ const styles = StyleSheet.create({
   },
   upNextSection: {
     marginBottom: 20,
+  },
+  justFinishedSection: {
+    marginBottom: 20,
+  },
+  justFinishedPromotedHeader: {
+    flexDirection: "row" as const,
+    alignItems: "center",
+    gap: 12,
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+    marginBottom: 10,
+    borderRadius: 16,
+    backgroundColor: "rgba(167, 139, 250, 0.10)",
+    borderWidth: 1,
+    borderColor: "rgba(167, 139, 250, 0.28)",
+  },
+  justFinishedPromotedIcon: {
+    width: 32,
+    height: 32,
+    borderRadius: 10,
+    backgroundColor: "rgba(167, 139, 250, 0.18)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  justFinishedPromotedTitle: {
+    fontSize: 15,
+    fontFamily: "Inter_600SemiBold",
+    color: "#E9E4FF",
+    letterSpacing: 0.2,
+  },
+  justFinishedPromotedSub: {
+    fontSize: 12,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textSecondary,
+    marginTop: 2,
+  },
+  justFinishedCountChip: {
+    minWidth: 24,
+    height: 24,
+    paddingHorizontal: 8,
+    borderRadius: 12,
+    backgroundColor: "rgba(167, 139, 250, 0.22)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  justFinishedCountText: {
+    fontSize: 12,
+    fontFamily: "Inter_600SemiBold",
+    color: "#E9E4FF",
+  },
+  justFinishedInlineHeader: {
+    flexDirection: "row" as const,
+    alignItems: "center",
+    gap: 6,
   },
   dayDivider: {
     paddingHorizontal: 4,
