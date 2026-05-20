@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-18T02:44:43.357Z",
+  "lastUpdated": "2026-05-20T13:42:08.206Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {},
     "combinedPushByRegion": {},
@@ -24,7 +24,7 @@
           "CGY",
           "EDM",
           "VAN",
-          "BUF",
+          "CAR",
           "MTL"
         ],
         "skippedTeams": [
@@ -39,11 +39,11 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 359,
+        "playersIngested": 404,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-18T02:44:43.357Z"
+        "timestamp": "2026-05-20T13:42:08.206Z"
       },
-      "cacheHistoryCount": 879,
+      "cacheHistoryCount": 880,
       "error": null
     },
     "exploreFeedCap": 6,
@@ -51,7 +51,7 @@
     "candidateCountAfterCap": 0,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1710.7453769444444,
+      "hoursUntil": -1769.7022794444445,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -72,41 +72,21 @@
       "clinchFinalCount": 0,
       "clinchGatedOut": []
     },
-    "tonightStorySelectedSignal": "single_team_game",
-    "tonightStoryHeadline": "Boston Bruins Tonight",
-    "tonightStorySourceEvent": "echl-web-25486",
+    "tonightStorySelectedSignal": null,
+    "tonightStoryHeadline": null,
+    "tonightStorySourceEvent": null,
     "tonightStoryDebug": {
-      "selectedSignal": "single_team_game",
-      "selectedHeadline": "Boston Bruins Tonight",
-      "selectedScore": 150,
-      "sourceEventId": "echl-web-25486",
-      "reason": "single followed team (Boston Bruins) playing tonight",
-      "scoredCandidates": [
-        {
-          "label": "[single_team_game] Boston Bruins Tonight",
-          "score": 150,
-          "reason": "single followed team (Boston Bruins) playing tonight"
-        }
-      ]
+      "selectedSignal": null,
+      "selectedHeadline": null,
+      "selectedScore": 0,
+      "sourceEventId": null,
+      "reason": "no stories scored",
+      "scoredCandidates": []
     },
     "videoSelection": {}
   },
   "cards": [],
-  "tonightStory": {
-    "signalType": "single_team_game",
-    "signalLabel": "YOUR TEAM",
-    "headline": "Boston Bruins Tonight",
-    "body": "Maine Mariners at Wheeling Nailers — catch the action in the ECHL.",
-    "sourceEventId": "echl-web-25486",
-    "sourceCard": {
-      "id": "tonight_single_team",
-      "kind": "single_team_game",
-      "title": "Boston Bruins Tonight"
-    },
-    "sports": [
-      "hockey"
-    ]
-  },
+  "tonightStory": null,
   "monthSnapshot": {
     "currentMonth": {
       "monthLabel": "May 2026",
@@ -126,91 +106,41 @@
           "sport": "cricket",
           "displayName": "IPL",
           "leagueKey": "ipl",
-          "dateRangeLabel": "May 4–31",
-          "startDate": "2026-05-04T14:00:00.000Z",
+          "dateRangeLabel": "May 6–31",
+          "startDate": "2026-05-06T14:00:00.000Z",
           "endDate": "2026-05-31T14:00:00.000Z",
-          "eventCount": 24,
+          "eventCount": 22,
           "seasonPhase": "Final"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "EPL",
-          "leagueKey": "epl",
-          "dateRangeLabel": "May 4–24",
-          "startDate": "2026-05-04T14:00:00.000Z",
-          "endDate": "2026-05-24T15:00:00.000Z",
-          "eventCount": 40,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Serie A",
-          "leagueKey": "seriea",
-          "dateRangeLabel": "May 4–24",
-          "startDate": "2026-05-04T16:30:00.000Z",
-          "endDate": "2026-05-24T18:00:00.000Z",
-          "eventCount": 32,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "La Liga",
-          "leagueKey": "laliga",
-          "dateRangeLabel": "May 4–24",
-          "startDate": "2026-05-04T19:00:00.000Z",
-          "endDate": "2026-05-24T19:00:00.000Z",
-          "eventCount": 41,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "hockey",
-          "displayName": "ECHL",
-          "leagueKey": "echl",
-          "dateRangeLabel": "May 4–20",
-          "startDate": "2026-05-04T23:10:00.000Z",
-          "endDate": "2026-05-20T23:35:00.000Z",
-          "eventCount": 26,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "hockey",
-          "displayName": "AHL",
-          "leagueKey": "ahl",
-          "dateRangeLabel": "May 5–24",
-          "startDate": "2026-05-05T02:00:00.000Z",
-          "endDate": "2026-05-24T19:00:00.000Z",
-          "eventCount": 35,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "tennis",
-          "displayName": "Madrid",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "May 5–10",
-          "startDate": "2026-05-05T09:00:00.000Z",
-          "endDate": "2026-05-10T09:00:00.000Z",
-          "eventCount": 8,
-          "seasonPhase": null
         },
         {
           "sport": "soccer",
           "displayName": "Champions League",
           "leagueKey": "championsleague",
-          "dateRangeLabel": "May 5–30",
-          "startDate": "2026-05-05T19:00:00.000Z",
+          "dateRangeLabel": "May 6–30",
+          "startDate": "2026-05-06T19:00:00.000Z",
           "endDate": "2026-05-30T16:00:00.000Z",
-          "eventCount": 3,
+          "eventCount": 2,
           "seasonPhase": "Final"
         },
         {
-          "sport": "tennis",
-          "displayName": "Rome",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "May 6–17",
-          "startDate": "2026-05-06T09:00:00.000Z",
-          "endDate": "2026-05-17T09:00:00.000Z",
-          "eventCount": 20,
-          "seasonPhase": null
+          "sport": "hockey",
+          "displayName": "AHL",
+          "leagueKey": "ahl",
+          "dateRangeLabel": "May 6–24",
+          "startDate": "2026-05-06T23:00:00.000Z",
+          "endDate": "2026-05-24T19:00:00.000Z",
+          "eventCount": 29,
+          "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "hockey",
+          "displayName": "ECHL",
+          "leagueKey": "echl",
+          "dateRangeLabel": "May 6–31",
+          "startDate": "2026-05-06T23:00:00.000Z",
+          "endDate": "2026-05-31T21:05:00.000Z",
+          "eventCount": 33,
+          "seasonPhase": "Final"
         },
         {
           "sport": "soccer",
@@ -231,6 +161,26 @@
           "endDate": "2026-05-31T23:00:00.000Z",
           "eventCount": 36,
           "seasonPhase": "Regular"
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Madrid",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "May 7–10",
+          "startDate": "2026-05-07T09:00:00.000Z",
+          "endDate": "2026-05-10T09:00:00.000Z",
+          "eventCount": 4,
+          "seasonPhase": null
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Rome",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "May 7–17",
+          "startDate": "2026-05-07T09:00:00.000Z",
+          "endDate": "2026-05-17T09:00:00.000Z",
+          "eventCount": 18,
+          "seasonPhase": null
         },
         {
           "sport": "soccer",
@@ -296,11 +246,11 @@
           "sport": "rugby",
           "displayName": "URC",
           "leagueKey": "urc",
-          "dateRangeLabel": "May 8–16",
+          "dateRangeLabel": "May 8–30",
           "startDate": "2026-05-08T18:45:00.000Z",
-          "endDate": "2026-05-16T18:45:00.000Z",
-          "eventCount": 16,
-          "seasonPhase": "Regular"
+          "endDate": "2026-05-30T19:00:00.000Z",
+          "eventCount": 20,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "rugby",
@@ -314,12 +264,32 @@
         },
         {
           "sport": "soccer",
+          "displayName": "Serie A",
+          "leagueKey": "seriea",
+          "dateRangeLabel": "May 8–24",
+          "startDate": "2026-05-08T18:45:00.000Z",
+          "endDate": "2026-05-24T18:45:00.000Z",
+          "eventCount": 30,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "soccer",
           "displayName": "Ligue 1",
           "leagueKey": "ligue1",
           "dateRangeLabel": "May 8–17",
           "startDate": "2026-05-08T18:45:00.000Z",
           "endDate": "2026-05-17T19:00:00.000Z",
           "eventCount": 20,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "La Liga",
+          "leagueKey": "laliga",
+          "dateRangeLabel": "May 8–24",
+          "startDate": "2026-05-08T19:00:00.000Z",
+          "endDate": "2026-05-24T19:00:00.000Z",
+          "eventCount": 40,
           "seasonPhase": "Regular"
         },
         {
@@ -331,6 +301,16 @@
           "endDate": "2026-05-24T05:30:00.000Z",
           "eventCount": 8,
           "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "EPL",
+          "leagueKey": "epl",
+          "dateRangeLabel": "May 9–24",
+          "startDate": "2026-05-09T11:30:00.000Z",
+          "endDate": "2026-05-24T15:00:00.000Z",
+          "eventCount": 38,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "rugby",
@@ -406,10 +386,10 @@
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "May 18–31",
-          "startDate": "2026-05-18T23:30:00.000Z",
-          "endDate": "2026-05-31T00:00:00.000Z",
-          "eventCount": 10,
+          "dateRangeLabel": "May 21–31",
+          "startDate": "2026-05-21T00:00:00.000Z",
+          "endDate": "2026-05-31T16:00:00.000Z",
+          "eventCount": 12,
           "seasonPhase": "Playoffs"
         },
         {
@@ -578,13 +558,23 @@
         },
         {
           "sport": "hockey",
+          "displayName": "ECHL",
+          "leagueKey": "echl",
+          "dateRangeLabel": "Jun 1–4",
+          "startDate": "2026-06-01T23:30:00.000Z",
+          "endDate": "2026-06-04T00:05:00.000Z",
+          "eventCount": 4,
+          "seasonPhase": "Final"
+        },
+        {
+          "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "Jun 2",
+          "dateRangeLabel": "Jun 2–3",
           "startDate": "2026-06-02T00:00:00.000Z",
-          "endDate": "2026-06-02T04:00:00.000Z",
+          "endDate": "2026-06-03T00:00:00.000Z",
           "eventCount": 2,
-          "seasonPhase": "Playoffs"
+          "seasonPhase": "Final"
         },
         {
           "sport": "cricket",
