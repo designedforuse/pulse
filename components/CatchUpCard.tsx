@@ -5,9 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
-import { TeamLogo } from "@/components/TeamLogo";
 import { getSportColor, resolveProviderDisplay, type SportEvent } from "@/lib/data";
-import { displayTeamName } from "@/utils/teams";
 import type { ScoreData } from "@/lib/scores-context";
 import { getCatchUpTeaser, type TeaserMood } from "@/lib/catchUpTeasers";
 
@@ -42,9 +40,6 @@ export default function CatchUpCard({
     router.push({ pathname: "/event-sheet", params: { eventId: event.id } });
   };
 
-  const homeName = displayTeamName(event.homeTeam || "") || event.homeTeam || "";
-  const awayName = displayTeamName(event.awayTeam || "") || event.awayTeam || "";
-
   return (
     <Pressable
       onPress={handlePress}
@@ -71,23 +66,9 @@ export default function CatchUpCard({
           </View>
         </View>
 
-        <View style={styles.teamsBlock}>
-          <View style={styles.teamRow}>
-            <TeamLogo teamName={awayName} league={event.league} sport={event.sport} size={22} />
-            <Text style={styles.teamName} numberOfLines={1}>{awayName}</Text>
-          </View>
-          <View style={styles.teamRow}>
-            <TeamLogo teamName={homeName} league={event.league} sport={event.sport} size={22} />
-            <Text style={styles.teamName} numberOfLines={1}>{homeName}</Text>
-          </View>
-        </View>
-
-        <View style={styles.teaserRow}>
-          <View style={[styles.teaserDot, { backgroundColor: moodColor }]} />
-          <Text style={[styles.teaserText, { color: moodColor }]} numberOfLines={2}>
-            {teaser.headline}
-          </Text>
-        </View>
+        <Text style={[styles.narrative, { color: moodColor }]}>
+          {teaser.headline}
+        </Text>
 
         <View style={styles.footerRow}>
           <ProviderLogo providerId={provider.brandId} size={18} />
@@ -118,8 +99,8 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     paddingHorizontal: 14,
-    paddingVertical: 12,
-    gap: 10,
+    paddingVertical: 14,
+    gap: 12,
   },
   topRow: {
     flexDirection: "row" as const,
@@ -150,43 +131,19 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
     letterSpacing: 0.6,
   },
-  teamsBlock: {
-    gap: 6,
-  },
-  teamRow: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    gap: 10,
-  },
-  teamName: {
-    fontSize: 16,
+  narrative: {
+    fontSize: 17,
+    lineHeight: 23,
     fontFamily: "Inter_600SemiBold",
-    color: Colors.textPrimary,
-    flexShrink: 1,
-  },
-  teaserRow: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    gap: 8,
-    paddingTop: 4,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: "rgba(255,255,255,0.06)",
-  },
-  teaserDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-  },
-  teaserText: {
-    fontSize: 13,
-    fontFamily: "Inter_600SemiBold",
-    letterSpacing: 0.2,
-    flex: 1,
+    letterSpacing: 0.1,
   },
   footerRow: {
     flexDirection: "row" as const,
     alignItems: "center" as const,
     gap: 8,
+    paddingTop: 6,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: "rgba(255,255,255,0.06)",
   },
   spoilerHint: {
     flexDirection: "row" as const,
