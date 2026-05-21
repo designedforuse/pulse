@@ -17,6 +17,7 @@ import { displayTeamName } from "@/utils/teams";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
 import UnifiedEventCard from "@/components/UnifiedEventCard";
+import CatchUpCard from "@/components/CatchUpCard";
 import {
   getSportColor,
   resolveProviderDisplay,
@@ -341,16 +342,14 @@ export default function GuideDetailScreen() {
               </View>
             </View>
             <Text style={styles.catchUpHint}>
-              Finished in the last 24h — replay before live games start
+              Finished in the last 24h — scores hidden so you can watch the replay
             </Text>
             {catchUpEvents.map((event) => (
-              <UnifiedEventCard
+              <CatchUpCard
                 key={`catchup-${event.id}`}
                 event={event}
-                now={now}
                 score={getScore(event.id)}
                 isFav={favoriteInvolved(event, favorites)}
-                onSetFeatured={openGameSheet}
               />
             ))}
           </View>

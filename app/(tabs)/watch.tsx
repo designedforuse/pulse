@@ -31,6 +31,7 @@ import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
 import UnifiedEventCard, { formatCricketLiveDetail, TennisScoreboard, getGrandPrixFlag, getDriverFlag } from "@/components/UnifiedEventCard";
+import CatchUpCard from "@/components/CatchUpCard";
 import {
   getSportColor,
   resolveProviderDisplay,
@@ -1653,7 +1654,7 @@ export default function WatchScreen() {
               <View style={{ flex: 1 }}>
                 <Text style={styles.justFinishedPromotedTitle}>Worth catching up on</Text>
                 <Text style={styles.justFinishedPromotedSub}>
-                  Nothing live grabbing you — replay something you missed
+                  Nothing live grabbing you — scores hidden so you can watch the replay
                 </Text>
               </View>
               <View style={styles.justFinishedCountChip}>
@@ -1661,14 +1662,11 @@ export default function WatchScreen() {
               </View>
             </View>
             {justFinishedEvents.map((event) => (
-              <UnifiedEventCard
+              <CatchUpCard
                 key={`jf-promoted-${event.id}`}
                 event={event}
-                now={now}
                 score={getScore(event.id)}
                 isFav={favoriteInvolved(event, favorites)}
-                showCountdown={false}
-                accentBarColor="#A78BFA"
               />
             ))}
           </View>
@@ -1728,14 +1726,11 @@ export default function WatchScreen() {
               <View style={styles.liveHeaderLine} />
             </View>
             {justFinishedEvents.map((event) => (
-              <UnifiedEventCard
+              <CatchUpCard
                 key={`jf-inline-${event.id}`}
                 event={event}
-                now={now}
                 score={getScore(event.id)}
                 isFav={favoriteInvolved(event, favorites)}
-                showCountdown={false}
-                accentBarColor="#A78BFA"
               />
             ))}
           </View>
