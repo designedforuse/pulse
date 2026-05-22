@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-22T21:15:54.072Z",
+  "lastUpdated": "2026-05-22T23:45:06.301Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -49,7 +49,7 @@
         ],
         "playersIngested": 402,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-22T21:15:54.072Z"
+        "timestamp": "2026-05-22T23:45:06.301Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -59,7 +59,7 @@
     "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1825.26502,
+      "hoursUntil": -1827.7517502777778,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -117,7 +117,7 @@
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-05-22T21:15:54.072Z",
+      "triggeredAt": "2026-05-22T23:45:06.301Z",
       "expiresAt": "2026-05-25T00:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
@@ -199,40 +199,20 @@
           "sport": "soccer",
           "displayName": "NWSL",
           "leagueKey": "nwsl",
-          "dateRangeLabel": "May 8–31",
-          "startDate": "2026-05-08T22:30:00.000Z",
+          "dateRangeLabel": "May 9–31",
+          "startDate": "2026-05-09T00:00:00.000Z",
           "endDate": "2026-05-31T23:00:00.000Z",
-          "eventCount": 35,
+          "eventCount": 34,
           "seasonPhase": "Regular"
-        },
-        {
-          "sport": "hockey",
-          "displayName": "AHL",
-          "leagueKey": "ahl",
-          "dateRangeLabel": "May 8–31",
-          "startDate": "2026-05-08T23:00:00.000Z",
-          "endDate": "2026-05-31T00:05:00.000Z",
-          "eventCount": 24,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "hockey",
-          "displayName": "ECHL",
-          "leagueKey": "echl",
-          "dateRangeLabel": "May 8–31",
-          "startDate": "2026-05-08T23:10:00.000Z",
-          "endDate": "2026-05-31T21:05:00.000Z",
-          "eventCount": 32,
-          "seasonPhase": "Final"
         },
         {
           "sport": "soccer",
           "displayName": "USL",
           "leagueKey": "usl",
-          "dateRangeLabel": "May 8–31",
-          "startDate": "2026-05-08T23:30:00.000Z",
+          "dateRangeLabel": "May 9–31",
+          "startDate": "2026-05-09T01:00:00.000Z",
           "endDate": "2026-05-31T18:00:00.000Z",
-          "eventCount": 35,
+          "eventCount": 34,
           "seasonPhase": "Regular"
         },
         {
@@ -366,6 +346,16 @@
           "seasonPhase": "Playoffs"
         },
         {
+          "sport": "hockey",
+          "displayName": "AHL",
+          "leagueKey": "ahl",
+          "dateRangeLabel": "May 9–31",
+          "startDate": "2026-05-09T19:00:00.000Z",
+          "endDate": "2026-05-31T00:05:00.000Z",
+          "eventCount": 23,
+          "seasonPhase": "Playoffs"
+        },
+        {
           "sport": "rugby",
           "displayName": "MLR",
           "leagueKey": "mlr",
@@ -374,6 +364,16 @@
           "endDate": "2026-05-31T20:00:00.000Z",
           "eventCount": 11,
           "seasonPhase": "Regular"
+        },
+        {
+          "sport": "hockey",
+          "displayName": "ECHL",
+          "leagueKey": "echl",
+          "dateRangeLabel": "May 9–31",
+          "startDate": "2026-05-09T23:00:00.000Z",
+          "endDate": "2026-05-31T21:05:00.000Z",
+          "eventCount": 30,
+          "seasonPhase": "Final"
         },
         {
           "sport": "soccer",
@@ -776,7 +776,7 @@
           "dateRangeLabel": "Jun 6–7",
           "startDate": "2026-06-06T18:00:00.000Z",
           "endDate": "2026-06-07T23:00:00.000Z",
-          "eventCount": 5,
+          "eventCount": 6,
           "seasonPhase": null
         },
         {
