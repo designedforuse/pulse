@@ -323,6 +323,7 @@ function ChaosCard({
 
   const isRacing = event.sport === "racing";
   const isGolf = event.sport === "golf";
+  const isCycling = event.sport === "cycling";
   const isSvnsSession = event.eventType === "session" && event.leagueKey === "svns";
   const svnsCity = isSvnsSession ? extractSvnsCity(event.homeTeam) : null;
   const svnsData = useSvnsMatches(svnsCity);
@@ -384,9 +385,15 @@ function ChaosCard({
   const golfLeaderFlag = isGolf && score?.golfLeaderCountry ? getDriverFlag(score.golfLeaderCountry) : null;
   const golfLeaderThru = isGolf ? (score?.golfLeaderThru || null) : null;
 
-  // Strip tournament name prefix from golf session titles e.g. "Players — Round 3" → "Round 3"
-  const golfSessionDisplayText = isGolf && matchupText
-    ? (matchupText.includes(" \u2014 ") ? matchupText.split(" \u2014 ").slice(1).join(" \u2014 ") : matchupText)
+  const cyclingLeaderName = isCycling ? (score?.cyclingLeader || null) : null;
+  const cyclingLeaderFlag = isCycling && score?.cyclingLeaderCountry ? getDriverFlag(score.cyclingLeaderCountry) : null;
+  const cyclingLeaderGap = isCycling ? (score?.cyclingLeaderGap || null) : null;
+
+  // Strip tournament name prefix from session titles (e.g. "Players — Round 3" → "Round 3", "Giro d'Italia 2026 — Stage 13" → "Stage 13")
+  const stripTournamentPrefix = (text: string | null) =>
+    text && text.includes(" \u2014 ") ? text.split(" \u2014 ").slice(1).join(" \u2014 ") : text;
+  const golfSessionDisplayText = (isGolf || isCycling) && matchupText
+    ? stripTournamentPrefix(matchupText)
     : matchupText;
 
   if (isPrimary) {
@@ -461,7 +468,7 @@ function ChaosCard({
               </View>
             ) : matchupText ? (
               <View style={isSvnsSession ? styles.svnsPrimaryContent : undefined}>
-                <Text style={[styles.primaryMatchup, (isSvnsSession || (isGolf && golfLeaderName)) && { marginBottom: 4 }]} numberOfLines={2}>{golfSessionDisplayText}</Text>
+                <Text style={[styles.primaryMatchup, (isSvnsSession || (isGolf && golfLeaderName) || (isCycling && cyclingLeaderName)) && { marginBottom: 4 }]} numberOfLines={2}>{golfSessionDisplayText}</Text>
                 {isSvnsSession && svnsDisplayMatch && (
                   <ChaosCardSvnsRow match={svnsDisplayMatch} />
                 )}
@@ -473,6 +480,18 @@ function ChaosCard({
                     <View style={styles.golfLeaderScoreBlock}>
                       {golfLeaderScore ? (
                         <Text style={styles.golfLeaderScore}>{golfLeaderScore}</Text>
+                      ) : null}
+                    </View>
+                  </View>
+                )}
+                {isCycling && cyclingLeaderName && (
+                  <View style={styles.golfLeaderRow}>
+                    <Text style={styles.golfLeaderText}>
+                      {cyclingLeaderFlag ? `${cyclingLeaderFlag} ` : ""}{cyclingLeaderName}
+                    </Text>
+                    <View style={styles.golfLeaderScoreBlock}>
+                      {cyclingLeaderGap ? (
+                        <Text style={styles.golfLeaderScore}>+{cyclingLeaderGap}</Text>
                       ) : null}
                     </View>
                   </View>
@@ -642,8 +661,8 @@ function ChaosCard({
             ) : null}
           </View>
         ) : matchupText ? (
-          <View style={(isSvnsSession || isGolf) ? styles.svnsSecondaryContent : undefined}>
-            <Text style={[styles.secondaryTeamName, (isSvnsSession || (isGolf && golfLeaderName)) && { marginBottom: 2 }]} numberOfLines={2}>{golfSessionDisplayText}</Text>
+          <View style={(isSvnsSession || isGolf || isCycling) ? styles.svnsSecondaryContent : undefined}>
+            <Text style={[styles.secondaryTeamName, (isSvnsSession || (isGolf && golfLeaderName) || (isCycling && cyclingLeaderName)) && { marginBottom: 2 }]} numberOfLines={2}>{golfSessionDisplayText}</Text>
             {isSvnsSession && svnsDisplayMatch && (
               <ChaosCardSvnsRow match={svnsDisplayMatch} small />
             )}
@@ -655,6 +674,18 @@ function ChaosCard({
                 <View style={styles.golfLeaderScoreBlockSm}>
                   {golfLeaderScore ? (
                     <Text style={styles.golfLeaderScoreSm}>{golfLeaderScore}</Text>
+                  ) : null}
+                </View>
+              </View>
+            )}
+            {isCycling && cyclingLeaderName && (
+              <View style={styles.golfLeaderRowSm}>
+                <Text style={styles.golfLeaderTextSm} numberOfLines={1}>
+                  {cyclingLeaderFlag ? `${cyclingLeaderFlag} ` : ""}{cyclingLeaderName}
+                </Text>
+                <View style={styles.golfLeaderScoreBlockSm}>
+                  {cyclingLeaderGap ? (
+                    <Text style={styles.golfLeaderScoreSm}>+{cyclingLeaderGap}</Text>
                   ) : null}
                 </View>
               </View>
