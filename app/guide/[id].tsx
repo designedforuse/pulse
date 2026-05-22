@@ -344,14 +344,24 @@ export default function GuideDetailScreen() {
             <Text style={styles.catchUpHint}>
               Finished in the last 24h — scores hidden so you can watch the replay
             </Text>
-            {catchUpEvents.map((event) => (
-              <CatchUpCard
-                key={`catchup-${event.id}`}
-                event={event}
-                score={getScore(event.id)}
-                isFav={favoriteInvolved(event, favorites)}
-              />
-            ))}
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.catchUpRail}
+              decelerationRate="fast"
+              snapToInterval={296}
+              snapToAlignment="start"
+            >
+              {catchUpEvents.map((event) => (
+                <CatchUpCard
+                  key={`catchup-${event.id}`}
+                  event={event}
+                  score={getScore(event.id)}
+                  isFav={favoriteInvolved(event, favorites)}
+                  width={280}
+                />
+              ))}
+            </ScrollView>
           </View>
         )}
 
@@ -617,6 +627,12 @@ const styles = StyleSheet.create({
   },
   sectionBlock: {
     marginTop: 8,
+  },
+  catchUpRail: {
+    paddingHorizontal: 16,
+    paddingTop: 4,
+    paddingBottom: 8,
+    gap: 12,
   },
   sectionHeaderRow: {
     flexDirection: "row",

@@ -14,6 +14,7 @@ interface CatchUpCardProps {
   score?: ScoreData;
   isFav?: boolean;
   accentColor?: string;
+  width?: number;
 }
 
 const MOOD_COLORS: Record<TeaserMood, string> = {
@@ -27,6 +28,7 @@ export default function CatchUpCard({
   score,
   isFav,
   accentColor = "#A78BFA",
+  width,
 }: CatchUpCardProps) {
   const sportColor = getSportColor(event.sport);
   const teaser = getCatchUpTeaser(event, score);
@@ -45,6 +47,7 @@ export default function CatchUpCard({
       onPress={handlePress}
       style={({ pressed }) => [
         styles.card,
+        width ? { width } : null,
         { opacity: pressed ? 0.85 : 1 },
       ]}
       testID={`catchup-card-${event.id}`}
@@ -132,10 +135,11 @@ const styles = StyleSheet.create({
     letterSpacing: 0.6,
   },
   narrative: {
-    fontSize: 17,
-    lineHeight: 23,
+    fontSize: 16,
+    lineHeight: 22,
     fontFamily: "Inter_600SemiBold",
     letterSpacing: 0.1,
+    minHeight: 66,
   },
   footerRow: {
     flexDirection: "row" as const,

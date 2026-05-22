@@ -1661,14 +1661,24 @@ export default function WatchScreen() {
                 <Text style={styles.justFinishedCountText}>{justFinishedEvents.length}</Text>
               </View>
             </View>
-            {justFinishedEvents.map((event) => (
-              <CatchUpCard
-                key={`jf-promoted-${event.id}`}
-                event={event}
-                score={getScore(event.id)}
-                isFav={favoriteInvolved(event, favorites)}
-              />
-            ))}
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.catchUpRail}
+              decelerationRate="fast"
+              snapToInterval={296}
+              snapToAlignment="start"
+            >
+              {justFinishedEvents.map((event) => (
+                <CatchUpCard
+                  key={`jf-promoted-${event.id}`}
+                  event={event}
+                  score={getScore(event.id)}
+                  isFav={favoriteInvolved(event, favorites)}
+                  width={280}
+                />
+              ))}
+            </ScrollView>
           </View>
         )}
 
@@ -1725,14 +1735,24 @@ export default function WatchScreen() {
               </View>
               <View style={styles.liveHeaderLine} />
             </View>
-            {justFinishedEvents.map((event) => (
-              <CatchUpCard
-                key={`jf-inline-${event.id}`}
-                event={event}
-                score={getScore(event.id)}
-                isFav={favoriteInvolved(event, favorites)}
-              />
-            ))}
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.catchUpRail}
+              decelerationRate="fast"
+              snapToInterval={296}
+              snapToAlignment="start"
+            >
+              {justFinishedEvents.map((event) => (
+                <CatchUpCard
+                  key={`jf-inline-${event.id}`}
+                  event={event}
+                  score={getScore(event.id)}
+                  isFav={favoriteInvolved(event, favorites)}
+                  width={280}
+                />
+              ))}
+            </ScrollView>
           </View>
         )}
 
@@ -2376,6 +2396,12 @@ const styles = StyleSheet.create({
   },
   justFinishedSection: {
     marginBottom: 20,
+  },
+  catchUpRail: {
+    paddingHorizontal: 16,
+    paddingTop: 4,
+    paddingBottom: 4,
+    gap: 12,
   },
   justFinishedPromotedHeader: {
     flexDirection: "row" as const,
