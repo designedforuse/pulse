@@ -130,6 +130,24 @@ const ATHLETICS_CITY_FLAGS: Record<string, string> = {
   "new york": "🇺🇸",
   "new york city": "🇺🇸",
   "cape town": "🇿🇦",
+  // UTMB World Series stops
+  "val d'aran": "🇪🇸",
+  "val daran": "🇪🇸",
+  "verbier": "🇨🇭",
+  "st-bernard": "🇨🇭",
+  "monte rosa": "🇮🇹",
+  "walser": "🇮🇹",
+  "mont-blanc": "🇫🇷",
+  "chamonix": "🇫🇷",
+  "wildstrubel": "🇨🇭",
+  "nice": "🇫🇷",
+  "côte d'azur": "🇫🇷",
+  "cote d'azur": "🇫🇷",
+  "kodiak": "🇺🇸",
+  "big bear": "🇺🇸",
+  "chiang mai": "🇹🇭",
+  "ultra-trail australia": "🇦🇺",
+  "blue mountains": "🇦🇺",
 };
 
 function getAthleticsCityFlag(name: string | null | undefined): string | null {
@@ -865,6 +883,7 @@ export default function UnifiedEventCard({
     ? (event.sessionTitle.match(/Round \d+/)?.[0] || event.sessionTitle.split("—")[1]?.trim() || event.sessionTitle)
     : null;
   const isDiamondLeague = isAthletics && (event.id?.startsWith("athletics-diamond-league-") || /diamond\s+league/i.test(event.tournamentName || event.homeTeam || ""));
+  const isUtmb = isAthletics && (event.id?.startsWith("athletics-utmb-") || event.leagueKey === "utmb");
   const rawAthleticsTournament = isAthletics ? (event.tournamentName || event.homeTeam) : null;
   const athleticsTournament = isDiamondLeague && rawAthleticsTournament
     ? rawAthleticsTournament.replace(/^\s*diamond\s+league\s*[—–\-:]\s*/i, "").trim()
@@ -996,7 +1015,7 @@ export default function UnifiedEventCard({
             <View>
               <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
                 <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>
-                  {isDiamondLeague ? "DIAMOND LEAGUE" : event.leagueKey === "marathon-majors" ? "MARATHON MAJORS" : getLeagueLabel(event)}
+                  {isDiamondLeague ? "DIAMOND LEAGUE" : isUtmb ? "UTMB WORLD SERIES" : event.leagueKey === "marathon-majors" ? "MARATHON MAJORS" : getLeagueLabel(event)}
                 </Text>
               </View>
               <View style={uStyles.espnMatchup}>

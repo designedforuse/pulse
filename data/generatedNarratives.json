@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-22T07:56:40.837Z",
+  "lastUpdated": "2026-05-22T08:16:52.113Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -49,7 +49,7 @@
         ],
         "playersIngested": 402,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-22T07:56:40.837Z"
+        "timestamp": "2026-05-22T08:16:52.113Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -59,7 +59,7 @@
     "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1811.9446769444444,
+      "hoursUntil": -1812.2811425,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -117,7 +117,7 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-22T07:56:40.837Z",
+      "triggeredAt": "2026-05-22T08:16:52.113Z",
       "expiresAt": "2026-05-24T00:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
@@ -409,6 +409,16 @@
           "startDate": "2026-05-14T14:00:00.000Z",
           "endDate": "2026-05-17T14:00:00.000Z",
           "eventCount": 4,
+          "seasonPhase": null
+        },
+        {
+          "sport": "athletics",
+          "displayName": "Ultra-Trail Australia",
+          "leagueKey": "utmb",
+          "dateRangeLabel": "May 15",
+          "startDate": "2026-05-15T20:00:00.000Z",
+          "endDate": "2026-05-15T20:00:00.000Z",
+          "eventCount": 1,
           "seasonPhase": null
         },
         {

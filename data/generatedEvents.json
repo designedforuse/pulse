@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-22T07:56:40.791Z",
+  "lastUpdated": "2026-05-22T08:16:52.024Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -196,22 +196,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-05-22T07:56:40.791Z",
+    "lastRefreshAt": "2026-05-22T08:16:52.024Z",
     "sources": {
       "nhl": {
         "count": 13,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 29,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 36,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -223,7 +223,7 @@
       },
       "rugby": {
         "count": 98,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 20,
@@ -243,87 +243,87 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 38,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 141,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 30,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 40,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 18,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 20,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 35,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 40,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-08T23:30:00.000Z"
       },
       "championsCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 15,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 1,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 1,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-16T14:00:00.000Z"
       },
       "tennis": {
         "count": 46,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "French Open": 30,
@@ -333,7 +333,7 @@
       },
       "f1": {
         "count": 30,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Canadian Grand Prix": 5,
@@ -346,7 +346,7 @@
       },
       "golf": {
         "count": 12,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "PGA Championship": 4,
@@ -356,7 +356,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Sydney Marathon": 1,
@@ -385,7 +385,7 @@
       },
       "cafcl": {
         "count": 6,
-        "lastFetchAt": "2026-05-22T07:56:40.791Z",
+        "lastFetchAt": "2026-05-22T08:16:52.024Z",
         "sourceName": "ESPN API"
       }
     }
@@ -4673,6 +4673,23 @@
       "source": "soccer-epl",
       "leagueKey": "epl",
       "providerReason": "epl-yttv"
+    },
+    {
+      "id": "athletics-utmb-ultra-trail-australia-2026",
+      "sport": "athletics",
+      "league": "UTMB World Series",
+      "awayTeam": "",
+      "homeTeam": "Ultra-Trail Australia",
+      "startTimeLocal": "2026-05-15T20:00:00.000Z",
+      "endTimeLocal": "2026-05-16T20:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "utmb-hardcoded",
+      "leagueKey": "utmb",
+      "eventType": "session",
+      "sessionTitle": "Ultra-Trail Australia",
+      "competitionType": "international",
+      "tournamentName": "Ultra-Trail Australia"
     },
     {
       "id": "echl-web-25476",
@@ -12382,6 +12399,23 @@
       "broadcastNetworks": "FOX, Tele, Peacock"
     },
     {
+      "id": "athletics-utmb-val-daran-2026",
+      "sport": "athletics",
+      "league": "UTMB World Series",
+      "awayTeam": "",
+      "homeTeam": "Val d'Aran",
+      "startTimeLocal": "2026-07-02T04:00:00.000Z",
+      "endTimeLocal": "2026-07-05T04:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "utmb-hardcoded",
+      "leagueKey": "utmb",
+      "eventType": "session",
+      "sessionTitle": "Val d'Aran",
+      "competitionType": "international",
+      "tournamentName": "Val d'Aran"
+    },
+    {
       "id": "soccer-fifa-world-cup-20260702-1900-group-j-2nd-place-at-group-h-winner",
       "sport": "soccer",
       "league": "FIFA World Cup",
@@ -12909,6 +12943,23 @@
       "broadcastNetworks": "FOX, Tele, Peacock"
     },
     {
+      "id": "athletics-utmb-verbier-st-bernard-2026",
+      "sport": "athletics",
+      "league": "UTMB World Series",
+      "awayTeam": "",
+      "homeTeam": "Verbier St-Bernard",
+      "startTimeLocal": "2026-07-11T03:00:00.000Z",
+      "endTimeLocal": "2026-07-12T03:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "utmb-hardcoded",
+      "leagueKey": "utmb",
+      "eventType": "session",
+      "sessionTitle": "Verbier St-Bernard",
+      "competitionType": "international",
+      "tournamentName": "Verbier St-Bernard"
+    },
+    {
       "id": "cycling-grand-tour-tour-de-france-2026-2026-07-11-stage-8",
       "sport": "cycling",
       "league": "Grand Tour",
@@ -13105,6 +13156,23 @@
         "2026-07-13",
         "2026-07-20"
       ]
+    },
+    {
+      "id": "athletics-utmb-monte-rosa-2026",
+      "sport": "athletics",
+      "league": "UTMB World Series",
+      "awayTeam": "",
+      "homeTeam": "Monte Rosa-Walser",
+      "startTimeLocal": "2026-07-17T03:00:00.000Z",
+      "endTimeLocal": "2026-07-19T03:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "utmb-hardcoded",
+      "leagueKey": "utmb",
+      "eventType": "session",
+      "sessionTitle": "Monte Rosa-Walser",
+      "competitionType": "international",
+      "tournamentName": "Monte Rosa-Walser"
     },
     {
       "id": "golf-british-open-2026-07-17",
@@ -13687,6 +13755,23 @@
       ]
     },
     {
+      "id": "athletics-utmb-mont-blanc-2026",
+      "sport": "athletics",
+      "league": "UTMB World Series",
+      "awayTeam": "",
+      "homeTeam": "UTMB Mont-Blanc",
+      "startTimeLocal": "2026-08-27T16:00:00.000Z",
+      "endTimeLocal": "2026-08-31T16:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "utmb-hardcoded",
+      "leagueKey": "utmb",
+      "eventType": "session",
+      "sessionTitle": "UTMB Mont-Blanc",
+      "competitionType": "international",
+      "tournamentName": "UTMB Mont-Blanc"
+    },
+    {
       "id": "athletics-diamond-league-zurich-2026",
       "sport": "athletics",
       "league": "Diamond League",
@@ -14067,6 +14152,23 @@
       ]
     },
     {
+      "id": "athletics-utmb-wildstrubel-2026",
+      "sport": "athletics",
+      "league": "UTMB World Series",
+      "awayTeam": "",
+      "homeTeam": "Wildstrubel",
+      "startTimeLocal": "2026-09-12T03:00:00.000Z",
+      "endTimeLocal": "2026-09-14T03:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "utmb-hardcoded",
+      "leagueKey": "utmb",
+      "eventType": "session",
+      "sessionTitle": "Wildstrubel",
+      "competitionType": "international",
+      "tournamentName": "Wildstrubel"
+    },
+    {
       "id": "cycling-grand-tour-vuelta-a-espa-a-2026-2026-09-12-stage-20",
       "sport": "cycling",
       "league": "Grand Tour",
@@ -14113,6 +14215,40 @@
         "2026-08-31",
         "2026-09-07"
       ]
+    },
+    {
+      "id": "athletics-utmb-nice-cote-dazur-2026",
+      "sport": "athletics",
+      "league": "UTMB World Series",
+      "awayTeam": "",
+      "homeTeam": "Nice Côte d'Azur",
+      "startTimeLocal": "2026-09-25T16:00:00.000Z",
+      "endTimeLocal": "2026-09-27T16:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "utmb-hardcoded",
+      "leagueKey": "utmb",
+      "eventType": "session",
+      "sessionTitle": "Nice Côte d'Azur",
+      "competitionType": "international",
+      "tournamentName": "Nice Côte d'Azur"
+    },
+    {
+      "id": "athletics-utmb-kodiak-2026",
+      "sport": "athletics",
+      "league": "UTMB World Series",
+      "awayTeam": "",
+      "homeTeam": "Kodiak Ultra Marathons",
+      "startTimeLocal": "2026-10-10T12:00:00.000Z",
+      "endTimeLocal": "2026-10-11T12:00:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "utmb-hardcoded",
+      "leagueKey": "utmb",
+      "eventType": "session",
+      "sessionTitle": "Kodiak Ultra Marathons",
+      "competitionType": "international",
+      "tournamentName": "Kodiak Ultra Marathons"
     }
   ]
 }
