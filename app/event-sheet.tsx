@@ -130,7 +130,8 @@ const dotStyle = StyleSheet.create({
 });
 
 export default function EventSheet() {
-  const { eventId } = useLocalSearchParams<{ eventId: string }>();
+  const { eventId, spoiler } = useLocalSearchParams<{ eventId: string; spoiler?: string }>();
+  const spoilerHidden = spoiler === "1";
   const { findEvent } = useEvents();
   const event = findEvent(eventId);
   const insets = useSafeAreaInsets();
@@ -355,7 +356,9 @@ export default function EventSheet() {
 
               {/* Center: time+provider (upcoming/live) or score (final) */}
               <View style={styles.espnCenter}>
-                {isFinalState && score && !isCricket ? (
+                {isFinalState && spoilerHidden ? (
+                  <Text style={styles.espnFinalLabel}>Final</Text>
+                ) : isFinalState && score && !isCricket ? (
                   <>
                     <View style={styles.espnScoreRow}>
                       <Text style={styles.espnScoreFinal}>{score.awayScore}</Text>
@@ -417,7 +420,7 @@ export default function EventSheet() {
           )}
 
           {/* Cricket innings scores — final only */}
-          {isCricket && isFinalState && score && (score.cricketAway || score.cricketHome) && (
+          {isCricket && isFinalState && !spoilerHidden && score && (score.cricketAway || score.cricketHome) && (
             <View style={styles.cricketScores}>
               {score.cricketAway ? (
                 <Text style={[styles.cricketInnings, isLiveState && styles.cricketInningsLive]} numberOfLines={2}>
@@ -454,10 +457,14 @@ export default function EventSheet() {
               testID="open-provider-btn"
             >
               {!isUpcoming ? (
-                <Ionicons name="play" size={18} color={Colors.textPrimary} />
+                <Ionicons
+                  name={isFinalState ? "play-back" : "play"}
+                  size={18}
+                  color={Colors.textPrimary}
+                />
               ) : null}
               <Text style={[styles.openButtonText, isUpcoming && styles.disabledButtonText]}>
-                {isUpcoming ? (startsInLabel ?? "Starting soon") : isLiveState ? "Join Live" : "Watch Now"}
+                {isUpcoming ? (startsInLabel ?? "Starting soon") : isLiveState ? "Join Live" : "Watch Replay"}
               </Text>
             </Pressable>
           )}

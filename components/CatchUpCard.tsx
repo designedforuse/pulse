@@ -46,7 +46,7 @@ export default function CatchUpCard({
     if (Platform.OS !== "web") {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     }
-    router.push({ pathname: "/event-sheet", params: { eventId: event.id } });
+    router.push({ pathname: "/event-sheet", params: { eventId: event.id, spoiler: "1" } });
   };
 
   return (
