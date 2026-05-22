@@ -1647,20 +1647,6 @@ export default function WatchScreen() {
 
         {promoteJustFinished && (
           <View style={styles.justFinishedSection}>
-            <View style={styles.justFinishedPromotedHeader}>
-              <View style={styles.justFinishedPromotedIcon}>
-                <Ionicons name="play-back" size={16} color="#A78BFA" />
-              </View>
-              <View style={{ flex: 1 }}>
-                <Text style={styles.justFinishedPromotedTitle}>Worth catching up on</Text>
-                <Text style={styles.justFinishedPromotedSub}>
-                  Nothing live grabbing you — scores hidden so you can watch the replay
-                </Text>
-              </View>
-              <View style={styles.justFinishedCountChip}>
-                <Text style={styles.justFinishedCountText}>{justFinishedEvents.length}</Text>
-              </View>
-            </View>
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
@@ -1669,6 +1655,28 @@ export default function WatchScreen() {
               snapToInterval={296}
               snapToAlignment="start"
             >
+              <View style={[styles.catchUpIntroCard, { width: 280 }]}>
+                <View style={styles.catchUpIntroAccent} />
+                <View style={styles.catchUpIntroBody}>
+                  <View style={styles.catchUpIntroIconRow}>
+                    <View style={styles.catchUpIntroIcon}>
+                      <Ionicons name="play-back" size={18} color="#A78BFA" />
+                    </View>
+                    <View style={{ flex: 1 }} />
+                    <View style={styles.catchUpIntroCountChip}>
+                      <Text style={styles.catchUpIntroCountText}>{justFinishedEvents.length}</Text>
+                    </View>
+                  </View>
+                  <Text style={styles.catchUpIntroTitle}>Worth catching up on</Text>
+                  <Text style={styles.catchUpIntroSub}>
+                    Nothing live grabbing you — scores hidden so you can watch the replay
+                  </Text>
+                  <View style={styles.catchUpIntroSwipeHint}>
+                    <Text style={styles.catchUpIntroSwipeText}>Swipe</Text>
+                    <Ionicons name="arrow-forward" size={12} color="#A78BFA" />
+                  </View>
+                </View>
+              </View>
               {justFinishedEvents.map((event) => (
                 <CatchUpCard
                   key={`jf-promoted-${event.id}`}
@@ -2402,6 +2410,76 @@ const styles = StyleSheet.create({
     paddingTop: 4,
     paddingBottom: 4,
     gap: 12,
+  },
+  catchUpIntroCard: {
+    flexDirection: "row" as const,
+    backgroundColor: "rgba(167, 139, 250, 0.10)",
+    borderRadius: 16,
+    overflow: "hidden" as const,
+    borderWidth: 1,
+    borderColor: "rgba(167, 139, 250, 0.28)",
+  },
+  catchUpIntroAccent: {
+    width: 4,
+    backgroundColor: "#A78BFA",
+  },
+  catchUpIntroBody: {
+    flex: 1,
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+    gap: 10,
+  },
+  catchUpIntroIconRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+  },
+  catchUpIntroIcon: {
+    width: 36,
+    height: 36,
+    borderRadius: 12,
+    backgroundColor: "rgba(167, 139, 250, 0.18)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  catchUpIntroCountChip: {
+    minWidth: 28,
+    height: 28,
+    paddingHorizontal: 10,
+    borderRadius: 14,
+    backgroundColor: "rgba(167, 139, 250, 0.22)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  catchUpIntroCountText: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
+    color: "#E9E4FF",
+  },
+  catchUpIntroTitle: {
+    fontSize: 18,
+    fontFamily: "Inter_700Bold",
+    color: "#E9E4FF",
+    letterSpacing: 0.2,
+  },
+  catchUpIntroSub: {
+    fontSize: 13,
+    lineHeight: 18,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textSecondary,
+  },
+  catchUpIntroSwipeHint: {
+    marginTop: "auto" as const,
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 4,
+    paddingTop: 6,
+  },
+  catchUpIntroSwipeText: {
+    fontSize: 11,
+    fontFamily: "Inter_600SemiBold",
+    color: "#A78BFA",
+    letterSpacing: 0.5,
+    textTransform: "uppercase" as const,
   },
   justFinishedPromotedHeader: {
     flexDirection: "row" as const,
