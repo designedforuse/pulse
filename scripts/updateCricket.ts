@@ -764,6 +764,13 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
       continue;
     }
 
+    // IPL is sourced from the authoritative iplt20.com feed (updateIpl.ts).
+    // CricAPI's free tier misses games and serves "TBC @ TBC" for playoffs.
+    if (classification.league === "IPL") {
+      skipped++;
+      continue;
+    }
+
     const gender = inferCricketGender(match, classification);
     if (gender === "women") {
       womenFiltered++;
