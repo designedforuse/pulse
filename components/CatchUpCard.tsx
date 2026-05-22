@@ -23,6 +23,12 @@ const MOOD_COLORS: Record<TeaserMood, string> = {
   low: Colors.textSecondary,
 };
 
+const MOOD_LABELS: Record<TeaserMood, string | null> = {
+  high: "MUST WATCH",
+  medium: "TIGHT FINISH",
+  low: null,
+};
+
 export default function CatchUpCard({
   event,
   score,
@@ -33,6 +39,7 @@ export default function CatchUpCard({
   const sportColor = getSportColor(event.sport);
   const teaser = getCatchUpTeaser(event, score);
   const moodColor = MOOD_COLORS[teaser.mood];
+  const moodLabel = MOOD_LABELS[teaser.mood];
   const provider = resolveProviderDisplay(event);
 
   const handlePress = () => {
@@ -63,6 +70,17 @@ export default function CatchUpCard({
             <Ionicons name="star" size={14} color={Colors.favStar} style={{ marginLeft: 6 }} />
           )}
           <View style={{ flex: 1 }} />
+          {moodLabel && (
+            <View
+              style={[
+                styles.moodBadge,
+                { backgroundColor: moodColor + "22", borderColor: moodColor + "55" },
+              ]}
+            >
+              <View style={[styles.moodDot, { backgroundColor: moodColor }]} />
+              <Text style={[styles.moodBadgeText, { color: moodColor }]}>{moodLabel}</Text>
+            </View>
+          )}
           <View style={styles.replayPill}>
             <Ionicons name="play-back" size={11} color={accentColor} />
             <Text style={[styles.replayPillText, { color: accentColor }]}>REPLAY</Text>
@@ -108,6 +126,26 @@ const styles = StyleSheet.create({
   topRow: {
     flexDirection: "row" as const,
     alignItems: "center" as const,
+    gap: 6,
+  },
+  moodBadge: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 5,
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+    borderRadius: 999,
+    borderWidth: 1,
+  },
+  moodDot: {
+    width: 5,
+    height: 5,
+    borderRadius: 3,
+  },
+  moodBadgeText: {
+    fontSize: 9,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.7,
   },
   leagueChip: {
     paddingHorizontal: 8,
