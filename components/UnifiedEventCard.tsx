@@ -21,6 +21,7 @@ import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTi
 
 const MASTERS_LOGO = require("@/assets/images/masters-logo.png");
 const BOSTON_MARATHON_LOGO = require("@/assets/images/boston-marathon-logo.png");
+const DIAMOND_LEAGUE_LOGO = require("@/assets/images/diamond-league-logo.png");
 const GIRO_DITALIA_LOGO = require("@/assets/images/giro-ditalia-logo.png");
 
 const isGiroDItalia = (name: string | null | undefined) =>
@@ -825,7 +826,11 @@ export default function UnifiedEventCard({
   const golfRound = isGolf && event.sessionTitle
     ? (event.sessionTitle.match(/Round \d+/)?.[0] || event.sessionTitle.split("—")[1]?.trim() || event.sessionTitle)
     : null;
-  const athleticsTournament = isAthletics ? (event.tournamentName || event.homeTeam) : null;
+  const isDiamondLeague = isAthletics && (event.id?.startsWith("athletics-diamond-league-") || /diamond\s+league/i.test(event.tournamentName || event.homeTeam || ""));
+  const rawAthleticsTournament = isAthletics ? (event.tournamentName || event.homeTeam) : null;
+  const athleticsTournament = isDiamondLeague && rawAthleticsTournament
+    ? rawAthleticsTournament.replace(/^\s*diamond\s+league\s*[—–\-:]\s*/i, "").trim()
+    : rawAthleticsTournament;
   const horseRacingName = isHorseRacing ? (event.tournamentName || event.homeTeam) : null;
   const cyclingTourName = isCycling ? (event.tournamentName || event.homeTeam) : null;
 
@@ -953,7 +958,7 @@ export default function UnifiedEventCard({
             <View>
               <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
                 <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>
-                  {event.leagueKey === "marathon-majors" ? "MARATHON MAJORS" : getLeagueLabel(event)}
+                  {isDiamondLeague ? "DIAMOND LEAGUE" : event.leagueKey === "marathon-majors" ? "MARATHON MAJORS" : getLeagueLabel(event)}
                 </Text>
               </View>
               <View style={uStyles.espnMatchup}>
@@ -964,6 +969,12 @@ export default function UnifiedEventCard({
                       <Image
                         source={BOSTON_MARATHON_LOGO}
                         style={{ width: featured ? 44 : 36, height: featured ? 44 : 36 }}
+                        resizeMode="contain"
+                      />
+                    ) : isDiamondLeague ? (
+                      <Image
+                        source={DIAMOND_LEAGUE_LOGO}
+                        style={{ width: featured ? 56 : 48, height: featured ? 30 : 26 }}
                         resizeMode="contain"
                       />
                     ) : (
@@ -988,7 +999,15 @@ export default function UnifiedEventCard({
           ) : isAthletics ? (
             <View style={uStyles.racingLayout}>
               <View style={uStyles.racingCircuitRow}>
-                <Text style={{ fontSize: featured ? 18 : 16 }}>🏃</Text>
+                {isDiamondLeague ? (
+                  <Image
+                    source={DIAMOND_LEAGUE_LOGO}
+                    style={{ width: featured ? 42 : 36, height: featured ? 20 : 18 }}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <Text style={{ fontSize: featured ? 18 : 16 }}>🏃</Text>
+                )}
                 <Text
                   style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
                   numberOfLines={1}
