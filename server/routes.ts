@@ -481,6 +481,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const ncaa = events.filter((e: any) => (e.source || "").startsWith("ncaa")).length;
     const rugby = events.filter((e: any) => e.source === "rugby").length;
     const championsCup = events.filter((e: any) => e.source === "rugby-championscup").length;
+    const challengeCup = events.filter((e: any) => e.source === "rugby-challengecup").length;
     const mlr = events.filter((e: any) => e.source === "rugby-mlr").length;
     const svnsSessions = events.filter((e: any) => e.leagueKey === "svns" && e.eventType === "session").length;
     const sixnationsCount = events.filter((e: any) => e.leagueKey === "sixnations").length;
@@ -499,12 +500,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const championsLeague = events.filter((e: any) => e.source === "soccer-championsleague").length;
     const faCup = events.filter((e: any) => e.source === "soccer-facup").length;
     const soccerTotal = epl + mls + serieA + laLiga + bundesliga + ligue1 + nwsl + usl + championsLeague + faCup;
-    const rugbyTotal = rugby + championsCup + mlr;
+    const rugbyTotal = rugby + championsCup + challengeCup + mlr;
     const tennis = events.filter((e: any) => e.source === "tennis-hardcoded").length;
     const golf = events.filter((e: any) => e.source === "golf-hardcoded").length;
     const other = events.length - nhl - ahl - echl - ncaa - rugbyTotal - cricketTotal - olympicHockey - soccerTotal - tennis - golf;
     return res.json({
-      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, championsCup, mlr, rugbyTotal, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, olympicHockey, epl, mls, serieA, laLiga, bundesliga, ligue1, nwsl, usl, championsLeague, faCup, soccerTotal, tennis, golf, other, total: events.length,
+      nhl, ahl, ahlHockeyTech: ahlHt, ahlOdds, echl, ncaa, rugby, championsCup, challengeCup, mlr, rugbyTotal, svnsSessions, sixnationsCount, cricket, iccT20Wc, cricketTotal, olympicHockey, epl, mls, serieA, laLiga, bundesliga, ligue1, nwsl, usl, championsLeague, faCup, soccerTotal, tennis, golf, other, total: events.length,
       lastUpdated: generated.lastUpdated,
       ahlSourceUsed: generated.ahlSourceUsed ?? "unknown",
       echlSourceUsed: generated.echlSourceUsed ?? "unknown",

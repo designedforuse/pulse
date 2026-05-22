@@ -1241,21 +1241,21 @@
   },
   "league_moment:canadian grand prix sports may 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=dqFBLxEM9ZI",
-      "thumbnailUrl": "https://img.youtube.com/vi/dqFBLxEM9ZI/hqdefault.jpg",
-      "durationSeconds": 546,
-      "title": "The East Final opens tonight in Raleigh",
+      "url": "https://www.youtube.com/watch?v=eHf3ZKK-vIw",
+      "thumbnailUrl": "https://img.youtube.com/vi/eHf3ZKK-vIw/hqdefault.jpg",
+      "durationSeconds": 243,
+      "title": "FP1 Highlights | 2026 Canadian Grand Prix",
       "source": "youtube",
-      "channel": "TSN",
-      "publishedAt": "12 hours ago"
+      "channel": "FORMULA 1",
+      "publishedAt": "1 hour ago"
     },
-    "fetchedAt": "2026-05-22T07:54:02.207Z",
+    "fetchedAt": "2026-05-22T21:14:23.035Z",
     "query": "Canadian Grand Prix sports May 2026",
     "debug": {
       "searchQuery": "Canadian Grand Prix sports May 2026",
-      "selectedVideoTitle": "The East Final opens tonight in Raleigh",
-      "selectedVideoPublishedAt": "12 hours ago",
-      "selectedVideoChannel": "TSN",
+      "selectedVideoTitle": "FP1 Highlights | 2026 Canadian Grand Prix",
+      "selectedVideoPublishedAt": "1 hour ago",
+      "selectedVideoChannel": "FORMULA 1",
       "rejectedForAgeCount": 0
     }
   }

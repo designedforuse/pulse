@@ -40267,7 +40267,7 @@
     }
   },
   "movements": [],
-  "lastUpdated": "2026-05-22T18:00:04.465Z",
+  "lastUpdated": "2026-05-22T21:15:54.072Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -40296,6 +40296,6 @@
     ],
     "playersIngested": 402,
     "movementsDetectedThisRun": [],
-    "timestamp": "2026-05-22T18:00:04.465Z"
+    "timestamp": "2026-05-22T21:15:54.072Z"
   }
 }

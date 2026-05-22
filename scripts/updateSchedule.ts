@@ -6,6 +6,7 @@ import { fetchBuEvents, mergeBuEvents } from "./updateBuHockey";
 import { fetchRugbyEvents, mergeRugbyEvents } from "./updateRugby";
 import { fetchCricketEvents, mergeCricketEvents } from "./updateCricket";
 import { fetchIplEvents, mergeIplEvents } from "./updateIpl";
+import { fetchChallengeCupEvents, mergeChallengeCupEvents } from "./updateChallengeCup";
 import { fetchIccT20WcEvents, mergeIccT20WcEvents } from "./updateIccT20Wc";
 import { fetchOlympicHockeyEvents, mergeOlympicHockeyEvents } from "./updateOlympicHockey2026";
 import { fetchEplEvents, mergeEplEvents } from "./updateEpl";
@@ -299,8 +300,9 @@ async function main() {
   const existingAhl = loadExistingByPrefix("ahl-");
   const existingEchl = loadExistingByPrefix("echl-");
   const existingBu = loadExistingByPrefix("ncaa-bu-");
-  const existingRugby = loadExistingByPrefix("rugby-").filter((e: AppEvent) => !e.id.startsWith("rugby-championscup-") && !e.id.startsWith("rugby-mlr-"));
+  const existingRugby = loadExistingByPrefix("rugby-").filter((e: AppEvent) => !e.id.startsWith("rugby-championscup-") && !e.id.startsWith("rugby-challengecup-") && !e.id.startsWith("rugby-mlr-"));
   const existingChampionsCup = loadExistingByPrefix("rugby-championscup-");
+  const existingChallengeCup = loadExistingByPrefix("rugby-challengecup-");
   const existingMlr = loadExistingByPrefix("rugby-mlr-");
   const existingCricket = loadExistingByPrefix("cricket-").filter((e: AppEvent) => !e.id.startsWith("cricket-t20wc-") && !e.id.startsWith("cricket-ipl-"));
   const existingIpl = loadExistingByPrefix("cricket-ipl-");
@@ -373,7 +375,7 @@ async function main() {
   const utmbFetchResult = fetchUtmbEvents();
   const tennisFetchResult = await fetchTennisEvents();
 
-  const [nhlEvents, ahlFetchResult, echlFetchResult, buFetchResult, rugbyFetchResult, cricketFetchResult, iplFetchResult, eplFetchResult, mlsFetchResult, serieAFetchResult, laLigaFetchResult, bundesligaFetchResult, ligue1FetchResult, nwslFetchResult, uslFetchResult, championsCupFetchResult, championsLeagueFetchResult, europaLeagueFetchResult, faCupFetchResult, f1FetchResult, nbaFetchResult, ncaabFetchResult, intlSoccerFetchResult, mlbFetchResult, shlFetchResult, cafClFetchResult] = await Promise.all([
+  const [nhlEvents, ahlFetchResult, echlFetchResult, buFetchResult, rugbyFetchResult, cricketFetchResult, iplFetchResult, eplFetchResult, mlsFetchResult, serieAFetchResult, laLigaFetchResult, bundesligaFetchResult, ligue1FetchResult, nwslFetchResult, uslFetchResult, championsCupFetchResult, challengeCupFetchResult, championsLeagueFetchResult, europaLeagueFetchResult, faCupFetchResult, f1FetchResult, nbaFetchResult, ncaabFetchResult, intlSoccerFetchResult, mlbFetchResult, shlFetchResult, cafClFetchResult] = await Promise.all([
     fetchNHLEvents(days),
     fetchAhlEvents(),
     fetchEchlEvents(),
@@ -390,6 +392,7 @@ async function main() {
     fetchNwslEvents(),
     fetchUslEvents(),
     fetchChampionsCupEvents(),
+    fetchChallengeCupEvents(),
     fetchChampionsLeagueEvents(),
     fetchEuropaLeagueEvents(),
     fetchFaCupEvents(),
@@ -420,6 +423,7 @@ async function main() {
   const nwslResult = mergeNwslEvents(existingNwsl, nwslFetchResult.events, now);
   const uslResult = mergeUslEvents(existingUsl, uslFetchResult.events, now);
   const championsCupResult = mergeChampionsCupEvents(existingChampionsCup, championsCupFetchResult.events, now);
+  const challengeCupResult = mergeChallengeCupEvents(existingChallengeCup, challengeCupFetchResult.events, now);
   const mlrResult = mergeMlrEvents(existingMlr, mlrFetchResult.events, now);
   const championsLeagueResult = mergeChampionsLeagueEvents(existingChampionsLeague, championsLeagueFetchResult.events, now);
   const europaLeagueResult = mergeEuropaLeagueEvents(existingEuropaLeague, europaLeagueFetchResult.events, now);
@@ -496,6 +500,8 @@ async function main() {
   console.log(`  Rugby merge: +${rugbyResult.added} added, ~${rugbyResult.updated} updated, -${rugbyResult.pruned} pruned → ${rugbyResult.merged.length} total`);
   console.log(`  Champions Cup source: ${championsCupFetchResult.sourceUsed} (${championsCupFetchResult.count} events)`);
   console.log(`  Champions Cup merge: +${championsCupResult.added} added, ~${championsCupResult.updated} updated, -${championsCupResult.pruned} pruned → ${championsCupResult.merged.length} total`);
+  console.log(`  Challenge Cup source: ${challengeCupFetchResult.sourceUsed} (${challengeCupFetchResult.count} events)`);
+  console.log(`  Challenge Cup merge: +${challengeCupResult.added} added, ~${challengeCupResult.updated} updated, -${challengeCupResult.pruned} pruned → ${challengeCupResult.merged.length} total`);
   console.log(`  MLR source: ${mlrFetchResult.sourceUsed} (${mlrFetchResult.count} events)`);
   console.log(`  MLR merge: +${mlrResult.added} added, ~${mlrResult.updated} updated, -${mlrResult.pruned} pruned → ${mlrResult.merged.length} total`);
   console.log(`  Cricket source: ${cricketFetchResult.sourceUsed} (${JSON.stringify(cricketFetchResult.counts)})`);
@@ -557,7 +563,7 @@ async function main() {
   console.log(`  CAF CL source: ${cafClFetchResult.sourceUsed} (${cafClFetchResult.count} events)`);
   console.log(`  CAF CL merge: +${cafClResult.added} added, ~${cafClResult.updated} updated, -${cafClResult.pruned} pruned → ${cafClResult.merged.length} total`);
 
-  const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged, ...buResult.merged, ...rugbyResult.merged, ...championsCupResult.merged, ...mlrResult.merged, ...cricketResult.merged, ...iplResult.merged, ...t20WcResult.merged, ...olympicHockeyResult.merged, ...eplResult.merged, ...mlsResult.merged, ...serieAResult.merged, ...laLigaResult.merged, ...bundesligaResult.merged, ...ligue1Result.merged, ...nwslResult.merged, ...uslResult.merged, ...championsLeagueResult.merged, ...europaLeagueResult.merged, ...faCupResult.merged, ...cafClResult.merged, ...tennisResult.merged, ...f1Result.merged, ...golfResult.merged, ...marathonResult.merged, ...horseRacingResult.merged, ...cyclingResult.merged, ...diamondLeagueResult.merged, ...utmbResult.merged, ...nbaResult.merged, ...ncaabResult.merged, ...intlSoccerResult.merged, ...mlbResult.merged, ...shlResult.merged].sort(
+  const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged, ...buResult.merged, ...rugbyResult.merged, ...championsCupResult.merged, ...challengeCupResult.merged, ...mlrResult.merged, ...cricketResult.merged, ...iplResult.merged, ...t20WcResult.merged, ...olympicHockeyResult.merged, ...eplResult.merged, ...mlsResult.merged, ...serieAResult.merged, ...laLigaResult.merged, ...bundesligaResult.merged, ...ligue1Result.merged, ...nwslResult.merged, ...uslResult.merged, ...championsLeagueResult.merged, ...europaLeagueResult.merged, ...faCupResult.merged, ...cafClResult.merged, ...tennisResult.merged, ...f1Result.merged, ...golfResult.merged, ...marathonResult.merged, ...horseRacingResult.merged, ...cyclingResult.merged, ...diamondLeagueResult.merged, ...utmbResult.merged, ...nbaResult.merged, ...ncaabResult.merged, ...intlSoccerResult.merged, ...mlbResult.merged, ...shlResult.merged].sort(
     (a, b) =>
       new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
   );
@@ -666,6 +672,12 @@ async function main() {
         lastFetchAt: championsCupFetchResult.events.length > 0 ? nowIso : (prevMeta?.sources?.championsCup?.lastFetchAt || nowIso),
         sourceName: "iCal Feed",
         firstMatchDate: championsCupFetchResult.firstMatchDate || prevMeta?.sources?.championsCup?.firstMatchDate || null,
+      },
+      challengeCup: {
+        count: challengeCupResult.merged.length,
+        lastFetchAt: challengeCupFetchResult.events.length > 0 ? nowIso : (prevMeta?.sources?.challengeCup?.lastFetchAt || nowIso),
+        sourceName: "iCal Feed",
+        firstMatchDate: challengeCupFetchResult.firstMatchDate || prevMeta?.sources?.challengeCup?.firstMatchDate || null,
       },
       mlr: {
         count: mlrResult.merged.length,
@@ -830,6 +842,11 @@ async function main() {
     championsCupUpdated: championsCupResult.updated,
     championsCupPruned: championsCupResult.pruned,
     championsCupSourceUsed: championsCupFetchResult.sourceUsed,
+    challengeCupCount: challengeCupResult.merged.length,
+    challengeCupAdded: challengeCupResult.added,
+    challengeCupUpdated: challengeCupResult.updated,
+    challengeCupPruned: challengeCupResult.pruned,
+    challengeCupSourceUsed: challengeCupFetchResult.sourceUsed,
     mlrCount: mlrResult.merged.length,
     mlrAdded: mlrResult.added,
     mlrUpdated: mlrResult.updated,
@@ -896,7 +913,7 @@ async function main() {
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2));
   console.log(
-    `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlResult.merged.length} AHL + ${echlResult.merged.length} ECHL + ${buResult.merged.length} NCAA + ${rugbyResult.merged.length} Rugby + ${championsCupResult.merged.length} Champions Cup + ${mlrResult.merged.length} MLR + ${cricketResult.merged.length} Cricket + ${t20WcResult.merged.length} T20WC + ${olympicHockeyResult.merged.length} Olympic Hockey + ${eplResult.merged.length} EPL + ${mlsResult.merged.length} MLS + ${serieAResult.merged.length} Serie A + ${laLigaResult.merged.length} La Liga + ${bundesligaResult.merged.length} Bundesliga + ${ligue1Result.merged.length} Ligue 1 + ${nwslResult.merged.length} NWSL + ${uslResult.merged.length} USL + ${championsLeagueResult.merged.length} UCL + ${europaLeagueResult.merged.length} UEL + ${faCupResult.merged.length} FA Cup + ${cafClResult.merged.length} CAF CL + ${tennisResult.merged.length} Tennis + ${f1Result.merged.length} F1 + ${golfResult.merged.length} Golf + ${marathonResult.merged.length} Marathon + ${nbaResult.merged.length} NBA + ${ncaabResult.merged.length} NCAAB + ${intlSoccerResult.merged.length} Intl Soccer + ${mlbResult.merged.length} MLB + ${shlResult.merged.length} SHL) to ${OUTPUT_PATH}`
+    `\nWrote ${allEvents.length} events (${nhlEvents.length} NHL + ${ahlResult.merged.length} AHL + ${echlResult.merged.length} ECHL + ${buResult.merged.length} NCAA + ${rugbyResult.merged.length} Rugby + ${championsCupResult.merged.length} Champions Cup + ${challengeCupResult.merged.length} Challenge Cup + ${mlrResult.merged.length} MLR + ${cricketResult.merged.length} Cricket + ${t20WcResult.merged.length} T20WC + ${olympicHockeyResult.merged.length} Olympic Hockey + ${eplResult.merged.length} EPL + ${mlsResult.merged.length} MLS + ${serieAResult.merged.length} Serie A + ${laLigaResult.merged.length} La Liga + ${bundesligaResult.merged.length} Bundesliga + ${ligue1Result.merged.length} Ligue 1 + ${nwslResult.merged.length} NWSL + ${uslResult.merged.length} USL + ${championsLeagueResult.merged.length} UCL + ${europaLeagueResult.merged.length} UEL + ${faCupResult.merged.length} FA Cup + ${cafClResult.merged.length} CAF CL + ${tennisResult.merged.length} Tennis + ${f1Result.merged.length} F1 + ${golfResult.merged.length} Golf + ${marathonResult.merged.length} Marathon + ${nbaResult.merged.length} NBA + ${ncaabResult.merged.length} NCAAB + ${intlSoccerResult.merged.length} Intl Soccer + ${mlbResult.merged.length} MLB + ${shlResult.merged.length} SHL) to ${OUTPUT_PATH}`
   );
   console.log(`AHL source: ${ahlSourceLabel}`);
   if (allEvents.length > 0) {

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-22T18:00:04.465Z",
+  "lastUpdated": "2026-05-22T21:15:54.072Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -49,7 +49,7 @@
         ],
         "playersIngested": 402,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-22T18:00:04.465Z"
+        "timestamp": "2026-05-22T21:15:54.072Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -59,7 +59,7 @@
     "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1822.0012402777777,
+      "hoursUntil": -1825.26502,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -82,12 +82,12 @@
     },
     "tonightStorySelectedSignal": "league_moment",
     "tonightStoryHeadline": "League Spotlight",
-    "tonightStorySourceEvent": "f1-espn-401839059",
+    "tonightStorySourceEvent": "f1-espn-401839060",
     "tonightStoryDebug": {
       "selectedSignal": "league_moment",
       "selectedHeadline": "League Spotlight",
       "selectedScore": 50,
-      "sourceEventId": "f1-espn-401839059",
+      "sourceEventId": "f1-espn-401839060",
       "reason": "league_moment (generic, no followed teams)",
       "scoredCandidates": [
         {
@@ -100,9 +100,9 @@
     "videoSelection": {
       "f1_race_weekend_canadian_grand_prix": {
         "searchQuery": "Canadian Grand Prix sports May 2026",
-        "selectedVideoTitle": "The East Final opens tonight in Raleigh",
-        "selectedVideoPublishedAt": "12 hours ago",
-        "selectedVideoChannel": "TSN",
+        "selectedVideoTitle": "FP1 Highlights | 2026 Canadian Grand Prix",
+        "selectedVideoPublishedAt": "1 hour ago",
+        "selectedVideoChannel": "FORMULA 1",
         "rejectedForAgeCount": 0
       }
     }
@@ -111,14 +111,14 @@
     {
       "id": "f1_race_weekend_canadian_grand_prix",
       "title": "Canadian Grand Prix",
-      "subtitle": "Canadian Grand Prix — 3 sessions in the next 48h: Sprint Qualifying, Sprint, Qualifying",
+      "subtitle": "Canadian Grand Prix — 3 sessions in the next 48h: Sprint, Qualifying, Race",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
-      "priority": 75,
-      "triggeredAt": "2026-05-22T18:00:04.465Z",
-      "expiresAt": "2026-05-24T00:00:00.000Z",
+      "priority": 85,
+      "triggeredAt": "2026-05-22T21:15:54.072Z",
+      "expiresAt": "2026-05-25T00:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -129,11 +129,6 @@
         "sessionCount": 3,
         "sessions": [
           {
-            "sessionTitle": "Sprint Qualifying",
-            "startTime": "2026-05-22T20:30:00.000Z",
-            "eventId": "f1-espn-401839059"
-          },
-          {
             "sessionTitle": "Sprint",
             "startTime": "2026-05-23T16:00:00.000Z",
             "eventId": "f1-espn-401839060"
@@ -142,12 +137,17 @@
             "sessionTitle": "Qualifying",
             "startTime": "2026-05-23T20:00:00.000Z",
             "eventId": "f1-espn-401839061"
+          },
+          {
+            "sessionTitle": "Race",
+            "startTime": "2026-05-24T20:00:00.000Z",
+            "eventId": "f1-espn-401839062"
           }
         ],
         "eventIds": [
-          "f1-espn-401839059",
           "f1-espn-401839060",
-          "f1-espn-401839061"
+          "f1-espn-401839061",
+          "f1-espn-401839062"
         ],
         "reason": "Canadian Grand Prix race weekend — 3 session(s) within 48 hours"
       },
@@ -155,13 +155,13 @@
         "racing"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=dqFBLxEM9ZI",
-        "thumbnailUrl": "https://img.youtube.com/vi/dqFBLxEM9ZI/hqdefault.jpg",
-        "durationSeconds": 546,
-        "title": "The East Final opens tonight in Raleigh",
+        "url": "https://www.youtube.com/watch?v=eHf3ZKK-vIw",
+        "thumbnailUrl": "https://img.youtube.com/vi/eHf3ZKK-vIw/hqdefault.jpg",
+        "durationSeconds": 243,
+        "title": "FP1 Highlights | 2026 Canadian Grand Prix",
         "source": "youtube",
-        "channel": "TSN",
-        "publishedAt": "12 hours ago"
+        "channel": "FORMULA 1",
+        "publishedAt": "1 hour ago"
       }
     }
   ],
@@ -169,8 +169,8 @@
     "signalType": "league_moment",
     "signalLabel": "LEAGUE MOMENT",
     "headline": "League Spotlight",
-    "body": "Canadian Grand Prix — 3 sessions in the next 48h: Sprint Qualifying, Sprint, Qualifying",
-    "sourceEventId": "f1-espn-401839059",
+    "body": "Canadian Grand Prix — 3 sessions in the next 48h: Sprint, Qualifying, Race",
+    "sourceEventId": "f1-espn-401839060",
     "sourceCard": {
       "id": "f1_race_weekend_canadian_grand_prix",
       "kind": "league_moment",
@@ -193,66 +193,6 @@
           "startDate": "2026-05-02T17:00:00.000Z",
           "endDate": "2026-05-25T01:15:00.000Z",
           "eventCount": 82,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Bundesliga",
-          "leagueKey": "bundesliga",
-          "dateRangeLabel": "May 8–16",
-          "startDate": "2026-05-08T18:30:00.000Z",
-          "endDate": "2026-05-16T13:30:00.000Z",
-          "eventCount": 18,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "rugby",
-          "displayName": "URC",
-          "leagueKey": "urc",
-          "dateRangeLabel": "May 8–30",
-          "startDate": "2026-05-08T18:45:00.000Z",
-          "endDate": "2026-05-30T19:00:00.000Z",
-          "eventCount": 20,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "rugby",
-          "displayName": "English Premiership",
-          "leagueKey": "premiership",
-          "dateRangeLabel": "May 8–31",
-          "startDate": "2026-05-08T18:45:00.000Z",
-          "endDate": "2026-05-31T14:30:00.000Z",
-          "eventCount": 15,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Serie A",
-          "leagueKey": "seriea",
-          "dateRangeLabel": "May 8–24",
-          "startDate": "2026-05-08T18:45:00.000Z",
-          "endDate": "2026-05-24T18:45:00.000Z",
-          "eventCount": 30,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Ligue 1",
-          "leagueKey": "ligue1",
-          "dateRangeLabel": "May 8–17",
-          "startDate": "2026-05-08T18:45:00.000Z",
-          "endDate": "2026-05-17T19:00:00.000Z",
-          "eventCount": 20,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "La Liga",
-          "leagueKey": "laliga",
-          "dateRangeLabel": "May 8–24",
-          "startDate": "2026-05-08T19:00:00.000Z",
-          "endDate": "2026-05-24T19:00:00.000Z",
-          "eventCount": 40,
           "seasonPhase": "Regular"
         },
         {
@@ -346,6 +286,26 @@
           "seasonPhase": "Regular"
         },
         {
+          "sport": "rugby",
+          "displayName": "URC",
+          "leagueKey": "urc",
+          "dateRangeLabel": "May 9–30",
+          "startDate": "2026-05-09T11:45:00.000Z",
+          "endDate": "2026-05-30T19:00:00.000Z",
+          "eventCount": 18,
+          "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "La Liga",
+          "leagueKey": "laliga",
+          "dateRangeLabel": "May 9–24",
+          "startDate": "2026-05-09T12:00:00.000Z",
+          "endDate": "2026-05-24T19:00:00.000Z",
+          "eventCount": 39,
+          "seasonPhase": "Regular"
+        },
+        {
           "sport": "cycling",
           "displayName": "Grand Tour — Giro d'Italia",
           "leagueKey": "grand-tour",
@@ -366,6 +326,26 @@
           "seasonPhase": "Playoffs"
         },
         {
+          "sport": "soccer",
+          "displayName": "Serie A",
+          "leagueKey": "seriea",
+          "dateRangeLabel": "May 9–24",
+          "startDate": "2026-05-09T13:00:00.000Z",
+          "endDate": "2026-05-24T18:45:00.000Z",
+          "eventCount": 29,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "Bundesliga",
+          "leagueKey": "bundesliga",
+          "dateRangeLabel": "May 9–16",
+          "startDate": "2026-05-09T13:30:00.000Z",
+          "endDate": "2026-05-16T13:30:00.000Z",
+          "eventCount": 17,
+          "seasonPhase": "Regular"
+        },
+        {
           "sport": "cricket",
           "displayName": "IPL",
           "leagueKey": "ipl",
@@ -377,12 +357,32 @@
         },
         {
           "sport": "rugby",
+          "displayName": "English Premiership",
+          "leagueKey": "premiership",
+          "dateRangeLabel": "May 9–31",
+          "startDate": "2026-05-09T14:05:00.000Z",
+          "endDate": "2026-05-31T14:30:00.000Z",
+          "eventCount": 14,
+          "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "rugby",
           "displayName": "MLR",
           "leagueKey": "mlr",
           "dateRangeLabel": "May 9–31",
           "startDate": "2026-05-09T20:00:00.000Z",
           "endDate": "2026-05-31T20:00:00.000Z",
           "eventCount": 11,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "Ligue 1",
+          "leagueKey": "ligue1",
+          "dateRangeLabel": "May 10–17",
+          "startDate": "2026-05-10T19:00:00.000Z",
+          "endDate": "2026-05-17T19:00:00.000Z",
+          "eventCount": 19,
           "seasonPhase": "Regular"
         },
         {
@@ -483,6 +483,16 @@
           "startDate": "2026-05-22T16:30:00.000Z",
           "endDate": "2026-05-24T20:00:00.000Z",
           "eventCount": 5,
+          "seasonPhase": null
+        },
+        {
+          "sport": "rugby",
+          "displayName": "Challenge Cup",
+          "leagueKey": "challengecup",
+          "dateRangeLabel": "May 22",
+          "startDate": "2026-05-22T19:00:00.000Z",
+          "endDate": "2026-05-22T19:00:00.000Z",
+          "eventCount": 1,
           "seasonPhase": null
         },
         {
