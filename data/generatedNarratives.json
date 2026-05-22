@@ -1,12 +1,20 @@
 {
-  "lastUpdated": "2026-05-20T13:42:08.206Z",
+  "lastUpdated": "2026-05-22T07:53:50.863Z",
   "debug": {
-    "rawCandidatesByKindAndRegion": {},
+    "rawCandidatesByKindAndRegion": {
+      "league_moment": {
+        "Other": 1
+      }
+    },
     "combinedPushByRegion": {},
-    "finalFeedByRegion": {},
+    "finalFeedByRegion": {
+      "Other": [
+        "league_moment: Canadian Grand Prix"
+      ]
+    },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 0,
-    "totalAfterCap": 0,
+    "totalBeforeCap": 1,
+    "totalAfterCap": 1,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -39,19 +47,19 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 404,
+        "playersIngested": 402,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-20T13:42:08.206Z"
+        "timestamp": "2026-05-22T07:53:50.863Z"
       },
       "cacheHistoryCount": 880,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 0,
-    "candidateCountAfterCap": 0,
+    "candidateCountBeforeCap": 1,
+    "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1769.7022794444445,
+      "hoursUntil": -1811.8974619444446,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -72,21 +80,112 @@
       "clinchFinalCount": 0,
       "clinchGatedOut": []
     },
-    "tonightStorySelectedSignal": null,
-    "tonightStoryHeadline": null,
-    "tonightStorySourceEvent": null,
+    "tonightStorySelectedSignal": "league_moment",
+    "tonightStoryHeadline": "League Spotlight",
+    "tonightStorySourceEvent": "f1-espn-401839058",
     "tonightStoryDebug": {
-      "selectedSignal": null,
-      "selectedHeadline": null,
-      "selectedScore": 0,
-      "sourceEventId": null,
-      "reason": "no stories scored",
-      "scoredCandidates": []
+      "selectedSignal": "league_moment",
+      "selectedHeadline": "League Spotlight",
+      "selectedScore": 50,
+      "sourceEventId": "f1-espn-401839058",
+      "reason": "league_moment (generic, no followed teams)",
+      "scoredCandidates": [
+        {
+          "label": "[league_moment] League Spotlight",
+          "score": 50,
+          "reason": "league_moment (generic, no followed teams)"
+        }
+      ]
     },
-    "videoSelection": {}
+    "videoSelection": {
+      "f1_race_weekend_canadian_grand_prix": {
+        "searchQuery": "Canadian Grand Prix sports May 2026",
+        "selectedVideoTitle": "The East Final opens tonight in Raleigh",
+        "selectedVideoPublishedAt": "12 hours ago",
+        "selectedVideoChannel": "TSN",
+        "rejectedForAgeCount": 0
+      }
+    }
   },
-  "cards": [],
-  "tonightStory": null,
+  "cards": [
+    {
+      "id": "f1_race_weekend_canadian_grand_prix",
+      "title": "Canadian Grand Prix",
+      "subtitle": "Canadian Grand Prix — 4 sessions in the next 48h: Practice 1, Sprint Qualifying, Sprint, Qualifying",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 75,
+      "triggeredAt": "2026-05-22T07:53:50.863Z",
+      "expiresAt": "2026-05-24T00:00:00.000Z",
+      "kind": "league_moment",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "f1_race_weekend",
+        "grandPrix": "Canadian Grand Prix",
+        "sessionCount": 4,
+        "sessions": [
+          {
+            "sessionTitle": "Practice 1",
+            "startTime": "2026-05-22T16:30:00.000Z",
+            "eventId": "f1-espn-401839058"
+          },
+          {
+            "sessionTitle": "Sprint Qualifying",
+            "startTime": "2026-05-22T20:30:00.000Z",
+            "eventId": "f1-espn-401839059"
+          },
+          {
+            "sessionTitle": "Sprint",
+            "startTime": "2026-05-23T16:00:00.000Z",
+            "eventId": "f1-espn-401839060"
+          },
+          {
+            "sessionTitle": "Qualifying",
+            "startTime": "2026-05-23T20:00:00.000Z",
+            "eventId": "f1-espn-401839061"
+          }
+        ],
+        "eventIds": [
+          "f1-espn-401839058",
+          "f1-espn-401839059",
+          "f1-espn-401839060",
+          "f1-espn-401839061"
+        ],
+        "reason": "Canadian Grand Prix race weekend — 4 session(s) within 48 hours"
+      },
+      "sports": [
+        "racing"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=dqFBLxEM9ZI",
+        "thumbnailUrl": "https://img.youtube.com/vi/dqFBLxEM9ZI/hqdefault.jpg",
+        "durationSeconds": 546,
+        "title": "The East Final opens tonight in Raleigh",
+        "source": "youtube",
+        "channel": "TSN",
+        "publishedAt": "12 hours ago"
+      }
+    }
+  ],
+  "tonightStory": {
+    "signalType": "league_moment",
+    "signalLabel": "LEAGUE MOMENT",
+    "headline": "League Spotlight",
+    "body": "Canadian Grand Prix — 4 sessions in the next 48h: Practice 1, Sprint Qualifying, Sprint, Qualifying",
+    "sourceEventId": "f1-espn-401839058",
+    "sourceCard": {
+      "id": "f1_race_weekend_canadian_grand_prix",
+      "kind": "league_moment",
+      "title": "Canadian Grand Prix"
+    },
+    "sports": [
+      "racing"
+    ]
+  },
   "monthSnapshot": {
     "currentMonth": {
       "monthLabel": "May 2026",
@@ -103,113 +202,13 @@
           "seasonPhase": "Regular"
         },
         {
-          "sport": "cricket",
-          "displayName": "IPL",
-          "leagueKey": "ipl",
-          "dateRangeLabel": "May 6–31",
-          "startDate": "2026-05-06T14:00:00.000Z",
-          "endDate": "2026-05-31T14:00:00.000Z",
-          "eventCount": 22,
-          "seasonPhase": "Final"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Champions League",
-          "leagueKey": "championsleague",
-          "dateRangeLabel": "May 6–30",
-          "startDate": "2026-05-06T19:00:00.000Z",
-          "endDate": "2026-05-30T16:00:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": "Final"
-        },
-        {
-          "sport": "hockey",
-          "displayName": "AHL",
-          "leagueKey": "ahl",
-          "dateRangeLabel": "May 6–24",
-          "startDate": "2026-05-06T23:00:00.000Z",
-          "endDate": "2026-05-24T19:00:00.000Z",
-          "eventCount": 29,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "hockey",
-          "displayName": "ECHL",
-          "leagueKey": "echl",
-          "dateRangeLabel": "May 6–31",
-          "startDate": "2026-05-06T23:00:00.000Z",
-          "endDate": "2026-05-31T21:05:00.000Z",
-          "eventCount": 33,
-          "seasonPhase": "Final"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "USL",
-          "leagueKey": "usl",
-          "dateRangeLabel": "May 7–31",
-          "startDate": "2026-05-07T01:00:00.000Z",
-          "endDate": "2026-05-31T18:00:00.000Z",
-          "eventCount": 37,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "NWSL",
-          "leagueKey": "nwsl",
-          "dateRangeLabel": "May 7–31",
-          "startDate": "2026-05-07T02:00:00.000Z",
-          "endDate": "2026-05-31T23:00:00.000Z",
-          "eventCount": 36,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "tennis",
-          "displayName": "Madrid",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "May 7–10",
-          "startDate": "2026-05-07T09:00:00.000Z",
-          "endDate": "2026-05-10T09:00:00.000Z",
-          "eventCount": 4,
-          "seasonPhase": null
-        },
-        {
-          "sport": "tennis",
-          "displayName": "Rome",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "May 7–17",
-          "startDate": "2026-05-07T09:00:00.000Z",
-          "endDate": "2026-05-17T09:00:00.000Z",
-          "eventCount": 18,
-          "seasonPhase": null
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Europa League",
-          "leagueKey": "europaleague",
-          "dateRangeLabel": "May 7–20",
-          "startDate": "2026-05-07T19:00:00.000Z",
-          "endDate": "2026-05-20T19:00:00.000Z",
-          "eventCount": 3,
-          "seasonPhase": "Knockout"
-        },
-        {
-          "sport": "cricket",
-          "displayName": "Test Cricket",
-          "leagueKey": "test",
-          "dateRangeLabel": "May 8–16",
-          "startDate": "2026-05-08T03:30:00.000Z",
-          "endDate": "2026-05-16T03:30:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": null
-        },
-        {
           "sport": "rugby",
           "displayName": "Super Rugby",
           "leagueKey": "superrugby",
           "dateRangeLabel": "May 8–30",
-          "startDate": "2026-05-08T07:05:00.000Z",
+          "startDate": "2026-05-08T09:35:00.000Z",
           "endDate": "2026-05-30T09:35:00.000Z",
-          "eventCount": 19,
+          "eventCount": 18,
           "seasonPhase": "Playoffs"
         },
         {
@@ -221,6 +220,16 @@
           "endDate": "2026-05-31T12:00:00.000Z",
           "eventCount": 21,
           "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
+          "displayName": "IPL",
+          "leagueKey": "ipl",
+          "dateRangeLabel": "May 8–31",
+          "startDate": "2026-05-08T14:00:00.000Z",
+          "endDate": "2026-05-31T14:00:00.000Z",
+          "eventCount": 20,
+          "seasonPhase": "Final"
         },
         {
           "sport": "athletics",
@@ -293,6 +302,46 @@
           "seasonPhase": "Regular"
         },
         {
+          "sport": "soccer",
+          "displayName": "NWSL",
+          "leagueKey": "nwsl",
+          "dateRangeLabel": "May 8–31",
+          "startDate": "2026-05-08T22:30:00.000Z",
+          "endDate": "2026-05-31T23:00:00.000Z",
+          "eventCount": 35,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "hockey",
+          "displayName": "AHL",
+          "leagueKey": "ahl",
+          "dateRangeLabel": "May 8–31",
+          "startDate": "2026-05-08T23:00:00.000Z",
+          "endDate": "2026-05-31T00:05:00.000Z",
+          "eventCount": 24,
+          "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "hockey",
+          "displayName": "ECHL",
+          "leagueKey": "echl",
+          "dateRangeLabel": "May 8–31",
+          "startDate": "2026-05-08T23:10:00.000Z",
+          "endDate": "2026-05-31T21:05:00.000Z",
+          "eventCount": 32,
+          "seasonPhase": "Final"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "USL",
+          "leagueKey": "usl",
+          "dateRangeLabel": "May 8–31",
+          "startDate": "2026-05-08T23:30:00.000Z",
+          "endDate": "2026-05-31T18:00:00.000Z",
+          "eventCount": 35,
+          "seasonPhase": "Regular"
+        },
+        {
           "sport": "rugby",
           "displayName": "Japan League One",
           "leagueKey": "leagueone",
@@ -301,6 +350,26 @@
           "endDate": "2026-05-24T05:30:00.000Z",
           "eventCount": 8,
           "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Madrid",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "May 9–10",
+          "startDate": "2026-05-09T09:00:00.000Z",
+          "endDate": "2026-05-10T09:00:00.000Z",
+          "eventCount": 2,
+          "seasonPhase": null
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Rome",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "May 9–17",
+          "startDate": "2026-05-09T09:00:00.000Z",
+          "endDate": "2026-05-17T09:00:00.000Z",
+          "eventCount": 14,
+          "seasonPhase": null
         },
         {
           "sport": "soccer",
@@ -340,6 +409,16 @@
           "startDate": "2026-05-14T14:00:00.000Z",
           "endDate": "2026-05-17T14:00:00.000Z",
           "eventCount": 4,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
+          "displayName": "Test Cricket",
+          "leagueKey": "test",
+          "dateRangeLabel": "May 16",
+          "startDate": "2026-05-16T03:30:00.000Z",
+          "endDate": "2026-05-16T03:30:00.000Z",
+          "eventCount": 1,
           "seasonPhase": null
         },
         {
@@ -383,13 +462,23 @@
           "seasonPhase": "Knockout"
         },
         {
+          "sport": "soccer",
+          "displayName": "Europa League",
+          "leagueKey": "europaleague",
+          "dateRangeLabel": "May 20",
+          "startDate": "2026-05-20T19:00:00.000Z",
+          "endDate": "2026-05-20T19:00:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
+        },
+        {
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "May 21–31",
-          "startDate": "2026-05-21T00:00:00.000Z",
+          "dateRangeLabel": "May 22–31",
+          "startDate": "2026-05-22T00:00:00.000Z",
           "endDate": "2026-05-31T16:00:00.000Z",
-          "eventCount": 12,
+          "eventCount": 11,
           "seasonPhase": "Playoffs"
         },
         {
@@ -451,6 +540,16 @@
           "endDate": "2026-05-30T11:30:00.000Z",
           "eventCount": 1,
           "seasonPhase": null
+        },
+        {
+          "sport": "soccer",
+          "displayName": "Champions League",
+          "leagueKey": "championsleague",
+          "dateRangeLabel": "May 30",
+          "startDate": "2026-05-30T16:00:00.000Z",
+          "endDate": "2026-05-30T16:00:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": "Final"
         },
         {
           "sport": "athletics",
@@ -587,6 +686,16 @@
           "seasonPhase": null
         },
         {
+          "sport": "hockey",
+          "displayName": "AHL",
+          "leagueKey": "ahl",
+          "dateRangeLabel": "Jun 3–9",
+          "startDate": "2026-06-03T00:00:00.000Z",
+          "endDate": "2026-06-09T01:05:00.000Z",
+          "eventCount": 5,
+          "seasonPhase": "Final"
+        },
+        {
           "sport": "cricket",
           "displayName": "International Cricket",
           "leagueKey": "intl",
@@ -600,10 +709,10 @@
           "sport": "soccer",
           "displayName": "USL",
           "leagueKey": "usl",
-          "dateRangeLabel": "Jun 4",
+          "dateRangeLabel": "Jun 4–11",
           "startDate": "2026-06-04T00:00:00.000Z",
-          "endDate": "2026-06-04T00:00:00.000Z",
-          "eventCount": 1,
+          "endDate": "2026-06-11T02:30:00.000Z",
+          "eventCount": 5,
           "seasonPhase": "Regular"
         },
         {

@@ -129,6 +129,7 @@ const ATHLETICS_CITY_FLAGS: Record<string, string> = {
   "chicago": "🇺🇸",
   "new york": "🇺🇸",
   "new york city": "🇺🇸",
+  "cape town": "🇿🇦",
 };
 
 function getAthleticsCityFlag(name: string | null | undefined): string | null {

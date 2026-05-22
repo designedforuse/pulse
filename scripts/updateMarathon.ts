@@ -84,6 +84,13 @@ const MARATHONS: MarathonEvent[] = [
     durationMin: MARATHON_DURATION_MIN,
   },
   {
+    name: "Cape Town Marathon",
+    city: "Cape Town",
+    country: "South Africa",
+    startUtc: "2026-10-18T04:15:00.000Z",
+    durationMin: MARATHON_DURATION_MIN,
+  },
+  {
     name: "New York City Marathon",
     city: "New York City",
     country: "USA",

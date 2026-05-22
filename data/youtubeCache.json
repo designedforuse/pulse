@@ -1238,5 +1238,25 @@
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
+  },
+  "league_moment:canadian grand prix sports may 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=dqFBLxEM9ZI",
+      "thumbnailUrl": "https://img.youtube.com/vi/dqFBLxEM9ZI/hqdefault.jpg",
+      "durationSeconds": 546,
+      "title": "The East Final opens tonight in Raleigh",
+      "source": "youtube",
+      "channel": "TSN",
+      "publishedAt": "12 hours ago"
+    },
+    "fetchedAt": "2026-05-22T07:54:02.207Z",
+    "query": "Canadian Grand Prix sports May 2026",
+    "debug": {
+      "searchQuery": "Canadian Grand Prix sports May 2026",
+      "selectedVideoTitle": "The East Final opens tonight in Raleigh",
+      "selectedVideoPublishedAt": "12 hours ago",
+      "selectedVideoChannel": "TSN",
+      "rejectedForAgeCount": 0
+    }
   }
 }
