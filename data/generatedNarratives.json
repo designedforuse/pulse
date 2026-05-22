@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-22T07:53:50.863Z",
+  "lastUpdated": "2026-05-22T07:56:40.837Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -49,7 +49,7 @@
         ],
         "playersIngested": 402,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-22T07:53:50.863Z"
+        "timestamp": "2026-05-22T07:56:40.837Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -59,7 +59,7 @@
     "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1811.8974619444446,
+      "hoursUntil": -1811.9446769444444,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -117,7 +117,7 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-22T07:53:50.863Z",
+      "triggeredAt": "2026-05-22T07:56:40.837Z",
       "expiresAt": "2026-05-24T00:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
@@ -510,6 +510,16 @@
           "endDate": "2026-05-23T13:45:00.000Z",
           "eventCount": 1,
           "seasonPhase": "Final"
+        },
+        {
+          "sport": "athletics",
+          "displayName": "Cape Town Marathon",
+          "leagueKey": "marathon-majors",
+          "dateRangeLabel": "May 24",
+          "startDate": "2026-05-24T06:35:00.000Z",
+          "endDate": "2026-05-24T06:35:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
         },
         {
           "sport": "tennis",
