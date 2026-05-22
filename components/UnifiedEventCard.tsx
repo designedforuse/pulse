@@ -103,6 +103,43 @@ export function getCountryFlag(country: string): string | null {
   return COUNTRY_FLAGS[country] ?? null;
 }
 
+const ATHLETICS_CITY_FLAGS: Record<string, string> = {
+  // Diamond League meets
+  "doha": "🇶🇦",
+  "shanghai": "🇨🇳",
+  "xiamen": "🇨🇳",
+  "rabat": "🇲🇦",
+  "rome": "🇮🇹",
+  "stockholm": "🇸🇪",
+  "oslo": "🇳🇴",
+  "paris": "🇫🇷",
+  "eugene": "🇺🇸",
+  "monaco": "🇲🇨",
+  "london": "🇬🇧",
+  "lausanne": "🇨🇭",
+  "silesia": "🇵🇱",
+  "chorzow": "🇵🇱",
+  "zurich": "🇨🇭",
+  "brussels": "🇧🇪",
+  // Marathon Majors
+  "tokyo": "🇯🇵",
+  "boston": "🇺🇸",
+  "sydney": "🇦🇺",
+  "berlin": "🇩🇪",
+  "chicago": "🇺🇸",
+  "new york": "🇺🇸",
+  "new york city": "🇺🇸",
+};
+
+function getAthleticsCityFlag(name: string | null | undefined): string | null {
+  if (!name) return null;
+  const lower = name.toLowerCase();
+  for (const [city, flag] of Object.entries(ATHLETICS_CITY_FLAGS)) {
+    if (lower.includes(city)) return flag;
+  }
+  return null;
+}
+
 const INTL_SOCCER_LEAGUES = new Set(["FIFA World Cup", "International Friendly"]);
 
 const GP_LOCATIONS: Record<string, string> = {
@@ -965,21 +1002,9 @@ export default function UnifiedEventCard({
                 <View style={uStyles.espnTeamOuter}>
                   <View style={uStyles.espnStarSlot} />
                   <View style={uStyles.espnTeam}>
-                    {athleticsTournament === "Boston Marathon" ? (
-                      <Image
-                        source={BOSTON_MARATHON_LOGO}
-                        style={{ width: featured ? 44 : 36, height: featured ? 44 : 36 }}
-                        resizeMode="contain"
-                      />
-                    ) : isDiamondLeague ? (
-                      <Image
-                        source={DIAMOND_LEAGUE_LOGO}
-                        style={{ width: featured ? 56 : 48, height: featured ? 30 : 26 }}
-                        resizeMode="contain"
-                      />
-                    ) : (
-                      <Text style={{ fontSize: featured ? 28 : 24 }}>🏃</Text>
-                    )}
+                    <Text style={{ fontSize: featured ? 28 : 24 }}>
+                      {getAthleticsCityFlag(rawAthleticsTournament) || "🏃"}
+                    </Text>
                   </View>
                 </View>
                 <View style={uStyles.espnCenter}>
@@ -999,15 +1024,9 @@ export default function UnifiedEventCard({
           ) : isAthletics ? (
             <View style={uStyles.racingLayout}>
               <View style={uStyles.racingCircuitRow}>
-                {isDiamondLeague ? (
-                  <Image
-                    source={DIAMOND_LEAGUE_LOGO}
-                    style={{ width: featured ? 42 : 36, height: featured ? 20 : 18 }}
-                    resizeMode="contain"
-                  />
-                ) : (
-                  <Text style={{ fontSize: featured ? 18 : 16 }}>🏃</Text>
-                )}
+                <Text style={{ fontSize: featured ? 18 : 16 }}>
+                  {getAthleticsCityFlag(rawAthleticsTournament) || "🏃"}
+                </Text>
                 <Text
                   style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
                   numberOfLines={1}
