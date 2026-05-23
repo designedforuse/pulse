@@ -431,6 +431,11 @@ function ChaosCard({
                     : event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league === "CAF Champions League" ? "CAF CL" : event.league === "English Premiership" ? "Premiership" : event.tournamentName || event.league}
                 </Text>
               </View>
+              {event.roundLabel === "Final" && (
+                <View style={[styles.leaguePill, { marginLeft: 6, backgroundColor: sportColor + "30", borderColor: sportColor + "70" }]}>
+                  <Text style={[styles.leaguePillText, { color: sportColor }]} numberOfLines={1}>FINAL</Text>
+                </View>
+              )}
               <View style={{ flex: 1 }} />
               {isLiveState && (
                 <View style={styles.liveChip}>
@@ -619,6 +624,11 @@ function ChaosCard({
                 : event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.league === "CAF Champions League" ? "CAF CL" : event.league === "English Premiership" ? "Premiership" : event.tournamentName || event.league}
             </Text>
           </View>
+          {event.roundLabel === "Final" && (
+            <View style={[styles.leaguePill, { marginLeft: 6, backgroundColor: sportColor + "30", borderColor: sportColor + "70" }]}>
+              <Text style={[styles.leaguePillText, { color: sportColor }]} numberOfLines={1}>FINAL</Text>
+            </View>
+          )}
           {isLiveState && (
             <View style={styles.liveChipSmall}>
               {tensionRank >= 3 ? <PulsingLightning /> : <LiveDot />}

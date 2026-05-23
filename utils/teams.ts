@@ -379,18 +379,18 @@ const SHORT_NAMES: Record<string, string> = {
   "Venezia FC": "Venezia",
   "Empoli FC": "Empoli",
   "Monza": "Monza",
-  // IPL (Indian Premier League)
-  "Royal Challengers Bengaluru": "RCB",
-  "Royal Challengers Bangalore": "RCB",
-  "Delhi Capitals": "DC",
-  "Mumbai Indians": "MI",
-  "Chennai Super Kings": "CSK",
-  "Kolkata Knight Riders": "KKR",
-  "Rajasthan Royals": "RR",
-  "Punjab Kings": "PBKS",
-  "Sunrisers Hyderabad": "SRH",
-  "Gujarat Titans": "GT",
-  "Lucknow Super Giants": "LSG",
+  // IPL (Indian Premier League) — nicknames, location dropped
+  "Royal Challengers Bengaluru": "Challengers",
+  "Royal Challengers Bangalore": "Challengers",
+  "Delhi Capitals": "Capitals",
+  "Mumbai Indians": "Indians",
+  "Chennai Super Kings": "Super Kings",
+  "Kolkata Knight Riders": "Knight Riders",
+  "Rajasthan Royals": "Royals",
+  "Punjab Kings": "Kings",
+  "Sunrisers Hyderabad": "Sunrisers",
+  "Gujarat Titans": "Titans",
+  "Lucknow Super Giants": "Super Giants",
 };
 
 const COMPACT_NAMES: Record<string, string> = {

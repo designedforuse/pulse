@@ -6726,7 +6726,8 @@
       "isLive": false,
       "source": "rugby-championscup",
       "leagueKey": "championscup",
-      "providerReason": "championscup-flosports"
+      "providerReason": "championscup-flosports",
+      "roundLabel": "Final"
     },
     {
       "id": "cricket-ipl-2508",
@@ -6745,7 +6746,8 @@
       "competitionType": "league",
       "format": "T20",
       "hostCountry": "India",
-      "seriesName": "IPL 2026"
+      "seriesName": "IPL 2026",
+      "roundLabel": "Final"
     },
     {
       "id": "soccer-seriea-20260523-1600-internazionale-at-bologna",
