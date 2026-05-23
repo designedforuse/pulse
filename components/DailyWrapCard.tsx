@@ -100,12 +100,11 @@ export default function DailyWrapCard({ fill = false }: { fill?: boolean } = {})
     refetchInterval: 10 * 60 * 1000,
   });
 
-  const { headline, favCount, total } = useMemo(() => {
-    if (!data?.results?.length) return { headline: null, favCount: 0, total: 0 };
+  const { favCount, total } = useMemo(() => {
+    if (!data?.results?.length) return { favCount: 0, total: 0 };
     const ordered = tagEntries(data.results, favorites);
     const favs = ordered.filter((r) => r.isFav);
     return {
-      headline: ordered[0] ?? null,
       favCount: favs.length,
       total: data.results.length,
     };
@@ -113,110 +112,162 @@ export default function DailyWrapCard({ fill = false }: { fill?: boolean } = {})
 
   const handleOpen = () => router.push("/daily-wrap-full");
 
-  return (
-    <Pressable onPress={handleOpen} style={({ pressed }) => [styles.card, fill && { flex: 1, marginBottom: 0 }, pressed && styles.cardPressed]}>
-      {/* Header */}
-      <View style={styles.header}>
-        <View style={styles.headerLeft}>
-          <Text style={styles.kicker}>DAILY WRAP</Text>
-          <Text style={styles.dateLabel}>{isLoading ? "Loading…" : (data?.date ?? "Today")}</Text>
+  const renderCover = () => {
+    if (isLoading) {
+      return (
+        <View style={styles.coverInner}>
+          <Text style={styles.coverTagline}>Loading today's stories…</Text>
         </View>
-        <View style={styles.headerIcon}>
-          <Ionicons name="newspaper-outline" size={18} color={PINK} />
+      );
+    }
+    if (!data?.hasResults) {
+      return (
+        <View style={styles.coverInner}>
+          <Ionicons name="moon-outline" size={26} color={PINK} style={{ marginBottom: 10, opacity: 0.85 }} />
+          <Text style={styles.coverWordmark}>DAILY{"\n"}WRAP</Text>
+          <Text style={styles.coverTagline}>No results yet today</Text>
+          <Text style={styles.coverSub}>Check back after games wrap up</Text>
+        </View>
+      );
+    }
+    return (
+      <View style={styles.coverInner}>
+        <Text style={styles.coverDate}>{data?.date ?? "Today"}</Text>
+        <Text style={styles.coverWordmark}>DAILY{"\n"}WRAP</Text>
+        <Text style={styles.coverTagline}>Today's stories, in one place</Text>
+        <View style={styles.coverMetaRow}>
+          <View style={styles.coverChip}>
+            <Text style={styles.coverChipText}>{total} {total === 1 ? "STORY" : "STORIES"}</Text>
+          </View>
+          {favCount > 0 && (
+            <View style={[styles.coverChip, styles.coverChipFav]}>
+              <Text style={[styles.coverChipText, { color: "#FFD700" }]}>⭐ {favCount} YOUR TEAMS</Text>
+            </View>
+          )}
+        </View>
+        <View style={styles.coverCta}>
+          <Text style={styles.coverCtaText}>Tap to open</Text>
+          <Ionicons name="chevron-forward" size={14} color={PINK} />
         </View>
       </View>
+    );
+  };
 
-      {/* Content */}
-      {isLoading ? (
-        <View style={styles.quietState}>
-          <Text style={styles.quietText}>Checking results…</Text>
-        </View>
-      ) : !data?.hasResults ? (
-        <View style={styles.quietState}>
-          <Ionicons name="moon-outline" size={22} color={Colors.textMuted} style={{ marginBottom: 8 }} />
-          <Text style={styles.quietText}>No results yet today</Text>
-          <Text style={styles.quietSub}>Check back after games wrap up</Text>
-        </View>
-      ) : (
-        <>
-          {/* Headline */}
-          {headline && (
-            <View style={styles.headlineSection}>
-              <View style={styles.headlineMeta}>
-                <Text style={styles.headlineSportEmoji}>{getSportEmoji(headline.sport)}</Text>
-                <Text style={styles.headlineLeague}>{headline.league.toUpperCase()}</Text>
-                {headline.isFav && (
-                  <View style={styles.favBadge}>
-                    <Text style={styles.favBadgeText}>⭐ YOUR TEAM</Text>
-                  </View>
-                )}
-              </View>
-              <Text style={styles.headlineEditorial}>{headline.editorial}</Text>
-              <Text style={styles.headlineDetail}>{headline.detail}</Text>
-            </View>
-          )}
-
-          {/* See all footer */}
-          {total > 1 && (
-            <View style={styles.footer}>
-              <Text style={styles.footerText}>
-                {favCount > 0 ? `${favCount} from your teams · ` : ""}
-                See all {total} results
-              </Text>
-              <Ionicons name="chevron-forward" size={13} color={PINK} />
-            </View>
-          )}
-        </>
-      )}
+  return (
+    <Pressable onPress={handleOpen} style={({ pressed }) => [styles.card, fill && { flex: 1, marginBottom: 0 }, pressed && styles.cardPressed]}>
+      {/* Faded wordmark background, ESPN SC For You style */}
+      <View pointerEvents="none" style={styles.bgLayer}>
+        {[0, 1, 2, 3].map((i) => (
+          <Text key={i} style={styles.bgWord}>WRAP</Text>
+        ))}
+      </View>
+      {renderCover()}
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: Colors.card,
+    backgroundColor: "#2a0f1d",
     borderRadius: 20,
     borderWidth: 1.5,
     borderColor: PINK + "40",
     overflow: "hidden",
     marginBottom: 20,
+    minHeight: 280,
   },
   cardPressed: {
-    opacity: 0.85,
+    opacity: 0.9,
   },
-  header: {
-    backgroundColor: PINK + "15",
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: PINK + "22",
-    flexDirection: "row",
+  bgLayer: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "space-around",
     alignItems: "center",
-    justifyContent: "space-between",
+    paddingVertical: 20,
   },
-  headerLeft: {
-    gap: 2,
+  bgWord: {
+    fontSize: 56,
+    fontFamily: "Inter_700Bold",
+    color: PINK,
+    opacity: 0.07,
+    letterSpacing: 2,
   },
-  kicker: {
+  coverInner: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 20,
+    paddingVertical: 28,
+    gap: 6,
+  },
+  coverDate: {
+    fontSize: 11,
+    fontFamily: "Inter_700Bold",
+    color: PINK,
+    letterSpacing: 2,
+    textTransform: "uppercase",
+    marginBottom: 4,
+  },
+  coverWordmark: {
+    fontSize: 44,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    letterSpacing: -1,
+    textAlign: "center",
+    lineHeight: 46,
+    marginBottom: 10,
+  },
+  coverTagline: {
+    fontSize: 13,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+    textAlign: "center",
+    marginBottom: 14,
+  },
+  coverSub: {
+    fontSize: 12,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textMuted,
+    textAlign: "center",
+    marginTop: 2,
+  },
+  coverMetaRow: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: 8,
+    marginTop: 4,
+    marginBottom: 14,
+  },
+  coverChip: {
+    backgroundColor: PINK + "20",
+    borderRadius: 999,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderWidth: 1,
+    borderColor: PINK + "40",
+  },
+  coverChipFav: {
+    backgroundColor: "#FFD70015",
+    borderColor: "#FFD70044",
+  },
+  coverChipText: {
     fontSize: 10,
     fontFamily: "Inter_700Bold",
     color: PINK,
-    letterSpacing: 1.8,
-    textTransform: "uppercase",
+    letterSpacing: 1.1,
   },
-  dateLabel: {
-    fontSize: 16,
-    fontFamily: "Inter_700Bold",
-    color: Colors.textPrimary,
-    letterSpacing: -0.2,
-  },
-  headerIcon: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: PINK + "18",
+  coverCta: {
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    gap: 4,
+    marginTop: 4,
+  },
+  coverCtaText: {
+    fontSize: 12,
+    fontFamily: "Inter_600SemiBold",
+    color: PINK,
+    letterSpacing: 0.4,
   },
   quietState: {
     paddingVertical: 28,
