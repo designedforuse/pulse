@@ -50,7 +50,7 @@ export default function DeepTalkScreen() {
             <Ionicons name="git-network-outline" size={12} color="#fff" />
             <Text style={styles.headerBadgeText}>PLAYBOOK</Text>
           </View>
-          <Text style={styles.headerTitle}>Sports Deep Talk</Text>
+          <Text style={styles.headerTitle}>Behind the Stories</Text>
         </View>
         <View style={styles.backBtn} />
       </View>

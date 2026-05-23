@@ -286,13 +286,13 @@ export default function ExploreScreen() {
         router.push("/deep-talk");
       }}
       accessibilityRole="button"
-      accessibilityLabel="Sports Deep Talk: deeper context behind the stories"
+      accessibilityLabel="Behind the Stories: deeper context behind the stories you follow"
       style={({ pressed }) => [styles.deepTalkCard, styles.cardFill, pressed && { opacity: 0.9 }]}
       testID="stories-deep-talk-tile"
     >
       <View pointerEvents="none" style={styles.deepTalkBgLayer}>
         {[0, 1, 2, 3].map((i) => (
-          <Text key={i} style={styles.deepTalkBgWord}>DEEP TALK</Text>
+          <Text key={i} style={styles.deepTalkBgWord}>BEHIND</Text>
         ))}
       </View>
       <View style={styles.deepTalkInner}>
@@ -300,7 +300,7 @@ export default function ExploreScreen() {
           <Ionicons name="git-network-outline" size={11} color="#fff" />
           <Text style={styles.deepTalkBadgeText}>PLAYBOOK</Text>
         </View>
-        <Text style={styles.deepTalkWordmark}>SPORTS{"\n"}DEEP TALK</Text>
+        <Text style={styles.deepTalkWordmark}>BEHIND THE{"\n"}STORIES</Text>
         <Text style={styles.deepTalkTagline}>The context behind the stories you follow</Text>
         <View style={styles.deepTalkChips}>
           <View style={styles.deepTalkChip}>
@@ -309,7 +309,7 @@ export default function ExploreScreen() {
           </View>
         </View>
         <View style={styles.deepTalkCta}>
-          <Text style={styles.deepTalkCtaText}>Open deep talk</Text>
+          <Text style={styles.deepTalkCtaText}>Open</Text>
           <Ionicons name="chevron-forward" size={14} color={Colors.hockey} />
         </View>
       </View>
