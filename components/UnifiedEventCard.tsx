@@ -1428,7 +1428,7 @@ export default function UnifiedEventCard({
                 {isFavAway && <MaterialCommunityIcons name="star" size={11} color={Colors.favStar} />}
                 <View style={{ flex: 1 }} />
                 {hasScore && isCricket
-                  ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{score.cricketAway || ""}</Text>
+                  ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{(score.cricketAway || "").replace(/\s*Ov\s*\)/, ")")}</Text>
                   : hasScore && !isTennis
                     ? <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.awayScore}</Text>
                     : isLive && !hasScore && event.sport === "hockey"
@@ -1452,7 +1452,7 @@ export default function UnifiedEventCard({
                 {isFavHome && <MaterialCommunityIcons name="star" size={11} color={Colors.favStar} />}
                 <View style={{ flex: 1 }} />
                 {hasScore && isCricket
-                  ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{score.cricketHome || ""}</Text>
+                  ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{(score.cricketHome || "").replace(/\s*Ov\s*\)/, ")")}</Text>
                   : hasScore && !isTennis
                     ? <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.homeScore}</Text>
                     : isLive && !hasScore && event.sport === "hockey"

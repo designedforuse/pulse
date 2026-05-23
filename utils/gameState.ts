@@ -66,8 +66,7 @@ export function normalizeGameState(
       if (event.sport === "rugby" || event.sport === "Rugby") {
         clockText = getRugbyClockDisplay(score) || null;
       } else if (event.sport === "cricket") {
-        const elapsed = formatTimeSinceStart(event.startTimeLocal, now);
-        clockText = elapsed || null;
+        clockText = "In Play";
       } else if (score.period || score.clock) {
         clockText = [score.period, score.clock].filter(Boolean).join(" · ");
       }
