@@ -91,9 +91,9 @@ export const SEASON_PHASES_2026: Record<string, PhaseWindow[]> = {
   bundesliga: [{ label: "Regular", start: "2025-08-22", end: "2026-05-16" }],
   ligue1: [{ label: "Regular", start: "2025-08-15", end: "2026-05-23" }],
   ipl: [
-    { label: "Group", start: "2026-03-22", end: "2026-05-17" },
-    { label: "Playoffs", start: "2026-05-19", end: "2026-05-22" },
-    { label: "Final", start: "2026-05-24", end: "2026-05-24" },
+    { label: "Group", start: "2026-03-22", end: "2026-05-24" },
+    { label: "Playoffs", start: "2026-05-26", end: "2026-05-29" },
+    { label: "Final", start: "2026-05-31", end: "2026-05-31" },
   ],
   mlr: [
     { label: "Regular", start: "2026-02-21", end: "2026-06-07" },
