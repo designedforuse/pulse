@@ -2122,8 +2122,8 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
 
   const japanLeagueOne = rugby.get("Japan League One") || [];
   const mlrEvents = rugby.get("MLR") || [];
-  const cyclingScores = fetchCyclingLeaderScores(cycling);
-  const [nhlScores, nhlSeriesStatuses, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, pulseliveRugbyScores, mlrOfficialScores, jlOneScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores, marathonScores] = await Promise.all([
+  const cyclingScoresPromise = fetchCyclingLeaderScores(cycling);
+  const [nhlScores, nhlSeriesStatuses, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, pulseliveRugbyScores, mlrOfficialScores, jlOneScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores, marathonScores, cyclingScores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchNhlSeriesStatuses(),
     fetchAhlScores(ahl),
@@ -2143,6 +2143,7 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
     fetchGolfScores(golf),
     fetchMlbScores(mlb),
     fetchMarathonLeaderScores(marathon),
+    cyclingScoresPromise,
   ]);
 
   // Priority order (last spread wins): ESPN rugby → Pulselive → MLR official.

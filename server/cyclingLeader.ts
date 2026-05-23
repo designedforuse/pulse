@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import type { ScoreData } from "./liveScores";
+import { getGiroLeader, isGiroEventId, extractGiroStageNumber, giroLeaderToScoreData } from "./giroScraper";
 
 const OVERRIDES_PATH = path.resolve(process.cwd(), "data", "cyclingLeader.json");
 
@@ -58,23 +59,30 @@ function loadOverrides(): Record<string, ScoreData> {
   return out;
 }
 
-export function fetchCyclingLeaderScores(eventIds: string[]): Record<string, ScoreData> {
+function lookupOverride(id: string, overrides: Record<string, ScoreData>, overrideKeys: string[]): ScoreData | null {
+  if (overrides[id]) return overrides[id];
+  const prefixMatch = overrideKeys.find((k) => id.startsWith(k + "-") || id === k);
+  return prefixMatch ? overrides[prefixMatch] : null;
+}
+
+export async function fetchCyclingLeaderScores(eventIds: string[]): Promise<Record<string, ScoreData>> {
   if (eventIds.length === 0) return {};
   const overrides = loadOverrides();
   const overrideKeys = Object.keys(overrides);
-  if (overrideKeys.length === 0) return {};
+
+  // Prefer scraped data for the Giro; fall back to the manual override if the scrape fails.
+  const hasGiro = eventIds.some(isGiroEventId);
+  const giroLeader = hasGiro ? await getGiroLeader().catch(() => null) : null;
 
   const out: Record<string, ScoreData> = {};
   for (const id of eventIds) {
-    if (overrides[id]) {
-      out[id] = overrides[id];
+    if (isGiroEventId(id) && giroLeader) {
+      out[id] = giroLeaderToScoreData(giroLeader, extractGiroStageNumber(id));
       continue;
     }
-    // Prefix match: a tour-level entry (e.g. "cycling-grand-tour-giro-d-italia-2026")
-    // applies to every stage event (e.g. "...-2026-05-23-stage-14") so the JSON only
-    // needs one row per Grand Tour, not one per stage.
-    const prefixMatch = overrideKeys.find((k) => id.startsWith(k + "-") || id === k);
-    if (prefixMatch) out[id] = overrides[prefixMatch];
+    // Manual override (prefix match: a tour-level entry applies to every stage event).
+    const fallback = lookupOverride(id, overrides, overrideKeys);
+    if (fallback) out[id] = fallback;
   }
   return out;
 }
