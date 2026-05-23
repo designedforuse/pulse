@@ -219,40 +219,41 @@ export default function ExploreScreen() {
 
   if (tonightStory) {
     slides.push(
-      <View key="tonight" style={[styles.tonightCard, styles.cardFill]}>
-        <View style={styles.tonightCardHeader}>
-          <View style={styles.tonightLiveRow}>
+      <Pressable
+        key="tonight"
+        onPress={() => router.push("/tonight-story-full")}
+        style={({ pressed }) => [styles.tonightCard, styles.cardFill, pressed && { opacity: 0.9 }]}
+      >
+        <View pointerEvents="none" style={styles.tonightBgLayer}>
+          {[0, 1, 2, 3].map((i) => (
+            <Text key={i} style={styles.tonightBgWord}>TONIGHT</Text>
+          ))}
+        </View>
+        <View style={styles.tonightCoverInner}>
+          <View style={styles.tonightCoverLiveRow}>
             <View style={styles.liveIndicator} />
             <Text style={styles.tonightLiveLabel}>LIVE SIGNAL</Text>
-            <Text style={styles.tonightSignalLabel}> · {tonightStory.signalLabel}</Text>
           </View>
-          <Text style={styles.tonightKicker}>TONIGHT'S STORY</Text>
+          <Text style={styles.tonightCoverWordmark}>TONIGHT'S{"\n"}STORY</Text>
+          <Text style={styles.tonightCoverTagline}>What's worth watching, right now</Text>
+          <View style={styles.tonightCoverChips}>
+            <View style={styles.tonightCoverChip}>
+              <Text style={styles.tonightCoverChipText}>{tonightStory.signalLabel}</Text>
+            </View>
+            {tonightStory.sports && tonightStory.sports.length > 0 && (
+              <View style={styles.tonightCoverChip}>
+                <Text style={styles.tonightCoverChipText}>
+                  {tonightStory.sports.length} {tonightStory.sports.length === 1 ? "SPORT" : "SPORTS"}
+                </Text>
+              </View>
+            )}
+          </View>
+          <View style={styles.tonightCoverCta}>
+            <Text style={styles.tonightCoverCtaText}>Tap to open</Text>
+            <Ionicons name="chevron-forward" size={14} color={PINK} />
+          </View>
         </View>
-        <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.tonightCardBody} showsVerticalScrollIndicator={false}>
-          <Text style={styles.tonightHeadline}>{tonightStory.headline}</Text>
-          <Text style={styles.tonightBody}>{tonightStory.body}</Text>
-          {tonightStory.sourceCard && (
-            <Pressable
-              onPress={() => {
-                if (tonightStory.signalType === "multi_team_night" || tonightStory.signalType === "single_team_game") {
-                  router.push("/(tabs)/watch");
-                } else {
-                  const matchingCard = cards.find((c) => c.id === tonightStory.sourceCard.id);
-                  if (matchingCard) handleCardPress(matchingCard);
-                }
-              }}
-              style={({ pressed }) => [styles.tonightCta, { opacity: pressed ? 0.7 : 1 }]}
-            >
-              <Text style={styles.tonightCtaText}>
-                {tonightStory.signalType === "multi_team_night" || tonightStory.signalType === "single_team_game"
-                  ? "Track all games"
-                  : "Read more"}
-              </Text>
-              <Ionicons name="arrow-forward" size={14} color={PINK} />
-            </Pressable>
-          )}
-        </ScrollView>
-      </View>
+      </Pressable>
     );
   }
 
@@ -676,12 +677,88 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   tonightCard: {
-    backgroundColor: Colors.card,
+    backgroundColor: "#2a0f1d",
     borderRadius: 20,
     borderWidth: 1.5,
     borderColor: PINK + "40",
     overflow: "hidden",
     marginBottom: 20,
+    minHeight: 280,
+  },
+  tonightBgLayer: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "space-around",
+    alignItems: "center",
+    paddingVertical: 18,
+  },
+  tonightBgWord: {
+    fontSize: 44,
+    fontFamily: "Inter_700Bold",
+    color: PINK,
+    opacity: 0.07,
+    letterSpacing: 2,
+  },
+  tonightCoverInner: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 20,
+    paddingVertical: 28,
+    gap: 6,
+  },
+  tonightCoverLiveRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 8,
+  },
+  tonightCoverWordmark: {
+    fontSize: 38,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    letterSpacing: -1,
+    textAlign: "center",
+    lineHeight: 42,
+    marginBottom: 8,
+  },
+  tonightCoverTagline: {
+    fontSize: 13,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+    textAlign: "center",
+    marginBottom: 14,
+  },
+  tonightCoverChips: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: 8,
+    marginBottom: 14,
+  },
+  tonightCoverChip: {
+    backgroundColor: PINK + "20",
+    borderRadius: 999,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderWidth: 1,
+    borderColor: PINK + "40",
+  },
+  tonightCoverChipText: {
+    fontSize: 10,
+    fontFamily: "Inter_700Bold",
+    color: PINK,
+    letterSpacing: 1.1,
+  },
+  tonightCoverCta: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    marginTop: 4,
+  },
+  tonightCoverCtaText: {
+    fontSize: 12,
+    fontFamily: "Inter_600SemiBold",
+    color: PINK,
+    letterSpacing: 0.4,
   },
   tonightCardHeader: {
     backgroundColor: PINK + "15",

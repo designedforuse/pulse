@@ -74,6 +74,14 @@ function RootLayoutNav() {
         }}
       />
       <Stack.Screen
+        name="tonight-story-full"
+        options={{
+          headerShown: true,
+          title: "Tonight's Story",
+          headerBackTitle: "Stories",
+        }}
+      />
+      <Stack.Screen
         name="affiliates"
         options={{
           headerShown: true,
