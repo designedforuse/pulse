@@ -61,9 +61,20 @@ function loadOverrides(): Record<string, ScoreData> {
 export function fetchCyclingLeaderScores(eventIds: string[]): Record<string, ScoreData> {
   if (eventIds.length === 0) return {};
   const overrides = loadOverrides();
+  const overrideKeys = Object.keys(overrides);
+  if (overrideKeys.length === 0) return {};
+
   const out: Record<string, ScoreData> = {};
   for (const id of eventIds) {
-    if (overrides[id]) out[id] = overrides[id];
+    if (overrides[id]) {
+      out[id] = overrides[id];
+      continue;
+    }
+    // Prefix match: a tour-level entry (e.g. "cycling-grand-tour-giro-d-italia-2026")
+    // applies to every stage event (e.g. "...-2026-05-23-stage-14") so the JSON only
+    // needs one row per Grand Tour, not one per stage.
+    const prefixMatch = overrideKeys.find((k) => id.startsWith(k + "-") || id === k);
+    if (prefixMatch) out[id] = overrides[prefixMatch];
   }
   return out;
 }

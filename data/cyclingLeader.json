@@ -3,11 +3,11 @@
   "leaders": [
     {
       "eventId": "cycling-grand-tour-giro-d-italia-2026",
-      "rider": "",
-      "team": "",
-      "country": "",
-      "gap": "",
-      "stageNumber": null
+      "rider": "Isaac del Toro",
+      "team": "UAE Team Emirates",
+      "country": "Mexico",
+      "gap": "0:42",
+      "stageNumber": 13
     },
     {
       "eventId": "cycling-grand-tour-tour-de-france-2026",
