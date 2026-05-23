@@ -2430,6 +2430,20 @@ function getFollowedTeamNamesBySport(favorites: Favorites): Map<string, string[]
   return result;
 }
 
+function getPacificDayBounds(now: Date): { start: Date; end: Date } {
+  const ptDateStr = now.toLocaleString("sv-SE", { timeZone: "America/Los_Angeles" }).split(" ")[0];
+  for (const offsetHours of [7, 8]) {
+    const candidate = new Date(`${ptDateStr}T00:00:00.000Z`);
+    candidate.setUTCHours(offsetHours);
+    const check = candidate.toLocaleString("sv-SE", { timeZone: "America/Los_Angeles" });
+    if (check.startsWith(`${ptDateStr} 00:00:00`)) {
+      return { start: candidate, end: new Date(candidate.getTime() + 86400000) };
+    }
+  }
+  const fallback = new Date(`${ptDateStr}T07:00:00.000Z`);
+  return { start: fallback, end: new Date(fallback.getTime() + 86400000) };
+}
+
 interface TonightStoryCandidate {
   score: number;
   signalType: string;
@@ -2465,9 +2479,7 @@ function buildTonightStory(
   const followedBySport = getFollowedTeamNamesBySport(favorites);
   const allStories: TonightStoryCandidate[] = [];
 
-  const todayStart = new Date(now);
-  todayStart.setHours(0, 0, 0, 0);
-  const todayEnd = new Date(todayStart.getTime() + 86400000);
+  const { start: todayStart, end: todayEnd } = getPacificDayBounds(now);
   const tonightEvents = events.filter(e => {
     const start = new Date(e.startTimeLocal);
     return start >= todayStart && start < todayEnd;
@@ -2589,8 +2601,8 @@ function buildTonightStory(
         score,
         signalType: "multi_team_night",
         headline,
-        body: `The ${teamStr} all play tonight${leagueSuffix}.`,
-        reason: `${distinctTeamsPlaying.size} followed/affiliate teams playing tonight`,
+        body: `The ${teamStr} all play today${leagueSuffix}.`,
+        reason: `${distinctTeamsPlaying.size} followed/affiliate teams playing today`,
         sourceEventId: allEventIds[0],
         sourceCard: { id: "tonight_multi_team", kind: "multi_team_night", title: headline },
         sports: [...sportsInPlay],
@@ -2605,11 +2617,11 @@ function buildTonightStory(
       allStories.push({
         score,
         signalType: "single_team_game",
-        headline: `${entry.followedTeam} Tonight`,
+        headline: `${entry.followedTeam} Today`,
         body: `${ev.awayTeam} at ${ev.homeTeam} — catch the action in the ${ev.league}.`,
-        reason: `single followed team (${entry.followedTeam}) playing tonight`,
+        reason: `single followed team (${entry.followedTeam}) playing today`,
         sourceEventId: ev.id,
-        sourceCard: { id: "tonight_single_team", kind: "single_team_game", title: `${entry.followedTeam} Tonight` },
+        sourceCard: { id: "tonight_single_team", kind: "single_team_game", title: `${entry.followedTeam} Today` },
         sports: [ev.sport],
       });
     }
@@ -2676,8 +2688,8 @@ function buildTonightStory(
       case "rivalry_game":
         headline = followedInCard.length > 0 ? "Your Rivalry Night" : "Rivalry Night";
         body = teamA && teamB
-          ? `${teamA} faces ${teamB} tonight in one of the sport's most intense rivalries.`
-          : "A fierce rivalry matchup is on the schedule tonight.";
+          ? `${teamA} faces ${teamB} today in one of the sport's most intense rivalries.`
+          : "A fierce rivalry matchup is on the schedule today.";
         break;
       case "deadline_watch":
         headline = "Deadline Tension";
@@ -2688,8 +2700,8 @@ function buildTonightStory(
       case "clinch_watch":
         headline = "Playoff Stakes";
         body = teamA
-          ? `${teamA} could clinch advancement tonight.`
-          : "A team could clinch advancement tonight.";
+          ? `${teamA} could clinch advancement today.`
+          : "A team could clinch advancement today.";
         break;
       case "upset_alert":
         headline = "Shock Result";
@@ -2705,7 +2717,7 @@ function buildTonightStory(
         headline = "Hot Streak";
         body = teamA
           ? `${teamA} is riding momentum with a strong recent run.`
-          : "A team is riding momentum heading into tonight.";
+          : "A team is riding momentum heading into today.";
         break;
       case "league_moment":
         headline = "League Spotlight";
@@ -2716,7 +2728,7 @@ function buildTonightStory(
         body = "A notable roster move is shaping the competition.";
         break;
       default:
-        headline = "Tonight's Narrative";
+        headline = "Today's Narrative";
         body = card.subtitle || "Something interesting is happening in the sports world.";
     }
 
@@ -3053,10 +3065,10 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
   const tonightStoryResult = buildTonightStory(allCandidates, events, favorites, now);
   const tonightStory = tonightStoryResult.story;
   if (tonightStory) {
-    console.log(`  Tonight's Story: [${tonightStory.signalType}] "${tonightStory.headline}" — ${tonightStory.body}`);
+    console.log(`  Today's Story: [${tonightStory.signalType}] "${tonightStory.headline}" — ${tonightStory.body}`);
     console.log(`    Reason: ${tonightStoryResult.debug.reason} (score: ${tonightStoryResult.debug.selectedScore})`);
   } else {
-    console.log("  Tonight's Story: none (no candidates)");
+    console.log("  Today's Story: none (no candidates)");
   }
 
   const rawCandidatesByKindAndRegion: Record<string, Record<string, number>> = {};

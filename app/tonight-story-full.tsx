@@ -25,7 +25,7 @@ export default function TonightStoryFullScreen() {
   const insets = useSafeAreaInsets();
 
   useLayoutEffect(() => {
-    navigation.setOptions({ title: "Tonight's Story", headerBackTitle: "Stories" });
+    navigation.setOptions({ title: "Today's Story", headerBackTitle: "Stories" });
   }, [navigation]);
 
   const { data, isLoading } = useQuery<{ tonightStory: TonightStory | null }>({
@@ -52,7 +52,7 @@ export default function TonightStoryFullScreen() {
           <Text style={styles.liveLabel}>LIVE SIGNAL</Text>
           {story?.signalLabel && <Text style={styles.signalLabel}> · {story.signalLabel}</Text>}
         </View>
-        <Text style={styles.kicker}>TONIGHT'S STORY</Text>
+        <Text style={styles.kicker}>TODAY'S STORY</Text>
       </View>
 
       <View style={styles.body}>

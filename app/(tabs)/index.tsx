@@ -192,7 +192,7 @@ export default function ExploreScreen() {
       >
         <View pointerEvents="none" style={styles.tonightBgLayer}>
           {[0, 1, 2, 3].map((i) => (
-            <Text key={i} style={styles.tonightBgWord}>TONIGHT</Text>
+            <Text key={i} style={styles.tonightBgWord}>TODAY</Text>
           ))}
         </View>
         <View style={styles.tonightCoverInner}>
@@ -200,8 +200,8 @@ export default function ExploreScreen() {
             <View style={styles.liveIndicator} />
             <Text style={styles.tonightLiveLabel}>LIVE SIGNAL</Text>
           </View>
-          <Text style={styles.tonightCoverWordmark}>TONIGHT'S{"\n"}STORY</Text>
-          <Text style={styles.tonightCoverTagline}>What's worth watching, right now</Text>
+          <Text style={styles.tonightCoverWordmark}>TODAY'S{"\n"}STORY</Text>
+          <Text style={styles.tonightCoverTagline}>What's worth watching today</Text>
           <View style={styles.tonightCoverChips}>
             <View style={styles.tonightCoverChip}>
               <Text style={styles.tonightCoverChipText}>{tonightStory.signalLabel}</Text>
