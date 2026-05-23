@@ -324,6 +324,7 @@ function ChaosCard({
   const isRacing = event.sport === "racing";
   const isGolf = event.sport === "golf";
   const isCycling = event.sport === "cycling";
+  const isDiamondLeague = event.sport === "athletics" && (event.id?.startsWith("athletics-diamond-league-") || event.leagueKey === "diamond-league" || event.league === "Diamond League");
   const isSvnsSession = event.eventType === "session" && event.leagueKey === "svns";
   const svnsCity = isSvnsSession ? extractSvnsCity(event.homeTeam) : null;
   const svnsData = useSvnsMatches(svnsCity);
@@ -392,7 +393,7 @@ function ChaosCard({
   // Strip tournament name prefix from session titles (e.g. "Players — Round 3" → "Round 3", "Giro d'Italia 2026 — Stage 13" → "Stage 13")
   const stripTournamentPrefix = (text: string | null) =>
     text && text.includes(" \u2014 ") ? text.split(" \u2014 ").slice(1).join(" \u2014 ") : text;
-  const golfSessionDisplayText = (isGolf || isCycling) && matchupText
+  const golfSessionDisplayText = (isGolf || isCycling || isDiamondLeague) && matchupText
     ? stripTournamentPrefix(matchupText)
     : matchupText;
 
@@ -425,6 +426,8 @@ function ChaosCard({
                     ? `F1${gpShort ? ` · ${gpShort}` : ""}`
                     : isSvnsSession && svnsCity
                     ? `${svnsCity} SVNS${svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}`
+                    : isDiamondLeague
+                    ? "Diamond League"
                     : event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league === "CAF Champions League" ? "CAF CL" : event.league === "English Premiership" ? "Premiership" : event.tournamentName || event.league}
                 </Text>
               </View>
