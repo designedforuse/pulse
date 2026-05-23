@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect, useCallback } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,6 +6,8 @@ import {
   Pressable,
   Platform,
   ScrollView,
+  useWindowDimensions,
+  type LayoutChangeEvent,
 } from "react-native";
 import { router } from "expo-router";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
@@ -149,7 +151,7 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
   );
 }
 
-function RitualTile({ ritual, data }: { ritual: Ritual; data: RitualData }) {
+function RitualTile({ ritual, data, fill = false }: { ritual: Ritual; data: RitualData; fill?: boolean }) {
   const handlePress = () => {
     if (Platform.OS !== "web") {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
@@ -162,6 +164,7 @@ function RitualTile({ ritual, data }: { ritual: Ritual; data: RitualData }) {
       onPress={handlePress}
       style={({ pressed }) => [
         styles.ritualTile,
+        fill && { flex: 1 },
         { transform: [{ scale: pressed ? 0.975 : 1 }] },
       ]}
       testID={`ritual-${ritual.id}`}
@@ -198,6 +201,7 @@ export default function RitualsScreen() {
   const insets = useSafeAreaInsets();
   const { allEvents: rawEvents } = useEvents();
   const { favorites, disabledSports } = useFavorites();
+  const { width: screenWidth } = useWindowDimensions();
 
   const allEvents = useMemo(
     () => disabledSports.size === 0 ? rawEvents : rawEvents.filter((e) => !disabledSports.has(e.sport.toLowerCase())),
@@ -205,6 +209,13 @@ export default function RitualsScreen() {
   );
   const { overrides } = useRitualOverrides();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
+  const [feedSize, setFeedSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const onFeedLayout = useCallback((e: LayoutChangeEvent) => {
+    const { width, height } = e.nativeEvent.layout;
+    setFeedSize((prev) => (prev.width === width && prev.height === height ? prev : { width, height }));
+  }, []);
 
   const now = useMemo(() => new Date(), []);
   const sortedRituals = useMemo(() => getSortedRituals(now), [now]);
@@ -232,6 +243,20 @@ export default function RitualsScreen() {
     return data;
   }, [allEvents, favorites, now, overrides]);
 
+  const visibleRituals = useMemo(
+    () =>
+      sortedRituals.filter((occ) =>
+        disabledSports.size === 0 || occ.ritual.sports.some((s) => !disabledSports.has(s.toLowerCase()))
+      ),
+    [sortedRituals, disabledSports]
+  );
+
+  useEffect(() => {
+    if (activeSlide >= visibleRituals.length && visibleRituals.length > 0) {
+      setActiveSlide(visibleRituals.length - 1);
+    }
+  }, [activeSlide, visibleRituals.length]);
+
   return (
     <View style={styles.container}>
       <View style={[styles.headerBanner, {
@@ -251,27 +276,58 @@ export default function RitualsScreen() {
         </View>
         <Text style={styles.subtitle}>Your personalized viewing schedule</Text>
       </View>
-      <ScrollView
-        contentContainerStyle={[
-          styles.scrollContent,
-          {
-            paddingBottom: Platform.OS === "web" ? 34 : 110,
-          },
-        ]}
-        showsVerticalScrollIndicator={false}
-      >
-        <View style={styles.ritualsContainer}>
-          {sortedRituals.filter((occ) =>
-            disabledSports.size === 0 || occ.ritual.sports.some((s) => !disabledSports.has(s.toLowerCase()))
-          ).map((occ) => (
-            <RitualTile
-              key={occ.ritual.id}
-              ritual={occ.ritual}
-              data={ritualData[occ.ritual.id] || { eventCount: 0, featured: null }}
-            />
-          ))}
-        </View>
-      </ScrollView>
+      <View style={styles.feedArea} onLayout={onFeedLayout}>
+        {feedSize.height > 0 && (
+          <>
+            <ScrollView
+              horizontal
+              pagingEnabled
+              showsHorizontalScrollIndicator={false}
+              decelerationRate="fast"
+              snapToInterval={feedSize.width || screenWidth}
+              snapToAlignment="start"
+              onMomentumScrollEnd={(e) => {
+                const w = feedSize.width || screenWidth;
+                const idx = Math.round(e.nativeEvent.contentOffset.x / w);
+                setActiveSlide(idx);
+              }}
+              scrollEventThrottle={16}
+            >
+              {visibleRituals.map((occ) => (
+                <View
+                  key={occ.ritual.id}
+                  style={[
+                    styles.slide,
+                    {
+                      width: feedSize.width || screenWidth,
+                      height: feedSize.height,
+                      paddingBottom: Platform.OS === "web" ? 50 : 110,
+                    },
+                  ]}
+                >
+                  <View style={styles.slideInner}>
+                    <RitualTile
+                      ritual={occ.ritual}
+                      data={ritualData[occ.ritual.id] || { eventCount: 0, featured: null }}
+                      fill
+                    />
+                  </View>
+                </View>
+              ))}
+            </ScrollView>
+            {visibleRituals.length > 1 && (
+              <View style={styles.pagerDots} pointerEvents="none">
+                {visibleRituals.map((_, i) => (
+                  <View
+                    key={i}
+                    style={[styles.pagerDot, i === activeSlide && styles.pagerDotActive]}
+                  />
+                ))}
+              </View>
+            )}
+          </>
+        )}
+      </View>
     </View>
   );
 }
@@ -281,9 +337,38 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
   },
-  scrollContent: {
+  feedArea: {
+    flex: 1,
+  },
+  slide: {
     paddingHorizontal: 16,
     paddingTop: 20,
+    justifyContent: "center",
+  },
+  slideInner: {
+    width: "100%",
+    flex: 1,
+    maxHeight: 520,
+  },
+  pagerDots: {
+    position: "absolute",
+    bottom: 8,
+    left: 0,
+    right: 0,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 6,
+  },
+  pagerDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: "rgba(255,255,255,0.25)",
+  },
+  pagerDotActive: {
+    backgroundColor: ACCENT,
+    width: 18,
   },
   headerBanner: {
     backgroundColor: ACCENT,
@@ -315,9 +400,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "rgba(255,255,255,0.75)",
     fontFamily: "Inter_400Regular",
-  },
-  ritualsContainer: {
-    gap: 12,
   },
   ritualTile: {
     backgroundColor: Colors.card,
