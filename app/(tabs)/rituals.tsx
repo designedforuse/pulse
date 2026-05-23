@@ -228,6 +228,7 @@ function RitualTile({ ritual, data, fill = false }: { ritual: Ritual; data: Ritu
             />
           ))}
         </View>
+        <View style={styles.featuredSpacer} />
         <FeaturedStrip event={data.featured} />
       </View>
     </Pressable>
@@ -456,6 +457,10 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 14,
     paddingLeft: 12,
+  },
+  featuredSpacer: {
+    flex: 1,
+    minHeight: 12,
   },
   ritualTopRow: {
     flexDirection: "row",
