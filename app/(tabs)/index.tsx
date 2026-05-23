@@ -280,23 +280,39 @@ export default function ExploreScreen() {
 
   slides.push(
     <Pressable
-      key="affiliates"
-      onPress={() => router.push("/affiliates")}
-      style={({ pressed }) => [
-        styles.affiliatesTile,
-        styles.cardFill,
-        { transform: [{ scale: pressed ? 0.98 : 1 }] },
-      ]}
-      testID="stories-affiliates-tile"
+      key="deep-talk"
+      onPress={() => {
+        if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        router.push("/deep-talk");
+      }}
+      accessibilityRole="button"
+      accessibilityLabel="Sports Deep Talk: deeper context behind the stories"
+      style={({ pressed }) => [styles.deepTalkCard, styles.cardFill, pressed && { opacity: 0.9 }]}
+      testID="stories-deep-talk-tile"
     >
-      <View style={styles.affiliatesIconWrap}>
-        <Ionicons name="git-network-outline" size={28} color={Colors.hockey} />
+      <View pointerEvents="none" style={styles.deepTalkBgLayer}>
+        {[0, 1, 2, 3].map((i) => (
+          <Text key={i} style={styles.deepTalkBgWord}>DEEP TALK</Text>
+        ))}
       </View>
-      <View style={styles.affiliatesTextWrap}>
-        <Text style={styles.affiliatesTitle}>Hockey Family Tree</Text>
-        <Text style={styles.affiliatesSubtitle}>NHL → AHL → ECHL affiliations</Text>
+      <View style={styles.deepTalkInner}>
+        <View style={styles.deepTalkBadge}>
+          <Ionicons name="git-network-outline" size={11} color="#fff" />
+          <Text style={styles.deepTalkBadgeText}>PLAYBOOK</Text>
+        </View>
+        <Text style={styles.deepTalkWordmark}>SPORTS{"\n"}DEEP TALK</Text>
+        <Text style={styles.deepTalkTagline}>The context behind the stories you follow</Text>
+        <View style={styles.deepTalkChips}>
+          <View style={styles.deepTalkChip}>
+            <Text style={styles.deepTalkChipNum}>1</Text>
+            <Text style={styles.deepTalkChipLabel}>TOPIC</Text>
+          </View>
+        </View>
+        <View style={styles.deepTalkCta}>
+          <Text style={styles.deepTalkCtaText}>Open deep talk</Text>
+          <Ionicons name="chevron-forward" size={14} color={Colors.hockey} />
+        </View>
       </View>
-      <Ionicons name="chevron-forward" size={20} color={Colors.textMuted} />
     </Pressable>
   );
 
@@ -969,6 +985,107 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: "Inter_600SemiBold",
     color: SNAPSHOT_COLOR,
+    letterSpacing: 0.4,
+  },
+  deepTalkCard: {
+    backgroundColor: "#0B1F2C",
+    borderRadius: 20,
+    borderWidth: 1.5,
+    borderColor: Colors.hockey + "40",
+    overflow: "hidden" as const,
+    marginBottom: 20,
+    minHeight: 280,
+  },
+  deepTalkBgLayer: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "space-around" as const,
+    alignItems: "center" as const,
+    paddingVertical: 18,
+  },
+  deepTalkBgWord: {
+    fontSize: 36,
+    fontFamily: "Inter_700Bold",
+    color: Colors.hockey,
+    opacity: 0.08,
+    letterSpacing: 2,
+  },
+  deepTalkInner: {
+    flex: 1,
+    alignItems: "center" as const,
+    justifyContent: "center" as const,
+    paddingHorizontal: 20,
+    paddingVertical: 24,
+  },
+  deepTalkBadge: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 5,
+    backgroundColor: Colors.hockey,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 10,
+    marginBottom: 12,
+  },
+  deepTalkBadgeText: {
+    fontSize: 10,
+    fontFamily: "Inter_700Bold",
+    color: "#fff",
+    letterSpacing: 0.8,
+  },
+  deepTalkWordmark: {
+    fontSize: 36,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    letterSpacing: -1,
+    textAlign: "center" as const,
+    lineHeight: 40,
+    marginBottom: 8,
+  },
+  deepTalkTagline: {
+    fontSize: 13,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+    textAlign: "center" as const,
+    marginBottom: 14,
+    paddingHorizontal: 8,
+  },
+  deepTalkChips: {
+    flexDirection: "row" as const,
+    gap: 10,
+    marginBottom: 16,
+  },
+  deepTalkChip: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 6,
+    backgroundColor: Colors.hockey + "20",
+    borderRadius: 999,
+    paddingHorizontal: 14,
+    paddingVertical: 7,
+    borderWidth: 1,
+    borderColor: Colors.hockey + "40",
+  },
+  deepTalkChipNum: {
+    fontSize: 16,
+    fontFamily: "Inter_700Bold",
+    color: Colors.hockey,
+  },
+  deepTalkChipLabel: {
+    fontSize: 10,
+    fontFamily: "Inter_700Bold",
+    color: Colors.hockey,
+    letterSpacing: 1.1,
+  },
+  deepTalkCta: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 4,
+    marginTop: 2,
+  },
+  deepTalkCtaText: {
+    fontSize: 12,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.hockey,
     letterSpacing: 0.4,
   },
 });

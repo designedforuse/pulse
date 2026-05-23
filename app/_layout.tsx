@@ -89,11 +89,18 @@ function RootLayoutNav() {
         }}
       />
       <Stack.Screen
+        name="deep-talk"
+        options={{
+          headerShown: false,
+          title: "Sports Deep Talk",
+        }}
+      />
+      <Stack.Screen
         name="affiliates"
         options={{
           headerShown: true,
           title: "NHL Affiliates",
-          headerBackTitle: "Stories",
+          headerBackTitle: "Deep Talk",
         }}
       />
       <Stack.Screen
