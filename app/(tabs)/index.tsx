@@ -470,7 +470,7 @@ export default function ExploreScreen() {
       </View>
 
       <View
-        style={[styles.feedArea, { paddingBottom: Platform.OS === "web" ? 34 : 84 }]}
+        style={styles.feedArea}
         onLayout={onFeedLayout}
       >
         {slideHeight > 0 && (
@@ -491,13 +491,20 @@ export default function ExploreScreen() {
               {slides.map((slide, idx) => (
                 <View
                   key={(slide as any)?.key ?? idx}
-                  style={[styles.slide, { width: slideWidth, height: slideHeight }]}
+                  style={[
+                    styles.slide,
+                    {
+                      width: slideWidth,
+                      height: slideHeight,
+                      paddingBottom: Platform.OS === "web" ? 50 : 110,
+                    },
+                  ]}
                 >
-                  {slide}
+                  <View style={styles.slideInner}>{slide}</View>
                 </View>
               ))}
               {isLoading && cards.length === 0 && (
-                <View style={{ width: slideWidth, height: slideHeight, alignItems: "center", justifyContent: "center" }}>
+                <View style={{ width: slideWidth, height: slideHeight, alignItems: "center", justifyContent: "center", paddingBottom: Platform.OS === "web" ? 50 : 110 }}>
                   <ActivityIndicator size="large" color={PINK} />
                 </View>
               )}
@@ -530,13 +537,16 @@ const styles = StyleSheet.create({
   slide: {
     paddingHorizontal: 16,
     paddingTop: 20,
-    paddingBottom: 40,
     justifyContent: "center",
+  },
+  slideInner: {
+    width: "100%",
+    flex: 1,
+    maxHeight: 520,
   },
   cardFill: {
     flex: 1,
     marginBottom: 0,
-    maxHeight: 520,
   },
   pagerDots: {
     position: "absolute",
