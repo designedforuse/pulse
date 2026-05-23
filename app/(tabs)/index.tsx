@@ -529,12 +529,14 @@ const styles = StyleSheet.create({
   },
   slide: {
     paddingHorizontal: 16,
-    paddingTop: 16,
-    paddingBottom: 8,
+    paddingTop: 20,
+    paddingBottom: 40,
+    justifyContent: "center",
   },
   cardFill: {
     flex: 1,
     marginBottom: 0,
+    maxHeight: 520,
   },
   pagerDots: {
     position: "absolute",
