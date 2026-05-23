@@ -186,10 +186,9 @@ export default function ExploreScreen() {
           ))}
         </View>
         <View style={styles.tonightCoverInner}>
-          <View style={styles.tonightCoverLiveRow}>
-            <View style={styles.liveIndicator} />
-            <Text style={styles.tonightLiveLabel}>LIVE SIGNAL</Text>
-          </View>
+          <Text style={styles.tonightCoverDate}>
+            {new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }).toUpperCase()}
+          </Text>
           <Text style={styles.tonightCoverWordmark}>TODAY'S{"\n"}STORY</Text>
           <Text style={styles.tonightCoverTagline}>What's worth watching today</Text>
           <View style={styles.tonightCoverChips}>
@@ -635,10 +634,14 @@ const styles = StyleSheet.create({
     paddingVertical: 28,
     gap: 6,
   },
-  tonightCoverLiveRow: {
-    flexDirection: "row",
-    alignItems: "center",
+  tonightCoverDate: {
+    fontSize: 11,
+    fontFamily: "Inter_700Bold",
+    color: PINK,
+    letterSpacing: 2,
+    textTransform: "uppercase" as const,
     marginBottom: 8,
+    textAlign: "center" as const,
   },
   tonightCoverWordmark: {
     fontSize: 38,
@@ -700,20 +703,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 4,
-  },
-  liveIndicator: {
-    width: 7,
-    height: 7,
-    borderRadius: 4,
-    backgroundColor: "#FF453A",
-    marginRight: 6,
-  },
-  tonightLiveLabel: {
-    fontSize: 10,
-    fontFamily: "Inter_700Bold",
-    color: "#FF453A",
-    letterSpacing: 1.2,
-    textTransform: "uppercase" as const,
   },
   tonightSignalLabel: {
     fontSize: 10,
