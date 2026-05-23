@@ -1209,9 +1209,12 @@ export default function WatchScreen() {
   const [upNextSportFilter, setUpNextSportFilter] = useState<string | null>(null);
   const [upNextLeagueFilter, setUpNextLeagueFilter] = useState<string | null>(null);
 
+  const liveEventIds = useMemo(() => new Set(liveEvents.map((e) => e.id)), [liveEvents]);
+
   const upNextAll = useMemo(() => {
     const upcoming = getUpNextEvents(allEvents, now);
     const notFinal = upcoming.filter((e) => {
+      if (liveEventIds.has(e.id)) return false;
       const score = getScore(e.id);
       if (!score) return true;
       const { gameState } = normalizeGameState(e, score, now);
@@ -1221,7 +1224,7 @@ export default function WatchScreen() {
     return [...filtered].sort(
       (a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
     );
-  }, [allEvents, now, favoritesOnly, favorites, getScore]);
+  }, [allEvents, now, favoritesOnly, favorites, getScore, liveEventIds]);
 
   const { upNextSportChips, upNextLeagueChips, upNextEvents, upNextLeagueSportMap } = useMemo(() => {
     const sports = new Map<string, number>();
