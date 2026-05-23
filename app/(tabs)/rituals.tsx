@@ -97,6 +97,7 @@ const SPORT_BACKGROUNDS: Record<string, any> = {
   tennis: require("@/assets/images/sports/tennis.webp"),
   golf: require("@/assets/images/sports/golf.webp"),
   athletics: require("@/assets/images/sports/athletics.webp"),
+  cycling: require("@/assets/images/sports/cycling.webp"),
 };
 
 function resolveSportBackground(sport: string | null | undefined): any {
@@ -129,7 +130,15 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
           <Text style={styles.featuredChipText}>FEATURED</Text>
         </View>
         {sessionName ? (
-          <Text style={styles.featuredSessionName} numberOfLines={1}>{sessionName}</Text>
+          <>
+            <Text style={styles.featuredSessionName} numberOfLines={2}>{sessionName}</Text>
+            <View style={styles.featuredSessionMeta}>
+              <Text style={styles.featuredSessionTime}>{timeLabel}</Text>
+              {provider.brandId && (
+                <ProviderLogo providerId={provider.brandId} size={22} />
+              )}
+            </View>
+          </>
         ) : (
           <>
             <View style={styles.espnMatchup}>
@@ -610,11 +619,24 @@ const styles = StyleSheet.create({
     paddingTop: 2,
   },
   featuredSessionName: {
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: "600" as const,
     color: Colors.textPrimary,
     fontFamily: "Inter_600SemiBold",
-    flex: 1,
+    textAlign: "center" as const,
+  },
+  featuredSessionMeta: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+    marginTop: 2,
+  },
+  featuredSessionTime: {
+    fontSize: 15,
+    fontWeight: "700" as const,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_700Bold",
   },
   featuredEmpty: {
     fontSize: 12,

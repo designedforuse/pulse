@@ -54,6 +54,12 @@ uri = "file://assets/images/sports/athletics.png"
 type = "image"
 title = "athletics background"
 
+[[generated]]
+id = "MerLQ78nfmtm6HoPRyOvx"
+uri = "file://assets/images/sports/cycling_raw.png"
+type = "image"
+title = "cycling background"
+
 [[outputs]]
 id = "BCzZEiJcUNr5OpJ6RpZse"
 uri = "file://PRD.md"

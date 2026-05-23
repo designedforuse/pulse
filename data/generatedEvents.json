@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-23T00:43:06.323Z",
+  "lastUpdated": "2026-05-23T06:00:05.269Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -48,17 +48,17 @@
   "buAdded": 0,
   "buUpdated": 0,
   "buPruned": 0,
-  "rugbyCount": 94,
+  "rugbyCount": 91,
   "rugbyAdded": 0,
-  "rugbyUpdated": 94,
-  "rugbyPruned": 0,
+  "rugbyUpdated": 91,
+  "rugbyPruned": 3,
   "rugbyCounts": {
     "urc": 18,
     "top14": 28,
-    "superrugby": 22,
+    "superrugby": 21,
     "premiership": 19,
     "sixnations": 0,
-    "leagueone": 8,
+    "leagueone": 6,
     "svns": 6
   },
   "cricketCount": 7,
@@ -201,22 +201,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-05-23T00:43:06.323Z",
+    "lastRefreshAt": "2026-05-23T06:00:05.269Z",
     "sources": {
       "nhl": {
         "count": 12,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 28,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 34,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -227,16 +227,16 @@
         "teamFilter": "Boston University"
       },
       "rugby": {
-        "count": 94,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "count": 91,
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 18,
           "top14": 28,
-          "superrugby": 22,
+          "superrugby": 21,
           "premiership": 19,
           "sixnations": 0,
-          "leagueone": 8,
+          "leagueone": 6,
           "svns": 6
         }
       },
@@ -248,93 +248,93 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 38,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 141,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 29,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 39,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 17,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 19,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 33,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 38,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-09T23:00:00.000Z"
       },
       "championsCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "challengeCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 15,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 1,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 1,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-16T14:00:00.000Z"
       },
       "tennis": {
         "count": 43,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "French Open": 30,
@@ -344,7 +344,7 @@
       },
       "f1": {
         "count": 30,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Canadian Grand Prix": 5,
@@ -357,7 +357,7 @@
       },
       "golf": {
         "count": 12,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "PGA Championship": 4,
@@ -367,7 +367,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Sydney Marathon": 1,
@@ -396,7 +396,7 @@
       },
       "cafcl": {
         "count": 6,
-        "lastFetchAt": "2026-05-23T00:43:06.323Z",
+        "lastFetchAt": "2026-05-23T06:00:05.269Z",
         "sourceName": "ESPN API"
       }
     }
@@ -1605,45 +1605,6 @@
       "source": "soccer-mls",
       "leagueKey": "mls",
       "providerReason": "mls-appletv"
-    },
-    {
-      "id": "rugby-superrugby-2jj2n1",
-      "sport": "rugby",
-      "league": "Super Rugby",
-      "homeTeam": "Highlanders",
-      "awayTeam": "NSW Waratahs",
-      "startTimeLocal": "2026-05-09T04:35:00.000Z",
-      "endTimeLocal": "2026-05-09T06:35:00.000Z",
-      "providerId": "primevideo",
-      "isLive": false,
-      "source": "rugby",
-      "leagueKey": "superrugby"
-    },
-    {
-      "id": "rugby-leagueone-ihd0fx",
-      "sport": "rugby",
-      "league": "Japan League One",
-      "homeTeam": "Saitama Wild Knights",
-      "awayTeam": "Brave Lupus Tokyo",
-      "startTimeLocal": "2026-05-09T05:30:00.000Z",
-      "endTimeLocal": "2026-05-09T07:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "rugby",
-      "leagueKey": "leagueone"
-    },
-    {
-      "id": "rugby-leagueone-u3q5l5",
-      "sport": "rugby",
-      "league": "Japan League One",
-      "homeTeam": "Shizuoka Blue Revs",
-      "awayTeam": "Yokohama Canon Eagles",
-      "startTimeLocal": "2026-05-09T05:30:00.000Z",
-      "endTimeLocal": "2026-05-09T07:45:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "rugby",
-      "leagueKey": "leagueone"
     },
     {
       "id": "rugby-superrugby-i5dtsl",
@@ -6583,7 +6544,7 @@
       "startTimeLocal": "2026-05-22T23:00:00.000Z",
       "endTimeLocal": "2026-05-23T01:45:00.000Z",
       "providerId": "flosports",
-      "isLive": true,
+      "isLive": false,
       "source": "ahl-hockeytech"
     },
     {
@@ -6595,7 +6556,7 @@
       "startTimeLocal": "2026-05-22T23:30:00.000Z",
       "endTimeLocal": "2026-05-23T02:15:00.000Z",
       "providerId": "flosports",
-      "isLive": true,
+      "isLive": false,
       "source": "echl"
     },
     {
@@ -6607,7 +6568,7 @@
       "startTimeLocal": "2026-05-23T00:00:00.000Z",
       "endTimeLocal": "2026-05-23T02:45:00.000Z",
       "providerId": "youtubetv",
-      "isLive": true,
+      "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
         "ESPN",
@@ -6642,7 +6603,7 @@
       "startTimeLocal": "2026-05-23T00:05:00.000Z",
       "endTimeLocal": "2026-05-23T02:50:00.000Z",
       "providerId": "flosports",
-      "isLive": true,
+      "isLive": false,
       "source": "echl"
     },
     {

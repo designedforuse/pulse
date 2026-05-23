@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-23T00:43:06.363Z",
+  "lastUpdated": "2026-05-23T06:00:05.355Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -49,7 +49,7 @@
         ],
         "playersIngested": 402,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-23T00:43:06.363Z"
+        "timestamp": "2026-05-23T06:00:05.355Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -59,7 +59,7 @@
     "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1828.7184341666666,
+      "hoursUntil": -1834.0014875,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -127,7 +127,7 @@
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-05-23T00:43:06.363Z",
+      "triggeredAt": "2026-05-23T06:00:05.355Z",
       "expiresAt": "2026-05-25T00:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
@@ -211,9 +211,9 @@
           "displayName": "Super Rugby",
           "leagueKey": "superrugby",
           "dateRangeLabel": "May 9–30",
-          "startDate": "2026-05-09T04:35:00.000Z",
+          "startDate": "2026-05-09T07:05:00.000Z",
           "endDate": "2026-05-30T09:35:00.000Z",
-          "eventCount": 17,
+          "eventCount": 16,
           "seasonPhase": "Playoffs"
         },
         {
@@ -221,9 +221,9 @@
           "displayName": "Japan League One",
           "leagueKey": "leagueone",
           "dateRangeLabel": "May 9–24",
-          "startDate": "2026-05-09T05:30:00.000Z",
+          "startDate": "2026-05-09T08:10:00.000Z",
           "endDate": "2026-05-24T05:30:00.000Z",
-          "eventCount": 8,
+          "eventCount": 6,
           "seasonPhase": "Playoffs"
         },
         {
