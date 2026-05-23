@@ -82,6 +82,13 @@ function RootLayoutNav() {
         }}
       />
       <Stack.Screen
+        name="month-schedule"
+        options={{
+          headerShown: false,
+          title: "What's Coming Up",
+        }}
+      />
+      <Stack.Screen
         name="affiliates"
         options={{
           headerShown: true,
