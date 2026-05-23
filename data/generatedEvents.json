@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-22T23:45:06.215Z",
+  "lastUpdated": "2026-05-23T00:43:06.323Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -34,14 +34,14 @@
   "buSourceUsed": "chn",
   "rugbySourceUsed": "ical",
   "cricketSourceUsed": "cricapi",
-  "nhlCount": 13,
+  "nhlCount": 12,
   "ahlCount": 28,
   "ahlAdded": 0,
   "ahlUpdated": 23,
-  "ahlPruned": 1,
+  "ahlPruned": 0,
   "echlCount": 34,
-  "echlAdded": 80,
-  "echlUpdated": 36,
+  "echlAdded": 82,
+  "echlUpdated": 34,
   "echlPruned": 82,
   "echlWebCount": 116,
   "buCount": 0,
@@ -107,15 +107,15 @@
   "ligue1Updated": 19,
   "ligue1Pruned": 19,
   "ligue1SourceUsed": "espn",
-  "nwslCount": 34,
+  "nwslCount": 33,
   "nwslAdded": 0,
-  "nwslUpdated": 34,
-  "nwslPruned": 35,
+  "nwslUpdated": 33,
+  "nwslPruned": 33,
   "nwslSourceUsed": "ical",
-  "uslCount": 39,
+  "uslCount": 38,
   "uslAdded": 0,
-  "uslUpdated": 39,
-  "uslPruned": 40,
+  "uslUpdated": 38,
+  "uslPruned": 38,
   "uslSourceUsed": "espn",
   "championsCupCount": 1,
   "championsCupAdded": 0,
@@ -147,15 +147,15 @@
   "faCupUpdated": 1,
   "faCupPruned": 1,
   "faCupSourceUsed": "espn",
-  "tennisCount": 46,
+  "tennisCount": 43,
   "tennisAdded": 0,
-  "tennisUpdated": 46,
+  "tennisUpdated": 43,
   "tennisPruned": 0,
   "tennisSourceUsed": "hardcoded",
   "tennisTournamentCounts": {
     "French Open": 30,
-    "Madrid Open": 2,
-    "Italian Open": 14
+    "Madrid Open": 1,
+    "Italian Open": 12
   },
   "f1Count": 30,
   "f1Added": 0,
@@ -201,22 +201,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-05-22T23:45:06.215Z",
+    "lastRefreshAt": "2026-05-23T00:43:06.323Z",
     "sources": {
       "nhl": {
-        "count": 13,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "count": 12,
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 28,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 34,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -228,7 +228,7 @@
       },
       "rugby": {
         "count": 94,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 18,
@@ -248,103 +248,103 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 38,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 141,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 29,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 39,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 17,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 19,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
-        "count": 34,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "count": 33,
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
-        "count": 39,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "count": 38,
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "ESPN API",
-        "firstMatchDate": "2026-05-08T23:30:00.000Z"
+        "firstMatchDate": "2026-05-09T23:00:00.000Z"
       },
       "championsCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "challengeCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 15,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 1,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 1,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-16T14:00:00.000Z"
       },
       "tennis": {
-        "count": 46,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "count": 43,
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "French Open": 30,
-          "Madrid Open": 2,
-          "Italian Open": 14
+          "Madrid Open": 1,
+          "Italian Open": 12
         }
       },
       "f1": {
         "count": 30,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Canadian Grand Prix": 5,
@@ -357,7 +357,7 @@
       },
       "golf": {
         "count": 12,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "PGA Championship": 4,
@@ -367,7 +367,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Sydney Marathon": 1,
@@ -396,7 +396,7 @@
       },
       "cafcl": {
         "count": 6,
-        "lastFetchAt": "2026-05-22T23:45:06.215Z",
+        "lastFetchAt": "2026-05-23T00:43:06.323Z",
         "sourceName": "ESPN API"
       }
     }
@@ -1607,35 +1607,6 @@
       "providerReason": "mls-appletv"
     },
     {
-      "id": "soccer-nwsl-20260509-0000-north-carolina-courage-at-orlando-pride",
-      "sport": "soccer",
-      "league": "NWSL",
-      "awayTeam": "North Carolina Courage",
-      "homeTeam": "Orlando Pride",
-      "startTimeLocal": "2026-05-09T00:00:00.000Z",
-      "endTimeLocal": "2026-05-09T03:00:00.000Z",
-      "providerId": "primevideo",
-      "isLive": false,
-      "source": "soccer-nwsl",
-      "leagueKey": "nwsl",
-      "providerReason": "nwsl-ion-prime",
-      "broadcastNetworks": "Prime Video"
-    },
-    {
-      "id": "soccer-usl-20260509-0100-orange-county-sc-at-colorado-springs-switchbacks-fc",
-      "sport": "soccer",
-      "league": "USL",
-      "awayTeam": "Orange County SC",
-      "homeTeam": "Colorado Springs Switchbacks FC",
-      "startTimeLocal": "2026-05-09T01:00:00.000Z",
-      "endTimeLocal": "2026-05-09T03:15:00.000Z",
-      "providerId": "primevideo",
-      "isLive": false,
-      "source": "soccer-usl",
-      "leagueKey": "usl",
-      "providerReason": "usl-cbsgolazo-default"
-    },
-    {
       "id": "rugby-superrugby-2jj2n1",
       "sport": "rugby",
       "league": "Super Rugby",
@@ -1701,56 +1672,6 @@
       "leagueKey": "leagueone"
     },
     {
-      "id": "tennis-madrid-open-2026-05-09-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Rublev",
-      "homeTeam": "Djokovic",
-      "startTimeLocal": "2026-05-09T09:00:00.000Z",
-      "endTimeLocal": "2026-05-09T11:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Madrid — Final",
-      "competitionType": "domestic",
-      "tennisRound": "Final",
-      "tennisPlayer1": "Rublev",
-      "tennisPlayer2": "Djokovic",
-      "tennisPlayer1Rank": 9,
-      "tennisPlayer2Rank": 4,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/rus.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/srb.png",
-      "tournamentName": "Madrid Open"
-    },
-    {
-      "id": "tennis-italian-open-2026-05-09-m0",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Rublev",
-      "homeTeam": "Paul",
-      "startTimeLocal": "2026-05-09T09:00:00.000Z",
-      "endTimeLocal": "2026-05-09T11:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Rome — Round of 32",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 32",
-      "tennisPlayer1": "Rublev",
-      "tennisPlayer2": "Paul",
-      "tennisPlayer1Rank": 9,
-      "tennisPlayer2Rank": 14,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/rus.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
-      "tournamentName": "Italian Open"
-    },
-    {
       "id": "rugby-superrugby-o8jpxs",
       "sport": "rugby",
       "league": "Super Rugby",
@@ -1803,31 +1724,6 @@
       "source": "soccer-laliga",
       "leagueKey": "laliga",
       "providerReason": "laliga-disneyplus"
-    },
-    {
-      "id": "tennis-italian-open-2026-05-09-m1",
-      "sport": "tennis",
-      "league": "ATP Masters 1000",
-      "awayTeam": "Djokovic",
-      "homeTeam": "Tsitsipas",
-      "startTimeLocal": "2026-05-09T12:00:00.000Z",
-      "endTimeLocal": "2026-05-09T14:30:00.000Z",
-      "providerId": "tennischannel",
-      "isLive": false,
-      "source": "tennis-hardcoded",
-      "leagueKey": "atp-masters",
-      "providerReason": "tennis-channel",
-      "eventType": "match",
-      "sessionTitle": "Rome — Round of 32",
-      "competitionType": "domestic",
-      "tennisRound": "Round of 32",
-      "tennisPlayer1": "Djokovic",
-      "tennisPlayer2": "Tsitsipas",
-      "tennisPlayer1Rank": 4,
-      "tennisPlayer2Rank": 12,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/srb.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/gre.png",
-      "tournamentName": "Italian Open"
     },
     {
       "id": "cycling-grand-tour-giro-d-italia-2026-2026-05-09-stage-2",
@@ -6536,28 +6432,6 @@
       "source": "ahl-hockeytech"
     },
     {
-      "id": "nhl_2025030311",
-      "sport": "hockey",
-      "league": "NHL",
-      "awayTeam": "Montréal Canadiens",
-      "homeTeam": "Carolina Hurricanes",
-      "startTimeLocal": "2026-05-22T00:00:00.000Z",
-      "endTimeLocal": "2026-05-22T02:45:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "nhl",
-      "broadcastNetworks": [
-        "TNT",
-        "truTV",
-        "HBO MAX",
-        "CBC",
-        "SN",
-        "TVAS"
-      ],
-      "isNational": true,
-      "providerReason": "national"
-    },
-    {
       "id": "ahl-1029038",
       "sport": "hockey",
       "league": "AHL",
@@ -6733,7 +6607,7 @@
       "startTimeLocal": "2026-05-23T00:00:00.000Z",
       "endTimeLocal": "2026-05-23T02:45:00.000Z",
       "providerId": "youtubetv",
-      "isLive": false,
+      "isLive": true,
       "source": "nhl",
       "broadcastNetworks": [
         "ESPN",
@@ -6768,7 +6642,7 @@
       "startTimeLocal": "2026-05-23T00:05:00.000Z",
       "endTimeLocal": "2026-05-23T02:50:00.000Z",
       "providerId": "flosports",
-      "isLive": false,
+      "isLive": true,
       "source": "echl"
     },
     {

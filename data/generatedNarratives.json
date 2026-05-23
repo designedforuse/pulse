@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-22T23:45:06.301Z",
+  "lastUpdated": "2026-05-23T00:43:06.363Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -49,7 +49,7 @@
         ],
         "playersIngested": 402,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-22T23:45:06.301Z"
+        "timestamp": "2026-05-23T00:43:06.363Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -59,7 +59,7 @@
     "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1827.7517502777778,
+      "hoursUntil": -1828.7184341666666,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -80,16 +80,26 @@
       "clinchFinalCount": 0,
       "clinchGatedOut": []
     },
-    "tonightStorySelectedSignal": "league_moment",
-    "tonightStoryHeadline": "League Spotlight",
-    "tonightStorySourceEvent": "f1-espn-401839060",
+    "tonightStorySelectedSignal": "multi_team_night",
+    "tonightStoryHeadline": "Your Sports Night",
+    "tonightStorySourceEvent": "rugby-leagueone-y0elki",
     "tonightStoryDebug": {
-      "selectedSignal": "league_moment",
-      "selectedHeadline": "League Spotlight",
-      "selectedScore": 50,
-      "sourceEventId": "f1-espn-401839060",
-      "reason": "league_moment (generic, no followed teams)",
+      "selectedSignal": "multi_team_night",
+      "selectedHeadline": "Your Sports Night",
+      "selectedScore": 300,
+      "sourceEventId": "rugby-leagueone-y0elki",
+      "reason": "5 followed/affiliate teams playing tonight",
       "scoredCandidates": [
+        {
+          "label": "[multi_team_night] Your Sports Night",
+          "score": 300,
+          "reason": "5 followed/affiliate teams playing tonight"
+        },
+        {
+          "label": "[ritual_night] Friday Night Mode",
+          "score": 130,
+          "reason": "ritual \"Friday Night Mode\" has 3 followed-team game(s)"
+        },
         {
           "label": "[league_moment] League Spotlight",
           "score": 50,
@@ -117,7 +127,7 @@
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-05-22T23:45:06.301Z",
+      "triggeredAt": "2026-05-23T00:43:06.363Z",
       "expiresAt": "2026-05-25T00:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
@@ -166,18 +176,19 @@
     }
   ],
   "tonightStory": {
-    "signalType": "league_moment",
-    "signalLabel": "LEAGUE MOMENT",
-    "headline": "League Spotlight",
-    "body": "Canadian Grand Prix — 3 sessions in the next 48h: Sprint, Qualifying, Race",
-    "sourceEventId": "f1-espn-401839060",
+    "signalType": "multi_team_night",
+    "signalLabel": "YOUR TEAMS",
+    "headline": "Your Sports Night",
+    "body": "The Sungoliath, Hurricanes, Lazio, New England Free Jacks, and New England Revolution all play tonight across the Japan League One, Super Rugby, Serie A, MLR, MLS.",
+    "sourceEventId": "rugby-leagueone-y0elki",
     "sourceCard": {
-      "id": "f1_race_weekend_canadian_grand_prix",
-      "kind": "league_moment",
-      "title": "Canadian Grand Prix"
+      "id": "tonight_multi_team",
+      "kind": "multi_team_night",
+      "title": "Your Sports Night"
     },
     "sports": [
-      "racing"
+      "rugby",
+      "soccer"
     ]
   },
   "monthSnapshot": {
@@ -193,26 +204,6 @@
           "startDate": "2026-05-02T17:00:00.000Z",
           "endDate": "2026-05-25T01:15:00.000Z",
           "eventCount": 82,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "NWSL",
-          "leagueKey": "nwsl",
-          "dateRangeLabel": "May 9–31",
-          "startDate": "2026-05-09T00:00:00.000Z",
-          "endDate": "2026-05-31T23:00:00.000Z",
-          "eventCount": 34,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "USL",
-          "leagueKey": "usl",
-          "dateRangeLabel": "May 9–31",
-          "startDate": "2026-05-09T01:00:00.000Z",
-          "endDate": "2026-05-31T18:00:00.000Z",
-          "eventCount": 34,
           "seasonPhase": "Regular"
         },
         {
@@ -234,26 +225,6 @@
           "endDate": "2026-05-24T05:30:00.000Z",
           "eventCount": 8,
           "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "tennis",
-          "displayName": "Madrid",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "May 9–10",
-          "startDate": "2026-05-09T09:00:00.000Z",
-          "endDate": "2026-05-10T09:00:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": null
-        },
-        {
-          "sport": "tennis",
-          "displayName": "Rome",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "May 9–17",
-          "startDate": "2026-05-09T09:00:00.000Z",
-          "endDate": "2026-05-17T09:00:00.000Z",
-          "eventCount": 14,
-          "seasonPhase": null
         },
         {
           "sport": "soccer",
@@ -366,6 +337,16 @@
           "seasonPhase": "Regular"
         },
         {
+          "sport": "soccer",
+          "displayName": "NWSL",
+          "leagueKey": "nwsl",
+          "dateRangeLabel": "May 9–31",
+          "startDate": "2026-05-09T22:30:00.000Z",
+          "endDate": "2026-05-31T23:00:00.000Z",
+          "eventCount": 33,
+          "seasonPhase": "Regular"
+        },
+        {
           "sport": "hockey",
           "displayName": "ECHL",
           "leagueKey": "echl",
@@ -374,6 +355,36 @@
           "endDate": "2026-05-31T21:05:00.000Z",
           "eventCount": 30,
           "seasonPhase": "Final"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "USL",
+          "leagueKey": "usl",
+          "dateRangeLabel": "May 9–31",
+          "startDate": "2026-05-09T23:00:00.000Z",
+          "endDate": "2026-05-31T18:00:00.000Z",
+          "eventCount": 33,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Madrid",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "May 10",
+          "startDate": "2026-05-10T09:00:00.000Z",
+          "endDate": "2026-05-10T09:00:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Rome",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "May 10–17",
+          "startDate": "2026-05-10T09:00:00.000Z",
+          "endDate": "2026-05-17T09:00:00.000Z",
+          "eventCount": 12,
+          "seasonPhase": null
         },
         {
           "sport": "soccer",
@@ -466,16 +477,6 @@
           "seasonPhase": null
         },
         {
-          "sport": "hockey",
-          "displayName": "NHL",
-          "leagueKey": "nhl",
-          "dateRangeLabel": "May 22–31",
-          "startDate": "2026-05-22T00:00:00.000Z",
-          "endDate": "2026-05-31T16:00:00.000Z",
-          "eventCount": 11,
-          "seasonPhase": "Playoffs"
-        },
-        {
           "sport": "racing",
           "displayName": "Canadian GP",
           "leagueKey": "f1",
@@ -494,6 +495,16 @@
           "endDate": "2026-05-22T19:00:00.000Z",
           "eventCount": 1,
           "seasonPhase": null
+        },
+        {
+          "sport": "hockey",
+          "displayName": "NHL",
+          "leagueKey": "nhl",
+          "dateRangeLabel": "May 23–31",
+          "startDate": "2026-05-23T00:00:00.000Z",
+          "endDate": "2026-05-31T16:00:00.000Z",
+          "eventCount": 10,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "athletics",

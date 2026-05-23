@@ -83,7 +83,7 @@ export function tagEntries(results: DailyWrapEntry[], favorites: Favorites) {
   return [...favs, ...others];
 }
 
-export default function DailyWrapCard() {
+export default function DailyWrapCard({ fill = false }: { fill?: boolean } = {}) {
   const { favorites } = useFavorites();
   const router = useRouter();
   const tz = new Date().getTimezoneOffset();
@@ -114,7 +114,7 @@ export default function DailyWrapCard() {
   const handleOpen = () => router.push("/daily-wrap-full");
 
   return (
-    <Pressable onPress={handleOpen} style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}>
+    <Pressable onPress={handleOpen} style={({ pressed }) => [styles.card, fill && { flex: 1, marginBottom: 0 }, pressed && styles.cardPressed]}>
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.headerLeft}>
