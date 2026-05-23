@@ -151,11 +151,12 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
                   {isFavAway && <MaterialCommunityIcons name="star" size={13} color={Colors.favStar} />}
                 </View>
                 <View style={styles.espnTeam}>
-                  <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={44} />
-                  <View style={styles.espnNameRow}>
-                    {awayFlag ? <ExpoImage source={{ uri: awayFlag }} style={styles.espnFlag} contentFit="cover" /> : null}
-                    <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
-                  </View>
+                  {awayFlag ? (
+                    <ExpoImage source={{ uri: awayFlag }} style={styles.espnFlagLarge} contentFit="cover" />
+                  ) : (
+                    <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={44} />
+                  )}
+                  <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
                 </View>
               </View>
               {/* Center: time + provider */}
@@ -173,11 +174,12 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
                   {isFavHome && <MaterialCommunityIcons name="star" size={13} color={Colors.favStar} />}
                 </View>
                 <View style={styles.espnTeam}>
-                  <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={44} />
-                  <View style={styles.espnNameRow}>
-                    {homeFlag ? <ExpoImage source={{ uri: homeFlag }} style={styles.espnFlag} contentFit="cover" /> : null}
-                    <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
-                  </View>
+                  {homeFlag ? (
+                    <ExpoImage source={{ uri: homeFlag }} style={styles.espnFlagLarge} contentFit="cover" />
+                  ) : (
+                    <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={44} />
+                  )}
+                  <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
                 </View>
               </View>
             </View>
@@ -611,16 +613,10 @@ const styles = StyleSheet.create({
     letterSpacing: 0.3,
     flexShrink: 1,
   },
-  espnNameRow: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    justifyContent: "center" as const,
-    gap: 5,
-  },
-  espnFlag: {
-    width: 18,
-    height: 13,
-    borderRadius: 2,
+  espnFlagLarge: {
+    width: 44,
+    height: 32,
+    borderRadius: 4,
   },
   espnCenter: {
     alignItems: "center",
