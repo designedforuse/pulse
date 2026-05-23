@@ -129,7 +129,8 @@ export const SEASON_PHASES_2026: Record<string, PhaseWindow[]> = {
 
 export const CHAMPIONSHIP_FINALS_2026: ChampionshipFinal[] = [
   { leagueKey: "championsleague", sport: "soccer", name: "Champions League Final", date: "2026-05-30", monthKey: "2026-05", emoji: "🏆" },
-  { leagueKey: "europaleague", sport: "soccer", name: "Europa League Final", date: "2026-05-27", monthKey: "2026-05", emoji: "🏆" },
+  { leagueKey: "europaleague", sport: "soccer", name: "Europa League Final", date: "2026-05-20", monthKey: "2026-05", emoji: "🏆" },
+  { leagueKey: "challengecup", sport: "rugby", name: "EPCR Challenge Cup Final", date: "2026-05-22", monthKey: "2026-05", emoji: "🏆" },
   { leagueKey: "championscup", sport: "rugby", name: "Investec Champions Cup Final", date: "2026-05-23", monthKey: "2026-05", emoji: "🏆" },
   { leagueKey: "facup", sport: "soccer", name: "FA Cup Final", date: "2026-05-16", monthKey: "2026-05", emoji: "🏆" },
   { leagueKey: "shl", sport: "hockey", name: "SHL Le Mat Trophy Final", date: "2026-04-30", monthKey: "2026-04", emoji: "🏆" },
