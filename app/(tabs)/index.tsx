@@ -83,6 +83,7 @@ interface MonthSnapshot {
 }
 
 const SNAPSHOT_COLOR = "#6366F1";
+const TRENDING_COLOR = "#FF6B35";
 
 const KIND_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap; color: string; label: string }> = {
   playoff_push: { icon: "flame", color: "#FF453A", label: "Playoff Push" },
@@ -167,16 +168,6 @@ export default function ExploreScreen() {
     } catch {}
     setRefreshing(false);
   }, [queryClient]);
-
-  const handleCardPress = (card: ExploreNarrativeCard) => {
-    if (Platform.OS !== "web") {
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-    }
-    router.push({
-      pathname: "/narrative/[id]",
-      params: { id: card.id, cardJson: JSON.stringify(card) },
-    });
-  };
 
   const slides: React.ReactNode[] = [];
 
@@ -316,45 +307,51 @@ export default function ExploreScreen() {
     </Pressable>
   );
 
-  if (!isLoading) {
-    for (const card of cards) {
-      const config = KIND_CONFIG[card.kind] || KIND_CONFIG.league_moment;
-      slides.push(
-        <Pressable
-          key={card.id}
-          onPress={() => handleCardPress(card)}
-          style={({ pressed }) => [
-            styles.narrativeCard,
-            styles.cardFill,
-            { transform: [{ scale: pressed ? 0.975 : 1 }] },
-          ]}
-          testID={`narrative-${card.id}`}
-        >
-          <View style={[styles.cardColorHeader, { backgroundColor: config.color + "18" }]}>
-            <View style={[styles.kindBadge, { backgroundColor: config.color }]}>
-              <Ionicons name={config.icon} size={12} color="#fff" />
-              <Text style={styles.kindLabel}>{config.label}</Text>
-            </View>
-            <Text style={styles.timeAgo}>{timeAgo(card.triggeredAt)}</Text>
+  if (cards.length > 0) {
+    const distinctKinds = new Set(cards.map(c => c.kind)).size;
+    slides.push(
+      <Pressable
+        key="trending"
+        onPress={() => {
+          if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+          router.push("/trending-stories");
+        }}
+        accessibilityRole="button"
+        accessibilityLabel={`Trending Stories: ${cards.length} narrative ${cards.length === 1 ? "story" : "stories"} live now`}
+        style={({ pressed }) => [styles.trendingCard, styles.cardFill, pressed && { opacity: 0.9 }]}
+        testID="stories-trending-tile"
+      >
+        <View pointerEvents="none" style={styles.trendingBgLayer}>
+          {[0, 1, 2, 3].map((i) => (
+            <Text key={i} style={styles.trendingBgWord}>TRENDING</Text>
+          ))}
+        </View>
+        <View style={styles.trendingInner}>
+          <View style={styles.trendingBadge}>
+            <Ionicons name="flame" size={11} color="#fff" />
+            <Text style={styles.trendingBadgeText}>LIVE FEED</Text>
           </View>
-          <View style={[styles.cardBody, { flex: 1 }]}>
-            <Text style={styles.cardTitle} numberOfLines={3}>{card.title}</Text>
-            <Text style={styles.cardSubtitle} numberOfLines={6}>{card.subtitle}</Text>
-            {card.impact && (
-              <View style={styles.impactRow}>
-                <Ionicons name="link-outline" size={12} color={PINK} />
-                <Text style={styles.impactText} numberOfLines={2}>{card.impact.label}</Text>
+          <Text style={styles.trendingWordmark}>TRENDING{"\n"}STORIES</Text>
+          <Text style={styles.trendingTagline}>Narrative intel as it happens</Text>
+          <View style={styles.trendingChips}>
+            <View style={styles.trendingChip}>
+              <Text style={styles.trendingChipNum}>{cards.length}</Text>
+              <Text style={styles.trendingChipLabel}>{cards.length === 1 ? "STORY" : "STORIES"}</Text>
+            </View>
+            {distinctKinds > 1 && (
+              <View style={styles.trendingChip}>
+                <Text style={styles.trendingChipNum}>{distinctKinds}</Text>
+                <Text style={styles.trendingChipLabel}>{distinctKinds === 1 ? "ANGLE" : "ANGLES"}</Text>
               </View>
             )}
-            <View style={{ flex: 1 }} />
-            <View style={styles.cardFooter}>
-              <Text style={styles.readMore}>Read more</Text>
-              <Ionicons name="arrow-forward" size={13} color={PINK} />
-            </View>
           </View>
-        </Pressable>
-      );
-    }
+          <View style={styles.trendingCta}>
+            <Text style={styles.trendingCtaText}>Open feed</Text>
+            <Ionicons name="chevron-forward" size={14} color={TRENDING_COLOR} />
+          </View>
+        </View>
+      </Pressable>
+    );
   }
 
   const slideWidth = feedSize.width || screenWidth;
@@ -1086,6 +1083,107 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: "Inter_600SemiBold",
     color: Colors.hockey,
+    letterSpacing: 0.4,
+  },
+  trendingCard: {
+    backgroundColor: "#2A140B",
+    borderRadius: 20,
+    borderWidth: 1.5,
+    borderColor: TRENDING_COLOR + "40",
+    overflow: "hidden" as const,
+    marginBottom: 20,
+    minHeight: 280,
+  },
+  trendingBgLayer: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "space-around" as const,
+    alignItems: "center" as const,
+    paddingVertical: 18,
+  },
+  trendingBgWord: {
+    fontSize: 36,
+    fontFamily: "Inter_700Bold",
+    color: TRENDING_COLOR,
+    opacity: 0.08,
+    letterSpacing: 2,
+  },
+  trendingInner: {
+    flex: 1,
+    alignItems: "center" as const,
+    justifyContent: "center" as const,
+    paddingHorizontal: 20,
+    paddingVertical: 24,
+  },
+  trendingBadge: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 5,
+    backgroundColor: TRENDING_COLOR,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 10,
+    marginBottom: 12,
+  },
+  trendingBadgeText: {
+    fontSize: 10,
+    fontFamily: "Inter_700Bold",
+    color: "#fff",
+    letterSpacing: 0.8,
+  },
+  trendingWordmark: {
+    fontSize: 36,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    letterSpacing: -1,
+    textAlign: "center" as const,
+    lineHeight: 40,
+    marginBottom: 8,
+  },
+  trendingTagline: {
+    fontSize: 13,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+    textAlign: "center" as const,
+    marginBottom: 14,
+    paddingHorizontal: 8,
+  },
+  trendingChips: {
+    flexDirection: "row" as const,
+    gap: 10,
+    marginBottom: 16,
+  },
+  trendingChip: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 6,
+    backgroundColor: TRENDING_COLOR + "20",
+    borderRadius: 999,
+    paddingHorizontal: 14,
+    paddingVertical: 7,
+    borderWidth: 1,
+    borderColor: TRENDING_COLOR + "40",
+  },
+  trendingChipNum: {
+    fontSize: 16,
+    fontFamily: "Inter_700Bold",
+    color: TRENDING_COLOR,
+  },
+  trendingChipLabel: {
+    fontSize: 10,
+    fontFamily: "Inter_700Bold",
+    color: TRENDING_COLOR,
+    letterSpacing: 1.1,
+  },
+  trendingCta: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 4,
+    marginTop: 2,
+  },
+  trendingCtaText: {
+    fontSize: 12,
+    fontFamily: "Inter_600SemiBold",
+    color: TRENDING_COLOR,
     letterSpacing: 0.4,
   },
 });

@@ -89,6 +89,13 @@ function RootLayoutNav() {
         }}
       />
       <Stack.Screen
+        name="trending-stories"
+        options={{
+          headerShown: false,
+          title: "Trending Stories",
+        }}
+      />
+      <Stack.Screen
         name="deep-talk"
         options={{
           headerShown: false,
