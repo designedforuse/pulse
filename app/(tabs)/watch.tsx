@@ -614,6 +614,8 @@ function ChaosCard({
                 ? "Formula 1"
                 : isSvnsSession && svnsCity
                 ? `${svnsCity} SVNS${svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}`
+                : isDiamondLeague
+                ? "Diamond League"
                 : event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.league === "CAF Champions League" ? "CAF CL" : event.league === "English Premiership" ? "Premiership" : event.tournamentName || event.league}
             </Text>
           </View>
