@@ -902,7 +902,7 @@ export default function UnifiedEventCard({
 
   const logoSize = featured ? 22 : 20;
   const isUpcoming = !isLive && !isFinal;
-  const showEspnStyle = espnLayout && isUpcoming && showTeamLayout && !isRacing && !isGolf && !isAthletics && !isHorseRacing;
+  const showEspnStyle = espnLayout && (isUpcoming || (isLive && isCricket)) && showTeamLayout && !isRacing && !isGolf && !isAthletics && !isHorseRacing;
   const showRacingEspnStyle = espnLayout && isUpcoming && isRacing;
   const showGolfEspnStyle = espnLayout && isUpcoming && isGolf;
   const showAthleticsEspnStyle = espnLayout && isUpcoming && isAthletics;
