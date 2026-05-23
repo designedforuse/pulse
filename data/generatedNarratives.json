@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-23T06:00:05.355Z",
+  "lastUpdated": "2026-05-23T18:00:06.149Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -49,7 +49,7 @@
         ],
         "playersIngested": 402,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-23T06:00:05.355Z"
+        "timestamp": "2026-05-23T18:00:06.149Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -59,7 +59,7 @@
     "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1834.0014875,
+      "hoursUntil": -1846.0017080555556,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -110,8 +110,8 @@
     "videoSelection": {
       "f1_race_weekend_canadian_grand_prix": {
         "searchQuery": "Canadian Grand Prix sports May 2026",
-        "selectedVideoTitle": "FP1 Highlights | 2026 Canadian Grand Prix",
-        "selectedVideoPublishedAt": "1 hour ago",
+        "selectedVideoTitle": "Sprint Highlights | 2026 Canadian Grand Prix",
+        "selectedVideoPublishedAt": "24 minutes ago",
         "selectedVideoChannel": "FORMULA 1",
         "rejectedForAgeCount": 0
       }
@@ -121,13 +121,13 @@
     {
       "id": "f1_race_weekend_canadian_grand_prix",
       "title": "Canadian Grand Prix",
-      "subtitle": "Canadian Grand Prix — 3 sessions in the next 48h: Sprint, Qualifying, Race",
+      "subtitle": "Canadian Grand Prix — 2 sessions in the next 48h: Qualifying, Race",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-05-23T06:00:05.355Z",
+      "triggeredAt": "2026-05-23T18:00:06.149Z",
       "expiresAt": "2026-05-25T00:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
@@ -136,13 +136,8 @@
       "meta": {
         "type": "f1_race_weekend",
         "grandPrix": "Canadian Grand Prix",
-        "sessionCount": 3,
+        "sessionCount": 2,
         "sessions": [
-          {
-            "sessionTitle": "Sprint",
-            "startTime": "2026-05-23T16:00:00.000Z",
-            "eventId": "f1-espn-401839060"
-          },
           {
             "sessionTitle": "Qualifying",
             "startTime": "2026-05-23T20:00:00.000Z",
@@ -155,23 +150,22 @@
           }
         ],
         "eventIds": [
-          "f1-espn-401839060",
           "f1-espn-401839061",
           "f1-espn-401839062"
         ],
-        "reason": "Canadian Grand Prix race weekend — 3 session(s) within 48 hours"
+        "reason": "Canadian Grand Prix race weekend — 2 session(s) within 48 hours"
       },
       "sports": [
         "racing"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=eHf3ZKK-vIw",
-        "thumbnailUrl": "https://img.youtube.com/vi/eHf3ZKK-vIw/hqdefault.jpg",
-        "durationSeconds": 243,
-        "title": "FP1 Highlights | 2026 Canadian Grand Prix",
+        "url": "https://www.youtube.com/watch?v=l3aB-W19bnc",
+        "thumbnailUrl": "https://img.youtube.com/vi/l3aB-W19bnc/hqdefault.jpg",
+        "durationSeconds": 481,
+        "title": "Sprint Highlights | 2026 Canadian Grand Prix",
         "source": "youtube",
         "channel": "FORMULA 1",
-        "publishedAt": "1 hour ago"
+        "publishedAt": "24 minutes ago"
       }
     }
   ],
@@ -203,37 +197,7 @@
           "dateRangeLabel": "May 2–25",
           "startDate": "2026-05-02T17:00:00.000Z",
           "endDate": "2026-05-25T01:15:00.000Z",
-          "eventCount": 82,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "rugby",
-          "displayName": "Super Rugby",
-          "leagueKey": "superrugby",
-          "dateRangeLabel": "May 9–30",
-          "startDate": "2026-05-09T07:05:00.000Z",
-          "endDate": "2026-05-30T09:35:00.000Z",
-          "eventCount": 16,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "rugby",
-          "displayName": "Japan League One",
-          "leagueKey": "leagueone",
-          "dateRangeLabel": "May 9–24",
-          "startDate": "2026-05-09T08:10:00.000Z",
-          "endDate": "2026-05-24T05:30:00.000Z",
-          "eventCount": 6,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "EPL",
-          "leagueKey": "epl",
-          "dateRangeLabel": "May 9–24",
-          "startDate": "2026-05-09T11:30:00.000Z",
-          "endDate": "2026-05-24T15:00:00.000Z",
-          "eventCount": 38,
+          "eventCount": 83,
           "seasonPhase": "Regular"
         },
         {
@@ -241,39 +205,9 @@
           "displayName": "URC",
           "leagueKey": "urc",
           "dateRangeLabel": "May 9–30",
-          "startDate": "2026-05-09T11:45:00.000Z",
+          "startDate": "2026-05-09T18:45:00.000Z",
           "endDate": "2026-05-30T19:00:00.000Z",
-          "eventCount": 18,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "La Liga",
-          "leagueKey": "laliga",
-          "dateRangeLabel": "May 9–24",
-          "startDate": "2026-05-09T12:00:00.000Z",
-          "endDate": "2026-05-24T19:00:00.000Z",
-          "eventCount": 39,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "cycling",
-          "displayName": "Grand Tour — Giro d'Italia",
-          "leagueKey": "grand-tour",
-          "dateRangeLabel": "May 9–31",
-          "startDate": "2026-05-09T12:00:00.000Z",
-          "endDate": "2026-05-31T12:00:00.000Z",
-          "eventCount": 20,
-          "seasonPhase": null
-        },
-        {
-          "sport": "rugby",
-          "displayName": "Top 14",
-          "leagueKey": "top14",
-          "dateRangeLabel": "May 9–31",
-          "startDate": "2026-05-09T12:30:00.000Z",
-          "endDate": "2026-05-31T19:05:00.000Z",
-          "eventCount": 21,
+          "eventCount": 14,
           "seasonPhase": "Playoffs"
         },
         {
@@ -281,40 +215,10 @@
           "displayName": "Serie A",
           "leagueKey": "seriea",
           "dateRangeLabel": "May 9–24",
-          "startDate": "2026-05-09T13:00:00.000Z",
+          "startDate": "2026-05-09T18:45:00.000Z",
           "endDate": "2026-05-24T18:45:00.000Z",
-          "eventCount": 29,
+          "eventCount": 27,
           "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Bundesliga",
-          "leagueKey": "bundesliga",
-          "dateRangeLabel": "May 9–16",
-          "startDate": "2026-05-09T13:30:00.000Z",
-          "endDate": "2026-05-16T13:30:00.000Z",
-          "eventCount": 17,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "cricket",
-          "displayName": "IPL",
-          "leagueKey": "ipl",
-          "dateRangeLabel": "May 9–31",
-          "startDate": "2026-05-09T14:00:00.000Z",
-          "endDate": "2026-05-31T14:00:00.000Z",
-          "eventCount": 23,
-          "seasonPhase": "Final"
-        },
-        {
-          "sport": "rugby",
-          "displayName": "English Premiership",
-          "leagueKey": "premiership",
-          "dateRangeLabel": "May 9–31",
-          "startDate": "2026-05-09T14:05:00.000Z",
-          "endDate": "2026-05-31T14:30:00.000Z",
-          "eventCount": 14,
-          "seasonPhase": "Playoffs"
         },
         {
           "sport": "hockey",
@@ -325,6 +229,26 @@
           "endDate": "2026-05-31T00:05:00.000Z",
           "eventCount": 23,
           "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "rugby",
+          "displayName": "Top 14",
+          "leagueKey": "top14",
+          "dateRangeLabel": "May 9–31",
+          "startDate": "2026-05-09T19:00:00.000Z",
+          "endDate": "2026-05-31T19:05:00.000Z",
+          "eventCount": 16,
+          "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "La Liga",
+          "leagueKey": "laliga",
+          "dateRangeLabel": "May 9–24",
+          "startDate": "2026-05-09T19:00:00.000Z",
+          "endDate": "2026-05-24T19:00:00.000Z",
+          "eventCount": 36,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "rugby",
@@ -367,6 +291,16 @@
           "seasonPhase": "Regular"
         },
         {
+          "sport": "rugby",
+          "displayName": "Japan League One",
+          "leagueKey": "leagueone",
+          "dateRangeLabel": "May 10–24",
+          "startDate": "2026-05-10T05:30:00.000Z",
+          "endDate": "2026-05-24T05:30:00.000Z",
+          "eventCount": 5,
+          "seasonPhase": "Playoffs"
+        },
+        {
           "sport": "tennis",
           "displayName": "Madrid",
           "leagueKey": "atp-masters",
@@ -387,6 +321,56 @@
           "seasonPhase": null
         },
         {
+          "sport": "cricket",
+          "displayName": "IPL",
+          "leagueKey": "ipl",
+          "dateRangeLabel": "May 10–31",
+          "startDate": "2026-05-10T10:00:00.000Z",
+          "endDate": "2026-05-31T14:00:00.000Z",
+          "eventCount": 22,
+          "seasonPhase": "Final"
+        },
+        {
+          "sport": "cycling",
+          "displayName": "Grand Tour — Giro d'Italia",
+          "leagueKey": "grand-tour",
+          "dateRangeLabel": "May 10–31",
+          "startDate": "2026-05-10T12:00:00.000Z",
+          "endDate": "2026-05-31T12:00:00.000Z",
+          "eventCount": 19,
+          "seasonPhase": null
+        },
+        {
+          "sport": "soccer",
+          "displayName": "EPL",
+          "leagueKey": "epl",
+          "dateRangeLabel": "May 10–24",
+          "startDate": "2026-05-10T13:00:00.000Z",
+          "endDate": "2026-05-24T15:00:00.000Z",
+          "eventCount": 33,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "Bundesliga",
+          "leagueKey": "bundesliga",
+          "dateRangeLabel": "May 10–16",
+          "startDate": "2026-05-10T13:30:00.000Z",
+          "endDate": "2026-05-16T13:30:00.000Z",
+          "eventCount": 12,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "rugby",
+          "displayName": "English Premiership",
+          "leagueKey": "premiership",
+          "dateRangeLabel": "May 10–31",
+          "startDate": "2026-05-10T14:00:00.000Z",
+          "endDate": "2026-05-31T14:30:00.000Z",
+          "eventCount": 12,
+          "seasonPhase": "Playoffs"
+        },
+        {
           "sport": "soccer",
           "displayName": "Ligue 1",
           "leagueKey": "ligue1",
@@ -405,6 +389,16 @@
           "endDate": "2026-05-17T14:00:00.000Z",
           "eventCount": 4,
           "seasonPhase": null
+        },
+        {
+          "sport": "rugby",
+          "displayName": "Super Rugby",
+          "leagueKey": "superrugby",
+          "dateRangeLabel": "May 15–30",
+          "startDate": "2026-05-15T07:05:00.000Z",
+          "endDate": "2026-05-30T09:35:00.000Z",
+          "eventCount": 14,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "athletics",
@@ -606,24 +600,24 @@
           "emoji": "🏆"
         },
         {
+          "leagueKey": "europaleague",
+          "sport": "soccer",
+          "name": "Europa League Final",
+          "date": "2026-05-20",
+          "emoji": "🏆"
+        },
+        {
+          "leagueKey": "challengecup",
+          "sport": "rugby",
+          "name": "EPCR Challenge Cup Final",
+          "date": "2026-05-22",
+          "emoji": "🏆"
+        },
+        {
           "leagueKey": "championscup",
           "sport": "rugby",
           "name": "Investec Champions Cup Final",
           "date": "2026-05-23",
-          "emoji": "🏆"
-        },
-        {
-          "leagueKey": "ipl",
-          "sport": "cricket",
-          "name": "IPL Final",
-          "date": "2026-05-24",
-          "emoji": "🏆"
-        },
-        {
-          "leagueKey": "europaleague",
-          "sport": "soccer",
-          "name": "Europa League Final",
-          "date": "2026-05-27",
           "emoji": "🏆"
         },
         {
@@ -652,6 +646,13 @@
           "sport": "soccer",
           "name": "CAF Champions League Final",
           "date": "2026-05-30",
+          "emoji": "🏆"
+        },
+        {
+          "leagueKey": "ipl",
+          "sport": "cricket",
+          "name": "IPL Final",
+          "date": "2026-05-31",
           "emoji": "🏆"
         }
       ]

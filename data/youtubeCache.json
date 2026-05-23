@@ -1241,20 +1241,20 @@
   },
   "league_moment:canadian grand prix sports may 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=eHf3ZKK-vIw",
-      "thumbnailUrl": "https://img.youtube.com/vi/eHf3ZKK-vIw/hqdefault.jpg",
-      "durationSeconds": 243,
-      "title": "FP1 Highlights | 2026 Canadian Grand Prix",
+      "url": "https://www.youtube.com/watch?v=l3aB-W19bnc",
+      "thumbnailUrl": "https://img.youtube.com/vi/l3aB-W19bnc/hqdefault.jpg",
+      "durationSeconds": 481,
+      "title": "Sprint Highlights | 2026 Canadian Grand Prix",
       "source": "youtube",
       "channel": "FORMULA 1",
-      "publishedAt": "1 hour ago"
+      "publishedAt": "24 minutes ago"
     },
-    "fetchedAt": "2026-05-22T21:14:23.035Z",
+    "fetchedAt": "2026-05-23T18:00:17.129Z",
     "query": "Canadian Grand Prix sports May 2026",
     "debug": {
       "searchQuery": "Canadian Grand Prix sports May 2026",
-      "selectedVideoTitle": "FP1 Highlights | 2026 Canadian Grand Prix",
-      "selectedVideoPublishedAt": "1 hour ago",
+      "selectedVideoTitle": "Sprint Highlights | 2026 Canadian Grand Prix",
+      "selectedVideoPublishedAt": "24 minutes ago",
       "selectedVideoChannel": "FORMULA 1",
       "rejectedForAgeCount": 0
     }

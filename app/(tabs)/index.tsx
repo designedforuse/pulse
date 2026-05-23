@@ -83,40 +83,6 @@ interface MonthSnapshot {
 }
 
 const SNAPSHOT_COLOR = "#6366F1";
-const SNAPSHOT_MAX_VISIBLE = 5;
-
-const SPORT_EMOJI: Record<string, string> = {
-  hockey: "🏒",
-  soccer: "⚽",
-  basketball: "🏀",
-  rugby: "🏉",
-  tennis: "🎾",
-  racing: "🏎",
-  golf: "⛳",
-  cricket: "🏏",
-  athletics: "🏃",
-  baseball: "⚾",
-};
-
-const PHASE_CHIP_STYLES: Record<string, { bg: string; border: string; fg: string }> = {
-  Final: { bg: "rgba(245,158,11,0.15)", border: "rgba(245,158,11,0.45)", fg: "#F59E0B" },
-  Playoffs: { bg: "rgba(239,68,68,0.13)", border: "rgba(239,68,68,0.40)", fg: "#F87171" },
-  Knockout: { bg: "rgba(168,85,247,0.13)", border: "rgba(168,85,247,0.40)", fg: "#C084FC" },
-  Championship: { bg: "rgba(245,158,11,0.15)", border: "rgba(245,158,11,0.45)", fg: "#F59E0B" },
-  Group: { bg: "rgba(56,189,248,0.13)", border: "rgba(56,189,248,0.38)", fg: "#7DD3FC" },
-  Tournament: { bg: "rgba(56,189,248,0.13)", border: "rgba(56,189,248,0.38)", fg: "#7DD3FC" },
-  Regular: { bg: "rgba(148,163,184,0.13)", border: "rgba(148,163,184,0.32)", fg: "#94A3B8" },
-};
-
-function getPhaseChipStyle(phase: string | null | undefined) {
-  if (!phase) return PHASE_CHIP_STYLES.Regular;
-  return PHASE_CHIP_STYLES[phase] || PHASE_CHIP_STYLES.Regular;
-}
-
-function formatFinalDate(iso: string): string {
-  const d = new Date(iso + "T12:00:00");
-  return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-}
 
 const KIND_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap; color: string; label: string }> = {
   playoff_push: { icon: "flame", color: "#FF453A", label: "Playoff Push" },
@@ -259,107 +225,82 @@ export default function ExploreScreen() {
 
   if (monthSnapshot) {
     slides.push((() => {
-          const activeData = snapshotTab === "current" ? monthSnapshot.currentMonth : monthSnapshot.nextMonth;
-          const visibleLeagues = activeData.leagues.slice(0, SNAPSHOT_MAX_VISIBLE);
-          const remainingCount = activeData.leagues.length - SNAPSHOT_MAX_VISIBLE;
-          return (
-            <View key="snapshot" style={[styles.snapshotCard, styles.cardFill]}>
-              <View style={styles.snapshotHeader}>
-                <View style={styles.snapshotBadge}>
-                  <Ionicons name="calendar-outline" size={11} color="#fff" />
-                  <Text style={styles.snapshotBadgeText}>SCHEDULE</Text>
-                </View>
-                <View style={styles.snapshotTabs}>
-                  <Pressable
-                    onPress={() => setSnapshotTab("current")}
-                    style={[styles.snapshotTab, snapshotTab === "current" && styles.snapshotTabActive]}
-                  >
-                    <Text style={[styles.snapshotTabText, snapshotTab === "current" && styles.snapshotTabTextActive]}>
-                      {monthSnapshot.currentMonth.monthLabel.split(" ")[0]}
-                    </Text>
-                  </Pressable>
-                  <Pressable
-                    onPress={() => setSnapshotTab("next")}
-                    style={[styles.snapshotTab, snapshotTab === "next" && styles.snapshotTabActive]}
-                  >
-                    <Text style={[styles.snapshotTabText, snapshotTab === "next" && styles.snapshotTabTextActive]}>
-                      {monthSnapshot.nextMonth.monthLabel.split(" ")[0]}
-                    </Text>
-                  </Pressable>
-                </View>
-              </View>
-              <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.snapshotBody} showsVerticalScrollIndicator={false}>
-                {activeData.leagues.length === 0 ? (
-                  <View style={styles.snapshotEmptyRow}>
-                    <Text style={styles.snapshotEmptyText}>No events scheduled</Text>
-                  </View>
-                ) : (
-                  <>
-                    {!!activeData.championshipFinals?.length && (
-                      <View style={styles.finalsCallout}>
-                        <View style={styles.finalsCalloutHeader}>
-                          <Text style={styles.finalsCalloutTrophy}>🏆</Text>
-                          <Text style={styles.finalsCalloutTitle}>CHAMPIONSHIP FINALS</Text>
-                        </View>
-                        {activeData.championshipFinals.map((f, i) => (
-                          <View
-                            key={`${f.leagueKey}-${i}`}
-                            style={[styles.finalsRow, i > 0 && styles.finalsRowBorder]}
-                          >
-                            <Text style={styles.finalsEmoji}>{SPORT_EMOJI[f.sport] ?? "🏆"}</Text>
-                            <Text style={styles.finalsName} numberOfLines={1}>{f.name}</Text>
-                            <Text style={styles.finalsDate}>{formatFinalDate(f.date)}</Text>
-                          </View>
-                        ))}
-                      </View>
-                    )}
-                    {visibleLeagues.map((item, idx) => {
-                      const phaseStyle = getPhaseChipStyle(item.seasonPhase);
-                      return (
-                        <View
-                          key={`${item.sport}-${item.leagueKey}-${idx}`}
-                          style={[styles.snapshotRow, idx > 0 && styles.snapshotRowBorder]}
-                        >
-                          <Text style={styles.snapshotEmoji}>{SPORT_EMOJI[item.sport] ?? "🏆"}</Text>
-                          <View style={styles.snapshotNameWrap}>
-                            <Text style={styles.snapshotLeagueName} numberOfLines={1}>{item.displayName}</Text>
-                            {item.seasonPhase && (
-                              <View style={[styles.snapshotPhaseChip, { backgroundColor: phaseStyle.bg, borderColor: phaseStyle.border }]}>
-                                <Text style={[styles.snapshotPhaseChipText, { color: phaseStyle.fg }]}>
-                                  {item.seasonPhase.toUpperCase()}
-                                </Text>
-                              </View>
-                            )}
-                          </View>
-                          <Text style={styles.snapshotDateRange}>{item.dateRangeLabel}</Text>
-                        </View>
-                      );
-                    })}
-                    {remainingCount > 0 && (
-                      <Pressable
-                        onPress={() => {
-                          if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                          router.push({
-                            pathname: "/month-schedule",
-                            params: {
-                              monthDataJson: JSON.stringify(activeData),
-                            },
-                          });
-                        }}
-                        style={({ pressed }) => [styles.snapshotViewAllRow, { opacity: pressed ? 0.7 : 1 }]}
-                      >
-                        <Text style={styles.snapshotViewAllText}>
-                          View all {activeData.leagues.length} leagues & tournaments
-                        </Text>
-                        <Ionicons name="arrow-forward" size={13} color={SNAPSHOT_COLOR} />
-                      </Pressable>
-                    )}
-                  </>
-                )}
-              </ScrollView>
+      const activeData = snapshotTab === "current" ? monthSnapshot.currentMonth : monthSnapshot.nextMonth;
+      const leagueCount = activeData.leagues.length;
+      const finalsCount = activeData.championshipFinals?.length ?? 0;
+      const monthShort = activeData.monthLabel.split(" ")[0];
+      return (
+        <Pressable
+          key="snapshot"
+          onPress={() => {
+            if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+            router.push({
+              pathname: "/month-schedule",
+              params: { monthDataJson: JSON.stringify(activeData) },
+            });
+          }}
+          accessibilityRole="button"
+          accessibilityLabel={`What's coming up in ${monthShort}: ${leagueCount} ${leagueCount === 1 ? "league" : "leagues"}${finalsCount > 0 ? `, ${finalsCount} ${finalsCount === 1 ? "final" : "finals"}` : ""}`}
+          style={({ pressed }) => [styles.comingUpCard, styles.cardFill, pressed && { opacity: 0.9 }]}
+        >
+          <View pointerEvents="none" style={styles.comingUpBgLayer}>
+            {[0, 1, 2, 3].map((i) => (
+              <Text key={i} style={styles.comingUpBgWord}>COMING UP</Text>
+            ))}
+          </View>
+          <View style={styles.comingUpInner}>
+            <View style={styles.comingUpBadge}>
+              <Ionicons name="calendar-outline" size={11} color="#fff" />
+              <Text style={styles.comingUpBadgeText}>SCHEDULE</Text>
             </View>
-          );
-        })());
+            <Text style={styles.comingUpWordmark}>WHAT'S{"\n"}COMING UP</Text>
+            <Text style={styles.comingUpTagline}>Leagues, tournaments & finals on the horizon</Text>
+            <View style={styles.comingUpTabs}>
+              <Pressable
+                onPress={(e) => { e.stopPropagation(); setSnapshotTab("current"); }}
+                hitSlop={8}
+                accessibilityRole="tab"
+                accessibilityState={{ selected: snapshotTab === "current" }}
+                style={[styles.comingUpTab, snapshotTab === "current" && styles.comingUpTabActive]}
+              >
+                <Text style={[styles.comingUpTabText, snapshotTab === "current" && styles.comingUpTabTextActive]}>
+                  {monthSnapshot.currentMonth.monthLabel.split(" ")[0]}
+                </Text>
+              </Pressable>
+              <Pressable
+                onPress={(e) => { e.stopPropagation(); setSnapshotTab("next"); }}
+                hitSlop={8}
+                accessibilityRole="tab"
+                accessibilityState={{ selected: snapshotTab === "next" }}
+                style={[styles.comingUpTab, snapshotTab === "next" && styles.comingUpTabActive]}
+              >
+                <Text style={[styles.comingUpTabText, snapshotTab === "next" && styles.comingUpTabTextActive]}>
+                  {monthSnapshot.nextMonth.monthLabel.split(" ")[0]}
+                </Text>
+              </Pressable>
+            </View>
+            <View style={styles.comingUpChips}>
+              <View style={styles.comingUpChip}>
+                <Text style={styles.comingUpChipNum}>{leagueCount}</Text>
+                <Text style={styles.comingUpChipLabel}>{leagueCount === 1 ? "LEAGUE" : "LEAGUES"}</Text>
+              </View>
+              {finalsCount > 0 && (
+                <View style={[styles.comingUpChip, styles.comingUpChipAccent]}>
+                  <Text style={[styles.comingUpChipNum, styles.comingUpChipNumAccent]}>{finalsCount}</Text>
+                  <Text style={[styles.comingUpChipLabel, styles.comingUpChipLabelAccent]}>
+                    {finalsCount === 1 ? "FINAL" : "FINALS"}
+                  </Text>
+                </View>
+              )}
+            </View>
+            <View style={styles.comingUpCta}>
+              <Text style={styles.comingUpCtaText}>Open {monthShort} schedule</Text>
+              <Ionicons name="chevron-forward" size={14} color={SNAPSHOT_COLOR} />
+            </View>
+          </View>
+        </Pressable>
+      );
+    })());
   }
 
   slides.push(
@@ -919,25 +860,36 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 16,
   },
-  snapshotCard: {
-    backgroundColor: Colors.card,
+  comingUpCard: {
+    backgroundColor: "#15173a",
     borderRadius: 20,
     borderWidth: 1.5,
     borderColor: SNAPSHOT_COLOR + "40",
     overflow: "hidden" as const,
     marginBottom: 20,
+    minHeight: 280,
   },
-  snapshotHeader: {
-    backgroundColor: SNAPSHOT_COLOR + "18",
-    flexDirection: "row" as const,
+  comingUpBgLayer: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: "space-around" as const,
     alignItems: "center" as const,
-    justifyContent: "space-between" as const,
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: SNAPSHOT_COLOR + "25",
+    paddingVertical: 18,
   },
-  snapshotBadge: {
+  comingUpBgWord: {
+    fontSize: 36,
+    fontFamily: "Inter_700Bold",
+    color: SNAPSHOT_COLOR,
+    opacity: 0.08,
+    letterSpacing: 2,
+  },
+  comingUpInner: {
+    flex: 1,
+    alignItems: "center" as const,
+    justifyContent: "center" as const,
+    paddingHorizontal: 20,
+    paddingVertical: 24,
+  },
+  comingUpBadge: {
     flexDirection: "row" as const,
     alignItems: "center" as const,
     gap: 5,
@@ -945,159 +897,103 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 10,
+    marginBottom: 12,
   },
-  snapshotBadgeText: {
+  comingUpBadgeText: {
     fontSize: 10,
     fontFamily: "Inter_700Bold",
     color: "#fff",
     letterSpacing: 0.8,
   },
-  snapshotTabs: {
+  comingUpWordmark: {
+    fontSize: 36,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    letterSpacing: -1,
+    textAlign: "center" as const,
+    lineHeight: 40,
+    marginBottom: 8,
+  },
+  comingUpTagline: {
+    fontSize: 13,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+    textAlign: "center" as const,
+    marginBottom: 14,
+    paddingHorizontal: 8,
+  },
+  comingUpTabs: {
     flexDirection: "row" as const,
     gap: 6,
+    marginBottom: 14,
   },
-  snapshotTab: {
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 10,
+  comingUpTab: {
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: Colors.border,
   },
-  snapshotTabActive: {
-    backgroundColor: SNAPSHOT_COLOR + "25",
-    borderColor: SNAPSHOT_COLOR + "60",
+  comingUpTabActive: {
+    backgroundColor: SNAPSHOT_COLOR + "30",
+    borderColor: SNAPSHOT_COLOR + "70",
   },
-  snapshotTabText: {
-    fontSize: 12,
+  comingUpTabText: {
+    fontSize: 13,
     fontFamily: "Inter_500Medium",
     color: Colors.textMuted,
   },
-  snapshotTabTextActive: {
+  comingUpTabTextActive: {
     color: SNAPSHOT_COLOR,
     fontFamily: "Inter_600SemiBold",
   },
-  snapshotBody: {
-    paddingVertical: 4,
-  },
-  snapshotRow: {
+  comingUpChips: {
     flexDirection: "row" as const,
-    alignItems: "center" as const,
-    paddingHorizontal: 14,
-    paddingVertical: 11,
     gap: 10,
+    marginBottom: 16,
   },
-  snapshotRowBorder: {
-    borderTopWidth: 1,
-    borderTopColor: Colors.border,
-  },
-  snapshotEmoji: {
-    fontSize: 15,
-    width: 20,
-    textAlign: "center" as const,
-  },
-  snapshotNameWrap: {
-    flex: 1,
+  comingUpChip: {
     flexDirection: "row" as const,
     alignItems: "center" as const,
     gap: 6,
-  },
-  snapshotLeagueName: {
-    flexShrink: 1,
-    fontSize: 13,
-    fontFamily: "Inter_600SemiBold",
-    color: Colors.textPrimary,
-  },
-  snapshotPhaseChip: {
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 6,
+    backgroundColor: SNAPSHOT_COLOR + "20",
+    borderRadius: 999,
+    paddingHorizontal: 14,
+    paddingVertical: 7,
     borderWidth: 1,
+    borderColor: SNAPSHOT_COLOR + "40",
   },
-  snapshotPhaseChipText: {
-    fontSize: 9,
+  comingUpChipAccent: {
+    backgroundColor: "#F59E0B22",
+    borderColor: "#F59E0B66",
+  },
+  comingUpChipNum: {
+    fontSize: 16,
     fontFamily: "Inter_700Bold",
-    letterSpacing: 0.5,
+    color: SNAPSHOT_COLOR,
   },
-  finalsCallout: {
-    marginHorizontal: 10,
-    marginTop: 8,
-    marginBottom: 6,
-    backgroundColor: "rgba(245,158,11,0.07)",
-    borderWidth: 1,
-    borderColor: "rgba(245,158,11,0.32)",
-    borderRadius: 12,
-    overflow: "hidden" as const,
+  comingUpChipNumAccent: {
+    color: "#F59E0B",
   },
-  finalsCalloutHeader: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    gap: 6,
-    paddingHorizontal: 12,
-    paddingTop: 9,
-    paddingBottom: 6,
-  },
-  finalsCalloutTrophy: {
-    fontSize: 13,
-  },
-  finalsCalloutTitle: {
+  comingUpChipLabel: {
     fontSize: 10,
     fontFamily: "Inter_700Bold",
-    color: "#F59E0B",
-    letterSpacing: 0.8,
+    color: SNAPSHOT_COLOR,
+    letterSpacing: 1.1,
   },
-  finalsRow: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    paddingHorizontal: 12,
-    paddingVertical: 9,
-    gap: 10,
-  },
-  finalsRowBorder: {
-    borderTopWidth: 1,
-    borderTopColor: "rgba(245,158,11,0.18)",
-  },
-  finalsEmoji: {
-    fontSize: 14,
-    width: 18,
-    textAlign: "center" as const,
-  },
-  finalsName: {
-    flex: 1,
-    fontSize: 12.5,
-    fontFamily: "Inter_600SemiBold",
-    color: Colors.textPrimary,
-  },
-  finalsDate: {
-    fontSize: 12,
-    fontFamily: "Inter_700Bold",
+  comingUpChipLabelAccent: {
     color: "#F59E0B",
   },
-  snapshotDateRange: {
-    fontSize: 12,
-    fontFamily: "Inter_500Medium",
-    color: Colors.textMuted,
-  },
-  snapshotViewAllRow: {
+  comingUpCta: {
     flexDirection: "row" as const,
     alignItems: "center" as const,
-    justifyContent: "center" as const,
-    gap: 5,
-    borderTopWidth: 1,
-    borderTopColor: Colors.border,
-    paddingVertical: 12,
+    gap: 4,
+    marginTop: 2,
   },
-  snapshotViewAllText: {
-    fontSize: 13,
+  comingUpCtaText: {
+    fontSize: 12,
     fontFamily: "Inter_600SemiBold",
     color: SNAPSHOT_COLOR,
-  },
-  snapshotEmptyRow: {
-    paddingVertical: 20,
-    alignItems: "center" as const,
-  },
-  snapshotEmptyText: {
-    fontSize: 13,
-    color: Colors.textMuted,
-    fontFamily: "Inter_400Regular",
+    letterSpacing: 0.4,
   },
 });
