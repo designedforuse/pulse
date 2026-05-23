@@ -13,6 +13,10 @@ import { router } from "expo-router";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
+import { Image as ExpoImage } from "expo-image";
+import { LinearGradient } from "expo-linear-gradient";
+import { useQuery } from "@tanstack/react-query";
+import { getApiUrl } from "@/lib/query-client";
 import Colors from "@/constants/colors";
 import { TeamLogo } from "@/components/TeamLogo";
 import ProviderLogo from "@/components/ProviderLogo";
@@ -85,8 +89,39 @@ function buildSessionDisplayName(event: SportEvent): string | null {
   return null;
 }
 
+interface TeamImagePayload {
+  image: { fanart: string | null; badge: string | null; stadium: string | null } | null;
+}
+
+function useFeaturedImage(event: SportEvent | null): string | null {
+  const team = event?.homeTeam ?? null;
+  const sport = event?.sport ?? null;
+  const league = event?.league ?? null;
+  const enabled = !!event && (!!team || !!league);
+  const { data } = useQuery<TeamImagePayload>({
+    queryKey: ["/api/team-image", team, sport, league],
+    queryFn: async () => {
+      const params = new URLSearchParams();
+      if (team) params.set("team", team);
+      if (sport) params.set("sport", sport);
+      if (league) params.set("league", league);
+      const url = new URL(`/api/team-image?${params.toString()}`, getApiUrl());
+      const res = await fetch(url.toString());
+      if (!res.ok) throw new Error("team image fetch failed");
+      return res.json();
+    },
+    enabled,
+    staleTime: 24 * 60 * 60 * 1000,
+    gcTime: 7 * 24 * 60 * 60 * 1000,
+    retry: 1,
+  });
+  if (!data?.image) return null;
+  return data.image.fanart || data.image.stadium || data.image.badge || null;
+}
+
 function FeaturedStrip({ event }: { event: SportEvent | null }) {
   const { favorites } = useFavorites();
+  const heroImage = useFeaturedImage(event);
 
   if (!event) {
     return (
@@ -106,6 +141,22 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
   return (
     <View style={styles.featuredStrip}>
       <View style={[styles.featuredBox, { borderTopColor: sportColor }]}>
+        {heroImage && (
+          <>
+            <ExpoImage
+              source={{ uri: heroImage }}
+              style={StyleSheet.absoluteFillObject}
+              contentFit="cover"
+              transition={250}
+              cachePolicy="memory-disk"
+            />
+            <LinearGradient
+              colors={["rgba(0,0,0,0.55)", "rgba(0,0,0,0.78)", "rgba(0,0,0,0.92)"]}
+              locations={[0, 0.55, 1]}
+              style={StyleSheet.absoluteFillObject}
+            />
+          </>
+        )}
         <View style={styles.featuredChip}>
           <Text style={styles.featuredChipText}>FEATURED</Text>
         </View>
@@ -496,6 +547,7 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 14,
     gap: 12,
+    overflow: "hidden",
   },
   featuredChip: {
     alignSelf: "center" as const,

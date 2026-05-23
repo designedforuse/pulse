@@ -9,6 +9,7 @@ import { fetchPlayerJourney, fetchPlayerJourneyDebug } from "./playerJourney";
 import { fetchAllLiveScores } from "./liveScores";
 import { fetchSvnsMatches, getSvnsCities } from "./svnsMatches";
 import { fetchDailyWrap } from "./dailyWrap";
+import { getTeamImage } from "./teamImages";
 
 const GENERATED_EVENTS_PATH = path.resolve(
   process.cwd(),
@@ -86,6 +87,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (err) {
       console.error("[scores] Error fetching live scores:", err);
       res.status(500).json({ error: "Failed to fetch live scores" });
+    }
+  });
+
+  app.get("/api/team-image", async (req, res) => {
+    const team = typeof req.query.team === "string" ? req.query.team : null;
+    const sport = typeof req.query.sport === "string" ? req.query.sport : null;
+    const league = typeof req.query.league === "string" ? req.query.league : null;
+    if (!team && !league) {
+      return res.status(400).json({ error: "team or league required" });
+    }
+    try {
+      const img = await getTeamImage(team, sport, league);
+      res.set("Cache-Control", "public, max-age=86400");
+      return res.json({ image: img });
+    } catch (e: any) {
+      return res.status(500).json({ error: e?.message || "team image error" });
     }
   });
 
