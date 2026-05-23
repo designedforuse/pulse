@@ -15,8 +15,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import { Image as ExpoImage } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
-import { useQuery } from "@tanstack/react-query";
-import { getApiUrl } from "@/lib/query-client";
 import Colors from "@/constants/colors";
 import { TeamLogo } from "@/components/TeamLogo";
 import ProviderLogo from "@/components/ProviderLogo";
@@ -89,39 +87,25 @@ function buildSessionDisplayName(event: SportEvent): string | null {
   return null;
 }
 
-interface TeamImagePayload {
-  image: { fanart: string | null; badge: string | null; stadium: string | null } | null;
-}
+const SPORT_BACKGROUNDS: Record<string, any> = {
+  hockey: require("@/assets/images/sports/hockey.webp"),
+  soccer: require("@/assets/images/sports/soccer.webp"),
+  rugby: require("@/assets/images/sports/rugby.webp"),
+  basketball: require("@/assets/images/sports/basketball.webp"),
+  cricket: require("@/assets/images/sports/cricket.webp"),
+  racing: require("@/assets/images/sports/racing.webp"),
+  tennis: require("@/assets/images/sports/tennis.webp"),
+  golf: require("@/assets/images/sports/golf.webp"),
+  athletics: require("@/assets/images/sports/athletics.webp"),
+};
 
-function useFeaturedImage(event: SportEvent | null): string | null {
-  const team = event?.homeTeam ?? null;
-  const sport = event?.sport ?? null;
-  const league = event?.league ?? null;
-  const enabled = !!event && (!!team || !!league);
-  const { data } = useQuery<TeamImagePayload>({
-    queryKey: ["/api/team-image", team, sport, league],
-    queryFn: async () => {
-      const params = new URLSearchParams();
-      if (team) params.set("team", team);
-      if (sport) params.set("sport", sport);
-      if (league) params.set("league", league);
-      const url = new URL(`/api/team-image?${params.toString()}`, getApiUrl());
-      const res = await fetch(url.toString());
-      if (!res.ok) throw new Error("team image fetch failed");
-      return res.json();
-    },
-    enabled,
-    staleTime: 24 * 60 * 60 * 1000,
-    gcTime: 7 * 24 * 60 * 60 * 1000,
-    retry: 1,
-  });
-  if (!data?.image) return null;
-  return data.image.fanart || data.image.stadium || data.image.badge || null;
+function resolveSportBackground(sport: string | null | undefined): any {
+  if (!sport) return SPORT_BACKGROUNDS.soccer;
+  return SPORT_BACKGROUNDS[sport] ?? SPORT_BACKGROUNDS.soccer;
 }
 
 function FeaturedStrip({ event }: { event: SportEvent | null }) {
   const { favorites } = useFavorites();
-  const heroImage = useFeaturedImage(event);
 
   if (!event) {
     return (
@@ -141,22 +125,6 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
   return (
     <View style={styles.featuredStrip}>
       <View style={[styles.featuredBox, { borderTopColor: sportColor }]}>
-        {heroImage && (
-          <>
-            <ExpoImage
-              source={{ uri: heroImage }}
-              style={StyleSheet.absoluteFillObject}
-              contentFit="cover"
-              transition={250}
-              cachePolicy="memory-disk"
-            />
-            <LinearGradient
-              colors={["rgba(0,0,0,0.55)", "rgba(0,0,0,0.78)", "rgba(0,0,0,0.92)"]}
-              locations={[0, 0.55, 1]}
-              style={StyleSheet.absoluteFillObject}
-            />
-          </>
-        )}
         <View style={styles.featuredChip}>
           <Text style={styles.featuredChipText}>FEATURED</Text>
         </View>
@@ -210,6 +178,9 @@ function RitualTile({ ritual, data, fill = false }: { ritual: Ritual; data: Ritu
     router.push({ pathname: "/guide/[id]", params: { id: ritual.id } });
   };
 
+  const featuredSport = data.featured?.sport ?? null;
+  const bgImage = resolveSportBackground(featuredSport);
+
   return (
     <Pressable
       onPress={handlePress}
@@ -220,6 +191,21 @@ function RitualTile({ ritual, data, fill = false }: { ritual: Ritual; data: Ritu
       ]}
       testID={`ritual-${ritual.id}`}
     >
+      {bgImage && (
+        <>
+          <ExpoImage
+            source={bgImage}
+            style={StyleSheet.absoluteFillObject}
+            contentFit="cover"
+            cachePolicy="memory-disk"
+          />
+          <LinearGradient
+            colors={["rgba(15,18,22,0.72)", "rgba(15,18,22,0.86)", "rgba(15,18,22,0.95)"]}
+            locations={[0, 0.5, 1]}
+            style={StyleSheet.absoluteFillObject}
+          />
+        </>
+      )}
       <View style={styles.ritualAccentBar} />
       <View style={styles.ritualInner}>
         <View style={styles.ritualTopRow}>
@@ -459,6 +445,7 @@ const styles = StyleSheet.create({
     borderColor: ACCENT + "35",
     overflow: "hidden",
     flexDirection: "row",
+    position: "relative",
   },
   ritualAccentBar: {
     width: 3,
@@ -540,7 +527,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   featuredBox: {
-    backgroundColor: "rgba(0,0,0,0.35)",
+    backgroundColor: "rgba(0,0,0,0.55)",
     borderRadius: 12,
     borderTopWidth: 2,
     paddingHorizontal: 14,

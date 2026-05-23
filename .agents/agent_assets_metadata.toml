@@ -1,5 +1,58 @@
 uploads = []
-generated = []
+
+[[generated]]
+id = "6_80YshMfvzIbkPGVDTTx"
+uri = "file://assets/images/sports/hockey.png"
+type = "image"
+title = "hockey background"
+
+[[generated]]
+id = "tkLOlAl1EX5vai6r8B35c"
+uri = "file://assets/images/sports/soccer.png"
+type = "image"
+title = "soccer background"
+
+[[generated]]
+id = "zXjhD5-gDs7g6sxF37r9o"
+uri = "file://assets/images/sports/rugby.png"
+type = "image"
+title = "rugby background"
+
+[[generated]]
+id = "E6H1y_xr5ICGpmH3nqUzM"
+uri = "file://assets/images/sports/basketball.png"
+type = "image"
+title = "basketball background"
+
+[[generated]]
+id = "UOHZ3MGm3p2Ge3aSfiW_l"
+uri = "file://assets/images/sports/cricket.png"
+type = "image"
+title = "cricket background"
+
+[[generated]]
+id = "KSd2uf09feLBCDR-dG4RP"
+uri = "file://assets/images/sports/racing.png"
+type = "image"
+title = "racing background"
+
+[[generated]]
+id = "8MX6W4HGxkca_9uAP9W5m"
+uri = "file://assets/images/sports/tennis.png"
+type = "image"
+title = "tennis background"
+
+[[generated]]
+id = "TApFTH2htHNHhwwtLvog-"
+uri = "file://assets/images/sports/golf.png"
+type = "image"
+title = "golf background"
+
+[[generated]]
+id = "eDmzX7I2zhXz8ubmBq7Cx"
+uri = "file://assets/images/sports/athletics.png"
+type = "image"
+title = "athletics background"
 
 [[outputs]]
 id = "BCzZEiJcUNr5OpJ6RpZse"
