@@ -67,7 +67,7 @@ export const RITUALS: Ritual[] = [
     id: "saturday_after_hours",
     label: "Saturday Extra Time",
     icon: "moon",
-    sports: ["hockey", "basketball", "soccer", "rugby", "cricket", "racing", "tennis"],
+    sports: ["hockey", "basketball", "soccer", "rugby", "cricket", "racing", "tennis", "athletics"],
     days: [6],
     startHour: 20,
     endHour: 24,
