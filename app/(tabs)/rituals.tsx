@@ -200,8 +200,13 @@ function RitualTile({ ritual, data, fill = false }: { ritual: Ritual; data: Ritu
             cachePolicy="memory-disk"
           />
           <LinearGradient
-            colors={["rgba(15,18,22,0.25)", "rgba(15,18,22,0.5)", "rgba(15,18,22,0.78)"]}
-            locations={[0, 0.55, 1]}
+            colors={[
+              "rgba(15,18,22,0.78)",
+              "rgba(15,18,22,0.35)",
+              "rgba(15,18,22,0.2)",
+              "rgba(15,18,22,0.45)",
+            ]}
+            locations={[0, 0.25, 0.6, 1]}
             style={StyleSheet.absoluteFillObject}
           />
         </>
@@ -532,7 +537,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   featuredBox: {
-    backgroundColor: "rgba(0,0,0,0.7)",
+    backgroundColor: "rgba(0,0,0,0.38)",
     borderRadius: 12,
     borderTopWidth: 2,
     paddingHorizontal: 14,
