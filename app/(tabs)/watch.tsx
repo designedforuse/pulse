@@ -536,7 +536,7 @@ function ChaosCard({
                   </View>
                   {hasScore && (
                     <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
-                      {event.sport === "cricket" ? (score.cricketAway || "") : score.awayScore}
+                      {event.sport === "cricket" ? (score.cricketAway || "").replace(/\s*Ov\s*\)/, ")") : score.awayScore}
                     </Text>
                   )}
                 </View>
@@ -550,7 +550,7 @@ function ChaosCard({
                   </View>
                   {hasScore && (
                     <Text style={[styles.primaryScore, isLiveState && styles.scoreLive]}>
-                      {event.sport === "cricket" ? (score.cricketHome || "") : score.homeScore}
+                      {event.sport === "cricket" ? (score.cricketHome || "").replace(/\s*Ov\s*\)/, ")") : score.homeScore}
                     </Text>
                   )}
                 </View>
@@ -719,7 +719,7 @@ function ChaosCard({
               </View>
               {hasScore && (
                 <Text style={[styles.secondaryScore, isLiveState && styles.scoreLive]}>
-                  {event.sport === "cricket" ? (score.cricketAway || "") : score.awayScore}
+                  {event.sport === "cricket" ? (score.cricketAway || "").replace(/\s*Ov\s*\)/, ")") : score.awayScore}
                 </Text>
               )}
             </View>
@@ -733,7 +733,7 @@ function ChaosCard({
               </View>
               {hasScore && (
                 <Text style={[styles.secondaryScore, isLiveState && styles.scoreLive]}>
-                  {event.sport === "cricket" ? (score.cricketHome || "") : score.homeScore}
+                  {event.sport === "cricket" ? (score.cricketHome || "").replace(/\s*Ov\s*\)/, ")") : score.homeScore}
                 </Text>
               )}
             </View>
