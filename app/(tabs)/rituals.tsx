@@ -122,6 +122,9 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
   const isFavHome = isTeamFavorite(event.homeTeam, event.sport, favorites);
 
   const provider = resolveProviderDisplay(event);
+  const isTennis = event.sport === "tennis";
+  const awayFlag = isTennis ? event.tennisPlayer1Flag : undefined;
+  const homeFlag = isTennis ? event.tennisPlayer2Flag : undefined;
 
   return (
     <View style={styles.featuredStrip}>
@@ -149,7 +152,10 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
                 </View>
                 <View style={styles.espnTeam}>
                   <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={44} />
-                  <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
+                  <View style={styles.espnNameRow}>
+                    {awayFlag ? <ExpoImage source={{ uri: awayFlag }} style={styles.espnFlag} contentFit="cover" /> : null}
+                    <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.awayTeam, event.league)}</Text>
+                  </View>
                 </View>
               </View>
               {/* Center: time + provider */}
@@ -168,7 +174,10 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
                 </View>
                 <View style={styles.espnTeam}>
                   <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={44} />
-                  <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
+                  <View style={styles.espnNameRow}>
+                    {homeFlag ? <ExpoImage source={{ uri: homeFlag }} style={styles.espnFlag} contentFit="cover" /> : null}
+                    <Text style={styles.espnTeamName} numberOfLines={1}>{compactTeamName(event.homeTeam, event.league)}</Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -600,6 +609,18 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
     textAlign: "center" as const,
     letterSpacing: 0.3,
+    flexShrink: 1,
+  },
+  espnNameRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    justifyContent: "center" as const,
+    gap: 5,
+  },
+  espnFlag: {
+    width: 18,
+    height: 13,
+    borderRadius: 2,
   },
   espnCenter: {
     alignItems: "center",
