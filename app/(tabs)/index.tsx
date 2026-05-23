@@ -259,7 +259,7 @@ export default function ExploreScreen() {
               )}
             </View>
             <View style={styles.comingUpCta}>
-              <Text style={styles.comingUpCtaText}>Open schedule</Text>
+              <Text style={styles.comingUpCtaText}>Tap to open</Text>
               <Ionicons name="chevron-forward" size={14} color={SNAPSHOT_COLOR} />
             </View>
           </View>
@@ -299,7 +299,7 @@ export default function ExploreScreen() {
           </View>
         </View>
         <View style={styles.deepTalkCta}>
-          <Text style={styles.deepTalkCtaText}>Open</Text>
+          <Text style={styles.deepTalkCtaText}>Tap to open</Text>
           <Ionicons name="chevron-forward" size={14} color={Colors.hockey} />
         </View>
       </View>
@@ -345,7 +345,7 @@ export default function ExploreScreen() {
             )}
           </View>
           <View style={styles.trendingCta}>
-            <Text style={styles.trendingCtaText}>Open feed</Text>
+            <Text style={styles.trendingCtaText}>Tap to open</Text>
             <Ionicons name="chevron-forward" size={14} color={TRENDING_COLOR} />
           </View>
         </View>
@@ -620,7 +620,7 @@ const styles = StyleSheet.create({
     paddingVertical: 18,
   },
   tonightBgWord: {
-    fontSize: 44,
+    fontSize: 48,
     fontFamily: "Inter_700Bold",
     color: PINK,
     opacity: 0.07,
@@ -631,8 +631,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 20,
-    paddingVertical: 28,
-    gap: 6,
+    paddingVertical: 26,
   },
   tonightCoverDate: {
     fontSize: 11,
@@ -640,17 +639,17 @@ const styles = StyleSheet.create({
     color: PINK,
     letterSpacing: 2,
     textTransform: "uppercase" as const,
-    marginBottom: 8,
+    marginBottom: 12,
     textAlign: "center" as const,
   },
   tonightCoverWordmark: {
-    fontSize: 38,
+    fontSize: 40,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
     letterSpacing: -1,
     textAlign: "center",
-    lineHeight: 42,
-    marginBottom: 8,
+    lineHeight: 44,
+    marginBottom: 10,
   },
   tonightCoverTagline: {
     fontSize: 13,
@@ -658,24 +657,25 @@ const styles = StyleSheet.create({
     color: Colors.textSecondary,
     textAlign: "center",
     marginBottom: 14,
+    paddingHorizontal: 8,
   },
   tonightCoverChips: {
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
     gap: 8,
-    marginBottom: 14,
+    marginBottom: 16,
   },
   tonightCoverChip: {
     backgroundColor: PINK + "20",
     borderRadius: 999,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
     borderWidth: 1,
     borderColor: PINK + "40",
   },
   tonightCoverChipText: {
-    fontSize: 10,
+    fontSize: 11,
     fontFamily: "Inter_700Bold",
     color: PINK,
     letterSpacing: 1.1,
@@ -853,10 +853,10 @@ const styles = StyleSheet.create({
     paddingVertical: 18,
   },
   comingUpBgWord: {
-    fontSize: 36,
+    fontSize: 48,
     fontFamily: "Inter_700Bold",
     color: SNAPSHOT_COLOR,
-    opacity: 0.08,
+    opacity: 0.07,
     letterSpacing: 2,
   },
   comingUpInner: {
@@ -864,7 +864,7 @@ const styles = StyleSheet.create({
     alignItems: "center" as const,
     justifyContent: "center" as const,
     paddingHorizontal: 20,
-    paddingVertical: 24,
+    paddingVertical: 26,
   },
   comingUpBadge: {
     flexDirection: "row" as const,
@@ -873,7 +873,7 @@ const styles = StyleSheet.create({
     backgroundColor: SNAPSHOT_COLOR,
     paddingHorizontal: 10,
     paddingVertical: 4,
-    borderRadius: 10,
+    borderRadius: 999,
     marginBottom: 12,
   },
   comingUpBadgeText: {
@@ -883,13 +883,13 @@ const styles = StyleSheet.create({
     letterSpacing: 0.8,
   },
   comingUpWordmark: {
-    fontSize: 36,
+    fontSize: 40,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
     letterSpacing: -1,
     textAlign: "center" as const,
-    lineHeight: 40,
-    marginBottom: 8,
+    lineHeight: 44,
+    marginBottom: 10,
   },
   comingUpTagline: {
     fontSize: 13,
@@ -989,10 +989,10 @@ const styles = StyleSheet.create({
     paddingVertical: 18,
   },
   deepTalkBgWord: {
-    fontSize: 36,
+    fontSize: 48,
     fontFamily: "Inter_700Bold",
     color: Colors.hockey,
-    opacity: 0.08,
+    opacity: 0.07,
     letterSpacing: 2,
   },
   deepTalkInner: {
@@ -1000,7 +1000,7 @@ const styles = StyleSheet.create({
     alignItems: "center" as const,
     justifyContent: "center" as const,
     paddingHorizontal: 20,
-    paddingVertical: 24,
+    paddingVertical: 26,
   },
   deepTalkBadge: {
     flexDirection: "row" as const,
@@ -1009,7 +1009,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.hockey,
     paddingHorizontal: 10,
     paddingVertical: 4,
-    borderRadius: 10,
+    borderRadius: 999,
     marginBottom: 12,
   },
   deepTalkBadgeText: {
@@ -1019,13 +1019,13 @@ const styles = StyleSheet.create({
     letterSpacing: 0.8,
   },
   deepTalkWordmark: {
-    fontSize: 36,
+    fontSize: 40,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
     letterSpacing: -1,
     textAlign: "center" as const,
-    lineHeight: 40,
-    marginBottom: 8,
+    lineHeight: 44,
+    marginBottom: 10,
   },
   deepTalkTagline: {
     fontSize: 13,
@@ -1090,10 +1090,10 @@ const styles = StyleSheet.create({
     paddingVertical: 18,
   },
   trendingBgWord: {
-    fontSize: 36,
+    fontSize: 48,
     fontFamily: "Inter_700Bold",
     color: TRENDING_COLOR,
-    opacity: 0.08,
+    opacity: 0.07,
     letterSpacing: 2,
   },
   trendingInner: {
@@ -1101,7 +1101,7 @@ const styles = StyleSheet.create({
     alignItems: "center" as const,
     justifyContent: "center" as const,
     paddingHorizontal: 20,
-    paddingVertical: 24,
+    paddingVertical: 26,
   },
   trendingBadge: {
     flexDirection: "row" as const,
@@ -1110,7 +1110,7 @@ const styles = StyleSheet.create({
     backgroundColor: TRENDING_COLOR,
     paddingHorizontal: 10,
     paddingVertical: 4,
-    borderRadius: 10,
+    borderRadius: 999,
     marginBottom: 12,
   },
   trendingBadgeText: {
@@ -1120,13 +1120,13 @@ const styles = StyleSheet.create({
     letterSpacing: 0.8,
   },
   trendingWordmark: {
-    fontSize: 36,
+    fontSize: 40,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
     letterSpacing: -1,
     textAlign: "center" as const,
-    lineHeight: 40,
-    marginBottom: 8,
+    lineHeight: 44,
+    marginBottom: 10,
   },
   trendingTagline: {
     fontSize: 13,
