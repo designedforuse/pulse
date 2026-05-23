@@ -238,6 +238,9 @@ function getLeagueLabel(event: SportEvent): string {
     const city = extractSvnsCity(event.homeTeam);
     if (city) return `${city} SVNS`;
   }
+  if (event.sport === "athletics" && (event.id?.startsWith("athletics-diamond-league-") || event.leagueKey === "diamond-league" || event.league === "Diamond League")) {
+    return "Diamond League";
+  }
   if (event.tournamentName) return event.tournamentName;
   return LEAGUE_DISPLAY_NAMES[event.league] ?? event.league;
 }
