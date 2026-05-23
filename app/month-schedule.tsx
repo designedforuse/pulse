@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -54,6 +54,11 @@ interface MonthSnapshotData {
   championshipFinals?: MonthSnapshotChampionshipFinal[];
 }
 
+interface MonthSnapshotPayload {
+  currentMonth: MonthSnapshotData;
+  nextMonth: MonthSnapshotData;
+}
+
 const PHASE_CHIP_STYLES: Record<string, { bg: string; border: string; fg: string }> = {
   Final: { bg: "rgba(245,158,11,0.15)", border: "rgba(245,158,11,0.45)", fg: "#F59E0B" },
   Playoffs: { bg: "rgba(239,68,68,0.13)", border: "rgba(239,68,68,0.40)", fg: "#F87171" },
@@ -97,14 +102,23 @@ function groupBySport(leagues: MonthSnapshotLeague[]): { sport: string; leagues:
 
 export default function MonthScheduleScreen() {
   const insets = useSafeAreaInsets();
-  const { monthDataJson } = useLocalSearchParams<{ monthDataJson: string }>();
+  const { monthSnapshotJson, monthDataJson } = useLocalSearchParams<{
+    monthSnapshotJson?: string;
+    monthDataJson?: string;
+  }>();
+  const [activeKey, setActiveKey] = useState<"current" | "next">("current");
 
-  let monthData: MonthSnapshotData | null = null;
+  let snapshot: MonthSnapshotPayload | null = null;
   try {
-    if (monthDataJson) monthData = JSON.parse(monthDataJson);
+    if (monthSnapshotJson) {
+      snapshot = JSON.parse(monthSnapshotJson);
+    } else if (monthDataJson) {
+      const single: MonthSnapshotData = JSON.parse(monthDataJson);
+      snapshot = { currentMonth: single, nextMonth: single };
+    }
   } catch {}
 
-  if (!monthData) {
+  if (!snapshot) {
     return (
       <View style={[styles.container, { paddingTop: insets.top + 16 }]}>
         <Text style={styles.errorText}>No schedule data available.</Text>
@@ -112,6 +126,8 @@ export default function MonthScheduleScreen() {
     );
   }
 
+  const monthData = activeKey === "current" ? snapshot.currentMonth : snapshot.nextMonth;
+  const hasTwoMonths = snapshot.currentMonth.monthKey !== snapshot.nextMonth.monthKey;
   const grouped = groupBySport(monthData.leagues);
 
   return (
@@ -133,6 +149,33 @@ export default function MonthScheduleScreen() {
         </View>
         <View style={styles.backBtn} />
       </View>
+
+      {hasTwoMonths && (
+        <View style={styles.monthTabsRow}>
+          <Pressable
+            onPress={() => setActiveKey("current")}
+            hitSlop={6}
+            accessibilityRole="tab"
+            accessibilityState={{ selected: activeKey === "current" }}
+            style={[styles.monthTab, activeKey === "current" && styles.monthTabActive]}
+          >
+            <Text style={[styles.monthTabText, activeKey === "current" && styles.monthTabTextActive]}>
+              {snapshot.currentMonth.monthLabel.split(" ")[0]}
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => setActiveKey("next")}
+            hitSlop={6}
+            accessibilityRole="tab"
+            accessibilityState={{ selected: activeKey === "next" }}
+            style={[styles.monthTab, activeKey === "next" && styles.monthTabActive]}
+          >
+            <Text style={[styles.monthTabText, activeKey === "next" && styles.monthTabTextActive]}>
+              {snapshot.nextMonth.monthLabel.split(" ")[0]}
+            </Text>
+          </Pressable>
+        </View>
+      )}
 
       <ScrollView
         contentContainerStyle={[
@@ -368,6 +411,36 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontFamily: "Inter_700Bold",
     color: "#F59E0B",
+  },
+  monthTabsRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    paddingHorizontal: 16,
+    paddingTop: 14,
+    paddingBottom: 4,
+  },
+  monthTab: {
+    paddingHorizontal: 18,
+    paddingVertical: 8,
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: "rgba(99,102,241,0.35)",
+    backgroundColor: "rgba(99,102,241,0.08)",
+  },
+  monthTabActive: {
+    backgroundColor: SNAPSHOT_COLOR,
+    borderColor: SNAPSHOT_COLOR,
+  },
+  monthTabText: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
+    color: "#A5B4FC",
+    letterSpacing: 0.3,
+  },
+  monthTabTextActive: {
+    color: "#fff",
   },
   leagueDateRange: {
     fontSize: 13,

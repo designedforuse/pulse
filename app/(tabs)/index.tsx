@@ -111,7 +111,6 @@ export default function ExploreScreen() {
   const { width: screenWidth } = useWindowDimensions();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
   const [refreshing, setRefreshing] = useState(false);
-  const [snapshotTab, setSnapshotTab] = useState<"current" | "next">("current");
   const [feedSize, setFeedSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 });
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -225,10 +224,10 @@ export default function ExploreScreen() {
 
   if (monthSnapshot) {
     slides.push((() => {
-      const activeData = snapshotTab === "current" ? monthSnapshot.currentMonth : monthSnapshot.nextMonth;
-      const leagueCount = activeData.leagues.length;
-      const finalsCount = activeData.championshipFinals?.length ?? 0;
-      const monthShort = activeData.monthLabel.split(" ")[0];
+      const current = monthSnapshot.currentMonth;
+      const next = monthSnapshot.nextMonth;
+      const totalLeagues = current.leagues.length + next.leagues.length;
+      const totalFinals = (current.championshipFinals?.length ?? 0) + (next.championshipFinals?.length ?? 0);
       return (
         <Pressable
           key="snapshot"
@@ -236,11 +235,11 @@ export default function ExploreScreen() {
             if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
             router.push({
               pathname: "/month-schedule",
-              params: { monthDataJson: JSON.stringify(activeData) },
+              params: { monthSnapshotJson: JSON.stringify(monthSnapshot) },
             });
           }}
           accessibilityRole="button"
-          accessibilityLabel={`What's coming up in ${monthShort}: ${leagueCount} ${leagueCount === 1 ? "league" : "leagues"}${finalsCount > 0 ? `, ${finalsCount} ${finalsCount === 1 ? "final" : "finals"}` : ""}`}
+          accessibilityLabel={`What's coming up: ${totalLeagues} leagues across ${current.monthLabel.split(" ")[0]} and ${next.monthLabel.split(" ")[0]}${totalFinals > 0 ? `, ${totalFinals} finals` : ""}`}
           style={({ pressed }) => [styles.comingUpCard, styles.cardFill, pressed && { opacity: 0.9 }]}
         >
           <View pointerEvents="none" style={styles.comingUpBgLayer}>
@@ -255,46 +254,22 @@ export default function ExploreScreen() {
             </View>
             <Text style={styles.comingUpWordmark}>WHAT'S{"\n"}COMING UP</Text>
             <Text style={styles.comingUpTagline}>Leagues, tournaments & finals on the horizon</Text>
-            <View style={styles.comingUpTabs}>
-              <Pressable
-                onPress={(e) => { e.stopPropagation(); setSnapshotTab("current"); }}
-                hitSlop={8}
-                accessibilityRole="tab"
-                accessibilityState={{ selected: snapshotTab === "current" }}
-                style={[styles.comingUpTab, snapshotTab === "current" && styles.comingUpTabActive]}
-              >
-                <Text style={[styles.comingUpTabText, snapshotTab === "current" && styles.comingUpTabTextActive]}>
-                  {monthSnapshot.currentMonth.monthLabel.split(" ")[0]}
-                </Text>
-              </Pressable>
-              <Pressable
-                onPress={(e) => { e.stopPropagation(); setSnapshotTab("next"); }}
-                hitSlop={8}
-                accessibilityRole="tab"
-                accessibilityState={{ selected: snapshotTab === "next" }}
-                style={[styles.comingUpTab, snapshotTab === "next" && styles.comingUpTabActive]}
-              >
-                <Text style={[styles.comingUpTabText, snapshotTab === "next" && styles.comingUpTabTextActive]}>
-                  {monthSnapshot.nextMonth.monthLabel.split(" ")[0]}
-                </Text>
-              </Pressable>
-            </View>
             <View style={styles.comingUpChips}>
               <View style={styles.comingUpChip}>
-                <Text style={styles.comingUpChipNum}>{leagueCount}</Text>
-                <Text style={styles.comingUpChipLabel}>{leagueCount === 1 ? "LEAGUE" : "LEAGUES"}</Text>
+                <Text style={styles.comingUpChipNum}>{totalLeagues}</Text>
+                <Text style={styles.comingUpChipLabel}>{totalLeagues === 1 ? "LEAGUE" : "LEAGUES"}</Text>
               </View>
-              {finalsCount > 0 && (
+              {totalFinals > 0 && (
                 <View style={[styles.comingUpChip, styles.comingUpChipAccent]}>
-                  <Text style={[styles.comingUpChipNum, styles.comingUpChipNumAccent]}>{finalsCount}</Text>
+                  <Text style={[styles.comingUpChipNum, styles.comingUpChipNumAccent]}>{totalFinals}</Text>
                   <Text style={[styles.comingUpChipLabel, styles.comingUpChipLabelAccent]}>
-                    {finalsCount === 1 ? "FINAL" : "FINALS"}
+                    {totalFinals === 1 ? "FINAL" : "FINALS"}
                   </Text>
                 </View>
               )}
             </View>
             <View style={styles.comingUpCta}>
-              <Text style={styles.comingUpCtaText}>Open {monthShort} schedule</Text>
+              <Text style={styles.comingUpCtaText}>Open schedule</Text>
               <Ionicons name="chevron-forward" size={14} color={SNAPSHOT_COLOR} />
             </View>
           </View>
