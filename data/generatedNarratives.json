@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-24T07:33:25.149Z",
+  "lastUpdated": "2026-05-24T07:53:08.901Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -49,7 +49,7 @@
         ],
         "playersIngested": 399,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-24T07:33:25.149Z"
+        "timestamp": "2026-05-24T07:53:08.901Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -59,7 +59,7 @@
     "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1859.5569858333333,
+      "hoursUntil": -1859.8858058333333,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -96,14 +96,14 @@
           "reason": "3 followed/affiliate teams playing today"
         },
         {
+          "label": "[championship_day] Canadian Grand Prix",
+          "score": 200,
+          "reason": "championship-day event (F1)"
+        },
+        {
           "label": "[ritual_night] Sunday Coffee & Chill",
           "score": 130,
           "reason": "ritual \"Sunday Coffee & Chill\" has 3 followed-team game(s)"
-        },
-        {
-          "label": "[league_moment] League Spotlight",
-          "score": 50,
-          "reason": "league_moment (generic, no followed teams)"
         }
       ]
     },
@@ -127,7 +127,7 @@
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-05-24T07:33:25.149Z",
+      "triggeredAt": "2026-05-24T07:53:08.901Z",
       "expiresAt": "2026-05-25T00:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
@@ -207,6 +207,22 @@
       ]
     },
     {
+      "signalType": "championship_day",
+      "signalLabel": "CHAMPIONSHIP DAY",
+      "headline": "Canadian Grand Prix",
+      "body": "Lights out at the Canadian Grand Prix today.",
+      "sourceEventId": "f1-espn-401839062",
+      "sourceCard": {
+        "id": "championship_day_f1-espn-401839062",
+        "kind": "championship_day",
+        "title": "Canadian Grand Prix"
+      },
+      "sports": [
+        "racing"
+      ],
+      "favoriteTeams": []
+    },
+    {
       "signalType": "ritual_night",
       "signalLabel": "RITUAL NIGHT",
       "headline": "Sunday Coffee & Chill",
@@ -226,22 +242,6 @@
         "San Diego Wave",
         "California Legion"
       ]
-    },
-    {
-      "signalType": "league_moment",
-      "signalLabel": "LEAGUE MOMENT",
-      "headline": "League Spotlight",
-      "body": "Canadian Grand Prix — 1 session in the next 48h: Race",
-      "sourceEventId": "f1-espn-401839062",
-      "sourceCard": {
-        "id": "f1_race_weekend_canadian_grand_prix",
-        "kind": "league_moment",
-        "title": "Canadian Grand Prix"
-      },
-      "sports": [
-        "racing"
-      ],
-      "favoriteTeams": []
     }
   ],
   "monthSnapshot": {

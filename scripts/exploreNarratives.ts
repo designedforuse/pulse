@@ -2372,7 +2372,122 @@ const TONIGHT_STORY_SIGNAL_LABELS: Record<string, string> = {
   multi_team_night: "YOUR TEAMS",
   single_team_game: "YOUR TEAM",
   ritual_night: "RITUAL NIGHT",
+  championship_day: "CHAMPIONSHIP DAY",
+  rivalry_of_day: "RIVALRY DAY",
+  season_opener: "OPENING DAY",
 };
+
+const GOLF_MAJOR_LEAGUES = new Set([
+  "The Masters",
+  "PGA Championship",
+  "U.S. Open",
+  "US Open",
+  "British Open",
+  "The Open Championship",
+  "The Players Championship",
+  "Players Championship",
+]);
+
+function detectChampionshipDay(ev: AppEvent): { headline: string; body: string } | null {
+  const league = ev.league || "";
+  const sport = ev.sport || "";
+  const session = ev.sessionTitle || "";
+  const tournament = ev.tournamentName || "";
+
+  if (sport === "athletics" && /marathon/i.test(league)) {
+    const name = tournament || ev.homeTeam || "Marathon Major";
+    return {
+      headline: name,
+      body: `Runners take the start line at the ${name} today — a World Marathon Major.`,
+    };
+  }
+
+  if (sport === "athletics" && /diamond league/i.test(league) && /final/i.test(session)) {
+    return {
+      headline: "Diamond League Final",
+      body: "The Wanda Diamond League crowns its champions today.",
+    };
+  }
+
+  if (sport === "racing" && /\bF1\b|Formula 1/i.test(league) && /^race$/i.test(session)) {
+    const gp = ev.homeTeam || tournament || "Formula 1 race";
+    return {
+      headline: gp,
+      body: `Lights out at the ${gp} today.`,
+    };
+  }
+
+  if (sport === "cycling" && /grand tour/i.test(league) && /stage 21\b/i.test(session)) {
+    const tour = tournament || "Grand Tour";
+    return {
+      headline: `${tour} — Final Stage`,
+      body: `The ${tour} crowns its champion on today's final stage.`,
+    };
+  }
+
+  if (sport === "tennis" && /grand slam/i.test(league) && /^final$/i.test(ev.tennisRound || "")) {
+    const tname = tournament || "Grand Slam";
+    return {
+      headline: `${tname} Final`,
+      body: `The ${tname} crowns its champion today.`,
+    };
+  }
+
+  if (sport === "golf" && GOLF_MAJOR_LEAGUES.has(league) && /final round|round 4|r4|sunday/i.test(session)) {
+    return {
+      headline: league,
+      body: `Final-round action at the ${league} today — one of golf's majors.`,
+    };
+  }
+
+  if (/world cup|champions league|europa league/i.test(league) && /final/i.test(session)) {
+    return {
+      headline: `${league} Final`,
+      body: `The ${league} title is on the line today.`,
+    };
+  }
+
+  return null;
+}
+
+function detectRivalryOfDay(ev: AppEvent): { label: string } | null {
+  for (const r of RIVALRY_PAIRS) {
+    if (r.sport !== ev.sport) continue;
+    const [a, b] = r.teams;
+    const aMatch =
+      normalizeTeamName(ev.homeTeam) === normalizeTeamName(a) ||
+      normalizeTeamName(ev.awayTeam) === normalizeTeamName(a);
+    const bMatch =
+      normalizeTeamName(ev.homeTeam) === normalizeTeamName(b) ||
+      normalizeTeamName(ev.awayTeam) === normalizeTeamName(b);
+    if (aMatch && bMatch) return { label: r.label };
+  }
+  return null;
+}
+
+function detectSeasonOpener(ev: AppEvent): { headline: string; body: string } | null {
+  const haystack = [
+    ev.sessionTitle || "",
+    ev.tournamentName || "",
+    ev.competitionName || "",
+    ev.t20WcMatchLabel || "",
+    ev.olympicRound || "",
+  ].join(" | ").toLowerCase();
+
+  if (/\bgame\s*1\b|\bgm\s*1\b|\bg1\b/.test(haystack)) {
+    return {
+      headline: "Series Opener",
+      body: `${ev.awayTeam} at ${ev.homeTeam} — Game 1 of the series tips off today in the ${ev.league}.`,
+    };
+  }
+  if (/opening day|season opener|opening night|first pitch/.test(haystack)) {
+    return {
+      headline: `${ev.league} Opening Day`,
+      body: `${ev.awayTeam} at ${ev.homeTeam} kicks off the new ${ev.league} season today.`,
+    };
+  }
+  return null;
+}
 
 const AFFILIATE_LADDER: { parent: string; affiliates: string[] }[] = [
   { parent: "Anaheim Ducks", affiliates: ["San Diego Gulls", "Tulsa Oilers"] },
@@ -2676,115 +2791,69 @@ function buildTonightStory(
     }
   }
 
-  const CARD_KIND_SCORES: Record<string, number> = {
-    upset_alert: 120,
-    clinch_watch: 110,
-    deadline_watch: 100,
-    playoff_push: 90,
-    momentum: 70,
-    rivalry_game: 60,
-    league_moment: 50,
-    player_movement: 40,
+  const FAVORITE_PARTICIPANT_BONUS = 60;
+  const eventInvolvesFavorite = (ev: AppEvent): string[] => {
+    const sportFavs = followedBySport.get(ev.sport) || [];
+    const matches: string[] = [];
+    for (const fn of sportFavs.length > 0 ? sportFavs : followedNames) {
+      if (storyTeamMatch(ev.homeTeam, fn) || storyTeamMatch(ev.awayTeam, fn)) {
+        matches.push(fn);
+      }
+    }
+    return matches;
   };
 
-  const eventById = new Map(events.map(e => [e.id, e]));
-  const isEventInTodayWindow = (eventId: string): boolean => {
-    const ev = eventById.get(eventId);
-    if (!ev) return false;
-    const start = new Date(ev.startTimeLocal);
-    return start >= todayStart && start < todayEnd;
-  };
-
-  for (const card of candidates) {
-    const meta = card.meta || {};
-    const teamA = meta.awayTeam || meta.team || meta.teams?.[0]?.team || "";
-    const teamB = meta.homeTeam || meta.teams?.[1]?.team || "";
-    const rawEventIds: string[] = meta.eventIds || [];
-    const teamEventIds: string[] = (meta.teams || []).flatMap((t: any) => t.eventIds || []);
-    const allCardEventIds = [...new Set([...rawEventIds, ...teamEventIds])];
-    const todayEventIds = allCardEventIds.filter(isEventInTodayWindow);
-    if (todayEventIds.length === 0) {
-      continue;
-    }
-    const eventIds = todayEventIds;
-
-    let baseScore = CARD_KIND_SCORES[card.kind] || 30;
-
-    const cardTeams = [teamA, teamB].filter(Boolean);
-    const cardSportList = card.sports || [];
-    const followedInCard = cardTeams.filter(t =>
-      cardSportList.some(s => {
-        const sportTeams = followedBySport.get(s) || [];
-        return sportTeams.some(fn => storyTeamMatch(t, fn));
-      }) || (cardSportList.length === 0 && followedNames.some(fn => storyTeamMatch(t, fn)))
-    );
-    if (followedInCard.length > 0) {
-      baseScore += 80;
+  for (const ev of tonightEvents) {
+    const champ = detectChampionshipDay(ev);
+    if (champ) {
+      const favs = eventInvolvesFavorite(ev);
+      const score = 200 + (favs.length > 0 ? FAVORITE_PARTICIPANT_BONUS : 0);
+      allStories.push({
+        score,
+        signalType: "championship_day",
+        headline: champ.headline,
+        body: champ.body,
+        reason: `championship-day event (${ev.league})${favs.length ? ` — favorite involved: ${favs.join(", ")}` : ""}`,
+        sourceEventId: ev.id,
+        sourceCard: { id: `championship_day_${ev.id}`, kind: "championship_day", title: champ.headline },
+        sports: [ev.sport],
+        favoriteTeams: favs,
+      });
     }
 
-    let headline = "";
-    let body = "";
-
-    switch (card.kind) {
-      case "rivalry_game":
-        headline = followedInCard.length > 0 ? "Your Rivalry Night" : "Rivalry Night";
-        body = teamA && teamB
-          ? `${teamA} faces ${teamB} today in one of the sport's most intense rivalries.`
-          : "A fierce rivalry matchup is on the schedule today.";
-        break;
-      case "deadline_watch":
-        headline = "Deadline Tension";
-        body = followedInCard.length > 0
-          ? `${followedInCard[0]} is navigating the trade deadline — moves are expected.`
-          : "Teams are making their final moves before the trade deadline.";
-        break;
-      case "clinch_watch":
-        headline = "Playoff Stakes";
-        body = teamA
-          ? `${teamA} could clinch advancement today.`
-          : "A team could clinch advancement today.";
-        break;
-      case "upset_alert":
-        headline = "Shock Result";
-        body = "A surprising result has shaken up the competition.";
-        break;
-      case "playoff_push":
-        headline = followedInCard.length > 0 ? "Your Team's Push" : "Packed Schedule";
-        body = teamA
-          ? `${teamA} enters a critical stretch with games stacking up.`
-          : "A team enters a critical stretch with games stacking up.";
-        break;
-      case "momentum":
-        headline = "Hot Streak";
-        body = teamA
-          ? `${teamA} is riding momentum with a strong recent run.`
-          : "A team is riding momentum heading into today.";
-        break;
-      case "league_moment":
-        headline = "League Spotlight";
-        body = card.subtitle || "A significant league-wide moment is unfolding.";
-        break;
-      case "player_movement":
-        headline = "Roster Shakeup";
-        body = "A notable roster move is shaping the competition.";
-        break;
-      default:
-        headline = "Today's Narrative";
-        body = card.subtitle || "Something interesting is happening in the sports world.";
+    const rivalry = detectRivalryOfDay(ev);
+    if (rivalry) {
+      const favs = eventInvolvesFavorite(ev);
+      const score = 180 + (favs.length > 0 ? FAVORITE_PARTICIPANT_BONUS : 0);
+      allStories.push({
+        score,
+        signalType: "rivalry_of_day",
+        headline: rivalry.label,
+        body: `${ev.awayTeam} faces ${ev.homeTeam} today — ${rivalry.label}, one of the sport's marquee rivalries.`,
+        reason: `rivalry-of-day match (${ev.league || "international"}: ${rivalry.label})${favs.length ? ` — favorite involved: ${favs.join(", ")}` : ""}`,
+        sourceEventId: ev.id,
+        sourceCard: { id: `rivalry_of_day_${ev.id}`, kind: "rivalry_of_day", title: rivalry.label },
+        sports: [ev.sport],
+        favoriteTeams: favs,
+      });
     }
 
-    allStories.push({
-      score: baseScore,
-      signalType: card.kind,
-      headline,
-      body,
-      reason: followedInCard.length > 0
-        ? `${card.kind} involving followed team(s): ${followedInCard.join(", ")}`
-        : `${card.kind} (generic, no followed teams)`,
-      sourceEventId: eventIds[0] || undefined,
-      sourceCard: { id: card.id, kind: card.kind, title: card.title },
-      sports: deriveCardSports(card, events),
-    });
+    const opener = detectSeasonOpener(ev);
+    if (opener) {
+      const favs = eventInvolvesFavorite(ev);
+      const score = 220 + (favs.length > 0 ? FAVORITE_PARTICIPANT_BONUS : 0);
+      allStories.push({
+        score,
+        signalType: "season_opener",
+        headline: opener.headline,
+        body: opener.body,
+        reason: `season/playoff opener (${ev.league})${favs.length ? ` — favorite involved: ${favs.join(", ")}` : ""}`,
+        sourceEventId: ev.id,
+        sourceCard: { id: `season_opener_${ev.id}`, kind: "season_opener", title: opener.headline },
+        sports: [ev.sport],
+        favoriteTeams: favs,
+      });
+    }
   }
 
   allStories.sort((a, b) => b.score - a.score);

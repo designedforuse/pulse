@@ -43,21 +43,30 @@ export default function TonightStoryFullScreen() {
       ? [data.tonightStory]
       : [];
 
+  const CARD_LINKED_SIGNALS = new Set([
+    "upset_alert",
+    "rivalry_game",
+    "clinch_watch",
+    "deadline_watch",
+    "playoff_push",
+    "momentum",
+    "league_moment",
+    "player_movement",
+  ]);
+
   const handleCta = (story: TonightStory) => {
     if (Platform.OS !== "web") {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     }
-    if (story.signalType === "multi_team_night" || story.signalType === "single_team_game") {
-      router.push("/(tabs)/watch");
-    } else if (story.sourceCard?.id) {
+    if (CARD_LINKED_SIGNALS.has(story.signalType) && story.sourceCard?.id) {
       router.push({ pathname: "/narrative/[id]", params: { id: story.sourceCard.id } });
+    } else {
+      router.push("/(tabs)/watch");
     }
   };
 
   const ctaLabelFor = (story: TonightStory) =>
-    story.signalType === "multi_team_night" || story.signalType === "single_team_game"
-      ? "Track all games"
-      : "Read more";
+    CARD_LINKED_SIGNALS.has(story.signalType) ? "Read more" : "Track all games";
 
   return (
     <ScrollView
