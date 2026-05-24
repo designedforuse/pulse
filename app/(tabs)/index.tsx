@@ -15,12 +15,24 @@ import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { Image as ExpoImage } from "expo-image";
+import { LinearGradient } from "expo-linear-gradient";
 import Colors from "@/constants/colors";
 import { getApiUrl } from "@/lib/query-client";
 import { useFavorites } from "@/lib/favorites-context";
 import DailyWrapCard from "@/components/DailyWrapCard";
 
 const PINK = "#FF85C8";
+
+const COVER_IMAGES = {
+  tonight: require("@/assets/images/stories/todays-story.jpg"),
+  comingUp: require("@/assets/images/stories/coming-up.jpg"),
+  deepTalk: require("@/assets/images/stories/behind-stories.jpg"),
+  trending: require("@/assets/images/stories/trending.jpg"),
+} as const;
+
+const COVER_OVERLAY_COLORS = ["rgba(15,18,22,0.82)", "rgba(15,18,22,0.55)", "rgba(15,18,22,0.5)", "rgba(15,18,22,0.78)"] as const;
+const COVER_OVERLAY_LOCATIONS = [0, 0.3, 0.65, 1] as const;
 
 interface NarrativeImpact {
   label: string;
@@ -180,6 +192,17 @@ export default function ExploreScreen() {
         onPress={() => router.push("/tonight-story-full")}
         style={({ pressed }) => [styles.tonightCard, styles.cardFill, pressed && { opacity: 0.9 }]}
       >
+        <ExpoImage
+          source={COVER_IMAGES.tonight}
+          style={StyleSheet.absoluteFillObject}
+          contentFit="cover"
+          cachePolicy="memory-disk"
+        />
+        <LinearGradient
+          colors={COVER_OVERLAY_COLORS as unknown as readonly [string, string, ...string[]]}
+          locations={COVER_OVERLAY_LOCATIONS as unknown as readonly [number, number, ...number[]]}
+          style={StyleSheet.absoluteFillObject}
+        />
         <View pointerEvents="none" style={styles.tonightBgLayer}>
           {[0, 1, 2, 3].map((i) => (
             <Text key={i} style={styles.tonightBgWord}>TODAY</Text>
@@ -232,6 +255,17 @@ export default function ExploreScreen() {
           accessibilityLabel={`What's coming up: ${totalLeagues} leagues across ${current.monthLabel.split(" ")[0]} and ${next.monthLabel.split(" ")[0]}${totalFinals > 0 ? `, ${totalFinals} finals` : ""}`}
           style={({ pressed }) => [styles.comingUpCard, styles.cardFill, pressed && { opacity: 0.9 }]}
         >
+          <ExpoImage
+            source={COVER_IMAGES.comingUp}
+            style={StyleSheet.absoluteFillObject}
+            contentFit="cover"
+            cachePolicy="memory-disk"
+          />
+          <LinearGradient
+            colors={COVER_OVERLAY_COLORS as unknown as readonly [string, string, ...string[]]}
+            locations={COVER_OVERLAY_LOCATIONS as unknown as readonly [number, number, ...number[]]}
+            style={StyleSheet.absoluteFillObject}
+          />
           <View pointerEvents="none" style={styles.comingUpBgLayer}>
             {[0, 1, 2, 3].map((i) => (
               <Text key={i} style={styles.comingUpBgWord}>COMING UP</Text>
@@ -280,6 +314,17 @@ export default function ExploreScreen() {
       style={({ pressed }) => [styles.deepTalkCard, styles.cardFill, pressed && { opacity: 0.9 }]}
       testID="stories-deep-talk-tile"
     >
+      <ExpoImage
+        source={COVER_IMAGES.deepTalk}
+        style={StyleSheet.absoluteFillObject}
+        contentFit="cover"
+        cachePolicy="memory-disk"
+      />
+      <LinearGradient
+        colors={COVER_OVERLAY_COLORS as unknown as readonly [string, string, ...string[]]}
+        locations={COVER_OVERLAY_LOCATIONS as unknown as readonly [number, number, ...number[]]}
+        style={StyleSheet.absoluteFillObject}
+      />
       <View pointerEvents="none" style={styles.deepTalkBgLayer}>
         {[0, 1, 2, 3].map((i) => (
           <Text key={i} style={styles.deepTalkBgWord}>BEHIND</Text>
@@ -320,6 +365,17 @@ export default function ExploreScreen() {
         style={({ pressed }) => [styles.trendingCard, styles.cardFill, pressed && { opacity: 0.9 }]}
         testID="stories-trending-tile"
       >
+        <ExpoImage
+          source={COVER_IMAGES.trending}
+          style={StyleSheet.absoluteFillObject}
+          contentFit="cover"
+          cachePolicy="memory-disk"
+        />
+        <LinearGradient
+          colors={COVER_OVERLAY_COLORS as unknown as readonly [string, string, ...string[]]}
+          locations={COVER_OVERLAY_LOCATIONS as unknown as readonly [number, number, ...number[]]}
+          style={StyleSheet.absoluteFillObject}
+        />
         <View pointerEvents="none" style={styles.trendingBgLayer}>
           {[0, 1, 2, 3].map((i) => (
             <Text key={i} style={styles.trendingBgWord}>TRENDING</Text>

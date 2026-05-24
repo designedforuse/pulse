@@ -8,12 +8,18 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
+import { Image as ExpoImage } from "expo-image";
+import { LinearGradient } from "expo-linear-gradient";
 import { getApiUrl } from "@/lib/query-client";
 import { useFavorites } from "@/lib/favorites-context";
 import type { Favorites } from "@/lib/data";
 import Colors from "@/constants/colors";
 
 const PINK = "#FF85C8";
+
+const COVER_IMAGE = require("@/assets/images/stories/daily-wrap.jpg");
+const COVER_OVERLAY_COLORS = ["rgba(15,18,22,0.82)", "rgba(15,18,22,0.55)", "rgba(15,18,22,0.5)", "rgba(15,18,22,0.78)"] as const;
+const COVER_OVERLAY_LOCATIONS = [0, 0.3, 0.65, 1] as const;
 
 export interface DailyWrapEntry {
   eventId: string;
@@ -155,6 +161,17 @@ export default function DailyWrapCard({ fill = false }: { fill?: boolean } = {})
 
   return (
     <Pressable onPress={handleOpen} style={({ pressed }) => [styles.card, fill && { flex: 1, marginBottom: 0 }, pressed && styles.cardPressed]}>
+      <ExpoImage
+        source={COVER_IMAGE}
+        style={StyleSheet.absoluteFillObject}
+        contentFit="cover"
+        cachePolicy="memory-disk"
+      />
+      <LinearGradient
+        colors={COVER_OVERLAY_COLORS as unknown as readonly [string, string, ...string[]]}
+        locations={COVER_OVERLAY_LOCATIONS as unknown as readonly [number, number, ...number[]]}
+        style={StyleSheet.absoluteFillObject}
+      />
       {/* Faded wordmark background, ESPN SC For You style */}
       <View pointerEvents="none" style={styles.bgLayer}>
         {[0, 1, 2, 3].map((i) => (
