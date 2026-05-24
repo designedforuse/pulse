@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-23T18:00:06.149Z",
+  "lastUpdated": "2026-05-24T04:45:13.933Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -47,9 +47,9 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 402,
+        "playersIngested": 399,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-23T18:00:06.149Z"
+        "timestamp": "2026-05-24T04:45:13.933Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -59,7 +59,7 @@
     "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1846.0017080555556,
+      "hoursUntil": -1856.7538702777779,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -82,23 +82,23 @@
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "rugby-leagueone-y0elki",
+    "tonightStorySourceEvent": "rugby-superrugby-jzoaj0",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 300,
-      "sourceEventId": "rugby-leagueone-y0elki",
-      "reason": "5 followed/affiliate teams playing tonight",
+      "selectedScore": 320,
+      "sourceEventId": "rugby-superrugby-jzoaj0",
+      "reason": "6 followed/affiliate teams playing today",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 300,
-          "reason": "5 followed/affiliate teams playing tonight"
+          "score": 320,
+          "reason": "6 followed/affiliate teams playing today"
         },
         {
-          "label": "[ritual_night] Friday Night Mode",
+          "label": "[ritual_night] Saturday Warm-Up",
           "score": 130,
-          "reason": "ritual \"Friday Night Mode\" has 3 followed-team game(s)"
+          "reason": "ritual \"Saturday Warm-Up\" has 6 followed-team game(s)"
         },
         {
           "label": "[league_moment] League Spotlight",
@@ -121,13 +121,13 @@
     {
       "id": "f1_race_weekend_canadian_grand_prix",
       "title": "Canadian Grand Prix",
-      "subtitle": "Canadian Grand Prix — 2 sessions in the next 48h: Qualifying, Race",
+      "subtitle": "Canadian Grand Prix — 1 session in the next 48h: Race",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-05-23T18:00:06.149Z",
+      "triggeredAt": "2026-05-24T04:45:13.933Z",
       "expiresAt": "2026-05-25T00:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
@@ -136,13 +136,8 @@
       "meta": {
         "type": "f1_race_weekend",
         "grandPrix": "Canadian Grand Prix",
-        "sessionCount": 2,
+        "sessionCount": 1,
         "sessions": [
-          {
-            "sessionTitle": "Qualifying",
-            "startTime": "2026-05-23T20:00:00.000Z",
-            "eventId": "f1-espn-401839061"
-          },
           {
             "sessionTitle": "Race",
             "startTime": "2026-05-24T20:00:00.000Z",
@@ -150,10 +145,9 @@
           }
         ],
         "eventIds": [
-          "f1-espn-401839061",
           "f1-espn-401839062"
         ],
-        "reason": "Canadian Grand Prix race weekend — 2 session(s) within 48 hours"
+        "reason": "Canadian Grand Prix race weekend — 1 session(s) within 48 hours"
       },
       "sports": [
         "racing"
@@ -173,8 +167,8 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Sungoliath, Hurricanes, Lazio, New England Free Jacks, and New England Revolution all play tonight across the Japan League One, Super Rugby, Serie A, MLR, MLS.",
-    "sourceEventId": "rugby-leagueone-y0elki",
+    "body": "The Hurricanes, Lazio, New England Free Jacks, New England Revolution, and San Diego FC (+1 more) all play today across the Super Rugby, Serie A, MLR, MLS, USL.",
+    "sourceEventId": "rugby-superrugby-jzoaj0",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
@@ -185,6 +179,55 @@
       "soccer"
     ]
   },
+  "todaysStories": [
+    {
+      "signalType": "multi_team_night",
+      "signalLabel": "YOUR TEAMS",
+      "headline": "Your Sports Night",
+      "body": "The Hurricanes, Lazio, New England Free Jacks, New England Revolution, and San Diego FC (+1 more) all play today across the Super Rugby, Serie A, MLR, MLS, USL.",
+      "sourceEventId": "rugby-superrugby-jzoaj0",
+      "sourceCard": {
+        "id": "tonight_multi_team",
+        "kind": "multi_team_night",
+        "title": "Your Sports Night"
+      },
+      "sports": [
+        "rugby",
+        "soccer"
+      ]
+    },
+    {
+      "signalType": "ritual_night",
+      "signalLabel": "RITUAL NIGHT",
+      "headline": "Saturday Warm-Up",
+      "body": "Your Saturday Warm-Up lineup includes 6 games with teams you follow.",
+      "sourceEventId": "rugby-superrugby-jzoaj0",
+      "sourceCard": {
+        "id": "tonight_ritual_saturday_sunrise",
+        "kind": "ritual_night",
+        "title": "Saturday Warm-Up"
+      },
+      "sports": [
+        "rugby",
+        "soccer"
+      ]
+    },
+    {
+      "signalType": "league_moment",
+      "signalLabel": "LEAGUE MOMENT",
+      "headline": "League Spotlight",
+      "body": "Canadian Grand Prix — 1 session in the next 48h: Race",
+      "sourceEventId": "f1-espn-401839062",
+      "sourceCard": {
+        "id": "f1_race_weekend_canadian_grand_prix",
+        "kind": "league_moment",
+        "title": "Canadian Grand Prix"
+      },
+      "sports": [
+        "racing"
+      ]
+    }
+  ],
   "monthSnapshot": {
     "currentMonth": {
       "monthLabel": "May 2026",

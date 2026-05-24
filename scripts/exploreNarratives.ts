@@ -2460,7 +2460,7 @@ function buildTonightStory(
   events: AppEvent[],
   favorites: Favorites,
   now: Date,
-): { story: TonightStory | null; debug: TonightStoryDebug } {
+): { story: TonightStory | null; stories: TonightStory[]; debug: TonightStoryDebug } {
   const debugResult: TonightStoryDebug = {
     selectedSignal: null,
     selectedHeadline: null,
@@ -2472,7 +2472,7 @@ function buildTonightStory(
 
   if (candidates.length === 0 && events.length === 0) {
     debugResult.reason = "no candidates or events";
-    return { story: null, debug: debugResult };
+    return { story: null, stories: [], debug: debugResult };
   }
 
   const followedNames = getFollowedTeamNames(favorites);
@@ -2756,7 +2756,28 @@ function buildTonightStory(
 
   if (allStories.length === 0) {
     debugResult.reason = "no stories scored";
-    return { story: null, debug: debugResult };
+    return { story: null, stories: [], debug: debugResult };
+  }
+
+  const toTonightStory = (c: TonightStoryCandidate): TonightStory => ({
+    signalType: c.signalType,
+    signalLabel: TONIGHT_STORY_SIGNAL_LABELS[c.signalType] || c.signalType.toUpperCase(),
+    headline: c.headline,
+    body: c.body,
+    sourceEventId: c.sourceEventId,
+    sourceCard: c.sourceCard,
+    sports: c.sports || [],
+  });
+
+  const TOP_STORIES_LIMIT = 5;
+  const seenCardIds = new Set<string>();
+  const topStories: TonightStory[] = [];
+  for (const c of allStories) {
+    const cardId = c.sourceCard?.id;
+    if (cardId && seenCardIds.has(cardId)) continue;
+    if (cardId) seenCardIds.add(cardId);
+    topStories.push(toTonightStory(c));
+    if (topStories.length >= TOP_STORIES_LIMIT) break;
   }
 
   const winner = allStories[0];
@@ -2767,15 +2788,8 @@ function buildTonightStory(
   debugResult.reason = winner.reason;
 
   return {
-    story: {
-      signalType: winner.signalType,
-      signalLabel: TONIGHT_STORY_SIGNAL_LABELS[winner.signalType] || winner.signalType.toUpperCase(),
-      headline: winner.headline,
-      body: winner.body,
-      sourceEventId: winner.sourceEventId,
-      sourceCard: winner.sourceCard,
-      sports: winner.sports || [],
-    },
+    story: topStories[0] ?? null,
+    stories: topStories,
     debug: debugResult,
   };
 }
@@ -2958,6 +2972,7 @@ export function generateMonthSnapshot(events: AppEvent[], now: Date): MonthSnaps
 export async function generateNarratives(events: AppEvent[], favorites: Favorites, now: Date, options?: { simulateMovement?: boolean }): Promise<{
   cards: ExploreNarrativeCard[];
   tonightStory: TonightStory | null;
+  todaysStories: TonightStory[];
   monthSnapshot: MonthSnapshot | null;
   debug: {
     rawCandidatesByKindAndRegion: Record<string, Record<string, number>>;
@@ -3064,9 +3079,16 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
 
   const tonightStoryResult = buildTonightStory(allCandidates, events, favorites, now);
   const tonightStory = tonightStoryResult.story;
+  const todaysStories = tonightStoryResult.stories;
   if (tonightStory) {
     console.log(`  Today's Story: [${tonightStory.signalType}] "${tonightStory.headline}" — ${tonightStory.body}`);
     console.log(`    Reason: ${tonightStoryResult.debug.reason} (score: ${tonightStoryResult.debug.selectedScore})`);
+    if (todaysStories.length > 1) {
+      console.log(`  Today's Stories feed: ${todaysStories.length} item(s)`);
+      for (const s of todaysStories.slice(1)) {
+        console.log(`    + [${s.signalType}] ${s.headline}`);
+      }
+    }
   } else {
     console.log("  Today's Story: none (no candidates)");
   }
@@ -3180,7 +3202,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
   const monthSnapshot = generateMonthSnapshot(events, now);
   console.log(`  Month Snapshot: ${monthSnapshot ? monthSnapshot.currentMonth.leagues.length + " leagues (current) / " + monthSnapshot.nextMonth.leagues.length + " leagues (next)" : "none"}`);
 
-  return { cards: selected, tonightStory, monthSnapshot, debug };
+  return { cards: selected, tonightStory, todaysStories, monthSnapshot, debug };
 }
 
 export async function generateAndSave(options?: { simulateMovement?: boolean }): Promise<ExploreNarrativeCard[]> {
@@ -3204,13 +3226,14 @@ export async function generateAndSave(options?: { simulateMovement?: boolean }):
   }
 
   const now = new Date();
-  const { cards, tonightStory, monthSnapshot, debug } = await generateNarratives(events, favorites, now, options);
+  const { cards, tonightStory, todaysStories, monthSnapshot, debug } = await generateNarratives(events, favorites, now, options);
 
   const output = {
     lastUpdated: now.toISOString(),
     debug,
     cards,
     tonightStory,
+    todaysStories,
     monthSnapshot,
   };
 

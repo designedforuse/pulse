@@ -538,7 +538,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     if (!data || !data.cards) {
       return res.json({ cards: [], lastUpdated: null });
     }
-    return res.json({ cards: data.cards, lastUpdated: data.lastUpdated, tonightStory: data.tonightStory || null, monthSnapshot: data.monthSnapshot || null });
+    return res.json({ cards: data.cards, lastUpdated: data.lastUpdated, tonightStory: data.tonightStory || null, todaysStories: data.todaysStories || (data.tonightStory ? [data.tonightStory] : []), monthSnapshot: data.monthSnapshot || null });
   });
 
   app.get("/api/debug/explore-narratives", (_req, res) => {
