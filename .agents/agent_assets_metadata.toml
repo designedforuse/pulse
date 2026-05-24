@@ -101,3 +101,27 @@ id = "BV3eUNscYZ9ZeapaoVmbh"
 uri = "file://attached_assets/image_search/cover_trending.jpg"
 type = "image"
 title = "Trending Stories — fireworks night sky"
+
+[[outputs]]
+id = "WGyjJ6EGFTF3pt8xGI0jR"
+uri = "file://assets/images/stories/tonight/tonight-1.jpg"
+type = "image"
+title = "Stadium lights at dusk"
+
+[[outputs]]
+id = "9ja-5NOBajP5-HQMWGy88"
+uri = "file://assets/images/stories/tonight/tonight-2.jpg"
+type = "image"
+title = "Empty basketball arena, dramatic lighting"
+
+[[outputs]]
+id = "Pa5yu6GSg-om-h2BBX1jW"
+uri = "file://assets/images/stories/tonight/tonight-3.jpg"
+type = "image"
+title = "Outdoor hockey rink with red goal"
+
+[[outputs]]
+id = "dYdSoBgEXYcLRDvwjhy1o"
+uri = "file://assets/images/stories/tonight/tonight-4.jpg"
+type = "image"
+title = "Football stadium night lights"

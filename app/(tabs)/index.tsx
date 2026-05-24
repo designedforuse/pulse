@@ -31,6 +31,20 @@ const COVER_IMAGES = {
   trending: require("@/assets/images/stories/trending.jpg"),
 } as const;
 
+const TONIGHT_COVER_POOL = [
+  require("@/assets/images/stories/todays-story.jpg"),
+  require("@/assets/images/stories/tonight/tonight-1.jpg"),
+  require("@/assets/images/stories/tonight/tonight-2.jpg"),
+  require("@/assets/images/stories/tonight/tonight-3.jpg"),
+  require("@/assets/images/stories/tonight/tonight-4.jpg"),
+];
+
+function pickTonightCover(): any {
+  const now = new Date();
+  const dayKey = now.getUTCFullYear() * 10000 + (now.getUTCMonth() + 1) * 100 + now.getUTCDate();
+  return TONIGHT_COVER_POOL[dayKey % TONIGHT_COVER_POOL.length];
+}
+
 const COVER_OVERLAY_COLORS = ["rgba(15,18,22,0.15)", "rgba(15,18,22,0.55)", "rgba(15,18,22,0.95)"] as const;
 const COVER_OVERLAY_LOCATIONS = [0, 0.5, 1] as const;
 
@@ -192,7 +206,7 @@ export default function ExploreScreen() {
         style={({ pressed }) => [styles.tonightCard, styles.cardFill, pressed && { opacity: 0.9 }]}
       >
         <ExpoImage
-          source={COVER_IMAGES.tonight}
+          source={pickTonightCover()}
           style={StyleSheet.absoluteFillObject}
           contentFit="cover"
           contentPosition="top"
