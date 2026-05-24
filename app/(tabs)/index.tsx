@@ -94,8 +94,8 @@ interface MonthSnapshot {
   nextMonth: MonthSnapshotData;
 }
 
-const SNAPSHOT_COLOR = "#6366F1";
-const TRENDING_COLOR = "#FF6B35";
+const SNAPSHOT_COLOR = PINK;
+const TRENDING_COLOR = PINK;
 
 const KIND_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap; color: string; label: string }> = {
   playoff_push: { icon: "flame", color: "#FF453A", label: "Playoff Push" },
@@ -203,11 +203,6 @@ export default function ExploreScreen() {
           locations={COVER_OVERLAY_LOCATIONS as unknown as readonly [number, number, ...number[]]}
           style={StyleSheet.absoluteFillObject}
         />
-        <View pointerEvents="none" style={styles.tonightBgLayer}>
-          {[0, 1, 2, 3].map((i) => (
-            <Text key={i} style={styles.tonightBgWord}>TODAY</Text>
-          ))}
-        </View>
         <View style={styles.tonightCoverInner}>
           <Text style={styles.tonightCoverDate}>
             {new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }).toUpperCase()}
@@ -266,11 +261,6 @@ export default function ExploreScreen() {
             locations={COVER_OVERLAY_LOCATIONS as unknown as readonly [number, number, ...number[]]}
             style={StyleSheet.absoluteFillObject}
           />
-          <View pointerEvents="none" style={styles.comingUpBgLayer}>
-            {[0, 1, 2, 3].map((i) => (
-              <Text key={i} style={styles.comingUpBgWord}>COMING UP</Text>
-            ))}
-          </View>
           <View style={styles.comingUpInner}>
             <View style={styles.comingUpBadge}>
               <Ionicons name="calendar-outline" size={11} color="#fff" />
@@ -325,11 +315,6 @@ export default function ExploreScreen() {
         locations={COVER_OVERLAY_LOCATIONS as unknown as readonly [number, number, ...number[]]}
         style={StyleSheet.absoluteFillObject}
       />
-      <View pointerEvents="none" style={styles.deepTalkBgLayer}>
-        {[0, 1, 2, 3].map((i) => (
-          <Text key={i} style={styles.deepTalkBgWord}>BEHIND</Text>
-        ))}
-      </View>
       <View style={styles.deepTalkInner}>
         <View style={styles.deepTalkBadge}>
           <Ionicons name="git-network-outline" size={11} color="#fff" />
@@ -345,7 +330,7 @@ export default function ExploreScreen() {
         </View>
         <View style={styles.deepTalkCta}>
           <Text style={styles.deepTalkCtaText}>Tap to open</Text>
-          <Ionicons name="chevron-forward" size={14} color={Colors.hockey} />
+          <Ionicons name="chevron-forward" size={14} color={PINK} />
         </View>
       </View>
     </Pressable>
@@ -376,11 +361,6 @@ export default function ExploreScreen() {
           locations={COVER_OVERLAY_LOCATIONS as unknown as readonly [number, number, ...number[]]}
           style={StyleSheet.absoluteFillObject}
         />
-        <View pointerEvents="none" style={styles.trendingBgLayer}>
-          {[0, 1, 2, 3].map((i) => (
-            <Text key={i} style={styles.trendingBgWord}>TRENDING</Text>
-          ))}
-        </View>
         <View style={styles.trendingInner}>
           <View style={styles.trendingBadge}>
             <Ionicons name="flame" size={11} color="#fff" />
@@ -669,19 +649,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     minHeight: 280,
   },
-  tonightBgLayer: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: "space-around",
-    alignItems: "center",
-    paddingVertical: 18,
-  },
-  tonightBgWord: {
-    fontSize: 48,
-    fontFamily: "Inter_700Bold",
-    color: PINK,
-    opacity: 0.07,
-    letterSpacing: 2,
-  },
   tonightCoverInner: {
     flex: 1,
     alignItems: "center",
@@ -894,26 +861,13 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   comingUpCard: {
-    backgroundColor: "#15173a",
+    backgroundColor: "#2a0f1d",
     borderRadius: 20,
     borderWidth: 1.5,
-    borderColor: SNAPSHOT_COLOR + "40",
+    borderColor: PINK + "40",
     overflow: "hidden" as const,
     marginBottom: 20,
     minHeight: 280,
-  },
-  comingUpBgLayer: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: "space-around" as const,
-    alignItems: "center" as const,
-    paddingVertical: 18,
-  },
-  comingUpBgWord: {
-    fontSize: 48,
-    fontFamily: "Inter_700Bold",
-    color: SNAPSHOT_COLOR,
-    opacity: 0.07,
-    letterSpacing: 2,
   },
   comingUpInner: {
     flex: 1,
@@ -997,8 +951,8 @@ const styles = StyleSheet.create({
     borderColor: SNAPSHOT_COLOR + "40",
   },
   comingUpChipAccent: {
-    backgroundColor: "#F59E0B22",
-    borderColor: "#F59E0B66",
+    backgroundColor: PINK + "22",
+    borderColor: PINK + "66",
   },
   comingUpChipNum: {
     fontSize: 16,
@@ -1006,7 +960,7 @@ const styles = StyleSheet.create({
     color: SNAPSHOT_COLOR,
   },
   comingUpChipNumAccent: {
-    color: "#F59E0B",
+    color: PINK,
   },
   comingUpChipLabel: {
     fontSize: 10,
@@ -1015,7 +969,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1.1,
   },
   comingUpChipLabelAccent: {
-    color: "#F59E0B",
+    color: PINK,
   },
   comingUpCta: {
     flexDirection: "row" as const,
@@ -1030,26 +984,13 @@ const styles = StyleSheet.create({
     letterSpacing: 0.4,
   },
   deepTalkCard: {
-    backgroundColor: "#0B1F2C",
+    backgroundColor: "#2a0f1d",
     borderRadius: 20,
     borderWidth: 1.5,
-    borderColor: Colors.hockey + "40",
+    borderColor: PINK + "40",
     overflow: "hidden" as const,
     marginBottom: 20,
     minHeight: 280,
-  },
-  deepTalkBgLayer: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: "space-around" as const,
-    alignItems: "center" as const,
-    paddingVertical: 18,
-  },
-  deepTalkBgWord: {
-    fontSize: 48,
-    fontFamily: "Inter_700Bold",
-    color: Colors.hockey,
-    opacity: 0.07,
-    letterSpacing: 2,
   },
   deepTalkInner: {
     flex: 1,
@@ -1062,7 +1003,7 @@ const styles = StyleSheet.create({
     flexDirection: "row" as const,
     alignItems: "center" as const,
     gap: 5,
-    backgroundColor: Colors.hockey,
+    backgroundColor: PINK,
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 999,
@@ -1100,22 +1041,22 @@ const styles = StyleSheet.create({
     flexDirection: "row" as const,
     alignItems: "center" as const,
     gap: 6,
-    backgroundColor: Colors.hockey + "20",
+    backgroundColor: PINK + "20",
     borderRadius: 999,
     paddingHorizontal: 14,
     paddingVertical: 7,
     borderWidth: 1,
-    borderColor: Colors.hockey + "40",
+    borderColor: PINK + "40",
   },
   deepTalkChipNum: {
     fontSize: 16,
     fontFamily: "Inter_700Bold",
-    color: Colors.hockey,
+    color: PINK,
   },
   deepTalkChipLabel: {
     fontSize: 10,
     fontFamily: "Inter_700Bold",
-    color: Colors.hockey,
+    color: PINK,
     letterSpacing: 1.1,
   },
   deepTalkCta: {
@@ -1127,30 +1068,17 @@ const styles = StyleSheet.create({
   deepTalkCtaText: {
     fontSize: 12,
     fontFamily: "Inter_600SemiBold",
-    color: Colors.hockey,
+    color: PINK,
     letterSpacing: 0.4,
   },
   trendingCard: {
-    backgroundColor: "#2A140B",
+    backgroundColor: "#2a0f1d",
     borderRadius: 20,
     borderWidth: 1.5,
-    borderColor: TRENDING_COLOR + "40",
+    borderColor: PINK + "40",
     overflow: "hidden" as const,
     marginBottom: 20,
     minHeight: 280,
-  },
-  trendingBgLayer: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: "space-around" as const,
-    alignItems: "center" as const,
-    paddingVertical: 18,
-  },
-  trendingBgWord: {
-    fontSize: 48,
-    fontFamily: "Inter_700Bold",
-    color: TRENDING_COLOR,
-    opacity: 0.07,
-    letterSpacing: 2,
   },
   trendingInner: {
     flex: 1,

@@ -172,12 +172,6 @@ export default function DailyWrapCard({ fill = false }: { fill?: boolean } = {})
         locations={COVER_OVERLAY_LOCATIONS as unknown as readonly [number, number, ...number[]]}
         style={StyleSheet.absoluteFillObject}
       />
-      {/* Faded wordmark background, ESPN SC For You style */}
-      <View pointerEvents="none" style={styles.bgLayer}>
-        {[0, 1, 2, 3].map((i) => (
-          <Text key={i} style={styles.bgWord}>WRAP</Text>
-        ))}
-      </View>
       {renderCover()}
     </Pressable>
   );
@@ -195,19 +189,6 @@ const styles = StyleSheet.create({
   },
   cardPressed: {
     opacity: 0.9,
-  },
-  bgLayer: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: "space-around",
-    alignItems: "center",
-    paddingVertical: 20,
-  },
-  bgWord: {
-    fontSize: 48,
-    fontFamily: "Inter_700Bold",
-    color: PINK,
-    opacity: 0.07,
-    letterSpacing: 2,
   },
   coverInner: {
     flex: 1,
@@ -264,8 +245,8 @@ const styles = StyleSheet.create({
     borderColor: PINK + "40",
   },
   coverChipFav: {
-    backgroundColor: "#FFD70015",
-    borderColor: "#FFD70044",
+    backgroundColor: PINK + "20",
+    borderColor: PINK + "40",
   },
   coverChipText: {
     fontSize: 11,
