@@ -260,10 +260,6 @@ export default function ExploreScreen() {
             style={StyleSheet.absoluteFillObject}
           />
           <View style={styles.comingUpInner}>
-            <View style={styles.comingUpBadge}>
-              <Ionicons name="calendar-outline" size={11} color="#fff" />
-              <Text style={styles.comingUpBadgeText}>SCHEDULE</Text>
-            </View>
             <Text style={styles.comingUpWordmark}>WHAT'S{"\n"}COMING UP</Text>
             <Text style={styles.comingUpTagline}>Leagues, tournaments & finals on the horizon</Text>
             <View style={styles.comingUpChips}>
@@ -311,10 +307,6 @@ export default function ExploreScreen() {
         style={StyleSheet.absoluteFillObject}
       />
       <View style={styles.deepTalkInner}>
-        <View style={styles.deepTalkBadge}>
-          <Ionicons name="git-network-outline" size={11} color="#fff" />
-          <Text style={styles.deepTalkBadgeText}>PLAYBOOK</Text>
-        </View>
         <Text style={styles.deepTalkWordmark}>BEHIND THE{"\n"}STORIES</Text>
         <Text style={styles.deepTalkTagline}>The context behind the stories you follow</Text>
         <View style={styles.deepTalkChips}>
@@ -354,10 +346,6 @@ export default function ExploreScreen() {
           style={StyleSheet.absoluteFillObject}
         />
         <View style={styles.trendingInner}>
-          <View style={styles.trendingBadge}>
-            <Ionicons name="flame" size={11} color="#fff" />
-            <Text style={styles.trendingBadgeText}>LIVE FEED</Text>
-          </View>
           <Text style={styles.trendingWordmark}>TRENDING{"\n"}STORIES</Text>
           <Text style={styles.trendingTagline}>Narrative intel as it happens</Text>
           <View style={styles.trendingChips}>
