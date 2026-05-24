@@ -2687,11 +2687,26 @@ function buildTonightStory(
     player_movement: 40,
   };
 
+  const eventById = new Map(events.map(e => [e.id, e]));
+  const isEventInTodayWindow = (eventId: string): boolean => {
+    const ev = eventById.get(eventId);
+    if (!ev) return false;
+    const start = new Date(ev.startTimeLocal);
+    return start >= todayStart && start < todayEnd;
+  };
+
   for (const card of candidates) {
     const meta = card.meta || {};
     const teamA = meta.awayTeam || meta.team || meta.teams?.[0]?.team || "";
     const teamB = meta.homeTeam || meta.teams?.[1]?.team || "";
-    const eventIds = meta.eventIds || [];
+    const rawEventIds: string[] = meta.eventIds || [];
+    const teamEventIds: string[] = (meta.teams || []).flatMap((t: any) => t.eventIds || []);
+    const allCardEventIds = [...new Set([...rawEventIds, ...teamEventIds])];
+    const todayEventIds = allCardEventIds.filter(isEventInTodayWindow);
+    if (todayEventIds.length === 0) {
+      continue;
+    }
+    const eventIds = todayEventIds;
 
     let baseScore = CARD_KIND_SCORES[card.kind] || 30;
 
