@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-24T08:06:23.162Z",
+  "lastUpdated": "2026-05-24T08:13:03.391Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -38,10 +38,10 @@
   "ahlCount": 25,
   "ahlAdded": 0,
   "ahlUpdated": 20,
-  "ahlPruned": 3,
+  "ahlPruned": 0,
   "echlCount": 31,
-  "echlAdded": 92,
-  "echlUpdated": 34,
+  "echlAdded": 95,
+  "echlUpdated": 31,
   "echlPruned": 95,
   "echlWebCount": 126,
   "buCount": 0,
@@ -49,9 +49,9 @@
   "buUpdated": 0,
   "buPruned": 0,
   "rugbyCount": 73,
-  "rugbyAdded": 2,
-  "rugbyUpdated": 71,
-  "rugbyPruned": 6,
+  "rugbyAdded": 0,
+  "rugbyUpdated": 73,
+  "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 12,
     "top14": 22,
@@ -90,12 +90,12 @@
   "serieaCount": 26,
   "serieaAdded": 0,
   "serieaUpdated": 26,
-  "serieaPruned": 27,
+  "serieaPruned": 26,
   "serieaSourceUsed": "espn",
   "laligaCount": 35,
   "laligaAdded": 0,
   "laligaUpdated": 35,
-  "laligaPruned": 36,
+  "laligaPruned": 35,
   "laligaSourceUsed": "espn",
   "bundesligaCount": 12,
   "bundesligaAdded": 0,
@@ -110,12 +110,12 @@
   "nwslCount": 30,
   "nwslAdded": 0,
   "nwslUpdated": 30,
-  "nwslPruned": 33,
+  "nwslPruned": 30,
   "nwslSourceUsed": "ical",
   "uslCount": 42,
-  "uslAdded": 12,
-  "uslUpdated": 30,
-  "uslPruned": 38,
+  "uslAdded": 0,
+  "uslUpdated": 42,
+  "uslPruned": 42,
   "uslSourceUsed": "espn",
   "championsCupCount": 1,
   "championsCupAdded": 0,
@@ -128,9 +128,9 @@
   "challengeCupPruned": 0,
   "challengeCupSourceUsed": "ical",
   "mlrCount": 15,
-  "mlrAdded": 1,
-  "mlrUpdated": 14,
-  "mlrPruned": 1,
+  "mlrAdded": 0,
+  "mlrUpdated": 15,
+  "mlrPruned": 0,
   "mlrSourceUsed": "hardcoded",
   "championsLeagueCount": 1,
   "championsLeagueAdded": 0,
@@ -200,22 +200,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-05-24T08:06:23.162Z",
+    "lastRefreshAt": "2026-05-24T08:13:03.391Z",
     "sources": {
       "nhl": {
         "count": 11,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 25,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 31,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -227,7 +227,7 @@
       },
       "rugby": {
         "count": 73,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 12,
@@ -247,93 +247,93 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 33,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 142,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 26,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 35,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 12,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 19,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 30,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 42,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-21T00:00:00.000Z"
       },
       "championsCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "challengeCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 15,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 1,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 1,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-16T14:00:00.000Z"
       },
       "tennis": {
         "count": 40,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "French Open": 30,
@@ -342,7 +342,7 @@
       },
       "f1": {
         "count": 30,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Canadian Grand Prix": 5,
@@ -355,7 +355,7 @@
       },
       "golf": {
         "count": 12,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "PGA Championship": 4,
@@ -365,7 +365,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Sydney Marathon": 1,
@@ -394,7 +394,7 @@
       },
       "cafcl": {
         "count": 6,
-        "lastFetchAt": "2026-05-24T08:06:23.162Z",
+        "lastFetchAt": "2026-05-24T08:13:03.391Z",
         "sourceName": "ESPN API"
       }
     }
@@ -4350,6 +4350,24 @@
       "providerReason": "mls-appletv"
     },
     {
+      "id": "athletics-golden-trail-zegama-aizkorri-2026",
+      "sport": "athletics",
+      "league": "Golden Trail World Series",
+      "awayTeam": "",
+      "homeTeam": "Zegama-Aizkorri",
+      "startTimeLocal": "2026-05-17T06:00:00.000Z",
+      "endTimeLocal": "2026-05-17T12:00:00.000Z",
+      "providerId": "flosports",
+      "providerReason": "gtws-flosports",
+      "isLive": false,
+      "source": "golden-trail-hardcoded",
+      "leagueKey": "golden-trail",
+      "eventType": "session",
+      "sessionTitle": "Zegama-Aizkorri",
+      "competitionType": "international",
+      "tournamentName": "Zegama-Aizkorri"
+    },
+    {
       "id": "tennis-italian-open-2026-05-17-m0",
       "sport": "tennis",
       "league": "ATP Masters 1000",
@@ -6507,6 +6525,24 @@
       "leagueKey": "leagueone"
     },
     {
+      "id": "athletics-golden-trail-ledro-sky-2026",
+      "sport": "athletics",
+      "league": "Golden Trail World Series",
+      "awayTeam": "",
+      "homeTeam": "Ledro Sky Trentino",
+      "startTimeLocal": "2026-05-24T06:00:00.000Z",
+      "endTimeLocal": "2026-05-24T11:00:00.000Z",
+      "providerId": "flosports",
+      "providerReason": "gtws-flosports",
+      "isLive": false,
+      "source": "golden-trail-hardcoded",
+      "leagueKey": "golden-trail",
+      "eventType": "session",
+      "sessionTitle": "Ledro Sky Trentino",
+      "competitionType": "international",
+      "tournamentName": "Ledro Sky Trentino"
+    },
+    {
       "id": "athletics-marathon-cape-town-marathon",
       "sport": "athletics",
       "league": "World Marathon Majors",
@@ -6522,24 +6558,6 @@
       "sessionTitle": "Cape Town Marathon",
       "competitionType": "international",
       "tournamentName": "Cape Town Marathon"
-    },
-    {
-      "id": "athletics-golden-trail-zegama-aizkorri-2026",
-      "sport": "athletics",
-      "league": "Golden Trail World Series",
-      "awayTeam": "",
-      "homeTeam": "Zegama-Aizkorri",
-      "startTimeLocal": "2026-05-24T07:00:00.000Z",
-      "endTimeLocal": "2026-05-24T13:00:00.000Z",
-      "providerId": "youtubetv",
-      "providerReason": "gtws-youtube",
-      "isLive": false,
-      "source": "golden-trail-hardcoded",
-      "leagueKey": "golden-trail",
-      "eventType": "session",
-      "sessionTitle": "Zegama-Aizkorri",
-      "competitionType": "international",
-      "tournamentName": "Zegama-Aizkorri"
     },
     {
       "id": "tennis-french-open-2026-05-24-m0",
@@ -11271,24 +11289,6 @@
       "broadcastNetworks": "FOX, Tele, Peacock"
     },
     {
-      "id": "athletics-golden-trail-mont-blanc-marathon-2026",
-      "sport": "athletics",
-      "league": "Golden Trail World Series",
-      "awayTeam": "",
-      "homeTeam": "Mont-Blanc Marathon",
-      "startTimeLocal": "2026-06-28T05:00:00.000Z",
-      "endTimeLocal": "2026-06-28T11:00:00.000Z",
-      "providerId": "youtubetv",
-      "providerReason": "gtws-youtube",
-      "isLive": false,
-      "source": "golden-trail-hardcoded",
-      "leagueKey": "golden-trail",
-      "eventType": "session",
-      "sessionTitle": "Mont-Blanc Marathon",
-      "competitionType": "international",
-      "tournamentName": "Mont-Blanc Marathon"
-    },
-    {
       "id": "f1-espn-401839077",
       "sport": "racing",
       "league": "F1",
@@ -11726,6 +11726,24 @@
       ]
     },
     {
+      "id": "athletics-golden-trail-quebec-mega-trail-2026",
+      "sport": "athletics",
+      "league": "Golden Trail World Series",
+      "awayTeam": "",
+      "homeTeam": "Quebec Mega Trail",
+      "startTimeLocal": "2026-07-05T12:00:00.000Z",
+      "endTimeLocal": "2026-07-05T18:00:00.000Z",
+      "providerId": "flosports",
+      "providerReason": "gtws-flosports",
+      "isLive": false,
+      "source": "golden-trail-hardcoded",
+      "leagueKey": "golden-trail",
+      "eventType": "session",
+      "sessionTitle": "Quebec Mega Trail",
+      "competitionType": "international",
+      "tournamentName": "Quebec Mega Trail"
+    },
+    {
       "id": "f1-espn-401839082",
       "sport": "racing",
       "league": "F1",
@@ -12015,24 +12033,6 @@
       "sessionTitle": "Verbier St-Bernard",
       "competitionType": "international",
       "tournamentName": "Verbier St-Bernard"
-    },
-    {
-      "id": "athletics-golden-trail-stranda-fjord-2026",
-      "sport": "athletics",
-      "league": "Golden Trail World Series",
-      "awayTeam": "",
-      "homeTeam": "Stranda Fjord Trail Race",
-      "startTimeLocal": "2026-07-11T08:00:00.000Z",
-      "endTimeLocal": "2026-07-11T14:00:00.000Z",
-      "providerId": "youtubetv",
-      "providerReason": "gtws-youtube",
-      "isLive": false,
-      "source": "golden-trail-hardcoded",
-      "leagueKey": "golden-trail",
-      "eventType": "session",
-      "sessionTitle": "Stranda Fjord Trail Race",
-      "competitionType": "international",
-      "tournamentName": "Stranda Fjord Trail Race"
     },
     {
       "id": "cycling-grand-tour-tour-de-france-2026-2026-07-11-stage-8",
@@ -12452,24 +12452,6 @@
       "tournamentName": "British Open"
     },
     {
-      "id": "athletics-golden-trail-dolomyths-run-2026",
-      "sport": "athletics",
-      "league": "Golden Trail World Series",
-      "awayTeam": "",
-      "homeTeam": "Dolomyths Run Sky Race",
-      "startTimeLocal": "2026-07-19T07:00:00.000Z",
-      "endTimeLocal": "2026-07-19T13:00:00.000Z",
-      "providerId": "youtubetv",
-      "providerReason": "gtws-youtube",
-      "isLive": false,
-      "source": "golden-trail-hardcoded",
-      "leagueKey": "golden-trail",
-      "eventType": "session",
-      "sessionTitle": "Dolomyths Run Sky Race",
-      "competitionType": "international",
-      "tournamentName": "Dolomyths Run Sky Race"
-    },
-    {
       "id": "cycling-grand-tour-tour-de-france-2026-2026-07-19-stage-15",
       "sport": "cycling",
       "league": "Grand Tour",
@@ -12670,15 +12652,33 @@
       ]
     },
     {
+      "id": "athletics-golden-trail-pitz-alpine-2026",
+      "sport": "athletics",
+      "league": "Golden Trail World Series",
+      "awayTeam": "",
+      "homeTeam": "Pitz Alpine Glacier Trail",
+      "startTimeLocal": "2026-08-01T06:00:00.000Z",
+      "endTimeLocal": "2026-08-01T11:00:00.000Z",
+      "providerId": "flosports",
+      "providerReason": "gtws-flosports",
+      "isLive": false,
+      "source": "golden-trail-hardcoded",
+      "leagueKey": "golden-trail",
+      "eventType": "session",
+      "sessionTitle": "Pitz Alpine Glacier Trail",
+      "competitionType": "international",
+      "tournamentName": "Pitz Alpine Glacier Trail"
+    },
+    {
       "id": "athletics-golden-trail-sierre-zinal-2026",
       "sport": "athletics",
       "league": "Golden Trail World Series",
       "awayTeam": "",
       "homeTeam": "Sierre-Zinal",
-      "startTimeLocal": "2026-08-09T06:30:00.000Z",
-      "endTimeLocal": "2026-08-09T12:30:00.000Z",
-      "providerId": "youtubetv",
-      "providerReason": "gtws-youtube",
+      "startTimeLocal": "2026-08-08T06:30:00.000Z",
+      "endTimeLocal": "2026-08-08T12:30:00.000Z",
+      "providerId": "flosports",
+      "providerReason": "gtws-flosports",
       "isLive": false,
       "source": "golden-trail-hardcoded",
       "leagueKey": "golden-trail",
@@ -13328,22 +13328,22 @@
       ]
     },
     {
-      "id": "athletics-golden-trail-pikes-peak-2026",
+      "id": "athletics-golden-trail-myoko-trail-2026",
       "sport": "athletics",
       "league": "Golden Trail World Series",
       "awayTeam": "",
-      "homeTeam": "Pikes Peak Marathon",
-      "startTimeLocal": "2026-09-20T13:00:00.000Z",
-      "endTimeLocal": "2026-09-20T21:00:00.000Z",
-      "providerId": "youtubetv",
-      "providerReason": "gtws-youtube",
+      "homeTeam": "Myoko Trail",
+      "startTimeLocal": "2026-09-19T23:00:00.000Z",
+      "endTimeLocal": "2026-09-20T04:00:00.000Z",
+      "providerId": "flosports",
+      "providerReason": "gtws-flosports",
       "isLive": false,
       "source": "golden-trail-hardcoded",
       "leagueKey": "golden-trail",
       "eventType": "session",
-      "sessionTitle": "Pikes Peak Marathon",
+      "sessionTitle": "Myoko Trail",
       "competitionType": "international",
-      "tournamentName": "Pikes Peak Marathon"
+      "tournamentName": "Myoko Trail"
     },
     {
       "id": "athletics-utmb-nice-cote-dazur-2026",
@@ -13363,6 +13363,24 @@
       "tournamentName": "Nice Côte d'Azur"
     },
     {
+      "id": "athletics-golden-trail-jinshanling-2026",
+      "sport": "athletics",
+      "league": "Golden Trail World Series",
+      "awayTeam": "",
+      "homeTeam": "Jinshanling Great Wall Trail Race",
+      "startTimeLocal": "2026-09-27T00:00:00.000Z",
+      "endTimeLocal": "2026-09-27T06:00:00.000Z",
+      "providerId": "flosports",
+      "providerReason": "gtws-flosports",
+      "isLive": false,
+      "source": "golden-trail-hardcoded",
+      "leagueKey": "golden-trail",
+      "eventType": "session",
+      "sessionTitle": "Jinshanling Great Wall Trail Race",
+      "competitionType": "international",
+      "tournamentName": "Jinshanling Great Wall Trail Race"
+    },
+    {
       "id": "athletics-utmb-kodiak-2026",
       "sport": "athletics",
       "league": "UTMB World Series",
@@ -13380,22 +13398,22 @@
       "tournamentName": "Kodiak Ultra Marathons"
     },
     {
-      "id": "athletics-golden-trail-grand-final-2026",
+      "id": "athletics-golden-trail-muju-grand-finale-2026",
       "sport": "athletics",
       "league": "Golden Trail World Series",
       "awayTeam": "",
-      "homeTeam": "Golden Trail World Series Grand Final",
-      "startTimeLocal": "2026-10-25T08:00:00.000Z",
-      "endTimeLocal": "2026-10-28T08:00:00.000Z",
-      "providerId": "youtubetv",
-      "providerReason": "gtws-youtube",
+      "homeTeam": "Muju Trail Grand Finale",
+      "startTimeLocal": "2026-10-23T23:00:00.000Z",
+      "endTimeLocal": "2026-10-25T11:00:00.000Z",
+      "providerId": "flosports",
+      "providerReason": "gtws-flosports",
       "isLive": false,
       "source": "golden-trail-hardcoded",
       "leagueKey": "golden-trail",
       "eventType": "session",
-      "sessionTitle": "Golden Trail World Series Grand Final",
+      "sessionTitle": "Muju Trail Grand Finale",
       "competitionType": "international",
-      "tournamentName": "Golden Trail World Series Grand Final"
+      "tournamentName": "Muju Trail Grand Finale"
     }
   ]
 }

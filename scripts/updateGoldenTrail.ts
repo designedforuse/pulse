@@ -39,68 +39,74 @@ interface GoldenTrailRace {
   durationMin: number;
 }
 
-const DAY_MIN = 24 * 60;
-
-// 2026 Golden Trail World Series — provisional schedule based on the
-// historical Apr–Oct cadence. Dates should be re-verified once Salomon
-// publishes the official 2026 calendar (typically released Nov/Dec).
-// All races stream free on the official Golden Trail Series YouTube channel.
+// 2026 Golden Trail World Series — official calendar published Feb 2026.
+// 7 regular races + Grand Finale across 8 countries / 3 continents.
+// Source: https://goldentrailseries.com/gtws-unveils-its-2026-calendar/
+// All races broadcast on FloSports.
 const GOLDEN_TRAIL_RACES: GoldenTrailRace[] = [
   {
     id: "athletics-golden-trail-zegama-aizkorri-2026",
     displayName: "Zegama-Aizkorri",
     city: "Zegama",
     country: "Spain",
-    startUtc: "2026-05-24T07:00:00.000Z", // 09:00 CEST Sun
+    startUtc: "2026-05-17T06:00:00.000Z", // 08:00 CEST Sun
     durationMin: 360,
   },
   {
-    id: "athletics-golden-trail-mont-blanc-marathon-2026",
-    displayName: "Mont-Blanc Marathon",
-    city: "Chamonix",
-    country: "France",
-    startUtc: "2026-06-28T05:00:00.000Z", // 07:00 CEST Sun
-    durationMin: 360,
-  },
-  {
-    id: "athletics-golden-trail-stranda-fjord-2026",
-    displayName: "Stranda Fjord Trail Race",
-    city: "Stranda",
-    country: "Norway",
-    startUtc: "2026-07-11T08:00:00.000Z", // 10:00 CEST Sat
-    durationMin: 360,
-  },
-  {
-    id: "athletics-golden-trail-dolomyths-run-2026",
-    displayName: "Dolomyths Run Sky Race",
-    city: "Canazei",
+    id: "athletics-golden-trail-ledro-sky-2026",
+    displayName: "Ledro Sky Trentino",
+    city: "Ledro",
     country: "Italy",
-    startUtc: "2026-07-19T07:00:00.000Z", // 09:00 CEST Sun
+    startUtc: "2026-05-24T06:00:00.000Z", // 08:00 CEST Sun
+    durationMin: 300,
+  },
+  {
+    id: "athletics-golden-trail-quebec-mega-trail-2026",
+    displayName: "Quebec Mega Trail",
+    city: "Mont-Sainte-Anne",
+    country: "Canada",
+    startUtc: "2026-07-05T12:00:00.000Z", // 08:00 EDT Sun
     durationMin: 360,
+  },
+  {
+    id: "athletics-golden-trail-pitz-alpine-2026",
+    displayName: "Pitz Alpine Glacier Trail",
+    city: "Pitztal",
+    country: "Austria",
+    startUtc: "2026-08-01T06:00:00.000Z", // 08:00 CEST Sat
+    durationMin: 300,
   },
   {
     id: "athletics-golden-trail-sierre-zinal-2026",
     displayName: "Sierre-Zinal",
     city: "Sierre",
     country: "Switzerland",
-    startUtc: "2026-08-09T06:30:00.000Z", // 08:30 CEST Sun
+    startUtc: "2026-08-08T06:30:00.000Z", // 08:30 CEST Sat
     durationMin: 360,
   },
   {
-    id: "athletics-golden-trail-pikes-peak-2026",
-    displayName: "Pikes Peak Marathon",
-    city: "Manitou Springs, CO",
-    country: "USA",
-    startUtc: "2026-09-20T13:00:00.000Z", // 07:00 MDT Sun
-    durationMin: 480,
+    id: "athletics-golden-trail-myoko-trail-2026",
+    displayName: "Myoko Trail",
+    city: "Myoko",
+    country: "Japan",
+    startUtc: "2026-09-19T23:00:00.000Z", // 08:00 JST Sun Sep 20
+    durationMin: 300,
   },
   {
-    id: "athletics-golden-trail-grand-final-2026",
-    displayName: "Golden Trail World Series Grand Final",
-    city: "TBD",
-    country: "TBD",
-    startUtc: "2026-10-25T08:00:00.000Z", // TBD — typically late Oct
-    durationMin: DAY_MIN * 3,
+    id: "athletics-golden-trail-jinshanling-2026",
+    displayName: "Jinshanling Great Wall Trail Race",
+    city: "Jinshanling",
+    country: "China",
+    startUtc: "2026-09-27T00:00:00.000Z", // 08:00 CST Sun
+    durationMin: 360,
+  },
+  {
+    id: "athletics-golden-trail-muju-grand-finale-2026",
+    displayName: "Muju Trail Grand Finale",
+    city: "Muju",
+    country: "South Korea",
+    startUtc: "2026-10-23T23:00:00.000Z", // Oct 24 08:00 KST (women) — runs through Oct 25 (men)
+    durationMin: 60 * 36, // 36h window spanning women's (Oct 24) and men's (Oct 25) races
   },
 ];
 
@@ -127,8 +133,8 @@ export function fetchGoldenTrailEvents(): GoldenTrailFetchResult {
       homeTeam: race.displayName,
       startTimeLocal: race.startUtc,
       endTimeLocal: endUtc,
-      providerId: "youtubetv",
-      providerReason: "gtws-youtube",
+      providerId: "flosports",
+      providerReason: "gtws-flosports",
       isLive: false,
       source: "golden-trail-hardcoded",
       leagueKey: "golden-trail",
@@ -149,8 +155,12 @@ export function mergeGoldenTrailEvents(
   fresh: AppEvent[],
   now: Date
 ): GoldenTrailMergeResult {
+  const freshIds = new Set(fresh.map(e => e.id));
   const index = new Map<string, AppEvent>();
   for (const e of existing) {
+    // Drop stale GTWS cache entries that aren't in the fresh schedule
+    // (handles prior provisional IDs / removed races).
+    if (e.id.startsWith("athletics-golden-trail-") && !freshIds.has(e.id)) continue;
     index.set(e.id, e);
   }
 
