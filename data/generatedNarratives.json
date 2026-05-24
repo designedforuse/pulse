@@ -1,20 +1,32 @@
 {
-  "lastUpdated": "2026-05-24T08:55:52.244Z",
+  "lastUpdated": "2026-05-24T17:00:05.502Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
+        "Other": 2
+      },
+      "upset_alert": {
         "Other": 1
       }
     },
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
       "Other": [
+        "upset_alert: Upset Alert",
         "league_moment: Canadian Grand Prix"
       ]
     },
-    "droppedCandidatesReasons": [],
-    "totalBeforeCap": 1,
-    "totalAfterCap": 1,
+    "droppedCandidatesReasons": [
+      {
+        "id": "league_moment_tournament",
+        "kind": "league_moment",
+        "region": "Other",
+        "title": "Big Stage",
+        "reason": "max 1 league_moment per region (Other)"
+      }
+    ],
+    "totalBeforeCap": 3,
+    "totalAfterCap": 2,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -49,17 +61,17 @@
         ],
         "playersIngested": 399,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-24T08:55:52.244Z"
+        "timestamp": "2026-05-24T17:00:05.502Z"
       },
       "cacheHistoryCount": 880,
       "error": null
     },
     "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 1,
-    "candidateCountAfterCap": 1,
+    "candidateCountBeforeCap": 3,
+    "candidateCountAfterCap": 2,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1860.9311788888888,
+      "hoursUntil": -1869.0015283333332,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -69,10 +81,10 @@
       "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 0,
-      "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 0,
-      "upsetFinalCount": 0
+      "rawUpsetCandidates": 2,
+      "upsetLiveCandidates": 1,
+      "upsetCompletedCandidates": 1,
+      "upsetFinalCount": 1
     },
     "clinchWatch": {
       "rawClinchCandidates": 0,
@@ -113,6 +125,13 @@
       ]
     },
     "videoSelection": {
+      "upset_alert_tennis-espn-175772": {
+        "searchQuery": "Fritz vs Basavareddy upset highlights May 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
+        "rejectedForAgeCount": 0
+      },
       "f1_race_weekend_canadian_grand_prix": {
         "searchQuery": "Canadian Grand Prix sports May 2026",
         "selectedVideoTitle": "George Russell's Pole Lap | 2026 Canadian Grand Prix | Pirelli",
@@ -124,15 +143,50 @@
   },
   "cards": [
     {
+      "id": "upset_alert_tennis-espn-175772",
+      "title": "Upset Alert",
+      "subtitle": "Fritz in trouble against Basavareddy at French Open",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 98,
+      "triggeredAt": "2026-05-24T17:00:05.502Z",
+      "expiresAt": "2026-05-24T19:00:05.502Z",
+      "kind": "upset_alert",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "mode": "live",
+        "upsetType": "tennis_live_upset",
+        "sport": "tennis",
+        "league": "Grand Slam",
+        "favoriteName": "Fritz",
+        "underdogName": "Basavareddy",
+        "favoriteRank": 7,
+        "awayTeam": "Basavareddy",
+        "homeTeam": "Fritz",
+        "startTime": "2026-05-24T15:30:00.000Z",
+        "eventIds": [
+          "tennis-espn-175772"
+        ],
+        "reason": "Basavareddy is threatening an upset against Fritz.\n\nThe higher seed is in trouble and the match is still live."
+      },
+      "sports": [
+        "tennis"
+      ]
+    },
+    {
       "id": "f1_race_weekend_canadian_grand_prix",
       "title": "Canadian Grand Prix",
-      "subtitle": "Canadian Grand Prix — 1 session in the next 48h: Race",
+      "subtitle": "Canadian Grand Prix — Race starting soon",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-05-24T08:55:52.244Z",
+      "triggeredAt": "2026-05-24T17:00:05.502Z",
       "expiresAt": "2026-05-25T00:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
@@ -307,23 +361,23 @@
           "seasonPhase": "Regular"
         },
         {
-          "sport": "cricket",
-          "displayName": "IPL",
-          "leagueKey": "ipl",
-          "dateRangeLabel": "May 10–31",
-          "startDate": "2026-05-10T10:00:00.000Z",
-          "endDate": "2026-05-31T14:00:00.000Z",
-          "eventCount": 22,
-          "seasonPhase": "Final"
+          "sport": "soccer",
+          "displayName": "Bundesliga",
+          "leagueKey": "bundesliga",
+          "dateRangeLabel": "May 10–16",
+          "startDate": "2026-05-10T17:30:00.000Z",
+          "endDate": "2026-05-16T13:30:00.000Z",
+          "eventCount": 10,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
           "displayName": "Serie A",
           "leagueKey": "seriea",
           "dateRangeLabel": "May 10–24",
-          "startDate": "2026-05-10T10:30:00.000Z",
+          "startDate": "2026-05-10T18:45:00.000Z",
           "endDate": "2026-05-24T18:45:00.000Z",
-          "eventCount": 26,
+          "eventCount": 22,
           "seasonPhase": "Regular"
         },
         {
@@ -331,59 +385,9 @@
           "displayName": "La Liga",
           "leagueKey": "laliga",
           "dateRangeLabel": "May 10–24",
-          "startDate": "2026-05-10T12:00:00.000Z",
+          "startDate": "2026-05-10T19:00:00.000Z",
           "endDate": "2026-05-24T19:00:00.000Z",
-          "eventCount": 35,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "cycling",
-          "displayName": "Grand Tour — Giro d'Italia",
-          "leagueKey": "grand-tour",
-          "dateRangeLabel": "May 10–31",
-          "startDate": "2026-05-10T12:00:00.000Z",
-          "endDate": "2026-05-31T12:00:00.000Z",
-          "eventCount": 19,
-          "seasonPhase": null
-        },
-        {
-          "sport": "soccer",
-          "displayName": "EPL",
-          "leagueKey": "epl",
-          "dateRangeLabel": "May 10–24",
-          "startDate": "2026-05-10T13:00:00.000Z",
-          "endDate": "2026-05-24T15:00:00.000Z",
-          "eventCount": 33,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Bundesliga",
-          "leagueKey": "bundesliga",
-          "dateRangeLabel": "May 10–16",
-          "startDate": "2026-05-10T13:30:00.000Z",
-          "endDate": "2026-05-16T13:30:00.000Z",
-          "eventCount": 12,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "rugby",
-          "displayName": "English Premiership",
-          "leagueKey": "premiership",
-          "dateRangeLabel": "May 10–31",
-          "startDate": "2026-05-10T14:00:00.000Z",
-          "endDate": "2026-05-31T14:30:00.000Z",
-          "eventCount": 12,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "NWSL",
-          "leagueKey": "nwsl",
-          "dateRangeLabel": "May 10–31",
-          "startDate": "2026-05-10T16:25:00.000Z",
-          "endDate": "2026-05-31T23:00:00.000Z",
-          "eventCount": 30,
+          "eventCount": 32,
           "seasonPhase": "Regular"
         },
         {
@@ -417,6 +421,16 @@
           "seasonPhase": "Regular"
         },
         {
+          "sport": "soccer",
+          "displayName": "NWSL",
+          "leagueKey": "nwsl",
+          "dateRangeLabel": "May 10–31",
+          "startDate": "2026-05-10T20:00:00.000Z",
+          "endDate": "2026-05-31T23:00:00.000Z",
+          "eventCount": 29,
+          "seasonPhase": "Regular"
+        },
+        {
           "sport": "hockey",
           "displayName": "ECHL",
           "leagueKey": "echl",
@@ -434,6 +448,36 @@
           "startDate": "2026-05-11T09:00:00.000Z",
           "endDate": "2026-05-17T09:00:00.000Z",
           "eventCount": 10,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
+          "displayName": "IPL",
+          "leagueKey": "ipl",
+          "dateRangeLabel": "May 11–31",
+          "startDate": "2026-05-11T14:00:00.000Z",
+          "endDate": "2026-05-31T14:00:00.000Z",
+          "eventCount": 20,
+          "seasonPhase": "Final"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "EPL",
+          "leagueKey": "epl",
+          "dateRangeLabel": "May 11–24",
+          "startDate": "2026-05-11T19:00:00.000Z",
+          "endDate": "2026-05-24T15:00:00.000Z",
+          "eventCount": 29,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "cycling",
+          "displayName": "Grand Tour — Giro d'Italia",
+          "leagueKey": "grand-tour",
+          "dateRangeLabel": "May 12–31",
+          "startDate": "2026-05-12T12:00:00.000Z",
+          "endDate": "2026-05-31T12:00:00.000Z",
+          "eventCount": 18,
           "seasonPhase": null
         },
         {
@@ -474,6 +518,16 @@
           "startDate": "2026-05-15T18:45:00.000Z",
           "endDate": "2026-05-30T19:00:00.000Z",
           "eventCount": 12,
+          "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "rugby",
+          "displayName": "English Premiership",
+          "leagueKey": "premiership",
+          "dateRangeLabel": "May 15–31",
+          "startDate": "2026-05-15T18:45:00.000Z",
+          "endDate": "2026-05-31T14:30:00.000Z",
+          "eventCount": 10,
           "seasonPhase": "Playoffs"
         },
         {
@@ -650,10 +704,10 @@
           "sport": "tennis",
           "displayName": "Roland Garros",
           "leagueKey": "grand-slam",
-          "dateRangeLabel": "May 24–31",
-          "startDate": "2026-05-24T09:00:00.000Z",
-          "endDate": "2026-05-31T12:00:00.000Z",
-          "eventCount": 20,
+          "dateRangeLabel": "May 24–26",
+          "startDate": "2026-05-24T09:10:00.000Z",
+          "endDate": "2026-05-26T04:00:00.000Z",
+          "eventCount": 25,
           "seasonPhase": null
         },
         {
@@ -786,16 +840,6 @@
           "endDate": "2026-06-13T20:00:00.000Z",
           "eventCount": 5,
           "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "tennis",
-          "displayName": "Roland Garros",
-          "leagueKey": "grand-slam",
-          "dateRangeLabel": "Jun 1–7",
-          "startDate": "2026-06-01T09:00:00.000Z",
-          "endDate": "2026-06-07T09:00:00.000Z",
-          "eventCount": 10,
-          "seasonPhase": null
         },
         {
           "sport": "hockey",

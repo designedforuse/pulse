@@ -1258,5 +1258,17 @@
       "selectedVideoChannel": "FORMULA 1",
       "rejectedForAgeCount": 0
     }
+  },
+  "upset_alert:fritz vs basavareddy upset highlights may 2026": {
+    "video": null,
+    "fetchedAt": "2026-05-24T17:00:01.668Z",
+    "query": "Fritz vs Basavareddy upset highlights May 2026",
+    "debug": {
+      "searchQuery": "Fritz vs Basavareddy upset highlights May 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
   }
 }

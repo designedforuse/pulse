@@ -455,7 +455,9 @@ function matchEspnEventToTournament(espnEventName: string): TennisTournament | n
   let bestMatch: TennisTournament | null = null;
   let bestScore = 0;
   for (const t of TOURNAMENTS) {
-    const keywords = t.name.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+    const nameWords = t.name.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+    const shortWords = t.shortName.toLowerCase().split(/\s+/).filter(w => w.length > 3);
+    const keywords = Array.from(new Set([...nameWords, ...shortWords]));
     const score = keywords.filter(kw => lower.includes(kw)).length;
     if (score > bestScore) {
       bestScore = score;
