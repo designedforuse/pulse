@@ -71,3 +71,33 @@ id = "BCzZEiJcUNr5OpJ6RpZse"
 uri = "file://PRD.md"
 type = "text"
 title = "Sports Watch PRD v2.0"
+
+[[outputs]]
+id = "yU-GunLjRumHeT9cWP3Kt"
+uri = "file://attached_assets/image_search/cover_daily-wrap.jpg"
+type = "image"
+title = "Daily Wrap — empty indoor ice rink"
+
+[[outputs]]
+id = "09TKNtjXx89b4hwQABymg"
+uri = "file://attached_assets/image_search/cover_todays-story.jpg"
+type = "image"
+title = "Today's Story — stadium floodlights twilight"
+
+[[outputs]]
+id = "asBAjL1bp1_20CIBkXXgZ"
+uri = "file://attached_assets/image_search/cover_coming-up.jpg"
+type = "image"
+title = "What's Coming Up — empty soccer stadium at night"
+
+[[outputs]]
+id = "fqNgiwu2k5UYDjUQDJjO9"
+uri = "file://attached_assets/image_search/cover_behind-stories.jpg"
+type = "image"
+title = "Behind the Stories — tactics whiteboard"
+
+[[outputs]]
+id = "BV3eUNscYZ9ZeapaoVmbh"
+uri = "file://attached_assets/image_search/cover_trending.jpg"
+type = "image"
+title = "Trending Stories — fireworks night sky"
