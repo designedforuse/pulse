@@ -220,10 +220,6 @@ export default function ExploreScreen() {
               </View>
             )}
           </View>
-          <View style={styles.tonightCoverCta}>
-            <Text style={styles.tonightCoverCtaText}>Tap to open</Text>
-            <Ionicons name="chevron-forward" size={14} color={PINK} />
-          </View>
         </View>
       </Pressable>
     );
@@ -284,10 +280,6 @@ export default function ExploreScreen() {
                 </View>
               )}
             </View>
-            <View style={styles.comingUpCta}>
-              <Text style={styles.comingUpCtaText}>Tap to open</Text>
-              <Ionicons name="chevron-forward" size={14} color={SNAPSHOT_COLOR} />
-            </View>
           </View>
         </Pressable>
       );
@@ -330,10 +322,6 @@ export default function ExploreScreen() {
             <Text style={styles.deepTalkChipNum}>1</Text>
             <Text style={styles.deepTalkChipLabel}>TOPIC</Text>
           </View>
-        </View>
-        <View style={styles.deepTalkCta}>
-          <Text style={styles.deepTalkCtaText}>Tap to open</Text>
-          <Ionicons name="chevron-forward" size={14} color={PINK} />
         </View>
       </View>
     </Pressable>
@@ -383,10 +371,6 @@ export default function ExploreScreen() {
                 <Text style={styles.trendingChipLabel}>{distinctKinds === 1 ? "ANGLE" : "ANGLES"}</Text>
               </View>
             )}
-          </View>
-          <View style={styles.trendingCta}>
-            <Text style={styles.trendingCtaText}>Tap to open</Text>
-            <Ionicons name="chevron-forward" size={14} color={TRENDING_COLOR} />
           </View>
         </View>
       </Pressable>

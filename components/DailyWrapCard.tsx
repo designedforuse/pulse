@@ -151,10 +151,6 @@ export default function DailyWrapCard({ fill = false }: { fill?: boolean } = {})
             </View>
           )}
         </View>
-        <View style={styles.coverCta}>
-          <Text style={styles.coverCtaText}>Tap to open</Text>
-          <Ionicons name="chevron-forward" size={14} color={PINK} />
-        </View>
       </View>
     );
   };
