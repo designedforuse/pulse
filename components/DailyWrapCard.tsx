@@ -130,7 +130,7 @@ export default function DailyWrapCard({ fill = false }: { fill?: boolean } = {})
       return (
         <View style={styles.coverInner}>
           <Ionicons name="moon-outline" size={26} color={PINK} style={{ marginBottom: 10, opacity: 0.85 }} />
-          <Text style={styles.coverWordmark}>DAILY{"\n"}WRAP</Text>
+          <Text style={styles.coverWordmark}>THE DAILY{"\n"}WRAP</Text>
           <Text style={styles.coverTagline}>No results yet today</Text>
           <Text style={styles.coverSub}>Check back after games wrap up</Text>
         </View>
@@ -139,7 +139,7 @@ export default function DailyWrapCard({ fill = false }: { fill?: boolean } = {})
     return (
       <View style={styles.coverInner}>
         <Text style={styles.coverDate}>{data?.date ?? "Today"}</Text>
-        <Text style={styles.coverWordmark}>DAILY{"\n"}WRAP</Text>
+        <Text style={styles.coverWordmark}>THE DAILY{"\n"}WRAP</Text>
         <Text style={styles.coverTagline}>Today's stories, in one place</Text>
         <View style={styles.coverMetaRow}>
           <View style={styles.coverChip}>
@@ -147,7 +147,7 @@ export default function DailyWrapCard({ fill = false }: { fill?: boolean } = {})
           </View>
           {favCount > 0 && (
             <View style={[styles.coverChip, styles.coverChipFav]}>
-              <Text style={[styles.coverChipText, { color: "#FFD700" }]}>⭐ {favCount} YOUR TEAMS</Text>
+              <Text style={styles.coverChipText}>{favCount} {favCount === 1 ? "FAVORITE" : "FAVORITES"}</Text>
             </View>
           )}
         </View>
