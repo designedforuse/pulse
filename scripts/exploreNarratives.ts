@@ -1,6 +1,9 @@
 import * as fs from "fs";
 import * as path from "path";
 import { computeSeasonPhase, getChampionshipFinalsForMonth } from "../data/seasonPhases";
+import favoriteAliasData from "../data/favoriteAliases.json";
+
+const favoriteAliasMap: Record<string, string[]> = favoriteAliasData as Record<string, string[]>;
 
 const EVENTS_PATH = path.resolve(__dirname, "..", "data", "generatedEvents.json");
 const NARRATIVES_PATH = path.resolve(__dirname, "..", "data", "generatedNarratives.json");
@@ -494,7 +497,29 @@ const DERBY_KEYWORDS = ["derby", "clásico", "clasico", "rivalry", "el tráfico"
 const TOURNAMENT_KEYWORDS = ["final", "semifinal", "semi-final", "quarter-final", "quarterfinal", "knockout", "playoff", "elimination"];
 
 function normalizeTeamName(name: string): string {
-  return name.toLowerCase().replace(/[^a-z0-9\s]/g, "").trim();
+  return name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\s+fc$/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function expandFavoriteAliases(favTeamName: string): string[] {
+  const aliases = favoriteAliasMap[favTeamName] || [];
+  const all = [favTeamName, ...aliases];
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const a of all) {
+    const n = normalizeTeamName(a);
+    if (n && !seen.has(n)) {
+      seen.add(n);
+      out.push(n);
+    }
+  }
+  return out;
 }
 
 function teamMatchesFavorite(teamName: string, favTeams: string[]): boolean {
@@ -2697,15 +2722,12 @@ function buildTonightStory(
 
   function storyTeamMatch(eventTeamName: string, favTeamName: string): boolean {
     const normEv = normalizeTeamName(eventTeamName);
-    const normFav = normalizeTeamName(favTeamName);
-    if (normEv === normFav) return true;
     const evWords = new Set(normEv.split(/\s+/));
-    const favWords = normFav.split(/\s+/);
-    if (favWords.length >= 2) {
-      return favWords.every(w => evWords.has(w));
-    }
-    if (favWords.length === 1 && favWords[0].length >= 6) {
-      return evWords.has(favWords[0]);
+    for (const normFav of expandFavoriteAliases(favTeamName)) {
+      if (normEv === normFav) return true;
+      const favWords = normFav.split(/\s+/);
+      if (favWords.length >= 2 && favWords.every(w => evWords.has(w))) return true;
+      if (favWords.length === 1 && favWords[0].length >= 6 && evWords.has(favWords[0])) return true;
     }
     return false;
   }

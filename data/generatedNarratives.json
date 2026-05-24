@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-24T08:42:56.284Z",
+  "lastUpdated": "2026-05-24T08:55:52.244Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -49,7 +49,7 @@
         ],
         "playersIngested": 399,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-24T08:42:56.284Z"
+        "timestamp": "2026-05-24T08:55:52.244Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -59,7 +59,7 @@
     "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1860.7156344444445,
+      "hoursUntil": -1860.9311788888888,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -82,18 +82,18 @@
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "soccer-cafcl-20260524-1900-mamelodi-sundowns-at-as-far",
+    "tonightStorySourceEvent": "soccer-epl-20260524-1500-everton-at-spurs",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 260,
-      "sourceEventId": "soccer-cafcl-20260524-1900-mamelodi-sundowns-at-as-far",
-      "reason": "3 followed/affiliate teams playing today",
+      "selectedScore": 300,
+      "sourceEventId": "soccer-epl-20260524-1500-everton-at-spurs",
+      "reason": "5 followed/affiliate teams playing today",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 260,
-          "reason": "3 followed/affiliate teams playing today"
+          "score": 300,
+          "reason": "5 followed/affiliate teams playing today"
         },
         {
           "label": "[championship_day] CAF Champions League Final",
@@ -132,7 +132,7 @@
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-05-24T08:42:56.284Z",
+      "triggeredAt": "2026-05-24T08:55:52.244Z",
       "expiresAt": "2026-05-25T00:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
@@ -172,9 +172,11 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Mamelodi Sundowns, San Diego Wave, and California Legion all play today across the CAF Champions League, NWSL, MLR.",
-    "sourceEventId": "soccer-cafcl-20260524-1900-mamelodi-sundowns-at-as-far",
+    "body": "The Tottenham Hotspur, Atletico Madrid, Mamelodi Sundowns, San Diego FC, and California Legion all play today across the EPL, La Liga, CAF Champions League, NWSL, MLR.",
+    "sourceEventId": "soccer-epl-20260524-1500-everton-at-spurs",
     "eventIds": [
+      "soccer-epl-20260524-1500-everton-at-spurs",
+      "soccer-laliga-20260524-1900-atl-tico-madrid-at-villarreal",
       "soccer-cafcl-20260524-1900-mamelodi-sundowns-at-as-far",
       "soccer-nwsl-20260524-2300-orlando-pride-at-san-diego-wave",
       "rugby-mlr-20260525-0000-anthem-rc-at-california-legion"
@@ -189,7 +191,10 @@
       "rugby"
     ],
     "favoriteTeams": [
+      "Tottenham Hotspur",
+      "Atletico Madrid",
       "Mamelodi Sundowns",
+      "San Diego FC",
       "San Diego Wave",
       "California Legion"
     ]
@@ -199,9 +204,11 @@
       "signalType": "multi_team_night",
       "signalLabel": "YOUR TEAMS",
       "headline": "Your Sports Night",
-      "body": "The Mamelodi Sundowns, San Diego Wave, and California Legion all play today across the CAF Champions League, NWSL, MLR.",
-      "sourceEventId": "soccer-cafcl-20260524-1900-mamelodi-sundowns-at-as-far",
+      "body": "The Tottenham Hotspur, Atletico Madrid, Mamelodi Sundowns, San Diego FC, and California Legion all play today across the EPL, La Liga, CAF Champions League, NWSL, MLR.",
+      "sourceEventId": "soccer-epl-20260524-1500-everton-at-spurs",
       "eventIds": [
+        "soccer-epl-20260524-1500-everton-at-spurs",
+        "soccer-laliga-20260524-1900-atl-tico-madrid-at-villarreal",
         "soccer-cafcl-20260524-1900-mamelodi-sundowns-at-as-far",
         "soccer-nwsl-20260524-2300-orlando-pride-at-san-diego-wave",
         "rugby-mlr-20260525-0000-anthem-rc-at-california-legion"
@@ -216,7 +223,10 @@
         "rugby"
       ],
       "favoriteTeams": [
+        "Tottenham Hotspur",
+        "Atletico Madrid",
         "Mamelodi Sundowns",
+        "San Diego FC",
         "San Diego Wave",
         "California Legion"
       ]
