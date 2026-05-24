@@ -183,8 +183,6 @@ export default function ExploreScreen() {
 
   const slides: React.ReactNode[] = [];
 
-  slides.push(<DailyWrapCard key="daily-wrap" fill />);
-
   if (tonightStory) {
     slides.push(
       <Pressable
@@ -230,6 +228,8 @@ export default function ExploreScreen() {
       </Pressable>
     );
   }
+
+  slides.push(<DailyWrapCard key="daily-wrap" fill />);
 
   if (monthSnapshot) {
     slides.push((() => {
@@ -294,7 +294,7 @@ export default function ExploreScreen() {
     })());
   }
 
-  slides.push(
+  const deepTalkSlide = (
     <Pressable
       key="deep-talk"
       onPress={() => {
@@ -392,6 +392,8 @@ export default function ExploreScreen() {
       </Pressable>
     );
   }
+
+  slides.push(deepTalkSlide);
 
   const slideWidth = feedSize.width || screenWidth;
   const slideHeight = feedSize.height || 0;
