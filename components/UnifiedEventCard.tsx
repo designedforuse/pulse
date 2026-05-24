@@ -241,6 +241,9 @@ function getLeagueLabel(event: SportEvent): string {
   if (event.sport === "athletics" && (event.id?.startsWith("athletics-diamond-league-") || event.leagueKey === "diamond-league" || event.league === "Diamond League")) {
     return "Diamond League";
   }
+  if (event.sport === "athletics" && (event.id?.startsWith("athletics-golden-trail-") || event.leagueKey === "golden-trail")) {
+    return "Golden Trail";
+  }
   if (event.tournamentName) return event.tournamentName;
   return LEAGUE_DISPLAY_NAMES[event.league] ?? event.league;
 }
@@ -887,6 +890,7 @@ export default function UnifiedEventCard({
     : null;
   const isDiamondLeague = isAthletics && (event.id?.startsWith("athletics-diamond-league-") || /diamond\s+league/i.test(event.tournamentName || event.homeTeam || ""));
   const isUtmb = isAthletics && (event.id?.startsWith("athletics-utmb-") || event.leagueKey === "utmb");
+  const isGoldenTrail = isAthletics && (event.id?.startsWith("athletics-golden-trail-") || event.leagueKey === "golden-trail");
   const rawAthleticsTournament = isAthletics ? (event.tournamentName || event.homeTeam) : null;
   const athleticsTournament = isDiamondLeague && rawAthleticsTournament
     ? rawAthleticsTournament.replace(/^\s*diamond\s+league\s*[—–\-:]\s*/i, "").trim()
@@ -1018,7 +1022,7 @@ export default function UnifiedEventCard({
             <View>
               <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
                 <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>
-                  {isDiamondLeague ? "DIAMOND LEAGUE" : isUtmb ? "UTMB WORLD SERIES" : event.leagueKey === "marathon-majors" ? "MARATHON MAJORS" : getLeagueLabel(event)}
+                  {isDiamondLeague ? "DIAMOND LEAGUE" : isUtmb ? "UTMB WORLD SERIES" : isGoldenTrail ? "GOLDEN TRAIL" : event.leagueKey === "marathon-majors" ? "MARATHON MAJORS" : getLeagueLabel(event)}
                 </Text>
               </View>
               <View style={uStyles.espnMatchup}>
