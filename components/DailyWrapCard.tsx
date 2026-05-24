@@ -18,8 +18,8 @@ import Colors from "@/constants/colors";
 const PINK = "#FF85C8";
 
 const COVER_IMAGE = require("@/assets/images/stories/daily-wrap.jpg");
-const COVER_OVERLAY_COLORS = ["rgba(15,18,22,0.82)", "rgba(15,18,22,0.55)", "rgba(15,18,22,0.5)", "rgba(15,18,22,0.78)"] as const;
-const COVER_OVERLAY_LOCATIONS = [0, 0.3, 0.65, 1] as const;
+const COVER_OVERLAY_COLORS = ["rgba(15,18,22,0.15)", "rgba(15,18,22,0.55)", "rgba(15,18,22,0.95)"] as const;
+const COVER_OVERLAY_LOCATIONS = [0, 0.5, 1] as const;
 
 export interface DailyWrapEntry {
   eventId: string;
@@ -165,6 +165,7 @@ export default function DailyWrapCard({ fill = false }: { fill?: boolean } = {})
         source={COVER_IMAGE}
         style={StyleSheet.absoluteFillObject}
         contentFit="cover"
+        contentPosition="top"
         cachePolicy="memory-disk"
       />
       <LinearGradient
@@ -193,9 +194,10 @@ const styles = StyleSheet.create({
   coverInner: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     paddingHorizontal: 20,
-    paddingVertical: 26,
+    paddingTop: 16,
+    paddingBottom: 22,
   },
   coverDate: {
     fontSize: 11,
@@ -251,7 +253,7 @@ const styles = StyleSheet.create({
   coverChipText: {
     fontSize: 11,
     fontFamily: "Inter_700Bold",
-    color: PINK,
+    color: Colors.textPrimary,
     letterSpacing: 1.1,
   },
   coverCta: {

@@ -31,8 +31,8 @@ const COVER_IMAGES = {
   trending: require("@/assets/images/stories/trending.jpg"),
 } as const;
 
-const COVER_OVERLAY_COLORS = ["rgba(15,18,22,0.82)", "rgba(15,18,22,0.55)", "rgba(15,18,22,0.5)", "rgba(15,18,22,0.78)"] as const;
-const COVER_OVERLAY_LOCATIONS = [0, 0.3, 0.65, 1] as const;
+const COVER_OVERLAY_COLORS = ["rgba(15,18,22,0.15)", "rgba(15,18,22,0.55)", "rgba(15,18,22,0.95)"] as const;
+const COVER_OVERLAY_LOCATIONS = [0, 0.5, 1] as const;
 
 interface NarrativeImpact {
   label: string;
@@ -196,6 +196,7 @@ export default function ExploreScreen() {
           source={COVER_IMAGES.tonight}
           style={StyleSheet.absoluteFillObject}
           contentFit="cover"
+          contentPosition="top"
           cachePolicy="memory-disk"
         />
         <LinearGradient
@@ -254,6 +255,7 @@ export default function ExploreScreen() {
             source={COVER_IMAGES.comingUp}
             style={StyleSheet.absoluteFillObject}
             contentFit="cover"
+            contentPosition="top"
             cachePolicy="memory-disk"
           />
           <LinearGradient
@@ -308,6 +310,7 @@ export default function ExploreScreen() {
         source={COVER_IMAGES.deepTalk}
         style={StyleSheet.absoluteFillObject}
         contentFit="cover"
+        contentPosition="top"
         cachePolicy="memory-disk"
       />
       <LinearGradient
@@ -354,6 +357,7 @@ export default function ExploreScreen() {
           source={COVER_IMAGES.trending}
           style={StyleSheet.absoluteFillObject}
           contentFit="cover"
+          contentPosition="top"
           cachePolicy="memory-disk"
         />
         <LinearGradient
@@ -652,9 +656,10 @@ const styles = StyleSheet.create({
   tonightCoverInner: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     paddingHorizontal: 20,
-    paddingVertical: 26,
+    paddingTop: 16,
+    paddingBottom: 22,
   },
   tonightCoverDate: {
     fontSize: 11,
@@ -700,7 +705,7 @@ const styles = StyleSheet.create({
   tonightCoverChipText: {
     fontSize: 11,
     fontFamily: "Inter_700Bold",
-    color: PINK,
+    color: Colors.textPrimary,
     letterSpacing: 1.1,
   },
   tonightCoverCta: {
@@ -872,9 +877,10 @@ const styles = StyleSheet.create({
   comingUpInner: {
     flex: 1,
     alignItems: "center" as const,
-    justifyContent: "center" as const,
+    justifyContent: "flex-end" as const,
     paddingHorizontal: 20,
-    paddingVertical: 26,
+    paddingTop: 16,
+    paddingBottom: 22,
   },
   comingUpBadge: {
     flexDirection: "row" as const,
@@ -957,19 +963,19 @@ const styles = StyleSheet.create({
   comingUpChipNum: {
     fontSize: 16,
     fontFamily: "Inter_700Bold",
-    color: SNAPSHOT_COLOR,
+    color: Colors.textPrimary,
   },
   comingUpChipNumAccent: {
-    color: PINK,
+    color: Colors.textPrimary,
   },
   comingUpChipLabel: {
     fontSize: 10,
     fontFamily: "Inter_700Bold",
-    color: SNAPSHOT_COLOR,
+    color: Colors.textPrimary,
     letterSpacing: 1.1,
   },
   comingUpChipLabelAccent: {
-    color: PINK,
+    color: Colors.textPrimary,
   },
   comingUpCta: {
     flexDirection: "row" as const,
@@ -995,9 +1001,10 @@ const styles = StyleSheet.create({
   deepTalkInner: {
     flex: 1,
     alignItems: "center" as const,
-    justifyContent: "center" as const,
+    justifyContent: "flex-end" as const,
     paddingHorizontal: 20,
-    paddingVertical: 26,
+    paddingTop: 16,
+    paddingBottom: 22,
   },
   deepTalkBadge: {
     flexDirection: "row" as const,
@@ -1051,12 +1058,12 @@ const styles = StyleSheet.create({
   deepTalkChipNum: {
     fontSize: 16,
     fontFamily: "Inter_700Bold",
-    color: PINK,
+    color: Colors.textPrimary,
   },
   deepTalkChipLabel: {
     fontSize: 10,
     fontFamily: "Inter_700Bold",
-    color: PINK,
+    color: Colors.textPrimary,
     letterSpacing: 1.1,
   },
   deepTalkCta: {
@@ -1083,9 +1090,10 @@ const styles = StyleSheet.create({
   trendingInner: {
     flex: 1,
     alignItems: "center" as const,
-    justifyContent: "center" as const,
+    justifyContent: "flex-end" as const,
     paddingHorizontal: 20,
-    paddingVertical: 26,
+    paddingTop: 16,
+    paddingBottom: 22,
   },
   trendingBadge: {
     flexDirection: "row" as const,
@@ -1139,12 +1147,12 @@ const styles = StyleSheet.create({
   trendingChipNum: {
     fontSize: 16,
     fontFamily: "Inter_700Bold",
-    color: TRENDING_COLOR,
+    color: Colors.textPrimary,
   },
   trendingChipLabel: {
     fontSize: 10,
     fontFamily: "Inter_700Bold",
-    color: TRENDING_COLOR,
+    color: Colors.textPrimary,
     letterSpacing: 1.1,
   },
   trendingCta: {
