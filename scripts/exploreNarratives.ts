@@ -2389,63 +2389,154 @@ const GOLF_MAJOR_LEAGUES = new Set([
   "Players Championship",
 ]);
 
-function detectChampionshipDay(ev: AppEvent): { headline: string; body: string } | null {
+const CHAMPIONSHIP_TEAM_SPORTS = new Set(["soccer", "hockey", "rugby", "cricket"]);
+
+function detectChampionshipDay(
+  ev: AppEvent,
+): { headline: string; body: string; groupKey: string } | null {
   const league = ev.league || "";
   const sport = ev.sport || "";
   const session = ev.sessionTitle || "";
   const tournament = ev.tournamentName || "";
+  const haystack = [
+    session,
+    tournament,
+    ev.competitionName || "",
+    ev.t20WcMatchLabel || "",
+    ev.olympicRound || "",
+  ].join(" | ");
 
+  // Athletics — World Marathon Majors
   if (sport === "athletics" && /marathon/i.test(league)) {
     const name = tournament || ev.homeTeam || "Marathon Major";
     return {
       headline: name,
       body: `Runners take the start line at the ${name} today — a World Marathon Major.`,
+      groupKey: `athletics|marathon|${name}`,
     };
   }
 
+  // Athletics — UTMB World Series
+  if (sport === "athletics" && /UTMB/i.test(league)) {
+    const name = tournament || session || ev.homeTeam || "UTMB race";
+    return {
+      headline: name,
+      body: `Trail runners line up at ${name} today — a UTMB World Series race.`,
+      groupKey: `athletics|utmb|${name}`,
+    };
+  }
+
+  // Athletics — Golden Trail World Series
+  if (sport === "athletics" && /golden trail/i.test(league)) {
+    const name = tournament || session || ev.homeTeam || "Golden Trail race";
+    return {
+      headline: name,
+      body: `Trail runners line up at ${name} today — a Golden Trail World Series race.`,
+      groupKey: `athletics|gtws|${name}`,
+    };
+  }
+
+  // Athletics — Diamond League Final
   if (sport === "athletics" && /diamond league/i.test(league) && /final/i.test(session)) {
     return {
       headline: "Diamond League Final",
       body: "The Wanda Diamond League crowns its champions today.",
+      groupKey: "athletics|diamond-league-final",
     };
   }
 
+  // Horse racing — Triple Crown
+  if (sport === "horse-racing" && /triple crown/i.test(league)) {
+    const name = tournament || session || ev.homeTeam || "Triple Crown race";
+    return {
+      headline: name,
+      body: `Post time at the ${name} today — a Triple Crown classic.`,
+      groupKey: `horse-racing|triple-crown|${name}`,
+    };
+  }
+
+  // F1 — race session
   if (sport === "racing" && /\bF1\b|Formula 1/i.test(league) && /^race$/i.test(session)) {
     const gp = ev.homeTeam || tournament || "Formula 1 race";
     return {
       headline: gp,
       body: `Lights out at the ${gp} today.`,
+      groupKey: `racing|f1|${gp}`,
     };
   }
 
-  if (sport === "cycling" && /grand tour/i.test(league) && /stage 21\b/i.test(session)) {
+  // Cycling — any Grand Tour stage
+  if (sport === "cycling" && /grand tour/i.test(league)) {
     const tour = tournament || "Grand Tour";
+    const stageMatch = session.match(/stage\s*(\d+)/i);
+    const stageNum = stageMatch ? stageMatch[1] : null;
+    const stageLabel = stageNum
+      ? `Stage ${stageNum}`
+      : ev.awayTeam || session || "today's stage";
+    const isFinalStage = stageNum === "21";
     return {
-      headline: `${tour} — Final Stage`,
-      body: `The ${tour} crowns its champion on today's final stage.`,
+      headline: isFinalStage ? `${tour} — Final Stage` : `${tour} — ${stageLabel}`,
+      body: isFinalStage
+        ? `The ${tour} crowns its champion on today's final stage.`
+        : `${stageLabel} of the ${tour} hits the road today.`,
+      groupKey: `cycling|${tour}|${stageLabel}`,
     };
   }
 
-  if (sport === "tennis" && /grand slam/i.test(league) && /^final$/i.test(ev.tennisRound || "")) {
-    const tname = tournament || "Grand Slam";
-    return {
-      headline: `${tname} Final`,
-      body: `The ${tname} crowns its champion today.`,
-    };
+  // Tennis — Grand Slam or ATP Masters QF/SF/F
+  if (sport === "tennis" && /grand slam|atp masters/i.test(league)) {
+    const round = ev.tennisRound || "";
+    const roundKind = /^quarter[\s-]?finals?$/i.test(round)
+      ? "Quarterfinal"
+      : /^semi[\s-]?finals?$/i.test(round)
+        ? "Semifinal"
+        : /^final$/i.test(round)
+          ? "Final"
+          : null;
+    if (roundKind) {
+      const tname = tournament || (/grand slam/i.test(league) ? "Grand Slam" : league);
+      const plural = roundKind === "Final" ? "Final" : `${roundKind}s`;
+      return {
+        headline: `${tname} ${plural}`,
+        body:
+          roundKind === "Final"
+            ? `The ${tname} crowns its champion today.`
+            : `${plural} day at the ${tname} — title contenders on the line.`,
+        groupKey: `tennis|${tname}|${roundKind}`,
+      };
+    }
   }
 
-  if (sport === "golf" && GOLF_MAJOR_LEAGUES.has(league) && /final round|round 4|r4|sunday/i.test(session)) {
+  // Golf — any round of a Major
+  if (sport === "golf" && GOLF_MAJOR_LEAGUES.has(league)) {
     return {
       headline: league,
-      body: `Final-round action at the ${league} today — one of golf's majors.`,
+      body: `Tournament play continues at the ${league} today — one of golf's majors.`,
+      groupKey: `golf|${league}`,
     };
   }
 
-  if (/world cup|champions league|europa league/i.test(league) && /final/i.test(session)) {
-    return {
-      headline: `${league} Final`,
-      body: `The ${league} title is on the line today.`,
-    };
+  // Team sports — Quarterfinals / Semifinals / Final in any competition
+  if (CHAMPIONSHIP_TEAM_SPORTS.has(sport) && league) {
+    const isQF = /\bquarter[\s-]?finals?\b|\bqf\b/i.test(haystack);
+    const isSF = /\bsemi[\s-]?finals?\b|\bsf\b/i.test(haystack);
+    const isF =
+      !isQF &&
+      !isSF &&
+      /(?:^|[^a-z])finals?(?:$|[^a-z])/i.test(haystack) &&
+      !/finalist/i.test(haystack);
+    const roundKind = isF ? "Final" : isSF ? "Semifinal" : isQF ? "Quarterfinal" : null;
+    if (roundKind) {
+      const plural = roundKind === "Final" ? "Final" : `${roundKind}s`;
+      return {
+        headline: `${league} ${plural}`,
+        body:
+          roundKind === "Final"
+            ? `The ${league} title is on the line today.`
+            : `${plural} day in the ${league} — winners advance.`,
+        groupKey: `${sport}|${league}|${roundKind}`,
+      };
+    }
   }
 
   return null;
@@ -2808,23 +2899,25 @@ function buildTonightStory(
     return matches;
   };
 
+  const championshipGroups = new Map<
+    string,
+    {
+      detection: { headline: string; body: string; groupKey: string };
+      events: AppEvent[];
+      favs: Set<string>;
+    }
+  >();
+
   for (const ev of tonightEvents) {
     const champ = detectChampionshipDay(ev);
     if (champ) {
-      const favs = eventInvolvesFavorite(ev);
-      const score = 200 + (favs.length > 0 ? FAVORITE_PARTICIPANT_BONUS : 0);
-      allStories.push({
-        score,
-        signalType: "championship_day",
-        headline: champ.headline,
-        body: champ.body,
-        reason: `championship-day event (${ev.league})${favs.length ? ` — favorite involved: ${favs.join(", ")}` : ""}`,
-        sourceEventId: ev.id,
-        eventIds: [ev.id],
-        sourceCard: { id: `championship_day_${ev.id}`, kind: "championship_day", title: champ.headline },
-        sports: [ev.sport],
-        favoriteTeams: favs,
-      });
+      let group = championshipGroups.get(champ.groupKey);
+      if (!group) {
+        group = { detection: champ, events: [], favs: new Set<string>() };
+        championshipGroups.set(champ.groupKey, group);
+      }
+      group.events.push(ev);
+      for (const f of eventInvolvesFavorite(ev)) group.favs.add(f);
     }
 
     const rivalry = detectRivalryOfDay(ev);
@@ -2862,6 +2955,25 @@ function buildTonightStory(
         favoriteTeams: favs,
       });
     }
+  }
+
+  for (const group of championshipGroups.values()) {
+    const ev0 = group.events[0];
+    const favsList = [...group.favs];
+    const score = 200 + (favsList.length > 0 ? FAVORITE_PARTICIPANT_BONUS : 0);
+    const slug = group.detection.groupKey.replace(/[^a-z0-9]+/gi, "-").toLowerCase();
+    allStories.push({
+      score,
+      signalType: "championship_day",
+      headline: group.detection.headline,
+      body: group.detection.body,
+      reason: `championship-day group (${group.detection.groupKey}, ${group.events.length} event${group.events.length > 1 ? "s" : ""})${favsList.length ? ` — favorite(s): ${favsList.join(", ")}` : ""}`,
+      sourceEventId: ev0.id,
+      eventIds: group.events.map(e => e.id),
+      sourceCard: { id: `championship_day_${slug}`, kind: "championship_day", title: group.detection.headline },
+      sports: [...new Set(group.events.map(e => e.sport))],
+      favoriteTeams: favsList,
+    });
   }
 
   allStories.sort((a, b) => b.score - a.score);

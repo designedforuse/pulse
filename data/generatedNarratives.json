@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-24T08:19:14.540Z",
+  "lastUpdated": "2026-05-24T08:33:25.312Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -49,7 +49,7 @@
         ],
         "playersIngested": 399,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-24T08:19:14.540Z"
+        "timestamp": "2026-05-24T08:33:25.312Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -59,7 +59,7 @@
     "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1860.3207055555556,
+      "hoursUntil": -1860.5570311111112,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -96,9 +96,14 @@
           "reason": "3 followed/affiliate teams playing today"
         },
         {
+          "label": "[championship_day] Giro d'Italia — Stage 15",
+          "score": 200,
+          "reason": "championship-day group (cycling|Giro d'Italia|Stage 15, 1 event)"
+        },
+        {
           "label": "[championship_day] Canadian Grand Prix",
           "score": 200,
-          "reason": "championship-day event (F1)"
+          "reason": "championship-day group (racing|f1|Canadian Grand Prix, 1 event)"
         },
         {
           "label": "[ritual_night] Sunday Coffee & Chill",
@@ -127,7 +132,7 @@
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-05-24T08:19:14.540Z",
+      "triggeredAt": "2026-05-24T08:33:25.312Z",
       "expiresAt": "2026-05-25T00:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
@@ -219,6 +224,25 @@
     {
       "signalType": "championship_day",
       "signalLabel": "CHAMPIONSHIP DAY",
+      "headline": "Giro d'Italia — Stage 15",
+      "body": "Stage 15 of the Giro d'Italia hits the road today.",
+      "sourceEventId": "cycling-grand-tour-giro-d-italia-2026-2026-05-24-stage-15",
+      "eventIds": [
+        "cycling-grand-tour-giro-d-italia-2026-2026-05-24-stage-15"
+      ],
+      "sourceCard": {
+        "id": "championship_day_cycling-giro-d-italia-stage-15",
+        "kind": "championship_day",
+        "title": "Giro d'Italia — Stage 15"
+      },
+      "sports": [
+        "cycling"
+      ],
+      "favoriteTeams": []
+    },
+    {
+      "signalType": "championship_day",
+      "signalLabel": "CHAMPIONSHIP DAY",
       "headline": "Canadian Grand Prix",
       "body": "Lights out at the Canadian Grand Prix today.",
       "sourceEventId": "f1-espn-401839062",
@@ -226,7 +250,7 @@
         "f1-espn-401839062"
       ],
       "sourceCard": {
-        "id": "championship_day_f1-espn-401839062",
+        "id": "championship_day_racing-f1-canadian-grand-prix",
         "kind": "championship_day",
         "title": "Canadian Grand Prix"
       },
