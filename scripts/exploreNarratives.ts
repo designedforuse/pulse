@@ -2348,6 +2348,7 @@ export interface TonightStory {
   sourceEventId?: string;
   sourceCard: { id: string; kind: string; title: string };
   sports?: string[];
+  favoriteTeams?: string[];
 }
 
 interface TonightStoryDebug {
@@ -2453,6 +2454,7 @@ interface TonightStoryCandidate {
   sourceEventId?: string;
   sourceCard: { id: string; kind: string; title: string };
   sports?: string[];
+  favoriteTeams?: string[];
 }
 
 function buildTonightStory(
@@ -2572,6 +2574,18 @@ function buildTonightStory(
       const affiliateMatched = dedupedEvents.filter(e => e.isAffiliate).map(e => e.matchedTeam);
       const orderedTeams = [...new Set([...directFollowed, ...affiliateMatched])];
 
+      const directFavoritesSet = new Set<string>();
+      for (const entry of dedupedEvents) {
+        const ev = entry.event;
+        const sportTeams = followedBySport.get(ev.sport) || [];
+        for (const fn of sportTeams) {
+          if (storyTeamMatch(ev.homeTeam, fn) || storyTeamMatch(ev.awayTeam, fn)) {
+            directFavoritesSet.add(fn);
+          }
+        }
+      }
+      const directFavoriteTeams = [...directFavoritesSet];
+
       const MAX_DISPLAY = 5;
       const displayTeams = orderedTeams.slice(0, MAX_DISPLAY);
       const extraCount = orderedTeams.length - displayTeams.length;
@@ -2606,6 +2620,7 @@ function buildTonightStory(
         sourceEventId: allEventIds[0],
         sourceCard: { id: "tonight_multi_team", kind: "multi_team_night", title: headline },
         sports: [...sportsInPlay],
+        favoriteTeams: directFavoriteTeams,
       });
     }
 
@@ -2623,6 +2638,7 @@ function buildTonightStory(
         sourceEventId: ev.id,
         sourceCard: { id: "tonight_single_team", kind: "single_team_game", title: `${entry.followedTeam} Today` },
         sports: [ev.sport],
+        favoriteTeams: [entry.followedTeam],
       });
     }
   }
@@ -2637,6 +2653,15 @@ function buildTonightStory(
       );
     });
     if (followedInRitual.length > 0) {
+      const ritualFavoriteTeams = new Set<string>();
+      for (const e of followedInRitual) {
+        const sportTeams = followedBySport.get(e.sport) || [];
+        for (const fn of sportTeams) {
+          if (storyTeamMatch(e.homeTeam, fn) || storyTeamMatch(e.awayTeam, fn)) {
+            ritualFavoriteTeams.add(fn);
+          }
+        }
+      }
       allStories.push({
         score: 130,
         signalType: "ritual_night",
@@ -2646,6 +2671,7 @@ function buildTonightStory(
         sourceEventId: followedInRitual[0]?.id,
         sourceCard: { id: `tonight_ritual_${activeRitual.id}`, kind: "ritual_night", title: activeRitual.label },
         sports: [...new Set(followedInRitual.map(e => e.sport))],
+        favoriteTeams: [...ritualFavoriteTeams],
       });
     }
   }
@@ -2767,6 +2793,7 @@ function buildTonightStory(
     sourceEventId: c.sourceEventId,
     sourceCard: c.sourceCard,
     sports: c.sports || [],
+    favoriteTeams: c.favoriteTeams || [],
   });
 
   const TOP_STORIES_LIMIT = 5;

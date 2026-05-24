@@ -1241,20 +1241,20 @@
   },
   "league_moment:canadian grand prix sports may 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=l3aB-W19bnc",
-      "thumbnailUrl": "https://img.youtube.com/vi/l3aB-W19bnc/hqdefault.jpg",
-      "durationSeconds": 481,
-      "title": "Sprint Highlights | 2026 Canadian Grand Prix",
+      "url": "https://www.youtube.com/watch?v=CNjJdmNPLMs",
+      "thumbnailUrl": "https://img.youtube.com/vi/CNjJdmNPLMs/hqdefault.jpg",
+      "durationSeconds": 102,
+      "title": "George Russell's Pole Lap | 2026 Canadian Grand Prix | Pirelli",
       "source": "youtube",
       "channel": "FORMULA 1",
-      "publishedAt": "24 minutes ago"
+      "publishedAt": "6 hours ago"
     },
-    "fetchedAt": "2026-05-23T18:00:17.129Z",
+    "fetchedAt": "2026-05-24T07:17:35.876Z",
     "query": "Canadian Grand Prix sports May 2026",
     "debug": {
       "searchQuery": "Canadian Grand Prix sports May 2026",
-      "selectedVideoTitle": "Sprint Highlights | 2026 Canadian Grand Prix",
-      "selectedVideoPublishedAt": "24 minutes ago",
+      "selectedVideoTitle": "George Russell's Pole Lap | 2026 Canadian Grand Prix | Pirelli",
+      "selectedVideoPublishedAt": "6 hours ago",
       "selectedVideoChannel": "FORMULA 1",
       "rejectedForAgeCount": 0
     }

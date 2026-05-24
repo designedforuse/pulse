@@ -48,6 +48,7 @@ interface TonightStory {
   sourceEventId?: string;
   sourceCard: { id: string; kind: string; title: string };
   sports?: string[];
+  favoriteTeams?: string[];
 }
 
 interface ExploreNarrativeCard {
@@ -132,7 +133,7 @@ export default function ExploreScreen() {
     setFeedSize((prev) => (prev.width === width && prev.height === height ? prev : { width, height }));
   }, []);
 
-  const { data, isLoading } = useQuery<{ cards: ExploreNarrativeCard[]; lastUpdated: string | null; tonightStory: TonightStory | null; monthSnapshot: MonthSnapshot | null }>({
+  const { data, isLoading } = useQuery<{ cards: ExploreNarrativeCard[]; lastUpdated: string | null; tonightStory: TonightStory | null; todaysStories?: TonightStory[]; monthSnapshot: MonthSnapshot | null }>({
     queryKey: ["/api/narratives"],
   });
 
@@ -209,9 +210,23 @@ export default function ExploreScreen() {
           <Text style={styles.tonightCoverWordmark}>TODAY'S{"\n"}STORY</Text>
           <Text style={styles.tonightCoverTagline}>What's worth watching today</Text>
           <View style={styles.tonightCoverChips}>
-            <View style={styles.tonightCoverChip}>
-              <Text style={styles.tonightCoverChipText}>{tonightStory.signalLabel}</Text>
-            </View>
+            {(() => {
+              const favSet = new Set<string>();
+              const storiesForCount = (data?.todaysStories && data.todaysStories.length > 0)
+                ? data.todaysStories
+                : [tonightStory];
+              for (const s of storiesForCount) {
+                for (const t of (s?.favoriteTeams || [])) favSet.add(t);
+              }
+              const favCount = favSet.size;
+              return (
+                <View style={styles.tonightCoverChip}>
+                  <Text style={styles.tonightCoverChipText}>
+                    {favCount > 0 ? `${favCount} ${favCount === 1 ? "FAVORITE" : "FAVORITES"}` : tonightStory.signalLabel}
+                  </Text>
+                </View>
+              );
+            })()}
             {tonightStory.sports && tonightStory.sports.length > 0 && (
               <View style={styles.tonightCoverChip}>
                 <Text style={styles.tonightCoverChipText}>

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-24T04:45:13.933Z",
+  "lastUpdated": "2026-05-24T07:19:45.496Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -49,7 +49,7 @@
         ],
         "playersIngested": 399,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-24T04:45:13.933Z"
+        "timestamp": "2026-05-24T07:19:45.496Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -59,7 +59,7 @@
     "candidateCountAfterCap": 1,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1856.7538702777779,
+      "hoursUntil": -1859.3293044444445,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -82,23 +82,23 @@
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "rugby-superrugby-jzoaj0",
+    "tonightStorySourceEvent": "soccer-cafcl-20260524-1900-mamelodi-sundowns-at-as-far",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 320,
-      "sourceEventId": "rugby-superrugby-jzoaj0",
-      "reason": "6 followed/affiliate teams playing today",
+      "selectedScore": 260,
+      "sourceEventId": "soccer-cafcl-20260524-1900-mamelodi-sundowns-at-as-far",
+      "reason": "3 followed/affiliate teams playing today",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 320,
-          "reason": "6 followed/affiliate teams playing today"
+          "score": 260,
+          "reason": "3 followed/affiliate teams playing today"
         },
         {
-          "label": "[ritual_night] Saturday Warm-Up",
+          "label": "[ritual_night] Sunday Coffee & Chill",
           "score": 130,
-          "reason": "ritual \"Saturday Warm-Up\" has 6 followed-team game(s)"
+          "reason": "ritual \"Sunday Coffee & Chill\" has 3 followed-team game(s)"
         },
         {
           "label": "[league_moment] League Spotlight",
@@ -110,8 +110,8 @@
     "videoSelection": {
       "f1_race_weekend_canadian_grand_prix": {
         "searchQuery": "Canadian Grand Prix sports May 2026",
-        "selectedVideoTitle": "Sprint Highlights | 2026 Canadian Grand Prix",
-        "selectedVideoPublishedAt": "24 minutes ago",
+        "selectedVideoTitle": "George Russell's Pole Lap | 2026 Canadian Grand Prix | Pirelli",
+        "selectedVideoPublishedAt": "6 hours ago",
         "selectedVideoChannel": "FORMULA 1",
         "rejectedForAgeCount": 0
       }
@@ -127,7 +127,7 @@
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-05-24T04:45:13.933Z",
+      "triggeredAt": "2026-05-24T07:19:45.496Z",
       "expiresAt": "2026-05-25T00:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
@@ -153,13 +153,13 @@
         "racing"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=l3aB-W19bnc",
-        "thumbnailUrl": "https://img.youtube.com/vi/l3aB-W19bnc/hqdefault.jpg",
-        "durationSeconds": 481,
-        "title": "Sprint Highlights | 2026 Canadian Grand Prix",
+        "url": "https://www.youtube.com/watch?v=CNjJdmNPLMs",
+        "thumbnailUrl": "https://img.youtube.com/vi/CNjJdmNPLMs/hqdefault.jpg",
+        "durationSeconds": 102,
+        "title": "George Russell's Pole Lap | 2026 Canadian Grand Prix | Pirelli",
         "source": "youtube",
         "channel": "FORMULA 1",
-        "publishedAt": "24 minutes ago"
+        "publishedAt": "6 hours ago"
       }
     }
   ],
@@ -167,16 +167,21 @@
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Hurricanes, Lazio, New England Free Jacks, New England Revolution, and San Diego FC (+1 more) all play today across the Super Rugby, Serie A, MLR, MLS, USL.",
-    "sourceEventId": "rugby-superrugby-jzoaj0",
+    "body": "The Mamelodi Sundowns, San Diego Wave, and California Legion all play today across the CAF Champions League, NWSL, MLR.",
+    "sourceEventId": "soccer-cafcl-20260524-1900-mamelodi-sundowns-at-as-far",
     "sourceCard": {
       "id": "tonight_multi_team",
       "kind": "multi_team_night",
       "title": "Your Sports Night"
     },
     "sports": [
-      "rugby",
-      "soccer"
+      "soccer",
+      "rugby"
+    ],
+    "favoriteTeams": [
+      "Mamelodi Sundowns",
+      "San Diego Wave",
+      "California Legion"
     ]
   },
   "todaysStories": [
@@ -184,32 +189,42 @@
       "signalType": "multi_team_night",
       "signalLabel": "YOUR TEAMS",
       "headline": "Your Sports Night",
-      "body": "The Hurricanes, Lazio, New England Free Jacks, New England Revolution, and San Diego FC (+1 more) all play today across the Super Rugby, Serie A, MLR, MLS, USL.",
-      "sourceEventId": "rugby-superrugby-jzoaj0",
+      "body": "The Mamelodi Sundowns, San Diego Wave, and California Legion all play today across the CAF Champions League, NWSL, MLR.",
+      "sourceEventId": "soccer-cafcl-20260524-1900-mamelodi-sundowns-at-as-far",
       "sourceCard": {
         "id": "tonight_multi_team",
         "kind": "multi_team_night",
         "title": "Your Sports Night"
       },
       "sports": [
-        "rugby",
-        "soccer"
+        "soccer",
+        "rugby"
+      ],
+      "favoriteTeams": [
+        "Mamelodi Sundowns",
+        "San Diego Wave",
+        "California Legion"
       ]
     },
     {
       "signalType": "ritual_night",
       "signalLabel": "RITUAL NIGHT",
-      "headline": "Saturday Warm-Up",
-      "body": "Your Saturday Warm-Up lineup includes 6 games with teams you follow.",
-      "sourceEventId": "rugby-superrugby-jzoaj0",
+      "headline": "Sunday Coffee & Chill",
+      "body": "Your Sunday Coffee & Chill lineup includes 3 games with teams you follow.",
+      "sourceEventId": "soccer-cafcl-20260524-1900-mamelodi-sundowns-at-as-far",
       "sourceCard": {
-        "id": "tonight_ritual_saturday_sunrise",
+        "id": "tonight_ritual_sunday_session",
         "kind": "ritual_night",
-        "title": "Saturday Warm-Up"
+        "title": "Sunday Coffee & Chill"
       },
       "sports": [
-        "rugby",
-        "soccer"
+        "soccer",
+        "rugby"
+      ],
+      "favoriteTeams": [
+        "Mamelodi Sundowns",
+        "San Diego Wave",
+        "California Legion"
       ]
     },
     {
@@ -225,7 +240,8 @@
       },
       "sports": [
         "racing"
-      ]
+      ],
+      "favoriteTeams": []
     }
   ],
   "monthSnapshot": {

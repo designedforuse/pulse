@@ -17,6 +17,7 @@ interface TonightStory {
   sourceEventId?: string;
   sourceCard: { id: string; kind: string; title: string };
   sports?: string[];
+  favoriteTeams?: string[];
 }
 
 export default function TonightStoryFullScreen() {
