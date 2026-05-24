@@ -2404,6 +2404,7 @@ function detectChampionshipDay(
     ev.competitionName || "",
     ev.t20WcMatchLabel || "",
     ev.olympicRound || "",
+    (ev as any).roundLabel || "",
   ].join(" | ");
 
   // Athletics — World Marathon Majors

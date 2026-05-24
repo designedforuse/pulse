@@ -31,11 +31,18 @@ function extractRoundLabel(espnEvent: EspnEvent): string | undefined {
   if (/round of 16/i.test(h)) return "R16";
   if (/quarter.?final/i.test(h)) return "QF";
   if (/semi.?final/i.test(h)) return "SF";
-  if (/^final$/i.test(h)) return "Final";
+  if (/\bfinal\b/i.test(h)) return "Final";
   if (/leg 1/i.test(h)) return "Leg 1";
   if (/leg 2/i.test(h)) return "Leg 2";
   return h.length <= 12 ? h : undefined;
 }
+
+// ESPN's CAF Champions League feed often omits round notes. Hardcode the
+// 2025/26 knockout rounds so championship-day detection still fires.
+const CAFCL_KNOCKOUT_OVERRIDES: Record<string, string> = {
+  "soccer-cafcl-20260517-1400-as-far-at-mamelodi-sundowns": "Final",
+  "soccer-cafcl-20260524-1900-mamelodi-sundowns-at-as-far": "Final",
+};
 
 function addDuration(isoString: string, minutes: number): string {
   const date = new Date(isoString);
@@ -113,7 +120,7 @@ export async function fetchCafClEvents(): Promise<SoccerFetchResult> {
       if (seenIds.has(id)) continue;
       seenIds.add(id);
 
-      const roundLabel = extractRoundLabel(espnEvent);
+      const roundLabel = CAFCL_KNOCKOUT_OVERRIDES[id] || extractRoundLabel(espnEvent);
       events.push({
         id,
         sport: "soccer",
