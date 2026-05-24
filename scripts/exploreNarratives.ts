@@ -2372,7 +2372,6 @@ const TONIGHT_STORY_SIGNAL_LABELS: Record<string, string> = {
   player_movement: "PLAYER MOVEMENT",
   multi_team_night: "YOUR TEAMS",
   single_team_game: "YOUR TEAM",
-  ritual_night: "RITUAL NIGHT",
   championship_day: "CHAMPIONSHIP DAY",
   rivalry_of_day: "RIVALRY DAY",
   season_opener: "OPENING DAY",
@@ -2854,39 +2853,6 @@ function buildTonightStory(
     }
   }
 
-  const activeRitual = findBestRitual(tonightEvents);
-  if (activeRitual && followedNames.length > 0) {
-    const matchedRitualEvents = tonightEvents.filter(e => activeRitual.sports.includes(e.sport));
-    const followedInRitual = matchedRitualEvents.filter(e => {
-      const sportTeams = followedBySport.get(e.sport) || [];
-      return sportTeams.some(fn =>
-        storyTeamMatch(e.homeTeam, fn) || storyTeamMatch(e.awayTeam, fn)
-      );
-    });
-    if (followedInRitual.length > 0) {
-      const ritualFavoriteTeams = new Set<string>();
-      for (const e of followedInRitual) {
-        const sportTeams = followedBySport.get(e.sport) || [];
-        for (const fn of sportTeams) {
-          if (storyTeamMatch(e.homeTeam, fn) || storyTeamMatch(e.awayTeam, fn)) {
-            ritualFavoriteTeams.add(fn);
-          }
-        }
-      }
-      allStories.push({
-        score: 130,
-        signalType: "ritual_night",
-        headline: activeRitual.label,
-        body: `Your ${activeRitual.label} lineup includes ${followedInRitual.length} game${followedInRitual.length > 1 ? "s" : ""} with teams you follow.`,
-        reason: `ritual "${activeRitual.label}" has ${followedInRitual.length} followed-team game(s)`,
-        sourceEventId: followedInRitual[0]?.id,
-        eventIds: followedInRitual.map(e => e.id),
-        sourceCard: { id: `tonight_ritual_${activeRitual.id}`, kind: "ritual_night", title: activeRitual.label },
-        sports: [...new Set(followedInRitual.map(e => e.sport))],
-        favoriteTeams: [...ritualFavoriteTeams],
-      });
-    }
-  }
 
   const FAVORITE_PARTICIPANT_BONUS = 60;
   const eventInvolvesFavorite = (ev: AppEvent): string[] => {
