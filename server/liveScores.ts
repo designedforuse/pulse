@@ -478,6 +478,7 @@ const ESPN_LEAGUE_PATHS: Record<string, string> = {
   "Champions League": "uefa.champions",
   "Europa League": "uefa.europa",
   "FA Cup": "eng.fa",
+  "CAF Champions League": "caf.champions",
 };
 
 async function fetchSoccerScores(soccerMap: Map<string, string[]>): Promise<Record<string, ScoreData>> {
