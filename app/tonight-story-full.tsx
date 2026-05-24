@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useMemo } from "react";
 import { View, Text, StyleSheet, ScrollView, Pressable, Platform } from "react-native";
 import { useNavigation, useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -6,6 +6,8 @@ import { useQuery } from "@tanstack/react-query";
 import * as Haptics from "expo-haptics";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Colors from "@/constants/colors";
+import { useEvents } from "@/lib/events-context";
+import UnifiedEventCard from "@/components/UnifiedEventCard";
 
 const PINK = "#FF85C8";
 
@@ -15,6 +17,7 @@ interface TonightStory {
   headline: string;
   body: string;
   sourceEventId?: string;
+  eventIds?: string[];
   sourceCard: { id: string; kind: string; title: string };
   sports?: string[];
   favoriteTeams?: string[];
@@ -24,6 +27,7 @@ export default function TonightStoryFullScreen() {
   const navigation = useNavigation();
   const router = useRouter();
   const insets = useSafeAreaInsets();
+  const { allEvents } = useEvents();
 
   useLayoutEffect(() => {
     navigation.setOptions({ title: "Today's Story", headerBackTitle: "Stories" });
@@ -43,6 +47,12 @@ export default function TonightStoryFullScreen() {
       ? [data.tonightStory]
       : [];
 
+  const eventMap = useMemo(() => {
+    const m = new Map<string, any>();
+    for (const e of allEvents) m.set(e.id, e);
+    return m;
+  }, [allEvents]);
+
   const CARD_LINKED_SIGNALS = new Set([
     "upset_alert",
     "rivalry_game",
@@ -54,19 +64,16 @@ export default function TonightStoryFullScreen() {
     "player_movement",
   ]);
 
-  const handleCta = (story: TonightStory) => {
+  const handleReadMore = (story: TonightStory) => {
     if (Platform.OS !== "web") {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     }
     if (CARD_LINKED_SIGNALS.has(story.signalType) && story.sourceCard?.id) {
       router.push({ pathname: "/narrative/[id]", params: { id: story.sourceCard.id } });
-    } else {
-      router.push("/(tabs)/watch");
     }
   };
 
-  const ctaLabelFor = (story: TonightStory) =>
-    CARD_LINKED_SIGNALS.has(story.signalType) ? "Read more" : "Track all games";
+  const now = new Date();
 
   return (
     <ScrollView
@@ -94,36 +101,56 @@ export default function TonightStoryFullScreen() {
         ) : stories.length === 0 ? (
           <Text style={styles.muted}>No live signals right now. Check back closer to game time.</Text>
         ) : (
-          stories.map((story, idx) => (
-            <View key={`${story.sourceCard?.id ?? story.signalType}-${idx}`} style={styles.storyCard}>
-              <View style={styles.signalRow}>
-                <View style={styles.signalBadge}>
-                  <Text style={styles.signalBadgeText}>{story.signalLabel}</Text>
+          stories.map((story, idx) => {
+            const ids = story.eventIds && story.eventIds.length > 0
+              ? story.eventIds
+              : (story.sourceEventId ? [story.sourceEventId] : []);
+            const storyEvents = ids
+              .map((id) => eventMap.get(id))
+              .filter(Boolean);
+            const isCardLinked = CARD_LINKED_SIGNALS.has(story.signalType);
+            return (
+              <View key={`${story.sourceCard?.id ?? story.signalType}-${idx}`} style={styles.storyCard}>
+                <View style={styles.signalRow}>
+                  <View style={styles.signalBadge}>
+                    <Text style={styles.signalBadgeText}>{story.signalLabel}</Text>
+                  </View>
                 </View>
+                <Text style={styles.headline}>{story.headline}</Text>
+                <Text style={styles.bodyText}>{story.body}</Text>
+                {story.sports && story.sports.length > 0 && (
+                  <View style={styles.sportsRow}>
+                    {story.sports.map((s) => (
+                      <View key={s} style={styles.sportChip}>
+                        <Text style={styles.sportChipText}>{s.toUpperCase()}</Text>
+                      </View>
+                    ))}
+                  </View>
+                )}
+                {storyEvents.length > 0 && (
+                  <View style={styles.eventsList}>
+                    {storyEvents.map((ev: any) => (
+                      <UnifiedEventCard
+                        key={ev.id}
+                        event={ev}
+                        now={now}
+                      />
+                    ))}
+                  </View>
+                )}
+                {isCardLinked && (
+                  <Pressable
+                    onPress={() => handleReadMore(story)}
+                    style={({ pressed }) => [styles.cta, { opacity: pressed ? 0.7 : 1 }]}
+                    testID={`today-story-cta-${idx}`}
+                  >
+                    <Text style={styles.ctaText}>Read more</Text>
+                    <Ionicons name="arrow-forward" size={16} color={PINK} />
+                  </Pressable>
+                )}
               </View>
-              <Text style={styles.headline}>{story.headline}</Text>
-              <Text style={styles.bodyText}>{story.body}</Text>
-              {story.sports && story.sports.length > 0 && (
-                <View style={styles.sportsRow}>
-                  {story.sports.map((s) => (
-                    <View key={s} style={styles.sportChip}>
-                      <Text style={styles.sportChipText}>{s.toUpperCase()}</Text>
-                    </View>
-                  ))}
-                </View>
-              )}
-              {story.sourceCard && (
-                <Pressable
-                  onPress={() => handleCta(story)}
-                  style={({ pressed }) => [styles.cta, { opacity: pressed ? 0.7 : 1 }]}
-                  testID={`today-story-cta-${idx}`}
-                >
-                  <Text style={styles.ctaText}>{ctaLabelFor(story)}</Text>
-                  <Ionicons name="arrow-forward" size={16} color={PINK} />
-                </Pressable>
-              )}
-            </View>
-          ))
+            );
+          })
         )}
       </View>
     </ScrollView>
@@ -241,6 +268,10 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_700Bold",
     color: PINK,
     letterSpacing: 1.1,
+  },
+  eventsList: {
+    marginTop: 6,
+    gap: 10,
   },
   cta: {
     flexDirection: "row",

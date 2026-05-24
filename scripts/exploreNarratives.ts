@@ -2346,6 +2346,7 @@ export interface TonightStory {
   headline: string;
   body: string;
   sourceEventId?: string;
+  eventIds?: string[];
   sourceCard: { id: string; kind: string; title: string };
   sports?: string[];
   favoriteTeams?: string[];
@@ -2567,6 +2568,7 @@ interface TonightStoryCandidate {
   body: string;
   reason: string;
   sourceEventId?: string;
+  eventIds?: string[];
   sourceCard: { id: string; kind: string; title: string };
   sports?: string[];
   favoriteTeams?: string[];
@@ -2733,6 +2735,7 @@ function buildTonightStory(
         body: `The ${teamStr} all play today${leagueSuffix}.`,
         reason: `${distinctTeamsPlaying.size} followed/affiliate teams playing today`,
         sourceEventId: allEventIds[0],
+        eventIds: allEventIds,
         sourceCard: { id: "tonight_multi_team", kind: "multi_team_night", title: headline },
         sports: [...sportsInPlay],
         favoriteTeams: directFavoriteTeams,
@@ -2751,6 +2754,7 @@ function buildTonightStory(
         body: `${ev.awayTeam} at ${ev.homeTeam} — catch the action in the ${ev.league}.`,
         reason: `single followed team (${entry.followedTeam}) playing today`,
         sourceEventId: ev.id,
+        eventIds: [ev.id],
         sourceCard: { id: "tonight_single_team", kind: "single_team_game", title: `${entry.followedTeam} Today` },
         sports: [ev.sport],
         favoriteTeams: [entry.followedTeam],
@@ -2784,6 +2788,7 @@ function buildTonightStory(
         body: `Your ${activeRitual.label} lineup includes ${followedInRitual.length} game${followedInRitual.length > 1 ? "s" : ""} with teams you follow.`,
         reason: `ritual "${activeRitual.label}" has ${followedInRitual.length} followed-team game(s)`,
         sourceEventId: followedInRitual[0]?.id,
+        eventIds: followedInRitual.map(e => e.id),
         sourceCard: { id: `tonight_ritual_${activeRitual.id}`, kind: "ritual_night", title: activeRitual.label },
         sports: [...new Set(followedInRitual.map(e => e.sport))],
         favoriteTeams: [...ritualFavoriteTeams],
@@ -2815,6 +2820,7 @@ function buildTonightStory(
         body: champ.body,
         reason: `championship-day event (${ev.league})${favs.length ? ` — favorite involved: ${favs.join(", ")}` : ""}`,
         sourceEventId: ev.id,
+        eventIds: [ev.id],
         sourceCard: { id: `championship_day_${ev.id}`, kind: "championship_day", title: champ.headline },
         sports: [ev.sport],
         favoriteTeams: favs,
@@ -2832,6 +2838,7 @@ function buildTonightStory(
         body: `${ev.awayTeam} faces ${ev.homeTeam} today — ${rivalry.label}, one of the sport's marquee rivalries.`,
         reason: `rivalry-of-day match (${ev.league || "international"}: ${rivalry.label})${favs.length ? ` — favorite involved: ${favs.join(", ")}` : ""}`,
         sourceEventId: ev.id,
+        eventIds: [ev.id],
         sourceCard: { id: `rivalry_of_day_${ev.id}`, kind: "rivalry_of_day", title: rivalry.label },
         sports: [ev.sport],
         favoriteTeams: favs,
@@ -2849,6 +2856,7 @@ function buildTonightStory(
         body: opener.body,
         reason: `season/playoff opener (${ev.league})${favs.length ? ` — favorite involved: ${favs.join(", ")}` : ""}`,
         sourceEventId: ev.id,
+        eventIds: [ev.id],
         sourceCard: { id: `season_opener_${ev.id}`, kind: "season_opener", title: opener.headline },
         sports: [ev.sport],
         favoriteTeams: favs,
@@ -2875,6 +2883,7 @@ function buildTonightStory(
     headline: c.headline,
     body: c.body,
     sourceEventId: c.sourceEventId,
+    eventIds: c.eventIds && c.eventIds.length > 0 ? c.eventIds : (c.sourceEventId ? [c.sourceEventId] : []),
     sourceCard: c.sourceCard,
     sports: c.sports || [],
     favoriteTeams: c.favoriteTeams || [],
