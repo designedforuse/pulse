@@ -136,7 +136,7 @@ function FavoritesSection() {
     racing: ["F1"],
     golf: ["The Majors"],
     "horse-racing": ["Triple Crown"],
-    cycling: ["Grand Tour"],
+    cycling: ["Grand Tour", "Epic Series"],
     athletics: ["World Marathon Majors", "Diamond League", "UTMB World Series", "Golden Trail World Series"],
   };
 
