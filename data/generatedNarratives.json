@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-25T02:46:20.483Z",
+  "lastUpdated": "2026-05-25T02:56:03.579Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -53,7 +53,7 @@
         ],
         "playersIngested": 399,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-25T02:46:20.483Z"
+        "timestamp": "2026-05-25T02:56:03.579Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -63,7 +63,7 @@
     "candidateCountAfterCap": 2,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1878.772356388889,
+      "hoursUntil": -1878.9343275,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -143,8 +143,8 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-05-25T02:46:20.483Z",
-      "expiresAt": "2026-05-25T04:46:20.483Z",
+      "triggeredAt": "2026-05-25T02:56:03.579Z",
+      "expiresAt": "2026-05-25T04:56:03.579Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
@@ -186,8 +186,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-25T02:46:20.483Z",
-      "expiresAt": "2026-06-01T02:46:20.483Z",
+      "triggeredAt": "2026-05-25T02:56:03.579Z",
+      "expiresAt": "2026-06-01T02:56:03.579Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -792,6 +792,13 @@
           "emoji": "🏆"
         },
         {
+          "leagueKey": "cafchampionsleague",
+          "sport": "soccer",
+          "name": "CAF Champions League Final",
+          "date": "2026-05-24",
+          "emoji": "🏆"
+        },
+        {
           "leagueKey": "echl",
           "sport": "hockey",
           "name": "ECHL Kelly Cup Final",
@@ -802,20 +809,6 @@
           "leagueKey": "championsleague",
           "sport": "soccer",
           "name": "Champions League Final",
-          "date": "2026-05-30",
-          "emoji": "🏆"
-        },
-        {
-          "leagueKey": "leagueone",
-          "sport": "rugby",
-          "name": "Japan League One Final",
-          "date": "2026-05-30",
-          "emoji": "🏆"
-        },
-        {
-          "leagueKey": "cafchampionsleague",
-          "sport": "soccer",
-          "name": "CAF Champions League Final",
           "date": "2026-05-30",
           "emoji": "🏆"
         },
@@ -1056,6 +1049,13 @@
           "sport": "hockey",
           "name": "AHL Calder Cup Final",
           "date": "2026-06-04",
+          "emoji": "🏆"
+        },
+        {
+          "leagueKey": "leagueone",
+          "sport": "rugby",
+          "name": "Japan League One Final",
+          "date": "2026-06-07",
           "emoji": "🏆"
         },
         {
@@ -1312,20 +1312,6 @@
           "leagueKey": "championsleague",
           "sport": "soccer",
           "name": "Champions League Final",
-          "date": "2026-05-30",
-          "emoji": "🏆"
-        },
-        {
-          "leagueKey": "leagueone",
-          "sport": "rugby",
-          "name": "Japan League One Final",
-          "date": "2026-05-30",
-          "emoji": "🏆"
-        },
-        {
-          "leagueKey": "cafchampionsleague",
-          "sport": "soccer",
-          "name": "CAF Champions League Final",
           "date": "2026-05-30",
           "emoji": "🏆"
         },
