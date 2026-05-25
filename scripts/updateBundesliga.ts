@@ -117,6 +117,38 @@ export async function fetchBundesligaEvents(): Promise<SoccerFetchResult> {
       });
     }
 
+    // Bundesliga Relegation Playoff (2.BL 3rd vs Bundesliga 16th) — ESPN
+    // does not expose this competition under any soccer/ger.* path, so the
+    // two legs are hardcoded each season.
+    // 2025/26: Wolfsburg (BL 16th) vs Paderborn (2.BL 3rd)
+    const RELEGATION_PLAYOFF_2026: { startUtc: string; home: string; away: string }[] = [
+      // Leg 1: Thu May 21, 2026 — 20:30 CEST = 18:30 UTC
+      { startUtc: "2026-05-21T18:30:00.000Z", home: "VfL Wolfsburg", away: "SC Paderborn 07" },
+      // Leg 2: Mon May 25, 2026 — 20:30 CEST = 18:30 UTC
+      { startUtc: "2026-05-25T18:30:00.000Z", home: "SC Paderborn 07", away: "VfL Wolfsburg" },
+    ];
+    for (const leg of RELEGATION_PLAYOFF_2026) {
+      const start = new Date(leg.startUtc);
+      if (start < windowStart || start > windowEnd) continue;
+      const id = stableId(leg.startUtc, leg.away, leg.home);
+      if (seenIds.has(id)) continue;
+      seenIds.add(id);
+      events.push({
+        id,
+        sport: "soccer",
+        league: "Bundesliga",
+        awayTeam: leg.away,
+        homeTeam: leg.home,
+        startTimeLocal: leg.startUtc,
+        endTimeLocal: addDuration(leg.startUtc, BUNDESLIGA_DURATION_MIN),
+        providerId: "disneyplus",
+        isLive: false,
+        source: "soccer-bundesliga",
+        leagueKey: "bundesliga",
+        providerReason: "bundesliga-disneyplus",
+      });
+    }
+
     console.log(`  Bundesliga: ${events.length} events in retention window`);
     return { events, sourceUsed: "espn", count: events.length };
   } catch (err: any) {
