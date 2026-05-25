@@ -57,7 +57,10 @@ interface MonthSnapshotData {
 interface MonthSnapshotPayload {
   currentMonth: MonthSnapshotData;
   nextMonth: MonthSnapshotData;
+  thisWeek?: MonthSnapshotData;
 }
+
+type TabKey = "week" | "current" | "next";
 
 const PHASE_CHIP_STYLES: Record<string, { bg: string; border: string; fg: string }> = {
   Final: { bg: "rgba(245,158,11,0.15)", border: "rgba(245,158,11,0.45)", fg: "#F59E0B" },
@@ -106,7 +109,7 @@ export default function MonthScheduleScreen() {
     monthSnapshotJson?: string;
     monthDataJson?: string;
   }>();
-  const [activeKey, setActiveKey] = useState<"current" | "next">("current");
+  const [activeKey, setActiveKey] = useState<TabKey>("week");
 
   let snapshot: MonthSnapshotPayload | null = null;
   try {
@@ -126,8 +129,16 @@ export default function MonthScheduleScreen() {
     );
   }
 
-  const monthData = activeKey === "current" ? snapshot.currentMonth : snapshot.nextMonth;
+  const hasWeek = !!snapshot.thisWeek;
+  const effectiveActiveKey: TabKey = activeKey === "week" && !hasWeek ? "current" : activeKey;
+  const monthData =
+    effectiveActiveKey === "week"
+      ? (snapshot.thisWeek as MonthSnapshotData)
+      : effectiveActiveKey === "current"
+        ? snapshot.currentMonth
+        : snapshot.nextMonth;
   const hasTwoMonths = snapshot.currentMonth.monthKey !== snapshot.nextMonth.monthKey;
+  const showTabs = hasTwoMonths || hasWeek;
   const grouped = groupBySport(monthData.leagues);
 
   return (
@@ -150,30 +161,45 @@ export default function MonthScheduleScreen() {
         <View style={styles.backBtn} />
       </View>
 
-      {hasTwoMonths && (
+      {showTabs && (
         <View style={styles.monthTabsRow}>
+          {hasWeek && (
+            <Pressable
+              onPress={() => setActiveKey("week")}
+              hitSlop={6}
+              accessibilityRole="tab"
+              accessibilityState={{ selected: effectiveActiveKey === "week" }}
+              style={[styles.monthTab, effectiveActiveKey === "week" && styles.monthTabActive]}
+            >
+              <Text style={[styles.monthTabText, effectiveActiveKey === "week" && styles.monthTabTextActive]}>
+                This Week
+              </Text>
+            </Pressable>
+          )}
           <Pressable
             onPress={() => setActiveKey("current")}
             hitSlop={6}
             accessibilityRole="tab"
-            accessibilityState={{ selected: activeKey === "current" }}
-            style={[styles.monthTab, activeKey === "current" && styles.monthTabActive]}
+            accessibilityState={{ selected: effectiveActiveKey === "current" }}
+            style={[styles.monthTab, effectiveActiveKey === "current" && styles.monthTabActive]}
           >
-            <Text style={[styles.monthTabText, activeKey === "current" && styles.monthTabTextActive]}>
+            <Text style={[styles.monthTabText, effectiveActiveKey === "current" && styles.monthTabTextActive]}>
               {snapshot.currentMonth.monthLabel.split(" ")[0]}
             </Text>
           </Pressable>
-          <Pressable
-            onPress={() => setActiveKey("next")}
-            hitSlop={6}
-            accessibilityRole="tab"
-            accessibilityState={{ selected: activeKey === "next" }}
-            style={[styles.monthTab, activeKey === "next" && styles.monthTabActive]}
-          >
-            <Text style={[styles.monthTabText, activeKey === "next" && styles.monthTabTextActive]}>
-              {snapshot.nextMonth.monthLabel.split(" ")[0]}
-            </Text>
-          </Pressable>
+          {hasTwoMonths && (
+            <Pressable
+              onPress={() => setActiveKey("next")}
+              hitSlop={6}
+              accessibilityRole="tab"
+              accessibilityState={{ selected: effectiveActiveKey === "next" }}
+              style={[styles.monthTab, effectiveActiveKey === "next" && styles.monthTabActive]}
+            >
+              <Text style={[styles.monthTabText, effectiveActiveKey === "next" && styles.monthTabTextActive]}>
+                {snapshot.nextMonth.monthLabel.split(" ")[0]}
+              </Text>
+            </Pressable>
+          )}
         </View>
       )}
 

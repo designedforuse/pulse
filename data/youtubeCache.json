@@ -1270,5 +1270,45 @@
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
+  },
+  "upset_alert:colorado avalanche vs vegas golden knights upset highlights may 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=WnoX6zOvegE",
+      "thumbnailUrl": "https://img.youtube.com/vi/WnoX6zOvegE/hqdefault.jpg",
+      "durationSeconds": 8721,
+      "title": "Bloomberg This Weekend | White House: Iran deal to be announced, Texas-sized primaries",
+      "source": "youtube",
+      "channel": "Bloomberg Television",
+      "publishedAt": "7 hours ago"
+    },
+    "fetchedAt": "2026-05-25T02:44:29.913Z",
+    "query": "Colorado Avalanche vs Vegas Golden Knights upset highlights May 2026",
+    "debug": {
+      "searchQuery": "Colorado Avalanche vs Vegas Golden Knights upset highlights May 2026",
+      "selectedVideoTitle": "Bloomberg This Weekend | White House: Iran deal to be announced, Texas-sized primaries",
+      "selectedVideoPublishedAt": "7 hours ago",
+      "selectedVideoChannel": "Bloomberg Television",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:big stage sports may 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=b0UF3FQNesg",
+      "thumbnailUrl": "https://img.youtube.com/vi/b0UF3FQNesg/hqdefault.jpg",
+      "durationSeconds": 684,
+      "title": "What's In Store for the Future of Tennis 🎾👀",
+      "source": "youtube",
+      "channel": "TNT Sports US",
+      "publishedAt": "2 hours ago"
+    },
+    "fetchedAt": "2026-05-25T02:44:30.393Z",
+    "query": "Big Stage sports May 2026",
+    "debug": {
+      "searchQuery": "Big Stage sports May 2026",
+      "selectedVideoTitle": "What's In Store for the Future of Tennis 🎾👀",
+      "selectedVideoPublishedAt": "2 hours ago",
+      "selectedVideoChannel": "TNT Sports US",
+      "rejectedForAgeCount": 0
+    }
   }
 }

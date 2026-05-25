@@ -323,6 +323,7 @@ export interface MonthSnapshotData {
 export interface MonthSnapshot {
   currentMonth: MonthSnapshotData;
   nextMonth: MonthSnapshotData;
+  thisWeek: MonthSnapshotData;
 }
 
 const REGION_CONFIG: Record<Region, { priority: number; label: string }> = {
@@ -3127,18 +3128,21 @@ function getSnapshotDisplayName(events: AppEvent[], sport: string, league: strin
   return league;
 }
 
-function buildMonthData(events: AppEvent[], monthStart: Date): MonthSnapshotData {
-  const monthEnd = new Date(monthStart.getFullYear(), monthStart.getMonth() + 1, 0, 23, 59, 59, 999);
-  const monthKey = `${monthStart.getFullYear()}-${String(monthStart.getMonth() + 1).padStart(2, "0")}`;
-  const monthLabel = monthStart.toLocaleString("en-US", { month: "long", year: "numeric" });
-
-  const monthEvents = events.filter(e => {
+function buildRangeData(
+  events: AppEvent[],
+  rangeStart: Date,
+  rangeEnd: Date,
+  monthKey: string,
+  monthLabel: string,
+  championshipFinalsForRange?: MonthSnapshotChampionshipFinal[],
+): MonthSnapshotData {
+  const rangeEvents = events.filter(e => {
     const d = new Date(e.startTimeLocal);
-    return d >= monthStart && d <= monthEnd;
+    return d >= rangeStart && d <= rangeEnd;
   });
 
   const groups = new Map<string, { sport: string; league: string; leagueKey: string; events: AppEvent[] }>();
-  for (const event of monthEvents) {
+  for (const event of rangeEvents) {
     const key = getSnapshotGroupKey(event);
     const lk = event.leagueKey || event.league.toLowerCase().replace(/\s+/g, "-");
     const existing = groups.get(key);
@@ -3169,16 +3173,66 @@ function buildMonthData(events: AppEvent[], monthStart: Date): MonthSnapshotData
   }
 
   leagues.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
-  const championshipFinals = getChampionshipFinalsForMonth(monthKey)
-    .map(f => ({
-      leagueKey: f.leagueKey,
-      sport: f.sport,
-      name: f.name,
-      date: f.date,
-      emoji: f.emoji,
-    }))
-    .sort((a, b) => a.date.localeCompare(b.date));
+
+  const championshipFinals = championshipFinalsForRange
+    ?? getChampionshipFinalsForMonth(monthKey)
+      .map(f => ({
+        leagueKey: f.leagueKey,
+        sport: f.sport,
+        name: f.name,
+        date: f.date,
+        emoji: f.emoji,
+      }))
+      .sort((a, b) => a.date.localeCompare(b.date));
   return { monthLabel, monthKey, leagues, championshipFinals };
+}
+
+function buildMonthData(events: AppEvent[], monthStart: Date): MonthSnapshotData {
+  const monthEnd = new Date(monthStart.getFullYear(), monthStart.getMonth() + 1, 0, 23, 59, 59, 999);
+  const monthKey = `${monthStart.getFullYear()}-${String(monthStart.getMonth() + 1).padStart(2, "0")}`;
+  const monthLabel = monthStart.toLocaleString("en-US", { month: "long", year: "numeric" });
+  return buildRangeData(events, monthStart, monthEnd, monthKey, monthLabel);
+}
+
+function buildWeekData(events: AppEvent[], now: Date): MonthSnapshotData {
+  // Week: Monday 00:00:00 local → Sunday 23:59:59.999 local.
+  const day = now.getDay(); // 0=Sun..6=Sat
+  const daysSinceMonday = (day + 6) % 7; // Mon=0, Tue=1, ..., Sun=6
+  const monday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - daysSinceMonday, 0, 0, 0, 0);
+  const sunday = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + 6, 23, 59, 59, 999);
+
+  const fmt = (d: Date) => d.toLocaleString("en-US", { month: "short", day: "numeric" });
+  const sameMonth = monday.getMonth() === sunday.getMonth();
+  const monthLabel = sameMonth
+    ? `${fmt(monday)}–${sunday.getDate()}, ${sunday.getFullYear()}`
+    : `${fmt(monday)} – ${fmt(sunday)}, ${sunday.getFullYear()}`;
+  const monthKey = `week-${monday.getFullYear()}-${String(monday.getMonth() + 1).padStart(2, "0")}-${String(monday.getDate()).padStart(2, "0")}`;
+
+  // Pull championship finals from both months the week may overlap, filter to range.
+  const monthKeys = new Set<string>();
+  monthKeys.add(`${monday.getFullYear()}-${String(monday.getMonth() + 1).padStart(2, "0")}`);
+  monthKeys.add(`${sunday.getFullYear()}-${String(sunday.getMonth() + 1).padStart(2, "0")}`);
+  const seenFinals = new Set<string>();
+  const championshipFinals: MonthSnapshotChampionshipFinal[] = [];
+  for (const mk of monthKeys) {
+    for (const f of getChampionshipFinalsForMonth(mk)) {
+      const fd = new Date(f.date + "T12:00:00");
+      if (fd < monday || fd > sunday) continue;
+      const dedupKey = `${f.leagueKey}|${f.date}|${f.name}`;
+      if (seenFinals.has(dedupKey)) continue;
+      seenFinals.add(dedupKey);
+      championshipFinals.push({
+        leagueKey: f.leagueKey,
+        sport: f.sport,
+        name: f.name,
+        date: f.date,
+        emoji: f.emoji,
+      });
+    }
+  }
+  championshipFinals.sort((a, b) => a.date.localeCompare(b.date));
+
+  return buildRangeData(events, monday, sunday, monthKey, monthLabel, championshipFinals);
 }
 
 export function generateMonthSnapshot(events: AppEvent[], now: Date): MonthSnapshot {
@@ -3187,6 +3241,7 @@ export function generateMonthSnapshot(events: AppEvent[], now: Date): MonthSnaps
   return {
     currentMonth: buildMonthData(events, currentMonthStart),
     nextMonth: buildMonthData(events, nextMonthStart),
+    thisWeek: buildWeekData(events, now),
   };
 }
 

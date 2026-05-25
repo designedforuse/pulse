@@ -107,6 +107,7 @@ interface MonthSnapshotData {
 interface MonthSnapshot {
   currentMonth: MonthSnapshotData;
   nextMonth: MonthSnapshotData;
+  thisWeek?: MonthSnapshotData;
 }
 
 const SNAPSHOT_COLOR = PINK;
@@ -179,10 +180,12 @@ export default function ExploreScreen() {
     const filterLeagues = (data: MonthSnapshotData): MonthSnapshotData => ({
       ...data,
       leagues: data.leagues.filter(l => isSportEnabled(l.sport)),
+      championshipFinals: data.championshipFinals?.filter(f => isSportEnabled(f.sport)),
     });
     return {
       currentMonth: filterLeagues(rawMonthSnapshot.currentMonth),
       nextMonth: filterLeagues(rawMonthSnapshot.nextMonth),
+      thisWeek: rawMonthSnapshot.thisWeek ? filterLeagues(rawMonthSnapshot.thisWeek) : undefined,
     };
   }, [rawMonthSnapshot, disabledSports, isSportEnabled]);
 
