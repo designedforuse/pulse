@@ -343,8 +343,8 @@ export default function ExploreScreen() {
         <Text style={styles.deepTalkTagline}>The context behind the stories you follow</Text>
         <View style={styles.deepTalkChips}>
           <View style={styles.deepTalkChip}>
-            <Text style={styles.deepTalkChipNum}>1</Text>
-            <Text style={styles.deepTalkChipLabel}>TOPIC</Text>
+            <Text style={styles.deepTalkChipNum}>5</Text>
+            <Text style={styles.deepTalkChipLabel}>TOPICS</Text>
           </View>
         </View>
       </View>
