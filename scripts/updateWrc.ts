@@ -31,131 +31,160 @@ export interface WrcMergeResult {
 }
 
 interface WrcRound {
+  round: number;
   id: string;
   displayName: string;
   city: string;
   country: string;
+  surface: string;
   startUtc: string;
   endUtc: string;
 }
 
 // 2026 World Rally Championship calendar — 14 rounds.
-// Source: FIA-published 2026 WRC calendar via https://www.wrc.com/en/calendar
-// Dates reflect each rally's competitive window (super-special stage Thursday
-// evening through Power Stage Sunday afternoon). Re-verify against the
-// official WRC site when dates firm up closer to each event.
-// All rounds route to YouTube (WRC's official channel hosts highlights
-// and select live coverage in the US).
+// Source: official FIA 2026 WRC calendar via https://www.wrc.com/en/calendar
+// Round order and surface types verified against wrc.com (May 2026).
+// Exact start/end dates are best-effort placements within each rally's
+// usual month — re-verify against wrc.com when each event approaches.
+// All rounds route to YouTube (WRC's official channel for US viewers).
 const WRC_ROUNDS: WrcRound[] = [
   {
+    round: 1,
     id: "racing-wrc-monte-carlo-2026",
     displayName: "Rallye Monte-Carlo",
     city: "Monte Carlo",
     country: "Monaco",
-    startUtc: "2026-01-22T18:00:00.000Z", // Thu Jan 22 evening shakedown
-    endUtc: "2026-01-25T15:00:00.000Z",   // Sun Jan 25 Power Stage
+    surface: "Asphalt / Ice",
+    startUtc: "2026-01-22T18:00:00.000Z",
+    endUtc: "2026-01-25T15:00:00.000Z",
   },
   {
+    round: 2,
     id: "racing-wrc-sweden-2026",
     displayName: "Rally Sweden",
     city: "Umeå",
     country: "Sweden",
+    surface: "Snow / Ice",
     startUtc: "2026-02-12T15:00:00.000Z",
     endUtc: "2026-02-15T14:00:00.000Z",
   },
   {
+    round: 3,
     id: "racing-wrc-kenya-2026",
     displayName: "Safari Rally Kenya",
     city: "Naivasha",
     country: "Kenya",
+    surface: "Gravel",
     startUtc: "2026-03-19T05:00:00.000Z",
     endUtc: "2026-03-22T11:00:00.000Z",
   },
   {
+    round: 4,
+    id: "racing-wrc-croatia-2026",
+    displayName: "Croatia Rally",
+    city: "Zagreb",
+    country: "Croatia",
+    surface: "Asphalt",
+    startUtc: "2026-04-16T08:00:00.000Z",
+    endUtc: "2026-04-19T13:00:00.000Z",
+  },
+  {
+    round: 5,
     id: "racing-wrc-canarias-2026",
     displayName: "Rally Islas Canarias",
     city: "Las Palmas",
     country: "Spain",
-    startUtc: "2026-04-23T08:00:00.000Z",
-    endUtc: "2026-04-26T14:00:00.000Z",
+    surface: "Asphalt",
+    startUtc: "2026-04-30T08:00:00.000Z",
+    endUtc: "2026-05-03T14:00:00.000Z",
   },
   {
+    round: 6,
     id: "racing-wrc-portugal-2026",
     displayName: "Rally de Portugal",
     city: "Matosinhos",
     country: "Portugal",
+    surface: "Gravel",
     startUtc: "2026-05-14T08:00:00.000Z",
     endUtc: "2026-05-17T13:00:00.000Z",
   },
   {
-    id: "racing-wrc-sardegna-2026",
-    displayName: "Rally Italia Sardegna",
-    city: "Alghero",
-    country: "Italy",
-    startUtc: "2026-06-04T06:00:00.000Z",
-    endUtc: "2026-06-07T12:00:00.000Z",
-  },
-  {
-    id: "racing-wrc-acropolis-2026",
-    displayName: "Acropolis Rally Greece",
-    city: "Lamia",
-    country: "Greece",
-    startUtc: "2026-09-03T06:00:00.000Z",
-    endUtc: "2026-09-06T12:00:00.000Z",
-  },
-  {
-    id: "racing-wrc-estonia-2026",
-    displayName: "Rally Estonia",
-    city: "Tartu",
-    country: "Estonia",
-    startUtc: "2026-07-16T08:00:00.000Z",
-    endUtc: "2026-07-19T13:00:00.000Z",
-  },
-  {
-    id: "racing-wrc-finland-2026",
-    displayName: "Rally Finland",
-    city: "Jyväskylä",
-    country: "Finland",
-    startUtc: "2026-07-30T08:00:00.000Z",
-    endUtc: "2026-08-02T13:00:00.000Z",
-  },
-  {
-    id: "racing-wrc-paraguay-2026",
-    displayName: "Rally Paraguay",
-    city: "Encarnación",
-    country: "Paraguay",
-    startUtc: "2026-08-27T13:00:00.000Z",
-    endUtc: "2026-08-30T19:00:00.000Z",
-  },
-  {
-    id: "racing-wrc-chile-2026",
-    displayName: "Rally Chile",
-    city: "Concepción",
-    country: "Chile",
-    startUtc: "2026-09-24T13:00:00.000Z",
-    endUtc: "2026-09-27T19:00:00.000Z",
-  },
-  {
-    id: "racing-wrc-central-european-2026",
-    displayName: "Central European Rally",
-    city: "Passau",
-    country: "Germany / Austria / Czechia",
-    startUtc: "2026-10-15T08:00:00.000Z",
-    endUtc: "2026-10-18T13:00:00.000Z",
-  },
-  {
+    round: 7,
     id: "racing-wrc-japan-2026",
     displayName: "Rally Japan",
     city: "Toyota City",
     country: "Japan",
-    startUtc: "2026-11-05T00:00:00.000Z",
-    endUtc: "2026-11-08T07:00:00.000Z",
+    surface: "Asphalt",
+    startUtc: "2026-05-28T00:00:00.000Z",
+    endUtc: "2026-05-31T07:00:00.000Z",
   },
   {
+    round: 8,
+    id: "racing-wrc-acropolis-2026",
+    displayName: "Acropolis Rally Greece",
+    city: "Lamia",
+    country: "Greece",
+    surface: "Gravel",
+    startUtc: "2026-06-25T06:00:00.000Z",
+    endUtc: "2026-06-28T12:00:00.000Z",
+  },
+  {
+    round: 9,
+    id: "racing-wrc-estonia-2026",
+    displayName: "Rally Estonia",
+    city: "Tartu",
+    country: "Estonia",
+    surface: "Gravel",
+    startUtc: "2026-07-16T08:00:00.000Z",
+    endUtc: "2026-07-19T13:00:00.000Z",
+  },
+  {
+    round: 10,
+    id: "racing-wrc-finland-2026",
+    displayName: "Rally Finland",
+    city: "Jyväskylä",
+    country: "Finland",
+    surface: "Gravel",
+    startUtc: "2026-07-30T08:00:00.000Z",
+    endUtc: "2026-08-02T13:00:00.000Z",
+  },
+  {
+    round: 11,
+    id: "racing-wrc-paraguay-2026",
+    displayName: "Rally del Paraguay",
+    city: "Encarnación",
+    country: "Paraguay",
+    surface: "Gravel",
+    startUtc: "2026-08-27T13:00:00.000Z",
+    endUtc: "2026-08-30T19:00:00.000Z",
+  },
+  {
+    round: 12,
+    id: "racing-wrc-chile-2026",
+    displayName: "Rally Chile",
+    city: "Concepción",
+    country: "Chile",
+    surface: "Gravel",
+    startUtc: "2026-09-10T13:00:00.000Z",
+    endUtc: "2026-09-13T19:00:00.000Z",
+  },
+  {
+    round: 13,
+    id: "racing-wrc-sardegna-2026",
+    displayName: "Rally Italia Sardegna",
+    city: "Alghero",
+    country: "Italy",
+    surface: "Gravel",
+    startUtc: "2026-10-01T06:00:00.000Z",
+    endUtc: "2026-10-04T12:00:00.000Z",
+  },
+  {
+    round: 14,
     id: "racing-wrc-saudi-arabia-2026",
     displayName: "Rally Saudi Arabia",
     city: "Jeddah",
     country: "Saudi Arabia",
+    surface: "Gravel / Sand",
     startUtc: "2026-11-26T13:00:00.000Z",
     endUtc: "2026-11-29T19:00:00.000Z",
   },
@@ -182,13 +211,13 @@ export function fetchWrcEvents(): WrcFetchResult {
       homeTeam: round.displayName,
       startTimeLocal: round.startUtc,
       endTimeLocal: round.endUtc,
-      providerId: "youtube",
-      providerReason: "wrc-youtube",
+      providerId: "youtubetv",
+      providerReason: "wrc-youtubetv",
       isLive: false,
       source: "wrc-hardcoded",
       leagueKey: "wrc",
       eventType: "session",
-      sessionTitle: round.displayName,
+      sessionTitle: `Round ${round.round} · ${round.displayName}`,
       competitionType: "international",
       tournamentName: round.displayName,
     });
@@ -208,7 +237,7 @@ export function mergeWrcEvents(
   const index = new Map<string, AppEvent>();
   for (const e of existing) {
     // Drop stale WRC cache entries not in the fresh schedule
-    // (handles removed/renamed rounds).
+    // (handles removed/renamed rounds, e.g. Central European Rally dropped for 2026).
     if (e.id.startsWith("racing-wrc-") && !freshIds.has(e.id)) continue;
     index.set(e.id, e);
   }
