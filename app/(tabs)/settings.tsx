@@ -133,7 +133,7 @@ function FavoritesSection() {
     soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "MLS", "NWSL", "USL", "Champions League", "Europa League", "FA Cup", "CAF Champions League", "FIFA World Cup", "International Friendly"],
     college: ["NCAAB", "NCAA Hockey"],
     tennis: ["Grand Slams", "ATP Masters 1000"],
-    racing: ["F1"],
+    racing: ["F1", "WRC"],
     golf: ["The Majors"],
     "horse-racing": ["Triple Crown"],
     cycling: ["Grand Tour", "Epic Series"],

@@ -78,10 +78,11 @@
         },
         {
           "id": "f1_weekend",
-          "title": "F1 Race Weekend",
+          "title": "Race Weekend",
           "sport": "racing",
           "leagues": [
-            "F1"
+            "F1",
+            "WRC"
           ]
         },
         {
@@ -139,10 +140,11 @@
         },
         {
           "id": "f1_morning",
-          "title": "F1 Race Weekend",
+          "title": "Race Weekend",
           "sport": "racing",
           "leagues": [
-            "F1"
+            "F1",
+            "WRC"
           ]
         },
         {

@@ -102,6 +102,7 @@ const LOGO_ASPECT: Record<string, number> = {
 const NO_TINT_LOGOS = new Set<string>();
 
 const PROVIDER_TEXT_LABELS: Record<string, string> = {
+  youtube: "YouTube",
 };
 
 let _warnedIds: Set<string> | null = null;
