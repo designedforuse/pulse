@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-25T02:56:03.579Z",
+  "lastUpdated": "2026-05-25T03:01:53.220Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -53,7 +53,7 @@
         ],
         "playersIngested": 399,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-25T02:56:03.579Z"
+        "timestamp": "2026-05-25T03:01:53.220Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -63,7 +63,7 @@
     "candidateCountAfterCap": 2,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1878.9343275,
+      "hoursUntil": -1879.03145,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -74,8 +74,8 @@
     },
     "upsetAlert": {
       "rawUpsetCandidates": 1,
-      "upsetLiveCandidates": 1,
-      "upsetCompletedCandidates": 0,
+      "upsetLiveCandidates": 0,
+      "upsetCompletedCandidates": 1,
       "upsetFinalCount": 1
     },
     "clinchWatch": {
@@ -137,21 +137,21 @@
     {
       "id": "upset_alert_nhl_2025030323",
       "title": "Upset Alert",
-      "subtitle": "Colorado Avalanche trailing late vs Vegas Golden Knights",
+      "subtitle": "Vegas Golden Knights upsets Colorado Avalanche",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-05-25T02:56:03.579Z",
-      "expiresAt": "2026-05-25T04:56:03.579Z",
+      "triggeredAt": "2026-05-25T03:01:53.220Z",
+      "expiresAt": "2026-05-25T09:01:53.220Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "mode": "live",
-        "upsetType": "team_live_upset",
+        "mode": "completed",
+        "upsetType": "team_upset",
         "sport": "hockey",
         "league": "NHL",
         "favoriteName": "Colorado Avalanche",
@@ -162,7 +162,7 @@
         "eventIds": [
           "nhl_2025030323"
         ],
-        "reason": "Colorado Avalanche is in trouble late against Vegas Golden Knights.\n\nThe favorite is trailing and running out of time."
+        "reason": "Vegas Golden Knights pulled off the upset against Colorado Avalanche.\n\nA result like this can shift momentum for the rest of the season."
       },
       "sports": [
         "hockey"
@@ -186,8 +186,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-25T02:56:03.579Z",
-      "expiresAt": "2026-06-01T02:56:03.579Z",
+      "triggeredAt": "2026-05-25T03:01:53.220Z",
+      "expiresAt": "2026-06-01T03:01:53.220Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -799,13 +799,6 @@
           "emoji": "🏆"
         },
         {
-          "leagueKey": "echl",
-          "sport": "hockey",
-          "name": "ECHL Kelly Cup Final",
-          "date": "2026-05-28",
-          "emoji": "🏆"
-        },
-        {
           "leagueKey": "championsleague",
           "sport": "soccer",
           "name": "Champions League Final",
@@ -1059,6 +1052,13 @@
           "emoji": "🏆"
         },
         {
+          "leagueKey": "echl",
+          "sport": "hockey",
+          "name": "ECHL Kelly Cup Final",
+          "date": "2026-06-07",
+          "emoji": "🏆"
+        },
+        {
           "leagueKey": "premiership",
           "sport": "rugby",
           "name": "Premiership Final",
@@ -1301,13 +1301,6 @@
         }
       ],
       "championshipFinals": [
-        {
-          "leagueKey": "echl",
-          "sport": "hockey",
-          "name": "ECHL Kelly Cup Final",
-          "date": "2026-05-28",
-          "emoji": "🏆"
-        },
         {
           "leagueKey": "championsleague",
           "sport": "soccer",
