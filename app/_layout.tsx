@@ -111,6 +111,30 @@ function RootLayoutNav() {
         }}
       />
       <Stack.Screen
+        name="cycling-circuits"
+        options={{
+          headerShown: true,
+          title: "Cycling Circuits",
+          headerBackTitle: "Behind",
+        }}
+      />
+      <Stack.Screen
+        name="endurance-athletics"
+        options={{
+          headerShown: true,
+          title: "Endurance Athletics",
+          headerBackTitle: "Behind",
+        }}
+      />
+      <Stack.Screen
+        name="horse-racing-101"
+        options={{
+          headerShown: true,
+          title: "Horse Racing",
+          headerBackTitle: "Behind",
+        }}
+      />
+      <Stack.Screen
         name="event-sheet"
         options={{
           presentation: "formSheet",

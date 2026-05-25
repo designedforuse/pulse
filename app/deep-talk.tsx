@@ -30,6 +30,30 @@ const TOPICS: DeepTalkTopic[] = [
     accent: Colors.hockey,
     route: "/affiliates",
   },
+  {
+    id: "cycling-circuits",
+    title: "Cycling Circuits",
+    subtitle: "Grand Tours and the Epic Series MTB stage races — what they are and why they matter",
+    icon: "bicycle",
+    accent: Colors.cycling,
+    route: "/cycling-circuits",
+  },
+  {
+    id: "endurance-athletics",
+    title: "Endurance Athletics",
+    subtitle: "Marathon Majors, Diamond League, Golden Trail, and UTMB — the elite running circuits explained",
+    icon: "walk-outline",
+    accent: Colors.athletics,
+    route: "/endurance-athletics",
+  },
+  {
+    id: "horse-racing-101",
+    title: "Triple Crown 101",
+    subtitle: "The Kentucky Derby, Preakness, and Belmont Stakes — why winning all three is generational",
+    icon: "ribbon",
+    accent: Colors["horse-racing"],
+    route: "/horse-racing-101",
+  },
 ];
 
 export default function DeepTalkScreen() {
