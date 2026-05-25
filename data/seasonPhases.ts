@@ -28,8 +28,8 @@ export const SEASON_PHASES_2026: Record<string, PhaseWindow[]> = {
   ],
   echl: [
     { label: "Regular", start: "2025-10-17", end: "2026-04-12" },
-    { label: "Playoffs", start: "2026-04-15", end: "2026-06-12" },
-    { label: "Final", start: "2026-05-28", end: "2026-06-12" },
+    { label: "Playoffs", start: "2026-04-15", end: "2026-06-06" },
+    { label: "Final", start: "2026-06-07", end: "2026-06-20" },
   ],
   shl: [
     { label: "Regular", start: "2025-09-13", end: "2026-03-08" },
@@ -122,8 +122,8 @@ export const SEASON_PHASES_2026: Record<string, PhaseWindow[]> = {
   ],
   leagueone: [
     { label: "Regular", start: "2025-12-13", end: "2026-04-26" },
-    { label: "Playoffs", start: "2026-05-09", end: "2026-05-23" },
-    { label: "Final", start: "2026-05-30", end: "2026-05-30" },
+    { label: "Playoffs", start: "2026-05-09", end: "2026-06-06" },
+    { label: "Final", start: "2026-06-07", end: "2026-06-07" },
   ],
 };
 
