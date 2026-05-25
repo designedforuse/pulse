@@ -54,6 +54,14 @@ const TOPICS: DeepTalkTopic[] = [
     accent: Colors["horse-racing"],
     route: "/horse-racing-101",
   },
+  {
+    id: "racing-101",
+    title: "Racing 101",
+    subtitle: "Formula 1 circuits and World Rally Championship stages — how motorsport's two pinnacles work",
+    icon: "car-sport",
+    accent: Colors.racing,
+    route: "/racing-101",
+  },
 ];
 
 export default function DeepTalkScreen() {
