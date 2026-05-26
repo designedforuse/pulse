@@ -353,8 +353,7 @@ export default function ExploreScreen() {
         <Text style={styles.deepTalkTagline}>The context behind the stories you follow</Text>
         <View style={styles.deepTalkChips}>
           <View style={styles.deepTalkChip}>
-            <Text style={styles.deepTalkChipNum}>5</Text>
-            <Text style={styles.deepTalkChipLabel}>TOPICS</Text>
+            <Text style={styles.deepTalkChipText}>5 TOPICS</Text>
           </View>
         </View>
       </View>
@@ -392,13 +391,15 @@ export default function ExploreScreen() {
           <Text style={styles.trendingTagline}>Narrative intel as it happens</Text>
           <View style={styles.trendingChips}>
             <View style={styles.trendingChip}>
-              <Text style={styles.trendingChipNum}>{cards.length}</Text>
-              <Text style={styles.trendingChipLabel}>{cards.length === 1 ? "STORY" : "STORIES"}</Text>
+              <Text style={styles.trendingChipText}>
+                {cards.length} {cards.length === 1 ? "STORY" : "STORIES"}
+              </Text>
             </View>
             {distinctKinds > 1 && (
               <View style={styles.trendingChip}>
-                <Text style={styles.trendingChipNum}>{distinctKinds}</Text>
-                <Text style={styles.trendingChipLabel}>{distinctKinds === 1 ? "ANGLE" : "ANGLES"}</Text>
+                <Text style={styles.trendingChipText}>
+                  {distinctKinds} {distinctKinds === 1 ? "ANGLE" : "ANGLES"}
+                </Text>
               </View>
             )}
           </View>
@@ -1053,27 +1054,21 @@ const styles = StyleSheet.create({
   },
   deepTalkChips: {
     flexDirection: "row" as const,
-    gap: 10,
+    flexWrap: "wrap" as const,
+    justifyContent: "center" as const,
+    gap: 8,
     marginBottom: 16,
   },
   deepTalkChip: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    gap: 6,
     backgroundColor: PINK + "20",
     borderRadius: 999,
-    paddingHorizontal: 14,
-    paddingVertical: 7,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
     borderWidth: 1,
     borderColor: PINK + "40",
   },
-  deepTalkChipNum: {
-    fontSize: 16,
-    fontFamily: "Inter_700Bold",
-    color: Colors.textPrimary,
-  },
-  deepTalkChipLabel: {
-    fontSize: 10,
+  deepTalkChipText: {
+    fontSize: 11,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
     letterSpacing: 1.1,
@@ -1142,27 +1137,21 @@ const styles = StyleSheet.create({
   },
   trendingChips: {
     flexDirection: "row" as const,
-    gap: 10,
+    flexWrap: "wrap" as const,
+    justifyContent: "center" as const,
+    gap: 8,
     marginBottom: 16,
   },
   trendingChip: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    gap: 6,
     backgroundColor: TRENDING_COLOR + "20",
     borderRadius: 999,
-    paddingHorizontal: 14,
-    paddingVertical: 7,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
     borderWidth: 1,
     borderColor: TRENDING_COLOR + "40",
   },
-  trendingChipNum: {
-    fontSize: 16,
-    fontFamily: "Inter_700Bold",
-    color: Colors.textPrimary,
-  },
-  trendingChipLabel: {
-    fontSize: 10,
+  trendingChipText: {
+    fontSize: 11,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
     letterSpacing: 1.1,
