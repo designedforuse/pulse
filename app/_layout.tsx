@@ -77,7 +77,7 @@ function RootLayoutNav() {
         name="tonight-story-full"
         options={{
           headerShown: true,
-          title: "Today's Story",
+          title: "On Your Radar",
           headerBackTitle: "Stories",
         }}
       />

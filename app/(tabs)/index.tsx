@@ -224,7 +224,7 @@ export default function ExploreScreen() {
           <Text style={styles.tonightCoverDate}>
             {new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }).toUpperCase()}
           </Text>
-          <Text style={styles.tonightCoverWordmark}>TODAY'S{"\n"}STORY</Text>
+          <Text style={styles.tonightCoverWordmark}>ON YOUR{"\n"}RADAR</Text>
           <Text style={styles.tonightCoverTagline}>What's worth watching today</Text>
           <View style={styles.tonightCoverChips}>
             {(() => {

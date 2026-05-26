@@ -92,7 +92,7 @@ export default function TonightStoryFullScreen() {
             </Text>
           )}
         </View>
-        <Text style={styles.kicker}>TODAY'S STORY</Text>
+        <Text style={styles.kicker}>ON YOUR RADAR</Text>
       </View>
 
       <View style={styles.feedList}>
