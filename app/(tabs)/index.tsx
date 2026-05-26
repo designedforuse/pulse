@@ -263,8 +263,13 @@ export default function ExploreScreen() {
     slides.push((() => {
       const current = monthSnapshot.currentMonth;
       const next = monthSnapshot.nextMonth;
-      const totalLeagues = current.leagues.length + next.leagues.length;
-      const totalFinals = (current.championshipFinals?.length ?? 0) + (next.championshipFinals?.length ?? 0);
+      const week = monthSnapshot.thisWeek;
+      const totalLeagues = week
+        ? week.leagues.length
+        : current.leagues.length + next.leagues.length;
+      const totalFinals = week
+        ? (week.championshipFinals?.length ?? 0)
+        : (current.championshipFinals?.length ?? 0) + (next.championshipFinals?.length ?? 0);
       return (
         <Pressable
           key="snapshot"
@@ -298,7 +303,7 @@ export default function ExploreScreen() {
               </Text>
             )}
             <Text style={styles.comingUpWordmark}>WHAT'S{"\n"}COMING UP</Text>
-            <Text style={styles.comingUpTagline}>Big moments on the horizon.</Text>
+            <Text style={styles.comingUpTagline}>The big moments...</Text>
             <View style={styles.comingUpChips}>
               <View style={styles.comingUpChip}>
                 <Text style={styles.comingUpChipText}>
