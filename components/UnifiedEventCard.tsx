@@ -63,6 +63,28 @@ export function getGrandPrixFlag(gpName: string): string | null {
   return null;
 }
 
+const WRC_ROUNDS: Record<string, { flag: string; country: string }> = {
+  "Rallye Monte-Carlo": { flag: "🇲🇨", country: "Monaco" },
+  "Rally Sweden": { flag: "🇸🇪", country: "Sweden" },
+  "Safari Rally Kenya": { flag: "🇰🇪", country: "Kenya" },
+  "Croatia Rally": { flag: "🇭🇷", country: "Croatia" },
+  "Rally Islas Canarias": { flag: "🇪🇸", country: "Canary Islands" },
+  "Rally de Portugal": { flag: "🇵🇹", country: "Portugal" },
+  "Rally Japan": { flag: "🇯🇵", country: "Japan" },
+  "Acropolis Rally Greece": { flag: "🇬🇷", country: "Greece" },
+  "Rally Estonia": { flag: "🇪🇪", country: "Estonia" },
+  "Rally Finland": { flag: "🇫🇮", country: "Finland" },
+  "Rally del Paraguay": { flag: "🇵🇾", country: "Paraguay" },
+  "Rally Chile": { flag: "🇨🇱", country: "Chile" },
+  "Rally Italia Sardegna": { flag: "🇮🇹", country: "Italy" },
+  "Rally Saudi Arabia": { flag: "🇸🇦", country: "Saudi Arabia" },
+};
+
+function getWrcRoundInfo(name: string | null | undefined): { flag: string; country: string } | null {
+  if (!name) return null;
+  return WRC_ROUNDS[name] ?? null;
+}
+
 const COUNTRY_FLAGS: Record<string, string> = {
   "Afghanistan": "🇦🇫", "Albania": "🇦🇱", "Algeria": "🇩🇿", "Angola": "🇦🇴",
   "Argentina": "🇦🇷", "Armenia": "🇦🇲", "Australia": "🇦🇺", "Austria": "🇦🇹",
@@ -244,6 +266,7 @@ function getLeagueLabel(event: SportEvent): string {
   if (event.sport === "athletics" && (event.id?.startsWith("athletics-golden-trail-") || event.leagueKey === "golden-trail")) {
     return "Golden Trail";
   }
+  if (event.sport === "racing" && event.leagueKey === "wrc") return "WRC";
   if (event.tournamentName) return event.tournamentName;
   return LEAGUE_DISPLAY_NAMES[event.league] ?? event.league;
 }
@@ -883,7 +906,12 @@ export default function UnifiedEventCard({
   const isAthletics = event.sport === "athletics";
   const isHorseRacing = event.sport === "horse-racing";
   const isCycling = event.sport === "cycling";
-  const gpFlag = isRacing ? getGrandPrixFlag(event.competitionName || event.homeTeam) : null;
+  const isWrc = isRacing && event.leagueKey === "wrc";
+  const wrcInfo = isWrc ? getWrcRoundInfo(event.tournamentName || event.homeTeam) : null;
+  const wrcRoundShort = isWrc && event.sessionTitle
+    ? (event.sessionTitle.match(/Round\s+\d+/i)?.[0] ?? event.sessionTitle)
+    : null;
+  const gpFlag = isRacing ? (wrcInfo?.flag ?? getGrandPrixFlag(event.competitionName || event.homeTeam)) : null;
   const golfTournament = isGolf ? (event.tournamentName || event.homeTeam) : null;
   const golfRound = isGolf && event.sessionTitle
     ? (event.sessionTitle.match(/Round \d+/)?.[0] || event.sessionTitle.split("—")[1]?.trim() || event.sessionTitle)
@@ -998,7 +1026,9 @@ export default function UnifiedEventCard({
                   <View style={uStyles.espnTeam}>
                     <Text style={uStyles.racingEspnFlagLarge}>{gpFlag || "🏁"}</Text>
                     <Text style={uStyles.espnTeamName} numberOfLines={1}>
-                      {`${getGrandPrixLocation(event.competitionName || event.homeTeam)} GP`}
+                      {isWrc
+                        ? (wrcInfo?.country ?? event.tournamentName ?? event.homeTeam)
+                        : `${getGrandPrixLocation(event.competitionName || event.homeTeam)} GP`}
                     </Text>
                   </View>
                 </View>
@@ -1012,7 +1042,9 @@ export default function UnifiedEventCard({
                   <View style={uStyles.espnStarSlot} />
                   <View style={uStyles.espnTeam}>
                     <Text style={[uStyles.racingEspnTitle, { color: Colors.textPrimary }]} numberOfLines={2}>
-                      {event.sessionTitle || event.awayTeam || ""}
+                      {isWrc
+                        ? (wrcRoundShort ?? "")
+                        : (event.sessionTitle || event.awayTeam || "")}
                     </Text>
                   </View>
                 </View>
