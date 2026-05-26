@@ -152,6 +152,9 @@ const ATHLETICS_CITY_FLAGS: Record<string, string> = {
   "new york": "🇺🇸",
   "new york city": "🇺🇸",
   "cape town": "🇿🇦",
+  "comrades": "🇿🇦",
+  "pietermaritzburg": "🇿🇦",
+  "durban": "🇿🇦",
   // UTMB World Series stops
   "val d'aran": "🇪🇸",
   "val daran": "🇪🇸",
@@ -1075,7 +1078,7 @@ export default function UnifiedEventCard({
             <View>
               <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
                 <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>
-                  {isDiamondLeague ? "DIAMOND LEAGUE" : isUtmb ? "UTMB WORLD SERIES" : isGoldenTrail ? "GOLDEN TRAIL" : event.leagueKey === "marathon-majors" ? "MARATHON MAJORS" : getLeagueLabel(event)}
+                  {isDiamondLeague ? "DIAMOND LEAGUE" : isUtmb ? "UTMB WORLD SERIES" : isGoldenTrail ? "GOLDEN TRAIL" : event.leagueKey === "marathon-majors" ? "MARATHON MAJORS" : event.leagueKey === "comrades" ? "COMRADES" : getLeagueLabel(event)}
                 </Text>
               </View>
               <View style={uStyles.espnMatchup}>

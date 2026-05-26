@@ -139,7 +139,7 @@ function FavoritesSection() {
     golf: ["The Majors"],
     "horse-racing": ["Triple Crown"],
     cycling: ["Grand Tour", "Epic Series"],
-    athletics: ["World Marathon Majors", "Diamond League", "UTMB World Series", "Golden Trail World Series"],
+    athletics: ["World Marathon Majors", "Comrades Marathon", "Diamond League", "UTMB World Series", "Golden Trail World Series"],
     paddling: ["SA Big Three"],
   };
 
