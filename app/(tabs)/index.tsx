@@ -292,18 +292,23 @@ export default function ExploreScreen() {
             style={StyleSheet.absoluteFillObject}
           />
           <View style={styles.comingUpInner}>
+            {monthSnapshot.thisWeek?.monthLabel && (
+              <Text style={styles.comingUpDate}>
+                {monthSnapshot.thisWeek.monthLabel.replace(/,\s*\d{4}$/, "").toUpperCase()}
+              </Text>
+            )}
             <Text style={styles.comingUpWordmark}>WHAT'S{"\n"}COMING UP</Text>
-            <Text style={styles.comingUpTagline}>Leagues, tournaments & finals on the horizon</Text>
+            <Text style={styles.comingUpTagline}>Big moments on the horizon.</Text>
             <View style={styles.comingUpChips}>
               <View style={styles.comingUpChip}>
-                <Text style={styles.comingUpChipNum}>{totalLeagues}</Text>
-                <Text style={styles.comingUpChipLabel}>{totalLeagues === 1 ? "LEAGUE" : "LEAGUES"}</Text>
+                <Text style={styles.comingUpChipText}>
+                  {totalLeagues} {totalLeagues === 1 ? "LEAGUE" : "LEAGUES"}
+                </Text>
               </View>
               {totalFinals > 0 && (
                 <View style={[styles.comingUpChip, styles.comingUpChipAccent]}>
-                  <Text style={[styles.comingUpChipNum, styles.comingUpChipNumAccent]}>{totalFinals}</Text>
-                  <Text style={[styles.comingUpChipLabel, styles.comingUpChipLabelAccent]}>
-                    {totalFinals === 1 ? "FINAL" : "FINALS"}
+                  <Text style={styles.comingUpChipText}>
+                    {totalFinals} {totalFinals === 1 ? "FINAL" : "FINALS"}
                   </Text>
                 </View>
               )}
@@ -946,42 +951,38 @@ const styles = StyleSheet.create({
     color: SNAPSHOT_COLOR,
     fontFamily: "Inter_600SemiBold",
   },
+  comingUpDate: {
+    fontSize: 11,
+    fontFamily: "Inter_700Bold",
+    color: SNAPSHOT_COLOR,
+    letterSpacing: 2,
+    textTransform: "uppercase" as const,
+    marginBottom: 12,
+  },
   comingUpChips: {
     flexDirection: "row" as const,
-    gap: 10,
+    flexWrap: "wrap" as const,
+    justifyContent: "center" as const,
+    gap: 8,
     marginBottom: 16,
   },
   comingUpChip: {
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    gap: 6,
     backgroundColor: SNAPSHOT_COLOR + "20",
     borderRadius: 999,
-    paddingHorizontal: 14,
-    paddingVertical: 7,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
     borderWidth: 1,
     borderColor: SNAPSHOT_COLOR + "40",
   },
   comingUpChipAccent: {
-    backgroundColor: PINK + "22",
-    borderColor: PINK + "66",
+    backgroundColor: PINK + "20",
+    borderColor: PINK + "40",
   },
-  comingUpChipNum: {
-    fontSize: 16,
-    fontFamily: "Inter_700Bold",
-    color: Colors.textPrimary,
-  },
-  comingUpChipNumAccent: {
-    color: Colors.textPrimary,
-  },
-  comingUpChipLabel: {
-    fontSize: 10,
+  comingUpChipText: {
+    fontSize: 11,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
     letterSpacing: 1.1,
-  },
-  comingUpChipLabelAccent: {
-    color: Colors.textPrimary,
   },
   comingUpCta: {
     flexDirection: "row" as const,
