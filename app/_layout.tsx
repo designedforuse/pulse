@@ -143,6 +143,14 @@ function RootLayoutNav() {
         }}
       />
       <Stack.Screen
+        name="paddling-101"
+        options={{
+          headerShown: true,
+          title: "Paddling 101",
+          headerBackTitle: "Behind",
+        }}
+      />
+      <Stack.Screen
         name="event-sheet"
         options={{
           presentation: "formSheet",

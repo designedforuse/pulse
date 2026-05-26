@@ -41,10 +41,18 @@ const TOPICS: DeepTalkTopic[] = [
   {
     id: "endurance-athletics",
     title: "Endurance Athletics",
-    subtitle: "Marathon Majors, Diamond League, Golden Trail, and UTMB — the elite running circuits explained",
+    subtitle: "Marathon Majors, Comrades, Diamond League, Golden Trail, and UTMB — the elite running circuits explained",
     icon: "walk-outline",
     accent: Colors.athletics,
     route: "/endurance-athletics",
+  },
+  {
+    id: "paddling-101",
+    title: "Paddling 101",
+    subtitle: "South Africa's Big Three canoe marathons — the unofficial triple crown of river racing",
+    icon: "boat",
+    accent: Colors.paddling,
+    route: "/paddling-101",
   },
   {
     id: "horse-racing-101",

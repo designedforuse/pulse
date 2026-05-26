@@ -29,6 +29,25 @@ export default function EnduranceAthleticsScreen() {
           footnote: "Streamed on FloSports in the US.",
         },
         {
+          title: "Comrades Marathon",
+          emoji: "🇿🇦",
+          intro:
+            "South Africa's iconic ~89 km ultramarathon between Pietermaritzburg and Durban — one of the oldest and largest ultras in the world, run since 1921 in memory of WWI soldiers. Around 20,000 entrants chase a finisher's medal under a strict 12-hour cutoff.",
+          events: [
+            {
+              name: "Comrades Marathon",
+              meta: "Jun · 🇿🇦",
+              note: "Alternates yearly between the 'Up Run' (Durban → PMB, net climb) and the 'Down Run' (PMB → Durban). 2026 is the 99th edition — a Down Run on Sun Jun 14.",
+            },
+          ],
+          bullets: [
+            "12-hour cutoff — a gun is fired at the finish line and no one is allowed past, one of the most dramatic moments in distance running.",
+            "Tiered medals: Gold (top 10), Wally Hayward, Silver, Bill Rowan, Robert Mtshali, Bronze, Vic Clapham — your finish time, not just the fact you finished, defines your race.",
+            "Big climbs to know: Polly Shortts, Inchanga, Botha's Hill, Fields Hill.",
+          ],
+          footnote: "Streamed live on YouTube via the official Comrades channels (12 hours of continuous coverage).",
+        },
+        {
           title: "Wanda Diamond League",
           emoji: "🏟️",
           intro:
