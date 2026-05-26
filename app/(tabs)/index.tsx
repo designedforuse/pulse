@@ -303,7 +303,7 @@ export default function ExploreScreen() {
               </Text>
             )}
             <Text style={styles.comingUpWordmark}>WHAT'S{"\n"}COMING UP</Text>
-            <Text style={styles.comingUpTagline}>The big moments...</Text>
+            <Text style={styles.comingUpTagline}>The big moments to look out for</Text>
             <View style={styles.comingUpChips}>
               <View style={styles.comingUpChip}>
                 <Text style={styles.comingUpChipText}>
