@@ -61,6 +61,15 @@ const RECENCY_WINDOW_DAYS: Record<CardKind, number> = {
   momentum: 14,
   league_moment: 14,
   player_movement: 7,
+  weekend_watchlist: 7,
+  week_ahead: 7,
+  rally_weekend: 14,
+  marathon_spotlight: 30,
+  diamond_league: 14,
+  golf_major: 30,
+  grand_tour: 14,
+  ipl_storyline: 7,
+  marquee_match: 7,
 };
 
 const TRUSTED_CHANNELS = [
@@ -254,6 +263,30 @@ function buildVideoSearchQuery(card: ExploreNarrativeCard): string | null {
       return card.title ? `${card.title} sports ${monthYear}` : null;
     case "player_movement":
       return meta.playerName ? `${meta.playerName} trade ${monthYear}` : null;
+    case "rally_weekend":
+      return meta.rallyName ? `${meta.rallyName} WRC rally highlights` : null;
+    case "marathon_spotlight":
+      return meta.marathonName ? `${meta.marathonName} marathon highlights ${now.getFullYear()}` : null;
+    case "diamond_league":
+      return meta.meetName ? `${meta.meetName} Diamond League ${now.getFullYear()}` : null;
+    case "golf_major":
+      return meta.tournamentName ? `${meta.tournamentName} ${now.getFullYear()} preview` : null;
+    case "grand_tour":
+      return meta.tourName ? `${meta.tourName} cycling highlights ${monthYear}` : (meta.raceName ? `${meta.raceName} mountain bike` : null);
+    case "ipl_storyline": {
+      const a = meta.matches?.[0]?.away || "";
+      const b = meta.matches?.[0]?.home || "";
+      return a && b ? `${a} vs ${b} IPL ${now.getFullYear()} highlights` : `IPL ${now.getFullYear()} highlights`;
+    }
+    case "marquee_match": {
+      const away = meta.away || "";
+      const home = meta.home || "";
+      const league = meta.league || "soccer";
+      return away && home ? `${away} vs ${home} ${league} preview` : null;
+    }
+    case "weekend_watchlist":
+    case "week_ahead":
+      return null;
     default:
       return null;
   }
@@ -285,7 +318,7 @@ export interface ExploreNarrativeCard {
   priority: number;
   triggeredAt: string;
   expiresAt?: string;
-  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game" | "upset_alert" | "clinch_watch";
+  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game" | "upset_alert" | "clinch_watch" | "weekend_watchlist" | "week_ahead" | "rally_weekend" | "marathon_spotlight" | "diamond_league" | "golf_major" | "grand_tour" | "ipl_storyline" | "marquee_match";
   region: Region;
   regionPriority: number;
   regionLabel: string;
@@ -692,8 +725,8 @@ function generatePlayoffPush(events: AppEvent[], favorites: Favorites, now: Date
     const gamesIn7 = teamEvents7.length;
     const gamesIn5 = teamEvents5.length;
 
-    const condition1 = gamesIn5 >= 4;
-    const condition2 = b2b && gamesIn7 >= 4;
+    const condition1 = gamesIn5 >= 3;
+    const condition2 = b2b && gamesIn7 >= 3;
     if (!condition1 && !condition2) continue;
 
     const shortName = fav.team.split(" ").pop() || fav.team;
@@ -848,7 +881,7 @@ function generateMomentum(events: AppEvent[], favorites: Favorites, now: Date, n
     }).sort((a: any, b: any) => new Date(b.startTimeUTC || b.gameDate).getTime() - new Date(a.startTimeUTC || a.gameDate).getTime());
 
     const recent = completedGames.slice(0, 5);
-    if (recent.length < 3) continue;
+    if (recent.length < 2) continue;
 
     let winStreak = 0;
     let pointStreak = 0;
@@ -884,13 +917,13 @@ function generateMomentum(events: AppEvent[], favorites: Favorites, now: Date, n
       goalDiff += isHome ? (homeScore - awayScore) : (awayScore - homeScore);
     }
 
-    const triggered = winStreak >= 3 || pointStreak >= 3 || goalDiff >= 4;
+    const triggered = winStreak >= 2 || pointStreak >= 2 || goalDiff >= 3;
     if (!triggered) continue;
 
     const shortName = fav.team.split(" ").pop() || fav.team;
     const subtitleParts: string[] = [];
-    if (winStreak >= 3) subtitleParts.push(`${winStreak}-game win streak`);
-    else if (pointStreak >= 3) subtitleParts.push(`${pointStreak}-game point streak`);
+    if (winStreak >= 2) subtitleParts.push(`${winStreak}-game win streak`);
+    else if (pointStreak >= 2) subtitleParts.push(`${pointStreak}-game point streak`);
     if (goalDiff > 0) subtitleParts.push(`+${goalDiff} goal diff`);
 
     const teamEvents = getEventsForTeam(events, fav.team, 7, now, fav.league);
@@ -930,9 +963,9 @@ function generateMomentum(events: AppEvent[], favorites: Favorites, now: Date, n
           })(),
         })),
         eventIds: teamEvents.map(e => e.id),
-        reason: winStreak >= 3
+        reason: winStreak >= 2
           ? `${fav.team} is on a ${winStreak}-game win streak`
-          : pointStreak >= 3
+          : pointStreak >= 2
             ? `${fav.team} has earned points in ${pointStreak} straight games`
             : `${fav.team} has a +${goalDiff} goal differential over last 3 games`,
       },
@@ -1118,6 +1151,513 @@ function generateF1RaceWeekend(events: AppEvent[], now: Date): ExploreNarrativeC
   }
 
   return cards;
+}
+
+// ============================================================
+// Track 3 — Evergreen filler cards (always available floor)
+// ============================================================
+
+const LEAGUE_PRIORITY: Record<string, number> = {
+  "F1": 100, "WRC": 95,
+  "Champions League": 95, "Europa League": 80,
+  "FIFA World Cup": 100, "International Friendly": 50,
+  "EPL": 90, "La Liga": 88, "Serie A": 85, "Bundesliga": 83, "Ligue 1": 80,
+  "MLS": 70, "NWSL": 72, "USL": 55, "CAF Champions League": 70, "FA Cup": 65,
+  "NHL": 90, "AHL": 60, "ECHL": 50, "SHL": 55,
+  "NBA": 90, "MLB": 80,
+  "IPL": 90, "International Cricket": 80, "Test Cricket": 75, "ODI Cricket": 75,
+  "URC": 78, "Top 14": 75, "English Premiership": 73, "Super Rugby": 78,
+  "Champions Cup": 80, "Challenge Cup": 65, "MLR": 60, "HSBC SVNS": 70, "Japan League One": 55,
+  "Grand Slam": 95, "ATP Masters 1000": 80,
+  "Diamond League": 75, "World Marathon Majors": 90, "UTMB World Series": 70, "Golden Trail World Series": 65,
+  "The Majors": 95,
+  "Grand Tour": 85, "Epic Series": 65,
+  "Triple Crown": 80,
+};
+
+function getEventLeaguePriority(event: AppEvent): number {
+  return LEAGUE_PRIORITY[event.league] ?? 40;
+}
+
+function generateWeekendWatchlist(events: AppEvent[], now: Date): ExploreNarrativeCard[] {
+  const dow = now.getDay(); // 0=Sun..6=Sat
+  // Fire Thu (4), Fri (5), Sat (6), Sun (0)
+  if (dow !== 0 && dow < 4) return [];
+
+  // Weekend window: Thu 00:00 → Sun 23:59 local of the current weekend
+  const daysSinceThu = dow === 0 ? 3 : dow - 4; // Thu=0, Fri=1, Sat=2, Sun=3
+  const thursday = new Date(now.getFullYear(), now.getMonth(), now.getDate() - daysSinceThu, 0, 0, 0, 0);
+  const sundayEnd = new Date(thursday.getFullYear(), thursday.getMonth(), thursday.getDate() + 3, 23, 59, 59, 999);
+
+  const upcoming = events.filter(e => {
+    const t = new Date(e.startTimeLocal);
+    return t >= now && t <= sundayEnd;
+  });
+  if (upcoming.length === 0) return [];
+
+  const sorted = [...upcoming].sort((a, b) => getEventLeaguePriority(b) - getEventLeaguePriority(a));
+  const picked: AppEvent[] = [];
+  const seenLeagues = new Set<string>();
+  for (const ev of sorted) {
+    if (seenLeagues.has(ev.league)) continue;
+    seenLeagues.add(ev.league);
+    picked.push(ev);
+    if (picked.length >= 3) break;
+  }
+  if (picked.length === 0) return [];
+
+  const sportsSet = new Set(picked.map(e => e.sport));
+  const leagueList = picked.map(e => e.league).join(" · ");
+  const subtitle = picked.length === 1
+    ? `${picked[0].league}: ${picked[0].awayTeam} @ ${picked[0].homeTeam}`
+    : `${picked.length} marquee matchups · ${leagueList}`;
+
+  return [{
+    id: "weekend_watchlist",
+    title: "Weekend Watchlist",
+    subtitle,
+    impact: { label: "Feeds: Watch", tabHint: "Watch" },
+    priority: 55,
+    triggeredAt: now.toISOString(),
+    expiresAt: sundayEnd.toISOString(),
+    kind: "weekend_watchlist",
+    region: "Other" as Region,
+    regionPriority: getRegionPriority("Other"),
+    regionLabel: getRegionLabel("Other"),
+    meta: {
+      type: "weekend_watchlist",
+      matchCount: picked.length,
+      matches: picked.map(e => ({
+        league: e.league,
+        sport: e.sport,
+        away: e.awayTeam,
+        home: e.homeTeam,
+        startTime: e.startTimeLocal,
+      })),
+      eventIds: picked.map(e => e.id),
+      reason: `Weekend window: ${picked.length} top-priority event(s) across ${sportsSet.size} sport(s)`,
+    },
+    sports: Array.from(sportsSet),
+  }];
+}
+
+function generateWeekAhead(events: AppEvent[], now: Date, weekData: MonthSnapshotData | null): ExploreNarrativeCard[] {
+  const dow = now.getDay();
+  // Fire Mon (1), Tue (2), Wed (3)
+  if (dow < 1 || dow > 3) return [];
+  if (!weekData || weekData.leagues.length === 0) return [];
+
+  const ranked = [...weekData.leagues].sort((a, b) => {
+    const pa = (LEAGUE_PRIORITY[a.displayName] ?? 40) + Math.min(a.eventCount, 10);
+    const pb = (LEAGUE_PRIORITY[b.displayName] ?? 40) + Math.min(b.eventCount, 10);
+    return pb - pa;
+  }).slice(0, 4);
+
+  const names = ranked.map(l => l.displayName).join(" · ");
+  const sportsSet = new Set(ranked.map(l => l.sport));
+
+  return [{
+    id: "week_ahead",
+    title: "Week Ahead",
+    subtitle: `${ranked.length} leagues in action · ${names}`,
+    impact: { label: "Feeds: Watch", tabHint: "Watch" },
+    priority: 50,
+    triggeredAt: now.toISOString(),
+    expiresAt: new Date(now.getTime() + 3 * 86400000).toISOString(),
+    kind: "week_ahead",
+    region: "Other" as Region,
+    regionPriority: getRegionPriority("Other"),
+    regionLabel: getRegionLabel("Other"),
+    meta: {
+      type: "week_ahead",
+      weekLabel: weekData.monthLabel,
+      leagues: ranked,
+      championshipFinals: weekData.championshipFinals || [],
+      reason: `Week-ahead snapshot — ${weekData.leagues.length} leagues active`,
+    },
+    sports: Array.from(sportsSet),
+  }];
+}
+
+// ============================================================
+// Track 2 — Calendar-based sport-specific generators
+// ============================================================
+
+function generateRallyWeekend(events: AppEvent[], now: Date): ExploreNarrativeCard[] {
+  const windowEnd = new Date(now.getTime() + 7 * 86400000);
+  const rallies = events.filter(e => {
+    if (e.sport !== "racing" || e.league !== "WRC") return false;
+    const start = new Date(e.startTimeLocal);
+    return start >= now && start <= windowEnd;
+  }).sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
+  if (rallies.length === 0) return [];
+
+  const rally = rallies[0];
+  const name = rally.tournamentName || rally.homeTeam || "WRC Round";
+  const start = new Date(rally.startTimeLocal);
+  const daysAway = Math.max(0, Math.round((start.getTime() - now.getTime()) / 86400000));
+  const subtitle = daysAway === 0
+    ? `${name} — underway this weekend`
+    : daysAway === 1 ? `${name} — starts tomorrow` : `${name} — starts in ${daysAway} days`;
+
+  return [{
+    id: `rally_weekend_${rally.id}`,
+    title: "Rally Weekend",
+    subtitle,
+    impact: { label: "Feeds: Watch", tabHint: "Watch" },
+    priority: 75,
+    triggeredAt: now.toISOString(),
+    expiresAt: new Date(start.getTime() + 3 * 86400000).toISOString(),
+    kind: "rally_weekend",
+    region: "Other" as Region,
+    regionPriority: getRegionPriority("Other"),
+    regionLabel: getRegionLabel("Other"),
+    meta: {
+      type: "rally_weekend",
+      rallyName: name,
+      startTime: rally.startTimeLocal,
+      eventIds: [rally.id],
+      reason: `WRC ${name} within 7 days`,
+    },
+    sports: ["racing"],
+  }];
+}
+
+function generateMarathonSpotlight(events: AppEvent[], now: Date): ExploreNarrativeCard[] {
+  const windowEnd = new Date(now.getTime() + 10 * 86400000);
+  const marathons = events.filter(e => {
+    if (e.sport !== "athletics" || e.league !== "World Marathon Majors") return false;
+    const start = new Date(e.startTimeLocal);
+    return start >= now && start <= windowEnd;
+  }).sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
+  if (marathons.length === 0) return [];
+
+  const m = marathons[0];
+  const name = m.tournamentName || m.homeTeam || "Marathon Major";
+  const start = new Date(m.startTimeLocal);
+  const daysAway = Math.max(0, Math.round((start.getTime() - now.getTime()) / 86400000));
+  const subtitle = daysAway <= 1 ? `${name} — race day soon` : `${name} — ${daysAway} days out`;
+
+  return [{
+    id: `marathon_${m.id}`,
+    title: "Marathon Major",
+    subtitle,
+    impact: { label: "Feeds: Watch", tabHint: "Watch" },
+    priority: 80,
+    triggeredAt: now.toISOString(),
+    expiresAt: new Date(start.getTime() + 2 * 86400000).toISOString(),
+    kind: "marathon_spotlight",
+    region: "Other" as Region,
+    regionPriority: getRegionPriority("Other"),
+    regionLabel: getRegionLabel("Other"),
+    meta: {
+      type: "marathon_spotlight",
+      marathonName: name,
+      startTime: m.startTimeLocal,
+      eventIds: [m.id],
+      reason: `World Marathon Majors event within 10 days: ${name}`,
+    },
+    sports: ["athletics"],
+  }];
+}
+
+function generateDiamondLeague(events: AppEvent[], now: Date): ExploreNarrativeCard[] {
+  const windowEnd = new Date(now.getTime() + 5 * 86400000);
+  const meets = events.filter(e => {
+    if (e.sport !== "athletics" || e.league !== "Diamond League") return false;
+    const start = new Date(e.startTimeLocal);
+    return start >= now && start <= windowEnd;
+  }).sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
+  if (meets.length === 0) return [];
+
+  const m = meets[0];
+  const name = m.tournamentName || m.homeTeam || "Diamond League";
+  const start = new Date(m.startTimeLocal);
+  const daysAway = Math.max(0, Math.round((start.getTime() - now.getTime()) / 86400000));
+  const subtitle = daysAway === 0 ? `${name} — today` : daysAway === 1 ? `${name} — tomorrow` : `${name} — in ${daysAway} days`;
+
+  return [{
+    id: `diamond_league_${m.id}`,
+    title: "Diamond League",
+    subtitle,
+    impact: { label: "Feeds: Watch", tabHint: "Watch" },
+    priority: 65,
+    triggeredAt: now.toISOString(),
+    expiresAt: new Date(start.getTime() + 24 * 3600000).toISOString(),
+    kind: "diamond_league",
+    region: "Other" as Region,
+    regionPriority: getRegionPriority("Other"),
+    regionLabel: getRegionLabel("Other"),
+    meta: {
+      type: "diamond_league",
+      meetName: name,
+      startTime: m.startTimeLocal,
+      eventIds: [m.id],
+      reason: `Diamond League meet within 5 days: ${name}`,
+    },
+    sports: ["athletics"],
+  }];
+}
+
+function generateGolfMajor(events: AppEvent[], now: Date): ExploreNarrativeCard[] {
+  const windowEnd = new Date(now.getTime() + 7 * 86400000);
+  const rounds = events.filter(e => {
+    if (e.sport !== "golf") return false;
+    if (e.league !== "The Majors" && (e as any).leagueKey !== "golf-majors") return false;
+    const start = new Date(e.startTimeLocal);
+    return start >= now && start <= windowEnd;
+  }).sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
+  if (rounds.length === 0) return [];
+
+  const r = rounds[0];
+  const name = r.tournamentName || r.homeTeam || "Golf Major";
+  const start = new Date(r.startTimeLocal);
+  const daysAway = Math.max(0, Math.round((start.getTime() - now.getTime()) / 86400000));
+  const subtitle = daysAway === 0 ? `${name} — opening round today`
+    : daysAway === 1 ? `${name} — tees off tomorrow`
+    : `${name} — in ${daysAway} days`;
+
+  return [{
+    id: `golf_major_${name.toLowerCase().replace(/[^a-z0-9]/g, "_")}`,
+    title: "Major Championship",
+    subtitle,
+    impact: { label: "Feeds: Watch", tabHint: "Watch" },
+    priority: 85,
+    triggeredAt: now.toISOString(),
+    expiresAt: new Date(start.getTime() + 5 * 86400000).toISOString(),
+    kind: "golf_major",
+    region: "Other" as Region,
+    regionPriority: getRegionPriority("Other"),
+    regionLabel: getRegionLabel("Other"),
+    meta: {
+      type: "golf_major",
+      tournamentName: name,
+      startTime: r.startTimeLocal,
+      roundsCount: rounds.length,
+      eventIds: rounds.map(e => e.id),
+      reason: `Golf major within 7 days: ${name}`,
+    },
+    sports: ["golf"],
+  }];
+}
+
+function generateGrandTour(events: AppEvent[], now: Date): ExploreNarrativeCard[] {
+  const lookback = new Date(now.getTime() - 2 * 86400000);
+  const windowEnd = new Date(now.getTime() + 7 * 86400000);
+
+  const gtEvents = events.filter(e => {
+    if (e.sport !== "cycling" || e.league !== "Grand Tour") return false;
+    const start = new Date(e.startTimeLocal);
+    return start >= lookback && start <= windowEnd;
+  }).sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
+
+  if (gtEvents.length > 0) {
+    const tourName = gtEvents[0].tournamentName || "Grand Tour";
+    const upcomingStages = gtEvents.filter(e => new Date(e.startTimeLocal) >= now);
+    const subtitle = upcomingStages.length > 0
+      ? `${tourName} — ${upcomingStages.length} stage${upcomingStages.length > 1 ? "s" : ""} in the next 7 days`
+      : `${tourName} — race in progress`;
+    return [{
+      id: `grand_tour_${tourName.toLowerCase().replace(/[^a-z0-9]/g, "_")}`,
+      title: "Grand Tour",
+      subtitle,
+      impact: { label: "Feeds: Watch", tabHint: "Watch" },
+      priority: 75,
+      triggeredAt: now.toISOString(),
+      expiresAt: new Date(now.getTime() + 7 * 86400000).toISOString(),
+      kind: "grand_tour",
+      region: "Other" as Region,
+      regionPriority: getRegionPriority("Other"),
+      regionLabel: getRegionLabel("Other"),
+      meta: {
+        type: "grand_tour",
+        tourName,
+        stageCount: gtEvents.length,
+        upcomingStageCount: upcomingStages.length,
+        eventIds: gtEvents.map(e => e.id),
+        reason: `${tourName} active — ${gtEvents.length} stage(s) in window`,
+      },
+      sports: ["cycling"],
+    }];
+  }
+
+  // Epic Series fallback when no Grand Tour is active
+  const epicEvents = events.filter(e => {
+    if (e.sport !== "cycling" || e.league !== "Epic Series") return false;
+    const start = new Date(e.startTimeLocal);
+    return start >= now && start <= windowEnd;
+  }).sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
+
+  if (epicEvents.length === 0) return [];
+
+  const ep = epicEvents[0];
+  const name = ep.tournamentName || ep.homeTeam || "Epic Series";
+  const start = new Date(ep.startTimeLocal);
+  const daysAway = Math.max(0, Math.round((start.getTime() - now.getTime()) / 86400000));
+  return [{
+    id: `epic_series_${ep.id}`,
+    title: "Epic Series",
+    subtitle: daysAway === 0 ? `${name} — racing now` : `${name} — in ${daysAway} days`,
+    impact: { label: "Feeds: Watch", tabHint: "Watch" },
+    priority: 60,
+    triggeredAt: now.toISOString(),
+    expiresAt: new Date(start.getTime() + 10 * 86400000).toISOString(),
+    kind: "grand_tour",
+    region: "Other" as Region,
+    regionPriority: getRegionPriority("Other"),
+    regionLabel: getRegionLabel("Other"),
+    meta: {
+      type: "epic_series",
+      raceName: name,
+      tourName: name,
+      startTime: ep.startTimeLocal,
+      eventIds: [ep.id],
+      reason: `Epic Series race within 7 days: ${name}`,
+    },
+    sports: ["cycling"],
+  }];
+}
+
+function generateIplStoryline(events: AppEvent[], now: Date): ExploreNarrativeCard[] {
+  const windowEnd = new Date(now.getTime() + 36 * 3600000);
+  const matches = events.filter(e => {
+    if (e.sport !== "cricket" || e.league !== "IPL") return false;
+    const start = new Date(e.startTimeLocal);
+    return start >= now && start <= windowEnd;
+  }).sort((a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime());
+  if (matches.length === 0) return [];
+
+  const next = matches[0];
+  const start = new Date(next.startTimeLocal);
+  const hoursAway = Math.max(0, Math.round((start.getTime() - now.getTime()) / 3600000));
+  const subtitle = matches.length === 1
+    ? `${next.awayTeam} vs ${next.homeTeam}${hoursAway <= 4 ? " — first ball soon" : ` — in ${hoursAway}h`}`
+    : `${matches.length} matches in the next 36h, next: ${next.awayTeam} vs ${next.homeTeam}`;
+
+  return [{
+    id: "ipl_storyline",
+    title: "Tonight in the IPL",
+    subtitle,
+    impact: { label: "Feeds: Watch", tabHint: "Watch" },
+    priority: 70,
+    triggeredAt: now.toISOString(),
+    expiresAt: new Date(start.getTime() + 8 * 3600000).toISOString(),
+    kind: "ipl_storyline",
+    region: "Other" as Region,
+    regionPriority: getRegionPriority("Other"),
+    regionLabel: getRegionLabel("Other"),
+    meta: {
+      type: "ipl_storyline",
+      matchCount: matches.length,
+      matches: matches.slice(0, 4).map(e => ({
+        away: e.awayTeam,
+        home: e.homeTeam,
+        startTime: e.startTimeLocal,
+      })),
+      eventIds: matches.map(e => e.id),
+      reason: `${matches.length} IPL match(es) within 36h`,
+    },
+    sports: ["cricket"],
+  }];
+}
+
+const MARQUEE_LEAGUE_PRIORITY: Record<string, number> = {
+  "Champions League": 100,
+  "Europa League": 90,
+  "FA Cup": 85,
+  "EPL": 80,
+  "La Liga": 78,
+  "Bundesliga": 72,
+  "Serie A": 70,
+  "Ligue 1": 65,
+  "MLS": 55,
+  "NWSL": 50,
+  "USL": 40,
+  "International Friendly": 30,
+  "FIFA World Cup": 100,
+  "CAF Champions League": 60,
+};
+
+const MARQUEE_RIVALRIES: Array<{ teams: [string, string]; label: string }> = [
+  { teams: ["Real Madrid", "Barcelona"], label: "El Clásico" },
+  { teams: ["Manchester United", "Manchester City"], label: "Manchester Derby" },
+  { teams: ["Liverpool", "Manchester United"], label: "North West Derby" },
+  { teams: ["Arsenal", "Tottenham"], label: "North London Derby" },
+  { teams: ["Bayern", "Dortmund"], label: "Der Klassiker" },
+  { teams: ["Inter", "Milan"], label: "Derby della Madonnina" },
+  { teams: ["PSG", "Marseille"], label: "Le Classique" },
+];
+
+function findRivalryLabel(home: string, away: string): string | null {
+  const h = home.toLowerCase();
+  const a = away.toLowerCase();
+  for (const r of MARQUEE_RIVALRIES) {
+    const t0 = r.teams[0].toLowerCase();
+    const t1 = r.teams[1].toLowerCase();
+    if ((h.includes(t0) && a.includes(t1)) || (h.includes(t1) && a.includes(t0))) {
+      return r.label;
+    }
+  }
+  return null;
+}
+
+function generateMarqueeMatch(events: AppEvent[], now: Date): ExploreNarrativeCard[] {
+  const windowEnd = new Date(now.getTime() + 4 * 86400000);
+  const candidates = events.filter(e => {
+    if (e.sport !== "soccer") return false;
+    if (!(e.league in MARQUEE_LEAGUE_PRIORITY)) return false;
+    const start = new Date(e.startTimeLocal);
+    return start >= now && start <= windowEnd;
+  });
+  if (candidates.length === 0) return [];
+
+  const scored = candidates.map(e => {
+    const base = MARQUEE_LEAGUE_PRIORITY[e.league] || 0;
+    const rivalry = findRivalryLabel(e.homeTeam || "", e.awayTeam || "");
+    return { event: e, score: base + (rivalry ? 25 : 0), rivalry };
+  }).sort((a, b) => b.score - a.score || new Date(a.event.startTimeLocal).getTime() - new Date(b.event.startTimeLocal).getTime());
+
+  const top = scored[0];
+  const e = top.event;
+  const start = new Date(e.startTimeLocal);
+  const hoursAway = Math.max(0, Math.round((start.getTime() - now.getTime()) / 3600000));
+  const daysAway = Math.max(0, Math.round((start.getTime() - now.getTime()) / 86400000));
+  const when = hoursAway <= 12
+    ? (hoursAway <= 2 ? "kickoff soon" : `kicks off in ${hoursAway}h`)
+    : daysAway <= 1 ? "tomorrow"
+    : `in ${daysAway} days`;
+  const matchup = `${e.awayTeam} vs ${e.homeTeam}`;
+  const title = top.rivalry ? `Marquee Match: ${top.rivalry}` : `Marquee Match: ${e.league}`;
+  const subtitle = top.rivalry
+    ? `${matchup} — ${when}`
+    : `${matchup} — ${e.league} · ${when}`;
+
+  return [{
+    id: "marquee_match",
+    title,
+    subtitle,
+    impact: { label: "Feeds: Watch", tabHint: "Watch" },
+    priority: 78,
+    triggeredAt: now.toISOString(),
+    expiresAt: new Date(start.getTime() + 4 * 3600000).toISOString(),
+    kind: "marquee_match",
+    region: "Other" as Region,
+    regionPriority: getRegionPriority("Other"),
+    regionLabel: getRegionLabel("Other"),
+    meta: {
+      type: "marquee_match",
+      league: e.league,
+      home: e.homeTeam,
+      away: e.awayTeam,
+      rivalry: top.rivalry,
+      startTime: e.startTimeLocal,
+      eventIds: [e.id],
+      reason: top.rivalry
+        ? `${top.rivalry} (${matchup}) ${when}`
+        : `Top ${e.league} fixture (${matchup}) ${when}`,
+    },
+    sports: ["soccer"],
+  }];
 }
 
 interface PlayerSighting {
@@ -3018,8 +3558,16 @@ function buildTonightStory(
 
 function deriveCardSports(card: ExploreNarrativeCard, events: AppEvent[]): string[] {
   const meta = card.meta || {};
+  if (card.sports && card.sports.length > 0) return card.sports.map(s => s.toLowerCase());
   if (meta.sport) return [meta.sport.toLowerCase()];
   if (meta.rivalrySport) return [meta.rivalrySport.toLowerCase()];
+  if (Array.isArray(meta.leagues) && meta.leagues.length > 0) {
+    const leagueSports = new Set<string>();
+    for (const l of meta.leagues) {
+      if (l?.sport) leagueSports.add(String(l.sport).toLowerCase());
+    }
+    if (leagueSports.size > 0) return [...leagueSports];
+  }
 
   const eventIds: string[] = [
     ...(meta.eventIds || []),
@@ -3292,6 +3840,26 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     console.log(`    ${c.title}: ${c.subtitle}`);
   }
 
+  const weekDataForAhead = buildWeekData(events, now);
+  const weekendWatchlist = generateWeekendWatchlist(events, now);
+  console.log(`  Weekend Watchlist: ${weekendWatchlist.length} card(s)`);
+  const weekAhead = generateWeekAhead(events, now, weekDataForAhead);
+  console.log(`  Week Ahead: ${weekAhead.length} card(s)`);
+  const rallyWeekend = generateRallyWeekend(events, now);
+  console.log(`  Rally Weekend: ${rallyWeekend.length} card(s)`);
+  const marathonSpotlight = generateMarathonSpotlight(events, now);
+  console.log(`  Marathon Spotlight: ${marathonSpotlight.length} card(s)`);
+  const diamondLeague = generateDiamondLeague(events, now);
+  console.log(`  Diamond League: ${diamondLeague.length} card(s)`);
+  const golfMajor = generateGolfMajor(events, now);
+  console.log(`  Golf Major: ${golfMajor.length} card(s)`);
+  const grandTour = generateGrandTour(events, now);
+  console.log(`  Grand Tour / Epic: ${grandTour.length} card(s)`);
+  const iplStoryline = generateIplStoryline(events, now);
+  console.log(`  IPL Storyline: ${iplStoryline.length} card(s)`);
+  const marqueeMatch = generateMarqueeMatch(events, now);
+  console.log(`  Marquee Match: ${marqueeMatch.length} card(s)`);
+
   let playerMovementCards: ExploreNarrativeCard[] = [];
   let movementRunMeta: MovementRunMeta | null = null;
   let movementError: string | null = null;
@@ -3351,7 +3919,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     }
   }
 
-  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...f1RaceWeekend, ...playerMovementCards, ...deadlineResult.cards, ...rivalryResult.cards, ...upsetResult.cards, ...clinchResult.cards, ...clinchResult.fallbackPushCards];
+  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...f1RaceWeekend, ...playerMovementCards, ...deadlineResult.cards, ...rivalryResult.cards, ...upsetResult.cards, ...clinchResult.cards, ...clinchResult.fallbackPushCards, ...weekendWatchlist, ...weekAhead, ...rallyWeekend, ...marathonSpotlight, ...diamondLeague, ...golfMajor, ...grandTour, ...iplStoryline, ...marqueeMatch];
 
   const tonightStoryResult = buildTonightStory(allCandidates, events, favorites, now);
   const tonightStory = tonightStoryResult.story;
@@ -3393,8 +3961,8 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
       continue;
     }
 
-    if (selected.length >= 6) {
-      dropped.push({ id: card.id, kind: card.kind, region: card.region, title: card.title, reason: "feed cap (max 6)" });
+    if (selected.length >= 8) {
+      dropped.push({ id: card.id, kind: card.kind, region: card.region, title: card.title, reason: "feed cap (max 8)" });
       continue;
     }
 
@@ -3432,7 +4000,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
       cacheHistoryCount: movementCacheHistoryCount,
       error: movementError,
     },
-    exploreFeedCap: 6,
+    exploreFeedCap: 8,
     candidateCountBeforeCap: allCandidates.length,
     candidateCountAfterCap: selected.length,
     deadlineWatch: deadlineResult.debug,

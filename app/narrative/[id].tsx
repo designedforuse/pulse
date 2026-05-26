@@ -42,7 +42,7 @@ interface ExploreNarrativeCard {
   priority: number;
   triggeredAt: string;
   expiresAt?: string;
-  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game" | "upset_alert" | "clinch_watch";
+  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game" | "upset_alert" | "clinch_watch" | "weekend_watchlist" | "week_ahead" | "rally_weekend" | "marathon_spotlight" | "diamond_league" | "golf_major" | "grand_tour" | "ipl_storyline" | "marquee_match";
   meta?: Record<string, any>;
   video?: NarrativeVideo;
 }
@@ -65,6 +65,15 @@ const KIND_CONFIG: Record<string, { icon: keyof typeof Ionicons.glyphMap; color:
   rivalry_game: { icon: "flash", color: "#E040FB", label: "Rivalry Game" },
   upset_alert: { icon: "alert-circle", color: "#FF1744", label: "Upset Alert" },
   clinch_watch: { icon: "flag", color: "#00BCD4", label: "Clinch Watch" },
+  weekend_watchlist: { icon: "calendar", color: "#7C4DFF", label: "Weekend Watchlist" },
+  week_ahead: { icon: "calendar-outline", color: "#9575CD", label: "Week Ahead" },
+  rally_weekend: { icon: "car-sport", color: "#D81B60", label: "Rally Weekend" },
+  marathon_spotlight: { icon: "walk", color: "#FF5722", label: "Marathon Major" },
+  diamond_league: { icon: "fitness", color: "#00ACC1", label: "Diamond League" },
+  golf_major: { icon: "golf", color: "#43A047", label: "Major Championship" },
+  grand_tour: { icon: "bicycle", color: "#EC407A", label: "Grand Tour" },
+  ipl_storyline: { icon: "baseball", color: "#FFB300", label: "IPL" },
+  marquee_match: { icon: "football", color: "#1CB0F6", label: "Marquee Match" },
 };
 
 function formatEventTime(iso: string): string {

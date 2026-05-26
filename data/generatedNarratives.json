@@ -1,20 +1,40 @@
 {
-  "lastUpdated": "2026-05-25T20:36:14.003Z",
+  "lastUpdated": "2026-05-26T02:25:59.291Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
+        "Other": 1
+      },
+      "week_ahead": {
+        "Other": 1
+      },
+      "rally_weekend": {
+        "Other": 1
+      },
+      "grand_tour": {
+        "Other": 1
+      },
+      "ipl_storyline": {
+        "Other": 1
+      },
+      "marquee_match": {
         "Other": 1
       }
     },
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
       "Other": [
-        "league_moment: Big Stage"
+        "marquee_match: Marquee Match: NWSL",
+        "rally_weekend: Rally Weekend",
+        "grand_tour: Grand Tour",
+        "league_moment: Big Stage",
+        "ipl_storyline: Tonight in the IPL",
+        "week_ahead: Week Ahead"
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 1,
-    "totalAfterCap": 1,
+    "totalBeforeCap": 6,
+    "totalAfterCap": 6,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -49,17 +69,17 @@
         ],
         "playersIngested": 399,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-25T20:36:14.003Z"
+        "timestamp": "2026-05-26T02:25:59.291Z"
       },
       "cacheHistoryCount": 880,
       "error": null
     },
-    "exploreFeedCap": 6,
-    "candidateCountBeforeCap": 1,
-    "candidateCountAfterCap": 1,
+    "exploreFeedCap": 8,
+    "candidateCountBeforeCap": 6,
+    "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1896.6038897222222,
+      "hoursUntil": -1902.433136388889,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -92,16 +112,165 @@
       "scoredCandidates": []
     },
     "videoSelection": {
+      "marquee_match": {
+        "searchQuery": "Bay vs Orlando Pride NWSL preview",
+        "selectedVideoTitle": "Banda vs. Kundananji!  Orlando Pride's Gritty Win vs the Wave & Bay FC Preview!",
+        "selectedVideoPublishedAt": "Streamed 31 minutes ago",
+        "selectedVideoChannel": "Loud & Proud Orlando",
+        "rejectedForAgeCount": 0
+      },
+      "rally_weekend_racing-wrc-japan-2026": {
+        "searchQuery": "Rally Japan WRC rally highlights",
+        "selectedVideoTitle": "Everything You Need To Know for WRC FORUM8 Rally Japan 2026 🇯🇵",
+        "selectedVideoPublishedAt": "10 hours ago",
+        "selectedVideoChannel": "FIA World Rally Championship",
+        "rejectedForAgeCount": 1
+      },
+      "grand_tour_giro_d_italia": {
+        "searchQuery": "Giro d'Italia cycling highlights May 2026",
+        "selectedVideoTitle": "CAOS POR CAIDA 🤯 Isaac Del Toro Ileso 😎 Giro de Italia 2025 Etapa 6",
+        "selectedVideoPublishedAt": "3 hours ago",
+        "selectedVideoChannel": "Cyclinity",
+        "rejectedForAgeCount": 0
+      },
       "league_moment_tournament": {
         "searchQuery": "Big Stage sports May 2026",
         "selectedVideoTitle": "Brighton v. Manchester United | PREMIER LEAGUE HIGHLIGHTS | 5/24/2026 | NBC Sports",
         "selectedVideoPublishedAt": "1 day ago",
         "selectedVideoChannel": "NBC Sports",
         "rejectedForAgeCount": 1
+      },
+      "ipl_storyline": {
+        "searchQuery": "Gujarat Titans vs Royal Challengers Bengaluru IPL 2026 highlights",
+        "selectedVideoTitle": "RCB vs GT QUALIFIER 1 🔥 | Kohli vs Gill for DIRECT IPL 2026 FINAL Spot 🏆 | STUMPTALES | KAUSHIK NC",
+        "selectedVideoPublishedAt": "40 minutes ago",
+        "selectedVideoChannel": "StumpTales",
+        "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
+    {
+      "id": "marquee_match",
+      "title": "Marquee Match: NWSL",
+      "subtitle": "Bay vs Orlando Pride — NWSL · in 4 days",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 78,
+      "triggeredAt": "2026-05-26T02:25:59.291Z",
+      "expiresAt": "2026-05-30T03:00:00.000Z",
+      "kind": "marquee_match",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "marquee_match",
+        "league": "NWSL",
+        "home": "Orlando Pride",
+        "away": "Bay",
+        "rivalry": null,
+        "startTime": "2026-05-29T23:00:00.000Z",
+        "eventIds": [
+          "soccer-nwsl-20260529-2300-bay-at-orlando-pride"
+        ],
+        "reason": "Top NWSL fixture (Bay vs Orlando Pride) in 4 days"
+      },
+      "sports": [
+        "soccer"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=Cv3SqHLF0AM",
+        "thumbnailUrl": "https://img.youtube.com/vi/Cv3SqHLF0AM/hqdefault.jpg",
+        "durationSeconds": 4363,
+        "title": "Banda vs. Kundananji!  Orlando Pride's Gritty Win vs the Wave & Bay FC Preview!",
+        "source": "youtube",
+        "channel": "Loud & Proud Orlando",
+        "publishedAt": "Streamed 31 minutes ago"
+      }
+    },
+    {
+      "id": "rally_weekend_racing-wrc-japan-2026",
+      "title": "Rally Weekend",
+      "subtitle": "Rally Japan — starts in 2 days",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 75,
+      "triggeredAt": "2026-05-26T02:25:59.291Z",
+      "expiresAt": "2026-05-31T00:00:00.000Z",
+      "kind": "rally_weekend",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "rally_weekend",
+        "rallyName": "Rally Japan",
+        "startTime": "2026-05-28T00:00:00.000Z",
+        "eventIds": [
+          "racing-wrc-japan-2026"
+        ],
+        "reason": "WRC Rally Japan within 7 days"
+      },
+      "sports": [
+        "racing"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=Cqmnj1dAxiA",
+        "thumbnailUrl": "https://img.youtube.com/vi/Cqmnj1dAxiA/hqdefault.jpg",
+        "durationSeconds": 429,
+        "title": "Everything You Need To Know for WRC FORUM8 Rally Japan 2026 🇯🇵",
+        "source": "youtube",
+        "channel": "FIA World Rally Championship",
+        "publishedAt": "10 hours ago"
+      }
+    },
+    {
+      "id": "grand_tour_giro_d_italia",
+      "title": "Grand Tour",
+      "subtitle": "Giro d'Italia — 6 stages in the next 7 days",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 75,
+      "triggeredAt": "2026-05-26T02:25:59.291Z",
+      "expiresAt": "2026-06-02T02:25:59.291Z",
+      "kind": "grand_tour",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "grand_tour",
+        "tourName": "Giro d'Italia",
+        "stageCount": 7,
+        "upcomingStageCount": 6,
+        "eventIds": [
+          "cycling-grand-tour-giro-d-italia-2026-2026-05-24-stage-15",
+          "cycling-grand-tour-giro-d-italia-2026-2026-05-26-stage-16",
+          "cycling-grand-tour-giro-d-italia-2026-2026-05-27-stage-17",
+          "cycling-grand-tour-giro-d-italia-2026-2026-05-28-stage-18",
+          "cycling-grand-tour-giro-d-italia-2026-2026-05-29-stage-19",
+          "cycling-grand-tour-giro-d-italia-2026-2026-05-30-stage-20",
+          "cycling-grand-tour-giro-d-italia-2026-2026-05-31-stage-21"
+        ],
+        "reason": "Giro d'Italia active — 7 stage(s) in window"
+      },
+      "sports": [
+        "cycling"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=dNCG872UH7Y",
+        "thumbnailUrl": "https://img.youtube.com/vi/dNCG872UH7Y/hqdefault.jpg",
+        "durationSeconds": 1696,
+        "title": "CAOS POR CAIDA 🤯 Isaac Del Toro Ileso 😎 Giro de Italia 2025 Etapa 6",
+        "source": "youtube",
+        "channel": "Cyclinity",
+        "publishedAt": "3 hours ago"
+      }
+    },
     {
       "id": "league_moment_tournament",
       "title": "Big Stage",
@@ -111,8 +280,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-25T20:36:14.003Z",
-      "expiresAt": "2026-06-01T20:36:14.003Z",
+      "triggeredAt": "2026-05-26T02:25:59.291Z",
+      "expiresAt": "2026-06-02T02:25:59.291Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -146,6 +315,139 @@
         "channel": "NBC Sports",
         "publishedAt": "1 day ago"
       }
+    },
+    {
+      "id": "ipl_storyline",
+      "title": "Tonight in the IPL",
+      "subtitle": "2 matches in the next 36h, next: Gujarat Titans vs Royal Challengers Bengaluru",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 70,
+      "triggeredAt": "2026-05-26T02:25:59.291Z",
+      "expiresAt": "2026-05-26T22:00:00.000Z",
+      "kind": "ipl_storyline",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "ipl_storyline",
+        "matchCount": 2,
+        "matches": [
+          {
+            "away": "Gujarat Titans",
+            "home": "Royal Challengers Bengaluru",
+            "startTime": "2026-05-26T14:00:00.000Z"
+          },
+          {
+            "away": "Rajasthan Royals",
+            "home": "Sunrisers Hyderabad",
+            "startTime": "2026-05-27T14:00:00.000Z"
+          }
+        ],
+        "eventIds": [
+          "cricket-ipl-2535",
+          "cricket-ipl-2536"
+        ],
+        "reason": "2 IPL match(es) within 36h"
+      },
+      "sports": [
+        "cricket"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=hNt-HJrhtGM",
+        "thumbnailUrl": "https://img.youtube.com/vi/hNt-HJrhtGM/hqdefault.jpg",
+        "durationSeconds": 633,
+        "title": "RCB vs GT QUALIFIER 1 🔥 | Kohli vs Gill for DIRECT IPL 2026 FINAL Spot 🏆 | STUMPTALES | KAUSHIK NC",
+        "source": "youtube",
+        "channel": "StumpTales",
+        "publishedAt": "40 minutes ago"
+      }
+    },
+    {
+      "id": "week_ahead",
+      "title": "Week Ahead",
+      "subtitle": "4 leagues in action · NHL · Champions League · IPL · Bundesliga",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 50,
+      "triggeredAt": "2026-05-26T02:25:59.291Z",
+      "expiresAt": "2026-05-29T02:25:59.291Z",
+      "kind": "week_ahead",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "week_ahead",
+        "weekLabel": "May 25–31, 2026",
+        "leagues": [
+          {
+            "sport": "hockey",
+            "displayName": "NHL",
+            "leagueKey": "nhl",
+            "dateRangeLabel": "May 25–31",
+            "startDate": "2026-05-25T00:00:00.000Z",
+            "endDate": "2026-05-31T16:00:00.000Z",
+            "eventCount": 8,
+            "seasonPhase": "Playoffs"
+          },
+          {
+            "sport": "soccer",
+            "displayName": "Champions League",
+            "leagueKey": "championsleague",
+            "dateRangeLabel": "May 30",
+            "startDate": "2026-05-30T16:00:00.000Z",
+            "endDate": "2026-05-30T16:00:00.000Z",
+            "eventCount": 1,
+            "seasonPhase": "Final"
+          },
+          {
+            "sport": "cricket",
+            "displayName": "IPL",
+            "leagueKey": "ipl",
+            "dateRangeLabel": "May 26–31",
+            "startDate": "2026-05-26T14:00:00.000Z",
+            "endDate": "2026-05-31T14:00:00.000Z",
+            "eventCount": 4,
+            "seasonPhase": "Final"
+          },
+          {
+            "sport": "soccer",
+            "displayName": "Bundesliga",
+            "leagueKey": "bundesliga",
+            "dateRangeLabel": "May 25",
+            "startDate": "2026-05-25T18:30:00.000Z",
+            "endDate": "2026-05-25T18:30:00.000Z",
+            "eventCount": 1,
+            "seasonPhase": null
+          }
+        ],
+        "championshipFinals": [
+          {
+            "leagueKey": "championsleague",
+            "sport": "soccer",
+            "name": "Champions League Final",
+            "date": "2026-05-30",
+            "emoji": "🏆"
+          },
+          {
+            "leagueKey": "ipl",
+            "sport": "cricket",
+            "name": "IPL Final",
+            "date": "2026-05-31",
+            "emoji": "🏆"
+          }
+        ],
+        "reason": "Week-ahead snapshot — 22 leagues active"
+      },
+      "sports": [
+        "hockey",
+        "soccer",
+        "cricket"
+      ]
     }
   ],
   "tonightStory": null,

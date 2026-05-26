@@ -1310,5 +1310,85 @@
       "selectedVideoChannel": "NBC Sports",
       "rejectedForAgeCount": 1
     }
+  },
+  "rally_weekend:rally japan wrc rally highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=Cqmnj1dAxiA",
+      "thumbnailUrl": "https://img.youtube.com/vi/Cqmnj1dAxiA/hqdefault.jpg",
+      "durationSeconds": 429,
+      "title": "Everything You Need To Know for WRC FORUM8 Rally Japan 2026 🇯🇵",
+      "source": "youtube",
+      "channel": "FIA World Rally Championship",
+      "publishedAt": "10 hours ago"
+    },
+    "fetchedAt": "2026-05-26T02:18:34.084Z",
+    "query": "Rally Japan WRC rally highlights",
+    "debug": {
+      "searchQuery": "Rally Japan WRC rally highlights",
+      "selectedVideoTitle": "Everything You Need To Know for WRC FORUM8 Rally Japan 2026 🇯🇵",
+      "selectedVideoPublishedAt": "10 hours ago",
+      "selectedVideoChannel": "FIA World Rally Championship",
+      "rejectedForAgeCount": 1
+    }
+  },
+  "grand_tour:giro d'italia cycling highlights may 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=dNCG872UH7Y",
+      "thumbnailUrl": "https://img.youtube.com/vi/dNCG872UH7Y/hqdefault.jpg",
+      "durationSeconds": 1696,
+      "title": "CAOS POR CAIDA 🤯 Isaac Del Toro Ileso 😎 Giro de Italia 2025 Etapa 6",
+      "source": "youtube",
+      "channel": "Cyclinity",
+      "publishedAt": "3 hours ago"
+    },
+    "fetchedAt": "2026-05-26T02:18:34.463Z",
+    "query": "Giro d'Italia cycling highlights May 2026",
+    "debug": {
+      "searchQuery": "Giro d'Italia cycling highlights May 2026",
+      "selectedVideoTitle": "CAOS POR CAIDA 🤯 Isaac Del Toro Ileso 😎 Giro de Italia 2025 Etapa 6",
+      "selectedVideoPublishedAt": "3 hours ago",
+      "selectedVideoChannel": "Cyclinity",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "ipl_storyline:gujarat titans vs royal challengers bengaluru ipl 2026 highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=hNt-HJrhtGM",
+      "thumbnailUrl": "https://img.youtube.com/vi/hNt-HJrhtGM/hqdefault.jpg",
+      "durationSeconds": 633,
+      "title": "RCB vs GT QUALIFIER 1 🔥 | Kohli vs Gill for DIRECT IPL 2026 FINAL Spot 🏆 | STUMPTALES | KAUSHIK NC",
+      "source": "youtube",
+      "channel": "StumpTales",
+      "publishedAt": "40 minutes ago"
+    },
+    "fetchedAt": "2026-05-26T02:18:35.079Z",
+    "query": "Gujarat Titans vs Royal Challengers Bengaluru IPL 2026 highlights",
+    "debug": {
+      "searchQuery": "Gujarat Titans vs Royal Challengers Bengaluru IPL 2026 highlights",
+      "selectedVideoTitle": "RCB vs GT QUALIFIER 1 🔥 | Kohli vs Gill for DIRECT IPL 2026 FINAL Spot 🏆 | STUMPTALES | KAUSHIK NC",
+      "selectedVideoPublishedAt": "40 minutes ago",
+      "selectedVideoChannel": "StumpTales",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:bay vs orlando pride nwsl preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=Cv3SqHLF0AM",
+      "thumbnailUrl": "https://img.youtube.com/vi/Cv3SqHLF0AM/hqdefault.jpg",
+      "durationSeconds": 4363,
+      "title": "Banda vs. Kundananji!  Orlando Pride's Gritty Win vs the Wave & Bay FC Preview!",
+      "source": "youtube",
+      "channel": "Loud & Proud Orlando",
+      "publishedAt": "Streamed 31 minutes ago"
+    },
+    "fetchedAt": "2026-05-26T02:23:32.787Z",
+    "query": "Bay vs Orlando Pride NWSL preview",
+    "debug": {
+      "searchQuery": "Bay vs Orlando Pride NWSL preview",
+      "selectedVideoTitle": "Banda vs. Kundananji!  Orlando Pride's Gritty Win vs the Wave & Bay FC Preview!",
+      "selectedVideoPublishedAt": "Streamed 31 minutes ago",
+      "selectedVideoChannel": "Loud & Proud Orlando",
+      "rejectedForAgeCount": 0
+    }
   }
 }

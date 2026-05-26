@@ -73,7 +73,7 @@ interface ExploreNarrativeCard {
   priority: number;
   triggeredAt: string;
   expiresAt?: string;
-  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game" | "upset_alert" | "clinch_watch";
+  kind: "playoff_push" | "momentum" | "league_moment" | "player_movement" | "deadline_watch" | "rivalry_game" | "upset_alert" | "clinch_watch" | "weekend_watchlist" | "week_ahead" | "rally_weekend" | "marathon_spotlight" | "diamond_league" | "golf_major" | "grand_tour" | "ipl_storyline" | "marquee_match";
   meta?: Record<string, any>;
   sports?: string[];
 }
