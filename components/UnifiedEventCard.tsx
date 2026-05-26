@@ -1027,7 +1027,7 @@ export default function UnifiedEventCard({
                     <Text style={uStyles.racingEspnFlagLarge}>{gpFlag || "🏁"}</Text>
                     <Text style={uStyles.espnTeamName} numberOfLines={1}>
                       {isWrc
-                        ? (wrcInfo?.country ?? event.tournamentName ?? event.homeTeam)
+                        ? (event.tournamentName ?? event.homeTeam)
                         : `${getGrandPrixLocation(event.competitionName || event.homeTeam)} GP`}
                     </Text>
                   </View>
@@ -1046,6 +1046,17 @@ export default function UnifiedEventCard({
                         ? (wrcRoundShort ?? event.tournamentName ?? event.homeTeam ?? "Rally")
                         : (event.sessionTitle || event.awayTeam || "")}
                     </Text>
+                    {isWrc && (() => {
+                      const start = new Date(event.startTimeLocal).getTime();
+                      const end = new Date(event.endTimeLocal || event.startTimeLocal).getTime();
+                      const totalDays = Math.max(1, Math.round((end - start) / 86400000) + 1);
+                      const dayIdx = Math.min(totalDays, Math.max(1, Math.floor((Date.now() - start) / 86400000) + 1));
+                      return (
+                        <Text style={[uStyles.racingEspnTitle, { color: Colors.textSecondary, fontSize: 12, marginTop: 2 }]} numberOfLines={1}>
+                          {`Day ${dayIdx}`}
+                        </Text>
+                      );
+                    })()}
                   </View>
                 </View>
               </View>
