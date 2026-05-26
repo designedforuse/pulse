@@ -214,6 +214,13 @@
   ],
   "providers": [
     {
+      "id": "youtube",
+      "name": "YouTube",
+      "packageName": "com.google.android.youtube",
+      "activity": "com.google.android.apps.youtube.app.WatchWhileActivity",
+      "launchUrl": "https://www.youtube.com"
+    },
+    {
       "id": "youtubetv",
       "name": "YouTube TV",
       "packageName": "com.google.android.apps.youtube.unplugged",

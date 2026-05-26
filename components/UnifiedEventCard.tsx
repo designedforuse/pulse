@@ -906,6 +906,7 @@ export default function UnifiedEventCard({
   const isAthletics = event.sport === "athletics";
   const isHorseRacing = event.sport === "horse-racing";
   const isCycling = event.sport === "cycling";
+  const isPaddling = event.sport === "paddling";
   const isWrc = isRacing && event.leagueKey === "wrc";
   const wrcInfo = isWrc ? getWrcRoundInfo(event.tournamentName || event.homeTeam) : null;
   const wrcRoundShort = isWrc && event.sessionTitle
@@ -937,11 +938,20 @@ export default function UnifiedEventCard({
 
   const logoSize = featured ? 22 : 20;
   const isUpcoming = !isLive && !isFinal;
-  const showEspnStyle = espnLayout && (isUpcoming || (isLive && isCricket)) && showTeamLayout && !isRacing && !isGolf && !isAthletics && !isHorseRacing;
+  const showEspnStyle = espnLayout && (isUpcoming || (isLive && isCricket)) && showTeamLayout && !isRacing && !isGolf && !isAthletics && !isHorseRacing && !isPaddling;
   const showRacingEspnStyle = espnLayout && isUpcoming && isRacing;
   const showGolfEspnStyle = espnLayout && isUpcoming && isGolf;
   const showAthleticsEspnStyle = espnLayout && isUpcoming && isAthletics;
   const showCyclingEspnStyle = espnLayout && isUpcoming && isCycling;
+  const showPaddlingEspnStyle = espnLayout && isUpcoming && isPaddling;
+  const paddlingRaceName = isPaddling ? (event.tournamentName || event.homeTeam) : null;
+  const paddlingDayLabel = isPaddling ? (() => {
+    const start = new Date(event.startTimeLocal).getTime();
+    const end = new Date(event.endTimeLocal || event.startTimeLocal).getTime();
+    const totalDays = Math.max(1, Math.round((end - start) / 86400000) + 1);
+    const dayIdx = Math.min(totalDays, Math.max(1, Math.floor((Date.now() - start) / 86400000) + 1));
+    return `Day ${dayIdx} of ${totalDays}`;
+  })() : null;
   const cyclingStageLabel = isCycling && event.sessionTitle
     ? (event.sessionTitle.match(/Stage \d+(?:\s+—\s+Final)?/)?.[0]
       || event.sessionTitle.split("—").slice(1).join("—").trim()
@@ -963,14 +973,14 @@ export default function UnifiedEventCard({
       testID={`event-${event.id}`}
     >
       <Animated.View style={[uStyles.cardInner, featured && uStyles.cardInnerFeatured, flashStyle]}>
-        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && (
+        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && (
           <View style={[uStyles.accentBar, { backgroundColor: isLive ? liveTensionColor : (accentBarColor ?? sportColor) }]} />
         )}
-        {(showEspnStyle || showRacingEspnStyle || showGolfEspnStyle || showAthleticsEspnStyle || showCyclingEspnStyle) && (
+        {(showEspnStyle || showRacingEspnStyle || showGolfEspnStyle || showAthleticsEspnStyle || showCyclingEspnStyle || showPaddlingEspnStyle) && (
           <View style={[uStyles.topAccentBar, { backgroundColor: sportColor }]} />
         )}
 
-        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && (
+        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && (
           <View style={uStyles.header}>
             <View style={[uStyles.sportPill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
               <Text style={[uStyles.sportPillText, { color: sportColor }]} numberOfLines={1}>{getLeagueLabel(event)}</Text>
@@ -1179,6 +1189,49 @@ export default function UnifiedEventCard({
                     </Text>
                   </View>
                 </View>
+              </View>
+            </View>
+          ) : showPaddlingEspnStyle ? (
+            <View>
+              <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
+                <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>
+                  SA BIG THREE
+                </Text>
+              </View>
+              <View style={uStyles.espnMatchup}>
+                <View style={uStyles.espnTeamOuter}>
+                  <View style={uStyles.espnStarSlot} />
+                  <View style={uStyles.espnTeam}>
+                    <Text style={{ fontSize: featured ? 28 : 24 }}>🛶</Text>
+                    <Text style={uStyles.espnTeamName} numberOfLines={2}>
+                      🇿🇦 {paddlingRaceName}
+                    </Text>
+                  </View>
+                </View>
+                <View style={uStyles.espnCenter}>
+                  <Text style={uStyles.espnTime}>{timeStr}</Text>
+                  {providerBrandId && <ProviderLogo providerId={providerBrandId} size={20} />}
+                </View>
+                <View style={[uStyles.espnTeamOuter, { flexDirection: "row-reverse" }]}>
+                  <View style={uStyles.espnStarSlot} />
+                  <View style={uStyles.espnTeam}>
+                    <Text style={[uStyles.racingEspnTitle, { color: Colors.textPrimary }]} numberOfLines={1}>
+                      {paddlingDayLabel}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          ) : isPaddling ? (
+            <View style={uStyles.racingLayout}>
+              <View style={uStyles.racingCircuitRow}>
+                <Text style={{ fontSize: featured ? 18 : 16 }}>🛶</Text>
+                <Text
+                  style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
+                  numberOfLines={1}
+                >
+                  🇿🇦 {paddlingRaceName} · {paddlingDayLabel}
+                </Text>
               </View>
             </View>
           ) : isCycling ? (
@@ -1524,7 +1577,7 @@ export default function UnifiedEventCard({
           ) : null}
         </View>
 
-        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && (
+        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && (
           <View style={uStyles.footer}>
             {isLive ? (
               <>

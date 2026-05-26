@@ -183,6 +183,7 @@ export function getSportColor(sport: string): string {
     athletics: "#FF6B00",
     "horse-racing": "#C9882F",
     cycling: "#F5C518",
+    paddling: "#2DD4BF",
   };
   return colors[sport] || "#90A4AE";
 }
@@ -225,6 +226,7 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   nbcsn: "NBC Sports",
   rugbypasstv: "RugbyPass TV",
   mlbtv: "MLB.TV",
+  youtube: "YouTube",
 };
 
 // Broadcaster IDs that are valid as display logos — streaming services excluded
@@ -247,6 +249,7 @@ const BROADCASTER_IDS = new Set([
   "fs1",
   "espn2",
   "mlbtv",
+  "youtube",
 ]);
 
 // Returns [displayId, launchProviderId]
@@ -700,6 +703,7 @@ export function getSportIcon(sport: string): string {
     racing: "speedometer",
     golf: "golf",
     athletics: "walk-outline",
+    paddling: "boat",
   };
   return icons[sport] || "ellipse";
 }

@@ -113,17 +113,19 @@ function FavoritesSection() {
   const { isSportEnabled, toggleSport, isLeagueEnabled, toggleLeague } = useFavorites();
   const [expandedSports, setExpandedSports] = useState<Record<string, boolean>>({});
 
-  const sportOrder = ["rugby", "cricket", "soccer", "hockey", "college", "golf", "tennis", "athletics", "cycling", "horse-racing", "racing"];
+  const sportOrder = ["rugby", "cricket", "soccer", "hockey", "college", "golf", "tennis", "athletics", "paddling", "cycling", "horse-racing", "racing"];
   const sportLabels: Record<string, string> = {
     hockey: "Hockey", rugby: "Rugby", cricket: "Cricket", soccer: "Soccer",
     tennis: "Tennis",
     racing: "Motor Racing", golf: "Golf", athletics: "Athletics", "horse-racing": "Horse Racing", cycling: "Cycling",
+    paddling: "Paddling",
     college: "College & School Sports",
   };
   const sportIcons: Record<string, keyof typeof Ionicons.glyphMap> = {
     hockey: "snow", rugby: "american-football", cricket: "baseball", soccer: "football",
     tennis: "tennisball",
     racing: "speedometer", golf: "golf", athletics: "walk-outline", "horse-racing": "ribbon", cycling: "bicycle",
+    paddling: "boat",
     college: "school",
   };
   const sportLeagues: Record<string, string[]> = {
@@ -138,6 +140,7 @@ function FavoritesSection() {
     "horse-racing": ["Triple Crown"],
     cycling: ["Grand Tour", "Epic Series"],
     athletics: ["World Marathon Majors", "Diamond League", "UTMB World Series", "Golden Trail World Series"],
+    paddling: ["SA Big Three"],
   };
 
   let isFirstSport = true;
@@ -219,7 +222,7 @@ function FavoritesSection() {
 function FavoriteTeamChips() {
   const { allTeams, isTeamEnabled, toggleTeam } = useFavorites();
 
-  const sportOrder = ["rugby", "cricket", "soccer", "hockey", "college", "golf", "tennis", "athletics", "cycling", "horse-racing", "racing"];
+  const sportOrder = ["rugby", "cricket", "soccer", "hockey", "college", "golf", "tennis", "athletics", "paddling", "cycling", "horse-racing", "racing"];
   const chips: { team: string; sport: string; league: string }[] = [];
   for (const sport of sportOrder) {
     const sportFavs = allTeams[sport];

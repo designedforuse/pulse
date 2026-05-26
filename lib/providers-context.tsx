@@ -27,6 +27,7 @@ export const PROVIDER_LIST: ProviderEntry[] = [
   { id: "willowtv",      label: "Willow TV",              logoId: "willowtv" },
   { id: "rugbypasstv",   label: "RugbyPass TV",           logoId: "rugbypasstv" },
   { id: "ion",           label: "ION",                    logoId: "ion" },
+  { id: "youtube",       label: "YouTube",                logoId: "youtube" },
 ];
 
 export function getEventBroadcasterIds(event: SportEvent): string[] {
@@ -49,6 +50,7 @@ export function getEventBroadcasterIds(event: SportEvent): string[] {
     case "beinsports":    return ["beinsports"];
     case "nbaleaguepass": return ["nbaleaguepass"];
     case "mlbtv":     return ["mlbtv"];
+    case "youtube":   return ["youtube"];
     case "youtubetv": {
       const ids: string[] = [];
       const reason = event.providerReason || "";

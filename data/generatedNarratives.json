@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-26T04:29:36.397Z",
+  "lastUpdated": "2026-05-26T05:04:48.386Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -65,7 +65,7 @@
         ],
         "playersIngested": 377,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-26T04:29:36.397Z"
+        "timestamp": "2026-05-26T05:04:48.386Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -75,7 +75,7 @@
     "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1904.4934436111112,
+      "hoursUntil": -1905.0801072222223,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -155,7 +155,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-05-26T04:29:36.397Z",
+      "triggeredAt": "2026-05-26T05:04:48.386Z",
       "expiresAt": "2026-05-30T03:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -195,7 +195,7 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-26T04:29:36.397Z",
+      "triggeredAt": "2026-05-26T05:04:48.386Z",
       "expiresAt": "2026-05-31T00:00:00.000Z",
       "kind": "rally_weekend",
       "region": "Other",
@@ -232,8 +232,8 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-26T04:29:36.397Z",
-      "expiresAt": "2026-06-02T04:29:36.397Z",
+      "triggeredAt": "2026-05-26T05:04:48.386Z",
+      "expiresAt": "2026-06-02T05:04:48.386Z",
       "kind": "grand_tour",
       "region": "Other",
       "regionPriority": 99,
@@ -276,8 +276,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-26T04:29:36.397Z",
-      "expiresAt": "2026-06-02T04:29:36.397Z",
+      "triggeredAt": "2026-05-26T05:04:48.386Z",
+      "expiresAt": "2026-06-02T05:04:48.386Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -321,7 +321,7 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-26T04:29:36.397Z",
+      "triggeredAt": "2026-05-26T05:04:48.386Z",
       "expiresAt": "2026-05-26T22:00:00.000Z",
       "kind": "ipl_storyline",
       "region": "Other",
@@ -380,26 +380,6 @@
           "seasonPhase": "Regular"
         },
         {
-          "sport": "hockey",
-          "displayName": "ECHL",
-          "leagueKey": "echl",
-          "dateRangeLabel": "May 11–31",
-          "startDate": "2026-05-11T23:00:00.000Z",
-          "endDate": "2026-05-31T21:05:00.000Z",
-          "eventCount": 25,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "tennis",
-          "displayName": "Rome",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "May 12–17",
-          "startDate": "2026-05-12T09:00:00.000Z",
-          "endDate": "2026-05-17T09:00:00.000Z",
-          "eventCount": 8,
-          "seasonPhase": null
-        },
-        {
           "sport": "cycling",
           "displayName": "Grand Tour — Giro d'Italia",
           "leagueKey": "grand-tour",
@@ -430,6 +410,16 @@
           "seasonPhase": "Regular"
         },
         {
+          "sport": "hockey",
+          "displayName": "ECHL",
+          "leagueKey": "echl",
+          "dateRangeLabel": "May 12–31",
+          "startDate": "2026-05-12T23:00:00.000Z",
+          "endDate": "2026-05-31T21:05:00.000Z",
+          "eventCount": 24,
+          "seasonPhase": "Playoffs"
+        },
+        {
           "sport": "soccer",
           "displayName": "NWSL",
           "leagueKey": "nwsl",
@@ -448,6 +438,16 @@
           "endDate": "2026-05-31T00:05:00.000Z",
           "eventCount": 22,
           "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Rome",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "May 13–17",
+          "startDate": "2026-05-13T09:00:00.000Z",
+          "endDate": "2026-05-17T09:00:00.000Z",
+          "eventCount": 6,
+          "seasonPhase": null
         },
         {
           "sport": "soccer",
@@ -720,24 +720,24 @@
           "seasonPhase": null
         },
         {
-          "sport": "hockey",
-          "displayName": "NHL",
-          "leagueKey": "nhl",
-          "dateRangeLabel": "May 25–31",
-          "startDate": "2026-05-25T00:00:00.000Z",
-          "endDate": "2026-05-31T16:00:00.000Z",
-          "eventCount": 8,
-          "seasonPhase": "Playoffs"
-        },
-        {
           "sport": "tennis",
           "displayName": "Roland Garros",
           "leagueKey": "grand-slam",
           "dateRangeLabel": "May 25–27",
           "startDate": "2026-05-25T09:05:00.000Z",
           "endDate": "2026-05-27T04:00:00.000Z",
-          "eventCount": 29,
+          "eventCount": 28,
           "seasonPhase": null
+        },
+        {
+          "sport": "hockey",
+          "displayName": "NHL",
+          "leagueKey": "nhl",
+          "dateRangeLabel": "May 26–31",
+          "startDate": "2026-05-26T00:00:00.000Z",
+          "endDate": "2026-05-31T16:00:00.000Z",
+          "eventCount": 7,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "racing",
@@ -935,6 +935,16 @@
           "endDate": "2026-06-04T17:00:00.000Z",
           "eventCount": 1,
           "seasonPhase": null
+        },
+        {
+          "sport": "rugby",
+          "displayName": "Super Rugby",
+          "leagueKey": "superrugby",
+          "dateRangeLabel": "Jun 5–6",
+          "startDate": "2026-06-05T07:05:00.000Z",
+          "endDate": "2026-06-06T07:05:00.000Z",
+          "eventCount": 2,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "rugby",
@@ -1148,16 +1158,6 @@
       "monthKey": "week-2026-05-25",
       "leagues": [
         {
-          "sport": "hockey",
-          "displayName": "NHL",
-          "leagueKey": "nhl",
-          "dateRangeLabel": "May 25–31",
-          "startDate": "2026-05-25T00:00:00.000Z",
-          "endDate": "2026-05-31T16:00:00.000Z",
-          "eventCount": 8,
-          "seasonPhase": "Playoffs"
-        },
-        {
           "sport": "rugby",
           "displayName": "MLR",
           "leagueKey": "mlr",
@@ -1184,7 +1184,7 @@
           "dateRangeLabel": "May 25–27",
           "startDate": "2026-05-25T09:05:00.000Z",
           "endDate": "2026-05-27T04:00:00.000Z",
-          "eventCount": 29,
+          "eventCount": 28,
           "seasonPhase": null
         },
         {
@@ -1205,6 +1205,16 @@
           "startDate": "2026-05-25T23:35:00.000Z",
           "endDate": "2026-05-31T21:05:00.000Z",
           "eventCount": 6,
+          "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "hockey",
+          "displayName": "NHL",
+          "leagueKey": "nhl",
+          "dateRangeLabel": "May 26–31",
+          "startDate": "2026-05-26T00:00:00.000Z",
+          "endDate": "2026-05-31T16:00:00.000Z",
+          "eventCount": 7,
           "seasonPhase": "Playoffs"
         },
         {

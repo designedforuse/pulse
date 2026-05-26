@@ -1,0 +1,1 @@
+- [Adding a new providerId](new-provider-id-checklist.md) — a new providerId must be registered in 4 places or the card brand pill / launcher / filter silently no-op.
