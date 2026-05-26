@@ -26,7 +26,7 @@ const SPORT_EMOJI: Record<string, string> = {
   athletics: "🏃",
 };
 
-const SPORT_ORDER = ["hockey", "basketball", "soccer", "rugby", "tennis", "racing", "golf", "cricket", "athletics"];
+const SPORT_ORDER = ["rugby", "cricket", "soccer", "hockey", "basketball", "college", "golf", "tennis", "athletics", "cycling", "horse-racing", "racing"];
 
 interface MonthSnapshotLeague {
   sport: string;
