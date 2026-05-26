@@ -1043,7 +1043,7 @@ export default function UnifiedEventCard({
                   <View style={uStyles.espnTeam}>
                     <Text style={[uStyles.racingEspnTitle, { color: Colors.textPrimary }]} numberOfLines={2}>
                       {isWrc
-                        ? (wrcRoundShort ?? "")
+                        ? (wrcRoundShort ?? event.tournamentName ?? event.homeTeam ?? "Rally")
                         : (event.sessionTitle || event.awayTeam || "")}
                     </Text>
                   </View>
