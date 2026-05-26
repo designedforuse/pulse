@@ -1,11 +1,8 @@
 {
-  "lastUpdated": "2026-05-26T02:25:59.291Z",
+  "lastUpdated": "2026-05-26T04:29:36.397Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
-        "Other": 1
-      },
-      "week_ahead": {
         "Other": 1
       },
       "rally_weekend": {
@@ -28,13 +25,12 @@
         "rally_weekend: Rally Weekend",
         "grand_tour: Grand Tour",
         "league_moment: Big Stage",
-        "ipl_storyline: Tonight in the IPL",
-        "week_ahead: Week Ahead"
+        "ipl_storyline: Tonight in the IPL"
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 6,
-    "totalAfterCap": 6,
+    "totalBeforeCap": 5,
+    "totalAfterCap": 5,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -67,19 +63,19 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 399,
+        "playersIngested": 377,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-26T02:25:59.291Z"
+        "timestamp": "2026-05-26T04:29:36.397Z"
       },
       "cacheHistoryCount": 880,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 6,
-    "candidateCountAfterCap": 6,
+    "candidateCountBeforeCap": 5,
+    "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1902.433136388889,
+      "hoursUntil": -1904.4934436111112,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -159,7 +155,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-05-26T02:25:59.291Z",
+      "triggeredAt": "2026-05-26T04:29:36.397Z",
       "expiresAt": "2026-05-30T03:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -199,7 +195,7 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-26T02:25:59.291Z",
+      "triggeredAt": "2026-05-26T04:29:36.397Z",
       "expiresAt": "2026-05-31T00:00:00.000Z",
       "kind": "rally_weekend",
       "region": "Other",
@@ -236,8 +232,8 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-26T02:25:59.291Z",
-      "expiresAt": "2026-06-02T02:25:59.291Z",
+      "triggeredAt": "2026-05-26T04:29:36.397Z",
+      "expiresAt": "2026-06-02T04:29:36.397Z",
       "kind": "grand_tour",
       "region": "Other",
       "regionPriority": 99,
@@ -280,8 +276,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-26T02:25:59.291Z",
-      "expiresAt": "2026-06-02T02:25:59.291Z",
+      "triggeredAt": "2026-05-26T04:29:36.397Z",
+      "expiresAt": "2026-06-02T04:29:36.397Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -325,7 +321,7 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-26T02:25:59.291Z",
+      "triggeredAt": "2026-05-26T04:29:36.397Z",
       "expiresAt": "2026-05-26T22:00:00.000Z",
       "kind": "ipl_storyline",
       "region": "Other",
@@ -364,90 +360,6 @@
         "channel": "StumpTales",
         "publishedAt": "40 minutes ago"
       }
-    },
-    {
-      "id": "week_ahead",
-      "title": "Week Ahead",
-      "subtitle": "4 leagues in action · NHL · Champions League · IPL · Bundesliga",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 50,
-      "triggeredAt": "2026-05-26T02:25:59.291Z",
-      "expiresAt": "2026-05-29T02:25:59.291Z",
-      "kind": "week_ahead",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "type": "week_ahead",
-        "weekLabel": "May 25–31, 2026",
-        "leagues": [
-          {
-            "sport": "hockey",
-            "displayName": "NHL",
-            "leagueKey": "nhl",
-            "dateRangeLabel": "May 25–31",
-            "startDate": "2026-05-25T00:00:00.000Z",
-            "endDate": "2026-05-31T16:00:00.000Z",
-            "eventCount": 8,
-            "seasonPhase": "Playoffs"
-          },
-          {
-            "sport": "soccer",
-            "displayName": "Champions League",
-            "leagueKey": "championsleague",
-            "dateRangeLabel": "May 30",
-            "startDate": "2026-05-30T16:00:00.000Z",
-            "endDate": "2026-05-30T16:00:00.000Z",
-            "eventCount": 1,
-            "seasonPhase": "Final"
-          },
-          {
-            "sport": "cricket",
-            "displayName": "IPL",
-            "leagueKey": "ipl",
-            "dateRangeLabel": "May 26–31",
-            "startDate": "2026-05-26T14:00:00.000Z",
-            "endDate": "2026-05-31T14:00:00.000Z",
-            "eventCount": 4,
-            "seasonPhase": "Final"
-          },
-          {
-            "sport": "soccer",
-            "displayName": "Bundesliga",
-            "leagueKey": "bundesliga",
-            "dateRangeLabel": "May 25",
-            "startDate": "2026-05-25T18:30:00.000Z",
-            "endDate": "2026-05-25T18:30:00.000Z",
-            "eventCount": 1,
-            "seasonPhase": null
-          }
-        ],
-        "championshipFinals": [
-          {
-            "leagueKey": "championsleague",
-            "sport": "soccer",
-            "name": "Champions League Final",
-            "date": "2026-05-30",
-            "emoji": "🏆"
-          },
-          {
-            "leagueKey": "ipl",
-            "sport": "cricket",
-            "name": "IPL Final",
-            "date": "2026-05-31",
-            "emoji": "🏆"
-          }
-        ],
-        "reason": "Week-ahead snapshot — 22 leagues active"
-      },
-      "sports": [
-        "hockey",
-        "soccer",
-        "cricket"
-      ]
     }
   ],
   "tonightStory": null,

@@ -395,13 +395,6 @@ export default function ExploreScreen() {
                 {cards.length} {cards.length === 1 ? "STORY" : "STORIES"}
               </Text>
             </View>
-            {distinctKinds > 1 && (
-              <View style={styles.trendingChip}>
-                <Text style={styles.trendingChipText}>
-                  {distinctKinds} {distinctKinds === 1 ? "ANGLE" : "ANGLES"}
-                </Text>
-              </View>
-            )}
           </View>
         </View>
       </Pressable>

@@ -3840,11 +3840,8 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     console.log(`    ${c.title}: ${c.subtitle}`);
   }
 
-  const weekDataForAhead = buildWeekData(events, now);
   const weekendWatchlist = generateWeekendWatchlist(events, now);
   console.log(`  Weekend Watchlist: ${weekendWatchlist.length} card(s)`);
-  const weekAhead = generateWeekAhead(events, now, weekDataForAhead);
-  console.log(`  Week Ahead: ${weekAhead.length} card(s)`);
   const rallyWeekend = generateRallyWeekend(events, now);
   console.log(`  Rally Weekend: ${rallyWeekend.length} card(s)`);
   const marathonSpotlight = generateMarathonSpotlight(events, now);
@@ -3919,7 +3916,7 @@ export async function generateNarratives(events: AppEvent[], favorites: Favorite
     }
   }
 
-  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...f1RaceWeekend, ...playerMovementCards, ...deadlineResult.cards, ...rivalryResult.cards, ...upsetResult.cards, ...clinchResult.cards, ...clinchResult.fallbackPushCards, ...weekendWatchlist, ...weekAhead, ...rallyWeekend, ...marathonSpotlight, ...diamondLeague, ...golfMajor, ...grandTour, ...iplStoryline, ...marqueeMatch];
+  const allCandidates = [...pushResult.cards, ...momentum, ...leagueMoments, ...f1RaceWeekend, ...playerMovementCards, ...deadlineResult.cards, ...rivalryResult.cards, ...upsetResult.cards, ...clinchResult.cards, ...clinchResult.fallbackPushCards, ...weekendWatchlist, ...rallyWeekend, ...marathonSpotlight, ...diamondLeague, ...golfMajor, ...grandTour, ...iplStoryline, ...marqueeMatch];
 
   const tonightStoryResult = buildTonightStory(allCandidates, events, favorites, now);
   const tonightStory = tonightStoryResult.story;
