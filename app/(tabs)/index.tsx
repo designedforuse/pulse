@@ -21,6 +21,7 @@ import Colors from "@/constants/colors";
 import { getApiUrl } from "@/lib/query-client";
 import { useFavorites } from "@/lib/favorites-context";
 import DailyWrapCard from "@/components/DailyWrapCard";
+import { TOPICS as DEEP_TALK_TOPICS } from "@/app/deep-talk";
 
 const PINK = "#FF85C8";
 
@@ -353,7 +354,7 @@ export default function ExploreScreen() {
         <Text style={styles.deepTalkTagline}>The context behind the stories you follow</Text>
         <View style={styles.deepTalkChips}>
           <View style={styles.deepTalkChip}>
-            <Text style={styles.deepTalkChipText}>5 TOPICS</Text>
+            <Text style={styles.deepTalkChipText}>{DEEP_TALK_TOPICS.length} TOPICS</Text>
           </View>
         </View>
       </View>

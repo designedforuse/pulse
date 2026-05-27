@@ -21,7 +21,7 @@ interface DeepTalkTopic {
   route: string;
 }
 
-const TOPICS: DeepTalkTopic[] = [
+export const TOPICS: DeepTalkTopic[] = [
   {
     id: "hockey-family-tree",
     title: "Hockey Family Tree",
