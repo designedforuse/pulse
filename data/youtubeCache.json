@@ -1293,61 +1293,61 @@
   },
   "league_moment:big stage sports may 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=kfEswUXp6i8",
-      "thumbnailUrl": "https://img.youtube.com/vi/kfEswUXp6i8/hqdefault.jpg",
-      "durationSeconds": 724,
-      "title": "Brighton v. Manchester United | PREMIER LEAGUE HIGHLIGHTS | 5/24/2026 | NBC Sports",
+      "url": "https://www.youtube.com/watch?v=RrY0ppdAikY",
+      "thumbnailUrl": "https://img.youtube.com/vi/RrY0ppdAikY/hqdefault.jpg",
+      "durationSeconds": 564,
+      "title": "Sam Matterface HIJACKS interview to chat to Crystal Palace fans in Leipzig",
       "source": "youtube",
-      "channel": "NBC Sports",
-      "publishedAt": "1 day ago"
+      "channel": "The S Word powered by talkSPORT and talkSPORT",
+      "publishedAt": "31 minutes ago"
     },
-    "fetchedAt": "2026-05-25T19:27:31.429Z",
+    "fetchedAt": "2026-05-27T18:00:21.302Z",
     "query": "Big Stage sports May 2026",
     "debug": {
       "searchQuery": "Big Stage sports May 2026",
-      "selectedVideoTitle": "Brighton v. Manchester United | PREMIER LEAGUE HIGHLIGHTS | 5/24/2026 | NBC Sports",
-      "selectedVideoPublishedAt": "1 day ago",
-      "selectedVideoChannel": "NBC Sports",
-      "rejectedForAgeCount": 1
+      "selectedVideoTitle": "Sam Matterface HIJACKS interview to chat to Crystal Palace fans in Leipzig",
+      "selectedVideoPublishedAt": "31 minutes ago",
+      "selectedVideoChannel": "The S Word powered by talkSPORT and talkSPORT",
+      "rejectedForAgeCount": 0
     }
   },
   "rally_weekend:rally japan wrc rally highlights": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=Cqmnj1dAxiA",
-      "thumbnailUrl": "https://img.youtube.com/vi/Cqmnj1dAxiA/hqdefault.jpg",
-      "durationSeconds": 429,
-      "title": "Everything You Need To Know for WRC FORUM8 Rally Japan 2026 🇯🇵",
+      "url": "https://www.youtube.com/watch?v=nU9ePQdcO98",
+      "thumbnailUrl": "https://img.youtube.com/vi/nU9ePQdcO98/hqdefault.jpg",
+      "durationSeconds": 3490,
+      "title": "💥 BIG CRASHES & ACTION 🇯🇵 WRC RALLY JAPAN 2026 【ラリージャパン 2026】 RECAP",
       "source": "youtube",
-      "channel": "FIA World Rally Championship",
-      "publishedAt": "10 hours ago"
+      "channel": "World Rally Motorsport",
+      "publishedAt": "3 hours ago"
     },
-    "fetchedAt": "2026-05-26T02:18:34.084Z",
+    "fetchedAt": "2026-05-27T18:00:19.741Z",
     "query": "Rally Japan WRC rally highlights",
     "debug": {
       "searchQuery": "Rally Japan WRC rally highlights",
-      "selectedVideoTitle": "Everything You Need To Know for WRC FORUM8 Rally Japan 2026 🇯🇵",
-      "selectedVideoPublishedAt": "10 hours ago",
-      "selectedVideoChannel": "FIA World Rally Championship",
+      "selectedVideoTitle": "💥 BIG CRASHES & ACTION 🇯🇵 WRC RALLY JAPAN 2026 【ラリージャパン 2026】 RECAP",
+      "selectedVideoPublishedAt": "3 hours ago",
+      "selectedVideoChannel": "World Rally Motorsport",
       "rejectedForAgeCount": 1
     }
   },
   "grand_tour:giro d'italia cycling highlights may 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=dNCG872UH7Y",
-      "thumbnailUrl": "https://img.youtube.com/vi/dNCG872UH7Y/hqdefault.jpg",
-      "durationSeconds": 1696,
-      "title": "CAOS POR CAIDA 🤯 Isaac Del Toro Ileso 😎 Giro de Italia 2025 Etapa 6",
+      "url": "https://www.youtube.com/watch?v=7jgtkzDxevs",
+      "thumbnailUrl": "https://img.youtube.com/vi/7jgtkzDxevs/hqdefault.jpg",
+      "durationSeconds": 361,
+      "title": "Giro d'Italia 2026 - Stage 17 Highlights - Crazy breakaway fight",
       "source": "youtube",
-      "channel": "Cyclinity",
-      "publishedAt": "3 hours ago"
+      "channel": "Cyclism'Actu TV",
+      "publishedAt": "39 minutes ago"
     },
-    "fetchedAt": "2026-05-26T02:18:34.463Z",
+    "fetchedAt": "2026-05-27T18:00:20.179Z",
     "query": "Giro d'Italia cycling highlights May 2026",
     "debug": {
       "searchQuery": "Giro d'Italia cycling highlights May 2026",
-      "selectedVideoTitle": "CAOS POR CAIDA 🤯 Isaac Del Toro Ileso 😎 Giro de Italia 2025 Etapa 6",
-      "selectedVideoPublishedAt": "3 hours ago",
-      "selectedVideoChannel": "Cyclinity",
+      "selectedVideoTitle": "Giro d'Italia 2026 - Stage 17 Highlights - Crazy breakaway fight",
+      "selectedVideoPublishedAt": "39 minutes ago",
+      "selectedVideoChannel": "Cyclism'Actu TV",
       "rejectedForAgeCount": 0
     }
   },
@@ -1388,6 +1388,66 @@
       "selectedVideoTitle": "Banda vs. Kundananji!  Orlando Pride's Gritty Win vs the Wave & Bay FC Preview!",
       "selectedVideoPublishedAt": "Streamed 31 minutes ago",
       "selectedVideoChannel": "Loud & Proud Orlando",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:fonseca vs prizmic upset highlights may 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=b8gMWSnq6Ok",
+      "thumbnailUrl": "https://img.youtube.com/vi/b8gMWSnq6Ok/hqdefault.jpg",
+      "durationSeconds": 2858,
+      "title": "MEDVEDEV FALLS, SWIATEK/OSTAPENKO AND MORE ROLAND GARROS REACTIONS WITH BRETT CONNORS | FULL PODCAST",
+      "source": "youtube",
+      "channel": "Mitch Michals",
+      "publishedAt": "12 hours ago"
+    },
+    "fetchedAt": "2026-05-27T18:00:18.842Z",
+    "query": "Fonseca vs Prizmic upset highlights May 2026",
+    "debug": {
+      "searchQuery": "Fonseca vs Prizmic upset highlights May 2026",
+      "selectedVideoTitle": "MEDVEDEV FALLS, SWIATEK/OSTAPENKO AND MORE ROLAND GARROS REACTIONS WITH BRETT CONNORS | FULL PODCAST",
+      "selectedVideoPublishedAt": "12 hours ago",
+      "selectedVideoChannel": "Mitch Michals",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:arsenal vs paris saint-germain champions league preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=96FqlszshoU",
+      "thumbnailUrl": "https://img.youtube.com/vi/96FqlszshoU/hqdefault.jpg",
+      "durationSeconds": 928,
+      "title": "5 Reasons PSG WILL Beat Arsenal!",
+      "source": "youtube",
+      "channel": "PSGINT",
+      "publishedAt": "24 minutes ago"
+    },
+    "fetchedAt": "2026-05-27T18:00:19.426Z",
+    "query": "Arsenal vs Paris Saint-Germain Champions League preview",
+    "debug": {
+      "searchQuery": "Arsenal vs Paris Saint-Germain Champions League preview",
+      "selectedVideoTitle": "5 Reasons PSG WILL Beat Arsenal!",
+      "selectedVideoPublishedAt": "24 minutes ago",
+      "selectedVideoChannel": "PSGINT",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "diamond_league:diamond league — rabat diamond league 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=fokFj0j_Pt8",
+      "thumbnailUrl": "https://img.youtube.com/vi/fokFj0j_Pt8/hqdefault.jpg",
+      "durationSeconds": 5610,
+      "title": "Crazy 2027 World Championship Standards + Rabat  Diamond League Preview",
+      "source": "youtube",
+      "channel": "The Final Leg Track & Field",
+      "publishedAt": "Streamed 17 hours ago"
+    },
+    "fetchedAt": "2026-05-27T18:00:22.319Z",
+    "query": "Diamond League — Rabat Diamond League 2026",
+    "debug": {
+      "searchQuery": "Diamond League — Rabat Diamond League 2026",
+      "selectedVideoTitle": "Crazy 2027 World Championship Standards + Rabat  Diamond League Preview",
+      "selectedVideoPublishedAt": "Streamed 17 hours ago",
+      "selectedVideoChannel": "The Final Leg Track & Field",
       "rejectedForAgeCount": 0
     }
   }
