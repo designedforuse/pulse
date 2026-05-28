@@ -673,7 +673,16 @@ function ChaosCard({
                   </Text>
                 ) : null}
               </View>
-            ) : null}
+            ) : (
+              <View style={styles.racingUpcomingRow}>
+                {gpFlag ? <Text style={styles.racingUpcomingFlag}>{gpFlag}</Text> : null}
+                {(event.sessionTitle || event.awayTeam || gpShort) ? (
+                  <Text style={styles.racingUpcomingSession} numberOfLines={1}>
+                    {event.sessionTitle || event.awayTeam || gpShort}
+                  </Text>
+                ) : null}
+              </View>
+            )}
           </View>
         ) : matchupText ? (
           <View style={(isSvnsSession || isGolf || isCycling) ? styles.svnsSecondaryContent : undefined}>
