@@ -474,6 +474,13 @@ function ChaosCard({
                       </View>
                     ) : null}
                   </View>
+                ) : (event.sessionTitle || event.tournamentName || event.homeTeam) ? (
+                  <View style={styles.racingLeaderRow}>
+                    <Text style={styles.racingLeaderText} numberOfLines={2}>
+                      {gpFlag ? `${gpFlag} ` : ""}
+                      {event.sessionTitle || event.tournamentName || event.homeTeam}
+                    </Text>
+                  </View>
                 ) : null}
               </View>
             ) : matchupText ? (
