@@ -423,7 +423,9 @@ function ChaosCard({
               <View style={[styles.leaguePill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
                 <Text style={[styles.leaguePillText, { color: sportColor }]} numberOfLines={1}>
                   {isRacing
-                    ? `F1${gpShort ? ` · ${gpShort}` : ""}`
+                    ? (event.leagueKey === "wrc"
+                        ? "WRC"
+                        : `F1${gpShort ? ` · ${gpShort}` : ""}`)
                     : isSvnsSession && svnsCity
                     ? `${svnsCity} SVNS${svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}`
                     : isDiamondLeague
@@ -616,7 +618,7 @@ function ChaosCard({
           <View style={[styles.leaguePill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
             <Text style={[styles.leaguePillText, { color: sportColor }]} numberOfLines={1}>
               {isRacing
-                ? "Formula 1"
+                ? (event.leagueKey === "wrc" ? "WRC" : "Formula 1")
                 : isSvnsSession && svnsCity
                 ? `${svnsCity} SVNS${svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}`
                 : isDiamondLeague
