@@ -115,7 +115,7 @@ const WRC_ROUNDS: WrcRound[] = [
     city: "Toyota City",
     country: "Japan",
     surface: "Asphalt",
-    startUtc: "2026-05-28T05:00:00.000Z",
+    startUtc: "2026-05-28T23:00:00.000Z",
     endUtc: "2026-05-31T07:00:00.000Z",
   },
   {
