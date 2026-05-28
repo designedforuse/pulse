@@ -46,7 +46,7 @@ interface GoldenTrailRace {
 const GOLDEN_TRAIL_RACES: GoldenTrailRace[] = [
   {
     id: "athletics-golden-trail-zegama-aizkorri-2026",
-    displayName: "Zegama-Aizkorri",
+    displayName: "GTWS — Zegama-Aizkorri",
     city: "Zegama",
     country: "Spain",
     startUtc: "2026-05-17T06:00:00.000Z", // 08:00 CEST Sun
@@ -54,7 +54,7 @@ const GOLDEN_TRAIL_RACES: GoldenTrailRace[] = [
   },
   {
     id: "athletics-golden-trail-ledro-sky-2026",
-    displayName: "Ledro Sky Trentino",
+    displayName: "GTWS — Ledro Sky Trentino",
     city: "Ledro",
     country: "Italy",
     startUtc: "2026-05-24T06:00:00.000Z", // 08:00 CEST Sun
@@ -62,7 +62,7 @@ const GOLDEN_TRAIL_RACES: GoldenTrailRace[] = [
   },
   {
     id: "athletics-golden-trail-quebec-mega-trail-2026",
-    displayName: "Quebec Mega Trail",
+    displayName: "GTWS — Quebec Mega Trail",
     city: "Mont-Sainte-Anne",
     country: "Canada",
     startUtc: "2026-07-05T12:00:00.000Z", // 08:00 EDT Sun
@@ -70,7 +70,7 @@ const GOLDEN_TRAIL_RACES: GoldenTrailRace[] = [
   },
   {
     id: "athletics-golden-trail-pitz-alpine-2026",
-    displayName: "Pitz Alpine Glacier Trail",
+    displayName: "GTWS — Pitz Alpine Glacier Trail",
     city: "Pitztal",
     country: "Austria",
     startUtc: "2026-08-01T06:00:00.000Z", // 08:00 CEST Sat
@@ -78,7 +78,7 @@ const GOLDEN_TRAIL_RACES: GoldenTrailRace[] = [
   },
   {
     id: "athletics-golden-trail-sierre-zinal-2026",
-    displayName: "Sierre-Zinal",
+    displayName: "GTWS — Sierre-Zinal",
     city: "Sierre",
     country: "Switzerland",
     startUtc: "2026-08-08T06:30:00.000Z", // 08:30 CEST Sat
@@ -86,7 +86,7 @@ const GOLDEN_TRAIL_RACES: GoldenTrailRace[] = [
   },
   {
     id: "athletics-golden-trail-myoko-trail-2026",
-    displayName: "Myoko Trail",
+    displayName: "GTWS — Myoko Trail",
     city: "Myoko",
     country: "Japan",
     startUtc: "2026-09-19T23:00:00.000Z", // 08:00 JST Sun Sep 20
@@ -94,7 +94,7 @@ const GOLDEN_TRAIL_RACES: GoldenTrailRace[] = [
   },
   {
     id: "athletics-golden-trail-jinshanling-2026",
-    displayName: "Jinshanling Great Wall Trail Race",
+    displayName: "GTWS — Jinshanling Great Wall Trail Race",
     city: "Jinshanling",
     country: "China",
     startUtc: "2026-09-27T00:00:00.000Z", // 08:00 CST Sun
@@ -102,7 +102,7 @@ const GOLDEN_TRAIL_RACES: GoldenTrailRace[] = [
   },
   {
     id: "athletics-golden-trail-muju-grand-finale-2026",
-    displayName: "Muju Trail Grand Finale",
+    displayName: "GTWS — Muju Trail Grand Finale",
     city: "Muju",
     country: "South Korea",
     startUtc: "2026-10-23T23:00:00.000Z", // Oct 24 08:00 KST (women) — runs through Oct 25 (men)

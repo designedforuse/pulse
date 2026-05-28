@@ -45,7 +45,7 @@ const DAY_MIN = 24 * 60;
 const UTMB_STOPS: UtmbStop[] = [
   {
     id: "athletics-utmb-ultra-trail-australia-2026",
-    displayName: "Ultra-Trail Australia",
+    displayName: "UTMB — Ultra-Trail Australia",
     city: "Blue Mountains",
     country: "Australia",
     startUtc: "2026-05-15T20:00:00.000Z", // May 16 06:00 AEST
@@ -53,7 +53,7 @@ const UTMB_STOPS: UtmbStop[] = [
   },
   {
     id: "athletics-utmb-val-daran-2026",
-    displayName: "Val d'Aran",
+    displayName: "UTMB — Val d'Aran",
     city: "Val d'Aran",
     country: "Spain",
     startUtc: "2026-07-02T04:00:00.000Z", // Jul 2 06:00 CEST, runs through Jul 4
@@ -61,7 +61,7 @@ const UTMB_STOPS: UtmbStop[] = [
   },
   {
     id: "athletics-utmb-verbier-st-bernard-2026",
-    displayName: "Verbier St-Bernard",
+    displayName: "UTMB — Verbier St-Bernard",
     city: "Verbier",
     country: "Switzerland",
     startUtc: "2026-07-11T03:00:00.000Z", // Jul 11 05:00 CEST
@@ -69,7 +69,7 @@ const UTMB_STOPS: UtmbStop[] = [
   },
   {
     id: "athletics-utmb-monte-rosa-2026",
-    displayName: "Monte Rosa-Walser",
+    displayName: "UTMB — Monte Rosa-Walser",
     city: "Monte Rosa",
     country: "Italy",
     startUtc: "2026-07-17T03:00:00.000Z", // Jul 17 05:00 CEST, runs through Jul 18
@@ -77,7 +77,7 @@ const UTMB_STOPS: UtmbStop[] = [
   },
   {
     id: "athletics-utmb-mont-blanc-2026",
-    displayName: "UTMB Mont-Blanc",
+    displayName: "UTMB — Mont-Blanc",
     city: "Chamonix",
     country: "France",
     startUtc: "2026-08-27T16:00:00.000Z", // Aug 27 18:00 CEST, runs through Aug 30
@@ -85,7 +85,7 @@ const UTMB_STOPS: UtmbStop[] = [
   },
   {
     id: "athletics-utmb-wildstrubel-2026",
-    displayName: "Wildstrubel",
+    displayName: "UTMB — Wildstrubel",
     city: "Wildstrubel",
     country: "Switzerland",
     startUtc: "2026-09-12T03:00:00.000Z", // Sep 12 05:00 CEST, runs through Sep 13
@@ -93,7 +93,7 @@ const UTMB_STOPS: UtmbStop[] = [
   },
   {
     id: "athletics-utmb-nice-cote-dazur-2026",
-    displayName: "Nice Côte d'Azur",
+    displayName: "UTMB — Nice Côte d'Azur",
     city: "Nice",
     country: "France",
     startUtc: "2026-09-25T16:00:00.000Z", // Sep 25 18:00 CEST, runs through Sep 26
@@ -101,7 +101,7 @@ const UTMB_STOPS: UtmbStop[] = [
   },
   {
     id: "athletics-utmb-kodiak-2026",
-    displayName: "Kodiak Ultra Marathons",
+    displayName: "UTMB — Kodiak Ultra Marathons",
     city: "Big Bear Lake",
     country: "USA",
     startUtc: "2026-10-10T12:00:00.000Z", // Oct 10 05:00 PDT
@@ -109,7 +109,7 @@ const UTMB_STOPS: UtmbStop[] = [
   },
   {
     id: "athletics-utmb-chiang-mai-2026",
-    displayName: "Chiang Mai",
+    displayName: "UTMB — Chiang Mai",
     city: "Chiang Mai",
     country: "Thailand",
     startUtc: "2026-12-04T11:00:00.000Z", // Dec 4 18:00 ICT, runs through Dec 5

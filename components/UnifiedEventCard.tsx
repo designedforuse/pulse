@@ -924,8 +924,8 @@ export default function UnifiedEventCard({
   const isUtmb = isAthletics && (event.id?.startsWith("athletics-utmb-") || event.leagueKey === "utmb");
   const isGoldenTrail = isAthletics && (event.id?.startsWith("athletics-golden-trail-") || event.leagueKey === "golden-trail");
   const rawAthleticsTournament = isAthletics ? (event.tournamentName || event.homeTeam) : null;
-  const athleticsTournament = isDiamondLeague && rawAthleticsTournament
-    ? rawAthleticsTournament.replace(/^\s*diamond\s+league\s*[—–\-:]\s*/i, "").trim()
+  const athleticsTournament = rawAthleticsTournament
+    ? rawAthleticsTournament.replace(/^\s*(diamond\s+league|gtws|utmb)\s*[—–\-:]\s*/i, "").trim()
     : rawAthleticsTournament;
   const horseRacingName = isHorseRacing ? (event.tournamentName || event.homeTeam) : null;
   const cyclingTourName = isCycling ? (event.tournamentName || event.homeTeam) : null;
