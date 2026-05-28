@@ -1,11 +1,8 @@
 {
-  "lastUpdated": "2026-05-27T18:18:44.740Z",
+  "lastUpdated": "2026-05-27T22:26:30.044Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
-        "Other": 1
-      },
-      "upset_alert": {
         "Other": 1
       },
       "clinch_watch": {
@@ -27,7 +24,6 @@
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
       "Other": [
-        "upset_alert: Upset Alert",
         "clinch_watch: Clinch Watch",
         "marquee_match: Marquee Match: Champions League",
         "rally_weekend: Rally Weekend",
@@ -37,8 +33,8 @@
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 7,
-    "totalAfterCap": 7,
+    "totalBeforeCap": 6,
+    "totalAfterCap": 6,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -73,17 +69,17 @@
         ],
         "playersIngested": 377,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-27T18:18:44.740Z"
+        "timestamp": "2026-05-27T22:26:30.044Z"
       },
       "cacheHistoryCount": 880,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 7,
-    "candidateCountAfterCap": 7,
+    "candidateCountBeforeCap": 6,
+    "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1942.3124277777779,
+      "hoursUntil": -1946.4416788888889,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -93,10 +89,10 @@
       "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 2,
-      "upsetLiveCandidates": 1,
-      "upsetCompletedCandidates": 1,
-      "upsetFinalCount": 1
+      "rawUpsetCandidates": 0,
+      "upsetLiveCandidates": 0,
+      "upsetCompletedCandidates": 0,
+      "upsetFinalCount": 0
     },
     "clinchWatch": {
       "rawClinchCandidates": 1,
@@ -122,13 +118,6 @@
       ]
     },
     "videoSelection": {
-      "upset_alert_tennis-espn-175735": {
-        "searchQuery": "Fonseca vs Prizmic upset highlights May 2026",
-        "selectedVideoTitle": "MEDVEDEV FALLS, SWIATEK/OSTAPENKO AND MORE ROLAND GARROS REACTIONS WITH BRETT CONNORS | FULL PODCAST",
-        "selectedVideoPublishedAt": "12 hours ago",
-        "selectedVideoChannel": "Mitch Michals",
-        "rejectedForAgeCount": 0
-      },
       "marquee_match": {
         "searchQuery": "Arsenal vs Paris Saint-Germain Champions League preview",
         "selectedVideoTitle": "5 Reasons PSG WILL Beat Arsenal!",
@@ -168,50 +157,6 @@
   },
   "cards": [
     {
-      "id": "upset_alert_tennis-espn-175735",
-      "title": "Upset Alert",
-      "subtitle": "Fonseca in trouble against Prizmic at French Open",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 98,
-      "triggeredAt": "2026-05-27T18:18:44.740Z",
-      "expiresAt": "2026-05-27T20:18:44.740Z",
-      "kind": "upset_alert",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "mode": "live",
-        "upsetType": "tennis_live_upset",
-        "sport": "tennis",
-        "league": "Grand Slam",
-        "favoriteName": "Fonseca",
-        "underdogName": "Prizmic",
-        "favoriteRank": 28,
-        "awayTeam": "Prizmic",
-        "homeTeam": "Fonseca",
-        "startTime": "2026-05-27T15:45:00.000Z",
-        "eventIds": [
-          "tennis-espn-175735"
-        ],
-        "reason": "Prizmic is threatening an upset against Fonseca.\n\nThe higher seed is in trouble and the match is still live."
-      },
-      "sports": [
-        "tennis"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=b8gMWSnq6Ok",
-        "thumbnailUrl": "https://img.youtube.com/vi/b8gMWSnq6Ok/hqdefault.jpg",
-        "durationSeconds": 2858,
-        "title": "MEDVEDEV FALLS, SWIATEK/OSTAPENKO AND MORE ROLAND GARROS REACTIONS WITH BRETT CONNORS | FULL PODCAST",
-        "source": "youtube",
-        "channel": "Mitch Michals",
-        "publishedAt": "12 hours ago"
-      }
-    },
-    {
       "id": "clinch_watch_rugby-svns-62osre-d1",
       "title": "Clinch Watch",
       "subtitle": "Can secure semifinal place in the next 48h",
@@ -220,7 +165,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-05-27T18:18:44.740Z",
+      "triggeredAt": "2026-05-27T22:26:30.044Z",
       "expiresAt": "2026-05-29T12:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -252,7 +197,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-05-27T18:18:44.740Z",
+      "triggeredAt": "2026-05-27T22:26:30.044Z",
       "expiresAt": "2026-05-30T20:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -292,7 +237,7 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-27T18:18:44.740Z",
+      "triggeredAt": "2026-05-27T22:26:30.044Z",
       "expiresAt": "2026-05-31T00:00:00.000Z",
       "kind": "rally_weekend",
       "region": "Other",
@@ -329,8 +274,8 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-27T18:18:44.740Z",
-      "expiresAt": "2026-06-03T18:18:44.740Z",
+      "triggeredAt": "2026-05-27T22:26:30.044Z",
+      "expiresAt": "2026-06-03T22:26:30.044Z",
       "kind": "grand_tour",
       "region": "Other",
       "regionPriority": 99,
@@ -372,8 +317,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-27T18:18:44.740Z",
-      "expiresAt": "2026-06-03T18:18:44.740Z",
+      "triggeredAt": "2026-05-27T22:26:30.044Z",
+      "expiresAt": "2026-06-03T22:26:30.044Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -417,7 +362,7 @@
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-05-27T18:18:44.740Z",
+      "triggeredAt": "2026-05-27T22:26:30.044Z",
       "expiresAt": "2026-06-01T18:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -502,36 +447,6 @@
           "seasonPhase": "Regular"
         },
         {
-          "sport": "soccer",
-          "displayName": "EPL",
-          "leagueKey": "epl",
-          "dateRangeLabel": "May 13–24",
-          "startDate": "2026-05-13T19:00:00.000Z",
-          "endDate": "2026-05-24T15:00:00.000Z",
-          "eventCount": 28,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Ligue 1",
-          "leagueKey": "ligue1",
-          "dateRangeLabel": "May 13–17",
-          "startDate": "2026-05-13T19:00:00.000Z",
-          "endDate": "2026-05-17T19:00:00.000Z",
-          "eventCount": 10,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "La Liga",
-          "leagueKey": "laliga",
-          "dateRangeLabel": "May 13–24",
-          "startDate": "2026-05-13T19:30:00.000Z",
-          "endDate": "2026-05-24T19:00:00.000Z",
-          "eventCount": 25,
-          "seasonPhase": "Regular"
-        },
-        {
           "sport": "hockey",
           "displayName": "ECHL",
           "leagueKey": "echl",
@@ -602,6 +517,16 @@
           "seasonPhase": null
         },
         {
+          "sport": "soccer",
+          "displayName": "La Liga",
+          "leagueKey": "laliga",
+          "dateRangeLabel": "May 14–24",
+          "startDate": "2026-05-14T17:00:00.000Z",
+          "endDate": "2026-05-24T19:00:00.000Z",
+          "eventCount": 23,
+          "seasonPhase": "Regular"
+        },
+        {
           "sport": "rugby",
           "displayName": "Super Rugby",
           "leagueKey": "superrugby",
@@ -632,6 +557,16 @@
           "seasonPhase": "Playoffs"
         },
         {
+          "sport": "soccer",
+          "displayName": "EPL",
+          "leagueKey": "epl",
+          "dateRangeLabel": "May 15–24",
+          "startDate": "2026-05-15T19:00:00.000Z",
+          "endDate": "2026-05-24T15:00:00.000Z",
+          "eventCount": 27,
+          "seasonPhase": "Regular"
+        },
+        {
           "sport": "athletics",
           "displayName": "Ultra-Trail Australia",
           "leagueKey": "utmb",
@@ -655,10 +590,10 @@
           "sport": "cricket",
           "displayName": "Test Cricket",
           "leagueKey": "test",
-          "dateRangeLabel": "May 16",
+          "dateRangeLabel": "May 16–27",
           "startDate": "2026-05-16T03:30:00.000Z",
-          "endDate": "2026-05-16T03:30:00.000Z",
-          "eventCount": 1,
+          "endDate": "2026-05-27T10:00:00.000Z",
+          "eventCount": 2,
           "seasonPhase": null
         },
         {
@@ -753,6 +688,16 @@
         },
         {
           "sport": "soccer",
+          "displayName": "Ligue 1",
+          "leagueKey": "ligue1",
+          "dateRangeLabel": "May 17",
+          "startDate": "2026-05-17T19:00:00.000Z",
+          "endDate": "2026-05-17T19:00:00.000Z",
+          "eventCount": 9,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "soccer",
           "displayName": "Europa League",
           "leagueKey": "europaleague",
           "dateRangeLabel": "May 20",
@@ -842,16 +787,6 @@
           "seasonPhase": null
         },
         {
-          "sport": "tennis",
-          "displayName": "Roland Garros",
-          "leagueKey": "grand-slam",
-          "dateRangeLabel": "May 26–29",
-          "startDate": "2026-05-26T18:30:00.000Z",
-          "endDate": "2026-05-29T04:00:00.000Z",
-          "eventCount": 26,
-          "seasonPhase": null
-        },
-        {
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
@@ -860,6 +795,16 @@
           "endDate": "2026-05-31T16:00:00.000Z",
           "eventCount": 4,
           "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Roland Garros",
+          "leagueKey": "grand-slam",
+          "dateRangeLabel": "May 27–29",
+          "startDate": "2026-05-27T09:00:00.000Z",
+          "endDate": "2026-05-29T04:00:00.000Z",
+          "eventCount": 27,
+          "seasonPhase": null
         },
         {
           "sport": "racing",
@@ -1042,10 +987,10 @@
           "sport": "soccer",
           "displayName": "USL",
           "leagueKey": "usl",
-          "dateRangeLabel": "Jun 4–14",
+          "dateRangeLabel": "Jun 4–17",
           "startDate": "2026-06-04T00:00:00.000Z",
-          "endDate": "2026-06-14T02:00:00.000Z",
-          "eventCount": 17,
+          "endDate": "2026-06-17T19:00:00.000Z",
+          "eventCount": 18,
           "seasonPhase": "Regular"
         },
         {
@@ -1350,16 +1295,6 @@
           "seasonPhase": "Final"
         },
         {
-          "sport": "tennis",
-          "displayName": "Roland Garros",
-          "leagueKey": "grand-slam",
-          "dateRangeLabel": "May 26–29",
-          "startDate": "2026-05-26T18:30:00.000Z",
-          "endDate": "2026-05-29T04:00:00.000Z",
-          "eventCount": 26,
-          "seasonPhase": null
-        },
-        {
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
@@ -1368,6 +1303,26 @@
           "endDate": "2026-05-31T16:00:00.000Z",
           "eventCount": 4,
           "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Roland Garros",
+          "leagueKey": "grand-slam",
+          "dateRangeLabel": "May 27–29",
+          "startDate": "2026-05-27T09:00:00.000Z",
+          "endDate": "2026-05-29T04:00:00.000Z",
+          "eventCount": 27,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
+          "displayName": "Test Cricket",
+          "leagueKey": "test",
+          "dateRangeLabel": "May 27",
+          "startDate": "2026-05-27T10:00:00.000Z",
+          "endDate": "2026-05-27T10:00:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
         },
         {
           "sport": "hockey",

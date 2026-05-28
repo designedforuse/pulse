@@ -942,7 +942,7 @@ export default function UnifiedEventCard({
   const logoSize = featured ? 22 : 20;
   const isUpcoming = !isLive && !isFinal;
   const showEspnStyle = espnLayout && (isUpcoming || (isLive && isCricket)) && showTeamLayout && !isRacing && !isGolf && !isAthletics && !isHorseRacing && !isPaddling;
-  const showRacingEspnStyle = espnLayout && isUpcoming && isRacing;
+  const showRacingEspnStyle = espnLayout && (isUpcoming || isLive) && isRacing;
   const showGolfEspnStyle = espnLayout && isUpcoming && isGolf;
   const showAthleticsEspnStyle = espnLayout && isUpcoming && isAthletics;
   const showCyclingEspnStyle = espnLayout && isUpcoming && isCycling;
@@ -1045,9 +1045,15 @@ export default function UnifiedEventCard({
                     </Text>
                   </View>
                 </View>
-                {/* Center: time + provider logo */}
+                {/* Center: time + provider logo (or live status when in progress) */}
                 <View style={uStyles.espnCenter}>
-                  <Text style={uStyles.espnTime}>{timeStr}</Text>
+                  {isLive ? (
+                    <Text style={[uStyles.espnTime, { color: Colors.live }]} numberOfLines={1}>
+                      {score?.racingLap || score?.racingStatus || "In Progress"}
+                    </Text>
+                  ) : (
+                    <Text style={uStyles.espnTime}>{timeStr}</Text>
+                  )}
                   {providerBrandId && <ProviderLogo providerId={providerBrandId} size={20} />}
                 </View>
                 {/* Right: session title (Practice 1, Race, Qualifying…) */}
