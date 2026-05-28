@@ -947,6 +947,7 @@ export default function UnifiedEventCard({
   const showAthleticsEspnStyle = espnLayout && isUpcoming && isAthletics;
   const showCyclingEspnStyle = espnLayout && isUpcoming && isCycling;
   const showPaddlingEspnStyle = espnLayout && isUpcoming && isPaddling;
+  const showSvnsEspnStyle = espnLayout && isUpcoming && isSvnsSession;
   const paddlingRaceName = isPaddling ? (event.tournamentName || event.homeTeam) : null;
   const paddlingDayLabel = isPaddling ? (() => {
     const start = new Date(event.startTimeLocal).getTime();
@@ -976,14 +977,14 @@ export default function UnifiedEventCard({
       testID={`event-${event.id}`}
     >
       <Animated.View style={[uStyles.cardInner, featured && uStyles.cardInnerFeatured, flashStyle]}>
-        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && (
+        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && !showSvnsEspnStyle && (
           <View style={[uStyles.accentBar, { backgroundColor: isLive ? liveTensionColor : (accentBarColor ?? sportColor) }]} />
         )}
-        {(showEspnStyle || showRacingEspnStyle || showGolfEspnStyle || showAthleticsEspnStyle || showCyclingEspnStyle || showPaddlingEspnStyle) && (
+        {(showEspnStyle || showRacingEspnStyle || showGolfEspnStyle || showAthleticsEspnStyle || showCyclingEspnStyle || showPaddlingEspnStyle || showSvnsEspnStyle) && (
           <View style={[uStyles.topAccentBar, { backgroundColor: sportColor }]} />
         )}
 
-        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && (
+        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && !showSvnsEspnStyle && (
           <View style={uStyles.header}>
             <View style={[uStyles.sportPill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
               <Text style={[uStyles.sportPillText, { color: sportColor }]} numberOfLines={1}>{getLeagueLabel(event)}</Text>
@@ -1226,6 +1227,34 @@ export default function UnifiedEventCard({
                   <View style={uStyles.espnTeam}>
                     <Text style={[uStyles.racingEspnTitle, { color: Colors.textPrimary }]} numberOfLines={1}>
                       {paddlingDayLabel}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          ) : showSvnsEspnStyle ? (
+            <View>
+              <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
+                <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>
+                  {getLeagueLabel(event)}
+                </Text>
+              </View>
+              <View style={uStyles.espnMatchup}>
+                <View style={uStyles.espnTeamOuter}>
+                  <View style={uStyles.espnStarSlot} />
+                  <View style={uStyles.espnTeam}>
+                    <Text style={{ fontSize: featured ? 28 : 24 }}>🏉</Text>
+                  </View>
+                </View>
+                <View style={uStyles.espnCenter}>
+                  <Text style={uStyles.espnTime}>{timeStr}</Text>
+                  {providerBrandId && <ProviderLogo providerId={providerBrandId} size={20} />}
+                </View>
+                <View style={[uStyles.espnTeamOuter, { flexDirection: "row-reverse" }]}>
+                  <View style={uStyles.espnStarSlot} />
+                  <View style={uStyles.espnTeam}>
+                    <Text style={[uStyles.racingEspnTitle, { color: Colors.textPrimary }]} numberOfLines={2}>
+                      {svnsSessionLabel || matchupFallback}
                     </Text>
                   </View>
                 </View>
@@ -1586,7 +1615,7 @@ export default function UnifiedEventCard({
           ) : null}
         </View>
 
-        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && (
+        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && !showSvnsEspnStyle && (
           <View style={uStyles.footer}>
             {isLive ? (
               <>
