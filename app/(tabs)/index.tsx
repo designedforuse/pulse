@@ -19,6 +19,7 @@ import { Image as ExpoImage } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import Colors from "@/constants/colors";
 import { getApiUrl } from "@/lib/query-client";
+import { getEffectiveSport } from "@/lib/data";
 import { useFavorites } from "@/lib/favorites-context";
 import DailyWrapCard from "@/components/DailyWrapCard";
 import { TOPICS as DEEP_TALK_TOPICS } from "@/app/deep-talk";
@@ -180,8 +181,8 @@ export default function ExploreScreen() {
     if (disabledSports.size === 0) return rawMonthSnapshot;
     const filterLeagues = (data: MonthSnapshotData): MonthSnapshotData => ({
       ...data,
-      leagues: data.leagues.filter(l => isSportEnabled(l.sport)),
-      championshipFinals: data.championshipFinals?.filter(f => isSportEnabled(f.sport)),
+      leagues: data.leagues.filter(l => isSportEnabled(getEffectiveSport(l.sport, undefined, l.leagueKey))),
+      championshipFinals: data.championshipFinals?.filter(f => isSportEnabled(getEffectiveSport(f.sport, undefined, f.leagueKey))),
     });
     return {
       currentMonth: filterLeagues(rawMonthSnapshot.currentMonth),

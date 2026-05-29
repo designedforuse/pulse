@@ -7,7 +7,7 @@ import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
-import { getSportColor, getSportIcon, resolveProviderDisplay, type SportEvent } from "@/lib/data";
+import { getSportColor, getSportIcon, resolveProviderDisplay, getEffectiveSport, isSchoolsLeague, type SportEvent } from "@/lib/data";
 import { displayTeamName, compactTeamName } from "@/utils/teams";
 import { normalizeGameState } from "@/utils/gameState";
 import { useScoreFlash } from "@/hooks/useScoreFlash";
@@ -267,6 +267,7 @@ const LEAGUE_DISPLAY_NAMES: Record<string, string> = {
 };
 
 function getLeagueLabel(event: SportEvent): string {
+  if (isSchoolsLeague(event.league, event.leagueKey)) return "Schools";
   if (event.isIccT20Wc) return "T20 World Cup";
   if (event.isOlympic) return "Olympics";
   if (event.leagueKey === "svns" && event.eventType === "session") {
@@ -876,7 +877,7 @@ export default function UnifiedEventCard({
   const { getSeriesStatus } = useScores();
   const isFavAway = isTeamFavorite(event.awayTeam, event.sport, favorites);
   const isFavHome = isTeamFavorite(event.homeTeam, event.sport, favorites);
-  const sportColor = getSportColor(event.sport);
+  const sportColor = getSportColor(getEffectiveSport(event.sport, event.league, event.leagueKey));
   const sportIcon = getSportIcon(event.sport) as any;
   const seriesStatus = event.sport === "hockey" ? getSeriesStatus(event.id) : undefined;
   const seriesDisplay = seriesStatus ? formatSeriesStatus(seriesStatus) : null;

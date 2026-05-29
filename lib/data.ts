@@ -186,8 +186,26 @@ export function getSportColor(sport: string): string {
     "horse-racing": "#C9882F",
     cycling: "#F5C518",
     paddling: "#2DD4BF",
+    college: "#9AA0A6",
   };
   return colors[sport] || "#90A4AE";
+}
+
+// Leagues grouped under the "Schools" pack in Settings. Their events keep their
+// real sport (rugby/hockey/basketball) for card layout, logos and live scores,
+// but for filtering and the league chip they behave as one "college" group:
+// controlled by the Schools master toggle, not their underlying sport toggle.
+export const SCHOOLS_LEAGUE_NAMES = new Set<string>(["NCAAB", "NCAA Hockey", "SA Schools Rugby"]);
+export const SCHOOLS_LEAGUE_KEYS = new Set<string>(["ncaab", "ncaa-hockey", "schools-rugby"]);
+
+export function isSchoolsLeague(league?: string, leagueKey?: string): boolean {
+  return (!!league && SCHOOLS_LEAGUE_NAMES.has(league)) || (!!leagueKey && SCHOOLS_LEAGUE_KEYS.has(leagueKey));
+}
+
+// The sport key used for enable/disable filtering. Schools leagues collapse to
+// "college" so the Schools toggle controls them and the sport toggles don't.
+export function getEffectiveSport(sport: string, league?: string, leagueKey?: string): string {
+  return isSchoolsLeague(league, leagueKey) ? "college" : sport;
 }
 
 export interface ResolvedProvider {

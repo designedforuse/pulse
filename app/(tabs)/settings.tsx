@@ -119,7 +119,10 @@ function FavoritesSection() {
     tennis: "Tennis",
     racing: "Motor Racing", golf: "Golf", athletics: "Athletics", "horse-racing": "Horse Racing", cycling: "Cycling",
     paddling: "Paddling",
-    college: "College & School Sports",
+    college: "Schools",
+  };
+  const leagueDisplayNames: Record<string, string> = {
+    NCAAB: "NCAA Basketball",
   };
   const sportIcons: Record<string, keyof typeof Ionicons.glyphMap> = {
     hockey: "snow", rugby: "american-football", cricket: "baseball", soccer: "football",
@@ -142,15 +145,6 @@ function FavoritesSection() {
     athletics: ["World Marathon Majors", "Comrades Marathon", "Diamond League", "UTMB World Series", "Golden Trail World Series"],
     paddling: ["SA Big Three"],
   };
-  // Some leagues are displayed under a different settings group than the sport
-  // their events actually use. Toggle/enable state must stay keyed to the
-  // event's real sport so filtering keeps working.
-  const leagueSportOverride: Record<string, string> = {
-    "SA Schools Rugby": "rugby",
-    "NCAAB": "basketball",
-    "NCAA Hockey": "hockey",
-  };
-
   let isFirstSport = true;
 
   return (
@@ -198,20 +192,19 @@ function FavoritesSection() {
               />
             </Pressable>
             {isExpanded && leagues.map((league, i) => {
-              const keySport = leagueSportOverride[league] ?? sport;
-              const leagueOn = isLeagueEnabled(keySport, league);
+              const leagueOn = isLeagueEnabled(sport, league);
               return (
                 <React.Fragment key={league}>
                   {i > 0 && <View style={styles.leagueRowDivider} />}
                   <View style={styles.leagueToggleRow}>
                     <Text style={[styles.leagueToggleLabel, !leagueOn && styles.teamNameDisabled]}>
-                      {league}
+                      {leagueDisplayNames[league] ?? league}
                     </Text>
                     <Switch
                       value={leagueOn}
                       onValueChange={() => {
                         if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                        toggleLeague(keySport, league);
+                        toggleLeague(sport, league);
                       }}
                       trackColor={{ false: Colors.border, true: sportColor + "55" }}
                       thumbColor={leagueOn ? sportColor : Colors.textMuted}

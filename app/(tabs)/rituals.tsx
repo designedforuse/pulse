@@ -31,7 +31,7 @@ import {
   type Ritual,
 } from "@/lib/rituals";
 import type { SportEvent } from "@/lib/data";
-import { resolveProviderDisplay } from "@/lib/data";
+import { resolveProviderDisplay, getEffectiveSport } from "@/lib/data";
 import { useRitualOverrides } from "@/lib/ritual-overrides-context";
 
 const ACCENT = "#35C7A5";
@@ -274,7 +274,7 @@ export default function RitualsScreen() {
   const { width: screenWidth } = useWindowDimensions();
 
   const allEvents = useMemo(
-    () => disabledSports.size === 0 ? rawEvents : rawEvents.filter((e) => !disabledSports.has(e.sport.toLowerCase())),
+    () => disabledSports.size === 0 ? rawEvents : rawEvents.filter((e) => !disabledSports.has(getEffectiveSport(e.sport, e.league, e.leagueKey).toLowerCase())),
     [rawEvents, disabledSports]
   );
   const { overrides } = useRitualOverrides();

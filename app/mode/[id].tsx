@@ -17,6 +17,7 @@ import UnifiedEventCard from "@/components/UnifiedEventCard";
 import {
   getModeById,
   getSportColor,
+  getEffectiveSport,
   type SportEvent,
   type Pack,
   type Favorites,
@@ -176,7 +177,9 @@ export default function ModeDetailScreen() {
     return mode.packs
       .filter((pack: Pack) => !disabledSports.has(pack.sport.toLowerCase()))
       .map((pack: Pack) => {
-      const events = getEventsForPack(pack);
+      const events = getEventsForPack(pack).filter(
+        (e) => !disabledSports.has(getEffectiveSport(e.sport, e.league, e.leagueKey).toLowerCase())
+      );
 
       if (debugShowAll) {
         return { pack, thisWeekend: events, nextWeekend: [] };

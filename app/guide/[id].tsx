@@ -20,6 +20,8 @@ import UnifiedEventCard from "@/components/UnifiedEventCard";
 import CatchUpCard from "@/components/CatchUpCard";
 import {
   getSportColor,
+  getEffectiveSport,
+  isSchoolsLeague,
   resolveProviderDisplay,
   type SportEvent,
 } from "@/lib/data";
@@ -46,6 +48,7 @@ function formatEventDate(startTimeLocal: string): { date: string; time: string }
 }
 
 function getLeagueDisplayLabel(e: SportEvent): string {
+  if (isSchoolsLeague(e.league, e.leagueKey)) return "Schools";
   if (e.isIccT20Wc) return "T20 World Cup";
   if (e.isOlympic) return "Olympics";
   return e.league;
@@ -59,7 +62,7 @@ export default function GuideDetailScreen() {
   const { favorites, disabledSports } = useFavorites();
 
   const allEvents = useMemo(
-    () => disabledSports.size === 0 ? rawEvents : rawEvents.filter((e) => !disabledSports.has(e.sport.toLowerCase())),
+    () => disabledSports.size === 0 ? rawEvents : rawEvents.filter((e) => !disabledSports.has(getEffectiveSport(e.sport, e.league, e.leagueKey).toLowerCase())),
     [rawEvents, disabledSports]
   );
   const { getOverride, setOverride, clearOverride, loaded: overridesLoaded } = useRitualOverrides();
@@ -154,20 +157,21 @@ export default function GuideDetailScreen() {
     const leagues = new Map<string, number>();
     const lsMap = new Map<string, string>();
     for (const e of moreGames) {
-      sports.set(e.sport, (sports.get(e.sport) || 0) + 1);
+      const es = getEffectiveSport(e.sport, e.league, e.leagueKey);
+      sports.set(es, (sports.get(es) || 0) + 1);
       leagues.set(e.league, (leagues.get(e.league) || 0) + 1);
-      if (!lsMap.has(e.league)) lsMap.set(e.league, e.sport);
+      if (!lsMap.has(e.league)) lsMap.set(e.league, es);
     }
     const sChips = Array.from(sports.entries())
       .sort((a, b) => b[1] - a[1])
-      .map(([sport, count]) => ({ key: sport, label: sport.charAt(0).toUpperCase() + sport.slice(1), count }));
+      .map(([sport, count]) => ({ key: sport, label: sport === "college" ? "Schools" : sport.charAt(0).toUpperCase() + sport.slice(1), count }));
     const lChips = Array.from(leagues.entries())
       .sort((a, b) => b[1] - a[1])
       .map(([league, count]) => ({ key: league, label: league, count }));
 
     let filtered = moreGames;
     if (sportFilter) {
-      filtered = filtered.filter((e) => e.sport === sportFilter);
+      filtered = filtered.filter((e) => getEffectiveSport(e.sport, e.league, e.leagueKey) === sportFilter);
     }
     if (leagueFilter) {
       filtered = filtered.filter((e) => e.league === leagueFilter);
@@ -491,7 +495,7 @@ export default function GuideDetailScreen() {
               const se = sheetEvent;
               const seResolved = resolveProviderDisplay(se);
               const seProvider = seResolved.launchProvider;
-              const seSportColor = getSportColor(se.sport);
+              const seSportColor = getSportColor(getEffectiveSport(se.sport, se.league, se.leagueKey));
               const { date: seDate, time: seTime } = formatEventDate(se.startTimeLocal);
               return (
                 <>

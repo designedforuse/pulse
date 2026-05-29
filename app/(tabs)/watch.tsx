@@ -35,6 +35,8 @@ import { useWrcStages, getWrcRoundBaseId, getStagesForLeg, wrcFlagUrl } from "@/
 import CatchUpCard from "@/components/CatchUpCard";
 import {
   getSportColor,
+  getEffectiveSport,
+  isSchoolsLeague,
   resolveProviderDisplay,
   type SportEvent,
 } from "@/lib/data";
@@ -325,7 +327,7 @@ function ChaosCard({
 }) {
   const { width: screenWidth } = useWindowDimensions();
   const cardWidth = screenWidth - PAGE_PADDING * 2;
-  const sportColor = getSportColor(event.sport);
+  const sportColor = getSportColor(getEffectiveSport(event.sport, event.league, event.leagueKey));
   const { getSeriesStatus } = useScores();
   const seriesStatus = event.sport === "hockey" ? getSeriesStatus(event.id) : undefined;
   const seriesDisplay = seriesStatus ? formatChaosSeriesStatus(seriesStatus) : null;
@@ -464,7 +466,9 @@ function ChaosCard({
             <View style={styles.primaryHeader}>
               <View style={[styles.leaguePill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
                 <Text style={[styles.leaguePillText, { color: sportColor }]} numberOfLines={1}>
-                  {isRacing
+                  {isSchoolsLeague(event.league, event.leagueKey)
+                    ? "Schools"
+                    : isRacing
                     ? (event.leagueKey === "wrc"
                         ? "WRC"
                         : `F1${gpShort ? ` · ${gpShort}` : ""}`)
@@ -690,7 +694,9 @@ function ChaosCard({
         <View style={styles.secondaryHeader}>
           <View style={[styles.leaguePill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
             <Text style={[styles.leaguePillText, { color: sportColor }]} numberOfLines={1}>
-              {isRacing
+              {isSchoolsLeague(event.league, event.leagueKey)
+                ? "Schools"
+                : isRacing
                 ? (event.leagueKey === "wrc" ? "WRC" : "Formula 1")
                 : isSvnsSession && svnsCity
                 ? `${svnsCity} SVNS${svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}`
@@ -1119,10 +1125,10 @@ export default function WatchScreen() {
     () => {
       let filtered = rawEvents;
       if (disabledSports.size > 0) {
-        filtered = filtered.filter((e) => !disabledSports.has(e.sport.toLowerCase()));
+        filtered = filtered.filter((e) => !disabledSports.has(getEffectiveSport(e.sport, e.league, e.leagueKey).toLowerCase()));
       }
       if (disabledLeagues.size > 0) {
-        filtered = filtered.filter((e) => !disabledLeagues.has(`${e.sport}::${e.league}`));
+        filtered = filtered.filter((e) => !disabledLeagues.has(`${getEffectiveSport(e.sport, e.league, e.leagueKey)}::${e.league}`));
       }
       return filtered;
     },
@@ -1335,20 +1341,21 @@ export default function WatchScreen() {
     const leagues = new Map<string, number>();
     const lsMap = new Map<string, string>();
     for (const e of upNextAll) {
-      sports.set(e.sport, (sports.get(e.sport) || 0) + 1);
+      const es = getEffectiveSport(e.sport, e.league, e.leagueKey);
+      sports.set(es, (sports.get(es) || 0) + 1);
       leagues.set(e.league, (leagues.get(e.league) || 0) + 1);
-      if (!lsMap.has(e.league)) lsMap.set(e.league, e.sport);
+      if (!lsMap.has(e.league)) lsMap.set(e.league, es);
     }
     const sChips = Array.from(sports.entries())
       .sort((a, b) => b[1] - a[1])
-      .map(([sport, count]) => ({ key: sport, label: sport.charAt(0).toUpperCase() + sport.slice(1), count }));
+      .map(([sport, count]) => ({ key: sport, label: sport === "college" ? "Schools" : sport.charAt(0).toUpperCase() + sport.slice(1), count }));
     const lChips = Array.from(leagues.entries())
       .sort((a, b) => b[1] - a[1])
       .map(([league, count]) => ({ key: league, label: league, count }));
 
     let events = upNextAll;
     if (upNextSportFilter) {
-      events = events.filter((e) => e.sport === upNextSportFilter);
+      events = events.filter((e) => getEffectiveSport(e.sport, e.league, e.leagueKey) === upNextSportFilter);
     }
     if (upNextLeagueFilter) {
       events = events.filter((e) => e.league === upNextLeagueFilter);

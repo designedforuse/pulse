@@ -5,7 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
-import { getSportColor, resolveProviderDisplay, type SportEvent } from "@/lib/data";
+import { getSportColor, getEffectiveSport, isSchoolsLeague, resolveProviderDisplay, type SportEvent } from "@/lib/data";
 import type { ScoreData } from "@/lib/scores-context";
 import { getCatchUpTeaser, type TeaserMood } from "@/lib/catchUpTeasers";
 
@@ -36,7 +36,7 @@ export default function CatchUpCard({
   accentColor = "#A78BFA",
   width,
 }: CatchUpCardProps) {
-  const sportColor = getSportColor(event.sport);
+  const sportColor = getSportColor(getEffectiveSport(event.sport, event.league, event.leagueKey));
   const teaser = getCatchUpTeaser(event, score);
   const moodColor = MOOD_COLORS[teaser.mood];
   const moodLabel = MOOD_LABELS[teaser.mood];
@@ -64,7 +64,7 @@ export default function CatchUpCard({
       <View style={styles.body}>
         <View style={styles.topRow}>
           <View style={[styles.leagueChip, { borderColor: sportColor + "55", backgroundColor: sportColor + "18" }]}>
-            <Text style={[styles.leagueChipText, { color: sportColor }]}>{event.league}</Text>
+            <Text style={[styles.leagueChipText, { color: sportColor }]}>{isSchoolsLeague(event.league, event.leagueKey) ? "Schools" : event.league}</Text>
           </View>
           {isFav && (
             <Ionicons name="star" size={14} color={Colors.favStar} style={{ marginLeft: 6 }} />

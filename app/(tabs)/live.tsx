@@ -29,6 +29,8 @@ import {
   getProviderById,
   formatStartTime,
   getSportColor,
+  getEffectiveSport,
+  isSchoolsLeague,
   resolveProviderDisplay,
   type SportEvent,
 } from "@/lib/data";
@@ -76,7 +78,7 @@ function formatEventDate(startTimeLocal: string): { date: string; time: string }
 function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isLive: boolean; now: Date; isFav: boolean; score?: { awayScore: number; homeScore: number; period?: string; clock?: string; status?: string } }) {
   const resolved = resolveProviderDisplay(event);
   const provider = resolved.launchProvider;
-  const sportColor = getSportColor(event.sport);
+  const sportColor = getSportColor(getEffectiveSport(event.sport, event.league, event.leagueKey));
   const { date, time } = formatEventDate(event.startTimeLocal);
   const hasScore = !!score;
 
@@ -113,7 +115,7 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
         <View style={styles.cardTeamsSection}>
           <View style={styles.cardHeaderRow}>
             <Text style={[styles.cardLeague, { color: sportColor }]}>
-              {event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league}
+              {isSchoolsLeague(event.league, event.leagueKey) ? "Schools" : event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league}
             </Text>
             {isFav && <Text style={styles.favStar}>★</Text>}
           </View>
@@ -210,7 +212,7 @@ export default function LiveNowScreen() {
   const { favorites, disabledSports } = useFavorites();
 
   const allEvents = useMemo(
-    () => disabledSports.size === 0 ? rawEvents : rawEvents.filter((e) => !disabledSports.has(e.sport.toLowerCase())),
+    () => disabledSports.size === 0 ? rawEvents : rawEvents.filter((e) => !disabledSports.has(getEffectiveSport(e.sport, e.league, e.leagueKey).toLowerCase())),
     [rawEvents, disabledSports]
   );
 

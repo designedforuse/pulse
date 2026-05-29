@@ -18,6 +18,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Video, ResizeMode } from "expo-av";
 import Colors from "@/constants/colors";
 import { getApiUrl } from "@/lib/query-client";
+import { getEffectiveSport, isSchoolsLeague } from "@/lib/data";
 import { useFavorites } from "@/lib/favorites-context";
 
 interface NarrativeImpact {
@@ -165,7 +166,7 @@ export default function NarrativeDetailScreen() {
 
   const relevantEvents = (eventsData?.events || [])
     .filter(e => {
-      if (disabledSports.size > 0 && disabledSports.has(e.sport.toLowerCase())) return false;
+      if (disabledSports.size > 0 && disabledSports.has(getEffectiveSport(e.sport, e.league, e.leagueKey).toLowerCase())) return false;
       if (!eventIds.has(e.id)) return false;
       const start = new Date(e.startTimeLocal);
       if (start < now || start > weekEnd) return false;
@@ -467,13 +468,13 @@ export default function NarrativeDetailScreen() {
                 ]}
                 testID={`narrative-event-${event.id}`}
               >
-                <View style={[styles.sportDot, { backgroundColor: getSportColor(event.sport) }]} />
+                <View style={[styles.sportDot, { backgroundColor: isSchoolsLeague(event.league, event.leagueKey) ? "#9AA0A6" : getSportColor(event.sport) }]} />
                 <View style={styles.eventInfo}>
                   <Text style={styles.eventTeams} numberOfLines={1}>
                     {event.awayTeam} @ {event.homeTeam}
                   </Text>
                   <Text style={styles.eventTime}>
-                    {event.league} · {formatEventTime(event.startTimeLocal)}
+                    {isSchoolsLeague(event.league, event.leagueKey) ? "Schools" : event.league} · {formatEventTime(event.startTimeLocal)}
                   </Text>
                 </View>
                 <Ionicons name="chevron-forward" size={14} color={Colors.textMuted} />
