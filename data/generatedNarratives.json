@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-29T05:41:49.126Z",
+  "lastUpdated": "2026-05-29T06:00:05.226Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -88,7 +88,7 @@
         ],
         "playersIngested": 377,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-29T05:41:49.126Z"
+        "timestamp": "2026-05-29T06:00:05.226Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -98,7 +98,7 @@
     "candidateCountAfterCap": 8,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1977.6969794444444,
+      "hoursUntil": -1978.0014516666668,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -199,7 +199,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-05-29T05:41:49.126Z",
+      "triggeredAt": "2026-05-29T06:00:05.226Z",
       "expiresAt": "2026-05-30T17:30:00.000Z",
       "kind": "clinch_watch",
       "region": "SouthAfrica",
@@ -231,7 +231,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-05-29T05:41:49.126Z",
+      "triggeredAt": "2026-05-29T06:00:05.226Z",
       "expiresAt": "2026-05-29T12:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -263,7 +263,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-05-29T05:41:49.126Z",
+      "triggeredAt": "2026-05-29T06:00:05.226Z",
       "expiresAt": "2026-05-30T20:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -303,7 +303,7 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-29T05:41:49.126Z",
+      "triggeredAt": "2026-05-29T06:00:05.226Z",
       "expiresAt": "2026-06-01T23:00:00.000Z",
       "kind": "rally_weekend",
       "region": "Other",
@@ -340,8 +340,8 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-29T05:41:49.126Z",
-      "expiresAt": "2026-06-05T05:41:49.126Z",
+      "triggeredAt": "2026-05-29T06:00:05.226Z",
+      "expiresAt": "2026-06-05T06:00:05.226Z",
       "kind": "grand_tour",
       "region": "Other",
       "regionPriority": 99,
@@ -382,8 +382,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-29T05:41:49.126Z",
-      "expiresAt": "2026-06-05T05:41:49.126Z",
+      "triggeredAt": "2026-05-29T06:00:05.226Z",
+      "expiresAt": "2026-06-05T06:00:05.226Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -427,7 +427,7 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-29T05:41:49.126Z",
+      "triggeredAt": "2026-05-29T06:00:05.226Z",
       "expiresAt": "2026-05-29T22:00:00.000Z",
       "kind": "ipl_storyline",
       "region": "Other",
@@ -464,13 +464,13 @@
     {
       "id": "diamond_league_athletics-diamond-league-rabat-2026",
       "title": "Diamond League",
-      "subtitle": "Diamond League — Rabat — in 3 days",
+      "subtitle": "Diamond League — Rabat — in 2 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-05-29T05:41:49.126Z",
+      "triggeredAt": "2026-05-29T06:00:05.226Z",
       "expiresAt": "2026-06-01T18:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",

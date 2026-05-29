@@ -158,7 +158,11 @@ export function fetchSchoolsRugbyEvents(): SchoolsRugbyFetchResult {
 
   const events: AppEvent[] = [];
 
+  // Only surface fixtures involving Paarl Boys' High (user request).
+  const ONLY_SCHOOL = "Paarl Boys' High";
+
   for (const f of FIXTURES) {
+    if (f.home !== ONLY_SCHOOL && f.away !== ONLY_SCHOOL) continue;
     const start = new Date(f.startUtc);
     if (start < windowStart || start > windowEnd) continue;
 
@@ -180,30 +184,10 @@ export function fetchSchoolsRugbyEvents(): SchoolsRugbyFetchResult {
     });
   }
 
-  for (const t of TOURNAMENTS) {
-    const start = new Date(t.startUtc);
-    if (start < windowStart || start > windowEnd) continue;
-
-    events.push({
-      id: t.id,
-      sport: "rugby",
-      league: LEAGUE,
-      awayTeam: "",
-      homeTeam: t.name,
-      startTimeLocal: t.startUtc,
-      endTimeLocal: t.endUtc,
-      providerId: PROVIDER_ID,
-      providerReason: PROVIDER_REASON,
-      isLive: false,
-      source: "schools-rugby-hardcoded",
-      leagueKey: LEAGUE_KEY,
-      eventType: "session",
-      sessionTitle: t.name,
-      tournamentName: t.name,
-      competitionType: "domestic",
-      venue: t.venue,
-    });
-  }
+  // National youth weeks (Grant Khomo, Craven Week) are not Paarl Boys' High
+  // fixtures, so they are intentionally not surfaced while the app is scoped to
+  // PBHS games only. The TOURNAMENTS data is retained for future use.
+  void TOURNAMENTS;
 
   console.log(`  SA Schools Rugby: ${events.length} events in retention window`);
 

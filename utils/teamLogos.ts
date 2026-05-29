@@ -372,6 +372,12 @@ const MLR_LOGO_MAP: Record<string, string> = {
   "Seattle Seawolves":      "https://statics-maker.llt-services.com/mlr/images/2025/06/24/original/48a432a4-f91a-4cf3-b5a5-83147eb4b312-827.png",
 };
 
+const SCHOOLS_RUGBY_LOGO_MAP: Record<string, string> = {
+  // School crest from Wikipedia (en, fair-use file).
+  "Paarl Boys' High":
+    "https://upload.wikimedia.org/wikipedia/en/thumb/a/aa/Paarl_Boys%27_High_School_logo.svg/500px-Paarl_Boys%27_High_School_logo.svg.png",
+};
+
 const LNR_BASE = "https://cdn.lnr.fr/club";
 const LNR_HASH = "3b11bd4ce6d123075823c85941013c743abb7668";
 const lnr = (slug: string) => `${LNR_BASE}/${slug}/photo/logo.${LNR_HASH}`;
@@ -611,6 +617,10 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
 
   if (league === "Six Nations") {
     return SIX_NATIONS_FLAGS[teamName] || null;
+  }
+
+  if (league === "SA Schools Rugby") {
+    return SCHOOLS_RUGBY_LOGO_MAP[teamName] || null;
   }
 
   const sportLower = sport?.toLowerCase();
