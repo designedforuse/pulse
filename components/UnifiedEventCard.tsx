@@ -1236,7 +1236,7 @@ export default function UnifiedEventCard({
             <View>
               <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
                 <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>
-                  SVNS Series
+                  HSBC SVNS
                 </Text>
               </View>
               <View style={uStyles.espnMatchup}>
