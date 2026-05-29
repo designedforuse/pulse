@@ -18,7 +18,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Video, ResizeMode } from "expo-av";
 import Colors from "@/constants/colors";
 import { getApiUrl } from "@/lib/query-client";
-import { getEffectiveSport, isSchoolsLeague } from "@/lib/data";
+import { getEffectiveSport, isSchoolsLeague, getSchoolsLeagueLabel } from "@/lib/data";
 import { useFavorites } from "@/lib/favorites-context";
 
 interface NarrativeImpact {
@@ -474,7 +474,7 @@ export default function NarrativeDetailScreen() {
                     {event.awayTeam} @ {event.homeTeam}
                   </Text>
                   <Text style={styles.eventTime}>
-                    {isSchoolsLeague(event.league, event.leagueKey) ? "Schools" : event.league} · {formatEventTime(event.startTimeLocal)}
+                    {getSchoolsLeagueLabel(event.league, event.leagueKey) ?? event.league} · {formatEventTime(event.startTimeLocal)}
                   </Text>
                 </View>
                 <Ionicons name="chevron-forward" size={14} color={Colors.textMuted} />

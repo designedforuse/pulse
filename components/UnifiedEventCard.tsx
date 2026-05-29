@@ -7,7 +7,7 @@ import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
-import { getSportColor, getSportIcon, resolveProviderDisplay, getEffectiveSport, isSchoolsLeague, type SportEvent } from "@/lib/data";
+import { getSportColor, getSportIcon, resolveProviderDisplay, getEffectiveSport, isSchoolsLeague, getSchoolsLeagueLabel, type SportEvent } from "@/lib/data";
 import { displayTeamName, compactTeamName } from "@/utils/teams";
 import { normalizeGameState } from "@/utils/gameState";
 import { useScoreFlash } from "@/hooks/useScoreFlash";
@@ -263,11 +263,11 @@ const LEAGUE_DISPLAY_NAMES: Record<string, string> = {
   "English Premiership": "Premiership",
   "F1": "Formula 1",
   "CAF Champions League": "CAF CL",
-  "SA Schools Rugby": "SA Schools",
 };
 
 function getLeagueLabel(event: SportEvent): string {
-  if (isSchoolsLeague(event.league, event.leagueKey)) return "Schools";
+  const schoolsLabel = getSchoolsLeagueLabel(event.league, event.leagueKey);
+  if (schoolsLabel) return schoolsLabel;
   if (event.isIccT20Wc) return "T20 World Cup";
   if (event.isOlympic) return "Olympics";
   if (event.leagueKey === "svns" && event.eventType === "session") {

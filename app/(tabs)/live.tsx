@@ -30,7 +30,7 @@ import {
   formatStartTime,
   getSportColor,
   getEffectiveSport,
-  isSchoolsLeague,
+  getSchoolsLeagueLabel,
   resolveProviderDisplay,
   type SportEvent,
 } from "@/lib/data";
@@ -115,7 +115,7 @@ function EventRow({ event, isLive, now, isFav, score }: { event: SportEvent; isL
         <View style={styles.cardTeamsSection}>
           <View style={styles.cardHeaderRow}>
             <Text style={[styles.cardLeague, { color: sportColor }]}>
-              {isSchoolsLeague(event.league, event.leagueKey) ? "Schools" : event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league}
+              {getSchoolsLeagueLabel(event.league, event.leagueKey) ?? (event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league)}
             </Text>
             {isFav && <Text style={styles.favStar}>★</Text>}
           </View>

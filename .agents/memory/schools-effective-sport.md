@@ -27,8 +27,14 @@ renders a league chip/color MUST use the effective sport, not raw `event.sport`:
   `disabledSports.has(...)` on `getEffectiveSport(e.sport, e.league, e.leagueKey)`.
 - In-view sport-chip pipelines (watch Up Next, guide More Games) build chips keyed
   by effective sport with a `"college" -> "Schools"` label override.
-- Chip label: show "Schools" when `isSchoolsLeague(...)` (UnifiedEventCard.getLeagueLabel,
-  watch ChaosCard pills, live EventRow, CatchUpCard, event-sheet, narrative row).
+- Chip label: each schools league shows its OWN name via `getSchoolsLeagueLabel(...)`
+  ("NCAA Basketball" / "NCAA Hockey" / "SA Schools Rugby"), NOT the generic "Schools".
+  Used in UnifiedEventCard.getLeagueLabel, watch ChaosCard pills, live EventRow,
+  CatchUpCard, event-sheet, narrative row. (The grey COLOR still comes from the
+  effective sport "college"; only the label is per-league.)
+- Exception: the in-view sport FILTER chips (watch "Up Next", guide "More Games")
+  still collapse the 3 leagues into one chip labelled "Schools" — those are sport
+  group filters, not per-card league chips.
 - Color: `getSportColor(getEffectiveSport(...))`.
 - `index.tsx` month-snapshot uses leagueKey (no league-name field on those types).
 - **Partial gap in `app/mode/[id].tsx`:** it now drops pack events via effective sport so

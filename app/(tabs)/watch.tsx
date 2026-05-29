@@ -36,7 +36,7 @@ import CatchUpCard from "@/components/CatchUpCard";
 import {
   getSportColor,
   getEffectiveSport,
-  isSchoolsLeague,
+  getSchoolsLeagueLabel,
   resolveProviderDisplay,
   type SportEvent,
 } from "@/lib/data";
@@ -466,9 +466,8 @@ function ChaosCard({
             <View style={styles.primaryHeader}>
               <View style={[styles.leaguePill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
                 <Text style={[styles.leaguePillText, { color: sportColor }]} numberOfLines={1}>
-                  {isSchoolsLeague(event.league, event.leagueKey)
-                    ? "Schools"
-                    : isRacing
+                  {getSchoolsLeagueLabel(event.league, event.leagueKey)
+                    ?? (isRacing
                     ? (event.leagueKey === "wrc"
                         ? "WRC"
                         : `F1${gpShort ? ` · ${gpShort}` : ""}`)
@@ -476,7 +475,7 @@ function ChaosCard({
                     ? `${svnsCity} SVNS${svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}`
                     : isDiamondLeague
                     ? "Diamond League"
-                    : event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league === "CAF Champions League" ? "CAF CL" : event.league === "English Premiership" ? "Premiership" : event.tournamentName || event.league}
+                    : event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league === "CAF Champions League" ? "CAF CL" : event.league === "English Premiership" ? "Premiership" : event.tournamentName || event.league)}
                 </Text>
               </View>
               {event.roundLabel === "Final" && (
@@ -694,15 +693,14 @@ function ChaosCard({
         <View style={styles.secondaryHeader}>
           <View style={[styles.leaguePill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
             <Text style={[styles.leaguePillText, { color: sportColor }]} numberOfLines={1}>
-              {isSchoolsLeague(event.league, event.leagueKey)
-                ? "Schools"
-                : isRacing
+              {getSchoolsLeagueLabel(event.league, event.leagueKey)
+                ?? (isRacing
                 ? (event.leagueKey === "wrc" ? "WRC" : "Formula 1")
                 : isSvnsSession && svnsCity
                 ? `${svnsCity} SVNS${svnsSessionLabel ? ` ${svnsSessionLabel}` : ""}`
                 : isDiamondLeague
                 ? "Diamond League"
-                : event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.league === "CAF Champions League" ? "CAF CL" : event.league === "English Premiership" ? "Premiership" : event.tournamentName || event.league}
+                : event.isIccT20Wc ? "T20 WC" : event.isOlympic ? "Olympics" : event.league === "CAF Champions League" ? "CAF CL" : event.league === "English Premiership" ? "Premiership" : event.tournamentName || event.league)}
             </Text>
           </View>
           {event.roundLabel === "Final" && (

@@ -202,6 +202,28 @@ export function isSchoolsLeague(league?: string, leagueKey?: string): boolean {
   return (!!league && SCHOOLS_LEAGUE_NAMES.has(league)) || (!!leagueKey && SCHOOLS_LEAGUE_KEYS.has(leagueKey));
 }
 
+// Display names for the schools leagues. They share the grey "college" color and
+// the Schools master toggle, but each card chip shows its own league name.
+const SCHOOLS_LEAGUE_LABELS: Record<string, string> = {
+  NCAAB: "NCAA Basketball",
+  "NCAA Hockey": "NCAA Hockey",
+  "SA Schools Rugby": "SA Schools Rugby",
+};
+const SCHOOLS_LEAGUE_LABELS_BY_KEY: Record<string, string> = {
+  ncaab: "NCAA Basketball",
+  "ncaa-hockey": "NCAA Hockey",
+  "schools-rugby": "SA Schools Rugby",
+};
+
+// The grey chip label for a schools-league event (its own league name), or null
+// if the event isn't a schools league.
+export function getSchoolsLeagueLabel(league?: string, leagueKey?: string): string | null {
+  if (!isSchoolsLeague(league, leagueKey)) return null;
+  if (league && SCHOOLS_LEAGUE_LABELS[league]) return SCHOOLS_LEAGUE_LABELS[league];
+  if (leagueKey && SCHOOLS_LEAGUE_LABELS_BY_KEY[leagueKey]) return SCHOOLS_LEAGUE_LABELS_BY_KEY[leagueKey];
+  return league ?? "Schools";
+}
+
 // The sport key used for enable/disable filtering. Schools leagues collapse to
 // "college" so the Schools toggle controls them and the sport toggles don't.
 export function getEffectiveSport(sport: string, league?: string, leagueKey?: string): string {

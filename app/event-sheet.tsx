@@ -24,7 +24,7 @@ import {
   formatStartTime,
   getSportColor,
   getEffectiveSport,
-  isSchoolsLeague,
+  getSchoolsLeagueLabel,
   resolveProviderDisplay,
   formatProviderReason,
 } from "@/lib/data";
@@ -150,7 +150,7 @@ export default function EventSheet() {
   const resolved = resolveProviderDisplay(event);
   const launchProvider = resolved.launchProvider;
   const sportColor = getSportColor(getEffectiveSport(event.sport, event.league, event.leagueKey));
-  const leagueLabel = isSchoolsLeague(event.league, event.leagueKey) ? "Schools" : event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league === "CAF Champions League" ? "CAF CL" : event.league === "English Premiership" ? "Premiership" : event.tournamentName || event.league;
+  const leagueLabel = getSchoolsLeagueLabel(event.league, event.leagueKey) ?? (event.isIccT20Wc ? "T20 World Cup" : event.isOlympic ? "Olympics" : event.league === "CAF Champions League" ? "CAF CL" : event.league === "English Premiership" ? "Premiership" : event.tournamentName || event.league);
   const dateLabel = formatDetailDate(event.startTimeLocal);
   const timeLabel = formatTimeOnly(event.startTimeLocal);
   const { gameState, displayClockText, displayStatusText } = normalizeGameState(event, score, new Date());
