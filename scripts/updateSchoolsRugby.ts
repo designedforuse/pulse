@@ -103,11 +103,12 @@ const FIXTURES: SchoolFixture[] = [
   // Sat 25 Jul 2026
   { id: `${ID_PREFIX}boland-wynberg-2026-07-25`, home: "Boland Landbou", away: "Wynberg", startUtc: "2026-07-25T11:00:00.000Z" },
 
+  // Thu 30 Jul 2026 — Paarl Interschools derby (Paarl Boys' vs Paarl Gim).
+  // Date + 16:00 SAST (14:00 UTC) kick-off confirmed by the user. NB: 30 Jul
+  // 2026 is a Thursday despite "Saturday" in the source message — re-confirm.
+  { id: `${ID_PREFIX}paarl-derby-2026`, home: "Paarl Boys' High", away: "Paarl Gimnasium", startUtc: "2026-07-30T14:00:00.000Z", venue: "Faure Street Stadium, Paarl" },
+
   // Sat 1 Aug 2026
-  // Paarl Interschools derby — NOT in the supplied list. Always an early-August
-  // Saturday (2 Aug 2025, 3 Aug 2024 = first Saturday of Aug). Penciled in for
-  // Sat 1 Aug 2026, 15:00 SAST. Re-verify / confirm with the user.
-  { id: `${ID_PREFIX}paarl-derby-2026`, home: "Paarl Boys' High", away: "Paarl Gimnasium", startUtc: "2026-08-01T13:00:00.000Z", venue: "Faure Street Stadium, Paarl" },
   { id: `${ID_PREFIX}paulroos-boland-2026-08-01`, home: "Paul Roos", away: "Boland Landbou", startUtc: "2026-08-01T11:00:00.000Z" },
   { id: `${ID_PREFIX}wynberg-bishops-2026-08-01`, home: "Wynberg", away: "Bishops", startUtc: "2026-08-01T11:00:00.000Z" },
 
