@@ -87,7 +87,7 @@ const WRC_ROUNDS: Record<string, { code: string; country: string }> = {
   "Rally Saudi Arabia": { code: "ksa", country: "Saudi Arabia" },
 };
 
-function getWrcRoundInfo(name: string | null | undefined): { flag: string | null; country: string } | null {
+export function getWrcRoundInfo(name: string | null | undefined): { flag: string | null; country: string } | null {
   if (!name) return null;
   const round = WRC_ROUNDS[name];
   if (!round) return null;

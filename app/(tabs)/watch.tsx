@@ -30,8 +30,8 @@ import { displayTeamName } from "@/utils/teams";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
-import UnifiedEventCard, { formatCricketLiveDetail, TennisScoreboard, getGrandPrixFlag, getDriverFlag, WrcStageWinners } from "@/components/UnifiedEventCard";
-import { useWrcStages, getWrcRoundBaseId, getStagesForLeg } from "@/lib/wrc-stages-context";
+import UnifiedEventCard, { formatCricketLiveDetail, TennisScoreboard, getGrandPrixFlag, getDriverFlag, getWrcRoundInfo } from "@/components/UnifiedEventCard";
+import { useWrcStages, getWrcRoundBaseId, getStagesForLeg, wrcFlagUrl } from "@/lib/wrc-stages-context";
 import CatchUpCard from "@/components/CatchUpCard";
 import {
   getSportColor,
@@ -383,7 +383,12 @@ function ChaosCard({
     ? getStagesForLeg(wrcStagesResult, event.dayNumber)
     : [];
   const wrcLegStages = wrcLegAllStages.filter((s) => s.winner != null);
-  const wrcLegTotal = wrcLegAllStages.filter((s) => !s.cancelled).length;
+  const wrcLastStage = wrcLegStages.length > 0 ? wrcLegStages[wrcLegStages.length - 1] : null;
+  const wrcRallyName = isWrc ? (event.tournamentName || event.homeTeam || "") : "";
+  const wrcRoundFlag = isWrc ? (getWrcRoundInfo(wrcRallyName)?.flag ?? null) : null;
+  const wrcTitle = isWrc
+    ? wrcRallyName + (event.dayNumber != null ? `, Day ${event.dayNumber}` : "")
+    : "";
 
   const leaderName = score?.racingLeader;
   const leaderFlag = getDriverFlag(score?.racingLeaderCountry);
@@ -489,7 +494,25 @@ function ChaosCard({
 
             {isRacing ? (
               <View style={styles.primaryTeams}>
-                {isLiveState && racingLeaderLine ? (
+                {isWrc ? (
+                  <>
+                    <View style={[styles.racingLeaderRow, { flexDirection: "row", alignItems: "center", gap: 8 }]}>
+                      <FlagImg uri={wrcRoundFlag} />
+                      <Text style={[styles.racingLeaderText, { flex: 1 }]} numberOfLines={1}>
+                        {wrcTitle}
+                      </Text>
+                    </View>
+                    {wrcLastStage?.winner && (
+                      <View style={styles.wrcLastStageRow}>
+                        <Text style={[styles.wrcLastStageBadge, { color: sportColor }]}>SS{wrcLastStage.stageNumber}</Text>
+                        {wrcFlagUrl(wrcLastStage.winner.flag) && (
+                          <Image source={{ uri: wrcFlagUrl(wrcLastStage.winner.flag)! }} style={styles.wrcLastStageFlag} resizeMode="contain" />
+                        )}
+                        <Text style={styles.wrcLastStageWinner} numberOfLines={1}>{wrcLastStage.winner.name}</Text>
+                      </View>
+                    )}
+                  </>
+                ) : isLiveState && racingLeaderLine ? (
                   <View style={[styles.racingLeaderRow, { flexDirection: "row", alignItems: "center", gap: 6 }]}>
                     <FlagImg uri={leaderFlag} />
                     <Text style={styles.racingLeaderText}>{racingLeaderLine}</Text>
@@ -523,7 +546,6 @@ function ChaosCard({
                     </Text>
                   </View>
                 ) : null}
-                {isWrc && <WrcStageWinners stages={wrcLegStages} totalStages={wrcLegTotal} />}
               </View>
             ) : matchupText ? (
               <View style={isSvnsSession ? styles.svnsPrimaryContent : undefined}>
@@ -2929,6 +2951,27 @@ const styles = StyleSheet.create({
   racingLeaderText: {
     fontSize: 18,
     fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+  },
+  wrcLastStageRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    marginTop: 10,
+  },
+  wrcLastStageBadge: {
+    fontSize: 15,
+    fontFamily: "Inter_700Bold",
+  },
+  wrcLastStageFlag: {
+    width: 22,
+    height: 15,
+    borderRadius: 2,
+  },
+  wrcLastStageWinner: {
+    flex: 1,
+    fontSize: 16,
+    fontFamily: "Inter_600SemiBold",
     color: Colors.textPrimary,
   },
   racingLeaderTextSm: {
