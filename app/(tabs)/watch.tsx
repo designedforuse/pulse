@@ -721,7 +721,25 @@ function ChaosCard({
 
         {isRacing ? (
           <View style={styles.secondaryTeams}>
-            {isLiveState && racingLeaderLine ? (
+            {isWrc ? (
+              <>
+                <View style={{ flexDirection: "row", alignItems: "center", gap: 6, marginTop: 2 }}>
+                  <FlagImg uri={wrcRoundFlag} sm />
+                  <Text style={[styles.racingLeaderTextSm, { marginTop: 0, flex: 1 }]} numberOfLines={1}>
+                    {wrcTitle}
+                  </Text>
+                </View>
+                {wrcLastStage?.winner && (
+                  <View style={styles.wrcLastStageRowSm}>
+                    <Text style={[styles.wrcLastStageBadgeSm, { color: sportColor }]}>SS{wrcLastStage.stageNumber}</Text>
+                    {wrcFlagUrl(wrcLastStage.winner.flag) && (
+                      <Image source={{ uri: wrcFlagUrl(wrcLastStage.winner.flag)! }} style={styles.wrcLastStageFlagSm} resizeMode="contain" />
+                    )}
+                    <Text style={styles.wrcLastStageWinnerSm} numberOfLines={1}>{wrcLastStage.winner.name}</Text>
+                  </View>
+                )}
+              </>
+            ) : isLiveState && racingLeaderLine ? (
               <>
                 <View style={{ flexDirection: "row", alignItems: "center", gap: 5, marginTop: 2 }}>
                   <FlagImg uri={leaderFlag} sm />
@@ -2976,6 +2994,27 @@ const styles = StyleSheet.create({
   wrcLastStageWinner: {
     flex: 1,
     fontSize: 16,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+  },
+  wrcLastStageRowSm: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    marginTop: 6,
+  },
+  wrcLastStageBadgeSm: {
+    fontSize: 12,
+    fontFamily: "Inter_700Bold",
+  },
+  wrcLastStageFlagSm: {
+    width: 18,
+    height: 12,
+    borderRadius: 2,
+  },
+  wrcLastStageWinnerSm: {
+    flex: 1,
+    fontSize: 13,
     fontFamily: "Inter_600SemiBold",
     color: Colors.textPrimary,
   },
