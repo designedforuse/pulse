@@ -197,12 +197,32 @@ function ChaosCardSvnsRow({ match, small }: { match: SvnsMatch; small?: boolean 
 
   return (
     <View style={chaosSvnsStyles.row}>
+      {flag1 ? <Image source={{ uri: flag1 }} style={chaosSvnsStyles.flag} resizeMode="contain" /> : null}
       <Text style={[chaosSvnsStyles.teams, small && { fontSize: 14 }]} numberOfLines={1}>
-        {flag1} {match.team1Abbr} {hasScore ? `${match.team1Score}–${match.team2Score}` : "vs"} {match.team2Abbr} {flag2}
+        {match.team1Abbr} {hasScore ? `${match.team1Score}–${match.team2Score}` : "vs"} {match.team2Abbr}
       </Text>
+      {flag2 ? <Image source={{ uri: flag2 }} style={chaosSvnsStyles.flag} resizeMode="contain" /> : null}
     </View>
   );
 }
+
+function FlagImg({ uri, sm }: { uri: string | null; sm?: boolean }) {
+  if (!uri) return null;
+  return <Image source={{ uri }} style={sm ? chaosFlagStyles.inlineSm : chaosFlagStyles.inline} resizeMode="contain" />;
+}
+
+const chaosFlagStyles = StyleSheet.create({
+  inline: {
+    width: 26,
+    height: 17,
+    borderRadius: 2,
+  },
+  inlineSm: {
+    width: 20,
+    height: 13,
+    borderRadius: 2,
+  },
+});
 
 const chaosSvnsStyles = StyleSheet.create({
   row: {
@@ -229,6 +249,11 @@ const chaosSvnsStyles = StyleSheet.create({
     fontFamily: "Inter_600SemiBold",
     color: Colors.textPrimary,
     flex: 1,
+  },
+  flag: {
+    width: 22,
+    height: 15,
+    borderRadius: 2,
   },
   phase: {
     fontSize: 9,
@@ -357,7 +382,7 @@ function ChaosCard({
   const leaderTeam = score?.racingLeaderTeam || (leaderName ? getConstructorForDriver(leaderName) : undefined);
 
   const racingLeaderLine = leaderName
-    ? `${leaderPos ? `P${leaderPos} ` : ""}${leaderFlag ? `${leaderFlag} ` : ""}${leaderName}`
+    ? `${leaderPos ? `P${leaderPos} ` : ""}${leaderName}`
     : null;
 
   const racingLapLine = lapNum && totalLaps
@@ -373,7 +398,7 @@ function ChaosCard({
       : null;
 
   const racingWinnerLine = isFinalState && leaderName
-    ? `Winner: ${leaderFlag ? `${leaderFlag} ` : ""}${leaderName}`
+    ? `Winner: ${leaderName}`
     : null;
 
   const isQualifying = racingSessionType === "qualifying" || racingSessionType === "sprint qualifying";
@@ -453,7 +478,8 @@ function ChaosCard({
             {isRacing ? (
               <View style={styles.primaryTeams}>
                 {isLiveState && racingLeaderLine ? (
-                  <View style={styles.racingLeaderRow}>
+                  <View style={[styles.racingLeaderRow, { flexDirection: "row", alignItems: "center", gap: 6 }]}>
+                    <FlagImg uri={leaderFlag} />
                     <Text style={styles.racingLeaderText}>{racingLeaderLine}</Text>
                     {leaderTeam ? (
                       <View style={styles.racingConstructorRow}>
@@ -466,7 +492,10 @@ function ChaosCard({
                   <Text style={styles.racingQualifyingPhase}>{qualifyingPhaseText}</Text>
                 ) : isFinalState && racingWinnerLine ? (
                   <View style={styles.racingLeaderRow}>
-                    <Text style={styles.racingLeaderText}>{racingWinnerLine}</Text>
+                    <View style={{ flexDirection: "row", alignItems: "center", gap: 6 }}>
+                      <FlagImg uri={leaderFlag} />
+                      <Text style={styles.racingLeaderText}>{racingWinnerLine}</Text>
+                    </View>
                     {leaderTeam ? (
                       <View style={styles.racingConstructorRow}>
                         <View style={[styles.racingConstructorDot, { backgroundColor: CONSTRUCTOR_COLORS[leaderTeam] || sportColor }]} />
@@ -475,9 +504,9 @@ function ChaosCard({
                     ) : null}
                   </View>
                 ) : (event.sessionTitle || event.tournamentName || event.homeTeam) ? (
-                  <View style={styles.racingLeaderRow}>
-                    <Text style={styles.racingLeaderText} numberOfLines={2}>
-                      {gpFlag ? `${gpFlag} ` : ""}
+                  <View style={[styles.racingLeaderRow, { flexDirection: "row", alignItems: "center", gap: 6 }]}>
+                    <FlagImg uri={gpFlag} />
+                    <Text style={[styles.racingLeaderText, { flex: 1 }]} numberOfLines={2}>
                       {event.sessionTitle || event.tournamentName || event.homeTeam}
                     </Text>
                   </View>
@@ -491,8 +520,9 @@ function ChaosCard({
                 )}
                 {isGolf && golfLeaderName && (
                   <View style={styles.golfLeaderRow}>
+                    <FlagImg uri={golfLeaderFlag} />
                     <Text style={styles.golfLeaderText}>
-                      {golfLeaderFlag ? `${golfLeaderFlag} ` : ""}{golfLeaderName}
+                      {golfLeaderName}
                     </Text>
                     <View style={styles.golfLeaderScoreBlock}>
                       {golfLeaderScore ? (
@@ -503,8 +533,9 @@ function ChaosCard({
                 )}
                 {isCycling && cyclingLeaderName && (
                   <View style={styles.golfLeaderRow}>
+                    <FlagImg uri={cyclingLeaderFlag} />
                     <Text style={styles.golfLeaderText}>
-                      {cyclingLeaderFlag ? `${cyclingLeaderFlag} ` : ""}{cyclingLeaderName}
+                      {cyclingLeaderName}
                     </Text>
                     <View style={styles.golfLeaderScoreBlock}>
                       {cyclingLeaderGap ? (
@@ -653,7 +684,10 @@ function ChaosCard({
           <View style={styles.secondaryTeams}>
             {isLiveState && racingLeaderLine ? (
               <>
-                <Text style={styles.racingLeaderTextSm} numberOfLines={1}>{racingLeaderLine}</Text>
+                <View style={{ flexDirection: "row", alignItems: "center", gap: 5, marginTop: 2 }}>
+                  <FlagImg uri={leaderFlag} sm />
+                  <Text style={[styles.racingLeaderTextSm, { marginTop: 0, flexShrink: 1 }]} numberOfLines={1}>{racingLeaderLine}</Text>
+                </View>
                 {leaderTeam ? (
                   <View style={styles.racingConstructorRowSm}>
                     <View style={[styles.racingConstructorDotSm, { backgroundColor: CONSTRUCTOR_COLORS[leaderTeam] || sportColor }]} />
@@ -665,7 +699,10 @@ function ChaosCard({
               <Text style={styles.racingQualifyingPhaseSm}>{qualifyingPhaseText}</Text>
             ) : isFinalState && racingWinnerLine ? (
               <>
-                <Text style={styles.racingLeaderTextSm} numberOfLines={1}>{racingWinnerLine}</Text>
+                <View style={{ flexDirection: "row", alignItems: "center", gap: 5, marginTop: 2 }}>
+                  <FlagImg uri={leaderFlag} sm />
+                  <Text style={[styles.racingLeaderTextSm, { marginTop: 0, flexShrink: 1 }]} numberOfLines={1}>{racingWinnerLine}</Text>
+                </View>
                 {leaderTeam ? (
                   <View style={styles.racingConstructorRowSm}>
                     <View style={[styles.racingConstructorDotSm, { backgroundColor: CONSTRUCTOR_COLORS[leaderTeam] || sportColor }]} />
@@ -675,7 +712,7 @@ function ChaosCard({
               </>
             ) : !isLiveState && !isFinalState ? (
               <View style={styles.racingUpcomingRow}>
-                {gpFlag ? <Text style={styles.racingUpcomingFlag}>{gpFlag}</Text> : null}
+                <FlagImg uri={gpFlag} sm />
                 {(event.sessionTitle || event.awayTeam) ? (
                   <Text style={styles.racingUpcomingSession} numberOfLines={1}>
                     {event.sessionTitle || event.awayTeam}
@@ -684,7 +721,7 @@ function ChaosCard({
               </View>
             ) : (
               <View style={styles.racingUpcomingRow}>
-                {gpFlag ? <Text style={styles.racingUpcomingFlag}>{gpFlag}</Text> : null}
+                <FlagImg uri={gpFlag} sm />
                 {(event.sessionTitle || event.awayTeam || gpShort) ? (
                   <Text style={styles.racingUpcomingSession} numberOfLines={1}>
                     {event.sessionTitle || event.awayTeam || gpShort}
@@ -701,8 +738,9 @@ function ChaosCard({
             )}
             {isGolf && golfLeaderName && (
               <View style={styles.golfLeaderRowSm}>
+                <FlagImg uri={golfLeaderFlag} sm />
                 <Text style={styles.golfLeaderTextSm} numberOfLines={1}>
-                  {golfLeaderFlag ? `${golfLeaderFlag} ` : ""}{golfLeaderName}
+                  {golfLeaderName}
                 </Text>
                 <View style={styles.golfLeaderScoreBlockSm}>
                   {golfLeaderScore ? (
@@ -713,8 +751,9 @@ function ChaosCard({
             )}
             {isCycling && cyclingLeaderName && (
               <View style={styles.golfLeaderRowSm}>
+                <FlagImg uri={cyclingLeaderFlag} sm />
                 <Text style={styles.golfLeaderTextSm} numberOfLines={1}>
-                  {cyclingLeaderFlag ? `${cyclingLeaderFlag} ` : ""}{cyclingLeaderName}
+                  {cyclingLeaderName}
                 </Text>
                 <View style={styles.golfLeaderScoreBlockSm}>
                   {cyclingLeaderGap ? (
@@ -2934,9 +2973,6 @@ const styles = StyleSheet.create({
     alignItems: "center" as const,
     gap: 6,
     marginTop: 2,
-  },
-  racingUpcomingFlag: {
-    fontSize: 16,
   },
   racingUpcomingSession: {
     fontSize: 13,

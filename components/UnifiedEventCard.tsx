@@ -27,159 +27,167 @@ const GIRO_DITALIA_LOGO = require("@/assets/images/giro-ditalia-logo.png");
 const isGiroDItalia = (name: string | null | undefined) =>
   !!name && /giro\s*d['’]?\s*italia/i.test(name);
 
-const GP_FLAGS: Record<string, string> = {
-  "Australian": "🇦🇺",
-  "Bahrain": "🇧🇭",
-  "Saudi Arabian": "🇸🇦",
-  "Japanese": "🇯🇵",
-  "Chinese": "🇨🇳",
-  "Miami": "🇺🇸",
-  "Emilia Romagna": "🇮🇹",
-  "Monaco": "🇲🇨",
-  "Spanish": "🇪🇸",
-  "Canadian": "🇨🇦",
-  "Austrian": "🇦🇹",
-  "British": "🇬🇧",
-  "Belgian": "🇧🇪",
-  "Hungarian": "🇭🇺",
-  "Dutch": "🇳🇱",
-  "Italian": "🇮🇹",
-  "Azerbaijan": "🇦🇿",
-  "Singapore": "🇸🇬",
-  "United States": "🇺🇸",
-  "Mexico City": "🇲🇽",
-  "Mexican": "🇲🇽",
-  "São Paulo": "🇧🇷",
-  "Brazilian": "🇧🇷",
-  "Las Vegas": "🇺🇸",
-  "Qatar": "🇶🇦",
-  "Abu Dhabi": "🇦🇪",
+// ESPN country flag CDN uses FIFA/IOC-style 3-letter codes.
+export function countryFlagUrl(code: string | null | undefined): string | null {
+  if (!code) return null;
+  return `https://a.espncdn.com/i/teamlogos/countries/500/${code.toLowerCase()}.png`;
+}
+
+const GP_CODES: Record<string, string> = {
+  "Australian": "aus",
+  "Bahrain": "brn",
+  "Saudi Arabian": "ksa",
+  "Japanese": "jpn",
+  "Chinese": "chn",
+  "Miami": "usa",
+  "Emilia Romagna": "ita",
+  "Monaco": "mon",
+  "Spanish": "esp",
+  "Canadian": "can",
+  "Austrian": "aut",
+  "British": "gbr",
+  "Belgian": "bel",
+  "Hungarian": "hun",
+  "Dutch": "ned",
+  "Italian": "ita",
+  "Azerbaijan": "aze",
+  "Singapore": "sin",
+  "United States": "usa",
+  "Mexico City": "mex",
+  "Mexican": "mex",
+  "São Paulo": "bra",
+  "Brazilian": "bra",
+  "Las Vegas": "usa",
+  "Qatar": "qat",
+  "Abu Dhabi": "uae",
 };
 
 export function getGrandPrixFlag(gpName: string): string | null {
-  for (const [key, flag] of Object.entries(GP_FLAGS)) {
-    if (gpName.includes(key)) return flag;
+  for (const [key, code] of Object.entries(GP_CODES)) {
+    if (gpName.includes(key)) return countryFlagUrl(code);
   }
   return null;
 }
 
-const WRC_ROUNDS: Record<string, { flag: string; country: string }> = {
-  "Rallye Monte-Carlo": { flag: "🇲🇨", country: "Monaco" },
-  "Rally Sweden": { flag: "🇸🇪", country: "Sweden" },
-  "Safari Rally Kenya": { flag: "🇰🇪", country: "Kenya" },
-  "Croatia Rally": { flag: "🇭🇷", country: "Croatia" },
-  "Rally Islas Canarias": { flag: "🇪🇸", country: "Canary Islands" },
-  "Rally de Portugal": { flag: "🇵🇹", country: "Portugal" },
-  "Rally Japan": { flag: "🇯🇵", country: "Japan" },
-  "Acropolis Rally Greece": { flag: "🇬🇷", country: "Greece" },
-  "Rally Estonia": { flag: "🇪🇪", country: "Estonia" },
-  "Rally Finland": { flag: "🇫🇮", country: "Finland" },
-  "Rally del Paraguay": { flag: "🇵🇾", country: "Paraguay" },
-  "Rally Chile": { flag: "🇨🇱", country: "Chile" },
-  "Rally Italia Sardegna": { flag: "🇮🇹", country: "Italy" },
-  "Rally Saudi Arabia": { flag: "🇸🇦", country: "Saudi Arabia" },
+const WRC_ROUNDS: Record<string, { code: string; country: string }> = {
+  "Rallye Monte-Carlo": { code: "mon", country: "Monaco" },
+  "Rally Sweden": { code: "swe", country: "Sweden" },
+  "Safari Rally Kenya": { code: "ken", country: "Kenya" },
+  "Croatia Rally": { code: "cro", country: "Croatia" },
+  "Rally Islas Canarias": { code: "esp", country: "Canary Islands" },
+  "Rally de Portugal": { code: "por", country: "Portugal" },
+  "Rally Japan": { code: "jpn", country: "Japan" },
+  "Acropolis Rally Greece": { code: "gre", country: "Greece" },
+  "Rally Estonia": { code: "est", country: "Estonia" },
+  "Rally Finland": { code: "fin", country: "Finland" },
+  "Rally del Paraguay": { code: "par", country: "Paraguay" },
+  "Rally Chile": { code: "chi", country: "Chile" },
+  "Rally Italia Sardegna": { code: "ita", country: "Italy" },
+  "Rally Saudi Arabia": { code: "ksa", country: "Saudi Arabia" },
 };
 
-function getWrcRoundInfo(name: string | null | undefined): { flag: string; country: string } | null {
+function getWrcRoundInfo(name: string | null | undefined): { flag: string | null; country: string } | null {
   if (!name) return null;
-  return WRC_ROUNDS[name] ?? null;
+  const round = WRC_ROUNDS[name];
+  if (!round) return null;
+  return { flag: countryFlagUrl(round.code), country: round.country };
 }
 
-const COUNTRY_FLAGS: Record<string, string> = {
-  "Afghanistan": "🇦🇫", "Albania": "🇦🇱", "Algeria": "🇩🇿", "Angola": "🇦🇴",
-  "Argentina": "🇦🇷", "Armenia": "🇦🇲", "Australia": "🇦🇺", "Austria": "🇦🇹",
-  "Azerbaijan": "🇦🇿", "Bahrain": "🇧🇭", "Bangladesh": "🇧🇩", "Belgium": "🇧🇪",
-  "Bolivia": "🇧🇴", "Bosnia and Herzegovina": "🇧🇦", "Bosnia & Herzegovina": "🇧🇦",
-  "Brazil": "🇧🇷", "Bulgaria": "🇧🇬", "Burkina Faso": "🇧🇫", "Cameroon": "🇨🇲",
-  "Canada": "🇨🇦", "Chile": "🇨🇱", "China": "🇨🇳", "Colombia": "🇨🇴",
-  "Costa Rica": "🇨🇷", "Croatia": "🇭🇷", "Cuba": "🇨🇺", "Czech Republic": "🇨🇿",
-  "Czechia": "🇨🇿", "Denmark": "🇩🇰", "Ecuador": "🇪🇨", "Egypt": "🇪🇬",
-  "El Salvador": "🇸🇻", "England": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "Estonia": "🇪🇪", "Ethiopia": "🇪🇹",
-  "Finland": "🇫🇮", "France": "🇫🇷", "Germany": "🇩🇪", "Ghana": "🇬🇭",
-  "Greece": "🇬🇷", "Guatemala": "🇬🇹", "Honduras": "🇭🇳", "Hungary": "🇭🇺",
-  "Iceland": "🇮🇸", "India": "🇮🇳", "Indonesia": "🇮🇩", "Iran": "🇮🇷",
-  "Iraq": "🇮🇶", "Ireland": "🇮🇪", "Republic of Ireland": "🇮🇪",
-  "Israel": "🇮🇱", "Italy": "🇮🇹", "Ivory Coast": "🇨🇮", "Jamaica": "🇯🇲",
-  "Japan": "🇯🇵", "Jordan": "🇯🇴", "Kenya": "🇰🇪", "South Korea": "🇰🇷",
-  "Korea Republic": "🇰🇷", "Kosovo": "🇽🇰", "Kuwait": "🇰🇼", "Latvia": "🇱🇻",
-  "Lebanon": "🇱🇧", "Libya": "🇱🇾", "Lithuania": "🇱🇹", "Luxembourg": "🇱🇺",
-  "Malaysia": "🇲🇾", "Mali": "🇲🇱", "Malta": "🇲🇹", "Mexico": "🇲🇽",
-  "Moldova": "🇲🇩", "Montenegro": "🇲🇪", "Morocco": "🇲🇦", "Mozambique": "🇲🇿",
-  "Netherlands": "🇳🇱", "New Zealand": "🇳🇿", "Nicaragua": "🇳🇮",
-  "Nigeria": "🇳🇬", "North Korea": "🇰🇵", "North Macedonia": "🇲🇰",
-  "Norway": "🇳🇴", "Oman": "🇴🇲", "Pakistan": "🇵🇰", "Panama": "🇵🇦",
-  "Paraguay": "🇵🇾", "Peru": "🇵🇪", "Philippines": "🇵🇭", "Poland": "🇵🇱",
-  "Portugal": "🇵🇹", "Qatar": "🇶🇦", "Romania": "🇷🇴", "Russia": "🇷🇺",
-  "Saudi Arabia": "🇸🇦", "Scotland": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "Senegal": "🇸🇳",
-  "Serbia": "🇷🇸", "Slovakia": "🇸🇰", "Slovenia": "🇸🇮", "South Africa": "🇿🇦",
-  "Spain": "🇪🇸", "Sri Lanka": "🇱🇰", "Sweden": "🇸🇪", "Switzerland": "🇨🇭",
-  "Syria": "🇸🇾", "Tanzania": "🇹🇿", "Thailand": "🇹🇭", "Trinidad and Tobago": "🇹🇹",
-  "Tunisia": "🇹🇳", "Turkey": "🇹🇷", "Türkiye": "🇹🇷", "Uganda": "🇺🇬",
-  "Ukraine": "🇺🇦", "United Arab Emirates": "🇦🇪", "UAE": "🇦🇪",
-  "United States": "🇺🇸", "USA": "🇺🇸", "Uruguay": "🇺🇾", "Venezuela": "🇻🇪",
-  "Vietnam": "🇻🇳", "Wales": "🏴󠁧󠁢󠁷󠁬󠁳󠁿", "Zambia": "🇿🇲", "Zimbabwe": "🇿🇼",
-  "Jamaica": "🇯🇲", "Haiti": "🇭🇹", "Curaçao": "🇨🇼", "Suriname": "🇸🇷",
+const COUNTRY_CODES: Record<string, string> = {
+  "Afghanistan": "afg", "Albania": "alb", "Algeria": "alg", "Angola": "ang",
+  "Argentina": "arg", "Armenia": "arm", "Australia": "aus", "Austria": "aut",
+  "Azerbaijan": "aze", "Bahrain": "brn", "Bangladesh": "ban", "Belgium": "bel",
+  "Bolivia": "bol", "Bosnia and Herzegovina": "bih", "Bosnia & Herzegovina": "bih",
+  "Brazil": "bra", "Bulgaria": "bul", "Burkina Faso": "bfa", "Cameroon": "cmr",
+  "Canada": "can", "Chile": "chi", "China": "chn", "Colombia": "col",
+  "Costa Rica": "crc", "Croatia": "cro", "Cuba": "cub", "Czech Republic": "cze",
+  "Czechia": "cze", "Denmark": "den", "Ecuador": "ecu", "Egypt": "egy",
+  "El Salvador": "slv", "England": "eng", "Estonia": "est", "Ethiopia": "eth",
+  "Finland": "fin", "France": "fra", "Germany": "ger", "Ghana": "gha",
+  "Greece": "gre", "Guatemala": "gua", "Honduras": "hon", "Hungary": "hun",
+  "Iceland": "isl", "India": "ind", "Indonesia": "idn", "Iran": "irn",
+  "Iraq": "irq", "Ireland": "irl", "Republic of Ireland": "irl",
+  "Israel": "isr", "Italy": "ita", "Ivory Coast": "civ", "Jamaica": "jam",
+  "Japan": "jpn", "Jordan": "jor", "Kenya": "ken", "South Korea": "kor",
+  "Korea Republic": "kor", "Kosovo": "kos", "Kuwait": "kuw", "Latvia": "lat",
+  "Lebanon": "lbn", "Libya": "lby", "Lithuania": "ltu", "Luxembourg": "lux",
+  "Malaysia": "mas", "Mali": "mli", "Malta": "mlt", "Mexico": "mex",
+  "Moldova": "mda", "Montenegro": "mne", "Morocco": "mar", "Mozambique": "moz",
+  "Netherlands": "ned", "New Zealand": "nzl", "Nicaragua": "nca",
+  "Nigeria": "nga", "North Korea": "prk", "North Macedonia": "mkd",
+  "Norway": "nor", "Oman": "oma", "Pakistan": "pak", "Panama": "pan",
+  "Paraguay": "par", "Peru": "per", "Philippines": "phi", "Poland": "pol",
+  "Portugal": "por", "Qatar": "qat", "Romania": "rou", "Russia": "rus",
+  "Saudi Arabia": "ksa", "Scotland": "sco", "Senegal": "sen",
+  "Serbia": "srb", "Slovakia": "svk", "Slovenia": "svn", "South Africa": "rsa",
+  "Spain": "esp", "Sri Lanka": "sri", "Sweden": "swe", "Switzerland": "sui",
+  "Syria": "syr", "Tanzania": "tan", "Thailand": "tha", "Trinidad and Tobago": "tri",
+  "Tunisia": "tun", "Turkey": "tur", "Türkiye": "tur", "Uganda": "uga",
+  "Ukraine": "ukr", "United Arab Emirates": "uae", "UAE": "uae",
+  "United States": "usa", "USA": "usa", "Uruguay": "uru", "Venezuela": "ven",
+  "Vietnam": "vie", "Wales": "wal", "Zambia": "zam", "Zimbabwe": "zim",
+  "Haiti": "hai", "Curaçao": "cuw", "Suriname": "sur",
 };
 
-export function getCountryFlag(country: string): string | null {
-  return COUNTRY_FLAGS[country] ?? null;
+export function getCountryFlagUrl(country: string): string | null {
+  return countryFlagUrl(COUNTRY_CODES[country]);
 }
 
-const ATHLETICS_CITY_FLAGS: Record<string, string> = {
+const ATHLETICS_CITY_CODES: Record<string, string> = {
   // Diamond League meets
-  "doha": "🇶🇦",
-  "shanghai": "🇨🇳",
-  "xiamen": "🇨🇳",
-  "rabat": "🇲🇦",
-  "rome": "🇮🇹",
-  "stockholm": "🇸🇪",
-  "oslo": "🇳🇴",
-  "paris": "🇫🇷",
-  "eugene": "🇺🇸",
-  "monaco": "🇲🇨",
-  "london": "🇬🇧",
-  "lausanne": "🇨🇭",
-  "silesia": "🇵🇱",
-  "chorzow": "🇵🇱",
-  "zurich": "🇨🇭",
-  "brussels": "🇧🇪",
+  "doha": "qat",
+  "shanghai": "chn",
+  "xiamen": "chn",
+  "rabat": "mar",
+  "rome": "ita",
+  "stockholm": "swe",
+  "oslo": "nor",
+  "paris": "fra",
+  "eugene": "usa",
+  "monaco": "mon",
+  "london": "eng",
+  "lausanne": "sui",
+  "silesia": "pol",
+  "chorzow": "pol",
+  "zurich": "sui",
+  "brussels": "bel",
   // Marathon Majors
-  "tokyo": "🇯🇵",
-  "boston": "🇺🇸",
-  "sydney": "🇦🇺",
-  "berlin": "🇩🇪",
-  "chicago": "🇺🇸",
-  "new york": "🇺🇸",
-  "new york city": "🇺🇸",
-  "cape town": "🇿🇦",
-  "comrades": "🇿🇦",
-  "pietermaritzburg": "🇿🇦",
-  "durban": "🇿🇦",
+  "tokyo": "jpn",
+  "boston": "usa",
+  "sydney": "aus",
+  "berlin": "ger",
+  "chicago": "usa",
+  "new york": "usa",
+  "new york city": "usa",
+  "cape town": "rsa",
+  "comrades": "rsa",
+  "pietermaritzburg": "rsa",
+  "durban": "rsa",
   // UTMB World Series stops
-  "val d'aran": "🇪🇸",
-  "val daran": "🇪🇸",
-  "verbier": "🇨🇭",
-  "st-bernard": "🇨🇭",
-  "monte rosa": "🇮🇹",
-  "walser": "🇮🇹",
-  "mont-blanc": "🇫🇷",
-  "chamonix": "🇫🇷",
-  "wildstrubel": "🇨🇭",
-  "nice": "🇫🇷",
-  "côte d'azur": "🇫🇷",
-  "cote d'azur": "🇫🇷",
-  "kodiak": "🇺🇸",
-  "big bear": "🇺🇸",
-  "chiang mai": "🇹🇭",
-  "ultra-trail australia": "🇦🇺",
-  "blue mountains": "🇦🇺",
+  "val d'aran": "esp",
+  "val daran": "esp",
+  "verbier": "sui",
+  "st-bernard": "sui",
+  "monte rosa": "ita",
+  "walser": "ita",
+  "mont-blanc": "fra",
+  "chamonix": "fra",
+  "wildstrubel": "sui",
+  "nice": "fra",
+  "côte d'azur": "fra",
+  "cote d'azur": "fra",
+  "kodiak": "usa",
+  "big bear": "usa",
+  "chiang mai": "tha",
+  "ultra-trail australia": "aus",
+  "blue mountains": "aus",
 };
 
-function getAthleticsCityFlag(name: string | null | undefined): string | null {
+function getAthleticsCityFlagUrl(name: string | null | undefined): string | null {
   if (!name) return null;
   const lower = name.toLowerCase();
-  for (const [city, flag] of Object.entries(ATHLETICS_CITY_FLAGS)) {
-    if (lower.includes(city)) return flag;
+  for (const [city, code] of Object.entries(ATHLETICS_CITY_CODES)) {
+    if (lower.includes(city)) return countryFlagUrl(code);
   }
   return null;
 }
@@ -220,21 +228,21 @@ function getGrandPrixLocation(gpName: string): string {
   return GP_LOCATIONS[raw] || raw || gpName;
 }
 
-const DRIVER_COUNTRY_FLAGS: Record<string, string> = {
-  "Monaco": "🇲🇨", "Netherlands": "🇳🇱", "United Kingdom": "🇬🇧", "Great Britain": "🇬🇧", "Britain": "🇬🇧",
-  "Spain": "🇪🇸", "Mexico": "🇲🇽", "Australia": "🇦🇺", "France": "🇫🇷",
-  "Finland": "🇫🇮", "Canada": "🇨🇦", "Germany": "🇩🇪", "Japan": "🇯🇵",
-  "Thailand": "🇹🇭", "Denmark": "🇩🇰", "China": "🇨🇳", "United States": "🇺🇸",
-  "Italy": "🇮🇹", "New Zealand": "🇳🇿", "Brazil": "🇧🇷", "Argentina": "🇦🇷",
-  "Belgium": "🇧🇪", "Switzerland": "🇨🇭", "Austria": "🇦🇹", "Poland": "🇵🇱",
-  "Sweden": "🇸🇪", "Norway": "🇳🇴", "Ireland": "🇮🇪", "Russia": "🇷🇺",
-  "South Africa": "🇿🇦", "India": "🇮🇳", "Colombia": "🇨🇴", "Venezuela": "🇻🇪",
-  "Indonesia": "🇮🇩", "Israel": "🇮🇱",
+const DRIVER_COUNTRY_CODES: Record<string, string> = {
+  "Monaco": "mon", "Netherlands": "ned", "United Kingdom": "gbr", "Great Britain": "gbr", "Britain": "gbr",
+  "Spain": "esp", "Mexico": "mex", "Australia": "aus", "France": "fra",
+  "Finland": "fin", "Canada": "can", "Germany": "ger", "Japan": "jpn",
+  "Thailand": "tha", "Denmark": "den", "China": "chn", "United States": "usa",
+  "Italy": "ita", "New Zealand": "nzl", "Brazil": "bra", "Argentina": "arg",
+  "Belgium": "bel", "Switzerland": "sui", "Austria": "aut", "Poland": "pol",
+  "Sweden": "swe", "Norway": "nor", "Ireland": "irl", "Russia": "rus",
+  "South Africa": "rsa", "India": "ind", "Colombia": "col", "Venezuela": "ven",
+  "Indonesia": "idn", "Israel": "isr",
 };
 
 export function getDriverFlag(countryName?: string): string | null {
   if (!countryName) return null;
-  return DRIVER_COUNTRY_FLAGS[countryName] || null;
+  return countryFlagUrl(DRIVER_COUNTRY_CODES[countryName]);
 }
 
 function getSportDisplayName(sport: string): string {
@@ -751,9 +759,11 @@ function SvnsMatchRow({ match, isLive }: { match: SvnsMatch; isLive: boolean }) 
       <Text style={[svnsStyles.matchGender, { color: match.gender === "womens" ? "#FF6B9D" : "#64B5F6" }]}>
         {genderLabel}
       </Text>
+      {flag1 ? <Image source={{ uri: flag1 }} style={svnsStyles.matchFlag} resizeMode="contain" /> : null}
       <Text style={svnsStyles.matchTeams} numberOfLines={1}>
-        {flag1} {match.team1Abbr} {hasScore ? `${match.team1Score}–${match.team2Score}` : "vs"} {match.team2Abbr} {flag2}
+        {match.team1Abbr} {hasScore ? `${match.team1Score}–${match.team2Score}` : "vs"} {match.team2Abbr}
       </Text>
+      {flag2 ? <Image source={{ uri: flag2 }} style={svnsStyles.matchFlag} resizeMode="contain" /> : null}
       <Text style={svnsStyles.matchPhase} numberOfLines={1}>{phaseShort}</Text>
       {isUpcoming && <Text style={svnsStyles.matchTime}>{timeStr}</Text>}
       {isMatchLive && <Text style={svnsStyles.matchLiveLabel}>LIVE</Text>}
@@ -783,6 +793,11 @@ const svnsStyles = StyleSheet.create({
     fontFamily: "Inter_500Medium",
     color: Colors.textPrimary,
     flex: 1,
+  },
+  matchFlag: {
+    width: 18,
+    height: 12,
+    borderRadius: 2,
   },
   matchPhase: {
     fontSize: 10,
@@ -936,8 +951,8 @@ export default function UnifiedEventCard({
   const awayFlag = isTennis ? event.tennisPlayer1Flag : undefined;
   const homeFlag = isTennis ? event.tennisPlayer2Flag : undefined;
   const isIntlSoccer = INTL_SOCCER_LEAGUES.has(event.league);
-  const awayFlagEmoji = isIntlSoccer ? getCountryFlag(event.awayTeam) : null;
-  const homeFlagEmoji = isIntlSoccer ? getCountryFlag(event.homeTeam) : null;
+  const awayFlagUrl = isIntlSoccer ? getCountryFlagUrl(event.awayTeam) : null;
+  const homeFlagUrl = isIntlSoccer ? getCountryFlagUrl(event.homeTeam) : null;
 
   const logoSize = featured ? 22 : 20;
   const isUpcoming = !isLive && !isFinal;
@@ -1038,7 +1053,11 @@ export default function UnifiedEventCard({
                 <View style={uStyles.espnTeamOuter}>
                   <View style={uStyles.espnStarSlot} />
                   <View style={uStyles.espnTeam}>
-                    <Text style={uStyles.racingEspnFlagLarge}>{gpFlag || "🏁"}</Text>
+                    {gpFlag ? (
+                      <Image source={{ uri: gpFlag }} style={{ width: featured ? 44 : 36, height: featured ? 29 : 24, borderRadius: 3 }} resizeMode="contain" />
+                    ) : (
+                      <Text style={uStyles.racingEspnFlagLarge}>🏁</Text>
+                    )}
                     <Text style={uStyles.espnTeamName} numberOfLines={1}>
                       {isWrc
                         ? (event.tournamentName ?? event.homeTeam)
@@ -1092,9 +1111,11 @@ export default function UnifiedEventCard({
                 <View style={uStyles.espnTeamOuter}>
                   <View style={uStyles.espnStarSlot} />
                   <View style={uStyles.espnTeam}>
-                    <Text style={{ fontSize: featured ? 28 : 24 }}>
-                      {getAthleticsCityFlag(rawAthleticsTournament) || "🏃"}
-                    </Text>
+                    {getAthleticsCityFlagUrl(rawAthleticsTournament) ? (
+                      <Image source={{ uri: getAthleticsCityFlagUrl(rawAthleticsTournament)! }} style={{ width: featured ? 44 : 36, height: featured ? 29 : 24, borderRadius: 3 }} resizeMode="contain" />
+                    ) : (
+                      <Text style={{ fontSize: featured ? 28 : 24 }}>🏃</Text>
+                    )}
                   </View>
                 </View>
                 <View style={uStyles.espnCenter}>
@@ -1114,9 +1135,11 @@ export default function UnifiedEventCard({
           ) : isAthletics ? (
             <View style={uStyles.racingLayout}>
               <View style={uStyles.racingCircuitRow}>
-                <Text style={{ fontSize: featured ? 18 : 16 }}>
-                  {getAthleticsCityFlag(rawAthleticsTournament) || "🏃"}
-                </Text>
+                {getAthleticsCityFlagUrl(rawAthleticsTournament) ? (
+                  <Image source={{ uri: getAthleticsCityFlagUrl(rawAthleticsTournament)! }} style={{ width: featured ? 26 : 22, height: featured ? 17 : 15, borderRadius: 2 }} resizeMode="contain" />
+                ) : (
+                  <Text style={{ fontSize: featured ? 18 : 16 }}>🏃</Text>
+                )}
                 <Text
                   style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
                   numberOfLines={1}
@@ -1213,9 +1236,12 @@ export default function UnifiedEventCard({
                   <View style={uStyles.espnStarSlot} />
                   <View style={uStyles.espnTeam}>
                     <Text style={{ fontSize: featured ? 28 : 24 }}>🛶</Text>
-                    <Text style={uStyles.espnTeamName} numberOfLines={2}>
-                      🇿🇦 {paddlingRaceName}
-                    </Text>
+                    <View style={{ flexDirection: "row", alignItems: "center", gap: 5, flexShrink: 1 }}>
+                      <Image source={{ uri: countryFlagUrl("rsa")! }} style={{ width: featured ? 24 : 20, height: featured ? 16 : 13, borderRadius: 2 }} resizeMode="contain" />
+                      <Text style={uStyles.espnTeamName} numberOfLines={2}>
+                        {paddlingRaceName}
+                      </Text>
+                    </View>
                   </View>
                 </View>
                 <View style={uStyles.espnCenter}>
@@ -1243,7 +1269,11 @@ export default function UnifiedEventCard({
                 <View style={uStyles.espnTeamOuter}>
                   <View style={uStyles.espnStarSlot} />
                   <View style={uStyles.espnTeam}>
-                    <Text style={{ fontSize: featured ? 28 : 24 }}>{getSvnsCityFlag(svnsCity) || "🏉"}</Text>
+                    {getSvnsCityFlag(svnsCity) ? (
+                      <Image source={{ uri: getSvnsCityFlag(svnsCity) }} style={{ width: featured ? 44 : 36, height: featured ? 29 : 24, borderRadius: 3 }} resizeMode="contain" />
+                    ) : (
+                      <Text style={{ fontSize: featured ? 28 : 24 }}>🏉</Text>
+                    )}
                     {svnsCity && (
                       <Text style={uStyles.espnTeamName} numberOfLines={1}>{svnsCity}</Text>
                     )}
@@ -1267,11 +1297,12 @@ export default function UnifiedEventCard({
             <View style={uStyles.racingLayout}>
               <View style={uStyles.racingCircuitRow}>
                 <Text style={{ fontSize: featured ? 18 : 16 }}>🛶</Text>
+                <Image source={{ uri: countryFlagUrl("rsa")! }} style={{ width: featured ? 22 : 18, height: featured ? 15 : 12, borderRadius: 2 }} resizeMode="contain" />
                 <Text
                   style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
                   numberOfLines={1}
                 >
-                  🇿🇦 {paddlingRaceName} · {paddlingDayLabel}
+                  {paddlingRaceName} · {paddlingDayLabel}
                 </Text>
               </View>
             </View>
@@ -1440,7 +1471,11 @@ export default function UnifiedEventCard({
           ) : isRacing ? (
             <View style={uStyles.racingLayout}>
               <View style={uStyles.racingCircuitRow}>
-                <Text style={{ fontSize: featured ? 18 : 16 }}>{gpFlag || "🏁"}</Text>
+                {gpFlag ? (
+                  <Image source={{ uri: gpFlag }} style={{ width: featured ? 26 : 22, height: featured ? 17 : 15, borderRadius: 2 }} resizeMode="contain" />
+                ) : (
+                  <Text style={{ fontSize: featured ? 18 : 16 }}>🏁</Text>
+                )}
                 <Text
                   style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
                   numberOfLines={1}
@@ -1462,9 +1497,7 @@ export default function UnifiedEventCard({
                       </Text>
                     )}
                     {getDriverFlag(score.racingLeaderCountry) && (
-                      <Text style={uStyles.racingDriverFlag}>
-                        {getDriverFlag(score.racingLeaderCountry)}
-                      </Text>
+                      <Image source={{ uri: getDriverFlag(score.racingLeaderCountry)! }} style={uStyles.racingDriverFlag} resizeMode="contain" />
                     )}
                     <Text style={uStyles.racingLeaderName} numberOfLines={1}>
                       {score.racingLeader}
@@ -1511,8 +1544,8 @@ export default function UnifiedEventCard({
                   <View style={uStyles.espnTeam}>
                     {isTennis && awayFlag
                       ? <Image source={{ uri: awayFlag }} style={{ width: 48, height: 32, borderRadius: 3 }} resizeMode="contain" />
-                      : isIntlSoccer && awayFlagEmoji
-                        ? <Text style={uStyles.espnFlagEmoji}>{awayFlagEmoji}</Text>
+                      : isIntlSoccer && awayFlagUrl
+                        ? <Image source={{ uri: awayFlagUrl }} style={{ width: 48, height: 32, borderRadius: 3 }} resizeMode="contain" />
                         : <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={32} />}
                     <Text style={uStyles.espnTeamName} numberOfLines={1}>{awayName}</Text>
                   </View>
@@ -1529,8 +1562,8 @@ export default function UnifiedEventCard({
                   <View style={uStyles.espnTeam}>
                     {isTennis && homeFlag
                       ? <Image source={{ uri: homeFlag }} style={{ width: 48, height: 32, borderRadius: 3 }} resizeMode="contain" />
-                      : isIntlSoccer && homeFlagEmoji
-                        ? <Text style={uStyles.espnFlagEmoji}>{homeFlagEmoji}</Text>
+                      : isIntlSoccer && homeFlagUrl
+                        ? <Image source={{ uri: homeFlagUrl }} style={{ width: 48, height: 32, borderRadius: 3 }} resizeMode="contain" />
                         : <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={32} />}
                     <Text style={uStyles.espnTeamName} numberOfLines={1}>{homeName}</Text>
                   </View>
@@ -1555,8 +1588,8 @@ export default function UnifiedEventCard({
               <View style={uStyles.teamRow}>
                 {awayFlag ? (
                   <Image source={{ uri: awayFlag }} style={[uStyles.flagIcon, { width: logoSize, height: Math.round(logoSize * 0.7) }]} resizeMode="contain" />
-                ) : isIntlSoccer && awayFlagEmoji ? (
-                  <Text style={[uStyles.teamFlagEmoji, { fontSize: logoSize + 4 }]}>{awayFlagEmoji}</Text>
+                ) : isIntlSoccer && awayFlagUrl ? (
+                  <Image source={{ uri: awayFlagUrl }} style={[uStyles.flagIcon, { width: logoSize, height: Math.round(logoSize * 0.7) }]} resizeMode="contain" />
                 ) : (
                   <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={logoSize} />
                 )}
@@ -1579,8 +1612,8 @@ export default function UnifiedEventCard({
               <View style={uStyles.teamRow}>
                 {homeFlag ? (
                   <Image source={{ uri: homeFlag }} style={[uStyles.flagIcon, { width: logoSize, height: Math.round(logoSize * 0.7) }]} resizeMode="contain" />
-                ) : isIntlSoccer && homeFlagEmoji ? (
-                  <Text style={[uStyles.teamFlagEmoji, { fontSize: logoSize + 4 }]}>{homeFlagEmoji}</Text>
+                ) : isIntlSoccer && homeFlagUrl ? (
+                  <Image source={{ uri: homeFlagUrl }} style={[uStyles.flagIcon, { width: logoSize, height: Math.round(logoSize * 0.7) }]} resizeMode="contain" />
                 ) : (
                   <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={logoSize} />
                 )}
@@ -1876,10 +1909,6 @@ const uStyles = StyleSheet.create({
     marginRight: 6,
     borderRadius: 2,
   },
-  teamFlagEmoji: {
-    marginRight: 6,
-    lineHeight: 24,
-  },
   rankInline: {
     fontSize: 13,
     fontFamily: "Inter_500Medium",
@@ -1965,7 +1994,9 @@ const uStyles = StyleSheet.create({
     gap: 6,
   },
   racingDriverFlag: {
-    fontSize: 14,
+    width: 20,
+    height: 13,
+    borderRadius: 2,
   },
   racingLeaderName: {
     fontSize: 15,
@@ -2113,11 +2144,6 @@ const uStyles = StyleSheet.create({
     color: Colors.textPrimary,
     textAlign: "center" as const,
     letterSpacing: 0.2,
-  },
-  espnFlagEmoji: {
-    fontSize: 28,
-    textAlign: "center" as const,
-    lineHeight: 34,
   },
   timeText: {
     fontSize: 13,

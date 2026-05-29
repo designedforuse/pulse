@@ -68,38 +68,41 @@ export function formatSvnsMatchTime(match: SvnsMatch): string {
   return d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit", hour12: true });
 }
 
-const COUNTRY_ABBR_FLAGS: Record<string, string> = {
-  AUS: "🇦🇺", ARG: "🇦🇷", FIJ: "🇫🇯", FRA: "🇫🇷", NZL: "🇳🇿",
-  RSA: "🇿🇦", GBR: "🇬🇧", ESP: "🇪🇸", USA: "🇺🇸", CAN: "🇨🇦",
-  JPN: "🇯🇵", KEN: "🇰🇪", SAM: "🇼🇸", IRE: "🇮🇪", URU: "🇺🇾",
-  CHI: "🇨🇱", BRA: "🇧🇷", POR: "🇵🇹", GER: "🇩🇪", ITA: "🇮🇹",
-  HKG: "🇭🇰", KOR: "🇰🇷", CHN: "🇨🇳", MEX: "🇲🇽", COL: "🇨🇴",
-  TGA: "🇹🇴", WAL: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", SCO: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", ENG: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-  ZIM: "🇿🇼", UGA: "🇺🇬", PAR: "🇵🇾",
+// ESPN country flag CDN uses FIFA/IOC-style 3-letter codes.
+function svnsFlagUrl(code: string | null | undefined): string {
+  if (!code) return "";
+  return `https://a.espncdn.com/i/teamlogos/countries/500/${code.toLowerCase()}.png`;
+}
+
+// World Rugby team abbreviations → ESPN flag code. Most match already; only
+// outliers (e.g. IRE → irl) need remapping.
+const SVNS_ABBR_CODE_OVERRIDES: Record<string, string> = {
+  IRE: "irl",
 };
 
 export function getSvnsTeamFlag(abbr: string): string {
-  return COUNTRY_ABBR_FLAGS[abbr] || "";
+  if (!abbr) return "";
+  return svnsFlagUrl(SVNS_ABBR_CODE_OVERRIDES[abbr] ?? abbr);
 }
 
-const SVNS_CITY_FLAGS: Record<string, string> = {
-  Dubai: "🇦🇪",
-  "Cape Town": "🇿🇦",
-  Singapore: "🇸🇬",
-  Perth: "🇦🇺",
-  Vancouver: "🇨🇦",
-  "New York": "🇺🇸",
-  "Hong Kong": "🇭🇰",
-  Valladolid: "🇪🇸",
-  Bordeaux: "🇫🇷",
-  "Los Angeles": "🇺🇸",
-  Madrid: "🇪🇸",
-  London: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+const SVNS_CITY_CODES: Record<string, string> = {
+  Dubai: "uae",
+  "Cape Town": "rsa",
+  Singapore: "sin",
+  Perth: "aus",
+  Vancouver: "can",
+  "New York": "usa",
+  "Hong Kong": "hkg",
+  Valladolid: "esp",
+  Bordeaux: "fra",
+  "Los Angeles": "usa",
+  Madrid: "esp",
+  London: "eng",
 };
 
 export function getSvnsCityFlag(city: string | null): string {
   if (!city) return "";
-  return SVNS_CITY_FLAGS[city] || "";
+  return svnsFlagUrl(SVNS_CITY_CODES[city]);
 }
 
 export function extractSvnsSessionDay(sessionTitle: string): string | null {

@@ -71,9 +71,8 @@ function buildSessionDisplayName(event: SportEvent): string | null {
 
   if (isRacing) {
     const gpName = event.competitionName || event.homeTeam || "";
-    const gpFlag = getGrandPrixFlag(gpName);
     const session = event.sessionTitle || event.awayTeam || "";
-    return `${gpFlag ? gpFlag + " " : ""}${gpName}: ${session}`;
+    return `${gpName}: ${session}`;
   }
 
   if (isSvns) {
@@ -117,6 +116,9 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
   }
   const sportColor = SPORT_COLORS[event.sport] || "#90A4AE";
   const sessionName = buildSessionDisplayName(event);
+  const sessionFlag = event.eventType === "session" && event.sport === "racing"
+    ? getGrandPrixFlag(event.competitionName || event.homeTeam || "")
+    : null;
   const timeLabel = formatFeaturedTime(event.startTimeLocal);
   const isFavAway = isTeamFavorite(event.awayTeam, event.sport, favorites);
   const isFavHome = isTeamFavorite(event.homeTeam, event.sport, favorites);
@@ -134,7 +136,12 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
         </View>
         {sessionName ? (
           <>
-            <Text style={styles.featuredSessionName} numberOfLines={2}>{sessionName}</Text>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 6 }}>
+              {sessionFlag ? (
+                <ExpoImage source={{ uri: sessionFlag }} style={{ width: 24, height: 16, borderRadius: 2 }} contentFit="contain" />
+              ) : null}
+              <Text style={[styles.featuredSessionName, { flex: 1 }]} numberOfLines={2}>{sessionName}</Text>
+            </View>
             <View style={styles.featuredSessionMeta}>
               <Text style={styles.featuredSessionTime}>{timeLabel}</Text>
               {provider.brandId && (

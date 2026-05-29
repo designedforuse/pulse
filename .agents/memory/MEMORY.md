@@ -1,1 +1,2 @@
 - [Adding a new providerId](new-provider-id-checklist.md) — a new providerId must be registered in 4 places or the card brand pill / launcher / filter silently no-op.
+- [Flag rendering on event cards](flag-rendering.md) — cards use ESPN CDN image flags (3-letter FIFA codes, curl-verify HTTP 200); flag helpers return URLs, never emoji; some non-card surfaces keep emoji.
