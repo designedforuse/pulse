@@ -372,6 +372,10 @@ function ChaosCard({
   const gpName = event.competitionName || event.homeTeam || "";
   const gpShort = isRacing ? shortenGpName(gpName) : "";
   const gpFlag = isRacing ? getGrandPrixFlag(gpName) : null;
+  const isWrc = isRacing && event.leagueKey === "wrc";
+  const wrcDaySuffix = isWrc && event.dayNumber != null && event.totalDays != null
+    ? ` · Day ${event.dayNumber} of ${event.totalDays}`
+    : "";
 
   const leaderName = score?.racingLeader;
   const leaderFlag = getDriverFlag(score?.racingLeaderCountry);
@@ -507,7 +511,7 @@ function ChaosCard({
                   <View style={[styles.racingLeaderRow, { flexDirection: "row", alignItems: "center", gap: 6 }]}>
                     <FlagImg uri={gpFlag} />
                     <Text style={[styles.racingLeaderText, { flex: 1 }]} numberOfLines={2}>
-                      {event.sessionTitle || event.tournamentName || event.homeTeam}
+                      {(event.sessionTitle || event.tournamentName || event.homeTeam) + wrcDaySuffix}
                     </Text>
                   </View>
                 ) : null}
@@ -715,7 +719,7 @@ function ChaosCard({
                 <FlagImg uri={gpFlag} sm />
                 {(event.sessionTitle || event.awayTeam) ? (
                   <Text style={styles.racingUpcomingSession} numberOfLines={1}>
-                    {event.sessionTitle || event.awayTeam}
+                    {(event.sessionTitle || event.awayTeam) + wrcDaySuffix}
                   </Text>
                 ) : null}
               </View>
@@ -724,7 +728,7 @@ function ChaosCard({
                 <FlagImg uri={gpFlag} sm />
                 {(event.sessionTitle || event.awayTeam || gpShort) ? (
                   <Text style={styles.racingUpcomingSession} numberOfLines={1}>
-                    {event.sessionTitle || event.awayTeam || gpShort}
+                    {(event.sessionTitle || event.awayTeam || gpShort) + wrcDaySuffix}
                   </Text>
                 ) : null}
               </View>

@@ -48,6 +48,8 @@ export interface SportEvent {
   cyclingRoute?: string;
   cyclingTotalStages?: number;
   cyclingRestDays?: string[];
+  dayNumber?: number;
+  totalDays?: number;
 }
 
 export interface Pack {

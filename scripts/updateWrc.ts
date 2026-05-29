@@ -15,6 +15,8 @@ interface AppEvent {
   sessionTitle?: string;
   competitionType?: string;
   tournamentName?: string;
+  dayNumber?: number;
+  totalDays?: number;
 }
 
 export interface WrcFetchResult {
@@ -199,31 +201,50 @@ export function fetchWrcEvents(): WrcFetchResult {
 
   const events: AppEvent[] = [];
 
+  // Rally weekends run across several days. Generate one event card per day so
+  // each day shows independently, and cap each day at 8 hours of racing so the
+  // card doesn't read as "live" overnight between stages.
+  const DAY_MS = 86400000;
+  const DAY_DURATION_MS = 8 * 60 * 60 * 1000;
+
   for (const round of WRC_ROUNDS) {
     const start = new Date(round.startUtc);
     if (start < windowStart || start > windowEnd) continue;
 
-    events.push({
-      id: round.id,
-      sport: "racing",
-      league: "WRC",
-      awayTeam: "",
-      homeTeam: round.displayName,
-      startTimeLocal: round.startUtc,
-      endTimeLocal: round.endUtc,
-      providerId: "youtube",
-      providerReason: "wrc-youtube",
-      isLive: false,
-      source: "wrc-hardcoded",
-      leagueKey: "wrc",
-      eventType: "session",
-      sessionTitle: `Round ${round.round} · ${round.displayName}`,
-      competitionType: "international",
-      tournamentName: round.displayName,
-    });
+    const startMs = new Date(round.startUtc).getTime();
+    const endMs = new Date(round.endUtc).getTime();
+    const totalDays = Math.max(1, Math.floor((endMs - startMs) / DAY_MS) + 1);
+
+    for (let i = 0; i < totalDays; i++) {
+      const dayStartMs = startMs + i * DAY_MS;
+      // Cap at 8 hours, but never run past the rally's real end (the final day
+      // is often shorter than 8h, e.g. ends 12:00 from an 06:00 start).
+      const dayEndMs = Math.min(dayStartMs + DAY_DURATION_MS, endMs);
+
+      events.push({
+        id: `${round.id}-day${i + 1}`,
+        sport: "racing",
+        league: "WRC",
+        awayTeam: "",
+        homeTeam: round.displayName,
+        startTimeLocal: new Date(dayStartMs).toISOString(),
+        endTimeLocal: new Date(dayEndMs).toISOString(),
+        providerId: "youtube",
+        providerReason: "wrc-youtube",
+        isLive: false,
+        source: "wrc-hardcoded",
+        leagueKey: "wrc",
+        eventType: "session",
+        sessionTitle: `Round ${round.round} · ${round.displayName}`,
+        competitionType: "international",
+        tournamentName: round.displayName,
+        dayNumber: i + 1,
+        totalDays,
+      });
+    }
   }
 
-  console.log(`  WRC: ${events.length} rounds in retention window`);
+  console.log(`  WRC: ${events.length} rally-days in retention window`);
 
   return { events, sourceUsed: "hardcoded", count: events.length };
 }

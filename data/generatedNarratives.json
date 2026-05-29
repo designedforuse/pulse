@@ -1,11 +1,15 @@
 {
-  "lastUpdated": "2026-05-27T22:26:30.044Z",
+  "lastUpdated": "2026-05-29T02:57:17.653Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
         "Other": 1
       },
       "clinch_watch": {
+        "SouthAfrica": 1,
+        "Other": 1
+      },
+      "weekend_watchlist": {
         "Other": 1
       },
       "rally_weekend": {
@@ -17,24 +21,39 @@
       "grand_tour": {
         "Other": 1
       },
+      "ipl_storyline": {
+        "Other": 1
+      },
       "marquee_match": {
         "Other": 1
       }
     },
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
+      "SouthAfrica": [
+        "clinch_watch: Clinch Watch"
+      ],
       "Other": [
         "clinch_watch: Clinch Watch",
         "marquee_match: Marquee Match: Champions League",
         "rally_weekend: Rally Weekend",
         "grand_tour: Grand Tour",
         "league_moment: Big Stage",
+        "ipl_storyline: Tonight in the IPL",
         "diamond_league: Diamond League"
       ]
     },
-    "droppedCandidatesReasons": [],
-    "totalBeforeCap": 6,
-    "totalAfterCap": 6,
+    "droppedCandidatesReasons": [
+      {
+        "id": "weekend_watchlist",
+        "kind": "weekend_watchlist",
+        "region": "Other",
+        "title": "Weekend Watchlist",
+        "reason": "feed cap (max 8)"
+      }
+    ],
+    "totalBeforeCap": 9,
+    "totalAfterCap": 8,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -69,17 +88,17 @@
         ],
         "playersIngested": 377,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-27T22:26:30.044Z"
+        "timestamp": "2026-05-29T02:57:17.653Z"
       },
       "cacheHistoryCount": 880,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 6,
-    "candidateCountAfterCap": 6,
+    "candidateCountBeforeCap": 9,
+    "candidateCountAfterCap": 8,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1946.4416788888889,
+      "hoursUntil": -1974.9549036111111,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -95,77 +114,124 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 1,
-      "clinchAfterRegionFilter": 1,
-      "clinchFinalCount": 1,
+      "rawClinchCandidates": 2,
+      "clinchAfterRegionFilter": 2,
+      "clinchFinalCount": 2,
       "clinchGatedOut": []
     },
     "tonightStorySelectedSignal": "championship_day",
-    "tonightStoryHeadline": "Giro d'Italia — Stage 17",
-    "tonightStorySourceEvent": "cycling-grand-tour-giro-d-italia-2026-2026-05-27-stage-17",
+    "tonightStoryHeadline": "Giro d'Italia — Stage 18",
+    "tonightStorySourceEvent": "cycling-grand-tour-giro-d-italia-2026-2026-05-28-stage-18",
     "tonightStoryDebug": {
       "selectedSignal": "championship_day",
-      "selectedHeadline": "Giro d'Italia — Stage 17",
+      "selectedHeadline": "Giro d'Italia — Stage 18",
       "selectedScore": 200,
-      "sourceEventId": "cycling-grand-tour-giro-d-italia-2026-2026-05-27-stage-17",
-      "reason": "championship-day group (cycling|Giro d'Italia|Stage 17, 1 event)",
+      "sourceEventId": "cycling-grand-tour-giro-d-italia-2026-2026-05-28-stage-18",
+      "reason": "championship-day group (cycling|Giro d'Italia|Stage 18, 1 event)",
       "scoredCandidates": [
         {
-          "label": "[championship_day] Giro d'Italia — Stage 17",
+          "label": "[championship_day] Giro d'Italia — Stage 18",
           "score": 200,
-          "reason": "championship-day group (cycling|Giro d'Italia|Stage 17, 1 event)"
+          "reason": "championship-day group (cycling|Giro d'Italia|Stage 18, 1 event)"
         }
       ]
     },
     "videoSelection": {
-      "marquee_match": {
-        "searchQuery": "Arsenal vs Paris Saint-Germain Champions League preview",
-        "selectedVideoTitle": "5 Reasons PSG WILL Beat Arsenal!",
-        "selectedVideoPublishedAt": "24 minutes ago",
-        "selectedVideoChannel": "PSGINT",
+      "clinch_watch_rugby-urc-xnat8": {
+        "searchQuery": "Cardiff clinch playoff berth May 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
-      "rally_weekend_racing-wrc-japan-2026": {
-        "searchQuery": "Rally Japan WRC rally highlights",
-        "selectedVideoTitle": "💥 BIG CRASHES & ACTION 🇯🇵 WRC RALLY JAPAN 2026 【ラリージャパン 2026】 RECAP",
+      "marquee_match": {
+        "searchQuery": "Arsenal vs Paris Saint-Germain Champions League preview",
+        "selectedVideoTitle": "Is Arsenal a BETTER TEAM than PSG? 🤔 | ESPN FC",
         "selectedVideoPublishedAt": "3 hours ago",
-        "selectedVideoChannel": "World Rally Motorsport",
+        "selectedVideoChannel": "ESPN FC",
         "rejectedForAgeCount": 1
+      },
+      "rally_weekend_racing-wrc-japan-2026-day2": {
+        "searchQuery": "Rally Japan WRC rally highlights",
+        "selectedVideoTitle": "Takamoto Katsuta 😱  BIG MOMENTS 🇯🇵 FORUM 8 RALLY JAPAN 2026 【ラリージャパン 2026】 Friday Morning Loop",
+        "selectedVideoPublishedAt": "59 minutes ago",
+        "selectedVideoChannel": "Motorsport Rally",
+        "rejectedForAgeCount": 0
       },
       "grand_tour_giro_d_italia": {
         "searchQuery": "Giro d'Italia cycling highlights May 2026",
-        "selectedVideoTitle": "Giro d'Italia 2026 - Stage 17 Highlights - Crazy breakaway fight",
-        "selectedVideoPublishedAt": "39 minutes ago",
-        "selectedVideoChannel": "Cyclism'Actu TV",
+        "selectedVideoTitle": "BREATHTAKING RACE! 😮‍💨 | 2026 Men's Giro d'Italia Stage 18 Race Highlights | TNT Sports Cycling",
+        "selectedVideoPublishedAt": "7h ago",
+        "selectedVideoChannel": "TNT Sports Cycling",
         "rejectedForAgeCount": 0
       },
       "league_moment_tournament": {
         "searchQuery": "Big Stage sports May 2026",
-        "selectedVideoTitle": "Sam Matterface HIJACKS interview to chat to Crystal Palace fans in Leipzig",
-        "selectedVideoPublishedAt": "31 minutes ago",
-        "selectedVideoChannel": "The S Word powered by talkSPORT and talkSPORT",
+        "selectedVideoTitle": "Top 10 Premier League goals of May 2026 | NBC Sports",
+        "selectedVideoPublishedAt": "12h ago",
+        "selectedVideoChannel": "NBC Sports",
+        "rejectedForAgeCount": 0
+      },
+      "ipl_storyline": {
+        "searchQuery": "Rajasthan Royals vs Gujarat Titans IPL 2026 highlights",
+        "selectedVideoTitle": "RR vs GT Qualifier 2: Vaibhav Sooryavanshi Storm Can Destroy Gujarat Titans!",
+        "selectedVideoPublishedAt": "1 hour ago",
+        "selectedVideoChannel": "StumpTales",
         "rejectedForAgeCount": 0
       },
       "diamond_league_athletics-diamond-league-rabat-2026": {
         "searchQuery": "Diamond League — Rabat Diamond League 2026",
-        "selectedVideoTitle": "Crazy 2027 World Championship Standards + Rabat  Diamond League Preview",
-        "selectedVideoPublishedAt": "Streamed 17 hours ago",
-        "selectedVideoChannel": "The Final Leg Track & Field",
+        "selectedVideoTitle": "Tina Clayton, Lavanya Williams & Jonielle 🇯🇲: Can a Jamaica SWEEP Be Denied at Rabat 2026? [Tech ",
+        "selectedVideoPublishedAt": "4 hours ago",
+        "selectedVideoChannel": "Peter Lloyd World",
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
+      "id": "clinch_watch_rugby-urc-xnat8",
+      "title": "Clinch Watch",
+      "subtitle": "Can clinch home quarterfinal in the next 48h",
+      "impact": {
+        "label": "Impacts: Saturday Warm-Up",
+        "ritualId": "saturday_sunrise",
+        "tabHint": "Watch"
+      },
+      "priority": 92,
+      "triggeredAt": "2026-05-29T02:57:17.653Z",
+      "expiresAt": "2026-05-30T17:30:00.000Z",
+      "kind": "clinch_watch",
+      "region": "SouthAfrica",
+      "regionPriority": 1,
+      "regionLabel": "South Africa",
+      "meta": {
+        "source": "team_config",
+        "conditionLabel": "Can clinch home quarterfinal",
+        "sport": "rugby",
+        "league": "URC",
+        "awayTeam": "Cardiff",
+        "homeTeam": "Stormers",
+        "startTime": "2026-05-30T13:30:00.000Z",
+        "eventIds": [
+          "rugby-urc-xnat8"
+        ],
+        "reason": "Stormers have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
+      },
+      "sports": [
+        "rugby"
+      ]
+    },
+    {
       "id": "clinch_watch_rugby-svns-62osre-d1",
       "title": "Clinch Watch",
-      "subtitle": "Can secure semifinal place in the next 48h",
+      "subtitle": "Can secure semifinal place tonight",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-05-27T22:26:30.044Z",
+      "triggeredAt": "2026-05-29T02:57:17.653Z",
       "expiresAt": "2026-05-29T12:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -191,13 +257,13 @@
     {
       "id": "marquee_match",
       "title": "Marquee Match: Champions League",
-      "subtitle": "Arsenal vs Paris Saint-Germain — Champions League · in 3 days",
+      "subtitle": "Arsenal vs Paris Saint-Germain — Champions League · in 2 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-05-27T22:26:30.044Z",
+      "triggeredAt": "2026-05-29T02:57:17.653Z",
       "expiresAt": "2026-05-30T20:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -213,32 +279,32 @@
         "eventIds": [
           "soccer-championsleague-20260530-1600-arsenal-at-paris-saint-germain"
         ],
-        "reason": "Top Champions League fixture (Arsenal vs Paris Saint-Germain) in 3 days"
+        "reason": "Top Champions League fixture (Arsenal vs Paris Saint-Germain) in 2 days"
       },
       "sports": [
         "soccer"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=96FqlszshoU",
-        "thumbnailUrl": "https://img.youtube.com/vi/96FqlszshoU/hqdefault.jpg",
-        "durationSeconds": 928,
-        "title": "5 Reasons PSG WILL Beat Arsenal!",
+        "url": "https://www.youtube.com/watch?v=_8vX89CdQTY",
+        "thumbnailUrl": "https://img.youtube.com/vi/_8vX89CdQTY/hqdefault.jpg",
+        "durationSeconds": 3325,
+        "title": "Is Arsenal a BETTER TEAM than PSG? 🤔 | ESPN FC",
         "source": "youtube",
-        "channel": "PSGINT",
-        "publishedAt": "24 minutes ago"
+        "channel": "ESPN FC",
+        "publishedAt": "3 hours ago"
       }
     },
     {
-      "id": "rally_weekend_racing-wrc-japan-2026",
+      "id": "rally_weekend_racing-wrc-japan-2026-day2",
       "title": "Rally Weekend",
-      "subtitle": "Rally Japan — underway this weekend",
+      "subtitle": "Rally Japan — starts tomorrow",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-27T22:26:30.044Z",
-      "expiresAt": "2026-05-31T00:00:00.000Z",
+      "triggeredAt": "2026-05-29T02:57:17.653Z",
+      "expiresAt": "2026-06-01T23:00:00.000Z",
       "kind": "rally_weekend",
       "region": "Other",
       "regionPriority": 99,
@@ -246,9 +312,9 @@
       "meta": {
         "type": "rally_weekend",
         "rallyName": "Rally Japan",
-        "startTime": "2026-05-28T00:00:00.000Z",
+        "startTime": "2026-05-29T23:00:00.000Z",
         "eventIds": [
-          "racing-wrc-japan-2026"
+          "racing-wrc-japan-2026-day2"
         ],
         "reason": "WRC Rally Japan within 7 days"
       },
@@ -256,26 +322,26 @@
         "racing"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=nU9ePQdcO98",
-        "thumbnailUrl": "https://img.youtube.com/vi/nU9ePQdcO98/hqdefault.jpg",
-        "durationSeconds": 3490,
-        "title": "💥 BIG CRASHES & ACTION 🇯🇵 WRC RALLY JAPAN 2026 【ラリージャパン 2026】 RECAP",
+        "url": "https://www.youtube.com/watch?v=d9ohwAHJw9o",
+        "thumbnailUrl": "https://img.youtube.com/vi/d9ohwAHJw9o/hqdefault.jpg",
+        "durationSeconds": 734,
+        "title": "Takamoto Katsuta 😱  BIG MOMENTS 🇯🇵 FORUM 8 RALLY JAPAN 2026 【ラリージャパン 2026】 Friday Morning Loop",
         "source": "youtube",
-        "channel": "World Rally Motorsport",
-        "publishedAt": "3 hours ago"
+        "channel": "Motorsport Rally",
+        "publishedAt": "59 minutes ago"
       }
     },
     {
       "id": "grand_tour_giro_d_italia",
       "title": "Grand Tour",
-      "subtitle": "Giro d'Italia — 4 stages in the next 7 days",
+      "subtitle": "Giro d'Italia — 3 stages in the next 7 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-27T22:26:30.044Z",
-      "expiresAt": "2026-06-03T22:26:30.044Z",
+      "triggeredAt": "2026-05-29T02:57:17.653Z",
+      "expiresAt": "2026-06-05T02:57:17.653Z",
       "kind": "grand_tour",
       "region": "Other",
       "regionPriority": 99,
@@ -283,29 +349,28 @@
       "meta": {
         "type": "grand_tour",
         "tourName": "Giro d'Italia",
-        "stageCount": 6,
-        "upcomingStageCount": 4,
+        "stageCount": 5,
+        "upcomingStageCount": 3,
         "eventIds": [
-          "cycling-grand-tour-giro-d-italia-2026-2026-05-26-stage-16",
           "cycling-grand-tour-giro-d-italia-2026-2026-05-27-stage-17",
           "cycling-grand-tour-giro-d-italia-2026-2026-05-28-stage-18",
           "cycling-grand-tour-giro-d-italia-2026-2026-05-29-stage-19",
           "cycling-grand-tour-giro-d-italia-2026-2026-05-30-stage-20",
           "cycling-grand-tour-giro-d-italia-2026-2026-05-31-stage-21"
         ],
-        "reason": "Giro d'Italia active — 6 stage(s) in window"
+        "reason": "Giro d'Italia active — 5 stage(s) in window"
       },
       "sports": [
         "cycling"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=7jgtkzDxevs",
-        "thumbnailUrl": "https://img.youtube.com/vi/7jgtkzDxevs/hqdefault.jpg",
-        "durationSeconds": 361,
-        "title": "Giro d'Italia 2026 - Stage 17 Highlights - Crazy breakaway fight",
+        "url": "https://www.youtube.com/watch?v=-rQw1jHMdR4",
+        "thumbnailUrl": "https://img.youtube.com/vi/-rQw1jHMdR4/hqdefault.jpg",
+        "durationSeconds": 548,
+        "title": "BREATHTAKING RACE! 😮‍💨 | 2026 Men's Giro d'Italia Stage 18 Race Highlights | TNT Sports Cycling",
         "source": "youtube",
-        "channel": "Cyclism'Actu TV",
-        "publishedAt": "39 minutes ago"
+        "channel": "TNT Sports Cycling",
+        "publishedAt": "7h ago"
       }
     },
     {
@@ -317,8 +382,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-27T22:26:30.044Z",
-      "expiresAt": "2026-06-03T22:26:30.044Z",
+      "triggeredAt": "2026-05-29T02:57:17.653Z",
+      "expiresAt": "2026-06-05T02:57:17.653Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -344,25 +409,68 @@
         "cycling"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=RrY0ppdAikY",
-        "thumbnailUrl": "https://img.youtube.com/vi/RrY0ppdAikY/hqdefault.jpg",
-        "durationSeconds": 564,
-        "title": "Sam Matterface HIJACKS interview to chat to Crystal Palace fans in Leipzig",
+        "url": "https://www.youtube.com/watch?v=w9JIYFTF0Ss",
+        "thumbnailUrl": "https://img.youtube.com/vi/w9JIYFTF0Ss/hqdefault.jpg",
+        "durationSeconds": 591,
+        "title": "Top 10 Premier League goals of May 2026 | NBC Sports",
         "source": "youtube",
-        "channel": "The S Word powered by talkSPORT and talkSPORT",
-        "publishedAt": "31 minutes ago"
+        "channel": "NBC Sports",
+        "publishedAt": "12h ago"
+      }
+    },
+    {
+      "id": "ipl_storyline",
+      "title": "Tonight in the IPL",
+      "subtitle": "Rajasthan Royals vs Gujarat Titans — in 11h",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 70,
+      "triggeredAt": "2026-05-29T02:57:17.653Z",
+      "expiresAt": "2026-05-29T22:00:00.000Z",
+      "kind": "ipl_storyline",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "ipl_storyline",
+        "matchCount": 1,
+        "matches": [
+          {
+            "away": "Rajasthan Royals",
+            "home": "Gujarat Titans",
+            "startTime": "2026-05-29T14:00:00.000Z"
+          }
+        ],
+        "eventIds": [
+          "cricket-ipl-2537"
+        ],
+        "reason": "1 IPL match(es) within 36h"
+      },
+      "sports": [
+        "cricket"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=BwJtQVG4tpE",
+        "thumbnailUrl": "https://img.youtube.com/vi/BwJtQVG4tpE/hqdefault.jpg",
+        "durationSeconds": 1065,
+        "title": "RR vs GT Qualifier 2: Vaibhav Sooryavanshi Storm Can Destroy Gujarat Titans!",
+        "source": "youtube",
+        "channel": "StumpTales",
+        "publishedAt": "1 hour ago"
       }
     },
     {
       "id": "diamond_league_athletics-diamond-league-rabat-2026",
       "title": "Diamond League",
-      "subtitle": "Diamond League — Rabat — in 4 days",
+      "subtitle": "Diamond League — Rabat — in 3 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-05-27T22:26:30.044Z",
+      "triggeredAt": "2026-05-29T02:57:17.653Z",
       "expiresAt": "2026-06-01T18:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -381,29 +489,29 @@
         "athletics"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=fokFj0j_Pt8",
-        "thumbnailUrl": "https://img.youtube.com/vi/fokFj0j_Pt8/hqdefault.jpg",
-        "durationSeconds": 5610,
-        "title": "Crazy 2027 World Championship Standards + Rabat  Diamond League Preview",
+        "url": "https://www.youtube.com/watch?v=FdMCSv35c6A",
+        "thumbnailUrl": "https://img.youtube.com/vi/FdMCSv35c6A/hqdefault.jpg",
+        "durationSeconds": 701,
+        "title": "Tina Clayton, Lavanya Williams & Jonielle 🇯🇲: Can a Jamaica SWEEP Be Denied at Rabat 2026? [Tech ",
         "source": "youtube",
-        "channel": "The Final Leg Track & Field",
-        "publishedAt": "Streamed 17 hours ago"
+        "channel": "Peter Lloyd World",
+        "publishedAt": "4 hours ago"
       }
     }
   ],
   "tonightStory": {
     "signalType": "championship_day",
     "signalLabel": "CHAMPIONSHIP DAY",
-    "headline": "Giro d'Italia — Stage 17",
-    "body": "Stage 17 of the Giro d'Italia hits the road today.",
-    "sourceEventId": "cycling-grand-tour-giro-d-italia-2026-2026-05-27-stage-17",
+    "headline": "Giro d'Italia — Stage 18",
+    "body": "Stage 18 of the Giro d'Italia hits the road today.",
+    "sourceEventId": "cycling-grand-tour-giro-d-italia-2026-2026-05-28-stage-18",
     "eventIds": [
-      "cycling-grand-tour-giro-d-italia-2026-2026-05-27-stage-17"
+      "cycling-grand-tour-giro-d-italia-2026-2026-05-28-stage-18"
     ],
     "sourceCard": {
-      "id": "championship_day_cycling-giro-d-italia-stage-17",
+      "id": "championship_day_cycling-giro-d-italia-stage-18",
       "kind": "championship_day",
-      "title": "Giro d'Italia — Stage 17"
+      "title": "Giro d'Italia — Stage 18"
     },
     "sports": [
       "cycling"
@@ -414,16 +522,16 @@
     {
       "signalType": "championship_day",
       "signalLabel": "CHAMPIONSHIP DAY",
-      "headline": "Giro d'Italia — Stage 17",
-      "body": "Stage 17 of the Giro d'Italia hits the road today.",
-      "sourceEventId": "cycling-grand-tour-giro-d-italia-2026-2026-05-27-stage-17",
+      "headline": "Giro d'Italia — Stage 18",
+      "body": "Stage 18 of the Giro d'Italia hits the road today.",
+      "sourceEventId": "cycling-grand-tour-giro-d-italia-2026-2026-05-28-stage-18",
       "eventIds": [
-        "cycling-grand-tour-giro-d-italia-2026-2026-05-27-stage-17"
+        "cycling-grand-tour-giro-d-italia-2026-2026-05-28-stage-18"
       ],
       "sourceCard": {
-        "id": "championship_day_cycling-giro-d-italia-stage-17",
+        "id": "championship_day_cycling-giro-d-italia-stage-18",
         "kind": "championship_day",
-        "title": "Giro d'Italia — Stage 17"
+        "title": "Giro d'Italia — Stage 18"
       },
       "sports": [
         "cycling"
@@ -447,86 +555,6 @@
           "seasonPhase": "Regular"
         },
         {
-          "sport": "hockey",
-          "displayName": "ECHL",
-          "leagueKey": "echl",
-          "dateRangeLabel": "May 13–31",
-          "startDate": "2026-05-13T23:00:00.000Z",
-          "endDate": "2026-05-31T21:05:00.000Z",
-          "eventCount": 22,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "hockey",
-          "displayName": "AHL",
-          "leagueKey": "ahl",
-          "dateRangeLabel": "May 14–31",
-          "startDate": "2026-05-14T02:00:00.000Z",
-          "endDate": "2026-05-31T00:05:00.000Z",
-          "eventCount": 21,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "racing",
-          "displayName": "Rally de Portugal",
-          "leagueKey": "wrc",
-          "dateRangeLabel": "May 14",
-          "startDate": "2026-05-14T08:00:00.000Z",
-          "endDate": "2026-05-14T08:00:00.000Z",
-          "eventCount": 1,
-          "seasonPhase": null
-        },
-        {
-          "sport": "tennis",
-          "displayName": "Rome",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "May 14–17",
-          "startDate": "2026-05-14T09:00:00.000Z",
-          "endDate": "2026-05-17T09:00:00.000Z",
-          "eventCount": 4,
-          "seasonPhase": null
-        },
-        {
-          "sport": "cycling",
-          "displayName": "Grand Tour — Giro d'Italia",
-          "leagueKey": "grand-tour",
-          "dateRangeLabel": "May 14–31",
-          "startDate": "2026-05-14T12:00:00.000Z",
-          "endDate": "2026-05-31T12:00:00.000Z",
-          "eventCount": 16,
-          "seasonPhase": null
-        },
-        {
-          "sport": "cricket",
-          "displayName": "IPL",
-          "leagueKey": "ipl",
-          "dateRangeLabel": "May 14–31",
-          "startDate": "2026-05-14T14:00:00.000Z",
-          "endDate": "2026-05-31T14:00:00.000Z",
-          "eventCount": 17,
-          "seasonPhase": "Final"
-        },
-        {
-          "sport": "golf",
-          "displayName": "PGA",
-          "leagueKey": "golf-majors",
-          "dateRangeLabel": "May 14–17",
-          "startDate": "2026-05-14T14:00:00.000Z",
-          "endDate": "2026-05-17T14:00:00.000Z",
-          "eventCount": 4,
-          "seasonPhase": null
-        },
-        {
-          "sport": "soccer",
-          "displayName": "La Liga",
-          "leagueKey": "laliga",
-          "dateRangeLabel": "May 14–24",
-          "startDate": "2026-05-14T17:00:00.000Z",
-          "endDate": "2026-05-24T19:00:00.000Z",
-          "eventCount": 23,
-          "seasonPhase": "Regular"
-        },
-        {
           "sport": "rugby",
           "displayName": "Super Rugby",
           "leagueKey": "superrugby",
@@ -535,6 +563,36 @@
           "endDate": "2026-05-30T09:35:00.000Z",
           "eventCount": 14,
           "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "cycling",
+          "displayName": "Grand Tour — Giro d'Italia",
+          "leagueKey": "grand-tour",
+          "dateRangeLabel": "May 15–31",
+          "startDate": "2026-05-15T12:00:00.000Z",
+          "endDate": "2026-05-31T12:00:00.000Z",
+          "eventCount": 15,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
+          "displayName": "IPL",
+          "leagueKey": "ipl",
+          "dateRangeLabel": "May 15–31",
+          "startDate": "2026-05-15T14:00:00.000Z",
+          "endDate": "2026-05-31T14:00:00.000Z",
+          "eventCount": 16,
+          "seasonPhase": "Final"
+        },
+        {
+          "sport": "golf",
+          "displayName": "PGA",
+          "leagueKey": "golf-majors",
+          "dateRangeLabel": "May 15–17",
+          "startDate": "2026-05-15T14:00:00.000Z",
+          "endDate": "2026-05-17T14:00:00.000Z",
+          "eventCount": 3,
+          "seasonPhase": null
         },
         {
           "sport": "rugby",
@@ -568,13 +626,23 @@
         },
         {
           "sport": "athletics",
-          "displayName": "Ultra-Trail Australia",
+          "displayName": "UTMB — Ultra-Trail Australia",
           "leagueKey": "utmb",
           "dateRangeLabel": "May 15",
           "startDate": "2026-05-15T20:00:00.000Z",
           "endDate": "2026-05-15T20:00:00.000Z",
           "eventCount": 1,
           "seasonPhase": null
+        },
+        {
+          "sport": "hockey",
+          "displayName": "ECHL",
+          "leagueKey": "echl",
+          "dateRangeLabel": "May 15–31",
+          "startDate": "2026-05-15T23:05:00.000Z",
+          "endDate": "2026-05-31T21:05:00.000Z",
+          "eventCount": 18,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "soccer",
@@ -587,12 +655,32 @@
           "seasonPhase": "Regular"
         },
         {
+          "sport": "hockey",
+          "displayName": "AHL",
+          "leagueKey": "ahl",
+          "dateRangeLabel": "May 16–31",
+          "startDate": "2026-05-16T02:00:00.000Z",
+          "endDate": "2026-05-31T00:05:00.000Z",
+          "eventCount": 17,
+          "seasonPhase": "Playoffs"
+        },
+        {
           "sport": "cricket",
           "displayName": "Test Cricket",
           "leagueKey": "test",
           "dateRangeLabel": "May 16–27",
           "startDate": "2026-05-16T03:30:00.000Z",
           "endDate": "2026-05-27T10:00:00.000Z",
+          "eventCount": 2,
+          "seasonPhase": null
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Rome",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "May 16–17",
+          "startDate": "2026-05-16T09:00:00.000Z",
+          "endDate": "2026-05-17T09:00:00.000Z",
           "eventCount": 2,
           "seasonPhase": null
         },
@@ -658,7 +746,7 @@
         },
         {
           "sport": "athletics",
-          "displayName": "Zegama-Aizkorri",
+          "displayName": "GTWS — Zegama-Aizkorri",
           "leagueKey": "golden-trail",
           "dateRangeLabel": "May 17",
           "startDate": "2026-05-17T06:00:00.000Z",
@@ -685,6 +773,16 @@
           "endDate": "2026-05-24T19:00:00.000Z",
           "eventCount": 2,
           "seasonPhase": "Knockout"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "La Liga",
+          "leagueKey": "laliga",
+          "dateRangeLabel": "May 17–24",
+          "startDate": "2026-05-17T17:00:00.000Z",
+          "endDate": "2026-05-24T19:00:00.000Z",
+          "eventCount": 20,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
@@ -768,7 +866,7 @@
         },
         {
           "sport": "athletics",
-          "displayName": "Ledro Sky Trentino",
+          "displayName": "GTWS — Ledro Sky Trentino",
           "leagueKey": "golden-trail",
           "dateRangeLabel": "May 24",
           "startDate": "2026-05-24T06:00:00.000Z",
@@ -787,33 +885,23 @@
           "seasonPhase": null
         },
         {
-          "sport": "hockey",
-          "displayName": "NHL",
-          "leagueKey": "nhl",
-          "dateRangeLabel": "May 27–31",
-          "startDate": "2026-05-27T01:00:00.000Z",
-          "endDate": "2026-05-31T16:00:00.000Z",
-          "eventCount": 4,
-          "seasonPhase": "Playoffs"
-        },
-        {
           "sport": "tennis",
           "displayName": "Roland Garros",
           "leagueKey": "grand-slam",
-          "dateRangeLabel": "May 27–29",
-          "startDate": "2026-05-27T09:00:00.000Z",
-          "endDate": "2026-05-29T04:00:00.000Z",
-          "eventCount": 27,
+          "dateRangeLabel": "May 28–30",
+          "startDate": "2026-05-28T09:10:00.000Z",
+          "endDate": "2026-05-30T04:00:00.000Z",
+          "eventCount": 26,
           "seasonPhase": null
         },
         {
           "sport": "racing",
           "displayName": "Rally Japan",
           "leagueKey": "wrc",
-          "dateRangeLabel": "May 28",
-          "startDate": "2026-05-28T00:00:00.000Z",
-          "endDate": "2026-05-28T00:00:00.000Z",
-          "eventCount": 1,
+          "dateRangeLabel": "May 28–30",
+          "startDate": "2026-05-28T23:00:00.000Z",
+          "endDate": "2026-05-30T23:00:00.000Z",
+          "eventCount": 3,
           "seasonPhase": null
         },
         {
@@ -825,6 +913,16 @@
           "endDate": "2026-05-31T08:00:00.000Z",
           "eventCount": 2,
           "seasonPhase": null
+        },
+        {
+          "sport": "hockey",
+          "displayName": "NHL",
+          "leagueKey": "nhl",
+          "dateRangeLabel": "May 30–31",
+          "startDate": "2026-05-30T00:00:00.000Z",
+          "endDate": "2026-05-31T16:00:00.000Z",
+          "eventCount": 2,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "cricket",
@@ -987,10 +1085,10 @@
           "sport": "soccer",
           "displayName": "USL",
           "leagueKey": "usl",
-          "dateRangeLabel": "Jun 4–17",
+          "dateRangeLabel": "Jun 4–18",
           "startDate": "2026-06-04T00:00:00.000Z",
-          "endDate": "2026-06-17T19:00:00.000Z",
-          "eventCount": 18,
+          "endDate": "2026-06-18T00:30:00.000Z",
+          "eventCount": 20,
           "seasonPhase": "Regular"
         },
         {
@@ -1034,16 +1132,6 @@
           "seasonPhase": null
         },
         {
-          "sport": "soccer",
-          "displayName": "International Friendly",
-          "leagueKey": "intl-friendly",
-          "dateRangeLabel": "Jun 6–10",
-          "startDate": "2026-06-06T04:00:00.000Z",
-          "endDate": "2026-06-10T01:00:00.000Z",
-          "eventCount": 7,
-          "seasonPhase": null
-        },
-        {
           "sport": "rugby",
           "displayName": "English Premiership",
           "leagueKey": "premiership",
@@ -1061,6 +1149,16 @@
           "startDate": "2026-06-06T18:30:00.000Z",
           "endDate": "2026-06-06T18:30:00.000Z",
           "eventCount": 1,
+          "seasonPhase": null
+        },
+        {
+          "sport": "soccer",
+          "displayName": "International Friendly",
+          "leagueKey": "intl-friendly",
+          "dateRangeLabel": "Jun 6–10",
+          "startDate": "2026-06-06T18:30:00.000Z",
+          "endDate": "2026-06-10T01:00:00.000Z",
+          "eventCount": 7,
           "seasonPhase": null
         },
         {
@@ -1137,10 +1235,10 @@
           "sport": "racing",
           "displayName": "Acropolis Rally Greece",
           "leagueKey": "wrc",
-          "dateRangeLabel": "Jun 25",
+          "dateRangeLabel": "Jun 25–28",
           "startDate": "2026-06-25T06:00:00.000Z",
-          "endDate": "2026-06-25T06:00:00.000Z",
-          "eventCount": 1,
+          "endDate": "2026-06-28T06:00:00.000Z",
+          "eventCount": 4,
           "seasonPhase": null
         },
         {
@@ -1295,26 +1393,6 @@
           "seasonPhase": "Final"
         },
         {
-          "sport": "hockey",
-          "displayName": "NHL",
-          "leagueKey": "nhl",
-          "dateRangeLabel": "May 27–31",
-          "startDate": "2026-05-27T01:00:00.000Z",
-          "endDate": "2026-05-31T16:00:00.000Z",
-          "eventCount": 4,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "tennis",
-          "displayName": "Roland Garros",
-          "leagueKey": "grand-slam",
-          "dateRangeLabel": "May 27–29",
-          "startDate": "2026-05-27T09:00:00.000Z",
-          "endDate": "2026-05-29T04:00:00.000Z",
-          "eventCount": 27,
-          "seasonPhase": null
-        },
-        {
           "sport": "cricket",
           "displayName": "Test Cricket",
           "leagueKey": "test",
@@ -1345,13 +1423,23 @@
           "seasonPhase": "Regular"
         },
         {
+          "sport": "tennis",
+          "displayName": "Roland Garros",
+          "leagueKey": "grand-slam",
+          "dateRangeLabel": "May 28–30",
+          "startDate": "2026-05-28T09:10:00.000Z",
+          "endDate": "2026-05-30T04:00:00.000Z",
+          "eventCount": 26,
+          "seasonPhase": null
+        },
+        {
           "sport": "racing",
           "displayName": "Rally Japan",
           "leagueKey": "wrc",
-          "dateRangeLabel": "May 28",
-          "startDate": "2026-05-28T00:00:00.000Z",
-          "endDate": "2026-05-28T00:00:00.000Z",
-          "eventCount": 1,
+          "dateRangeLabel": "May 28–30",
+          "startDate": "2026-05-28T23:00:00.000Z",
+          "endDate": "2026-05-30T23:00:00.000Z",
+          "eventCount": 3,
           "seasonPhase": null
         },
         {
@@ -1403,6 +1491,16 @@
           "endDate": "2026-05-31T23:00:00.000Z",
           "eventCount": 8,
           "seasonPhase": "Regular"
+        },
+        {
+          "sport": "hockey",
+          "displayName": "NHL",
+          "leagueKey": "nhl",
+          "dateRangeLabel": "May 30–31",
+          "startDate": "2026-05-30T00:00:00.000Z",
+          "endDate": "2026-05-31T16:00:00.000Z",
+          "eventCount": 2,
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "rugby",
