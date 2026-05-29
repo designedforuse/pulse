@@ -30,7 +30,8 @@ import { displayTeamName } from "@/utils/teams";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
-import UnifiedEventCard, { formatCricketLiveDetail, TennisScoreboard, getGrandPrixFlag, getDriverFlag } from "@/components/UnifiedEventCard";
+import UnifiedEventCard, { formatCricketLiveDetail, TennisScoreboard, getGrandPrixFlag, getDriverFlag, WrcStageWinners } from "@/components/UnifiedEventCard";
+import { useWrcStages, getWrcRoundBaseId, getStagesForLeg } from "@/lib/wrc-stages-context";
 import CatchUpCard from "@/components/CatchUpCard";
 import {
   getSportColor,
@@ -376,6 +377,13 @@ function ChaosCard({
   const wrcDaySuffix = isWrc && event.dayNumber != null && event.totalDays != null
     ? ` · Day ${event.dayNumber} of ${event.totalDays}`
     : "";
+  const wrcRoundId = isWrc ? getWrcRoundBaseId(event.id) : null;
+  const wrcStagesResult = useWrcStages(wrcRoundId, isWrc && (isLiveState || isFinalState), isWrc && isLiveState);
+  const wrcLegAllStages = isWrc && event.dayNumber != null
+    ? getStagesForLeg(wrcStagesResult, event.dayNumber)
+    : [];
+  const wrcLegStages = wrcLegAllStages.filter((s) => s.winner != null);
+  const wrcLegTotal = wrcLegAllStages.filter((s) => !s.cancelled).length;
 
   const leaderName = score?.racingLeader;
   const leaderFlag = getDriverFlag(score?.racingLeaderCountry);
@@ -515,6 +523,7 @@ function ChaosCard({
                     </Text>
                   </View>
                 ) : null}
+                {isWrc && <WrcStageWinners stages={wrcLegStages} totalStages={wrcLegTotal} />}
               </View>
             ) : matchupText ? (
               <View style={isSvnsSession ? styles.svnsPrimaryContent : undefined}>

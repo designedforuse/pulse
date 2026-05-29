@@ -831,7 +831,7 @@ export interface UnifiedEventCardProps {
   espnLayout?: boolean;
 }
 
-function WrcStageWinners({ stages, totalStages }: { stages: WrcStage[]; totalStages: number }) {
+export function WrcStageWinners({ stages, totalStages }: { stages: WrcStage[]; totalStages: number }) {
   if (stages.length === 0) return null;
   const sportColor = getSportColor("racing");
   return (
