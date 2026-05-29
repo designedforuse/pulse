@@ -26,6 +26,7 @@ import { fetchTennisEvents, mergeTennisEvents } from "./updateTennis";
 import { fetchF1Events, mergeF1Events } from "./updateF1";
 import { fetchWrcEvents, mergeWrcEvents } from "./updateWrc";
 import { fetchPaddlingEvents, mergePaddlingEvents } from "./updatePaddling";
+import { fetchSchoolsRugbyEvents, mergeSchoolsRugbyEvents } from "./updateSchoolsRugby";
 import { fetchGolfEvents, mergeGolfEvents } from "./updateGolf";
 import { fetchMarathonEvents, mergeMarathonEvents } from "./updateMarathon";
 import { fetchComradesEvents, mergeComradesEvents } from "./updateComrades";
@@ -305,7 +306,7 @@ async function main() {
   const existingAhl = loadExistingByPrefix("ahl-");
   const existingEchl = loadExistingByPrefix("echl-");
   const existingBu = loadExistingByPrefix("ncaa-bu-");
-  const existingRugby = loadExistingByPrefix("rugby-").filter((e: AppEvent) => !e.id.startsWith("rugby-championscup-") && !e.id.startsWith("rugby-challengecup-") && !e.id.startsWith("rugby-mlr-"));
+  const existingRugby = loadExistingByPrefix("rugby-").filter((e: AppEvent) => !e.id.startsWith("rugby-championscup-") && !e.id.startsWith("rugby-challengecup-") && !e.id.startsWith("rugby-mlr-") && !e.id.startsWith("rugby-schools-"));
   const existingChampionsCup = loadExistingByPrefix("rugby-championscup-");
   const existingChallengeCup = loadExistingByPrefix("rugby-challengecup-");
   const existingMlr = loadExistingByPrefix("rugby-mlr-");
@@ -328,6 +329,7 @@ async function main() {
   const existingF1 = loadExistingByPrefix("f1-");
   const existingWrc = loadExistingByPrefix("racing-wrc-");
   const existingPaddling = loadExistingByPrefix("paddling-sabig3-");
+  const existingSchoolsRugby = loadExistingByPrefix("rugby-schools-");
   const existingGolf = loadExistingByPrefix("golf-");
   const existingMarathon = loadExistingByPrefix("athletics-marathon-");
   const existingComrades = loadExistingByPrefix("athletics-comrades-");
@@ -387,6 +389,7 @@ async function main() {
   const epicSeriesFetchResult = fetchEpicSeriesEvents();
   const wrcFetchResult = fetchWrcEvents();
   const paddlingFetchResult = fetchPaddlingEvents();
+  const schoolsRugbyFetchResult = fetchSchoolsRugbyEvents();
   const comradesFetchResult = fetchComradesEvents();
   const tennisFetchResult = await fetchTennisEvents();
 
@@ -447,6 +450,7 @@ async function main() {
   const f1Result = mergeF1Events(existingF1, f1FetchResult.events);
   const wrcResult = mergeWrcEvents(existingWrc, wrcFetchResult.events, now);
   const paddlingResult = mergePaddlingEvents(existingPaddling, paddlingFetchResult.events, now);
+  const schoolsRugbyResult = mergeSchoolsRugbyEvents(existingSchoolsRugby, schoolsRugbyFetchResult.events, now);
   const golfResult = mergeGolfEvents(existingGolf, golfFetchResult.events, now);
   const marathonResult = mergeMarathonEvents(existingMarathon, marathonFetchResult.events, now);
   const comradesResult = mergeComradesEvents(existingComrades, comradesFetchResult.events, now);
@@ -562,6 +566,8 @@ async function main() {
   console.log(`  WRC merge: +${wrcResult.added} added, ~${wrcResult.updated} updated, -${wrcResult.pruned} pruned → ${wrcResult.merged.length} total`);
   console.log(`  Paddling source: ${paddlingFetchResult.sourceUsed} (${paddlingFetchResult.count} races)`);
   console.log(`  Paddling merge: +${paddlingResult.added} added, ~${paddlingResult.updated} updated, -${paddlingResult.pruned} pruned → ${paddlingResult.merged.length} total`);
+  console.log(`  SA Schools Rugby source: ${schoolsRugbyFetchResult.sourceUsed} (${schoolsRugbyFetchResult.count} events)`);
+  console.log(`  SA Schools Rugby merge: +${schoolsRugbyResult.added} added, ~${schoolsRugbyResult.updated} updated, -${schoolsRugbyResult.pruned} pruned → ${schoolsRugbyResult.merged.length} total`);
   console.log(`  Comrades source: ${comradesFetchResult.sourceUsed} (${comradesFetchResult.count} race)`);
   console.log(`  Comrades merge: +${comradesResult.added} added, ~${comradesResult.updated} updated, -${comradesResult.pruned} pruned → ${comradesResult.merged.length} total`);
   console.log(`  Golf source: ${golfFetchResult.sourceUsed} (${golfFetchResult.count} sessions across ${Object.keys(golfFetchResult.tournamentCounts).length} tournaments)`);
@@ -593,7 +599,7 @@ async function main() {
   console.log(`  CAF CL source: ${cafClFetchResult.sourceUsed} (${cafClFetchResult.count} events)`);
   console.log(`  CAF CL merge: +${cafClResult.added} added, ~${cafClResult.updated} updated, -${cafClResult.pruned} pruned → ${cafClResult.merged.length} total`);
 
-  const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged, ...buResult.merged, ...rugbyResult.merged, ...championsCupResult.merged, ...challengeCupResult.merged, ...mlrResult.merged, ...cricketResult.merged, ...iplResult.merged, ...t20WcResult.merged, ...olympicHockeyResult.merged, ...eplResult.merged, ...mlsResult.merged, ...serieAResult.merged, ...laLigaResult.merged, ...bundesligaResult.merged, ...ligue1Result.merged, ...nwslResult.merged, ...uslResult.merged, ...championsLeagueResult.merged, ...europaLeagueResult.merged, ...faCupResult.merged, ...cafClResult.merged, ...tennisResult.merged, ...f1Result.merged, ...wrcResult.merged, ...paddlingResult.merged, ...golfResult.merged, ...marathonResult.merged, ...comradesResult.merged, ...horseRacingResult.merged, ...cyclingResult.merged, ...diamondLeagueResult.merged, ...utmbResult.merged, ...goldenTrailResult.merged, ...epicSeriesResult.merged, ...nbaResult.merged, ...ncaabResult.merged, ...intlSoccerResult.merged, ...mlbResult.merged, ...shlResult.merged].sort(
+  const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged, ...buResult.merged, ...rugbyResult.merged, ...championsCupResult.merged, ...challengeCupResult.merged, ...mlrResult.merged, ...cricketResult.merged, ...iplResult.merged, ...t20WcResult.merged, ...olympicHockeyResult.merged, ...eplResult.merged, ...mlsResult.merged, ...serieAResult.merged, ...laLigaResult.merged, ...bundesligaResult.merged, ...ligue1Result.merged, ...nwslResult.merged, ...uslResult.merged, ...championsLeagueResult.merged, ...europaLeagueResult.merged, ...faCupResult.merged, ...cafClResult.merged, ...tennisResult.merged, ...f1Result.merged, ...wrcResult.merged, ...paddlingResult.merged, ...schoolsRugbyResult.merged, ...golfResult.merged, ...marathonResult.merged, ...comradesResult.merged, ...horseRacingResult.merged, ...cyclingResult.merged, ...diamondLeagueResult.merged, ...utmbResult.merged, ...goldenTrailResult.merged, ...epicSeriesResult.merged, ...nbaResult.merged, ...ncaabResult.merged, ...intlSoccerResult.merged, ...mlbResult.merged, ...shlResult.merged].sort(
     (a, b) =>
       new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
   );
@@ -748,6 +754,11 @@ async function main() {
         lastFetchAt: wrcFetchResult.count > 0 ? nowIso : (prevMeta?.sources?.wrc?.lastFetchAt || nowIso),
         sourceName: "Hardcoded Schedule",
       },
+      schoolsRugby: {
+        count: schoolsRugbyResult.merged.length,
+        lastFetchAt: schoolsRugbyFetchResult.count > 0 ? nowIso : (prevMeta?.sources?.schoolsRugby?.lastFetchAt || nowIso),
+        sourceName: "Hardcoded Schedule",
+      },
       paddling: {
         count: paddlingResult.merged.length,
         lastFetchAt: paddlingFetchResult.count > 0 ? nowIso : (prevMeta?.sources?.paddling?.lastFetchAt || nowIso),
@@ -800,7 +811,7 @@ async function main() {
 
   const output = {
     lastUpdated: nowIso,
-    sources: ["NHL API (api-web.nhle.com)", "AHL (HockeyTech / Odds API fallback)", "ECHL (API-Hockey / HockeyTech web)", "NCAA (College Hockey News)", "Rugby (iCal feeds)", "Champions Cup (iCal feed)", "MLR (hardcoded)", "Cricket (CricAPI)", "Olympic Hockey (hardcoded)", "EPL (iCal feed)", "MLS (iCal feed)", "Serie A (iCal feed)", "La Liga (iCal feed)", "Bundesliga (iCal feed)", "Ligue 1 (iCal feed)", "NWSL (iCal feed)", "USL (ESPN API)", "Champions League (ESPN API)", "Europa League (ESPN API)", "FA Cup (ESPN API)", "CAF Champions League (ESPN API)", "Tennis (hardcoded)", "F1 (ESPN API)", "WRC (hardcoded)", "Paddling SA Big Three (hardcoded)", "Comrades Marathon (hardcoded)", "NBA (ESPN API)", "NCAAB Big West (ESPN API)", "SHL (Odds API)"],
+    sources: ["NHL API (api-web.nhle.com)", "AHL (HockeyTech / Odds API fallback)", "ECHL (API-Hockey / HockeyTech web)", "NCAA (College Hockey News)", "Rugby (iCal feeds)", "Champions Cup (iCal feed)", "MLR (hardcoded)", "Cricket (CricAPI)", "Olympic Hockey (hardcoded)", "EPL (iCal feed)", "MLS (iCal feed)", "Serie A (iCal feed)", "La Liga (iCal feed)", "Bundesliga (iCal feed)", "Ligue 1 (iCal feed)", "NWSL (iCal feed)", "USL (ESPN API)", "Champions League (ESPN API)", "Europa League (ESPN API)", "FA Cup (ESPN API)", "CAF Champions League (ESPN API)", "Tennis (hardcoded)", "F1 (ESPN API)", "WRC (hardcoded)", "Paddling SA Big Three (hardcoded)", "SA Schools Rugby (hardcoded)", "Comrades Marathon (hardcoded)", "NBA (ESPN API)", "NCAAB Big West (ESPN API)", "SHL (Odds API)"],
     ahlSourceUsed: ahlFetchResult.sourceUsed,
     ahlOddsKeyUsed: ahlFetchResult.detectedOddsKey,
     echlSourceUsed: echlFetchResult.sourceUsed,

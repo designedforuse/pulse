@@ -103,6 +103,7 @@ const NO_TINT_LOGOS = new Set<string>();
 
 const PROVIDER_TEXT_LABELS: Record<string, string> = {
   youtube: "YOUTUBE",
+  supersportschools: "SS SCHOOLS",
 };
 
 let _warnedIds: Set<string> | null = null;

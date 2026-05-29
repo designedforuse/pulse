@@ -28,6 +28,7 @@ export const PROVIDER_LIST: ProviderEntry[] = [
   { id: "rugbypasstv",   label: "RugbyPass TV",           logoId: "rugbypasstv" },
   { id: "ion",           label: "ION",                    logoId: "ion" },
   { id: "youtube",       label: "YouTube",                logoId: "youtube" },
+  { id: "supersportschools", label: "SuperSport Schools", logoId: "supersportschools" },
 ];
 
 export function getEventBroadcasterIds(event: SportEvent): string[] {
@@ -51,6 +52,7 @@ export function getEventBroadcasterIds(event: SportEvent): string[] {
     case "nbaleaguepass": return ["nbaleaguepass"];
     case "mlbtv":     return ["mlbtv"];
     case "youtube":   return ["youtube"];
+    case "supersportschools": return ["supersportschools"];
     case "youtubetv": {
       const ids: string[] = [];
       const reason = event.providerReason || "";

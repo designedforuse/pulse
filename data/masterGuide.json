@@ -122,7 +122,8 @@
             "English Premiership",
             "Six Nations",
             "Champions Cup",
-            "MLR"
+            "MLR",
+            "SA Schools Rugby"
           ]
         },
         {
@@ -219,6 +220,12 @@
       "packageName": "com.google.android.youtube",
       "activity": "com.google.android.apps.youtube.app.WatchWhileActivity",
       "launchUrl": "https://www.youtube.com"
+    },
+    {
+      "id": "supersportschools",
+      "name": "SuperSport Schools",
+      "packageName": "com.univtec.supersports.app",
+      "launchUrl": "https://supersportschools.com"
     },
     {
       "id": "youtubetv",

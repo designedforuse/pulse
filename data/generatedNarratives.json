@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-29T02:57:17.653Z",
+  "lastUpdated": "2026-05-29T05:17:21.232Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -88,7 +88,7 @@
         ],
         "playersIngested": 377,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-29T02:57:17.653Z"
+        "timestamp": "2026-05-29T05:17:21.232Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -98,7 +98,7 @@
     "candidateCountAfterCap": 8,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1974.9549036111111,
+      "hoursUntil": -1977.2892311111111,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -199,7 +199,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-05-29T02:57:17.653Z",
+      "triggeredAt": "2026-05-29T05:17:21.232Z",
       "expiresAt": "2026-05-30T17:30:00.000Z",
       "kind": "clinch_watch",
       "region": "SouthAfrica",
@@ -231,7 +231,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-05-29T02:57:17.653Z",
+      "triggeredAt": "2026-05-29T05:17:21.232Z",
       "expiresAt": "2026-05-29T12:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -257,13 +257,13 @@
     {
       "id": "marquee_match",
       "title": "Marquee Match: Champions League",
-      "subtitle": "Arsenal vs Paris Saint-Germain — Champions League · in 2 days",
+      "subtitle": "Arsenal vs Paris Saint-Germain — Champions League · tomorrow",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-05-29T02:57:17.653Z",
+      "triggeredAt": "2026-05-29T05:17:21.232Z",
       "expiresAt": "2026-05-30T20:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -279,7 +279,7 @@
         "eventIds": [
           "soccer-championsleague-20260530-1600-arsenal-at-paris-saint-germain"
         ],
-        "reason": "Top Champions League fixture (Arsenal vs Paris Saint-Germain) in 2 days"
+        "reason": "Top Champions League fixture (Arsenal vs Paris Saint-Germain) tomorrow"
       },
       "sports": [
         "soccer"
@@ -303,7 +303,7 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-29T02:57:17.653Z",
+      "triggeredAt": "2026-05-29T05:17:21.232Z",
       "expiresAt": "2026-06-01T23:00:00.000Z",
       "kind": "rally_weekend",
       "region": "Other",
@@ -340,8 +340,8 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-29T02:57:17.653Z",
-      "expiresAt": "2026-06-05T02:57:17.653Z",
+      "triggeredAt": "2026-05-29T05:17:21.232Z",
+      "expiresAt": "2026-06-05T05:17:21.232Z",
       "kind": "grand_tour",
       "region": "Other",
       "regionPriority": 99,
@@ -382,8 +382,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-29T02:57:17.653Z",
-      "expiresAt": "2026-06-05T02:57:17.653Z",
+      "triggeredAt": "2026-05-29T05:17:21.232Z",
+      "expiresAt": "2026-06-05T05:17:21.232Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -421,13 +421,13 @@
     {
       "id": "ipl_storyline",
       "title": "Tonight in the IPL",
-      "subtitle": "Rajasthan Royals vs Gujarat Titans — in 11h",
+      "subtitle": "Rajasthan Royals vs Gujarat Titans — in 9h",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-29T02:57:17.653Z",
+      "triggeredAt": "2026-05-29T05:17:21.232Z",
       "expiresAt": "2026-05-29T22:00:00.000Z",
       "kind": "ipl_storyline",
       "region": "Other",
@@ -470,7 +470,7 @@
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-05-29T02:57:17.653Z",
+      "triggeredAt": "2026-05-29T05:17:21.232Z",
       "expiresAt": "2026-06-01T18:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -925,6 +925,16 @@
           "seasonPhase": "Playoffs"
         },
         {
+          "sport": "rugby",
+          "displayName": "SA Schools Rugby",
+          "leagueKey": "schools-rugby",
+          "dateRangeLabel": "May 30",
+          "startDate": "2026-05-30T11:00:00.000Z",
+          "endDate": "2026-05-30T11:00:00.000Z",
+          "eventCount": 3,
+          "seasonPhase": null
+        },
+        {
           "sport": "cricket",
           "displayName": "ODI Cricket",
           "leagueKey": "odi",
@@ -1129,6 +1139,16 @@
           "startDate": "2026-06-05T11:30:00.000Z",
           "endDate": "2026-06-07T13:00:00.000Z",
           "eventCount": 5,
+          "seasonPhase": null
+        },
+        {
+          "sport": "rugby",
+          "displayName": "SA Schools Rugby",
+          "leagueKey": "schools-rugby",
+          "dateRangeLabel": "Jun 6–29",
+          "startDate": "2026-06-06T11:00:00.000Z",
+          "endDate": "2026-06-29T07:00:00.000Z",
+          "eventCount": 7,
           "seasonPhase": null
         },
         {
@@ -1511,6 +1531,16 @@
           "endDate": "2026-05-31T05:05:00.000Z",
           "eventCount": 2,
           "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "rugby",
+          "displayName": "SA Schools Rugby",
+          "leagueKey": "schools-rugby",
+          "dateRangeLabel": "May 30",
+          "startDate": "2026-05-30T11:00:00.000Z",
+          "endDate": "2026-05-30T11:00:00.000Z",
+          "eventCount": 3,
+          "seasonPhase": null
         },
         {
           "sport": "cricket",

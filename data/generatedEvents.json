@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-29T02:57:17.513Z",
+  "lastUpdated": "2026-05-29T05:17:21.090Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -26,6 +26,7 @@
     "F1 (ESPN API)",
     "WRC (hardcoded)",
     "Paddling SA Big Three (hardcoded)",
+    "SA Schools Rugby (hardcoded)",
     "Comrades Marathon (hardcoded)",
     "NBA (ESPN API)",
     "NCAAB Big West (ESPN API)",
@@ -204,22 +205,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-05-29T02:57:17.513Z",
+    "lastRefreshAt": "2026-05-29T05:17:21.090Z",
     "sources": {
       "nhl": {
         "count": 3,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 27,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 22,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -231,7 +232,7 @@
       },
       "rugby": {
         "count": 72,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 12,
@@ -251,93 +252,93 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 27,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 142,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 20,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 20,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 11,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 9,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 26,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 45,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-21T00:00:00.000Z"
       },
       "championsCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "challengeCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 15,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 1,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 1,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
         "count": 1,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-16T14:00:00.000Z"
       },
       "tennis": {
         "count": 28,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "French Open": 26,
@@ -346,7 +347,7 @@
       },
       "f1": {
         "count": 35,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Canadian Grand Prix": 5,
@@ -360,22 +361,27 @@
       },
       "wrc": {
         "count": 31,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
+        "sourceName": "Hardcoded Schedule"
+      },
+      "schoolsRugby": {
+        "count": 19,
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "Hardcoded Schedule"
       },
       "paddling": {
         "count": 2,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "Hardcoded Schedule"
       },
       "comrades": {
         "count": 1,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "Hardcoded Schedule"
       },
       "golf": {
         "count": 11,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "PGA Championship": 2,
@@ -385,7 +391,7 @@
       },
       "marathon": {
         "count": 2,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Sydney Marathon": 1,
@@ -414,7 +420,7 @@
       },
       "cafcl": {
         "count": 6,
-        "lastFetchAt": "2026-05-29T02:57:17.513Z",
+        "lastFetchAt": "2026-05-29T05:17:21.090Z",
         "sourceName": "ESPN API"
       }
     }
@@ -6898,6 +6904,51 @@
       "leagueKey": "urc"
     },
     {
+      "id": "rugby-schools-paulroos-bishops-2026-05-30",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Bishops",
+      "homeTeam": "Paul Roos",
+      "startTimeLocal": "2026-05-30T11:00:00.000Z",
+      "endTimeLocal": "2026-05-30T12:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
+    },
+    {
+      "id": "rugby-schools-sacs-paarlboys-2026-05-30",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Paarl Boys' High",
+      "homeTeam": "SACS",
+      "startTimeLocal": "2026-05-30T11:00:00.000Z",
+      "endTimeLocal": "2026-05-30T12:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
+    },
+    {
+      "id": "rugby-schools-wynberg-paarlgim-2026-05-30",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Paarl Gimnasium",
+      "homeTeam": "Wynberg",
+      "startTimeLocal": "2026-05-30T11:00:00.000Z",
+      "endTimeLocal": "2026-05-30T12:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
+    },
+    {
       "id": "cricket-odi-dzfa94",
       "cricketMatchId": "7b571f10-5c4b-428b-ad83-e141b53bb077",
       "sport": "cricket",
@@ -7941,6 +7992,51 @@
       "competitionName": "Monaco Grand Prix"
     },
     {
+      "id": "rugby-schools-stellenberg-bishops-2026-06-06",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Bishops",
+      "homeTeam": "Stellenberg",
+      "startTimeLocal": "2026-06-06T11:00:00.000Z",
+      "endTimeLocal": "2026-06-06T12:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
+    },
+    {
+      "id": "rugby-schools-boland-paarlboys-2026-06-06",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Paarl Boys' High",
+      "homeTeam": "Boland Landbou",
+      "startTimeLocal": "2026-06-06T11:00:00.000Z",
+      "endTimeLocal": "2026-06-06T12:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
+    },
+    {
+      "id": "rugby-schools-paarlgim-paulroos-2026-06-06",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Paul Roos",
+      "homeTeam": "Paarl Gimnasium",
+      "startTimeLocal": "2026-06-06T11:00:00.000Z",
+      "endTimeLocal": "2026-06-06T12:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
+    },
+    {
       "id": "f1-espn-401839066",
       "sport": "racing",
       "league": "F1",
@@ -8533,6 +8629,21 @@
       "competitionName": "Barcelona-Catalunya Grand Prix"
     },
     {
+      "id": "rugby-schools-boland-stellenberg-2026-06-12",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Stellenberg",
+      "homeTeam": "Boland Landbou",
+      "startTimeLocal": "2026-06-12T17:00:00.000Z",
+      "endTimeLocal": "2026-06-12T18:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
+    },
+    {
       "id": "soccer-fifa-world-cup-20260612-1900-bosnia-herzegovina-at-canada",
       "sport": "soccer",
       "league": "FIFA World Cup",
@@ -8578,6 +8689,36 @@
       "eventType": "session",
       "sessionTitle": "Practice 3",
       "competitionName": "Barcelona-Catalunya Grand Prix"
+    },
+    {
+      "id": "rugby-schools-bishops-rondebosch-2026-06-13",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Rondebosch",
+      "homeTeam": "Bishops",
+      "startTimeLocal": "2026-06-13T11:00:00.000Z",
+      "endTimeLocal": "2026-06-13T12:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
+    },
+    {
+      "id": "rugby-schools-drostdy-paarlgim-2026-06-13",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Paarl Gimnasium",
+      "homeTeam": "Drostdy",
+      "startTimeLocal": "2026-06-13T11:00:00.000Z",
+      "endTimeLocal": "2026-06-13T12:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
     },
     {
       "id": "f1-espn-401839071",
@@ -10173,6 +10314,25 @@
       "broadcastNetworks": "FOX, Tele, Peacock"
     },
     {
+      "id": "rugby-schools-grant-khomo-2026",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "",
+      "homeTeam": "U16 Grant Khomo Week",
+      "startTimeLocal": "2026-06-29T07:00:00.000Z",
+      "endTimeLocal": "2026-07-03T16:00:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "eventType": "session",
+      "sessionTitle": "U16 Grant Khomo Week",
+      "tournamentName": "U16 Grant Khomo Week",
+      "competitionType": "domestic",
+      "venue": "Kearsney College, Durban"
+    },
+    {
       "id": "soccer-fifa-world-cup-20260629-1700-group-f-2nd-place-at-group-c-winner",
       "sport": "soccer",
       "league": "FIFA World Cup",
@@ -10677,6 +10837,25 @@
       "leagueKey": "fifa-world-cup",
       "providerReason": "fifa-world-cup-fox",
       "broadcastNetworks": "FOX, Tele, Peacock"
+    },
+    {
+      "id": "rugby-schools-craven-week-2026",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "",
+      "homeTeam": "FNB U18 Craven Week",
+      "startTimeLocal": "2026-07-06T07:00:00.000Z",
+      "endTimeLocal": "2026-07-11T16:00:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "eventType": "session",
+      "sessionTitle": "FNB U18 Craven Week",
+      "tournamentName": "FNB U18 Craven Week",
+      "competitionType": "domestic",
+      "venue": "Grey High School, Gqeberha"
     },
     {
       "id": "cycling-grand-tour-tour-de-france-2026-2026-07-06-stage-3",
@@ -11641,6 +11820,21 @@
       "competitionName": "Hungarian Grand Prix"
     },
     {
+      "id": "rugby-schools-boland-wynberg-2026-07-25",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Wynberg",
+      "homeTeam": "Boland Landbou",
+      "startTimeLocal": "2026-07-25T11:00:00.000Z",
+      "endTimeLocal": "2026-07-25T12:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
+    },
+    {
       "id": "cycling-grand-tour-tour-de-france-2026-2026-07-25-stage-20",
       "sport": "cycling",
       "league": "Grand Tour",
@@ -11801,6 +11995,52 @@
       "totalDays": 4
     },
     {
+      "id": "rugby-schools-paulroos-boland-2026-08-01",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Boland Landbou",
+      "homeTeam": "Paul Roos",
+      "startTimeLocal": "2026-08-01T11:00:00.000Z",
+      "endTimeLocal": "2026-08-01T12:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
+    },
+    {
+      "id": "rugby-schools-wynberg-bishops-2026-08-01",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Bishops",
+      "homeTeam": "Wynberg",
+      "startTimeLocal": "2026-08-01T11:00:00.000Z",
+      "endTimeLocal": "2026-08-01T12:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
+    },
+    {
+      "id": "rugby-schools-paarl-derby-2026",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Paarl Gimnasium",
+      "homeTeam": "Paarl Boys' High",
+      "startTimeLocal": "2026-08-01T13:00:00.000Z",
+      "endTimeLocal": "2026-08-01T14:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic",
+      "venue": "Faure Street Stadium, Paarl"
+    },
+    {
       "id": "racing-wrc-finland-2026-day4",
       "sport": "racing",
       "league": "WRC",
@@ -11837,6 +12077,51 @@
       "sessionTitle": "GTWS — Sierre-Zinal",
       "competitionType": "international",
       "tournamentName": "GTWS — Sierre-Zinal"
+    },
+    {
+      "id": "rugby-schools-boland-oakdale-2026-08-08",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Oakdale",
+      "homeTeam": "Boland Landbou",
+      "startTimeLocal": "2026-08-08T11:00:00.000Z",
+      "endTimeLocal": "2026-08-08T12:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
+    },
+    {
+      "id": "rugby-schools-bishops-sacs-2026-08-15",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "SACS",
+      "homeTeam": "Bishops",
+      "startTimeLocal": "2026-08-15T11:00:00.000Z",
+      "endTimeLocal": "2026-08-15T12:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
+    },
+    {
+      "id": "rugby-schools-paulroos-greycollege-2026-08-15",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Grey College",
+      "homeTeam": "Paul Roos",
+      "startTimeLocal": "2026-08-15T11:00:00.000Z",
+      "endTimeLocal": "2026-08-15T12:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
     },
     {
       "id": "cycling-epic-series-swiss-epic-2026",
@@ -11890,6 +12175,21 @@
       "sessionTitle": "Diamond League — Lausanne",
       "competitionType": "international",
       "tournamentName": "Diamond League — Lausanne"
+    },
+    {
+      "id": "rugby-schools-rondebosch-bishops-2026-08-22",
+      "sport": "rugby",
+      "league": "SA Schools Rugby",
+      "awayTeam": "Bishops",
+      "homeTeam": "Rondebosch",
+      "startTimeLocal": "2026-08-22T11:00:00.000Z",
+      "endTimeLocal": "2026-08-22T12:50:00.000Z",
+      "providerId": "supersportschools",
+      "providerReason": "schools-supersport",
+      "isLive": false,
+      "source": "schools-rugby-hardcoded",
+      "leagueKey": "schools-rugby",
+      "competitionType": "domestic"
     },
     {
       "id": "cycling-grand-tour-vuelta-a-espa-a-2026-2026-08-22-stage-1",

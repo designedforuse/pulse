@@ -229,6 +229,7 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   rugbypasstv: "RugbyPass TV",
   mlbtv: "MLB.TV",
   youtube: "YouTube",
+  supersportschools: "SuperSport Schools",
 };
 
 // Broadcaster IDs that are valid as display logos — streaming services excluded
@@ -252,6 +253,7 @@ const BROADCASTER_IDS = new Set([
   "espn2",
   "mlbtv",
   "youtube",
+  "supersportschools",
 ]);
 
 // Returns [displayId, launchProviderId]
@@ -377,6 +379,7 @@ function resolveRugbyBroadcastId(event: SportEvent): [string, string] {
   if (league === "Six Nations") return ["nbcsn", "youtubetv"];
   if (league === "MLR") return ["espn", "disneyplus"];
   if (FLORUGBY_LEAGUES.has(league)) return ["flosports", "flosports"];
+  if (league === "SA Schools Rugby") return ["supersportschools", "supersportschools"];
   return ["", ""];
 }
 
