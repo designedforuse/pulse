@@ -24,6 +24,7 @@ const PROVIDER_IMAGES: Record<string, any> = {
   rugbypasstv:   require("@/assets/providers/rugbypasstv.png"),
   ion:           require("@/assets/providers/ion.png"),
   mlbtv:         require("@/assets/providers/mlbtv.png"),
+  youtube:       require("@/assets/providers/youtube.png"),
   // ── Aliases → approved logos ──────────────────────────────────────────────
   espn2:         require("@/assets/providers/espn.png"),      // ESPN2 → ESPN
   flohockey:     require("@/assets/providers/flosports.png"), // FloHockey → FloSports
@@ -58,6 +59,7 @@ const LOGO_SCALE: Record<string, number> = {
   rugbypasstv:   1.2,
   ion:           0.9,
   mlbtv:         1.2,
+  youtube:       1.0,
   // Aliases
   espn2:         0.65,
   flohockey:     1.2,
@@ -90,6 +92,7 @@ const LOGO_ASPECT: Record<string, number> = {
   rugbypasstv:   0.73,
   ion:           2.00,
   mlbtv:         4.02,
+  youtube:       4.48,
   // Aliases
   espn2:         4.05,
   flohockey:     8.77,
@@ -99,10 +102,9 @@ const LOGO_ASPECT: Record<string, number> = {
 };
 
 // Logos that are already full-colour and should not be white-tinted
-const NO_TINT_LOGOS = new Set<string>();
+const NO_TINT_LOGOS = new Set<string>(["youtube"]);
 
 const PROVIDER_TEXT_LABELS: Record<string, string> = {
-  youtube: "YOUTUBE",
   supersportschools: "SS SCHOOLS",
 };
 
