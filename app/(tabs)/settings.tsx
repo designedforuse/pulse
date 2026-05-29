@@ -130,10 +130,10 @@ function FavoritesSection() {
   };
   const sportLeagues: Record<string, string[]> = {
     hockey: ["NHL", "AHL", "ECHL", "SHL"],
-    rugby: ["English Premiership", "Top 14", "URC", "Super Rugby", "Champions Cup", "Six Nations", "Japan League One", "MLR", "HSBC SVNS", "SA Schools Rugby"],
+    rugby: ["English Premiership", "Top 14", "URC", "Super Rugby", "Champions Cup", "Six Nations", "Japan League One", "MLR", "HSBC SVNS"],
     cricket: ["IPL", "International", "SA20", "BBL", "The Hundred", "CPL", "MLC"],
     soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "MLS", "NWSL", "USL", "Champions League", "Europa League", "FA Cup", "CAF Champions League", "FIFA World Cup", "International Friendly"],
-    college: ["NCAAB", "NCAA Hockey"],
+    college: ["NCAAB", "NCAA Hockey", "SA Schools Rugby"],
     tennis: ["Grand Slams", "ATP Masters 1000"],
     racing: ["F1", "WRC"],
     golf: ["The Majors"],
@@ -141,6 +141,14 @@ function FavoritesSection() {
     cycling: ["Grand Tour", "Epic Series"],
     athletics: ["World Marathon Majors", "Comrades Marathon", "Diamond League", "UTMB World Series", "Golden Trail World Series"],
     paddling: ["SA Big Three"],
+  };
+  // Some leagues are displayed under a different settings group than the sport
+  // their events actually use. Toggle/enable state must stay keyed to the
+  // event's real sport so filtering keeps working.
+  const leagueSportOverride: Record<string, string> = {
+    "SA Schools Rugby": "rugby",
+    "NCAAB": "basketball",
+    "NCAA Hockey": "hockey",
   };
 
   let isFirstSport = true;
@@ -190,7 +198,8 @@ function FavoritesSection() {
               />
             </Pressable>
             {isExpanded && leagues.map((league, i) => {
-              const leagueOn = isLeagueEnabled(sport, league);
+              const keySport = leagueSportOverride[league] ?? sport;
+              const leagueOn = isLeagueEnabled(keySport, league);
               return (
                 <React.Fragment key={league}>
                   {i > 0 && <View style={styles.leagueRowDivider} />}
@@ -202,7 +211,7 @@ function FavoritesSection() {
                       value={leagueOn}
                       onValueChange={() => {
                         if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                        toggleLeague(sport, league);
+                        toggleLeague(keySport, league);
                       }}
                       trackColor={{ false: Colors.border, true: sportColor + "55" }}
                       thumbColor={leagueOn ? sportColor : Colors.textMuted}
