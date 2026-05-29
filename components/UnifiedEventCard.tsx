@@ -1054,7 +1054,7 @@ export default function UnifiedEventCard({
                   <View style={uStyles.espnStarSlot} />
                   <View style={uStyles.espnTeam}>
                     {gpFlag ? (
-                      <Image source={{ uri: gpFlag }} style={{ width: featured ? 44 : 36, height: featured ? 29 : 24, borderRadius: 3 }} resizeMode="contain" />
+                      <Image source={{ uri: gpFlag }} style={{ width: 48, height: 32, borderRadius: 3 }} resizeMode="contain" />
                     ) : (
                       <Text style={uStyles.racingEspnFlagLarge}>🏁</Text>
                     )}
@@ -1112,7 +1112,7 @@ export default function UnifiedEventCard({
                   <View style={uStyles.espnStarSlot} />
                   <View style={uStyles.espnTeam}>
                     {getAthleticsCityFlagUrl(rawAthleticsTournament) ? (
-                      <Image source={{ uri: getAthleticsCityFlagUrl(rawAthleticsTournament)! }} style={{ width: featured ? 44 : 36, height: featured ? 29 : 24, borderRadius: 3 }} resizeMode="contain" />
+                      <Image source={{ uri: getAthleticsCityFlagUrl(rawAthleticsTournament)! }} style={{ width: 48, height: 32, borderRadius: 3 }} resizeMode="contain" />
                     ) : (
                       <Text style={{ fontSize: featured ? 28 : 24 }}>🏃</Text>
                     )}
@@ -1270,7 +1270,7 @@ export default function UnifiedEventCard({
                   <View style={uStyles.espnStarSlot} />
                   <View style={uStyles.espnTeam}>
                     {getSvnsCityFlag(svnsCity) ? (
-                      <Image source={{ uri: getSvnsCityFlag(svnsCity) }} style={{ width: featured ? 44 : 36, height: featured ? 29 : 24, borderRadius: 3 }} resizeMode="contain" />
+                      <Image source={{ uri: getSvnsCityFlag(svnsCity) }} style={{ width: 48, height: 32, borderRadius: 3 }} resizeMode="contain" />
                     ) : (
                       <Text style={{ fontSize: featured ? 28 : 24 }}>🏉</Text>
                     )}
