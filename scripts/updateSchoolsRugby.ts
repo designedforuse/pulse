@@ -78,47 +78,47 @@ interface SchoolTournament {
 // Fixtures from the user-supplied 2026 Western Cape schoolboy list. Only matches
 // involving a tracked school are included (purely untracked games like
 // "Drostdy vs Worcester Gim" are skipped). Kick-off times were NOT in the source
-// list, so Saturday games use a placeholder 13:00 SAST (11:00 UTC) main-game slot
+// list, so Saturday games use a placeholder 12:30 SAST (10:30 UTC) main-game slot
 // and Friday games 19:00 SAST (17:00 UTC). Re-verify exact kick-offs nearer each
 // match. "Home" reflects the host per the source list.
 const FIXTURES: SchoolFixture[] = [
   // Sat 30 May 2026
-  { id: `${ID_PREFIX}paulroos-bishops-2026-05-30`, home: "Paul Roos", away: "Bishops", startUtc: "2026-05-30T11:00:00.000Z" },
-  { id: `${ID_PREFIX}sacs-paarlboys-2026-05-30`, home: "SACS", away: "Paarl Boys' High", startUtc: "2026-05-30T11:00:00.000Z" },
-  { id: `${ID_PREFIX}wynberg-paarlgim-2026-05-30`, home: "Wynberg", away: "Paarl Gimnasium", startUtc: "2026-05-30T11:00:00.000Z" },
+  { id: `${ID_PREFIX}paulroos-bishops-2026-05-30`, home: "Paul Roos", away: "Bishops", startUtc: "2026-05-30T10:30:00.000Z" },
+  { id: `${ID_PREFIX}sacs-paarlboys-2026-05-30`, home: "SACS", away: "Paarl Boys' High", startUtc: "2026-05-30T10:30:00.000Z" },
+  { id: `${ID_PREFIX}wynberg-paarlgim-2026-05-30`, home: "Wynberg", away: "Paarl Gimnasium", startUtc: "2026-05-30T10:30:00.000Z" },
 
   // Sat 6 Jun 2026
-  { id: `${ID_PREFIX}stellenberg-bishops-2026-06-06`, home: "Stellenberg", away: "Bishops", startUtc: "2026-06-06T11:00:00.000Z" },
-  { id: `${ID_PREFIX}boland-paarlboys-2026-06-06`, home: "Boland Landbou", away: "Paarl Boys' High", startUtc: "2026-06-06T11:00:00.000Z" },
+  { id: `${ID_PREFIX}stellenberg-bishops-2026-06-06`, home: "Stellenberg", away: "Bishops", startUtc: "2026-06-06T10:30:00.000Z" },
+  { id: `${ID_PREFIX}boland-paarlboys-2026-06-06`, home: "Boland Landbou", away: "Paarl Boys' High", startUtc: "2026-06-06T10:30:00.000Z" },
   // "Paul Roos vs Paarl Gimnasium (Hosted in Paarl)" → Paarl Gim hosts.
-  { id: `${ID_PREFIX}paarlgim-paulroos-2026-06-06`, home: "Paarl Gimnasium", away: "Paul Roos", startUtc: "2026-06-06T11:00:00.000Z" },
+  { id: `${ID_PREFIX}paarlgim-paulroos-2026-06-06`, home: "Paarl Gimnasium", away: "Paul Roos", startUtc: "2026-06-06T10:30:00.000Z" },
 
   // Fri 12 Jun 2026 (night game)
   { id: `${ID_PREFIX}boland-stellenberg-2026-06-12`, home: "Boland Landbou", away: "Stellenberg", startUtc: "2026-06-12T17:00:00.000Z" },
 
   // Sat 13 Jun 2026
-  { id: `${ID_PREFIX}bishops-rondebosch-2026-06-13`, home: "Bishops", away: "Rondebosch", startUtc: "2026-06-13T11:00:00.000Z" },
-  { id: `${ID_PREFIX}drostdy-paarlgim-2026-06-13`, home: "Drostdy", away: "Paarl Gimnasium", startUtc: "2026-06-13T11:00:00.000Z" },
+  { id: `${ID_PREFIX}bishops-rondebosch-2026-06-13`, home: "Bishops", away: "Rondebosch", startUtc: "2026-06-13T10:30:00.000Z" },
+  { id: `${ID_PREFIX}drostdy-paarlgim-2026-06-13`, home: "Drostdy", away: "Paarl Gimnasium", startUtc: "2026-06-13T10:30:00.000Z" },
 
   // Sat 25 Jul 2026
-  { id: `${ID_PREFIX}boland-wynberg-2026-07-25`, home: "Boland Landbou", away: "Wynberg", startUtc: "2026-07-25T11:00:00.000Z" },
+  { id: `${ID_PREFIX}boland-wynberg-2026-07-25`, home: "Boland Landbou", away: "Wynberg", startUtc: "2026-07-25T10:30:00.000Z" },
 
   // Sat 1 Aug 2026
   // Paarl Interschools derby (Paarl Boys' vs Paarl Gim) — Sat 1 Aug 2026,
   // 16:00 SAST (14:00 UTC) kick-off, confirmed by the user.
   { id: `${ID_PREFIX}paarl-derby-2026`, home: "Paarl Boys' High", away: "Paarl Gimnasium", startUtc: "2026-08-01T14:00:00.000Z", venue: "Faure Street Stadium, Paarl" },
-  { id: `${ID_PREFIX}paulroos-boland-2026-08-01`, home: "Paul Roos", away: "Boland Landbou", startUtc: "2026-08-01T11:00:00.000Z" },
-  { id: `${ID_PREFIX}wynberg-bishops-2026-08-01`, home: "Wynberg", away: "Bishops", startUtc: "2026-08-01T11:00:00.000Z" },
+  { id: `${ID_PREFIX}paulroos-boland-2026-08-01`, home: "Paul Roos", away: "Boland Landbou", startUtc: "2026-08-01T10:30:00.000Z" },
+  { id: `${ID_PREFIX}wynberg-bishops-2026-08-01`, home: "Wynberg", away: "Bishops", startUtc: "2026-08-01T10:30:00.000Z" },
 
   // Sat 8 Aug 2026
-  { id: `${ID_PREFIX}boland-oakdale-2026-08-08`, home: "Boland Landbou", away: "Oakdale", startUtc: "2026-08-08T11:00:00.000Z" },
+  { id: `${ID_PREFIX}boland-oakdale-2026-08-08`, home: "Boland Landbou", away: "Oakdale", startUtc: "2026-08-08T10:30:00.000Z" },
 
   // Sat 15 Aug 2026
-  { id: `${ID_PREFIX}bishops-sacs-2026-08-15`, home: "Bishops", away: "SACS", startUtc: "2026-08-15T11:00:00.000Z" },
-  { id: `${ID_PREFIX}paulroos-greycollege-2026-08-15`, home: "Paul Roos", away: "Grey College", startUtc: "2026-08-15T11:00:00.000Z" },
+  { id: `${ID_PREFIX}bishops-sacs-2026-08-15`, home: "Bishops", away: "SACS", startUtc: "2026-08-15T10:30:00.000Z" },
+  { id: `${ID_PREFIX}paulroos-greycollege-2026-08-15`, home: "Paul Roos", away: "Grey College", startUtc: "2026-08-15T10:30:00.000Z" },
 
   // Sat 22 Aug 2026
-  { id: `${ID_PREFIX}rondebosch-bishops-2026-08-22`, home: "Rondebosch", away: "Bishops", startUtc: "2026-08-22T11:00:00.000Z" },
+  { id: `${ID_PREFIX}rondebosch-bishops-2026-08-22`, home: "Rondebosch", away: "Bishops", startUtc: "2026-08-22T10:30:00.000Z" },
 ];
 
 const TOURNAMENTS: SchoolTournament[] = [
