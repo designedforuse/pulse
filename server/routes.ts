@@ -8,6 +8,7 @@ import { fetchRawCricketMatches, searchRawCricketMatches } from "../scripts/upda
 import { fetchPlayerJourney, fetchPlayerJourneyDebug } from "./playerJourney";
 import { fetchAllLiveScores } from "./liveScores";
 import { fetchSvnsMatches, getSvnsCities } from "./svnsMatches";
+import { fetchWrcStages, getWrcRoundBaseId } from "./wrcStages";
 import { fetchDailyWrap } from "./dailyWrap";
 
 const GENERATED_EVENTS_PATH = path.resolve(
@@ -140,6 +141,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.json(result);
     } catch (err: any) {
       console.error("[svns-matches] Error:", err);
+      return res.status(500).json({ error: err.message });
+    }
+  });
+
+  app.get("/api/wrc-stages/:roundId", async (req, res) => {
+    try {
+      const roundId = getWrcRoundBaseId(decodeURIComponent(req.params.roundId));
+      const result = await fetchWrcStages(roundId);
+      return res.json(result);
+    } catch (err: any) {
+      console.error("[wrc-stages] Error:", err);
       return res.status(500).json({ error: err.message });
     }
   });

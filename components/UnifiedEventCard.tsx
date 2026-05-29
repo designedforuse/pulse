@@ -18,6 +18,7 @@ import { getTennisRoundShort, getTennisRoundPriority } from "@/data/tennisTopPla
 import type { ScoreData, TennisSetScore, SeriesStatus } from "@/lib/scores-context";
 import { useScores } from "@/lib/scores-context";
 import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTime, getSvnsTeamFlag, getSvnsCityFlag, extractSvnsSessionDay, type SvnsMatch } from "@/lib/svns-context";
+import { useWrcStages, getWrcRoundBaseId, getStagesForLeg, wrcFlagUrl, type WrcStage } from "@/lib/wrc-stages-context";
 
 const MASTERS_LOGO = require("@/assets/images/masters-logo.png");
 const BOSTON_MARATHON_LOGO = require("@/assets/images/boston-marathon-logo.png");
@@ -830,6 +831,33 @@ export interface UnifiedEventCardProps {
   espnLayout?: boolean;
 }
 
+function WrcStageWinners({ stages, totalStages }: { stages: WrcStage[]; totalStages: number }) {
+  if (stages.length === 0) return null;
+  const sportColor = getSportColor("racing");
+  return (
+    <View style={uStyles.wrcStagesSection}>
+      <View style={uStyles.wrcStagesHeaderRow}>
+        <Text style={[uStyles.wrcStagesHeader, { color: sportColor }]}>STAGE WINNERS</Text>
+        {totalStages > 0 && (
+          <Text style={uStyles.wrcStagesCount}>{stages.length} of {totalStages}</Text>
+        )}
+      </View>
+      {stages.map((s) => {
+        const flag = wrcFlagUrl(s.winner?.flag);
+        return (
+          <View key={s.stageNumber} style={uStyles.wrcStageRow}>
+            <Text style={[uStyles.wrcStageBadge, { color: sportColor }]}>SS{s.stageNumber}</Text>
+            <Text style={uStyles.wrcStageName} numberOfLines={1}>{s.name}</Text>
+            {flag && <Image source={{ uri: flag }} style={uStyles.wrcStageFlag} resizeMode="contain" />}
+            <Text style={uStyles.wrcStageWinner} numberOfLines={1}>{s.winner?.name}</Text>
+            <Text style={uStyles.wrcStageTime}>{s.winner?.time}</Text>
+          </View>
+        );
+      })}
+    </View>
+  );
+}
+
 export default function UnifiedEventCard({
   event,
   now,
@@ -930,6 +958,13 @@ export default function UnifiedEventCard({
   const wrcRoundShort = isWrc && event.sessionTitle
     ? (event.sessionTitle.match(/Round\s+\d+/i)?.[0] ?? event.sessionTitle)
     : null;
+  const wrcRoundId = isWrc ? getWrcRoundBaseId(event.id) : null;
+  const wrcStagesResult = useWrcStages(wrcRoundId, isWrc && (isLive || isFinal), isWrc && isLive);
+  const wrcLegAllStages = isWrc && event.dayNumber != null
+    ? getStagesForLeg(wrcStagesResult, event.dayNumber)
+    : [];
+  const wrcLegStages = wrcLegAllStages.filter((s) => s.winner != null);
+  const wrcLegTotal = wrcLegAllStages.filter((s) => !s.cancelled).length;
   const gpFlag = isRacing ? (wrcInfo?.flag ?? getGrandPrixFlag(event.competitionName || event.homeTeam)) : null;
   const golfTournament = isGolf ? (event.tournamentName || event.homeTeam) : null;
   const golfRound = isGolf && event.sessionTitle
@@ -1093,6 +1128,7 @@ export default function UnifiedEventCard({
                   </View>
                 </View>
               </View>
+              {isWrc && <WrcStageWinners stages={wrcLegStages} totalStages={wrcLegTotal} />}
             </View>
           ) : showAthleticsEspnStyle ? (
             <View>
@@ -1514,6 +1550,7 @@ export default function UnifiedEventCard({
                     : ""}
                 </Text>
               )}
+              {isWrc && <WrcStageWinners stages={wrcLegStages} totalStages={wrcLegTotal} />}
             </View>
           ) : isTennis && showTeamLayout && (isLive || isFinal) ? (
             <TennisScoreboard
@@ -2015,6 +2052,63 @@ const uStyles = StyleSheet.create({
     fontFamily: "Inter_500Medium",
     color: Colors.textSecondary,
     marginTop: 2,
+  },
+  wrcStagesSection: {
+    marginTop: 10,
+    paddingTop: 8,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: Colors.border,
+    gap: 5,
+  },
+  wrcStagesHeaderRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    justifyContent: "space-between" as const,
+    marginBottom: 1,
+  },
+  wrcStagesHeader: {
+    fontSize: 10,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.8,
+  },
+  wrcStagesCount: {
+    fontSize: 10,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textMuted,
+  },
+  wrcStageRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 6,
+  },
+  wrcStageBadge: {
+    fontSize: 12,
+    fontFamily: "Inter_700Bold",
+    minWidth: 34,
+  },
+  wrcStageName: {
+    fontSize: 12,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textSecondary,
+    flex: 1,
+  },
+  wrcStageFlag: {
+    width: 18,
+    height: 12,
+    borderRadius: 2,
+  },
+  wrcStageWinner: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
+    maxWidth: 110,
+  },
+  wrcStageTime: {
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+    minWidth: 52,
+    textAlign: "right" as const,
   },
   racingSessionPill: {
     paddingHorizontal: 8,
