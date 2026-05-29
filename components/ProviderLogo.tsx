@@ -92,7 +92,7 @@ const LOGO_ASPECT: Record<string, number> = {
   rugbypasstv:   0.73,
   ion:           2.00,
   mlbtv:         4.02,
-  youtube:       4.48,
+  youtube:       4.46,
   // Aliases
   espn2:         4.05,
   flohockey:     8.77,
@@ -102,7 +102,7 @@ const LOGO_ASPECT: Record<string, number> = {
 };
 
 // Logos that are already full-colour and should not be white-tinted
-const NO_TINT_LOGOS = new Set<string>(["youtube"]);
+const NO_TINT_LOGOS = new Set<string>();
 
 const PROVIDER_TEXT_LABELS: Record<string, string> = {
   supersportschools: "SS SCHOOLS",
