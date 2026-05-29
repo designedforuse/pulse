@@ -263,7 +263,7 @@ const LEAGUE_DISPLAY_NAMES: Record<string, string> = {
   "English Premiership": "Premiership",
   "F1": "Formula 1",
   "CAF Champions League": "CAF CL",
-  "SA Schools Rugby": "Schools Rugby",
+  "SA Schools Rugby": "SA Schools",
 };
 
 function getLeagueLabel(event: SportEvent): string {

@@ -391,6 +391,9 @@ const SHORT_NAMES: Record<string, string> = {
   "Sunrisers Hyderabad": "Sunrisers",
   "Gujarat Titans": "Titans",
   "Lucknow Super Giants": "Super Giants",
+
+  // SA Schools Rugby
+  "Paarl Boys' High": "PBHS",
 };
 
 const COMPACT_NAMES: Record<string, string> = {
@@ -572,6 +575,9 @@ const COMPACT_NAMES: Record<string, string> = {
   "Celtic FC": "Celtic",
   "Rangers FC": "Rangers",
   "Shakhtar Donetsk": "Shakhtar",
+
+  // SA Schools Rugby
+  "Paarl Boys' High": "PBHS",
 };
 
 export function displayTeamName(team: string, league?: string): string {
