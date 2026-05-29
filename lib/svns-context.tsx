@@ -82,6 +82,26 @@ export function getSvnsTeamFlag(abbr: string): string {
   return COUNTRY_ABBR_FLAGS[abbr] || "";
 }
 
+const SVNS_CITY_FLAGS: Record<string, string> = {
+  Dubai: "🇦🇪",
+  "Cape Town": "🇿🇦",
+  Singapore: "🇸🇬",
+  Perth: "🇦🇺",
+  Vancouver: "🇨🇦",
+  "New York": "🇺🇸",
+  "Hong Kong": "🇭🇰",
+  Valladolid: "🇪🇸",
+  Bordeaux: "🇫🇷",
+  "Los Angeles": "🇺🇸",
+  Madrid: "🇪🇸",
+  London: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+};
+
+export function getSvnsCityFlag(city: string | null): string {
+  if (!city) return "";
+  return SVNS_CITY_FLAGS[city] || "";
+}
+
 export function extractSvnsSessionDay(sessionTitle: string): string | null {
   const match = sessionTitle.match(/Day\s+(\d+)/i);
   if (match) return `Day ${match[1]}`;

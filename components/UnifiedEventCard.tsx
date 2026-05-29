@@ -17,7 +17,7 @@ import { formatTimeUntilStart } from "@/utils/time";
 import { getTennisRoundShort, getTennisRoundPriority } from "@/data/tennisTopPlayers";
 import type { ScoreData, TennisSetScore, SeriesStatus } from "@/lib/scores-context";
 import { useScores } from "@/lib/scores-context";
-import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTime, getSvnsTeamFlag, extractSvnsSessionDay, type SvnsMatch } from "@/lib/svns-context";
+import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTime, getSvnsTeamFlag, getSvnsCityFlag, extractSvnsSessionDay, type SvnsMatch } from "@/lib/svns-context";
 
 const MASTERS_LOGO = require("@/assets/images/masters-logo.png");
 const BOSTON_MARATHON_LOGO = require("@/assets/images/boston-marathon-logo.png");
@@ -1236,14 +1236,17 @@ export default function UnifiedEventCard({
             <View>
               <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
                 <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]}>
-                  {getLeagueLabel(event)}
+                  SVNS Series
                 </Text>
               </View>
               <View style={uStyles.espnMatchup}>
                 <View style={uStyles.espnTeamOuter}>
                   <View style={uStyles.espnStarSlot} />
                   <View style={uStyles.espnTeam}>
-                    <Text style={{ fontSize: featured ? 28 : 24 }}>🏉</Text>
+                    <Text style={{ fontSize: featured ? 28 : 24 }}>{getSvnsCityFlag(svnsCity) || "🏉"}</Text>
+                    {svnsCity && (
+                      <Text style={uStyles.espnTeamName} numberOfLines={1}>{svnsCity}</Text>
+                    )}
                   </View>
                 </View>
                 <View style={uStyles.espnCenter}>
