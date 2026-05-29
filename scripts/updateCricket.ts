@@ -43,7 +43,10 @@ const CRICAPI_BASE = "https://api.cricapi.com/v1";
 const CRICKET_DURATION_MIN: Record<string, number> = {
   t20: 210,
   odi: 480,
-  test: 480,
+  // A Test is played over up to 5 days. Span the full window so the match stays
+  // in-schedule (and "live") across all days rather than dropping off after day 1.
+  // If a Test finishes early, CricAPI's "result" status flips the card to FINAL.
+  test: 5 * 24 * 60,
 };
 
 const ALLOWED_DOMESTIC_LEAGUES: Record<string, { league: string; country: string }> = {
