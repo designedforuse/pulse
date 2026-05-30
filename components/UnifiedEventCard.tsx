@@ -17,7 +17,7 @@ import { formatTimeUntilStart } from "@/utils/time";
 import { getTennisRoundShort, getTennisRoundPriority } from "@/data/tennisTopPlayers";
 import type { ScoreData, TennisSetScore, SeriesStatus } from "@/lib/scores-context";
 import { useScores } from "@/lib/scores-context";
-import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, formatSvnsMatchTime, getSvnsTeamFlag, getSvnsCityFlag, extractSvnsSessionDay, type SvnsMatch } from "@/lib/svns-context";
+import { useSvnsMatches, extractSvnsCity, formatSvnsMatchLine, getSvnsTeamFlag, getSvnsCityFlag, extractSvnsSessionDay, type SvnsMatch } from "@/lib/svns-context";
 import { useWrcStages, getWrcRoundBaseId, getStagesForLeg, wrcFlagUrl, type WrcStage } from "@/lib/wrc-stages-context";
 
 const MASTERS_LOGO = require("@/assets/images/masters-logo.png");
@@ -743,13 +743,10 @@ const tsStyles = StyleSheet.create({
   },
 });
 
-function SvnsMatchRow({ match, isLive }: { match: SvnsMatch; isLive: boolean }) {
+function SvnsMatchRow({ match }: { match: SvnsMatch }) {
   const isMatchLive = match.status.startsWith("L");
   const isCompleted = match.status === "C";
-  const isUpcoming = match.status === "U";
   const genderLabel = match.gender === "womens" ? "W" : "M";
-  const phaseShort = match.phase.replace("Cup Semi Finals", "Semi").replace("Cup Final", "Final").replace("3rd Place Play-Off", "3rd Place").replace("5th Place Play-Off", "5th Place").replace("7th Place Play-Off", "7th Place").replace("5th Place Semi Final", "5th SF");
-  const timeStr = formatSvnsMatchTime(match);
   const hasScore = isMatchLive || isCompleted;
   const flag1 = getSvnsTeamFlag(match.team1Abbr);
   const flag2 = getSvnsTeamFlag(match.team2Abbr);
@@ -767,9 +764,6 @@ function SvnsMatchRow({ match, isLive }: { match: SvnsMatch; isLive: boolean }) 
         {match.team1Abbr} {hasScore ? `${match.team1Score}–${match.team2Score}` : "vs"} {match.team2Abbr}
       </Text>
       {flag2 ? <Image source={{ uri: flag2 }} style={svnsStyles.matchFlag} resizeMode="contain" /> : null}
-      <Text style={svnsStyles.matchPhase} numberOfLines={1}>{phaseShort}</Text>
-      {isUpcoming && <Text style={svnsStyles.matchTime}>{timeStr}</Text>}
-      {isMatchLive && <Text style={svnsStyles.matchLiveLabel}>LIVE</Text>}
     </View>
   );
 }
@@ -795,27 +789,12 @@ const svnsStyles = StyleSheet.create({
     fontSize: 12,
     fontFamily: "Inter_500Medium",
     color: Colors.textPrimary,
-    flex: 1,
+    flexShrink: 1,
   },
   matchFlag: {
     width: 18,
     height: 12,
     borderRadius: 2,
-  },
-  matchPhase: {
-    fontSize: 10,
-    fontFamily: "Inter_400Regular",
-    color: Colors.textMuted,
-  },
-  matchTime: {
-    fontSize: 10,
-    fontFamily: "Inter_500Medium",
-    color: Colors.textSecondary,
-  },
-  matchLiveLabel: {
-    fontSize: 9,
-    fontFamily: "Inter_700Bold",
-    color: "#FF3B30",
   },
 });
 
@@ -1710,7 +1689,7 @@ export default function UnifiedEventCard({
                 {matchupFallback}
               </Text>
               {isSvnsSession && svnsDisplayMatch && (
-                <SvnsMatchRow match={svnsDisplayMatch} isLive={isLive} />
+                <SvnsMatchRow match={svnsDisplayMatch} />
               )}
             </>
           )}
