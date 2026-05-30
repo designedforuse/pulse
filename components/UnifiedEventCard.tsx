@@ -1165,7 +1165,7 @@ export default function UnifiedEventCard({
                 <View style={[uStyles.espnTeamOuter, { flexDirection: "row-reverse" }]}>
                   <View style={uStyles.espnStarSlot} />
                   <View style={uStyles.espnTeam}>
-                    <Text style={uStyles.espnTeamName} numberOfLines={2}>
+                    <Text style={isDiamondLeague ? [uStyles.racingEspnTitle, { color: Colors.textPrimary }] : uStyles.espnTeamName} numberOfLines={2}>
                       {isDiamondLeague ? (event.roundLabel ?? athleticsTournament) : athleticsTournament}
                     </Text>
                   </View>

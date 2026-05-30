@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-30T04:18:03.572Z",
+  "lastUpdated": "2026-05-30T04:34:28.129Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -86,7 +86,7 @@
         ],
         "playersIngested": 336,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-30T04:18:03.572Z"
+        "timestamp": "2026-05-30T04:34:28.129Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -96,7 +96,7 @@
     "candidateCountAfterCap": 8,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2000.3009922222222,
+      "hoursUntil": -2000.5744802777779,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -202,7 +202,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-05-30T04:18:03.572Z",
+      "triggeredAt": "2026-05-30T04:34:28.129Z",
       "expiresAt": "2026-05-30T17:30:00.000Z",
       "kind": "clinch_watch",
       "region": "SouthAfrica",
@@ -234,7 +234,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-05-30T04:18:03.572Z",
+      "triggeredAt": "2026-05-30T04:34:28.129Z",
       "expiresAt": "2026-05-30T12:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -260,13 +260,13 @@
     {
       "id": "marquee_match",
       "title": "Marquee Match: Champions League",
-      "subtitle": "Arsenal vs Paris Saint-Germain — Champions League · kicks off in 12h",
+      "subtitle": "Arsenal vs Paris Saint-Germain — Champions League · kicks off in 11h",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-05-30T04:18:03.572Z",
+      "triggeredAt": "2026-05-30T04:34:28.129Z",
       "expiresAt": "2026-05-30T20:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -282,7 +282,7 @@
         "eventIds": [
           "soccer-championsleague-20260530-1600-arsenal-at-paris-saint-germain"
         ],
-        "reason": "Top Champions League fixture (Arsenal vs Paris Saint-Germain) kicks off in 12h"
+        "reason": "Top Champions League fixture (Arsenal vs Paris Saint-Germain) kicks off in 11h"
       },
       "sports": [
         "soccer"
@@ -306,7 +306,7 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-30T04:18:03.572Z",
+      "triggeredAt": "2026-05-30T04:34:28.129Z",
       "expiresAt": "2026-06-02T23:00:00.000Z",
       "kind": "rally_weekend",
       "region": "Other",
@@ -343,8 +343,8 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-30T04:18:03.572Z",
-      "expiresAt": "2026-06-06T04:18:03.572Z",
+      "triggeredAt": "2026-05-30T04:34:28.129Z",
+      "expiresAt": "2026-06-06T04:34:28.129Z",
       "kind": "grand_tour",
       "region": "Other",
       "regionPriority": 99,
@@ -384,8 +384,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-30T04:18:03.572Z",
-      "expiresAt": "2026-06-06T04:18:03.572Z",
+      "triggeredAt": "2026-05-30T04:34:28.129Z",
+      "expiresAt": "2026-06-06T04:34:28.129Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -423,13 +423,13 @@
     {
       "id": "ipl_storyline",
       "title": "Tonight in the IPL",
-      "subtitle": "Gujarat Titans vs Royal Challengers Bengaluru — in 34h",
+      "subtitle": "Gujarat Titans vs Royal Challengers Bengaluru — in 33h",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-30T04:18:03.572Z",
+      "triggeredAt": "2026-05-30T04:34:28.129Z",
       "expiresAt": "2026-05-31T22:00:00.000Z",
       "kind": "ipl_storyline",
       "region": "Other",
@@ -472,7 +472,7 @@
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-05-30T04:18:03.572Z",
+      "triggeredAt": "2026-05-30T04:34:28.129Z",
       "expiresAt": "2026-06-01T18:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -1272,6 +1272,16 @@
           "startDate": "2026-06-18T14:00:00.000Z",
           "endDate": "2026-06-21T14:00:00.000Z",
           "eventCount": 4,
+          "seasonPhase": null
+        },
+        {
+          "sport": "athletics",
+          "displayName": "Diamond League — Doha",
+          "leagueKey": "diamond-league",
+          "dateRangeLabel": "Jun 19",
+          "startDate": "2026-06-19T16:00:00.000Z",
+          "endDate": "2026-06-19T16:00:00.000Z",
+          "eventCount": 1,
           "seasonPhase": null
         },
         {

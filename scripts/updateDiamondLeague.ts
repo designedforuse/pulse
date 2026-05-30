@@ -45,7 +45,7 @@ const DIAMOND_LEAGUE_MEETS: DiamondLeagueMeet[] = [
     id: "athletics-diamond-league-doha-2026",
     displayName: "Diamond League — Doha",
     city: "Doha, Qatar",
-    startUtc: "2026-05-08T16:00:00.000Z",
+    startUtc: "2026-06-19T16:00:00.000Z",
     durationMin: 120,
   },
   {
@@ -165,7 +165,12 @@ export function fetchDiamondLeagueEvents(): DiamondLeagueFetchResult {
   const events: AppEvent[] = [];
 
   let roundCounter = 0;
-  for (const meet of DIAMOND_LEAGUE_MEETS) {
+  // Assign round numbers in chronological order (Doha was rescheduled from May 8
+  // to June 19, so the season opens with Shanghai → Xiamen → Rabat = Round 3).
+  const meetsByDate = [...DIAMOND_LEAGUE_MEETS].sort(
+    (a, b) => new Date(a.startUtc).getTime() - new Date(b.startUtc).getTime()
+  );
+  for (const meet of meetsByDate) {
     const isFinal = meet.id.includes("brussels-final");
     if (!isFinal) roundCounter++;
     const roundLabel = isFinal ? "Final" : `Round ${roundCounter}`;
