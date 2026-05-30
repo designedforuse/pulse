@@ -2,5 +2,6 @@
 - [Flag rendering on event cards](flag-rendering.md) — cards use ESPN CDN image flags (3-letter FIFA codes, curl-verify HTTP 200); flag helpers return URLs, never emoji; some non-card surfaces keep emoji.
 - [Multi-day session events](multi-day-session-events.md) — WRC rallies split into one card/day, each window capped min(start+8h, realEnd); carry dayNumber/totalDays, don't recompute day from elapsed time.
 - [WRC live stage winners](wrc-stage-winners.md) — eWRC `api-next.ewrc-results.com` is a no-key JSON API; round ids map to eWRC event ids in server/wrcStages.ts (add new rounds as they approach).
+- [CricAPI quota & backoff](cricapi-quota-backoff.md) — free tier 100 hits/day (resets 00:00 UTC); failed calls still count, so on limit-reached hard-stop polling until reset instead of retrying on cache TTL.
 - [Daily Wrap highlight videos](daily-wrap-highlights.md) — no-key YouTube scrape per result; must gate by duration + reject pressers/live/replays or wrong content out-ranks real highlights.
 - [Schools effective-sport](schools-effective-sport.md) — 3 schools leagues span 3 real sports; use getEffectiveSport→"college" for ALL filter/chip/color surfaces, keep real sport for layout/logos/scores.

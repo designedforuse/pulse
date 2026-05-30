@@ -1427,6 +1427,19 @@ async function fetchIplLiveScores(
 let cricketScoreCache: { data: Record<string, ScoreData>; ts: number } = { data: {}, ts: 0 };
 const CRICKET_CACHE_TTL = 30 * 60 * 1000; // 30 min — keeps daily hits under 50 on free tier
 
+// When CricAPI reports the daily hit limit is exhausted, we must STOP polling until
+// the quota resets (CricAPI resets at 00:00 UTC). Without this, the 30-min cache TTL
+// would keep retrying every 30 min all day — and each failed retry still counts as a
+// hit — ballooning usage far past the free-tier limit (and starving the published app
+// of its quota). 0 means "not rate-limited".
+let cricketRateLimitedUntil = 0;
+
+function nextUtcMidnight(): number {
+  const now = new Date();
+  // 00:05 UTC the next day — small buffer past the reset boundary.
+  return Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 0, 5, 0);
+}
+
 function cricScoreTeamMatches(cricName: string, ourTeam: string): boolean {
   const clean = cricName.replace(/\s*\[[^\]]*\]/g, "").trim().toLowerCase();
   const our = ourTeam.toLowerCase();
@@ -1438,6 +1451,15 @@ async function fetchCricketScores(
 ): Promise<Record<string, ScoreData>> {
   const scores: Record<string, ScoreData> = {};
   if (events.length === 0) return scores;
+
+  // Hard backoff: if we hit the daily limit, serve cached scores and make no API
+  // calls until the quota resets. This is what prevents the runaway-retry hit storm.
+  if (Date.now() < cricketRateLimitedUntil) {
+    for (const ev of events) {
+      if (cricketScoreCache.data[ev.id]) scores[ev.id] = cricketScoreCache.data[ev.id];
+    }
+    return scores;
+  }
 
   const cacheAge = Date.now() - cricketScoreCache.ts;
   if (cacheAge < CRICKET_CACHE_TTL) {
@@ -1460,8 +1482,24 @@ async function fetchCricketScores(
     if (data.status !== "success") {
       const reason = data.reason || "";
       console.warn("[liveScores] CricAPI cricScore non-success:", data.status, reason);
+      // If the daily limit is exhausted, back off until the quota resets (next UTC
+      // midnight) instead of retrying every 30 min — each retry burns another hit.
+      // Prefer CricAPI's structured counters (present even on failure responses);
+      // fall back to matching the human-readable reason string. Using the numbers
+      // also avoids a full-day blackout if the quota has actually already reset.
+      const info = data.info || {};
+      const limit = typeof info.hitsLimit === "number" ? info.hitsLimit : 0;
+      const used = typeof info.hitsToday === "number" ? info.hitsToday : 0;
+      const limitReached = limit > 0
+        ? used >= limit
+        : (/hit/i.test(reason) && /limit/i.test(reason));
+      if (limitReached) {
+        cricketRateLimitedUntil = nextUtcMidnight();
+        console.warn(
+          `[liveScores] CricAPI daily limit reached (${used}/${limit || "?"}) — pausing cricket score polling until ${new Date(cricketRateLimitedUntil).toISOString()}`,
+        );
+      }
       // Always stamp the cache on failure so we don't immediately retry and burn more hits.
-      // If the daily limit is exceeded, back off for the full TTL period.
       cricketScoreCache = { data: cricketScoreCache.data, ts: Date.now() };
       return { ...cricketScoreCache.data };
     }
