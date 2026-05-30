@@ -52,12 +52,6 @@ const MOOD_COLORS: Record<TeaserMood, string> = {
   low: Colors.textSecondary,
 };
 
-const MOOD_LABELS: Record<TeaserMood, string | null> = {
-  high: "MUST WATCH",
-  medium: "TIGHT FINISH",
-  low: null,
-};
-
 type Story = DailyWrapEntry & { isFav?: boolean };
 
 interface StoryView {
@@ -134,9 +128,8 @@ function StoryPage({
   isLast: boolean;
   hideSpoilers: boolean;
 }) {
-  const { entry, event, score, mood, headline, leagueLabel, sportColor, video, backdrop } = view;
+  const { entry, event, score, mood, headline, sportColor, video, backdrop } = view;
   const moodColor = MOOD_COLORS[mood];
-  const moodLabel = MOOD_LABELS[mood];
   const provider = event ? resolveProviderDisplay(event) : null;
   const showKenBurns = !!backdrop;
   const showScoreCard = !hideSpoilers && !!event && !!score;
@@ -182,30 +175,6 @@ function StoryPage({
           { paddingTop: insets.top + 84, paddingBottom: insets.bottom + 24 },
         ]}
       >
-        {/* Meta row */}
-        <View style={styles.metaRow}>
-          <View
-            style={[
-              styles.leagueChip,
-              { borderColor: sportColor + "66", backgroundColor: sportColor + "1F" },
-            ]}
-          >
-            <Text style={[styles.leagueChipText, { color: sportColor }]}>{leagueLabel}</Text>
-          </View>
-          {entry.isFav && (
-            <View style={styles.favPill}>
-              <Ionicons name="star" size={12} color={Colors.favStar} />
-              <Text style={styles.favPillText}>Your team</Text>
-            </View>
-          )}
-          {moodLabel && (
-            <View style={[styles.moodBadge, { backgroundColor: moodColor + "26", borderColor: moodColor + "66" }]}>
-              <View style={[styles.moodDot, { backgroundColor: moodColor }]} />
-              <Text style={[styles.moodBadgeText, { color: moodColor }]}>{moodLabel}</Text>
-            </View>
-          )}
-        </View>
-
         {/* Hero — big headline over the Ken Burns image */}
         <View style={styles.headlineWrap}>
           <Text style={[styles.headline, { color: Colors.textPrimary }]}>{headline}</Text>
@@ -220,6 +189,7 @@ function StoryPage({
               now={new Date()}
               score={score}
               espnLayout
+              dailyWrap
               accentBarColor={sportColor}
             />
           ) : (
@@ -463,60 +433,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 22,
     justifyContent: "space-between",
-  },
-  metaRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    flexWrap: "wrap",
-    gap: 8,
-  },
-  leagueChip: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 999,
-    borderWidth: 1,
-  },
-  leagueChipText: {
-    fontSize: 11,
-    fontFamily: "Inter_700Bold",
-    letterSpacing: 0.5,
-  },
-  favPill: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 999,
-    backgroundColor: Colors.favStarDim,
-  },
-  favPillText: {
-    fontSize: 10,
-    fontFamily: "Inter_600SemiBold",
-    color: Colors.textPrimary,
-    letterSpacing: 0.3,
-  },
-  moodBadge: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 5,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 999,
-    borderWidth: 1,
-  },
-  moodDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-  },
-  moodBadgeText: {
-    fontSize: 10,
-    fontFamily: "Inter_700Bold",
-    letterSpacing: 0.7,
   },
   headlineWrap: {
     flex: 1,

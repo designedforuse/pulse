@@ -810,6 +810,7 @@ export interface UnifiedEventCardProps {
   showCountdown?: boolean;
   accentBarColor?: string;
   espnLayout?: boolean;
+  dailyWrap?: boolean;
 }
 
 export function WrcStageWinners({ stages, totalStages }: { stages: WrcStage[]; totalStages: number }) {
@@ -851,6 +852,7 @@ export default function UnifiedEventCard({
   showCountdown = true,
   accentBarColor,
   espnLayout = false,
+  dailyWrap = false,
 }: UnifiedEventCardProps) {
   const { favorites } = useFavorites();
   const { getSeriesStatus } = useScores();
@@ -1004,7 +1006,7 @@ export default function UnifiedEventCard({
         uStyles.card,
         featured && uStyles.cardFeatured,
         {
-          opacity: pressed ? 0.85 : isFinal ? 0.55 : 1,
+          opacity: pressed ? 0.85 : isFinal && !dailyWrap ? 0.55 : 1,
           transform: [{ scale: pressed ? 0.98 : 1 }],
         },
       ]}
@@ -1694,7 +1696,7 @@ export default function UnifiedEventCard({
           ) : null}
         </View>
 
-        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && !showSvnsEspnStyle && (
+        {!dailyWrap && !showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && !showSvnsEspnStyle && (
           <View style={uStyles.footer}>
             {isLive ? (
               <>
