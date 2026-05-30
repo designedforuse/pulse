@@ -34,11 +34,7 @@ const COVER_IMAGES = {
 } as const;
 
 const TONIGHT_COVER_POOL = [
-  require("@/assets/images/stories/todays-story.jpg"),
-  require("@/assets/images/stories/tonight/tonight-1.jpg"),
-  require("@/assets/images/stories/tonight/tonight-2.jpg"),
-  require("@/assets/images/stories/tonight/tonight-3.jpg"),
-  require("@/assets/images/stories/tonight/tonight-4.jpg"),
+  require("@/assets/images/stories/on-your-radar.png"),
 ];
 
 function pickTonightCover(): any {

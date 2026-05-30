@@ -66,6 +66,18 @@ uri = "file://assets/images/sports/tennis_raw.png"
 type = "image"
 title = "tennis court background"
 
+[[generated]]
+id = "bFjq4BkgZxCNqjzWDu4dC"
+uri = "file://assets/images/stories/daily-wrap.png"
+type = "image"
+title = "daily wrap stadium dusk"
+
+[[generated]]
+id = "kCkbZes128yb8zhdXDozC"
+uri = "file://assets/images/stories/on-your-radar.png"
+type = "image"
+title = "on your radar aerial stadium night"
+
 [[outputs]]
 id = "BCzZEiJcUNr5OpJ6RpZse"
 uri = "file://PRD.md"

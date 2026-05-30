@@ -17,7 +17,7 @@ import Colors from "@/constants/colors";
 
 const PINK = "#FF85C8";
 
-const COVER_IMAGE = require("@/assets/images/stories/daily-wrap.jpg");
+const COVER_IMAGE = require("@/assets/images/stories/daily-wrap.png");
 const COVER_OVERLAY_COLORS = ["rgba(15,18,22,0.15)", "rgba(15,18,22,0.55)", "rgba(15,18,22,0.95)"] as const;
 const COVER_OVERLAY_LOCATIONS = [0, 0.5, 1] as const;
 
