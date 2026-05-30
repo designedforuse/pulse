@@ -244,6 +244,54 @@ function rugbyEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> |
   };
 }
 
+// --- SA Schools rugby score-agnostic fallback ---
+// The schools score source is scrape-only and unreliable. When a tracked Paarl
+// Boys' High fixture has finished but no score came through, we still surface it
+// with a headline built from score-agnostic context (rivalry / venue) rather
+// than dropping the game from the wrap entirely.
+const SCHOOLS_FALLBACK_PRIORITY = 18;
+// Grace period after a game's end before we fall back to a score-agnostic
+// headline. This lets a slightly-late scraped score win over the fallback, and
+// guards a little against a game that simply ran long.
+const SCHOOLS_FALLBACK_GRACE_MS = 90 * 60 * 1000;
+
+// Known schoolboy rivalries (key = both schools sorted, joined by "|").
+const SCHOOLS_RIVALRIES: Record<string, string> = {
+  "Paarl Boys' High|Paarl Gimnasium": "the Paarl derby",
+};
+
+function isSchoolsRugby(event: any): boolean {
+  return event?.league === "SA Schools Rugby" || event?.leagueKey === "schools-rugby";
+}
+
+// A game counts as concluded once its end time (explicit, or kickoff + ~110min)
+// plus an optional buffer has passed, so the wrap never previews an unplayed
+// fixture. Note: hardcoded schools fixtures carry no postponed/cancelled signal,
+// so a postponed game could still surface once wall-clock passes its slot.
+function hasConcluded(event: any, nowMs: number, bufferMs = 0): boolean {
+  const start = new Date(event.startTimeLocal).getTime();
+  if (Number.isNaN(start)) return false;
+  const end = event.endTimeLocal
+    ? new Date(event.endTimeLocal).getTime()
+    : start + 110 * 60 * 1000;
+  return nowMs >= end + bufferMs;
+}
+
+function schoolsRugbyFallbackEditorial(event: any): Partial<DailyWrapEntry> | null {
+  const home = (event.homeTeam || "").trim();
+  const away = (event.awayTeam || "").trim();
+  if (!home || !away) return null;
+
+  const rivalry = SCHOOLS_RIVALRIES[[home, away].sort().join("|")];
+  const editorial = rivalry
+    ? `${home} and ${away} renewed ${rivalry}`
+    : `${home} hosted ${away} in schoolboy rugby`;
+
+  const detail = event.venue ? `${event.league} · ${event.venue}` : event.league;
+
+  return { editorial, detail };
+}
+
 function golfEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> | null {
   if (!score.golfLeader) return null;
   const f = flag(score.golfLeaderCountry || "");
@@ -336,10 +384,36 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
   } catch {}
 
   const results: DailyWrapEntry[] = [];
+  const nowMs = Date.now();
+  // Score-agnostic fallback cards have no real result, so we skip highlight
+  // enrichment for them to avoid attaching a mismatched clip.
+  const fallbackIds = new Set<string>();
 
   for (const event of todayEvents) {
     const score = scores[event.id];
-    if (!score || !isFinalScore(score)) continue;
+    if (!score || !isFinalScore(score)) {
+      // SA Schools rugby uses an unreliable scrape-only score source. When a
+      // tracked game has finished but no score came through, still surface it
+      // with a score-agnostic (rivalry / venue) headline so it isn't dropped.
+      if (isSchoolsRugby(event) && hasConcluded(event, nowMs, SCHOOLS_FALLBACK_GRACE_MS)) {
+        const fb = schoolsRugbyFallbackEditorial(event);
+        if (fb) {
+          fallbackIds.add(event.id);
+          results.push({
+            eventId: event.id,
+            sport: event.sport,
+            league: event.league,
+            homeTeam: event.homeTeam,
+            awayTeam: event.awayTeam,
+            editorial: fb.editorial || "",
+            detail: fb.detail || "",
+            priorityScore: SCHOOLS_FALLBACK_PRIORITY,
+            startTimeLocal: event.startTimeLocal,
+          });
+        }
+      }
+      continue;
+    }
 
     // Skip non-Race/Sprint F1 sessions from the wrap
     if (event.sport?.toLowerCase() === "racing" &&
@@ -371,7 +445,9 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
 
   results.sort((a, b) => b.priorityScore - a.priorityScore);
 
-  await enrichWithHighlights(results);
+  // enrichWithHighlights mutates entries in place, so enriching only the
+  // non-fallback subset still updates the shared objects kept in `results`.
+  await enrichWithHighlights(results.filter((r) => !fallbackIds.has(r.eventId)));
 
   return { date: dateLabel, hasResults: results.length > 0, results };
 }

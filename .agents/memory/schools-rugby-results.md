@@ -30,3 +30,20 @@ rather than risk a wrong score.
 **How to apply:** to add another school later, register its `s=` id; the parser and
 date-matching are school-agnostic. Source is plain HTTP and scrape-fragile (markup
 shape) — expect occasional misses; treat as best-effort, never authoritative.
+
+# Daily Wrap score-agnostic fallback for schools games
+
+Because the scrape misses are expected, a concluded schools game with no scraped
+score still appears in the Daily Wrap via a **fallback** headline (in
+`server/dailyWrap.ts`): score-led headline when a score exists, otherwise a
+score-agnostic line built from a rivalry map (e.g. Paarl Boys' vs Paarl Gimnasium
+= "the Paarl derby") or generic "X hosted Y in schoolboy rugby" + league/venue
+detail. Fallback fires only after the game's end time + a ~90min grace, so a
+slightly-late real score wins and unplayed fixtures are never previewed.
+
+**Why:** user wanted the game to "still show up" without a score, but only as a
+fallback. Fallback entries are given a low priority (below real results) and are
+**excluded from highlight enrichment** (no real result → avoid mismatched clips).
+
+**Limitation:** hardcoded fixtures carry no postponed/cancelled signal, so a
+postponed game could still surface once wall-clock passes its slot.
