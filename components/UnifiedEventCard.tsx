@@ -967,6 +967,9 @@ export default function UnifiedEventCard({
     : [];
   const wrcLegStages = wrcLegAllStages.filter((s) => s.winner != null);
   const wrcLegTotal = wrcLegAllStages.filter((s) => !s.cancelled).length;
+  const wrcLastStage = wrcLegStages.length > 0 ? wrcLegStages[wrcLegStages.length - 1] : null;
+  const wrcRallyName = isWrc ? (event.tournamentName || event.homeTeam || "") : "";
+  const wrcTitle = wrcRallyName + (event.dayNumber != null ? `, Day ${event.dayNumber}` : "");
   const gpFlag = isRacing ? (wrcInfo?.flag ?? getGrandPrixFlag(event.competitionName || event.homeTeam)) : null;
   const golfTournament = isGolf ? (event.tournamentName || event.homeTeam) : null;
   const golfRound = isGolf && event.sessionTitle
@@ -1500,6 +1503,31 @@ export default function UnifiedEventCard({
                 </View>
               )}
             </View>
+          ) : isWrc ? (
+            <View style={uStyles.racingLayout}>
+              <View style={uStyles.racingCircuitRow}>
+                {wrcInfo?.flag ? (
+                  <Image source={{ uri: wrcInfo.flag }} style={{ width: featured ? 26 : 22, height: featured ? 17 : 15, borderRadius: 2 }} resizeMode="contain" />
+                ) : (
+                  <Text style={{ fontSize: featured ? 18 : 16 }}>🏁</Text>
+                )}
+                <Text
+                  style={[uStyles.racingCircuitName, featured && uStyles.racingCircuitNameFeatured]}
+                  numberOfLines={1}
+                >
+                  {wrcTitle}
+                </Text>
+              </View>
+              {wrcLastStage?.winner && (
+                <View style={uStyles.wrcLastStageRow}>
+                  <Text style={[uStyles.wrcLastStageBadge, { color: sportColor }]}>SS{wrcLastStage.stageNumber}</Text>
+                  {wrcFlagUrl(wrcLastStage.winner.flag) && (
+                    <Image source={{ uri: wrcFlagUrl(wrcLastStage.winner.flag)! }} style={uStyles.wrcLastStageFlag} resizeMode="contain" />
+                  )}
+                  <Text style={uStyles.wrcLastStageWinner} numberOfLines={1}>{wrcLastStage.winner.name}</Text>
+                </View>
+              )}
+            </View>
           ) : isRacing ? (
             <View style={uStyles.racingLayout}>
               <View style={uStyles.racingCircuitRow}>
@@ -1517,9 +1545,7 @@ export default function UnifiedEventCard({
               </View>
               {(event.sessionTitle || event.awayTeam) && (
                 <Text style={uStyles.racingSessionSubtitle} numberOfLines={1}>
-                  {isWrc && event.dayNumber != null && event.totalDays != null
-                    ? `${event.sessionTitle || event.awayTeam} · Day ${event.dayNumber} of ${event.totalDays}`
-                    : (event.sessionTitle || event.awayTeam)}
+                  {event.sessionTitle || event.awayTeam}
                 </Text>
               )}
               {(isLive || isFinal) && score?.racingLeader && (
@@ -1552,7 +1578,6 @@ export default function UnifiedEventCard({
                     : ""}
                 </Text>
               )}
-              {isWrc && <WrcStageWinners stages={wrcLegStages} totalStages={wrcLegTotal} />}
             </View>
           ) : isTennis && showTeamLayout && (isLive || isFinal) ? (
             <TennisScoreboard
@@ -2054,6 +2079,27 @@ const uStyles = StyleSheet.create({
     fontFamily: "Inter_500Medium",
     color: Colors.textSecondary,
     marginTop: 2,
+  },
+  wrcLastStageRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 8,
+    marginTop: 6,
+  },
+  wrcLastStageBadge: {
+    fontSize: 15,
+    fontFamily: "Inter_700Bold",
+  },
+  wrcLastStageFlag: {
+    width: 22,
+    height: 15,
+    borderRadius: 2,
+  },
+  wrcLastStageWinner: {
+    flex: 1,
+    fontSize: 16,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textPrimary,
   },
   wrcStagesSection: {
     marginTop: 10,
