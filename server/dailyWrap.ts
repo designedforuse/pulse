@@ -26,13 +26,16 @@ export interface DailyWrapResponse {
 }
 
 // tz = getTimezoneOffset() from client (minutes, positive = west, e.g. 300 for EST)
+// Window spans the local "today" plus a 24h look-back so results from
+// yesterday still show in the small hours before today's games wrap up.
+const LOOKBACK_MS = 24 * 60 * 60 * 1000;
 function getTodayBounds(tz: number): { start: Date; end: Date } {
   const utcNow = Date.now();
   const localNowMs = utcNow - tz * 60000;
   const localMidnightMs = Math.floor(localNowMs / 86400000) * 86400000;
   const utcStartMs = localMidnightMs + tz * 60000;
   const utcEndMs = utcStartMs + 86400000 - 1;
-  return { start: new Date(utcStartMs), end: new Date(utcEndMs) };
+  return { start: new Date(utcStartMs - LOOKBACK_MS), end: new Date(utcEndMs) };
 }
 
 function formatDate(tz: number): string {
