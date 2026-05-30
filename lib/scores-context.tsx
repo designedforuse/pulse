@@ -12,6 +12,8 @@ export interface TennisSetScore {
 export interface ScoreData {
   awayScore: number;
   homeScore: number;
+  awayShootoutScore?: number;
+  homeShootoutScore?: number;
   period?: string;
   clock?: string;
   status?: string;

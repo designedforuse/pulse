@@ -14,6 +14,8 @@ export interface TennisSetScore {
 export interface ScoreData {
   awayScore: number;
   homeScore: number;
+  awayShootoutScore?: number;
+  homeShootoutScore?: number;
   period?: string;
   clock?: string;
   status?: string;
@@ -488,6 +490,12 @@ const ESPN_LEAGUE_PATHS: Record<string, string> = {
   "CAF Champions League": "caf.champions",
 };
 
+function parseShootoutScore(raw: unknown): number | null {
+  if (raw == null) return null;
+  const n = typeof raw === "number" ? raw : parseInt(String(raw), 10);
+  return Number.isFinite(n) ? n : null;
+}
+
 async function fetchSoccerScores(soccerMap: Map<string, string[]>): Promise<Record<string, ScoreData>> {
   const scores: Record<string, ScoreData> = {};
   if (soccerMap.size === 0) return scores;
@@ -548,17 +556,23 @@ async function fetchSoccerScores(soccerMap: Map<string, string[]>): Promise<Reco
               else if (periodNum === 5) period = "PK";
               const shortDetail = (statusDetail || "").toLowerCase();
               if (shortDetail.includes("halftime") || shortDetail === "ht") period = "HT";
+              const awaySO = parseShootoutScore(awayComp.shootoutScore);
+              const homeSO = parseShootoutScore(homeComp.shootoutScore);
               scores[eventId] = {
                 awayScore: parseInt(awayComp.score || "0", 10),
                 homeScore: parseInt(homeComp.score || "0", 10),
+                ...(awaySO != null && homeSO != null ? { awayShootoutScore: awaySO, homeShootoutScore: homeSO } : {}),
                 period,
                 clock,
                 status: "live",
               };
             } else if (statusState === "post") {
+              const awaySO = parseShootoutScore(awayComp.shootoutScore);
+              const homeSO = parseShootoutScore(homeComp.shootoutScore);
               scores[eventId] = {
                 awayScore: parseInt(awayComp.score || "0", 10),
                 homeScore: parseInt(homeComp.score || "0", 10),
+                ...(awaySO != null && homeSO != null ? { awayShootoutScore: awaySO, homeShootoutScore: homeSO } : {}),
                 period: "Final",
                 status: "final",
               };

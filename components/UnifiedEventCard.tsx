@@ -1657,7 +1657,10 @@ export default function UnifiedEventCard({
                 {hasScore && isCricket
                   ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{(score.cricketAway || "").replace(/\s*Ov\s*\)/, ")")}</Text>
                   : hasScore && !isTennis
-                    ? <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.awayScore}</Text>
+                    ? <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>
+                        {score.awayScore}
+                        {score.awayShootoutScore != null && <Text style={uStyles.shootoutScore}>{` (${score.awayShootoutScore})`}</Text>}
+                      </Text>
                     : isLive && !hasScore && event.sport === "hockey"
                       ? <Text style={[uStyles.scoreText, uStyles.scoreLive]}>0</Text>
                       : null}
@@ -1681,7 +1684,10 @@ export default function UnifiedEventCard({
                 {hasScore && isCricket
                   ? <Text style={[uStyles.cricketScoreText, isLive && uStyles.scoreLive]} numberOfLines={1}>{(score.cricketHome || "").replace(/\s*Ov\s*\)/, ")")}</Text>
                   : hasScore && !isTennis
-                    ? <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>{score.homeScore}</Text>
+                    ? <Text style={[uStyles.scoreText, featured && uStyles.scoreTextFeatured, isLive && uStyles.scoreLive]}>
+                        {score.homeScore}
+                        {score.homeShootoutScore != null && <Text style={uStyles.shootoutScore}>{` (${score.homeShootoutScore})`}</Text>}
+                      </Text>
                     : isLive && !hasScore && event.sport === "hockey"
                       ? <Text style={[uStyles.scoreText, uStyles.scoreLive]}>0</Text>
                       : null}
@@ -1949,6 +1955,11 @@ const uStyles = StyleSheet.create({
   },
   scoreTextFeatured: {
     fontSize: 17,
+  },
+  shootoutScore: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textSecondary,
   },
   cricketScoreText: {
     fontSize: 13,
