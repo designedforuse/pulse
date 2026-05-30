@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-29T22:49:27.174Z",
+  "lastUpdated": "2026-05-30T02:41:11.006Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -21,6 +21,9 @@
       "grand_tour": {
         "Other": 1
       },
+      "ipl_storyline": {
+        "Other": 1
+      },
       "marquee_match": {
         "Other": 1
       }
@@ -36,12 +39,20 @@
         "rally_weekend: Rally Weekend",
         "grand_tour: Grand Tour",
         "league_moment: Big Stage",
-        "diamond_league: Diamond League",
-        "weekend_watchlist: Weekend Watchlist"
+        "ipl_storyline: Tonight in the IPL",
+        "diamond_league: Diamond League"
       ]
     },
-    "droppedCandidatesReasons": [],
-    "totalBeforeCap": 8,
+    "droppedCandidatesReasons": [
+      {
+        "id": "weekend_watchlist",
+        "kind": "weekend_watchlist",
+        "region": "Other",
+        "title": "Weekend Watchlist",
+        "reason": "feed cap (max 8)"
+      }
+    ],
+    "totalBeforeCap": 9,
     "totalAfterCap": 8,
     "playerMovement": {
       "rawMovementCandidates": 0,
@@ -77,17 +88,17 @@
         ],
         "playersIngested": 377,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-29T22:49:27.174Z"
+        "timestamp": "2026-05-30T02:41:11.006Z"
       },
       "cacheHistoryCount": 880,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 8,
+    "candidateCountBeforeCap": 9,
     "candidateCountAfterCap": 8,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1994.824215,
+      "hoursUntil": -1998.6863905555556,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -145,7 +156,7 @@
         "selectedVideoChannel": "Arsenal",
         "rejectedForAgeCount": 0
       },
-      "rally_weekend_racing-wrc-japan-2026-day2": {
+      "rally_weekend_racing-wrc-japan-2026-day3": {
         "searchQuery": "Rally Japan WRC rally highlights",
         "selectedVideoTitle": "【ラリージャパン2026!!】爆音ラリーカー達が古風な街並みを駆け抜ける!!/WRC RALLY JAPAN リエゾン 足助",
         "selectedVideoPublishedAt": "9 hours ago",
@@ -166,6 +177,13 @@
         "selectedVideoChannel": "Velon",
         "rejectedForAgeCount": 0
       },
+      "ipl_storyline": {
+        "searchQuery": "Gujarat Titans vs Royal Challengers Bengaluru IPL 2026 highlights",
+        "selectedVideoTitle": "#GT vs #RR: Qualifier 2 | Fight for a Place in the #TATAIPL 2026 Final against RCB",
+        "selectedVideoPublishedAt": "23 hours ago",
+        "selectedVideoChannel": "Star Sports and ESPNcricinfo",
+        "rejectedForAgeCount": 0
+      },
       "diamond_league_athletics-diamond-league-rabat-2026": {
         "searchQuery": "Diamond League — Rabat Diamond League 2026",
         "selectedVideoTitle": "Watch Rabat Diamond League 2026 FREE Stream With The Athlete’s Lounge On FloTrack",
@@ -179,14 +197,14 @@
     {
       "id": "clinch_watch_rugby-urc-xnat8",
       "title": "Clinch Watch",
-      "subtitle": "Can clinch home quarterfinal in the next 48h",
+      "subtitle": "Can clinch home quarterfinal tonight",
       "impact": {
         "label": "Impacts: Saturday Warm-Up",
         "ritualId": "saturday_sunrise",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-05-29T22:49:27.174Z",
+      "triggeredAt": "2026-05-30T02:41:11.006Z",
       "expiresAt": "2026-05-30T17:30:00.000Z",
       "kind": "clinch_watch",
       "region": "SouthAfrica",
@@ -218,7 +236,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-05-29T22:49:27.174Z",
+      "triggeredAt": "2026-05-30T02:41:11.006Z",
       "expiresAt": "2026-05-31T12:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -250,7 +268,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-05-29T22:49:27.174Z",
+      "triggeredAt": "2026-05-30T02:41:11.006Z",
       "expiresAt": "2026-05-30T20:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -282,16 +300,16 @@
       }
     },
     {
-      "id": "rally_weekend_racing-wrc-japan-2026-day2",
+      "id": "rally_weekend_racing-wrc-japan-2026-day3",
       "title": "Rally Weekend",
-      "subtitle": "Rally Japan — underway this weekend",
+      "subtitle": "Rally Japan — starts tomorrow",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-29T22:49:27.174Z",
-      "expiresAt": "2026-06-01T23:00:00.000Z",
+      "triggeredAt": "2026-05-30T02:41:11.006Z",
+      "expiresAt": "2026-06-02T23:00:00.000Z",
       "kind": "rally_weekend",
       "region": "Other",
       "regionPriority": 99,
@@ -299,9 +317,9 @@
       "meta": {
         "type": "rally_weekend",
         "rallyName": "Rally Japan",
-        "startTime": "2026-05-29T23:00:00.000Z",
+        "startTime": "2026-05-30T23:00:00.000Z",
         "eventIds": [
-          "racing-wrc-japan-2026-day2"
+          "racing-wrc-japan-2026-day3"
         ],
         "reason": "WRC Rally Japan within 7 days"
       },
@@ -327,8 +345,8 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-29T22:49:27.174Z",
-      "expiresAt": "2026-06-05T22:49:27.174Z",
+      "triggeredAt": "2026-05-30T02:41:11.006Z",
+      "expiresAt": "2026-06-06T02:41:11.006Z",
       "kind": "grand_tour",
       "region": "Other",
       "regionPriority": 99,
@@ -368,8 +386,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-29T22:49:27.174Z",
-      "expiresAt": "2026-06-05T22:49:27.174Z",
+      "triggeredAt": "2026-05-30T02:41:11.006Z",
+      "expiresAt": "2026-06-06T02:41:11.006Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -405,6 +423,49 @@
       }
     },
     {
+      "id": "ipl_storyline",
+      "title": "Tonight in the IPL",
+      "subtitle": "Gujarat Titans vs Royal Challengers Bengaluru — in 35h",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 70,
+      "triggeredAt": "2026-05-30T02:41:11.006Z",
+      "expiresAt": "2026-05-31T22:00:00.000Z",
+      "kind": "ipl_storyline",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "ipl_storyline",
+        "matchCount": 1,
+        "matches": [
+          {
+            "away": "Gujarat Titans",
+            "home": "Royal Challengers Bengaluru",
+            "startTime": "2026-05-31T14:00:00.000Z"
+          }
+        ],
+        "eventIds": [
+          "cricket-ipl-2538"
+        ],
+        "reason": "1 IPL match(es) within 36h"
+      },
+      "sports": [
+        "cricket"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=LaAgo3b0jMI",
+        "thumbnailUrl": "https://img.youtube.com/vi/LaAgo3b0jMI/hqdefault.jpg",
+        "durationSeconds": 685,
+        "title": "#GT vs #RR: Qualifier 2 | Fight for a Place in the #TATAIPL 2026 Final against RCB",
+        "source": "youtube",
+        "channel": "Star Sports and ESPNcricinfo",
+        "publishedAt": "23 hours ago"
+      }
+    },
+    {
       "id": "diamond_league_athletics-diamond-league-rabat-2026",
       "title": "Diamond League",
       "subtitle": "Diamond League — Rabat — in 2 days",
@@ -413,7 +474,7 @@
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-05-29T22:49:27.174Z",
+      "triggeredAt": "2026-05-30T02:41:11.006Z",
       "expiresAt": "2026-06-01T18:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -440,60 +501,6 @@
         "channel": "FloTrack",
         "publishedAt": null
       }
-    },
-    {
-      "id": "weekend_watchlist",
-      "title": "Weekend Watchlist",
-      "subtitle": "3 marquee matchups · WRC · Grand Slam · Champions League",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 55,
-      "triggeredAt": "2026-05-29T22:49:27.174Z",
-      "expiresAt": "2026-05-31T23:59:59.999Z",
-      "kind": "weekend_watchlist",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "type": "weekend_watchlist",
-        "matchCount": 3,
-        "matches": [
-          {
-            "league": "WRC",
-            "sport": "racing",
-            "away": "",
-            "home": "Rally Japan",
-            "startTime": "2026-05-29T23:00:00.000Z"
-          },
-          {
-            "league": "Grand Slam",
-            "sport": "tennis",
-            "away": "Svajda",
-            "home": "Cerundolo",
-            "startTime": "2026-05-30T09:00:00.000Z"
-          },
-          {
-            "league": "Champions League",
-            "sport": "soccer",
-            "away": "Arsenal",
-            "home": "Paris Saint-Germain",
-            "startTime": "2026-05-30T16:00:00.000Z"
-          }
-        ],
-        "eventIds": [
-          "racing-wrc-japan-2026-day2",
-          "tennis-espn-175715",
-          "soccer-championsleague-20260530-1600-arsenal-at-paris-saint-germain"
-        ],
-        "reason": "Weekend window: 3 top-priority event(s) across 3 sport(s)"
-      },
-      "sports": [
-        "racing",
-        "tennis",
-        "soccer"
-      ]
     }
   ],
   "tonightStory": {
@@ -583,36 +590,6 @@
           "seasonPhase": "Regular"
         },
         {
-          "sport": "hockey",
-          "displayName": "ECHL",
-          "leagueKey": "echl",
-          "dateRangeLabel": "May 15–31",
-          "startDate": "2026-05-15T23:05:00.000Z",
-          "endDate": "2026-05-31T21:05:00.000Z",
-          "eventCount": 18,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "NWSL",
-          "leagueKey": "nwsl",
-          "dateRangeLabel": "May 16–31",
-          "startDate": "2026-05-16T00:00:00.000Z",
-          "endDate": "2026-05-31T23:00:00.000Z",
-          "eventCount": 26,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "hockey",
-          "displayName": "AHL",
-          "leagueKey": "ahl",
-          "dateRangeLabel": "May 16–31",
-          "startDate": "2026-05-16T02:00:00.000Z",
-          "endDate": "2026-05-31T00:05:00.000Z",
-          "eventCount": 17,
-          "seasonPhase": "Playoffs"
-        },
-        {
           "sport": "cricket",
           "displayName": "Test Cricket",
           "leagueKey": "test",
@@ -631,16 +608,6 @@
           "endDate": "2026-05-30T09:35:00.000Z",
           "eventCount": 13,
           "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "tennis",
-          "displayName": "Rome",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "May 16–17",
-          "startDate": "2026-05-16T09:00:00.000Z",
-          "endDate": "2026-05-17T09:00:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": null
         },
         {
           "sport": "rugby",
@@ -743,6 +710,36 @@
           "seasonPhase": null
         },
         {
+          "sport": "soccer",
+          "displayName": "NWSL",
+          "leagueKey": "nwsl",
+          "dateRangeLabel": "May 16–31",
+          "startDate": "2026-05-16T22:30:00.000Z",
+          "endDate": "2026-05-31T23:00:00.000Z",
+          "eventCount": 22,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "hockey",
+          "displayName": "AHL",
+          "leagueKey": "ahl",
+          "dateRangeLabel": "May 16–31",
+          "startDate": "2026-05-16T23:00:00.000Z",
+          "endDate": "2026-05-31T00:05:00.000Z",
+          "eventCount": 16,
+          "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "hockey",
+          "displayName": "ECHL",
+          "leagueKey": "echl",
+          "dateRangeLabel": "May 16–31",
+          "startDate": "2026-05-16T23:10:00.000Z",
+          "endDate": "2026-05-31T21:05:00.000Z",
+          "eventCount": 16,
+          "seasonPhase": "Playoffs"
+        },
+        {
           "sport": "rugby",
           "displayName": "MLR",
           "leagueKey": "mlr",
@@ -759,6 +756,16 @@
           "dateRangeLabel": "May 17",
           "startDate": "2026-05-17T06:00:00.000Z",
           "endDate": "2026-05-17T06:00:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Rome",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "May 17",
+          "startDate": "2026-05-17T09:00:00.000Z",
+          "endDate": "2026-05-17T09:00:00.000Z",
           "eventCount": 1,
           "seasonPhase": null
         },
@@ -929,7 +936,7 @@
           "dateRangeLabel": "May 29–31",
           "startDate": "2026-05-29T09:10:00.000Z",
           "endDate": "2026-05-31T04:00:00.000Z",
-          "eventCount": 18,
+          "eventCount": 19,
           "seasonPhase": null
         },
         {
@@ -1497,7 +1504,7 @@
           "dateRangeLabel": "May 29–31",
           "startDate": "2026-05-29T09:10:00.000Z",
           "endDate": "2026-05-31T04:00:00.000Z",
-          "eventCount": 18,
+          "eventCount": 19,
           "seasonPhase": null
         },
         {

@@ -1353,21 +1353,21 @@
   },
   "ipl_storyline:gujarat titans vs royal challengers bengaluru ipl 2026 highlights": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=hNt-HJrhtGM",
-      "thumbnailUrl": "https://img.youtube.com/vi/hNt-HJrhtGM/hqdefault.jpg",
-      "durationSeconds": 633,
-      "title": "RCB vs GT QUALIFIER 1 🔥 | Kohli vs Gill for DIRECT IPL 2026 FINAL Spot 🏆 | STUMPTALES | KAUSHIK NC",
+      "url": "https://www.youtube.com/watch?v=LaAgo3b0jMI",
+      "thumbnailUrl": "https://img.youtube.com/vi/LaAgo3b0jMI/hqdefault.jpg",
+      "durationSeconds": 685,
+      "title": "#GT vs #RR: Qualifier 2 | Fight for a Place in the #TATAIPL 2026 Final against RCB",
       "source": "youtube",
-      "channel": "StumpTales",
-      "publishedAt": "40 minutes ago"
+      "channel": "Star Sports and ESPNcricinfo",
+      "publishedAt": "23 hours ago"
     },
-    "fetchedAt": "2026-05-26T02:18:35.079Z",
+    "fetchedAt": "2026-05-30T02:41:22.969Z",
     "query": "Gujarat Titans vs Royal Challengers Bengaluru IPL 2026 highlights",
     "debug": {
       "searchQuery": "Gujarat Titans vs Royal Challengers Bengaluru IPL 2026 highlights",
-      "selectedVideoTitle": "RCB vs GT QUALIFIER 1 🔥 | Kohli vs Gill for DIRECT IPL 2026 FINAL Spot 🏆 | STUMPTALES | KAUSHIK NC",
-      "selectedVideoPublishedAt": "40 minutes ago",
-      "selectedVideoChannel": "StumpTales",
+      "selectedVideoTitle": "#GT vs #RR: Qualifier 2 | Fight for a Place in the #TATAIPL 2026 Final against RCB",
+      "selectedVideoPublishedAt": "23 hours ago",
+      "selectedVideoChannel": "Star Sports and ESPNcricinfo",
       "rejectedForAgeCount": 0
     }
   },

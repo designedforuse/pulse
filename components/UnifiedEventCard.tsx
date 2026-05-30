@@ -980,7 +980,7 @@ export default function UnifiedEventCard({
   const isGoldenTrail = isAthletics && (event.id?.startsWith("athletics-golden-trail-") || event.leagueKey === "golden-trail");
   const rawAthleticsTournament = isAthletics ? (event.tournamentName || event.homeTeam) : null;
   const athleticsTournament = rawAthleticsTournament
-    ? rawAthleticsTournament.replace(/^\s*(diamond\s+league|gtws|utmb)\s*[—–\-:]\s*/i, "").trim()
+    ? rawAthleticsTournament.replace(/^\s*(diamond\s+league(\s+final)?|gtws|utmb)\s*[—–\-:]\s*/i, "").trim()
     : rawAthleticsTournament;
   const horseRacingName = isHorseRacing ? (event.tournamentName || event.homeTeam) : null;
   const cyclingTourName = isCycling ? (event.tournamentName || event.homeTeam) : null;
@@ -1151,6 +1151,11 @@ export default function UnifiedEventCard({
                     ) : (
                       <Text style={{ fontSize: featured ? 28 : 24 }}>🏃</Text>
                     )}
+                    {isDiamondLeague && (
+                      <Text style={uStyles.espnTeamName} numberOfLines={1}>
+                        {athleticsTournament}
+                      </Text>
+                    )}
                   </View>
                 </View>
                 <View style={uStyles.espnCenter}>
@@ -1161,7 +1166,7 @@ export default function UnifiedEventCard({
                   <View style={uStyles.espnStarSlot} />
                   <View style={uStyles.espnTeam}>
                     <Text style={uStyles.espnTeamName} numberOfLines={2}>
-                      {athleticsTournament}
+                      {isDiamondLeague ? (event.roundLabel ?? athleticsTournament) : athleticsTournament}
                     </Text>
                   </View>
                 </View>

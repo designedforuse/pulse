@@ -15,6 +15,7 @@ interface AppEvent {
   sessionTitle?: string;
   competitionType?: string;
   tournamentName?: string;
+  roundLabel?: string;
 }
 
 export interface DiamondLeagueFetchResult {
@@ -163,7 +164,12 @@ export function fetchDiamondLeagueEvents(): DiamondLeagueFetchResult {
 
   const events: AppEvent[] = [];
 
+  let roundCounter = 0;
   for (const meet of DIAMOND_LEAGUE_MEETS) {
+    const isFinal = meet.id.includes("brussels-final");
+    if (!isFinal) roundCounter++;
+    const roundLabel = isFinal ? "Final" : `Round ${roundCounter}`;
+
     const start = new Date(meet.startUtc);
     if (start < windowStart || start > windowEnd) continue;
 
@@ -185,6 +191,7 @@ export function fetchDiamondLeagueEvents(): DiamondLeagueFetchResult {
       sessionTitle: meet.displayName,
       competitionType: "international",
       tournamentName: meet.displayName,
+      roundLabel,
     });
   }
 
