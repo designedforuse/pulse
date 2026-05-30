@@ -33,7 +33,6 @@ import {
 import type { ScoreData } from "@/lib/scores-context";
 import { getCatchUpTeaser, type TeaserMood } from "@/lib/catchUpTeasers";
 import {
-  getSportEmoji,
   tagEntries,
   type DailyWrapEntry,
   type DailyWrapResponse,
@@ -133,7 +132,6 @@ function StoryPage({
               { borderColor: sportColor + "66", backgroundColor: sportColor + "1F" },
             ]}
           >
-            <Text style={styles.sportEmoji}>{getSportEmoji(entry.sport)}</Text>
             <Text style={[styles.leagueChipText, { color: sportColor }]}>{leagueLabel}</Text>
           </View>
           {entry.isFav && (
@@ -160,10 +158,7 @@ function StoryPage({
         <View style={styles.footer}>
           <View style={styles.providerRow}>
             {provider ? (
-              <>
-                <ProviderLogo providerId={provider.brandId} size={20} />
-                <Text style={styles.providerName}>{provider.brandName}</Text>
-              </>
+              <ProviderLogo providerId={provider.brandId} size={20} />
             ) : (
               <Text style={styles.providerName}>{entry.detail}</Text>
             )}
@@ -186,7 +181,6 @@ function StoryPage({
             >
               <Ionicons name="play-back" size={15} color={moodColor} />
               <Text style={[styles.replayBtnText, { color: moodColor }]}>Watch the replay</Text>
-              <Ionicons name="chevron-forward" size={15} color={moodColor} />
             </Pressable>
           )}
 
@@ -236,8 +230,8 @@ export default function DailyWrapFullScreen() {
     return map;
   }, [allEvents]);
 
-  const { stories, favCount } = useMemo(() => {
-    if (!data?.results?.length) return { stories: [] as StoryView[], favCount: 0 };
+  const { stories } = useMemo(() => {
+    if (!data?.results?.length) return { stories: [] as StoryView[] };
     const tagged = tagEntries(data.results, favorites) as Story[];
     const built: StoryView[] = tagged.map((entry) => {
       const event = eventMap.get(entry.eventId);
@@ -262,7 +256,7 @@ export default function DailyWrapFullScreen() {
         sportColor: getSportColor(entry.sport),
       };
     });
-    return { stories: built, favCount: tagged.filter((r) => r.isFav).length };
+    return { stories: built };
   }, [data, favorites, eventMap, getScore]);
 
   // Keep the active index in range if the list shrinks on a refresh.
@@ -352,9 +346,6 @@ export default function DailyWrapFullScreen() {
               <Text style={styles.counterText}>
                 {Math.min(index + 1, stories.length)}/{stories.length}
               </Text>
-              {favCount > 0 && (
-                <Text style={styles.counterFav}>{favCount} ★</Text>
-              )}
             </View>
           )}
         </View>
@@ -390,9 +381,6 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     borderRadius: 999,
     borderWidth: 1,
-  },
-  sportEmoji: {
-    fontSize: 13,
   },
   leagueChipText: {
     fontSize: 11,
@@ -550,12 +538,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
-  },
-  counterFav: {
-    fontSize: 11,
-    fontFamily: "Inter_500Medium",
-    color: Colors.textSecondary,
-    marginTop: 1,
   },
   center: {
     flex: 1,
