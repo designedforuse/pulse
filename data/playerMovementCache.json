@@ -40282,7 +40282,7 @@
     }
   },
   "movements": [],
-  "lastUpdated": "2026-05-30T02:41:11.006Z",
+  "lastUpdated": "2026-05-30T04:18:03.572Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -40293,9 +40293,7 @@
       "VGK",
       "CGY",
       "EDM",
-      "VAN",
-      "CAR",
-      "MTL"
+      "VAN"
     ],
     "skippedTeams": [
       {
@@ -40309,8 +40307,8 @@
         "reason": "LEAGUE_NOT_SUPPORTED"
       }
     ],
-    "playersIngested": 377,
+    "playersIngested": 336,
     "movementsDetectedThisRun": [],
-    "timestamp": "2026-05-30T02:41:11.006Z"
+    "timestamp": "2026-05-30T04:18:03.572Z"
   }
 }

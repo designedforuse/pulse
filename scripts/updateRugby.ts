@@ -723,6 +723,9 @@ export async function fetchRugbyEvents(): Promise<RugbyFetchResult> {
   const matchupDropIds = new Set<string>();
   const matchupSeen = new Map<string, AppEvent>(); // "homeTeam|awayTeam|leagueKey" → representative event
   for (const ev of allEvents) {
+    // Multi-day session cards (e.g. SVNS day 1/2/3) intentionally share the same
+    // home/away matchup string across consecutive days — never treat them as duplicates.
+    if (ev.eventType === "session") continue;
     const key = `${ev.homeTeam}|${ev.awayTeam}|${ev.leagueKey ?? ev.league}`;
     const prev = matchupSeen.get(key);
     if (prev) {
@@ -839,6 +842,9 @@ export function mergeRugbyEvents(
   const teamTimeSet = new Map<string, string>(); // "team|timeSlot" -> event id
   const conflictIds = new Set<string>();
   for (const e of merged) {
+    // Session cards (e.g. SVNS) carry an empty awayTeam and are inherently single-stop
+    // multi-day events — exempt them from team-conflict dedup to avoid false collisions.
+    if (e.eventType === "session") continue;
     const slot = new Date(e.startTimeLocal).toISOString().slice(0, 16);
     for (const team of [e.homeTeam, e.awayTeam]) {
       const key = `${team}|${slot}`;
@@ -863,6 +869,9 @@ export function mergeRugbyEvents(
   const matchupSeen = new Map<string, AppEvent>(); // "leagueKey|homeTeam|awayTeam" → kept event
   for (const e of merged) {
     if (conflictIds.has(e.id)) continue;
+    // Multi-day session cards (e.g. SVNS day 1/2/3) intentionally share the same
+    // home/away matchup string across consecutive days — never treat them as duplicates.
+    if (e.eventType === "session") continue;
     const key = `${e.leagueKey ?? e.league}|${e.homeTeam}|${e.awayTeam}`;
     const prev = matchupSeen.get(key);
     if (prev) {

@@ -12,3 +12,9 @@ WRC rallies are emitted as **one event per day** (not one card spanning the whol
 - **Fields:** per-day events carry `dayNumber` + `totalDays` (added to `SportEvent` in `lib/data.ts`). The card reads these directly for the "Day N of M" label — do **not** recompute day index from elapsed time per-card (each card is now a single short day, so the old elapsed-time math would always say "Day 1").
 - **Migration / cleanup is automatic:** the merge prunes any `racing-wrc-` id not in the fresh set, so the old single-event-per-rally ids drop out when the per-day generator first runs. No manual cache wipe needed.
 - **Caveat:** day start time-of-day is inherited from each rally's `startUtc` (best-effort). Some rallies start with an evening ceremonial time, so a daily window can land in the evening rather than morning — acceptable given the schedule is hand-placed, but re-verify against wrc.com near the event.
+
+## Matchup-dedup must exempt session events
+
+Multi-day session cards repeat the **same matchup string** across consecutive days (e.g. SVNS Day 1/2/3 all = `"SVNS {city}"` vs `""`). Any dedup that keys on `homeTeam|awayTeam|leagueKey` **without a date** and drops "same-matchup within ~36h" will silently delete the middle day(s): Day 2 sits 24h from Day 1 (≤36h → dropped) while Day 3 sits 48h away (kept). Symptom: Day 1 and Day 3 present, Day 2 missing.
+- **Rule:** every matchup/conflict dedup loop must `continue` on `eventType === "session"`. In `scripts/updateRugby.ts` this means **three** loops: the in-fetch matchup dedup in `fetchRugbyEvents()`, plus the team-conflict and same-matchup loops in `mergeRugbyEvents()`. Missing any one re-drops the middle day downstream.
+- **Why session is the right key:** these events are single-participant multi-day by design (empty awayTeam), so they can never be a genuine iCal timezone-artifact duplicate — the thing matchup-dedup exists to catch.

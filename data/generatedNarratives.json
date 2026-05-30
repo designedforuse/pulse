@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-30T02:41:11.006Z",
+  "lastUpdated": "2026-05-30T04:18:03.572Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -70,9 +70,7 @@
           "VGK",
           "CGY",
           "EDM",
-          "VAN",
-          "CAR",
-          "MTL"
+          "VAN"
         ],
         "skippedTeams": [
           {
@@ -86,9 +84,9 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 377,
+        "playersIngested": 336,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-05-30T02:41:11.006Z"
+        "timestamp": "2026-05-30T04:18:03.572Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -98,7 +96,7 @@
     "candidateCountAfterCap": 8,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -1998.6863905555556,
+      "hoursUntil": -2000.3009922222222,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -114,7 +112,7 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 3,
+      "rawClinchCandidates": 4,
       "clinchAfterRegionFilter": 2,
       "clinchFinalCount": 2,
       "clinchGatedOut": []
@@ -204,7 +202,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-05-30T02:41:11.006Z",
+      "triggeredAt": "2026-05-30T04:18:03.572Z",
       "expiresAt": "2026-05-30T17:30:00.000Z",
       "kind": "clinch_watch",
       "region": "SouthAfrica",
@@ -228,16 +226,16 @@
       ]
     },
     {
-      "id": "clinch_watch_rugby-svns-62osre-d3",
+      "id": "clinch_watch_rugby-svns-62osre-d2",
       "title": "Clinch Watch",
-      "subtitle": "Can secure semifinal place in the next 48h",
+      "subtitle": "Can secure semifinal place tonight",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-05-30T02:41:11.006Z",
-      "expiresAt": "2026-05-31T12:00:00.000Z",
+      "triggeredAt": "2026-05-30T04:18:03.572Z",
+      "expiresAt": "2026-05-30T12:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
@@ -249,9 +247,9 @@
         "league": "HSBC SVNS",
         "awayTeam": "",
         "homeTeam": "SVNS Valladolid",
-        "startTime": "2026-05-31T08:00:00.000Z",
+        "startTime": "2026-05-30T08:00:00.000Z",
         "eventIds": [
-          "rugby-svns-62osre-d3"
+          "rugby-svns-62osre-d2"
         ],
         "reason": "SVNS Valladolid have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
       },
@@ -262,13 +260,13 @@
     {
       "id": "marquee_match",
       "title": "Marquee Match: Champions League",
-      "subtitle": "Arsenal vs Paris Saint-Germain — Champions League · tomorrow",
+      "subtitle": "Arsenal vs Paris Saint-Germain — Champions League · kicks off in 12h",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-05-30T02:41:11.006Z",
+      "triggeredAt": "2026-05-30T04:18:03.572Z",
       "expiresAt": "2026-05-30T20:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -284,7 +282,7 @@
         "eventIds": [
           "soccer-championsleague-20260530-1600-arsenal-at-paris-saint-germain"
         ],
-        "reason": "Top Champions League fixture (Arsenal vs Paris Saint-Germain) tomorrow"
+        "reason": "Top Champions League fixture (Arsenal vs Paris Saint-Germain) kicks off in 12h"
       },
       "sports": [
         "soccer"
@@ -308,7 +306,7 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-30T02:41:11.006Z",
+      "triggeredAt": "2026-05-30T04:18:03.572Z",
       "expiresAt": "2026-06-02T23:00:00.000Z",
       "kind": "rally_weekend",
       "region": "Other",
@@ -345,8 +343,8 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-05-30T02:41:11.006Z",
-      "expiresAt": "2026-06-06T02:41:11.006Z",
+      "triggeredAt": "2026-05-30T04:18:03.572Z",
+      "expiresAt": "2026-06-06T04:18:03.572Z",
       "kind": "grand_tour",
       "region": "Other",
       "regionPriority": 99,
@@ -386,8 +384,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-30T02:41:11.006Z",
-      "expiresAt": "2026-06-06T02:41:11.006Z",
+      "triggeredAt": "2026-05-30T04:18:03.572Z",
+      "expiresAt": "2026-06-06T04:18:03.572Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -425,13 +423,13 @@
     {
       "id": "ipl_storyline",
       "title": "Tonight in the IPL",
-      "subtitle": "Gujarat Titans vs Royal Challengers Bengaluru — in 35h",
+      "subtitle": "Gujarat Titans vs Royal Challengers Bengaluru — in 34h",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-05-30T02:41:11.006Z",
+      "triggeredAt": "2026-05-30T04:18:03.572Z",
       "expiresAt": "2026-05-31T22:00:00.000Z",
       "kind": "ipl_storyline",
       "region": "Other",
@@ -474,7 +472,7 @@
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-05-30T02:41:11.006Z",
+      "triggeredAt": "2026-05-30T04:18:03.572Z",
       "expiresAt": "2026-06-01T18:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -588,16 +586,6 @@
           "endDate": "2026-05-25T01:15:00.000Z",
           "eventCount": 83,
           "seasonPhase": "Regular"
-        },
-        {
-          "sport": "cricket",
-          "displayName": "Test Cricket",
-          "leagueKey": "test",
-          "dateRangeLabel": "May 16–27",
-          "startDate": "2026-05-16T03:30:00.000Z",
-          "endDate": "2026-05-27T10:00:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": null
         },
         {
           "sport": "rugby",
@@ -910,6 +898,16 @@
           "seasonPhase": null
         },
         {
+          "sport": "cricket",
+          "displayName": "Test Cricket",
+          "leagueKey": "test",
+          "dateRangeLabel": "May 27",
+          "startDate": "2026-05-27T10:00:00.000Z",
+          "endDate": "2026-05-27T10:00:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
+        },
+        {
           "sport": "racing",
           "displayName": "Rally Japan",
           "leagueKey": "wrc",
@@ -926,7 +924,7 @@
           "dateRangeLabel": "May 29–31",
           "startDate": "2026-05-29T08:00:00.000Z",
           "endDate": "2026-05-31T08:00:00.000Z",
-          "eventCount": 2,
+          "eventCount": 3,
           "seasonPhase": null
         },
         {
@@ -943,10 +941,10 @@
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "May 30–31",
+          "dateRangeLabel": "May 30",
           "startDate": "2026-05-30T00:00:00.000Z",
-          "endDate": "2026-05-31T23:30:00.000Z",
-          "eventCount": 2,
+          "endDate": "2026-05-30T00:00:00.000Z",
+          "eventCount": 1,
           "seasonPhase": "Playoffs"
         },
         {
@@ -1100,10 +1098,10 @@
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "Jun 3",
+          "dateRangeLabel": "Jun 3–18",
           "startDate": "2026-06-03T00:00:00.000Z",
-          "endDate": "2026-06-03T00:00:00.000Z",
-          "eventCount": 1,
+          "endDate": "2026-06-18T00:00:00.000Z",
+          "eventCount": 7,
           "seasonPhase": "Final"
         },
         {
@@ -1153,7 +1151,7 @@
           "dateRangeLabel": "Jun 5–7",
           "startDate": "2026-06-05T08:00:00.000Z",
           "endDate": "2026-06-07T08:00:00.000Z",
-          "eventCount": 2,
+          "eventCount": 3,
           "seasonPhase": null
         },
         {
@@ -1494,7 +1492,7 @@
           "dateRangeLabel": "May 29–31",
           "startDate": "2026-05-29T08:00:00.000Z",
           "endDate": "2026-05-31T08:00:00.000Z",
-          "eventCount": 2,
+          "eventCount": 3,
           "seasonPhase": null
         },
         {
@@ -1541,10 +1539,10 @@
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "May 30–31",
+          "dateRangeLabel": "May 30",
           "startDate": "2026-05-30T00:00:00.000Z",
-          "endDate": "2026-05-31T23:30:00.000Z",
-          "eventCount": 2,
+          "endDate": "2026-05-30T00:00:00.000Z",
+          "eventCount": 1,
           "seasonPhase": "Playoffs"
         },
         {
