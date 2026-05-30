@@ -73,6 +73,36 @@ function isTrusted(channel: string): boolean {
   return TRUSTED_CHANNELS.some((tc) => lower.includes(tc));
 }
 
+const THUMB_PROBE_TIMEOUT_MS = 2500;
+const THUMB_TOTAL_BUDGET_MS = 3500; // overall cap for thumbnail probing per search
+
+// Pick the highest-resolution thumbnail YouTube actually has for this video.
+// maxresdefault (1280x720) and sddefault (640x480) are not always generated,
+// so probe with a cheap HEAD and fall back to hqdefault (always present).
+// `deadline` (absolute ms) bounds the total probing time so a search's overall
+// latency budget stays predictable on the cold path.
+async function bestThumbnailUrl(videoId: string, deadline: number): Promise<string> {
+  for (const quality of ["maxresdefault", "sddefault"]) {
+    const remaining = deadline - Date.now();
+    if (remaining <= 0) break;
+    const url = `https://i.ytimg.com/vi/${videoId}/${quality}.jpg`;
+    const controller = new AbortController();
+    const timer = setTimeout(
+      () => controller.abort(),
+      Math.min(THUMB_PROBE_TIMEOUT_MS, remaining)
+    );
+    try {
+      const resp = await fetch(url, { method: "HEAD", signal: controller.signal });
+      if (resp.ok) return url;
+    } catch {
+      // network/timeout — fall through to the next quality
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+  return `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+}
+
 // Real highlight clips are short-form; reject full replays, live streams, etc.
 const MIN_DURATION_SECONDS = 30;
 const MAX_DURATION_SECONDS = 20 * 60;
@@ -176,11 +206,15 @@ async function searchHighlight(query: string): Promise<SearchResult> {
       return (a.ageDays ?? 999) - (b.ageDays ?? 999);
     });
 
+    // The YouTube search/parse is done; bound the remaining thumbnail probing
+    // with its own explicit budget so total search latency stays predictable.
+    const thumbDeadline = Date.now() + THUMB_TOTAL_BUDGET_MS;
+
     const clip = clips[0];
     const video: HighlightVideo | null = clip
       ? {
           url: `https://www.youtube.com/watch?v=${clip.videoId}`,
-          thumbnailUrl: `https://img.youtube.com/vi/${clip.videoId}/hqdefault.jpg`,
+          thumbnailUrl: await bestThumbnailUrl(clip.videoId, thumbDeadline),
           durationSeconds: clip.durationSeconds,
           title: clip.title,
           channel: clip.channel,
@@ -197,7 +231,7 @@ async function searchHighlight(query: string): Promise<SearchResult> {
         if (a.trusted !== b.trusted) return a.trusted ? -1 : 1;
         return (a.ageDays ?? 999) - (b.ageDays ?? 999);
       });
-      imageUrl = `https://img.youtube.com/vi/${pool[0].videoId}/hqdefault.jpg`;
+      imageUrl = await bestThumbnailUrl(pool[0].videoId, thumbDeadline);
     }
 
     return { video, imageUrl };

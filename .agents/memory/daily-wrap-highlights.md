@@ -23,9 +23,19 @@ must use AbortController so timed-out scrapes are actually cancelled.
 
 **Fallback ladder when no qualifying clip exists:** the scrape also returns a
 still `imageUrl` — a relevant recent thumbnail (real action photo) — surfaced as
-`fallbackImageUrl` only when there's no video. The card then renders that image
-with a Ken Burns pan/zoom (transform-only Animated loop, native driver) behind
-the headline. Only when *neither* a clip nor an image is found does it fall back
-to the plain sport gradient + "Watch the replay". The paged feed must keep
-FlatList virtualization tight (small windowSize) so many Ken Burns loops don't
-all animate at once.
+`fallbackImageUrl` only when there's no video. Both card types render the SAME
+image with a Ken Burns pan/zoom (transform-only Animated loop, native driver)
+behind the headline; the only difference is the CTA (clip → "Watch highlights",
+no clip → "Watch the replay"). Only when *neither* a clip nor an image is found
+does it fall back to the plain sport gradient. The paged feed must keep FlatList
+virtualization tight (small windowSize) so many Ken Burns loops don't all animate
+at once.
+
+**Image source = YouTube thumbnails, not ESPN.** ESPN's CDN only exposes team
+*logos* (a.espncdn.com/i/teamlogos/...), not per-game action photos, and we don't
+store per-game ESPN event ids (only F1 ids survive into generatedEvents.json), so
+ESPN action shots aren't feasible. Use the highest-res YouTube thumbnail of the
+clip we already found: HEAD-probe maxresdefault (1280x720) → sddefault → fall
+back to hqdefault (always present). maxres/sd are not always generated. Probing
+is bounded by an explicit deadline so cold-path search latency stays predictable;
+the chosen URL is cached per eventId for a week so probes only run on cache miss.
