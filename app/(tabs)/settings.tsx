@@ -314,7 +314,7 @@ export default function SettingsScreen() {
   const providers = getProviders();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
   const queryClient = useQueryClient();
-  const { debugShowAll, setDebugShowAll, favoritesOnly, setFavoritesOnly } = useEvents();
+  const { debugShowAll, setDebugShowAll, favoritesOnly, setFavoritesOnly, hideSpoilers, setHideSpoilers } = useEvents();
 
   const [openSection, setOpenSection] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
@@ -418,6 +418,39 @@ export default function SettingsScreen() {
         ]}
         showsVerticalScrollIndicator={false}
       >
+        {/* Spoiler protection */}
+        <View style={styles.accordionSection}>
+          <View style={styles.card}>
+            <View style={styles.debugRow}>
+              <View style={styles.debugLeft}>
+                <Ionicons
+                  name="eye-off-outline"
+                  size={20}
+                  color={Colors.accent}
+                  style={{ paddingTop: 1 }}
+                />
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.refreshLabel}>Hide scores in Daily Wrap</Text>
+                  <Text style={styles.refreshDesc}>
+                    Keep results a surprise. Turn off to show final scores on story cards.
+                  </Text>
+                </View>
+              </View>
+              <Switch
+                value={hideSpoilers}
+                onValueChange={(v) => {
+                  if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                  setHideSpoilers(v);
+                }}
+                trackColor={{ false: Colors.border, true: Colors.accent + "55" }}
+                thumbColor={hideSpoilers ? Colors.accent : Colors.textMuted}
+                style={styles.debugSwitch}
+                testID="hide-spoilers-toggle"
+              />
+            </View>
+          </View>
+        </View>
+
         {/* Favorites */}
         <View style={styles.accordionSection}>
           <Pressable

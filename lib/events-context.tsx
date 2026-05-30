@@ -9,6 +9,7 @@ import { useProviders, getEventBroadcasterIds } from "@/lib/providers-context";
 const DEBUG_KEY = "prefs.debugShowAll";
 const SVNS_KEY = "prefs.showSvnsSessions";
 const FAVS_ONLY_KEY = "prefs.favoritesOnly";
+const HIDE_SPOILERS_KEY = "prefs.hideSpoilers";
 
 const cricketLeagueToRegion: Record<string, string> = {
   IPL: "India",
@@ -41,6 +42,8 @@ interface EventsContextValue {
   setShowSvnsSessions: (val: boolean) => void;
   favoritesOnly: boolean;
   setFavoritesOnly: (val: boolean) => void;
+  hideSpoilers: boolean;
+  setHideSpoilers: (val: boolean) => void;
   leagueSeasonStarts: Record<string, string>;
 }
 
@@ -51,13 +54,15 @@ export function EventsProvider({ children }: { children: ReactNode }) {
   const [debugShowAll, setDebugShowAllState] = useState(false);
   const [showSvnsSessions, setShowSvnsState] = useState(true);
   const [favoritesOnly, setFavoritesOnlyState] = useState(false);
+  const [hideSpoilers, setHideSpoilersState] = useState(true);
 
   useEffect(() => {
-    AsyncStorage.multiGet([DEBUG_KEY, SVNS_KEY, FAVS_ONLY_KEY]).then((entries) => {
+    AsyncStorage.multiGet([DEBUG_KEY, SVNS_KEY, FAVS_ONLY_KEY, HIDE_SPOILERS_KEY]).then((entries) => {
       for (const [key, val] of entries) {
         if (key === DEBUG_KEY && val === "true") setDebugShowAllState(true);
         if (key === SVNS_KEY && val === "false") setShowSvnsState(false);
         if (key === FAVS_ONLY_KEY && val === "true") setFavoritesOnlyState(true);
+        if (key === HIDE_SPOILERS_KEY && val === "false") setHideSpoilersState(false);
       }
     });
   }, []);
@@ -75,6 +80,11 @@ export function EventsProvider({ children }: { children: ReactNode }) {
   const setFavoritesOnly = (val: boolean) => {
     setFavoritesOnlyState(val);
     AsyncStorage.setItem(FAVS_ONLY_KEY, val.toString());
+  };
+
+  const setHideSpoilers = (val: boolean) => {
+    setHideSpoilersState(val);
+    AsyncStorage.setItem(HIDE_SPOILERS_KEY, val.toString());
   };
 
   const { data, isLoading } = useQuery<ApiResponse>({
@@ -148,9 +158,11 @@ export function EventsProvider({ children }: { children: ReactNode }) {
       setShowSvnsSessions,
       favoritesOnly,
       setFavoritesOnly,
+      hideSpoilers,
+      setHideSpoilers,
       leagueSeasonStarts,
     };
-  }, [allEvents, isLoading, debugShowAll, showSvnsSessions, favoritesOnly, leagueSeasonStarts, disabledProviders]);
+  }, [allEvents, isLoading, debugShowAll, showSvnsSessions, favoritesOnly, hideSpoilers, leagueSeasonStarts, disabledProviders]);
 
   return (
     <EventsContext.Provider value={value}>{children}</EventsContext.Provider>

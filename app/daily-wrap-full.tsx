@@ -26,6 +26,7 @@ import { useEvents } from "@/lib/events-context";
 import { useScores } from "@/lib/scores-context";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
+import UnifiedEventCard from "@/components/UnifiedEventCard";
 import {
   getSportColor,
   getEffectiveSport,
@@ -125,17 +126,20 @@ function StoryPage({
   height,
   insets,
   isLast,
+  hideSpoilers,
 }: {
   view: StoryView;
   height: number;
   insets: { top: number; bottom: number };
   isLast: boolean;
+  hideSpoilers: boolean;
 }) {
-  const { entry, event, mood, headline, leagueLabel, sportColor, video, backdrop } = view;
+  const { entry, event, score, mood, headline, leagueLabel, sportColor, video, backdrop } = view;
   const moodColor = MOOD_COLORS[mood];
   const moodLabel = MOOD_LABELS[mood];
   const provider = event ? resolveProviderDisplay(event) : null;
   const showKenBurns = !!backdrop;
+  const showScoreCard = !hideSpoilers && !!event && !!score;
 
   const handleReplay = () => {
     if (!event) return;
@@ -210,20 +214,30 @@ function StoryPage({
 
         {/* Footer */}
         <View style={styles.footer}>
-          <View style={styles.providerRow}>
-            {provider ? (
-              <ProviderLogo providerId={provider.brandId} size={20} />
-            ) : (
-              <Text style={styles.providerName}>{entry.detail}</Text>
-            )}
-            <View style={{ flex: 1 }} />
-            {!!event && (
-              <View style={styles.spoilerHint}>
-                <Ionicons name="eye-off-outline" size={12} color={Colors.textMuted} />
-                <Text style={styles.spoilerHintText}>Score hidden</Text>
-              </View>
-            )}
-          </View>
+          {showScoreCard && event ? (
+            <UnifiedEventCard
+              event={event}
+              now={new Date()}
+              score={score}
+              espnLayout
+              accentBarColor={sportColor}
+            />
+          ) : (
+            <View style={styles.providerRow}>
+              {provider ? (
+                <ProviderLogo providerId={provider.brandId} size={20} />
+              ) : (
+                <Text style={styles.providerName}>{entry.detail}</Text>
+              )}
+              <View style={{ flex: 1 }} />
+              {!!event && hideSpoilers && (
+                <View style={styles.spoilerHint}>
+                  <Ionicons name="eye-off-outline" size={12} color={Colors.textMuted} />
+                  <Text style={styles.spoilerHintText}>Score hidden</Text>
+                </View>
+              )}
+            </View>
+          )}
 
           {video ? (
             <Pressable
@@ -265,7 +279,7 @@ export default function DailyWrapFullScreen() {
   const rawInsets = useSafeAreaInsets();
   const { height } = useWindowDimensions();
   const { favorites } = useFavorites();
-  const { allEvents } = useEvents();
+  const { allEvents, hideSpoilers } = useEvents();
   const { getScore } = useScores();
   const tz = new Date().getTimezoneOffset();
   const [index, setIndex] = useState(0);
@@ -362,7 +376,13 @@ export default function DailyWrapFullScreen() {
           data={stories}
           keyExtractor={(s) => s.entry.eventId}
           renderItem={({ item, index: i }) => (
-            <StoryPage view={item} height={height} insets={insets} isLast={i === stories.length - 1} />
+            <StoryPage
+              view={item}
+              height={height}
+              insets={insets}
+              isLast={i === stories.length - 1}
+              hideSpoilers={hideSpoilers}
+            />
           )}
           pagingEnabled
           showsVerticalScrollIndicator={false}
