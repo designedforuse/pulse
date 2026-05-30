@@ -41,13 +41,6 @@ import {
   type HighlightVideo,
 } from "@/components/DailyWrapCard";
 
-function formatDuration(seconds: number): string {
-  if (!seconds || seconds <= 0) return "";
-  const m = Math.floor(seconds / 60);
-  const s = seconds % 60;
-  return `${m}:${s.toString().padStart(2, "0")}`;
-}
-
 const PINK = "#FF85C8";
 
 const MOOD_COLORS: Record<TeaserMood, string> = {
@@ -128,13 +121,11 @@ function SwipeHint() {
 function StoryPage({
   view,
   height,
-  width,
   insets,
   isLast,
 }: {
   view: StoryView;
   height: number;
-  width: number;
   insets: { top: number; bottom: number };
   isLast: boolean;
 }) {
@@ -142,9 +133,8 @@ function StoryPage({
   const moodColor = MOOD_COLORS[mood];
   const moodLabel = MOOD_LABELS[mood];
   const provider = event ? resolveProviderDisplay(event) : null;
-  const thumbWidth = width - 44;
-  const thumbHeight = Math.round(thumbWidth * (9 / 16));
-  const showKenBurns = !video && !!fallbackImageUrl;
+  const bgImageUrl = video?.thumbnailUrl ?? fallbackImageUrl ?? null;
+  const showKenBurns = !!bgImageUrl;
 
   const handleReplay = () => {
     if (!event) return;
@@ -162,13 +152,11 @@ function StoryPage({
     Linking.openURL(video.url);
   };
 
-  const duration = video ? formatDuration(video.durationSeconds) : "";
-
   return (
     <View style={[styles.page, { height }]}>
       {showKenBurns ? (
         <>
-          <KenBurnsImage uri={fallbackImageUrl as string} />
+          <KenBurnsImage uri={bgImageUrl as string} />
           <LinearGradient
             colors={[sportColor + "40", "rgba(0,0,0,0.55)", "rgba(0,0,0,0.92)"]}
             locations={[0, 0.45, 1]}
@@ -213,48 +201,11 @@ function StoryPage({
           )}
         </View>
 
-        {/* Hero — highlight thumbnail when available, else big headline */}
-        {video ? (
-          <View style={styles.heroWrap}>
-            <Pressable
-              onPress={handleWatchHighlights}
-              style={({ pressed }) => [pressed && { opacity: 0.9 }]}
-              testID={`story-thumb-${entry.eventId}`}
-            >
-              <View style={[styles.thumb, { width: thumbWidth, height: thumbHeight }]}>
-                <ExpoImage
-                  source={{ uri: video.thumbnailUrl }}
-                  style={StyleSheet.absoluteFill}
-                  contentFit="cover"
-                  transition={200}
-                />
-                <LinearGradient
-                  colors={["rgba(0,0,0,0)", "rgba(0,0,0,0.55)"]}
-                  style={StyleSheet.absoluteFill}
-                />
-                <View style={styles.playButton}>
-                  <Ionicons name="play" size={26} color="#FFFFFF" style={{ marginLeft: 3 }} />
-                </View>
-                <View style={styles.ytBadge}>
-                  <Ionicons name="logo-youtube" size={14} color="#FF0000" />
-                </View>
-                {!!duration && (
-                  <View style={styles.durationBadge}>
-                    <Text style={styles.durationText}>{duration}</Text>
-                  </View>
-                )}
-              </View>
-            </Pressable>
-            <Text style={[styles.headlineSm, { color: Colors.textPrimary }]} numberOfLines={3}>
-              {headline}
-            </Text>
-          </View>
-        ) : (
-          <View style={styles.headlineWrap}>
-            <Text style={[styles.headline, { color: Colors.textPrimary }]}>{headline}</Text>
-            <View style={[styles.headlineRule, { backgroundColor: moodColor }]} />
-          </View>
-        )}
+        {/* Hero — big headline over the Ken Burns image */}
+        <View style={styles.headlineWrap}>
+          <Text style={[styles.headline, { color: Colors.textPrimary }]}>{headline}</Text>
+          <View style={[styles.headlineRule, { backgroundColor: moodColor }]} />
+        </View>
 
         {/* Footer */}
         <View style={styles.footer}>
@@ -265,7 +216,7 @@ function StoryPage({
               <Text style={styles.providerName}>{entry.detail}</Text>
             )}
             <View style={{ flex: 1 }} />
-            {!video && (
+            {!!event && (
               <View style={styles.spoilerHint}>
                 <Ionicons name="eye-off-outline" size={12} color={Colors.textMuted} />
                 <Text style={styles.spoilerHintText}>Score hidden</Text>
@@ -311,7 +262,7 @@ function StoryPage({
 export default function DailyWrapFullScreen() {
   const navigation = useNavigation();
   const rawInsets = useSafeAreaInsets();
-  const { width, height } = useWindowDimensions();
+  const { height } = useWindowDimensions();
   const { favorites } = useFavorites();
   const { allEvents } = useEvents();
   const { getScore } = useScores();
@@ -410,7 +361,7 @@ export default function DailyWrapFullScreen() {
           data={stories}
           keyExtractor={(s) => s.entry.eventId}
           renderItem={({ item, index: i }) => (
-            <StoryPage view={item} height={height} width={width} insets={insets} isLast={i === stories.length - 1} />
+            <StoryPage view={item} height={height} insets={insets} isLast={i === stories.length - 1} />
           )}
           pagingEnabled
           showsVerticalScrollIndicator={false}
@@ -561,63 +512,6 @@ const styles = StyleSheet.create({
     width: 56,
     height: 4,
     borderRadius: 2,
-  },
-  heroWrap: {
-    flex: 1,
-    justifyContent: "center",
-    gap: 22,
-  },
-  thumb: {
-    borderRadius: 18,
-    overflow: "hidden",
-    backgroundColor: "#111111",
-  },
-  playButton: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    width: 60,
-    height: 60,
-    marginTop: -30,
-    marginLeft: -30,
-    borderRadius: 30,
-    backgroundColor: "rgba(0,0,0,0.45)",
-    borderWidth: 1.5,
-    borderColor: "rgba(255,255,255,0.85)",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  ytBadge: {
-    position: "absolute",
-    top: 10,
-    left: 10,
-    width: 26,
-    height: 26,
-    borderRadius: 13,
-    backgroundColor: "rgba(0,0,0,0.55)",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  durationBadge: {
-    position: "absolute",
-    bottom: 10,
-    right: 10,
-    paddingHorizontal: 7,
-    paddingVertical: 3,
-    borderRadius: 6,
-    backgroundColor: "rgba(0,0,0,0.75)",
-  },
-  durationText: {
-    fontSize: 11,
-    color: "#FFFFFF",
-    fontFamily: "Inter_600SemiBold",
-    letterSpacing: 0.3,
-  },
-  headlineSm: {
-    fontSize: 24,
-    lineHeight: 30,
-    fontFamily: "Inter_700Bold",
-    letterSpacing: -0.4,
   },
   footer: {
     gap: 16,
