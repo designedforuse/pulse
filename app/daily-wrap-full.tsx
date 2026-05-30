@@ -12,12 +12,14 @@ import { Ionicons } from "@expo/vector-icons";
 import { useQuery } from "@tanstack/react-query";
 import { getApiUrl } from "@/lib/query-client";
 import { useFavorites } from "@/lib/favorites-context";
+import { useEvents } from "@/lib/events-context";
+import { useScores } from "@/lib/scores-context";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Colors from "@/constants/colors";
+import CatchUpCard from "@/components/CatchUpCard";
+import type { SportEvent } from "@/lib/data";
 import {
   getSportEmoji,
-  buildFavoriteSet,
-  isEntryFavorite,
   tagEntries,
   type DailyWrapEntry,
   type DailyWrapResponse,
@@ -26,21 +28,26 @@ import {
 const PINK = "#FF85C8";
 const FOLD = 10;
 
-function ResultRow({
+// Fallback card for entries whose full event is no longer in the cache.
+function FallbackCard({
   entry,
-  isLast,
 }: {
   entry: DailyWrapEntry & { isFav?: boolean };
-  isLast: boolean;
 }) {
   return (
-    <View style={[styles.row, isLast && styles.rowLast]}>
-      <Text style={styles.rowEmoji}>{getSportEmoji(entry.sport)}</Text>
-      <View style={styles.rowBody}>
-        <Text style={styles.rowEditorial}>{entry.editorial}</Text>
-        <Text style={styles.rowDetail}>{entry.detail}</Text>
+    <View style={styles.fallbackCard}>
+      <View style={styles.fallbackAccent} />
+      <View style={styles.fallbackBody}>
+        <View style={styles.fallbackTop}>
+          <Text style={styles.fallbackEmoji}>{getSportEmoji(entry.sport)}</Text>
+          <Text style={styles.fallbackLeague}>{entry.league.toUpperCase()}</Text>
+          {entry.isFav && (
+            <Ionicons name="star" size={13} color={Colors.favStar} style={{ marginLeft: 4 }} />
+          )}
+        </View>
+        <Text style={styles.fallbackEditorial}>{entry.editorial}</Text>
+        <Text style={styles.fallbackDetail}>{entry.detail}</Text>
       </View>
-      {entry.isFav && <Text style={styles.favStar}>⭐</Text>}
     </View>
   );
 }
@@ -49,6 +56,8 @@ export default function DailyWrapFullScreen() {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
   const { favorites } = useFavorites();
+  const { allEvents } = useEvents();
+  const { getScore } = useScores();
   const tz = new Date().getTimezoneOffset();
   const [expanded, setExpanded] = useState(false);
 
@@ -67,21 +76,24 @@ export default function DailyWrapFullScreen() {
     staleTime: 5 * 60 * 1000,
   });
 
-  const { headline, secondary, favCount, total } = useMemo(() => {
-    if (!data?.results?.length) return { headline: null, secondary: [], favCount: 0, total: 0 };
-    const ordered = tagEntries(data.results, favorites);
-    const favs = ordered.filter((r) => r.isFav);
-    const [head, ...rest] = ordered;
+  const eventMap = useMemo(() => {
+    const map = new Map<string, SportEvent>();
+    for (const ev of allEvents) map.set(ev.id, ev);
+    return map;
+  }, [allEvents]);
+
+  const { ordered, favCount, total } = useMemo(() => {
+    if (!data?.results?.length) return { ordered: [], favCount: 0, total: 0 };
+    const tagged = tagEntries(data.results, favorites) as (DailyWrapEntry & { isFav?: boolean })[];
     return {
-      headline: head ?? null,
-      secondary: rest as (DailyWrapEntry & { isFav?: boolean })[],
-      favCount: favs.length,
+      ordered: tagged,
+      favCount: tagged.filter((r) => r.isFav).length,
       total: data.results.length,
     };
   }, [data, favorites]);
 
-  const visible = expanded ? secondary : secondary.slice(0, FOLD);
-  const hiddenCount = secondary.length - FOLD;
+  const visible = expanded ? ordered : ordered.slice(0, FOLD);
+  const hiddenCount = ordered.length - FOLD;
 
   return (
     <ScrollView
@@ -110,58 +122,45 @@ export default function DailyWrapFullScreen() {
         </View>
       ) : (
         <>
-          {/* Headline card */}
-          {headline && (
-            <View style={styles.headlineCard}>
-              <View style={styles.headlineMeta}>
-                <Text style={styles.headlineEmoji}>{getSportEmoji(headline.sport)}</Text>
-                <Text style={styles.headlineLeague}>{headline.league.toUpperCase()}</Text>
-                {headline.isFav && (
-                  <View style={styles.favBadge}>
-                    <Text style={styles.favBadgeText}>⭐ YOUR TEAM</Text>
-                  </View>
-                )}
-              </View>
-              <Text style={styles.headlineEditorial}>{headline.editorial}</Text>
-              <Text style={styles.headlineDetail}>{headline.detail}</Text>
-            </View>
-          )}
-
-          {/* All other results */}
-          {secondary.length > 0 && (
-            <View style={styles.listCard}>
-              {visible.map((entry, idx) => (
-                <ResultRow
+          {/* Vertical feed of catch-up cards */}
+          <View style={styles.feed}>
+            {visible.map((entry) => {
+              const ev = eventMap.get(entry.eventId);
+              return ev ? (
+                <CatchUpCard
                   key={entry.eventId}
-                  entry={entry}
-                  isLast={idx === visible.length - 1 && (expanded || hiddenCount <= 0)}
+                  event={ev}
+                  score={getScore(ev.id)}
+                  isFav={entry.isFav}
                 />
-              ))}
+              ) : (
+                <FallbackCard key={entry.eventId} entry={entry} />
+              );
+            })}
 
-              {/* Accordion toggle */}
-              {!expanded && hiddenCount > 0 && (
-                <Pressable
-                  style={({ pressed }) => [styles.accordionRow, pressed && { opacity: 0.7 }]}
-                  onPress={() => setExpanded(true)}
-                >
-                  <Ionicons name="chevron-down" size={15} color={PINK} />
-                  <Text style={styles.accordionText}>
-                    Show {hiddenCount} more result{hiddenCount !== 1 ? "s" : ""}
-                  </Text>
-                </Pressable>
-              )}
+            {/* Accordion toggle */}
+            {!expanded && hiddenCount > 0 && (
+              <Pressable
+                style={({ pressed }) => [styles.accordionRow, pressed && { opacity: 0.7 }]}
+                onPress={() => setExpanded(true)}
+              >
+                <Ionicons name="chevron-down" size={15} color={PINK} />
+                <Text style={styles.accordionText}>
+                  Show {hiddenCount} more result{hiddenCount !== 1 ? "s" : ""}
+                </Text>
+              </Pressable>
+            )}
 
-              {expanded && (
-                <Pressable
-                  style={({ pressed }) => [styles.accordionRow, pressed && { opacity: 0.7 }]}
-                  onPress={() => setExpanded(false)}
-                >
-                  <Ionicons name="chevron-up" size={15} color={PINK} />
-                  <Text style={styles.accordionText}>Show less</Text>
-                </Pressable>
-              )}
-            </View>
-          )}
+            {expanded && hiddenCount > 0 && (
+              <Pressable
+                style={({ pressed }) => [styles.accordionRow, pressed && { opacity: 0.7 }]}
+                onPress={() => setExpanded(false)}
+              >
+                <Ionicons name="chevron-up" size={15} color={PINK} />
+                <Text style={styles.accordionText}>Show less</Text>
+              </Pressable>
+            )}
+          </View>
 
           {/* Total count */}
           <Text style={styles.totalText}>{total} results today</Text>
@@ -218,96 +217,52 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
     color: Colors.textMuted,
   },
-  headlineCard: {
+  feed: {
+    gap: 0,
+  },
+  fallbackCard: {
+    flexDirection: "row",
     backgroundColor: Colors.card,
     borderRadius: 16,
+    marginBottom: 10,
+    overflow: "hidden",
     borderWidth: 1,
-    borderColor: PINK + "30",
-    padding: 16,
+    borderColor: Colors.border,
   },
-  headlineMeta: {
+  fallbackAccent: {
+    width: 4,
+    backgroundColor: "#A78BFA",
+  },
+  fallbackBody: {
+    flex: 1,
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+    gap: 6,
+  },
+  fallbackTop: {
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
-    marginBottom: 8,
   },
-  headlineEmoji: {
-    fontSize: 20,
+  fallbackEmoji: {
+    fontSize: 16,
   },
-  headlineLeague: {
+  fallbackLeague: {
     fontSize: 10,
     fontFamily: "Inter_700Bold",
     color: Colors.textMuted,
     letterSpacing: 1.2,
   },
-  favBadge: {
-    backgroundColor: "#FFD70022",
-    borderRadius: 6,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-  },
-  favBadgeText: {
-    fontSize: 9,
-    fontFamily: "Inter_700Bold",
-    color: "#FFD700",
-    letterSpacing: 0.8,
-  },
-  headlineEditorial: {
-    fontSize: 22,
-    fontFamily: "Inter_700Bold",
-    color: Colors.textPrimary,
-    letterSpacing: -0.4,
-    lineHeight: 28,
-    marginBottom: 6,
-  },
-  headlineDetail: {
-    fontSize: 13,
-    fontFamily: "Inter_400Regular",
-    color: Colors.textMuted,
-  },
-  listCard: {
-    backgroundColor: Colors.card,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    overflow: "hidden",
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    paddingHorizontal: 14,
-    paddingVertical: 11,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.border + "80",
-    gap: 10,
-  },
-  rowLast: {
-    borderBottomWidth: 0,
-  },
-  rowEmoji: {
-    fontSize: 16,
-    width: 24,
-    textAlign: "center",
-    marginTop: 1,
-  },
-  rowBody: {
-    flex: 1,
-    gap: 2,
-  },
-  rowEditorial: {
-    fontSize: 13,
+  fallbackEditorial: {
+    fontSize: 15,
     fontFamily: "Inter_600SemiBold",
     color: Colors.textPrimary,
-    lineHeight: 17,
+    lineHeight: 20,
   },
-  rowDetail: {
-    fontSize: 11,
+  fallbackDetail: {
+    fontSize: 12,
     fontFamily: "Inter_400Regular",
     color: Colors.textMuted,
-  },
-  favStar: {
-    fontSize: 13,
-    marginTop: 1,
   },
   accordionRow: {
     flexDirection: "row",
@@ -315,8 +270,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 6,
     paddingVertical: 13,
-    borderTopWidth: 1,
-    borderTopColor: Colors.border,
+    marginTop: 2,
   },
   accordionText: {
     fontSize: 13,
