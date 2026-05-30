@@ -1374,6 +1374,7 @@ export default function UnifiedEventCard({
                 }
               }
               const leaderStageNum = score?.cyclingStageNumber;
+              const cyclingLeaderFlag = score?.cyclingLeaderCountry ? getDriverFlag(score.cyclingLeaderCountry) : null;
               return (
                 <View style={uStyles.racingLayout}>
                   <View style={uStyles.racingCircuitRow}>
@@ -1402,9 +1403,13 @@ export default function UnifiedEventCard({
                   {(isLive || isFinal) && score?.cyclingLeader && (
                     <View style={uStyles.racingLeaderSection}>
                       <View style={uStyles.racingLeaderRow}>
-                        <Text style={[uStyles.racingPositionBadge, { color: sportColor }]}>
-                          🌸
-                        </Text>
+                        {cyclingLeaderFlag ? (
+                          <Image source={{ uri: cyclingLeaderFlag }} style={uStyles.racingDriverFlag} resizeMode="contain" />
+                        ) : (
+                          <Text style={[uStyles.racingPositionBadge, { color: sportColor }]}>
+                            🚴
+                          </Text>
+                        )}
                         <Text style={uStyles.racingLeaderName} numberOfLines={1}>
                           {score.cyclingLeader}
                         </Text>
