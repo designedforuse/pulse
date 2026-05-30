@@ -1013,14 +1013,22 @@ export default function UnifiedEventCard({
       testID={`event-${event.id}`}
     >
       <Animated.View style={[uStyles.cardInner, featured && uStyles.cardInnerFeatured, flashStyle]}>
-        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && !showSvnsEspnStyle && (
+        {!dailyWrap && !showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && !showSvnsEspnStyle && (
           <View style={[uStyles.accentBar, { backgroundColor: isLive ? liveTensionColor : (accentBarColor ?? sportColor) }]} />
         )}
-        {(showEspnStyle || showRacingEspnStyle || showGolfEspnStyle || showAthleticsEspnStyle || showCyclingEspnStyle || showPaddlingEspnStyle || showSvnsEspnStyle) && (
+        {(dailyWrap || showEspnStyle || showRacingEspnStyle || showGolfEspnStyle || showAthleticsEspnStyle || showCyclingEspnStyle || showPaddlingEspnStyle || showSvnsEspnStyle) && (
           <View style={[uStyles.topAccentBar, { backgroundColor: sportColor }]} />
         )}
 
-        {!showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && !showSvnsEspnStyle && (
+        {dailyWrap && (
+          <View style={[uStyles.espnLeagueChip, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
+            <Text style={[uStyles.espnLeagueChipText, { color: sportColor }]} numberOfLines={1}>
+              {getLeagueLabel(event)}
+            </Text>
+          </View>
+        )}
+
+        {!dailyWrap && !showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && !showSvnsEspnStyle && (
           <View style={uStyles.header}>
             <View style={[uStyles.sportPill, { backgroundColor: sportColor + "18", borderColor: sportColor + "50" }]}>
               <Text style={[uStyles.sportPillText, { color: sportColor }]} numberOfLines={1}>{getLeagueLabel(event)}</Text>
