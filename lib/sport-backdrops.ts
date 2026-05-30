@@ -41,6 +41,11 @@ const BACKDROPS: Record<string, ImageSourcePropType[]> = {
   ],
 };
 
+// Dedicated backdrop for the SA Schools (Paarl Boys' High) Daily Wrap story,
+// keyed off its stable eventId prefix so it overrides the generic rugby pool.
+const PBHS_EVENT_PREFIX = "rugby-schools-";
+const PBHS_BACKDROP: ImageSourcePropType = require("@/assets/images/sportBackdrops/pbhs-1.jpg");
+
 function hashString(value: string): number {
   let hash = 0;
   for (let i = 0; i < value.length; i++) {
@@ -59,6 +64,7 @@ export function getSportBackdrop(
   sport: string | undefined,
   seed: string
 ): ImageSourcePropType | null {
+  if (seed.startsWith(PBHS_EVENT_PREFIX)) return PBHS_BACKDROP;
   const key = (sport || "").toLowerCase();
   const pool = BACKDROPS[key];
   if (!pool || pool.length === 0) return null;
