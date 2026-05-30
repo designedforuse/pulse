@@ -2,6 +2,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { fetchMarathonLeaderScores } from "./marathonLeader";
 import { fetchCyclingLeaderScores } from "./cyclingLeader";
+import { fetchSchoolsRugbyScores } from "./schoolsRugbyScores";
 
 export interface TennisSetScore {
   p1: number;
@@ -93,7 +94,7 @@ interface LiveEventIdBuckets {
   echl: string[];
   ncaa: { id: string; homeTeam: string; awayTeam: string; startTime: string }[];
   soccer: Map<string, string[]>;
-  rugby: Map<string, { id: string; homeTeam: string; awayTeam: string }[]>;
+  rugby: Map<string, { id: string; homeTeam: string; awayTeam: string; startTimeLocal?: string }[]>;
   cricket: { id: string; homeTeam: string; awayTeam: string; cricketMatchId?: string }[];
   tennis: { id: string; espnId: string }[];
   f1: { id: string; espnCompId: string; sessionTitle: string }[];
@@ -111,7 +112,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
   const echl: string[] = [];
   const ncaa: { id: string; homeTeam: string; awayTeam: string; startTime: string }[] = [];
   const soccer = new Map<string, string[]>();
-  const rugby = new Map<string, { id: string; homeTeam: string; awayTeam: string }[]>();
+  const rugby = new Map<string, { id: string; homeTeam: string; awayTeam: string; startTimeLocal?: string }[]>();
   const cricket: { id: string; homeTeam: string; awayTeam: string }[] = [];
   const tennis: { id: string; espnId: string }[] = [];
   const f1: { id: string; espnCompId: string; sessionTitle: string }[] = [];
@@ -177,6 +178,7 @@ function loadLiveEventIds(): LiveEventIdBuckets {
           id: event.id,
           homeTeam: event.homeTeam || "",
           awayTeam: event.awayTeam || "",
+          startTimeLocal: event.startTimeLocal || "",
         });
       } else if (event.id.startsWith("cricket-")) {
         cricket.push({
@@ -805,7 +807,7 @@ async function fetchMlrOfficialScores(
 }
 
 async function fetchPulseliveRugbyScores(
-  rugbyMap: Map<string, { id: string; homeTeam: string; awayTeam: string }[]>
+  rugbyMap: Map<string, { id: string; homeTeam: string; awayTeam: string; startTimeLocal?: string }[]>
 ): Promise<Record<string, ScoreData>> {
   const scores: Record<string, ScoreData> = {};
 
@@ -873,7 +875,7 @@ function teamsMatch(espnName: string, ourName: string): boolean {
 }
 
 async function fetchRugbyScores(
-  rugbyMap: Map<string, { id: string; homeTeam: string; awayTeam: string }[]>
+  rugbyMap: Map<string, { id: string; homeTeam: string; awayTeam: string; startTimeLocal?: string }[]>
 ): Promise<Record<string, ScoreData>> {
   const scores: Record<string, ScoreData> = {};
   if (rugbyMap.size === 0) return scores;
@@ -2166,8 +2168,9 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
 
   const japanLeagueOne = rugby.get("Japan League One") || [];
   const mlrEvents = rugby.get("MLR") || [];
+  const schoolsRugbyEvents = rugby.get("SA Schools Rugby") || [];
   const cyclingScoresPromise = fetchCyclingLeaderScores(cycling);
-  const [nhlScores, nhlSeriesStatuses, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, pulseliveRugbyScores, mlrOfficialScores, jlOneScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores, marathonScores, cyclingScores] = await Promise.all([
+  const [nhlScores, nhlSeriesStatuses, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, pulseliveRugbyScores, mlrOfficialScores, jlOneScores, schoolsRugbyScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores, marathonScores, cyclingScores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchNhlSeriesStatuses(),
     fetchAhlScores(ahl),
@@ -2178,6 +2181,7 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
     fetchPulseliveRugbyScores(rugby),
     fetchMlrOfficialScores(mlrEvents),
     fetchJapanLeagueOneScores(japanLeagueOne),
+    fetchSchoolsRugbyScores(schoolsRugbyEvents),
     fetchIplLiveScores(iplEvents),
     fetchCricketScores(nonIplCricket),
     fetchTennisScores(tennis),
@@ -2195,7 +2199,7 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
   // clock from World Rugby feed). MLR official overrides Pulselive for MLR
   // because Pulselive's MLR feed lags badly (often shows "U"/0-0 mid-match).
   return {
-    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...pulseliveRugbyScores, ...mlrOfficialScores, ...jlOneScores, ...iplScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores, ...golfScores, ...mlbScores, ...marathonScores, ...cyclingScores },
+    scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...pulseliveRugbyScores, ...mlrOfficialScores, ...jlOneScores, ...schoolsRugbyScores, ...iplScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores, ...golfScores, ...mlbScores, ...marathonScores, ...cyclingScores },
     seriesStatuses: { ...nhlSeriesStatuses },
     fetchedAt: new Date().toISOString(),
   };
