@@ -5,4 +5,5 @@
 - [CricAPI quota & backoff](cricapi-quota-backoff.md) — free tier 100 hits/day (resets 00:00 UTC); failed calls still count, so on limit-reached hard-stop polling until reset instead of retrying on cache TTL.
 - [Daily Wrap highlight videos](daily-wrap-highlights.md) — no-key YouTube scrape per result; must gate by duration + reject pressers/live/replays or wrong content out-ranks real highlights.
 - [Schools effective-sport](schools-effective-sport.md) — 3 schools leagues span 3 real sports; use getEffectiveSport→"college" for ALL filter/chip/color surfaces, keep real sport for layout/logos/scores.
+- [Cycling stage events](cycling-stage-events.md) — grand tours = one event/stage; read current stage from sessionTitle, never date math (collapses to "Stage 1").
 - [SA Schools Rugby results](schools-rugby-results.md) — no score API; scrape schoolrugby.co.za s=456 (Paarl), match completed games to fixtures by DATE (best-effort, scrape-fragile).

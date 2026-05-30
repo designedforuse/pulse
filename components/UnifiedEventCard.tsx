@@ -1328,29 +1328,23 @@ export default function UnifiedEventCard({
           ) : isCycling ? (
             (() => {
               const totalStages = event.cyclingTotalStages;
-              const restDays = event.cyclingRestDays || [];
-              const startDate = new Date(event.startTimeLocal);
               const endDate = event.endTimeLocal ? new Date(event.endTimeLocal) : null;
               const nowD = new Date();
+              // Each stage is its own event, so read the current stage from the
+              // session title (e.g. "… — Stage 20") like the chaos card does,
+              // rather than date math against this stage's own start date.
+              const stageNumMatch = event.sessionTitle?.match(/Stage\s+(\d+)/i);
+              const currentStageNum = stageNumMatch ? parseInt(stageNumMatch[1], 10) : null;
+              const isFinalStage = /—\s*Final/i.test(event.sessionTitle || "");
               let stageLabel: string | null = null;
-              if (totalStages) {
-                if (endDate && nowD > endDate) {
-                  stageLabel = "Final standings";
-                } else if (nowD < startDate) {
-                  stageLabel = `${totalStages} stages`;
-                } else {
-                  const daysSinceStart = Math.floor((nowD.getTime() - startDate.getTime()) / 86400000);
-                  let restsPassed = 0;
-                  for (const rd of restDays) {
-                    const rdDate = new Date(rd + "T00:00:00Z");
-                    if (rdDate <= nowD) restsPassed++;
-                  }
-                  const stageNum = Math.max(1, Math.min(totalStages, daysSinceStart + 1 - restsPassed));
-                  const isRestToday = restDays.some(rd => rd === nowD.toISOString().slice(0, 10));
-                  stageLabel = isRestToday
-                    ? `Rest day · Stage ${stageNum + 1} tomorrow`
-                    : `Stage ${stageNum} of ${totalStages}`;
-                }
+              if (currentStageNum && totalStages) {
+                stageLabel = endDate && nowD > endDate && currentStageNum === totalStages
+                  ? "Final standings"
+                  : `Stage ${currentStageNum} of ${totalStages}${isFinalStage ? " — Final" : ""}`;
+              } else if (cyclingStageLabel) {
+                stageLabel = cyclingStageLabel;
+              } else if (totalStages) {
+                stageLabel = `${totalStages} stages`;
               }
               const leaderStageNum = score?.cyclingStageNumber;
               const cyclingLeaderFlag = score?.cyclingLeaderCountry ? getDriverFlag(score.cyclingLeaderCountry) : null;
