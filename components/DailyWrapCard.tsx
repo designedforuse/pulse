@@ -36,6 +36,15 @@ export interface DailyWrapEntry {
   priorityScore: number;
   startTimeLocal: string;
   isFav?: boolean;
+  video?: HighlightVideo;
+}
+
+export interface HighlightVideo {
+  url: string;
+  thumbnailUrl: string;
+  durationSeconds: number;
+  title: string;
+  channel?: string;
 }
 
 export interface DailyWrapResponse {

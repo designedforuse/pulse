@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { fetchAllLiveScores } from "./liveScores";
 import type { ScoreData } from "./liveScores";
+import { enrichWithHighlights, type HighlightVideo } from "./dailyWrapHighlights";
 
 export interface DailyWrapEntry {
   eventId: string;
@@ -17,6 +18,7 @@ export interface DailyWrapEntry {
   loserScore?: string;
   priorityScore: number;
   startTimeLocal: string;
+  video?: HighlightVideo;
 }
 
 export interface DailyWrapResponse {
@@ -368,6 +370,8 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
   }
 
   results.sort((a, b) => b.priorityScore - a.priorityScore);
+
+  await enrichWithHighlights(results);
 
   return { date: dateLabel, hasResults: results.length > 0, results };
 }

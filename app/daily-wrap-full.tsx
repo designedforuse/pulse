@@ -7,6 +7,7 @@ import {
   Platform,
   FlatList,
   Animated,
+  Linking,
   useWindowDimensions,
   type NativeSyntheticEvent,
   type NativeScrollEvent,
@@ -16,6 +17,7 @@ import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
 import { useQuery } from "@tanstack/react-query";
 import { LinearGradient } from "expo-linear-gradient";
+import { Image as ExpoImage } from "expo-image";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { getApiUrl } from "@/lib/query-client";
 import { useFavorites } from "@/lib/favorites-context";
@@ -36,7 +38,15 @@ import {
   tagEntries,
   type DailyWrapEntry,
   type DailyWrapResponse,
+  type HighlightVideo,
 } from "@/components/DailyWrapCard";
+
+function formatDuration(seconds: number): string {
+  if (!seconds || seconds <= 0) return "";
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m}:${s.toString().padStart(2, "0")}`;
+}
 
 const PINK = "#FF85C8";
 
@@ -62,6 +72,7 @@ interface StoryView {
   mood: TeaserMood;
   leagueLabel: string;
   sportColor: string;
+  video?: HighlightVideo;
 }
 
 // --- Swipe-up affordance with a gentle looping bounce ---
@@ -89,18 +100,22 @@ function SwipeHint() {
 function StoryPage({
   view,
   height,
+  width,
   insets,
   isLast,
 }: {
   view: StoryView;
   height: number;
+  width: number;
   insets: { top: number; bottom: number };
   isLast: boolean;
 }) {
-  const { entry, event, mood, headline, leagueLabel, sportColor } = view;
+  const { entry, event, mood, headline, leagueLabel, sportColor, video } = view;
   const moodColor = MOOD_COLORS[mood];
   const moodLabel = MOOD_LABELS[mood];
   const provider = event ? resolveProviderDisplay(event) : null;
+  const thumbWidth = width - 44;
+  const thumbHeight = Math.round(thumbWidth * (9 / 16));
 
   const handleReplay = () => {
     if (!event) return;
@@ -109,6 +124,16 @@ function StoryPage({
     }
     router.push({ pathname: "/event-sheet", params: { eventId: event.id, spoiler: "1" } });
   };
+
+  const handleWatchHighlights = () => {
+    if (!video) return;
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    }
+    Linking.openURL(video.url);
+  };
+
+  const duration = video ? formatDuration(video.durationSeconds) : "";
 
   return (
     <View style={[styles.page, { height }]}>
@@ -148,11 +173,48 @@ function StoryPage({
           )}
         </View>
 
-        {/* Headline — the hero */}
-        <View style={styles.headlineWrap}>
-          <Text style={[styles.headline, { color: Colors.textPrimary }]}>{headline}</Text>
-          <View style={[styles.headlineRule, { backgroundColor: moodColor }]} />
-        </View>
+        {/* Hero — highlight thumbnail when available, else big headline */}
+        {video ? (
+          <View style={styles.heroWrap}>
+            <Pressable
+              onPress={handleWatchHighlights}
+              style={({ pressed }) => [pressed && { opacity: 0.9 }]}
+              testID={`story-thumb-${entry.eventId}`}
+            >
+              <View style={[styles.thumb, { width: thumbWidth, height: thumbHeight }]}>
+                <ExpoImage
+                  source={{ uri: video.thumbnailUrl }}
+                  style={StyleSheet.absoluteFill}
+                  contentFit="cover"
+                  transition={200}
+                />
+                <LinearGradient
+                  colors={["rgba(0,0,0,0)", "rgba(0,0,0,0.55)"]}
+                  style={StyleSheet.absoluteFill}
+                />
+                <View style={styles.playButton}>
+                  <Ionicons name="play" size={26} color="#FFFFFF" style={{ marginLeft: 3 }} />
+                </View>
+                <View style={styles.ytBadge}>
+                  <Ionicons name="logo-youtube" size={14} color="#FF0000" />
+                </View>
+                {!!duration && (
+                  <View style={styles.durationBadge}>
+                    <Text style={styles.durationText}>{duration}</Text>
+                  </View>
+                )}
+              </View>
+            </Pressable>
+            <Text style={[styles.headlineSm, { color: Colors.textPrimary }]} numberOfLines={3}>
+              {headline}
+            </Text>
+          </View>
+        ) : (
+          <View style={styles.headlineWrap}>
+            <Text style={[styles.headline, { color: Colors.textPrimary }]}>{headline}</Text>
+            <View style={[styles.headlineRule, { backgroundColor: moodColor }]} />
+          </View>
+        )}
 
         {/* Footer */}
         <View style={styles.footer}>
@@ -163,13 +225,28 @@ function StoryPage({
               <Text style={styles.providerName}>{entry.detail}</Text>
             )}
             <View style={{ flex: 1 }} />
-            <View style={styles.spoilerHint}>
-              <Ionicons name="eye-off-outline" size={12} color={Colors.textMuted} />
-              <Text style={styles.spoilerHintText}>Score hidden</Text>
-            </View>
+            {!video && (
+              <View style={styles.spoilerHint}>
+                <Ionicons name="eye-off-outline" size={12} color={Colors.textMuted} />
+                <Text style={styles.spoilerHintText}>Score hidden</Text>
+              </View>
+            )}
           </View>
 
-          {event && (
+          {video ? (
+            <Pressable
+              onPress={handleWatchHighlights}
+              style={({ pressed }) => [
+                styles.replayBtn,
+                { borderColor: moodColor + "88", backgroundColor: moodColor + "1A" },
+                pressed && { opacity: 0.75 },
+              ]}
+              testID={`story-highlights-${entry.eventId}`}
+            >
+              <Ionicons name="play" size={15} color={moodColor} />
+              <Text style={[styles.replayBtnText, { color: moodColor }]}>Watch highlights</Text>
+            </Pressable>
+          ) : event ? (
             <Pressable
               onPress={handleReplay}
               style={({ pressed }) => [
@@ -182,7 +259,7 @@ function StoryPage({
               <Ionicons name="play-back" size={15} color={moodColor} />
               <Text style={[styles.replayBtnText, { color: moodColor }]}>Watch the replay</Text>
             </Pressable>
-          )}
+          ) : null}
 
           {!isLast && <SwipeHint />}
         </View>
@@ -246,6 +323,7 @@ export default function DailyWrapFullScreen() {
           mood: teaser.mood,
           leagueLabel: getSchoolsLeagueLabel(event.league, event.leagueKey) ?? event.league,
           sportColor: getSportColor(getEffectiveSport(event.sport, event.league, event.leagueKey)),
+          video: entry.video,
         };
       }
       return {
@@ -254,6 +332,7 @@ export default function DailyWrapFullScreen() {
         mood: "medium" as TeaserMood,
         leagueLabel: entry.league,
         sportColor: getSportColor(entry.sport),
+        video: entry.video,
       };
     });
     return { stories: built };
@@ -289,7 +368,7 @@ export default function DailyWrapFullScreen() {
           data={stories}
           keyExtractor={(s) => s.entry.eventId}
           renderItem={({ item, index: i }) => (
-            <StoryPage view={item} height={height} insets={insets} isLast={i === stories.length - 1} />
+            <StoryPage view={item} height={height} width={width} insets={insets} isLast={i === stories.length - 1} />
           )}
           pagingEnabled
           showsVerticalScrollIndicator={false}
@@ -436,6 +515,63 @@ const styles = StyleSheet.create({
     width: 56,
     height: 4,
     borderRadius: 2,
+  },
+  heroWrap: {
+    flex: 1,
+    justifyContent: "center",
+    gap: 22,
+  },
+  thumb: {
+    borderRadius: 18,
+    overflow: "hidden",
+    backgroundColor: "#111111",
+  },
+  playButton: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    width: 60,
+    height: 60,
+    marginTop: -30,
+    marginLeft: -30,
+    borderRadius: 30,
+    backgroundColor: "rgba(0,0,0,0.45)",
+    borderWidth: 1.5,
+    borderColor: "rgba(255,255,255,0.85)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  ytBadge: {
+    position: "absolute",
+    top: 10,
+    left: 10,
+    width: 26,
+    height: 26,
+    borderRadius: 13,
+    backgroundColor: "rgba(0,0,0,0.55)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  durationBadge: {
+    position: "absolute",
+    bottom: 10,
+    right: 10,
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+    borderRadius: 6,
+    backgroundColor: "rgba(0,0,0,0.75)",
+  },
+  durationText: {
+    fontSize: 11,
+    color: "#FFFFFF",
+    fontFamily: "Inter_600SemiBold",
+    letterSpacing: 0.3,
+  },
+  headlineSm: {
+    fontSize: 24,
+    lineHeight: 30,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: -0.4,
   },
   footer: {
     gap: 16,
