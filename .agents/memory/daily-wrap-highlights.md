@@ -21,21 +21,24 @@ read as highlights/recap.
 mismatch risk. A perfect per-game match is not guaranteed. Per-search fetches
 must use AbortController so timed-out scrapes are actually cancelled.
 
-**Fallback ladder when no qualifying clip exists:** the scrape also returns a
-still `imageUrl` — a relevant recent thumbnail (real action photo) — surfaced as
-`fallbackImageUrl` only when there's no video. Both card types render the SAME
-image with a Ken Burns pan/zoom (transform-only Animated loop, native driver)
-behind the headline; the only difference is the CTA (clip → "Watch highlights",
-no clip → "Watch the replay"). Only when *neither* a clip nor an image is found
-does it fall back to the plain sport gradient. The paged feed must keep FlatList
-virtualization tight (small windowSize) so many Ken Burns loops don't all animate
-at once.
+**Card backgrounds = bundled per-sport stock photos, NOT YouTube thumbnails.**
+The Ken Burns background behind each story headline is a bundled, license-free
+action photo chosen from `lib/sport-backdrops.ts` (3 photos per sport for the 7
+editorial sports: tennis, hockey, rugby, soccer, basketball, racing, golf). One
+is picked deterministically by hashing `eventId` so same-sport cards vary but
+stay stable across re-renders. Unmapped sport → returns null → plain sport
+gradient fallback. **Why:** YouTube highlight thumbnails are text/graphic-heavy
+("HIGHLIGHTS", scorebugs, channel branding) and looked cluttered as full-bleed
+backgrounds; ESPN exposes only team *logos*, and we don't store per-game ESPN
+ids, so real per-game action shots aren't feasible. Generic clean stock action
+shots (no overlaid copy) were the chosen tradeoff — not the actual game. Ken
+Burns is a transform-only Animated loop (native driver); keep FlatList
+virtualization tight (small windowSize) so many loops don't animate at once.
 
-**Image source = YouTube thumbnails, not ESPN.** ESPN's CDN only exposes team
-*logos* (a.espncdn.com/i/teamlogos/...), not per-game action photos, and we don't
-store per-game ESPN event ids (only F1 ids survive into generatedEvents.json), so
-ESPN action shots aren't feasible. Use the highest-res YouTube thumbnail of the
-clip we already found: HEAD-probe maxresdefault (1280x720) → sddefault → fall
-back to hqdefault (always present). maxres/sd are not always generated. Probing
-is bounded by an explicit deadline so cold-path search latency stays predictable;
-the chosen URL is cached per eventId for a week so probes only run on cache miss.
+**The highlight clip is now link-only.** A found `video` still drives the CTA
+(clip → "Watch highlights" via `video.url`, no clip → "Watch the replay"). The
+backend no longer HEAD-probes for high-res thumbnails and no longer computes a
+fallback still image; `video.thumbnailUrl` is kept as a cheap hqdefault URL (no
+network) purely for type compatibility / future use, and `fallbackImageUrl` was
+removed entirely. Legacy on-disk cache entries may still carry old `imageUrl` /
+`maxresdefault` values — harmless extra keys, ignored on read.

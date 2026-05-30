@@ -18,7 +18,6 @@ const MAX_AGE_DAYS = 7; // only very recent uploads (games are within ~48h)
 
 interface CacheEntry {
   video: HighlightVideo | null;
-  imageUrl?: string | null;
   fetchedAt: string;
 }
 
@@ -73,33 +72,10 @@ function isTrusted(channel: string): boolean {
   return TRUSTED_CHANNELS.some((tc) => lower.includes(tc));
 }
 
-const THUMB_PROBE_TIMEOUT_MS = 2500;
-const THUMB_TOTAL_BUDGET_MS = 3500; // overall cap for thumbnail probing per search
-
-// Pick the highest-resolution thumbnail YouTube actually has for this video.
-// maxresdefault (1280x720) and sddefault (640x480) are not always generated,
-// so probe with a cheap HEAD and fall back to hqdefault (always present).
-// `deadline` (absolute ms) bounds the total probing time so a search's overall
-// latency budget stays predictable on the cold path.
-async function bestThumbnailUrl(videoId: string, deadline: number): Promise<string> {
-  for (const quality of ["maxresdefault", "sddefault"]) {
-    const remaining = deadline - Date.now();
-    if (remaining <= 0) break;
-    const url = `https://i.ytimg.com/vi/${videoId}/${quality}.jpg`;
-    const controller = new AbortController();
-    const timer = setTimeout(
-      () => controller.abort(),
-      Math.min(THUMB_PROBE_TIMEOUT_MS, remaining)
-    );
-    try {
-      const resp = await fetch(url, { method: "HEAD", signal: controller.signal });
-      if (resp.ok) return url;
-    } catch {
-      // network/timeout — fall through to the next quality
-    } finally {
-      clearTimeout(timer);
-    }
-  }
+// Card backgrounds now use bundled per-sport stock photos, so we no longer
+// probe for high-res thumbnails. We still keep a cheap hqdefault URL on the
+// video (always present, no network) in case a future surface wants it.
+function thumbnailUrlFor(videoId: string): string {
   return `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 }
 
@@ -112,14 +88,7 @@ const REJECT_TITLE_RE =
   /\b(press conference|presser|reaction|reacts?|interview|preview|live stream|livestream|watch live|full match|full game|full replay|extended replay|post.?match|pre.?match|analysis|podcast|press|conference)\b/i;
 const HIGHLIGHT_HINT_RE = /\b(highlights?|recap|top plays|best of|goals?|tries|wickets|key moments)\b/i;
 
-interface SearchResult {
-  video: HighlightVideo | null;
-  imageUrl: string | null;
-}
-
-const EMPTY_RESULT: SearchResult = { video: null, imageUrl: null };
-
-async function searchHighlight(query: string): Promise<SearchResult> {
+async function searchHighlight(query: string): Promise<HighlightVideo | null> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), PER_SEARCH_TIMEOUT_MS);
   try {
@@ -133,11 +102,11 @@ async function searchHighlight(query: string): Promise<SearchResult> {
         "Accept-Language": "en-US,en;q=0.9",
       },
     });
-    if (!resp.ok) return EMPTY_RESULT;
+    if (!resp.ok) return null;
 
     const html = await resp.text();
     const match = html.match(/var ytInitialData = ({.*?});<\/script>/s);
-    if (!match) return EMPTY_RESULT;
+    if (!match) return null;
 
     const data = JSON.parse(match[1]);
     const contents =
@@ -190,7 +159,7 @@ async function searchHighlight(query: string): Promise<SearchResult> {
       });
     }
 
-    if (candidates.length === 0) return EMPTY_RESULT;
+    if (candidates.length === 0) return null;
 
     // Highlight clip: short-form, not a live stream / full replay / presser.
     const clips = candidates.filter(
@@ -206,37 +175,18 @@ async function searchHighlight(query: string): Promise<SearchResult> {
       return (a.ageDays ?? 999) - (b.ageDays ?? 999);
     });
 
-    // The YouTube search/parse is done; bound the remaining thumbnail probing
-    // with its own explicit budget so total search latency stays predictable.
-    const thumbDeadline = Date.now() + THUMB_TOTAL_BUDGET_MS;
-
     const clip = clips[0];
-    const video: HighlightVideo | null = clip
-      ? {
-          url: `https://www.youtube.com/watch?v=${clip.videoId}`,
-          thumbnailUrl: await bestThumbnailUrl(clip.videoId, thumbDeadline),
-          durationSeconds: clip.durationSeconds,
-          title: clip.title,
-          channel: clip.channel,
-        }
-      : null;
+    if (!clip) return null;
 
-    // Fallback still image: a relevant recent thumbnail (real action photo).
-    // Prefer real video thumbnails over pressers/talking-heads when possible.
-    let imageUrl: string | null = video ? video.thumbnailUrl : null;
-    if (!imageUrl) {
-      const imagePool = candidates.filter((c) => c.hasLength && !c.rejected);
-      const pool = imagePool.length > 0 ? imagePool : candidates;
-      pool.sort((a, b) => {
-        if (a.trusted !== b.trusted) return a.trusted ? -1 : 1;
-        return (a.ageDays ?? 999) - (b.ageDays ?? 999);
-      });
-      imageUrl = await bestThumbnailUrl(pool[0].videoId, thumbDeadline);
-    }
-
-    return { video, imageUrl };
+    return {
+      url: `https://www.youtube.com/watch?v=${clip.videoId}`,
+      thumbnailUrl: thumbnailUrlFor(clip.videoId),
+      durationSeconds: clip.durationSeconds,
+      title: clip.title,
+      channel: clip.channel,
+    };
   } catch {
-    return EMPTY_RESULT;
+    return null;
   } finally {
     clearTimeout(timer);
   }
@@ -259,10 +209,10 @@ function buildHighlightQuery(entry: DailyWrapEntry): string | null {
 }
 
 /**
- * Attaches a recent highlights video (with a real thumbnail image) to each
- * entry. Results are cached on disk by eventId so only cache-misses hit the
- * network, and those run in parallel (each with its own per-search timeout
- * + abort).
+ * Attaches a recent highlights video to each entry (used for the "Watch
+ * highlights" link). Results are cached on disk by eventId so only cache-misses
+ * hit the network, and those run in parallel (each with its own per-search
+ * timeout + abort).
  */
 export async function enrichWithHighlights(
   entries: DailyWrapEntry[]
@@ -274,13 +224,10 @@ export async function enrichWithHighlights(
   for (const entry of entries) {
     const cached = cache[entry.eventId];
     if (cached) {
-      // A hit is anything we resolved (clip or still image); only a true
-      // empty result uses the shorter retry TTL.
-      const resolved = !!cached.video || !!cached.imageUrl;
-      const ttl = resolved ? CACHE_TTL_MS : NOTFOUND_TTL_MS;
+      // A found clip uses the long TTL; a true miss uses the shorter retry TTL.
+      const ttl = cached.video ? CACHE_TTL_MS : NOTFOUND_TTL_MS;
       if (now - new Date(cached.fetchedAt).getTime() < ttl) {
         entry.video = cached.video || undefined;
-        entry.fallbackImageUrl = cached.video ? undefined : cached.imageUrl || undefined;
         continue;
       }
     }
@@ -292,16 +239,14 @@ export async function enrichWithHighlights(
     const found = await Promise.all(
       toSearch.map(async ({ entry, query }) => ({
         entry,
-        result: await searchHighlight(query),
+        video: await searchHighlight(query),
       }))
     );
     const stamp = new Date().toISOString();
-    for (const { entry, result } of found) {
-      entry.video = result.video || undefined;
-      entry.fallbackImageUrl = result.video ? undefined : result.imageUrl || undefined;
+    for (const { entry, video } of found) {
+      entry.video = video || undefined;
       cache[entry.eventId] = {
-        video: result.video || null,
-        imageUrl: result.imageUrl || null,
+        video: video || null,
         fetchedAt: stamp,
       };
     }

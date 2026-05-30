@@ -37,7 +37,6 @@ export interface DailyWrapEntry {
   startTimeLocal: string;
   isFav?: boolean;
   video?: HighlightVideo;
-  fallbackImageUrl?: string;
 }
 
 export interface HighlightVideo {

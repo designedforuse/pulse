@@ -11,6 +11,7 @@ import {
   useWindowDimensions,
   type NativeSyntheticEvent,
   type NativeScrollEvent,
+  type ImageSourcePropType,
 } from "react-native";
 import { useNavigation, router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -34,6 +35,7 @@ import {
 } from "@/lib/data";
 import type { ScoreData } from "@/lib/scores-context";
 import { getCatchUpTeaser, type TeaserMood } from "@/lib/catchUpTeasers";
+import { getSportBackdrop } from "@/lib/sport-backdrops";
 import {
   tagEntries,
   type DailyWrapEntry,
@@ -66,11 +68,11 @@ interface StoryView {
   leagueLabel: string;
   sportColor: string;
   video?: HighlightVideo;
-  fallbackImageUrl?: string;
+  backdrop?: ImageSourcePropType | null;
 }
 
 // --- Ken Burns: slow zoom + pan over a still image ---
-function KenBurnsImage({ uri }: { uri: string }) {
+function KenBurnsImage({ source }: { source: ImageSourcePropType }) {
   const progress = useRef(new Animated.Value(0)).current;
   useEffect(() => {
     const loop = Animated.loop(
@@ -91,7 +93,7 @@ function KenBurnsImage({ uri }: { uri: string }) {
     <Animated.View
       style={[StyleSheet.absoluteFill, { transform: [{ scale }, { translateX }, { translateY }] }]}
     >
-      <ExpoImage source={{ uri }} style={StyleSheet.absoluteFill} contentFit="cover" transition={300} />
+      <ExpoImage source={source} style={StyleSheet.absoluteFill} contentFit="cover" transition={300} />
     </Animated.View>
   );
 }
@@ -129,12 +131,11 @@ function StoryPage({
   insets: { top: number; bottom: number };
   isLast: boolean;
 }) {
-  const { entry, event, mood, headline, leagueLabel, sportColor, video, fallbackImageUrl } = view;
+  const { entry, event, mood, headline, leagueLabel, sportColor, video, backdrop } = view;
   const moodColor = MOOD_COLORS[mood];
   const moodLabel = MOOD_LABELS[mood];
   const provider = event ? resolveProviderDisplay(event) : null;
-  const bgImageUrl = video?.thumbnailUrl ?? fallbackImageUrl ?? null;
-  const showKenBurns = !!bgImageUrl;
+  const showKenBurns = !!backdrop;
 
   const handleReplay = () => {
     if (!event) return;
@@ -156,7 +157,7 @@ function StoryPage({
     <View style={[styles.page, { height }]}>
       {showKenBurns ? (
         <>
-          <KenBurnsImage uri={bgImageUrl as string} />
+          <KenBurnsImage source={backdrop as ImageSourcePropType} />
           <LinearGradient
             colors={[sportColor + "40", "rgba(0,0,0,0.55)", "rgba(0,0,0,0.92)"]}
             locations={[0, 0.45, 1]}
@@ -315,7 +316,7 @@ export default function DailyWrapFullScreen() {
           leagueLabel: getSchoolsLeagueLabel(event.league, event.leagueKey) ?? event.league,
           sportColor: getSportColor(getEffectiveSport(event.sport, event.league, event.leagueKey)),
           video: entry.video,
-          fallbackImageUrl: entry.fallbackImageUrl,
+          backdrop: getSportBackdrop(event.sport, entry.eventId),
         };
       }
       return {
@@ -325,7 +326,7 @@ export default function DailyWrapFullScreen() {
         leagueLabel: entry.league,
         sportColor: getSportColor(entry.sport),
         video: entry.video,
-        fallbackImageUrl: entry.fallbackImageUrl,
+        backdrop: getSportBackdrop(entry.sport, entry.eventId),
       };
     });
     return { stories: built };

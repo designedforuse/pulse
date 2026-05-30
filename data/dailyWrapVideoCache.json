@@ -112,5 +112,15 @@
     "video": null,
     "imageUrl": "https://i.ytimg.com/vi/217ZqPTUB-A/maxresdefault.jpg",
     "fetchedAt": "2026-05-30T08:33:42.404Z"
+  },
+  "rugby-superrugby-d83yxw": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=5161ilXS5dI",
+      "thumbnailUrl": "https://i.ytimg.com/vi/5161ilXS5dI/hqdefault.jpg",
+      "durationSeconds": 63,
+      "title": "Sevu Reece shines in milestone match as Crusaders crush Hurricanes",
+      "channel": "Sports Podcasts – Daily News in Multiple Languages"
+    },
+    "fetchedAt": "2026-05-30T08:53:32.493Z"
   }
 }
