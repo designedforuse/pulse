@@ -723,7 +723,7 @@ function ChaosCard({
           <View style={styles.secondaryTeams}>
             {isWrc ? (
               <>
-                <View style={{ flexDirection: "row", alignItems: "center", gap: 6, marginTop: 2 }}>
+                <View style={{ flexDirection: "row", alignItems: "center", gap: 6 }}>
                   <FlagImg uri={wrcRoundFlag} sm />
                   <Text style={[styles.racingLeaderTextSm, { marginTop: 0, flex: 1 }]} numberOfLines={1}>
                     {wrcTitle}
@@ -3001,7 +3001,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
-    marginTop: 6,
   },
   wrcLastStageBadgeSm: {
     fontSize: 12,
