@@ -1,14 +1,4 @@
 {
-  "tennis-espn-175730": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=hywlrezqNmQ",
-      "thumbnailUrl": "https://img.youtube.com/vi/hywlrezqNmQ/hqdefault.jpg",
-      "durationSeconds": 186,
-      "title": "João Fonseca vs Novak Djokovic | Roland-Garros 2026 | Match Highlights",
-      "channel": "beIN SPORTS Asia"
-    },
-    "fetchedAt": "2026-05-30T07:57:58.551Z"
-  },
   "tennis-espn-175753": {
     "video": {
       "url": "https://www.youtube.com/watch?v=5AOETd2ovdo",
@@ -17,7 +7,8 @@
       "title": "Roland-Garros 2026 - Jesper de Jong After Khachanov Upset: “I Could Have Played One More Set”",
       "channel": "Tennis Actu TV"
     },
-    "fetchedAt": "2026-05-30T07:57:58.551Z"
+    "imageUrl": "https://img.youtube.com/vi/5AOETd2ovdo/hqdefault.jpg",
+    "fetchedAt": "2026-05-30T08:13:04.298Z"
   },
   "tennis-espn-175709": {
     "video": {
@@ -27,7 +18,8 @@
       "title": "Jakub Mensik vs Alex de Minaur | Round 3 | Roland-Garros 2026 Mensik wins in Round 3 and advances",
       "channel": "How Great"
     },
-    "fetchedAt": "2026-05-30T07:57:58.551Z"
+    "imageUrl": "https://img.youtube.com/vi/lUDy4Y1cpHU/hqdefault.jpg",
+    "fetchedAt": "2026-05-30T08:13:04.298Z"
   },
   "tennis-espn-175734": {
     "video": {
@@ -37,7 +29,8 @@
       "title": "João Fonseca vs Novak Djokovic | Roland-Garros 2026 | Match Highlights",
       "channel": "beIN SPORTS Asia"
     },
-    "fetchedAt": "2026-05-30T07:57:58.551Z"
+    "imageUrl": "https://img.youtube.com/vi/hywlrezqNmQ/hqdefault.jpg",
+    "fetchedAt": "2026-05-30T08:13:04.298Z"
   },
   "tennis-espn-175745": {
     "video": {
@@ -47,7 +40,8 @@
       "title": "Quentin Halys vs No. 2 Alexander Zverev 🎾 | Roland-Garros Match Highlights",
       "channel": "TNT Sports US"
     },
-    "fetchedAt": "2026-05-30T07:57:58.551Z"
+    "imageUrl": "https://img.youtube.com/vi/MZfDbXbQ7Yc/hqdefault.jpg",
+    "fetchedAt": "2026-05-30T08:13:04.298Z"
   },
   "nhl_2025030315": {
     "video": {
@@ -57,11 +51,13 @@
       "title": "Canadiens vs. Hurricanes | NHL Playoff Highlights | Game 5 | May 29, 2026",
       "channel": "NHL"
     },
-    "fetchedAt": "2026-05-30T07:57:58.551Z"
+    "imageUrl": "https://img.youtube.com/vi/Yzyjnscwg5U/hqdefault.jpg",
+    "fetchedAt": "2026-05-30T08:13:04.298Z"
   },
   "rugby-premiership-5ydscl": {
     "video": null,
-    "fetchedAt": "2026-05-30T07:57:58.551Z"
+    "imageUrl": null,
+    "fetchedAt": "2026-05-30T08:13:04.298Z"
   },
   "rugby-urc-febcqx": {
     "video": {
@@ -71,7 +67,8 @@
       "title": "QUARTER-FINAL | Glasgow Warriors v Connacht | Highlights | URC 2025/26",
       "channel": "United Rugby Championship"
     },
-    "fetchedAt": "2026-05-30T07:57:58.551Z"
+    "imageUrl": "https://img.youtube.com/vi/0xCMqsNF5eo/hqdefault.jpg",
+    "fetchedAt": "2026-05-30T08:13:04.298Z"
   },
   "soccer-nwsl-20260529-2300-bay-at-orlando-pride": {
     "video": {
@@ -81,17 +78,19 @@
       "title": "2026 NWSL Highlights | Orlando Pride 3 -  Bay FC 1 | May 29, 2026",
       "channel": "Orlando Pride"
     },
-    "fetchedAt": "2026-05-30T07:57:58.551Z"
+    "imageUrl": "https://img.youtube.com/vi/esVAz-OG1Kw/hqdefault.jpg",
+    "fetchedAt": "2026-05-30T08:13:04.298Z"
   },
   "soccer-nwsl-20260530-0000-denver-summit-at-racing-louisville": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=dtqEX6SjA0k",
-      "thumbnailUrl": "https://img.youtube.com/vi/dtqEX6SjA0k/hqdefault.jpg",
-      "durationSeconds": 849,
-      "title": "Denver Summit First Signing Gets W vs Racing Louisville | NWSL Extended Highlights | Prime Video",
-      "channel": "Sports On Prime"
+      "url": "https://www.youtube.com/watch?v=o-sW0upy3Cw",
+      "thumbnailUrl": "https://img.youtube.com/vi/o-sW0upy3Cw/hqdefault.jpg",
+      "durationSeconds": 600,
+      "title": "FULL HIGHLIGHTS | Racing Louisville FC vs. Denver Summit",
+      "channel": "National Women's Soccer League"
     },
-    "fetchedAt": "2026-05-30T07:57:58.551Z"
+    "imageUrl": "https://img.youtube.com/vi/o-sW0upy3Cw/hqdefault.jpg",
+    "fetchedAt": "2026-05-30T08:13:04.298Z"
   },
   "rugby-superrugby-rm9kic": {
     "video": {
@@ -101,11 +100,13 @@
       "title": "ACT Brumbies vs. Moana Pasifika | Round 16 | Swyftx Super Rugby Pacific | Match Highlights",
       "channel": "Brumbies Rugby"
     },
-    "fetchedAt": "2026-05-30T07:57:58.551Z"
+    "imageUrl": "https://img.youtube.com/vi/LUs0CH9Togc/hqdefault.jpg",
+    "fetchedAt": "2026-05-30T08:13:04.298Z"
   },
   "rugby-leagueone-l69sil": {
     "video": null,
-    "fetchedAt": "2026-05-30T07:57:58.551Z"
+    "imageUrl": null,
+    "fetchedAt": "2026-05-30T08:13:04.298Z"
   },
   "ahl-1029058": {
     "video": {
@@ -115,10 +116,12 @@
       "title": "HIGHLIGHTS: Game 2 Toronto Marlies vs Wilkes-Barre/Scranton Penguins | AHL Calder Cup Playoffs 2026",
       "channel": "FloHockey"
     },
-    "fetchedAt": "2026-05-30T07:57:58.551Z"
+    "imageUrl": "https://img.youtube.com/vi/HmpwYRA3UT0/hqdefault.jpg",
+    "fetchedAt": "2026-05-30T08:13:04.298Z"
   },
   "echl-web-26570": {
     "video": null,
-    "fetchedAt": "2026-05-30T07:57:58.551Z"
+    "imageUrl": "https://img.youtube.com/vi/217ZqPTUB-A/hqdefault.jpg",
+    "fetchedAt": "2026-05-30T08:13:04.298Z"
   }
 }

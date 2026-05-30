@@ -18,6 +18,7 @@ const MAX_AGE_DAYS = 7; // only very recent uploads (games are within ~48h)
 
 interface CacheEntry {
   video: HighlightVideo | null;
+  imageUrl?: string | null;
   fetchedAt: string;
 }
 
@@ -81,7 +82,14 @@ const REJECT_TITLE_RE =
   /\b(press conference|presser|reaction|reacts?|interview|preview|live stream|livestream|watch live|full match|full game|full replay|extended replay|post.?match|pre.?match|analysis|podcast|press|conference)\b/i;
 const HIGHLIGHT_HINT_RE = /\b(highlights?|recap|top plays|best of|goals?|tries|wickets|key moments)\b/i;
 
-async function searchHighlight(query: string): Promise<HighlightVideo | null> {
+interface SearchResult {
+  video: HighlightVideo | null;
+  imageUrl: string | null;
+}
+
+const EMPTY_RESULT: SearchResult = { video: null, imageUrl: null };
+
+async function searchHighlight(query: string): Promise<SearchResult> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), PER_SEARCH_TIMEOUT_MS);
   try {
@@ -95,11 +103,11 @@ async function searchHighlight(query: string): Promise<HighlightVideo | null> {
         "Accept-Language": "en-US,en;q=0.9",
       },
     });
-    if (!resp.ok) return null;
+    if (!resp.ok) return EMPTY_RESULT;
 
     const html = await resp.text();
     const match = html.match(/var ytInitialData = ({.*?});<\/script>/s);
-    if (!match) return null;
+    if (!match) return EMPTY_RESULT;
 
     const data = JSON.parse(match[1]);
     const contents =
@@ -109,7 +117,7 @@ async function searchHighlight(query: string): Promise<HighlightVideo | null> {
     const currentYear = new Date().getFullYear();
     const recentYearCutoff = currentYear - 1;
 
-    interface Scored {
+    interface Candidate {
       videoId: string;
       ageDays: number | null;
       channel: string;
@@ -117,8 +125,10 @@ async function searchHighlight(query: string): Promise<HighlightVideo | null> {
       isHighlight: boolean;
       title: string;
       durationSeconds: number;
+      hasLength: boolean;
+      rejected: boolean;
     }
-    const scored: Scored[] = [];
+    const candidates: Candidate[] = [];
 
     for (const c of contents) {
       const r = c?.videoRenderer;
@@ -131,19 +141,13 @@ async function searchHighlight(query: string): Promise<HighlightVideo | null> {
       const lengthText = r?.lengthText?.simpleText || "";
       const durationSeconds = parseDurationText(lengthText);
 
-      // Recency gates.
+      // Recency gates apply to every candidate (clip or still image).
       const oldYear = title.match(/\b(19\d{2}|20\d{2})\b/);
       if (oldYear && parseInt(oldYear[1], 10) < recentYearCutoff) continue;
       if (ageDays !== null && ageDays > MAX_AGE_DAYS) continue;
       if (/\d+\s+years?\s+ago/i.test(published)) continue;
 
-      // Highlight-quality gates: drop live streams (no duration), full
-      // replays, and non-highlight content (pressers, interviews, etc.).
-      if (!lengthText) continue; // live/upcoming streams have no length
-      if (durationSeconds < MIN_DURATION_SECONDS || durationSeconds > MAX_DURATION_SECONDS) continue;
-      if (REJECT_TITLE_RE.test(title)) continue;
-
-      scored.push({
+      candidates.push({
         videoId: r.videoId,
         ageDays,
         channel,
@@ -151,27 +155,54 @@ async function searchHighlight(query: string): Promise<HighlightVideo | null> {
         isHighlight: HIGHLIGHT_HINT_RE.test(title),
         title,
         durationSeconds,
+        hasLength: !!lengthText,
+        rejected: REJECT_TITLE_RE.test(title),
       });
     }
 
-    scored.sort((a, b) => {
+    if (candidates.length === 0) return EMPTY_RESULT;
+
+    // Highlight clip: short-form, not a live stream / full replay / presser.
+    const clips = candidates.filter(
+      (c) =>
+        c.hasLength &&
+        !c.rejected &&
+        c.durationSeconds >= MIN_DURATION_SECONDS &&
+        c.durationSeconds <= MAX_DURATION_SECONDS
+    );
+    clips.sort((a, b) => {
       if (a.isHighlight !== b.isHighlight) return a.isHighlight ? -1 : 1;
       if (a.trusted !== b.trusted) return a.trusted ? -1 : 1;
       return (a.ageDays ?? 999) - (b.ageDays ?? 999);
     });
 
-    if (scored.length === 0) return null;
+    const clip = clips[0];
+    const video: HighlightVideo | null = clip
+      ? {
+          url: `https://www.youtube.com/watch?v=${clip.videoId}`,
+          thumbnailUrl: `https://img.youtube.com/vi/${clip.videoId}/hqdefault.jpg`,
+          durationSeconds: clip.durationSeconds,
+          title: clip.title,
+          channel: clip.channel,
+        }
+      : null;
 
-    const best = scored[0];
-    return {
-      url: `https://www.youtube.com/watch?v=${best.videoId}`,
-      thumbnailUrl: `https://img.youtube.com/vi/${best.videoId}/hqdefault.jpg`,
-      durationSeconds: best.durationSeconds,
-      title: best.title,
-      channel: best.channel,
-    };
+    // Fallback still image: a relevant recent thumbnail (real action photo).
+    // Prefer real video thumbnails over pressers/talking-heads when possible.
+    let imageUrl: string | null = video ? video.thumbnailUrl : null;
+    if (!imageUrl) {
+      const imagePool = candidates.filter((c) => c.hasLength && !c.rejected);
+      const pool = imagePool.length > 0 ? imagePool : candidates;
+      pool.sort((a, b) => {
+        if (a.trusted !== b.trusted) return a.trusted ? -1 : 1;
+        return (a.ageDays ?? 999) - (b.ageDays ?? 999);
+      });
+      imageUrl = `https://img.youtube.com/vi/${pool[0].videoId}/hqdefault.jpg`;
+    }
+
+    return { video, imageUrl };
   } catch {
-    return null;
+    return EMPTY_RESULT;
   } finally {
     clearTimeout(timer);
   }
@@ -209,9 +240,13 @@ export async function enrichWithHighlights(
   for (const entry of entries) {
     const cached = cache[entry.eventId];
     if (cached) {
-      const ttl = cached.video ? CACHE_TTL_MS : NOTFOUND_TTL_MS;
+      // A hit is anything we resolved (clip or still image); only a true
+      // empty result uses the shorter retry TTL.
+      const resolved = !!cached.video || !!cached.imageUrl;
+      const ttl = resolved ? CACHE_TTL_MS : NOTFOUND_TTL_MS;
       if (now - new Date(cached.fetchedAt).getTime() < ttl) {
         entry.video = cached.video || undefined;
+        entry.fallbackImageUrl = cached.video ? undefined : cached.imageUrl || undefined;
         continue;
       }
     }
@@ -223,13 +258,18 @@ export async function enrichWithHighlights(
     const found = await Promise.all(
       toSearch.map(async ({ entry, query }) => ({
         entry,
-        video: await searchHighlight(query),
+        result: await searchHighlight(query),
       }))
     );
     const stamp = new Date().toISOString();
-    for (const { entry, video } of found) {
-      entry.video = video || undefined;
-      cache[entry.eventId] = { video: video || null, fetchedAt: stamp };
+    for (const { entry, result } of found) {
+      entry.video = result.video || undefined;
+      entry.fallbackImageUrl = result.video ? undefined : result.imageUrl || undefined;
+      cache[entry.eventId] = {
+        video: result.video || null,
+        imageUrl: result.imageUrl || null,
+        fetchedAt: stamp,
+      };
     }
     saveCache(cache);
   }

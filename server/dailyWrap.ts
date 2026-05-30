@@ -19,6 +19,7 @@ export interface DailyWrapEntry {
   priorityScore: number;
   startTimeLocal: string;
   video?: HighlightVideo;
+  fallbackImageUrl?: string;
 }
 
 export interface DailyWrapResponse {

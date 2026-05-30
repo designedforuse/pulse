@@ -18,7 +18,14 @@ reaction, interview, preview, live/full replay…), and prefer titles that actua
 read as highlights/recap.
 
 **How to apply:** this is best-effort sourcing — the user accepted spoiler +
-mismatch risk. A perfect per-game match is not guaranteed; when no good clip is
-found the card falls back to the spoiler-safe gradient + headline + "Watch the
-replay". Per-search fetches must use AbortController so timed-out scrapes are
-actually cancelled, not left running.
+mismatch risk. A perfect per-game match is not guaranteed. Per-search fetches
+must use AbortController so timed-out scrapes are actually cancelled.
+
+**Fallback ladder when no qualifying clip exists:** the scrape also returns a
+still `imageUrl` — a relevant recent thumbnail (real action photo) — surfaced as
+`fallbackImageUrl` only when there's no video. The card then renders that image
+with a Ken Burns pan/zoom (transform-only Animated loop, native driver) behind
+the headline. Only when *neither* a clip nor an image is found does it fall back
+to the plain sport gradient + "Watch the replay". The paged feed must keep
+FlatList virtualization tight (small windowSize) so many Ken Burns loops don't
+all animate at once.

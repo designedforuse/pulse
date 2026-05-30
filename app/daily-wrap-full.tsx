@@ -73,6 +73,34 @@ interface StoryView {
   leagueLabel: string;
   sportColor: string;
   video?: HighlightVideo;
+  fallbackImageUrl?: string;
+}
+
+// --- Ken Burns: slow zoom + pan over a still image ---
+function KenBurnsImage({ uri }: { uri: string }) {
+  const progress = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    const loop = Animated.loop(
+      Animated.sequence([
+        Animated.timing(progress, { toValue: 1, duration: 14000, useNativeDriver: true }),
+        Animated.timing(progress, { toValue: 0, duration: 14000, useNativeDriver: true }),
+      ])
+    );
+    loop.start();
+    return () => loop.stop();
+  }, [progress]);
+
+  const scale = progress.interpolate({ inputRange: [0, 1], outputRange: [1.06, 1.22] });
+  const translateX = progress.interpolate({ inputRange: [0, 1], outputRange: [-14, 14] });
+  const translateY = progress.interpolate({ inputRange: [0, 1], outputRange: [10, -10] });
+
+  return (
+    <Animated.View
+      style={[StyleSheet.absoluteFill, { transform: [{ scale }, { translateX }, { translateY }] }]}
+    >
+      <ExpoImage source={{ uri }} style={StyleSheet.absoluteFill} contentFit="cover" transition={300} />
+    </Animated.View>
+  );
 }
 
 // --- Swipe-up affordance with a gentle looping bounce ---
@@ -110,12 +138,13 @@ function StoryPage({
   insets: { top: number; bottom: number };
   isLast: boolean;
 }) {
-  const { entry, event, mood, headline, leagueLabel, sportColor, video } = view;
+  const { entry, event, mood, headline, leagueLabel, sportColor, video, fallbackImageUrl } = view;
   const moodColor = MOOD_COLORS[mood];
   const moodLabel = MOOD_LABELS[mood];
   const provider = event ? resolveProviderDisplay(event) : null;
   const thumbWidth = width - 44;
   const thumbHeight = Math.round(thumbWidth * (9 / 16));
+  const showKenBurns = !video && !!fallbackImageUrl;
 
   const handleReplay = () => {
     if (!event) return;
@@ -137,11 +166,22 @@ function StoryPage({
 
   return (
     <View style={[styles.page, { height }]}>
-      <LinearGradient
-        colors={[sportColor + "33", Colors.background, "#000000"]}
-        locations={[0, 0.55, 1]}
-        style={StyleSheet.absoluteFill}
-      />
+      {showKenBurns ? (
+        <>
+          <KenBurnsImage uri={fallbackImageUrl as string} />
+          <LinearGradient
+            colors={[sportColor + "40", "rgba(0,0,0,0.55)", "rgba(0,0,0,0.92)"]}
+            locations={[0, 0.45, 1]}
+            style={StyleSheet.absoluteFill}
+          />
+        </>
+      ) : (
+        <LinearGradient
+          colors={[sportColor + "33", Colors.background, "#000000"]}
+          locations={[0, 0.55, 1]}
+          style={StyleSheet.absoluteFill}
+        />
+      )}
 
       <View
         style={[
@@ -324,6 +364,7 @@ export default function DailyWrapFullScreen() {
           leagueLabel: getSchoolsLeagueLabel(event.league, event.leagueKey) ?? event.league,
           sportColor: getSportColor(getEffectiveSport(event.sport, event.league, event.leagueKey)),
           video: entry.video,
+          fallbackImageUrl: entry.fallbackImageUrl,
         };
       }
       return {
@@ -333,6 +374,7 @@ export default function DailyWrapFullScreen() {
         leagueLabel: entry.league,
         sportColor: getSportColor(entry.sport),
         video: entry.video,
+        fallbackImageUrl: entry.fallbackImageUrl,
       };
     });
     return { stories: built };
@@ -378,6 +420,10 @@ export default function DailyWrapFullScreen() {
           getItemLayout={getItemLayout}
           onMomentumScrollEnd={onScrollEnd}
           scrollEnabled={stories.length > 1}
+          windowSize={3}
+          maxToRenderPerBatch={2}
+          initialNumToRender={1}
+          removeClippedSubviews
         />
       )}
 
