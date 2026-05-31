@@ -16,6 +16,10 @@ export interface DailyWrapEntry {
   loser?: string;
   winnerScore?: string;
   loserScore?: string;
+  // Final score captured at wrap-generation time. Live scores expire once a
+  // game leaves the live window, so the story card relies on this snapshot to
+  // render set/score details consistently rather than the volatile live feed.
+  scoreSnapshot?: ScoreData;
   priorityScore: number;
   startTimeLocal: string;
   video?: HighlightVideo;
@@ -438,6 +442,7 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
       loser: editorial.loser,
       winnerScore: editorial.winnerScore,
       loserScore: editorial.loserScore,
+      scoreSnapshot: score,
       priorityScore: priority,
       startTimeLocal: event.startTimeLocal,
     });

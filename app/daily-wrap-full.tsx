@@ -37,6 +37,7 @@ import {
 import type { ScoreData } from "@/lib/scores-context";
 import { getCatchUpTeaser, type TeaserMood } from "@/lib/catchUpTeasers";
 import { getSportBackdrop } from "@/lib/sport-backdrops";
+import { normalizeGameState } from "@/utils/gameState";
 import {
   tagEntries,
   type DailyWrapEntry,
@@ -288,7 +289,15 @@ export default function DailyWrapFullScreen() {
     const tagged = tagEntries(data.results, favorites) as Story[];
     const built: StoryView[] = tagged.map((entry) => {
       const event = eventMap.get(entry.eventId);
-      const score = event ? getScore(event.id) : undefined;
+      // Live scores expire once a game leaves the live window, so prefer the
+      // live feed only while it still reports FINAL; otherwise use the final
+      // snapshot captured at wrap-generation time. A live snapshot is only
+      // used as a last resort when no persisted snapshot exists.
+      const liveScore = event ? getScore(event.id) : undefined;
+      const liveIsFinal =
+        !!event && !!liveScore &&
+        normalizeGameState(event, liveScore, new Date()).gameState === "FINAL";
+      const score = liveIsFinal ? liveScore : (entry.scoreSnapshot ?? liveScore);
       if (event) {
         const teaser = getCatchUpTeaser(event, score);
         return {

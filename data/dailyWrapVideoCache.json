@@ -129,7 +129,7 @@
   },
   "tennis-espn-175715": {
     "video": null,
-    "fetchedAt": "2026-05-30T14:39:42.260Z"
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
   },
   "tennis-espn-175712": {
     "video": {
@@ -143,27 +143,39 @@
   },
   "rugby-urc-m2i952": {
     "video": null,
-    "fetchedAt": "2026-05-30T14:39:42.260Z"
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
   },
   "rugby-premiership-6kcqe6": {
     "video": null,
-    "fetchedAt": "2026-05-30T14:39:42.260Z"
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
   },
   "rugby-top14-q80noy": {
     "video": null,
-    "fetchedAt": "2026-05-30T14:39:42.260Z"
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
   },
   "rugby-top14-sr9uah": {
-    "video": null,
-    "fetchedAt": "2026-05-30T14:39:42.260Z"
+    "video": {
+      "url": "https://www.youtube.com/watch?v=t7YgSHRibEM",
+      "thumbnailUrl": "https://i.ytimg.com/vi/t7YgSHRibEM/hqdefault.jpg",
+      "durationSeconds": 795,
+      "title": "TOP 14: Résumé partie complète US Montauban vs Stade Rochelais: J25 - Saison 2025/2026",
+      "channel": "Création Mouna dz "
+    },
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
   },
   "rugby-top14-yaghst": {
-    "video": null,
-    "fetchedAt": "2026-05-30T14:39:42.260Z"
+    "video": {
+      "url": "https://www.youtube.com/watch?v=t7YgSHRibEM",
+      "thumbnailUrl": "https://i.ytimg.com/vi/t7YgSHRibEM/hqdefault.jpg",
+      "durationSeconds": 795,
+      "title": "TOP 14: Résumé partie complète US Montauban vs Stade Rochelais: J25 - Saison 2025/2026",
+      "channel": "Création Mouna dz "
+    },
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
   },
   "rugby-top14-lrr01h": {
     "video": null,
-    "fetchedAt": "2026-05-30T14:39:42.260Z"
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
   },
   "rugby-superrugby-3vh4gg": {
     "video": {
@@ -178,5 +190,125 @@
   "rugby-schools-sacs-paarlboys-2026-05-30": {
     "video": null,
     "fetchedAt": "2026-05-30T14:39:42.260Z"
+  },
+  "tennis-espn-175720": {
+    "video": null,
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
+  },
+  "tennis-espn-175727": {
+    "video": null,
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
+  },
+  "tennis-espn-175744": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=Tl4F_cvGaS8",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Tl4F_cvGaS8/hqdefault.jpg",
+      "durationSeconds": 938,
+      "title": "Djokovic Demolished, Fonseca In Five, Demon Departs & Swiatek Swans Through",
+      "channel": "The Chris Macpherson Show"
+    },
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
+  },
+  "tennis-espn-175740": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=XitXDTZ4qUo",
+      "thumbnailUrl": "https://i.ytimg.com/vi/XitXDTZ4qUo/hqdefault.jpg",
+      "durationSeconds": 311,
+      "title": "Roland-Garros 2026 - Matteo Arnaldi dopo il thriller: “È stata una partita da Roland-Garros”",
+      "channel": "Tennis Actu TV"
+    },
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
+  },
+  "tennis-espn-175737": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=JmIeLGSwxn8",
+      "thumbnailUrl": "https://i.ytimg.com/vi/JmIeLGSwxn8/hqdefault.jpg",
+      "durationSeconds": 161,
+      "title": "Unknown Challenger Jaime Faria Targets Stunning French Open Breakthrough",
+      "channel": "Mirror7 News | Breaking News"
+    },
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
+  },
+  "tennis-espn-175749": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=C7iP47xOOEQ",
+      "thumbnailUrl": "https://i.ytimg.com/vi/C7iP47xOOEQ/hqdefault.jpg",
+      "durationSeconds": 48,
+      "title": "Auger-Aliassime vs Nakashima Round 3 Head to Head | Roland-Garros 2026",
+      "channel": "Roland-Garros"
+    },
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
+  },
+  "soccer-championsleague-20260530-1600-arsenal-at-paris-saint-germain": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=Kbgc2kUYWAo",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Kbgc2kUYWAo/hqdefault.jpg",
+      "durationSeconds": 598,
+      "title": "PSG vs Arsenal Highlights | UEFA Champions League Final 2025/26",
+      "channel": "Nexus Football"
+    },
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
+  },
+  "rugby-urc-xnat8": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=yrrEYlD_vEU",
+      "thumbnailUrl": "https://i.ytimg.com/vi/yrrEYlD_vEU/hqdefault.jpg",
+      "durationSeconds": 351,
+      "title": "URC Playoffs 2026 Highlights: DHL Stormers vs. Cardiff Rugby",
+      "channel": "FloRugby"
+    },
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
+  },
+  "rugby-premiership-4owtxz": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=4M0WGUzv6aA",
+      "thumbnailUrl": "https://i.ytimg.com/vi/4M0WGUzv6aA/hqdefault.jpg",
+      "durationSeconds": 301,
+      "title": "Highlights // Northampton Saints v Gloucester",
+      "channel": "SaintsTV"
+    },
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
+  },
+  "rugby-premiership-qsp73m": {
+    "video": null,
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
+  },
+  "rugby-urc-3e6ol1": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=WB6IBKbzAGw",
+      "thumbnailUrl": "https://i.ytimg.com/vi/WB6IBKbzAGw/hqdefault.jpg",
+      "durationSeconds": 318,
+      "title": "Leinster v Fidelity SecureDrive Lions | Highlights | Quarter-Final | 2025/26",
+      "channel": "United Rugby Championship"
+    },
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
+  },
+  "rugby-top14-76ulo6": {
+    "video": null,
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
+  },
+  "soccer-nwsl-20260530-1730-boston-legacy-at-kansas-city-current": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=ctdT_qqq5AU",
+      "thumbnailUrl": "https://i.ytimg.com/vi/ctdT_qqq5AU/hqdefault.jpg",
+      "durationSeconds": 600,
+      "title": "FULL HIGHLIGHTS | Kansas City Current vs. Boston Legacy",
+      "channel": "National Women's Soccer League"
+    },
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
+  },
+  "soccer-nwsl-20260530-2000-utah-royals-at-portland-thorns": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=oDmYy4PyCGg",
+      "thumbnailUrl": "https://i.ytimg.com/vi/oDmYy4PyCGg/hqdefault.jpg",
+      "durationSeconds": 601,
+      "title": "FULL HIGHLIGHTS | Portland Thorns FC vs. Utah Royals FC",
+      "channel": "National Women's Soccer League"
+    },
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
+  },
+  "rugby-mlr-20260530-2000-seattle-seawolves-at-anthem-rc": {
+    "video": null,
+    "fetchedAt": "2026-05-30T23:59:10.893Z"
   }
 }

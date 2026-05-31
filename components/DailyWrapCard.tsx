@@ -13,6 +13,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { getApiUrl } from "@/lib/query-client";
 import { useFavorites } from "@/lib/favorites-context";
 import type { Favorites } from "@/lib/data";
+import type { ScoreData } from "@/lib/scores-context";
 import Colors from "@/constants/colors";
 
 const PINK = "#FF85C8";
@@ -33,6 +34,7 @@ export interface DailyWrapEntry {
   loser?: string;
   winnerScore?: string;
   loserScore?: string;
+  scoreSnapshot?: ScoreData;
   priorityScore: number;
   startTimeLocal: string;
   isFav?: boolean;
