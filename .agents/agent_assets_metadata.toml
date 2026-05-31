@@ -78,6 +78,12 @@ uri = "file://assets/images/stories/on-your-radar.png"
 type = "image"
 title = "on your radar aerial stadium night"
 
+[[generated]]
+id = "nVhbXl0A-0YABJ4DNT3K4"
+uri = "file://attached_assets/generated_images/horse_racing_bg.png"
+type = "image"
+title = "horse racing backdrop"
+
 [[outputs]]
 id = "BCzZEiJcUNr5OpJ6RpZse"
 uri = "file://PRD.md"

@@ -93,6 +93,7 @@ const SPORT_BACKGROUNDS: Record<string, any> = {
   basketball: require("@/assets/images/sports/basketball.webp"),
   cricket: require("@/assets/images/sports/cricket.webp"),
   racing: require("@/assets/images/sports/racing.webp"),
+  "horse-racing": require("@/assets/images/sports/horse-racing.webp"),
   tennis: require("@/assets/images/sports/tennis.webp"),
   golf: require("@/assets/images/sports/golf.webp"),
   athletics: require("@/assets/images/sports/athletics.webp"),
