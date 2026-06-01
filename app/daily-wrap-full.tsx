@@ -389,7 +389,9 @@ function StoryPage({
   const moodColor = MOOD_COLORS[mood];
   const provider = event ? resolveProviderDisplay(event) : null;
   const showKenBurns = !!backdrop;
-  const showScoreCard = !hideSpoilers && !!event && !!score;
+  // Cycling entries render a dedicated GC result card (label + flag/name), so
+  // skip the generic event/score card when a cyclingResult is present.
+  const showScoreCard = !hideSpoilers && !!event && !!score && !entry.cyclingResult;
 
   const handleReplay = () => {
     if (!event) return;

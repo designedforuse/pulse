@@ -13,3 +13,4 @@
 - [Hockey series context](hockey-series-context.md) — AHL/ECHL series phrases derived from HockeyTech brackets feed via per-game as-of win counts; winner-relative fields enable "stay alive"/lead, gated to avoid NHL regression.
 - [Diamond League results](diamond-league-results.md) — athletics has no keyed score; Daily Wrap fallback fetches Swiss Timing JSON, leads headline with SA (RSA) result else top record/win; dedupe multi-day meets by season/meeting.
 - [expo-image local source swap](expo-image-local-source-swap.md) — mounted expo-image won't swap a changed local require() source; key it by content to force remount.
+- [Daily Wrap render precedence](daily-wrap-render-tree.md) — showScoreCard→UnifiedEventCard runs FIRST; a new dedicated story card must make showScoreCard opt out or it's dead code.
