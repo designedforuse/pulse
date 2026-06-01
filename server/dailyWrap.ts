@@ -14,6 +14,16 @@ export interface SvnsFinal {
   loserScore: number;
 }
 
+// A single athletics result row for the Diamond League story card.
+export interface AthleticsResult {
+  discipline: string; // formatted, e.g. "men's 200m"
+  athlete: string;
+  nation: string; // 3-letter IOC code
+  rank: number;
+  performance: string;
+  record?: string; // expanded record name, e.g. "season best"
+}
+
 export interface DailyWrapEntry {
   eventId: string;
   sport: string;
@@ -30,6 +40,10 @@ export interface DailyWrapEntry {
   // render a proper score card (men's first, then women's) instead of a plain
   // detail line.
   svnsFinals?: SvnsFinal[];
+  // Diamond League (athletics) result rows + meet context, so the story can
+  // render a results card instead of a plain detail line.
+  athleticsResults?: AthleticsResult[];
+  athleticsMeet?: { city: string; scope: "sa" | "top" };
   // Final score captured at wrap-generation time. Live scores expire once a
   // game leaves the live window, so the story card relies on this snapshot to
   // render set/score details consistently rather than the volatile live feed.
@@ -586,7 +600,7 @@ function placeWord(rank: number): string {
 }
 
 function saHeadline(r: DLAthleteResult, city: string): string {
-  return `🇿🇦 ${r.athlete} ${placeWord(r.rank)} the ${formatDiscipline(r.discipline)} at Diamond League ${city}`;
+  return `${r.athlete} ${placeWord(r.rank)} the ${formatDiscipline(r.discipline)} at Diamond League ${city}`;
 }
 
 function notableHeadline(r: DLAthleteResult, city: string): string {
@@ -631,6 +645,8 @@ async function diamondLeagueEditorial(event: any): Promise<Partial<DailyWrapEntr
       editorial: saHeadline(sa, city),
       detail: bits.join(" · "),
       winner: sa.rank === 1 ? sa.athlete : undefined,
+      athleticsResults: summary.saResults.slice(0, 6).map(toAthleticsResult),
+      athleticsMeet: { city, scope: "sa" },
     };
   }
 
@@ -642,10 +658,23 @@ async function diamondLeagueEditorial(event: any): Promise<Partial<DailyWrapEntr
       editorial: notableHeadline(n, city),
       detail: bits.join(" · "),
       winner: n.rank === 1 ? n.athlete : undefined,
+      athleticsResults: summary.notable.slice(0, 5).map(toAthleticsResult),
+      athleticsMeet: { city, scope: "top" },
     };
   }
 
   return null;
+}
+
+function toAthleticsResult(r: DLAthleteResult): AthleticsResult {
+  return {
+    discipline: formatDiscipline(r.discipline),
+    athlete: r.athlete,
+    nation: r.nation,
+    rank: r.rank,
+    performance: r.performance,
+    record: expandRecordFlag(r.recordFlag) || undefined,
+  };
 }
 
 function golfEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> | null {
@@ -900,6 +929,9 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
   const diamondLeagueLatestByMeet: Record<string, any> = {};
   for (const e of todayEvents) {
     if (!isDiamondLeague(e)) continue;
+    // Only concluded events are candidates: for a multi-day meet whose later day
+    // hasn't finished yet, the earlier concluded day must still surface a card.
+    if (!hasConcluded(e, nowMs)) continue;
     const k = diamondLeagueMeetKey(e);
     const key = k ? `${k.season}/${k.meeting}` : e.id;
     const cur = diamondLeagueLatestByMeet[key];
@@ -963,6 +995,8 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
             editorial: de.editorial || "",
             detail: de.detail || "",
             winner: de.winner,
+            athleticsResults: de.athleticsResults,
+            athleticsMeet: de.athleticsMeet,
             priorityScore: DIAMOND_LEAGUE_PRIORITY,
             startTimeLocal: event.startTimeLocal,
           });

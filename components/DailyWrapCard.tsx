@@ -30,6 +30,15 @@ export interface SvnsFinal {
   loserScore: number;
 }
 
+export interface AthleticsResult {
+  discipline: string;
+  athlete: string;
+  nation: string;
+  rank: number;
+  performance: string;
+  record?: string;
+}
+
 export interface DailyWrapEntry {
   eventId: string;
   sport: string;
@@ -43,6 +52,8 @@ export interface DailyWrapEntry {
   winnerScore?: string;
   loserScore?: string;
   svnsFinals?: SvnsFinal[];
+  athleticsResults?: AthleticsResult[];
+  athleticsMeet?: { city: string; scope: "sa" | "top" };
   scoreSnapshot?: ScoreData;
   priorityScore: number;
   startTimeLocal: string;

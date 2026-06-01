@@ -102,6 +102,24 @@ uri = "file://attached_assets/generated_images/cricket-3.png"
 type = "image"
 title = "cricket stadium floodlights dusk"
 
+[[generated]]
+id = "kUAtKffBNQSn1jKgjWjZz"
+uri = "file://assets/images/sportBackdrops/athletics-1.jpg.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "--4G1wqQ5KlM8MzF7YHDv"
+uri = "file://assets/images/sportBackdrops/athletics-2.jpg.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "QdbVQDU-mi1jr-e16U-RO"
+uri = "file://assets/images/sportBackdrops/athletics-3.jpg.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "BCzZEiJcUNr5OpJ6RpZse"
 uri = "file://PRD.md"

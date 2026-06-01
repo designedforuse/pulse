@@ -44,6 +44,7 @@ import {
   type DailyWrapResponse,
   type HighlightVideo,
   type SvnsFinal,
+  type AthleticsResult,
 } from "@/components/DailyWrapCard";
 
 const PINK = "#FF85C8";
@@ -166,6 +167,66 @@ function SvnsFinalsCard({
   );
 }
 
+// --- Diamond League (athletics) results card ---
+function ordinal(rank: number): string {
+  if (rank >= 11 && rank <= 13) return `${rank}th`;
+  const suffix = ["th", "st", "nd", "rd"][rank % 10] || "th";
+  return `${rank}${suffix}`;
+}
+
+function AthleticsResultsCard({
+  results,
+  meet,
+  league,
+  sportColor,
+}: {
+  results: AthleticsResult[];
+  meet?: { city: string; scope: "sa" | "top" };
+  league: string;
+  sportColor: string;
+}) {
+  const showNation = meet?.scope === "top";
+  const scopeLabel = meet?.scope === "sa" ? "SOUTH AFRICANS" : "TOP RESULTS";
+  return (
+    <View style={[styles.svnsCard, { borderColor: sportColor + "55" }]}>
+      <View style={[styles.svnsTopBar, { backgroundColor: sportColor }]} />
+      <View style={styles.svnsHeader}>
+        <View
+          style={[
+            styles.svnsLeagueChip,
+            { backgroundColor: sportColor + "1F", borderColor: sportColor + "55" },
+          ]}
+        >
+          <Text style={[styles.svnsLeagueChipText, { color: sportColor }]} numberOfLines={1}>
+            {meet?.city ? `${league} · ${meet.city}` : league}
+          </Text>
+        </View>
+        <Text style={styles.svnsCupFinalLabel}>{scopeLabel}</Text>
+      </View>
+      {results.map((r, i) => (
+        <View key={`${r.athlete}-${r.discipline}`} style={[styles.athRow, i > 0 && styles.svnsRowDivider]}>
+          <View style={[styles.athRankPill, { backgroundColor: sportColor + "1F" }]}>
+            <Text style={[styles.athRankText, { color: sportColor }]}>{ordinal(r.rank)}</Text>
+          </View>
+          <View style={styles.athBody}>
+            <Text style={styles.athName} numberOfLines={1}>
+              {r.athlete}
+              {showNation && r.nation ? <Text style={styles.athNation}> {r.nation}</Text> : null}
+            </Text>
+            <Text style={styles.athDiscipline} numberOfLines={1}>
+              {r.discipline}
+              {r.record ? ` · ${r.record}` : ""}
+            </Text>
+          </View>
+          {r.performance ? (
+            <Text style={[styles.athPerformance, { color: sportColor }]}>{r.performance}</Text>
+          ) : null}
+        </View>
+      ))}
+    </View>
+  );
+}
+
 function StoryPage({
   view,
   height,
@@ -246,6 +307,13 @@ function StoryPage({
           ) : !hideSpoilers && entry.svnsFinals && entry.svnsFinals.length > 0 ? (
             <SvnsFinalsCard
               finals={entry.svnsFinals}
+              sportColor={sportColor}
+              league={entry.league}
+            />
+          ) : !hideSpoilers && entry.athleticsResults && entry.athleticsResults.length > 0 ? (
+            <AthleticsResultsCard
+              results={entry.athleticsResults}
+              meet={entry.athleticsMeet}
               sportColor={sportColor}
               league={entry.league}
             />
@@ -610,6 +678,47 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontFamily: "Inter_700Bold",
     color: Colors.textSecondary,
+  },
+  athRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+  },
+  athRankPill: {
+    minWidth: 38,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+  athRankText: {
+    fontSize: 13,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.2,
+  },
+  athBody: {
+    flex: 1,
+    gap: 2,
+  },
+  athName: {
+    fontSize: 15,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+  },
+  athNation: {
+    fontSize: 12,
+    fontFamily: "Inter_600SemiBold",
+    color: Colors.textMuted,
+  },
+  athDiscipline: {
+    fontSize: 12,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+  },
+  athPerformance: {
+    fontSize: 16,
+    fontFamily: "Inter_700Bold",
+    textAlign: "right",
   },
   providerRow: {
     flexDirection: "row",
