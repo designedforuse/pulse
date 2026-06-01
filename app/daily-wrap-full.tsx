@@ -300,11 +300,13 @@ export default function DailyWrapFullScreen() {
       const score = liveIsFinal ? liveScore : (entry.scoreSnapshot ?? liveScore);
       if (event) {
         const teaser = getCatchUpTeaser(event, score);
+        // Spoiler mode ON → spoiler-safe teaser; OFF → reveal the result
+        // headline (e.g. "Maple Leafs beat Bruins 4–2").
         return {
           entry,
           event,
           score,
-          headline: teaser.headline,
+          headline: hideSpoilers ? teaser.headline : entry.editorial,
           mood: teaser.mood,
           leagueLabel: getSchoolsLeagueLabel(event.league, event.leagueKey) ?? event.league,
           sportColor: getSportColor(getEffectiveSport(event.sport, event.league, event.leagueKey)),
@@ -312,9 +314,15 @@ export default function DailyWrapFullScreen() {
           backdrop: getSportBackdrop(event.sport, entry.eventId),
         };
       }
+      // No local event to build a teaser from. When spoilers are hidden, fall
+      // back to a neutral matchup line rather than leaking the result.
+      const safeHeadline =
+        entry.homeTeam && entry.awayTeam
+          ? `${entry.awayTeam} vs ${entry.homeTeam}`
+          : `${entry.league} — recap`;
       return {
         entry,
-        headline: entry.editorial,
+        headline: hideSpoilers ? safeHeadline : entry.editorial,
         mood: "medium" as TeaserMood,
         leagueLabel: entry.league,
         sportColor: getSportColor(entry.sport),
@@ -323,7 +331,7 @@ export default function DailyWrapFullScreen() {
       };
     });
     return { stories: built };
-  }, [data, favorites, eventMap, getScore]);
+  }, [data, favorites, eventMap, getScore, hideSpoilers]);
 
   // Keep the active index in range if the list shrinks on a refresh.
   useEffect(() => {
