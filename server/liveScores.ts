@@ -488,6 +488,7 @@ const ESPN_LEAGUE_PATHS: Record<string, string> = {
   "Europa League": "uefa.europa",
   "FA Cup": "eng.fa",
   "CAF Champions League": "caf.champions",
+  "International Friendly": "fifa.friendly",
 };
 
 function parseShootoutScore(raw: unknown): number | null {

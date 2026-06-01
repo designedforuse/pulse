@@ -310,5 +310,61 @@
   "rugby-mlr-20260530-2000-seattle-seawolves-at-anthem-rc": {
     "video": null,
     "fetchedAt": "2026-05-30T23:59:10.893Z"
+  },
+  "rugby-top14-7bejzh": {
+    "video": null,
+    "fetchedAt": "2026-06-01T01:15:35.691Z"
+  },
+  "rugby-premiership-1jjoyl": {
+    "video": null,
+    "fetchedAt": "2026-06-01T01:15:35.691Z"
+  },
+  "rugby-top14-nrqsm0": {
+    "video": null,
+    "fetchedAt": "2026-06-01T01:15:35.691Z"
+  },
+  "soccer-nwsl-20260531-1700-san-diego-wave-at-chicago-stars": {
+    "video": null,
+    "fetchedAt": "2026-06-01T01:15:35.691Z"
+  },
+  "soccer-usl-20260531-1800-brooklyn-fc-at-sporting-jax": {
+    "video": null,
+    "fetchedAt": "2026-06-01T01:15:35.691Z"
+  },
+  "soccer-nwsl-20260531-1900-houston-dash-at-gotham-fc": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=leMYHlckK2I",
+      "thumbnailUrl": "https://i.ytimg.com/vi/leMYHlckK2I/hqdefault.jpg",
+      "durationSeconds": 601,
+      "title": "Extended match highlights: Gotham FC 1, Houston Dash 0",
+      "channel": "Official Gotham FC"
+    },
+    "fetchedAt": "2026-06-01T01:15:35.691Z"
+  },
+  "soccer-intl-friendly-20260531-1930-senegal-at-united-states": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=1-C7heYbWMA",
+      "thumbnailUrl": "https://i.ytimg.com/vi/1-C7heYbWMA/hqdefault.jpg",
+      "durationSeconds": 179,
+      "title": "USA Overcome Senegal in Allstate Continental Clasico | USMNT 3-2 Senegal | Official Highlights",
+      "channel": "B/R Football"
+    },
+    "fetchedAt": "2026-06-01T01:15:35.691Z"
+  },
+  "soccer-nwsl-20260531-2300-north-carolina-courage-at-angel-city": {
+    "video": null,
+    "fetchedAt": "2026-06-01T01:15:35.691Z"
+  },
+  "rugby-mlr-20260531-2000-california-legion-at-new-england-free-jacks": {
+    "video": null,
+    "fetchedAt": "2026-06-01T01:15:35.691Z"
+  },
+  "rugby-mlr-20260601-0000-old-glory-dc-at-chicago-hounds": {
+    "video": null,
+    "fetchedAt": "2026-06-01T01:15:35.691Z"
+  },
+  "echl-web-26578": {
+    "video": null,
+    "fetchedAt": "2026-06-01T01:15:35.691Z"
   }
 }
