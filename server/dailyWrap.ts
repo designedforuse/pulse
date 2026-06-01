@@ -15,6 +15,15 @@ export interface SvnsFinal {
   loserScore: number;
 }
 
+// Cycling grand tour GC result for the Daily Wrap story card. The card shows a
+// single classification result (overall winner on the final stage, otherwise
+// the current race leader) with a flag + rider name.
+export interface CyclingResult {
+  name: string; // formatted rider name
+  nation?: string; // full country name for flag lookup (may be absent)
+  isOverall: boolean; // true on the final stage (champion) vs mid-race leader
+}
+
 // A single athletics result row for the Diamond League story card.
 export interface AthleticsResult {
   discipline: string; // formatted, e.g. "men's 200m"
@@ -45,6 +54,9 @@ export interface DailyWrapEntry {
   // render a results card instead of a plain detail line.
   athleticsResults?: AthleticsResult[];
   athleticsMeet?: { city: string; scope: "sa" | "top" };
+  // Cycling grand tour GC result, so the story can render a compact
+  // "Overall Winner / Race Leader" card (flag + rider) instead of a plain line.
+  cyclingResult?: CyclingResult;
   // Final score captured at wrap-generation time. Live scores expire once a
   // game leaves the live window, so the story card relies on this snapshot to
   // render set/score details consistently rather than the volatile live feed.
@@ -464,11 +476,13 @@ function cyclingEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry>
   const team = score.cyclingLeaderTeam ? ` · ${score.cyclingLeaderTeam}` : "";
   // The final stage's GC leader is the overall champion.
   const isFinalStage = /final/i.test(event.sessionTitle || "");
+  const nation = score.cyclingLeaderCountry?.trim() || undefined;
   if (isFinalStage) {
     return {
       editorial: `${f ? f + " " : ""}${leader} wins the ${tour}`,
       detail: `${event.league} · General Classification${team}`,
       winner: leader,
+      cyclingResult: { name: leader, nation, isOverall: true },
     };
   }
   // Use the stage number from the event itself (the scraped GC number can lag).
@@ -483,6 +497,7 @@ function cyclingEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry>
     editorial: `${f ? f + " " : ""}${leader} leads the ${tour}${gapPart}${stagePart}`,
     detail: `${event.league} · General Classification${team}`,
     winner: leader,
+    cyclingResult: { name: leader, nation, isOverall: false },
   };
 }
 
@@ -1049,6 +1064,7 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
             editorial: ce.editorial || "",
             detail: ce.detail || "",
             winner: ce.winner,
+            cyclingResult: ce.cyclingResult,
             priorityScore: CYCLING_PRIORITY,
             startTimeLocal: event.startTimeLocal,
           });

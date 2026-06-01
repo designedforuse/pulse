@@ -39,6 +39,12 @@ export interface AthleticsResult {
   record?: string;
 }
 
+export interface CyclingResult {
+  name: string;
+  nation?: string;
+  isOverall: boolean;
+}
+
 export interface DailyWrapEntry {
   eventId: string;
   sport: string;
@@ -54,6 +60,7 @@ export interface DailyWrapEntry {
   svnsFinals?: SvnsFinal[];
   athleticsResults?: AthleticsResult[];
   athleticsMeet?: { city: string; scope: "sa" | "top" };
+  cyclingResult?: CyclingResult;
   scoreSnapshot?: ScoreData;
   priorityScore: number;
   startTimeLocal: string;

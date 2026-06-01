@@ -46,6 +46,7 @@ import {
   type HighlightVideo,
   type SvnsFinal,
   type AthleticsResult,
+  type CyclingResult,
 } from "@/components/DailyWrapCard";
 
 const PINK = "#FF85C8";
@@ -241,6 +242,54 @@ function AthleticsResultsCard({
   );
 }
 
+// --- Cycling grand tour GC result card ---
+// Mirrors the chaos card's cycling leader block: a single classification result
+// with two rows — an "Overall Winner" / "Race Leader" label and a [flag] [name]
+// line. Flags are only available when the feed carries the rider's nation.
+function CyclingResultCard({
+  result,
+  league,
+  sportColor,
+}: {
+  result: CyclingResult;
+  league: string;
+  sportColor: string;
+}) {
+  const flagUrl = result.nation ? getCountryFlagUrl(result.nation) : null;
+  const label = result.isOverall ? "OVERALL WINNER" : "RACE LEADER";
+  return (
+    <View style={[styles.svnsCard, { borderColor: sportColor + "55" }]}>
+      <View style={[styles.svnsTopBar, { backgroundColor: sportColor }]} />
+      <View style={styles.svnsHeader}>
+        <View
+          style={[
+            styles.svnsLeagueChip,
+            { backgroundColor: sportColor + "1F", borderColor: sportColor + "55" },
+          ]}
+        >
+          <Text style={[styles.svnsLeagueChipText, { color: sportColor }]} numberOfLines={1}>
+            {league}
+          </Text>
+        </View>
+        <Text style={styles.svnsCupFinalLabel}>GENERAL CLASSIFICATION</Text>
+      </View>
+      <View style={styles.cyclingBody}>
+        <Text style={styles.cyclingLabel}>{label}</Text>
+        <View style={styles.cyclingNameRow}>
+          {flagUrl ? (
+            <ExpoImage source={{ uri: flagUrl }} style={styles.svnsFlag} contentFit="cover" />
+          ) : (
+            <Text style={styles.cyclingEmoji}>🚴</Text>
+          )}
+          <Text style={styles.cyclingName} numberOfLines={1}>
+            {result.name}
+          </Text>
+        </View>
+      </View>
+    </View>
+  );
+}
+
 // One-time iOS audio-session setup so narration is audible even on silent mode.
 let audioModeReady = false;
 
@@ -412,6 +461,12 @@ function StoryPage({
               meet={entry.athleticsMeet}
               sportColor={sportColor}
               league={entry.league}
+            />
+          ) : !hideSpoilers && entry.cyclingResult ? (
+            <CyclingResultCard
+              result={entry.cyclingResult}
+              league={entry.league}
+              sportColor={sportColor}
             />
           ) : (
             <View style={styles.providerRow}>
@@ -800,6 +855,31 @@ const styles = StyleSheet.create({
     height: 16,
     borderRadius: 2,
     backgroundColor: Colors.divider,
+  },
+  cyclingBody: {
+    gap: 8,
+  },
+  cyclingLabel: {
+    fontSize: 11,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textMuted,
+    letterSpacing: 1,
+  },
+  cyclingNameRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+  },
+  cyclingEmoji: {
+    fontSize: 18,
+    width: 24,
+    textAlign: "center",
+  },
+  cyclingName: {
+    flex: 1,
+    fontSize: 18,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
   },
   svnsTeamName: {
     flex: 1,
