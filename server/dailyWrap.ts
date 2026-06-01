@@ -666,24 +666,26 @@ function placeWord(rank: number): string {
   return `finishes ${ord} in`;
 }
 
-function saHeadline(r: DLAthleteResult, city: string): string {
-  return `${r.athlete} ${placeWord(r.rank)} the ${formatDiscipline(r.discipline)} at Diamond League ${city}`;
+// The meet/city already live in the event card's league chip, so the headline
+// names only the athlete + discipline (no "at Diamond League {city}" suffix).
+function saHeadline(r: DLAthleteResult): string {
+  return `${r.athlete} ${placeWord(r.rank)} the ${formatDiscipline(r.discipline)}`;
 }
 
-function notableHeadline(r: DLAthleteResult, city: string): string {
+function notableHeadline(r: DLAthleteResult): string {
   const disc = formatDiscipline(r.discipline);
   const sig = expandRecordFlag(r.recordFlag);
   const nat = r.nation ? ` (${r.nation})` : "";
   if (sig === "world record") {
-    return `🌍 ${r.athlete}${nat} breaks the world record in the ${disc} at Diamond League ${city}`;
+    return `🌍 ${r.athlete}${nat} breaks the world record in the ${disc}`;
   }
   if (sig === "world lead") {
-    return `${r.athlete}${nat} posts a world-leading ${r.performance} to win the ${disc} at Diamond League ${city}`;
+    return `${r.athlete}${nat} posts a world-leading ${r.performance} to win the ${disc}`;
   }
   if (sig) {
-    return `${r.athlete}${nat} sets a ${sig} in the ${disc} at Diamond League ${city}`;
+    return `${r.athlete}${nat} sets a ${sig} in the ${disc}`;
   }
-  return `${r.athlete}${nat} wins the ${disc} at Diamond League ${city}`;
+  return `${r.athlete}${nat} wins the ${disc}`;
 }
 
 async function diamondLeagueEditorial(event: any): Promise<Partial<DailyWrapEntry> | null> {
@@ -709,10 +711,11 @@ async function diamondLeagueEditorial(event: any): Promise<Partial<DailyWrapEntr
     const moreSa = summary.saResults.length - 1;
     if (moreSa > 0) bits.push(`+${moreSa} more SA athlete${moreSa > 1 ? "s" : ""}`);
     return {
-      editorial: saHeadline(sa, city),
+      editorial: saHeadline(sa),
       detail: bits.join(" · "),
       winner: sa.rank === 1 ? sa.athlete : undefined,
-      athleticsResults: summary.saResults.slice(0, 6).map(toAthleticsResult),
+      // Only the headlined result is shown on the card.
+      athleticsResults: [toAthleticsResult(sa)],
       athleticsMeet: { city, scope: "sa" },
     };
   }
@@ -722,10 +725,11 @@ async function diamondLeagueEditorial(event: any): Promise<Partial<DailyWrapEntr
     const bits = [`Diamond League`, city, formatDiscipline(n.discipline)];
     if (n.performance) bits.push(n.performance);
     return {
-      editorial: notableHeadline(n, city),
+      editorial: notableHeadline(n),
       detail: bits.join(" · "),
       winner: n.rank === 1 ? n.athlete : undefined,
-      athleticsResults: summary.notable.slice(0, 5).map(toAthleticsResult),
+      // Only the headlined result is shown on the card.
+      athleticsResults: [toAthleticsResult(n)],
       athleticsMeet: { city, scope: "top" },
     };
   }
