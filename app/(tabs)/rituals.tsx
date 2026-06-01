@@ -222,6 +222,7 @@ function RitualTile({ ritual, data, fill = false }: { ritual: Ritual; data: Ritu
       {bgImage && (
         <>
           <ExpoImage
+            key={featuredSport ?? "default"}
             source={bgImage}
             style={StyleSheet.absoluteFillObject}
             contentFit="cover"
