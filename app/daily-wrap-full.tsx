@@ -27,7 +27,7 @@ import { useEvents } from "@/lib/events-context";
 import { useScores } from "@/lib/scores-context";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
-import UnifiedEventCard from "@/components/UnifiedEventCard";
+import UnifiedEventCard, { getCountryFlagUrl } from "@/components/UnifiedEventCard";
 import {
   getSportColor,
   getEffectiveSport,
@@ -145,25 +145,38 @@ function SvnsFinalsCard({
         </View>
         <Text style={styles.svnsCupFinalLabel}>CUP FINAL</Text>
       </View>
-      {finals.map((f, i) => (
-        <View key={f.gender} style={[styles.svnsRow, i > 0 && styles.svnsRowDivider]}>
-          <Text style={styles.svnsGenderLabel}>{f.gender === "mens" ? "MEN" : "WOMEN"}</Text>
-          <View style={styles.svnsTeams}>
-            <View style={styles.svnsTeamLine}>
-              <Text style={[styles.svnsTeamName, styles.svnsWinnerName]} numberOfLines={1}>
-                {f.winner}
-              </Text>
-              <Text style={[styles.svnsScore, { color: sportColor }]}>{f.winnerScore}</Text>
-            </View>
-            <View style={styles.svnsTeamLine}>
-              <Text style={styles.svnsTeamName} numberOfLines={1}>
-                {f.loser}
-              </Text>
-              <Text style={styles.svnsScore}>{f.loserScore}</Text>
+      {finals.map((f, i) => {
+        const winnerFlag = getCountryFlagUrl(f.winner);
+        const loserFlag = getCountryFlagUrl(f.loser);
+        return (
+          <View key={f.gender} style={[styles.svnsRow, i > 0 && styles.svnsRowDivider]}>
+            <View style={styles.svnsTeams}>
+              <View style={styles.svnsTeamLine}>
+                {winnerFlag ? (
+                  <ExpoImage source={{ uri: winnerFlag }} style={styles.svnsFlag} contentFit="cover" />
+                ) : (
+                  <View style={styles.svnsFlag} />
+                )}
+                <Text style={[styles.svnsTeamName, styles.svnsWinnerName]} numberOfLines={1}>
+                  {f.winner}
+                </Text>
+                <Text style={[styles.svnsScore, { color: sportColor }]}>{f.winnerScore}</Text>
+              </View>
+              <View style={styles.svnsTeamLine}>
+                {loserFlag ? (
+                  <ExpoImage source={{ uri: loserFlag }} style={styles.svnsFlag} contentFit="cover" />
+                ) : (
+                  <View style={styles.svnsFlag} />
+                )}
+                <Text style={styles.svnsTeamName} numberOfLines={1}>
+                  {f.loser}
+                </Text>
+                <Text style={styles.svnsScore}>{f.loserScore}</Text>
+              </View>
             </View>
           </View>
-        </View>
-      ))}
+        );
+      })}
     </View>
   );
 }
@@ -772,13 +785,6 @@ const styles = StyleSheet.create({
     borderTopColor: Colors.divider,
     paddingTop: 12,
   },
-  svnsGenderLabel: {
-    width: 46,
-    fontSize: 10,
-    fontFamily: "Inter_700Bold",
-    color: Colors.textMuted,
-    letterSpacing: 1,
-  },
   svnsTeams: {
     flex: 1,
     gap: 6,
@@ -787,7 +793,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    gap: 12,
+    gap: 10,
+  },
+  svnsFlag: {
+    width: 24,
+    height: 16,
+    borderRadius: 2,
+    backgroundColor: Colors.divider,
   },
   svnsTeamName: {
     flex: 1,

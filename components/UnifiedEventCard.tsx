@@ -128,6 +128,7 @@ const COUNTRY_CODES: Record<string, string> = {
   "United States": "usa", "USA": "usa", "Uruguay": "uru", "Venezuela": "ven",
   "Vietnam": "vie", "Wales": "wal", "Zambia": "zam", "Zimbabwe": "zim",
   "Haiti": "hai", "Curaçao": "cuw", "Suriname": "sur",
+  "Fiji": "fij", "Samoa": "sam", "Great Britain": "gbr",
 };
 
 export function getCountryFlagUrl(country: string): string | null {
