@@ -353,7 +353,7 @@
   },
   "soccer-nwsl-20260531-2300-north-carolina-courage-at-angel-city": {
     "video": null,
-    "fetchedAt": "2026-06-01T01:15:35.691Z"
+    "fetchedAt": "2026-06-01T16:35:16.996Z"
   },
   "rugby-mlr-20260531-2000-california-legion-at-new-england-free-jacks": {
     "video": null,
@@ -361,7 +361,7 @@
   },
   "rugby-mlr-20260601-0000-old-glory-dc-at-chicago-hounds": {
     "video": null,
-    "fetchedAt": "2026-06-01T01:15:35.691Z"
+    "fetchedAt": "2026-06-01T16:35:16.996Z"
   },
   "echl-web-26578": {
     "video": null,
@@ -376,5 +376,9 @@
       "channel": "Prime 10 India"
     },
     "fetchedAt": "2026-06-01T01:23:12.041Z"
+  },
+  "tennis-espn-175767": {
+    "video": null,
+    "fetchedAt": "2026-06-01T16:35:16.996Z"
   }
 }

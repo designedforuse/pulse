@@ -229,7 +229,7 @@ function AthleticsResultsCard({
   );
 }
 
-type AudioStatus = "idle" | "loading" | "playing";
+type AudioStatus = "idle" | "loading" | "playing" | "error";
 
 // Single shared narrator: only one headline plays at a time. Loads the clip
 // from the backend TTS route, tracks which story is active, and cleans up on
@@ -271,7 +271,7 @@ function useHeadlineAudio() {
           await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
         }
         const url = new URL(
-          `/api/daily-wrap/audio?text=${encodeURIComponent(text)}`,
+          `/api/daily-wrap/audio.mp3?text=${encodeURIComponent(text)}`,
           getApiUrl()
         ).toString();
         const { sound } = await Audio.Sound.createAsync({ uri: url }, { shouldPlay: true });
@@ -289,8 +289,12 @@ function useHeadlineAudio() {
           if (req !== reqRef.current) return;
           if (!st.isLoaded) {
             if (st.error) {
-              setStatus("idle");
-              setActiveId(null);
+              console.warn("[tts] playback error:", st.error);
+              setStatus("error");
+              // Keep activeId so the button shows "Tap to retry", but free the
+              // errored sound object.
+              if (soundRef.current === sound) soundRef.current = null;
+              sound.unloadAsync().catch(() => {});
             }
             return;
           }
@@ -304,10 +308,10 @@ function useHeadlineAudio() {
           }
         });
         setStatus("playing");
-      } catch {
+      } catch (err) {
+        console.warn("[tts] failed to load clip:", err);
         if (req === reqRef.current) {
-          setStatus("idle");
-          setActiveId(null);
+          setStatus("error");
         }
       }
     },
@@ -405,7 +409,13 @@ function StoryPage({
               <ActivityIndicator size="small" color={moodColor} />
             ) : (
               <Ionicons
-                name={audioStatus === "playing" ? "pause" : "volume-high"}
+                name={
+                  audioStatus === "playing"
+                    ? "pause"
+                    : audioStatus === "error"
+                      ? "refresh"
+                      : "volume-high"
+                }
                 size={15}
                 color={moodColor}
               />
@@ -415,7 +425,9 @@ function StoryPage({
                 ? "Playing"
                 : audioStatus === "loading"
                   ? "Loading…"
-                  : "Listen"}
+                  : audioStatus === "error"
+                    ? "Tap to retry"
+                    : "Listen"}
             </Text>
           </Pressable>
         </View>

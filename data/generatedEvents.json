@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-01T15:15:39.893Z",
+  "lastUpdated": "2026-06-01T16:35:58.082Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -42,20 +42,20 @@
   "ahlCount": 23,
   "ahlAdded": 0,
   "ahlUpdated": 17,
-  "ahlPruned": 3,
+  "ahlPruned": 0,
   "echlCount": 14,
-  "echlAdded": 143,
-  "echlUpdated": 18,
-  "echlPruned": 149,
+  "echlAdded": 147,
+  "echlUpdated": 14,
+  "echlPruned": 147,
   "echlWebCount": 161,
   "buCount": 0,
   "buAdded": 0,
   "buUpdated": 0,
   "buPruned": 0,
   "rugbyCount": 55,
-  "rugbyAdded": 8,
-  "rugbyUpdated": 48,
-  "rugbyPruned": 19,
+  "rugbyAdded": 1,
+  "rugbyUpdated": 55,
+  "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 6,
     "top14": 14,
@@ -84,7 +84,7 @@
   "eplCount": 13,
   "eplAdded": 0,
   "eplUpdated": 13,
-  "eplPruned": 26,
+  "eplPruned": 13,
   "eplSourceUsed": "ical",
   "mlsCount": 142,
   "mlsAdded": 0,
@@ -94,32 +94,32 @@
   "serieaCount": 10,
   "serieaAdded": 0,
   "serieaUpdated": 10,
-  "serieaPruned": 20,
+  "serieaPruned": 10,
   "serieaSourceUsed": "espn",
   "laligaCount": 10,
   "laligaAdded": 0,
   "laligaUpdated": 10,
-  "laligaPruned": 20,
+  "laligaPruned": 10,
   "laligaSourceUsed": "espn",
   "bundesligaCount": 2,
   "bundesligaAdded": 0,
   "bundesligaUpdated": 2,
-  "bundesligaPruned": 11,
+  "bundesligaPruned": 2,
   "bundesligaSourceUsed": "espn",
   "ligue1Count": 0,
   "ligue1Added": 0,
   "ligue1Updated": 0,
-  "ligue1Pruned": 9,
+  "ligue1Pruned": 0,
   "ligue1SourceUsed": "espn",
   "nwslCount": 18,
   "nwslAdded": 0,
   "nwslUpdated": 18,
-  "nwslPruned": 22,
+  "nwslPruned": 18,
   "nwslSourceUsed": "ical",
   "uslCount": 54,
-  "uslAdded": 9,
-  "uslUpdated": 45,
-  "uslPruned": 45,
+  "uslAdded": 0,
+  "uslUpdated": 54,
+  "uslPruned": 54,
   "uslSourceUsed": "espn",
   "championsCupCount": 1,
   "championsCupAdded": 0,
@@ -132,9 +132,9 @@
   "challengeCupPruned": 0,
   "challengeCupSourceUsed": "ical",
   "mlrCount": 15,
-  "mlrAdded": 3,
-  "mlrUpdated": 12,
-  "mlrPruned": 3,
+  "mlrAdded": 0,
+  "mlrUpdated": 15,
+  "mlrPruned": 0,
   "mlrSourceUsed": "hardcoded",
   "championsLeagueCount": 1,
   "championsLeagueAdded": 0,
@@ -149,12 +149,12 @@
   "faCupCount": 0,
   "faCupAdded": 0,
   "faCupUpdated": 0,
-  "faCupPruned": 1,
+  "faCupPruned": 0,
   "faCupSourceUsed": "espn",
-  "tennisCount": 16,
-  "tennisAdded": 15,
-  "tennisUpdated": 2,
-  "tennisPruned": 1,
+  "tennisCount": 17,
+  "tennisAdded": 0,
+  "tennisUpdated": 17,
+  "tennisPruned": 0,
   "tennisSourceUsed": "espn",
   "tennisTournamentCounts": {
     "French Open": 8,
@@ -177,7 +177,7 @@
   "golfCount": 8,
   "golfAdded": 0,
   "golfUpdated": 8,
-  "golfPruned": 2,
+  "golfPruned": 0,
   "golfSourceUsed": "hardcoded",
   "golfTournamentCounts": {
     "US Open": 4,
@@ -204,22 +204,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-06-01T15:15:39.893Z",
+    "lastRefreshAt": "2026-06-01T16:35:58.082Z",
     "sources": {
       "nhl": {
         "count": 7,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 23,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 14,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -231,7 +231,7 @@
       },
       "rugby": {
         "count": 55,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 6,
@@ -251,37 +251,37 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 13,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 142,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 10,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 10,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 2,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
@@ -291,42 +291,42 @@
       },
       "nwsl": {
         "count": 18,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 54,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-21T00:00:00.000Z"
       },
       "championsCup": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "challengeCup": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 15,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
@@ -336,8 +336,8 @@
         "firstMatchDate": "2026-05-16T14:00:00.000Z"
       },
       "tennis": {
-        "count": 16,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "count": 17,
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "French Open": 8,
@@ -346,7 +346,7 @@
       },
       "f1": {
         "count": 35,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Canadian Grand Prix": 5,
@@ -360,27 +360,27 @@
       },
       "wrc": {
         "count": 31,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "Hardcoded Schedule"
       },
       "schoolsRugby": {
         "count": 3,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "Hardcoded Schedule"
       },
       "paddling": {
         "count": 2,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "Hardcoded Schedule"
       },
       "comrades": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "Hardcoded Schedule"
       },
       "golf": {
         "count": 8,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "US Open": 4,
@@ -389,7 +389,7 @@
       },
       "marathon": {
         "count": 3,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Sydney Marathon": 1,
@@ -419,7 +419,7 @@
       },
       "cafcl": {
         "count": 6,
-        "lastFetchAt": "2026-06-01T15:15:39.893Z",
+        "lastFetchAt": "2026-06-01T16:35:58.082Z",
         "sourceName": "ESPN API"
       }
     }
@@ -5402,8 +5402,8 @@
       "league": "Grand Slam",
       "awayTeam": "Arnaldi",
       "homeTeam": "Tiafoe",
-      "startTimeLocal": "2026-06-01T16:30:00.000Z",
-      "endTimeLocal": "2026-06-01T19:00:00.000Z",
+      "startTimeLocal": "2026-06-01T17:00:00.000Z",
+      "endTimeLocal": "2026-06-01T19:30:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
       "source": "espn-tennis",
@@ -6401,7 +6401,7 @@
       "source": "intl-soccer-intl-friendly",
       "leagueKey": "intl-friendly",
       "providerReason": "intl-friendly-espn",
-      "broadcastNetworks": "ESPN"
+      "broadcastNetworks": "ESPN, ESPN Deportes"
     },
     {
       "id": "athletics-diamond-league-oslo-2026",
@@ -8716,6 +8716,31 @@
       "tennisPlayer2Rank": 19,
       "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/srb.png",
       "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "tournamentName": "Wimbledon"
+    },
+    {
+      "id": "tennis-wimbledon-2026-07-01-m2",
+      "sport": "tennis",
+      "league": "Grand Slam",
+      "awayTeam": "Fritz",
+      "homeTeam": "Auger-Aliassime",
+      "startTimeLocal": "2026-07-01T16:00:00.000Z",
+      "endTimeLocal": "2026-07-01T18:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "tennis-hardcoded",
+      "leagueKey": "grand-slam",
+      "providerReason": "espn-broadcast",
+      "eventType": "match",
+      "sessionTitle": "Wimbledon — Round of 64",
+      "competitionType": "international",
+      "tennisRound": "Round of 64",
+      "tennisPlayer1": "Fritz",
+      "tennisPlayer2": "Auger-Aliassime",
+      "tennisPlayer1Rank": 5,
+      "tennisPlayer2Rank": 22,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
       "tournamentName": "Wimbledon"
     },
     {

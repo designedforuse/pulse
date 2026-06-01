@@ -1,4 +1,4 @@
-import type { Express } from "express";
+import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "node:http";
 import * as fs from "node:fs";
 import * as path from "node:path";
@@ -102,7 +102,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/daily-wrap/audio", async (req, res) => {
+  // iOS/AVFoundation (expo-av) infers the audio format from the URL's path
+  // extension, so the route ends in ".mp3". The extensionless path is kept as
+  // an alias for older cached clients.
+  const handleDailyWrapAudio = async (req: Request, res: Response) => {
     try {
       const text = (req.query.text as string) ?? "";
       if (!text.trim()) {
@@ -137,7 +140,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.error("[tts] Error:", err);
       res.status(502).json({ error: "voiceover failed" });
     }
-  });
+  };
+
+  app.get("/api/daily-wrap/audio.mp3", handleDailyWrapAudio);
+  app.get("/api/daily-wrap/audio", handleDailyWrapAudio);
 
   app.get("/api/debug/live-event", async (req, res) => {
     try {

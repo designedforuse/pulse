@@ -5,7 +5,10 @@ description: Non-obvious constraints for the server-side TTS endpoint and its ca
 
 # Daily Wrap headline voiceover
 
-Backend synthesizes story headlines via ElevenLabs and streams MP3 from `GET /api/daily-wrap/audio?text=...`; frontend plays them in the Daily Wrap story viewer.
+Backend synthesizes story headlines via ElevenLabs and streams MP3 from `GET /api/daily-wrap/audio.mp3?text=...` (extensionless `/api/daily-wrap/audio` kept as an alias for old cached clients); frontend plays them in the Daily Wrap story viewer.
+
+- **The audio URL MUST end in `.mp3`.** iOS/AVFoundation (expo-av) infers the audio format from the URL *path extension*; an extensionless `?text=...` URL plays silently-nothing on a physical iPhone (server returns valid audio, range works, but the native player never starts). Adding the `.mp3` path segment fixes it. The `Content-Type: audio/mpeg` header alone is NOT enough for AVPlayer.
+  **How to apply:** any new native-played remote audio route in this repo should end in a real media extension, not just set the MIME type.
 
 - **Cache must live OUTSIDE the project dir.** Write MP3s to `os.tmpdir()`, not `.cache/` in cwd.
   **Why:** the backend runs under `tsx watch`; writing files inside cwd triggers a dev-server reload, which made the *second* (cached) request 404 mid-restart. tmpdir also survives read-only prod filesystems.
