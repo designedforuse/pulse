@@ -3,6 +3,7 @@ import * as path from "path";
 import { fetchAllLiveScores } from "./liveScores";
 import type { ScoreData } from "./liveScores";
 import { enrichWithHighlights, type HighlightVideo } from "./dailyWrapHighlights";
+import { fetchSvnsMatches } from "./svnsMatches";
 
 export interface DailyWrapEntry {
   eventId: string;
@@ -296,6 +297,111 @@ function schoolsRugbyFallbackEditorial(event: any): Partial<DailyWrapEntry> | nu
   return { editorial, detail };
 }
 
+// --- Cycling grand tour (Giro etc.) ---
+// The cycling feed only carries the overall (GC) leader — there is no per-stage
+// winner and no "final" score status — so the wrap surfaces the race leader,
+// gated on the stage having concluded rather than on isFinalScore().
+const CYCLING_PRIORITY = 42;
+
+function isCyclingGrandTour(event: any): boolean {
+  return typeof event?.id === "string" && event.id.startsWith("cycling-grand-tour-");
+}
+
+// The leader scrape returns "SURNAME Firstname" (surname in all-caps). Reorder to
+// "Firstname Surname" with normal casing for display.
+function formatCyclistName(raw: string): string {
+  const tokens = raw.trim().split(/\s+/);
+  if (tokens.length < 2) return raw.trim();
+  const surname: string[] = [];
+  const given: string[] = [];
+  for (const t of tokens) {
+    if (given.length === 0 && t === t.toUpperCase() && /[A-Z]/.test(t)) surname.push(t);
+    else given.push(t);
+  }
+  if (surname.length === 0 || given.length === 0) return raw.trim();
+  const tc = (w: string) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+  return `${given.join(" ")} ${surname.map(tc).join(" ")}`;
+}
+
+function cyclingEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> | null {
+  const leaderRaw = (score.cyclingLeader || "").trim();
+  if (!leaderRaw) return null;
+  const leader = formatCyclistName(leaderRaw);
+  const tour = event.homeTeam || "the race";
+  const f = flag(score.cyclingLeaderCountry || "");
+  const team = score.cyclingLeaderTeam ? ` · ${score.cyclingLeaderTeam}` : "";
+  // The final stage's GC leader is the overall champion.
+  const isFinalStage = /final/i.test(event.sessionTitle || "");
+  if (isFinalStage) {
+    return {
+      editorial: `${f ? f + " " : ""}${leader} wins the ${tour}`,
+      detail: `${event.league} · General Classification${team}`,
+      winner: leader,
+    };
+  }
+  // Use the stage number from the event itself (the scraped GC number can lag).
+  const m = /stage\s*(\d+)/i.exec(event.sessionTitle || "") || /stage-(\d+)/i.exec(event.id || "");
+  const stage = m ? parseInt(m[1], 10) : null;
+  return {
+    editorial: `${f ? f + " " : ""}${leader} leads the ${tour}`,
+    detail: `${event.league}${stage ? ` · After Stage ${stage}` : ""}${team}`,
+    winner: leader,
+  };
+}
+
+// --- HSBC SVNS (rugby sevens tournament) ---
+// SVNS results live in a separate per-city World Rugby feed, not in the keyed
+// live-scores map. On the tournament's final day we surface the Cup Final
+// champions (men's + women's). Scoping the Cup Final to the day's event window
+// ensures only the finals-day card fires (not Day 1 / Day 2).
+const SVNS_PRIORITY = 78;
+
+function isSvns(event: any): boolean {
+  return event?.league === "HSBC SVNS" ||
+    (typeof event?.id === "string" && event.id.startsWith("rugby-svns-"));
+}
+
+async function svnsFinalEditorial(event: any): Promise<Partial<DailyWrapEntry> | null> {
+  const city = (event.homeTeam || "").replace(/^SVNS\s+/i, "").trim();
+  if (!city) return null;
+
+  let res;
+  try {
+    res = await fetchSvnsMatches(city);
+  } catch {
+    return null;
+  }
+
+  const startMs = new Date(event.startTimeLocal).getTime();
+  const endMs = (event.endTimeLocal
+    ? new Date(event.endTimeLocal).getTime()
+    : startMs + 10 * 60 * 60 * 1000) + 2 * 60 * 60 * 1000;
+
+  const finals = (res?.allMatches || []).filter(
+    (m) => m.status === "C" && /cup final/i.test(m.phase) && m.time >= startMs && m.time <= endMs,
+  );
+  if (finals.length === 0) return null;
+
+  const champ = (m: any) => (m.team1Score >= m.team2Score ? m.team1 : m.team2);
+  const scoreLine = (m: any) =>
+    `${Math.max(m.team1Score, m.team2Score)}–${Math.min(m.team1Score, m.team2Score)}`;
+
+  const mens = finals.find((m) => m.gender === "mens");
+  const womens = finals.find((m) => m.gender === "womens");
+  const primary = mens || womens;
+  if (!primary) return null;
+
+  const editorial = mens
+    ? `${champ(mens)} win the ${city} SVNS`
+    : `${champ(womens!)} win the ${city} SVNS (women's)`;
+
+  const parts: string[] = [];
+  if (mens) parts.push(`Men: ${champ(mens)} ${scoreLine(mens)}`);
+  if (womens) parts.push(`Women: ${champ(womens)} ${scoreLine(womens)}`);
+
+  return { editorial, detail: `${event.league} · ${parts.join(" · ")}`, winner: champ(primary) };
+}
+
 function golfEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> | null {
   if (!score.golfLeader) return null;
   const f = flag(score.golfLeaderCountry || "");
@@ -344,6 +450,38 @@ function tennisEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> 
   return { editorial, detail, winner };
 }
 
+// CricAPI result text comes through loosely formatted, e.g.
+// "Royal Challengers Bengaluru Won by 5  Wickets (Winners)". Tidy the casing of
+// the connector words, drop the trailing "(Winners)" tag, and collapse spaces.
+function cleanCricketResult(s: string): string {
+  return s
+    .replace(/\s*\(winners?\)\s*/i, " ")
+    .replace(/\b(Won|Beat|Tied|Drawn|Wickets?|Runs?)\b/g, (m) => m.toLowerCase())
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function cricketEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> | null {
+  // CricAPI result rows carry the human-readable outcome in `period`
+  // (e.g. "Royal Challengers Bengaluru won by 5 wickets") rather than numeric
+  // scores, with the innings totals in cricketHome/cricketAway.
+  const resultText = cleanCricketResult((score.period || "").trim());
+  const hasResult = !!resultText && !/^final$/i.test(resultText);
+  const scoreLine = [score.cricketHome, score.cricketAway].filter(Boolean).join(" · ");
+  if (!hasResult && !scoreLine) return null;
+
+  const editorial = hasResult ? resultText : `${event.homeTeam} vs ${event.awayTeam}`;
+
+  // Identify the winner (for highlight matching) when the result text names a team.
+  let winner: string | undefined;
+  const rt = resultText.toLowerCase();
+  if (rt && rt.includes((event.homeTeam || "").toLowerCase())) winner = event.homeTeam;
+  else if (rt && rt.includes((event.awayTeam || "").toLowerCase())) winner = event.awayTeam;
+
+  const detail = scoreLine ? `${event.league} · ${scoreLine}` : event.league;
+  return { editorial, detail, winner };
+}
+
 function buildEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> | null {
   const sport = (event.sport || "").toLowerCase();
   switch (sport) {
@@ -354,6 +492,7 @@ function buildEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> |
     case "racing":    return racingEditorial(event, score);
     case "golf":      return golfEditorial(event, score);
     case "tennis":    return tennisEditorial(event, score);
+    case "cricket":   return cricketEditorial(event, score);
     default:          return null;
   }
 }
@@ -393,6 +532,22 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
   // enrichment for them to avoid attaching a mismatched clip.
   const fallbackIds = new Set<string>();
 
+  // The cycling feed only exposes the live overall (GC) leader, which would
+  // attach to every stage event in the window. Keep just the latest concluded
+  // stage per tour so a grand tour contributes a single wrap card.
+  const cyclingLatestByTour: Record<string, any> = {};
+  for (const e of todayEvents) {
+    if (!isCyclingGrandTour(e)) continue;
+    const key = e.homeTeam || e.id;
+    const cur = cyclingLatestByTour[key];
+    if (!cur || new Date(e.startTimeLocal) > new Date(cur.startTimeLocal)) {
+      cyclingLatestByTour[key] = e;
+    }
+  }
+  const cyclingKeepIds = new Set<string>(
+    Object.values(cyclingLatestByTour).map((e: any) => e.id),
+  );
+
   for (const event of todayEvents) {
     const score = scores[event.id];
     if (!score || !isFinalScore(score)) {
@@ -412,6 +567,40 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
             editorial: fb.editorial || "",
             detail: fb.detail || "",
             priorityScore: SCHOOLS_FALLBACK_PRIORITY,
+            startTimeLocal: event.startTimeLocal,
+          });
+        }
+      } else if (isCyclingGrandTour(event) && cyclingKeepIds.has(event.id) && score?.cyclingLeader && hasConcluded(event, nowMs)) {
+        const ce = cyclingEditorial(event, score);
+        if (ce) {
+          fallbackIds.add(event.id);
+          results.push({
+            eventId: event.id,
+            sport: event.sport,
+            league: event.league,
+            homeTeam: event.homeTeam,
+            awayTeam: event.awayTeam,
+            editorial: ce.editorial || "",
+            detail: ce.detail || "",
+            winner: ce.winner,
+            priorityScore: CYCLING_PRIORITY,
+            startTimeLocal: event.startTimeLocal,
+          });
+        }
+      } else if (isSvns(event) && hasConcluded(event, nowMs)) {
+        const se = await svnsFinalEditorial(event);
+        if (se) {
+          fallbackIds.add(event.id);
+          results.push({
+            eventId: event.id,
+            sport: event.sport,
+            league: event.league,
+            homeTeam: event.homeTeam,
+            awayTeam: event.awayTeam,
+            editorial: se.editorial || "",
+            detail: se.detail || "",
+            winner: se.winner,
+            priorityScore: SVNS_PRIORITY,
             startTimeLocal: event.startTimeLocal,
           });
         }

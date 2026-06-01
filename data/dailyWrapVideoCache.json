@@ -366,5 +366,15 @@
   "echl-web-26578": {
     "video": null,
     "fetchedAt": "2026-06-01T01:15:35.691Z"
+  },
+  "cricket-ipl-2538": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=7PN2f3FSEIs",
+      "thumbnailUrl": "https://i.ytimg.com/vi/7PN2f3FSEIs/hqdefault.jpg",
+      "durationSeconds": 133,
+      "title": "Top 10 IPL 2025 Match Results & Highlights Today - 01 June 2026",
+      "channel": "Prime 10 India"
+    },
+    "fetchedAt": "2026-06-01T01:23:12.041Z"
   }
 }
