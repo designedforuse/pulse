@@ -14,6 +14,11 @@ const BACKDROPS: Record<string, ImageSourcePropType[]> = {
     require("@/assets/images/sportBackdrops/hockey-2.jpg"),
     require("@/assets/images/sportBackdrops/hockey-3.jpg"),
   ],
+  cricket: [
+    require("@/assets/images/sportBackdrops/cricket-1.jpg"),
+    require("@/assets/images/sportBackdrops/cricket-2.jpg"),
+    require("@/assets/images/sportBackdrops/cricket-3.jpg"),
+  ],
   rugby: [
     require("@/assets/images/sportBackdrops/rugby-1.jpg"),
     require("@/assets/images/sportBackdrops/rugby-2.jpg"),

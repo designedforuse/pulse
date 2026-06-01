@@ -84,6 +84,24 @@ uri = "file://attached_assets/generated_images/horse_racing_bg.png"
 type = "image"
 title = "horse racing backdrop"
 
+[[generated]]
+id = "ibnyjmMb11_0CDBKxmUTw"
+uri = "file://attached_assets/generated_images/cricket-1.png"
+type = "image"
+title = "cricket batsman cover drive"
+
+[[generated]]
+id = "-XEeVN1T35F26rV02m_Ao"
+uri = "file://attached_assets/generated_images/cricket-2.png"
+type = "image"
+title = "cricket fast bowler delivery"
+
+[[generated]]
+id = "PqpkN8aJVH3yyX7YXsuAC"
+uri = "file://attached_assets/generated_images/cricket-3.png"
+type = "image"
+title = "cricket stadium floodlights dusk"
+
 [[outputs]]
 id = "BCzZEiJcUNr5OpJ6RpZse"
 uri = "file://PRD.md"
