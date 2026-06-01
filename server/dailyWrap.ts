@@ -429,23 +429,90 @@ function racingEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> 
   return { editorial, detail, winner: driver };
 }
 
+function ordinal(n: number): string {
+  const s = ["th", "st", "nd", "rd"];
+  const v = n % 100;
+  return `${n}${s[(v - 20) % 10] || s[v] || s[0]}`;
+}
+
+// Readable round names for grand-slam style draws.
+const TENNIS_ROUND_PHRASE: Record<string, string> = {
+  "Round of 128": "first round",
+  "Round of 64": "second round",
+  "Round of 32": "third round",
+  "Round of 16": "round of 16",
+  Quarterfinals: "quarterfinals",
+  Semifinals: "semifinals",
+  Final: "final",
+};
+const TENNIS_EARLY_ROUNDS = new Set(["Round of 128", "Round of 64", "Round of 32"]);
+
 function tennisEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> | null {
   if (!score.tennisWinner) return null;
   const p1 = event.tennisPlayer1 || "Player 1";
   const p2 = event.tennisPlayer2 || "Player 2";
-  const p1f = flag(event.tennisPlayer1Flag || "");
-  const p2f = flag(event.tennisPlayer2Flag || "");
-  const winner = score.tennisWinner === 1 ? p1 : p2;
-  const loser = score.tennisWinner === 1 ? p2 : p1;
-  const winnerFlag = score.tennisWinner === 1 ? p1f : p2f;
-  const tournament = event.tournamentName || "the tournament";
+  const winnerIsP1 = score.tennisWinner === 1;
+  const winner = winnerIsP1 ? p1 : p2;
+  const loser = winnerIsP1 ? p2 : p1;
+  const winnerSeed: number | undefined =
+    (winnerIsP1 ? event.tennisPlayer1Rank : event.tennisPlayer2Rank) ?? undefined;
+  const loserSeed: number | undefined =
+    (winnerIsP1 ? event.tennisPlayer2Rank : event.tennisPlayer1Rank) ?? undefined;
+  const tournament = event.tournamentName || "";
   const round = event.tennisRound || "";
-  const setStr = score.tennisSetScores
-    ? score.tennisSetScores.map((s: any) => `${s.p1}–${s.p2}`).join(", ")
-    : "";
-  const verbs = ["beats", "defeats", "wins over"];
-  const verb = verbs[winner.length % verbs.length];
-  const editorial = `${winnerFlag ? winnerFlag + " " : ""}${winner} ${verb} ${loser} at ${tournament}`;
+
+  const sets = score.tennisSetScores || [];
+  const setStr = sets.length ? sets.map((s: any) => `${s.p1}–${s.p2}`).join(", ") : "";
+
+  // Tally sets won by the winner so we can spot straight-sets and five-setters.
+  const winnerWonSet = (s: any): boolean => {
+    if (s.winner === 1) return winnerIsP1;
+    if (s.winner === 2) return !winnerIsP1;
+    const wGames = winnerIsP1 ? s.p1 : s.p2;
+    const lGames = winnerIsP1 ? s.p2 : s.p1;
+    return wGames > lGames;
+  };
+  let loserSets = 0;
+  for (const s of sets) if (!winnerWonSet(s)) loserSets++;
+  const totalSets = sets.length;
+  const straightSets = totalSets > 0 && loserSets === 0;
+  const fiveSetter = totalSets === 5;
+  const cameBackFromTwoDown =
+    fiveSetter && !winnerWonSet(sets[0]) && !winnerWonSet(sets[1]);
+
+  // Upset = winner is the lower seed (bigger number), or unseeded over a seed.
+  const isUpset =
+    loserSeed !== undefined &&
+    (winnerSeed === undefined || winnerSeed > loserSeed);
+  const seedGap =
+    loserSeed !== undefined && winnerSeed !== undefined ? winnerSeed - loserSeed : 99;
+  const earlyRound = TENNIS_EARLY_ROUNDS.has(round);
+  const roundPhrase = TENNIS_ROUND_PHRASE[round] || "";
+  const at = tournament ? ` at ${tournament}` : "";
+
+  let core: string;
+  if (isUpset && loserSeed !== undefined) {
+    const verb = winnerSeed === undefined || seedGap >= 6 ? "stuns" : "upsets";
+    core = `${winner} ${verb} ${ordinal(loserSeed)} seed ${loser}`;
+    if (cameBackFromTwoDown) core += " after fighting back from two sets down";
+    else if (fiveSetter) core += " in a five-set epic";
+    else if (straightSets) core += " in straight sets";
+    else if (earlyRound && roundPhrase) core += ` in the ${roundPhrase}`;
+  } else if (cameBackFromTwoDown) {
+    core = `${winner} fights back from two sets down to beat ${loser}`;
+  } else if (fiveSetter) {
+    core = `${winner} outlasts ${loser} in a five-set marathon`;
+  } else if (straightSets && winnerSeed !== undefined && winnerSeed <= 8) {
+    core = `${ordinal(winnerSeed)} seed ${winner} cruises past ${loser} in straight sets`;
+  } else if (straightSets) {
+    core = `${winner} sees off ${loser} in straight sets`;
+  } else {
+    const verbs = ["beats", "defeats", "gets past"];
+    const verb = verbs[winner.length % verbs.length];
+    core = `${winner} ${verb} ${loser}`;
+  }
+
+  const editorial = `${core}${at}`;
   const detail = `${round ? round + " · " : ""}${setStr || "Tennis"}`;
   return { editorial, detail, winner };
 }
