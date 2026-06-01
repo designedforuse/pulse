@@ -118,9 +118,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
         res.status(500).json({ error: "voiceover unavailable" });
         return;
       }
-      res.setHeader("Content-Type", "audio/mpeg");
-      res.setHeader("Cache-Control", "public, max-age=86400");
-      fs.createReadStream(file).pipe(res);
+      // Use sendFile (not a raw stream): it sets Content-Length and supports
+      // HTTP Range requests, which iOS/AVFoundation (expo-av) requires — a
+      // chunked stream without range support makes the native player hang.
+      res.sendFile(file, {
+        headers: {
+          "Content-Type": "audio/mpeg",
+          "Cache-Control": "public, max-age=86400",
+        },
+        acceptRanges: true,
+      }, (err) => {
+        if (err && !res.headersSent) {
+          console.error("[tts] sendFile error:", err);
+          res.status(500).end();
+        }
+      });
     } catch (err) {
       console.error("[tts] Error:", err);
       res.status(502).json({ error: "voiceover failed" });
