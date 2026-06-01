@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
   StyleSheet,
   Text,
@@ -10,9 +10,15 @@ import {
 import { router, useLocalSearchParams } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useQuery } from "@tanstack/react-query";
+import * as Haptics from "expo-haptics";
 import Colors from "@/constants/colors";
+import { useEvents } from "@/lib/events-context";
+import { useFavorites } from "@/lib/favorites-context";
+import UnifiedEventCard from "@/components/UnifiedEventCard";
 
 const SNAPSHOT_COLOR = "#6366F1";
+const PINK = "#FF85C8";
 
 const SPORT_EMOJI: Record<string, string> = {
   hockey: "🏒",
@@ -61,7 +67,30 @@ interface MonthSnapshotPayload {
   thisWeek?: MonthSnapshotData;
 }
 
-type TabKey = "week" | "current" | "next";
+interface TonightStory {
+  signalType: string;
+  signalLabel: string;
+  headline: string;
+  body: string;
+  sourceEventId?: string;
+  eventIds?: string[];
+  sourceCard: { id: string; kind: string; title: string };
+  sports?: string[];
+  favoriteTeams?: string[];
+}
+
+const CARD_LINKED_SIGNALS = new Set([
+  "upset_alert",
+  "rivalry_game",
+  "clinch_watch",
+  "deadline_watch",
+  "playoff_push",
+  "momentum",
+  "league_moment",
+  "player_movement",
+]);
+
+type TabKey = "today" | "week" | "current" | "next";
 
 const PHASE_CHIP_STYLES: Record<string, { bg: string; border: string; fg: string }> = {
   Final: { bg: "rgba(245,158,11,0.15)", border: "rgba(245,158,11,0.45)", fg: "#F59E0B" },
@@ -106,11 +135,43 @@ function groupBySport(leagues: MonthSnapshotLeague[]): { sport: string; leagues:
 
 export default function MonthScheduleScreen() {
   const insets = useSafeAreaInsets();
+  const { allEvents } = useEvents();
+  const { disabledSports } = useFavorites();
   const { monthSnapshotJson, monthDataJson } = useLocalSearchParams<{
     monthSnapshotJson?: string;
     monthDataJson?: string;
   }>();
-  const [activeKey, setActiveKey] = useState<TabKey>("week");
+  const [activeKey, setActiveKey] = useState<TabKey>("today");
+
+  const { data: narrativeData, isLoading: storiesLoading } = useQuery<{
+    tonightStory: TonightStory | null;
+    todaysStories?: TonightStory[];
+  }>({
+    queryKey: ["/api/narratives"],
+    staleTime: 60 * 1000,
+  });
+
+  const todayStories = useMemo<TonightStory[]>(() => {
+    const raw =
+      narrativeData?.todaysStories && narrativeData.todaysStories.length > 0
+        ? narrativeData.todaysStories
+        : narrativeData?.tonightStory
+          ? [narrativeData.tonightStory]
+          : [];
+    if (disabledSports.size === 0) return raw;
+    return raw.filter((s) => {
+      const sp = s.sports;
+      if (!sp || sp.length === 0) return true;
+      return !sp.every((x) => disabledSports.has(x.toLowerCase()));
+    });
+  }, [narrativeData, disabledSports]);
+  const hasToday = todayStories.length > 0;
+
+  const eventMap = useMemo(() => {
+    const m = new Map<string, any>();
+    for (const e of allEvents) m.set(e.id, e);
+    return m;
+  }, [allEvents]);
 
   let snapshot: MonthSnapshotPayload | null = null;
   try {
@@ -131,16 +192,36 @@ export default function MonthScheduleScreen() {
   }
 
   const hasWeek = !!snapshot.thisWeek;
-  const effectiveActiveKey: TabKey = activeKey === "week" && !hasWeek ? "current" : activeKey;
-  const monthData =
-    effectiveActiveKey === "week"
+  const hasTwoMonths = snapshot.currentMonth.monthKey !== snapshot.nextMonth.monthKey;
+
+  const effectiveActiveKey: TabKey =
+    activeKey === "today" && !hasToday && !storiesLoading
+      ? hasWeek
+        ? "week"
+        : "current"
+      : activeKey === "week" && !hasWeek
+        ? "current"
+        : activeKey;
+
+  const isToday = effectiveActiveKey === "today";
+  const monthData: MonthSnapshotData | null = isToday
+    ? null
+    : effectiveActiveKey === "week"
       ? (snapshot.thisWeek as MonthSnapshotData)
       : effectiveActiveKey === "current"
         ? snapshot.currentMonth
         : snapshot.nextMonth;
-  const hasTwoMonths = snapshot.currentMonth.monthKey !== snapshot.nextMonth.monthKey;
-  const showTabs = hasTwoMonths || hasWeek;
-  const grouped = groupBySport(monthData.leagues);
+  const showTodayTab = hasToday || storiesLoading;
+  const showTabs = showTodayTab || hasTwoMonths || hasWeek;
+  const grouped = monthData ? groupBySport(monthData.leagues) : [];
+  const now = new Date();
+
+  const handleReadMore = (story: TonightStory) => {
+    if (Platform.OS !== "web") Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    if (CARD_LINKED_SIGNALS.has(story.signalType) && story.sourceCard?.id) {
+      router.push({ pathname: "/narrative/[id]", params: { id: story.sourceCard.id } });
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -153,17 +234,30 @@ export default function MonthScheduleScreen() {
           <Ionicons name="chevron-back" size={22} color={Colors.textPrimary} />
         </Pressable>
         <View style={styles.headerTitleWrap}>
-          <View style={styles.headerBadge}>
-            <Ionicons name="calendar-outline" size={12} color="#fff" />
-            <Text style={styles.headerBadgeText}>SCHEDULE</Text>
+          <View style={[styles.headerBadge, isToday && styles.headerBadgeToday]}>
+            <Ionicons name={isToday ? "radio-outline" : "calendar-outline"} size={12} color="#fff" />
+            <Text style={styles.headerBadgeText}>{isToday ? "ON YOUR RADAR" : "SCHEDULE"}</Text>
           </View>
-          <Text style={styles.headerTitle}>{monthData.monthLabel}</Text>
+          <Text style={styles.headerTitle}>{isToday ? "Today" : monthData?.monthLabel}</Text>
         </View>
         <View style={styles.backBtn} />
       </View>
 
       {showTabs && (
         <View style={styles.monthTabsRow}>
+          {showTodayTab && (
+            <Pressable
+              onPress={() => setActiveKey("today")}
+              hitSlop={6}
+              accessibilityRole="tab"
+              accessibilityState={{ selected: isToday }}
+              style={[styles.monthTab, styles.todayTab, isToday && styles.todayTabActive]}
+            >
+              <Text style={[styles.monthTabText, styles.todayTabText, isToday && styles.monthTabTextActive]}>
+                Today
+              </Text>
+            </Pressable>
+          )}
           {hasWeek && (
             <Pressable
               onPress={() => setActiveKey("week")}
@@ -211,60 +305,136 @@ export default function MonthScheduleScreen() {
         ]}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.totalLabel}>{monthData.leagues.length} leagues & tournaments</Text>
-
-        {!!monthData.championshipFinals?.length && (
-          <View style={styles.finalsCallout}>
-            <View style={styles.finalsCalloutHeader}>
-              <Text style={styles.finalsCalloutTrophy}>🏆</Text>
-              <Text style={styles.finalsCalloutTitle}>CHAMPIONSHIP FINALS</Text>
-            </View>
-            {monthData.championshipFinals.map((f, i) => (
-              <View
-                key={`${f.leagueKey}-${i}`}
-                style={[styles.finalsRow, i > 0 && styles.finalsRowBorder]}
-              >
-                <Text style={styles.finalsEmoji}>{SPORT_EMOJI[f.sport] ?? "🏆"}</Text>
-                <Text style={styles.finalsName} numberOfLines={1}>{f.name}</Text>
-                <Text style={styles.finalsDate}>{formatFinalDate(f.date)}</Text>
+        {isToday ? (
+          <>
+            <View style={styles.radarHero}>
+              <View style={styles.liveRow}>
+                <View style={styles.liveDot} />
+                <Text style={styles.liveLabel}>LIVE SIGNAL</Text>
+                {todayStories.length > 0 && (
+                  <Text style={styles.signalCount}>
+                    {" · "}
+                    {todayStories.length} {todayStories.length === 1 ? "story" : "stories"}
+                  </Text>
+                )}
               </View>
-            ))}
-          </View>
-        )}
-
-        {grouped.map(({ sport, leagues }) => (
-          <View key={sport} style={styles.sportSection}>
-            <View style={styles.sportHeader}>
-              <Text style={styles.sportEmoji}>{SPORT_EMOJI[sport] ?? "🏆"}</Text>
-              <Text style={styles.sportTitle}>
-                {sport.charAt(0).toUpperCase() + sport.slice(1)}
-              </Text>
+              <Text style={styles.radarTagline}>What's worth watching today</Text>
             </View>
-            <View style={styles.leagueCard}>
-              {leagues.map((league, idx) => {
-                const phaseStyle = getPhaseChipStyle(league.seasonPhase);
-                return (
-                  <View
-                    key={`${league.leagueKey}-${idx}`}
-                    style={[styles.leagueRow, idx > 0 && styles.leagueRowBorder]}
-                  >
-                    <View style={styles.leagueNameWrap}>
-                      <Text style={styles.leagueName} numberOfLines={1}>{league.displayName}</Text>
-                      {league.seasonPhase && (
-                        <View style={[styles.phaseChip, { backgroundColor: phaseStyle.bg, borderColor: phaseStyle.border }]}>
-                          <Text style={[styles.phaseChipText, { color: phaseStyle.fg }]}>
-                            {league.seasonPhase.toUpperCase()}
-                          </Text>
+
+            {storiesLoading && todayStories.length === 0 ? (
+              <Text style={styles.muted}>Loading…</Text>
+            ) : todayStories.length === 0 ? (
+              <Text style={styles.muted}>No live signals right now. Check back closer to game time.</Text>
+            ) : (
+              <View style={styles.storyList}>
+                {todayStories.map((story, idx) => {
+                  const ids =
+                    story.eventIds && story.eventIds.length > 0
+                      ? story.eventIds
+                      : story.sourceEventId
+                        ? [story.sourceEventId]
+                        : [];
+                  const storyEvents = ids.map((id) => eventMap.get(id)).filter(Boolean);
+                  const isCardLinked = CARD_LINKED_SIGNALS.has(story.signalType);
+                  return (
+                    <View key={`${story.sourceCard?.id ?? story.signalType}-${idx}`} style={styles.storyCard}>
+                      <View style={styles.signalRow}>
+                        <View style={styles.signalBadge}>
+                          <Text style={styles.signalBadgeText}>{story.signalLabel}</Text>
+                        </View>
+                      </View>
+                      <Text style={styles.storyHeadline}>{story.headline}</Text>
+                      <Text style={styles.storyBody}>{story.body}</Text>
+                      {story.sports && story.sports.length > 0 && (
+                        <View style={styles.sportsRow}>
+                          {story.sports.map((s) => (
+                            <View key={s} style={styles.sportChip}>
+                              <Text style={styles.sportChipText}>{s.toUpperCase()}</Text>
+                            </View>
+                          ))}
                         </View>
                       )}
+                      {storyEvents.length > 0 && (
+                        <View style={styles.eventsList}>
+                          {storyEvents.map((ev: any) => (
+                            <UnifiedEventCard key={ev.id} event={ev} now={now} />
+                          ))}
+                        </View>
+                      )}
+                      {isCardLinked && (
+                        <Pressable
+                          onPress={() => handleReadMore(story)}
+                          style={({ pressed }) => [styles.cta, { opacity: pressed ? 0.7 : 1 }]}
+                          testID={`today-story-cta-${idx}`}
+                        >
+                          <Text style={styles.ctaText}>Read more</Text>
+                          <Ionicons name="arrow-forward" size={16} color={PINK} />
+                        </Pressable>
+                      )}
                     </View>
-                    <Text style={styles.leagueDateRange}>{league.dateRangeLabel}</Text>
+                  );
+                })}
+              </View>
+            )}
+          </>
+        ) : (
+          <>
+            <Text style={styles.totalLabel}>{monthData!.leagues.length} leagues & tournaments</Text>
+
+            {!!monthData!.championshipFinals?.length && (
+              <View style={styles.finalsCallout}>
+                <View style={styles.finalsCalloutHeader}>
+                  <Text style={styles.finalsCalloutTrophy}>🏆</Text>
+                  <Text style={styles.finalsCalloutTitle}>CHAMPIONSHIP FINALS</Text>
+                </View>
+                {monthData!.championshipFinals.map((f, i) => (
+                  <View
+                    key={`${f.leagueKey}-${i}`}
+                    style={[styles.finalsRow, i > 0 && styles.finalsRowBorder]}
+                  >
+                    <Text style={styles.finalsEmoji}>{SPORT_EMOJI[f.sport] ?? "🏆"}</Text>
+                    <Text style={styles.finalsName} numberOfLines={1}>{f.name}</Text>
+                    <Text style={styles.finalsDate}>{formatFinalDate(f.date)}</Text>
                   </View>
-                );
-              })}
-            </View>
-          </View>
-        ))}
+                ))}
+              </View>
+            )}
+
+            {grouped.map(({ sport, leagues }) => (
+              <View key={sport} style={styles.sportSection}>
+                <View style={styles.sportHeader}>
+                  <Text style={styles.sportEmoji}>{SPORT_EMOJI[sport] ?? "🏆"}</Text>
+                  <Text style={styles.sportTitle}>
+                    {sport.charAt(0).toUpperCase() + sport.slice(1)}
+                  </Text>
+                </View>
+                <View style={styles.leagueCard}>
+                  {leagues.map((league, idx) => {
+                    const phaseStyle = getPhaseChipStyle(league.seasonPhase);
+                    return (
+                      <View
+                        key={`${league.leagueKey}-${idx}`}
+                        style={[styles.leagueRow, idx > 0 && styles.leagueRowBorder]}
+                      >
+                        <View style={styles.leagueNameWrap}>
+                          <Text style={styles.leagueName} numberOfLines={1}>{league.displayName}</Text>
+                          {league.seasonPhase && (
+                            <View style={[styles.phaseChip, { backgroundColor: phaseStyle.bg, borderColor: phaseStyle.border }]}>
+                              <Text style={[styles.phaseChipText, { color: phaseStyle.fg }]}>
+                                {league.seasonPhase.toUpperCase()}
+                              </Text>
+                            </View>
+                          )}
+                        </View>
+                        <Text style={styles.leagueDateRange}>{league.dateRangeLabel}</Text>
+                      </View>
+                    );
+                  })}
+                </View>
+              </View>
+            ))}
+          </>
+        )}
       </ScrollView>
     </View>
   );
@@ -469,6 +639,20 @@ const styles = StyleSheet.create({
   monthTabTextActive: {
     color: "#fff",
   },
+  todayTab: {
+    borderColor: PINK + "59",
+    backgroundColor: PINK + "14",
+  },
+  todayTabActive: {
+    backgroundColor: PINK,
+    borderColor: PINK,
+  },
+  todayTabText: {
+    color: PINK,
+  },
+  headerBadgeToday: {
+    backgroundColor: PINK,
+  },
   leagueDateRange: {
     fontSize: 13,
     fontFamily: "Inter_500Medium",
@@ -480,5 +664,128 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
     textAlign: "center",
     padding: 40,
+  },
+  radarHero: {
+    gap: 6,
+    marginBottom: 2,
+  },
+  liveRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  liveDot: {
+    width: 7,
+    height: 7,
+    borderRadius: 4,
+    backgroundColor: "#FF453A",
+    marginRight: 6,
+  },
+  liveLabel: {
+    fontSize: 11,
+    fontFamily: "Inter_700Bold",
+    color: "#FF453A",
+    letterSpacing: 1.2,
+  },
+  signalCount: {
+    fontSize: 11,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textMuted,
+    letterSpacing: 0.8,
+  },
+  radarTagline: {
+    fontSize: 13,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+  },
+  muted: {
+    fontSize: 14,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textMuted,
+    textAlign: "center",
+    marginTop: 40,
+    paddingHorizontal: 24,
+  },
+  storyList: {
+    gap: 14,
+  },
+  storyCard: {
+    backgroundColor: Colors.card,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    paddingHorizontal: 18,
+    paddingVertical: 18,
+    gap: 10,
+  },
+  signalRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  signalBadge: {
+    backgroundColor: PINK + "22",
+    borderRadius: 999,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderWidth: 1,
+    borderColor: PINK + "44",
+  },
+  signalBadgeText: {
+    fontSize: 10,
+    fontFamily: "Inter_700Bold",
+    color: PINK,
+    letterSpacing: 1.1,
+  },
+  storyHeadline: {
+    fontSize: 22,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+    letterSpacing: -0.3,
+    lineHeight: 28,
+  },
+  storyBody: {
+    fontSize: 15,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textSecondary,
+    lineHeight: 22,
+  },
+  sportsRow: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 6,
+    marginTop: 2,
+  },
+  sportChip: {
+    backgroundColor: PINK + "18",
+    borderRadius: 999,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderWidth: 1,
+    borderColor: PINK + "33",
+  },
+  sportChipText: {
+    fontSize: 10,
+    fontFamily: "Inter_700Bold",
+    color: PINK,
+    letterSpacing: 1.1,
+  },
+  eventsList: {
+    marginTop: 6,
+    gap: 10,
+  },
+  cta: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    alignSelf: "flex-start",
+    backgroundColor: PINK + "18",
+    paddingHorizontal: 16,
+    paddingVertical: 11,
+    borderRadius: 24,
+    marginTop: 6,
+  },
+  ctaText: {
+    fontSize: 14,
+    fontFamily: "Inter_600SemiBold",
+    color: PINK,
   },
 });

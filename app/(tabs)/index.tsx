@@ -33,16 +33,6 @@ const COVER_IMAGES = {
   trending: require("@/assets/images/stories/trending.jpg"),
 } as const;
 
-const TONIGHT_COVER_POOL = [
-  require("@/assets/images/stories/on-your-radar.png"),
-];
-
-function pickTonightCover(): any {
-  const now = new Date();
-  const dayKey = now.getUTCFullYear() * 10000 + (now.getUTCMonth() + 1) * 100 + now.getUTCDate();
-  return TONIGHT_COVER_POOL[dayKey % TONIGHT_COVER_POOL.length];
-}
-
 const COVER_OVERLAY_COLORS = ["rgba(15,18,22,0.15)", "rgba(15,18,22,0.55)", "rgba(15,18,22,0.95)"] as const;
 const COVER_OVERLAY_LOCATIONS = [0, 0.5, 1] as const;
 
@@ -151,7 +141,6 @@ export default function ExploreScreen() {
   });
 
   const allCards = data?.cards ?? [];
-  const rawTonightStory = data?.tonightStory ?? null;
   const rawMonthSnapshot = data?.monthSnapshot ?? null;
 
   const cards = useMemo(() => {
@@ -162,15 +151,6 @@ export default function ExploreScreen() {
       return cardSports.some((s) => !disabledSports.has(s.toLowerCase()));
     });
   }, [allCards, disabledSports]);
-
-  const tonightStory = useMemo(() => {
-    if (!rawTonightStory || disabledSports.size === 0) return rawTonightStory;
-    const storySports = rawTonightStory.sports;
-    if (storySports && storySports.length > 0 && storySports.every((s) => disabledSports.has(s.toLowerCase()))) {
-      return null;
-    }
-    return rawTonightStory;
-  }, [rawTonightStory, disabledSports]);
 
   const monthSnapshot = useMemo(() => {
     if (!rawMonthSnapshot) return null;
@@ -198,62 +178,6 @@ export default function ExploreScreen() {
   }, [queryClient]);
 
   const slides: React.ReactNode[] = [];
-
-  if (tonightStory) {
-    slides.push(
-      <Pressable
-        key="tonight"
-        onPress={() => router.push("/tonight-story-full")}
-        style={({ pressed }) => [styles.tonightCard, styles.cardFill, pressed && { opacity: 0.9 }]}
-      >
-        <ExpoImage
-          source={pickTonightCover()}
-          style={StyleSheet.absoluteFillObject}
-          contentFit="cover"
-          contentPosition="top"
-          cachePolicy="memory-disk"
-        />
-        <LinearGradient
-          colors={COVER_OVERLAY_COLORS as unknown as readonly [string, string, ...string[]]}
-          locations={COVER_OVERLAY_LOCATIONS as unknown as readonly [number, number, ...number[]]}
-          style={StyleSheet.absoluteFillObject}
-        />
-        <View style={styles.tonightCoverInner}>
-          <Text style={styles.tonightCoverDate}>
-            {new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }).toUpperCase()}
-          </Text>
-          <Text style={styles.tonightCoverWordmark}>ON YOUR{"\n"}RADAR</Text>
-          <Text style={styles.tonightCoverTagline}>What's worth watching today</Text>
-          <View style={styles.tonightCoverChips}>
-            {(() => {
-              const favSet = new Set<string>();
-              const storiesForCount = (data?.todaysStories && data.todaysStories.length > 0)
-                ? data.todaysStories
-                : [tonightStory];
-              for (const s of storiesForCount) {
-                for (const t of (s?.favoriteTeams || [])) favSet.add(t);
-              }
-              const favCount = favSet.size;
-              return (
-                <View style={styles.tonightCoverChip}>
-                  <Text style={styles.tonightCoverChipText}>
-                    {favCount > 0 ? `${favCount} ${favCount === 1 ? "FAVORITE" : "FAVORITES"}` : tonightStory.signalLabel}
-                  </Text>
-                </View>
-              );
-            })()}
-            {tonightStory.sports && tonightStory.sports.length > 0 && (
-              <View style={styles.tonightCoverChip}>
-                <Text style={styles.tonightCoverChipText}>
-                  {tonightStory.sports.length} {tonightStory.sports.length === 1 ? "SPORT" : "SPORTS"}
-                </Text>
-              </View>
-            )}
-          </View>
-        </View>
-      </Pressable>
-    );
-  }
 
   slides.push(<DailyWrapCard key="daily-wrap" fill />);
 

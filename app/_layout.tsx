@@ -74,14 +74,6 @@ function RootLayoutNav() {
         }}
       />
       <Stack.Screen
-        name="tonight-story-full"
-        options={{
-          headerShown: true,
-          title: "On Your Radar",
-          headerBackTitle: "Stories",
-        }}
-      />
-      <Stack.Screen
         name="month-schedule"
         options={{
           headerShown: false,
