@@ -3,6 +3,7 @@ import * as path from "path";
 import { fetchAllLiveScores } from "./liveScores";
 import type { ScoreData, SeriesStatus } from "./liveScores";
 import { enrichWithHighlights, type HighlightVideo } from "./dailyWrapHighlights";
+import { fetchWrcRallyResult, getWrcRoundBaseId, hasWrcStageMapping } from "./wrcStages";
 import { fetchSvnsMatches } from "./svnsMatches";
 import { fetchDiamondLeagueSummary, type DLAthleteResult } from "./diamondLeagueResults";
 
@@ -162,6 +163,18 @@ const COUNTRY_FLAGS: Record<string, string> = {
 
 function flag(country: string): string {
   return COUNTRY_FLAGS[country] || "";
+}
+
+// Convert a 2-letter ISO country code (e.g. "gb", "jp") to a flag emoji via
+// regional-indicator codepoints. Used for sources that give ISO codes rather
+// than full country names (eWRC WRC data). Returns "" for anything malformed.
+function isoFlag(code?: string | null): string {
+  if (!code) return "";
+  const cc = code.trim().toUpperCase();
+  if (!/^[A-Z]{2}$/.test(cc)) return "";
+  return String.fromCodePoint(
+    ...[...cc].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65),
+  );
 }
 
 // --- Editorial builders ---
@@ -471,6 +484,48 @@ function cyclingEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry>
     detail: `${event.league} · General Classification${team}`,
     winner: leader,
   };
+}
+
+// --- WRC rally ---
+// Rallies are multi-day "session" events (one card per day) with no head-to-head
+// score, so they never reach the score-based path. On the final day, once the
+// rally has concluded, we surface a single card for the overall winner, sourced
+// from eWRC's overall classification (see wrcStages.ts).
+const WRC_PRIORITY = 50;
+
+function isWrc(event: any): boolean {
+  return (
+    event?.sport?.toLowerCase() === "racing" &&
+    (event?.leagueKey === "wrc" ||
+      (typeof event?.id === "string" && event.id.startsWith("racing-wrc-")))
+  );
+}
+
+// Only the final day of a rally should produce a card (avoids one per day).
+function isWrcFinalDay(event: any): boolean {
+  if (event?.totalDays != null && event?.dayNumber != null) {
+    return event.dayNumber === event.totalDays;
+  }
+  return true;
+}
+
+async function wrcRallyEditorial(event: any): Promise<Partial<DailyWrapEntry> | null> {
+  const baseId = getWrcRoundBaseId(event.id);
+  const r = await fetchWrcRallyResult(baseId);
+  if (!r.finished || !r.winner) return null;
+
+  const rallyName = event.tournamentName || event.homeTeam || r.eventName || "the rally";
+  const f = isoFlag(r.winner.flag);
+  const editorial = `${f ? f + " " : ""}${r.winner.name} wins ${rallyName}`;
+
+  const parts = ["WRC"];
+  if (r.marginPretty && r.runnerUp) {
+    const runnerLast = r.runnerUp.name.trim().split(/\s+/).pop() || r.runnerUp.name;
+    parts.push(`won by ${r.marginPretty} over ${runnerLast}`);
+  } else {
+    parts.push("Rally winner");
+  }
+  return { editorial, detail: parts.join(" · "), winner: r.winner.name };
 }
 
 // --- HSBC SVNS (rugby sevens tournament) ---
@@ -1014,6 +1069,28 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
             athleticsResults: de.athleticsResults,
             athleticsMeet: de.athleticsMeet,
             priorityScore: DIAMOND_LEAGUE_PRIORITY,
+            startTimeLocal: event.startTimeLocal,
+          });
+        }
+      } else if (
+        isWrc(event) &&
+        isWrcFinalDay(event) &&
+        hasConcluded(event, nowMs) &&
+        hasWrcStageMapping(getWrcRoundBaseId(event.id))
+      ) {
+        const we = await wrcRallyEditorial(event);
+        if (we) {
+          fallbackIds.add(event.id);
+          results.push({
+            eventId: event.id,
+            sport: event.sport,
+            league: event.league,
+            homeTeam: event.homeTeam,
+            awayTeam: event.awayTeam,
+            editorial: we.editorial || "",
+            detail: we.detail || "",
+            winner: we.winner,
+            priorityScore: WRC_PRIORITY,
             startTimeLocal: event.startTimeLocal,
           });
         }
