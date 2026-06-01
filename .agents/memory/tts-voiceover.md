@@ -5,10 +5,13 @@ description: Non-obvious constraints for the server-side TTS endpoint and its ca
 
 # Daily Wrap headline voiceover
 
-Backend synthesizes story headlines via ElevenLabs and streams MP3 from `GET /api/daily-wrap/audio.mp3?text=...` (extensionless `/api/daily-wrap/audio` kept as an alias for old cached clients); frontend plays them in the Daily Wrap story viewer.
+Backend synthesizes story headlines via ElevenLabs and streams MP3 from `GET /api/daily-wrap/audio.mp3?text=...` (extensionless `/api/daily-wrap/audio` kept as an alias for old cached clients). The Daily Wrap story viewer **autoplays** the active story's narration via `expo-audio` (no per-story "Listen" buttons); a single header speaker icon mutes/unmutes.
 
-- **The audio URL MUST end in `.mp3`.** iOS/AVFoundation (expo-av) infers the audio format from the URL *path extension*; an extensionless `?text=...` URL plays silently-nothing on a physical iPhone (server returns valid audio, range works, but the native player never starts). Adding the `.mp3` path segment fixes it. The `Content-Type: audio/mpeg` header alone is NOT enough for AVPlayer.
-  **How to apply:** any new native-played remote audio route in this repo should end in a real media extension, not just set the MIME type.
+- **Use `expo-audio` for playback, NOT `expo-av`.** On Expo SDK 54 + Android (Expo Go), deprecated `expo-av` `Audio.Sound` downloaded the clip (server logged 200/206) but produced **no sound and no error** — silent dead end. Migrating playback to `expo-audio` (`createAudioPlayer({uri}, {downloadFirst:true})` + `player.play()`, `setAudioModeAsync({playsInSilentMode:true})`) is what actually fixed it.
+  **Why:** `expo-av` is deprecated/removed in SDK 54 and its native playback is unreliable there. `expo-audio` is the supported successor, bundled in Expo Go (no custom dev build needed).
+  **How to apply:** never reach for `expo-av` audio on this project; use `expo-audio`. (`expo-av` is still installed only for the `Video` component in `app/narrative/[id].tsx` — migrate that to `expo-video` if it ever misbehaves.)
+
+- **Keep the `.mp3` URL extension.** Good practice for native players that infer format from the path; the MIME header alone isn't always enough. Don't regress to an extensionless route.
 
 - **Cache must live OUTSIDE the project dir.** Write MP3s to `os.tmpdir()`, not `.cache/` in cwd.
   **Why:** the backend runs under `tsx watch`; writing files inside cwd triggers a dev-server reload, which made the *second* (cached) request 404 mid-restart. tmpdir also survives read-only prod filesystems.

@@ -8,7 +8,6 @@ import {
   FlatList,
   Animated,
   Linking,
-  ActivityIndicator,
   useWindowDimensions,
   type NativeSyntheticEvent,
   type NativeScrollEvent,
@@ -17,7 +16,7 @@ import {
 import { useNavigation, router, useFocusEffect } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
-import { Audio } from "expo-av";
+import { createAudioPlayer, setAudioModeAsync, type AudioPlayer } from "expo-audio";
 import { useQuery } from "@tanstack/react-query";
 import { LinearGradient } from "expo-linear-gradient";
 import { Image as ExpoImage } from "expo-image";
@@ -229,102 +228,86 @@ function AthleticsResultsCard({
   );
 }
 
-type AudioStatus = "idle" | "loading" | "playing" | "error";
+// One-time iOS audio-session setup so narration is audible even on silent mode.
+let audioModeReady = false;
 
 // Single shared narrator: only one headline plays at a time. Loads the clip
-// from the backend TTS route, tracks which story is active, and cleans up on
-// page change / unmount so audio never bleeds across stories.
+// from the backend TTS route (expo-audio) and cleans up on story change /
+// unmount so audio never bleeds across stories.
 function useHeadlineAudio() {
-  const soundRef = useRef<Audio.Sound | null>(null);
+  const playerRef = useRef<AudioPlayer | null>(null);
+  const subRef = useRef<{ remove: () => void } | null>(null);
   const reqRef = useRef(0);
-  const [activeId, setActiveId] = useState<string | null>(null);
-  const [status, setStatus] = useState<AudioStatus>("idle");
 
-  const stop = useCallback(async () => {
+  const stop = useCallback(() => {
     reqRef.current += 1;
-    const s = soundRef.current;
-    soundRef.current = null;
-    setActiveId(null);
-    setStatus("idle");
-    if (s) {
+    subRef.current?.remove();
+    subRef.current = null;
+    const p = playerRef.current;
+    playerRef.current = null;
+    if (p) {
       try {
-        await s.unloadAsync();
+        p.remove();
       } catch {
-        // already unloaded
+        // already released
       }
     }
   }, []);
 
-  const toggle = useCallback(
-    async (id: string, text: string) => {
-      // Tapping the active clip stops it.
-      if (activeId === id && (status === "playing" || status === "loading")) {
-        await stop();
-        return;
-      }
-      await stop();
+  const play = useCallback(
+    async (text: string) => {
+      stop();
       const req = ++reqRef.current;
-      setActiveId(id);
-      setStatus("loading");
       try {
-        if (Platform.OS !== "web") {
-          await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
+        if (Platform.OS !== "web" && !audioModeReady) {
+          await setAudioModeAsync({ playsInSilentMode: true });
+          audioModeReady = true;
         }
+        // A newer request superseded this one while configuring audio.
+        if (req !== reqRef.current) return;
         const url = new URL(
           `/api/daily-wrap/audio.mp3?text=${encodeURIComponent(text)}`,
           getApiUrl()
         ).toString();
-        const { sound } = await Audio.Sound.createAsync({ uri: url }, { shouldPlay: true });
-        // A newer request superseded this one while we awaited the network.
+        const player = createAudioPlayer({ uri: url }, { downloadFirst: true });
         if (req !== reqRef.current) {
           try {
-            await sound.unloadAsync();
+            player.remove();
           } catch {
             // ignore
           }
           return;
         }
-        soundRef.current = sound;
-        sound.setOnPlaybackStatusUpdate((st) => {
+        playerRef.current = player;
+        const sub = player.addListener("playbackStatusUpdate", (st) => {
           if (req !== reqRef.current) return;
-          if (!st.isLoaded) {
-            if (st.error) {
-              console.warn("[tts] playback error:", st.error);
-              setStatus("error");
-              // Keep activeId so the button shows "Tap to retry", but free the
-              // errored sound object.
-              if (soundRef.current === sound) soundRef.current = null;
-              sound.unloadAsync().catch(() => {});
-            }
-            return;
-          }
           if (st.didJustFinish) {
-            setStatus("idle");
-            setActiveId(null);
-            if (soundRef.current === sound) soundRef.current = null;
-            sound.unloadAsync().catch(() => {});
-          } else if (st.isPlaying) {
-            setStatus("playing");
+            subRef.current?.remove();
+            subRef.current = null;
+            if (playerRef.current === player) playerRef.current = null;
+            try {
+              player.remove();
+            } catch {
+              // ignore
+            }
           }
         });
-        setStatus("playing");
+        subRef.current = sub;
+        player.play();
       } catch (err) {
-        console.warn("[tts] failed to load clip:", err);
-        if (req === reqRef.current) {
-          setStatus("error");
-        }
+        console.warn("[tts] failed to play clip:", err);
       }
     },
-    [activeId, status, stop]
+    [stop]
   );
 
   useEffect(() => {
     return () => {
-      void stop();
+      stop();
     };
   }, [stop]);
 
-  return { activeId, status, toggle, stop };
+  return { play, stop };
 }
 
 function StoryPage({
@@ -333,16 +316,12 @@ function StoryPage({
   insets,
   isLast,
   hideSpoilers,
-  audioStatus,
-  onToggleAudio,
 }: {
   view: StoryView;
   height: number;
   insets: { top: number; bottom: number };
   isLast: boolean;
   hideSpoilers: boolean;
-  audioStatus: AudioStatus;
-  onToggleAudio: () => void;
 }) {
   const { entry, event, score, mood, headline, sportColor, video, backdrop } = view;
   const moodColor = MOOD_COLORS[mood];
@@ -395,41 +374,6 @@ function StoryPage({
         <View style={styles.headlineWrap}>
           <Text style={[styles.headline, { color: Colors.textPrimary }]}>{headline}</Text>
           <View style={[styles.headlineRule, { backgroundColor: moodColor }]} />
-          <Pressable
-            onPress={onToggleAudio}
-            hitSlop={8}
-            style={({ pressed }) => [
-              styles.listenBtn,
-              { borderColor: moodColor + "88", backgroundColor: moodColor + "1A" },
-              pressed && { opacity: 0.75 },
-            ]}
-            testID={`story-listen-${entry.eventId}`}
-          >
-            {audioStatus === "loading" ? (
-              <ActivityIndicator size="small" color={moodColor} />
-            ) : (
-              <Ionicons
-                name={
-                  audioStatus === "playing"
-                    ? "pause"
-                    : audioStatus === "error"
-                      ? "refresh"
-                      : "volume-high"
-                }
-                size={15}
-                color={moodColor}
-              />
-            )}
-            <Text style={[styles.listenBtnText, { color: moodColor }]}>
-              {audioStatus === "playing"
-                ? "Playing"
-                : audioStatus === "loading"
-                  ? "Loading…"
-                  : audioStatus === "error"
-                    ? "Tap to retry"
-                    : "Listen"}
-            </Text>
-          </Pressable>
         </View>
 
         {/* Footer */}
@@ -519,7 +463,8 @@ export default function DailyWrapFullScreen() {
   const { getScore } = useScores();
   const tz = new Date().getTimezoneOffset();
   const [index, setIndex] = useState(0);
-  const audio = useHeadlineAudio();
+  const [muted, setMuted] = useState(false);
+  const { play: playHeadline, stop: stopHeadline } = useHeadlineAudio();
 
   const insets = useMemo(
     () => ({
@@ -606,10 +551,19 @@ export default function DailyWrapFullScreen() {
     }
   }, [stories.length, index]);
 
-  // Stop narration when the user swipes to a different story.
+  // Autoplay the current story's headline narration (unless muted). Swapping
+  // stories or toggling mute re-runs this; play() stops any prior clip first.
+  const activeStory =
+    stories.length > 0 ? stories[Math.min(index, stories.length - 1)] : undefined;
+  const activeStoryId = activeStory?.entry.eventId;
+  const activeHeadline = activeStory?.headline;
   useEffect(() => {
-    void audio.stop();
-  }, [index, audio.stop]);
+    if (muted || !activeHeadline) {
+      stopHeadline();
+      return;
+    }
+    void playHeadline(activeHeadline);
+  }, [activeStoryId, activeHeadline, muted, playHeadline, stopHeadline]);
 
   // Stop narration when the screen loses focus (e.g. navigating to the replay
   // or highlights) — the screen stays mounted while blurred, so the unmount
@@ -617,9 +571,9 @@ export default function DailyWrapFullScreen() {
   useFocusEffect(
     useCallback(() => {
       return () => {
-        void audio.stop();
+        stopHeadline();
       };
-    }, [audio.stop])
+    }, [stopHeadline])
   );
 
   const onScrollEnd = useCallback(
@@ -651,11 +605,8 @@ export default function DailyWrapFullScreen() {
               insets={insets}
               isLast={i === stories.length - 1}
               hideSpoilers={hideSpoilers}
-              audioStatus={audio.activeId === item.entry.eventId ? audio.status : "idle"}
-              onToggleAudio={() => audio.toggle(item.entry.eventId, item.headline)}
             />
           )}
-          extraData={`${audio.activeId ?? ""}:${audio.status}`}
           pagingEnabled
           showsVerticalScrollIndicator={false}
           snapToInterval={height}
@@ -710,6 +661,23 @@ export default function DailyWrapFullScreen() {
               {data?.date ?? "Today"}
             </Text>
           </View>
+          {stories.length > 0 && (
+            <Pressable
+              onPress={() => {
+                if (Platform.OS !== "web") Haptics.selectionAsync();
+                setMuted((m) => !m);
+              }}
+              hitSlop={12}
+              style={({ pressed }) => [styles.muteBtn, pressed && { opacity: 0.6 }]}
+              testID="daily-wrap-mute"
+            >
+              <Ionicons
+                name={muted ? "volume-mute" : "volume-high"}
+                size={18}
+                color={Colors.textPrimary}
+              />
+            </Pressable>
+          )}
           {stories.length > 0 && (
             <View style={styles.counter}>
               <Text style={styles.counterText}>
@@ -914,20 +882,13 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_700Bold",
     letterSpacing: 0.2,
   },
-  listenBtn: {
-    flexDirection: "row",
+  muteBtn: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
     alignItems: "center",
-    alignSelf: "flex-start",
-    gap: 7,
-    paddingVertical: 9,
-    paddingHorizontal: 14,
-    borderRadius: 999,
-    borderWidth: 1,
-  },
-  listenBtnText: {
-    fontSize: 13,
-    fontFamily: "Inter_600SemiBold",
-    letterSpacing: 0.2,
+    justifyContent: "center",
+    backgroundColor: "rgba(0,0,0,0.35)",
   },
   swipeHint: {
     alignItems: "center",
