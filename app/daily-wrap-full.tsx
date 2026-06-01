@@ -724,7 +724,7 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   svnsCard: {
-    backgroundColor: Colors.card,
+    backgroundColor: "rgba(0,0,0,0.38)",
     borderRadius: 16,
     borderWidth: 1,
     paddingHorizontal: 14,

@@ -1566,5 +1566,17 @@
       "selectedVideoChannel": "Podium Athletics",
       "rejectedForAgeCount": 0
     }
+  },
+  "upset_alert:tiafoe vs arnaldi upset highlights june 2026": {
+    "video": null,
+    "fetchedAt": "2026-06-01T19:24:50.896Z",
+    "query": "Tiafoe vs Arnaldi upset highlights June 2026",
+    "debug": {
+      "searchQuery": "Tiafoe vs Arnaldi upset highlights June 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
   }
 }
