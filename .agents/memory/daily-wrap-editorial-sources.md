@@ -34,3 +34,17 @@ the leader/separate-feed cases never produce an `isFinalScore` score.
 
 **How to apply:** fallback (non-normal) entries should be added to `fallbackIds`
 to skip highlight enrichment (no single match → mismatched clip risk).
+
+## Tournament-container entries can't use the UnifiedEventCard score path
+SVNS (and similar tournament-container) wrap entries have no head-to-head
+`event` in `allEvents` and no `scoreSnapshot`, so the full-screen story's
+`UnifiedEventCard` score card never fires. To show a real final score, carry
+the result on the DailyWrapEntry itself (a structured field) and render a
+dedicated card from it — don't try to synthesize a fake SportEvent/ScoreData.
+
+**Spoiler safety (cross-cutting):** the wrap full-screen has a spoiler toggle
+(`hideSpoilers`). `entry.detail` and any result-bearing field can contain the
+scoreline, so NEVER render `entry.detail` (or a new finals card) raw while
+`hideSpoilers` is true — gate every score-bearing branch on `!hideSpoilers`
+and fall back to a neutral label (league name). This is easy to miss when
+adding a new card type because the old fallback path printed `entry.detail`.

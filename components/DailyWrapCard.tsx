@@ -22,6 +22,14 @@ const COVER_IMAGE = require("@/assets/images/stories/daily-wrap.png");
 const COVER_OVERLAY_COLORS = ["rgba(15,18,22,0.15)", "rgba(15,18,22,0.55)", "rgba(15,18,22,0.95)"] as const;
 const COVER_OVERLAY_LOCATIONS = [0, 0.5, 1] as const;
 
+export interface SvnsFinal {
+  gender: "mens" | "womens";
+  winner: string;
+  loser: string;
+  winnerScore: number;
+  loserScore: number;
+}
+
 export interface DailyWrapEntry {
   eventId: string;
   sport: string;
@@ -34,6 +42,7 @@ export interface DailyWrapEntry {
   loser?: string;
   winnerScore?: string;
   loserScore?: string;
+  svnsFinals?: SvnsFinal[];
   scoreSnapshot?: ScoreData;
   priorityScore: number;
   startTimeLocal: string;

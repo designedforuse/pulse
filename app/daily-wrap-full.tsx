@@ -43,6 +43,7 @@ import {
   type DailyWrapEntry,
   type DailyWrapResponse,
   type HighlightVideo,
+  type SvnsFinal,
 } from "@/components/DailyWrapCard";
 
 const PINK = "#FF85C8";
@@ -113,6 +114,55 @@ function SwipeHint() {
       <Ionicons name="chevron-up" size={18} color={Colors.textSecondary} />
       <Text style={styles.swipeHintText}>Swipe up for next</Text>
     </Animated.View>
+  );
+}
+
+// --- HSBC SVNS Cup Final score card (men's first, then women's) ---
+function SvnsFinalsCard({
+  finals,
+  sportColor,
+  league,
+}: {
+  finals: SvnsFinal[];
+  sportColor: string;
+  league: string;
+}) {
+  return (
+    <View style={[styles.svnsCard, { borderColor: sportColor + "55" }]}>
+      <View style={[styles.svnsTopBar, { backgroundColor: sportColor }]} />
+      <View style={styles.svnsHeader}>
+        <View
+          style={[
+            styles.svnsLeagueChip,
+            { backgroundColor: sportColor + "1F", borderColor: sportColor + "55" },
+          ]}
+        >
+          <Text style={[styles.svnsLeagueChipText, { color: sportColor }]} numberOfLines={1}>
+            {league}
+          </Text>
+        </View>
+        <Text style={styles.svnsCupFinalLabel}>CUP FINAL</Text>
+      </View>
+      {finals.map((f, i) => (
+        <View key={f.gender} style={[styles.svnsRow, i > 0 && styles.svnsRowDivider]}>
+          <Text style={styles.svnsGenderLabel}>{f.gender === "mens" ? "MEN" : "WOMEN"}</Text>
+          <View style={styles.svnsTeams}>
+            <View style={styles.svnsTeamLine}>
+              <Text style={[styles.svnsTeamName, styles.svnsWinnerName]} numberOfLines={1}>
+                {f.winner}
+              </Text>
+              <Text style={[styles.svnsScore, { color: sportColor }]}>{f.winnerScore}</Text>
+            </View>
+            <View style={styles.svnsTeamLine}>
+              <Text style={styles.svnsTeamName} numberOfLines={1}>
+                {f.loser}
+              </Text>
+              <Text style={styles.svnsScore}>{f.loserScore}</Text>
+            </View>
+          </View>
+        </View>
+      ))}
+    </View>
   );
 }
 
@@ -193,15 +243,23 @@ function StoryPage({
               dailyWrap
               accentBarColor={sportColor}
             />
+          ) : !hideSpoilers && entry.svnsFinals && entry.svnsFinals.length > 0 ? (
+            <SvnsFinalsCard
+              finals={entry.svnsFinals}
+              sportColor={sportColor}
+              league={entry.league}
+            />
           ) : (
             <View style={styles.providerRow}>
               {provider ? (
                 <ProviderLogo providerId={provider.brandId} size={20} />
               ) : (
-                <Text style={styles.providerName}>{entry.detail}</Text>
+                // entry.detail can carry the result/scoreline, so never show it
+                // raw while spoilers are hidden — fall back to a neutral label.
+                <Text style={styles.providerName}>{hideSpoilers ? entry.league : entry.detail}</Text>
               )}
               <View style={{ flex: 1 }} />
-              {!!event && hideSpoilers && (
+              {hideSpoilers && (
                 <View style={styles.spoilerHint}>
                   <Ionicons name="eye-off-outline" size={12} color={Colors.textMuted} />
                   <Text style={styles.spoilerHintText}>Score hidden</Text>
@@ -469,6 +527,89 @@ const styles = StyleSheet.create({
   },
   footer: {
     gap: 16,
+  },
+  svnsCard: {
+    backgroundColor: Colors.card,
+    borderRadius: 16,
+    borderWidth: 1,
+    paddingHorizontal: 14,
+    paddingBottom: 14,
+    paddingTop: 16,
+    gap: 12,
+    overflow: "hidden",
+  },
+  svnsTopBar: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 3,
+  },
+  svnsHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  svnsLeagueChip: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 999,
+    borderWidth: 1,
+  },
+  svnsLeagueChipText: {
+    fontSize: 11,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.3,
+  },
+  svnsCupFinalLabel: {
+    fontSize: 10,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textMuted,
+    letterSpacing: 1.5,
+  },
+  svnsRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+  },
+  svnsRowDivider: {
+    borderTopWidth: 1,
+    borderTopColor: Colors.divider,
+    paddingTop: 12,
+  },
+  svnsGenderLabel: {
+    width: 46,
+    fontSize: 10,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textMuted,
+    letterSpacing: 1,
+  },
+  svnsTeams: {
+    flex: 1,
+    gap: 6,
+  },
+  svnsTeamLine: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 12,
+  },
+  svnsTeamName: {
+    flex: 1,
+    fontSize: 15,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+  },
+  svnsWinnerName: {
+    fontFamily: "Inter_700Bold",
+    color: Colors.textPrimary,
+  },
+  svnsScore: {
+    minWidth: 28,
+    textAlign: "right",
+    fontSize: 17,
+    fontFamily: "Inter_700Bold",
+    color: Colors.textSecondary,
   },
   providerRow: {
     flexDirection: "row",

@@ -5,6 +5,14 @@ import type { ScoreData } from "./liveScores";
 import { enrichWithHighlights, type HighlightVideo } from "./dailyWrapHighlights";
 import { fetchSvnsMatches } from "./svnsMatches";
 
+export interface SvnsFinal {
+  gender: "mens" | "womens";
+  winner: string;
+  loser: string;
+  winnerScore: number;
+  loserScore: number;
+}
+
 export interface DailyWrapEntry {
   eventId: string;
   sport: string;
@@ -17,6 +25,10 @@ export interface DailyWrapEntry {
   loser?: string;
   winnerScore?: string;
   loserScore?: string;
+  // HSBC SVNS finals-day card carries the Cup Final result(s) so the story can
+  // render a proper score card (men's first, then women's) instead of a plain
+  // detail line.
+  svnsFinals?: SvnsFinal[];
   // Final score captured at wrap-generation time. Live scores expire once a
   // game leaves the live window, so the story card relies on this snapshot to
   // render set/score details consistently rather than the volatile live feed.
@@ -382,24 +394,47 @@ async function svnsFinalEditorial(event: any): Promise<Partial<DailyWrapEntry> |
   );
   if (finals.length === 0) return null;
 
-  const champ = (m: any) => (m.team1Score >= m.team2Score ? m.team1 : m.team2);
-  const scoreLine = (m: any) =>
-    `${Math.max(m.team1Score, m.team2Score)}–${Math.min(m.team1Score, m.team2Score)}`;
+  const toFinal = (m: any): SvnsFinal => {
+    const team1Win = m.team1Score >= m.team2Score;
+    return {
+      gender: m.gender,
+      winner: team1Win ? m.team1 : m.team2,
+      loser: team1Win ? m.team2 : m.team1,
+      winnerScore: Math.max(m.team1Score, m.team2Score),
+      loserScore: Math.min(m.team1Score, m.team2Score),
+    };
+  };
 
-  const mens = finals.find((m) => m.gender === "mens");
-  const womens = finals.find((m) => m.gender === "womens");
-  const primary = mens || womens;
-  if (!primary) return null;
+  const mensMatch = finals.find((m) => m.gender === "mens");
+  const womensMatch = finals.find((m) => m.gender === "womens");
+  const primaryMatch = mensMatch || womensMatch;
+  if (!primaryMatch) return null;
+  const primary = toFinal(primaryMatch);
 
-  const editorial = mens
-    ? `${champ(mens)} win the ${city} SVNS`
-    : `${champ(womens!)} win the ${city} SVNS (women's)`;
+  // Men's first, then women's, so the score card and detail line stay ordered.
+  const svnsFinals: SvnsFinal[] = [];
+  if (mensMatch) svnsFinals.push(toFinal(mensMatch));
+  if (womensMatch) svnsFinals.push(toFinal(womensMatch));
 
-  const parts: string[] = [];
-  if (mens) parts.push(`Men: ${champ(mens)} ${scoreLine(mens)}`);
-  if (womens) parts.push(`Women: ${champ(womens)} ${scoreLine(womens)}`);
+  // Specific headline that names the beaten side and the scoreline, e.g.
+  // "Australia beat South Africa 19–5 to win the Valladolid SVNS".
+  const editorial =
+    `${primary.winner} beat ${primary.loser} ${primary.winnerScore}–${primary.loserScore} to win the ${city} SVNS` +
+    (mensMatch ? "" : " (women's)");
 
-  return { editorial, detail: `${event.league} · ${parts.join(" · ")}`, winner: champ(primary) };
+  const parts = svnsFinals.map(
+    (f) => `${f.gender === "mens" ? "Men" : "Women"}: ${f.winner} ${f.winnerScore}–${f.loserScore} ${f.loser}`,
+  );
+
+  return {
+    editorial,
+    detail: `${event.league} · ${parts.join(" · ")}`,
+    winner: primary.winner,
+    loser: primary.loser,
+    winnerScore: String(primary.winnerScore),
+    loserScore: String(primary.loserScore),
+    svnsFinals,
+  };
 }
 
 function golfEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> | null {
@@ -697,6 +732,10 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
             editorial: se.editorial || "",
             detail: se.detail || "",
             winner: se.winner,
+            loser: se.loser,
+            winnerScore: se.winnerScore,
+            loserScore: se.loserScore,
+            svnsFinals: se.svnsFinals,
             priorityScore: SVNS_PRIORITY,
             startTimeLocal: event.startTimeLocal,
           });
