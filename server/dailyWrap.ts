@@ -166,12 +166,12 @@ function flag(country: string): string {
 
 // --- Editorial builders ---
 
-// Playoff series context that is safe WITHOUT mapping a team name to its seed
-// abbreviation. We can only attribute a series outcome to *this game's winner*
-// when that outcome is unambiguous: a clinch (a team can only reach the wins it
-// needs by winning), levelling the series (both seeds equal), or forcing the
-// decider (both one win away). A simple lead (e.g. 3–2) is ambiguous — the
-// winner may have taken the lead OR merely cut a deficit — so we don't claim it.
+// Playoff series context for the headline. When the data source attributes the
+// as-of wins to this game's winner/loser (lastGameWinnerWins/lastGameLoserWins),
+// we can state lead/elimination outcomes precisely. Otherwise we fall back to a
+// seed-agnostic mode that only claims unambiguous outcomes — a clinch, levelling
+// the series, or forcing the decider — and stays silent on a simple lead (e.g.
+// 3–2), which could mean the winner took the lead OR merely cut a deficit.
 function hockeySeriesPhrase(s: SeriesStatus | undefined): string | null {
   if (!s) return null;
   const a = s.topSeedWins ?? 0;
@@ -181,6 +181,22 @@ function hockeySeriesPhrase(s: SeriesStatus | undefined): string | null {
   const hi = Math.max(a, b);
   const lo = Math.min(a, b);
   if (hi >= need) return `to win the series ${hi}–${lo}`;
+
+  // When the data source attributes the wins to this game's winner/loser, we can
+  // state unambiguous outcomes that seed-agnostic counts can't: a team taking the
+  // lead, or staving off elimination when the opponent was at match point.
+  const wW = s.lastGameWinnerWins;
+  const lW = s.lastGameLoserWins;
+  if (wW != null && lW != null) {
+    if (wW === lW) {
+      if (wW === need - 1) return `to force Game ${need * 2 - 1}`;
+      return `to level the series ${wW}–${wW}`;
+    }
+    if (lW === need - 1 && wW < lW) return `to stay alive in the series`;
+    if (wW > lW) return `to take a ${wW}–${lW} series lead`;
+    return null;
+  }
+
   if (a === b) {
     if (a === need - 1) return `to force Game ${need * 2 - 1}`;
     return `to level the series ${a}–${a}`;

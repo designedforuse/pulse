@@ -79,6 +79,8 @@ export interface SeriesStatus {
   bottomSeedWins: number;
   gameNumberOfSeries?: number;
   neededToWin?: number;
+  lastGameWinnerWins?: number;
+  lastGameLoserWins?: number;
 }
 
 interface ScoresApiResponse {

@@ -80,6 +80,11 @@ export interface SeriesStatus {
   bottomSeedWins: number;
   gameNumberOfSeries?: number;
   neededToWin?: number;
+  // Wins attributed to the winner / loser of THIS specific game (as-of, including
+  // this game). Only set when the data source knows who won the keyed game; lets
+  // the wrap state unambiguous outcomes like "stayed alive" without seed mapping.
+  lastGameWinnerWins?: number;
+  lastGameLoserWins?: number;
 }
 
 export interface ScoresResponse {
@@ -250,16 +255,39 @@ async function fetchNhlSeriesStatuses(): Promise<Record<string, SeriesStatus>> {
         if (!ss || !ss.topSeedTeamAbbrev || !ss.bottomSeedTeamAbbrev) continue;
         const eventId = idMap.get(game.id);
         if (!eventId) continue;
+        const topW = ss.topSeedWins ?? 0;
+        const botW = ss.bottomSeedWins ?? 0;
+
+        // For a concluded game, attribute the as-of wins to its winner/loser so
+        // the wrap can phrase unambiguous outcomes (clinch, level, stay alive).
+        let lastGameWinnerWins: number | undefined;
+        let lastGameLoserWins: number | undefined;
+        const state = game.gameState;
+        const hs = game.homeTeam?.score;
+        const as = game.awayTeam?.score;
+        if ((state === "FINAL" || state === "OFF") && typeof hs === "number" && typeof as === "number" && hs !== as) {
+          const winnerAbbrev = hs > as ? game.homeTeam?.abbrev : game.awayTeam?.abbrev;
+          if (winnerAbbrev === ss.topSeedTeamAbbrev) {
+            lastGameWinnerWins = topW;
+            lastGameLoserWins = botW;
+          } else if (winnerAbbrev === ss.bottomSeedTeamAbbrev) {
+            lastGameWinnerWins = botW;
+            lastGameLoserWins = topW;
+          }
+        }
+
         results[eventId] = {
           round: ss.round,
           seriesAbbrev: ss.seriesAbbrev,
           seriesTitle: ss.seriesTitle,
           topSeedTeamAbbrev: ss.topSeedTeamAbbrev,
-          topSeedWins: ss.topSeedWins ?? 0,
+          topSeedWins: topW,
           bottomSeedTeamAbbrev: ss.bottomSeedTeamAbbrev,
-          bottomSeedWins: ss.bottomSeedWins ?? 0,
+          bottomSeedWins: botW,
           gameNumberOfSeries: ss.gameNumberOfSeries,
           neededToWin: ss.neededToWin ?? 4,
+          lastGameWinnerWins,
+          lastGameLoserWins,
         };
       }
     } catch (err) {
@@ -267,6 +295,110 @@ async function fetchNhlSeriesStatuses(): Promise<Record<string, SeriesStatus>> {
     }
   }));
 
+  return results;
+}
+
+// AHL & ECHL share HockeyTech's "brackets" playoff feed. Build a per-game series
+// status: for each concluded game in a matchup we count the wins as-of (and
+// including) that game and attribute them to the game's winner/loser, so the
+// wrap can phrase clinches, levellings, deciders and elimination saves. The
+// series length comes from the matchup's scheduled games (which include the
+// unplayed "if necessary" games while a series is active), falling back to the
+// winner's final total for series that ended early.
+async function fetchHockeyTechSeriesStatuses(
+  clientCode: string,
+  key: string,
+  eventIds: string[],
+): Promise<Record<string, SeriesStatus>> {
+  const results: Record<string, SeriesStatus> = {};
+  if (eventIds.length === 0) return results;
+
+  // Map raw HockeyTech game id -> our event id (handles ahl-/echl-/echl-web-).
+  const idMap = new Map<string, string>();
+  for (const id of eventIds) {
+    const numPart = id.replace(/^[a-z]+-(?:web-)?/i, "");
+    idMap.set(numPart, id);
+  }
+
+  try {
+    const url = `https://lscluster.hockeytech.com/feed/index.php?feed=modulekit&view=brackets&key=${key}&client_code=${clientCode}&lang=en&fmt=json`;
+    const res = await fetch(url);
+    if (!res.ok) return results;
+    let text = await res.text();
+    text = text.replace(/^[^({]*\(/, "").replace(/\);?\s*$/, "");
+    const data = JSON.parse(text);
+    const br = data?.SiteKit?.Brackets;
+    if (!br) return results;
+    const teams: Record<string, any> = br.teams || {};
+    const codeOf = (tid: string): string => teams[tid]?.team_code || tid;
+
+    for (const rd of br.rounds || []) {
+      const roundNum = parseInt(rd.round || "0", 10) || undefined;
+      for (const m of rd.matchups || []) {
+        const t1 = String(m.team1 || "");
+        const t2 = String(m.team2 || "");
+        if (!t1 || !t2 || t1 === "0" || t2 === "0") continue;
+        const games: any[] = Array.isArray(m.games) ? m.games : [];
+
+        const sorted = [...games].sort((a, b) => {
+          const da = a.GameDateISO8601 || a.date_time || "";
+          const db = b.GameDateISO8601 || b.date_time || "";
+          if (da !== db) return da < db ? -1 : 1;
+          return parseInt(a.game_id || "0", 10) - parseInt(b.game_id || "0", 10);
+        });
+        const finals = sorted.filter((g) => String(g.status) === "4");
+
+        let finalW1 = 0;
+        let finalW2 = 0;
+        for (const g of finals) {
+          const hg = parseInt(g.home_goal_count || "0", 10);
+          const vg = parseInt(g.visiting_goal_count || "0", 10);
+          if (hg === vg) continue;
+          const wTeam = hg > vg ? String(g.home_team) : String(g.visiting_team);
+          if (wTeam === t1) finalW1++;
+          else if (wTeam === t2) finalW2++;
+        }
+        const neededToWin = Math.max(
+          Math.max(finalW1, finalW2),
+          Math.floor(games.length / 2) + 1,
+        );
+
+        let w1 = 0;
+        let w2 = 0;
+        let gameNum = 0;
+        for (const g of finals) {
+          const hg = parseInt(g.home_goal_count || "0", 10);
+          const vg = parseInt(g.visiting_goal_count || "0", 10);
+          if (hg === vg) continue;
+          gameNum++;
+          const homeWon = hg > vg;
+          const wTeam = homeWon ? String(g.home_team) : String(g.visiting_team);
+          if (wTeam === t1) w1++;
+          else if (wTeam === t2) w2++;
+
+          const eventId = idMap.get(String(g.game_id || ""));
+          if (!eventId) continue;
+
+          const winnerWins = wTeam === t1 ? w1 : w2;
+          const loserWins = wTeam === t1 ? w2 : w1;
+          results[eventId] = {
+            round: roundNum,
+            seriesTitle: (m.series_name || "").trim() || undefined,
+            topSeedTeamAbbrev: codeOf(t1),
+            topSeedWins: w1,
+            bottomSeedTeamAbbrev: codeOf(t2),
+            bottomSeedWins: w2,
+            gameNumberOfSeries: gameNum,
+            neededToWin,
+            lastGameWinnerWins: winnerWins,
+            lastGameLoserWins: loserWins,
+          };
+        }
+      }
+    }
+  } catch (err) {
+    console.error(`[liveScores] ${clientCode} series fetch error:`, err);
+  }
   return results;
 }
 
@@ -2185,11 +2317,13 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
   const mlrEvents = rugby.get("MLR") || [];
   const schoolsRugbyEvents = rugby.get("SA Schools Rugby") || [];
   const cyclingScoresPromise = fetchCyclingLeaderScores(cycling);
-  const [nhlScores, nhlSeriesStatuses, ahlScores, echlScores, ncaaScores, soccerScores, rugbyScores, pulseliveRugbyScores, mlrOfficialScores, jlOneScores, schoolsRugbyScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores, marathonScores, cyclingScores] = await Promise.all([
+  const [nhlScores, nhlSeriesStatuses, ahlScores, ahlSeriesStatuses, echlScores, echlSeriesStatuses, ncaaScores, soccerScores, rugbyScores, pulseliveRugbyScores, mlrOfficialScores, jlOneScores, schoolsRugbyScores, iplScores, cricketScores, tennisScores, f1Scores, nbaScores, ncaabScores, golfScores, mlbScores, marathonScores, cyclingScores] = await Promise.all([
     fetchNhlScores(nhl),
     fetchNhlSeriesStatuses(),
     fetchAhlScores(ahl),
+    fetchHockeyTechSeriesStatuses("ahl", "ccb91f29d6744675", ahl),
     fetchEchlScores(echl),
+    fetchHockeyTechSeriesStatuses("echl", "2c2b89ea7345cae8", echl),
     fetchNcaaHockeyScores(ncaa),
     fetchSoccerScores(soccer),
     fetchRugbyScores(rugby),
@@ -2215,7 +2349,7 @@ export async function fetchAllLiveScores(): Promise<ScoresResponse> {
   // because Pulselive's MLR feed lags badly (often shows "U"/0-0 mid-match).
   return {
     scores: { ...nhlScores, ...ahlScores, ...echlScores, ...ncaaScores, ...soccerScores, ...rugbyScores, ...pulseliveRugbyScores, ...mlrOfficialScores, ...jlOneScores, ...schoolsRugbyScores, ...iplScores, ...cricketScores, ...tennisScores, ...f1Scores, ...nbaScores, ...ncaabScores, ...golfScores, ...mlbScores, ...marathonScores, ...cyclingScores },
-    seriesStatuses: { ...nhlSeriesStatuses },
+    seriesStatuses: { ...nhlSeriesStatuses, ...ahlSeriesStatuses, ...echlSeriesStatuses },
     fetchedAt: new Date().toISOString(),
   };
 }
