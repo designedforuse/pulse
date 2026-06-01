@@ -9,4 +9,5 @@
 - [SA Schools Rugby results](schools-rugby-results.md) — no score API; scrape schoolrugby.co.za s=456 (Paarl), match completed games to fixtures by DATE (best-effort, scrape-fragile).
 - [Daily Wrap editorial sources](daily-wrap-editorial-sources.md) — 3 result-data shapes: keyed final-score (cricket), live-leader hasConcluded fallback (cycling), separate per-city feed (SVNS).
 - [IPL playoff rounds](ipl-playoff-rounds.md) — knockout stage comes from feed MatchOrder, persisted as event.roundName; NEVER derive playoff stage from schedule position (pruned window mislabels mid-season).
+- [Diamond League results](diamond-league-results.md) — athletics has no keyed score; Daily Wrap fallback fetches Swiss Timing JSON, leads headline with SA (RSA) result else top record/win; dedupe multi-day meets by season/meeting.
 - [expo-image local source swap](expo-image-local-source-swap.md) — mounted expo-image won't swap a changed local require() source; key it by content to force remount.

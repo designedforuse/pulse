@@ -4,6 +4,7 @@ import { fetchAllLiveScores } from "./liveScores";
 import type { ScoreData, SeriesStatus } from "./liveScores";
 import { enrichWithHighlights, type HighlightVideo } from "./dailyWrapHighlights";
 import { fetchSvnsMatches } from "./svnsMatches";
+import { fetchDiamondLeagueSummary, type DLAthleteResult } from "./diamondLeagueResults";
 
 export interface SvnsFinal {
   gender: "mens" | "womens";
@@ -518,6 +519,135 @@ async function svnsFinalEditorial(event: any): Promise<Partial<DailyWrapEntry> |
   };
 }
 
+// --- Wanda Diamond League (athletics) ---
+// Athletics has no keyed live score, so concluded Diamond League meets are
+// surfaced from the Swiss Timing results feed. The headline leads with the best
+// South African result when one exists, otherwise the meet's most newsworthy
+// outcome (world record > world lead > area/national/meeting record > marquee win).
+const DIAMOND_LEAGUE_PRIORITY = 68;
+
+function isDiamondLeague(event: any): boolean {
+  return event?.leagueKey === "diamond-league" || event?.league === "Diamond League";
+}
+
+// Event ids look like "athletics-diamond-league-rabat-2026" or
+// "athletics-diamond-league-brussels-final-day-1-2026"; the Swiss Timing meeting
+// key is the leading city token.
+function diamondLeagueMeetKey(event: any): { meeting: string; season: string } | null {
+  const m = /^athletics-diamond-league-(.+)-(\d{4})$/.exec(event?.id || "");
+  if (!m) return null;
+  const meeting = m[1].split("-")[0];
+  if (!meeting) return null;
+  return { meeting, season: m[2] };
+}
+
+const RECORD_NAMES: Record<string, string> = {
+  WR: "world record",
+  WL: "world lead",
+  AR: "area record",
+  NR: "national record",
+  MR: "meeting record",
+  SB: "season best",
+  PB: "personal best",
+};
+
+function expandRecordFlag(flag: string): string | null {
+  for (const token of (flag || "").toUpperCase().replace(/=/g, "").split(",")) {
+    const name = RECORD_NAMES[token.trim()];
+    if (name) return name;
+  }
+  return null;
+}
+
+// "200m Men" -> "men's 200m"; "100m Hurdles Women" -> "women's 100m hurdles".
+function formatDiscipline(name: string): string {
+  let gender = "";
+  let d = name;
+  if (/\bMen\b/.test(name)) {
+    gender = "men's";
+    d = name.replace(/\s*\bMen\b/, "");
+  } else if (/\bWomen\b/.test(name)) {
+    gender = "women's";
+    d = name.replace(/\s*\bWomen\b/, "");
+  }
+  d = d.trim().toLowerCase();
+  return gender ? `${gender} ${d}` : d;
+}
+
+function placeWord(rank: number): string {
+  if (rank === 1) return "wins";
+  if (rank === 2) return "takes second in";
+  if (rank === 3) return "takes third in";
+  const ord =
+    rank >= 11 && rank <= 13
+      ? `${rank}th`
+      : `${rank}${["th", "st", "nd", "rd"][rank % 10] || "th"}`;
+  return `finishes ${ord} in`;
+}
+
+function saHeadline(r: DLAthleteResult, city: string): string {
+  return `🇿🇦 ${r.athlete} ${placeWord(r.rank)} the ${formatDiscipline(r.discipline)} at Diamond League ${city}`;
+}
+
+function notableHeadline(r: DLAthleteResult, city: string): string {
+  const disc = formatDiscipline(r.discipline);
+  const sig = expandRecordFlag(r.recordFlag);
+  const nat = r.nation ? ` (${r.nation})` : "";
+  if (sig === "world record") {
+    return `🌍 ${r.athlete}${nat} breaks the world record in the ${disc} at Diamond League ${city}`;
+  }
+  if (sig === "world lead") {
+    return `${r.athlete}${nat} posts a world-leading ${r.performance} to win the ${disc} at Diamond League ${city}`;
+  }
+  if (sig) {
+    return `${r.athlete}${nat} sets a ${sig} in the ${disc} at Diamond League ${city}`;
+  }
+  return `${r.athlete}${nat} wins the ${disc} at Diamond League ${city}`;
+}
+
+async function diamondLeagueEditorial(event: any): Promise<Partial<DailyWrapEntry> | null> {
+  const key = diamondLeagueMeetKey(event);
+  if (!key) return null;
+
+  let summary;
+  try {
+    summary = await fetchDiamondLeagueSummary(key.meeting, key.season);
+  } catch {
+    return null;
+  }
+  if (!summary) return null;
+
+  const city = key.meeting.charAt(0).toUpperCase() + key.meeting.slice(1);
+
+  const sa = summary.saResults[0];
+  if (sa) {
+    const bits = [`Diamond League`, city, formatDiscipline(sa.discipline)];
+    if (sa.performance) bits.push(sa.performance);
+    const rec = expandRecordFlag(sa.recordFlag);
+    if (rec) bits.push(rec);
+    const moreSa = summary.saResults.length - 1;
+    if (moreSa > 0) bits.push(`+${moreSa} more SA athlete${moreSa > 1 ? "s" : ""}`);
+    return {
+      editorial: saHeadline(sa, city),
+      detail: bits.join(" · "),
+      winner: sa.rank === 1 ? sa.athlete : undefined,
+    };
+  }
+
+  const n = summary.notable[0];
+  if (n) {
+    const bits = [`Diamond League`, city, formatDiscipline(n.discipline)];
+    if (n.performance) bits.push(n.performance);
+    return {
+      editorial: notableHeadline(n, city),
+      detail: bits.join(" · "),
+      winner: n.rank === 1 ? n.athlete : undefined,
+    };
+  }
+
+  return null;
+}
+
 function golfEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> | null {
   if (!score.golfLeader) return null;
   const f = flag(score.golfLeaderCountry || "");
@@ -763,6 +893,24 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
     Object.values(cyclingLatestByTour).map((e: any) => e.id),
   );
 
+  // A Diamond League meet can span multiple events (e.g. Brussels final day 1 &
+  // day 2), but the Swiss Timing feed returns a single combined results file per
+  // meeting. Keep only the latest concluded event per meeting so the meet
+  // contributes a single wrap card instead of duplicate storylines.
+  const diamondLeagueLatestByMeet: Record<string, any> = {};
+  for (const e of todayEvents) {
+    if (!isDiamondLeague(e)) continue;
+    const k = diamondLeagueMeetKey(e);
+    const key = k ? `${k.season}/${k.meeting}` : e.id;
+    const cur = diamondLeagueLatestByMeet[key];
+    if (!cur || new Date(e.startTimeLocal) > new Date(cur.startTimeLocal)) {
+      diamondLeagueLatestByMeet[key] = e;
+    }
+  }
+  const diamondLeagueKeepIds = new Set<string>(
+    Object.values(diamondLeagueLatestByMeet).map((e: any) => e.id),
+  );
+
   for (const event of todayEvents) {
     const score = scores[event.id];
     if (!score || !isFinalScore(score)) {
@@ -799,6 +947,23 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
             detail: ce.detail || "",
             winner: ce.winner,
             priorityScore: CYCLING_PRIORITY,
+            startTimeLocal: event.startTimeLocal,
+          });
+        }
+      } else if (isDiamondLeague(event) && diamondLeagueKeepIds.has(event.id) && hasConcluded(event, nowMs)) {
+        const de = await diamondLeagueEditorial(event);
+        if (de) {
+          fallbackIds.add(event.id);
+          results.push({
+            eventId: event.id,
+            sport: event.sport,
+            league: event.league,
+            homeTeam: event.homeTeam,
+            awayTeam: event.awayTeam,
+            editorial: de.editorial || "",
+            detail: de.detail || "",
+            winner: de.winner,
+            priorityScore: DIAMOND_LEAGUE_PRIORITY,
             startTimeLocal: event.startTimeLocal,
           });
         }
