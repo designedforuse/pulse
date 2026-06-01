@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-01T19:36:38.089Z",
+  "lastUpdated": "2026-06-01T19:44:27.883Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -67,7 +67,7 @@
         ],
         "playersIngested": 336,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-06-01T19:36:38.089Z"
+        "timestamp": "2026-06-01T19:44:27.883Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -77,7 +77,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2063.610580277778,
+      "hoursUntil": -2063.7410786111113,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -164,8 +164,8 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-06-01T19:36:38.089Z",
-      "expiresAt": "2026-06-01T21:36:38.089Z",
+      "triggeredAt": "2026-06-01T19:44:27.883Z",
+      "expiresAt": "2026-06-01T21:44:27.883Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
@@ -199,7 +199,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-06-01T19:36:38.089Z",
+      "triggeredAt": "2026-06-01T19:44:27.883Z",
       "expiresAt": "2026-06-02T16:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -231,7 +231,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-06-01T19:36:38.089Z",
+      "triggeredAt": "2026-06-01T19:44:27.883Z",
       "expiresAt": "2026-06-04T04:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -262,8 +262,8 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-06-01T19:36:38.089Z",
-      "expiresAt": "2026-06-08T19:36:38.089Z",
+      "triggeredAt": "2026-06-01T19:44:27.883Z",
+      "expiresAt": "2026-06-08T19:44:27.883Z",
       "kind": "grand_tour",
       "region": "Other",
       "regionPriority": 99,
@@ -300,8 +300,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-06-01T19:36:38.089Z",
-      "expiresAt": "2026-06-08T19:36:38.089Z",
+      "triggeredAt": "2026-06-01T19:44:27.883Z",
+      "expiresAt": "2026-06-08T19:44:27.883Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -361,7 +361,7 @@
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-06-01T19:36:38.089Z",
+      "triggeredAt": "2026-06-01T19:44:27.883Z",
       "expiresAt": "2026-06-05T17:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
