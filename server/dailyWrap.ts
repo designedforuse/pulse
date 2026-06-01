@@ -572,25 +572,21 @@ async function svnsFinalEditorial(event: any): Promise<Partial<DailyWrapEntry> |
     };
   };
 
+  // Only surface the men's Cup Final — the women's result is intentionally
+  // omitted from the Daily Wrap card and headline.
   const mensMatch = finals.find((m) => m.gender === "mens");
-  const womensMatch = finals.find((m) => m.gender === "womens");
-  const primaryMatch = mensMatch || womensMatch;
-  if (!primaryMatch) return null;
-  const primary = toFinal(primaryMatch);
+  if (!mensMatch) return null;
+  const primary = toFinal(mensMatch);
 
-  // Men's first, then women's, so the score card and detail line stay ordered.
-  const svnsFinals: SvnsFinal[] = [];
-  if (mensMatch) svnsFinals.push(toFinal(mensMatch));
-  if (womensMatch) svnsFinals.push(toFinal(womensMatch));
+  const svnsFinals: SvnsFinal[] = [toFinal(mensMatch)];
 
   // Specific headline that names the beaten side and the scoreline, e.g.
   // "Australia beat South Africa 19–5 to win the Valladolid SVNS".
   const editorial =
-    `${primary.winner} beat ${primary.loser} ${primary.winnerScore}–${primary.loserScore} to win the ${city} SVNS` +
-    (mensMatch ? "" : " (women's)");
+    `${primary.winner} beat ${primary.loser} ${primary.winnerScore}–${primary.loserScore} to win the ${city} SVNS`;
 
   const parts = svnsFinals.map(
-    (f) => `${f.gender === "mens" ? "Men" : "Women"}: ${f.winner} ${f.winnerScore}–${f.loserScore} ${f.loser}`,
+    (f) => `${f.winner} ${f.winnerScore}–${f.loserScore} ${f.loser}`,
   );
 
   return {

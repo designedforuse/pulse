@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-01T18:00:04.270Z",
+  "lastUpdated": "2026-06-01T18:48:56.748Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -65,11 +65,16 @@
     "leagueone": 6,
     "svns": 6
   },
-  "cricketCount": 7,
-  "cricketAdded": 0,
-  "cricketUpdated": 0,
-  "cricketPruned": 0,
-  "cricketCounts": {},
+  "cricketCount": 16,
+  "cricketAdded": 10,
+  "cricketUpdated": 4,
+  "cricketPruned": 4,
+  "cricketCounts": {
+    "T20I Cricket": 6,
+    "International Cricket": 11,
+    "ODI Cricket": 8,
+    "Test Cricket": 6
+  },
   "iccT20WcCount": 0,
   "iccT20WcAdded": 0,
   "iccT20WcUpdated": 0,
@@ -151,13 +156,13 @@
   "faCupUpdated": 0,
   "faCupPruned": 0,
   "faCupSourceUsed": "espn",
-  "tennisCount": 16,
-  "tennisAdded": 1,
+  "tennisCount": 15,
+  "tennisAdded": 0,
   "tennisUpdated": 15,
   "tennisPruned": 0,
   "tennisSourceUsed": "espn",
   "tennisTournamentCounts": {
-    "French Open": 7,
+    "French Open": 6,
     "Wimbledon": 9
   },
   "f1Count": 35,
@@ -204,22 +209,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-06-01T18:00:04.270Z",
+    "lastRefreshAt": "2026-06-01T18:48:56.748Z",
     "sources": {
       "nhl": {
         "count": 7,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 23,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 14,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -231,7 +236,7 @@
       },
       "rugby": {
         "count": 55,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 6,
@@ -244,44 +249,49 @@
         }
       },
       "cricket": {
-        "count": 7,
-        "lastFetchAt": "2026-05-27T22:26:29.806Z",
+        "count": 16,
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "CricAPI",
-        "leagueCounts": {}
+        "leagueCounts": {
+          "T20I Cricket": 6,
+          "International Cricket": 11,
+          "ODI Cricket": 8,
+          "Test Cricket": 6
+        }
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 13,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 142,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 10,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 10,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 2,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
@@ -291,42 +301,42 @@
       },
       "nwsl": {
         "count": 18,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 54,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-21T00:00:00.000Z"
       },
       "championsCup": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "challengeCup": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 15,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
@@ -336,17 +346,17 @@
         "firstMatchDate": "2026-05-16T14:00:00.000Z"
       },
       "tennis": {
-        "count": 16,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "count": 15,
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
-          "French Open": 7,
+          "French Open": 6,
           "Wimbledon": 9
         }
       },
       "f1": {
         "count": 35,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Canadian Grand Prix": 5,
@@ -360,27 +370,27 @@
       },
       "wrc": {
         "count": 31,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "Hardcoded Schedule"
       },
       "schoolsRugby": {
         "count": 3,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "Hardcoded Schedule"
       },
       "paddling": {
         "count": 2,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "Hardcoded Schedule"
       },
       "comrades": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "Hardcoded Schedule"
       },
       "golf": {
         "count": 8,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "US Open": 4,
@@ -389,7 +399,7 @@
       },
       "marathon": {
         "count": 3,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Sydney Marathon": 1,
@@ -419,7 +429,7 @@
       },
       "cafcl": {
         "count": 6,
-        "lastFetchAt": "2026-06-01T18:00:04.270Z",
+        "lastFetchAt": "2026-06-01T18:48:56.748Z",
         "sourceName": "ESPN API"
       }
     }
@@ -4164,9 +4174,9 @@
       "awayTeam": "Ireland",
       "homeTeam": "New Zealand",
       "startTimeLocal": "2026-05-27T10:00:00.000Z",
-      "endTimeLocal": "2026-05-27T18:00:00.000Z",
+      "endTimeLocal": "2026-06-01T10:00:00.000Z",
       "providerId": "disneyplus",
-      "isLive": true,
+      "isLive": false,
       "source": "cricket-cricapi",
       "leagueKey": "test",
       "competitionName": "Test Cricket",
@@ -5176,31 +5186,6 @@
       "competitionType": "international",
       "tournamentName": "Diamond League — Rabat",
       "roundLabel": "Round 3"
-    },
-    {
-      "id": "tennis-espn-175759",
-      "sport": "tennis",
-      "league": "Grand Slam",
-      "awayTeam": "Fonseca",
-      "homeTeam": "Ruud",
-      "startTimeLocal": "2026-05-31T18:30:00.000Z",
-      "endTimeLocal": "2026-05-31T21:00:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "grand-slam",
-      "providerReason": "tnt-broadcast",
-      "eventType": "match",
-      "sessionTitle": "Roland Garros — Round 4",
-      "competitionType": "international",
-      "tennisRound": "Round 4",
-      "tennisPlayer1": "Fonseca",
-      "tennisPlayer2": "Ruud",
-      "tennisPlayer1Rank": 28,
-      "tennisPlayer2Rank": 15,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
-      "tournamentName": "French Open"
     },
     {
       "id": "soccer-nwsl-20260531-1900-houston-dash-at-gotham-fc",
@@ -6334,6 +6319,26 @@
       "source": "ahl-hockeytech"
     },
     {
+      "id": "cricket-intl-uu1y11",
+      "cricketMatchId": "1f8c3f4b-af4d-40e9-ba20-4af9188aba5b",
+      "sport": "cricket",
+      "league": "International Cricket",
+      "awayTeam": "Bangladesh",
+      "homeTeam": "Australia",
+      "startTimeLocal": "2026-06-09T08:00:00.000Z",
+      "endTimeLocal": "2026-06-09T11:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "intl",
+      "competitionName": "International Cricket",
+      "competitionType": "international",
+      "hostCountry": "Bangladesh",
+      "seriesName": "1st ODI, Australia tour of Bangladesh, 2026",
+      "gender": "men",
+      "isIccT20Wc": false
+    },
+    {
       "id": "ahl-1029063",
       "sport": "hockey",
       "league": "AHL",
@@ -6455,6 +6460,26 @@
       "providerReason": "usl-espnplus"
     },
     {
+      "id": "cricket-intl-3kxydw",
+      "cricketMatchId": "5aead8f2-4b1f-480a-be2c-d7bc69223fea",
+      "sport": "cricket",
+      "league": "International Cricket",
+      "awayTeam": "Bangladesh",
+      "homeTeam": "Australia",
+      "startTimeLocal": "2026-06-11T08:00:00.000Z",
+      "endTimeLocal": "2026-06-11T11:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "intl",
+      "competitionName": "International Cricket",
+      "competitionType": "international",
+      "hostCountry": "Bangladesh",
+      "seriesName": "2nd ODI, Australia tour of Bangladesh, 2026",
+      "gender": "men",
+      "isIccT20Wc": false
+    },
+    {
       "id": "soccer-fifa-world-cup-20260611-1900-south-africa-at-mexico",
       "sport": "soccer",
       "league": "FIFA World Cup",
@@ -6567,6 +6592,26 @@
       "leagueKey": "fifa-world-cup",
       "providerReason": "fifa-world-cup-fox",
       "broadcastNetworks": "FOX, Tele, Peacock"
+    },
+    {
+      "id": "cricket-intl-39r0yl",
+      "cricketMatchId": "8ae09b34-0122-453b-89d6-83def2cc06a6",
+      "sport": "cricket",
+      "league": "International Cricket",
+      "awayTeam": "India",
+      "homeTeam": "Afghanistan",
+      "startTimeLocal": "2026-06-13T08:00:00.000Z",
+      "endTimeLocal": "2026-06-13T11:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "intl",
+      "competitionName": "International Cricket",
+      "competitionType": "international",
+      "hostCountry": "India",
+      "seriesName": "1st ODI, Afghanistan tour of India 2026",
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "f1-espn-401839070",
@@ -6863,6 +6908,26 @@
       "broadcastNetworks": "FS1, Tele, Peacock"
     },
     {
+      "id": "cricket-intl-h0y16v",
+      "cricketMatchId": "37e9ebb8-dd94-4ec5-b349-a265c7b9ead7",
+      "sport": "cricket",
+      "league": "International Cricket",
+      "awayTeam": "Bangladesh",
+      "homeTeam": "Australia",
+      "startTimeLocal": "2026-06-14T08:00:00.000Z",
+      "endTimeLocal": "2026-06-14T11:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "intl",
+      "competitionName": "International Cricket",
+      "competitionType": "international",
+      "hostCountry": "Bangladesh",
+      "seriesName": "3rd ODI, Australia tour of Bangladesh, 2026",
+      "gender": "men",
+      "isIccT20Wc": false
+    },
+    {
       "id": "f1-espn-401839072",
       "sport": "racing",
       "league": "F1",
@@ -7108,6 +7173,47 @@
       "broadcastNetworks": "FS1, Tele, Peacock"
     },
     {
+      "id": "cricket-intl-6ycfem",
+      "cricketMatchId": "1fece84b-179b-49d4-86d7-30d4e14b76c2",
+      "sport": "cricket",
+      "league": "International Cricket",
+      "awayTeam": "India",
+      "homeTeam": "Afghanistan",
+      "startTimeLocal": "2026-06-17T08:00:00.000Z",
+      "endTimeLocal": "2026-06-17T11:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "intl",
+      "competitionName": "International Cricket",
+      "competitionType": "international",
+      "hostCountry": "India",
+      "seriesName": "2nd ODI, Afghanistan tour of India 2026",
+      "gender": "men",
+      "isIccT20Wc": false
+    },
+    {
+      "id": "cricket-t20i-uqeuvw",
+      "cricketMatchId": "68c8a506-0d4f-423c-b085-973fbfe9b142",
+      "sport": "cricket",
+      "league": "T20I Cricket",
+      "awayTeam": "Bangladesh",
+      "homeTeam": "Australia",
+      "startTimeLocal": "2026-06-17T12:00:00.000Z",
+      "endTimeLocal": "2026-06-17T15:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "t20i",
+      "competitionName": "T20I Cricket",
+      "competitionType": "international",
+      "format": "t20",
+      "hostCountry": "Australia",
+      "seriesName": "1st T20I, Australia tour of Bangladesh, 2026",
+      "gender": "men",
+      "isIccT20Wc": false
+    },
+    {
       "id": "soccer-fifa-world-cup-20260617-1700-congo-dr-at-portugal",
       "sport": "soccer",
       "league": "FIFA World Cup",
@@ -7308,6 +7414,27 @@
       "broadcastNetworks": "FOX, Tele, Peacock"
     },
     {
+      "id": "cricket-t20i-s5pvaq",
+      "cricketMatchId": "3e2e75ef-b5c1-4f3b-94f7-669a2d2687da",
+      "sport": "cricket",
+      "league": "T20I Cricket",
+      "awayTeam": "Bangladesh",
+      "homeTeam": "Australia",
+      "startTimeLocal": "2026-06-19T12:00:00.000Z",
+      "endTimeLocal": "2026-06-19T15:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "t20i",
+      "competitionName": "T20I Cricket",
+      "competitionType": "international",
+      "format": "t20",
+      "hostCountry": "Australia",
+      "seriesName": "2nd T20I, Australia tour of Bangladesh, 2026",
+      "gender": "men",
+      "isIccT20Wc": false
+    },
+    {
       "id": "golf-us-open-2026-06-19",
       "sport": "golf",
       "league": "The Majors",
@@ -7402,6 +7529,26 @@
       "leagueKey": "fifa-world-cup",
       "providerReason": "fifa-world-cup-fs1",
       "broadcastNetworks": "FS1, Tele, Peacock"
+    },
+    {
+      "id": "cricket-intl-nc38t7",
+      "cricketMatchId": "1fc169ab-6e09-4f57-bab5-1fc4beccdcd0",
+      "sport": "cricket",
+      "league": "International Cricket",
+      "awayTeam": "India",
+      "homeTeam": "Afghanistan",
+      "startTimeLocal": "2026-06-20T08:00:00.000Z",
+      "endTimeLocal": "2026-06-20T11:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "intl",
+      "competitionName": "International Cricket",
+      "competitionType": "international",
+      "hostCountry": "India",
+      "seriesName": "3rd ODI, Afghanistan tour of India 2026",
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "golf-us-open-2026-06-20",
@@ -7620,6 +7767,27 @@
       "leagueKey": "fifa-world-cup",
       "providerReason": "fifa-world-cup-fs1",
       "broadcastNetworks": "FS1, Tele, Peacock"
+    },
+    {
+      "id": "cricket-t20i-i2w5ak",
+      "cricketMatchId": "3c8a4266-d70d-408d-9472-b1e5cab26649",
+      "sport": "cricket",
+      "league": "T20I Cricket",
+      "awayTeam": "Bangladesh",
+      "homeTeam": "Australia",
+      "startTimeLocal": "2026-06-21T08:00:00.000Z",
+      "endTimeLocal": "2026-06-21T11:30:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "t20i",
+      "competitionName": "T20I Cricket",
+      "competitionType": "international",
+      "format": "t20",
+      "hostCountry": "Australia",
+      "seriesName": "3rd T20I, Australia tour of Bangladesh, 2026",
+      "gender": "men",
+      "isIccT20Wc": false
     },
     {
       "id": "golf-us-open-2026-06-21",

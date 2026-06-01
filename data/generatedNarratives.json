@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-01T18:00:04.313Z",
+  "lastUpdated": "2026-06-01T18:48:56.791Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -63,7 +63,7 @@
         ],
         "playersIngested": 336,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-06-01T18:00:04.313Z"
+        "timestamp": "2026-06-01T18:48:56.791Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -73,7 +73,7 @@
     "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2062.0011980555555,
+      "hoursUntil": -2062.815775277778,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -153,7 +153,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-06-01T18:00:04.313Z",
+      "triggeredAt": "2026-06-01T18:48:56.791Z",
       "expiresAt": "2026-06-02T16:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -185,7 +185,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-06-01T18:00:04.313Z",
+      "triggeredAt": "2026-06-01T18:48:56.791Z",
       "expiresAt": "2026-06-04T04:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -216,8 +216,8 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-06-01T18:00:04.313Z",
-      "expiresAt": "2026-06-08T18:00:04.313Z",
+      "triggeredAt": "2026-06-01T18:48:56.791Z",
+      "expiresAt": "2026-06-08T18:48:56.791Z",
       "kind": "grand_tour",
       "region": "Other",
       "regionPriority": 99,
@@ -254,8 +254,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-06-01T18:00:04.313Z",
-      "expiresAt": "2026-06-08T18:00:04.313Z",
+      "triggeredAt": "2026-06-01T18:48:56.791Z",
+      "expiresAt": "2026-06-08T18:48:56.791Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -315,7 +315,7 @@
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-06-01T18:00:04.313Z",
+      "triggeredAt": "2026-06-01T18:48:56.791Z",
       "expiresAt": "2026-06-05T17:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -415,10 +415,10 @@
           "sport": "cricket",
           "displayName": "International Cricket",
           "leagueKey": "intl",
-          "dateRangeLabel": "Jun 3–6",
+          "dateRangeLabel": "Jun 3–20",
           "startDate": "2026-06-03T10:00:00.000Z",
-          "endDate": "2026-06-06T15:00:00.000Z",
-          "eventCount": 3,
+          "endDate": "2026-06-20T08:00:00.000Z",
+          "eventCount": 9,
           "seasonPhase": null
         },
         {
@@ -589,6 +589,16 @@
           "startDate": "2026-06-14T03:30:00.000Z",
           "endDate": "2026-06-14T03:30:00.000Z",
           "eventCount": 1,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
+          "displayName": "T20I Cricket",
+          "leagueKey": "t20i",
+          "dateRangeLabel": "Jun 17–21",
+          "startDate": "2026-06-17T12:00:00.000Z",
+          "endDate": "2026-06-21T08:00:00.000Z",
+          "eventCount": 3,
           "seasonPhase": null
         },
         {
