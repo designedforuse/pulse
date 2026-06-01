@@ -1482,5 +1482,89 @@
       "selectedVideoChannel": "StumpTales",
       "rejectedForAgeCount": 0
     }
+  },
+  "clinch_watch:zverev clinch playoff berth june 2026": {
+    "video": null,
+    "fetchedAt": "2026-06-01T15:15:46.740Z",
+    "query": "Zverev clinch playoff berth June 2026",
+    "debug": {
+      "searchQuery": "Zverev clinch playoff berth June 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:louisville city fc vs birmingham legion fc usl preview": {
+    "video": null,
+    "fetchedAt": "2026-06-01T15:15:46.977Z",
+    "query": "Louisville City FC vs Birmingham Legion FC USL preview",
+    "debug": {
+      "searchQuery": "Louisville City FC vs Birmingham Legion FC USL preview",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "grand_tour:giro d'italia cycling highlights june 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=Kvpfpm5LafY",
+      "thumbnailUrl": "https://img.youtube.com/vi/Kvpfpm5LafY/hqdefault.jpg",
+      "durationSeconds": 22790,
+      "title": "Crash Bandicoot 3: 6 HOURS dismantling the PERFECT CLOSURE that ALMOST BROKE Naughty Dog | Making of",
+      "source": "youtube",
+      "channel": "Bits Historias",
+      "publishedAt": "22h ago"
+    },
+    "fetchedAt": "2026-06-01T15:15:47.248Z",
+    "query": "Giro d'Italia cycling highlights June 2026",
+    "debug": {
+      "searchQuery": "Giro d'Italia cycling highlights June 2026",
+      "selectedVideoTitle": "Crash Bandicoot 3: 6 HOURS dismantling the PERFECT CLOSURE that ALMOST BROKE Naughty Dog | Making of",
+      "selectedVideoPublishedAt": "22h ago",
+      "selectedVideoChannel": "Bits Historias",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:big stage sports june 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=lUR6BIzZXuQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/lUR6BIzZXuQ/hqdefault.jpg",
+      "durationSeconds": 11081,
+      "title": "2026 NCAA DI rowing championships | FULL REPLAY",
+      "source": "youtube",
+      "channel": "NCAA Championships",
+      "publishedAt": "22h ago"
+    },
+    "fetchedAt": "2026-06-01T15:15:47.704Z",
+    "query": "Big Stage sports June 2026",
+    "debug": {
+      "searchQuery": "Big Stage sports June 2026",
+      "selectedVideoTitle": "2026 NCAA DI rowing championships | FULL REPLAY",
+      "selectedVideoPublishedAt": "22h ago",
+      "selectedVideoChannel": "NCAA Championships",
+      "rejectedForAgeCount": 1
+    }
+  },
+  "diamond_league:diamond league — rome diamond league 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=ovRM3_IOMdU",
+      "thumbnailUrl": "https://img.youtube.com/vi/ovRM3_IOMdU/hqdefault.jpg",
+      "durationSeconds": 4635,
+      "title": "Round-Up | Rabat Diamond League, Bydgoszcz and UK Athletics 10k Road Championships",
+      "source": "youtube",
+      "channel": "Podium Athletics",
+      "publishedAt": "1 hour ago"
+    },
+    "fetchedAt": "2026-06-01T15:15:48.057Z",
+    "query": "Diamond League — Rome Diamond League 2026",
+    "debug": {
+      "searchQuery": "Diamond League — Rome Diamond League 2026",
+      "selectedVideoTitle": "Round-Up | Rabat Diamond League, Bydgoszcz and UK Athletics 10k Road Championships",
+      "selectedVideoPublishedAt": "1 hour ago",
+      "selectedVideoChannel": "Podium Athletics",
+      "rejectedForAgeCount": 0
+    }
   }
 }
