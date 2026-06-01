@@ -10,6 +10,7 @@ import { fetchAllLiveScores } from "./liveScores";
 import { fetchSvnsMatches, getSvnsCities } from "./svnsMatches";
 import { fetchWrcStages, getWrcRoundBaseId } from "./wrcStages";
 import { fetchDailyWrap } from "./dailyWrap";
+import { synthesizeHeadline, ttsConfigured } from "./tts";
 
 const GENERATED_EVENTS_PATH = path.resolve(
   process.cwd(),
@@ -98,6 +99,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (err) {
       console.error("[daily-wrap] Error:", err);
       res.status(500).json({ error: "Failed to build daily wrap" });
+    }
+  });
+
+  app.get("/api/daily-wrap/audio", async (req, res) => {
+    try {
+      const text = (req.query.text as string) ?? "";
+      if (!text.trim()) {
+        res.status(400).json({ error: "text query param required" });
+        return;
+      }
+      if (!ttsConfigured()) {
+        res.status(503).json({ error: "voiceover not configured" });
+        return;
+      }
+      const file = await synthesizeHeadline(text);
+      if (!file) {
+        res.status(500).json({ error: "voiceover unavailable" });
+        return;
+      }
+      res.setHeader("Content-Type", "audio/mpeg");
+      res.setHeader("Cache-Control", "public, max-age=86400");
+      fs.createReadStream(file).pipe(res);
+    } catch (err) {
+      console.error("[tts] Error:", err);
+      res.status(502).json({ error: "voiceover failed" });
     }
   });
 

@@ -8,14 +8,16 @@ import {
   FlatList,
   Animated,
   Linking,
+  ActivityIndicator,
   useWindowDimensions,
   type NativeSyntheticEvent,
   type NativeScrollEvent,
   type ImageSourcePropType,
 } from "react-native";
-import { useNavigation, router } from "expo-router";
+import { useNavigation, router, useFocusEffect } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import * as Haptics from "expo-haptics";
+import { Audio } from "expo-av";
 import { useQuery } from "@tanstack/react-query";
 import { LinearGradient } from "expo-linear-gradient";
 import { Image as ExpoImage } from "expo-image";
@@ -227,18 +229,116 @@ function AthleticsResultsCard({
   );
 }
 
+type AudioStatus = "idle" | "loading" | "playing";
+
+// Single shared narrator: only one headline plays at a time. Loads the clip
+// from the backend TTS route, tracks which story is active, and cleans up on
+// page change / unmount so audio never bleeds across stories.
+function useHeadlineAudio() {
+  const soundRef = useRef<Audio.Sound | null>(null);
+  const reqRef = useRef(0);
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const [status, setStatus] = useState<AudioStatus>("idle");
+
+  const stop = useCallback(async () => {
+    reqRef.current += 1;
+    const s = soundRef.current;
+    soundRef.current = null;
+    setActiveId(null);
+    setStatus("idle");
+    if (s) {
+      try {
+        await s.unloadAsync();
+      } catch {
+        // already unloaded
+      }
+    }
+  }, []);
+
+  const toggle = useCallback(
+    async (id: string, text: string) => {
+      // Tapping the active clip stops it.
+      if (activeId === id && (status === "playing" || status === "loading")) {
+        await stop();
+        return;
+      }
+      await stop();
+      const req = ++reqRef.current;
+      setActiveId(id);
+      setStatus("loading");
+      try {
+        if (Platform.OS !== "web") {
+          await Audio.setAudioModeAsync({ playsInSilentModeIOS: true });
+        }
+        const url = new URL(
+          `/api/daily-wrap/audio?text=${encodeURIComponent(text)}`,
+          getApiUrl()
+        ).toString();
+        const { sound } = await Audio.Sound.createAsync({ uri: url }, { shouldPlay: true });
+        // A newer request superseded this one while we awaited the network.
+        if (req !== reqRef.current) {
+          try {
+            await sound.unloadAsync();
+          } catch {
+            // ignore
+          }
+          return;
+        }
+        soundRef.current = sound;
+        sound.setOnPlaybackStatusUpdate((st) => {
+          if (req !== reqRef.current) return;
+          if (!st.isLoaded) {
+            if (st.error) {
+              setStatus("idle");
+              setActiveId(null);
+            }
+            return;
+          }
+          if (st.didJustFinish) {
+            setStatus("idle");
+            setActiveId(null);
+            if (soundRef.current === sound) soundRef.current = null;
+            sound.unloadAsync().catch(() => {});
+          } else if (st.isPlaying) {
+            setStatus("playing");
+          }
+        });
+        setStatus("playing");
+      } catch {
+        if (req === reqRef.current) {
+          setStatus("idle");
+          setActiveId(null);
+        }
+      }
+    },
+    [activeId, status, stop]
+  );
+
+  useEffect(() => {
+    return () => {
+      void stop();
+    };
+  }, [stop]);
+
+  return { activeId, status, toggle, stop };
+}
+
 function StoryPage({
   view,
   height,
   insets,
   isLast,
   hideSpoilers,
+  audioStatus,
+  onToggleAudio,
 }: {
   view: StoryView;
   height: number;
   insets: { top: number; bottom: number };
   isLast: boolean;
   hideSpoilers: boolean;
+  audioStatus: AudioStatus;
+  onToggleAudio: () => void;
 }) {
   const { entry, event, score, mood, headline, sportColor, video, backdrop } = view;
   const moodColor = MOOD_COLORS[mood];
@@ -291,6 +391,33 @@ function StoryPage({
         <View style={styles.headlineWrap}>
           <Text style={[styles.headline, { color: Colors.textPrimary }]}>{headline}</Text>
           <View style={[styles.headlineRule, { backgroundColor: moodColor }]} />
+          <Pressable
+            onPress={onToggleAudio}
+            hitSlop={8}
+            style={({ pressed }) => [
+              styles.listenBtn,
+              { borderColor: moodColor + "88", backgroundColor: moodColor + "1A" },
+              pressed && { opacity: 0.75 },
+            ]}
+            testID={`story-listen-${entry.eventId}`}
+          >
+            {audioStatus === "loading" ? (
+              <ActivityIndicator size="small" color={moodColor} />
+            ) : (
+              <Ionicons
+                name={audioStatus === "playing" ? "pause" : "volume-high"}
+                size={15}
+                color={moodColor}
+              />
+            )}
+            <Text style={[styles.listenBtnText, { color: moodColor }]}>
+              {audioStatus === "playing"
+                ? "Playing"
+                : audioStatus === "loading"
+                  ? "Loading…"
+                  : "Listen"}
+            </Text>
+          </Pressable>
         </View>
 
         {/* Footer */}
@@ -380,6 +507,7 @@ export default function DailyWrapFullScreen() {
   const { getScore } = useScores();
   const tz = new Date().getTimezoneOffset();
   const [index, setIndex] = useState(0);
+  const audio = useHeadlineAudio();
 
   const insets = useMemo(
     () => ({
@@ -466,6 +594,22 @@ export default function DailyWrapFullScreen() {
     }
   }, [stories.length, index]);
 
+  // Stop narration when the user swipes to a different story.
+  useEffect(() => {
+    void audio.stop();
+  }, [index, audio.stop]);
+
+  // Stop narration when the screen loses focus (e.g. navigating to the replay
+  // or highlights) — the screen stays mounted while blurred, so the unmount
+  // cleanup alone is not enough.
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        void audio.stop();
+      };
+    }, [audio.stop])
+  );
+
   const onScrollEnd = useCallback(
     (e: NativeSyntheticEvent<NativeScrollEvent>) => {
       const next = Math.round(e.nativeEvent.contentOffset.y / height);
@@ -495,8 +639,11 @@ export default function DailyWrapFullScreen() {
               insets={insets}
               isLast={i === stories.length - 1}
               hideSpoilers={hideSpoilers}
+              audioStatus={audio.activeId === item.entry.eventId ? audio.status : "idle"}
+              onToggleAudio={() => audio.toggle(item.entry.eventId, item.headline)}
             />
           )}
+          extraData={`${audio.activeId ?? ""}:${audio.status}`}
           pagingEnabled
           showsVerticalScrollIndicator={false}
           snapToInterval={height}
@@ -753,6 +900,21 @@ const styles = StyleSheet.create({
   replayBtnText: {
     fontSize: 14,
     fontFamily: "Inter_700Bold",
+    letterSpacing: 0.2,
+  },
+  listenBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    alignSelf: "flex-start",
+    gap: 7,
+    paddingVertical: 9,
+    paddingHorizontal: 14,
+    borderRadius: 999,
+    borderWidth: 1,
+  },
+  listenBtnText: {
+    fontSize: 13,
+    fontFamily: "Inter_600SemiBold",
     letterSpacing: 0.2,
   },
   swipeHint: {
