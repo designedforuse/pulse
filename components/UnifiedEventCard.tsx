@@ -1012,7 +1012,7 @@ export default function UnifiedEventCard({
       ]}
       testID={`event-${event.id}`}
     >
-      <Animated.View style={[uStyles.cardInner, featured && uStyles.cardInnerFeatured, flashStyle]}>
+      <Animated.View style={[uStyles.cardInner, featured && uStyles.cardInnerFeatured, dailyWrap && uStyles.cardInnerDailyWrap, flashStyle]}>
         {!dailyWrap && !showEspnStyle && !showRacingEspnStyle && !showGolfEspnStyle && !showAthleticsEspnStyle && !showCyclingEspnStyle && !showPaddlingEspnStyle && !showSvnsEspnStyle && (
           <View style={[uStyles.accentBar, { backgroundColor: isLive ? liveTensionColor : (accentBarColor ?? sportColor) }]} />
         )}
@@ -1798,6 +1798,9 @@ const uStyles = StyleSheet.create({
   cardInnerFeatured: {
     padding: 16,
     borderRadius: 15,
+  },
+  cardInnerDailyWrap: {
+    backgroundColor: "rgba(0,0,0,0.38)",
   },
   accentBar: {
     position: "absolute" as const,
