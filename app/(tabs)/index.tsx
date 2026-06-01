@@ -203,7 +203,7 @@ export default function ExploreScreen() {
             });
           }}
           accessibilityRole="button"
-          accessibilityLabel={`What's coming up: ${totalLeagues} leagues across ${current.monthLabel.split(" ")[0]} and ${next.monthLabel.split(" ")[0]}${totalFinals > 0 ? `, ${totalFinals} finals` : ""}`}
+          accessibilityLabel={`What to watch: ${totalLeagues} leagues across ${current.monthLabel.split(" ")[0]} and ${next.monthLabel.split(" ")[0]}${totalFinals > 0 ? `, ${totalFinals} finals` : ""}`}
           style={({ pressed }) => [styles.comingUpCard, styles.cardFill, pressed && { opacity: 0.9 }]}
         >
           <ExpoImage
@@ -224,7 +224,7 @@ export default function ExploreScreen() {
                 {monthSnapshot.thisWeek.monthLabel.replace(/,\s*\d{4}$/, "").toUpperCase()}
               </Text>
             )}
-            <Text style={styles.comingUpWordmark}>WHAT'S{"\n"}COMING UP</Text>
+            <Text style={styles.comingUpWordmark}>WHAT TO{"\n"}WATCH</Text>
             <Text style={styles.comingUpTagline}>The big moments to look out for</Text>
             <View style={styles.comingUpChips}>
               <View style={styles.comingUpChip}>

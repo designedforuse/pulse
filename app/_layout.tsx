@@ -77,7 +77,7 @@ function RootLayoutNav() {
         name="month-schedule"
         options={{
           headerShown: false,
-          title: "What's Coming Up",
+          title: "What to Watch",
         }}
       />
       <Stack.Screen

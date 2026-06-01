@@ -1,8 +1,11 @@
 {
-  "lastUpdated": "2026-06-01T22:33:14.729Z",
+  "lastUpdated": "2026-06-01T23:13:16.137Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
+        "Other": 1
+      },
+      "upset_alert": {
         "Other": 1
       },
       "clinch_watch": {
@@ -21,6 +24,7 @@
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
       "Other": [
+        "upset_alert: Upset Alert",
         "clinch_watch: Clinch Watch",
         "marquee_match: Marquee Match: USL",
         "grand_tour: Grand Tour",
@@ -29,8 +33,8 @@
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 5,
-    "totalAfterCap": 5,
+    "totalBeforeCap": 6,
+    "totalAfterCap": 6,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -63,17 +67,17 @@
         ],
         "playersIngested": 336,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-06-01T22:33:14.729Z"
+        "timestamp": "2026-06-01T23:13:16.137Z"
       },
       "cacheHistoryCount": 880,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 5,
-    "candidateCountAfterCap": 5,
+    "candidateCountBeforeCap": 6,
+    "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2066.554091388889,
+      "hoursUntil": -2067.2211491666667,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -83,13 +87,13 @@
       "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 0,
+      "rawUpsetCandidates": 1,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 0,
-      "upsetFinalCount": 0
+      "upsetCompletedCandidates": 1,
+      "upsetFinalCount": 1
     },
     "clinchWatch": {
-      "rawClinchCandidates": 3,
+      "rawClinchCandidates": 4,
       "clinchAfterRegionFilter": 1,
       "clinchFinalCount": 1,
       "clinchGatedOut": []
@@ -106,6 +110,13 @@
       "scoredCandidates": []
     },
     "videoSelection": {
+      "upset_alert_tennis-espn-175751": {
+        "searchQuery": "Tiafoe vs Arnaldi upset highlights June 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
+        "rejectedForAgeCount": 0
+      },
       "clinch_watch_tennis-espn-175663": {
         "searchQuery": "Zverev clinch playoff berth June 2026",
         "selectedVideoTitle": null,
@@ -145,6 +156,41 @@
   },
   "cards": [
     {
+      "id": "upset_alert_tennis-espn-175751",
+      "title": "Upset Alert",
+      "subtitle": "Arnaldi stuns Tiafoe at French Open",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 98,
+      "triggeredAt": "2026-06-01T23:13:16.137Z",
+      "expiresAt": "2026-06-02T05:13:16.137Z",
+      "kind": "upset_alert",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "mode": "completed",
+        "upsetType": "tennis_seed_upset",
+        "sport": "tennis",
+        "league": "Grand Slam",
+        "favoriteName": "Tiafoe",
+        "underdogName": "Arnaldi",
+        "favoriteRank": 19,
+        "awayTeam": "Arnaldi",
+        "homeTeam": "Tiafoe",
+        "startTime": "2026-06-01T17:40:00.000Z",
+        "eventIds": [
+          "tennis-espn-175751"
+        ],
+        "reason": "Tiafoe (seed 19) entered as the higher seed, but Arnaldi knocked Tiafoe out.\n\nThis opens up the draw and changes the shape of the tournament."
+      },
+      "sports": [
+        "tennis"
+      ]
+    },
+    {
       "id": "clinch_watch_tennis-espn-175663",
       "title": "Clinch Watch",
       "subtitle": "Zverev vs Jodar · Tennis title on the line",
@@ -153,7 +199,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-06-01T22:33:14.729Z",
+      "triggeredAt": "2026-06-01T23:13:16.137Z",
       "expiresAt": "2026-06-02T16:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -185,7 +231,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-06-01T22:33:14.729Z",
+      "triggeredAt": "2026-06-01T23:13:16.137Z",
       "expiresAt": "2026-06-04T04:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -216,8 +262,8 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-06-01T22:33:14.729Z",
-      "expiresAt": "2026-06-08T22:33:14.729Z",
+      "triggeredAt": "2026-06-01T23:13:16.137Z",
+      "expiresAt": "2026-06-08T23:13:16.137Z",
       "kind": "grand_tour",
       "region": "Other",
       "regionPriority": 99,
@@ -248,21 +294,21 @@
     {
       "id": "league_moment_tournament",
       "title": "Big Stage",
-      "subtitle": "3 tournament/knockout matches this week",
+      "subtitle": "4 tournament/knockout matches this week",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-06-01T22:33:14.729Z",
-      "expiresAt": "2026-06-08T22:33:14.729Z",
+      "triggeredAt": "2026-06-01T23:13:16.137Z",
+      "expiresAt": "2026-06-08T23:13:16.137Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "tournament",
-        "matchCount": 3,
+        "matchCount": 4,
         "matches": [
           {
             "away": "Zverev",
@@ -284,14 +330,22 @@
             "league": "Grand Slam",
             "round": "Roland Garros — Quarterfinal",
             "startTime": "2026-06-03T04:00:00.000Z"
+          },
+          {
+            "away": "Arnaldi",
+            "home": "Berrettini",
+            "league": "Grand Slam",
+            "round": "Roland Garros — Quarterfinal",
+            "startTime": "2026-06-03T04:00:00.000Z"
           }
         ],
         "eventIds": [
           "tennis-espn-175663",
           "tennis-espn-175661",
-          "tennis-espn-175771"
+          "tennis-espn-175771",
+          "tennis-espn-175769"
         ],
-        "reason": "Found 3 tournament stage match(es) in the next 7 days"
+        "reason": "Found 4 tournament stage match(es) in the next 7 days"
       },
       "sports": [
         "tennis"
@@ -315,7 +369,7 @@
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-06-01T22:33:14.729Z",
+      "triggeredAt": "2026-06-01T23:13:16.137Z",
       "expiresAt": "2026-06-05T17:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -368,7 +422,7 @@
           "dateRangeLabel": "Jun 1–3",
           "startDate": "2026-06-01T09:05:00.000Z",
           "endDate": "2026-06-03T04:00:00.000Z",
-          "eventCount": 6,
+          "eventCount": 7,
           "seasonPhase": null
         },
         {
@@ -936,7 +990,7 @@
           "dateRangeLabel": "Jun 1–3",
           "startDate": "2026-06-01T09:05:00.000Z",
           "endDate": "2026-06-03T04:00:00.000Z",
-          "eventCount": 6,
+          "eventCount": 7,
           "seasonPhase": null
         },
         {

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-01T22:33:14.694Z",
+  "lastUpdated": "2026-06-01T23:13:16.101Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -43,10 +43,10 @@
   "ahlAdded": 0,
   "ahlUpdated": 17,
   "ahlPruned": 0,
-  "echlCount": 14,
+  "echlCount": 13,
   "echlAdded": 147,
   "echlUpdated": 14,
-  "echlPruned": 147,
+  "echlPruned": 148,
   "echlWebCount": 161,
   "buCount": 0,
   "buAdded": 0,
@@ -151,13 +151,13 @@
   "faCupUpdated": 0,
   "faCupPruned": 0,
   "faCupSourceUsed": "espn",
-  "tennisCount": 15,
-  "tennisAdded": 0,
+  "tennisCount": 16,
+  "tennisAdded": 1,
   "tennisUpdated": 15,
   "tennisPruned": 0,
   "tennisSourceUsed": "espn",
   "tennisTournamentCounts": {
-    "French Open": 6,
+    "French Open": 7,
     "Wimbledon": 9
   },
   "f1Count": 35,
@@ -204,22 +204,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-06-01T22:33:14.694Z",
+    "lastRefreshAt": "2026-06-01T23:13:16.101Z",
     "sources": {
       "nhl": {
         "count": 7,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 23,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
-        "count": 14,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "count": 13,
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -231,7 +231,7 @@
       },
       "rugby": {
         "count": 55,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 6,
@@ -251,37 +251,37 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 12,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 142,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 10,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 10,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 2,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
@@ -291,42 +291,42 @@
       },
       "nwsl": {
         "count": 18,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 54,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-21T00:00:00.000Z"
       },
       "championsCup": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "challengeCup": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 15,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
@@ -336,17 +336,17 @@
         "firstMatchDate": "2026-05-16T14:00:00.000Z"
       },
       "tennis": {
-        "count": 15,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "count": 16,
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
-          "French Open": 6,
+          "French Open": 7,
           "Wimbledon": 9
         }
       },
       "f1": {
         "count": 35,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Canadian Grand Prix": 5,
@@ -360,27 +360,27 @@
       },
       "wrc": {
         "count": 31,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "Hardcoded Schedule"
       },
       "schoolsRugby": {
         "count": 3,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "Hardcoded Schedule"
       },
       "paddling": {
         "count": 2,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "Hardcoded Schedule"
       },
       "comrades": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "Hardcoded Schedule"
       },
       "golf": {
         "count": 8,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "US Open": 4,
@@ -389,7 +389,7 @@
       },
       "marathon": {
         "count": 3,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Sydney Marathon": 1,
@@ -419,7 +419,7 @@
       },
       "cafcl": {
         "count": 6,
-        "lastFetchAt": "2026-06-01T22:33:14.694Z",
+        "lastFetchAt": "2026-06-01T23:13:16.101Z",
         "sourceName": "ESPN API"
       }
     }
@@ -2273,18 +2273,6 @@
       "source": "soccer-mls",
       "leagueKey": "mls",
       "providerReason": "mls-appletv"
-    },
-    {
-      "id": "echl-web-25486",
-      "sport": "hockey",
-      "league": "ECHL",
-      "homeTeam": "Wheeling Nailers",
-      "awayTeam": "Maine Mariners",
-      "startTimeLocal": "2026-05-18T23:10:00.000Z",
-      "endTimeLocal": "2026-05-19T01:55:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "echl"
     },
     {
       "id": "cycling-grand-tour-giro-d-italia-2026-2026-05-19-stage-10",
@@ -5318,7 +5306,7 @@
       "startTimeLocal": "2026-06-01T17:40:00.000Z",
       "endTimeLocal": "2026-06-01T20:10:00.000Z",
       "providerId": "youtubetv",
-      "isLive": true,
+      "isLive": false,
       "source": "espn-tennis",
       "leagueKey": "grand-slam",
       "providerReason": "tnt-broadcast",
@@ -5342,7 +5330,7 @@
       "startTimeLocal": "2026-06-01T23:00:00.000Z",
       "endTimeLocal": "2026-06-02T01:45:00.000Z",
       "providerId": "flosports",
-      "isLive": false,
+      "isLive": true,
       "source": "ahl-hockeytech"
     },
     {
@@ -5483,6 +5471,29 @@
       "tennisPlayer2Rank": 4,
       "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
       "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
+      "tournamentName": "French Open"
+    },
+    {
+      "id": "tennis-espn-175769",
+      "sport": "tennis",
+      "league": "Grand Slam",
+      "awayTeam": "Arnaldi",
+      "homeTeam": "Berrettini",
+      "startTimeLocal": "2026-06-03T04:00:00.000Z",
+      "endTimeLocal": "2026-06-03T06:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "espn-tennis",
+      "leagueKey": "grand-slam",
+      "providerReason": "tnt-broadcast",
+      "eventType": "match",
+      "sessionTitle": "Roland Garros — Quarterfinal",
+      "competitionType": "international",
+      "tennisRound": "Quarterfinal",
+      "tennisPlayer1": "Arnaldi",
+      "tennisPlayer2": "Berrettini",
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
       "tournamentName": "French Open"
     },
     {
