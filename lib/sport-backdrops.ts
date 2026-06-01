@@ -49,6 +49,11 @@ const BACKDROPS: Record<string, ImageSourcePropType[]> = {
     require("@/assets/images/sportBackdrops/athletics-2.png"),
     require("@/assets/images/sportBackdrops/athletics-3.png"),
   ],
+  cycling: [
+    require("@/assets/images/sportBackdrops/cycling-1.png"),
+    require("@/assets/images/sportBackdrops/cycling-2.png"),
+    require("@/assets/images/sportBackdrops/cycling-3.png"),
+  ],
 };
 
 // Dedicated backdrop for the SA Schools (Paarl Boys' High) Daily Wrap story,

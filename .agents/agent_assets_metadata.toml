@@ -120,6 +120,24 @@ uri = "file://assets/images/sportBackdrops/athletics-3.jpg.png"
 type = "image"
 title = "generated_image"
 
+[[generated]]
+id = "f4FAyrjRVIGSCRpNd6TMY"
+uri = "file://assets/images/sportBackdrops/cycling-1.png"
+type = "image"
+title = "cycling backdrop one"
+
+[[generated]]
+id = "UNEC1hDeo1iMpzxD3EZKN"
+uri = "file://assets/images/sportBackdrops/cycling-2.png"
+type = "image"
+title = "cycling backdrop two"
+
+[[generated]]
+id = "04tuiBTwF1qfMhgh0YFQD"
+uri = "file://assets/images/sportBackdrops/cycling-3.png"
+type = "image"
+title = "cycling backdrop three"
+
 [[outputs]]
 id = "BCzZEiJcUNr5OpJ6RpZse"
 uri = "file://PRD.md"
