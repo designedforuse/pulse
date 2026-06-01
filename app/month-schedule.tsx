@@ -16,6 +16,7 @@ import Colors from "@/constants/colors";
 import { useEvents } from "@/lib/events-context";
 import { useFavorites } from "@/lib/favorites-context";
 import UnifiedEventCard from "@/components/UnifiedEventCard";
+import { getEffectiveSport } from "@/lib/data";
 
 const SNAPSHOT_COLOR = "#6366F1";
 const PINK = "#FF85C8";
@@ -167,6 +168,30 @@ export default function MonthScheduleScreen() {
   }, [narrativeData, disabledSports]);
   const hasToday = todayStories.length > 0;
 
+  // Today's events (device-local calendar day), so the Today tab can always
+  // list what's on even when no editorial story scored. Honors disabled sports.
+  const todayEvents = useMemo(() => {
+    const ref = new Date();
+    const y = ref.getFullYear();
+    const mo = ref.getMonth();
+    const da = ref.getDate();
+    return allEvents
+      .filter((e: any) => {
+        const t = new Date(e.startTimeLocal);
+        if (t.getFullYear() !== y || t.getMonth() !== mo || t.getDate() !== da) return false;
+        if (
+          disabledSports.size > 0 &&
+          disabledSports.has(getEffectiveSport(e.sport, e.league, e.leagueKey).toLowerCase())
+        )
+          return false;
+        return true;
+      })
+      .sort(
+        (a: any, b: any) =>
+          new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime(),
+      );
+  }, [allEvents, disabledSports]);
+
   const eventMap = useMemo(() => {
     const m = new Map<string, any>();
     for (const e of allEvents) m.set(e.id, e);
@@ -194,14 +219,9 @@ export default function MonthScheduleScreen() {
   const hasWeek = !!snapshot.thisWeek;
   const hasTwoMonths = snapshot.currentMonth.monthKey !== snapshot.nextMonth.monthKey;
 
+  // Today tab is always available now, so never auto-redirect away from it.
   const effectiveActiveKey: TabKey =
-    activeKey === "today" && !hasToday && !storiesLoading
-      ? hasWeek
-        ? "week"
-        : "current"
-      : activeKey === "week" && !hasWeek
-        ? "current"
-        : activeKey;
+    activeKey === "week" && !hasWeek ? "current" : activeKey;
 
   const isToday = effectiveActiveKey === "today";
   const monthData: MonthSnapshotData | null = isToday
@@ -211,7 +231,7 @@ export default function MonthScheduleScreen() {
       : effectiveActiveKey === "current"
         ? snapshot.currentMonth
         : snapshot.nextMonth;
-  const showTodayTab = hasToday || storiesLoading;
+  const showTodayTab = true;
   const showTabs = showTodayTab || hasTwoMonths || hasWeek;
   const grouped = monthData ? groupBySport(monthData.leagues) : [];
   const now = new Date();
@@ -324,7 +344,15 @@ export default function MonthScheduleScreen() {
             {storiesLoading && todayStories.length === 0 ? (
               <Text style={styles.muted}>Loading…</Text>
             ) : todayStories.length === 0 ? (
-              <Text style={styles.muted}>No live signals right now. Check back closer to game time.</Text>
+              todayEvents.length > 0 ? (
+                <View style={styles.eventsList}>
+                  {todayEvents.map((ev: any) => (
+                    <UnifiedEventCard key={ev.id} event={ev} now={now} />
+                  ))}
+                </View>
+              ) : (
+                <Text style={styles.muted}>No games scheduled today. Check back soon.</Text>
+              )
             ) : (
               <View style={styles.storyList}>
                 {todayStories.map((story, idx) => {
