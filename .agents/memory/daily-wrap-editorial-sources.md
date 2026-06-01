@@ -42,6 +42,28 @@ SVNS (and similar tournament-container) wrap entries have no head-to-head
 the result on the DailyWrapEntry itself (a structured field) and render a
 dedicated card from it — don't try to synthesize a fake SportEvent/ScoreData.
 
+## NHL playoff series context must be seed-safe
+NHL wrap events carry only full team names (no abbrev), but the series-status
+feed (`seriesStatuses`, keyed by eventId, threaded from `fetchAllLiveScores`
+through `buildEditorial` into hockey) reports wins by `topSeed`/`bottomSeed`
+abbrev. So you CANNOT reliably say "X take a 3–2 series lead" — you'd have to
+map a name to a seed. Only attribute outcomes that are unambiguous regardless
+of which seed won: **clinch** (a team reaches `neededToWin` — only possible by
+winning), **level** (both seeds equal), **force decider** (both at
+`neededToWin-1`). A plain lead (3–2) is ambiguous (winner may have taken the
+lead OR cut a deficit) → omit it from the headline; show neutral "Series 3–2"
+in the detail line instead.
+**Why:** avoids fabricating who-leads claims from unmappable data.
+
+## Per-sport editorial voice (keep them differentiated)
+The headline builders deliberately use distinct vocab so the four sports don't
+read identically: hockey = blanked / cruised past / edged (+OT/SO +series);
+soccer = thrashed / swept aside / edged (+goals-driven draws: goalless, "share
+N goals"); rugby = thumped / outclassed / shut out / edged-by-N (points
+margin); cycling = leaderboard story ("leads … by {GC gap} after Stage N").
+When adding a sport, give it its own verbs + surface its own native stat
+rather than reusing the generic "{winner} {verb} {loser} {score}" skeleton.
+
 **Spoiler safety (cross-cutting):** the wrap full-screen has a spoiler toggle
 (`hideSpoilers`). `entry.detail` and any result-bearing field can contain the
 scoreline, so NEVER render `entry.detail` (or a new finals card) raw while

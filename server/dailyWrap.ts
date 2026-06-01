@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import { fetchAllLiveScores } from "./liveScores";
-import type { ScoreData } from "./liveScores";
+import type { ScoreData, SeriesStatus } from "./liveScores";
 import { enrichWithHighlights, type HighlightVideo } from "./dailyWrapHighlights";
 import { fetchSvnsMatches } from "./svnsMatches";
 
@@ -151,7 +151,44 @@ function flag(country: string): string {
 
 // --- Editorial builders ---
 
-function hockeyEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> | null {
+// Playoff series context that is safe WITHOUT mapping a team name to its seed
+// abbreviation. We can only attribute a series outcome to *this game's winner*
+// when that outcome is unambiguous: a clinch (a team can only reach the wins it
+// needs by winning), levelling the series (both seeds equal), or forcing the
+// decider (both one win away). A simple lead (e.g. 3–2) is ambiguous — the
+// winner may have taken the lead OR merely cut a deficit — so we don't claim it.
+function hockeySeriesPhrase(s: SeriesStatus | undefined): string | null {
+  if (!s) return null;
+  const a = s.topSeedWins ?? 0;
+  const b = s.bottomSeedWins ?? 0;
+  if (a === 0 && b === 0) return null;
+  const need = s.neededToWin ?? 4;
+  const hi = Math.max(a, b);
+  const lo = Math.min(a, b);
+  if (hi >= need) return `to win the series ${hi}–${lo}`;
+  if (a === b) {
+    if (a === need - 1) return `to force Game ${need * 2 - 1}`;
+    return `to level the series ${a}–${a}`;
+  }
+  return null;
+}
+
+// Seed-agnostic series state for the detail line (never names who leads).
+function hockeySeriesDetail(s: SeriesStatus | undefined): string | null {
+  if (!s) return null;
+  const a = s.topSeedWins ?? 0;
+  const b = s.bottomSeedWins ?? 0;
+  if (a === 0 && b === 0) return null;
+  const need = s.neededToWin ?? 4;
+  const hi = Math.max(a, b);
+  const lo = Math.min(a, b);
+  const round = (s.seriesTitle || "").trim() || (s.round ? `Round ${s.round}` : "Playoffs");
+  if (hi >= need) return `${round} · Series over ${hi}–${lo}`;
+  if (a === b) return `${round} · Series tied ${a}–${a}`;
+  return `${round} · Series ${hi}–${lo}`;
+}
+
+function hockeyEditorial(event: any, score: ScoreData, series?: SeriesStatus): Partial<DailyWrapEntry> | null {
   const away = score.awayScore ?? -1;
   const home = score.homeScore ?? -1;
   if (away < 0 || home < 0) return null;
@@ -167,14 +204,22 @@ function hockeyEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> 
   const isSO = period.includes("SO") || period.includes("SHOOTOUT");
   const isOT = !isSO && (period.includes("OT") || period === "3OT" || period === "4OT");
 
+  // Hockey voice: "blanked" for a shutout (distinct from rugby's "shut out"),
+  // "cruised past" for a runaway (distinct from basketball's "dominated").
   let verb = "beat";
-  if (away === 0 || home === 0) verb = "shut out";
+  if (away === 0 || home === 0) verb = "blanked";
   else if (margin === 1) verb = "edged";
-  else if (margin >= 4) verb = "dominated";
+  else if (margin >= 4) verb = "cruised past";
 
   const suffix = isSO ? " in a shootout" : isOT ? " in overtime" : "";
-  const editorial = `${winner} ${verb} ${loser} ${ws}–${ls}${suffix}`;
-  const detail = `${event.league} · ${ws}–${ls} Final${isSO ? " (SO)" : isOT ? " (OT)" : ""}`;
+  const seriesPhrase = hockeySeriesPhrase(series);
+  const editorial = `${winner} ${verb} ${loser} ${ws}–${ls}${suffix}${seriesPhrase ? ` ${seriesPhrase}` : ""}`;
+
+  const seriesDetail = hockeySeriesDetail(series);
+  const otTag = isSO ? " (SO)" : isOT ? " (OT)" : "";
+  const detail = seriesDetail
+    ? `${event.league} · ${ws}–${ls} Final${otTag} · ${seriesDetail}`
+    : `${event.league} · ${ws}–${ls} Final${otTag}`;
   return { editorial, detail, winner, loser, winnerScore: ws, loserScore: ls };
 }
 
@@ -184,7 +229,16 @@ function soccerEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> 
   if (away < 0 || home < 0) return null;
 
   if (home === away) {
-    const editorial = `${event.homeTeam} and ${event.awayTeam} draw ${home}–${away}`;
+    // Soccer voice leans on the goals story: name a goalless stalemate, and
+    // flag a high-scoring share-out, rather than a flat "draw 2–2".
+    let editorial: string;
+    if (home === 0) {
+      editorial = `${event.homeTeam} and ${event.awayTeam} play out a goalless draw`;
+    } else if (home + away >= 4) {
+      editorial = `${event.homeTeam} and ${event.awayTeam} share ${home + away} goals in a ${home}–${away} draw`;
+    } else {
+      editorial = `${event.homeTeam} and ${event.awayTeam} draw ${home}–${away}`;
+    }
     return { editorial, detail: `${event.league} · ${home}–${away} Full Time` };
   }
 
@@ -195,10 +249,11 @@ function soccerEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> 
   const ls = isHomeWin ? String(away) : String(home);
   const margin = Math.abs(home - away);
 
+  // Soccer verbs: distinct from rugby/hockey. A goals-margin scale only.
   let verb = "beat";
-  if (away === 0 || home === 0) verb = "kept a clean sheet against";
+  if (margin >= 4) verb = "thrashed";
+  else if (margin === 3) verb = "swept aside";
   else if (margin === 1) verb = "edged";
-  else if (margin >= 3) verb = "hammered";
 
   return {
     editorial: `${winner} ${verb} ${loser} ${ws}–${ls}`,
@@ -249,13 +304,22 @@ function rugbyEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> |
   const ls = isHomeWin ? String(away) : String(home);
   const margin = Math.abs(home - away);
 
+  // Rugby voice: a points-margin scale. "thumped"/"outclassed" for blowouts,
+  // "shut out" reserved for a nil (distinct from hockey's "blanked"), and the
+  // tightest results get the exact margin ("by a point" / "by N").
   let verb = "beat";
-  if (margin <= 5) verb = "edged";
-  else if (margin >= 20) verb = "dominated";
+  if (margin >= 20) verb = "thumped";
   else if (home === 0 || away === 0) verb = "shut out";
+  else if (margin >= 13) verb = "outclassed";
+  else if (margin <= 5) verb = "edged";
+
+  let editorial = `${winner} ${verb} ${loser} ${ws}–${ls}`;
+  if (verb === "edged") {
+    editorial += margin === 1 ? " by a point" : ` by ${margin}`;
+  }
 
   return {
-    editorial: `${winner} ${verb} ${loser} ${ws}–${ls}`,
+    editorial,
     detail: `${event.league} · ${ws}–${ls} Full Time`,
     winner, loser, winnerScore: ws, loserScore: ls,
   };
@@ -335,6 +399,18 @@ function formatCyclistName(raw: string): string {
   return `${given.join(" ")} ${surname.map(tc).join(" ")}`;
 }
 
+// The GC gap arrives in varied shapes ("+1:23", "1:23", "same time", "0:00").
+// Normalise to a bare "1:23" and reject anything that isn't a real time lead so
+// we don't print "by same time" or "by 0:00".
+function normalizeCyclingGap(raw?: string): string | null {
+  const g = (raw || "").trim().replace(/^\+/, "");
+  if (!g) return null;
+  if (/^(s\.?t\.?|same\s*time)$/i.test(g)) return null;
+  if (/^0+([:.]0+)*$/.test(g)) return null;
+  if (!/\d/.test(g)) return null;
+  return g;
+}
+
 function cyclingEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> | null {
   const leaderRaw = (score.cyclingLeader || "").trim();
   if (!leaderRaw) return null;
@@ -354,9 +430,14 @@ function cyclingEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry>
   // Use the stage number from the event itself (the scraped GC number can lag).
   const m = /stage\s*(\d+)/i.exec(event.sessionTitle || "") || /stage-(\d+)/i.exec(event.id || "");
   const stage = m ? parseInt(m[1], 10) : null;
+  // Cycling voice: a leaderboard story, not a head-to-head. Lead with the GC
+  // margin and stage so the headline carries real standings info.
+  const gap = normalizeCyclingGap(score.cyclingLeaderGap);
+  const stagePart = stage ? ` after Stage ${stage}` : "";
+  const gapPart = gap ? ` by ${gap}` : "";
   return {
-    editorial: `${f ? f + " " : ""}${leader} leads the ${tour}`,
-    detail: `${event.league}${stage ? ` · After Stage ${stage}` : ""}${team}`,
+    editorial: `${f ? f + " " : ""}${leader} leads the ${tour}${gapPart}${stagePart}`,
+    detail: `${event.league} · General Classification${team}`,
     winner: leader,
   };
 }
@@ -614,10 +695,10 @@ function cricketEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry>
   return { editorial, detail, winner };
 }
 
-function buildEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> | null {
+function buildEditorial(event: any, score: ScoreData, series?: SeriesStatus): Partial<DailyWrapEntry> | null {
   const sport = (event.sport || "").toLowerCase();
   switch (sport) {
-    case "hockey":    return hockeyEditorial(event, score);
+    case "hockey":    return hockeyEditorial(event, score, series);
     case "soccer":    return soccerEditorial(event, score);
     case "basketball":return basketballEditorial(event, score);
     case "rugby":     return rugbyEditorial(event, score);
@@ -653,9 +734,11 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
   }
 
   let scores: Record<string, ScoreData> = {};
+  let seriesStatuses: Record<string, SeriesStatus> = {};
   try {
     const sr = await fetchAllLiveScores();
     scores = sr.scores;
+    seriesStatuses = sr.seriesStatuses || {};
   } catch {}
 
   const results: DailyWrapEntry[] = [];
@@ -750,7 +833,7 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
         score.racingSessionType !== "Race" &&
         score.racingSessionType !== "Sprint") continue;
 
-    const editorial = buildEditorial(event, score);
+    const editorial = buildEditorial(event, score, seriesStatuses[event.id]);
     if (!editorial) continue;
 
     const priority = getPriorityScore(event.sport, event.league, score);
