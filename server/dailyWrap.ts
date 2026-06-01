@@ -461,6 +461,23 @@ function cleanCricketResult(s: string): string {
     .trim();
 }
 
+// Turn a knockout stage into a dramatic, accurate headline. The competition
+// label is the full series name when available (e.g. "IPL 2026").
+function knockoutCricketHeadline(winner: string, round: string, comp: string): string {
+  switch (round) {
+    case "Final":
+      return `${winner} are the ${comp} champions`;
+    case "Qualifier 1":
+      return `${winner} storm into the ${comp} final`;
+    case "Qualifier 2":
+      return `${winner} book their place in the ${comp} final`;
+    case "Eliminator":
+      return `${winner} survive the ${comp} Eliminator`;
+    default:
+      return `${winner} win the ${comp} ${round}`;
+  }
+}
+
 function cricketEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> | null {
   // CricAPI result rows carry the human-readable outcome in `period`
   // (e.g. "Royal Challengers Bengaluru won by 5 wickets") rather than numeric
@@ -470,15 +487,28 @@ function cricketEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry>
   const scoreLine = [score.cricketHome, score.cricketAway].filter(Boolean).join(" · ");
   if (!hasResult && !scoreLine) return null;
 
-  const editorial = hasResult ? resultText : `${event.homeTeam} vs ${event.awayTeam}`;
-
   // Identify the winner (for highlight matching) when the result text names a team.
   let winner: string | undefined;
   const rt = resultText.toLowerCase();
   if (rt && rt.includes((event.homeTeam || "").toLowerCase())) winner = event.homeTeam;
   else if (rt && rt.includes((event.awayTeam || "").toLowerCase())) winner = event.awayTeam;
 
-  const detail = scoreLine ? `${event.league} · ${scoreLine}` : event.league;
+  // Knockout fixtures (IPL playoffs) carry a `roundName`. Lead with a punchy
+  // stage-aware headline so the wrap reads like a result, not just a scoreline.
+  const round = (event.roundName || "").trim();
+  const comp = (event.seriesName || event.league || "IPL").trim();
+
+  let editorial: string;
+  if (round && winner) {
+    editorial = knockoutCricketHeadline(winner, round, comp);
+  } else if (round) {
+    editorial = `${comp} ${round}: ${event.homeTeam} vs ${event.awayTeam}`;
+  } else {
+    editorial = hasResult ? resultText : `${event.homeTeam} vs ${event.awayTeam}`;
+  }
+
+  const detailLabel = round ? `${comp} ${round}` : event.league;
+  const detail = scoreLine ? `${detailLabel} · ${scoreLine}` : detailLabel;
   return { editorial, detail, winner };
 }
 

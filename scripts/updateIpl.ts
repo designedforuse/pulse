@@ -21,6 +21,7 @@ interface AppEvent {
   hostCountry?: string;
   seriesName?: string;
   cricketMatchId?: string;
+  roundName?: string;
 }
 
 export interface IplFetchResult {
@@ -57,6 +58,7 @@ interface IplMatch {
   GroundName?: string;
   city?: string;
   CompetitionName?: string;
+  MatchOrder?: string;
 }
 
 const COMPETITION_URL = "https://scores.iplt20.com/ipl/mc/competition.js";
@@ -75,6 +77,18 @@ function parseGmtToIso(date: string, time: string): string | null {
 
 function addDuration(iso: string, minutes: number): string {
   return new Date(new Date(iso).getTime() + minutes * 60 * 1000).toISOString();
+}
+
+// The official feed labels each fixture via MatchOrder ("Match 12", or for the
+// knockouts "Qualifier 1", "Eliminator", "Qualifier 2", "Final"). Keep only the
+// playoff stages — regular league games stay unlabelled.
+function parseIplRound(matchOrder?: string): string | undefined {
+  const s = (matchOrder || "").trim();
+  if (/^final$/i.test(s)) return "Final";
+  if (/^qualifier\s*1$/i.test(s)) return "Qualifier 1";
+  if (/^qualifier\s*2$/i.test(s)) return "Qualifier 2";
+  if (/^eliminator$/i.test(s)) return "Eliminator";
+  return undefined;
 }
 
 async function fetchActiveCompetition(): Promise<IplCompetition | null> {
@@ -148,6 +162,7 @@ export async function fetchIplEvents(): Promise<IplFetchResult> {
         ? parseGmtToIso(match.GMTMatchEndDate, match.GMTMatchEndTime) || addDuration(startIso, IPL_DURATION_MIN)
         : addDuration(startIso, IPL_DURATION_MIN);
 
+    const roundName = parseIplRound(match.MatchOrder);
     events.push({
       id: `cricket-ipl-${match.MatchID}`,
       cricketMatchId: String(match.MatchID),
@@ -166,6 +181,7 @@ export async function fetchIplEvents(): Promise<IplFetchResult> {
       format: "T20",
       hostCountry: "India",
       seriesName: comp.CompetitionName,
+      ...(roundName ? { roundName } : {}),
     });
   }
 

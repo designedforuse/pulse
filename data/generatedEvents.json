@@ -5536,7 +5536,8 @@
       "competitionType": "league",
       "format": "T20",
       "hostCountry": "India",
-      "seriesName": "IPL 2026"
+      "seriesName": "IPL 2026",
+      "roundName": "Qualifier 1"
     },
     {
       "id": "echl-web-26577",
@@ -5613,7 +5614,8 @@
       "competitionType": "league",
       "format": "T20",
       "hostCountry": "India",
-      "seriesName": "IPL 2026"
+      "seriesName": "IPL 2026",
+      "roundName": "Eliminator"
     },
     {
       "id": "ahl-1029057",
@@ -5841,7 +5843,8 @@
       "competitionType": "league",
       "format": "T20",
       "hostCountry": "India",
-      "seriesName": "IPL 2026"
+      "seriesName": "IPL 2026",
+      "roundName": "Qualifier 2"
     },
     {
       "id": "tennis-espn-175730",
@@ -6974,7 +6977,8 @@
       "competitionType": "league",
       "format": "T20",
       "hostCountry": "India",
-      "seriesName": "IPL 2026"
+      "seriesName": "IPL 2026",
+      "roundName": "Final"
     },
     {
       "id": "rugby-top14-7bejzh",

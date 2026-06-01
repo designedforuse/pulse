@@ -8,3 +8,4 @@
 - [Cycling stage events](cycling-stage-events.md) — grand tours = one event/stage; read current stage from sessionTitle, never date math (collapses to "Stage 1").
 - [SA Schools Rugby results](schools-rugby-results.md) — no score API; scrape schoolrugby.co.za s=456 (Paarl), match completed games to fixtures by DATE (best-effort, scrape-fragile).
 - [Daily Wrap editorial sources](daily-wrap-editorial-sources.md) — 3 result-data shapes: keyed final-score (cricket), live-leader hasConcluded fallback (cycling), separate per-city feed (SVNS).
+- [IPL playoff rounds](ipl-playoff-rounds.md) — knockout stage comes from feed MatchOrder, persisted as event.roundName; NEVER derive playoff stage from schedule position (pruned window mislabels mid-season).
