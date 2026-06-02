@@ -26,4 +26,7 @@ Backend synthesizes story headlines via ElevenLabs and streams MP3 from `GET /ap
 - **Serve audio with `res.sendFile`, never a raw `fs.createReadStream().pipe(res)`.**
   **Why:** iOS/AVFoundation (expo-av) issues an HTTP Range request and *hangs* (spinner forever, no sound) if the server doesn't answer with `Accept-Ranges` + `206 Partial Content`. A piped stream is chunked with no Content-Length/range support. `sendFile` adds all of that automatically. Regular JSON fetches use `expo/fetch` and aren't affected, so the bug only shows up on native audio.
 
+- **With `downloadFirst`, calling `player.play()` immediately can be silently dropped.** The clip isn't loaded yet when the synchronous `play()` fires, so on device you get no sound and no error. Fix: also re-issue `player.play()` from the `playbackStatusUpdate` listener once `st.isLoaded` is true (guard with a `started` flag so it fires once). Keep the immediate `play()` too — whichever lands first wins.
+  **Why:** autoplay narration must not depend on download timing; the immediate play() works on some devices/platforms but not all.
+
 - **Open abuse surface (known, not yet addressed):** the audio endpoint is unauthenticated and hits a paid API — no rate limiting / cache TTL. Revisit if cost or tmpdir growth becomes a concern.

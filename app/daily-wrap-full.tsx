@@ -341,8 +341,20 @@ function useHeadlineAudio() {
           return;
         }
         playerRef.current = player;
+        let started = false;
         const sub = player.addListener("playbackStatusUpdate", (st) => {
           if (req !== reqRef.current) return;
+          // With downloadFirst, the immediate play() below can fire before the
+          // clip has finished loading and get dropped (silent). Re-issue play()
+          // once the player reports loaded so narration is reliably audible.
+          if (st.isLoaded && !st.playing && !st.didJustFinish && !started) {
+            try {
+              player.play();
+              started = true;
+            } catch {
+              // leave started false so a later status update can retry
+            }
+          }
           if (st.didJustFinish) {
             subRef.current?.remove();
             subRef.current = null;
