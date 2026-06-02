@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-01T23:14:19.725Z",
+  "lastUpdated": "2026-06-02T16:02:21.127Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -41,7 +41,7 @@
   "nhlCount": 7,
   "ahlCount": 23,
   "ahlAdded": 0,
-  "ahlUpdated": 17,
+  "ahlUpdated": 16,
   "ahlPruned": 0,
   "echlCount": 13,
   "echlAdded": 148,
@@ -151,14 +151,14 @@
   "faCupUpdated": 0,
   "faCupPruned": 0,
   "faCupSourceUsed": "espn",
-  "tennisCount": 16,
-  "tennisAdded": 0,
+  "tennisCount": 17,
+  "tennisAdded": 1,
   "tennisUpdated": 16,
   "tennisPruned": 0,
   "tennisSourceUsed": "espn",
   "tennisTournamentCounts": {
-    "French Open": 7,
-    "Wimbledon": 9
+    "French Open": 5,
+    "Wimbledon": 12
   },
   "f1Count": 35,
   "f1Added": 0,
@@ -204,22 +204,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-06-01T23:14:19.725Z",
+    "lastRefreshAt": "2026-06-02T16:02:21.127Z",
     "sources": {
       "nhl": {
         "count": 7,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 23,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 13,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -231,7 +231,7 @@
       },
       "rugby": {
         "count": 55,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 6,
@@ -251,37 +251,37 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 12,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "iCal Feed"
       },
       "mls": {
         "count": 142,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 10,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 10,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 2,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
@@ -291,42 +291,42 @@
       },
       "nwsl": {
         "count": 18,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 54,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-05-21T00:00:00.000Z"
       },
       "championsCup": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "challengeCup": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 15,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T22:00:00.000Z"
       },
       "championsLeague": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
@@ -336,17 +336,17 @@
         "firstMatchDate": "2026-05-16T14:00:00.000Z"
       },
       "tennis": {
-        "count": 16,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "count": 17,
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
-          "French Open": 7,
-          "Wimbledon": 9
+          "French Open": 5,
+          "Wimbledon": 12
         }
       },
       "f1": {
         "count": 35,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Canadian Grand Prix": 5,
@@ -360,27 +360,27 @@
       },
       "wrc": {
         "count": 31,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "Hardcoded Schedule"
       },
       "schoolsRugby": {
         "count": 3,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "Hardcoded Schedule"
       },
       "paddling": {
         "count": 2,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "Hardcoded Schedule"
       },
       "comrades": {
         "count": 1,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "Hardcoded Schedule"
       },
       "golf": {
         "count": 8,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "US Open": 4,
@@ -389,7 +389,7 @@
       },
       "marathon": {
         "count": 3,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Sydney Marathon": 1,
@@ -419,7 +419,7 @@
       },
       "cafcl": {
         "count": 6,
-        "lastFetchAt": "2026-06-01T23:14:19.725Z",
+        "lastFetchAt": "2026-06-02T16:02:21.127Z",
         "sourceName": "ESPN API"
       }
     }
@@ -2273,50 +2273,6 @@
       "source": "soccer-mls",
       "leagueKey": "mls",
       "providerReason": "mls-appletv"
-    },
-    {
-      "id": "cycling-grand-tour-giro-d-italia-2026-2026-05-19-stage-10",
-      "sport": "cycling",
-      "league": "Grand Tour",
-      "awayTeam": "Stage 10",
-      "homeTeam": "Giro d'Italia",
-      "startTimeLocal": "2026-05-19T12:00:00.000Z",
-      "endTimeLocal": "2026-05-19T17:00:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "cycling-hardcoded",
-      "leagueKey": "grand-tour",
-      "providerReason": "flosports-broadcast",
-      "eventType": "session",
-      "sessionTitle": "Giro d'Italia 2026 — Stage 10",
-      "competitionType": "international",
-      "tournamentName": "Giro d'Italia",
-      "cyclingRoute": "Nessebar, Bulgaria → Rome, Italy",
-      "cyclingTotalStages": 21,
-      "cyclingRestDays": [
-        "2026-05-11",
-        "2026-05-18",
-        "2026-05-25"
-      ]
-    },
-    {
-      "id": "cricket-ipl-2504",
-      "cricketMatchId": "2504",
-      "sport": "cricket",
-      "league": "IPL",
-      "awayTeam": "Lucknow Super Giants",
-      "homeTeam": "Rajasthan Royals",
-      "startTimeLocal": "2026-05-19T14:00:00.000Z",
-      "endTimeLocal": "2026-05-19T18:29:00.000Z",
-      "providerId": "willowtv",
-      "isLive": false,
-      "source": "ipl-official",
-      "leagueKey": "ipl",
-      "competitionName": "IPL",
-      "competitionType": "league",
-      "format": "T20",
-      "hostCountry": "India",
-      "seriesName": "IPL 2026"
     },
     {
       "id": "soccer-epl-20260519-1830-man-city-at-bournemouth",
@@ -5250,54 +5206,6 @@
       "providerReason": "mlr-disneyplus"
     },
     {
-      "id": "tennis-espn-175767",
-      "sport": "tennis",
-      "league": "Grand Slam",
-      "awayTeam": "Svajda",
-      "homeTeam": "Cobolli",
-      "startTimeLocal": "2026-06-01T09:05:00.000Z",
-      "endTimeLocal": "2026-06-01T11:35:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "grand-slam",
-      "providerReason": "tnt-broadcast",
-      "eventType": "match",
-      "sessionTitle": "Roland Garros — Round 4",
-      "competitionType": "international",
-      "tennisRound": "Round 4",
-      "tennisPlayer1": "Svajda",
-      "tennisPlayer2": "Cobolli",
-      "tennisPlayer2Rank": 10,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
-      "tournamentName": "French Open"
-    },
-    {
-      "id": "tennis-espn-175746",
-      "sport": "tennis",
-      "league": "Grand Slam",
-      "awayTeam": "Tabilo",
-      "homeTeam": "Auger-Aliassime",
-      "startTimeLocal": "2026-06-01T15:10:00.000Z",
-      "endTimeLocal": "2026-06-01T17:40:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "espn-tennis",
-      "leagueKey": "grand-slam",
-      "providerReason": "tnt-broadcast",
-      "eventType": "match",
-      "sessionTitle": "Roland Garros — Round 4",
-      "competitionType": "international",
-      "tennisRound": "Round 4",
-      "tennisPlayer1": "Tabilo",
-      "tennisPlayer2": "Auger-Aliassime",
-      "tennisPlayer2Rank": 4,
-      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/chi.png",
-      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
-      "tournamentName": "French Open"
-    },
-    {
       "id": "tennis-espn-175751",
       "sport": "tennis",
       "league": "Grand Slam",
@@ -5330,7 +5238,7 @@
       "startTimeLocal": "2026-06-01T23:00:00.000Z",
       "endTimeLocal": "2026-06-02T01:45:00.000Z",
       "providerId": "flosports",
-      "isLive": true,
+      "isLive": false,
       "source": "ahl-hockeytech"
     },
     {
@@ -5360,8 +5268,8 @@
       "league": "Grand Slam",
       "awayTeam": "Zverev",
       "homeTeam": "Jodar",
-      "startTimeLocal": "2026-06-02T12:00:00.000Z",
-      "endTimeLocal": "2026-06-02T14:30:00.000Z",
+      "startTimeLocal": "2026-06-02T12:45:00.000Z",
+      "endTimeLocal": "2026-06-02T15:15:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
       "source": "espn-tennis",
@@ -5449,13 +5357,33 @@
       "source": "echl"
     },
     {
+      "id": "cricket-intl-8k50to",
+      "cricketMatchId": "f877e466-9002-493a-afcb-4caea228d227",
+      "sport": "cricket",
+      "league": "International Cricket",
+      "awayTeam": "West Indies",
+      "homeTeam": "Sri Lanka",
+      "startTimeLocal": "2026-06-03T10:00:00.000Z",
+      "endTimeLocal": "2026-06-03T13:30:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "cricket-cricapi",
+      "leagueKey": "intl",
+      "competitionName": "International Cricket",
+      "competitionType": "international",
+      "hostCountry": "Caribbean",
+      "seriesName": "1st ODI, Sri Lanka tour of West Indies, 2026",
+      "gender": "men",
+      "isIccT20Wc": false
+    },
+    {
       "id": "tennis-espn-175771",
       "sport": "tennis",
       "league": "Grand Slam",
       "awayTeam": "Cobolli",
       "homeTeam": "Auger-Aliassime",
-      "startTimeLocal": "2026-06-03T04:00:00.000Z",
-      "endTimeLocal": "2026-06-03T06:30:00.000Z",
+      "startTimeLocal": "2026-06-03T12:00:00.000Z",
+      "endTimeLocal": "2026-06-03T14:30:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
       "source": "espn-tennis",
@@ -5479,8 +5407,8 @@
       "league": "Grand Slam",
       "awayTeam": "Arnaldi",
       "homeTeam": "Berrettini",
-      "startTimeLocal": "2026-06-03T04:00:00.000Z",
-      "endTimeLocal": "2026-06-03T06:30:00.000Z",
+      "startTimeLocal": "2026-06-03T18:15:00.000Z",
+      "endTimeLocal": "2026-06-03T20:45:00.000Z",
       "providerId": "youtubetv",
       "isLive": false,
       "source": "espn-tennis",
@@ -5495,26 +5423,6 @@
       "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
       "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
       "tournamentName": "French Open"
-    },
-    {
-      "id": "cricket-intl-8k50to",
-      "cricketMatchId": "f877e466-9002-493a-afcb-4caea228d227",
-      "sport": "cricket",
-      "league": "International Cricket",
-      "awayTeam": "West Indies",
-      "homeTeam": "Sri Lanka",
-      "startTimeLocal": "2026-06-03T10:00:00.000Z",
-      "endTimeLocal": "2026-06-03T13:30:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "cricket-cricapi",
-      "leagueKey": "intl",
-      "competitionName": "International Cricket",
-      "competitionType": "international",
-      "hostCountry": "Caribbean",
-      "seriesName": "1st ODI, Sri Lanka tour of West Indies, 2026",
-      "gender": "men",
-      "isIccT20Wc": false
     },
     {
       "id": "ahl-1029060",
@@ -6932,10 +6840,10 @@
       "competitionName": "Barcelona-Catalunya Grand Prix"
     },
     {
-      "id": "soccer-fifa-world-cup-20260614-1700-curacao-at-germany",
+      "id": "soccer-fifa-world-cup-20260614-1700-cura-ao-at-germany",
       "sport": "soccer",
       "league": "FIFA World Cup",
-      "awayTeam": "Curacao",
+      "awayTeam": "Curaçao",
       "homeTeam": "Germany",
       "startTimeLocal": "2026-06-14T17:00:00.000Z",
       "endTimeLocal": "2026-06-14T19:00:00.000Z",
@@ -7656,10 +7564,10 @@
       "providerReason": "usl-espnplus"
     },
     {
-      "id": "soccer-fifa-world-cup-20260621-0000-curacao-at-ecuador",
+      "id": "soccer-fifa-world-cup-20260621-0000-cura-ao-at-ecuador",
       "sport": "soccer",
       "league": "FIFA World Cup",
-      "awayTeam": "Curacao",
+      "awayTeam": "Curaçao",
       "homeTeam": "Ecuador",
       "startTimeLocal": "2026-06-21T00:00:00.000Z",
       "endTimeLocal": "2026-06-21T02:00:00.000Z",
@@ -8113,11 +8021,11 @@
       "totalDays": 4
     },
     {
-      "id": "soccer-fifa-world-cup-20260625-2000-ivory-coast-at-curacao",
+      "id": "soccer-fifa-world-cup-20260625-2000-ivory-coast-at-cura-ao",
       "sport": "soccer",
       "league": "FIFA World Cup",
       "awayTeam": "Ivory Coast",
-      "homeTeam": "Curacao",
+      "homeTeam": "Curaçao",
       "startTimeLocal": "2026-06-25T20:00:00.000Z",
       "endTimeLocal": "2026-06-25T22:00:00.000Z",
       "providerId": "youtubetv",
@@ -8972,6 +8880,81 @@
       "sessionTitle": "Andorra Epic Pyrenees",
       "competitionType": "international",
       "tournamentName": "Andorra Epic Pyrenees"
+    },
+    {
+      "id": "tennis-wimbledon-2026-07-02-m0",
+      "sport": "tennis",
+      "league": "Grand Slam",
+      "awayTeam": "Fritz",
+      "homeTeam": "Paul",
+      "startTimeLocal": "2026-07-02T10:00:00.000Z",
+      "endTimeLocal": "2026-07-02T12:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "tennis-hardcoded",
+      "leagueKey": "grand-slam",
+      "providerReason": "espn-broadcast",
+      "eventType": "match",
+      "sessionTitle": "Wimbledon — Round of 64",
+      "competitionType": "international",
+      "tennisRound": "Round of 64",
+      "tennisPlayer1": "Fritz",
+      "tennisPlayer2": "Paul",
+      "tennisPlayer1Rank": 5,
+      "tennisPlayer2Rank": 14,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "tournamentName": "Wimbledon"
+    },
+    {
+      "id": "tennis-wimbledon-2026-07-02-m1",
+      "sport": "tennis",
+      "league": "Grand Slam",
+      "awayTeam": "Alcaraz",
+      "homeTeam": "Draper",
+      "startTimeLocal": "2026-07-02T13:00:00.000Z",
+      "endTimeLocal": "2026-07-02T15:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "tennis-hardcoded",
+      "leagueKey": "grand-slam",
+      "providerReason": "espn-broadcast",
+      "eventType": "match",
+      "sessionTitle": "Wimbledon — Round of 64",
+      "competitionType": "international",
+      "tennisRound": "Round of 64",
+      "tennisPlayer1": "Alcaraz",
+      "tennisPlayer2": "Draper",
+      "tennisPlayer1Rank": 3,
+      "tennisPlayer2Rank": 18,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/gbr.png",
+      "tournamentName": "Wimbledon"
+    },
+    {
+      "id": "tennis-wimbledon-2026-07-02-m2",
+      "sport": "tennis",
+      "league": "Grand Slam",
+      "awayTeam": "Djokovic",
+      "homeTeam": "Tiafoe",
+      "startTimeLocal": "2026-07-02T16:00:00.000Z",
+      "endTimeLocal": "2026-07-02T18:30:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "tennis-hardcoded",
+      "leagueKey": "grand-slam",
+      "providerReason": "espn-broadcast",
+      "eventType": "match",
+      "sessionTitle": "Wimbledon — Round of 64",
+      "competitionType": "international",
+      "tennisRound": "Round of 64",
+      "tennisPlayer1": "Djokovic",
+      "tennisPlayer2": "Tiafoe",
+      "tennisPlayer1Rank": 4,
+      "tennisPlayer2Rank": 16,
+      "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/srb.png",
+      "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "tournamentName": "Wimbledon"
     },
     {
       "id": "soccer-fifa-world-cup-20260702-1900-group-j-2nd-place-at-group-h-winner",

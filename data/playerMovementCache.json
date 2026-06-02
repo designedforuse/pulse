@@ -7391,7 +7391,7 @@
       ]
     },
     "8476874": {
-      "name": "O. Määttä",
+      "name": "O. Maatta",
       "sightings": [
         {
           "teamAbbrev": "CGY",
@@ -40282,7 +40282,7 @@
     }
   },
   "movements": [],
-  "lastUpdated": "2026-06-02T02:41:18.087Z",
+  "lastUpdated": "2026-06-02T16:02:21.173Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -40309,6 +40309,6 @@
     ],
     "playersIngested": 336,
     "movementsDetectedThisRun": [],
-    "timestamp": "2026-06-02T02:41:18.087Z"
+    "timestamp": "2026-06-02T16:02:21.173Z"
   }
 }

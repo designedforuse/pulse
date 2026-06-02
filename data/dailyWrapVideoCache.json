@@ -383,10 +383,26 @@
   },
   "tennis-espn-175746": {
     "video": null,
-    "fetchedAt": "2026-06-01T19:11:36.781Z"
+    "fetchedAt": "2026-06-02T05:16:42.983Z"
   },
   "tennis-espn-175751": {
-    "video": null,
-    "fetchedAt": "2026-06-01T23:09:41.313Z"
+    "video": {
+      "url": "https://www.youtube.com/watch?v=jHOmulyg_1s",
+      "thumbnailUrl": "https://i.ytimg.com/vi/jHOmulyg_1s/hqdefault.jpg",
+      "durationSeconds": 289,
+      "title": "Roland-Garros 2026 Day 9: Sabalenka Cruises, Berrettini & Arnaldi Make All-Italian QF",
+      "channel": "SpoReact"
+    },
+    "fetchedAt": "2026-06-02T05:16:42.983Z"
+  },
+  "ahl-1029059": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=UAlAfNayIhU",
+      "thumbnailUrl": "https://i.ytimg.com/vi/UAlAfNayIhU/hqdefault.jpg",
+      "durationSeconds": 532,
+      "title": "Toronto Marlies vs. Wilkes-Barre/Scranton Penguins | RD4 GM3 Game Highlights | June 1, 2026",
+      "channel": "Toronto Marlies"
+    },
+    "fetchedAt": "2026-06-02T05:16:42.983Z"
   }
 }

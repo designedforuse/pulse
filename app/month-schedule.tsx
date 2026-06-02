@@ -299,7 +299,7 @@ export default function MonthScheduleScreen() {
             style={[styles.monthTab, effectiveActiveKey === "current" && styles.monthTabActive]}
           >
             <Text style={[styles.monthTabText, effectiveActiveKey === "current" && styles.monthTabTextActive]}>
-              {snapshot.currentMonth.monthLabel.split(" ")[0]}
+              This Month
             </Text>
           </Pressable>
           {hasTwoMonths && (
@@ -311,7 +311,7 @@ export default function MonthScheduleScreen() {
               style={[styles.monthTab, effectiveActiveKey === "next" && styles.monthTabActive]}
             >
               <Text style={[styles.monthTabText, effectiveActiveKey === "next" && styles.monthTabTextActive]}>
-                {snapshot.nextMonth.monthLabel.split(" ")[0]}
+                Next Month
               </Text>
             </Pressable>
           )}

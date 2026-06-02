@@ -1485,7 +1485,7 @@
   },
   "clinch_watch:zverev clinch playoff berth june 2026": {
     "video": null,
-    "fetchedAt": "2026-06-01T15:15:46.740Z",
+    "fetchedAt": "2026-06-02T05:16:52.693Z",
     "query": "Zverev clinch playoff berth June 2026",
     "debug": {
       "searchQuery": "Zverev clinch playoff berth June 2026",
@@ -1496,74 +1496,74 @@
     }
   },
   "marquee_match:louisville city fc vs birmingham legion fc usl preview": {
-    "video": null,
-    "fetchedAt": "2026-06-01T15:15:46.977Z",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=OFjDMCiLS0w",
+      "thumbnailUrl": "https://img.youtube.com/vi/OFjDMCiLS0w/hqdefault.jpg",
+      "durationSeconds": 2688,
+      "title": "USL World Cup Sites Confirmed, Bundesliga Pipeline for Young Talent, Lou City Woes, Lexington and...",
+      "source": "youtube",
+      "channel": "Talk USL",
+      "publishedAt": "21h ago"
+    },
+    "fetchedAt": "2026-06-02T05:16:53.024Z",
     "query": "Louisville City FC vs Birmingham Legion FC USL preview",
     "debug": {
       "searchQuery": "Louisville City FC vs Birmingham Legion FC USL preview",
+      "selectedVideoTitle": "USL World Cup Sites Confirmed, Bundesliga Pipeline for Young Talent, Lou City Woes, Lexington and...",
+      "selectedVideoPublishedAt": "21h ago",
+      "selectedVideoChannel": "Talk USL",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "grand_tour:giro d'italia cycling highlights june 2026": {
+    "video": null,
+    "fetchedAt": "2026-06-02T05:16:53.200Z",
+    "query": "Giro d'Italia cycling highlights June 2026",
+    "debug": {
+      "searchQuery": "Giro d'Italia cycling highlights June 2026",
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   },
-  "grand_tour:giro d'italia cycling highlights june 2026": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=Kvpfpm5LafY",
-      "thumbnailUrl": "https://img.youtube.com/vi/Kvpfpm5LafY/hqdefault.jpg",
-      "durationSeconds": 22790,
-      "title": "Crash Bandicoot 3: 6 HOURS dismantling the PERFECT CLOSURE that ALMOST BROKE Naughty Dog | Making of",
-      "source": "youtube",
-      "channel": "Bits Historias",
-      "publishedAt": "22h ago"
-    },
-    "fetchedAt": "2026-06-01T15:15:47.248Z",
-    "query": "Giro d'Italia cycling highlights June 2026",
-    "debug": {
-      "searchQuery": "Giro d'Italia cycling highlights June 2026",
-      "selectedVideoTitle": "Crash Bandicoot 3: 6 HOURS dismantling the PERFECT CLOSURE that ALMOST BROKE Naughty Dog | Making of",
-      "selectedVideoPublishedAt": "22h ago",
-      "selectedVideoChannel": "Bits Historias",
-      "rejectedForAgeCount": 0
-    }
-  },
   "league_moment:big stage sports june 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=lUR6BIzZXuQ",
-      "thumbnailUrl": "https://img.youtube.com/vi/lUR6BIzZXuQ/hqdefault.jpg",
-      "durationSeconds": 11081,
-      "title": "2026 NCAA DI rowing championships | FULL REPLAY",
+      "url": "https://www.youtube.com/watch?v=7KR-3WE1nBw",
+      "thumbnailUrl": "https://img.youtube.com/vi/7KR-3WE1nBw/hqdefault.jpg",
+      "durationSeconds": 8199,
+      "title": "B.C. Conservatives choose new leader | CTV Your Morning Vancouver for June 1, 2026",
       "source": "youtube",
-      "channel": "NCAA Championships",
-      "publishedAt": "22h ago"
+      "channel": "CTV News",
+      "publishedAt": "2 hours ago"
     },
-    "fetchedAt": "2026-06-01T15:15:47.704Z",
+    "fetchedAt": "2026-06-02T05:16:53.607Z",
     "query": "Big Stage sports June 2026",
     "debug": {
       "searchQuery": "Big Stage sports June 2026",
-      "selectedVideoTitle": "2026 NCAA DI rowing championships | FULL REPLAY",
-      "selectedVideoPublishedAt": "22h ago",
-      "selectedVideoChannel": "NCAA Championships",
-      "rejectedForAgeCount": 1
+      "selectedVideoTitle": "B.C. Conservatives choose new leader | CTV Your Morning Vancouver for June 1, 2026",
+      "selectedVideoPublishedAt": "2 hours ago",
+      "selectedVideoChannel": "CTV News",
+      "rejectedForAgeCount": 0
     }
   },
   "diamond_league:diamond league — rome diamond league 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=ovRM3_IOMdU",
-      "thumbnailUrl": "https://img.youtube.com/vi/ovRM3_IOMdU/hqdefault.jpg",
-      "durationSeconds": 4635,
-      "title": "Round-Up | Rabat Diamond League, Bydgoszcz and UK Athletics 10k Road Championships",
+      "url": "https://www.youtube.com/watch?v=wWlAPS5eXcY",
+      "thumbnailUrl": "https://img.youtube.com/vi/wWlAPS5eXcY/hqdefault.jpg",
+      "durationSeconds": 48,
+      "title": "Walcott Opens 2026 Season With Diamond League Bronze",
       "source": "youtube",
-      "channel": "Podium Athletics",
-      "publishedAt": "1 hour ago"
+      "channel": "TTT Live Online",
+      "publishedAt": "4 hours ago"
     },
-    "fetchedAt": "2026-06-01T15:15:48.057Z",
+    "fetchedAt": "2026-06-02T05:16:53.852Z",
     "query": "Diamond League — Rome Diamond League 2026",
     "debug": {
       "searchQuery": "Diamond League — Rome Diamond League 2026",
-      "selectedVideoTitle": "Round-Up | Rabat Diamond League, Bydgoszcz and UK Athletics 10k Road Championships",
-      "selectedVideoPublishedAt": "1 hour ago",
-      "selectedVideoChannel": "Podium Athletics",
+      "selectedVideoTitle": "Walcott Opens 2026 Season With Diamond League Bronze",
+      "selectedVideoPublishedAt": "4 hours ago",
+      "selectedVideoChannel": "TTT Live Online",
       "rejectedForAgeCount": 0
     }
   },
@@ -1573,6 +1573,18 @@
     "query": "Tiafoe vs Arnaldi upset highlights June 2026",
     "debug": {
       "searchQuery": "Tiafoe vs Arnaldi upset highlights June 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:fonseca clinch playoff berth june 2026": {
+    "video": null,
+    "fetchedAt": "2026-06-02T15:10:52.178Z",
+    "query": "Fonseca clinch playoff berth June 2026",
+    "debug": {
+      "searchQuery": "Fonseca clinch playoff berth June 2026",
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-02T02:41:18.087Z",
+  "lastUpdated": "2026-06-02T16:02:21.173Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -11,9 +11,6 @@
       "diamond_league": {
         "Other": 1
       },
-      "grand_tour": {
-        "Other": 1
-      },
       "marquee_match": {
         "Other": 1
       }
@@ -23,14 +20,13 @@
       "Other": [
         "clinch_watch: Clinch Watch",
         "marquee_match: Marquee Match: USL",
-        "grand_tour: Grand Tour",
         "league_moment: Big Stage",
         "diamond_league: Diamond League"
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 5,
-    "totalAfterCap": 5,
+    "totalBeforeCap": 4,
+    "totalAfterCap": 4,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -63,17 +59,17 @@
         ],
         "playersIngested": 336,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-06-02T02:41:18.087Z"
+        "timestamp": "2026-06-02T16:02:21.173Z"
       },
       "cacheHistoryCount": 880,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 5,
-    "candidateCountAfterCap": 5,
+    "candidateCountBeforeCap": 4,
+    "candidateCountAfterCap": 4,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2070.6883575,
+      "hoursUntil": -2084.0392147222224,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -89,25 +85,31 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 4,
+      "rawClinchCandidates": 3,
       "clinchAfterRegionFilter": 1,
       "clinchFinalCount": 1,
       "clinchGatedOut": []
     },
-    "tonightStorySelectedSignal": null,
-    "tonightStoryHeadline": null,
-    "tonightStorySourceEvent": null,
+    "tonightStorySelectedSignal": "championship_day",
+    "tonightStoryHeadline": "French Open Quarterfinals",
+    "tonightStorySourceEvent": "tennis-espn-175663",
     "tonightStoryDebug": {
-      "selectedSignal": null,
-      "selectedHeadline": null,
-      "selectedScore": 0,
-      "sourceEventId": null,
-      "reason": "no stories scored",
-      "scoredCandidates": []
+      "selectedSignal": "championship_day",
+      "selectedHeadline": "French Open Quarterfinals",
+      "selectedScore": 200,
+      "sourceEventId": "tennis-espn-175663",
+      "reason": "championship-day group (tennis|French Open|Quarterfinal, 2 events)",
+      "scoredCandidates": [
+        {
+          "label": "[championship_day] French Open Quarterfinals",
+          "score": 200,
+          "reason": "championship-day group (tennis|French Open|Quarterfinal, 2 events)"
+        }
+      ]
     },
     "videoSelection": {
-      "clinch_watch_tennis-espn-175663": {
-        "searchQuery": "Zverev clinch playoff berth June 2026",
+      "clinch_watch_tennis-espn-175661": {
+        "searchQuery": "Fonseca clinch playoff berth June 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
@@ -115,46 +117,39 @@
       },
       "marquee_match": {
         "searchQuery": "Louisville City FC vs Birmingham Legion FC USL preview",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
-      },
-      "grand_tour_giro_d_italia": {
-        "searchQuery": "Giro d'Italia cycling highlights June 2026",
-        "selectedVideoTitle": "Crash Bandicoot 3: 6 HOURS dismantling the PERFECT CLOSURE that ALMOST BROKE Naughty Dog | Making of",
-        "selectedVideoPublishedAt": "22h ago",
-        "selectedVideoChannel": "Bits Historias",
+        "selectedVideoTitle": "USL World Cup Sites Confirmed, Bundesliga Pipeline for Young Talent, Lou City Woes, Lexington and...",
+        "selectedVideoPublishedAt": "21h ago",
+        "selectedVideoChannel": "Talk USL",
         "rejectedForAgeCount": 0
       },
       "league_moment_tournament": {
         "searchQuery": "Big Stage sports June 2026",
-        "selectedVideoTitle": "2026 NCAA DI rowing championships | FULL REPLAY",
-        "selectedVideoPublishedAt": "22h ago",
-        "selectedVideoChannel": "NCAA Championships",
-        "rejectedForAgeCount": 1
+        "selectedVideoTitle": "B.C. Conservatives choose new leader | CTV Your Morning Vancouver for June 1, 2026",
+        "selectedVideoPublishedAt": "2 hours ago",
+        "selectedVideoChannel": "CTV News",
+        "rejectedForAgeCount": 0
       },
       "diamond_league_athletics-diamond-league-rome-2026": {
         "searchQuery": "Diamond League — Rome Diamond League 2026",
-        "selectedVideoTitle": "Round-Up | Rabat Diamond League, Bydgoszcz and UK Athletics 10k Road Championships",
-        "selectedVideoPublishedAt": "1 hour ago",
-        "selectedVideoChannel": "Podium Athletics",
+        "selectedVideoTitle": "Walcott Opens 2026 Season With Diamond League Bronze",
+        "selectedVideoPublishedAt": "4 hours ago",
+        "selectedVideoChannel": "TTT Live Online",
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
-      "id": "clinch_watch_tennis-espn-175663",
+      "id": "clinch_watch_tennis-espn-175661",
       "title": "Clinch Watch",
-      "subtitle": "Zverev vs Jodar · Tennis title on the line",
+      "subtitle": "Fonseca vs Mensik · Tennis title on the line",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-06-02T02:41:18.087Z",
-      "expiresAt": "2026-06-02T16:00:00.000Z",
+      "triggeredAt": "2026-06-02T16:02:21.173Z",
+      "expiresAt": "2026-06-02T22:15:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
@@ -164,13 +159,13 @@
         "conditionLabel": "Tennis title on the line",
         "sport": "tennis",
         "league": "Grand Slam",
-        "awayTeam": "Zverev",
-        "homeTeam": "Jodar",
-        "startTime": "2026-06-02T12:00:00.000Z",
+        "awayTeam": "Fonseca",
+        "homeTeam": "Mensik",
+        "startTime": "2026-06-02T18:15:00.000Z",
         "eventIds": [
-          "tennis-espn-175663"
+          "tennis-espn-175661"
         ],
-        "reason": "Zverev and Jodar meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
+        "reason": "Fonseca and Mensik meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
       },
       "sports": [
         "tennis"
@@ -179,13 +174,13 @@
     {
       "id": "marquee_match",
       "title": "Marquee Match: USL",
-      "subtitle": "Louisville City FC vs Birmingham Legion FC — USL · in 2 days",
+      "subtitle": "Louisville City FC vs Birmingham Legion FC — USL · tomorrow",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-06-02T02:41:18.087Z",
+      "triggeredAt": "2026-06-02T16:02:21.173Z",
       "expiresAt": "2026-06-04T04:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -201,76 +196,40 @@
         "eventIds": [
           "soccer-usl-20260604-0000-louisville-city-fc-at-birmingham-legion-fc"
         ],
-        "reason": "Top USL fixture (Louisville City FC vs Birmingham Legion FC) in 2 days"
+        "reason": "Top USL fixture (Louisville City FC vs Birmingham Legion FC) tomorrow"
       },
       "sports": [
         "soccer"
-      ]
-    },
-    {
-      "id": "grand_tour_giro_d_italia",
-      "title": "Grand Tour",
-      "subtitle": "Giro d'Italia — race in progress",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 75,
-      "triggeredAt": "2026-06-02T02:41:18.087Z",
-      "expiresAt": "2026-06-09T02:41:18.087Z",
-      "kind": "grand_tour",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "type": "grand_tour",
-        "tourName": "Giro d'Italia",
-        "stageCount": 1,
-        "upcomingStageCount": 0,
-        "eventIds": [
-          "cycling-grand-tour-giro-d-italia-2026-2026-05-31-stage-21"
-        ],
-        "reason": "Giro d'Italia active — 1 stage(s) in window"
-      },
-      "sports": [
-        "cycling"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=Kvpfpm5LafY",
-        "thumbnailUrl": "https://img.youtube.com/vi/Kvpfpm5LafY/hqdefault.jpg",
-        "durationSeconds": 22790,
-        "title": "Crash Bandicoot 3: 6 HOURS dismantling the PERFECT CLOSURE that ALMOST BROKE Naughty Dog | Making of",
+        "url": "https://www.youtube.com/watch?v=OFjDMCiLS0w",
+        "thumbnailUrl": "https://img.youtube.com/vi/OFjDMCiLS0w/hqdefault.jpg",
+        "durationSeconds": 2688,
+        "title": "USL World Cup Sites Confirmed, Bundesliga Pipeline for Young Talent, Lou City Woes, Lexington and...",
         "source": "youtube",
-        "channel": "Bits Historias",
-        "publishedAt": "22h ago"
+        "channel": "Talk USL",
+        "publishedAt": "21h ago"
       }
     },
     {
       "id": "league_moment_tournament",
       "title": "Big Stage",
-      "subtitle": "4 tournament/knockout matches this week",
+      "subtitle": "3 tournament/knockout matches this week",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-06-02T02:41:18.087Z",
-      "expiresAt": "2026-06-09T02:41:18.087Z",
+      "triggeredAt": "2026-06-02T16:02:21.173Z",
+      "expiresAt": "2026-06-09T16:02:21.173Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "tournament",
-        "matchCount": 4,
+        "matchCount": 3,
         "matches": [
-          {
-            "away": "Zverev",
-            "home": "Jodar",
-            "league": "Grand Slam",
-            "round": "Roland Garros — Quarterfinal",
-            "startTime": "2026-06-02T12:00:00.000Z"
-          },
           {
             "away": "Fonseca",
             "home": "Mensik",
@@ -283,47 +242,46 @@
             "home": "Auger-Aliassime",
             "league": "Grand Slam",
             "round": "Roland Garros — Quarterfinal",
-            "startTime": "2026-06-03T04:00:00.000Z"
+            "startTime": "2026-06-03T12:00:00.000Z"
           },
           {
             "away": "Arnaldi",
             "home": "Berrettini",
             "league": "Grand Slam",
             "round": "Roland Garros — Quarterfinal",
-            "startTime": "2026-06-03T04:00:00.000Z"
+            "startTime": "2026-06-03T18:15:00.000Z"
           }
         ],
         "eventIds": [
-          "tennis-espn-175663",
           "tennis-espn-175661",
           "tennis-espn-175771",
           "tennis-espn-175769"
         ],
-        "reason": "Found 4 tournament stage match(es) in the next 7 days"
+        "reason": "Found 3 tournament stage match(es) in the next 7 days"
       },
       "sports": [
         "tennis"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=lUR6BIzZXuQ",
-        "thumbnailUrl": "https://img.youtube.com/vi/lUR6BIzZXuQ/hqdefault.jpg",
-        "durationSeconds": 11081,
-        "title": "2026 NCAA DI rowing championships | FULL REPLAY",
+        "url": "https://www.youtube.com/watch?v=7KR-3WE1nBw",
+        "thumbnailUrl": "https://img.youtube.com/vi/7KR-3WE1nBw/hqdefault.jpg",
+        "durationSeconds": 8199,
+        "title": "B.C. Conservatives choose new leader | CTV Your Morning Vancouver for June 1, 2026",
         "source": "youtube",
-        "channel": "NCAA Championships",
-        "publishedAt": "22h ago"
+        "channel": "CTV News",
+        "publishedAt": "2 hours ago"
       }
     },
     {
       "id": "diamond_league_athletics-diamond-league-rome-2026",
       "title": "Diamond League",
-      "subtitle": "Diamond League — Rome — in 3 days",
+      "subtitle": "Diamond League — Rome — in 2 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-06-02T02:41:18.087Z",
+      "triggeredAt": "2026-06-02T16:02:21.173Z",
       "expiresAt": "2026-06-05T17:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -342,18 +300,58 @@
         "athletics"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=ovRM3_IOMdU",
-        "thumbnailUrl": "https://img.youtube.com/vi/ovRM3_IOMdU/hqdefault.jpg",
-        "durationSeconds": 4635,
-        "title": "Round-Up | Rabat Diamond League, Bydgoszcz and UK Athletics 10k Road Championships",
+        "url": "https://www.youtube.com/watch?v=wWlAPS5eXcY",
+        "thumbnailUrl": "https://img.youtube.com/vi/wWlAPS5eXcY/hqdefault.jpg",
+        "durationSeconds": 48,
+        "title": "Walcott Opens 2026 Season With Diamond League Bronze",
         "source": "youtube",
-        "channel": "Podium Athletics",
-        "publishedAt": "1 hour ago"
+        "channel": "TTT Live Online",
+        "publishedAt": "4 hours ago"
       }
     }
   ],
-  "tonightStory": null,
-  "todaysStories": [],
+  "tonightStory": {
+    "signalType": "championship_day",
+    "signalLabel": "CHAMPIONSHIP DAY",
+    "headline": "French Open Quarterfinals",
+    "body": "Quarterfinals day at the French Open — title contenders on the line.",
+    "sourceEventId": "tennis-espn-175663",
+    "eventIds": [
+      "tennis-espn-175663",
+      "tennis-espn-175661"
+    ],
+    "sourceCard": {
+      "id": "championship_day_tennis-french-open-quarterfinal",
+      "kind": "championship_day",
+      "title": "French Open Quarterfinals"
+    },
+    "sports": [
+      "tennis"
+    ],
+    "favoriteTeams": []
+  },
+  "todaysStories": [
+    {
+      "signalType": "championship_day",
+      "signalLabel": "CHAMPIONSHIP DAY",
+      "headline": "French Open Quarterfinals",
+      "body": "Quarterfinals day at the French Open — title contenders on the line.",
+      "sourceEventId": "tennis-espn-175663",
+      "eventIds": [
+        "tennis-espn-175663",
+        "tennis-espn-175661"
+      ],
+      "sourceCard": {
+        "id": "championship_day_tennis-french-open-quarterfinal",
+        "kind": "championship_day",
+        "title": "French Open Quarterfinals"
+      },
+      "sports": [
+        "tennis"
+      ],
+      "favoriteTeams": []
+    }
+  ],
   "monthSnapshot": {
     "currentMonth": {
       "monthLabel": "June 2026",
@@ -374,9 +372,9 @@
           "displayName": "Roland Garros",
           "leagueKey": "grand-slam",
           "dateRangeLabel": "Jun 1–3",
-          "startDate": "2026-06-01T09:05:00.000Z",
-          "endDate": "2026-06-03T04:00:00.000Z",
-          "eventCount": 7,
+          "startDate": "2026-06-01T17:40:00.000Z",
+          "endDate": "2026-06-03T18:15:00.000Z",
+          "eventCount": 5,
           "seasonPhase": null
         },
         {
@@ -754,10 +752,10 @@
           "sport": "tennis",
           "displayName": "Wimbledon",
           "leagueKey": "grand-slam",
-          "dateRangeLabel": "Jul 1",
+          "dateRangeLabel": "Jul 1–2",
           "startDate": "2026-07-01T10:00:00.000Z",
-          "endDate": "2026-07-01T16:00:00.000Z",
-          "eventCount": 3,
+          "endDate": "2026-07-02T16:00:00.000Z",
+          "eventCount": 6,
           "seasonPhase": null
         },
         {
@@ -942,9 +940,9 @@
           "displayName": "Roland Garros",
           "leagueKey": "grand-slam",
           "dateRangeLabel": "Jun 1–3",
-          "startDate": "2026-06-01T09:05:00.000Z",
-          "endDate": "2026-06-03T04:00:00.000Z",
-          "eventCount": 7,
+          "startDate": "2026-06-01T17:40:00.000Z",
+          "endDate": "2026-06-03T18:15:00.000Z",
+          "eventCount": 5,
           "seasonPhase": null
         },
         {
