@@ -1496,22 +1496,14 @@
     }
   },
   "marquee_match:louisville city fc vs birmingham legion fc usl preview": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=OFjDMCiLS0w",
-      "thumbnailUrl": "https://img.youtube.com/vi/OFjDMCiLS0w/hqdefault.jpg",
-      "durationSeconds": 2688,
-      "title": "USL World Cup Sites Confirmed, Bundesliga Pipeline for Young Talent, Lou City Woes, Lexington and...",
-      "source": "youtube",
-      "channel": "Talk USL",
-      "publishedAt": "21h ago"
-    },
-    "fetchedAt": "2026-06-02T05:16:53.024Z",
+    "video": null,
+    "fetchedAt": "2026-06-02T17:42:54.103Z",
     "query": "Louisville City FC vs Birmingham Legion FC USL preview",
     "debug": {
       "searchQuery": "Louisville City FC vs Birmingham Legion FC USL preview",
-      "selectedVideoTitle": "USL World Cup Sites Confirmed, Bundesliga Pipeline for Young Talent, Lou City Woes, Lexington and...",
-      "selectedVideoPublishedAt": "21h ago",
-      "selectedVideoChannel": "Talk USL",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   },
@@ -1529,41 +1521,41 @@
   },
   "league_moment:big stage sports june 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=7KR-3WE1nBw",
-      "thumbnailUrl": "https://img.youtube.com/vi/7KR-3WE1nBw/hqdefault.jpg",
-      "durationSeconds": 8199,
-      "title": "B.C. Conservatives choose new leader | CTV Your Morning Vancouver for June 1, 2026",
+      "url": "https://www.youtube.com/watch?v=wO9rRZT82Lk",
+      "thumbnailUrl": "https://img.youtube.com/vi/wO9rRZT82Lk/hqdefault.jpg",
+      "durationSeconds": 3296,
+      "title": "Toronto Takes Centre Stage at the Cup Final | JD Bunkis Podcast",
       "source": "youtube",
-      "channel": "CTV News",
-      "publishedAt": "2 hours ago"
+      "channel": "SPORTSNET",
+      "publishedAt": "Streamed 3 hours ago"
     },
-    "fetchedAt": "2026-06-02T05:16:53.607Z",
+    "fetchedAt": "2026-06-02T17:42:54.474Z",
     "query": "Big Stage sports June 2026",
     "debug": {
       "searchQuery": "Big Stage sports June 2026",
-      "selectedVideoTitle": "B.C. Conservatives choose new leader | CTV Your Morning Vancouver for June 1, 2026",
-      "selectedVideoPublishedAt": "2 hours ago",
-      "selectedVideoChannel": "CTV News",
+      "selectedVideoTitle": "Toronto Takes Centre Stage at the Cup Final | JD Bunkis Podcast",
+      "selectedVideoPublishedAt": "Streamed 3 hours ago",
+      "selectedVideoChannel": "SPORTSNET",
       "rejectedForAgeCount": 0
     }
   },
   "diamond_league:diamond league — rome diamond league 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=wWlAPS5eXcY",
-      "thumbnailUrl": "https://img.youtube.com/vi/wWlAPS5eXcY/hqdefault.jpg",
-      "durationSeconds": 48,
-      "title": "Walcott Opens 2026 Season With Diamond League Bronze",
+      "url": "https://www.youtube.com/watch?v=_DsRilILFuo",
+      "thumbnailUrl": "https://img.youtube.com/vi/_DsRilILFuo/hqdefault.jpg",
+      "durationSeconds": 110,
+      "title": "Melissa Jefferson VS Julien Alfred 200m Clash | Track And Field 2026",
       "source": "youtube",
-      "channel": "TTT Live Online",
-      "publishedAt": "4 hours ago"
+      "channel": "Track & Field All Day",
+      "publishedAt": "19 minutes ago"
     },
-    "fetchedAt": "2026-06-02T05:16:53.852Z",
+    "fetchedAt": "2026-06-02T17:42:54.808Z",
     "query": "Diamond League — Rome Diamond League 2026",
     "debug": {
       "searchQuery": "Diamond League — Rome Diamond League 2026",
-      "selectedVideoTitle": "Walcott Opens 2026 Season With Diamond League Bronze",
-      "selectedVideoPublishedAt": "4 hours ago",
-      "selectedVideoChannel": "TTT Live Online",
+      "selectedVideoTitle": "Melissa Jefferson VS Julien Alfred 200m Clash | Track And Field 2026",
+      "selectedVideoPublishedAt": "19 minutes ago",
+      "selectedVideoChannel": "Track & Field All Day",
       "rejectedForAgeCount": 0
     }
   },
