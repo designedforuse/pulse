@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   StyleSheet,
   Text,
   View,
-  ScrollView,
   Pressable,
   Platform,
+  FlatList,
+  Animated,
+  useWindowDimensions,
+  type NativeSyntheticEvent,
+  type NativeScrollEvent,
+  type ImageSourcePropType,
 } from "react-native";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import * as Haptics from "expo-haptics";
+import { LinearGradient } from "expo-linear-gradient";
+import { Image as ExpoImage } from "expo-image";
 import Colors from "@/constants/colors";
+import { getSportBackdrop } from "@/lib/sport-backdrops";
 
 interface DeepTalkTopic {
   id: string;
@@ -19,6 +28,9 @@ interface DeepTalkTopic {
   icon: keyof typeof Ionicons.glyphMap;
   accent: string;
   route: string;
+  // Optional sport key used to pick a Ken Burns backdrop image. Topics without
+  // a mapped backdrop fall back to an accent-tinted gradient.
+  backdropSport?: string;
 }
 
 export const TOPICS: DeepTalkTopic[] = [
@@ -29,6 +41,7 @@ export const TOPICS: DeepTalkTopic[] = [
     icon: "git-network-outline",
     accent: Colors.hockey,
     route: "/affiliates",
+    backdropSport: "hockey",
   },
   {
     id: "cycling-circuits",
@@ -37,6 +50,7 @@ export const TOPICS: DeepTalkTopic[] = [
     icon: "bicycle",
     accent: Colors.cycling,
     route: "/cycling-circuits",
+    backdropSport: "cycling",
   },
   {
     id: "endurance-athletics",
@@ -45,6 +59,7 @@ export const TOPICS: DeepTalkTopic[] = [
     icon: "walk-outline",
     accent: Colors.athletics,
     route: "/endurance-athletics",
+    backdropSport: "athletics",
   },
   {
     id: "paddling-101",
@@ -69,165 +84,386 @@ export const TOPICS: DeepTalkTopic[] = [
     icon: "car-sport",
     accent: Colors.racing,
     route: "/racing-101",
+    backdropSport: "racing",
   },
 ];
 
-export default function DeepTalkScreen() {
-  const insets = useSafeAreaInsets();
+// --- Ken Burns: slow zoom + pan over a still image ---
+function KenBurnsImage({ source }: { source: ImageSourcePropType }) {
+  const progress = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    const loop = Animated.loop(
+      Animated.sequence([
+        Animated.timing(progress, { toValue: 1, duration: 14000, useNativeDriver: true }),
+        Animated.timing(progress, { toValue: 0, duration: 14000, useNativeDriver: true }),
+      ])
+    );
+    loop.start();
+    return () => loop.stop();
+  }, [progress]);
+
+  const scale = progress.interpolate({ inputRange: [0, 1], outputRange: [1.06, 1.22] });
+  const translateX = progress.interpolate({ inputRange: [0, 1], outputRange: [-14, 14] });
+  const translateY = progress.interpolate({ inputRange: [0, 1], outputRange: [10, -10] });
 
   return (
-    <View style={styles.container}>
-      <View style={[styles.header, { paddingTop: (Platform.OS === "web" ? 67 : insets.top) + 12 }]}>
-        <Pressable
-          onPress={() => router.back()}
-          hitSlop={12}
-          style={({ pressed }) => [styles.backBtn, { opacity: pressed ? 0.6 : 1 }]}
-        >
-          <Ionicons name="chevron-back" size={22} color={Colors.textPrimary} />
-        </Pressable>
-        <View style={styles.headerTitleWrap}>
-          <View style={styles.headerBadge}>
-            <Ionicons name="git-network-outline" size={12} color="#fff" />
-            <Text style={styles.headerBadgeText}>PLAYBOOK</Text>
-          </View>
-          <Text style={styles.headerTitle}>Behind the Stories</Text>
-        </View>
-        <View style={styles.backBtn} />
-      </View>
+    <Animated.View
+      style={[StyleSheet.absoluteFill, { transform: [{ scale }, { translateX }, { translateY }] }]}
+    >
+      <ExpoImage source={source} style={StyleSheet.absoluteFill} contentFit="cover" transition={300} />
+    </Animated.View>
+  );
+}
 
-      <ScrollView
-        contentContainerStyle={[
-          styles.scrollContent,
-          { paddingBottom: Platform.OS === "web" ? 34 : insets.bottom + 24 },
+// --- Swipe-up affordance with a gentle looping bounce ---
+function SwipeHint() {
+  const offset = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    const loop = Animated.loop(
+      Animated.sequence([
+        Animated.timing(offset, { toValue: -8, duration: 700, useNativeDriver: true }),
+        Animated.timing(offset, { toValue: 0, duration: 700, useNativeDriver: true }),
+      ])
+    );
+    loop.start();
+    return () => loop.stop();
+  }, [offset]);
+
+  return (
+    <Animated.View style={[styles.swipeHint, { transform: [{ translateY: offset }] }]}>
+      <Ionicons name="chevron-up" size={18} color={Colors.textSecondary} />
+      <Text style={styles.swipeHintText}>Swipe up for next</Text>
+    </Animated.View>
+  );
+}
+
+function TopicPage({
+  topic,
+  height,
+  insets,
+  isLast,
+}: {
+  topic: DeepTalkTopic;
+  height: number;
+  insets: { top: number; bottom: number };
+  isLast: boolean;
+}) {
+  const backdrop = topic.backdropSport ? getSportBackdrop(topic.backdropSport, topic.id) : null;
+  const showKenBurns = !!backdrop;
+
+  const handleOpen = () => {
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    }
+    router.push(topic.route as never);
+  };
+
+  return (
+    <View style={[styles.page, { height }]}>
+      {showKenBurns ? (
+        <>
+          <KenBurnsImage source={backdrop as ImageSourcePropType} />
+          <LinearGradient
+            colors={[topic.accent + "40", "rgba(0,0,0,0.55)", "rgba(0,0,0,0.92)"]}
+            locations={[0, 0.45, 1]}
+            style={StyleSheet.absoluteFill}
+          />
+        </>
+      ) : (
+        <LinearGradient
+          colors={[topic.accent + "33", Colors.background, "#000000"]}
+          locations={[0, 0.55, 1]}
+          style={StyleSheet.absoluteFill}
+        />
+      )}
+
+      <View
+        style={[
+          styles.pageInner,
+          { paddingTop: insets.top + 84, paddingBottom: insets.bottom + 24 },
         ]}
-        showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.intro}>
-          Deeper context that helps the rest of your Stories feed make sense.
-        </Text>
+        {/* Hero — playbook badge + big headline */}
+        <View style={styles.headlineWrap}>
+          <View style={styles.kindRow}>
+            <View style={[styles.kindBadge, { backgroundColor: topic.accent }]}>
+              <Ionicons name={topic.icon} size={12} color="#fff" />
+              <Text style={styles.kindLabel}>PLAYBOOK</Text>
+            </View>
+          </View>
+          <Text style={[styles.headline, { color: Colors.textPrimary }]}>{topic.title}</Text>
+          <View style={[styles.headlineRule, { backgroundColor: topic.accent }]} />
+        </View>
 
-        {TOPICS.map((topic) => (
+        {/* Footer */}
+        <View style={styles.footer}>
+          <View style={[styles.infoCard, { borderColor: topic.accent + "55" }]}>
+            <View style={[styles.infoTopBar, { backgroundColor: topic.accent }]} />
+            <Text style={styles.infoBody}>{topic.subtitle}</Text>
+          </View>
+
           <Pressable
-            key={topic.id}
-            onPress={() => router.push(topic.route as never)}
+            onPress={handleOpen}
             style={({ pressed }) => [
-              styles.topicTile,
-              { borderLeftColor: topic.accent },
-              pressed && { opacity: 0.9 },
+              styles.readBtn,
+              { borderColor: topic.accent + "88", backgroundColor: topic.accent + "1A" },
+              pressed && { opacity: 0.75 },
             ]}
-            accessibilityRole="button"
-            accessibilityLabel={topic.title}
             testID={`deep-talk-${topic.id}`}
           >
-            <View style={[styles.topicIconWrap, { backgroundColor: topic.accent + "1F" }]}>
-              <Ionicons name={topic.icon} size={26} color={topic.accent} />
-            </View>
-            <View style={styles.topicTextWrap}>
-              <Text style={styles.topicTitle}>{topic.title}</Text>
-              <Text style={styles.topicSubtitle}>{topic.subtitle}</Text>
-            </View>
-            <Ionicons name="chevron-forward" size={20} color={Colors.textMuted} />
+            <Text style={[styles.readBtnText, { color: topic.accent }]}>Open playbook</Text>
+            <Ionicons name="arrow-forward" size={15} color={topic.accent} />
           </Pressable>
-        ))}
-      </ScrollView>
+
+          {!isLast && <SwipeHint />}
+        </View>
+      </View>
+    </View>
+  );
+}
+
+export default function DeepTalkScreen() {
+  const rawInsets = useSafeAreaInsets();
+  const { height } = useWindowDimensions();
+  const [index, setIndex] = useState(0);
+
+  const insets = useMemo(
+    () => ({
+      top: Platform.OS === "web" ? Math.max(rawInsets.top, 67) : rawInsets.top,
+      bottom: Platform.OS === "web" ? Math.max(rawInsets.bottom, 34) : rawInsets.bottom,
+    }),
+    [rawInsets.top, rawInsets.bottom]
+  );
+
+  const onScrollEnd = useCallback(
+    (e: NativeSyntheticEvent<NativeScrollEvent>) => {
+      const next = Math.round(e.nativeEvent.contentOffset.y / height);
+      if (next !== index) {
+        setIndex(next);
+        if (Platform.OS !== "web") Haptics.selectionAsync();
+      }
+    },
+    [height, index]
+  );
+
+  const getItemLayout = useCallback(
+    (_: unknown, i: number) => ({ length: height, offset: height * i, index: i }),
+    [height]
+  );
+
+  return (
+    <View style={styles.screen}>
+      <FlatList
+        data={TOPICS}
+        keyExtractor={(t) => t.id}
+        renderItem={({ item, index: i }) => (
+          <TopicPage
+            topic={item}
+            height={height}
+            insets={insets}
+            isLast={i === TOPICS.length - 1}
+          />
+        )}
+        pagingEnabled
+        showsVerticalScrollIndicator={false}
+        snapToInterval={height}
+        decelerationRate="fast"
+        disableIntervalMomentum
+        getItemLayout={getItemLayout}
+        onMomentumScrollEnd={onScrollEnd}
+        scrollEnabled={TOPICS.length > 1}
+        windowSize={3}
+        maxToRenderPerBatch={2}
+        initialNumToRender={1}
+        removeClippedSubviews
+      />
+
+      {/* Top overlay: back, title, progress segments */}
+      <View style={[styles.topBar, { paddingTop: insets.top + 8 }]} pointerEvents="box-none">
+        <View style={styles.segments}>
+          {TOPICS.map((t, i) => (
+            <View
+              key={t.id}
+              style={[styles.segment, { backgroundColor: i <= index ? Colors.textPrimary : "rgba(255,255,255,0.22)" }]}
+            />
+          ))}
+        </View>
+        <View style={styles.topRow}>
+          <Pressable
+            onPress={() => router.back()}
+            hitSlop={12}
+            style={({ pressed }) => [styles.backBtn, pressed && { opacity: 0.6 }]}
+            testID="deep-talk-back"
+          >
+            <Ionicons name="arrow-back" size={22} color={Colors.textPrimary} />
+          </Pressable>
+          <View style={styles.titleWrap}>
+            <Text style={styles.kicker}>PLAYBOOK</Text>
+            <Text style={styles.dateLabel} numberOfLines={1}>
+              Behind the Stories
+            </Text>
+          </View>
+          <View style={styles.counter}>
+            <Text style={styles.counterText}>
+              {Math.min(index + 1, TOPICS.length)}/{TOPICS.length}
+            </Text>
+          </View>
+        </View>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
     backgroundColor: Colors.background,
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 16,
-    paddingBottom: 14,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.border,
-    backgroundColor: Colors.background,
+  page: {
+    width: "100%",
   },
-  backBtn: {
-    width: 36,
-    height: 36,
-    alignItems: "center",
+  pageInner: {
+    flex: 1,
+    paddingHorizontal: 22,
+    justifyContent: "space-between",
+  },
+  headlineWrap: {
+    flex: 1,
     justifyContent: "center",
+    gap: 18,
   },
-  headerTitleWrap: {
-    flex: 1,
-    alignItems: "center",
-    gap: 4,
-  },
-  headerBadge: {
+  kindRow: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 4,
-    backgroundColor: Colors.hockey,
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 8,
+    gap: 10,
   },
-  headerBadgeText: {
-    fontSize: 9,
+  kindBadge: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 999,
+  },
+  kindLabel: {
+    fontSize: 10,
     fontFamily: "Inter_700Bold",
     color: "#fff",
-    letterSpacing: 1,
+    letterSpacing: 0.6,
   },
-  headerTitle: {
-    fontSize: 20,
+  headline: {
+    fontSize: 34,
+    lineHeight: 42,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: -0.5,
+  },
+  headlineRule: {
+    width: 56,
+    height: 4,
+    borderRadius: 2,
+  },
+  footer: {
+    gap: 16,
+  },
+  infoCard: {
+    backgroundColor: "rgba(0,0,0,0.38)",
+    borderRadius: 16,
+    borderWidth: 1,
+    paddingHorizontal: 14,
+    paddingBottom: 14,
+    paddingTop: 16,
+    gap: 12,
+    overflow: "hidden",
+  },
+  infoTopBar: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 3,
+  },
+  infoBody: {
+    fontSize: 14.5,
+    lineHeight: 20,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textSecondary,
+  },
+  readBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    paddingVertical: 14,
+    borderRadius: 14,
+    borderWidth: 1,
+  },
+  readBtnText: {
+    fontSize: 14,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 0.2,
+  },
+  swipeHint: {
+    alignItems: "center",
+    gap: 2,
+    paddingTop: 2,
+  },
+  swipeHintText: {
+    fontSize: 11,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+    letterSpacing: 0.3,
+  },
+  topBar: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    paddingHorizontal: 16,
+    gap: 12,
+  },
+  segments: {
+    flexDirection: "row",
+    gap: 4,
+  },
+  segment: {
+    flex: 1,
+    height: 3,
+    borderRadius: 2,
+  },
+  topRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+  },
+  backBtn: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(0,0,0,0.35)",
+  },
+  titleWrap: {
+    flex: 1,
+  },
+  kicker: {
+    fontSize: 10,
+    fontFamily: "Inter_700Bold",
+    color: Colors.hockey,
+    letterSpacing: 1.8,
+  },
+  dateLabel: {
+    fontSize: 18,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
     letterSpacing: -0.3,
   },
-  scrollContent: {
-    paddingHorizontal: 16,
-    paddingTop: 16,
-    gap: 12,
+  counter: {
+    alignItems: "flex-end",
   },
-  intro: {
+  counterText: {
     fontSize: 13,
-    fontFamily: "Inter_400Regular",
-    color: Colors.textSecondary,
-    lineHeight: 19,
-    marginBottom: 8,
-  },
-  topicTile: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: Colors.card,
-    borderRadius: 16,
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    borderLeftWidth: 3,
-    borderTopWidth: 1,
-    borderRightWidth: 1,
-    borderBottomWidth: 1,
-    borderTopColor: Colors.border,
-    borderRightColor: Colors.border,
-    borderBottomColor: Colors.border,
-  },
-  topicIconWrap: {
-    width: 46,
-    height: 46,
-    borderRadius: 13,
-    alignItems: "center",
-    justifyContent: "center",
-    marginRight: 14,
-  },
-  topicTextWrap: {
-    flex: 1,
-  },
-  topicTitle: {
-    fontSize: 15,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
-    marginBottom: 3,
-  },
-  topicSubtitle: {
-    fontSize: 12,
-    fontFamily: "Inter_400Regular",
-    color: Colors.textSecondary,
-    lineHeight: 16,
   },
 });
