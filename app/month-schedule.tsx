@@ -264,7 +264,12 @@ export default function MonthScheduleScreen() {
       </View>
 
       {showTabs && (
-        <View style={styles.monthTabsRow}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.monthTabsScroll}
+          contentContainerStyle={styles.monthTabsRow}
+        >
           {showTodayTab && (
             <Pressable
               onPress={() => setActiveKey("today")}
@@ -315,7 +320,7 @@ export default function MonthScheduleScreen() {
               </Text>
             </Pressable>
           )}
-        </View>
+        </ScrollView>
       )}
 
       <ScrollView
@@ -637,7 +642,12 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_700Bold",
     color: "#F59E0B",
   },
+  monthTabsScroll: {
+    flexGrow: 0,
+    flexShrink: 0,
+  },
   monthTabsRow: {
+    flexGrow: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
@@ -647,6 +657,7 @@ const styles = StyleSheet.create({
     paddingBottom: 4,
   },
   monthTab: {
+    flexShrink: 0,
     paddingHorizontal: 18,
     paddingVertical: 8,
     borderRadius: 18,
