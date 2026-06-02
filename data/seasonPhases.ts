@@ -18,8 +18,8 @@ export interface ChampionshipFinal {
 export const SEASON_PHASES_2026: Record<string, PhaseWindow[]> = {
   nhl: [
     { label: "Regular", start: "2025-10-07", end: "2026-04-16" },
-    { label: "Playoffs", start: "2026-04-18", end: "2026-06-02" },
-    { label: "Final", start: "2026-06-03", end: "2026-06-22" },
+    { label: "Playoffs", start: "2026-04-18", end: "2026-06-01" },
+    { label: "Final", start: "2026-06-02", end: "2026-06-22" },
   ],
   ahl: [
     { label: "Regular", start: "2025-10-10", end: "2026-04-19" },
@@ -137,7 +137,7 @@ export const CHAMPIONSHIP_FINALS_2026: ChampionshipFinal[] = [
   { leagueKey: "ipl", sport: "cricket", name: "IPL Final", date: "2026-05-31", monthKey: "2026-05", emoji: "🏆" },
   { leagueKey: "leagueone", sport: "rugby", name: "Japan League One Final", date: "2026-06-07", monthKey: "2026-06", emoji: "🏆" },
   { leagueKey: "cafchampionsleague", sport: "soccer", name: "CAF Champions League Final", date: "2026-05-24", monthKey: "2026-05", emoji: "🏆" },
-  { leagueKey: "nhl", sport: "hockey", name: "Stanley Cup Final", date: "2026-06-03", monthKey: "2026-06", emoji: "🏆" },
+  { leagueKey: "nhl", sport: "hockey", name: "Stanley Cup Final", date: "2026-06-02", monthKey: "2026-06", emoji: "🏆" },
   { leagueKey: "ahl", sport: "hockey", name: "AHL Calder Cup Final", date: "2026-06-12", monthKey: "2026-06", emoji: "🏆" },
   { leagueKey: "echl", sport: "hockey", name: "ECHL Kelly Cup Final", date: "2026-06-05", monthKey: "2026-06", emoji: "🏆" },
   { leagueKey: "urc", sport: "rugby", name: "URC Grand Final", date: "2026-06-20", monthKey: "2026-06", emoji: "🏆" },

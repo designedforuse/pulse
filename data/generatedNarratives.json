@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-02T02:37:01.278Z",
+  "lastUpdated": "2026-06-02T02:41:18.087Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -63,7 +63,7 @@
         ],
         "playersIngested": 336,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-06-02T02:37:01.278Z"
+        "timestamp": "2026-06-02T02:41:18.087Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -73,7 +73,7 @@
     "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2070.6170216666665,
+      "hoursUntil": -2070.6883575,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -153,7 +153,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-06-02T02:37:01.278Z",
+      "triggeredAt": "2026-06-02T02:41:18.087Z",
       "expiresAt": "2026-06-02T16:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -185,7 +185,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-06-02T02:37:01.278Z",
+      "triggeredAt": "2026-06-02T02:41:18.087Z",
       "expiresAt": "2026-06-04T04:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -216,8 +216,8 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-06-02T02:37:01.278Z",
-      "expiresAt": "2026-06-09T02:37:01.278Z",
+      "triggeredAt": "2026-06-02T02:41:18.087Z",
+      "expiresAt": "2026-06-09T02:41:18.087Z",
       "kind": "grand_tour",
       "region": "Other",
       "regionPriority": 99,
@@ -254,8 +254,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-06-02T02:37:01.278Z",
-      "expiresAt": "2026-06-09T02:37:01.278Z",
+      "triggeredAt": "2026-06-02T02:41:18.087Z",
+      "expiresAt": "2026-06-09T02:41:18.087Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -323,7 +323,7 @@
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-06-02T02:37:01.278Z",
+      "triggeredAt": "2026-06-02T02:41:18.087Z",
       "expiresAt": "2026-06-05T17:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -675,7 +675,7 @@
           "leagueKey": "nhl",
           "sport": "hockey",
           "name": "Stanley Cup Final",
-          "date": "2026-06-03",
+          "date": "2026-06-02",
           "emoji": "🏆"
         },
         {
@@ -1133,7 +1133,7 @@
           "leagueKey": "nhl",
           "sport": "hockey",
           "name": "Stanley Cup Final",
-          "date": "2026-06-03",
+          "date": "2026-06-02",
           "emoji": "🏆"
         },
         {
