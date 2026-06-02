@@ -23,13 +23,13 @@ export const SEASON_PHASES_2026: Record<string, PhaseWindow[]> = {
   ],
   ahl: [
     { label: "Regular", start: "2025-10-10", end: "2026-04-19" },
-    { label: "Playoffs", start: "2026-04-22", end: "2026-06-15" },
-    { label: "Final", start: "2026-06-04", end: "2026-06-23" },
+    { label: "Playoffs", start: "2026-04-22", end: "2026-06-11" },
+    { label: "Final", start: "2026-06-12", end: "2026-06-23" },
   ],
   echl: [
     { label: "Regular", start: "2025-10-17", end: "2026-04-12" },
-    { label: "Playoffs", start: "2026-04-15", end: "2026-06-06" },
-    { label: "Final", start: "2026-06-07", end: "2026-06-20" },
+    { label: "Playoffs", start: "2026-04-15", end: "2026-06-04" },
+    { label: "Final", start: "2026-06-05", end: "2026-06-20" },
   ],
   shl: [
     { label: "Regular", start: "2025-09-13", end: "2026-03-08" },
@@ -138,8 +138,8 @@ export const CHAMPIONSHIP_FINALS_2026: ChampionshipFinal[] = [
   { leagueKey: "leagueone", sport: "rugby", name: "Japan League One Final", date: "2026-06-07", monthKey: "2026-06", emoji: "🏆" },
   { leagueKey: "cafchampionsleague", sport: "soccer", name: "CAF Champions League Final", date: "2026-05-24", monthKey: "2026-05", emoji: "🏆" },
   { leagueKey: "nhl", sport: "hockey", name: "Stanley Cup Final", date: "2026-06-03", monthKey: "2026-06", emoji: "🏆" },
-  { leagueKey: "ahl", sport: "hockey", name: "AHL Calder Cup Final", date: "2026-06-04", monthKey: "2026-06", emoji: "🏆" },
-  { leagueKey: "echl", sport: "hockey", name: "ECHL Kelly Cup Final", date: "2026-06-07", monthKey: "2026-06", emoji: "🏆" },
+  { leagueKey: "ahl", sport: "hockey", name: "AHL Calder Cup Final", date: "2026-06-12", monthKey: "2026-06", emoji: "🏆" },
+  { leagueKey: "echl", sport: "hockey", name: "ECHL Kelly Cup Final", date: "2026-06-05", monthKey: "2026-06", emoji: "🏆" },
   { leagueKey: "urc", sport: "rugby", name: "URC Grand Final", date: "2026-06-20", monthKey: "2026-06", emoji: "🏆" },
   { leagueKey: "superrugby", sport: "rugby", name: "Super Rugby Final", date: "2026-06-20", monthKey: "2026-06", emoji: "🏆" },
   { leagueKey: "premiership", sport: "rugby", name: "Premiership Final", date: "2026-06-13", monthKey: "2026-06", emoji: "🏆" },
