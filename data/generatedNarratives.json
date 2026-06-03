@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-03T17:34:47.890Z",
+  "lastUpdated": "2026-06-03T18:19:04.294Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -71,7 +71,7 @@
         ],
         "playersIngested": 356,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-06-03T17:34:47.890Z"
+        "timestamp": "2026-06-03T18:19:04.294Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -81,7 +81,7 @@
     "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2109.5799694444445,
+      "hoursUntil": -2110.3178594444444,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -92,8 +92,8 @@
     },
     "upsetAlert": {
       "rawUpsetCandidates": 1,
-      "upsetLiveCandidates": 1,
-      "upsetCompletedCandidates": 0,
+      "upsetLiveCandidates": 0,
+      "upsetCompletedCandidates": 1,
       "upsetFinalCount": 1
     },
     "clinchWatch": {
@@ -161,21 +161,21 @@
     {
       "id": "upset_alert_tennis-espn-175771",
       "title": "Upset Alert",
-      "subtitle": "Auger-Aliassime in trouble against Cobolli at French Open",
+      "subtitle": "Cobolli stuns Auger-Aliassime at French Open",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-06-03T17:34:47.890Z",
-      "expiresAt": "2026-06-03T19:34:47.890Z",
+      "triggeredAt": "2026-06-03T18:19:04.294Z",
+      "expiresAt": "2026-06-04T00:19:04.294Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "mode": "live",
-        "upsetType": "tennis_live_upset",
+        "mode": "completed",
+        "upsetType": "tennis_seed_upset",
         "sport": "tennis",
         "league": "Grand Slam",
         "favoriteName": "Auger-Aliassime",
@@ -188,7 +188,7 @@
         "eventIds": [
           "tennis-espn-175771"
         ],
-        "reason": "Cobolli is threatening an upset against Auger-Aliassime.\n\nThe higher seed is in trouble and the match is still live."
+        "reason": "Auger-Aliassime (seed 4) entered as the higher seed, but Cobolli knocked Auger-Aliassime out.\n\nThis opens up the draw and changes the shape of the tournament."
       },
       "sports": [
         "tennis"
@@ -203,8 +203,8 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-06-03T17:34:47.890Z",
-      "expiresAt": "2026-06-03T22:15:00.000Z",
+      "triggeredAt": "2026-06-03T18:19:04.294Z",
+      "expiresAt": "2026-06-03T22:20:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
@@ -216,7 +216,7 @@
         "league": "Grand Slam",
         "awayTeam": "Arnaldi",
         "homeTeam": "Berrettini",
-        "startTime": "2026-06-03T18:15:00.000Z",
+        "startTime": "2026-06-03T18:20:00.000Z",
         "eventIds": [
           "tennis-espn-175769"
         ],
@@ -235,7 +235,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-06-03T17:34:47.890Z",
+      "triggeredAt": "2026-06-03T18:19:04.294Z",
       "expiresAt": "2026-06-04T04:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -275,8 +275,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-06-03T17:34:47.890Z",
-      "expiresAt": "2026-06-10T17:34:47.890Z",
+      "triggeredAt": "2026-06-03T18:19:04.294Z",
+      "expiresAt": "2026-06-10T18:19:04.294Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -290,7 +290,7 @@
             "home": "Berrettini",
             "league": "Grand Slam",
             "round": "Roland Garros — Quarterfinal",
-            "startTime": "2026-06-03T18:15:00.000Z"
+            "startTime": "2026-06-03T18:20:00.000Z"
           },
           {
             "away": "Zverev",
@@ -328,7 +328,7 @@
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-06-03T17:34:47.890Z",
+      "triggeredAt": "2026-06-03T18:19:04.294Z",
       "expiresAt": "2026-06-05T17:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
