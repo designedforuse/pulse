@@ -160,7 +160,7 @@ function matchToEvent(match: T20WcMatch): AppEvent {
     homeTeam: match.team2,
     startTimeLocal: startUtc,
     endTimeLocal: addDuration(startUtc, T20_DURATION_MIN),
-    providerId: "youtubetv",
+    providerId: "willowtv",
     isLive: false,
     source: "cricket-t20wc-schedule",
     leagueKey: "icc",

@@ -32,6 +32,9 @@ export const PROVIDER_LIST: ProviderEntry[] = [
 ];
 
 export function getEventBroadcasterIds(event: SportEvent): string[] {
+  // Cricket is exclusive to Willow TV — pin it so provider filtering can never
+  // drift if a stored providerId regresses (see resolveCricketBroadcastId).
+  if (event.sport === "cricket") return ["willowtv"];
   const pid = event.providerId || "";
   const rawBc = Array.isArray(event.broadcastNetworks)
     ? event.broadcastNetworks.join(", ")

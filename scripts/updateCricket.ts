@@ -505,9 +505,7 @@ function resolveHostCountry(venue: string, teams: string[]): string {
 }
 
 function getProvider(league: string, country: string): string {
-  if (league === "IPL") return "willowtv";
-  const disneyCountries = ["New Zealand", "Caribbean"];
-  if (disneyCountries.includes(country)) return "disneyplus";
+  // All cricket is exclusive to Willow TV — no ESPN/Disney+ routing.
   return "willowtv";
 }
 

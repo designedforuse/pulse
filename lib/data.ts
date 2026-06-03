@@ -424,8 +424,8 @@ function resolveRugbyBroadcastId(event: SportEvent): [string, string] {
 }
 
 function resolveCricketBroadcastId(event: SportEvent): [string, string] {
-  if (event.providerId === "disneyplus") return ["espn", "disneyplus"];
-  // Willow TV is now distributed via FloSports (was YouTube TV).
+  // All cricket is now exclusive to Willow TV (distributed via FloSports).
+  // No longer routed to ESPN/Disney+ for any league or region.
   return ["willowtv", "flosports"];
 }
 
