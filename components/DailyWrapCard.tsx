@@ -66,6 +66,9 @@ export interface DailyWrapEntry {
   startTimeLocal: string;
   isFav?: boolean;
   video?: HighlightVideo;
+  // Look-ahead "coming up" filler card (no result yet) used to keep the wrap
+  // at a minimum number of stories. Always ordered after concluded results.
+  isLookAhead?: boolean;
 }
 
 export interface HighlightVideo {
@@ -122,9 +125,15 @@ export function isEntryFavorite(entry: DailyWrapEntry, favTeams: Set<string>): b
 export function tagEntries(results: DailyWrapEntry[], favorites: Favorites) {
   const favTeams = buildFavoriteSet(favorites);
   const tagged = results.map((r) => ({ ...r, isFav: isEntryFavorite(r, favTeams) }));
-  const favs = tagged.filter((r) => r.isFav).sort((a, b) => b.priorityScore - a.priorityScore);
-  const others = tagged.filter((r) => !r.isFav).sort((a, b) => b.priorityScore - a.priorityScore);
-  return [...favs, ...others];
+  // Look-ahead previews always trail the concluded results, ranked by weight
+  // among themselves. Concluded results lead, favorites first.
+  const concluded = tagged.filter((r) => !r.isLookAhead);
+  const lookAhead = tagged
+    .filter((r) => r.isLookAhead)
+    .sort((a, b) => b.priorityScore - a.priorityScore);
+  const favs = concluded.filter((r) => r.isFav).sort((a, b) => b.priorityScore - a.priorityScore);
+  const others = concluded.filter((r) => !r.isFav).sort((a, b) => b.priorityScore - a.priorityScore);
+  return [...favs, ...others, ...lookAhead];
 }
 
 export default function DailyWrapCard({ fill = false }: { fill?: boolean } = {}) {

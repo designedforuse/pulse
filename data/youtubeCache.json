@@ -1496,14 +1496,22 @@
     }
   },
   "marquee_match:louisville city fc vs birmingham legion fc usl preview": {
-    "video": null,
-    "fetchedAt": "2026-06-02T17:42:54.103Z",
+    "video": {
+      "url": "https://www.youtube.com/watch?v=3iucJ_K7UTE",
+      "thumbnailUrl": "https://img.youtube.com/vi/3iucJ_K7UTE/hqdefault.jpg",
+      "durationSeconds": 0,
+      "title": "Birmingham Legion FC vs Louisville City FC matches 𝐋𝐈𝐕𝐄 🔴 | USL Championship 2026",
+      "source": "youtube",
+      "channel": "ZTV145 LIVE",
+      "publishedAt": "2 hours ago"
+    },
+    "fetchedAt": "2026-06-03T17:26:22.514Z",
     "query": "Louisville City FC vs Birmingham Legion FC USL preview",
     "debug": {
       "searchQuery": "Louisville City FC vs Birmingham Legion FC USL preview",
-      "selectedVideoTitle": null,
-      "selectedVideoPublishedAt": null,
-      "selectedVideoChannel": null,
+      "selectedVideoTitle": "Birmingham Legion FC vs Louisville City FC matches 𝐋𝐈𝐕𝐄 🔴 | USL Championship 2026",
+      "selectedVideoPublishedAt": "2 hours ago",
+      "selectedVideoChannel": "ZTV145 LIVE",
       "rejectedForAgeCount": 0
     }
   },
@@ -1521,41 +1529,41 @@
   },
   "league_moment:big stage sports june 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=wO9rRZT82Lk",
-      "thumbnailUrl": "https://img.youtube.com/vi/wO9rRZT82Lk/hqdefault.jpg",
-      "durationSeconds": 3296,
-      "title": "Toronto Takes Centre Stage at the Cup Final | JD Bunkis Podcast",
+      "url": "https://www.youtube.com/watch?v=Pb60KdHDGlQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/Pb60KdHDGlQ/hqdefault.jpg",
+      "durationSeconds": 5910,
+      "title": "Morning News NOW Full Episode – June 3",
       "source": "youtube",
-      "channel": "SPORTSNET",
-      "publishedAt": "Streamed 3 hours ago"
+      "channel": "NBC News",
+      "publishedAt": "2 hours ago"
     },
-    "fetchedAt": "2026-06-02T17:42:54.474Z",
+    "fetchedAt": "2026-06-03T17:26:22.950Z",
     "query": "Big Stage sports June 2026",
     "debug": {
       "searchQuery": "Big Stage sports June 2026",
-      "selectedVideoTitle": "Toronto Takes Centre Stage at the Cup Final | JD Bunkis Podcast",
-      "selectedVideoPublishedAt": "Streamed 3 hours ago",
-      "selectedVideoChannel": "SPORTSNET",
-      "rejectedForAgeCount": 0
+      "selectedVideoTitle": "Morning News NOW Full Episode – June 3",
+      "selectedVideoPublishedAt": "2 hours ago",
+      "selectedVideoChannel": "NBC News",
+      "rejectedForAgeCount": 2
     }
   },
   "diamond_league:diamond league — rome diamond league 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=_DsRilILFuo",
-      "thumbnailUrl": "https://img.youtube.com/vi/_DsRilILFuo/hqdefault.jpg",
-      "durationSeconds": 110,
-      "title": "Melissa Jefferson VS Julien Alfred 200m Clash | Track And Field 2026",
+      "url": "https://www.youtube.com/watch?v=Uf7IBfAkAEI",
+      "thumbnailUrl": "https://img.youtube.com/vi/Uf7IBfAkAEI/hqdefault.jpg",
+      "durationSeconds": 521,
+      "title": "2026 Press Conference Highlights Rome - Wanda Diamond League",
       "source": "youtube",
-      "channel": "Track & Field All Day",
-      "publishedAt": "19 minutes ago"
+      "channel": "Wanda Diamond League",
+      "publishedAt": "24 minutes ago"
     },
-    "fetchedAt": "2026-06-02T17:42:54.808Z",
+    "fetchedAt": "2026-06-03T17:26:23.323Z",
     "query": "Diamond League — Rome Diamond League 2026",
     "debug": {
       "searchQuery": "Diamond League — Rome Diamond League 2026",
-      "selectedVideoTitle": "Melissa Jefferson VS Julien Alfred 200m Clash | Track And Field 2026",
-      "selectedVideoPublishedAt": "19 minutes ago",
-      "selectedVideoChannel": "Track & Field All Day",
+      "selectedVideoTitle": "2026 Press Conference Highlights Rome - Wanda Diamond League",
+      "selectedVideoPublishedAt": "24 minutes ago",
+      "selectedVideoChannel": "Wanda Diamond League",
       "rejectedForAgeCount": 0
     }
   },
@@ -1589,6 +1597,30 @@
     "query": "Cobolli clinch playoff berth June 2026",
     "debug": {
       "searchQuery": "Cobolli clinch playoff berth June 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:auger-aliassime vs cobolli upset highlights june 2026": {
+    "video": null,
+    "fetchedAt": "2026-06-03T17:26:21.993Z",
+    "query": "Auger-Aliassime vs Cobolli upset highlights June 2026",
+    "debug": {
+      "searchQuery": "Auger-Aliassime vs Cobolli upset highlights June 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:arnaldi clinch playoff berth june 2026": {
+    "video": null,
+    "fetchedAt": "2026-06-03T17:26:22.198Z",
+    "query": "Arnaldi clinch playoff berth June 2026",
+    "debug": {
+      "searchQuery": "Arnaldi clinch playoff berth June 2026",
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,

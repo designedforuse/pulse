@@ -64,6 +64,11 @@ export interface DailyWrapEntry {
   priorityScore: number;
   startTimeLocal: string;
   video?: HighlightVideo;
+  // Look-ahead "coming up" filler card. The Daily Wrap always shows at least
+  // MIN_STORIES stories; when the past-24h window has too few concluded
+  // results, the highest-weighted upcoming games (next 48h) fill the gap.
+  // These carry no result/score and render as a preview.
+  isLookAhead?: boolean;
 }
 
 export interface DailyWrapResponse {
@@ -153,6 +158,95 @@ function getPriorityScore(sport: string, league: string, score: ScoreData | unde
   }
   if (sportLower === "cricket") return 32;
   return 15;
+}
+
+// The Daily Wrap always surfaces at least this many stories. When fewer
+// concluded results exist in the past-24h window, the gap is filled with
+// look-ahead preview cards drawn from the next 48h of fixtures.
+const MIN_STORIES = 5;
+const LOOKAHEAD_MS = 48 * 60 * 60 * 1000;
+
+// Relative kickoff label for a look-ahead card, e.g. "Tomorrow · 7:30 AM".
+// tz is the client's getTimezoneOffset() (minutes, positive = west).
+function lookAheadTimeLabel(startIso: string, tz: number): string {
+  const startMs = new Date(startIso).getTime();
+  if (isNaN(startMs)) return "";
+  const localStartMs = startMs - tz * 60000;
+  const localNowMs = Date.now() - tz * 60000;
+  const dayStart = Math.floor(localStartMs / 86400000);
+  const dayNow = Math.floor(localNowMs / 86400000);
+  const diff = dayStart - dayNow;
+  const d = new Date(localStartMs);
+  const time = d.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    timeZone: "UTC",
+  });
+  const dayLabel =
+    diff <= 0
+      ? "Today"
+      : diff === 1
+        ? "Tomorrow"
+        : d.toLocaleDateString("en-US", { weekday: "long", timeZone: "UTC" });
+  return `${dayLabel} · ${time}`;
+}
+
+// Build up to `need` look-ahead preview entries from the highest-weighted
+// upcoming fixtures (next 48h). Excludes anything already in the wrap, dedupes
+// repeated matchups (e.g. multi-session weekends), and ranks by league weight,
+// soonest first as the tie-break.
+function buildLookAheadEntries(
+  allEvents: any[],
+  excludeIds: Set<string>,
+  nowMs: number,
+  tz: number,
+  need: number,
+): DailyWrapEntry[] {
+  if (need <= 0) return [];
+  const windowEnd = nowMs + LOOKAHEAD_MS;
+
+  const candidates = allEvents.filter((e: any) => {
+    if (!e?.id || excludeIds.has(e.id)) return false;
+    const t = new Date(e.startTimeLocal).getTime();
+    if (isNaN(t)) return false;
+    return t > nowMs && t <= windowEnd;
+  });
+
+  candidates.sort((a: any, b: any) => {
+    const pa = getPriorityScore(a.sport, a.league, undefined);
+    const pb = getPriorityScore(b.sport, b.league, undefined);
+    if (pb !== pa) return pb - pa;
+    return new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime();
+  });
+
+  const seen = new Set<string>();
+  const out: DailyWrapEntry[] = [];
+  for (const e of candidates) {
+    const key = `${(e.sport || "").toLowerCase()}|${(e.league || "").toLowerCase()}|${(e.homeTeam || "").toLowerCase()}|${(e.awayTeam || "").toLowerCase()}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+
+    const hasMatchup =
+      e.awayTeam && e.homeTeam && e.awayTeam !== e.homeTeam;
+    const editorial = hasMatchup
+      ? `${e.awayTeam} vs ${e.homeTeam}`
+      : e.homeTeam || e.awayTeam || e.league;
+
+    out.push({
+      eventId: e.id,
+      sport: e.sport,
+      league: e.league,
+      homeTeam: e.homeTeam,
+      awayTeam: e.awayTeam,
+      editorial,
+      detail: lookAheadTimeLabel(e.startTimeLocal, tz),
+      priorityScore: getPriorityScore(e.sport, e.league, undefined),
+      startTimeLocal: e.startTimeLocal,
+      isLookAhead: true,
+    });
+    if (out.length >= need) break;
+  }
+  return out;
 }
 
 const COUNTRY_FLAGS: Record<string, string> = {
@@ -974,17 +1068,18 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
     return s >= start && s <= end;
   });
 
-  if (todayEvents.length === 0) {
-    return { date: dateLabel, hasResults: false, results: [] };
-  }
+  // Note: we no longer early-return when the past-24h window is empty — the
+  // wrap still needs to fill MIN_STORIES with look-ahead preview cards below.
 
   let scores: Record<string, ScoreData> = {};
   let seriesStatuses: Record<string, SeriesStatus> = {};
-  try {
-    const sr = await fetchAllLiveScores();
-    scores = sr.scores;
-    seriesStatuses = sr.seriesStatuses || {};
-  } catch {}
+  if (todayEvents.length > 0) {
+    try {
+      const sr = await fetchAllLiveScores();
+      scores = sr.scores;
+      seriesStatuses = sr.seriesStatuses || {};
+    } catch {}
+  }
 
   const results: DailyWrapEntry[] = [];
   const nowMs = Date.now();
@@ -1165,6 +1260,25 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
   }
 
   results.sort((a, b) => b.priorityScore - a.priorityScore);
+
+  // Always show at least MIN_STORIES. When the past-24h window yields too few
+  // concluded results, top up with look-ahead preview cards drawn from the
+  // highest-weighted upcoming fixtures in the next 48h. These are score-
+  // agnostic, so add them to fallbackIds to skip highlight enrichment.
+  if (results.length < MIN_STORIES) {
+    const existingIds = new Set(results.map((r) => r.eventId));
+    const lookAhead = buildLookAheadEntries(
+      allEvents,
+      existingIds,
+      nowMs,
+      tz,
+      MIN_STORIES - results.length,
+    );
+    for (const entry of lookAhead) {
+      fallbackIds.add(entry.eventId);
+      results.push(entry);
+    }
+  }
 
   // enrichWithHighlights mutates entries in place, so enriching only the
   // non-fallback subset still updates the shared objects kept in `results`.

@@ -1,8 +1,11 @@
 {
-  "lastUpdated": "2026-06-02T19:43:43.140Z",
+  "lastUpdated": "2026-06-03T17:26:29.169Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
+        "Other": 2
+      },
+      "upset_alert": {
         "Other": 1
       },
       "clinch_watch": {
@@ -18,15 +21,24 @@
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
       "Other": [
+        "upset_alert: Upset Alert",
         "clinch_watch: Clinch Watch",
         "marquee_match: Marquee Match: USL",
         "league_moment: Big Stage",
         "diamond_league: Diamond League"
       ]
     },
-    "droppedCandidatesReasons": [],
-    "totalBeforeCap": 4,
-    "totalAfterCap": 4,
+    "droppedCandidatesReasons": [
+      {
+        "id": "f1_race_weekend_monaco_grand_prix",
+        "kind": "league_moment",
+        "region": "Other",
+        "title": "Monaco Grand Prix",
+        "reason": "max 1 league_moment per region (Other)"
+      }
+    ],
+    "totalBeforeCap": 6,
+    "totalAfterCap": 5,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -57,19 +69,19 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 336,
+        "playersIngested": 356,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-06-02T19:43:43.140Z"
+        "timestamp": "2026-06-03T17:26:29.169Z"
       },
       "cacheHistoryCount": 880,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 4,
-    "candidateCountAfterCap": 4,
+    "candidateCountBeforeCap": 6,
+    "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2087.72865,
+      "hoursUntil": -2109.4414358333333,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -79,25 +91,25 @@
       "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 0,
-      "upsetLiveCandidates": 0,
+      "rawUpsetCandidates": 1,
+      "upsetLiveCandidates": 1,
       "upsetCompletedCandidates": 0,
-      "upsetFinalCount": 0
+      "upsetFinalCount": 1
     },
     "clinchWatch": {
-      "rawClinchCandidates": 2,
+      "rawClinchCandidates": 3,
       "clinchAfterRegionFilter": 1,
       "clinchFinalCount": 1,
       "clinchGatedOut": []
     },
     "tonightStorySelectedSignal": "championship_day",
     "tonightStoryHeadline": "French Open Quarterfinals",
-    "tonightStorySourceEvent": "tennis-espn-175663",
+    "tonightStorySourceEvent": "tennis-espn-175771",
     "tonightStoryDebug": {
       "selectedSignal": "championship_day",
       "selectedHeadline": "French Open Quarterfinals",
       "selectedScore": 200,
-      "sourceEventId": "tennis-espn-175663",
+      "sourceEventId": "tennis-espn-175771",
       "reason": "championship-day group (tennis|French Open|Quarterfinal, 2 events)",
       "scoredCandidates": [
         {
@@ -108,8 +120,15 @@
       ]
     },
     "videoSelection": {
-      "clinch_watch_tennis-espn-175771": {
-        "searchQuery": "Cobolli clinch playoff berth June 2026",
+      "upset_alert_tennis-espn-175771": {
+        "searchQuery": "Auger-Aliassime vs Cobolli upset highlights June 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
+        "rejectedForAgeCount": 0
+      },
+      "clinch_watch_tennis-espn-175769": {
+        "searchQuery": "Arnaldi clinch playoff berth June 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
@@ -117,39 +136,75 @@
       },
       "marquee_match": {
         "searchQuery": "Louisville City FC vs Birmingham Legion FC USL preview",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
+        "selectedVideoTitle": "Birmingham Legion FC vs Louisville City FC matches 𝐋𝐈𝐕𝐄 🔴 | USL Championship 2026",
+        "selectedVideoPublishedAt": "2 hours ago",
+        "selectedVideoChannel": "ZTV145 LIVE",
         "rejectedForAgeCount": 0
       },
       "league_moment_tournament": {
         "searchQuery": "Big Stage sports June 2026",
-        "selectedVideoTitle": "Toronto Takes Centre Stage at the Cup Final | JD Bunkis Podcast",
-        "selectedVideoPublishedAt": "Streamed 3 hours ago",
-        "selectedVideoChannel": "SPORTSNET",
-        "rejectedForAgeCount": 0
+        "selectedVideoTitle": "Morning News NOW Full Episode – June 3",
+        "selectedVideoPublishedAt": "2 hours ago",
+        "selectedVideoChannel": "NBC News",
+        "rejectedForAgeCount": 2
       },
       "diamond_league_athletics-diamond-league-rome-2026": {
         "searchQuery": "Diamond League — Rome Diamond League 2026",
-        "selectedVideoTitle": "Melissa Jefferson VS Julien Alfred 200m Clash | Track And Field 2026",
-        "selectedVideoPublishedAt": "19 minutes ago",
-        "selectedVideoChannel": "Track & Field All Day",
+        "selectedVideoTitle": "2026 Press Conference Highlights Rome - Wanda Diamond League",
+        "selectedVideoPublishedAt": "24 minutes ago",
+        "selectedVideoChannel": "Wanda Diamond League",
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
-      "id": "clinch_watch_tennis-espn-175771",
+      "id": "upset_alert_tennis-espn-175771",
+      "title": "Upset Alert",
+      "subtitle": "Auger-Aliassime in trouble against Cobolli at French Open",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 98,
+      "triggeredAt": "2026-06-03T17:26:29.169Z",
+      "expiresAt": "2026-06-03T19:26:29.169Z",
+      "kind": "upset_alert",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "mode": "live",
+        "upsetType": "tennis_live_upset",
+        "sport": "tennis",
+        "league": "Grand Slam",
+        "favoriteName": "Auger-Aliassime",
+        "underdogName": "Cobolli",
+        "favoriteRank": 4,
+        "underdogRank": 10,
+        "awayTeam": "Cobolli",
+        "homeTeam": "Auger-Aliassime",
+        "startTime": "2026-06-03T14:05:00.000Z",
+        "eventIds": [
+          "tennis-espn-175771"
+        ],
+        "reason": "Cobolli is threatening an upset against Auger-Aliassime.\n\nThe higher seed is in trouble and the match is still live."
+      },
+      "sports": [
+        "tennis"
+      ]
+    },
+    {
+      "id": "clinch_watch_tennis-espn-175769",
       "title": "Clinch Watch",
-      "subtitle": "Cobolli vs Auger-Aliassime · Tennis title on the line",
+      "subtitle": "Arnaldi vs Berrettini · Tennis title on the line",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-06-02T19:43:43.140Z",
-      "expiresAt": "2026-06-03T16:00:00.000Z",
+      "triggeredAt": "2026-06-03T17:26:29.169Z",
+      "expiresAt": "2026-06-03T22:15:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
@@ -159,13 +214,13 @@
         "conditionLabel": "Tennis title on the line",
         "sport": "tennis",
         "league": "Grand Slam",
-        "awayTeam": "Cobolli",
-        "homeTeam": "Auger-Aliassime",
-        "startTime": "2026-06-03T12:00:00.000Z",
+        "awayTeam": "Arnaldi",
+        "homeTeam": "Berrettini",
+        "startTime": "2026-06-03T18:15:00.000Z",
         "eventIds": [
-          "tennis-espn-175771"
+          "tennis-espn-175769"
         ],
-        "reason": "Cobolli and Auger-Aliassime meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
+        "reason": "Arnaldi and Berrettini meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
       },
       "sports": [
         "tennis"
@@ -174,13 +229,13 @@
     {
       "id": "marquee_match",
       "title": "Marquee Match: USL",
-      "subtitle": "Louisville City FC vs Birmingham Legion FC — USL · tomorrow",
+      "subtitle": "Louisville City FC vs Birmingham Legion FC — USL · kicks off in 7h",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-06-02T19:43:43.140Z",
+      "triggeredAt": "2026-06-03T17:26:29.169Z",
       "expiresAt": "2026-06-04T04:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -196,11 +251,20 @@
         "eventIds": [
           "soccer-usl-20260604-0000-louisville-city-fc-at-birmingham-legion-fc"
         ],
-        "reason": "Top USL fixture (Louisville City FC vs Birmingham Legion FC) tomorrow"
+        "reason": "Top USL fixture (Louisville City FC vs Birmingham Legion FC) kicks off in 7h"
       },
       "sports": [
         "soccer"
-      ]
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=3iucJ_K7UTE",
+        "thumbnailUrl": "https://img.youtube.com/vi/3iucJ_K7UTE/hqdefault.jpg",
+        "durationSeconds": 0,
+        "title": "Birmingham Legion FC vs Louisville City FC matches 𝐋𝐈𝐕𝐄 🔴 | USL Championship 2026",
+        "source": "youtube",
+        "channel": "ZTV145 LIVE",
+        "publishedAt": "2 hours ago"
+      }
     },
     {
       "id": "league_moment_tournament",
@@ -211,8 +275,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-06-02T19:43:43.140Z",
-      "expiresAt": "2026-06-09T19:43:43.140Z",
+      "triggeredAt": "2026-06-03T17:26:29.169Z",
+      "expiresAt": "2026-06-10T17:26:29.169Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -222,23 +286,23 @@
         "matchCount": 2,
         "matches": [
           {
-            "away": "Cobolli",
-            "home": "Auger-Aliassime",
-            "league": "Grand Slam",
-            "round": "Roland Garros — Quarterfinal",
-            "startTime": "2026-06-03T12:00:00.000Z"
-          },
-          {
             "away": "Arnaldi",
             "home": "Berrettini",
             "league": "Grand Slam",
             "round": "Roland Garros — Quarterfinal",
             "startTime": "2026-06-03T18:15:00.000Z"
+          },
+          {
+            "away": "Zverev",
+            "home": "Mensik",
+            "league": "Grand Slam",
+            "round": "Roland Garros — Semifinal",
+            "startTime": "2026-06-05T04:00:00.000Z"
           }
         ],
         "eventIds": [
-          "tennis-espn-175771",
-          "tennis-espn-175769"
+          "tennis-espn-175769",
+          "tennis-espn-175679"
         ],
         "reason": "Found 2 tournament stage match(es) in the next 7 days"
       },
@@ -246,25 +310,25 @@
         "tennis"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=wO9rRZT82Lk",
-        "thumbnailUrl": "https://img.youtube.com/vi/wO9rRZT82Lk/hqdefault.jpg",
-        "durationSeconds": 3296,
-        "title": "Toronto Takes Centre Stage at the Cup Final | JD Bunkis Podcast",
+        "url": "https://www.youtube.com/watch?v=Pb60KdHDGlQ",
+        "thumbnailUrl": "https://img.youtube.com/vi/Pb60KdHDGlQ/hqdefault.jpg",
+        "durationSeconds": 5910,
+        "title": "Morning News NOW Full Episode – June 3",
         "source": "youtube",
-        "channel": "SPORTSNET",
-        "publishedAt": "Streamed 3 hours ago"
+        "channel": "NBC News",
+        "publishedAt": "2 hours ago"
       }
     },
     {
       "id": "diamond_league_athletics-diamond-league-rome-2026",
       "title": "Diamond League",
-      "subtitle": "Diamond League — Rome — in 2 days",
+      "subtitle": "Diamond League — Rome — tomorrow",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-06-02T19:43:43.140Z",
+      "triggeredAt": "2026-06-03T17:26:29.169Z",
       "expiresAt": "2026-06-05T17:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -283,13 +347,13 @@
         "athletics"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=_DsRilILFuo",
-        "thumbnailUrl": "https://img.youtube.com/vi/_DsRilILFuo/hqdefault.jpg",
-        "durationSeconds": 110,
-        "title": "Melissa Jefferson VS Julien Alfred 200m Clash | Track And Field 2026",
+        "url": "https://www.youtube.com/watch?v=Uf7IBfAkAEI",
+        "thumbnailUrl": "https://img.youtube.com/vi/Uf7IBfAkAEI/hqdefault.jpg",
+        "durationSeconds": 521,
+        "title": "2026 Press Conference Highlights Rome - Wanda Diamond League",
         "source": "youtube",
-        "channel": "Track & Field All Day",
-        "publishedAt": "19 minutes ago"
+        "channel": "Wanda Diamond League",
+        "publishedAt": "24 minutes ago"
       }
     }
   ],
@@ -298,10 +362,10 @@
     "signalLabel": "CHAMPIONSHIP DAY",
     "headline": "French Open Quarterfinals",
     "body": "Quarterfinals day at the French Open — title contenders on the line.",
-    "sourceEventId": "tennis-espn-175663",
+    "sourceEventId": "tennis-espn-175771",
     "eventIds": [
-      "tennis-espn-175663",
-      "tennis-espn-175661"
+      "tennis-espn-175771",
+      "tennis-espn-175769"
     ],
     "sourceCard": {
       "id": "championship_day_tennis-french-open-quarterfinal",
@@ -319,10 +383,10 @@
       "signalLabel": "CHAMPIONSHIP DAY",
       "headline": "French Open Quarterfinals",
       "body": "Quarterfinals day at the French Open — title contenders on the line.",
-      "sourceEventId": "tennis-espn-175663",
+      "sourceEventId": "tennis-espn-175771",
       "eventIds": [
-        "tennis-espn-175663",
-        "tennis-espn-175661"
+        "tennis-espn-175771",
+        "tennis-espn-175769"
       ],
       "sourceCard": {
         "id": "championship_day_tennis-french-open-quarterfinal",
@@ -374,9 +438,9 @@
           "sport": "tennis",
           "displayName": "Roland Garros",
           "leagueKey": "grand-slam",
-          "dateRangeLabel": "Jun 2–3",
-          "startDate": "2026-06-02T12:45:00.000Z",
-          "endDate": "2026-06-03T18:15:00.000Z",
+          "dateRangeLabel": "Jun 2–5",
+          "startDate": "2026-06-02T18:30:00.000Z",
+          "endDate": "2026-06-05T04:00:00.000Z",
           "eventCount": 4,
           "seasonPhase": null
         },
@@ -394,18 +458,18 @@
           "sport": "hockey",
           "displayName": "ECHL",
           "leagueKey": "echl",
-          "dateRangeLabel": "Jun 3–4",
+          "dateRangeLabel": "Jun 3–18",
           "startDate": "2026-06-03T00:05:00.000Z",
-          "endDate": "2026-06-04T00:05:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": "Playoffs"
+          "endDate": "2026-06-18T00:05:00.000Z",
+          "eventCount": 8,
+          "seasonPhase": "Final"
         },
         {
           "sport": "cricket",
           "displayName": "International Cricket",
           "leagueKey": "intl",
           "dateRangeLabel": "Jun 3–20",
-          "startDate": "2026-06-03T10:00:00.000Z",
+          "startDate": "2026-06-03T14:30:00.000Z",
           "endDate": "2026-06-20T08:00:00.000Z",
           "eventCount": 9,
           "seasonPhase": null
@@ -745,10 +809,10 @@
           "sport": "tennis",
           "displayName": "Wimbledon",
           "leagueKey": "grand-slam",
-          "dateRangeLabel": "Jul 1–2",
+          "dateRangeLabel": "Jul 1–3",
           "startDate": "2026-07-01T10:00:00.000Z",
-          "endDate": "2026-07-02T16:00:00.000Z",
-          "eventCount": 6,
+          "endDate": "2026-07-03T13:00:00.000Z",
+          "eventCount": 8,
           "seasonPhase": null
         },
         {
@@ -952,9 +1016,9 @@
           "sport": "tennis",
           "displayName": "Roland Garros",
           "leagueKey": "grand-slam",
-          "dateRangeLabel": "Jun 2–3",
-          "startDate": "2026-06-02T12:45:00.000Z",
-          "endDate": "2026-06-03T18:15:00.000Z",
+          "dateRangeLabel": "Jun 2–5",
+          "startDate": "2026-06-02T18:30:00.000Z",
+          "endDate": "2026-06-05T04:00:00.000Z",
           "eventCount": 4,
           "seasonPhase": null
         },
@@ -972,18 +1036,18 @@
           "sport": "hockey",
           "displayName": "ECHL",
           "leagueKey": "echl",
-          "dateRangeLabel": "Jun 3–4",
+          "dateRangeLabel": "Jun 3–6",
           "startDate": "2026-06-03T00:05:00.000Z",
-          "endDate": "2026-06-04T00:05:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": "Playoffs"
+          "endDate": "2026-06-06T23:05:00.000Z",
+          "eventCount": 3,
+          "seasonPhase": "Final"
         },
         {
           "sport": "cricket",
           "displayName": "International Cricket",
           "leagueKey": "intl",
           "dateRangeLabel": "Jun 3–6",
-          "startDate": "2026-06-03T10:00:00.000Z",
+          "startDate": "2026-06-03T14:30:00.000Z",
           "endDate": "2026-06-06T15:00:00.000Z",
           "eventCount": 3,
           "seasonPhase": null

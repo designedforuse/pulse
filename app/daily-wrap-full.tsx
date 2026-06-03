@@ -69,6 +69,7 @@ interface StoryView {
   sportColor: string;
   video?: HighlightVideo;
   backdrop?: ImageSourcePropType | null;
+  isLookAhead?: boolean;
 }
 
 // --- Ken Burns: slow zoom + pan over a still image ---
@@ -397,13 +398,13 @@ function StoryPage({
   isLast: boolean;
   hideSpoilers: boolean;
 }) {
-  const { entry, event, score, mood, headline, sportColor, video, backdrop } = view;
+  const { entry, event, score, mood, headline, sportColor, video, backdrop, isLookAhead } = view;
   const moodColor = MOOD_COLORS[mood];
   const provider = event ? resolveProviderDisplay(event) : null;
   const showKenBurns = !!backdrop;
   // Cycling entries render a dedicated GC result card (label + flag/name), so
   // skip the generic event/score card when a cyclingResult is present.
-  const showScoreCard = !hideSpoilers && !!event && !!score && !entry.cyclingResult;
+  const showScoreCard = !hideSpoilers && !!event && !!score && !entry.cyclingResult && !isLookAhead;
 
   const handleReplay = () => {
     if (!event) return;
@@ -411,6 +412,15 @@ function StoryPage({
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     }
     router.push({ pathname: "/event-sheet", params: { eventId: event.id, spoiler: "1" } });
+  };
+
+  // Look-ahead preview → open the matchup details (no spoiler; nothing to spoil).
+  const handleViewMatchup = () => {
+    if (!event) return;
+    if (Platform.OS !== "web") {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    }
+    router.push({ pathname: "/event-sheet", params: { eventId: event.id } });
   };
 
   const handleWatchHighlights = () => {
@@ -448,13 +458,28 @@ function StoryPage({
       >
         {/* Hero — big headline over the Ken Burns image */}
         <View style={styles.headlineWrap}>
+          {isLookAhead && (
+            <View style={[styles.comingUpPill, { backgroundColor: sportColor + "1F", borderColor: sportColor + "55" }]}>
+              <Ionicons name="time-outline" size={12} color={sportColor} />
+              <Text style={[styles.comingUpText, { color: sportColor }]} numberOfLines={1}>
+                {entry.detail ? `COMING UP · ${entry.detail}` : "COMING UP"}
+              </Text>
+            </View>
+          )}
           <Text style={[styles.headline, { color: Colors.textPrimary }]}>{headline}</Text>
           <View style={[styles.headlineRule, { backgroundColor: moodColor }]} />
         </View>
 
         {/* Footer */}
         <View style={styles.footer}>
-          {showScoreCard && event ? (
+          {isLookAhead && event ? (
+            <UnifiedEventCard
+              event={event}
+              now={new Date()}
+              espnLayout
+              accentBarColor={sportColor}
+            />
+          ) : showScoreCard && event ? (
             <UnifiedEventCard
               event={event}
               now={new Date()}
@@ -513,6 +538,19 @@ function StoryPage({
             >
               <Ionicons name="play" size={15} color={moodColor} />
               <Text style={[styles.replayBtnText, { color: moodColor }]}>Watch highlights</Text>
+            </Pressable>
+          ) : isLookAhead && event ? (
+            <Pressable
+              onPress={handleViewMatchup}
+              style={({ pressed }) => [
+                styles.replayBtn,
+                { borderColor: sportColor + "88", backgroundColor: sportColor + "1A" },
+                pressed && { opacity: 0.75 },
+              ]}
+              testID={`story-preview-${entry.eventId}`}
+            >
+              <Ionicons name="arrow-forward" size={15} color={sportColor} />
+              <Text style={[styles.replayBtnText, { color: sportColor }]}>View matchup</Text>
             </Pressable>
           ) : event ? (
             <Pressable
@@ -582,6 +620,28 @@ export default function DailyWrapFullScreen() {
     const tagged = tagEntries(data.results, favorites) as Story[];
     const built: StoryView[] = tagged.map((entry) => {
       const event = eventMap.get(entry.eventId);
+      // Look-ahead "coming up" previews carry no result — show the matchup and
+      // upcoming card, never a teaser/spoiler or replay.
+      if (entry.isLookAhead) {
+        const safeMatchup =
+          entry.awayTeam && entry.homeTeam
+            ? `${entry.awayTeam} vs ${entry.homeTeam}`
+            : entry.league;
+        return {
+          entry,
+          event,
+          headline: entry.editorial || safeMatchup,
+          mood: "medium" as TeaserMood,
+          leagueLabel: event
+            ? getSchoolsLeagueLabel(event.league, event.leagueKey) ?? event.league
+            : entry.league,
+          sportColor: getSportColor(
+            getEffectiveSport(entry.sport, entry.league, event?.leagueKey)
+          ),
+          backdrop: getSportBackdrop(entry.sport, entry.eventId),
+          isLookAhead: true,
+        };
+      }
       // Live scores expire once a game leaves the live window, so prefer the
       // live feed only while it still reports FINAL; otherwise use the final
       // snapshot captured at wrap-generation time. A live snapshot is only
@@ -801,6 +861,21 @@ const styles = StyleSheet.create({
     width: 56,
     height: 4,
     borderRadius: 2,
+  },
+  comingUpPill: {
+    flexDirection: "row",
+    alignItems: "center",
+    alignSelf: "flex-start",
+    gap: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 999,
+    borderWidth: 1,
+  },
+  comingUpText: {
+    fontSize: 11,
+    fontFamily: "Inter_700Bold",
+    letterSpacing: 1,
   },
   footer: {
     gap: 16,
