@@ -577,6 +577,43 @@ function schoolsRugbyFallbackEditorial(event: any): Partial<DailyWrapEntry> | nu
   return { editorial, detail };
 }
 
+function isCricket(event: any): boolean {
+  return (event?.sport || "").toLowerCase() === "cricket";
+}
+
+// Cricket end times are scheduled estimates; a rain delay or long finish can run
+// past them. Wait a grace period beyond the scheduled end before surfacing the
+// score-agnostic fallback so the "met in…" copy never appears mid-play.
+const CRICKET_FALLBACK_GRACE_MS = 60 * 60 * 1000;
+
+// Pull a short match label ("1st ODI", "3rd T20I", "Test") from the CricAPI
+// seriesName, which is shaped like "1st ODI, Sri Lanka tour of West Indies, 2026".
+function cricketMatchLabel(event: any): string {
+  const sn = (event.seriesName || "").trim();
+  if (!sn) return "";
+  const first = sn.split(",")[0].trim();
+  return first && first.length <= 24 ? first : "";
+}
+
+// Score-agnostic fallback for a concluded cricket fixture when the live score
+// feed is unavailable (e.g. CricAPI daily quota exhausted). Surfaces the game
+// without inventing a result — the proper result headline takes over once a
+// final score arrives. Gated by the caller on an explicit endTimeLocal so a
+// long-format match (Test) is never flagged concluded prematurely.
+function cricketFallbackEditorial(event: any): Partial<DailyWrapEntry> | null {
+  const home = (event.homeTeam || "").trim();
+  const away = (event.awayTeam || "").trim();
+  if (!home || !away) return null;
+
+  const label = cricketMatchLabel(event);
+  const editorial = label
+    ? `${away} and ${home} met in the ${label}`
+    : `${away} and ${home} met in international cricket`;
+  const detail = label ? `${event.league} · ${label}` : event.league;
+
+  return { editorial, detail };
+}
+
 // --- Cycling grand tour (Giro etc.) ---
 // The cycling feed only carries the overall (GC) leader — there is no per-stage
 // winner and no "final" score status — so the wrap surfaces the race leader,
@@ -1277,6 +1314,24 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
             loserScore: se.loserScore,
             svnsFinals: se.svnsFinals,
             priorityScore: SVNS_PRIORITY,
+            startTimeLocal: event.startTimeLocal,
+          });
+        }
+      } else if (isCricket(event) && event.endTimeLocal && hasConcluded(event, nowMs, CRICKET_FALLBACK_GRACE_MS)) {
+        // Live score feed missing (e.g. CricAPI quota) — surface the concluded
+        // game without a result rather than dropping it from the wrap.
+        const ce = cricketFallbackEditorial(event);
+        if (ce) {
+          fallbackIds.add(event.id);
+          results.push({
+            eventId: event.id,
+            sport: event.sport,
+            league: event.league,
+            homeTeam: event.homeTeam,
+            awayTeam: event.awayTeam,
+            editorial: ce.editorial || "",
+            detail: ce.detail || "",
+            priorityScore: getPriorityScore(event.sport, event.league, undefined),
             startTimeLocal: event.startTimeLocal,
           });
         }

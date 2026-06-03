@@ -1,12 +1,9 @@
 {
-  "lastUpdated": "2026-06-03T18:19:04.294Z",
+  "lastUpdated": "2026-06-03T21:57:46.434Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
         "Other": 2
-      },
-      "upset_alert": {
-        "Other": 1
       },
       "clinch_watch": {
         "Other": 1
@@ -21,7 +18,6 @@
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
       "Other": [
-        "upset_alert: Upset Alert",
         "clinch_watch: Clinch Watch",
         "marquee_match: Marquee Match: USL",
         "league_moment: Big Stage",
@@ -37,8 +33,8 @@
         "reason": "max 1 league_moment per region (Other)"
       }
     ],
-    "totalBeforeCap": 6,
-    "totalAfterCap": 5,
+    "totalBeforeCap": 5,
+    "totalAfterCap": 4,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -71,17 +67,17 @@
         ],
         "playersIngested": 356,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-06-03T18:19:04.294Z"
+        "timestamp": "2026-06-03T21:57:46.434Z"
       },
       "cacheHistoryCount": 880,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 6,
-    "candidateCountAfterCap": 5,
+    "candidateCountBeforeCap": 5,
+    "candidateCountAfterCap": 4,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2110.3178594444444,
+      "hoursUntil": -2113.962898333333,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -91,10 +87,10 @@
       "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 1,
+      "rawUpsetCandidates": 0,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 1,
-      "upsetFinalCount": 1
+      "upsetCompletedCandidates": 0,
+      "upsetFinalCount": 0
     },
     "clinchWatch": {
       "rawClinchCandidates": 3,
@@ -110,25 +106,18 @@
       "selectedHeadline": "French Open Quarterfinals",
       "selectedScore": 200,
       "sourceEventId": "tennis-espn-175771",
-      "reason": "championship-day group (tennis|French Open|Quarterfinal, 2 events)",
+      "reason": "championship-day group (tennis|French Open|Quarterfinal, 1 event)",
       "scoredCandidates": [
         {
           "label": "[championship_day] French Open Quarterfinals",
           "score": 200,
-          "reason": "championship-day group (tennis|French Open|Quarterfinal, 2 events)"
+          "reason": "championship-day group (tennis|French Open|Quarterfinal, 1 event)"
         }
       ]
     },
     "videoSelection": {
-      "upset_alert_tennis-espn-175771": {
-        "searchQuery": "Auger-Aliassime vs Cobolli upset highlights June 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
-      },
-      "clinch_watch_tennis-espn-175769": {
-        "searchQuery": "Arnaldi clinch playoff berth June 2026",
+      "clinch_watch_tennis-espn-175679": {
+        "searchQuery": "Zverev clinch playoff berth June 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
@@ -159,52 +148,16 @@
   },
   "cards": [
     {
-      "id": "upset_alert_tennis-espn-175771",
-      "title": "Upset Alert",
-      "subtitle": "Cobolli stuns Auger-Aliassime at French Open",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 98,
-      "triggeredAt": "2026-06-03T18:19:04.294Z",
-      "expiresAt": "2026-06-04T00:19:04.294Z",
-      "kind": "upset_alert",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "mode": "completed",
-        "upsetType": "tennis_seed_upset",
-        "sport": "tennis",
-        "league": "Grand Slam",
-        "favoriteName": "Auger-Aliassime",
-        "underdogName": "Cobolli",
-        "favoriteRank": 4,
-        "underdogRank": 10,
-        "awayTeam": "Cobolli",
-        "homeTeam": "Auger-Aliassime",
-        "startTime": "2026-06-03T14:05:00.000Z",
-        "eventIds": [
-          "tennis-espn-175771"
-        ],
-        "reason": "Auger-Aliassime (seed 4) entered as the higher seed, but Cobolli knocked Auger-Aliassime out.\n\nThis opens up the draw and changes the shape of the tournament."
-      },
-      "sports": [
-        "tennis"
-      ]
-    },
-    {
-      "id": "clinch_watch_tennis-espn-175769",
+      "id": "clinch_watch_tennis-espn-175679",
       "title": "Clinch Watch",
-      "subtitle": "Arnaldi vs Berrettini · Tennis title on the line",
+      "subtitle": "Zverev vs Mensik · Tennis title on the line",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-06-03T18:19:04.294Z",
-      "expiresAt": "2026-06-03T22:20:00.000Z",
+      "triggeredAt": "2026-06-03T21:57:46.434Z",
+      "expiresAt": "2026-06-05T08:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
@@ -214,13 +167,13 @@
         "conditionLabel": "Tennis title on the line",
         "sport": "tennis",
         "league": "Grand Slam",
-        "awayTeam": "Arnaldi",
-        "homeTeam": "Berrettini",
-        "startTime": "2026-06-03T18:20:00.000Z",
+        "awayTeam": "Zverev",
+        "homeTeam": "Mensik",
+        "startTime": "2026-06-05T04:00:00.000Z",
         "eventIds": [
-          "tennis-espn-175769"
+          "tennis-espn-175679"
         ],
-        "reason": "Arnaldi and Berrettini meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
+        "reason": "Zverev and Mensik meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
       },
       "sports": [
         "tennis"
@@ -229,13 +182,13 @@
     {
       "id": "marquee_match",
       "title": "Marquee Match: USL",
-      "subtitle": "Louisville City FC vs Birmingham Legion FC — USL · kicks off in 6h",
+      "subtitle": "Louisville City FC vs Birmingham Legion FC — USL · kickoff soon",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-06-03T18:19:04.294Z",
+      "triggeredAt": "2026-06-03T21:57:46.434Z",
       "expiresAt": "2026-06-04T04:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -251,7 +204,7 @@
         "eventIds": [
           "soccer-usl-20260604-0000-louisville-city-fc-at-birmingham-legion-fc"
         ],
-        "reason": "Top USL fixture (Louisville City FC vs Birmingham Legion FC) kicks off in 6h"
+        "reason": "Top USL fixture (Louisville City FC vs Birmingham Legion FC) kickoff soon"
       },
       "sports": [
         "soccer"
@@ -275,8 +228,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-06-03T18:19:04.294Z",
-      "expiresAt": "2026-06-10T18:19:04.294Z",
+      "triggeredAt": "2026-06-03T21:57:46.434Z",
+      "expiresAt": "2026-06-10T21:57:46.434Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -286,23 +239,23 @@
         "matchCount": 2,
         "matches": [
           {
-            "away": "Arnaldi",
-            "home": "Berrettini",
-            "league": "Grand Slam",
-            "round": "Roland Garros — Quarterfinal",
-            "startTime": "2026-06-03T18:20:00.000Z"
-          },
-          {
             "away": "Zverev",
             "home": "Mensik",
+            "league": "Grand Slam",
+            "round": "Roland Garros — Semifinal",
+            "startTime": "2026-06-05T04:00:00.000Z"
+          },
+          {
+            "away": "Cobolli",
+            "home": "Arnaldi",
             "league": "Grand Slam",
             "round": "Roland Garros — Semifinal",
             "startTime": "2026-06-05T04:00:00.000Z"
           }
         ],
         "eventIds": [
-          "tennis-espn-175769",
-          "tennis-espn-175679"
+          "tennis-espn-175679",
+          "tennis-espn-175655"
         ],
         "reason": "Found 2 tournament stage match(es) in the next 7 days"
       },
@@ -328,7 +281,7 @@
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-06-03T18:19:04.294Z",
+      "triggeredAt": "2026-06-03T21:57:46.434Z",
       "expiresAt": "2026-06-05T17:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -364,8 +317,7 @@
     "body": "Quarterfinals day at the French Open — title contenders on the line.",
     "sourceEventId": "tennis-espn-175771",
     "eventIds": [
-      "tennis-espn-175771",
-      "tennis-espn-175769"
+      "tennis-espn-175771"
     ],
     "sourceCard": {
       "id": "championship_day_tennis-french-open-quarterfinal",
@@ -385,8 +337,7 @@
       "body": "Quarterfinals day at the French Open — title contenders on the line.",
       "sourceEventId": "tennis-espn-175771",
       "eventIds": [
-        "tennis-espn-175771",
-        "tennis-espn-175769"
+        "tennis-espn-175771"
       ],
       "sourceCard": {
         "id": "championship_day_tennis-french-open-quarterfinal",
@@ -435,16 +386,6 @@
           "seasonPhase": null
         },
         {
-          "sport": "tennis",
-          "displayName": "Roland Garros",
-          "leagueKey": "grand-slam",
-          "dateRangeLabel": "Jun 2–5",
-          "startDate": "2026-06-02T18:30:00.000Z",
-          "endDate": "2026-06-05T04:00:00.000Z",
-          "eventCount": 4,
-          "seasonPhase": null
-        },
-        {
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
@@ -463,6 +404,16 @@
           "endDate": "2026-06-18T00:05:00.000Z",
           "eventCount": 8,
           "seasonPhase": "Final"
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Roland Garros",
+          "leagueKey": "grand-slam",
+          "dateRangeLabel": "Jun 3–5",
+          "startDate": "2026-06-03T14:05:00.000Z",
+          "endDate": "2026-06-05T04:00:00.000Z",
+          "eventCount": 3,
+          "seasonPhase": null
         },
         {
           "sport": "cricket",
@@ -1013,16 +964,6 @@
           "seasonPhase": null
         },
         {
-          "sport": "tennis",
-          "displayName": "Roland Garros",
-          "leagueKey": "grand-slam",
-          "dateRangeLabel": "Jun 2–5",
-          "startDate": "2026-06-02T18:30:00.000Z",
-          "endDate": "2026-06-05T04:00:00.000Z",
-          "eventCount": 4,
-          "seasonPhase": null
-        },
-        {
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
@@ -1041,6 +982,16 @@
           "endDate": "2026-06-06T23:05:00.000Z",
           "eventCount": 3,
           "seasonPhase": "Final"
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Roland Garros",
+          "leagueKey": "grand-slam",
+          "dateRangeLabel": "Jun 3–5",
+          "startDate": "2026-06-03T14:05:00.000Z",
+          "endDate": "2026-06-05T04:00:00.000Z",
+          "eventCount": 3,
+          "seasonPhase": null
         },
         {
           "sport": "cricket",
