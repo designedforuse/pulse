@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-03T17:26:29.169Z",
+  "lastUpdated": "2026-06-03T17:34:47.890Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -71,7 +71,7 @@
         ],
         "playersIngested": 356,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-06-03T17:26:29.169Z"
+        "timestamp": "2026-06-03T17:34:47.890Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -81,7 +81,7 @@
     "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2109.4414358333333,
+      "hoursUntil": -2109.5799694444445,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -167,8 +167,8 @@
         "tabHint": "Watch"
       },
       "priority": 98,
-      "triggeredAt": "2026-06-03T17:26:29.169Z",
-      "expiresAt": "2026-06-03T19:26:29.169Z",
+      "triggeredAt": "2026-06-03T17:34:47.890Z",
+      "expiresAt": "2026-06-03T19:34:47.890Z",
       "kind": "upset_alert",
       "region": "Other",
       "regionPriority": 99,
@@ -203,7 +203,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-06-03T17:26:29.169Z",
+      "triggeredAt": "2026-06-03T17:34:47.890Z",
       "expiresAt": "2026-06-03T22:15:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -229,13 +229,13 @@
     {
       "id": "marquee_match",
       "title": "Marquee Match: USL",
-      "subtitle": "Louisville City FC vs Birmingham Legion FC — USL · kicks off in 7h",
+      "subtitle": "Louisville City FC vs Birmingham Legion FC — USL · kicks off in 6h",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-06-03T17:26:29.169Z",
+      "triggeredAt": "2026-06-03T17:34:47.890Z",
       "expiresAt": "2026-06-04T04:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -251,7 +251,7 @@
         "eventIds": [
           "soccer-usl-20260604-0000-louisville-city-fc-at-birmingham-legion-fc"
         ],
-        "reason": "Top USL fixture (Louisville City FC vs Birmingham Legion FC) kicks off in 7h"
+        "reason": "Top USL fixture (Louisville City FC vs Birmingham Legion FC) kicks off in 6h"
       },
       "sports": [
         "soccer"
@@ -275,8 +275,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-06-03T17:26:29.169Z",
-      "expiresAt": "2026-06-10T17:26:29.169Z",
+      "triggeredAt": "2026-06-03T17:34:47.890Z",
+      "expiresAt": "2026-06-10T17:34:47.890Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -328,7 +328,7 @@
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-06-03T17:26:29.169Z",
+      "triggeredAt": "2026-06-03T17:34:47.890Z",
       "expiresAt": "2026-06-05T17:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",

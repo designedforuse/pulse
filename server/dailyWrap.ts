@@ -191,6 +191,64 @@ function lookAheadTimeLabel(startIso: string, tz: number): string {
   return `${dayLabel} · ${time}`;
 }
 
+// Sports where home/away carries real venue meaning, so "host / visit / travel"
+// framing is accurate. Individual / neutral-venue sports (tennis, cricket, golf
+// pairings) fall through to neutral matchup verbs instead.
+const VENUE_SPORTS = new Set([
+  "hockey",
+  "soccer",
+  "football",
+  "basketball",
+  "baseball",
+  "rugby",
+]);
+
+// Anticipatory, spoiler-free headline for an upcoming fixture. Templates are
+// picked deterministically per event (stable across refreshes) so the feed
+// reads editorially rather than as a repetitive "A vs B" fixture list.
+function lookAheadEditorial(e: any): string {
+  const home: string = e.homeTeam || "";
+  const away: string = e.awayTeam || "";
+  const hasMatchup = !!away && !!home && away !== home;
+  const sport = (e.sport || "").toLowerCase();
+
+  // Stable per-event index from the id so each card varies but never flips
+  // between requests.
+  const id = String(e.id || "");
+  let hash = 0;
+  for (let i = 0; i < id.length; i++) hash = (hash * 31 + id.charCodeAt(i)) >>> 0;
+
+  if (!hasMatchup) {
+    const name = e.sessionTitle || home || away || e.league || "";
+    if (!name) return e.league || "";
+    const templates = [
+      `${name} takes center stage`,
+      `All eyes on ${name}`,
+      `${name} headlines the day`,
+      `${name} gets underway`,
+    ];
+    return templates[hash % templates.length];
+  }
+
+  if (VENUE_SPORTS.has(sport)) {
+    const templates = [
+      `${home} host ${away}`,
+      `${away} visit ${home}`,
+      `${away} travel to face ${home}`,
+      `${home} welcome ${away}`,
+    ];
+    return templates[hash % templates.length];
+  }
+
+  const templates = [
+    `${away} and ${home} square off`,
+    `${away} and ${home} go head-to-head`,
+    `${away} and ${home} meet`,
+    `${away} and ${home} clash`,
+  ];
+  return templates[hash % templates.length];
+}
+
 // Build up to `need` look-ahead preview entries from the highest-weighted
 // upcoming fixtures (next 48h). Excludes anything already in the wrap, dedupes
 // repeated matchups (e.g. multi-session weekends), and ranks by league weight,
@@ -226,11 +284,7 @@ function buildLookAheadEntries(
     if (seen.has(key)) continue;
     seen.add(key);
 
-    const hasMatchup =
-      e.awayTeam && e.homeTeam && e.awayTeam !== e.homeTeam;
-    const editorial = hasMatchup
-      ? `${e.awayTeam} vs ${e.homeTeam}`
-      : e.homeTeam || e.awayTeam || e.league;
+    const editorial = lookAheadEditorial(e);
 
     out.push({
       eventId: e.id,
