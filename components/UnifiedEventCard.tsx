@@ -129,6 +129,9 @@ const COUNTRY_CODES: Record<string, string> = {
   "Vietnam": "vie", "Wales": "wal", "Zambia": "zam", "Zimbabwe": "zim",
   "Haiti": "hai", "Curaçao": "cuw", "Suriname": "sur",
   "Fiji": "fij", "Samoa": "sam", "Great Britain": "gbr",
+  // West Indies is a multi-nation cricket team, not a country; ESPN's flag CDN
+  // serves its flag under the 2-letter "wi" code (most others are 3-letter).
+  "West Indies": "wi",
 };
 
 export function getCountryFlagUrl(country: string): string | null {

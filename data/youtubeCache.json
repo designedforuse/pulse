@@ -1582,5 +1582,17 @@
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
+  },
+  "clinch_watch:cobolli clinch playoff berth june 2026": {
+    "video": null,
+    "fetchedAt": "2026-06-02T19:43:51.381Z",
+    "query": "Cobolli clinch playoff berth June 2026",
+    "debug": {
+      "searchQuery": "Cobolli clinch playoff berth June 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
   }
 }

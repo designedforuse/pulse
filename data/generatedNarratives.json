@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-02T18:00:04.797Z",
+  "lastUpdated": "2026-06-02T19:43:43.140Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -59,7 +59,7 @@
         ],
         "playersIngested": 336,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-06-02T18:00:04.797Z"
+        "timestamp": "2026-06-02T19:43:43.140Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -69,7 +69,7 @@
     "candidateCountAfterCap": 4,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2086.0013325,
+      "hoursUntil": -2087.72865,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -85,7 +85,7 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 3,
+      "rawClinchCandidates": 2,
       "clinchAfterRegionFilter": 1,
       "clinchFinalCount": 1,
       "clinchGatedOut": []
@@ -108,8 +108,8 @@
       ]
     },
     "videoSelection": {
-      "clinch_watch_tennis-espn-175661": {
-        "searchQuery": "Fonseca clinch playoff berth June 2026",
+      "clinch_watch_tennis-espn-175771": {
+        "searchQuery": "Cobolli clinch playoff berth June 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
@@ -140,16 +140,16 @@
   },
   "cards": [
     {
-      "id": "clinch_watch_tennis-espn-175661",
+      "id": "clinch_watch_tennis-espn-175771",
       "title": "Clinch Watch",
-      "subtitle": "Fonseca vs Mensik · Tennis title on the line",
+      "subtitle": "Cobolli vs Auger-Aliassime · Tennis title on the line",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-06-02T18:00:04.797Z",
-      "expiresAt": "2026-06-02T22:15:00.000Z",
+      "triggeredAt": "2026-06-02T19:43:43.140Z",
+      "expiresAt": "2026-06-03T16:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
       "regionPriority": 99,
@@ -159,13 +159,13 @@
         "conditionLabel": "Tennis title on the line",
         "sport": "tennis",
         "league": "Grand Slam",
-        "awayTeam": "Fonseca",
-        "homeTeam": "Mensik",
-        "startTime": "2026-06-02T18:15:00.000Z",
+        "awayTeam": "Cobolli",
+        "homeTeam": "Auger-Aliassime",
+        "startTime": "2026-06-03T12:00:00.000Z",
         "eventIds": [
-          "tennis-espn-175661"
+          "tennis-espn-175771"
         ],
-        "reason": "Fonseca and Mensik meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
+        "reason": "Cobolli and Auger-Aliassime meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
       },
       "sports": [
         "tennis"
@@ -180,7 +180,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-06-02T18:00:04.797Z",
+      "triggeredAt": "2026-06-02T19:43:43.140Z",
       "expiresAt": "2026-06-04T04:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -205,29 +205,22 @@
     {
       "id": "league_moment_tournament",
       "title": "Big Stage",
-      "subtitle": "3 tournament/knockout matches this week",
+      "subtitle": "2 tournament/knockout matches this week",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-06-02T18:00:04.797Z",
-      "expiresAt": "2026-06-09T18:00:04.797Z",
+      "triggeredAt": "2026-06-02T19:43:43.140Z",
+      "expiresAt": "2026-06-09T19:43:43.140Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "tournament",
-        "matchCount": 3,
+        "matchCount": 2,
         "matches": [
-          {
-            "away": "Fonseca",
-            "home": "Mensik",
-            "league": "Grand Slam",
-            "round": "Roland Garros — Quarterfinal",
-            "startTime": "2026-06-02T18:15:00.000Z"
-          },
           {
             "away": "Cobolli",
             "home": "Auger-Aliassime",
@@ -244,11 +237,10 @@
           }
         ],
         "eventIds": [
-          "tennis-espn-175661",
           "tennis-espn-175771",
           "tennis-espn-175769"
         ],
-        "reason": "Found 3 tournament stage match(es) in the next 7 days"
+        "reason": "Found 2 tournament stage match(es) in the next 7 days"
       },
       "sports": [
         "tennis"
@@ -272,7 +264,7 @@
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-06-02T18:00:04.797Z",
+      "triggeredAt": "2026-06-02T19:43:43.140Z",
       "expiresAt": "2026-06-05T17:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -427,6 +419,16 @@
           "endDate": "2026-06-21T03:00:00.000Z",
           "eventCount": 29,
           "seasonPhase": "Regular"
+        },
+        {
+          "sport": "cricket",
+          "displayName": "Test Cricket",
+          "leagueKey": "test",
+          "dateRangeLabel": "Jun 4–17",
+          "startDate": "2026-06-04T10:00:00.000Z",
+          "endDate": "2026-06-17T10:00:00.000Z",
+          "eventCount": 2,
+          "seasonPhase": null
         },
         {
           "sport": "athletics",
@@ -995,6 +997,16 @@
           "endDate": "2026-06-04T00:00:00.000Z",
           "eventCount": 1,
           "seasonPhase": "Regular"
+        },
+        {
+          "sport": "cricket",
+          "displayName": "Test Cricket",
+          "leagueKey": "test",
+          "dateRangeLabel": "Jun 4",
+          "startDate": "2026-06-04T10:00:00.000Z",
+          "endDate": "2026-06-04T10:00:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
         },
         {
           "sport": "athletics",
