@@ -410,7 +410,7 @@ const CRICKET_COUNTRY_FLAGS: Record<string, string> = {
   "South Africa": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png",
   "Pakistan": "https://a.espncdn.com/i/teamlogos/countries/500/pak.png",
   "Sri Lanka": "https://a.espncdn.com/i/teamlogos/countries/500/sri.png",
-  "West Indies": "https://a.espncdn.com/i/teamlogos/countries/500/wnd.png",
+  "West Indies": "https://a.espncdn.com/i/teamlogos/countries/500/wi.png",
   "Afghanistan": "https://a.espncdn.com/i/teamlogos/countries/500/afg.png",
   "Zimbabwe": "https://a.espncdn.com/i/teamlogos/countries/500/zim.png",
   "Netherlands": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
