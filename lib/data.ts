@@ -50,6 +50,8 @@ export interface SportEvent {
   cyclingRestDays?: string[];
   dayNumber?: number;
   totalDays?: number;
+  cricketMatchId?: string;
+  isFinalDay?: boolean;
 }
 
 export interface Pack {

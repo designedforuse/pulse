@@ -43,11 +43,20 @@ const CRICAPI_BASE = "https://api.cricapi.com/v1";
 const CRICKET_DURATION_MIN: Record<string, number> = {
   t20: 210,
   odi: 480,
-  // A Test is played over up to 5 days. Span the full window so the match stays
-  // in-schedule (and "live") across all days rather than dropping off after day 1.
-  // If a Test finishes early, CricAPI's "result" status flips the card to FINAL.
+  // A Test is scheduled over 5 days. It is split into one event per day (see
+  // splitTestMatchDays), so this base duration is only a placeholder for the
+  // un-split event before expansion.
   test: 5 * 24 * 60,
 };
+
+// A Test match is split into one card per day so each day shows independently
+// and a single 5-day window doesn't read as "live" continuously. Mirrors the
+// WRC per-day pattern (scripts/updateWrc.ts).
+const TEST_MATCH_TOTAL_DAYS = 5;
+const DAY_MS = 86400000;
+// A day's play (incl. lunch/tea breaks and a little extra time) is ~8h. Cap the
+// per-day window so the card stops reading "live" overnight between days.
+const TEST_DAY_DURATION_MIN = 8 * 60;
 
 const ALLOWED_DOMESTIC_LEAGUES: Record<string, { league: string; country: string }> = {
   ipl: { league: "IPL", country: "India" },
@@ -253,6 +262,10 @@ interface AppEvent {
   seriesName?: string;
   gender?: "men" | "women" | "unknown";
   isIccT20Wc?: boolean;
+  cricketMatchId?: string;
+  dayNumber?: number;
+  totalDays?: number;
+  isFinalDay?: boolean;
 }
 
 const STRONG_WOMEN_MARKERS = [
@@ -593,6 +606,44 @@ function matchToEvent(match: CricApiMatch, classification: {
   };
 }
 
+// Expand a single Test-match event into one event per scheduled day. Each day
+// gets a bounded ~8h window and carries dayNumber/totalDays so the card can show
+// "Day N of M". The cricketMatchId is shared across all days so live scores still
+// resolve to the same CricAPI match. The last emitted day is flagged isFinalDay
+// (the day the result is surfaced).
+//
+// Tests routinely end before day 5 (a result inside 3-4 days is common). CricAPI
+// doesn't report how many days were actually played, so when the match has ended
+// we approximate the last day from elapsed time and don't emit cards for days
+// that never happened (e.g. a 3-day finish shouldn't show Day 4 / Day 5).
+function splitTestMatchDays(base: AppEvent, matchEnded: boolean, nowMs: number): AppEvent[] {
+  const startMs = new Date(base.startTimeLocal).getTime();
+  if (Number.isNaN(startMs)) return [base];
+
+  let lastDay = TEST_MATCH_TOTAL_DAYS;
+  if (matchEnded) {
+    const elapsedDays = Math.floor((nowMs - startMs) / DAY_MS) + 1;
+    lastDay = Math.min(TEST_MATCH_TOTAL_DAYS, Math.max(1, elapsedDays));
+  }
+
+  const days: AppEvent[] = [];
+  for (let i = 0; i < lastDay; i++) {
+    const dayStartMs = startMs + i * DAY_MS;
+    const dayEndMs = dayStartMs + TEST_DAY_DURATION_MIN * 60000;
+    days.push({
+      ...base,
+      id: `${base.id}-day${i + 1}`,
+      startTimeLocal: new Date(dayStartMs).toISOString(),
+      endTimeLocal: new Date(dayEndMs).toISOString(),
+      isLive: false,
+      dayNumber: i + 1,
+      totalDays: TEST_MATCH_TOTAL_DAYS,
+      isFinalDay: i + 1 === lastDay,
+    });
+  }
+  return days;
+}
+
 async function fetchMatchesPage(apiKey: string, offset: number): Promise<CricApiResponse | null> {
   const url = `${CRICAPI_BASE}/matches?apikey=${apiKey}&offset=${offset}`;
   try {
@@ -795,7 +846,13 @@ export async function fetchCricketEvents(): Promise<CricketFetchResult> {
       isIccT20Wc: boolean;
     });
     if (!event) continue;
-    events.push(event);
+    // Test matches are multi-day — emit one event per day so they show as a
+    // series of five cards that make up the Test.
+    if (String(event.format).toLowerCase() === "test") {
+      events.push(...splitTestMatchDays(event, match.matchEnded === true, Date.now()));
+    } else {
+      events.push(event);
+    }
 
     const key = classification.league;
     counts[key] = (counts[key] || 0) + 1;
@@ -828,6 +885,17 @@ export function mergeCricketEvents(
     freshMap.set(e.id, e);
   }
 
+  // Base ids of Test matches that the fresh feed split into per-day events. Used
+  // to drop stale later-day events when a Test ends early and is now generated
+  // with fewer days (e.g. a 3-day finish removes the previously-emitted Day 4/5).
+  const testDayBaseId = (id: string) => id.replace(/-day\d+$/, "");
+  const freshTestBaseIds = new Set<string>();
+  for (const e of fresh) {
+    if ((e as any).dayNumber != null && String((e as any).format).toLowerCase() === "test") {
+      freshTestBaseIds.add(testDayBaseId(e.id));
+    }
+  }
+
   const mergedMap = new Map<string, AppEvent>();
   let added = 0;
   let updated = 0;
@@ -840,6 +908,31 @@ export function mergeCricketEvents(
       continue;
     }
     if (!passesNationFilter(e as any)) {
+      pruned++;
+      continue;
+    }
+    // Migration: legacy Test matches were stored as a single 5-day event. Tests
+    // are now generated as one event per day, so drop the old un-split form
+    // (format "test" with no dayNumber) — but ONLY when the fresh feed actually
+    // provides per-day replacements for that match (its base id == the legacy id).
+    // If the match is missing from this refresh (quota out, aged out of CricAPI),
+    // keep the legacy event and let the normal retention window age it out, rather
+    // than deleting the match entirely with no replacement.
+    if (String((e as any).format).toLowerCase() === "test" && (e as any).dayNumber == null) {
+      if (freshTestBaseIds.has(e.id)) {
+        pruned++;
+        continue;
+      }
+    }
+    // Drop stale later-day events for a Test that is still being generated but now
+    // has fewer days (early finish). Scoped to matches present in the fresh feed,
+    // so concluded Tests that have aged out of CricAPI keep their retained cards.
+    if (
+      (e as any).dayNumber != null &&
+      String((e as any).format).toLowerCase() === "test" &&
+      freshTestBaseIds.has(testDayBaseId(e.id)) &&
+      !freshMap.has(e.id)
+    ) {
       pruned++;
       continue;
     }

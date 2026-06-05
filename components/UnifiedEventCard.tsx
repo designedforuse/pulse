@@ -934,6 +934,10 @@ export default function UnifiedEventCard({
 
   const isTennis = event.sport === "tennis";
   const isCricket = event.sport === "cricket";
+  const cricketTestDayLabel =
+    isCricket && !dailyWrap && event.dayNumber != null && event.totalDays != null
+      ? `Day ${event.dayNumber} of ${event.totalDays}`
+      : null;
   const isRacing = event.sport === "racing";
   const isGolf = event.sport === "golf";
   const isAthletics = event.sport === "athletics";
@@ -1592,6 +1596,9 @@ export default function UnifiedEventCard({
                   {getLeagueLabel(event)}
                 </Text>
               </View>
+              {cricketTestDayLabel && (
+                <Text style={uStyles.cricketTestDayText}>{cricketTestDayLabel}</Text>
+              )}
               <View style={uStyles.espnMatchup}>
                 {/* Away — star on the outside left */}
                 <View style={uStyles.espnTeamOuter}>
@@ -1629,6 +1636,11 @@ export default function UnifiedEventCard({
             </View>
           ) : showTeamLayout ? (
             <>
+              {cricketTestDayLabel && (
+                <View style={uStyles.seriesRow}>
+                  <Text style={uStyles.seriesLabelText}>{cricketTestDayLabel}</Text>
+                </View>
+              )}
               {seriesDisplay && (
                 <View style={uStyles.seriesRow}>
                   {seriesDisplay.gameLabel && (
@@ -2253,6 +2265,12 @@ const uStyles = StyleSheet.create({
     fontFamily: "Inter_700Bold",
     letterSpacing: 1.2,
     textTransform: "uppercase" as const,
+  },
+  cricketTestDayText: {
+    fontSize: 11,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+    marginTop: 4,
   },
   espnMatchup: {
     flexDirection: "row" as const,

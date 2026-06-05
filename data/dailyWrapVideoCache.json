@@ -419,6 +419,34 @@
   },
   "tennis-espn-175771": {
     "video": null,
-    "fetchedAt": "2026-06-03T17:38:52.120Z"
+    "fetchedAt": "2026-06-03T23:54:25.925Z"
+  },
+  "soccer-usl-20260604-0000-louisville-city-fc-at-birmingham-legion-fc": {
+    "video": null,
+    "fetchedAt": "2026-06-04T15:44:10.216Z"
+  },
+  "ahl-1029060": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=zt-5vxnZooA",
+      "thumbnailUrl": "https://i.ytimg.com/vi/zt-5vxnZooA/hqdefault.jpg",
+      "durationSeconds": 508,
+      "title": "Toronto Marlies vs. Wilkes-Barre/Scranton Penguins | RD4 GM4 Game Highlights | June 3, 2026",
+      "channel": "Toronto Marlies"
+    },
+    "fetchedAt": "2026-06-04T15:44:10.216Z"
+  },
+  "ahl-1029053": {
+    "video": null,
+    "fetchedAt": "2026-06-04T15:44:10.216Z"
+  },
+  "cricket-odi-f90r8q": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=JoMIpQ2yYXk",
+      "thumbnailUrl": "https://i.ytimg.com/vi/JoMIpQ2yYXk/hqdefault.jpg",
+      "durationSeconds": 386,
+      "title": "    Pakistan vs Australia 3rd ODI Live Score & Highlights | PAK vs AUS Today Match",
+      "channel": "AA LIYE RE"
+    },
+    "fetchedAt": "2026-06-04T22:19:23.788Z"
   }
 }

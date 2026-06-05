@@ -151,14 +151,12 @@ function loadLiveEventIds(): LiveEventIdBuckets {
       // Cycling Grand Tours are multi-week umbrella events (~23 days incl. rest days).
       // Treat them as "live" from race start through 25 days after so the leader
       // override surfaces throughout the tour.
-      // Test cricket spans up to 5 days, so keep polling its scores across the
-      // whole window (plus a buffer) instead of dropping off after the default 18h.
-      const isTestCricket = event.sport === "cricket" && String(event.format).toLowerCase() === "test";
+      // Test cricket used to be a single 5-day event needing an extended window,
+      // but Tests are now split into one event per day (each ~8h of play), so the
+      // default per-day lookback applies and each day only polls during its own day.
       const lookbackMs = event.id.startsWith("cycling-grand-tour-")
         ? 25 * 24 * 60 * 60 * 1000
-        : isTestCricket
-          ? 5.5 * 24 * 60 * 60 * 1000
-          : 18 * 60 * 60 * 1000;
+        : 18 * 60 * 60 * 1000;
       if (now < start - 30 * 60 * 1000 || now > start + lookbackMs) continue;
 
       if (event.id.startsWith("nhl_")) {

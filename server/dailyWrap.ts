@@ -1215,8 +1215,26 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
     Object.values(diamondLeagueLatestByMeet).map((e: any) => e.id),
   );
 
+  const cricketTestStoryMatchIds = new Set<string>();
   for (const event of todayEvents) {
     const score = scores[event.id];
+    // Cricket Tests are split into per-day events that share one match id. Decide
+    // which single day-event may produce a wrap story:
+    //  - With a final score the result is genuine (CricAPI only reports a result
+    //    once the match is over), so the first day-event that sees it surfaces the
+    //    story — this is the actual finish day, even if the Test ended before its
+    //    scheduled final day — and the rest are deduped by match id.
+    //  - Without a final score, only the flagged final day may use the time-based
+    //    fallback (an earlier day's time window ending doesn't mean the Test is over).
+    if (isCricket(event) && event.dayNumber != null && event.totalDays != null) {
+      const matchId = event.cricketMatchId || event.id;
+      if (score && isFinalScore(score)) {
+        if (cricketTestStoryMatchIds.has(matchId)) continue;
+        cricketTestStoryMatchIds.add(matchId);
+      } else if (!event.isFinalDay) {
+        continue;
+      }
+    }
     if (!score || !isFinalScore(score)) {
       // SA Schools rugby uses an unreliable scrape-only score source. When a
       // tracked game has finished but no score came through, still surface it

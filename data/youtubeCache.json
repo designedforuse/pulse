@@ -1549,21 +1549,21 @@
   },
   "diamond_league:diamond league — rome diamond league 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=Uf7IBfAkAEI",
-      "thumbnailUrl": "https://img.youtube.com/vi/Uf7IBfAkAEI/hqdefault.jpg",
-      "durationSeconds": 521,
-      "title": "2026 Press Conference Highlights Rome - Wanda Diamond League",
+      "url": "https://www.youtube.com/watch?v=DQco--IuDBg",
+      "thumbnailUrl": "https://img.youtube.com/vi/DQco--IuDBg/hqdefault.jpg",
+      "durationSeconds": 125,
+      "title": "Noah Lyles vs Jordan Anthony 100m Showdown | Rome Diamond League 2026",
       "source": "youtube",
-      "channel": "Wanda Diamond League",
-      "publishedAt": "24 minutes ago"
+      "channel": "Track & Field All Day",
+      "publishedAt": "31 minutes ago"
     },
-    "fetchedAt": "2026-06-03T17:26:23.323Z",
+    "fetchedAt": "2026-06-04T15:44:22.791Z",
     "query": "Diamond League — Rome Diamond League 2026",
     "debug": {
       "searchQuery": "Diamond League — Rome Diamond League 2026",
-      "selectedVideoTitle": "2026 Press Conference Highlights Rome - Wanda Diamond League",
-      "selectedVideoPublishedAt": "24 minutes ago",
-      "selectedVideoChannel": "Wanda Diamond League",
+      "selectedVideoTitle": "Noah Lyles vs Jordan Anthony 100m Showdown | Rome Diamond League 2026",
+      "selectedVideoPublishedAt": "31 minutes ago",
+      "selectedVideoChannel": "Track & Field All Day",
       "rejectedForAgeCount": 0
     }
   },
@@ -1621,6 +1621,58 @@
     "query": "Arnaldi clinch playoff berth June 2026",
     "debug": {
       "searchQuery": "Arnaldi clinch playoff berth June 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:germany vs united states international friendly preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=xInwmvOiXLg",
+      "thumbnailUrl": "https://img.youtube.com/vi/xInwmvOiXLg/hqdefault.jpg",
+      "durationSeconds": 1070,
+      "title": "\"I saw the part they hide from cameras.\"",
+      "source": "youtube",
+      "channel": "서울로지 Seoulogy",
+      "publishedAt": "13 minutes ago"
+    },
+    "fetchedAt": "2026-06-04T15:44:22.060Z",
+    "query": "Germany vs United States International Friendly preview",
+    "debug": {
+      "searchQuery": "Germany vs United States International Friendly preview",
+      "selectedVideoTitle": "\"I saw the part they hide from cameras.\"",
+      "selectedVideoPublishedAt": "13 minutes ago",
+      "selectedVideoChannel": "서울로지 Seoulogy",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:monaco grand prix sports june 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=rDznY4VaaDs",
+      "thumbnailUrl": "https://img.youtube.com/vi/rDznY4VaaDs/hqdefault.jpg",
+      "durationSeconds": 24,
+      "title": "Our Maaden Monaco Livery, Up Close.",
+      "source": "youtube",
+      "channel": "Aston Martin Aramco Formula One™ Team",
+      "publishedAt": "4h ago"
+    },
+    "fetchedAt": "2026-06-04T15:44:22.428Z",
+    "query": "Monaco Grand Prix sports June 2026",
+    "debug": {
+      "searchQuery": "Monaco Grand Prix sports June 2026",
+      "selectedVideoTitle": "Our Maaden Monaco Livery, Up Close.",
+      "selectedVideoPublishedAt": "4h ago",
+      "selectedVideoChannel": "Aston Martin Aramco Formula One™ Team",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "diamond_league:diamond league — stockholm diamond league 2026": {
+    "video": null,
+    "fetchedAt": "2026-06-04T18:00:15.680Z",
+    "query": "Diamond League — Stockholm Diamond League 2026",
+    "debug": {
+      "searchQuery": "Diamond League — Stockholm Diamond League 2026",
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,
