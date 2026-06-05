@@ -440,7 +440,7 @@ function classifyMatch(match: CricApiMatch): {
     const country = resolveHostCountry(match.venue, match.teams);
     return {
       type: "international",
-      league: classifyInternationalLeague(match.matchType, seriesName),
+      league: classifyInternationalLeague(resolveMatchType(match), seriesName),
       country,
       seriesName,
       isIccT20Wc: false,
@@ -454,7 +454,7 @@ function classifyMatch(match: CricApiMatch): {
     const country = resolveHostCountry(match.venue, match.teams);
     return {
       type: "international",
-      league: classifyInternationalLeague(match.matchType, seriesName),
+      league: classifyInternationalLeague(resolveMatchType(match), seriesName),
       country,
       seriesName,
       isIccT20Wc: false,
@@ -462,6 +462,20 @@ function classifyMatch(match: CricApiMatch): {
   }
 
   return { type: "skip", league: "", country: "", seriesName, isIccT20Wc: false };
+}
+
+// CricAPI's /matches endpoint frequently returns an empty matchType. Without it
+// a Test can't be detected, so it never splits into per-day cards and the Daily
+// Wrap Test handling never engages. CricAPI does reliably include the format in
+// the match name (e.g. "England vs New Zealand, 1st Test"), so fall back to that.
+function resolveMatchType(match: CricApiMatch): string {
+  const raw = (match.matchType || "").trim().toLowerCase();
+  if (raw) return raw;
+  const hay = (match.name || "").toLowerCase();
+  if (/\btest\b/.test(hay)) return "test";
+  if (/\bt20i?\b|\btwenty[- ]?20\b/.test(hay)) return "t20";
+  if (/\bodi\b|\bone[- ]day\b/.test(hay)) return "odi";
+  return "";
 }
 
 function classifyInternationalLeague(matchType: string, seriesName: string): string {
@@ -580,7 +594,7 @@ function matchToEvent(match: CricApiMatch, classification: {
     }
   }
 
-  const durationMin = CRICKET_DURATION_MIN[match.matchType] || 210;
+  const durationMin = CRICKET_DURATION_MIN[resolveMatchType(match)] || 210;
   const leagueKey = getLeagueKey(classification.league);
 
   return {
@@ -598,7 +612,7 @@ function matchToEvent(match: CricApiMatch, classification: {
     leagueKey,
     competitionName: classification.league,
     competitionType: classification.type,
-    format: match.matchType,
+    format: resolveMatchType(match),
     hostCountry: classification.country,
     seriesName: classification.seriesName,
     gender: inferCricketGender(match, classification),
@@ -735,7 +749,7 @@ export async function fetchRawCricketMatches(limit: number = 50): Promise<Cricke
       matchName: match.name,
       teams: match.teams || [],
       startTime: match.dateTimeGMT || match.date,
-      matchType: match.matchType,
+      matchType: resolveMatchType(match),
       venue: match.venue || "",
       isInternational: classification.type === "international",
       inferredGender: gender,
@@ -885,14 +899,21 @@ export function mergeCricketEvents(
     freshMap.set(e.id, e);
   }
 
-  // Base ids of Test matches that the fresh feed split into per-day events. Used
-  // to drop stale later-day events when a Test ends early and is now generated
-  // with fewer days (e.g. a 3-day finish removes the previously-emitted Day 4/5).
+  // Tests that the fresh feed split into per-day events, indexed two ways:
+  //  - base id (legacy single-event id == fresh per-day base id) for the migration
+  //    of old un-split Test events whose stored ids predate cricketMatchId.
+  //  - cricketMatchId (stable per match) to supersede ANY older representation of
+  //    the same match: a legacy single 5-day event, an undefined-format single
+  //    event from before format inference, or a later day removed by an early
+  //    finish. The stable match id catches forms whose synthetic id has changed
+  //    (e.g. leagueKey moved from "intl" to "test" once the format was detected).
   const testDayBaseId = (id: string) => id.replace(/-day\d+$/, "");
   const freshTestBaseIds = new Set<string>();
+  const freshTestMatchIds = new Set<string>();
   for (const e of fresh) {
     if ((e as any).dayNumber != null && String((e as any).format).toLowerCase() === "test") {
       freshTestBaseIds.add(testDayBaseId(e.id));
+      if ((e as any).cricketMatchId) freshTestMatchIds.add((e as any).cricketMatchId);
     }
   }
 
@@ -924,13 +945,15 @@ export function mergeCricketEvents(
         continue;
       }
     }
-    // Drop stale later-day events for a Test that is still being generated but now
-    // has fewer days (early finish). Scoped to matches present in the fresh feed,
-    // so concluded Tests that have aged out of CricAPI keep their retained cards.
+    // A Test now split into per-day events supersedes any older representation of
+    // the same match: an undefined-format single event from before format inference,
+    // a legacy single 5-day Test, or a later day removed by an early finish. Match
+    // on the stable cricketMatchId (the synthetic id may have changed) and only when
+    // the match's per-day events are present in the fresh feed — so concluded Tests
+    // that have aged out of CricAPI keep their retained cards.
     if (
-      (e as any).dayNumber != null &&
-      String((e as any).format).toLowerCase() === "test" &&
-      freshTestBaseIds.has(testDayBaseId(e.id)) &&
+      (e as any).cricketMatchId &&
+      freshTestMatchIds.has((e as any).cricketMatchId) &&
       !freshMap.has(e.id)
     ) {
       pruned++;

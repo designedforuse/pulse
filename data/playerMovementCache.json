@@ -635,11 +635,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -682,6 +677,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -4325,11 +4325,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -4372,6 +4367,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -4745,11 +4745,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -4792,6 +4787,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -7340,11 +7340,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -7387,6 +7382,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -8180,11 +8180,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025020986",
-          "seenAt": "2026-03-11T04:55:01.810Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -8227,6 +8222,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -8345,11 +8345,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -8392,6 +8387,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -8720,11 +8720,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -8767,6 +8762,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -10475,11 +10475,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -10522,6 +10517,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -12195,11 +12195,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -12242,6 +12237,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -15075,11 +15075,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -15122,6 +15117,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -17540,11 +17540,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -17587,6 +17582,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -23010,11 +23010,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -23057,6 +23052,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -23450,11 +23450,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021169",
-          "seenAt": "2026-03-30T18:28:44.290Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021197",
           "seenAt": "2026-04-06T21:13:16.979Z"
         },
@@ -23497,6 +23492,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -24035,11 +24035,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -24082,6 +24077,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -24105,11 +24105,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -24152,6 +24147,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -29655,11 +29655,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -29702,6 +29697,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -29850,11 +29850,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -29897,6 +29892,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -32760,11 +32760,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -32807,6 +32802,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -33990,11 +33990,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -34037,6 +34032,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -36220,11 +36220,6 @@
       "sightings": [
         {
           "teamAbbrev": "CAR",
-          "gameId": "2025021121",
-          "seenAt": "2026-03-27T04:08:45.678Z"
-        },
-        {
-          "teamAbbrev": "CAR",
           "gameId": "2025021169",
           "seenAt": "2026-03-30T18:28:44.290Z"
         },
@@ -36267,6 +36262,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025030411",
           "seenAt": "2026-06-03T17:26:13.679Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030412",
+          "seenAt": "2026-06-05T03:34:42.441Z"
         }
       ]
     },
@@ -40282,7 +40282,7 @@
     }
   },
   "movements": [],
-  "lastUpdated": "2026-06-05T02:50:40.037Z",
+  "lastUpdated": "2026-06-05T03:41:47.760Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -40309,6 +40309,6 @@
     ],
     "playersIngested": 356,
     "movementsDetectedThisRun": [],
-    "timestamp": "2026-06-05T02:50:40.037Z"
+    "timestamp": "2026-06-05T03:41:47.760Z"
   }
 }

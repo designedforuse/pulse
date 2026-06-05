@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-05T02:50:40.037Z",
+  "lastUpdated": "2026-06-05T03:41:47.760Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -71,7 +71,7 @@
         ],
         "playersIngested": 356,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-06-05T02:50:40.037Z"
+        "timestamp": "2026-06-05T03:41:47.760Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -81,7 +81,7 @@
     "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2142.844454722222,
+      "hoursUntil": -2143.6966,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -147,7 +147,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-06-05T02:50:40.037Z",
+      "triggeredAt": "2026-06-05T03:41:47.760Z",
       "expiresAt": "2026-06-05T12:00:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -179,7 +179,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-06-05T02:50:40.037Z",
+      "triggeredAt": "2026-06-05T03:41:47.760Z",
       "expiresAt": "2026-06-06T22:30:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -219,7 +219,7 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-06-05T02:50:40.037Z",
+      "triggeredAt": "2026-06-05T03:41:47.760Z",
       "expiresAt": "2026-06-06T18:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
@@ -281,7 +281,7 @@
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-06-05T02:50:40.037Z",
+      "triggeredAt": "2026-06-05T03:41:47.760Z",
       "expiresAt": "2026-06-08T17:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -309,7 +309,7 @@
         "tabHint": "Watch"
       },
       "priority": 55,
-      "triggeredAt": "2026-06-05T02:50:40.037Z",
+      "triggeredAt": "2026-06-05T03:41:47.760Z",
       "expiresAt": "2026-06-07T23:59:59.999Z",
       "kind": "weekend_watchlist",
       "region": "Other",
