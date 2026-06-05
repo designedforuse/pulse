@@ -754,6 +754,12 @@ const PULSELIVE_RUGBY_EVENT_IDS: Record<string, string> = {
 const pulseliveScheduleCache: Record<string, { matches: any[]; fetchedAt: number }> = {};
 const PULSELIVE_CACHE_TTL = 60_000; // 60s
 
+// Max gap between our event's scheduled start and a feed match's kickoff for
+// them to be considered the same fixture. Separate meetings of the same two
+// teams (return leg, playoff) are days/weeks apart, so 18h cleanly disambiguates
+// while tolerating timezone/scheduling drift in the source schedule.
+const PULSELIVE_MATCH_WINDOW_MS = 18 * 60 * 60 * 1000;
+
 async function getPulseliveSchedule(eventId: string): Promise<any[]> {
   const now = Date.now();
   const cached = pulseliveScheduleCache[eventId];
@@ -963,19 +969,41 @@ async function fetchPulseliveRugbyScores(
     const wrMatches = await getPulseliveSchedule(eventId);
     let matched = 0;
 
-    for (const wrMatch of wrMatches) {
-      const score = pulseliveMatchToScore(wrMatch);
-      if (!score) continue;
+    // Pre-extract scorable feed matches with their kickoff timestamps.
+    const candidates = wrMatches
+      .map((wrMatch) => ({
+        score: pulseliveMatchToScore(wrMatch),
+        t0: (wrMatch.teams?.[0]?.name as string) || "",
+        t1: (wrMatch.teams?.[1]?.name as string) || "",
+        kickoff:
+          typeof wrMatch.time?.millis === "number" ? wrMatch.time.millis : NaN,
+      }))
+      .filter((c) => c.score !== null);
 
-      const t0: string = wrMatch.teams?.[0]?.name || "";
-      const t1: string = wrMatch.teams?.[1]?.name || "";
+    // Match per-event, preferring the feed match closest in time to our event.
+    // A season can contain multiple meetings of the same two teams (return leg,
+    // playoff). Team-name-only matching would attach an OLD completed result
+    // (e.g. a prior round's final score) to the current live fixture, so when
+    // both sides expose a kickoff time we require them to be the same fixture
+    // (within PULSELIVE_MATCH_WINDOW_MS) and break ties by closeness.
+    for (const ev of events) {
+      if (scores[ev.id]) continue;
+      const evStart = ev.startTimeLocal
+        ? new Date(ev.startTimeLocal).getTime()
+        : NaN;
 
-      for (const ev of events) {
-        if (scores[ev.id]) continue;
-        if (!teamsMatch(t0, ev.homeTeam) || !teamsMatch(t1, ev.awayTeam)) continue;
-        scores[ev.id] = score;
+      let best: { score: ScoreData; delta: number } | null = null;
+      for (const c of candidates) {
+        if (!teamsMatch(c.t0, ev.homeTeam) || !teamsMatch(c.t1, ev.awayTeam)) continue;
+        const haveBothTimes = !Number.isNaN(evStart) && !Number.isNaN(c.kickoff);
+        const delta = haveBothTimes ? Math.abs(c.kickoff - evStart) : 0;
+        if (haveBothTimes && delta > PULSELIVE_MATCH_WINDOW_MS) continue;
+        if (!best || delta < best.delta) best = { score: c.score!, delta };
+      }
+
+      if (best) {
+        scores[ev.id] = best.score;
         matched++;
-        break;
       }
     }
 
