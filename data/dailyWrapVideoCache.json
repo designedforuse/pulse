@@ -472,5 +472,25 @@
       "channel": "JAPAN RUGBY LEAGUE ONE｜ジャパンラグビー リーグワン"
     },
     "fetchedAt": "2026-06-07T19:12:31.869Z"
+  },
+  "soccer-intl-friendly-20260607-1900-norway-at-morocco": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=4fdUth85LPE",
+      "thumbnailUrl": "https://i.ytimg.com/vi/4fdUth85LPE/hqdefault.jpg",
+      "durationSeconds": 497,
+      "title": "Morocco vs Norway 1-1 | Highlights & Goals | International Friendly Match 2026",
+      "channel": "Riyadinho"
+    },
+    "fetchedAt": "2026-06-07T21:25:29.812Z"
+  },
+  "cricket-intl-c454m3": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=CVdEu_dcErY",
+      "thumbnailUrl": "https://i.ytimg.com/vi/CVdEu_dcErY/hqdefault.jpg",
+      "durationSeconds": 392,
+      "title": "WI vs SL 3rd ODI Prediction | Sri Lanka Vs West Indies 3rd Odi Match Prediction | Playing 11 ",
+      "channel": "SpMishra Tech"
+    },
+    "fetchedAt": "2026-06-07T21:25:29.812Z"
   }
 }

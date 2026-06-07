@@ -5454,7 +5454,10 @@
       "eventType": "session",
       "sessionTitle": "Belmont Stakes",
       "competitionType": "domestic",
-      "tournamentName": "Belmont Stakes"
+      "tournamentName": "Belmont Stakes",
+      "winnerHorse": "Golden Tempo",
+      "winnerJockey": "José Ortiz",
+      "winnerNote": "Becomes the 13th horse to win both the Kentucky Derby and Belmont"
     },
     {
       "id": "soccer-intl-friendly-20260606-1830-germany-at-united-states",

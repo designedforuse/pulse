@@ -24,6 +24,15 @@ export interface CyclingResult {
   isOverall: boolean; // true on the final stage (champion) vs mid-race leader
 }
 
+// Triple Crown horse-racing result for the dedicated story result card.
+export interface HorseRacingResult {
+  horse: string; // winning horse
+  jockey?: string; // winning jockey
+  leg?: string; // Triple Crown leg ("First leg" etc.)
+  track?: string; // track name (segment before first comma of location)
+  note?: string; // one-line colour note about the result
+}
+
 // A single athletics result row for the Diamond League story card.
 export interface AthleticsResult {
   discipline: string; // formatted, e.g. "men's 200m"
@@ -57,6 +66,9 @@ export interface DailyWrapEntry {
   // Cycling grand tour GC result, so the story can render a compact
   // "Overall Winner / Race Leader" card (flag + rider) instead of a plain line.
   cyclingResult?: CyclingResult;
+  // Triple Crown horse-racing result, so the story can render a winner card
+  // (horse + jockey + colour note) instead of a plain detail line.
+  horseRacingResult?: HorseRacingResult;
   // Final score captured at wrap-generation time. Live scores expire once a
   // game leaves the live window, so the story card relies on this snapshot to
   // render set/score details consistently rather than the volatile live feed.
@@ -645,6 +657,34 @@ function horseRacingFallbackEditorial(event: any): Partial<DailyWrapEntry> | nul
   // KY" — take the track name (the segment before the first comma).
   const track = (event.awayTeam || "").split(",")[0].trim();
   const leg = TRIPLE_CROWN_LEG[race];
+
+  // The hardcoded schedule carries the winner once the race has run. When a
+  // result is present, lead with the winning horse and surface the jockey + a
+  // colour note in a dedicated result card; otherwise fall back to the plain
+  // score-agnostic recap.
+  const horse = (event.winnerHorse || "").trim();
+  const jockey = (event.winnerJockey || "").trim();
+  const note = (event.winnerNote || "").trim();
+
+  if (horse) {
+    const editorial = `${horse} wins the ${race}`;
+    const detailParts = [
+      jockey ? `Ridden by ${jockey}` : "",
+      leg ? `Triple Crown · ${leg}` : event.league,
+    ].filter(Boolean);
+    return {
+      editorial,
+      detail: detailParts.join(" · "),
+      winner: horse,
+      horseRacingResult: {
+        horse,
+        jockey: jockey || undefined,
+        leg: leg || undefined,
+        track: track || undefined,
+        note: note || undefined,
+      },
+    };
+  }
 
   const editorial = track ? `The ${race} ran at ${track}` : `The ${race} is in the books`;
   const detail = leg ? `${event.league} · ${leg}` : event.league;
@@ -1418,6 +1458,8 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
             awayTeam: event.awayTeam,
             editorial: he.editorial || "",
             detail: he.detail || "",
+            winner: he.winner,
+            horseRacingResult: he.horseRacingResult,
             priorityScore: HORSE_RACING_PRIORITY,
             startTimeLocal: event.startTimeLocal,
           });

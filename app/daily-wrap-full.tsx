@@ -47,6 +47,7 @@ import {
   type SvnsFinal,
   type AthleticsResult,
   type CyclingResult,
+  type HorseRacingResult,
 } from "@/components/DailyWrapCard";
 
 const PINK = "#FF85C8";
@@ -291,6 +292,54 @@ function CyclingResultCard({
   );
 }
 
+// --- Triple Crown horse-racing winner card ---
+// Mirrors the cycling/SVNS result cards: a league chip + "WINNER" label, the
+// winning horse, the jockey, and a one-line colour note about the result.
+function HorseRacingResultCard({
+  result,
+  league,
+  sportColor,
+}: {
+  result: HorseRacingResult;
+  league: string;
+  sportColor: string;
+}) {
+  return (
+    <View style={[styles.svnsCard, { borderColor: sportColor + "55" }]}>
+      <View style={[styles.svnsTopBar, { backgroundColor: sportColor }]} />
+      <View style={styles.svnsHeader}>
+        <View
+          style={[
+            styles.svnsLeagueChip,
+            { backgroundColor: sportColor + "1F", borderColor: sportColor + "55" },
+          ]}
+        >
+          <Text style={[styles.svnsLeagueChipText, { color: sportColor }]} numberOfLines={1}>
+            {result.leg ? `${league} · ${result.leg}` : league}
+          </Text>
+        </View>
+        <Text style={styles.svnsCupFinalLabel}>WINNER</Text>
+      </View>
+      <View style={styles.cyclingBody}>
+        <View style={styles.cyclingNameRow}>
+          <Text style={styles.cyclingEmoji}>🏇</Text>
+          <Text style={styles.cyclingName} numberOfLines={1}>
+            {result.horse}
+          </Text>
+        </View>
+        {result.jockey ? (
+          <Text style={[styles.cyclingLabel, { marginTop: 8 }]}>
+            RIDDEN BY {result.jockey.toUpperCase()}
+          </Text>
+        ) : null}
+        {result.note ? (
+          <Text style={styles.hrNote}>{result.note}</Text>
+        ) : null}
+      </View>
+    </View>
+  );
+}
+
 // One-time iOS audio-session setup so narration is audible even on silent mode.
 let audioModeReady = false;
 
@@ -404,7 +453,8 @@ function StoryPage({
   const showKenBurns = !!backdrop;
   // Cycling entries render a dedicated GC result card (label + flag/name), so
   // skip the generic event/score card when a cyclingResult is present.
-  const showScoreCard = !hideSpoilers && !!event && !!score && !entry.cyclingResult && !isLookAhead;
+  const showScoreCard =
+    !hideSpoilers && !!event && !!score && !entry.cyclingResult && !entry.horseRacingResult && !isLookAhead;
 
   const handleReplay = () => {
     if (!event) return;
@@ -504,6 +554,12 @@ function StoryPage({
           ) : !hideSpoilers && entry.cyclingResult ? (
             <CyclingResultCard
               result={entry.cyclingResult}
+              league={entry.league}
+              sportColor={sportColor}
+            />
+          ) : !hideSpoilers && entry.horseRacingResult ? (
+            <HorseRacingResultCard
+              result={entry.horseRacingResult}
               league={entry.league}
               sportColor={sportColor}
             />
@@ -969,6 +1025,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: "Inter_700Bold",
     color: Colors.textPrimary,
+  },
+  hrNote: {
+    marginTop: 10,
+    fontSize: 13,
+    lineHeight: 18,
+    fontFamily: "Inter_400Regular",
+    color: Colors.textSecondary,
   },
   svnsTeamName: {
     flex: 1,

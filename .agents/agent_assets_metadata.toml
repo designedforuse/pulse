@@ -138,6 +138,24 @@ uri = "file://assets/images/sportBackdrops/cycling-3.png"
 type = "image"
 title = "cycling backdrop three"
 
+[[generated]]
+id = "daX3v1x6b7Fha5r4KeKPl"
+uri = "file://assets/images/sportBackdrops/horse-racing-1.png"
+type = "image"
+title = "horse racing backdrop one"
+
+[[generated]]
+id = "Zf-jw7MiAx4TRiu-nbRpn"
+uri = "file://assets/images/sportBackdrops/horse-racing-2.png"
+type = "image"
+title = "horse racing backdrop two"
+
+[[generated]]
+id = "Y3Z0EMHJXwglgrF1WkLqP"
+uri = "file://assets/images/sportBackdrops/horse-racing-3.png"
+type = "image"
+title = "horse racing backdrop three"
+
 [[outputs]]
 id = "BCzZEiJcUNr5OpJ6RpZse"
 uri = "file://PRD.md"

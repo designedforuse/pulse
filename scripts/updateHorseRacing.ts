@@ -15,6 +15,9 @@ interface AppEvent {
   sessionTitle?: string;
   competitionType?: string;
   tournamentName?: string;
+  winnerHorse?: string;
+  winnerJockey?: string;
+  winnerNote?: string;
 }
 
 export interface HorseRacingFetchResult {
@@ -39,6 +42,10 @@ interface TripleCrownRace {
   durationMin: number;
   providerId: string;
   providerReason: string;
+  // Result, filled in after the race runs (hardcoded feed has no live results).
+  winnerHorse?: string;
+  winnerJockey?: string;
+  winnerNote?: string;
 }
 
 const TRIPLE_CROWN_RACES: TripleCrownRace[] = [
@@ -50,6 +57,9 @@ const TRIPLE_CROWN_RACES: TripleCrownRace[] = [
     durationMin: 360,
     providerId: "youtubetv",
     providerReason: "nbc-broadcast",
+    winnerHorse: "Golden Tempo",
+    winnerJockey: "José Ortiz",
+    winnerNote: "23-1 longshot edges Renegade by a neck for Ortiz's first Derby",
   },
   {
     name: "Preakness Stakes",
@@ -59,6 +69,9 @@ const TRIPLE_CROWN_RACES: TripleCrownRace[] = [
     durationMin: 360,
     providerId: "youtubetv",
     providerReason: "nbc-broadcast",
+    winnerHorse: "Napoleon Solo",
+    winnerJockey: "Paco Lopez",
+    winnerNote: "10-1 shot runs down favorite Taj Mahal to deny the Triple Crown",
   },
   {
     name: "Belmont Stakes",
@@ -68,6 +81,9 @@ const TRIPLE_CROWN_RACES: TripleCrownRace[] = [
     durationMin: 360,
     providerId: "youtubetv",
     providerReason: "fox-broadcast",
+    winnerHorse: "Golden Tempo",
+    winnerJockey: "José Ortiz",
+    winnerNote: "Becomes the 13th horse to win both the Kentucky Derby and Belmont",
   },
 ];
 
@@ -110,6 +126,9 @@ export function fetchHorseRacingEvents(): HorseRacingFetchResult {
       sessionTitle: race.shortName,
       competitionType: "domestic",
       tournamentName: race.name,
+      winnerHorse: race.winnerHorse,
+      winnerJockey: race.winnerJockey,
+      winnerNote: race.winnerNote,
     });
 
     raceCounts[race.name] = 1;

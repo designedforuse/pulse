@@ -45,6 +45,14 @@ export interface CyclingResult {
   isOverall: boolean;
 }
 
+export interface HorseRacingResult {
+  horse: string;
+  jockey?: string;
+  leg?: string;
+  track?: string;
+  note?: string;
+}
+
 export interface DailyWrapEntry {
   eventId: string;
   sport: string;
@@ -61,6 +69,7 @@ export interface DailyWrapEntry {
   athleticsResults?: AthleticsResult[];
   athleticsMeet?: { city: string; scope: "sa" | "top" };
   cyclingResult?: CyclingResult;
+  horseRacingResult?: HorseRacingResult;
   scoreSnapshot?: ScoreData;
   priorityScore: number;
   startTimeLocal: string;
