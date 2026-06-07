@@ -15,6 +15,7 @@
 - [Diamond League results](diamond-league-results.md) — athletics has no keyed score; Daily Wrap fallback fetches Swiss Timing JSON, leads headline with SA (RSA) result else top record/win; dedupe multi-day meets by season/meeting.
 - [expo-image local source swap](expo-image-local-source-swap.md) — mounted expo-image won't swap a changed local require() source; key it by content to force remount.
 - [Daily Wrap render precedence](daily-wrap-render-tree.md) — showScoreCard→UnifiedEventCard runs FIRST; a new dedicated story card must make showScoreCard opt out or it's dead code.
+- [Horse racing wrap](horse-racing-score-agnostic.md) — `horse-racing` (≠ F1 `racing`) has no winner feed; score-agnostic story via fallback chain, not buildEditorial.
 - [Pulselive rugby score matching](rugby-pulselive-score-matching.md) — match feed scores to events by kickoff-time proximity, not team name alone; a season has repeat pairings and an old final can bind to a live fixture.
 - [Daily Wrap scoreless fallback](daily-wrap-scoreless-fallback.md) — concluded games vanish when their score feed is down (builder→null); reliability sports need a score-agnostic fallback gated on explicit endTimeLocal+grace.
 - [Daily Wrap minimum stories](daily-wrap-min-stories.md) — wrap must show ≥5; past-24h concluded results fill first, then look-ahead preview cards from highest-weighted upcoming games in a 48h window.

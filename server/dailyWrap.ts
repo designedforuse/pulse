@@ -614,6 +614,44 @@ function cricketFallbackEditorial(event: any): Partial<DailyWrapEntry> | null {
   return { editorial, detail };
 }
 
+// --- Triple Crown horse racing (score-agnostic) ---
+// The Triple Crown schedule is hardcoded and carries no results feed (no
+// winning horse/jockey/score), so — like the schools-rugby and cricket-quota
+// fallbacks — a concluded race is surfaced with a score-agnostic headline built
+// from race + track + Triple Crown leg context rather than inventing a result.
+const HORSE_RACING_PRIORITY = 72;
+
+// Each race event spans a long (~6h) window covering the undercard before the
+// feature race. Wait past the scheduled end before surfacing the recap so the
+// story never appears while the day's card is still being run.
+const HORSE_RACING_FALLBACK_GRACE_MS = 30 * 60 * 1000;
+
+// Triple Crown leg, keyed by race name (event.tournamentName / homeTeam).
+const TRIPLE_CROWN_LEG: Record<string, string> = {
+  "Kentucky Derby": "First leg",
+  "Preakness Stakes": "Second leg",
+  "Belmont Stakes": "Final leg",
+};
+
+function isHorseRacing(event: any): boolean {
+  return (event?.sport || "").toLowerCase() === "horse-racing";
+}
+
+function horseRacingFallbackEditorial(event: any): Partial<DailyWrapEntry> | null {
+  const race = (event.tournamentName || event.homeTeam || event.sessionTitle || "").trim();
+  if (!race) return null;
+
+  // The race location is stored in awayTeam, e.g. "Churchill Downs, Louisville
+  // KY" — take the track name (the segment before the first comma).
+  const track = (event.awayTeam || "").split(",")[0].trim();
+  const leg = TRIPLE_CROWN_LEG[race];
+
+  const editorial = track ? `The ${race} ran at ${track}` : `The ${race} is in the books`;
+  const detail = leg ? `${event.league} · ${leg}` : event.league;
+
+  return { editorial, detail };
+}
+
 // --- Cycling grand tour (Giro etc.) ---
 // The cycling feed only carries the overall (GC) leader — there is no per-stage
 // winner and no "final" score status — so the wrap surfaces the race leader,
@@ -1350,6 +1388,24 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
             editorial: ce.editorial || "",
             detail: ce.detail || "",
             priorityScore: getPriorityScore(event.sport, event.league, undefined),
+            startTimeLocal: event.startTimeLocal,
+          });
+        }
+      } else if (isHorseRacing(event) && hasConcluded(event, nowMs, HORSE_RACING_FALLBACK_GRACE_MS)) {
+        // Horse racing carries no results feed — surface the concluded race
+        // with a score-agnostic recap (race / track / Triple Crown leg).
+        const he = horseRacingFallbackEditorial(event);
+        if (he) {
+          fallbackIds.add(event.id);
+          results.push({
+            eventId: event.id,
+            sport: event.sport,
+            league: event.league,
+            homeTeam: event.homeTeam,
+            awayTeam: event.awayTeam,
+            editorial: he.editorial || "",
+            detail: he.detail || "",
+            priorityScore: HORSE_RACING_PRIORITY,
             startTimeLocal: event.startTimeLocal,
           });
         }

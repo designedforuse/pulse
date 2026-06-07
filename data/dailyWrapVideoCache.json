@@ -452,5 +452,25 @@
   "nhl_2025030412": {
     "video": null,
     "fetchedAt": "2026-06-05T03:34:41.698Z"
+  },
+  "f1-espn-401839067": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=Rkl_Pr_-FuA",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Rkl_Pr_-FuA/hqdefault.jpg",
+      "durationSeconds": 1104,
+      "title": "COLAPINTO finished 15th in MONACO SUMMARY and we need to talk about the GOOD and the BAD without ...",
+      "channel": "F1 con Mate"
+    },
+    "fetchedAt": "2026-06-07T19:12:31.869Z"
+  },
+  "rugby-leagueone-enveti": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=N181OVdYKWs",
+      "thumbnailUrl": "https://i.ytimg.com/vi/N181OVdYKWs/hqdefault.jpg",
+      "durationSeconds": 948,
+      "title": "[Official Highlights] Kobe S vs S Tokyo Bay | NTT League One 2025-26 Playoff Tournament Final | 2...",
+      "channel": "JAPAN RUGBY LEAGUE ONE｜ジャパンラグビー リーグワン"
+    },
+    "fetchedAt": "2026-06-07T19:12:31.869Z"
   }
 }
