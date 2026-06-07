@@ -1203,19 +1203,102 @@ function cricketEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry>
   return { editorial, detail, winner };
 }
 
+// Championship / title-decider context. A game flagged as a final earns extra
+// editorial weight ("...to win the title") so the wrap reads like a final, not a
+// routine result. Two detection signals:
+//   1. A generic `roundName` / `stage` field on the event — covers cricket IPL
+//      ("Final") and any future source that tags knockout rounds.
+//   2. A small hardcoded registry for sources that expose no round info (e.g.
+//      the Japan League One scrape), keyed by leagueKey + season and matched on
+//      the two participants (order-independent). Add finals here as they occur.
+interface ChampionshipContext {
+  competition: string; // title label, e.g. "Japan League One"
+}
+
+const CHAMPIONSHIP_FINALS: Array<{
+  leagueKey: string;
+  season: string; // calendar year the final is played (UTC)
+  teams: [string, string]; // participants, order-independent
+  competition: string;
+}> = [
+  {
+    leagueKey: "leagueone",
+    season: "2026",
+    teams: ["Kobelco Kobe Steelers", "Kubota Spears"],
+    competition: "Japan League One",
+  },
+];
+
+function getChampionshipContext(event: any): ChampionshipContext | null {
+  // 1. Generic round/stage marker (title deciders only — exclude earlier rounds).
+  const round = `${event.roundName || event.stage || ""}`.trim();
+  if (
+    round &&
+    /\b(grand final|final|championship|title)\b/i.test(round) &&
+    // Exclude rounds that contain "final" but are NOT the title decider
+    // (conference/division finals, the NCAA "Final Four" semifinal, etc.).
+    !/semi|quarter|qualif|elimin|conference|division|final four|wild ?card|play.?in/i.test(round)
+  ) {
+    return { competition: event.seriesName || event.league || "" };
+  }
+  // 2. Hardcoded registry for untagged sources.
+  const home = (event.homeTeam || "").toLowerCase();
+  const away = (event.awayTeam || "").toLowerCase();
+  let season = "";
+  try {
+    season = new Date(event.startTimeLocal).getUTCFullYear().toString();
+  } catch {}
+  for (const f of CHAMPIONSHIP_FINALS) {
+    if (f.leagueKey !== event.leagueKey || f.season !== season) continue;
+    const set = f.teams.map((t) => t.toLowerCase());
+    if (set.includes(home) && set.includes(away)) {
+      return { competition: f.competition };
+    }
+  }
+  return null;
+}
+
+// Fold championship context into a standard "X beat Y N–M" headline. Skips when
+// the headline already names the final/title/champions (cricket builds its own
+// knockout headlines), and when there's no clear winner (e.g. a draw).
+function applyChampionshipContext(
+  entry: Partial<DailyWrapEntry>,
+  event: any,
+): Partial<DailyWrapEntry> {
+  const ctx = getChampionshipContext(event);
+  if (!ctx) return entry;
+  const comp = (ctx.competition || event.league || "").trim();
+
+  if (
+    entry.winner &&
+    entry.editorial &&
+    !/\b(final|champions?|title)\b/i.test(entry.editorial)
+  ) {
+    entry.editorial = `${entry.editorial} to win the ${comp} title`;
+  }
+  if (entry.detail && comp && !/final/i.test(entry.detail)) {
+    entry.detail = entry.detail.includes(comp)
+      ? entry.detail.replace(comp, `${comp} Final`)
+      : `${entry.detail} · Final`;
+  }
+  return entry;
+}
+
 function buildEditorial(event: any, score: ScoreData, series?: SeriesStatus): Partial<DailyWrapEntry> | null {
   const sport = (event.sport || "").toLowerCase();
+  let res: Partial<DailyWrapEntry> | null;
   switch (sport) {
-    case "hockey":    return hockeyEditorial(event, score, series);
-    case "soccer":    return soccerEditorial(event, score);
-    case "basketball":return basketballEditorial(event, score);
-    case "rugby":     return rugbyEditorial(event, score);
-    case "racing":    return racingEditorial(event, score);
-    case "golf":      return golfEditorial(event, score);
-    case "tennis":    return tennisEditorial(event, score);
-    case "cricket":   return cricketEditorial(event, score);
-    default:          return null;
+    case "hockey":    res = hockeyEditorial(event, score, series); break;
+    case "soccer":    res = soccerEditorial(event, score); break;
+    case "basketball":res = basketballEditorial(event, score); break;
+    case "rugby":     res = rugbyEditorial(event, score); break;
+    case "racing":    res = racingEditorial(event, score); break;
+    case "golf":      res = golfEditorial(event, score); break;
+    case "tennis":    res = tennisEditorial(event, score); break;
+    case "cricket":   res = cricketEditorial(event, score); break;
+    default:          res = null;
   }
+  return res ? applyChampionshipContext(res, event) : res;
 }
 
 const GENERATED_EVENTS_PATH = path.resolve(process.cwd(), "data", "generatedEvents.json");

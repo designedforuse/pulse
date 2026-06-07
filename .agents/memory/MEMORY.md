@@ -20,3 +20,4 @@
 - [Pulselive rugby score matching](rugby-pulselive-score-matching.md) — match feed scores to events by kickoff-time proximity, not team name alone; a season has repeat pairings and an old final can bind to a live fixture.
 - [Daily Wrap scoreless fallback](daily-wrap-scoreless-fallback.md) — concluded games vanish when their score feed is down (builder→null); reliability sports need a score-agnostic fallback gated on explicit endTimeLocal+grace.
 - [Daily Wrap minimum stories](daily-wrap-min-stories.md) — wrap must show ≥5; past-24h concluded results fill first, then look-ahead preview cards from highest-weighted upcoming games in a 48h window.
+- [Championship headlines](championship-headlines.md) — finals get "...to win the {comp} title" + detail "Final"; detect via roundName/stage or a hardcoded CHAMPIONSHIP_FINALS registry for untagged sources.
