@@ -21,3 +21,4 @@
 - [Daily Wrap scoreless fallback](daily-wrap-scoreless-fallback.md) — concluded games vanish when their score feed is down (builder→null); reliability sports need a score-agnostic fallback gated on explicit endTimeLocal+grace.
 - [Daily Wrap minimum stories](daily-wrap-min-stories.md) — wrap must show ≥5; past-24h concluded results fill first, then look-ahead preview cards from highest-weighted upcoming games in a 48h window.
 - [Championship headlines](championship-headlines.md) — finals get "...to win the {comp} title" + detail "Final"; detect via roundName/stage or a hardcoded CHAMPIONSHIP_FINALS registry for untagged sources.
+- [F1 vs WRC backdrops & headline](racing-backdrops-and-headline.md) — F1+WRC share sport "racing"; split backdrops by eventId prefix (racing-wrc-→rally, else F1). F1 headline names GP from homeTeam, never sessionTitle ("Race").

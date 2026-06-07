@@ -1046,9 +1046,14 @@ function racingEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> 
   const f = flag(score.racingLeaderCountry || "");
   const driver = score.racingLeader;
   const team = score.racingLeaderTeam || "";
-  const raceName = event.sessionTitle || event.homeTeam || "the Grand Prix";
+  // event.homeTeam is the Grand Prix name (e.g. "Monaco Grand Prix");
+  // event.sessionTitle is just the session ("Race"/"Sprint"), too generic for a
+  // headline. Prefer the GP name, and guard against a generic/empty name so we
+  // never produce "wins the Race" or a tautological "wins the Sprint".
+  const gpName = String(event.homeTeam || "").trim();
   const isSprint = score.racingSessionType === "Sprint";
-  const editorial = `${f ? f + " " : ""}${driver} wins${isSprint ? " the Sprint at" : ""} the ${raceName}`;
+  const venue = gpName && !/^(race|sprint)$/i.test(gpName) ? `the ${gpName}` : "the Grand Prix";
+  const editorial = `${f ? f + " " : ""}${driver} wins${isSprint ? " the Sprint at" : ""} ${venue}`;
   const detail = `${isSprint ? "Sprint" : "Race"} · P1${team ? " · " + team : ""}`;
   return { editorial, detail, winner: driver };
 }

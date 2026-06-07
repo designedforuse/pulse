@@ -156,6 +156,42 @@ uri = "file://assets/images/sportBackdrops/horse-racing-3.png"
 type = "image"
 title = "horse racing backdrop three"
 
+[[generated]]
+id = "oapiWRS11KP2cT1gRKiSz"
+uri = "file://assets/images/sportBackdrops/f1-1.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "XW6uAyHJpS6OTFJ2VR9JC"
+uri = "file://assets/images/sportBackdrops/f1-2.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "6UbgdQkaHeKWk9WezZqZ6"
+uri = "file://assets/images/sportBackdrops/f1-3.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "U4059ztKBpxFkRx-QEWyX"
+uri = "file://assets/images/sportBackdrops/wrc-1.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "rXRD2zVEdtmUFcq3vOchT"
+uri = "file://assets/images/sportBackdrops/wrc-2.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "VmycZ_Cy5kbfZ0yTE-egF"
+uri = "file://assets/images/sportBackdrops/wrc-3.png"
+type = "image"
+title = "generated_image"
+
 [[outputs]]
 id = "BCzZEiJcUNr5OpJ6RpZse"
 uri = "file://PRD.md"

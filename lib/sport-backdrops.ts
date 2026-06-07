@@ -34,10 +34,12 @@ const BACKDROPS: Record<string, ImageSourcePropType[]> = {
     require("@/assets/images/sportBackdrops/basketball-2.jpg"),
     require("@/assets/images/sportBackdrops/basketball-3.jpg"),
   ],
+  // Default "racing" pool is Formula 1 (open-wheel). WRC rallies share the same
+  // `sport: "racing"` but are routed to a dedicated rally pool below by eventId.
   racing: [
-    require("@/assets/images/sportBackdrops/racing-1.jpg"),
-    require("@/assets/images/sportBackdrops/racing-2.jpg"),
-    require("@/assets/images/sportBackdrops/racing-3.jpg"),
+    require("@/assets/images/sportBackdrops/f1-1.png"),
+    require("@/assets/images/sportBackdrops/f1-2.png"),
+    require("@/assets/images/sportBackdrops/f1-3.png"),
   ],
   "horse-racing": [
     require("@/assets/images/sportBackdrops/horse-racing-1.png"),
@@ -66,6 +68,15 @@ const BACKDROPS: Record<string, ImageSourcePropType[]> = {
 const PBHS_EVENT_PREFIX = "rugby-schools-";
 const PBHS_BACKDROP: ImageSourcePropType = require("@/assets/images/sportBackdrops/pbhs-1.jpg");
 
+// WRC rallies use `sport: "racing"` but must show rally cars, not F1. Their
+// eventIds are prefixed "racing-wrc-", so route them to a dedicated rally pool.
+const WRC_EVENT_PREFIX = "racing-wrc-";
+const WRC_BACKDROPS: ImageSourcePropType[] = [
+  require("@/assets/images/sportBackdrops/wrc-1.png"),
+  require("@/assets/images/sportBackdrops/wrc-2.png"),
+  require("@/assets/images/sportBackdrops/wrc-3.png"),
+];
+
 function hashString(value: string): number {
   let hash = 0;
   for (let i = 0; i < value.length; i++) {
@@ -85,6 +96,9 @@ export function getSportBackdrop(
   seed: string
 ): ImageSourcePropType | null {
   if (seed.startsWith(PBHS_EVENT_PREFIX)) return PBHS_BACKDROP;
+  if (seed.startsWith(WRC_EVENT_PREFIX)) {
+    return WRC_BACKDROPS[hashString(seed) % WRC_BACKDROPS.length];
+  }
   const key = (sport || "").toLowerCase();
   const pool = BACKDROPS[key];
   if (!pool || pool.length === 0) return null;
