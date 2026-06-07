@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { fetchAllLiveScores } from "./liveScores";
+import { fetchAllLiveScores, fetchEspnCricketResult } from "./liveScores";
 import type { ScoreData, SeriesStatus } from "./liveScores";
 import { enrichWithHighlights, type HighlightVideo } from "./dailyWrapHighlights";
 import { fetchWrcRallyResult, getWrcRoundBaseId, hasWrcStageMapping } from "./wrcStages";
@@ -1255,7 +1255,20 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
 
   const cricketTestStoryMatchIds = new Set<string>();
   for (const event of todayEvents) {
-    const score = scores[event.id];
+    let score = scores[event.id];
+    // CricAPI quota fallback: when a concluded cricket fixture has no final score
+    // (e.g. the daily CricAPI hit limit is exhausted), recover the result from the
+    // keyless ESPN cricket feed so it flows through the normal cricket editorial +
+    // score card instead of degrading to a score-agnostic headline.
+    if (
+      isCricket(event) &&
+      (!score || !isFinalScore(score)) &&
+      event.endTimeLocal &&
+      hasConcluded(event, nowMs, CRICKET_FALLBACK_GRACE_MS)
+    ) {
+      const espnScore = await fetchEspnCricketResult(event);
+      if (espnScore) score = espnScore;
+    }
     // Cricket Tests are split into per-day events that share one match id. Decide
     // which single day-event may produce a wrap story:
     //  - With a final score the result is genuine (CricAPI only reports a result

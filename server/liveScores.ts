@@ -1744,6 +1744,197 @@ async function fetchCricketScores(
   return scores;
 }
 
+// ─── ESPN cricket (keyless fallback for concluded matches) ──────────────────
+// CricAPI's free tier (~100 hits/day, shared by dev + prod) is easily exhausted,
+// after which concluded matches return no final score and the Daily Wrap degrades
+// to a score-agnostic card. ESPN's public cricket scoreboard (the same keyless
+// site.api source already used for football/F1/etc.) carries full results, so we
+// use it as a fallback to recover final scores when CricAPI is unavailable.
+//
+// ESPN structure (verified): `cricket/{leagueId}/scoreboard?dates=YYYYMMDD` where
+// `dates` must be an EXACT day (ranges return nothing). Each competition is a
+// distinct numeric league id (IPL 8048, Big Bash 8044, MLC 21266, …); bilateral
+// series use rotating high ids that change each season, so we resolve those
+// dynamically via ESPN's search API (its `uid` carries `…l:<numericId>`).
+const ESPN_CRICKET_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/cricket";
+const ESPN_CRICKET_SEARCH = "https://site.web.api.espn.com/apis/search/v2";
+
+// Stable, verified numeric league ids for the marquee competitions Pulse features.
+// Anything not matched here falls through to dynamic search resolution.
+const ESPN_CRICKET_STATIC_LEAGUES: { match: RegExp; id: number }[] = [
+  { match: /indian premier league|\bipl\b/i, id: 8048 },
+  { match: /big bash|\bbbl\b/i, id: 8044 },
+  { match: /major league cricket|\bmlc\b/i, id: 21266 },
+  { match: /sheffield shield/i, id: 8043 },
+  { match: /county championship/i, id: 8052 },
+];
+
+// Resolved league ids are cached long (12h) — competition→id mappings are stable
+// within a season and search calls are the costliest part of the lookup. Misses
+// (and transient search failures) are cached only briefly so a hiccup doesn't
+// suppress the fallback for a whole competition for half a day.
+const ESPN_CRICKET_LEAGUE_TTL = 12 * 60 * 60 * 1000;
+const ESPN_CRICKET_LEAGUE_NULL_TTL = 30 * 60 * 1000;
+const espnCricketLeagueIdCache = new Map<string, { id: number | null; ts: number }>();
+
+// Scoreboards are cached per league+date (30 min) to keep the keyless source from
+// being hit repeatedly when several concluded events share a competition/day.
+const ESPN_CRICKET_SB_TTL = 30 * 60 * 1000;
+const espnCricketSbCache = new Map<string, { data: any; ts: number }>();
+
+function espnCricketTeamMatches(competitor: any, ourTeam: string): boolean {
+  const our = ourTeam.toLowerCase().trim();
+  if (!our) return false;
+  const t = competitor?.team || {};
+  const candidates = [t.displayName, t.shortDisplayName, t.name, t.location, t.abbreviation]
+    .filter(Boolean)
+    .map((s: string) => String(s).toLowerCase().trim());
+  return candidates.some((c) => c === our || c.includes(our) || our.includes(c));
+}
+
+// Build a search query for a bilateral/lesser competition from the event metadata.
+// CricAPI seriesName looks like "1st ODI, Sri Lanka tour of West Indies, 2026" —
+// drop the leading match-descriptor token so the tour name itself is searched.
+function espnCricketSearchQuery(event: { league?: string; seriesName?: string }): string {
+  const sn = (event.seriesName || "").trim();
+  if (sn) {
+    const parts = sn.split(",").map((s) => s.trim()).filter(Boolean);
+    if (
+      parts.length > 1 &&
+      parts[0].length <= 24 &&
+      /\b(odi|t20i?|test|match|final|semi|qualifier|eliminator)\b/i.test(parts[0])
+    ) {
+      return parts.slice(1).join(" ");
+    }
+    return parts.join(" ");
+  }
+  return (event.league || "").trim();
+}
+
+async function resolveEspnCricketLeagueId(
+  event: { league?: string; seriesName?: string },
+): Promise<number | null> {
+  const hay = `${event.league || ""} ${event.seriesName || ""}`;
+  for (const s of ESPN_CRICKET_STATIC_LEAGUES) {
+    if (s.match.test(hay)) return s.id;
+  }
+
+  const query = espnCricketSearchQuery(event);
+  if (!query) return null;
+  const key = query.toLowerCase();
+  const cached = espnCricketLeagueIdCache.get(key);
+  if (cached) {
+    const ttl = cached.id == null ? ESPN_CRICKET_LEAGUE_NULL_TTL : ESPN_CRICKET_LEAGUE_TTL;
+    if (Date.now() - cached.ts < ttl) return cached.id;
+  }
+
+  let found: number | null = null;
+  try {
+    const url = `${ESPN_CRICKET_SEARCH}?query=${encodeURIComponent(query)}&sport=cricket&limit=10`;
+    const res = await fetch(url);
+    if (res.ok) {
+      const data = (await res.json()) as any;
+      for (const r of data?.results || []) {
+        if (r.type !== "league") continue;
+        for (const it of r.contents || []) {
+          const m = /l:(\d+)/.exec(it.uid || "");
+          if (m) { found = parseInt(m[1], 10); break; }
+        }
+        if (found != null) break;
+      }
+    }
+  } catch (err) {
+    console.warn("[liveScores] ESPN cricket league search failed:", err);
+  }
+  espnCricketLeagueIdCache.set(key, { id: found, ts: Date.now() });
+  return found;
+}
+
+async function fetchEspnCricketScoreboard(leagueId: number, yyyymmdd: string): Promise<any | null> {
+  const key = `${leagueId}:${yyyymmdd}`;
+  const cached = espnCricketSbCache.get(key);
+  if (cached && Date.now() - cached.ts < ESPN_CRICKET_SB_TTL) return cached.data;
+
+  let data: any = null;
+  try {
+    const url = `${ESPN_CRICKET_SCOREBOARD}/${leagueId}/scoreboard?dates=${yyyymmdd}`;
+    const res = await fetch(url);
+    if (res.ok) data = await res.json();
+  } catch (err) {
+    console.warn("[liveScores] ESPN cricket scoreboard failed:", err);
+  }
+  espnCricketSbCache.set(key, { data, ts: Date.now() });
+  return data;
+}
+
+// ESPN indexes a match under its UTC start date; an event's local start can land
+// on the adjacent UTC day, so probe the day plus its neighbours.
+function espnCricketDateCandidates(iso: string): string[] {
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return [];
+  const fmt = (dt: Date) =>
+    `${dt.getUTCFullYear()}${String(dt.getUTCMonth() + 1).padStart(2, "0")}${String(dt.getUTCDate()).padStart(2, "0")}`;
+  return [fmt(d), fmt(new Date(d.getTime() - 86400000)), fmt(new Date(d.getTime() + 86400000))];
+}
+
+// Recover a concluded cricket match's final score from ESPN's keyless feed when
+// CricAPI has no result for it. Returns a ScoreData shaped exactly like the
+// CricAPI result rows (status "final", human result in `period`, innings totals
+// in cricketHome/cricketAway) so it flows through the normal cricket editorial
+// path, or null when no completed ESPN match matches the fixture.
+export async function fetchEspnCricketResult(event: {
+  homeTeam?: string;
+  awayTeam?: string;
+  startTimeLocal?: string;
+  league?: string;
+  seriesName?: string;
+}): Promise<ScoreData | null> {
+  const home = (event.homeTeam || "").trim();
+  const away = (event.awayTeam || "").trim();
+  if (!home || !away || !event.startTimeLocal) return null;
+
+  const leagueId = await resolveEspnCricketLeagueId(event);
+  if (leagueId == null) return null;
+
+  for (const ymd of espnCricketDateCandidates(event.startTimeLocal)) {
+    const sb = await fetchEspnCricketScoreboard(leagueId, ymd);
+    for (const e of sb?.events || []) {
+      const comp = (e.competitions || [])[0];
+      if (!comp) continue;
+      // Only completed matches — state "post" — yield a final result.
+      if (comp.status?.type?.state !== "post") continue;
+      const competitors = comp.competitors || [];
+      if (competitors.length < 2) continue;
+
+      const homeComp = competitors.find((c: any) => espnCricketTeamMatches(c, home));
+      const awayComp = competitors.find((c: any) => espnCricketTeamMatches(c, away));
+      if (!homeComp || !awayComp || homeComp === awayComp) continue;
+
+      const cricketHome = (homeComp.score || "").trim() || undefined;
+      const cricketAway = (awayComp.score || "").trim() || undefined;
+
+      // ESPN's `status.summary` is the human result ("Scorchers won by 6 wkts");
+      // fall back to the flagged winner, then a bare "Final".
+      let period = (comp.status?.summary || "").trim();
+      if (!period) {
+        const winner = competitors.find((c: any) => c.winner === true);
+        const wn = winner?.team?.displayName;
+        period = wn ? `${wn} won` : "Final";
+      }
+
+      return {
+        awayScore: 0,
+        homeScore: 0,
+        period,
+        status: "final",
+        cricketHome,
+        cricketAway,
+      };
+    }
+  }
+  return null;
+}
+
 const ESPN_TENNIS_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/tennis/atp/scoreboard";
 
 async function fetchTennisScores(
