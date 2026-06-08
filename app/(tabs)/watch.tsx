@@ -30,7 +30,7 @@ import { displayTeamName } from "@/utils/teams";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
-import UnifiedEventCard, { formatCricketLiveDetail, TennisScoreboard, getGrandPrixFlag, getDriverFlag, getWrcRoundInfo } from "@/components/UnifiedEventCard";
+import UnifiedEventCard, { formatCricketLiveDetail, TennisScoreboard, getGrandPrixFlag, getDriverFlag, getWrcRoundInfo, getCountryFlagUrl } from "@/components/UnifiedEventCard";
 import { useWrcStages, getWrcRoundBaseId, getStagesForLeg, wrcFlagUrl } from "@/lib/wrc-stages-context";
 import CatchUpCard from "@/components/CatchUpCard";
 import {
@@ -342,6 +342,13 @@ function ChaosCard({
   const awayIsFav = isTeamFavorite(event.awayTeam, event.sport, favorites);
   const homeIsFav = isTeamFavorite(event.homeTeam, event.sport, favorites);
 
+  // Intl soccer (FIFA World Cup / International Friendly) renders country flags
+  // instead of club logos — national teams have no TeamLogo, so they otherwise
+  // fall back to a 2-letter monogram ("JO", "CO").
+  const isIntlSoccer = event.league === "FIFA World Cup" || event.league === "International Friendly";
+  const awayCountryFlag = isIntlSoccer ? getCountryFlagUrl(event.awayTeam) : null;
+  const homeCountryFlag = isIntlSoccer ? getCountryFlagUrl(event.homeTeam) : null;
+
   const handlePress = () => {
     if (Platform.OS !== "web") {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -610,7 +617,7 @@ function ChaosCard({
                   </View>
                 )}
                 <View style={styles.primaryTeamRow}>
-                  <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={28} />
+                  {awayCountryFlag ? <FlagImg uri={awayCountryFlag} /> : <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={28} />}
                   <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 5 }}>
                     <Text style={[styles.heroTeamName, { flex: 0, flexShrink: 1 }]} numberOfLines={1}>
                       {displayTeamName(event.awayTeam, event.league)}
@@ -624,7 +631,7 @@ function ChaosCard({
                   )}
                 </View>
                 <View style={styles.primaryTeamRow}>
-                  <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={28} />
+                  {homeCountryFlag ? <FlagImg uri={homeCountryFlag} /> : <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={28} />}
                   <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 5 }}>
                     <Text style={[styles.heroTeamName, { flex: 0, flexShrink: 1 }]} numberOfLines={1}>
                       {displayTeamName(event.homeTeam, event.league)}
@@ -834,7 +841,7 @@ function ChaosCard({
         ) : (
           <View style={styles.secondaryTeams}>
             <View style={styles.secondaryTeamRow}>
-              <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={18} />
+              {awayCountryFlag ? <FlagImg uri={awayCountryFlag} sm /> : <TeamLogo teamName={event.awayTeam} league={event.league} sport={event.sport} size={18} />}
               <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 4 }}>
                 <Text style={[styles.secondaryTeamName, { flex: 0, flexShrink: 1 }]} numberOfLines={1}>
                   {displayTeamName(event.awayTeam, event.league)}
@@ -848,7 +855,7 @@ function ChaosCard({
               )}
             </View>
             <View style={styles.secondaryTeamRow}>
-              <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={18} />
+              {homeCountryFlag ? <FlagImg uri={homeCountryFlag} sm /> : <TeamLogo teamName={event.homeTeam} league={event.league} sport={event.sport} size={18} />}
               <View style={{ flex: 1, flexDirection: "row", alignItems: "center", gap: 4 }}>
                 <Text style={[styles.secondaryTeamName, { flex: 0, flexShrink: 1 }]} numberOfLines={1}>
                   {displayTeamName(event.homeTeam, event.league)}
