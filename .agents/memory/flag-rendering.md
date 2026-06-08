@@ -13,6 +13,8 @@ Event cards render flags as **images** from the ESPN country CDN, not emoji.
 - **Cricket team flags do NOT use `COUNTRY_CODES`/`getCountryFlagUrl`** (that path is only for intl soccer + tennis). Cricket renders via `<TeamLogo>` → `getTeamLogoUrl()` → the CRICKET map in `utils/teamLogos.ts`, which stores full ESPN country-flag URLs per team. A wrong code there (West Indies was `wnd.png`, a 404) silently falls back to the team-initials monogram. Fix the URL in that map, not in `COUNTRY_CODES`.
 - Helpers that return flag **URLs** (not emoji): `getGrandPrixFlag`, `getDriverFlag`, `getWrcRoundInfo().flag`, `getSvnsTeamFlag`, `getSvnsCityFlag`. Callers must render `<Image>`/`<ExpoImage>`, never interpolate into a `<Text>` string.
 - `app/(tabs)/watch.tsx` has a local `FlagImg` helper for inline card flags; `lib/svns-context.tsx` builds SVNS flag URLs independently (two flag-URL code paths exist — keep them in sync).
+- The Rituals **FeaturedStrip** (`app/(tabs)/rituals.tsx`) is a SEPARATE card from `UnifiedEventCard` and historically only rendered tennis/racing flags — intl soccer (FIFA World Cup / International Friendly) fell back to `TeamLogo` monograms ("PA"/"US"). It now calls `getCountryFlagUrl(homeTeam/awayTeam)` too. Any new flag-bearing sport must be wired in BOTH `UnifiedEventCard` and this strip.
+- `compactTeamName` (`utils/teams.ts`) has a generic ">12 chars → last word" club-nickname fallback that wrongly truncates country names ("United States" → "States"). Intl-soccer leagues are excluded from it; keep country names exempt from last-word compaction.
 
 **Emoji intentionally kept (these are NOT flags / NOT event cards):**
 - Sport glyphs on cards: 🏃 athletics, 🏉 SVNS, 🛶 paddling, 🏁 racing fallback, 🥇 leader.

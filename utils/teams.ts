@@ -602,8 +602,11 @@ export function compactTeamName(team: string, league?: string): string {
     const words = team.trim().split(" ");
     if (words.length >= 2) return words[words.length - 1];
   }
+  // Country names (intl soccer) are not clubs — never reduce them to a last-word
+  // nickname (e.g. "United States" must not become "States").
+  const isIntlSoccer = league === "FIFA World Cup" || league === "International Friendly";
   // Fallback: for long unmapped names, return just the last word (the nickname)
-  if (team.length > 12) {
+  if (!isIntlSoccer && team.length > 12) {
     const words = team.trim().split(" ");
     if (words.length > 1) return words[words.length - 1];
   }

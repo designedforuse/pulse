@@ -20,7 +20,7 @@ import { TeamLogo } from "@/components/TeamLogo";
 import ProviderLogo from "@/components/ProviderLogo";
 import { compactTeamName } from "@/utils/teams";
 import { isTeamFavorite } from "@/utils/favorites";
-import { getGrandPrixFlag } from "@/components/UnifiedEventCard";
+import { getGrandPrixFlag, getCountryFlagUrl } from "@/components/UnifiedEventCard";
 import { useEvents } from "@/lib/events-context";
 import { useFavorites } from "@/lib/favorites-context";
 import {
@@ -126,8 +126,20 @@ function FeaturedStrip({ event }: { event: SportEvent | null }) {
 
   const provider = resolveProviderDisplay(event);
   const isTennis = event.sport === "tennis";
-  const awayFlag = isTennis ? event.tennisPlayer1Flag : undefined;
-  const homeFlag = isTennis ? event.tennisPlayer2Flag : undefined;
+  // Intl soccer (FIFA World Cup / International Friendly) shows country flags
+  // instead of club logos — countries have no TeamLogo, so without this they
+  // fall back to a 2-letter monogram ("PA", "US").
+  const isIntlSoccer = event.league === "FIFA World Cup" || event.league === "International Friendly";
+  const awayFlag = isTennis
+    ? event.tennisPlayer1Flag
+    : isIntlSoccer
+      ? getCountryFlagUrl(event.awayTeam) ?? undefined
+      : undefined;
+  const homeFlag = isTennis
+    ? event.tennisPlayer2Flag
+    : isIntlSoccer
+      ? getCountryFlagUrl(event.homeTeam) ?? undefined
+      : undefined;
 
   return (
     <View style={styles.featuredStrip}>
