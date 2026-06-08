@@ -5,6 +5,7 @@
 - [WRC live stage winners](wrc-stage-winners.md) — eWRC `api-next.ewrc-results.com` is a no-key JSON API; round ids map to eWRC event ids in server/wrcStages.ts (add new rounds as they approach).
 - [CricAPI quota & backoff](cricapi-quota-backoff.md) — free tier 100 hits/day (resets 00:00 UTC); failed calls still count, so on limit-reached hard-stop polling until reset instead of retrying on cache TTL.
 - [ESPN cricket score fallback](espn-cricket-fallback.md) — keyless ESPN scoreboard recovers concluded scores when CricAPI quota dies; exact-date only, numeric league ids (bilateral rotate, resolve via search uid l:<id>).
+- [ESPN cricket FIXTURES](espn-cricket-fixtures.md) — schedule pulled from keyless ESPN (?dates=YYYY = whole season; search discovers tours); CricAPI reserved for live scores (binds by team name). Format only via summary endpoint.
 - [Daily Wrap highlight videos](daily-wrap-highlights.md) — no-key YouTube scrape per result; must gate by duration + reject pressers/live/replays or wrong content out-ranks real highlights.
 - [Schools effective-sport](schools-effective-sport.md) — 3 schools leagues span 3 real sports; use getEffectiveSport→"college" for ALL filter/chip/color surfaces, keep real sport for layout/logos/scores.
 - [Cycling stage events](cycling-stage-events.md) — grand tours = one event/stage; read current stage from sessionTitle, never date math (collapses to "Stage 1").

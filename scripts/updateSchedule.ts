@@ -4,7 +4,7 @@ import { fetchAhlEvents, mergeAhlEvents } from "./updateAhlSchedule";
 import { fetchEchlEvents, mergeEchlEvents } from "./updateEchlSchedule";
 import { fetchBuEvents, mergeBuEvents } from "./updateBuHockey";
 import { fetchRugbyEvents, mergeRugbyEvents } from "./updateRugby";
-import { fetchCricketEvents, mergeCricketEvents } from "./updateCricket";
+import { fetchCricketFixtures, mergeCricketEvents } from "./updateCricket";
 import { fetchIplEvents, mergeIplEvents } from "./updateIpl";
 import { fetchChallengeCupEvents, mergeChallengeCupEvents } from "./updateChallengeCup";
 import { fetchIccT20WcEvents, mergeIccT20WcEvents } from "./updateIccT20Wc";
@@ -399,7 +399,7 @@ async function main() {
     fetchEchlEvents(),
     fetchBuEvents(),
     fetchRugbyEvents(),
-    fetchCricketEvents(),
+    fetchCricketFixtures(),
     fetchIplEvents(),
     fetchEplEvents(),
     fetchMlsEvents(),
@@ -428,7 +428,14 @@ async function main() {
   const echlResult = mergeEchlEvents(existingEchl, echlFetchResult.events, now);
   const buResult = mergeBuEvents(existingBu, buFetchResult.events, now);
   const rugbyResult = mergeRugbyEvents(existingRugby, rugbyFetchResult.events, now);
-  const cricketResultRaw = mergeCricketEvents(existingCricket, cricketFetchResult.events, now);
+  // Clean cutover: once ESPN supplies fresh fixtures, drop any legacy CricAPI-sourced
+  // cricket events so ESPN is authoritative. But if no fresh fixtures arrived this run
+  // (ESPN + CricAPI fallback both empty — outage), keep whatever we had so the schedule
+  // doesn't lose cricket entirely.
+  const cricketBaseExisting = cricketFetchResult.events.length > 0
+    ? existingCricket.filter((e: AppEvent) => e.source !== "cricket-cricapi")
+    : existingCricket;
+  const cricketResultRaw = mergeCricketEvents(cricketBaseExisting, cricketFetchResult.events, now);
   const iplResult = mergeIplEvents(existingIpl, iplFetchResult.events, now);
   const t20WcResult = mergeIccT20WcEvents(existingT20Wc, t20WcFetchResult.events, now);
   const olympicHockeyResult = mergeOlympicHockeyEvents(existingOlympicHockey, olympicHockeyFetchResult.events, now);

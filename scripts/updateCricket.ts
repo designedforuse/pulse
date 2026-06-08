@@ -992,3 +992,299 @@ export function mergeCricketEvents(
 
   return { merged, added, updated, pruned };
 }
+
+// ─── ESPN keyless cricket FIXTURES (schedule source) ────────────────────────
+// CricAPI's free tier (~100 hits/day, shared dev+prod) keeps exhausting and
+// breaking the *schedule*. We pull cricket FIXTURES from ESPN's keyless public
+// API (the same site.api source already trusted for concluded-score fallback)
+// and reserve CricAPI for LIVE SCORES only. The live-score path binds CricAPI
+// rows to events by team name (not just cricketMatchId), so ESPN fixtures with
+// no CricAPI id still receive live scores.
+//
+// ESPN structure (verified): no global scoreboard — each competition is a numeric
+// league id. `cricket/{leagueId}/scoreboard?dates=<YEAR>` returns the WHOLE season
+// in one call (date ranges return nothing). Current bilateral series are discovered
+// via the search API (uid carries `…l:<id>`). Match format (Test/ODI/T20) is not in
+// the scoreboard — it comes from the per-event summary endpoint.
+const ESPN_CRICKET_BASE = "https://site.api.espn.com/apis/site/v2/sports/cricket";
+const ESPN_CRICKET_SEARCH = "https://site.web.api.espn.com/apis/search/v2";
+
+// Marquee domestic competitions Pulse features. Resolved dynamically via search so
+// season-specific ids self-heal; IPL is intentionally excluded (sourced from the
+// authoritative iplt20.com feed in updateIpl.ts).
+const ESPN_DOMESTIC_SEARCH_TERMS = [
+  "Major League Cricket",
+  "Big Bash League",
+  "SA20",
+  "Caribbean Premier League",
+  "Super Smash",
+];
+
+// Full Members whose bilateral tours we want to discover. Searching each nation
+// surfaces "X tour of Y <year>" league entries with resolvable ids.
+const ESPN_DISCOVERY_NATIONS = [
+  "India", "Australia", "England", "South Africa", "New Zealand",
+  "Pakistan", "Sri Lanka", "West Indies", "Bangladesh", "Afghanistan",
+  "Zimbabwe", "Ireland",
+];
+
+interface EspnLeagueHit {
+  id: number;
+  name: string;
+}
+
+function espnSleep(ms: number): Promise<void> {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
+async function espnFetchJson(url: string): Promise<any | null> {
+  try {
+    const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" } });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
+// Resolve `type:"league"` hits for a search query into {id,name} pairs.
+async function espnSearchLeagues(query: string): Promise<EspnLeagueHit[]> {
+  const url = `${ESPN_CRICKET_SEARCH}?query=${encodeURIComponent(query)}&sport=cricket&limit=12`;
+  const data = await espnFetchJson(url);
+  const hits: EspnLeagueHit[] = [];
+  for (const r of data?.results || []) {
+    if (r.type !== "league") continue;
+    for (const it of r.contents || []) {
+      const m = /l:(\d+)/.exec(it.uid || "");
+      if (m) hits.push({ id: parseInt(m[1], 10), name: it.displayName || "" });
+    }
+  }
+  return hits;
+}
+
+// Keep only leagues whose name references the current or next year/season, so we
+// don't waste season-scoreboard calls on historical tours that search also returns.
+function espnLeagueIsCurrent(name: string, year: number): boolean {
+  const y = String(year);
+  const ny = String(year + 1);
+  const seasonThis = `${year}/${String((year + 1) % 100).padStart(2, "0")}`; // e.g. 2026/27
+  const seasonPrev = `${year - 1}/${String(year % 100).padStart(2, "0")}`;   // e.g. 2025/26
+  return (
+    name.includes(y) ||
+    name.includes(ny) ||
+    name.includes(seasonThis) ||
+    name.includes(seasonPrev)
+  );
+}
+
+// Pull match format from the per-event summary endpoint. ESPN encodes it in the
+// notes array (matchnumber "ODI no. 4974" / "Test no. …" / "T20I no. …", and
+// matchdays "(50-over match)" / "(20-over match)"). Returns "" if unknown.
+async function espnFetchFormat(leagueId: number, eventId: string): Promise<string> {
+  const url = `${ESPN_CRICKET_BASE}/${leagueId}/summary?event=${eventId}`;
+  // One retry: keeps Test day-splitting stable across runs by not silently losing
+  // format on a transient summary 4xx/5xx (an unresolved Test would render unsplit).
+  let data = await espnFetchJson(url);
+  if (!data) {
+    await espnSleep(300);
+    data = await espnFetchJson(url);
+  }
+  const notes: any[] = data?.notes || data?.gameInfo?.notes || [];
+  for (const n of notes) {
+    const t = String(n?.text || "").toLowerCase();
+    if (n?.type === "matchnumber") {
+      if (t.includes("test")) return "test";
+      if (t.includes("odi")) return "odi";
+      if (t.includes("t20")) return "t20";
+    }
+  }
+  for (const n of notes) {
+    const t = String(n?.text || "").toLowerCase();
+    if (n?.type === "matchdays") {
+      if (t.includes("50-over")) return "odi";
+      if (t.includes("20-over")) return "t20";
+      if (/\bday \d\b|\d-day|day's play|test/.test(t)) return "test";
+    }
+  }
+  return "";
+}
+
+// Adapt an ESPN scoreboard event into the CricApiMatch shape so the existing
+// classify → filter → matchToEvent → splitTestMatchDays pipeline can be reused
+// unchanged. name is built as "<away> vs <home>, <seriesName>" so parseSeriesName
+// (which keeps everything after the first comma) recovers the real ESPN series.
+function espnEventToCricApiMatch(
+  ev: any,
+  seriesName: string,
+  format: string,
+): CricApiMatch | null {
+  const comp = (ev.competitions || [])[0];
+  if (!comp) return null;
+  const competitors = comp.competitors || [];
+  if (competitors.length < 2) return null;
+
+  const homeC = competitors.find((c: any) => c.homeAway === "home") || competitors[1];
+  const awayC = competitors.find((c: any) => c.homeAway === "away") || competitors[0];
+  const homeTeam = homeC?.team?.displayName || homeC?.team?.name || "";
+  const awayTeam = awayC?.team?.displayName || awayC?.team?.name || "";
+  if (!homeTeam || !awayTeam) return null;
+
+  const iso = ev.date || comp.date || "";
+  if (!iso) return null;
+  const dateOnly = iso.slice(0, 10);
+  const state = comp.status?.type?.state || "pre";
+  const venue = comp.venue?.fullName || comp.venue?.address?.city || "";
+
+  return {
+    id: String(ev.id || ev.uid || `${dateOnly}-${homeTeam}-${awayTeam}`),
+    // teams[0] = away, teams[1] = home (CricAPI ordering used by matchToEvent).
+    name: `${awayTeam} vs ${homeTeam}, ${seriesName}`,
+    matchType: format || "",
+    status: comp.status?.type?.detail || state,
+    venue,
+    date: dateOnly,
+    dateTimeGMT: iso,
+    teams: [awayTeam, homeTeam],
+    series_id: String(comp.id || ev.id || ""),
+    matchStarted: state === "in" || state === "post",
+    matchEnded: state === "post",
+  };
+}
+
+export async function fetchEspnCricketFixtures(): Promise<CricketFetchResult> {
+  console.log("  Cricket: Fetching fixtures from ESPN (keyless)...");
+  const now = new Date();
+  const year = now.getUTCFullYear();
+  const windowStart = now.getTime() - 14 * 24 * 3600000;
+  const windowEnd = now.getTime() + 21 * 24 * 3600000;
+
+  // 1. Discover candidate league ids (domestic marquee + current bilateral tours).
+  const leagueMap = new Map<number, string>();
+  const discoveryQueries = [
+    ...ESPN_DOMESTIC_SEARCH_TERMS,
+    ...ESPN_DISCOVERY_NATIONS,
+    `tour of ${year}`,
+  ];
+  const domesticIds = new Set<number>();
+  for (const q of discoveryQueries) {
+    const hits = await espnSearchLeagues(q);
+    const isDomesticTerm = ESPN_DOMESTIC_SEARCH_TERMS.includes(q);
+    for (const h of hits) {
+      // Domestic terms: take the first (best) hit as the comp id regardless of year.
+      // Tour discovery: keep only current/next-season leagues to limit scoreboard calls.
+      if (isDomesticTerm) {
+        domesticIds.add(h.id);
+        if (!leagueMap.has(h.id)) leagueMap.set(h.id, h.name);
+      } else if (espnLeagueIsCurrent(h.name, year)) {
+        if (!leagueMap.has(h.id)) leagueMap.set(h.id, h.name);
+      }
+    }
+    await espnSleep(120);
+  }
+  console.log(`  Cricket: ESPN discovered ${leagueMap.size} candidate leagues (${domesticIds.size} domestic)`);
+
+  // 2. Enumerate each league's season and collect events inside the retention window.
+  type Pending = { ev: any; leagueId: number; seriesName: string };
+  const pending: Pending[] = [];
+  const seenEventIds = new Set<string>();
+  for (const [leagueId, leagueName] of leagueMap) {
+    const sb = await espnFetchJson(`${ESPN_CRICKET_BASE}/${leagueId}/scoreboard?dates=${year}`);
+    const seriesName = sb?.leagues?.[0]?.name || leagueName;
+    for (const ev of sb?.events || []) {
+      const iso = ev.date || ev.competitions?.[0]?.date;
+      if (!iso) continue;
+      const t = new Date(iso).getTime();
+      if (Number.isNaN(t) || t < windowStart || t > windowEnd) continue;
+      const id = String(ev.id || ev.uid || "");
+      if (id && seenEventIds.has(id)) continue;
+      if (id) seenEventIds.add(id);
+      pending.push({ ev, leagueId, seriesName });
+    }
+    await espnSleep(120);
+  }
+  console.log(`  Cricket: ESPN ${pending.length} fixtures in window across ${leagueMap.size} leagues`);
+
+  // 3. Resolve format (per-event summary) + run through the shared pipeline.
+  const events: AppEvent[] = [];
+  const counts: Record<string, number> = {};
+  let skipped = 0;
+  let womenFiltered = 0;
+  let intlNationFiltered = 0;
+  const MAX_FORMAT_LOOKUPS = 150;
+  let formatLookups = 0;
+
+  for (const { ev, leagueId, seriesName } of pending) {
+    let format = "";
+    if (formatLookups < MAX_FORMAT_LOOKUPS) {
+      format = await espnFetchFormat(leagueId, String(ev.id));
+      formatLookups++;
+      await espnSleep(100);
+    }
+
+    const match = espnEventToCricApiMatch(ev, seriesName, format);
+    if (!match) { skipped++; continue; }
+
+    const classification = classifyMatch(match);
+    if (classification.type === "skip") { skipped++; continue; }
+    // IPL comes from the authoritative iplt20.com feed — never from ESPN here.
+    if (classification.league === "IPL") { skipped++; continue; }
+
+    if (inferCricketGender(match, classification) === "women") { womenFiltered++; continue; }
+
+    if (classification.type === "international") {
+      const teams = (match.teams || []).map((t) => t.toLowerCase());
+      if (!teams.some((t) => FEATURED_CRICKET_NATIONS.has(t))) { intlNationFiltered++; continue; }
+    }
+
+    const baseEvent = matchToEvent(match, classification as {
+      type: "international" | "domestic";
+      league: string;
+      country: string;
+      seriesName: string;
+      isIccT20Wc: boolean;
+    });
+    if (!baseEvent) continue;
+
+    // ESPN-sourced: tag the source. Keep the ESPN event id in cricketMatchId — it's
+    // a stable, keyless identity (constant across runs) that lets mergeCricketEvents
+    // supersede older representations (e.g. a Test that gains/loses its day-split when
+    // a format lookup transiently fails). It never equals a CricAPI cricScore id
+    // (numeric vs uuid), so live scores still bind via the team-name fallback.
+    const tagEspn = (e: AppEvent): AppEvent => ({ ...e, source: "cricket-espn" });
+
+    if (String(baseEvent.format).toLowerCase() === "test") {
+      for (const day of splitTestMatchDays(baseEvent, match.matchEnded === true, Date.now())) {
+        events.push(tagEspn(day));
+      }
+    } else {
+      events.push(tagEspn(baseEvent));
+    }
+    counts[classification.league] = (counts[classification.league] || 0) + 1;
+  }
+
+  console.log(`  Cricket: ESPN ${events.length} kept, ${skipped} skipped, ${womenFiltered} women's, ${intlNationFiltered} intl nation-filtered (${formatLookups} format lookups)`);
+  console.log(`  Cricket ESPN counts: ${JSON.stringify(counts)}`);
+
+  return {
+    events,
+    sourceUsed: "espn",
+    totalFromApi: pending.length,
+    filteredCount: events.length,
+    counts,
+  };
+}
+
+// Orchestrator entry point: ESPN is the primary fixture source (keyless, no quota).
+// CricAPI is used only as a fallback when ESPN yields nothing (e.g. ESPN outage),
+// keeping the schedule resilient without spending CricAPI's quota on the happy path.
+export async function fetchCricketFixtures(): Promise<CricketFetchResult> {
+  const espn = await fetchEspnCricketFixtures();
+  if (espn.events.length > 0) return espn;
+
+  if (process.env.CRICAPI_KEY) {
+    console.log("  Cricket: ESPN returned 0 fixtures — falling back to CricAPI");
+    const cricapi = await fetchCricketEvents();
+    return { ...cricapi, sourceUsed: cricapi.events.length > 0 ? "cricapi-fallback" : "none" };
+  }
+  return espn;
+}

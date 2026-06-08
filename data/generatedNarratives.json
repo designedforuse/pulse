@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-08T03:56:05.168Z",
+  "lastUpdated": "2026-06-08T13:13:38.752Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "diamond_league": {
@@ -51,7 +51,7 @@
         ],
         "playersIngested": 356,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-06-08T03:56:05.168Z"
+        "timestamp": "2026-06-08T13:13:38.752Z"
       },
       "cacheHistoryCount": 880,
       "error": null
@@ -61,7 +61,7 @@
     "candidateCountAfterCap": 2,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2215.934768888889,
+      "hoursUntil": -2225.227431111111,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -82,32 +82,16 @@
       "clinchFinalCount": 0,
       "clinchGatedOut": []
     },
-    "tonightStorySelectedSignal": "multi_team_night",
-    "tonightStoryHeadline": "Your Game Night",
-    "tonightStorySourceEvent": "rugby-mlr-20260607-2000-new-england-free-jacks-at-chicago-hounds",
+    "tonightStorySelectedSignal": null,
+    "tonightStoryHeadline": null,
+    "tonightStorySourceEvent": null,
     "tonightStoryDebug": {
-      "selectedSignal": "multi_team_night",
-      "selectedHeadline": "Your Game Night",
-      "selectedScore": 240,
-      "sourceEventId": "rugby-mlr-20260607-2000-new-england-free-jacks-at-chicago-hounds",
-      "reason": "2 followed/affiliate teams playing today",
-      "scoredCandidates": [
-        {
-          "label": "[multi_team_night] Your Game Night",
-          "score": 240,
-          "reason": "2 followed/affiliate teams playing today"
-        },
-        {
-          "label": "[championship_day] Monaco Grand Prix",
-          "score": 200,
-          "reason": "championship-day group (racing|f1|Monaco Grand Prix, 1 event)"
-        },
-        {
-          "label": "[championship_day] French Open Final",
-          "score": 200,
-          "reason": "championship-day group (tennis|French Open|Final, 1 event)"
-        }
-      ]
+      "selectedSignal": null,
+      "selectedHeadline": null,
+      "selectedScore": 0,
+      "sourceEventId": null,
+      "reason": "no stories scored",
+      "scoredCandidates": []
     },
     "videoSelection": {
       "marquee_match": {
@@ -130,13 +114,13 @@
     {
       "id": "marquee_match",
       "title": "Marquee Match: FIFA World Cup",
-      "subtitle": "South Africa vs Mexico — FIFA World Cup · in 4 days",
+      "subtitle": "South Africa vs Mexico — FIFA World Cup · in 3 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-06-08T03:56:05.168Z",
+      "triggeredAt": "2026-06-08T13:13:38.752Z",
       "expiresAt": "2026-06-11T23:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -152,7 +136,7 @@
         "eventIds": [
           "soccer-fifa-world-cup-20260611-1900-south-africa-at-mexico"
         ],
-        "reason": "Top FIFA World Cup fixture (South Africa vs Mexico) in 4 days"
+        "reason": "Top FIFA World Cup fixture (South Africa vs Mexico) in 3 days"
       },
       "sports": [
         "soccer"
@@ -170,13 +154,13 @@
     {
       "id": "diamond_league_athletics-diamond-league-oslo-2026",
       "title": "Diamond League",
-      "subtitle": "Diamond League — Oslo — in 3 days",
+      "subtitle": "Diamond League — Oslo — in 2 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-06-08T03:56:05.168Z",
+      "triggeredAt": "2026-06-08T13:13:38.752Z",
       "expiresAt": "2026-06-11T17:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -205,92 +189,8 @@
       }
     }
   ],
-  "tonightStory": {
-    "signalType": "multi_team_night",
-    "signalLabel": "YOUR TEAMS",
-    "headline": "Your Game Night",
-    "body": "The New England Free Jacks and California Legion all play today in the MLR.",
-    "sourceEventId": "rugby-mlr-20260607-2000-new-england-free-jacks-at-chicago-hounds",
-    "eventIds": [
-      "rugby-mlr-20260607-2000-new-england-free-jacks-at-chicago-hounds",
-      "rugby-mlr-20260608-0000-california-legion-at-seattle-seawolves"
-    ],
-    "sourceCard": {
-      "id": "tonight_multi_team",
-      "kind": "multi_team_night",
-      "title": "Your Game Night"
-    },
-    "sports": [
-      "rugby"
-    ],
-    "favoriteTeams": [
-      "New England Free Jacks",
-      "California Legion"
-    ]
-  },
-  "todaysStories": [
-    {
-      "signalType": "multi_team_night",
-      "signalLabel": "YOUR TEAMS",
-      "headline": "Your Game Night",
-      "body": "The New England Free Jacks and California Legion all play today in the MLR.",
-      "sourceEventId": "rugby-mlr-20260607-2000-new-england-free-jacks-at-chicago-hounds",
-      "eventIds": [
-        "rugby-mlr-20260607-2000-new-england-free-jacks-at-chicago-hounds",
-        "rugby-mlr-20260608-0000-california-legion-at-seattle-seawolves"
-      ],
-      "sourceCard": {
-        "id": "tonight_multi_team",
-        "kind": "multi_team_night",
-        "title": "Your Game Night"
-      },
-      "sports": [
-        "rugby"
-      ],
-      "favoriteTeams": [
-        "New England Free Jacks",
-        "California Legion"
-      ]
-    },
-    {
-      "signalType": "championship_day",
-      "signalLabel": "CHAMPIONSHIP DAY",
-      "headline": "Monaco Grand Prix",
-      "body": "Lights out at the Monaco Grand Prix today.",
-      "sourceEventId": "f1-espn-401839067",
-      "eventIds": [
-        "f1-espn-401839067"
-      ],
-      "sourceCard": {
-        "id": "championship_day_racing-f1-monaco-grand-prix",
-        "kind": "championship_day",
-        "title": "Monaco Grand Prix"
-      },
-      "sports": [
-        "racing"
-      ],
-      "favoriteTeams": []
-    },
-    {
-      "signalType": "championship_day",
-      "signalLabel": "CHAMPIONSHIP DAY",
-      "headline": "French Open Final",
-      "body": "The French Open crowns its champion today.",
-      "sourceEventId": "tennis-espn-175668",
-      "eventIds": [
-        "tennis-espn-175668"
-      ],
-      "sourceCard": {
-        "id": "championship_day_tennis-french-open-final",
-        "kind": "championship_day",
-        "title": "French Open Final"
-      },
-      "sports": [
-        "tennis"
-      ],
-      "favoriteTeams": []
-    }
-  ],
+  "tonightStory": null,
+  "todaysStories": [],
   "monthSnapshot": {
     "currentMonth": {
       "monthLabel": "June 2026",
@@ -307,6 +207,16 @@
           "seasonPhase": "Playoffs"
         },
         {
+          "sport": "tennis",
+          "displayName": "Roland Garros",
+          "leagueKey": "grand-slam",
+          "dateRangeLabel": "Jun 1–7",
+          "startDate": "2026-06-01T09:00:00.000Z",
+          "endDate": "2026-06-07T09:00:00.000Z",
+          "eventCount": 10,
+          "seasonPhase": null
+        },
+        {
           "sport": "hockey",
           "displayName": "AHL",
           "leagueKey": "ahl",
@@ -320,10 +230,10 @@
           "sport": "cricket",
           "displayName": "ODI Cricket",
           "leagueKey": "odi",
-          "dateRangeLabel": "Jun 2–4",
+          "dateRangeLabel": "Jun 2–20",
           "startDate": "2026-06-02T11:30:00.000Z",
-          "endDate": "2026-06-04T11:30:00.000Z",
-          "eventCount": 2,
+          "endDate": "2026-06-20T08:00:00.000Z",
+          "eventCount": 11,
           "seasonPhase": null
         },
         {
@@ -337,16 +247,6 @@
           "seasonPhase": "Final"
         },
         {
-          "sport": "cricket",
-          "displayName": "International Cricket",
-          "leagueKey": "intl",
-          "dateRangeLabel": "Jun 3–20",
-          "startDate": "2026-06-03T14:30:00.000Z",
-          "endDate": "2026-06-20T08:00:00.000Z",
-          "eventCount": 9,
-          "seasonPhase": null
-        },
-        {
           "sport": "soccer",
           "displayName": "USL",
           "leagueKey": "usl",
@@ -355,6 +255,16 @@
           "endDate": "2026-06-25T00:00:00.000Z",
           "eventCount": 32,
           "seasonPhase": "Regular"
+        },
+        {
+          "sport": "cricket",
+          "displayName": "Test Cricket",
+          "leagueKey": "test",
+          "dateRangeLabel": "Jun 4–29",
+          "startDate": "2026-06-04T10:00:00.000Z",
+          "endDate": "2026-06-29T10:00:00.000Z",
+          "eventCount": 27,
+          "seasonPhase": null
         },
         {
           "sport": "athletics",
@@ -420,10 +330,10 @@
           "sport": "rugby",
           "displayName": "URC",
           "leagueKey": "urc",
-          "dateRangeLabel": "Jun 6",
+          "dateRangeLabel": "Jun 6–19",
           "startDate": "2026-06-06T13:30:00.000Z",
-          "endDate": "2026-06-06T16:30:00.000Z",
-          "eventCount": 2,
+          "endDate": "2026-06-19T18:30:00.000Z",
+          "eventCount": 3,
           "seasonPhase": "Playoffs"
         },
         {
@@ -467,16 +377,6 @@
           "seasonPhase": "Playoffs"
         },
         {
-          "sport": "tennis",
-          "displayName": "Roland Garros",
-          "leagueKey": "grand-slam",
-          "dateRangeLabel": "Jun 7",
-          "startDate": "2026-06-07T13:25:00.000Z",
-          "endDate": "2026-06-07T13:25:00.000Z",
-          "eventCount": 1,
-          "seasonPhase": null
-        },
-        {
           "sport": "athletics",
           "displayName": "Diamond League — Stockholm",
           "leagueKey": "diamond-league",
@@ -517,6 +417,16 @@
           "seasonPhase": null
         },
         {
+          "sport": "cricket",
+          "displayName": "T20I Cricket",
+          "leagueKey": "t20i",
+          "dateRangeLabel": "Jun 12–28",
+          "startDate": "2026-06-12T00:30:00.000Z",
+          "endDate": "2026-06-28T14:00:00.000Z",
+          "eventCount": 8,
+          "seasonPhase": null
+        },
+        {
           "sport": "racing",
           "displayName": "Barcelona-Catalunya GP",
           "leagueKey": "f1",
@@ -537,16 +447,6 @@
           "seasonPhase": null
         },
         {
-          "sport": "cricket",
-          "displayName": "T20I Cricket",
-          "leagueKey": "t20i",
-          "dateRangeLabel": "Jun 17–21",
-          "startDate": "2026-06-17T12:00:00.000Z",
-          "endDate": "2026-06-21T08:00:00.000Z",
-          "eventCount": 3,
-          "seasonPhase": null
-        },
-        {
           "sport": "golf",
           "displayName": "US Open",
           "leagueKey": "golf-majors",
@@ -554,6 +454,16 @@
           "startDate": "2026-06-18T14:00:00.000Z",
           "endDate": "2026-06-21T14:00:00.000Z",
           "eventCount": 4,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
+          "displayName": "MLC",
+          "leagueKey": "mlc",
+          "dateRangeLabel": "Jun 19–29",
+          "startDate": "2026-06-19T00:30:00.000Z",
+          "endDate": "2026-06-29T01:30:00.000Z",
+          "eventCount": 15,
           "seasonPhase": null
         },
         {
@@ -691,10 +601,10 @@
           "sport": "tennis",
           "displayName": "Wimbledon",
           "leagueKey": "grand-slam",
-          "dateRangeLabel": "Jul 1–7",
+          "dateRangeLabel": "Jul 1–8",
           "startDate": "2026-07-01T10:00:00.000Z",
-          "endDate": "2026-07-07T13:00:00.000Z",
-          "eventCount": 16,
+          "endDate": "2026-07-08T13:00:00.000Z",
+          "eventCount": 18,
           "seasonPhase": null
         },
         {
@@ -886,12 +796,22 @@
         },
         {
           "sport": "cricket",
-          "displayName": "International Cricket",
-          "leagueKey": "intl",
-          "dateRangeLabel": "Jun 9–14",
-          "startDate": "2026-06-09T08:00:00.000Z",
-          "endDate": "2026-06-14T08:00:00.000Z",
-          "eventCount": 4,
+          "displayName": "Test Cricket",
+          "leagueKey": "test",
+          "dateRangeLabel": "Jun 8",
+          "startDate": "2026-06-08T04:00:00.000Z",
+          "endDate": "2026-06-08T10:00:00.000Z",
+          "eventCount": 2,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
+          "displayName": "ODI Cricket",
+          "leagueKey": "odi",
+          "dateRangeLabel": "Jun 8–14",
+          "startDate": "2026-06-08T19:30:00.000Z",
+          "endDate": "2026-06-14T05:00:00.000Z",
+          "eventCount": 5,
           "seasonPhase": null
         },
         {
@@ -952,6 +872,16 @@
           "startDate": "2026-06-11T19:00:00.000Z",
           "endDate": "2026-06-14T23:00:00.000Z",
           "eventCount": 11,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
+          "displayName": "T20I Cricket",
+          "leagueKey": "t20i",
+          "dateRangeLabel": "Jun 12–14",
+          "startDate": "2026-06-12T00:30:00.000Z",
+          "endDate": "2026-06-14T00:30:00.000Z",
+          "eventCount": 2,
           "seasonPhase": null
         },
         {
