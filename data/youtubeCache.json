@@ -1678,5 +1678,45 @@
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
+  },
+  "marquee_match:south africa vs mexico fifa world cup preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=PwhjHmQYHYo",
+      "thumbnailUrl": "https://img.youtube.com/vi/PwhjHmQYHYo/hqdefault.jpg",
+      "durationSeconds": 712,
+      "title": "World Cup Build-Up | Bafana Bafana to Open World Cup Campaign Against Mexico | Johannes vs China",
+      "source": "youtube",
+      "channel": "PSL Pulse",
+      "publishedAt": "56 minutes ago"
+    },
+    "fetchedAt": "2026-06-08T03:56:13.798Z",
+    "query": "South Africa vs Mexico FIFA World Cup preview",
+    "debug": {
+      "searchQuery": "South Africa vs Mexico FIFA World Cup preview",
+      "selectedVideoTitle": "World Cup Build-Up | Bafana Bafana to Open World Cup Campaign Against Mexico | Johannes vs China",
+      "selectedVideoPublishedAt": "56 minutes ago",
+      "selectedVideoChannel": "PSL Pulse",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "diamond_league:diamond league — oslo diamond league 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=KYlyZxP2MzA",
+      "thumbnailUrl": "https://img.youtube.com/vi/KYlyZxP2MzA/hqdefault.jpg",
+      "durationSeconds": 101,
+      "title": "Amy Hunt Runs First Sub-11 Second 100m in Stockholm [Interview]",
+      "source": "youtube",
+      "channel": "runnerspace",
+      "publishedAt": "5 hours ago"
+    },
+    "fetchedAt": "2026-06-08T03:56:14.069Z",
+    "query": "Diamond League — Oslo Diamond League 2026",
+    "debug": {
+      "searchQuery": "Diamond League — Oslo Diamond League 2026",
+      "selectedVideoTitle": "Amy Hunt Runs First Sub-11 Second 100m in Stockholm [Interview]",
+      "selectedVideoPublishedAt": "5 hours ago",
+      "selectedVideoChannel": "runnerspace",
+      "rejectedForAgeCount": 0
+    }
   }
 }

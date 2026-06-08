@@ -1,16 +1,7 @@
 {
-  "lastUpdated": "2026-06-05T03:41:47.760Z",
+  "lastUpdated": "2026-06-08T03:56:05.168Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
-      "league_moment": {
-        "Other": 2
-      },
-      "clinch_watch": {
-        "Other": 1
-      },
-      "weekend_watchlist": {
-        "Other": 1
-      },
       "diamond_league": {
         "Other": 1
       },
@@ -21,24 +12,13 @@
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
       "Other": [
-        "clinch_watch: Clinch Watch",
-        "marquee_match: Marquee Match: International Friendly",
-        "league_moment: Monaco Grand Prix",
-        "diamond_league: Diamond League",
-        "weekend_watchlist: Weekend Watchlist"
+        "marquee_match: Marquee Match: FIFA World Cup",
+        "diamond_league: Diamond League"
       ]
     },
-    "droppedCandidatesReasons": [
-      {
-        "id": "league_moment_tournament",
-        "kind": "league_moment",
-        "region": "Other",
-        "title": "Big Stage",
-        "reason": "max 1 league_moment per region (Other)"
-      }
-    ],
-    "totalBeforeCap": 6,
-    "totalAfterCap": 5,
+    "droppedCandidatesReasons": [],
+    "totalBeforeCap": 2,
+    "totalAfterCap": 2,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -71,17 +51,17 @@
         ],
         "playersIngested": 356,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-06-05T03:41:47.760Z"
+        "timestamp": "2026-06-08T03:56:05.168Z"
       },
       "cacheHistoryCount": 880,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 6,
-    "candidateCountAfterCap": 5,
+    "candidateCountBeforeCap": 2,
+    "candidateCountAfterCap": 2,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2143.6966,
+      "hoursUntil": -2215.934768888889,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -97,266 +77,220 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 5,
-      "clinchAfterRegionFilter": 1,
-      "clinchFinalCount": 1,
+      "rawClinchCandidates": 0,
+      "clinchAfterRegionFilter": 0,
+      "clinchFinalCount": 0,
       "clinchGatedOut": []
     },
-    "tonightStorySelectedSignal": null,
-    "tonightStoryHeadline": null,
-    "tonightStorySourceEvent": null,
+    "tonightStorySelectedSignal": "multi_team_night",
+    "tonightStoryHeadline": "Your Game Night",
+    "tonightStorySourceEvent": "rugby-mlr-20260607-2000-new-england-free-jacks-at-chicago-hounds",
     "tonightStoryDebug": {
-      "selectedSignal": null,
-      "selectedHeadline": null,
-      "selectedScore": 0,
-      "sourceEventId": null,
-      "reason": "no stories scored",
-      "scoredCandidates": []
+      "selectedSignal": "multi_team_night",
+      "selectedHeadline": "Your Game Night",
+      "selectedScore": 240,
+      "sourceEventId": "rugby-mlr-20260607-2000-new-england-free-jacks-at-chicago-hounds",
+      "reason": "2 followed/affiliate teams playing today",
+      "scoredCandidates": [
+        {
+          "label": "[multi_team_night] Your Game Night",
+          "score": 240,
+          "reason": "2 followed/affiliate teams playing today"
+        },
+        {
+          "label": "[championship_day] Monaco Grand Prix",
+          "score": 200,
+          "reason": "championship-day group (racing|f1|Monaco Grand Prix, 1 event)"
+        },
+        {
+          "label": "[championship_day] French Open Final",
+          "score": 200,
+          "reason": "championship-day group (tennis|French Open|Final, 1 event)"
+        }
+      ]
     },
     "videoSelection": {
       "marquee_match": {
-        "searchQuery": "Germany vs United States International Friendly preview",
-        "selectedVideoTitle": "\"I saw the part they hide from cameras.\"",
-        "selectedVideoPublishedAt": "13 minutes ago",
-        "selectedVideoChannel": "서울로지 Seoulogy",
+        "searchQuery": "South Africa vs Mexico FIFA World Cup preview",
+        "selectedVideoTitle": "World Cup Build-Up | Bafana Bafana to Open World Cup Campaign Against Mexico | Johannes vs China",
+        "selectedVideoPublishedAt": "56 minutes ago",
+        "selectedVideoChannel": "PSL Pulse",
         "rejectedForAgeCount": 0
       },
-      "f1_race_weekend_monaco_grand_prix": {
-        "searchQuery": "Monaco Grand Prix sports June 2026",
-        "selectedVideoTitle": "Our Maaden Monaco Livery, Up Close.",
-        "selectedVideoPublishedAt": "4h ago",
-        "selectedVideoChannel": "Aston Martin Aramco Formula One™ Team",
-        "rejectedForAgeCount": 0
-      },
-      "diamond_league_athletics-diamond-league-stockholm-2026": {
-        "searchQuery": "Diamond League — Stockholm Diamond League 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
+      "diamond_league_athletics-diamond-league-oslo-2026": {
+        "searchQuery": "Diamond League — Oslo Diamond League 2026",
+        "selectedVideoTitle": "Amy Hunt Runs First Sub-11 Second 100m in Stockholm [Interview]",
+        "selectedVideoPublishedAt": "5 hours ago",
+        "selectedVideoChannel": "runnerspace",
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
-      "id": "clinch_watch_rugby-svns-2pxw6t-d1",
-      "title": "Clinch Watch",
-      "subtitle": "Can secure semifinal place tonight",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 92,
-      "triggeredAt": "2026-06-05T03:41:47.760Z",
-      "expiresAt": "2026-06-05T12:00:00.000Z",
-      "kind": "clinch_watch",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "source": "team_config",
-        "conditionLabel": "Can secure semifinal place",
-        "sport": "rugby",
-        "league": "HSBC SVNS",
-        "awayTeam": "",
-        "homeTeam": "SVNS Bordeaux",
-        "startTime": "2026-06-05T08:00:00.000Z",
-        "eventIds": [
-          "rugby-svns-2pxw6t-d1"
-        ],
-        "reason": "SVNS Bordeaux have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
-      },
-      "sports": [
-        "rugby"
-      ]
-    },
-    {
       "id": "marquee_match",
-      "title": "Marquee Match: International Friendly",
-      "subtitle": "Germany vs United States — International Friendly · in 2 days",
+      "title": "Marquee Match: FIFA World Cup",
+      "subtitle": "South Africa vs Mexico — FIFA World Cup · in 4 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-06-05T03:41:47.760Z",
-      "expiresAt": "2026-06-06T22:30:00.000Z",
+      "triggeredAt": "2026-06-08T03:56:05.168Z",
+      "expiresAt": "2026-06-11T23:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "marquee_match",
-        "league": "International Friendly",
-        "home": "United States",
-        "away": "Germany",
+        "league": "FIFA World Cup",
+        "home": "Mexico",
+        "away": "South Africa",
         "rivalry": null,
-        "startTime": "2026-06-06T18:30:00.000Z",
+        "startTime": "2026-06-11T19:00:00.000Z",
         "eventIds": [
-          "soccer-intl-friendly-20260606-1830-germany-at-united-states"
+          "soccer-fifa-world-cup-20260611-1900-south-africa-at-mexico"
         ],
-        "reason": "Top International Friendly fixture (Germany vs United States) in 2 days"
+        "reason": "Top FIFA World Cup fixture (South Africa vs Mexico) in 4 days"
       },
       "sports": [
         "soccer"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=xInwmvOiXLg",
-        "thumbnailUrl": "https://img.youtube.com/vi/xInwmvOiXLg/hqdefault.jpg",
-        "durationSeconds": 1070,
-        "title": "\"I saw the part they hide from cameras.\"",
+        "url": "https://www.youtube.com/watch?v=PwhjHmQYHYo",
+        "thumbnailUrl": "https://img.youtube.com/vi/PwhjHmQYHYo/hqdefault.jpg",
+        "durationSeconds": 712,
+        "title": "World Cup Build-Up | Bafana Bafana to Open World Cup Campaign Against Mexico | Johannes vs China",
         "source": "youtube",
-        "channel": "서울로지 Seoulogy",
-        "publishedAt": "13 minutes ago"
+        "channel": "PSL Pulse",
+        "publishedAt": "56 minutes ago"
       }
     },
     {
-      "id": "f1_race_weekend_monaco_grand_prix",
-      "title": "Monaco Grand Prix",
-      "subtitle": "Monaco Grand Prix — 4 sessions in the next 48h: Practice 1, Practice 2, Practice 3, Qualifying",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 75,
-      "triggeredAt": "2026-06-05T03:41:47.760Z",
-      "expiresAt": "2026-06-06T18:00:00.000Z",
-      "kind": "league_moment",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "type": "f1_race_weekend",
-        "grandPrix": "Monaco Grand Prix",
-        "sessionCount": 4,
-        "sessions": [
-          {
-            "sessionTitle": "Practice 1",
-            "startTime": "2026-06-05T11:30:00.000Z",
-            "eventId": "f1-espn-401839063"
-          },
-          {
-            "sessionTitle": "Practice 2",
-            "startTime": "2026-06-05T15:00:00.000Z",
-            "eventId": "f1-espn-401839064"
-          },
-          {
-            "sessionTitle": "Practice 3",
-            "startTime": "2026-06-06T10:30:00.000Z",
-            "eventId": "f1-espn-401839065"
-          },
-          {
-            "sessionTitle": "Qualifying",
-            "startTime": "2026-06-06T14:00:00.000Z",
-            "eventId": "f1-espn-401839066"
-          }
-        ],
-        "eventIds": [
-          "f1-espn-401839063",
-          "f1-espn-401839064",
-          "f1-espn-401839065",
-          "f1-espn-401839066"
-        ],
-        "reason": "Monaco Grand Prix race weekend — 4 session(s) within 48 hours"
-      },
-      "sports": [
-        "racing"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=rDznY4VaaDs",
-        "thumbnailUrl": "https://img.youtube.com/vi/rDznY4VaaDs/hqdefault.jpg",
-        "durationSeconds": 24,
-        "title": "Our Maaden Monaco Livery, Up Close.",
-        "source": "youtube",
-        "channel": "Aston Martin Aramco Formula One™ Team",
-        "publishedAt": "4h ago"
-      }
-    },
-    {
-      "id": "diamond_league_athletics-diamond-league-stockholm-2026",
+      "id": "diamond_league_athletics-diamond-league-oslo-2026",
       "title": "Diamond League",
-      "subtitle": "Diamond League — Stockholm — in 3 days",
+      "subtitle": "Diamond League — Oslo — in 3 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-06-05T03:41:47.760Z",
-      "expiresAt": "2026-06-08T17:00:00.000Z",
+      "triggeredAt": "2026-06-08T03:56:05.168Z",
+      "expiresAt": "2026-06-11T17:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "diamond_league",
-        "meetName": "Diamond League — Stockholm",
-        "startTime": "2026-06-07T17:00:00.000Z",
+        "meetName": "Diamond League — Oslo",
+        "startTime": "2026-06-10T17:00:00.000Z",
         "eventIds": [
-          "athletics-diamond-league-stockholm-2026"
+          "athletics-diamond-league-oslo-2026"
         ],
-        "reason": "Diamond League meet within 5 days: Diamond League — Stockholm"
+        "reason": "Diamond League meet within 5 days: Diamond League — Oslo"
       },
       "sports": [
         "athletics"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=KYlyZxP2MzA",
+        "thumbnailUrl": "https://img.youtube.com/vi/KYlyZxP2MzA/hqdefault.jpg",
+        "durationSeconds": 101,
+        "title": "Amy Hunt Runs First Sub-11 Second 100m in Stockholm [Interview]",
+        "source": "youtube",
+        "channel": "runnerspace",
+        "publishedAt": "5 hours ago"
+      }
+    }
+  ],
+  "tonightStory": {
+    "signalType": "multi_team_night",
+    "signalLabel": "YOUR TEAMS",
+    "headline": "Your Game Night",
+    "body": "The New England Free Jacks and California Legion all play today in the MLR.",
+    "sourceEventId": "rugby-mlr-20260607-2000-new-england-free-jacks-at-chicago-hounds",
+    "eventIds": [
+      "rugby-mlr-20260607-2000-new-england-free-jacks-at-chicago-hounds",
+      "rugby-mlr-20260608-0000-california-legion-at-seattle-seawolves"
+    ],
+    "sourceCard": {
+      "id": "tonight_multi_team",
+      "kind": "multi_team_night",
+      "title": "Your Game Night"
+    },
+    "sports": [
+      "rugby"
+    ],
+    "favoriteTeams": [
+      "New England Free Jacks",
+      "California Legion"
+    ]
+  },
+  "todaysStories": [
+    {
+      "signalType": "multi_team_night",
+      "signalLabel": "YOUR TEAMS",
+      "headline": "Your Game Night",
+      "body": "The New England Free Jacks and California Legion all play today in the MLR.",
+      "sourceEventId": "rugby-mlr-20260607-2000-new-england-free-jacks-at-chicago-hounds",
+      "eventIds": [
+        "rugby-mlr-20260607-2000-new-england-free-jacks-at-chicago-hounds",
+        "rugby-mlr-20260608-0000-california-legion-at-seattle-seawolves"
+      ],
+      "sourceCard": {
+        "id": "tonight_multi_team",
+        "kind": "multi_team_night",
+        "title": "Your Game Night"
+      },
+      "sports": [
+        "rugby"
+      ],
+      "favoriteTeams": [
+        "New England Free Jacks",
+        "California Legion"
       ]
     },
     {
-      "id": "weekend_watchlist",
-      "title": "Weekend Watchlist",
-      "subtitle": "3 marquee matchups · F1 · Grand Slam · NHL",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 55,
-      "triggeredAt": "2026-06-05T03:41:47.760Z",
-      "expiresAt": "2026-06-07T23:59:59.999Z",
-      "kind": "weekend_watchlist",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "type": "weekend_watchlist",
-        "matchCount": 3,
-        "matches": [
-          {
-            "league": "F1",
-            "sport": "racing",
-            "away": "Practice 1",
-            "home": "Monaco Grand Prix",
-            "startTime": "2026-06-05T11:30:00.000Z"
-          },
-          {
-            "league": "Grand Slam",
-            "sport": "tennis",
-            "away": "Zverev",
-            "home": "Mensik",
-            "startTime": "2026-06-05T12:30:00.000Z"
-          },
-          {
-            "league": "NHL",
-            "sport": "hockey",
-            "away": "Carolina Hurricanes",
-            "home": "Vegas Golden Knights",
-            "startTime": "2026-06-07T00:00:00.000Z"
-          }
-        ],
-        "eventIds": [
-          "f1-espn-401839063",
-          "tennis-espn-175679",
-          "nhl_2025030413"
-        ],
-        "reason": "Weekend window: 3 top-priority event(s) across 3 sport(s)"
+      "signalType": "championship_day",
+      "signalLabel": "CHAMPIONSHIP DAY",
+      "headline": "Monaco Grand Prix",
+      "body": "Lights out at the Monaco Grand Prix today.",
+      "sourceEventId": "f1-espn-401839067",
+      "eventIds": [
+        "f1-espn-401839067"
+      ],
+      "sourceCard": {
+        "id": "championship_day_racing-f1-monaco-grand-prix",
+        "kind": "championship_day",
+        "title": "Monaco Grand Prix"
       },
       "sports": [
-        "racing",
-        "tennis",
-        "hockey"
-      ]
+        "racing"
+      ],
+      "favoriteTeams": []
+    },
+    {
+      "signalType": "championship_day",
+      "signalLabel": "CHAMPIONSHIP DAY",
+      "headline": "French Open Final",
+      "body": "The French Open crowns its champion today.",
+      "sourceEventId": "tennis-espn-175668",
+      "eventIds": [
+        "tennis-espn-175668"
+      ],
+      "sourceCard": {
+        "id": "championship_day_tennis-french-open-final",
+        "kind": "championship_day",
+        "title": "French Open Final"
+      },
+      "sports": [
+        "tennis"
+      ],
+      "favoriteTeams": []
     }
   ],
-  "tonightStory": null,
-  "todaysStories": [],
   "monthSnapshot": {
     "currentMonth": {
       "monthLabel": "June 2026",
@@ -378,8 +312,8 @@
           "leagueKey": "ahl",
           "dateRangeLabel": "Jun 1–9",
           "startDate": "2026-06-01T23:00:00.000Z",
-          "endDate": "2026-06-09T23:05:00.000Z",
-          "eventCount": 10,
+          "endDate": "2026-06-09T01:05:00.000Z",
+          "eventCount": 9,
           "seasonPhase": "Playoffs"
         },
         {
@@ -433,23 +367,13 @@
           "seasonPhase": null
         },
         {
-          "sport": "hockey",
-          "displayName": "NHL",
-          "leagueKey": "nhl",
-          "dateRangeLabel": "Jun 5–18",
-          "startDate": "2026-06-05T00:00:00.000Z",
-          "endDate": "2026-06-18T00:00:00.000Z",
-          "eventCount": 6,
-          "seasonPhase": "Final"
-        },
-        {
           "sport": "rugby",
           "displayName": "Super Rugby",
           "leagueKey": "superrugby",
-          "dateRangeLabel": "Jun 5–6",
+          "dateRangeLabel": "Jun 5–13",
           "startDate": "2026-06-05T07:05:00.000Z",
-          "endDate": "2026-06-06T07:05:00.000Z",
-          "eventCount": 3,
+          "endDate": "2026-06-13T07:05:00.000Z",
+          "eventCount": 5,
           "seasonPhase": "Playoffs"
         },
         {
@@ -470,16 +394,6 @@
           "startDate": "2026-06-05T11:30:00.000Z",
           "endDate": "2026-06-07T13:00:00.000Z",
           "eventCount": 5,
-          "seasonPhase": null
-        },
-        {
-          "sport": "tennis",
-          "displayName": "Roland Garros",
-          "leagueKey": "grand-slam",
-          "dateRangeLabel": "Jun 5",
-          "startDate": "2026-06-05T12:30:00.000Z",
-          "endDate": "2026-06-05T17:00:00.000Z",
-          "eventCount": 2,
           "seasonPhase": null
         },
         {
@@ -516,11 +430,11 @@
           "sport": "rugby",
           "displayName": "English Premiership",
           "leagueKey": "premiership",
-          "dateRangeLabel": "Jun 6",
+          "dateRangeLabel": "Jun 6–13",
           "startDate": "2026-06-06T14:15:00.000Z",
-          "endDate": "2026-06-06T14:15:00.000Z",
-          "eventCount": 5,
-          "seasonPhase": "Playoffs"
+          "endDate": "2026-06-13T14:00:00.000Z",
+          "eventCount": 7,
+          "seasonPhase": "Final"
         },
         {
           "sport": "horse-racing",
@@ -546,11 +460,21 @@
           "sport": "rugby",
           "displayName": "Top 14",
           "leagueKey": "top14",
-          "dateRangeLabel": "Jun 6",
+          "dateRangeLabel": "Jun 6–14",
           "startDate": "2026-06-06T19:05:00.000Z",
-          "endDate": "2026-06-06T19:05:00.000Z",
-          "eventCount": 7,
+          "endDate": "2026-06-14T19:05:00.000Z",
+          "eventCount": 10,
           "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Roland Garros",
+          "leagueKey": "grand-slam",
+          "dateRangeLabel": "Jun 7",
+          "startDate": "2026-06-07T13:25:00.000Z",
+          "endDate": "2026-06-07T13:25:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
         },
         {
           "sport": "athletics",
@@ -561,6 +485,16 @@
           "endDate": "2026-06-07T17:00:00.000Z",
           "eventCount": 1,
           "seasonPhase": null
+        },
+        {
+          "sport": "hockey",
+          "displayName": "NHL",
+          "leagueKey": "nhl",
+          "dateRangeLabel": "Jun 10–18",
+          "startDate": "2026-06-10T00:00:00.000Z",
+          "endDate": "2026-06-18T00:00:00.000Z",
+          "eventCount": 4,
+          "seasonPhase": "Final"
         },
         {
           "sport": "athletics",
@@ -757,10 +691,10 @@
           "sport": "tennis",
           "displayName": "Wimbledon",
           "leagueKey": "grand-slam",
-          "dateRangeLabel": "Jul 1–4",
+          "dateRangeLabel": "Jul 1–7",
           "startDate": "2026-07-01T10:00:00.000Z",
-          "endDate": "2026-07-04T13:00:00.000Z",
-          "eventCount": 10,
+          "endDate": "2026-07-07T13:00:00.000Z",
+          "eventCount": 16,
           "seasonPhase": null
         },
         {
@@ -927,230 +861,163 @@
       "championshipFinals": []
     },
     "thisWeek": {
-      "monthLabel": "Jun 1–7, 2026",
-      "monthKey": "week-2026-06-01",
+      "monthLabel": "Jun 8–14, 2026",
+      "monthKey": "week-2026-06-08",
       "leagues": [
         {
           "sport": "rugby",
           "displayName": "MLR",
           "leagueKey": "mlr",
-          "dateRangeLabel": "Jun 1–7",
-          "startDate": "2026-06-01T00:00:00.000Z",
-          "endDate": "2026-06-07T20:00:00.000Z",
+          "dateRangeLabel": "Jun 8–14",
+          "startDate": "2026-06-08T00:00:00.000Z",
+          "endDate": "2026-06-14T20:00:00.000Z",
           "eventCount": 3,
-          "seasonPhase": "Regular"
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "hockey",
           "displayName": "AHL",
           "leagueKey": "ahl",
-          "dateRangeLabel": "Jun 1–7",
-          "startDate": "2026-06-01T23:00:00.000Z",
-          "endDate": "2026-06-07T22:05:00.000Z",
-          "eventCount": 7,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "cricket",
-          "displayName": "ODI Cricket",
-          "leagueKey": "odi",
-          "dateRangeLabel": "Jun 2–4",
-          "startDate": "2026-06-02T11:30:00.000Z",
-          "endDate": "2026-06-04T11:30:00.000Z",
+          "dateRangeLabel": "Jun 8–9",
+          "startDate": "2026-06-08T00:05:00.000Z",
+          "endDate": "2026-06-09T01:05:00.000Z",
           "eventCount": 2,
-          "seasonPhase": null
-        },
-        {
-          "sport": "hockey",
-          "displayName": "ECHL",
-          "leagueKey": "echl",
-          "dateRangeLabel": "Jun 3–6",
-          "startDate": "2026-06-03T00:05:00.000Z",
-          "endDate": "2026-06-06T23:05:00.000Z",
-          "eventCount": 3,
-          "seasonPhase": "Final"
+          "seasonPhase": "Playoffs"
         },
         {
           "sport": "cricket",
           "displayName": "International Cricket",
           "leagueKey": "intl",
-          "dateRangeLabel": "Jun 3–6",
-          "startDate": "2026-06-03T14:30:00.000Z",
-          "endDate": "2026-06-06T15:00:00.000Z",
-          "eventCount": 3,
-          "seasonPhase": null
-        },
-        {
-          "sport": "soccer",
-          "displayName": "USL",
-          "leagueKey": "usl",
-          "dateRangeLabel": "Jun 4",
-          "startDate": "2026-06-04T00:00:00.000Z",
-          "endDate": "2026-06-04T00:00:00.000Z",
-          "eventCount": 1,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "athletics",
-          "displayName": "Diamond League — Rome",
-          "leagueKey": "diamond-league",
-          "dateRangeLabel": "Jun 4",
-          "startDate": "2026-06-04T17:00:00.000Z",
-          "endDate": "2026-06-04T17:00:00.000Z",
-          "eventCount": 1,
+          "dateRangeLabel": "Jun 9–14",
+          "startDate": "2026-06-09T08:00:00.000Z",
+          "endDate": "2026-06-14T08:00:00.000Z",
+          "eventCount": 4,
           "seasonPhase": null
         },
         {
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "Jun 5–7",
-          "startDate": "2026-06-05T00:00:00.000Z",
-          "endDate": "2026-06-07T00:00:00.000Z",
+          "dateRangeLabel": "Jun 10–12",
+          "startDate": "2026-06-10T00:00:00.000Z",
+          "endDate": "2026-06-12T00:00:00.000Z",
           "eventCount": 2,
           "seasonPhase": "Final"
-        },
-        {
-          "sport": "rugby",
-          "displayName": "Super Rugby",
-          "leagueKey": "superrugby",
-          "dateRangeLabel": "Jun 5–6",
-          "startDate": "2026-06-05T07:05:00.000Z",
-          "endDate": "2026-06-06T07:05:00.000Z",
-          "eventCount": 3,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "rugby",
-          "displayName": "SVNS Bordeaux",
-          "leagueKey": "svns",
-          "dateRangeLabel": "Jun 5–7",
-          "startDate": "2026-06-05T08:00:00.000Z",
-          "endDate": "2026-06-07T08:00:00.000Z",
-          "eventCount": 3,
-          "seasonPhase": null
-        },
-        {
-          "sport": "racing",
-          "displayName": "Monaco GP",
-          "leagueKey": "f1",
-          "dateRangeLabel": "Jun 5–7",
-          "startDate": "2026-06-05T11:30:00.000Z",
-          "endDate": "2026-06-07T13:00:00.000Z",
-          "eventCount": 5,
-          "seasonPhase": null
-        },
-        {
-          "sport": "tennis",
-          "displayName": "Roland Garros",
-          "leagueKey": "grand-slam",
-          "dateRangeLabel": "Jun 5",
-          "startDate": "2026-06-05T12:30:00.000Z",
-          "endDate": "2026-06-05T17:00:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": null
-        },
-        {
-          "sport": "rugby",
-          "displayName": "Japan League One",
-          "leagueKey": "leagueone",
-          "dateRangeLabel": "Jun 6–7",
-          "startDate": "2026-06-06T04:30:00.000Z",
-          "endDate": "2026-06-07T06:05:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": "Final"
-        },
-        {
-          "sport": "rugby",
-          "displayName": "SA Schools Rugby",
-          "leagueKey": "schools-rugby",
-          "dateRangeLabel": "Jun 6",
-          "startDate": "2026-06-06T10:30:00.000Z",
-          "endDate": "2026-06-06T10:30:00.000Z",
-          "eventCount": 1,
-          "seasonPhase": null
-        },
-        {
-          "sport": "rugby",
-          "displayName": "URC",
-          "leagueKey": "urc",
-          "dateRangeLabel": "Jun 6",
-          "startDate": "2026-06-06T13:30:00.000Z",
-          "endDate": "2026-06-06T16:30:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "rugby",
-          "displayName": "English Premiership",
-          "leagueKey": "premiership",
-          "dateRangeLabel": "Jun 6",
-          "startDate": "2026-06-06T14:15:00.000Z",
-          "endDate": "2026-06-06T14:15:00.000Z",
-          "eventCount": 5,
-          "seasonPhase": "Playoffs"
-        },
-        {
-          "sport": "horse-racing",
-          "displayName": "Triple Crown — Belmont Stakes",
-          "leagueKey": "triple-crown",
-          "dateRangeLabel": "Jun 6",
-          "startDate": "2026-06-06T18:30:00.000Z",
-          "endDate": "2026-06-06T18:30:00.000Z",
-          "eventCount": 1,
-          "seasonPhase": null
         },
         {
           "sport": "soccer",
           "displayName": "International Friendly",
           "leagueKey": "intl-friendly",
-          "dateRangeLabel": "Jun 6–7",
-          "startDate": "2026-06-06T18:30:00.000Z",
-          "endDate": "2026-06-07T23:00:00.000Z",
-          "eventCount": 6,
+          "dateRangeLabel": "Jun 10",
+          "startDate": "2026-06-10T01:00:00.000Z",
+          "endDate": "2026-06-10T01:00:00.000Z",
+          "eventCount": 1,
           "seasonPhase": null
+        },
+        {
+          "sport": "athletics",
+          "displayName": "Diamond League — Oslo",
+          "leagueKey": "diamond-league",
+          "dateRangeLabel": "Jun 10",
+          "startDate": "2026-06-10T17:00:00.000Z",
+          "endDate": "2026-06-10T17:00:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
+        },
+        {
+          "sport": "soccer",
+          "displayName": "USL",
+          "leagueKey": "usl",
+          "dateRangeLabel": "Jun 10–14",
+          "startDate": "2026-06-10T23:00:00.000Z",
+          "endDate": "2026-06-14T02:00:00.000Z",
+          "eventCount": 16,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "hockey",
+          "displayName": "ECHL",
+          "leagueKey": "echl",
+          "dateRangeLabel": "Jun 10–13",
+          "startDate": "2026-06-10T23:30:00.000Z",
+          "endDate": "2026-06-13T23:00:00.000Z",
+          "eventCount": 3,
+          "seasonPhase": "Final"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "FIFA World Cup",
+          "leagueKey": "fifa-world-cup",
+          "dateRangeLabel": "Jun 11–14",
+          "startDate": "2026-06-11T19:00:00.000Z",
+          "endDate": "2026-06-14T23:00:00.000Z",
+          "eventCount": 11,
+          "seasonPhase": null
+        },
+        {
+          "sport": "rugby",
+          "displayName": "Super Rugby",
+          "leagueKey": "superrugby",
+          "dateRangeLabel": "Jun 12–13",
+          "startDate": "2026-06-12T07:05:00.000Z",
+          "endDate": "2026-06-13T07:05:00.000Z",
+          "eventCount": 2,
+          "seasonPhase": "Playoffs"
+        },
+        {
+          "sport": "racing",
+          "displayName": "Barcelona-Catalunya GP",
+          "leagueKey": "f1",
+          "dateRangeLabel": "Jun 12–14",
+          "startDate": "2026-06-12T11:30:00.000Z",
+          "endDate": "2026-06-14T13:00:00.000Z",
+          "eventCount": 5,
+          "seasonPhase": null
+        },
+        {
+          "sport": "rugby",
+          "displayName": "English Premiership",
+          "leagueKey": "premiership",
+          "dateRangeLabel": "Jun 12–13",
+          "startDate": "2026-06-12T18:45:00.000Z",
+          "endDate": "2026-06-13T14:00:00.000Z",
+          "eventCount": 2,
+          "seasonPhase": "Final"
         },
         {
           "sport": "rugby",
           "displayName": "Top 14",
           "leagueKey": "top14",
-          "dateRangeLabel": "Jun 6",
-          "startDate": "2026-06-06T19:05:00.000Z",
-          "endDate": "2026-06-06T19:05:00.000Z",
-          "eventCount": 7,
+          "dateRangeLabel": "Jun 13–14",
+          "startDate": "2026-06-13T19:05:00.000Z",
+          "endDate": "2026-06-14T19:05:00.000Z",
+          "eventCount": 3,
           "seasonPhase": "Playoffs"
         },
         {
           "sport": "athletics",
-          "displayName": "Diamond League — Stockholm",
-          "leagueKey": "diamond-league",
-          "dateRangeLabel": "Jun 7",
-          "startDate": "2026-06-07T17:00:00.000Z",
-          "endDate": "2026-06-07T17:00:00.000Z",
+          "displayName": "99th Comrades Marathon",
+          "leagueKey": "comrades",
+          "dateRangeLabel": "Jun 14",
+          "startDate": "2026-06-14T03:30:00.000Z",
+          "endDate": "2026-06-14T03:30:00.000Z",
           "eventCount": 1,
           "seasonPhase": null
         }
       ],
       "championshipFinals": [
         {
-          "leagueKey": "nhl",
+          "leagueKey": "ahl",
           "sport": "hockey",
-          "name": "Stanley Cup Final",
-          "date": "2026-06-02",
+          "name": "AHL Calder Cup Final",
+          "date": "2026-06-12",
           "emoji": "🏆"
         },
         {
-          "leagueKey": "echl",
-          "sport": "hockey",
-          "name": "ECHL Kelly Cup Final",
-          "date": "2026-06-05",
-          "emoji": "🏆"
-        },
-        {
-          "leagueKey": "leagueone",
+          "leagueKey": "premiership",
           "sport": "rugby",
-          "name": "Japan League One Final",
-          "date": "2026-06-07",
+          "name": "Premiership Final",
+          "date": "2026-06-13",
           "emoji": "🏆"
         }
       ]
