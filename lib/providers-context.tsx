@@ -35,6 +35,18 @@ export function getEventBroadcasterIds(event: SportEvent): string[] {
   // Cricket is exclusive to Willow TV — pin it so provider filtering can never
   // drift if a stored providerId regresses (see resolveCricketBroadcastId).
   if (event.sport === "cricket") return ["willowtv"];
+  // CBS Sports Golazo soccer (Serie A, USL Golazo) is stored with providerId
+  // "primevideo" but actually airs on the CBS Sports Golazo app — pin to the CBS
+  // chip so the filter matches the event card instead of the Prime Video chip.
+  if (
+    event.sport === "soccer" &&
+    (event.league === "Serie A" ||
+      (event.league === "USL" &&
+        (event.providerReason === "usl-cbsgolazo" ||
+          event.providerReason === "usl-cbsgolazo-default")))
+  ) {
+    return ["cbssn"];
+  }
   const pid = event.providerId || "";
   const rawBc = Array.isArray(event.broadcastNetworks)
     ? event.broadcastNetworks.join(", ")

@@ -372,8 +372,8 @@ function resolveSoccerBroadcastId(event: SportEvent): [string, string] {
   // Champions League + Europa League → CBS / YouTube TV
   if (league === "Champions League" || league === "Europa League") return ["cbs", "youtubetv"];
 
-  // Serie A → CBS Sports Golazo Network / Prime Video
-  if (league === "Serie A") return ["cbssn", "primevideo"];
+  // Serie A → CBS Sports Golazo Network (streams on the CBS Sports Golazo app, not Prime Video)
+  if (league === "Serie A") return ["cbsgolazo", "cbsgolazo"];
 
   // Bundesliga, La Liga → ESPN+ / Disney+
   if (league === "Bundesliga" || league === "La Liga") return ["espn", "disneyplus"];
@@ -383,8 +383,8 @@ function resolveSoccerBroadcastId(event: SportEvent): [string, string] {
   // Ligue 1 → beIN Sports / YouTube TV
   if (league === "Ligue 1") return ["beinsports", "youtubetv"];
 
-  // USL: CBS Golazo default → CBS Golazo logo / Prime Video
-  if (league === "USL" && reason === "usl-cbsgolazo-default") return ["cbssn", "primevideo"];
+  // USL: CBS Golazo → CBS Sports Golazo app (not Prime Video)
+  if (league === "USL" && (reason === "usl-cbsgolazo" || reason === "usl-cbsgolazo-default")) return ["cbsgolazo", "cbsgolazo"];
 
   // USL: ESPN+ → ESPN+ text / Disney+
   if (league === "USL" && reason === "usl-espnplus") return ["espn", "disneyplus"];
