@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-08T13:13:38.752Z",
+  "lastUpdated": "2026-06-10T06:00:20.074Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "diamond_league": {
@@ -49,11 +49,11 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 356,
+        "playersIngested": 357,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-06-08T13:13:38.752Z"
+        "timestamp": "2026-06-10T06:00:20.074Z"
       },
-      "cacheHistoryCount": 880,
+      "cacheHistoryCount": 881,
       "error": null
     },
     "exploreFeedCap": 8,
@@ -61,7 +61,7 @@
     "candidateCountAfterCap": 2,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2225.227431111111,
+      "hoursUntil": -2266.005576111111,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -96,16 +96,16 @@
     "videoSelection": {
       "marquee_match": {
         "searchQuery": "South Africa vs Mexico FIFA World Cup preview",
-        "selectedVideoTitle": "World Cup Build-Up | Bafana Bafana to Open World Cup Campaign Against Mexico | Johannes vs China",
-        "selectedVideoPublishedAt": "56 minutes ago",
-        "selectedVideoChannel": "PSL Pulse",
+        "selectedVideoTitle": "Mexico’s Biggest Game In 4 Years | Mexico vs South Africa Preview and Predictions",
+        "selectedVideoPublishedAt": "1 hour ago",
+        "selectedVideoChannel": "Utopic Draco Future",
         "rejectedForAgeCount": 0
       },
       "diamond_league_athletics-diamond-league-oslo-2026": {
         "searchQuery": "Diamond League — Oslo Diamond League 2026",
-        "selectedVideoTitle": "Amy Hunt Runs First Sub-11 Second 100m in Stockholm [Interview]",
+        "selectedVideoTitle": "BTS With American Record Holder Yared Nuguse | Oslo Diamond League Mic'd Up",
         "selectedVideoPublishedAt": "5 hours ago",
-        "selectedVideoChannel": "runnerspace",
+        "selectedVideoChannel": "FloTrack",
         "rejectedForAgeCount": 0
       }
     }
@@ -114,13 +114,13 @@
     {
       "id": "marquee_match",
       "title": "Marquee Match: FIFA World Cup",
-      "subtitle": "South Africa vs Mexico — FIFA World Cup · in 3 days",
+      "subtitle": "South Africa vs Mexico — FIFA World Cup · in 2 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-06-08T13:13:38.752Z",
+      "triggeredAt": "2026-06-10T06:00:20.074Z",
       "expiresAt": "2026-06-11T23:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -136,31 +136,31 @@
         "eventIds": [
           "soccer-fifa-world-cup-20260611-1900-south-africa-at-mexico"
         ],
-        "reason": "Top FIFA World Cup fixture (South Africa vs Mexico) in 3 days"
+        "reason": "Top FIFA World Cup fixture (South Africa vs Mexico) in 2 days"
       },
       "sports": [
         "soccer"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=PwhjHmQYHYo",
-        "thumbnailUrl": "https://img.youtube.com/vi/PwhjHmQYHYo/hqdefault.jpg",
-        "durationSeconds": 712,
-        "title": "World Cup Build-Up | Bafana Bafana to Open World Cup Campaign Against Mexico | Johannes vs China",
+        "url": "https://www.youtube.com/watch?v=GL-Mo70_Cfg",
+        "thumbnailUrl": "https://img.youtube.com/vi/GL-Mo70_Cfg/hqdefault.jpg",
+        "durationSeconds": 459,
+        "title": "Mexico’s Biggest Game In 4 Years | Mexico vs South Africa Preview and Predictions",
         "source": "youtube",
-        "channel": "PSL Pulse",
-        "publishedAt": "56 minutes ago"
+        "channel": "Utopic Draco Future",
+        "publishedAt": "1 hour ago"
       }
     },
     {
       "id": "diamond_league_athletics-diamond-league-oslo-2026",
       "title": "Diamond League",
-      "subtitle": "Diamond League — Oslo — in 2 days",
+      "subtitle": "Diamond League — Oslo — today",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 65,
-      "triggeredAt": "2026-06-08T13:13:38.752Z",
+      "triggeredAt": "2026-06-10T06:00:20.074Z",
       "expiresAt": "2026-06-11T17:00:00.000Z",
       "kind": "diamond_league",
       "region": "Other",
@@ -179,12 +179,12 @@
         "athletics"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=KYlyZxP2MzA",
-        "thumbnailUrl": "https://img.youtube.com/vi/KYlyZxP2MzA/hqdefault.jpg",
-        "durationSeconds": 101,
-        "title": "Amy Hunt Runs First Sub-11 Second 100m in Stockholm [Interview]",
+        "url": "https://www.youtube.com/watch?v=opO3RHgXz9M",
+        "thumbnailUrl": "https://img.youtube.com/vi/opO3RHgXz9M/hqdefault.jpg",
+        "durationSeconds": 640,
+        "title": "BTS With American Record Holder Yared Nuguse | Oslo Diamond League Mic'd Up",
         "source": "youtube",
-        "channel": "runnerspace",
+        "channel": "FloTrack",
         "publishedAt": "5 hours ago"
       }
     }
@@ -220,11 +220,11 @@
           "sport": "hockey",
           "displayName": "AHL",
           "leagueKey": "ahl",
-          "dateRangeLabel": "Jun 1–9",
+          "dateRangeLabel": "Jun 1–24",
           "startDate": "2026-06-01T23:00:00.000Z",
-          "endDate": "2026-06-09T01:05:00.000Z",
-          "eventCount": 9,
-          "seasonPhase": "Playoffs"
+          "endDate": "2026-06-24T00:00:00.000Z",
+          "eventCount": 16,
+          "seasonPhase": "Final"
         },
         {
           "sport": "cricket",
@@ -262,8 +262,8 @@
           "leagueKey": "test",
           "dateRangeLabel": "Jun 4–29",
           "startDate": "2026-06-04T10:00:00.000Z",
-          "endDate": "2026-06-29T10:00:00.000Z",
-          "eventCount": 27,
+          "endDate": "2026-06-29T14:00:00.000Z",
+          "eventCount": 30,
           "seasonPhase": null
         },
         {
@@ -601,10 +601,10 @@
           "sport": "tennis",
           "displayName": "Wimbledon",
           "leagueKey": "grand-slam",
-          "dateRangeLabel": "Jul 1–8",
+          "dateRangeLabel": "Jul 1–9",
           "startDate": "2026-07-01T10:00:00.000Z",
-          "endDate": "2026-07-08T13:00:00.000Z",
-          "eventCount": 18,
+          "endDate": "2026-07-09T10:00:00.000Z",
+          "eventCount": 19,
           "seasonPhase": null
         },
         {
@@ -729,7 +729,7 @@
         },
         {
           "sport": "racing",
-          "displayName": "Belgian GP",
+          "displayName": "Moët & Chandon Belgian GP",
           "leagueKey": "f1",
           "dateRangeLabel": "Jul 17–19",
           "startDate": "2026-07-17T11:30:00.000Z",
@@ -788,20 +788,20 @@
           "sport": "hockey",
           "displayName": "AHL",
           "leagueKey": "ahl",
-          "dateRangeLabel": "Jun 8–9",
+          "dateRangeLabel": "Jun 8–14",
           "startDate": "2026-06-08T00:05:00.000Z",
-          "endDate": "2026-06-09T01:05:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": "Playoffs"
+          "endDate": "2026-06-14T20:00:00.000Z",
+          "eventCount": 4,
+          "seasonPhase": "Final"
         },
         {
           "sport": "cricket",
           "displayName": "Test Cricket",
           "leagueKey": "test",
-          "dateRangeLabel": "Jun 8",
+          "dateRangeLabel": "Jun 8–10",
           "startDate": "2026-06-08T04:00:00.000Z",
-          "endDate": "2026-06-08T10:00:00.000Z",
-          "eventCount": 2,
+          "endDate": "2026-06-10T04:00:00.000Z",
+          "eventCount": 4,
           "seasonPhase": null
         },
         {

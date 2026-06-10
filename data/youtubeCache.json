@@ -1681,41 +1681,41 @@
   },
   "marquee_match:south africa vs mexico fifa world cup preview": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=PwhjHmQYHYo",
-      "thumbnailUrl": "https://img.youtube.com/vi/PwhjHmQYHYo/hqdefault.jpg",
-      "durationSeconds": 712,
-      "title": "World Cup Build-Up | Bafana Bafana to Open World Cup Campaign Against Mexico | Johannes vs China",
+      "url": "https://www.youtube.com/watch?v=GL-Mo70_Cfg",
+      "thumbnailUrl": "https://img.youtube.com/vi/GL-Mo70_Cfg/hqdefault.jpg",
+      "durationSeconds": 459,
+      "title": "Mexico’s Biggest Game In 4 Years | Mexico vs South Africa Preview and Predictions",
       "source": "youtube",
-      "channel": "PSL Pulse",
-      "publishedAt": "56 minutes ago"
+      "channel": "Utopic Draco Future",
+      "publishedAt": "1 hour ago"
     },
-    "fetchedAt": "2026-06-08T03:56:13.798Z",
+    "fetchedAt": "2026-06-10T06:00:29.392Z",
     "query": "South Africa vs Mexico FIFA World Cup preview",
     "debug": {
       "searchQuery": "South Africa vs Mexico FIFA World Cup preview",
-      "selectedVideoTitle": "World Cup Build-Up | Bafana Bafana to Open World Cup Campaign Against Mexico | Johannes vs China",
-      "selectedVideoPublishedAt": "56 minutes ago",
-      "selectedVideoChannel": "PSL Pulse",
+      "selectedVideoTitle": "Mexico’s Biggest Game In 4 Years | Mexico vs South Africa Preview and Predictions",
+      "selectedVideoPublishedAt": "1 hour ago",
+      "selectedVideoChannel": "Utopic Draco Future",
       "rejectedForAgeCount": 0
     }
   },
   "diamond_league:diamond league — oslo diamond league 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=KYlyZxP2MzA",
-      "thumbnailUrl": "https://img.youtube.com/vi/KYlyZxP2MzA/hqdefault.jpg",
-      "durationSeconds": 101,
-      "title": "Amy Hunt Runs First Sub-11 Second 100m in Stockholm [Interview]",
+      "url": "https://www.youtube.com/watch?v=opO3RHgXz9M",
+      "thumbnailUrl": "https://img.youtube.com/vi/opO3RHgXz9M/hqdefault.jpg",
+      "durationSeconds": 640,
+      "title": "BTS With American Record Holder Yared Nuguse | Oslo Diamond League Mic'd Up",
       "source": "youtube",
-      "channel": "runnerspace",
+      "channel": "FloTrack",
       "publishedAt": "5 hours ago"
     },
-    "fetchedAt": "2026-06-08T03:56:14.069Z",
+    "fetchedAt": "2026-06-10T06:00:29.637Z",
     "query": "Diamond League — Oslo Diamond League 2026",
     "debug": {
       "searchQuery": "Diamond League — Oslo Diamond League 2026",
-      "selectedVideoTitle": "Amy Hunt Runs First Sub-11 Second 100m in Stockholm [Interview]",
+      "selectedVideoTitle": "BTS With American Record Holder Yared Nuguse | Oslo Diamond League Mic'd Up",
       "selectedVideoPublishedAt": "5 hours ago",
-      "selectedVideoChannel": "runnerspace",
+      "selectedVideoChannel": "FloTrack",
       "rejectedForAgeCount": 0
     }
   }
