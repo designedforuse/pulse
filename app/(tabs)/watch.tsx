@@ -30,7 +30,7 @@ import { displayTeamName } from "@/utils/teams";
 import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
-import UnifiedEventCard, { formatCricketLiveDetail, TennisScoreboard, getGrandPrixFlag, getDriverFlag, getWrcRoundInfo, getCountryFlagUrl } from "@/components/UnifiedEventCard";
+import UnifiedEventCard, { formatCricketLiveDetail, TennisScoreboard, getGrandPrixFlag, getDriverFlag, getWrcRoundInfo, getCountryFlagUrl, getAthleticsCityFlagUrl } from "@/components/UnifiedEventCard";
 import { useWrcStages, getWrcRoundBaseId, getStagesForLeg, wrcFlagUrl } from "@/lib/wrc-stages-context";
 import CatchUpCard from "@/components/CatchUpCard";
 import {
@@ -360,6 +360,7 @@ function ChaosCard({
   const isGolf = event.sport === "golf";
   const isCycling = event.sport === "cycling";
   const isDiamondLeague = event.sport === "athletics" && (event.id?.startsWith("athletics-diamond-league-") || event.leagueKey === "diamond-league" || event.league === "Diamond League");
+  const dlCityFlag = isDiamondLeague ? getAthleticsCityFlagUrl(event.tournamentName || event.homeTeam) : null;
   const isSvnsSession = event.eventType === "session" && event.leagueKey === "svns";
   const svnsCity = isSvnsSession ? extractSvnsCity(event.homeTeam) : null;
   const svnsData = useSvnsMatches(svnsCity);
@@ -559,7 +560,19 @@ function ChaosCard({
               </View>
             ) : matchupText ? (
               <View style={isSvnsSession ? styles.svnsPrimaryContent : undefined}>
-                <Text style={[styles.primaryMatchup, (isSvnsSession || (isGolf && golfLeaderName) || (isCycling && cyclingLeaderName)) && { marginBottom: 4 }]} numberOfLines={2}>{golfSessionDisplayText}</Text>
+                {isDiamondLeague ? (
+                  <>
+                    <View style={styles.dlTitleRow}>
+                      {dlCityFlag && <Image source={{ uri: dlCityFlag }} style={styles.dlFlag} resizeMode="contain" />}
+                      <Text style={[styles.primaryMatchup, { marginBottom: 0 }]} numberOfLines={1}>{golfSessionDisplayText}</Text>
+                    </View>
+                    <Text style={styles.dlContext} numberOfLines={1}>
+                      {[event.roundLabel, "Track & Field"].filter(Boolean).join(" \u00B7 ")}
+                    </Text>
+                  </>
+                ) : (
+                  <Text style={[styles.primaryMatchup, (isSvnsSession || (isGolf && golfLeaderName) || (isCycling && cyclingLeaderName)) && { marginBottom: 4 }]} numberOfLines={2}>{golfSessionDisplayText}</Text>
+                )}
                 {isSvnsSession && svnsDisplayMatch && (
                   <ChaosCardSvnsRow match={svnsDisplayMatch} />
                 )}
@@ -795,8 +808,20 @@ function ChaosCard({
             )}
           </View>
         ) : matchupText ? (
-          <View style={(isSvnsSession || isGolf || isCycling) ? styles.svnsSecondaryContent : undefined}>
-            <Text style={[styles.secondaryTeamName, (isSvnsSession || (isGolf && golfLeaderName) || (isCycling && cyclingLeaderName)) && { marginBottom: 2 }]} numberOfLines={2}>{golfSessionDisplayText}</Text>
+          <View style={(isSvnsSession || isGolf || isCycling || isDiamondLeague) ? styles.svnsSecondaryContent : undefined}>
+            {isDiamondLeague ? (
+              <>
+                <View style={styles.dlTitleRowSm}>
+                  {dlCityFlag && <FlagImg uri={dlCityFlag} sm />}
+                  <Text style={[styles.secondaryTeamName, { marginBottom: 0, flexShrink: 1 }]} numberOfLines={1}>{golfSessionDisplayText}</Text>
+                </View>
+                <Text style={styles.dlContextSm} numberOfLines={1}>
+                  {[event.roundLabel, "Track & Field"].filter(Boolean).join(" \u00B7 ")}
+                </Text>
+              </>
+            ) : (
+              <Text style={[styles.secondaryTeamName, (isSvnsSession || (isGolf && golfLeaderName) || (isCycling && cyclingLeaderName)) && { marginBottom: 2 }]} numberOfLines={2}>{golfSessionDisplayText}</Text>
+            )}
             {isSvnsSession && svnsDisplayMatch && (
               <ChaosCardSvnsRow match={svnsDisplayMatch} small />
             )}
@@ -2378,6 +2403,34 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
     fontFamily: "Inter_600SemiBold",
     marginBottom: 14,
+  },
+  dlTitleRow: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 8,
+  },
+  dlFlag: {
+    width: 26,
+    height: 17,
+    borderRadius: 2,
+  },
+  dlContext: {
+    fontSize: 13,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+    marginTop: 4,
+    marginBottom: 14,
+  },
+  dlTitleRowSm: {
+    flexDirection: "row" as const,
+    alignItems: "center" as const,
+    gap: 6,
+  },
+  dlContextSm: {
+    fontSize: 11,
+    fontFamily: "Inter_500Medium",
+    color: Colors.textSecondary,
+    marginTop: 2,
   },
   vsText: {
     fontSize: 12,

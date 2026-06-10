@@ -188,7 +188,7 @@ const ATHLETICS_CITY_CODES: Record<string, string> = {
   "blue mountains": "aus",
 };
 
-function getAthleticsCityFlagUrl(name: string | null | undefined): string | null {
+export function getAthleticsCityFlagUrl(name: string | null | undefined): string | null {
   if (!name) return null;
   const lower = name.toLowerCase();
   for (const [city, code] of Object.entries(ATHLETICS_CITY_CODES)) {
