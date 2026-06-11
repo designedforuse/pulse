@@ -30,7 +30,7 @@ const PROVIDER_IMAGES: Record<string, any> = {
   espn2:         require("@/assets/providers/espn.png"),      // ESPN2 → ESPN
   flohockey:     require("@/assets/providers/flosports.png"), // FloHockey → FloSports
   florugby:      require("@/assets/providers/flosports.png"), // FloRugby → FloSports
-  cbsgolazo:     require("@/assets/providers/cbssn.png"),     // CBS Golazo → CBS Sports
+  cbsgolazo:     require("@/assets/providers/cbsgolazo.png"), // CBS Golazo
   nbc:           require("@/assets/providers/nbcsn.png"),     // NBC → NBC Sports
 };
 
@@ -66,7 +66,7 @@ const LOGO_SCALE: Record<string, number> = {
   espn2:         0.65,
   flohockey:     1.2,
   florugby:      1.2,
-  cbsgolazo:     1.2,
+  cbsgolazo:     1.0,
   nbc:           1.0,
 };
 
@@ -100,7 +100,7 @@ const LOGO_ASPECT: Record<string, number> = {
   espn2:         4.05,
   flohockey:     8.77,
   florugby:      8.77,
-  cbsgolazo:     4.82,
+  cbsgolazo:     1.13,
   nbc:           3.61,
 };
 
