@@ -383,8 +383,8 @@ function resolveSoccerBroadcastId(event: SportEvent): [string, string] {
   // Ligue 1 → beIN Sports / YouTube TV
   if (league === "Ligue 1") return ["beinsports", "youtubetv"];
 
-  // USL: CBS Golazo logo; Golazo is carried by Prime Video, so launch Prime Video
-  if (league === "USL" && (reason === "usl-cbsgolazo" || reason === "usl-cbsgolazo-default")) return ["cbsgolazo", "primevideo"];
+  // USL: CBS Sports Network logo; CBS Sports Network is carried by YouTube TV, so launch YouTube TV
+  if (league === "USL" && (reason === "usl-cbsgolazo" || reason === "usl-cbsgolazo-default")) return ["cbsgolazo", "youtubetv"];
 
   // USL: ESPN+ → ESPN+ text / Disney+
   if (league === "USL" && reason === "usl-espnplus") return ["espn", "disneyplus"];
