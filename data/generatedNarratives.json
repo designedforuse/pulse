@@ -1,8 +1,14 @@
 {
-  "lastUpdated": "2026-06-10T06:00:20.074Z",
+  "lastUpdated": "2026-06-11T18:57:43.673Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
-      "diamond_league": {
+      "league_moment": {
+        "Other": 1
+      },
+      "weekend_watchlist": {
+        "Other": 1
+      },
+      "golf_major": {
         "Other": 1
       },
       "marquee_match": {
@@ -12,13 +18,15 @@
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
       "Other": [
+        "golf_major: Major Championship",
         "marquee_match: Marquee Match: FIFA World Cup",
-        "diamond_league: Diamond League"
+        "league_moment: Barcelona-Catalunya Grand Prix",
+        "weekend_watchlist: Weekend Watchlist"
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 2,
-    "totalAfterCap": 2,
+    "totalBeforeCap": 4,
+    "totalAfterCap": 4,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -51,17 +59,17 @@
         ],
         "playersIngested": 357,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-06-10T06:00:20.074Z"
+        "timestamp": "2026-06-11T18:57:43.673Z"
       },
       "cacheHistoryCount": 881,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 2,
-    "candidateCountAfterCap": 2,
+    "candidateCountBeforeCap": 4,
+    "candidateCountAfterCap": 4,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -2266.005576111111,
+      "hoursUntil": -2302.962131388889,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -82,45 +90,96 @@
       "clinchFinalCount": 0,
       "clinchGatedOut": []
     },
-    "tonightStorySelectedSignal": null,
-    "tonightStoryHeadline": null,
-    "tonightStorySourceEvent": null,
+    "tonightStorySelectedSignal": "single_team_game",
+    "tonightStoryHeadline": "Bafana Bafana Today",
+    "tonightStorySourceEvent": "soccer-fifa-world-cup-20260611-1900-south-africa-at-mexico",
     "tonightStoryDebug": {
-      "selectedSignal": null,
-      "selectedHeadline": null,
-      "selectedScore": 0,
-      "sourceEventId": null,
-      "reason": "no stories scored",
-      "scoredCandidates": []
+      "selectedSignal": "single_team_game",
+      "selectedHeadline": "Bafana Bafana Today",
+      "selectedScore": 150,
+      "sourceEventId": "soccer-fifa-world-cup-20260611-1900-south-africa-at-mexico",
+      "reason": "single followed team (Bafana Bafana) playing today",
+      "scoredCandidates": [
+        {
+          "label": "[single_team_game] Bafana Bafana Today",
+          "score": 150,
+          "reason": "single followed team (Bafana Bafana) playing today"
+        }
+      ]
     },
     "videoSelection": {
-      "marquee_match": {
-        "searchQuery": "South Africa vs Mexico FIFA World Cup preview",
-        "selectedVideoTitle": "Mexico’s Biggest Game In 4 Years | Mexico vs South Africa Preview and Predictions",
-        "selectedVideoPublishedAt": "1 hour ago",
-        "selectedVideoChannel": "Utopic Draco Future",
+      "golf_major_us_open": {
+        "searchQuery": "US Open 2026 preview",
+        "selectedVideoTitle": "Rinky Hijikata vs. Frances Tiafoe Highlights | Stuttgart 2026 Round 2",
+        "selectedVideoPublishedAt": "5 hours ago",
+        "selectedVideoChannel": "ATP Tour",
         "rejectedForAgeCount": 0
       },
-      "diamond_league_athletics-diamond-league-oslo-2026": {
-        "searchQuery": "Diamond League — Oslo Diamond League 2026",
-        "selectedVideoTitle": "BTS With American Record Holder Yared Nuguse | Oslo Diamond League Mic'd Up",
-        "selectedVideoPublishedAt": "5 hours ago",
-        "selectedVideoChannel": "FloTrack",
-        "rejectedForAgeCount": 0
+      "marquee_match": {
+        "searchQuery": "South Africa vs Mexico FIFA World Cup preview",
+        "selectedVideoTitle": "John Sutcliffe’s VERDICT of Mexico vs. South Africa + World Cup hopes?! | ESPN FC",
+        "selectedVideoPublishedAt": "3 hours ago",
+        "selectedVideoChannel": "ESPN FC",
+        "rejectedForAgeCount": 1
+      },
+      "f1_race_weekend_barcelona_catalunya_grand_prix": {
+        "searchQuery": "Barcelona-Catalunya Grand Prix sports June 2026",
+        "selectedVideoTitle": "F1 Livestream 0610 with Peter Windsor",
+        "selectedVideoPublishedAt": "4 hours ago",
+        "selectedVideoChannel": "Peter Windsor",
+        "rejectedForAgeCount": 1
       }
     }
   },
   "cards": [
     {
+      "id": "golf_major_us_open",
+      "title": "Major Championship",
+      "subtitle": "US Open — in 7 days",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 85,
+      "triggeredAt": "2026-06-11T18:57:43.673Z",
+      "expiresAt": "2026-06-23T14:00:00.000Z",
+      "kind": "golf_major",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "golf_major",
+        "tournamentName": "US Open",
+        "startTime": "2026-06-18T14:00:00.000Z",
+        "roundsCount": 1,
+        "eventIds": [
+          "golf-us-open-2026-06-18"
+        ],
+        "reason": "Golf major within 7 days: US Open"
+      },
+      "sports": [
+        "golf"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=-hm4ps2F-rk",
+        "thumbnailUrl": "https://img.youtube.com/vi/-hm4ps2F-rk/hqdefault.jpg",
+        "durationSeconds": 145,
+        "title": "Rinky Hijikata vs. Frances Tiafoe Highlights | Stuttgart 2026 Round 2",
+        "source": "youtube",
+        "channel": "ATP Tour",
+        "publishedAt": "5 hours ago"
+      }
+    },
+    {
       "id": "marquee_match",
       "title": "Marquee Match: FIFA World Cup",
-      "subtitle": "South Africa vs Mexico — FIFA World Cup · in 2 days",
+      "subtitle": "South Africa vs Mexico — FIFA World Cup · kickoff soon",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-06-10T06:00:20.074Z",
+      "triggeredAt": "2026-06-11T18:57:43.673Z",
       "expiresAt": "2026-06-11T23:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -136,61 +195,182 @@
         "eventIds": [
           "soccer-fifa-world-cup-20260611-1900-south-africa-at-mexico"
         ],
-        "reason": "Top FIFA World Cup fixture (South Africa vs Mexico) in 2 days"
+        "reason": "Top FIFA World Cup fixture (South Africa vs Mexico) kickoff soon"
       },
       "sports": [
         "soccer"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=GL-Mo70_Cfg",
-        "thumbnailUrl": "https://img.youtube.com/vi/GL-Mo70_Cfg/hqdefault.jpg",
-        "durationSeconds": 459,
-        "title": "Mexico’s Biggest Game In 4 Years | Mexico vs South Africa Preview and Predictions",
+        "url": "https://www.youtube.com/watch?v=V1vSB_n9FaM",
+        "thumbnailUrl": "https://img.youtube.com/vi/V1vSB_n9FaM/hqdefault.jpg",
+        "durationSeconds": 421,
+        "title": "John Sutcliffe’s VERDICT of Mexico vs. South Africa + World Cup hopes?! | ESPN FC",
         "source": "youtube",
-        "channel": "Utopic Draco Future",
-        "publishedAt": "1 hour ago"
+        "channel": "ESPN FC",
+        "publishedAt": "3 hours ago"
       }
     },
     {
-      "id": "diamond_league_athletics-diamond-league-oslo-2026",
-      "title": "Diamond League",
-      "subtitle": "Diamond League — Oslo — today",
+      "id": "f1_race_weekend_barcelona_catalunya_grand_prix",
+      "title": "Barcelona-Catalunya Grand Prix",
+      "subtitle": "Barcelona-Catalunya Grand Prix — 4 sessions in the next 48h: Practice 1, Practice 2, Practice 3, Qualifying",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
-      "priority": 65,
-      "triggeredAt": "2026-06-10T06:00:20.074Z",
-      "expiresAt": "2026-06-11T17:00:00.000Z",
-      "kind": "diamond_league",
+      "priority": 75,
+      "triggeredAt": "2026-06-11T18:57:43.673Z",
+      "expiresAt": "2026-06-13T18:00:00.000Z",
+      "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "type": "diamond_league",
-        "meetName": "Diamond League — Oslo",
-        "startTime": "2026-06-10T17:00:00.000Z",
-        "eventIds": [
-          "athletics-diamond-league-oslo-2026"
+        "type": "f1_race_weekend",
+        "grandPrix": "Barcelona-Catalunya Grand Prix",
+        "sessionCount": 4,
+        "sessions": [
+          {
+            "sessionTitle": "Practice 1",
+            "startTime": "2026-06-12T11:30:00.000Z",
+            "eventId": "f1-espn-401839068"
+          },
+          {
+            "sessionTitle": "Practice 2",
+            "startTime": "2026-06-12T15:00:00.000Z",
+            "eventId": "f1-espn-401839069"
+          },
+          {
+            "sessionTitle": "Practice 3",
+            "startTime": "2026-06-13T10:30:00.000Z",
+            "eventId": "f1-espn-401839070"
+          },
+          {
+            "sessionTitle": "Qualifying",
+            "startTime": "2026-06-13T14:00:00.000Z",
+            "eventId": "f1-espn-401839071"
+          }
         ],
-        "reason": "Diamond League meet within 5 days: Diamond League — Oslo"
+        "eventIds": [
+          "f1-espn-401839068",
+          "f1-espn-401839069",
+          "f1-espn-401839070",
+          "f1-espn-401839071"
+        ],
+        "reason": "Barcelona-Catalunya Grand Prix race weekend — 4 session(s) within 48 hours"
       },
       "sports": [
-        "athletics"
+        "racing"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=opO3RHgXz9M",
-        "thumbnailUrl": "https://img.youtube.com/vi/opO3RHgXz9M/hqdefault.jpg",
-        "durationSeconds": 640,
-        "title": "BTS With American Record Holder Yared Nuguse | Oslo Diamond League Mic'd Up",
+        "url": "https://www.youtube.com/watch?v=xKeS0O3-uYo",
+        "thumbnailUrl": "https://img.youtube.com/vi/xKeS0O3-uYo/hqdefault.jpg",
+        "durationSeconds": 7406,
+        "title": "F1 Livestream 0610 with Peter Windsor",
         "source": "youtube",
-        "channel": "FloTrack",
-        "publishedAt": "5 hours ago"
+        "channel": "Peter Windsor",
+        "publishedAt": "4 hours ago"
       }
+    },
+    {
+      "id": "weekend_watchlist",
+      "title": "Weekend Watchlist",
+      "subtitle": "3 marquee matchups · FIFA World Cup · F1 · NHL",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 55,
+      "triggeredAt": "2026-06-11T18:57:43.673Z",
+      "expiresAt": "2026-06-14T23:59:59.999Z",
+      "kind": "weekend_watchlist",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "weekend_watchlist",
+        "matchCount": 3,
+        "matches": [
+          {
+            "league": "FIFA World Cup",
+            "sport": "soccer",
+            "away": "South Africa",
+            "home": "Mexico",
+            "startTime": "2026-06-11T19:00:00.000Z"
+          },
+          {
+            "league": "F1",
+            "sport": "racing",
+            "away": "Practice 1",
+            "home": "Barcelona-Catalunya Grand Prix",
+            "startTime": "2026-06-12T11:30:00.000Z"
+          },
+          {
+            "league": "NHL",
+            "sport": "hockey",
+            "away": "Vegas Golden Knights",
+            "home": "Carolina Hurricanes",
+            "startTime": "2026-06-12T00:00:00.000Z"
+          }
+        ],
+        "eventIds": [
+          "soccer-fifa-world-cup-20260611-1900-south-africa-at-mexico",
+          "f1-espn-401839068",
+          "nhl_2025030415"
+        ],
+        "reason": "Weekend window: 3 top-priority event(s) across 3 sport(s)"
+      },
+      "sports": [
+        "soccer",
+        "racing",
+        "hockey"
+      ]
     }
   ],
-  "tonightStory": null,
-  "todaysStories": [],
+  "tonightStory": {
+    "signalType": "single_team_game",
+    "signalLabel": "YOUR TEAM",
+    "headline": "Bafana Bafana Today",
+    "body": "South Africa at Mexico — catch the action in the FIFA World Cup.",
+    "sourceEventId": "soccer-fifa-world-cup-20260611-1900-south-africa-at-mexico",
+    "eventIds": [
+      "soccer-fifa-world-cup-20260611-1900-south-africa-at-mexico"
+    ],
+    "sourceCard": {
+      "id": "tonight_single_team",
+      "kind": "single_team_game",
+      "title": "Bafana Bafana Today"
+    },
+    "sports": [
+      "soccer"
+    ],
+    "favoriteTeams": [
+      "Bafana Bafana"
+    ]
+  },
+  "todaysStories": [
+    {
+      "signalType": "single_team_game",
+      "signalLabel": "YOUR TEAM",
+      "headline": "Bafana Bafana Today",
+      "body": "South Africa at Mexico — catch the action in the FIFA World Cup.",
+      "sourceEventId": "soccer-fifa-world-cup-20260611-1900-south-africa-at-mexico",
+      "eventIds": [
+        "soccer-fifa-world-cup-20260611-1900-south-africa-at-mexico"
+      ],
+      "sourceCard": {
+        "id": "tonight_single_team",
+        "kind": "single_team_game",
+        "title": "Bafana Bafana Today"
+      },
+      "sports": [
+        "soccer"
+      ],
+      "favoriteTeams": [
+        "Bafana Bafana"
+      ]
+    }
+  ],
   "monthSnapshot": {
     "currentMonth": {
       "monthLabel": "June 2026",
@@ -387,16 +567,6 @@
           "seasonPhase": null
         },
         {
-          "sport": "hockey",
-          "displayName": "NHL",
-          "leagueKey": "nhl",
-          "dateRangeLabel": "Jun 10–18",
-          "startDate": "2026-06-10T00:00:00.000Z",
-          "endDate": "2026-06-18T00:00:00.000Z",
-          "eventCount": 4,
-          "seasonPhase": "Final"
-        },
-        {
           "sport": "athletics",
           "displayName": "Diamond League — Oslo",
           "leagueKey": "diamond-league",
@@ -417,12 +587,22 @@
           "seasonPhase": null
         },
         {
+          "sport": "hockey",
+          "displayName": "NHL",
+          "leagueKey": "nhl",
+          "dateRangeLabel": "Jun 12–18",
+          "startDate": "2026-06-12T00:00:00.000Z",
+          "endDate": "2026-06-18T00:00:00.000Z",
+          "eventCount": 3,
+          "seasonPhase": "Final"
+        },
+        {
           "sport": "cricket",
           "displayName": "T20I Cricket",
           "leagueKey": "t20i",
           "dateRangeLabel": "Jun 12–28",
           "startDate": "2026-06-12T00:30:00.000Z",
-          "endDate": "2026-06-28T14:00:00.000Z",
+          "endDate": "2026-06-28T12:30:00.000Z",
           "eventCount": 8,
           "seasonPhase": null
         },
@@ -601,10 +781,30 @@
           "sport": "tennis",
           "displayName": "Wimbledon",
           "leagueKey": "grand-slam",
-          "dateRangeLabel": "Jul 1–9",
+          "dateRangeLabel": "Jul 1–11",
           "startDate": "2026-07-01T10:00:00.000Z",
-          "endDate": "2026-07-09T10:00:00.000Z",
-          "eventCount": 19,
+          "endDate": "2026-07-11T13:00:00.000Z",
+          "eventCount": 22,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
+          "displayName": "T20I Cricket",
+          "leagueKey": "t20i",
+          "dateRangeLabel": "Jul 1",
+          "startDate": "2026-07-01T16:30:00.000Z",
+          "endDate": "2026-07-01T16:30:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
+          "displayName": "MLC",
+          "leagueKey": "mlc",
+          "dateRangeLabel": "Jul 2",
+          "startDate": "2026-07-02T01:30:00.000Z",
+          "endDate": "2026-07-02T01:30:00.000Z",
+          "eventCount": 1,
           "seasonPhase": null
         },
         {
@@ -815,16 +1015,6 @@
           "seasonPhase": null
         },
         {
-          "sport": "hockey",
-          "displayName": "NHL",
-          "leagueKey": "nhl",
-          "dateRangeLabel": "Jun 10–12",
-          "startDate": "2026-06-10T00:00:00.000Z",
-          "endDate": "2026-06-12T00:00:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": "Final"
-        },
-        {
           "sport": "soccer",
           "displayName": "International Friendly",
           "leagueKey": "intl-friendly",
@@ -845,16 +1035,6 @@
           "seasonPhase": null
         },
         {
-          "sport": "soccer",
-          "displayName": "USL",
-          "leagueKey": "usl",
-          "dateRangeLabel": "Jun 10–14",
-          "startDate": "2026-06-10T23:00:00.000Z",
-          "endDate": "2026-06-14T02:00:00.000Z",
-          "eventCount": 16,
-          "seasonPhase": "Regular"
-        },
-        {
           "sport": "hockey",
           "displayName": "ECHL",
           "leagueKey": "echl",
@@ -866,6 +1046,16 @@
         },
         {
           "sport": "soccer",
+          "displayName": "USL",
+          "leagueKey": "usl",
+          "dateRangeLabel": "Jun 11–14",
+          "startDate": "2026-06-11T00:45:00.000Z",
+          "endDate": "2026-06-14T02:00:00.000Z",
+          "eventCount": 16,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "soccer",
           "displayName": "FIFA World Cup",
           "leagueKey": "fifa-world-cup",
           "dateRangeLabel": "Jun 11–14",
@@ -873,6 +1063,16 @@
           "endDate": "2026-06-14T23:00:00.000Z",
           "eventCount": 11,
           "seasonPhase": null
+        },
+        {
+          "sport": "hockey",
+          "displayName": "NHL",
+          "leagueKey": "nhl",
+          "dateRangeLabel": "Jun 12",
+          "startDate": "2026-06-12T00:00:00.000Z",
+          "endDate": "2026-06-12T00:00:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": "Final"
         },
         {
           "sport": "cricket",

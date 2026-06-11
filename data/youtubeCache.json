@@ -1681,22 +1681,22 @@
   },
   "marquee_match:south africa vs mexico fifa world cup preview": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=GL-Mo70_Cfg",
-      "thumbnailUrl": "https://img.youtube.com/vi/GL-Mo70_Cfg/hqdefault.jpg",
-      "durationSeconds": 459,
-      "title": "Mexico’s Biggest Game In 4 Years | Mexico vs South Africa Preview and Predictions",
+      "url": "https://www.youtube.com/watch?v=V1vSB_n9FaM",
+      "thumbnailUrl": "https://img.youtube.com/vi/V1vSB_n9FaM/hqdefault.jpg",
+      "durationSeconds": 421,
+      "title": "John Sutcliffe’s VERDICT of Mexico vs. South Africa + World Cup hopes?! | ESPN FC",
       "source": "youtube",
-      "channel": "Utopic Draco Future",
-      "publishedAt": "1 hour ago"
+      "channel": "ESPN FC",
+      "publishedAt": "3 hours ago"
     },
-    "fetchedAt": "2026-06-10T06:00:29.392Z",
+    "fetchedAt": "2026-06-11T17:34:18.945Z",
     "query": "South Africa vs Mexico FIFA World Cup preview",
     "debug": {
       "searchQuery": "South Africa vs Mexico FIFA World Cup preview",
-      "selectedVideoTitle": "Mexico’s Biggest Game In 4 Years | Mexico vs South Africa Preview and Predictions",
-      "selectedVideoPublishedAt": "1 hour ago",
-      "selectedVideoChannel": "Utopic Draco Future",
-      "rejectedForAgeCount": 0
+      "selectedVideoTitle": "John Sutcliffe’s VERDICT of Mexico vs. South Africa + World Cup hopes?! | ESPN FC",
+      "selectedVideoPublishedAt": "3 hours ago",
+      "selectedVideoChannel": "ESPN FC",
+      "rejectedForAgeCount": 1
     }
   },
   "diamond_league:diamond league — oslo diamond league 2026": {
@@ -1717,6 +1717,46 @@
       "selectedVideoPublishedAt": "5 hours ago",
       "selectedVideoChannel": "FloTrack",
       "rejectedForAgeCount": 0
+    }
+  },
+  "golf_major:us open 2026 preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=-hm4ps2F-rk",
+      "thumbnailUrl": "https://img.youtube.com/vi/-hm4ps2F-rk/hqdefault.jpg",
+      "durationSeconds": 145,
+      "title": "Rinky Hijikata vs. Frances Tiafoe Highlights | Stuttgart 2026 Round 2",
+      "source": "youtube",
+      "channel": "ATP Tour",
+      "publishedAt": "5 hours ago"
+    },
+    "fetchedAt": "2026-06-11T17:34:18.499Z",
+    "query": "US Open 2026 preview",
+    "debug": {
+      "searchQuery": "US Open 2026 preview",
+      "selectedVideoTitle": "Rinky Hijikata vs. Frances Tiafoe Highlights | Stuttgart 2026 Round 2",
+      "selectedVideoPublishedAt": "5 hours ago",
+      "selectedVideoChannel": "ATP Tour",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:barcelona-catalunya grand prix sports june 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=xKeS0O3-uYo",
+      "thumbnailUrl": "https://img.youtube.com/vi/xKeS0O3-uYo/hqdefault.jpg",
+      "durationSeconds": 7406,
+      "title": "F1 Livestream 0610 with Peter Windsor",
+      "source": "youtube",
+      "channel": "Peter Windsor",
+      "publishedAt": "4 hours ago"
+    },
+    "fetchedAt": "2026-06-11T17:34:19.310Z",
+    "query": "Barcelona-Catalunya Grand Prix sports June 2026",
+    "debug": {
+      "searchQuery": "Barcelona-Catalunya Grand Prix sports June 2026",
+      "selectedVideoTitle": "F1 Livestream 0610 with Peter Windsor",
+      "selectedVideoPublishedAt": "4 hours ago",
+      "selectedVideoChannel": "Peter Windsor",
+      "rejectedForAgeCount": 1
     }
   }
 }
