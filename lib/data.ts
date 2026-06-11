@@ -386,8 +386,11 @@ function resolveSoccerBroadcastId(event: SportEvent): [string, string] {
   // USL: CBS Sports Network logo; CBS Sports Network is carried by YouTube TV, so launch YouTube TV
   if (league === "USL" && (reason === "usl-cbsgolazo" || reason === "usl-cbsgolazo-default")) return ["cbsgolazo", "youtubetv"];
 
-  // USL: ESPN+ → ESPN+ text / Disney+
-  if (league === "USL" && reason === "usl-espnplus") return ["espn", "disneyplus"];
+  // USL: ESPN+ → ESPN+ logo / Disney+ (ESPN+ streams via the Disney+ app)
+  if (league === "USL" && reason === "usl-espnplus") return ["espnplus", "disneyplus"];
+
+  // USL: ESPN / ESPN2 linear channels → ESPN logo / YouTube TV
+  if (league === "USL" && reason === "usl-espn") return ["espn", "youtubetv"];
 
   return ["", ""];
 }

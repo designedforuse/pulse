@@ -7742,11 +7742,11 @@
       "homeTeam": "Colorado Springs Switchbacks FC",
       "startTimeLocal": "2026-06-25T00:00:00.000Z",
       "endTimeLocal": "2026-06-25T02:15:00.000Z",
-      "providerId": "disneyplus",
+      "providerId": "youtubetv",
       "isLive": false,
       "source": "soccer-usl",
       "leagueKey": "usl",
-      "providerReason": "usl-espnplus"
+      "providerReason": "usl-espn"
     },
     {
       "id": "soccer-fifa-world-cup-20260625-0100-mexico-at-czechia",

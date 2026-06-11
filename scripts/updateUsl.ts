@@ -116,6 +116,10 @@ export async function fetchUslEvents(): Promise<SoccerFetchResult & { firstMatch
       } else if (broadcastStr.includes("espn+") || broadcastStr.includes("espn plus") || broadcastStr.includes("espn select")) {
         providerId = "disneyplus";
         providerReason = "usl-espnplus";
+      } else if (broadcastStr.includes("espn")) {
+        // ESPN / ESPN2 linear channels (not ESPN+) → ESPN logo, watch on YouTube TV
+        providerId = "youtubetv";
+        providerReason = "usl-espn";
       } else if (broadcastNames.length === 0) {
         providerId = "primevideo";
         providerReason = "usl-cbsgolazo-default";

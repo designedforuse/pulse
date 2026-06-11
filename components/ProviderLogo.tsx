@@ -4,6 +4,7 @@ import { View, Image, Text, StyleSheet } from "react-native";
 const PROVIDER_IMAGES: Record<string, any> = {
   // ── Approved broadcasters ─────────────────────────────────────────────────
   espn:          require("@/assets/providers/espn.png"),
+  espnplus:      require("@/assets/providers/espnplus.png"),
   nbcsn:         require("@/assets/providers/nbcsn.png"),
   cbs:           require("@/assets/providers/cbssn.png"),
   cbssn:         require("@/assets/providers/cbssn.png"),
@@ -39,6 +40,7 @@ const PROVIDER_IMAGES: Record<string, any> = {
 const LOGO_SCALE: Record<string, number> = {
   // Approved broadcasters
   espn:          0.65,
+  espnplus:      0.65,
   nbcsn:         1.0,
   cbs:           1.2,
   cbssn:         1.2,
@@ -72,6 +74,7 @@ const LOGO_SCALE: Record<string, number> = {
 const LOGO_ASPECT: Record<string, number> = {
   // Approved broadcasters
   espn:          4.05,
+  espnplus:      4.98,
   nbcsn:         3.61,
   cbs:           4.82,
   cbssn:         4.82,
