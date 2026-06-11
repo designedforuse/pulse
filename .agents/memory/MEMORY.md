@@ -1,4 +1,5 @@
 - [Adding a new providerId](new-provider-id-checklist.md) — a new providerId must be registered in 4 places or the card brand pill / launcher / filter silently no-op.
+- [ESPN has no live USL](espn-usl-no-live.md) — ESPN free feed gives USL fixtures + finals only, never in-progress; "no live USL score mid-match" is not a bug (finals-only by choice).
 - [Cricket → Willow exclusive](cricket-provider-willow.md) — all cricket displays willowtv/launches flosports; resolveCricketBroadcastId is the runtime authority (ignores stored providerId).
 - [Flag rendering on event cards](flag-rendering.md) — cards use ESPN CDN image flags (3-letter FIFA codes, curl-verify HTTP 200); flag helpers return URLs, never emoji; some non-card surfaces keep emoji.
 - [Multi-day session events](multi-day-session-events.md) — WRC rallies split into one card/day, each window capped min(start+8h, realEnd); carry dayNumber/totalDays, don't recompute day from elapsed time.
