@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-11T18:57:43.237Z",
+  "lastUpdated": "2026-06-12T13:29:05.637Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -136,9 +136,9 @@
   "challengeCupUpdated": 0,
   "challengeCupPruned": 0,
   "challengeCupSourceUsed": "ical",
-  "mlrCount": 12,
+  "mlrCount": 9,
   "mlrAdded": 0,
-  "mlrUpdated": 12,
+  "mlrUpdated": 9,
   "mlrPruned": 0,
   "mlrSourceUsed": "hardcoded",
   "championsLeagueCount": 1,
@@ -1049,62 +1049,6 @@
       "providerReason": "mls-appletv"
     },
     {
-      "id": "soccer-mls-20260425-1700-atlanta-united-fc-at-toronto-fc",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Atlanta United FC",
-      "homeTeam": "Toronto FC",
-      "startTimeLocal": "2026-04-25T17:00:00.000Z",
-      "endTimeLocal": "2026-04-25T19:15:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260425-1700-atlanta-united-fc-at-toronto-fc",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Atlanta United FC",
-      "homeTeam": "Toronto FC",
-      "startTimeLocal": "2026-04-25T17:00:00.000Z",
-      "endTimeLocal": "2026-04-25T19:15:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260425-1830-new-york-city-fc-at-cf-montr-al",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "New York City FC",
-      "homeTeam": "CF Montréal",
-      "startTimeLocal": "2026-04-25T18:30:00.000Z",
-      "endTimeLocal": "2026-04-25T20:45:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260425-1830-new-york-city-fc-at-cf-montr-al",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "New York City FC",
-      "homeTeam": "CF Montréal",
-      "startTimeLocal": "2026-04-25T18:30:00.000Z",
-      "endTimeLocal": "2026-04-25T20:45:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
       "id": "soccer-mls-20260425-1830-new-york-city-fc-at-cf-montr-al",
       "sport": "soccer",
       "league": "MLS",
@@ -1315,34 +1259,6 @@
       "providerReason": "mls-appletv"
     },
     {
-      "id": "soccer-mls-20260502-1700-san-jose-earthquakes-at-toronto-fc",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "San Jose Earthquakes",
-      "homeTeam": "Toronto FC",
-      "startTimeLocal": "2026-05-02T17:00:00.000Z",
-      "endTimeLocal": "2026-05-02T19:15:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260502-1700-san-jose-earthquakes-at-toronto-fc",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "San Jose Earthquakes",
-      "homeTeam": "Toronto FC",
-      "startTimeLocal": "2026-05-02T17:00:00.000Z",
-      "endTimeLocal": "2026-05-02T19:15:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
       "id": "soccer-mls-20260502-1830-seattle-sounders-fc-at-sporting-kansas-city",
       "sport": "soccer",
       "league": "MLS",
@@ -1350,62 +1266,6 @@
       "homeTeam": "Sporting Kansas City",
       "startTimeLocal": "2026-05-02T18:30:00.000Z",
       "endTimeLocal": "2026-05-02T20:45:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260502-1830-seattle-sounders-fc-at-sporting-kansas-city",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Seattle Sounders FC",
-      "homeTeam": "Sporting Kansas City",
-      "startTimeLocal": "2026-05-02T18:30:00.000Z",
-      "endTimeLocal": "2026-05-02T20:45:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260502-1830-seattle-sounders-fc-at-sporting-kansas-city",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Seattle Sounders FC",
-      "homeTeam": "Sporting Kansas City",
-      "startTimeLocal": "2026-05-02T18:30:00.000Z",
-      "endTimeLocal": "2026-05-02T20:45:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260502-2045-portland-timbers-at-real-salt-lake",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Portland Timbers",
-      "homeTeam": "Real Salt Lake",
-      "startTimeLocal": "2026-05-02T20:45:00.000Z",
-      "endTimeLocal": "2026-05-02T23:00:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260502-2045-portland-timbers-at-real-salt-lake",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Portland Timbers",
-      "homeTeam": "Real Salt Lake",
-      "startTimeLocal": "2026-05-02T20:45:00.000Z",
-      "endTimeLocal": "2026-05-02T23:00:00.000Z",
       "providerId": "appletv",
       "isLive": false,
       "source": "soccer-mls",
@@ -1581,34 +1441,6 @@
       "providerReason": "mls-appletv"
     },
     {
-      "id": "soccer-mls-20260503-1900-d-c-united-at-new-york-city-fc",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "D.C. United",
-      "homeTeam": "New York City FC",
-      "startTimeLocal": "2026-05-03T19:00:00.000Z",
-      "endTimeLocal": "2026-05-03T21:15:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260503-1900-d-c-united-at-new-york-city-fc",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "D.C. United",
-      "homeTeam": "New York City FC",
-      "startTimeLocal": "2026-05-03T19:00:00.000Z",
-      "endTimeLocal": "2026-05-03T21:15:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
       "id": "soccer-mls-20260503-2130-st-louis-city-sc-at-austin-fc",
       "sport": "soccer",
       "league": "MLS",
@@ -1616,20 +1448,6 @@
       "homeTeam": "Austin FC",
       "startTimeLocal": "2026-05-03T21:30:00.000Z",
       "endTimeLocal": "2026-05-03T23:45:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
-    },
-    {
-      "id": "soccer-mls-20260509-1700-inter-miami-cf-at-toronto-fc",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Inter Miami CF",
-      "homeTeam": "Toronto FC",
-      "startTimeLocal": "2026-05-09T17:00:00.000Z",
-      "endTimeLocal": "2026-05-09T19:15:00.000Z",
       "providerId": "appletv",
       "isLive": false,
       "source": "soccer-mls",
@@ -3158,20 +2976,6 @@
       "leagueKey": "top14"
     },
     {
-      "id": "rugby-mlr-20260530-2000-seattle-seawolves-at-anthem-rc",
-      "sport": "rugby",
-      "league": "MLR",
-      "awayTeam": "Seattle Seawolves",
-      "homeTeam": "Anthem RC",
-      "startTimeLocal": "2026-05-30T20:00:00.000Z",
-      "endTimeLocal": "2026-05-30T22:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "rugby-mlr",
-      "leagueKey": "mlr",
-      "providerReason": "mlr-disneyplus"
-    },
-    {
       "id": "soccer-nwsl-20260530-2000-utah-royals-at-portland-thorns",
       "sport": "soccer",
       "league": "NWSL",
@@ -3185,6 +2989,20 @@
       "leagueKey": "nwsl",
       "providerReason": "nwsl-ion-prime",
       "broadcastNetworks": "ION"
+    },
+    {
+      "id": "rugby-mlr-20260530-2000-chicago-hounds-at-old-glory-dc",
+      "sport": "rugby",
+      "league": "MLR",
+      "awayTeam": "Chicago Hounds",
+      "homeTeam": "Old Glory DC",
+      "startTimeLocal": "2026-05-30T20:00:00.000Z",
+      "endTimeLocal": "2026-05-30T22:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "rugby-mlr",
+      "leagueKey": "mlr",
+      "providerReason": "mlr-disneyplus"
     },
     {
       "id": "soccer-usl-20260530-2200-detroit-city-fc-at-charleston-battery",
@@ -3574,6 +3392,20 @@
       "broadcastNetworks": "CBSSN"
     },
     {
+      "id": "rugby-mlr-20260531-1700-california-legion-at-anthem-rc",
+      "sport": "rugby",
+      "league": "MLR",
+      "awayTeam": "California Legion",
+      "homeTeam": "Anthem RC",
+      "startTimeLocal": "2026-05-31T17:00:00.000Z",
+      "endTimeLocal": "2026-05-31T19:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "rugby-mlr",
+      "leagueKey": "mlr",
+      "providerReason": "mlr-disneyplus"
+    },
+    {
       "id": "soccer-usl-20260531-1800-brooklyn-fc-at-sporting-jax",
       "sport": "soccer",
       "league": "USL",
@@ -3649,20 +3481,6 @@
       "broadcastNetworks": "TBS, Tele, Universo, HBO Max, Peacock"
     },
     {
-      "id": "rugby-mlr-20260531-2000-california-legion-at-new-england-free-jacks",
-      "sport": "rugby",
-      "league": "MLR",
-      "awayTeam": "California Legion",
-      "homeTeam": "New England Free Jacks",
-      "startTimeLocal": "2026-05-31T20:00:00.000Z",
-      "endTimeLocal": "2026-05-31T22:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "rugby-mlr",
-      "leagueKey": "mlr",
-      "providerReason": "mlr-disneyplus"
-    },
-    {
       "id": "echl-web-26578",
       "sport": "hockey",
       "league": "ECHL",
@@ -3690,11 +3508,11 @@
       "broadcastNetworks": "Victory+"
     },
     {
-      "id": "rugby-mlr-20260601-0000-old-glory-dc-at-chicago-hounds",
+      "id": "rugby-mlr-20260601-0000-new-england-free-jacks-at-seattle-seawolves",
       "sport": "rugby",
       "league": "MLR",
-      "awayTeam": "Old Glory DC",
-      "homeTeam": "Chicago Hounds",
+      "awayTeam": "New England Free Jacks",
+      "homeTeam": "Seattle Seawolves",
       "startTimeLocal": "2026-06-01T00:00:00.000Z",
       "endTimeLocal": "2026-06-01T02:15:00.000Z",
       "providerId": "disneyplus",
@@ -4842,11 +4660,11 @@
       "broadcastNetworks": "ESPN Deportes, ESPN Unlmtd"
     },
     {
-      "id": "rugby-mlr-20260607-2000-new-england-free-jacks-at-chicago-hounds",
+      "id": "rugby-mlr-20260607-2000-chicago-hounds-at-new-england-free-jacks",
       "sport": "rugby",
       "league": "MLR",
-      "awayTeam": "New England Free Jacks",
-      "homeTeam": "Chicago Hounds",
+      "awayTeam": "Chicago Hounds",
+      "homeTeam": "New England Free Jacks",
       "startTimeLocal": "2026-06-07T20:00:00.000Z",
       "endTimeLocal": "2026-06-07T22:15:00.000Z",
       "providerId": "disneyplus",
@@ -4881,20 +4699,6 @@
       "leagueKey": "intl-friendly",
       "providerReason": "intl-friendly-espn",
       "broadcastNetworks": "ESPN Deportes, ESPN Unlmtd"
-    },
-    {
-      "id": "rugby-mlr-20260608-0000-california-legion-at-seattle-seawolves",
-      "sport": "rugby",
-      "league": "MLR",
-      "awayTeam": "California Legion",
-      "homeTeam": "Seattle Seawolves",
-      "startTimeLocal": "2026-06-08T00:00:00.000Z",
-      "endTimeLocal": "2026-06-08T02:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "rugby-mlr",
-      "leagueKey": "mlr",
-      "providerReason": "mlr-disneyplus"
     },
     {
       "id": "ahl-1029055",
@@ -4976,6 +4780,20 @@
       "seriesName": "Sri Lanka tour of West Indies 2026",
       "gender": "men",
       "isIccT20Wc": false
+    },
+    {
+      "id": "rugby-mlr-20260608-2100-california-legion-at-seattle-seawolves",
+      "sport": "rugby",
+      "league": "MLR",
+      "awayTeam": "California Legion",
+      "homeTeam": "Seattle Seawolves",
+      "startTimeLocal": "2026-06-08T21:00:00.000Z",
+      "endTimeLocal": "2026-06-08T23:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "rugby-mlr",
+      "leagueKey": "mlr",
+      "providerReason": "mlr-disneyplus"
     },
     {
       "id": "ahl-1029056",
@@ -5475,20 +5293,6 @@
       "leagueKey": "top14"
     },
     {
-      "id": "rugby-mlr-20260613-2000-chicago-hounds-at-anthem-rc",
-      "sport": "rugby",
-      "league": "MLR",
-      "awayTeam": "Chicago Hounds",
-      "homeTeam": "Anthem RC",
-      "startTimeLocal": "2026-06-13T20:00:00.000Z",
-      "endTimeLocal": "2026-06-13T22:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "rugby-mlr",
-      "leagueKey": "mlr",
-      "providerReason": "mlr-disneyplus"
-    },
-    {
       "id": "soccer-usl-20260613-2200-rhode-island-fc-at-loudoun-united-fc",
       "sport": "soccer",
       "league": "USL",
@@ -5844,20 +5648,6 @@
       "source": "ahl-hockeytech"
     },
     {
-      "id": "rugby-mlr-20260614-2000-new-england-free-jacks-at-old-glory-dc",
-      "sport": "rugby",
-      "league": "MLR",
-      "awayTeam": "New England Free Jacks",
-      "homeTeam": "Old Glory DC",
-      "startTimeLocal": "2026-06-14T20:00:00.000Z",
-      "endTimeLocal": "2026-06-14T22:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "rugby-mlr",
-      "leagueKey": "mlr",
-      "providerReason": "mlr-disneyplus"
-    },
-    {
       "id": "soccer-fifa-world-cup-20260614-2000-japan-at-netherlands",
       "sport": "soccer",
       "league": "FIFA World Cup",
@@ -5908,20 +5698,6 @@
       "providerReason": "national"
     },
     {
-      "id": "rugby-mlr-20260615-0000-seattle-seawolves-at-california-legion",
-      "sport": "rugby",
-      "league": "MLR",
-      "awayTeam": "Seattle Seawolves",
-      "homeTeam": "California Legion",
-      "startTimeLocal": "2026-06-15T00:00:00.000Z",
-      "endTimeLocal": "2026-06-15T02:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "rugby-mlr",
-      "leagueKey": "mlr",
-      "providerReason": "mlr-disneyplus"
-    },
-    {
       "id": "cricket-t20i-ysrolv",
       "cricketMatchId": "1538309",
       "sport": "cricket",
@@ -5956,6 +5732,20 @@
       "leagueKey": "fifa-world-cup",
       "providerReason": "fifa-world-cup-fs1",
       "broadcastNetworks": "FS1, Tele, Peacock"
+    },
+    {
+      "id": "rugby-mlr-20260615-0200-california-legion-at-seattle-seawolves",
+      "sport": "rugby",
+      "league": "MLR",
+      "awayTeam": "California Legion",
+      "homeTeam": "Seattle Seawolves",
+      "startTimeLocal": "2026-06-15T02:00:00.000Z",
+      "endTimeLocal": "2026-06-15T04:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "rugby-mlr",
+      "leagueKey": "mlr",
+      "providerReason": "mlr-disneyplus"
     },
     {
       "id": "soccer-fifa-world-cup-20260615-1600-cape-verde-at-spain",
@@ -6001,6 +5791,20 @@
       "leagueKey": "fifa-world-cup",
       "providerReason": "fifa-world-cup-fs1",
       "broadcastNetworks": "FS1, Tele, Peacock"
+    },
+    {
+      "id": "rugby-mlr-20260616-0000-old-glory-dc-at-chicago-hounds",
+      "sport": "rugby",
+      "league": "MLR",
+      "awayTeam": "Old Glory DC",
+      "homeTeam": "Chicago Hounds",
+      "startTimeLocal": "2026-06-16T00:00:00.000Z",
+      "endTimeLocal": "2026-06-16T02:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "rugby-mlr",
+      "leagueKey": "mlr",
+      "providerReason": "mlr-disneyplus"
     },
     {
       "id": "echl-web-26586",
@@ -6795,20 +6599,6 @@
       "broadcastNetworks": "FOX, Tele, Peacock"
     },
     {
-      "id": "rugby-mlr-20260620-2000-anthem-rc-at-new-england-free-jacks",
-      "sport": "rugby",
-      "league": "MLR",
-      "awayTeam": "Anthem RC",
-      "homeTeam": "New England Free Jacks",
-      "startTimeLocal": "2026-06-20T20:00:00.000Z",
-      "endTimeLocal": "2026-06-20T22:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "rugby-mlr",
-      "leagueKey": "mlr",
-      "providerReason": "mlr-disneyplus"
-    },
-    {
       "id": "soccer-fifa-world-cup-20260620-2000-ivory-coast-at-germany",
       "sport": "soccer",
       "league": "FIFA World Cup",
@@ -6914,6 +6704,20 @@
       "leagueKey": "fifa-world-cup",
       "providerReason": "fifa-world-cup-fs1",
       "broadcastNetworks": "FS1, Tele, Peacock"
+    },
+    {
+      "id": "rugby-mlr-20260621-0000-tbd-at-tbd",
+      "sport": "rugby",
+      "league": "MLR",
+      "awayTeam": "TBD",
+      "homeTeam": "TBD",
+      "startTimeLocal": "2026-06-21T00:00:00.000Z",
+      "endTimeLocal": "2026-06-21T02:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "rugby-mlr",
+      "leagueKey": "mlr",
+      "providerReason": "mlr-disneyplus"
     },
     {
       "id": "cricket-mlc-ys7xmu",
@@ -7151,20 +6955,6 @@
       "source": "ahl-hockeytech"
     },
     {
-      "id": "rugby-mlr-20260621-2000-california-legion-at-chicago-hounds",
-      "sport": "rugby",
-      "league": "MLR",
-      "awayTeam": "California Legion",
-      "homeTeam": "Chicago Hounds",
-      "startTimeLocal": "2026-06-21T20:00:00.000Z",
-      "endTimeLocal": "2026-06-21T22:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "rugby-mlr",
-      "leagueKey": "mlr",
-      "providerReason": "mlr-disneyplus"
-    },
-    {
       "id": "cricket-mlc-ys7xmv",
       "cricketMatchId": "1528562",
       "sport": "cricket",
@@ -7199,20 +6989,6 @@
       "leagueKey": "fifa-world-cup",
       "providerReason": "fifa-world-cup-fs1",
       "broadcastNetworks": "FS1, Tele, Peacock"
-    },
-    {
-      "id": "rugby-mlr-20260622-0000-seattle-seawolves-at-old-glory-dc",
-      "sport": "rugby",
-      "league": "MLR",
-      "awayTeam": "Seattle Seawolves",
-      "homeTeam": "Old Glory DC",
-      "startTimeLocal": "2026-06-22T00:00:00.000Z",
-      "endTimeLocal": "2026-06-22T02:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "rugby-mlr",
-      "leagueKey": "mlr",
-      "providerReason": "mlr-disneyplus"
     },
     {
       "id": "cricket-mlc-ys7xmw",
@@ -8874,24 +8650,6 @@
       "sessionTitle": "UTMB — Val d'Aran",
       "competitionType": "international",
       "tournamentName": "UTMB — Val d'Aran"
-    },
-    {
-      "id": "cycling-epic-series-andorra-epic-pyrenees-2026",
-      "sport": "cycling",
-      "league": "Epic Series",
-      "awayTeam": "",
-      "homeTeam": "Andorra Epic Pyrenees",
-      "startTimeLocal": "2026-07-02T05:00:00.000Z",
-      "endTimeLocal": "2026-07-05T13:00:00.000Z",
-      "providerId": "flosports",
-      "providerReason": "flosports-broadcast",
-      "isLive": false,
-      "source": "epic-series-hardcoded",
-      "leagueKey": "epic-series",
-      "eventType": "session",
-      "sessionTitle": "Andorra Epic Pyrenees",
-      "competitionType": "international",
-      "tournamentName": "Andorra Epic Pyrenees"
     },
     {
       "id": "cycling-epic-series-andorra-epic-pyrenees-2026",
@@ -10902,24 +10660,6 @@
       "tournamentName": "Swiss Epic"
     },
     {
-      "id": "cycling-epic-series-swiss-epic-2026",
-      "sport": "cycling",
-      "league": "Epic Series",
-      "awayTeam": "",
-      "homeTeam": "Swiss Epic",
-      "startTimeLocal": "2026-08-19T05:00:00.000Z",
-      "endTimeLocal": "2026-08-23T13:00:00.000Z",
-      "providerId": "flosports",
-      "providerReason": "flosports-broadcast",
-      "isLive": false,
-      "source": "epic-series-hardcoded",
-      "leagueKey": "epic-series",
-      "eventType": "session",
-      "sessionTitle": "Swiss Epic",
-      "competitionType": "international",
-      "tournamentName": "Swiss Epic"
-    },
-    {
       "id": "athletics-diamond-league-lausanne-2026",
       "sport": "athletics",
       "league": "Diamond League",
@@ -11926,24 +11666,6 @@
       "sessionTitle": "GTWS — Muju Trail Grand Finale",
       "competitionType": "international",
       "tournamentName": "GTWS — Muju Trail Grand Finale"
-    },
-    {
-      "id": "cycling-epic-series-fnb-wines2whales-2026",
-      "sport": "cycling",
-      "league": "Epic Series",
-      "awayTeam": "",
-      "homeTeam": "FNB Wines2Whales",
-      "startTimeLocal": "2026-11-06T05:00:00.000Z",
-      "endTimeLocal": "2026-11-15T13:00:00.000Z",
-      "providerId": "flosports",
-      "providerReason": "flosports-broadcast",
-      "isLive": false,
-      "source": "epic-series-hardcoded",
-      "leagueKey": "epic-series",
-      "eventType": "session",
-      "sessionTitle": "FNB Wines2Whales",
-      "competitionType": "international",
-      "tournamentName": "FNB Wines2Whales"
     },
     {
       "id": "cycling-epic-series-fnb-wines2whales-2026",
