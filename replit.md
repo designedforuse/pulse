@@ -10,7 +10,7 @@ I prefer clear and concise information. When making changes, please prioritize c
 - **Frontend:** Expo Router (file-based navigation). State shared via React Context; server state via React Query. User preferences persisted with AsyncStorage.
 - **Backend:** Express server that serves a landing page and the core API (events, live scores, narrative cards, SVNS matches, refresh status, debug).
 - **Data flow:** An API-first approach auto-generates schedules from many sports leagues. `EventsProvider` fetches and merges API-sourced events with local data; `data/masterGuide.json` is a static fallback.
-- **Schedule generation:** Node scripts under `scripts/` fetch, merge, normalize, and prune each league's schedule into `data/generatedEvents.json`. The server refreshes all schedules twice daily via `node-cron` (6 AM / 6 PM); a manual refresh button lives in Settings.
+- **Schedule generation:** Node scripts under `scripts/` fetch, merge, normalize, and prune each league's schedule into `data/generatedEvents.json`. Schedules are refreshed manually via a button in Settings (`POST /api/refresh`); the automatic twice-daily cron was removed to reduce idle compute.
 
 ### Key features
 - **Navigation:** 3-tab interface (Watch, Rituals, Explore); Watch is default.
