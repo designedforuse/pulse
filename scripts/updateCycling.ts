@@ -76,6 +76,18 @@ const GRAND_TOURS: GrandTour[] = [
     totalStages: 21,
     restDays: ["2026-08-31", "2026-09-07"],
   },
+  {
+    // Renamed from the Critérium du Dauphiné. The marquee final warm-up stage
+    // race before the Tour de France. 8 stages, no rest days.
+    name: "Tour Auvergne-Rhône-Alpes",
+    route: "Vizille → Plateau de Solaison, France",
+    startUtc: "2026-06-07T12:00:00.000Z",
+    endUtc: "2026-06-14T22:00:00.000Z",
+    providerId: "flosports",
+    providerReason: "flosports-broadcast",
+    totalStages: 8,
+    restDays: [],
+  },
 ];
 
 // Each daily stage is modeled as its own event (mirrors the per-round golf

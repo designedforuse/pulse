@@ -21,3 +21,20 @@ showed the wrong stage until fixed.
 **How to apply:** in any cycling card/stage label, prefer the sessionTitle stage
 number; only show "Final standings" once the *final* stage (currentStage ===
 total) has ended.
+
+# Adding a stage race (incl. non-grand-tours)
+
+The `GRAND_TOURS` array in `scripts/updateCycling.ts` is the generic bucket for
+ALL multi-stage road races, not just the Big Three. One-week UCI WorldTour races
+(e.g. the Critérium du Dauphiné, renamed **Tour Auvergne-Rhône-Alpes** in 2026,
+June 7–14, 8 stages) go here too — set `totalStages` and `restDays: []` and the
+per-stage generator + `cycling-grand-tour-*` prune/merge handle the rest.
+`league` stays `"Grand Tour"` (one of two cycling filter buckets, the other being
+`"Epic Series"`); the user-facing name is `tournamentName`/`homeTeam`, so the
+"Grand Tour" league label is just the internal grouping. US broadcaster = FloBikes
+→ `providerId: "flosports"`.
+**Why:** the prune/merge logic in `mergeCyclingEvents` keys entirely off the
+`cycling-grand-tour-` id prefix; a separate model/prefix would bypass it.
+Optional: GC leader can be surfaced per stage via `data/cyclingLeader.json`
+(keyed by the umbrella id `cycling-grand-tour-<slug>-2026`; matches stages by
+prefix) — skip it for near-finished races since the leader goes stale daily.
