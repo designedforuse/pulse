@@ -8,9 +8,9 @@ export const modules: ModuleMap = {
   "./components/mockups/ritual-cards/CompactRow.tsx": () => import("../components/mockups/ritual-cards/CompactRow.tsx"),
   "./components/mockups/ritual-cards/HeroGradient.tsx": () => import("../components/mockups/ritual-cards/HeroGradient.tsx"),
   "./components/mockups/ritual-cards/SportPalette.tsx": () => import("../components/mockups/ritual-cards/SportPalette.tsx"),
+  "./components/mockups/reference/LogoReference.tsx": () => import("../components/mockups/reference/LogoReference.tsx"),
   "./components/mockups/watch-variants/BroadcastGrid.tsx": () => import("../components/mockups/watch-variants/BroadcastGrid.tsx"),
   "./components/mockups/watch-variants/CommandDashboard.tsx": () => import("../components/mockups/watch-variants/CommandDashboard.tsx"),
   "./components/mockups/watch-variants/SportSignal.tsx": () => import("../components/mockups/watch-variants/SportSignal.tsx"),
-  "./components/mockups/watch-variants/TonightsLineCard.tsx": () => import("../components/mockups/watch-variants/TonightsLineCard.tsx"),
-  "./components/mockups/reference/LogoReference.tsx": () => import("../components/mockups/reference/LogoReference.tsx")
+  "./components/mockups/watch-variants/TonightsLineCard.tsx": () => import("../components/mockups/watch-variants/TonightsLineCard.tsx")
 };

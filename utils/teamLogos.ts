@@ -402,6 +402,17 @@ const TOP14_LOGO_MAP: Record<string, string> = {
   "Racing Métro":   lnr("racing-92"),
 };
 
+// Official MLC team logos from the Major League Cricket match-center feed
+// (splcms.blob.core.windows.net — the same Azure CDN majorleaguecricket.com uses).
+const MLC_LOGO_MAP: Record<string, string> = {
+  "Los Angeles Knight Riders": "https://splcms.blob.core.windows.net/cricketnest/client_1/1_association/teams/391.png",
+  "MI New York":               "https://splcms.blob.core.windows.net/cricketnest/client_1/1_association/teams/427.png",
+  "San Francisco Unicorns":    "https://splcms.blob.core.windows.net/cricketnest/client_1/1_association/teams/589.png",
+  "Seattle Orcas":             "https://splcms.blob.core.windows.net/cricketnest/client_1/1_association/teams/595.png",
+  "Texas Super Kings":         "https://splcms.blob.core.windows.net/cricketnest/client_1/1_association/teams/674.png",
+  "Washington Freedom":        "https://splcms.blob.core.windows.net/cricketnest/client_1/1_association/teams/729.png",
+};
+
 const CRICKET_COUNTRY_FLAGS: Record<string, string> = {
   "India": "https://a.espncdn.com/i/teamlogos/countries/500/ind.png",
   "Australia": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
@@ -651,6 +662,10 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
       "Sunrisers Hyderabad":        "https://documents.iplt20.com/ipl/SRH/Logos/Logooutline/SRHoutline.png",
     };
     return IPL_URLS[teamName] || null;
+  }
+
+  if (league === "MLC") {
+    return MLC_LOGO_MAP[teamName] || null;
   }
 
   if (sportLower === "cricket" || league === "ICC") {
