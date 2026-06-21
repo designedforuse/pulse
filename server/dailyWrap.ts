@@ -1174,11 +1174,60 @@ function knockoutCricketHeadline(winner: string, round: string, comp: string): s
   }
 }
 
+// Some feeds compress the result text into shorthand (e.g. "SF won by 7 wkts
+// (13b rem)"). The Daily Wrap headline is read aloud by ElevenLabs, so these
+// abbreviations get spelled out letter-by-letter ("S-F", "wkts"). Expand them
+// into full words so the narration sounds natural.
+function expandTeamCode(code: string, home?: string, away?: string): string {
+  const norm = code.trim();
+  if (!norm || /\s/.test(norm)) return norm; // already a multi-word name
+  const upper = norm.toUpperCase().replace(/[^A-Z]/g, "");
+  if (upper.length < 2) return norm;
+  for (const team of [home, away]) {
+    if (!team) continue;
+    if (team.toLowerCase() === norm.toLowerCase()) return team;
+    const inits = team
+      .split(/\s+/)
+      .map((w) => w[0]?.toUpperCase() || "")
+      .join("");
+    if (inits.startsWith(upper) || upper.startsWith(inits)) return team;
+  }
+  return norm;
+}
+
+function expandCricketAbbreviations(text: string): string {
+  return text
+    .replace(/(\d+)\s*b\b/gi, "$1 balls")
+    .replace(/\bwkts\b/gi, "wickets")
+    .replace(/\bwkt\b/gi, "wicket")
+    .replace(/\bovs\b/gi, "overs")
+    .replace(/\bov\b/gi, "over")
+    .replace(/\brem\b\.?/gi, "remaining")
+    .replace(/\bD\/?LS?\b/gi, "Duckworth-Lewis")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function expandCricketHeadline(text: string, home?: string, away?: string): string {
+  let s = text.trim();
+  // Expand a leading team code (the part before the result verb).
+  const m = s.match(/^(.+?)\s+(won|beat|tied|drew|drawn|lost)\b/i);
+  if (m) {
+    const expanded = expandTeamCode(m[1], home, away);
+    s = expanded + s.slice(m[1].length);
+  }
+  return expandCricketAbbreviations(s);
+}
+
 function cricketEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> | null {
   // CricAPI result rows carry the human-readable outcome in `period`
   // (e.g. "Royal Challengers Bengaluru won by 5 wickets") rather than numeric
   // scores, with the innings totals in cricketHome/cricketAway.
-  const resultText = cleanCricketResult((score.period || "").trim());
+  const resultText = expandCricketHeadline(
+    cleanCricketResult((score.period || "").trim()),
+    event.homeTeam,
+    event.awayTeam,
+  );
   const hasResult = !!resultText && !/^final$/i.test(resultText);
   const scoreLine = [score.cricketHome, score.cricketAway].filter(Boolean).join(" · ");
   if (!hasResult && !scoreLine) return null;

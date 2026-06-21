@@ -30,3 +30,7 @@ Backend synthesizes story headlines via ElevenLabs and streams MP3 from `GET /ap
   **Why:** autoplay narration must not depend on download timing; the immediate play() works on some devices/platforms but not all.
 
 - **Open abuse surface (known, not yet addressed):** the audio endpoint is unauthenticated and hits a paid API — no rate limiting / cache TTL. Revisit if cost or tmpdir growth becomes a concern.
+
+- **Spell out abbreviations in headlines — TTS reads them letter-by-letter.** The narrated text IS the `entry.editorial` headline. Cricket headlines come from the raw feed result text (`score.period`), which arrives as shorthand ("SF won by 7 wkts (13b rem)") and gets read as "S-F … w-k-t-s". `cricketEditorial` in `server/dailyWrap.ts` now expands it (cricket terms + a leading team code matched against the fixture's home/away teams) before it becomes the headline.
+  **Why:** ElevenLabs voices acronyms/abbreviations literally; a club truncation like "SF" must become the full team name, but a true acronym league name (MLC, IPL) is fine left as-is (people say those as letters).
+  **How to apply:** any new sport whose headline is built from a raw feed status string (not from full team-name fields) needs the same spoken-form expansion; sports that build headlines from `event.homeTeam`/`awayTeam` already read cleanly.
