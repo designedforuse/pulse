@@ -97,8 +97,8 @@ export const SEASON_PHASES_2026: Record<string, PhaseWindow[]> = {
   ],
   mlr: [
     { label: "Regular", start: "2026-02-21", end: "2026-06-08" },
-    { label: "Playoffs", start: "2026-06-14", end: "2026-06-19" },
-    { label: "Final", start: "2026-06-20", end: "2026-06-20" },
+    { label: "Playoffs", start: "2026-06-14", end: "2026-06-20" },
+    { label: "Final", start: "2026-06-21", end: "2026-06-21" },
   ],
   urc: [
     { label: "Regular", start: "2025-09-26", end: "2026-05-17" },
@@ -144,7 +144,7 @@ export const CHAMPIONSHIP_FINALS_2026: ChampionshipFinal[] = [
   { leagueKey: "superrugby", sport: "rugby", name: "Super Rugby Final", date: "2026-06-20", monthKey: "2026-06", emoji: "🏆" },
   { leagueKey: "premiership", sport: "rugby", name: "Premiership Final", date: "2026-06-13", monthKey: "2026-06", emoji: "🏆" },
   { leagueKey: "top14", sport: "rugby", name: "Top 14 Final", date: "2026-06-26", monthKey: "2026-06", emoji: "🏆" },
-  { leagueKey: "mlr", sport: "rugby", name: "MLR Championship", date: "2026-06-20", monthKey: "2026-06", emoji: "🏆" },
+  { leagueKey: "mlr", sport: "rugby", name: "MLR Championship", date: "2026-06-21", monthKey: "2026-06", emoji: "🏆" },
 ];
 
 function dateOnlyMs(s: string): number {

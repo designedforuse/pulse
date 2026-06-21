@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-12T13:29:05.637Z",
+  "lastUpdated": "2026-06-21T16:53:05.088Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -136,10 +136,10 @@
   "challengeCupUpdated": 0,
   "challengeCupPruned": 0,
   "challengeCupSourceUsed": "ical",
-  "mlrCount": 9,
-  "mlrAdded": 0,
-  "mlrUpdated": 9,
-  "mlrPruned": 0,
+  "mlrCount": 5,
+  "mlrAdded": 1,
+  "mlrUpdated": 4,
+  "mlrPruned": 5,
   "mlrSourceUsed": "hardcoded",
   "championsLeagueCount": 1,
   "championsLeagueAdded": 0,
@@ -2966,20 +2966,6 @@
       "broadcastNetworks": "ION"
     },
     {
-      "id": "rugby-mlr-20260530-2000-chicago-hounds-at-old-glory-dc",
-      "sport": "rugby",
-      "league": "MLR",
-      "awayTeam": "Chicago Hounds",
-      "homeTeam": "Old Glory DC",
-      "startTimeLocal": "2026-05-30T20:00:00.000Z",
-      "endTimeLocal": "2026-05-30T22:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "rugby-mlr",
-      "leagueKey": "mlr",
-      "providerReason": "mlr-disneyplus"
-    },
-    {
       "id": "soccer-usl-20260530-2200-detroit-city-fc-at-charleston-battery",
       "sport": "soccer",
       "league": "USL",
@@ -3367,20 +3353,6 @@
       "broadcastNetworks": "CBSSN"
     },
     {
-      "id": "rugby-mlr-20260531-1700-california-legion-at-anthem-rc",
-      "sport": "rugby",
-      "league": "MLR",
-      "awayTeam": "California Legion",
-      "homeTeam": "Anthem RC",
-      "startTimeLocal": "2026-05-31T17:00:00.000Z",
-      "endTimeLocal": "2026-05-31T19:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "rugby-mlr",
-      "leagueKey": "mlr",
-      "providerReason": "mlr-disneyplus"
-    },
-    {
       "id": "soccer-usl-20260531-1800-brooklyn-fc-at-sporting-jax",
       "sport": "soccer",
       "league": "USL",
@@ -3481,20 +3453,6 @@
       "leagueKey": "nwsl",
       "providerReason": "nwsl-victory",
       "broadcastNetworks": "Victory+"
-    },
-    {
-      "id": "rugby-mlr-20260601-0000-new-england-free-jacks-at-seattle-seawolves",
-      "sport": "rugby",
-      "league": "MLR",
-      "awayTeam": "New England Free Jacks",
-      "homeTeam": "Seattle Seawolves",
-      "startTimeLocal": "2026-06-01T00:00:00.000Z",
-      "endTimeLocal": "2026-06-01T02:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "rugby-mlr",
-      "leagueKey": "mlr",
-      "providerReason": "mlr-disneyplus"
     },
     {
       "id": "tennis-french-open-2026-06-01-m0",
@@ -4411,20 +4369,6 @@
       "seriesName": "Sri Lanka tour of West Indies 2026",
       "gender": "men",
       "isIccT20Wc": false
-    },
-    {
-      "id": "rugby-mlr-20260606-2000-anthem-rc-at-old-glory-dc",
-      "sport": "rugby",
-      "league": "MLR",
-      "awayTeam": "Anthem RC",
-      "homeTeam": "Old Glory DC",
-      "startTimeLocal": "2026-06-06T20:00:00.000Z",
-      "endTimeLocal": "2026-06-06T22:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "rugby-mlr",
-      "leagueKey": "mlr",
-      "providerReason": "mlr-disneyplus"
     },
     {
       "id": "soccer-intl-friendly-20260606-2000-scotland-at-bolivia",
@@ -6849,20 +6793,6 @@
       "broadcastNetworks": "FS1, Tele, Peacock"
     },
     {
-      "id": "rugby-mlr-20260621-0000-tbd-at-tbd",
-      "sport": "rugby",
-      "league": "MLR",
-      "awayTeam": "TBD",
-      "homeTeam": "TBD",
-      "startTimeLocal": "2026-06-21T00:00:00.000Z",
-      "endTimeLocal": "2026-06-21T02:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "rugby-mlr",
-      "leagueKey": "mlr",
-      "providerReason": "mlr-disneyplus"
-    },
-    {
       "id": "cricket-mlc-ys7xmu",
       "cricketMatchId": "1528561",
       "sport": "cricket",
@@ -7132,6 +7062,20 @@
       "leagueKey": "fifa-world-cup",
       "providerReason": "fifa-world-cup-fs1",
       "broadcastNetworks": "FS1, Tele, Peacock"
+    },
+    {
+      "id": "rugby-mlr-20260622-0000-california-legion-at-chicago-hounds",
+      "sport": "rugby",
+      "league": "MLR",
+      "awayTeam": "California Legion",
+      "homeTeam": "Chicago Hounds",
+      "startTimeLocal": "2026-06-22T00:00:00.000Z",
+      "endTimeLocal": "2026-06-22T02:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "rugby-mlr",
+      "leagueKey": "mlr",
+      "providerReason": "mlr-disneyplus"
     },
     {
       "id": "cricket-mlc-ys7xmw",

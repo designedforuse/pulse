@@ -69,8 +69,8 @@ const MLR_2026_SCHEDULE: Array<{
   // Playoffs — Conference Finals (semifinals); winners advance to the Championship Final.
   { week: 12, date: "2026-06-14", time: "22:00", home: "Seattle Seawolves", away: "California Legion" },
   { week: 12, date: "2026-06-15", time: "20:00", home: "Chicago Hounds", away: "Old Glory DC" },
-  // Championship Final — teams TBD until the Conference Finals conclude.
-  { week: 13, date: "2026-06-20", time: "20:00", home: "TBD", away: "TBD" },
+  // Championship Final — Chicago Hounds host California Legion at SeatGeek Stadium (8 PM ET, ESPN2/ESPN+).
+  { week: 13, date: "2026-06-21", time: "20:00", home: "Chicago Hounds", away: "California Legion" },
 ];
 
 function etToUtc(date: string, timeEt: string): string {
