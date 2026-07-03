@@ -1758,5 +1758,97 @@
       "selectedVideoChannel": "Peter Windsor",
       "rejectedForAgeCount": 1
     }
+  },
+  "upset_alert:paul vs hurkacz upset highlights july 2026": {
+    "video": null,
+    "fetchedAt": "2026-07-03T16:30:39.813Z",
+    "query": "Paul vs Hurkacz upset highlights July 2026",
+    "debug": {
+      "searchQuery": "Paul vs Hurkacz upset highlights July 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:british grand prix sports july 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=f_KdopU9_Vs",
+      "thumbnailUrl": "https://img.youtube.com/vi/f_KdopU9_Vs/hqdefault.jpg",
+      "durationSeconds": 3111,
+      "title": "We Ignored the Western Media… and Chose China as Our Base",
+      "source": "youtube",
+      "channel": "Reanne & Ben #OTWD",
+      "publishedAt": "1 hour ago"
+    },
+    "fetchedAt": "2026-07-03T16:30:40.281Z",
+    "query": "British Grand Prix sports July 2026",
+    "debug": {
+      "searchQuery": "British Grand Prix sports July 2026",
+      "selectedVideoTitle": "We Ignored the Western Media… and Chose China as Our Base",
+      "selectedVideoPublishedAt": "1 hour ago",
+      "selectedVideoChannel": "Reanne & Ben #OTWD",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:egypt vs australia fifa world cup preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=FA_LIob-TjA",
+      "thumbnailUrl": "https://img.youtube.com/vi/FA_LIob-TjA/hqdefault.jpg",
+      "durationSeconds": 416,
+      "title": "Do or die! Socceroos prep for Egypt! | ESPN Socceroos Cup Diaries July 3 #fifaworldcup #socceroos",
+      "source": "youtube",
+      "channel": "ESPN Australia",
+      "publishedAt": "10 hours ago"
+    },
+    "fetchedAt": "2026-07-03T16:30:40.976Z",
+    "query": "Egypt vs Australia FIFA World Cup preview",
+    "debug": {
+      "searchQuery": "Egypt vs Australia FIFA World Cup preview",
+      "selectedVideoTitle": "Do or die! Socceroos prep for Egypt! | ESPN Socceroos Cup Diaries July 3 #fifaworldcup #socceroos",
+      "selectedVideoPublishedAt": "10 hours ago",
+      "selectedVideoChannel": "ESPN Australia",
+      "rejectedForAgeCount": 1
+    }
+  },
+  "grand_tour:tour de france cycling highlights july 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=UR2mhD6Lbio",
+      "thumbnailUrl": "https://img.youtube.com/vi/UR2mhD6Lbio/hqdefault.jpg",
+      "durationSeconds": 699,
+      "title": "Dominant Tadej Pogacar poised for Tour de France 3-peat | Beyond the Podium | NBC Sports",
+      "source": "youtube",
+      "channel": "NBC Sports",
+      "publishedAt": "18 hours ago"
+    },
+    "fetchedAt": "2026-07-03T16:30:41.305Z",
+    "query": "Tour de France cycling highlights July 2026",
+    "debug": {
+      "searchQuery": "Tour de France cycling highlights July 2026",
+      "selectedVideoTitle": "Dominant Tadej Pogacar poised for Tour de France 3-peat | Beyond the Podium | NBC Sports",
+      "selectedVideoPublishedAt": "18 hours ago",
+      "selectedVideoChannel": "NBC Sports",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "diamond_league:diamond league — eugene diamond league 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=LFbzB8c02Mo",
+      "thumbnailUrl": "https://img.youtube.com/vi/LFbzB8c02Mo/hqdefault.jpg",
+      "durationSeconds": 43,
+      "title": "20 Second Countdown Timer ⏱️  4K Digital Countdown  Fast Timer Video   IQ Timer Verse 1",
+      "source": "youtube",
+      "channel": "📢2026 Eugene Diamond League",
+      "publishedAt": "4 minutes ago"
+    },
+    "fetchedAt": "2026-07-03T16:30:41.686Z",
+    "query": "Diamond League — Eugene Diamond League 2026",
+    "debug": {
+      "searchQuery": "Diamond League — Eugene Diamond League 2026",
+      "selectedVideoTitle": "20 Second Countdown Timer ⏱️  4K Digital Countdown  Fast Timer Video   IQ Timer Verse 1",
+      "selectedVideoPublishedAt": "4 minutes ago",
+      "selectedVideoChannel": "📢2026 Eugene Diamond League",
+      "rejectedForAgeCount": 0
+    }
   }
 }
