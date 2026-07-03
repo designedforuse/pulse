@@ -551,3 +551,9 @@ id = "rGQzjlqHs604Ze6CFzs6O"
 uri = "file://attached_assets/stock_images/rugbyc_6.jpg"
 type = "image"
 title = "rugby union players tackling and competing for the ball during a match on the pitch"
+
+[[outputs]]
+id = "9sbhdgyfvSSTAo8qA5RVV"
+uri = "file://docs/daily-wrap-headlines-spec.md"
+type = "text"
+title = "Daily Wrap Headline Generation — Requirements Spec"
