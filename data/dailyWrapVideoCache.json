@@ -606,5 +606,67 @@
   "cricket-test-ysromh-day4": {
     "video": null,
     "fetchedAt": "2026-06-21T16:14:29.538Z"
+  },
+  "soccer-fifa-world-cup-20260707-1600-egypt-at-argentina": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=wamN-rChvP4",
+      "thumbnailUrl": "https://i.ytimg.com/vi/wamN-rChvP4/hqdefault.jpg",
+      "durationSeconds": 482,
+      "title": "Argentina vs Egypt 3-2 Highlights | All Goals & Extended Highlights | FIFA World Cup 2026",
+      "channel": "الخلاصة - El Kholasa"
+    },
+    "fetchedAt": "2026-07-08T05:26:57.533Z"
+  },
+  "soccer-fifa-world-cup-20260707-2000-colombia-at-switzerland": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=b5HCJV5DFnw",
+      "thumbnailUrl": "https://i.ytimg.com/vi/b5HCJV5DFnw/hqdefault.jpg",
+      "durationSeconds": 131,
+      "title": "Highlights | USA 1-4 Belgium | FIFA World Cup 2026™",
+      "channel": "FIFA"
+    },
+    "fetchedAt": "2026-07-08T05:26:57.533Z"
+  },
+  "tennis-espn-177483": {
+    "video": null,
+    "fetchedAt": "2026-07-08T05:26:57.533Z"
+  },
+  "tennis-espn-177484": {
+    "video": null,
+    "fetchedAt": "2026-07-08T05:26:57.533Z"
+  },
+  "tennis-espn-177493": {
+    "video": null,
+    "fetchedAt": "2026-07-08T05:26:57.533Z"
+  },
+  "cricket-odi-ysro2w": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=XRCRoSa9Ukg",
+      "thumbnailUrl": "https://i.ytimg.com/vi/XRCRoSa9Ukg/hqdefault.jpg",
+      "durationSeconds": 1044,
+      "title": "ZIM vs BAN 1st ODI Highlights | Zimbabwe STUN Bangladesh By 25 Runs | Low-Scoring Thriller 🔥",
+      "channel": "Fit With Ik"
+    },
+    "fetchedAt": "2026-07-08T05:26:57.533Z"
+  },
+  "cricket-test-ysromj-day4": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=hi4WUaoVzfc",
+      "thumbnailUrl": "https://i.ytimg.com/vi/hi4WUaoVzfc/hqdefault.jpg",
+      "durationSeconds": 253,
+      "title": "श्रीलंका बनाम वेस्टइंडीज चौथा दिन दूसरा टेस्ट क्रिकेट मैच | Sri Lanka Vs West Indies 4th Day 2nd Tes",
+      "channel": "RK Mix Cricket"
+    },
+    "fetchedAt": "2026-07-08T05:26:57.533Z"
+  },
+  "cricket-t20i-yezlg4": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=DvN_CjkQA-4",
+      "thumbnailUrl": "https://i.ytimg.com/vi/DvN_CjkQA-4/hqdefault.jpg",
+      "durationSeconds": 105,
+      "title": "India vs England 3rd T20 highlights 2026: India vs England 3rd T20 Kaun jita: cal ka match kaun jita",
+      "channel": "CRICKET KI DUNIYA🏏🏏"
+    },
+    "fetchedAt": "2026-07-08T05:26:57.533Z"
   }
 }

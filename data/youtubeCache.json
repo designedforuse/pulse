@@ -1813,21 +1813,21 @@
   },
   "grand_tour:tour de france cycling highlights july 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=UR2mhD6Lbio",
-      "thumbnailUrl": "https://img.youtube.com/vi/UR2mhD6Lbio/hqdefault.jpg",
-      "durationSeconds": 699,
-      "title": "Dominant Tadej Pogacar poised for Tour de France 3-peat | Beyond the Podium | NBC Sports",
+      "url": "https://www.youtube.com/watch?v=Lt5mu72Nt84",
+      "thumbnailUrl": "https://img.youtube.com/vi/Lt5mu72Nt84/hqdefault.jpg",
+      "durationSeconds": 0,
+      "title": "🔴LIVE NOW | Tour de France 2026 Live Stream | 2026 Tour de France Full Event Live Coverage On TV",
       "source": "youtube",
-      "channel": "NBC Sports",
-      "publishedAt": "18 hours ago"
+      "channel": "2026 Tour de France",
+      "publishedAt": null
     },
-    "fetchedAt": "2026-07-03T16:30:41.305Z",
+    "fetchedAt": "2026-07-08T05:27:27.599Z",
     "query": "Tour de France cycling highlights July 2026",
     "debug": {
       "searchQuery": "Tour de France cycling highlights July 2026",
-      "selectedVideoTitle": "Dominant Tadej Pogacar poised for Tour de France 3-peat | Beyond the Podium | NBC Sports",
-      "selectedVideoPublishedAt": "18 hours ago",
-      "selectedVideoChannel": "NBC Sports",
+      "selectedVideoTitle": "🔴LIVE NOW | Tour de France 2026 Live Stream | 2026 Tour de France Full Event Live Coverage On TV",
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": "2026 Tour de France",
       "rejectedForAgeCount": 0
     }
   },
@@ -1848,6 +1848,78 @@
       "selectedVideoTitle": "20 Second Countdown Timer ⏱️  4K Digital Countdown  Fast Timer Video   IQ Timer Verse 1",
       "selectedVideoPublishedAt": "4 minutes ago",
       "selectedVideoChannel": "📢2026 Eugene Diamond League",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:zverev clinch playoff berth july 2026": {
+    "video": null,
+    "fetchedAt": "2026-07-08T05:27:26.787Z",
+    "query": "Zverev clinch playoff berth July 2026",
+    "debug": {
+      "searchQuery": "Zverev clinch playoff berth July 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:morocco vs france fifa world cup preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=xuogXmVIYcA",
+      "thumbnailUrl": "https://img.youtube.com/vi/xuogXmVIYcA/hqdefault.jpg",
+      "durationSeconds": 3074,
+      "title": "FULL REACTION to Argentina and Switzerland advancing to World Cup Quarterfinals | ESPN FC",
+      "source": "youtube",
+      "channel": "ESPN FC",
+      "publishedAt": "4 hours ago"
+    },
+    "fetchedAt": "2026-07-08T05:27:27.243Z",
+    "query": "Morocco vs France FIFA World Cup preview",
+    "debug": {
+      "searchQuery": "Morocco vs France FIFA World Cup preview",
+      "selectedVideoTitle": "FULL REACTION to Argentina and Switzerland advancing to World Cup Quarterfinals | ESPN FC",
+      "selectedVideoPublishedAt": "4 hours ago",
+      "selectedVideoChannel": "ESPN FC",
+      "rejectedForAgeCount": 1
+    }
+  },
+  "league_moment:big stage sports july 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=tw3nMIx9Z_Q",
+      "thumbnailUrl": "https://img.youtube.com/vi/tw3nMIx9Z_Q/hqdefault.jpg",
+      "durationSeconds": 230,
+      "title": "Tour de France 2026 highlights: Stage 4 Finish | Cycling on NBC Sports",
+      "source": "youtube",
+      "channel": "NBC Sports",
+      "publishedAt": "10 hours ago"
+    },
+    "fetchedAt": "2026-07-08T05:27:28.192Z",
+    "query": "Big Stage sports July 2026",
+    "debug": {
+      "searchQuery": "Big Stage sports July 2026",
+      "selectedVideoTitle": "Tour de France 2026 highlights: Stage 4 Finish | Cycling on NBC Sports",
+      "selectedVideoPublishedAt": "10 hours ago",
+      "selectedVideoChannel": "NBC Sports",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "diamond_league:diamond league — monaco diamond league 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=NygGjau1fzY",
+      "thumbnailUrl": "https://img.youtube.com/vi/NygGjau1fzY/hqdefault.jpg",
+      "durationSeconds": 6671,
+      "title": "Monaco Diamond League Preview + Ed Murphy Classic & Hungary CT + Melissa & Sha’carri Thoughts",
+      "source": "youtube",
+      "channel": "The Final Leg Track & Field",
+      "publishedAt": "Streamed 5 hours ago"
+    },
+    "fetchedAt": "2026-07-08T05:27:28.635Z",
+    "query": "Diamond League — Monaco Diamond League 2026",
+    "debug": {
+      "searchQuery": "Diamond League — Monaco Diamond League 2026",
+      "selectedVideoTitle": "Monaco Diamond League Preview + Ed Murphy Classic & Hungary CT + Melissa & Sha’carri Thoughts",
+      "selectedVideoPublishedAt": "Streamed 5 hours ago",
+      "selectedVideoChannel": "The Final Leg Track & Field",
       "rejectedForAgeCount": 0
     }
   }
