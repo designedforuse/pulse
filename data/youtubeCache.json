@@ -1813,21 +1813,21 @@
   },
   "grand_tour:tour de france cycling highlights july 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=Lt5mu72Nt84",
-      "thumbnailUrl": "https://img.youtube.com/vi/Lt5mu72Nt84/hqdefault.jpg",
-      "durationSeconds": 0,
-      "title": "🔴LIVE NOW | Tour de France 2026 Live Stream | 2026 Tour de France Full Event Live Coverage On TV",
+      "url": "https://www.youtube.com/watch?v=pXxDPKxjdy0",
+      "thumbnailUrl": "https://img.youtube.com/vi/pXxDPKxjdy0/hqdefault.jpg",
+      "durationSeconds": 1077,
+      "title": "This Place Blew Our Minds! | Lac de Sainte-Croix & Gorges du Verdon",
       "source": "youtube",
-      "channel": "2026 Tour de France",
-      "publishedAt": null
+      "channel": "Moore's on tour",
+      "publishedAt": "3 hours ago"
     },
-    "fetchedAt": "2026-07-08T05:27:27.599Z",
+    "fetchedAt": "2026-07-10T02:08:52.993Z",
     "query": "Tour de France cycling highlights July 2026",
     "debug": {
       "searchQuery": "Tour de France cycling highlights July 2026",
-      "selectedVideoTitle": "🔴LIVE NOW | Tour de France 2026 Live Stream | 2026 Tour de France Full Event Live Coverage On TV",
-      "selectedVideoPublishedAt": null,
-      "selectedVideoChannel": "2026 Tour de France",
+      "selectedVideoTitle": "This Place Blew Our Minds! | Lac de Sainte-Croix & Gorges du Verdon",
+      "selectedVideoPublishedAt": "3 hours ago",
+      "selectedVideoChannel": "Moore's on tour",
       "rejectedForAgeCount": 0
     }
   },
@@ -1853,7 +1853,7 @@
   },
   "clinch_watch:zverev clinch playoff berth july 2026": {
     "video": null,
-    "fetchedAt": "2026-07-08T05:27:26.787Z",
+    "fetchedAt": "2026-07-10T02:08:51.223Z",
     "query": "Zverev clinch playoff berth July 2026",
     "debug": {
       "searchQuery": "Zverev clinch playoff berth July 2026",
@@ -1885,41 +1885,93 @@
   },
   "league_moment:big stage sports july 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=tw3nMIx9Z_Q",
-      "thumbnailUrl": "https://img.youtube.com/vi/tw3nMIx9Z_Q/hqdefault.jpg",
-      "durationSeconds": 230,
-      "title": "Tour de France 2026 highlights: Stage 4 Finish | Cycling on NBC Sports",
+      "url": "https://www.youtube.com/watch?v=oOIAZcF2ep8",
+      "thumbnailUrl": "https://img.youtube.com/vi/oOIAZcF2ep8/hqdefault.jpg",
+      "durationSeconds": 2350,
+      "title": "KSAT News at 6 p.m. : Jul 09, 2026",
       "source": "youtube",
-      "channel": "NBC Sports",
-      "publishedAt": "10 hours ago"
+      "channel": "KSAT 12",
+      "publishedAt": "2 hours ago"
     },
-    "fetchedAt": "2026-07-08T05:27:28.192Z",
+    "fetchedAt": "2026-07-10T02:08:54.013Z",
     "query": "Big Stage sports July 2026",
     "debug": {
       "searchQuery": "Big Stage sports July 2026",
-      "selectedVideoTitle": "Tour de France 2026 highlights: Stage 4 Finish | Cycling on NBC Sports",
-      "selectedVideoPublishedAt": "10 hours ago",
-      "selectedVideoChannel": "NBC Sports",
+      "selectedVideoTitle": "KSAT News at 6 p.m. : Jul 09, 2026",
+      "selectedVideoPublishedAt": "2 hours ago",
+      "selectedVideoChannel": "KSAT 12",
       "rejectedForAgeCount": 0
     }
   },
   "diamond_league:diamond league — monaco diamond league 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=NygGjau1fzY",
-      "thumbnailUrl": "https://img.youtube.com/vi/NygGjau1fzY/hqdefault.jpg",
-      "durationSeconds": 6671,
-      "title": "Monaco Diamond League Preview + Ed Murphy Classic & Hungary CT + Melissa & Sha’carri Thoughts",
+      "url": "https://www.youtube.com/watch?v=qV6rs61tJj8",
+      "thumbnailUrl": "https://img.youtube.com/vi/qV6rs61tJj8/hqdefault.jpg",
+      "durationSeconds": 1585,
+      "title": "Coffee with Larry, July 9, 2026, Episode 918, Memories of Monaco Herculis DL (2014)",
       "source": "youtube",
-      "channel": "The Final Leg Track & Field",
-      "publishedAt": "Streamed 5 hours ago"
+      "channel": "RunBlogRun",
+      "publishedAt": "Streamed 1 hour ago"
     },
-    "fetchedAt": "2026-07-08T05:27:28.635Z",
+    "fetchedAt": "2026-07-10T02:08:55.065Z",
     "query": "Diamond League — Monaco Diamond League 2026",
     "debug": {
       "searchQuery": "Diamond League — Monaco Diamond League 2026",
-      "selectedVideoTitle": "Monaco Diamond League Preview + Ed Murphy Classic & Hungary CT + Melissa & Sha’carri Thoughts",
-      "selectedVideoPublishedAt": "Streamed 5 hours ago",
-      "selectedVideoChannel": "The Final Leg Track & Field",
+      "selectedVideoTitle": "Coffee with Larry, July 9, 2026, Episode 918, Memories of Monaco Herculis DL (2014)",
+      "selectedVideoPublishedAt": "Streamed 1 hour ago",
+      "selectedVideoChannel": "RunBlogRun",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "golf_major:british open 2026 preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=0zmQ5rsBOrE",
+      "thumbnailUrl": "https://img.youtube.com/vi/0zmQ5rsBOrE/hqdefault.jpg",
+      "durationSeconds": 1207,
+      "title": "Did Hamilton Just Became More Important Than Leclerc At Ferrari And This Will Shock You",
+      "source": "youtube",
+      "channel": "MotorVerse Media",
+      "publishedAt": "6 hours ago"
+    },
+    "fetchedAt": "2026-07-10T02:08:51.807Z",
+    "query": "British Open 2026 preview",
+    "debug": {
+      "searchQuery": "British Open 2026 preview",
+      "selectedVideoTitle": "Did Hamilton Just Became More Important Than Leclerc At Ferrari And This Will Shock You",
+      "selectedVideoPublishedAt": "6 hours ago",
+      "selectedVideoChannel": "MotorVerse Media",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:belgium vs spain fifa world cup preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=ITkFw8LLfac",
+      "thumbnailUrl": "https://img.youtube.com/vi/ITkFw8LLfac/hqdefault.jpg",
+      "durationSeconds": 2017,
+      "title": "Spain On Playing Belgium | Luis de la Fuente Takes Questions",
+      "source": "youtube",
+      "channel": "FIFA",
+      "publishedAt": "38 minutes ago"
+    },
+    "fetchedAt": "2026-07-10T02:08:52.212Z",
+    "query": "Belgium vs Spain FIFA World Cup preview",
+    "debug": {
+      "searchQuery": "Belgium vs Spain FIFA World Cup preview",
+      "selectedVideoTitle": "Spain On Playing Belgium | Luis de la Fuente Takes Questions",
+      "selectedVideoPublishedAt": "38 minutes ago",
+      "selectedVideoChannel": "FIFA",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "rally_weekend:rally estonia wrc rally highlights": {
+    "video": null,
+    "fetchedAt": "2026-07-10T02:08:52.552Z",
+    "query": "Rally Estonia WRC rally highlights",
+    "debug": {
+      "searchQuery": "Rally Estonia WRC rally highlights",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   }
