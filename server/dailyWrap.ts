@@ -933,6 +933,15 @@ function formatDiscipline(name: string): string {
   return gender ? `${gender} ${d}` : d;
 }
 
+// Spoken form for headlines (which are also narrated by TTS): expand distance
+// shorthand so "400m" reads "400 metres", not "four hundred em". The compact
+// form stays on the card's result rows / detail line.
+function spokenDiscipline(name: string): string {
+  return formatDiscipline(name)
+    .replace(/\b(\d)\s*x\s*(\d[\d,]*)m\b/gi, "$1 by $2 metres")
+    .replace(/\b(\d[\d,]*)m\b/g, "$1 metres");
+}
+
 function placeWord(rank: number): string {
   if (rank === 1) return "wins";
   if (rank === 2) return "takes second in";
@@ -947,11 +956,11 @@ function placeWord(rank: number): string {
 // The meet/city already live in the event card's league chip, so the headline
 // names only the athlete + discipline (no "at Diamond League {city}" suffix).
 function saHeadline(r: DLAthleteResult): string {
-  return `${r.athlete} ${placeWord(r.rank)} the ${formatDiscipline(r.discipline)}`;
+  return `${r.athlete} ${placeWord(r.rank)} the ${spokenDiscipline(r.discipline)}`;
 }
 
 function notableHeadline(r: DLAthleteResult): string {
-  const disc = formatDiscipline(r.discipline);
+  const disc = spokenDiscipline(r.discipline);
   const sig = expandRecordFlag(r.recordFlag);
   const nat = r.nation ? ` (${r.nation})` : "";
   if (sig === "world record") {

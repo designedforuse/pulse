@@ -668,5 +668,43 @@
       "channel": "CRICKET KI DUNIYA🏏🏏"
     },
     "fetchedAt": "2026-07-08T05:26:57.533Z"
+  },
+  "soccer-fifa-world-cup-20260710-1900-belgium-at-spain": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=jQ5yDLwBh5M",
+      "thumbnailUrl": "https://i.ytimg.com/vi/jQ5yDLwBh5M/hqdefault.jpg",
+      "durationSeconds": 82,
+      "title": "Belgium EQUALIZER 🚨 Charles De Ketelaere Scores BRILLIANT Header vs Spain",
+      "channel": "FOX Sports"
+    },
+    "fetchedAt": "2026-07-11T01:26:50.164Z"
+  },
+  "tennis-espn-177489": {
+    "video": null,
+    "fetchedAt": "2026-07-11T01:26:50.164Z"
+  },
+  "tennis-espn-177490": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=UvaRuMZv4Jo",
+      "thumbnailUrl": "https://i.ytimg.com/vi/UvaRuMZv4Jo/hqdefault.jpg",
+      "durationSeconds": 296,
+      "title": "2026 ATP Jannik Sinner vs Novak Djokovic Semifinals | 2026 Wimbledon Semifinals Match",
+      "channel": "ATP Sinner vs  Djokovic LIVE"
+    },
+    "fetchedAt": "2026-07-11T01:26:50.164Z"
+  },
+  "cricket-mlc-ys7xoj": {
+    "video": null,
+    "fetchedAt": "2026-07-11T01:26:50.164Z"
+  },
+  "cricket-mlc-ys7xok": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=u6pAIypBpr4",
+      "thumbnailUrl": "https://i.ytimg.com/vi/u6pAIypBpr4/hqdefault.jpg",
+      "durationSeconds": 248,
+      "title": "MINY vs SO - 25th T20 Match Prediction 🦁 | MI New York vs Seattle Orcas | MLC 2026",
+      "channel": "Facts experiments"
+    },
+    "fetchedAt": "2026-07-11T01:26:50.164Z"
   }
 }
