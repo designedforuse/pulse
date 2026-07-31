@@ -655,7 +655,7 @@ const CURRIE_CUP_SCHEDULE: Array<{
   { round: "Round 3", date: "2026-08-01", time: "15:00", home: "Stormers XXIII", away: "Sharks XV" },
   { round: "Round 3", date: "2026-08-01", time: "17:05", home: "Lions", away: "Bulls XV" },
   { round: "Round 3", date: "2026-08-02", time: "15:00", home: "Boland Cavaliers", away: "Pumas" },
-  { round: "Round 4", date: "2026-08-08", time: null, home: "Griquas", away: "Lions" },
+  { round: "Round 4", date: "2026-08-08", time: "13:00", home: "Griquas", away: "Lions" },
   { round: "Round 4", date: "2026-08-08", time: "15:05", home: "Bulls XV", away: "Pumas" },
   { round: "Round 4", date: "2026-08-08", time: "17:15", home: "Sharks XV", away: "Boland Cavaliers" },
   { round: "Round 4", date: "2026-08-09", time: "15:00", home: "Stormers XXIII", away: "Cheetahs" },
@@ -670,7 +670,7 @@ const CURRIE_CUP_SCHEDULE: Array<{
   { round: "Round 7", date: "2026-08-28", time: "17:05", home: "Lions", away: "Stormers XXIII" },
   { round: "Round 7", date: "2026-08-28", time: "19:15", home: "Sharks XV", away: "Bulls XV" },
   { round: "Round 7", date: "2026-08-29", time: null, home: "Pumas", away: "Cheetahs" },
-  { round: "Round 7", date: "2026-08-30", time: null, home: "Boland Cavaliers", away: "Griquas" },
+  { round: "Round 7", date: "2026-08-30", time: "15:00", home: "Boland Cavaliers", away: "Griquas" },
 ];
 
 function buildCurrieCupEvents(windowStart: Date, windowEnd: Date): AppEvent[] {
