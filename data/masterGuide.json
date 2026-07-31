@@ -58,7 +58,8 @@
             "Japan League One",
             "Super Rugby",
             "HSBC SVNS",
-            "MLR"
+            "MLR",
+            "Test Rugby"
           ]
         },
         {
@@ -123,7 +124,9 @@
             "Six Nations",
             "Champions Cup",
             "MLR",
-            "SA Schools Rugby"
+            "SA Schools Rugby",
+            "Currie Cup",
+            "Test Rugby"
           ]
         },
         {
@@ -220,6 +223,12 @@
       "packageName": "com.google.android.youtube",
       "activity": "com.google.android.apps.youtube.app.WatchWhileActivity",
       "launchUrl": "https://www.youtube.com"
+    },
+    {
+      "id": "rugbypasstv",
+      "name": "RugbyPass TV",
+      "packageName": "com.android.chrome",
+      "launchUrl": "https://tv.rugbypass.com"
     },
     {
       "id": "supersportschools",

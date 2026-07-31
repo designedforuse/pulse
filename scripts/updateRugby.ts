@@ -20,6 +20,8 @@ const LEAGUE_LABELS: Record<string, string> = {
   leagueone: "Japan League One",
   svns: "HSBC SVNS",
   sixnations: "Six Nations",
+  curriecup: "Currie Cup",
+  rugbytests: "Test Rugby",
 };
 
 const LEAGUE_PROVIDERS: Record<string, string> = {
@@ -30,6 +32,8 @@ const LEAGUE_PROVIDERS: Record<string, string> = {
   leagueone: "flosports",
   svns: "primevideo",
   sixnations: "youtubetv",
+  curriecup: "rugbypasstv",
+  rugbytests: "rugbypasstv",
 };
 
 const LEAGUE_DURATION: Record<string, number> = {
@@ -628,6 +632,133 @@ async function fetchLeagueOneEventsAllRugbyFallback(windowStart: Date, windowEnd
   }
 }
 
+// ── Currie Cup 2026 Premier Division ─────────────────────────────────────────
+// No public iCal/API feed exists (ESPN's Currie Cup league id is stale since
+// 2022), so the season schedule is hardcoded from the official fixture list.
+// Times are local SAST (Africa/Johannesburg wall clock); converted to UTC below.
+const CURRIE_CUP_TZ = "Africa/Johannesburg";
+const CURRIE_CUP_DEFAULT_TIME = "15:00";
+
+// date: YYYY-MM-DD (SAST), time: HH:MM SAST (null = TBC, defaults to 15:00)
+const CURRIE_CUP_SCHEDULE: Array<{
+  round: string; date: string; time: string | null; home: string; away: string;
+}> = [
+  { round: "Round 1", date: "2026-07-17", time: "17:00", home: "Pumas", away: "Sharks XV" },
+  { round: "Round 1", date: "2026-07-17", time: "19:05", home: "Stormers XXIII", away: "Griquas" },
+  { round: "Round 1", date: "2026-07-19", time: "13:00", home: "Cheetahs", away: "Lions" },
+  { round: "Round 1", date: "2026-07-19", time: "15:05", home: "Boland Cavaliers", away: "Bulls XV" },
+  { round: "Round 2", date: "2026-07-24", time: "17:00", home: "Cheetahs", away: "Sharks XV" },
+  { round: "Round 2", date: "2026-07-25", time: "15:00", home: "Lions", away: "Pumas" },
+  { round: "Round 2", date: "2026-07-25", time: "17:05", home: "Griquas", away: "Bulls XV" },
+  { round: "Round 2", date: "2026-07-26", time: "15:00", home: "Boland Cavaliers", away: "Stormers XXIII" },
+  { round: "Round 3", date: "2026-07-31", time: "19:00", home: "Griquas", away: "Cheetahs" },
+  { round: "Round 3", date: "2026-08-01", time: "15:00", home: "Stormers XXIII", away: "Sharks XV" },
+  { round: "Round 3", date: "2026-08-01", time: "17:05", home: "Lions", away: "Bulls XV" },
+  { round: "Round 3", date: "2026-08-02", time: "15:00", home: "Boland Cavaliers", away: "Pumas" },
+  { round: "Round 4", date: "2026-08-08", time: null, home: "Griquas", away: "Lions" },
+  { round: "Round 4", date: "2026-08-08", time: "15:05", home: "Bulls XV", away: "Pumas" },
+  { round: "Round 4", date: "2026-08-08", time: "17:15", home: "Sharks XV", away: "Boland Cavaliers" },
+  { round: "Round 4", date: "2026-08-09", time: "15:00", home: "Stormers XXIII", away: "Cheetahs" },
+  { round: "Round 5", date: "2026-08-14", time: "15:00", home: "Lions", away: "Boland Cavaliers" },
+  { round: "Round 5", date: "2026-08-14", time: "17:05", home: "Griquas", away: "Sharks XV" },
+  { round: "Round 5", date: "2026-08-15", time: "17:00", home: "Pumas", away: "Stormers XXIII" },
+  { round: "Round 5", date: "2026-08-16", time: "15:00", home: "Bulls XV", away: "Cheetahs" },
+  { round: "Round 6", date: "2026-08-21", time: "15:00", home: "Pumas", away: "Griquas" },
+  { round: "Round 6", date: "2026-08-21", time: "17:05", home: "Bulls XV", away: "Stormers XXIII" },
+  { round: "Round 6", date: "2026-08-21", time: "19:05", home: "Sharks XV", away: "Lions" },
+  { round: "Round 6", date: "2026-08-23", time: "15:00", home: "Cheetahs", away: "Boland Cavaliers" },
+  { round: "Round 7", date: "2026-08-28", time: "17:05", home: "Lions", away: "Stormers XXIII" },
+  { round: "Round 7", date: "2026-08-28", time: "19:15", home: "Sharks XV", away: "Bulls XV" },
+  { round: "Round 7", date: "2026-08-29", time: null, home: "Pumas", away: "Cheetahs" },
+  { round: "Round 7", date: "2026-08-30", time: null, home: "Boland Cavaliers", away: "Griquas" },
+];
+
+function buildCurrieCupEvents(windowStart: Date, windowEnd: Date): AppEvent[] {
+  const events: AppEvent[] = [];
+  for (const m of CURRIE_CUP_SCHEDULE) {
+    const [y, mo, d] = m.date.split("-").map((n) => parseInt(n, 10));
+    const [hh, mm] = (m.time ?? CURRIE_CUP_DEFAULT_TIME).split(":").map((n) => parseInt(n, 10));
+    const utc = wallClockToUtc(y, mo - 1, d, hh, mm, CURRIE_CUP_TZ);
+    if (utc < windowStart || utc > windowEnd) continue;
+    const iso = utc.toISOString();
+    const hashInput = `curriecup-${m.date}-${m.home}-${m.away}`;
+    events.push({
+      id: `rugby-curriecup-${stableHash(hashInput)}`,
+      sport: "rugby",
+      league: LEAGUE_LABELS.curriecup,
+      homeTeam: m.home,
+      awayTeam: m.away,
+      startTimeLocal: iso,
+      endTimeLocal: addDuration(iso, RUGBY_15S_DURATION_MIN),
+      providerId: LEAGUE_PROVIDERS.curriecup,
+      isLive: false,
+      source: "rugby",
+      leagueKey: "curriecup",
+    });
+  }
+  console.log(`  Rugby [curriecup]: ${events.length} events in retention window`);
+  return events;
+}
+
+// ── International test matches (tier 1 nations) ──────────────────────────────
+// Keyless ESPN scoreboard, league id 289234 ("International Test Match").
+// Supports date-range queries: ?dates=YYYYMMDD-YYYYMMDD.
+const ESPN_TESTS_URL = "https://site.api.espn.com/apis/site/v2/sports/rugby/289234/scoreboard";
+
+const TIER1_NATIONS = new Set([
+  "South Africa", "New Zealand", "Australia", "Argentina",
+  "England", "France", "Ireland", "Wales", "Scotland", "Italy",
+]);
+
+function yyyymmdd(d: Date): string {
+  return d.toISOString().slice(0, 10).replace(/-/g, "");
+}
+
+async function fetchInternationalTests(windowStart: Date, windowEnd: Date): Promise<AppEvent[]> {
+  const url = `${ESPN_TESTS_URL}?dates=${yyyymmdd(windowStart)}-${yyyymmdd(windowEnd)}`;
+  console.log(`  Rugby [rugbytests]: Fetching ${url}...`);
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.error(`  Rugby [rugbytests]: HTTP ${res.status}`);
+      return [];
+    }
+    const json: any = await res.json();
+    const events: AppEvent[] = [];
+    for (const ev of json?.events ?? []) {
+      const comp = ev?.competitions?.[0];
+      const competitors = comp?.competitors ?? [];
+      const home = competitors.find((c: any) => c.homeAway === "home")?.team?.displayName;
+      const away = competitors.find((c: any) => c.homeAway === "away")?.team?.displayName;
+      if (!home || !away) continue;
+      // Only tests involving a tier 1 nation.
+      if (!TIER1_NATIONS.has(home) && !TIER1_NATIONS.has(away)) continue;
+      const start = new Date(ev.date);
+      if (isNaN(start.getTime()) || start < windowStart || start > windowEnd) continue;
+      const iso = start.toISOString();
+      const hashInput = `rugbytests-${iso.slice(0, 10)}-${home}-${away}`;
+      events.push({
+        id: `rugby-rugbytests-${stableHash(hashInput)}`,
+        sport: "rugby",
+        league: LEAGUE_LABELS.rugbytests,
+        homeTeam: home,
+        awayTeam: away,
+        startTimeLocal: iso,
+        endTimeLocal: addDuration(iso, RUGBY_15S_DURATION_MIN),
+        providerId: LEAGUE_PROVIDERS.rugbytests,
+        isLive: false,
+        source: "rugby",
+        leagueKey: "rugbytests",
+      });
+    }
+    console.log(`  Rugby [rugbytests]: ${events.length} tier-1 test events in retention window`);
+    return events;
+  } catch (err) {
+    console.error(`  Rugby [rugbytests]: Fetch error:`, err);
+    return [];
+  }
+}
+
 function buildSvnsEvents(windowStart: Date, windowEnd: Date): AppEvent[] {
   const events: AppEvent[] = [];
 
@@ -701,14 +832,24 @@ export async function fetchRugbyEvents(): Promise<RugbyFetchResult> {
     console.log(`  Rugby [${leagueKey}]: ${leagueCount} events in retention window`);
   }
 
-  const [leagueOneEvents] = await Promise.all([
+  const [leagueOneEvents, testEvents] = await Promise.all([
     fetchLeagueOneEvents(windowStart, windowEnd),
+    fetchInternationalTests(windowStart, windowEnd),
   ]);
 
   counts.leagueone = leagueOneEvents.length;
   allEvents.push(...leagueOneEvents);
   sourceParts.push(`${LEAGUE_LABELS.leagueone}: ${leagueOneEvents.length}`);
   console.log(`  Rugby [leagueone]: ${leagueOneEvents.length} events in retention window`);
+
+  counts.rugbytests = testEvents.length;
+  allEvents.push(...testEvents);
+  sourceParts.push(`${LEAGUE_LABELS.rugbytests}: ${testEvents.length}`);
+
+  const currieCupEvents = buildCurrieCupEvents(windowStart, windowEnd);
+  counts.curriecup = currieCupEvents.length;
+  allEvents.push(...currieCupEvents);
+  sourceParts.push(`${LEAGUE_LABELS.curriecup}: ${currieCupEvents.length}`);
 
   const svnsEvents = buildSvnsEvents(windowStart, windowEnd);
   counts.svns = svnsEvents.length;

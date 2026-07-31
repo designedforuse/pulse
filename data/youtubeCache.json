@@ -1974,5 +1974,69 @@
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
+  },
+  "clinch_watch:sharks xv clinch playoff berth july 2026": {
+    "video": null,
+    "fetchedAt": "2026-07-31T01:18:51.698Z",
+    "query": "Sharks XV clinch playoff berth July 2026",
+    "debug": {
+      "searchQuery": "Sharks XV clinch playoff berth July 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:sa super rugby rivalry sports july 2026": {
+    "video": null,
+    "fetchedAt": "2026-07-31T01:18:51.985Z",
+    "query": "SA Super Rugby Rivalry sports July 2026",
+    "debug": {
+      "searchQuery": "SA Super Rugby Rivalry sports July 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:toronto fc vs new york city fc mls preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=8EPfQ1C6iIQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/8EPfQ1C6iIQ/hqdefault.jpg",
+      "durationSeconds": 1421,
+      "title": "2026 Leagues Cup West 1 Group Preview! #MLS #LigaMX #LeaguesCup",
+      "source": "youtube",
+      "channel": "The Designated Players | An MLS Podcast",
+      "publishedAt": "7 hours ago"
+    },
+    "fetchedAt": "2026-07-31T01:18:52.400Z",
+    "query": "Toronto FC vs New York City FC MLS preview",
+    "debug": {
+      "searchQuery": "Toronto FC vs New York City FC MLS preview",
+      "selectedVideoTitle": "2026 Leagues Cup West 1 Group Preview! #MLS #LigaMX #LeaguesCup",
+      "selectedVideoPublishedAt": "7 hours ago",
+      "selectedVideoChannel": "The Designated Players | An MLS Podcast",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "rally_weekend:rally finland wrc rally highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=q_GRHPLK5FY",
+      "thumbnailUrl": "https://img.youtube.com/vi/q_GRHPLK5FY/hqdefault.jpg",
+      "durationSeconds": 263,
+      "title": "Day 1 Highlights | WRC Secto Rally Finland 2026",
+      "source": "youtube",
+      "channel": "FIA World Rally Championship",
+      "publishedAt": "4 hours ago"
+    },
+    "fetchedAt": "2026-07-31T01:18:52.821Z",
+    "query": "Rally Finland WRC rally highlights",
+    "debug": {
+      "searchQuery": "Rally Finland WRC rally highlights",
+      "selectedVideoTitle": "Day 1 Highlights | WRC Secto Rally Finland 2026",
+      "selectedVideoPublishedAt": "4 hours ago",
+      "selectedVideoChannel": "FIA World Rally Championship",
+      "rejectedForAgeCount": 1
+    }
   }
 }

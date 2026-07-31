@@ -421,6 +421,15 @@ const FLORUGBY_LEAGUES = new Set(["URC", "Top 14", "English Premiership", "Champ
 function resolveRugbyBroadcastId(event: SportEvent): [string, string] {
   const league = event.league;
   if (league === "HSBC SVNS" || league === "Super Rugby") return ["rugbypasstv", "primevideo"];
+  // Currie Cup + international tests: broadcast on RugbyPass TV directly.
+  if (league === "Currie Cup") return ["rugbypasstv", "rugbypasstv"];
+  if (league === "Test Rugby") {
+    const sanzaar = ["South Africa", "New Zealand", "Australia", "Argentina"];
+    if (sanzaar.includes(event.homeTeam) || sanzaar.includes(event.awayTeam)) {
+      return ["rugbypasstv", "rugbypasstv"];
+    }
+    return ["", ""];
+  }
   if (league === "Six Nations") return ["nbcsn", "youtubetv"];
   if (league === "MLR") return ["espn", "disneyplus"];
   if (FLORUGBY_LEAGUES.has(league)) return ["flosports", "flosports"];
