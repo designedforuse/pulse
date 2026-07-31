@@ -589,6 +589,28 @@ function schoolsRugbyFallbackEditorial(event: any): Partial<DailyWrapEntry> | nu
   return { editorial, detail };
 }
 
+// --- Currie Cup score-agnostic fallback ---
+// The Currie Cup schedule is hardcoded (no public feed; ESPN's league id is
+// stale), so concluded matches have no score source at all. Like the schools
+// rugby / cricket-quota fallbacks, a finished match is surfaced with a
+// score-agnostic headline rather than vanishing from the wrap. If a score
+// source ever gets wired up, the normal score-driven path takes over.
+const CURRIE_CUP_FALLBACK_GRACE_MS = 60 * 60 * 1000;
+
+function isCurrieCup(event: any): boolean {
+  return event?.league === "Currie Cup" || event?.leagueKey === "curriecup";
+}
+
+function currieCupFallbackEditorial(event: any): Partial<DailyWrapEntry> | null {
+  const home = (event.homeTeam || "").trim();
+  const away = (event.awayTeam || "").trim();
+  if (!home || !away) return null;
+  return {
+    editorial: `${home} hosted ${away} in the Currie Cup`,
+    detail: event.venue ? `${event.league} · ${event.venue}` : event.league,
+  };
+}
+
 function isCricket(event: any): boolean {
   return (event?.sport || "").toLowerCase() === "cricket";
 }
@@ -1569,6 +1591,24 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
             loserScore: se.loserScore,
             svnsFinals: se.svnsFinals,
             priorityScore: SVNS_PRIORITY,
+            startTimeLocal: event.startTimeLocal,
+          });
+        }
+      } else if (isCurrieCup(event) && event.endTimeLocal && hasConcluded(event, nowMs, CURRIE_CUP_FALLBACK_GRACE_MS)) {
+        // No score source exists for the Currie Cup — surface the concluded
+        // match with a score-agnostic headline rather than dropping it.
+        const cc = currieCupFallbackEditorial(event);
+        if (cc) {
+          fallbackIds.add(event.id);
+          results.push({
+            eventId: event.id,
+            sport: event.sport,
+            league: event.league,
+            homeTeam: event.homeTeam,
+            awayTeam: event.awayTeam,
+            editorial: cc.editorial || "",
+            detail: cc.detail || "",
+            priorityScore: getPriorityScore(event.sport, event.league, undefined),
             startTimeLocal: event.startTimeLocal,
           });
         }

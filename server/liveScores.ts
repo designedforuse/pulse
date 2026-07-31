@@ -729,6 +729,9 @@ const ESPN_RUGBY_LEAGUE_PATHS: Record<string, string> = {
   "English Premiership": "267979",
   "Champions Cup": "271937",
   "MLR": "289262",
+  // International tests — same keyless ESPN feed used for the fixtures
+  // (scripts/updateRugby.ts). Covers live + final scores for tier-1 tests.
+  "Test Rugby": "289234",
 };
 
 // =============================================================================
