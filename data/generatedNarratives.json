@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-31T01:18:43.440Z",
+  "lastUpdated": "2026-07-31T03:42:27.238Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -22,7 +22,7 @@
     "finalFeedByRegion": {
       "SouthAfrica": [
         "clinch_watch: Clinch Watch",
-        "league_moment: SA Super Rugby Rivalry"
+        "league_moment: Rivalry Weekend"
       ],
       "Other": [
         "marquee_match: Marquee Match: MLS",
@@ -65,7 +65,7 @@
         ],
         "playersIngested": 357,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-07-31T01:18:43.440Z"
+        "timestamp": "2026-07-31T03:42:27.238Z"
       },
       "cacheHistoryCount": 881,
       "error": null
@@ -75,7 +75,7 @@
     "candidateCountAfterCap": 5,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -3485.312066666667,
+      "hoursUntil": -3487.707566111111,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -91,7 +91,7 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 1,
+      "rawClinchCandidates": 2,
       "clinchAfterRegionFilter": 1,
       "clinchFinalCount": 1,
       "clinchGatedOut": []
@@ -116,10 +116,10 @@
         "rejectedForAgeCount": 0
       },
       "league_moment_rivalry": {
-        "searchQuery": "SA Super Rugby Rivalry sports July 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
+        "searchQuery": "Rivalry Weekend sports July 2026",
+        "selectedVideoTitle": "6 AM News Headlines | 31 July 2026 | Samaa News Global",
+        "selectedVideoPublishedAt": "43 minutes ago",
+        "selectedVideoChannel": "SAMAA News Global",
         "rejectedForAgeCount": 0
       },
       "marquee_match": {
@@ -149,7 +149,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-07-31T01:18:43.440Z",
+      "triggeredAt": "2026-07-31T03:42:27.238Z",
       "expiresAt": "2026-08-01T17:00:00.000Z",
       "kind": "clinch_watch",
       "region": "SouthAfrica",
@@ -174,22 +174,22 @@
     },
     {
       "id": "league_moment_rivalry",
-      "title": "SA Super Rugby Rivalry",
-      "subtitle": "SA Super Rugby Rivalry: Sharks XV @ Stormers XXIII",
+      "title": "Rivalry Weekend",
+      "subtitle": "2 rivalry matchups in the next 7 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-07-31T01:18:43.440Z",
-      "expiresAt": "2026-08-07T01:18:43.440Z",
+      "triggeredAt": "2026-07-31T03:42:27.238Z",
+      "expiresAt": "2026-08-07T03:42:27.238Z",
       "kind": "league_moment",
       "region": "SouthAfrica",
       "regionPriority": 1,
       "regionLabel": "South Africa",
       "meta": {
         "type": "rivalry",
-        "matchCount": 1,
+        "matchCount": 2,
         "rivalries": [
           "SA Super Rugby Rivalry"
         ],
@@ -200,16 +200,33 @@
             "home": "Stormers XXIII",
             "league": "Currie Cup",
             "startTime": "2026-08-01T13:00:00.000Z"
+          },
+          {
+            "label": "SA Super Rugby Rivalry",
+            "away": "Sharks",
+            "home": "Stormers",
+            "league": "Currie Cup",
+            "startTime": "2026-08-01T13:00:00.000Z"
           }
         ],
         "eventIds": [
-          "rugby-curriecup-au247y"
+          "rugby-curriecup-au247y",
+          "rugby-curriecup-payodl"
         ],
-        "reason": "1 known rivalry matchup(s) found: SA Super Rugby Rivalry"
+        "reason": "2 known rivalry matchup(s) found: SA Super Rugby Rivalry"
       },
       "sports": [
         "rugby"
-      ]
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=1h7AKiaj9aE",
+        "thumbnailUrl": "https://img.youtube.com/vi/1h7AKiaj9aE/hqdefault.jpg",
+        "durationSeconds": 808,
+        "title": "6 AM News Headlines | 31 July 2026 | Samaa News Global",
+        "source": "youtube",
+        "channel": "SAMAA News Global",
+        "publishedAt": "43 minutes ago"
+      }
     },
     {
       "id": "marquee_match",
@@ -220,7 +237,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-07-31T01:18:43.440Z",
+      "triggeredAt": "2026-07-31T03:42:27.238Z",
       "expiresAt": "2026-08-01T03:30:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -260,7 +277,7 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-07-31T01:18:43.440Z",
+      "triggeredAt": "2026-07-31T03:42:27.238Z",
       "expiresAt": "2026-08-03T08:00:00.000Z",
       "kind": "rally_weekend",
       "region": "Other",
@@ -297,7 +314,7 @@
         "tabHint": "Watch"
       },
       "priority": 55,
-      "triggeredAt": "2026-07-31T01:18:43.440Z",
+      "triggeredAt": "2026-07-31T03:42:27.238Z",
       "expiresAt": "2026-08-02T23:59:59.999Z",
       "kind": "weekend_watchlist",
       "region": "Other",
@@ -379,26 +396,6 @@
           "endDate": "2026-07-31T23:30:00.000Z",
           "eventCount": 37,
           "seasonPhase": "Regular"
-        },
-        {
-          "sport": "cricket",
-          "displayName": "MLC",
-          "leagueKey": "mlc",
-          "dateRangeLabel": "Jul 17–18",
-          "startDate": "2026-07-17T01:30:00.000Z",
-          "endDate": "2026-07-18T23:30:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": null
-        },
-        {
-          "sport": "athletics",
-          "displayName": "UTMB — Monte Rosa-Walser",
-          "leagueKey": "utmb",
-          "dateRangeLabel": "Jul 17",
-          "startDate": "2026-07-17T03:00:00.000Z",
-          "endDate": "2026-07-17T03:00:00.000Z",
-          "eventCount": 1,
-          "seasonPhase": null
         },
         {
           "sport": "golf",
@@ -492,6 +489,16 @@
         },
         {
           "sport": "cricket",
+          "displayName": "MLC",
+          "leagueKey": "mlc",
+          "dateRangeLabel": "Jul 18",
+          "startDate": "2026-07-18T23:30:00.000Z",
+          "endDate": "2026-07-18T23:30:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
           "displayName": "ODI Cricket",
           "leagueKey": "odi",
           "dateRangeLabel": "Jul 19–21",
@@ -574,7 +581,7 @@
           "dateRangeLabel": "Aug 1–16",
           "startDate": "2026-08-01T13:00:00.000Z",
           "endDate": "2026-08-16T13:00:00.000Z",
-          "eventCount": 11,
+          "eventCount": 12,
           "seasonPhase": "Regular"
         },
         {
@@ -841,7 +848,7 @@
           "dateRangeLabel": "Jul 31–Aug 2",
           "startDate": "2026-07-31T17:00:00.000Z",
           "endDate": "2026-08-02T13:00:00.000Z",
-          "eventCount": 4,
+          "eventCount": 5,
           "seasonPhase": "Regular"
         },
         {

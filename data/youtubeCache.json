@@ -2038,5 +2038,25 @@
       "selectedVideoChannel": "FIA World Rally Championship",
       "rejectedForAgeCount": 1
     }
+  },
+  "league_moment:rivalry weekend sports july 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=1h7AKiaj9aE",
+      "thumbnailUrl": "https://img.youtube.com/vi/1h7AKiaj9aE/hqdefault.jpg",
+      "durationSeconds": 808,
+      "title": "6 AM News Headlines | 31 July 2026 | Samaa News Global",
+      "source": "youtube",
+      "channel": "SAMAA News Global",
+      "publishedAt": "43 minutes ago"
+    },
+    "fetchedAt": "2026-07-31T03:42:36.852Z",
+    "query": "Rivalry Weekend sports July 2026",
+    "debug": {
+      "searchQuery": "Rivalry Weekend sports July 2026",
+      "selectedVideoTitle": "6 AM News Headlines | 31 July 2026 | Samaa News Global",
+      "selectedVideoPublishedAt": "43 minutes ago",
+      "selectedVideoChannel": "SAMAA News Global",
+      "rejectedForAgeCount": 0
+    }
   }
 }

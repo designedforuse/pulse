@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-31T01:18:43.313Z",
+  "lastUpdated": "2026-07-31T03:42:27.131Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -52,10 +52,10 @@
   "buAdded": 0,
   "buUpdated": 0,
   "buPruned": 0,
-  "rugbyCount": 23,
-  "rugbyAdded": 23,
-  "rugbyUpdated": 0,
-  "rugbyPruned": 1,
+  "rugbyCount": 24,
+  "rugbyAdded": 14,
+  "rugbyUpdated": 9,
+  "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 0,
     "top14": 0,
@@ -67,12 +67,12 @@
     "curriecup": 20,
     "svns": 0
   },
-  "cricketCount": 49,
-  "cricketAdded": 34,
-  "cricketUpdated": 15,
-  "cricketPruned": 62,
+  "cricketCount": 48,
+  "cricketAdded": 5,
+  "cricketUpdated": 43,
+  "cricketPruned": 6,
   "cricketCounts": {
-    "MLC": 2,
+    "MLC": 1,
     "CPL": 12,
     "T20I Cricket": 5,
     "ODI Cricket": 8,
@@ -95,9 +95,9 @@
   "eplPruned": 0,
   "eplSourceUsed": "ical",
   "mlsCount": 211,
-  "mlsAdded": 48,
-  "mlsUpdated": 31,
-  "mlsPruned": 4,
+  "mlsAdded": 0,
+  "mlsUpdated": 79,
+  "mlsPruned": 0,
   "mlsSourceUsed": "espn",
   "serieaCount": 0,
   "serieaAdded": 0,
@@ -105,9 +105,9 @@
   "serieaPruned": 0,
   "serieaSourceUsed": "espn",
   "laligaCount": 8,
-  "laligaAdded": 8,
-  "laligaUpdated": 0,
-  "laligaPruned": 0,
+  "laligaAdded": 0,
+  "laligaUpdated": 8,
+  "laligaPruned": 8,
   "laligaSourceUsed": "espn",
   "bundesligaCount": 0,
   "bundesligaAdded": 0,
@@ -120,14 +120,14 @@
   "ligue1Pruned": 0,
   "ligue1SourceUsed": "espn",
   "nwslCount": 46,
-  "nwslAdded": 30,
-  "nwslUpdated": 16,
-  "nwslPruned": 37,
+  "nwslAdded": 0,
+  "nwslUpdated": 46,
+  "nwslPruned": 46,
   "nwslSourceUsed": "ical",
   "uslCount": 65,
-  "uslAdded": 42,
-  "uslUpdated": 23,
-  "uslPruned": 43,
+  "uslAdded": 0,
+  "uslUpdated": 65,
+  "uslPruned": 65,
   "uslSourceUsed": "espn",
   "championsCupCount": 0,
   "championsCupAdded": 0,
@@ -160,8 +160,8 @@
   "faCupPruned": 0,
   "faCupSourceUsed": "espn",
   "tennisCount": 48,
-  "tennisAdded": 40,
-  "tennisUpdated": 10,
+  "tennisAdded": 2,
+  "tennisUpdated": 48,
   "tennisPruned": 2,
   "tennisSourceUsed": "hardcoded",
   "tennisTournamentCounts": {
@@ -170,9 +170,9 @@
     "Cincinnati Open": 16
   },
   "f1Count": 30,
-  "f1Added": 10,
-  "f1Updated": 20,
-  "f1Pruned": 10,
+  "f1Added": 0,
+  "f1Updated": 30,
+  "f1Pruned": 0,
   "f1SourceUsed": "espn-f1",
   "f1RaceCounts": {
     "Moët & Chandon Belgian Grand Prix": 5,
@@ -185,7 +185,7 @@
   "golfCount": 3,
   "golfAdded": 0,
   "golfUpdated": 2,
-  "golfPruned": 1,
+  "golfPruned": 0,
   "golfSourceUsed": "hardcoded",
   "golfTournamentCounts": {
     "British Open": 2
@@ -201,8 +201,8 @@
   "ncaabPruned": 0,
   "ncaabSourceUsed": "espn",
   "intlSoccerCount": 104,
-  "intlSoccerAdded": 4,
-  "intlSoccerUpdated": 100,
+  "intlSoccerAdded": 0,
+  "intlSoccerUpdated": 104,
   "intlSoccerPruned": 104,
   "intlSoccerSourceUsed": "espn",
   "mlbCount": 0,
@@ -211,7 +211,7 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-07-31T01:18:43.313Z",
+    "lastRefreshAt": "2026-07-31T03:42:27.131Z",
     "sources": {
       "nhl": {
         "count": 0,
@@ -220,13 +220,13 @@
       },
       "ahl": {
         "count": 0,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 0,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -237,8 +237,8 @@
         "teamFilter": "Boston University"
       },
       "rugby": {
-        "count": 23,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "count": 24,
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 0,
@@ -253,11 +253,11 @@
         }
       },
       "cricket": {
-        "count": 49,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "count": 48,
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
-          "MLC": 2,
+          "MLC": 1,
           "CPL": 12,
           "T20I Cricket": 5,
           "ODI Cricket": 8,
@@ -266,12 +266,12 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
@@ -281,7 +281,7 @@
       },
       "mls": {
         "count": 211,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
@@ -291,7 +291,7 @@
       },
       "laLiga": {
         "count": 8,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
@@ -306,13 +306,13 @@
       },
       "nwsl": {
         "count": 46,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 65,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-07-18T16:00:00.000Z"
       },
@@ -330,7 +330,7 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T19:00:00.000Z"
       },
@@ -352,7 +352,7 @@
       },
       "tennis": {
         "count": 48,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "US Open": 20,
@@ -362,7 +362,7 @@
       },
       "f1": {
         "count": 30,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Moët & Chandon Belgian Grand Prix": 5,
@@ -375,17 +375,17 @@
       },
       "wrc": {
         "count": 20,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "Hardcoded Schedule"
       },
       "schoolsRugby": {
         "count": 1,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "Hardcoded Schedule"
       },
       "paddling": {
         "count": 1,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "Hardcoded Schedule"
       },
       "comrades": {
@@ -395,7 +395,7 @@
       },
       "golf": {
         "count": 3,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "British Open": 2
@@ -403,7 +403,7 @@
       },
       "marathon": {
         "count": 4,
-        "lastFetchAt": "2026-07-31T01:18:43.313Z",
+        "lastFetchAt": "2026-07-31T03:42:27.131Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Sydney Marathon": 1,
@@ -3837,44 +3837,6 @@
       "providerReason": "mls-appletv"
     },
     {
-      "id": "cricket-mlc-ys7xos",
-      "cricketMatchId": "1528589",
-      "sport": "cricket",
-      "league": "MLC",
-      "awayTeam": "Washington Freedom",
-      "homeTeam": "San Francisco Unicorns",
-      "startTimeLocal": "2026-07-17T01:30:00.000Z",
-      "endTimeLocal": "2026-07-17T05:00:00.000Z",
-      "providerId": "willowtv",
-      "isLive": false,
-      "source": "cricket-espn",
-      "leagueKey": "mlc",
-      "competitionName": "MLC",
-      "competitionType": "domestic",
-      "format": "t20",
-      "hostCountry": "United States",
-      "seriesName": "Major League Cricket",
-      "gender": "men",
-      "isIccT20Wc": false
-    },
-    {
-      "id": "athletics-utmb-monte-rosa-2026",
-      "sport": "athletics",
-      "league": "UTMB World Series",
-      "awayTeam": "",
-      "homeTeam": "UTMB — Monte Rosa-Walser",
-      "startTimeLocal": "2026-07-17T03:00:00.000Z",
-      "endTimeLocal": "2026-07-19T03:00:00.000Z",
-      "providerId": "flosports",
-      "isLive": false,
-      "source": "utmb-hardcoded",
-      "leagueKey": "utmb",
-      "eventType": "session",
-      "sessionTitle": "UTMB — Monte Rosa-Walser",
-      "competitionType": "international",
-      "tournamentName": "UTMB — Monte Rosa-Walser"
-    },
-    {
       "id": "golf-british-open-2026-07-17",
       "sport": "golf",
       "league": "The Majors",
@@ -3955,11 +3917,11 @@
       ]
     },
     {
-      "id": "rugby-curriecup-ardz8u",
+      "id": "rugby-curriecup-xr0ay8",
       "sport": "rugby",
       "league": "Currie Cup",
       "homeTeam": "Pumas",
-      "awayTeam": "Sharks XV",
+      "awayTeam": "Sharks",
       "startTimeLocal": "2026-07-17T15:00:00.000Z",
       "endTimeLocal": "2026-07-17T17:15:00.000Z",
       "providerId": "rugbypasstv",
@@ -3985,10 +3947,10 @@
       "competitionName": "Moët & Chandon Belgian Grand Prix"
     },
     {
-      "id": "rugby-curriecup-l7pot8",
+      "id": "rugby-curriecup-g8xt9",
       "sport": "rugby",
       "league": "Currie Cup",
-      "homeTeam": "Stormers XXIII",
+      "homeTeam": "Stormers",
       "awayTeam": "Griquas",
       "startTimeLocal": "2026-07-17T17:05:00.000Z",
       "endTimeLocal": "2026-07-17T19:20:00.000Z",
@@ -4525,11 +4487,11 @@
       "competitionName": "Moët & Chandon Belgian Grand Prix"
     },
     {
-      "id": "rugby-curriecup-y8v1mi",
+      "id": "rugby-curriecup-q9in14",
       "sport": "rugby",
       "league": "Currie Cup",
       "homeTeam": "Boland Cavaliers",
-      "awayTeam": "Bulls XV",
+      "awayTeam": "Bulls",
       "startTimeLocal": "2026-07-19T13:05:00.000Z",
       "endTimeLocal": "2026-07-19T15:20:00.000Z",
       "providerId": "rugbypasstv",
@@ -5078,11 +5040,11 @@
       ]
     },
     {
-      "id": "rugby-curriecup-crt98z",
+      "id": "rugby-curriecup-ydewbv",
       "sport": "rugby",
       "league": "Currie Cup",
       "homeTeam": "Cheetahs",
-      "awayTeam": "Sharks XV",
+      "awayTeam": "Sharks",
       "startTimeLocal": "2026-07-24T15:00:00.000Z",
       "endTimeLocal": "2026-07-24T17:15:00.000Z",
       "providerId": "rugbypasstv",
@@ -5269,11 +5231,11 @@
       "competitionName": "Hungarian Grand Prix"
     },
     {
-      "id": "rugby-curriecup-59cmqx",
+      "id": "rugby-curriecup-ax7ciz",
       "sport": "rugby",
       "league": "Currie Cup",
       "homeTeam": "Griquas",
-      "awayTeam": "Bulls XV",
+      "awayTeam": "Bulls",
       "startTimeLocal": "2026-07-25T15:05:00.000Z",
       "endTimeLocal": "2026-07-25T17:20:00.000Z",
       "providerId": "rugbypasstv",
@@ -5735,11 +5697,11 @@
       ]
     },
     {
-      "id": "rugby-curriecup-qgljq",
+      "id": "rugby-curriecup-zhxmld",
       "sport": "rugby",
       "league": "Currie Cup",
       "homeTeam": "Boland Cavaliers",
-      "awayTeam": "Stormers XXIII",
+      "awayTeam": "Stormers",
       "startTimeLocal": "2026-07-26T13:00:00.000Z",
       "endTimeLocal": "2026-07-26T15:15:00.000Z",
       "providerId": "rugbypasstv",
@@ -6127,11 +6089,11 @@
       "totalDays": 4
     },
     {
-      "id": "rugby-curriecup-au247y",
+      "id": "rugby-curriecup-payodl",
       "sport": "rugby",
       "league": "Currie Cup",
-      "homeTeam": "Stormers XXIII",
-      "awayTeam": "Sharks XV",
+      "homeTeam": "Stormers",
+      "awayTeam": "Sharks",
       "startTimeLocal": "2026-08-01T13:00:00.000Z",
       "endTimeLocal": "2026-08-01T15:15:00.000Z",
       "providerId": "rugbypasstv",
@@ -6156,11 +6118,11 @@
       "venue": "Faure Street Stadium, Paarl"
     },
     {
-      "id": "rugby-curriecup-t1m8uv",
+      "id": "rugby-curriecup-v81msr",
       "sport": "rugby",
       "league": "Currie Cup",
       "homeTeam": "Lions",
-      "awayTeam": "Bulls XV",
+      "awayTeam": "Bulls",
       "startTimeLocal": "2026-08-01T15:05:00.000Z",
       "endTimeLocal": "2026-08-01T17:20:00.000Z",
       "providerId": "rugbypasstv",
@@ -6658,12 +6620,12 @@
       "homeTeam": "Utah Royals",
       "startTimeLocal": "2026-08-02T23:00:00.000Z",
       "endTimeLocal": "2026-08-03T02:00:00.000Z",
-      "providerId": "victoryplus",
+      "providerId": "nwslplus",
       "isLive": false,
       "source": "soccer-nwsl",
       "leagueKey": "nwsl",
-      "providerReason": "nwsl-victory",
-      "broadcastNetworks": "Victory+"
+      "providerReason": "nwsl-nwslplus",
+      "broadcastNetworks": "NWSL+"
     },
     {
       "id": "soccer-nwsl-20260803-0100-boston-legacy-at-denver-summit",
@@ -7163,18 +7125,18 @@
       "league": "Currie Cup",
       "homeTeam": "Griquas",
       "awayTeam": "Lions",
-      "startTimeLocal": "2026-08-08T13:00:00.000Z",
-      "endTimeLocal": "2026-08-08T15:15:00.000Z",
+      "startTimeLocal": "2026-08-08T11:00:00.000Z",
+      "endTimeLocal": "2026-08-08T13:15:00.000Z",
       "providerId": "rugbypasstv",
       "isLive": false,
       "source": "rugby",
       "leagueKey": "curriecup"
     },
     {
-      "id": "rugby-curriecup-uhiubd",
+      "id": "rugby-curriecup-c57drz",
       "sport": "rugby",
       "league": "Currie Cup",
-      "homeTeam": "Bulls XV",
+      "homeTeam": "Bulls",
       "awayTeam": "Pumas",
       "startTimeLocal": "2026-08-08T13:05:00.000Z",
       "endTimeLocal": "2026-08-08T15:20:00.000Z",
@@ -7209,10 +7171,10 @@
       "tournamentName": "Canadian Open"
     },
     {
-      "id": "rugby-curriecup-6bns77",
+      "id": "rugby-curriecup-wdyq5l",
       "sport": "rugby",
       "league": "Currie Cup",
-      "homeTeam": "Sharks XV",
+      "homeTeam": "Sharks",
       "awayTeam": "Boland Cavaliers",
       "startTimeLocal": "2026-08-08T15:15:00.000Z",
       "endTimeLocal": "2026-08-08T17:30:00.000Z",
@@ -7494,10 +7456,10 @@
       "providerReason": "usl-espnplus"
     },
     {
-      "id": "rugby-curriecup-z39o15",
+      "id": "rugby-curriecup-m51qio",
       "sport": "rugby",
       "league": "Currie Cup",
-      "homeTeam": "Stormers XXIII",
+      "homeTeam": "Stormers",
       "awayTeam": "Cheetahs",
       "startTimeLocal": "2026-08-09T13:00:00.000Z",
       "endTimeLocal": "2026-08-09T15:15:00.000Z",
@@ -7614,12 +7576,12 @@
       "homeTeam": "Chicago Stars",
       "startTimeLocal": "2026-08-09T23:00:00.000Z",
       "endTimeLocal": "2026-08-10T02:00:00.000Z",
-      "providerId": "victoryplus",
+      "providerId": "nwslplus",
       "isLive": false,
       "source": "soccer-nwsl",
       "leagueKey": "nwsl",
-      "providerReason": "nwsl-victory",
-      "broadcastNetworks": "Victory+"
+      "providerReason": "nwsl-nwslplus",
+      "broadcastNetworks": "NWSL+"
     },
     {
       "id": "soccer-nwsl-20260810-0100-angel-city-at-seattle-reign",
@@ -8078,11 +8040,11 @@
       "tournamentName": "Cincinnati Open"
     },
     {
-      "id": "rugby-curriecup-vx1qh0",
+      "id": "rugby-curriecup-3hvqee",
       "sport": "rugby",
       "league": "Currie Cup",
       "homeTeam": "Griquas",
-      "awayTeam": "Sharks XV",
+      "awayTeam": "Sharks",
       "startTimeLocal": "2026-08-14T15:05:00.000Z",
       "endTimeLocal": "2026-08-14T17:20:00.000Z",
       "providerId": "rugbypasstv",
@@ -8183,12 +8145,12 @@
       "homeTeam": "Utah Royals",
       "startTimeLocal": "2026-08-15T02:00:00.000Z",
       "endTimeLocal": "2026-08-15T05:00:00.000Z",
-      "providerId": "victoryplus",
+      "providerId": "nwslplus",
       "isLive": false,
       "source": "soccer-nwsl",
       "leagueKey": "nwsl",
-      "providerReason": "nwsl-victory",
-      "broadcastNetworks": "Victory+"
+      "providerReason": "nwsl-nwslplus",
+      "broadcastNetworks": "NWSL+"
     },
     {
       "id": "soccer-nwsl-20260815-0200-chicago-stars-at-seattle-reign",
@@ -8198,12 +8160,12 @@
       "homeTeam": "Seattle Reign",
       "startTimeLocal": "2026-08-15T02:00:00.000Z",
       "endTimeLocal": "2026-08-15T05:00:00.000Z",
-      "providerId": "victoryplus",
+      "providerId": "nwslplus",
       "isLive": false,
       "source": "soccer-nwsl",
       "leagueKey": "nwsl",
-      "providerReason": "nwsl-victory",
-      "broadcastNetworks": "Victory+"
+      "providerReason": "nwsl-nwslplus",
+      "broadcastNetworks": "NWSL+"
     },
     {
       "id": "soccer-nwsl-20260815-0200-denver-summit-at-san-diego-wave",
@@ -8213,12 +8175,12 @@
       "homeTeam": "San Diego Wave",
       "startTimeLocal": "2026-08-15T02:00:00.000Z",
       "endTimeLocal": "2026-08-15T05:00:00.000Z",
-      "providerId": "victoryplus",
+      "providerId": "nwslplus",
       "isLive": false,
       "source": "soccer-nwsl",
       "leagueKey": "nwsl",
-      "providerReason": "nwsl-victory",
-      "broadcastNetworks": "Victory+"
+      "providerReason": "nwsl-nwslplus",
+      "broadcastNetworks": "NWSL+"
     },
     {
       "id": "rugby-rugbytests-i8jw8h",
@@ -8255,11 +8217,11 @@
       "isIccT20Wc": false
     },
     {
-      "id": "rugby-curriecup-95p357",
+      "id": "rugby-curriecup-ggze76",
       "sport": "rugby",
       "league": "Currie Cup",
       "homeTeam": "Pumas",
-      "awayTeam": "Stormers XXIII",
+      "awayTeam": "Stormers",
       "startTimeLocal": "2026-08-15T15:00:00.000Z",
       "endTimeLocal": "2026-08-15T17:15:00.000Z",
       "providerId": "rugbypasstv",
@@ -8743,10 +8705,10 @@
       "providerReason": "usl-espnplus"
     },
     {
-      "id": "rugby-curriecup-kx7q9x",
+      "id": "rugby-curriecup-66t07v",
       "sport": "rugby",
       "league": "Currie Cup",
-      "homeTeam": "Bulls XV",
+      "homeTeam": "Bulls",
       "awayTeam": "Cheetahs",
       "startTimeLocal": "2026-08-16T13:00:00.000Z",
       "endTimeLocal": "2026-08-16T15:15:00.000Z",
@@ -8904,12 +8866,12 @@
       "homeTeam": "North Carolina Courage",
       "startTimeLocal": "2026-08-16T23:00:00.000Z",
       "endTimeLocal": "2026-08-17T02:00:00.000Z",
-      "providerId": "victoryplus",
+      "providerId": "nwslplus",
       "isLive": false,
       "source": "soccer-nwsl",
       "leagueKey": "nwsl",
-      "providerReason": "nwsl-victory",
-      "broadcastNetworks": "Victory+"
+      "providerReason": "nwsl-nwslplus",
+      "broadcastNetworks": "NWSL+"
     },
     {
       "id": "cricket-test-ys78g5-day5",

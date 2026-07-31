@@ -589,12 +589,13 @@ const AHL_LOGO_URLS: Record<string, string> = {
 const CURRIE_CUP_LOGO_BASE = "https://mobiithumbnails.blob.core.windows.net/thumbnails/live/stratus";
 const CURRIE_CUP_LOGO_MAP: Record<string, string> = {
   "Boland Cavaliers": `${CURRIE_CUP_LOGO_BASE}/8a4f1445-d50a-4477-8a2b-0ae451838626/large.png`,
-  "Lions":            `${CURRIE_CUP_LOGO_BASE}/725744a8-53c7-4a61-b917-f8b3aeaac16d/large.png`,
+  // URC franchises playing in the Currie Cup use their URC names + ESPN logos.
+  "Lions":            "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25958.png",
   "Griquas":          `${CURRIE_CUP_LOGO_BASE}/f96ac66a-27dc-4bfd-a646-fd082f1e0cda/large.png`,
-  "Sharks XV":        `${CURRIE_CUP_LOGO_BASE}/c22f6c98-8972-47e5-a35e-d088d6a7ad37/large.png`,
-  "Stormers XXIII":   `${CURRIE_CUP_LOGO_BASE}/d06d24b3-850b-458e-bccd-15e764c90ccf/large.png`,
+  "Sharks":           "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25961.png",
+  "Stormers":         "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25962.png",
   "Pumas":            `${CURRIE_CUP_LOGO_BASE}/d619c37f-36b5-4d5b-8402-8b2be14b3cb9/large.png`,
-  "Bulls XV":         `${CURRIE_CUP_LOGO_BASE}/2f78bcda-6908-46fa-b752-46c5aeb08bcf/large.png`,
+  "Bulls":            "https://a.espncdn.com/i/teamlogos/rugby/teams/500/25953.png",
   "Cheetahs":         `${CURRIE_CUP_LOGO_BASE}/26dec522-2aeb-4f73-aaa8-ae538c1d1410/large.png`,
 };
 
@@ -649,8 +650,8 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
     return SCHOOLS_RUGBY_LOGO_MAP[teamName] || null;
   }
 
-  // Must precede the generic rugby/ESPN branch: Currie Cup sides (Sharks XV,
-  // Bulls XV, Stormers XXIII, etc.) are distinct from their URC namesakes.
+  // Currie Cup: URC franchises (Sharks/Bulls/Stormers/Lions) share URC logos;
+  // non-URC sides (Griquas, Pumas, Cheetahs, Boland Cavaliers) use SA Rugby CDN.
   if (league === "Currie Cup") {
     return CURRIE_CUP_LOGO_MAP[teamName] || null;
   }
