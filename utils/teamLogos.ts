@@ -583,6 +583,21 @@ const AHL_LOGO_URLS: Record<string, string> = {
   "Wilkes-Barre/Scranton Penguins": "https://theahl.com/wp-content/uploads/sites/3/2019/09/wbs64.png",
 };
 
+// Official Currie Cup team logos from springboks.rugby (SA Rugby match centre CDN).
+// Keys are the app's short team names; site uses sponsored names
+// (e.g. "Sanlam Boland Kavaliers", "Fidelity ADT Lions", "Vodacom Bulls XV").
+const CURRIE_CUP_LOGO_BASE = "https://mobiithumbnails.blob.core.windows.net/thumbnails/live/stratus";
+const CURRIE_CUP_LOGO_MAP: Record<string, string> = {
+  "Boland Cavaliers": `${CURRIE_CUP_LOGO_BASE}/8a4f1445-d50a-4477-8a2b-0ae451838626/large.png`,
+  "Lions":            `${CURRIE_CUP_LOGO_BASE}/725744a8-53c7-4a61-b917-f8b3aeaac16d/large.png`,
+  "Griquas":          `${CURRIE_CUP_LOGO_BASE}/f96ac66a-27dc-4bfd-a646-fd082f1e0cda/large.png`,
+  "Sharks XV":        `${CURRIE_CUP_LOGO_BASE}/c22f6c98-8972-47e5-a35e-d088d6a7ad37/large.png`,
+  "Stormers XXIII":   `${CURRIE_CUP_LOGO_BASE}/d06d24b3-850b-458e-bccd-15e764c90ccf/large.png`,
+  "Pumas":            `${CURRIE_CUP_LOGO_BASE}/d619c37f-36b5-4d5b-8402-8b2be14b3cb9/large.png`,
+  "Bulls XV":         `${CURRIE_CUP_LOGO_BASE}/2f78bcda-6908-46fa-b752-46c5aeb08bcf/large.png`,
+  "Cheetahs":         `${CURRIE_CUP_LOGO_BASE}/26dec522-2aeb-4f73-aaa8-ae538c1d1410/large.png`,
+};
+
 export function getTeamLogoUrl(teamName: string, league: string, sport?: string): string | null {
   if (!teamName || teamName === "TBC" || teamName === "TBD") return null;
 
@@ -632,6 +647,12 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
 
   if (league === "SA Schools Rugby") {
     return SCHOOLS_RUGBY_LOGO_MAP[teamName] || null;
+  }
+
+  // Must precede the generic rugby/ESPN branch: Currie Cup sides (Sharks XV,
+  // Bulls XV, Stormers XXIII, etc.) are distinct from their URC namesakes.
+  if (league === "Currie Cup") {
+    return CURRIE_CUP_LOGO_MAP[teamName] || null;
   }
 
   const sportLower = sport?.toLowerCase();
