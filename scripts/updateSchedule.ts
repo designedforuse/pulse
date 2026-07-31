@@ -34,6 +34,7 @@ import { fetchUtmbEvents, mergeUtmbEvents } from "./updateUtmb";
 import { fetchHorseRacingEvents, mergeHorseRacingEvents } from "./updateHorseRacing";
 import { fetchCyclingEvents, mergeCyclingEvents } from "./updateCycling";
 import { fetchDiamondLeagueEvents, mergeDiamondLeagueEvents } from "./updateDiamondLeague";
+import { fetchCommonwealthGamesEvents, mergeCommonwealthGamesEvents } from "./updateCommonwealthGames";
 import { fetchGoldenTrailEvents, mergeGoldenTrailEvents } from "./updateGoldenTrail";
 import { fetchEpicSeriesEvents, mergeEpicSeriesEvents } from "./updateEpicSeries";
 import { fetchNbaEvents, mergeNbaEvents } from "./updateNba";
@@ -336,6 +337,7 @@ async function main() {
   const existingHorseRacing = loadExistingByPrefix("horse-racing-");
   const existingCycling = loadExistingByPrefix("cycling-");
   const existingDiamondLeague = loadExistingByPrefix("athletics-diamond-league-");
+  const existingCwg = loadExistingByPrefix("athletics-cwg-");
   const existingUtmb = loadExistingByPrefix("athletics-utmb-");
   const existingGoldenTrail = loadExistingByPrefix("athletics-golden-trail-");
   const existingEpicSeries = loadExistingByPrefix("cycling-epic-series-");
@@ -384,6 +386,7 @@ async function main() {
   const horseRacingFetchResult = fetchHorseRacingEvents();
   const cyclingFetchResult = fetchCyclingEvents();
   const diamondLeagueFetchResult = fetchDiamondLeagueEvents();
+  const cwgFetchResult = await fetchCommonwealthGamesEvents();
   const utmbFetchResult = fetchUtmbEvents();
   const goldenTrailFetchResult = fetchGoldenTrailEvents();
   const epicSeriesFetchResult = fetchEpicSeriesEvents();
@@ -464,6 +467,7 @@ async function main() {
   const horseRacingResult = mergeHorseRacingEvents(existingHorseRacing, horseRacingFetchResult.events, now);
   const cyclingResult = mergeCyclingEvents(existingCycling, cyclingFetchResult.events, now);
   const diamondLeagueResult = mergeDiamondLeagueEvents(existingDiamondLeague, diamondLeagueFetchResult.events, now);
+  const cwgResult = mergeCommonwealthGamesEvents(existingCwg, cwgFetchResult.events, now);
   const utmbResult = mergeUtmbEvents(existingUtmb, utmbFetchResult.events, now);
   const goldenTrailResult = mergeGoldenTrailEvents(existingGoldenTrail, goldenTrailFetchResult.events, now);
   const epicSeriesResult = mergeEpicSeriesEvents(existingEpicSeries, epicSeriesFetchResult.events, now);
@@ -587,6 +591,8 @@ async function main() {
   console.log(`  Cycling merge: +${cyclingResult.added} added, ~${cyclingResult.updated} updated, -${cyclingResult.pruned} pruned → ${cyclingResult.merged.length} total`);
   console.log(`  Diamond League source: ${diamondLeagueFetchResult.sourceUsed} (${diamondLeagueFetchResult.count} events)`);
   console.log(`  Diamond League merge: +${diamondLeagueResult.added} added, ~${diamondLeagueResult.updated} updated, -${diamondLeagueResult.pruned} pruned → ${diamondLeagueResult.merged.length} total`);
+  console.log(`  Commonwealth Games source: ${cwgFetchResult.sourceUsed} (${cwgFetchResult.count} events)`);
+  console.log(`  Commonwealth Games merge: +${cwgResult.added} added, ~${cwgResult.updated} updated, -${cwgResult.pruned} pruned → ${cwgResult.merged.length} total`);
   console.log(`  UTMB source: ${utmbFetchResult.sourceUsed} (${utmbFetchResult.count} events)`);
   console.log(`  UTMB merge: +${utmbResult.added} added, ~${utmbResult.updated} updated, -${utmbResult.pruned} pruned → ${utmbResult.merged.length} total`);
   console.log(`  Golden Trail source: ${goldenTrailFetchResult.sourceUsed} (${goldenTrailFetchResult.count} events)`);
@@ -606,7 +612,7 @@ async function main() {
   console.log(`  CAF CL source: ${cafClFetchResult.sourceUsed} (${cafClFetchResult.count} events)`);
   console.log(`  CAF CL merge: +${cafClResult.added} added, ~${cafClResult.updated} updated, -${cafClResult.pruned} pruned → ${cafClResult.merged.length} total`);
 
-  const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged, ...buResult.merged, ...rugbyResult.merged, ...championsCupResult.merged, ...challengeCupResult.merged, ...mlrResult.merged, ...cricketResult.merged, ...iplResult.merged, ...t20WcResult.merged, ...olympicHockeyResult.merged, ...eplResult.merged, ...mlsResult.merged, ...serieAResult.merged, ...laLigaResult.merged, ...bundesligaResult.merged, ...ligue1Result.merged, ...nwslResult.merged, ...uslResult.merged, ...championsLeagueResult.merged, ...europaLeagueResult.merged, ...faCupResult.merged, ...cafClResult.merged, ...tennisResult.merged, ...f1Result.merged, ...wrcResult.merged, ...paddlingResult.merged, ...schoolsRugbyResult.merged, ...golfResult.merged, ...marathonResult.merged, ...comradesResult.merged, ...horseRacingResult.merged, ...cyclingResult.merged, ...diamondLeagueResult.merged, ...utmbResult.merged, ...goldenTrailResult.merged, ...epicSeriesResult.merged, ...nbaResult.merged, ...ncaabResult.merged, ...intlSoccerResult.merged, ...mlbResult.merged, ...shlResult.merged].sort(
+  const allEvents = [...nhlEvents, ...ahlResult.merged, ...echlResult.merged, ...buResult.merged, ...rugbyResult.merged, ...championsCupResult.merged, ...challengeCupResult.merged, ...mlrResult.merged, ...cricketResult.merged, ...iplResult.merged, ...t20WcResult.merged, ...olympicHockeyResult.merged, ...eplResult.merged, ...mlsResult.merged, ...serieAResult.merged, ...laLigaResult.merged, ...bundesligaResult.merged, ...ligue1Result.merged, ...nwslResult.merged, ...uslResult.merged, ...championsLeagueResult.merged, ...europaLeagueResult.merged, ...faCupResult.merged, ...cafClResult.merged, ...tennisResult.merged, ...f1Result.merged, ...wrcResult.merged, ...paddlingResult.merged, ...schoolsRugbyResult.merged, ...golfResult.merged, ...marathonResult.merged, ...comradesResult.merged, ...horseRacingResult.merged, ...cyclingResult.merged, ...diamondLeagueResult.merged, ...cwgResult.merged, ...utmbResult.merged, ...goldenTrailResult.merged, ...epicSeriesResult.merged, ...nbaResult.merged, ...ncaabResult.merged, ...intlSoccerResult.merged, ...mlbResult.merged, ...shlResult.merged].sort(
     (a, b) =>
       new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime()
   );

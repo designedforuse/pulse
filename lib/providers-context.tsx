@@ -29,6 +29,7 @@ export const PROVIDER_LIST: ProviderEntry[] = [
   { id: "ion",           label: "ION",                    logoId: "ion" },
   { id: "youtube",       label: "YouTube",                logoId: "youtube" },
   { id: "supersportschools", label: "SuperSport Schools", logoId: "supersportschools" },
+  { id: "supersport",    label: "SuperSport",             logoId: "supersport" },
 ];
 
 export function getEventBroadcasterIds(event: SportEvent): string[] {
@@ -56,6 +57,7 @@ export function getEventBroadcasterIds(event: SportEvent): string[] {
     case "mlbtv":     return ["mlbtv"];
     case "youtube":   return ["youtube"];
     case "supersportschools": return ["supersportschools"];
+    case "supersport":    return ["supersport"];
     case "youtubetv": {
       const ids: string[] = [];
       const reason = event.providerReason || "";

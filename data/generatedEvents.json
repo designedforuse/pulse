@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-31T03:42:27.131Z",
+  "lastUpdated": "2026-07-31T04:08:27.066Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -52,9 +52,9 @@
   "buAdded": 0,
   "buUpdated": 0,
   "buPruned": 0,
-  "rugbyCount": 24,
-  "rugbyAdded": 14,
-  "rugbyUpdated": 9,
+  "rugbyCount": 23,
+  "rugbyAdded": 0,
+  "rugbyUpdated": 23,
   "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 0,
@@ -70,7 +70,7 @@
   "cricketCount": 48,
   "cricketAdded": 5,
   "cricketUpdated": 43,
-  "cricketPruned": 6,
+  "cricketPruned": 5,
   "cricketCounts": {
     "MLC": 1,
     "CPL": 12,
@@ -211,7 +211,7 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-07-31T03:42:27.131Z",
+    "lastRefreshAt": "2026-07-31T04:08:27.066Z",
     "sources": {
       "nhl": {
         "count": 0,
@@ -220,13 +220,13 @@
       },
       "ahl": {
         "count": 0,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 0,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -237,8 +237,8 @@
         "teamFilter": "Boston University"
       },
       "rugby": {
-        "count": 24,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "count": 23,
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 0,
@@ -254,7 +254,7 @@
       },
       "cricket": {
         "count": 48,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "MLC": 1,
@@ -266,12 +266,12 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
@@ -281,7 +281,7 @@
       },
       "mls": {
         "count": 211,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
@@ -291,7 +291,7 @@
       },
       "laLiga": {
         "count": 8,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
@@ -306,13 +306,13 @@
       },
       "nwsl": {
         "count": 46,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 65,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-07-18T16:00:00.000Z"
       },
@@ -330,7 +330,7 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T19:00:00.000Z"
       },
@@ -352,7 +352,7 @@
       },
       "tennis": {
         "count": 48,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "US Open": 20,
@@ -362,7 +362,7 @@
       },
       "f1": {
         "count": 30,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Moët & Chandon Belgian Grand Prix": 5,
@@ -375,17 +375,17 @@
       },
       "wrc": {
         "count": 20,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "Hardcoded Schedule"
       },
       "schoolsRugby": {
         "count": 1,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "Hardcoded Schedule"
       },
       "paddling": {
         "count": 1,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "Hardcoded Schedule"
       },
       "comrades": {
@@ -395,7 +395,7 @@
       },
       "golf": {
         "count": 3,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "British Open": 2
@@ -403,7 +403,7 @@
       },
       "marathon": {
         "count": 4,
-        "lastFetchAt": "2026-07-31T03:42:27.131Z",
+        "lastFetchAt": "2026-07-31T04:08:27.066Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Sydney Marathon": 1,
@@ -4999,6 +4999,24 @@
       ]
     },
     {
+      "id": "athletics-cwg-swm-80a51ad8-28a1-4aa5-9bb2-486876e2a7d1",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Swimming — Heats",
+      "startTimeLocal": "2026-07-24T09:30:00Z",
+      "endTimeLocal": "2026-07-24T12:00:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Swimming — Heats",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Heats"
+    },
+    {
       "id": "f1-espn-401839088",
       "sport": "racing",
       "league": "F1",
@@ -5070,6 +5088,24 @@
       "competitionName": "Hungarian Grand Prix"
     },
     {
+      "id": "athletics-cwg-swm-16d05282-23bf-4b8b-89f8-722599807e28",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Swimming — Finals",
+      "startTimeLocal": "2026-07-24T18:00:00Z",
+      "endTimeLocal": "2026-07-24T21:00:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Swimming — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
+    },
+    {
       "id": "soccer-nwsl-20260725-0000-chicago-stars-at-orlando-pride",
       "sport": "soccer",
       "league": "NWSL",
@@ -5113,6 +5149,24 @@
       "leagueKey": "nwsl",
       "providerReason": "nwsl-ion-prime",
       "broadcastNetworks": "Prime Video"
+    },
+    {
+      "id": "athletics-cwg-swm-b159f773-f919-406b-b55a-d26dbd033b6d",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Swimming — Heats",
+      "startTimeLocal": "2026-07-25T09:30:00Z",
+      "endTimeLocal": "2026-07-25T12:00:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Swimming — Heats",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Heats"
     },
     {
       "id": "f1-espn-401839090",
@@ -5242,6 +5296,24 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "curriecup"
+    },
+    {
+      "id": "athletics-cwg-swm-0e6be181-e571-4ac1-9b1c-d64b6c32c8b2",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Swimming — Finals",
+      "startTimeLocal": "2026-07-25T18:00:00Z",
+      "endTimeLocal": "2026-07-25T21:00:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Swimming — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
     },
     {
       "id": "soccer-nwsl-20260725-2100-kansas-city-current-at-boston-legacy",
@@ -5652,6 +5724,24 @@
       "providerReason": "usl-espnplus"
     },
     {
+      "id": "athletics-cwg-swm-0009be1b-fb98-4e62-8cc9-3f44e6e86915",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Swimming — Finals",
+      "startTimeLocal": "2026-07-26T09:30:00Z",
+      "endTimeLocal": "2026-07-26T11:45:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Swimming — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
+    },
+    {
       "id": "cricket-t20i-ysmimj",
       "cricketMatchId": "1530062",
       "sport": "cricket",
@@ -5751,6 +5841,24 @@
       "isFinalDay": false
     },
     {
+      "id": "athletics-cwg-swm-78bb18cf-57f4-44cd-8d19-d7e3f7e6877c",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Swimming — Finals",
+      "startTimeLocal": "2026-07-26T18:00:00Z",
+      "endTimeLocal": "2026-07-26T21:15:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Swimming — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
+    },
+    {
       "id": "soccer-nwsl-20260726-2100-seattle-reign-at-san-diego-wave",
       "sport": "soccer",
       "league": "NWSL",
@@ -5796,6 +5904,42 @@
       "broadcastNetworks": "ESPN, ESPN Deportes"
     },
     {
+      "id": "athletics-cwg-ath-cab97cb5-240a-4293-a63d-f344140b0247",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Athletics — Heats",
+      "startTimeLocal": "2026-07-27T09:00:00Z",
+      "endTimeLocal": "2026-07-27T12:15:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Athletics — Heats",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Heats"
+    },
+    {
+      "id": "athletics-cwg-swm-6cb5ffd2-c4b3-44ae-9dde-42226fdcc64a",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Swimming — Finals",
+      "startTimeLocal": "2026-07-27T09:30:00Z",
+      "endTimeLocal": "2026-07-27T11:15:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Swimming — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
+    },
+    {
       "id": "cricket-test-ysrqwa-day3",
       "cricketMatchId": "1538630",
       "sport": "cricket",
@@ -5818,6 +5962,78 @@
       "dayNumber": 3,
       "totalDays": 5,
       "isFinalDay": false
+    },
+    {
+      "id": "athletics-cwg-ath-cdc6c59c-be35-458c-86a1-c5288fbe9f6c",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Athletics — Finals",
+      "startTimeLocal": "2026-07-27T17:30:00Z",
+      "endTimeLocal": "2026-07-27T21:00:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Athletics — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
+    },
+    {
+      "id": "athletics-cwg-swm-219b0038-7c2d-41b0-9bd5-af31843d17c2",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Swimming — Finals",
+      "startTimeLocal": "2026-07-27T18:00:00Z",
+      "endTimeLocal": "2026-07-27T21:00:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Swimming — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
+    },
+    {
+      "id": "athletics-cwg-ath-e7692acf-8f40-4e8b-9193-33417c73cca5",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Athletics — Heats",
+      "startTimeLocal": "2026-07-28T09:00:00Z",
+      "endTimeLocal": "2026-07-28T11:45:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Athletics — Heats",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Heats"
+    },
+    {
+      "id": "athletics-cwg-swm-be7eb81d-15ad-4020-935b-e4a5c8d2718c",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Swimming — Finals",
+      "startTimeLocal": "2026-07-28T09:30:00Z",
+      "endTimeLocal": "2026-07-28T12:15:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Swimming — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
     },
     {
       "id": "cricket-test-ysrqwa-day4",
@@ -5844,6 +6060,78 @@
       "isFinalDay": false
     },
     {
+      "id": "athletics-cwg-ath-2fba4935-f5ba-4849-99a1-3951f4320b0b",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Athletics — Finals",
+      "startTimeLocal": "2026-07-28T17:30:00Z",
+      "endTimeLocal": "2026-07-28T21:00:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Athletics — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
+    },
+    {
+      "id": "athletics-cwg-swm-5c5c481e-ee0c-4547-a2ec-ee3c95dc4b03",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Swimming — Finals",
+      "startTimeLocal": "2026-07-28T18:00:00Z",
+      "endTimeLocal": "2026-07-28T21:15:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Swimming — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
+    },
+    {
+      "id": "athletics-cwg-ath-0fb06eea-6307-4b6c-a53a-302781712080",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Athletics — Heats",
+      "startTimeLocal": "2026-07-29T09:00:00Z",
+      "endTimeLocal": "2026-07-29T12:00:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Athletics — Heats",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Heats"
+    },
+    {
+      "id": "athletics-cwg-swm-f4e84db7-784c-43d7-8fd4-94cc9310cf4a",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Swimming — Heats",
+      "startTimeLocal": "2026-07-29T09:30:00Z",
+      "endTimeLocal": "2026-07-29T11:15:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Swimming — Heats",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Heats"
+    },
+    {
       "id": "cricket-test-ysrqwa-day5",
       "cricketMatchId": "1538630",
       "sport": "cricket",
@@ -5866,6 +6154,42 @@
       "dayNumber": 5,
       "totalDays": 5,
       "isFinalDay": true
+    },
+    {
+      "id": "athletics-cwg-ath-29a4a9a6-d2bb-4af5-b8c2-8218bfbfbced",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Athletics — Finals",
+      "startTimeLocal": "2026-07-29T17:30:00Z",
+      "endTimeLocal": "2026-07-29T21:00:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Athletics — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
+    },
+    {
+      "id": "athletics-cwg-swm-f70007cc-115a-4e9b-bba1-b0b7a4ed3722",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Swimming — Finals",
+      "startTimeLocal": "2026-07-29T18:00:00Z",
+      "endTimeLocal": "2026-07-29T21:15:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Swimming — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
     },
     {
       "id": "soccer-usl-20260729-2300-fc-tulsa-at-pittsburgh-riverhounds",
@@ -5975,6 +6299,42 @@
       "totalDays": 4
     },
     {
+      "id": "athletics-cwg-ath-82b553d4-c755-4f0d-b032-f924a5d82023",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Athletics — Heats",
+      "startTimeLocal": "2026-07-30T09:00:00Z",
+      "endTimeLocal": "2026-07-30T12:30:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Athletics — Heats",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Heats"
+    },
+    {
+      "id": "athletics-cwg-ath-ea476adc-f12d-42b8-ac9b-5b073e8d710e",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Athletics — Finals",
+      "startTimeLocal": "2026-07-30T17:30:00Z",
+      "endTimeLocal": "2026-07-30T21:00:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Athletics — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
+    },
+    {
       "id": "racing-wrc-finland-2026-day2",
       "sport": "racing",
       "league": "WRC",
@@ -5995,6 +6355,24 @@
       "totalDays": 4
     },
     {
+      "id": "athletics-cwg-ath-e3dc4963-3579-4975-9446-9a087b2f5ab9",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Athletics — Finals",
+      "startTimeLocal": "2026-07-31T09:00:00Z",
+      "endTimeLocal": "2026-07-31T12:45:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Athletics — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
+    },
+    {
       "id": "rugby-curriecup-xwoiod",
       "sport": "rugby",
       "league": "Currie Cup",
@@ -6006,6 +6384,24 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "curriecup"
+    },
+    {
+      "id": "athletics-cwg-ath-2de7ed1a-5ac9-4f40-90b1-ade2db65df73",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Athletics — Finals",
+      "startTimeLocal": "2026-07-31T17:30:00Z",
+      "endTimeLocal": "2026-07-31T21:15:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Athletics — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
     },
     {
       "id": "soccer-mls-20260731-2330-toronto-fc-at-new-york-city-fc",
@@ -6089,6 +6485,24 @@
       "totalDays": 4
     },
     {
+      "id": "athletics-cwg-ath-7ae7557e-edf8-4298-ad54-357afe629592",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Athletics — Finals",
+      "startTimeLocal": "2026-08-01T09:00:00Z",
+      "endTimeLocal": "2026-08-01T12:45:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Athletics — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
+    },
+    {
       "id": "rugby-curriecup-payodl",
       "sport": "rugby",
       "league": "Currie Cup",
@@ -6129,6 +6543,24 @@
       "isLive": false,
       "source": "rugby",
       "leagueKey": "curriecup"
+    },
+    {
+      "id": "athletics-cwg-ath-6f6304fa-683a-4066-9b60-cbfe148e20f3",
+      "sport": "athletics",
+      "league": "Commonwealth Games",
+      "awayTeam": "",
+      "homeTeam": "Athletics — Finals",
+      "startTimeLocal": "2026-08-01T17:30:00Z",
+      "endTimeLocal": "2026-08-01T21:30:00Z",
+      "providerId": "supersport",
+      "isLive": false,
+      "source": "cwg-api",
+      "leagueKey": "commonwealth-games",
+      "eventType": "session",
+      "sessionTitle": "Athletics — Finals",
+      "competitionType": "international",
+      "tournamentName": "Glasgow 2026",
+      "roundLabel": "Finals"
     },
     {
       "id": "soccer-nwsl-20260801-2000-chicago-stars-at-racing-louisville",

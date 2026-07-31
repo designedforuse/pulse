@@ -1885,21 +1885,21 @@
   },
   "league_moment:big stage sports july 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=oOIAZcF2ep8",
-      "thumbnailUrl": "https://img.youtube.com/vi/oOIAZcF2ep8/hqdefault.jpg",
-      "durationSeconds": 2350,
-      "title": "KSAT News at 6 p.m. : Jul 09, 2026",
+      "url": "https://www.youtube.com/watch?v=iElsq-1RhzU",
+      "thumbnailUrl": "https://img.youtube.com/vi/iElsq-1RhzU/hqdefault.jpg",
+      "durationSeconds": 1092,
+      "title": "Tour de France 2026: CLOSEST & CRAZIEST stage finishes | Cycling on NBC Sports",
       "source": "youtube",
-      "channel": "KSAT 12",
-      "publishedAt": "2 hours ago"
+      "channel": "NBC Sports",
+      "publishedAt": "14 hours ago"
     },
-    "fetchedAt": "2026-07-10T02:08:54.013Z",
+    "fetchedAt": "2026-07-31T04:08:37.290Z",
     "query": "Big Stage sports July 2026",
     "debug": {
       "searchQuery": "Big Stage sports July 2026",
-      "selectedVideoTitle": "KSAT News at 6 p.m. : Jul 09, 2026",
-      "selectedVideoPublishedAt": "2 hours ago",
-      "selectedVideoChannel": "KSAT 12",
+      "selectedVideoTitle": "Tour de France 2026: CLOSEST & CRAZIEST stage finishes | Cycling on NBC Sports",
+      "selectedVideoPublishedAt": "14 hours ago",
+      "selectedVideoChannel": "NBC Sports",
       "rejectedForAgeCount": 0
     }
   },
@@ -2056,6 +2056,18 @@
       "selectedVideoTitle": "6 AM News Headlines | 31 July 2026 | Samaa News Global",
       "selectedVideoPublishedAt": "43 minutes ago",
       "selectedVideoChannel": "SAMAA News Global",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:sharks clinch playoff berth july 2026": {
+    "video": null,
+    "fetchedAt": "2026-07-31T04:08:36.742Z",
+    "query": "Sharks clinch playoff berth July 2026",
+    "debug": {
+      "searchQuery": "Sharks clinch playoff berth July 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   }

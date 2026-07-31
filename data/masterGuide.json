@@ -94,6 +94,14 @@
             "ATP Masters 1000",
             "Grand Slam"
           ]
+        },
+        {
+          "id": "athletics_night",
+          "title": "Athletics Night",
+          "sport": "athletics",
+          "leagues": [
+            "Commonwealth Games"
+          ]
         }
       ]
     },
@@ -176,7 +184,8 @@
           "sport": "athletics",
           "leagues": [
             "World Marathon Majors",
-            "Diamond League"
+            "Diamond League",
+            "Commonwealth Games"
           ]
         },
         {
@@ -223,6 +232,12 @@
       "packageName": "com.google.android.youtube",
       "activity": "com.google.android.apps.youtube.app.WatchWhileActivity",
       "launchUrl": "https://www.youtube.com"
+    },
+    {
+      "id": "supersport",
+      "name": "SuperSport",
+      "packageName": "com.android.chrome",
+      "launchUrl": "https://www.supersport.com"
     },
     {
       "id": "rugbypasstv",

@@ -1,12 +1,14 @@
 {
-  "lastUpdated": "2026-07-31T03:42:27.238Z",
+  "lastUpdated": "2026-07-31T04:08:27.383Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
-        "SouthAfrica": 1
+        "SouthAfrica": 1,
+        "Other": 1
       },
       "clinch_watch": {
-        "SouthAfrica": 1
+        "SouthAfrica": 1,
+        "Other": 1
       },
       "weekend_watchlist": {
         "Other": 1
@@ -22,17 +24,19 @@
     "finalFeedByRegion": {
       "SouthAfrica": [
         "clinch_watch: Clinch Watch",
-        "league_moment: Rivalry Weekend"
+        "league_moment: SA Super Rugby Rivalry"
       ],
       "Other": [
+        "clinch_watch: Clinch Watch",
         "marquee_match: Marquee Match: MLS",
         "rally_weekend: Rally Weekend",
+        "league_moment: Big Stage",
         "weekend_watchlist: Weekend Watchlist"
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 5,
-    "totalAfterCap": 5,
+    "totalBeforeCap": 7,
+    "totalAfterCap": 7,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -65,17 +69,17 @@
         ],
         "playersIngested": 357,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-07-31T03:42:27.238Z"
+        "timestamp": "2026-07-31T04:08:27.383Z"
       },
       "cacheHistoryCount": 881,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 5,
-    "candidateCountAfterCap": 5,
+    "candidateCountBeforeCap": 7,
+    "candidateCountAfterCap": 7,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -3487.707566111111,
+      "hoursUntil": -3488.1409397222224,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -91,9 +95,9 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 2,
-      "clinchAfterRegionFilter": 1,
-      "clinchFinalCount": 1,
+      "rawClinchCandidates": 5,
+      "clinchAfterRegionFilter": 2,
+      "clinchFinalCount": 2,
       "clinchGatedOut": []
     },
     "tonightStorySelectedSignal": null,
@@ -108,18 +112,18 @@
       "scoredCandidates": []
     },
     "videoSelection": {
-      "clinch_watch_rugby-curriecup-au247y": {
-        "searchQuery": "Sharks XV clinch playoff berth July 2026",
+      "clinch_watch_rugby-curriecup-payodl": {
+        "searchQuery": "Sharks clinch playoff berth July 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
       "league_moment_rivalry": {
-        "searchQuery": "Rivalry Weekend sports July 2026",
-        "selectedVideoTitle": "6 AM News Headlines | 31 July 2026 | Samaa News Global",
-        "selectedVideoPublishedAt": "43 minutes ago",
-        "selectedVideoChannel": "SAMAA News Global",
+        "searchQuery": "SA Super Rugby Rivalry sports July 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
       "marquee_match": {
@@ -135,12 +139,19 @@
         "selectedVideoPublishedAt": "4 hours ago",
         "selectedVideoChannel": "FIA World Rally Championship",
         "rejectedForAgeCount": 1
+      },
+      "league_moment_tournament": {
+        "searchQuery": "Big Stage sports July 2026",
+        "selectedVideoTitle": "Tour de France 2026: CLOSEST & CRAZIEST stage finishes | Cycling on NBC Sports",
+        "selectedVideoPublishedAt": "14 hours ago",
+        "selectedVideoChannel": "NBC Sports",
+        "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
-      "id": "clinch_watch_rugby-curriecup-au247y",
+      "id": "clinch_watch_rugby-curriecup-payodl",
       "title": "Clinch Watch",
       "subtitle": "Can clinch home quarterfinal in the next 48h",
       "impact": {
@@ -149,7 +160,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-07-31T03:42:27.238Z",
+      "triggeredAt": "2026-07-31T04:08:27.383Z",
       "expiresAt": "2026-08-01T17:00:00.000Z",
       "kind": "clinch_watch",
       "region": "SouthAfrica",
@@ -160,13 +171,13 @@
         "conditionLabel": "Can clinch home quarterfinal",
         "sport": "rugby",
         "league": "Currie Cup",
-        "awayTeam": "Sharks XV",
-        "homeTeam": "Stormers XXIII",
+        "awayTeam": "Sharks",
+        "homeTeam": "Stormers",
         "startTime": "2026-08-01T13:00:00.000Z",
         "eventIds": [
-          "rugby-curriecup-au247y"
+          "rugby-curriecup-payodl"
         ],
-        "reason": "Stormers XXIII have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
+        "reason": "Stormers have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
       },
       "sports": [
         "rugby"
@@ -174,33 +185,26 @@
     },
     {
       "id": "league_moment_rivalry",
-      "title": "Rivalry Weekend",
-      "subtitle": "2 rivalry matchups in the next 7 days",
+      "title": "SA Super Rugby Rivalry",
+      "subtitle": "SA Super Rugby Rivalry: Sharks @ Stormers",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-07-31T03:42:27.238Z",
-      "expiresAt": "2026-08-07T03:42:27.238Z",
+      "triggeredAt": "2026-07-31T04:08:27.383Z",
+      "expiresAt": "2026-08-07T04:08:27.383Z",
       "kind": "league_moment",
       "region": "SouthAfrica",
       "regionPriority": 1,
       "regionLabel": "South Africa",
       "meta": {
         "type": "rivalry",
-        "matchCount": 2,
+        "matchCount": 1,
         "rivalries": [
           "SA Super Rugby Rivalry"
         ],
         "matches": [
-          {
-            "label": "SA Super Rugby Rivalry",
-            "away": "Sharks XV",
-            "home": "Stormers XXIII",
-            "league": "Currie Cup",
-            "startTime": "2026-08-01T13:00:00.000Z"
-          },
           {
             "label": "SA Super Rugby Rivalry",
             "away": "Sharks",
@@ -210,23 +214,45 @@
           }
         ],
         "eventIds": [
-          "rugby-curriecup-au247y",
           "rugby-curriecup-payodl"
         ],
-        "reason": "2 known rivalry matchup(s) found: SA Super Rugby Rivalry"
+        "reason": "1 known rivalry matchup(s) found: SA Super Rugby Rivalry"
       },
       "sports": [
         "rugby"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=1h7AKiaj9aE",
-        "thumbnailUrl": "https://img.youtube.com/vi/1h7AKiaj9aE/hqdefault.jpg",
-        "durationSeconds": 808,
-        "title": "6 AM News Headlines | 31 July 2026 | Samaa News Global",
-        "source": "youtube",
-        "channel": "SAMAA News Global",
-        "publishedAt": "43 minutes ago"
-      }
+      ]
+    },
+    {
+      "id": "clinch_watch_athletics-cwg-ath-e3dc4963-3579-4975-9446-9a087b2f5ab9",
+      "title": "Clinch Watch",
+      "subtitle": "Athletics — Finals · Athletics title on the line",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 92,
+      "triggeredAt": "2026-07-31T04:08:27.383Z",
+      "expiresAt": "2026-07-31T13:00:00.000Z",
+      "kind": "clinch_watch",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "source": "tournament",
+        "conditionLabel": "Athletics title on the line",
+        "sport": "athletics",
+        "league": "Commonwealth Games",
+        "awayTeam": "",
+        "homeTeam": "Athletics — Finals",
+        "startTime": "2026-07-31T09:00:00Z",
+        "eventIds": [
+          "athletics-cwg-ath-e3dc4963-3579-4975-9446-9a087b2f5ab9"
+        ],
+        "reason": "Athletics — Finals — a athletics title on the line.\n\nThis is the kind of moment entire seasons build toward."
+      },
+      "sports": [
+        "athletics"
+      ]
     },
     {
       "id": "marquee_match",
@@ -237,7 +263,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-07-31T03:42:27.238Z",
+      "triggeredAt": "2026-07-31T04:08:27.383Z",
       "expiresAt": "2026-08-01T03:30:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -277,7 +303,7 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-07-31T03:42:27.238Z",
+      "triggeredAt": "2026-07-31T04:08:27.383Z",
       "expiresAt": "2026-08-03T08:00:00.000Z",
       "kind": "rally_weekend",
       "region": "Other",
@@ -306,6 +332,75 @@
       }
     },
     {
+      "id": "league_moment_tournament",
+      "title": "Big Stage",
+      "subtitle": "4 tournament/knockout matches this week",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 70,
+      "triggeredAt": "2026-07-31T04:08:27.383Z",
+      "expiresAt": "2026-08-07T04:08:27.383Z",
+      "kind": "league_moment",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "tournament",
+        "matchCount": 4,
+        "matches": [
+          {
+            "away": "",
+            "home": "Athletics — Finals",
+            "league": "Commonwealth Games",
+            "round": "Athletics — Finals",
+            "startTime": "2026-07-31T09:00:00Z"
+          },
+          {
+            "away": "",
+            "home": "Athletics — Finals",
+            "league": "Commonwealth Games",
+            "round": "Athletics — Finals",
+            "startTime": "2026-07-31T17:30:00Z"
+          },
+          {
+            "away": "",
+            "home": "Athletics — Finals",
+            "league": "Commonwealth Games",
+            "round": "Athletics — Finals",
+            "startTime": "2026-08-01T09:00:00Z"
+          },
+          {
+            "away": "",
+            "home": "Athletics — Finals",
+            "league": "Commonwealth Games",
+            "round": "Athletics — Finals",
+            "startTime": "2026-08-01T17:30:00Z"
+          }
+        ],
+        "eventIds": [
+          "athletics-cwg-ath-e3dc4963-3579-4975-9446-9a087b2f5ab9",
+          "athletics-cwg-ath-2de7ed1a-5ac9-4f40-90b1-ade2db65df73",
+          "athletics-cwg-ath-7ae7557e-edf8-4298-ad54-357afe629592",
+          "athletics-cwg-ath-6f6304fa-683a-4066-9b60-cbfe148e20f3"
+        ],
+        "reason": "Found 4 tournament stage match(es) in the next 7 days"
+      },
+      "sports": [
+        "athletics"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=iElsq-1RhzU",
+        "thumbnailUrl": "https://img.youtube.com/vi/iElsq-1RhzU/hqdefault.jpg",
+        "durationSeconds": 1092,
+        "title": "Tour de France 2026: CLOSEST & CRAZIEST stage finishes | Cycling on NBC Sports",
+        "source": "youtube",
+        "channel": "NBC Sports",
+        "publishedAt": "14 hours ago"
+      }
+    },
+    {
       "id": "weekend_watchlist",
       "title": "Weekend Watchlist",
       "subtitle": "3 marquee matchups · WRC · Test Cricket · NWSL",
@@ -314,7 +409,7 @@
         "tabHint": "Watch"
       },
       "priority": 55,
-      "triggeredAt": "2026-07-31T03:42:27.238Z",
+      "triggeredAt": "2026-07-31T04:08:27.383Z",
       "expiresAt": "2026-08-02T23:59:59.999Z",
       "kind": "weekend_watchlist",
       "region": "Other",
@@ -508,6 +603,16 @@
           "seasonPhase": null
         },
         {
+          "sport": "athletics",
+          "displayName": "Swimming — Heats",
+          "leagueKey": "commonwealth-games",
+          "dateRangeLabel": "Jul 24–29",
+          "startDate": "2026-07-24T09:30:00Z",
+          "endDate": "2026-07-29T09:30:00Z",
+          "eventCount": 3,
+          "seasonPhase": "Regular"
+        },
+        {
           "sport": "racing",
           "displayName": "Hungarian GP",
           "leagueKey": "f1",
@@ -516,6 +621,36 @@
           "endDate": "2026-07-26T13:00:00.000Z",
           "eventCount": 5,
           "seasonPhase": null
+        },
+        {
+          "sport": "athletics",
+          "displayName": "Swimming — Finals",
+          "leagueKey": "commonwealth-games",
+          "dateRangeLabel": "Jul 24–29",
+          "startDate": "2026-07-24T18:00:00Z",
+          "endDate": "2026-07-29T18:00:00Z",
+          "eventCount": 9,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "athletics",
+          "displayName": "Athletics — Heats",
+          "leagueKey": "commonwealth-games",
+          "dateRangeLabel": "Jul 27–30",
+          "startDate": "2026-07-27T09:00:00Z",
+          "endDate": "2026-07-30T09:00:00Z",
+          "eventCount": 4,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "athletics",
+          "displayName": "Athletics — Finals",
+          "leagueKey": "commonwealth-games",
+          "dateRangeLabel": "Jul 27–31",
+          "startDate": "2026-07-27T17:30:00Z",
+          "endDate": "2026-07-31T17:30:00Z",
+          "eventCount": 6,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "racing",
@@ -575,13 +710,23 @@
           "seasonPhase": null
         },
         {
+          "sport": "athletics",
+          "displayName": "Athletics — Finals",
+          "leagueKey": "commonwealth-games",
+          "dateRangeLabel": "Aug 1",
+          "startDate": "2026-08-01T09:00:00Z",
+          "endDate": "2026-08-01T17:30:00Z",
+          "eventCount": 2,
+          "seasonPhase": "Regular"
+        },
+        {
           "sport": "rugby",
           "displayName": "Currie Cup",
           "leagueKey": "curriecup",
           "dateRangeLabel": "Aug 1–16",
           "startDate": "2026-08-01T13:00:00.000Z",
           "endDate": "2026-08-16T13:00:00.000Z",
-          "eventCount": 12,
+          "eventCount": 11,
           "seasonPhase": "Regular"
         },
         {
@@ -802,6 +947,26 @@
           "seasonPhase": "Regular"
         },
         {
+          "sport": "athletics",
+          "displayName": "Athletics — Heats",
+          "leagueKey": "commonwealth-games",
+          "dateRangeLabel": "Jul 27–30",
+          "startDate": "2026-07-27T09:00:00Z",
+          "endDate": "2026-07-30T09:00:00Z",
+          "eventCount": 4,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "athletics",
+          "displayName": "Swimming — Finals",
+          "leagueKey": "commonwealth-games",
+          "dateRangeLabel": "Jul 27–29",
+          "startDate": "2026-07-27T09:30:00Z",
+          "endDate": "2026-07-29T18:00:00Z",
+          "eventCount": 5,
+          "seasonPhase": "Regular"
+        },
+        {
           "sport": "cricket",
           "displayName": "Test Cricket",
           "leagueKey": "test",
@@ -810,6 +975,26 @@
           "endDate": "2026-08-02T14:00:00.000Z",
           "eventCount": 4,
           "seasonPhase": null
+        },
+        {
+          "sport": "athletics",
+          "displayName": "Athletics — Finals",
+          "leagueKey": "commonwealth-games",
+          "dateRangeLabel": "Jul 27–Aug 1",
+          "startDate": "2026-07-27T17:30:00Z",
+          "endDate": "2026-08-01T17:30:00Z",
+          "eventCount": 8,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "athletics",
+          "displayName": "Swimming — Heats",
+          "leagueKey": "commonwealth-games",
+          "dateRangeLabel": "Jul 29",
+          "startDate": "2026-07-29T09:30:00Z",
+          "endDate": "2026-07-29T09:30:00Z",
+          "eventCount": 1,
+          "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
@@ -848,7 +1033,7 @@
           "dateRangeLabel": "Jul 31–Aug 2",
           "startDate": "2026-07-31T17:00:00.000Z",
           "endDate": "2026-08-02T13:00:00.000Z",
-          "eventCount": 5,
+          "eventCount": 4,
           "seasonPhase": "Regular"
         },
         {

@@ -51,6 +51,7 @@ const LEAGUE_PREFERRED_ORDER: Record<string, string[]> = {
   rugby: ["Test Rugby", "Currie Cup", "URC", "Top 14", "English Premiership", "Six Nations", "European Champions Cup", "MLR", "Japan League One", "Super Rugby", "HSBC SVNS"],
   cricket: ["IPL", "BBL", "Super Smash", "SA20", "The Hundred", "MLC", "CPL", "T20 World Cup", "Test Cricket", "T20I Cricket", "ODI Cricket"],
   soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "Champions League", "Europa League", "FA Cup", "CAF Champions League", "MLS", "NWSL", "USL"],
+  athletics: ["Commonwealth Games", "Diamond League", "World Marathon Majors"],
 };
 
 function getLeagueKey(e: SportEvent): string {
@@ -81,6 +82,7 @@ const LEAGUE_SHORT_LABELS: Record<string, string> = {
   "HSBC SVNS": "SVNS",
   "European Champions Cup": "Champions Cup",
   "CAF Champions League": "CAF CL",
+  "Commonwealth Games": "CWG",
   "Test Rugby": "Tests",
   "Test Cricket": "Test",
   "T20I Cricket": "T20I",

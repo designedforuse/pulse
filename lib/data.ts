@@ -272,6 +272,7 @@ const PROVIDER_DISPLAY_NAMES: Record<string, string> = {
   mlbtv: "MLB.TV",
   youtube: "YouTube",
   supersportschools: "SuperSport Schools",
+  supersport: "SuperSport",
 };
 
 // Broadcaster IDs that are valid as display logos — streaming services excluded
@@ -296,6 +297,7 @@ const BROADCASTER_IDS = new Set([
   "mlbtv",
   "youtube",
   "supersportschools",
+  "supersport",
 ]);
 
 // Returns [displayId, launchProviderId]

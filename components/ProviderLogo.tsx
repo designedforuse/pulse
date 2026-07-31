@@ -109,6 +109,7 @@ const NO_TINT_LOGOS = new Set<string>();
 
 const PROVIDER_TEXT_LABELS: Record<string, string> = {
   supersportschools: "SS SCHOOLS",
+  supersport: "SUPERSPORT",
 };
 
 let _warnedIds: Set<string> | null = null;

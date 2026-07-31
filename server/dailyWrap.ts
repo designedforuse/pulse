@@ -6,6 +6,7 @@ import { enrichWithHighlights, type HighlightVideo } from "./dailyWrapHighlights
 import { fetchWrcRallyResult, getWrcRoundBaseId, hasWrcStageMapping } from "./wrcStages";
 import { fetchSvnsMatches } from "./svnsMatches";
 import { fetchDiamondLeagueSummary, type DLAthleteResult } from "./diamondLeagueResults";
+import { fetchCwgSessionSummary, type CwgAthleteResult } from "./commonwealthGamesResults";
 
 export interface SvnsFinal {
   gender: "mens" | "womens";
@@ -1057,6 +1058,134 @@ function toAthleticsResult(r: DLAthleteResult): AthleticsResult {
   };
 }
 
+// --- Commonwealth Games (Glasgow 2026, athletics & swimming) ---
+// Same score-agnostic pattern as the Diamond League: results come from the
+// keyless Pulselive session API; the headline leads with the best South
+// African finals result (medals!) and otherwise the most newsworthy winner.
+const CWG_PRIORITY = 70;
+
+function isCommonwealthGames(event: any): boolean {
+  return event?.leagueKey === "commonwealth-games" || event?.league === "Commonwealth Games";
+}
+
+// Event ids look like "athletics-cwg-ath-<sessionUuid>" / "athletics-cwg-swm-<sessionUuid>".
+function cwgSessionKey(event: any): { disc: string; sessionId: string } | null {
+  const m = /^athletics-cwg-(ath|swm)-(.+)$/.exec(event?.id || "");
+  if (!m) return null;
+  return { disc: m[1], sessionId: m[2] };
+}
+
+// Only finals sessions decide medals — heats sessions never carry a wrap card.
+function isCwgFinalsSession(event: any): boolean {
+  return event?.roundLabel === "Finals" || /Finals/.test(event?.sessionTitle || "");
+}
+
+const CWG_RECORD_NAMES: Record<string, string> = {
+  WR: "world record",
+  GR: "Games record",
+  CR: "Commonwealth record",
+  AR: "area record",
+  AF: "African record",
+  OC: "Oceanian record",
+  AS: "Asian record",
+  EU: "European record",
+  AM: "Americas record",
+  NR: "national record",
+};
+
+function cwgRecordName(record: string): string | null {
+  for (const token of (record || "").toUpperCase().replace(/=/g, "").split(",")) {
+    const name = CWG_RECORD_NAMES[token.trim()];
+    if (name) return name;
+  }
+  return null;
+}
+
+// Disciplines arrive lowercase ("men's 100m"); expand shorthand for TTS.
+function cwgSpokenDiscipline(d: string): string {
+  return (d || "")
+    .replace(/\b(\d)\s*x\s*(\d[\d,]*)m\b/gi, "$1 by $2 metres")
+    .replace(/\b(\d[\d,]*)m\b/g, "$1 metres");
+}
+
+function cwgMedalWord(rank: number): string | null {
+  if (rank === 1) return "gold";
+  if (rank === 2) return "silver";
+  if (rank === 3) return "bronze";
+  return null;
+}
+
+function cwgSaHeadline(r: CwgAthleteResult): string {
+  const disc = cwgSpokenDiscipline(r.discipline);
+  const medal = cwgMedalWord(r.rank);
+  if (medal === "gold") return `🇿🇦 ${r.athlete} wins Commonwealth gold in the ${disc}`;
+  if (medal) return `🇿🇦 ${r.athlete} takes Commonwealth ${medal} in the ${disc}`;
+  return `🇿🇦 ${r.athlete} ${placeWord(r.rank)} the ${disc}`;
+}
+
+function cwgNotableHeadline(r: CwgAthleteResult): string {
+  const disc = cwgSpokenDiscipline(r.discipline);
+  const nat = r.nation ? ` (${r.nation})` : "";
+  const rec = cwgRecordName(r.record);
+  if (rec === "world record") return `🌍 ${r.athlete}${nat} breaks the world record in the ${disc}`;
+  if (rec) return `${r.athlete}${nat} wins the ${disc} with a ${rec}`;
+  return `${r.athlete}${nat} wins Commonwealth gold in the ${disc}`;
+}
+
+async function commonwealthGamesEditorial(event: any): Promise<Partial<DailyWrapEntry> | null> {
+  const key = cwgSessionKey(event);
+  if (!key) return null;
+
+  let summary;
+  try {
+    summary = await fetchCwgSessionSummary(key.disc, key.sessionId);
+  } catch {
+    return null;
+  }
+  if (!summary) return null;
+
+  const toResult = (r: CwgAthleteResult): AthleticsResult => ({
+    discipline: r.discipline,
+    athlete: r.athlete,
+    nation: r.nation,
+    rank: r.rank,
+    performance: r.performance,
+    record: cwgRecordName(r.record) || undefined,
+  });
+
+  const sa = summary.saResults[0];
+  if (sa) {
+    const bits = [`Glasgow 2026 ${summary.discipline}`, sa.discipline];
+    if (sa.performance) bits.push(sa.performance);
+    const rec = cwgRecordName(sa.record);
+    if (rec) bits.push(rec);
+    const moreSa = summary.saResults.length - 1;
+    if (moreSa > 0) bits.push(`+${moreSa} more SA result${moreSa > 1 ? "s" : ""}`);
+    return {
+      editorial: cwgSaHeadline(sa),
+      detail: bits.join(" · "),
+      winner: sa.rank === 1 ? sa.athlete : undefined,
+      athleticsResults: [toResult(sa)],
+      athleticsMeet: { city: "Glasgow", scope: "sa" },
+    };
+  }
+
+  const n = summary.notable[0];
+  if (n) {
+    const bits = [`Glasgow 2026 ${summary.discipline}`, n.discipline];
+    if (n.performance) bits.push(n.performance);
+    return {
+      editorial: cwgNotableHeadline(n),
+      detail: bits.join(" · "),
+      winner: n.rank === 1 ? n.athlete : undefined,
+      athleticsResults: [toResult(n)],
+      athleticsMeet: { city: "Glasgow", scope: "top" },
+    };
+  }
+
+  return null;
+}
+
 function golfEditorial(event: any, score: ScoreData): Partial<DailyWrapEntry> | null {
   if (!score.golfLeader) return null;
   const f = flag(score.golfLeaderCountry || "");
@@ -1548,6 +1677,29 @@ export async function fetchDailyWrap(tz: number): Promise<DailyWrapResponse> {
             athleticsResults: de.athleticsResults,
             athleticsMeet: de.athleticsMeet,
             priorityScore: DIAMOND_LEAGUE_PRIORITY,
+            startTimeLocal: event.startTimeLocal,
+          });
+        }
+      } else if (
+        isCommonwealthGames(event) &&
+        isCwgFinalsSession(event) &&
+        hasConcluded(event, nowMs)
+      ) {
+        const ce = await commonwealthGamesEditorial(event);
+        if (ce) {
+          fallbackIds.add(event.id);
+          results.push({
+            eventId: event.id,
+            sport: event.sport,
+            league: event.league,
+            homeTeam: event.homeTeam,
+            awayTeam: event.awayTeam,
+            editorial: ce.editorial || "",
+            detail: ce.detail || "",
+            winner: ce.winner,
+            athleticsResults: ce.athleticsResults,
+            athleticsMeet: ce.athleticsMeet,
+            priorityScore: CWG_PRIORITY,
             startTimeLocal: event.startTimeLocal,
           });
         }

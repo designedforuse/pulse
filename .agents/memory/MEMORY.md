@@ -26,4 +26,5 @@
 - [Championship headlines](championship-headlines.md) — finals get "...to win the {comp} title" + detail "Final"; detect via roundName/stage or a hardcoded CHAMPIONSHIP_FINALS registry for untagged sources.
 - [F1 vs WRC backdrops & headline](racing-backdrops-and-headline.md) — F1+WRC share sport "racing"; split backdrops by eventId prefix (racing-wrc-→rally, else F1). F1 headline names GP from homeTeam, never sessionTitle ("Race").
 - [Currie Cup & test rugby](currie-cup-and-tests.md) — Currie Cup is hardcoded (no feed; playoffs TBD); tests use keyless ESPN league 289234; new leagues must join masterGuide pack arrays or they're hidden.
+- [Commonwealth Games sources](commonwealth-games.md) — keyless Pulselive sessions/details API for CWG athletics+swimming; details endpoint needs all 4 query params; wrap cards finals sessions only, RSA-first.
 - [MLR schedule maintenance](mlr-schedule-maintenance.md) — hardcoded MLR fixtures are a preseason projection that drifts; rebuild from the Pulselive feed (UTC→ET, Anthem RC name map, TBD final); also sync seasonPhases.ts.
