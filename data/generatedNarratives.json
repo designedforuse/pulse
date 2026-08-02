@@ -1,15 +1,7 @@
 {
-  "lastUpdated": "2026-07-31T04:08:27.383Z",
+  "lastUpdated": "2026-08-02T04:51:47.727Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
-      "league_moment": {
-        "SouthAfrica": 1,
-        "Other": 1
-      },
-      "clinch_watch": {
-        "SouthAfrica": 1,
-        "Other": 1
-      },
       "weekend_watchlist": {
         "Other": 1
       },
@@ -22,21 +14,15 @@
     },
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
-      "SouthAfrica": [
-        "clinch_watch: Clinch Watch",
-        "league_moment: SA Super Rugby Rivalry"
-      ],
       "Other": [
-        "clinch_watch: Clinch Watch",
-        "marquee_match: Marquee Match: MLS",
+        "marquee_match: Marquee Match: NWSL",
         "rally_weekend: Rally Weekend",
-        "league_moment: Big Stage",
         "weekend_watchlist: Weekend Watchlist"
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 7,
-    "totalAfterCap": 7,
+    "totalBeforeCap": 3,
+    "totalAfterCap": 3,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -69,17 +55,17 @@
         ],
         "playersIngested": 357,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-07-31T04:08:27.383Z"
+        "timestamp": "2026-08-02T04:51:47.727Z"
       },
       "cacheHistoryCount": 881,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 7,
-    "candidateCountAfterCap": 7,
+    "candidateCountBeforeCap": 3,
+    "candidateCountAfterCap": 3,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -3488.1409397222224,
+      "hoursUntil": -3536.8632575,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -95,207 +81,93 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 5,
-      "clinchAfterRegionFilter": 2,
-      "clinchFinalCount": 2,
+      "rawClinchCandidates": 0,
+      "clinchAfterRegionFilter": 0,
+      "clinchFinalCount": 0,
       "clinchGatedOut": []
     },
-    "tonightStorySelectedSignal": null,
-    "tonightStoryHeadline": null,
-    "tonightStorySourceEvent": null,
+    "tonightStorySelectedSignal": "multi_team_night",
+    "tonightStoryHeadline": "Your Sports Night",
+    "tonightStorySourceEvent": "rugby-curriecup-payodl",
     "tonightStoryDebug": {
-      "selectedSignal": null,
-      "selectedHeadline": null,
-      "selectedScore": 0,
-      "sourceEventId": null,
-      "reason": "no stories scored",
-      "scoredCandidates": []
+      "selectedSignal": "multi_team_night",
+      "selectedHeadline": "Your Sports Night",
+      "selectedScore": 280,
+      "sourceEventId": "rugby-curriecup-payodl",
+      "reason": "4 followed/affiliate teams playing today",
+      "scoredCandidates": [
+        {
+          "label": "[multi_team_night] Your Sports Night",
+          "score": 280,
+          "reason": "4 followed/affiliate teams playing today"
+        },
+        {
+          "label": "[rivalry_of_day] SA Super Rugby Rivalry",
+          "score": 240,
+          "reason": "rivalry-of-day match (Currie Cup: SA Super Rugby Rivalry) — favorite involved: Stormers"
+        }
+      ]
     },
     "videoSelection": {
-      "clinch_watch_rugby-curriecup-payodl": {
-        "searchQuery": "Sharks clinch playoff berth July 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
-      },
-      "league_moment_rivalry": {
-        "searchQuery": "SA Super Rugby Rivalry sports July 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
-      },
       "marquee_match": {
-        "searchQuery": "Toronto FC vs New York City FC MLS preview",
-        "selectedVideoTitle": "2026 Leagues Cup West 1 Group Preview! #MLS #LigaMX #LeaguesCup",
-        "selectedVideoPublishedAt": "7 hours ago",
-        "selectedVideoChannel": "The Designated Players | An MLS Podcast",
+        "searchQuery": "San Diego Wave vs Washington Spirit NWSL preview",
+        "selectedVideoTitle": "2026 Seattle Reign FC Simulation: Match 16 - Bay FC vs. Seattle Reign FC",
+        "selectedVideoPublishedAt": "4 hours ago",
+        "selectedVideoChannel": "Crow Sports Network",
         "rejectedForAgeCount": 0
       },
-      "rally_weekend_racing-wrc-finland-2026-day2": {
+      "rally_weekend_racing-wrc-finland-2026-day4": {
         "searchQuery": "Rally Finland WRC rally highlights",
-        "selectedVideoTitle": "Day 1 Highlights | WRC Secto Rally Finland 2026",
-        "selectedVideoPublishedAt": "4 hours ago",
-        "selectedVideoChannel": "FIA World Rally Championship",
-        "rejectedForAgeCount": 1
-      },
-      "league_moment_tournament": {
-        "searchQuery": "Big Stage sports July 2026",
-        "selectedVideoTitle": "Tour de France 2026: CLOSEST & CRAZIEST stage finishes | Cycling on NBC Sports",
-        "selectedVideoPublishedAt": "14 hours ago",
-        "selectedVideoChannel": "NBC Sports",
+        "selectedVideoTitle": "Sebastian Ogier Car Crash at Rally Finland 2026 - Sebastian Ogier Car Crash Video",
+        "selectedVideoPublishedAt": "5 hours ago",
+        "selectedVideoChannel": "Psy Donk",
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
-      "id": "clinch_watch_rugby-curriecup-payodl",
-      "title": "Clinch Watch",
-      "subtitle": "Can clinch home quarterfinal in the next 48h",
-      "impact": {
-        "label": "Impacts: Saturday Warm-Up",
-        "ritualId": "saturday_sunrise",
-        "tabHint": "Watch"
-      },
-      "priority": 92,
-      "triggeredAt": "2026-07-31T04:08:27.383Z",
-      "expiresAt": "2026-08-01T17:00:00.000Z",
-      "kind": "clinch_watch",
-      "region": "SouthAfrica",
-      "regionPriority": 1,
-      "regionLabel": "South Africa",
-      "meta": {
-        "source": "team_config",
-        "conditionLabel": "Can clinch home quarterfinal",
-        "sport": "rugby",
-        "league": "Currie Cup",
-        "awayTeam": "Sharks",
-        "homeTeam": "Stormers",
-        "startTime": "2026-08-01T13:00:00.000Z",
-        "eventIds": [
-          "rugby-curriecup-payodl"
-        ],
-        "reason": "Stormers have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
-      },
-      "sports": [
-        "rugby"
-      ]
-    },
-    {
-      "id": "league_moment_rivalry",
-      "title": "SA Super Rugby Rivalry",
-      "subtitle": "SA Super Rugby Rivalry: Sharks @ Stormers",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 70,
-      "triggeredAt": "2026-07-31T04:08:27.383Z",
-      "expiresAt": "2026-08-07T04:08:27.383Z",
-      "kind": "league_moment",
-      "region": "SouthAfrica",
-      "regionPriority": 1,
-      "regionLabel": "South Africa",
-      "meta": {
-        "type": "rivalry",
-        "matchCount": 1,
-        "rivalries": [
-          "SA Super Rugby Rivalry"
-        ],
-        "matches": [
-          {
-            "label": "SA Super Rugby Rivalry",
-            "away": "Sharks",
-            "home": "Stormers",
-            "league": "Currie Cup",
-            "startTime": "2026-08-01T13:00:00.000Z"
-          }
-        ],
-        "eventIds": [
-          "rugby-curriecup-payodl"
-        ],
-        "reason": "1 known rivalry matchup(s) found: SA Super Rugby Rivalry"
-      },
-      "sports": [
-        "rugby"
-      ]
-    },
-    {
-      "id": "clinch_watch_athletics-cwg-ath-e3dc4963-3579-4975-9446-9a087b2f5ab9",
-      "title": "Clinch Watch",
-      "subtitle": "Athletics — Finals · Athletics title on the line",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 92,
-      "triggeredAt": "2026-07-31T04:08:27.383Z",
-      "expiresAt": "2026-07-31T13:00:00.000Z",
-      "kind": "clinch_watch",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "source": "tournament",
-        "conditionLabel": "Athletics title on the line",
-        "sport": "athletics",
-        "league": "Commonwealth Games",
-        "awayTeam": "",
-        "homeTeam": "Athletics — Finals",
-        "startTime": "2026-07-31T09:00:00Z",
-        "eventIds": [
-          "athletics-cwg-ath-e3dc4963-3579-4975-9446-9a087b2f5ab9"
-        ],
-        "reason": "Athletics — Finals — a athletics title on the line.\n\nThis is the kind of moment entire seasons build toward."
-      },
-      "sports": [
-        "athletics"
-      ]
-    },
-    {
       "id": "marquee_match",
-      "title": "Marquee Match: MLS",
-      "subtitle": "Toronto FC vs New York City FC — MLS · tomorrow",
+      "title": "Marquee Match: NWSL",
+      "subtitle": "San Diego Wave vs Washington Spirit — NWSL · tomorrow",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-07-31T04:08:27.383Z",
-      "expiresAt": "2026-08-01T03:30:00.000Z",
+      "triggeredAt": "2026-08-02T04:51:47.727Z",
+      "expiresAt": "2026-08-03T00:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "marquee_match",
-        "league": "MLS",
-        "home": "New York City FC",
-        "away": "Toronto FC",
+        "league": "NWSL",
+        "home": "Washington Spirit",
+        "away": "San Diego Wave",
         "rivalry": null,
-        "startTime": "2026-07-31T23:30:00.000Z",
+        "startTime": "2026-08-02T20:00:00.000Z",
         "eventIds": [
-          "soccer-mls-20260731-2330-toronto-fc-at-new-york-city-fc"
+          "soccer-nwsl-20260802-2000-san-diego-wave-at-washington-spirit"
         ],
-        "reason": "Top MLS fixture (Toronto FC vs New York City FC) tomorrow"
+        "reason": "Top NWSL fixture (San Diego Wave vs Washington Spirit) tomorrow"
       },
       "sports": [
         "soccer"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=8EPfQ1C6iIQ",
-        "thumbnailUrl": "https://img.youtube.com/vi/8EPfQ1C6iIQ/hqdefault.jpg",
-        "durationSeconds": 1421,
-        "title": "2026 Leagues Cup West 1 Group Preview! #MLS #LigaMX #LeaguesCup",
+        "url": "https://www.youtube.com/watch?v=1oWALVZc-bU",
+        "thumbnailUrl": "https://img.youtube.com/vi/1oWALVZc-bU/hqdefault.jpg",
+        "durationSeconds": 1086,
+        "title": "2026 Seattle Reign FC Simulation: Match 16 - Bay FC vs. Seattle Reign FC",
         "source": "youtube",
-        "channel": "The Designated Players | An MLS Podcast",
-        "publishedAt": "7 hours ago"
+        "channel": "Crow Sports Network",
+        "publishedAt": "4 hours ago"
       }
     },
     {
-      "id": "rally_weekend_racing-wrc-finland-2026-day2",
+      "id": "rally_weekend_racing-wrc-finland-2026-day4",
       "title": "Rally Weekend",
       "subtitle": "Rally Finland — underway this weekend",
       "impact": {
@@ -303,8 +175,8 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-07-31T04:08:27.383Z",
-      "expiresAt": "2026-08-03T08:00:00.000Z",
+      "triggeredAt": "2026-08-02T04:51:47.727Z",
+      "expiresAt": "2026-08-05T08:00:00.000Z",
       "kind": "rally_weekend",
       "region": "Other",
       "regionPriority": 99,
@@ -312,9 +184,9 @@
       "meta": {
         "type": "rally_weekend",
         "rallyName": "Rally Finland",
-        "startTime": "2026-07-31T08:00:00.000Z",
+        "startTime": "2026-08-02T08:00:00.000Z",
         "eventIds": [
-          "racing-wrc-finland-2026-day2"
+          "racing-wrc-finland-2026-day4"
         ],
         "reason": "WRC Rally Finland within 7 days"
       },
@@ -322,82 +194,13 @@
         "racing"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=q_GRHPLK5FY",
-        "thumbnailUrl": "https://img.youtube.com/vi/q_GRHPLK5FY/hqdefault.jpg",
-        "durationSeconds": 263,
-        "title": "Day 1 Highlights | WRC Secto Rally Finland 2026",
+        "url": "https://www.youtube.com/watch?v=NycLOxVGLrM",
+        "thumbnailUrl": "https://img.youtube.com/vi/NycLOxVGLrM/hqdefault.jpg",
+        "durationSeconds": 75,
+        "title": "Sebastian Ogier Car Crash at Rally Finland 2026 - Sebastian Ogier Car Crash Video",
         "source": "youtube",
-        "channel": "FIA World Rally Championship",
-        "publishedAt": "4 hours ago"
-      }
-    },
-    {
-      "id": "league_moment_tournament",
-      "title": "Big Stage",
-      "subtitle": "4 tournament/knockout matches this week",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 70,
-      "triggeredAt": "2026-07-31T04:08:27.383Z",
-      "expiresAt": "2026-08-07T04:08:27.383Z",
-      "kind": "league_moment",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "type": "tournament",
-        "matchCount": 4,
-        "matches": [
-          {
-            "away": "",
-            "home": "Athletics — Finals",
-            "league": "Commonwealth Games",
-            "round": "Athletics — Finals",
-            "startTime": "2026-07-31T09:00:00Z"
-          },
-          {
-            "away": "",
-            "home": "Athletics — Finals",
-            "league": "Commonwealth Games",
-            "round": "Athletics — Finals",
-            "startTime": "2026-07-31T17:30:00Z"
-          },
-          {
-            "away": "",
-            "home": "Athletics — Finals",
-            "league": "Commonwealth Games",
-            "round": "Athletics — Finals",
-            "startTime": "2026-08-01T09:00:00Z"
-          },
-          {
-            "away": "",
-            "home": "Athletics — Finals",
-            "league": "Commonwealth Games",
-            "round": "Athletics — Finals",
-            "startTime": "2026-08-01T17:30:00Z"
-          }
-        ],
-        "eventIds": [
-          "athletics-cwg-ath-e3dc4963-3579-4975-9446-9a087b2f5ab9",
-          "athletics-cwg-ath-2de7ed1a-5ac9-4f40-90b1-ade2db65df73",
-          "athletics-cwg-ath-7ae7557e-edf8-4298-ad54-357afe629592",
-          "athletics-cwg-ath-6f6304fa-683a-4066-9b60-cbfe148e20f3"
-        ],
-        "reason": "Found 4 tournament stage match(es) in the next 7 days"
-      },
-      "sports": [
-        "athletics"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=iElsq-1RhzU",
-        "thumbnailUrl": "https://img.youtube.com/vi/iElsq-1RhzU/hqdefault.jpg",
-        "durationSeconds": 1092,
-        "title": "Tour de France 2026: CLOSEST & CRAZIEST stage finishes | Cycling on NBC Sports",
-        "source": "youtube",
-        "channel": "NBC Sports",
-        "publishedAt": "14 hours ago"
+        "channel": "Psy Donk",
+        "publishedAt": "5 hours ago"
       }
     },
     {
@@ -409,7 +212,7 @@
         "tabHint": "Watch"
       },
       "priority": 55,
-      "triggeredAt": "2026-07-31T04:08:27.383Z",
+      "triggeredAt": "2026-08-02T04:51:47.727Z",
       "expiresAt": "2026-08-02T23:59:59.999Z",
       "kind": "weekend_watchlist",
       "region": "Other",
@@ -424,7 +227,7 @@
             "sport": "racing",
             "away": "",
             "home": "Rally Finland",
-            "startTime": "2026-07-31T08:00:00.000Z"
+            "startTime": "2026-08-02T08:00:00.000Z"
           },
           {
             "league": "Test Cricket",
@@ -436,15 +239,15 @@
           {
             "league": "NWSL",
             "sport": "soccer",
-            "away": "Orlando Pride",
-            "home": "North Carolina Courage",
-            "startTime": "2026-08-01T00:00:00.000Z"
+            "away": "San Diego Wave",
+            "home": "Washington Spirit",
+            "startTime": "2026-08-02T20:00:00.000Z"
           }
         ],
         "eventIds": [
-          "racing-wrc-finland-2026-day2",
+          "racing-wrc-finland-2026-day4",
           "cricket-test-ysrqwb-day1",
-          "soccer-nwsl-20260801-0000-orlando-pride-at-north-carolina-courage"
+          "soccer-nwsl-20260802-2000-san-diego-wave-at-washington-spirit"
         ],
         "reason": "Weekend window: 3 top-priority event(s) across 3 sport(s)"
       },
@@ -455,217 +258,87 @@
       ]
     }
   ],
-  "tonightStory": null,
-  "todaysStories": [],
+  "tonightStory": {
+    "signalType": "multi_team_night",
+    "signalLabel": "YOUR TEAMS",
+    "headline": "Your Sports Night",
+    "body": "The Stormers, New England Revolution, San Diego FC, and Orange County SC all play today across the Currie Cup, MLS, USL.",
+    "sourceEventId": "rugby-curriecup-payodl",
+    "eventIds": [
+      "rugby-curriecup-payodl",
+      "soccer-mls-20260801-2330-new-england-revolution-at-cf-montr-al",
+      "soccer-mls-20260802-0030-san-diego-fc-at-minnesota-united-fc",
+      "soccer-usl-20260802-0200-el-paso-locomotive-fc-at-orange-county-sc"
+    ],
+    "sourceCard": {
+      "id": "tonight_multi_team",
+      "kind": "multi_team_night",
+      "title": "Your Sports Night"
+    },
+    "sports": [
+      "rugby",
+      "soccer"
+    ],
+    "favoriteTeams": [
+      "Stormers",
+      "New England Revolution",
+      "San Diego FC",
+      "Orange County SC"
+    ]
+  },
+  "todaysStories": [
+    {
+      "signalType": "multi_team_night",
+      "signalLabel": "YOUR TEAMS",
+      "headline": "Your Sports Night",
+      "body": "The Stormers, New England Revolution, San Diego FC, and Orange County SC all play today across the Currie Cup, MLS, USL.",
+      "sourceEventId": "rugby-curriecup-payodl",
+      "eventIds": [
+        "rugby-curriecup-payodl",
+        "soccer-mls-20260801-2330-new-england-revolution-at-cf-montr-al",
+        "soccer-mls-20260802-0030-san-diego-fc-at-minnesota-united-fc",
+        "soccer-usl-20260802-0200-el-paso-locomotive-fc-at-orange-county-sc"
+      ],
+      "sourceCard": {
+        "id": "tonight_multi_team",
+        "kind": "multi_team_night",
+        "title": "Your Sports Night"
+      },
+      "sports": [
+        "rugby",
+        "soccer"
+      ],
+      "favoriteTeams": [
+        "Stormers",
+        "New England Revolution",
+        "San Diego FC",
+        "Orange County SC"
+      ]
+    },
+    {
+      "signalType": "rivalry_of_day",
+      "signalLabel": "RIVALRY DAY",
+      "headline": "SA Super Rugby Rivalry",
+      "body": "Sharks faces Stormers today — SA Super Rugby Rivalry, one of the sport's marquee rivalries.",
+      "sourceEventId": "rugby-curriecup-payodl",
+      "eventIds": [
+        "rugby-curriecup-payodl"
+      ],
+      "sourceCard": {
+        "id": "rivalry_of_day_rugby-curriecup-payodl",
+        "kind": "rivalry_of_day",
+        "title": "SA Super Rugby Rivalry"
+      },
+      "sports": [
+        "rugby"
+      ],
+      "favoriteTeams": [
+        "Stormers"
+      ]
+    }
+  ],
   "monthSnapshot": {
     "currentMonth": {
-      "monthLabel": "July 2026",
-      "monthKey": "2026-07",
-      "leagues": [
-        {
-          "sport": "soccer",
-          "displayName": "FIFA World Cup",
-          "leagueKey": "fifa-world-cup",
-          "dateRangeLabel": "Jul 1–19",
-          "startDate": "2026-07-01T02:00:00.000Z",
-          "endDate": "2026-07-19T19:00:00.000Z",
-          "eventCount": 26,
-          "seasonPhase": null
-        },
-        {
-          "sport": "cycling",
-          "displayName": "Epic Series",
-          "leagueKey": "epic-series",
-          "dateRangeLabel": "Jul 2",
-          "startDate": "2026-07-02T05:00:00.000Z",
-          "endDate": "2026-07-02T05:00:00.000Z",
-          "eventCount": 1,
-          "seasonPhase": null
-        },
-        {
-          "sport": "soccer",
-          "displayName": "MLS",
-          "leagueKey": "mls",
-          "dateRangeLabel": "Jul 16–31",
-          "startDate": "2026-07-16T23:30:00.000Z",
-          "endDate": "2026-07-31T23:30:00.000Z",
-          "eventCount": 37,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "golf",
-          "displayName": "The Open",
-          "leagueKey": "golf-majors",
-          "dateRangeLabel": "Jul 17–19",
-          "startDate": "2026-07-17T06:00:00.000Z",
-          "endDate": "2026-07-19T06:00:00.000Z",
-          "eventCount": 3,
-          "seasonPhase": null
-        },
-        {
-          "sport": "cricket",
-          "displayName": "T20I Cricket",
-          "leagueKey": "t20i",
-          "dateRangeLabel": "Jul 17–26",
-          "startDate": "2026-07-17T10:30:00.000Z",
-          "endDate": "2026-07-26T11:00:00.000Z",
-          "eventCount": 5,
-          "seasonPhase": null
-        },
-        {
-          "sport": "racing",
-          "displayName": "Moët & Chandon Belgian GP",
-          "leagueKey": "f1",
-          "dateRangeLabel": "Jul 17–19",
-          "startDate": "2026-07-17T11:30:00.000Z",
-          "endDate": "2026-07-19T13:00:00.000Z",
-          "eventCount": 5,
-          "seasonPhase": null
-        },
-        {
-          "sport": "cycling",
-          "displayName": "Grand Tour — Tour de France",
-          "leagueKey": "grand-tour",
-          "dateRangeLabel": "Jul 17–26",
-          "startDate": "2026-07-17T12:00:00.000Z",
-          "endDate": "2026-07-26T12:00:00.000Z",
-          "eventCount": 9,
-          "seasonPhase": null
-        },
-        {
-          "sport": "rugby",
-          "displayName": "Currie Cup",
-          "leagueKey": "curriecup",
-          "dateRangeLabel": "Jul 17–31",
-          "startDate": "2026-07-17T15:00:00.000Z",
-          "endDate": "2026-07-31T17:00:00.000Z",
-          "eventCount": 9,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "NWSL",
-          "leagueKey": "nwsl",
-          "dateRangeLabel": "Jul 18–30",
-          "startDate": "2026-07-18T00:00:00.000Z",
-          "endDate": "2026-07-30T02:00:00.000Z",
-          "eventCount": 19,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "cricket",
-          "displayName": "Test Cricket",
-          "leagueKey": "test",
-          "dateRangeLabel": "Jul 18–29",
-          "startDate": "2026-07-18T14:00:00.000Z",
-          "endDate": "2026-07-29T14:00:00.000Z",
-          "eventCount": 10,
-          "seasonPhase": null
-        },
-        {
-          "sport": "soccer",
-          "displayName": "USL",
-          "leagueKey": "usl",
-          "dateRangeLabel": "Jul 18–29",
-          "startDate": "2026-07-18T16:00:00.000Z",
-          "endDate": "2026-07-29T23:30:00.000Z",
-          "eventCount": 25,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "athletics",
-          "displayName": "Diamond League — London",
-          "leagueKey": "diamond-league",
-          "dateRangeLabel": "Jul 18",
-          "startDate": "2026-07-18T17:00:00.000Z",
-          "endDate": "2026-07-18T17:00:00.000Z",
-          "eventCount": 1,
-          "seasonPhase": null
-        },
-        {
-          "sport": "cricket",
-          "displayName": "MLC",
-          "leagueKey": "mlc",
-          "dateRangeLabel": "Jul 18",
-          "startDate": "2026-07-18T23:30:00.000Z",
-          "endDate": "2026-07-18T23:30:00.000Z",
-          "eventCount": 1,
-          "seasonPhase": null
-        },
-        {
-          "sport": "cricket",
-          "displayName": "ODI Cricket",
-          "leagueKey": "odi",
-          "dateRangeLabel": "Jul 19–21",
-          "startDate": "2026-07-19T10:00:00.000Z",
-          "endDate": "2026-07-21T18:30:00.000Z",
-          "eventCount": 3,
-          "seasonPhase": null
-        },
-        {
-          "sport": "athletics",
-          "displayName": "Swimming — Heats",
-          "leagueKey": "commonwealth-games",
-          "dateRangeLabel": "Jul 24–29",
-          "startDate": "2026-07-24T09:30:00Z",
-          "endDate": "2026-07-29T09:30:00Z",
-          "eventCount": 3,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "racing",
-          "displayName": "Hungarian GP",
-          "leagueKey": "f1",
-          "dateRangeLabel": "Jul 24–26",
-          "startDate": "2026-07-24T11:30:00.000Z",
-          "endDate": "2026-07-26T13:00:00.000Z",
-          "eventCount": 5,
-          "seasonPhase": null
-        },
-        {
-          "sport": "athletics",
-          "displayName": "Swimming — Finals",
-          "leagueKey": "commonwealth-games",
-          "dateRangeLabel": "Jul 24–29",
-          "startDate": "2026-07-24T18:00:00Z",
-          "endDate": "2026-07-29T18:00:00Z",
-          "eventCount": 9,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "athletics",
-          "displayName": "Athletics — Heats",
-          "leagueKey": "commonwealth-games",
-          "dateRangeLabel": "Jul 27–30",
-          "startDate": "2026-07-27T09:00:00Z",
-          "endDate": "2026-07-30T09:00:00Z",
-          "eventCount": 4,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "athletics",
-          "displayName": "Athletics — Finals",
-          "leagueKey": "commonwealth-games",
-          "dateRangeLabel": "Jul 27–31",
-          "startDate": "2026-07-27T17:30:00Z",
-          "endDate": "2026-07-31T17:30:00Z",
-          "eventCount": 6,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "racing",
-          "displayName": "Rally Finland",
-          "leagueKey": "wrc",
-          "dateRangeLabel": "Jul 30–31",
-          "startDate": "2026-07-30T08:00:00.000Z",
-          "endDate": "2026-07-31T08:00:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": null
-        }
-      ],
-      "championshipFinals": []
-    },
-    "nextMonth": {
       "monthLabel": "August 2026",
       "monthKey": "2026-08",
       "leagues": [
@@ -673,20 +346,30 @@
           "sport": "soccer",
           "displayName": "NWSL",
           "leagueKey": "nwsl",
-          "dateRangeLabel": "Aug 1–20",
+          "dateRangeLabel": "Aug 1–23",
           "startDate": "2026-08-01T00:00:00.000Z",
-          "endDate": "2026-08-20T00:00:00.000Z",
-          "eventCount": 27,
+          "endDate": "2026-08-23T00:45:00.000Z",
+          "eventCount": 31,
           "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
           "displayName": "USL",
           "leagueKey": "usl",
-          "dateRangeLabel": "Aug 1–20",
+          "dateRangeLabel": "Aug 1–23",
           "startDate": "2026-08-01T01:00:00.000Z",
-          "endDate": "2026-08-20T02:00:00.000Z",
-          "eventCount": 40,
+          "endDate": "2026-08-23T03:00:00.000Z",
+          "eventCount": 52,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "rugby",
+          "displayName": "NPC",
+          "leagueKey": "npc",
+          "dateRangeLabel": "Aug 1–23",
+          "startDate": "2026-08-01T02:05:00.000Z",
+          "endDate": "2026-08-23T02:05:00.000Z",
+          "eventCount": 25,
           "seasonPhase": "Regular"
         },
         {
@@ -723,10 +406,10 @@
           "sport": "rugby",
           "displayName": "Currie Cup",
           "leagueKey": "curriecup",
-          "dateRangeLabel": "Aug 1–16",
+          "dateRangeLabel": "Aug 1–21",
           "startDate": "2026-08-01T13:00:00.000Z",
-          "endDate": "2026-08-16T13:00:00.000Z",
-          "eventCount": 11,
+          "endDate": "2026-08-21T17:05:00.000Z",
+          "eventCount": 14,
           "seasonPhase": "Regular"
         },
         {
@@ -743,20 +426,20 @@
           "sport": "soccer",
           "displayName": "MLS",
           "leagueKey": "mls",
-          "dateRangeLabel": "Aug 1–20",
+          "dateRangeLabel": "Aug 1–23",
           "startDate": "2026-08-01T23:30:00.000Z",
-          "endDate": "2026-08-20T02:30:00.000Z",
-          "eventCount": 45,
+          "endDate": "2026-08-23T23:00:00.000Z",
+          "eventCount": 60,
           "seasonPhase": "Regular"
         },
         {
           "sport": "cricket",
           "displayName": "Test Cricket",
           "leagueKey": "test",
-          "dateRangeLabel": "Aug 2–20",
+          "dateRangeLabel": "Aug 2–23",
           "startDate": "2026-08-02T14:00:00.000Z",
-          "endDate": "2026-08-20T10:00:00.000Z",
-          "eventCount": 12,
+          "endDate": "2026-08-23T04:30:00.000Z",
+          "eventCount": 27,
           "seasonPhase": null
         },
         {
@@ -783,10 +466,10 @@
           "sport": "cricket",
           "displayName": "CPL",
           "leagueKey": "cpl",
-          "dateRangeLabel": "Aug 7–20",
+          "dateRangeLabel": "Aug 7–22",
           "startDate": "2026-08-07T23:00:00.000Z",
-          "endDate": "2026-08-20T23:00:00.000Z",
-          "eventCount": 12,
+          "endDate": "2026-08-22T23:00:00.000Z",
+          "eventCount": 14,
           "seasonPhase": null
         },
         {
@@ -803,10 +486,10 @@
           "sport": "rugby",
           "displayName": "Test Rugby",
           "leagueKey": "rugbytests",
-          "dateRangeLabel": "Aug 8–15",
+          "dateRangeLabel": "Aug 8–22",
           "startDate": "2026-08-08T10:05:00.000Z",
-          "endDate": "2026-08-15T05:15:00.000Z",
-          "eventCount": 3,
+          "endDate": "2026-08-22T15:10:00.000Z",
+          "eventCount": 4,
           "seasonPhase": null
         },
         {
@@ -823,10 +506,10 @@
           "sport": "soccer",
           "displayName": "La Liga",
           "leagueKey": "laliga",
-          "dateRangeLabel": "Aug 15–20",
+          "dateRangeLabel": "Aug 15–22",
           "startDate": "2026-08-15T17:30:00.000Z",
-          "endDate": "2026-08-20T19:00:00.000Z",
-          "eventCount": 8,
+          "endDate": "2026-08-22T19:30:00.000Z",
+          "eventCount": 12,
           "seasonPhase": null
         },
         {
@@ -860,6 +543,16 @@
           "seasonPhase": null
         },
         {
+          "sport": "soccer",
+          "displayName": "Ligue 1",
+          "leagueKey": "ligue1",
+          "dateRangeLabel": "Aug 21–22",
+          "startDate": "2026-08-21T18:45:00.000Z",
+          "endDate": "2026-08-22T18:45:00.000Z",
+          "eventCount": 6,
+          "seasonPhase": null
+        },
+        {
           "sport": "cycling",
           "displayName": "Grand Tour — Vuelta a España",
           "leagueKey": "grand-tour",
@@ -870,13 +563,23 @@
           "seasonPhase": null
         },
         {
+          "sport": "soccer",
+          "displayName": "Serie A",
+          "leagueKey": "seriea",
+          "dateRangeLabel": "Aug 22",
+          "startDate": "2026-08-22T16:30:00.000Z",
+          "endDate": "2026-08-22T18:45:00.000Z",
+          "eventCount": 4,
+          "seasonPhase": null
+        },
+        {
           "sport": "tennis",
           "displayName": "US Open",
           "leagueKey": "grand-slam",
-          "dateRangeLabel": "Aug 23–29",
+          "dateRangeLabel": "Aug 23–31",
           "startDate": "2026-08-23T15:00:00.000Z",
-          "endDate": "2026-08-29T17:00:00.000Z",
-          "eventCount": 18,
+          "endDate": "2026-08-31T17:00:00.000Z",
+          "eventCount": 22,
           "seasonPhase": null
         },
         {
@@ -926,6 +629,123 @@
           "dateRangeLabel": "Aug 29",
           "startDate": "2026-08-29T21:00:00.000Z",
           "endDate": "2026-08-29T21:00:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
+        }
+      ],
+      "championshipFinals": []
+    },
+    "nextMonth": {
+      "monthLabel": "September 2026",
+      "monthKey": "2026-09",
+      "leagues": [
+        {
+          "sport": "cycling",
+          "displayName": "Grand Tour — Vuelta a España",
+          "leagueKey": "grand-tour",
+          "dateRangeLabel": "Sep 1–13",
+          "startDate": "2026-09-01T12:00:00.000Z",
+          "endDate": "2026-09-13T12:00:00.000Z",
+          "eventCount": 12,
+          "seasonPhase": null
+        },
+        {
+          "sport": "racing",
+          "displayName": "Italian GP",
+          "leagueKey": "f1",
+          "dateRangeLabel": "Sep 4–6",
+          "startDate": "2026-09-04T10:30:00.000Z",
+          "endDate": "2026-09-06T13:00:00.000Z",
+          "eventCount": 5,
+          "seasonPhase": null
+        },
+        {
+          "sport": "athletics",
+          "displayName": "Diamond League Final — Brussels",
+          "leagueKey": "diamond-league",
+          "dateRangeLabel": "Sep 4–5",
+          "startDate": "2026-09-04T17:00:00.000Z",
+          "endDate": "2026-09-05T15:00:00.000Z",
+          "eventCount": 2,
+          "seasonPhase": null
+        },
+        {
+          "sport": "racing",
+          "displayName": "Rally Chile",
+          "leagueKey": "wrc",
+          "dateRangeLabel": "Sep 10–13",
+          "startDate": "2026-09-10T13:00:00.000Z",
+          "endDate": "2026-09-13T13:00:00.000Z",
+          "eventCount": 4,
+          "seasonPhase": null
+        },
+        {
+          "sport": "racing",
+          "displayName": "Spanish GP",
+          "leagueKey": "f1",
+          "dateRangeLabel": "Sep 11–13",
+          "startDate": "2026-09-11T11:30:00.000Z",
+          "endDate": "2026-09-13T13:00:00.000Z",
+          "eventCount": 5,
+          "seasonPhase": null
+        },
+        {
+          "sport": "athletics",
+          "displayName": "UTMB — Wildstrubel",
+          "leagueKey": "utmb",
+          "dateRangeLabel": "Sep 12",
+          "startDate": "2026-09-12T03:00:00.000Z",
+          "endDate": "2026-09-12T03:00:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
+        },
+        {
+          "sport": "athletics",
+          "displayName": "GTWS — Myoko Trail",
+          "leagueKey": "golden-trail",
+          "dateRangeLabel": "Sep 19",
+          "startDate": "2026-09-19T23:00:00.000Z",
+          "endDate": "2026-09-19T23:00:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
+        },
+        {
+          "sport": "racing",
+          "displayName": "Azerbaijan GP",
+          "leagueKey": "f1",
+          "dateRangeLabel": "Sep 24–26",
+          "startDate": "2026-09-24T08:30:00.000Z",
+          "endDate": "2026-09-26T11:00:00.000Z",
+          "eventCount": 5,
+          "seasonPhase": null
+        },
+        {
+          "sport": "athletics",
+          "displayName": "UTMB — Nice Côte d'Azur",
+          "leagueKey": "utmb",
+          "dateRangeLabel": "Sep 25",
+          "startDate": "2026-09-25T16:00:00.000Z",
+          "endDate": "2026-09-25T16:00:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
+        },
+        {
+          "sport": "athletics",
+          "displayName": "GTWS — Jinshanling Great Wall Trail Race",
+          "leagueKey": "golden-trail",
+          "dateRangeLabel": "Sep 27",
+          "startDate": "2026-09-27T00:00:00.000Z",
+          "endDate": "2026-09-27T00:00:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
+        },
+        {
+          "sport": "athletics",
+          "displayName": "Berlin Marathon",
+          "leagueKey": "marathon-majors",
+          "dateRangeLabel": "Sep 27",
+          "startDate": "2026-09-27T07:00:00.000Z",
+          "endDate": "2026-09-27T07:00:00.000Z",
           "eventCount": 1,
           "seasonPhase": null
         }
@@ -1002,7 +822,7 @@
           "leagueKey": "usl",
           "dateRangeLabel": "Jul 29–Aug 2",
           "startDate": "2026-07-29T23:00:00.000Z",
-          "endDate": "2026-08-02T03:00:00.000Z",
+          "endDate": "2026-08-02T23:00:00.000Z",
           "eventCount": 14,
           "seasonPhase": "Regular"
         },
@@ -1014,6 +834,16 @@
           "startDate": "2026-07-30T00:00:00.000Z",
           "endDate": "2026-08-02T02:45:00.000Z",
           "eventCount": 16,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "rugby",
+          "displayName": "NPC",
+          "leagueKey": "npc",
+          "dateRangeLabel": "Jul 30–Aug 2",
+          "startDate": "2026-07-30T07:10:00.000Z",
+          "endDate": "2026-08-02T05:05:00.000Z",
+          "eventCount": 7,
           "seasonPhase": "Regular"
         },
         {

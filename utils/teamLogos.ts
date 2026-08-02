@@ -583,6 +583,19 @@ const AHL_LOGO_URLS: Record<string, string> = {
   "Wilkes-Barre/Scranton Penguins": "https://theahl.com/wp-content/uploads/sites/3/2019/09/wbs64.png",
 };
 
+// NPC (ESPN league 270563) — only ids whose 500px logo returns HTTP 200.
+const NPC_LOGO_IDS: Record<string, string> = {
+  "Auckland": "25930",
+  "Bay of Plenty": "25931",
+  "Counties Manukau": "25935",
+  "Hawke's Bay": "25937",
+  "North Harbour": "25941",
+  "Southland": "25944",
+  "Taranaki": "25945",
+  "Tasman": "25946",
+  "Waikato": "25947",
+};
+
 // Official Currie Cup team logos from springboks.rugby (SA Rugby match centre CDN).
 // Keys are the app's short team names; site uses sponsored names
 // (e.g. "Sanlam Boland Kavaliers", "Fidelity ADT Lions", "Vodacom Bulls XV").
@@ -654,6 +667,14 @@ export function getTeamLogoUrl(teamName: string, league: string, sport?: string)
   // non-URC sides (Griquas, Pumas, Cheetahs, Boland Cavaliers) use SA Rugby CDN.
   if (league === "Currie Cup") {
     return CURRIE_CUP_LOGO_MAP[teamName] || null;
+  }
+
+  // NPC (NZ provincial championship): ESPN rugby team logos exist for most
+  // unions but 404 for Canterbury/Manawatu/Northland/Otago/Wellington
+  // (curl-verified) — those fall through to the initials badge.
+  if (league === "NPC") {
+    const id = NPC_LOGO_IDS[teamName];
+    return id ? `https://a.espncdn.com/i/teamlogos/rugby/teams/500/${id}.png` : null;
   }
 
   const sportLower = sport?.toLowerCase();

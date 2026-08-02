@@ -706,5 +706,263 @@
       "channel": "Facts experiments"
     },
     "fetchedAt": "2026-07-11T01:26:50.164Z"
+  },
+  "soccer-mls-20260801-2330-new-england-revolution-at-cf-montr-al": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=D6VHSie7jrk",
+      "thumbnailUrl": "https://i.ytimg.com/vi/D6VHSie7jrk/hqdefault.jpg",
+      "durationSeconds": 1155,
+      "title": "[MLS LEAGUE] MONTRÉAL vs NEW ENGLAND REVOLUTION – REGULAR SEASON 2026/27",
+      "channel": "Play2Predict"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-mls-20260801-2330-nashville-sc-at-d-c-united": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=d7NsaLIQsHg",
+      "thumbnailUrl": "https://i.ytimg.com/vi/d7NsaLIQsHg/hqdefault.jpg",
+      "durationSeconds": 299,
+      "title": "Nashville SC at DC United | Match Highlights",
+      "channel": "Nashville Soccer Club"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-mls-20260801-2330-atlanta-united-fc-at-philadelphia-union": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=h52TpEhW5J8",
+      "thumbnailUrl": "https://i.ytimg.com/vi/h52TpEhW5J8/hqdefault.jpg",
+      "durationSeconds": 229,
+      "title": "MATCH HIGHLIGHTS | Atlanta United Unified vs Philadelphia Union Unified | August 1, 2026",
+      "channel": "Atlanta United FC"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-mls-20260801-2330-orlando-city-sc-at-red-bull-new-york": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=QiVVZKOx-0E",
+      "thumbnailUrl": "https://i.ytimg.com/vi/QiVVZKOx-0E/hqdefault.jpg",
+      "durationSeconds": 189,
+      "title": "Red Bull New York vs. Orlando City SC | MLS Highlights | ESPN FC",
+      "channel": "ESPN FC"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-mls-20260801-2330-lafc-at-vancouver-whitecaps": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=5AI01GamgqA",
+      "thumbnailUrl": "https://i.ytimg.com/vi/5AI01GamgqA/hqdefault.jpg",
+      "durationSeconds": 189,
+      "title": "Vancouver Whitecaps vs. LAFC | MLS Highlights | ESPN FC",
+      "channel": "ESPN FC"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-mls-20260802-0010-columbus-crew-at-inter-miami-cf": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=eJrP7AkIqik",
+      "thumbnailUrl": "https://i.ytimg.com/vi/eJrP7AkIqik/hqdefault.jpg",
+      "durationSeconds": 192,
+      "title": "MESSI RETURNS ⭐ Inter Miami vs. Columbus Crew | MLS Highlights | ESPN FC",
+      "channel": "ESPN FC"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-mls-20260802-0030-charlotte-fc-at-chicago-fire-fc": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=KyI2DjI7SK4",
+      "thumbnailUrl": "https://i.ytimg.com/vi/KyI2DjI7SK4/hqdefault.jpg",
+      "durationSeconds": 300,
+      "title": "MATCH HIGHLIGHTS: Chicago Fire 2-1 Charlotte FC",
+      "channel": "Charlotte FC"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-mls-20260802-0030-san-diego-fc-at-minnesota-united-fc": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=3RF7IYKOZ1c",
+      "thumbnailUrl": "https://i.ytimg.com/vi/3RF7IYKOZ1c/hqdefault.jpg",
+      "durationSeconds": 301,
+      "title": "MNUFC HIGHLIGHTS: MNUFC vs. San Diego FC",
+      "channel": "Minnesota United FC"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-mls-20260802-0030-houston-dynamo-fc-at-sporting-kansas-city": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=4kTCRFuddTg",
+      "thumbnailUrl": "https://i.ytimg.com/vi/4kTCRFuddTg/hqdefault.jpg",
+      "durationSeconds": 1006,
+      "title": "[MLS LEAGUE] SPORTING KANSAS CITY vs HOUSTON DYNAMO – REGULAR SEASON 2026/27",
+      "channel": "Play2Predict"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-mls-20260802-0030-real-salt-lake-at-st-louis-city-sc": {
+    "video": null,
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-mls-20260802-0130-austin-fc-at-colorado-rapids": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=DsHN9StGAuU",
+      "thumbnailUrl": "https://i.ytimg.com/vi/DsHN9StGAuU/hqdefault.jpg",
+      "durationSeconds": 1091,
+      "title": "[MLS LEAGUE] COLORADO RAPIDS vs AUSTIN FC – REGULAR SEASON 2026/27",
+      "channel": "Play2Predict"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-mls-20260802-0146-san-jose-earthquakes-at-fc-cincinnati": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=r2EbYQ_CbGo",
+      "thumbnailUrl": "https://i.ytimg.com/vi/r2EbYQ_CbGo/hqdefault.jpg",
+      "durationSeconds": 298,
+      "title": "MATCH HIGHLIGHTS: FC Cincinnati vs San Jose Earthquakes | August 1, 2026",
+      "channel": "San Jose Earthquakes"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-mls-20260802-0230-fc-dallas-at-la-galaxy": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=_wkdg4_MnSI",
+      "thumbnailUrl": "https://i.ytimg.com/vi/_wkdg4_MnSI/hqdefault.jpg",
+      "durationSeconds": 1098,
+      "title": "[MLS LEAGUE] LA GALAXY vs FC DALLAS – REGULAR SEASON 2026/27",
+      "channel": "Play2Predict"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-nwsl-20260801-2000-chicago-stars-at-racing-louisville": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=Es1amivgFgc",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Es1amivgFgc/hqdefault.jpg",
+      "durationSeconds": 299,
+      "title": "Highlights: Racing Louisville 2, Chicago Stars 1",
+      "channel": "Racing Louisville FC"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-nwsl-20260801-2230-angel-city-at-kansas-city-current": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=Uu02_8aAINA",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Uu02_8aAINA/hqdefault.jpg",
+      "durationSeconds": 600,
+      "title": "FULL HIGHLIGHTS | Kansas City Current vs. Angel City FC",
+      "channel": "National Women's Soccer League"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-usl-20260801-2300-monterey-bay-at-lexington": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=QAno34FSuZA",
+      "thumbnailUrl": "https://i.ytimg.com/vi/QAno34FSuZA/hqdefault.jpg",
+      "durationSeconds": 472,
+      "title": "8.1.2026 | Lexington SC vs. Monterey Bay FC - Game Highlights",
+      "channel": "USL on YouTube "
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-usl-20260801-2300-hartford-athletic-at-loudoun-united-fc": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=lkXwKHvWz0c",
+      "thumbnailUrl": "https://i.ytimg.com/vi/lkXwKHvWz0c/hqdefault.jpg",
+      "durationSeconds": 486,
+      "title": "8.1.2026 | Loudoun United FC vs. Hartford Athletic - Game Highlights",
+      "channel": "USL on YouTube "
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-usl-20260801-2330-brooklyn-fc-at-charleston-battery": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=5g4k6yOeyfA",
+      "thumbnailUrl": "https://i.ytimg.com/vi/5g4k6yOeyfA/hqdefault.jpg",
+      "durationSeconds": 417,
+      "title": "8.1.2026 | Charleston Battery vs. Brooklyn - Game Highlights",
+      "channel": "USL on YouTube "
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-nwsl-20260802-0000-gotham-fc-at-houston-dash": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=X_2ByAMwW4s",
+      "thumbnailUrl": "https://i.ytimg.com/vi/X_2ByAMwW4s/hqdefault.jpg",
+      "durationSeconds": 590,
+      "title": "FULL HIGHLIGHTS | Houston Dash vs. Gotham FC",
+      "channel": "National Women's Soccer League"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-usl-20260802-0000-louisville-city-fc-at-tampa-bay-rowdies": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=sNwOUAmHQSc",
+      "thumbnailUrl": "https://i.ytimg.com/vi/sNwOUAmHQSc/hqdefault.jpg",
+      "durationSeconds": 469,
+      "title": "8.1.2026 | Tampa Bay Rowdies vs. Louisville City FC - Game Highlights",
+      "channel": "USL on YouTube "
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-usl-20260802-0006-detroit-city-fc-at-miami-fc": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=PDoyjdAuN9E",
+      "thumbnailUrl": "https://i.ytimg.com/vi/PDoyjdAuN9E/hqdefault.jpg",
+      "durationSeconds": 297,
+      "title": "HIGHLIGHTS: Detroit City FC at Miami FC",
+      "channel": "Detroit City Football Club"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-nwsl-20260802-0045-seattle-reign-at-bay": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=7hwPblDn_y8",
+      "thumbnailUrl": "https://i.ytimg.com/vi/7hwPblDn_y8/hqdefault.jpg",
+      "durationSeconds": 599,
+      "title": "FULL HIGHLIGHTS | Bay FC vs. Seattle Reign",
+      "channel": "National Women's Soccer League"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-usl-20260802-0130-colorado-springs-switchbacks-fc-at-new-mexico-united": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=_2nV76OfRbk",
+      "thumbnailUrl": "https://i.ytimg.com/vi/_2nV76OfRbk/hqdefault.jpg",
+      "durationSeconds": 477,
+      "title": "8.1.2026 | New Mexico United vs. Colorado Springs Switchbacks FC - Game Highlights",
+      "channel": "USL on YouTube "
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-usl-20260802-0200-pittsburgh-riverhounds-at-oakland-roots": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=7dYB5zGZGqE",
+      "thumbnailUrl": "https://i.ytimg.com/vi/7dYB5zGZGqE/hqdefault.jpg",
+      "durationSeconds": 239,
+      "title": "Pittsburgh Riverhounds SC vs Oakland Roots Match Highlights 8/1/26",
+      "channel": "Pittsburgh Riverhounds SC"
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-usl-20260802-0200-el-paso-locomotive-fc-at-orange-county-sc": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=11GL5cx9nUI",
+      "thumbnailUrl": "https://i.ytimg.com/vi/11GL5cx9nUI/hqdefault.jpg",
+      "durationSeconds": 483,
+      "title": "8.1.2026 | Orange County SC vs. El Paso Locomotive FC - Game Highlights",
+      "channel": "USL on YouTube "
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "soccer-usl-20260802-0230-phoenix-rising-fc-at-las-vegas-lights-fc": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=Uopfko_vztk",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Uopfko_vztk/hqdefault.jpg",
+      "durationSeconds": 484,
+      "title": "8.1.2026 | Las Vegas Lights FC vs. Phoenix Rising FC - Game Highlights",
+      "channel": "USL on YouTube "
+    },
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "rugby-npc-qsr9l8": {
+    "video": null,
+    "fetchedAt": "2026-08-02T04:52:46.745Z"
   }
 }

@@ -128,6 +128,10 @@ export const SEASON_PHASES_2026: Record<string, PhaseWindow[]> = {
   curriecup: [
     { label: "Regular", start: "2026-07-17", end: "2026-08-30" },
   ],
+  npc: [
+    { label: "Regular", start: "2026-07-30", end: "2026-09-27" },
+    { label: "Playoffs", start: "2026-09-28", end: "2026-10-04" },
+  ],
   "commonwealth-games": [
     { label: "Regular", start: "2026-07-23", end: "2026-08-02" },
   ],

@@ -732,6 +732,8 @@ const ESPN_RUGBY_LEAGUE_PATHS: Record<string, string> = {
   // International tests — same keyless ESPN feed used for the fixtures
   // (scripts/updateRugby.ts). Covers live + final scores for tier-1 tests.
   "Test Rugby": "289234",
+  // NZ provincial championship — ESPN still labels 270563 "Mitre 10 Cup".
+  "NPC": "270563",
 };
 
 // =============================================================================

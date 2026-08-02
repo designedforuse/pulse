@@ -48,7 +48,7 @@ const ALL_SPORT_FILTERS: { key: SportFilter; label: string; icon: string }[] = [
 
 const LEAGUE_PREFERRED_ORDER: Record<string, string[]> = {
   hockey: ["NHL", "AHL", "ECHL", "SHL", "NCAA Hockey", "Olympic Hockey"],
-  rugby: ["Test Rugby", "Currie Cup", "URC", "Top 14", "English Premiership", "Six Nations", "European Champions Cup", "MLR", "Japan League One", "Super Rugby", "HSBC SVNS"],
+  rugby: ["Test Rugby", "Currie Cup", "NPC", "URC", "Top 14", "English Premiership", "Six Nations", "European Champions Cup", "MLR", "Japan League One", "Super Rugby", "HSBC SVNS"],
   cricket: ["IPL", "BBL", "Super Smash", "SA20", "The Hundred", "MLC", "CPL", "T20 World Cup", "Test Cricket", "T20I Cricket", "ODI Cricket"],
   soccer: ["EPL", "Serie A", "La Liga", "Bundesliga", "Ligue 1", "Champions League", "Europa League", "FA Cup", "CAF Champions League", "MLS", "NWSL", "USL"],
   athletics: ["Commonwealth Games", "Diamond League", "World Marathon Majors"],

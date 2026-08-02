@@ -2021,22 +2021,22 @@
   },
   "rally_weekend:rally finland wrc rally highlights": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=q_GRHPLK5FY",
-      "thumbnailUrl": "https://img.youtube.com/vi/q_GRHPLK5FY/hqdefault.jpg",
-      "durationSeconds": 263,
-      "title": "Day 1 Highlights | WRC Secto Rally Finland 2026",
+      "url": "https://www.youtube.com/watch?v=NycLOxVGLrM",
+      "thumbnailUrl": "https://img.youtube.com/vi/NycLOxVGLrM/hqdefault.jpg",
+      "durationSeconds": 75,
+      "title": "Sebastian Ogier Car Crash at Rally Finland 2026 - Sebastian Ogier Car Crash Video",
       "source": "youtube",
-      "channel": "FIA World Rally Championship",
-      "publishedAt": "4 hours ago"
+      "channel": "Psy Donk",
+      "publishedAt": "5 hours ago"
     },
-    "fetchedAt": "2026-07-31T01:18:52.821Z",
+    "fetchedAt": "2026-08-02T04:51:59.711Z",
     "query": "Rally Finland WRC rally highlights",
     "debug": {
       "searchQuery": "Rally Finland WRC rally highlights",
-      "selectedVideoTitle": "Day 1 Highlights | WRC Secto Rally Finland 2026",
-      "selectedVideoPublishedAt": "4 hours ago",
-      "selectedVideoChannel": "FIA World Rally Championship",
-      "rejectedForAgeCount": 1
+      "selectedVideoTitle": "Sebastian Ogier Car Crash at Rally Finland 2026 - Sebastian Ogier Car Crash Video",
+      "selectedVideoPublishedAt": "5 hours ago",
+      "selectedVideoChannel": "Psy Donk",
+      "rejectedForAgeCount": 0
     }
   },
   "league_moment:rivalry weekend sports july 2026": {
@@ -2068,6 +2068,26 @@
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:san diego wave vs washington spirit nwsl preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=1oWALVZc-bU",
+      "thumbnailUrl": "https://img.youtube.com/vi/1oWALVZc-bU/hqdefault.jpg",
+      "durationSeconds": 1086,
+      "title": "2026 Seattle Reign FC Simulation: Match 16 - Bay FC vs. Seattle Reign FC",
+      "source": "youtube",
+      "channel": "Crow Sports Network",
+      "publishedAt": "4 hours ago"
+    },
+    "fetchedAt": "2026-08-02T04:51:59.287Z",
+    "query": "San Diego Wave vs Washington Spirit NWSL preview",
+    "debug": {
+      "searchQuery": "San Diego Wave vs Washington Spirit NWSL preview",
+      "selectedVideoTitle": "2026 Seattle Reign FC Simulation: Match 16 - Bay FC vs. Seattle Reign FC",
+      "selectedVideoPublishedAt": "4 hours ago",
+      "selectedVideoChannel": "Crow Sports Network",
       "rejectedForAgeCount": 0
     }
   }

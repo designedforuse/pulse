@@ -22,6 +22,7 @@ const LEAGUE_LABELS: Record<string, string> = {
   sixnations: "Six Nations",
   curriecup: "Currie Cup",
   rugbytests: "Test Rugby",
+  npc: "NPC",
 };
 
 const LEAGUE_PROVIDERS: Record<string, string> = {
@@ -34,6 +35,8 @@ const LEAGUE_PROVIDERS: Record<string, string> = {
   sixnations: "youtubetv",
   curriecup: "rugbypasstv",
   rugbytests: "rugbypasstv",
+  // NZ provincial championship streams internationally on RugbyPass TV.
+  npc: "rugbypasstv",
 };
 
 const LEAGUE_DURATION: Record<string, number> = {
@@ -759,6 +762,55 @@ async function fetchInternationalTests(windowStart: Date, windowEnd: Date): Prom
   }
 }
 
+// ── NPC (New Zealand provincial championship) ────────────────────────────────
+// Keyless ESPN scoreboard, league id 270563 (listed as "Mitre 10 Cup" — ESPN
+// never renamed it, but it is the current Bunnings NPC). Same date-range query
+// shape as the international tests feed.
+const ESPN_NPC_URL = "https://site.api.espn.com/apis/site/v2/sports/rugby/270563/scoreboard";
+
+async function fetchNpcEvents(windowStart: Date, windowEnd: Date): Promise<AppEvent[]> {
+  const url = `${ESPN_NPC_URL}?dates=${yyyymmdd(windowStart)}-${yyyymmdd(windowEnd)}`;
+  console.log(`  Rugby [npc]: Fetching ${url}...`);
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      console.error(`  Rugby [npc]: HTTP ${res.status}`);
+      return [];
+    }
+    const json: any = await res.json();
+    const events: AppEvent[] = [];
+    for (const ev of json?.events ?? []) {
+      const comp = ev?.competitions?.[0];
+      const competitors = comp?.competitors ?? [];
+      const home = competitors.find((c: any) => c.homeAway === "home")?.team?.displayName;
+      const away = competitors.find((c: any) => c.homeAway === "away")?.team?.displayName;
+      if (!home || !away) continue;
+      const start = new Date(ev.date);
+      if (isNaN(start.getTime()) || start < windowStart || start > windowEnd) continue;
+      const iso = start.toISOString();
+      const hashInput = `npc-${iso.slice(0, 10)}-${home}-${away}`;
+      events.push({
+        id: `rugby-npc-${stableHash(hashInput)}`,
+        sport: "rugby",
+        league: LEAGUE_LABELS.npc,
+        homeTeam: home,
+        awayTeam: away,
+        startTimeLocal: iso,
+        endTimeLocal: addDuration(iso, RUGBY_15S_DURATION_MIN),
+        providerId: LEAGUE_PROVIDERS.npc,
+        isLive: false,
+        source: "rugby",
+        leagueKey: "npc",
+      });
+    }
+    console.log(`  Rugby [npc]: ${events.length} events in retention window`);
+    return events;
+  } catch (err) {
+    console.error(`  Rugby [npc]: Fetch error:`, err);
+    return [];
+  }
+}
+
 function buildSvnsEvents(windowStart: Date, windowEnd: Date): AppEvent[] {
   const events: AppEvent[] = [];
 
@@ -832,9 +884,10 @@ export async function fetchRugbyEvents(): Promise<RugbyFetchResult> {
     console.log(`  Rugby [${leagueKey}]: ${leagueCount} events in retention window`);
   }
 
-  const [leagueOneEvents, testEvents] = await Promise.all([
+  const [leagueOneEvents, testEvents, npcEvents] = await Promise.all([
     fetchLeagueOneEvents(windowStart, windowEnd),
     fetchInternationalTests(windowStart, windowEnd),
+    fetchNpcEvents(windowStart, windowEnd),
   ]);
 
   counts.leagueone = leagueOneEvents.length;
@@ -845,6 +898,10 @@ export async function fetchRugbyEvents(): Promise<RugbyFetchResult> {
   counts.rugbytests = testEvents.length;
   allEvents.push(...testEvents);
   sourceParts.push(`${LEAGUE_LABELS.rugbytests}: ${testEvents.length}`);
+
+  counts.npc = npcEvents.length;
+  allEvents.push(...npcEvents);
+  sourceParts.push(`${LEAGUE_LABELS.npc}: ${npcEvents.length}`);
 
   const currieCupEvents = buildCurrieCupEvents(windowStart, windowEnd);
   counts.curriecup = currieCupEvents.length;
