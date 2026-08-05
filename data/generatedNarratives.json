@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-04T23:40:27.263Z",
+  "lastUpdated": "2026-08-05T00:03:24.984Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -51,7 +51,7 @@
         ],
         "playersIngested": 357,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-08-04T23:40:27.263Z"
+        "timestamp": "2026-08-05T00:03:24.984Z"
       },
       "cacheHistoryCount": 881,
       "error": null
@@ -61,7 +61,7 @@
     "candidateCountAfterCap": 2,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -3603.6742397222224,
+      "hoursUntil": -3604.05694,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -120,7 +120,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-08-04T23:40:27.263Z",
+      "triggeredAt": "2026-08-05T00:03:24.984Z",
       "expiresAt": "2026-08-09T00:30:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -160,8 +160,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-08-04T23:40:27.263Z",
-      "expiresAt": "2026-08-11T23:40:27.263Z",
+      "triggeredAt": "2026-08-05T00:03:24.984Z",
+      "expiresAt": "2026-08-12T00:03:24.984Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -306,10 +306,10 @@
           "sport": "cricket",
           "displayName": "Test Cricket",
           "leagueKey": "test",
-          "dateRangeLabel": "Aug 2–25",
+          "dateRangeLabel": "Aug 2–26",
           "startDate": "2026-08-02T14:00:00.000Z",
-          "endDate": "2026-08-25T04:30:00.000Z",
-          "eventCount": 37,
+          "endDate": "2026-08-26T00:00:00.000Z",
+          "eventCount": 38,
           "seasonPhase": null
         },
         {

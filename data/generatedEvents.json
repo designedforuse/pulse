@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-04T23:40:27.216Z",
+  "lastUpdated": "2026-08-05T00:03:24.859Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -68,8 +68,8 @@
     "curriecup": 20,
     "svns": 0
   },
-  "cricketCount": 66,
-  "cricketAdded": 10,
+  "cricketCount": 67,
+  "cricketAdded": 11,
   "cricketUpdated": 51,
   "cricketPruned": 10,
   "cricketCounts": {
@@ -159,12 +159,12 @@
   "faCupPruned": 0,
   "faCupSourceUsed": "espn",
   "tennisCount": 56,
-  "tennisAdded": 0,
+  "tennisAdded": 2,
   "tennisUpdated": 56,
-  "tennisPruned": 0,
+  "tennisPruned": 2,
   "tennisSourceUsed": "hardcoded",
   "tennisTournamentCounts": {
-    "US Open": 26,
+    "US Open": 28,
     "Canadian Open": 14,
     "Cincinnati Open": 16
   },
@@ -208,7 +208,7 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-08-04T23:40:27.216Z",
+    "lastRefreshAt": "2026-08-05T00:03:24.859Z",
     "sources": {
       "nhl": {
         "count": 0,
@@ -217,13 +217,13 @@
       },
       "ahl": {
         "count": 0,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 0,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -235,7 +235,7 @@
       },
       "rugby": {
         "count": 52,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 0,
@@ -251,8 +251,8 @@
         }
       },
       "cricket": {
-        "count": 66,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "count": 67,
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "CPL": 16,
@@ -262,12 +262,12 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
@@ -277,17 +277,17 @@
       },
       "mls": {
         "count": 226,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 10,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "iCal Feed"
       },
       "laLiga": {
         "count": 18,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
@@ -297,18 +297,18 @@
       },
       "ligue1": {
         "count": 9,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 46,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 68,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-07-22T23:00:00.000Z"
       },
@@ -326,7 +326,7 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T19:00:00.000Z"
       },
@@ -348,17 +348,17 @@
       },
       "tennis": {
         "count": 56,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
-          "US Open": 26,
+          "US Open": 28,
           "Canadian Open": 14,
           "Cincinnati Open": 16
         }
       },
       "f1": {
         "count": 29,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Hungarian Grand Prix": 5,
@@ -371,17 +371,17 @@
       },
       "wrc": {
         "count": 20,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "Hardcoded Schedule"
       },
       "schoolsRugby": {
         "count": 1,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "Hardcoded Schedule"
       },
       "paddling": {
         "count": 1,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "Hardcoded Schedule"
       },
       "comrades": {
@@ -391,13 +391,13 @@
       },
       "golf": {
         "count": 0,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {}
       },
       "marathon": {
         "count": 4,
-        "lastFetchAt": "2026-08-04T23:40:27.216Z",
+        "lastFetchAt": "2026-08-05T00:03:24.859Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Sydney Marathon": 1,
@@ -11510,6 +11510,30 @@
       "seriesName": "Caribbean Premier League",
       "gender": "men",
       "isIccT20Wc": false
+    },
+    {
+      "id": "cricket-test-ys78g6-day5",
+      "cricketMatchId": "1527274",
+      "sport": "cricket",
+      "league": "Test Cricket",
+      "awayTeam": "Bangladesh",
+      "homeTeam": "Australia",
+      "startTimeLocal": "2026-08-26T00:00:00.000Z",
+      "endTimeLocal": "2026-08-26T08:00:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-espn",
+      "leagueKey": "test",
+      "competitionName": "Test Cricket",
+      "competitionType": "international",
+      "format": "test",
+      "hostCountry": "Australia",
+      "seriesName": "Bangladesh tour of Australia 2026",
+      "gender": "men",
+      "isIccT20Wc": false,
+      "dayNumber": 5,
+      "totalDays": 5,
+      "isFinalDay": true
     },
     {
       "id": "cycling-grand-tour-vuelta-a-espa-a-2026-2026-08-26-stage-5",
