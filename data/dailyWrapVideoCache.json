@@ -964,5 +964,15 @@
   "rugby-npc-qsr9l8": {
     "video": null,
     "fetchedAt": "2026-08-02T04:52:46.745Z"
+  },
+  "cricket-test-ysrqwb-day3": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=QBQG5o33MWE",
+      "thumbnailUrl": "https://i.ytimg.com/vi/QBQG5o33MWE/hqdefault.jpg",
+      "durationSeconds": 932,
+      "title": "Abdullah Shafique Century & Babar Azam Runs | Highlights | West Indies v Pakistan | 2nd Test Day 2",
+      "channel": "Windies Cricket"
+    },
+    "fetchedAt": "2026-08-04T23:11:23.586Z"
   }
 }

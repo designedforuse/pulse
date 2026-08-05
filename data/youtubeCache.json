@@ -2090,5 +2090,45 @@
       "selectedVideoChannel": "Crow Sports Network",
       "rejectedForAgeCount": 0
     }
+  },
+  "marquee_match:houston dynamo fc vs new england revolution mls preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=_vimpy3G4MQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/_vimpy3G4MQ/hqdefault.jpg",
+      "durationSeconds": 1161,
+      "title": "FC26 - NEW ENGLAND vs HOUSTON DYNAMO | Gameplay (4K UHD)",
+      "source": "youtube",
+      "channel": "Jerry Cut Fc",
+      "publishedAt": "11 hours ago"
+    },
+    "fetchedAt": "2026-08-04T23:38:12.775Z",
+    "query": "Houston Dynamo FC vs New England Revolution MLS preview",
+    "debug": {
+      "searchQuery": "Houston Dynamo FC vs New England Revolution MLS preview",
+      "selectedVideoTitle": "FC26 - NEW ENGLAND vs HOUSTON DYNAMO | Gameplay (4K UHD)",
+      "selectedVideoPublishedAt": "11 hours ago",
+      "selectedVideoChannel": "Jerry Cut Fc",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:big stage sports august 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=4aeYlctf8Ic",
+      "thumbnailUrl": "https://img.youtube.com/vi/4aeYlctf8Ic/hqdefault.jpg",
+      "durationSeconds": 1482,
+      "title": "2026 Tour de France Femmes, Stage 4 | EXTENDED HIGHLIGHTS | 8/4/2026 | Cycling on NBC Sports",
+      "source": "youtube",
+      "channel": "NBC Sports",
+      "publishedAt": "3 hours ago"
+    },
+    "fetchedAt": "2026-08-04T23:38:13.216Z",
+    "query": "Big Stage sports August 2026",
+    "debug": {
+      "searchQuery": "Big Stage sports August 2026",
+      "selectedVideoTitle": "2026 Tour de France Femmes, Stage 4 | EXTENDED HIGHLIGHTS | 8/4/2026 | Cycling on NBC Sports",
+      "selectedVideoPublishedAt": "3 hours ago",
+      "selectedVideoChannel": "NBC Sports",
+      "rejectedForAgeCount": 0
+    }
   }
 }
