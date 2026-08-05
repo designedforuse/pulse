@@ -36,7 +36,7 @@ import {
 
 const FILTER_KEY_PREFIX = "ui.modeFilter.";
 
-type SportFilter = "all" | "hockey" | "rugby" | "cricket" | "soccer";
+type SportFilter = "all" | "hockey" | "rugby" | "cricket" | "soccer" | "athletics";
 
 const ALL_SPORT_FILTERS: { key: SportFilter; label: string; icon: string }[] = [
   { key: "all", label: "All", icon: "grid-outline" },
@@ -44,6 +44,7 @@ const ALL_SPORT_FILTERS: { key: SportFilter; label: string; icon: string }[] = [
   { key: "rugby", label: "Rugby", icon: "american-football" },
   { key: "cricket", label: "Cricket", icon: "baseball" },
   { key: "soccer", label: "Soccer", icon: "football" },
+  { key: "athletics", label: "Athletics", icon: "walk-outline" },
 ];
 
 const LEAGUE_PREFERRED_ORDER: Record<string, string[]> = {
