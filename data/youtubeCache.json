@@ -2113,21 +2113,89 @@
   },
   "league_moment:big stage sports august 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=4aeYlctf8Ic",
-      "thumbnailUrl": "https://img.youtube.com/vi/4aeYlctf8Ic/hqdefault.jpg",
-      "durationSeconds": 1482,
-      "title": "2026 Tour de France Femmes, Stage 4 | EXTENDED HIGHLIGHTS | 8/4/2026 | Cycling on NBC Sports",
+      "url": "https://www.youtube.com/watch?v=DXl3FCK6KUw",
+      "thumbnailUrl": "https://img.youtube.com/vi/DXl3FCK6KUw/hqdefault.jpg",
+      "durationSeconds": 1529,
+      "title": "2026 Tour de France Femmes, Stage 8 | EXTENDED HIGHLIGHTS | 8/8/2026 | Cycling on NBC Sports",
       "source": "youtube",
       "channel": "NBC Sports",
-      "publishedAt": "3 hours ago"
+      "publishedAt": "30 minutes ago"
     },
-    "fetchedAt": "2026-08-04T23:38:13.216Z",
+    "fetchedAt": "2026-08-09T05:01:59.497Z",
     "query": "Big Stage sports August 2026",
     "debug": {
       "searchQuery": "Big Stage sports August 2026",
-      "selectedVideoTitle": "2026 Tour de France Femmes, Stage 4 | EXTENDED HIGHLIGHTS | 8/4/2026 | Cycling on NBC Sports",
-      "selectedVideoPublishedAt": "3 hours ago",
+      "selectedVideoTitle": "2026 Tour de France Femmes, Stage 8 | EXTENDED HIGHLIGHTS | 8/8/2026 | Cycling on NBC Sports",
+      "selectedVideoPublishedAt": "30 minutes ago",
       "selectedVideoChannel": "NBC Sports",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:cheetahs clinch playoff berth august 2026": {
+    "video": null,
+    "fetchedAt": "2026-08-09T05:01:58.596Z",
+    "query": "Cheetahs clinch playoff berth August 2026",
+    "debug": {
+      "searchQuery": "Cheetahs clinch playoff berth August 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:zverev clinch playoff berth august 2026": {
+    "video": null,
+    "fetchedAt": "2026-08-09T05:01:58.827Z",
+    "query": "Zverev clinch playoff berth August 2026",
+    "debug": {
+      "searchQuery": "Zverev clinch playoff berth August 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:portland thorns vs boston legacy nwsl preview": {
+    "video": null,
+    "fetchedAt": "2026-08-09T05:01:59.092Z",
+    "query": "Portland Thorns vs Boston Legacy NWSL preview",
+    "debug": {
+      "searchQuery": "Portland Thorns vs Boston Legacy NWSL preview",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:lehecka vs jodar upset highlights august 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=aZ3PJ7e5xtA",
+      "thumbnailUrl": "https://img.youtube.com/vi/aZ3PJ7e5xtA/hqdefault.jpg",
+      "durationSeconds": 403,
+      "title": "Jiri Lehecka vs Rafael Jodar | Canadian Open 2026 Round of 16 | Tiebreak Gameplay Simulation",
+      "source": "youtube",
+      "channel": "CluchPlazer",
+      "publishedAt": "11 hours ago"
+    },
+    "fetchedAt": "2026-08-09T05:03:05.101Z",
+    "query": "Lehecka vs Jodar upset highlights August 2026",
+    "debug": {
+      "searchQuery": "Lehecka vs Jodar upset highlights August 2026",
+      "selectedVideoTitle": "Jiri Lehecka vs Rafael Jodar | Canadian Open 2026 Round of 16 | Tiebreak Gameplay Simulation",
+      "selectedVideoPublishedAt": "11 hours ago",
+      "selectedVideoChannel": "CluchPlazer",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:nakashima clinch playoff berth august 2026": {
+    "video": null,
+    "fetchedAt": "2026-08-09T05:03:05.288Z",
+    "query": "Nakashima clinch playoff berth August 2026",
+    "debug": {
+      "searchQuery": "Nakashima clinch playoff berth August 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   }

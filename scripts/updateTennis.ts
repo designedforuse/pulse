@@ -81,6 +81,8 @@ interface TennisTournament {
   providerReason: string;
   rounds: { name: string; startDay: number; endDay: number; matchesPerDay: number }[];
   espnTournamentId?: number;
+  /** Alternate names ESPN/sponsors use for this event (lowercase substrings). */
+  aliases?: string[];
 }
 
 const GRAND_SLAM_ROUNDS = [
@@ -158,6 +160,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerReason: "espn-broadcast",
     rounds: GRAND_SLAM_ROUNDS,
     espnTournamentId: 189,
+    aliases: ["us open", "u.s. open"],
   },
   {
     name: "Indian Wells Masters",
@@ -200,6 +203,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerReason: "tennis-channel",
     rounds: MASTERS_ROUNDS,
     espnTournamentId: 410,
+    aliases: ["monte carlo", "monte-carlo"],
   },
   {
     name: "Madrid Open",
@@ -242,6 +246,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerReason: "tennis-channel",
     rounds: MASTERS_ROUNDS,
     espnTournamentId: 414,
+    aliases: ["national bank open", "canada masters", "canadian open", "rogers cup"],
   },
   {
     name: "Cincinnati Open",
@@ -256,6 +261,7 @@ const TOURNAMENTS: TennisTournament[] = [
     providerReason: "tennis-channel",
     rounds: MASTERS_ROUNDS,
     espnTournamentId: 422,
+    aliases: ["western & southern", "western and southern", "cincinnati"],
   },
   {
     name: "Shanghai Masters",
@@ -448,16 +454,26 @@ interface EspnEvent {
 
 const espnSeedMaps = new Map<number, Map<string, number>>();
 
-// Match ESPN event name to our tournament list by keyword overlap (name-based, not ID-based)
+// Generic words that appear in many tournament names and must never count as a
+// match on their own ("National Bank Open" ≠ "Australian Open").
+const GENERIC_TOURNAMENT_WORDS = new Set(["open", "masters", "tennis", "presented", "championships"]);
+
+// Match ESPN event name to our tournament list (name-based, not ID-based).
+// Aliases win first; otherwise require a distinctive (non-generic) keyword hit.
 function matchEspnEventToTournament(espnEventName: string): TennisTournament | null {
   const lower = espnEventName.toLowerCase();
-  // Try each tournament — check if any keyword from our name appears in the ESPN name
+  // 1) Alias match — handles sponsor names like "National Bank Open presented by Rogers"
+  for (const t of TOURNAMENTS) {
+    if (t.aliases?.some(a => lower.includes(a))) return t;
+  }
+  // 2) Distinctive keyword overlap
   let bestMatch: TennisTournament | null = null;
   let bestScore = 0;
   for (const t of TOURNAMENTS) {
-    const nameWords = t.name.toLowerCase().split(/\s+/).filter(w => w.length > 3);
-    const shortWords = t.shortName.toLowerCase().split(/\s+/).filter(w => w.length > 3);
-    const keywords = Array.from(new Set([...nameWords, ...shortWords]));
+    const nameWords = t.name.toLowerCase().split(/\s+/);
+    const shortWords = t.shortName.toLowerCase().split(/\s+/);
+    const keywords = Array.from(new Set([...nameWords, ...shortWords]))
+      .filter(w => w.length > 3 && !GENERIC_TOURNAMENT_WORDS.has(w));
     const score = keywords.filter(kw => lower.includes(kw)).length;
     if (score > bestScore) {
       bestScore = score;

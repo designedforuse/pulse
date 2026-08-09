@@ -1,8 +1,18 @@
 {
-  "lastUpdated": "2026-08-05T00:03:24.984Z",
+  "lastUpdated": "2026-08-09T05:04:19.112Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
+        "Other": 1
+      },
+      "upset_alert": {
+        "Other": 1
+      },
+      "clinch_watch": {
+        "SouthAfrica": 1,
+        "Other": 1
+      },
+      "weekend_watchlist": {
         "Other": 1
       },
       "marquee_match": {
@@ -11,14 +21,20 @@
     },
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
+      "SouthAfrica": [
+        "clinch_watch: Clinch Watch"
+      ],
       "Other": [
-        "marquee_match: Marquee Match: MLS",
-        "league_moment: Big Stage"
+        "upset_alert: Upset Alert",
+        "clinch_watch: Clinch Watch",
+        "marquee_match: Marquee Match: NWSL",
+        "league_moment: Big Stage",
+        "weekend_watchlist: Weekend Watchlist"
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 2,
-    "totalAfterCap": 2,
+    "totalBeforeCap": 6,
+    "totalAfterCap": 6,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -51,17 +67,17 @@
         ],
         "playersIngested": 357,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-08-05T00:03:24.984Z"
+        "timestamp": "2026-08-09T05:04:19.112Z"
       },
       "cacheHistoryCount": 881,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 2,
-    "candidateCountAfterCap": 2,
+    "candidateCountBeforeCap": 6,
+    "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -3604.05694,
+      "hoursUntil": -3705.0719755555556,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -71,40 +87,67 @@
       "rivalryFinalCount": 0
     },
     "upsetAlert": {
-      "rawUpsetCandidates": 0,
+      "rawUpsetCandidates": 1,
       "upsetLiveCandidates": 0,
-      "upsetCompletedCandidates": 0,
-      "upsetFinalCount": 0
+      "upsetCompletedCandidates": 1,
+      "upsetFinalCount": 1
     },
     "clinchWatch": {
-      "rawClinchCandidates": 0,
-      "clinchAfterRegionFilter": 0,
-      "clinchFinalCount": 0,
+      "rawClinchCandidates": 3,
+      "clinchAfterRegionFilter": 2,
+      "clinchFinalCount": 2,
       "clinchGatedOut": []
     },
-    "tonightStorySelectedSignal": null,
-    "tonightStoryHeadline": null,
-    "tonightStorySourceEvent": null,
+    "tonightStorySelectedSignal": "multi_team_night",
+    "tonightStoryHeadline": "Your Sports Night",
+    "tonightStorySourceEvent": "rugby-rugbytests-24ssq1",
     "tonightStoryDebug": {
-      "selectedSignal": null,
-      "selectedHeadline": null,
-      "selectedScore": 0,
-      "sourceEventId": null,
-      "reason": "no stories scored",
-      "scoredCandidates": []
+      "selectedSignal": "multi_team_night",
+      "selectedHeadline": "Your Sports Night",
+      "selectedScore": 260,
+      "sourceEventId": "rugby-rugbytests-24ssq1",
+      "reason": "3 followed/affiliate teams playing today",
+      "scoredCandidates": [
+        {
+          "label": "[multi_team_night] Your Sports Night",
+          "score": 260,
+          "reason": "3 followed/affiliate teams playing today"
+        }
+      ]
     },
     "videoSelection": {
-      "marquee_match": {
-        "searchQuery": "Houston Dynamo FC vs New England Revolution MLS preview",
-        "selectedVideoTitle": "FC26 - NEW ENGLAND vs HOUSTON DYNAMO | Gameplay (4K UHD)",
+      "clinch_watch_rugby-curriecup-m51qio": {
+        "searchQuery": "Cheetahs clinch playoff berth August 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
+        "rejectedForAgeCount": 0
+      },
+      "upset_alert_tennis-espn-181775": {
+        "searchQuery": "Lehecka vs Jodar upset highlights August 2026",
+        "selectedVideoTitle": "Jiri Lehecka vs Rafael Jodar | Canadian Open 2026 Round of 16 | Tiebreak Gameplay Simulation",
         "selectedVideoPublishedAt": "11 hours ago",
-        "selectedVideoChannel": "Jerry Cut Fc",
+        "selectedVideoChannel": "CluchPlazer",
+        "rejectedForAgeCount": 0
+      },
+      "clinch_watch_tennis-espn-181721": {
+        "searchQuery": "Nakashima clinch playoff berth August 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
+        "rejectedForAgeCount": 0
+      },
+      "marquee_match": {
+        "searchQuery": "Portland Thorns vs Boston Legacy NWSL preview",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
       "league_moment_tournament": {
         "searchQuery": "Big Stage sports August 2026",
-        "selectedVideoTitle": "2026 Tour de France Femmes, Stage 4 | EXTENDED HIGHLIGHTS | 8/4/2026 | Cycling on NBC Sports",
-        "selectedVideoPublishedAt": "3 hours ago",
+        "selectedVideoTitle": "2026 Tour de France Femmes, Stage 8 | EXTENDED HIGHLIGHTS | 8/8/2026 | Cycling on NBC Sports",
+        "selectedVideoPublishedAt": "30 minutes ago",
         "selectedVideoChannel": "NBC Sports",
         "rejectedForAgeCount": 0
       }
@@ -112,44 +155,145 @@
   },
   "cards": [
     {
+      "id": "clinch_watch_rugby-curriecup-m51qio",
+      "title": "Clinch Watch",
+      "subtitle": "Can clinch home quarterfinal tonight",
+      "impact": {
+        "label": "Impacts: Sunday Coffee & Chill",
+        "ritualId": "sunday_session",
+        "tabHint": "Watch"
+      },
+      "priority": 92,
+      "triggeredAt": "2026-08-09T05:04:19.112Z",
+      "expiresAt": "2026-08-09T17:00:00.000Z",
+      "kind": "clinch_watch",
+      "region": "SouthAfrica",
+      "regionPriority": 1,
+      "regionLabel": "South Africa",
+      "meta": {
+        "source": "team_config",
+        "conditionLabel": "Can clinch home quarterfinal",
+        "sport": "rugby",
+        "league": "Currie Cup",
+        "awayTeam": "Cheetahs",
+        "homeTeam": "Stormers",
+        "startTime": "2026-08-09T13:00:00.000Z",
+        "eventIds": [
+          "rugby-curriecup-m51qio"
+        ],
+        "reason": "Stormers have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
+      },
+      "sports": [
+        "rugby"
+      ]
+    },
+    {
+      "id": "upset_alert_tennis-espn-181775",
+      "title": "Upset Alert",
+      "subtitle": "Jodar stuns Lehecka at Canadian Open",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 98,
+      "triggeredAt": "2026-08-09T05:04:19.112Z",
+      "expiresAt": "2026-08-09T11:04:19.112Z",
+      "kind": "upset_alert",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "mode": "completed",
+        "upsetType": "tennis_seed_upset",
+        "sport": "tennis",
+        "league": "ATP Masters 1000",
+        "favoriteName": "Lehecka",
+        "underdogName": "Jodar",
+        "favoriteRank": 8,
+        "underdogRank": 20,
+        "awayTeam": "Jodar",
+        "homeTeam": "Lehecka",
+        "startTime": "2026-08-09T00:25:00.000Z",
+        "eventIds": [
+          "tennis-espn-181775"
+        ],
+        "reason": "Lehecka (seed 8) entered as the higher seed, but Jodar knocked Lehecka out.\n\nThis opens up the draw and changes the shape of the tournament."
+      },
+      "sports": [
+        "tennis"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=aZ3PJ7e5xtA",
+        "thumbnailUrl": "https://img.youtube.com/vi/aZ3PJ7e5xtA/hqdefault.jpg",
+        "durationSeconds": 403,
+        "title": "Jiri Lehecka vs Rafael Jodar | Canadian Open 2026 Round of 16 | Tiebreak Gameplay Simulation",
+        "source": "youtube",
+        "channel": "CluchPlazer",
+        "publishedAt": "11 hours ago"
+      }
+    },
+    {
+      "id": "clinch_watch_tennis-espn-181721",
+      "title": "Clinch Watch",
+      "subtitle": "Nakashima vs Darderi · Tennis title on the line",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 92,
+      "triggeredAt": "2026-08-09T05:04:19.112Z",
+      "expiresAt": "2026-08-10T08:00:00.000Z",
+      "kind": "clinch_watch",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "source": "tournament",
+        "conditionLabel": "Tennis title on the line",
+        "sport": "tennis",
+        "league": "ATP Masters 1000",
+        "awayTeam": "Nakashima",
+        "homeTeam": "Darderi",
+        "startTime": "2026-08-10T04:00:00.000Z",
+        "eventIds": [
+          "tennis-espn-181721"
+        ],
+        "reason": "Nakashima and Darderi meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
+      },
+      "sports": [
+        "tennis"
+      ]
+    },
+    {
       "id": "marquee_match",
-      "title": "Marquee Match: MLS",
-      "subtitle": "Houston Dynamo FC vs New England Revolution — MLS · in 4 days",
+      "title": "Marquee Match: NWSL",
+      "subtitle": "Portland Thorns vs Boston Legacy — NWSL · tomorrow",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-08-05T00:03:24.984Z",
-      "expiresAt": "2026-08-09T00:30:00.000Z",
+      "triggeredAt": "2026-08-09T05:04:19.112Z",
+      "expiresAt": "2026-08-10T00:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "marquee_match",
-        "league": "MLS",
-        "home": "New England Revolution",
-        "away": "Houston Dynamo FC",
+        "league": "NWSL",
+        "home": "Boston Legacy",
+        "away": "Portland Thorns",
         "rivalry": null,
-        "startTime": "2026-08-08T20:30:00.000Z",
+        "startTime": "2026-08-09T20:00:00.000Z",
         "eventIds": [
-          "soccer-mls-20260808-2030-houston-dynamo-fc-at-new-england-revolution"
+          "soccer-nwsl-20260809-2000-portland-thorns-at-boston-legacy"
         ],
-        "reason": "Top MLS fixture (Houston Dynamo FC vs New England Revolution) in 4 days"
+        "reason": "Top NWSL fixture (Portland Thorns vs Boston Legacy) tomorrow"
       },
       "sports": [
         "soccer"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=_vimpy3G4MQ",
-        "thumbnailUrl": "https://img.youtube.com/vi/_vimpy3G4MQ/hqdefault.jpg",
-        "durationSeconds": 1161,
-        "title": "FC26 - NEW ENGLAND vs HOUSTON DYNAMO | Gameplay (4K UHD)",
-        "source": "youtube",
-        "channel": "Jerry Cut Fc",
-        "publishedAt": "11 hours ago"
-      }
+      ]
     },
     {
       "id": "league_moment_tournament",
@@ -160,8 +304,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-08-05T00:03:24.984Z",
-      "expiresAt": "2026-08-12T00:03:24.984Z",
+      "triggeredAt": "2026-08-09T05:04:19.112Z",
+      "expiresAt": "2026-08-16T05:04:19.112Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
@@ -171,23 +315,23 @@
         "matchCount": 2,
         "matches": [
           {
-            "away": "Zverev",
-            "home": "Alcaraz",
+            "away": "Nakashima",
+            "home": "Darderi",
             "league": "ATP Masters 1000",
-            "round": "Canada — Quarterfinals",
-            "startTime": "2026-08-10T15:00:00.000Z"
+            "round": "Canada — Quarterfinal",
+            "startTime": "2026-08-10T04:00:00.000Z"
           },
           {
-            "away": "Alcaraz",
-            "home": "Dimitrov",
+            "away": "Fils",
+            "home": "Jodar",
             "league": "ATP Masters 1000",
-            "round": "Canada — Quarterfinals",
-            "startTime": "2026-08-10T17:00:00.000Z"
+            "round": "Canada — Quarterfinal",
+            "startTime": "2026-08-10T04:00:00.000Z"
           }
         ],
         "eventIds": [
-          "tennis-canadian-open-2026-08-10-m0",
-          "tennis-canadian-open-2026-08-10-m1"
+          "tennis-espn-181721",
+          "tennis-espn-181722"
         ],
         "reason": "Found 2 tournament stage match(es) in the next 7 days"
       },
@@ -195,18 +339,125 @@
         "tennis"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=4aeYlctf8Ic",
-        "thumbnailUrl": "https://img.youtube.com/vi/4aeYlctf8Ic/hqdefault.jpg",
-        "durationSeconds": 1482,
-        "title": "2026 Tour de France Femmes, Stage 4 | EXTENDED HIGHLIGHTS | 8/4/2026 | Cycling on NBC Sports",
+        "url": "https://www.youtube.com/watch?v=DXl3FCK6KUw",
+        "thumbnailUrl": "https://img.youtube.com/vi/DXl3FCK6KUw/hqdefault.jpg",
+        "durationSeconds": 1529,
+        "title": "2026 Tour de France Femmes, Stage 8 | EXTENDED HIGHLIGHTS | 8/8/2026 | Cycling on NBC Sports",
         "source": "youtube",
         "channel": "NBC Sports",
-        "publishedAt": "3 hours ago"
+        "publishedAt": "30 minutes ago"
       }
+    },
+    {
+      "id": "weekend_watchlist",
+      "title": "Weekend Watchlist",
+      "subtitle": "3 marquee matchups · ATP Masters 1000 · NWSL · USL",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 55,
+      "triggeredAt": "2026-08-09T05:04:19.112Z",
+      "expiresAt": "2026-08-09T23:59:59.999Z",
+      "kind": "weekend_watchlist",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "weekend_watchlist",
+        "matchCount": 3,
+        "matches": [
+          {
+            "league": "ATP Masters 1000",
+            "sport": "tennis",
+            "away": "Merida",
+            "home": "Griekspoor",
+            "startTime": "2026-08-09T16:30:00.000Z"
+          },
+          {
+            "league": "NWSL",
+            "sport": "soccer",
+            "away": "Portland Thorns",
+            "home": "Boston Legacy",
+            "startTime": "2026-08-09T20:00:00.000Z"
+          },
+          {
+            "league": "USL",
+            "sport": "soccer",
+            "away": "Hartford Athletic",
+            "home": "Indy Eleven",
+            "startTime": "2026-08-09T21:00:00.000Z"
+          }
+        ],
+        "eventIds": [
+          "tennis-espn-181739",
+          "soccer-nwsl-20260809-2000-portland-thorns-at-boston-legacy",
+          "soccer-usl-20260809-2100-hartford-athletic-at-indy-eleven"
+        ],
+        "reason": "Weekend window: 3 top-priority event(s) across 2 sport(s)"
+      },
+      "sports": [
+        "tennis",
+        "soccer"
+      ]
     }
   ],
-  "tonightStory": null,
-  "todaysStories": [],
+  "tonightStory": {
+    "signalType": "multi_team_night",
+    "signalLabel": "YOUR TEAMS",
+    "headline": "Your Sports Night",
+    "body": "The Springboks, New England Revolution, and Orange County SC all play today across the Test Rugby, MLS, USL.",
+    "sourceEventId": "rugby-rugbytests-24ssq1",
+    "eventIds": [
+      "rugby-rugbytests-24ssq1",
+      "soccer-mls-20260808-2030-houston-dynamo-fc-at-new-england-revolution",
+      "soccer-usl-20260809-0200-tampa-bay-rowdies-at-orange-county-sc"
+    ],
+    "sourceCard": {
+      "id": "tonight_multi_team",
+      "kind": "multi_team_night",
+      "title": "Your Sports Night"
+    },
+    "sports": [
+      "rugby",
+      "soccer"
+    ],
+    "favoriteTeams": [
+      "Springboks",
+      "Blitzboks",
+      "New England Revolution",
+      "Orange County SC"
+    ]
+  },
+  "todaysStories": [
+    {
+      "signalType": "multi_team_night",
+      "signalLabel": "YOUR TEAMS",
+      "headline": "Your Sports Night",
+      "body": "The Springboks, New England Revolution, and Orange County SC all play today across the Test Rugby, MLS, USL.",
+      "sourceEventId": "rugby-rugbytests-24ssq1",
+      "eventIds": [
+        "rugby-rugbytests-24ssq1",
+        "soccer-mls-20260808-2030-houston-dynamo-fc-at-new-england-revolution",
+        "soccer-usl-20260809-0200-tampa-bay-rowdies-at-orange-county-sc"
+      ],
+      "sourceCard": {
+        "id": "tonight_multi_team",
+        "kind": "multi_team_night",
+        "title": "Your Sports Night"
+      },
+      "sports": [
+        "rugby",
+        "soccer"
+      ],
+      "favoriteTeams": [
+        "Springboks",
+        "Blitzboks",
+        "New England Revolution",
+        "Orange County SC"
+      ]
+    }
+  ],
   "monthSnapshot": {
     "currentMonth": {
       "monthLabel": "August 2026",
@@ -216,30 +467,30 @@
           "sport": "soccer",
           "displayName": "NWSL",
           "leagueKey": "nwsl",
-          "dateRangeLabel": "Aug 1–24",
+          "dateRangeLabel": "Aug 1–30",
           "startDate": "2026-08-01T00:00:00.000Z",
-          "endDate": "2026-08-24T00:00:00.000Z",
-          "eventCount": 35,
+          "endDate": "2026-08-30T00:45:00.000Z",
+          "eventCount": 41,
           "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
           "displayName": "USL",
           "leagueKey": "usl",
-          "dateRangeLabel": "Aug 1–23",
+          "dateRangeLabel": "Aug 1–30",
           "startDate": "2026-08-01T01:00:00.000Z",
-          "endDate": "2026-08-23T03:00:00.000Z",
-          "eventCount": 52,
+          "endDate": "2026-08-30T02:30:00.000Z",
+          "eventCount": 66,
           "seasonPhase": "Regular"
         },
         {
           "sport": "rugby",
           "displayName": "NPC",
           "leagueKey": "npc",
-          "dateRangeLabel": "Aug 1–23",
+          "dateRangeLabel": "Aug 1–30",
           "startDate": "2026-08-01T02:05:00.000Z",
-          "endDate": "2026-08-23T05:05:00.000Z",
-          "eventCount": 26,
+          "endDate": "2026-08-30T02:05:00.000Z",
+          "eventCount": 32,
           "seasonPhase": "Regular"
         },
         {
@@ -276,10 +527,10 @@
           "sport": "rugby",
           "displayName": "Currie Cup",
           "leagueKey": "curriecup",
-          "dateRangeLabel": "Aug 1–23",
+          "dateRangeLabel": "Aug 1–29",
           "startDate": "2026-08-01T13:00:00.000Z",
-          "endDate": "2026-08-23T13:00:00.000Z",
-          "eventCount": 15,
+          "endDate": "2026-08-29T13:00:00.000Z",
+          "eventCount": 18,
           "seasonPhase": "Regular"
         },
         {
@@ -296,30 +547,20 @@
           "sport": "soccer",
           "displayName": "MLS",
           "leagueKey": "mls",
-          "dateRangeLabel": "Aug 1–23",
+          "dateRangeLabel": "Aug 1–30",
           "startDate": "2026-08-01T23:30:00.000Z",
-          "endDate": "2026-08-23T23:00:00.000Z",
-          "eventCount": 60,
+          "endDate": "2026-08-30T23:00:00.000Z",
+          "eventCount": 77,
           "seasonPhase": "Regular"
         },
         {
           "sport": "cricket",
           "displayName": "Test Cricket",
           "leagueKey": "test",
-          "dateRangeLabel": "Aug 2–26",
+          "dateRangeLabel": "Aug 2–29",
           "startDate": "2026-08-02T14:00:00.000Z",
-          "endDate": "2026-08-26T00:00:00.000Z",
-          "eventCount": 38,
-          "seasonPhase": null
-        },
-        {
-          "sport": "tennis",
-          "displayName": "Canada",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "Aug 4–10",
-          "startDate": "2026-08-04T15:00:00.000Z",
-          "endDate": "2026-08-10T17:00:00.000Z",
-          "eventCount": 14,
+          "endDate": "2026-08-29T10:00:00.000Z",
+          "eventCount": 42,
           "seasonPhase": null
         },
         {
@@ -336,10 +577,10 @@
           "sport": "cricket",
           "displayName": "CPL",
           "leagueKey": "cpl",
-          "dateRangeLabel": "Aug 7–25",
+          "dateRangeLabel": "Aug 7–29",
           "startDate": "2026-08-07T23:00:00.000Z",
-          "endDate": "2026-08-25T23:00:00.000Z",
-          "eventCount": 16,
+          "endDate": "2026-08-29T23:00:00.000Z",
+          "eventCount": 20,
           "seasonPhase": null
         },
         {
@@ -356,10 +597,20 @@
           "sport": "rugby",
           "displayName": "Test Rugby",
           "leagueKey": "rugbytests",
-          "dateRangeLabel": "Aug 8–22",
+          "dateRangeLabel": "Aug 8–29",
           "startDate": "2026-08-08T10:05:00.000Z",
-          "endDate": "2026-08-22T15:10:00.000Z",
-          "eventCount": 4,
+          "endDate": "2026-08-29T19:00:00.000Z",
+          "eventCount": 6,
+          "seasonPhase": null
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Canada",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "Aug 8–10",
+          "startDate": "2026-08-08T16:35:00.000Z",
+          "endDate": "2026-08-10T04:00:00.000Z",
+          "eventCount": 10,
           "seasonPhase": null
         },
         {
@@ -376,10 +627,10 @@
           "sport": "soccer",
           "displayName": "La Liga",
           "leagueKey": "laliga",
-          "dateRangeLabel": "Aug 15–25",
+          "dateRangeLabel": "Aug 15–29",
           "startDate": "2026-08-15T17:30:00.000Z",
-          "endDate": "2026-08-25T19:00:00.000Z",
-          "eventCount": 18,
+          "endDate": "2026-08-29T19:30:00.000Z",
+          "eventCount": 25,
           "seasonPhase": null
         },
         {
@@ -416,10 +667,10 @@
           "sport": "soccer",
           "displayName": "Ligue 1",
           "leagueKey": "ligue1",
-          "dateRangeLabel": "Aug 21–23",
+          "dateRangeLabel": "Aug 21–29",
           "startDate": "2026-08-21T18:45:00.000Z",
-          "endDate": "2026-08-23T18:45:00.000Z",
-          "eventCount": 9,
+          "endDate": "2026-08-29T18:45:00.000Z",
+          "eventCount": 15,
           "seasonPhase": null
         },
         {
@@ -436,10 +687,10 @@
           "sport": "soccer",
           "displayName": "Serie A",
           "leagueKey": "seriea",
-          "dateRangeLabel": "Aug 22–24",
+          "dateRangeLabel": "Aug 22–29",
           "startDate": "2026-08-22T16:30:00.000Z",
-          "endDate": "2026-08-24T18:45:00.000Z",
-          "eventCount": 10,
+          "endDate": "2026-08-29T18:45:00.000Z",
+          "eventCount": 15,
           "seasonPhase": null
         },
         {
@@ -493,6 +744,16 @@
           "seasonPhase": null
         },
         {
+          "sport": "soccer",
+          "displayName": "Bundesliga",
+          "leagueKey": "bundesliga",
+          "dateRangeLabel": "Aug 28–29",
+          "startDate": "2026-08-28T18:30:00.000Z",
+          "endDate": "2026-08-29T16:30:00.000Z",
+          "eventCount": 7,
+          "seasonPhase": null
+        },
+        {
           "sport": "athletics",
           "displayName": "Sydney Marathon",
           "leagueKey": "marathon-majors",
@@ -523,10 +784,10 @@
           "sport": "tennis",
           "displayName": "US Open",
           "leagueKey": "grand-slam",
-          "dateRangeLabel": "Sep 1–3",
+          "dateRangeLabel": "Sep 1–7",
           "startDate": "2026-09-01T15:00:00.000Z",
-          "endDate": "2026-09-03T15:00:00.000Z",
-          "eventCount": 4,
+          "endDate": "2026-09-07T17:00:00.000Z",
+          "eventCount": 10,
           "seasonPhase": null
         },
         {
@@ -667,16 +928,6 @@
           "seasonPhase": null
         },
         {
-          "sport": "tennis",
-          "displayName": "Canada",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "Aug 4–9",
-          "startDate": "2026-08-04T15:00:00.000Z",
-          "endDate": "2026-08-09T17:00:00.000Z",
-          "eventCount": 12,
-          "seasonPhase": null
-        },
-        {
           "sport": "cricket",
           "displayName": "ODI Cricket",
           "leagueKey": "odi",
@@ -745,6 +996,16 @@
           "endDate": "2026-08-09T13:00:00.000Z",
           "eventCount": 4,
           "seasonPhase": "Regular"
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Canada",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "Aug 8–9",
+          "startDate": "2026-08-08T16:35:00.000Z",
+          "endDate": "2026-08-09T23:30:00.000Z",
+          "eventCount": 8,
+          "seasonPhase": null
         },
         {
           "sport": "soccer",

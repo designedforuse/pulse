@@ -28,4 +28,5 @@
 - [Currie Cup & test rugby](currie-cup-and-tests.md) — Currie Cup is hardcoded (no feed; playoffs TBD); tests use keyless ESPN league 289234; new leagues must join masterGuide pack arrays or they're hidden.
 - [Commonwealth Games sources](commonwealth-games.md) — keyless Pulselive sessions/details API for CWG athletics+swimming; details endpoint needs all 4 query params; wrap cards finals sessions only, RSA-first.
 - [NZ NPC rugby](npc-rugby.md) — keyless ESPN league 270563 (still labeled "Mitre 10 Cup") for fixtures+scores; 5 unions lack ESPN logos (initials fallback); scoreboard team.logo field unreliable.
+- [Tennis ESPN name matching](tennis-espn-name-matching.md) — ESPN uses sponsor names ("National Bank Open"); alias-first matching + generic-word stopwords, else fixtures bind to wrong tournament.
 - [MLR schedule maintenance](mlr-schedule-maintenance.md) — hardcoded MLR fixtures are a preseason projection that drifts; rebuild from the Pulselive feed (UTC→ET, Anthem RC name map, TBD final); also sync seasonPhases.ts.
