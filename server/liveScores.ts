@@ -1969,8 +1969,10 @@ async function fetchTennisScores(
           if (!c1 || !c2) continue;
 
           const state = comp.status?.type?.state;
+          const matchCompleted = comp.status?.type?.completed === true;
           const isLive = state === "in";
           const isPost = state === "post";
+          const isSuspended = isPost && !matchCompleted;
           if (!isLive && !isPost) continue;
 
           const ls1: any[] = c1.linescores || [];
@@ -1995,11 +1997,11 @@ async function fetchTennisScores(
 
             const p1Won = ls1[i]?.winner === true;
             const p2Won = ls2[i]?.winner === true;
-            const isCompleted =
+            const setCompleted =
               (i < maxSets - 1) ||
-              isPost ||
+              matchCompleted ||
               (p1Won || p2Won);
-            if (isCompleted) {
+            if (setCompleted) {
               if (p1Won || p2Won) {
                 setEntry.winner = p1Won ? 1 : 2;
               } else if (s1 !== s2) {
@@ -2046,7 +2048,7 @@ async function fetchTennisScores(
           }
 
           let tennisWinner: 1 | 2 | undefined;
-          if (isPost) {
+          if (matchCompleted) {
             if (c1.winner) tennisWinner = 1;
             else if (c2.winner) tennisWinner = 2;
           }
@@ -2054,8 +2056,12 @@ async function fetchTennisScores(
           scores[localId] = {
             awayScore: p1SetsWon,
             homeScore: p2SetsWon,
-            period: isLive ? `Set ${comp.status?.period || tennisSetScores.length}` : "Final",
-            status: isLive ? "live" : "final",
+            period: isLive
+              ? `Set ${comp.status?.period || tennisSetScores.length}`
+              : isSuspended
+                ? "Suspended"
+                : "Final",
+            status: isLive ? "live" : isSuspended ? "suspended" : "final",
             tennisSetScores,
             tennisGameScore,
             tennisServer,

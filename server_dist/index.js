@@ -1695,7 +1695,9 @@ var ESPN_RUGBY_LEAGUE_PATHS = {
   "MLR": "289262",
   // International tests — same keyless ESPN feed used for the fixtures
   // (scripts/updateRugby.ts). Covers live + final scores for tier-1 tests.
-  "Test Rugby": "289234"
+  "Test Rugby": "289234",
+  // NZ provincial championship — ESPN still labels 270563 "Mitre 10 Cup".
+  "NPC": "270563"
 };
 var WR_API_BASE = "https://api.wr-rims-prod.pulselive.com/rugby/v3";
 var PULSELIVE_RUGBY_EVENT_IDS = {
@@ -2597,8 +2599,10 @@ async function fetchTennisScores(events) {
           const c2 = comp.competitors?.[1];
           if (!c1 || !c2) continue;
           const state = comp.status?.type?.state;
+          const matchCompleted = comp.status?.type?.completed === true;
           const isLive = state === "in";
           const isPost = state === "post";
+          const isSuspended = isPost && !matchCompleted;
           if (!isLive && !isPost) continue;
           const ls1 = c1.linescores || [];
           const ls2 = c2.linescores || [];
@@ -2618,8 +2622,8 @@ async function fetchTennisScores(events) {
             }
             const p1Won = ls1[i]?.winner === true;
             const p2Won = ls2[i]?.winner === true;
-            const isCompleted = i < maxSets - 1 || isPost || (p1Won || p2Won);
-            if (isCompleted) {
+            const setCompleted = i < maxSets - 1 || matchCompleted || (p1Won || p2Won);
+            if (setCompleted) {
               if (p1Won || p2Won) {
                 setEntry.winner = p1Won ? 1 : 2;
               } else if (s1 !== s2) {
@@ -2661,15 +2665,15 @@ async function fetchTennisScores(events) {
             }
           }
           let tennisWinner;
-          if (isPost) {
+          if (matchCompleted) {
             if (c1.winner) tennisWinner = 1;
             else if (c2.winner) tennisWinner = 2;
           }
           scores[localId] = {
             awayScore: p1SetsWon,
             homeScore: p2SetsWon,
-            period: isLive ? `Set ${comp.status?.period || tennisSetScores.length}` : "Final",
-            status: isLive ? "live" : "final",
+            period: isLive ? `Set ${comp.status?.period || tennisSetScores.length}` : isSuspended ? "Suspended" : "Final",
+            status: isLive ? "live" : isSuspended ? "suspended" : "final",
             tennisSetScores,
             tennisGameScore,
             tennisServer,
@@ -3444,9 +3448,9 @@ function loadCache() {
   }
   return {};
 }
-function saveCache(cache7) {
+function saveCache(cache8) {
   try {
-    fs4.writeFileSync(CACHE_PATH, JSON.stringify(cache7, null, 2));
+    fs4.writeFileSync(CACHE_PATH, JSON.stringify(cache8, null, 2));
   } catch (err) {
     console.error("[daily-wrap-video] Failed to save cache:", err.message);
   }
@@ -3600,11 +3604,11 @@ function buildHighlightQuery(entry) {
   return `${subject} ${sport} highlights ${monthYear}`;
 }
 async function enrichWithHighlights(entries) {
-  const cache7 = loadCache();
+  const cache8 = loadCache();
   const now = Date.now();
   const toSearch = [];
   for (const entry of entries) {
-    const cached = cache7[entry.eventId];
+    const cached = cache8[entry.eventId];
     if (cached) {
       const ttl = cached.video ? CACHE_TTL_MS7 : NOTFOUND_TTL_MS;
       if (now - new Date(cached.fetchedAt).getTime() < ttl) {
@@ -3625,12 +3629,12 @@ async function enrichWithHighlights(entries) {
     const stamp = (/* @__PURE__ */ new Date()).toISOString();
     for (const { entry, video } of found) {
       entry.video = video || void 0;
-      cache7[entry.eventId] = {
+      cache8[entry.eventId] = {
         video: video || null,
         fetchedAt: stamp
       };
     }
-    saveCache(cache7);
+    saveCache(cache8);
   }
   return entries;
 }
@@ -3729,6 +3733,107 @@ async function fetchDiamondLeagueSummary(meeting, season) {
     data = null;
   }
   cache6.set(key, { ts: Date.now(), data });
+  return data;
+}
+
+// scripts/updateCommonwealthGames.ts
+var CWG_API_BASE = "https://api.commonwealthsport.com/cwg-schedule/v1/cwg/competitions/3bb0d78e-d439-472a-a5bf-09b4e888aa04";
+var CWG_GAMES_START = "2026-07-23";
+var CWG_GAMES_END = "2026-08-02";
+
+// server/commonwealthGamesResults.ts
+var CACHE_TTL_MS9 = 10 * 60 * 1e3;
+var cache7 = /* @__PURE__ */ new Map();
+var DISCIPLINE_LABELS = {
+  ath: "Athletics",
+  swm: "Swimming"
+};
+var MAJOR_RECORDS = /* @__PURE__ */ new Set(["WR", "GR", "CR", "AR", "NR", "AF", "OC", "AS", "EU", "AM"]);
+function isMajorRecord(record) {
+  return (record || "").toUpperCase().split(",").some((t) => MAJOR_RECORDS.has(t.trim().replace(/=/g, "")));
+}
+function titleCaseName(word) {
+  return word.split(/([\s\-'])/).map((p) => /^[\s\-']$/.test(p) ? p : p.charAt(0).toUpperCase() + p.slice(1).toLowerCase()).join("");
+}
+function formatDiscipline(unitDescription) {
+  return (unitDescription || "").replace(/\s*Final$/i, "").trim().toLowerCase();
+}
+async function cwgFetch(url) {
+  const res = await fetch(url, {
+    headers: { "User-Agent": "Mozilla/5.0", Accept: "application/json" }
+  });
+  if (!res.ok) throw new Error(`CWG API ${res.status}: ${url}`);
+  return res.json();
+}
+async function buildSummary(disc, sessionId) {
+  const discUpper = disc.toUpperCase();
+  const sessionsJson = await cwgFetch(
+    `${CWG_API_BASE}/sessions?disciplineCodes=${discUpper}&startDate=${CWG_GAMES_START}&endDate=${CWG_GAMES_END}`
+  );
+  const session = (sessionsJson.sessions || []).find(
+    (s) => s.id === sessionId
+  );
+  if (!session) return null;
+  const finals = (session.sessionEventPhases || []).filter(
+    (p) => p.phaseCode === "FNL-" && p.status === "COMPLETE" && p.eventCode
+  );
+  if (finals.length === 0) return null;
+  const saResults = [];
+  const notable = [];
+  for (const phase of finals) {
+    let details;
+    try {
+      const q = `?eventCode=${encodeURIComponent(phase.eventCode)}&phaseCode=${encodeURIComponent(phase.phaseCode)}&genderCode=${phase.genderCode || ""}&disciplineCode=${discUpper}`;
+      details = await cwgFetch(`${CWG_API_BASE}/session/${sessionId}/details${q}`);
+    } catch {
+      continue;
+    }
+    for (const pr of details?.phaseResults || []) {
+      const discipline = formatDiscipline(pr.unitDescription || pr.description || phase.phaseDescription || "");
+      for (const ar of pr?.inline?.athleteResult || []) {
+        const rank = parseInt(ar?.rank, 10);
+        if (!Number.isFinite(rank)) continue;
+        const athletes = ar?.compositionAthletes || [];
+        const isTeam = athletes.length !== 1;
+        const name = isTeam ? ar?.organisationName || ar?.organisationCode || "" : `${titleCaseName(athletes[0]?.givenName || "")} ${titleCaseName(athletes[0]?.familyName || "")}`.trim();
+        if (!name) continue;
+        const record = (ar?.indicators || []).map((i) => i?.recordType).filter(Boolean).join(",");
+        const result = {
+          athlete: name,
+          nation: ar?.organisationCode || "",
+          discipline,
+          rank,
+          performance: ar?.result || "",
+          record
+        };
+        if (result.nation === "RSA") saResults.push(result);
+        else if (rank === 1 || isMajorRecord(record)) notable.push(result);
+      }
+    }
+  }
+  saResults.sort((a, b) => a.rank - b.rank || (b.record ? 1 : 0) - (a.record ? 1 : 0));
+  notable.sort(
+    (a, b) => (isMajorRecord(b.record) ? 1 : 0) - (isMajorRecord(a.record) ? 1 : 0) || a.rank - b.rank
+  );
+  return {
+    sessionId,
+    discipline: DISCIPLINE_LABELS[disc.toLowerCase()] || disc,
+    saResults,
+    notable
+  };
+}
+async function fetchCwgSessionSummary(disc, sessionId) {
+  const key = `${disc}/${sessionId}`;
+  const hit = cache7.get(key);
+  if (hit && Date.now() - hit.ts < CACHE_TTL_MS9) return hit.data;
+  let data = null;
+  try {
+    data = await buildSummary(disc, sessionId);
+  } catch (err) {
+    console.error(`[CWG] session summary failed for ${key}:`, err.message);
+    data = null;
+  }
+  cache7.set(key, { ts: Date.now(), data });
   return data;
 }
 
@@ -4379,7 +4484,7 @@ function expandRecordFlag(flag2) {
   }
   return null;
 }
-function formatDiscipline(name) {
+function formatDiscipline2(name) {
   let gender = "";
   let d = name;
   if (/\bMen\b/.test(name)) {
@@ -4393,7 +4498,7 @@ function formatDiscipline(name) {
   return gender ? `${gender} ${d}` : d;
 }
 function spokenDiscipline(name) {
-  return formatDiscipline(name).replace(/\b(\d)\s*x\s*(\d[\d,]*)m\b/gi, "$1 by $2 metres").replace(/\b(\d[\d,]*)m\b/g, "$1 metres");
+  return formatDiscipline2(name).replace(/\b(\d)\s*x\s*(\d[\d,]*)m\b/gi, "$1 by $2 metres").replace(/\b(\d[\d,]*)m\b/g, "$1 metres");
 }
 function placeWord(rank) {
   if (rank === 1) return "wins";
@@ -4433,7 +4538,7 @@ async function diamondLeagueEditorial(event) {
   const city = key.meeting.charAt(0).toUpperCase() + key.meeting.slice(1);
   const sa = summary.saResults[0];
   if (sa) {
-    const bits = [`Diamond League`, city, formatDiscipline(sa.discipline)];
+    const bits = [`Diamond League`, city, formatDiscipline2(sa.discipline)];
     if (sa.performance) bits.push(sa.performance);
     const rec = expandRecordFlag(sa.recordFlag);
     if (rec) bits.push(rec);
@@ -4450,7 +4555,7 @@ async function diamondLeagueEditorial(event) {
   }
   const n = summary.notable[0];
   if (n) {
-    const bits = [`Diamond League`, city, formatDiscipline(n.discipline)];
+    const bits = [`Diamond League`, city, formatDiscipline2(n.discipline)];
     if (n.performance) bits.push(n.performance);
     return {
       editorial: notableHeadline(n),
@@ -4465,13 +4570,116 @@ async function diamondLeagueEditorial(event) {
 }
 function toAthleticsResult(r) {
   return {
-    discipline: formatDiscipline(r.discipline),
+    discipline: formatDiscipline2(r.discipline),
     athlete: r.athlete,
     nation: r.nation,
     rank: r.rank,
     performance: r.performance,
     record: expandRecordFlag(r.recordFlag) || void 0
   };
+}
+var CWG_PRIORITY = 70;
+function isCommonwealthGames(event) {
+  return event?.leagueKey === "commonwealth-games" || event?.league === "Commonwealth Games";
+}
+function cwgSessionKey(event) {
+  const m = /^athletics-cwg-(ath|swm)-(.+)$/.exec(event?.id || "");
+  if (!m) return null;
+  return { disc: m[1], sessionId: m[2] };
+}
+function isCwgFinalsSession(event) {
+  return event?.roundLabel === "Finals" || /Finals/.test(event?.sessionTitle || "");
+}
+var CWG_RECORD_NAMES = {
+  WR: "world record",
+  GR: "Games record",
+  CR: "Commonwealth record",
+  AR: "area record",
+  AF: "African record",
+  OC: "Oceanian record",
+  AS: "Asian record",
+  EU: "European record",
+  AM: "Americas record",
+  NR: "national record"
+};
+function cwgRecordName(record) {
+  for (const token of (record || "").toUpperCase().replace(/=/g, "").split(",")) {
+    const name = CWG_RECORD_NAMES[token.trim()];
+    if (name) return name;
+  }
+  return null;
+}
+function cwgSpokenDiscipline(d) {
+  return (d || "").replace(/\b(\d)\s*x\s*(\d[\d,]*)m\b/gi, "$1 by $2 metres").replace(/\b(\d[\d,]*)m\b/g, "$1 metres");
+}
+function cwgMedalWord(rank) {
+  if (rank === 1) return "gold";
+  if (rank === 2) return "silver";
+  if (rank === 3) return "bronze";
+  return null;
+}
+function cwgSaHeadline(r) {
+  const disc = cwgSpokenDiscipline(r.discipline);
+  const medal = cwgMedalWord(r.rank);
+  if (medal === "gold") return `\u{1F1FF}\u{1F1E6} ${r.athlete} wins Commonwealth gold in the ${disc}`;
+  if (medal) return `\u{1F1FF}\u{1F1E6} ${r.athlete} takes Commonwealth ${medal} in the ${disc}`;
+  return `\u{1F1FF}\u{1F1E6} ${r.athlete} ${placeWord(r.rank)} the ${disc}`;
+}
+function cwgNotableHeadline(r) {
+  const disc = cwgSpokenDiscipline(r.discipline);
+  const nat = r.nation ? ` (${r.nation})` : "";
+  const rec = cwgRecordName(r.record);
+  if (rec === "world record") return `\u{1F30D} ${r.athlete}${nat} breaks the world record in the ${disc}`;
+  if (rec) return `${r.athlete}${nat} wins the ${disc} with a ${rec}`;
+  return `${r.athlete}${nat} wins Commonwealth gold in the ${disc}`;
+}
+async function commonwealthGamesEditorial(event) {
+  const key = cwgSessionKey(event);
+  if (!key) return null;
+  let summary;
+  try {
+    summary = await fetchCwgSessionSummary(key.disc, key.sessionId);
+  } catch {
+    return null;
+  }
+  if (!summary) return null;
+  const toResult = (r) => ({
+    discipline: r.discipline,
+    athlete: r.athlete,
+    nation: r.nation,
+    rank: r.rank,
+    performance: r.performance,
+    record: cwgRecordName(r.record) || void 0
+  });
+  const sa = summary.saResults[0];
+  if (sa) {
+    const bits = [`Glasgow 2026 ${summary.discipline}`, sa.discipline];
+    if (sa.performance) bits.push(sa.performance);
+    const rec = cwgRecordName(sa.record);
+    if (rec) bits.push(rec);
+    const moreSa = summary.saResults.length - 1;
+    if (moreSa > 0) bits.push(`+${moreSa} more SA result${moreSa > 1 ? "s" : ""}`);
+    return {
+      editorial: cwgSaHeadline(sa),
+      detail: bits.join(" \xB7 "),
+      winner: sa.rank === 1 ? sa.athlete : void 0,
+      athleticsResults: [toResult(sa)],
+      athleticsMeet: { city: "Glasgow", scope: "sa" }
+    };
+  }
+  const n = summary.notable[0];
+  if (n) {
+    const bits = [`Glasgow 2026 ${summary.discipline}`, n.discipline];
+    if (n.performance) bits.push(n.performance);
+    return {
+      editorial: cwgNotableHeadline(n),
+      detail: bits.join(" \xB7 "),
+      winner: n.rank === 1 ? n.athlete : void 0,
+      athleticsResults: [toResult(n)],
+      athleticsMeet: { city: "Glasgow", scope: "top" }
+    };
+  }
+  return null;
 }
 function golfEditorial(event, score) {
   if (!score.golfLeader) return null;
@@ -4836,6 +5044,25 @@ async function fetchDailyWrap(tz) {
             athleticsResults: de.athleticsResults,
             athleticsMeet: de.athleticsMeet,
             priorityScore: DIAMOND_LEAGUE_PRIORITY,
+            startTimeLocal: event.startTimeLocal
+          });
+        }
+      } else if (isCommonwealthGames(event) && isCwgFinalsSession(event) && hasConcluded(event, nowMs)) {
+        const ce = await commonwealthGamesEditorial(event);
+        if (ce) {
+          fallbackIds.add(event.id);
+          results.push({
+            eventId: event.id,
+            sport: event.sport,
+            league: event.league,
+            homeTeam: event.homeTeam,
+            awayTeam: event.awayTeam,
+            editorial: ce.editorial || "",
+            detail: ce.detail || "",
+            winner: ce.winner,
+            athleticsResults: ce.athleticsResults,
+            athleticsMeet: ce.athleticsMeet,
+            priorityScore: CWG_PRIORITY,
             startTimeLocal: event.startTimeLocal
           });
         }
@@ -5409,8 +5636,8 @@ async function registerRoutes(app2) {
     let cachedLeagueId = null;
     try {
       const raw = fs7.readFileSync(LEAGUE_CACHE_PATH, "utf-8");
-      const cache7 = JSON.parse(raw);
-      cachedLeagueId = cache7.echlLeagueId || null;
+      const cache8 = JSON.parse(raw);
+      cachedLeagueId = cache8.echlLeagueId || null;
     } catch {
     }
     let leagueId = cachedLeagueId || 59;
@@ -5488,10 +5715,10 @@ async function registerRoutes(app2) {
     }
     if (working) {
       try {
-        const cache7 = JSON.parse(fs7.readFileSync(LEAGUE_CACHE_PATH, "utf-8"));
-        cache7.echlCurrentSeason = working.season;
-        cache7.lastResolved = (/* @__PURE__ */ new Date()).toISOString();
-        fs7.writeFileSync(LEAGUE_CACHE_PATH, JSON.stringify(cache7, null, 2));
+        const cache8 = JSON.parse(fs7.readFileSync(LEAGUE_CACHE_PATH, "utf-8"));
+        cache8.echlCurrentSeason = working.season;
+        cache8.lastResolved = (/* @__PURE__ */ new Date()).toISOString();
+        fs7.writeFileSync(LEAGUE_CACHE_PATH, JSON.stringify(cache8, null, 2));
         conclusion += ` (Updated cache to season ${working.season}.)`;
       } catch {
       }
@@ -5641,9 +5868,9 @@ async function registerRoutes(app2) {
       if (!fs7.existsSync(MOVEMENT_CACHE_PATH)) {
         return res.json({ history: {}, movements: [], lastUpdated: null, summary: { playersTracked: 0, recentMovements: 0 } });
       }
-      const cache7 = JSON.parse(fs7.readFileSync(MOVEMENT_CACHE_PATH, "utf-8"));
-      const history = cache7.history || {};
-      const movements = cache7.movements || [];
+      const cache8 = JSON.parse(fs7.readFileSync(MOVEMENT_CACHE_PATH, "utf-8"));
+      const history = cache8.history || {};
+      const movements = cache8.movements || [];
       const sampleTeams = ["ANA", "BOS"];
       const sampleHistory = {};
       for (const team of sampleTeams) {
@@ -5657,14 +5884,14 @@ async function registerRoutes(app2) {
         }
       }
       return res.json({
-        lastUpdated: cache7.lastUpdated,
-        lastRunMeta: cache7.lastRunMeta || null,
+        lastUpdated: cache8.lastUpdated,
+        lastRunMeta: cache8.lastRunMeta || null,
         summary: {
           playersTracked: Object.keys(history).length,
           recentMovements: movements.length,
-          observedTeamsLastRun: cache7.lastRunMeta?.observedTeams || [],
-          skippedTeamsLastRun: cache7.lastRunMeta?.skippedTeams || [],
-          movementsDetectedLastRun: cache7.lastRunMeta?.movementsDetectedThisRun || []
+          observedTeamsLastRun: cache8.lastRunMeta?.observedTeams || [],
+          skippedTeamsLastRun: cache8.lastRunMeta?.skippedTeams || [],
+          movementsDetectedLastRun: cache8.lastRunMeta?.movementsDetectedThisRun || []
         },
         movements,
         sampleHistoryFor: sampleHistory

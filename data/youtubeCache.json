@@ -2113,20 +2113,20 @@
   },
   "league_moment:big stage sports august 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=DXl3FCK6KUw",
-      "thumbnailUrl": "https://img.youtube.com/vi/DXl3FCK6KUw/hqdefault.jpg",
-      "durationSeconds": 1529,
-      "title": "2026 Tour de France Femmes, Stage 8 | EXTENDED HIGHLIGHTS | 8/8/2026 | Cycling on NBC Sports",
+      "url": "https://www.youtube.com/watch?v=w59robQTxuo",
+      "thumbnailUrl": "https://img.youtube.com/vi/w59robQTxuo/hqdefault.jpg",
+      "durationSeconds": 2643,
+      "title": "2026 Vuelta a España Stage 9 | EXTENDED HIGHLIGHTS | 8/30/2026 | Cycling on NBC Sports",
       "source": "youtube",
       "channel": "NBC Sports",
-      "publishedAt": "30 minutes ago"
+      "publishedAt": "6 hours ago"
     },
-    "fetchedAt": "2026-08-09T05:01:59.497Z",
+    "fetchedAt": "2026-08-31T03:26:53.333Z",
     "query": "Big Stage sports August 2026",
     "debug": {
       "searchQuery": "Big Stage sports August 2026",
-      "selectedVideoTitle": "2026 Tour de France Femmes, Stage 8 | EXTENDED HIGHLIGHTS | 8/8/2026 | Cycling on NBC Sports",
-      "selectedVideoPublishedAt": "30 minutes ago",
+      "selectedVideoTitle": "2026 Vuelta a España Stage 9 | EXTENDED HIGHLIGHTS | 8/30/2026 | Cycling on NBC Sports",
+      "selectedVideoPublishedAt": "6 hours ago",
       "selectedVideoChannel": "NBC Sports",
       "rejectedForAgeCount": 0
     }
@@ -2196,6 +2196,86 @@
       "selectedVideoTitle": null,
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:getafe vs osasuna la liga preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=idTp9tKTVpk",
+      "thumbnailUrl": "https://img.youtube.com/vi/idTp9tKTVpk/hqdefault.jpg",
+      "durationSeconds": 412,
+      "title": "BARCELONA PESTA GOL?! Jadwal Liga Spanyol Malam Ini & Prediksi Skor | Update Klasemen La Liga 2026",
+      "source": "youtube",
+      "channel": "Tampan Menawan",
+      "publishedAt": "6 minutes ago"
+    },
+    "fetchedAt": "2026-08-31T03:26:52.584Z",
+    "query": "Getafe vs Osasuna La Liga preview",
+    "debug": {
+      "searchQuery": "Getafe vs Osasuna La Liga preview",
+      "selectedVideoTitle": "BARCELONA PESTA GOL?! Jadwal Liga Spanyol Malam Ini & Prediksi Skor | Update Klasemen La Liga 2026",
+      "selectedVideoPublishedAt": "6 minutes ago",
+      "selectedVideoChannel": "Tampan Menawan",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "grand_tour:vuelta a españa cycling highlights august 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=w59robQTxuo",
+      "thumbnailUrl": "https://img.youtube.com/vi/w59robQTxuo/hqdefault.jpg",
+      "durationSeconds": 2643,
+      "title": "2026 Vuelta a España Stage 9 | EXTENDED HIGHLIGHTS | 8/30/2026 | Cycling on NBC Sports",
+      "source": "youtube",
+      "channel": "NBC Sports",
+      "publishedAt": "6 hours ago"
+    },
+    "fetchedAt": "2026-08-31T03:26:52.905Z",
+    "query": "Vuelta a España cycling highlights August 2026",
+    "debug": {
+      "searchQuery": "Vuelta a España cycling highlights August 2026",
+      "selectedVideoTitle": "2026 Vuelta a España Stage 9 | EXTENDED HIGHLIGHTS | 8/30/2026 | Cycling on NBC Sports",
+      "selectedVideoPublishedAt": "6 hours ago",
+      "selectedVideoChannel": "NBC Sports",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "diamond_league:diamond league final — brussels diamond league 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=8LVgZiS7QIk",
+      "thumbnailUrl": "https://img.youtube.com/vi/8LVgZiS7QIk/hqdefault.jpg",
+      "durationSeconds": 480,
+      "title": "Masai Russell⁩ Takes Down 100mH WORLD RECORD in 12.09 at 2026 Zurich Diamond League",
+      "source": "youtube",
+      "channel": "FloTrack",
+      "publishedAt": "5 hours ago"
+    },
+    "fetchedAt": "2026-08-31T03:26:53.691Z",
+    "query": "Diamond League Final — Brussels Diamond League 2026",
+    "debug": {
+      "searchQuery": "Diamond League Final — Brussels Diamond League 2026",
+      "selectedVideoTitle": "Masai Russell⁩ Takes Down 100mH WORLD RECORD in 12.09 at 2026 Zurich Diamond League",
+      "selectedVideoPublishedAt": "5 hours ago",
+      "selectedVideoChannel": "FloTrack",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:rivalry weekend sports august 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=XXPvVLBUR2A",
+      "thumbnailUrl": "https://img.youtube.com/vi/XXPvVLBUR2A/hqdefault.jpg",
+      "durationSeconds": 850,
+      "title": "What Goes On Tour: Episode 25 | Springboks Win In Cape Town | Jeff, Rudy & Matt Wrap 🇳🇿💭🇿🇦",
+      "source": "youtube",
+      "channel": "SuperSport",
+      "publishedAt": "21 hours ago"
+    },
+    "fetchedAt": "2026-08-31T03:29:44.649Z",
+    "query": "Rivalry Weekend sports August 2026",
+    "debug": {
+      "searchQuery": "Rivalry Weekend sports August 2026",
+      "selectedVideoTitle": "What Goes On Tour: Episode 25 | Springboks Win In Cape Town | Jeff, Rudy & Matt Wrap 🇳🇿💭🇿🇦",
+      "selectedVideoPublishedAt": "21 hours ago",
+      "selectedVideoChannel": "SuperSport",
       "rejectedForAgeCount": 0
     }
   }
