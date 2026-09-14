@@ -1204,5 +1204,33 @@
       "channel": "Beyond The Unknown"
     },
     "fetchedAt": "2026-08-31T03:29:17.164Z"
+  },
+  "soccer-cafcl-20260911-1400-rangers-international-at-as-sobemap": {
+    "video": null,
+    "fetchedAt": "2026-09-11T16:20:09.812Z"
+  },
+  "cricket-cpl-ysp3xo": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=JZbzMULarbY",
+      "thumbnailUrl": "https://i.ytimg.com/vi/JZbzMULarbY/hqdefault.jpg",
+      "durationSeconds": 526,
+      "title": "Highlights | Trinbago Knight Riders Women vs Jamaica Empress Women | WCPL26",
+      "channel": "CPL T20"
+    },
+    "fetchedAt": "2026-09-11T16:20:09.812Z"
+  },
+  "cricket-test-yezlgx-day3": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=5Gdc-uYWOZ8",
+      "thumbnailUrl": "https://i.ytimg.com/vi/5Gdc-uYWOZ8/hqdefault.jpg",
+      "durationSeconds": 626,
+      "title": "Pakistan u19 Vs England u19 one off test match 2026",
+      "channel": "cricket huddle360"
+    },
+    "fetchedAt": "2026-09-11T16:20:09.812Z"
+  },
+  "rugby-npc-awn6fv": {
+    "video": null,
+    "fetchedAt": "2026-09-11T16:20:09.812Z"
   }
 }

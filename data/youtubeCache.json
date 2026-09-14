@@ -2278,5 +2278,129 @@
       "selectedVideoChannel": "SuperSport",
       "rejectedForAgeCount": 0
     }
+  },
+  "clinch_watch:new zealand clinch playoff berth september 2026": {
+    "video": null,
+    "fetchedAt": "2026-09-11T16:21:26.067Z",
+    "query": "New Zealand clinch playoff berth September 2026",
+    "debug": {
+      "searchQuery": "New Zealand clinch playoff berth September 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:freedom cup sports september 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=pHmqxF7MSWs",
+      "thumbnailUrl": "https://img.youtube.com/vi/pHmqxF7MSWs/hqdefault.jpg",
+      "durationSeconds": 6080,
+      "title": "돈을 받고 CEO와 결혼 계약을 맺는다! 하지만 CEO는 그녀에게 반해 아낌없이 사랑한다!",
+      "source": "youtube",
+      "channel": "糖金劇場SWEETFILM",
+      "publishedAt": "21 minutes ago"
+    },
+    "fetchedAt": "2026-09-11T16:21:26.472Z",
+    "query": "Freedom Cup sports September 2026",
+    "debug": {
+      "searchQuery": "Freedom Cup sports September 2026",
+      "selectedVideoTitle": "돈을 받고 CEO와 결혼 계약을 맺는다! 하지만 CEO는 그녀에게 반해 아낌없이 사랑한다!",
+      "selectedVideoPublishedAt": "21 minutes ago",
+      "selectedVideoChannel": "糖金劇場SWEETFILM",
+      "rejectedForAgeCount": 1
+    }
+  },
+  "clinch_watch:khachanov clinch playoff berth september 2026": {
+    "video": null,
+    "fetchedAt": "2026-09-11T16:21:26.713Z",
+    "query": "Khachanov clinch playoff berth September 2026",
+    "debug": {
+      "searchQuery": "Khachanov clinch playoff berth September 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:spanish grand prix sports september 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=UkpPYktKo54",
+      "thumbnailUrl": "https://img.youtube.com/vi/UkpPYktKo54/hqdefault.jpg",
+      "durationSeconds": 857,
+      "title": "Drivers Look Ahead to a Weekend at a New Circuit! | 2026 Spanish Grand Prix",
+      "source": "youtube",
+      "channel": "FORMULA 1",
+      "publishedAt": "21h ago"
+    },
+    "fetchedAt": "2026-09-11T16:21:27.178Z",
+    "query": "Spanish Grand Prix sports September 2026",
+    "debug": {
+      "searchQuery": "Spanish Grand Prix sports September 2026",
+      "selectedVideoTitle": "Drivers Look Ahead to a Weekend at a New Circuit! | 2026 Spanish Grand Prix",
+      "selectedVideoPublishedAt": "21h ago",
+      "selectedVideoChannel": "FORMULA 1",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:valencia vs sevilla la liga preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=UvgtUmGK5uc",
+      "thumbnailUrl": "https://img.youtube.com/vi/UvgtUmGK5uc/hqdefault.jpg",
+      "durationSeconds": 1410,
+      "title": "My La Liga Gameweek 5 Preview and Predictions!",
+      "source": "youtube",
+      "channel": "Esso 99",
+      "publishedAt": "8 hours ago"
+    },
+    "fetchedAt": "2026-09-11T16:21:27.674Z",
+    "query": "Valencia vs Sevilla La Liga preview",
+    "debug": {
+      "searchQuery": "Valencia vs Sevilla La Liga preview",
+      "selectedVideoTitle": "My La Liga Gameweek 5 Preview and Predictions!",
+      "selectedVideoPublishedAt": "8 hours ago",
+      "selectedVideoChannel": "Esso 99",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "rally_weekend:rally chile wrc rally highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=1haPmz-MWB8",
+      "thumbnailUrl": "https://img.youtube.com/vi/1haPmz-MWB8/hqdefault.jpg",
+      "durationSeconds": 490,
+      "title": "🇨🇱 WRC RALLY CHILE BIOBÍO 2026 | SHAKEDOWN | HIGHLIGHTS",
+      "source": "youtube",
+      "channel": "WRC Rally",
+      "publishedAt": "5 hours ago"
+    },
+    "fetchedAt": "2026-09-11T16:21:28.813Z",
+    "query": "Rally Chile WRC rally highlights",
+    "debug": {
+      "searchQuery": "Rally Chile WRC rally highlights",
+      "selectedVideoTitle": "🇨🇱 WRC RALLY CHILE BIOBÍO 2026 | SHAKEDOWN | HIGHLIGHTS",
+      "selectedVideoPublishedAt": "5 hours ago",
+      "selectedVideoChannel": "WRC Rally",
+      "rejectedForAgeCount": 1
+    }
+  },
+  "grand_tour:vuelta a españa cycling highlights september 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=u-W7t7uGKE8",
+      "thumbnailUrl": "https://img.youtube.com/vi/u-W7t7uGKE8/hqdefault.jpg",
+      "durationSeconds": 84,
+      "title": "Santiago Buitrago Cracks In Final Meters Of Vuelta a España 2026 Stage 19",
+      "source": "youtube",
+      "channel": "FloBikes",
+      "publishedAt": "18 minutes ago"
+    },
+    "fetchedAt": "2026-09-11T16:21:29.734Z",
+    "query": "Vuelta a España cycling highlights September 2026",
+    "debug": {
+      "searchQuery": "Vuelta a España cycling highlights September 2026",
+      "selectedVideoTitle": "Santiago Buitrago Cracks In Final Meters Of Vuelta a España 2026 Stage 19",
+      "selectedVideoPublishedAt": "18 minutes ago",
+      "selectedVideoChannel": "FloBikes",
+      "rejectedForAgeCount": 0
+    }
   }
 }
