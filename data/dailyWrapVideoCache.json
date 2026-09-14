@@ -1232,5 +1232,79 @@
   "rugby-npc-awn6fv": {
     "video": null,
     "fetchedAt": "2026-09-11T16:20:09.812Z"
+  },
+  "soccer-seriea-20260914-1630-parma-at-como": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=_k7qHJpYiUQ",
+      "thumbnailUrl": "https://i.ytimg.com/vi/_k7qHJpYiUQ/hqdefault.jpg",
+      "durationSeconds": 563,
+      "title": "Como vs. Parma: Extended Highlights | Serie A | CBS Sports Golazo",
+      "channel": "CBS Sports Golazo"
+    },
+    "fetchedAt": "2026-09-14T21:14:32.446Z"
+  },
+  "soccer-seriea-20260914-1630-as-roma-at-torino": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=GnJ1l5fG7Jc",
+      "thumbnailUrl": "https://i.ytimg.com/vi/GnJ1l5fG7Jc/hqdefault.jpg",
+      "durationSeconds": 167,
+      "title": "Torino - Roma | 0-2 | Highlights | Serie A 2026/27 | roma torino",
+      "channel": "douirmi Radouan"
+    },
+    "fetchedAt": "2026-09-14T21:14:32.446Z"
+  },
+  "soccer-seriea-20260914-1845-udinese-at-internazionale": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=vNkKmGrNd2c",
+      "thumbnailUrl": "https://i.ytimg.com/vi/vNkKmGrNd2c/hqdefault.jpg",
+      "durationSeconds": 526,
+      "title": "Inter-Udinese [5-2] | Lega Serie A 2026/27 | Highlights della Partita!",
+      "channel": "douirmi Radouan"
+    },
+    "fetchedAt": "2026-09-14T21:14:32.446Z"
+  },
+  "soccer-laliga-20260914-1900-real-betis-at-villarreal": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=NWWNIJuGu4U",
+      "thumbnailUrl": "https://i.ytimg.com/vi/NWWNIJuGu4U/hqdefault.jpg",
+      "durationSeconds": 285,
+      "title": "Villarreal vs Real Betis 1-2 (All Highlights & Goals) LA LIGA 2026",
+      "channel": "LO DE DANY"
+    },
+    "fetchedAt": "2026-09-14T21:14:32.446Z"
+  },
+  "cricket-odi-ytc5qk": {
+    "video": null,
+    "fetchedAt": "2026-09-14T21:14:32.446Z"
+  },
+  "cricket-test-yezlgx-day5": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=ElXCvZRSKOs",
+      "thumbnailUrl": "https://i.ytimg.com/vi/ElXCvZRSKOs/hqdefault.jpg",
+      "durationSeconds": 646,
+      "title": "Match Highlights | Afghanistan vs India | Match 01 | T20I Series 2026 | ACB | M9N1K",
+      "channel": "Sports TV"
+    },
+    "fetchedAt": "2026-09-14T21:14:32.446Z"
+  },
+  "cricket-t20i-yts27g": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=2v-eBV6qP-0",
+      "thumbnailUrl": "https://i.ytimg.com/vi/2v-eBV6qP-0/hqdefault.jpg",
+      "durationSeconds": 643,
+      "title": "England Lions vs Sri Lanka - 2nd T20 Tour Match - Match Highlights",
+      "channel": "Sports Mentoring"
+    },
+    "fetchedAt": "2026-09-14T21:14:32.446Z"
+  },
+  "cricket-cpl-ysp3xr": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=ZaMT7R0psWY",
+      "thumbnailUrl": "https://i.ytimg.com/vi/ZaMT7R0psWY/hqdefault.jpg",
+      "durationSeconds": 525,
+      "title": "Highlights | Guyana Amazon Warriors Women vs Barbados Tridents Women | WCPL 2026",
+      "channel": "CPL T20"
+    },
+    "fetchedAt": "2026-09-14T21:14:32.446Z"
   }
 }
