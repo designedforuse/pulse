@@ -31,6 +31,7 @@ import Colors from "@/constants/colors";
 import ProviderLogo from "@/components/ProviderLogo";
 import { TeamLogo } from "@/components/TeamLogo";
 import UnifiedEventCard, { formatCricketLiveDetail, TennisScoreboard, getGrandPrixFlag, getDriverFlag, getWrcRoundInfo, getCountryFlagUrl, getAthleticsCityFlagUrl } from "@/components/UnifiedEventCard";
+import ViewingPlanControls from "@/components/ViewingPlanControls";
 import { useWrcStages, getWrcRoundBaseId, getStagesForLeg, wrcFlagUrl } from "@/lib/wrc-stages-context";
 import CatchUpCard from "@/components/CatchUpCard";
 import {
@@ -1642,17 +1643,33 @@ export default function WatchScreen() {
             </View>
           </View>
 
-          <Pressable
-            onPress={() => router.push("/settings")}
-            hitSlop={16}
-            style={({ pressed }) => [
-              styles.settingsButton,
-              { opacity: pressed ? 0.6 : 1 },
-            ]}
-            testID="settings-button"
-          >
-            <Ionicons name="settings-outline" size={18} color="rgba(255,255,255,0.5)" />
-          </Pressable>
+          <View style={styles.headerActions}>
+            <Pressable
+              onPress={() => router.push("/viewing-plan")}
+              hitSlop={10}
+              accessibilityRole="button"
+              accessibilityLabel="View my Serie A viewing plan"
+              style={({ pressed }) => [
+                styles.planButton,
+                { opacity: pressed ? 0.65 : 1 },
+              ]}
+              testID="view-my-plan-button"
+            >
+              <Ionicons name="calendar-outline" size={16} color="#C4B5FD" />
+              <Text style={styles.planButtonText}>View my plan</Text>
+            </Pressable>
+            <Pressable
+              onPress={() => router.push("/settings")}
+              hitSlop={16}
+              style={({ pressed }) => [
+                styles.settingsButton,
+                { opacity: pressed ? 0.6 : 1 },
+              ]}
+              testID="settings-button"
+            >
+              <Ionicons name="settings-outline" size={18} color="rgba(255,255,255,0.5)" />
+            </Pressable>
+          </View>
         </View>
 
         {upNextBannerActive ? (
@@ -2074,16 +2091,18 @@ export default function WatchScreen() {
                     <Text style={styles.dayDividerText}>{group.label}</Text>
                   </View>
                   {group.events.map((event) => (
-                    <UnifiedEventCard
-                      key={event.id}
-                      event={event}
-                      now={now}
-                      score={getScore(event.id)}
-                      isFav={favoriteInvolved(event, favorites)}
-                      showCountdown={true}
-                      accentBarColor={Colors.accent}
-                      espnLayout={true}
-                    />
+                    <View key={event.id}>
+                      <UnifiedEventCard
+                        event={event}
+                        now={now}
+                        score={getScore(event.id)}
+                        isFav={favoriteInvolved(event, favorites)}
+                        showCountdown={true}
+                        accentBarColor={Colors.accent}
+                        espnLayout={true}
+                      />
+                      <ViewingPlanControls event={event} compact />
+                    </View>
                   ))}
                 </View>
               ))}
@@ -2190,6 +2209,27 @@ const styles = StyleSheet.create({
   settingsButton: {
     padding: 6,
     flexShrink: 0,
+  },
+  headerActions: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  planButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+    paddingHorizontal: 9,
+    paddingVertical: 7,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "rgba(167,139,250,0.35)",
+    backgroundColor: "rgba(167,139,250,0.12)",
+  },
+  planButtonText: {
+    color: "#C4B5FD",
+    fontSize: 11,
+    fontFamily: "Inter_600SemiBold",
   },
 
   chaosSection: {

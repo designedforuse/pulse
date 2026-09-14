@@ -1,5 +1,5 @@
 import type { AppEvent, SoccerFetchResult, SoccerMergeResult } from "./soccerIcalUtils";
-import { mergeSoccerLeagueEvents } from "./soccerIcalUtils";
+import { getSerieAMatchIdentityAliases } from "../lib/serie-a-identity";
 
 const ESPN_SERIEA_API = "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/scoreboard";
 const GOLAZO_SCHEDULE_URL = "https://www.livesoccertv.com/channels/cbs-sports-golazo/";
@@ -32,15 +32,6 @@ function addDuration(isoString: string, minutes: number): string {
   const date = new Date(isoString);
   date.setMinutes(date.getMinutes() + minutes);
   return date.toISOString();
-}
-
-function stableId(startUtc: string, away: string, home: string): string {
-  const d = new Date(startUtc);
-  const dateStr = d.toISOString().slice(0, 10).replace(/-/g, "");
-  const timeStr = d.toISOString().slice(11, 16).replace(":", "");
-  const a = away.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-  const h = home.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-  return `soccer-seriea-${dateStr}-${timeStr}-${a}-at-${h}`;
 }
 
 function formatDateRange(start: Date, end: Date): string {
@@ -160,12 +151,18 @@ export async function fetchSerieAEvents(): Promise<SoccerFetchResult> {
       const awayTeam = awayComp.team.displayName;
       const endUtc = addDuration(startUtc, SERIEA_DURATION_MIN);
 
-      const id = stableId(startUtc, awayTeam, homeTeam);
+      // ESPN's fixture id does not change when a kickoff is moved. Keep the
+      // old prefix shape so live-score routing and existing consumers remain
+      // compatible, while no longer baking kickoff time into the id.
+      const id = `soccer-seriea-espn-${espnEvent.id}`;
       if (seenIds.has(id)) continue;
       seenIds.add(id);
 
       events.push({
         id,
+        externalId: espnEvent.id,
+        espnId: espnEvent.id,
+        sourceEventId: espnEvent.id,
         sport: "soccer",
         league: "Serie A",
         awayTeam,
@@ -188,5 +185,80 @@ export async function fetchSerieAEvents(): Promise<SoccerFetchResult> {
 }
 
 export function mergeSerieAEvents(existing: any[], fetched: any[], now: Date): SoccerMergeResult {
-  return mergeSoccerLeagueEvents(existing, fetched, now);
+  const windowStart = new Date(now.getTime() - 14 * 86400000);
+  const windowEnd = new Date(now.getTime() + 21 * 86400000);
+
+  const aliases = (event: any): string[] => {
+    const result = getSerieAMatchIdentityAliases({
+      id: event.id,
+      league: event.league,
+      leagueKey: event.leagueKey,
+      homeTeam: event.homeTeam,
+      awayTeam: event.awayTeam,
+      startTimeLocal: event.startTimeLocal,
+      seasonTag: event.seasonTag,
+      espnId: event.espnId,
+      externalId: event.externalId,
+      sourceEventId: event.sourceEventId,
+    });
+    // Old generated records used a kickoff-derived id. The team/season alias
+    // above is what links those records to a new ESPN-backed fixture.
+    return result;
+  };
+
+  const merged: any[] = [];
+  const consumedExisting = new Set<any>();
+  let added = 0;
+  let updated = 0;
+
+  for (const event of fetched) {
+    const matchingExisting = existing.find((candidate) => {
+      if (consumedExisting.has(candidate)) return false;
+      const candidateAliases = new Set(aliases(candidate));
+      return aliases(event).some((key) => candidateAliases.has(key));
+    });
+    if (matchingExisting) {
+      consumedExisting.add(matchingExisting);
+      updated++;
+    } else {
+      added++;
+    }
+    merged.push(event);
+  }
+
+  // ESPN can return a partial date page (or a transiently truncated response).
+  // Never treat "some rows fetched from this source" as proof that every
+  // unmatched cached fixture was removed. Retain all unmatched rows that are
+  // still inside the rolling window; only rows outside the window are pruned.
+  for (const event of existing) {
+    if (consumedExisting.has(event)) continue;
+    const start = new Date(event.startTimeLocal);
+    if (start >= windowStart && start <= windowEnd) merged.push(event);
+  }
+
+  const seen = new Set<string>();
+  const deduped = merged.filter((event) => {
+    const eventAliases = aliases(event);
+    // Rows with no positive identity are retained rather than collapsing
+    // unrelated records under an empty/unknown key.
+    if (eventAliases.length === 0) return true;
+    if (eventAliases.some((identity) => seen.has(identity))) return false;
+    for (const identity of eventAliases) seen.add(identity);
+    return true;
+  });
+
+  const includedExisting = new Set(deduped.filter((event) => existing.includes(event)));
+  const pruned = existing.filter(
+    (event) => !consumedExisting.has(event) && !includedExisting.has(event),
+  ).length;
+
+  deduped.sort(
+    (a, b) => new Date(a.startTimeLocal).getTime() - new Date(b.startTimeLocal).getTime(),
+  );
+  return {
+    merged: deduped,
+    added,
+    updated,
+    pruned,
+  };
 }

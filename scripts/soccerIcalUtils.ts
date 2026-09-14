@@ -2,6 +2,9 @@ const SOCCER_DURATION_MIN = 135;
 
 export interface AppEvent {
   id: string;
+  externalId?: string;
+  espnId?: string;
+  sourceEventId?: string;
   sport: string;
   league: string;
   awayTeam: string;

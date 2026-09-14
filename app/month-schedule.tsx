@@ -6,6 +6,7 @@ import {
   ScrollView,
   Pressable,
   Platform,
+  ActivityIndicator,
 } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -16,6 +17,7 @@ import Colors from "@/constants/colors";
 import { useEvents } from "@/lib/events-context";
 import { useFavorites } from "@/lib/favorites-context";
 import UnifiedEventCard from "@/components/UnifiedEventCard";
+import ViewingPlanControls from "@/components/ViewingPlanControls";
 import { getEffectiveSport } from "@/lib/data";
 
 const SNAPSHOT_COLOR = "#6366F1";
@@ -66,6 +68,22 @@ interface MonthSnapshotPayload {
   currentMonth: MonthSnapshotData;
   nextMonth: MonthSnapshotData;
   thisWeek?: MonthSnapshotData;
+}
+
+function isMonthSnapshotData(value: unknown): value is MonthSnapshotData {
+  if (!value || typeof value !== "object") return false;
+  const data = value as Partial<MonthSnapshotData>;
+  return (
+    typeof data.monthLabel === "string" &&
+    typeof data.monthKey === "string" &&
+    Array.isArray(data.leagues)
+  );
+}
+
+function isMonthSnapshotPayload(value: unknown): value is MonthSnapshotPayload {
+  if (!value || typeof value !== "object") return false;
+  const payload = value as Partial<MonthSnapshotPayload>;
+  return isMonthSnapshotData(payload.currentMonth) && isMonthSnapshotData(payload.nextMonth);
 }
 
 interface TonightStory {
@@ -144,9 +162,14 @@ export default function MonthScheduleScreen() {
   }>();
   const [activeKey, setActiveKey] = useState<TabKey>("today");
 
-  const { data: narrativeData, isLoading: storiesLoading } = useQuery<{
+  const {
+    data: narrativeData,
+    isLoading: storiesLoading,
+    isError: storiesError,
+  } = useQuery<{
     tonightStory: TonightStory | null;
     todaysStories?: TonightStory[];
+    monthSnapshot?: MonthSnapshotPayload | null;
   }>({
     queryKey: ["/api/narratives"],
     staleTime: 60 * 1000,
@@ -166,8 +189,6 @@ export default function MonthScheduleScreen() {
       return !sp.every((x) => disabledSports.has(x.toLowerCase()));
     });
   }, [narrativeData, disabledSports]);
-  const hasToday = todayStories.length > 0;
-
   // Today's events (device-local calendar day), so the Today tab can always
   // list what's on even when no editorial story scored. Honors disabled sports.
   const todayEvents = useMemo(() => {
@@ -192,26 +213,82 @@ export default function MonthScheduleScreen() {
       );
   }, [allEvents, disabledSports]);
 
+  const todaySerieAEvents = useMemo(
+    () =>
+      todayEvents.filter(
+        (event: any) => event.leagueKey === "seriea" || event.league === "Serie A",
+      ),
+    [todayEvents],
+  );
+
   const eventMap = useMemo(() => {
     const m = new Map<string, any>();
     for (const e of allEvents) m.set(e.id, e);
     return m;
   }, [allEvents]);
 
+  const hasSerieAEditorialStory = useMemo(
+    () =>
+      todayStories.some((story) => {
+        const ids =
+          story.eventIds && story.eventIds.length > 0
+            ? story.eventIds
+            : story.sourceEventId
+              ? [story.sourceEventId]
+              : [];
+        return ids.some((id) => {
+          const event = eventMap.get(id);
+          return event?.leagueKey === "seriea" || event?.league === "Serie A";
+        });
+      }),
+    [eventMap, todayStories],
+  );
+
   let snapshot: MonthSnapshotPayload | null = null;
+  let snapshotParseError = false;
   try {
     if (monthSnapshotJson) {
-      snapshot = JSON.parse(monthSnapshotJson);
+      const parsed = JSON.parse(monthSnapshotJson);
+      if (!isMonthSnapshotPayload(parsed)) snapshotParseError = true;
+      else snapshot = parsed;
     } else if (monthDataJson) {
-      const single: MonthSnapshotData = JSON.parse(monthDataJson);
-      snapshot = { currentMonth: single, nextMonth: single };
+      const parsed = JSON.parse(monthDataJson);
+      if (!isMonthSnapshotData(parsed)) snapshotParseError = true;
+      else snapshot = { currentMonth: parsed, nextMonth: parsed };
+    } else if (narrativeData?.monthSnapshot) {
+      if (isMonthSnapshotPayload(narrativeData.monthSnapshot)) {
+        snapshot = narrativeData.monthSnapshot;
+      } else {
+        snapshotParseError = true;
+      }
     }
-  } catch {}
+  } catch {
+    snapshotParseError = true;
+  }
 
   if (!snapshot) {
+    if (!monthSnapshotJson && !monthDataJson && storiesLoading) {
+      return (
+        <View style={[styles.container, styles.stateContainer, { paddingTop: insets.top + 16 }]}>
+          <ActivityIndicator color={SNAPSHOT_COLOR} />
+          <Text style={styles.stateTitle}>Loading schedule…</Text>
+          <Text style={styles.stateMessage}>Fetching the latest upcoming schedule.</Text>
+        </View>
+      );
+    }
     return (
-      <View style={[styles.container, { paddingTop: insets.top + 16 }]}>
-        <Text style={styles.errorText}>No schedule data available.</Text>
+      <View style={[styles.container, styles.stateContainer, { paddingTop: insets.top + 16 }]}>
+        <Ionicons name="cloud-offline-outline" size={30} color={Colors.textMuted} />
+        <Text style={styles.stateTitle}>
+          {snapshotParseError ? "Schedule data could not be read" : "Schedule unavailable"}
+        </Text>
+        <Text style={styles.stateMessage}>
+          {snapshotParseError
+            ? "Please return and try again."
+            : storiesError
+              ? "The schedule service could not be reached. Please try again shortly."
+              : "No upcoming schedule snapshot is available right now. Please try again shortly."}
+        </Text>
       </View>
     );
   }
@@ -260,7 +337,16 @@ export default function MonthScheduleScreen() {
           </View>
           <Text style={styles.headerTitle}>{isToday ? "Today" : monthData?.monthLabel}</Text>
         </View>
-        <View style={styles.backBtn} />
+        <Pressable
+          onPress={() => router.push("/viewing-plan")}
+          accessibilityRole="button"
+          accessibilityLabel="View my Serie A viewing plan"
+          style={({ pressed }) => [styles.planHeaderButton, { opacity: pressed ? 0.65 : 1 }]}
+          testID="month-view-my-plan"
+        >
+          <Ionicons name="calendar-outline" size={15} color="#C4B5FD" />
+          <Text style={styles.planHeaderButtonText}>View my plan</Text>
+        </Pressable>
       </View>
 
       {showTabs && (
@@ -343,7 +429,7 @@ export default function MonthScheduleScreen() {
                   </Text>
                 )}
               </View>
-              <Text style={styles.radarTagline}>What's worth watching today</Text>
+              <Text style={styles.radarTagline}>What&apos;s worth watching today</Text>
             </View>
 
             {storiesLoading && todayStories.length === 0 ? (
@@ -352,7 +438,10 @@ export default function MonthScheduleScreen() {
               todayEvents.length > 0 ? (
                 <View style={styles.eventsList}>
                   {todayEvents.map((ev: any) => (
-                    <UnifiedEventCard key={ev.id} event={ev} now={now} />
+                    <View key={ev.id}>
+                      <UnifiedEventCard event={ev} now={now} />
+                      <ViewingPlanControls event={ev} compact />
+                    </View>
                   ))}
                 </View>
               ) : (
@@ -390,7 +479,10 @@ export default function MonthScheduleScreen() {
                       {storyEvents.length > 0 && (
                         <View style={styles.eventsList}>
                           {storyEvents.map((ev: any) => (
-                            <UnifiedEventCard key={ev.id} event={ev} now={now} />
+                            <View key={ev.id}>
+                              <UnifiedEventCard event={ev} now={now} />
+                              <ViewingPlanControls event={ev} compact />
+                            </View>
                           ))}
                         </View>
                       )}
@@ -407,6 +499,27 @@ export default function MonthScheduleScreen() {
                     </View>
                   );
                 })}
+                {todaySerieAEvents.length > 0 && !hasSerieAEditorialStory ? (
+                  <View style={styles.storyCard} testID="seriea-schedule-fallback">
+                    <View style={styles.signalRow}>
+                      <View style={styles.signalBadge}>
+                        <Text style={styles.signalBadgeText}>SERIE A SCHEDULE</Text>
+                      </View>
+                    </View>
+                    <Text style={styles.storyHeadline}>Save a match for later</Text>
+                    <Text style={styles.storyBody}>
+                      No Serie A story today, but these upcoming fixtures are ready for your plan.
+                    </Text>
+                    <View style={styles.eventsList}>
+                      {todaySerieAEvents.map((ev: any) => (
+                        <View key={ev.id}>
+                          <UnifiedEventCard event={ev} now={now} />
+                          <ViewingPlanControls event={ev} compact />
+                        </View>
+                      ))}
+                    </View>
+                  </View>
+                ) : null}
               </View>
             )}
           </>
@@ -492,6 +605,24 @@ const styles = StyleSheet.create({
     height: 36,
     alignItems: "center",
     justifyContent: "center",
+  },
+  planHeaderButton: {
+    minWidth: 36,
+    minHeight: 36,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 4,
+    paddingHorizontal: 7,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "rgba(167,139,250,0.35)",
+    backgroundColor: "rgba(167,139,250,0.12)",
+  },
+  planHeaderButtonText: {
+    color: "#C4B5FD",
+    fontSize: 10,
+    fontFamily: "Inter_600SemiBold",
   },
   headerTitleWrap: {
     flex: 1,
@@ -703,6 +834,26 @@ const styles = StyleSheet.create({
     fontFamily: "Inter_400Regular",
     textAlign: "center",
     padding: 40,
+  },
+  stateContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 32,
+  },
+  stateTitle: {
+    marginTop: 12,
+    fontSize: 17,
+    color: Colors.textPrimary,
+    fontFamily: "Inter_700Bold",
+    textAlign: "center",
+  },
+  stateMessage: {
+    marginTop: 6,
+    fontSize: 13,
+    lineHeight: 19,
+    color: Colors.textMuted,
+    fontFamily: "Inter_400Regular",
+    textAlign: "center",
   },
   radarHero: {
     gap: 6,

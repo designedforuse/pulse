@@ -6,6 +6,7 @@ import {
   Image,
   Animated,
   Pressable,
+  ScrollView,
   Alert,
   Platform,
   Linking,
@@ -34,6 +35,7 @@ import { isEventLive, formatTimeSinceStart } from "@/utils/time";
 import { normalizeGameState } from "@/utils/gameState";
 import { displayTeamName, compactTeamName } from "@/utils/teams";
 import { getTuneInLinks } from "@/utils/tuneIn";
+import ViewingPlanControls from "@/components/ViewingPlanControls";
 
 const MASTERS_LOGO = require("@/assets/images/masters-logo.png");
 const GIRO_DITALIA_LOGO = require("@/assets/images/giro-ditalia-logo.png");
@@ -243,7 +245,11 @@ export default function EventSheet() {
       <View style={styles.dragHandleBar}>
         <View style={styles.dragHandle} />
       </View>
-      <View style={[styles.content, { paddingBottom: bottomPadding }]}>
+      <ScrollView
+        style={styles.content}
+        contentContainerStyle={[styles.contentContainer, { paddingBottom: bottomPadding }]}
+        showsVerticalScrollIndicator={false}
+      >
         <View style={styles.topSection}>
           {/* League chip */}
           <View style={styles.headerLine}>
@@ -503,7 +509,8 @@ export default function EventSheet() {
             </Pressable>
           ) : null}
         </View>
-      </View>
+        <ViewingPlanControls event={event} />
+      </ScrollView>
     </View>
   );
 }
@@ -526,6 +533,8 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+  },
+  contentContainer: {
     padding: 24,
     paddingTop: 16,
     justifyContent: "space-between",

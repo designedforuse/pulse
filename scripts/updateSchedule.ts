@@ -687,7 +687,7 @@ async function main() {
       serieA: {
         count: serieAResult.merged.length,
         lastFetchAt: serieAFetchResult.events.length > 0 ? nowIso : (prevMeta?.sources?.serieA?.lastFetchAt || nowIso),
-        sourceName: "iCal Feed",
+        sourceName: "ESPN API",
       },
       laLiga: {
         count: laLigaResult.merged.length,
@@ -824,7 +824,7 @@ async function main() {
 
   const output = {
     lastUpdated: nowIso,
-    sources: ["NHL API (api-web.nhle.com)", "AHL (HockeyTech / Odds API fallback)", "ECHL (API-Hockey / HockeyTech web)", "NCAA (College Hockey News)", "Rugby (iCal feeds)", "Champions Cup (iCal feed)", "MLR (hardcoded)", "Cricket (CricAPI)", "Olympic Hockey (hardcoded)", "EPL (iCal feed)", "MLS (iCal feed)", "Serie A (iCal feed)", "La Liga (iCal feed)", "Bundesliga (iCal feed)", "Ligue 1 (iCal feed)", "NWSL (iCal feed)", "USL (ESPN API)", "Champions League (ESPN API)", "Europa League (ESPN API)", "FA Cup (ESPN API)", "CAF Champions League (ESPN API)", "Tennis (hardcoded)", "F1 (ESPN API)", "WRC (hardcoded)", "Paddling SA Big Three (hardcoded)", "SA Schools Rugby (hardcoded)", "Comrades Marathon (hardcoded)", "NBA (ESPN API)", "NCAAB Big West (ESPN API)", "SHL (Odds API)"],
+    sources: ["NHL API (api-web.nhle.com)", "AHL (HockeyTech / Odds API fallback)", "ECHL (API-Hockey / HockeyTech web)", "NCAA (College Hockey News)", "Rugby (iCal feeds)", "Champions Cup (iCal feed)", "MLR (hardcoded)", "Cricket (CricAPI)", "Olympic Hockey (hardcoded)", "EPL (iCal feed)", "MLS (iCal feed)", "Serie A (ESPN API)", "La Liga (iCal feed)", "Bundesliga (iCal feed)", "Ligue 1 (iCal feed)", "NWSL (iCal feed)", "USL (ESPN API)", "Champions League (ESPN API)", "Europa League (ESPN API)", "FA Cup (ESPN API)", "CAF Champions League (ESPN API)", "Tennis (hardcoded)", "F1 (ESPN API)", "WRC (hardcoded)", "Paddling SA Big Three (hardcoded)", "SA Schools Rugby (hardcoded)", "Comrades Marathon (hardcoded)", "NBA (ESPN API)", "NCAAB Big West (ESPN API)", "SHL (Odds API)"],
     ahlSourceUsed: ahlFetchResult.sourceUsed,
     ahlOddsKeyUsed: ahlFetchResult.detectedOddsKey,
     echlSourceUsed: echlFetchResult.sourceUsed,

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-14T21:11:30.485Z",
+  "lastUpdated": "2026-09-14T21:49:02.173Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -12,7 +12,7 @@
     "Olympic Hockey (hardcoded)",
     "EPL (iCal feed)",
     "MLS (iCal feed)",
-    "Serie A (iCal feed)",
+    "Serie A (ESPN API)",
     "La Liga (iCal feed)",
     "Bundesliga (iCal feed)",
     "Ligue 1 (iCal feed)",
@@ -40,8 +40,8 @@
   "cricketSourceUsed": "espn",
   "nhlCount": 34,
   "ahlCount": 54,
-  "ahlAdded": 144,
-  "ahlUpdated": 24,
+  "ahlAdded": 114,
+  "ahlUpdated": 54,
   "ahlPruned": 114,
   "echlCount": 0,
   "echlAdded": 150,
@@ -53,9 +53,9 @@
   "buUpdated": 0,
   "buPruned": 0,
   "rugbyCount": 100,
-  "rugbyAdded": 26,
-  "rugbyUpdated": 74,
-  "rugbyPruned": 9,
+  "rugbyAdded": 0,
+  "rugbyUpdated": 100,
+  "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 16,
     "top14": 35,
@@ -69,9 +69,9 @@
     "svns": 0
   },
   "cricketCount": 48,
-  "cricketAdded": 11,
-  "cricketUpdated": 37,
-  "cricketPruned": 8,
+  "cricketAdded": 5,
+  "cricketUpdated": 43,
+  "cricketPruned": 5,
   "cricketCounts": {
     "CPL": 17,
     "T20I Cricket": 11,
@@ -97,37 +97,37 @@
   "mlsCount": 316,
   "mlsAdded": 0,
   "mlsUpdated": 75,
-  "mlsPruned": 1,
+  "mlsPruned": 0,
   "mlsSourceUsed": "espn",
   "serieaCount": 30,
   "serieaAdded": 0,
   "serieaUpdated": 30,
-  "serieaPruned": 40,
+  "serieaPruned": 0,
   "serieaSourceUsed": "espn",
   "laligaCount": 40,
   "laligaAdded": 0,
   "laligaUpdated": 40,
-  "laligaPruned": 49,
+  "laligaPruned": 40,
   "laligaSourceUsed": "espn",
   "bundesligaCount": 27,
   "bundesligaAdded": 0,
   "bundesligaUpdated": 27,
-  "bundesligaPruned": 36,
+  "bundesligaPruned": 27,
   "bundesligaSourceUsed": "espn",
   "ligue1Count": 27,
   "ligue1Added": 0,
   "ligue1Updated": 27,
-  "ligue1Pruned": 36,
+  "ligue1Pruned": 27,
   "ligue1SourceUsed": "espn",
   "nwslCount": 43,
-  "nwslAdded": 8,
-  "nwslUpdated": 35,
-  "nwslPruned": 42,
+  "nwslAdded": 0,
+  "nwslUpdated": 43,
+  "nwslPruned": 43,
   "nwslSourceUsed": "ical",
   "uslCount": 67,
-  "uslAdded": 11,
-  "uslUpdated": 56,
-  "uslPruned": 68,
+  "uslAdded": 0,
+  "uslUpdated": 67,
+  "uslPruned": 67,
   "uslSourceUsed": "espn",
   "championsCupCount": 0,
   "championsCupAdded": 0,
@@ -160,8 +160,8 @@
   "faCupPruned": 0,
   "faCupSourceUsed": "espn",
   "tennisCount": 16,
-  "tennisAdded": 6,
-  "tennisUpdated": 10,
+  "tennisAdded": 0,
+  "tennisUpdated": 16,
   "tennisPruned": 0,
   "tennisSourceUsed": "hardcoded",
   "tennisTournamentCounts": {
@@ -210,22 +210,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-09-14T21:11:30.485Z",
+    "lastRefreshAt": "2026-09-14T21:49:02.173Z",
     "sources": {
       "nhl": {
         "count": 34,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 54,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 0,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -237,7 +237,7 @@
       },
       "rugby": {
         "count": 100,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 16,
@@ -254,7 +254,7 @@
       },
       "cricket": {
         "count": 48,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "CPL": 17,
@@ -265,12 +265,12 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
@@ -280,38 +280,38 @@
       },
       "mls": {
         "count": 316,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
         "count": 30,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
-        "sourceName": "iCal Feed"
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
+        "sourceName": "ESPN API"
       },
       "laLiga": {
         "count": 40,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "iCal Feed"
       },
       "bundesliga": {
         "count": 27,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "iCal Feed"
       },
       "ligue1": {
         "count": 27,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "iCal Feed"
       },
       "nwsl": {
         "count": 43,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
         "count": 67,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-09-02T23:00:00.000Z"
       },
@@ -329,18 +329,18 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T19:00:00.000Z"
       },
       "championsLeague": {
         "count": 18,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "ESPN API"
       },
       "europaLeague": {
         "count": 18,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "ESPN API"
       },
       "faCup": {
@@ -351,7 +351,7 @@
       },
       "tennis": {
         "count": 16,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "US Open": 0,
@@ -360,7 +360,7 @@
       },
       "f1": {
         "count": 40,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Italian Grand Prix": 5,
@@ -375,7 +375,7 @@
       },
       "wrc": {
         "count": 12,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "Hardcoded Schedule"
       },
       "schoolsRugby": {
@@ -385,7 +385,7 @@
       },
       "paddling": {
         "count": 1,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "Hardcoded Schedule"
       },
       "comrades": {
@@ -395,13 +395,13 @@
       },
       "golf": {
         "count": 0,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {}
       },
       "marathon": {
         "count": 3,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Berlin Marathon": 1,
@@ -426,12 +426,12 @@
       },
       "shl": {
         "count": 7,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "Odds API"
       },
       "cafcl": {
         "count": 90,
-        "lastFetchAt": "2026-09-14T21:11:30.485Z",
+        "lastFetchAt": "2026-09-14T21:49:02.173Z",
         "sourceName": "ESPN API"
       }
     }
@@ -5814,7 +5814,10 @@
       "providerReason": "bundesliga-disneyplus"
     },
     {
-      "id": "soccer-seriea-20260904-1845-como-at-genoa",
+      "id": "soccer-seriea-espn-401874744",
+      "externalId": "401874744",
+      "espnId": "401874744",
+      "sourceEventId": "401874744",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Como",
@@ -6014,7 +6017,10 @@
       ]
     },
     {
-      "id": "soccer-seriea-20260905-1300-torino-at-fiorentina",
+      "id": "soccer-seriea-espn-401874939",
+      "externalId": "401874939",
+      "espnId": "401874939",
+      "sourceEventId": "401874939",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Torino",
@@ -6243,7 +6249,10 @@
       "providerReason": "ligue1-yttv"
     },
     {
-      "id": "soccer-seriea-20260905-1600-napoli-at-internazionale",
+      "id": "soccer-seriea-espn-401874937",
+      "externalId": "401874937",
+      "espnId": "401874937",
+      "sourceEventId": "401874937",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Napoli",
@@ -6447,7 +6456,10 @@
       "providerReason": "caf-beinsports"
     },
     {
-      "id": "soccer-seriea-20260905-1845-atalanta-at-as-roma",
+      "id": "soccer-seriea-espn-401874781",
+      "externalId": "401874781",
+      "espnId": "401874781",
+      "sourceEventId": "401874781",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Atalanta",
@@ -6971,7 +6983,10 @@
       ]
     },
     {
-      "id": "soccer-seriea-20260906-1300-venezia-at-frosinone",
+      "id": "soccer-seriea-espn-401874768",
+      "externalId": "401874768",
+      "espnId": "401874768",
+      "sourceEventId": "401874768",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Venezia",
@@ -6984,7 +6999,10 @@
       "leagueKey": "seriea"
     },
     {
-      "id": "soccer-seriea-20260906-1300-monza-at-parma",
+      "id": "soccer-seriea-espn-401874987",
+      "externalId": "401874987",
+      "espnId": "401874987",
+      "sourceEventId": "401874987",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Monza",
@@ -7238,7 +7256,10 @@
       "providerReason": "caf-beinsports"
     },
     {
-      "id": "soccer-seriea-20260906-1600-sassuolo-at-bologna",
+      "id": "soccer-seriea-espn-401874751",
+      "externalId": "401874751",
+      "espnId": "401874751",
+      "sourceEventId": "401874751",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Sassuolo",
@@ -7294,7 +7315,10 @@
       "broadcastNetworks": "CBS, Paramount+"
     },
     {
-      "id": "soccer-seriea-20260906-1845-ac-milan-at-juventus",
+      "id": "soccer-seriea-espn-401874954",
+      "externalId": "401874954",
+      "espnId": "401874954",
+      "sourceEventId": "401874954",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "AC Milan",
@@ -7463,7 +7487,10 @@
       "broadcastNetworks": "ESPN2, ESPN Unlmtd"
     },
     {
-      "id": "soccer-seriea-20260907-1630-lecce-at-cagliari",
+      "id": "soccer-seriea-espn-401874943",
+      "externalId": "401874943",
+      "espnId": "401874943",
+      "sourceEventId": "401874943",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Lecce",
@@ -7490,7 +7517,10 @@
       "providerReason": "laliga-disneyplus"
     },
     {
-      "id": "soccer-seriea-20260907-1845-lazio-at-udinese",
+      "id": "soccer-seriea-espn-401874962",
+      "externalId": "401874962",
+      "espnId": "401874962",
+      "sourceEventId": "401874962",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Lazio",
@@ -8429,7 +8459,10 @@
       "providerReason": "bundesliga-disneyplus"
     },
     {
-      "id": "soccer-seriea-20260911-1845-fiorentina-at-venezia",
+      "id": "soccer-seriea-espn-401874759",
+      "externalId": "401874759",
+      "espnId": "401874759",
+      "sourceEventId": "401874759",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Fiorentina",
@@ -8699,7 +8732,10 @@
       ]
     },
     {
-      "id": "soccer-seriea-20260912-1300-frosinone-at-genoa",
+      "id": "soccer-seriea-espn-401874991",
+      "externalId": "401874991",
+      "espnId": "401874991",
+      "sourceEventId": "401874991",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Frosinone",
@@ -9052,7 +9088,10 @@
       "providerReason": "ligue1-yttv"
     },
     {
-      "id": "soccer-seriea-20260912-1600-ac-milan-at-lazio",
+      "id": "soccer-seriea-espn-401874941",
+      "externalId": "401874941",
+      "espnId": "401874941",
+      "sourceEventId": "401874941",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "AC Milan",
@@ -9149,7 +9188,10 @@
       "providerReason": "caf-beinsports"
     },
     {
-      "id": "soccer-seriea-20260912-1845-cagliari-at-atalanta",
+      "id": "soccer-seriea-espn-401874979",
+      "externalId": "401874979",
+      "espnId": "401874979",
+      "sourceEventId": "401874979",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Cagliari",
@@ -9769,7 +9811,10 @@
       ]
     },
     {
-      "id": "soccer-seriea-20260913-1300-monza-at-lecce",
+      "id": "soccer-seriea-espn-401874936",
+      "externalId": "401874936",
+      "espnId": "401874936",
+      "sourceEventId": "401874936",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Monza",
@@ -9959,7 +10004,10 @@
       "providerReason": "bundesliga-disneyplus"
     },
     {
-      "id": "soccer-seriea-20260913-1600-bologna-at-napoli",
+      "id": "soccer-seriea-espn-401874792",
+      "externalId": "401874792",
+      "espnId": "401874792",
+      "sourceEventId": "401874792",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Bologna",
@@ -10099,7 +10147,10 @@
       "providerReason": "caf-beinsports"
     },
     {
-      "id": "soccer-seriea-20260913-1845-juventus-at-sassuolo",
+      "id": "soccer-seriea-espn-401874750",
+      "externalId": "401874750",
+      "espnId": "401874750",
+      "sourceEventId": "401874750",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Juventus",
@@ -10231,7 +10282,10 @@
       "providerReason": "mls-appletv"
     },
     {
-      "id": "soccer-seriea-20260914-1630-parma-at-como",
+      "id": "soccer-seriea-espn-401874933",
+      "externalId": "401874933",
+      "espnId": "401874933",
+      "sourceEventId": "401874933",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Parma",
@@ -10244,7 +10298,10 @@
       "leagueKey": "seriea"
     },
     {
-      "id": "soccer-seriea-20260914-1630-as-roma-at-torino",
+      "id": "soccer-seriea-espn-401874950",
+      "externalId": "401874950",
+      "espnId": "401874950",
+      "sourceEventId": "401874950",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "AS Roma",
@@ -10257,7 +10314,10 @@
       "leagueKey": "seriea"
     },
     {
-      "id": "soccer-seriea-20260914-1845-udinese-at-internazionale",
+      "id": "soccer-seriea-espn-401874966",
+      "externalId": "401874966",
+      "espnId": "401874966",
+      "sourceEventId": "401874966",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Udinese",
@@ -10942,7 +11002,10 @@
       "providerReason": "bundesliga-disneyplus"
     },
     {
-      "id": "soccer-seriea-20260918-1845-sassuolo-at-monza",
+      "id": "soccer-seriea-espn-401874756",
+      "externalId": "401874756",
+      "espnId": "401874756",
+      "sourceEventId": "401874756",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Sassuolo",
@@ -11120,7 +11183,10 @@
       "leagueKey": "top14"
     },
     {
-      "id": "soccer-seriea-20260919-1300-torino-at-bologna",
+      "id": "soccer-seriea-espn-401874767",
+      "externalId": "401874767",
+      "espnId": "401874767",
+      "sourceEventId": "401874767",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Torino",
@@ -11133,7 +11199,10 @@
       "leagueKey": "seriea"
     },
     {
-      "id": "soccer-seriea-20260919-1300-cagliari-at-udinese",
+      "id": "soccer-seriea-espn-401874964",
+      "externalId": "401874964",
+      "espnId": "401874964",
+      "sourceEventId": "401874964",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Cagliari",
@@ -11334,7 +11403,10 @@
       "providerReason": "ligue1-yttv"
     },
     {
-      "id": "soccer-seriea-20260919-1600-internazionale-at-as-roma",
+      "id": "soccer-seriea-espn-401874753",
+      "externalId": "401874753",
+      "espnId": "401874753",
+      "sourceEventId": "401874753",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Internazionale",
@@ -11414,7 +11486,10 @@
       "providerReason": "bundesliga-disneyplus"
     },
     {
-      "id": "soccer-seriea-20260919-1845-lazio-at-venezia",
+      "id": "soccer-seriea-espn-401874956",
+      "externalId": "401874956",
+      "espnId": "401874956",
+      "sourceEventId": "401874956",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Lazio",
@@ -11942,7 +12017,10 @@
       "isIccT20Wc": false
     },
     {
-      "id": "soccer-seriea-20260920-1030-napoli-at-fiorentina",
+      "id": "soccer-seriea-espn-401874934",
+      "externalId": "401874934",
+      "espnId": "401874934",
+      "sourceEventId": "401874934",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Napoli",
@@ -11969,7 +12047,10 @@
       "providerReason": "laliga-disneyplus"
     },
     {
-      "id": "soccer-seriea-20260920-1300-como-at-frosinone",
+      "id": "soccer-seriea-espn-401874752",
+      "externalId": "401874752",
+      "espnId": "401874752",
+      "sourceEventId": "401874752",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Como",
@@ -11982,7 +12063,10 @@
       "leagueKey": "seriea"
     },
     {
-      "id": "soccer-seriea-20260920-1300-genoa-at-parma",
+      "id": "soccer-seriea-espn-401874801",
+      "externalId": "401874801",
+      "espnId": "401874801",
+      "sourceEventId": "401874801",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Genoa",
@@ -12065,7 +12149,10 @@
       "providerReason": "bundesliga-disneyplus"
     },
     {
-      "id": "soccer-seriea-20260920-1600-atalanta-at-juventus",
+      "id": "soccer-seriea-espn-401874757",
+      "externalId": "401874757",
+      "espnId": "401874757",
+      "sourceEventId": "401874757",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Atalanta",
@@ -12135,7 +12222,10 @@
       "broadcastNetworks": "CBSSN"
     },
     {
-      "id": "soccer-seriea-20260920-1845-lecce-at-ac-milan",
+      "id": "soccer-seriea-espn-401874944",
+      "externalId": "401874944",
+      "espnId": "401874944",
+      "sourceEventId": "401874944",
       "sport": "soccer",
       "league": "Serie A",
       "awayTeam": "Lecce",

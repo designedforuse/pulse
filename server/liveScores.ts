@@ -100,7 +100,7 @@ interface LiveEventIdBuckets {
   ahl: string[];
   echl: string[];
   ncaa: { id: string; homeTeam: string; awayTeam: string; startTime: string }[];
-  soccer: Map<string, string[]>;
+  soccer: Map<string, SoccerLiveEvent[]>;
   rugby: Map<string, { id: string; homeTeam: string; awayTeam: string; startTimeLocal?: string }[]>;
   cricket: { id: string; homeTeam: string; awayTeam: string; cricketMatchId?: string }[];
   tennis: { id: string; espnId: string }[];
@@ -113,12 +113,49 @@ interface LiveEventIdBuckets {
   cycling: string[];
 }
 
+export interface SoccerLiveEvent {
+  id: string;
+  espnId?: string;
+  homeTeam: string;
+  awayTeam: string;
+}
+
+function getSoccerEspnId(event: SoccerLiveEvent): string | undefined {
+  if (event.espnId) return String(event.espnId);
+  // Serie A records generated before `espnId` was persisted still carry the
+  // provider id in their stable event id. Keep this as a migration fallback.
+  const embedded = event.id.match(/^soccer-seriea-espn-(.+)$/i)?.[1];
+  return embedded || undefined;
+}
+
+/**
+ * ESPN ids are authoritative for ESPN-backed soccer events. Team slugs remain
+ * a compatibility fallback for iCal and legacy cached rows.
+ */
+export function soccerEventMatchesEspn(
+  event: SoccerLiveEvent,
+  espnEventId: string | number,
+  homeName: string,
+  awayName: string,
+): boolean {
+  const trackedEspnId = getSoccerEspnId(event);
+  if (trackedEspnId) return trackedEspnId === String(espnEventId);
+
+  const homeSlug = homeName.toLowerCase().replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-");
+  const awaySlug = awayName.toLowerCase().replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-");
+  const idLower = event.id.toLowerCase();
+  return (
+    idLower.includes(homeSlug.substring(0, 6)) ||
+    idLower.includes(awaySlug.substring(0, 6))
+  );
+}
+
 function loadLiveEventIds(): LiveEventIdBuckets {
   const nhl: string[] = [];
   const ahl: string[] = [];
   const echl: string[] = [];
   const ncaa: { id: string; homeTeam: string; awayTeam: string; startTime: string }[] = [];
-  const soccer = new Map<string, string[]>();
+  const soccer = new Map<string, SoccerLiveEvent[]>();
   const rugby = new Map<string, { id: string; homeTeam: string; awayTeam: string; startTimeLocal?: string }[]>();
   const cricket: { id: string; homeTeam: string; awayTeam: string }[] = [];
   const tennis: { id: string; espnId: string }[] = [];
@@ -175,7 +212,14 @@ function loadLiveEventIds(): LiveEventIdBuckets {
       } else if (event.id.startsWith("soccer-")) {
         const league = event.league as string;
         if (!soccer.has(league)) soccer.set(league, []);
-        soccer.get(league)!.push(event.id);
+        soccer.get(league)!.push({
+          id: event.id,
+          espnId:
+            event.espnId ||
+            event.id.match(/^soccer-seriea-espn-(.+)$/i)?.[1],
+          homeTeam: event.homeTeam || "",
+          awayTeam: event.awayTeam || "",
+        });
       } else if (event.id.startsWith("rugby-")) {
         const league = event.league as string;
         if (!rugby.has(league)) rugby.set(league, []);
@@ -628,7 +672,7 @@ function parseShootoutScore(raw: unknown): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
-async function fetchSoccerScores(soccerMap: Map<string, string[]>): Promise<Record<string, ScoreData>> {
+async function fetchSoccerScores(soccerMap: Map<string, SoccerLiveEvent[]>): Promise<Record<string, ScoreData>> {
   const scores: Record<string, ScoreData> = {};
   if (soccerMap.size === 0) return scores;
 
@@ -641,8 +685,8 @@ async function fetchSoccerScores(soccerMap: Map<string, string[]>): Promise<Reco
 
   const fetches = Array.from(leaguesToFetch).map(async (league) => {
     const espnPath = ESPN_LEAGUE_PATHS[league];
-    const eventIds = soccerMap.get(league) || [];
-    if (eventIds.length === 0) return;
+    const events = soccerMap.get(league) || [];
+    if (events.length === 0) return;
 
     try {
       const today = new Date().toISOString().split("T")[0].replace(/-/g, "");
@@ -668,12 +712,15 @@ async function fetchSoccerScores(soccerMap: Map<string, string[]>): Promise<Reco
         const homeName = (homeComp.team?.shortDisplayName || homeComp.team?.displayName || "").toLowerCase();
         const awayName = (awayComp.team?.shortDisplayName || awayComp.team?.displayName || "").toLowerCase();
 
-        for (const eventId of eventIds) {
-          const idLower = eventId.toLowerCase();
-          const homeSlug = homeName.replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-");
-          const awaySlug = awayName.replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-");
-
-          if (idLower.includes(homeSlug.substring(0, 6)) || idLower.includes(awaySlug.substring(0, 6))) {
+        for (const event of events) {
+          if (
+            soccerEventMatchesEspn(
+              event,
+              String(espnEvent.id),
+              homeName,
+              awayName,
+            )
+          ) {
             const statusState = comp.status?.type?.state;
             const statusDetail = comp.status?.type?.shortDetail || comp.status?.displayClock || "";
 
@@ -690,7 +737,7 @@ async function fetchSoccerScores(soccerMap: Map<string, string[]>): Promise<Reco
               if (shortDetail.includes("halftime") || shortDetail === "ht") period = "HT";
               const awaySO = parseShootoutScore(awayComp.shootoutScore);
               const homeSO = parseShootoutScore(homeComp.shootoutScore);
-              scores[eventId] = {
+              scores[event.id] = {
                 awayScore: parseInt(awayComp.score || "0", 10),
                 homeScore: parseInt(homeComp.score || "0", 10),
                 ...(awaySO != null && homeSO != null ? { awayShootoutScore: awaySO, homeShootoutScore: homeSO } : {}),
@@ -701,7 +748,7 @@ async function fetchSoccerScores(soccerMap: Map<string, string[]>): Promise<Reco
             } else if (statusState === "post") {
               const awaySO = parseShootoutScore(awayComp.shootoutScore);
               const homeSO = parseShootoutScore(homeComp.shootoutScore);
-              scores[eventId] = {
+              scores[event.id] = {
                 awayScore: parseInt(awayComp.score || "0", 10),
                 homeScore: parseInt(homeComp.score || "0", 10),
                 ...(awaySO != null && homeSO != null ? { awayShootoutScore: awaySO, homeShootoutScore: homeSO } : {}),

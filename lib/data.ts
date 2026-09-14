@@ -10,6 +10,10 @@ export interface Provider {
 
 export interface SportEvent {
   id: string;
+  /** Provider fixture identity, when the source exposes one (for example ESPN). */
+  externalId?: string;
+  espnId?: string;
+  sourceEventId?: string;
   sport: string;
   league: string;
   awayTeam: string;

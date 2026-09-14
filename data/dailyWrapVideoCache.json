@@ -1306,5 +1306,35 @@
       "channel": "CPL T20"
     },
     "fetchedAt": "2026-09-14T21:14:32.446Z"
+  },
+  "soccer-seriea-espn-401874933": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=_k7qHJpYiUQ",
+      "thumbnailUrl": "https://i.ytimg.com/vi/_k7qHJpYiUQ/hqdefault.jpg",
+      "durationSeconds": 563,
+      "title": "Como vs. Parma: Extended Highlights | Serie A | CBS Sports Golazo",
+      "channel": "CBS Sports Golazo"
+    },
+    "fetchedAt": "2026-09-14T21:40:18.868Z"
+  },
+  "soccer-seriea-espn-401874950": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=GnJ1l5fG7Jc",
+      "thumbnailUrl": "https://i.ytimg.com/vi/GnJ1l5fG7Jc/hqdefault.jpg",
+      "durationSeconds": 167,
+      "title": "Torino - Roma | 0-2 | Highlights | Serie A 2026/27 | roma torino",
+      "channel": "douirmi Radouan"
+    },
+    "fetchedAt": "2026-09-14T21:40:18.868Z"
+  },
+  "soccer-seriea-espn-401874966": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=vNkKmGrNd2c",
+      "thumbnailUrl": "https://i.ytimg.com/vi/vNkKmGrNd2c/hqdefault.jpg",
+      "durationSeconds": 526,
+      "title": "Inter-Udinese [5-2] | Lega Serie A 2026/27 | Highlights della Partita!",
+      "channel": "douirmi Radouan"
+    },
+    "fetchedAt": "2026-09-14T21:40:18.868Z"
   }
 }

@@ -12,6 +12,7 @@ import { ScoresProvider } from "@/lib/scores-context";
 import { FavoritesProvider } from "@/lib/favorites-context";
 import { RitualOverridesProvider } from "@/lib/ritual-overrides-context";
 import { ProvidersProvider } from "@/lib/providers-context";
+import { ViewingPlanProvider } from "@/lib/viewing-plan-context";
 import { useFonts, Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold } from "@expo-google-fonts/inter";
 import Colors from "@/constants/colors";
 
@@ -78,6 +79,13 @@ function RootLayoutNav() {
         options={{
           headerShown: false,
           title: "What to Watch Next",
+        }}
+      />
+      <Stack.Screen
+        name="viewing-plan"
+        options={{
+          headerShown: false,
+          title: "My Plan",
         }}
       />
       <Stack.Screen
@@ -192,13 +200,15 @@ export default function RootLayout() {
           <EventsProvider>
             <FavoritesProvider>
               <RitualOverridesProvider>
-                <ScoresProvider>
-                  <GestureHandlerRootView>
-                    <KeyboardProvider>
-                      <RootLayoutNav />
-                    </KeyboardProvider>
-                  </GestureHandlerRootView>
-                </ScoresProvider>
+                  <ViewingPlanProvider>
+                    <ScoresProvider>
+                      <GestureHandlerRootView>
+                        <KeyboardProvider>
+                          <RootLayoutNav />
+                        </KeyboardProvider>
+                      </GestureHandlerRootView>
+                    </ScoresProvider>
+                  </ViewingPlanProvider>
               </RitualOverridesProvider>
             </FavoritesProvider>
           </EventsProvider>

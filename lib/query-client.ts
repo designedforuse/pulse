@@ -6,15 +6,34 @@ import { QueryClient, QueryFunction } from "@tanstack/react-query";
  * @returns {string} The API base URL
  */
 export function getApiUrl(): string {
-  let host = process.env.EXPO_PUBLIC_DOMAIN;
-
-  if (!host) {
-    throw new Error("EXPO_PUBLIC_DOMAIN is not set");
+  // Web previews and published web builds use their own origin; Metro
+  // forwards /api during development and Express serves it in production.
+  if (typeof window !== "undefined" && window.location?.origin) {
+    return `${window.location.origin}/`;
+  }
+  const configured = process.env.EXPO_PUBLIC_DOMAIN?.trim();
+  if (configured && !configured.includes("$")) {
+    const url = new URL(/^https?:\/\//i.test(configured) ? configured : `https://${configured}`);
+    // Replit exposes the workflow through the HTTPS domain, not as a literal
+    // public `:5000` endpoint. Keep custom/native hosts untouched.
+    if (
+      url.port === "5000" &&
+      (url.hostname.endsWith(".replit.dev") || url.hostname.endsWith(".repl.co"))
+    ) {
+      url.port = "";
+    }
+    return url.href;
   }
 
-  let url = new URL(`https://${host}`);
+  // Older Expo previews could bake the unexpanded `$REPLIT_DEV_DOMAIN` into
+  // the web bundle. Recover the sibling backend host from the public Expo
+  // origin instead of issuing a request to the literal placeholder.
+  if (typeof window !== "undefined" && window.location.hostname) {
+    const host = window.location.hostname.replace(/\.expo\./, ".");
+    return `https://${host}/`;
+  }
 
-  return url.href;
+  throw new Error("EXPO_PUBLIC_DOMAIN is not set");
 }
 
 async function throwIfResNotOk(res: Response) {

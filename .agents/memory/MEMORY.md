@@ -1,3 +1,4 @@
+- [Viewing plan boundaries](viewing-plan-decisions.md) — Stories recommends, Watch saves; Serie A pilot and public Expo API routing caveat.
 - [Adding a new providerId](new-provider-id-checklist.md) — a new providerId must be registered in 4 places or the card brand pill / launcher / filter silently no-op.
 - [ESPN has no live USL](espn-usl-no-live.md) — ESPN free feed gives USL fixtures + finals only, never in-progress; "no live USL score mid-match" is not a bug (finals-only by choice).
 - [Cricket → Willow exclusive](cricket-provider-willow.md) — all cricket displays willowtv/launches flosports; resolveCricketBroadcastId is the runtime authority (ignores stored providerId).

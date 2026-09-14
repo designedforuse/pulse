@@ -2384,22 +2384,54 @@
     }
   },
   "grand_tour:vuelta a españa cycling highlights september 2026": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=u-W7t7uGKE8",
-      "thumbnailUrl": "https://img.youtube.com/vi/u-W7t7uGKE8/hqdefault.jpg",
-      "durationSeconds": 84,
-      "title": "Santiago Buitrago Cracks In Final Meters Of Vuelta a España 2026 Stage 19",
-      "source": "youtube",
-      "channel": "FloBikes",
-      "publishedAt": "18 minutes ago"
-    },
-    "fetchedAt": "2026-09-11T16:21:29.734Z",
+    "video": null,
+    "fetchedAt": "2026-09-14T21:30:34.281Z",
     "query": "Vuelta a España cycling highlights September 2026",
     "debug": {
       "searchQuery": "Vuelta a España cycling highlights September 2026",
-      "selectedVideoTitle": "Santiago Buitrago Cracks In Final Meters Of Vuelta a España 2026 Stage 19",
-      "selectedVideoPublishedAt": "18 minutes ago",
-      "selectedVideoChannel": "FloBikes",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:sparta prague vs ararat-armenia europa league preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=J2tjmetGYU8",
+      "thumbnailUrl": "https://img.youtube.com/vi/J2tjmetGYU8/hqdefault.jpg",
+      "durationSeconds": 818,
+      "title": "EUROPA LEAGUE WEEK 1 PREDICTIONS AND BEST TIPS!",
+      "source": "youtube",
+      "channel": "TommyPROPS",
+      "publishedAt": "53 minutes ago"
+    },
+    "fetchedAt": "2026-09-14T21:30:33.881Z",
+    "query": "Sparta Prague vs Ararat-Armenia Europa League preview",
+    "debug": {
+      "searchQuery": "Sparta Prague vs Ararat-Armenia Europa League preview",
+      "selectedVideoTitle": "EUROPA LEAGUE WEEK 1 PREDICTIONS AND BEST TIPS!",
+      "selectedVideoPublishedAt": "53 minutes ago",
+      "selectedVideoChannel": "TommyPROPS",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:rivalry weekend sports september 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=4lbd1t8sv0w",
+      "thumbnailUrl": "https://img.youtube.com/vi/4lbd1t8sv0w/hqdefault.jpg",
+      "durationSeconds": 10676,
+      "title": "GIANTS BEAT THE COWBOYS & JETS DEFEAT THE TITANS | Carlin - 9/14/26",
+      "source": "youtube",
+      "channel": "ESPN New York",
+      "publishedAt": "Streamed 4 hours ago"
+    },
+    "fetchedAt": "2026-09-14T21:30:34.868Z",
+    "query": "Rivalry Weekend sports September 2026",
+    "debug": {
+      "searchQuery": "Rivalry Weekend sports September 2026",
+      "selectedVideoTitle": "GIANTS BEAT THE COWBOYS & JETS DEFEAT THE TITANS | Carlin - 9/14/26",
+      "selectedVideoPublishedAt": "Streamed 4 hours ago",
+      "selectedVideoChannel": "ESPN New York",
       "rejectedForAgeCount": 0
     }
   }

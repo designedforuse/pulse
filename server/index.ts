@@ -17,8 +17,9 @@ function setupCors(app: express.Application) {
   app.use((req, res, next) => {
     const origins = new Set<string>();
 
-    if (process.env.REPLIT_DEV_DOMAIN) {
-      origins.add(`https://${process.env.REPLIT_DEV_DOMAIN}`);
+    for (const envName of ["REPLIT_DEV_DOMAIN", "REPLIT_EXPO_DEV_DOMAIN"]) {
+      const domain = process.env[envName]?.trim();
+      if (domain) origins.add(`https://${domain}`);
     }
 
     if (process.env.REPLIT_DOMAINS) {

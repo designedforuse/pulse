@@ -1,19 +1,8 @@
 {
-  "lastUpdated": "2026-09-11T18:06:38.674Z",
+  "lastUpdated": "2026-09-14T21:49:02.231Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
-        "SouthAfrica": 1,
-        "Other": 2
-      },
-      "clinch_watch": {
-        "SouthAfrica": 1,
-        "Other": 1
-      },
-      "weekend_watchlist": {
-        "Other": 1
-      },
-      "rally_weekend": {
         "Other": 1
       },
       "grand_tour": {
@@ -25,30 +14,15 @@
     },
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
-      "SouthAfrica": [
-        "clinch_watch: Clinch Watch",
-        "league_moment: Freedom Cup"
-      ],
       "Other": [
-        "clinch_watch: Clinch Watch",
-        "league_moment: Spanish Grand Prix",
-        "marquee_match: Marquee Match: La Liga",
-        "rally_weekend: Rally Weekend",
+        "marquee_match: Marquee Match: Europa League",
         "grand_tour: Grand Tour",
-        "weekend_watchlist: Weekend Watchlist"
+        "league_moment: Rivalry Weekend"
       ]
     },
-    "droppedCandidatesReasons": [
-      {
-        "id": "league_moment_tournament",
-        "kind": "league_moment",
-        "region": "Other",
-        "title": "Big Stage",
-        "reason": "max 1 league_moment per region (Other)"
-      }
-    ],
-    "totalBeforeCap": 9,
-    "totalAfterCap": 8,
+    "droppedCandidatesReasons": [],
+    "totalBeforeCap": 3,
+    "totalAfterCap": 3,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -81,17 +55,17 @@
         ],
         "playersIngested": 357,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-09-11T18:06:38.674Z"
+        "timestamp": "2026-09-14T21:49:02.231Z"
       },
       "cacheHistoryCount": 881,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 9,
-    "candidateCountAfterCap": 8,
+    "candidateCountBeforeCap": 3,
+    "candidateCountAfterCap": 3,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -4510.110742777778,
+      "hoursUntil": -4585.8172863888885,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -107,352 +81,98 @@
       "upsetFinalCount": 0
     },
     "clinchWatch": {
-      "rawClinchCandidates": 4,
-      "clinchAfterRegionFilter": 2,
-      "clinchFinalCount": 2,
+      "rawClinchCandidates": 0,
+      "clinchAfterRegionFilter": 0,
+      "clinchFinalCount": 0,
       "clinchGatedOut": []
     },
-    "tonightStorySelectedSignal": "championship_day",
-    "tonightStoryHeadline": "Vuelta a España — Stage 19",
-    "tonightStorySourceEvent": "cycling-grand-tour-vuelta-a-espa-a-2026-2026-09-11-stage-19",
+    "tonightStorySelectedSignal": null,
+    "tonightStoryHeadline": null,
+    "tonightStorySourceEvent": null,
     "tonightStoryDebug": {
-      "selectedSignal": "championship_day",
-      "selectedHeadline": "Vuelta a España — Stage 19",
-      "selectedScore": 200,
-      "sourceEventId": "cycling-grand-tour-vuelta-a-espa-a-2026-2026-09-11-stage-19",
-      "reason": "championship-day group (cycling|Vuelta a España|Stage 19, 1 event)",
-      "scoredCandidates": [
-        {
-          "label": "[championship_day] Vuelta a España — Stage 19",
-          "score": 200,
-          "reason": "championship-day group (cycling|Vuelta a España|Stage 19, 1 event)"
-        },
-        {
-          "label": "[championship_day] US Open Semifinals",
-          "score": 200,
-          "reason": "championship-day group (tennis|US Open|Semifinal, 2 events)"
-        },
-        {
-          "label": "[championship_day] UTMB — Wildstrubel",
-          "score": 200,
-          "reason": "championship-day group (athletics|utmb|UTMB — Wildstrubel, 1 event)"
-        },
-        {
-          "label": "[single_team_game] Marseille Today",
-          "score": 150,
-          "reason": "single followed team (Marseille) playing today"
-        }
-      ]
+      "selectedSignal": null,
+      "selectedHeadline": null,
+      "selectedScore": 0,
+      "sourceEventId": null,
+      "reason": "no stories scored",
+      "scoredCandidates": []
     },
     "videoSelection": {
-      "clinch_watch_rugby-rugbytests-m14zeb": {
-        "searchQuery": "New Zealand clinch playoff berth September 2026",
+      "marquee_match": {
+        "searchQuery": "Sparta Prague vs Ararat-Armenia Europa League preview",
+        "selectedVideoTitle": "EUROPA LEAGUE WEEK 1 PREDICTIONS AND BEST TIPS!",
+        "selectedVideoPublishedAt": "53 minutes ago",
+        "selectedVideoChannel": "TommyPROPS",
+        "rejectedForAgeCount": 0
+      },
+      "grand_tour_vuelta_a_espa_a": {
+        "searchQuery": "Vuelta a España cycling highlights September 2026",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
       "league_moment_rivalry": {
-        "searchQuery": "Freedom Cup sports September 2026",
-        "selectedVideoTitle": "돈을 받고 CEO와 결혼 계약을 맺는다! 하지만 CEO는 그녀에게 반해 아낌없이 사랑한다!",
-        "selectedVideoPublishedAt": "21 minutes ago",
-        "selectedVideoChannel": "糖金劇場SWEETFILM",
-        "rejectedForAgeCount": 1
-      },
-      "clinch_watch_tennis-espn-182768": {
-        "searchQuery": "Khachanov clinch playoff berth September 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
-      },
-      "f1_race_weekend_spanish_grand_prix": {
-        "searchQuery": "Spanish Grand Prix sports September 2026",
-        "selectedVideoTitle": "Drivers Look Ahead to a Weekend at a New Circuit! | 2026 Spanish Grand Prix",
-        "selectedVideoPublishedAt": "21h ago",
-        "selectedVideoChannel": "FORMULA 1",
-        "rejectedForAgeCount": 0
-      },
-      "marquee_match": {
-        "searchQuery": "Valencia vs Sevilla La Liga preview",
-        "selectedVideoTitle": "My La Liga Gameweek 5 Preview and Predictions!",
-        "selectedVideoPublishedAt": "8 hours ago",
-        "selectedVideoChannel": "Esso 99",
-        "rejectedForAgeCount": 0
-      },
-      "rally_weekend_racing-wrc-chile-2026-day3": {
-        "searchQuery": "Rally Chile WRC rally highlights",
-        "selectedVideoTitle": "🇨🇱 WRC RALLY CHILE BIOBÍO 2026 | SHAKEDOWN | HIGHLIGHTS",
-        "selectedVideoPublishedAt": "5 hours ago",
-        "selectedVideoChannel": "WRC Rally",
-        "rejectedForAgeCount": 1
-      },
-      "grand_tour_vuelta_a_espa_a": {
-        "searchQuery": "Vuelta a España cycling highlights September 2026",
-        "selectedVideoTitle": "Santiago Buitrago Cracks In Final Meters Of Vuelta a España 2026 Stage 19",
-        "selectedVideoPublishedAt": "18 minutes ago",
-        "selectedVideoChannel": "FloBikes",
+        "searchQuery": "Rivalry Weekend sports September 2026",
+        "selectedVideoTitle": "GIANTS BEAT THE COWBOYS & JETS DEFEAT THE TITANS | Carlin - 9/14/26",
+        "selectedVideoPublishedAt": "Streamed 4 hours ago",
+        "selectedVideoChannel": "ESPN New York",
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
-      "id": "clinch_watch_rugby-rugbytests-m14zeb",
-      "title": "Clinch Watch",
-      "subtitle": "Can secure semifinal place in the next 48h",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 92,
-      "triggeredAt": "2026-09-11T18:06:38.674Z",
-      "expiresAt": "2026-09-13T01:00:00.000Z",
-      "kind": "clinch_watch",
-      "region": "SouthAfrica",
-      "regionPriority": 1,
-      "regionLabel": "South Africa",
-      "meta": {
-        "source": "team_config",
-        "conditionLabel": "Can secure semifinal place",
-        "sport": "rugby",
-        "league": "Test Rugby",
-        "awayTeam": "New Zealand",
-        "homeTeam": "South Africa",
-        "startTime": "2026-09-12T21:00:00.000Z",
-        "eventIds": [
-          "rugby-rugbytests-m14zeb"
-        ],
-        "reason": "South Africa have a chance to clinch tonight.\n\nOne result could turn this from a chase into a celebration."
-      },
-      "sports": [
-        "rugby"
-      ]
-    },
-    {
-      "id": "league_moment_rivalry",
-      "title": "Freedom Cup",
-      "subtitle": "Freedom Cup: New Zealand @ South Africa",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 70,
-      "triggeredAt": "2026-09-11T18:06:38.674Z",
-      "expiresAt": "2026-09-18T18:06:38.674Z",
-      "kind": "league_moment",
-      "region": "SouthAfrica",
-      "regionPriority": 1,
-      "regionLabel": "South Africa",
-      "meta": {
-        "type": "rivalry",
-        "matchCount": 1,
-        "rivalries": [
-          "Freedom Cup"
-        ],
-        "matches": [
-          {
-            "label": "Freedom Cup",
-            "away": "New Zealand",
-            "home": "South Africa",
-            "league": "Test Rugby",
-            "startTime": "2026-09-12T21:00:00.000Z"
-          }
-        ],
-        "eventIds": [
-          "rugby-rugbytests-m14zeb"
-        ],
-        "reason": "1 known rivalry matchup(s) found: Freedom Cup"
-      },
-      "sports": [
-        "rugby"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=pHmqxF7MSWs",
-        "thumbnailUrl": "https://img.youtube.com/vi/pHmqxF7MSWs/hqdefault.jpg",
-        "durationSeconds": 6080,
-        "title": "돈을 받고 CEO와 결혼 계약을 맺는다! 하지만 CEO는 그녀에게 반해 아낌없이 사랑한다!",
-        "source": "youtube",
-        "channel": "糖金劇場SWEETFILM",
-        "publishedAt": "21 minutes ago"
-      }
-    },
-    {
-      "id": "clinch_watch_tennis-espn-182768",
-      "title": "Clinch Watch",
-      "subtitle": "Khachanov vs Zverev · Tennis title on the line",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 92,
-      "triggeredAt": "2026-09-11T18:06:38.674Z",
-      "expiresAt": "2026-09-11T23:00:00.000Z",
-      "kind": "clinch_watch",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "source": "tournament",
-        "conditionLabel": "Tennis title on the line",
-        "sport": "tennis",
-        "league": "Grand Slam",
-        "awayTeam": "Khachanov",
-        "homeTeam": "Zverev",
-        "startTime": "2026-09-11T19:00:00.000Z",
-        "eventIds": [
-          "tennis-espn-182768"
-        ],
-        "reason": "Khachanov and Zverev meet with a tennis title on the line.\n\nThis is the kind of moment entire seasons build toward."
-      },
-      "sports": [
-        "tennis"
-      ]
-    },
-    {
-      "id": "f1_race_weekend_spanish_grand_prix",
-      "title": "Spanish Grand Prix",
-      "subtitle": "Spanish Grand Prix — 3 sessions in the next 48h: Practice 3, Qualifying, Race",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 85,
-      "triggeredAt": "2026-09-11T18:06:38.674Z",
-      "expiresAt": "2026-09-13T17:00:00.000Z",
-      "kind": "league_moment",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "type": "f1_race_weekend",
-        "grandPrix": "Spanish Grand Prix",
-        "sessionCount": 3,
-        "sessions": [
-          {
-            "sessionTitle": "Practice 3",
-            "startTime": "2026-09-12T10:30:00.000Z",
-            "eventId": "f1-espn-401839105"
-          },
-          {
-            "sessionTitle": "Qualifying",
-            "startTime": "2026-09-12T14:00:00.000Z",
-            "eventId": "f1-espn-401839106"
-          },
-          {
-            "sessionTitle": "Race",
-            "startTime": "2026-09-13T13:00:00.000Z",
-            "eventId": "f1-espn-401839107"
-          }
-        ],
-        "eventIds": [
-          "f1-espn-401839105",
-          "f1-espn-401839106",
-          "f1-espn-401839107"
-        ],
-        "reason": "Spanish Grand Prix race weekend — 3 session(s) within 48 hours"
-      },
-      "sports": [
-        "racing"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=UkpPYktKo54",
-        "thumbnailUrl": "https://img.youtube.com/vi/UkpPYktKo54/hqdefault.jpg",
-        "durationSeconds": 857,
-        "title": "Drivers Look Ahead to a Weekend at a New Circuit! | 2026 Spanish Grand Prix",
-        "source": "youtube",
-        "channel": "FORMULA 1",
-        "publishedAt": "21h ago"
-      }
-    },
-    {
       "id": "marquee_match",
-      "title": "Marquee Match: La Liga",
-      "subtitle": "Valencia vs Sevilla — La Liga · kickoff soon",
+      "title": "Marquee Match: Europa League",
+      "subtitle": "Sparta Prague vs Ararat-Armenia — Europa League · in 2 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-09-11T18:06:38.674Z",
-      "expiresAt": "2026-09-11T23:00:00.000Z",
+      "triggeredAt": "2026-09-14T21:49:02.231Z",
+      "expiresAt": "2026-09-16T20:45:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "marquee_match",
-        "league": "La Liga",
-        "home": "Sevilla",
-        "away": "Valencia",
+        "league": "Europa League",
+        "home": "Ararat-Armenia",
+        "away": "Sparta Prague",
         "rivalry": null,
-        "startTime": "2026-09-11T19:00:00.000Z",
+        "startTime": "2026-09-16T16:45:00.000Z",
         "eventIds": [
-          "soccer-laliga-20260911-1900-valencia-at-sevilla"
+          "soccer-europaleague-20260916-1645-sparta-prague-at-ararat-armenia"
         ],
-        "reason": "Top La Liga fixture (Valencia vs Sevilla) kickoff soon"
+        "reason": "Top Europa League fixture (Sparta Prague vs Ararat-Armenia) in 2 days"
       },
       "sports": [
         "soccer"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=UvgtUmGK5uc",
-        "thumbnailUrl": "https://img.youtube.com/vi/UvgtUmGK5uc/hqdefault.jpg",
-        "durationSeconds": 1410,
-        "title": "My La Liga Gameweek 5 Preview and Predictions!",
+        "url": "https://www.youtube.com/watch?v=J2tjmetGYU8",
+        "thumbnailUrl": "https://img.youtube.com/vi/J2tjmetGYU8/hqdefault.jpg",
+        "durationSeconds": 818,
+        "title": "EUROPA LEAGUE WEEK 1 PREDICTIONS AND BEST TIPS!",
         "source": "youtube",
-        "channel": "Esso 99",
-        "publishedAt": "8 hours ago"
-      }
-    },
-    {
-      "id": "rally_weekend_racing-wrc-chile-2026-day3",
-      "title": "Rally Weekend",
-      "subtitle": "Rally Chile — starts tomorrow",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 75,
-      "triggeredAt": "2026-09-11T18:06:38.674Z",
-      "expiresAt": "2026-09-15T13:00:00.000Z",
-      "kind": "rally_weekend",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "type": "rally_weekend",
-        "rallyName": "Rally Chile",
-        "startTime": "2026-09-12T13:00:00.000Z",
-        "eventIds": [
-          "racing-wrc-chile-2026-day3"
-        ],
-        "reason": "WRC Rally Chile within 7 days"
-      },
-      "sports": [
-        "racing"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=1haPmz-MWB8",
-        "thumbnailUrl": "https://img.youtube.com/vi/1haPmz-MWB8/hqdefault.jpg",
-        "durationSeconds": 490,
-        "title": "🇨🇱 WRC RALLY CHILE BIOBÍO 2026 | SHAKEDOWN | HIGHLIGHTS",
-        "source": "youtube",
-        "channel": "WRC Rally",
-        "publishedAt": "5 hours ago"
+        "channel": "TommyPROPS",
+        "publishedAt": "53 minutes ago"
       }
     },
     {
       "id": "grand_tour_vuelta_a_espa_a",
       "title": "Grand Tour",
-      "subtitle": "Vuelta a España — 2 stages in the next 7 days",
+      "subtitle": "Vuelta a España — race in progress",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-09-11T18:06:38.674Z",
-      "expiresAt": "2026-09-18T18:06:38.674Z",
+      "triggeredAt": "2026-09-14T21:49:02.231Z",
+      "expiresAt": "2026-09-21T21:49:02.231Z",
       "kind": "grand_tour",
       "region": "Other",
       "regionPriority": 99,
@@ -460,183 +180,77 @@
       "meta": {
         "type": "grand_tour",
         "tourName": "Vuelta a España",
-        "stageCount": 4,
-        "upcomingStageCount": 2,
+        "stageCount": 1,
+        "upcomingStageCount": 0,
         "eventIds": [
-          "cycling-grand-tour-vuelta-a-espa-a-2026-2026-09-10-stage-18",
-          "cycling-grand-tour-vuelta-a-espa-a-2026-2026-09-11-stage-19",
-          "cycling-grand-tour-vuelta-a-espa-a-2026-2026-09-12-stage-20",
           "cycling-grand-tour-vuelta-a-espa-a-2026-2026-09-13-stage-21"
         ],
-        "reason": "Vuelta a España active — 4 stage(s) in window"
+        "reason": "Vuelta a España active — 1 stage(s) in window"
       },
       "sports": [
         "cycling"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=u-W7t7uGKE8",
-        "thumbnailUrl": "https://img.youtube.com/vi/u-W7t7uGKE8/hqdefault.jpg",
-        "durationSeconds": 84,
-        "title": "Santiago Buitrago Cracks In Final Meters Of Vuelta a España 2026 Stage 19",
-        "source": "youtube",
-        "channel": "FloBikes",
-        "publishedAt": "18 minutes ago"
-      }
+      ]
     },
     {
-      "id": "weekend_watchlist",
-      "title": "Weekend Watchlist",
-      "subtitle": "3 marquee matchups · F1 · Grand Slam · WRC",
+      "id": "league_moment_rivalry",
+      "title": "Rivalry Weekend",
+      "subtitle": "2 rivalry matchups in the next 7 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
-      "priority": 55,
-      "triggeredAt": "2026-09-11T18:06:38.674Z",
-      "expiresAt": "2026-09-13T23:59:59.999Z",
-      "kind": "weekend_watchlist",
+      "priority": 70,
+      "triggeredAt": "2026-09-14T21:49:02.231Z",
+      "expiresAt": "2026-09-21T21:49:02.231Z",
+      "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "type": "weekend_watchlist",
-        "matchCount": 3,
+        "type": "rivalry",
+        "matchCount": 2,
+        "rivalries": [
+          "Madrid Derby",
+          "Le Classique"
+        ],
         "matches": [
           {
-            "league": "F1",
-            "sport": "racing",
-            "away": "Practice 3",
-            "home": "Spanish Grand Prix",
-            "startTime": "2026-09-12T10:30:00.000Z"
+            "label": "Madrid Derby",
+            "away": "Real Madrid",
+            "home": "Atlético Madrid",
+            "league": "La Liga",
+            "startTime": "2026-09-20T14:15:00.000Z"
           },
           {
-            "league": "Grand Slam",
-            "sport": "tennis",
-            "away": "Khachanov",
-            "home": "Zverev",
-            "startTime": "2026-09-11T19:00:00.000Z"
-          },
-          {
-            "league": "WRC",
-            "sport": "racing",
-            "away": "",
-            "home": "Rally Chile",
-            "startTime": "2026-09-12T13:00:00.000Z"
+            "label": "Le Classique",
+            "away": "Paris Saint-Germain",
+            "home": "Marseille",
+            "league": "Ligue 1",
+            "startTime": "2026-09-20T18:45:00.000Z"
           }
         ],
         "eventIds": [
-          "f1-espn-401839105",
-          "tennis-espn-182768",
-          "racing-wrc-chile-2026-day3"
+          "soccer-laliga-20260920-1415-real-madrid-at-atl-tico-madrid",
+          "soccer-ligue1-20260920-1845-paris-saint-germain-at-marseille"
         ],
-        "reason": "Weekend window: 3 top-priority event(s) across 2 sport(s)"
-      },
-      "sports": [
-        "racing",
-        "tennis"
-      ]
-    }
-  ],
-  "tonightStory": {
-    "signalType": "championship_day",
-    "signalLabel": "CHAMPIONSHIP DAY",
-    "headline": "Vuelta a España — Stage 19",
-    "body": "Stage 19 of the Vuelta a España hits the road today.",
-    "sourceEventId": "cycling-grand-tour-vuelta-a-espa-a-2026-2026-09-11-stage-19",
-    "eventIds": [
-      "cycling-grand-tour-vuelta-a-espa-a-2026-2026-09-11-stage-19"
-    ],
-    "sourceCard": {
-      "id": "championship_day_cycling-vuelta-a-espa-a-stage-19",
-      "kind": "championship_day",
-      "title": "Vuelta a España — Stage 19"
-    },
-    "sports": [
-      "cycling"
-    ],
-    "favoriteTeams": []
-  },
-  "todaysStories": [
-    {
-      "signalType": "championship_day",
-      "signalLabel": "CHAMPIONSHIP DAY",
-      "headline": "Vuelta a España — Stage 19",
-      "body": "Stage 19 of the Vuelta a España hits the road today.",
-      "sourceEventId": "cycling-grand-tour-vuelta-a-espa-a-2026-2026-09-11-stage-19",
-      "eventIds": [
-        "cycling-grand-tour-vuelta-a-espa-a-2026-2026-09-11-stage-19"
-      ],
-      "sourceCard": {
-        "id": "championship_day_cycling-vuelta-a-espa-a-stage-19",
-        "kind": "championship_day",
-        "title": "Vuelta a España — Stage 19"
-      },
-      "sports": [
-        "cycling"
-      ],
-      "favoriteTeams": []
-    },
-    {
-      "signalType": "championship_day",
-      "signalLabel": "CHAMPIONSHIP DAY",
-      "headline": "US Open Semifinals",
-      "body": "Semifinals day at the US Open — title contenders on the line.",
-      "sourceEventId": "tennis-espn-182768",
-      "eventIds": [
-        "tennis-espn-182768",
-        "tennis-espn-182766"
-      ],
-      "sourceCard": {
-        "id": "championship_day_tennis-us-open-semifinal",
-        "kind": "championship_day",
-        "title": "US Open Semifinals"
-      },
-      "sports": [
-        "tennis"
-      ],
-      "favoriteTeams": []
-    },
-    {
-      "signalType": "championship_day",
-      "signalLabel": "CHAMPIONSHIP DAY",
-      "headline": "UTMB — Wildstrubel",
-      "body": "Trail runners line up at UTMB — Wildstrubel today — a UTMB World Series race.",
-      "sourceEventId": "athletics-utmb-wildstrubel-2026",
-      "eventIds": [
-        "athletics-utmb-wildstrubel-2026"
-      ],
-      "sourceCard": {
-        "id": "championship_day_athletics-utmb-utmb-wildstrubel",
-        "kind": "championship_day",
-        "title": "UTMB — Wildstrubel"
-      },
-      "sports": [
-        "athletics"
-      ],
-      "favoriteTeams": []
-    },
-    {
-      "signalType": "single_team_game",
-      "signalLabel": "YOUR TEAM",
-      "headline": "Marseille Today",
-      "body": "Marseille at Stade Rennais — catch the action in the Ligue 1.",
-      "sourceEventId": "soccer-ligue1-20260911-1845-marseille-at-stade-rennais",
-      "eventIds": [
-        "soccer-ligue1-20260911-1845-marseille-at-stade-rennais"
-      ],
-      "sourceCard": {
-        "id": "tonight_single_team",
-        "kind": "single_team_game",
-        "title": "Marseille Today"
+        "reason": "2 known rivalry matchup(s) found: Madrid Derby, Le Classique"
       },
       "sports": [
         "soccer"
       ],
-      "favoriteTeams": [
-        "Marseille"
-      ]
+      "video": {
+        "url": "https://www.youtube.com/watch?v=4lbd1t8sv0w",
+        "thumbnailUrl": "https://img.youtube.com/vi/4lbd1t8sv0w/hqdefault.jpg",
+        "durationSeconds": 10676,
+        "title": "GIANTS BEAT THE COWBOYS & JETS DEFEAT THE TITANS | Carlin - 9/14/26",
+        "source": "youtube",
+        "channel": "ESPN New York",
+        "publishedAt": "Streamed 4 hours ago"
+      }
     }
   ],
+  "tonightStory": null,
+  "todaysStories": [],
   "monthSnapshot": {
     "currentMonth": {
       "monthLabel": "September 2026",
@@ -651,6 +265,16 @@
           "endDate": "2026-09-27T23:00:00.000Z",
           "eventCount": 35,
           "seasonPhase": "Regular"
+        },
+        {
+          "sport": "cricket",
+          "displayName": "T20I Cricket",
+          "leagueKey": "t20i",
+          "dateRangeLabel": "Sep 1–19",
+          "startDate": "2026-09-01T12:00:00.000Z",
+          "endDate": "2026-09-19T10:00:00.000Z",
+          "eventCount": 11,
+          "seasonPhase": null
         },
         {
           "sport": "cycling",
@@ -769,7 +393,7 @@
           "dateRangeLabel": "Sep 4–27",
           "startDate": "2026-09-04T23:30:00.000Z",
           "endDate": "2026-09-27T23:00:00.000Z",
-          "eventCount": 75,
+          "eventCount": 74,
           "seasonPhase": "Regular"
         },
         {
@@ -804,6 +428,16 @@
         },
         {
           "sport": "cricket",
+          "displayName": "ODI Cricket",
+          "leagueKey": "odi",
+          "dateRangeLabel": "Sep 9–30",
+          "startDate": "2026-09-09T07:30:00.000Z",
+          "endDate": "2026-09-30T11:30:00.000Z",
+          "eventCount": 12,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
           "displayName": "Test Cricket",
           "leagueKey": "test",
           "dateRangeLabel": "Sep 9–13",
@@ -833,26 +467,6 @@
           "seasonPhase": null
         },
         {
-          "sport": "cricket",
-          "displayName": "T20I Cricket",
-          "leagueKey": "t20i",
-          "dateRangeLabel": "Sep 11–19",
-          "startDate": "2026-09-11T17:30:00.000Z",
-          "endDate": "2026-09-19T10:00:00.000Z",
-          "eventCount": 8,
-          "seasonPhase": null
-        },
-        {
-          "sport": "tennis",
-          "displayName": "US Open",
-          "leagueKey": "grand-slam",
-          "dateRangeLabel": "Sep 11",
-          "startDate": "2026-09-11T19:00:00.000Z",
-          "endDate": "2026-09-11T23:00:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": null
-        },
-        {
           "sport": "athletics",
           "displayName": "UTMB — Wildstrubel",
           "leagueKey": "utmb",
@@ -860,16 +474,6 @@
           "startDate": "2026-09-12T03:00:00.000Z",
           "endDate": "2026-09-12T03:00:00.000Z",
           "eventCount": 1,
-          "seasonPhase": null
-        },
-        {
-          "sport": "cricket",
-          "displayName": "ODI Cricket",
-          "leagueKey": "odi",
-          "dateRangeLabel": "Sep 15–30",
-          "startDate": "2026-09-15T07:30:00.000Z",
-          "endDate": "2026-09-30T11:30:00.000Z",
-          "eventCount": 9,
           "seasonPhase": null
         },
         {
@@ -1003,20 +607,20 @@
           "sport": "soccer",
           "displayName": "USL",
           "leagueKey": "usl",
-          "dateRangeLabel": "Oct 1",
+          "dateRangeLabel": "Oct 1–4",
           "startDate": "2026-10-01T00:00:00.000Z",
-          "endDate": "2026-10-01T02:00:00.000Z",
-          "eventCount": 2,
+          "endDate": "2026-10-04T22:00:00.000Z",
+          "eventCount": 13,
           "seasonPhase": "Regular"
         },
         {
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "Oct 1",
+          "dateRangeLabel": "Oct 1–4",
           "startDate": "2026-10-01T02:00:00.000Z",
-          "endDate": "2026-10-01T02:00:00.000Z",
-          "eventCount": 1,
+          "endDate": "2026-10-04T02:00:00.000Z",
+          "eventCount": 27,
           "seasonPhase": null
         },
         {
@@ -1033,10 +637,10 @@
           "sport": "rugby",
           "displayName": "NPC",
           "leagueKey": "npc",
-          "dateRangeLabel": "Oct 1",
+          "dateRangeLabel": "Oct 1–4",
           "startDate": "2026-10-01T06:10:00.000Z",
-          "endDate": "2026-10-01T06:10:00.000Z",
-          "eventCount": 1,
+          "endDate": "2026-10-04T04:05:00.000Z",
+          "eventCount": 7,
           "seasonPhase": "Playoffs"
         },
         {
@@ -1070,13 +674,73 @@
           "seasonPhase": null
         },
         {
+          "sport": "rugby",
+          "displayName": "URC",
+          "leagueKey": "urc",
+          "dateRangeLabel": "Oct 2–3",
+          "startDate": "2026-10-02T18:45:00.000Z",
+          "endDate": "2026-10-03T18:45:00.000Z",
+          "eventCount": 8,
+          "seasonPhase": null
+        },
+        {
+          "sport": "rugby",
+          "displayName": "English Premiership",
+          "leagueKey": "premiership",
+          "dateRangeLabel": "Oct 2–4",
+          "startDate": "2026-10-02T18:45:00.000Z",
+          "endDate": "2026-10-04T14:00:00.000Z",
+          "eventCount": 5,
+          "seasonPhase": null
+        },
+        {
+          "sport": "hockey",
+          "displayName": "AHL",
+          "leagueKey": "ahl",
+          "dateRangeLabel": "Oct 2–5",
+          "startDate": "2026-10-02T23:00:00.000Z",
+          "endDate": "2026-10-05T00:00:00.000Z",
+          "eventCount": 30,
+          "seasonPhase": null
+        },
+        {
+          "sport": "soccer",
+          "displayName": "NWSL",
+          "leagueKey": "nwsl",
+          "dateRangeLabel": "Oct 3–4",
+          "startDate": "2026-10-03T00:00:00.000Z",
+          "endDate": "2026-10-04T23:00:00.000Z",
+          "eventCount": 8,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "cricket",
+          "displayName": "Test Cricket",
+          "leagueKey": "test",
+          "dateRangeLabel": "Oct 3–5",
+          "startDate": "2026-10-03T08:00:00.000Z",
+          "endDate": "2026-10-05T08:00:00.000Z",
+          "eventCount": 3,
+          "seasonPhase": null
+        },
+        {
           "sport": "soccer",
           "displayName": "CAF Champions League",
           "leagueKey": "cafchampionsleague",
-          "dateRangeLabel": "Oct 3",
+          "dateRangeLabel": "Oct 3–23",
           "startDate": "2026-10-03T12:00:00.000Z",
-          "endDate": "2026-10-03T12:00:00.000Z",
-          "eventCount": 1,
+          "endDate": "2026-10-23T18:00:00.000Z",
+          "eventCount": 33,
+          "seasonPhase": null
+        },
+        {
+          "sport": "rugby",
+          "displayName": "Top 14",
+          "leagueKey": "top14",
+          "dateRangeLabel": "Oct 3–4",
+          "startDate": "2026-10-03T12:30:00.000Z",
+          "endDate": "2026-10-04T19:05:00.000Z",
+          "eventCount": 7,
           "seasonPhase": null
         },
         {
@@ -1093,10 +757,10 @@
           "sport": "tennis",
           "displayName": "Shanghai",
           "leagueKey": "atp-masters",
-          "dateRangeLabel": "Oct 7–11",
+          "dateRangeLabel": "Oct 7–14",
           "startDate": "2026-10-07T03:00:00.000Z",
-          "endDate": "2026-10-11T06:00:00.000Z",
-          "eventCount": 10,
+          "endDate": "2026-10-14T06:00:00.000Z",
+          "eventCount": 16,
           "seasonPhase": null
         },
         {
@@ -1163,56 +827,76 @@
       "championshipFinals": []
     },
     "thisWeek": {
-      "monthLabel": "Sep 7–13, 2026",
-      "monthKey": "week-2026-09-07",
+      "monthLabel": "Sep 14–20, 2026",
+      "monthKey": "week-2026-09-14",
       "leagues": [
         {
           "sport": "soccer",
-          "displayName": "NWSL",
-          "leagueKey": "nwsl",
-          "dateRangeLabel": "Sep 7–13",
-          "startDate": "2026-09-07T01:00:00.000Z",
-          "endDate": "2026-09-13T23:00:00.000Z",
-          "eventCount": 9,
+          "displayName": "MLS",
+          "leagueKey": "mls",
+          "dateRangeLabel": "Sep 14–20",
+          "startDate": "2026-09-14T01:00:00.000Z",
+          "endDate": "2026-09-20T23:00:00.000Z",
+          "eventCount": 16,
           "seasonPhase": "Regular"
         },
         {
           "sport": "soccer",
           "displayName": "Serie A",
           "leagueKey": "seriea",
-          "dateRangeLabel": "Sep 7–13",
-          "startDate": "2026-09-07T16:30:00.000Z",
-          "endDate": "2026-09-13T18:45:00.000Z",
-          "eventCount": 9,
+          "dateRangeLabel": "Sep 14–20",
+          "startDate": "2026-09-14T16:30:00.000Z",
+          "endDate": "2026-09-20T18:45:00.000Z",
+          "eventCount": 13,
           "seasonPhase": null
         },
         {
           "sport": "soccer",
           "displayName": "La Liga",
           "leagueKey": "laliga",
-          "dateRangeLabel": "Sep 7–13",
-          "startDate": "2026-09-07T17:00:00.000Z",
-          "endDate": "2026-09-13T19:00:00.000Z",
-          "eventCount": 11,
+          "dateRangeLabel": "Sep 14–20",
+          "startDate": "2026-09-14T19:00:00.000Z",
+          "endDate": "2026-09-20T19:00:00.000Z",
+          "eventCount": 20,
           "seasonPhase": null
         },
         {
-          "sport": "cycling",
-          "displayName": "Grand Tour — Vuelta a España",
-          "leagueKey": "grand-tour",
-          "dateRangeLabel": "Sep 8–13",
-          "startDate": "2026-09-08T12:00:00.000Z",
-          "endDate": "2026-09-13T12:00:00.000Z",
-          "eventCount": 6,
+          "sport": "cricket",
+          "displayName": "ODI Cricket",
+          "leagueKey": "odi",
+          "dateRangeLabel": "Sep 15–20",
+          "startDate": "2026-09-15T07:30:00.000Z",
+          "endDate": "2026-09-20T07:30:00.000Z",
+          "eventCount": 3,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
+          "displayName": "T20I Cricket",
+          "leagueKey": "t20i",
+          "dateRangeLabel": "Sep 15–19",
+          "startDate": "2026-09-15T14:00:00.000Z",
+          "endDate": "2026-09-19T10:00:00.000Z",
+          "eventCount": 5,
           "seasonPhase": null
         },
         {
           "sport": "soccer",
-          "displayName": "Champions League",
-          "leagueKey": "championsleague",
-          "dateRangeLabel": "Sep 8–10",
-          "startDate": "2026-09-08T16:45:00.000Z",
-          "endDate": "2026-09-10T19:00:00.000Z",
+          "displayName": "USL",
+          "leagueKey": "usl",
+          "dateRangeLabel": "Sep 15–20",
+          "startDate": "2026-09-15T23:00:00.000Z",
+          "endDate": "2026-09-20T23:00:00.000Z",
+          "eventCount": 15,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "Europa League",
+          "leagueKey": "europaleague",
+          "dateRangeLabel": "Sep 16–17",
+          "startDate": "2026-09-16T16:45:00.000Z",
+          "endDate": "2026-09-17T19:00:00.000Z",
           "eventCount": 18,
           "seasonPhase": null
         },
@@ -1220,89 +904,39 @@
           "sport": "cricket",
           "displayName": "CPL",
           "leagueKey": "cpl",
-          "dateRangeLabel": "Sep 8–13",
-          "startDate": "2026-09-08T23:00:00.000Z",
-          "endDate": "2026-09-13T23:00:00.000Z",
-          "eventCount": 6,
-          "seasonPhase": null
-        },
-        {
-          "sport": "cricket",
-          "displayName": "Test Cricket",
-          "leagueKey": "test",
-          "dateRangeLabel": "Sep 9–13",
-          "startDate": "2026-09-09T10:00:00.000Z",
-          "endDate": "2026-09-13T10:00:00.000Z",
-          "eventCount": 5,
+          "dateRangeLabel": "Sep 16–20",
+          "startDate": "2026-09-16T23:00:00.000Z",
+          "endDate": "2026-09-20T23:00:00.000Z",
+          "eventCount": 4,
           "seasonPhase": null
         },
         {
           "sport": "soccer",
-          "displayName": "MLS",
-          "leagueKey": "mls",
-          "dateRangeLabel": "Sep 9–13",
-          "startDate": "2026-09-09T23:30:00.000Z",
-          "endDate": "2026-09-13T22:30:00.000Z",
-          "eventCount": 28,
+          "displayName": "NWSL",
+          "leagueKey": "nwsl",
+          "dateRangeLabel": "Sep 17–20",
+          "startDate": "2026-09-17T01:30:00.000Z",
+          "endDate": "2026-09-20T23:00:00.000Z",
+          "eventCount": 10,
           "seasonPhase": "Regular"
         },
         {
           "sport": "rugby",
           "displayName": "NPC",
           "leagueKey": "npc",
-          "dateRangeLabel": "Sep 10–13",
-          "startDate": "2026-09-10T07:10:00.000Z",
-          "endDate": "2026-09-13T05:05:00.000Z",
+          "dateRangeLabel": "Sep 17–20",
+          "startDate": "2026-09-17T07:10:00.000Z",
+          "endDate": "2026-09-20T05:05:00.000Z",
           "eventCount": 7,
           "seasonPhase": "Regular"
-        },
-        {
-          "sport": "racing",
-          "displayName": "Rally Chile",
-          "leagueKey": "wrc",
-          "dateRangeLabel": "Sep 10–13",
-          "startDate": "2026-09-10T13:00:00.000Z",
-          "endDate": "2026-09-13T13:00:00.000Z",
-          "eventCount": 4,
-          "seasonPhase": null
-        },
-        {
-          "sport": "soccer",
-          "displayName": "CAF Champions League",
-          "leagueKey": "cafchampionsleague",
-          "dateRangeLabel": "Sep 10–13",
-          "startDate": "2026-09-10T15:00:00.000Z",
-          "endDate": "2026-09-13T17:00:00.000Z",
-          "eventCount": 29,
-          "seasonPhase": null
-        },
-        {
-          "sport": "racing",
-          "displayName": "Spanish GP",
-          "leagueKey": "f1",
-          "dateRangeLabel": "Sep 11–13",
-          "startDate": "2026-09-11T11:30:00.000Z",
-          "endDate": "2026-09-13T13:00:00.000Z",
-          "eventCount": 5,
-          "seasonPhase": null
-        },
-        {
-          "sport": "cricket",
-          "displayName": "T20I Cricket",
-          "leagueKey": "t20i",
-          "dateRangeLabel": "Sep 11–13",
-          "startDate": "2026-09-11T17:30:00.000Z",
-          "endDate": "2026-09-13T14:00:00.000Z",
-          "eventCount": 3,
-          "seasonPhase": null
         },
         {
           "sport": "soccer",
           "displayName": "Bundesliga",
           "leagueKey": "bundesliga",
-          "dateRangeLabel": "Sep 11–13",
-          "startDate": "2026-09-11T18:30:00.000Z",
-          "endDate": "2026-09-13T15:30:00.000Z",
+          "dateRangeLabel": "Sep 18–20",
+          "startDate": "2026-09-18T18:30:00.000Z",
+          "endDate": "2026-09-20T17:30:00.000Z",
           "eventCount": 9,
           "seasonPhase": null
         },
@@ -1310,59 +944,39 @@
           "sport": "soccer",
           "displayName": "Ligue 1",
           "leagueKey": "ligue1",
-          "dateRangeLabel": "Sep 11–13",
-          "startDate": "2026-09-11T18:45:00.000Z",
-          "endDate": "2026-09-13T18:45:00.000Z",
+          "dateRangeLabel": "Sep 18–20",
+          "startDate": "2026-09-18T18:45:00.000Z",
+          "endDate": "2026-09-20T18:45:00.000Z",
           "eventCount": 9,
-          "seasonPhase": null
-        },
-        {
-          "sport": "tennis",
-          "displayName": "US Open",
-          "leagueKey": "grand-slam",
-          "dateRangeLabel": "Sep 11",
-          "startDate": "2026-09-11T19:00:00.000Z",
-          "endDate": "2026-09-11T23:00:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": null
-        },
-        {
-          "sport": "soccer",
-          "displayName": "USL",
-          "leagueKey": "usl",
-          "dateRangeLabel": "Sep 12–13",
-          "startDate": "2026-09-12T01:30:00.000Z",
-          "endDate": "2026-09-13T02:00:00.000Z",
-          "eventCount": 12,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "athletics",
-          "displayName": "UTMB — Wildstrubel",
-          "leagueKey": "utmb",
-          "dateRangeLabel": "Sep 12",
-          "startDate": "2026-09-12T03:00:00.000Z",
-          "endDate": "2026-09-12T03:00:00.000Z",
-          "eventCount": 1,
           "seasonPhase": null
         },
         {
           "sport": "rugby",
           "displayName": "Top 14",
           "leagueKey": "top14",
-          "dateRangeLabel": "Sep 12–13",
-          "startDate": "2026-09-12T14:35:00.000Z",
-          "endDate": "2026-09-13T19:05:00.000Z",
+          "dateRangeLabel": "Sep 19–20",
+          "startDate": "2026-09-19T12:30:00.000Z",
+          "endDate": "2026-09-20T19:05:00.000Z",
           "eventCount": 7,
           "seasonPhase": null
         },
         {
-          "sport": "rugby",
-          "displayName": "Test Rugby",
-          "leagueKey": "rugbytests",
-          "dateRangeLabel": "Sep 12",
-          "startDate": "2026-09-12T21:00:00.000Z",
-          "endDate": "2026-09-12T21:00:00.000Z",
+          "sport": "hockey",
+          "displayName": "SHL",
+          "leagueKey": "shl",
+          "dateRangeLabel": "Sep 19",
+          "startDate": "2026-09-19T13:15:00.000Z",
+          "endDate": "2026-09-19T16:00:00.000Z",
+          "eventCount": 7,
+          "seasonPhase": null
+        },
+        {
+          "sport": "athletics",
+          "displayName": "GTWS — Myoko Trail",
+          "leagueKey": "golden-trail",
+          "dateRangeLabel": "Sep 19",
+          "startDate": "2026-09-19T23:00:00.000Z",
+          "endDate": "2026-09-19T23:00:00.000Z",
           "eventCount": 1,
           "seasonPhase": null
         }
