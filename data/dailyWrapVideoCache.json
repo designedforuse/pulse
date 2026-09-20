@@ -1336,5 +1336,29 @@
       "channel": "douirmi Radouan"
     },
     "fetchedAt": "2026-09-14T21:40:18.868Z"
+  },
+  "cricket-t20i-yezlgz": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=L_YtbYifymo",
+      "thumbnailUrl": "https://i.ytimg.com/vi/L_YtbYifymo/hqdefault.jpg",
+      "durationSeconds": 602,
+      "title": "England vs Sri Lanka 2nd T20 Highlights 2026 | 17 September 2026 | Eng vs Sl 2nd t20 Highlights ",
+      "channel": "Cricket Match Today2"
+    },
+    "fetchedAt": "2026-09-18T18:25:43.849Z"
+  },
+  "cricket-odi-ysmjyt": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=fy1lM4Zg-PI",
+      "thumbnailUrl": "https://i.ytimg.com/vi/fy1lM4Zg-PI/hqdefault.jpg",
+      "durationSeconds": 765,
+      "title": "Australia vs Zimbabwe 2nd ODI Highlights 2026 | AUS VS ZIM",
+      "channel": "Sach Network HD"
+    },
+    "fetchedAt": "2026-09-18T18:25:43.849Z"
+  },
+  "rugby-npc-t0olof": {
+    "video": null,
+    "fetchedAt": "2026-09-18T18:25:43.849Z"
   }
 }

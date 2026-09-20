@@ -2417,22 +2417,62 @@
   },
   "league_moment:rivalry weekend sports september 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=4lbd1t8sv0w",
-      "thumbnailUrl": "https://img.youtube.com/vi/4lbd1t8sv0w/hqdefault.jpg",
-      "durationSeconds": 10676,
-      "title": "GIANTS BEAT THE COWBOYS & JETS DEFEAT THE TITANS | Carlin - 9/14/26",
+      "url": "https://www.youtube.com/watch?v=rFagvfVvb1w",
+      "thumbnailUrl": "https://img.youtube.com/vi/rFagvfVvb1w/hqdefault.jpg",
+      "durationSeconds": 569,
+      "title": "BEST NFL Week 2 PICKS! Jets vs Packers and Cardinals vs Seahawks | Jesse Schule",
       "source": "youtube",
-      "channel": "ESPN New York",
-      "publishedAt": "Streamed 4 hours ago"
+      "channel": "WagerTalk TV: Sports Picks and Betting Tips",
+      "publishedAt": "12 minutes ago"
     },
-    "fetchedAt": "2026-09-14T21:30:34.868Z",
+    "fetchedAt": "2026-09-18T18:26:00.319Z",
     "query": "Rivalry Weekend sports September 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports September 2026",
-      "selectedVideoTitle": "GIANTS BEAT THE COWBOYS & JETS DEFEAT THE TITANS | Carlin - 9/14/26",
-      "selectedVideoPublishedAt": "Streamed 4 hours ago",
-      "selectedVideoChannel": "ESPN New York",
+      "selectedVideoTitle": "BEST NFL Week 2 PICKS! Jets vs Packers and Cardinals vs Seahawks | Jesse Schule",
+      "selectedVideoPublishedAt": "12 minutes ago",
+      "selectedVideoChannel": "WagerTalk TV: Sports Picks and Betting Tips",
       "rejectedForAgeCount": 0
+    }
+  },
+  "marathon_spotlight:berlin marathon marathon highlights 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=OSl1nIoHe1s",
+      "thumbnailUrl": "https://img.youtube.com/vi/OSl1nIoHe1s/hqdefault.jpg",
+      "durationSeconds": 543,
+      "title": "Watch this before running the Berlin Marathon for the first time🏃‍♂️🇩🇪 | Expo, bib, and start (Pa...",
+      "source": "youtube",
+      "channel": "Chico Inexperto",
+      "publishedAt": "1 hour ago"
+    },
+    "fetchedAt": "2026-09-18T18:25:59.561Z",
+    "query": "Berlin Marathon marathon highlights 2026",
+    "debug": {
+      "searchQuery": "Berlin Marathon marathon highlights 2026",
+      "selectedVideoTitle": "Watch this before running the Berlin Marathon for the first time🏃‍♂️🇩🇪 | Expo, bib, and start (Pa...",
+      "selectedVideoPublishedAt": "1 hour ago",
+      "selectedVideoChannel": "Chico Inexperto",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:elche vs espanyol la liga preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=DWp2Ecxhh0Q",
+      "thumbnailUrl": "https://img.youtube.com/vi/DWp2Ecxhh0Q/hqdefault.jpg",
+      "durationSeconds": 66,
+      "title": "ESPANYOL VS ELCHE Quantitative Match Analysis & Asian Handicap Pick",
+      "source": "youtube",
+      "channel": "DataGoal AI",
+      "publishedAt": "8 minutes ago"
+    },
+    "fetchedAt": "2026-09-18T18:25:59.940Z",
+    "query": "Elche vs Espanyol La Liga preview",
+    "debug": {
+      "searchQuery": "Elche vs Espanyol La Liga preview",
+      "selectedVideoTitle": "ESPANYOL VS ELCHE Quantitative Match Analysis & Asian Handicap Pick",
+      "selectedVideoPublishedAt": "8 minutes ago",
+      "selectedVideoChannel": "DataGoal AI",
+      "rejectedForAgeCount": 1
     }
   }
 }

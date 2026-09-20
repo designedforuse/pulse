@@ -1,11 +1,14 @@
 {
-  "lastUpdated": "2026-09-14T21:49:02.231Z",
+  "lastUpdated": "2026-09-18T18:49:31.434Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
         "Other": 1
       },
-      "grand_tour": {
+      "weekend_watchlist": {
+        "Other": 1
+      },
+      "marathon_spotlight": {
         "Other": 1
       },
       "marquee_match": {
@@ -15,14 +18,15 @@
     "combinedPushByRegion": {},
     "finalFeedByRegion": {
       "Other": [
-        "marquee_match: Marquee Match: Europa League",
-        "grand_tour: Grand Tour",
-        "league_moment: Rivalry Weekend"
+        "marathon_spotlight: Marathon Major",
+        "marquee_match: Marquee Match: La Liga",
+        "league_moment: Rivalry Weekend",
+        "weekend_watchlist: Weekend Watchlist"
       ]
     },
     "droppedCandidatesReasons": [],
-    "totalBeforeCap": 3,
-    "totalAfterCap": 3,
+    "totalBeforeCap": 4,
+    "totalAfterCap": 4,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -39,7 +43,9 @@
           "VGK",
           "CGY",
           "EDM",
-          "VAN"
+          "VAN",
+          "MTL",
+          "TOR"
         ],
         "skippedTeams": [
           {
@@ -53,19 +59,19 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 357,
+        "playersIngested": 460,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-09-14T21:49:02.231Z"
+        "timestamp": "2026-09-18T18:49:31.434Z"
       },
-      "cacheHistoryCount": 881,
+      "cacheHistoryCount": 890,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 3,
-    "candidateCountAfterCap": 3,
+    "candidateCountBeforeCap": 4,
+    "candidateCountAfterCap": 4,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -4585.8172863888885,
+      "hoursUntil": -4678.825398333333,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -86,132 +92,148 @@
       "clinchFinalCount": 0,
       "clinchGatedOut": []
     },
-    "tonightStorySelectedSignal": null,
-    "tonightStoryHeadline": null,
-    "tonightStorySourceEvent": null,
+    "tonightStorySelectedSignal": "multi_team_night",
+    "tonightStoryHeadline": "Your Football Night",
+    "tonightStorySourceEvent": "soccer-bundesliga-20260918-1830-1-fc-union-berlin-at-bayern-munich",
     "tonightStoryDebug": {
-      "selectedSignal": null,
-      "selectedHeadline": null,
-      "selectedScore": 0,
-      "sourceEventId": null,
-      "reason": "no stories scored",
-      "scoredCandidates": []
+      "selectedSignal": "multi_team_night",
+      "selectedHeadline": "Your Football Night",
+      "selectedScore": 240,
+      "sourceEventId": "soccer-bundesliga-20260918-1830-1-fc-union-berlin-at-bayern-munich",
+      "reason": "2 followed/affiliate teams playing today",
+      "scoredCandidates": [
+        {
+          "label": "[multi_team_night] Your Football Night",
+          "score": 240,
+          "reason": "2 followed/affiliate teams playing today"
+        }
+      ]
     },
     "videoSelection": {
-      "marquee_match": {
-        "searchQuery": "Sparta Prague vs Ararat-Armenia Europa League preview",
-        "selectedVideoTitle": "EUROPA LEAGUE WEEK 1 PREDICTIONS AND BEST TIPS!",
-        "selectedVideoPublishedAt": "53 minutes ago",
-        "selectedVideoChannel": "TommyPROPS",
+      "marathon_athletics-marathon-berlin-marathon": {
+        "searchQuery": "Berlin Marathon marathon highlights 2026",
+        "selectedVideoTitle": "Watch this before running the Berlin Marathon for the first time🏃‍♂️🇩🇪 | Expo, bib, and start (Pa...",
+        "selectedVideoPublishedAt": "1 hour ago",
+        "selectedVideoChannel": "Chico Inexperto",
         "rejectedForAgeCount": 0
       },
-      "grand_tour_vuelta_a_espa_a": {
-        "searchQuery": "Vuelta a España cycling highlights September 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
+      "marquee_match": {
+        "searchQuery": "Elche vs Espanyol La Liga preview",
+        "selectedVideoTitle": "ESPANYOL VS ELCHE Quantitative Match Analysis & Asian Handicap Pick",
+        "selectedVideoPublishedAt": "8 minutes ago",
+        "selectedVideoChannel": "DataGoal AI",
+        "rejectedForAgeCount": 1
       },
       "league_moment_rivalry": {
         "searchQuery": "Rivalry Weekend sports September 2026",
-        "selectedVideoTitle": "GIANTS BEAT THE COWBOYS & JETS DEFEAT THE TITANS | Carlin - 9/14/26",
-        "selectedVideoPublishedAt": "Streamed 4 hours ago",
-        "selectedVideoChannel": "ESPN New York",
+        "selectedVideoTitle": "BEST NFL Week 2 PICKS! Jets vs Packers and Cardinals vs Seahawks | Jesse Schule",
+        "selectedVideoPublishedAt": "12 minutes ago",
+        "selectedVideoChannel": "WagerTalk TV: Sports Picks and Betting Tips",
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
+      "id": "marathon_athletics-marathon-berlin-marathon",
+      "title": "Marathon Major",
+      "subtitle": "Berlin Marathon — 9 days out",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 80,
+      "triggeredAt": "2026-09-18T18:49:31.434Z",
+      "expiresAt": "2026-09-29T07:00:00.000Z",
+      "kind": "marathon_spotlight",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "marathon_spotlight",
+        "marathonName": "Berlin Marathon",
+        "startTime": "2026-09-27T07:00:00.000Z",
+        "eventIds": [
+          "athletics-marathon-berlin-marathon"
+        ],
+        "reason": "World Marathon Majors event within 10 days: Berlin Marathon"
+      },
+      "sports": [
+        "athletics"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=OSl1nIoHe1s",
+        "thumbnailUrl": "https://img.youtube.com/vi/OSl1nIoHe1s/hqdefault.jpg",
+        "durationSeconds": 543,
+        "title": "Watch this before running the Berlin Marathon for the first time🏃‍♂️🇩🇪 | Expo, bib, and start (Pa...",
+        "source": "youtube",
+        "channel": "Chico Inexperto",
+        "publishedAt": "1 hour ago"
+      }
+    },
+    {
       "id": "marquee_match",
-      "title": "Marquee Match: Europa League",
-      "subtitle": "Sparta Prague vs Ararat-Armenia — Europa League · in 2 days",
+      "title": "Marquee Match: La Liga",
+      "subtitle": "Elche vs Espanyol — La Liga · kickoff soon",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-09-14T21:49:02.231Z",
-      "expiresAt": "2026-09-16T20:45:00.000Z",
+      "triggeredAt": "2026-09-18T18:49:31.434Z",
+      "expiresAt": "2026-09-18T23:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "marquee_match",
-        "league": "Europa League",
-        "home": "Ararat-Armenia",
-        "away": "Sparta Prague",
+        "league": "La Liga",
+        "home": "Espanyol",
+        "away": "Elche",
         "rivalry": null,
-        "startTime": "2026-09-16T16:45:00.000Z",
+        "startTime": "2026-09-18T19:00:00.000Z",
         "eventIds": [
-          "soccer-europaleague-20260916-1645-sparta-prague-at-ararat-armenia"
+          "soccer-laliga-20260918-1900-elche-at-espanyol"
         ],
-        "reason": "Top Europa League fixture (Sparta Prague vs Ararat-Armenia) in 2 days"
+        "reason": "Top La Liga fixture (Elche vs Espanyol) kickoff soon"
       },
       "sports": [
         "soccer"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=J2tjmetGYU8",
-        "thumbnailUrl": "https://img.youtube.com/vi/J2tjmetGYU8/hqdefault.jpg",
-        "durationSeconds": 818,
-        "title": "EUROPA LEAGUE WEEK 1 PREDICTIONS AND BEST TIPS!",
+        "url": "https://www.youtube.com/watch?v=DWp2Ecxhh0Q",
+        "thumbnailUrl": "https://img.youtube.com/vi/DWp2Ecxhh0Q/hqdefault.jpg",
+        "durationSeconds": 66,
+        "title": "ESPANYOL VS ELCHE Quantitative Match Analysis & Asian Handicap Pick",
         "source": "youtube",
-        "channel": "TommyPROPS",
-        "publishedAt": "53 minutes ago"
+        "channel": "DataGoal AI",
+        "publishedAt": "8 minutes ago"
       }
-    },
-    {
-      "id": "grand_tour_vuelta_a_espa_a",
-      "title": "Grand Tour",
-      "subtitle": "Vuelta a España — race in progress",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 75,
-      "triggeredAt": "2026-09-14T21:49:02.231Z",
-      "expiresAt": "2026-09-21T21:49:02.231Z",
-      "kind": "grand_tour",
-      "region": "Other",
-      "regionPriority": 99,
-      "regionLabel": "Other",
-      "meta": {
-        "type": "grand_tour",
-        "tourName": "Vuelta a España",
-        "stageCount": 1,
-        "upcomingStageCount": 0,
-        "eventIds": [
-          "cycling-grand-tour-vuelta-a-espa-a-2026-2026-09-13-stage-21"
-        ],
-        "reason": "Vuelta a España active — 1 stage(s) in window"
-      },
-      "sports": [
-        "cycling"
-      ]
     },
     {
       "id": "league_moment_rivalry",
       "title": "Rivalry Weekend",
-      "subtitle": "2 rivalry matchups in the next 7 days",
+      "subtitle": "4 rivalry matchups in the next 7 days",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-09-14T21:49:02.231Z",
-      "expiresAt": "2026-09-21T21:49:02.231Z",
+      "triggeredAt": "2026-09-18T18:49:31.434Z",
+      "expiresAt": "2026-09-25T18:49:31.434Z",
       "kind": "league_moment",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "rivalry",
-        "matchCount": 2,
+        "matchCount": 4,
         "rivalries": [
           "Madrid Derby",
-          "Le Classique"
+          "Le Classique",
+          "Mandela Challenge Plate",
+          "SA vs AUS"
         ],
         "matches": [
           {
@@ -227,30 +249,147 @@
             "home": "Marseille",
             "league": "Ligue 1",
             "startTime": "2026-09-20T18:45:00.000Z"
+          },
+          {
+            "label": "Mandela Challenge Plate",
+            "away": "Australia",
+            "home": "South Africa",
+            "league": "ODI Cricket",
+            "startTime": "2026-09-24T08:00:00.000Z"
+          },
+          {
+            "label": "SA vs AUS",
+            "away": "Australia",
+            "home": "South Africa",
+            "league": "ODI Cricket",
+            "startTime": "2026-09-24T08:00:00.000Z"
           }
         ],
         "eventIds": [
           "soccer-laliga-20260920-1415-real-madrid-at-atl-tico-madrid",
-          "soccer-ligue1-20260920-1845-paris-saint-germain-at-marseille"
+          "soccer-ligue1-20260920-1845-paris-saint-germain-at-marseille",
+          "cricket-odi-ys61e7",
+          "cricket-odi-ys61e7"
         ],
-        "reason": "2 known rivalry matchup(s) found: Madrid Derby, Le Classique"
+        "reason": "4 known rivalry matchup(s) found: Madrid Derby, Le Classique, Mandela Challenge Plate, SA vs AUS"
+      },
+      "sports": [
+        "soccer",
+        "cricket"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=rFagvfVvb1w",
+        "thumbnailUrl": "https://img.youtube.com/vi/rFagvfVvb1w/hqdefault.jpg",
+        "durationSeconds": 569,
+        "title": "BEST NFL Week 2 PICKS! Jets vs Packers and Cardinals vs Seahawks | Jesse Schule",
+        "source": "youtube",
+        "channel": "WagerTalk TV: Sports Picks and Betting Tips",
+        "publishedAt": "12 minutes ago"
+      }
+    },
+    {
+      "id": "weekend_watchlist",
+      "title": "Weekend Watchlist",
+      "subtitle": "3 marquee matchups · La Liga · Serie A · Bundesliga",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 55,
+      "triggeredAt": "2026-09-18T18:49:31.434Z",
+      "expiresAt": "2026-09-20T23:59:59.999Z",
+      "kind": "weekend_watchlist",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "weekend_watchlist",
+        "matchCount": 3,
+        "matches": [
+          {
+            "league": "La Liga",
+            "sport": "soccer",
+            "away": "Elche",
+            "home": "Espanyol",
+            "startTime": "2026-09-18T19:00:00.000Z"
+          },
+          {
+            "league": "Serie A",
+            "sport": "soccer",
+            "away": "Torino",
+            "home": "Bologna",
+            "startTime": "2026-09-19T13:00:00.000Z"
+          },
+          {
+            "league": "Bundesliga",
+            "sport": "soccer",
+            "away": "Mainz",
+            "home": "Borussia Mönchengladbach",
+            "startTime": "2026-09-19T13:30:00.000Z"
+          }
+        ],
+        "eventIds": [
+          "soccer-laliga-20260918-1900-elche-at-espanyol",
+          "soccer-seriea-espn-401874767",
+          "soccer-bundesliga-20260919-1330-mainz-at-borussia-m-nchengladbach"
+        ],
+        "reason": "Weekend window: 3 top-priority event(s) across 1 sport(s)"
+      },
+      "sports": [
+        "soccer"
+      ]
+    }
+  ],
+  "tonightStory": {
+    "signalType": "multi_team_night",
+    "signalLabel": "YOUR TEAMS",
+    "headline": "Your Football Night",
+    "body": "The Bayern Munich and San Diego FC all play today across the Bundesliga, NWSL.",
+    "sourceEventId": "soccer-bundesliga-20260918-1830-1-fc-union-berlin-at-bayern-munich",
+    "eventIds": [
+      "soccer-bundesliga-20260918-1830-1-fc-union-berlin-at-bayern-munich",
+      "soccer-nwsl-20260919-0200-kansas-city-current-at-san-diego-wave"
+    ],
+    "sourceCard": {
+      "id": "tonight_multi_team",
+      "kind": "multi_team_night",
+      "title": "Your Football Night"
+    },
+    "sports": [
+      "soccer"
+    ],
+    "favoriteTeams": [
+      "Bayern Munich",
+      "San Diego FC",
+      "San Diego Wave"
+    ]
+  },
+  "todaysStories": [
+    {
+      "signalType": "multi_team_night",
+      "signalLabel": "YOUR TEAMS",
+      "headline": "Your Football Night",
+      "body": "The Bayern Munich and San Diego FC all play today across the Bundesliga, NWSL.",
+      "sourceEventId": "soccer-bundesliga-20260918-1830-1-fc-union-berlin-at-bayern-munich",
+      "eventIds": [
+        "soccer-bundesliga-20260918-1830-1-fc-union-berlin-at-bayern-munich",
+        "soccer-nwsl-20260919-0200-kansas-city-current-at-san-diego-wave"
+      ],
+      "sourceCard": {
+        "id": "tonight_multi_team",
+        "kind": "multi_team_night",
+        "title": "Your Football Night"
       },
       "sports": [
         "soccer"
       ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=4lbd1t8sv0w",
-        "thumbnailUrl": "https://img.youtube.com/vi/4lbd1t8sv0w/hqdefault.jpg",
-        "durationSeconds": 10676,
-        "title": "GIANTS BEAT THE COWBOYS & JETS DEFEAT THE TITANS | Carlin - 9/14/26",
-        "source": "youtube",
-        "channel": "ESPN New York",
-        "publishedAt": "Streamed 4 hours ago"
-      }
+      "favoriteTeams": [
+        "Bayern Munich",
+        "San Diego FC",
+        "San Diego Wave"
+      ]
     }
   ],
-  "tonightStory": null,
-  "todaysStories": [],
   "monthSnapshot": {
     "currentMonth": {
       "monthLabel": "September 2026",
@@ -258,133 +397,43 @@
       "leagues": [
         {
           "sport": "soccer",
-          "displayName": "NWSL",
-          "leagueKey": "nwsl",
-          "dateRangeLabel": "Sep 1–27",
-          "startDate": "2026-09-01T00:00:00.000Z",
-          "endDate": "2026-09-27T23:00:00.000Z",
-          "eventCount": 35,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "cricket",
-          "displayName": "T20I Cricket",
-          "leagueKey": "t20i",
-          "dateRangeLabel": "Sep 1–19",
-          "startDate": "2026-09-01T12:00:00.000Z",
-          "endDate": "2026-09-19T10:00:00.000Z",
-          "eventCount": 11,
+          "displayName": "La Liga",
+          "leagueKey": "laliga",
+          "dateRangeLabel": "Sep 4–20",
+          "startDate": "2026-09-04T19:00:00.000Z",
+          "endDate": "2026-09-20T19:00:00.000Z",
+          "eventCount": 39,
           "seasonPhase": null
         },
         {
-          "sport": "cycling",
-          "displayName": "Grand Tour — Vuelta a España",
-          "leagueKey": "grand-tour",
-          "dateRangeLabel": "Sep 1–13",
-          "startDate": "2026-09-01T12:00:00.000Z",
-          "endDate": "2026-09-13T12:00:00.000Z",
-          "eventCount": 12,
+          "sport": "soccer",
+          "displayName": "Ligue 1",
+          "leagueKey": "ligue1",
+          "dateRangeLabel": "Sep 4–20",
+          "startDate": "2026-09-04T19:05:00.000Z",
+          "endDate": "2026-09-20T18:45:00.000Z",
+          "eventCount": 25,
           "seasonPhase": null
         },
         {
           "sport": "cricket",
           "displayName": "CPL",
           "leagueKey": "cpl",
-          "dateRangeLabel": "Sep 1–20",
-          "startDate": "2026-09-01T23:00:00.000Z",
+          "dateRangeLabel": "Sep 4–20",
+          "startDate": "2026-09-04T23:00:00.000Z",
           "endDate": "2026-09-20T23:00:00.000Z",
-          "eventCount": 17,
+          "eventCount": 14,
           "seasonPhase": null
         },
         {
           "sport": "soccer",
           "displayName": "USL",
           "leagueKey": "usl",
-          "dateRangeLabel": "Sep 2–30",
-          "startDate": "2026-09-02T23:00:00.000Z",
+          "dateRangeLabel": "Sep 4–30",
+          "startDate": "2026-09-04T23:00:00.000Z",
           "endDate": "2026-09-30T23:30:00.000Z",
-          "eventCount": 54,
+          "eventCount": 53,
           "seasonPhase": "Regular"
-        },
-        {
-          "sport": "rugby",
-          "displayName": "NPC",
-          "leagueKey": "npc",
-          "dateRangeLabel": "Sep 3–27",
-          "startDate": "2026-09-03T07:10:00.000Z",
-          "endDate": "2026-09-27T04:05:00.000Z",
-          "eventCount": 28,
-          "seasonPhase": "Regular"
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Ligue 1",
-          "leagueKey": "ligue1",
-          "dateRangeLabel": "Sep 3–20",
-          "startDate": "2026-09-03T18:45:00.000Z",
-          "endDate": "2026-09-20T18:45:00.000Z",
-          "eventCount": 27,
-          "seasonPhase": null
-        },
-        {
-          "sport": "soccer",
-          "displayName": "La Liga",
-          "leagueKey": "laliga",
-          "dateRangeLabel": "Sep 3–20",
-          "startDate": "2026-09-03T19:00:00.000Z",
-          "endDate": "2026-09-20T19:00:00.000Z",
-          "eventCount": 40,
-          "seasonPhase": null
-        },
-        {
-          "sport": "racing",
-          "displayName": "Italian GP",
-          "leagueKey": "f1",
-          "dateRangeLabel": "Sep 4–6",
-          "startDate": "2026-09-04T10:30:00.000Z",
-          "endDate": "2026-09-06T13:00:00.000Z",
-          "eventCount": 5,
-          "seasonPhase": null
-        },
-        {
-          "sport": "soccer",
-          "displayName": "CAF Champions League",
-          "leagueKey": "cafchampionsleague",
-          "dateRangeLabel": "Sep 4–13",
-          "startDate": "2026-09-04T17:00:00.000Z",
-          "endDate": "2026-09-13T17:00:00.000Z",
-          "eventCount": 57,
-          "seasonPhase": null
-        },
-        {
-          "sport": "athletics",
-          "displayName": "Diamond League Final — Brussels",
-          "leagueKey": "diamond-league",
-          "dateRangeLabel": "Sep 4–5",
-          "startDate": "2026-09-04T17:00:00.000Z",
-          "endDate": "2026-09-05T15:00:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": null
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Bundesliga",
-          "leagueKey": "bundesliga",
-          "dateRangeLabel": "Sep 4–20",
-          "startDate": "2026-09-04T18:30:00.000Z",
-          "endDate": "2026-09-20T17:30:00.000Z",
-          "eventCount": 27,
-          "seasonPhase": null
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Serie A",
-          "leagueKey": "seriea",
-          "dateRangeLabel": "Sep 4–20",
-          "startDate": "2026-09-04T18:45:00.000Z",
-          "endDate": "2026-09-20T18:45:00.000Z",
-          "eventCount": 30,
-          "seasonPhase": null
         },
         {
           "sport": "soccer",
@@ -395,6 +444,96 @@
           "endDate": "2026-09-27T23:00:00.000Z",
           "eventCount": 74,
           "seasonPhase": "Regular"
+        },
+        {
+          "sport": "soccer",
+          "displayName": "NWSL",
+          "leagueKey": "nwsl",
+          "dateRangeLabel": "Sep 5–27",
+          "startDate": "2026-09-05T01:30:00.000Z",
+          "endDate": "2026-09-27T23:00:00.000Z",
+          "eventCount": 34,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "rugby",
+          "displayName": "NPC",
+          "leagueKey": "npc",
+          "dateRangeLabel": "Sep 5–27",
+          "startDate": "2026-09-05T02:05:00.000Z",
+          "endDate": "2026-09-27T04:05:00.000Z",
+          "eventCount": 26,
+          "seasonPhase": "Regular"
+        },
+        {
+          "sport": "racing",
+          "displayName": "Italian GP",
+          "leagueKey": "f1",
+          "dateRangeLabel": "Sep 5–6",
+          "startDate": "2026-09-05T10:30:00.000Z",
+          "endDate": "2026-09-06T13:00:00.000Z",
+          "eventCount": 3,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cycling",
+          "displayName": "Grand Tour — Vuelta a España",
+          "leagueKey": "grand-tour",
+          "dateRangeLabel": "Sep 5–13",
+          "startDate": "2026-09-05T12:00:00.000Z",
+          "endDate": "2026-09-13T12:00:00.000Z",
+          "eventCount": 8,
+          "seasonPhase": null
+        },
+        {
+          "sport": "soccer",
+          "displayName": "Serie A",
+          "leagueKey": "seriea",
+          "dateRangeLabel": "Sep 5–20",
+          "startDate": "2026-09-05T13:00:00.000Z",
+          "endDate": "2026-09-20T18:45:00.000Z",
+          "eventCount": 29,
+          "seasonPhase": null
+        },
+        {
+          "sport": "soccer",
+          "displayName": "CAF Champions League",
+          "leagueKey": "cafchampionsleague",
+          "dateRangeLabel": "Sep 5–13",
+          "startDate": "2026-09-05T13:00:00.000Z",
+          "endDate": "2026-09-13T17:00:00.000Z",
+          "eventCount": 54,
+          "seasonPhase": null
+        },
+        {
+          "sport": "soccer",
+          "displayName": "Bundesliga",
+          "leagueKey": "bundesliga",
+          "dateRangeLabel": "Sep 5–20",
+          "startDate": "2026-09-05T13:30:00.000Z",
+          "endDate": "2026-09-20T17:30:00.000Z",
+          "eventCount": 26,
+          "seasonPhase": null
+        },
+        {
+          "sport": "tennis",
+          "displayName": "US Open",
+          "leagueKey": "grand-slam",
+          "dateRangeLabel": "Sep 5–13",
+          "startDate": "2026-09-05T15:00:00.000Z",
+          "endDate": "2026-09-13T17:00:00.000Z",
+          "eventCount": 16,
+          "seasonPhase": null
+        },
+        {
+          "sport": "athletics",
+          "displayName": "Diamond League Final — Brussels",
+          "leagueKey": "diamond-league",
+          "dateRangeLabel": "Sep 5",
+          "startDate": "2026-09-05T15:00:00.000Z",
+          "endDate": "2026-09-05T15:00:00.000Z",
+          "eventCount": 1,
+          "seasonPhase": null
         },
         {
           "sport": "rugby",
@@ -417,6 +556,16 @@
           "seasonPhase": null
         },
         {
+          "sport": "cricket",
+          "displayName": "T20I Cricket",
+          "leagueKey": "t20i",
+          "dateRangeLabel": "Sep 6–19",
+          "startDate": "2026-09-06T12:00:00.000Z",
+          "endDate": "2026-09-19T13:30:00.000Z",
+          "eventCount": 9,
+          "seasonPhase": null
+        },
+        {
           "sport": "soccer",
           "displayName": "Champions League",
           "leagueKey": "championsleague",
@@ -433,7 +582,7 @@
           "dateRangeLabel": "Sep 9–30",
           "startDate": "2026-09-09T07:30:00.000Z",
           "endDate": "2026-09-30T11:30:00.000Z",
-          "eventCount": 12,
+          "eventCount": 14,
           "seasonPhase": null
         },
         {
@@ -557,16 +706,6 @@
           "seasonPhase": null
         },
         {
-          "sport": "soccer",
-          "displayName": "International Friendly",
-          "leagueKey": "intl-friendly",
-          "dateRangeLabel": "Sep 26–30",
-          "startDate": "2026-09-26T20:30:00.000Z",
-          "endDate": "2026-09-30T00:00:00.000Z",
-          "eventCount": 2,
-          "seasonPhase": null
-        },
-        {
           "sport": "athletics",
           "displayName": "GTWS — Jinshanling Great Wall Trail Race",
           "leagueKey": "golden-trail",
@@ -617,10 +756,10 @@
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "Oct 1–4",
+          "dateRangeLabel": "Oct 1–8",
           "startDate": "2026-10-01T02:00:00.000Z",
-          "endDate": "2026-10-04T02:00:00.000Z",
-          "eventCount": 27,
+          "endDate": "2026-10-08T02:00:00.000Z",
+          "eventCount": 48,
           "seasonPhase": null
         },
         {
@@ -647,10 +786,10 @@
           "sport": "soccer",
           "displayName": "MLS",
           "leagueKey": "mls",
-          "dateRangeLabel": "Oct 2",
+          "dateRangeLabel": "Oct 2–7",
           "startDate": "2026-10-02T01:30:00.000Z",
-          "endDate": "2026-10-02T01:30:00.000Z",
-          "eventCount": 1,
+          "endDate": "2026-10-07T00:30:00.000Z",
+          "eventCount": 2,
           "seasonPhase": "Regular"
         },
         {
@@ -677,20 +816,20 @@
           "sport": "rugby",
           "displayName": "URC",
           "leagueKey": "urc",
-          "dateRangeLabel": "Oct 2–3",
+          "dateRangeLabel": "Oct 2–9",
           "startDate": "2026-10-02T18:45:00.000Z",
-          "endDate": "2026-10-03T18:45:00.000Z",
-          "eventCount": 8,
+          "endDate": "2026-10-09T18:45:00.000Z",
+          "eventCount": 10,
           "seasonPhase": null
         },
         {
           "sport": "rugby",
           "displayName": "English Premiership",
           "leagueKey": "premiership",
-          "dateRangeLabel": "Oct 2–4",
+          "dateRangeLabel": "Oct 2–9",
           "startDate": "2026-10-02T18:45:00.000Z",
-          "endDate": "2026-10-04T14:00:00.000Z",
-          "eventCount": 5,
+          "endDate": "2026-10-09T18:45:00.000Z",
+          "eventCount": 6,
           "seasonPhase": null
         },
         {
@@ -715,22 +854,22 @@
         },
         {
           "sport": "cricket",
-          "displayName": "Test Cricket",
-          "leagueKey": "test",
-          "dateRangeLabel": "Oct 3–5",
-          "startDate": "2026-10-03T08:00:00.000Z",
-          "endDate": "2026-10-05T08:00:00.000Z",
-          "eventCount": 3,
+          "displayName": "ODI Cricket",
+          "leagueKey": "odi",
+          "dateRangeLabel": "Oct 3",
+          "startDate": "2026-10-03T08:30:00.000Z",
+          "endDate": "2026-10-03T08:30:00.000Z",
+          "eventCount": 1,
           "seasonPhase": null
         },
         {
           "sport": "soccer",
           "displayName": "CAF Champions League",
           "leagueKey": "cafchampionsleague",
-          "dateRangeLabel": "Oct 3–23",
+          "dateRangeLabel": "Oct 3",
           "startDate": "2026-10-03T12:00:00.000Z",
-          "endDate": "2026-10-23T18:00:00.000Z",
-          "eventCount": 33,
+          "endDate": "2026-10-03T12:00:00.000Z",
+          "eventCount": 1,
           "seasonPhase": null
         },
         {
@@ -744,12 +883,12 @@
           "seasonPhase": null
         },
         {
-          "sport": "soccer",
-          "displayName": "International Friendly",
-          "leagueKey": "intl-friendly",
-          "dateRangeLabel": "Oct 4–7",
-          "startDate": "2026-10-04T02:00:00.000Z",
-          "endDate": "2026-10-07T00:00:00.000Z",
+          "sport": "cricket",
+          "displayName": "T20I Cricket",
+          "leagueKey": "t20i",
+          "dateRangeLabel": "Oct 6–9",
+          "startDate": "2026-10-06T13:30:00.000Z",
+          "endDate": "2026-10-09T13:30:00.000Z",
           "eventCount": 2,
           "seasonPhase": null
         },
@@ -757,10 +896,20 @@
           "sport": "tennis",
           "displayName": "Shanghai",
           "leagueKey": "atp-masters",
-          "dateRangeLabel": "Oct 7–14",
+          "dateRangeLabel": "Oct 7–18",
           "startDate": "2026-10-07T03:00:00.000Z",
-          "endDate": "2026-10-14T06:00:00.000Z",
-          "eventCount": 16,
+          "endDate": "2026-10-18T03:00:00.000Z",
+          "eventCount": 20,
+          "seasonPhase": null
+        },
+        {
+          "sport": "hockey",
+          "displayName": "ECHL",
+          "leagueKey": "echl",
+          "dateRangeLabel": "Oct 8",
+          "startDate": "2026-10-08T23:00:00.000Z",
+          "endDate": "2026-10-08T23:30:00.000Z",
+          "eventCount": 2,
           "seasonPhase": null
         },
         {
@@ -876,7 +1025,7 @@
           "leagueKey": "t20i",
           "dateRangeLabel": "Sep 15–19",
           "startDate": "2026-09-15T14:00:00.000Z",
-          "endDate": "2026-09-19T10:00:00.000Z",
+          "endDate": "2026-09-19T13:30:00.000Z",
           "eventCount": 5,
           "seasonPhase": null
         },
