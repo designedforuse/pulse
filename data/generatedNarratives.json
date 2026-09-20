@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-20T21:11:22.978Z",
+  "lastUpdated": "2026-09-20T21:52:50.068Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -64,7 +64,7 @@
         ],
         "playersIngested": 502,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-09-20T21:11:22.978Z"
+        "timestamp": "2026-09-20T21:52:50.068Z"
       },
       "cacheHistoryCount": 890,
       "error": null
@@ -74,7 +74,7 @@
     "candidateCountAfterCap": 4,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -4729.189716111111,
+      "hoursUntil": -4729.880574444444,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -156,8 +156,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-09-20T21:11:22.978Z",
-      "expiresAt": "2026-09-27T21:11:22.978Z",
+      "triggeredAt": "2026-09-20T21:52:50.068Z",
+      "expiresAt": "2026-09-27T21:52:50.068Z",
       "kind": "league_moment",
       "region": "SouthAfrica",
       "regionPriority": 1,
@@ -246,7 +246,7 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-09-20T21:11:22.978Z",
+      "triggeredAt": "2026-09-20T21:52:50.068Z",
       "expiresAt": "2026-09-29T07:00:00.000Z",
       "kind": "marathon_spotlight",
       "region": "Other",
@@ -283,7 +283,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-09-20T21:11:22.978Z",
+      "triggeredAt": "2026-09-20T21:52:50.068Z",
       "expiresAt": "2026-09-21T03:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -323,7 +323,7 @@
         "tabHint": "Watch"
       },
       "priority": 55,
-      "triggeredAt": "2026-09-20T21:11:22.978Z",
+      "triggeredAt": "2026-09-20T21:52:50.068Z",
       "expiresAt": "2026-09-20T23:59:59.999Z",
       "kind": "weekend_watchlist",
       "region": "Other",
@@ -850,7 +850,7 @@
           "dateRangeLabel": "Oct 2–11",
           "startDate": "2026-10-02T01:30:00.000Z",
           "endDate": "2026-10-11T23:00:00.000Z",
-          "eventCount": 18,
+          "eventCount": 19,
           "seasonPhase": "Regular"
         },
         {

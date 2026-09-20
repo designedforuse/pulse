@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-20T21:11:32.546Z",
+  "lastUpdated": "2026-09-20T21:53:53.266Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -40,12 +40,12 @@
   "cricketSourceUsed": "espn",
   "nhlCount": 69,
   "ahlCount": 85,
-  "ahlAdded": 85,
-  "ahlUpdated": 83,
+  "ahlAdded": 83,
+  "ahlUpdated": 85,
   "ahlPruned": 83,
   "echlCount": 17,
-  "echlAdded": 134,
-  "echlUpdated": 16,
+  "echlAdded": 133,
+  "echlUpdated": 17,
   "echlPruned": 133,
   "echlWebCount": 150,
   "buCount": 0,
@@ -94,7 +94,7 @@
   "eplUpdated": 29,
   "eplPruned": 0,
   "eplSourceUsed": "espn",
-  "mlsCount": 333,
+  "mlsCount": 335,
   "mlsAdded": 0,
   "mlsUpdated": 77,
   "mlsPruned": 0,
@@ -209,22 +209,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-09-20T21:11:32.546Z",
+    "lastRefreshAt": "2026-09-20T21:53:53.266Z",
     "sources": {
       "nhl": {
         "count": 69,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 85,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 17,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -236,7 +236,7 @@
       },
       "rugby": {
         "count": 104,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 24,
@@ -253,7 +253,7 @@
       },
       "cricket": {
         "count": 52,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "CPL": 11,
@@ -264,22 +264,22 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 29,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "ESPN API"
       },
       "mls": {
-        "count": 333,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "count": 335,
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
@@ -304,7 +304,7 @@
       },
       "nwsl": {
         "count": 36,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
@@ -328,7 +328,7 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T19:00:00.000Z"
       },
@@ -350,7 +350,7 @@
       },
       "tennis": {
         "count": 34,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "US Open": 14,
@@ -359,7 +359,7 @@
       },
       "f1": {
         "count": 35,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Spanish Grand Prix": 5,
@@ -373,7 +373,7 @@
       },
       "wrc": {
         "count": 12,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "Hardcoded Schedule"
       },
       "schoolsRugby": {
@@ -383,7 +383,7 @@
       },
       "paddling": {
         "count": 1,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "Hardcoded Schedule"
       },
       "comrades": {
@@ -393,13 +393,13 @@
       },
       "golf": {
         "count": 0,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {}
       },
       "marathon": {
         "count": 3,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Berlin Marathon": 1,
@@ -424,7 +424,7 @@
       },
       "shl": {
         "count": 15,
-        "lastFetchAt": "2026-09-20T21:11:32.546Z",
+        "lastFetchAt": "2026-09-20T21:53:53.266Z",
         "sourceName": "Odds API"
       },
       "cafcl": {
@@ -15606,6 +15606,34 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "echl"
+    },
+    {
+      "id": "soccer-mls-20261011-2300-la-galaxy-at-st-louis-city-sc",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "LA Galaxy",
+      "homeTeam": "St. Louis CITY SC",
+      "startTimeLocal": "2026-10-11T23:00:00.000Z",
+      "endTimeLocal": "2026-10-12T01:15:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "soccer-mls-20261011-2300-la-galaxy-at-st-louis-city-sc",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "LA Galaxy",
+      "homeTeam": "St. Louis CITY SC",
+      "startTimeLocal": "2026-10-11T23:00:00.000Z",
+      "endTimeLocal": "2026-10-12T01:15:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
     },
     {
       "id": "soccer-mls-20261011-2300-la-galaxy-at-st-louis-city-sc",

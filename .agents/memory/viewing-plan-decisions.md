@@ -14,3 +14,14 @@ Public Expo previews route to Metro in this environment, not directly to Express
 **Why:** Requests to the backend domain without its internal port returned Expo HTML; literal public port 5000 requests failed. Local-only browser verification missed the failure.
 
 **How to apply:** Keep web API requests same-origin and Metro API forwarding intact. Verify a public preview returns JSON as well as checking local endpoints.
+
+In native development, prefer the active Expo manifest host for API routing;
+keep the configured API host for production builds and force HTTPS on Replit hosts.
+
+**Why:** Expo Go reported connection failures while public web/API probes worked.
+An embedded domain alone does not establish that a device is reaching the current
+session. Runtime host discovery avoids that dependency; the exact failing device
+URL was not captured, so a stale host remains a hypothesis, not a proven cause.
+
+**How to apply:** Check the Android manifest host and public JSON/refresh responses.
+Do not treat a working browser as proof of native connectivity.

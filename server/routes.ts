@@ -32,7 +32,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/events", (req, res) => {
     const generated = loadGeneratedEvents();
 
-    if (!generated || !generated.events || generated.events.length === 0) {
+    if (!Array.isArray(generated?.events) || generated.events.length === 0) {
       const fallbackPath = path.resolve(
         process.cwd(),
         "data",
@@ -40,13 +40,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
       );
       try {
         const fallback = JSON.parse(fs.readFileSync(fallbackPath, "utf-8"));
+        if (!Array.isArray(fallback?.events) || fallback.events.length === 0) {
+          throw new Error("Fallback schedule has no events");
+        }
         return res.json({
           source: "fallback",
           lastUpdated: null,
-          events: fallback.events || [],
+          events: fallback.events,
         });
-      } catch {
-        return res.json({ source: "fallback", lastUpdated: null, events: [] });
+      } catch (error) {
+        console.error("[events] No valid generated or fallback schedule:", error);
+        return res.status(503).json({
+          error: "Schedule data is temporarily unavailable",
+        });
       }
     }
 
@@ -300,6 +306,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         }
 
         const generated = loadGeneratedEvents();
+        if (!Array.isArray(generated?.events) || generated.events.length === 0) {
+          console.error("[refresh] Update completed without a valid schedule");
+          return res.status(500).json({
+            success: false,
+            error: "Refresh did not produce a valid schedule",
+          });
+        }
         return res.json({
           success: true,
           lastUpdated: generated?.lastUpdated || null,
