@@ -122,9 +122,9 @@ export interface SoccerLiveEvent {
 
 function getSoccerEspnId(event: SoccerLiveEvent): string | undefined {
   if (event.espnId) return String(event.espnId);
-  // Serie A records generated before `espnId` was persisted still carry the
-  // provider id in their stable event id. Keep this as a migration fallback.
-  const embedded = event.id.match(/^soccer-seriea-espn-(.+)$/i)?.[1];
+  // ESPN-backed records still carry the provider id in their stable event id
+  // if an older cache/consumer omitted the explicit field.
+  const embedded = event.id.match(/^soccer-(?:seriea|epl)-espn-(.+)$/i)?.[1];
   return embedded || undefined;
 }
 

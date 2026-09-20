@@ -37,7 +37,8 @@ I prefer clear and concise information. When making changes, please prioritize c
 - **World Rugby / Pulselive (api.wr-rims-prod.pulselive.com):** SVNS schedules + live scores and live clock for major club & international rugby comps.
 - **MLR Official (majorleague.rugby):** MLR live scores (Pulselive lags for MLR).
 - **rugbyfixture.io (iCal):** URC, Top 14, English Premiership, European Champions Cup, EPCR Challenge Cup.
-- **fixturedownload.com (iCal):** Super Rugby Pacific, EPL.
+- **fixturedownload.com (iCal):** Super Rugby Pacific.
+- **ESPN API EPL scoreboard:** EPL fixtures and live-score identity.
 - **all.rugby (scraped):** Japan League One.
 - **CricAPI:** International & domestic cricket fixtures and live scores (free-tier endpoints).
 - **IPL Official Feed (iplt20.com):** IPL live scores.
