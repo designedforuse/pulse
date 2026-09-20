@@ -2417,41 +2417,41 @@
   },
   "league_moment:rivalry weekend sports september 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=rFagvfVvb1w",
-      "thumbnailUrl": "https://img.youtube.com/vi/rFagvfVvb1w/hqdefault.jpg",
-      "durationSeconds": 569,
-      "title": "BEST NFL Week 2 PICKS! Jets vs Packers and Cardinals vs Seahawks | Jesse Schule",
+      "url": "https://www.youtube.com/watch?v=RtTqSMUrdOU",
+      "thumbnailUrl": "https://img.youtube.com/vi/RtTqSMUrdOU/hqdefault.jpg",
+      "durationSeconds": 7733,
+      "title": "🔴 LIVE | MARSEILLE vs PSG | LIGUE 1 | LE CLASSIQUE ⚽🔥",
       "source": "youtube",
-      "channel": "WagerTalk TV: Sports Picks and Betting Tips",
-      "publishedAt": "12 minutes ago"
+      "channel": "DCTV sports ",
+      "publishedAt": "Streamed 5 minutes ago"
     },
-    "fetchedAt": "2026-09-18T18:26:00.319Z",
+    "fetchedAt": "2026-09-20T20:49:16.450Z",
     "query": "Rivalry Weekend sports September 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports September 2026",
-      "selectedVideoTitle": "BEST NFL Week 2 PICKS! Jets vs Packers and Cardinals vs Seahawks | Jesse Schule",
-      "selectedVideoPublishedAt": "12 minutes ago",
-      "selectedVideoChannel": "WagerTalk TV: Sports Picks and Betting Tips",
+      "selectedVideoTitle": "🔴 LIVE | MARSEILLE vs PSG | LIGUE 1 | LE CLASSIQUE ⚽🔥",
+      "selectedVideoPublishedAt": "Streamed 5 minutes ago",
+      "selectedVideoChannel": "DCTV sports ",
       "rejectedForAgeCount": 0
     }
   },
   "marathon_spotlight:berlin marathon marathon highlights 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=OSl1nIoHe1s",
-      "thumbnailUrl": "https://img.youtube.com/vi/OSl1nIoHe1s/hqdefault.jpg",
-      "durationSeconds": 543,
-      "title": "Watch this before running the Berlin Marathon for the first time🏃‍♂️🇩🇪 | Expo, bib, and start (Pa...",
+      "url": "https://www.youtube.com/watch?v=2NeLC6xirzU",
+      "thumbnailUrl": "https://img.youtube.com/vi/2NeLC6xirzU/hqdefault.jpg",
+      "durationSeconds": 690,
+      "title": "This decides the next two years.",
       "source": "youtube",
-      "channel": "Chico Inexperto",
-      "publishedAt": "1 hour ago"
+      "channel": "The Morning Coffee Run",
+      "publishedAt": "2 hours ago"
     },
-    "fetchedAt": "2026-09-18T18:25:59.561Z",
+    "fetchedAt": "2026-09-20T20:49:16.821Z",
     "query": "Berlin Marathon marathon highlights 2026",
     "debug": {
       "searchQuery": "Berlin Marathon marathon highlights 2026",
-      "selectedVideoTitle": "Watch this before running the Berlin Marathon for the first time🏃‍♂️🇩🇪 | Expo, bib, and start (Pa...",
-      "selectedVideoPublishedAt": "1 hour ago",
-      "selectedVideoChannel": "Chico Inexperto",
+      "selectedVideoTitle": "This decides the next two years.",
+      "selectedVideoPublishedAt": "2 hours ago",
+      "selectedVideoChannel": "The Morning Coffee Run",
       "rejectedForAgeCount": 0
     }
   },
@@ -2473,6 +2473,26 @@
       "selectedVideoPublishedAt": "8 minutes ago",
       "selectedVideoChannel": "DataGoal AI",
       "rejectedForAgeCount": 1
+    }
+  },
+  "marquee_match:san diego fc vs inter miami cf mls preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=KmSU-QW8NWk",
+      "thumbnailUrl": "https://img.youtube.com/vi/KmSU-QW8NWk/hqdefault.jpg",
+      "durationSeconds": 1407,
+      "title": "MLS REIMAGINED Championship Div 2026-27 MD8 - Toronto FC (3rd) vs Sporting Kansas City (8th)",
+      "source": "youtube",
+      "channel": "AltSim Sports",
+      "publishedAt": "49 minutes ago"
+    },
+    "fetchedAt": "2026-09-20T20:49:17.219Z",
+    "query": "San Diego FC vs Inter Miami CF MLS preview",
+    "debug": {
+      "searchQuery": "San Diego FC vs Inter Miami CF MLS preview",
+      "selectedVideoTitle": "MLS REIMAGINED Championship Div 2026-27 MD8 - Toronto FC (3rd) vs Sporting Kansas City (8th)",
+      "selectedVideoPublishedAt": "49 minutes ago",
+      "selectedVideoChannel": "AltSim Sports",
+      "rejectedForAgeCount": 0
     }
   }
 }
