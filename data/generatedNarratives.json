@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-20T20:49:01.054Z",
+  "lastUpdated": "2026-09-20T21:11:22.978Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "league_moment": {
@@ -64,7 +64,7 @@
         ],
         "playersIngested": 502,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-09-20T20:49:01.054Z"
+        "timestamp": "2026-09-20T21:11:22.978Z"
       },
       "cacheHistoryCount": 890,
       "error": null
@@ -74,7 +74,7 @@
     "candidateCountAfterCap": 4,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -4728.816959444444,
+      "hoursUntil": -4729.189716111111,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -156,8 +156,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-09-20T20:49:01.054Z",
-      "expiresAt": "2026-09-27T20:49:01.054Z",
+      "triggeredAt": "2026-09-20T21:11:22.978Z",
+      "expiresAt": "2026-09-27T21:11:22.978Z",
       "kind": "league_moment",
       "region": "SouthAfrica",
       "regionPriority": 1,
@@ -246,7 +246,7 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-09-20T20:49:01.054Z",
+      "triggeredAt": "2026-09-20T21:11:22.978Z",
       "expiresAt": "2026-09-29T07:00:00.000Z",
       "kind": "marathon_spotlight",
       "region": "Other",
@@ -283,7 +283,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-09-20T20:49:01.054Z",
+      "triggeredAt": "2026-09-20T21:11:22.978Z",
       "expiresAt": "2026-09-21T03:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -323,7 +323,7 @@
         "tabHint": "Watch"
       },
       "priority": 55,
-      "triggeredAt": "2026-09-20T20:49:01.054Z",
+      "triggeredAt": "2026-09-20T21:11:22.978Z",
       "expiresAt": "2026-09-20T23:59:59.999Z",
       "kind": "weekend_watchlist",
       "region": "Other",
@@ -336,9 +336,9 @@
           {
             "league": "NWSL",
             "sport": "soccer",
-            "away": "Washington Spirit",
-            "home": "Chicago Stars",
-            "startTime": "2026-09-20T21:00:00.000Z"
+            "away": "Racing Louisville",
+            "home": "Bay",
+            "startTime": "2026-09-20T23:00:00.000Z"
           },
           {
             "league": "MLS",
@@ -350,15 +350,15 @@
           {
             "league": "USL",
             "sport": "soccer",
-            "away": "Oakland Roots",
-            "home": "Indy Eleven",
-            "startTime": "2026-09-20T21:00:00.000Z"
+            "away": "San Antonio FC",
+            "home": "Sacramento Republic FC",
+            "startTime": "2026-09-20T23:00:00.000Z"
           }
         ],
         "eventIds": [
-          "soccer-nwsl-20260920-2100-washington-spirit-at-chicago-stars",
+          "soccer-nwsl-20260920-2300-racing-louisville-at-bay",
           "soccer-mls-20260920-2300-san-diego-fc-at-inter-miami-cf",
-          "soccer-usl-20260920-2100-oakland-roots-at-indy-eleven"
+          "soccer-usl-20260920-2300-san-antonio-fc-at-sacramento-republic-fc"
         ],
         "reason": "Weekend window: 3 top-priority event(s) across 1 sport(s)"
       },
@@ -850,7 +850,7 @@
           "dateRangeLabel": "Oct 2–11",
           "startDate": "2026-10-02T01:30:00.000Z",
           "endDate": "2026-10-11T23:00:00.000Z",
-          "eventCount": 17,
+          "eventCount": 18,
           "seasonPhase": "Regular"
         },
         {
@@ -899,8 +899,8 @@
           "leagueKey": "ahl",
           "dateRangeLabel": "Oct 2–11",
           "startDate": "2026-10-02T23:00:00.000Z",
-          "endDate": "2026-10-11T20:00:00.000Z",
-          "eventCount": 59,
+          "endDate": "2026-10-11T21:00:00.000Z",
+          "eventCount": 61,
           "seasonPhase": null
         },
         {
@@ -979,8 +979,8 @@
           "leagueKey": "echl",
           "dateRangeLabel": "Oct 8–11",
           "startDate": "2026-10-08T23:00:00.000Z",
-          "endDate": "2026-10-11T17:00:00.000Z",
-          "eventCount": 16,
+          "endDate": "2026-10-11T21:00:00.000Z",
+          "eventCount": 17,
           "seasonPhase": null
         },
         {

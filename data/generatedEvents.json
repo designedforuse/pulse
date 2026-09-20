@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-20T20:49:00.874Z",
+  "lastUpdated": "2026-09-20T21:11:32.546Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -39,23 +39,23 @@
   "rugbySourceUsed": "ical",
   "cricketSourceUsed": "espn",
   "nhlCount": 69,
-  "ahlCount": 83,
-  "ahlAdded": 114,
-  "ahlUpdated": 54,
-  "ahlPruned": 85,
-  "echlCount": 16,
-  "echlAdded": 148,
-  "echlUpdated": 2,
-  "echlPruned": 134,
+  "ahlCount": 85,
+  "ahlAdded": 85,
+  "ahlUpdated": 83,
+  "ahlPruned": 83,
+  "echlCount": 17,
+  "echlAdded": 134,
+  "echlUpdated": 16,
+  "echlPruned": 133,
   "echlWebCount": 150,
   "buCount": 0,
   "buAdded": 0,
   "buUpdated": 0,
   "buPruned": 0,
   "rugbyCount": 104,
-  "rugbyAdded": 17,
-  "rugbyUpdated": 57,
-  "rugbyPruned": 14,
+  "rugbyAdded": 0,
+  "rugbyUpdated": 74,
+  "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 24,
     "top14": 35,
@@ -69,9 +69,9 @@
     "svns": 0
   },
   "cricketCount": 52,
-  "cricketAdded": 13,
-  "cricketUpdated": 39,
-  "cricketPruned": 6,
+  "cricketAdded": 7,
+  "cricketUpdated": 45,
+  "cricketPruned": 7,
   "cricketCounts": {
     "CPL": 11,
     "ODI Cricket": 15,
@@ -94,40 +94,40 @@
   "eplUpdated": 29,
   "eplPruned": 0,
   "eplSourceUsed": "espn",
-  "mlsCount": 332,
-  "mlsAdded": 15,
-  "mlsUpdated": 62,
+  "mlsCount": 333,
+  "mlsAdded": 0,
+  "mlsUpdated": 77,
   "mlsPruned": 0,
   "mlsSourceUsed": "espn",
   "serieaCount": 22,
   "serieaAdded": 0,
   "serieaUpdated": 0,
-  "serieaPruned": 7,
+  "serieaPruned": 0,
   "serieaSourceUsed": "espn",
   "laligaCount": 31,
   "laligaAdded": 0,
   "laligaUpdated": 0,
-  "laligaPruned": 8,
+  "laligaPruned": 0,
   "laligaSourceUsed": "espn",
   "bundesligaCount": 18,
   "bundesligaAdded": 0,
   "bundesligaUpdated": 0,
-  "bundesligaPruned": 8,
+  "bundesligaPruned": 0,
   "bundesligaSourceUsed": "espn",
   "ligue1Count": 18,
   "ligue1Added": 0,
   "ligue1Updated": 0,
-  "ligue1Pruned": 7,
+  "ligue1Pruned": 0,
   "ligue1SourceUsed": "espn",
   "nwslCount": 36,
   "nwslAdded": 0,
   "nwslUpdated": 36,
-  "nwslPruned": 42,
+  "nwslPruned": 36,
   "nwslSourceUsed": "ical",
   "uslCount": 55,
   "uslAdded": 0,
   "uslUpdated": 0,
-  "uslPruned": 11,
+  "uslPruned": 0,
   "uslSourceUsed": "espn",
   "championsCupCount": 0,
   "championsCupAdded": 0,
@@ -171,7 +171,7 @@
   "f1Count": 35,
   "f1Added": 0,
   "f1Updated": 35,
-  "f1Pruned": 3,
+  "f1Pruned": 0,
   "f1SourceUsed": "espn-f1",
   "f1RaceCounts": {
     "Spanish Grand Prix": 5,
@@ -209,22 +209,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-09-20T20:49:00.874Z",
+    "lastRefreshAt": "2026-09-20T21:11:32.546Z",
     "sources": {
       "nhl": {
         "count": 69,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "NHL API"
       },
       "ahl": {
-        "count": 83,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "count": 85,
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
-        "count": 16,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "count": 17,
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -236,7 +236,7 @@
       },
       "rugby": {
         "count": 104,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 24,
@@ -253,7 +253,7 @@
       },
       "cricket": {
         "count": 52,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "CPL": 11,
@@ -264,22 +264,22 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 29,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "ESPN API"
       },
       "mls": {
-        "count": 332,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "count": 333,
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
@@ -304,7 +304,7 @@
       },
       "nwsl": {
         "count": 36,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
@@ -328,7 +328,7 @@
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T19:00:00.000Z"
       },
@@ -350,7 +350,7 @@
       },
       "tennis": {
         "count": 34,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "US Open": 14,
@@ -359,7 +359,7 @@
       },
       "f1": {
         "count": 35,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Spanish Grand Prix": 5,
@@ -373,7 +373,7 @@
       },
       "wrc": {
         "count": 12,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "Hardcoded Schedule"
       },
       "schoolsRugby": {
@@ -383,7 +383,7 @@
       },
       "paddling": {
         "count": 1,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "Hardcoded Schedule"
       },
       "comrades": {
@@ -393,13 +393,13 @@
       },
       "golf": {
         "count": 0,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {}
       },
       "marathon": {
         "count": 3,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Berlin Marathon": 1,
@@ -424,7 +424,7 @@
       },
       "shl": {
         "count": 15,
-        "lastFetchAt": "2026-09-20T20:49:00.874Z",
+        "lastFetchAt": "2026-09-20T21:11:32.546Z",
         "sourceName": "Odds API"
       },
       "cafcl": {
@@ -15570,6 +15570,56 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
+    },
+    {
+      "id": "ahl-1029123",
+      "sport": "hockey",
+      "league": "AHL",
+      "homeTeam": "Belleville Senators",
+      "awayTeam": "Utica Comets",
+      "startTimeLocal": "2026-10-11T21:00:00.000Z",
+      "endTimeLocal": "2026-10-11T23:45:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "ahl-hockeytech"
+    },
+    {
+      "id": "ahl-1029129",
+      "sport": "hockey",
+      "league": "AHL",
+      "homeTeam": "Hershey Bears",
+      "awayTeam": "Texas Stars",
+      "startTimeLocal": "2026-10-11T21:00:00.000Z",
+      "endTimeLocal": "2026-10-11T23:45:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "ahl-hockeytech"
+    },
+    {
+      "id": "echl-web-26604",
+      "sport": "hockey",
+      "league": "ECHL",
+      "homeTeam": "Fort Wayne Komets",
+      "awayTeam": "Wheeling Nailers",
+      "startTimeLocal": "2026-10-11T21:00:00.000Z",
+      "endTimeLocal": "2026-10-11T23:45:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "echl"
+    },
+    {
+      "id": "soccer-mls-20261011-2300-la-galaxy-at-st-louis-city-sc",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "LA Galaxy",
+      "homeTeam": "St. Louis CITY SC",
+      "startTimeLocal": "2026-10-11T23:00:00.000Z",
+      "endTimeLocal": "2026-10-12T01:15:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
     },
     {
       "id": "soccer-mls-20261011-2300-la-galaxy-at-st-louis-city-sc",

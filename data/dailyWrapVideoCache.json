@@ -1360,5 +1360,213 @@
   "rugby-npc-t0olof": {
     "video": null,
     "fetchedAt": "2026-09-18T18:25:43.849Z"
+  },
+  "soccer-epl-espn-401879276": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=R3umdOEDHoQ",
+      "thumbnailUrl": "https://i.ytimg.com/vi/R3umdOEDHoQ/hqdefault.jpg",
+      "durationSeconds": 175,
+      "title": "⚽ Bournemouth 0-1 Liverpool [HIGHLIGHTS] Premier League 26/27 ✅ | Match Simulation/Recreation",
+      "channel": "十Loork Football"
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-epl-espn-401879273": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=46NXEapGVzI",
+      "thumbnailUrl": "https://i.ytimg.com/vi/46NXEapGVzI/hqdefault.jpg",
+      "durationSeconds": 70,
+      "title": "🔴 Leeds United vs Crystal Palace | HIGHLIGHTS | Premier League 2026 – eFootball Simulation",
+      "channel": "PRS SOUL"
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-epl-espn-401879272": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=kd_3fSajEuY",
+      "thumbnailUrl": "https://i.ytimg.com/vi/kd_3fSajEuY/hqdefault.jpg",
+      "durationSeconds": 740,
+      "title": "Manchester City 5-3 Sunderland | EXTENDED HIGHLIGHTS | Premier League 2026/27",
+      "channel": "MS Habibi"
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-epl-espn-401878777": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=LyMu0wZqmko",
+      "thumbnailUrl": "https://i.ytimg.com/vi/LyMu0wZqmko/hqdefault.jpg",
+      "durationSeconds": 226,
+      "title": "Fulham vs Manchester United 1-1 Highlights | Premier League 2026",
+      "channel": "Sujaith Ar"
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-seriea-espn-401874934": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=tf-6nLGTmh8",
+      "thumbnailUrl": "https://i.ytimg.com/vi/tf-6nLGTmh8/hqdefault.jpg",
+      "durationSeconds": 663,
+      "title": "Fiorentina 1-1 Napoli | Napoli Drop Points! 😱 | All Goals & Extended Highlights",
+      "channel": "SPORTAVO "
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-laliga-20260920-1200-m-laga-at-getafe": {
+    "video": null,
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-seriea-espn-401874752": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=7LaWpWi8AcE",
+      "thumbnailUrl": "https://i.ytimg.com/vi/7LaWpWi8AcE/hqdefault.jpg",
+      "durationSeconds": 86,
+      "title": "Arman Tsarukyan vs Maurício Ruffy FULL FIGHT HIGHLIGHTS (UFC 331)",
+      "channel": "MMA Connect"
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-seriea-espn-401874801": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=ZvS5ojHpqI4",
+      "thumbnailUrl": "https://i.ytimg.com/vi/ZvS5ojHpqI4/hqdefault.jpg",
+      "durationSeconds": 154,
+      "title": "Lega Serie A Enilive | Matchweek 5 Results | Italian Lega Serie A Table Standing Updated Today 2026",
+      "channel": "Salvation EPL Fixtures "
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-ligue1-20260920-1300-brest-at-aj-auxerre": {
+    "video": null,
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-bundesliga-20260920-1330-rb-leipzig-at-bayer-leverkusen": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=50LdLVFAT_E",
+      "thumbnailUrl": "https://i.ytimg.com/vi/50LdLVFAT_E/hqdefault.jpg",
+      "durationSeconds": 70,
+      "title": "🔴 Leverkusen gegen RB Leipzig 2 - 0 I HIGHLIGHTS & GOALS | Bundesliga 2026 I eFootball Simulation",
+      "channel": "PRS SOUL"
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-laliga-20260920-1415-real-madrid-at-atl-tico-madrid": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=0R4SLm9vIYs",
+      "thumbnailUrl": "https://i.ytimg.com/vi/0R4SLm9vIYs/hqdefault.jpg",
+      "durationSeconds": 236,
+      "title": "⚽ Atletico Madrid 2-1 Real Madrid [HIGHLIGHTS] LALIGA 26/27 ✅ | Match Simulation/Recreation",
+      "channel": "十Loork Football"
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-ligue1-20260920-1515-lille-at-nice": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=buE9sYZ_VQM",
+      "thumbnailUrl": "https://i.ytimg.com/vi/buE9sYZ_VQM/hqdefault.jpg",
+      "durationSeconds": 234,
+      "title": "Football Predictions Today | Top Matches Sunday 19 September",
+      "channel": "VoVo"
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-bundesliga-20260920-1530-sv-elversberg-at-schalke-04": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=gKAD_iQUnuI",
+      "thumbnailUrl": "https://i.ytimg.com/vi/gKAD_iQUnuI/hqdefault.jpg",
+      "durationSeconds": 70,
+      "title": "🔴 Schalke 04 gegen Elversberg I HIGHLIGHTS | Bundesliga 2026 I eFootball Simulation",
+      "channel": "PRS SOUL"
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-seriea-espn-401874757": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=UFbbq75AEjg",
+      "thumbnailUrl": "https://i.ytimg.com/vi/UFbbq75AEjg/hqdefault.jpg",
+      "durationSeconds": 537,
+      "title": "Juventus vs Atalanta | Serie A 2026/27 | Match Highlights",
+      "channel": "GamePlay Hero"
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-laliga-20260920-1630-real-betis-at-deportivo": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=MjDqIzzBxM8",
+      "thumbnailUrl": "https://i.ytimg.com/vi/MjDqIzzBxM8/hqdefault.jpg",
+      "durationSeconds": 143,
+      "title": "La Liga Table Results | Spanish La Liga Table Updated Today Matchweek 7 | La Liga Standings 2026/27",
+      "channel": "Salvation EPL Fixtures "
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-laliga-20260920-1630-levante-at-villarreal": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=WYJoMLKJH8c",
+      "thumbnailUrl": "https://i.ytimg.com/vi/WYJoMLKJH8c/hqdefault.jpg",
+      "durationSeconds": 563,
+      "title": "Barcelona vs Sevilla 3-1 Raphinha HATTRICK | Extended  Highlights & All Goals 2026 HD",
+      "channel": "Still Figuring"
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-bundesliga-20260920-1730-tsg-hoffenheim-at-sc-paderborn-07": {
+    "video": null,
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-seriea-espn-401874944": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=ZvS5ojHpqI4",
+      "thumbnailUrl": "https://i.ytimg.com/vi/ZvS5ojHpqI4/hqdefault.jpg",
+      "durationSeconds": 154,
+      "title": "Lega Serie A Enilive | Matchweek 5 Results | Italian Lega Serie A Table Standing Updated Today 2026",
+      "channel": "Salvation EPL Fixtures "
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-ligue1-20260920-1845-paris-saint-germain-at-marseille": {
+    "video": null,
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-laliga-20260920-1900-real-sociedad-at-valencia": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=MjDqIzzBxM8",
+      "thumbnailUrl": "https://i.ytimg.com/vi/MjDqIzzBxM8/hqdefault.jpg",
+      "durationSeconds": 143,
+      "title": "La Liga Table Results | Spanish La Liga Table Updated Today Matchweek 7 | La Liga Standings 2026/27",
+      "channel": "Salvation EPL Fixtures "
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "rugby-top14-p7wy1h": {
+    "video": null,
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "soccer-nwsl-20260920-1800-houston-dash-at-boston-legacy": {
+    "video": null,
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "cricket-t20i-yezlh0": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=8sNvpA1iPGE",
+      "thumbnailUrl": "https://i.ytimg.com/vi/8sNvpA1iPGE/hqdefault.jpg",
+      "durationSeconds": 73,
+      "title": "NEWS FROM CRICKET WORLD",
+      "channel": "Cric Trend"
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "cricket-odi-ysmjyu": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=HmDsEuL8_0o",
+      "thumbnailUrl": "https://i.ytimg.com/vi/HmDsEuL8_0o/hqdefault.jpg",
+      "durationSeconds": 1136,
+      "title": "Australia vs Zimbabwe 2nd ODI Australia tour of Zimbabwe 2026 highlights",
+      "channel": "Anand-Crazy-Boys (GJ-23)"
+    },
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "rugby-npc-o201tq": {
+    "video": null,
+    "fetchedAt": "2026-09-20T21:11:11.152Z"
   }
 }

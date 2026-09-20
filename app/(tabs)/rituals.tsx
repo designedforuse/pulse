@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect, useCallback } from "react";
 import {
   StyleSheet,
+  Image,
   Text,
   View,
   Pressable,
@@ -233,12 +234,11 @@ function RitualTile({ ritual, data, fill = false }: { ritual: Ritual; data: Ritu
     >
       {bgImage && (
         <>
-          <ExpoImage
+          <Image
             key={featuredSport ?? "default"}
             source={bgImage}
             style={StyleSheet.absoluteFillObject}
-            contentFit="cover"
-            cachePolicy="memory-disk"
+            resizeMode="cover"
           />
           <LinearGradient
             colors={[

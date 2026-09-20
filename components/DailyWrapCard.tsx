@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import {
+  Image,
   View,
   Text,
   StyleSheet,
@@ -8,7 +9,6 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
-import { Image as ExpoImage } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { getApiUrl } from "@/lib/query-client";
 import { useFavorites } from "@/lib/favorites-context";
@@ -213,12 +213,10 @@ export default function DailyWrapCard({ fill = false }: { fill?: boolean } = {})
 
   return (
     <Pressable onPress={handleOpen} style={({ pressed }) => [styles.card, fill && { flex: 1, marginBottom: 0 }, pressed && styles.cardPressed]}>
-      <ExpoImage
+      <Image
         source={COVER_IMAGE}
         style={StyleSheet.absoluteFillObject}
-        contentFit="cover"
-        contentPosition="top"
-        cachePolicy="memory-disk"
+        resizeMode="cover"
       />
       <LinearGradient
         colors={COVER_OVERLAY_COLORS as unknown as readonly [string, string, ...string[]]}

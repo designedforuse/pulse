@@ -20,3 +20,16 @@ but the background image kept the old sport's photo.
 the content that selects the source (e.g. `key={featuredSport ?? "default"}`).
 Reach for this whenever a local-asset image is expected to change while its
 component instance is kept alive (carousels, lists, paged ScrollViews).
+
+## Bundled background renderer choice
+
+Prefer React Native's `Image` for bundled card backgrounds; retain content keys
+for sport-dependent carousel backgrounds.
+
+**Why:** Android Expo Go screenshots showed blank bundled backgrounds on both
+Stories and Rituals while remote logos loaded. Switching away from the cached
+Expo renderer is a compatibility mitigation, not a confirmed native root cause:
+web rendering was verified, but Android verification is still outstanding.
+
+**How to apply:** If this symptom returns, investigate native asset delivery and
+image layout before assuming the earlier source-swap issue explains it.
