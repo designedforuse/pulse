@@ -2417,42 +2417,42 @@
   },
   "league_moment:rivalry weekend sports september 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=RtTqSMUrdOU",
-      "thumbnailUrl": "https://img.youtube.com/vi/RtTqSMUrdOU/hqdefault.jpg",
-      "durationSeconds": 7733,
-      "title": "🔴 LIVE | MARSEILLE vs PSG | LIGUE 1 | LE CLASSIQUE ⚽🔥",
+      "url": "https://www.youtube.com/watch?v=Ewi7fVOtvnk",
+      "thumbnailUrl": "https://img.youtube.com/vi/Ewi7fVOtvnk/hqdefault.jpg",
+      "durationSeconds": 14167,
+      "title": "2026 Sevier County vs Greenville Rivalry Friday 9/25/26",
       "source": "youtube",
-      "channel": "DCTV sports ",
-      "publishedAt": "Streamed 5 minutes ago"
+      "channel": "Rivalry Thursday AND Friday Football",
+      "publishedAt": "Streamed 1d ago"
     },
-    "fetchedAt": "2026-09-20T20:49:16.450Z",
+    "fetchedAt": "2026-09-27T03:16:51.457Z",
     "query": "Rivalry Weekend sports September 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports September 2026",
-      "selectedVideoTitle": "🔴 LIVE | MARSEILLE vs PSG | LIGUE 1 | LE CLASSIQUE ⚽🔥",
-      "selectedVideoPublishedAt": "Streamed 5 minutes ago",
-      "selectedVideoChannel": "DCTV sports ",
+      "selectedVideoTitle": "2026 Sevier County vs Greenville Rivalry Friday 9/25/26",
+      "selectedVideoPublishedAt": "Streamed 1d ago",
+      "selectedVideoChannel": "Rivalry Thursday AND Friday Football",
       "rejectedForAgeCount": 0
     }
   },
   "marathon_spotlight:berlin marathon marathon highlights 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=2NeLC6xirzU",
-      "thumbnailUrl": "https://img.youtube.com/vi/2NeLC6xirzU/hqdefault.jpg",
-      "durationSeconds": 690,
-      "title": "This decides the next two years.",
+      "url": "https://www.youtube.com/watch?v=f9l5y_1LC9w",
+      "thumbnailUrl": "https://img.youtube.com/vi/f9l5y_1LC9w/hqdefault.jpg",
+      "durationSeconds": 207,
+      "title": "Berlin Marathon 2026 Is Loaded! | Track And Field",
       "source": "youtube",
-      "channel": "The Morning Coffee Run",
-      "publishedAt": "2 hours ago"
+      "channel": "Track & Field All Day",
+      "publishedAt": "11h ago"
     },
-    "fetchedAt": "2026-09-20T20:49:16.821Z",
+    "fetchedAt": "2026-09-27T03:16:53.515Z",
     "query": "Berlin Marathon marathon highlights 2026",
     "debug": {
       "searchQuery": "Berlin Marathon marathon highlights 2026",
-      "selectedVideoTitle": "This decides the next two years.",
-      "selectedVideoPublishedAt": "2 hours ago",
-      "selectedVideoChannel": "The Morning Coffee Run",
-      "rejectedForAgeCount": 0
+      "selectedVideoTitle": "Berlin Marathon 2026 Is Loaded! | Track And Field",
+      "selectedVideoPublishedAt": "11h ago",
+      "selectedVideoChannel": "Track & Field All Day",
+      "rejectedForAgeCount": 1
     }
   },
   "marquee_match:elche vs espanyol la liga preview": {
@@ -2492,6 +2492,178 @@
       "selectedVideoTitle": "MLS REIMAGINED Championship Div 2026-27 MD8 - Toronto FC (3rd) vs Sporting Kansas City (8th)",
       "selectedVideoPublishedAt": "49 minutes ago",
       "selectedVideoChannel": "AltSim Sports",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:real salt lake vs seattle sounders fc mls preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=OKu7jQgIXMQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/OKu7jQgIXMQ/hqdefault.jpg",
+      "durationSeconds": 2683,
+      "title": "REACTING TO THE USMNT ROSTER ANNOUNCEMENT! #MLS #USMNT",
+      "source": "youtube",
+      "channel": "The Designated Players | An MLS Podcast",
+      "publishedAt": null
+    },
+    "fetchedAt": "2026-09-21T18:22:16.635Z",
+    "query": "Real Salt Lake vs Seattle Sounders FC MLS preview",
+    "debug": {
+      "searchQuery": "Real Salt Lake vs Seattle Sounders FC MLS preview",
+      "selectedVideoTitle": "REACTING TO THE USMNT ROSTER ANNOUNCEMENT! #MLS #USMNT",
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": "The Designated Players | An MLS Podcast",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:south africa clinch playoff berth september 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=4eyJsJltTXc",
+      "thumbnailUrl": "https://img.youtube.com/vi/4eyJsJltTXc/hqdefault.jpg",
+      "durationSeconds": 1891,
+      "title": "Week in Review: Parking Meter Sale Advances; Cubs and Sox Clinch Playoff Spots",
+      "source": "youtube",
+      "channel": "WTTW",
+      "publishedAt": "Streamed 1d ago"
+    },
+    "fetchedAt": "2026-09-27T03:16:52.303Z",
+    "query": "South Africa clinch playoff berth September 2026",
+    "debug": {
+      "searchQuery": "South Africa clinch playoff berth September 2026",
+      "selectedVideoTitle": "Week in Review: Parking Meter Sale Advances; Cubs and Sox Clinch Playoff Spots",
+      "selectedVideoPublishedAt": "Streamed 1d ago",
+      "selectedVideoChannel": "WTTW",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:azerbaijan grand prix sports september 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=ZMwVG7mTTY4",
+      "thumbnailUrl": "https://img.youtube.com/vi/ZMwVG7mTTY4/hqdefault.jpg",
+      "durationSeconds": 6698,
+      "title": "🔴 F1 LIVE - Azerbaijan GP Qualifying - Live Timing & Commentary (Baku 2026)",
+      "source": "youtube",
+      "channel": "Racing Statistics",
+      "publishedAt": "Streamed 9h ago"
+    },
+    "fetchedAt": "2026-09-25T22:46:34.460Z",
+    "query": "Azerbaijan Grand Prix sports September 2026",
+    "debug": {
+      "searchQuery": "Azerbaijan Grand Prix sports September 2026",
+      "selectedVideoTitle": "🔴 F1 LIVE - Azerbaijan GP Qualifying - Live Timing & Commentary (Baku 2026)",
+      "selectedVideoPublishedAt": "Streamed 9h ago",
+      "selectedVideoChannel": "Racing Statistics",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:new york city fc vs atlanta united fc mls preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=Cf5aRM5CgUk",
+      "thumbnailUrl": "https://img.youtube.com/vi/Cf5aRM5CgUk/hqdefault.jpg",
+      "durationSeconds": 2000,
+      "title": "MLS on Apple TV's Ian Joy talks Atlanta United vs. New York City FC + building a winner in MLS",
+      "source": "youtube",
+      "channel": "Scarves and Spikes: Atlanta United, MLS, and more",
+      "publishedAt": "6h ago"
+    },
+    "fetchedAt": "2026-09-25T22:46:35.701Z",
+    "query": "New York City FC vs Atlanta United FC MLS preview",
+    "debug": {
+      "searchQuery": "New York City FC vs Atlanta United FC MLS preview",
+      "selectedVideoTitle": "MLS on Apple TV's Ian Joy talks Atlanta United vs. New York City FC + building a winner in MLS",
+      "selectedVideoPublishedAt": "6h ago",
+      "selectedVideoChannel": "Scarves and Spikes: Atlanta United, MLS, and more",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "rally_weekend:rally italia sardegna wrc rally highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=69dEmiDLNuQ",
+      "thumbnailUrl": "https://img.youtube.com/vi/69dEmiDLNuQ/hqdefault.jpg",
+      "durationSeconds": 480,
+      "title": "WRC Italy Sardinia 2026, final stage of the championship presented in Alghero",
+      "source": "youtube",
+      "channel": "CentotrentunoTV",
+      "publishedAt": "19h ago"
+    },
+    "fetchedAt": "2026-09-27T03:16:55.399Z",
+    "query": "Rally Italia Sardegna WRC rally highlights",
+    "debug": {
+      "searchQuery": "Rally Italia Sardegna WRC rally highlights",
+      "selectedVideoTitle": "WRC Italy Sardinia 2026, final stage of the championship presented in Alghero",
+      "selectedVideoPublishedAt": "19h ago",
+      "selectedVideoChannel": "CentotrentunoTV",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "rivalry_game:australia vs south africa rivalry highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=vw0LT1VRLqw",
+      "thumbnailUrl": "https://img.youtube.com/vi/vw0LT1VRLqw/hqdefault.jpg",
+      "durationSeconds": 66,
+      "title": "Basit Ali का बड़ा Controversial Statment ! Abrar Ahmed रोकेंगे Abhishek, Sanju & Ishan? India-Pak",
+      "source": "youtube",
+      "channel": "SPORTS DECODED",
+      "publishedAt": "22h ago"
+    },
+    "fetchedAt": "2026-09-27T03:16:50.949Z",
+    "query": "Australia vs South Africa rivalry highlights",
+    "debug": {
+      "searchQuery": "Australia vs South Africa rivalry highlights",
+      "selectedVideoTitle": "Basit Ali का बड़ा Controversial Statment ! Abrar Ahmed रोकेंगे Abhishek, Sanju & Ishan? India-Pak",
+      "selectedVideoPublishedAt": "22h ago",
+      "selectedVideoChannel": "SPORTS DECODED",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "playoff_push:boston bruins playoff push september 2026": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:16:51.705Z",
+    "query": "Boston Bruins playoff push September 2026",
+    "debug": {
+      "searchQuery": "Boston Bruins playoff push September 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "rivalry_game:south africa vs australia rivalry highlights": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=vw0LT1VRLqw",
+      "thumbnailUrl": "https://img.youtube.com/vi/vw0LT1VRLqw/hqdefault.jpg",
+      "durationSeconds": 66,
+      "title": "Basit Ali का बड़ा Controversial Statment ! Abrar Ahmed रोकेंगे Abhishek, Sanju & Ishan? India-Pak",
+      "source": "youtube",
+      "channel": "SPORTS DECODED",
+      "publishedAt": "22h ago"
+    },
+    "fetchedAt": "2026-09-27T03:16:52.029Z",
+    "query": "South Africa vs Australia rivalry highlights",
+    "debug": {
+      "searchQuery": "South Africa vs Australia rivalry highlights",
+      "selectedVideoTitle": "Basit Ali का बड़ा Controversial Statment ! Abrar Ahmed रोकेंगे Abhishek, Sanju & Ishan? India-Pak",
+      "selectedVideoPublishedAt": "22h ago",
+      "selectedVideoChannel": "SPORTS DECODED",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:inter miami cf vs columbus crew mls preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=pCoUctl-Cgg",
+      "thumbnailUrl": "https://img.youtube.com/vi/pCoUctl-Cgg/hqdefault.jpg",
+      "durationSeconds": 203,
+      "title": "\"ESTABA ENOJADO\": Kily González REVELA su molestia con Inter Miami previo a Columbus Crew",
+      "source": "youtube",
+      "channel": "En Juego Deportes ",
+      "publishedAt": "11h ago"
+    },
+    "fetchedAt": "2026-09-27T03:16:54.526Z",
+    "query": "Inter Miami CF vs Columbus Crew MLS preview",
+    "debug": {
+      "searchQuery": "Inter Miami CF vs Columbus Crew MLS preview",
+      "selectedVideoTitle": "\"ESTABA ENOJADO\": Kily González REVELA su molestia con Inter Miami previo a Columbus Crew",
+      "selectedVideoPublishedAt": "11h ago",
+      "selectedVideoChannel": "En Juego Deportes ",
       "rejectedForAgeCount": 0
     }
   }

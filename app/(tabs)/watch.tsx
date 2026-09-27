@@ -1162,7 +1162,7 @@ const skeletonStyles = StyleSheet.create({
 export default function WatchScreen() {
   const insets = useSafeAreaInsets();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
-  const { allEvents: rawEvents, favoritesOnly, isLoading: eventsLoading } = useEvents();
+  const { allEvents: rawEvents, favoritesOnly, isLoading: eventsLoading, fetchError: eventsFetchError } = useEvents();
   const { getScore, scores } = useScores();
   const { favorites, disabledSports, disabledLeagues } = useFavorites();
   const { data: narrativesData } = useQuery<{ cards: unknown[] }>({ queryKey: ["/api/narratives"] });
@@ -1824,6 +1824,12 @@ export default function WatchScreen() {
           />
         }
       >
+        {eventsFetchError && (
+          <View style={styles.emptyState}>
+            <Ionicons name="alert-circle-outline" size={22} color={Colors.live} />
+            <Text style={styles.emptySubtitle}>Schedule API unavailable: {eventsFetchError}</Text>
+          </View>
+        )}
         {hasChaos ? (
           <View style={styles.chaosSection}>
             <ChaosCard

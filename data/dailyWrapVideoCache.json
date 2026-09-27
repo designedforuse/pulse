@@ -1568,5 +1568,279 @@
   "rugby-npc-o201tq": {
     "video": null,
     "fetchedAt": "2026-09-20T21:11:11.152Z"
+  },
+  "rugby-urc-2kp6g6": {
+    "video": null,
+    "fetchedAt": "2026-09-25T22:45:21.326Z"
+  },
+  "rugby-urc-fip1u6": {
+    "video": null,
+    "fetchedAt": "2026-09-25T22:45:21.326Z"
+  },
+  "rugby-urc-g65t1y": {
+    "video": null,
+    "fetchedAt": "2026-09-25T22:45:21.326Z"
+  },
+  "rugby-premiership-nmikz8": {
+    "video": null,
+    "fetchedAt": "2026-09-25T22:45:21.326Z"
+  },
+  "rugby-premiership-sl3umd": {
+    "video": null,
+    "fetchedAt": "2026-09-25T22:45:21.326Z"
+  },
+  "cricket-odi-yezlh2": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=X2p7HI5TVYw",
+      "thumbnailUrl": "https://i.ytimg.com/vi/X2p7HI5TVYw/hqdefault.jpg",
+      "durationSeconds": 628,
+      "title": "ROKO Ka Jalwa 🔥 IND vs WI 1st ODI Se Pehle BIG News | SA vs AUS & ENG vs SL odi highlights ",
+      "channel": "Cricket Masala"
+    },
+    "fetchedAt": "2026-09-25T22:45:21.326Z"
+  },
+  "rugby-npc-ilkkr1": {
+    "video": null,
+    "fetchedAt": "2026-09-25T22:45:21.326Z"
+  },
+  "ahl-1030235": {
+    "video": null,
+    "fetchedAt": "2026-09-25T22:45:21.326Z"
+  },
+  "f1-espn-401839112": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=I9oahfzac0I",
+      "thumbnailUrl": "https://i.ytimg.com/vi/I9oahfzac0I/hqdefault.jpg",
+      "durationSeconds": 487,
+      "title": "Race Highlights | 2026 Azerbaijan Grand Prix",
+      "channel": "FORMULA 1"
+    },
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-mls-20260926-2330-new-york-city-fc-at-atlanta-united-fc": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=jD-eYW4LLxs",
+      "thumbnailUrl": "https://i.ytimg.com/vi/jD-eYW4LLxs/hqdefault.jpg",
+      "durationSeconds": 624,
+      "title": "Match Highlights | Atlanta United vs. New York City FC | September 26, 2026",
+      "channel": "New York City FC"
+    },
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-mls-20260926-2330-fc-cincinnati-at-cf-montr-al": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=groIhzZylK8",
+      "thumbnailUrl": "https://i.ytimg.com/vi/groIhzZylK8/hqdefault.jpg",
+      "durationSeconds": 633,
+      "title": "HIGHLIGHTS: FC Cincinnati vs CF Montréal | September 26, 2026",
+      "channel": "FC Cincinnati"
+    },
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-mls-20260926-2330-chicago-fire-fc-at-charlotte-fc": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=jD-eYW4LLxs",
+      "thumbnailUrl": "https://i.ytimg.com/vi/jD-eYW4LLxs/hqdefault.jpg",
+      "durationSeconds": 624,
+      "title": "Match Highlights | Atlanta United vs. New York City FC | September 26, 2026",
+      "channel": "New York City FC"
+    },
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-mls-20260926-2330-orlando-city-sc-at-philadelphia-union": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=pH8B6T9rstc",
+      "thumbnailUrl": "https://i.ytimg.com/vi/pH8B6T9rstc/hqdefault.jpg",
+      "durationSeconds": 631,
+      "title": "2026 Match Highlights | Orlando City at Philadelphia Union | September 26, 2026",
+      "channel": "OrlandoCitySC"
+    },
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-mls-20260926-2330-st-louis-city-sc-at-red-bull-new-york": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-mls-20260927-0030-san-diego-fc-at-austin-fc": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-mls-20260927-0030-lafc-at-fc-dallas": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=aYemEZvRn9g",
+      "thumbnailUrl": "https://i.ytimg.com/vi/aYemEZvRn9g/hqdefault.jpg",
+      "durationSeconds": 630,
+      "title": "FC Dallas vs LAFC Highlights | September 26, 2026",
+      "channel": "FC Dallas"
+    },
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-mls-20260927-0030-sporting-kansas-city-at-houston-dynamo-fc": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-mls-20260927-0030-toronto-fc-at-nashville-sc": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=gsjBRBM7wfQ",
+      "thumbnailUrl": "https://i.ytimg.com/vi/gsjBRBM7wfQ/hqdefault.jpg",
+      "durationSeconds": 100,
+      "title": "GOAL: Sebastian Berhalter Long Range Goal vs PERU September 26th, 2026",
+      "channel": "American Soccer Archive"
+    },
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-mls-20260927-0030-minnesota-united-fc-at-seattle-sounders-fc": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=gsjBRBM7wfQ",
+      "thumbnailUrl": "https://i.ytimg.com/vi/gsjBRBM7wfQ/hqdefault.jpg",
+      "durationSeconds": 100,
+      "title": "GOAL: Sebastian Berhalter Long Range Goal vs PERU September 26th, 2026",
+      "channel": "American Soccer Archive"
+    },
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "rugby-urc-h34k0g": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=oG6C11xvxWg",
+      "thumbnailUrl": "https://i.ytimg.com/vi/oG6C11xvxWg/hqdefault.jpg",
+      "durationSeconds": 624,
+      "title": "Lions vs Leinster | Match Highlights | URC 2026/27 Round 1",
+      "channel": "Grin Legacy"
+    },
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "rugby-top14-tg9r36": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "rugby-urc-do20dq": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=BDNt17z5bhs",
+      "thumbnailUrl": "https://i.ytimg.com/vi/BDNt17z5bhs/hqdefault.jpg",
+      "durationSeconds": 987,
+      "title": "Sharks vs Ospreys | URC 2026/27 Round 1 | Match Highlights | Rugby Highlights",
+      "channel": "Grin Legacy"
+    },
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "rugby-premiership-bx06g4": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "rugby-top14-v9q4gb": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "rugby-top14-sya583": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "rugby-top14-w1lhqy": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "rugby-top14-azsffe": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "rugby-urc-t89mj8": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "rugby-urc-nk9gsq": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "rugby-premiership-53jz6t": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "rugby-urc-osbpz2": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "rugby-top14-z3k2ef": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-nwsl-20260926-1630-denver-summit-at-kansas-city-current": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=MDaIEcLQwnk",
+      "thumbnailUrl": "https://i.ytimg.com/vi/MDaIEcLQwnk/hqdefault.jpg",
+      "durationSeconds": 279,
+      "title": "Kansas City Current vs Denver Summit FC: BIG Rematch! NWSL Playoff Race Heats Up",
+      "channel": "Pujan Bhai Comedy"
+    },
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-nwsl-20260926-2230-angel-city-at-washington-spirit": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-usl-20260926-2300-rhode-island-fc-at-charleston-battery": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-usl-20260926-2300-colorado-springs-switchbacks-fc-at-detroit-city-fc": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-usl-20260926-2300-miami-fc-at-indy-eleven": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-usl-20260927-0030-tampa-bay-rowdies-at-san-antonio-fc": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-nwsl-20260927-0045-houston-dash-at-portland-thorns": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=sMA0KUwJ87I",
+      "thumbnailUrl": "https://i.ytimg.com/vi/sMA0KUwJ87I/hqdefault.jpg",
+      "durationSeconds": 601,
+      "title": "FULL HIGHLIGHTS | Portland Thorns FC vs. Houston Dash",
+      "channel": "National Women's Soccer League"
+    },
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "soccer-usl-20260927-0100-sacramento-republic-fc-at-new-mexico-united": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "rugby-npc-quofa3": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "ahl-1030239": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "ahl-1030240": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "ahl-1030246": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "ahl-1030242": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "ahl-1030241": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "ahl-1030243": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "ahl-1030244": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "ahl-1030245": {
+    "video": null,
+    "fetchedAt": "2026-09-27T03:14:19.767Z"
   }
 }

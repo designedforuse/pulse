@@ -299,9 +299,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
         if (error) {
           console.error("[refresh] Script failed:", error.message);
-          return res.status(500).json({
+          const timedOut = error.killed || (error as NodeJS.ErrnoException).code === "ETIMEDOUT";
+          return res.status(timedOut ? 504 : 500).json({
             success: false,
-            error: error.message,
+            code: timedOut ? "SCRIPT_TIMEOUT" : "SCRIPT_FAILED",
+            error: timedOut ? "Schedule job exceeded its 60-second limit" : "Schedule job failed; check server logs",
           });
         }
 
@@ -310,6 +312,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           console.error("[refresh] Update completed without a valid schedule");
           return res.status(500).json({
             success: false,
+            code: "NO_SCHEDULE",
             error: "Refresh did not produce a valid schedule",
           });
         }
@@ -695,7 +698,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         if (stdout) console.log("[rebuild-explore] stdout:", stdout);
         if (stderr) console.error("[rebuild-explore] stderr:", stderr);
         if (error) {
-          return res.status(500).json({ success: false, error: error.message });
+          console.error("[rebuild-explore] Script failed:", error.message);
+          const timedOut = error.killed || (error as NodeJS.ErrnoException).code === "ETIMEDOUT";
+          return res.status(timedOut ? 504 : 500).json({
+            success: false,
+            code: timedOut ? "SCRIPT_TIMEOUT" : "SCRIPT_FAILED",
+            error: timedOut ? "Story job exceeded its 60-second limit" : "Story job failed; check server logs",
+          });
         }
         const data = loadNarratives();
         return res.json({

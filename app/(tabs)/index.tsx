@@ -19,6 +19,7 @@ import { Image as ExpoImage } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import Colors from "@/constants/colors";
 import { getApiUrl } from "@/lib/query-client";
+import { useEvents } from "@/lib/events-context";
 import { getEffectiveSport } from "@/lib/data";
 import { useFavorites } from "@/lib/favorites-context";
 import DailyWrapCard from "@/components/DailyWrapCard";
@@ -125,6 +126,7 @@ export default function ExploreScreen() {
   const insets = useSafeAreaInsets();
   const queryClient = useQueryClient();
   const { disabledSports, isSportEnabled } = useFavorites();
+  const { fetchError: eventsFetchError } = useEvents();
   const { width: screenWidth } = useWindowDimensions();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
   const [refreshing, setRefreshing] = useState(false);
@@ -370,6 +372,11 @@ export default function ExploreScreen() {
         <Text style={styles.subtitle}>Narrative intelligence, live</Text>
       </View>
 
+      {eventsFetchError && (
+        <Text style={[styles.emptySubtitle, { color: Colors.live, paddingVertical: 10 }]}>
+          Schedule API unavailable: {eventsFetchError}
+        </Text>
+      )}
       <View
         style={styles.feedArea}
         onLayout={onFeedLayout}

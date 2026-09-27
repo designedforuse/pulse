@@ -2,6 +2,7 @@ import React, { createContext, useContext, useMemo, useState, useEffect, ReactNo
 import { useQuery } from "@tanstack/react-query";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getQueryFn } from "@/lib/query-client";
+import { apiErrorMessage } from "@/lib/api-errors";
 import guideData from "@/data/masterGuide.json";
 import type { SportEvent, Pack } from "@/lib/data";
 import { useProviders, getEventBroadcasterIds } from "@/lib/providers-context";
@@ -34,6 +35,7 @@ interface ApiResponse {
 interface EventsContextValue {
   allEvents: SportEvent[];
   isLoading: boolean;
+  fetchError: string | null;
   getEventsForPack: (pack: Pack) => SportEvent[];
   findEvent: (id: string) => SportEvent | undefined;
   debugShowAll: boolean;
@@ -87,7 +89,7 @@ export function EventsProvider({ children }: { children: ReactNode }) {
     AsyncStorage.setItem(HIDE_SPOILERS_KEY, val.toString());
   };
 
-  const { data, isLoading } = useQuery<ApiResponse>({
+  const { data, isLoading, error } = useQuery<ApiResponse>({
     queryKey: ["/api/events?days=14"],
     queryFn: getQueryFn({ on401: "throw" }),
     staleTime: 5 * 60 * 1000,
@@ -150,6 +152,7 @@ export function EventsProvider({ children }: { children: ReactNode }) {
     return {
       allEvents: showSvnsSessions ? visibleEvents : visibleEvents.filter((e) => !isSvnsSession(e)),
       isLoading,
+      fetchError: error ? apiErrorMessage(error) : null,
       getEventsForPack,
       findEvent,
       debugShowAll,
@@ -162,7 +165,7 @@ export function EventsProvider({ children }: { children: ReactNode }) {
       setHideSpoilers,
       leagueSeasonStarts,
     };
-  }, [allEvents, isLoading, debugShowAll, showSvnsSessions, favoritesOnly, hideSpoilers, leagueSeasonStarts, disabledProviders]);
+  }, [allEvents, isLoading, error, debugShowAll, showSvnsSessions, favoritesOnly, hideSpoilers, leagueSeasonStarts, disabledProviders]);
 
   return (
     <EventsContext.Provider value={value}>{children}</EventsContext.Provider>

@@ -25,3 +25,13 @@ URL was not captured, so a stale host remains a hypothesis, not a proven cause.
 
 **How to apply:** Check the Android manifest host and public JSON/refresh responses.
 Do not treat a working browser as proof of native connectivity.
+
+The user reported continued native failures after the manifest-host change.
+
+**Why:** Successful public API probes did not reproduce the device's failure;
+the old generic "Check connection" message concealed HTTP, parsing, and transport
+errors alike. Neither stale domains nor Expo's fetch module is a proven cause.
+
+**How to apply:** Obtain the detailed on-device error before making another
+speculative routing change. Preserve distinct transport/status/non-JSON errors
+and never describe a server-only check as Android verification.

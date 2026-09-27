@@ -60,11 +60,6 @@
       "sightings": [
         {
           "teamAbbrev": "TBL",
-          "gameId": "2025020994",
-          "seenAt": "2026-03-11T04:11:44.394Z"
-        },
-        {
-          "teamAbbrev": "TBL",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -107,6 +102,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -377,6 +377,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021195",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -925,11 +930,6 @@
       "sightings": [
         {
           "teamAbbrev": "DET",
-          "gameId": "2025020970",
-          "seenAt": "2026-03-05T04:50:57.276Z"
-        },
-        {
-          "teamAbbrev": "DET",
           "gameId": "2025021016",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -972,6 +972,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -1017,17 +1022,17 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
     "8474141": {
       "name": "P. Kane",
       "sightings": [
-        {
-          "teamAbbrev": "DET",
-          "gameId": "2025021016",
-          "seenAt": "2026-03-11T04:11:44.394Z"
-        },
         {
           "teamAbbrev": "DET",
           "gameId": "2025021030",
@@ -1072,6 +1077,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -1165,11 +1175,6 @@
       "sightings": [
         {
           "teamAbbrev": "TBL",
-          "gameId": "2025020994",
-          "seenAt": "2026-03-08T05:57:11.976Z"
-        },
-        {
-          "teamAbbrev": "TBL",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -1212,6 +1217,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -1735,11 +1745,6 @@
       "sightings": [
         {
           "teamAbbrev": "NJD",
-          "gameId": "2025021050",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "NJD",
           "gameId": "2025021064",
           "seenAt": "2026-03-18T18:00:38.134Z"
         },
@@ -1782,6 +1787,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -1837,6 +1847,16 @@
           "teamAbbrev": "NSH",
           "gameId": "2025021287",
           "seenAt": "2026-04-15T18:00:10.596Z"
+        }
+      ]
+    },
+    "8474612": {
+      "name": "T. Hamonic",
+      "sightings": [
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -3045,11 +3065,6 @@
       "sightings": [
         {
           "teamAbbrev": "DET",
-          "gameId": "2025021016",
-          "seenAt": "2026-03-11T04:11:44.394Z"
-        },
-        {
-          "teamAbbrev": "DET",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -3092,6 +3107,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -3350,11 +3370,6 @@
       "sightings": [
         {
           "teamAbbrev": "NJD",
-          "gameId": "2025021050",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "NJD",
           "gameId": "2025021064",
           "seenAt": "2026-03-18T18:00:38.134Z"
         },
@@ -3397,6 +3412,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -3460,11 +3480,6 @@
       "sightings": [
         {
           "teamAbbrev": "DET",
-          "gameId": "2025021016",
-          "seenAt": "2026-03-11T04:11:44.394Z"
-        },
-        {
-          "teamAbbrev": "DET",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -3507,6 +3522,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -3894,11 +3914,6 @@
       "name": "J. Faulk",
       "sightings": [
         {
-          "teamAbbrev": "STL",
-          "gameId": "2025020974",
-          "seenAt": "2026-03-06T03:20:47.423Z"
-        },
-        {
           "teamAbbrev": "DET",
           "gameId": "2025021030",
           "seenAt": "2026-03-14T06:00:32.337Z"
@@ -3942,6 +3957,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -4020,11 +4040,6 @@
       "sightings": [
         {
           "teamAbbrev": "NJD",
-          "gameId": "2025021050",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "NJD",
           "gameId": "2025021064",
           "seenAt": "2026-03-18T18:00:38.134Z"
         },
@@ -4067,6 +4082,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -5407,6 +5427,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -5855,11 +5880,6 @@
       "sightings": [
         {
           "teamAbbrev": "DET",
-          "gameId": "2025021016",
-          "seenAt": "2026-03-11T04:11:44.394Z"
-        },
-        {
-          "teamAbbrev": "DET",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -5902,6 +5922,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -6030,11 +6055,6 @@
       "sightings": [
         {
           "teamAbbrev": "TBL",
-          "gameId": "2025020994",
-          "seenAt": "2026-03-08T05:57:11.976Z"
-        },
-        {
-          "teamAbbrev": "TBL",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -6077,6 +6097,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -6342,6 +6367,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -6460,11 +6490,6 @@
       "sightings": [
         {
           "teamAbbrev": "NJD",
-          "gameId": "2025021050",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "NJD",
           "gameId": "2025021064",
           "seenAt": "2026-03-18T18:00:38.134Z"
         },
@@ -6507,6 +6532,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -6652,6 +6682,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -7080,11 +7115,6 @@
       "sightings": [
         {
           "teamAbbrev": "TBL",
-          "gameId": "2025020994",
-          "seenAt": "2026-03-08T05:57:11.976Z"
-        },
-        {
-          "teamAbbrev": "TBL",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -7127,6 +7157,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -7545,11 +7580,6 @@
       "sightings": [
         {
           "teamAbbrev": "TBL",
-          "gameId": "2025021030",
-          "seenAt": "2026-03-13T04:29:52.527Z"
-        },
-        {
-          "teamAbbrev": "TBL",
           "gameId": "2025021076",
           "seenAt": "2026-03-18T18:00:38.134Z"
         },
@@ -7592,6 +7622,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -7810,11 +7845,6 @@
       "sightings": [
         {
           "teamAbbrev": "TBL",
-          "gameId": "2025020994",
-          "seenAt": "2026-03-08T05:57:11.976Z"
-        },
-        {
-          "teamAbbrev": "TBL",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -7857,6 +7887,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -9045,11 +9080,6 @@
       "sightings": [
         {
           "teamAbbrev": "NJD",
-          "gameId": "2025021050",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "NJD",
           "gameId": "2025021064",
           "seenAt": "2026-03-18T18:00:38.134Z"
         },
@@ -9092,6 +9122,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -9240,11 +9275,6 @@
       "sightings": [
         {
           "teamAbbrev": "TBL",
-          "gameId": "2025020980",
-          "seenAt": "2026-03-06T03:51:15.227Z"
-        },
-        {
-          "teamAbbrev": "TBL",
           "gameId": "2025020994",
           "seenAt": "2026-03-08T05:57:11.976Z"
         },
@@ -9287,6 +9317,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030123",
           "seenAt": "2026-04-26T22:13:57.243Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -9547,6 +9582,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021195",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -9610,11 +9650,6 @@
       "sightings": [
         {
           "teamAbbrev": "TBL",
-          "gameId": "2025020994",
-          "seenAt": "2026-03-08T05:57:11.976Z"
-        },
-        {
-          "teamAbbrev": "TBL",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -9657,6 +9692,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -9770,11 +9810,6 @@
       "sightings": [
         {
           "teamAbbrev": "TBL",
-          "gameId": "2025020980",
-          "seenAt": "2026-03-06T03:51:15.227Z"
-        },
-        {
-          "teamAbbrev": "TBL",
           "gameId": "2025020994",
           "seenAt": "2026-03-08T05:57:11.976Z"
         },
@@ -9817,6 +9852,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -9967,17 +10007,17 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
     "8477429": {
       "name": "A. Copp",
       "sightings": [
-        {
-          "teamAbbrev": "DET",
-          "gameId": "2025020920",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
         {
           "teamAbbrev": "DET",
           "gameId": "2025020970",
@@ -10022,6 +10062,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -10355,11 +10400,6 @@
       "sightings": [
         {
           "teamAbbrev": "DET",
-          "gameId": "2025021016",
-          "seenAt": "2026-03-11T04:11:44.394Z"
-        },
-        {
-          "teamAbbrev": "DET",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -10402,6 +10442,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -11747,6 +11792,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -13455,11 +13505,6 @@
       "sightings": [
         {
           "teamAbbrev": "TBL",
-          "gameId": "2025020994",
-          "seenAt": "2026-03-08T05:57:11.976Z"
-        },
-        {
-          "teamAbbrev": "TBL",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -13502,6 +13547,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -13942,6 +13992,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -14545,11 +14600,6 @@
       "sightings": [
         {
           "teamAbbrev": "NJD",
-          "gameId": "2025021050",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "NJD",
           "gameId": "2025021064",
           "seenAt": "2026-03-18T18:00:38.134Z"
         },
@@ -14592,6 +14642,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -14920,11 +14975,6 @@
       "sightings": [
         {
           "teamAbbrev": "NJD",
-          "gameId": "2025021050",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "NJD",
           "gameId": "2025021064",
           "seenAt": "2026-03-18T18:00:38.134Z"
         },
@@ -14967,17 +15017,17 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
     "8478416": {
       "name": "E. Cernak",
       "sightings": [
-        {
-          "teamAbbrev": "TBL",
-          "gameId": "2025021003",
-          "seenAt": "2026-03-13T04:29:52.527Z"
-        },
         {
           "teamAbbrev": "TBL",
           "gameId": "2025021049",
@@ -15022,6 +15072,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -16550,11 +16605,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025021098",
-          "seenAt": "2026-03-21T04:48:25.422Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025021118",
           "seenAt": "2026-03-27T04:08:45.678Z"
         },
@@ -16597,6 +16647,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025030175",
           "seenAt": "2026-04-30T21:05:06.862Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025021297",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -16660,11 +16715,6 @@
       "sightings": [
         {
           "teamAbbrev": "TBL",
-          "gameId": "2025020994",
-          "seenAt": "2026-03-08T05:57:11.976Z"
-        },
-        {
-          "teamAbbrev": "TBL",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -16707,6 +16757,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -16967,6 +17022,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -17230,11 +17290,6 @@
       "sightings": [
         {
           "teamAbbrev": "UTA",
-          "gameId": "2025021098",
-          "seenAt": "2026-03-21T04:48:25.422Z"
-        },
-        {
-          "teamAbbrev": "UTA",
           "gameId": "2025021118",
           "seenAt": "2026-03-27T04:08:45.678Z"
         },
@@ -17277,6 +17332,11 @@
           "teamAbbrev": "UTA",
           "gameId": "2025030175",
           "seenAt": "2026-04-30T21:05:06.862Z"
+        },
+        {
+          "teamAbbrev": "UTA",
+          "gameId": "2025021297",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -17437,6 +17497,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -18167,6 +18232,11 @@
           "teamAbbrev": "FLA",
           "gameId": "2025021193",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -18302,6 +18372,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -18475,11 +18550,6 @@
       "sightings": [
         {
           "teamAbbrev": "DET",
-          "gameId": "2025021016",
-          "seenAt": "2026-03-11T04:11:44.394Z"
-        },
-        {
-          "teamAbbrev": "DET",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -18522,6 +18592,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -19335,6 +19410,16 @@
         }
       ]
     },
+    "8479395": {
+      "name": "D. Cholowski",
+      "sightings": [
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
+        }
+      ]
+    },
     "8479398": {
       "name": "S. Girard",
       "sightings": [
@@ -19490,11 +19575,6 @@
       "sightings": [
         {
           "teamAbbrev": "NJD",
-          "gameId": "2025021050",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "NJD",
           "gameId": "2025021064",
           "seenAt": "2026-03-18T18:00:38.134Z"
         },
@@ -19537,6 +19617,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -20562,6 +20647,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021250",
           "seenAt": "2026-04-12T14:58:11.289Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -21005,11 +21095,6 @@
       "sightings": [
         {
           "teamAbbrev": "NJD",
-          "gameId": "2025021050",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "NJD",
           "gameId": "2025021064",
           "seenAt": "2026-03-18T18:00:38.134Z"
         },
@@ -21052,6 +21137,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -21195,11 +21285,6 @@
       "sightings": [
         {
           "teamAbbrev": "NJD",
-          "gameId": "2025021050",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "NJD",
           "gameId": "2025021064",
           "seenAt": "2026-03-18T18:00:38.134Z"
         },
@@ -21242,6 +21327,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -22580,11 +22670,6 @@
       "sightings": [
         {
           "teamAbbrev": "NJD",
-          "gameId": "2025021050",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "NJD",
           "gameId": "2025021064",
           "seenAt": "2026-03-18T18:00:38.134Z"
         },
@@ -22627,6 +22712,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -22727,6 +22817,11 @@
           "teamAbbrev": "WPG",
           "gameId": "2025021290",
           "seenAt": "2026-04-14T15:02:20.313Z"
+        },
+        {
+          "teamAbbrev": "WPG",
+          "gameId": "2025021297",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -23285,11 +23380,6 @@
       "sightings": [
         {
           "teamAbbrev": "TBL",
-          "gameId": "2025020912",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "TBL",
           "gameId": "2025020980",
           "seenAt": "2026-03-06T03:51:15.227Z"
         },
@@ -23332,6 +23422,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -25045,11 +25140,6 @@
       "sightings": [
         {
           "teamAbbrev": "DET",
-          "gameId": "2025020970",
-          "seenAt": "2026-03-05T04:50:57.276Z"
-        },
-        {
-          "teamAbbrev": "DET",
           "gameId": "2025021016",
           "seenAt": "2026-03-11T04:11:44.394Z"
         },
@@ -25092,6 +25182,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021250",
           "seenAt": "2026-04-12T14:58:11.289Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -25735,11 +25830,6 @@
       "sightings": [
         {
           "teamAbbrev": "NJD",
-          "gameId": "2025021050",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "NJD",
           "gameId": "2025021064",
           "seenAt": "2026-03-18T18:00:38.134Z"
         },
@@ -25782,6 +25872,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -26802,6 +26897,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -27160,11 +27260,6 @@
       "sightings": [
         {
           "teamAbbrev": "DET",
-          "gameId": "2025021016",
-          "seenAt": "2026-03-11T04:11:44.394Z"
-        },
-        {
-          "teamAbbrev": "DET",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -27207,6 +27302,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -27530,11 +27630,6 @@
       "sightings": [
         {
           "teamAbbrev": "NJD",
-          "gameId": "2025021050",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "NJD",
           "gameId": "2025021064",
           "seenAt": "2026-03-18T18:00:38.134Z"
         },
@@ -27577,6 +27672,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -28340,11 +28440,6 @@
       "sightings": [
         {
           "teamAbbrev": "DET",
-          "gameId": "2025021016",
-          "seenAt": "2026-03-11T04:11:44.394Z"
-        },
-        {
-          "teamAbbrev": "DET",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -28387,6 +28482,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -29102,6 +29202,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -29372,6 +29477,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -29437,6 +29547,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -29500,11 +29615,6 @@
       "sightings": [
         {
           "teamAbbrev": "DET",
-          "gameId": "2025021016",
-          "seenAt": "2026-03-11T04:11:44.394Z"
-        },
-        {
-          "teamAbbrev": "DET",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -29547,6 +29657,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -30302,17 +30417,17 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
     "8482110": {
       "name": "D. Mercer",
       "sightings": [
-        {
-          "teamAbbrev": "NJD",
-          "gameId": "2025021050",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
         {
           "teamAbbrev": "NJD",
           "gameId": "2025021064",
@@ -30357,6 +30472,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -31202,6 +31322,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -31665,11 +31790,6 @@
       "sightings": [
         {
           "teamAbbrev": "TBL",
-          "gameId": "2025020912",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "TBL",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -31712,6 +31832,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -32410,11 +32535,6 @@
       "sightings": [
         {
           "teamAbbrev": "TBL",
-          "gameId": "2025020994",
-          "seenAt": "2026-03-08T05:57:11.976Z"
-        },
-        {
-          "teamAbbrev": "TBL",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -32457,6 +32577,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -33895,11 +34020,6 @@
       "sightings": [
         {
           "teamAbbrev": "DET",
-          "gameId": "2025021016",
-          "seenAt": "2026-03-11T04:11:44.394Z"
-        },
-        {
-          "teamAbbrev": "DET",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -33942,6 +34062,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -34167,6 +34292,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -34607,6 +34737,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -34648,11 +34783,6 @@
     "8482929": {
       "name": "E. Lilleberg",
       "sightings": [
-        {
-          "teamAbbrev": "TBL",
-          "gameId": "2025020912",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
         {
           "teamAbbrev": "TBL",
           "gameId": "2025021109",
@@ -34697,6 +34827,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030127",
           "seenAt": "2026-05-09T14:43:41.331Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -34932,6 +35067,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -34962,6 +35102,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030123",
           "seenAt": "2026-04-26T22:13:57.243Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -35247,6 +35392,11 @@
           "teamAbbrev": "TBL",
           "gameId": "2025030125",
           "seenAt": "2026-04-30T21:05:06.862Z"
+        },
+        {
+          "teamAbbrev": "TBL",
+          "gameId": "2025021282",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -35405,11 +35555,6 @@
       "sightings": [
         {
           "teamAbbrev": "DET",
-          "gameId": "2025021016",
-          "seenAt": "2026-03-11T04:11:44.394Z"
-        },
-        {
-          "teamAbbrev": "DET",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -35452,6 +35597,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -35870,11 +36020,6 @@
       "sightings": [
         {
           "teamAbbrev": "NJD",
-          "gameId": "2025021050",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "NJD",
           "gameId": "2025021064",
           "seenAt": "2026-03-18T18:00:38.134Z"
         },
@@ -35917,6 +36062,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021292",
           "seenAt": "2026-04-15T01:39:20.438Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -36492,6 +36642,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021236",
           "seenAt": "2026-04-12T14:58:11.289Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -36897,6 +37052,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -37062,6 +37222,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -38102,6 +38267,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -38165,11 +38335,6 @@
       "sightings": [
         {
           "teamAbbrev": "NJD",
-          "gameId": "2025021032",
-          "seenAt": "2026-03-13T04:29:52.527Z"
-        },
-        {
-          "teamAbbrev": "NJD",
           "gameId": "2025021050",
           "seenAt": "2026-03-15T18:00:32.932Z"
         },
@@ -38212,6 +38377,11 @@
           "teamAbbrev": "NJD",
           "gameId": "2025021236",
           "seenAt": "2026-04-12T14:58:11.289Z"
+        },
+        {
+          "teamAbbrev": "NJD",
+          "gameId": "2025021265",
+          "seenAt": "2026-09-27T03:15:09.991Z"
         }
       ]
     },
@@ -38417,6 +38587,11 @@
           "teamAbbrev": "NYR",
           "gameId": "2025021302",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "NYR",
+          "gameId": "2025021283",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -38522,6 +38697,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -39160,11 +39340,6 @@
       "sightings": [
         {
           "teamAbbrev": "DET",
-          "gameId": "2025021016",
-          "seenAt": "2026-03-11T04:11:44.394Z"
-        },
-        {
-          "teamAbbrev": "DET",
           "gameId": "2025021030",
           "seenAt": "2026-03-13T04:29:52.527Z"
         },
@@ -39207,6 +39382,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -39477,6 +39657,11 @@
           "teamAbbrev": "DET",
           "gameId": "2025021282",
           "seenAt": "2026-04-19T02:50:41.130Z"
+        },
+        {
+          "teamAbbrev": "DET",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -39987,6 +40172,11 @@
           "teamAbbrev": "FLA",
           "gameId": "2025021193",
           "seenAt": "2026-04-06T21:13:16.979Z"
+        },
+        {
+          "teamAbbrev": "FLA",
+          "gameId": "2025021303",
+          "seenAt": "2026-09-21T18:22:00.328Z"
         }
       ]
     },
@@ -40622,7 +40812,7 @@
     }
   },
   "movements": [],
-  "lastUpdated": "2026-09-20T21:52:50.068Z",
+  "lastUpdated": "2026-09-27T03:17:21.877Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -40636,7 +40826,12 @@
       "VAN",
       "MTL",
       "TOR",
-      "PIT"
+      "PIT",
+      "FLA",
+      "CAR",
+      "NSH",
+      "WPG",
+      "DET"
     ],
     "skippedTeams": [
       {
@@ -40650,8 +40845,8 @@
         "reason": "LEAGUE_NOT_SUPPORTED"
       }
     ],
-    "playersIngested": 502,
+    "playersIngested": 614,
     "movementsDetectedThisRun": [],
-    "timestamp": "2026-09-20T21:52:50.068Z"
+    "timestamp": "2026-09-27T03:17:21.877Z"
   }
 }

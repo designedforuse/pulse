@@ -207,7 +207,7 @@ interface SectionData {
 export default function LiveNowScreen() {
   const insets = useSafeAreaInsets();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
-  const { allEvents: rawEvents, favoritesOnly } = useEvents();
+  const { allEvents: rawEvents, favoritesOnly, fetchError } = useEvents();
   const { getScore } = useScores();
   const { favorites, disabledSports } = useFavorites();
 
@@ -311,14 +311,19 @@ export default function LiveNowScreen() {
         )}
       </View>
 
+      {fetchError && !isEmpty && (
+        <Text style={[styles.emptySubtitle, { color: Colors.live, paddingVertical: 10 }]}>
+          Schedule API unavailable: {fetchError}
+        </Text>
+      )}
       {isEmpty ? (
         <View style={styles.emptyContainer}>
-          <Ionicons name="radio-outline" size={48} color={Colors.textMuted} />
+          <Ionicons name={fetchError ? "alert-circle-outline" : "radio-outline"} size={48} color={fetchError ? Colors.live : Colors.textMuted} />
           <Text style={styles.emptyTitle}>
-            {favoritesOnly ? "No Favorite Events Live" : "No Live or Upcoming Events"}
+            {fetchError ? "Schedule unavailable" : favoritesOnly ? "No Favorite Events Live" : "No Live or Upcoming Events"}
           </Text>
-          <Text style={styles.emptySubtitle}>
-            {favoritesOnly
+          <Text style={[styles.emptySubtitle, fetchError && { color: Colors.live }]}>
+            {fetchError ? fetchError : favoritesOnly
               ? "None of your favorite teams are playing or coming up next"
               : "Check back during game times to see live events and what's coming up next"}
           </Text>

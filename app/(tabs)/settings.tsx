@@ -16,6 +16,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import Colors from "@/constants/colors";
 import { getProviders, getSportColor } from "@/lib/data";
 import { apiRequest, getApiUrl } from "@/lib/query-client";
+import { apiErrorMessage, parseApiJson } from "@/lib/api-errors";
 import { useEvents } from "@/lib/events-context";
 import { useFavorites } from "@/lib/favorites-context";
 import { useProviders, PROVIDER_LIST } from "@/lib/providers-context";
@@ -314,7 +315,7 @@ export default function SettingsScreen() {
   const providers = getProviders();
   const webTopInset = Platform.OS === "web" ? 67 : 0;
   const queryClient = useQueryClient();
-  const { debugShowAll, setDebugShowAll, favoritesOnly, setFavoritesOnly, hideSpoilers, setHideSpoilers } = useEvents();
+  const { debugShowAll, setDebugShowAll, favoritesOnly, setFavoritesOnly, hideSpoilers, setHideSpoilers, fetchError } = useEvents();
 
   const [openSection, setOpenSection] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
@@ -367,16 +368,16 @@ export default function SettingsScreen() {
     }
     try {
       const res = await apiRequest("POST", "/api/refresh?days=14");
-      const data = await res.json();
+      const data = await parseApiJson<{ success?: boolean; eventCount?: number }>(res, getApiUrl());
       if (data.success) {
         setRefreshMessage({ text: `Updated: ${data.eventCount} events loaded`, ok: true });
         queryClient.invalidateQueries({ queryKey: ["/api/events?days=14"] });
         await fetchMeta();
       } else {
-        setRefreshMessage({ text: "Refresh failed. Try again.", ok: false });
+        setRefreshMessage({ text: `Refresh failed: API returned no success confirmation (${getApiUrl()}).`, ok: false });
       }
-    } catch {
-      setRefreshMessage({ text: "Refresh failed. Check connection.", ok: false });
+    } catch (error) {
+      setRefreshMessage({ text: `Refresh failed: ${apiErrorMessage(error)}`, ok: false });
     } finally {
       setRefreshing(false);
     }
@@ -391,16 +392,16 @@ export default function SettingsScreen() {
     }
     try {
       const res = await apiRequest("POST", "/api/rebuild-explore");
-      const data = await res.json();
+      const data = await parseApiJson<{ success?: boolean; cardCount?: number }>(res, getApiUrl());
       if (data.success) {
         setRebuildMessage({ text: `${data.cardCount} narrative cards generated`, ok: true });
         queryClient.invalidateQueries({ queryKey: ["/api/narratives"] });
         fetchStoriesTimestamp();
       } else {
-        setRebuildMessage({ text: "Rebuild failed. Try again.", ok: false });
+        setRebuildMessage({ text: `Rebuild failed: API returned no success confirmation (${getApiUrl()}).`, ok: false });
       }
-    } catch {
-      setRebuildMessage({ text: "Rebuild failed. Check connection.", ok: false });
+    } catch (error) {
+      setRebuildMessage({ text: `Rebuild failed: ${apiErrorMessage(error)}`, ok: false });
     } finally {
       setRebuildingExplore(false);
     }
@@ -540,6 +541,11 @@ export default function SettingsScreen() {
           </Pressable>
           {openSection === "schedules" && (
           <View style={[styles.card, styles.accordionContent]}>
+            {fetchError && (
+              <Text style={[styles.refreshResultText, { color: Colors.live }]}>
+                Events could not load: {fetchError}
+              </Text>
+            )}
             <Pressable
               onPress={handleRefresh}
               disabled={refreshing}
