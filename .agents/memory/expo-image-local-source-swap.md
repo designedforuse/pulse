@@ -33,3 +33,13 @@ web rendering was verified, but Android verification is still outstanding.
 
 **How to apply:** If this symptom returns, investigate native asset delivery and
 image layout before assuming the earlier source-swap issue explains it.
+
+Bundled React Native backgrounds need explicit container-relative width and
+height, not only absolute edge constraints.
+
+**Why:** React Native supplies intrinsic dimensions for local assets. Absolute
+edges alone can leave the image oversized and clipped, even with cover resizing.
+The subsequent Android screenshot showed loaded images but an enlarged crop.
+
+**How to apply:** Size the image view to the card before applying cover scaling;
+verify native sizing separately from the browser.

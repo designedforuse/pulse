@@ -215,7 +215,7 @@ export default function DailyWrapCard({ fill = false }: { fill?: boolean } = {})
     <Pressable onPress={handleOpen} style={({ pressed }) => [styles.card, fill && { flex: 1, marginBottom: 0 }, pressed && styles.cardPressed]}>
       <Image
         source={COVER_IMAGE}
-        style={StyleSheet.absoluteFillObject}
+        style={styles.backgroundImage}
         resizeMode="cover"
       />
       <LinearGradient
@@ -229,6 +229,13 @@ export default function DailyWrapCard({ fill = false }: { fill?: boolean } = {})
 }
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+  },
   card: {
     backgroundColor: "#2a0f1d",
     borderRadius: 20,

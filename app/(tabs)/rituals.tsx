@@ -237,7 +237,7 @@ function RitualTile({ ritual, data, fill = false }: { ritual: Ritual; data: Ritu
           <Image
             key={featuredSport ?? "default"}
             source={bgImage}
-            style={StyleSheet.absoluteFillObject}
+            style={styles.backgroundImage}
             resizeMode="cover"
           />
           <LinearGradient
@@ -417,6 +417,13 @@ export default function RitualsScreen() {
 }
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+  },
   container: {
     flex: 1,
     backgroundColor: Colors.background,
