@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-27T03:17:21.826Z",
+  "lastUpdated": "2026-09-27T03:49:54.687Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -94,7 +94,7 @@
   "eplUpdated": 28,
   "eplPruned": 0,
   "eplSourceUsed": "espn",
-  "mlsCount": 364,
+  "mlsCount": 365,
   "mlsAdded": 0,
   "mlsUpdated": 81,
   "mlsPruned": 0,
@@ -209,22 +209,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-09-27T03:17:21.826Z",
+    "lastRefreshAt": "2026-09-27T03:49:54.687Z",
     "sources": {
       "nhl": {
         "count": 120,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 113,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 40,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -236,7 +236,7 @@
       },
       "rugby": {
         "count": 91,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 24,
@@ -253,7 +253,7 @@
       },
       "cricket": {
         "count": 49,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "CPL": 5,
@@ -264,22 +264,22 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 28,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "ESPN API"
       },
       "mls": {
-        "count": 364,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "count": 365,
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
@@ -304,7 +304,7 @@
       },
       "nwsl": {
         "count": 33,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
@@ -316,19 +316,19 @@
       },
       "championsCup": {
         "count": 9,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "challengeCup": {
         "count": 6,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T19:00:00.000Z"
       },
@@ -350,7 +350,7 @@
       },
       "tennis": {
         "count": 20,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Shanghai Masters": 20
@@ -358,7 +358,7 @@
       },
       "f1": {
         "count": 36,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Spanish Grand Prix": 1,
@@ -373,7 +373,7 @@
       },
       "wrc": {
         "count": 8,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "Hardcoded Schedule"
       },
       "schoolsRugby": {
@@ -383,7 +383,7 @@
       },
       "paddling": {
         "count": 1,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "Hardcoded Schedule"
       },
       "comrades": {
@@ -393,13 +393,13 @@
       },
       "golf": {
         "count": 0,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {}
       },
       "marathon": {
         "count": 3,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Berlin Marathon": 1,
@@ -424,7 +424,7 @@
       },
       "shl": {
         "count": 30,
-        "lastFetchAt": "2026-09-27T03:17:21.826Z",
+        "lastFetchAt": "2026-09-27T03:49:54.687Z",
         "sourceName": "Odds API"
       },
       "cafcl": {
@@ -16341,6 +16341,20 @@
       "tennisPlayer1Flag": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
       "tennisPlayer2Flag": "https://a.espncdn.com/i/teamlogos/countries/500/rus.png",
       "tournamentName": "Shanghai Masters"
+    },
+    {
+      "id": "soccer-mls-20261018-2300-columbus-crew-at-fc-cincinnati",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "Columbus Crew",
+      "homeTeam": "FC Cincinnati",
+      "startTimeLocal": "2026-10-18T23:00:00.000Z",
+      "endTimeLocal": "2026-10-19T01:15:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
     },
     {
       "id": "soccer-mls-20261018-2300-columbus-crew-at-fc-cincinnati",

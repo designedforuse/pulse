@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-27T03:17:21.877Z",
+  "lastUpdated": "2026-09-27T03:49:54.759Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -98,7 +98,7 @@
         ],
         "playersIngested": 614,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-09-27T03:17:21.877Z"
+        "timestamp": "2026-09-27T03:49:54.759Z"
       },
       "cacheHistoryCount": 892,
       "error": null
@@ -108,7 +108,7 @@
     "candidateCountAfterCap": 8,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -4879.289410277778,
+      "hoursUntil": -4879.8318775,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -225,7 +225,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-09-27T03:17:21.877Z",
+      "triggeredAt": "2026-09-27T03:49:54.759Z",
       "expiresAt": "2026-09-27T12:00:00.000Z",
       "kind": "rivalry_game",
       "region": "SouthAfrica",
@@ -265,8 +265,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-09-27T03:17:21.877Z",
-      "expiresAt": "2026-10-04T03:17:21.877Z",
+      "triggeredAt": "2026-09-27T03:49:54.759Z",
+      "expiresAt": "2026-10-04T03:49:54.759Z",
       "kind": "league_moment",
       "region": "SouthAfrica",
       "regionPriority": 1,
@@ -382,8 +382,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-09-27T03:17:21.877Z",
-      "expiresAt": "2026-10-04T03:17:21.877Z",
+      "triggeredAt": "2026-09-27T03:49:54.759Z",
+      "expiresAt": "2026-10-04T03:49:54.759Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -405,8 +405,8 @@
           "nhl_2026020031"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-09-27T03:17:21.877Z",
-        "windowEnd": "2026-10-04T03:17:21.877Z",
+        "windowStart": "2026-09-27T03:49:54.759Z",
+        "windowEnd": "2026-10-04T03:49:54.759Z",
         "reason": "Boston plays three times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -422,7 +422,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-09-27T03:17:21.877Z",
+      "triggeredAt": "2026-09-27T03:49:54.759Z",
       "expiresAt": "2026-09-27T13:45:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
@@ -462,7 +462,7 @@
         "tabHint": "Watch"
       },
       "priority": 92,
-      "triggeredAt": "2026-09-27T03:17:21.877Z",
+      "triggeredAt": "2026-09-27T03:49:54.759Z",
       "expiresAt": "2026-09-27T13:45:00.000Z",
       "kind": "clinch_watch",
       "region": "Other",
@@ -503,7 +503,7 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-09-27T03:17:21.877Z",
+      "triggeredAt": "2026-09-27T03:49:54.759Z",
       "expiresAt": "2026-09-29T07:00:00.000Z",
       "kind": "marathon_spotlight",
       "region": "Other",
@@ -540,7 +540,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-09-27T03:17:21.877Z",
+      "triggeredAt": "2026-09-27T03:49:54.759Z",
       "expiresAt": "2026-09-28T03:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -580,7 +580,7 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-09-27T03:17:21.877Z",
+      "triggeredAt": "2026-09-27T03:49:54.759Z",
       "expiresAt": "2026-10-04T06:00:00.000Z",
       "kind": "rally_weekend",
       "region": "Other",
@@ -1060,7 +1060,7 @@
           "dateRangeLabel": "Oct 2–18",
           "startDate": "2026-10-02T01:30:00.000Z",
           "endDate": "2026-10-18T23:00:00.000Z",
-          "eventCount": 49,
+          "eventCount": 50,
           "seasonPhase": "Regular"
         },
         {
