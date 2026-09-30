@@ -1842,5 +1842,15 @@
   "ahl-1030245": {
     "video": null,
     "fetchedAt": "2026-09-27T03:14:19.767Z"
+  },
+  "nhl_2026020001": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=f32-UUymtSQ",
+      "thumbnailUrl": "https://i.ytimg.com/vi/f32-UUymtSQ/hqdefault.jpg",
+      "durationSeconds": 635,
+      "title": "Panthers vs. Hurricanes | NHL Highlights | Sep 29, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-09-30T01:32:52.985Z"
   }
 }

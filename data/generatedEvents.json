@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-28T15:16:36.947Z",
+  "lastUpdated": "2026-09-30T01:33:19.352Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -38,14 +38,14 @@
   "buSourceUsed": "chn",
   "rugbySourceUsed": "ical",
   "cricketSourceUsed": "espn",
-  "nhlCount": 134,
+  "nhlCount": 140,
   "ahlCount": 120,
-  "ahlAdded": 70,
-  "ahlUpdated": 113,
-  "ahlPruned": 63,
+  "ahlAdded": 67,
+  "ahlUpdated": 120,
+  "ahlPruned": 67,
   "echlCount": 45,
-  "echlAdded": 110,
-  "echlUpdated": 40,
+  "echlAdded": 105,
+  "echlUpdated": 45,
   "echlPruned": 105,
   "echlWebCount": 150,
   "buCount": 0,
@@ -55,7 +55,7 @@
   "rugbyCount": 89,
   "rugbyAdded": 0,
   "rugbyUpdated": 67,
-  "rugbyPruned": 2,
+  "rugbyPruned": 0,
   "rugbyCounts": {
     "urc": 24,
     "top14": 28,
@@ -68,14 +68,14 @@
     "curriecup": 0,
     "svns": 0
   },
-  "cricketCount": 46,
-  "cricketAdded": 7,
-  "cricketUpdated": 31,
-  "cricketPruned": 10,
+  "cricketCount": 44,
+  "cricketAdded": 6,
+  "cricketUpdated": 32,
+  "cricketPruned": 8,
   "cricketCounts": {
     "CPL": 4,
     "ODI Cricket": 9,
-    "T20I Cricket": 8,
+    "T20I Cricket": 7,
     "Test Cricket": 4
   },
   "iccT20WcCount": 0,
@@ -90,21 +90,21 @@
   "olympicHockeyPruned": 0,
   "olympicHockeySourceUsed": "hardcoded-schedule",
   "eplCount": 30,
-  "eplAdded": 4,
-  "eplUpdated": 26,
-  "eplPruned": 2,
+  "eplAdded": 1,
+  "eplUpdated": 29,
+  "eplPruned": 1,
   "eplSourceUsed": "espn",
-  "mlsCount": 362,
-  "mlsAdded": 1,
+  "mlsCount": 363,
+  "mlsAdded": 2,
   "mlsUpdated": 77,
-  "mlsPruned": 4,
+  "mlsPruned": 1,
   "mlsSourceUsed": "espn",
-  "serieaCount": 13,
+  "serieaCount": 10,
   "serieaAdded": 0,
   "serieaUpdated": 0,
   "serieaPruned": 3,
   "serieaSourceUsed": "espn",
-  "laligaCount": 20,
+  "laligaCount": 16,
   "laligaAdded": 0,
   "laligaUpdated": 0,
   "laligaPruned": 4,
@@ -112,31 +112,31 @@
   "bundesligaCount": 9,
   "bundesligaAdded": 0,
   "bundesligaUpdated": 0,
-  "bundesligaPruned": 2,
+  "bundesligaPruned": 0,
   "bundesligaSourceUsed": "espn",
   "ligue1Count": 9,
   "ligue1Added": 0,
   "ligue1Updated": 0,
-  "ligue1Pruned": 3,
+  "ligue1Pruned": 0,
   "ligue1SourceUsed": "espn",
   "nwslCount": 34,
-  "nwslAdded": 3,
-  "nwslUpdated": 31,
-  "nwslPruned": 33,
+  "nwslAdded": 0,
+  "nwslUpdated": 34,
+  "nwslPruned": 34,
   "nwslSourceUsed": "ical",
-  "uslCount": 43,
+  "uslCount": 42,
   "uslAdded": 0,
   "uslUpdated": 0,
-  "uslPruned": 0,
+  "uslPruned": 1,
   "uslSourceUsed": "espn",
   "championsCupCount": 12,
-  "championsCupAdded": 3,
-  "championsCupUpdated": 9,
+  "championsCupAdded": 0,
+  "championsCupUpdated": 12,
   "championsCupPruned": 0,
   "championsCupSourceUsed": "ical",
   "challengeCupCount": 9,
-  "challengeCupAdded": 3,
-  "challengeCupUpdated": 6,
+  "challengeCupAdded": 0,
+  "challengeCupUpdated": 9,
   "challengeCupPruned": 0,
   "challengeCupSourceUsed": "ical",
   "mlrCount": 0,
@@ -167,10 +167,10 @@
   "tennisTournamentCounts": {
     "Shanghai Masters": 20
   },
-  "f1Count": 36,
-  "f1Added": 1,
-  "f1Updated": 35,
-  "f1Pruned": 1,
+  "f1Count": 39,
+  "f1Added": 3,
+  "f1Updated": 36,
+  "f1Pruned": 0,
   "f1SourceUsed": "espn-f1",
   "f1RaceCounts": {
     "Azerbaijan Grand Prix": 5,
@@ -180,7 +180,7 @@
     "Mexico City Grand Prix": 5,
     "São Paulo Grand Prix": 5,
     "Las Vegas Grand Prix": 5,
-    "Qatar Grand Prix": 1
+    "Qatar Grand Prix": 4
   },
   "golfCount": 0,
   "golfAdded": 0,
@@ -209,22 +209,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-09-28T15:16:36.947Z",
+    "lastRefreshAt": "2026-09-30T01:33:19.352Z",
     "sources": {
       "nhl": {
-        "count": 134,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "count": 140,
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "NHL API"
       },
       "ahl": {
         "count": 120,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 45,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -236,7 +236,7 @@
       },
       "rugby": {
         "count": 89,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 24,
@@ -252,43 +252,43 @@
         }
       },
       "cricket": {
-        "count": 46,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "count": 44,
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "CPL": 4,
           "ODI Cricket": 9,
-          "T20I Cricket": 8,
+          "T20I Cricket": 7,
           "Test Cricket": 4
         }
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 30,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "ESPN API"
       },
       "mls": {
-        "count": 362,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "count": 363,
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
-        "count": 13,
+        "count": 10,
         "lastFetchAt": "2026-09-14T22:12:08.205Z",
         "sourceName": "ESPN API"
       },
       "laLiga": {
-        "count": 20,
+        "count": 16,
         "lastFetchAt": "2026-09-14T22:12:08.205Z",
         "sourceName": "iCal Feed"
       },
@@ -304,31 +304,31 @@
       },
       "nwsl": {
         "count": 34,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
       "usl": {
-        "count": 43,
+        "count": 42,
         "lastFetchAt": "2026-09-14T22:12:08.205Z",
         "sourceName": "ESPN API",
         "firstMatchDate": "2026-09-02T23:00:00.000Z"
       },
       "championsCup": {
         "count": 12,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "challengeCup": {
         "count": 9,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T19:00:00.000Z"
       },
@@ -350,15 +350,15 @@
       },
       "tennis": {
         "count": 20,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Shanghai Masters": 20
         }
       },
       "f1": {
-        "count": 36,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "count": 39,
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Azerbaijan Grand Prix": 5,
@@ -368,12 +368,12 @@
           "Mexico City Grand Prix": 5,
           "São Paulo Grand Prix": 5,
           "Las Vegas Grand Prix": 5,
-          "Qatar Grand Prix": 1
+          "Qatar Grand Prix": 4
         }
       },
       "wrc": {
         "count": 8,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "Hardcoded Schedule"
       },
       "schoolsRugby": {
@@ -383,7 +383,7 @@
       },
       "paddling": {
         "count": 1,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "Hardcoded Schedule"
       },
       "comrades": {
@@ -393,13 +393,13 @@
       },
       "golf": {
         "count": 0,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {}
       },
       "marathon": {
         "count": 3,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Berlin Marathon": 1,
@@ -423,8 +423,8 @@
         "sourceName": "ESPN API"
       },
       "shl": {
-        "count": 31,
-        "lastFetchAt": "2026-09-28T15:16:36.947Z",
+        "count": 37,
+        "lastFetchAt": "2026-09-30T01:33:19.352Z",
         "sourceName": "Odds API"
       },
       "cafcl": {
@@ -4448,204 +4448,6 @@
       "providerReason": "mls-appletv"
     },
     {
-      "id": "soccer-seriea-espn-401874933",
-      "externalId": "401874933",
-      "espnId": "401874933",
-      "sourceEventId": "401874933",
-      "sport": "soccer",
-      "league": "Serie A",
-      "awayTeam": "Parma",
-      "homeTeam": "Como",
-      "startTimeLocal": "2026-09-14T16:30:00.000Z",
-      "endTimeLocal": "2026-09-14T18:45:00.000Z",
-      "providerId": "primevideo",
-      "isLive": false,
-      "source": "soccer-seriea",
-      "leagueKey": "seriea"
-    },
-    {
-      "id": "soccer-seriea-espn-401874950",
-      "externalId": "401874950",
-      "espnId": "401874950",
-      "sourceEventId": "401874950",
-      "sport": "soccer",
-      "league": "Serie A",
-      "awayTeam": "AS Roma",
-      "homeTeam": "Torino",
-      "startTimeLocal": "2026-09-14T16:30:00.000Z",
-      "endTimeLocal": "2026-09-14T18:45:00.000Z",
-      "providerId": "primevideo",
-      "isLive": false,
-      "source": "soccer-seriea",
-      "leagueKey": "seriea"
-    },
-    {
-      "id": "soccer-seriea-espn-401874966",
-      "externalId": "401874966",
-      "espnId": "401874966",
-      "sourceEventId": "401874966",
-      "sport": "soccer",
-      "league": "Serie A",
-      "awayTeam": "Udinese",
-      "homeTeam": "Internazionale",
-      "startTimeLocal": "2026-09-14T18:45:00.000Z",
-      "endTimeLocal": "2026-09-14T21:00:00.000Z",
-      "providerId": "primevideo",
-      "isLive": false,
-      "source": "soccer-seriea",
-      "leagueKey": "seriea"
-    },
-    {
-      "id": "soccer-epl-espn-401879280",
-      "externalId": "401879280",
-      "espnId": "401879280",
-      "sourceEventId": "401879280",
-      "sport": "soccer",
-      "league": "EPL",
-      "awayTeam": "Newcastle United",
-      "homeTeam": "Leeds United",
-      "startTimeLocal": "2026-09-14T19:00:00.000Z",
-      "endTimeLocal": "2026-09-14T21:15:00.000Z",
-      "providerId": "youtubetv",
-      "isLive": false,
-      "source": "soccer-epl",
-      "leagueKey": "epl",
-      "providerReason": "epl-yttv"
-    },
-    {
-      "id": "soccer-laliga-20260914-1900-real-betis-at-villarreal",
-      "sport": "soccer",
-      "league": "La Liga",
-      "awayTeam": "Real Betis",
-      "homeTeam": "Villarreal",
-      "startTimeLocal": "2026-09-14T19:00:00.000Z",
-      "endTimeLocal": "2026-09-14T21:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "soccer-laliga",
-      "leagueKey": "laliga",
-      "providerReason": "laliga-disneyplus"
-    },
-    {
-      "id": "cricket-odi-ysmjys",
-      "cricketMatchId": "1530203",
-      "sport": "cricket",
-      "league": "ODI Cricket",
-      "awayTeam": "Australia",
-      "homeTeam": "Zimbabwe",
-      "startTimeLocal": "2026-09-15T07:30:00.000Z",
-      "endTimeLocal": "2026-09-15T15:30:00.000Z",
-      "providerId": "willowtv",
-      "isLive": false,
-      "source": "cricket-espn",
-      "leagueKey": "odi",
-      "competitionName": "ODI Cricket",
-      "competitionType": "international",
-      "format": "odi",
-      "hostCountry": "South Africa",
-      "seriesName": "Australia tour of Zimbabwe 2026",
-      "gender": "men",
-      "isIccT20Wc": false
-    },
-    {
-      "id": "cricket-t20i-ytc5uz",
-      "cricketMatchId": "1549587",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Afghanistan",
-      "homeTeam": "India",
-      "startTimeLocal": "2026-09-15T14:00:00.000Z",
-      "endTimeLocal": "2026-09-15T17:30:00.000Z",
-      "providerId": "willowtv",
-      "isLive": false,
-      "source": "cricket-espn",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "India",
-      "seriesName": "Afghanistan tour of India [Sep 2026] 2026",
-      "gender": "men",
-      "isIccT20Wc": false
-    },
-    {
-      "id": "soccer-laliga-20260915-1700-espanyol-at-rayo-vallecano",
-      "sport": "soccer",
-      "league": "La Liga",
-      "awayTeam": "Espanyol",
-      "homeTeam": "Rayo Vallecano",
-      "startTimeLocal": "2026-09-15T17:00:00.000Z",
-      "endTimeLocal": "2026-09-15T19:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "soccer-laliga",
-      "leagueKey": "laliga",
-      "providerReason": "laliga-disneyplus"
-    },
-    {
-      "id": "cricket-t20i-yezlgy",
-      "cricketMatchId": "1496585",
-      "sport": "cricket",
-      "league": "T20I Cricket",
-      "awayTeam": "Sri Lanka",
-      "homeTeam": "England",
-      "startTimeLocal": "2026-09-15T17:30:00.000Z",
-      "endTimeLocal": "2026-09-15T21:00:00.000Z",
-      "providerId": "willowtv",
-      "isLive": false,
-      "source": "cricket-espn",
-      "leagueKey": "t20i",
-      "competitionName": "T20I Cricket",
-      "competitionType": "international",
-      "format": "t20",
-      "hostCountry": "England",
-      "seriesName": "Sri Lanka tour of England 2026",
-      "gender": "men",
-      "isIccT20Wc": false
-    },
-    {
-      "id": "soccer-laliga-20260915-1800-valencia-at-alav-s",
-      "sport": "soccer",
-      "league": "La Liga",
-      "awayTeam": "Valencia",
-      "homeTeam": "Alavés",
-      "startTimeLocal": "2026-09-15T18:00:00.000Z",
-      "endTimeLocal": "2026-09-15T20:15:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "soccer-laliga",
-      "leagueKey": "laliga",
-      "providerReason": "laliga-disneyplus"
-    },
-    {
-      "id": "soccer-laliga-20260915-1930-real-madrid-at-elche",
-      "sport": "soccer",
-      "league": "La Liga",
-      "awayTeam": "Real Madrid",
-      "homeTeam": "Elche",
-      "startTimeLocal": "2026-09-15T19:30:00.000Z",
-      "endTimeLocal": "2026-09-15T21:45:00.000Z",
-      "providerId": "disneyplus",
-      "isLive": false,
-      "source": "soccer-laliga",
-      "leagueKey": "laliga",
-      "providerReason": "laliga-disneyplus"
-    },
-    {
-      "id": "soccer-usl-20260915-2300-brooklyn-fc-at-indy-eleven",
-      "sport": "soccer",
-      "league": "USL",
-      "awayTeam": "Brooklyn FC",
-      "homeTeam": "Indy Eleven",
-      "startTimeLocal": "2026-09-15T23:00:00.000Z",
-      "endTimeLocal": "2026-09-16T01:15:00.000Z",
-      "providerId": "primevideo",
-      "isLive": false,
-      "source": "soccer-usl",
-      "leagueKey": "usl",
-      "providerReason": "usl-cbsgolazo-default"
-    },
-    {
       "id": "soccer-europaleague-20260916-1645-sparta-prague-at-ararat-armenia",
       "sport": "soccer",
       "league": "Europa League",
@@ -8453,7 +8255,7 @@
       "startTimeLocal": "2026-09-29T23:00:00.000Z",
       "endTimeLocal": "2026-09-30T01:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": false,
+      "isLive": true,
       "source": "nhl",
       "broadcastNetworks": [
         "SN",
@@ -8471,7 +8273,7 @@
       "startTimeLocal": "2026-09-29T23:05:00.000Z",
       "endTimeLocal": "2026-09-30T01:50:00.000Z",
       "providerId": "flosports",
-      "isLive": false,
+      "isLive": true,
       "source": "ahl-hockeytech"
     },
     {
@@ -8483,7 +8285,7 @@
       "startTimeLocal": "2026-09-30T00:00:00.000Z",
       "endTimeLocal": "2026-09-30T02:45:00.000Z",
       "providerId": "youtubetv",
-      "isLive": false,
+      "isLive": true,
       "source": "nhl",
       "broadcastNetworks": [
         "ESPN"
@@ -8755,6 +8557,84 @@
       "source": "shl-odds"
     },
     {
+      "id": "shl-20261001-1700-bryn-s-if-at-fr-lunda-hc",
+      "sport": "hockey",
+      "league": "SHL",
+      "awayTeam": "Brynäs IF",
+      "homeTeam": "Frölunda HC",
+      "startTimeLocal": "2026-10-01T17:00:00.000Z",
+      "endTimeLocal": "2026-10-01T19:45:00.000Z",
+      "providerId": "flosports",
+      "providerReason": "shl-flosports",
+      "isLive": false,
+      "source": "shl-odds"
+    },
+    {
+      "id": "shl-20261001-1700-rebro-hk-at-hv71",
+      "sport": "hockey",
+      "league": "SHL",
+      "awayTeam": "Örebro HK",
+      "homeTeam": "HV71",
+      "startTimeLocal": "2026-10-01T17:00:00.000Z",
+      "endTimeLocal": "2026-10-01T19:45:00.000Z",
+      "providerId": "flosports",
+      "providerReason": "shl-flosports",
+      "isLive": false,
+      "source": "shl-odds"
+    },
+    {
+      "id": "shl-20261001-1700-v-xj-lakers-at-if-bj-rkl-ven",
+      "sport": "hockey",
+      "league": "SHL",
+      "awayTeam": "Växjö Lakers",
+      "homeTeam": "IF Björklöven",
+      "startTimeLocal": "2026-10-01T17:00:00.000Z",
+      "endTimeLocal": "2026-10-01T19:45:00.000Z",
+      "providerId": "flosports",
+      "providerReason": "shl-flosports",
+      "isLive": false,
+      "source": "shl-odds"
+    },
+    {
+      "id": "shl-20261001-1700-lule-hf-at-link-ping-hc",
+      "sport": "hockey",
+      "league": "SHL",
+      "awayTeam": "Luleå HF",
+      "homeTeam": "Linköping HC",
+      "startTimeLocal": "2026-10-01T17:00:00.000Z",
+      "endTimeLocal": "2026-10-01T19:45:00.000Z",
+      "providerId": "flosports",
+      "providerReason": "shl-flosports",
+      "isLive": false,
+      "source": "shl-odds"
+    },
+    {
+      "id": "shl-20261001-1700-malm-redhawks-at-skellefte-aik",
+      "sport": "hockey",
+      "league": "SHL",
+      "awayTeam": "Malmö Redhawks",
+      "homeTeam": "Skellefteå AIK",
+      "startTimeLocal": "2026-10-01T17:00:00.000Z",
+      "endTimeLocal": "2026-10-01T19:45:00.000Z",
+      "providerId": "flosports",
+      "providerReason": "shl-flosports",
+      "isLive": false,
+      "source": "shl-odds"
+    },
+    {
+      "id": "shl-20261001-1700-timr-ik-at-r-gle-bk",
+      "sport": "hockey",
+      "league": "SHL",
+      "awayTeam": "Timrå IK",
+      "homeTeam": "Rögle BK",
+      "startTimeLocal": "2026-10-01T17:00:00.000Z",
+      "endTimeLocal": "2026-10-01T19:45:00.000Z",
+      "providerId": "flosports",
+      "providerReason": "shl-flosports",
+      "isLive": false,
+      "source": "shl-odds"
+    },
+    {
       "id": "nhl_2026020009",
       "sport": "hockey",
       "league": "NHL",
@@ -8843,7 +8723,7 @@
       "source": "nhl",
       "broadcastNetworks": [
         "SNW",
-        "KHN/Prime",
+        "Prime Video",
         "KONG"
       ],
       "isNational": false,
@@ -9856,7 +9736,7 @@
       "broadcastNetworks": [
         "SNW",
         "NHLN",
-        "KHN/Prime",
+        "Prime Video",
         "KONG"
       ],
       "isNational": false,
@@ -10537,7 +10417,7 @@
       "source": "nhl",
       "broadcastNetworks": [
         "SNW",
-        "KHN/Prime",
+        "Prime Video",
         "KONG"
       ],
       "isNational": false,
@@ -10767,7 +10647,8 @@
       "source": "nhl",
       "broadcastNetworks": [
         "DSN",
-        "TSN5"
+        "TSN5",
+        "RDS2"
       ],
       "isNational": false,
       "providerReason": "espnplus-default"
@@ -10872,8 +10753,8 @@
       "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
-        "KHN/Prime",
-        "KING 5",
+        "Prime Video",
+        "KING",
         "KONG",
         "SCRIPPS"
       ],
@@ -11145,6 +11026,7 @@
       "source": "nhl",
       "broadcastNetworks": [
         "TSN5",
+        "RDSI",
         "NBCSP"
       ],
       "isNational": false,
@@ -11513,8 +11395,8 @@
       "source": "nhl",
       "broadcastNetworks": [
         "DSN",
-        "KHN/Prime",
-        "KING 5",
+        "Prime Video",
+        "KING",
         "KONG"
       ],
       "isNational": false,
@@ -13264,8 +13146,8 @@
       "source": "nhl",
       "broadcastNetworks": [
         "SN+",
+        "Prime Video",
         "TVAS",
-        "KHN/Prime",
         "MNMT",
         "KONG"
       ],
@@ -13766,9 +13648,9 @@
       "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
-        "KHN/Prime",
-        "KING 5",
+        "Prime Video",
         "NBCSP",
+        "KING",
         "KONG"
       ],
       "isNational": false,
@@ -13806,7 +13688,8 @@
       "broadcastNetworks": [
         "STLNHL",
         "BN+",
-        "TSN5"
+        "TSN5",
+        "RDSI"
       ],
       "isNational": false,
       "providerReason": "espnplus-default"
@@ -14401,6 +14284,7 @@
       "source": "nhl",
       "broadcastNetworks": [
         "TSN5",
+        "RDS",
         "MSGSN"
       ],
       "isNational": false,
@@ -14418,8 +14302,8 @@
       "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
+        "Prime Video",
         "The Spot",
-        "KHN/Prime",
         "KONG"
       ],
       "isNational": false,
@@ -15347,7 +15231,7 @@
       "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
-        "KHN/Prime",
+        "Prime Video",
         "KONG",
         "SCRIPPS"
       ],
@@ -16412,6 +16296,20 @@
       "source": "echl"
     },
     {
+      "id": "soccer-mls-20261018-2100-columbus-crew-at-fc-cincinnati",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "Columbus Crew",
+      "homeTeam": "FC Cincinnati",
+      "startTimeLocal": "2026-10-18T21:00:00.000Z",
+      "endTimeLocal": "2026-10-18T23:15:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
       "id": "soccer-nwsl-20261018-2100-portland-thorns-at-bay",
       "sport": "soccer",
       "league": "NWSL",
@@ -16427,6 +16325,28 @@
       "broadcastNetworks": "ESPN, ESPN Deportes"
     },
     {
+      "id": "nhl_2026020135",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Columbus Blue Jackets",
+      "homeTeam": "Minnesota Wild",
+      "startTimeLocal": "2026-10-18T22:00:00.000Z",
+      "endTimeLocal": "2026-10-19T00:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "CBJNHL",
+        "MINNHL",
+        "CBJHN",
+        "Wild+",
+        "SN+",
+        "TVAS"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
       "id": "ahl-1029161",
       "sport": "hockey",
       "league": "AHL",
@@ -16437,20 +16357,6 @@
       "providerId": "flosports",
       "isLive": false,
       "source": "ahl-hockeytech"
-    },
-    {
-      "id": "soccer-mls-20261018-2300-columbus-crew-at-fc-cincinnati",
-      "sport": "soccer",
-      "league": "MLS",
-      "awayTeam": "Columbus Crew",
-      "homeTeam": "FC Cincinnati",
-      "startTimeLocal": "2026-10-18T23:00:00.000Z",
-      "endTimeLocal": "2026-10-19T01:15:00.000Z",
-      "providerId": "appletv",
-      "isLive": false,
-      "source": "soccer-mls",
-      "leagueKey": "mls",
-      "providerReason": "mls-appletv"
     },
     {
       "id": "soccer-nwsl-20261018-2300-seattle-reign-at-chicago-stars",
@@ -16466,6 +16372,26 @@
       "leagueKey": "nwsl",
       "providerReason": "nwsl-default",
       "broadcastNetworks": "Roku"
+    },
+    {
+      "id": "nhl_2026020136",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Carolina Hurricanes",
+      "homeTeam": "Calgary Flames",
+      "startTimeLocal": "2026-10-19T00:00:00.000Z",
+      "endTimeLocal": "2026-10-19T02:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "CARNHL",
+        "HHN",
+        "SNW",
+        "TVAS"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
     },
     {
       "id": "cricket-test-ys61ex-day2",
@@ -16490,6 +16416,137 @@
       "dayNumber": 2,
       "totalDays": 5,
       "isFinalDay": false
+    },
+    {
+      "id": "soccer-epl-espn-401879257",
+      "externalId": "401879257",
+      "espnId": "401879257",
+      "sourceEventId": "401879257",
+      "sport": "soccer",
+      "league": "EPL",
+      "awayTeam": "Coventry City",
+      "homeTeam": "Tottenham Hotspur",
+      "startTimeLocal": "2026-10-19T19:00:00.000Z",
+      "endTimeLocal": "2026-10-19T21:15:00.000Z",
+      "providerId": "youtubetv",
+      "isLive": false,
+      "source": "soccer-epl",
+      "leagueKey": "epl",
+      "providerReason": "epl-yttv"
+    },
+    {
+      "id": "nhl_2026020137",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Anaheim Ducks",
+      "homeTeam": "New York Rangers",
+      "startTimeLocal": "2026-10-19T23:00:00.000Z",
+      "endTimeLocal": "2026-10-20T01:45:00.000Z",
+      "providerId": "victoryplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "Prime Video",
+        "MSG",
+        "KCOP-13"
+      ],
+      "isNational": false,
+      "providerReason": "ducks-rsn"
+    },
+    {
+      "id": "nhl_2026020138",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Colorado Avalanche",
+      "homeTeam": "Philadelphia Flyers",
+      "startTimeLocal": "2026-10-19T23:00:00.000Z",
+      "endTimeLocal": "2026-10-20T01:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "ALT",
+        "NBCSP"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2026020139",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "San Jose Sharks",
+      "homeTeam": "Toronto Maple Leafs",
+      "startTimeLocal": "2026-10-19T23:30:00.000Z",
+      "endTimeLocal": "2026-10-20T02:15:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN+",
+        "TVAS",
+        "NBCSCA"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "nhl_2026020140",
+      "sport": "hockey",
+      "league": "NHL",
+      "awayTeam": "Pittsburgh Penguins",
+      "homeTeam": "Utah Mammoth",
+      "startTimeLocal": "2026-10-20T01:00:00.000Z",
+      "endTimeLocal": "2026-10-20T03:45:00.000Z",
+      "providerId": "disneyplus",
+      "isLive": false,
+      "source": "nhl",
+      "broadcastNetworks": [
+        "SN+",
+        "TVAS",
+        "Utah16",
+        "SN-PIT"
+      ],
+      "isNational": false,
+      "providerReason": "espnplus-default"
+    },
+    {
+      "id": "cricket-test-ys61ex-day3",
+      "cricketMatchId": "1525660",
+      "sport": "cricket",
+      "league": "Test Cricket",
+      "awayTeam": "Australia",
+      "homeTeam": "South Africa",
+      "startTimeLocal": "2026-10-20T08:00:00.000Z",
+      "endTimeLocal": "2026-10-20T16:00:00.000Z",
+      "providerId": "willowtv",
+      "isLive": false,
+      "source": "cricket-espn",
+      "leagueKey": "test",
+      "competitionName": "Test Cricket",
+      "competitionType": "international",
+      "format": "test",
+      "hostCountry": "South Africa",
+      "seriesName": "Australia tour of South Africa 2026/27",
+      "gender": "men",
+      "isIccT20Wc": false,
+      "dayNumber": 3,
+      "totalDays": 5,
+      "isFinalDay": false
+    },
+    {
+      "id": "soccer-mls-20261021-2300-d-c-united-at-fc-cincinnati",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "D.C. United",
+      "homeTeam": "FC Cincinnati",
+      "startTimeLocal": "2026-10-21T23:00:00.000Z",
+      "endTimeLocal": "2026-10-22T01:15:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
     },
     {
       "id": "f1-espn-401839118",
@@ -16960,6 +17017,23 @@
       "competitionName": "Qatar Grand Prix"
     },
     {
+      "id": "f1-espn-401839139",
+      "sport": "racing",
+      "league": "F1",
+      "awayTeam": "Practice 2",
+      "homeTeam": "Qatar Grand Prix",
+      "startTimeLocal": "2026-11-27T17:00:00.000Z",
+      "endTimeLocal": "2026-11-27T18:30:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "espn-f1",
+      "leagueKey": "f1",
+      "providerReason": "Apple TV broadcast",
+      "eventType": "session",
+      "sessionTitle": "Practice 2",
+      "competitionName": "Qatar Grand Prix"
+    },
+    {
       "id": "racing-wrc-saudi-arabia-2026-day3",
       "sport": "racing",
       "league": "WRC",
@@ -16978,6 +17052,40 @@
       "tournamentName": "Rally Saudi Arabia",
       "dayNumber": 3,
       "totalDays": 4
+    },
+    {
+      "id": "f1-espn-401839140",
+      "sport": "racing",
+      "league": "F1",
+      "awayTeam": "Practice 3",
+      "homeTeam": "Qatar Grand Prix",
+      "startTimeLocal": "2026-11-28T14:30:00.000Z",
+      "endTimeLocal": "2026-11-28T16:00:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "espn-f1",
+      "leagueKey": "f1",
+      "providerReason": "Apple TV broadcast",
+      "eventType": "session",
+      "sessionTitle": "Practice 3",
+      "competitionName": "Qatar Grand Prix"
+    },
+    {
+      "id": "f1-espn-401839141",
+      "sport": "racing",
+      "league": "F1",
+      "awayTeam": "Qualifying",
+      "homeTeam": "Qatar Grand Prix",
+      "startTimeLocal": "2026-11-28T18:00:00.000Z",
+      "endTimeLocal": "2026-11-28T19:30:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "espn-f1",
+      "leagueKey": "f1",
+      "providerReason": "Apple TV broadcast",
+      "eventType": "session",
+      "sessionTitle": "Qualifying",
+      "competitionName": "Qatar Grand Prix"
     },
     {
       "id": "racing-wrc-saudi-arabia-2026-day4",
