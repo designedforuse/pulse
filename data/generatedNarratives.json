@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-30T01:33:19.730Z",
+  "lastUpdated": "2026-09-30T02:39:37.625Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -79,7 +79,7 @@
         ],
         "playersIngested": 577,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-09-30T01:33:19.730Z"
+        "timestamp": "2026-09-30T02:39:37.625Z"
       },
       "cacheHistoryCount": 892,
       "error": null
@@ -89,7 +89,7 @@
     "candidateCountAfterCap": 6,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -4949.555480555556,
+      "hoursUntil": -4950.660451388889,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -182,7 +182,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-09-30T01:33:19.730Z",
+      "triggeredAt": "2026-09-30T02:39:37.625Z",
       "expiresAt": "2026-09-30T15:30:00.000Z",
       "kind": "rivalry_game",
       "region": "SouthAfrica",
@@ -222,8 +222,8 @@
         "tabHint": "Watch"
       },
       "priority": 70,
-      "triggeredAt": "2026-09-30T01:33:19.730Z",
-      "expiresAt": "2026-10-07T01:33:19.730Z",
+      "triggeredAt": "2026-09-30T02:39:37.625Z",
+      "expiresAt": "2026-10-07T02:39:37.625Z",
       "kind": "league_moment",
       "region": "SouthAfrica",
       "regionPriority": 1,
@@ -363,8 +363,8 @@
         "tabHint": "Rituals"
       },
       "priority": 90,
-      "triggeredAt": "2026-09-30T01:33:19.730Z",
-      "expiresAt": "2026-10-07T01:33:19.730Z",
+      "triggeredAt": "2026-09-30T02:39:37.625Z",
+      "expiresAt": "2026-10-07T02:39:37.625Z",
       "kind": "playoff_push",
       "region": "NewEngland",
       "regionPriority": 3,
@@ -386,8 +386,8 @@
           "nhl_2026020041"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-09-30T01:33:19.730Z",
-        "windowEnd": "2026-10-07T01:33:19.730Z",
+        "windowStart": "2026-09-30T02:39:37.625Z",
+        "windowEnd": "2026-10-07T02:39:37.625Z",
         "reason": "Boston plays three times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -412,7 +412,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-09-30T01:33:19.730Z",
+      "triggeredAt": "2026-09-30T02:39:37.625Z",
       "expiresAt": "2026-10-01T03:30:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
@@ -443,7 +443,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-09-30T01:33:19.730Z",
+      "triggeredAt": "2026-09-30T02:39:37.625Z",
       "expiresAt": "2026-10-03T16:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -474,7 +474,7 @@
         "tabHint": "Watch"
       },
       "priority": 75,
-      "triggeredAt": "2026-09-30T01:33:19.730Z",
+      "triggeredAt": "2026-09-30T02:39:37.625Z",
       "expiresAt": "2026-10-04T06:00:00.000Z",
       "kind": "rally_weekend",
       "region": "Other",
@@ -861,7 +861,7 @@
           "dateRangeLabel": "Oct 2–21",
           "startDate": "2026-10-02T01:30:00.000Z",
           "endDate": "2026-10-21T23:00:00.000Z",
-          "eventCount": 48,
+          "eventCount": 54,
           "seasonPhase": "Regular"
         },
         {
@@ -908,10 +908,10 @@
           "sport": "hockey",
           "displayName": "AHL",
           "leagueKey": "ahl",
-          "dateRangeLabel": "Oct 2–18",
+          "dateRangeLabel": "Oct 2–21",
           "startDate": "2026-10-02T23:00:00.000Z",
-          "endDate": "2026-10-18T23:00:00.000Z",
-          "eventCount": 97,
+          "endDate": "2026-10-21T02:00:00.000Z",
+          "eventCount": 98,
           "seasonPhase": null
         },
         {

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-30T01:33:19.352Z",
+  "lastUpdated": "2026-09-30T02:39:37.552Z",
   "sources": [
     "NHL API (api-web.nhle.com)",
     "AHL (HockeyTech / Odds API fallback)",
@@ -39,10 +39,10 @@
   "rugbySourceUsed": "ical",
   "cricketSourceUsed": "espn",
   "nhlCount": 140,
-  "ahlCount": 120,
-  "ahlAdded": 67,
-  "ahlUpdated": 120,
-  "ahlPruned": 67,
+  "ahlCount": 121,
+  "ahlAdded": 66,
+  "ahlUpdated": 121,
+  "ahlPruned": 66,
   "echlCount": 45,
   "echlAdded": 105,
   "echlUpdated": 45,
@@ -69,9 +69,9 @@
     "svns": 0
   },
   "cricketCount": 44,
-  "cricketAdded": 6,
-  "cricketUpdated": 32,
-  "cricketPruned": 8,
+  "cricketAdded": 5,
+  "cricketUpdated": 33,
+  "cricketPruned": 5,
   "cricketCounts": {
     "CPL": 4,
     "ODI Cricket": 9,
@@ -90,24 +90,24 @@
   "olympicHockeyPruned": 0,
   "olympicHockeySourceUsed": "hardcoded-schedule",
   "eplCount": 30,
-  "eplAdded": 1,
-  "eplUpdated": 29,
-  "eplPruned": 1,
+  "eplAdded": 0,
+  "eplUpdated": 30,
+  "eplPruned": 0,
   "eplSourceUsed": "espn",
-  "mlsCount": 363,
-  "mlsAdded": 2,
-  "mlsUpdated": 77,
-  "mlsPruned": 1,
+  "mlsCount": 369,
+  "mlsAdded": 0,
+  "mlsUpdated": 79,
+  "mlsPruned": 0,
   "mlsSourceUsed": "espn",
   "serieaCount": 10,
   "serieaAdded": 0,
   "serieaUpdated": 0,
-  "serieaPruned": 3,
+  "serieaPruned": 0,
   "serieaSourceUsed": "espn",
   "laligaCount": 16,
   "laligaAdded": 0,
   "laligaUpdated": 0,
-  "laligaPruned": 4,
+  "laligaPruned": 0,
   "laligaSourceUsed": "espn",
   "bundesligaCount": 9,
   "bundesligaAdded": 0,
@@ -127,7 +127,7 @@
   "uslCount": 42,
   "uslAdded": 0,
   "uslUpdated": 0,
-  "uslPruned": 1,
+  "uslPruned": 0,
   "uslSourceUsed": "espn",
   "championsCupCount": 12,
   "championsCupAdded": 0,
@@ -168,8 +168,8 @@
     "Shanghai Masters": 20
   },
   "f1Count": 39,
-  "f1Added": 3,
-  "f1Updated": 36,
+  "f1Added": 0,
+  "f1Updated": 39,
   "f1Pruned": 0,
   "f1SourceUsed": "espn-f1",
   "f1RaceCounts": {
@@ -209,22 +209,22 @@
   "mlbPruned": 0,
   "mlbSourceUsed": "disabled",
   "generatedMeta": {
-    "lastRefreshAt": "2026-09-30T01:33:19.352Z",
+    "lastRefreshAt": "2026-09-30T02:39:37.552Z",
     "sources": {
       "nhl": {
         "count": 140,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "NHL API"
       },
       "ahl": {
-        "count": 120,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "count": 121,
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "HockeyTech",
         "ahlSource": "hockeytech"
       },
       "echl": {
         "count": 45,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "HockeyTech",
         "teamFilter": "All teams"
       },
@@ -236,7 +236,7 @@
       },
       "rugby": {
         "count": 89,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "iCal Feeds",
         "leagueCounts": {
           "urc": 24,
@@ -253,7 +253,7 @@
       },
       "cricket": {
         "count": 44,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "CricAPI",
         "leagueCounts": {
           "CPL": 4,
@@ -264,22 +264,22 @@
       },
       "iccT20Wc": {
         "count": 0,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "Hardcoded Schedule"
       },
       "olympicHockey": {
         "count": 0,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "Hardcoded Schedule"
       },
       "epl": {
         "count": 30,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "ESPN API"
       },
       "mls": {
-        "count": 363,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "count": 369,
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "iCal Feed"
       },
       "serieA": {
@@ -304,7 +304,7 @@
       },
       "nwsl": {
         "count": 34,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2026-03-14T00:00:00.000Z"
       },
@@ -316,19 +316,19 @@
       },
       "championsCup": {
         "count": 12,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "challengeCup": {
         "count": 9,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "iCal Feed",
         "firstMatchDate": "2024-12-06T20:00:00.000Z"
       },
       "mlr": {
         "count": 0,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "Hardcoded Schedule",
         "firstMatchDate": "2026-03-28T19:00:00.000Z"
       },
@@ -350,7 +350,7 @@
       },
       "tennis": {
         "count": 20,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {
           "Shanghai Masters": 20
@@ -358,7 +358,7 @@
       },
       "f1": {
         "count": 39,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "ESPN F1 API",
         "raceCounts": {
           "Azerbaijan Grand Prix": 5,
@@ -373,7 +373,7 @@
       },
       "wrc": {
         "count": 8,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "Hardcoded Schedule"
       },
       "schoolsRugby": {
@@ -383,7 +383,7 @@
       },
       "paddling": {
         "count": 1,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "Hardcoded Schedule"
       },
       "comrades": {
@@ -393,13 +393,13 @@
       },
       "golf": {
         "count": 0,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "Hardcoded Schedule",
         "tournamentCounts": {}
       },
       "marathon": {
         "count": 3,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "Hardcoded Schedule",
         "raceCounts": {
           "Berlin Marathon": 1,
@@ -424,7 +424,7 @@
       },
       "shl": {
         "count": 37,
-        "lastFetchAt": "2026-09-30T01:33:19.352Z",
+        "lastFetchAt": "2026-09-30T02:39:37.552Z",
         "sourceName": "Odds API"
       },
       "cafcl": {
@@ -8255,7 +8255,7 @@
       "startTimeLocal": "2026-09-29T23:00:00.000Z",
       "endTimeLocal": "2026-09-30T01:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": true,
+      "isLive": false,
       "source": "nhl",
       "broadcastNetworks": [
         "SN",
@@ -8273,7 +8273,7 @@
       "startTimeLocal": "2026-09-29T23:05:00.000Z",
       "endTimeLocal": "2026-09-30T01:50:00.000Z",
       "providerId": "flosports",
-      "isLive": true,
+      "isLive": false,
       "source": "ahl-hockeytech"
     },
     {
@@ -8302,7 +8302,7 @@
       "startTimeLocal": "2026-09-30T02:00:00.000Z",
       "endTimeLocal": "2026-09-30T04:45:00.000Z",
       "providerId": "disneyplus",
-      "isLive": false,
+      "isLive": true,
       "source": "nhl",
       "broadcastNetworks": [
         "SN"
@@ -16533,6 +16533,102 @@
       "dayNumber": 3,
       "totalDays": 5,
       "isFinalDay": false
+    },
+    {
+      "id": "ahl-1029168",
+      "sport": "hockey",
+      "league": "AHL",
+      "homeTeam": "Ontario Reign",
+      "awayTeam": "Calgary Wranglers",
+      "startTimeLocal": "2026-10-21T02:00:00.000Z",
+      "endTimeLocal": "2026-10-21T04:45:00.000Z",
+      "providerId": "flosports",
+      "isLive": false,
+      "source": "ahl-hockeytech"
+    },
+    {
+      "id": "soccer-mls-20261021-2300-d-c-united-at-fc-cincinnati",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "D.C. United",
+      "homeTeam": "FC Cincinnati",
+      "startTimeLocal": "2026-10-21T23:00:00.000Z",
+      "endTimeLocal": "2026-10-22T01:15:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "soccer-mls-20261021-2300-d-c-united-at-fc-cincinnati",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "D.C. United",
+      "homeTeam": "FC Cincinnati",
+      "startTimeLocal": "2026-10-21T23:00:00.000Z",
+      "endTimeLocal": "2026-10-22T01:15:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "soccer-mls-20261021-2300-d-c-united-at-fc-cincinnati",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "D.C. United",
+      "homeTeam": "FC Cincinnati",
+      "startTimeLocal": "2026-10-21T23:00:00.000Z",
+      "endTimeLocal": "2026-10-22T01:15:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "soccer-mls-20261021-2300-d-c-united-at-fc-cincinnati",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "D.C. United",
+      "homeTeam": "FC Cincinnati",
+      "startTimeLocal": "2026-10-21T23:00:00.000Z",
+      "endTimeLocal": "2026-10-22T01:15:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "soccer-mls-20261021-2300-d-c-united-at-fc-cincinnati",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "D.C. United",
+      "homeTeam": "FC Cincinnati",
+      "startTimeLocal": "2026-10-21T23:00:00.000Z",
+      "endTimeLocal": "2026-10-22T01:15:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
+    },
+    {
+      "id": "soccer-mls-20261021-2300-d-c-united-at-fc-cincinnati",
+      "sport": "soccer",
+      "league": "MLS",
+      "awayTeam": "D.C. United",
+      "homeTeam": "FC Cincinnati",
+      "startTimeLocal": "2026-10-21T23:00:00.000Z",
+      "endTimeLocal": "2026-10-22T01:15:00.000Z",
+      "providerId": "appletv",
+      "isLive": false,
+      "source": "soccer-mls",
+      "leagueKey": "mls",
+      "providerReason": "mls-appletv"
     },
     {
       "id": "soccer-mls-20261021-2300-d-c-united-at-fc-cincinnati",

@@ -646,3 +646,31 @@ mtime_ms = 1790732133954
 storage_uri = "gcs://replit-rams-assets-riker/rams/assets/repl:06826ca3-9087-4cde-8396-5158a334fa76/33399827-b498-4f27-b3e6-2eaa6cf5d8f6/2a96605e-0855-4a28-aa08-d18068df5339"
 storage_version_token = "1790732153857662"
 content_type = "text/html"
+
+[[outputs]]
+id = "FijwdkXlSeXYrN_tYUQjv"
+uri = "file://deliverables/pulse-manual/Pulse-Complete-User-Guide.pdf"
+type = "pdf"
+title = "Pulse Complete User Guide — PDF"
+description = "24-page detailed guide with 22 screenshots, Chaos tension and alerts, Ritual featured-game walkthrough, every Stories area and all six playbooks."
+logical_id = "5b20fb17-2b7e-428b-a6cf-bbd33bb21686"
+content_hash = "sha256:444133306ae52b0ab05f976ba68db05ff16cfda21ac3f4f60e1fd5ba1bd961a7"
+size = 1563218
+mtime_ms = 1790736196558
+storage_uri = "gcs://replit-rams-assets-riker/rams/assets/repl:06826ca3-9087-4cde-8396-5158a334fa76/5b20fb17-2b7e-428b-a6cf-bbd33bb21686/88897640-f072-4ccd-a47d-fd6514244928"
+storage_version_token = "1790736218591773"
+content_type = "application/pdf"
+
+[[outputs]]
+id = "94zjWb3meMWV9oNh4tEsq"
+uri = "file://deliverables/pulse-manual/Pulse-Complete-User-Guide.html"
+type = "html"
+title = "Pulse Complete User Guide — Web Edition"
+description = "Self-contained illustrated guide with clickable contents, step-by-step instructions and print-friendly formatting."
+logical_id = "c197ead7-e2d7-46c5-aff7-4e063d237544"
+content_hash = "sha256:f4874df05711a7d122cd4f15f9019477b40c4ef4e5623747591e6ac6dab991c1"
+size = 1364146
+mtime_ms = 1790736193758
+storage_uri = "gcs://replit-rams-assets-riker/rams/assets/repl:06826ca3-9087-4cde-8396-5158a334fa76/c197ead7-e2d7-46c5-aff7-4e063d237544/33d63e2f-359a-4ff3-a6c6-6aa6a875fb8a"
+storage_version_token = "1790736219335168"
+content_type = "text/html"
