@@ -2589,21 +2589,21 @@
   },
   "rivalry_game:australia vs south africa rivalry highlights": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=lciAaa8OH1M",
-      "thumbnailUrl": "https://img.youtube.com/vi/lciAaa8OH1M/hqdefault.jpg",
-      "durationSeconds": 353,
-      "title": "Highlights: 2nd ODI, South Africa vs Australia | SA vs AUS",
+      "url": "https://www.youtube.com/watch?v=UffBgXti1DE",
+      "thumbnailUrl": "https://img.youtube.com/vi/UffBgXti1DE/hqdefault.jpg",
+      "durationSeconds": 131,
+      "title": "Australia vs South Africa 2026 1st Test | Match Highlights & Analysis",
       "source": "youtube",
-      "channel": "Willow by Cricbuzz",
+      "channel": "Taher's World",
       "publishedAt": "13h ago"
     },
-    "fetchedAt": "2026-09-30T01:33:16.315Z",
+    "fetchedAt": "2026-10-10T04:16:22.274Z",
     "query": "Australia vs South Africa rivalry highlights",
     "debug": {
       "searchQuery": "Australia vs South Africa rivalry highlights",
-      "selectedVideoTitle": "Highlights: 2nd ODI, South Africa vs Australia | SA vs AUS",
+      "selectedVideoTitle": "Australia vs South Africa 2026 1st Test | Match Highlights & Analysis",
       "selectedVideoPublishedAt": "13h ago",
-      "selectedVideoChannel": "Willow by Cricbuzz",
+      "selectedVideoChannel": "Taher's World",
       "rejectedForAgeCount": 0
     }
   },
@@ -2689,6 +2689,138 @@
       "selectedVideoPublishedAt": null,
       "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
+    }
+  },
+  "clinch_watch:sharks clinch playoff berth october 2026": {
+    "video": null,
+    "fetchedAt": "2026-10-10T04:16:22.511Z",
+    "query": "Sharks clinch playoff berth October 2026",
+    "debug": {
+      "searchQuery": "Sharks clinch playoff berth October 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:rivalry weekend sports october 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=MfJGus9Lusc",
+      "thumbnailUrl": "https://img.youtube.com/vi/MfJGus9Lusc/hqdefault.jpg",
+      "durationSeconds": 10763,
+      "title": "LIVE: Packers-Bears Rivalry Renewed! Who Wins at Lambeau? | Wilde and Tausch 10.9.26",
+      "source": "youtube",
+      "channel": "ESPN Madison",
+      "publishedAt": "Streamed 11h ago"
+    },
+    "fetchedAt": "2026-10-10T04:16:22.954Z",
+    "query": "Rivalry Weekend sports October 2026",
+    "debug": {
+      "searchQuery": "Rivalry Weekend sports October 2026",
+      "selectedVideoTitle": "LIVE: Packers-Bears Rivalry Renewed! Who Wins at Lambeau? | Wilde and Tausch 10.9.26",
+      "selectedVideoPublishedAt": "Streamed 11h ago",
+      "selectedVideoChannel": "ESPN Madison",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "playoff_push:boston bruins playoff push october 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=5hzBGLdbL5Y",
+      "thumbnailUrl": "https://img.youtube.com/vi/5hzBGLdbL5Y/hqdefault.jpg",
+      "durationSeconds": 500,
+      "title": "HUGE OILERS & BRUINS TRADE UPDATE: MIKE BABCOCK PUSHING FOR EDMONTON TO TRADE FOR MATTHEW POITRAS",
+      "source": "youtube",
+      "channel": "legorocks99",
+      "publishedAt": "9h ago"
+    },
+    "fetchedAt": "2026-10-10T04:16:23.202Z",
+    "query": "Boston Bruins playoff push October 2026",
+    "debug": {
+      "searchQuery": "Boston Bruins playoff push October 2026",
+      "selectedVideoTitle": "HUGE OILERS & BRUINS TRADE UPDATE: MIKE BABCOCK PUSHING FOR EDMONTON TO TRADE FOR MATTHEW POITRAS",
+      "selectedVideoPublishedAt": "9h ago",
+      "selectedVideoChannel": "legorocks99",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "upset_alert:winnipeg jets vs anaheim ducks upset highlights october 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=21sayndJm0M",
+      "thumbnailUrl": "https://img.youtube.com/vi/21sayndJm0M/hqdefault.jpg",
+      "durationSeconds": 543,
+      "title": "CRAIG BUTTON CALLS CONNOR HELLEBUYCK A BABY + WINNIPEG JETS PLAYERS UPSET @ HIM?",
+      "source": "youtube",
+      "channel": "legorocks99",
+      "publishedAt": "11h ago"
+    },
+    "fetchedAt": "2026-10-10T04:16:23.468Z",
+    "query": "Winnipeg Jets vs Anaheim Ducks upset highlights October 2026",
+    "debug": {
+      "searchQuery": "Winnipeg Jets vs Anaheim Ducks upset highlights October 2026",
+      "selectedVideoTitle": "CRAIG BUTTON CALLS CONNOR HELLEBUYCK A BABY + WINNIPEG JETS PLAYERS UPSET @ HIM?",
+      "selectedVideoPublishedAt": "11h ago",
+      "selectedVideoChannel": "legorocks99",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "playoff_push:anaheim ducks playoff push october 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=5hzBGLdbL5Y",
+      "thumbnailUrl": "https://img.youtube.com/vi/5hzBGLdbL5Y/hqdefault.jpg",
+      "durationSeconds": 500,
+      "title": "HUGE OILERS & BRUINS TRADE UPDATE: MIKE BABCOCK PUSHING FOR EDMONTON TO TRADE FOR MATTHEW POITRAS",
+      "source": "youtube",
+      "channel": "legorocks99",
+      "publishedAt": "9h ago"
+    },
+    "fetchedAt": "2026-10-10T04:16:24.634Z",
+    "query": "Anaheim Ducks playoff push October 2026",
+    "debug": {
+      "searchQuery": "Anaheim Ducks playoff push October 2026",
+      "selectedVideoTitle": "HUGE OILERS & BRUINS TRADE UPDATE: MIKE BABCOCK PUSHING FOR EDMONTON TO TRADE FOR MATTHEW POITRAS",
+      "selectedVideoPublishedAt": "9h ago",
+      "selectedVideoChannel": "legorocks99",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:singapore grand prix sports october 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=1glxSkFKTPk",
+      "thumbnailUrl": "https://img.youtube.com/vi/1glxSkFKTPk/hqdefault.jpg",
+      "durationSeconds": 484,
+      "title": "Sprint Qualifying Highlights | 2026 Singapore Grand Prix",
+      "source": "youtube",
+      "channel": "FORMULA 1",
+      "publishedAt": "13h ago"
+    },
+    "fetchedAt": "2026-10-10T04:16:25.885Z",
+    "query": "Singapore Grand Prix sports October 2026",
+    "debug": {
+      "searchQuery": "Singapore Grand Prix sports October 2026",
+      "selectedVideoTitle": "Sprint Qualifying Highlights | 2026 Singapore Grand Prix",
+      "selectedVideoPublishedAt": "13h ago",
+      "selectedVideoChannel": "FORMULA 1",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marathon_spotlight:chicago marathon marathon highlights 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=Zv2D8djp7RY",
+      "thumbnailUrl": "https://img.youtube.com/vi/Zv2D8djp7RY/hqdefault.jpg",
+      "durationSeconds": 773,
+      "title": "2026 Chicago Marathon Men's Press Conference: Jacob Kiplimo, Charles Hicks, Clayton Young + More",
+      "source": "youtube",
+      "channel": "CITIUS MAG",
+      "publishedAt": "9h ago"
+    },
+    "fetchedAt": "2026-10-10T04:16:26.971Z",
+    "query": "Chicago Marathon marathon highlights 2026",
+    "debug": {
+      "searchQuery": "Chicago Marathon marathon highlights 2026",
+      "selectedVideoTitle": "2026 Chicago Marathon Men's Press Conference: Jacob Kiplimo, Charles Hicks, Clayton Young + More",
+      "selectedVideoPublishedAt": "9h ago",
+      "selectedVideoChannel": "CITIUS MAG",
+      "rejectedForAgeCount": 1
     }
   }
 }
