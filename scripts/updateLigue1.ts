@@ -42,7 +42,7 @@ function formatDateRange(start: Date, end: Date): string {
 }
 
 async function fetchEspnPage(dateRange: string): Promise<EspnEvent[]> {
-  const url = `${ESPN_LIGUE1_API}?dates=${dateRange}&limit=200`;
+  const url = `${ESPN_LIGUE1_API}?dates=${dateRange}&limit=500`;
   const res = await fetch(url, {
     headers: { "User-Agent": "Mozilla/5.0 (compatible; SportsGuide/1.0)" },
   });
@@ -61,19 +61,8 @@ export async function fetchLigue1Events(): Promise<SoccerFetchResult> {
     const windowStart = new Date(now.getTime() - 14 * 86400000);
     const windowEnd = new Date(now.getTime() + 21 * 86400000);
 
-    const chunks: string[] = [];
-    let cursor = new Date(windowStart);
-    while (cursor < windowEnd) {
-      const chunkEnd = new Date(Math.min(cursor.getTime() + 31 * 86400000, windowEnd.getTime()));
-      chunks.push(formatDateRange(cursor, chunkEnd));
-      cursor = new Date(chunkEnd.getTime() + 86400000);
-    }
-
-    const allEspnEvents: EspnEvent[] = [];
-    for (const range of chunks) {
-      const events = await fetchEspnPage(range);
-      allEspnEvents.push(...events);
-    }
+    const years = new Set([windowStart.getUTCFullYear(), windowEnd.getUTCFullYear()]);
+    const allEspnEvents = (await Promise.all([...years].map((year) => fetchEspnPage(String(year))))).flat();
 
     console.log(`  Ligue 1: Fetched ${allEspnEvents.length} ESPN events`);
 

@@ -100,7 +100,7 @@ async function fetchGolazoSerieAMatches(): Promise<GolazoMatch[]> {
 }
 
 async function fetchEspnPage(dateRange: string): Promise<EspnEvent[]> {
-  const url = `${ESPN_SERIEA_API}?dates=${dateRange}&limit=200`;
+  const url = `${ESPN_SERIEA_API}?dates=${dateRange}&limit=500`;
   const res = await fetch(url, {
     headers: { "User-Agent": "Mozilla/5.0 (compatible; SportsGuide/1.0)" },
   });
@@ -119,15 +119,8 @@ export async function fetchSerieAEvents(): Promise<SoccerFetchResult> {
     const windowStart = new Date(now.getTime() - 14 * 86400000);
     const windowEnd = new Date(now.getTime() + 21 * 86400000);
 
-    const allEspnEvents: EspnEvent[] = [];
-    let cursor = new Date(windowStart);
-    while (cursor < windowEnd) {
-      const chunkEnd = new Date(Math.min(cursor.getTime() + 31 * 86400000, windowEnd.getTime()));
-      const range = formatDateRange(cursor, chunkEnd);
-      const events = await fetchEspnPage(range);
-      allEspnEvents.push(...events);
-      cursor = new Date(chunkEnd.getTime() + 86400000);
-    }
+    const years = new Set([windowStart.getUTCFullYear(), windowEnd.getUTCFullYear()]);
+    const allEspnEvents = (await Promise.all([...years].map((year) => fetchEspnPage(String(year))))).flat();
 
     console.log(`  Serie A: Fetched ${allEspnEvents.length} ESPN events`);
 

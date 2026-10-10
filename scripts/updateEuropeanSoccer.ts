@@ -24,6 +24,11 @@ async function main() {
   for (const league of leagues) {
     const existing = allEvents.filter((event) => event.id.startsWith(league.prefix));
     const fetched = await league.fetch();
+    if (fetched.count === 0) {
+      throw new Error(
+        `${league.name}: source returned no fixtures; refusing to replace its cached schedule.`,
+      );
+    }
     const result = league.merge(existing, fetched.events, now);
     if (fetched.count > 0 && result.merged.length === 0) {
       throw new Error(`${league.name}: received fixtures but merge produced an empty schedule`);
