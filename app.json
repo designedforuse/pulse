@@ -7,17 +7,13 @@
     "icon": "./assets/images/icon.png",
     "scheme": "mastersportsguidealpharelease10",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/images/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#000000"
-    },
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.mastersportsguidealpharelease10.app",
       "infoPlist": {
-        "LSApplicationQueriesSchemes": ["tunein"]
+        "LSApplicationQueriesSchemes": [
+          "tunein"
+        ]
       }
     },
     "android": {
@@ -40,7 +36,20 @@
         }
       ],
       "expo-font",
-      "expo-web-browser"
+      "expo-web-browser",
+      "expo-audio",
+      "expo-image",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#000000"
+        }
+      ],
+      "expo-status-bar",
+      "expo-video",
+      "expo-asset"
     ],
     "experiments": {
       "typedRoutes": true,

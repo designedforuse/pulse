@@ -1860,5 +1860,45 @@
   "ahl-1030257": {
     "video": null,
     "fetchedAt": "2026-09-30T02:28:05.436Z"
+  },
+  "nhl_2026020137": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=4knfU4ee6_c",
+      "thumbnailUrl": "https://i.ytimg.com/vi/4knfU4ee6_c/hqdefault.jpg",
+      "durationSeconds": 626,
+      "title": "NHL Highlights - Ducks vs. Rangers - October 19, 2026",
+      "channel": "SPORTSNET"
+    },
+    "fetchedAt": "2026-10-20T13:26:51.992Z"
+  },
+  "nhl_2026020138": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=qMkkEhDx104",
+      "thumbnailUrl": "https://i.ytimg.com/vi/qMkkEhDx104/hqdefault.jpg",
+      "durationSeconds": 635,
+      "title": "Avalanche vs. Flyers | NHL Highlights | Oct 19, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-10-20T13:26:51.992Z"
+  },
+  "nhl_2026020139": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=OQ1KvteZyE8",
+      "thumbnailUrl": "https://i.ytimg.com/vi/OQ1KvteZyE8/hqdefault.jpg",
+      "durationSeconds": 634,
+      "title": "Sharks vs. Maple Leafs | NHL Highlights | Oct 19, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-10-20T13:26:51.992Z"
+  },
+  "nhl_2026020140": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=tOgPWs_8sq0",
+      "thumbnailUrl": "https://i.ytimg.com/vi/tOgPWs_8sq0/hqdefault.jpg",
+      "durationSeconds": 635,
+      "title": "Penguins vs. Mammoth | NHL Highlights | Oct 19, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-10-20T13:26:51.992Z"
   }
 }

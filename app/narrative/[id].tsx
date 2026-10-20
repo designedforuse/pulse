@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import {
   StyleSheet,
   Text,
@@ -15,7 +15,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import { useQuery } from "@tanstack/react-query";
-import { Video, ResizeMode } from "expo-av";
+import { useVideoPlayer, VideoView } from "expo-video";
 import Colors from "@/constants/colors";
 import { getApiUrl } from "@/lib/query-client";
 import { getEffectiveSport, isSchoolsLeague, getSchoolsLeagueLabel } from "@/lib/data";
@@ -99,6 +99,20 @@ function getSportColor(sport: string): string {
   return colors[sport] || "#90A4AE";
 }
 
+// Inline player for non-YouTube clips. Matches the previous behaviour: native
+// controls, letterboxed ("contain"), and no autoplay.
+function NarrativeVideoPlayer({ uri, style }: { uri: string; style: any }) {
+  const player = useVideoPlayer(uri);
+  return (
+    <VideoView
+      player={player}
+      style={style}
+      nativeControls
+      contentFit="contain"
+    />
+  );
+}
+
 export default function NarrativeDetailScreen() {
   const { id, cardJson } = useLocalSearchParams<{ id: string; cardJson: string }>();
   const insets = useSafeAreaInsets();
@@ -121,7 +135,6 @@ export default function NarrativeDetailScreen() {
   });
 
   const [videoPlaying, setVideoPlaying] = useState(false);
-  const videoRef = useRef<Video>(null);
 
   const formatDuration = useCallback((seconds: number) => {
     const m = Math.floor(seconds / 60);
@@ -259,14 +272,7 @@ export default function NarrativeDetailScreen() {
               </Pressable>
             ) : (
               <View style={styles.videoPlayerContainer}>
-                <Video
-                  ref={videoRef}
-                  source={{ uri: card.video.url }}
-                  style={styles.videoPlayer}
-                  useNativeControls
-                  resizeMode={ResizeMode.CONTAIN}
-                  shouldPlay={false}
-                />
+                <NarrativeVideoPlayer uri={card.video.url} style={styles.videoPlayer} />
                 <Pressable
                   style={styles.videoCloseButton}
                   onPress={() => setVideoPlaying(false)}

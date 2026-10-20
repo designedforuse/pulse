@@ -1,6 +1,6 @@
 import { isLiquidGlassAvailable } from "expo-glass-effect";
 import { Tabs } from "expo-router";
-import { NativeTabs, Icon, Label } from "expo-router/unstable-native-tabs";
+import { NativeTabs } from "expo-router/unstable-native-tabs";
 import { BlurView } from "expo-blur";
 import { Platform, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -54,16 +54,16 @@ function NativeTabLayout() {
   return (
     <NativeTabs initialRouteName="watch">
       <NativeTabs.Trigger name="watch">
-        <Icon sf={{ default: "waveform.path", selected: "waveform.path" }} md="monitor-heart" />
-        <Label>Watch</Label>
+        <NativeTabs.Trigger.Icon sf={{ default: "waveform.path", selected: "waveform.path" }} md="monitor-heart" />
+        <NativeTabs.Trigger.Label>Watch</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="rituals">
-        <Icon sf={{ default: "tshirt", selected: "tshirt.fill" }} md="checkroom" />
-        <Label>Rituals</Label>
+        <NativeTabs.Trigger.Icon sf={{ default: "tshirt", selected: "tshirt.fill" }} md="checkroom" />
+        <NativeTabs.Trigger.Label>Rituals</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="index">
-        <Icon sf={{ default: "sparkles", selected: "sparkles" }} md="auto_awesome" />
-        <Label>Stories</Label>
+        <NativeTabs.Trigger.Icon sf={{ default: "sparkles", selected: "sparkles" }} md="auto_awesome" />
+        <NativeTabs.Trigger.Label>Stories</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="live" hidden />
       <NativeTabs.Trigger name="settings" hidden />

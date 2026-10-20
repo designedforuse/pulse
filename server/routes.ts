@@ -107,7 +107,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // iOS/AVFoundation (expo-av) infers the audio format from the URL's path
+  // iOS/AVFoundation (used by expo-audio) infers the audio format from the URL's path
   // extension, so the route ends in ".mp3". The extensionless path is kept as
   // an alias for older cached clients.
   const handleDailyWrapAudio = async (req: Request, res: Response) => {
@@ -127,7 +127,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return;
       }
       // Use sendFile (not a raw stream): it sets Content-Length and supports
-      // HTTP Range requests, which iOS/AVFoundation (expo-av) requires — a
+      // HTTP Range requests, which iOS/AVFoundation (expo-audio) requires — a
       // chunked stream without range support makes the native player hang.
       res.sendFile(file, {
         headers: {
