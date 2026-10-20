@@ -2589,21 +2589,21 @@
   },
   "rivalry_game:australia vs south africa rivalry highlights": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=UffBgXti1DE",
-      "thumbnailUrl": "https://img.youtube.com/vi/UffBgXti1DE/hqdefault.jpg",
-      "durationSeconds": 131,
-      "title": "Australia vs South Africa 2026 1st Test | Match Highlights & Analysis",
+      "url": "https://www.youtube.com/watch?v=TN6hJtz9GXc",
+      "thumbnailUrl": "https://img.youtube.com/vi/TN6hJtz9GXc/hqdefault.jpg",
+      "durationSeconds": 137,
+      "title": "All Blacks Great Steve Hansen answers the question Why All Blacks are still Weak Against Springboks",
       "source": "youtube",
-      "channel": "Taher's World",
-      "publishedAt": "13h ago"
+      "channel": "RedSpot Sports",
+      "publishedAt": "2h ago"
     },
-    "fetchedAt": "2026-10-10T04:16:22.274Z",
+    "fetchedAt": "2026-10-20T13:28:39.497Z",
     "query": "Australia vs South Africa rivalry highlights",
     "debug": {
       "searchQuery": "Australia vs South Africa rivalry highlights",
-      "selectedVideoTitle": "Australia vs South Africa 2026 1st Test | Match Highlights & Analysis",
-      "selectedVideoPublishedAt": "13h ago",
-      "selectedVideoChannel": "Taher's World",
+      "selectedVideoTitle": "All Blacks Great Steve Hansen answers the question Why All Blacks are still Weak Against Springboks",
+      "selectedVideoPublishedAt": "2h ago",
+      "selectedVideoChannel": "RedSpot Sports",
       "rejectedForAgeCount": 0
     }
   },
@@ -2705,41 +2705,41 @@
   },
   "league_moment:rivalry weekend sports october 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=MfJGus9Lusc",
-      "thumbnailUrl": "https://img.youtube.com/vi/MfJGus9Lusc/hqdefault.jpg",
-      "durationSeconds": 10763,
-      "title": "LIVE: Packers-Bears Rivalry Renewed! Who Wins at Lambeau? | Wilde and Tausch 10.9.26",
+      "url": "https://www.youtube.com/watch?v=uZV4shj9r9o",
+      "thumbnailUrl": "https://img.youtube.com/vi/uZV4shj9r9o/hqdefault.jpg",
+      "durationSeconds": 1809,
+      "title": "WWE Raw 20 Oct 2026 Full Highlights HD - Roman Reigns Attacks 946",
       "source": "youtube",
-      "channel": "ESPN Madison",
-      "publishedAt": "Streamed 11h ago"
+      "channel": "Azra Gamer and 4 more",
+      "publishedAt": "10h ago"
     },
-    "fetchedAt": "2026-10-10T04:16:22.954Z",
+    "fetchedAt": "2026-10-20T13:28:40.115Z",
     "query": "Rivalry Weekend sports October 2026",
     "debug": {
       "searchQuery": "Rivalry Weekend sports October 2026",
-      "selectedVideoTitle": "LIVE: Packers-Bears Rivalry Renewed! Who Wins at Lambeau? | Wilde and Tausch 10.9.26",
-      "selectedVideoPublishedAt": "Streamed 11h ago",
-      "selectedVideoChannel": "ESPN Madison",
+      "selectedVideoTitle": "WWE Raw 20 Oct 2026 Full Highlights HD - Roman Reigns Attacks 946",
+      "selectedVideoPublishedAt": "10h ago",
+      "selectedVideoChannel": "Azra Gamer and 4 more",
       "rejectedForAgeCount": 0
     }
   },
   "playoff_push:boston bruins playoff push october 2026": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=5hzBGLdbL5Y",
-      "thumbnailUrl": "https://img.youtube.com/vi/5hzBGLdbL5Y/hqdefault.jpg",
-      "durationSeconds": 500,
-      "title": "HUGE OILERS & BRUINS TRADE UPDATE: MIKE BABCOCK PUSHING FOR EDMONTON TO TRADE FOR MATTHEW POITRAS",
+      "url": "https://www.youtube.com/watch?v=Fq08CMFLCjo",
+      "thumbnailUrl": "https://img.youtube.com/vi/Fq08CMFLCjo/hqdefault.jpg",
+      "durationSeconds": 3757,
+      "title": "Stars Push Above .500 Ahead Of Season-Long Six-Game Home Stand | DLLS Stars Podcast",
       "source": "youtube",
-      "channel": "legorocks99",
-      "publishedAt": "9h ago"
+      "channel": "DLLS Sports",
+      "publishedAt": "Streamed 17h ago"
     },
-    "fetchedAt": "2026-10-10T04:16:23.202Z",
+    "fetchedAt": "2026-10-20T13:28:40.609Z",
     "query": "Boston Bruins playoff push October 2026",
     "debug": {
       "searchQuery": "Boston Bruins playoff push October 2026",
-      "selectedVideoTitle": "HUGE OILERS & BRUINS TRADE UPDATE: MIKE BABCOCK PUSHING FOR EDMONTON TO TRADE FOR MATTHEW POITRAS",
-      "selectedVideoPublishedAt": "9h ago",
-      "selectedVideoChannel": "legorocks99",
+      "selectedVideoTitle": "Stars Push Above .500 Ahead Of Season-Long Six-Game Home Stand | DLLS Stars Podcast",
+      "selectedVideoPublishedAt": "Streamed 17h ago",
+      "selectedVideoChannel": "DLLS Sports",
       "rejectedForAgeCount": 0
     }
   },
@@ -2764,22 +2764,14 @@
     }
   },
   "playoff_push:anaheim ducks playoff push october 2026": {
-    "video": {
-      "url": "https://www.youtube.com/watch?v=5hzBGLdbL5Y",
-      "thumbnailUrl": "https://img.youtube.com/vi/5hzBGLdbL5Y/hqdefault.jpg",
-      "durationSeconds": 500,
-      "title": "HUGE OILERS & BRUINS TRADE UPDATE: MIKE BABCOCK PUSHING FOR EDMONTON TO TRADE FOR MATTHEW POITRAS",
-      "source": "youtube",
-      "channel": "legorocks99",
-      "publishedAt": "9h ago"
-    },
-    "fetchedAt": "2026-10-10T04:16:24.634Z",
+    "video": null,
+    "fetchedAt": "2026-10-20T13:28:40.319Z",
     "query": "Anaheim Ducks playoff push October 2026",
     "debug": {
       "searchQuery": "Anaheim Ducks playoff push October 2026",
-      "selectedVideoTitle": "HUGE OILERS & BRUINS TRADE UPDATE: MIKE BABCOCK PUSHING FOR EDMONTON TO TRADE FOR MATTHEW POITRAS",
-      "selectedVideoPublishedAt": "9h ago",
-      "selectedVideoChannel": "legorocks99",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
       "rejectedForAgeCount": 0
     }
   },
@@ -2821,6 +2813,46 @@
       "selectedVideoPublishedAt": "9h ago",
       "selectedVideoChannel": "CITIUS MAG",
       "rejectedForAgeCount": 1
+    }
+  },
+  "marquee_match:nottingham forest vs ipswich town epl preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=gOqg0dCj2a0",
+      "thumbnailUrl": "https://img.youtube.com/vi/gOqg0dCj2a0/hqdefault.jpg",
+      "durationSeconds": 4963,
+      "title": "Man City Create Premier League Chaos, Arsenal survive, and Brighton are must-see-TV | PL Recap",
+      "source": "youtube",
+      "channel": "Men in Blazers",
+      "publishedAt": "17h ago"
+    },
+    "fetchedAt": "2026-10-20T13:28:41.088Z",
+    "query": "Nottingham Forest vs Ipswich Town EPL preview",
+    "debug": {
+      "searchQuery": "Nottingham Forest vs Ipswich Town EPL preview",
+      "selectedVideoTitle": "Man City Create Premier League Chaos, Arsenal survive, and Brighton are must-see-TV | PL Recap",
+      "selectedVideoPublishedAt": "17h ago",
+      "selectedVideoChannel": "Men in Blazers",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:big stage sports october 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=PAmxXHzxRv0",
+      "thumbnailUrl": "https://img.youtube.com/vi/PAmxXHzxRv0/hqdefault.jpg",
+      "durationSeconds": 1320,
+      "title": "Arizona State vs. #10 Texas Tech Condensed Game | 2026 Monster Energy Big 12 Football",
+      "source": "youtube",
+      "channel": "Big 12 Conference",
+      "publishedAt": "9h ago"
+    },
+    "fetchedAt": "2026-10-20T13:28:42.804Z",
+    "query": "Big Stage sports October 2026",
+    "debug": {
+      "searchQuery": "Big Stage sports October 2026",
+      "selectedVideoTitle": "Arizona State vs. #10 Texas Tech Condensed Game | 2026 Monster Energy Big 12 Football",
+      "selectedVideoPublishedAt": "9h ago",
+      "selectedVideoChannel": "Big 12 Conference",
+      "rejectedForAgeCount": 0
     }
   }
 }
