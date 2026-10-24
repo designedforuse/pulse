@@ -505,11 +505,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021043",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021058",
           "seenAt": "2026-03-21T04:48:25.422Z"
         },
@@ -552,6 +547,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021304",
           "seenAt": "2026-09-18T18:25:47.695Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -615,11 +615,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021043",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021058",
           "seenAt": "2026-03-21T04:48:25.422Z"
         },
@@ -662,6 +657,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021304",
           "seenAt": "2026-09-18T18:25:47.695Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -1250,11 +1250,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021043",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021058",
           "seenAt": "2026-03-21T04:48:25.422Z"
         },
@@ -1297,6 +1292,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021304",
           "seenAt": "2026-09-18T18:25:47.695Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -3077,6 +3077,11 @@
           "teamAbbrev": "CAR",
           "gameId": "2025021293",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "CAR",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -4170,11 +4175,6 @@
       "sightings": [
         {
           "teamAbbrev": "STL",
-          "gameId": "2025020974",
-          "seenAt": "2026-03-06T03:20:47.423Z"
-        },
-        {
-          "teamAbbrev": "STL",
           "gameId": "2025020989",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -4217,6 +4217,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -5575,11 +5580,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021043",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021058",
           "seenAt": "2026-03-21T04:48:25.422Z"
         },
@@ -5622,6 +5622,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021304",
           "seenAt": "2026-09-18T18:25:47.695Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -5685,11 +5690,6 @@
       "sightings": [
         {
           "teamAbbrev": "STL",
-          "gameId": "2025020974",
-          "seenAt": "2026-03-06T03:20:47.423Z"
-        },
-        {
-          "teamAbbrev": "STL",
           "gameId": "2025020989",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -5732,6 +5732,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -8187,6 +8192,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -8232,6 +8242,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021299",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -9135,11 +9150,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021043",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021058",
           "seenAt": "2026-03-21T04:48:25.422Z"
         },
@@ -9182,6 +9192,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021304",
           "seenAt": "2026-09-18T18:25:47.695Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -9710,11 +9725,6 @@
       "sightings": [
         {
           "teamAbbrev": "STL",
-          "gameId": "2025020974",
-          "seenAt": "2026-03-06T03:20:47.423Z"
-        },
-        {
-          "teamAbbrev": "STL",
           "gameId": "2025020989",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -9757,6 +9767,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -13500,11 +13515,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021043",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021058",
           "seenAt": "2026-03-21T04:48:25.422Z"
         },
@@ -13547,6 +13557,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021304",
           "seenAt": "2026-09-18T18:25:47.695Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -13775,11 +13790,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021000",
-          "seenAt": "2026-03-08T05:57:11.976Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021043",
           "seenAt": "2026-03-15T18:00:32.932Z"
         },
@@ -13822,6 +13832,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021262",
           "seenAt": "2026-04-12T14:58:11.289Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -16322,6 +16337,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021262",
           "seenAt": "2026-04-12T14:58:11.289Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -16792,6 +16812,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021279",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -19485,11 +19510,6 @@
       "sightings": [
         {
           "teamAbbrev": "STL",
-          "gameId": "2025020974",
-          "seenAt": "2026-03-06T03:20:47.423Z"
-        },
-        {
-          "teamAbbrev": "STL",
           "gameId": "2025020989",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -19532,6 +19552,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -21970,11 +21995,6 @@
       "sightings": [
         {
           "teamAbbrev": "STL",
-          "gameId": "2025020989",
-          "seenAt": "2026-03-07T07:19:00.761Z"
-        },
-        {
-          "teamAbbrev": "STL",
           "gameId": "2025021006",
           "seenAt": "2026-03-09T04:14:15.420Z"
         },
@@ -22017,6 +22037,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -22702,6 +22727,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021279",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030133",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -22900,11 +22930,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021043",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021058",
           "seenAt": "2026-03-21T04:48:25.422Z"
         },
@@ -22947,6 +22972,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021304",
           "seenAt": "2026-09-18T18:25:47.695Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -23125,11 +23155,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021043",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021058",
           "seenAt": "2026-03-21T04:48:25.422Z"
         },
@@ -23172,6 +23197,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021304",
           "seenAt": "2026-09-18T18:25:47.695Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -23380,11 +23410,6 @@
       "sightings": [
         {
           "teamAbbrev": "STL",
-          "gameId": "2025020974",
-          "seenAt": "2026-03-06T03:20:47.423Z"
-        },
-        {
-          "teamAbbrev": "STL",
           "gameId": "2025020989",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -23427,6 +23452,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -23850,11 +23880,6 @@
       "sightings": [
         {
           "teamAbbrev": "STL",
-          "gameId": "2025020974",
-          "seenAt": "2026-03-06T03:20:47.423Z"
-        },
-        {
-          "teamAbbrev": "STL",
           "gameId": "2025020989",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -23897,6 +23922,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -24275,11 +24305,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021000",
-          "seenAt": "2026-03-08T05:57:11.976Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021043",
           "seenAt": "2026-03-15T18:00:32.932Z"
         },
@@ -24322,6 +24347,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021262",
           "seenAt": "2026-04-12T14:58:11.289Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -25795,11 +25825,6 @@
       "sightings": [
         {
           "teamAbbrev": "STL",
-          "gameId": "2025020974",
-          "seenAt": "2026-03-06T03:20:47.423Z"
-        },
-        {
-          "teamAbbrev": "STL",
           "gameId": "2025020989",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -25842,6 +25867,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -25915,11 +25945,6 @@
       "sightings": [
         {
           "teamAbbrev": "STL",
-          "gameId": "2025020925",
-          "seenAt": "2026-03-02T07:07:18.792Z"
-        },
-        {
-          "teamAbbrev": "STL",
           "gameId": "2025020974",
           "seenAt": "2026-03-06T03:20:47.423Z"
         },
@@ -25962,6 +25987,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -26012,6 +26042,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -27375,11 +27410,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021043",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021058",
           "seenAt": "2026-03-21T04:48:25.422Z"
         },
@@ -27422,6 +27452,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021304",
           "seenAt": "2026-09-18T18:25:47.695Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -28242,6 +28277,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021304",
           "seenAt": "2026-09-18T18:25:47.695Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030132",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -28490,11 +28530,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021043",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021058",
           "seenAt": "2026-03-21T04:48:25.422Z"
         },
@@ -28537,17 +28572,17 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021304",
           "seenAt": "2026-09-18T18:25:47.695Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
     "8481598": {
       "name": "P. Broberg",
       "sightings": [
-        {
-          "teamAbbrev": "STL",
-          "gameId": "2025020974",
-          "seenAt": "2026-03-06T03:20:47.423Z"
-        },
         {
           "teamAbbrev": "STL",
           "gameId": "2025020989",
@@ -28592,6 +28627,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -28795,11 +28835,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021043",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021058",
           "seenAt": "2026-03-21T04:48:25.422Z"
         },
@@ -28842,6 +28877,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021304",
           "seenAt": "2026-09-18T18:25:47.695Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -29985,11 +30025,6 @@
       "sightings": [
         {
           "teamAbbrev": "STL",
-          "gameId": "2025020974",
-          "seenAt": "2026-03-06T03:20:47.423Z"
-        },
-        {
-          "teamAbbrev": "STL",
           "gameId": "2025020989",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -30032,6 +30067,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -30260,11 +30300,6 @@
       "sightings": [
         {
           "teamAbbrev": "STL",
-          "gameId": "2025020974",
-          "seenAt": "2026-03-06T03:20:47.423Z"
-        },
-        {
-          "teamAbbrev": "STL",
           "gameId": "2025020989",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -30307,6 +30342,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -30370,11 +30410,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021043",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021058",
           "seenAt": "2026-03-21T04:48:25.422Z"
         },
@@ -30417,6 +30452,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021304",
           "seenAt": "2026-09-18T18:25:47.695Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -30752,6 +30792,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021262",
           "seenAt": "2026-04-12T14:58:11.289Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030133",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -31010,11 +31055,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021000",
-          "seenAt": "2026-03-08T05:57:11.976Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021043",
           "seenAt": "2026-03-15T18:00:32.932Z"
         },
@@ -31057,6 +31097,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021262",
           "seenAt": "2026-04-12T14:58:11.289Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -34130,11 +34175,6 @@
       "sightings": [
         {
           "teamAbbrev": "STL",
-          "gameId": "2025020974",
-          "seenAt": "2026-03-06T03:20:47.423Z"
-        },
-        {
-          "teamAbbrev": "STL",
           "gameId": "2025020989",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -34177,6 +34217,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -37005,11 +37050,6 @@
       "sightings": [
         {
           "teamAbbrev": "STL",
-          "gameId": "2025020974",
-          "seenAt": "2026-03-06T03:20:47.423Z"
-        },
-        {
-          "teamAbbrev": "STL",
           "gameId": "2025020989",
           "seenAt": "2026-03-07T07:19:00.761Z"
         },
@@ -37052,6 +37092,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -38655,11 +38700,6 @@
       "sightings": [
         {
           "teamAbbrev": "STL",
-          "gameId": "2025020989",
-          "seenAt": "2026-03-07T07:19:00.761Z"
-        },
-        {
-          "teamAbbrev": "STL",
           "gameId": "2025021006",
           "seenAt": "2026-03-09T04:14:15.420Z"
         },
@@ -38702,6 +38742,11 @@
           "teamAbbrev": "STL",
           "gameId": "2025021266",
           "seenAt": "2026-10-10T04:16:06.196Z"
+        },
+        {
+          "teamAbbrev": "STL",
+          "gameId": "2025021309",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -39750,11 +39795,6 @@
       "sightings": [
         {
           "teamAbbrev": "OTT",
-          "gameId": "2025021043",
-          "seenAt": "2026-03-15T18:00:32.932Z"
-        },
-        {
-          "teamAbbrev": "OTT",
           "gameId": "2025021058",
           "seenAt": "2026-03-21T04:48:25.422Z"
         },
@@ -39797,6 +39837,11 @@
           "teamAbbrev": "OTT",
           "gameId": "2025021304",
           "seenAt": "2026-09-18T18:25:47.695Z"
+        },
+        {
+          "teamAbbrev": "OTT",
+          "gameId": "2025030134",
+          "seenAt": "2026-10-24T13:33:03.793Z"
         }
       ]
     },
@@ -41467,7 +41512,7 @@
     }
   },
   "movements": [],
-  "lastUpdated": "2026-10-20T13:33:12.190Z",
+  "lastUpdated": "2026-10-24T13:33:03.793Z",
   "lastRunMeta": {
     "observedTeams": [
       "ANA",
@@ -41479,11 +41524,8 @@
       "CGY",
       "EDM",
       "VAN",
-      "MTL",
-      "NYI",
-      "NJD",
-      "CHI",
       "PHI",
+      "MTL",
       "WPG",
       "STL",
       "DAL",
@@ -41503,8 +41545,8 @@
         "reason": "LEAGUE_NOT_SUPPORTED"
       }
     ],
-    "playersIngested": 630,
+    "playersIngested": 546,
     "movementsDetectedThisRun": [],
-    "timestamp": "2026-10-20T13:33:12.190Z"
+    "timestamp": "2026-10-24T13:33:03.793Z"
   }
 }
