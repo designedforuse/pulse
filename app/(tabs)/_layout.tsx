@@ -1,12 +1,18 @@
 import { isLiquidGlassAvailable } from "expo-glass-effect";
 import { Tabs } from "expo-router";
-import { NativeTabs } from "expo-router/unstable-native-tabs";
+import { NativeTabs } from "expo-router/native-tabs";
 import { BlurView } from "expo-blur";
 import { Platform, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import Colors from "@/constants/colors";
+
+// SDK 58 removed initialRouteName; the anchor makes Watch the tab group's
+// first screen on both the native and classic tab bars.
+export const unstable_settings = {
+  anchor: "watch",
+};
 
 const TAB_COLORS = {
   watch: "#A78BFA",
@@ -52,7 +58,7 @@ const tabIconStyles = StyleSheet.create({
 
 function NativeTabLayout() {
   return (
-    <NativeTabs initialRouteName="watch">
+    <NativeTabs backBehavior="initialRoute">
       <NativeTabs.Trigger name="watch">
         <NativeTabs.Trigger.Icon sf={{ default: "waveform.path", selected: "waveform.path" }} md="monitor-heart" />
         <NativeTabs.Trigger.Label>Watch</NativeTabs.Trigger.Label>
@@ -78,7 +84,7 @@ function ClassicTabLayout() {
 
   return (
     <Tabs
-      initialRouteName="watch"
+      backBehavior="initialRoute"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: Colors.accent,

@@ -31,4 +31,4 @@
 - [NZ NPC rugby](npc-rugby.md) — keyless ESPN league 270563 (still labeled "Mitre 10 Cup") for fixtures+scores; 5 unions lack ESPN logos (initials fallback); scoreboard team.logo field unreliable.
 - [Tennis ESPN name matching](tennis-espn-name-matching.md) — ESPN uses sponsor names ("National Bank Open"); alias-first matching + generic-word stopwords, else fixtures bind to wrong tournament.
 - [MLR schedule maintenance](mlr-schedule-maintenance.md) — hardcoded MLR fixtures are a preseason projection that drifts; rebuild from the Pulselive feed (UTC→ET, Anthem RC name map, TBD final); also sync seasonPhases.ts.
-- [Expo SDK 57 upgrade](expo-sdk-57-upgrade.md) — splash lives in plugin config, expo-av removed (expo-video), expo-asset patch obsolete, create-launch login.
+- [Expo SDK upgrades](expo-sdk-57-upgrade.md) — Expo Go auto-updates SDK; npm lockfile ERESOLVE fix; SDK 58 anchor/native-tabs/web.output changes.

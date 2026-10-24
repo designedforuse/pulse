@@ -1900,5 +1900,193 @@
       "channel": "NHL"
     },
     "fetchedAt": "2026-10-20T13:26:51.992Z"
+  },
+  "soccer-epl-espn-401879256": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=s0oKLenYwHg",
+      "thumbnailUrl": "https://i.ytimg.com/vi/s0oKLenYwHg/hqdefault.jpg",
+      "durationSeconds": 195,
+      "title": "Manchester City vs Aston Villa 1-2 Highlights | Haaland & Jackson Goals | Premier League 2026",
+      "channel": "لقـطة Tv"
+    },
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "nhl_2026020166": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=BvKeBTlwabM",
+      "thumbnailUrl": "https://i.ytimg.com/vi/BvKeBTlwabM/hqdefault.jpg",
+      "durationSeconds": 635,
+      "title": "Canadiens vs. Blackhawks | NHL Highlights | Oct 23, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "nhl_2026020167": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=VPyMhbPeFfM",
+      "thumbnailUrl": "https://i.ytimg.com/vi/VPyMhbPeFfM/hqdefault.jpg",
+      "durationSeconds": 632,
+      "title": "Lightning vs. Avalanche | NHL Highlights | Oct 23, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "soccer-nwsl-20261024-0000-houston-dash-at-chicago-stars": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=5en7tV8tTzs",
+      "thumbnailUrl": "https://i.ytimg.com/vi/5en7tV8tTzs/hqdefault.jpg",
+      "durationSeconds": 597,
+      "title": "FULL HIGHLIGHTS | Chicago Stars vs Houston Dash",
+      "channel": "National Women's Soccer League"
+    },
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "soccer-nwsl-20261024-0130-seattle-reign-at-utah-royals": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=cMo4jVTMwRo",
+      "thumbnailUrl": "https://i.ytimg.com/vi/cMo4jVTMwRo/hqdefault.jpg",
+      "durationSeconds": 585,
+      "title": "FULL HIGHLIGHTS | Utah Royals FC vs Seattle Reign FC",
+      "channel": "National Women's Soccer League"
+    },
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "soccer-nwsl-20261024-0200-north-carolina-courage-at-portland-thorns": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=EQtv9BzjRfs",
+      "thumbnailUrl": "https://i.ytimg.com/vi/EQtv9BzjRfs/hqdefault.jpg",
+      "durationSeconds": 601,
+      "title": "FULL HIGHLIGHTS | Portland Thorns FC vs North Carolina Courage",
+      "channel": "National Women's Soccer League"
+    },
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "cricket-test-yts2bv-day3": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "cricket-t20i-ysscei": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=nmKuCeMlRG0",
+      "thumbnailUrl": "https://i.ytimg.com/vi/nmKuCeMlRG0/hqdefault.jpg",
+      "durationSeconds": 746,
+      "title": "India vs New Zealand second T20 match complete highlights 2026 today.",
+      "channel": "Top Breaking News 0.2"
+    },
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "ahl-1029175": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "ahl-1029178": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "ahl-1029179": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=iWvKPAXICbU",
+      "thumbnailUrl": "https://i.ytimg.com/vi/iWvKPAXICbU/hqdefault.jpg",
+      "durationSeconds": 178,
+      "title": "Hartford Wolf Pack vs Providence Bruins Highlights | October 23, 2026",
+      "channel": "Hartford Wolf Pack"
+    },
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "ahl-1029182": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "ahl-1029184": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=nrc2tjKif8Y",
+      "thumbnailUrl": "https://i.ytimg.com/vi/nrc2tjKif8Y/hqdefault.jpg",
+      "durationSeconds": 119,
+      "title": "THREE Fights In The First Period | Fight Night In Syracuse Between Americans And Crunch",
+      "channel": "FloHockey"
+    },
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "ahl-1029186": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=TwkxoKr0xRA",
+      "thumbnailUrl": "https://i.ytimg.com/vi/TwkxoKr0xRA/hqdefault.jpg",
+      "durationSeconds": 216,
+      "title": "HIGHLIGHTS: Belleville Senators @ Wilkes-Barre/Scranton Penguins - October 23, 2026",
+      "channel": "Belleville Sens"
+    },
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "ahl-1029181": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "ahl-1029185": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "ahl-1029177": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "ahl-1029176": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "ahl-1029180": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=eTbpOANZbjM",
+      "thumbnailUrl": "https://i.ytimg.com/vi/eTbpOANZbjM/hqdefault.jpg",
+      "durationSeconds": 90,
+      "title": "Recap: HSK 2, TUC 1",
+      "channel": "Henderson Silver Knights"
+    },
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "echl-web-25520": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "echl-web-25515": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=ApO3FKy0XVw",
+      "thumbnailUrl": "https://i.ytimg.com/vi/ApO3FKy0XVw/hqdefault.jpg",
+      "durationSeconds": 297,
+      "title": "Game Highlights | Greenville Swamp Rabbits vs. Jacksonville Icemen | Oct 23",
+      "channel": "Greenville Swamp Rabbits"
+    },
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "echl-web-25518": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "echl-web-25517": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "echl-web-25514": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "echl-web-25513": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "echl-web-25522": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "echl-web-25519": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "echl-web-25516": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "echl-web-25521": {
+    "video": null,
+    "fetchedAt": "2026-10-24T13:32:08.701Z"
   }
 }
