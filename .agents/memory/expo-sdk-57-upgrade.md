@@ -10,6 +10,7 @@ description: Non-obvious constraints learned upgrading Pulse's Expo SDK (Expo Go
 - SDK 58: `initialRouteName` removed → `export const unstable_settings = { anchor }` in the layout; tabs also need `backBehavior="initialRoute"` or a warning fires. NativeTabs import is now `expo-router/native-tabs`. `web.output` default changed, so it's pinned to `"static"`.
 - The old expo-asset HTTPS patch is upstream since SDK 55 (patches/ removed). expo-audio needs `expo-asset` installed directly. expo-av is gone (expo-video).
 - Dev server signs into Expo via the create-launch guard in `expo:dev` (physical iOS Expo Go only).
+- Card photo backgrounds: use RN Image sized 100%/100% (absolute), not expo-image absoluteFill — expo-image backgrounds rendered blank in Android Expo Go.
 - Web screenshots right after a Metro restart are often blank (first bundle); retake before debugging.
 
 **Why:** each cost a failed check or a debugging detour.

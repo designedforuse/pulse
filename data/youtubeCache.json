@@ -2918,5 +2918,25 @@
       "selectedVideoChannel": "ESPN FC",
       "rejectedForAgeCount": 0
     }
+  },
+  "marathon_spotlight:new york city marathon marathon highlights 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=zHIuHcVOg38",
+      "thumbnailUrl": "https://img.youtube.com/vi/zHIuHcVOg38/hqdefault.jpg",
+      "durationSeconds": 581,
+      "title": "I'm Running The 2026 NYC Marathon | Shoes, Goals, Fuel & More",
+      "source": "youtube",
+      "channel": "Emily Heller",
+      "publishedAt": "3h ago"
+    },
+    "fetchedAt": "2026-10-25T13:49:02.472Z",
+    "query": "New York City Marathon marathon highlights 2026",
+    "debug": {
+      "searchQuery": "New York City Marathon marathon highlights 2026",
+      "selectedVideoTitle": "I'm Running The 2026 NYC Marathon | Shoes, Goals, Fuel & More",
+      "selectedVideoPublishedAt": "3h ago",
+      "selectedVideoChannel": "Emily Heller",
+      "rejectedForAgeCount": 1
+    }
   }
 }

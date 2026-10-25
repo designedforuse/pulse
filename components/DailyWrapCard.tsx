@@ -19,8 +19,10 @@ import Colors from "@/constants/colors";
 const PINK = "#FF85C8";
 
 const COVER_IMAGE = require("@/assets/images/stories/daily-wrap.png");
-const COVER_OVERLAY_COLORS = ["rgba(15,18,22,0.15)", "rgba(15,18,22,0.55)", "rgba(15,18,22,0.95)"] as const;
-const COVER_OVERLAY_LOCATIONS = [0, 0.5, 1] as const;
+// Darker through the middle: the stadium photo has a bright teal LED ribbon
+// right behind the date line that otherwise reads as a stray green border.
+const COVER_OVERLAY_COLORS = ["rgba(15,18,22,0.15)", "rgba(15,18,22,0.78)", "rgba(15,18,22,0.95)"] as const;
+const COVER_OVERLAY_LOCATIONS = [0, 0.4, 1] as const;
 
 export interface SvnsFinal {
   gender: "mens" | "womens";

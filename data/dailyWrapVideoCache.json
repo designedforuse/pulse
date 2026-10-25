@@ -2088,5 +2088,403 @@
   "echl-web-25521": {
     "video": null,
     "fetchedAt": "2026-10-24T13:32:08.701Z"
+  },
+  "nhl_2026020170": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=_pUNDvOhXbg",
+      "thumbnailUrl": "https://i.ytimg.com/vi/_pUNDvOhXbg/hqdefault.jpg",
+      "durationSeconds": 635,
+      "title": "Sharks vs. Bruins | NHL Highlights | Oct 24, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "nhl_2026020171": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=4Fq4ckOsmWk",
+      "thumbnailUrl": "https://i.ytimg.com/vi/4Fq4ckOsmWk/hqdefault.jpg",
+      "durationSeconds": 635,
+      "title": "Rangers vs. Senators | NHL Highlights | Oct 24, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "nhl_2026020172": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=beHTxpRqyb0",
+      "thumbnailUrl": "https://i.ytimg.com/vi/beHTxpRqyb0/hqdefault.jpg",
+      "durationSeconds": 622,
+      "title": "Predators vs. Penguins | NHL Highlights | Oct 24, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "nhl_2026020173": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=FDr5Kyu9sz4",
+      "thumbnailUrl": "https://i.ytimg.com/vi/FDr5Kyu9sz4/hqdefault.jpg",
+      "durationSeconds": 637,
+      "title": "Sabres vs. Capitals | NHL Highlights | Oct 24, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "nhl_2026020174": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=VzwUhOgOJ34",
+      "thumbnailUrl": "https://i.ytimg.com/vi/VzwUhOgOJ34/hqdefault.jpg",
+      "durationSeconds": 637,
+      "title": "Golden Knights vs. Blue Jackets | NHL Highlights | Oct 24, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "nhl_2026020175": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=wTrDHFdBlys",
+      "thumbnailUrl": "https://i.ytimg.com/vi/wTrDHFdBlys/hqdefault.jpg",
+      "durationSeconds": 634,
+      "title": "Hurricanes vs. Blues | NHL Highlights | Oct 24, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "nhl_2026020176": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=SDfPSBXzRtQ",
+      "thumbnailUrl": "https://i.ytimg.com/vi/SDfPSBXzRtQ/hqdefault.jpg",
+      "durationSeconds": 618,
+      "title": "Maple Leafs vs. Oilers | NHL Highlights | Oct 24, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "nhl_2026020177": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=WKoa-zLlLpo",
+      "thumbnailUrl": "https://i.ytimg.com/vi/WKoa-zLlLpo/hqdefault.jpg",
+      "durationSeconds": 635,
+      "title": "Lightning vs. Mammoth | NHL Highlights | Oct 24, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "nhl_2026020178": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=1wdSY7wFwYE",
+      "thumbnailUrl": "https://i.ytimg.com/vi/1wdSY7wFwYE/hqdefault.jpg",
+      "durationSeconds": 634,
+      "title": "Red Wings vs. Flames | NHL Highlights | Oct 24, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "nhl_2026020179": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=SnKRDGN9nsk",
+      "thumbnailUrl": "https://i.ytimg.com/vi/SnKRDGN9nsk/hqdefault.jpg",
+      "durationSeconds": 629,
+      "title": "Wild vs. Kraken | NHL Highlights | Oct 24, 2026",
+      "channel": "NHL"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "soccer-seriea-espn-401875036": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=_BGvmMOc7lk",
+      "thumbnailUrl": "https://i.ytimg.com/vi/_BGvmMOc7lk/hqdefault.jpg",
+      "durationSeconds": 131,
+      "title": "Inter Milan vs Fiorentina 2-1 • Highlights & Goals • Marcus Thuram & Piotr Zielinski Goals • Serie A",
+      "channel": "Dollar VFX"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "soccer-mls-20261024-2130-inter-miami-cf-at-red-bull-new-york": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=NeZrv_oVJts",
+      "thumbnailUrl": "https://i.ytimg.com/vi/NeZrv_oVJts/hqdefault.jpg",
+      "durationSeconds": 192,
+      "title": "New York Red Bulls vs. Inter Miami | MLS Highlights | ESPN FC",
+      "channel": "ESPN FC"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "soccer-mls-20261024-2330-chicago-fire-fc-at-atlanta-united-fc": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=GV_hdqBx_as",
+      "thumbnailUrl": "https://i.ytimg.com/vi/GV_hdqBx_as/hqdefault.jpg",
+      "durationSeconds": 302,
+      "title": "HIGHLIGHTS | Atlanta United vs  Chicago Fire FC",
+      "channel": "Atlanta United FC"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "soccer-mls-20261024-2330-fc-cincinnati-at-d-c-united": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "soccer-mls-20261024-2330-new-york-city-fc-at-orlando-city-sc": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=p6V40Eb_3-k",
+      "thumbnailUrl": "https://i.ytimg.com/vi/p6V40Eb_3-k/hqdefault.jpg",
+      "durationSeconds": 190,
+      "title": "Orlando City SC vs. New York City FC | MLS Highlights | ESPN FC",
+      "channel": "ESPN FC"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "soccer-mls-20261024-2330-new-england-revolution-at-philadelphia-union": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=l1ZYuuSDMOo",
+      "thumbnailUrl": "https://i.ytimg.com/vi/l1ZYuuSDMOo/hqdefault.jpg",
+      "durationSeconds": 632,
+      "title": "Match Highlights: Philadelphia Union at New England Revolution 10/24/26",
+      "channel": "Philadelphia Union"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "soccer-mls-20261025-0030-san-jose-earthquakes-at-fc-dallas": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=bm4Imx4GaKQ",
+      "thumbnailUrl": "https://i.ytimg.com/vi/bm4Imx4GaKQ/hqdefault.jpg",
+      "durationSeconds": 300,
+      "title": "MATCH HIGHLIGHTS: FC Dallas vs San Jose Earthquakes | October 24, 2026",
+      "channel": "San Jose Earthquakes"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "soccer-mls-20261025-0030-minnesota-united-fc-at-houston-dynamo-fc": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=AvMXyFrRtUk",
+      "thumbnailUrl": "https://i.ytimg.com/vi/AvMXyFrRtUk/hqdefault.jpg",
+      "durationSeconds": 615,
+      "title": "Match Round-Up, Week 42 (12-18 Oct): Every Result and the Day's Stars (Part 2 of 3)",
+      "channel": "ai_sports_predictions"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "soccer-mls-20261025-0030-austin-fc-at-sporting-kansas-city": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "soccer-mls-20261025-0130-vancouver-whitecaps-at-colorado-rapids": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=lZtR2FTk2V4",
+      "thumbnailUrl": "https://i.ytimg.com/vi/lZtR2FTk2V4/hqdefault.jpg",
+      "durationSeconds": 632,
+      "title": "HIGHLIGHTS: Colorado Rapids vs. Vancouver Whitecaps FC | October 24, 2026",
+      "channel": "Vancouver Whitecaps FC"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "soccer-mls-20261025-0130-st-louis-city-sc-at-real-salt-lake": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=yzpMvo6GAYI",
+      "thumbnailUrl": "https://i.ytimg.com/vi/yzpMvo6GAYI/hqdefault.jpg",
+      "durationSeconds": 633,
+      "title": "Real Salt Lake v St. Louis CITY SC | Match Highlights",
+      "channel": "St. Louis CITY SC"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "soccer-mls-20261025-0230-charlotte-fc-at-portland-timbers": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=0S_v7joRgBg",
+      "thumbnailUrl": "https://i.ytimg.com/vi/0S_v7joRgBg/hqdefault.jpg",
+      "durationSeconds": 633,
+      "title": "HIGHLIGHTS | Portland Timbers vs. Charlotte FC | Oct. 24, 2026",
+      "channel": "Portland Timbers"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "soccer-mls-20261025-0230-seattle-sounders-fc-at-san-diego-fc": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=vKLr2QwF06M",
+      "thumbnailUrl": "https://i.ytimg.com/vi/vKLr2QwF06M/hqdefault.jpg",
+      "durationSeconds": 388,
+      "title": "Bakambu Scores Twice! San Diego FC Stuns Seattle Sounders with Dramatic 2 2 Draw",
+      "channel": "Vivify News"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "soccer-nwsl-20261024-2230-racing-louisville-at-denver-summit": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=EdYGO_fBJFc",
+      "thumbnailUrl": "https://i.ytimg.com/vi/EdYGO_fBJFc/hqdefault.jpg",
+      "durationSeconds": 601,
+      "title": "FULL HIGHLIGHTS | Denver Summit FC vs. Racing Louisville FC",
+      "channel": "National Women's Soccer League"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "soccer-nwsl-20261025-0045-bay-at-angel-city": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=ZJ7DgyTWQJE",
+      "thumbnailUrl": "https://i.ytimg.com/vi/ZJ7DgyTWQJE/hqdefault.jpg",
+      "durationSeconds": 600,
+      "title": "FULL HIGHLIGHTS | Angel City FC vs. Bay FC",
+      "channel": "National Women's Soccer League"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "cricket-test-yts2bv-day4": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "ahl-1029200": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=uVGXGAuN838",
+      "thumbnailUrl": "https://i.ytimg.com/vi/uVGXGAuN838/hqdefault.jpg",
+      "durationSeconds": 360,
+      "title": "Toronto Marlies vs. Rockford IceHogs | Game Highlights | October 24, 2026",
+      "channel": "Toronto Marlies"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "ahl-1029188": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "ahl-1029201": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=qq5x4o5Mmlc",
+      "thumbnailUrl": "https://i.ytimg.com/vi/qq5x4o5Mmlc/hqdefault.jpg",
+      "durationSeconds": 238,
+      "title": "HIGHLIGHTS: Penguins Score Three In The Third, Defeat The Wolf Pack | Oct. 24, 2026",
+      "channel": "Wilkes-Barre/Scranton Penguins"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "ahl-1029191": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "ahl-1029193": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=QunjLIlOdUk",
+      "thumbnailUrl": "https://i.ytimg.com/vi/QunjLIlOdUk/hqdefault.jpg",
+      "durationSeconds": 258,
+      "title": "Highlights: Belleville Senators vs Hershey Bears October 24, 2026",
+      "channel": "Belleville Sens"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "ahl-1029194": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "ahl-1029196": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "ahl-1029197": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "ahl-1029187": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "ahl-1029189": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "ahl-1029199": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "ahl-1029190": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "ahl-1029192": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=7FWU2CLhcPs",
+      "thumbnailUrl": "https://i.ytimg.com/vi/7FWU2CLhcPs/hqdefault.jpg",
+      "durationSeconds": 144,
+      "title": "Recap: TUC 4, HSK 1",
+      "channel": "Henderson Silver Knights"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "ahl-1029198": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "echl-web-25535": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=IWObW2F-RBg",
+      "thumbnailUrl": "https://i.ytimg.com/vi/IWObW2F-RBg/hqdefault.jpg",
+      "durationSeconds": 106,
+      "title": "Adirondack Thunder vs. Trenton Ironhawks | Game Highlights | Oct. 24, 2026",
+      "channel": "Trenton Ironhawks"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "echl-web-25524": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "echl-web-25526": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=p5v66AevVms",
+      "thumbnailUrl": "https://i.ytimg.com/vi/p5v66AevVms/hqdefault.jpg",
+      "durationSeconds": 217,
+      "title": "Game Highlights | Greenville Swamp Rabbits vs. Greensboro Gargoyles | Oct 24",
+      "channel": "Greenville Swamp Rabbits"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "echl-web-25530": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "echl-web-25532": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "echl-web-25533": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "echl-web-25523": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "echl-web-25529": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "echl-web-25536": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "echl-web-25525": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=ii4583ZIHqk",
+      "thumbnailUrl": "https://i.ytimg.com/vi/ii4583ZIHqk/hqdefault.jpg",
+      "durationSeconds": 1143,
+      "title": "Indy Fuel vs Fort Wayne Komets | HIGHLIGHTS |  October 24, 2026",
+      "channel": "USHL Highlights"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "echl-web-25531": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "echl-web-25527": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=S4uAB2grcPk",
+      "thumbnailUrl": "https://i.ytimg.com/vi/S4uAB2grcPk/hqdefault.jpg",
+      "durationSeconds": 110,
+      "title": "Instant Classic Fight In ECHL: Cal Uens Vs. Jaxon Fuder",
+      "channel": "FloHockey"
+    },
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
+  },
+  "echl-web-25534": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:48:53.808Z"
   }
 }

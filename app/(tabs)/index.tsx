@@ -7,6 +7,7 @@ import {
   Platform,
   ScrollView,
   ActivityIndicator,
+  Image,
   useWindowDimensions,
   type LayoutChangeEvent,
 } from "react-native";
@@ -15,7 +16,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Haptics from "expo-haptics";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Image as ExpoImage } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import Colors from "@/constants/colors";
 import { getApiUrl } from "@/lib/query-client";
@@ -208,12 +208,10 @@ export default function ExploreScreen() {
           accessibilityLabel={`What to watch next: ${totalLeagues} leagues across ${current.monthLabel.split(" ")[0]} and ${next.monthLabel.split(" ")[0]}${totalFinals > 0 ? `, ${totalFinals} finals` : ""}`}
           style={({ pressed }) => [styles.comingUpCard, styles.cardFill, pressed && { opacity: 0.9 }]}
         >
-          <ExpoImage
+          <Image
             source={COVER_IMAGES.comingUp}
-            style={StyleSheet.absoluteFillObject}
-            contentFit="cover"
-            contentPosition="top"
-            cachePolicy="memory-disk"
+            style={styles.coverBackground}
+            resizeMode="cover"
           />
           <LinearGradient
             colors={COVER_OVERLAY_COLORS as unknown as readonly [string, string, ...string[]]}
@@ -260,12 +258,10 @@ export default function ExploreScreen() {
       style={({ pressed }) => [styles.deepTalkCard, styles.cardFill, pressed && { opacity: 0.9 }]}
       testID="stories-deep-talk-tile"
     >
-      <ExpoImage
+      <Image
         source={COVER_IMAGES.deepTalk}
-        style={StyleSheet.absoluteFillObject}
-        contentFit="cover"
-        contentPosition="top"
-        cachePolicy="memory-disk"
+        style={styles.coverBackground}
+        resizeMode="cover"
       />
       <LinearGradient
         colors={COVER_OVERLAY_COLORS as unknown as readonly [string, string, ...string[]]}
@@ -298,12 +294,10 @@ export default function ExploreScreen() {
         style={({ pressed }) => [styles.trendingCard, styles.cardFill, pressed && { opacity: 0.9 }]}
         testID="stories-trending-tile"
       >
-        <ExpoImage
+        <Image
           source={COVER_IMAGES.trending}
-          style={StyleSheet.absoluteFillObject}
-          contentFit="cover"
-          contentPosition="top"
-          cachePolicy="memory-disk"
+          style={styles.coverBackground}
+          resizeMode="cover"
         />
         <LinearGradient
           colors={COVER_OVERLAY_COLORS as unknown as readonly [string, string, ...string[]]}
@@ -435,6 +429,15 @@ export default function ExploreScreen() {
 }
 
 const styles = StyleSheet.create({
+  // Story-card photo backgrounds use React Native's Image sized to the card:
+  // expo-image absolute-fill backgrounds don't render in Expo Go on Android.
+  coverBackground: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+  },
   container: {
     flex: 1,
     backgroundColor: Colors.background,

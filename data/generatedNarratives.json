@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-25T13:35:33.757Z",
+  "lastUpdated": "2026-10-25T13:48:44.728Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
@@ -89,7 +89,7 @@
         ],
         "playersIngested": 589,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-10-25T13:35:33.757Z"
+        "timestamp": "2026-10-25T13:48:44.728Z"
       },
       "cacheHistoryCount": 906,
       "error": null
@@ -99,7 +99,7 @@
     "candidateCountAfterCap": 7,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -5561.592710277778,
+      "hoursUntil": -5561.812424444444,
       "teamsEvaluated": 0,
       "triggers": {}
     },
@@ -183,10 +183,10 @@
       },
       "marathon_athletics-marathon-new-york-city-marathon": {
         "searchQuery": "New York City Marathon marathon highlights 2026",
-        "selectedVideoTitle": null,
-        "selectedVideoPublishedAt": null,
-        "selectedVideoChannel": null,
-        "rejectedForAgeCount": 0
+        "selectedVideoTitle": "I'm Running The 2026 NYC Marathon | Shoes, Goals, Fuel & More",
+        "selectedVideoPublishedAt": "3h ago",
+        "selectedVideoChannel": "Emily Heller",
+        "rejectedForAgeCount": 1
       },
       "marquee_match": {
         "searchQuery": "Real Madrid vs Barcelona La Liga preview",
@@ -207,7 +207,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-10-25T13:35:33.757Z",
+      "triggeredAt": "2026-10-25T13:48:44.728Z",
       "expiresAt": "2026-10-26T05:00:00.000Z",
       "kind": "rivalry_game",
       "region": "SoCal",
@@ -238,8 +238,8 @@
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-10-25T13:35:33.757Z",
-      "expiresAt": "2026-11-01T13:35:33.757Z",
+      "triggeredAt": "2026-10-25T13:48:44.728Z",
+      "expiresAt": "2026-11-01T13:48:44.728Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -262,8 +262,8 @@
           "echl-web-25575"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-10-25T13:35:33.757Z",
-        "windowEnd": "2026-11-01T13:35:33.757Z",
+        "windowStart": "2026-10-25T13:48:44.728Z",
+        "windowEnd": "2026-11-01T13:48:44.728Z",
         "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
@@ -279,7 +279,7 @@
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-10-25T13:35:33.757Z",
+      "triggeredAt": "2026-10-25T13:48:44.728Z",
       "expiresAt": "2026-10-26T00:00:00.000Z",
       "kind": "rivalry_game",
       "region": "Other",
@@ -319,7 +319,7 @@
         "tabHint": "Watch"
       },
       "priority": 85,
-      "triggeredAt": "2026-10-25T13:35:33.757Z",
+      "triggeredAt": "2026-10-25T13:48:44.728Z",
       "expiresAt": "2026-10-26T00:00:00.000Z",
       "kind": "league_moment",
       "region": "Other",
@@ -363,7 +363,7 @@
         "tabHint": "Watch"
       },
       "priority": 80,
-      "triggeredAt": "2026-10-25T13:35:33.757Z",
+      "triggeredAt": "2026-10-25T13:48:44.728Z",
       "expiresAt": "2026-11-03T14:00:00.000Z",
       "kind": "marathon_spotlight",
       "region": "Other",
@@ -380,7 +380,16 @@
       },
       "sports": [
         "athletics"
-      ]
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=zHIuHcVOg38",
+        "thumbnailUrl": "https://img.youtube.com/vi/zHIuHcVOg38/hqdefault.jpg",
+        "durationSeconds": 581,
+        "title": "I'm Running The 2026 NYC Marathon | Shoes, Goals, Fuel & More",
+        "source": "youtube",
+        "channel": "Emily Heller",
+        "publishedAt": "3h ago"
+      }
     },
     {
       "id": "marquee_match",
@@ -391,7 +400,7 @@
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-10-25T13:35:33.757Z",
+      "triggeredAt": "2026-10-25T13:48:44.728Z",
       "expiresAt": "2026-10-26T00:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
@@ -431,7 +440,7 @@
         "tabHint": "Watch"
       },
       "priority": 55,
-      "triggeredAt": "2026-10-25T13:35:33.757Z",
+      "triggeredAt": "2026-10-25T13:48:44.728Z",
       "expiresAt": "2026-10-25T23:59:59.999Z",
       "kind": "weekend_watchlist",
       "region": "Other",
