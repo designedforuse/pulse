@@ -1177,22 +1177,22 @@
   },
   "rivalry_game:real madrid vs barcelona rivalry highlights": {
     "video": {
-      "url": "https://www.youtube.com/watch?v=K6hYF5lZXYA",
-      "thumbnailUrl": "https://img.youtube.com/vi/K6hYF5lZXYA/hqdefault.jpg",
-      "durationSeconds": 1148,
-      "title": "FC 26 - MESSI RONALDO NEYMAR MBAPPE HAALAND & YAMAL | ALL STARS | REAL MADRID 100-0 FC BARCELONA",
+      "url": "https://www.youtube.com/watch?v=8wVAh-W4eVA",
+      "thumbnailUrl": "https://img.youtube.com/vi/8wVAh-W4eVA/hqdefault.jpg",
+      "durationSeconds": 4493,
+      "title": "Premier League reaction + What to expect from Barcelona and Real Madrid in El Clasico | ESPN FC",
       "source": "youtube",
-      "channel": "CR SEVEN",
-      "publishedAt": "2 hours ago"
+      "channel": "ESPN FC",
+      "publishedAt": "14h ago"
     },
-    "fetchedAt": "2026-05-10T13:27:17.226Z",
+    "fetchedAt": "2026-10-25T13:35:53.167Z",
     "query": "Real Madrid vs Barcelona rivalry highlights",
     "debug": {
       "searchQuery": "Real Madrid vs Barcelona rivalry highlights",
-      "selectedVideoTitle": "FC 26 - MESSI RONALDO NEYMAR MBAPPE HAALAND & YAMAL | ALL STARS | REAL MADRID 100-0 FC BARCELONA",
-      "selectedVideoPublishedAt": "2 hours ago",
-      "selectedVideoChannel": "CR SEVEN",
-      "rejectedForAgeCount": 3
+      "selectedVideoTitle": "Premier League reaction + What to expect from Barcelona and Real Madrid in El Clasico | ESPN FC",
+      "selectedVideoPublishedAt": "14h ago",
+      "selectedVideoChannel": "ESPN FC",
+      "rejectedForAgeCount": 1
     }
   },
   "clinch_watch:ruud clinch playoff berth may 2026": {
@@ -2852,6 +2852,70 @@
       "selectedVideoTitle": "Arizona State vs. #10 Texas Tech Condensed Game | 2026 Monster Energy Big 12 Football",
       "selectedVideoPublishedAt": "9h ago",
       "selectedVideoChannel": "Big 12 Conference",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "rivalry_game:la galaxy vs lafc rivalry highlights": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:35:52.633Z",
+    "query": "LA Galaxy vs LAFC rivalry highlights",
+    "debug": {
+      "searchQuery": "LA Galaxy vs LAFC rivalry highlights",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "playoff_push:tulsa oilers playoff push october 2026": {
+    "video": null,
+    "fetchedAt": "2026-10-25T13:35:52.831Z",
+    "query": "Tulsa Oilers playoff push October 2026",
+    "debug": {
+      "searchQuery": "Tulsa Oilers playoff push October 2026",
+      "selectedVideoTitle": null,
+      "selectedVideoPublishedAt": null,
+      "selectedVideoChannel": null,
+      "rejectedForAgeCount": 0
+    }
+  },
+  "league_moment:united states grand prix sports october 2026": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=EQ74or790IM",
+      "thumbnailUrl": "https://img.youtube.com/vi/EQ74or790IM/hqdefault.jpg",
+      "durationSeconds": 481,
+      "title": "Qualifying Highlights | 2026 United States Grand Prix",
+      "source": "youtube",
+      "channel": "FORMULA 1",
+      "publishedAt": "15h ago"
+    },
+    "fetchedAt": "2026-10-25T13:35:53.652Z",
+    "query": "United States Grand Prix sports October 2026",
+    "debug": {
+      "searchQuery": "United States Grand Prix sports October 2026",
+      "selectedVideoTitle": "Qualifying Highlights | 2026 United States Grand Prix",
+      "selectedVideoPublishedAt": "15h ago",
+      "selectedVideoChannel": "FORMULA 1",
+      "rejectedForAgeCount": 0
+    }
+  },
+  "marquee_match:real madrid vs barcelona la liga preview": {
+    "video": {
+      "url": "https://www.youtube.com/watch?v=VY-YJT5GJi8",
+      "thumbnailUrl": "https://img.youtube.com/vi/VY-YJT5GJi8/hqdefault.jpg",
+      "durationSeconds": 668,
+      "title": "Can Barcelona keep up their perfect LALIGA record vs. Real Madrid? 👀 | El Clasico preview | ESPN FC",
+      "source": "youtube",
+      "channel": "ESPN FC",
+      "publishedAt": "15h ago"
+    },
+    "fetchedAt": "2026-10-25T13:35:55.474Z",
+    "query": "Real Madrid vs Barcelona La Liga preview",
+    "debug": {
+      "searchQuery": "Real Madrid vs Barcelona La Liga preview",
+      "selectedVideoTitle": "Can Barcelona keep up their perfect LALIGA record vs. Real Madrid? 👀 | El Clasico preview | ESPN FC",
+      "selectedVideoPublishedAt": "15h ago",
+      "selectedVideoChannel": "ESPN FC",
       "rejectedForAgeCount": 0
     }
   }

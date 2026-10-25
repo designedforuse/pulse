@@ -1,45 +1,54 @@
 {
-  "lastUpdated": "2026-10-20T13:33:12.190Z",
+  "lastUpdated": "2026-10-25T13:35:33.757Z",
   "debug": {
     "rawCandidatesByKindAndRegion": {
       "playoff_push": {
-        "SoCal": 1,
-        "NewEngland": 1
+        "SoCal": 1
       },
       "league_moment": {
-        "SouthAfrica": 1,
-        "Other": 1
+        "Other": 2
       },
       "rivalry_game": {
-        "SouthAfrica": 1
+        "SoCal": 1,
+        "Other": 1
+      },
+      "weekend_watchlist": {
+        "Other": 1
+      },
+      "marathon_spotlight": {
+        "Other": 1
       },
       "marquee_match": {
         "Other": 1
       }
     },
     "combinedPushByRegion": {
-      "SoCal": false,
-      "NewEngland": false
+      "SoCal": false
     },
     "finalFeedByRegion": {
-      "SouthAfrica": [
-        "rivalry_game: Rivalry Game Tomorrow",
-        "league_moment: Rivalry Weekend"
-      ],
       "SoCal": [
-        "playoff_push: Ducks Push Week"
-      ],
-      "NewEngland": [
-        "playoff_push: Bruins Push Week"
+        "rivalry_game: Rivalry Game Tomorrow",
+        "playoff_push: Oilers Push Week"
       ],
       "Other": [
-        "marquee_match: Marquee Match: EPL",
-        "league_moment: Big Stage"
+        "rivalry_game: Rivalry Game Tonight",
+        "league_moment: United States Grand Prix",
+        "marathon_spotlight: Marathon Major",
+        "marquee_match: Marquee Match: El Clásico",
+        "weekend_watchlist: Weekend Watchlist"
       ]
     },
-    "droppedCandidatesReasons": [],
-    "totalBeforeCap": 6,
-    "totalAfterCap": 6,
+    "droppedCandidatesReasons": [
+      {
+        "id": "league_moment_rivalry",
+        "kind": "league_moment",
+        "region": "Other",
+        "title": "Rivalry Weekend",
+        "reason": "max 1 league_moment per region (Other)"
+      }
+    ],
+    "totalBeforeCap": 8,
+    "totalAfterCap": 7,
     "playerMovement": {
       "rawMovementCandidates": 0,
       "movementAfterRegionFilter": 0,
@@ -58,16 +67,13 @@
           "EDM",
           "VAN",
           "MTL",
-          "NYI",
-          "NJD",
-          "CHI",
-          "PHI",
           "WPG",
           "STL",
           "DAL",
           "BUF",
           "PIT",
-          "OTT"
+          "OTT",
+          "TOR"
         ],
         "skippedTeams": [
           {
@@ -81,26 +87,26 @@
             "reason": "LEAGUE_NOT_SUPPORTED"
           }
         ],
-        "playersIngested": 630,
+        "playersIngested": 589,
         "movementsDetectedThisRun": [],
-        "timestamp": "2026-10-20T13:33:12.190Z"
+        "timestamp": "2026-10-25T13:35:33.757Z"
       },
       "cacheHistoryCount": 906,
       "error": null
     },
     "exploreFeedCap": 8,
-    "candidateCountBeforeCap": 6,
-    "candidateCountAfterCap": 6,
+    "candidateCountBeforeCap": 8,
+    "candidateCountAfterCap": 7,
     "deadlineWatch": {
       "active": false,
-      "hoursUntil": -5441.553386111111,
+      "hoursUntil": -5561.592710277778,
       "teamsEvaluated": 0,
       "triggers": {}
     },
     "rivalryGame": {
-      "rawRivalryCandidates": 1,
-      "rivalryAfterRegionFilter": 1,
-      "rivalryFinalCount": 1
+      "rawRivalryCandidates": 2,
+      "rivalryAfterRegionFilter": 2,
+      "rivalryFinalCount": 2
     },
     "upsetAlert": {
       "rawUpsetCandidates": 0,
@@ -116,240 +122,124 @@
     },
     "tonightStorySelectedSignal": "multi_team_night",
     "tonightStoryHeadline": "Your Sports Night",
-    "tonightStorySourceEvent": "cricket-test-ys61ex-day3",
+    "tonightStorySourceEvent": "soccer-ligue1-20261025-1615-le-havre-ac-at-marseille",
     "tonightStoryDebug": {
       "selectedSignal": "multi_team_night",
       "selectedHeadline": "Your Sports Night",
-      "selectedScore": 280,
-      "sourceEventId": "cricket-test-ys61ex-day3",
-      "reason": "4 followed/affiliate teams playing today",
+      "selectedScore": 300,
+      "sourceEventId": "soccer-ligue1-20261025-1615-le-havre-ac-at-marseille",
+      "reason": "5 followed/affiliate teams playing today",
       "scoredCandidates": [
         {
           "label": "[multi_team_night] Your Sports Night",
-          "score": 280,
-          "reason": "4 followed/affiliate teams playing today"
+          "score": 300,
+          "reason": "5 followed/affiliate teams playing today"
         },
         {
-          "label": "[rivalry_of_day] SA vs AUS",
-          "score": 240,
-          "reason": "rivalry-of-day match (Test Cricket: SA vs AUS) — favorite involved: Proteas"
+          "label": "[championship_day] United States Grand Prix",
+          "score": 260,
+          "reason": "championship-day group (racing|f1|United States Grand Prix, 1 event) — favorite(s): USA, United States"
+        },
+        {
+          "label": "[rivalry_of_day] El Clásico",
+          "score": 180,
+          "reason": "rivalry-of-day match (La Liga: El Clásico)"
+        },
+        {
+          "label": "[rivalry_of_day] El Tráfico",
+          "score": 180,
+          "reason": "rivalry-of-day match (MLS: El Tráfico)"
         }
       ]
     },
     "videoSelection": {
-      "rivalry_game_cricket-test-ys61ex-day4": {
-        "searchQuery": "Australia vs South Africa rivalry highlights",
-        "selectedVideoTitle": "All Blacks Great Steve Hansen answers the question Why All Blacks are still Weak Against Springboks",
-        "selectedVideoPublishedAt": "2h ago",
-        "selectedVideoChannel": "RedSpot Sports",
-        "rejectedForAgeCount": 0
-      },
-      "league_moment_rivalry": {
-        "searchQuery": "Rivalry Weekend sports October 2026",
-        "selectedVideoTitle": "WWE Raw 20 Oct 2026 Full Highlights HD - Roman Reigns Attacks 946",
-        "selectedVideoPublishedAt": "10h ago",
-        "selectedVideoChannel": "Azra Gamer and 4 more",
-        "rejectedForAgeCount": 0
-      },
-      "playoff_push_socal": {
-        "searchQuery": "Anaheim Ducks playoff push October 2026",
+      "rivalry_game_soccer-mls-20261026-0100-la-galaxy-at-lafc": {
+        "searchQuery": "LA Galaxy vs LAFC rivalry highlights",
         "selectedVideoTitle": null,
         "selectedVideoPublishedAt": null,
         "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
-      "playoff_push_newengland": {
-        "searchQuery": "Boston Bruins playoff push October 2026",
-        "selectedVideoTitle": "Stars Push Above .500 Ahead Of Season-Long Six-Game Home Stand | DLLS Stars Podcast",
-        "selectedVideoPublishedAt": "Streamed 17h ago",
-        "selectedVideoChannel": "DLLS Sports",
+      "playoff_push_socal": {
+        "searchQuery": "Tulsa Oilers playoff push October 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
+        "rejectedForAgeCount": 0
+      },
+      "rivalry_game_soccer-laliga-20261025-2000-real-madrid-at-barcelona": {
+        "searchQuery": "Real Madrid vs Barcelona rivalry highlights",
+        "selectedVideoTitle": "Premier League reaction + What to expect from Barcelona and Real Madrid in El Clasico | ESPN FC",
+        "selectedVideoPublishedAt": "14h ago",
+        "selectedVideoChannel": "ESPN FC",
+        "rejectedForAgeCount": 1
+      },
+      "f1_race_weekend_united_states_grand_prix": {
+        "searchQuery": "United States Grand Prix sports October 2026",
+        "selectedVideoTitle": "Qualifying Highlights | 2026 United States Grand Prix",
+        "selectedVideoPublishedAt": "15h ago",
+        "selectedVideoChannel": "FORMULA 1",
+        "rejectedForAgeCount": 0
+      },
+      "marathon_athletics-marathon-new-york-city-marathon": {
+        "searchQuery": "New York City Marathon marathon highlights 2026",
+        "selectedVideoTitle": null,
+        "selectedVideoPublishedAt": null,
+        "selectedVideoChannel": null,
         "rejectedForAgeCount": 0
       },
       "marquee_match": {
-        "searchQuery": "Nottingham Forest vs Ipswich Town EPL preview",
-        "selectedVideoTitle": "Man City Create Premier League Chaos, Arsenal survive, and Brighton are must-see-TV | PL Recap",
-        "selectedVideoPublishedAt": "17h ago",
-        "selectedVideoChannel": "Men in Blazers",
-        "rejectedForAgeCount": 0
-      },
-      "league_moment_tournament": {
-        "searchQuery": "Big Stage sports October 2026",
-        "selectedVideoTitle": "Arizona State vs. #10 Texas Tech Condensed Game | 2026 Monster Energy Big 12 Football",
-        "selectedVideoPublishedAt": "9h ago",
-        "selectedVideoChannel": "Big 12 Conference",
+        "searchQuery": "Real Madrid vs Barcelona La Liga preview",
+        "selectedVideoTitle": "Can Barcelona keep up their perfect LALIGA record vs. Real Madrid? 👀 | El Clasico preview | ESPN FC",
+        "selectedVideoPublishedAt": "15h ago",
+        "selectedVideoChannel": "ESPN FC",
         "rejectedForAgeCount": 0
       }
     }
   },
   "cards": [
     {
-      "id": "rivalry_game_cricket-test-ys61ex-day4",
+      "id": "rivalry_game_soccer-mls-20261026-0100-la-galaxy-at-lafc",
       "title": "Rivalry Game Tomorrow",
-      "subtitle": "Australia vs South Africa · Tomorrow at 8:00 AM",
+      "subtitle": "LA Galaxy vs LAFC · Tomorrow at 1:00 AM",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 96,
-      "triggeredAt": "2026-10-20T13:33:12.190Z",
-      "expiresAt": "2026-10-21T12:00:00.000Z",
+      "triggeredAt": "2026-10-25T13:35:33.757Z",
+      "expiresAt": "2026-10-26T05:00:00.000Z",
       "kind": "rivalry_game",
-      "region": "SouthAfrica",
-      "regionPriority": 1,
-      "regionLabel": "South Africa",
+      "region": "SoCal",
+      "regionPriority": 2,
+      "regionLabel": "SoCal",
       "meta": {
-        "rivalryLabel": "Mandela Challenge Plate",
-        "sport": "cricket",
-        "league": "Test Cricket",
-        "awayTeam": "Australia",
-        "homeTeam": "South Africa",
-        "startTime": "2026-10-21T08:00:00.000Z",
+        "rivalryLabel": "El Tráfico",
+        "sport": "soccer",
+        "league": "MLS",
+        "awayTeam": "LA Galaxy",
+        "homeTeam": "LAFC",
+        "startTime": "2026-10-26T01:00:00.000Z",
         "eventIds": [
-          "cricket-test-ys61ex-day4"
+          "soccer-mls-20261026-0100-la-galaxy-at-lafc"
         ],
-        "reason": "Australia and South Africa meet tonight in one of cricket's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
+        "reason": "LA Galaxy and LAFC meet tonight in one of soccer's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
       },
       "sports": [
-        "cricket"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=TN6hJtz9GXc",
-        "thumbnailUrl": "https://img.youtube.com/vi/TN6hJtz9GXc/hqdefault.jpg",
-        "durationSeconds": 137,
-        "title": "All Blacks Great Steve Hansen answers the question Why All Blacks are still Weak Against Springboks",
-        "source": "youtube",
-        "channel": "RedSpot Sports",
-        "publishedAt": "2h ago"
-      }
-    },
-    {
-      "id": "league_moment_rivalry",
-      "title": "Rivalry Weekend",
-      "subtitle": "9 rivalry matchups in the next 7 days",
-      "impact": {
-        "label": "Feeds: Watch",
-        "tabHint": "Watch"
-      },
-      "priority": 70,
-      "triggeredAt": "2026-10-20T13:33:12.190Z",
-      "expiresAt": "2026-10-27T13:33:12.190Z",
-      "kind": "league_moment",
-      "region": "SouthAfrica",
-      "regionPriority": 1,
-      "regionLabel": "South Africa",
-      "meta": {
-        "type": "rivalry",
-        "matchCount": 9,
-        "rivalries": [
-          "Mandela Challenge Plate",
-          "SA vs AUS",
-          "London Derby",
-          "El Clásico",
-          "El Tráfico"
-        ],
-        "matches": [
-          {
-            "label": "Mandela Challenge Plate",
-            "away": "Australia",
-            "home": "South Africa",
-            "league": "Test Cricket",
-            "startTime": "2026-10-21T08:00:00.000Z"
-          },
-          {
-            "label": "SA vs AUS",
-            "away": "Australia",
-            "home": "South Africa",
-            "league": "Test Cricket",
-            "startTime": "2026-10-21T08:00:00.000Z"
-          },
-          {
-            "label": "Mandela Challenge Plate",
-            "away": "Australia",
-            "home": "South Africa",
-            "league": "Test Cricket",
-            "startTime": "2026-10-22T08:00:00.000Z"
-          },
-          {
-            "label": "SA vs AUS",
-            "away": "Australia",
-            "home": "South Africa",
-            "league": "Test Cricket",
-            "startTime": "2026-10-22T08:00:00.000Z"
-          },
-          {
-            "label": "London Derby",
-            "away": "Tottenham Hotspur",
-            "home": "Chelsea",
-            "league": "EPL",
-            "startTime": "2026-10-24T16:30:00.000Z"
-          },
-          {
-            "label": "El Clásico",
-            "away": "Real Madrid",
-            "home": "Barcelona",
-            "league": "La Liga",
-            "startTime": "2026-10-25T20:00:00.000Z"
-          },
-          {
-            "label": "El Tráfico",
-            "away": "LA Galaxy",
-            "home": "LAFC",
-            "league": "MLS",
-            "startTime": "2026-10-26T01:00:00.000Z"
-          },
-          {
-            "label": "Mandela Challenge Plate",
-            "away": "Australia",
-            "home": "South Africa",
-            "league": "Test Cricket",
-            "startTime": "2026-10-27T08:30:00.000Z"
-          },
-          {
-            "label": "SA vs AUS",
-            "away": "Australia",
-            "home": "South Africa",
-            "league": "Test Cricket",
-            "startTime": "2026-10-27T08:30:00.000Z"
-          }
-        ],
-        "eventIds": [
-          "cricket-test-ys61ex-day4",
-          "cricket-test-ys61ex-day4",
-          "cricket-test-ys61ex-day5",
-          "cricket-test-ys61ex-day5",
-          "soccer-epl-espn-401878767",
-          "soccer-laliga-20261025-2000-real-madrid-at-barcelona",
-          "soccer-mls-20261026-0100-la-galaxy-at-lafc",
-          "cricket-test-ys61ey-day1",
-          "cricket-test-ys61ey-day1"
-        ],
-        "reason": "9 known rivalry matchup(s) found: Mandela Challenge Plate, SA vs AUS, London Derby, El Clásico, El Tráfico"
-      },
-      "sports": [
-        "cricket",
         "soccer"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=uZV4shj9r9o",
-        "thumbnailUrl": "https://img.youtube.com/vi/uZV4shj9r9o/hqdefault.jpg",
-        "durationSeconds": 1809,
-        "title": "WWE Raw 20 Oct 2026 Full Highlights HD - Roman Reigns Attacks 946",
-        "source": "youtube",
-        "channel": "Azra Gamer and 4 more",
-        "publishedAt": "10h ago"
-      }
+      ]
     },
     {
       "id": "playoff_push_socal",
-      "title": "Ducks Push Week",
-      "subtitle": "Three games in seven days",
+      "title": "Oilers Push Week",
+      "subtitle": "Four games in seven days, including a back-to-back",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 90,
-      "triggeredAt": "2026-10-20T13:33:12.190Z",
-      "expiresAt": "2026-10-27T13:33:12.190Z",
+      "triggeredAt": "2026-10-25T13:35:33.757Z",
+      "expiresAt": "2026-11-01T13:35:33.757Z",
       "kind": "playoff_push",
       "region": "SoCal",
       "regionPriority": 2,
@@ -357,175 +247,248 @@
       "meta": {
         "teams": [
           {
-            "team": "Anaheim Ducks",
-            "league": "NHL",
-            "gamesInNext7Days": 3,
-            "gamesInNext5Days": 3,
-            "hasBackToBack": false,
-            "reason": "Anaheim plays three times in seven days.\n\nThis stretch could shape momentum heading into the final push of the season."
+            "team": "Tulsa Oilers",
+            "league": "ECHL",
+            "gamesInNext7Days": 4,
+            "gamesInNext5Days": 2,
+            "hasBackToBack": true,
+            "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
           }
         ],
         "eventIds": [
-          "nhl_2026020143",
-          "nhl_2026020157",
-          "nhl_2026020168"
+          "echl-web-25545",
+          "echl-web-25550",
+          "echl-web-25564",
+          "echl-web-25575"
         ],
         "combinedTeamCount": 1,
-        "windowStart": "2026-10-20T13:33:12.190Z",
-        "windowEnd": "2026-10-27T13:33:12.190Z",
-        "reason": "Anaheim plays three times in seven days.\n\nThis stretch could shape momentum heading into the final push of the season."
+        "windowStart": "2026-10-25T13:35:33.757Z",
+        "windowEnd": "2026-11-01T13:35:33.757Z",
+        "reason": "Tulsa plays four times in seven days, including a back-to-back this weekend.\n\nThis stretch could shape momentum heading into the final push of the season."
       },
       "sports": [
         "hockey"
       ]
     },
     {
-      "id": "playoff_push_newengland",
-      "title": "Bruins Push Week",
-      "subtitle": "Three games in seven days",
+      "id": "rivalry_game_soccer-laliga-20261025-2000-real-madrid-at-barcelona",
+      "title": "Rivalry Game Tonight",
+      "subtitle": "Real Madrid vs Barcelona · Tonight at 8:00 PM",
       "impact": {
-        "label": "Impacts: Saturday Game Day",
-        "ritualId": "saturday_spotlight",
-        "tabHint": "Rituals"
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
       },
-      "priority": 90,
-      "triggeredAt": "2026-10-20T13:33:12.190Z",
-      "expiresAt": "2026-10-27T13:33:12.190Z",
-      "kind": "playoff_push",
-      "region": "NewEngland",
-      "regionPriority": 3,
-      "regionLabel": "New England",
+      "priority": 96,
+      "triggeredAt": "2026-10-25T13:35:33.757Z",
+      "expiresAt": "2026-10-26T00:00:00.000Z",
+      "kind": "rivalry_game",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
       "meta": {
-        "teams": [
-          {
-            "team": "Boston Bruins",
-            "league": "NHL",
-            "gamesInNext7Days": 3,
-            "gamesInNext5Days": 3,
-            "hasBackToBack": false,
-            "reason": "Boston plays three times in seven days.\n\nThis stretch could shape momentum heading into the final push of the season."
-          }
-        ],
+        "rivalryLabel": "El Clásico",
+        "sport": "soccer",
+        "league": "La Liga",
+        "awayTeam": "Real Madrid",
+        "homeTeam": "Barcelona",
+        "startTime": "2026-10-25T20:00:00.000Z",
         "eventIds": [
-          "nhl_2026020147",
-          "nhl_2026020154",
-          "nhl_2026020170"
+          "soccer-laliga-20261025-2000-real-madrid-at-barcelona"
         ],
-        "combinedTeamCount": 1,
-        "windowStart": "2026-10-20T13:33:12.190Z",
-        "windowEnd": "2026-10-27T13:33:12.190Z",
-        "reason": "Boston plays three times in seven days.\n\nThis stretch could shape momentum heading into the final push of the season."
+        "reason": "Real Madrid and Barcelona meet tonight in one of soccer's most storied rivalries.\n\nThese games tend to carry extra emotional weight regardless of standings."
       },
       "sports": [
-        "hockey"
+        "soccer"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=Fq08CMFLCjo",
-        "thumbnailUrl": "https://img.youtube.com/vi/Fq08CMFLCjo/hqdefault.jpg",
-        "durationSeconds": 3757,
-        "title": "Stars Push Above .500 Ahead Of Season-Long Six-Game Home Stand | DLLS Stars Podcast",
+        "url": "https://www.youtube.com/watch?v=8wVAh-W4eVA",
+        "thumbnailUrl": "https://img.youtube.com/vi/8wVAh-W4eVA/hqdefault.jpg",
+        "durationSeconds": 4493,
+        "title": "Premier League reaction + What to expect from Barcelona and Real Madrid in El Clasico | ESPN FC",
         "source": "youtube",
-        "channel": "DLLS Sports",
-        "publishedAt": "Streamed 17h ago"
+        "channel": "ESPN FC",
+        "publishedAt": "14h ago"
       }
     },
     {
+      "id": "f1_race_weekend_united_states_grand_prix",
+      "title": "United States Grand Prix",
+      "subtitle": "United States Grand Prix — 1 session in the next 48h: Race",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 85,
+      "triggeredAt": "2026-10-25T13:35:33.757Z",
+      "expiresAt": "2026-10-26T00:00:00.000Z",
+      "kind": "league_moment",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "f1_race_weekend",
+        "grandPrix": "United States Grand Prix",
+        "sessionCount": 1,
+        "sessions": [
+          {
+            "sessionTitle": "Race",
+            "startTime": "2026-10-25T20:00:00.000Z",
+            "eventId": "f1-espn-401839122"
+          }
+        ],
+        "eventIds": [
+          "f1-espn-401839122"
+        ],
+        "reason": "United States Grand Prix race weekend — 1 session(s) within 48 hours"
+      },
+      "sports": [
+        "racing"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/watch?v=EQ74or790IM",
+        "thumbnailUrl": "https://img.youtube.com/vi/EQ74or790IM/hqdefault.jpg",
+        "durationSeconds": 481,
+        "title": "Qualifying Highlights | 2026 United States Grand Prix",
+        "source": "youtube",
+        "channel": "FORMULA 1",
+        "publishedAt": "15h ago"
+      }
+    },
+    {
+      "id": "marathon_athletics-marathon-new-york-city-marathon",
+      "title": "Marathon Major",
+      "subtitle": "New York City Marathon — 7 days out",
+      "impact": {
+        "label": "Feeds: Watch",
+        "tabHint": "Watch"
+      },
+      "priority": 80,
+      "triggeredAt": "2026-10-25T13:35:33.757Z",
+      "expiresAt": "2026-11-03T14:00:00.000Z",
+      "kind": "marathon_spotlight",
+      "region": "Other",
+      "regionPriority": 99,
+      "regionLabel": "Other",
+      "meta": {
+        "type": "marathon_spotlight",
+        "marathonName": "New York City Marathon",
+        "startTime": "2026-11-01T14:00:00.000Z",
+        "eventIds": [
+          "athletics-marathon-new-york-city-marathon"
+        ],
+        "reason": "World Marathon Majors event within 10 days: New York City Marathon"
+      },
+      "sports": [
+        "athletics"
+      ]
+    },
+    {
       "id": "marquee_match",
-      "title": "Marquee Match: EPL",
-      "subtitle": "Nottingham Forest vs Ipswich Town — EPL · in 3 days",
+      "title": "Marquee Match: El Clásico",
+      "subtitle": "Real Madrid vs Barcelona — kicks off in 6h",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
       "priority": 78,
-      "triggeredAt": "2026-10-20T13:33:12.190Z",
-      "expiresAt": "2026-10-23T23:00:00.000Z",
+      "triggeredAt": "2026-10-25T13:35:33.757Z",
+      "expiresAt": "2026-10-26T00:00:00.000Z",
       "kind": "marquee_match",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
         "type": "marquee_match",
-        "league": "EPL",
-        "home": "Ipswich Town",
-        "away": "Nottingham Forest",
-        "rivalry": null,
-        "startTime": "2026-10-23T19:00:00.000Z",
+        "league": "La Liga",
+        "home": "Barcelona",
+        "away": "Real Madrid",
+        "rivalry": "El Clásico",
+        "startTime": "2026-10-25T20:00:00.000Z",
         "eventIds": [
-          "soccer-epl-espn-401879253"
+          "soccer-laliga-20261025-2000-real-madrid-at-barcelona"
         ],
-        "reason": "Top EPL fixture (Nottingham Forest vs Ipswich Town) in 3 days"
+        "reason": "El Clásico (Real Madrid vs Barcelona) kicks off in 6h"
       },
       "sports": [
         "soccer"
       ],
       "video": {
-        "url": "https://www.youtube.com/watch?v=gOqg0dCj2a0",
-        "thumbnailUrl": "https://img.youtube.com/vi/gOqg0dCj2a0/hqdefault.jpg",
-        "durationSeconds": 4963,
-        "title": "Man City Create Premier League Chaos, Arsenal survive, and Brighton are must-see-TV | PL Recap",
+        "url": "https://www.youtube.com/watch?v=VY-YJT5GJi8",
+        "thumbnailUrl": "https://img.youtube.com/vi/VY-YJT5GJi8/hqdefault.jpg",
+        "durationSeconds": 668,
+        "title": "Can Barcelona keep up their perfect LALIGA record vs. Real Madrid? 👀 | El Clasico preview | ESPN FC",
         "source": "youtube",
-        "channel": "Men in Blazers",
-        "publishedAt": "17h ago"
+        "channel": "ESPN FC",
+        "publishedAt": "15h ago"
       }
     },
     {
-      "id": "league_moment_tournament",
-      "title": "Big Stage",
-      "subtitle": "1 tournament/knockout match this week",
+      "id": "weekend_watchlist",
+      "title": "Weekend Watchlist",
+      "subtitle": "3 marquee matchups · F1 · EPL · NHL",
       "impact": {
         "label": "Feeds: Watch",
         "tabHint": "Watch"
       },
-      "priority": 70,
-      "triggeredAt": "2026-10-20T13:33:12.190Z",
-      "expiresAt": "2026-10-27T13:33:12.190Z",
-      "kind": "league_moment",
+      "priority": 55,
+      "triggeredAt": "2026-10-25T13:35:33.757Z",
+      "expiresAt": "2026-10-25T23:59:59.999Z",
+      "kind": "weekend_watchlist",
       "region": "Other",
       "regionPriority": 99,
       "regionLabel": "Other",
       "meta": {
-        "type": "tournament",
-        "matchCount": 1,
+        "type": "weekend_watchlist",
+        "matchCount": 3,
         "matches": [
           {
-            "away": "",
-            "home": "GTWS — Muju Trail Grand Finale",
-            "league": "Golden Trail World Series",
-            "round": "GTWS — Muju Trail Grand Finale",
-            "startTime": "2026-10-23T23:00:00.000Z"
+            "league": "F1",
+            "sport": "racing",
+            "away": "Race",
+            "home": "United States Grand Prix",
+            "startTime": "2026-10-25T20:00:00.000Z"
+          },
+          {
+            "league": "EPL",
+            "sport": "soccer",
+            "away": "Newcastle United",
+            "home": "Crystal Palace",
+            "startTime": "2026-10-25T14:00:00.000Z"
+          },
+          {
+            "league": "NHL",
+            "sport": "hockey",
+            "away": "Florida Panthers",
+            "home": "Chicago Blackhawks",
+            "startTime": "2026-10-25T19:00:00.000Z"
           }
         ],
         "eventIds": [
-          "athletics-golden-trail-muju-grand-finale-2026"
+          "f1-espn-401839122",
+          "soccer-epl-espn-401879254",
+          "nhl_2026020180"
         ],
-        "reason": "Found 1 tournament stage match(es) in the next 7 days"
+        "reason": "Weekend window: 3 top-priority event(s) across 3 sport(s)"
       },
       "sports": [
-        "athletics"
-      ],
-      "video": {
-        "url": "https://www.youtube.com/watch?v=PAmxXHzxRv0",
-        "thumbnailUrl": "https://img.youtube.com/vi/PAmxXHzxRv0/hqdefault.jpg",
-        "durationSeconds": 1320,
-        "title": "Arizona State vs. #10 Texas Tech Condensed Game | 2026 Monster Energy Big 12 Football",
-        "source": "youtube",
-        "channel": "Big 12 Conference",
-        "publishedAt": "9h ago"
-      }
+        "racing",
+        "soccer",
+        "hockey"
+      ]
     }
   ],
   "tonightStory": {
     "signalType": "multi_team_night",
     "signalLabel": "YOUR TEAMS",
     "headline": "Your Sports Night",
-    "body": "The Proteas, Anaheim Ducks, Boston Bruins, and Tulsa Oilers all play today across the Test Cricket, NHL.",
-    "sourceEventId": "cricket-test-ys61ex-day3",
+    "body": "The Marseille, Bayern Munich, La Rochelle, San Diego FC, and Maine Mariners all play today across the Ligue 1, Bundesliga, ECHL, Top 14, NWSL.",
+    "sourceEventId": "soccer-ligue1-20261025-1615-le-havre-ac-at-marseille",
     "eventIds": [
-      "cricket-test-ys61ex-day3",
-      "nhl_2026020143",
-      "nhl_2026020147",
-      "nhl_2026020148"
+      "soccer-ligue1-20261025-1615-le-havre-ac-at-marseille",
+      "soccer-bundesliga-20261025-1630-bayern-munich-at-sc-freiburg",
+      "echl-web-25539",
+      "rugby-top14-5ffy41",
+      "soccer-nwsl-20261025-2300-boston-legacy-at-san-diego-wave"
     ],
     "sourceCard": {
       "id": "tonight_multi_team",
@@ -533,14 +496,16 @@
       "title": "Your Sports Night"
     },
     "sports": [
-      "cricket",
-      "hockey"
+      "soccer",
+      "hockey",
+      "rugby"
     ],
     "favoriteTeams": [
-      "Proteas",
-      "Anaheim Ducks",
-      "Boston Bruins",
-      "Tulsa Oilers"
+      "Marseille",
+      "Bayern Munich",
+      "La Rochelle",
+      "San Diego FC",
+      "San Diego Wave"
     ]
   },
   "todaysStories": [
@@ -548,13 +513,14 @@
       "signalType": "multi_team_night",
       "signalLabel": "YOUR TEAMS",
       "headline": "Your Sports Night",
-      "body": "The Proteas, Anaheim Ducks, Boston Bruins, and Tulsa Oilers all play today across the Test Cricket, NHL.",
-      "sourceEventId": "cricket-test-ys61ex-day3",
+      "body": "The Marseille, Bayern Munich, La Rochelle, San Diego FC, and Maine Mariners all play today across the Ligue 1, Bundesliga, ECHL, Top 14, NWSL.",
+      "sourceEventId": "soccer-ligue1-20261025-1615-le-havre-ac-at-marseille",
       "eventIds": [
-        "cricket-test-ys61ex-day3",
-        "nhl_2026020143",
-        "nhl_2026020147",
-        "nhl_2026020148"
+        "soccer-ligue1-20261025-1615-le-havre-ac-at-marseille",
+        "soccer-bundesliga-20261025-1630-bayern-munich-at-sc-freiburg",
+        "echl-web-25539",
+        "rugby-top14-5ffy41",
+        "soccer-nwsl-20261025-2300-boston-legacy-at-san-diego-wave"
       ],
       "sourceCard": {
         "id": "tonight_multi_team",
@@ -562,36 +528,77 @@
         "title": "Your Sports Night"
       },
       "sports": [
-        "cricket",
-        "hockey"
+        "soccer",
+        "hockey",
+        "rugby"
       ],
       "favoriteTeams": [
-        "Proteas",
-        "Anaheim Ducks",
-        "Boston Bruins",
-        "Tulsa Oilers"
+        "Marseille",
+        "Bayern Munich",
+        "La Rochelle",
+        "San Diego FC",
+        "San Diego Wave"
+      ]
+    },
+    {
+      "signalType": "championship_day",
+      "signalLabel": "CHAMPIONSHIP DAY",
+      "headline": "United States Grand Prix",
+      "body": "Lights out at the United States Grand Prix today.",
+      "sourceEventId": "f1-espn-401839122",
+      "eventIds": [
+        "f1-espn-401839122"
+      ],
+      "sourceCard": {
+        "id": "championship_day_racing-f1-united-states-grand-prix",
+        "kind": "championship_day",
+        "title": "United States Grand Prix"
+      },
+      "sports": [
+        "racing"
+      ],
+      "favoriteTeams": [
+        "USA",
+        "United States"
       ]
     },
     {
       "signalType": "rivalry_of_day",
       "signalLabel": "RIVALRY DAY",
-      "headline": "SA vs AUS",
-      "body": "Australia faces South Africa today — SA vs AUS, one of the sport's marquee rivalries.",
-      "sourceEventId": "cricket-test-ys61ex-day3",
+      "headline": "El Clásico",
+      "body": "Real Madrid faces Barcelona today — El Clásico, one of the sport's marquee rivalries.",
+      "sourceEventId": "soccer-laliga-20261025-2000-real-madrid-at-barcelona",
       "eventIds": [
-        "cricket-test-ys61ex-day3"
+        "soccer-laliga-20261025-2000-real-madrid-at-barcelona"
       ],
       "sourceCard": {
-        "id": "rivalry_of_day_cricket-test-ys61ex-day3",
+        "id": "rivalry_of_day_soccer-laliga-20261025-2000-real-madrid-at-barcelona",
         "kind": "rivalry_of_day",
-        "title": "SA vs AUS"
+        "title": "El Clásico"
       },
       "sports": [
-        "cricket"
+        "soccer"
       ],
-      "favoriteTeams": [
-        "Proteas"
-      ]
+      "favoriteTeams": []
+    },
+    {
+      "signalType": "rivalry_of_day",
+      "signalLabel": "RIVALRY DAY",
+      "headline": "El Tráfico",
+      "body": "LA Galaxy faces LAFC today — El Tráfico, one of the sport's marquee rivalries.",
+      "sourceEventId": "soccer-mls-20261026-0100-la-galaxy-at-lafc",
+      "eventIds": [
+        "soccer-mls-20261026-0100-la-galaxy-at-lafc"
+      ],
+      "sourceCard": {
+        "id": "rivalry_of_day_soccer-mls-20261026-0100-la-galaxy-at-lafc",
+        "kind": "rivalry_of_day",
+        "title": "El Tráfico"
+      },
+      "sports": [
+        "soccer"
+      ],
+      "favoriteTeams": []
     }
   ],
   "monthSnapshot": {
@@ -610,173 +617,123 @@
           "seasonPhase": "Playoffs"
         },
         {
-          "sport": "tennis",
-          "displayName": "Shanghai",
-          "leagueKey": "atp-masters",
-          "dateRangeLabel": "Oct 7–18",
-          "startDate": "2026-10-07T03:00:00.000Z",
-          "endDate": "2026-10-18T03:00:00.000Z",
-          "eventCount": 20,
-          "seasonPhase": null
-        },
-        {
-          "sport": "hockey",
-          "displayName": "SHL",
-          "leagueKey": "shl",
-          "dateRangeLabel": "Oct 8–22",
-          "startDate": "2026-10-08T16:59:00.000Z",
-          "endDate": "2026-10-22T17:00:00.000Z",
-          "eventCount": 24,
-          "seasonPhase": null
-        },
-        {
-          "sport": "hockey",
-          "displayName": "ECHL",
-          "leagueKey": "echl",
-          "dateRangeLabel": "Oct 8–31",
-          "startDate": "2026-10-08T23:00:00.000Z",
-          "endDate": "2026-10-31T23:10:00.000Z",
-          "eventCount": 105,
-          "seasonPhase": null
-        },
-        {
-          "sport": "cricket",
-          "displayName": "Test Cricket",
-          "leagueKey": "test",
-          "dateRangeLabel": "Oct 9–31",
-          "startDate": "2026-10-09T06:00:00.000Z",
-          "endDate": "2026-10-31T08:30:00.000Z",
-          "eventCount": 29,
-          "seasonPhase": null
-        },
-        {
-          "sport": "racing",
-          "displayName": "Singapore GP",
-          "leagueKey": "f1",
-          "dateRangeLabel": "Oct 9–11",
-          "startDate": "2026-10-09T08:30:00.000Z",
-          "endDate": "2026-10-11T12:00:00.000Z",
-          "eventCount": 5,
-          "seasonPhase": null
-        },
-        {
-          "sport": "cricket",
-          "displayName": "T20I Cricket",
-          "leagueKey": "t20i",
-          "dateRangeLabel": "Oct 9–30",
-          "startDate": "2026-10-09T13:00:00.000Z",
-          "endDate": "2026-10-30T07:00:00.000Z",
-          "eventCount": 12,
-          "seasonPhase": null
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Bundesliga",
-          "leagueKey": "bundesliga",
-          "dateRangeLabel": "Oct 9–31",
-          "startDate": "2026-10-09T18:30:00.000Z",
-          "endDate": "2026-10-31T17:30:00.000Z",
-          "eventCount": 34,
-          "seasonPhase": null
-        },
-        {
-          "sport": "rugby",
-          "displayName": "URC",
-          "leagueKey": "urc",
-          "dateRangeLabel": "Oct 9–31",
-          "startDate": "2026-10-09T18:45:00.000Z",
-          "endDate": "2026-10-31T19:45:00.000Z",
-          "eventCount": 24,
-          "seasonPhase": null
-        },
-        {
           "sport": "rugby",
           "displayName": "English Premiership",
           "leagueKey": "premiership",
-          "dateRangeLabel": "Oct 9–31",
-          "startDate": "2026-10-09T18:45:00.000Z",
+          "dateRangeLabel": "Oct 11–31",
+          "startDate": "2026-10-11T14:00:00.000Z",
           "endDate": "2026-10-31T17:30:00.000Z",
-          "eventCount": 15,
-          "seasonPhase": null
-        },
-        {
-          "sport": "soccer",
-          "displayName": "Ligue 1",
-          "leagueKey": "ligue1",
-          "dateRangeLabel": "Oct 9–31",
-          "startDate": "2026-10-09T18:45:00.000Z",
-          "endDate": "2026-10-31T19:45:00.000Z",
-          "eventCount": 33,
+          "eventCount": 12,
           "seasonPhase": null
         },
         {
           "sport": "soccer",
           "displayName": "La Liga",
           "leagueKey": "laliga",
-          "dateRangeLabel": "Oct 9–31",
-          "startDate": "2026-10-09T19:00:00.000Z",
+          "dateRangeLabel": "Oct 11–31",
+          "startDate": "2026-10-11T14:15:00.000Z",
           "endDate": "2026-10-31T20:00:00.000Z",
-          "eventCount": 36,
+          "eventCount": 30,
           "seasonPhase": null
         },
         {
-          "sport": "hockey",
-          "displayName": "AHL",
-          "leagueKey": "ahl",
-          "dateRangeLabel": "Oct 9–31",
-          "startDate": "2026-10-09T23:00:00.000Z",
-          "endDate": "2026-10-31T22:00:00.000Z",
-          "eventCount": 129,
+          "sport": "soccer",
+          "displayName": "Ligue 1",
+          "leagueKey": "ligue1",
+          "dateRangeLabel": "Oct 11–31",
+          "startDate": "2026-10-11T15:15:00.000Z",
+          "endDate": "2026-10-31T19:45:00.000Z",
+          "eventCount": 26,
           "seasonPhase": null
         },
         {
           "sport": "soccer",
           "displayName": "EPL",
           "leagueKey": "epl",
-          "dateRangeLabel": "Oct 10–31",
-          "startDate": "2026-10-10T11:30:00.000Z",
+          "dateRangeLabel": "Oct 11–31",
+          "startDate": "2026-10-11T15:30:00.000Z",
           "endDate": "2026-10-31T20:00:00.000Z",
-          "eventCount": 38,
+          "eventCount": 30,
           "seasonPhase": null
         },
         {
-          "sport": "athletics",
-          "displayName": "UTMB — Kodiak Ultra Marathons",
-          "leagueKey": "utmb",
-          "dateRangeLabel": "Oct 10",
-          "startDate": "2026-10-10T12:00:00.000Z",
-          "endDate": "2026-10-10T12:00:00.000Z",
-          "eventCount": 1,
-          "seasonPhase": null
-        },
-        {
-          "sport": "rugby",
-          "displayName": "Top 14",
-          "leagueKey": "top14",
-          "dateRangeLabel": "Oct 10–31",
-          "startDate": "2026-10-10T12:30:00.000Z",
-          "endDate": "2026-10-31T20:00:00.000Z",
-          "eventCount": 20,
+          "sport": "soccer",
+          "displayName": "Bundesliga",
+          "leagueKey": "bundesliga",
+          "dateRangeLabel": "Oct 11–31",
+          "startDate": "2026-10-11T15:30:00.000Z",
+          "endDate": "2026-10-31T17:30:00.000Z",
+          "eventCount": 26,
           "seasonPhase": null
         },
         {
           "sport": "soccer",
           "displayName": "Serie A",
           "leagueKey": "seriea",
-          "dateRangeLabel": "Oct 10–31",
-          "startDate": "2026-10-10T13:00:00.000Z",
+          "dateRangeLabel": "Oct 11–31",
+          "startDate": "2026-10-11T16:00:00.000Z",
           "endDate": "2026-10-31T19:45:00.000Z",
-          "eventCount": 43,
+          "eventCount": 37,
           "seasonPhase": null
         },
         {
-          "sport": "athletics",
-          "displayName": "Chicago Marathon",
-          "leagueKey": "marathon-majors",
-          "dateRangeLabel": "Oct 11",
-          "startDate": "2026-10-11T13:00:00.000Z",
-          "endDate": "2026-10-11T13:00:00.000Z",
-          "eventCount": 1,
+          "sport": "hockey",
+          "displayName": "ECHL",
+          "leagueKey": "echl",
+          "dateRangeLabel": "Oct 11–31",
+          "startDate": "2026-10-11T17:00:00.000Z",
+          "endDate": "2026-10-31T23:10:00.000Z",
+          "eventCount": 92,
+          "seasonPhase": null
+        },
+        {
+          "sport": "hockey",
+          "displayName": "AHL",
+          "leagueKey": "ahl",
+          "dateRangeLabel": "Oct 11–31",
+          "startDate": "2026-10-11T17:05:00.000Z",
+          "endDate": "2026-10-31T22:00:00.000Z",
+          "eventCount": 107,
+          "seasonPhase": null
+        },
+        {
+          "sport": "rugby",
+          "displayName": "Top 14",
+          "leagueKey": "top14",
+          "dateRangeLabel": "Oct 11–31",
+          "startDate": "2026-10-11T19:05:00.000Z",
+          "endDate": "2026-10-31T20:00:00.000Z",
+          "eventCount": 14,
+          "seasonPhase": null
+        },
+        {
+          "sport": "tennis",
+          "displayName": "Shanghai",
+          "leagueKey": "atp-masters",
+          "dateRangeLabel": "Oct 12–18",
+          "startDate": "2026-10-12T03:00:00.000Z",
+          "endDate": "2026-10-18T03:00:00.000Z",
+          "eventCount": 10,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
+          "displayName": "Test Cricket",
+          "leagueKey": "test",
+          "dateRangeLabel": "Oct 12–31",
+          "startDate": "2026-10-12T06:00:00.000Z",
+          "endDate": "2026-10-31T08:30:00.000Z",
+          "eventCount": 22,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
+          "displayName": "T20I Cricket",
+          "leagueKey": "t20i",
+          "dateRangeLabel": "Oct 13–30",
+          "startDate": "2026-10-13T13:00:00.000Z",
+          "endDate": "2026-10-30T07:00:00.000Z",
+          "eventCount": 8,
           "seasonPhase": null
         },
         {
@@ -816,17 +773,17 @@
           "dateRangeLabel": "Oct 17–29",
           "startDate": "2026-10-17T11:30:00.000Z",
           "endDate": "2026-10-29T08:00:00.000Z",
-          "eventCount": 7,
+          "eventCount": 8,
           "seasonPhase": null
         },
         {
           "sport": "hockey",
-          "displayName": "NHL",
-          "leagueKey": "nhl",
-          "dateRangeLabel": "Oct 19–31",
-          "startDate": "2026-10-19T23:00:00.000Z",
-          "endDate": "2026-10-31T23:00:00.000Z",
-          "eventCount": 88,
+          "displayName": "SHL",
+          "leagueKey": "shl",
+          "dateRangeLabel": "Oct 17–27",
+          "startDate": "2026-10-17T16:00:00.000Z",
+          "endDate": "2026-10-27T18:00:00.000Z",
+          "eventCount": 20,
           "seasonPhase": null
         },
         {
@@ -850,6 +807,16 @@
           "seasonPhase": null
         },
         {
+          "sport": "rugby",
+          "displayName": "URC",
+          "leagueKey": "urc",
+          "dateRangeLabel": "Oct 23–31",
+          "startDate": "2026-10-23T18:45:00.000Z",
+          "endDate": "2026-10-31T19:45:00.000Z",
+          "eventCount": 16,
+          "seasonPhase": null
+        },
+        {
           "sport": "athletics",
           "displayName": "GTWS — Muju Trail Grand Finale",
           "leagueKey": "golden-trail",
@@ -857,6 +824,16 @@
           "startDate": "2026-10-23T23:00:00.000Z",
           "endDate": "2026-10-23T23:00:00.000Z",
           "eventCount": 1,
+          "seasonPhase": null
+        },
+        {
+          "sport": "hockey",
+          "displayName": "NHL",
+          "leagueKey": "nhl",
+          "dateRangeLabel": "Oct 24–31",
+          "startDate": "2026-10-24T17:00:00.000Z",
+          "endDate": "2026-10-31T23:00:00.000Z",
+          "eventCount": 57,
           "seasonPhase": null
         },
         {
@@ -880,30 +857,30 @@
           "sport": "hockey",
           "displayName": "NHL",
           "leagueKey": "nhl",
-          "dateRangeLabel": "Nov 1–9",
+          "dateRangeLabel": "Nov 1–14",
           "startDate": "2026-11-01T00:00:00.000Z",
-          "endDate": "2026-11-09T01:00:00.000Z",
-          "eventCount": 58,
+          "endDate": "2026-11-14T03:00:00.000Z",
+          "eventCount": 87,
           "seasonPhase": null
         },
         {
           "sport": "hockey",
           "displayName": "AHL",
           "leagueKey": "ahl",
-          "dateRangeLabel": "Nov 1–8",
+          "dateRangeLabel": "Nov 1–15",
           "startDate": "2026-11-01T00:00:00.000Z",
-          "endDate": "2026-11-08T22:00:00.000Z",
-          "eventCount": 52,
+          "endDate": "2026-11-15T03:10:00.000Z",
+          "eventCount": 91,
           "seasonPhase": null
         },
         {
           "sport": "hockey",
           "displayName": "ECHL",
           "leagueKey": "echl",
-          "dateRangeLabel": "Nov 1–8",
+          "dateRangeLabel": "Nov 1–15",
           "startDate": "2026-11-01T01:00:00.000Z",
-          "endDate": "2026-11-08T21:05:00.000Z",
-          "eventCount": 49,
+          "endDate": "2026-11-15T02:05:00.000Z",
+          "eventCount": 80,
           "seasonPhase": null
         },
         {
@@ -920,10 +897,10 @@
           "sport": "cricket",
           "displayName": "Test Cricket",
           "leagueKey": "test",
-          "dateRangeLabel": "Nov 1–10",
+          "dateRangeLabel": "Nov 1–15",
           "startDate": "2026-11-01T04:00:00.000Z",
-          "endDate": "2026-11-10T04:30:00.000Z",
-          "eventCount": 18,
+          "endDate": "2026-11-15T06:00:00.000Z",
+          "eventCount": 24,
           "seasonPhase": null
         },
         {
@@ -931,8 +908,8 @@
           "displayName": "T20I Cricket",
           "leagueKey": "t20i",
           "dateRangeLabel": "Nov 1",
-          "startDate": "2026-11-01T05:00:00.000Z",
-          "endDate": "2026-11-01T07:00:00.000Z",
+          "startDate": "2026-11-01T07:00:00.000Z",
+          "endDate": "2026-11-01T14:30:00.000Z",
           "eventCount": 2,
           "seasonPhase": null
         },
@@ -1027,16 +1004,6 @@
           "seasonPhase": "Regular"
         },
         {
-          "sport": "basketball",
-          "displayName": "NCAAB",
-          "leagueKey": "ncaab",
-          "dateRangeLabel": "Nov 2–19",
-          "startDate": "2026-11-02T05:00:00.000Z",
-          "endDate": "2026-11-19T05:00:00.000Z",
-          "eventCount": 50,
-          "seasonPhase": null
-        },
-        {
           "sport": "tennis",
           "displayName": "Paris",
           "leagueKey": "atp-masters",
@@ -1047,13 +1014,23 @@
           "seasonPhase": null
         },
         {
+          "sport": "basketball",
+          "displayName": "NCAAB",
+          "leagueKey": "ncaab",
+          "dateRangeLabel": "Nov 3–23",
+          "startDate": "2026-11-03T01:00:00.000Z",
+          "endDate": "2026-11-23T18:00:00.000Z",
+          "eventCount": 61,
+          "seasonPhase": null
+        },
+        {
           "sport": "cricket",
           "displayName": "ODI Cricket",
           "leagueKey": "odi",
-          "dateRangeLabel": "Nov 4–10",
+          "dateRangeLabel": "Nov 4–15",
           "startDate": "2026-11-04T02:00:00.000Z",
-          "endDate": "2026-11-10T02:00:00.000Z",
-          "eventCount": 3,
+          "endDate": "2026-11-15T03:30:00.000Z",
+          "eventCount": 6,
           "seasonPhase": null
         },
         {
@@ -1074,6 +1051,16 @@
           "startDate": "2026-11-06T15:30:00.000Z",
           "endDate": "2026-11-08T17:00:00.000Z",
           "eventCount": 5,
+          "seasonPhase": null
+        },
+        {
+          "sport": "cricket",
+          "displayName": "International Cricket",
+          "leagueKey": "intl",
+          "dateRangeLabel": "Nov 13",
+          "startDate": "2026-11-13T03:30:00.000Z",
+          "endDate": "2026-11-13T03:30:00.000Z",
+          "eventCount": 1,
           "seasonPhase": null
         },
         {
@@ -1127,10 +1114,10 @@
           "sport": "cricket",
           "displayName": "ODI Cricket",
           "leagueKey": "odi",
-          "dateRangeLabel": "Oct 19–22",
+          "dateRangeLabel": "Oct 19–23",
           "startDate": "2026-10-19T11:30:00.000Z",
-          "endDate": "2026-10-22T08:00:00.000Z",
-          "eventCount": 3,
+          "endDate": "2026-10-23T11:30:00.000Z",
+          "eventCount": 4,
           "seasonPhase": null
         },
         {
@@ -1165,22 +1152,12 @@
         },
         {
           "sport": "hockey",
-          "displayName": "NHL",
-          "leagueKey": "nhl",
-          "dateRangeLabel": "Oct 19–25",
-          "startDate": "2026-10-19T23:00:00.000Z",
-          "endDate": "2026-10-25T23:00:00.000Z",
-          "eventCount": 46,
-          "seasonPhase": null
-        },
-        {
-          "sport": "hockey",
           "displayName": "SHL",
           "leagueKey": "shl",
-          "dateRangeLabel": "Oct 20–22",
+          "dateRangeLabel": "Oct 20–24",
           "startDate": "2026-10-20T17:00:00.000Z",
-          "endDate": "2026-10-22T17:00:00.000Z",
-          "eventCount": 8,
+          "endDate": "2026-10-24T16:05:00.000Z",
+          "eventCount": 16,
           "seasonPhase": null
         },
         {
@@ -1269,8 +1246,8 @@
           "leagueKey": "ligue1",
           "dateRangeLabel": "Oct 23–25",
           "startDate": "2026-10-23T18:45:00.000Z",
-          "endDate": "2026-10-25T19:45:00.000Z",
-          "eventCount": 9,
+          "endDate": "2026-10-25T16:15:00.000Z",
+          "eventCount": 8,
           "seasonPhase": null
         },
         {
@@ -1311,6 +1288,16 @@
           "startDate": "2026-10-24T12:30:00.000Z",
           "endDate": "2026-10-25T20:05:00.000Z",
           "eventCount": 7,
+          "seasonPhase": null
+        },
+        {
+          "sport": "hockey",
+          "displayName": "NHL",
+          "leagueKey": "nhl",
+          "dateRangeLabel": "Oct 24–25",
+          "startDate": "2026-10-24T17:00:00.000Z",
+          "endDate": "2026-10-25T23:00:00.000Z",
+          "eventCount": 15,
           "seasonPhase": null
         }
       ],
