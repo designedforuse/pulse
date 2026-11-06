@@ -1645,20 +1645,6 @@ export default function WatchScreen() {
 
           <View style={styles.headerActions}>
             <Pressable
-              onPress={() => router.push("/viewing-plan")}
-              hitSlop={10}
-              accessibilityRole="button"
-              accessibilityLabel="View my Serie A viewing plan"
-              style={({ pressed }) => [
-                styles.planButton,
-                { opacity: pressed ? 0.65 : 1 },
-              ]}
-              testID="view-my-plan-button"
-            >
-              <Ionicons name="calendar-outline" size={16} color="#C4B5FD" />
-              <Text style={styles.planButtonText}>View my plan</Text>
-            </Pressable>
-            <Pressable
               onPress={() => router.push("/settings")}
               hitSlop={16}
               style={({ pressed }) => [
@@ -2220,22 +2206,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
-  },
-  planButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 5,
-    paddingHorizontal: 9,
-    paddingVertical: 7,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: "rgba(167,139,250,0.35)",
-    backgroundColor: "rgba(167,139,250,0.12)",
-  },
-  planButtonText: {
-    color: "#C4B5FD",
-    fontSize: 11,
-    fontFamily: "Inter_600SemiBold",
   },
 
   chaosSection: {
